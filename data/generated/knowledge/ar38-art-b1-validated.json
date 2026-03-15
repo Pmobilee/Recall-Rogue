@@ -1,0 +1,2166 @@
+[
+  {
+    "id": "art-anime-osamu-tezuka",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "architectural_styles",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "architectural_styles",
+    "categoryL3": "",
+    "statement": "The distinctive large-eyed anime art style was pioneered by Osamu Tezuka, inspired by early Disney animation.",
+    "quizQuestion": "Which Japanese artist pioneered the large-eyed anime art style?",
+    "correctAnswer": "Osamu Tezuka",
+    "distractors": [
+      "Hayao Miyazaki",
+      "Akira Toriyama",
+      "Katsuhiro Otomo",
+      "Leiji Matsumoto",
+      "Go Nagai",
+      "Yoshiyuki Tomino",
+      "Isao Takahata",
+      "Takehiko Inoue"
+    ],
+    "acceptableAnswers": [
+      "Osamu Tezuka",
+      "Tezuka"
+    ],
+    "explanation": "Osamu Tezuka (1928–1989), called the 'God of Manga,' was inspired by Disney's exaggerated, emotive character eyes. He codified the large-eye style in works like Astro Boy (1952), establishing conventions that define anime and manga worldwide to this day.",
+    "wowFactor": "The defining visual trait of Japanese anime — oversized expressive eyes — was directly borrowed from Walt Disney's cartoons by one visionary doctor-turned-artist.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who pioneered the distinctive large-eyed anime style after being inspired by Disney?",
+        "answer": "Osamu Tezuka",
+        "distractors": [
+          "Hayao Miyazaki",
+          "Akira Toriyama",
+          "Katsuhiro Otomo"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Osamu Tezuka's 1952 manga Astro Boy helped establish which globally recognised visual style?",
+        "answer": "Anime",
+        "distractors": [
+          "Ukiyo-e",
+          "Western comics",
+          "Cel shading"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The large-eyed anime art style was invented entirely independently of Western animation.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Anime's characteristic large eyes were popularised by Osamu Tezuka, who was inspired by ___ animation.",
+        "answer": "Disney",
+        "distractors": [
+          "Soviet",
+          "French",
+          "British"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Osamu_Tezuka",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A bespectacled Japanese artist at a drawing desk, Astro Boy sketches beside a Mickey Mouse reference image, in warm studio light, pixel art style.",
+    "tags": [
+      "anime",
+      "Osamu Tezuka",
+      "manga",
+      "Japan",
+      "Disney",
+      "art history"
+    ]
+  },
+  {
+    "id": "art-anime-global-industry",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "architectural_styles",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "architectural_styles",
+    "categoryL3": "",
+    "statement": "Japan's anime industry produces around 60% of the world's animation content, making it the dominant global animation power.",
+    "quizQuestion": "Approximately what percentage of world animation does Japan's anime industry produce?",
+    "correctAnswer": "60%",
+    "distractors": [
+      "10%",
+      "20%",
+      "35%",
+      "45%",
+      "75%",
+      "80%",
+      "90%",
+      "50%"
+    ],
+    "acceptableAnswers": [
+      "60%",
+      "around 60 percent",
+      "about 60%"
+    ],
+    "explanation": "Japan consistently produces approximately 60% of all animated content worldwide by volume. The anime industry generates over $24 billion USD annually, with overseas demand (especially via streaming) now exceeding domestic consumption.",
+    "wowFactor": "More than half of all animated content ever made worldwide came from one country — and Japan only got serious about animation in the 1960s.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What share of global animation content does Japan's anime industry produce?",
+        "answer": "About 60%",
+        "distractors": [
+          "About 20%",
+          "About 35%",
+          "About 80%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Japan produces about 60% of global animation; which style name describes its output?",
+        "answer": "Anime",
+        "distractors": [
+          "Cartoon",
+          "CGI",
+          "Motion comic"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The United States produces more animation by volume than Japan.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Japan's anime industry produces approximately ___ of all animation content worldwide.",
+        "answer": "60%",
+        "distractors": [
+          "20%",
+          "40%",
+          "80%"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Anime#Industry",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A globe with Japan glowing brightly and animation cel strips radiating outward to every continent, pixel art style.",
+    "tags": [
+      "anime",
+      "Japan",
+      "animation",
+      "global culture",
+      "industry"
+    ]
+  },
+  {
+    "id": "art-anime-cour-system",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "architectural_styles",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "architectural_styles",
+    "categoryL3": "",
+    "statement": "Anime is typically broadcast in 'cours' — 13-episode blocks corresponding to one television quarter (about 3 months).",
+    "quizQuestion": "How many episodes make up one 'cour' in the anime broadcast system?",
+    "correctAnswer": "13 episodes",
+    "distractors": [
+      "6 episodes",
+      "10 episodes",
+      "20 episodes",
+      "24 episodes",
+      "26 episodes",
+      "52 episodes",
+      "8 episodes",
+      "16 episodes"
+    ],
+    "acceptableAnswers": [
+      "13 episodes",
+      "13",
+      "twelve to thirteen"
+    ],
+    "explanation": "The Japanese television anime industry is structured around 'cours' (クール, from the French word for 'course'). One cour = 13 episodes aired weekly over one quarter-year. A standard anime season is 1–2 cours; long-runners like Naruto span many cours over years.",
+    "wowFactor": "The word anime fans use for a season — 'cour' — is borrowed from French, reflecting France's early influence on Japanese broadcasting systems.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "A single anime 'cour' consists of how many episodes?",
+        "answer": "13 episodes",
+        "distractors": [
+          "6 episodes",
+          "24 episodes",
+          "26 episodes"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "An anime season of 13 weekly episodes spanning one quarter-year is called what?",
+        "answer": "A cour",
+        "distractors": [
+          "A run",
+          "A arc",
+          "A season block"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A standard anime 'cour' consists of 24 episodes.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Anime is broadcast in '___ ' of 13 episodes, corresponding to one TV quarter.",
+        "answer": "Cours",
+        "distractors": [
+          "Runs",
+          "Arcs",
+          "Blocks"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Anime#Production",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Japanese TV schedule grid with anime titles filling 13-week blocks across four seasonal columns, pixel art style.",
+    "tags": [
+      "anime",
+      "cour",
+      "broadcast",
+      "Japan",
+      "television"
+    ]
+  },
+  {
+    "id": "art-burj-khalifa-height",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "engineering_design",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "engineering_design",
+    "categoryL3": "",
+    "statement": "The Burj Khalifa in Dubai stands at 828 metres (2,717 ft) — the world's tallest building since its 2010 completion.",
+    "quizQuestion": "How tall is the Burj Khalifa, the world's tallest building?",
+    "correctAnswer": "828 metres",
+    "distractors": [
+      "600 metres",
+      "700 metres",
+      "750 metres",
+      "900 metres",
+      "1,000 metres",
+      "500 metres",
+      "650 metres",
+      "850 metres"
+    ],
+    "acceptableAnswers": [
+      "828 metres",
+      "828m",
+      "2717 feet",
+      "2,717 ft"
+    ],
+    "explanation": "The Burj Khalifa was designed by Skidmore, Owings & Merrill (SOM) and completed in 2010. At 828 m, it surpassed the previous record holder, Taipei 101 (509 m), by an enormous margin. It has 163 floors and took 22 million person-hours to build.",
+    "wowFactor": "The Burj Khalifa is so tall that you can watch the sunset twice in one evening — once from the ground, then again by riding the elevator to the top.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How tall is the Burj Khalifa in Dubai?",
+        "answer": "828 metres",
+        "distractors": [
+          "600 metres",
+          "750 metres",
+          "1,000 metres"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The world's tallest building at 828 metres, completed in 2010, stands in which city?",
+        "answer": "Dubai",
+        "distractors": [
+          "Abu Dhabi",
+          "Shanghai",
+          "New York"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Burj Khalifa is 1,000 metres tall.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Burj Khalifa stands ___ metres tall, making it the world's tallest building.",
+        "answer": "828",
+        "distractors": [
+          "600",
+          "750",
+          "900"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Burj_Khalifa",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The sleek tapering spire of the Burj Khalifa piercing golden clouds above the Dubai skyline at sunset, pixel art style.",
+    "tags": [
+      "Burj Khalifa",
+      "Dubai",
+      "architecture",
+      "skyscraper",
+      "engineering"
+    ]
+  },
+  {
+    "id": "art-eiffel-tower-temporary",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "historic_buildings",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "historic_buildings",
+    "categoryL3": "",
+    "statement": "The Eiffel Tower was built as a temporary structure for the 1889 World's Fair and was originally planned for demolition after 20 years.",
+    "quizQuestion": "The Eiffel Tower was originally planned to be demolished after how many years?",
+    "correctAnswer": "20 years",
+    "distractors": [
+      "5 years",
+      "10 years",
+      "30 years",
+      "50 years",
+      "2 years",
+      "100 years",
+      "15 years",
+      "25 years"
+    ],
+    "acceptableAnswers": [
+      "20 years",
+      "twenty years"
+    ],
+    "explanation": "Built for the 1889 Exposition Universelle in Paris, the Eiffel Tower was controversially granted only a 20-year permit. It was saved from demolition because its iron lattice structure proved invaluable for wireless telegraphy antennas — technology Gustave Eiffel actively promoted.",
+    "wowFactor": "The world's most iconic structure was saved from demolition by a radio antenna — Gustave Eiffel turned it into a communications tower and the city couldn't bear to tear it down.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "The Eiffel Tower's original permit was for how many years before planned demolition?",
+        "answer": "20 years",
+        "distractors": [
+          "5 years",
+          "10 years",
+          "50 years"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Eiffel Tower was saved from demolition after 1909 because it was useful for what technology?",
+        "answer": "Wireless telegraphy",
+        "distractors": [
+          "Steam engines",
+          "Photography",
+          "Hydraulic lifts"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Eiffel Tower was designed as a permanent landmark from the beginning.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Eiffel Tower was originally given a ___ -year permit, after which demolition was planned.",
+        "answer": "20",
+        "distractors": [
+          "5",
+          "10",
+          "50"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Eiffel_Tower#History",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 1889 Paris Exposition scene with the newly built Eiffel Tower surrounded by fair pavilions, a demolition notice posted in the foreground, pixel art style.",
+    "tags": [
+      "Eiffel Tower",
+      "Paris",
+      "architecture",
+      "history",
+      "1889"
+    ]
+  },
+  {
+    "id": "art-eiffel-tower-iron-expansion",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "historic_buildings",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "historic_buildings",
+    "categoryL3": "",
+    "statement": "The Eiffel Tower grows up to 15 cm taller in summer because the iron expands in heat.",
+    "quizQuestion": "Why does the Eiffel Tower grow up to 15 cm taller in summer?",
+    "correctAnswer": "Iron expands with heat",
+    "distractors": [
+      "It sinks less in winter",
+      "The antenna extends",
+      "Humidity swells the metal",
+      "Lightning rods raise",
+      "Sand shifts under foundations",
+      "Cables tighten in warmth",
+      "Wind pressure lifts it",
+      "Rust causes swelling"
+    ],
+    "acceptableAnswers": [
+      "Iron expands with heat",
+      "thermal expansion",
+      "metal expands in heat"
+    ],
+    "explanation": "Iron has a thermal expansion coefficient of about 12 ppm/°C. The Eiffel Tower is 300 m of structural iron. A temperature swing of ~40°C from winter to summer (Paris can see –5°C to +35°C) causes approximately 15 cm of height change due to thermal expansion.",
+    "wowFactor": "The Eiffel Tower is essentially a thermometer — it's 15 cm shorter in winter than in summer, its iron frame shrinking and swelling with every season.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What physical phenomenon makes the Eiffel Tower up to 15 cm taller in summer?",
+        "answer": "Thermal expansion of iron",
+        "distractors": [
+          "Humidity swells metal",
+          "Antenna extension",
+          "Wind pressure lifts it"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Thermal expansion causes the Eiffel Tower to grow by up to 15 cm due to what season?",
+        "answer": "Summer",
+        "distractors": [
+          "Winter",
+          "Spring",
+          "Autumn"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Eiffel Tower stays exactly the same height year-round.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Eiffel Tower grows up to 15 cm taller in summer because iron ___ in heat.",
+        "answer": "Expands",
+        "distractors": [
+          "Contracts",
+          "Softens",
+          "Warps"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Eiffel_Tower#Structure",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A side-by-side Eiffel Tower comparison showing a shorter winter version and a taller summer version with a 15 cm gap indicator, pixel art style.",
+    "tags": [
+      "Eiffel Tower",
+      "thermal expansion",
+      "physics",
+      "iron",
+      "architecture"
+    ]
+  },
+  {
+    "id": "art-eiffel-tower-paint",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "historic_buildings",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "historic_buildings",
+    "categoryL3": "",
+    "statement": "The Eiffel Tower is repainted every 7 years — a job requiring 60 tonnes of paint and a team of 25 painters for 18 months.",
+    "quizQuestion": "How often is the Eiffel Tower repainted?",
+    "correctAnswer": "Every 7 years",
+    "distractors": [
+      "Every year",
+      "Every 3 years",
+      "Every 10 years",
+      "Every 20 years",
+      "Every 50 years",
+      "Every 5 years",
+      "Every 2 years",
+      "Every 15 years"
+    ],
+    "acceptableAnswers": [
+      "Every 7 years",
+      "every seven years"
+    ],
+    "explanation": "The Eiffel Tower's iron must be protected from rust. Painters apply 60 tonnes of paint in three shades of 'Eiffel Tower Brown' (lighter at the top to give an illusion of uniformity in varying light) over 18 months, using 1,500 individual paint brushes.",
+    "wowFactor": "The Eiffel Tower is painted in three different shades of brown — darker at the bottom, lighter at the top — to trick the eye into seeing a uniform colour.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How frequently must the Eiffel Tower be repainted to prevent rust?",
+        "answer": "Every 7 years",
+        "distractors": [
+          "Every 3 years",
+          "Every 10 years",
+          "Every year"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Repainting the Eiffel Tower every 7 years requires approximately how many tonnes of paint?",
+        "answer": "60 tonnes",
+        "distractors": [
+          "5 tonnes",
+          "20 tonnes",
+          "100 tonnes"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Eiffel Tower is painted a single uniform shade of brown.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Eiffel Tower requires ___ of paint every 7 years to prevent corrosion.",
+        "answer": "60 tonnes",
+        "distractors": [
+          "5 tonnes",
+          "20 tonnes",
+          "150 tonnes"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Eiffel_Tower#Paint",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A worker in a harness applying brown paint to the iron latticework of the Eiffel Tower at dizzying height, Paris spread below, pixel art style.",
+    "tags": [
+      "Eiffel Tower",
+      "maintenance",
+      "paint",
+      "Paris",
+      "architecture"
+    ]
+  },
+  {
+    "id": "art-surrealism-manifesto",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "modern_contemporary",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "modern_contemporary",
+    "categoryL3": "",
+    "statement": "Surrealism was founded in Paris in 1924 when poet André Breton published the Surrealist Manifesto, inspired by Freud's theories of the unconscious.",
+    "quizQuestion": "Who published the Surrealist Manifesto that launched the movement in 1924?",
+    "correctAnswer": "André Breton",
+    "distractors": [
+      "Salvador Dalí",
+      "Max Ernst",
+      "René Magritte",
+      "Giorgio de Chirico",
+      "Joan Miró",
+      "Man Ray",
+      "Luis Buñuel",
+      "Louis Aragon"
+    ],
+    "acceptableAnswers": [
+      "André Breton",
+      "Andre Breton",
+      "Breton"
+    ],
+    "explanation": "André Breton (1896–1966) published the Manifeste du surréalisme in October 1924 in Paris. Drawing on Freud's psychoanalytic theories, he defined Surrealism as 'pure psychic automatism' — creating art from the unfiltered unconscious mind, bypassing rational thought.",
+    "wowFactor": "Surrealism — one of the most influential art movements ever — was launched not by a painter but by a poet who'd worked as a psychiatric nurse in WWI.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who founded Surrealism by publishing its manifesto in Paris in 1924?",
+        "answer": "André Breton",
+        "distractors": [
+          "Salvador Dalí",
+          "Max Ernst",
+          "René Magritte"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "André Breton's 1924 Surrealist Manifesto was inspired by which psychologist's theories of the unconscious?",
+        "answer": "Sigmund Freud",
+        "distractors": [
+          "Carl Jung",
+          "Ivan Pavlov",
+          "William James"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Salvador Dalí founded Surrealism by writing the first Surrealist Manifesto.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Surrealist Manifesto was published in 1924 by poet ___, founding the movement.",
+        "answer": "André Breton",
+        "distractors": [
+          "Salvador Dalí",
+          "René Magritte",
+          "Joan Miró"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Surrealism",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Paris café scene in 1924 with a poet reading a dramatic manifesto to a circle of wide-eyed artists, dreamlike images floating overhead, pixel art style.",
+    "tags": [
+      "Surrealism",
+      "André Breton",
+      "art movement",
+      "Freud",
+      "1924"
+    ]
+  },
+  {
+    "id": "art-surrealism-dali-melting-clocks",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "modern_contemporary",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "modern_contemporary",
+    "categoryL3": "",
+    "statement": "Salvador Dalí's 'The Persistence of Memory' (1931) features melting clocks — reportedly inspired by watching Camembert cheese melt in the sun.",
+    "quizQuestion": "What everyday object allegedly inspired the melting clocks in Dalí's most famous painting?",
+    "correctAnswer": "Melting Camembert cheese",
+    "distractors": [
+      "Melting candle wax",
+      "Clocks stopped in sunlight",
+      "A dream about time",
+      "A broken pocket watch",
+      "Bacon left in the sun",
+      "Einstein's relativity paper",
+      "Surrealist automatic writing",
+      "A melting candle wax drip"
+    ],
+    "acceptableAnswers": [
+      "Melting Camembert cheese",
+      "Camembert cheese",
+      "melting cheese"
+    ],
+    "explanation": "Dalí claimed the image of melting clocks came to him while staring at a piece of melting Camembert cheese after finishing lunch. He painted The Persistence of Memory in approximately two hours while his wife Gala was out.",
+    "wowFactor": "One of the most analyzed paintings in art history — examined for Freudian symbolism and Einstein's relativity — was literally inspired by a piece of warm cheese.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What mundane food gave Dalí the idea for the melting clocks in 'The Persistence of Memory'?",
+        "answer": "Camembert cheese",
+        "distractors": [
+          "Candle wax",
+          "Melting butter",
+          "Softened bread"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The melting clocks in Dalí's 'The Persistence of Memory' were reportedly inspired by observing what?",
+        "answer": "Camembert cheese melting",
+        "distractors": [
+          "A clock left in the sun",
+          "A dream",
+          "Einstein's equations"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Dalí said the melting clocks were inspired by reading Einstein's theory of relativity.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Dalí said melting ___ cheese inspired the dripping clocks in 'The Persistence of Memory'.",
+        "answer": "Camembert",
+        "distractors": [
+          "Cheddar",
+          "Brie",
+          "Gruyère"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Persistence_of_Memory",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Dalí in his signature waxed moustache staring at a piece of melting cheese on a cliff, dreamy clocks dripping in the background, pixel art style.",
+    "tags": [
+      "Surrealism",
+      "Dalí",
+      "Persistence of Memory",
+      "cheese",
+      "art history"
+    ]
+  },
+  {
+    "id": "art-surrealism-magritte-pipe",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "modern_contemporary",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "modern_contemporary",
+    "categoryL3": "",
+    "statement": "René Magritte's 'The Treachery of Images' (1929) shows a pipe with the caption 'Ceci n'est pas une pipe' — 'This is not a pipe.'",
+    "quizQuestion": "What French phrase accompanies the pipe in Magritte's 'The Treachery of Images'?",
+    "correctAnswer": "Ceci n'est pas une pipe",
+    "distractors": [
+      "Je pense donc je suis",
+      "L'art pour l'art",
+      "Vive la liberté",
+      "Liberté, Égalité, Fraternité",
+      "C'est la vie",
+      "Tout est possible",
+      "Rien n'est réel",
+      "Voilà une pipe"
+    ],
+    "acceptableAnswers": [
+      "Ceci n'est pas une pipe",
+      "This is not a pipe"
+    ],
+    "explanation": "Magritte's painting depicts a realistic pipe beneath the handwritten text 'Ceci n'est pas une pipe' (This is not a pipe). The paradox is deliberate: the painting is indeed NOT a pipe — it is a representation of a pipe. It explores the gap between objects and their images.",
+    "wowFactor": "Magritte's most famous painting is technically correct — it really is not a pipe. You can't fill it with tobacco, and that's the entire point.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does the caption on Magritte's pipe painting 'The Treachery of Images' say in French?",
+        "answer": "Ceci n'est pas une pipe",
+        "distractors": [
+          "Je pense donc je suis",
+          "L'art pour l'art",
+          "C'est la vie"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The phrase 'Ceci n'est pas une pipe' (This is not a pipe) appears on which Surrealist painting?",
+        "answer": "The Treachery of Images",
+        "distractors": [
+          "The Persistence of Memory",
+          "Son of Man",
+          "The False Mirror"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Magritte's famous painting caption says 'This is a pipe.'",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Magritte's painting of a pipe carries the caption '___ n'est pas une pipe.'",
+        "answer": "Ceci",
+        "distractors": [
+          "Je",
+          "Il",
+          "Ça"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Treachery_of_Images",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A precisely rendered tobacco pipe floating on a plain canvas with cursive French text below it, in Magritte's clean oil-paint style, pixel art version.",
+    "tags": [
+      "Surrealism",
+      "Magritte",
+      "Treachery of Images",
+      "philosophy",
+      "art history"
+    ]
+  },
+  {
+    "id": "art-reagan-actor-president",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "museums_institutions",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "museums_institutions",
+    "categoryL3": "",
+    "statement": "Ronald Reagan appeared in 53 films from 1937 to 1964 before becoming the 40th President of the United States in 1981.",
+    "quizQuestion": "In how many films did Ronald Reagan appear before becoming president?",
+    "correctAnswer": "53 films",
+    "distractors": [
+      "10 films",
+      "25 films",
+      "38 films",
+      "70 films",
+      "100 films",
+      "5 films",
+      "45 films",
+      "60 films"
+    ],
+    "acceptableAnswers": [
+      "53 films",
+      "53 movies",
+      "over 50 films"
+    ],
+    "explanation": "Ronald Reagan (1911–2004) built a Hollywood career at Warner Bros. from 1937, appearing in films like Knute Rockne — All American (1940). His acting experience — particularly television work on Death Valley Days — is credited with shaping his communication and public performance skills as president.",
+    "wowFactor": "The man who commanded the world's largest nuclear arsenal once starred in a movie where his most famous line was spoken by a chimpanzee co-star.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many films did Ronald Reagan make before entering politics?",
+        "answer": "53 films",
+        "distractors": [
+          "10 films",
+          "38 films",
+          "70 films"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Ronald Reagan transitioned from a 53-film acting career to become which number US president?",
+        "answer": "40th",
+        "distractors": [
+          "38th",
+          "42nd",
+          "35th"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ronald Reagan made fewer than 10 films before entering politics.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ronald Reagan starred in ___ films between 1937 and 1964 before becoming president.",
+        "answer": "53",
+        "distractors": [
+          "25",
+          "70",
+          "10"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ronald_Reagan#Acting_career",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Political figure — present facts without partisan framing.",
+    "visualDescription": "A 1940s Hollywood film set with a young Ronald Reagan in costume beside a movie camera, studio lights blazing overhead, pixel art style.",
+    "tags": [
+      "Reagan",
+      "actor",
+      "president",
+      "Hollywood",
+      "American history"
+    ]
+  },
+  {
+    "id": "art-reagan-bedtime-bonzo",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "museums_institutions",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "museums_institutions",
+    "categoryL3": "",
+    "statement": "Ronald Reagan's most mocked film role was sharing the screen with a chimpanzee in 'Bedtime for Bonzo' (1951).",
+    "quizQuestion": "Which 1951 film had Ronald Reagan co-starring with a chimpanzee named Bonzo?",
+    "correctAnswer": "Bedtime for Bonzo",
+    "distractors": [
+      "Knute Rockne All American",
+      "Kings Row",
+      "The Killers",
+      "Storm Warning",
+      "Death Valley Days",
+      "The Last Outpost",
+      "Stallion Road",
+      "Devil and Daniel Webster"
+    ],
+    "acceptableAnswers": [
+      "Bedtime for Bonzo"
+    ],
+    "explanation": "In 'Bedtime for Bonzo' (1951), Reagan played a psychology professor raising a chimpanzee to test nature vs. nurture theories. The film became a punchline when he entered politics — opponents used it to question his gravitas.",
+    "wowFactor": "Reagan's opponents spent years mocking 'Bedtime for Bonzo' — but the man who played babysitter to a chimp went on to end the Cold War.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which 1951 film did Ronald Reagan co-star with a chimpanzee?",
+        "answer": "Bedtime for Bonzo",
+        "distractors": [
+          "Knute Rockne All American",
+          "Kings Row",
+          "The Killers"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The film 'Bedtime for Bonzo' features which future US president co-starring with a chimp?",
+        "answer": "Ronald Reagan",
+        "distractors": [
+          "Jimmy Carter",
+          "Gerald Ford",
+          "Richard Nixon"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ronald Reagan played a cowboy alongside a chimpanzee in 'Bedtime for Bonzo.'",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "'Bedtime for Bonzo' featured Ronald Reagan as a psychology professor raising a ___.",
+        "answer": "Chimpanzee",
+        "distractors": [
+          "Dog",
+          "Gorilla",
+          "Parrot"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bedtime_for_Bonzo",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Political figure — factual, not critical in tone.",
+    "visualDescription": "A 1950s movie poster style image showing Reagan in a professor's jacket holding a small chimpanzee, pixel art style with retro colour palette.",
+    "tags": [
+      "Reagan",
+      "Bedtime for Bonzo",
+      "Hollywood",
+      "chimpanzee",
+      "film"
+    ]
+  },
+  {
+    "id": "art-reagan-communications-style",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "museums_institutions",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "museums_institutions",
+    "categoryL3": "",
+    "statement": "Ronald Reagan's acting training made him famous for speaking directly to the camera — he was nicknamed 'The Great Communicator.'",
+    "quizQuestion": "What nickname did Ronald Reagan earn for his camera-focused communication style?",
+    "correctAnswer": "The Great Communicator",
+    "distractors": [
+      "The Gipper",
+      "The Cowboy",
+      "The Telegenic",
+      "The Screen Actor",
+      "The Persuader",
+      "The Hollywood President",
+      "The Silver Fox",
+      "The Communicator"
+    ],
+    "acceptableAnswers": [
+      "The Great Communicator"
+    ],
+    "explanation": "Reagan's nickname 'The Great Communicator' came from his remarkable ability to use television's intimacy — developed over decades of film and TV acting — to speak directly and personally to millions of viewers simultaneously. He understood the camera in ways most politicians did not.",
+    "wowFactor": "Reagan's most powerful political weapon was something he learned from movie directors: how to make a camera feel like a personal conversation with a friend.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What nickname reflected Ronald Reagan's extraordinary television communication skills?",
+        "answer": "The Great Communicator",
+        "distractors": [
+          "The Gipper",
+          "The Cowboy",
+          "The Telegenic"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The nickname 'The Great Communicator' reflected Reagan's skill with which medium?",
+        "answer": "Television",
+        "distractors": [
+          "Newspapers",
+          "Radio",
+          "Public speaking"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Reagan's nickname was 'The Cowboy' due to his Western film roles.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ronald Reagan's acting background earned him the nickname 'The Great ___.'",
+        "answer": "Communicator",
+        "distractors": [
+          "Performer",
+          "Cowboy",
+          "Negotiator"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ronald_Reagan",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Political figure — factual, not partisan.",
+    "visualDescription": "A confident figure in a suit addressing the camera from behind an Oval Office desk, an American flag and confident gaze, pixel art style.",
+    "tags": [
+      "Reagan",
+      "Great Communicator",
+      "television",
+      "rhetoric",
+      "politics"
+    ]
+  },
+  {
+    "id": "art-oscars-engraved-name",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "painting_visual",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "painting_visual",
+    "categoryL3": "",
+    "statement": "The Oscar statuette depicts a knight holding a crusader sword, and winners' names are not engraved at the ceremony — they must send their statuette back to have it done.",
+    "quizQuestion": "When is a winner's name engraved on their Oscar statuette?",
+    "correctAnswer": "After the ceremony",
+    "distractors": [
+      "During the ceremony",
+      "Before the ceremony",
+      "On stage as they accept",
+      "At the after-party",
+      "The next morning",
+      "One week after",
+      "Names are pre-engraved",
+      "Six months after"
+    ],
+    "acceptableAnswers": [
+      "After the ceremony",
+      "after they mail it back"
+    ],
+    "explanation": "Oscar winners receive blank statuettes at the ceremony. They must mail their statuette to R.S. Owens & Company in Chicago, who engrave the winner's name, category, and year. Winners get their personalised Oscar weeks after the ceremony.",
+    "wowFactor": "Every Oscar winner leaves the ceremony clutching a blank statuette — their name doesn't go on it until they mail it away weeks later.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "When is a winner's name actually engraved on an Academy Award statuette?",
+        "answer": "After the ceremony",
+        "distractors": [
+          "During the ceremony",
+          "Before the ceremony",
+          "On stage as they accept"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Oscar winners must send their blank statuette to which company to have their name engraved?",
+        "answer": "R.S. Owens & Company",
+        "distractors": [
+          "Tiffany & Co.",
+          "The Academy offices",
+          "A Los Angeles jeweller"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Oscar statuettes are engraved with the winner's name before the ceremony.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Oscar winners receive blank statuettes at the ceremony; names are engraved ___ the event.",
+        "answer": "After",
+        "distractors": [
+          "Before",
+          "During",
+          "One year after"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Academy_Award#Statuette",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glamorous actor holding a blank golden statuette at a podium, a thought bubble showing their name being engraved weeks later, pixel art style.",
+    "tags": [
+      "Oscars",
+      "Academy Awards",
+      "film",
+      "statuette",
+      "trivia"
+    ]
+  },
+  {
+    "id": "art-oscars-name-origin",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "painting_visual",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "painting_visual",
+    "categoryL3": "",
+    "statement": "The Oscar statuette was reportedly nicknamed 'Oscar' by Academy librarian Margaret Herrick in 1931, who said it resembled her uncle Oscar.",
+    "quizQuestion": "Who reportedly gave the Academy Award statuette its famous 'Oscar' nickname?",
+    "correctAnswer": "Margaret Herrick",
+    "distractors": [
+      "Bette Davis",
+      "Walt Disney",
+      "Louis B. Mayer",
+      "Cecil B. DeMille",
+      "Mary Pickford",
+      "Douglas Fairbanks",
+      "David O. Selznick",
+      "Katharine Hepburn"
+    ],
+    "acceptableAnswers": [
+      "Margaret Herrick"
+    ],
+    "explanation": "Academy librarian (later executive director) Margaret Herrick reportedly remarked in 1931 that the statuette looked like her uncle Oscar. A columnist overheard the comment, printed it, and the nickname stuck — although this origin story has been disputed over the years.",
+    "wowFactor": "The most coveted trophy in cinema is named after a woman's uncle — a nickname born from a casual comment overheard by a gossip columnist in 1931.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who reportedly nicknamed the Academy Award statuette 'Oscar' in 1931?",
+        "answer": "Margaret Herrick",
+        "distractors": [
+          "Bette Davis",
+          "Walt Disney",
+          "Louis B. Mayer"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Margaret Herrick said the statuette looked like her uncle Oscar — she was the Academy's what?",
+        "answer": "Librarian",
+        "distractors": [
+          "President",
+          "CEO",
+          "Publicist"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: 'Oscar' is an acronym for the Academy's founding members.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Oscar statuette was nicknamed after ___ Herrick's uncle, according to popular legend.",
+        "answer": "Margaret",
+        "distractors": [
+          "Bette",
+          "Mary",
+          "Cecil"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Academy_Award#Name_and_nickname",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 1930s Hollywood library scene with a woman looking at the statuette with a surprised expression, a gossip columnist eavesdropping nearby, pixel art style.",
+    "tags": [
+      "Oscars",
+      "Academy Awards",
+      "Margaret Herrick",
+      "trivia",
+      "film history"
+    ]
+  },
+  {
+    "id": "art-oscars-telethon-origin",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "painting_visual",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "painting_visual",
+    "categoryL3": "",
+    "statement": "The Academy Awards ceremony was first televised in 1953 — NBC broadcast the event live, and it was watched by an estimated 30 million viewers.",
+    "quizQuestion": "In which year were the Academy Awards first broadcast on television?",
+    "correctAnswer": "1953",
+    "distractors": [
+      "1929",
+      "1939",
+      "1945",
+      "1960",
+      "1965",
+      "1948",
+      "1970",
+      "1950"
+    ],
+    "acceptableAnswers": [
+      "1953"
+    ],
+    "explanation": "The 25th Academy Awards ceremony in March 1953 was the first to be televised, broadcast by NBC from two venues simultaneously (Hollywood and New York). The telecast attracted approximately 30 million viewers, transforming the Oscars from an industry dinner into a national cultural event.",
+    "wowFactor": "The Oscars had been held for 25 years before anyone outside the industry could watch — the 1953 TV broadcast created the mass spectacle we know today.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "When were the Academy Awards first broadcast on television?",
+        "answer": "1953",
+        "distractors": [
+          "1939",
+          "1945",
+          "1960"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "NBC's 1953 Oscars telecast attracted roughly how many TV viewers?",
+        "answer": "30 million",
+        "distractors": [
+          "1 million",
+          "5 million",
+          "100 million"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Academy Awards were televised for the first time in 1939.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Academy Awards ceremony was first broadcast on television in ___ by NBC.",
+        "answer": "1953",
+        "distractors": [
+          "1939",
+          "1945",
+          "1960"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/25th_Academy_Awards",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 1953 living room with a family gathered around a black-and-white TV showing the Oscars ceremony, excitement on their faces, pixel art style.",
+    "tags": [
+      "Oscars",
+      "Academy Awards",
+      "television",
+      "1953",
+      "NBC",
+      "film history"
+    ]
+  },
+  {
+    "id": "art-fashion-paris-couture",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "sculpture_decorative",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "sculpture_decorative",
+    "categoryL3": "",
+    "statement": "Paris became the global capital of fashion in the 17th century when Louis XIV weaponised French luxury goods to dominate European trade.",
+    "quizQuestion": "Which French king made Paris the fashion capital?",
+    "correctAnswer": "Louis XIV",
+    "distractors": [
+      "Louis XV",
+      "Louis XVI",
+      "Napoleon Bonaparte",
+      "Francis I",
+      "Henri IV",
+      "Charles VII",
+      "Philippe IV",
+      "Cardinal Richelieu"
+    ],
+    "acceptableAnswers": [
+      "Louis XIV",
+      "Louis the Fourteenth",
+      "Louis 14"
+    ],
+    "explanation": "Louis XIV (1638–1715), advised by Colbert, deliberately cultivated French silk, lace, glassware, and fashion as economic and soft power tools. The king himself wore extravagant clothing to signal French superiority, making Paris the aspirational fashion destination for all European courts.",
+    "wowFactor": "Paris became the world's fashion capital because a king weaponised clothing as geopolitical strategy — Louis XIV used what he wore to dominate European politics.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which French king strategically used luxury fashion to make Paris the global style capital?",
+        "answer": "Louis XIV",
+        "distractors": [
+          "Louis XVI",
+          "Napoleon Bonaparte",
+          "Francis I"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Louis XIV used French silk and fashion as geopolitical tools with advice from which minister?",
+        "answer": "Colbert",
+        "distractors": [
+          "Richelieu",
+          "Mazarin",
+          "Fouquet"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Paris became a fashion capital in the 20th century with Chanel and Dior.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Louis XIV made Paris the fashion capital in the ___ century by using luxury goods as soft power.",
+        "answer": "17th",
+        "distractors": [
+          "18th",
+          "19th",
+          "16th"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/History_of_fashion_design#France",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Louis XIV in an ornate embroidered coat and tall wig, surrounded by silk merchants and lace-makers at Versailles, pixel art style.",
+    "tags": [
+      "fashion",
+      "Louis XIV",
+      "Paris",
+      "French history",
+      "luxury",
+      "17th century"
+    ]
+  },
+  {
+    "id": "art-fashion-haute-couture-rules",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "sculpture_decorative",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "sculpture_decorative",
+    "categoryL3": "",
+    "statement": "To legally use the term 'haute couture', a fashion house must be registered in Paris and present at least 50 original designs per year.",
+    "quizQuestion": "How many designs must a Paris fashion house show yearly for haute couture?",
+    "correctAnswer": "50 designs",
+    "distractors": [
+      "10 designs",
+      "20 designs",
+      "30 designs",
+      "100 designs",
+      "5 designs",
+      "75 designs",
+      "200 designs",
+      "40 designs"
+    ],
+    "acceptableAnswers": [
+      "50 designs",
+      "at least 50",
+      "50 outfits"
+    ],
+    "explanation": "The Chambre Syndicale de la Haute Couture in Paris defines strict criteria: a house must be based in Paris, employ at least 15 full-time staff in its workrooms, and present a collection of at least 50 original day and evening looks each January and July.",
+    "wowFactor": "The term 'haute couture' is legally protected like a wine appellation — only about 15 houses in the world qualify, and most people have never seen their actual clothes.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many original designs must a Paris fashion house present to qualify for haute couture status?",
+        "answer": "50 designs",
+        "distractors": [
+          "10 designs",
+          "100 designs",
+          "20 designs"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The term haute couture is legally regulated by which Parisian body?",
+        "answer": "Chambre Syndicale",
+        "distractors": [
+          "The Louvre",
+          "French Ministry",
+          "Paris Fashion Week"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Any fashion house anywhere in the world can legally call their clothes haute couture.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A fashion house must present ___ original designs twice yearly to qualify as haute couture.",
+        "answer": "50",
+        "distractors": [
+          "10",
+          "100",
+          "200"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Haute_couture",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A meticulous Parisian atelier scene with seamstresses handstitching an elaborate gown, fashion sketches pinned to every wall, pixel art style.",
+    "tags": [
+      "fashion",
+      "haute couture",
+      "Paris",
+      "design",
+      "luxury"
+    ]
+  },
+  {
+    "id": "art-fashion-fast-fashion-impact",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "sculpture_decorative",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "sculpture_decorative",
+    "categoryL3": "",
+    "statement": "The fashion industry produces about 10% of global carbon emissions — more than aviation and shipping combined.",
+    "quizQuestion": "The fashion industry produces roughly what share of global carbon emissions?",
+    "correctAnswer": "10%",
+    "distractors": [
+      "1%",
+      "3%",
+      "5%",
+      "15%",
+      "20%",
+      "25%",
+      "2%",
+      "7%"
+    ],
+    "acceptableAnswers": [
+      "10%",
+      "about 10 percent",
+      "around 10%"
+    ],
+    "explanation": "The United Nations Environment Programme estimates the fashion industry accounts for approximately 10% of annual global carbon emissions, due to energy-intensive manufacturing, global supply chains, chemical dyeing (20% of industrial water pollution), and the rise of fast fashion driving disposability.",
+    "wowFactor": "Buying a single pair of jeans uses as much water as one person drinks over 10 years — fashion's environmental impact dwarfs that of flying or shipping.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What share of global carbon emissions does the fashion industry produce, per the UN?",
+        "answer": "About 10%",
+        "distractors": [
+          "About 1%",
+          "About 3%",
+          "About 20%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The fashion industry's carbon emissions exceed those of which two other industries combined?",
+        "answer": "Aviation and shipping",
+        "distractors": [
+          "Agriculture and fishing",
+          "Mining and cement",
+          "Oil and gas"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Fashion's carbon emissions are less than 1% of global output.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The fashion industry produces about ___ of global carbon emissions — more than aviation and shipping combined.",
+        "answer": "10%",
+        "distractors": [
+          "1%",
+          "3%",
+          "25%"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Environmental_impact_of_fashion",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A factory chimney shaped like a dress collar puffing dark smoke, with aviation and shipping icons shown as smaller beside it, pixel art style.",
+    "tags": [
+      "fashion",
+      "environment",
+      "carbon emissions",
+      "fast fashion",
+      "sustainability"
+    ]
+  },
+  {
+    "id": "art-mozart-child-prodigy",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "architectural_styles",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "architectural_styles",
+    "categoryL3": "",
+    "statement": "Wolfgang Amadeus Mozart composed his first symphony at age 8 and had written over 600 works by the time he died at 35.",
+    "quizQuestion": "How old was Mozart when he composed his first symphony?",
+    "correctAnswer": "8 years old",
+    "distractors": [
+      "4 years old",
+      "6 years old",
+      "10 years old",
+      "12 years old",
+      "14 years old",
+      "16 years old",
+      "18 years old",
+      "20 years old"
+    ],
+    "acceptableAnswers": [
+      "8 years old",
+      "8",
+      "age 8"
+    ],
+    "explanation": "Mozart composed Symphony No. 1 in E-flat major (K. 16) in 1764–65 at age 8 while in London. He had already been performing publicly at age 5 and composing minuets at age 4. By his death in 1791 at 35, he had produced over 600 catalogued works across every genre.",
+    "wowFactor": "Mozart composed his first full symphony at 8 — an age when most children are learning multiplication tables — and died having written more music than most composers produce in a full 80-year lifetime.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "At what age did Mozart compose his first symphony?",
+        "answer": "8 years old",
+        "distractors": [
+          "4 years old",
+          "12 years old",
+          "16 years old"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Mozart died at 35 having written over 600 works; his first symphony was at what age?",
+        "answer": "8 years old",
+        "distractors": [
+          "4 years old",
+          "12 years old",
+          "18 years old"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mozart composed his first symphony at age 14.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mozart composed his first symphony at age ___ while on tour in London.",
+        "answer": "8",
+        "distractors": [
+          "4",
+          "12",
+          "16"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wolfgang_Amadeus_Mozart",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A tiny 8-year-old Mozart in powdered wig and velvet coat scribbling musical notation by candlelight in a London drawing room, pixel art style.",
+    "tags": [
+      "Mozart",
+      "music",
+      "prodigy",
+      "classical",
+      "symphony"
+    ]
+  },
+  {
+    "id": "art-mozart-kochel-catalogue",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "architectural_styles",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "architectural_styles",
+    "categoryL3": "",
+    "statement": "Mozart's works are catalogued by 'K numbers' — compiled by Ludwig von Köchel in 1862 into the first complete systematic catalogue of a composer's output.",
+    "quizQuestion": "What letter prefix is used to catalogue Mozart's works?",
+    "correctAnswer": "K (Köchel)",
+    "distractors": [
+      "M (Mozart)",
+      "W (Wolfgang)",
+      "A (Amadeus)",
+      "Op. (Opus)",
+      "B (Bach)",
+      "H (Haydn)",
+      "S (Salieri)",
+      "J (Johann)"
+    ],
+    "acceptableAnswers": [
+      "K",
+      "K number",
+      "Köchel",
+      "KV"
+    ],
+    "explanation": "Ludwig von Köchel (1800–1877) spent years cataloguing all of Mozart's known works in roughly chronological order, publishing the Köchel-Verzeichnis (KV) in 1862. Every Mozart piece has a K number — from K. 1 (a minuet he wrote at age 5) to K. 626 (his unfinished Requiem).",
+    "wowFactor": "An Austrian botanist who knew nothing about composing created the definitive catalogue of Mozart's music in retirement — a labour of love that every musician still uses today.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What letter prefix identifies Mozart's works in the Köchel catalogue?",
+        "answer": "K",
+        "distractors": [
+          "M",
+          "W",
+          "Op."
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Ludwig von Köchel published in 1862 the first systematic catalogue of which composer's works?",
+        "answer": "Mozart",
+        "distractors": [
+          "Beethoven",
+          "Haydn",
+          "Schubert"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mozart's works are catalogued using 'Op.' (Opus) numbers.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mozart's works are identified by ___ numbers, from the Köchel catalogue published in 1862.",
+        "answer": "K",
+        "distractors": [
+          "Op.",
+          "M",
+          "W"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/K%C3%B6chel_catalogue",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Victorian scholar surrounded by towering stacks of musical manuscript pages, quill in hand, writing 'K. 1' in an enormous leather-bound ledger, pixel art style.",
+    "tags": [
+      "Mozart",
+      "Köchel catalogue",
+      "music",
+      "classical",
+      "cataloguing"
+    ]
+  },
+  {
+    "id": "art-mickiewicz-pan-tadeusz",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "engineering_design",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "engineering_design",
+    "categoryL3": "",
+    "statement": "Adam Mickiewicz's 'Pan Tadeusz' (1834) is considered the national epic of Poland, written in exile in Paris after the failed 1830 uprising.",
+    "quizQuestion": "Which work by Adam Mickiewicz is considered Poland's national epic?",
+    "correctAnswer": "Pan Tadeusz",
+    "distractors": [
+      "Dziady",
+      "Konrad Wallenrod",
+      "Ballads and Romances",
+      "Forefathers' Eve",
+      "The Books of the Polish Nation",
+      "Crimean Sonnets",
+      "Grażyna",
+      "Forefathers Eve Part III"
+    ],
+    "acceptableAnswers": [
+      "Pan Tadeusz"
+    ],
+    "explanation": "Pan Tadeusz (1834) is an epic poem of over 10,000 lines, set in the Lithuanian countryside of Mickiewicz's childhood. Written while in exile in Paris after the failed November Uprising of 1830, it became the defining literary expression of Polish national identity during a period when Poland did not exist as a state.",
+    "wowFactor": "Poland's national epic was written in Paris by a poet living in exile in a country that didn't officially exist — and it begins with a cry for Lithuania.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Adam Mickiewicz's national epic of Poland, written in Paris exile in 1834, is called what?",
+        "answer": "Pan Tadeusz",
+        "distractors": [
+          "Dziady",
+          "Konrad Wallenrod",
+          "Grażyna"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "'Pan Tadeusz' was written in Paris exile after Poland's failed uprising in which year?",
+        "answer": "1830",
+        "distractors": [
+          "1848",
+          "1863",
+          "1905"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pan Tadeusz was written while Mickiewicz was living in Warsaw.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mickiewicz wrote 'Pan Tadeusz' in ___ exile in 1834, making it Poland's national epic.",
+        "answer": "Paris",
+        "distractors": [
+          "London",
+          "Vienna",
+          "Rome"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pan_Tadeusz",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 19th-century poet writing by candlelight in a Paris garret, a Polish coat of arms pinned above, with Lithuanian countryside illustrations on the desk, pixel art style.",
+    "tags": [
+      "Mickiewicz",
+      "Pan Tadeusz",
+      "Poland",
+      "literature",
+      "Romanticism",
+      "exile"
+    ]
+  },
+  {
+    "id": "art-sophocles-oedipus-irony",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "historic_buildings",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "historic_buildings",
+    "categoryL3": "",
+    "statement": "Sophocles' 'Oedipus Rex' invented 'dramatic irony' — the audience knows Oedipus is the murderer before he does.",
+    "quizQuestion": "Which device did Sophocles pioneer by letting audiences know more than the hero?",
+    "correctAnswer": "Dramatic irony",
+    "distractors": [
+      "Tragic flaw",
+      "Catharsis",
+      "Hubris",
+      "Deus ex machina",
+      "Anagnorisis",
+      "Comic relief",
+      "Soliloquy",
+      "Hamartia"
+    ],
+    "acceptableAnswers": [
+      "Dramatic irony"
+    ],
+    "explanation": "In Oedipus Rex (c. 429 BCE), Sophocles masterfully structures the plot so that the audience knows from mythology that Oedipus killed his father and married his mother — long before Oedipus discovers this himself. This gap between audience knowledge and character knowledge defines dramatic irony.",
+    "wowFactor": "Dramatic irony — used in every thriller, sitcom, and horror film ever made — was essentially codified by a Greek playwright 2,500 years ago.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Oedipus Rex pioneered which device where audiences know the truth before the protagonist?",
+        "answer": "Dramatic irony",
+        "distractors": [
+          "Tragic flaw",
+          "Catharsis",
+          "Deus ex machina"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Dramatic irony occurs when the audience knows something the character doesn't; which play is its classic example?",
+        "answer": "Oedipus Rex",
+        "distractors": [
+          "Hamlet",
+          "Macbeth",
+          "Antigone"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Dramatic irony means the hero knows the truth before the audience does.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Sophocles used ___ irony in Oedipus Rex — the audience knows he is the killer before he does.",
+        "answer": "Dramatic",
+        "distractors": [
+          "Tragic",
+          "Cosmic",
+          "Verbal"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Oedipus_Rex",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Contains themes of incest and patricide from ancient drama — age rating reflects this.",
+    "visualDescription": "A masked ancient Greek actor on a stone stage, audience watching with knowing dread, the oracle's smoke rising behind the set, pixel art style.",
+    "tags": [
+      "Sophocles",
+      "Oedipus Rex",
+      "dramatic irony",
+      "Greek tragedy",
+      "literature"
+    ]
+  },
+  {
+    "id": "art-sophocles-seven-plays",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "historic_buildings",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "historic_buildings",
+    "categoryL3": "",
+    "statement": "Sophocles wrote about 120 plays, but only 7 survive complete — the rest were lost when the Library of Alexandria was destroyed.",
+    "quizQuestion": "How many of Sophocles' approximately 120 plays have survived complete?",
+    "correctAnswer": "7 plays",
+    "distractors": [
+      "1 play",
+      "3 plays",
+      "10 plays",
+      "20 plays",
+      "30 plays",
+      "50 plays",
+      "All 120 plays",
+      "15 plays"
+    ],
+    "acceptableAnswers": [
+      "7 plays",
+      "seven plays",
+      "7"
+    ],
+    "explanation": "Sophocles wrote approximately 120 plays and won the City Dionysia dramatic festival 18 times. Only 7 survive complete: Ajax, Antigone, Women of Trachis, Oedipus Rex, Electra, Philoctetes, and Oedipus at Colonus. The rest are known only through fragments and references.",
+    "wowFactor": "We may have lost 113 plays by one of history's greatest dramatists — what we call the pinnacle of Greek tragedy might be less than 6% of his actual output.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Out of approximately 120 plays by Sophocles, how many survive complete today?",
+        "answer": "7 plays",
+        "distractors": [
+          "3 plays",
+          "20 plays",
+          "50 plays"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Only 7 of Sophocles' plays survive; the rest were largely lost when which institution was destroyed?",
+        "answer": "Library of Alexandria",
+        "distractors": [
+          "The Parthenon",
+          "The Athenian Archive",
+          "The Roman Forum"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: All of Sophocles' 120 plays survive in complete form.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Sophocles wrote about 120 plays, but only ___ survive complete.",
+        "answer": "7",
+        "distractors": [
+          "3",
+          "20",
+          "50"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sophocles",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ancient scroll shelves burning in firelight, seven glowing scrolls floating safely away while dozens of others crumble to ash, pixel art style.",
+    "tags": [
+      "Sophocles",
+      "Greek tragedy",
+      "lost plays",
+      "Library of Alexandria",
+      "literature"
+    ]
+  },
+  {
+    "id": "art-sophocles-actor-innovations",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "historic_buildings",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "historic_buildings",
+    "categoryL3": "",
+    "statement": "Sophocles introduced the third actor to Greek theatre, allowing more complex multi-character interactions in a single scene.",
+    "quizQuestion": "What theatrical innovation did Sophocles introduce to Greek drama?",
+    "correctAnswer": "A third actor",
+    "distractors": [
+      "The tragic mask",
+      "The chorus",
+      "The orchestra pit",
+      "Stage scenery",
+      "The prologue",
+      "The deus ex machina",
+      "Women performers",
+      "The dramatic chorus"
+    ],
+    "acceptableAnswers": [
+      "A third actor",
+      "third actor",
+      "the third speaking actor"
+    ],
+    "explanation": "Before Sophocles, Greek tragedy used only two speaking actors (plus the chorus). Sophocles added a third actor, dramatically expanding dramatic possibilities — characters could now react to each other in triangular scenes, enabling far more complex emotional and moral conflicts.",
+    "wowFactor": "Adding one extra person to the stage in 5th-century BCE Athens fundamentally changed what storytelling could do — Sophocles' third actor is the ancestor of every ensemble drama.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which theatrical innovation is credited to Sophocles in ancient Greek drama?",
+        "answer": "Adding a third actor",
+        "distractors": [
+          "Inventing the chorus",
+          "Creating the tragic mask",
+          "Building the orchestra pit"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Adding a third speaking actor to the stage expanded dramatic complexity in whose plays?",
+        "answer": "Sophocles",
+        "distractors": [
+          "Aeschylus",
+          "Euripides",
+          "Aristophanes"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Sophocles invented the dramatic chorus in Greek theatre.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Sophocles transformed Greek theatre by introducing a ___ speaking actor.",
+        "answer": "Third",
+        "distractors": [
+          "Second",
+          "Fourth",
+          "Female"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sophocles#Innovations",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An ancient Greek open-air theatre with three masked actors in robes mid-scene, a stone semicircular audience behind them, pixel art style.",
+    "tags": [
+      "Sophocles",
+      "Greek theatre",
+      "acting",
+      "drama history",
+      "innovation"
+    ]
+  }
+]

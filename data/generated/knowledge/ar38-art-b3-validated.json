@@ -1,0 +1,1304 @@
+[
+  {
+    "id": "art-tajmahal-builder",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "architecture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "architecture",
+    "categoryL3": "",
+    "statement": "The Taj Mahal was built by Mughal Emperor Shah Jahan as a mausoleum for his beloved wife Mumtaz Mahal, who died in 1631 during childbirth.",
+    "quizQuestion": "For whom did Shah Jahan build the Taj Mahal?",
+    "correctAnswer": "Mumtaz Mahal, his wife",
+    "distractors": [
+      "His mother Nur Jahan",
+      "His daughter Jahanara",
+      "His first wife Kandahari",
+      "His sister Roshanara",
+      "The goddess Lakshmi",
+      "A Hindu queen he conquered",
+      "His own future tomb",
+      "Allah as a mosque tribute"
+    ],
+    "acceptableAnswers": [
+      "Mumtaz Mahal, his wife",
+      "Mumtaz Mahal",
+      "his wife"
+    ],
+    "explanation": "Arjumand Banu Begum, known as Mumtaz Mahal ('Jewel of the Palace'), was Shah Jahan's third wife and closest companion. She died giving birth to their 14th child in 1631. Shah Jahan reportedly turned grey overnight from grief and spent the next 22 years building her tomb. Construction employed over 20,000 workers and used materials from across Asia.",
+    "wowFactor": "Shah Jahan built the world's most beautiful building purely out of grief — he reportedly refused to bathe or eat for a week after Mumtaz Mahal died.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who was the Taj Mahal built as a mausoleum for?",
+        "answer": "Mumtaz Mahal, his wife",
+        "distractors": [
+          "His mother Nur Jahan",
+          "His daughter Jahanara",
+          "His sister Roshanara"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Emperor Shah Jahan built the Taj Mahal as a tomb for which person who died in childbirth in 1631?",
+        "answer": "Mumtaz Mahal",
+        "distractors": [
+          "Nur Jahan",
+          "Jahanara Begum",
+          "Kandahari Begum"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Taj Mahal was built as a palace for Mughal emperors to live in.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Shah Jahan built the Taj Mahal as a mausoleum for his wife ___ Mahal, who died in 1631.",
+        "answer": "Mumtaz",
+        "distractors": [
+          "Nur",
+          "Jahanara",
+          "Roshanara"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Taj_Mahal",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The white marble Taj Mahal reflected in its central pool at sunrise, pixel art style.",
+    "tags": [
+      "Taj Mahal",
+      "Shah Jahan",
+      "Mumtaz Mahal",
+      "Mughal",
+      "mausoleum"
+    ]
+  },
+  {
+    "id": "art-abex-drip-painting",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "painting",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "painting",
+    "categoryL3": "",
+    "statement": "Jackson Pollock's drip painting technique involved laying a canvas flat on the floor and pouring, dripping, and throwing paint from above to create complex layered webs.",
+    "quizQuestion": "How did Pollock apply paint in his drip painting method?",
+    "correctAnswer": "Poured and dripped from above",
+    "distractors": [
+      "Brushed in thin layers",
+      "Sprayed with an airbrush",
+      "Pressed with sponges",
+      "Rolled with foam rollers",
+      "Thrown with his hands",
+      "Splattered with sticks",
+      "Stenciled through screens",
+      "Palette-knifed onto canvas"
+    ],
+    "acceptableAnswers": [
+      "Poured and dripped from above",
+      "dripped from above",
+      "poured onto the canvas"
+    ],
+    "explanation": "Pollock's action painting method ('drip technique') involved placing unprimed canvas on the floor, then moving around and over it while dripping industrial paint from cans, using hardened brushes, sticks, and syringes. This approach made his entire body a painting tool. The results are now recognized as creating fractal patterns mathematically similar to those found in nature.",
+    "wowFactor": "Pollock's drip paintings have been found to contain fractal geometry identical to coastlines and snowflakes — his chaotic splashes were mathematically organized without him knowing it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How did Jackson Pollock apply paint in his signature drip technique?",
+        "answer": "Poured and dripped from above",
+        "distractors": [
+          "Brushed in thin layers",
+          "Sprayed with an airbrush",
+          "Pressed with sponges"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Pouring and dripping industrial paint onto a floor-level canvas is the signature technique of which Abstract Expressionist?",
+        "answer": "Jackson Pollock",
+        "distractors": [
+          "Mark Rothko",
+          "Willem de Kooning",
+          "Franz Kline"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pollock's drip paintings were made with a canvas propped up on an easel.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pollock placed his canvas on the ___ and dripped paint from above in his action painting method.",
+        "answer": "floor",
+        "distractors": [
+          "wall",
+          "easel",
+          "ceiling"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Drip_painting",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Jackson Pollock crouching over a floor canvas, dripping paint from a can, action painting in progress, pixel art style.",
+    "tags": [
+      "abstract expressionism",
+      "Pollock",
+      "drip painting",
+      "action painting",
+      "modern art"
+    ]
+  },
+  {
+    "id": "art-abex-movement-origin",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "painting",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "painting",
+    "categoryL3": "",
+    "statement": "Abstract Expressionism emerged in New York City in the 1940s, making America — not Europe — the dominant center of the international art world for the first time.",
+    "quizQuestion": "Which city became the international art world center through Abstract Expressionism?",
+    "correctAnswer": "New York City",
+    "distractors": [
+      "Paris",
+      "London",
+      "Berlin",
+      "Chicago",
+      "Los Angeles",
+      "Vienna",
+      "Moscow",
+      "San Francisco"
+    ],
+    "acceptableAnswers": [
+      "New York City",
+      "New York",
+      "NYC"
+    ],
+    "explanation": "Before WWII, Paris dominated global fine art. The war drove many European artists to New York as refugees (including Surrealists like André Breton). American painters — especially the New York School — absorbed European avant-garde ideas and synthesized them into something radically new. When Pollock, de Kooning, and Rothko achieved international fame in the late 1940s, New York displaced Paris as the world's art capital.",
+    "wowFactor": "WWII accidentally created American art supremacy — European artists fleeing the Nazis brought their avant-garde ideas to New York, and Americans ran further with them than anyone expected.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Abstract Expressionism in the 1940s made which city the world's new art capital?",
+        "answer": "New York City",
+        "distractors": [
+          "Paris",
+          "London",
+          "Berlin"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The 1940s New York School movement of Pollock and Rothko that shifted global art supremacy from Paris is called what?",
+        "answer": "Abstract Expressionism",
+        "distractors": [
+          "Surrealism",
+          "Pop Art",
+          "Minimalism"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Paris remained the dominant art world center throughout the 1940s and 1950s.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Abstract Expressionism emerged in ___ City in the 1940s, displacing Paris as the art world center.",
+        "answer": "New York",
+        "distractors": [
+          "Chicago",
+          "Los Angeles",
+          "Boston"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Abstract_expressionism",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "1940s New York City skyline with large abstract expressionist canvases visible through studio windows, pixel art style.",
+    "tags": [
+      "abstract expressionism",
+      "New York",
+      "art history",
+      "Pollock",
+      "modern art"
+    ]
+  },
+  {
+    "id": "art-liberty-bartholdi",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "sculpture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "sculpture",
+    "categoryL3": "",
+    "statement": "The Statue of Liberty was designed by French sculptor Frédéric Auguste Bartholdi and its internal steel skeleton was engineered by Gustave Eiffel, who later built the Eiffel Tower.",
+    "quizQuestion": "Who engineered the Statue of Liberty's internal steel skeleton?",
+    "correctAnswer": "Gustave Eiffel",
+    "distractors": [
+      "Bartholdi himself",
+      "Alexandre Gustave Morin",
+      "Édouard de Laboulaye",
+      "Joseph Pulitzer",
+      "Charles-Antoine Colmar",
+      "Victor Hugo",
+      "Ferdinand de Lesseps",
+      "Isambard Brunel"
+    ],
+    "acceptableAnswers": [
+      "Gustave Eiffel",
+      "Eiffel"
+    ],
+    "explanation": "Bartholdi sculpted the outer copper skin of the statue. The structural challenge of making 225 tons of copper sheets stand 93 meters tall was solved by Gustave Eiffel (before his famous tower) who designed a revolutionary flexible internal iron pylon with secondary framework allowing the copper skin to expand and contract with temperature changes without cracking.",
+    "wowFactor": "The Statue of Liberty and the Eiffel Tower share the same engineer — Gustave Eiffel built the Lady's skeleton before he became famous for the tower named after him.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who designed the Statue of Liberty's internal structural skeleton?",
+        "answer": "Gustave Eiffel",
+        "distractors": [
+          "Bartholdi himself",
+          "Édouard de Laboulaye",
+          "Joseph Pulitzer"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Gustave Eiffel designed the internal iron skeleton for which American landmark before building his famous Parisian tower?",
+        "answer": "Statue of Liberty",
+        "distractors": [
+          "Chrysler Building",
+          "Brooklyn Bridge",
+          "Capitol Building"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Bartholdi designed both the outer copper skin and the internal structure of the Statue of Liberty.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Statue of Liberty's steel internal skeleton was engineered by Gustave ___, who later built the Eiffel Tower.",
+        "answer": "Eiffel",
+        "distractors": [
+          "Bartholdi",
+          "Morin",
+          "Laboulaye"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Statue_of_Liberty",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Cross-section cutaway of the Statue of Liberty showing the internal iron framework beside the copper exterior shell, pixel art style.",
+    "tags": [
+      "Statue of Liberty",
+      "Gustave Eiffel",
+      "Bartholdi",
+      "engineering",
+      "sculpture"
+    ]
+  },
+  {
+    "id": "art-liberty-copper",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "sculpture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "sculpture",
+    "categoryL3": "",
+    "statement": "The Statue of Liberty was originally a shiny copper-red color when unveiled in 1886, and turned its iconic green over 20–30 years through natural oxidation forming copper carbonate patina.",
+    "quizQuestion": "What was the Statue of Liberty's original color when unveiled in 1886?",
+    "correctAnswer": "Shiny copper-red",
+    "distractors": [
+      "Pale grey stone",
+      "Pure white marble",
+      "Bronze brown",
+      "Dark forest green",
+      "Painted bright blue",
+      "Gold-plated yellow",
+      "Verdigris green from day one",
+      "Dull iron black"
+    ],
+    "acceptableAnswers": [
+      "Shiny copper-red",
+      "copper color",
+      "reddish-brown"
+    ],
+    "explanation": "The statue's outer skin is made of 3mm-thick copper sheets — about the thickness of two US pennies. When unveiled in 1886 it gleamed like a giant copper penny. Atmospheric oxidation gradually converted the surface to copper carbonate (verdigris), turning it green. The full patina took about 20–30 years to develop completely, alarming early observers who thought the statue was rotting.",
+    "wowFactor": "The Statue of Liberty's green color is literally the statue rusting — the same chemical process that turns copper pipes green turned the most famous sculpture in America into a giant green monument.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What color was the Statue of Liberty originally when it was unveiled?",
+        "answer": "Shiny copper-red",
+        "distractors": [
+          "Dark forest green",
+          "Pure white marble",
+          "Bronze brown"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Statue of Liberty turned from copper-red to green over 20–30 years through which chemical process?",
+        "answer": "Oxidation forming patina",
+        "distractors": [
+          "Acid rain erosion",
+          "Sea salt damage",
+          "Paint weathering"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Statue of Liberty was painted green when it was first built.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Statue of Liberty was originally ___ colored and turned green through oxidation over decades.",
+        "answer": "copper",
+        "distractors": [
+          "gold",
+          "silver",
+          "bronze"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Statue_of_Liberty",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Side-by-side the Statue of Liberty in shiny copper-red (1886) and green (today), pixel art style.",
+    "tags": [
+      "Statue of Liberty",
+      "copper",
+      "patina",
+      "oxidation",
+      "history"
+    ]
+  },
+  {
+    "id": "art-liberty-gift",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "sculpture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "sculpture",
+    "categoryL3": "",
+    "statement": "The Statue of Liberty was a joint French-American project: France paid for the statue itself while America was responsible for funding and building the pedestal it stands on.",
+    "quizQuestion": "Who was responsible for funding the Statue of Liberty's pedestal?",
+    "correctAnswer": "America",
+    "distractors": [
+      "France paid for everything",
+      "Joseph Pulitzer personally",
+      "The US federal government",
+      "New York City alone",
+      "A British charity",
+      "International donations",
+      "Bartholdi's family",
+      "The Statue Committee"
+    ],
+    "acceptableAnswers": [
+      "America",
+      "the United States",
+      "Americans"
+    ],
+    "explanation": "Édouard de Laboulaye proposed the statue as a gift from France to America celebrating democracy and the alliance from the Revolutionary War. The Franco-American Union agreed France would fund the statue, America would fund the pedestal. The pedestal fundraising stalled badly in America — Joseph Pulitzer's New York World newspaper finally drove it to completion by shaming wealthy donors and printing the name of every small donor, no matter how tiny their contribution.",
+    "wowFactor": "The Statue of Liberty nearly had no pedestal — America nearly sent France's gift back because Congress refused to fund it. Pulitzer's newspaper campaign saved it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In the French-American project, who was responsible for building and funding the Statue's pedestal?",
+        "answer": "America",
+        "distractors": [
+          "France paid for everything",
+          "Joseph Pulitzer personally",
+          "The US federal government"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "France gifted the statue while America built the pedestal in constructing which New York landmark?",
+        "answer": "Statue of Liberty",
+        "distractors": [
+          "Brooklyn Bridge",
+          "Ellis Island",
+          "Grand Central Terminal"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: France paid for both the statue and the pedestal the Statue of Liberty stands on.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "France funded the statue itself while ___ was responsible for the Statue of Liberty's pedestal.",
+        "answer": "America",
+        "distractors": [
+          "Britain",
+          "Canada",
+          "Spain"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Statue_of_Liberty",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A blueprint showing the Statue of Liberty with 'France' labeled on the statue and 'USA' labeled on the pedestal, pixel art style.",
+    "tags": [
+      "Statue of Liberty",
+      "France",
+      "America",
+      "Pulitzer",
+      "gift"
+    ]
+  },
+  {
+    "id": "art-jazz-new-orleans",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "music",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "music",
+    "categoryL3": "",
+    "statement": "Jazz originated in New Orleans around 1900, emerging from a unique blend of African American blues, ragtime, and the brass band traditions of the city's diverse Creole culture.",
+    "quizQuestion": "In which city did jazz music originate around 1900?",
+    "correctAnswer": "New Orleans",
+    "distractors": [
+      "Chicago",
+      "New York City",
+      "Memphis",
+      "Kansas City",
+      "St. Louis",
+      "Harlem",
+      "Detroit",
+      "Atlanta"
+    ],
+    "acceptableAnswers": [
+      "New Orleans",
+      "New Orleans, Louisiana"
+    ],
+    "explanation": "New Orleans in 1900 was uniquely positioned as the birthplace of jazz due to its extraordinary cultural mix: African American blues and spirituals, French and Spanish Creole music, Caribbean rhythms, and the city's tradition of allowing enslaved people to gather and play music in Congo Square. This confluence produced a new music with improvisation, syncopation, and call-and-response at its heart.",
+    "wowFactor": "Jazz was born because New Orleans was the only city in North America where enslaved people were legally allowed to gather and play drums — Congo Square created the conditions for an entirely new art form.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which American city did jazz music originate around the year 1900?",
+        "answer": "New Orleans",
+        "distractors": [
+          "Chicago",
+          "New York City",
+          "Memphis"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The convergence of blues, ragtime, and Creole brass band music in New Orleans created which genre?",
+        "answer": "Jazz",
+        "distractors": [
+          "Blues",
+          "Gospel",
+          "Ragtime"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Jazz originated in Chicago as a fusion of European classical and African American music.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Jazz emerged around 1900 in ___ Orleans from blues, ragtime, and Creole brass band traditions.",
+        "answer": "New",
+        "distractors": [
+          "old",
+          "East",
+          "West"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Jazz",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A jazz band playing on a New Orleans street corner at night, gas lamps glowing, pixel art style.",
+    "tags": [
+      "jazz",
+      "New Orleans",
+      "music history",
+      "blues",
+      "Creole"
+    ]
+  },
+  {
+    "id": "art-jazz-improvisation",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "music",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "music",
+    "categoryL3": "",
+    "statement": "Improvisation is the defining feature of jazz — musicians invent melodies in real time over a chord structure, making every live performance a unique, unrepeatable composition.",
+    "quizQuestion": "What musical technique makes every jazz performance unique and unrepeatable?",
+    "correctAnswer": "Real-time improvisation",
+    "distractors": [
+      "Random note selection",
+      "Playing without sheet music",
+      "Audience-led direction",
+      "Atonality rules",
+      "Computer-generated solos",
+      "Free-form noise",
+      "Rotating bandleaders",
+      "Key signature changes"
+    ],
+    "acceptableAnswers": [
+      "Real-time improvisation",
+      "improvisation",
+      "live improvisation"
+    ],
+    "explanation": "In jazz, improvisation means spontaneously composing melodies within the harmonic structure of a song (usually a 12-bar blues or 32-bar standard form) while other musicians respond in real time. The interaction between soloist and rhythm section creates a musical conversation — no two performances are identical even if the same musicians play the same song. This interactive spontaneity is jazz's defining characteristic.",
+    "wowFactor": "Every jazz performance is a one-time composition that will never exist again — improvisers are writing new music in the moment faster than any human can consciously think.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What musical technique ensures no two jazz performances are identical?",
+        "answer": "Real-time improvisation",
+        "distractors": [
+          "Random note selection",
+          "Playing without sheet music",
+          "Audience-led direction"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Real-time melodic invention over a chord structure that makes every performance unique is the defining element of which music genre?",
+        "answer": "Jazz",
+        "distractors": [
+          "Classical",
+          "Blues",
+          "Pop"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Jazz musicians play the same pre-written notes in every performance.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Jazz musicians create new melodies through real-time ___ over a chord structure in every performance.",
+        "answer": "improvisation",
+        "distractors": [
+          "notation",
+          "repetition",
+          "sampling"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Jazz",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A jazz saxophonist mid-solo on a dimly lit stage, musical notes floating spontaneously around him, pixel art style.",
+    "tags": [
+      "jazz",
+      "improvisation",
+      "music",
+      "performance",
+      "composition"
+    ]
+  },
+  {
+    "id": "art-jazz-harlem-renaissance",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "music",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "music",
+    "categoryL3": "",
+    "statement": "The Harlem Renaissance of the 1920s–30s transformed jazz from regional New Orleans music into a national cultural phenomenon, with Duke Ellington's Cotton Club broadcasts reaching millions by radio.",
+    "quizQuestion": "What technology spread jazz nationally during the Harlem Renaissance?",
+    "correctAnswer": "Radio broadcasts",
+    "distractors": [
+      "Phonograph records",
+      "Newspaper reviews",
+      "Touring vaudeville shows",
+      "Silent film soundtracks",
+      "Church choir networks",
+      "Telegram promotions",
+      "Railroad touring",
+      "Sheet music sales"
+    ],
+    "acceptableAnswers": [
+      "Radio broadcasts",
+      "radio",
+      "radio transmission"
+    ],
+    "explanation": "Duke Ellington's orchestra's 1927 residency at Harlem's Cotton Club was broadcast live on CBS Radio, reaching millions of Americans who had never attended a jazz performance. Radio turned regional African American music into a national phenomenon. Ellington's Cotton Club broadcasts ran for years, making him the most recognized bandleader in America and exposing jazz to white mainstream audiences across the country.",
+    "wowFactor": "Duke Ellington's Cotton Club radio show was an accident of technology — live broadcasts in the 1920s reached millions who would never have set foot in Harlem, making jazz America's music.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What technology spread Duke Ellington's Cotton Club performances to millions nationally?",
+        "answer": "Radio broadcasts",
+        "distractors": [
+          "Phonograph records",
+          "Newspaper reviews",
+          "Silent film soundtracks"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Duke Ellington's live CBS Radio broadcasts from the Cotton Club in the 1920s popularized which music genre nationally?",
+        "answer": "Jazz",
+        "distractors": [
+          "Gospel",
+          "Blues",
+          "Ragtime"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Phonograph records were the primary technology that made jazz a national phenomenon in the 1920s.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Duke Ellington's live ___ broadcasts from the Cotton Club brought jazz to millions of American homes.",
+        "answer": "radio",
+        "distractors": [
+          "television",
+          "telephone",
+          "phonograph"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Harlem_Renaissance",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Duke Ellington at a grand piano in the Cotton Club, a CBS radio microphone in the foreground, 1920s Harlem crowd behind him, pixel art style.",
+    "tags": [
+      "jazz",
+      "Harlem Renaissance",
+      "Duke Ellington",
+      "radio",
+      "Cotton Club"
+    ]
+  },
+  {
+    "id": "art-david-marble",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "sculpture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "sculpture",
+    "categoryL3": "",
+    "statement": "Michelangelo's David was carved from a single block of marble that had been abandoned and partially ruined for 25 years after two previous sculptors failed to work with it.",
+    "quizQuestion": "How long had the marble block sat unused before Michelangelo carved David?",
+    "correctAnswer": "25 years",
+    "distractors": [
+      "2 years",
+      "5 years",
+      "10 years",
+      "50 years",
+      "100 years",
+      "3 months",
+      "1 year",
+      "75 years"
+    ],
+    "acceptableAnswers": [
+      "25 years",
+      "twenty-five years"
+    ],
+    "explanation": "The Operai of Florence's Cathedral commissioned the David project around 1464. Agostino di Duccio began work but abandoned it after two years. Antonio Rossellino tried in 1476 and also gave up, leaving the marble further damaged with a small hole bored into the top. The block sat in the cathedral workshop, exposed to weather, for 25 years before 26-year-old Michelangelo was commissioned in 1501 and completed it in 1504.",
+    "wowFactor": "Michelangelo created the world's most famous statue from a damaged, rejected marble block that two other sculptors had already given up on as impossible.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many years had the marble block been abandoned before Michelangelo carved David?",
+        "answer": "25 years",
+        "distractors": [
+          "2 years",
+          "10 years",
+          "50 years"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A marble block abandoned for 25 years after two sculptors failed was transformed into which masterpiece in 1504?",
+        "answer": "David by Michelangelo",
+        "distractors": [
+          "Pietà",
+          "Moses",
+          "Bacchus"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Michelangelo was given a fresh unworked block of marble for the David statue.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Michelangelo carved David from a marble block abandoned for ___ years after other sculptors failed.",
+        "answer": "25",
+        "distractors": [
+          "5",
+          "50",
+          "100"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/David_(Michelangelo)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Michelangelo working on the David statue, a weathered abandoned marble block visible beside the emerging figure, pixel art style.",
+    "tags": [
+      "David",
+      "Michelangelo",
+      "marble",
+      "sculpture",
+      "Florence"
+    ]
+  },
+  {
+    "id": "art-david-tension",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "sculpture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "sculpture",
+    "categoryL3": "",
+    "statement": "Michelangelo's David depicts the moment before battle — David's tense posture, bulging neck veins, and concentrated gaze show him psychologically preparing to face Goliath.",
+    "quizQuestion": "What moment in the David and Goliath story does Michelangelo's sculpture depict?",
+    "correctAnswer": "The moment before battle",
+    "distractors": [
+      "After defeating Goliath",
+      "Mid-throw of the stone",
+      "Cutting Goliath's head off",
+      "Celebrating his victory",
+      "Praying before the battle",
+      "Running toward Goliath",
+      "Receiving the sling weapon",
+      "Standing over Goliath's body"
+    ],
+    "acceptableAnswers": [
+      "The moment before battle",
+      "before the fight",
+      "pre-battle tension"
+    ],
+    "explanation": "Unlike Donatello's David (victorious, foot on severed head) or Verrocchio's David (triumphant), Michelangelo chose the charged pre-battle instant. Anatomical details — the contracted brow, taut neck, tensed sling hand, and relaxed other hand — convey psychological concentration rather than physical action. The veins are intentionally raised to a degree beyond realism, suggesting surging adrenaline.",
+    "wowFactor": "Michelangelo broke with every previous David sculpture by showing the 10 seconds before the fight — art historians say it's the most psychologically complex single moment ever frozen in marble.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which precise moment in David's battle with Goliath does Michelangelo's sculpture capture?",
+        "answer": "The moment before battle",
+        "distractors": [
+          "After defeating Goliath",
+          "Mid-throw of the stone",
+          "Celebrating his victory"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A marble sculpture showing a tense pre-battle stance with raised neck veins, rather than post-victory, is Michelangelo's depiction of whom?",
+        "answer": "David",
+        "distractors": [
+          "Moses",
+          "Apollo",
+          "Perseus"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Michelangelo's David shows him standing victorious with Goliath's severed head at his feet.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Michelangelo's David shows the moment ___ battle — tense concentration, not triumph.",
+        "answer": "before",
+        "distractors": [
+          "after",
+          "during",
+          "celebrating after"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/David_(Michelangelo)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Michelangelo's David in dramatic side profile, tense neck veins visible, sling over shoulder, concentrated expression, pixel art style.",
+    "tags": [
+      "David",
+      "Michelangelo",
+      "pre-battle",
+      "sculpture",
+      "psychology"
+    ]
+  },
+  {
+    "id": "art-empire-state-1931",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "architecture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "architecture",
+    "categoryL3": "",
+    "statement": "The Empire State Building was constructed in just 410 days in 1930–31, with workers completing an average of 4.5 floors per week at the peak of construction.",
+    "quizQuestion": "How long did it take to construct the Empire State Building?",
+    "correctAnswer": "410 days",
+    "distractors": [
+      "2 years",
+      "5 years",
+      "1,000 days",
+      "180 days",
+      "3 years",
+      "600 days",
+      "90 days",
+      "7 years"
+    ],
+    "acceptableAnswers": [
+      "410 days",
+      "about 14 months",
+      "just over a year"
+    ],
+    "explanation": "Construction began April 1, 1930 and the building opened May 1, 1931 — a total of 410 days for a 102-story building. At peak, 3,400 workers were on site daily. The steel framework rose at a rate of 4.5 floors per week. This speed was made possible by meticulous pre-planning — materials arrived by train precisely when needed, minimizing storage on site. It became the world's tallest building on completion.",
+    "wowFactor": "The Empire State Building went up at 4.5 floors a week — if modern construction tried to match that pace on the same site, engineers say it would be nearly impossible with today's safety codes.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many days did it take to build the Empire State Building?",
+        "answer": "410 days",
+        "distractors": [
+          "2 years",
+          "600 days",
+          "180 days"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A 102-story Art Deco skyscraper in New York City completed in just 410 days in 1931 is which building?",
+        "answer": "Empire State Building",
+        "distractors": [
+          "Chrysler Building",
+          "Rockefeller Center",
+          "One World Trade Center"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Empire State Building took more than 5 years to complete.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Empire State Building was completed in just ___ days, with workers finishing 4.5 floors per week.",
+        "answer": "410",
+        "distractors": [
+          "1000",
+          "600",
+          "180"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Empire_State_Building",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Workers in 1930s hard hats on steel girders high above Manhattan, the Empire State Building taking shape behind them, pixel art style.",
+    "tags": [
+      "Empire State Building",
+      "construction",
+      "speed",
+      "1931",
+      "New York"
+    ]
+  },
+  {
+    "id": "art-empire-state-mooring",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "architecture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "architecture",
+    "categoryL3": "",
+    "statement": "The Empire State Building's spire was originally designed as a mooring mast for transatlantic dirigible airships, with a passenger gangplank and waiting room for arriving passengers.",
+    "quizQuestion": "What was the Empire State Building's spire originally designed as?",
+    "correctAnswer": "Airship mooring mast",
+    "distractors": [
+      "Radio transmission tower",
+      "Lightning rod",
+      "Observation platform",
+      "Aircraft warning beacon",
+      "Weather monitoring station",
+      "Television antenna",
+      "Flagpole base",
+      "Elevator machine room"
+    ],
+    "acceptableAnswers": [
+      "Airship mooring mast",
+      "dirigible mooring mast",
+      "zeppelin docking"
+    ],
+    "explanation": "The 62-meter mooring mast was designed so transatlantic zeppelins could dock at the 102nd floor, passengers would disembark via a gangplank into a waiting room, then take elevators down. The idea was commercially impractical — transatlantic airships were hydrogen-filled and mooring a flammable hydrogen ship above a Manhattan skyscraper in strong winds was deemed suicidal. Exactly one manned airship ever docked successfully.",
+    "wowFactor": "The Empire State Building was supposed to be the world's first flying bus terminal — skyscraper architects in 1930 genuinely thought zeppelin commuting from Europe would be routine.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What transportation purpose was the Empire State Building's spire originally designed to serve?",
+        "answer": "Airship mooring mast",
+        "distractors": [
+          "Radio transmission tower",
+          "Lightning rod",
+          "Aircraft warning beacon"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A mooring mast for transatlantic zeppelins with a 102nd-floor gangplank and waiting room was the planned use of which building's spire?",
+        "answer": "Empire State Building",
+        "distractors": [
+          "Chrysler Building",
+          "One World Trade Center",
+          "Willis Tower"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Empire State Building's spire was designed from the start as a television antenna.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Empire State Building's spire was designed as an ___ mooring mast for transatlantic passengers.",
+        "answer": "airship",
+        "distractors": [
+          "airplane",
+          "helicopter",
+          "blimp"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Empire_State_Building",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A giant zeppelin docked at the Empire State Building's spire above 1930s Manhattan, pixel art style.",
+    "tags": [
+      "Empire State Building",
+      "airship",
+      "zeppelin",
+      "mooring mast",
+      "history"
+    ]
+  },
+  {
+    "id": "art-mahabharata-length",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "literature",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "literature",
+    "categoryL3": "",
+    "statement": "The Mahabharata is the world's longest epic poem at roughly 100,000 shlokas (stanzas) — about 1.8 million words, making it ten times longer than the Iliad and Odyssey combined.",
+    "quizQuestion": "How many times longer is the Mahabharata than the Iliad and Odyssey combined?",
+    "correctAnswer": "Ten times longer",
+    "distractors": [
+      "Twice as long",
+      "Five times longer",
+      "Three times longer",
+      "Twenty times longer",
+      "About the same length",
+      "Seven times longer",
+      "Fifty times longer",
+      "Only slightly longer"
+    ],
+    "acceptableAnswers": [
+      "Ten times longer",
+      "ten times",
+      "10x longer"
+    ],
+    "explanation": "Homer's Iliad contains about 15,700 lines and the Odyssey about 12,100 lines — combined roughly 27,800 lines. The Mahabharata contains approximately 100,000 shlokas (two-line stanzas), totaling around 200,000 individual verse lines — over seven times more than the two Greek epics combined and roughly 1.8 million words in English translation. It is the longest literary work ever composed.",
+    "wowFactor": "The Mahabharata is so long that if you read 24 hours a day without stopping, it would take you roughly two full months to finish the whole text.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How does the Mahabharata's length compare to the Iliad and Odyssey combined?",
+        "answer": "Ten times longer",
+        "distractors": [
+          "Twice as long",
+          "Five times longer",
+          "About the same length"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The world's longest literary work at 100,000 stanzas and 1.8 million words is which Indian epic?",
+        "answer": "Mahabharata",
+        "distractors": [
+          "Ramayana",
+          "Rigveda",
+          "Upanishads"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Iliad and Odyssey together are longer than the Mahabharata.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Mahabharata has roughly 100,000 ___, making it the world's longest epic poem.",
+        "answer": "shlokas",
+        "distractors": [
+          "chapters",
+          "cantos",
+          "books"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mahabharata",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An ancient palm-leaf manuscript of the Mahabharata stacked in towering piles beside tiny copies of the Iliad, pixel art style.",
+    "tags": [
+      "Mahabharata",
+      "epic",
+      "length",
+      "literature",
+      "India"
+    ]
+  },
+  {
+    "id": "art-mahabharata-bhagavad-gita",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "literature",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "literature",
+    "categoryL3": "",
+    "statement": "The Bhagavad Gita — one of Hinduism's holiest texts — is a 700-verse dialogue embedded within the Mahabharata, taking place on the battlefield just before the Kurukshetra War begins.",
+    "quizQuestion": "Where in the Mahabharata does the Bhagavad Gita take place?",
+    "correctAnswer": "On the battlefield before war",
+    "distractors": [
+      "In a royal court debate",
+      "At a forest hermitage",
+      "In Arjuna's dream",
+      "During Krishna's childhood",
+      "At a temple ceremony",
+      "After the war ends",
+      "In Yudhisthira's palace",
+      "During exile in the forest"
+    ],
+    "acceptableAnswers": [
+      "On the battlefield before war",
+      "on the Kurukshetra battlefield",
+      "before Kurukshetra War"
+    ],
+    "explanation": "The Gita is set in Books 6 of the Mahabharata (Bhishma Parva). Arjuna and his charioteer Krishna halt between two armies on the Kurukshetra battlefield. Arjuna, devastated at the prospect of killing relatives and teachers, refuses to fight. Krishna's 700-verse response — covering duty, the soul, devotion, and enlightenment — became the cornerstone philosophical and spiritual text of Hinduism.",
+    "wowFactor": "The Bhagavad Gita — read by Gandhi, Einstein, and Oppenheimer — is a philosophical conversation that takes place in the two minutes before one of history's most catastrophic fictional battles.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "The Bhagavad Gita takes place in which setting within the Mahabharata narrative?",
+        "answer": "On the battlefield before war",
+        "distractors": [
+          "In a royal court debate",
+          "At a forest hermitage",
+          "After the war ends"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Krishna's 700-verse philosophical dialogue with Arjuna on the Kurukshetra battlefield forms which Hindu sacred text?",
+        "answer": "Bhagavad Gita",
+        "distractors": [
+          "Upanishads",
+          "Ramayana",
+          "Vedas"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Bhagavad Gita takes place after the Kurukshetra War concludes.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Bhagavad Gita is Krishna's 700-verse dialogue with Arjuna on the ___ battlefield.",
+        "answer": "Kurukshetra",
+        "distractors": [
+          "Hastinapur",
+          "Varanasi",
+          "Panchala"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bhagavad_Gita",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Krishna and Arjuna on a golden chariot between two vast armies at Kurukshetra, pixel art style.",
+    "tags": [
+      "Mahabharata",
+      "Bhagavad Gita",
+      "Krishna",
+      "Arjuna",
+      "Hinduism"
+    ]
+  }
+]

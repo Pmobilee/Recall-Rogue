@@ -1,0 +1,181 @@
+{
+  "domain": "general_knowledge",
+  "batchIndex": 2,
+  "totalBatches": 3,
+  "entities": [
+    {
+      "qid": "Q21201",
+      "label": "sociology",
+      "description": "social science that studies human society and its development",
+      "subcategory": "everyday_science",
+      "sitelinks": 201,
+      "monthlyPageviews": 100500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q8743",
+      "label": "Thomas Edison",
+      "description": "American inventor and businessman (1847–1931)",
+      "subcategory": "inventions_tech",
+      "sitelinks": 250,
+      "monthlyPageviews": 125000,
+      "properties": {
+        "birthDate": "+1847-02-11T00:00:00Z",
+        "deathDate": "+1931-10-18T00:00:00Z",
+        "occupation": "Q81096",
+        "fieldOfWork": "Q12579633"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q8458",
+      "label": "human rights",
+      "description": "inalienable fundamental rights to which a person is inherently entitled",
+      "subcategory": "landmarks_wonders",
+      "sitelinks": 197,
+      "monthlyPageviews": 98500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q1065",
+      "label": "United Nations",
+      "description": "global international and intergovernmental organization",
+      "subcategory": "oddities",
+      "sitelinks": 331,
+      "monthlyPageviews": 165500,
+      "properties": {
+        "country": "Q30",
+        "creator": "Q329888",
+        "inception": "+1945-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q718",
+      "label": "chess",
+      "description": "strategy board game",
+      "subcategory": "pop_culture",
+      "sitelinks": 266,
+      "monthlyPageviews": 133000,
+      "properties": {
+        "inception": "+0601-00-00T00:00:00Z",
+        "genre": "Q41595400",
+        "countryOfOrigin": "Q11774"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q4916",
+      "label": "euro",
+      "description": "currency of most countries in the European Union",
+      "subcategory": "records_firsts",
+      "sitelinks": 237,
+      "monthlyPageviews": 118500,
+      "properties": {
+        "startDate": "+1999-01-01T00:00:00Z",
+        "country": "Q40"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q1321",
+      "label": "Spanish",
+      "description": "Romance language originating in the Iberian Peninsula",
+      "subcategory": "words_language",
+      "sitelinks": 349,
+      "monthlyPageviews": 174500,
+      "properties": {
+        "country": "Q29"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q34749",
+      "label": "social science",
+      "description": "academic disciplines concerned with society and the relationships between individuals in society",
+      "subcategory": "everyday_science",
+      "sitelinks": 143,
+      "monthlyPageviews": 71500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q11016",
+      "label": "technology",
+      "description": "making, modification, usage, and knowledge of tools, machines, techniques, crafts, systems, and methods of organization, or tools and techniques so created",
+      "subcategory": "inventions_tech",
+      "sitelinks": 233,
+      "monthlyPageviews": 116500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q728",
+      "label": "weapon",
+      "description": "tool intended or likely to inflict damage or harm",
+      "subcategory": "landmarks_wonders",
+      "sitelinks": 181,
+      "monthlyPageviews": 90500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q5043",
+      "label": "Christianity",
+      "description": "Abrahamic monotheistic religion founded on the teachings, person and life of Jesus",
+      "subcategory": "oddities",
+      "sitelinks": 317,
+      "monthlyPageviews": 158500,
+      "properties": {
+        "inception": "+0033-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q349",
+      "label": "sport",
+      "description": "forms of recreational activity, usually physical",
+      "subcategory": "pop_culture",
+      "sitelinks": 266,
+      "monthlyPageviews": 133000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q10987",
+      "label": "honey",
+      "description": "sweet food made by bees mostly using nectar from flowers",
+      "subcategory": "records_firsts",
+      "sitelinks": 218,
+      "monthlyPageviews": 109000,
+      "properties": {
+        "material": "Q171934"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q150",
+      "label": "French",
+      "description": "Romance language",
+      "subcategory": "words_language",
+      "sitelinks": 348,
+      "monthlyPageviews": 174000,
+      "properties": {
+        "country": "Q142"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q35277",
+      "label": "metaphysics",
+      "description": "branch of philosophy dealing with the nature, structure, components and fundamental principles of reality",
+      "subcategory": "everyday_science",
+      "sitelinks": 140,
+      "monthlyPageviews": 70000,
+      "properties": {},
+      "processed": false
+    }
+  ]
+}

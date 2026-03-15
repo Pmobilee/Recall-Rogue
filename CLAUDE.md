@@ -179,39 +179,30 @@ Never skip to step 3 — guessing at fixes without evidence wastes cycles and cr
 
 ## Roadmap Workflow — MANDATORY
 
-### PROGRESS.md = Lightweight Oversight Index
-- `docs/roadmap/PROGRESS.md` is the master checklist — consult it first for next work
-- PROGRESS.md contains ONLY: phase name, status (checkbox), one-line summary, and a link to the detailed phase document
-- It is an oversight file for tracking completion, NOT a detailed specification
+### Phase Documents = Source of Truth
+- **`docs/roadmap/phases/`** = active/pending work. If a doc is here, it's not done.
+- **`docs/roadmap/completed/`** = finished work. Moved here when all sub-steps pass.
+- There is NO index file. The phase docs themselves are the only tracking mechanism.
+- Naming: `AR-NN-SHORT-NAME.md` (e.g., `AR-35-COMBAT-UI-CARD-SIZE.md`)
+- To find active work: `ls docs/roadmap/phases/`
+- To find next AR number: check both `phases/` and `completed/` directories
 
-### Detailed Phase Documents = Source of Truth for Implementation
-- Every uncompleted phase has a dedicated detailed document in `docs/roadmap/phases/`
-- Naming: `CR-01-CARD-SYSTEM.md`, `CR-02-ENCOUNTER-ENGINE.md`, etc.
-- These documents are the SOLE specification that coding workers (Sonnet/Haiku) execute against
-- Each phase document MUST contain:
-  1. **Overview**: Goal, dependencies on prior phases, estimated complexity
-  2. **Sub-steps**: Numbered, granular, unambiguous tasks with exact file paths, function names, and expected behavior
-  3. **Acceptance Criteria**: Per sub-step — what must be true for the step to be considered done
-  4. **Playwright Test Scripts**: Concrete test code (Node.js scripts) that visually and functionally verify each feature
-  5. **Verification Gate**: A final checklist that MUST pass before the phase is marked complete (typecheck, build, screenshots, specific behavioral tests)
-  6. **Files Affected**: Explicit list of files that will be created or modified
-- Workers receiving a phase document should be able to implement it WITHOUT reading any other documentation
-- Phase documents reference design decisions by ID (e.g., DD-V2-087) for traceability
+### Phase Doc Requirements
+Each phase doc MUST contain:
+  1. **Overview**: Goal, dependencies, estimated complexity
+  2. **Sub-steps**: Numbered, granular tasks with exact file paths and expected behavior
+  3. **Acceptance Criteria**: Per sub-step — what must be true for the step to be done
+  4. **Files Affected**: Explicit list of files created/modified
+  5. **Verification Gate**: Final checklist (typecheck, build, tests, screenshots)
+- Workers receiving a phase doc should be able to implement it WITHOUT reading other docs
 
 ### Workflow for Executing a Phase
-1. Orchestrator consults PROGRESS.md → identifies next uncompleted phase
-2. Orchestrator reads the detailed phase doc from `docs/roadmap/phases/`
+1. Orchestrator lists `docs/roadmap/phases/` → picks the relevant phase doc
+2. Orchestrator reads the phase doc — it is the implementation spec
 3. Orchestrator spawns coding workers with the phase doc content as their spec
-4. Workers implement, orchestrator verifies (typecheck, build, Playwright screenshots, acceptance criteria)
-5. Orchestrator verifies ALL doc files (`GAME_DESIGN.md`, `ARCHITECTURE.md`, phase doc) accurately reflect the implemented state — spawns doc-fix worker if not
-6. On completion: orchestrator checks off the phase in PROGRESS.md, moves the phase doc to `docs/roadmap/completed/`
-7. Push to remote after every completed phase
-
-### Active Work Tracking
-- `docs/roadmap/in-progress/` contains docs for phases currently being actively worked on (moved from `phases/` when work begins)
-- `docs/roadmap/completed/` contains docs for finished phases
-- `docs/roadmap/phases/` contains docs for phases not yet started
-- Keep the roadmap current on every meaningful change; if the session resets, this is the source of truth
+4. Workers implement, orchestrator verifies (typecheck, build, Playwright, acceptance criteria)
+5. Orchestrator verifies doc files (`GAME_DESIGN.md`, `ARCHITECTURE.md`) reflect changes
+6. On completion: check off all sub-steps, move the phase doc to `docs/roadmap/completed/`
 
 ## Sub-Agent Rules (Agent Tool)
 - **Complex tasks** (system integration, architecture, multi-file changes, debugging): use `model: "sonnet"`, `subagent_type: "general-purpose"`

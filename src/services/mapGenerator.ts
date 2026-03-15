@@ -288,12 +288,12 @@ function assignRoomTypes(
         node.type = 'combat'
         continue
       }
-      if (r === FORCED_ELITE_ROW) {
+      if (r === FORCED_ELITE_ROW && FORCED_ELITE_ROW >= 0) {
         node.type = 'elite'
         continue
       }
       if (r === PRE_BOSS_ROW) {
-        node.type = rng() < 0.5 ? 'rest' : 'shop'
+        node.type = 'rest'
         continue
       }
       if (r === BOSS_ROW) {

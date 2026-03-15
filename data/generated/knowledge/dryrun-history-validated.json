@@ -1,0 +1,2074 @@
+[
+  {
+    "id": "history-obama-first",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "people_leaders",
+    "categoryL1": "History",
+    "categoryL2": "people_leaders",
+    "categoryL3": "",
+    "statement": "Barack Obama became the 44th President of the United States in 2009, the first African American to hold the office.",
+    "quizQuestion": "What number president was Barack Obama?",
+    "correctAnswer": "44th",
+    "distractors": [
+      "42nd",
+      "43rd",
+      "45th",
+      "46th",
+      "40th",
+      "41st",
+      "47th",
+      "38th"
+    ],
+    "acceptableAnswers": [
+      "44th",
+      "44",
+      "forty-fourth"
+    ],
+    "explanation": "Obama was inaugurated on January 20, 2009, succeeding George W. Bush. He served two terms until 2017 and was awarded the Nobel Peace Prize in 2009.",
+    "wowFactor": "Obama announced his presidential campaign from the steps of the Old State Capitol where Abraham Lincoln once stood — a deliberate historical echo.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What number president was Barack Obama?",
+        "answer": "44th",
+        "distractors": [
+          "42nd",
+          "43rd",
+          "45th"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who was the 44th President of the United States?",
+        "answer": "Barack Obama",
+        "distractors": [
+          "Bill Clinton",
+          "George W. Bush",
+          "Joe Biden"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Barack Obama was the 44th President of the United States.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Barack Obama was the ___ President of the United States.",
+        "answer": "44th",
+        "distractors": [
+          "42nd",
+          "45th",
+          "43rd"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Barack_Obama",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Barack Obama standing at a podium before the U.S. Capitol building on a bright January day, confetti falling, enormous crowd spread behind him.",
+    "tags": [
+      "Obama",
+      "US president",
+      "history",
+      "politics"
+    ]
+  },
+  {
+    "id": "history-obama-nobel",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "people_leaders",
+    "categoryL1": "History",
+    "categoryL2": "people_leaders",
+    "categoryL3": "",
+    "statement": "Barack Obama received the Nobel Peace Prize in 2009, less than a year into his first presidential term.",
+    "quizQuestion": "In what year did Obama win the Nobel Peace Prize?",
+    "correctAnswer": "2009",
+    "distractors": [
+      "2010",
+      "2012",
+      "2008",
+      "2014",
+      "2016",
+      "2011",
+      "2013",
+      "2007"
+    ],
+    "acceptableAnswers": [
+      "2009"
+    ],
+    "explanation": "The Nobel Committee cited Obama's 'extraordinary efforts to strengthen international diplomacy and cooperation between peoples.' Many noted it was awarded remarkably early in his presidency, sparking debate.",
+    "wowFactor": "Obama won the Nobel Peace Prize before he'd even completed one year in office — the committee essentially bet on his future.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "When did Barack Obama receive the Nobel Peace Prize?",
+        "answer": "2009",
+        "distractors": [
+          "2010",
+          "2012",
+          "2008"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The 2009 Nobel Peace Prize was awarded to which US president?",
+        "answer": "Barack Obama",
+        "distractors": [
+          "Bill Clinton",
+          "Jimmy Carter",
+          "George W. Bush"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Barack Obama won the Nobel Peace Prize in 2009.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Barack Obama won the Nobel Peace Prize in ___.",
+        "answer": "2009",
+        "distractors": [
+          "2012",
+          "2008",
+          "2010"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Barack_Obama",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Barack Obama holding a gold Nobel Peace Prize medal in Oslo, Norway, with a dignified wood-paneled ceremony hall and rows of dignitaries behind him.",
+    "tags": [
+      "Obama",
+      "Nobel Peace Prize",
+      "2009",
+      "award"
+    ]
+  },
+  {
+    "id": "history-obama-healthcare",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "people_leaders",
+    "categoryL1": "History",
+    "categoryL2": "people_leaders",
+    "categoryL3": "",
+    "statement": "The Affordable Care Act (ACA), signed by Obama in 2010, extended health insurance coverage to over 20 million previously uninsured Americans.",
+    "quizQuestion": "What major US healthcare law did Obama sign in 2010?",
+    "correctAnswer": "Affordable Care Act",
+    "distractors": [
+      "Medicare Act",
+      "Health Security Act",
+      "American Health Plan",
+      "National Healthcare Bill",
+      "Universal Coverage Act",
+      "Patient Protection Act",
+      "Obama Insurance Reform",
+      "Public Health Reform Act"
+    ],
+    "acceptableAnswers": [
+      "Affordable Care Act",
+      "ACA",
+      "Obamacare"
+    ],
+    "explanation": "The ACA overhauled the US healthcare system, requiring insurers to cover people with pre-existing conditions, allowing children to stay on parents' insurance until 26, and expanding Medicaid.",
+    "wowFactor": "The ACA was the most sweeping change to US healthcare since Medicare in 1965 — passed despite nearly unanimous opposition from one major party.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What major healthcare law did Obama sign in 2010?",
+        "answer": "Affordable Care Act",
+        "distractors": [
+          "Medicare Act",
+          "Health Security Act",
+          "National Health Plan"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The ACA (Obamacare) extended coverage to how many uninsured Americans?",
+        "answer": "Over 20 million",
+        "distractors": [
+          "1 million",
+          "5 million",
+          "50 million"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Obama signed the Affordable Care Act in 2010.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ Care Act, signed by Obama, expanded health coverage to millions.",
+        "answer": "Affordable",
+        "distractors": [
+          "Universal",
+          "National",
+          "American"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Affordable_Care_Act",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Healthcare is politically sensitive in the US; present factually without editorial framing.",
+    "visualDescription": "Obama signing a large document at the White House desk, surrounded by legislators and healthcare advocates, American flags framing the scene.",
+    "tags": [
+      "Obama",
+      "ACA",
+      "healthcare",
+      "legislation",
+      "2010"
+    ]
+  },
+  {
+    "id": "history-hitler-rise",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "world_wars",
+    "categoryL1": "History",
+    "categoryL2": "world_wars",
+    "categoryL3": "",
+    "statement": "Adolf Hitler became Chancellor of Germany on January 30, 1933, appointed by President Hindenburg amid political crisis.",
+    "quizQuestion": "In what year did Hitler become Chancellor of Germany?",
+    "correctAnswer": "1933",
+    "distractors": [
+      "1929",
+      "1935",
+      "1939",
+      "1928",
+      "1930",
+      "1937",
+      "1931",
+      "1942"
+    ],
+    "acceptableAnswers": [
+      "1933",
+      "January 1933"
+    ],
+    "explanation": "Hitler was appointed Chancellor on January 30, 1933, after the Nazi Party won the most seats in the Reichstag. Within months he consolidated dictatorial power through the Enabling Act of 1933.",
+    "wowFactor": "Hitler came to power legally through democratic appointment — and immediately dismantled the very democracy that elevated him.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "When did Hitler become Chancellor of Germany?",
+        "answer": "1933",
+        "distractors": [
+          "1929",
+          "1935",
+          "1939"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who appointed Hitler as German Chancellor in 1933?",
+        "answer": "President Hindenburg",
+        "distractors": [
+          "The German Parliament",
+          "Kaiser Wilhelm II",
+          "The German military"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Hitler became Chancellor of Germany in 1933.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Hitler was appointed German Chancellor on January 30, ___.",
+        "answer": "1933",
+        "distractors": [
+          "1929",
+          "1939",
+          "1935"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 4,
+    "noveltyScore": 4,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Adolf_Hitler",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "Content concerns Nazi rise to power; present historically and factually. Appropriate for educational context.",
+    "visualDescription": "A stylized pixel-art image of the Reichstag building in 1933, a crowd gathered outside, dark political storm clouds forming on the horizon.",
+    "tags": [
+      "Hitler",
+      "Nazi",
+      "Germany",
+      "World War II",
+      "1933"
+    ]
+  },
+  {
+    "id": "history-hitler-ww2",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "world_wars",
+    "categoryL1": "History",
+    "categoryL2": "world_wars",
+    "categoryL3": "",
+    "statement": "Hitler's invasion of Poland on September 1, 1939 directly triggered World War II, when Britain and France declared war on Germany.",
+    "quizQuestion": "Which country did Hitler invade to start World War II?",
+    "correctAnswer": "Poland",
+    "distractors": [
+      "France",
+      "Belgium",
+      "Czechoslovakia",
+      "Austria",
+      "Netherlands",
+      "Denmark",
+      "Norway",
+      "Hungary"
+    ],
+    "acceptableAnswers": [
+      "Poland"
+    ],
+    "explanation": "Germany invaded Poland on September 1, 1939. Britain and France, who had pledged to defend Poland, declared war on Germany two days later on September 3, beginning WWII in Europe.",
+    "wowFactor": "The formal start of the deadliest conflict in human history began with a single border crossing at dawn on September 1, 1939.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which country did Hitler invade to start World War II?",
+        "answer": "Poland",
+        "distractors": [
+          "France",
+          "Belgium",
+          "Czechoslovakia"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which two countries declared war on Germany after the invasion of Poland?",
+        "answer": "Britain and France",
+        "distractors": [
+          "USA and Canada",
+          "Russia and France",
+          "Britain and Italy"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Hitler's invasion of Poland in 1939 triggered World War II.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Germany invaded ___ on September 1, 1939, starting World War II.",
+        "answer": "Poland",
+        "distractors": [
+          "France",
+          "Belgium",
+          "Norway"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 4,
+    "noveltyScore": 4,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Invasion_of_Poland",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "WWII content — appropriate for educational history. No glorification of conflict.",
+    "visualDescription": "A dark pixel map of Europe with a red arrow crossing the German-Polish border, clocks frozen at 4:45am, a black storm front spreading eastward.",
+    "tags": [
+      "Hitler",
+      "World War II",
+      "Poland",
+      "1939",
+      "invasion"
+    ]
+  },
+  {
+    "id": "history-hitler-holocaust",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "world_wars",
+    "categoryL1": "History",
+    "categoryL2": "world_wars",
+    "categoryL3": "",
+    "statement": "The Holocaust, orchestrated under Hitler's regime, resulted in the systematic murder of approximately 6 million Jewish people and millions of others.",
+    "quizQuestion": "How many Jewish people were killed in the Holocaust?",
+    "correctAnswer": "Approximately 6 million",
+    "distractors": [
+      "1 million",
+      "600,000",
+      "3 million",
+      "10 million",
+      "500,000",
+      "2 million",
+      "9 million",
+      "15 million"
+    ],
+    "acceptableAnswers": [
+      "6 million",
+      "approximately 6 million",
+      "about 6 million"
+    ],
+    "explanation": "The Holocaust (1941–1945) was the state-sponsored genocide of Jews under the Nazi regime. Alongside 6 million Jews, the Nazis also murdered Roma, disabled people, political opponents, LGBTQ+ people, and others.",
+    "wowFactor": "The Holocaust remains the most thoroughly documented genocide in history — yet it happened in a modern, educated nation within living memory.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many Jewish people were killed in the Holocaust?",
+        "answer": "Approximately 6 million",
+        "distractors": [
+          "1 million",
+          "3 million",
+          "10 million"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Holocaust was a genocide under which regime?",
+        "answer": "Nazi Germany",
+        "distractors": [
+          "Soviet Union",
+          "Imperial Japan",
+          "Fascist Italy"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Approximately 6 million Jews were murdered in the Holocaust.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Holocaust resulted in the murder of approximately ___ million Jewish people.",
+        "answer": "6",
+        "distractors": [
+          "1",
+          "3",
+          "10"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 4,
+    "noveltyScore": 4,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Holocaust",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 3,
+    "sensitivityNote": "Extremely sensitive — genocide and mass murder. Essential historical education; present solemnly and factually. No graphic details.",
+    "visualDescription": "A somber pixel memorial: six candle flames burning against a dark background, a Star of David rendered in pale gold, a single name beneath.",
+    "tags": [
+      "Holocaust",
+      "genocide",
+      "Hitler",
+      "World War II",
+      "history"
+    ]
+  },
+  {
+    "id": "history-confucius-golden-rule",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_classical",
+    "categoryL1": "History",
+    "categoryL2": "ancient_classical",
+    "categoryL3": "",
+    "statement": "Confucius articulated the Golden Rule around 500 BCE: 'Do not do to others what you do not want done to yourself.'",
+    "quizQuestion": "Which ancient philosopher first articulated the Golden Rule?",
+    "correctAnswer": "Confucius",
+    "distractors": [
+      "Plato",
+      "Aristotle",
+      "Socrates",
+      "Buddha",
+      "Jesus",
+      "Lao Tzu",
+      "Pythagoras",
+      "Sun Tzu"
+    ],
+    "acceptableAnswers": [
+      "Confucius",
+      "Kongzi",
+      "Kong Qiu"
+    ],
+    "explanation": "Confucius expressed the reciprocity principle in the Analects around 500 BCE — predating similar formulations in Western philosophy and major world religions by centuries.",
+    "wowFactor": "Confucius articulated the ethical foundation of nearly every major religion and philosophy 2,500 years ago — and most people have never heard of him.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which ancient philosopher first stated the Golden Rule around 500 BCE?",
+        "answer": "Confucius",
+        "distractors": [
+          "Plato",
+          "Buddha",
+          "Aristotle"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Confucius stated: 'Do not do to others what you do not want done to yourself.' This is called what?",
+        "answer": "The Golden Rule",
+        "distractors": [
+          "The Silver Rule",
+          "The Moral Law",
+          "The Ethical Principle"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Confucius articulated the Golden Rule around 500 BCE.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ articulated the Golden Rule: 'Do not do to others what you do not want done to yourself.'",
+        "answer": "Confucius",
+        "distractors": [
+          "Plato",
+          "Socrates",
+          "Buddha"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Confucius",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A robed ancient Chinese scholar seated under a blossoming tree, holding a bamboo scroll, students listening respectfully around him in soft morning light.",
+    "tags": [
+      "Confucius",
+      "philosophy",
+      "Golden Rule",
+      "ethics",
+      "ancient China"
+    ]
+  },
+  {
+    "id": "history-confucius-disciples",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_classical",
+    "categoryL1": "History",
+    "categoryL2": "ancient_classical",
+    "categoryL3": "",
+    "statement": "Confucius is said to have had 3,000 students and 72 disciples who mastered his teachings, according to the historical record.",
+    "quizQuestion": "How many students did Confucius reportedly teach?",
+    "correctAnswer": "Around 3,000",
+    "distractors": [
+      "100",
+      "500",
+      "1,000",
+      "10,000",
+      "50",
+      "200",
+      "5,000",
+      "72"
+    ],
+    "acceptableAnswers": [
+      "3000",
+      "around 3000",
+      "about 3000",
+      "3,000"
+    ],
+    "explanation": "According to the Records of the Grand Historian, Confucius had 3,000 students, of whom 72 mastered all six classical arts. His teachings formed the foundation of Confucianism.",
+    "wowFactor": "Confucius ran the ancient world's most influential school — 3,000 students and no campus, just walking conversations.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many students did Confucius reportedly teach?",
+        "answer": "Around 3,000",
+        "distractors": [
+          "100",
+          "500",
+          "10,000"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Of Confucius's 3,000 students, how many mastered all six classical arts?",
+        "answer": "72",
+        "distractors": [
+          "100",
+          "300",
+          "1,000"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Confucius reportedly taught around 3,000 students.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Confucius reportedly had ___ students, 72 of whom mastered his teachings.",
+        "answer": "3,000",
+        "distractors": [
+          "500",
+          "10,000",
+          "100"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Confucius",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A wide pixel-art painting of Confucius at the center surrounded by a sea of students in traditional robes, bamboo scrolls and ink brushes everywhere.",
+    "tags": [
+      "Confucius",
+      "education",
+      "disciples",
+      "ancient China"
+    ]
+  },
+  {
+    "id": "history-confucius-birthday",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_classical",
+    "categoryL1": "History",
+    "categoryL2": "ancient_classical",
+    "categoryL3": "",
+    "statement": "Confucius was born in 551 BCE in the state of Lu (modern Shandong, China) and died in 479 BCE at age 72.",
+    "quizQuestion": "In what year was Confucius born?",
+    "correctAnswer": "551 BCE",
+    "distractors": [
+      "500 BCE",
+      "600 BCE",
+      "400 BCE",
+      "479 BCE",
+      "350 BCE",
+      "700 BCE",
+      "450 BCE",
+      "200 BCE"
+    ],
+    "acceptableAnswers": [
+      "551 BCE",
+      "551 BC",
+      "around 551 BCE"
+    ],
+    "explanation": "Confucius was born Kong Qiu on September 28, 551 BCE — a date still celebrated as Teacher's Day in Taiwan and China. He lived 72 years, spending much of his life trying to find a ruler who would implement his ideas.",
+    "wowFactor": "Confucius's birthday is still officially celebrated as Teacher's Day in Taiwan and China — 2,500 years later his influence endures.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year was Confucius born?",
+        "answer": "551 BCE",
+        "distractors": [
+          "500 BCE",
+          "600 BCE",
+          "479 BCE"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Confucius's birthday (551 BCE) is celebrated as what holiday in Taiwan?",
+        "answer": "Teacher's Day",
+        "distractors": [
+          "Philosopher's Day",
+          "Wisdom Festival",
+          "Confucius Day"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Confucius was born in 551 BCE.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Confucius was born in ___ BCE in the state of Lu.",
+        "answer": "551",
+        "distractors": [
+          "500",
+          "600",
+          "479"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Confucius",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An ancient map of China showing the small state of Lu highlighted in gold, with a young Confucius as a pixel-art figure standing at its center.",
+    "tags": [
+      "Confucius",
+      "birthdate",
+      "ancient China",
+      "551 BCE"
+    ]
+  },
+  {
+    "id": "history-marx-communist-manifesto",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern_contemporary",
+    "categoryL1": "History",
+    "categoryL2": "modern_contemporary",
+    "categoryL3": "",
+    "statement": "Karl Marx and Friedrich Engels published The Communist Manifesto in 1848, ending with the rallying cry 'Workers of the world, unite!'",
+    "quizQuestion": "In what year was The Communist Manifesto published?",
+    "correctAnswer": "1848",
+    "distractors": [
+      "1867",
+      "1776",
+      "1900",
+      "1850",
+      "1789",
+      "1917",
+      "1840",
+      "1875"
+    ],
+    "acceptableAnswers": [
+      "1848",
+      "February 1848"
+    ],
+    "explanation": "The Manifesto was published in February 1848, just weeks before revolutions broke out across Europe. Marx and Engels argued history was driven by class struggle between those who own the means of production and the workers.",
+    "wowFactor": "The Communist Manifesto was published in 1848 — the year Europe erupted in simultaneous revolutions across more than 50 countries.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year did Marx and Engels publish The Communist Manifesto?",
+        "answer": "1848",
+        "distractors": [
+          "1867",
+          "1900",
+          "1917"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who co-authored The Communist Manifesto with Karl Marx?",
+        "answer": "Friedrich Engels",
+        "distractors": [
+          "Vladimir Lenin",
+          "Leon Trotsky",
+          "Rosa Luxemburg"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Communist Manifesto was published in 1848.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Marx and Engels published The Communist Manifesto in ___.",
+        "answer": "1848",
+        "distractors": [
+          "1867",
+          "1917",
+          "1900"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Communist_Manifesto",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Political content; present historically and factually without editorial framing.",
+    "visualDescription": "A weathered pamphlet cover with bold gothic text reading 'Communist Manifesto 1848', revolutionary red banners and cobblestone streets in the background.",
+    "tags": [
+      "Marx",
+      "Communist Manifesto",
+      "1848",
+      "socialism",
+      "philosophy"
+    ]
+  },
+  {
+    "id": "history-marx-das-kapital",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern_contemporary",
+    "categoryL1": "History",
+    "categoryL2": "modern_contemporary",
+    "categoryL3": "",
+    "statement": "Marx's Das Kapital (1867) analyzed capitalism and introduced the concept of surplus value — the profit extracted from workers' labor.",
+    "quizQuestion": "In what year did Marx publish Das Kapital?",
+    "correctAnswer": "1867",
+    "distractors": [
+      "1848",
+      "1900",
+      "1850",
+      "1883",
+      "1870",
+      "1775",
+      "1917",
+      "1890"
+    ],
+    "acceptableAnswers": [
+      "1867"
+    ],
+    "explanation": "Das Kapital Volume 1 was published in 1867. Marx argued that capitalism creates surplus value by paying workers less than the full value their labor produces. Volumes 2 and 3 were published posthumously by Engels.",
+    "wowFactor": "Das Kapital is one of the most cited and least-read books in history — it shaped the ideology of governments ruling a third of the world for most of the 20th century.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year was Marx's Das Kapital published?",
+        "answer": "1867",
+        "distractors": [
+          "1848",
+          "1900",
+          "1883"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Das Kapital introduced the concept of surplus value. What does this describe?",
+        "answer": "Profit extracted from workers' labor",
+        "distractors": [
+          "Interest on capital",
+          "State taxes on trade",
+          "Workers' wages over time"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Marx published Das Kapital in 1867.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Marx published Das Kapital in ___, analyzing capitalism.",
+        "answer": "1867",
+        "distractors": [
+          "1848",
+          "1900",
+          "1883"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Das_Kapital",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Political/economic theory — present factually as historical scholarship.",
+    "visualDescription": "A thick leather-bound book with gold lettering 'Das Kapital 1867' on a desk beside quill pens and scattered handwritten notes in Victorian London.",
+    "tags": [
+      "Marx",
+      "Das Kapital",
+      "1867",
+      "capitalism",
+      "economics"
+    ]
+  },
+  {
+    "id": "history-marx-poverty",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern_contemporary",
+    "categoryL1": "History",
+    "categoryL2": "modern_contemporary",
+    "categoryL3": "",
+    "statement": "Karl Marx spent much of his adult life in poverty in London, relying on financial support from Friedrich Engels to survive while writing his works.",
+    "quizQuestion": "Where did Karl Marx spend most of his adult life writing?",
+    "correctAnswer": "London",
+    "distractors": [
+      "Paris",
+      "Berlin",
+      "Brussels",
+      "Vienna",
+      "Moscow",
+      "Amsterdam",
+      "Geneva",
+      "Cologne"
+    ],
+    "acceptableAnswers": [
+      "London",
+      "London, England"
+    ],
+    "explanation": "Marx was exiled from Prussia and France and settled in London in 1849, where he lived in poverty for years. He spent much of his time in the British Museum reading room, doing research for Das Kapital.",
+    "wowFactor": "The man who wrote the blueprint for communism was so poor in London that he sometimes couldn't afford to mail his own manuscripts.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where did Marx spend most of his adult life writing his major works?",
+        "answer": "London",
+        "distractors": [
+          "Paris",
+          "Berlin",
+          "Brussels"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Marx did much of his writing at the reading room of which famous library?",
+        "answer": "British Museum",
+        "distractors": [
+          "Bodleian Library",
+          "Bibliothèque nationale",
+          "Berlin State Library"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Marx spent much of his adult life in poverty in London.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Marx settled in ___ in 1849 after being exiled from Prussia and France.",
+        "answer": "London",
+        "distractors": [
+          "Paris",
+          "Brussels",
+          "Berlin"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Karl_Marx",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A gaunt Karl Marx hunched over papers in a cramped Victorian London flat, candle burning low, stacks of books towering, the British Museum dome visible through the window.",
+    "tags": [
+      "Marx",
+      "London",
+      "exile",
+      "poverty",
+      "British Museum"
+    ]
+  },
+  {
+    "id": "history-plato-academy",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_classical",
+    "categoryL1": "History",
+    "categoryL2": "ancient_classical",
+    "categoryL3": "",
+    "statement": "Plato founded the Academy in Athens around 387 BCE — considered the first institution of higher learning in the Western world.",
+    "quizQuestion": "What did Plato found in Athens around 387 BCE?",
+    "correctAnswer": "The Academy",
+    "distractors": [
+      "The Lyceum",
+      "The Agora",
+      "The Parthenon school",
+      "The Stoa",
+      "The Gymnasium",
+      "The Sophist school",
+      "The Senate of Athens",
+      "The School of Rhodes"
+    ],
+    "acceptableAnswers": [
+      "The Academy",
+      "Plato's Academy",
+      "the academy"
+    ],
+    "explanation": "The Academy operated for over 900 years and is often called the world's first university. Among its students was Aristotle, who studied there for 20 years before founding his own school, the Lyceum.",
+    "wowFactor": "Plato's Academy operated for more than 900 years — longer than any modern university has yet existed.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What institution did Plato found in Athens around 387 BCE?",
+        "answer": "The Academy",
+        "distractors": [
+          "The Lyceum",
+          "The Agora",
+          "The Stoa"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which famous philosopher studied at Plato's Academy for 20 years?",
+        "answer": "Aristotle",
+        "distractors": [
+          "Socrates",
+          "Epicurus",
+          "Pythagoras"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Plato founded the Academy, considered the first Western university.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Plato founded the ___ in Athens around 387 BCE.",
+        "answer": "Academy",
+        "distractors": [
+          "Lyceum",
+          "Stoa",
+          "Gymnasium"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Platonic_Academy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Plato teaching a small group of toga-clad students on marble steps surrounded by olive trees and Athenian columns, scroll in hand, gesturing at the sky.",
+    "tags": [
+      "Plato",
+      "Academy",
+      "Athens",
+      "education",
+      "philosophy"
+    ]
+  },
+  {
+    "id": "history-lenin-revolution",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern_contemporary",
+    "categoryL1": "History",
+    "categoryL2": "modern_contemporary",
+    "categoryL3": "",
+    "statement": "Lenin led the Bolshevik Revolution in October 1917, overthrowing the Russian Provisional Government and establishing Soviet rule.",
+    "quizQuestion": "In what year did Lenin lead the Bolshevik Revolution?",
+    "correctAnswer": "1917",
+    "distractors": [
+      "1905",
+      "1914",
+      "1920",
+      "1922",
+      "1910",
+      "1900",
+      "1924",
+      "1916"
+    ],
+    "acceptableAnswers": [
+      "1917",
+      "October 1917"
+    ],
+    "explanation": "The October Revolution (November 7, 1917 in the modern calendar) saw the Bolsheviks seize power, ending eight months of Provisional Government rule. It triggered the Russian Civil War and eventually led to the creation of the USSR.",
+    "wowFactor": "Lenin's revolution took just a few days to topple a government — but the civil war it triggered lasted three more years and killed millions.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year did Lenin lead the Bolshevik Revolution?",
+        "answer": "1917",
+        "distractors": [
+          "1905",
+          "1922",
+          "1920"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which political party did Lenin lead during the 1917 Russian Revolution?",
+        "answer": "Bolsheviks",
+        "distractors": [
+          "Mensheviks",
+          "Social Revolutionaries",
+          "Kadets"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Lenin led the Bolshevik Revolution in 1917.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Lenin led the Bolshevik Revolution in ___, overthrowing the Russian Provisional Government.",
+        "answer": "1917",
+        "distractors": [
+          "1905",
+          "1920",
+          "1914"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/October_Revolution",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Communist revolution — present historically and factually.",
+    "visualDescription": "Lenin standing on a dramatic pixel-art podium before a cheering crowd in winter coats, red banners unfurling against a grey Petrograd sky.",
+    "tags": [
+      "Lenin",
+      "Bolshevik",
+      "Russian Revolution",
+      "1917",
+      "Soviet Union"
+    ]
+  },
+  {
+    "id": "history-lenin-nep",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern_contemporary",
+    "categoryL1": "History",
+    "categoryL2": "modern_contemporary",
+    "categoryL3": "",
+    "statement": "Lenin introduced the New Economic Policy (NEP) in 1921, temporarily allowing some private enterprise after Bolshevik policies caused famine.",
+    "quizQuestion": "What policy did Lenin introduce in 1921 to address economic crisis?",
+    "correctAnswer": "New Economic Policy (NEP)",
+    "distractors": [
+      "Five-Year Plan",
+      "Great Leap Forward",
+      "War Communism",
+      "Glasnost",
+      "Perestroika",
+      "Marshall Plan",
+      "Third International",
+      "Red Economy Plan"
+    ],
+    "acceptableAnswers": [
+      "New Economic Policy",
+      "NEP"
+    ],
+    "explanation": "After War Communism caused widespread famine and peasant revolts, Lenin introduced the NEP, which allowed small-scale private trade. It stabilized the Soviet economy until Stalin replaced it with forced collectivization.",
+    "wowFactor": "Lenin — the Communist revolutionary — was forced to temporarily re-introduce capitalism to save his own revolution from starvation.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What economic policy did Lenin introduce in 1921?",
+        "answer": "New Economic Policy (NEP)",
+        "distractors": [
+          "Five-Year Plan",
+          "War Communism",
+          "Glasnost"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The NEP (New Economic Policy) temporarily allowed what in the Soviet Union?",
+        "answer": "Private enterprise",
+        "distractors": [
+          "Foreign investment",
+          "Multi-party elections",
+          "Religious freedom"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Lenin's New Economic Policy temporarily allowed limited private enterprise.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Lenin's ___ Economic Policy of 1921 allowed limited private trade to fight famine.",
+        "answer": "New",
+        "distractors": [
+          "War",
+          "Red",
+          "State"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/New_Economic_Policy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Soviet economic history — present factually.",
+    "visualDescription": "A Soviet market stall in 1921 with farmers selling grain and goods, a red propaganda poster in the background, the NEP label floating above the scene.",
+    "tags": [
+      "Lenin",
+      "NEP",
+      "Soviet Union",
+      "economics",
+      "1921"
+    ]
+  },
+  {
+    "id": "history-mandela-imprisonment",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "social_cultural",
+    "categoryL1": "History",
+    "categoryL2": "social_cultural",
+    "categoryL3": "",
+    "statement": "Nelson Mandela was imprisoned for 27 years on Robben Island and in other South African prisons for anti-apartheid activism.",
+    "quizQuestion": "How many years was Nelson Mandela imprisoned?",
+    "correctAnswer": "27 years",
+    "distractors": [
+      "10 years",
+      "15 years",
+      "5 years",
+      "20 years",
+      "30 years",
+      "7 years",
+      "40 years",
+      "3 years"
+    ],
+    "acceptableAnswers": [
+      "27 years",
+      "27",
+      "twenty-seven years"
+    ],
+    "explanation": "Mandela was sentenced in 1964 and released in 1990. He spent 18 of those years on Robben Island, a maximum security prison off the coast of Cape Town, in a small cell.",
+    "wowFactor": "Mandela left prison after 27 years and became president of the country that had imprisoned him — rather than seeking revenge.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many years was Nelson Mandela imprisoned?",
+        "answer": "27 years",
+        "distractors": [
+          "10 years",
+          "20 years",
+          "15 years"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "On which island did Mandela spend most of his imprisonment?",
+        "answer": "Robben Island",
+        "distractors": [
+          "Alcatraz",
+          "Green Island",
+          "Cape Island"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Nelson Mandela was imprisoned for 27 years.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mandela spent ___ years in prison before being released in 1990.",
+        "answer": "27",
+        "distractors": [
+          "10",
+          "15",
+          "40"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nelson_Mandela",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Nelson Mandela walking out of a prison gate into bright sunlight, fist raised, a jubilant crowd pressing forward, Winnie Mandela beside him.",
+    "tags": [
+      "Mandela",
+      "Robben Island",
+      "apartheid",
+      "imprisonment",
+      "South Africa"
+    ]
+  },
+  {
+    "id": "history-mandela-president",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "social_cultural",
+    "categoryL1": "History",
+    "categoryL2": "social_cultural",
+    "categoryL3": "",
+    "statement": "Mandela became South Africa's first Black president in 1994 after the country's first fully democratic elections ending apartheid.",
+    "quizQuestion": "In what year did Mandela become South Africa's president?",
+    "correctAnswer": "1994",
+    "distractors": [
+      "1990",
+      "1992",
+      "1996",
+      "2000",
+      "1988",
+      "1998",
+      "2002",
+      "1985"
+    ],
+    "acceptableAnswers": [
+      "1994"
+    ],
+    "explanation": "South Africa's first multiracial elections were held on April 27, 1994. Mandela's ANC won with 63% of the vote. He served as president until 1999, prioritizing reconciliation over retribution.",
+    "wowFactor": "The man imprisoned as a terrorist by his own government became its president five years after release — in what many called the greatest political comeback in history.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year did Mandela become South Africa's first Black president?",
+        "answer": "1994",
+        "distractors": [
+          "1990",
+          "1992",
+          "1996"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The 1994 South African elections ended what system of racial segregation?",
+        "answer": "Apartheid",
+        "distractors": [
+          "Segregation",
+          "Colonialism",
+          "Jim Crow"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mandela became South Africa's first Black president in 1994.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mandela became South Africa's first Black president after elections in ___.",
+        "answer": "1994",
+        "distractors": [
+          "1990",
+          "1996",
+          "2000"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nelson_Mandela",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Mandela in presidential inauguration robes on the steps of the Union Buildings in Pretoria, South Africa, a rainbow flag of the new nation flying above.",
+    "tags": [
+      "Mandela",
+      "president",
+      "South Africa",
+      "1994",
+      "apartheid",
+      "elections"
+    ]
+  },
+  {
+    "id": "history-mandela-ubuntu",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "social_cultural",
+    "categoryL1": "History",
+    "categoryL2": "social_cultural",
+    "categoryL3": "",
+    "statement": "Mandela championed the African philosophy of Ubuntu — 'I am because we are' — as a framework for South Africa's post-apartheid reconciliation.",
+    "quizQuestion": "What African philosophy did Mandela promote for post-apartheid reconciliation?",
+    "correctAnswer": "Ubuntu",
+    "distractors": [
+      "Ujamaa",
+      "Harambee",
+      "Negritude",
+      "Afrocentrism",
+      "Pan-Africanism",
+      "Sankofa",
+      "Utu",
+      "Communalism"
+    ],
+    "acceptableAnswers": [
+      "Ubuntu",
+      "ubuntu"
+    ],
+    "explanation": "Ubuntu is a Southern African philosophy emphasizing collective humanity and interdependence. Mandela invoked it to encourage reconciliation between races rather than revenge after 46 years of apartheid.",
+    "wowFactor": "Ubuntu — 'I am because we are' — is the philosophy Mandela used to hold a fractured nation together instead of tearing it apart.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What African philosophy did Mandela champion for national reconciliation?",
+        "answer": "Ubuntu",
+        "distractors": [
+          "Ujamaa",
+          "Harambee",
+          "Pan-Africanism"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The philosophy Ubuntu is summarized as 'I am because ___'.",
+        "answer": "We are",
+        "distractors": [
+          "God wills it",
+          "History demands",
+          "I believe"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ubuntu is the African philosophy Mandela promoted during South Africa's reconciliation.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mandela promoted ___, the African philosophy meaning 'I am because we are.'",
+        "answer": "Ubuntu",
+        "distractors": [
+          "Ujamaa",
+          "Sankofa",
+          "Harambee"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ubuntu_philosophy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A circle of diverse South Africans of all races holding hands in a sun-drenched open field, the word 'Ubuntu' glowing in warm gold above them.",
+    "tags": [
+      "Mandela",
+      "Ubuntu",
+      "philosophy",
+      "reconciliation",
+      "South Africa"
+    ]
+  },
+  {
+    "id": "history-caesar-crossing",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_classical",
+    "categoryL1": "History",
+    "categoryL2": "ancient_classical",
+    "categoryL3": "",
+    "statement": "Caesar crossed the Rubicon river in 49 BCE, an act of war against the Roman Senate that sparked a civil war and led to his dictatorship.",
+    "quizQuestion": "What did Caesar do in 49 BCE that triggered a Roman civil war?",
+    "correctAnswer": "Crossed the Rubicon",
+    "distractors": [
+      "Declared himself emperor",
+      "Invaded Egypt",
+      "Burned the Senate",
+      "Exiled Pompey",
+      "Conquered Britain",
+      "Assassinated a rival",
+      "Defied the Vestal Virgins",
+      "Marched on Carthage"
+    ],
+    "acceptableAnswers": [
+      "crossed the Rubicon",
+      "crossing the Rubicon"
+    ],
+    "explanation": "Roman law forbade generals from bringing armies into Italy. By crossing the Rubicon with his army, Caesar committed an irreversible act of rebellion. His famous words: 'The die is cast.' The phrase 'crossing the Rubicon' still means a point of no return.",
+    "wowFactor": "By crossing one small river, Caesar changed the ancient world forever — and gave us a phrase still used today: 'crossing the Rubicon.'",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Caesar do in 49 BCE that started a civil war?",
+        "answer": "Crossed the Rubicon",
+        "distractors": [
+          "Declared himself emperor",
+          "Invaded Egypt",
+          "Exiled Pompey"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Caesar's words 'The die is cast' were said when he crossed which river?",
+        "answer": "The Rubicon",
+        "distractors": [
+          "The Tiber",
+          "The Rhine",
+          "The Po"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Caesar crossing the Rubicon in 49 BCE triggered a civil war.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Caesar crossed the ___ in 49 BCE, an act that sparked civil war.",
+        "answer": "Rubicon",
+        "distractors": [
+          "Tiber",
+          "Rhine",
+          "Nile"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Crossing_the_Rubicon",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Caesar in full armor astride a white horse, leading Roman legions across a shallow river at dawn, a defiant expression under his laurel wreath.",
+    "tags": [
+      "Caesar",
+      "Rubicon",
+      "Rome",
+      "civil war",
+      "49 BCE"
+    ]
+  },
+  {
+    "id": "history-caesar-ides",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient_classical",
+    "categoryL1": "History",
+    "categoryL2": "ancient_classical",
+    "categoryL3": "",
+    "statement": "Julius Caesar was assassinated on the Ides of March (March 15) 44 BCE by a group of senators led by Brutus and Cassius.",
+    "quizQuestion": "On what date was Julius Caesar assassinated?",
+    "correctAnswer": "March 15, 44 BCE",
+    "distractors": [
+      "March 1, 44 BCE",
+      "January 1, 44 BCE",
+      "April 15, 44 BCE",
+      "July 4, 44 BCE",
+      "December 25, 44 BCE",
+      "October 31, 44 BCE",
+      "February 14, 44 BCE",
+      "March 15, 46 BCE"
+    ],
+    "acceptableAnswers": [
+      "March 15, 44 BCE",
+      "Ides of March",
+      "15 March 44 BCE",
+      "44 BCE"
+    ],
+    "explanation": "Caesar was stabbed 23 times in the Theatre of Pompey by senators who feared he would make himself permanent king. Shakespeare's immortalized warning: 'Beware the Ides of March.'",
+    "wowFactor": "Caesar was warned by a soothsayer to 'beware the Ides of March' — and according to historians, he ignored the warning on the very day he was killed.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "On what date was Julius Caesar assassinated?",
+        "answer": "March 15, 44 BCE",
+        "distractors": [
+          "March 1, 44 BCE",
+          "April 15, 44 BCE",
+          "January 1, 44 BCE"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who led the assassination of Julius Caesar on the Ides of March?",
+        "answer": "Brutus and Cassius",
+        "distractors": [
+          "Pompey and Crassus",
+          "Cicero and Antony",
+          "Octavian and Lepidus"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Julius Caesar was assassinated on March 15, 44 BCE.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Caesar was assassinated on the Ides of March, ___ BCE.",
+        "answer": "44",
+        "distractors": [
+          "46",
+          "40",
+          "50"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Assassination_of_Julius_Caesar",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A dramatic pixel scene of senators in white togas surrounding Caesar in the marble Senate chamber, daggers raised, Caesar clutching his toga in shock.",
+    "tags": [
+      "Caesar",
+      "assassination",
+      "Ides of March",
+      "44 BCE",
+      "Rome"
+    ]
+  },
+  {
+    "id": "history-genghis-yasa",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "medieval",
+    "categoryL1": "History",
+    "categoryL2": "medieval",
+    "categoryL3": "",
+    "statement": "Genghis Khan established one of history's first legal codes, the Yasa, which included religious freedom for all conquered peoples.",
+    "quizQuestion": "What was the name of Genghis Khan's legal code?",
+    "correctAnswer": "The Yasa",
+    "distractors": [
+      "The Code of Hammurabi",
+      "The Magna Carta",
+      "The Mongol Constitution",
+      "The Steppe Laws",
+      "The Khan Decree",
+      "The Golden Book",
+      "The Edict of Khan",
+      "The War Code"
+    ],
+    "acceptableAnswers": [
+      "Yasa",
+      "the Yasa",
+      "Great Yasa"
+    ],
+    "explanation": "The Yasa (or Yasak) was Genghis Khan's imperial law code. It banned theft, required loyalty oaths, protected diplomatic envoys, and notably guaranteed freedom of religion — revolutionary for the 13th century.",
+    "wowFactor": "Genghis Khan — history's most feared conqueror — enforced freedom of religion across his entire empire centuries before Western democracies enshrined it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the name of Genghis Khan's imperial law code?",
+        "answer": "The Yasa",
+        "distractors": [
+          "The Magna Carta",
+          "The Code of Hammurabi",
+          "The Steppe Laws"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Genghis Khan's Yasa notably guaranteed which freedom to all conquered peoples?",
+        "answer": "Religious freedom",
+        "distractors": [
+          "Freedom of movement",
+          "Right to vote",
+          "Property rights"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Genghis Khan's law code included religious freedom for conquered peoples.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Genghis Khan's legal code was called the ___.",
+        "answer": "Yasa",
+        "distractors": [
+          "Magna Carta",
+          "Edict",
+          "Decree"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Yasa",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Mongol scribe at a wooden table inscribing laws onto a scroll in the great Khan's tent, religious symbols from many faiths hanging peacefully on the tent walls.",
+    "tags": [
+      "Genghis Khan",
+      "Yasa",
+      "law",
+      "religious freedom",
+      "Mongol Empire"
+    ]
+  },
+  {
+    "id": "history-genghis-dna",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "medieval",
+    "categoryL1": "History",
+    "categoryL2": "medieval",
+    "categoryL3": "",
+    "statement": "An estimated 16 million men alive today are direct paternal descendants of Genghis Khan — about 0.5% of all living males.",
+    "quizQuestion": "What percentage of living males today are estimated to be descended from Genghis Khan?",
+    "correctAnswer": "About 0.5%",
+    "distractors": [
+      "0.01%",
+      "5%",
+      "10%",
+      "0.1%",
+      "1%",
+      "20%",
+      "25%",
+      "0.001%"
+    ],
+    "acceptableAnswers": [
+      "0.5%",
+      "about 0.5%",
+      "half a percent"
+    ],
+    "explanation": "A 2003 genetic study found that about 8% of men in the former Mongol Empire share a Y-chromosome lineage traced to a single common ancestor from around the 10th century — likely Genghis Khan.",
+    "wowFactor": "One in 200 men alive on Earth today is a direct patrilineal descendant of Genghis Khan — possibly the most prolific genetic legacy in human history.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What percentage of living males are estimated to descend from Genghis Khan?",
+        "answer": "About 0.5%",
+        "distractors": [
+          "5%",
+          "10%",
+          "0.1%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "About 16 million men today share a Y-chromosome linked to which historical figure?",
+        "answer": "Genghis Khan",
+        "distractors": [
+          "Julius Caesar",
+          "Alexander the Great",
+          "Attila the Hun"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: An estimated 16 million men alive today are paternal descendants of Genghis Khan.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "About ___ million men alive today are estimated to be Genghis Khan's descendants.",
+        "answer": "16",
+        "distractors": [
+          "1",
+          "100",
+          "5"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Genghis_Khan",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Implies sexual conquest through warfare; present as genetic/historical fact, not glorification.",
+    "visualDescription": "A sweeping pixel graphic of a globe with glowing dots spread across Asia and Eastern Europe, each dot a living descendant, connected by golden threads to a central Mongol figure.",
+    "tags": [
+      "Genghis Khan",
+      "genetics",
+      "descendants",
+      "DNA",
+      "history"
+    ]
+  },
+  {
+    "id": "history-victoria-longest-reign",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "early_modern",
+    "categoryL1": "History",
+    "categoryL2": "early_modern",
+    "categoryL3": "",
+    "statement": "Queen Victoria reigned for 63 years (1837–1901), the longest of any British monarch until Queen Elizabeth II surpassed her in 2015.",
+    "quizQuestion": "How long did Queen Victoria reign?",
+    "correctAnswer": "63 years",
+    "distractors": [
+      "25 years",
+      "40 years",
+      "50 years",
+      "70 years",
+      "30 years",
+      "45 years",
+      "80 years",
+      "20 years"
+    ],
+    "acceptableAnswers": [
+      "63 years",
+      "about 63 years",
+      "over 63 years"
+    ],
+    "explanation": "Victoria came to the throne aged 18 in 1837 and died in 1901. Her 63-year reign spanned Britain's Industrial Revolution and the height of the British Empire. Elizabeth II surpassed her record in 2015 after 63 years and 216 days on the throne.",
+    "wowFactor": "Queen Victoria was on the British throne for so long that most of her subjects had never known any other monarch.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long did Queen Victoria reign?",
+        "answer": "63 years",
+        "distractors": [
+          "40 years",
+          "50 years",
+          "70 years"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which British monarch surpassed Victoria's 63-year reign record in 2015?",
+        "answer": "Queen Elizabeth II",
+        "distractors": [
+          "King George V",
+          "King Edward VII",
+          "King George VI"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Queen Victoria reigned for 63 years from 1837 to 1901.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Queen Victoria reigned from 1837 to 1901, a total of ___ years.",
+        "answer": "63",
+        "distractors": [
+          "40",
+          "50",
+          "70"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Queen_Victoria",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An elderly Queen Victoria in full black mourning dress seated on a golden throne, crown atop her head, a giant clock on the wall showing 63 years of ticks.",
+    "tags": [
+      "Victoria",
+      "British monarch",
+      "reign",
+      "history",
+      "19th century"
+    ]
+  },
+  {
+    "id": "history-victoria-empire",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "early_modern",
+    "categoryL1": "History",
+    "categoryL2": "early_modern",
+    "categoryL3": "",
+    "statement": "At its height under Victoria, the British Empire covered 24% of the Earth's total land area and governed 400 million people.",
+    "quizQuestion": "What percentage of Earth's land did the British Empire cover at its Victorian peak?",
+    "correctAnswer": "About 24%",
+    "distractors": [
+      "10%",
+      "5%",
+      "50%",
+      "15%",
+      "35%",
+      "3%",
+      "75%",
+      "40%"
+    ],
+    "acceptableAnswers": [
+      "24%",
+      "about 24%",
+      "nearly a quarter"
+    ],
+    "explanation": "By the late 19th century the British Empire was the largest in history, spanning every continent. The phrase 'the sun never sets on the British Empire' was literally true — Britain always had territory in sunlight.",
+    "wowFactor": "The British Empire was so vast that the sun literally never set on it — there was always British territory in daylight somewhere on Earth.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What percentage of Earth's land did the British Empire cover at its peak?",
+        "answer": "About 24%",
+        "distractors": [
+          "10%",
+          "50%",
+          "15%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The phrase 'the sun never sets on the British Empire' was coined because the empire was always in what condition?",
+        "answer": "Always in sunlight somewhere",
+        "distractors": [
+          "Always at war",
+          "Always expanding",
+          "Always the richest nation"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The British Empire covered about 24% of Earth's land at its peak.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "At its peak, the British Empire governed ___ million people.",
+        "answer": "400",
+        "distractors": [
+          "100",
+          "1000",
+          "50"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/British_Empire",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "British imperialism is a sensitive historical topic; present factually and objectively.",
+    "visualDescription": "A Victorian-era world map with vast pink swaths across every continent marking British territory, the young Queen Victoria's silhouette inset in the corner.",
+    "tags": [
+      "Victoria",
+      "British Empire",
+      "imperialism",
+      "19th century",
+      "history"
+    ]
+  }
+]

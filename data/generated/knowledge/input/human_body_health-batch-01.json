@@ -1,0 +1,161 @@
+{
+  "domain": "human_body_health",
+  "batchIndex": 1,
+  "totalBatches": 3,
+  "entities": [
+    {
+      "qid": "Q144",
+      "label": "dog",
+      "description": "domesticated species of canid",
+      "subcategory": "anatomy_organs",
+      "sitelinks": 331,
+      "monthlyPageviews": 165500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q7364",
+      "label": "eye",
+      "description": "organ that detects light and converts it into electro-chemical impulses in neurons",
+      "subcategory": "brain_neuro",
+      "sitelinks": 260,
+      "monthlyPageviews": 130000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q1072",
+      "label": "heart",
+      "description": "inner organ for the circulation of blood",
+      "subcategory": "cardiovascular",
+      "sitelinks": 252,
+      "monthlyPageviews": 126000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q9368",
+      "label": "liver",
+      "description": "vertebrate organ involved in metabolism",
+      "subcategory": "digestion_metabolism",
+      "sitelinks": 195,
+      "monthlyPageviews": 97500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q1063",
+      "label": "evolution",
+      "description": "change in heritable characteristics of biological populations over successive generations",
+      "subcategory": "genetics_dna",
+      "sitelinks": 196,
+      "monthlyPageviews": 98000,
+      "properties": {
+        "discoverer": "Q1035"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q11190",
+      "label": "medicine",
+      "description": "field of study for diagnosing, treating and preventing disease",
+      "subcategory": "immunity_disease",
+      "sitelinks": 246,
+      "monthlyPageviews": 123000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q39631",
+      "label": "physician",
+      "description": "professional who practices medicine",
+      "subcategory": "medical_science",
+      "sitelinks": 176,
+      "monthlyPageviews": 88000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q7362",
+      "label": "ear",
+      "description": "organ that detects sound; organ of hearing and balance",
+      "subcategory": "senses_perception",
+      "sitelinks": 227,
+      "monthlyPageviews": 113500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q146",
+      "label": "cat",
+      "description": "small domesticated carnivorous mammal",
+      "subcategory": "anatomy_organs",
+      "sitelinks": 317,
+      "monthlyPageviews": 158500,
+      "properties": {
+        "startDate": "-8000-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q1073",
+      "label": "brain",
+      "description": "organ that serves as the center of the nervous system in all vertebrate and most invertebrate animals",
+      "subcategory": "brain_neuro",
+      "sitelinks": 222,
+      "monthlyPageviews": 111000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q7873",
+      "label": "blood",
+      "description": "organic fluid which transports nutrients throughout the organism",
+      "subcategory": "cardiovascular",
+      "sitelinks": 236,
+      "monthlyPageviews": 118000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q1029907",
+      "label": "stomach",
+      "description": "digestive organ",
+      "subcategory": "digestion_metabolism",
+      "sitelinks": 171,
+      "monthlyPageviews": 85500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q514",
+      "label": "anatomy",
+      "description": "study of the internal structure of organisms and their parts",
+      "subcategory": "genetics_dna",
+      "sitelinks": 189,
+      "monthlyPageviews": 94500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q84263196",
+      "label": "COVID-19",
+      "description": "contagious disease caused by SARS-CoV-2",
+      "subcategory": "immunity_disease",
+      "sitelinks": 226,
+      "monthlyPageviews": 113000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q16917",
+      "label": "hospital",
+      "description": "health care facility",
+      "subcategory": "medical_science",
+      "sitelinks": 159,
+      "monthlyPageviews": 79500,
+      "properties": {},
+      "processed": false
+    }
+  ]
+}

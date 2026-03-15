@@ -1,0 +1,185 @@
+{
+  "domain": "general_knowledge",
+  "batchIndex": 1,
+  "totalBatches": 3,
+  "entities": [
+    {
+      "qid": "Q9418",
+      "label": "psychology",
+      "description": "study of mental functions and behaviours",
+      "subcategory": "everyday_science",
+      "sitelinks": 243,
+      "monthlyPageviews": 121500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q68",
+      "label": "computer",
+      "description": "general-purpose device for performing arithmetic or logical operations",
+      "subcategory": "inventions_tech",
+      "sitelinks": 294,
+      "monthlyPageviews": 147000,
+      "properties": {
+        "discoverer": "Q46633"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q7755",
+      "label": "constitution",
+      "description": "set of fundamental principles or established precedents according to which a state or other organization is governed",
+      "subcategory": "landmarks_wonders",
+      "sitelinks": 203,
+      "monthlyPageviews": 101500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q52",
+      "label": "Wikipedia",
+      "description": "free multilingual online encyclopedia",
+      "subcategory": "oddities",
+      "sitelinks": 377,
+      "monthlyPageviews": 188500,
+      "properties": {
+        "country": "Q30",
+        "creator": "Q181",
+        "inception": "+2001-01-15T00:00:00Z",
+        "genre": "Q136559991",
+        "countryOfOrigin": "Q30"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q1845",
+      "label": "Bible",
+      "description": "collection of sacred books in Judaism and Christianity",
+      "subcategory": "pop_culture",
+      "sitelinks": 372,
+      "monthlyPageviews": 186000,
+      "properties": {
+        "genre": "Q12617225"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q571",
+      "label": "book",
+      "description": "medium for recording information (words or images) typically on bound pages or more abstractly in electronic or audio form",
+      "subcategory": "records_firsts",
+      "sitelinks": 276,
+      "monthlyPageviews": 138000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q1860",
+      "label": "English",
+      "description": "West Germanic language",
+      "subcategory": "words_language",
+      "sitelinks": 391,
+      "monthlyPageviews": 195500,
+      "properties": {
+        "country": "Q16641"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q8134",
+      "label": "economics",
+      "description": "social science that studies the production, distribution, and consumption of goods and services",
+      "subcategory": "everyday_science",
+      "sitelinks": 237,
+      "monthlyPageviews": 118500,
+      "properties": {
+        "movement": "Q271857"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q75",
+      "label": "Internet",
+      "description": "global system of connected computer networks based on IP addressing and routing protocols",
+      "subcategory": "inventions_tech",
+      "sitelinks": 292,
+      "monthlyPageviews": 146000,
+      "properties": {
+        "discoverer": "Q92743",
+        "inception": "+1969-10-29T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q12280",
+      "label": "bridge",
+      "description": "structure that spans and provides a passage over a road, railway, river, or some other obstacle",
+      "subcategory": "landmarks_wonders",
+      "sitelinks": 201,
+      "monthlyPageviews": 100500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q432",
+      "label": "Islam",
+      "description": "monotheistic Abrahamic religion founded by Muhammad",
+      "subcategory": "oddities",
+      "sitelinks": 332,
+      "monthlyPageviews": 166000,
+      "properties": {
+        "creator": "Q2095353",
+        "inception": "+0631-00-00T00:00:00Z",
+        "countryOfOrigin": "Q169977"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q2736",
+      "label": "association football",
+      "description": "sport that is practiced between two teams of eleven players",
+      "subcategory": "pop_culture",
+      "sitelinks": 295,
+      "monthlyPageviews": 147500,
+      "properties": {
+        "countryOfOrigin": "Q174193"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q1368",
+      "label": "money",
+      "description": "object or record accepted as payment",
+      "subcategory": "records_firsts",
+      "sitelinks": 271,
+      "monthlyPageviews": 135500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q188",
+      "label": "German",
+      "description": "West Germanic language native to Central Europe",
+      "subcategory": "words_language",
+      "sitelinks": 352,
+      "monthlyPageviews": 176000,
+      "properties": {
+        "country": "Q183"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q7809",
+      "label": "UNESCO",
+      "description": "specialised agency of the United Nations for education, sciences, and culture",
+      "subcategory": "everyday_science",
+      "sitelinks": 217,
+      "monthlyPageviews": 108500,
+      "properties": {
+        "country": "Q142",
+        "inception": "+1945-11-16T00:00:00Z"
+      },
+      "processed": false
+    }
+  ]
+}

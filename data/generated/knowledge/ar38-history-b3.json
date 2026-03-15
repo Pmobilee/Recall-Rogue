@@ -1,0 +1,2081 @@
+[
+  {
+    "id": "history-augustus-first-emperor",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient rome",
+    "categoryL1": "history",
+    "categoryL2": "ancient_rome",
+    "categoryL3": "augustus",
+    "statement": "Augustus became Rome's first emperor in 27 BC after defeating Mark Antony and Cleopatra at the Battle of Actium, ending a century of civil wars.",
+    "quizQuestion": "When did Augustus become Rome's first emperor?",
+    "correctAnswer": "27 BC",
+    "distractors": [
+      "44 BC",
+      "100 BC",
+      "14 AD",
+      "31 BC",
+      "50 BC",
+      "1 AD",
+      "200 BC",
+      "63 BC"
+    ],
+    "acceptableAnswers": ["27 BC", "27 BCE"],
+    "explanation": "Octavian — later titled Augustus — defeated the combined forces of Mark Antony and Cleopatra VII at the naval Battle of Actium in 31 BC. After their suicides in 30 BC, he controlled the entire Roman world. In 27 BC, the Senate granted him the title 'Augustus' ('the revered one') and effectively made him the first Roman emperor, while maintaining the fiction of republican institutions. His 41-year reign established the Principate and the Pax Romana.",
+    "wowFactor": "Augustus ruled Rome for 41 years — longer than most modern nations have existed — and when he died, he reportedly boasted he had 'found Rome a city of brick and left it a city of marble.'",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "When did Augustus become Rome's first emperor?",
+        "answer": "27 BC",
+        "distractors": ["44 BC", "14 AD", "31 BC"]
+      },
+      {
+        "type": "reverse",
+        "question": "Rome's first emperor gained power after defeating whom at the Battle of Actium?",
+        "answer": "Mark Antony and Cleopatra",
+        "distractors": ["Julius Caesar", "Pompey and Brutus", "Hannibal and Carthage"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Augustus became Rome's first emperor in 27 BC after defeating Mark Antony and Cleopatra.",
+        "answer": "True",
+        "distractors": ["False", "Julius Caesar was first emperor", "He became emperor in 44 BC"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Augustus became Rome's first emperor in ___ BC.",
+        "answer": "27",
+        "distractors": ["44", "100", "14"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Suetonius — Lives of the Twelve Caesars",
+    "sourceUrl": "https://www.gutenberg.org/ebooks/6400",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Augustus in imperial regalia gesturing toward the Roman Senate, marble columns and toga-clad senators, pixel art in marble white and imperial purple",
+    "tags": ["Augustus", "Rome", "emperor", "27 BC", "Actium", "ancient Rome"]
+  },
+  {
+    "id": "history-augustus-pax-romana",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient rome",
+    "categoryL1": "history",
+    "categoryL2": "ancient_rome",
+    "categoryL3": "augustus",
+    "statement": "Augustus initiated the Pax Romana — a 200-year period of relative peace within the Roman Empire — during which trade, culture, and infrastructure flourished.",
+    "quizQuestion": "What was the name of the 200-year Roman peace Augustus initiated?",
+    "correctAnswer": "Pax Romana",
+    "distractors": [
+      "Pax Britannica",
+      "Roman Peace Treaty",
+      "Pax Augusta",
+      "Ius Civile",
+      "Pax Deorum",
+      "Forum Romanum",
+      "Via Romana",
+      "Pax Imperialis"
+    ],
+    "acceptableAnswers": ["Pax Romana", "Roman Peace"],
+    "explanation": "The Pax Romana ('Roman Peace') began with Augustus's consolidation of power around 27 BC and lasted until the death of Marcus Aurelius in 180 AD — roughly 207 years. During this period the Roman Empire saw unprecedented internal stability, expanded road networks (over 80,000 km of roads), a standardized currency, and long-distance trade from Britain to India. The population of the empire is estimated to have reached 70 million people.",
+    "wowFactor": "The Pax Romana lasted longer than the United States has existed — 200 years of relative peace during which Rome built over 80,000 km of roads that are still visible today.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the name of the 200-year Roman peace Augustus initiated?",
+        "answer": "Pax Romana",
+        "distractors": ["Pax Britannica", "Pax Augusta", "Pax Deorum"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Pax Romana was a 200-year period of peace initiated by which emperor?",
+        "answer": "Augustus",
+        "distractors": ["Caesar", "Nero", "Hadrian"]
+      },
+      {
+        "type": "truefalse",
+        "question": "The Pax Romana was a 200-year period of relative peace beginning with Augustus.",
+        "answer": "True",
+        "distractors": ["False", "It began with Julius Caesar", "It lasted only 50 years"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Augustus initiated the ___ Romana, 200 years of relative Roman peace.",
+        "answer": "Pax",
+        "distractors": ["Via", "Lex", "Forum"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Edward Gibbon — Decline and Fall of the Roman Empire",
+    "sourceUrl": "https://www.gutenberg.org/ebooks/890",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Roman roads stretching across a map of Europe and the Mediterranean, laurel wreath overlay, pixel art in parchment and gold",
+    "tags": ["Augustus", "Pax Romana", "Rome", "peace", "infrastructure", "ancient Rome"]
+  },
+  {
+    "id": "history-augustus-birth-name",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient rome",
+    "categoryL1": "history",
+    "categoryL2": "ancient_rome",
+    "categoryL3": "augustus",
+    "statement": "Augustus was born Gaius Octavius — known as Octavian — and only received the title 'Augustus' from the Roman Senate in 27 BC as a mark of supreme authority.",
+    "quizQuestion": "What was Augustus's birth name?",
+    "correctAnswer": "Gaius Octavius",
+    "distractors": [
+      "Julius Caesar",
+      "Marcus Aurelius",
+      "Gaius Marius",
+      "Tiberius Julius",
+      "Lucius Sulla",
+      "Gnaeus Pompey",
+      "Gaius Caligula",
+      "Marcus Antonius"
+    ],
+    "acceptableAnswers": ["Gaius Octavius", "Octavian", "Gaius Julius Caesar Octavianus"],
+    "explanation": "Born Gaius Octavius Thurinus in 63 BC, he was Julius Caesar's great-nephew. When Caesar was assassinated in 44 BC, his will revealed he had posthumously adopted Octavian, making him Gaius Julius Caesar Octavianus. He used the Caesar name politically to claim legitimacy. The Senate's granting of 'Augustus' in 27 BC was the final transformation — from military strongman to the sacred, semi-divine 'first citizen.'",
+    "wowFactor": "Augustus had three different names over his life — Octavius, Caesar, then Augustus — each marking a more powerful political identity he carefully constructed.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was Augustus's birth name?",
+        "answer": "Gaius Octavius",
+        "distractors": ["Julius Caesar", "Marcus Aurelius", "Gaius Marius"]
+      },
+      {
+        "type": "reverse",
+        "question": "Octavian became this Roman emperor and took the title 'Augustus' in 27 BC.",
+        "answer": "Rome's first emperor",
+        "distractors": ["Rome's greatest general", "Rome's last republican", "Rome's richest senator"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Augustus was born Gaius Octavius and only received the title 'Augustus' from the Senate.",
+        "answer": "True",
+        "distractors": ["False", "He was born Augustus", "His birth name was Julius"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Augustus was born ___ Octavius and later adopted the Caesar name.",
+        "answer": "Gaius",
+        "distractors": ["Julius", "Marcus", "Lucius"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Adrian Goldsworthy — Augustus: First Emperor of Rome",
+    "sourceUrl": "https://yalebooks.yale.edu",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Young Octavian transitioning to the robed figure of Augustus, three name labels shown chronologically, pixel art in toga-white and gold",
+    "tags": ["Augustus", "Octavian", "birth name", "Rome", "ancient Rome", "emperor"]
+  },
+  {
+    "id": "history-napoleonic-wars-dates",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "early modern europe",
+    "categoryL1": "history",
+    "categoryL2": "early_modern_europe",
+    "categoryL3": "napoleonic_wars",
+    "statement": "The Napoleonic Wars (1803–1815) reshaped Europe through a series of conflicts involving Napoleon's French Empire against shifting coalitions of major European powers.",
+    "quizQuestion": "In what year did the Napoleonic Wars end?",
+    "correctAnswer": "1815",
+    "distractors": [
+      "1800",
+      "1805",
+      "1810",
+      "1820",
+      "1825",
+      "1812",
+      "1799",
+      "1830"
+    ],
+    "acceptableAnswers": ["1815"],
+    "explanation": "The Napoleonic Wars began in 1803 when Britain declared war on France, and ended in 1815 with Napoleon's final defeat at the Battle of Waterloo (June 18) and his exile to Saint Helena. The wars involved seven major coalitions of European powers against France. They resulted in approximately 3.5–6 million military deaths and triggered lasting political changes including the spread of nationalism, the redrawing of European borders, and the Congress of Vienna.",
+    "wowFactor": "The Napoleonic Wars killed more soldiers than any previous conflict in history — yet they were ended in a single afternoon at Waterloo by the arrival of Prussian reinforcements Napoleon didn't expect.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year did the Napoleonic Wars end?",
+        "answer": "1815",
+        "distractors": ["1800", "1810", "1820"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Napoleonic Wars ended with Napoleon's defeat at which battle in 1815?",
+        "answer": "Battle of Waterloo",
+        "distractors": ["Battle of Austerlitz", "Battle of Trafalgar", "Battle of Leipzig"]
+      },
+      {
+        "type": "truefalse",
+        "question": "The Napoleonic Wars ended in 1815 with Napoleon's defeat at Waterloo.",
+        "answer": "True",
+        "distractors": ["False", "They ended in 1812", "They ended in 1820"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Napoleonic Wars lasted from 1803 to ___.",
+        "answer": "1815",
+        "distractors": ["1800", "1820", "1812"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "David Gates — The Napoleonic Wars 1803-1815",
+    "sourceUrl": "https://www.arnoldpublishers.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Napoleon on horseback surveying a battlefield, coalition armies in background, pixel art in red, blue, and military grey",
+    "tags": ["Napoleonic Wars", "Napoleon", "1815", "Waterloo", "Europe", "coalition"]
+  },
+  {
+    "id": "history-napoleonic-wars-spread-nationalism",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "early modern europe",
+    "categoryL1": "history",
+    "categoryL2": "early_modern_europe",
+    "categoryL3": "napoleonic_wars",
+    "statement": "Napoleon's conquests paradoxically spread nationalism across Europe — occupied peoples such as Germans and Italians developed unified national identities in resistance to French domination.",
+    "quizQuestion": "What political ideology did Napoleon's conquests inadvertently spread across Europe?",
+    "correctAnswer": "Nationalism",
+    "distractors": [
+      "Communism",
+      "Feudalism",
+      "Imperialism",
+      "Anarchism",
+      "Republicanism",
+      "Absolutism",
+      "Socialism",
+      "Mercantilism"
+    ],
+    "acceptableAnswers": ["Nationalism", "Nationalist ideology", "National identity"],
+    "explanation": "Napoleon intended to spread French revolutionary ideals of liberty and equality, but the occupying armies' demands — conscription, taxes, and French laws — generated fierce resentment. Germans, Italians, Poles, and Spaniards developed a sense of shared national identity in opposition to French rule. The German wars of liberation (1813-1814) were explicitly framed in nationalist terms. This unintended consequence made the Napoleonic Wars a crucial catalyst for the nationalist movements that dominated the 19th century.",
+    "wowFactor": "Napoleon set out to conquer Europe and accidentally invented modern nationalism — the very force that would eventually destroy his empire and redraw the world map.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What political ideology did Napoleon's conquests inadvertently spread across Europe?",
+        "answer": "Nationalism",
+        "distractors": ["Communism", "Feudalism", "Anarchism"]
+      },
+      {
+        "type": "reverse",
+        "question": "Resistance to Napoleon's occupation helped develop what new political consciousness in Europe?",
+        "answer": "National identity",
+        "distractors": ["Democratic ideals", "Feudal loyalty", "Religious revival"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Napoleon's conquests paradoxically spread nationalism by uniting occupied peoples in resistance.",
+        "answer": "True",
+        "distractors": ["False", "He spread communism", "He destroyed nationalism"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Napoleon's conquests inadvertently spread ___ by provoking resistance across Europe.",
+        "answer": "nationalism",
+        "distractors": ["communism", "feudalism", "imperialism"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Eric Hobsbawm — The Age of Revolution 1789-1848",
+    "sourceUrl": "https://www.hachettebookgroup.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "French soldiers marching through a German town while locals look on with defiant expressions, national flags emerging from crowd, pixel art",
+    "tags": ["Napoleonic Wars", "nationalism", "Napoleon", "Europe", "unintended consequences", "resistance"]
+  },
+  {
+    "id": "history-napoleonic-wars-code",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "early modern europe",
+    "categoryL1": "history",
+    "categoryL2": "early_modern_europe",
+    "categoryL3": "napoleonic_wars",
+    "statement": "Napoleon's most lasting legacy may be the Napoleonic Code (1804), a civil law framework that remains the basis of legal systems in France, Louisiana, Quebec, and over 70 countries.",
+    "quizQuestion": "Which legal code created by Napoleon still influences law in over 70 countries?",
+    "correctAnswer": "The Napoleonic Code",
+    "distractors": [
+      "The Magna Carta",
+      "The Code of Hammurabi",
+      "The Justinian Code",
+      "The Bill of Rights",
+      "The Roman Law",
+      "The Corpus Juris Civilis",
+      "The Code Napoleon",
+      "The French Constitution"
+    ],
+    "acceptableAnswers": ["The Napoleonic Code", "Napoleonic Code", "Code Napoleon", "Code Civil"],
+    "explanation": "The Code Civil des Français (1804), known as the Napoleonic Code, unified France's fragmented legal system. It established equality before the law, property rights, religious tolerance, and abolished feudal privileges. Napoleon reportedly said 'My true glory is not having won 40 battles; Waterloo will erase the memory of so many victories. But nothing will erase my Civil Code.' The code remains in force in France, and directly influenced legal systems across Louisiana, Quebec, Spain, Latin America, and Louisiana.",
+    "wowFactor": "Napoleon said his Civil Code was worth more than all his military victories — and he was right. It still governs daily life for hundreds of millions of people two centuries later.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which legal code created by Napoleon still influences law in over 70 countries?",
+        "answer": "The Napoleonic Code",
+        "distractors": ["The Magna Carta", "The Justinian Code", "The Bill of Rights"]
+      },
+      {
+        "type": "reverse",
+        "question": "Napoleon's legal system, still used in Louisiana and Quebec, is called what?",
+        "answer": "The Napoleonic Code",
+        "distractors": ["The French Constitution", "The Civil Code", "The Roman Code"]
+      },
+      {
+        "type": "truefalse",
+        "question": "The Napoleonic Code of 1804 remains the basis of law in over 70 countries.",
+        "answer": "True",
+        "distractors": ["False", "It was abolished after Waterloo", "Only France uses it"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Napoleon's most lasting legal legacy is the ___ Code, still used across 70+ nations.",
+        "answer": "Napoleonic",
+        "distractors": ["Justinian", "Roman", "Civil"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Jean-Louis Halperin — The Napoleonic Code",
+    "sourceUrl": "https://www.cambridge.org",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Napoleon presenting a large legal tome to assembled European representatives, courtroom setting, pixel art in gold and deep blue",
+    "tags": ["Napoleonic Code", "Napoleon", "law", "civil code", "legacy", "France"]
+  },
+  {
+    "id": "history-vikings-dates",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "medieval europe",
+    "categoryL1": "history",
+    "categoryL2": "medieval_europe",
+    "categoryL3": "vikings",
+    "statement": "The Viking Age began in 793 AD with the raid on Lindisfarne Monastery and ended around 1066 with the Norman Conquest of England — itself led by descendants of Vikings.",
+    "quizQuestion": "What event is considered the start of the Viking Age in 793 AD?",
+    "correctAnswer": "Raid on Lindisfarne",
+    "distractors": [
+      "Battle of Hastings",
+      "Discovery of Iceland",
+      "Siege of Paris",
+      "Death of Charlemagne",
+      "Founding of Dublin",
+      "Battle of Stamford Bridge",
+      "Discovery of Greenland",
+      "Sacking of Constantinople"
+    ],
+    "acceptableAnswers": ["Raid on Lindisfarne", "Lindisfarne raid", "Attack on Lindisfarne", "Lindisfarne monastery raid"],
+    "explanation": "On June 8, 793 AD, Norse raiders attacked the monastery of Lindisfarne (Holy Island) off the northeast coast of England, killing monks and looting treasure. This was not the first Viking raid, but it shocked Christian Europe — attacking a sacred site seemed to mark a new brutal era. The Anglo-Saxon Chronicle called it 'the ravaging of heathen men.' The Viking Age closed with William the Conqueror's 1066 conquest — William was a Norman, descended from Vikings ('Normans' = Northmen) who had settled in France.",
+    "wowFactor": "The Norman Conquest that ended the Viking Age was led by descendants of Vikings — 'Normans' literally means 'Northmen.' The Vikings ended their own age.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What event is considered the start of the Viking Age in 793 AD?",
+        "answer": "Raid on Lindisfarne",
+        "distractors": ["Battle of Hastings", "Discovery of Iceland", "Siege of Paris"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Viking Age (793-1066) ended with which conquest of England?",
+        "answer": "Norman Conquest",
+        "distractors": ["Danish Conquest", "Saxon Conquest", "Frankish Conquest"]
+      },
+      {
+        "type": "truefalse",
+        "question": "The Viking Age began with the 793 AD raid on Lindisfarne Monastery.",
+        "answer": "True",
+        "distractors": ["False", "It began in 1066", "It began with the siege of Paris"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Viking Age began with the 793 AD raid on ___ Monastery.",
+        "answer": "Lindisfarne",
+        "distractors": ["Canterbury", "Westminster", "Iona"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "John Haywood — The Penguin Historical Atlas of the Vikings",
+    "sourceUrl": "https://www.penguin.co.uk",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Viking longship approaching the coast of Lindisfarne at dawn, monastery visible on cliff, dramatic pixel art in dark blues and orange flame",
+    "tags": ["Vikings", "Lindisfarne", "793 AD", "Viking Age", "Norse", "raid"]
+  },
+  {
+    "id": "history-vikings-longships",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "medieval europe",
+    "categoryL1": "history",
+    "categoryL2": "medieval_europe",
+    "categoryL3": "vikings",
+    "statement": "Viking longships could navigate both open ocean and shallow rivers — with drafts as shallow as 50 cm — allowing them to raid far inland up rivers that other ships could not enter.",
+    "quizQuestion": "How shallow could Viking longships navigate?",
+    "correctAnswer": "As shallow as 50 cm",
+    "distractors": [
+      "Minimum 3 meters deep",
+      "Minimum 2 meters deep",
+      "Minimum 5 meters deep",
+      "Minimum 1 meter deep",
+      "Minimum 10 meters deep",
+      "Only in deep ocean",
+      "Minimum 4 meters deep",
+      "Minimum 1.5 meters deep"
+    ],
+    "acceptableAnswers": ["As shallow as 50 cm", "50 cm draft", "50 centimeters", "Half a meter"],
+    "explanation": "The Viking longship ('langskip') was a masterpiece of naval engineering. Its flat-bottomed hull could be loaded onto shore by rowing it up beaches — no harbor needed. With drafts as shallow as 0.5 meters, they penetrated rivers like the Seine, Rhine, Thames, and Volga deep into the continent. The same ships crossed the North Atlantic. This dual river/ocean capability gave Vikings unparalleled strategic mobility: they could appear anywhere water existed.",
+    "wowFactor": "Viking longships were so shallow they could be rowed up a shallow creek, beached on a shore, and carried overland between rivers — letting Vikings raid the heart of Russia from Scandinavia.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How shallow could Viking longships navigate?",
+        "answer": "As shallow as 50 cm",
+        "distractors": ["Minimum 3 meters deep", "Minimum 2 meters deep", "Minimum 5 meters deep"]
+      },
+      {
+        "type": "reverse",
+        "question": "Viking longships could navigate rivers as shallow as 50 cm; what made this possible?",
+        "answer": "Their flat-bottomed hull",
+        "distractors": ["Retractable keel", "Oar-propulsion only", "Inflatable hull"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Viking longships could navigate in water as shallow as 50 cm, allowing deep river raids.",
+        "answer": "True",
+        "distractors": ["False", "They needed at least 3 meters", "They could only sail in oceans"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Viking longships had drafts as shallow as ___ cm, enabling inland river raids.",
+        "answer": "50",
+        "distractors": ["300", "200", "500"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Ole Crumlin-Pedersen — Viking-Age Ships and Shipbuilding",
+    "sourceUrl": "https://www.vikingeskibsmuseet.dk",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Viking longship gliding up a narrow river in dense forest, oars deployed, warriors visible, pixel art in earthy greens and cold river blue",
+    "tags": ["Vikings", "longships", "naval", "rivers", "Norse", "medieval"]
+  },
+  {
+    "id": "history-vikings-north-america",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "medieval europe",
+    "categoryL1": "history",
+    "categoryL2": "medieval_europe",
+    "categoryL3": "vikings",
+    "statement": "Leif Erikson led the first known European voyage to North America around 1000 AD — nearly 500 years before Columbus — establishing a settlement at L'Anse aux Meadows in Newfoundland.",
+    "quizQuestion": "Who led the first known European voyage to North America around 1000 AD?",
+    "correctAnswer": "Leif Erikson",
+    "distractors": [
+      "Christopher Columbus",
+      "Erik the Red",
+      "Bjorn Ironside",
+      "Ragnar Lothbrok",
+      "Rollo of Normandy",
+      "Vasco da Gama",
+      "Ferdinand Magellan",
+      "John Cabot"
+    ],
+    "acceptableAnswers": ["Leif Erikson", "Leif Ericson"],
+    "explanation": "Around 1000 CE, Leif Erikson (son of Erik the Red who colonized Greenland) sailed southwest from Greenland and landed in a place he called Vinland — now confirmed by the archaeological site at L'Anse aux Meadows, Newfoundland, the only confirmed Norse site in North America. Dated to around 1000 CE, it predates Columbus by roughly 492 years. The Norse settlement was short-lived, likely abandoned due to conflict with indigenous peoples and the difficulty of resupply.",
+    "wowFactor": "Leif Erikson reached North America 492 years before Columbus — and the archaeological proof, L'Anse aux Meadows, was only discovered and confirmed in 1960.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who led the first known European voyage to North America around 1000 AD?",
+        "answer": "Leif Erikson",
+        "distractors": ["Christopher Columbus", "Erik the Red", "John Cabot"]
+      },
+      {
+        "type": "reverse",
+        "question": "L'Anse aux Meadows in Newfoundland is the confirmed settlement of which explorer?",
+        "answer": "Leif Erikson",
+        "distractors": ["Columbus", "Cabot", "Vespucci"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Leif Erikson reached North America around 1000 AD — about 500 years before Columbus.",
+        "answer": "True",
+        "distractors": ["False", "Columbus was first", "They arrived at the same time"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ Erikson established a Norse settlement in Newfoundland around 1000 AD.",
+        "answer": "Leif",
+        "distractors": ["Erik", "Bjorn", "Ragnar"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Birgitta Linderoth Wallace — L'Anse aux Meadows archaeological report",
+    "sourceUrl": "https://www.pc.gc.ca/en/lhn-nhs/nl/meadows",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Viking longship arriving on the Newfoundland coast, Norse flags flying, indigenous forest in background, pixel art in autumn colors",
+    "tags": ["Vikings", "Leif Erikson", "North America", "L'Anse aux Meadows", "exploration", "Vinland"]
+  },
+  {
+    "id": "history-lenin-revolution",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern europe",
+    "categoryL1": "history",
+    "categoryL2": "modern_europe",
+    "categoryL3": "vladimir_lenin",
+    "statement": "Vladimir Lenin led the Bolshevik Revolution of October 1917, overthrowing the Provisional Government and establishing the world's first communist state in Russia.",
+    "quizQuestion": "What did Lenin lead in October 1917 that established communist rule in Russia?",
+    "correctAnswer": "The Bolshevik Revolution",
+    "distractors": [
+      "The February Revolution",
+      "The French Revolution",
+      "The Russian Civil War",
+      "The Stalinist Purges",
+      "The October Manifesto",
+      "The Tsar's abdication",
+      "The Red Army coup",
+      "The Menshevik uprising"
+    ],
+    "acceptableAnswers": ["The Bolshevik Revolution", "Bolshevik Revolution", "October Revolution", "The October Revolution"],
+    "explanation": "The Bolshevik ('majority') party, led by Lenin, launched an armed insurrection on October 25, 1917 (Old Style calendar), seizing the Winter Palace and key government buildings in Petrograd. They overthrew the Provisional Government of Alexander Kerensky in what was, surprisingly, a nearly bloodless coup in the capital. However, this was followed by years of devastating civil war (1917-1922) and the creation of the Soviet Union in 1922.",
+    "wowFactor": "The Bolshevik seizure of power in 1917 was nearly bloodless — the real violence came after, in the civil war that claimed 7-12 million lives over the following five years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Lenin lead in October 1917 that established communist rule in Russia?",
+        "answer": "The Bolshevik Revolution",
+        "distractors": ["The February Revolution", "The French Revolution", "The Russian Civil War"]
+      },
+      {
+        "type": "reverse",
+        "question": "Lenin established the world's first communist state after which 1917 revolution?",
+        "answer": "Bolshevik (October) Revolution",
+        "distractors": ["February Revolution", "Tsar's abdication", "Menshevik uprising"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Lenin led the Bolshevik Revolution of October 1917, establishing communist rule in Russia.",
+        "answer": "True",
+        "distractors": ["False", "Stalin led the revolution", "It happened in February 1917"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Lenin led the ___ Revolution in October 1917, creating the world's first communist state.",
+        "answer": "Bolshevik",
+        "distractors": ["Menshevik", "French", "February"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Orlando Figes — A People's Tragedy: The Russian Revolution",
+    "sourceUrl": "https://www.penguinrandomhouse.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Involves political ideology; present factually",
+    "visualDescription": "Lenin addressing a crowd from a podium with revolutionary banners, Bolshevik red flags flying, pixel art in stark red and black",
+    "tags": ["Lenin", "Bolshevik Revolution", "October 1917", "Russia", "communism", "Soviet Union"]
+  },
+  {
+    "id": "history-lenin-nep",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern europe",
+    "categoryL1": "history",
+    "categoryL2": "modern_europe",
+    "categoryL3": "vladimir_lenin",
+    "statement": "Lenin's New Economic Policy (NEP) of 1921 reversed forced grain seizures and allowed limited private enterprise to rescue Russia from economic collapse and famine.",
+    "quizQuestion": "What did Lenin's New Economic Policy of 1921 reverse to prevent famine?",
+    "correctAnswer": "Forced grain seizures",
+    "distractors": [
+      "Land redistribution",
+      "Factory nationalization",
+      "Railway construction",
+      "Church property seizure",
+      "Currency reform",
+      "Military conscription",
+      "Bank nationalization",
+      "Foreign trade bans"
+    ],
+    "acceptableAnswers": ["Forced grain seizures", "Grain requisitioning", "Grain confiscation", "Grain seizures"],
+    "explanation": "War Communism (1918-1921) included prodrazvyorstka — forced seizure of peasant grain surpluses. Combined with drought, this triggered the Russian famine of 1921-1922, which killed 5 million people. Lenin pragmatically reversed course with the NEP, replacing grain requisitions with a tax in kind and allowing small private businesses to operate. He called it 'one step backward to take two steps forward.' The NEP stabilized the economy but was later abandoned by Stalin.",
+    "wowFactor": "Lenin abandoned communist principles and allowed capitalism — temporarily — to prevent a famine from destroying the revolution he had spent his life fighting for.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Lenin's New Economic Policy of 1921 reverse to prevent famine?",
+        "answer": "Forced grain seizures",
+        "distractors": ["Land redistribution", "Factory nationalization", "Railway construction"]
+      },
+      {
+        "type": "reverse",
+        "question": "Lenin introduced the NEP in 1921 to rescue Russia from what crisis?",
+        "answer": "Economic collapse and famine",
+        "distractors": ["German invasion", "Worker strikes", "Military mutiny"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Lenin's 1921 NEP reversed forced grain seizures to save Russia from economic collapse.",
+        "answer": "True",
+        "distractors": ["False", "The NEP increased grain seizures", "Stalin introduced the NEP"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Lenin's New Economic Policy reversed ___ to prevent famine in Russia.",
+        "answer": "forced grain seizures",
+        "distractors": ["land reform", "factory laws", "bank closures"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Robert Service — Lenin: A Biography",
+    "sourceUrl": "https://www.hup.harvard.edu",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Involves political ideology and economic policy; present factually",
+    "visualDescription": "Russian peasants harvesting grain under an NEP-era banner showing a mix of red communist and market symbols, pixel art",
+    "tags": ["Lenin", "NEP", "New Economic Policy", "famine", "Russia", "Soviet Union"]
+  },
+  {
+    "id": "history-lenin-sealed-train",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern europe",
+    "categoryL1": "history",
+    "categoryL2": "modern_europe",
+    "categoryL3": "vladimir_lenin",
+    "statement": "Germany secretly transported Lenin across Europe in a sealed train in 1917, hoping he would destabilize Russia and knock it out of World War I.",
+    "quizQuestion": "Why did Germany secretly transport Lenin across Europe in a sealed train in 1917?",
+    "correctAnswer": "To destabilize Russia and end the war",
+    "distractors": [
+      "To negotiate a peace treaty",
+      "To arrest him on arrival",
+      "To give him asylum",
+      "To exchange him for POWs",
+      "To deliver aid to Russia",
+      "To spy on the Tsar",
+      "To smuggle weapons",
+      "To reach Switzerland"
+    ],
+    "acceptableAnswers": ["To destabilize Russia and end the war", "To knock Russia out of the war", "To cause revolution in Russia"],
+    "explanation": "In April 1917, Lenin was in exile in Zurich. Germany arranged for him to travel in a sealed train (technically 'extraterritorial' carriage) through Germany, Sweden, and Finland to Petrograd. German High Command calculated that Lenin's revolutionary ideas would cause upheaval and force Russia to sue for peace, freeing millions of German troops from the Eastern Front. The gamble worked — within months, Lenin was in power, and the Treaty of Brest-Litovsk (1918) removed Russia from WWI.",
+    "wowFactor": "Germany literally shipped Lenin into Russia like a political weapon — and it worked perfectly. Within a year, Russia had surrendered and Germany had freed a million troops.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why did Germany secretly transport Lenin across Europe in a sealed train in 1917?",
+        "answer": "To destabilize Russia and end the war",
+        "distractors": ["To negotiate a peace treaty", "To give him asylum", "To arrest him on arrival"]
+      },
+      {
+        "type": "reverse",
+        "question": "Germany's sealed train gambit in 1917 was designed to do what to the Eastern Front?",
+        "answer": "Remove Russia from WWI",
+        "distractors": ["Reinforce German troops", "Send supplies to Austria", "Capture Petrograd"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Germany transported Lenin in a sealed train to Russia in 1917, hoping to destabilize the war effort.",
+        "answer": "True",
+        "distractors": ["False", "Russia invited Lenin back", "Britain arranged his transport"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Germany sent Lenin to Russia in a ___ train in 1917 to destabilize the Eastern Front.",
+        "answer": "sealed",
+        "distractors": ["military", "diplomatic", "passenger"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Catherine Merridale — Lenin on the Train",
+    "sourceUrl": "https://www.penguinrandomhouse.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A sealed train crossing a snow-covered European landscape at night, German military uniforms visible escorting it, pixel art",
+    "tags": ["Lenin", "sealed train", "Germany", "World War I", "Russia", "1917"]
+  },
+  {
+    "id": "history-wwi-trenches",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern europe",
+    "categoryL1": "history",
+    "categoryL2": "modern_europe",
+    "categoryL3": "world_war_i",
+    "statement": "WWI trench warfare on the Western Front created a 700 km static line from the English Channel to Switzerland, where armies gained and lost territory measured in meters at the cost of millions of lives.",
+    "quizQuestion": "How long was the Western Front trench line in WWI?",
+    "correctAnswer": "About 700 km",
+    "distractors": [
+      "About 100 km",
+      "About 200 km",
+      "About 300 km",
+      "About 500 km",
+      "About 1,000 km",
+      "About 50 km",
+      "About 2,000 km",
+      "About 400 km"
+    ],
+    "acceptableAnswers": ["About 700 km", "700 km", "700 kilometers", "700 kilometres"],
+    "explanation": "The Western Front ran roughly 700 km from the North Sea coast of Belgium down through France to the Swiss border. By late 1914, both sides had dug elaborate trench networks that stalemated the war for four years. Conditions were horrific: mud, rats, lice, shell shock, and constant shelling. The Battle of the Somme (1916) saw 57,470 British casualties on a single day — still the bloodiest day in British military history — for gains measured in hundreds of meters.",
+    "wowFactor": "On the first day of the Battle of the Somme, Britain suffered 57,470 casualties — more in a single day than in all British forces during the Falklands, Gulf, Iraq, and Afghanistan wars combined.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long was the Western Front trench line in WWI?",
+        "answer": "About 700 km",
+        "distractors": ["About 100 km", "About 300 km", "About 1,000 km"]
+      },
+      {
+        "type": "reverse",
+        "question": "The 700 km Western Front trenches stretched from the English Channel to which country?",
+        "answer": "Switzerland",
+        "distractors": ["Spain", "Italy", "Austria"]
+      },
+      {
+        "type": "truefalse",
+        "question": "The WWI Western Front trench line stretched about 700 km from the English Channel to Switzerland.",
+        "answer": "True",
+        "distractors": ["False", "It was only 100 km long", "It stretched to Russia"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Western Front trench line stretched about ___ km from the English Channel to Switzerland.",
+        "answer": "700",
+        "distractors": ["100", "300", "2,000"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "John Keegan — The First World War",
+    "sourceUrl": "https://www.penguinrandomhouse.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Involves war and mass casualties; age-appropriate framing recommended",
+    "visualDescription": "Aerial view of zig-zagging trenches stretching to the horizon across muddy, shell-cratered French farmland, pixel art in grey and brown",
+    "tags": ["WWI", "World War I", "trenches", "Western Front", "1914-1918", "trench warfare"]
+  },
+  {
+    "id": "history-wwi-christmas-truce",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern europe",
+    "categoryL1": "history",
+    "categoryL2": "modern_europe",
+    "categoryL3": "world_war_i",
+    "statement": "On Christmas 1914, German and British soldiers in WWI arranged unofficial truces, left their trenches, and played football in No Man's Land — an event that shocked both governments.",
+    "quizQuestion": "What informal sporting event famously occurred in No Man's Land during WWI?",
+    "correctAnswer": "A football match",
+    "distractors": [
+      "A boxing match",
+      "A cricket match",
+      "A musical concert",
+      "A shooting contest",
+      "A relay race",
+      "A tug-of-war",
+      "A wrestling bout",
+      "A card game"
+    ],
+    "acceptableAnswers": ["A football match", "Football", "Soccer match", "A game of football"],
+    "explanation": "The Christmas Truce of 1914 occurred spontaneously along sections of the Western Front, particularly between German and British troops. On Christmas Eve, German soldiers placed candles on trees; British troops answered with songs. By Christmas morning, soldiers were crossing No Man's Land to exchange cigarettes and schnapps, and in several documented cases organized impromptu football matches. Officers on both sides were deeply uncomfortable — fraternization with the enemy was technically treasonous. The truce was not repeated in subsequent wartime Christmases.",
+    "wowFactor": "Soldiers who were trying to kill each other spent Christmas Day 1914 sharing cigarettes and playing football — then went back to war the next morning.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What informal sporting event famously occurred in No Man's Land during WWI?",
+        "answer": "A football match",
+        "distractors": ["A boxing match", "A cricket match", "A tug-of-war"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Christmas Truce of 1914 saw German and British soldiers meet in No Man's Land to do what?",
+        "answer": "Play football and exchange gifts",
+        "distractors": ["Negotiate a peace treaty", "Surrender their weapons", "Desert together"]
+      },
+      {
+        "type": "truefalse",
+        "question": "During the 1914 Christmas Truce, German and British soldiers played football in No Man's Land.",
+        "answer": "True",
+        "distractors": ["False", "It is a myth", "It happened on the Eastern Front"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "During the 1914 Christmas Truce, opposing WWI soldiers played ___ in No Man's Land.",
+        "answer": "football",
+        "distractors": ["chess", "cricket", "cards"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Malcolm Brown & Shirley Seaton — Christmas Truce: The Western Front December 1914",
+    "sourceUrl": "https://www.pen-and-sword.co.uk",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "German and British soldiers kicking a football in snow between barbed wire and trenches, Christmas stars in the night sky, pixel art",
+    "tags": ["WWI", "World War I", "Christmas Truce", "football", "1914", "No Man's Land"]
+  },
+  {
+    "id": "history-wwi-assassination",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern europe",
+    "categoryL1": "history",
+    "categoryL2": "modern_europe",
+    "categoryL3": "world_war_i",
+    "statement": "World War I was triggered by the assassination of Archduke Franz Ferdinand of Austria-Hungary in Sarajevo on June 28, 1914, by Gavrilo Princip.",
+    "quizQuestion": "Who assassinated Archduke Franz Ferdinand to trigger WWI?",
+    "correctAnswer": "Gavrilo Princip",
+    "distractors": [
+      "Nedeljko Cabrinovic",
+      "Kaiser Wilhelm II",
+      "Nikola Tesla",
+      "Danilo Ilic",
+      "Franz Joseph I",
+      "Mustafa Kemal",
+      "Mehmed V",
+      "Otto von Bismarck"
+    ],
+    "acceptableAnswers": ["Gavrilo Princip", "Princip"],
+    "explanation": "Gavrilo Princip was a 19-year-old Bosnian Serb nationalist and member of the secret society 'Young Bosnia' (linked to the Black Hand). After an earlier bomb attack on Franz Ferdinand's motorcade failed, Princip encountered the Archduke's car by chance when it took a wrong turn near Schiller's Delicatessen in Sarajevo. He fired two shots, killing the Archduke and his wife Sophie. Austria-Hungary blamed Serbia, triggering the alliance system that drew all major European powers into war within six weeks.",
+    "wowFactor": "Princip had given up and was buying a sandwich when Franz Ferdinand's car took a wrong turn right in front of him — the assassination that started WWI happened almost by accident.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who assassinated Archduke Franz Ferdinand to trigger WWI?",
+        "answer": "Gavrilo Princip",
+        "distractors": ["Nedeljko Cabrinovic", "Kaiser Wilhelm II", "Danilo Ilic"]
+      },
+      {
+        "type": "reverse",
+        "question": "Gavrilo Princip assassinated this Austro-Hungarian royal in Sarajevo in 1914.",
+        "answer": "Archduke Franz Ferdinand",
+        "distractors": ["Kaiser Wilhelm", "Emperor Franz Joseph", "Tsar Nicholas II"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Gavrilo Princip assassinated Archduke Franz Ferdinand in Sarajevo on June 28, 1914.",
+        "answer": "True",
+        "distractors": ["False", "A different assassin did it", "It happened in Vienna"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Gavrilo ___ assassinated Archduke Franz Ferdinand in Sarajevo in 1914.",
+        "answer": "Princip",
+        "distractors": ["Lenin", "Trotsky", "Bismarck"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Christopher Clark — The Sleepwalkers: How Europe Went to War in 1914",
+    "sourceUrl": "https://www.harpercollins.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Sarajevo street in 1914 with a stopped car and a shocked crowd, pixel art in sepia tones with a flash of gunfire",
+    "tags": ["WWI", "Gavrilo Princip", "Franz Ferdinand", "Sarajevo", "assassination", "1914"]
+  },
+  {
+    "id": "history-roman-empire-fall",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient rome",
+    "categoryL1": "history",
+    "categoryL2": "ancient_rome",
+    "categoryL3": "roman_empire",
+    "statement": "The Western Roman Empire fell in 476 AD when the Germanic chieftain Odoacer deposed the last emperor, Romulus Augustulus — though historians debate whether the empire truly 'fell' or gradually transformed.",
+    "quizQuestion": "In what year did the Western Roman Empire fall?",
+    "correctAnswer": "476 AD",
+    "distractors": [
+      "44 BC",
+      "1066 AD",
+      "410 AD",
+      "380 AD",
+      "500 AD",
+      "330 AD",
+      "1453 AD",
+      "600 AD"
+    ],
+    "acceptableAnswers": ["476 AD", "476 CE", "476"],
+    "explanation": "On September 4, 476 AD, Odoacer, king of the Heruli, deposed the last Western Roman emperor, Romulus Augustulus, and sent the imperial insignia to Constantinople. Historians now debate whether this was a clear 'fall' or merely the culmination of decades of transformation. The Eastern Roman Empire (Byzantine Empire) continued until 1453. Edward Gibbon's 'The Decline and Fall of the Roman Empire' (1776) shaped the view of a definitive end, but many modern historians see it as transformation rather than collapse.",
+    "wowFactor": "The 'last Roman emperor' Romulus Augustulus was only about 16 years old when he was deposed — and he was so harmless that Odoacer just pensioned him off rather than killing him.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year did the Western Roman Empire fall?",
+        "answer": "476 AD",
+        "distractors": ["44 BC", "1066 AD", "410 AD"]
+      },
+      {
+        "type": "reverse",
+        "question": "Who deposed the last Western Roman Emperor in 476 AD?",
+        "answer": "Odoacer",
+        "distractors": ["Attila the Hun", "Visigoths", "Charlemagne"]
+      },
+      {
+        "type": "truefalse",
+        "question": "The Western Roman Empire fell in 476 AD when the last emperor was deposed.",
+        "answer": "True",
+        "distractors": ["False", "It fell in 410 AD", "Rome never truly fell"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Western Roman Empire fell in ___ AD when Romulus Augustulus was deposed.",
+        "answer": "476",
+        "distractors": ["44", "410", "1453"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Peter Heather — The Fall of the Roman Empire",
+    "sourceUrl": "https://www.panmacmillan.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The last Roman emperor handing his crown to a Germanic warrior in the ruins of Rome, pixel art in faded gold and stone grey",
+    "tags": ["Roman Empire", "476 AD", "Western Rome", "fall of Rome", "Odoacer", "Romulus Augustulus"]
+  },
+  {
+    "id": "history-roman-empire-roads",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient rome",
+    "categoryL1": "history",
+    "categoryL2": "ancient_rome",
+    "categoryL3": "roman_empire",
+    "statement": "The Roman Empire built over 80,000 km of roads — including drainage, gravel, and stone layers — connecting every province; many Roman roads are still used or detectable today.",
+    "quizQuestion": "How many kilometers of roads did the Roman Empire build?",
+    "correctAnswer": "Over 80,000 km",
+    "distractors": [
+      "Over 1,000 km",
+      "Over 5,000 km",
+      "Over 10,000 km",
+      "Over 20,000 km",
+      "Over 40,000 km",
+      "Over 200,000 km",
+      "Over 50,000 km",
+      "Over 500,000 km"
+    ],
+    "acceptableAnswers": ["Over 80,000 km", "80,000 km", "About 80,000 km"],
+    "explanation": "Roman road construction was systematic engineering. Layers included sand or gravel (statumen and ruderatio), a core of broken stone set in lime mortar (nucleus), and a top of stone slabs (summa crusta). Roads were slightly curved (cambered) to drain rainwater to the sides. The Appian Way, begun in 312 BC, remains partially usable. Modern researchers have identified over 80,000 km of Roman roads, forming a network that enabled fast troop movements and commerce across an empire stretching from Scotland to Mesopotamia.",
+    "wowFactor": "Roman engineers built roads so well that sections of the Appian Way, begun in 312 BC, are still walkable today — more than 2,300 years later.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many kilometers of roads did the Roman Empire build?",
+        "answer": "Over 80,000 km",
+        "distractors": ["Over 10,000 km", "Over 40,000 km", "Over 200,000 km"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Roman Empire's road network enabled fast troop movement across how many km of roads?",
+        "answer": "Over 80,000 km",
+        "distractors": ["Over 10,000 km", "Over 1,000 km", "Over 40,000 km"]
+      },
+      {
+        "type": "truefalse",
+        "question": "The Roman Empire built over 80,000 km of roads, many still detectable today.",
+        "answer": "True",
+        "distractors": ["False", "They built only 10,000 km", "Roman roads all crumbled"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Rome built over ___ km of roads connecting every province of the empire.",
+        "answer": "80,000",
+        "distractors": ["1,000", "10,000", "200,000"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Ray Laurence — The Roads of Roman Italy",
+    "sourceUrl": "https://www.routledge.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Roman road stretching across a landscape with milestones, engineering cross-section inset showing layered construction, pixel art in stone grey and brown",
+    "tags": ["Roman Empire", "roads", "engineering", "infrastructure", "ancient Rome", "80,000 km"]
+  },
+  {
+    "id": "history-roman-empire-size",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient rome",
+    "categoryL1": "history",
+    "categoryL2": "ancient_rome",
+    "categoryL3": "roman_empire",
+    "statement": "At its greatest extent under Emperor Trajan around 117 AD, the Roman Empire covered about 5 million sq km and contained roughly 70 million people — about 21% of the world's population.",
+    "quizQuestion": "What percentage of the world's population did Rome contain at its peak?",
+    "correctAnswer": "About 21%",
+    "distractors": [
+      "About 1%",
+      "About 5%",
+      "About 10%",
+      "About 50%",
+      "About 75%",
+      "About 30%",
+      "About 15%",
+      "About 40%"
+    ],
+    "acceptableAnswers": ["About 21%", "21%", "About one-fifth", "Around 21 percent"],
+    "explanation": "Under Trajan (98–117 AD), the empire stretched from Britain to Mesopotamia, from the Rhine-Danube frontier to the Sahara. Population estimates are inherently uncertain, but historians generally place the empire's peak population at 60-90 million people, against a global population of roughly 200-300 million — suggesting Rome governed about 20-25% of all humans alive. This scale of political organization was unprecedented and unrepeated in the West for over a thousand years.",
+    "wowFactor": "At its peak, the Roman Empire ruled over one in five people alive on Earth — more than the British Empire at the height of its power centuries later.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What percentage of the world's population did Rome contain at its peak?",
+        "answer": "About 21%",
+        "distractors": ["About 1%", "About 50%", "About 10%"]
+      },
+      {
+        "type": "reverse",
+        "question": "Under Emperor Trajan in 117 AD, Rome reached its maximum size — roughly 5 million sq km and how many people?",
+        "answer": "About 70 million",
+        "distractors": ["About 1 million", "About 10 million", "About 200 million"]
+      },
+      {
+        "type": "truefalse",
+        "question": "At its peak, the Roman Empire contained about 21% of the world's entire population.",
+        "answer": "True",
+        "distractors": ["False", "It held only 5% of the world", "It held 75% of the world"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "At its peak, Rome governed about ___ percent of all humans alive on Earth.",
+        "answer": "21",
+        "distractors": ["1", "50", "10"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Colin McEvedy & Richard Jones — Atlas of World Population History",
+    "sourceUrl": "https://www.penguin.co.uk",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Map of Roman Empire at maximum extent with 21% world population graphic overlay, pixel art in imperial red and gold",
+    "tags": ["Roman Empire", "Trajan", "population", "extent", "ancient Rome", "117 AD"]
+  },
+  {
+    "id": "history-crimean-war-nightingale",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern europe",
+    "categoryL1": "history",
+    "categoryL2": "modern_europe",
+    "categoryL3": "crimean_war",
+    "statement": "Florence Nightingale transformed nursing during the Crimean War (1853-1856) by introducing hygiene standards in military hospitals, reducing soldier death rates from 42% to 2%.",
+    "quizQuestion": "How much did Florence Nightingale reduce soldier death rates in Crimean hospitals?",
+    "correctAnswer": "From 42% to 2%",
+    "distractors": [
+      "From 10% to 5%",
+      "From 90% to 50%",
+      "From 20% to 10%",
+      "From 100% to 90%",
+      "From 5% to 1%",
+      "From 60% to 30%",
+      "From 30% to 15%",
+      "From 80% to 40%"
+    ],
+    "acceptableAnswers": ["From 42% to 2%", "42% to 2%", "By 40 percentage points"],
+    "explanation": "Nightingale arrived at Scutari Barrack Hospital in 1854 to find soldiers dying not from wounds but from infections, cholera, and dysentery caused by overcrowding and poor sanitation. She reorganized the hospital, enforced hand-washing and cleanliness, improved diet, and used statistics (she invented the polar area diagram — a type of pie chart) to demonstrate that most deaths were preventable. The mortality rate dropped from ~42% to ~2% under her management. Her work founded modern evidence-based nursing.",
+    "wowFactor": "Florence Nightingale didn't just save lives with nursing — she invented statistical data visualization to prove to skeptical generals that their soldiers were dying from dirt, not battle wounds.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How much did Florence Nightingale reduce soldier death rates in Crimean hospitals?",
+        "answer": "From 42% to 2%",
+        "distractors": ["From 10% to 5%", "From 90% to 50%", "From 20% to 10%"]
+      },
+      {
+        "type": "reverse",
+        "question": "Florence Nightingale reduced death rates from 42% to 2% by improving what?",
+        "answer": "Hospital hygiene",
+        "distractors": ["Surgical techniques", "Food supply", "Troop morale"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Florence Nightingale reduced Crimean hospital death rates from 42% to 2% through hygiene improvements.",
+        "answer": "True",
+        "distractors": ["False", "She reduced it from 10% to 5%", "Death rates went up under her care"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Nightingale reduced Crimean hospital death rates from 42% to ___ percent.",
+        "answer": "2",
+        "distractors": ["50", "20", "10"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Mark Bostridge — Florence Nightingale: The Making of an Icon",
+    "sourceUrl": "https://www.fsgbooks.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Florence Nightingale with a lamp in a hospital ward, before-and-after death rate statistics visible on wall, pixel art in candlelight amber",
+    "tags": ["Crimean War", "Florence Nightingale", "nursing", "hygiene", "medicine", "statistics"]
+  },
+  {
+    "id": "history-crimean-war-first-modern",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern europe",
+    "categoryL1": "history",
+    "categoryL2": "modern_europe",
+    "categoryL3": "crimean_war",
+    "statement": "The Crimean War (1853-1856) was the first war covered by newspaper correspondents in the field, and the first where electric telegraph dispatches shaped public opinion and government decisions in real time.",
+    "quizQuestion": "What communication technology was used for the first time to report on the Crimean War?",
+    "correctAnswer": "Electric telegraph",
+    "distractors": [
+      "Radio",
+      "Telephone",
+      "Television",
+      "Wireless radio",
+      "Morse flag signals",
+      "Carrier pigeons",
+      "Newspaper mail",
+      "Heliograph"
+    ],
+    "acceptableAnswers": ["Electric telegraph", "Telegraph", "The electric telegraph"],
+    "explanation": "War correspondent William Howard Russell of The Times sent dispatches via electric telegraph that reached London within hours. His reports on soldiers' suffering — lack of supplies, incompetent command, men dying of disease — caused a public scandal that brought down the Aberdeen government. This was the first time media coverage directly changed wartime policy in near-real time. The Crimean War is considered the first 'media war' in history.",
+    "wowFactor": "The Crimean War brought down a British government — newspaper dispatches sent by telegraph about suffering soldiers arrived in London so fast that Parliament couldn't ignore them.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What communication technology was used for the first time to report on the Crimean War?",
+        "answer": "Electric telegraph",
+        "distractors": ["Radio", "Telephone", "Television"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Crimean War is considered the first 'media war' because of the use of what technology?",
+        "answer": "Electric telegraph",
+        "distractors": ["Photography only", "Radio broadcasts", "Printed maps"]
+      },
+      {
+        "type": "truefalse",
+        "question": "The Crimean War was the first conflict where telegraph dispatches shaped public opinion in real time.",
+        "answer": "True",
+        "distractors": ["False", "Radio was used first", "The telegraph wasn't invented yet"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Crimean War was the first 'media war' due to real-time reporting via electric ___.",
+        "answer": "telegraph",
+        "distractors": ["radio", "telephone", "satellite"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "John Sweetman — The Crimean War",
+    "sourceUrl": "https://www.osprey-publishing.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "War correspondent in Crimean trenches writing dispatches with telegraph wires visible, pixel art in sepia and blue",
+    "tags": ["Crimean War", "telegraph", "media", "press", "journalism", "1853-1856"]
+  },
+  {
+    "id": "history-crimean-war-charge",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern europe",
+    "categoryL1": "history",
+    "categoryL2": "modern_europe",
+    "categoryL3": "crimean_war",
+    "statement": "The Charge of the Light Brigade (October 25, 1854) sent 670 British cavalry into a valley surrounded by Russian artillery — killing or wounding 278 men — immortalized in Tennyson's poem.",
+    "quizQuestion": "What Crimean War battle sent cavalry into a valley of artillery and was immortalized in poetry?",
+    "correctAnswer": "Charge of the Light Brigade",
+    "distractors": [
+      "Charge of the Heavy Brigade",
+      "Battle of Balaclava",
+      "Siege of Sebastopol",
+      "Battle of Inkerman",
+      "Battle of Alma",
+      "Fall of Malakhov",
+      "Siege of Kars",
+      "Battle of the Chernaya"
+    ],
+    "acceptableAnswers": ["Charge of the Light Brigade", "Light Brigade charge"],
+    "explanation": "During the Battle of Balaclava, a miscommunication led Lord Cardigan to order the Light Brigade to charge down a valley directly toward Russian artillery batteries — a suicidal route the commanders could clearly see was surrounded by guns. The charge resulted in 278 casualties out of 670 men. Lord Raglan, watching from above, reportedly said 'There, my lord, is your enemy!' Alfred Lord Tennyson immortalized the courage but implied the futility: 'Theirs not to reason why, theirs but to do and die.'",
+    "wowFactor": "The Charge of the Light Brigade was so obviously suicidal that French General Bosquet watching from the hillside said: 'It is magnificent, but it is not war — it is madness.'",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What Crimean War battle sent cavalry into a valley of artillery and was immortalized in poetry?",
+        "answer": "Charge of the Light Brigade",
+        "distractors": ["Charge of the Heavy Brigade", "Siege of Sebastopol", "Battle of Inkerman"]
+      },
+      {
+        "type": "reverse",
+        "question": "Tennyson's poem 'Theirs but to do and die' immortalized which Crimean War disaster?",
+        "answer": "Charge of the Light Brigade",
+        "distractors": ["Siege of Sebastopol", "Battle of Balaclava", "Fall of Malakhov"]
+      },
+      {
+        "type": "truefalse",
+        "question": "The Charge of the Light Brigade sent 670 British cavalry into a valley of Russian artillery in 1854.",
+        "answer": "True",
+        "distractors": ["False", "It was infantry, not cavalry", "It was a successful charge"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ of the Light Brigade was a disastrous cavalry charge immortalized by Tennyson.",
+        "answer": "Charge",
+        "distractors": ["Retreat", "Victory", "Siege"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Mark Adkin — The Charge: The Real Reason Why the Light Brigade Was Lost",
+    "sourceUrl": "https://www.pen-and-sword.co.uk",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Cavalry charging down a valley with cannons firing from both sides, pixel art in smoke grey and red uniform coats",
+    "tags": ["Crimean War", "Light Brigade", "Balaclava", "cavalry", "Tennyson", "1854"]
+  },
+  {
+    "id": "history-suleiman-magnificent",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "middle east",
+    "categoryL1": "history",
+    "categoryL2": "middle_east",
+    "categoryL3": "suleiman_the_magnificent",
+    "statement": "Suleiman the Magnificent ruled the Ottoman Empire from 1520 to 1566 — its longest-reigning and most powerful sultan — expanding from Hungary to the Persian Gulf.",
+    "quizQuestion": "How long did Suleiman the Magnificent reign as Ottoman Sultan?",
+    "correctAnswer": "46 years",
+    "distractors": [
+      "10 years",
+      "20 years",
+      "30 years",
+      "5 years",
+      "60 years",
+      "15 years",
+      "100 years",
+      "70 years"
+    ],
+    "acceptableAnswers": ["46 years", "46 years (1520-1566)", "About 46 years"],
+    "explanation": "Suleiman I (called 'the Magnificent' in the West; 'the Lawgiver' / Kanuni in the Ottoman world) reigned from 1520 to 1566 — 46 years. Under his rule, the empire reached its territorial zenith, stretching from Hungary in the northwest to Yemen in the south and Persia in the east. He besieged Vienna in 1529, controlled the Mediterranean, and overhauled Ottoman law and culture. He personally led 13 military campaigns.",
+    "wowFactor": "Suleiman besieged Vienna in 1529 and nearly took it — if he had, European history might look completely different. He was stopped partly by heavy rain that slowed his artillery.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long did Suleiman the Magnificent reign as Ottoman Sultan?",
+        "answer": "46 years",
+        "distractors": ["10 years", "20 years", "100 years"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which Ottoman sultan ruled from 1520-1566 and brought the empire to its greatest extent?",
+        "answer": "Suleiman the Magnificent",
+        "distractors": ["Mehmed II", "Selim I", "Murad IV"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Suleiman the Magnificent ruled the Ottoman Empire for 46 years — its longest and most powerful reign.",
+        "answer": "True",
+        "distractors": ["False", "He reigned only 10 years", "Mehmed II reigned longer"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Suleiman the Magnificent ruled the Ottoman Empire for ___ years, from 1520 to 1566.",
+        "answer": "46",
+        "distractors": ["10", "20", "100"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Leslie Peirce — Empress of the East: How a European Slave Girl Became Queen of the Ottoman Empire",
+    "sourceUrl": "https://www.basicbooks.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Suleiman on horseback in ornate armor reviewing Ottoman troops before a campaign, Istanbul minarets in background, pixel art in gold and jewel tones",
+    "tags": ["Suleiman the Magnificent", "Ottoman Empire", "sultan", "1520-1566", "golden age", "Turkey"]
+  },
+  {
+    "id": "history-suleiman-lawgiver",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "middle east",
+    "categoryL1": "history",
+    "categoryL2": "middle_east",
+    "categoryL3": "suleiman_the_magnificent",
+    "statement": "Suleiman was called 'the Lawgiver' (Kanuni) in the Ottoman world because he codified Ottoman law, separating it from religious Sharia law and creating a secular legal system.",
+    "quizQuestion": "What title did Ottomans give Suleiman for his legal reforms?",
+    "correctAnswer": "Kanuni (The Lawgiver)",
+    "distractors": [
+      "The Magnificent",
+      "The Conqueror",
+      "The Just",
+      "The Pious",
+      "The Brilliant",
+      "The Victorious",
+      "The Builder",
+      "The Wise"
+    ],
+    "acceptableAnswers": ["Kanuni", "The Lawgiver", "Kanuni (The Lawgiver)"],
+    "explanation": "While Europeans called him 'the Magnificent' for his wealth and power, Ottomans knew him as 'Kanuni' — the Lawgiver. He commissioned comprehensive codification of Ottoman secular law (kanun), separate from Islamic Sharia. These codes covered criminal law, land tenure, taxation, and commerce and remained the foundation of Ottoman law for centuries. His chief architect Sinan also built over 300 structures under his patronage, including the Süleymaniye Mosque in Istanbul.",
+    "wowFactor": "The Ottoman world called Suleiman 'the Lawgiver' — a title they considered more important than 'the Magnificent' that Europeans used, because law outlasts any conquest.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What title did Ottomans give Suleiman for his legal reforms?",
+        "answer": "Kanuni (The Lawgiver)",
+        "distractors": ["The Magnificent", "The Conqueror", "The Just"]
+      },
+      {
+        "type": "reverse",
+        "question": "Suleiman's secular legal code, called kanun, separated Ottoman law from what religious system?",
+        "answer": "Sharia",
+        "distractors": ["Canon law", "Roman law", "Mosaic law"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Ottomans called Suleiman 'Kanuni' (the Lawgiver) for his codification of secular law.",
+        "answer": "True",
+        "distractors": ["False", "He was only called the Magnificent", "He was called the Conqueror"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Suleiman was called 'Kanuni' meaning the ___ for his legal reforms.",
+        "answer": "Lawgiver",
+        "distractors": ["Magnificent", "Conqueror", "Builder"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Suraiya Faroqhi — The Ottoman Empire and the World Around It",
+    "sourceUrl": "https://www.ibtauris.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Suleiman seated on a throne with an open legal codex, Ottoman scribes at work, intricate tile work background, pixel art in turquoise and gold",
+    "tags": ["Suleiman", "Kanuni", "Ottoman law", "legal reform", "Lawgiver", "Ottoman Empire"]
+  },
+  {
+    "id": "history-suleiman-siege-vienna",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "middle east",
+    "categoryL1": "history",
+    "categoryL2": "middle_east",
+    "categoryL3": "suleiman_the_magnificent",
+    "statement": "Suleiman's 1529 siege of Vienna failed partly because autumn rains made roads impassable, forcing him to leave his heavy siege artillery behind — the guns that would have breached Vienna's walls.",
+    "quizQuestion": "What weather event helped stop Suleiman's 1529 siege of Vienna?",
+    "correctAnswer": "Autumn rains",
+    "distractors": [
+      "Winter snowstorm",
+      "Summer drought",
+      "Spring floods",
+      "Tornado",
+      "Earthquake",
+      "Extreme heat",
+      "Fog",
+      "Hailstorm"
+    ],
+    "acceptableAnswers": ["Autumn rains", "Heavy rain", "Rains", "Rain and mud"],
+    "explanation": "Suleiman set out from Constantinople very late in 1529, and October rains turned roads to mud. He was forced to abandon much of his heavy artillery — the large cannon that could have demolished Vienna's medieval walls. Without these guns, his forces could not breach the defenses. After several unsuccessful assaults, and with winter approaching, he withdrew. If Vienna had fallen, the Ottoman frontier might have moved deep into Central Europe. The city was besieged again in 1683 but held.",
+    "wowFactor": "European civilization may owe its shape to bad Ottoman road conditions in autumn 1529 — rain and mud forced Suleiman to abandon the artillery that would have cracked Vienna open.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What weather event helped stop Suleiman's 1529 siege of Vienna?",
+        "answer": "Autumn rains",
+        "distractors": ["Winter snowstorm", "Summer drought", "Spring floods"]
+      },
+      {
+        "type": "reverse",
+        "question": "Suleiman was forced to abandon his heavy siege artillery in 1529 because of what road condition?",
+        "answer": "Rain and mud",
+        "distractors": ["Snow and ice", "Bridges destroyed", "River flooding"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Suleiman's 1529 siege of Vienna failed partly because autumn rains prevented him from bringing heavy artillery.",
+        "answer": "True",
+        "distractors": ["False", "He chose not to attack Vienna", "His army was destroyed by plague"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Suleiman's 1529 siege of Vienna failed partly because ___ rains made roads impassable for artillery.",
+        "answer": "autumn",
+        "distractors": ["spring", "summer", "winter"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Andrew Wheatcroft — The Enemy at the Gate: Habsburgs, Ottomans and the Battle for Europe",
+    "sourceUrl": "https://www.basicbooks.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ottoman army struggling through mud and rain before Vienna's walls, abandoned cannons visible, pixel art in dark grey and burgundy",
+    "tags": ["Suleiman", "Vienna", "1529", "siege", "Ottoman Empire", "counterfactual history"]
+  },
+  {
+    "id": "history-gandhi-salt-march",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "south asia",
+    "categoryL1": "history",
+    "categoryL2": "south_asia",
+    "categoryL3": "gandhi",
+    "statement": "Gandhi's 1930 Salt March covered 388 km on foot over 24 days to protest the British salt tax — an act of civil disobedience that galvanized the Indian independence movement globally.",
+    "quizQuestion": "How far did Gandhi walk during the 1930 Salt March?",
+    "correctAnswer": "388 km",
+    "distractors": [
+      "10 km",
+      "50 km",
+      "100 km",
+      "200 km",
+      "500 km",
+      "1,000 km",
+      "25 km",
+      "150 km"
+    ],
+    "acceptableAnswers": ["388 km", "About 388 km", "Around 400 km"],
+    "explanation": "On March 12, 1930, Gandhi and 78 volunteers set out from his Sabarmati Ashram for the coastal village of Dandi, 388 km away, to make salt from seawater in defiance of British salt laws. When Gandhi reached the sea on April 5 and lifted a handful of salt, it triggered a nationwide campaign of civil disobedience. About 60,000 Indians were arrested. The march attracted international press coverage and shifted global opinion, embarrassing Britain on the world stage.",
+    "wowFactor": "Gandhi's weapon was a pinch of salt — the most ordinary substance imaginable. It made him the most dangerous man in the British Empire that day.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How far did Gandhi walk during the 1930 Salt March?",
+        "answer": "388 km",
+        "distractors": ["10 km", "100 km", "1,000 km"]
+      },
+      {
+        "type": "reverse",
+        "question": "Gandhi walked 388 km to the sea in 1930 to protest which British tax?",
+        "answer": "The salt tax",
+        "distractors": ["The cotton tax", "The land tax", "The trade tariff"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Gandhi walked 388 km in the 1930 Salt March to protest British salt laws.",
+        "answer": "True",
+        "distractors": ["False", "He walked 10 km", "He marched to Delhi"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Gandhi's 1930 Salt March covered ___ km to protest the British salt tax.",
+        "answer": "388",
+        "distractors": ["10", "100", "1,000"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Rajmohan Gandhi — Gandhi: The Man, His People, and the Empire",
+    "sourceUrl": "https://www.ucpress.edu",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Gandhi leading a long column of followers walking on a dusty Indian road toward the sea, pixel art in warm orange and brown",
+    "tags": ["Gandhi", "Salt March", "1930", "civil disobedience", "India", "independence"]
+  },
+  {
+    "id": "history-gandhi-nonviolence",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "south asia",
+    "categoryL1": "history",
+    "categoryL2": "south_asia",
+    "categoryL3": "gandhi",
+    "statement": "Gandhi developed Satyagraha — translated as 'truth-force' or 'soul-force' — a philosophy of nonviolent resistance that became the template for civil rights movements worldwide.",
+    "quizQuestion": "What is the name of Gandhi's philosophy of nonviolent resistance?",
+    "correctAnswer": "Satyagraha",
+    "distractors": [
+      "Ahimsa",
+      "Dharma",
+      "Karma",
+      "Swaraj",
+      "Swadeshi",
+      "Moksha",
+      "Nirvana",
+      "Satya"
+    ],
+    "acceptableAnswers": ["Satyagraha", "Satya graha"],
+    "explanation": "Gandhi coined the term 'Satyagraha' (Sanskrit: satya = truth, graha = holding firm) in South Africa in 1908 to describe nonviolent civil disobedience. Ahimsa (non-harm) was the foundational principle, but Satyagraha was the active strategy — engaging unjust authority directly, accepting suffering to expose its brutality, and converting the opponent rather than defeating them. Martin Luther King Jr. directly applied Gandhian Satyagraha to the US Civil Rights Movement, and Nelson Mandela studied Gandhi's South African campaigns.",
+    "wowFactor": "Gandhi invented Satyagraha in South Africa before he returned to India — the philosophy that freed 400 million Indians was first tested in a segregated courtroom in Johannesburg.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the name of Gandhi's philosophy of nonviolent resistance?",
+        "answer": "Satyagraha",
+        "distractors": ["Ahimsa", "Dharma", "Swaraj"]
+      },
+      {
+        "type": "reverse",
+        "question": "Satyagraha translates as 'truth-force'; who developed this nonviolent resistance philosophy?",
+        "answer": "Gandhi",
+        "distractors": ["Martin Luther King", "Nelson Mandela", "Jawaharlal Nehru"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Satyagraha is Gandhi's philosophy of nonviolent resistance, translated as 'truth-force.'",
+        "answer": "True",
+        "distractors": ["False", "Satyagraha means 'holy war'", "It is a Hindu religious term only"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Gandhi's nonviolent resistance philosophy was called ___, meaning 'truth-force.'",
+        "answer": "Satyagraha",
+        "distractors": ["Ahimsa", "Dharma", "Karma"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Judith Brown — Gandhi: Prisoner of Hope",
+    "sourceUrl": "https://yalebooks.yale.edu",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Gandhi in white khadi cloth standing in front of a crowd, holding a walking staff, peaceful but resolute, pixel art in warm earth tones",
+    "tags": ["Gandhi", "Satyagraha", "nonviolence", "civil disobedience", "India", "philosophy"]
+  },
+  {
+    "id": "history-gandhi-partition",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "south asia",
+    "categoryL1": "history",
+    "categoryL2": "south_asia",
+    "categoryL3": "gandhi",
+    "statement": "Gandhi was assassinated on January 30, 1948, just five months after India's independence — shot by Nathuram Godse, a Hindu nationalist who blamed Gandhi for concessions to Muslims during Partition.",
+    "quizQuestion": "When was Gandhi assassinated?",
+    "correctAnswer": "January 30, 1948",
+    "distractors": [
+      "August 15, 1947",
+      "June 3, 1947",
+      "March 12, 1930",
+      "January 30, 1949",
+      "October 2, 1948",
+      "December 31, 1948",
+      "March 15, 1948",
+      "February 5, 1948"
+    ],
+    "acceptableAnswers": ["January 30, 1948", "January 1948", "30 January 1948"],
+    "explanation": "Gandhi was shot three times by Nathuram Godse at Birla House in New Delhi during his evening prayer meeting. Godse was a Hindu nationalist who believed Gandhi had been too accommodating of Muslims and had contributed to the partition of India into India and Pakistan in August 1947. The partition created one of history's largest human migrations — 10-20 million displaced and 200,000-2 million killed. Gandhi had opposed partition and fasted to stop communal violence, which made him a target for Hindu nationalists.",
+    "wowFactor": "Gandhi was murdered by someone who loved India as passionately as he did — but believed Gandhi's tolerance was destroying it. The irony is that Gandhi's death momentarily silenced the communal violence he had failed to stop while alive.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "When was Gandhi assassinated?",
+        "answer": "January 30, 1948",
+        "distractors": ["August 15, 1947", "June 3, 1947", "October 2, 1948"]
+      },
+      {
+        "type": "reverse",
+        "question": "Nathuram Godse assassinated Gandhi in 1948 for what reason?",
+        "answer": "Concessions to Muslims",
+        "distractors": ["Collaboration with Britain", "Opposing independence", "Betraying the army"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Gandhi was assassinated on January 30, 1948, just months after Indian independence.",
+        "answer": "True",
+        "distractors": ["False", "He died in 1930", "He died before independence"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Gandhi was assassinated on January ___, 1948, just months after Indian independence.",
+        "answer": "30",
+        "distractors": ["15", "1", "31"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Stanley Wolpert — Gandhi's Passion: The Life and Legacy of Mahatma Gandhi",
+    "sourceUrl": "https://www.oup.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Involves assassination and religious-communal violence; present factually",
+    "visualDescription": "Evening prayer meeting at Birla House in New Delhi, January 1948, candlelight and crowd, pixel art in dusky blue and gold",
+    "tags": ["Gandhi", "assassination", "1948", "Partition", "India", "Godse"]
+  },
+  {
+    "id": "history-buddha-enlightenment",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "south asia",
+    "categoryL1": "history",
+    "categoryL2": "south_asia",
+    "categoryL3": "the_buddha",
+    "statement": "Siddhartha Gautama attained enlightenment under a Bodhi tree in Bodh Gaya around 528 BC after 49 days of meditation, becoming the Buddha ('the Awakened One').",
+    "quizQuestion": "Under what kind of tree did the Buddha attain enlightenment?",
+    "correctAnswer": "A Bodhi tree",
+    "distractors": [
+      "A banyan tree",
+      "A mango tree",
+      "A lotus tree",
+      "A palm tree",
+      "A cedar tree",
+      "A fig tree",
+      "A cypress tree",
+      "An olive tree"
+    ],
+    "acceptableAnswers": ["A Bodhi tree", "Bodhi tree", "A fig tree", "Sacred fig tree"],
+    "explanation": "Siddhartha Gautama sat under a Ficus religiosa tree — now known as the Bodhi tree (tree of awakening) — in Bodh Gaya (in modern Bihar, India). After reportedly meditating for 49 days, he attained Bodhi (enlightenment/awakening), understanding the nature of suffering and the path to liberation. The original Bodhi tree is gone, but a direct descendant said to be grown from a cutting taken in 250 BC still stands at Bodh Gaya, a major Buddhist pilgrimage site.",
+    "wowFactor": "A living tree at Bodh Gaya today is said to descend directly from the original tree under which the Buddha meditated — a cutting was taken 2,300 years ago and the lineage continues.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Under what kind of tree did the Buddha attain enlightenment?",
+        "answer": "A Bodhi tree",
+        "distractors": ["A banyan tree", "A mango tree", "A palm tree"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Buddha attained enlightenment in which modern Indian state?",
+        "answer": "Bihar",
+        "distractors": ["Uttar Pradesh", "Rajasthan", "Nepal"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Siddhartha Gautama attained enlightenment under a Bodhi tree in Bodh Gaya.",
+        "answer": "True",
+        "distractors": ["False", "He attained it in Nepal", "He attained it under a lotus"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Siddhartha attained enlightenment under a ___ tree, becoming the Buddha.",
+        "answer": "Bodhi",
+        "distractors": ["banyan", "mango", "palm"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Karen Armstrong — Buddha",
+    "sourceUrl": "https://www.penguinrandomhouse.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Siddhartha seated in lotus position under a large, ancient Bodhi tree with stars visible through the canopy, pixel art in gold and midnight blue",
+    "tags": ["Buddha", "Siddhartha Gautama", "enlightenment", "Bodhi tree", "Bodh Gaya", "Buddhism"]
+  },
+  {
+    "id": "history-buddha-four-noble-truths",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "south asia",
+    "categoryL1": "history",
+    "categoryL2": "south_asia",
+    "categoryL3": "the_buddha",
+    "statement": "The Buddha's first teaching after enlightenment, the 'Deer Park Sermon,' introduced the Four Noble Truths — the foundation of Buddhist philosophy — to five former companions.",
+    "quizQuestion": "What is the name of the Buddha's first sermon after enlightenment?",
+    "correctAnswer": "The Deer Park Sermon",
+    "distractors": [
+      "The Bodhi Sermon",
+      "The River Sermon",
+      "The Mountain Sermon",
+      "The Lotus Sermon",
+      "The Fire Sermon",
+      "The River Ganges Sermon",
+      "The Garden Sermon",
+      "The Palace Sermon"
+    ],
+    "acceptableAnswers": ["The Deer Park Sermon", "Deer Park Sermon", "Sermon at Sarnath"],
+    "explanation": "After his enlightenment at Bodh Gaya, the Buddha traveled to Isipatana (modern Sarnath, near Varanasi). There, in a deer park, he gave his first discourse to five ascetics who had previously accompanied him. This 'Dhammacakkappavattana Sutta' (Setting the Wheel of Dhamma in Motion) articulated the Four Noble Truths: that suffering exists, that it arises from craving, that it can cease, and that the Eightfold Path leads to its cessation. This is called 'turning the wheel of Dhamma.'",
+    "wowFactor": "Buddhism began with a sermon to just five people in a deer park — a teaching heard by fewer people than a village meeting that would eventually shape the beliefs of 500 million.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the name of the Buddha's first sermon after enlightenment?",
+        "answer": "The Deer Park Sermon",
+        "distractors": ["The Bodhi Sermon", "The Mountain Sermon", "The Fire Sermon"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Four Noble Truths were first taught in the Deer Park Sermon delivered to how many people?",
+        "answer": "Five ascetics",
+        "distractors": ["Thousands", "One student", "A crowd of kings"]
+      },
+      {
+        "type": "truefalse",
+        "question": "The Buddha's first sermon at Sarnath, the Deer Park Sermon, introduced the Four Noble Truths.",
+        "answer": "True",
+        "distractors": ["False", "He gave it at Bodh Gaya", "The first sermon was at a palace"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Buddha's first sermon was the ___ Sermon, introducing the Four Noble Truths.",
+        "answer": "Deer Park",
+        "distractors": ["Mountain", "River", "Garden"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Bhikkhu Bodhi — In the Buddha's Words",
+    "sourceUrl": "https://www.wisdompubs.org",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The Buddha teaching five seated figures in a forest clearing with deer visible in the background, golden light, pixel art",
+    "tags": ["Buddha", "Deer Park Sermon", "Four Noble Truths", "Sarnath", "Buddhism", "first teaching"]
+  },
+  {
+    "id": "history-buddha-royal-origins",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "south asia",
+    "categoryL1": "history",
+    "categoryL2": "south_asia",
+    "categoryL3": "the_buddha",
+    "statement": "Siddhartha Gautama was born a prince of the Shakya clan around 563 BC in Lumbini (modern Nepal) and voluntarily left his palace life and wealth in his late 20s to seek spiritual truth.",
+    "quizQuestion": "What modern country was Siddhartha Gautama (the Buddha) born in?",
+    "correctAnswer": "Nepal",
+    "distractors": [
+      "India",
+      "Tibet",
+      "China",
+      "Sri Lanka",
+      "Bangladesh",
+      "Bhutan",
+      "Pakistan",
+      "Myanmar"
+    ],
+    "acceptableAnswers": ["Nepal", "Modern Nepal", "Present-day Nepal"],
+    "explanation": "Lumbini, the birthplace of Siddhartha Gautama, is located in the Rupandehi District of modern Nepal's Terai region, near the Indian border. At the time of his birth (traditionally dated around 563 BC), it was part of the Sakya republic. His father Suddhodana was a leader (raja) of the Shakya clan. According to tradition, an astrologer predicted he would become either a great king or a great sage, prompting his father to shelter him from suffering in a luxurious palace — which ultimately failed.",
+    "wowFactor": "The Buddha's father tried to prevent the prophecy by surrounding him with luxury and hiding all suffering — every attempt to shield him from reality only made him more determined to seek it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What modern country was Siddhartha Gautama (the Buddha) born in?",
+        "answer": "Nepal",
+        "distractors": ["India", "Tibet", "China"]
+      },
+      {
+        "type": "reverse",
+        "question": "Lumbini, the birthplace of the Buddha, is located in which modern country?",
+        "answer": "Nepal",
+        "distractors": ["India", "Bangladesh", "Bhutan"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Siddhartha Gautama was born in Lumbini, in what is now Nepal.",
+        "answer": "True",
+        "distractors": ["False", "He was born in India", "He was born in Tibet"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Buddha was born in Lumbini, in present-day ___.",
+        "answer": "Nepal",
+        "distractors": ["India", "Tibet", "China"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "UNESCO — Lumbini, the Birthplace of the Lord Buddha",
+    "sourceUrl": "https://whc.unesco.org/en/list/666",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ancient Lumbini garden with the Maya Devi temple visible, Siddhartha's birth depicted in bas-relief, pixel art in warm stone and gold",
+    "tags": ["Buddha", "Siddhartha Gautama", "Nepal", "Lumbini", "birthplace", "Buddhism"]
+  },
+  {
+    "id": "history-rosa-luxemburg-spartacist",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern europe",
+    "categoryL1": "history",
+    "categoryL2": "modern_europe",
+    "categoryL3": "rosa_luxemburg",
+    "statement": "Rosa Luxemburg co-founded the Spartacist League and led the 1919 German Revolution (Spartacist uprising) against the newly formed Weimar Republic — and was murdered without trial by right-wing Freikorps soldiers.",
+    "quizQuestion": "What organization did Rosa Luxemburg co-found that led the 1919 German uprising?",
+    "correctAnswer": "The Spartacist League",
+    "distractors": [
+      "The Communist Party",
+      "The Social Democratic Party",
+      "The Bolshevik Party",
+      "The Red Army",
+      "The Freikorps",
+      "The Weimar Republic",
+      "The Socialist International",
+      "The Iron Front"
+    ],
+    "acceptableAnswers": ["The Spartacist League", "Spartacist League", "Spartakusbund"],
+    "explanation": "Rosa Luxemburg and Karl Liebknecht founded the Spartacist League in 1916 during WWI as an anti-war socialist organization within the Social Democratic Party, later forming the Communist Party of Germany (KPD). In January 1919, they led an armed uprising in Berlin against the Weimar Republic. The SPD government used right-wing paramilitary Freikorps to suppress it. Luxemburg and Liebknecht were captured, beaten, shot, and their bodies dumped — a judicial murder that traumatized German socialism.",
+    "wowFactor": "Rosa Luxemburg was murdered on the orders of the Social Democratic government she had spent her life fighting alongside — betrayed and killed by her own side of the political spectrum.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What organization did Rosa Luxemburg co-found that led the 1919 German uprising?",
+        "answer": "The Spartacist League",
+        "distractors": ["The Communist Party", "The Social Democratic Party", "The Red Army"]
+      },
+      {
+        "type": "reverse",
+        "question": "Rosa Luxemburg was murdered in 1919 by which right-wing paramilitary force?",
+        "answer": "The Freikorps",
+        "distractors": ["The SS", "The Stormtroopers", "The Waffen-SS"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Rosa Luxemburg co-founded the Spartacist League and was murdered without trial in 1919.",
+        "answer": "True",
+        "distractors": ["False", "She survived and fled Germany", "She was arrested and tried"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Rosa Luxemburg co-founded the ___ League which led the 1919 German Revolution.",
+        "answer": "Spartacist",
+        "distractors": ["Communist", "Social", "Red"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "J.P. Nettl — Rosa Luxemburg",
+    "sourceUrl": "https://www.oup.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Involves political violence and leftist politics; present factually",
+    "visualDescription": "Rosa Luxemburg speaking at a rally in Berlin, Spartacist red flags, crowd in the background, pixel art in stark red and black",
+    "tags": ["Rosa Luxemburg", "Spartacist League", "1919", "German Revolution", "socialism", "Freikorps"]
+  },
+  {
+    "id": "history-rosa-luxemburg-reform",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern europe",
+    "categoryL1": "history",
+    "categoryL2": "modern_europe",
+    "categoryL3": "rosa_luxemburg",
+    "statement": "Rosa Luxemburg's 1899 pamphlet 'Reform or Revolution?' argued against Eduard Bernstein's revisionism — insisting that socialism could not be achieved through gradual parliamentary reform alone.",
+    "quizQuestion": "What famous pamphlet did Rosa Luxemburg write in 1899 to critique revisionist socialism?",
+    "correctAnswer": "Reform or Revolution?",
+    "distractors": [
+      "The Communist Manifesto",
+      "What Is To Be Done?",
+      "The Accumulation of Capital",
+      "Das Kapital",
+      "The State and Revolution",
+      "Imperialism: The Highest Stage",
+      "The Junius Pamphlet",
+      "Anti-Duhring"
+    ],
+    "acceptableAnswers": ["Reform or Revolution?", "Reform or Revolution", "Sozialreform oder Revolution?"],
+    "explanation": "Eduard Bernstein, a German socialist, argued in the 1890s that capitalism was gradually becoming more humane and that socialism could be achieved through democratic elections and incremental reforms without revolution. Luxemburg's 'Reform or Revolution?' (1899) was a direct rebuttal — arguing that capitalism's contradictions would not resolve peacefully, that reforms could humanize the system but not transform it, and that parliamentary participation alone would corrupt socialist parties. The debate between reform and revolution defined socialist politics for the entire 20th century.",
+    "wowFactor": "Luxemburg's debate with Bernstein in 1899 about reform vs. revolution is still the central argument of left-wing politics today — nothing has been settled in 125 years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What famous pamphlet did Rosa Luxemburg write in 1899 to critique revisionist socialism?",
+        "answer": "Reform or Revolution?",
+        "distractors": ["The Communist Manifesto", "What Is To Be Done?", "The State and Revolution"]
+      },
+      {
+        "type": "reverse",
+        "question": "Luxemburg's 'Reform or Revolution?' argued against which socialist's gradualist revisionism?",
+        "answer": "Eduard Bernstein",
+        "distractors": ["Karl Marx", "Friedrich Engels", "Vladimir Lenin"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Luxemburg's 1899 pamphlet 'Reform or Revolution?' argued that socialism could not be achieved through gradual reform alone.",
+        "answer": "True",
+        "distractors": ["False", "She supported gradual reform", "She wrote it in 1919"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Rosa Luxemburg's 1899 pamphlet '___ or Revolution?' criticized Bernstein's revisionist socialism.",
+        "answer": "Reform",
+        "distractors": ["War", "Peace", "Violence"]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "adult",
+    "rarity": "rare",
+    "sourceName": "Rosa Luxemburg — Reform or Revolution? (1899)",
+    "sourceUrl": "https://www.marxists.org/archive/luxemburg/1900/reform-revolution",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Involves socialist political theory; present factually without advocacy",
+    "visualDescription": "Luxemburg at a desk writing by lamplight, pamphlet pages around her, pixel art in warm amber and dark socialist red",
+    "tags": ["Rosa Luxemburg", "Reform or Revolution", "socialism", "Bernstein", "political theory", "1899"]
+  },
+  {
+    "id": "history-rosa-luxemburg-internationalism",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern europe",
+    "categoryL1": "history",
+    "categoryL2": "modern_europe",
+    "categoryL3": "rosa_luxemburg",
+    "statement": "Rosa Luxemburg was imprisoned during WWI for writing the Junius Pamphlet (1915), which argued that the working class had no interest in the imperialist war and called for international socialist solidarity.",
+    "quizQuestion": "Why was Rosa Luxemburg imprisoned during World War I?",
+    "correctAnswer": "For anti-war socialist writings",
+    "distractors": [
+      "For organizing a bank robbery",
+      "For espionage",
+      "For assassinating an official",
+      "For founding a newspaper",
+      "For speaking at a rally",
+      "For leading a strike",
+      "For fleeing Germany",
+      "For publishing a book"
+    ],
+    "acceptableAnswers": ["For anti-war socialist writings", "Antiwar agitation", "Opposing WWI", "Writing against the war"],
+    "explanation": "When WWI broke out in 1914, most of the Social Democratic Party voted for war credits, shocking Luxemburg. She argued that workers had nothing to gain from an imperialist war between capitalist nations. Her Junius Pamphlet, written in prison in 1915 and smuggled out for publication under a pseudonym, argued that the 'socialist fatherland' — the international working class — transcended national borders. She spent most of the war imprisoned, and was released in November 1918 during the German Revolution.",
+    "wowFactor": "Luxemburg wrote her most influential pamphlet while in prison — smuggled out page by page — because she refused to stop opposing a war the entire German left had accepted.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why was Rosa Luxemburg imprisoned during World War I?",
+        "answer": "For anti-war socialist writings",
+        "distractors": ["For organizing a bank robbery", "For espionage", "For assassinating an official"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Junius Pamphlet, smuggled out of prison in 1915, was written by whom?",
+        "answer": "Rosa Luxemburg",
+        "distractors": ["Karl Liebknecht", "Lenin", "Karl Marx"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Rosa Luxemburg was imprisoned during WWI for writing anti-war socialist pamphlets.",
+        "answer": "True",
+        "distractors": ["False", "She was imprisoned for theft", "She was never imprisoned"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Luxemburg was imprisoned during WWI for writing the ___ Pamphlet opposing the war.",
+        "answer": "Junius",
+        "distractors": ["Communist", "Reform", "Spartacist"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Kate Evans — Red Rosa: A Graphic Biography of Rosa Luxemburg",
+    "sourceUrl": "https://www.versobooks.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Involves anti-war politics and imprisonment; present factually",
+    "visualDescription": "Rosa Luxemburg writing at a small prison desk, moonlight through cell bars, pages hidden under floorboards, pixel art in cold grey and warm lamplight",
+    "tags": ["Rosa Luxemburg", "Junius Pamphlet", "WWI", "anti-war", "imprisonment", "international socialism"]
+  }
+]

@@ -1,0 +1,2610 @@
+[
+  {
+    "id": "space-earth-radius",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Earth has a mean radius of approximately 6,371 kilometers.",
+    "quizQuestion": "What is Earth's mean radius in kilometers?",
+    "correctAnswer": "6,371 km",
+    "distractors": [
+      "5,100 km",
+      "7,926 km",
+      "4,800 km",
+      "8,500 km",
+      "3,959 km",
+      "12,742 km",
+      "6,000 km",
+      "10,000 km"
+    ],
+    "acceptableAnswers": [
+      "6371",
+      "6,371 kilometers",
+      "about 6,371 km"
+    ],
+    "explanation": "Earth's mean radius is 6,371 km, though it bulges slightly at the equator to 6,378 km. This makes Earth an oblate spheroid rather than a perfect sphere.",
+    "wowFactor": "If you drilled straight through Earth, the journey would take about 42 minutes in a frictionless tunnel.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is Earth's mean radius?",
+        "answer": "6,371 km",
+        "distractors": [
+          "5,100 km",
+          "7,926 km",
+          "4,800 km"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which planet has a mean radius of 6,371 km?",
+        "answer": "Earth",
+        "distractors": [
+          "Mars",
+          "Venus",
+          "Mercury"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Earth's mean radius is approximately 6,371 kilometers.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Earth's mean radius is approximately ___ kilometers.",
+        "answer": "6,371",
+        "distractors": [
+          "5,100",
+          "7,926",
+          "4,800"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Earth",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing blue-green planet seen from space with swirling white clouds, lit from one side by a distant yellow star.",
+    "tags": [
+      "earth",
+      "planets",
+      "solar system",
+      "radius",
+      "geography"
+    ]
+  },
+  {
+    "id": "space-earth-rotation",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Earth completes one full rotation on its axis approximately every 24 hours.",
+    "quizQuestion": "How long does one full Earth rotation take?",
+    "correctAnswer": "24 hours",
+    "distractors": [
+      "12 hours",
+      "48 hours",
+      "365 days",
+      "30 hours",
+      "18 hours",
+      "6 hours",
+      "72 hours",
+      "8 hours"
+    ],
+    "acceptableAnswers": [
+      "~24 hours",
+      "one day",
+      "23 hours 56 minutes"
+    ],
+    "explanation": "Earth takes about 23 hours, 56 minutes, and 4 seconds to rotate once relative to distant stars (a sidereal day). The solar day rounds to 24 hours due to Earth's orbital motion.",
+    "wowFactor": "Earth's rotation is actually slowing down — days are getting about 1.7 milliseconds longer every century.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long does Earth take to rotate once on its axis?",
+        "answer": "24 hours",
+        "distractors": [
+          "12 hours",
+          "365 days",
+          "48 hours"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What natural phenomenon is caused by Earth's daily rotation?",
+        "answer": "Day and night cycle",
+        "distractors": [
+          "The seasons",
+          "The tides",
+          "The phases of the Moon"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Earth rotates once every 24 hours.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Earth completes one rotation every ___ hours.",
+        "answer": "24",
+        "distractors": [
+          "12",
+          "48",
+          "365"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Earth%27s_rotation",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Earth spinning slowly in dark space, one side bright in sunlight and the other side showing glowing city lights in the dark.",
+    "tags": [
+      "earth",
+      "rotation",
+      "day",
+      "night",
+      "solar system"
+    ]
+  },
+  {
+    "id": "space-earth-atmosphere",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Earth's atmosphere is composed of roughly 78% nitrogen and 21% oxygen.",
+    "quizQuestion": "What is the most abundant gas in Earth's atmosphere?",
+    "correctAnswer": "Nitrogen",
+    "distractors": [
+      "Oxygen",
+      "Carbon dioxide",
+      "Argon",
+      "Hydrogen",
+      "Helium",
+      "Water vapor",
+      "Methane",
+      "Carbon monoxide"
+    ],
+    "acceptableAnswers": [
+      "nitrogen",
+      "N2",
+      "dinitrogen"
+    ],
+    "explanation": "Nitrogen (N2) makes up about 78% of Earth's atmosphere, while oxygen accounts for 21%. The remaining 1% is mostly argon and trace gases including carbon dioxide.",
+    "wowFactor": "Despite being essential for life, most living things can't use nitrogen directly from the air — we depend on special bacteria to 'fix' it into usable forms.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What gas makes up about 78% of Earth's atmosphere?",
+        "answer": "Nitrogen",
+        "distractors": [
+          "Oxygen",
+          "Carbon dioxide",
+          "Argon"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What percentage of Earth's atmosphere is oxygen?",
+        "answer": "21%",
+        "distractors": [
+          "78%",
+          "50%",
+          "5%"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Oxygen is the most abundant gas in Earth's atmosphere.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Earth's atmosphere is about 78% ___ and 21% oxygen.",
+        "answer": "nitrogen",
+        "distractors": [
+          "carbon dioxide",
+          "helium",
+          "hydrogen"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Atmosphere_of_Earth",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section view of Earth showing thin glowing blue atmospheric layers wrapping the planet against a black starfield.",
+    "tags": [
+      "earth",
+      "atmosphere",
+      "nitrogen",
+      "oxygen",
+      "air"
+    ]
+  },
+  {
+    "id": "space-sun-temperature",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "stars_galaxies",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "stars_galaxies",
+    "categoryL3": "",
+    "statement": "The Sun's surface temperature is approximately 5,500 degrees Celsius.",
+    "quizQuestion": "What is the approximate surface temperature of the Sun?",
+    "correctAnswer": "5,500°C",
+    "distractors": [
+      "1,000°C",
+      "10,000°C",
+      "500°C",
+      "50,000°C",
+      "3,000°C",
+      "100,000°C",
+      "20,000°C",
+      "2,500°C"
+    ],
+    "acceptableAnswers": [
+      "5500 degrees",
+      "5,778 K",
+      "about 5500°C",
+      "5,500 degrees Celsius"
+    ],
+    "explanation": "The Sun's photosphere (visible surface) averages about 5,500°C (5,778 K). Paradoxically, the corona (outer atmosphere) reaches millions of degrees, a mystery still being studied.",
+    "wowFactor": "The Sun's corona is hundreds of times hotter than its surface — scientists still aren't sure exactly why.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the Sun's surface temperature?",
+        "answer": "5,500°C",
+        "distractors": [
+          "1,000°C",
+          "50,000°C",
+          "10,000°C"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which layer of the Sun has a temperature of about 5,500°C?",
+        "answer": "Photosphere",
+        "distractors": [
+          "Corona",
+          "Core",
+          "Chromosphere"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Sun's surface is hotter than its corona.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Sun's surface temperature is approximately ___ degrees Celsius.",
+        "answer": "5,500",
+        "distractors": [
+          "1,000",
+          "10,000",
+          "50,000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sun",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A blazing yellow-orange star with solar flares arcing off the surface, surrounded by a shimmering corona in the dark of space.",
+    "tags": [
+      "sun",
+      "stars",
+      "temperature",
+      "photosphere",
+      "solar system"
+    ]
+  },
+  {
+    "id": "space-sun-distance",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "stars_galaxies",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "stars_galaxies",
+    "categoryL3": "",
+    "statement": "Earth is approximately 150 million kilometers from the Sun on average.",
+    "quizQuestion": "How far is Earth from the Sun on average?",
+    "correctAnswer": "150 million km",
+    "distractors": [
+      "50 million km",
+      "400 million km",
+      "1 billion km",
+      "10 million km",
+      "300 million km",
+      "75 million km",
+      "500 million km",
+      "1 million km"
+    ],
+    "acceptableAnswers": [
+      "1 AU",
+      "one astronomical unit",
+      "~150 million km",
+      "149.6 million km"
+    ],
+    "explanation": "Earth's mean distance from the Sun is about 149.6 million km, defined as 1 Astronomical Unit (AU). This distance is used as the baseline for measuring distances in the solar system.",
+    "wowFactor": "Light from the Sun takes about 8 minutes and 20 seconds to reach Earth — so when you look at the Sun, you're seeing it as it was 8 minutes ago.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is Earth's average distance from the Sun?",
+        "answer": "150 million km",
+        "distractors": [
+          "50 million km",
+          "400 million km",
+          "1 billion km"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What unit equals Earth's average distance from the Sun?",
+        "answer": "1 Astronomical Unit (AU)",
+        "distractors": [
+          "1 light-year",
+          "1 parsec",
+          "1 light-minute"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Earth is about 150 million kilometers from the Sun.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Earth's average distance from the Sun is approximately ___ million kilometers.",
+        "answer": "150",
+        "distractors": [
+          "50",
+          "400",
+          "1,000"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Astronomical_unit",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A tiny blue Earth orbiting a distant blazing yellow Sun with a dotted orbital path showing the vast distance between them.",
+    "tags": [
+      "sun",
+      "earth",
+      "distance",
+      "astronomical unit",
+      "solar system"
+    ]
+  },
+  {
+    "id": "space-sun-composition",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "stars_galaxies",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "stars_galaxies",
+    "categoryL3": "",
+    "statement": "The Sun is composed primarily of hydrogen (about 73%) and helium (about 25%) by mass.",
+    "quizQuestion": "What is the most abundant element in the Sun?",
+    "correctAnswer": "Hydrogen",
+    "distractors": [
+      "Helium",
+      "Carbon",
+      "Oxygen",
+      "Iron",
+      "Nitrogen",
+      "Neon",
+      "Silicon",
+      "Carbon"
+    ],
+    "acceptableAnswers": [
+      "hydrogen",
+      "H",
+      "H2"
+    ],
+    "explanation": "The Sun is about 73% hydrogen and 25% helium by mass. Nuclear fusion in the core converts hydrogen into helium, releasing the enormous energy that makes the Sun shine.",
+    "wowFactor": "Every second, the Sun converts 600 million tons of hydrogen into helium — and has enough fuel to keep going for another 5 billion years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What element makes up most of the Sun's mass?",
+        "answer": "Hydrogen",
+        "distractors": [
+          "Helium",
+          "Carbon",
+          "Iron"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What process powers the Sun by fusing hydrogen?",
+        "answer": "Nuclear fusion",
+        "distractors": [
+          "Nuclear fission",
+          "Combustion",
+          "Chemical reaction"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Sun is mostly made of helium.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Sun is about 73% ___ and 25% helium by mass.",
+        "answer": "hydrogen",
+        "distractors": [
+          "carbon",
+          "iron",
+          "oxygen"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sun",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cutaway diagram of the Sun showing a turbulent glowing core surrounded by layers of swirling plasma, pixel art style.",
+    "tags": [
+      "sun",
+      "hydrogen",
+      "helium",
+      "fusion",
+      "stars"
+    ]
+  },
+  {
+    "id": "space-moon-distance",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "The Moon orbits Earth at an average distance of about 384,400 kilometers.",
+    "quizQuestion": "How far is the Moon from Earth on average?",
+    "correctAnswer": "384,400 km",
+    "distractors": [
+      "100,000 km",
+      "1 million km",
+      "50,000 km",
+      "500,000 km",
+      "200,000 km",
+      "750,000 km",
+      "2 million km",
+      "150,000 km"
+    ],
+    "acceptableAnswers": [
+      "384400 km",
+      "about 384,000 km",
+      "~385,000 km"
+    ],
+    "explanation": "The Moon's average distance from Earth is 384,400 km. This distance varies between about 356,500 km (perigee) and 406,700 km (apogee) as the Moon's orbit is elliptical.",
+    "wowFactor": "You could fit all the other planets in the solar system inside the gap between Earth and the Moon with room to spare.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the average Earth-Moon distance?",
+        "answer": "384,400 km",
+        "distractors": [
+          "100,000 km",
+          "1 million km",
+          "200,000 km"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the name for the Moon's closest point to Earth?",
+        "answer": "Perigee",
+        "distractors": [
+          "Apogee",
+          "Perihelion",
+          "Aphelion"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Moon is about 384,400 kilometers from Earth.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Moon orbits Earth at an average distance of about ___ kilometers.",
+        "answer": "384,400",
+        "distractors": [
+          "100,000",
+          "1,000,000",
+          "500,000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Moon",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cratered gray moon hanging in black space above a curved Earth horizon, with pixel art craters and shadowed surface texture.",
+    "tags": [
+      "moon",
+      "earth",
+      "distance",
+      "orbit",
+      "solar system"
+    ]
+  },
+  {
+    "id": "space-moon-tides",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "The Moon's gravitational pull is the primary cause of Earth's ocean tides.",
+    "quizQuestion": "What primarily causes Earth's ocean tides?",
+    "correctAnswer": "The Moon's gravity",
+    "distractors": [
+      "The Sun's gravity",
+      "Earth's rotation",
+      "Wind patterns",
+      "Earth's magnetic field",
+      "Volcanic activity",
+      "The Sun's heat",
+      "Atmospheric pressure",
+      "Underwater currents"
+    ],
+    "acceptableAnswers": [
+      "Moon's gravity",
+      "Moon's gravitational pull",
+      "lunar gravity",
+      "the Moon"
+    ],
+    "explanation": "The Moon's gravity pulls on Earth's water, creating tidal bulges on the side facing the Moon and the opposite side. The Sun contributes about 46% as much tidal force, leading to stronger 'spring tides' during new and full moons.",
+    "wowFactor": "Tides are very slowly stealing Earth's rotational energy — in the distant past, a day on Earth was only about 6 hours long.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the primary cause of Earth's ocean tides?",
+        "answer": "The Moon's gravity",
+        "distractors": [
+          "The Sun's gravity",
+          "Earth's rotation",
+          "Wind patterns"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the name for the extra-high tides that occur during full and new moons?",
+        "answer": "Spring tides",
+        "distractors": [
+          "Neap tides",
+          "Surge tides",
+          "King tides"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Moon's gravity is the main cause of ocean tides on Earth.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Moon's ___ pull is the primary cause of Earth's ocean tides.",
+        "answer": "gravitational",
+        "distractors": [
+          "magnetic",
+          "electrical",
+          "nuclear"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tide",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An ocean coastline at high tide under a glowing full moon, waves surging over rocks with pixel art style lighting.",
+    "tags": [
+      "moon",
+      "tides",
+      "gravity",
+      "ocean",
+      "earth"
+    ]
+  },
+  {
+    "id": "space-moon-surface",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "The Moon has no atmosphere, causing extreme temperature swings between day and night.",
+    "quizQuestion": "Why does the Moon have extreme temperature swings?",
+    "correctAnswer": "No atmosphere",
+    "distractors": [
+      "No magnetic field",
+      "Thin crust",
+      "Distance from the Sun",
+      "Slow rotation",
+      "No water",
+      "Small size",
+      "No core",
+      "Low gravity"
+    ],
+    "acceptableAnswers": [
+      "it has no atmosphere",
+      "lack of atmosphere",
+      "absence of atmosphere"
+    ],
+    "explanation": "Without an atmosphere to retain heat, the Moon's surface swings from about 127°C in sunlight to -173°C in shadow. Earth's atmosphere acts as a thermal blanket, moderating our planet's temperatures.",
+    "wowFactor": "The temperature difference between a sunny spot and a shadow on the Moon can be nearly 300°C — a larger swing than any place on Earth.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What causes the Moon's extreme surface temperature swings?",
+        "answer": "No atmosphere",
+        "distractors": [
+          "No magnetic field",
+          "Small size",
+          "Slow rotation"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the approximate temperature on the Moon's sunlit surface?",
+        "answer": "127°C",
+        "distractors": [
+          "-173°C",
+          "0°C",
+          "300°C"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Moon has no significant atmosphere.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Moon has no ___, which causes its extreme temperature swings.",
+        "answer": "atmosphere",
+        "distractors": [
+          "gravity",
+          "craters",
+          "shadow"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Moon",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A half-lit moon surface in pixel art — one side blazing white in harsh sunlight, the other side in pitch-black shadow, craters visible.",
+    "tags": [
+      "moon",
+      "atmosphere",
+      "temperature",
+      "surface",
+      "space"
+    ]
+  },
+  {
+    "id": "space-jupiter-size",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Jupiter is the largest planet in our solar system, with a mass more than twice all other planets combined.",
+    "quizQuestion": "What is the largest planet in our solar system?",
+    "correctAnswer": "Jupiter",
+    "distractors": [
+      "Saturn",
+      "Uranus",
+      "Neptune",
+      "Earth",
+      "Mars",
+      "Venus",
+      "Mercury",
+      "Pluto"
+    ],
+    "acceptableAnswers": [
+      "Jupiter"
+    ],
+    "explanation": "Jupiter has a mass of 1.9 × 10²⁷ kg — more than 2.5 times the mass of all other solar system planets combined. Its diameter is about 11 times Earth's.",
+    "wowFactor": "If Jupiter were hollow, you could fit about 1,300 Earths inside it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which planet is the largest in the solar system?",
+        "answer": "Jupiter",
+        "distractors": [
+          "Saturn",
+          "Neptune",
+          "Uranus"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many times larger is Jupiter's diameter compared to Earth's?",
+        "answer": "About 11 times",
+        "distractors": [
+          "About 2 times",
+          "About 50 times",
+          "About 100 times"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Jupiter is the largest planet in our solar system.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ is the largest planet in our solar system.",
+        "answer": "Jupiter",
+        "distractors": [
+          "Saturn",
+          "Neptune",
+          "Uranus"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Jupiter",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A massive striped orange-brown gas giant with swirling storm bands and a prominent red oval storm, dwarfing a small Earth nearby.",
+    "tags": [
+      "jupiter",
+      "planets",
+      "solar system",
+      "gas giant",
+      "size"
+    ]
+  },
+  {
+    "id": "space-jupiter-great-red-spot",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Jupiter's Great Red Spot is a persistent storm that has raged for at least 350 years.",
+    "quizQuestion": "What is Jupiter's Great Red Spot?",
+    "correctAnswer": "A giant storm",
+    "distractors": [
+      "A volcano",
+      "An impact crater",
+      "An ocean",
+      "A mountain range",
+      "A magnetic pole",
+      "A moon shadow",
+      "A region of rock",
+      "A frozen sea"
+    ],
+    "acceptableAnswers": [
+      "a storm",
+      "a giant hurricane",
+      "an anticyclonic storm",
+      "a massive storm"
+    ],
+    "explanation": "The Great Red Spot is an anticyclonic storm larger than Earth that has been observed continuously since at least the 1600s. Wind speeds within it reach about 430 km/h. It has been slowly shrinking over recent decades.",
+    "wowFactor": "The Great Red Spot storm is so large that Earth could fit inside it with room to spare — and it may have been raging for centuries.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the Great Red Spot on Jupiter?",
+        "answer": "A giant storm",
+        "distractors": [
+          "A volcano",
+          "An impact crater",
+          "A mountain range"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "On which planet would you find the Great Red Spot?",
+        "answer": "Jupiter",
+        "distractors": [
+          "Saturn",
+          "Mars",
+          "Neptune"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Jupiter's Great Red Spot is a centuries-old storm.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Jupiter's Great Red Spot is a giant ___ that has lasted hundreds of years.",
+        "answer": "storm",
+        "distractors": [
+          "crater",
+          "ocean",
+          "volcano"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Great_Red_Spot",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A close-up pixel art view of Jupiter's surface showing swirling orange clouds and a massive deep-red oval storm the size of a planet.",
+    "tags": [
+      "jupiter",
+      "Great Red Spot",
+      "storm",
+      "planets",
+      "solar system"
+    ]
+  },
+  {
+    "id": "space-jupiter-moons",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Jupiter has at least 95 known moons, including the four large Galilean moons discovered in 1610.",
+    "quizQuestion": "Which astronomer discovered Jupiter's four largest moons in 1610?",
+    "correctAnswer": "Galileo Galilei",
+    "distractors": [
+      "Isaac Newton",
+      "Nicolaus Copernicus",
+      "Johannes Kepler",
+      "Tycho Brahe",
+      "Edmund Halley",
+      "William Herschel",
+      "Christiaan Huygens",
+      "Tycho Brahe"
+    ],
+    "acceptableAnswers": [
+      "Galileo",
+      "Galileo Galilei"
+    ],
+    "explanation": "Galileo Galilei discovered Io, Europa, Ganymede, and Callisto in January 1610 using his telescope. These Galilean moons were among the first objects found to orbit a body other than Earth, supporting the heliocentric model.",
+    "wowFactor": "Ganymede, Jupiter's largest moon, is bigger than the planet Mercury and has its own magnetic field.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who discovered Jupiter's four largest moons in 1610?",
+        "answer": "Galileo Galilei",
+        "distractors": [
+          "Isaac Newton",
+          "Copernicus",
+          "Kepler"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What are the four large moons of Jupiter discovered by Galileo called?",
+        "answer": "Galilean moons",
+        "distractors": [
+          "Jovian moons",
+          "Kepler moons",
+          "Copernican moons"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Galileo Galilei discovered Jupiter's four largest moons.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Jupiter's four largest moons are called the ___ moons.",
+        "answer": "Galilean",
+        "distractors": [
+          "Jovian",
+          "Kepler",
+          "Copernican"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Galilean_moons",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Jupiter looming large in a pixel art scene with four differently colored moons in orbit around it, each a distinct color and texture.",
+    "tags": [
+      "jupiter",
+      "moons",
+      "Galileo",
+      "Galilean moons",
+      "solar system"
+    ]
+  },
+  {
+    "id": "space-mars-color",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Mars appears red because its surface is covered in iron oxide (rust).",
+    "quizQuestion": "Why does Mars appear red?",
+    "correctAnswer": "Iron oxide (rust)",
+    "distractors": [
+      "Red volcanic rock",
+      "Reflected sunlight",
+      "Atmosphere color",
+      "Sulfur deposits",
+      "Frozen CO2",
+      "Desert sand",
+      "Algae bloom",
+      "Copper deposits"
+    ],
+    "acceptableAnswers": [
+      "iron oxide",
+      "rust",
+      "iron rust",
+      "rusted iron"
+    ],
+    "explanation": "Mars's reddish color comes from iron oxide — essentially rust — coating its surface rocks and dust. The planet's thin atmosphere also scatters some of this dust, giving the sky a pinkish hue.",
+    "wowFactor": "Mars is literally a rusty planet — its surface has been corroding for billions of years in a slow-motion process much like metal rusting on Earth.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What gives Mars its distinctive red color?",
+        "answer": "Iron oxide (rust)",
+        "distractors": [
+          "Red volcanic rock",
+          "Atmosphere color",
+          "Sulfur deposits"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What chemical compound is responsible for Mars's red surface?",
+        "answer": "Iron oxide (Fe2O3)",
+        "distractors": [
+          "Silicon dioxide",
+          "Calcium carbonate",
+          "Sulfur dioxide"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mars looks red because of iron oxide on its surface.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mars appears red because its surface is covered with iron ___ .",
+        "answer": "oxide",
+        "distractors": [
+          "sulfide",
+          "carbonate",
+          "nitrate"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mars",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A rust-red Martian landscape in pixel art with rocky rust-colored terrain, a pinkish sky, and a small Sun visible on the horizon.",
+    "tags": [
+      "mars",
+      "planets",
+      "iron oxide",
+      "red planet",
+      "solar system"
+    ]
+  },
+  {
+    "id": "space-mars-olympus-mons",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Olympus Mons on Mars is the tallest volcano in the solar system at about 21.9 km high.",
+    "quizQuestion": "What is the tallest volcano in the solar system?",
+    "correctAnswer": "Olympus Mons",
+    "distractors": [
+      "Mauna Kea",
+      "Mount Everest",
+      "Mons Huygens",
+      "Elysium Mons",
+      "Mount Olympus",
+      "Mons Rümker",
+      "Pavonis Mons",
+      "Valles Marineris"
+    ],
+    "acceptableAnswers": [
+      "Olympus Mons"
+    ],
+    "explanation": "Olympus Mons on Mars towers 21.9 km above the surrounding plains — nearly 2.5 times taller than Mount Everest. It is also the largest volcano by volume in the solar system, spanning about 600 km across at its base.",
+    "wowFactor": "Olympus Mons is so wide that if you stood at its base, the summit would be beyond the horizon — you couldn't see the whole volcano at once.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the tallest volcano in the solar system?",
+        "answer": "Olympus Mons",
+        "distractors": [
+          "Mauna Kea",
+          "Elysium Mons",
+          "Mount Everest"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "On which planet is Olympus Mons located?",
+        "answer": "Mars",
+        "distractors": [
+          "Venus",
+          "Jupiter's moon Io",
+          "Earth"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Olympus Mons on Mars is the tallest volcano in the solar system.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ Mons on Mars is the tallest volcano in the solar system.",
+        "answer": "Olympus",
+        "distractors": [
+          "Elysium",
+          "Pavonis",
+          "Arsia"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Olympus_Mons",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A colossal flat-topped volcano rising from a red Martian plain in pixel art, its summit shrouded in thin wispy clouds, dwarfing everything around it.",
+    "tags": [
+      "mars",
+      "Olympus Mons",
+      "volcano",
+      "solar system",
+      "geology"
+    ]
+  },
+  {
+    "id": "space-mars-moons",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Mars has two small moons named Phobos and Deimos.",
+    "quizQuestion": "What are the names of Mars's two moons?",
+    "correctAnswer": "Phobos and Deimos",
+    "distractors": [
+      "Titan and Enceladus",
+      "Io and Europa",
+      "Charon and Nix",
+      "Ganymede and Callisto",
+      "Miranda and Ariel",
+      "Triton and Nereid",
+      "Oberon and Titania",
+      "Styx and Hydra"
+    ],
+    "acceptableAnswers": [
+      "Phobos and Deimos",
+      "Deimos and Phobos"
+    ],
+    "explanation": "Phobos and Deimos were discovered by American astronomer Asaph Hall in 1877. They are small, irregularly shaped bodies, likely captured asteroids. Phobos is spiraling slowly inward and will eventually break apart or crash into Mars.",
+    "wowFactor": "Phobos orbits Mars so fast that it rises in the west and sets in the east — opposite to the Sun — and completes an orbit in just 7.6 hours.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Name the two moons of Mars.",
+        "answer": "Phobos and Deimos",
+        "distractors": [
+          "Titan and Enceladus",
+          "Io and Europa",
+          "Charon and Nix"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which moon of Mars is slowly spiraling inward toward the planet?",
+        "answer": "Phobos",
+        "distractors": [
+          "Deimos",
+          "Titan",
+          "Europa"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mars has two moons named Phobos and Deimos.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mars's two moons are named Phobos and ___.",
+        "answer": "Deimos",
+        "distractors": [
+          "Titan",
+          "Europa",
+          "Charon"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Moons_of_Mars",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two small lumpy potato-shaped moons orbiting a red Mars in pixel art, one close and one farther out, against a black starfield.",
+    "tags": [
+      "mars",
+      "Phobos",
+      "Deimos",
+      "moons",
+      "solar system"
+    ]
+  },
+  {
+    "id": "space-saturn-rings",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Saturn's iconic rings are composed mainly of ice particles, rocky debris, and dust.",
+    "quizQuestion": "What are Saturn's rings primarily made of?",
+    "correctAnswer": "Ice and rock",
+    "distractors": [
+      "Gas and plasma",
+      "Liquid metal",
+      "Volcanic ash",
+      "Gold dust",
+      "Frozen nitrogen",
+      "Hydrogen clouds",
+      "Sand and silica",
+      "Iron particles"
+    ],
+    "acceptableAnswers": [
+      "ice",
+      "ice particles and rock",
+      "ice and rocky debris",
+      "water ice"
+    ],
+    "explanation": "Saturn's rings consist mainly of water ice particles ranging in size from tiny grains to chunks as large as a house, mixed with rocky debris and dust. The rings span up to 282,000 km but are typically less than 1 km thick.",
+    "wowFactor": "Saturn's rings are extraordinarily thin relative to their width — if the rings were scaled to the width of a football field, they would be thinner than a sheet of paper.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What are Saturn's rings primarily made of?",
+        "answer": "Ice and rock",
+        "distractors": [
+          "Gas and plasma",
+          "Liquid metal",
+          "Volcanic ash"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which planet in our solar system has the most prominent and extensive ring system?",
+        "answer": "Saturn",
+        "distractors": [
+          "Jupiter",
+          "Uranus",
+          "Neptune"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Saturn's rings are mainly made of ice and rocky debris.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Saturn's rings are composed mainly of ___ particles and rocky debris.",
+        "answer": "ice",
+        "distractors": [
+          "gas",
+          "metal",
+          "sand"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rings_of_Saturn",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A breathtaking pixel art Saturn with its golden rings casting shadows on the planet's surface, surrounded by stars.",
+    "tags": [
+      "saturn",
+      "rings",
+      "planets",
+      "ice",
+      "solar system"
+    ]
+  },
+  {
+    "id": "space-saturn-density",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Saturn is the least dense planet in the solar system — less dense than water.",
+    "quizQuestion": "Which planet is less dense than water?",
+    "correctAnswer": "Saturn",
+    "distractors": [
+      "Jupiter",
+      "Uranus",
+      "Neptune",
+      "Mars",
+      "Venus",
+      "Earth",
+      "Mercury",
+      "Uranus"
+    ],
+    "acceptableAnswers": [
+      "Saturn"
+    ],
+    "explanation": "Saturn has an average density of only 0.687 g/cm³ — less than water's 1 g/cm³. This means Saturn would theoretically float if placed in a large enough ocean. Its low density is because it is mostly hydrogen and helium gas.",
+    "wowFactor": "Saturn is so light for its size that it could theoretically float on water — it's the only planet in the solar system that would.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which planet is less dense than water?",
+        "answer": "Saturn",
+        "distractors": [
+          "Jupiter",
+          "Uranus",
+          "Neptune"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What property makes Saturn unique among all solar system planets in terms of density?",
+        "answer": "Less dense than water",
+        "distractors": [
+          "Most dense planet",
+          "Densest atmosphere",
+          "Least massive planet"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Saturn is less dense than water.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Saturn is the least ___ planet in the solar system, even less so than water.",
+        "answer": "dense",
+        "distractors": [
+          "massive",
+          "hot",
+          "bright"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Saturn",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Saturn floating improbably on a vast ocean surface in pixel art, its rings skimming the water, with a surprised expression implied by the scene.",
+    "tags": [
+      "saturn",
+      "density",
+      "planets",
+      "solar system",
+      "weird facts"
+    ]
+  },
+  {
+    "id": "space-saturn-titan",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Saturn's moon Titan has a thick nitrogen atmosphere and lakes of liquid methane on its surface.",
+    "quizQuestion": "Which moon has lakes of liquid methane on its surface?",
+    "correctAnswer": "Titan",
+    "distractors": [
+      "Europa",
+      "Enceladus",
+      "Ganymede",
+      "Io",
+      "Callisto",
+      "Triton",
+      "Miranda",
+      "Phobos"
+    ],
+    "acceptableAnswers": [
+      "Titan",
+      "Saturn's Titan"
+    ],
+    "explanation": "Titan is the only moon in the solar system with a dense atmosphere, and the only world besides Earth with stable bodies of liquid on its surface. Those liquids are methane and ethane rather than water, as Titan is far too cold for liquid water.",
+    "wowFactor": "Titan has rain, rivers, and seas — just like Earth — but they are made of liquid natural gas instead of water.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which moon has liquid methane lakes on its surface?",
+        "answer": "Titan",
+        "distractors": [
+          "Europa",
+          "Enceladus",
+          "Ganymede"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which planet does Titan orbit?",
+        "answer": "Saturn",
+        "distractors": [
+          "Jupiter",
+          "Uranus",
+          "Neptune"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Saturn's moon Titan has lakes of liquid methane.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Saturn's moon ___ has a thick atmosphere and lakes of liquid methane.",
+        "answer": "Titan",
+        "distractors": [
+          "Europa",
+          "Io",
+          "Callisto"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Titan_(moon)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An alien orange hazy landscape on Titan with dark liquid methane lakes and a distant hazy sky, Saturn barely visible through thick clouds.",
+    "tags": [
+      "saturn",
+      "Titan",
+      "moons",
+      "methane",
+      "atmosphere"
+    ]
+  },
+  {
+    "id": "space-neil-armstrong-first",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "satellites_tech",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "satellites_tech",
+    "categoryL3": "",
+    "statement": "Neil Armstrong became the first human to walk on the Moon on July 20, 1969.",
+    "quizQuestion": "When did Neil Armstrong first walk on the Moon?",
+    "correctAnswer": "July 20, 1969",
+    "distractors": [
+      "July 20, 1972",
+      "April 12, 1961",
+      "May 5, 1961",
+      "July 20, 1968",
+      "January 27, 1967",
+      "February 20, 1962",
+      "July 16, 1969",
+      "September 20, 1969"
+    ],
+    "acceptableAnswers": [
+      "July 20, 1969",
+      "1969",
+      "July 1969"
+    ],
+    "explanation": "Neil Armstrong stepped onto the lunar surface at 02:56 UTC on July 21, 1969 (July 20 in the USA). He was followed about 20 minutes later by Buzz Aldrin. Michael Collins orbited above in the command module.",
+    "wowFactor": "Armstrong's famous words — 'That's one small step for man, one giant leap for mankind' — were heard by an estimated 600 million people, making it the most watched TV broadcast in history at that time.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "When did Neil Armstrong first walk on the Moon?",
+        "answer": "July 20, 1969",
+        "distractors": [
+          "July 20, 1972",
+          "April 12, 1961",
+          "May 5, 1961"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who was the first human to walk on the Moon?",
+        "answer": "Neil Armstrong",
+        "distractors": [
+          "Buzz Aldrin",
+          "Michael Collins",
+          "Yuri Gagarin"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Neil Armstrong was the first human to walk on the Moon.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Neil Armstrong walked on the Moon on July 20, ___.",
+        "answer": "1969",
+        "distractors": [
+          "1972",
+          "1968",
+          "1971"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Neil_Armstrong",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An astronaut in a white spacesuit placing a boot onto grey lunar soil in pixel art, with Earth rising over the Moon's horizon in the background.",
+    "tags": [
+      "Neil Armstrong",
+      "Moon landing",
+      "Apollo",
+      "astronaut",
+      "space history"
+    ]
+  },
+  {
+    "id": "space-neil-armstrong-quote",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "satellites_tech",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "satellites_tech",
+    "categoryL3": "",
+    "statement": "Armstrong's famous Moon landing quote was: 'That's one small step for man, one giant leap for mankind.'",
+    "quizQuestion": "What famous words did Armstrong say on the Moon?",
+    "correctAnswer": "One small step for man",
+    "distractors": [
+      "To infinity and beyond",
+      "Houston, we have a problem",
+      "The eagle has landed",
+      "One giant step for Earth",
+      "We came in peace",
+      "Ad astra per aspera",
+      "Space is the final frontier",
+      "We choose to go to the Moon"
+    ],
+    "acceptableAnswers": [
+      "one small step for man",
+      "small step for man",
+      "giant leap for mankind",
+      "one small step"
+    ],
+    "explanation": "Armstrong intended to say 'one small step for a man' to contrast with 'mankind,' but the 'a' was either omitted or lost in transmission. Audio analysis suggests he may have said 'a' but it was inaudible.",
+    "wowFactor": "Armstrong may have actually said 'a man' — audio analysis decades later found acoustic evidence of the missing word that was lost in the transmission.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Complete Armstrong's quote: 'That's one small step for man, one giant leap for...'",
+        "answer": "Mankind",
+        "distractors": [
+          "humanity",
+          "Earth",
+          "science"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who said 'one small step for man, one giant leap for mankind' on July 20, 1969?",
+        "answer": "Neil Armstrong",
+        "distractors": [
+          "Buzz Aldrin",
+          "Yuri Gagarin",
+          "Alan Shepard"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Neil Armstrong said 'one small step for man' on the Moon.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Armstrong said: 'That's one small step for man, one giant ___ for mankind.'",
+        "answer": "leap",
+        "distractors": [
+          "step",
+          "jump",
+          "bound"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Neil_Armstrong",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art astronaut standing on a cratered moon surface with a speech bubble showing the famous quote, stars filling the black sky.",
+    "tags": [
+      "Neil Armstrong",
+      "Moon landing",
+      "quotes",
+      "space history",
+      "Apollo 11"
+    ]
+  },
+  {
+    "id": "space-neil-armstrong-career",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "satellites_tech",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "satellites_tech",
+    "categoryL3": "",
+    "statement": "Before Apollo 11, Neil Armstrong commanded Gemini 8 and performed the first emergency manual re-entry in space history.",
+    "quizQuestion": "Which earlier mission did Neil Armstrong command before Apollo 11?",
+    "correctAnswer": "Gemini 8",
+    "distractors": [
+      "Gemini 5",
+      "Mercury 6",
+      "Apollo 8",
+      "Gemini 10",
+      "Apollo 7",
+      "Mercury 9",
+      "Gemini 12",
+      "Apollo 9"
+    ],
+    "acceptableAnswers": [
+      "Gemini 8",
+      "Gemini VIII"
+    ],
+    "explanation": "In March 1966, Armstrong commanded Gemini 8 and performed the first successful docking of two spacecraft in orbit. When a thruster malfunction sent the craft into a dangerous spin, Armstrong executed an emergency manual re-entry — his quick thinking saved the mission.",
+    "wowFactor": "Armstrong survived a terrifying spinning spacecraft on Gemini 8 — the spin rate was so fast that he was moments away from losing consciousness before he regained control.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What mission did Armstrong command before Apollo 11?",
+        "answer": "Gemini 8",
+        "distractors": [
+          "Mercury 6",
+          "Apollo 8",
+          "Gemini 12"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What was special about the Gemini 8 mission?",
+        "answer": "First spacecraft docking",
+        "distractors": [
+          "First spacewalk",
+          "First Moon flyby",
+          "First US orbital flight"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Neil Armstrong commanded the Gemini 8 mission before Apollo 11.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Armstrong commanded ___ 8 before his Moon mission.",
+        "answer": "Gemini",
+        "distractors": [
+          "Mercury",
+          "Apollo",
+          "Vostok"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gemini_8",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two small spacecraft docking together in pixel art orbit above a blue Earth, thruster sparks visible as one craft spins dangerously.",
+    "tags": [
+      "Neil Armstrong",
+      "Gemini 8",
+      "space history",
+      "NASA",
+      "astronaut"
+    ]
+  },
+  {
+    "id": "space-apollo11-launch",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "missions_spacecraft",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "missions_spacecraft",
+    "categoryL3": "",
+    "statement": "Apollo 11 launched on July 16, 1969, carrying Neil Armstrong, Buzz Aldrin, and Michael Collins.",
+    "quizQuestion": "When did Apollo 11 launch?",
+    "correctAnswer": "July 16, 1969",
+    "distractors": [
+      "July 20, 1969",
+      "July 16, 1968",
+      "June 16, 1969",
+      "July 21, 1969",
+      "July 4, 1969",
+      "January 16, 1969",
+      "August 16, 1969",
+      "July 20, 1969"
+    ],
+    "acceptableAnswers": [
+      "July 16, 1969",
+      "1969"
+    ],
+    "explanation": "Apollo 11 launched from Kennedy Space Center's Launch Complex 39A on July 16, 1969, at 9:32 AM EDT. The crew reached the Moon's orbit on July 19, and Armstrong and Aldrin landed on July 20.",
+    "wowFactor": "Apollo 11 was watched live by an estimated 530 million people worldwide — about 1 in every 7 humans alive at the time.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "When did the Apollo 11 mission launch?",
+        "answer": "July 16, 1969",
+        "distractors": [
+          "July 20, 1969",
+          "June 16, 1969",
+          "July 4, 1969"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which astronaut stayed in orbit during Apollo 11's Moon landing?",
+        "answer": "Michael Collins",
+        "distractors": [
+          "Buzz Aldrin",
+          "Neil Armstrong",
+          "Alan Shepard"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Apollo 11 launched on July 16, 1969.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Apollo 11 launched on July 16, ___, carrying three astronauts.",
+        "answer": "1969",
+        "distractors": [
+          "1968",
+          "1970",
+          "1972"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Apollo_11",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Saturn V rocket blasting off from a launch pad in pixel art, with billowing exhaust clouds and a crowd of spectators watching from a distance.",
+    "tags": [
+      "Apollo 11",
+      "NASA",
+      "Moon landing",
+      "launch",
+      "space history"
+    ]
+  },
+  {
+    "id": "space-apollo11-eagle",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "missions_spacecraft",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "missions_spacecraft",
+    "categoryL3": "",
+    "statement": "The Apollo 11 lunar module was named Eagle, and landed in the Sea of Tranquility.",
+    "quizQuestion": "What was the name of Apollo 11's lunar landing module?",
+    "correctAnswer": "Eagle",
+    "distractors": [
+      "Falcon",
+      "Columbia",
+      "Intrepid",
+      "Challenger",
+      "Antares",
+      "Aquarius",
+      "Orion",
+      "Discovery"
+    ],
+    "acceptableAnswers": [
+      "Eagle",
+      "the Eagle"
+    ],
+    "explanation": "The lunar module Eagle separated from the command module Columbia (piloted by Michael Collins) and carried Armstrong and Aldrin to the Sea of Tranquility. 'The Eagle has landed' was Armstrong's announcement of the successful touchdown.",
+    "wowFactor": "The Eagle had less than 30 seconds of landing fuel left when Armstrong touched down — he was manually flying past a boulder field searching for a safe spot.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the name of Apollo 11's lunar module?",
+        "answer": "Eagle",
+        "distractors": [
+          "Falcon",
+          "Columbia",
+          "Challenger"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What famous phrase did Armstrong transmit when the Eagle landed?",
+        "answer": "The Eagle has landed",
+        "distractors": [
+          "Houston, we have a problem",
+          "One small step for man",
+          "Contact light"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Apollo 11 lunar module was named Eagle.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Apollo 11 lunar module was named ___ and landed in the Sea of Tranquility.",
+        "answer": "Eagle",
+        "distractors": [
+          "Falcon",
+          "Columbia",
+          "Challenger"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Apollo_11",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A spindly gold-foiled lunar module descending through black space toward a grey cratered moon surface in pixel art, exhaust plumes firing.",
+    "tags": [
+      "Apollo 11",
+      "Eagle",
+      "lunar module",
+      "Moon landing",
+      "space history"
+    ]
+  },
+  {
+    "id": "space-apollo11-samples",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "missions_spacecraft",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "missions_spacecraft",
+    "categoryL3": "",
+    "statement": "Apollo 11 brought back 21.5 kilograms of lunar rock and soil samples to Earth.",
+    "quizQuestion": "How many kilograms of Moon rock did Apollo 11 bring back?",
+    "correctAnswer": "21.5 kg",
+    "distractors": [
+      "5 kg",
+      "100 kg",
+      "50 kg",
+      "10 kg",
+      "1 kg",
+      "200 kg",
+      "2 kg",
+      "75 kg"
+    ],
+    "acceptableAnswers": [
+      "21.5 kilograms",
+      "about 21 kg",
+      "~22 kg"
+    ],
+    "explanation": "Armstrong and Aldrin spent 2.5 hours on the lunar surface collecting 21.5 kg (47.5 lb) of rock and soil samples. These samples have been studied for decades and helped us understand the Moon's formation and the early history of the solar system.",
+    "wowFactor": "Some of the Moon rocks brought back by Apollo are over 4 billion years old — older than any rock naturally found on Earth's surface.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How much lunar rock did Apollo 11 return to Earth?",
+        "answer": "21.5 kg",
+        "distractors": [
+          "5 kg",
+          "100 kg",
+          "50 kg"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What scientific resource did Apollo 11 bring back for decades of study?",
+        "answer": "Lunar rock samples",
+        "distractors": [
+          "Moon dust only",
+          "Lunar water ice",
+          "Meteorite fragments"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Apollo 11 brought back about 21.5 kg of lunar rock.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Apollo 11 returned ___ kg of lunar rock and soil to Earth.",
+        "answer": "21.5",
+        "distractors": [
+          "5",
+          "100",
+          "50"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Apollo_11",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An astronaut in a white spacesuit scooping grey lunar soil into a sample bag in pixel art, craters and black sky in the background.",
+    "tags": [
+      "Apollo 11",
+      "Moon rocks",
+      "samples",
+      "space history",
+      "geology"
+    ]
+  },
+  {
+    "id": "space-galileo-telescope",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "categoryL3": "",
+    "statement": "Galileo Galilei was among the first to use a telescope to observe the night sky, starting in 1609.",
+    "quizQuestion": "What revolutionary instrument did Galileo use to study the sky in 1609?",
+    "correctAnswer": "Telescope",
+    "distractors": [
+      "Microscope",
+      "Astrolabe",
+      "Sextant",
+      "Quadrant",
+      "Spectrograph",
+      "Radio dish",
+      "Camera obscura",
+      "Orrery"
+    ],
+    "acceptableAnswers": [
+      "telescope",
+      "a telescope",
+      "the telescope"
+    ],
+    "explanation": "In 1609, Galileo heard of a Dutch invention (the spyglass) and improved its design to create a telescope powerful enough for astronomical observation. His observations of the Moon, Jupiter's moons, Venus phases, and sunspots provided key evidence for the heliocentric model.",
+    "wowFactor": "Galileo built his telescope without ever having seen one — just from reading a description of the Dutch spyglass, he figured out how to make a better one.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What instrument did Galileo first use to observe the sky in 1609?",
+        "answer": "Telescope",
+        "distractors": [
+          "Microscope",
+          "Astrolabe",
+          "Spectrograph"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who was among the first astronomers to use a telescope to study the night sky?",
+        "answer": "Galileo Galilei",
+        "distractors": [
+          "Nicolaus Copernicus",
+          "Tycho Brahe",
+          "Johannes Kepler"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Galileo used a telescope to observe the night sky starting around 1609.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Galileo used a ___ to make astronomical discoveries starting in 1609.",
+        "answer": "telescope",
+        "distractors": [
+          "microscope",
+          "astrolabe",
+          "quadrant"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Galileo_Galilei",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A bearded man in Renaissance clothing peering through a long brass telescope at a starry night sky in pixel art, candles burning nearby.",
+    "tags": [
+      "Galileo",
+      "telescope",
+      "astronomy",
+      "history of science",
+      "Renaissance"
+    ]
+  },
+  {
+    "id": "space-galileo-moons",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Galileo observed that Jupiter had moons orbiting it, challenging the idea that everything orbits Earth.",
+    "quizQuestion": "What key observation helped Galileo challenge Earth-centered astronomy?",
+    "correctAnswer": "Moons orbiting Jupiter",
+    "distractors": [
+      "Sunspots on the Sun",
+      "Craters on the Moon",
+      "Phases of Venus",
+      "Stars in the Milky Way",
+      "Rings of Saturn",
+      "Comets near Earth",
+      "Mars's moons",
+      "Rings of Saturn"
+    ],
+    "acceptableAnswers": [
+      "moons of Jupiter",
+      "Jupiter's moons",
+      "Galilean moons",
+      "moons orbiting Jupiter"
+    ],
+    "explanation": "In January 1610, Galileo discovered four moons orbiting Jupiter. This was groundbreaking because it showed that not all celestial objects orbit Earth, directly supporting the Copernican heliocentric model and challenging the dominant geocentric worldview.",
+    "wowFactor": "Galileo's discovery that moons orbit Jupiter proved that Earth was not the center of all motion — a revolutionary and dangerous idea in 1610.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Galileo observe orbiting Jupiter that challenged geocentrism?",
+        "answer": "Moons orbiting Jupiter",
+        "distractors": [
+          "Sunspots",
+          "Craters on the Moon",
+          "Rings"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Why was Galileo's discovery of Jupiter's moons scientifically revolutionary?",
+        "answer": "It showed not everything orbits Earth",
+        "distractors": [
+          "It proved the Moon was made of rock",
+          "It showed Jupiter was bigger than Earth",
+          "It discovered a new planet"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Galileo's discovery of Jupiter's moons challenged the geocentric model.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Galileo discovered that ___ orbited Jupiter, challenging Earth-centered cosmology.",
+        "answer": "moons",
+        "distractors": [
+          "rings",
+          "comets",
+          "asteroids"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Galileo_Galilei",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Renaissance scholar writing in a notebook next to a telescope, with a diagram showing four dots orbiting Jupiter sketched on the page.",
+    "tags": [
+      "Galileo",
+      "Jupiter",
+      "moons",
+      "heliocentric",
+      "history of science"
+    ]
+  },
+  {
+    "id": "space-galileo-inquisition",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "categoryL3": "",
+    "statement": "Galileo was placed under house arrest by the Roman Inquisition for supporting the heliocentric model.",
+    "quizQuestion": "Why was Galileo placed under house arrest?",
+    "correctAnswer": "Supporting heliocentrism",
+    "distractors": [
+      "Tax evasion",
+      "Heresy about God",
+      "Military spying",
+      "Publishing fake science",
+      "Refusing to pay the Church",
+      "Witchcraft accusations",
+      "Treason against the state",
+      "Fraud against the state"
+    ],
+    "acceptableAnswers": [
+      "supporting the heliocentric model",
+      "heliocentrism",
+      "saying Earth orbits the Sun",
+      "Copernican theory"
+    ],
+    "explanation": "In 1633, the Roman Inquisition found Galileo 'vehemently suspect of heresy' for supporting Copernicus's heliocentric theory. He was forced to recant and spent the rest of his life under house arrest. He was not formally rehabilitated by the Catholic Church until 1992.",
+    "wowFactor": "The Catholic Church officially apologized to Galileo over 350 years after his death — formally acknowledging in 1992 that the Earth does indeed move around the Sun.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why did the Roman Inquisition place Galileo under house arrest?",
+        "answer": "Supporting heliocentrism",
+        "distractors": [
+          "Tax evasion",
+          "Heresy about God",
+          "Publishing fake science"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How did the Inquisition punish Galileo for his astronomical ideas?",
+        "answer": "House arrest",
+        "distractors": [
+          "Execution",
+          "Exile from Italy",
+          "Prison in Rome"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Galileo was placed under house arrest for supporting the heliocentric model.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Galileo was put under house arrest for supporting the ___ model of the solar system.",
+        "answer": "heliocentric",
+        "distractors": [
+          "geocentric",
+          "Ptolemaic",
+          "Newtonian"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Galileo_affair",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Involves historical religious conflict; appropriate for educational context",
+    "visualDescription": "An elderly scholar sitting by a window under guard in pixel art, star charts and a telescope visible but confiscated, candlelight flickering.",
+    "tags": [
+      "Galileo",
+      "Inquisition",
+      "heliocentric",
+      "history of science",
+      "house arrest"
+    ]
+  },
+  {
+    "id": "space-copernicus-model",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "categoryL3": "",
+    "statement": "Nicolaus Copernicus proposed that the Sun, not Earth, is at the center of the solar system.",
+    "quizQuestion": "What revolutionary model did Copernicus propose for the solar system?",
+    "correctAnswer": "Sun at the center",
+    "distractors": [
+      "Earth at the center",
+      "Moon at the center",
+      "Stars at the center",
+      "Infinite universe",
+      "Planets are stars",
+      "Sun orbits Earth",
+      "Universe has no center",
+      "Jupiter at the center"
+    ],
+    "acceptableAnswers": [
+      "heliocentric model",
+      "sun-centered model",
+      "Sun at the center",
+      "heliocentrism"
+    ],
+    "explanation": "In 1543, Copernicus published 'De Revolutionibus,' proposing the heliocentric model where planets orbit the Sun. This overturned nearly 1,400 years of Ptolemaic geocentric cosmology and launched the Scientific Revolution.",
+    "wowFactor": "Copernicus waited until he was dying to publish his heliocentric theory — he reportedly received the first printed copy of his book on the day he died in 1543.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Copernicus propose about the solar system's center?",
+        "answer": "The Sun is at the center",
+        "distractors": [
+          "Earth is at the center",
+          "Moon is at the center",
+          "All planets are equal"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the term for Copernicus's Sun-centered model of the solar system?",
+        "answer": "Heliocentric model",
+        "distractors": [
+          "Geocentric model",
+          "Ptolemaic model",
+          "Newtonian model"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Copernicus proposed that the Sun is at the center of the solar system.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Copernicus proposed that the ___ is at the center of the solar system.",
+        "answer": "Sun",
+        "distractors": [
+          "Earth",
+          "Moon",
+          "stars"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nicolaus_Copernicus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Renaissance astronomer holding a diagram showing the Sun in the center with planets in circular orbits around it in pixel art style.",
+    "tags": [
+      "Copernicus",
+      "heliocentric",
+      "solar system",
+      "history of science",
+      "astronomy"
+    ]
+  },
+  {
+    "id": "space-copernicus-book",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "categoryL3": "",
+    "statement": "Copernicus published 'De Revolutionibus Orbium Coelestium' in 1543, presenting the heliocentric model.",
+    "quizQuestion": "What was the name of Copernicus's groundbreaking 1543 publication?",
+    "correctAnswer": "De Revolutionibus",
+    "distractors": [
+      "Principia Mathematica",
+      "Almagest",
+      "Dialogue on Two Sciences",
+      "The Celestial Spheres",
+      "Astronomia Nova",
+      "Harmonices Mundi",
+      "Sidereus Nuncius",
+      "Narratio Prima"
+    ],
+    "acceptableAnswers": [
+      "De Revolutionibus",
+      "De Revolutionibus Orbium Coelestium",
+      "On the Revolutions"
+    ],
+    "explanation": "Published in the year of Copernicus's death, 'De Revolutionibus Orbium Coelestium' (On the Revolutions of the Celestial Spheres) presented mathematical arguments for heliocentrism and is considered one of the most important books in the history of science.",
+    "wowFactor": "Copernicus's book was placed on the Catholic Church's 'Index of Forbidden Books' in 1616 — and stayed there until 1835, nearly 300 years later.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was Copernicus's 1543 book about heliocentrism?",
+        "answer": "De Revolutionibus",
+        "distractors": [
+          "Principia Mathematica",
+          "Almagest",
+          "Sidereus Nuncius"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What year did Copernicus publish his heliocentric masterwork?",
+        "answer": "1543",
+        "distractors": [
+          "1610",
+          "1687",
+          "1500"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Copernicus published 'De Revolutionibus' in 1543.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Copernicus published 'De ___ Orbium Coelestium' in 1543.",
+        "answer": "Revolutionibus",
+        "distractors": [
+          "Astronomia",
+          "Philosophia",
+          "Harmonia"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/De_revolutionibus_orbium_coelestium",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A heavy book with an ornate 16th-century cover lying open to a diagram of the solar system in pixel art, quill pen resting beside it.",
+    "tags": [
+      "Copernicus",
+      "De Revolutionibus",
+      "heliocentric",
+      "history of science",
+      "1543"
+    ]
+  },
+  {
+    "id": "space-copernicus-nationality",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "categoryL3": "",
+    "statement": "Nicolaus Copernicus was a Polish mathematician and astronomer born in 1473 in Royal Prussia.",
+    "quizQuestion": "What nationality was astronomer Nicolaus Copernicus?",
+    "correctAnswer": "Polish",
+    "distractors": [
+      "German",
+      "Italian",
+      "French",
+      "Danish",
+      "Czech",
+      "Austrian",
+      "Dutch",
+      "Swedish"
+    ],
+    "acceptableAnswers": [
+      "Polish",
+      "from Poland",
+      "Polish-Prussian"
+    ],
+    "explanation": "Copernicus was born on February 19, 1473, in Thorn (now Torun, Poland), then part of Royal Prussia, a region under the Polish Crown. He is claimed as both a Polish and German historical figure, but modern consensus places him as Polish.",
+    "wowFactor": "Copernicus was a polymath — besides astronomy, he worked as a physician, economist, translator, and church canon, and even wrote one of the early theories of monetary inflation.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What nationality was Nicolaus Copernicus?",
+        "answer": "Polish",
+        "distractors": [
+          "German",
+          "Italian",
+          "Danish"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which city in modern-day Poland was Copernicus born in?",
+        "answer": "Torun",
+        "distractors": [
+          "Warsaw",
+          "Krakow",
+          "Gdansk"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Copernicus was a Polish astronomer born in 1473.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Copernicus was a ___ astronomer who proposed the heliocentric model.",
+        "answer": "Polish",
+        "distractors": [
+          "German",
+          "Italian",
+          "French"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nicolaus_Copernicus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A portrait-style pixel art of a Renaissance scholar in dark scholarly robes, holding a small model of the solar system, set in a stone library.",
+    "tags": [
+      "Copernicus",
+      "Poland",
+      "history of science",
+      "biography",
+      "astronomy"
+    ]
+  }
+]

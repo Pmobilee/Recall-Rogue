@@ -51,6 +51,9 @@
 - **AR-18:** Vocabulary tooling/UI wiring is complete; full corpus generation and themed visuals remain in progress.
 - **AR-19:** QA/promotion tooling is complete; production-scale worker output review, visual descriptions, and ComfyUI art passes remain in progress.
 - **AR-33:** Mobile interaction frame-pacing pass (combat drag + timer cadence optimization) is in progress. Spec: `docs/roadmap/phases/AR-33-MOBILE-INTERACTION-FRAME-PACING.md`.
+- ~~**AR-34:** Content pipeline spec alignment~~ ✅ COMPLETE — Entity curation (B.1-B.6), generation workflow (C.1-C.3), 11-gate validation (D.1-D.2), pilot verified. 4,847 curated entities across 10 domains. → [Spec](completed/AR-34-CONTENT-PIPELINE-SPEC-ALIGNMENT.md)
+- **AR-35:** Combat UI card size & background pass — nearly double card size in hand, move AP orb up, stretch overlay background to full viewport height. → [Spec](phases/AR-35-COMBAT-UI-CARD-SIZE.md)
+- **AR-38:** Knowledge Fact Generation Round 1 — 100 validated facts per domain across all 10 domains (1,000 total). Curated entity pipeline → Sonnet workers → 11-gate validation. → [Spec](phases/AR-38-KNOWLEDGE-FACT-GENERATION-ROUND-1.md)
 
 ---
 

@@ -5,6 +5,8 @@
   import { getCardFramePath, getDomainIconPath } from '../utils/domainAssets'
   import { getTierDisplayName } from '../../services/tierDerivation'
   import { getCardTypeEmoji, getCardTypeIconCandidates } from '../utils/iconAssets'
+  import { getCardDescriptionParts, type CardDescPart } from '../../services/cardDescriptionService'
+  import KeywordPopup from './KeywordPopup.svelte'
 
   interface Props {
     card: Card
@@ -99,6 +101,15 @@
   let hintUsed = $state(false)
   let firstLetterHint = $state<string | null>(null)
   let eliminatedIndices = $state<Set<number>>(new Set())
+  let activeKeyword = $state<{ id: string; x: number; y: number } | null>(null)
+
+  function handleKeywordTap(e: MouseEvent, keywordId: string): void {
+    activeKeyword = { id: keywordId, x: e.clientX, y: e.clientY }
+  }
+
+  function dismissKeyword(): void {
+    activeKeyword = null
+  }
 
   let rafId: number | undefined
   let feedbackTimeoutId: ReturnType<typeof setTimeout> | undefined
@@ -284,6 +295,19 @@
   </div>
 
   <div class="card-effect-desc">{effectDescription}</div>
+  <div class="expanded-desc-parts">
+    {#each getCardDescriptionParts(card) as part}
+      {#if part.type === 'number'}
+        <span class="exp-desc-number">{part.value}</span>
+      {:else if part.type === 'keyword'}
+        <button class="exp-desc-keyword" onclick={(e) => handleKeywordTap(e, part.keywordId)}>{part.value}</button>
+      {:else if part.type === 'conditional-number'}
+        <span class="exp-desc-conditional" class:active={part.active}>{part.active ? part.value : '0'}</span>
+      {:else}
+        {part.value}
+      {/if}
+    {/each}
+  </div>
   {#if questionImageUrl}
     <div class="question-image-container">
       <img
@@ -347,6 +371,15 @@
 
   {#if comboCount > 0}
     <div class="combo-indicator">Combo x{comboCount}</div>
+  {/if}
+
+  {#if activeKeyword}
+    <KeywordPopup
+      keywordId={activeKeyword.id}
+      x={activeKeyword.x}
+      y={activeKeyword.y}
+      ondismiss={dismissKeyword}
+    />
   {/if}
 </div>
 
@@ -610,5 +643,46 @@
     border-radius: 6px;
     background: #fff;
     padding: 4px;
+  }
+
+  .expanded-desc-parts {
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #e2e8f0;
+    padding: 8px 12px;
+    font-family: 'Cinzel', 'Georgia', serif;
+  }
+
+  .exp-desc-number {
+    font-weight: 900;
+    color: #fbbf24;
+  }
+
+  .exp-desc-keyword {
+    font-weight: 800;
+    color: #93c5fd;
+    background: none;
+    border: none;
+    border-bottom: 1px dashed rgba(147, 197, 253, 0.5);
+    cursor: pointer;
+    padding: 0;
+    font: inherit;
+    font-weight: 800;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .exp-desc-keyword:active {
+    color: #60a5fa;
+  }
+
+  .exp-desc-conditional {
+    color: #9ca3af;
+    font-weight: 700;
+  }
+
+  .exp-desc-conditional.active {
+    color: #22c55e;
+    font-weight: 900;
   }
 </style>

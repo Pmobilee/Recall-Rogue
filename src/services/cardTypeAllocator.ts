@@ -1,11 +1,11 @@
 import type { Card, CardType } from '../data/card-types'
 
 export const CARD_TYPE_DISTRIBUTION: Array<{ type: CardType; weight: number }> = [
-  { type: 'attack', weight: 0.35 },
-  { type: 'shield', weight: 0.30 },
-  { type: 'buff', weight: 0.12 },
-  { type: 'debuff', weight: 0.10 },
-  { type: 'utility', weight: 0.10 },
+  { type: 'attack', weight: 0.40 },
+  { type: 'shield', weight: 0.35 },
+  { type: 'buff', weight: 0.08 },
+  { type: 'debuff', weight: 0.07 },
+  { type: 'utility', weight: 0.07 },
   { type: 'wild', weight: 0.03 },
 ]
 

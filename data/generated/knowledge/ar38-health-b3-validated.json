@@ -1,0 +1,1902 @@
+[
+  {
+    "id": "health-stroke-brain-blood",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "neurology",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "neurology",
+    "categoryL3": "",
+    "statement": "A stroke occurs when blood supply to part of the brain is interrupted, either by a blocked artery (ischemic) or a burst blood vessel (hemorrhagic), causing brain cells to die within minutes.",
+    "quizQuestion": "What causes brain cells to die during a stroke?",
+    "correctAnswer": "Loss of blood supply",
+    "distractors": [
+      "Electrical misfiring",
+      "Viral infection",
+      "Brain swelling alone",
+      "Protein buildup",
+      "Nerve degeneration",
+      "Oxygen overload",
+      "Inflammation cascade",
+      "Chemical poisoning"
+    ],
+    "acceptableAnswers": [
+      "Loss of blood supply",
+      "Interrupted blood flow",
+      "Lack of oxygen to brain"
+    ],
+    "explanation": "A stroke (cerebrovascular accident) happens when blood supply to brain tissue is cut off. Ischemic strokes (about 87%) occur when a clot blocks an artery supplying the brain. Hemorrhagic strokes occur when a blood vessel ruptures. Brain neurons begin dying after just 4-6 minutes without oxygen — which is why the stroke acronym FAST (Face drooping, Arm weakness, Speech difficulty, Time to call emergency) is critical.",
+    "wowFactor": "During a stroke, you lose approximately 1.9 million neurons every minute blood flow is blocked — time literally equals brain.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What event triggers brain cell death during a stroke?",
+        "answer": "Interrupted blood supply",
+        "distractors": [
+          "Electrical surge",
+          "Brain inflammation",
+          "Viral attack"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A stroke involves interrupted blood supply to which organ?",
+        "answer": "Brain",
+        "distractors": [
+          "Heart",
+          "Kidneys",
+          "Lungs"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A stroke occurs when blood supply to the brain is interrupted.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A stroke occurs when blood supply to the ___ is interrupted.",
+        "answer": "Brain",
+        "distractors": [
+          "Heart",
+          "Spine",
+          "Eyes"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Stroke",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Medical content involving serious health condition",
+    "visualDescription": "A cross-section of a brain with a red blocked artery and dying grey cells nearby, clean medical pixel art style.",
+    "tags": [
+      "stroke",
+      "brain",
+      "blood supply",
+      "ischemic",
+      "neurology"
+    ]
+  },
+  {
+    "id": "health-stroke-fast-acronym",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "neurology",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "neurology",
+    "categoryL3": "",
+    "statement": "The FAST acronym helps identify stroke symptoms: Face drooping, Arm weakness, Speech difficulty, and Time to call emergency services.",
+    "quizQuestion": "What does the F in the stroke acronym FAST stand for?",
+    "correctAnswer": "Face drooping",
+    "distractors": [
+      "Fainting suddenly",
+      "Fever onset",
+      "Fatigue extreme",
+      "Falling down",
+      "Faintness of vision",
+      "Fast heartbeat",
+      "Feeling numbness",
+      "Forgetfulness acute"
+    ],
+    "acceptableAnswers": [
+      "Face drooping",
+      "Face",
+      "Facial drooping"
+    ],
+    "explanation": "The FAST acronym was developed to help the public quickly recognize stroke symptoms and respond appropriately. F = Face (is one side drooping?), A = Arms (can they raise both arms?), S = Speech (is speech slurred or strange?), T = Time (call emergency services immediately). Every minute without treatment results in ~1.9 million neurons dying, so fast action dramatically improves outcomes.",
+    "wowFactor": "The FAST acronym saves thousands of lives per year — recognizing a stroke in seconds means the difference between full recovery and permanent disability.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In the stroke warning FAST, what does F stand for?",
+        "answer": "Face drooping",
+        "distractors": [
+          "Fainting",
+          "Fever",
+          "Fatigue"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "FAST is a medical acronym for recognizing symptoms of what condition?",
+        "answer": "Stroke",
+        "distractors": [
+          "Heart attack",
+          "Seizure",
+          "Concussion"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: FAST is a stroke recognition acronym where F stands for Face drooping.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The stroke acronym FAST stands for Face, Arms, Speech, and ___.",
+        "answer": "Time",
+        "distractors": [
+          "Treatment",
+          "Therapy",
+          "Transfer"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/FAST_(stroke)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A human figure with one side of face drooping, one arm raised and one lowered, pixelated poster-style health graphic.",
+    "tags": [
+      "stroke",
+      "FAST",
+      "symptoms",
+      "first aid",
+      "brain"
+    ]
+  },
+  {
+    "id": "health-stroke-tpa-treatment",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "neurology",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "neurology",
+    "categoryL3": "",
+    "statement": "Ischemic strokes can be treated with a clot-busting drug called tPA (tissue plasminogen activator) if administered within 4.5 hours of symptom onset.",
+    "quizQuestion": "What drug dissolves blood clots in ischemic strokes?",
+    "correctAnswer": "tPA",
+    "distractors": [
+      "Aspirin",
+      "Warfarin",
+      "Nitroglycerin",
+      "Epinephrine",
+      "Heparin",
+      "Metformin",
+      "Insulin",
+      "Thrombin"
+    ],
+    "acceptableAnswers": [
+      "tPA",
+      "Tissue plasminogen activator",
+      "Alteplase"
+    ],
+    "explanation": "Tissue plasminogen activator (tPA, also called alteplase) is the only FDA-approved drug for treating ischemic stroke. It works by dissolving the blood clot blocking blood flow. The critical window is 4.5 hours from symptom onset — after that, the risks of the drug outweigh the benefits. This is why rapid diagnosis and transport to a stroke center is essential. Mechanical thrombectomy (physically removing the clot) can extend the treatment window to 24 hours.",
+    "wowFactor": "tPA can reverse a stroke in progress — patients who couldn't move their arm an hour ago can regain full function after the clot is dissolved.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What clot-dissolving drug treats ischemic stroke within 4.5 hours?",
+        "answer": "tPA",
+        "distractors": [
+          "Aspirin",
+          "Warfarin",
+          "Heparin"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "tPA treats ischemic stroke by doing what to blood clots?",
+        "answer": "Dissolving them",
+        "distractors": [
+          "Shrinking the brain",
+          "Bypassing the clot",
+          "Absorbing excess fluid"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: tPA is a drug used to dissolve clots in ischemic stroke.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ischemic strokes can be treated with ___ if given within 4.5 hours.",
+        "answer": "tPA",
+        "distractors": [
+          "Aspirin",
+          "Heparin",
+          "Warfarin"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tissue_plasminogen_activator",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A syringe injecting glowing blue tPA into a blocked artery, the clot dissolving and blood flowing again, pixel art medical diagram.",
+    "tags": [
+      "stroke",
+      "tPA",
+      "treatment",
+      "ischemic",
+      "clot"
+    ]
+  },
+  {
+    "id": "health-circulatory-heart-pump",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "cardiovascular",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "cardiovascular",
+    "categoryL3": "",
+    "statement": "The human heart pumps approximately 5 liters of blood per minute at rest, circulating the body's entire blood supply about once every minute.",
+    "quizQuestion": "How much blood does the heart pump per minute at rest?",
+    "correctAnswer": "5 liters",
+    "distractors": [
+      "1 liter",
+      "10 liters",
+      "2 liters",
+      "8 liters",
+      "0.5 liters",
+      "20 liters",
+      "3 liters",
+      "15 liters"
+    ],
+    "acceptableAnswers": [
+      "5 liters",
+      "About 5 liters",
+      "5 L"
+    ],
+    "explanation": "The heart is an incredibly efficient pump. At rest, it beats about 60-80 times per minute, pumping roughly 70 mL per beat — about 5 liters per minute total. The human body contains approximately 5 liters of blood, meaning the entire blood volume is recirculated once per minute. During intense exercise, cardiac output can increase to 20-25 liters per minute.",
+    "wowFactor": "Your heart pumps your entire blood supply through your body every single minute — 2,000 gallons per day, for 70+ years, without ever resting.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How much blood does the resting heart circulate per minute?",
+        "answer": "About 5 liters",
+        "distractors": [
+          "About 1 liter",
+          "About 10 liters",
+          "About 2 liters"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The heart circulates the body's full 5 liters of blood how often?",
+        "answer": "Once per minute",
+        "distractors": [
+          "Once per hour",
+          "Twice per minute",
+          "Once per 10 minutes"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The heart pumps roughly 5 liters of blood per minute at rest.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "At rest, the heart pumps approximately ___ liters of blood per minute.",
+        "answer": "5",
+        "distractors": [
+          "1",
+          "10",
+          "20"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cardiac_output",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing red heart cross-section with arrows showing blood flow and a gauge reading 5L/min, pixel art clean medical style.",
+    "tags": [
+      "circulatory system",
+      "heart",
+      "cardiac output",
+      "blood",
+      "pump"
+    ]
+  },
+  {
+    "id": "health-circulatory-arteries-veins",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "cardiovascular",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "cardiovascular",
+    "categoryL3": "",
+    "statement": "Arteries carry oxygenated blood away from the heart, while veins carry deoxygenated blood back toward the heart — with one exception: the pulmonary vessels reverse this pattern.",
+    "quizQuestion": "What do arteries carry away from the heart?",
+    "correctAnswer": "Oxygenated blood",
+    "distractors": [
+      "Deoxygenated blood",
+      "Carbon dioxide",
+      "Plasma only",
+      "Waste products",
+      "Lymph fluid",
+      "Nutrients only",
+      "Red blood cells only",
+      "Mixed blood"
+    ],
+    "acceptableAnswers": [
+      "Oxygenated blood",
+      "Oxygen-rich blood"
+    ],
+    "explanation": "Arteries generally carry oxygenated blood from the heart to body tissues, while veins return deoxygenated blood to the heart. The notable exception is the pulmonary circuit: the pulmonary artery carries deoxygenated blood from the heart to the lungs, and pulmonary veins carry oxygenated blood back to the heart. The key distinction is direction (away vs. toward), not always oxygenation level.",
+    "wowFactor": "The one rule everyone learns about arteries — they carry oxygenated blood — has an exception that most people never hear: pulmonary arteries carry the deoxygenated blood.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which blood vessel type carries oxygenated blood away from the heart?",
+        "answer": "Arteries",
+        "distractors": [
+          "Veins",
+          "Capillaries",
+          "Lymphatics"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Arteries carry blood away from the heart, and veins carry it in what direction?",
+        "answer": "Toward the heart",
+        "distractors": [
+          "Away from the heart",
+          "To the lungs only",
+          "Through capillaries"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Arteries generally carry oxygenated blood away from the heart.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Arteries carry ___ blood away from the heart to body tissues.",
+        "answer": "Oxygenated",
+        "distractors": [
+          "Deoxygenated",
+          "Filtered",
+          "Plasma-only"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Artery",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A heart with red arteries branching outward and blue veins returning inward, labeled arrows showing blood direction, pixel art diagram.",
+    "tags": [
+      "circulatory system",
+      "arteries",
+      "veins",
+      "blood",
+      "heart"
+    ]
+  },
+  {
+    "id": "health-circulatory-capillaries",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "cardiovascular",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "cardiovascular",
+    "categoryL3": "",
+    "statement": "Capillaries are the smallest blood vessels, just one cell thick, where the exchange of oxygen, nutrients, carbon dioxide, and waste products between blood and body tissues occurs.",
+    "quizQuestion": "Where does oxygen exchange between blood and tissues occur?",
+    "correctAnswer": "Capillaries",
+    "distractors": [
+      "Arteries",
+      "Veins",
+      "The heart",
+      "Lymph nodes",
+      "Venules",
+      "The aorta",
+      "Arterioles",
+      "Bone marrow"
+    ],
+    "acceptableAnswers": [
+      "Capillaries",
+      "Capillary beds"
+    ],
+    "explanation": "Capillaries are the microscopic blood vessels (5-10 micrometers in diameter) that connect arterioles to venules. Their walls are only a single cell layer thick (endothelium), allowing gases and nutrients to diffuse easily in both directions. Red blood cells must squeeze through single-file. The human body has about 40 billion capillaries — if laid end to end, they would stretch about 100,000 km.",
+    "wowFactor": "Your capillaries are so narrow that red blood cells must squeeze through single-file — yet if stretched end to end they would wrap around Earth 2.5 times.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which smallest blood vessels allow oxygen to exchange with tissues?",
+        "answer": "Capillaries",
+        "distractors": [
+          "Arteries",
+          "Veins",
+          "Venules"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Capillaries are blood vessels so thin they are made of how many cell layers?",
+        "answer": "One cell layer",
+        "distractors": [
+          "Two layers",
+          "Three layers",
+          "Five layers"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Capillaries are where oxygen exchanges between blood and body tissues.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Oxygen passes from blood into body tissues through tiny vessels called ___.",
+        "answer": "Capillaries",
+        "distractors": [
+          "Arteries",
+          "Venules",
+          "Lymphatics"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Capillary",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Microscopic view of a single capillary with red blood cells squeezing through single-file, oxygen bubbles diffusing out, pixel art.",
+    "tags": [
+      "circulatory system",
+      "capillaries",
+      "oxygen exchange",
+      "blood vessels",
+      "nutrients"
+    ]
+  },
+  {
+    "id": "health-vitamin-deficiency-scurvy",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "nutrition",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "nutrition",
+    "categoryL3": "",
+    "statement": "Scurvy is caused by deficiency of Vitamin C (ascorbic acid), causing bleeding gums, loose teeth, and poor wound healing — it killed more sailors than battles did in the Age of Exploration.",
+    "quizQuestion": "Which vitamin deficiency causes scurvy?",
+    "correctAnswer": "Vitamin C",
+    "distractors": [
+      "Vitamin D",
+      "Vitamin B12",
+      "Vitamin A",
+      "Vitamin K",
+      "Vitamin E",
+      "Vitamin B1",
+      "Iron",
+      "Folic acid"
+    ],
+    "acceptableAnswers": [
+      "Vitamin C",
+      "Ascorbic acid",
+      "Vit C"
+    ],
+    "explanation": "Vitamin C is essential for collagen synthesis — the protein that holds connective tissues together. Without it, collagen breaks down: gums bleed, teeth fall out, old wounds reopen, and blood vessels rupture under the skin. Sailors on long voyages without fresh fruit regularly died of scurvy. British naval surgeon James Lind proved in 1747 that citrus fruits prevented it — leading to the nickname 'limeys' for British sailors.",
+    "wowFactor": "Scurvy can cause old healed wounds to spontaneously reopen — without Vitamin C, the collagen holding your healed scars literally dissolves.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What vitamin deficiency causes the sailor's disease scurvy?",
+        "answer": "Vitamin C",
+        "distractors": [
+          "Vitamin D",
+          "Vitamin B12",
+          "Vitamin A"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Vitamin C deficiency causes which disease with symptoms of bleeding gums?",
+        "answer": "Scurvy",
+        "distractors": [
+          "Rickets",
+          "Pellagra",
+          "Beri-beri"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Scurvy is caused by a deficiency of Vitamin C.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Scurvy is caused by insufficient ___ in the diet.",
+        "answer": "Vitamin C",
+        "distractors": [
+          "Vitamin D",
+          "Vitamin B12",
+          "Calcium"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Scurvy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pirate ship sailor with spotted skin and bleeding gums holding a lime fruit, pixel art with muted naval tones.",
+    "tags": [
+      "vitamin C",
+      "scurvy",
+      "deficiency",
+      "nutrition",
+      "sailors"
+    ]
+  },
+  {
+    "id": "health-vitamin-d-sunlight",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "nutrition",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "nutrition",
+    "categoryL3": "",
+    "statement": "Vitamin D is unique among vitamins because the human body can synthesize it in the skin when exposed to ultraviolet B (UVB) radiation from sunlight.",
+    "quizQuestion": "Which vitamin is produced by the skin in sunlight?",
+    "correctAnswer": "Vitamin D",
+    "distractors": [
+      "Vitamin C",
+      "Vitamin A",
+      "Vitamin K",
+      "Vitamin E",
+      "Vitamin B12",
+      "Biotin",
+      "Riboflavin",
+      "Niacin"
+    ],
+    "acceptableAnswers": [
+      "Vitamin D",
+      "Vitamin D3",
+      "Cholecalciferol"
+    ],
+    "explanation": "When UVB radiation from sunlight hits the skin, it converts 7-dehydrocholesterol (a compound in skin cells) into pre-Vitamin D3, which is then processed by the liver and kidneys into active Vitamin D (calcitriol). Vitamin D deficiency causes rickets in children (soft, bent bones) and osteomalacia in adults. It's also essential for calcium absorption and immune function. In winter at high latitudes, UVB is insufficient to produce adequate Vitamin D.",
+    "wowFactor": "Vitamin D is technically more of a hormone than a vitamin — your skin manufactures it from sunlight, and it regulates hundreds of genes throughout your body.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which vitamin does sunlight help your skin produce?",
+        "answer": "Vitamin D",
+        "distractors": [
+          "Vitamin C",
+          "Vitamin A",
+          "Vitamin K"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Vitamin D deficiency causes soft bent bones in children called what?",
+        "answer": "Rickets",
+        "distractors": [
+          "Scurvy",
+          "Pellagra",
+          "Beri-beri"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The human body produces Vitamin D when skin is exposed to sunlight.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The skin produces ___ when exposed to ultraviolet B radiation from sunlight.",
+        "answer": "Vitamin D",
+        "distractors": [
+          "Vitamin C",
+          "Melatonin",
+          "Collagen"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vitamin_D",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A human figure in sunlight with UV rays hitting skin and Vitamin D molecules being produced, bright pixel art diagram.",
+    "tags": [
+      "vitamin D",
+      "sunlight",
+      "nutrition",
+      "skin",
+      "rickets"
+    ]
+  },
+  {
+    "id": "health-genetics-dna-double-helix",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "genetics",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "genetics",
+    "categoryL3": "",
+    "statement": "DNA forms a double helix structure with four chemical bases (A, T, G, C) that always pair in specific combinations — A with T, and G with C — allowing faithful copying of genetic information.",
+    "quizQuestion": "Which DNA base always pairs with adenine (A)?",
+    "correctAnswer": "Thymine (T)",
+    "distractors": [
+      "Guanine (G)",
+      "Cytosine (C)",
+      "Uracil (U)",
+      "Adenine itself",
+      "Ribose",
+      "Phosphate",
+      "Histone",
+      "Codon"
+    ],
+    "acceptableAnswers": [
+      "Thymine",
+      "T",
+      "Thymine (T)"
+    ],
+    "explanation": "DNA (deoxyribonucleic acid) consists of two strands wound in a double helix. Each strand is made of nucleotides containing one of four bases: Adenine (A), Thymine (T), Guanine (G), and Cytosine (C). Base pairing is specific and complementary: A always pairs with T (connected by 2 hydrogen bonds) and G always pairs with C (3 hydrogen bonds). This complementarity is the basis for DNA replication and transcription.",
+    "wowFactor": "The A-T, G-C base pairing rule means that if you know one strand of DNA, you automatically know the other — it's built-in redundancy for copying all of life's instructions.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In DNA, which base always pairs with adenine?",
+        "answer": "Thymine",
+        "distractors": [
+          "Guanine",
+          "Cytosine",
+          "Uracil"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "DNA's double helix was described as having A-T and which other base pair?",
+        "answer": "G-C (Guanine-Cytosine)",
+        "distractors": [
+          "A-G",
+          "T-C",
+          "U-A"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: In DNA, adenine always pairs with thymine.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In DNA's double helix, adenine pairs with ___ and guanine pairs with cytosine.",
+        "answer": "Thymine",
+        "distractors": [
+          "Uracil",
+          "Cytosine",
+          "Guanine"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/DNA",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "DNA double helix with colored rungs showing A-T pairs in red and G-C pairs in blue, pixel art molecular diagram.",
+    "tags": [
+      "genetics",
+      "DNA",
+      "double helix",
+      "base pairing",
+      "adenine"
+    ]
+  },
+  {
+    "id": "health-genetics-mendel-peas",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "genetics",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "genetics",
+    "categoryL3": "",
+    "statement": "Gregor Mendel discovered the laws of heredity in the 1860s by breeding pea plants, finding that traits are inherited in predictable ratios through dominant and recessive factors.",
+    "quizQuestion": "What organism did Mendel use to discover laws of heredity?",
+    "correctAnswer": "Pea plants",
+    "distractors": [
+      "Fruit flies",
+      "Mice",
+      "Wheat plants",
+      "Garden flowers",
+      "Bacteria",
+      "Corn plants",
+      "Rats",
+      "Bean plants"
+    ],
+    "acceptableAnswers": [
+      "Pea plants",
+      "Garden peas",
+      "Pisum sativum"
+    ],
+    "explanation": "Gregor Mendel (1822-1884), an Augustinian friar, conducted experiments on Pisum sativum (common pea plants) in a monastery garden. Over years of breeding, he tracked seven distinct traits (seed color, seed shape, flower color, etc.) and found they inherited in 3:1 ratios. He proposed the existence of 'factors' (now called genes) that come in dominant and recessive forms. His work was rediscovered in 1900, 16 years after his death.",
+    "wowFactor": "Mendel's revolutionary genetics work was published in 1866 and promptly ignored for 34 years — he died not knowing he had founded modern genetics.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which plants did Mendel breed to discover inheritance patterns?",
+        "answer": "Pea plants",
+        "distractors": [
+          "Fruit flies",
+          "Corn plants",
+          "Roses"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Mendel discovered dominant and recessive traits by studying which vegetable?",
+        "answer": "Peas",
+        "distractors": [
+          "Beans",
+          "Corn",
+          "Wheat"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mendel discovered the laws of heredity using pea plants.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Gregor Mendel used ___ plants to formulate the laws of heredity.",
+        "answer": "Pea",
+        "distractors": [
+          "Corn",
+          "Bean",
+          "Wheat"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gregor_Mendel",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A monk in robes tending rows of pea plants, Punnett squares floating above them, pixel art monastery garden scene.",
+    "tags": [
+      "genetics",
+      "Mendel",
+      "pea plants",
+      "heredity",
+      "dominant recessive"
+    ]
+  },
+  {
+    "id": "health-genetics-human-chromosomes",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "genetics",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "genetics",
+    "categoryL3": "",
+    "statement": "Human cells contain 46 chromosomes arranged in 23 pairs — 22 pairs of autosomes and one pair of sex chromosomes (XX in females, XY in males).",
+    "quizQuestion": "How many chromosomes do human cells normally contain?",
+    "correctAnswer": "46",
+    "distractors": [
+      "23",
+      "48",
+      "24",
+      "64",
+      "44",
+      "92",
+      "22",
+      "36"
+    ],
+    "acceptableAnswers": [
+      "46",
+      "Forty-six"
+    ],
+    "explanation": "Most human cells are diploid, containing two complete sets of chromosomes — 46 total, arranged in 23 pairs. These include 22 pairs of autosomes (non-sex chromosomes, numbered 1-22) plus one pair of sex chromosomes. Females have two X chromosomes (XX), while males have one X and one Y (XY). Egg and sperm cells are haploid, containing only 23 chromosomes each, which combine at fertilization to restore 46.",
+    "wowFactor": "Humans have only 46 chromosomes, but a fern has over 1,260 — more chromosomes doesn't mean more complex. Chromosome count has little to do with biological complexity.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many chromosomes are in a typical human body cell?",
+        "answer": "46",
+        "distractors": [
+          "23",
+          "48",
+          "44"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Human chromosomes come in 23 pairs — sex chromosomes in females are XX, and in males?",
+        "answer": "XY",
+        "distractors": [
+          "YY",
+          "XX",
+          "XYY"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Human cells contain 46 chromosomes arranged in 23 pairs.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Human body cells contain ___ chromosomes in 23 pairs.",
+        "answer": "46",
+        "distractors": [
+          "23",
+          "48",
+          "64"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chromosome",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An array of 46 chromosomes arranged in pairs on a glowing lab background, the X and Y chromosomes highlighted, pixel art diagram.",
+    "tags": [
+      "genetics",
+      "chromosomes",
+      "DNA",
+      "human genome",
+      "sex chromosomes"
+    ]
+  },
+  {
+    "id": "health-cancer-most-common-lung",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "oncology",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "oncology",
+    "categoryL3": "",
+    "statement": "Lung cancer is the leading cause of cancer death worldwide, responsible for more deaths than the next three most deadly cancers combined — primarily linked to tobacco smoking.",
+    "quizQuestion": "What is the leading cause of cancer death worldwide?",
+    "correctAnswer": "Lung cancer",
+    "distractors": [
+      "Breast cancer",
+      "Colon cancer",
+      "Liver cancer",
+      "Prostate cancer",
+      "Stomach cancer",
+      "Pancreatic cancer",
+      "Skin cancer",
+      "Cervical cancer"
+    ],
+    "acceptableAnswers": [
+      "Lung cancer"
+    ],
+    "explanation": "Lung cancer kills approximately 1.8 million people annually worldwide, making it the deadliest cancer. About 85% of lung cancer cases are directly attributed to cigarette smoking. Non-small cell lung cancer (NSCLC) accounts for about 85% of cases, and small cell lung cancer (SCLC) for 15%. The high mortality is partly because symptoms often don't appear until the disease is advanced — when it's much harder to treat.",
+    "wowFactor": "Lung cancer kills more people annually than breast, prostate, and colon cancers combined — yet it receives less research funding than those three.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which cancer causes the most deaths globally each year?",
+        "answer": "Lung cancer",
+        "distractors": [
+          "Breast cancer",
+          "Colon cancer",
+          "Liver cancer"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Tobacco smoking is the primary cause of which deadliest cancer?",
+        "answer": "Lung cancer",
+        "distractors": [
+          "Throat cancer",
+          "Bladder cancer",
+          "Kidney cancer"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Lung cancer is the leading cause of cancer death worldwide.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ cancer kills more people globally than any other type of cancer.",
+        "answer": "Lung",
+        "distractors": [
+          "Breast",
+          "Colon",
+          "Prostate"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lung_cancer",
+    "contentVolatility": "current",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Medical content involving serious disease",
+    "visualDescription": "A stylized X-ray of lungs with a highlighted tumor and statistics panel showing death rates, pixel art medical visual.",
+    "tags": [
+      "cancer",
+      "lung cancer",
+      "tobacco",
+      "oncology",
+      "leading cause"
+    ]
+  },
+  {
+    "id": "health-surgery-anesthesia-ether",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "surgery",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "surgery",
+    "categoryL3": "",
+    "statement": "The first successful public demonstration of surgical anesthesia using ether occurred in 1846 at Massachusetts General Hospital — transforming surgery from a brutal rushed procedure into a precise medical art.",
+    "quizQuestion": "What year was ether first publicly demonstrated as surgical anesthesia?",
+    "correctAnswer": "1846",
+    "distractors": [
+      "1800",
+      "1867",
+      "1821",
+      "1900",
+      "1776",
+      "1880",
+      "1910",
+      "1857"
+    ],
+    "acceptableAnswers": [
+      "1846"
+    ],
+    "explanation": "Before anesthesia, surgery was a nightmare — patients were conscious, screaming, and held down. Speed was the surgeon's chief skill. On October 16, 1846, dentist William Morton demonstrated that inhaling ether vapor rendered a patient unconscious and pain-free during surgery at Massachusetts General Hospital (the 'Ether Dome'). The lead surgeon, John Collins Warren, removed a neck tumor painlessly. Warren reportedly said afterward: 'Gentlemen, this is no humbug.'",
+    "wowFactor": "Before ether in 1846, surgeons competed to see who could amputate a leg fastest — some could do it in 28 seconds. Speed was more important than precision.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year was surgical ether anesthesia first publicly demonstrated?",
+        "answer": "1846",
+        "distractors": [
+          "1867",
+          "1800",
+          "1910"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Ether was first used publicly as anesthesia at which hospital in 1846?",
+        "answer": "Massachusetts General Hospital",
+        "distractors": [
+          "Johns Hopkins",
+          "Harvard Medical School",
+          "London Royal Hospital"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Surgical ether anesthesia was first demonstrated publicly in 1846.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The first public surgical anesthesia demonstration occurred in ___.",
+        "answer": "1846",
+        "distractors": [
+          "1867",
+          "1800",
+          "1900"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ether_Dome",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 19th-century surgical amphitheater with a patient sleeping peacefully while doctors watch in amazement, pixel art historical scene.",
+    "tags": [
+      "surgery",
+      "anesthesia",
+      "ether",
+      "history",
+      "1846"
+    ]
+  },
+  {
+    "id": "health-surgery-antiseptic-lister",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "surgery",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "surgery",
+    "categoryL3": "",
+    "statement": "Joseph Lister introduced antiseptic surgery in 1867 using carbolic acid (phenol) to sterilize instruments and wounds, reducing surgical mortality from nearly 50% to under 15%.",
+    "quizQuestion": "Who introduced antiseptic surgery using carbolic acid?",
+    "correctAnswer": "Joseph Lister",
+    "distractors": [
+      "Louis Pasteur",
+      "Robert Koch",
+      "Florence Nightingale",
+      "Ignaz Semmelweis",
+      "William Morton",
+      "Edward Jenner",
+      "Alexander Fleming",
+      "John Snow"
+    ],
+    "acceptableAnswers": [
+      "Joseph Lister",
+      "Lister"
+    ],
+    "explanation": "Before Lister, about 45-50% of surgical patients died from post-operative infections. After reading Pasteur's germ theory, Lister applied carbolic acid (phenol) to surgical instruments, wounds, and dressings. Death rates plummeted. He published his methods in 1867 in The Lancet. His legacy lives on in the mouthwash brand Listerine, named in his honor. Semmelweis had earlier advocated handwashing but was dismissed and institutionalized.",
+    "wowFactor": "Listerine mouthwash is named after Joseph Lister — the man who cut surgical death rates from 50% to under 15% by spraying carbolic acid on everything.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which surgeon pioneered antiseptic techniques in the operating room?",
+        "answer": "Joseph Lister",
+        "distractors": [
+          "Louis Pasteur",
+          "Ignaz Semmelweis",
+          "Robert Koch"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Listerine mouthwash is named in honor of Joseph Lister's pioneering work in what?",
+        "answer": "Antiseptic surgery",
+        "distractors": [
+          "Dental surgery",
+          "Germ theory",
+          "Handwashing protocols"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Joseph Lister introduced antiseptic surgery using carbolic acid in 1867.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Joseph Lister used ___ acid to sterilize wounds and reduce surgical deaths.",
+        "answer": "Carbolic",
+        "distractors": [
+          "Sulfuric",
+          "Citric",
+          "Lactic"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Joseph_Lister",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Joseph Lister in 19th-century surgical coat spraying carbolic acid on an operating table, mortality statistics dropping on a chart, pixel art.",
+    "tags": [
+      "surgery",
+      "Joseph Lister",
+      "antiseptic",
+      "carbolic acid",
+      "germ theory"
+    ]
+  },
+  {
+    "id": "health-mental-disorder-anxiety-fight-flight",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "mental_health",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "mental_health",
+    "categoryL3": "",
+    "statement": "Anxiety disorders involve overactivation of the brain's fight-or-flight response controlled by the amygdala, triggering fear responses to non-threatening situations.",
+    "quizQuestion": "Which brain structure triggers the fight-or-flight fear response?",
+    "correctAnswer": "Amygdala",
+    "distractors": [
+      "Hippocampus",
+      "Cerebellum",
+      "Prefrontal cortex",
+      "Thalamus",
+      "Brain stem",
+      "Hypothalamus",
+      "Corpus callosum",
+      "Frontal lobe"
+    ],
+    "acceptableAnswers": [
+      "Amygdala",
+      "The amygdala"
+    ],
+    "explanation": "The amygdala is an almond-shaped structure deep in the brain that processes emotional responses, especially fear. When it detects a potential threat, it triggers the hypothalamic-pituitary-adrenal (HPA) axis, releasing stress hormones (cortisol, adrenaline) that prepare the body to fight or flee. In anxiety disorders, the amygdala is hyperreactive — it fires threat responses to stimuli that aren't actually dangerous, producing symptoms like racing heart, sweating, and panic.",
+    "wowFactor": "Your amygdala can trigger a full panic response before your conscious mind has even registered what scared you — it's faster than thought.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which brain region controls the fear-based fight-or-flight response?",
+        "answer": "Amygdala",
+        "distractors": [
+          "Hippocampus",
+          "Cerebellum",
+          "Thalamus"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Anxiety disorders involve overactivation of the amygdala, which controls what response?",
+        "answer": "Fight-or-flight",
+        "distractors": [
+          "Sleep regulation",
+          "Memory formation",
+          "Language processing"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The amygdala controls the fear and fight-or-flight response.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ is the brain structure that triggers the fear fight-or-flight response.",
+        "answer": "Amygdala",
+        "distractors": [
+          "Hippocampus",
+          "Thalamus",
+          "Cerebellum"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Amygdala",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Discusses anxiety disorder and mental health",
+    "visualDescription": "A brain cross-section with the almond-shaped amygdala glowing red while fight-or-flight hormone arrows radiate outward, pixel art.",
+    "tags": [
+      "anxiety",
+      "amygdala",
+      "fight-or-flight",
+      "mental health",
+      "neuroscience"
+    ]
+  },
+  {
+    "id": "health-mental-disorder-prevalence",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "mental_health",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "mental_health",
+    "categoryL3": "",
+    "statement": "Mental disorders affect approximately 1 in 5 adults globally each year — depression and anxiety are the two most common, affecting hundreds of millions of people worldwide.",
+    "quizQuestion": "What fraction of adults experience a mental disorder each year?",
+    "correctAnswer": "1 in 5",
+    "distractors": [
+      "1 in 50",
+      "1 in 100",
+      "1 in 3",
+      "1 in 10",
+      "1 in 2",
+      "1 in 20",
+      "1 in 7",
+      "1 in 15"
+    ],
+    "acceptableAnswers": [
+      "1 in 5",
+      "20%",
+      "One in five"
+    ],
+    "explanation": "According to the WHO and major epidemiological studies, approximately 20% of adults experience a diagnosable mental health disorder in any given year. Anxiety disorders are the most prevalent (affecting ~284 million people), followed by depression (~264 million). Mental disorders are a leading cause of disability globally. Despite high prevalence, treatment gap remains enormous — about 75% of people with mental illness in low-income countries receive no treatment.",
+    "wowFactor": "Mental illness affects 1 in 5 people every year — making it more common than diabetes, heart disease, or cancer, yet still one of the least funded health areas.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Globally, about what proportion of adults have a mental disorder each year?",
+        "answer": "1 in 5",
+        "distractors": [
+          "1 in 50",
+          "1 in 10",
+          "1 in 100"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Depression and anxiety are the two most common examples of which broader category?",
+        "answer": "Mental disorders",
+        "distractors": [
+          "Neurological diseases",
+          "Autoimmune conditions",
+          "Infectious diseases"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: About 1 in 5 adults experience a mental disorder each year globally.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mental disorders affect approximately ___ adults globally each year.",
+        "answer": "1 in 5",
+        "distractors": [
+          "1 in 50",
+          "1 in 3",
+          "1 in 100"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mental_disorder",
+    "contentVolatility": "current",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Discusses mental illness prevalence",
+    "visualDescription": "Five silhouettes with one highlighted representing the 1-in-5 statistic, a gentle supportive visual, pixel art infographic style.",
+    "tags": [
+      "mental health",
+      "depression",
+      "anxiety",
+      "prevalence",
+      "WHO"
+    ]
+  },
+  {
+    "id": "health-vein-blood-color",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "cardiovascular",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "cardiovascular",
+    "categoryL3": "",
+    "statement": "Blood in veins appears blue-ish through skin due to how light penetrates tissue, but venous blood is actually dark red — blood is never truly blue inside the living body.",
+    "quizQuestion": "What color is blood actually inside veins?",
+    "correctAnswer": "Dark red",
+    "distractors": [
+      "Bright blue",
+      "Purple",
+      "Almost black",
+      "Pale pink",
+      "Maroon only when oxygenated",
+      "Translucent",
+      "Greenish",
+      "Orange-brown"
+    ],
+    "acceptableAnswers": [
+      "Dark red",
+      "Red",
+      "Deoxygenated red"
+    ],
+    "explanation": "The common belief that veins contain blue blood is a myth. Blood is always red — oxygenated blood is bright scarlet red (because oxyhemoglobin absorbs blue light), while deoxygenated blood in veins is a darker maroon-red (because deoxyhemoglobin absorbs different wavelengths). Veins appear blue through skin because blue and red light penetrate tissue differently — blue light doesn't penetrate as deeply, so it scatters back from the skin rather than being absorbed by the deeper vein.",
+    "wowFactor": "The blue-vein myth comes from optics: blue light only penetrates a few mm into skin, so it bounces back to your eye before reaching the dark red blood inside.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the true color of deoxygenated blood inside veins?",
+        "answer": "Dark red",
+        "distractors": [
+          "Blue",
+          "Purple",
+          "Black"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Why do veins look blue through skin when blood is actually red?",
+        "answer": "Blue light penetrates less deeply than red",
+        "distractors": [
+          "Veins absorb red light only",
+          "Skin filters red out",
+          "Veins reflect only blue"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Blood inside veins is dark red, not blue.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Veins look blue through skin, but the blood inside is actually dark ___.",
+        "answer": "Red",
+        "distractors": [
+          "Blue",
+          "Purple",
+          "Black"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hemoglobin",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section showing skin surface with a vein appearing blue from above, but a cut showing the dark red blood inside, pixel art.",
+    "tags": [
+      "veins",
+      "blood color",
+      "myth",
+      "hemoglobin",
+      "optics"
+    ]
+  },
+  {
+    "id": "health-vein-deep-vein-thrombosis",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "cardiovascular",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "cardiovascular",
+    "categoryL3": "",
+    "statement": "Deep vein thrombosis (DVT) occurs when a blood clot forms in a deep vein — usually in the legs — and becomes life-threatening if the clot breaks off and travels to the lungs (pulmonary embolism).",
+    "quizQuestion": "What life-threatening event occurs if a DVT clot reaches the lungs?",
+    "correctAnswer": "Pulmonary embolism",
+    "distractors": [
+      "Cardiac arrest",
+      "Stroke",
+      "Pneumonia",
+      "Lung collapse",
+      "Aortic aneurysm",
+      "Respiratory failure alone",
+      "Heart valve blockage",
+      "Pulmonary edema"
+    ],
+    "acceptableAnswers": [
+      "Pulmonary embolism",
+      "PE",
+      "Lung embolism"
+    ],
+    "explanation": "DVT (deep vein thrombosis) forms when blood clots in deep leg veins, often after long periods of immobility (long flights, bed rest). The danger is pulmonary embolism (PE) — when a clot dislodges and travels through the venous system to the lungs, blocking pulmonary blood vessels. A massive PE can be instantly fatal. DVT + PE together are called venous thromboembolism (VTE) and kill approximately 300,000 Americans annually — more than AIDS and breast cancer combined.",
+    "wowFactor": "Economy class syndrome is real — sitting still on a long flight can cause a leg clot that breaks off and kills you hours or days after landing.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "When a DVT clot breaks off and reaches the lungs, what occurs?",
+        "answer": "Pulmonary embolism",
+        "distractors": [
+          "Cardiac arrest",
+          "Stroke",
+          "Pneumonia"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Pulmonary embolism is a life-threatening complication of which vein condition?",
+        "answer": "DVT (deep vein thrombosis)",
+        "distractors": [
+          "Varicose veins",
+          "Anemia",
+          "Hypertension"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A DVT clot that reaches the lungs causes a pulmonary embolism.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A DVT clot that travels to the lungs causes a pulmonary ___.",
+        "answer": "Embolism",
+        "distractors": [
+          "Infarction",
+          "Edema",
+          "Fibrosis"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Deep_vein_thrombosis",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Discusses serious medical condition",
+    "visualDescription": "A leg vein with a red clot forming, an arrow showing it traveling up through the body toward lung blood vessels, pixel art medical diagram.",
+    "tags": [
+      "veins",
+      "DVT",
+      "pulmonary embolism",
+      "blood clot",
+      "thrombosis"
+    ]
+  },
+  {
+    "id": "health-malaria-plasmodium-mosquito",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "infectious_disease",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "infectious_disease",
+    "categoryL3": "",
+    "statement": "Malaria is caused by Plasmodium parasites transmitted through the bites of infected female Anopheles mosquitoes — it kills over 600,000 people annually, mostly African children under five.",
+    "quizQuestion": "What parasite causes malaria?",
+    "correctAnswer": "Plasmodium",
+    "distractors": [
+      "Trypanosoma",
+      "Leishmania",
+      "Toxoplasma",
+      "Giardia",
+      "Cryptosporidium",
+      "Entamoeba",
+      "Babesia",
+      "Vibrio"
+    ],
+    "acceptableAnswers": [
+      "Plasmodium",
+      "Plasmodium parasite"
+    ],
+    "explanation": "Malaria is caused by single-celled Plasmodium parasites. Five species infect humans: P. falciparum (most deadly), P. vivax (most widespread), P. malariae, P. ovale, and P. knowlesi. Transmission occurs when an infected female Anopheles mosquito bites and injects Plasmodium sporozoites into the bloodstream. The parasites travel to the liver, multiply, then infect red blood cells — causing cyclic fevers as infected cells rupture. Malaria killed over 619,000 people in 2021 according to WHO data.",
+    "wowFactor": "Malaria has killed more humans throughout history than any other disease — more than all wars combined, estimated at over 50 billion deaths across human history.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which parasite is transmitted by Anopheles mosquitoes to cause malaria?",
+        "answer": "Plasmodium",
+        "distractors": [
+          "Trypanosoma",
+          "Leishmania",
+          "Giardia"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The female Anopheles mosquito transmits which deadly parasitic disease?",
+        "answer": "Malaria",
+        "distractors": [
+          "Dengue fever",
+          "Yellow fever",
+          "Sleeping sickness"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Malaria is caused by Plasmodium parasites spread by mosquitoes.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ parasite is transmitted by Anopheles mosquitoes to cause malaria.",
+        "answer": "Plasmodium",
+        "distractors": [
+          "Trypanosoma",
+          "Leishmania",
+          "Giardia"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Malaria",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An Anopheles mosquito inserting its proboscis into skin with Plasmodium parasites visible as small dots in the bloodstream, pixel art.",
+    "tags": [
+      "malaria",
+      "Plasmodium",
+      "mosquito",
+      "Anopheles",
+      "parasitic disease"
+    ]
+  },
+  {
+    "id": "health-malaria-sickle-cell-resistance",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "infectious_disease",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "infectious_disease",
+    "categoryL3": "",
+    "statement": "People who carry the sickle cell trait (one copy of the sickle cell gene) have significant natural resistance to malaria — a genetic adaptation that evolved in malaria-endemic regions of Africa.",
+    "quizQuestion": "What disease does the sickle cell trait protect against?",
+    "correctAnswer": "Malaria",
+    "distractors": [
+      "Dengue fever",
+      "Typhoid",
+      "Yellow fever",
+      "Tuberculosis",
+      "Cholera",
+      "Ebola",
+      "HIV",
+      "Polio"
+    ],
+    "acceptableAnswers": [
+      "Malaria"
+    ],
+    "explanation": "Sickle cell disease (having two copies of the HbS gene) is a painful and debilitating condition. However, people with sickle cell trait (heterozygous, one normal and one HbS copy) experience relatively mild effects but gain approximately 90% protection against severe P. falciparum malaria. This is because sickle-shaped red blood cells are inhospitable to Plasmodium. This explains why the sickle cell gene persists at high frequency in malaria-endemic populations — a classic example of balancing selection.",
+    "wowFactor": "Sickle cell anemia — a devastating blood disorder — persists in Africa because carrying just one copy of the gene protects against the continent's deadliest killer: malaria.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Carrying the sickle cell trait provides natural resistance to which disease?",
+        "answer": "Malaria",
+        "distractors": [
+          "Dengue",
+          "Yellow fever",
+          "Cholera"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Sickle cell trait persists in Africa due to protection against which parasite?",
+        "answer": "Plasmodium (malaria)",
+        "distractors": [
+          "Trypanosoma",
+          "Leishmania",
+          "Giardia"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Sickle cell trait provides natural resistance to malaria.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The sickle cell gene persists in malaria-endemic regions because it protects against ___ infection.",
+        "answer": "Malaria",
+        "distractors": [
+          "Dengue",
+          "Cholera",
+          "Typhoid"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sickle_cell_disease",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two red blood cells — one normal round and one sickle-shaped — beside a Plasmodium parasite being blocked by the sickle shape, pixel art.",
+    "tags": [
+      "malaria",
+      "sickle cell",
+      "genetics",
+      "resistance",
+      "evolution"
+    ]
+  },
+  {
+    "id": "health-malaria-artemisinin-treatment",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "infectious_disease",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "infectious_disease",
+    "categoryL3": "",
+    "statement": "The most effective malaria treatment, artemisinin, was discovered by Chinese scientist Tu Youyou in the 1970s from sweet wormwood plant extract, earning her the 2015 Nobel Prize in Medicine.",
+    "quizQuestion": "Who discovered the malaria drug artemisinin?",
+    "correctAnswer": "Tu Youyou",
+    "distractors": [
+      "Alexander Fleming",
+      "Paul Ehrlich",
+      "Louis Pasteur",
+      "Robert Koch",
+      "Gertrude Elion",
+      "Barry Marshall",
+      "William Gorgas",
+      "Ronald Ross"
+    ],
+    "acceptableAnswers": [
+      "Tu Youyou",
+      "Tu You-you"
+    ],
+    "explanation": "In 1969, Tu Youyou was tasked with finding a malaria treatment during the Vietnam War when drug-resistant malaria was killing many soldiers. She screened thousands of traditional Chinese herbal remedies and identified Artemisia annua (sweet wormwood) as promising. After careful extraction at low temperatures (heat destroyed the active compound), she developed artemisinin. She even volunteered as the first human test subject. Artemisinin-based combination therapies (ACTs) are now WHO's first-line malaria treatment and have saved millions of lives.",
+    "wowFactor": "Tu Youyou personally volunteered as the first human test subject for artemisinin — she injected herself with her own discovery before testing it on anyone else.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which scientist won the 2015 Nobel Prize for discovering the malaria drug artemisinin?",
+        "answer": "Tu Youyou",
+        "distractors": [
+          "Alexander Fleming",
+          "Paul Ehrlich",
+          "Robert Koch"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Artemisinin, the key malaria drug, was extracted from which plant?",
+        "answer": "Sweet wormwood (Artemisia annua)",
+        "distractors": [
+          "Quinine tree bark",
+          "Willow bark",
+          "Ginkgo biloba"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Tu Youyou discovered artemisinin from wormwood and won a Nobel Prize.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Tu Youyou discovered ___ from sweet wormwood as a malaria treatment.",
+        "answer": "Artemisinin",
+        "distractors": [
+          "Quinine",
+          "Chloroquine",
+          "Penicillin"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tu_Youyou",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Tu Youyou in a lab coat beside a sweet wormwood plant with the Nobel medal and molecular structure of artemisinin, pixel art portrait.",
+    "tags": [
+      "malaria",
+      "artemisinin",
+      "Tu Youyou",
+      "Nobel Prize",
+      "wormwood"
+    ]
+  },
+  {
+    "id": "health-dentistry-enamel-hardest",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "dentistry",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "dentistry",
+    "categoryL3": "",
+    "statement": "Tooth enamel is the hardest substance in the human body — harder than bone — yet it cannot regenerate once destroyed, as enamel-producing cells (ameloblasts) die after tooth development.",
+    "quizQuestion": "What is the hardest substance in the human body?",
+    "correctAnswer": "Tooth enamel",
+    "distractors": [
+      "Bone",
+      "Cartilage",
+      "Dentin",
+      "Fingernails",
+      "Kidney stones",
+      "Calcified tendon",
+      "Skull bone",
+      "Femur"
+    ],
+    "acceptableAnswers": [
+      "Tooth enamel",
+      "Enamel"
+    ],
+    "explanation": "Tooth enamel (the outer layer of teeth) is the hardest biological substance in the human body, rating 5 on the Mohs hardness scale — harder than bone (3-4) and steel (4.5). It is composed of 96% hydroxyapatite (a crystalline calcium phosphate mineral). The tragic catch: ameloblasts (cells that form enamel) die after tooth formation is complete, making enamel incapable of self-repair. Once enamel wears away from acid erosion or decay, it is gone forever.",
+    "wowFactor": "Your enamel is tougher than steel on the hardness scale — yet acid from a glass of soda starts dissolving it in minutes, and unlike bone, it can never grow back.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which substance in the human body is harder than bone?",
+        "answer": "Tooth enamel",
+        "distractors": [
+          "Dentin",
+          "Cartilage",
+          "Fingernails"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Tooth enamel cannot regenerate because the cells that make it — ameloblasts — do what?",
+        "answer": "Die after tooth formation",
+        "distractors": [
+          "Migrate to the gums",
+          "Transform into dentin cells",
+          "Move to bone marrow"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Tooth enamel is the hardest substance in the human body.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Tooth ___ is the hardest substance in the human body but cannot regenerate.",
+        "answer": "Enamel",
+        "distractors": [
+          "Bone",
+          "Dentin",
+          "Cartilage"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tooth_enamel",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A tooth cross-section with the white enamel layer glowing, labeled harder than bone, with a crack forming from acid erosion, pixel art.",
+    "tags": [
+      "dentistry",
+      "tooth enamel",
+      "hardest",
+      "human body",
+      "ameloblasts"
+    ]
+  }
+]

@@ -1,0 +1,2690 @@
+[
+  {
+    "id": "space-galileo-telescope",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "categoryL3": "",
+    "statement": "Galileo Galilei improved the telescope in 1609 and used it to make groundbreaking astronomical observations.",
+    "quizQuestion": "What instrument did Galileo improve for astronomy in 1609?",
+    "correctAnswer": "Telescope",
+    "distractors": [
+      "Microscope",
+      "Astrolabe",
+      "Quadrant",
+      "Sextant",
+      "Orrery",
+      "Spectroscope",
+      "Barometer",
+      "Theodolite"
+    ],
+    "acceptableAnswers": [
+      "telescope",
+      "the telescope",
+      "optical telescope"
+    ],
+    "explanation": "In 1609, Galileo didn't invent the telescope but significantly improved it, achieving 20x magnification. He used it to observe mountains on the Moon, sunspots, and Jupiter's moons.",
+    "wowFactor": "Galileo's telescope was so powerful for its time that he could see craters on the Moon — something no human eye had ever seen before.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What instrument did Galileo famously improve in 1609?",
+        "answer": "Telescope",
+        "distractors": [
+          "Microscope",
+          "Astrolabe",
+          "Sextant"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who improved the telescope in 1609 for astronomical use?",
+        "answer": "Galileo Galilei",
+        "distractors": [
+          "Isaac Newton",
+          "Nicolaus Copernicus",
+          "Johannes Kepler"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Galileo invented the telescope in 1609?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In 1609, Galileo improved the ___ for astronomical observation.",
+        "answer": "telescope",
+        "distractors": [
+          "microscope",
+          "astrolabe",
+          "sextant"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Galileo_Galilei",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A bearded Renaissance-era man peering through a long brass telescope toward a starry night sky from a stone tower.",
+    "tags": [
+      "galileo",
+      "telescope",
+      "astronomy",
+      "renaissance",
+      "optics"
+    ]
+  },
+  {
+    "id": "space-galileo-jupiter-moons",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "categoryL3": "",
+    "statement": "Galileo discovered four large moons of Jupiter in 1610, now called the Galilean moons.",
+    "quizQuestion": "How many moons of Jupiter did Galileo discover in 1610?",
+    "correctAnswer": "Four",
+    "distractors": [
+      "Two",
+      "Three",
+      "Five",
+      "Six",
+      "One",
+      "Seven",
+      "Eight",
+      "Nine"
+    ],
+    "acceptableAnswers": [
+      "4",
+      "four",
+      "4 moons",
+      "four moons"
+    ],
+    "explanation": "Galileo discovered Io, Europa, Ganymede, and Callisto in January 1610. This proved not everything orbits Earth, supporting the heliocentric model.",
+    "wowFactor": "Europa, one of Galileo's four moons, has a subsurface ocean and is considered one of the best candidates for extraterrestrial life in our solar system.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many moons of Jupiter did Galileo discover?",
+        "answer": "Four",
+        "distractors": [
+          "Two",
+          "Three",
+          "Six"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who first discovered the four large moons of Jupiter?",
+        "answer": "Galileo Galilei",
+        "distractors": [
+          "Johannes Kepler",
+          "Tycho Brahe",
+          "Edwin Hubble"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Galileo discovered three moons of Jupiter?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Galileo discovered ___ large moons of Jupiter, now called Galilean moons.",
+        "answer": "four",
+        "distractors": [
+          "two",
+          "three",
+          "six"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Galilean_moons",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Jupiter's massive orange-banded surface with four small bright dots in a line nearby, as seen through an early telescope.",
+    "tags": [
+      "galileo",
+      "jupiter",
+      "moons",
+      "galilean moons",
+      "io",
+      "europa",
+      "ganymede",
+      "callisto"
+    ]
+  },
+  {
+    "id": "space-galileo-heliocentric",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "categoryL3": "",
+    "statement": "Galileo was put under house arrest by the Roman Inquisition for supporting the heliocentric model of the solar system.",
+    "quizQuestion": "Why did the Inquisition place Galileo under house arrest?",
+    "correctAnswer": "Supporting heliocentrism",
+    "distractors": [
+      "Publishing star maps",
+      "Denying gravity",
+      "Mocking the Pope",
+      "Practicing alchemy",
+      "Stealing church funds",
+      "Teaching witchcraft",
+      "Denying Earth's age",
+      "Blasphemy against saints"
+    ],
+    "acceptableAnswers": [
+      "heliocentrism",
+      "heliocentric theory",
+      "supporting Copernicus",
+      "Earth orbits the Sun"
+    ],
+    "explanation": "In 1633, the Roman Inquisition convicted Galileo of heresy for defending the Copernican heliocentric model — that the Earth orbits the Sun. He spent his final years under house arrest.",
+    "wowFactor": "The Catholic Church formally apologized to Galileo in 1992 — 359 years after his conviction.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why was Galileo placed under house arrest by the Inquisition?",
+        "answer": "Supporting heliocentrism",
+        "distractors": [
+          "Publishing star maps",
+          "Denying gravity",
+          "Mocking the Pope"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who was famously convicted by the Inquisition for supporting heliocentrism?",
+        "answer": "Galileo Galilei",
+        "distractors": [
+          "Nicolaus Copernicus",
+          "Giordano Bruno",
+          "Johannes Kepler"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Galileo was imprisoned in a dungeon for his scientific beliefs?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Galileo was convicted for supporting the ___ model of the solar system.",
+        "answer": "heliocentric",
+        "distractors": [
+          "geocentric",
+          "tychonic",
+          "ptolemaic"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Galileo_affair",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Touches on historical religious conflict with science.",
+    "visualDescription": "An elderly man in dark robes seated at a writing desk, surrounded by candles and astronomical charts, looking defiant.",
+    "tags": [
+      "galileo",
+      "inquisition",
+      "heliocentrism",
+      "house arrest",
+      "church and science"
+    ]
+  },
+  {
+    "id": "space-hubble-expanding-universe",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "categoryL3": "",
+    "statement": "Edwin Hubble discovered in 1929 that the universe is expanding, based on the redshift of distant galaxies.",
+    "quizQuestion": "What did Edwin Hubble discover about the universe in 1929?",
+    "correctAnswer": "It is expanding",
+    "distractors": [
+      "It is contracting",
+      "It is infinite",
+      "It is rotating",
+      "It is static",
+      "It is hollow",
+      "It is flat",
+      "It is collapsing",
+      "It is cooling rapidly"
+    ],
+    "acceptableAnswers": [
+      "expanding",
+      "the universe expands",
+      "galaxies move apart",
+      "it expands"
+    ],
+    "explanation": "Hubble observed that galaxies farther away recede faster, encoded in the redshift of their light. This led to Hubble's Law and confirmed the Big Bang theory.",
+    "wowFactor": "Einstein originally added a 'cosmological constant' to keep the universe static — after Hubble's discovery, Einstein called it 'the greatest blunder of my life.'",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Edwin Hubble show about the universe in 1929?",
+        "answer": "It is expanding",
+        "distractors": [
+          "It is contracting",
+          "It is static",
+          "It is rotating"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who discovered the universe is expanding in 1929?",
+        "answer": "Edwin Hubble",
+        "distractors": [
+          "Albert Einstein",
+          "Georges Lemaître",
+          "Carl Sagan"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Edwin Hubble discovered the universe is expanding in 1929?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Edwin Hubble proved the universe is ___ by measuring galaxy redshifts.",
+        "answer": "expanding",
+        "distractors": [
+          "contracting",
+          "static",
+          "rotating"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Edwin_Hubble",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A man in a suit peering through a massive observatory telescope, with a chalkboard showing galaxies and red arrows pointing outward.",
+    "tags": [
+      "hubble",
+      "expanding universe",
+      "redshift",
+      "cosmology",
+      "big bang"
+    ]
+  },
+  {
+    "id": "space-hubble-law",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "categoryL3": "",
+    "statement": "Hubble's Law states that galaxies recede from us at a speed proportional to their distance.",
+    "quizQuestion": "What does Hubble's Law describe about galaxies?",
+    "correctAnswer": "Recession speed vs. distance",
+    "distractors": [
+      "Mass vs. luminosity",
+      "Size vs. temperature",
+      "Spin rate vs. age",
+      "Color vs. composition",
+      "Brightness vs. distance",
+      "Age vs. redshift",
+      "Gravity vs. mass",
+      "Orbit vs. rotation"
+    ],
+    "acceptableAnswers": [
+      "recession proportional to distance",
+      "speed proportional to distance",
+      "velocity proportional to distance"
+    ],
+    "explanation": "Hubble's Law (v = H₀d) states that the recession velocity of a galaxy is proportional to its distance. The Hubble constant H₀ quantifies the rate of expansion.",
+    "wowFactor": "Galaxies beyond a certain distance recede faster than light — not violating relativity, but because space itself is expanding between them and us.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What relationship does Hubble's Law describe?",
+        "answer": "Recession speed vs. distance",
+        "distractors": [
+          "Mass vs. luminosity",
+          "Brightness vs. distance",
+          "Age vs. redshift"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which law states galaxies recede faster the farther away they are?",
+        "answer": "Hubble's Law",
+        "distractors": [
+          "Kepler's Law",
+          "Newton's Law",
+          "Olbers' Paradox"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Hubble's Law says galaxy speed is proportional to its distance?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Hubble's Law states that a galaxy's recession speed is proportional to its ___.",
+        "answer": "distance",
+        "distractors": [
+          "mass",
+          "age",
+          "brightness"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hubble%27s_law",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A graph on a chalkboard showing dots representing galaxies with arrows pointing away in all directions, distances labeled.",
+    "tags": [
+      "hubble",
+      "hubble's law",
+      "recession velocity",
+      "cosmology",
+      "expanding universe"
+    ]
+  },
+  {
+    "id": "space-hubble-galaxies",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "categoryL3": "",
+    "statement": "Edwin Hubble proved in 1924 that the Andromeda Nebula is a separate galaxy far outside the Milky Way.",
+    "quizQuestion": "What did Hubble prove the Andromeda Nebula was in 1924?",
+    "correctAnswer": "A separate galaxy",
+    "distractors": [
+      "A gas cloud",
+      "A star cluster",
+      "A black hole",
+      "A nebula inside the Milky Way",
+      "A distant moon",
+      "A comet trail",
+      "A rogue planet",
+      "A neutron star"
+    ],
+    "acceptableAnswers": [
+      "separate galaxy",
+      "another galaxy",
+      "external galaxy",
+      "its own galaxy"
+    ],
+    "explanation": "Using Cepheid variable stars as distance markers, Hubble measured Andromeda at ~2.5 million light-years — far beyond our galaxy, proving the universe contains billions of galaxies.",
+    "wowFactor": "Before Hubble's discovery, most astronomers thought the Milky Way was the entire universe. He revealed a cosmos billions of times larger than imagined.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Hubble prove the Andromeda Nebula was?",
+        "answer": "A separate galaxy",
+        "distractors": [
+          "A gas cloud",
+          "A star cluster",
+          "A nebula inside the Milky Way"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who proved Andromeda is a separate galaxy outside the Milky Way?",
+        "answer": "Edwin Hubble",
+        "distractors": [
+          "Carl Sagan",
+          "Harlow Shapley",
+          "Vesto Slipher"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Hubble proved Andromeda is inside the Milky Way?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Hubble proved in 1924 that Andromeda is a ___ far outside the Milky Way.",
+        "answer": "separate galaxy",
+        "distractors": [
+          "gas cloud",
+          "star cluster",
+          "nebula"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Andromeda_Galaxy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A spiral galaxy glowing softly in a sea of stars, seen from far away through a large observatory telescope eyepiece.",
+    "tags": [
+      "hubble",
+      "andromeda",
+      "galaxies",
+      "milky way",
+      "cepheid",
+      "cosmology"
+    ]
+  },
+  {
+    "id": "space-mars-olympus-mons",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Olympus Mons on Mars is the tallest volcano in the solar system, standing about 22 km high.",
+    "quizQuestion": "Which planet is home to the solar system's tallest volcano?",
+    "correctAnswer": "Mars",
+    "distractors": [
+      "Venus",
+      "Jupiter",
+      "Io",
+      "Earth",
+      "Mercury",
+      "Titan",
+      "Europa",
+      "Ganymede"
+    ],
+    "acceptableAnswers": [
+      "mars",
+      "the red planet"
+    ],
+    "explanation": "Olympus Mons stands 21.9 km above the Martian surface — nearly three times Mount Everest's height. It is also the widest volcano at 600 km in diameter.",
+    "wowFactor": "Olympus Mons is so wide that if you stood at its base, the summit would be beyond the horizon — you couldn't see the whole volcano from any single point.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "On which planet does Olympus Mons, the solar system's tallest volcano, sit?",
+        "answer": "Mars",
+        "distractors": [
+          "Venus",
+          "Io",
+          "Earth"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the name of Mars's tallest volcano?",
+        "answer": "Olympus Mons",
+        "distractors": [
+          "Valles Marineris",
+          "Hellas Planitia",
+          "Tharsis Bulge"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Olympus Mons on Mars is the tallest volcano in the solar system?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ Mons is the tallest volcano in the solar system, located on Mars.",
+        "answer": "Olympus",
+        "distractors": [
+          "Arsia",
+          "Ascraeus",
+          "Pavonis"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Olympus_Mons",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A towering reddish volcanic shield mountain rising above a rust-colored Martian landscape under a pale pink sky.",
+    "tags": [
+      "mars",
+      "olympus mons",
+      "volcano",
+      "solar system",
+      "red planet"
+    ]
+  },
+  {
+    "id": "space-mars-red-color",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Mars appears red because its surface is covered in iron oxide — rust.",
+    "quizQuestion": "What gives Mars its distinctive red color?",
+    "correctAnswer": "Iron oxide (rust)",
+    "distractors": [
+      "Red sand",
+      "Lava flows",
+      "Sunlight reflection",
+      "Frozen carbon dioxide",
+      "Copper deposits",
+      "Mineral dyes",
+      "Volcanic ash",
+      "Oxidized sulfur"
+    ],
+    "acceptableAnswers": [
+      "iron oxide",
+      "rust",
+      "rusted iron",
+      "ferric oxide",
+      "oxidized iron"
+    ],
+    "explanation": "Mars's surface is rich in iron minerals that have oxidized (rusted) over billions of years, coating the soil in reddish iron oxide. This gives the planet its iconic red hue.",
+    "wowFactor": "Mars has been rusting for over 3 billion years — it's essentially the largest rust ball in the solar system.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why does Mars appear red?",
+        "answer": "Iron oxide (rust)",
+        "distractors": [
+          "Red sand",
+          "Lava flows",
+          "Copper deposits"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which chemical compound makes Mars appear red?",
+        "answer": "Iron oxide",
+        "distractors": [
+          "Carbon dioxide",
+          "Sulfur dioxide",
+          "Titanium oxide"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mars appears red because of volcanic lava flows?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mars looks red because its surface is covered in iron ___ (rust).",
+        "answer": "oxide",
+        "distractors": [
+          "sulfide",
+          "carbonate",
+          "chloride"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mars",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A close-up of rust-red Martian soil with small rocks, the horizon curving gently under a dusty orange-pink sky.",
+    "tags": [
+      "mars",
+      "iron oxide",
+      "rust",
+      "red planet",
+      "surface"
+    ]
+  },
+  {
+    "id": "space-mars-moons",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Mars has two small moons: Phobos and Deimos, named after the sons of the god of war.",
+    "quizQuestion": "How many moons does Mars have?",
+    "correctAnswer": "Two",
+    "distractors": [
+      "Zero",
+      "One",
+      "Three",
+      "Four",
+      "Five",
+      "Six",
+      "Seven",
+      "Eight"
+    ],
+    "acceptableAnswers": [
+      "2",
+      "two",
+      "two moons"
+    ],
+    "explanation": "Mars has two moons: Phobos (fear) and Deimos (dread), both named after Ares's sons in Greek mythology. They are irregularly shaped and likely captured asteroids.",
+    "wowFactor": "Phobos orbits Mars so fast that it rises in the west and sets in the east — and it will eventually crash into Mars in about 50 million years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many moons orbit Mars?",
+        "answer": "Two",
+        "distractors": [
+          "Zero",
+          "One",
+          "Three"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which planet's moons are named Phobos and Deimos?",
+        "answer": "Mars",
+        "distractors": [
+          "Earth",
+          "Venus",
+          "Mercury"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mars has two moons named Phobos and Deimos?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mars has two moons: Phobos and ___.",
+        "answer": "Deimos",
+        "distractors": [
+          "Charon",
+          "Titan",
+          "Triton"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Moons_of_Mars",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two small potato-shaped moons hanging in a dark sky above a rust-red planet surface.",
+    "tags": [
+      "mars",
+      "phobos",
+      "deimos",
+      "moons",
+      "solar system"
+    ]
+  },
+  {
+    "id": "space-armstrong-moonwalk",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "satellites_tech",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "satellites_tech",
+    "categoryL3": "",
+    "statement": "Neil Armstrong became the first human to walk on the Moon on July 20, 1969.",
+    "quizQuestion": "When did Neil Armstrong first walk on the Moon?",
+    "correctAnswer": "July 20, 1969",
+    "distractors": [
+      "July 21, 1971",
+      "June 15, 1969",
+      "August 4, 1970",
+      "September 12, 1969",
+      "March 3, 1968",
+      "December 11, 1972",
+      "October 22, 1969",
+      "July 20, 1967"
+    ],
+    "acceptableAnswers": [
+      "July 20, 1969",
+      "July 1969",
+      "1969",
+      "20 July 1969"
+    ],
+    "explanation": "As commander of Apollo 11, Armstrong stepped onto the lunar surface at 20:17 UTC on July 20, 1969, becoming the first human to walk on another world.",
+    "wowFactor": "Armstrong's footprints on the Moon will remain there for millions of years — there's no wind or rain on the Moon to erode them.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "On what date did Neil Armstrong first walk on the Moon?",
+        "answer": "July 20, 1969",
+        "distractors": [
+          "June 15, 1969",
+          "July 21, 1971",
+          "December 11, 1972"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who was the first human to walk on the Moon?",
+        "answer": "Neil Armstrong",
+        "distractors": [
+          "Buzz Aldrin",
+          "John Glenn",
+          "Yuri Gagarin"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Neil Armstrong walked on the Moon in 1969?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Neil Armstrong walked on the Moon on July 20, ___.",
+        "answer": "1969",
+        "distractors": [
+          "1967",
+          "1971",
+          "1972"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 8,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Neil_Armstrong",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An astronaut in a bulky white spacesuit with a gold visor stepping off a ladder onto a pale grey lunar surface, Earth visible in the black sky.",
+    "tags": [
+      "neil armstrong",
+      "apollo 11",
+      "moon",
+      "moonwalk",
+      "1969",
+      "astronaut"
+    ]
+  },
+  {
+    "id": "space-armstrong-quote",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "satellites_tech",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "satellites_tech",
+    "categoryL3": "",
+    "statement": "Neil Armstrong's famous words upon landing on the Moon were: 'One small step for man, one giant leap for mankind.'",
+    "quizQuestion": "What did Armstrong say upon his first step on the Moon?",
+    "correctAnswer": "One small step...",
+    "distractors": [
+      "Houston, we have landed.",
+      "The Eagle has landed.",
+      "We came in peace.",
+      "This is for all of us.",
+      "Humanity's finest hour.",
+      "To infinity and beyond.",
+      "A new world awaits.",
+      "The stars are ours now."
+    ],
+    "acceptableAnswers": [
+      "one small step for man",
+      "one giant leap for mankind",
+      "one small step",
+      "that's one small step"
+    ],
+    "explanation": "Armstrong said 'That's one small step for [a] man, one giant leap for mankind.' The 'a' was lost in transmission, changing the grammatical meaning. It remains the most famous quote in space exploration history.",
+    "wowFactor": "Armstrong claimed he said 'a man' but the 'a' was lost to static. NASA audio analysis in 2006 found evidence supporting his claim.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What famous phrase began Armstrong's first Moon step?",
+        "answer": "One small step...",
+        "distractors": [
+          "Houston, we have landed.",
+          "The Eagle has landed.",
+          "We came in peace."
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who said 'one small step for man, one giant leap for mankind'?",
+        "answer": "Neil Armstrong",
+        "distractors": [
+          "Buzz Aldrin",
+          "John Glenn",
+          "Yuri Gagarin"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: 'The Eagle has landed' was said as Armstrong stepped onto the Moon?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Armstrong said 'one small step for man, one giant leap for ___.'",
+        "answer": "mankind",
+        "distractors": [
+          "humanity",
+          "America",
+          "science"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Neil_Armstrong",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A close-up of an astronaut's boot pressing into grey Moon dust, with broadcast static lines overlaying the image.",
+    "tags": [
+      "neil armstrong",
+      "moon landing",
+      "quote",
+      "apollo 11",
+      "famous words"
+    ]
+  },
+  {
+    "id": "space-armstrong-apollo11",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "satellites_tech",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "satellites_tech",
+    "categoryL3": "",
+    "statement": "Neil Armstrong commanded Apollo 11, the mission that first landed humans on the Moon.",
+    "quizQuestion": "Which mission was Neil Armstrong commander of in 1969?",
+    "correctAnswer": "Apollo 11",
+    "distractors": [
+      "Apollo 13",
+      "Apollo 8",
+      "Gemini 6",
+      "Mercury Atlas",
+      "Apollo 17",
+      "Vostok 1",
+      "Skylab 2",
+      "Soyuz 11"
+    ],
+    "acceptableAnswers": [
+      "Apollo 11",
+      "apollo eleven"
+    ],
+    "explanation": "Armstrong commanded Apollo 11, which launched July 16, 1969, landed on the Moon July 20, and returned safely to Earth on July 24. Crew: Armstrong, Buzz Aldrin, Michael Collins.",
+    "wowFactor": "Michael Collins, the third Apollo 11 astronaut, orbited the Moon alone for 21 hours — farther from any other human than anyone in history, before or since.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Neil Armstrong commanded which Apollo mission?",
+        "answer": "Apollo 11",
+        "distractors": [
+          "Apollo 13",
+          "Apollo 8",
+          "Apollo 17"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who commanded the Apollo 11 mission to the Moon?",
+        "answer": "Neil Armstrong",
+        "distractors": [
+          "Buzz Aldrin",
+          "Michael Collins",
+          "John Glenn"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Neil Armstrong commanded Apollo 11?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Neil Armstrong commanded ___ 11, the first crewed Moon landing mission.",
+        "answer": "Apollo",
+        "distractors": [
+          "Gemini",
+          "Mercury",
+          "Skylab"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Apollo_11",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A rocket on a launch pad surrounded by clouds of white exhaust, with 'Apollo 11' printed on its side against a bright blue sky.",
+    "tags": [
+      "neil armstrong",
+      "apollo 11",
+      "moon mission",
+      "nasa",
+      "space race"
+    ]
+  },
+  {
+    "id": "space-sun-gtype",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "stars_galaxies",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "stars_galaxies",
+    "categoryL3": "",
+    "statement": "The Sun is a G-type main-sequence star, also called a yellow dwarf.",
+    "quizQuestion": "What stellar classification is our Sun?",
+    "correctAnswer": "G-type (yellow dwarf)",
+    "distractors": [
+      "M-type red dwarf",
+      "O-type blue giant",
+      "B-type blue star",
+      "A-type white star",
+      "K-type orange dwarf",
+      "F-type subgiant",
+      "White dwarf",
+      "Neutron star"
+    ],
+    "acceptableAnswers": [
+      "G-type",
+      "G-type main sequence",
+      "yellow dwarf",
+      "G2V"
+    ],
+    "explanation": "The Sun is classified as G2V: a G-type (yellow) main-sequence star. G-type stars have surface temperatures around 5,500°C and are medium-sized and long-lived.",
+    "wowFactor": "Despite being called a 'yellow dwarf,' the Sun actually emits white light — Earth's atmosphere scatters blue light, making it look yellow from the surface.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What stellar classification is the Sun?",
+        "answer": "G-type (yellow dwarf)",
+        "distractors": [
+          "M-type red dwarf",
+          "K-type orange dwarf",
+          "O-type blue giant"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A G-type main-sequence star is informally called what?",
+        "answer": "Yellow dwarf",
+        "distractors": [
+          "Red giant",
+          "Blue star",
+          "White dwarf"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Sun is a red dwarf star?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Sun is a G-type main-sequence star, also called a yellow ___.",
+        "answer": "dwarf",
+        "distractors": [
+          "giant",
+          "supernova",
+          "pulsar"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sun",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A blazing yellow-white sphere with solar flares erupting from its surface, surrounded by a glowing corona in black space.",
+    "tags": [
+      "sun",
+      "G-type",
+      "yellow dwarf",
+      "star",
+      "stellar classification"
+    ]
+  },
+  {
+    "id": "space-sun-composition",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "stars_galaxies",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "stars_galaxies",
+    "categoryL3": "",
+    "statement": "The Sun is composed of approximately 73% hydrogen and 25% helium by mass.",
+    "quizQuestion": "What is the most abundant element in the Sun by mass?",
+    "correctAnswer": "Hydrogen",
+    "distractors": [
+      "Helium",
+      "Oxygen",
+      "Carbon",
+      "Iron",
+      "Nitrogen",
+      "Neon",
+      "Silicon",
+      "Lithium"
+    ],
+    "acceptableAnswers": [
+      "hydrogen",
+      "H",
+      "hydrogen gas"
+    ],
+    "explanation": "The Sun is about 73% hydrogen and 25% helium. Nuclear fusion in its core converts hydrogen to helium, releasing the energy that powers our solar system.",
+    "wowFactor": "Every second, the Sun fuses 620 million tonnes of hydrogen into helium — the equivalent energy of billions of nuclear bombs.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the Sun's most abundant element?",
+        "answer": "Hydrogen",
+        "distractors": [
+          "Helium",
+          "Oxygen",
+          "Carbon"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which star is approximately 73% hydrogen by mass?",
+        "answer": "The Sun",
+        "distractors": [
+          "Proxima Centauri",
+          "Sirius",
+          "Betelgeuse"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Helium is the most abundant element in the Sun by mass?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Sun is approximately 73% ___ by mass.",
+        "answer": "hydrogen",
+        "distractors": [
+          "helium",
+          "oxygen",
+          "carbon"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sun",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section diagram of the Sun showing its core glowing bright white, surrounded by layers in yellow and orange.",
+    "tags": [
+      "sun",
+      "hydrogen",
+      "helium",
+      "composition",
+      "nuclear fusion"
+    ]
+  },
+  {
+    "id": "space-sun-center",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "stars_galaxies",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "stars_galaxies",
+    "categoryL3": "",
+    "statement": "The Sun contains over 99.8% of the total mass of the solar system.",
+    "quizQuestion": "What percentage of the solar system's mass does the Sun contain?",
+    "correctAnswer": "Over 99.8%",
+    "distractors": [
+      "About 90%",
+      "About 75%",
+      "About 50%",
+      "About 85%",
+      "About 95%",
+      "Exactly 100%",
+      "About 60%",
+      "About 70%"
+    ],
+    "acceptableAnswers": [
+      "99.8%",
+      "over 99%",
+      "almost all of it",
+      "more than 99%"
+    ],
+    "explanation": "The Sun's mass is 1.989 × 10³⁰ kg — about 333,000 times Earth's mass. All planets, moons, asteroids, and comets combined make up less than 0.2% of the solar system's total mass.",
+    "wowFactor": "Jupiter, the largest planet, contains 2.5x more mass than all other planets combined — but it's still less than 0.1% of the Sun's mass.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What fraction of the solar system's mass does the Sun hold?",
+        "answer": "Over 99.8%",
+        "distractors": [
+          "About 90%",
+          "About 75%",
+          "About 95%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which object contains over 99.8% of all mass in the solar system?",
+        "answer": "The Sun",
+        "distractors": [
+          "Jupiter",
+          "Saturn",
+          "The asteroid belt"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Sun contains over 99% of the solar system's mass?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Sun contains over ___% of all mass in the solar system.",
+        "answer": "99",
+        "distractors": [
+          "90",
+          "75",
+          "50"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sun",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A scale comparison showing a massive glowing Sun next to tiny dots representing all the planets of the solar system.",
+    "tags": [
+      "sun",
+      "solar system",
+      "mass",
+      "gravity",
+      "center"
+    ]
+  },
+  {
+    "id": "space-copernicus-heliocentrism",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "categoryL3": "",
+    "statement": "Nicolaus Copernicus proposed the heliocentric model — that planets orbit the Sun, not Earth.",
+    "quizQuestion": "What astronomical model did Copernicus propose?",
+    "correctAnswer": "Heliocentric model",
+    "distractors": [
+      "Geocentric model",
+      "Tychonic model",
+      "Ptolemaic model",
+      "Flat Earth model",
+      "Nebular hypothesis",
+      "Steady state model",
+      "Infinite universe model",
+      "Atomic solar model"
+    ],
+    "acceptableAnswers": [
+      "heliocentric",
+      "heliocentrism",
+      "Sun-centered model",
+      "sun is the center"
+    ],
+    "explanation": "In 1543, Copernicus published 'De Revolutionibus,' proposing the Sun is the center of the solar system. This replaced the ancient geocentric (Earth-centered) model dominant since Ptolemy.",
+    "wowFactor": "Copernicus strategically delayed publishing his model until he was on his deathbed in 1543 — he feared the Church's reaction.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What model did Copernicus propose for the solar system?",
+        "answer": "Heliocentric model",
+        "distractors": [
+          "Geocentric model",
+          "Tychonic model",
+          "Ptolemaic model"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who first proposed that planets orbit the Sun, not Earth?",
+        "answer": "Nicolaus Copernicus",
+        "distractors": [
+          "Galileo Galilei",
+          "Tycho Brahe",
+          "Claudius Ptolemy"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Copernicus proposed the geocentric (Earth-centered) model?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Copernicus proposed the ___ model, with the Sun at the center.",
+        "answer": "heliocentric",
+        "distractors": [
+          "geocentric",
+          "tychonic",
+          "ptolemaic"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nicolaus_Copernicus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A diagram of the solar system with the Sun at center and concentric circles representing planetary orbits, drawn in Renaissance-era ink.",
+    "tags": [
+      "copernicus",
+      "heliocentrism",
+      "solar system",
+      "astronomy history",
+      "planets"
+    ]
+  },
+  {
+    "id": "space-copernicus-book",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "categoryL3": "",
+    "statement": "Copernicus published his heliocentric theory in the book 'De Revolutionibus Orbium Coelestium' in 1543.",
+    "quizQuestion": "In what year did Copernicus publish his heliocentric theory?",
+    "correctAnswer": "1543",
+    "distractors": [
+      "1609",
+      "1687",
+      "1504",
+      "1572",
+      "1600",
+      "1620",
+      "1543",
+      "1519"
+    ],
+    "acceptableAnswers": [
+      "1543",
+      "fifteen forty-three"
+    ],
+    "explanation": "'De Revolutionibus Orbium Coelestium' (On the Revolutions of the Celestial Spheres) was published in 1543, the same year Copernicus died. It laid the groundwork for the Scientific Revolution.",
+    "wowFactor": "Copernicus's book was not banned by the Catholic Church until 1616 — 73 years after publication — triggered largely by Galileo's more aggressive defense of the model.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "When did Copernicus publish his heliocentric theory?",
+        "answer": "1543",
+        "distractors": [
+          "1609",
+          "1687",
+          "1519"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What was the name of Copernicus's 1543 heliocentric book?",
+        "answer": "De Revolutionibus",
+        "distractors": [
+          "Principia Mathematica",
+          "Astronomia Nova",
+          "Almagest"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Copernicus published his heliocentric theory in 1543?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Copernicus published 'De Revolutionibus' in ___, the year of his death.",
+        "answer": "1543",
+        "distractors": [
+          "1609",
+          "1519",
+          "1600"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/De_revolutionibus_orbium_coelestium",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An aged leather-bound book open to a circular diagram of planetary orbits with the Sun at center, printed in Latin.",
+    "tags": [
+      "copernicus",
+      "de revolutionibus",
+      "1543",
+      "heliocentrism",
+      "scientific revolution"
+    ]
+  },
+  {
+    "id": "space-copernicus-nationality",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "cosmology_universe",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology_universe",
+    "categoryL3": "",
+    "statement": "Nicolaus Copernicus was a Polish mathematician and astronomer born in 1473.",
+    "quizQuestion": "What was Copernicus's nationality?",
+    "correctAnswer": "Polish",
+    "distractors": [
+      "German",
+      "Italian",
+      "Danish",
+      "Czech",
+      "French",
+      "English",
+      "Dutch",
+      "Austrian"
+    ],
+    "acceptableAnswers": [
+      "Polish",
+      "Poland",
+      "from Poland"
+    ],
+    "explanation": "Copernicus was born in Royal Prussia (now Poland) in 1473. He was a polymath: astronomer, mathematician, physician, economist, and diplomat.",
+    "wowFactor": "Copernicus's hometown, Torun, still holds an annual festival in his honor — and his face was on the Polish 1,000 zloty banknote.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What nationality was Nicolaus Copernicus?",
+        "answer": "Polish",
+        "distractors": [
+          "German",
+          "Italian",
+          "Danish"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which famous astronomer was born in Poland in 1473?",
+        "answer": "Nicolaus Copernicus",
+        "distractors": [
+          "Johannes Kepler",
+          "Tycho Brahe",
+          "Galileo Galilei"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Copernicus was born in Italy?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Nicolaus Copernicus was a ___ astronomer born in 1473.",
+        "answer": "Polish",
+        "distractors": [
+          "German",
+          "Italian",
+          "Danish"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 4,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nicolaus_Copernicus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A portrait of a man in Renaissance-era scholar's robes holding a small model of the solar system, set against a medieval European town.",
+    "tags": [
+      "copernicus",
+      "polish",
+      "astronomer",
+      "history of science",
+      "1473"
+    ]
+  },
+  {
+    "id": "space-apollo11-landing",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "missions_spacecraft",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "missions_spacecraft",
+    "categoryL3": "",
+    "statement": "Apollo 11 landed on the Moon in the Sea of Tranquility on July 20, 1969.",
+    "quizQuestion": "Where on the Moon did Apollo 11 land?",
+    "correctAnswer": "Sea of Tranquility",
+    "distractors": [
+      "Sea of Serenity",
+      "Ocean of Storms",
+      "Sea of Clouds",
+      "Fra Mauro",
+      "Taurus-Littrow",
+      "Descartes Crater",
+      "Hadley Rille",
+      "Sea of Rains"
+    ],
+    "acceptableAnswers": [
+      "Sea of Tranquility",
+      "Mare Tranquillitatis",
+      "Tranquility Base"
+    ],
+    "explanation": "Apollo 11's lunar module 'Eagle' landed at Tranquility Base in the Sea of Tranquility on July 20, 1969. Armstrong radioed: 'The Eagle has landed.'",
+    "wowFactor": "The Sea of Tranquility is not actually a sea — it's a vast ancient lava plain formed 3.9 billion years ago, giving the Moon its dark patches visible from Earth.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which location on the Moon did Apollo 11 touch down?",
+        "answer": "Sea of Tranquility",
+        "distractors": [
+          "Ocean of Storms",
+          "Sea of Serenity",
+          "Fra Mauro"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which Apollo mission landed in the Sea of Tranquility?",
+        "answer": "Apollo 11",
+        "distractors": [
+          "Apollo 12",
+          "Apollo 14",
+          "Apollo 17"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Apollo 11 landed in the Ocean of Storms?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Apollo 11 landed at Tranquility Base in the Sea of ___.",
+        "answer": "Tranquility",
+        "distractors": [
+          "Serenity",
+          "Storms",
+          "Clouds"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Apollo_11",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A triangular lunar lander with gold foil legs touching down on a pale grey lunar plain, leaving a small dust cloud.",
+    "tags": [
+      "apollo 11",
+      "sea of tranquility",
+      "moon landing",
+      "1969",
+      "eagle has landed"
+    ]
+  },
+  {
+    "id": "space-apollo11-crew",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "missions_spacecraft",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "missions_spacecraft",
+    "categoryL3": "",
+    "statement": "The Apollo 11 crew was Neil Armstrong, Buzz Aldrin, and Michael Collins.",
+    "quizQuestion": "Who were the three crew members of Apollo 11?",
+    "correctAnswer": "Armstrong, Aldrin, Collins",
+    "distractors": [
+      "Armstrong, Glenn, Lovell",
+      "Aldrin, Shepard, Bean",
+      "Armstrong, Young, Conrad",
+      "Collins, Cernan, Anders",
+      "Gagarin, Aldrin, Collins",
+      "Armstrong, Aldrin, Gordon",
+      "Glenn, Collins, Lovell",
+      "Shepard, Armstrong, Bean"
+    ],
+    "acceptableAnswers": [
+      "Armstrong, Aldrin, Collins",
+      "Neil Armstrong, Buzz Aldrin, Michael Collins"
+    ],
+    "explanation": "Apollo 11 crew: Neil Armstrong (commander), Buzz Aldrin (lunar module pilot), and Michael Collins (command module pilot, orbited above while Armstrong and Aldrin walked on the Moon).",
+    "wowFactor": "Michael Collins was the only person in history to be simultaneously closer to the Moon than any human AND farther from all other humans than anyone has ever been.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who were the three Apollo 11 astronauts?",
+        "answer": "Armstrong, Aldrin, Collins",
+        "distractors": [
+          "Armstrong, Glenn, Lovell",
+          "Aldrin, Shepard, Bean",
+          "Collins, Cernan, Anders"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which astronaut piloted Apollo 11's command module while Armstrong and Aldrin walked on the Moon?",
+        "answer": "Michael Collins",
+        "distractors": [
+          "John Glenn",
+          "Pete Conrad",
+          "Jim Lovell"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: John Glenn was part of the Apollo 11 crew?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Apollo 11 crew was Armstrong, Aldrin, and ___.",
+        "answer": "Collins",
+        "distractors": [
+          "Glenn",
+          "Shepard",
+          "Conrad"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Apollo_11",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Three astronauts in white spacesuits posing in front of the American flag, with the lunar surface and black sky behind them.",
+    "tags": [
+      "apollo 11",
+      "neil armstrong",
+      "buzz aldrin",
+      "michael collins",
+      "moon mission"
+    ]
+  },
+  {
+    "id": "space-apollo11-duration",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "missions_spacecraft",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "missions_spacecraft",
+    "categoryL3": "",
+    "statement": "The Apollo 11 mission lasted 8 days, 3 hours, 18 minutes from launch to splashdown.",
+    "quizQuestion": "How many days did the full Apollo 11 mission take?",
+    "correctAnswer": "8 days",
+    "distractors": [
+      "3 days",
+      "5 days",
+      "12 days",
+      "14 days",
+      "21 days",
+      "6 days",
+      "10 days",
+      "30 days"
+    ],
+    "acceptableAnswers": [
+      "8 days",
+      "eight days",
+      "about 8 days",
+      "just over 8 days"
+    ],
+    "explanation": "Apollo 11 launched July 16 and splashed down July 24, 1969 — a total duration of 8 days, 3 hours, and 18 minutes. The crew spent 21.5 hours on the lunar surface.",
+    "wowFactor": "The astronauts were quarantined for 21 days after returning, in case they brought back Moon germs — even though we knew the Moon was lifeless.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long did the Apollo 11 mission take from launch to splashdown?",
+        "answer": "8 days",
+        "distractors": [
+          "3 days",
+          "5 days",
+          "14 days"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which moon mission lasted approximately 8 days?",
+        "answer": "Apollo 11",
+        "distractors": [
+          "Apollo 8",
+          "Apollo 13",
+          "Apollo 17"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Apollo 11 took about 8 days from launch to splashdown?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Apollo 11 lasted ___ days from launch on July 16 to splashdown July 24.",
+        "answer": "8",
+        "distractors": [
+          "5",
+          "12",
+          "14"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Apollo_11",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A timeline graphic showing the phases of Apollo 11: launch, translunar coast, lunar orbit, landing, return, and ocean splashdown.",
+    "tags": [
+      "apollo 11",
+      "mission duration",
+      "moon mission",
+      "1969",
+      "nasa"
+    ]
+  },
+  {
+    "id": "space-jupiter-largest",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Jupiter is the largest planet in the solar system, with a mass greater than all other planets combined.",
+    "quizQuestion": "Which planet is the largest in our solar system?",
+    "correctAnswer": "Jupiter",
+    "distractors": [
+      "Saturn",
+      "Uranus",
+      "Neptune",
+      "Earth",
+      "Mars",
+      "Venus",
+      "Mercury",
+      "Pluto"
+    ],
+    "acceptableAnswers": [
+      "jupiter",
+      "planet Jupiter"
+    ],
+    "explanation": "Jupiter has a diameter of 142,984 km — over 11 times Earth's — and a mass 2.5x that of all other planets combined. It is a gas giant composed mostly of hydrogen and helium.",
+    "wowFactor": "If Jupiter were hollow, you could fit over 1,300 Earths inside it. Yet it's still not massive enough to become a star — that would require roughly 80x more mass.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which is the largest planet in our solar system?",
+        "answer": "Jupiter",
+        "distractors": [
+          "Saturn",
+          "Uranus",
+          "Neptune"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the planet with the most mass in our solar system?",
+        "answer": "Jupiter",
+        "distractors": [
+          "Saturn",
+          "Uranus",
+          "Neptune"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Saturn is the largest planet in the solar system?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ is the largest planet in the solar system.",
+        "answer": "Jupiter",
+        "distractors": [
+          "Saturn",
+          "Neptune",
+          "Uranus"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 6,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Jupiter",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Jupiter's massive orange and cream banded surface fills the frame, with a small Earth shown to scale as a tiny blue dot nearby.",
+    "tags": [
+      "jupiter",
+      "largest planet",
+      "gas giant",
+      "solar system",
+      "size"
+    ]
+  },
+  {
+    "id": "space-jupiter-great-red-spot",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Jupiter's Great Red Spot is a storm that has been raging for at least 350 years.",
+    "quizQuestion": "What is Jupiter's Great Red Spot?",
+    "correctAnswer": "A giant storm",
+    "distractors": [
+      "A volcano",
+      "A crater",
+      "An ocean",
+      "A mountain range",
+      "A chemical stain",
+      "A magnetic pole",
+      "A moon shadow",
+      "A dust storm"
+    ],
+    "acceptableAnswers": [
+      "a storm",
+      "giant storm",
+      "massive storm",
+      "anticyclone",
+      "persistent storm"
+    ],
+    "explanation": "The Great Red Spot is an anticyclone storm wider than Earth that has been observed since the 17th century. It has been shrinking in recent decades but remains the most iconic feature of Jupiter.",
+    "wowFactor": "The Great Red Spot winds reach 432 km/h — over four times the speed of Earth's most powerful hurricanes.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is Jupiter's Great Red Spot?",
+        "answer": "A giant storm",
+        "distractors": [
+          "A volcano",
+          "A crater",
+          "A chemical stain"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which planet is famous for its Great Red Spot?",
+        "answer": "Jupiter",
+        "distractors": [
+          "Saturn",
+          "Mars",
+          "Neptune"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Jupiter's Great Red Spot is a massive storm?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Jupiter's Great Red Spot is a ___ that has raged for over 350 years.",
+        "answer": "storm",
+        "distractors": [
+          "volcano",
+          "crater",
+          "ocean"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Great_Red_Spot",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A close-up of Jupiter's swirling orange and white cloud bands with a dramatic deep-red oval storm dominating the center.",
+    "tags": [
+      "jupiter",
+      "great red spot",
+      "storm",
+      "gas giant",
+      "solar system"
+    ]
+  },
+  {
+    "id": "space-jupiter-moons-count",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "planets_moons",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "planets_moons",
+    "categoryL3": "",
+    "statement": "Jupiter has the most confirmed moons of any planet, with over 90 discovered.",
+    "quizQuestion": "Which planet has the most moons in our solar system?",
+    "correctAnswer": "Jupiter",
+    "distractors": [
+      "Saturn",
+      "Uranus",
+      "Neptune",
+      "Mars",
+      "Earth",
+      "Venus",
+      "Mercury",
+      "Pluto"
+    ],
+    "acceptableAnswers": [
+      "jupiter",
+      "planet Jupiter"
+    ],
+    "explanation": "As of 2023, Jupiter has 95 confirmed moons, the most of any planet. Saturn is a close second. The four largest (Galilean moons) were discovered by Galileo in 1610.",
+    "wowFactor": "Most of Jupiter's moons are tiny captured asteroids less than 10 km wide — the solar system's giant planets act like gravitational vacuum cleaners.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which planet in our solar system has the most moons?",
+        "answer": "Jupiter",
+        "distractors": [
+          "Saturn",
+          "Uranus",
+          "Neptune"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many confirmed moons does Jupiter have?",
+        "answer": "Over 90",
+        "distractors": [
+          "Over 60",
+          "About 30",
+          "Exactly 12"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Saturn has more moons than Jupiter?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ has the most confirmed moons of any planet, with over 90.",
+        "answer": "Jupiter",
+        "distractors": [
+          "Saturn",
+          "Uranus",
+          "Neptune"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Moons_of_Jupiter",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Jupiter's orange-banded surface surrounded by a crowd of moons at various distances, some large and others tiny specks.",
+    "tags": [
+      "jupiter",
+      "moons",
+      "galilean moons",
+      "solar system",
+      "most moons"
+    ]
+  },
+  {
+    "id": "space-gagarin-first-human-space",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "satellites_tech",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "satellites_tech",
+    "categoryL3": "",
+    "statement": "Yuri Gagarin became the first human in space on April 12, 1961, orbiting Earth aboard Vostok 1.",
+    "quizQuestion": "Who was the first human to travel to space?",
+    "correctAnswer": "Yuri Gagarin",
+    "distractors": [
+      "Neil Armstrong",
+      "Buzz Aldrin",
+      "Alan Shepard",
+      "John Glenn",
+      "Valentina Tereshkova",
+      "Gherman Titov",
+      "Walter Schirra",
+      "Scott Carpenter"
+    ],
+    "acceptableAnswers": [
+      "Yuri Gagarin",
+      "Gagarin",
+      "Yuri Alekseyevich Gagarin"
+    ],
+    "explanation": "On April 12, 1961, Soviet cosmonaut Yuri Gagarin completed a 108-minute orbital flight aboard Vostok 1, becoming the first human to journey into space.",
+    "wowFactor": "Gagarin reportedly said 'Poyekhali!' (Let's go!) at launch. The date April 12 is now celebrated as Yuri's Night — a global space exploration holiday.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who was the first human to travel in space?",
+        "answer": "Yuri Gagarin",
+        "distractors": [
+          "Neil Armstrong",
+          "Alan Shepard",
+          "John Glenn"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What was the name of Yuri Gagarin's spacecraft?",
+        "answer": "Vostok 1",
+        "distractors": [
+          "Sputnik 1",
+          "Soyuz 1",
+          "Mercury Atlas"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Alan Shepard was the first human in space?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Yuri Gagarin became the first human in space in ___.",
+        "answer": "1961",
+        "distractors": [
+          "1957",
+          "1963",
+          "1965"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Yuri_Gagarin",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A young man in a Soviet-era spacesuit helmet smiling broadly, with a round orange spacecraft capsule visible behind him.",
+    "tags": [
+      "yuri gagarin",
+      "vostok 1",
+      "first human in space",
+      "1961",
+      "soviet space program"
+    ]
+  },
+  {
+    "id": "space-gagarin-flight-duration",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "satellites_tech",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "satellites_tech",
+    "categoryL3": "",
+    "statement": "Gagarin's historic spaceflight lasted 108 minutes, completing one full orbit of Earth.",
+    "quizQuestion": "How long was Gagarin's first spaceflight?",
+    "correctAnswer": "108 minutes",
+    "distractors": [
+      "45 minutes",
+      "3 hours",
+      "6 hours",
+      "24 hours",
+      "55 minutes",
+      "2 hours 30 minutes",
+      "72 minutes",
+      "180 minutes"
+    ],
+    "acceptableAnswers": [
+      "108 minutes",
+      "about 108 minutes",
+      "under 2 hours",
+      "one orbit"
+    ],
+    "explanation": "Vostok 1 completed a single orbit of Earth in 108 minutes. Gagarin reached an altitude of 327 km — and landed separately from his capsule, ejecting and parachuting down.",
+    "wowFactor": "The USSR kept secret for years that Gagarin ejected and parachuted separately — FAI rules required the pilot to land with the craft. They falsely reported he stayed inside.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long did Gagarin's first spaceflight last?",
+        "answer": "108 minutes",
+        "distractors": [
+          "45 minutes",
+          "3 hours",
+          "24 hours"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A 108-minute spaceflight completing one Earth orbit was made by whom?",
+        "answer": "Yuri Gagarin",
+        "distractors": [
+          "Alan Shepard",
+          "John Glenn",
+          "Valentina Tereshkova"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Gagarin's spaceflight lasted 108 minutes?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Gagarin's spaceflight completed one orbit of Earth in ___ minutes.",
+        "answer": "108",
+        "distractors": [
+          "45",
+          "180",
+          "72"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vostok_1",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A spherical capsule streaking through space above a curved blue-and-white Earth, with a cosmonaut's gloved hand visible through a small porthole.",
+    "tags": [
+      "yuri gagarin",
+      "vostok 1",
+      "108 minutes",
+      "spaceflight",
+      "orbit"
+    ]
+  },
+  {
+    "id": "space-gagarin-fate",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "satellites_tech",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "satellites_tech",
+    "categoryL3": "",
+    "statement": "Yuri Gagarin died in a jet training crash in 1968, aged 34.",
+    "quizQuestion": "How did Yuri Gagarin die?",
+    "correctAnswer": "Jet training crash",
+    "distractors": [
+      "Rocket explosion",
+      "Parachute failure",
+      "Space capsule fire",
+      "Car accident",
+      "Heart attack",
+      "Capsule reentry failure",
+      "Decompression in space",
+      "Falls from aircraft"
+    ],
+    "acceptableAnswers": [
+      "jet crash",
+      "plane crash",
+      "training accident",
+      "aircraft crash",
+      "MiG crash"
+    ],
+    "explanation": "On March 27, 1968, Gagarin died in the crash of a MiG-15 training jet near Moscow. The cause has never been definitively determined. He was 34 years old.",
+    "wowFactor": "The Soviet Union declared a national day of mourning after Gagarin's death. His ashes were interred in the Kremlin Wall — one of the highest honors in the USSR.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How did Yuri Gagarin die in 1968?",
+        "answer": "Jet training crash",
+        "distractors": [
+          "Rocket explosion",
+          "Parachute failure",
+          "Car accident"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What year did Yuri Gagarin die?",
+        "answer": "1968",
+        "distractors": [
+          "1971",
+          "1975",
+          "1982"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Gagarin died in a spaceflight accident?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Gagarin died in 1968 in a ___ training accident.",
+        "answer": "jet",
+        "distractors": [
+          "parachute",
+          "rocket",
+          "car"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Yuri_Gagarin",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Describes death of historical figure.",
+    "visualDescription": "A Soviet-era jet aircraft in a steep spin toward a snowy Russian forest, with a memorial wreath superimposed.",
+    "tags": [
+      "yuri gagarin",
+      "death",
+      "1968",
+      "jet crash",
+      "cosmonaut"
+    ]
+  },
+  {
+    "id": "space-proxima-nearest-star",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "stars_galaxies",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "stars_galaxies",
+    "categoryL3": "",
+    "statement": "Proxima Centauri is the nearest star to the Sun, at about 4.24 light-years away.",
+    "quizQuestion": "Which star is closest to our Sun?",
+    "correctAnswer": "Proxima Centauri",
+    "distractors": [
+      "Alpha Centauri A",
+      "Sirius",
+      "Barnard's Star",
+      "Betelgeuse",
+      "Vega",
+      "Rigel",
+      "Wolf 359",
+      "Tau Ceti"
+    ],
+    "acceptableAnswers": [
+      "Proxima Centauri",
+      "Proxima",
+      "proxima centauri b"
+    ],
+    "explanation": "Proxima Centauri is a red dwarf star 4.24 light-years from Earth, part of the Alpha Centauri triple-star system. It's too faint to see with the naked eye despite being our nearest neighbor.",
+    "wowFactor": "At the speed of the fastest spacecraft ever launched (Parker Solar Probe at 692,000 km/h), it would still take over 6,000 years to reach Proxima Centauri.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the closest star to our Sun?",
+        "answer": "Proxima Centauri",
+        "distractors": [
+          "Sirius",
+          "Barnard's Star",
+          "Alpha Centauri A"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Approximately how far is Proxima Centauri from our Sun?",
+        "answer": "4.24 light-years",
+        "distractors": [
+          "1 light-year",
+          "10 light-years",
+          "100 light-years"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Sirius is the nearest star to our Sun?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ Centauri is the nearest star to our Sun.",
+        "answer": "Proxima",
+        "distractors": [
+          "Alpha",
+          "Beta",
+          "Gamma"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Proxima_Centauri",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A dim reddish star glowing faintly in a field of bright stars, with a diagram showing its distance from Earth.",
+    "tags": [
+      "proxima centauri",
+      "nearest star",
+      "red dwarf",
+      "light-years",
+      "alpha centauri"
+    ]
+  },
+  {
+    "id": "space-proxima-red-dwarf",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "stars_galaxies",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "stars_galaxies",
+    "categoryL3": "",
+    "statement": "Proxima Centauri is a red dwarf star — the most common type of star in the Milky Way.",
+    "quizQuestion": "What stellar classification is Proxima Centauri?",
+    "correctAnswer": "Red dwarf",
+    "distractors": [
+      "Yellow dwarf",
+      "Blue giant",
+      "White dwarf",
+      "Neutron star",
+      "Red giant",
+      "Orange dwarf",
+      "Brown dwarf",
+      "Black hole"
+    ],
+    "acceptableAnswers": [
+      "red dwarf",
+      "M-type star",
+      "M dwarf",
+      "M-class star"
+    ],
+    "explanation": "Proxima Centauri is an M-type red dwarf with about 12% of the Sun's mass. Red dwarfs are the most abundant stars in the galaxy but too dim to see with the naked eye.",
+    "wowFactor": "Red dwarfs like Proxima Centauri can burn for trillions of years — far longer than the current age of the universe (13.8 billion years).",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What stellar classification is Proxima Centauri?",
+        "answer": "Red dwarf",
+        "distractors": [
+          "Yellow dwarf",
+          "Blue giant",
+          "White dwarf"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The nearest star to the Sun, Proxima Centauri, is what type of star?",
+        "answer": "Red dwarf",
+        "distractors": [
+          "Yellow dwarf",
+          "Red giant",
+          "Neutron star"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Proxima Centauri is a red dwarf star?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Proxima Centauri is a red ___, the most common type of star in the Milky Way.",
+        "answer": "dwarf",
+        "distractors": [
+          "giant",
+          "supernova",
+          "pulsar"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Proxima_Centauri",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A small dim red star surrounded by swirling magnetic field lines, shown against a black star field.",
+    "tags": [
+      "proxima centauri",
+      "red dwarf",
+      "M-type",
+      "stellar classification",
+      "milky way"
+    ]
+  },
+  {
+    "id": "space-proxima-planet",
+    "type": "knowledge",
+    "domain": "Space & Astronomy",
+    "subdomain": "stars_galaxies",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "stars_galaxies",
+    "categoryL3": "",
+    "statement": "Proxima Centauri b is an exoplanet in the habitable zone of Proxima Centauri, discovered in 2016.",
+    "quizQuestion": "What was discovered orbiting Proxima Centauri in 2016?",
+    "correctAnswer": "An exoplanet",
+    "distractors": [
+      "A second star",
+      "A black hole",
+      "An asteroid belt",
+      "A comet",
+      "A moon",
+      "A nebula",
+      "A pulsar",
+      "A neutron star"
+    ],
+    "acceptableAnswers": [
+      "exoplanet",
+      "planet",
+      "Proxima b",
+      "Proxima Centauri b"
+    ],
+    "explanation": "Proxima Centauri b was discovered in 2016, orbiting in the habitable zone of its star. At 4.24 light-years, it is the closest known exoplanet to Earth and a target for future exploration.",
+    "wowFactor": "Proxima Centauri b is close enough that Breakthrough Starshot proposed sending laser-propelled probes to photograph it within our lifetimes — arriving in ~20 years at 20% the speed of light.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was found orbiting Proxima Centauri in 2016?",
+        "answer": "An exoplanet",
+        "distractors": [
+          "A second star",
+          "An asteroid belt",
+          "A comet"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the name of the exoplanet orbiting Proxima Centauri?",
+        "answer": "Proxima Centauri b",
+        "distractors": [
+          "Kepler-452b",
+          "TRAPPIST-1e",
+          "HD 209458 b"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: An exoplanet was discovered orbiting Proxima Centauri in 2016?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Proxima Centauri ___ is the nearest known exoplanet to Earth.",
+        "answer": "b",
+        "distractors": [
+          "c",
+          "d",
+          "e"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Proxima_Centauri_b",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A rocky exoplanet with a pale red sky, orbiting very close to a dim red star, with another star glowing in the distance.",
+    "tags": [
+      "proxima centauri b",
+      "exoplanet",
+      "habitable zone",
+      "nearest exoplanet",
+      "breakthrough starshot"
+    ]
+  }
+]

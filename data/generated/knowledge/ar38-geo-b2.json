@@ -1,0 +1,2395 @@
+[
+  {
+    "id": "geo-egypt-nile-river",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "rivers_water",
+    "categoryL1": "Geography",
+    "categoryL2": "rivers_water",
+    "categoryL3": "",
+    "statement": "The Nile River, flowing northward through Egypt into the Mediterranean Sea, is approximately 6,650 km long — the longest river in Africa.",
+    "quizQuestion": "In which direction does the Nile River flow through Egypt?",
+    "correctAnswer": "Northward",
+    "distractors": [
+      "Southward",
+      "Eastward",
+      "Westward",
+      "Northeast",
+      "Southwest",
+      "Clockwise",
+      "Inland to a lake",
+      "Southeast"
+    ],
+    "acceptableAnswers": [
+      "Northward",
+      "North",
+      "From south to north"
+    ],
+    "explanation": "The Nile is unusual among major rivers in flowing from south to north — from the highlands of East Africa toward the Mediterranean. Ancient Egyptians called the Nile 'Iteru' meaning 'great river'. Its annual flooding deposited rich silt that made Egyptian agriculture possible.",
+    "wowFactor": "Ancient Egyptians considered 'north' to mean 'downstream' rather than a compass direction — so on their maps, south was literally 'up' because that's where the Nile's source lay.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Into which sea does the Nile River empty after flowing through Egypt?",
+        "answer": "Mediterranean Sea",
+        "distractors": [
+          "Red Sea",
+          "Arabian Sea",
+          "Black Sea"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Approximately how long is the Nile River in kilometers?",
+        "answer": "6,650 km",
+        "distractors": [
+          "4,000 km",
+          "10,000 km",
+          "2,500 km"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Nile River flows from north to south through Egypt?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "It flows east to west",
+          "It changes direction seasonally"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Nile's annual ___ deposited rich silt that made Egyptian farming possible.",
+        "answer": "flooding",
+        "distractors": [
+          "drought",
+          "erosion",
+          "tides"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nile",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A top-down map of Egypt with the Nile glowing blue as it winds northward into a delta, desert on each side, pixel art style.",
+    "tags": [
+      "Egypt",
+      "Nile",
+      "river",
+      "Africa",
+      "geography"
+    ]
+  },
+  {
+    "id": "geo-egypt-great-pyramid",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "landmarks",
+    "categoryL1": "Geography",
+    "categoryL2": "landmarks",
+    "categoryL3": "",
+    "statement": "The Great Pyramid of Giza, built around 2560 BC for Pharaoh Khufu, was the tallest human-made structure in the world for over 3,800 years.",
+    "quizQuestion": "For how long was the Great Pyramid the tallest human-made structure?",
+    "correctAnswer": "Over 3,800 years",
+    "distractors": [
+      "100 years",
+      "500 years",
+      "1,000 years",
+      "2,000 years",
+      "200 years",
+      "50 years",
+      "300 years",
+      "4,500 years"
+    ],
+    "acceptableAnswers": [
+      "Over 3,800 years",
+      "3,800 years",
+      "Nearly 4,000 years"
+    ],
+    "explanation": "The Great Pyramid stood 146.5 meters tall when completed. It held the record as the tallest structure until England's Lincoln Cathedral surpassed it around 1311 AD. It is the only one of the Seven Wonders of the Ancient World still largely intact.",
+    "wowFactor": "The Great Pyramid was built with such precision that its four sides align almost perfectly with the cardinal directions — with an error of only 0.05 degrees. Ancient Egyptians did this without GPS.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which pharaoh was the Great Pyramid of Giza built for?",
+        "answer": "Khufu",
+        "distractors": [
+          "Ramesses II",
+          "Tutankhamun",
+          "Cleopatra"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What structure surpassed the Great Pyramid's height around 1311 AD?",
+        "answer": "Lincoln Cathedral",
+        "distractors": [
+          "Notre-Dame",
+          "St. Paul's Cathedral",
+          "Cologne Cathedral"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Great Pyramid is the only Seven Wonders of the Ancient World still largely intact?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Two still exist",
+          "All seven still stand"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Great Pyramid's four sides align with cardinal directions with an error of only ___ degrees.",
+        "answer": "0.05",
+        "distractors": [
+          "5",
+          "0.5",
+          "10"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The Great Pyramid rising from the desert sands at sunset, a tiny human figure at the base for scale, pixel art style.",
+    "tags": [
+      "Egypt",
+      "pyramid",
+      "Giza",
+      "ancient wonder",
+      "Khufu"
+    ]
+  },
+  {
+    "id": "geo-egypt-sahara-coverage",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "deserts_climate",
+    "categoryL1": "Geography",
+    "categoryL2": "deserts_climate",
+    "categoryL3": "",
+    "statement": "About 90% of Egypt's land area is covered by the Sahara Desert, making it one of the world's most arid countries.",
+    "quizQuestion": "What percentage of Egypt is covered by the Sahara Desert?",
+    "correctAnswer": "About 90%",
+    "distractors": [
+      "20%",
+      "40%",
+      "60%",
+      "75%",
+      "50%",
+      "10%",
+      "30%",
+      "100%"
+    ],
+    "acceptableAnswers": [
+      "About 90%",
+      "90%",
+      "Roughly 90%"
+    ],
+    "explanation": "Egypt's habitable area is concentrated along the Nile River Valley and the Nile Delta, which together cover only about 4% of the country's land — yet support over 95% of Egypt's population. The rest is largely uninhabited desert.",
+    "wowFactor": "Egypt is one of the most extreme examples of population clustering on Earth — nearly 100 million people squeezed into a narrow green ribbon along the Nile, surrounded by vast empty desert.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What percentage of Egypt's population lives along the Nile Valley and Delta?",
+        "answer": "Over 95%",
+        "distractors": [
+          "50%",
+          "70%",
+          "30%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What fraction of Egypt's land area is actually habitable and populated?",
+        "answer": "About 4%",
+        "distractors": [
+          "50%",
+          "25%",
+          "10%"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: More than half of Egypt's land is covered by the Sahara Desert?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Only the southern part",
+          "It's mostly fertile land"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "About 90% of Egypt is ___ Desert, with most people living by the Nile.",
+        "answer": "Sahara",
+        "distractors": [
+          "Arabian",
+          "Sinai",
+          "Negev"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Egypt",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A satellite-view map of Egypt showing golden desert covering almost the entire country, with a thin green Nile ribbon cutting through, pixel art style.",
+    "tags": [
+      "Egypt",
+      "Sahara",
+      "desert",
+      "geography",
+      "Nile"
+    ]
+  },
+  {
+    "id": "geo-canada-second-largest",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "countries_borders",
+    "categoryL1": "Geography",
+    "categoryL2": "countries_borders",
+    "categoryL3": "",
+    "statement": "Canada is the second-largest country in the world by total area at 9.98 million km², after Russia, and has the world's longest coastline.",
+    "quizQuestion": "By total area, Canada is the world's second-largest country after what?",
+    "correctAnswer": "Russia",
+    "distractors": [
+      "United States",
+      "China",
+      "Australia",
+      "Brazil",
+      "India",
+      "Argentina",
+      "Kazakhstan",
+      "Antarctica"
+    ],
+    "acceptableAnswers": [
+      "Russia",
+      "The Russian Federation"
+    ],
+    "explanation": "Canada covers 9.98 million km² — larger than the US, China, or Australia. Despite its size, Canada's population is only about 40 million. It has the world's longest coastline at over 202,080 km, including all islands and inlets.",
+    "wowFactor": "Canada's coastline is so long that if you drove it at highway speed without stopping, it would take over 5 months of non-stop driving to complete the journey.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is Canada's total land area in square kilometers?",
+        "answer": "9.98 million km²",
+        "distractors": [
+          "3 million km²",
+          "17 million km²",
+          "5 million km²"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Canada has the world's longest what, stretching over 202,000 km?",
+        "answer": "Coastline",
+        "distractors": [
+          "River system",
+          "Highway network",
+          "Land border"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Canada is the largest country in the world by total area?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "It's tied with Russia",
+          "It depends on how you measure"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Canada is the second-largest country in the world, surpassed only by ___.",
+        "answer": "Russia",
+        "distractors": [
+          "China",
+          "United States",
+          "Australia"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Canada",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A world map with Canada highlighted in red maple leaf red, dwarfing its neighbors, the enormous coastline glowing blue, pixel art style.",
+    "tags": [
+      "Canada",
+      "geography",
+      "largest countries",
+      "area",
+      "coastline"
+    ]
+  },
+  {
+    "id": "geo-canada-provinces-territories",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "countries_borders",
+    "categoryL1": "Geography",
+    "categoryL2": "countries_borders",
+    "categoryL3": "",
+    "statement": "Canada is divided into 10 provinces and 3 territories, with Ontario being the most populous province and Nunavut being the largest territory by area.",
+    "quizQuestion": "How many provinces does Canada have?",
+    "correctAnswer": "10",
+    "distractors": [
+      "5",
+      "12",
+      "8",
+      "50",
+      "13",
+      "6",
+      "15",
+      "7"
+    ],
+    "acceptableAnswers": [
+      "10",
+      "Ten"
+    ],
+    "explanation": "Canada's 10 provinces are: Ontario, Quebec, British Columbia, Alberta, Manitoba, Saskatchewan, Nova Scotia, New Brunswick, Newfoundland and Labrador, and Prince Edward Island. Its 3 territories are Yukon, Northwest Territories, and Nunavut.",
+    "wowFactor": "Nunavut, Canada's newest and largest territory, was created in 1999 and is home to about 39,000 people — making it less populated than many small towns while being larger than Western Europe.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many territories does Canada have in addition to its 10 provinces?",
+        "answer": "3",
+        "distractors": [
+          "1",
+          "5",
+          "2"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is Canada's most populous province?",
+        "answer": "Ontario",
+        "distractors": [
+          "Quebec",
+          "British Columbia",
+          "Alberta"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Nunavut is Canada's largest territory by area?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Northwest Territories is larger",
+          "British Columbia is largest"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Canada is divided into 10 provinces and ___ territories.",
+        "answer": "3",
+        "distractors": [
+          "5",
+          "2",
+          "4"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Provinces_and_territories_of_Canada",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A map of Canada divided into 10 provinces and 3 territories, each labeled in a different pastel color, pixel art style.",
+    "tags": [
+      "Canada",
+      "provinces",
+      "territories",
+      "geography",
+      "Nunavut"
+    ]
+  },
+  {
+    "id": "geo-canada-maple-syrup",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "countries_borders",
+    "categoryL1": "Geography",
+    "categoryL2": "countries_borders",
+    "categoryL3": "",
+    "statement": "Canada produces about 70% of the world's maple syrup, with Quebec province responsible for over 90% of Canada's total maple syrup output.",
+    "quizQuestion": "What fraction of the world's maple syrup does Canada produce?",
+    "correctAnswer": "About 70%",
+    "distractors": [
+      "10%",
+      "30%",
+      "50%",
+      "20%",
+      "90%",
+      "5%",
+      "100%",
+      "40%"
+    ],
+    "acceptableAnswers": [
+      "About 70%",
+      "70%",
+      "Around 70 percent"
+    ],
+    "explanation": "Quebec dominates global maple syrup production. The maple leaf on Canada's flag reflects the cultural and economic importance of maple trees. Canada even maintains a 'strategic maple syrup reserve' — an actual stockpile managed to stabilize world maple syrup prices.",
+    "wowFactor": "Canada has a real 'strategic maple syrup reserve' — a massive warehouse in Quebec holding millions of pounds of maple syrup to stabilize global prices if a bad harvest hits.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which Canadian province produces over 90% of Canada's maple syrup?",
+        "answer": "Quebec",
+        "distractors": [
+          "Ontario",
+          "British Columbia",
+          "New Brunswick"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What unusual national reserve does Canada maintain to stabilize world prices?",
+        "answer": "Maple syrup reserve",
+        "distractors": [
+          "Oil reserve",
+          "Wheat reserve",
+          "Lumber reserve"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Canada produces the majority of the world's maple syrup?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "The US produces more",
+          "Production is equally split"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Canada maintains a strategic ___ reserve to manage world supply and prices.",
+        "answer": "maple syrup",
+        "distractors": [
+          "oil",
+          "timber",
+          "wheat"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Maple_syrup",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A towering warehouse in Quebec stacked floor-to-ceiling with barrels of maple syrup, a maple leaf flag visible outside, pixel art style.",
+    "tags": [
+      "Canada",
+      "maple syrup",
+      "Quebec",
+      "production",
+      "quirky fact"
+    ]
+  },
+  {
+    "id": "geo-japan-island-count",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "islands_oceans",
+    "categoryL1": "Geography",
+    "categoryL2": "islands_oceans",
+    "categoryL3": "",
+    "statement": "Japan is an archipelago of 14,125 islands, with four main islands — Honshu, Hokkaido, Kyushu, and Shikoku — making up over 97% of the total land area.",
+    "quizQuestion": "How many islands make up the Japanese archipelago?",
+    "correctAnswer": "14,125",
+    "distractors": [
+      "4",
+      "100",
+      "500",
+      "3,000",
+      "50",
+      "7,000",
+      "1,000",
+      "200"
+    ],
+    "acceptableAnswers": [
+      "14,125",
+      "Over 14,000",
+      "About 14,000"
+    ],
+    "explanation": "Japan's four main islands from north to south are Hokkaido, Honshu (largest, containing Tokyo and Kyoto), Shikoku, and Kyushu. In 2023, Japan officially recounted and updated its island total from 6,852 to 14,125 using more accurate mapping technology.",
+    "wowFactor": "In 2023, Japan doubled its official island count overnight — not because new islands appeared, but because improved satellite mapping revealed thousands of small islands that earlier surveys had missed.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which is the largest of Japan's four main islands?",
+        "answer": "Honshu",
+        "distractors": [
+          "Hokkaido",
+          "Kyushu",
+          "Shikoku"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What percentage of Japan's land area do its four main islands cover?",
+        "answer": "Over 97%",
+        "distractors": [
+          "50%",
+          "80%",
+          "60%"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Japan updated its official island count in 2023 using improved satellite mapping?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "The count has not changed since 1945",
+          "Japan's island count is classified"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Japan is an ___ made up of over 14,000 islands.",
+        "answer": "archipelago",
+        "distractors": [
+          "peninsula",
+          "continent",
+          "atoll"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Japan",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A map of Japan showing all four main islands in detail, smaller scattered islands surrounding them in the Pacific, pixel art style.",
+    "tags": [
+      "Japan",
+      "islands",
+      "archipelago",
+      "geography",
+      "Pacific"
+    ]
+  },
+  {
+    "id": "geo-japan-mount-fuji",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "mountains_volcanoes",
+    "categoryL1": "Geography",
+    "categoryL2": "mountains_volcanoes",
+    "categoryL3": "",
+    "statement": "Mount Fuji, at 3,776 meters, is Japan's highest mountain and an active stratovolcano — last erupting in 1707 during the Hōei eruption.",
+    "quizQuestion": "When did Mount Fuji last erupt?",
+    "correctAnswer": "1707",
+    "distractors": [
+      "1945",
+      "1850",
+      "2000",
+      "1600",
+      "1900",
+      "1500",
+      "1983",
+      "1800"
+    ],
+    "acceptableAnswers": [
+      "1707",
+      "In 1707",
+      "During the Hōei eruption"
+    ],
+    "explanation": "Mount Fuji's 1707 Hōei eruption lasted 16 days and deposited ash across Edo (now Tokyo). It is classified as an active volcano by Japanese authorities. Fuji was designated a UNESCO World Heritage Site in 2013 and is climbed by around 300,000 people each summer.",
+    "wowFactor": "Mount Fuji is so iconic that it appears in over 30,000 works of Japanese art — but a surprising fact is that Fuji sits on the boundary of two tectonic plates AND the intersection of three plates.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How tall is Mount Fuji in meters?",
+        "answer": "3,776 meters",
+        "distractors": [
+          "8,849 meters",
+          "1,500 meters",
+          "5,000 meters"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In what year was Mount Fuji added to the UNESCO World Heritage List?",
+        "answer": "2013",
+        "distractors": [
+          "1972",
+          "2000",
+          "1985"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mount Fuji is classified as an active volcano by Japanese authorities?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It's dormant",
+          "It's considered extinct"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mount Fuji's last eruption in ___ deposited ash over Edo (Tokyo).",
+        "answer": "1707",
+        "distractors": [
+          "1850",
+          "1600",
+          "1945"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mount_Fuji",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The iconic snow-capped cone of Mount Fuji rising above cherry blossom trees and a lake reflecting its image, pixel art style.",
+    "tags": [
+      "Japan",
+      "Mount Fuji",
+      "volcano",
+      "geography",
+      "UNESCO"
+    ]
+  },
+  {
+    "id": "geo-japan-earthquakes",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "natural_disasters",
+    "categoryL1": "Geography",
+    "categoryL2": "natural_disasters",
+    "categoryL3": "",
+    "statement": "Japan experiences about 1,500 earthquakes per year — more than any other country — because it sits on the 'Ring of Fire' where four tectonic plates meet.",
+    "quizQuestion": "Why does Japan experience so many earthquakes each year?",
+    "correctAnswer": "Four tectonic plates meet",
+    "distractors": [
+      "Active volcanic magma",
+      "Ocean current pressure",
+      "Glacial rebound",
+      "Underground water erosion",
+      "Mountain range stress",
+      "Gravitational tides",
+      "Soil liquefaction",
+      "Deep sea trenches"
+    ],
+    "acceptableAnswers": [
+      "Four tectonic plates meet",
+      "It's on the Ring of Fire",
+      "Multiple tectonic plates converge"
+    ],
+    "explanation": "Japan sits where the Pacific, Philippine, Eurasian, and North American tectonic plates converge. The 2011 Tōhoku earthquake and tsunami (magnitude 9.1) was the most powerful earthquake ever recorded in Japan and shifted Earth's axis by 10 to 25 centimeters.",
+    "wowFactor": "The 2011 Tōhoku earthquake was so powerful it permanently shortened Earth's day by 1.8 microseconds and shifted the planet's axis by up to 25 centimeters.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many earthquakes does Japan experience annually?",
+        "answer": "About 1,500",
+        "distractors": [
+          "50",
+          "10,000",
+          "200"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What was the magnitude of the 2011 Tōhoku earthquake, Japan's most powerful?",
+        "answer": "9.1",
+        "distractors": [
+          "6.5",
+          "8.0",
+          "7.2"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The 2011 Tōhoku earthquake shortened Earth's day by a small amount?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It lengthened the day",
+          "It had no effect on Earth's rotation"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Japan sits on the 'Ring of ___' where four tectonic plates meet.",
+        "answer": "Fire",
+        "distractors": [
+          "Ice",
+          "Earth",
+          "Storm"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2011_T%C5%8Dhoku_earthquake_and_tsunami",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section diagram showing four tectonic plates converging under Japan, a seismograph spiking above, pixel art style.",
+    "tags": [
+      "Japan",
+      "earthquakes",
+      "Ring of Fire",
+      "tectonic plates",
+      "natural disaster"
+    ]
+  },
+  {
+    "id": "geo-arctic-polar-night",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "polar_regions",
+    "categoryL1": "Geography",
+    "categoryL2": "polar_regions",
+    "categoryL3": "",
+    "statement": "The Arctic experiences 'polar night' — periods of continuous darkness lasting weeks or months — because Earth's axial tilt points the region away from the sun in winter.",
+    "quizQuestion": "What causes polar night in the Arctic each winter?",
+    "correctAnswer": "Earth's axial tilt",
+    "distractors": [
+      "Moon blocking the sun",
+      "Thick cloud cover",
+      "Magnetic field interference",
+      "Sun's orbit shifting",
+      "Permanent fog banks",
+      "Ice reflecting light away",
+      "Ozone layer thickness",
+      "Ocean current cooling"
+    ],
+    "acceptableAnswers": [
+      "Earth's axial tilt",
+      "Axial tilt",
+      "Tilt of Earth's axis"
+    ],
+    "explanation": "Earth's axis is tilted at 23.5 degrees. During winter in the Northern Hemisphere, the North Pole tilts away from the sun, causing continuous darkness. At the North Pole itself, polar night lasts about 6 months. Correspondingly, summer brings the 'midnight sun' — continuous daylight.",
+    "wowFactor": "During polar night, Arctic communities rely on artificial 'dawn simulators' — lights that gradually brighten to trick people's circadian rhythms into thinking the sun has risen.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long does polar night last at the North Pole itself?",
+        "answer": "About 6 months",
+        "distractors": [
+          "1 week",
+          "1 month",
+          "3 months"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the opposite of polar night, when the sun never sets in summer?",
+        "answer": "Midnight sun",
+        "distractors": [
+          "Arctic glow",
+          "Solar maximum",
+          "Aurora borealis"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Earth's axial tilt of 23.5 degrees causes polar night?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It's caused by Earth's distance from the sun",
+          "It's caused by the moon's shadow"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "During winter, the North Pole tilts ___ from the sun, causing continuous darkness.",
+        "answer": "away",
+        "distractors": [
+          "toward",
+          "perpendicular",
+          "alongside"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Polar_night",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A snow-covered Arctic village at noon in total darkness, glowing windows and an aurora borealis overhead, pixel art style.",
+    "tags": [
+      "Arctic",
+      "polar night",
+      "Earth tilt",
+      "geography",
+      "darkness"
+    ]
+  },
+  {
+    "id": "geo-arctic-permafrost",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "polar_regions",
+    "categoryL1": "Geography",
+    "categoryL2": "polar_regions",
+    "categoryL3": "",
+    "statement": "Permafrost — permanently frozen ground — underlies about 25% of the Northern Hemisphere's land surface, storing vast amounts of carbon.",
+    "quizQuestion": "What percentage of Northern Hemisphere land is underlain by permafrost?",
+    "correctAnswer": "About 25%",
+    "distractors": [
+      "5%",
+      "10%",
+      "50%",
+      "75%",
+      "1%",
+      "90%",
+      "3%",
+      "40%"
+    ],
+    "acceptableAnswers": [
+      "About 25%",
+      "25%",
+      "A quarter"
+    ],
+    "explanation": "Permafrost can extend hundreds of meters deep and contains roughly twice as much carbon as the atmosphere. As climate change warms the Arctic, thawing permafrost releases methane and CO2, creating a dangerous feedback loop that accelerates warming.",
+    "wowFactor": "Thawing permafrost is releasing ancient anthrax spores frozen for decades — in 2016, a reindeer carcass thawed in Siberia and infected a 12-year-old boy with anthrax that had been frozen since 1941.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Thawing permafrost releases what two greenhouse gases?",
+        "answer": "Methane and CO2",
+        "distractors": [
+          "Oxygen and nitrogen",
+          "Steam and sulfur",
+          "Ozone and chlorine"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How much carbon does permafrost store compared to the atmosphere?",
+        "answer": "About twice as much",
+        "distractors": [
+          "The same amount",
+          "Ten times more",
+          "Half as much"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Permafrost is found only in the Arctic Circle?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Only on mountain peaks",
+          "Only in Antarctica"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Permafrost stores roughly ___ as much carbon as the entire atmosphere.",
+        "answer": "twice",
+        "distractors": [
+          "half",
+          "ten times",
+          "the same"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Permafrost",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section of Arctic ground showing frozen soil layers extending deep below, a melting top layer releasing gas bubbles, pixel art style.",
+    "tags": [
+      "Arctic",
+      "permafrost",
+      "climate change",
+      "carbon",
+      "geography"
+    ]
+  },
+  {
+    "id": "geo-arctic-circle-definition",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "polar_regions",
+    "categoryL1": "Geography",
+    "categoryL2": "polar_regions",
+    "categoryL3": "",
+    "statement": "The Arctic Circle is a line of latitude at approximately 66.5° North — the southernmost latitude at which the sun doesn't set on the summer solstice.",
+    "quizQuestion": "At what latitude is the Arctic Circle located?",
+    "correctAnswer": "66.5° North",
+    "distractors": [
+      "90° North",
+      "45° North",
+      "80° North",
+      "60° North",
+      "70° North",
+      "50° North",
+      "30° North",
+      "75° North"
+    ],
+    "acceptableAnswers": [
+      "66.5° North",
+      "About 66.5 degrees North",
+      "66°33' North"
+    ],
+    "explanation": "The Arctic Circle's precise latitude is 66°33'N and shifts slightly each year due to Earth's axial wobble. Eight countries have territory inside the Arctic Circle: Russia, Canada, Norway, USA (Alaska), Denmark (Greenland), Finland, Sweden, and Iceland.",
+    "wowFactor": "The Arctic Circle is not a fixed line — it drifts about 15 meters northward or southward each year due to the 26,000-year wobble of Earth's axis called axial precession.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many countries have territory inside the Arctic Circle?",
+        "answer": "8",
+        "distractors": [
+          "3",
+          "5",
+          "12"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What phenomenon is visible at the Arctic Circle on the summer solstice?",
+        "answer": "Midnight sun",
+        "distractors": [
+          "Aurora borealis",
+          "Polar night",
+          "Total solar eclipse"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Arctic Circle's precise latitude shifts slightly each year?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It is exactly 66° and never changes",
+          "Only during leap years"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Arctic Circle lies at approximately ___ North latitude.",
+        "answer": "66.5°",
+        "distractors": [
+          "90°",
+          "45°",
+          "80°"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Arctic_Circle",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing latitude line circling a globe at 66.5° North, eight countries shaded inside the ring, pixel art style.",
+    "tags": [
+      "Arctic Circle",
+      "latitude",
+      "polar",
+      "midnight sun",
+      "geography"
+    ]
+  },
+  {
+    "id": "geo-germany-eu-economy",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "countries_borders",
+    "categoryL1": "Geography",
+    "categoryL2": "countries_borders",
+    "categoryL3": "",
+    "statement": "Germany has the largest economy in the European Union and the third or fourth largest in the world, driven by automotive, chemical, and machinery exports.",
+    "quizQuestion": "Which country has the largest economy in the European Union?",
+    "correctAnswer": "Germany",
+    "distractors": [
+      "France",
+      "Italy",
+      "Spain",
+      "Poland",
+      "Netherlands",
+      "Sweden",
+      "Belgium",
+      "Austria"
+    ],
+    "acceptableAnswers": [
+      "Germany",
+      "Deutschland"
+    ],
+    "explanation": "Germany's GDP is roughly $4.5 trillion, making it the EU's economic powerhouse. It is one of the world's top exporters, with major brands like Volkswagen, BMW, Bayer, and Siemens headquartered there. The 'Mittelstand' — small and medium enterprises — forms the backbone of German industry.",
+    "wowFactor": "Germany's 'Mittelstand' companies — small and medium-sized family-run firms — account for over 50% of all German employment and are often world market leaders in highly specialized niches you've never heard of.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is Germany's approximate GDP making it the EU's largest economy?",
+        "answer": "About $4.5 trillion",
+        "distractors": [
+          "$500 billion",
+          "$10 trillion",
+          "$1 trillion"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What term describes Germany's backbone of small and medium family enterprises?",
+        "answer": "Mittelstand",
+        "distractors": [
+          "Konzern",
+          "Handwerk",
+          "Betrieb"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: France has a larger economy than Germany within the EU?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "They are roughly equal",
+          "The UK has the largest EU economy"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Germany is the EU's largest economy, driven by ___, chemical, and machinery exports.",
+        "answer": "automotive",
+        "distractors": [
+          "agricultural",
+          "mining",
+          "textile"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Economy_of_Germany",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A map of Germany surrounded by EU stars, factory smokestacks and car silhouettes representing industry, pixel art style.",
+    "tags": [
+      "Germany",
+      "EU",
+      "economy",
+      "exports",
+      "geography"
+    ]
+  },
+  {
+    "id": "geo-germany-autobahn",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "infrastructure",
+    "categoryL1": "Geography",
+    "categoryL2": "infrastructure",
+    "categoryL3": "",
+    "statement": "Germany's Autobahn is one of the world's densest motorway networks at about 13,000 km, and some sections famously have no legally mandated speed limit.",
+    "quizQuestion": "What is Germany's famous motorway network called?",
+    "correctAnswer": "Autobahn",
+    "distractors": [
+      "Motorway",
+      "Bundesstrasse",
+      "Reichsstrasse",
+      "Autoroute",
+      "Snelweg",
+      "Autostrada",
+      "Speedbahn",
+      "Schnellweg"
+    ],
+    "acceptableAnswers": [
+      "Autobahn",
+      "The Autobahn"
+    ],
+    "explanation": "Germany's Autobahn system was begun in the 1930s. About 30% of its 13,000 km has no speed limit — called 'Richtgeschwindigkeit' (advisory speed) sections where 130 km/h is recommended but not enforced. Despite this, Autobahn fatality rates are comparable to or lower than US highways.",
+    "wowFactor": "Stretches of the German Autobahn have no speed limit, yet Germany has a lower highway death rate per km traveled than the United States — where speed is strictly regulated.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What percentage of the German Autobahn has no legally mandated speed limit?",
+        "answer": "About 30%",
+        "distractors": [
+          "100%",
+          "5%",
+          "50%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the advisory (non-mandatory) speed on unrestricted Autobahn sections?",
+        "answer": "130 km/h",
+        "distractors": [
+          "200 km/h",
+          "100 km/h",
+          "No recommendation"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: All sections of the German Autobahn have no speed limit?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Only in Bavaria",
+          "Speed limits were removed in 2010"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The German Autobahn stretches about ___ km and is one of the world's densest motorway networks.",
+        "answer": "13,000",
+        "distractors": [
+          "500",
+          "100,000",
+          "5,000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Autobahn",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A German highway stretching to the horizon with cars blurring past a speed limit sign that has a line through it, pixel art style.",
+    "tags": [
+      "Germany",
+      "Autobahn",
+      "roads",
+      "speed limit",
+      "infrastructure"
+    ]
+  },
+  {
+    "id": "geo-germany-capital-berlin",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "countries_borders",
+    "categoryL1": "Geography",
+    "categoryL2": "countries_borders",
+    "categoryL3": "",
+    "statement": "Berlin is Germany's capital and largest city, with a population of about 3.7 million — and was divided by the Berlin Wall from 1961 to 1989.",
+    "quizQuestion": "For how long was Berlin divided by the Berlin Wall?",
+    "correctAnswer": "28 years",
+    "distractors": [
+      "5 years",
+      "50 years",
+      "10 years",
+      "100 years",
+      "2 years",
+      "40 years",
+      "15 years",
+      "75 years"
+    ],
+    "acceptableAnswers": [
+      "28 years",
+      "About 28 years",
+      "1961 to 1989"
+    ],
+    "explanation": "The Berlin Wall was built on August 13, 1961, by East Germany to stop mass emigration to the West and fell on November 9, 1989. During those 28 years, at least 140 people died attempting to cross it. Its fall became a symbol of the Cold War's end.",
+    "wowFactor": "When the Berlin Wall fell on November 9, 1989, it was partly an accident — an East German spokesman misread a press release and announced the borders were open 'immediately, without delay', triggering crowds to tear down the wall before anyone stopped them.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "On what date did the Berlin Wall fall?",
+        "answer": "November 9, 1989",
+        "distractors": [
+          "August 13, 1961",
+          "October 3, 1990",
+          "December 25, 1991"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many people are estimated to have died trying to cross the Berlin Wall?",
+        "answer": "At least 140",
+        "distractors": [
+          "5",
+          "1,000",
+          "50"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Berlin Wall's fall was partly triggered by a misread press announcement?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It was a planned demolition",
+          "Allied forces demolished it"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Berlin Wall stood for ___ years, from 1961 until its fall in 1989.",
+        "answer": "28",
+        "distractors": [
+          "50",
+          "10",
+          "40"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Berlin_Wall",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The Berlin Wall with graffiti art and crowds celebrating its fall, the Brandenburg Gate lit up behind it, pixel art style.",
+    "tags": [
+      "Germany",
+      "Berlin",
+      "Berlin Wall",
+      "Cold War",
+      "history"
+    ]
+  },
+  {
+    "id": "geo-rome-eternal-city",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "landmarks",
+    "categoryL1": "Geography",
+    "categoryL2": "landmarks",
+    "categoryL3": "",
+    "statement": "Rome is called the 'Eternal City' and was traditionally said to have been founded in 753 BC — making it one of the oldest continuously inhabited cities in the world.",
+    "quizQuestion": "What is Rome's traditional founding date?",
+    "correctAnswer": "753 BC",
+    "distractors": [
+      "100 BC",
+      "2000 BC",
+      "500 AD",
+      "1000 BC",
+      "300 AD",
+      "200 BC",
+      "50 BC",
+      "1500 BC"
+    ],
+    "acceptableAnswers": [
+      "753 BC",
+      "753 BCE"
+    ],
+    "explanation": "According to legend, Rome was founded on April 21, 753 BC by Romulus, who killed his twin brother Remus and named the city after himself. Archaeological evidence shows settlement in the area as far back as 900 BC. Rome's continuous inhabitation over 2,700+ years earns it the title 'Eternal City'.",
+    "wowFactor": "Rome still celebrates its founding every year on April 21 — a festival called 'Natale di Roma' (Birthday of Rome) with gladiator re-enactments and parades.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "According to legend, who founded Rome in 753 BC?",
+        "answer": "Romulus",
+        "distractors": [
+          "Caesar",
+          "Remus",
+          "Augustus"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "On what date each year does Rome celebrate its founding with 'Natale di Roma'?",
+        "answer": "April 21",
+        "distractors": [
+          "March 15",
+          "January 1",
+          "October 31"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Rome's nickname 'Eternal City' refers to its unusually long continuous habitation?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It refers to its religious status",
+          "It was given by Napoleon"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "According to legend, Romulus killed his twin brother ___ and named Rome after himself.",
+        "answer": "Remus",
+        "distractors": [
+          "Caesar",
+          "Brutus",
+          "Nero"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rome",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ancient Roman hillside at dawn with the Colosseum glowing gold in the background, the date 753 BC carved in stone foreground, pixel art style.",
+    "tags": [
+      "Rome",
+      "Italy",
+      "Eternal City",
+      "ancient history",
+      "founding"
+    ]
+  },
+  {
+    "id": "geo-rome-seven-hills",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "landmarks",
+    "categoryL1": "Geography",
+    "categoryL2": "landmarks",
+    "categoryL3": "",
+    "statement": "Ancient Rome was built on seven hills — Aventine, Caelian, Capitoline, Esquiline, Palatine, Quirinal, and Viminal — which gave it natural defensive advantages.",
+    "quizQuestion": "How many hills was ancient Rome built upon?",
+    "correctAnswer": "Seven",
+    "distractors": [
+      "Three",
+      "Five",
+      "Twelve",
+      "One",
+      "Ten",
+      "Eight",
+      "Two",
+      "Four"
+    ],
+    "acceptableAnswers": [
+      "Seven",
+      "7"
+    ],
+    "explanation": "The Seven Hills of Rome were key to the city's early defense and development. The Palatine Hill is considered the oldest — according to legend, it's where Romulus built the first hut. The Capitoline Hill became the political and religious center, home to Rome's most important temples.",
+    "wowFactor": "The Palatine Hill — one of Rome's seven hills — is the etymological origin of the English word 'palace', because Roman emperors built their lavish homes there.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which of Rome's seven hills is considered its oldest and where Romulus settled?",
+        "answer": "Palatine Hill",
+        "distractors": [
+          "Capitoline Hill",
+          "Aventine Hill",
+          "Quirinal Hill"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What English word derives from the Palatine Hill where Roman emperors built their homes?",
+        "answer": "Palace",
+        "distractors": [
+          "Palatial",
+          "Paladin",
+          "Parliament"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The word 'palace' derives from Rome's Palatine Hill?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It comes from Latin 'pala' meaning shovel",
+          "It is from Greek 'palaios' meaning old"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Capitoline Hill became Rome's ___ and religious center, housing its most important temples.",
+        "answer": "political",
+        "distractors": [
+          "military",
+          "commercial",
+          "judicial"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Seven_hills_of_Rome",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A panoramic view of ancient Rome with seven labeled hills rising from the landscape, temples visible on each summit, pixel art style.",
+    "tags": [
+      "Rome",
+      "seven hills",
+      "ancient history",
+      "Palatine",
+      "etymology"
+    ]
+  },
+  {
+    "id": "geo-rome-colosseum",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "landmarks",
+    "categoryL1": "Geography",
+    "categoryL2": "landmarks",
+    "categoryL3": "",
+    "statement": "The Colosseum in Rome, completed in 80 AD, could hold between 50,000 and 80,000 spectators and hosted gladiatorial contests, animal hunts, and executions.",
+    "quizQuestion": "When was the Colosseum in Rome completed?",
+    "correctAnswer": "80 AD",
+    "distractors": [
+      "753 BC",
+      "500 AD",
+      "200 BC",
+      "300 AD",
+      "1000 AD",
+      "100 BC",
+      "600 AD",
+      "50 BC"
+    ],
+    "acceptableAnswers": [
+      "80 AD",
+      "80 CE",
+      "Around 80 AD"
+    ],
+    "explanation": "The Colosseum, also called the Flavian Amphitheatre, took about 10 years to build under emperors Vespasian and Titus. It used a sophisticated system of vaults and underground tunnels (the hypogeum) to lift animals and gladiators directly onto the arena floor.",
+    "wowFactor": "The Colosseum had a retractable awning called the 'velarium' — a massive sailcloth operated by sailors from the Roman navy to shade 80,000 spectators from the sun.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the underground network beneath the Colosseum that held animals called?",
+        "answer": "Hypogeum",
+        "distractors": [
+          "Labyrinthus",
+          "Catacombs",
+          "Cryptoporticus"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What was the Colosseum's retractable awning system called?",
+        "answer": "Velarium",
+        "distractors": [
+          "Canopeum",
+          "Umbraculum",
+          "Tegumen"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Colosseum could hold up to 80,000 spectators?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It held only 10,000",
+          "Capacity records were never kept"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Colosseum's retractable awning, the velarium, was operated by sailors from the Roman ___.",
+        "answer": "navy",
+        "distractors": [
+          "army",
+          "senate",
+          "slaves"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Colosseum",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Historical context includes gladiatorial combat and executions.",
+    "visualDescription": "The Colosseum in golden afternoon light, its tiered arches casting long shadows, crowds visible inside, pixel art style.",
+    "tags": [
+      "Rome",
+      "Colosseum",
+      "ancient Rome",
+      "landmarks",
+      "gladiators"
+    ]
+  },
+  {
+    "id": "geo-nyc-five-boroughs",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "cities",
+    "categoryL1": "Geography",
+    "categoryL2": "cities",
+    "categoryL3": "",
+    "statement": "New York City is made up of five boroughs: Manhattan, Brooklyn, Queens, The Bronx, and Staten Island — unified as a single city in 1898.",
+    "quizQuestion": "How many boroughs make up New York City?",
+    "correctAnswer": "Five",
+    "distractors": [
+      "Three",
+      "Eight",
+      "Two",
+      "Seven",
+      "Ten",
+      "Four",
+      "Six",
+      "One"
+    ],
+    "acceptableAnswers": [
+      "Five",
+      "5"
+    ],
+    "explanation": "The five boroughs were consolidated into one city on January 1, 1898. Before that, Manhattan was the City of New York. Brooklyn was a separate city with the 6th largest population in the US. Queens and The Bronx were part of counties, and Staten Island was Richmond County.",
+    "wowFactor": "Before 1898, Brooklyn was a completely separate city — and many Brooklynites were so upset about the merger with Manhattan that they considered it a hostile takeover. The vote to consolidate passed by only a slim margin.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year were New York City's five boroughs unified into one city?",
+        "answer": "1898",
+        "distractors": [
+          "1776",
+          "1920",
+          "1850"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which NYC borough was a separate independent city before the 1898 consolidation?",
+        "answer": "Brooklyn",
+        "distractors": [
+          "Queens",
+          "The Bronx",
+          "Staten Island"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Bronx is the only NYC borough located on the North American mainland?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Queens is also on the mainland",
+          "Staten Island is on the mainland"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "New York City's five boroughs are Manhattan, Brooklyn, Queens, The Bronx, and ___.",
+        "answer": "Staten Island",
+        "distractors": [
+          "Harlem",
+          "Long Island",
+          "Jersey City"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Boroughs_of_New_York_City",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A map of New York City's five boroughs color-coded and labeled, the Manhattan skyline visible, pixel art style.",
+    "tags": [
+      "New York City",
+      "boroughs",
+      "geography",
+      "Manhattan",
+      "Brooklyn"
+    ]
+  },
+  {
+    "id": "geo-nyc-statue-of-liberty",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "landmarks",
+    "categoryL1": "Geography",
+    "categoryL2": "landmarks",
+    "categoryL3": "",
+    "statement": "The Statue of Liberty was a gift from France to the United States, dedicated on October 28, 1886, and stands 93 meters tall including its pedestal.",
+    "quizQuestion": "Which country gifted the Statue of Liberty to the United States?",
+    "correctAnswer": "France",
+    "distractors": [
+      "England",
+      "Spain",
+      "Germany",
+      "Italy",
+      "Netherlands",
+      "Portugal",
+      "Belgium",
+      "Denmark"
+    ],
+    "acceptableAnswers": [
+      "France",
+      "The French Republic"
+    ],
+    "explanation": "The statue was designed by French sculptor Frédéric Auguste Bartholdi and its iron framework was engineered by Gustave Eiffel (who later built the Eiffel Tower). France funded the statue; the US funded the pedestal. It was a symbol of Franco-American friendship.",
+    "wowFactor": "The Statue of Liberty was designed by the same engineer who built the Eiffel Tower — Gustave Eiffel created the iron skeleton inside the statue years before his famous tower.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who engineered the iron internal framework of the Statue of Liberty?",
+        "answer": "Gustave Eiffel",
+        "distractors": [
+          "Frédéric Bartholdi",
+          "Charles Garnier",
+          "Haussmann"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "On what date was the Statue of Liberty officially dedicated?",
+        "answer": "October 28, 1886",
+        "distractors": [
+          "July 4, 1776",
+          "January 1, 1900",
+          "July 14, 1789"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: France paid for both the statue and its pedestal?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "The US paid for both",
+          "A private donor paid for everything"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Statue of Liberty stands ___ meters tall including its pedestal.",
+        "answer": "93",
+        "distractors": [
+          "46",
+          "150",
+          "30"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Statue_of_Liberty",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The Statue of Liberty glowing at sunset over New York Harbor, a French and American flag side by side at its base, pixel art style.",
+    "tags": [
+      "New York City",
+      "Statue of Liberty",
+      "France",
+      "landmarks",
+      "history"
+    ]
+  },
+  {
+    "id": "geo-nyc-population",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "cities",
+    "categoryL1": "Geography",
+    "categoryL2": "cities",
+    "categoryL3": "",
+    "statement": "New York City is the most populous city in the United States with about 8.3 million residents, and over 800 languages are spoken within its boundaries.",
+    "quizQuestion": "Approximately how many languages are spoken in New York City?",
+    "correctAnswer": "Over 800",
+    "distractors": [
+      "20",
+      "50",
+      "100",
+      "300",
+      "500",
+      "200",
+      "10",
+      "150"
+    ],
+    "acceptableAnswers": [
+      "Over 800",
+      "800+",
+      "About 800"
+    ],
+    "explanation": "New York City is home to the largest number of languages of any city on Earth. This extraordinary linguistic diversity reflects centuries of immigration. The borough of Queens is often cited as the most linguistically diverse urban area in the world.",
+    "wowFactor": "Queens, New York, is considered the most linguistically diverse urban area on Earth — over 160 languages are spoken within a single neighborhood in some parts.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which NYC borough is considered the most linguistically diverse urban area on Earth?",
+        "answer": "Queens",
+        "distractors": [
+          "Manhattan",
+          "Brooklyn",
+          "The Bronx"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is New York City's approximate population, making it the US's most populous city?",
+        "answer": "8.3 million",
+        "distractors": [
+          "1 million",
+          "20 million",
+          "5 million"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: New York City has more languages spoken within it than any other city on Earth?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "London has more",
+          "Tokyo has more"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "New York City has over ___ languages spoken within its boundaries.",
+        "answer": "800",
+        "distractors": [
+          "50",
+          "200",
+          "100"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/New_York_City",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A skyline of NYC seen from across the river with speech bubbles in dozens of different scripts floating above, pixel art style.",
+    "tags": [
+      "New York City",
+      "languages",
+      "diversity",
+      "population",
+      "Queens"
+    ]
+  },
+  {
+    "id": "geo-africa-54-countries",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "continents",
+    "categoryL1": "Geography",
+    "categoryL2": "continents",
+    "categoryL3": "",
+    "statement": "Africa has 54 recognized countries — more than any other continent — and is home to the world's youngest population, with a median age of about 19.",
+    "quizQuestion": "How many recognized countries does Africa have?",
+    "correctAnswer": "54",
+    "distractors": [
+      "30",
+      "10",
+      "20",
+      "70",
+      "40",
+      "100",
+      "25",
+      "50"
+    ],
+    "acceptableAnswers": [
+      "54",
+      "Fifty-four"
+    ],
+    "explanation": "Africa's 54 countries include some of the world's youngest nations. The African Union's headquarters is in Addis Ababa, Ethiopia. Africa also contains the world's largest number of landlocked countries — 16 nations have no coastline.",
+    "wowFactor": "Africa has 16 landlocked countries — more than any other continent — because the colonial borders drawn in the 19th century Berlin Conference divided the continent with straight lines that ignored rivers, coasts, and local geography.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is Africa's approximate median age, making it the world's youngest continent?",
+        "answer": "About 19 years",
+        "distractors": [
+          "35 years",
+          "50 years",
+          "28 years"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In which city is the African Union's headquarters located?",
+        "answer": "Addis Ababa",
+        "distractors": [
+          "Nairobi",
+          "Cairo",
+          "Lagos"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Africa has more landlocked countries than any other continent?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Asia has more",
+          "Europe has the most"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Africa has ___ recognized countries — more than any other continent.",
+        "answer": "54",
+        "distractors": [
+          "30",
+          "70",
+          "45"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Africa",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A map of Africa with all 54 countries outlined and color-coded, the African Union emblem in the center, pixel art style.",
+    "tags": [
+      "Africa",
+      "countries",
+      "continent",
+      "geography",
+      "demographics"
+    ]
+  },
+  {
+    "id": "geo-africa-sahara-size",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "deserts_climate",
+    "categoryL1": "Geography",
+    "categoryL2": "deserts_climate",
+    "categoryL3": "",
+    "statement": "The Sahara Desert is the world's largest hot desert at about 9.2 million km² — roughly the size of the United States — covering most of North Africa.",
+    "quizQuestion": "What is the world's largest hot desert?",
+    "correctAnswer": "Sahara",
+    "distractors": [
+      "Arabian Desert",
+      "Gobi Desert",
+      "Atacama Desert",
+      "Mojave Desert",
+      "Namib Desert",
+      "Kalahari Desert",
+      "Great Victoria Desert",
+      "Patagonian Desert"
+    ],
+    "acceptableAnswers": [
+      "Sahara",
+      "Sahara Desert",
+      "The Sahara"
+    ],
+    "explanation": "The Sahara covers 11 countries and has two distinct regions: the erg (sandy dunes, covering only 25% of the desert) and the hammada (rocky plateaus and gravel plains, covering most of it). Contrary to popular belief, only a quarter of the Sahara is sandy dunes.",
+    "wowFactor": "Only about 25% of the Sahara is the sand dunes you picture — most of it is actually flat gravel plains and rocky plateaus. The classic 'sea of sand' image applies to just a quarter of the world's largest desert.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What percentage of the Sahara is actually sandy dunes?",
+        "answer": "About 25%",
+        "distractors": [
+          "90%",
+          "50%",
+          "10%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Approximately how many countries does the Sahara Desert cover?",
+        "answer": "11",
+        "distractors": [
+          "3",
+          "20",
+          "7"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Sahara is the world's largest desert of any kind?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "It is the second largest",
+          "It depends on the definition"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Sahara covers about 9.2 million km² — roughly the size of the ___.",
+        "answer": "United States",
+        "distractors": [
+          "Russia",
+          "Australia",
+          "China"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sahara",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A satellite overhead view of the Sahara showing sandy orange dunes in one corner and vast rocky grey plains across the majority, pixel art style.",
+    "tags": [
+      "Africa",
+      "Sahara",
+      "desert",
+      "geography",
+      "biome"
+    ]
+  },
+  {
+    "id": "geo-africa-nile-amazon-debate",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "rivers_water",
+    "categoryL1": "Geography",
+    "categoryL2": "rivers_water",
+    "categoryL3": "",
+    "statement": "Africa contains the Nile, traditionally considered the world's longest river at 6,650 km, though scientists debate whether the Amazon may actually be longer.",
+    "quizQuestion": "Which African river is traditionally considered the world's longest?",
+    "correctAnswer": "Nile",
+    "distractors": [
+      "Congo",
+      "Niger",
+      "Zambezi",
+      "Limpopo",
+      "Orange River",
+      "Volta",
+      "Okavango",
+      "Senegal River"
+    ],
+    "acceptableAnswers": [
+      "Nile",
+      "The Nile",
+      "Nile River"
+    ],
+    "explanation": "The Nile-versus-Amazon debate hinges on where each river's true source lies. Most measurements give the Nile the edge at 6,650 km versus the Amazon's 6,400 km, but some measurements of Amazon tributaries suggest it may be longer. The Congo River is Africa's second-longest and carries more water than the Nile.",
+    "wowFactor": "The Congo River is the deepest river in the world — in some sections reaching over 220 meters deep — making it so deep that sunlight never reaches the bottom.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is Africa's second-longest river after the Nile?",
+        "answer": "Congo River",
+        "distractors": [
+          "Niger River",
+          "Zambezi",
+          "Orange River"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the maximum depth reached by the Congo River?",
+        "answer": "Over 220 meters",
+        "distractors": [
+          "50 meters",
+          "10 meters",
+          "500 meters"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Scientists universally agree the Nile is longer than the Amazon?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "The Amazon is clearly longer",
+          "Both rivers are identical length"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Nile is traditionally listed at 6,650 km, narrowly beating the Amazon's ___.",
+        "answer": "6,400 km",
+        "distractors": [
+          "3,000 km",
+          "9,000 km",
+          "5,000 km"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nile",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A side-by-side comparison of the Nile and Amazon on a world map with their lengths labeled, a question mark between them, pixel art style.",
+    "tags": [
+      "Africa",
+      "Nile",
+      "rivers",
+      "Congo",
+      "geography"
+    ]
+  },
+  {
+    "id": "geo-brazil-amazon-rainforest",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "biomes",
+    "categoryL1": "Geography",
+    "categoryL2": "biomes",
+    "categoryL3": "",
+    "statement": "The Amazon rainforest, 60% of which lies within Brazil, is the world's largest tropical rainforest — covering 5.5 million km² and called the 'lungs of the Earth'.",
+    "quizQuestion": "What percentage of the Amazon rainforest lies within Brazil?",
+    "correctAnswer": "About 60%",
+    "distractors": [
+      "10%",
+      "90%",
+      "30%",
+      "100%",
+      "50%",
+      "20%",
+      "75%",
+      "5%"
+    ],
+    "acceptableAnswers": [
+      "About 60%",
+      "60%",
+      "Roughly 60 percent"
+    ],
+    "explanation": "The Amazon spans 9 countries, but Brazil holds the largest share. The forest produces 20% of the world's oxygen via photosynthesis. It is home to around 10% of all species on Earth, including over 40,000 plant species and 3,000 freshwater fish species.",
+    "wowFactor": "The Amazon River discharges so much fresh water into the Atlantic Ocean that you can scoop drinkable water from the ocean surface 160 km offshore — before the salt water mixes in.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many countries does the Amazon rainforest span?",
+        "answer": "9",
+        "distractors": [
+          "2",
+          "5",
+          "15"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What fraction of all Earth's species are found in the Amazon rainforest?",
+        "answer": "About 10%",
+        "distractors": [
+          "1%",
+          "50%",
+          "25%"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Amazon rainforest produces about 20% of the world's oxygen?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It produces 80%",
+          "Rainforests produce no net oxygen"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Amazon River discharges enough fresh water that drinkable water can be found ___ km offshore.",
+        "answer": "160",
+        "distractors": [
+          "1",
+          "1,000",
+          "10"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Amazon_rainforest",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An aerial view of the Amazon rainforest canopy with the river snaking through it, a thin layer of mist, pixel art style.",
+    "tags": [
+      "Brazil",
+      "Amazon",
+      "rainforest",
+      "biodiversity",
+      "geography"
+    ]
+  },
+  {
+    "id": "geo-brazil-carnival",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "culture_geography",
+    "categoryL1": "Geography",
+    "categoryL2": "culture_geography",
+    "categoryL3": "",
+    "statement": "Brazil's Carnival is the world's largest annual carnival, centered in Rio de Janeiro, attracting up to 7 million people per day during the five-day celebration.",
+    "quizQuestion": "Which city hosts the world's largest annual Carnival celebration?",
+    "correctAnswer": "Rio de Janeiro",
+    "distractors": [
+      "São Paulo",
+      "Buenos Aires",
+      "Havana",
+      "New Orleans",
+      "Venice",
+      "Bogotá",
+      "Lima",
+      "Trinidad"
+    ],
+    "acceptableAnswers": [
+      "Rio de Janeiro",
+      "Rio",
+      "Rio de Janeiro, Brazil"
+    ],
+    "explanation": "Rio's Carnival takes place in the five days before Ash Wednesday each year. The highlight is the Sambadrome parade where samba schools compete with elaborate floats and costumes. Salvador and Recife also host massive Carnivals in Brazil.",
+    "wowFactor": "Rio's Carnival Sambadrome was designed by Oscar Niemeyer — the same architect who designed Brazil's capital city Brasília — and it functions as a school during the other 51 weeks of the year.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who designed Rio's Carnival Sambadrome parade venue?",
+        "answer": "Oscar Niemeyer",
+        "distractors": [
+          "Le Corbusier",
+          "Lúcio Costa",
+          "Renzo Piano"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "When does Rio's Carnival take place each year?",
+        "answer": "Five days before Ash Wednesday",
+        "distractors": [
+          "New Year's Eve",
+          "Brazilian Independence Day",
+          "Summer solstice"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Rio's Sambadrome functions as a school for the rest of the year?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It is an arts centre",
+          "It is a permanent museum"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Rio's Carnival attracts up to ___ million people per day during its five days.",
+        "answer": "7",
+        "distractors": [
+          "1",
+          "50",
+          "100"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rio_Carnival",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A dazzling Carnival float moving through the Sambadrome in Rio, costumed samba dancers performing, fireworks overhead, pixel art style.",
+    "tags": [
+      "Brazil",
+      "Carnival",
+      "Rio de Janeiro",
+      "culture",
+      "festival"
+    ]
+  },
+  {
+    "id": "geo-brazil-largest-south-america",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "countries_borders",
+    "categoryL1": "Geography",
+    "categoryL2": "countries_borders",
+    "categoryL3": "",
+    "statement": "Brazil is the largest country in South America, covering 8.5 million km² — about 47% of the continent — and borders every South American country except Chile and Ecuador.",
+    "quizQuestion": "Brazil borders every South American country except which two?",
+    "correctAnswer": "Chile and Ecuador",
+    "distractors": [
+      "Peru and Bolivia",
+      "Colombia and Venezuela",
+      "Uruguay and Paraguay",
+      "Argentina and Guyana",
+      "Suriname and Guyana",
+      "Bolivia and Paraguay",
+      "Peru and Colombia",
+      "Venezuela and Bolivia"
+    ],
+    "acceptableAnswers": [
+      "Chile and Ecuador",
+      "Ecuador and Chile"
+    ],
+    "explanation": "Brazil shares land borders with 10 of South America's 12 sovereign nations — every country except Chile and Ecuador. Brazil is the fifth-largest country in the world overall and the largest in the Southern Hemisphere.",
+    "wowFactor": "Brazil is so large that its time zones span four different hours — flying from São Paulo to Manaus in the Amazon is like flying from London to Istanbul.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many of South America's sovereign nations does Brazil share a border with?",
+        "answer": "10",
+        "distractors": [
+          "5",
+          "3",
+          "12"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What percentage of South America's total land area does Brazil cover?",
+        "answer": "About 47%",
+        "distractors": [
+          "20%",
+          "70%",
+          "90%"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Brazil is the largest country in the Southern Hemisphere?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Australia is larger",
+          "Argentina is larger"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Brazil borders every South American country except ___ and Ecuador.",
+        "answer": "Chile",
+        "distractors": [
+          "Peru",
+          "Bolivia",
+          "Colombia"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Brazil",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A map of South America with Brazil filling nearly half the continent in green, its borders touching 10 neighboring countries, pixel art style.",
+    "tags": [
+      "Brazil",
+      "South America",
+      "geography",
+      "borders",
+      "largest"
+    ]
+  }
+]

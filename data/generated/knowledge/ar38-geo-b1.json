@@ -1,0 +1,2564 @@
+[
+  {
+    "id": "geo-france-largest-western-europe",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "europe",
+    "categoryL1": "Geography",
+    "categoryL2": "europe",
+    "categoryL3": "",
+    "statement": "France is the largest country in Western Europe by area, covering 643,801 square kilometers — slightly larger than Texas.",
+    "quizQuestion": "Which country is the largest in Western Europe by area?",
+    "correctAnswer": "France",
+    "distractors": [
+      "Spain",
+      "Germany",
+      "Sweden",
+      "Ukraine",
+      "Poland",
+      "Italy",
+      "Norway",
+      "Finland"
+    ],
+    "acceptableAnswers": [
+      "France"
+    ],
+    "explanation": "France covers 643,801 km² (248,573 sq mi), making it the largest country in Western Europe. It borders eight countries, two oceans, and has overseas territories on nearly every continent — giving France the world's second-largest exclusive economic zone.",
+    "wowFactor": "France has the world's second-largest Exclusive Economic Zone — the ocean territory a country controls — because of its overseas territories scattered across the Pacific, Atlantic, Indian Ocean, and Caribbean.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the approximate area of France in square kilometers?",
+        "answer": "643,801 km²",
+        "distractors": [
+          "506,000 km²",
+          "357,000 km²",
+          "780,000 km²"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many countries does France share a land border with?",
+        "answer": "Eight countries",
+        "distractors": [
+          "Four countries",
+          "Six countries",
+          "Ten countries"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: France is the largest country in Western Europe.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ is the largest country in Western Europe, covering about 643,000 square kilometers.",
+        "answer": "France",
+        "distractors": [
+          "Spain",
+          "Germany",
+          "Italy"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/France",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Political map of Europe with France highlighted in blue, its hexagonal shape glowing, Eiffel Tower miniature icon in the center, pixel art style.",
+    "tags": [
+      "france",
+      "europe",
+      "geography",
+      "area",
+      "western europe"
+    ]
+  },
+  {
+    "id": "geo-france-eiffel-tower",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "europe",
+    "categoryL1": "Geography",
+    "categoryL2": "europe",
+    "categoryL3": "",
+    "statement": "The Eiffel Tower in Paris was built in 1889 for the World's Fair and was originally planned to be demolished after 20 years.",
+    "quizQuestion": "For what event was the Eiffel Tower originally built in 1889?",
+    "correctAnswer": "The World's Fair",
+    "distractors": [
+      "The French Revolution centennial",
+      "Napoleon's coronation",
+      "The Paris Olympics",
+      "A military exhibition",
+      "A science exhibition",
+      "A royal wedding",
+      "The Industrial Expo",
+      "A trade conference"
+    ],
+    "acceptableAnswers": [
+      "The World's Fair",
+      "World's Fair",
+      "Exposition Universelle",
+      "1889 World's Fair"
+    ],
+    "explanation": "The Eiffel Tower was built for the 1889 Exposition Universelle (World's Fair) celebrating the centennial of the French Revolution. Designed by Gustave Eiffel, it was the world's tallest structure for 41 years until the Chrysler Building surpassed it in 1930.",
+    "wowFactor": "The Eiffel Tower was supposed to be torn down in 1909. It was saved because it was useful as a giant radio antenna — most notably used to intercept enemy messages during WWI.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who designed the Eiffel Tower, completed in 1889?",
+        "answer": "Gustave Eiffel",
+        "distractors": [
+          "Auguste Rodin",
+          "Haussmann",
+          "Le Corbusier"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "For how many years was the Eiffel Tower the world's tallest structure after 1889?",
+        "answer": "41 years",
+        "distractors": [
+          "10 years",
+          "20 years",
+          "100 years"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Eiffel Tower was originally planned to be demolished after 20 years.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Eiffel Tower was built for the 1889 ___ in Paris celebrating the French Revolution centennial.",
+        "answer": "World's Fair",
+        "distractors": [
+          "Olympics",
+          "coronation",
+          "military parade"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Eiffel_Tower",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The Eiffel Tower rising above a 1889 World's Fair with colorful exhibition tents and crowds below, construction scaffolding still visible on one side, pixel art style.",
+    "tags": [
+      "france",
+      "paris",
+      "eiffel tower",
+      "landmarks",
+      "history"
+    ]
+  },
+  {
+    "id": "geo-france-wine-production",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "europe",
+    "categoryL1": "Geography",
+    "categoryL2": "europe",
+    "categoryL3": "",
+    "statement": "France and Italy are the world's largest wine producers by volume, each accounting for roughly 15% of global wine output.",
+    "quizQuestion": "Which two countries typically produce the most wine in the world?",
+    "correctAnswer": "France and Italy",
+    "distractors": [
+      "Spain and Portugal",
+      "USA and Australia",
+      "Germany and Argentina",
+      "Chile and South Africa",
+      "China and Romania",
+      "Greece and Hungary",
+      "Austria and New Zealand",
+      "Georgia and Turkey"
+    ],
+    "acceptableAnswers": [
+      "France and Italy",
+      "Italy and France"
+    ],
+    "explanation": "France and Italy have alternated as the world's top wine producer for decades. France produces famous varieties like Bordeaux, Burgundy, and Champagne. The Champagne region in France is the only legally permitted source of 'Champagne'.",
+    "wowFactor": "By EU law, only sparkling wine from the Champagne region of France can legally be called 'Champagne' — wine from anywhere else must use terms like 'sparkling wine' or 'Prosecco'.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the only French region legally permitted to produce 'Champagne'?",
+        "answer": "Champagne",
+        "distractors": [
+          "Burgundy",
+          "Bordeaux",
+          "Alsace"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What percentage of global wine does France approximately produce?",
+        "answer": "About 15%",
+        "distractors": [
+          "About 5%",
+          "About 30%",
+          "About 50%"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: France and Italy are typically the world's top two wine producers.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Only sparkling wine from France's ___ region can legally be called 'Champagne'.",
+        "answer": "Champagne",
+        "distractors": [
+          "Burgundy",
+          "Bordeaux",
+          "Loire"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_wine-producing_regions",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Rolling vineyard hills at sunset with rows of grapevines, a stone chateau in the background, a map of France and Italy glowing on a cask barrel, pixel art style.",
+    "tags": [
+      "france",
+      "wine",
+      "italy",
+      "agriculture",
+      "europe"
+    ]
+  },
+  {
+    "id": "geo-usa-fifty-states",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "americas",
+    "categoryL1": "Geography",
+    "categoryL2": "americas",
+    "categoryL3": "",
+    "statement": "The United States consists of 50 states and became a 50-state nation in 1959 when Hawaii was admitted as the last state.",
+    "quizQuestion": "Which state was the last admitted to the USA, completing the 50-state union?",
+    "correctAnswer": "Hawaii",
+    "distractors": [
+      "Alaska",
+      "Arizona",
+      "New Mexico",
+      "Oklahoma",
+      "Nevada",
+      "Utah",
+      "Colorado",
+      "Montana"
+    ],
+    "acceptableAnswers": [
+      "Hawaii"
+    ],
+    "explanation": "Hawaii became the 50th US state on August 21, 1959. Alaska had been admitted just months earlier as the 49th state on January 3, 1959. Both were non-contiguous territories — Alaska on the continent, Hawaii an island chain in the Pacific.",
+    "wowFactor": "Alaska and Hawaii became states just 8 months apart in 1959, but they are the most geographically opposite states possible — one is on the Arctic continent, the other in the tropical Pacific Ocean.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year did the USA become a 50-state nation?",
+        "answer": "1959",
+        "distractors": [
+          "1945",
+          "1776",
+          "1912"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which US state was admitted as the 49th state in January 1959, just before Hawaii?",
+        "answer": "Alaska",
+        "distractors": [
+          "Arizona",
+          "Oklahoma",
+          "New Mexico"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Hawaii was the last US state admitted, completing the 50-state union in 1959.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ became the 50th US state in 1959, completing the modern American union.",
+        "answer": "Hawaii",
+        "distractors": [
+          "Alaska",
+          "Arizona",
+          "Nevada"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hawaii",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A US map with 50 star markers, the Hawaiian island chain glowing as the final star is added, fireworks over Pearl Harbor in the background, pixel art style.",
+    "tags": [
+      "USA",
+      "states",
+      "Hawaii",
+      "history",
+      "geography"
+    ]
+  },
+  {
+    "id": "geo-usa-third-largest-area",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "americas",
+    "categoryL1": "Geography",
+    "categoryL2": "americas",
+    "categoryL3": "",
+    "statement": "The United States is the world's third or fourth largest country by area, at about 9.8 million square kilometers.",
+    "quizQuestion": "By area, approximately what rank is the USA among the world's largest countries?",
+    "correctAnswer": "3rd or 4th largest",
+    "distractors": [
+      "1st largest",
+      "2nd largest",
+      "5th largest",
+      "6th largest",
+      "10th largest",
+      "7th largest",
+      "8th largest",
+      "9th largest"
+    ],
+    "acceptableAnswers": [
+      "3rd or 4th",
+      "3rd",
+      "4th",
+      "Third",
+      "Fourth"
+    ],
+    "explanation": "The USA covers about 9.83 million km². Russia is undisputedly largest (17.1 million km²). Whether the US is 3rd or 4th depends on how Canada and China are measured — the US and China are very close in total area.",
+    "wowFactor": "Alaska alone is larger than the next three biggest US states combined — and larger than California, Texas, and Montana together. It's so large it would be the 17th biggest country in the world if it were independent.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which is the world's largest country by land area?",
+        "answer": "Russia",
+        "distractors": [
+          "Canada",
+          "China",
+          "USA"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "If Alaska were a country, approximately what rank would it be by area?",
+        "answer": "17th largest country",
+        "distractors": [
+          "5th largest",
+          "50th largest",
+          "100th largest"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The United States is one of the world's three or four largest countries by area.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The USA covers about 9.8 million km², making it the ___ or 4th largest country.",
+        "answer": "3rd",
+        "distractors": [
+          "1st",
+          "2nd",
+          "5th"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/United_States",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "World map with top four largest countries highlighted in different colors — Russia vast in blue, Canada in red, USA in gold, China in green — with size bars below, pixel art style.",
+    "tags": [
+      "USA",
+      "area",
+      "geography",
+      "records",
+      "land"
+    ]
+  },
+  {
+    "id": "geo-usa-grand-canyon",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "americas",
+    "categoryL1": "Geography",
+    "categoryL2": "americas",
+    "categoryL3": "",
+    "statement": "The Grand Canyon in Arizona is 446 km long, up to 29 km wide, and over 1.6 km deep — carved by the Colorado River over millions of years.",
+    "quizQuestion": "Which US state contains the Grand Canyon?",
+    "correctAnswer": "Arizona",
+    "distractors": [
+      "Utah",
+      "Colorado",
+      "Nevada",
+      "New Mexico",
+      "Wyoming",
+      "Montana",
+      "Idaho",
+      "California"
+    ],
+    "acceptableAnswers": [
+      "Arizona"
+    ],
+    "explanation": "The Grand Canyon was carved by the Colorado River over 5–6 million years, exposing rock layers up to 2 billion years old. It became a US National Park in 1919. Its deepest point is 1,857 meters below the rim.",
+    "wowFactor": "The rock at the bottom of the Grand Canyon is about 1.8 billion years old — roughly 40% of the Earth's entire age. You're essentially looking at the planet's exposed geological history.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which river carved the Grand Canyon over millions of years?",
+        "answer": "Colorado River",
+        "distractors": [
+          "Rio Grande",
+          "Arkansas River",
+          "Gila River"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How deep is the Grand Canyon at its deepest point?",
+        "answer": "Over 1.6 km deep",
+        "distractors": [
+          "500 meters",
+          "3 km",
+          "100 meters"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Grand Canyon is located in the US state of Arizona.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Grand Canyon was carved by the ___ River through Arizona over millions of years.",
+        "answer": "Colorado",
+        "distractors": [
+          "Rio Grande",
+          "Gila",
+          "Arkansas"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Grand_Canyon",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Vast layered red-orange canyon walls plunging down to a silver ribbon of river far below, hikers tiny on the rim against a blue sky, exposed geological strata glowing in layers, pixel art style.",
+    "tags": [
+      "USA",
+      "grand canyon",
+      "Arizona",
+      "geology",
+      "landmarks"
+    ]
+  },
+  {
+    "id": "geo-turkey-transcontinental",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "asia_oceania",
+    "categoryL1": "Geography",
+    "categoryL2": "asia_oceania",
+    "categoryL3": "",
+    "statement": "Turkey is a transcontinental country — most of its territory lies in Asia (Anatolia), while a small part in Europe is separated by the Bosphorus Strait.",
+    "quizQuestion": "What strait splits Turkey between Europe and Asia?",
+    "correctAnswer": "The Bosphorus",
+    "distractors": [
+      "The Dardanelles",
+      "The Strait of Gibraltar",
+      "The Strait of Messina",
+      "The English Channel",
+      "The Suez Canal",
+      "The Strait of Hormuz",
+      "The Strait of Malacca",
+      "The Sea of Marmara"
+    ],
+    "acceptableAnswers": [
+      "The Bosphorus",
+      "Bosphorus Strait",
+      "Bosphorus"
+    ],
+    "explanation": "The Bosphorus Strait bisects Istanbul, making it the only city in the world straddling two continents. Anatolia (Asian Turkey) makes up about 97% of Turkey's land mass. Turkey controls the only sea passage between the Black Sea and Mediterranean.",
+    "wowFactor": "Istanbul is the only city in the world that spans two continents — the European side and Asian side are connected by bridges and tunnels crossing the Bosphorus. You can commute between continents every day.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the name of the Turkish city that spans two continents?",
+        "answer": "Istanbul",
+        "distractors": [
+          "Ankara",
+          "Izmir",
+          "Bursa"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What percentage of Turkey's land mass is in Asia (Anatolia)?",
+        "answer": "About 97%",
+        "distractors": [
+          "About 50%",
+          "About 75%",
+          "About 30%"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Turkey is a transcontinental country divided between Europe and Asia by the Bosphorus.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Istanbul is the world's only city that spans two continents, divided by the ___ Strait.",
+        "answer": "Bosphorus",
+        "distractors": [
+          "Dardanelles",
+          "Marmara",
+          "Gibraltar"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Turkey",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Istanbul's skyline at dusk with a bridge crossing glittering blue water, minarets on the left (Europe) and a modern skyline on the right (Asia), continent labels floating above, pixel art style.",
+    "tags": [
+      "turkey",
+      "istanbul",
+      "bosphorus",
+      "transcontinental",
+      "geography"
+    ]
+  },
+  {
+    "id": "geo-turkey-ancient-history",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "asia_oceania",
+    "categoryL1": "Geography",
+    "categoryL2": "asia_oceania",
+    "categoryL3": "",
+    "statement": "Modern Turkey's Anatolia region was home to some of humanity's earliest civilizations, including the Hittites and the site of ancient Troy.",
+    "quizQuestion": "What legendary ancient city was located on Turkey's Aegean coast?",
+    "correctAnswer": "Troy",
+    "distractors": [
+      "Carthage",
+      "Babylon",
+      "Nineveh",
+      "Ur",
+      "Mycenae",
+      "Corinth",
+      "Tyre",
+      "Thebes"
+    ],
+    "acceptableAnswers": [
+      "Troy",
+      "Ancient Troy"
+    ],
+    "explanation": "Ancient Troy (Hisarlik) was discovered in Turkey by Heinrich Schliemann in 1868. Anatolia was also the heartland of the Hittite Empire (1600–1180 BC), one of the first Iron Age civilizations. Turkey contains more ancient Greek ruins than Greece itself.",
+    "wowFactor": "Turkey contains more ancient Greek ruins than Greece does — including Ephesus, the ancient Temple of Artemis (one of the Seven Wonders), and the apostle Paul's home city of Tarsus.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which archaeologist discovered the ruins of ancient Troy in Turkey in 1868?",
+        "answer": "Heinrich Schliemann",
+        "distractors": [
+          "Howard Carter",
+          "Arthur Evans",
+          "Aurel Stein"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which ancient empire of Anatolia (Turkey) first worked with iron on a large scale?",
+        "answer": "Hittites",
+        "distractors": [
+          "Assyrians",
+          "Babylonians",
+          "Phoenicians"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The legendary city of Troy was located in what is now Turkey.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ancient ___ was discovered in Turkey by Heinrich Schliemann in 1868.",
+        "answer": "Troy",
+        "distractors": [
+          "Babylon",
+          "Carthage",
+          "Nineveh"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Troy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ancient stone ruins of a walled city at sunset, a large wooden horse visible at the gates, Aegean Sea visible in the background, archaeological excavation pits nearby, pixel art style.",
+    "tags": [
+      "turkey",
+      "troy",
+      "history",
+      "archaeology",
+      "ancient"
+    ]
+  },
+  {
+    "id": "geo-turkey-capital",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "asia_oceania",
+    "categoryL1": "Geography",
+    "categoryL2": "asia_oceania",
+    "categoryL3": "",
+    "statement": "Ankara, not Istanbul, is the capital of Turkey — it was chosen as capital in 1923 when Mustafa Kemal Atatürk founded the modern Turkish Republic.",
+    "quizQuestion": "What is the capital city of Turkey?",
+    "correctAnswer": "Ankara",
+    "distractors": [
+      "Istanbul",
+      "Izmir",
+      "Bursa",
+      "Antalya",
+      "Konya",
+      "Adana",
+      "Gaziantep",
+      "Trabzon"
+    ],
+    "acceptableAnswers": [
+      "Ankara"
+    ],
+    "explanation": "Atatürk chose Ankara as Turkey's capital in 1923 because it was more centrally located in Anatolia and easier to defend than Istanbul. Istanbul remains Turkey's largest city and cultural center, but Ankara is the seat of government.",
+    "wowFactor": "When Ankara became Turkey's capital in 1923, it had just 30,000 residents. Today it has nearly 6 million people — one of the fastest city expansions in modern history, built essentially from scratch.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who founded the modern Turkish Republic and made Ankara its capital in 1923?",
+        "answer": "Mustafa Kemal Atatürk",
+        "distractors": [
+          "Suleiman the Magnificent",
+          "Mehmed II",
+          "Erdogan"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What was the capital of the Ottoman Empire that Ankara replaced in 1923?",
+        "answer": "Istanbul",
+        "distractors": [
+          "Bursa",
+          "Edirne",
+          "Iznik"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Istanbul is the capital of Turkey.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Partially true",
+          "It depends"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ is Turkey's capital, chosen by Atatürk in 1923 over the more famous Istanbul.",
+        "answer": "Ankara",
+        "distractors": [
+          "Istanbul",
+          "Izmir",
+          "Bursa"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ankara",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A modern Turkish government building flying the red crescent flag, the city of Ankara sprawled over Anatolian hills behind it, with a small inset showing Istanbul being crossed out as capital, pixel art style.",
+    "tags": [
+      "turkey",
+      "ankara",
+      "capital",
+      "atatürk",
+      "geography"
+    ]
+  },
+  {
+    "id": "geo-antarctica-coldest-continent",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "climate_biomes",
+    "categoryL1": "Geography",
+    "categoryL2": "climate_biomes",
+    "categoryL3": "",
+    "statement": "Antarctica is the coldest, driest, and windiest continent on Earth — the coldest temperature ever recorded was −89.2°C there in 1983.",
+    "quizQuestion": "What is the coldest temperature ever recorded on Earth, measured in Antarctica?",
+    "correctAnswer": "−89.2°C",
+    "distractors": [
+      "−60°C",
+      "−70°C",
+      "−100°C",
+      "−50°C",
+      "−75°C",
+      "−80°C",
+      "−55°C",
+      "−95°C"
+    ],
+    "acceptableAnswers": [
+      "−89.2°C",
+      "-89.2 degrees Celsius",
+      "89.2 below zero"
+    ],
+    "explanation": "The record low of −89.2°C (−128.6°F) was measured at the Soviet Vostok Station on July 21, 1983. Antarctica also receives almost no precipitation, making it technically the world's largest cold desert. It's also the windiest continent.",
+    "wowFactor": "Antarctica is technically a desert — it gets less than 200mm of precipitation per year, which is drier than the Sahara. The frozen water there didn't fall recently; much of it fell as snow over 800,000 years ago.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "At which Soviet research station was Earth's coldest temperature recorded in 1983?",
+        "answer": "Vostok Station",
+        "distractors": [
+          "Amundsen-Scott Station",
+          "McMurdo Station",
+          "Concordia Station"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Why is Antarctica technically considered a desert despite being covered in ice?",
+        "answer": "It receives very little precipitation",
+        "distractors": [
+          "It has no liquid water",
+          "It has no plants",
+          "It is too cold for animals"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The coldest temperature ever recorded on Earth was −89.2°C in Antarctica.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The coldest temperature ever recorded on Earth was ___ degrees Celsius, at Vostok Station, Antarctica.",
+        "answer": "−89.2",
+        "distractors": [
+          "−50",
+          "−100",
+          "−70"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Antarctica",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A vast white frozen plateau under a purple-black sky with the Southern Lights, a tiny research station with glowing windows nearly buried in ice, thermometer showing extreme negative temperature, pixel art style.",
+    "tags": [
+      "antarctica",
+      "temperature",
+      "cold",
+      "records",
+      "continent"
+    ]
+  },
+  {
+    "id": "geo-antarctica-ice-sheet",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "climate_biomes",
+    "categoryL1": "Geography",
+    "categoryL2": "climate_biomes",
+    "categoryL3": "",
+    "statement": "Antarctica's ice sheet holds about 70% of Earth's fresh water — if it melted entirely, global sea levels would rise by about 60 meters.",
+    "quizQuestion": "Roughly what percentage of Earth's fresh water is locked in Antarctica's ice sheet?",
+    "correctAnswer": "70%",
+    "distractors": [
+      "10%",
+      "30%",
+      "50%",
+      "20%",
+      "90%",
+      "5%",
+      "40%",
+      "15%"
+    ],
+    "acceptableAnswers": [
+      "70%",
+      "About 70%",
+      "Over 60%"
+    ],
+    "explanation": "Antarctica contains roughly 26.5 million cubic kilometers of ice. The East Antarctic Ice Sheet is the largest single ice mass on Earth. Were it all to melt, the sea level rise would inundate coastal cities worldwide, including London, Mumbai, and New York.",
+    "wowFactor": "Under Antarctica's ice, there are over 400 subglacial lakes — liquid water kept from freezing by geothermal heat. Lake Vostok has been isolated for 15 million years and may contain unique life forms.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "By how much would sea levels rise if Antarctica's entire ice sheet melted?",
+        "answer": "About 60 meters",
+        "distractors": [
+          "1 meter",
+          "10 meters",
+          "200 meters"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What keeps Antarctica's subglacial lakes from freezing, despite extreme surface temperatures?",
+        "answer": "Geothermal heat",
+        "distractors": [
+          "Solar radiation",
+          "Pressure from ice",
+          "Ocean currents"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Antarctica holds about 70% of Earth's total fresh water.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Antarctica's ice sheet holds about ___ of Earth's fresh water.",
+        "answer": "70%",
+        "distractors": [
+          "10%",
+          "50%",
+          "30%"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Antarctic_ice_sheet",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Cross-section of Antarctica showing the massive ice sheet above and ancient hidden lakes glowing blue below, a cutaway view revealing the subglacial water, pixel art style.",
+    "tags": [
+      "antarctica",
+      "ice",
+      "fresh water",
+      "climate",
+      "glaciers"
+    ]
+  },
+  {
+    "id": "geo-antarctica-no-residents",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "climate_biomes",
+    "categoryL1": "Geography",
+    "categoryL2": "climate_biomes",
+    "categoryL3": "",
+    "statement": "Antarctica has no permanent residents — only seasonal research station staff, with about 1,000 people in winter and up to 5,000 in summer.",
+    "quizQuestion": "How many permanent residents does Antarctica have?",
+    "correctAnswer": "None (zero)",
+    "distractors": [
+      "About 1,000",
+      "About 50,000",
+      "About 500",
+      "About 100",
+      "About 10,000",
+      "About 5,000",
+      "About 200",
+      "About 50"
+    ],
+    "acceptableAnswers": [
+      "None",
+      "Zero",
+      "No permanent residents",
+      "0"
+    ],
+    "explanation": "Antarctica is governed by the Antarctic Treaty (1959), signed by 54 nations, which bans military activity and designates the continent for peaceful scientific research. No country owns Antarctica outright. About 30 countries operate research stations there.",
+    "wowFactor": "Antarctica has its own area code — +672 — and a postal service. Scientists stationed there can receive mail, and some polar expeditions have sent postcards from the South Pole.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What 1959 treaty bans military activity in Antarctica and reserves it for science?",
+        "answer": "The Antarctic Treaty",
+        "distractors": [
+          "The Geneva Convention",
+          "The UN Charter",
+          "The Polar Accord"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Approximately how many people are stationed in Antarctica during the busy summer season?",
+        "answer": "Up to 5,000",
+        "distractors": [
+          "About 100",
+          "About 50,000",
+          "About 500"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Antarctica has no permanent human residents.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Antarctica has ___ permanent residents, only hosting rotating research teams.",
+        "answer": "no",
+        "distractors": [
+          "1,000",
+          "100",
+          "some"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Antarctic_Treaty_System",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cluster of brightly colored research station huts on a white snowfield under a clear sky, flags from multiple nations planted nearby, no town or road in any direction, pixel art style.",
+    "tags": [
+      "antarctica",
+      "residents",
+      "research",
+      "treaty",
+      "science"
+    ]
+  },
+  {
+    "id": "geo-italy-boot-shape",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "europe",
+    "categoryL1": "Geography",
+    "categoryL2": "europe",
+    "categoryL3": "",
+    "statement": "Italy is famous for its distinctive boot shape on the map, a peninsula extending 1,000 km into the Mediterranean Sea, with Sicily at its 'toe'.",
+    "quizQuestion": "What large island lies at the 'toe' of Italy's boot-shaped peninsula?",
+    "correctAnswer": "Sicily",
+    "distractors": [
+      "Sardinia",
+      "Corsica",
+      "Malta",
+      "Elba",
+      "Capri",
+      "Ischia",
+      "Lampedusa",
+      "Pantelleria"
+    ],
+    "acceptableAnswers": [
+      "Sicily"
+    ],
+    "explanation": "Sicily is the largest island in the Mediterranean Sea, separated from mainland Italy by the Strait of Messina, which is just 3 km wide at its narrowest. Sicily is actually closer to Africa (130 km to Tunisia) than to northern Italy (600 km).",
+    "wowFactor": "The Strait of Messina between Sicily and mainland Italy is so narrow (3 km) that the Romans built a pontoon bridge across it. There are still plans to build a permanent suspension bridge there today.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the narrowest width of the Strait of Messina between Sicily and Italy?",
+        "answer": "About 3 km",
+        "distractors": [
+          "50 km",
+          "10 km",
+          "100 km"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How much closer is Sicily to Tunisia in Africa than to northern Italy?",
+        "answer": "Much closer to Tunisia",
+        "distractors": [
+          "Same distance",
+          "Closer to northern Italy",
+          "Sicily is landlocked"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Sicily lies at the 'toe' of Italy's boot-shaped peninsula.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ is the large island at the toe of Italy's boot shape, in the Mediterranean Sea.",
+        "answer": "Sicily",
+        "distractors": [
+          "Sardinia",
+          "Corsica",
+          "Malta"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Italy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Italy's distinctive boot shape in Mediterranean blue, with Sicily highlighted at the toe, a ruler showing the 3km Messina Strait, North Africa faintly visible to the south, pixel art style.",
+    "tags": [
+      "italy",
+      "sicily",
+      "geography",
+      "mediterranean",
+      "peninsula"
+    ]
+  },
+  {
+    "id": "geo-italy-roman-colosseum",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "europe",
+    "categoryL1": "Geography",
+    "categoryL2": "europe",
+    "categoryL3": "",
+    "statement": "Rome's Colosseum, built between 70–80 AD, could hold 50,000 to 80,000 spectators and hosted gladiatorial contests for 400 years.",
+    "quizQuestion": "Approximately how many spectators could Rome's Colosseum hold?",
+    "correctAnswer": "50,000 to 80,000",
+    "distractors": [
+      "5,000",
+      "10,000",
+      "100,000",
+      "20,000",
+      "150,000",
+      "30,000",
+      "200,000",
+      "40,000"
+    ],
+    "acceptableAnswers": [
+      "50,000 to 80,000",
+      "About 50,000",
+      "Up to 80,000"
+    ],
+    "explanation": "The Colosseum (Flavian Amphitheatre) was built under emperors Vespasian and Titus. It had 80 entrances and a retractable fabric roof (velarium). Gladiatorial games were held there until 435 AD, and animal hunts (venationes) continued until 523 AD.",
+    "wowFactor": "The Colosseum had a retractable roof — a massive canvas awning called the 'velarium' — operated by a team of sailors who used their rope-rigging skills to shade 50,000 spectators from the Roman sun.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Under which Roman emperor was the Colosseum completed and opened?",
+        "answer": "Emperor Titus",
+        "distractors": [
+          "Augustus",
+          "Nero",
+          "Hadrian"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What was the retractable awning system on the Roman Colosseum called?",
+        "answer": "Velarium",
+        "distractors": [
+          "Atrium",
+          "Vomitorium",
+          "Tablinum"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Rome's Colosseum could hold up to 50,000–80,000 spectators.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Roman Colosseum could seat up to ___ spectators for gladiatorial contests.",
+        "answer": "80,000",
+        "distractors": [
+          "5,000",
+          "200,000",
+          "20,000"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Colosseum",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "References gladiatorial violence in historical context.",
+    "visualDescription": "The Colosseum's massive elliptical tiers filled with cheering crowds, the arena floor below with gladiators, the velarium awning partially unfurled above, ancient Rome visible behind it, pixel art style.",
+    "tags": [
+      "italy",
+      "rome",
+      "colosseum",
+      "history",
+      "ancient rome"
+    ]
+  },
+  {
+    "id": "geo-italy-renaissance",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "europe",
+    "categoryL1": "Geography",
+    "categoryL2": "europe",
+    "categoryL3": "",
+    "statement": "The Renaissance — a cultural rebirth in art, science, and philosophy — began in Florence, Italy in the 14th century and spread across Europe.",
+    "quizQuestion": "In which Italian city did the Renaissance begin in the 14th century?",
+    "correctAnswer": "Florence",
+    "distractors": [
+      "Rome",
+      "Venice",
+      "Milan",
+      "Naples",
+      "Genoa",
+      "Bologna",
+      "Siena",
+      "Padua"
+    ],
+    "acceptableAnswers": [
+      "Florence"
+    ],
+    "explanation": "Florence (Firenze) was the birthplace of the Renaissance, funded by the wealthy Medici banking family. Leonardo da Vinci, Michelangelo, Botticelli, and Galileo all had roots in the Florentine tradition. The word 'Renaissance' means 'rebirth' in French.",
+    "wowFactor": "The Medici banking family essentially bankrolled the entire Renaissance — they financed Botticelli, Michelangelo, and Galileo. One family's wealth funded the cultural transformation of Western civilization.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which wealthy family bankrolled Florence's Renaissance arts and culture?",
+        "answer": "The Medici family",
+        "distractors": [
+          "The Borgia family",
+          "The Sforza family",
+          "The Este family"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What does the French word 'Renaissance' translate to in English?",
+        "answer": "Rebirth",
+        "distractors": [
+          "Enlightenment",
+          "Revolution",
+          "Discovery"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Renaissance began in Florence, Italy in the 14th century.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Renaissance began in ___, Italy, bankrolled by the wealthy Medici family.",
+        "answer": "Florence",
+        "distractors": [
+          "Rome",
+          "Venice",
+          "Milan"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Renaissance",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A view of Florence's cathedral dome (Duomo) rising above a city of Renaissance-era rooftops, artists and scholars in medieval clothing visible in piazzas below, Arno River glinting in the background, pixel art style.",
+    "tags": [
+      "italy",
+      "florence",
+      "renaissance",
+      "art",
+      "history"
+    ]
+  },
+  {
+    "id": "geo-london-thames-big-ben",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "europe",
+    "categoryL1": "Geography",
+    "categoryL2": "europe",
+    "categoryL3": "",
+    "statement": "London's famous clock tower 'Big Ben' is technically the name of the great bell inside the tower, not the tower itself, which is officially called Elizabeth Tower.",
+    "quizQuestion": "What is officially the name of London's iconic clock tower, not 'Big Ben'?",
+    "correctAnswer": "Elizabeth Tower",
+    "distractors": [
+      "Westminster Tower",
+      "Victoria Tower",
+      "Parliament Tower",
+      "Thames Tower",
+      "Royal Clock Tower",
+      "Palace Tower",
+      "Great Bell Tower",
+      "St. Stephen's Tower"
+    ],
+    "acceptableAnswers": [
+      "Elizabeth Tower",
+      "The Elizabeth Tower"
+    ],
+    "explanation": "The tower was renamed Elizabeth Tower in 2012 to honor Queen Elizabeth II's Diamond Jubilee. 'Big Ben' refers to the 13.7-tonne bell inside. The tower was previously known as the Clock Tower or St. Stephen's Tower.",
+    "wowFactor": "Big Ben has been wrong before — when the hands were first attached, the clock ran slow. Crews discovered they could adjust timing by adding or removing old pennies from the pendulum weight. This is still done today.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does 'Big Ben' technically refer to in the famous London tower?",
+        "answer": "The great bell inside",
+        "distractors": [
+          "The clock face",
+          "The entire tower",
+          "The chimes"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In what year was London's clock tower renamed Elizabeth Tower?",
+        "answer": "2012",
+        "distractors": [
+          "1952",
+          "2000",
+          "1977"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: 'Big Ben' is the name of the bell inside London's Elizabeth Tower, not the tower itself.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "London's famous clock tower is officially called ___ Tower, renamed in 2012.",
+        "answer": "Elizabeth",
+        "distractors": [
+          "Westminster",
+          "Victoria",
+          "Parliament"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Big_Ben",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The iconic Gothic clock tower against a London foggy sky, Thames River below, a cross-section inset revealing the enormous bell labeled 'Big Ben' suspended inside, pixel art style.",
+    "tags": [
+      "london",
+      "big ben",
+      "landmarks",
+      "UK",
+      "trivia"
+    ]
+  },
+  {
+    "id": "geo-london-underground",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "europe",
+    "categoryL1": "Geography",
+    "categoryL2": "europe",
+    "categoryL3": "",
+    "statement": "London's Underground (the 'Tube') opened in 1863, making it the world's oldest underground railway system.",
+    "quizQuestion": "In what year did the London Underground, the world's first subway, open?",
+    "correctAnswer": "1863",
+    "distractors": [
+      "1900",
+      "1890",
+      "1850",
+      "1880",
+      "1870",
+      "1910",
+      "1876",
+      "1920"
+    ],
+    "acceptableAnswers": [
+      "1863"
+    ],
+    "explanation": "The Metropolitan Railway opened in London on January 10, 1863, running between Paddington and Farringdon. It used steam locomotives. Today the Tube has 272 stations and 402 km of track, with over 1 billion passenger journeys per year.",
+    "wowFactor": "The London Tube has its own microclimate — the deep tube lines are now permanently 10–15°C warmer than when they opened in 1863, because the clay surrounding them has absorbed 150 years of heat from trains.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the original steam railway called that became the London Underground?",
+        "answer": "Metropolitan Railway",
+        "distractors": [
+          "Great Western Railway",
+          "Midland Railway",
+          "South Eastern Railway"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many stations does the London Underground have today?",
+        "answer": "272 stations",
+        "distractors": [
+          "50 stations",
+          "100 stations",
+          "400 stations"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The London Underground, opened in 1863, is the world's oldest metro system.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The London Underground opened in ___, making it the world's oldest metro railway.",
+        "answer": "1863",
+        "distractors": [
+          "1900",
+          "1880",
+          "1890"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/London_Underground",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Victorian-era steam train emerging from a tunnel mouth under London streets, passengers in top hats and bonnets boarding at a 19th-century platform, the Underground roundel sign glowing above, pixel art style.",
+    "tags": [
+      "london",
+      "underground",
+      "tube",
+      "history",
+      "transport"
+    ]
+  },
+  {
+    "id": "geo-iceland-geothermal",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "landforms_water",
+    "categoryL1": "Geography",
+    "categoryL2": "landforms_water",
+    "categoryL3": "",
+    "statement": "Iceland generates about 85% of its total energy from renewable sources — primarily geothermal and hydropower from its volcanic landscape.",
+    "quizQuestion": "Approximately what percentage of Iceland's energy comes from renewable sources?",
+    "correctAnswer": "About 85%",
+    "distractors": [
+      "About 20%",
+      "About 50%",
+      "About 100%",
+      "About 30%",
+      "About 60%",
+      "About 10%",
+      "About 40%",
+      "About 70%"
+    ],
+    "acceptableAnswers": [
+      "About 85%",
+      "85%",
+      "Over 80%"
+    ],
+    "explanation": "Iceland sits on the Mid-Atlantic Ridge where the Eurasian and North American tectonic plates meet, giving it abundant geothermal energy. Around 66% of Iceland's energy is geothermal (used mostly for heating), and 20% is hydroelectric.",
+    "wowFactor": "Iceland heats almost all of its homes and buildings with geothermal water pumped directly from the ground — there are virtually no heating bills in the traditional sense. The country sits on top of a volcanic hotspot.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "On what geological feature does Iceland sit, powering its geothermal energy?",
+        "answer": "The Mid-Atlantic Ridge",
+        "distractors": [
+          "The Pacific Ring of Fire",
+          "A subduction zone",
+          "A shield volcano"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What two tectonic plates meet in Iceland, making it volcanically active?",
+        "answer": "Eurasian and North American",
+        "distractors": [
+          "Pacific and North American",
+          "African and Eurasian",
+          "South American and African"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Iceland generates about 85% of its energy from renewable sources.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Iceland generates about 85% of its energy from renewable sources, primarily ___ and hydropower.",
+        "answer": "geothermal",
+        "distractors": [
+          "solar",
+          "wind",
+          "tidal"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Energy_in_Iceland",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An Iceland landscape with steaming geothermal vents and a hot water pipeline running past a modern city, geysers erupting in the distance, green energy icons floating above, pixel art style.",
+    "tags": [
+      "iceland",
+      "geothermal",
+      "energy",
+      "volcanoes",
+      "renewable"
+    ]
+  },
+  {
+    "id": "geo-iceland-geysers",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "landforms_water",
+    "categoryL1": "Geography",
+    "categoryL2": "landforms_water",
+    "categoryL3": "",
+    "statement": "The word 'geyser' comes from Geysir, a specific hot spring in Iceland — one of the most active geyser fields in the world.",
+    "quizQuestion": "Where does the English word 'geyser' originate from?",
+    "correctAnswer": "Geysir, Iceland",
+    "distractors": [
+      "Yellowstone, USA",
+      "Norse mythology",
+      "Old English",
+      "Latin 'geysa'",
+      "A Maori word",
+      "German 'Gieser'",
+      "A Tibetan term",
+      "French 'geiser'"
+    ],
+    "acceptableAnswers": [
+      "Geysir in Iceland",
+      "Geysir, Iceland",
+      "Iceland"
+    ],
+    "explanation": "Geysir (pronounced 'GAY-seer') is the name of a famous hot spring in the Haukadalur valley of Iceland. The English word 'geyser' derives directly from it. The Strokkur geyser nearby erupts every 5–10 minutes to heights of 15–20 meters.",
+    "wowFactor": "The original Geysir geyser that gave all geysers their name no longer erupts regularly — it was active for centuries but earthquakes and human interference (tourists poured soap into it) have largely silenced it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which nearby Icelandic geyser erupts every 5–10 minutes near the original Geysir?",
+        "answer": "Strokkur",
+        "distractors": [
+          "Old Faithful",
+          "Pohutu",
+          "Castle Geyser"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What stopped the original Geysir in Iceland from erupting regularly?",
+        "answer": "Earthquakes and soap dumping",
+        "distractors": [
+          "It dried up",
+          "Lava blocked it",
+          "It was dammed"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The word 'geyser' comes from a specific hot spring called Geysir in Iceland.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The word 'geyser' comes from ___, a famous hot spring in Iceland.",
+        "answer": "Geysir",
+        "distractors": [
+          "Strokkur",
+          "Reykjavik",
+          "Haukadalur"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Geysir",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A towering column of boiling water erupting from a blue-ringed hot spring in a Icelandic valley, steam billowing against a snow-capped mountain, tourists watching from a safe distance, pixel art style.",
+    "tags": [
+      "iceland",
+      "geyser",
+      "geysir",
+      "volcanoes",
+      "etymology"
+    ]
+  },
+  {
+    "id": "geo-iceland-midnight-sun",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "landforms_water",
+    "categoryL1": "Geography",
+    "categoryL2": "landforms_water",
+    "categoryL3": "",
+    "statement": "Iceland experiences the midnight sun in summer — the sun stays above the horizon for 24 hours near the solstice in June.",
+    "quizQuestion": "What natural phenomenon allows Iceland to have sunlight at midnight in summer?",
+    "correctAnswer": "Midnight sun",
+    "distractors": [
+      "Aurora borealis",
+      "Polar vortex",
+      "Solar maximum",
+      "White nights",
+      "Arctic glow",
+      "Solstice flare",
+      "Daylight saving",
+      "Sun pillar"
+    ],
+    "acceptableAnswers": [
+      "Midnight sun",
+      "The midnight sun"
+    ],
+    "explanation": "Iceland lies just below the Arctic Circle, so near the summer solstice (around June 21) the sun barely dips below the horizon. In Reykjavik, the sun sets around midnight and rises again at 3 AM. In the far north, it never sets at all.",
+    "wowFactor": "Iceland's capital Reykjavik gets only 4 hours of daylight in mid-December, but nearly 24 hours of light in June. The extreme seasonal swing affects locals' sleep, mood, and outdoor culture dramatically.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Around what date does Iceland experience its longest day near 24-hour sunlight?",
+        "answer": "June 21 (summer solstice)",
+        "distractors": [
+          "March 21",
+          "December 21",
+          "September 21"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many hours of daylight does Reykjavik get in mid-December?",
+        "answer": "About 4 hours",
+        "distractors": [
+          "About 12 hours",
+          "About 0 hours",
+          "About 8 hours"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Iceland experiences the midnight sun, with nearly 24 hours of daylight in summer.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Iceland experiences the midnight ___ in June, when daylight lasts almost 24 hours.",
+        "answer": "sun",
+        "distractors": [
+          "sky",
+          "glow",
+          "light"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Midnight_sun",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A time-lapse arc of the sun hugging the horizon at midnight, its golden path circling just above the edge of the sea, Icelandic cliffs in silhouette, clock showing 12:00 AM, pixel art style.",
+    "tags": [
+      "iceland",
+      "midnight sun",
+      "daylight",
+      "arctic",
+      "seasons"
+    ]
+  },
+  {
+    "id": "geo-spain-sagrada-familia",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "europe",
+    "categoryL1": "Geography",
+    "categoryL2": "europe",
+    "categoryL3": "",
+    "statement": "The Sagrada Família in Barcelona, designed by Antoni Gaudí, has been under construction since 1882 and is still not completed.",
+    "quizQuestion": "In what year did construction begin on Barcelona's Sagrada Família?",
+    "correctAnswer": "1882",
+    "distractors": [
+      "1900",
+      "1850",
+      "1920",
+      "1870",
+      "1930",
+      "1865",
+      "1910",
+      "1890"
+    ],
+    "acceptableAnswers": [
+      "1882"
+    ],
+    "explanation": "The Sagrada Família is a Roman Catholic basilica designed by Antoni Gaudí, who dedicated the last 43 years of his life to it. Gaudí died in 1926, run over by a tram, with the building only about 25% complete. It's expected to finish around 2026.",
+    "wowFactor": "When Gaudí was struck by a tram and died in 1926, he was so poorly dressed that passersby thought he was a beggar and almost didn't call an ambulance. The designer of one of history's greatest buildings died as an unrecognized pauper.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who designed Barcelona's Sagrada Família, started in 1882?",
+        "answer": "Antoni Gaudí",
+        "distractors": [
+          "Pablo Picasso",
+          "Salvador Dalí",
+          "Santiago Calatrava"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How did Antoni Gaudí die in 1926 while the Sagrada Família was still unfinished?",
+        "answer": "He was struck by a tram",
+        "distractors": [
+          "He fell from scaffolding",
+          "He died of illness",
+          "He drowned"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Barcelona's Sagrada Família has been under construction since 1882.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Sagrada Família has been under construction since ___, making it one of the world's longest-running building projects.",
+        "answer": "1882",
+        "distractors": [
+          "1920",
+          "1850",
+          "1900"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sagrada_Família",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The ornate organic stone spires of the Sagrada Família rising above Barcelona, construction cranes still visible between towers, Gaudí's nature-inspired curves glowing in warm sunset light, pixel art style.",
+    "tags": [
+      "spain",
+      "barcelona",
+      "sagrada familia",
+      "gaudí",
+      "architecture"
+    ]
+  },
+  {
+    "id": "geo-spain-flamenco",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "europe",
+    "categoryL1": "Geography",
+    "categoryL2": "europe",
+    "categoryL3": "",
+    "statement": "Flamenco, Spain's iconic music and dance tradition, originated in the Andalusia region and is recognized by UNESCO as an Intangible Cultural Heritage.",
+    "quizQuestion": "In which Spanish region did flamenco music and dance originate?",
+    "correctAnswer": "Andalusia",
+    "distractors": [
+      "Catalonia",
+      "Castile",
+      "Madrid",
+      "Valencia",
+      "Galicia",
+      "Aragon",
+      "Basque Country",
+      "Asturias"
+    ],
+    "acceptableAnswers": [
+      "Andalusia",
+      "Andalucia"
+    ],
+    "explanation": "Flamenco developed in Andalusia in southern Spain, blending Romani (Gypsy), Moorish, and Spanish folk traditions. It comprises singing (cante), guitar (toque), dance (baile), and rhythmic clapping (palmas). It was added to UNESCO's Intangible Heritage list in 2010.",
+    "wowFactor": "Flamenco guitar technique gave the world one of music's most copied sounds — but traditional flamenco musicians consider the guitar secondary to the voice, which is the true heart of the art form.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What three cultural traditions blended to create flamenco in Andalusia?",
+        "answer": "Romani, Moorish, and Spanish folk",
+        "distractors": [
+          "Greek, Roman, and Arabic",
+          "French, Italian, and Spanish",
+          "Sephardic, Berber, and Iberian"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In what year was flamenco added to UNESCO's Intangible Cultural Heritage list?",
+        "answer": "2010",
+        "distractors": [
+          "1995",
+          "2000",
+          "2016"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Flamenco originated in Andalusia, southern Spain.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Flamenco originated in ___, southern Spain, blending Romani, Moorish, and Spanish folk traditions.",
+        "answer": "Andalusia",
+        "distractors": [
+          "Catalonia",
+          "Madrid",
+          "Valencia"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Flamenco",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A flamenco dancer in a vivid red dress spinning on a tavern stage, guitarist in the corner, candles flickering, Spanish arched architecture framing the scene, pixel art style.",
+    "tags": [
+      "spain",
+      "flamenco",
+      "andalusia",
+      "dance",
+      "culture"
+    ]
+  },
+  {
+    "id": "geo-spain-iberian-peninsula",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "europe",
+    "categoryL1": "Geography",
+    "categoryL2": "europe",
+    "categoryL3": "",
+    "statement": "Spain and Portugal share the Iberian Peninsula, separated from France by the Pyrenees Mountains — one of Europe's most distinct geographic boundaries.",
+    "quizQuestion": "Which mountain range separates the Iberian Peninsula from the rest of Europe?",
+    "correctAnswer": "The Pyrenees",
+    "distractors": [
+      "The Alps",
+      "The Apennines",
+      "The Cantabrian Mountains",
+      "The Sierra Nevada",
+      "The Massif Central",
+      "The Carpathians",
+      "The Dinaric Alps",
+      "The Balkans"
+    ],
+    "acceptableAnswers": [
+      "The Pyrenees",
+      "Pyrenees"
+    ],
+    "explanation": "The Pyrenees stretch 430 km from the Bay of Biscay to the Mediterranean, reaching heights over 3,400 m. The tiny principality of Andorra is nestled within the Pyrenees. The mountains formed a natural barrier that helped Iberian cultures develop distinctively.",
+    "wowFactor": "The tiny nation of Andorra exists because of a 1278 treaty between France and Spain who couldn't agree on who owned the mountain valley — so they agreed to co-govern it together, and that co-governance has continued for 700 years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What tiny country is nestled within the Pyrenees Mountains between Spain and France?",
+        "answer": "Andorra",
+        "distractors": [
+          "Monaco",
+          "San Marino",
+          "Liechtenstein"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How long are the Pyrenees Mountain range in kilometers?",
+        "answer": "About 430 km",
+        "distractors": [
+          "100 km",
+          "1,000 km",
+          "200 km"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Pyrenees Mountains form the natural border between Spain and France.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ Mountains separate the Iberian Peninsula from the rest of continental Europe.",
+        "answer": "Pyrenees",
+        "distractors": [
+          "Alps",
+          "Apennines",
+          "Cantabrian"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pyrenees",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A sweeping panorama of the Pyrenees snow-capped peaks, Spain visible as sun-baked plains to the south and France as green rolling hills to the north, Andorra's tiny flag visible on a mountain peak, pixel art style.",
+    "tags": [
+      "spain",
+      "pyrenees",
+      "iberian peninsula",
+      "geography",
+      "europe"
+    ]
+  },
+  {
+    "id": "geo-mexico-aztec-heritage",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "americas",
+    "categoryL1": "Geography",
+    "categoryL2": "americas",
+    "categoryL3": "",
+    "statement": "Mexico City is built on the ruins of Tenochtitlán, the ancient Aztec capital that was once the largest city in the Americas, founded in 1325.",
+    "quizQuestion": "What ancient Aztec capital was built where Mexico City stands today?",
+    "correctAnswer": "Tenochtitlán",
+    "distractors": [
+      "Chichén Itzá",
+      "Tula",
+      "Cholula",
+      "Teotihuacán",
+      "Palenque",
+      "Tikal",
+      "Copán",
+      "Monte Albán"
+    ],
+    "acceptableAnswers": [
+      "Tenochtitlán",
+      "Tenochtitlan"
+    ],
+    "explanation": "Tenochtitlán was founded in 1325 on an island in Lake Texcoco. At its peak, it had about 200,000 inhabitants — larger than any European city at the time. Spanish conquistador Hernán Cortés destroyed it in 1521 and built Mexico City on its foundations.",
+    "wowFactor": "Tenochtitlán was built on an island in a lake and connected to the mainland by causeways — imagine a medieval island city the size of modern Los Angeles. Mexico City literally sinks into its old lake bed every year due to this.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which Spanish conquistador destroyed Tenochtitlán and built Mexico City in its place?",
+        "answer": "Hernán Cortés",
+        "distractors": [
+          "Francisco Pizarro",
+          "Ponce de León",
+          "Vasco de Gama"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In what year was the Aztec capital Tenochtitlán founded?",
+        "answer": "1325",
+        "distractors": [
+          "1200",
+          "1500",
+          "1400"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mexico City was built on the ruins of the Aztec capital Tenochtitlán.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mexico City is built on the ruins of ___, the ancient Aztec capital founded in 1325.",
+        "answer": "Tenochtitlán",
+        "distractors": [
+          "Chichén Itzá",
+          "Teotihuacán",
+          "Palenque"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tenochtitlan",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An island city of pyramids and causeways surrounded by a gleaming lake, then a dissolve overlay showing modern Mexico City skyscrapers in the same location, pixel art style split-scene.",
+    "tags": [
+      "mexico",
+      "aztec",
+      "tenochtitlan",
+      "history",
+      "mexico city"
+    ]
+  },
+  {
+    "id": "geo-mexico-day-of-dead",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "americas",
+    "categoryL1": "Geography",
+    "categoryL2": "americas",
+    "categoryL3": "",
+    "statement": "Mexico's Día de los Muertos (Day of the Dead) is a two-day celebration on November 1–2 to honor deceased relatives, blending Aztec and Catholic traditions.",
+    "quizQuestion": "On which dates is Mexico's Day of the Dead (Día de los Muertos) celebrated?",
+    "correctAnswer": "November 1–2",
+    "distractors": [
+      "October 31",
+      "December 1–2",
+      "October 1–2",
+      "September 15–16",
+      "November 10–11",
+      "January 1–2",
+      "February 1–2",
+      "March 1–2"
+    ],
+    "acceptableAnswers": [
+      "November 1–2",
+      "November 1 and 2",
+      "Nov 1-2"
+    ],
+    "explanation": "Día de los Muertos combines the Catholic holidays All Saints' Day (Nov 1) and All Souls' Day (Nov 2) with pre-Columbian Aztec traditions of honoring the dead. Families build ofrendas (altars) with food, photos, and marigolds to welcome spirits home.",
+    "wowFactor": "Marigolds are the official flower of the Day of the Dead — called 'cempasúchil' in Nahuatl. Their strong scent is believed to guide the spirits of the dead back home from the afterlife.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What flower is traditionally used on Mexican Day of the Dead altars to guide spirits?",
+        "answer": "Marigold (cempasúchil)",
+        "distractors": [
+          "Rose",
+          "Chrysanthemum",
+          "Lily"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What are the home altars built for Day of the Dead called in Spanish?",
+        "answer": "Ofrendas",
+        "distractors": [
+          "Altares",
+          "Celebraciones",
+          "Casitas"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mexico's Day of the Dead is celebrated on November 1–2 each year.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mexico's Day of the Dead blends Aztec traditions with the Catholic holidays of All Saints' and All ___ Day.",
+        "answer": "Souls'",
+        "distractors": [
+          "Sinners'",
+          "Angels'",
+          "Saints'"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Day_of_the_Dead",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A colorful ofrenda altar covered in marigolds, candles, sugar skulls, and photos of smiling ancestors, a skeleton figure in traditional dress dancing nearby, warm lantern light, pixel art style.",
+    "tags": [
+      "mexico",
+      "day of the dead",
+      "culture",
+      "tradition",
+      "aztec"
+    ]
+  },
+  {
+    "id": "geo-mexico-chichen-itza",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "americas",
+    "categoryL1": "Geography",
+    "categoryL2": "americas",
+    "categoryL3": "",
+    "statement": "Chichén Itzá's El Castillo pyramid in Mexico was built so that twice yearly, during the equinoxes, a shadow creates the illusion of a serpent descending the staircase.",
+    "quizQuestion": "What optical illusion does El Castillo pyramid create during the equinoxes?",
+    "correctAnswer": "A serpent on the stairs",
+    "distractors": [
+      "A sun rising inside",
+      "A moon shadow cross",
+      "A jaguar shadow",
+      "A human silhouette",
+      "An eagle landing",
+      "A pyramid within a pyramid",
+      "A water reflection",
+      "A calendar alignment"
+    ],
+    "acceptableAnswers": [
+      "A serpent on the stairs",
+      "Snake shadow on stairs",
+      "Serpent shadow"
+    ],
+    "explanation": "At the spring and autumn equinoxes, the afternoon sun casts triangular shadows on the north staircase that create the appearance of a feathered serpent (Kukulcán/Quetzalcoatl) moving down the pyramid. Thousands of tourists visit to witness this phenomenon.",
+    "wowFactor": "El Castillo has 365 steps total — one for each day of the solar year. The Maya also encoded the solar year into the pyramid's 52 panels on each face representing 52-year calendar cycles.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which Maya deity does the serpent shadow at El Castillo represent during the equinox?",
+        "answer": "Kukulcán",
+        "distractors": [
+          "Quetzalcoatl",
+          "Chaac",
+          "Itzamná"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many steps does El Castillo pyramid at Chichén Itzá have, matching the days of the year?",
+        "answer": "365 steps",
+        "distractors": [
+          "52 steps",
+          "100 steps",
+          "260 steps"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: El Castillo pyramid creates a serpent shadow illusion during equinoxes.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "At the equinox, El Castillo pyramid's shadow creates the illusion of a ___ descending its staircase.",
+        "answer": "serpent",
+        "distractors": [
+          "jaguar",
+          "eagle",
+          "sun"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/El_Castillo,_Chichen_Itza",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A stepped Mayan pyramid at equinox, triangular shadow segments along the north staircase forming the body of a descending feathered serpent, crowds of observers at the base, golden late afternoon light, pixel art style.",
+    "tags": [
+      "mexico",
+      "chichen itza",
+      "maya",
+      "archaeology",
+      "astronomy"
+    ]
+  },
+  {
+    "id": "geo-russia-largest-country",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "asia_oceania",
+    "categoryL1": "Geography",
+    "categoryL2": "asia_oceania",
+    "categoryL3": "",
+    "statement": "Russia is the world's largest country by land area, covering 17.1 million square kilometers — nearly twice the size of the next largest country.",
+    "quizQuestion": "What is Russia's approximate land area in square kilometers?",
+    "correctAnswer": "17.1 million km²",
+    "distractors": [
+      "9 million km²",
+      "5 million km²",
+      "25 million km²",
+      "12 million km²",
+      "7 million km²",
+      "20 million km²",
+      "15 million km²",
+      "3 million km²"
+    ],
+    "acceptableAnswers": [
+      "17.1 million km²",
+      "17 million km²",
+      "About 17 million square kilometers"
+    ],
+    "explanation": "Russia covers 17.1 million km², spanning 11 time zones from Eastern Europe to the Pacific Ocean. It borders 14 countries, making it one of the most bordered nations on Earth. Yet Russia has a relatively small population of about 144 million.",
+    "wowFactor": "Russia is so large that if you removed it from the world map, the remaining land would still have Russia's shadow covering more territory than any single remaining country. It's 1.8 times larger than the USA.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many time zones does Russia span from west to east?",
+        "answer": "11 time zones",
+        "distractors": [
+          "3 time zones",
+          "7 time zones",
+          "24 time zones"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many countries share a land border with Russia?",
+        "answer": "14 countries",
+        "distractors": [
+          "5 countries",
+          "8 countries",
+          "20 countries"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Russia is the world's largest country, covering over 17 million square kilometers.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Russia covers 17.1 million km², spanning ___ time zones from Europe to the Pacific.",
+        "answer": "11",
+        "distractors": [
+          "3",
+          "7",
+          "24"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Russia",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A world map where Russia's vast territory dwarfs all other countries in bright red, a clock array showing 11 different time zones across its width, pixel art style.",
+    "tags": [
+      "russia",
+      "geography",
+      "area",
+      "records",
+      "largest"
+    ]
+  },
+  {
+    "id": "geo-russia-lake-baikal",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "asia_oceania",
+    "categoryL1": "Geography",
+    "categoryL2": "asia_oceania",
+    "categoryL3": "",
+    "statement": "Lake Baikal in Siberia is the world's deepest lake at 1,642 meters and holds about 20% of all unfrozen surface fresh water on Earth.",
+    "quizQuestion": "What is the maximum depth of Siberia's Lake Baikal, the world's deepest lake?",
+    "correctAnswer": "1,642 meters",
+    "distractors": [
+      "500 meters",
+      "800 meters",
+      "2,000 meters",
+      "300 meters",
+      "1,000 meters",
+      "1,200 meters",
+      "600 meters",
+      "400 meters"
+    ],
+    "acceptableAnswers": [
+      "1,642 meters",
+      "1642 meters",
+      "About 1,600 meters"
+    ],
+    "explanation": "Lake Baikal is a rift lake — formed where two tectonic plates pull apart. It's over 25 million years old, making it the world's oldest lake. It contains more water than all five Great Lakes of North America combined.",
+    "wowFactor": "Lake Baikal contains roughly as much water as all five of North America's Great Lakes combined — yet it appears on a map as just one lake in the middle of Siberia. It holds more water than the Baltic Sea.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How old is Lake Baikal, the world's oldest lake?",
+        "answer": "About 25 million years",
+        "distractors": [
+          "About 1 million years",
+          "About 5 million years",
+          "About 100,000 years"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What geological process created Lake Baikal as a rift lake in Siberia?",
+        "answer": "Tectonic plates pulling apart",
+        "distractors": [
+          "Volcanic crater filling",
+          "Glacial meltwater",
+          "River damming"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Lake Baikal is the world's deepest lake, at over 1,600 meters deep.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Lake Baikal in Siberia holds about ___ of Earth's unfrozen surface fresh water.",
+        "answer": "20%",
+        "distractors": [
+          "1%",
+          "50%",
+          "5%"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lake_Baikal",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An icy Siberian lake stretching to the horizon under a brilliant blue sky, depth markers plunging down 1,642m in a cross-section view, unique Baikal seals lounging on ice floes, pixel art style.",
+    "tags": [
+      "russia",
+      "lake baikal",
+      "siberia",
+      "water",
+      "geography"
+    ]
+  },
+  {
+    "id": "geo-russia-trans-siberian",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "asia_oceania",
+    "categoryL1": "Geography",
+    "categoryL2": "asia_oceania",
+    "categoryL3": "",
+    "statement": "The Trans-Siberian Railway, completed in 1916, is the world's longest railway at 9,289 km, connecting Moscow to Vladivostok.",
+    "quizQuestion": "What is the length of the Trans-Siberian Railway, the world's longest?",
+    "correctAnswer": "9,289 km",
+    "distractors": [
+      "5,000 km",
+      "3,000 km",
+      "15,000 km",
+      "7,000 km",
+      "4,500 km",
+      "12,000 km",
+      "2,000 km",
+      "6,500 km"
+    ],
+    "acceptableAnswers": [
+      "9,289 km",
+      "About 9,300 km",
+      "9,289 kilometers"
+    ],
+    "explanation": "The Trans-Siberian Railway took 25 years to build (1891–1916). A full journey from Moscow to Vladivostok takes about 7 days by train, crossing 8 time zones. It passes by Lake Baikal and through the cities of Novosibirsk, Irkutsk, and Khabarovsk.",
+    "wowFactor": "Taking the full Trans-Siberian Railway journey is like taking a train from New York to Los Angeles — four times over. You cross 8 time zones, yet the train's schedule runs on Moscow time the entire way.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many days does a full Trans-Siberian Railway journey from Moscow to Vladivostok take?",
+        "answer": "About 7 days",
+        "distractors": [
+          "About 1 day",
+          "About 3 days",
+          "About 2 weeks"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In what year was the Trans-Siberian Railway completed?",
+        "answer": "1916",
+        "distractors": [
+          "1891",
+          "1945",
+          "1900"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Trans-Siberian Railway at 9,289 km is the world's longest railway line.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Trans-Siberian Railway connects Moscow to ___, spanning 9,289 km across Russia.",
+        "answer": "Vladivostok",
+        "distractors": [
+          "Novosibirsk",
+          "Beijing",
+          "Tokyo"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Trans-Siberian_Railway",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A locomotive crossing a vast Siberian snowy plain with pine forest stretching to the horizon, a route map visible showing the full 9,289km line from Moscow to the Pacific coast, pixel art style.",
+    "tags": [
+      "russia",
+      "trans-siberian railway",
+      "transport",
+      "records",
+      "geography"
+    ]
+  }
+]

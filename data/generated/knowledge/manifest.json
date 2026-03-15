@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "description": "Tracks generated knowledge facts by domain. Used to prevent duplicate entity/topic generation across batches.",
+  "usage": "Before generating a new batch, read this manifest and pass existing IDs to the agent so it avoids those topics.",
+  "domains": {
+    "animals_wildlife": {
+      "totalFacts": 294,
+      "batches": [
+        "animals-sample.json",
+        "animals-mammals-batch1.json",
+        "animals-mammals-batch2a.json",
+        "animals-mammals-batch2b.json",
+        "animals-birds-batch1.json",
+        "animals-marine-haiku-test.json"
+      ],
+      "generatedIds": []
+    },
+    "history": { "totalFacts": 0, "batches": [], "generatedIds": [] },
+    "space_astronomy": { "totalFacts": 0, "batches": [], "generatedIds": [] },
+    "general_knowledge": { "totalFacts": 0, "batches": [], "generatedIds": [] },
+    "natural_sciences": { "totalFacts": 0, "batches": [], "generatedIds": [] },
+    "art_architecture": { "totalFacts": 0, "batches": [], "generatedIds": [] },
+    "mythology_folklore": { "totalFacts": 0, "batches": [], "generatedIds": [] },
+    "human_body_health": { "totalFacts": 0, "batches": [], "generatedIds": [] },
+    "food_cuisine": { "totalFacts": 0, "batches": [], "generatedIds": [] },
+    "geography": { "totalFacts": 0, "batches": [], "generatedIds": [] }
+  },
+  "lastUpdated": "2026-03-15"
+}

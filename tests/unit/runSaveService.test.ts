@@ -45,7 +45,7 @@ describe('runSaveService', () => {
       version: 1,
       savedAt: new Date().toISOString(),
       runState: run,
-      currentScreen: 'roomSelection',
+      currentScreen: 'dungeonMap',
       runMode: 'endless_depths',
       dailySeed: null,
       roomOptions,
@@ -83,7 +83,7 @@ describe('runSaveService', () => {
 
     expect(loaded.runMode).toBe('endless_depths')
     expect(loaded.dailySeed).toBeNull()
-    expect(loaded.currentScreen).toBe('roomSelection')
+    expect(loaded.currentScreen).toBe('dungeonMap')
     expect(loaded.roomOptions).toEqual(roomOptions)
     expect(loaded.cardRewardOptions).toHaveLength(1)
     expect(loaded.cardRewardOptions?.[0].factId).toBe('fact-1')
@@ -114,7 +114,7 @@ describe('runSaveService', () => {
       version: 1,
       savedAt: new Date().toISOString(),
       runState: legacyRun,
-      currentScreen: 'roomSelection',
+      currentScreen: 'dungeonMap',
     }))
 
     const loaded = loadActiveRun()

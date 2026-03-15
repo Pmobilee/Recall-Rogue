@@ -170,9 +170,9 @@ export function look(): string {
       break;
     }
 
-    case 'roomSelection': {
+    case 'dungeonMap': {
       const rooms = readStore<any>('terra:activeRoomOptions');
-      lines.push('SCREEN: roomSelection');
+      lines.push('SCREEN: dungeonMap');
       if (Array.isArray(rooms)) {
         lines.push('DOORS:');
         rooms.forEach((r: any, i: number) => {

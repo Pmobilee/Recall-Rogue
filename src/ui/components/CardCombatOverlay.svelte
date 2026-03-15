@@ -29,6 +29,7 @@
   import { REVEAL_DURATION, SWOOSH_DURATION, IMPACT_DURATION, DISCARD_DURATION, TIER_UP_DURATION, type CardAnimPhase } from '../utils/mechanicAnimations'
   import { shuffled } from '../../services/randomUtils'
   import { isPlaceholderDistractor } from '../../services/distractorFilter'
+  import { getVocabDistractors } from '../../services/vocabDistractorService'
   import { activeRunState } from '../../services/runStateStore'
   import { getIntentIconPath } from '../utils/iconAssets'
   import { getMasteryScalingTier, getRewardMultiplier, getDifficultyBoostFloors } from '../../services/masteryScalingService'
@@ -229,16 +230,50 @@
       return { icon, text: val > 0 ? `${val}` : '', type: enemyIntent.type, label, color, borderColor, telegraph }
     }
     if (enemyIntent.type === 'buff') {
-      const effectName = enemyIntent.statusEffect?.type ?? 'strength'
-      const effectLabel = effectName.charAt(0).toUpperCase() + effectName.slice(1)
-      return { icon, text: effectLabel, type: enemyIntent.type, label, color, borderColor, telegraph }
+      const stacks = enemyIntent.statusEffect?.value ?? enemyIntent.value
+      const turns = enemyIntent.statusEffect?.turns
+      const compactText = turns ? `${stacks}×${turns}` : `${stacks}`
+      return { icon, text: compactText, type: enemyIntent.type, label, color, borderColor, telegraph }
     }
     if (enemyIntent.type === 'debuff') {
-      const effectName = enemyIntent.statusEffect?.type ?? 'weakness'
-      const effectLabel = effectName.charAt(0).toUpperCase() + effectName.slice(1)
-      return { icon, text: effectLabel, type: enemyIntent.type, label, color, borderColor, telegraph }
+      const stacks = enemyIntent.statusEffect?.value ?? enemyIntent.value
+      const turns = enemyIntent.statusEffect?.turns
+      const compactText = turns ? `${stacks}×${turns}` : `${stacks}`
+      return { icon, text: compactText, type: enemyIntent.type, label, color, borderColor, telegraph }
     }
     return { icon, text: val > 0 ? `${val}` : '', type: enemyIntent.type, label, color, borderColor, telegraph }
+  })
+
+  let intentDetailText = $derived.by(() => {
+    if (!enemyIntent) return 'Preparing...'
+    const val = enemyIntent.value
+    switch (enemyIntent.type) {
+      case 'attack':
+        return `Attacks for ${val} damage`
+      case 'multi_attack': {
+        const hits = enemyIntent.hitCount ?? 2
+        return `Attacks ${hits} times for ${val} each`
+      }
+      case 'defend':
+        return `Gains ${val} Block`
+      case 'heal':
+        return `Heals ${val} HP`
+      case 'buff': {
+        const se = enemyIntent.statusEffect
+        if (se) return `Buffs self: ${se.value} ${se.type} for ${se.turns} turns`
+        return `Buffs self for ${val} turns`
+      }
+      case 'debuff': {
+        const se = enemyIntent.statusEffect
+        if (!se) return `Applies ${val} weakness`
+        if (se.type === 'weakness') return `Applies Weakness for ${se.turns} turns`
+        if (se.type === 'vulnerable') return `Applies Vulnerable for ${se.turns} turns`
+        if (se.type === 'poison') return `Applies ${se.value} Poison`
+        return `Applies ${se.value} ${se.type} for ${se.turns} turns`
+      }
+      default:
+        return 'Preparing...'
+    }
   })
 
   let selectedCard = $derived<Card | null>(
@@ -581,17 +616,23 @@
       // Use the fact's variants array
       const variant = variantPool[variantIndex % variantPool.length]
       question = variant.question
-      correctAnswer = variant.correctAnswer
+      correctAnswer = variant.answer ?? variant.correctAnswer ?? fact.correctAnswer
       distractorSource = variant.distractors ?? fact.distractors
       // Store back the source index in the original array for variety tracking.
       const sourceVariantIndex = fact.variants!.findIndex((entry) => (
-        entry.question === variant.question && entry.correctAnswer === variant.correctAnswer
+        entry.question === variant.question && (entry.answer ?? entry.correctAnswer) === correctAnswer
       ))
       if (sourceVariantIndex >= 0) variantIndex = sourceVariantIndex
     } else {
       // Legacy system for vocab cards and facts without variants
       correctAnswer = fact.correctAnswer
       distractorSource = fact.distractors
+
+      // Runtime vocab distractor generation (spec 1.8 Option E)
+      // Vocab facts ship with distractors=[] — pick from same-language pool at runtime
+      if (distractorSource.length === 0 && fact.type === 'vocabulary') {
+        distractorSource = getVocabDistractors(fact, Math.max(2, optionCount - 1))
+      }
 
       question = getNonCuratedQuestion(fact.quizQuestion)
     }
@@ -952,29 +993,9 @@
               class:intent-value-debuff={intentDisplay.type === 'debuff'}>{intentDisplay.text}</span>
           {/if}
         </div>
-        {#if intentPopupOpen && enemyIntent}
+        {#if intentPopupOpen}
           <div class="intent-bubble-detail">
-            {#if enemyIntent.type === 'attack'}
-              <p>Deals <strong class="popup-val-attack">{enemyIntent.value}</strong> damage</p>
-            {:else if enemyIntent.type === 'multi_attack'}
-              <p>Hits <strong class="popup-val-attack">{enemyIntent.hitCount ?? 2}</strong> times for <strong class="popup-val-attack">{enemyIntent.value}</strong> each</p>
-            {:else if enemyIntent.type === 'defend'}
-              <p>Gains <strong class="popup-val-defend">{enemyIntent.value}</strong> block</p>
-            {:else if enemyIntent.type === 'buff'}
-              {#if enemyIntent.statusEffect}
-                <p>Gains <strong class="popup-val-buff">{enemyIntent.statusEffect.value}</strong> {enemyIntent.statusEffect.type} for {enemyIntent.statusEffect.turns} turns</p>
-              {:else}
-                <p>+<strong class="popup-val-buff">{enemyIntent.value}</strong> strength</p>
-              {/if}
-            {:else if enemyIntent.type === 'debuff'}
-              {#if enemyIntent.statusEffect}
-                <p>Applies <strong class="popup-val-debuff">{enemyIntent.statusEffect.value}</strong> {enemyIntent.statusEffect.type} for {enemyIntent.statusEffect.turns} turns</p>
-              {:else}
-                <p>Applies <strong class="popup-val-debuff">{enemyIntent.value}</strong> weakness</p>
-              {/if}
-            {:else if enemyIntent.type === 'heal'}
-              <p>Heals <strong class="popup-val-heal">{enemyIntent.value}</strong> HP</p>
-            {/if}
+            <p>{intentDetailText}</p>
           </div>
         {/if}
         <div class="intent-bubble-tail"></div>
@@ -1110,9 +1131,9 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 45vh;
+    height: 100vh;
     z-index: 10;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.5) 30%, transparent 100%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.5) 15%, transparent 50%);
     overflow: visible;
   }
 
@@ -1158,8 +1179,8 @@
 
   .ap-orb {
     position: absolute;
-    left: 40px;
-    top: calc(10px + var(--safe-top));
+    left: 12px;
+    bottom: calc(40px + 12vh + 280px + 8px);
     z-index: 8;
     width: 44px;
     height: 44px;
@@ -1277,7 +1298,7 @@
     --intent-expanded-width: 148px;
     position: fixed;
     top: calc(12px + var(--safe-top));
-    left: calc(100vw - max((100vw - 500px) / 2, 0px) - var(--intent-expanded-width));
+    left: calc(max((100vw - 500px) / 2, 0px) + 8px);
     z-index: 12;
     border: 2px solid;
     border-radius: 14px;
@@ -1354,14 +1375,16 @@
   }
 
   .intent-value {
-    font-size: 19px;
-    font-weight: 800;
+    font-size: 22px;
+    font-weight: 900;
+    font-family: 'Georgia', serif;
     color: #e2e8f0;
-    min-width: 32px;
+    text-shadow:
+      -1px -1px 0 rgba(0,0,0,0.5),
+      1px -1px 0 rgba(0,0,0,0.5),
+      -1px 1px 0 rgba(0,0,0,0.5),
+      1px 1px 0 rgba(0,0,0,0.5);
     text-align: center;
-    padding: 2px 8px;
-    border-radius: 4px;
-    background: rgba(0, 0, 0, 0.3);
   }
 
   .intent-value-attack {

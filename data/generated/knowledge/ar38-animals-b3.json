@@ -1,0 +1,2459 @@
+[
+  {
+    "id": "animals-swan-lifelong-mates",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "behavior",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "behavior",
+    "categoryL3": "swan",
+    "statement": "Swans form lifelong pair bonds and typically mate for life, with pairs reuniting each breeding season for decades.",
+    "quizQuestion": "How long do swans typically stay with one mate?",
+    "correctAnswer": "For life",
+    "distractors": [
+      "One season",
+      "Two years",
+      "Until eggs hatch",
+      "Three seasons",
+      "Until migration",
+      "Five years",
+      "Until offspring leave",
+      "One year"
+    ],
+    "acceptableAnswers": ["For life", "Lifelong", "Forever", "Their whole life"],
+    "explanation": "Swans (genus Cygnus) are among the most famously monogamous birds. Pairs bond during their second or third year, perform elaborate courtship displays, and typically remain together until one dies. If a partner dies, the surviving swan may grieve visibly and sometimes remains alone for extended periods before re-pairing.",
+    "wowFactor": "Swans perform a 'triumph ceremony' with their mate — a synchronized head-bobbing duet — that reinforces their bond throughout their lives.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long do swans typically stay with one mate?",
+        "answer": "For life",
+        "distractors": ["One season", "Two years", "Until eggs hatch"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which bird is famous for mating with the same partner for life?",
+        "answer": "Swan",
+        "distractors": ["Peacock", "Robin", "Pigeon"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Swans typically mate for life and reunite each breeding season.",
+        "answer": "True",
+        "distractors": ["False", "Only mute swans", "Only in captivity"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Swans are famous for forming ___ pair bonds.",
+        "answer": "lifelong",
+        "distractors": ["seasonal", "temporary", "annual"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wildfowl & Wetlands Trust — swan behaviour studies",
+    "sourceUrl": "https://www.wwt.org.uk",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two white swans facing each other forming a heart shape with their necks on a calm lake, pixel art in soft whites and blues",
+    "tags": ["swan", "Cygnus", "monogamy", "pair bond", "birds", "behavior"]
+  },
+  {
+    "id": "animals-swan-cygnus-genus",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "taxonomy",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "taxonomy",
+    "categoryL3": "swan",
+    "statement": "Swans belong to the genus Cygnus within the family Anatidae, making them close relatives of ducks and geese.",
+    "quizQuestion": "What genus do swans belong to?",
+    "correctAnswer": "Cygnus",
+    "distractors": [
+      "Anser",
+      "Anas",
+      "Ardea",
+      "Ciconia",
+      "Grus",
+      "Pelecanus",
+      "Phoenicopterus",
+      "Branta"
+    ],
+    "acceptableAnswers": ["Cygnus"],
+    "explanation": "The genus Cygnus contains all true swans — mute swan, whooper swan, tundra swan, trumpeter swan, and others. They sit within the family Anatidae alongside ducks (Anas) and geese (Anser, Branta). Swans are the largest members of this family, with trumpeter swans weighing up to 17 kg.",
+    "wowFactor": "The trumpeter swan, North America's largest native waterfowl, has a wingspan that can reach 3 meters — wider than a standard doorway.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What genus do swans belong to?",
+        "answer": "Cygnus",
+        "distractors": ["Anser", "Anas", "Ardea"]
+      },
+      {
+        "type": "reverse",
+        "question": "Cygnus is the genus name for which large waterfowl?",
+        "answer": "Swan",
+        "distractors": ["Crane", "Heron", "Goose"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Swans belong to the genus Cygnus within family Anatidae.",
+        "answer": "True",
+        "distractors": ["False", "They are genus Anser", "They are not Anatidae"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "All true swans are classified in the genus ___.",
+        "answer": "Cygnus",
+        "distractors": ["Anser", "Anas", "Ardea"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Integrated Taxonomic Information System",
+    "sourceUrl": "https://www.itis.gov",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Mute swan swimming on a lake with taxonomy label, pixel art in white and pale blue",
+    "tags": ["swan", "Cygnus", "Anatidae", "taxonomy", "birds"]
+  },
+  {
+    "id": "animals-swan-neck-length",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "anatomy",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "anatomy",
+    "categoryL3": "swan",
+    "statement": "Swans have 25 cervical (neck) vertebrae, more than any other bird, which allows them to reach submerged aquatic plants while swimming.",
+    "quizQuestion": "How many neck vertebrae do swans have?",
+    "correctAnswer": "25",
+    "distractors": [
+      "7",
+      "12",
+      "14",
+      "18",
+      "21",
+      "30",
+      "9",
+      "16"
+    ],
+    "acceptableAnswers": ["25", "twenty-five"],
+    "explanation": "While most mammals — including giraffes and humans — have exactly 7 cervical vertebrae, birds are not constrained to this number. Swans top the avian chart with 25 neck vertebrae, giving their necks extraordinary flexibility. This lets them plunge their long necks to the lake or river bed to graze on aquatic vegetation without diving.",
+    "wowFactor": "Swans can reach plants up to 1 meter below the water's surface just by dipping their neck — no diving required.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many neck vertebrae do swans have?",
+        "answer": "25",
+        "distractors": ["7", "14", "18"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal has the most cervical vertebrae of any bird — 25?",
+        "answer": "Swan",
+        "distractors": ["Ostrich", "Flamingo", "Heron"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Swans have 25 cervical vertebrae — more than any other bird.",
+        "answer": "True",
+        "distractors": ["False", "Ostriches have more", "All birds have 7"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Swans have ___ cervical vertebrae, more than any other bird.",
+        "answer": "25",
+        "distractors": ["7", "14", "18"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Journal of Morphology — avian cervical vertebrae",
+    "sourceUrl": "https://anatomypubs.onlinelibrary.wiley.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Swan with long curved neck plunging underwater to reach aquatic plants, pixel art cross-section view",
+    "tags": ["swan", "anatomy", "vertebrae", "neck", "birds", "Cygnus"]
+  },
+  {
+    "id": "animals-wolf-pack-alpha",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "behavior",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "behavior",
+    "categoryL3": "gray_wolf",
+    "statement": "Gray wolf packs are led by a breeding pair, often called alpha wolves, whose offspring from multiple years form most of the pack's members.",
+    "quizQuestion": "Who leads a gray wolf pack?",
+    "correctAnswer": "The breeding pair",
+    "distractors": [
+      "The largest male",
+      "The oldest wolf",
+      "A council of elders",
+      "The fastest hunter",
+      "The most aggressive wolf",
+      "The pack's best fighter",
+      "Rotating leaders",
+      "The heaviest wolf"
+    ],
+    "acceptableAnswers": ["The breeding pair", "Alpha pair", "The alpha wolves", "A mated pair"],
+    "explanation": "Modern wolf biologists — including L. David Mech, who popularized the 'alpha' concept — now emphasize that wild wolf packs function more like families. The dominant pair are typically the parents, and their authority comes from parenthood and experience rather than constant fighting. Mech himself has argued the term 'alpha' is misleading for wild wolves.",
+    "wowFactor": "L. David Mech, who coined the term 'alpha wolf', spent decades trying to retract it — in the wild, wolf packs are just families, not dominance hierarchies.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who leads a gray wolf pack?",
+        "answer": "The breeding pair",
+        "distractors": ["The largest male", "The oldest wolf", "A council of elders"]
+      },
+      {
+        "type": "reverse",
+        "question": "In a wolf pack, the breeding pair are called what?",
+        "answer": "Alpha wolves",
+        "distractors": ["Beta wolves", "Omega wolves", "Prime wolves"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Wild wolf packs are led by the breeding pair, who are the parents of most pack members.",
+        "answer": "True",
+        "distractors": ["False", "Led by the strongest male", "Leadership rotates"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Wolf packs in the wild are led by a ___ pair.",
+        "answer": "breeding",
+        "distractors": ["dominant", "fighting", "elder"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "L. David Mech — Wolf Pack Studies, USGS",
+    "sourceUrl": "https://www.usgs.gov",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two gray wolves standing on a snowy ridge at dusk, pack visible behind them, pixel art in cool grays and blues",
+    "tags": ["wolf", "Canis lupus", "pack", "alpha", "behavior", "gray wolf"]
+  },
+  {
+    "id": "animals-wolf-howl-communication",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "communication",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "communication",
+    "categoryL3": "gray_wolf",
+    "statement": "Gray wolves howl to communicate across distances up to 10 km, coordinating pack movements, asserting territory, and reuniting separated members.",
+    "quizQuestion": "How far can a wolf's howl be heard?",
+    "correctAnswer": "Up to 10 km",
+    "distractors": [
+      "Up to 1 km",
+      "Up to 500 m",
+      "Up to 5 km",
+      "Up to 20 km",
+      "Up to 50 km",
+      "Up to 2 km",
+      "Up to 3 km",
+      "Up to 15 km"
+    ],
+    "acceptableAnswers": ["Up to 10 km", "10 kilometers", "10 km", "About 10 km"],
+    "explanation": "Wolf howls are low-frequency, long-duration vocalizations that travel efficiently through forests and across open terrain. In optimal conditions — still air, open landscape — howls can carry up to 10 km. Different pack members have individually distinct howl signatures, and wolves can identify specific individuals by voice alone. Howling also triggers responses from neighboring packs, helping all groups track each other's locations.",
+    "wowFactor": "Each wolf has a unique howl — pack members can identify each other by voice alone, like recognizing a friend's specific laugh.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How far can a wolf's howl be heard?",
+        "answer": "Up to 10 km",
+        "distractors": ["Up to 1 km", "Up to 5 km", "Up to 20 km"]
+      },
+      {
+        "type": "reverse",
+        "question": "Wolves howl to communicate; how far can the sound reach?",
+        "answer": "Up to 10 km",
+        "distractors": ["Up to 1 km", "Up to 500 m", "Up to 50 km"]
+      },
+      {
+        "type": "truefalse",
+        "question": "A wolf's howl can be heard up to 10 km away in open terrain.",
+        "answer": "True",
+        "distractors": ["False", "Only 1 km", "Only 3 km"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Wolf howls can travel up to ___ km in open terrain.",
+        "answer": "10",
+        "distractors": ["1", "5", "50"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "International Wolf Center — Wolf Communication",
+    "sourceUrl": "https://wolf.org",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Gray wolf howling at the moon on a snowy hillside, sound waves illustrated in pixel art radiating outward",
+    "tags": ["wolf", "howl", "communication", "Canis lupus", "pack", "vocalization"]
+  },
+  {
+    "id": "animals-wolf-canis-lupus",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "taxonomy",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "taxonomy",
+    "categoryL3": "gray_wolf",
+    "statement": "The gray wolf's scientific name is Canis lupus, and domestic dogs (Canis lupus familiaris) are a subspecies that were domesticated at least 15,000 years ago.",
+    "quizQuestion": "What is the gray wolf's scientific name?",
+    "correctAnswer": "Canis lupus",
+    "distractors": [
+      "Canis familiaris",
+      "Lupus canis",
+      "Felis lupus",
+      "Ursus lupus",
+      "Canis aureus",
+      "Vulpes lupus",
+      "Canis latrans",
+      "Lupus vulgaris"
+    ],
+    "acceptableAnswers": ["Canis lupus"],
+    "explanation": "Canis lupus is the gray wolf, and all domestic dogs descend from a wolf population domesticated between 15,000 and 40,000 years ago. Dogs are classified as Canis lupus familiaris — a subspecies of wolf — making your pet dog technically a wolf. Gray wolves are the largest wild members of Canidae and the ancestor of all domestic dog breeds.",
+    "wowFactor": "Your domestic dog is scientifically classified as a wolf subspecies — Canis lupus familiaris — meaning a chihuahua is literally a type of wolf.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the gray wolf's scientific name?",
+        "answer": "Canis lupus",
+        "distractors": ["Canis familiaris", "Canis latrans", "Canis aureus"]
+      },
+      {
+        "type": "reverse",
+        "question": "Canis lupus familiaris is the scientific name for which animal?",
+        "answer": "Domestic dog",
+        "distractors": ["Gray wolf", "Coyote", "Red fox"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Domestic dogs are classified as a subspecies of the gray wolf.",
+        "answer": "True",
+        "distractors": ["False", "Dogs are a separate species", "Dogs descended from foxes"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The gray wolf is scientifically named Canis ___.",
+        "answer": "lupus",
+        "distractors": ["familiaris", "latrans", "aureus"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "ITIS — Canis lupus taxonomy",
+    "sourceUrl": "https://www.itis.gov",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Side-by-side pixel art of a gray wolf and a chihuahua with taxonomy labels, highlighting their scientific relation",
+    "tags": ["wolf", "Canis lupus", "taxonomy", "dogs", "domestication", "gray wolf"]
+  },
+  {
+    "id": "animals-orca-apex-predator",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "ecology",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "ecology",
+    "categoryL3": "orca",
+    "statement": "Orcas are apex predators with no natural predators, and they hunt great white sharks, eating their livers — one of the most energy-rich organs in a shark's body.",
+    "quizQuestion": "What organ do orcas preferentially eat from sharks?",
+    "correctAnswer": "The liver",
+    "distractors": [
+      "The brain",
+      "The heart",
+      "The stomach",
+      "The dorsal fin",
+      "The tail",
+      "The kidneys",
+      "The gills",
+      "The intestines"
+    ],
+    "acceptableAnswers": ["The liver", "Liver", "Their liver"],
+    "explanation": "In multiple documented cases off South Africa and California, orca pairs — particularly a duo named Port and Starboard — have been observed killing great white sharks and surgically extracting only the liver. Shark livers are enormous, oil-rich organs that can comprise up to 25% of a shark's body weight. Great whites have abandoned their feeding grounds near the Farallon Islands after orca predation events.",
+    "wowFactor": "Two orcas nicknamed Port and Starboard terrorized South African waters so effectively that great white sharks abandoned their feeding grounds entirely.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What organ do orcas preferentially eat from sharks?",
+        "answer": "The liver",
+        "distractors": ["The brain", "The heart", "The stomach"]
+      },
+      {
+        "type": "reverse",
+        "question": "Orcas eat this large, oil-rich organ from great white sharks.",
+        "answer": "The liver",
+        "distractors": ["The brain", "The heart", "The gills"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Orcas have been documented hunting and eating the livers of great white sharks.",
+        "answer": "True",
+        "distractors": ["False", "Only small sharks", "Only in captivity"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Orcas hunt great white sharks and extract their ___.",
+        "answer": "liver",
+        "distractors": ["brain", "heart", "fins"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Marine Ecology Progress Series — orca predation on white sharks",
+    "sourceUrl": "https://www.int-res.com/journals/meps",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Orca and great white shark in deep blue ocean, dramatic pixel art showdown, orca clearly dominant",
+    "tags": ["orca", "killer whale", "apex predator", "great white shark", "hunting", "ecology"]
+  },
+  {
+    "id": "animals-orca-dialect",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "communication",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "communication",
+    "categoryL3": "orca",
+    "statement": "Orca pods have distinct vocal dialects passed down through generations — different pods share some calls but each has unique sounds not used by any other group.",
+    "quizQuestion": "What is unique about how orca pods communicate?",
+    "correctAnswer": "Each pod has its own dialect",
+    "distractors": [
+      "They use ultrasound only",
+      "They communicate silently",
+      "Only males vocalize",
+      "They use sign language",
+      "They mimic human speech",
+      "All orcas sound identical",
+      "They click like bats",
+      "Only calves vocalize"
+    ],
+    "acceptableAnswers": ["Each pod has its own dialect", "Unique pod dialects", "Pod-specific dialects"],
+    "explanation": "Orca vocal culture is one of the most sophisticated examples of animal culture known to science. Researchers have documented that resident orca pods in the Pacific Northwest share some call types with related pods ('clans') but each pod has unique calls. Calves learn their pod's dialect from their mothers. This culturally transmitted vocal identity persists across generations and is one reason orcas are considered to have culture.",
+    "wowFactor": "Orca dialects are so distinct that scientists can identify which pod is present just by listening to their calls — like recognizing a regional accent.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is unique about how orca pods communicate?",
+        "answer": "Each pod has its own dialect",
+        "distractors": ["They use ultrasound only", "Only males vocalize", "They communicate silently"]
+      },
+      {
+        "type": "reverse",
+        "question": "Orca pods transmit unique vocal ___ across generations.",
+        "answer": "dialects",
+        "distractors": ["colors", "dances", "smells"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Different orca pods have unique vocal dialects passed down through generations.",
+        "answer": "True",
+        "distractors": ["False", "All orcas sound identical", "Only resident orcas vocalize"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Orca pods pass down unique vocal ___ to their offspring.",
+        "answer": "dialects",
+        "distractors": ["colors", "routes", "markings"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Animal Behaviour — orca vocal culture",
+    "sourceUrl": "https://www.sciencedirect.com/journal/animal-behaviour",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Orca pod swimming together, sound wave patterns in ocean water visualizing different call signatures, pixel art",
+    "tags": ["orca", "killer whale", "communication", "dialect", "culture", "Orcinus orca"]
+  },
+  {
+    "id": "animals-orca-not-a-whale",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "taxonomy",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "taxonomy",
+    "categoryL3": "orca",
+    "statement": "Despite being called 'killer whales,' orcas are actually the largest members of the dolphin family (Delphinidae), not true whales.",
+    "quizQuestion": "What family does the orca actually belong to?",
+    "correctAnswer": "The dolphin family",
+    "distractors": [
+      "The whale family",
+      "The porpoise family",
+      "The shark family",
+      "The seal family",
+      "The narwhal family",
+      "The manatee family",
+      "The dugong family",
+      "The walrus family"
+    ],
+    "acceptableAnswers": ["The dolphin family", "Delphinidae", "Dolphins"],
+    "explanation": "Orcas (Orcinus orca) are classified in the family Delphinidae — the oceanic dolphins — making them the largest dolphins rather than whales. They share this family with bottlenose dolphins, pilot whales, and false killer whales. The name 'killer whale' likely originated from 18th-century whalers who observed orcas hunting large whales — calling them 'whale killers,' which was later reversed.",
+    "wowFactor": "The name 'killer whale' came from sailors who saw orcas hunting sperm whales — the original name was 'whale killer,' not killer whale.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What family does the orca actually belong to?",
+        "answer": "The dolphin family",
+        "distractors": ["The whale family", "The porpoise family", "The shark family"]
+      },
+      {
+        "type": "reverse",
+        "question": "Orcas are the largest member of which animal family?",
+        "answer": "Dolphin family",
+        "distractors": ["Whale family", "Porpoise family", "Seal family"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Despite being called killer whales, orcas are actually members of the dolphin family.",
+        "answer": "True",
+        "distractors": ["False", "They are true whales", "They are porpoises"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Orcas are the largest members of the ___ family.",
+        "answer": "dolphin",
+        "distractors": ["whale", "porpoise", "shark"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Society for Marine Mammalogy — Delphinidae taxonomy",
+    "sourceUrl": "https://marinemammalscience.org",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Orca breaching alongside a bottlenose dolphin to show family resemblance, pixel art in black, white, and ocean blue",
+    "tags": ["orca", "killer whale", "Delphinidae", "dolphin", "taxonomy", "Orcinus orca"]
+  },
+  {
+    "id": "animals-chameleon-color-change",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "adaptations",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "adaptations",
+    "categoryL3": "chameleon",
+    "statement": "Chameleons change color primarily for communication and thermoregulation — not camouflage — by adjusting layers of nanocrystals in their skin cells called iridophores.",
+    "quizQuestion": "Why do chameleons primarily change color?",
+    "correctAnswer": "Communication and temperature",
+    "distractors": [
+      "To hide from predators",
+      "To attract insects",
+      "To scare enemies",
+      "To absorb sunlight",
+      "To signal hunger",
+      "To change species",
+      "To mimic other animals",
+      "To warn rivals"
+    ],
+    "acceptableAnswers": ["Communication and temperature", "Communication and thermoregulation", "Social signaling", "Temperature control and communication"],
+    "explanation": "The popular belief that chameleons change color for camouflage is largely a myth. Their primary uses are communication — signaling mood, dominance, readiness to mate — and thermoregulation, since darker colors absorb more heat. Camouflage does play a role but is secondary. The mechanism involves iridophores: skin cells containing guanine nanocrystals that can be tuned to reflect different wavelengths of light.",
+    "wowFactor": "Chameleons don't just turn colors — they tune nanocrystals in their skin like adjusting a prism, reflecting precise wavelengths of light.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why do chameleons primarily change color?",
+        "answer": "Communication and temperature",
+        "distractors": ["To hide from predators", "To attract insects", "To scare enemies"]
+      },
+      {
+        "type": "reverse",
+        "question": "Iridophores in chameleon skin contain what that enables color change?",
+        "answer": "Nanocrystals",
+        "distractors": ["Ink sacs", "Pigment glands", "Reflective scales"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Chameleons change color primarily for camouflage.",
+        "answer": "False",
+        "distractors": ["True", "Only true in males", "Only true in babies"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Chameleons change color mainly for ___ and thermoregulation.",
+        "answer": "communication",
+        "distractors": ["camouflage", "hunting", "sleeping"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Nature Communications — chameleon iridophore research",
+    "sourceUrl": "https://www.nature.com/ncomms",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Veiled chameleon shifting from green to bright orange-red on a branch, iridescent skin visible, pixel art with vivid color shifts",
+    "tags": ["chameleon", "color change", "iridophores", "adaptations", "communication", "thermoregulation"]
+  },
+  {
+    "id": "animals-chameleon-tongue",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "anatomy",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "anatomy",
+    "categoryL3": "chameleon",
+    "statement": "A chameleon's tongue can extend up to twice its body length and accelerates faster than a fighter jet — reaching full extension in under 0.07 seconds.",
+    "quizQuestion": "How fast does a chameleon's tongue fully extend?",
+    "correctAnswer": "Under 0.07 seconds",
+    "distractors": [
+      "Under 1 second",
+      "Under 0.5 seconds",
+      "Under 0.3 seconds",
+      "Under 0.2 seconds",
+      "Under 2 seconds",
+      "Under 0.15 seconds",
+      "Under 3 seconds",
+      "Under 0.4 seconds"
+    ],
+    "acceptableAnswers": ["Under 0.07 seconds", "0.07 seconds", "In 0.07 seconds", "Less than 0.07 seconds"],
+    "explanation": "Chameleon tongues use a catapult mechanism powered by elastic collagen tissue — not muscle alone. The tongue is pre-loaded like a spring by the accelerator muscle, then released explosively. The acceleration can exceed 41 g-forces. The sticky tip can capture prey weighing up to a third of the chameleon's body weight. High-speed cameras revealed the full mechanism only in the early 2000s.",
+    "wowFactor": "A chameleon's tongue launch exceeds 41 g-forces of acceleration — more than a fighter pilot experiences in a dogfight.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How fast does a chameleon's tongue fully extend?",
+        "answer": "Under 0.07 seconds",
+        "distractors": ["Under 1 second", "Under 0.5 seconds", "Under 0.3 seconds"]
+      },
+      {
+        "type": "reverse",
+        "question": "The chameleon's tongue uses this mechanism, like a loaded spring, to strike prey.",
+        "answer": "Catapult mechanism",
+        "distractors": ["Muscle contraction", "Suction cup", "Sticky saliva"]
+      },
+      {
+        "type": "truefalse",
+        "question": "A chameleon's tongue can reach full extension in under 0.07 seconds.",
+        "answer": "True",
+        "distractors": ["False", "It takes about 1 second", "It takes about 0.5 seconds"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A chameleon's tongue reaches full extension in under ___ seconds.",
+        "answer": "0.07",
+        "distractors": ["1", "0.5", "0.3"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Proceedings of the Royal Society B — chameleon tongue ballistics",
+    "sourceUrl": "https://royalsocietypublishing.org/journal/rspb",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Chameleon with tongue fully extended striking a cricket, speed lines emphasizing explosive motion, pixel art",
+    "tags": ["chameleon", "tongue", "anatomy", "hunting", "speed", "adaptations"]
+  },
+  {
+    "id": "animals-chameleon-eyes",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "anatomy",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "anatomy",
+    "categoryL3": "chameleon",
+    "statement": "Chameleons have independently moving eyes that can rotate 360 degrees combined, giving them a near-total field of view without turning their head.",
+    "quizQuestion": "What special feature lets chameleons see in nearly all directions?",
+    "correctAnswer": "Independently moving eyes",
+    "distractors": [
+      "Three eyelids",
+      "Compound eyes",
+      "Eyes on stalks",
+      "Night vision cells",
+      "Panoramic retinas",
+      "Telescopic pupils",
+      "Bifocal lenses",
+      "Mirrored irises"
+    ],
+    "acceptableAnswers": ["Independently moving eyes", "Eyes move independently", "Independent eye movement"],
+    "explanation": "Each chameleon eye is a complete optical unit that rotates independently in its socket. When hunting, both eyes focus forward for binocular depth perception — essential for the precision of their tongue strike. The moment a threat appears, one eye can track the predator while the other continues scanning. Their visual acuity is exceptional; some species can see insects at 5–10 meters.",
+    "wowFactor": "A chameleon can watch a fly approach from behind with one eye while simultaneously lining up a tongue strike on prey in front with the other.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What special feature lets chameleons see in nearly all directions?",
+        "answer": "Independently moving eyes",
+        "distractors": ["Three eyelids", "Compound eyes", "Eyes on stalks"]
+      },
+      {
+        "type": "reverse",
+        "question": "Chameleons can move each eye independently; what advantage does this give when hunting?",
+        "answer": "Binocular depth perception",
+        "distractors": ["Night vision", "Color detection", "Ultraviolet sight"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Chameleon eyes move independently of each other, giving near-total field of view.",
+        "answer": "True",
+        "distractors": ["False", "Only one eye moves", "Eyes are fixed in place"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Chameleons have ___ eyes that rotate independently for near-total vision.",
+        "answer": "independently moving",
+        "distractors": ["compound", "telescopic", "fixed"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Herpetologica — chameleon vision studies",
+    "sourceUrl": "https://www.hljournals.org",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Close-up of a chameleon face with one eye facing forward and one eye rotated backward, vivid turquoise scales, pixel art",
+    "tags": ["chameleon", "eyes", "vision", "anatomy", "adaptations", "binocular"]
+  },
+  {
+    "id": "animals-penguin-flightless",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "adaptations",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "adaptations",
+    "categoryL3": "penguin",
+    "statement": "Penguins are flightless birds whose wings evolved into flippers; they are the fastest swimming birds, reaching up to 36 km/h underwater.",
+    "quizQuestion": "How fast can penguins swim at their fastest?",
+    "correctAnswer": "Up to 36 km/h",
+    "distractors": [
+      "Up to 5 km/h",
+      "Up to 10 km/h",
+      "Up to 15 km/h",
+      "Up to 20 km/h",
+      "Up to 50 km/h",
+      "Up to 60 km/h",
+      "Up to 25 km/h",
+      "Up to 8 km/h"
+    ],
+    "acceptableAnswers": ["Up to 36 km/h", "36 km/h", "About 36 km/h"],
+    "explanation": "Penguins traded flight for supreme aquatic ability. Their wings became rigid, dense flippers with solid bones — unlike the hollow bones of flying birds. The fastest species is the gentoo penguin (Pygoscelis papua), which swims at up to 36 km/h. Emperor penguins dive deeper than any other bird — up to 564 meters — and can hold their breath for over 20 minutes.",
+    "wowFactor": "Emperor penguins dive deeper than most submarines go — 564 meters — and stay under for more than 20 minutes on a single breath.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How fast can penguins swim at their fastest?",
+        "answer": "Up to 36 km/h",
+        "distractors": ["Up to 10 km/h", "Up to 50 km/h", "Up to 20 km/h"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which bird species holds the record for fastest swimming speed?",
+        "answer": "Penguin",
+        "distractors": ["Duck", "Cormorant", "Puffin"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Penguins are the fastest swimming birds, reaching up to 36 km/h.",
+        "answer": "True",
+        "distractors": ["False", "Ducks are faster", "Penguins swim slowly"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The gentoo penguin swims at up to ___ km/h, the fastest of any bird.",
+        "answer": "36",
+        "distractors": ["10", "20", "50"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Polar Biology — penguin swimming performance",
+    "sourceUrl": "https://link.springer.com/journal/300",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Gentoo penguin torpedoing through turquoise Antarctic water, speed blur, pixel art in black, white, and aqua",
+    "tags": ["penguin", "swimming", "flightless", "gentoo", "adaptations", "Antarctic"]
+  },
+  {
+    "id": "animals-penguin-emperor-colony",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "behavior",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "behavior",
+    "categoryL3": "penguin",
+    "statement": "Emperor penguin fathers incubate their single egg through the Antarctic winter — temperatures reaching -60°C — balancing it on their feet under a brood pouch for up to 65 days without eating.",
+    "quizQuestion": "How long do emperor penguin fathers incubate eggs without eating?",
+    "correctAnswer": "Up to 65 days",
+    "distractors": [
+      "Up to 10 days",
+      "Up to 20 days",
+      "Up to 30 days",
+      "Up to 90 days",
+      "Up to 7 days",
+      "Up to 45 days",
+      "Up to 100 days",
+      "Up to 14 days"
+    ],
+    "acceptableAnswers": ["Up to 65 days", "65 days", "About 65 days", "Two months"],
+    "explanation": "Emperor penguin breeding biology is extraordinarily demanding. Females lay a single egg in May-June (Antarctic autumn), transfer it to the male, then leave for the sea to feed. The male balances the egg on his feet, covered by a fold of skin called the brood pouch, and huddles with other males in huge groups rotating from outside to inside to share warmth. He loses up to 45% of his body weight during this fast.",
+    "wowFactor": "A male emperor penguin loses nearly half his body weight standing in -60°C blizzards for over two months — all without eating a single bite.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long do emperor penguin fathers incubate eggs without eating?",
+        "answer": "Up to 65 days",
+        "distractors": ["Up to 10 days", "Up to 30 days", "Up to 100 days"]
+      },
+      {
+        "type": "reverse",
+        "question": "Emperor penguin males incubate eggs on their feet during the Antarctic what?",
+        "answer": "Winter",
+        "distractors": ["Summer", "Spring", "Autumn"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Male emperor penguins incubate eggs for up to 65 days without eating.",
+        "answer": "True",
+        "distractors": ["False", "Females incubate", "They eat while incubating"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Male emperor penguins incubate a single egg for up to ___ days without food.",
+        "answer": "65",
+        "distractors": ["10", "30", "90"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Antarctic Science — emperor penguin breeding biology",
+    "sourceUrl": "https://www.cambridge.org/core/journals/antarctic-science",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Male emperor penguin huddled in a massive colony in an Antarctic blizzard, single egg visible on feet, dramatic pixel art",
+    "tags": ["penguin", "emperor penguin", "incubation", "fasting", "Antarctic", "parental care"]
+  },
+  {
+    "id": "animals-penguin-tuxedo",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "adaptations",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "adaptations",
+    "categoryL3": "penguin",
+    "statement": "Penguins' black-and-white coloring is countershading camouflage: dark backs are hard to see from above against dark ocean depths; white fronts blend with sunlit surface water from below.",
+    "quizQuestion": "What is the purpose of a penguin's black-and-white coloring?",
+    "correctAnswer": "Countershading camouflage",
+    "distractors": [
+      "Attracting mates",
+      "Reflecting sunlight",
+      "Absorbing heat",
+      "Species recognition",
+      "Warning coloration",
+      "Mimicking ice",
+      "Regulating temperature",
+      "Social signaling"
+    ],
+    "acceptableAnswers": ["Countershading camouflage", "Countershading", "Camouflage", "Underwater camouflage"],
+    "explanation": "Countershading — dark on top, light on bottom — is a widespread adaptation in aquatic animals including penguins, sharks, and dolphins. From above, a predator (e.g., leopard seal) looking down sees a dark back blending with the ocean depths. From below, prey or predators see a light belly merging with the sunlit surface. This bidirectional camouflage makes penguins simultaneously harder to spot from above and below.",
+    "wowFactor": "Penguin 'tuxedos' are actually dual-use camouflage — they're hidden from predators above AND below at the same time.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the purpose of a penguin's black-and-white coloring?",
+        "answer": "Countershading camouflage",
+        "distractors": ["Attracting mates", "Reflecting sunlight", "Absorbing heat"]
+      },
+      {
+        "type": "reverse",
+        "question": "Countershading camouflage uses dark backs and light fronts; which bird is famous for this?",
+        "answer": "Penguin",
+        "distractors": ["Swan", "Puffin", "Albatross"]
+      },
+      {
+        "type": "truefalse",
+        "question": "The penguin's black-and-white pattern serves as countershading camouflage in water.",
+        "answer": "True",
+        "distractors": ["False", "It is purely decorative", "It is for mate attraction"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Penguins' two-tone coloring is a form of ___ camouflage.",
+        "answer": "countershading",
+        "distractors": ["disruptive", "warning", "mimicry"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Biological Journal of the Linnean Society — countershading in birds",
+    "sourceUrl": "https://academic.oup.com/biolinnean",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Penguin diving underwater with arrow showing view from above (dark back) and view from below (white belly), pixel art infographic",
+    "tags": ["penguin", "countershading", "camouflage", "coloration", "adaptations", "Antarctic"]
+  },
+  {
+    "id": "animals-bear-hibernation",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "behavior",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "behavior",
+    "categoryL3": "bear",
+    "statement": "Bears do not truly hibernate — they enter a lighter torpor state where body temperature drops only a few degrees and they can wake to defend themselves, unlike true hibernators.",
+    "quizQuestion": "What sleep state do bears actually enter in winter?",
+    "correctAnswer": "Torpor",
+    "distractors": [
+      "True hibernation",
+      "Estivation",
+      "Deep sleep",
+      "Coma",
+      "Dormancy",
+      "Diapause",
+      "Suspended animation",
+      "Lethargy"
+    ],
+    "acceptableAnswers": ["Torpor", "Winter torpor", "A torpor state"],
+    "explanation": "True hibernators — like ground squirrels and hedgehogs — drop their body temperature to near-freezing, drastically slow heart rate (from ~200 to ~5 bpm), and cannot easily be roused. Bears in torpor maintain a body temperature of 31-35°C (just 4-6°C below normal), their heart slows from ~40 to ~8 bpm, and a female can give birth and nurse cubs. They can also wake quickly if disturbed — making a surprised bear in its den extremely dangerous.",
+    "wowFactor": "Female bears give birth and nurse cubs during winter torpor — emerging in spring with cubs they gestated, delivered, and raised while apparently 'sleeping.'",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What sleep state do bears actually enter in winter?",
+        "answer": "Torpor",
+        "distractors": ["True hibernation", "Estivation", "Deep sleep"]
+      },
+      {
+        "type": "reverse",
+        "question": "Bears enter torpor, not true hibernation; what is the key difference?",
+        "answer": "Bears can wake easily",
+        "distractors": ["Bears sleep longer", "Bears eat during sleep", "Bears sleep underwater"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Bears do not truly hibernate — they enter a lighter torpor state and can wake quickly.",
+        "answer": "True",
+        "distractors": ["False", "Bears are true hibernators", "All bears truly hibernate"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Bears enter ___ in winter, a lighter state than true hibernation.",
+        "answer": "torpor",
+        "distractors": ["hibernation", "estivation", "dormancy"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Journal of Comparative Physiology — bear torpor physiology",
+    "sourceUrl": "https://link.springer.com/journal/360",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Bear in a cozy snow-covered den with cubs curled beside it, winter outside, pixel art in warm browns and cold whites",
+    "tags": ["bear", "torpor", "hibernation", "Ursidae", "winter", "behavior"]
+  },
+  {
+    "id": "animals-bear-ursidae",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "taxonomy",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "taxonomy",
+    "categoryL3": "bear",
+    "statement": "The family Ursidae contains eight living bear species, including the polar bear — the largest land carnivore — and the sun bear, the smallest.",
+    "quizQuestion": "How many bear species are in family Ursidae?",
+    "correctAnswer": "Eight",
+    "distractors": [
+      "Three",
+      "Five",
+      "Six",
+      "Ten",
+      "Twelve",
+      "Four",
+      "Nine",
+      "Two"
+    ],
+    "acceptableAnswers": ["Eight", "8", "8 species"],
+    "explanation": "The eight extant Ursidae species are: polar bear, grizzly/brown bear, American black bear, Asian black bear, sun bear, sloth bear, spectacled bear, and giant panda. Giant pandas were long classified separately but DNA evidence conclusively places them in Ursidae. The polar bear is the largest terrestrial carnivore, with males weighing up to 800 kg; the sun bear of Southeast Asia weighs only 25–65 kg.",
+    "wowFactor": "The giant panda spent decades classified as a relative of raccoons; DNA finally confirmed it is a true bear — the most bamboo-obsessed member of a carnivore family.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many bear species are in family Ursidae?",
+        "answer": "Eight",
+        "distractors": ["Three", "Five", "Twelve"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which bear family member is the largest land carnivore on Earth?",
+        "answer": "Polar bear",
+        "distractors": ["Grizzly bear", "Brown bear", "Kodiak bear"]
+      },
+      {
+        "type": "truefalse",
+        "question": "There are eight living bear species in the family Ursidae.",
+        "answer": "True",
+        "distractors": ["False", "There are only four", "There are twelve"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Family Ursidae contains ___ living bear species.",
+        "answer": "eight",
+        "distractors": ["three", "five", "twelve"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Mammal Species of the World — Ursidae",
+    "sourceUrl": "https://www.departments.bucknell.edu/biology/resources/msw3",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Eight bear species illustrated side by side in pixel art, from tiny sun bear to massive polar bear, labeled",
+    "tags": ["bear", "Ursidae", "taxonomy", "polar bear", "giant panda", "species count"]
+  },
+  {
+    "id": "animals-bear-fat-storage",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "physiology",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "physiology",
+    "categoryL3": "bear",
+    "statement": "Before winter torpor, grizzly bears enter hyperphagia — eating up to 20,000 calories per day to gain 3–4 kg of fat daily for up to 4–5 months of fasting.",
+    "quizQuestion": "How many calories can a grizzly bear eat per day before winter?",
+    "correctAnswer": "Up to 20,000",
+    "distractors": [
+      "Up to 2,000",
+      "Up to 5,000",
+      "Up to 8,000",
+      "Up to 10,000",
+      "Up to 50,000",
+      "Up to 15,000",
+      "Up to 3,000",
+      "Up to 30,000"
+    ],
+    "acceptableAnswers": ["Up to 20,000", "20,000 calories", "About 20,000 calories"],
+    "explanation": "Hyperphagia is the pre-winter feeding frenzy in bears, typically September-October. A grizzly can consume 35,000 blueberries or 200,000 whitebark pine seeds in a single day. This 20,000-calorie intake is roughly 10 times a human athlete's needs. The fat stored becomes the energy source for the entire winter, supporting not just the bear's metabolism but also the development of cubs born during torpor.",
+    "wowFactor": "A grizzly in hyperphagia can eat 35,000 blueberries in a single day — roughly one berry every 2 seconds for 24 hours straight.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many calories can a grizzly bear eat per day before winter?",
+        "answer": "Up to 20,000",
+        "distractors": ["Up to 5,000", "Up to 10,000", "Up to 50,000"]
+      },
+      {
+        "type": "reverse",
+        "question": "The pre-winter eating frenzy in bears is called what?",
+        "answer": "Hyperphagia",
+        "distractors": ["Hibernation", "Dormancy", "Estivation"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Grizzly bears can consume up to 20,000 calories per day during pre-winter hyperphagia.",
+        "answer": "True",
+        "distractors": ["False", "They eat about 2,000 calories", "They stop eating before winter"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Bears eat up to 20,000 calories daily during ___ before winter.",
+        "answer": "hyperphagia",
+        "distractors": ["hibernation", "torpor", "estivation"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Bear Biology Association — grizzly hyperphagia studies",
+    "sourceUrl": "https://bearbiology.org",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Grizzly bear gorging on a hillside of blueberries in golden autumn light, pixel art in rich reds and oranges",
+    "tags": ["bear", "grizzly", "hyperphagia", "caloric intake", "Ursidae", "torpor preparation"]
+  },
+  {
+    "id": "animals-blue-whale-largest",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "records",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "records",
+    "categoryL3": "blue_whale",
+    "statement": "The blue whale is the largest animal known to have ever existed — reaching 33 meters long and 190 tonnes — larger than any dinosaur.",
+    "quizQuestion": "The blue whale is the largest animal to have ever what?",
+    "correctAnswer": "Lived on Earth",
+    "distractors": [
+      "Swim in an ocean",
+      "Eat krill",
+      "Breathe air",
+      "Live in cold water",
+      "Be a mammal",
+      "Have a heart",
+      "Migrate annually",
+      "Produce sound"
+    ],
+    "acceptableAnswers": ["Lived on Earth", "Existed", "Ever lived", "Ever existed"],
+    "explanation": "Blue whales (Balaenoptera musculus) dwarf even the largest dinosaurs. Argentinosaurus, the heaviest dinosaur, likely weighed 70–80 tonnes; a blue whale can reach 190 tonnes. Their hearts alone can weigh 600 kg and are the size of a small car. Despite their scale, they feed exclusively on krill — tiny crustaceans — filtering up to 3,600 kg of them per day.",
+    "wowFactor": "A blue whale's heart is the size of a small car and beats so slowly — just 2 times per minute during deep dives — a human could swim through its aorta.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "The blue whale is the largest animal to have ever what?",
+        "answer": "Lived on Earth",
+        "distractors": ["Swim in an ocean", "Breathe air", "Eat krill"]
+      },
+      {
+        "type": "reverse",
+        "question": "At up to 190 tonnes, this animal is the heaviest ever recorded on Earth.",
+        "answer": "Blue whale",
+        "distractors": ["Sperm whale", "Argentinosaurus", "African elephant"]
+      },
+      {
+        "type": "truefalse",
+        "question": "The blue whale is the largest animal ever to have lived on Earth, bigger than any dinosaur.",
+        "answer": "True",
+        "distractors": ["False", "Argentinosaurus was bigger", "Megalodon was bigger"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The blue whale is the ___ animal ever to live on Earth.",
+        "answer": "largest",
+        "distractors": ["smallest", "fastest", "loudest"]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Smithsonian National Museum of Natural History — blue whale",
+    "sourceUrl": "https://ocean.si.edu",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Blue whale dwarfing a Boeing 737 in size comparison, deep ocean pixel art in vivid blue",
+    "tags": ["blue whale", "largest animal", "records", "Balaenoptera musculus", "marine mammal"]
+  },
+  {
+    "id": "animals-blue-whale-krill",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "ecology",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "ecology",
+    "categoryL3": "blue_whale",
+    "statement": "Blue whales eat almost exclusively krill, consuming up to 3,600 kg (8,000 lbs) of the tiny crustaceans per day during feeding season.",
+    "quizQuestion": "What do blue whales eat almost exclusively?",
+    "correctAnswer": "Krill",
+    "distractors": [
+      "Small fish",
+      "Squid",
+      "Jellyfish",
+      "Plankton",
+      "Sardines",
+      "Herring",
+      "Shrimp",
+      "Copepods"
+    ],
+    "acceptableAnswers": ["Krill", "Krill only", "Almost only krill"],
+    "explanation": "Blue whales are baleen whales — they have no teeth. Instead, rows of baleen plates fringe their upper jaw, acting as a sieve. The whale lunges into a dense krill swarm, engulfs thousands of litres of water, then forces it out through the baleen, trapping the krill inside. A single feeding lunge can capture half a million calories. During summer feeding season, a blue whale may eat continuously for 20+ hours a day.",
+    "wowFactor": "The largest animal on Earth survives entirely on one of the smallest — krill average just 2 cm long, yet a blue whale eats millions of them every single day.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What do blue whales eat almost exclusively?",
+        "answer": "Krill",
+        "distractors": ["Small fish", "Squid", "Jellyfish"]
+      },
+      {
+        "type": "reverse",
+        "question": "Blue whales filter-feed on this tiny crustacean, consuming 3,600 kg daily.",
+        "answer": "Krill",
+        "distractors": ["Shrimp", "Copepods", "Plankton"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Blue whales eat almost exclusively krill, despite being the largest animal on Earth.",
+        "answer": "True",
+        "distractors": ["False", "They eat fish and squid", "They eat plankton only"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Blue whales feed almost exclusively on ___, consuming tons per day.",
+        "answer": "krill",
+        "distractors": ["fish", "squid", "jellyfish"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "NOAA Fisheries — blue whale feeding ecology",
+    "sourceUrl": "https://www.fisheries.noaa.gov",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Blue whale lunging through a dense red krill swarm, baleen visible, underwater pixel art in contrasting blue and red",
+    "tags": ["blue whale", "krill", "baleen", "feeding", "ecology", "Balaenoptera musculus"]
+  },
+  {
+    "id": "animals-blue-whale-sound",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "communication",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "communication",
+    "categoryL3": "blue_whale",
+    "statement": "Blue whale calls can reach 188 decibels — louder than a jet engine — and travel thousands of kilometers through ocean sound channels.",
+    "quizQuestion": "How loud can a blue whale's call be in decibels?",
+    "correctAnswer": "188 decibels",
+    "distractors": [
+      "80 decibels",
+      "100 decibels",
+      "120 decibels",
+      "140 decibels",
+      "160 decibels",
+      "200 decibels",
+      "170 decibels",
+      "90 decibels"
+    ],
+    "acceptableAnswers": ["188 decibels", "188 dB", "Up to 188 dB"],
+    "explanation": "Blue whale vocalizations are infrasound — mostly below the human hearing threshold of 20 Hz — which is why humans rarely hear them directly. At 188 dB, they are among the loudest biological sounds ever measured, louder than a jet at takeoff (~140 dB). The deep ocean's SOFAR (Sound Fixing and Ranging) channel, a layer of water that acts as an acoustic waveguide, can carry these calls across entire ocean basins.",
+    "wowFactor": "A blue whale call is so loud and low that it can travel across an entire ocean basin — from New England to the Canary Islands — and still be detectable.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How loud can a blue whale's call be in decibels?",
+        "answer": "188 decibels",
+        "distractors": ["120 decibels", "160 decibels", "200 decibels"]
+      },
+      {
+        "type": "reverse",
+        "question": "At 188 dB and traveling thousands of km, this is one of nature's loudest sounds.",
+        "answer": "Blue whale call",
+        "distractors": ["Sperm whale click", "Elephant call", "Pistol shrimp snap"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Blue whale calls can reach 188 decibels — louder than a jet engine.",
+        "answer": "True",
+        "distractors": ["False", "They are quiet animals", "Jets are louder at 200 dB"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Blue whale calls can reach ___ decibels, among the loudest biological sounds.",
+        "answer": "188",
+        "distractors": ["80", "140", "200"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Journal of the Acoustical Society of America — cetacean vocalizations",
+    "sourceUrl": "https://asa.scitation.org/journal/jas",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Blue whale emitting sound waves visible as concentric rings traveling through deep ocean, pixel art infographic",
+    "tags": ["blue whale", "sound", "decibels", "communication", "infrasound", "loudest animal"]
+  },
+  {
+    "id": "animals-crocodilian-ancient",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "evolution",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "evolution",
+    "categoryL3": "crocodilian",
+    "statement": "Crocodilians have remained virtually unchanged for 200 million years — surviving the mass extinction that killed the dinosaurs — making them among Earth's most successful animals.",
+    "quizQuestion": "How long have crocodilians survived largely unchanged?",
+    "correctAnswer": "200 million years",
+    "distractors": [
+      "10 million years",
+      "50 million years",
+      "100 million years",
+      "5 million years",
+      "500 million years",
+      "1 million years",
+      "150 million years",
+      "300 million years"
+    ],
+    "acceptableAnswers": ["200 million years", "About 200 million years", "200 million years ago"],
+    "explanation": "True crocodilians (order Crocodilia) first appeared in the Late Cretaceous, with their archosaurian ancestors stretching back further. While dinosaurs, pterosaurs, and most marine reptiles perished at the K-Pg boundary 66 million years ago, crocodilians survived. Their body plan — flat, semi-aquatic ambush predators with armored skin and powerful jaws — proved so effective it required almost no modification. Modern crocodiles, alligators, and gharials are nearly identical to their Mesozoic ancestors.",
+    "wowFactor": "Crocodiles watched the asteroid that killed the dinosaurs and just kept going — their body plan is so perfect it hasn't needed an update in 200 million years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long have crocodilians survived largely unchanged?",
+        "answer": "200 million years",
+        "distractors": ["50 million years", "100 million years", "500 million years"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which order of reptiles survived the extinction that killed the dinosaurs, nearly unchanged?",
+        "answer": "Crocodilia",
+        "distractors": ["Serpentes", "Squamata", "Testudines"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Crocodilians survived the mass extinction that killed dinosaurs and remain largely unchanged.",
+        "answer": "True",
+        "distractors": ["False", "They evolved after dinosaurs", "They died with dinosaurs"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Crocodilians have survived largely unchanged for ___ million years.",
+        "answer": "200",
+        "distractors": ["50", "10", "500"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Palaeontologia Electronica — crocodilian evolution",
+    "sourceUrl": "https://palaeo-electronica.org",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Crocodile with a Cretaceous dinosaur in the background and a modern city in the foreground, showing time continuity, pixel art",
+    "tags": ["crocodilian", "Crocodilia", "evolution", "ancient", "mass extinction", "living fossil"]
+  },
+  {
+    "id": "animals-crocodilian-cold-blooded",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "physiology",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "physiology",
+    "categoryL3": "crocodilian",
+    "statement": "Crocodilians are ectotherms (cold-blooded), but they have a four-chambered heart — rare among reptiles — which is more efficient and shared with mammals and birds.",
+    "quizQuestion": "How many heart chambers does a crocodilian have?",
+    "correctAnswer": "Four",
+    "distractors": [
+      "Two",
+      "Three",
+      "Five",
+      "One",
+      "Six",
+      "Three and a half",
+      "Eight",
+      "Two and a half"
+    ],
+    "acceptableAnswers": ["Four", "4", "Four chambers"],
+    "explanation": "Most reptiles have three-chambered hearts (two atria, one partially divided ventricle). Crocodilians evolved a fully four-chambered heart — two atria and two completely separate ventricles — independently of mammals and birds. This allows complete separation of oxygenated and deoxygenated blood, improving cardiovascular efficiency. Interestingly, crocodilians can selectively shunt blood flow through a unique valve (the Foramen of Panizza) during diving.",
+    "wowFactor": "Crocodilians evolved the same four-chambered heart as mammals and birds, completely independently — nature's engineering kept inventing the same optimal solution.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many heart chambers does a crocodilian have?",
+        "answer": "Four",
+        "distractors": ["Two", "Three", "Five"]
+      },
+      {
+        "type": "reverse",
+        "question": "Among reptiles, only crocodilians share this heart structure with mammals and birds.",
+        "answer": "Four-chambered heart",
+        "distractors": ["Two-chambered heart", "Three-chambered heart", "No heart chambers"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Crocodilians have four-chambered hearts — unlike most other reptiles.",
+        "answer": "True",
+        "distractors": ["False", "They have two chambers", "All reptiles have four chambers"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Unlike most reptiles, crocodilians have a ___-chambered heart.",
+        "answer": "four",
+        "distractors": ["two", "three", "five"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Journal of Experimental Biology — crocodilian cardiovascular system",
+    "sourceUrl": "https://journals.biologists.com/jeb",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Cross-section diagram of crocodile four-chambered heart in pixel art, with labels comparing to snake three-chambered heart",
+    "tags": ["crocodilian", "heart", "physiology", "ectotherm", "Crocodilia", "evolution"]
+  },
+  {
+    "id": "animals-crocodilian-bite-force",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "anatomy",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "anatomy",
+    "categoryL3": "crocodile",
+    "statement": "Saltwater crocodiles have the strongest bite force ever measured in a living animal — up to 16,460 Newtons (3,700 lbs of force), stronger than any shark.",
+    "quizQuestion": "Which animal has the strongest bite force ever measured?",
+    "correctAnswer": "Saltwater crocodile",
+    "distractors": [
+      "Great white shark",
+      "Hippopotamus",
+      "Nile crocodile",
+      "Alligator",
+      "Sperm whale",
+      "Hyena",
+      "Orca",
+      "Komodo dragon"
+    ],
+    "acceptableAnswers": ["Saltwater crocodile", "Saltwater croc", "Crocodylus porosus"],
+    "explanation": "Gregory Erickson's landmark 2012 study measured bite forces across living crocodilian species. The saltwater crocodile (Crocodylus porosus) — the world's largest living reptile — topped the chart at 16,460 N. For comparison, a great white shark bites at about 18,000 N, but this was estimated from fossil models, not measured directly. The saltwater croc record is from a direct measurement on a live animal.",
+    "wowFactor": "A saltwater crocodile's jaw force is measured in the same units as a car engine — 16,460 Newtons is enough to crush the skull of a water buffalo.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which animal has the strongest bite force ever measured?",
+        "answer": "Saltwater crocodile",
+        "distractors": ["Great white shark", "Hippopotamus", "Nile crocodile"]
+      },
+      {
+        "type": "reverse",
+        "question": "Crocodylus porosus holds the record for what biological measurement?",
+        "answer": "Strongest bite force",
+        "distractors": ["Fastest land speed", "Deepest dive", "Longest lifespan"]
+      },
+      {
+        "type": "truefalse",
+        "question": "The saltwater crocodile has the strongest bite force ever directly measured in a living animal.",
+        "answer": "True",
+        "distractors": ["False", "Great white sharks bite harder", "Hippos bite harder"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The saltwater crocodile's bite force reaches 16,460 ___, the strongest ever measured.",
+        "answer": "Newtons",
+        "distractors": ["pounds", "kilograms", "joules"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "PLOS ONE — Erickson 2012 crocodilian bite force",
+    "sourceUrl": "https://journals.plos.org/plosone",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Saltwater crocodile lunging from water with jaws wide open, power lines radiating from bite, pixel art in murky greens",
+    "tags": ["crocodile", "saltwater crocodile", "bite force", "records", "Crocodylus porosus", "anatomy"]
+  },
+  {
+    "id": "animals-parrot-speech-mimicry",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "cognition",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "cognition",
+    "categoryL3": "parrot",
+    "statement": "African grey parrots can mimic human speech with such accuracy they can fool people on the phone — and research shows they may actually understand words contextually, not just mimic them.",
+    "quizQuestion": "Which parrot species is most famous for speech mimicry and understanding?",
+    "correctAnswer": "African grey parrot",
+    "distractors": [
+      "Amazon parrot",
+      "Budgerigar",
+      "Macaw",
+      "Cockatoo",
+      "Lorikeet",
+      "Eclectus parrot",
+      "Conure",
+      "Kakapo"
+    ],
+    "acceptableAnswers": ["African grey parrot", "African grey", "Grey parrot"],
+    "explanation": "Dr. Irene Pepperberg's 30-year study of Alex, an African grey parrot (Psittacus erithacus), demonstrated that he could identify colors, shapes, and materials, answer questions about object differences, and use phrases in context. Alex's final words to Dr. Pepperberg before his unexpected death in 2007 were 'You be good, see you tomorrow. I love you.' African greys are now studied as models for animal cognition.",
+    "wowFactor": "Alex the African grey parrot told his researcher 'I love you' every night. When he died unexpectedly, those were his last words to her the evening before.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which parrot species is most famous for speech mimicry and understanding?",
+        "answer": "African grey parrot",
+        "distractors": ["Amazon parrot", "Macaw", "Cockatoo"]
+      },
+      {
+        "type": "reverse",
+        "question": "Alex was a famous African grey parrot that demonstrated what unusual ability?",
+        "answer": "Contextual word understanding",
+        "distractors": ["Flying upside down", "Playing chess", "Counting to 100"]
+      },
+      {
+        "type": "truefalse",
+        "question": "African grey parrots may understand words contextually, not just mimic sounds.",
+        "answer": "True",
+        "distractors": ["False", "Only macaws understand words", "All parrots just mimic"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ parrot is famous for potential contextual understanding of human speech.",
+        "answer": "African grey",
+        "distractors": ["Amazon", "macaw", "budgerigar"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Animal Cognition — Pepperberg Alex studies",
+    "sourceUrl": "https://link.springer.com/journal/10071",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "African grey parrot perched on a researcher's arm appearing to speak, speech bubble with words, pixel art in greys and red tail",
+    "tags": ["parrot", "African grey", "speech", "cognition", "Psittaciformes", "Alex"]
+  },
+  {
+    "id": "animals-parrot-psittaciformes",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "taxonomy",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "taxonomy",
+    "categoryL3": "parrot",
+    "statement": "Parrots belong to the order Psittaciformes and are characterized by curved beaks, zygodactyl feet (two toes forward, two back), and being some of the most intelligent birds.",
+    "quizQuestion": "What order do all parrots belong to?",
+    "correctAnswer": "Psittaciformes",
+    "distractors": [
+      "Passeriformes",
+      "Falconiformes",
+      "Strigiformes",
+      "Columbiformes",
+      "Galliformes",
+      "Coraciiformes",
+      "Piciformes",
+      "Accipitriformes"
+    ],
+    "acceptableAnswers": ["Psittaciformes"],
+    "explanation": "Psittaciformes includes about 400 species of parrots, macaws, cockatoos, lories, and budgerigars. Key shared traits: strongly curved hooked beak for cracking seeds and nuts, zygodactyl feet (two toes pointing forward, two back — ideal for gripping branches), and large brains relative to body size. Parrots are among only a handful of animals (alongside corvids and great apes) that have demonstrated tool use, planning, and social learning.",
+    "wowFactor": "Parrots have two toes pointing forward and two backward — a foot grip so powerful some species can hang upside down by one foot and crack open hard nuts with the other.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What order do all parrots belong to?",
+        "answer": "Psittaciformes",
+        "distractors": ["Passeriformes", "Falconiformes", "Strigiformes"]
+      },
+      {
+        "type": "reverse",
+        "question": "Psittaciformes includes all parrots; what is the distinctive foot arrangement called?",
+        "answer": "Zygodactyl",
+        "distractors": ["Anisodactyl", "Raptorial", "Syndactyl"]
+      },
+      {
+        "type": "truefalse",
+        "question": "All parrots belong to the order Psittaciformes and share zygodactyl feet.",
+        "answer": "True",
+        "distractors": ["False", "Macaws are a separate order", "They have three-toed feet"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "All parrots belong to the order ___.",
+        "answer": "Psittaciformes",
+        "distractors": ["Passeriformes", "Strigiformes", "Falconiformes"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Handbook of the Birds of the World — Psittaciformes",
+    "sourceUrl": "https://www.hbw.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Colorful macaw with zygodactyl foot labeled, curved beak visible, lush tropical background, pixel art",
+    "tags": ["parrot", "Psittaciformes", "taxonomy", "zygodactyl", "birds", "order"]
+  },
+  {
+    "id": "animals-parrot-longevity",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "physiology",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "physiology",
+    "categoryL3": "parrot",
+    "statement": "Large parrots like macaws and cockatoos can live 50–80 years — some species outliving their owners — making them among the longest-lived birds.",
+    "quizQuestion": "How long can large parrots like macaws live?",
+    "correctAnswer": "50 to 80 years",
+    "distractors": [
+      "5 to 10 years",
+      "10 to 20 years",
+      "20 to 30 years",
+      "30 to 40 years",
+      "100 to 120 years",
+      "1 to 5 years",
+      "90 to 100 years",
+      "40 to 50 years"
+    ],
+    "acceptableAnswers": ["50 to 80 years", "50-80 years", "Up to 80 years", "Over 50 years"],
+    "explanation": "The lifespan of parrots scales with body size. Budgerigars live 5–10 years; conures 15–20 years; Amazon parrots 40–60 years; large macaws 50–80 years. Some cockatoos have lived over 80 years in captivity. The longest reliably documented parrot lifespan belongs to a Major Mitchell's cockatoo named Cookie, who lived to 83 at Chicago's Brookfield Zoo. This longevity makes parrot ownership a multigenerational commitment.",
+    "wowFactor": "Cookie the cockatoo lived 83 years — he was already an adult when astronauts first reached orbit, and he outlived all the humans who knew him as a young bird.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long can large parrots like macaws live?",
+        "answer": "50 to 80 years",
+        "distractors": ["5 to 10 years", "20 to 30 years", "100 to 120 years"]
+      },
+      {
+        "type": "reverse",
+        "question": "Cookie was a cockatoo who lived 83 years; what does this illustrate about parrots?",
+        "answer": "Their exceptional longevity",
+        "distractors": ["Their intelligence", "Their migratory behavior", "Their diet flexibility"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Large macaws can live 50-80 years, sometimes outliving their human owners.",
+        "answer": "True",
+        "distractors": ["False", "Parrots live 5-10 years", "Macaws live 20-30 years"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Large macaws can live ___ to 80 years, among the longest-lived birds.",
+        "answer": "50",
+        "distractors": ["5", "20", "100"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Journal of Avian Medicine and Surgery — parrot longevity",
+    "sourceUrl": "https://meridian.allenpress.com/jams",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ancient-looking macaw on a perch next to a calendar showing decades, pixel art in vibrant reds and blues",
+    "tags": ["parrot", "macaw", "longevity", "lifespan", "cockatoo", "physiology"]
+  },
+  {
+    "id": "animals-leopard-nocturnal",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "behavior",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "behavior",
+    "categoryL3": "leopard",
+    "statement": "Leopards are nocturnal hunters that drag prey weighing up to three times their own body weight into trees to keep it safe from lions and hyenas.",
+    "quizQuestion": "Why do leopards drag prey up into trees?",
+    "correctAnswer": "To protect it from lions and hyenas",
+    "distractors": [
+      "To cool the meat down",
+      "To show dominance",
+      "To attract a mate",
+      "For a better view",
+      "To keep insects away",
+      "To age the meat",
+      "To mark their territory",
+      "To hide from humans"
+    ],
+    "acceptableAnswers": ["To protect it from lions and hyenas", "To keep it from scavengers", "To hide it from lions", "To protect from scavengers"],
+    "explanation": "Leopards are the most widespread large cat, partly because of their behavioral flexibility. In Africa, they coexist with lions and spotted hyenas — both of which will steal a kill given the chance. Leopards counter this by hoisting prey into trees, sometimes 10 meters off the ground. A leopard can carry a carcass heavier than itself vertically up a trunk using only its jaw and leg muscles. Their spotted coat also makes them nearly invisible in dappled night light.",
+    "wowFactor": "A leopard can carry a 90 kg wildebeest straight up a tree using only its jaw — that's equivalent to a person carrying another adult up a ladder in their teeth.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why do leopards drag prey up into trees?",
+        "answer": "To protect it from lions and hyenas",
+        "distractors": ["To cool the meat down", "To show dominance", "To attract a mate"]
+      },
+      {
+        "type": "reverse",
+        "question": "Leopards are famous for hoisting carcasses into trees; which competitors are they hiding from?",
+        "answer": "Lions and hyenas",
+        "distractors": ["Cheetahs and jackals", "Wild dogs and vultures", "Tigers and wolves"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Leopards hoist prey into trees to protect it from lions and spotted hyenas.",
+        "answer": "True",
+        "distractors": ["False", "They hoist prey to cool it", "They prefer ground caching"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Leopards drag prey into trees to protect it from ___ and hyenas.",
+        "answer": "lions",
+        "distractors": ["tigers", "cheetahs", "wild dogs"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "African Journal of Ecology — leopard caching behavior",
+    "sourceUrl": "https://onlinelibrary.wiley.com/journal/13652028",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Leopard in an acacia tree at night with a gazelle carcass draped over a branch, moonlit savanna below, pixel art",
+    "tags": ["leopard", "Panthera pardus", "nocturnal", "behavior", "caching", "big cats"]
+  },
+  {
+    "id": "animals-leopard-rosettes",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "anatomy",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "anatomy",
+    "categoryL3": "leopard",
+    "statement": "Leopard spots are not simple dots but rosettes — ring-shaped clusters of spots with a tawny center — and every individual leopard has a unique rosette pattern.",
+    "quizQuestion": "What is the shape of a leopard's spot pattern called?",
+    "correctAnswer": "Rosettes",
+    "distractors": [
+      "Stripes",
+      "Dots",
+      "Hexagons",
+      "Ocelli",
+      "Patches",
+      "Blotches",
+      "Chevrons",
+      "Spirals"
+    ],
+    "acceptableAnswers": ["Rosettes", "Rosette pattern"],
+    "explanation": "Leopard markings are technically called rosettes — dark rings surrounding a lighter center, resembling a stylized rose. Jaguars also have rosettes but theirs have spots inside the ring, a key way to distinguish the two species. No two leopards have identical rosette patterns; researchers use this to identify individuals in the wild without tagging them, similar to human fingerprints. Black leopards ('black panthers') still have rosettes — they're visible in certain lighting.",
+    "wowFactor": "Black leopards aren't actually black — in the right light you can see all their rosettes; the dark pigment just overwhelms the tawny background color.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the shape of a leopard's spot pattern called?",
+        "answer": "Rosettes",
+        "distractors": ["Stripes", "Hexagons", "Ocelli"]
+      },
+      {
+        "type": "reverse",
+        "question": "Researchers identify individual leopards by their unique ___ patterns.",
+        "answer": "Rosette",
+        "distractors": ["Stripe", "Size", "Ear shape"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Leopard spots are ring-shaped rosettes, and each individual has a unique pattern.",
+        "answer": "True",
+        "distractors": ["False", "All leopards have identical spots", "Leopards have stripes not spots"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Leopard spots form ring-shaped clusters called ___.",
+        "answer": "rosettes",
+        "distractors": ["stripes", "ocelli", "patches"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Journal of Mammalogy — leopard individual identification",
+    "sourceUrl": "https://academic.oup.com/jmammal",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Close-up of leopard rosette pattern with labeled diagram of ring structure, compared to jaguar rosette with inner spots, pixel art",
+    "tags": ["leopard", "rosettes", "spots", "anatomy", "Panthera pardus", "identification"]
+  },
+  {
+    "id": "animals-leopard-range",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "ecology",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "ecology",
+    "categoryL3": "leopard",
+    "statement": "The leopard has the widest geographic range of any wild cat, living across sub-Saharan Africa, North Africa, the Middle East, Central Asia, and the Russian Far East.",
+    "quizQuestion": "Which wild cat has the widest geographic range on Earth?",
+    "correctAnswer": "Leopard",
+    "distractors": [
+      "Lion",
+      "Tiger",
+      "Cheetah",
+      "Snow leopard",
+      "Jaguar",
+      "Cougar",
+      "Puma",
+      "Clouded leopard"
+    ],
+    "acceptableAnswers": ["Leopard", "Panthera pardus"],
+    "explanation": "Leopards (Panthera pardus) occupy an extraordinary range of habitats: tropical rainforests, savanna, mountain ranges (up to 5,600 m), deserts, temperate forests, and urban fringes in India. They persist in more countries than any other large cat. This adaptability — including tolerance for human-modified landscapes — explains why leopards have the largest range despite being hunted and facing habitat loss, unlike lions (Africa-centric) or tigers (fragmented Asian range).",
+    "wowFactor": "Leopards live in more countries than any other large cat — from the snowfields of the Russian Far East to the deserts of Arabia and the jungles of Sri Lanka.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which wild cat has the widest geographic range on Earth?",
+        "answer": "Leopard",
+        "distractors": ["Lion", "Tiger", "Cheetah"]
+      },
+      {
+        "type": "reverse",
+        "question": "Panthera pardus lives from sub-Saharan Africa to the Russian Far East; what is it?",
+        "answer": "Leopard",
+        "distractors": ["Tiger", "Snow leopard", "Jaguar"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Leopards have the widest geographic range of any wild cat, spanning Africa to the Russian Far East.",
+        "answer": "True",
+        "distractors": ["False", "Lions range further", "Tigers have a wider range"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ has the widest range of any wild cat, from Africa to the Russian Far East.",
+        "answer": "leopard",
+        "distractors": ["lion", "cheetah", "tiger"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "IUCN Red List — Panthera pardus range",
+    "sourceUrl": "https://www.iucnredlist.org",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "World map with leopard range highlighted in orange from Africa through Asia, pixel art style",
+    "tags": ["leopard", "Panthera pardus", "range", "ecology", "distribution", "big cats"]
+  },
+  {
+    "id": "animals-goat-climbing",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "adaptations",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "adaptations",
+    "categoryL3": "goat",
+    "statement": "Mountain goats (Oreamnos americanus) can scale near-vertical rock faces thanks to hooves with hard outer edges for gripping rock and soft rubber-like inner pads that provide friction.",
+    "quizQuestion": "What adaptation makes mountain goat hooves excellent for climbing?",
+    "correctAnswer": "Hard edges and soft inner pads",
+    "distractors": [
+      "Suction cups on pads",
+      "Claws like cats",
+      "Sticky secretions",
+      "Hollow hooves",
+      "Magnetic hooves",
+      "Extra-wide feet",
+      "Curved dewclaws",
+      "Toenail hooks"
+    ],
+    "acceptableAnswers": ["Hard edges and soft inner pads", "Hard outer edges and soft pads", "Dual-texture hooves"],
+    "explanation": "Mountain goat hooves are a remarkable two-part tool. The hard keratinous outer edge digs into cracks and rock grain for anchorage. The spongy inner pad acts like a climbing shoe's rubber sole, deforming to maximize surface contact with irregular rock. They also have dewclaws that act as brakes on descents. Mountain goats can leap 3.5 meters in a single bound and navigate ledges only 10 cm wide.",
+    "wowFactor": "Mountain goats navigate ledges just 10 centimeters wide on sheer cliff faces — their hooves work like rock-climbing shoes, with hard rims and soft sticky centers.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What adaptation makes mountain goat hooves excellent for climbing?",
+        "answer": "Hard edges and soft inner pads",
+        "distractors": ["Suction cups on pads", "Claws like cats", "Sticky secretions"]
+      },
+      {
+        "type": "reverse",
+        "question": "Mountain goats climb near-vertical rock faces due to what special hoof feature?",
+        "answer": "Dual-texture hooves",
+        "distractors": ["Suction cup pads", "Retractable claws", "Magnetic grip"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Mountain goat hooves have hard outer edges for gripping and soft inner pads for friction.",
+        "answer": "True",
+        "distractors": ["False", "They have suction pads", "Their hooves are entirely soft"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mountain goat hooves have hard outer edges and soft ___ pads for climbing grip.",
+        "answer": "inner",
+        "distractors": ["suction", "magnetic", "sticky"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Journal of Zoology — ungulate foot morphology",
+    "sourceUrl": "https://zslpublications.onlinelibrary.wiley.com/journal/14697998",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Mountain goat scaling a sheer cliff face, hoof structure inset showing hard rim and soft pad, pixel art on rocky grey cliff",
+    "tags": ["goat", "mountain goat", "hooves", "climbing", "adaptations", "Oreamnos americanus"]
+  },
+  {
+    "id": "animals-goat-pupils",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "anatomy",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "anatomy",
+    "categoryL3": "goat",
+    "statement": "Goats have rectangular horizontal pupils that can rotate to stay parallel with the ground as the animal's head tilts, giving them a 320-degree field of view.",
+    "quizQuestion": "What shape are a goat's pupils?",
+    "correctAnswer": "Rectangular horizontal",
+    "distractors": [
+      "Round",
+      "Vertical slit",
+      "Circular",
+      "Diamond shaped",
+      "Oval vertical",
+      "Star shaped",
+      "Triangular",
+      "Crescent shaped"
+    ],
+    "acceptableAnswers": ["Rectangular horizontal", "Horizontal rectangle", "Rectangular", "Horizontal pupils"],
+    "explanation": "Prey animals — goats, sheep, horses, and many others — have evolved horizontal rectangular pupils that dramatically widen their field of view while grazing. Goats can see almost 360 degrees (with only a small blind spot directly behind). Remarkably, the pupils rotate in the eye socket as the goat bends its head to graze, maintaining the horizontal orientation and maximizing surveillance for predators even while eating.",
+    "wowFactor": "When a goat bends its head to eat grass, its pupils physically rotate inside the eye socket to stay horizontal — keeping 320-degree predator watch while it grazes.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What shape are a goat's pupils?",
+        "answer": "Rectangular horizontal",
+        "distractors": ["Round", "Vertical slit", "Diamond shaped"]
+      },
+      {
+        "type": "reverse",
+        "question": "Animals with horizontal rectangular pupils typically are what kind of animal?",
+        "answer": "Prey animals",
+        "distractors": ["Apex predators", "Nocturnal hunters", "Deep-sea fish"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Goats have horizontal rectangular pupils that rotate to stay parallel with the ground.",
+        "answer": "True",
+        "distractors": ["False", "Goats have round pupils", "Goat pupils are vertical slits"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Goat pupils are ___ shaped and rotate to maintain a wide field of view.",
+        "answer": "rectangular",
+        "distractors": ["circular", "diamond", "triangular"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Science Advances — horizontal pupil evolution in prey animals",
+    "sourceUrl": "https://advances.sciencemag.org",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Close-up of a goat's eye showing distinctive rectangular horizontal pupil, detailed pixel art in amber and black",
+    "tags": ["goat", "pupils", "eyes", "anatomy", "prey animals", "vision"]
+  },
+  {
+    "id": "animals-goat-ruminant",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "physiology",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "physiology",
+    "categoryL3": "goat",
+    "statement": "Goats are ruminants with a four-chambered stomach — chewing cud by regurgitating partly digested food — which allows them to extract nutrition from tough vegetation.",
+    "quizQuestion": "How many stomach chambers does a goat have?",
+    "correctAnswer": "Four",
+    "distractors": [
+      "One",
+      "Two",
+      "Three",
+      "Five",
+      "Six",
+      "Eight",
+      "Seven",
+      "Nine"
+    ],
+    "acceptableAnswers": ["Four", "4", "Four chambers"],
+    "explanation": "Like all ruminants (cattle, sheep, deer, giraffes), goats have a four-compartment stomach: rumen, reticulum, omasum, and abomasum. Food passes through all four stages of digestion. The rumen, the largest chamber, hosts billions of microbes that break down cellulose — a feat impossible for single-stomach animals. Goats are known for their ability to digest extremely coarse, low-quality forage that other livestock would refuse.",
+    "wowFactor": "Goats have a built-in fermentation vat — the rumen — where billions of microbes break down cellulose that most animals simply cannot digest at all.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many stomach chambers does a goat have?",
+        "answer": "Four",
+        "distractors": ["One", "Two", "Three"]
+      },
+      {
+        "type": "reverse",
+        "question": "Ruminants like goats regurgitate cud to re-chew it; what does this process allow?",
+        "answer": "Digesting tough vegetation",
+        "distractors": ["Faster running speed", "Better night vision", "Longer lifespan"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Goats have a four-chambered stomach that allows them to digest tough cellulose-rich vegetation.",
+        "answer": "True",
+        "distractors": ["False", "Goats have one stomach", "Only cows have four stomachs"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Goats are ruminants with a ___-chambered stomach.",
+        "answer": "four",
+        "distractors": ["one", "two", "three"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Journal of Animal Science — ruminant digestive physiology",
+    "sourceUrl": "https://academic.oup.com/jas",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Goat with transparent stomach showing four chambers labeled, chewing cud, pixel art in warm greens and browns",
+    "tags": ["goat", "ruminant", "digestion", "stomach", "physiology", "four chambers"]
+  },
+  {
+    "id": "animals-goldfish-memory",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "cognition",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "cognition",
+    "categoryL3": "goldfish",
+    "statement": "The claim that goldfish have a 3-second memory is a myth — goldfish can remember learned behaviors for at least five months and can be trained to perform tasks.",
+    "quizQuestion": "How long can goldfish actually remember learned behaviors?",
+    "correctAnswer": "At least five months",
+    "distractors": [
+      "3 seconds",
+      "30 seconds",
+      "1 minute",
+      "1 week",
+      "1 day",
+      "3 days",
+      "1 hour",
+      "2 weeks"
+    ],
+    "acceptableAnswers": ["At least five months", "Five months", "Months", "Several months"],
+    "explanation": "The '3-second memory' myth is one of the most persistent animal misconceptions. Multiple experiments have debunked it. Australian high school students in 2008 trained goldfish to press a lever for food and then removed the lever — 5 months later, the fish immediately pressed it again when reintroduced. Goldfish have also been trained to navigate mazes, distinguish shapes, and respond to specific sounds. Their spatial memory is well-documented.",
+    "wowFactor": "The '3-second goldfish memory' is entirely made up — goldfish trained on a task remember it five months later and carry it out immediately.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long can goldfish actually remember learned behaviors?",
+        "answer": "At least five months",
+        "distractors": ["3 seconds", "1 day", "1 week"]
+      },
+      {
+        "type": "reverse",
+        "question": "The '3-second memory' myth is commonly applied to which pet fish?",
+        "answer": "Goldfish",
+        "distractors": ["Betta fish", "Koi", "Guppies"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Goldfish have a 3-second memory.",
+        "answer": "False",
+        "distractors": ["True", "Only wild goldfish remember longer", "Depends on water temperature"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Contrary to the myth, goldfish can remember learned tasks for at least ___ months.",
+        "answer": "five",
+        "distractors": ["zero", "one", "three seconds"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Behavioural Processes — goldfish memory studies",
+    "sourceUrl": "https://www.sciencedirect.com/journal/behavioural-processes",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Goldfish pressing a lever in a tank with a calendar in the background showing 5 months, pixel art in orange and blue",
+    "tags": ["goldfish", "memory", "myth-busting", "cognition", "fish", "animal myths"]
+  },
+  {
+    "id": "animals-goldfish-color",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "biology",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "biology",
+    "categoryL3": "goldfish",
+    "statement": "Goldfish are a domesticated form of wild carp selectively bred in ancient China for over 1,000 years — the earliest recorded selective breeding of a fish for ornamental purposes.",
+    "quizQuestion": "Where was the goldfish first selectively bred as an ornamental fish?",
+    "correctAnswer": "Ancient China",
+    "distractors": [
+      "Ancient Egypt",
+      "Ancient Rome",
+      "Medieval Japan",
+      "Ancient Greece",
+      "Medieval Persia",
+      "Ancient India",
+      "Medieval Europe",
+      "Ancient Korea"
+    ],
+    "acceptableAnswers": ["Ancient China", "China", "Tang Dynasty China"],
+    "explanation": "Wild crucian carp (Carassius auratus) occasionally produce orange-red mutations. In China, starting around the Tang Dynasty (618–907 CE), these were selectively kept and bred. By the Song Dynasty (960–1279 CE), goldfish keeping was widespread, and hundreds of color and body-shape varieties had been developed. This makes goldfish arguably the first ornamental fish in history. They reached Japan in the 1600s and Europe by the 1700s.",
+    "wowFactor": "Goldfish were selectively bred in China 1,000+ years before any breed of dog existed — they were the first living 'designer pet.'",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where was the goldfish first selectively bred as an ornamental fish?",
+        "answer": "Ancient China",
+        "distractors": ["Ancient Egypt", "Medieval Japan", "Ancient Rome"]
+      },
+      {
+        "type": "reverse",
+        "question": "Goldfish are a domesticated form of which wild fish?",
+        "answer": "Crucian carp",
+        "distractors": ["Common carp", "Minnow", "Roach"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Goldfish were first selectively bred in ancient China as ornamental fish over 1,000 years ago.",
+        "answer": "True",
+        "distractors": ["False", "They were first bred in Japan", "They were first bred in Rome"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Goldfish are a domesticated form of wild ___ first bred in Tang Dynasty China.",
+        "answer": "crucian carp",
+        "distractors": ["common carp", "minnow", "roach"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Aquaculture — goldfish domestication history",
+    "sourceUrl": "https://www.sciencedirect.com/journal/aquaculture",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ancient Chinese imperial garden pond with ornamental goldfish in various colors, Tang Dynasty style, pixel art",
+    "tags": ["goldfish", "domestication", "China", "history", "selective breeding", "Carassius auratus"]
+  },
+  {
+    "id": "animals-goldfish-tank-size",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "biology",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "biology",
+    "categoryL3": "goldfish",
+    "statement": "The myth that goldfish grow only to the size of their tank is false — goldfish stunting in small tanks is caused by stress hormones and poor water quality, not a growth-limiting mechanism.",
+    "quizQuestion": "Why do goldfish in small tanks stay small?",
+    "correctAnswer": "Stress hormones and poor water quality",
+    "distractors": [
+      "The tank limits their growth",
+      "They sense available space",
+      "Their genes limit size",
+      "They prefer to be small",
+      "Lack of food causes stunting",
+      "The glass walls restrict them",
+      "They choose not to grow",
+      "Light levels restrict them"
+    ],
+    "acceptableAnswers": ["Stress hormones and poor water quality", "Stress and poor water quality", "Stress hormones", "Poor water quality and stress"],
+    "explanation": "Small aquariums accumulate ammonia and nitrites rapidly, and waste products from the fish itself (growth-inhibiting hormones are excreted in urine) concentrate in small water volumes. This toxic soup stunts growth and shortens lifespan. In proper outdoor ponds, the same 'pet' goldfish varieties can grow to 30+ cm and live 20+ years. The popular belief that a tank 'limits' growth is false — poor conditions limit growth.",
+    "wowFactor": "Goldfish kept in a small tank can be moved to a pond and grow three times as large — the tank wasn't limiting their growth; it was poisoning them.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why do goldfish in small tanks stay small?",
+        "answer": "Stress hormones and poor water quality",
+        "distractors": ["The tank limits their growth", "Their genes limit size", "Lack of food causes stunting"]
+      },
+      {
+        "type": "reverse",
+        "question": "Goldfish stunting in small tanks is actually caused by concentrated growth-inhibiting what?",
+        "answer": "Hormones",
+        "distractors": ["Salt", "Minerals", "Oxygen"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Goldfish grow only to the size of their tank by a natural growth-limiting mechanism.",
+        "answer": "False",
+        "distractors": ["True", "Only fancy varieties are size-limited", "It depends on the goldfish breed"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Goldfish stunting is caused by ___ and poor water quality, not tank size itself.",
+        "answer": "stress hormones",
+        "distractors": ["genetics", "food deprivation", "light levels"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Aquatic Toxicology — goldfish growth inhibition studies",
+    "sourceUrl": "https://www.sciencedirect.com/journal/aquatic-toxicology",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Small goldfish in a tiny bowl next to a large goldfish in an outdoor pond, same fish species but dramatically different sizes, pixel art",
+    "tags": ["goldfish", "growth", "myth-busting", "tank size", "water quality", "fish health"]
+  },
+  {
+    "id": "animals-crocodilian-death-roll",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "behavior",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "behavior",
+    "categoryL3": "crocodilian",
+    "statement": "Crocodilians perform the 'death roll' — spinning rapidly along their body axis while biting — to tear chunks of flesh from prey too large to swallow whole.",
+    "quizQuestion": "What is the crocodilian 'death roll' used for?",
+    "correctAnswer": "Tearing off chunks of flesh",
+    "distractors": [
+      "Drowning prey faster",
+      "Confusing prey",
+      "Escaping from predators",
+      "Attracting a mate",
+      "Regulating body temperature",
+      "Breaking bones",
+      "Removing parasites",
+      "Cooling down"
+    ],
+    "acceptableAnswers": ["Tearing off chunks of flesh", "Dismembering prey", "Tearing flesh from large prey"],
+    "explanation": "When a crocodilian bites into prey that is too large to swallow whole, it grips with its massive jaws and then rotates its entire body rapidly. The torque generated tears off a piece of meat. The roll also helps drag prey underwater. Researchers at the University of Tennessee modeled the biomechanics and found that alligators choose their rolling direction to maximize torque, suggesting this is a learned or instinctive optimization — not random.",
+    "wowFactor": "A crocodile can calculate the optimal direction to spin its death roll — researchers found they maximize torque like an engineer solving a rotational mechanics problem.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the crocodilian 'death roll' used for?",
+        "answer": "Tearing off chunks of flesh",
+        "distractors": ["Drowning prey faster", "Confusing prey", "Escaping from predators"]
+      },
+      {
+        "type": "reverse",
+        "question": "Crocodilians spin along their body axis while biting — what is this called?",
+        "answer": "The death roll",
+        "distractors": ["The snap roll", "The barrel roll", "The spin bite"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Crocodilians use the 'death roll' to tear chunks of flesh from large prey.",
+        "answer": "True",
+        "distractors": ["False", "It is used to attract mates", "It is used to cool down"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Crocodilians perform the ___ roll to dismember prey too large to swallow whole.",
+        "answer": "death",
+        "distractors": ["barrel", "snap", "tail"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Journal of Experimental Zoology — crocodilian death roll biomechanics",
+    "sourceUrl": "https://onlinelibrary.wiley.com/journal/1097010x",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Crocodile in a river performing a death roll with a wildebeest, spiral water spray, dramatic pixel art in green and red",
+    "tags": ["crocodilian", "death roll", "behavior", "hunting", "Crocodilia", "biomechanics"]
+  },
+  {
+    "id": "animals-crocodile-teeth-regeneration",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "anatomy",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "anatomy",
+    "categoryL3": "crocodile",
+    "statement": "Crocodiles replace their teeth continuously throughout their lives — up to 50 times — meaning an adult crocodile may go through 3,000 teeth over its lifetime.",
+    "quizQuestion": "How many teeth can a crocodile grow over its lifetime?",
+    "correctAnswer": "Up to 3,000",
+    "distractors": [
+      "32 like humans",
+      "About 50",
+      "About 100",
+      "About 500",
+      "About 1,000",
+      "About 5,000",
+      "About 200",
+      "About 10,000"
+    ],
+    "acceptableAnswers": ["Up to 3,000", "About 3,000", "3,000 teeth"],
+    "explanation": "Unlike mammals, crocodilians are polyphyodonts — they continuously replace teeth throughout their entire life. New teeth grow inside hollow spaces beneath the old ones; when a tooth is lost or worn down, the replacement emerges. A typical crocodile has 60-80 teeth in use at any time, and can replace each up to 50 times, totaling roughly 3,000 teeth. Scientists are studying this mechanism to understand how human tooth regeneration might be enabled.",
+    "wowFactor": "Scientists are studying crocodile tooth regeneration hoping to unlock the ability to regrow human teeth — something a crocodile does automatically its entire life.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many teeth can a crocodile grow over its lifetime?",
+        "answer": "Up to 3,000",
+        "distractors": ["32 like humans", "About 100", "About 5,000"]
+      },
+      {
+        "type": "reverse",
+        "question": "Crocodiles replace each tooth up to 50 times; how many total teeth does this produce?",
+        "answer": "About 3,000",
+        "distractors": ["About 32", "About 100", "About 500"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Crocodiles continuously replace their teeth and can grow up to 3,000 over their lifetime.",
+        "answer": "True",
+        "distractors": ["False", "Crocodiles never regrow teeth", "They only regrow teeth twice"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Crocodiles can replace each tooth up to 50 times, producing about ___ teeth over their lifetime.",
+        "answer": "3,000",
+        "distractors": ["32", "100", "10,000"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Molecular Biology and Evolution — crocodilian tooth replacement",
+    "sourceUrl": "https://academic.oup.com/mbe",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Cross-section of a crocodile jaw showing multiple replacement teeth stacked beneath existing teeth, pixel art dental diagram",
+    "tags": ["crocodile", "teeth", "regeneration", "anatomy", "polyphyodont", "biology"]
+  },
+  {
+    "id": "animals-crocodile-speed",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "anatomy",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "anatomy",
+    "categoryL3": "crocodile",
+    "statement": "Crocodiles can run up to 17 km/h on land in short bursts and swim at up to 35 km/h — faster than most humans can run — using their powerful tails for propulsion.",
+    "quizQuestion": "How fast can a crocodile swim using its tail for propulsion?",
+    "correctAnswer": "Up to 35 km/h",
+    "distractors": [
+      "Up to 2 km/h",
+      "Up to 5 km/h",
+      "Up to 10 km/h",
+      "Up to 20 km/h",
+      "Up to 50 km/h",
+      "Up to 60 km/h",
+      "Up to 100 km/h",
+      "Up to 25 km/h"
+    ],
+    "acceptableAnswers": ["Up to 35 km/h", "35 km/h", "About 35 km/h"],
+    "explanation": "Crocodiles propel themselves through water primarily by undulating their muscular tail in a side-to-side motion, while their legs fold flat against the body for streamlining. This allows speeds of up to 35 km/h — faster than the average human sprint (about 13-15 km/h). On land, crocodiles move in a 'high walk' with the body lifted off the ground, capable of 17 km/h in short bursts. Their aquatic speed is part of why ambush attacks near water are so successful.",
+    "wowFactor": "A crocodile can swim faster than the average person can run — making the classic 'escape in a straight line' advice useless if you're already near the water.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How fast can a crocodile swim using its tail for propulsion?",
+        "answer": "Up to 35 km/h",
+        "distractors": ["Up to 5 km/h", "Up to 10 km/h", "Up to 50 km/h"]
+      },
+      {
+        "type": "reverse",
+        "question": "Crocodiles swim faster than humans can run; what body part propels them through water?",
+        "answer": "Their tail",
+        "distractors": ["Their legs", "Their feet", "Their body undulations"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Crocodiles can swim up to 35 km/h — faster than most humans can run.",
+        "answer": "True",
+        "distractors": ["False", "They swim slowly in water", "They run faster than they swim"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Crocodiles swim at up to ___ km/h, faster than most humans can run.",
+        "answer": "35",
+        "distractors": ["5", "10", "100"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Herpetologica — crocodilian locomotion studies",
+    "sourceUrl": "https://www.hljournals.org",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Saltwater crocodile torpedoing through murky green water, tail whipping, pixel art with speed blur",
+    "tags": ["crocodile", "speed", "swimming", "locomotion", "anatomy", "Crocodylus"]
+  }
+]

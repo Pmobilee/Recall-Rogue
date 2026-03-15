@@ -1,0 +1,2338 @@
+[
+  {
+    "id": "science-tornado-formation",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "A tornado is a violent rotating column of air extending from a thunderstorm to the ground.",
+    "quizQuestion": "What connects a tornado to the ground from a thunderstorm?",
+    "correctAnswer": "Rotating air column",
+    "distractors": [
+      "Lightning bolt",
+      "Rain funnel",
+      "Hail shaft",
+      "Dust plume",
+      "Ice column",
+      "Wind wall",
+      "Pressure tube",
+      "Vacuum vortex"
+    ],
+    "acceptableAnswers": [
+      "rotating air column",
+      "column of rotating air",
+      "funnel cloud",
+      "vortex"
+    ],
+    "explanation": "A tornado forms when rotating air in a supercell thunderstorm descends as a funnel and makes contact with the ground. The funnel becomes visible when it picks up debris or condensation.",
+    "wowFactor": "Tornadoes can move at speeds over 480 km/h at their core — fast enough to drive a straw through a wooden telephone pole.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "A tornado consists of what extending from a storm to the ground?",
+        "answer": "Rotating air column",
+        "distractors": [
+          "Lightning bolt",
+          "Rain funnel",
+          "Hail shaft"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What weather phenomenon is a violent rotating air column touching the ground?",
+        "answer": "Tornado",
+        "distractors": [
+          "Hurricane",
+          "Cyclone",
+          "Waterspout"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A tornado is a rotating column of water from a cloud?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A tornado is a violently ___ column of air extending from a thunderstorm to the ground.",
+        "answer": "rotating",
+        "distractors": [
+          "falling",
+          "rising",
+          "oscillating"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tornado",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A dark grey funnel cloud descending from black storm clouds, touching a flat plain with debris flying around its base.",
+    "tags": [
+      "tornado",
+      "weather",
+      "storm",
+      "vortex",
+      "meteorology"
+    ]
+  },
+  {
+    "id": "science-tornado-fujita-scale",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Tornado intensity is measured using the Enhanced Fujita (EF) Scale, ranging from EF0 to EF5.",
+    "quizQuestion": "What scale measures tornado intensity?",
+    "correctAnswer": "Enhanced Fujita Scale",
+    "distractors": [
+      "Richter Scale",
+      "Beaufort Scale",
+      "Saffir-Simpson Scale",
+      "Torricelli Scale",
+      "Mercalli Scale",
+      "Douglas Scale",
+      "Mach Scale",
+      "Kelvin Scale"
+    ],
+    "acceptableAnswers": [
+      "Fujita Scale",
+      "Enhanced Fujita Scale",
+      "EF Scale",
+      "EF scale"
+    ],
+    "explanation": "The Enhanced Fujita Scale (EF0–EF5) rates tornadoes by damage to structures. EF5 represents catastrophic destruction with winds over 320 km/h.",
+    "wowFactor": "The original Fujita Scale was introduced by meteorologist Ted Fujita in 1971. He was nicknamed 'Mr. Tornado' for his pioneering work on severe weather analysis.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What scale is used to rate tornado intensity?",
+        "answer": "Enhanced Fujita Scale",
+        "distractors": [
+          "Beaufort Scale",
+          "Saffir-Simpson Scale",
+          "Richter Scale"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Fujita Scale rates the intensity of which weather event?",
+        "answer": "Tornadoes",
+        "distractors": [
+          "Hurricanes",
+          "Earthquakes",
+          "Blizzards"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Tornadoes are measured using the Richter Scale?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Tornado strength is measured using the Enhanced ___ Scale from EF0 to EF5.",
+        "answer": "Fujita",
+        "distractors": [
+          "Beaufort",
+          "Mercalli",
+          "Saffir"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Enhanced_Fujita_scale",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A storm chaser's dashboard showing a radar screen with a red tornado signature, with a funnel visible through the windshield ahead.",
+    "tags": [
+      "tornado",
+      "fujita scale",
+      "EF scale",
+      "meteorology",
+      "severe weather"
+    ]
+  },
+  {
+    "id": "science-tornado-tornado-alley",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Tornado Alley in the central United States experiences more tornadoes than anywhere else on Earth.",
+    "quizQuestion": "Where on Earth do the most tornadoes occur?",
+    "correctAnswer": "Central United States",
+    "distractors": [
+      "Bangladesh",
+      "Central Australia",
+      "Northern Russia",
+      "Southern India",
+      "Central Africa",
+      "Western China",
+      "Northern Europe",
+      "Eastern Canada"
+    ],
+    "acceptableAnswers": [
+      "central United States",
+      "tornado alley",
+      "Great Plains",
+      "midwest USA"
+    ],
+    "explanation": "Tornado Alley spans Texas, Oklahoma, Kansas, Nebraska, and neighboring states. Warm moist air from the Gulf collides with cold dry air from Canada, creating ideal supercell conditions.",
+    "wowFactor": "The US averages about 1,000 tornadoes per year — more than any other country. The entire rest of the world combined has fewer tornadoes annually.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which region experiences the most tornadoes on Earth?",
+        "answer": "Central United States",
+        "distractors": [
+          "Bangladesh",
+          "Central Australia",
+          "Northern Russia"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What informal name is given to the tornado-prone US central plains?",
+        "answer": "Tornado Alley",
+        "distractors": [
+          "Storm Belt",
+          "Twister Zone",
+          "Hurricane Corridor"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The central United States has more tornadoes than anywhere else on Earth?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The area in the US prone to tornadoes is nicknamed Tornado ___.",
+        "answer": "Alley",
+        "distractors": [
+          "Belt",
+          "Zone",
+          "Corridor"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tornado_Alley",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A US map with a shaded region over Texas, Oklahoma, and Kansas labeled 'Tornado Alley', with funnel icons dotting the area.",
+    "tags": [
+      "tornado",
+      "tornado alley",
+      "United States",
+      "great plains",
+      "severe weather"
+    ]
+  },
+  {
+    "id": "science-plant-photosynthesis",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "botany_plants",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "statement": "Plants produce food through photosynthesis, converting sunlight, water, and carbon dioxide into glucose and oxygen.",
+    "quizQuestion": "What process do plants use to make food from sunlight?",
+    "correctAnswer": "Photosynthesis",
+    "distractors": [
+      "Respiration",
+      "Fermentation",
+      "Transpiration",
+      "Osmosis",
+      "Digestion",
+      "Combustion",
+      "Glycolysis",
+      "Decomposition"
+    ],
+    "acceptableAnswers": [
+      "photosynthesis",
+      "photo synthesis"
+    ],
+    "explanation": "Photosynthesis occurs mainly in chloroplasts. The equation: 6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂. Plants use glucose for energy and release oxygen as a byproduct.",
+    "wowFactor": "Almost all oxygen in Earth's atmosphere was produced by photosynthesis. Before plants, Earth's atmosphere had almost no free oxygen.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What process allows plants to make food from sunlight?",
+        "answer": "Photosynthesis",
+        "distractors": [
+          "Respiration",
+          "Fermentation",
+          "Transpiration"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Photosynthesis converts sunlight, water, and CO₂ into what?",
+        "answer": "Glucose and oxygen",
+        "distractors": [
+          "Protein and nitrogen",
+          "Starch and water",
+          "Fat and carbon"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Photosynthesis converts sunlight into food for plants?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Plants convert sunlight, water, and CO₂ into glucose through ___.",
+        "answer": "photosynthesis",
+        "distractors": [
+          "respiration",
+          "transpiration",
+          "fermentation"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 5,
+    "noveltyScore": 3,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Photosynthesis",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section of a green leaf showing chloroplasts glowing with yellow light, arrows showing CO₂ entering and O₂ leaving.",
+    "tags": [
+      "photosynthesis",
+      "plants",
+      "sunlight",
+      "oxygen",
+      "chlorophyll"
+    ]
+  },
+  {
+    "id": "science-plant-chlorophyll",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "botany_plants",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "statement": "Chlorophyll is the pigment in plants that absorbs sunlight for photosynthesis and makes leaves green.",
+    "quizQuestion": "What pigment makes plants green and captures sunlight?",
+    "correctAnswer": "Chlorophyll",
+    "distractors": [
+      "Carotene",
+      "Melanin",
+      "Hemoglobin",
+      "Xanthophyll",
+      "Retinol",
+      "Anthocyanin",
+      "Keratin",
+      "Tannin"
+    ],
+    "acceptableAnswers": [
+      "chlorophyll",
+      "chlorophyl"
+    ],
+    "explanation": "Chlorophyll absorbs red and blue light but reflects green light, making plants appear green. It sits inside chloroplasts and powers the light-dependent reactions of photosynthesis.",
+    "wowFactor": "In autumn, shorter days cause plants to stop making chlorophyll, revealing the hidden yellows, oranges, and reds of carotene and anthocyanin pigments beneath.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What pigment makes plants appear green?",
+        "answer": "Chlorophyll",
+        "distractors": [
+          "Carotene",
+          "Melanin",
+          "Anthocyanin"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Chlorophyll gives plants their green color by reflecting which color of light?",
+        "answer": "Green",
+        "distractors": [
+          "Red",
+          "Blue",
+          "Yellow"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Chlorophyll is what makes leaves appear green?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ is the green pigment in plants that captures sunlight for photosynthesis.",
+        "answer": "Chlorophyll",
+        "distractors": [
+          "Carotene",
+          "Melanin",
+          "Hemoglobin"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chlorophyll",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A magnified view of a leaf's cells showing bright green chloroplasts packed inside, with sunlight shining through the leaf surface.",
+    "tags": [
+      "chlorophyll",
+      "plants",
+      "green",
+      "photosynthesis",
+      "pigment"
+    ]
+  },
+  {
+    "id": "science-plant-vascular",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "botany_plants",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "statement": "Xylem carries water from roots to leaves; phloem carries sugar from leaves to the rest of the plant.",
+    "quizQuestion": "What plant tissue carries water from roots to leaves?",
+    "correctAnswer": "Xylem",
+    "distractors": [
+      "Phloem",
+      "Cambium",
+      "Cortex",
+      "Epidermis",
+      "Stomata",
+      "Meristem",
+      "Pericycle",
+      "Endodermis"
+    ],
+    "acceptableAnswers": [
+      "xylem",
+      "xylem tissue"
+    ],
+    "explanation": "Plants have two vascular tissues: xylem (water and minerals upward from roots) and phloem (sugars downward from leaves). Together they form the plant's transport system.",
+    "wowFactor": "Water rises through xylem via transpiration pull — molecules evaporating from leaf surfaces create a tension that literally sucks water up from the roots, even in 100-meter-tall trees.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which plant tissue transports water upward from roots?",
+        "answer": "Xylem",
+        "distractors": [
+          "Phloem",
+          "Cambium",
+          "Cortex"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Xylem and phloem are types of what in plants?",
+        "answer": "Vascular tissue",
+        "distractors": [
+          "Leaf cells",
+          "Root hairs",
+          "Seed casings"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Phloem carries water from roots to leaves?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ carries water from roots to leaves; phloem carries sugars.",
+        "answer": "Xylem",
+        "distractors": [
+          "Phloem",
+          "Cambium",
+          "Cortex"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Xylem",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section of a plant stem showing xylem vessels (blue, water) and phloem tubes (yellow, sugar) arranged in bundles.",
+    "tags": [
+      "xylem",
+      "phloem",
+      "plants",
+      "vascular tissue",
+      "botany"
+    ]
+  },
+  {
+    "id": "science-water-h2o",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "chemistry_elements",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "chemistry_elements",
+    "categoryL3": "",
+    "statement": "Water's chemical formula is H₂O — two hydrogen atoms bonded to one oxygen atom.",
+    "quizQuestion": "What is the chemical formula for water?",
+    "correctAnswer": "H₂O",
+    "distractors": [
+      "HO₂",
+      "H₂O₂",
+      "OH",
+      "H₃O",
+      "HO",
+      "O₂H",
+      "H₂O₃",
+      "OH₂"
+    ],
+    "acceptableAnswers": [
+      "H2O",
+      "H₂O",
+      "dihydrogen monoxide",
+      "two hydrogens one oxygen"
+    ],
+    "explanation": "Water (H₂O) consists of two hydrogen atoms covalently bonded to one oxygen atom. Its bent molecular structure creates polarity, making water an excellent solvent.",
+    "wowFactor": "Water is called the 'universal solvent' because it dissolves more substances than any other liquid — critical for life's chemistry to function.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the chemical formula for water?",
+        "answer": "H₂O",
+        "distractors": [
+          "HO₂",
+          "H₂O₂",
+          "H₃O"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many hydrogen atoms does one molecule of water contain?",
+        "answer": "Two",
+        "distractors": [
+          "One",
+          "Three",
+          "Four"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Water's chemical formula is H₂O₂?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Water consists of two ___ atoms bonded to one oxygen atom.",
+        "answer": "hydrogen",
+        "distractors": [
+          "helium",
+          "nitrogen",
+          "carbon"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 4,
+    "noveltyScore": 3,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Water",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 3D molecular model of a water molecule: one large red oxygen sphere bonded to two smaller white hydrogen spheres at an angle.",
+    "tags": [
+      "water",
+      "H2O",
+      "chemistry",
+      "molecule",
+      "hydrogen"
+    ]
+  },
+  {
+    "id": "science-water-boiling-point",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "chemistry_elements",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "chemistry_elements",
+    "categoryL3": "",
+    "statement": "Water boils at 100°C (212°F) at sea level, transitioning from liquid to gas.",
+    "quizQuestion": "At what temperature does water boil at sea level?",
+    "correctAnswer": "100°C (212°F)",
+    "distractors": [
+      "90°C (194°F)",
+      "80°C (176°F)",
+      "120°C (248°F)",
+      "75°C (167°F)",
+      "110°C (230°F)",
+      "95°C (203°F)",
+      "85°C (185°F)",
+      "150°C (302°F)"
+    ],
+    "acceptableAnswers": [
+      "100°C",
+      "100 degrees Celsius",
+      "212°F",
+      "212 degrees Fahrenheit"
+    ],
+    "explanation": "Water boils at 100°C (212°F) at standard atmospheric pressure (sea level). At higher altitudes, reduced pressure lowers the boiling point, which is why pasta takes longer to cook in the mountains.",
+    "wowFactor": "On Mount Everest (8,849 m), water boils at about 70°C — not hot enough to brew proper tea, which requires at least 85-95°C.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "At what temperature does water boil at sea level?",
+        "answer": "100°C (212°F)",
+        "distractors": [
+          "90°C (194°F)",
+          "80°C (176°F)",
+          "120°C (248°F)"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "At 100°C at sea level, water transitions from liquid to what?",
+        "answer": "Gas (steam)",
+        "distractors": [
+          "Solid (ice)",
+          "Plasma",
+          "Supercritical fluid"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Water boils at 90°C at sea level?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Water boils at ___ degrees Celsius at sea level.",
+        "answer": "100",
+        "distractors": [
+          "90",
+          "80",
+          "120"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Boiling_point",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pot of water on a stove with bubbles rising vigorously and steam swirling above the surface.",
+    "tags": [
+      "water",
+      "boiling point",
+      "100 degrees",
+      "physics",
+      "phase change"
+    ]
+  },
+  {
+    "id": "science-water-states",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "chemistry_elements",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "chemistry_elements",
+    "categoryL3": "",
+    "statement": "Water is the only common substance that naturally exists as solid, liquid, and gas on Earth's surface.",
+    "quizQuestion": "How many natural states does water exist in on Earth's surface?",
+    "correctAnswer": "Three",
+    "distractors": [
+      "One",
+      "Two",
+      "Four",
+      "Five",
+      "Six",
+      "Seven",
+      "Eight",
+      "Nine"
+    ],
+    "acceptableAnswers": [
+      "three",
+      "3",
+      "three states",
+      "solid liquid gas"
+    ],
+    "explanation": "Water uniquely exists as ice (solid), liquid water, and water vapor (gas) within Earth's normal temperature range. This makes it essential for weather, climate, and life.",
+    "wowFactor": "Earth is the only known planet in the solar system where liquid water exists stably on the surface — a key reason life thrives here.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In how many states does water naturally occur on Earth's surface?",
+        "answer": "Three",
+        "distractors": [
+          "One",
+          "Two",
+          "Four"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Water's three natural states on Earth are solid, gas, and what?",
+        "answer": "Liquid",
+        "distractors": [
+          "Plasma",
+          "Gel",
+          "Supercritical"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Water naturally exists in all three states of matter on Earth?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Water is unique in naturally existing as solid, ___, and gas on Earth's surface.",
+        "answer": "liquid",
+        "distractors": [
+          "plasma",
+          "gel",
+          "crystal"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Water",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Three panels side by side: an iceberg (solid), a river (liquid), and clouds (water vapor), with arrows showing transitions between them.",
+    "tags": [
+      "water",
+      "states of matter",
+      "ice",
+      "liquid",
+      "steam",
+      "chemistry"
+    ]
+  },
+  {
+    "id": "science-climate-zones",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "ecology_environment",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "ecology_environment",
+    "categoryL3": "",
+    "statement": "Earth has five major climate zones: tropical, dry, temperate, continental, and polar.",
+    "quizQuestion": "How many major climate zones does Earth have?",
+    "correctAnswer": "Five",
+    "distractors": [
+      "Three",
+      "Four",
+      "Six",
+      "Seven",
+      "Eight",
+      "Two",
+      "Nine",
+      "Ten"
+    ],
+    "acceptableAnswers": [
+      "five",
+      "5",
+      "five main zones",
+      "five climate zones"
+    ],
+    "explanation": "The Köppen climate classification divides Earth into 5 main zones: A (tropical), B (dry/arid), C (temperate), D (continental), E (polar). Each has distinct precipitation and temperature patterns.",
+    "wowFactor": "The same latitude can produce very different climates — Seattle and Minsk sit at the same latitude (47-53°N) but have wildly different climates due to ocean currents.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many major climate zones does Earth have?",
+        "answer": "Five",
+        "distractors": [
+          "Three",
+          "Four",
+          "Six"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Köppen system classifies Earth's climates into how many major groups?",
+        "answer": "Five",
+        "distractors": [
+          "Three",
+          "Six",
+          "Ten"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Earth has five major climate zones?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Earth's five major climate zones include tropical, dry, temperate, continental, and ___.",
+        "answer": "polar",
+        "distractors": [
+          "oceanic",
+          "monsoon",
+          "subtropical"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/K%C3%B6ppen_climate_classification",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A world map color-coded into five climate bands: green tropics, yellow deserts, blue temperate, purple continental, white polar.",
+    "tags": [
+      "climate",
+      "climate zones",
+      "koppen",
+      "tropical",
+      "polar",
+      "geography"
+    ]
+  },
+  {
+    "id": "science-climate-greenhouse",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "ecology_environment",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "ecology_environment",
+    "categoryL3": "",
+    "statement": "The greenhouse effect occurs when atmospheric gases trap heat from the Sun, warming Earth's surface.",
+    "quizQuestion": "What process traps heat in Earth's atmosphere?",
+    "correctAnswer": "Greenhouse effect",
+    "distractors": [
+      "Ozone depletion",
+      "Nuclear fusion",
+      "Carbon sequestration",
+      "Solar flares",
+      "Magnetic induction",
+      "Atmospheric pressure",
+      "Albedo reflection",
+      "Thermal inversion"
+    ],
+    "acceptableAnswers": [
+      "greenhouse effect",
+      "greenhouse warming",
+      "trapped heat from gases"
+    ],
+    "explanation": "Greenhouse gases (CO₂, methane, water vapor) absorb infrared radiation emitted by Earth's surface and re-emit it, trapping heat. Without the greenhouse effect, Earth's average temperature would be -18°C.",
+    "wowFactor": "Venus has a runaway greenhouse effect — its atmosphere is 96% CO₂, making its surface temperature 465°C, hotter than Mercury despite being farther from the Sun.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What atmospheric process warms Earth by trapping solar heat?",
+        "answer": "Greenhouse effect",
+        "distractors": [
+          "Ozone depletion",
+          "Solar flares",
+          "Albedo reflection"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which gases are responsible for Earth's greenhouse effect?",
+        "answer": "CO₂ and methane",
+        "distractors": [
+          "Nitrogen and oxygen",
+          "Argon and neon",
+          "Ozone and helium"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The greenhouse effect keeps Earth warmer than it would be otherwise?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ effect occurs when atmospheric gases trap heat from the Sun.",
+        "answer": "greenhouse",
+        "distractors": [
+          "albedo",
+          "ozone",
+          "magnetic"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Greenhouse_effect",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Earth surrounded by a glowing haze of atmosphere, with arrows showing sunlight entering and heat trying to escape but being reflected back.",
+    "tags": [
+      "greenhouse effect",
+      "climate",
+      "CO2",
+      "atmosphere",
+      "global warming"
+    ]
+  },
+  {
+    "id": "science-fire-combustion",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "materials_engineering",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "materials_engineering",
+    "categoryL3": "",
+    "statement": "Fire is a chemical reaction called combustion, where a fuel reacts rapidly with oxygen to produce heat and light.",
+    "quizQuestion": "What chemical reaction produces fire?",
+    "correctAnswer": "Combustion",
+    "distractors": [
+      "Oxidation only",
+      "Reduction",
+      "Electrolysis",
+      "Fermentation",
+      "Photolysis",
+      "Hydrolysis",
+      "Sublimation",
+      "Condensation"
+    ],
+    "acceptableAnswers": [
+      "combustion",
+      "burning",
+      "rapid oxidation"
+    ],
+    "explanation": "Combustion requires three elements: fuel, oxygen, and heat (the fire triangle). The chemical reaction releases energy as heat and light, and produces CO₂ and water in complete combustion.",
+    "wowFactor": "Fire is one of the earliest technologies humans mastered — evidence of controlled fire use dates back 1 million years in Africa.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What chemical reaction is fire?",
+        "answer": "Combustion",
+        "distractors": [
+          "Reduction",
+          "Electrolysis",
+          "Hydrolysis"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Combustion requires fuel, heat, and what third element?",
+        "answer": "Oxygen",
+        "distractors": [
+          "Nitrogen",
+          "Carbon dioxide",
+          "Water"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Fire is produced by a chemical reaction called combustion?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Fire occurs through ___, where fuel reacts with oxygen to release heat and light.",
+        "answer": "combustion",
+        "distractors": [
+          "reduction",
+          "fermentation",
+          "sublimation"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fire",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A campfire with orange and yellow flames rising above glowing red embers, surrounded by dark air.",
+    "tags": [
+      "fire",
+      "combustion",
+      "oxidation",
+      "chemistry",
+      "fuel"
+    ]
+  },
+  {
+    "id": "science-fire-triangle",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "materials_engineering",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "materials_engineering",
+    "categoryL3": "",
+    "statement": "The fire triangle shows that fire needs three elements: fuel, oxygen, and heat to sustain.",
+    "quizQuestion": "What are the three elements of the fire triangle?",
+    "correctAnswer": "Fuel, oxygen, heat",
+    "distractors": [
+      "Fuel, nitrogen, light",
+      "Carbon, oxygen, spark",
+      "Fuel, air, pressure",
+      "Oxygen, water, heat",
+      "Carbon, heat, light",
+      "Fuel, CO₂, heat",
+      "Hydrogen, oxygen, heat",
+      "Fuel, electricity, heat"
+    ],
+    "acceptableAnswers": [
+      "fuel, oxygen, heat",
+      "oxygen, fuel, heat",
+      "heat, fuel, oxygen"
+    ],
+    "explanation": "Remove any side of the fire triangle and the fire dies: remove fuel (starve it), remove oxygen (smother it), or remove heat (cool it). This principle guides all firefighting strategies.",
+    "wowFactor": "CO₂ fire extinguishers work by displacing oxygen around the fire — they don't cool or remove fuel, just starve the fire of the oxygen it needs to sustain combustion.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Name the three elements of the fire triangle.",
+        "answer": "Fuel, oxygen, heat",
+        "distractors": [
+          "Fuel, nitrogen, light",
+          "Carbon, oxygen, spark",
+          "Oxygen, water, heat"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Removing which of the fire triangle's three elements smothers a fire?",
+        "answer": "Oxygen",
+        "distractors": [
+          "Fuel",
+          "Heat",
+          "Light"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The fire triangle's three elements are fuel, oxygen, and heat?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Fire needs fuel, oxygen, and ___ to sustain — the fire triangle.",
+        "answer": "heat",
+        "distractors": [
+          "light",
+          "pressure",
+          "nitrogen"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fire_triangle",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing red triangle with each side labeled: FUEL, OXYGEN, and HEAT, with flames inside.",
+    "tags": [
+      "fire triangle",
+      "combustion",
+      "fuel",
+      "oxygen",
+      "heat",
+      "firefighting"
+    ]
+  },
+  {
+    "id": "science-fire-temperature",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "materials_engineering",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "materials_engineering",
+    "categoryL3": "",
+    "statement": "A wood campfire burns at approximately 600°C, while a candle flame burns at around 1,400°C at its hottest point.",
+    "quizQuestion": "Where is a candle flame hottest?",
+    "correctAnswer": "At its tip/outer cone",
+    "distractors": [
+      "At the base near the wick",
+      "At its geometric center",
+      "At the wick itself",
+      "Uniformly throughout",
+      "At the inner blue cone",
+      "At the wax surface",
+      "At the edge of the glow",
+      "At the top of the wax"
+    ],
+    "acceptableAnswers": [
+      "outer cone",
+      "tip",
+      "at the tip",
+      "outer flame",
+      "top of flame"
+    ],
+    "explanation": "A candle flame has layers: the inner dark zone (unburned wax vapor), a blue zone (~1,670°C, complete combustion), and an outer orange cone (~1,400°C). The tip/outer zone mixes most fully with oxygen.",
+    "wowFactor": "Candle flames are perfectly teardrop-shaped on Earth only due to gravity driving hot air upward. In space, candle flames form spheres without convection.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where is a candle flame hottest?",
+        "answer": "At its tip/outer cone",
+        "distractors": [
+          "At the base near the wick",
+          "At its center",
+          "Uniformly throughout"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A candle flame in space would be shaped like what, without gravity?",
+        "answer": "A sphere",
+        "distractors": [
+          "A teardrop",
+          "A cone",
+          "A cylinder"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A candle flame in space forms a perfect sphere without gravity?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Without gravity, a candle flame forms a ___ shape instead of a teardrop.",
+        "answer": "sphere",
+        "distractors": [
+          "cone",
+          "cylinder",
+          "cube"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Candle",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A candle flame in zero gravity forming a perfect blue-edged sphere, contrasted with a normal teardrop candle flame on Earth.",
+    "tags": [
+      "fire",
+      "candle flame",
+      "combustion",
+      "temperature",
+      "zero gravity",
+      "physics"
+    ]
+  },
+  {
+    "id": "science-earth-layers",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Earth is composed of four main layers: crust, mantle, outer core, and inner core.",
+    "quizQuestion": "How many main layers does Earth have?",
+    "correctAnswer": "Four",
+    "distractors": [
+      "Two",
+      "Three",
+      "Five",
+      "Six",
+      "Seven",
+      "Eight",
+      "One",
+      "Nine"
+    ],
+    "acceptableAnswers": [
+      "four",
+      "4",
+      "four layers"
+    ],
+    "explanation": "Earth's layers from outside in: crust (0-70 km), mantle (70-2,900 km), outer core (liquid iron-nickel, 2,900-5,150 km), and inner core (solid iron-nickel, to 6,371 km).",
+    "wowFactor": "Earth's inner core is solid despite being the hottest part (~5,700°C) because the immense pressure prevents it from melting — even at temperatures exceeding the Sun's surface.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many main layers does Earth have?",
+        "answer": "Four",
+        "distractors": [
+          "Two",
+          "Three",
+          "Five"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Name Earth's innermost layer.",
+        "answer": "Inner core",
+        "distractors": [
+          "Outer core",
+          "Mantle",
+          "Crust"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Earth has four main internal layers?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Earth's four layers are: crust, mantle, outer core, and inner ___.",
+        "answer": "core",
+        "distractors": [
+          "crust",
+          "mantle",
+          "shell"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Structure_of_Earth",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section of Earth showing four concentric rings: a thin grey crust, thick orange mantle, liquid red outer core, and solid yellow inner core.",
+    "tags": [
+      "earth",
+      "layers",
+      "crust",
+      "mantle",
+      "core",
+      "geology"
+    ]
+  },
+  {
+    "id": "science-earth-tectonic-plates",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Earth's crust is divided into tectonic plates that move a few centimeters per year, causing earthquakes and forming mountains.",
+    "quizQuestion": "What causes earthquakes and mountain formation on Earth?",
+    "correctAnswer": "Tectonic plate movement",
+    "distractors": [
+      "Volcanic eruptions",
+      "Lunar gravity",
+      "Mantle cooling",
+      "Solar winds",
+      "Ocean pressure",
+      "Core rotation",
+      "Meteor impacts",
+      "Atmospheric pressure"
+    ],
+    "acceptableAnswers": [
+      "tectonic plates",
+      "plate tectonics",
+      "moving plates",
+      "continental drift"
+    ],
+    "explanation": "Earth's lithosphere is broken into ~15 major tectonic plates. Where plates collide, mountains form; where they slip past each other, earthquakes occur; where they pull apart, new crust forms.",
+    "wowFactor": "Your fingernails grow at roughly the same speed as tectonic plates move — about 2-5 cm per year. Yet in 250 million years, this will form the next supercontinent.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What causes earthquakes and builds mountains?",
+        "answer": "Tectonic plate movement",
+        "distractors": [
+          "Volcanic eruptions",
+          "Lunar gravity",
+          "Mantle cooling"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How fast do Earth's tectonic plates move approximately?",
+        "answer": "A few cm per year",
+        "distractors": [
+          "A few km per year",
+          "A few mm per decade",
+          "A few m per year"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Tectonic plates move a few centimeters per year?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Earth's crust is divided into tectonic ___ that cause earthquakes and mountains.",
+        "answer": "plates",
+        "distractors": [
+          "layers",
+          "zones",
+          "sections"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Plate_tectonics",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A world map showing the boundaries of tectonic plates as thick red lines, with arrows showing their movement directions.",
+    "tags": [
+      "tectonic plates",
+      "earthquakes",
+      "mountains",
+      "geology",
+      "plate tectonics"
+    ]
+  },
+  {
+    "id": "science-earth-age",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Earth is approximately 4.54 billion years old, formed from the solar nebula.",
+    "quizQuestion": "How old is planet Earth?",
+    "correctAnswer": "About 4.54 billion years",
+    "distractors": [
+      "About 2 billion years",
+      "About 6,000 years",
+      "About 13.8 billion years",
+      "About 1 billion years",
+      "About 10 billion years",
+      "About 500 million years",
+      "About 6 billion years",
+      "About 3 billion years"
+    ],
+    "acceptableAnswers": [
+      "4.54 billion years",
+      "about 4.5 billion years",
+      "4.5 billion",
+      "4.54 billion"
+    ],
+    "explanation": "Earth's age is determined through radiometric dating of the oldest rocks and meteorites. The solar system formed from a collapsing cloud of gas and dust about 4.6 billion years ago.",
+    "wowFactor": "If Earth's history were compressed into a 24-hour day, humans would appear in only the last 3 seconds — at 11:59:57 PM.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How old is Earth approximately?",
+        "answer": "About 4.54 billion years",
+        "distractors": [
+          "About 2 billion years",
+          "About 13.8 billion years",
+          "About 1 billion years"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Radiometric dating of meteorites places Earth's formation about how long ago?",
+        "answer": "4.5 billion years",
+        "distractors": [
+          "2 billion years",
+          "10 billion years",
+          "500 million years"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Earth is approximately 4.5 billion years old?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Earth is approximately ___ billion years old.",
+        "answer": "4.54",
+        "distractors": [
+          "2",
+          "10",
+          "6"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Age_of_Earth",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A timeline stretching across a page showing Earth forming from dust at the left end, through dinosaurs, to humans at the far right as a tiny mark.",
+    "tags": [
+      "earth",
+      "age",
+      "4.5 billion",
+      "geology",
+      "radiometric dating"
+    ]
+  },
+  {
+    "id": "science-pomegranate-antioxidants",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "botany_plants",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "statement": "Pomegranates are rich in antioxidants, particularly punicalagins and punicic acid, found in the juice and peel.",
+    "quizQuestion": "What makes pomegranates especially nutritious?",
+    "correctAnswer": "High antioxidant content",
+    "distractors": [
+      "High protein content",
+      "High fat content",
+      "High calcium content",
+      "High iron content",
+      "High vitamin D content",
+      "High sodium content",
+      "High fiber only",
+      "High carbohydrate density"
+    ],
+    "acceptableAnswers": [
+      "antioxidants",
+      "high antioxidants",
+      "punicalagins",
+      "rich in antioxidants"
+    ],
+    "explanation": "Pomegranates contain punicalagins (unique to pomegranate) and punicic acid (in the oil). Their antioxidant activity is 3x higher than red wine or green tea by weight.",
+    "wowFactor": "Pomegranate peel — the part most people throw away — contains the highest concentration of antioxidants in the entire fruit.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What nutritional benefit makes pomegranates stand out?",
+        "answer": "High antioxidant content",
+        "distractors": [
+          "High protein content",
+          "High fat content",
+          "High calcium content"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Punicalagins and punicic acid are antioxidants unique to which fruit?",
+        "answer": "Pomegranate",
+        "distractors": [
+          "Blueberry",
+          "Cranberry",
+          "Acai berry"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pomegranates have higher antioxidant activity than red wine?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pomegranates are rich in ___, with 3x more than red wine or green tea.",
+        "answer": "antioxidants",
+        "distractors": [
+          "protein",
+          "calcium",
+          "vitamin D"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pomegranate",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A halved pomegranate with glistening ruby-red seeds arranged in chambers, resting on a wooden surface.",
+    "tags": [
+      "pomegranate",
+      "antioxidants",
+      "fruit",
+      "nutrition",
+      "punicalagins"
+    ]
+  },
+  {
+    "id": "science-pomegranate-origin",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "botany_plants",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "statement": "The pomegranate is native to the Middle East and has been cultivated for at least 4,000 years.",
+    "quizQuestion": "Where did pomegranates originally come from?",
+    "correctAnswer": "Middle East",
+    "distractors": [
+      "South America",
+      "East Asia",
+      "Central Africa",
+      "Western Europe",
+      "North America",
+      "Southeast Asia",
+      "Australia",
+      "Scandinavia"
+    ],
+    "acceptableAnswers": [
+      "Middle East",
+      "Iran",
+      "Persia",
+      "Iran and Iraq region"
+    ],
+    "explanation": "The pomegranate (Punica granatum) originates from the region of Iran to northern India. It was one of the first fruits to be cultivated and appears in ancient Egyptian, Greek, and Persian art.",
+    "wowFactor": "Pomegranates appear in the Bible, the Quran, and ancient Egyptian tombs — making them one of the most cross-culturally significant fruits in human history.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where did pomegranates originate?",
+        "answer": "Middle East",
+        "distractors": [
+          "South America",
+          "East Asia",
+          "Western Europe"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Pomegranates have been cultivated for at least how many years?",
+        "answer": "4,000 years",
+        "distractors": [
+          "500 years",
+          "1,000 years",
+          "10,000 years"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The pomegranate is native to South America?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The pomegranate originated in the ___ East and has been cultivated for 4,000 years.",
+        "answer": "Middle",
+        "distractors": [
+          "Far",
+          "Near",
+          "Ancient"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pomegranate",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pomegranate trees with bright orange-red flowers and hanging fruit in a sun-baked Middle Eastern garden.",
+    "tags": [
+      "pomegranate",
+      "origin",
+      "Middle East",
+      "cultivation",
+      "ancient fruit"
+    ]
+  },
+  {
+    "id": "science-pomegranate-seeds",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "botany_plants",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "statement": "A single pomegranate contains between 200 and 1,400 seeds, called arils.",
+    "quizQuestion": "What are pomegranate seeds technically called?",
+    "correctAnswer": "Arils",
+    "distractors": [
+      "Drupes",
+      "Berries",
+      "Pips",
+      "Kernels",
+      "Achenes",
+      "Caryopses",
+      "Legumes",
+      "Nutlets"
+    ],
+    "acceptableAnswers": [
+      "arils",
+      "aril",
+      "pomegranate arils"
+    ],
+    "explanation": "Each seed in a pomegranate is surrounded by a juicy red coating called an aril. The fruit is botanically a berry called a 'hesperidium' or a thick-skinned 'balusta.'",
+    "wowFactor": "The word 'pomegranate' means 'seeded apple' in Latin (pomum granatum). The number of seeds in a pomegranate can reach 1,400 — leading ancient cultures to use it as a symbol of fertility.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the correct term for pomegranate seeds?",
+        "answer": "Arils",
+        "distractors": [
+          "Drupes",
+          "Pips",
+          "Achenes"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which fruit can contain up to 1,400 seeds called arils?",
+        "answer": "Pomegranate",
+        "distractors": [
+          "Kiwi",
+          "Passion fruit",
+          "Fig"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pomegranate seeds are botanically called arils?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The juicy seeds inside a pomegranate are called ___.",
+        "answer": "arils",
+        "distractors": [
+          "drupes",
+          "pips",
+          "kernels"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pomegranate",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A burst pomegranate with hundreds of glistening garnet-red arils spilling out, each one a tiny jewel-like capsule.",
+    "tags": [
+      "pomegranate",
+      "arils",
+      "seeds",
+      "fruit anatomy",
+      "botany"
+    ]
+  },
+  {
+    "id": "science-forest-biodiversity",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "ecology_environment",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "ecology_environment",
+    "categoryL3": "",
+    "statement": "Tropical rainforests cover only 6% of Earth's surface but contain over 50% of the world's plant and animal species.",
+    "quizQuestion": "What percentage of Earth's species live in tropical rainforests?",
+    "correctAnswer": "Over 50%",
+    "distractors": [
+      "About 10%",
+      "About 20%",
+      "About 30%",
+      "About 40%",
+      "About 15%",
+      "About 70%",
+      "About 5%",
+      "About 25%"
+    ],
+    "acceptableAnswers": [
+      "over 50%",
+      "more than half",
+      "50% or more",
+      "about half"
+    ],
+    "explanation": "Tropical rainforests are Earth's most biodiverse ecosystems. Despite covering just 6% of land, they host more than 50% of species due to year-round warmth, rainfall, and ancient evolutionary history.",
+    "wowFactor": "A single hectare of Amazon rainforest can contain more tree species than all of North America combined.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What share of Earth's species live in tropical rainforests?",
+        "answer": "Over 50%",
+        "distractors": [
+          "About 10%",
+          "About 20%",
+          "About 30%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Tropical rainforests cover what percentage of Earth's land surface?",
+        "answer": "About 6%",
+        "distractors": [
+          "About 20%",
+          "About 30%",
+          "About 50%"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Rainforests contain over 50% of Earth's species but only 6% of land?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Tropical rainforests cover 6% of Earth but contain over ___% of its species.",
+        "answer": "50",
+        "distractors": [
+          "10",
+          "25",
+          "70"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rainforest",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A lush green rainforest canopy viewed from above, with misty clouds hanging among tree tops and a waterfall visible through the foliage.",
+    "tags": [
+      "forest",
+      "rainforest",
+      "biodiversity",
+      "species",
+      "ecology",
+      "amazon"
+    ]
+  },
+  {
+    "id": "science-forest-oxygen",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "ecology_environment",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "ecology_environment",
+    "categoryL3": "",
+    "statement": "Forests produce about 30% of Earth's oxygen through photosynthesis.",
+    "quizQuestion": "What percentage of Earth's oxygen do forests produce?",
+    "correctAnswer": "About 30%",
+    "distractors": [
+      "About 70%",
+      "About 10%",
+      "About 50%",
+      "About 90%",
+      "About 5%",
+      "About 20%",
+      "About 80%",
+      "About 1%"
+    ],
+    "acceptableAnswers": [
+      "about 30%",
+      "roughly 30%",
+      "around 30%",
+      "30 percent"
+    ],
+    "explanation": "Forests (especially the Amazon) contribute ~28-30% of Earth's oxygen. The ocean (phytoplankton) produces the remaining ~70%. The Amazon is often called the 'lungs of the Earth.'",
+    "wowFactor": "Despite the Amazon being called Earth's 'lungs,' most of its oxygen is consumed by rainforest organisms themselves — the net oxygen contribution to the global atmosphere is near zero.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What share of Earth's oxygen do forests produce?",
+        "answer": "About 30%",
+        "distractors": [
+          "About 70%",
+          "About 10%",
+          "About 50%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which ecosystem produces about 70% of Earth's oxygen?",
+        "answer": "Ocean phytoplankton",
+        "distractors": [
+          "Tropical forests",
+          "Grasslands",
+          "Wetlands"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Forests produce about 30% of Earth's oxygen?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Forests produce approximately ___% of Earth's oxygen through photosynthesis.",
+        "answer": "30",
+        "distractors": [
+          "70",
+          "10",
+          "50"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Forest",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Sunlight streaming through a tall forest canopy, with light rays visible through green leaves and oxygen bubbles floating upward.",
+    "tags": [
+      "forest",
+      "oxygen",
+      "photosynthesis",
+      "amazon",
+      "ecology"
+    ]
+  },
+  {
+    "id": "science-forest-deforestation",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "ecology_environment",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "ecology_environment",
+    "categoryL3": "",
+    "statement": "About 10 million hectares of forest are destroyed each year, equivalent to 27 football fields per minute.",
+    "quizQuestion": "How much forest is lost globally each year?",
+    "correctAnswer": "~10 million hectares",
+    "distractors": [
+      "~100,000 hectares",
+      "~1 million hectares",
+      "~50 million hectares",
+      "~100 million hectares",
+      "~500,000 hectares",
+      "~200,000 hectares",
+      "~5 billion hectares",
+      "~25 million hectares"
+    ],
+    "acceptableAnswers": [
+      "10 million hectares",
+      "about 10 million hectares",
+      "10 million ha",
+      "around 10 million hectares"
+    ],
+    "explanation": "Global deforestation removes ~10 million hectares annually — primarily for agriculture, logging, and urban expansion. Brazil and Indonesia account for the largest losses.",
+    "wowFactor": "At current deforestation rates, the Amazon rainforest could be mostly gone by 2100, releasing over 100 billion tons of carbon — triggering climate feedback beyond reversal.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How much forest is destroyed globally each year?",
+        "answer": "~10 million hectares",
+        "distractors": [
+          "~100,000 hectares",
+          "~1 million hectares",
+          "~50 million hectares"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "27 football fields per minute of forest loss equals roughly how much per year?",
+        "answer": "10 million hectares",
+        "distractors": [
+          "1 million hectares",
+          "100 million hectares",
+          "500 million hectares"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Approximately 10 million hectares of forest are lost each year?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "About ___ million hectares of forest are destroyed each year worldwide.",
+        "answer": "10",
+        "distractors": [
+          "1",
+          "50",
+          "100"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Deforestation",
+    "contentVolatility": "current",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Environmental topic with current political dimensions.",
+    "visualDescription": "Aerial view of a sharp boundary between dense green forest on one side and bare brown cleared land on the other.",
+    "tags": [
+      "deforestation",
+      "forest",
+      "ecology",
+      "amazon",
+      "climate change"
+    ]
+  },
+  {
+    "id": "science-mars-iron-oxide-chemistry",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "chemistry_elements",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "chemistry_elements",
+    "categoryL3": "",
+    "statement": "Iron (Fe) is the chemical element that gives Mars its red color when oxidized to iron(III) oxide (Fe₂O₃).",
+    "quizQuestion": "Which element oxidizes to make Mars's surface red?",
+    "correctAnswer": "Iron (Fe)",
+    "distractors": [
+      "Copper (Cu)",
+      "Titanium (Ti)",
+      "Sulfur (S)",
+      "Manganese (Mn)",
+      "Chromium (Cr)",
+      "Nickel (Ni)",
+      "Cobalt (Co)",
+      "Zinc (Zn)"
+    ],
+    "acceptableAnswers": [
+      "iron",
+      "Fe",
+      "iron Fe",
+      "iron element"
+    ],
+    "explanation": "Mars's reddish surface comes from iron(III) oxide (Fe₂O₃), also known as rust. Iron is the 4th most abundant element in Earth's crust and a major component of Mars's regolith.",
+    "wowFactor": "Rust (iron oxide) forms billions of times faster on Earth than it did on Mars — because Mars lost most of its liquid water 3 billion years ago, drastically slowing the oxidation process.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which chemical element makes Mars red when oxidized?",
+        "answer": "Iron (Fe)",
+        "distractors": [
+          "Copper (Cu)",
+          "Titanium (Ti)",
+          "Sulfur (S)"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Fe₂O₃ (iron oxide) gives which planet its distinctive red color?",
+        "answer": "Mars",
+        "distractors": [
+          "Venus",
+          "Jupiter",
+          "Mercury"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Iron oxide (rust) gives Mars its red color?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mars appears red due to iron ___ (Fe₂O₃) covering its surface.",
+        "answer": "oxide",
+        "distractors": [
+          "sulfide",
+          "carbonate",
+          "chloride"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mars",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A chemistry diagram showing an iron atom and two oxygen molecules combining to form a red iron oxide compound, with a Mars landscape behind.",
+    "tags": [
+      "mars",
+      "iron",
+      "iron oxide",
+      "rust",
+      "chemistry",
+      "Fe2O3"
+    ]
+  },
+  {
+    "id": "science-mars-atmosphere-chemistry",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "chemistry_elements",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "chemistry_elements",
+    "categoryL3": "",
+    "statement": "Mars's atmosphere is 95% carbon dioxide (CO₂), making it toxic and uninhabitable for humans.",
+    "quizQuestion": "What gas makes up 95% of Mars's atmosphere?",
+    "correctAnswer": "Carbon dioxide (CO₂)",
+    "distractors": [
+      "Nitrogen",
+      "Oxygen",
+      "Methane",
+      "Argon",
+      "Hydrogen",
+      "Helium",
+      "Sulfur dioxide",
+      "Water vapor"
+    ],
+    "acceptableAnswers": [
+      "carbon dioxide",
+      "CO₂",
+      "CO2"
+    ],
+    "explanation": "Mars's thin atmosphere is 95% CO₂, 2.6% nitrogen, and 1.9% argon, with trace oxygen. The atmospheric pressure is 1% of Earth's — far too low and the wrong composition for human breathing.",
+    "wowFactor": "NASA's MOXIE experiment on the Perseverance rover successfully produced oxygen on Mars in 2021 by splitting CO₂ — a proof-of-concept for future human missions.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What gas makes up 95% of Mars's atmosphere?",
+        "answer": "Carbon dioxide (CO₂)",
+        "distractors": [
+          "Nitrogen",
+          "Oxygen",
+          "Argon"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which planet has an atmosphere that is 95% carbon dioxide?",
+        "answer": "Mars",
+        "distractors": [
+          "Venus",
+          "Earth",
+          "Mercury"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mars's atmosphere is mostly carbon dioxide?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mars's atmosphere is 95% ___ dioxide, making it uninhabitable for humans.",
+        "answer": "carbon",
+        "distractors": [
+          "sulfur",
+          "nitrogen",
+          "iron"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Atmosphere_of_Mars",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A diagram of the Martian atmosphere layers labeled with CO₂ percentage, set against a thin hazy pink sky above a rust-red surface.",
+    "tags": [
+      "mars",
+      "atmosphere",
+      "carbon dioxide",
+      "CO2",
+      "chemistry",
+      "MOXIE"
+    ]
+  },
+  {
+    "id": "science-mars-water-history",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "chemistry_elements",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "chemistry_elements",
+    "categoryL3": "",
+    "statement": "Mars once had liquid water on its surface — rivers, lakes, and possibly oceans — over 3 billion years ago.",
+    "quizQuestion": "What liquid once flowed on Mars's surface billions of years ago?",
+    "correctAnswer": "Water",
+    "distractors": [
+      "Liquid methane",
+      "Liquid CO₂",
+      "Liquid iron",
+      "Liquid sulfur",
+      "Liquid nitrogen",
+      "Liquid ammonia",
+      "Liquid helium",
+      "Molten rock only"
+    ],
+    "acceptableAnswers": [
+      "water",
+      "liquid water",
+      "H2O"
+    ],
+    "explanation": "Orbital and surface evidence shows Mars had liquid water more than 3 billion years ago. Dry riverbeds, lakebeds, and the chemistry of Mars rocks all point to a once-wet world.",
+    "wowFactor": "Mars may have had a northern ocean larger than Earth's Arctic Ocean — it likely disappeared when Mars lost its magnetic field and solar winds stripped the atmosphere away.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What liquid once flowed on Mars over 3 billion years ago?",
+        "answer": "Water",
+        "distractors": [
+          "Liquid methane",
+          "Liquid CO₂",
+          "Liquid sulfur"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Evidence of ancient riverbeds and lakebeds on Mars suggests what once existed there?",
+        "answer": "Liquid water",
+        "distractors": [
+          "Liquid methane",
+          "Lava rivers",
+          "Ice sheets only"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mars had liquid water on its surface billions of years ago?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mostly false",
+          "Partially true"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mars once had liquid ___ on its surface, evidenced by ancient riverbeds.",
+        "answer": "water",
+        "distractors": [
+          "methane",
+          "carbon dioxide",
+          "iron"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Water_on_Mars",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An artist's rendering of ancient Mars: blue ocean covering the northern hemisphere, rivers cutting through red rock canyons under a thicker atmosphere.",
+    "tags": [
+      "mars",
+      "water",
+      "ancient history",
+      "geology",
+      "astrobiology"
+    ]
+  }
+]

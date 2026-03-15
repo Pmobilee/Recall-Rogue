@@ -1,0 +1,1112 @@
+[
+  {
+    "id": "science-einstein-001",
+    "question": "Which theory did Albert Einstein publish in 1905 to explain the photoelectric effect?",
+    "correctAnswer": "Quantum light theory",
+    "domain": "science",
+    "subcategory": "physicists",
+    "contentVolatility": "timeless",
+    "funScore": 8,
+    "quizQuestion": "Which 1905 theory by Einstein explained the photoelectric effect?",
+    "distractors": ["Wave theory of light", "Special relativity", "General relativity", "Uncertainty principle", "String theory", "Bohr model", "Kinetic theory", "Corpuscular theory"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which 1905 theory by Einstein explained the photoelectric effect?",
+        "correctAnswer": "Quantum light theory",
+        "distractors": ["Wave theory of light", "Special relativity", "General relativity"]
+      },
+      {
+        "type": "reverse",
+        "question": "What phenomenon did Einstein's quantum light theory explain?",
+        "correctAnswer": "Photoelectric effect",
+        "distractors": ["Gravity bending light", "Nuclear fission", "Black body radiation alone"]
+      },
+      {
+        "type": "true_false",
+        "question": "Einstein won the Nobel Prize for explaining the photoelectric effect. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Einstein won the Nobel Prize for explaining the _____ using photons.",
+        "correctAnswer": "Photoelectric effect",
+        "distractors": ["Double-slit experiment", "Nuclear decay", "Compton scattering"]
+      }
+    ]
+  },
+  {
+    "id": "science-einstein-002",
+    "question": "What famous equation did Einstein derive from special relativity?",
+    "correctAnswer": "E = mc²",
+    "domain": "science",
+    "subcategory": "physicists",
+    "contentVolatility": "timeless",
+    "funScore": 7,
+    "quizQuestion": "What famous equation did Einstein derive from special relativity?",
+    "distractors": ["F = ma", "E = hf", "PV = nRT", "V = IR", "c = fλ", "F = qE", "W = Fd", "p = mv"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What famous equation did Einstein derive from special relativity?",
+        "correctAnswer": "E = mc²",
+        "distractors": ["F = ma", "E = hf", "PV = nRT"]
+      },
+      {
+        "type": "reverse",
+        "question": "E = mc² is the most famous equation from which physicist?",
+        "correctAnswer": "Albert Einstein",
+        "distractors": ["Isaac Newton", "Max Planck", "Niels Bohr"]
+      },
+      {
+        "type": "true_false",
+        "question": "E = mc² means energy equals mass times the speed of light squared. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Einstein's famous equation _____ shows mass and energy are equivalent.",
+        "correctAnswer": "E = mc²",
+        "distractors": ["F = ma", "E = hf", "PV = nRT"]
+      }
+    ]
+  },
+  {
+    "id": "science-einstein-003",
+    "question": "Einstein's general relativity describes gravity as what?",
+    "correctAnswer": "Curvature of spacetime",
+    "domain": "science",
+    "subcategory": "physicists",
+    "contentVolatility": "timeless",
+    "funScore": 9,
+    "quizQuestion": "Einstein's general relativity describes gravity as what?",
+    "distractors": ["Force between masses", "Exchange of gravitons", "Warping of time alone", "Electromagnetic attraction", "Quantum field effect", "Tidal deformation", "Pressure gradient", "Wave propagation"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Einstein's general relativity describes gravity as what?",
+        "correctAnswer": "Curvature of spacetime",
+        "distractors": ["Force between masses", "Exchange of gravitons", "Electromagnetic attraction"]
+      },
+      {
+        "type": "reverse",
+        "question": "General relativity redefines gravity as the curvature of what?",
+        "correctAnswer": "Spacetime",
+        "distractors": ["Electromagnetic field", "Quantum foam", "Dark matter"]
+      },
+      {
+        "type": "true_false",
+        "question": "General relativity describes gravity as the curvature of spacetime. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In general relativity, massive objects curve _____, causing gravity.",
+        "correctAnswer": "Curvature of spacetime",
+        "distractors": ["Exchange of gravitons", "Force between masses", "Quantum field effect"]
+      }
+    ]
+  },
+  {
+    "id": "science-atom-001",
+    "question": "Which subatomic particle carries a negative electric charge?",
+    "correctAnswer": "Electron",
+    "domain": "science",
+    "subcategory": "physics",
+    "contentVolatility": "timeless",
+    "funScore": 5,
+    "quizQuestion": "Which subatomic particle carries a negative electric charge?",
+    "distractors": ["Proton", "Neutron", "Photon", "Neutrino", "Quark", "Positron", "Muon", "Gluon"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which subatomic particle carries a negative electric charge?",
+        "correctAnswer": "Electron",
+        "distractors": ["Proton", "Neutron", "Photon"]
+      },
+      {
+        "type": "reverse",
+        "question": "An electron is the subatomic particle with which charge?",
+        "correctAnswer": "Negative",
+        "distractors": ["Positive", "Neutral", "Variable"]
+      },
+      {
+        "type": "true_false",
+        "question": "Electrons carry a negative electric charge. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The _____ is the negatively charged particle orbiting the atomic nucleus.",
+        "correctAnswer": "Electron",
+        "distractors": ["Proton", "Neutron", "Photon"]
+      }
+    ]
+  },
+  {
+    "id": "science-atom-002",
+    "question": "What is found at the center of an atom?",
+    "correctAnswer": "Nucleus",
+    "domain": "science",
+    "subcategory": "physics",
+    "contentVolatility": "timeless",
+    "funScore": 4,
+    "quizQuestion": "What is found at the center of an atom?",
+    "distractors": ["Electron cloud", "Photon core", "Quark field", "Neutron shell", "Energy level", "Valence ring", "Meson layer", "Boson field"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is found at the center of an atom?",
+        "correctAnswer": "Nucleus",
+        "distractors": ["Electron cloud", "Photon core", "Quark field"]
+      },
+      {
+        "type": "reverse",
+        "question": "The nucleus is the central part of which tiny structure?",
+        "correctAnswer": "Atom",
+        "distractors": ["Molecule", "Cell", "Crystal"]
+      },
+      {
+        "type": "true_false",
+        "question": "The nucleus is at the center of every atom. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Protons and neutrons cluster in the _____ at an atom's center.",
+        "correctAnswer": "Nucleus",
+        "distractors": ["Electron cloud", "Valence shell", "Quark field"]
+      }
+    ]
+  },
+  {
+    "id": "science-atom-003",
+    "question": "What determines an element's identity in the periodic table?",
+    "correctAnswer": "Number of protons",
+    "domain": "science",
+    "subcategory": "physics",
+    "contentVolatility": "timeless",
+    "funScore": 6,
+    "quizQuestion": "What determines an element's identity in the periodic table?",
+    "distractors": ["Number of neutrons", "Number of electrons", "Atomic mass", "Number of shells", "Valence electrons", "Electron orbitals", "Nuclear charge only", "Mass number"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What determines an element's identity in the periodic table?",
+        "correctAnswer": "Number of protons",
+        "distractors": ["Number of neutrons", "Number of electrons", "Atomic mass"]
+      },
+      {
+        "type": "reverse",
+        "question": "Changing the number of protons in a nucleus changes the element. What is this number called?",
+        "correctAnswer": "Atomic number",
+        "distractors": ["Mass number", "Valence count", "Neutron number"]
+      },
+      {
+        "type": "true_false",
+        "question": "The number of protons determines which element an atom is. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "An atom's _____ determines its identity as an element.",
+        "correctAnswer": "Number of protons",
+        "distractors": ["Number of neutrons", "Number of electrons", "Atomic mass"]
+      }
+    ]
+  },
+  {
+    "id": "science-geology-001",
+    "question": "What is the cycle in which rocks are formed, broken down, and reformed?",
+    "correctAnswer": "Rock cycle",
+    "domain": "science",
+    "subcategory": "earth_science",
+    "contentVolatility": "timeless",
+    "funScore": 5,
+    "quizQuestion": "What is the cycle in which rocks are continuously transformed?",
+    "distractors": ["Water cycle", "Carbon cycle", "Nitrogen cycle", "Sediment cycle", "Mineral cycle", "Tectonic cycle", "Erosion cycle", "Volcanic cycle"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the cycle in which rocks are continuously transformed?",
+        "correctAnswer": "Rock cycle",
+        "distractors": ["Water cycle", "Carbon cycle", "Nitrogen cycle"]
+      },
+      {
+        "type": "reverse",
+        "question": "The rock cycle describes how which three rock types interconvert?",
+        "correctAnswer": "Igneous, sedimentary, metamorphic",
+        "distractors": ["Granite, basalt, limestone", "Hard, soft, and medium rock", "Surface, deep, and volcanic rock"]
+      },
+      {
+        "type": "true_false",
+        "question": "The rock cycle describes how igneous, sedimentary, and metamorphic rocks transform into each other. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Geology studies the _____, where rocks continuously change form.",
+        "correctAnswer": "Rock cycle",
+        "distractors": ["Water cycle", "Carbon cycle", "Tectonic cycle"]
+      }
+    ]
+  },
+  {
+    "id": "science-geology-002",
+    "question": "What theory explains the movement of Earth's continents?",
+    "correctAnswer": "Plate tectonics",
+    "domain": "science",
+    "subcategory": "earth_science",
+    "contentVolatility": "timeless",
+    "funScore": 6,
+    "quizQuestion": "What theory explains the movement of Earth's continents?",
+    "distractors": ["Continental drift only", "Sea floor spreading only", "Isostasy theory", "Geosyncline theory", "Mantle convection theory", "Volcanic expansion", "Tidal theory", "Magnetic reversal"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What theory explains the movement of Earth's continents?",
+        "correctAnswer": "Plate tectonics",
+        "distractors": ["Continental drift only", "Sea floor spreading only", "Isostasy theory"]
+      },
+      {
+        "type": "reverse",
+        "question": "Plate tectonics describes the movement of which large geological structures?",
+        "correctAnswer": "Tectonic plates",
+        "distractors": ["Fault lines", "Volcanoes", "Mountain ranges"]
+      },
+      {
+        "type": "true_false",
+        "question": "Plate tectonics explains why continents move and earthquakes occur. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The theory of _____ explains how Earth's crust is divided into moving plates.",
+        "correctAnswer": "Plate tectonics",
+        "distractors": ["Continental drift only", "Sea floor spreading only", "Isostasy theory"]
+      }
+    ]
+  },
+  {
+    "id": "science-geology-003",
+    "question": "What is the study of Earth's physical structure and history called?",
+    "correctAnswer": "Geology",
+    "domain": "science",
+    "subcategory": "earth_science",
+    "contentVolatility": "timeless",
+    "funScore": 4,
+    "quizQuestion": "What is the study of Earth's physical structure and history called?",
+    "distractors": ["Geography", "Meteorology", "Oceanography", "Seismology", "Volcanology", "Palaeontology", "Hydrology", "Topography"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the study of Earth's physical structure and history called?",
+        "correctAnswer": "Geology",
+        "distractors": ["Geography", "Meteorology", "Oceanography"]
+      },
+      {
+        "type": "reverse",
+        "question": "Geology is the study of which planet's structure and rock record?",
+        "correctAnswer": "Earth",
+        "distractors": ["Mars", "Any rocky planet", "Venus"]
+      },
+      {
+        "type": "true_false",
+        "question": "Geology is the scientific study of Earth's rocks and physical history. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "_____ is the science of Earth's rocks, minerals, and physical history.",
+        "correctAnswer": "Geology",
+        "distractors": ["Geography", "Meteorology", "Seismology"]
+      }
+    ]
+  },
+  {
+    "id": "science-bronze-001",
+    "question": "What two metals are combined to make bronze?",
+    "correctAnswer": "Copper and tin",
+    "domain": "science",
+    "subcategory": "materials",
+    "contentVolatility": "timeless",
+    "funScore": 7,
+    "quizQuestion": "What two metals are combined to make bronze?",
+    "distractors": ["Copper and zinc", "Iron and carbon", "Gold and silver", "Lead and tin", "Copper and iron", "Silver and tin", "Nickel and copper", "Zinc and tin"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What two metals are combined to make bronze?",
+        "correctAnswer": "Copper and tin",
+        "distractors": ["Copper and zinc", "Iron and carbon", "Gold and silver"]
+      },
+      {
+        "type": "reverse",
+        "question": "Bronze is an alloy of copper mixed with which other metal?",
+        "correctAnswer": "Tin",
+        "distractors": ["Zinc", "Iron", "Lead"]
+      },
+      {
+        "type": "true_false",
+        "question": "Bronze is an alloy of copper and tin. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Bronze is made by combining copper and _____ together.",
+        "correctAnswer": "Copper and tin",
+        "distractors": ["Copper and zinc", "Iron and carbon", "Lead and tin"]
+      }
+    ]
+  },
+  {
+    "id": "science-bronze-002",
+    "question": "What historical age is named after the widespread use of bronze?",
+    "correctAnswer": "Bronze Age",
+    "domain": "science",
+    "subcategory": "materials",
+    "contentVolatility": "timeless",
+    "funScore": 6,
+    "quizQuestion": "What historical age is named after the widespread use of bronze?",
+    "distractors": ["Iron Age", "Stone Age", "Copper Age", "Golden Age", "Silver Age", "Steel Age", "Tin Age", "Metal Age"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What historical age is named after the widespread use of bronze?",
+        "correctAnswer": "Bronze Age",
+        "distractors": ["Iron Age", "Stone Age", "Copper Age"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Bronze Age is named after the dominant material used for what?",
+        "correctAnswer": "Tools and weapons",
+        "distractors": ["Jewelry only", "Buildings", "Clothing"]
+      },
+      {
+        "type": "true_false",
+        "question": "The Bronze Age is named for widespread bronze tool use. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The _____ was a period when bronze tools and weapons dominated.",
+        "correctAnswer": "Bronze Age",
+        "distractors": ["Iron Age", "Stone Age", "Copper Age"]
+      }
+    ]
+  },
+  {
+    "id": "science-bronze-003",
+    "question": "What is the term for a mixture of two or more metals?",
+    "correctAnswer": "Alloy",
+    "domain": "science",
+    "subcategory": "materials",
+    "contentVolatility": "timeless",
+    "funScore": 6,
+    "quizQuestion": "What is the term for a mixture of two or more metals?",
+    "distractors": ["Compound", "Polymer", "Composite", "Amalgam", "Mineral", "Crystal", "Solution", "Colloid"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the term for a mixture of two or more metals?",
+        "correctAnswer": "Alloy",
+        "distractors": ["Compound", "Polymer", "Composite"]
+      },
+      {
+        "type": "reverse",
+        "question": "Bronze and steel are both examples of which type of material?",
+        "correctAnswer": "Alloy",
+        "distractors": ["Composite", "Mineral", "Polymer"]
+      },
+      {
+        "type": "true_false",
+        "question": "An alloy is a mixture of two or more metals. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Bronze is an _____, a metallic mixture with improved properties.",
+        "correctAnswer": "Alloy",
+        "distractors": ["Compound", "Polymer", "Composite"]
+      }
+    ]
+  },
+  {
+    "id": "science-ac-001",
+    "question": "Who pioneered the development of alternating current (AC) systems?",
+    "correctAnswer": "Nikola Tesla",
+    "domain": "science",
+    "subcategory": "physicists",
+    "contentVolatility": "timeless",
+    "funScore": 7,
+    "quizQuestion": "Who pioneered the development of alternating current systems?",
+    "distractors": ["Thomas Edison", "George Westinghouse", "James Watt", "Michael Faraday", "Heinrich Hertz", "Andre Ampere", "Alessandro Volta", "Georg Ohm"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who pioneered the development of alternating current systems?",
+        "correctAnswer": "Nikola Tesla",
+        "distractors": ["Thomas Edison", "George Westinghouse", "James Watt"]
+      },
+      {
+        "type": "reverse",
+        "question": "Nikola Tesla is best known for pioneering which type of electricity?",
+        "correctAnswer": "Alternating current",
+        "distractors": ["Direct current", "Static electricity", "Nuclear power"]
+      },
+      {
+        "type": "true_false",
+        "question": "Nikola Tesla pioneered alternating current electrical systems. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Nikola Tesla developed _____ systems used in modern power grids.",
+        "correctAnswer": "Alternating current",
+        "distractors": ["Direct current", "Static electricity", "Nuclear power"]
+      }
+    ]
+  },
+  {
+    "id": "science-ac-002",
+    "question": "What is the key difference between AC and DC electricity?",
+    "correctAnswer": "AC reverses direction periodically",
+    "domain": "science",
+    "subcategory": "physics",
+    "contentVolatility": "timeless",
+    "funScore": 7,
+    "quizQuestion": "What is the key difference between AC and DC electricity?",
+    "distractors": ["AC is stronger than DC", "DC travels farther", "AC uses more energy", "DC is safer than AC", "AC requires no wires", "DC alternates polarity", "AC cannot power motors", "DC has higher frequency"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the key difference between AC and DC electricity?",
+        "correctAnswer": "AC reverses direction periodically",
+        "distractors": ["AC is stronger than DC", "DC travels farther", "DC is safer than AC"]
+      },
+      {
+        "type": "reverse",
+        "question": "AC electricity is defined by its current doing what?",
+        "correctAnswer": "Reversing direction",
+        "distractors": ["Flowing in one direction", "Jumping between wires", "Stopping and starting"]
+      },
+      {
+        "type": "true_false",
+        "question": "AC electricity periodically reverses direction, unlike DC. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Unlike DC, _____ reverses its flow direction many times per second.",
+        "correctAnswer": "AC reverses direction periodically",
+        "distractors": ["DC changes polarity", "DC alternates flow", "AC flows in one way"]
+      }
+    ]
+  },
+  {
+    "id": "science-ac-003",
+    "question": "Which inventor promoted DC electricity against Tesla's AC system?",
+    "correctAnswer": "Thomas Edison",
+    "domain": "science",
+    "subcategory": "physicists",
+    "contentVolatility": "timeless",
+    "funScore": 8,
+    "quizQuestion": "Which inventor promoted DC electricity against Tesla's AC system?",
+    "distractors": ["Benjamin Franklin", "James Watt", "George Westinghouse", "Michael Faraday", "Alessandro Volta", "Andre Ampere", "Heinrich Hertz", "Joseph Henry"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which inventor promoted DC electricity against Tesla's AC system?",
+        "correctAnswer": "Thomas Edison",
+        "distractors": ["Benjamin Franklin", "James Watt", "George Westinghouse"]
+      },
+      {
+        "type": "reverse",
+        "question": "The 'War of Currents' was fought between Tesla's AC and whose DC system?",
+        "correctAnswer": "Thomas Edison",
+        "distractors": ["George Westinghouse", "Benjamin Franklin", "Michael Faraday"]
+      },
+      {
+        "type": "true_false",
+        "question": "Thomas Edison promoted DC electricity in competition with Tesla's AC system. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "_____ championed DC electricity during the War of Currents against Tesla.",
+        "correctAnswer": "Thomas Edison",
+        "distractors": ["Benjamin Franklin", "James Watt", "Georg Ohm"]
+      }
+    ]
+  },
+  {
+    "id": "science-savanna-001",
+    "question": "What type of ecosystem is a savanna?",
+    "correctAnswer": "Tropical grassland",
+    "domain": "science",
+    "subcategory": "ecology",
+    "contentVolatility": "timeless",
+    "funScore": 5,
+    "quizQuestion": "What type of ecosystem is a savanna?",
+    "distractors": ["Temperate forest", "Desert scrubland", "Boreal tundra", "Wetland marsh", "Mediterranean shrubland", "Arctic tundra", "Mangrove forest", "Alpine meadow"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What type of ecosystem is a savanna?",
+        "correctAnswer": "Tropical grassland",
+        "distractors": ["Temperate forest", "Desert scrubland", "Boreal tundra"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Serengeti in Africa is a famous example of which ecosystem?",
+        "correctAnswer": "Savanna",
+        "distractors": ["Rainforest", "Desert", "Temperate forest"]
+      },
+      {
+        "type": "true_false",
+        "question": "A savanna is a tropical grassland with scattered trees. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The African _____ is a warm grassland with seasonal rainfall and scattered trees.",
+        "correctAnswer": "Tropical grassland",
+        "distractors": ["Temperate forest", "Desert scrubland", "Wetland marsh"]
+      }
+    ]
+  },
+  {
+    "id": "science-savanna-002",
+    "question": "Which continent has the largest savanna biome?",
+    "correctAnswer": "Africa",
+    "domain": "science",
+    "subcategory": "ecology",
+    "contentVolatility": "timeless",
+    "funScore": 5,
+    "quizQuestion": "Which continent has the largest savanna biome?",
+    "distractors": ["South America", "Australia", "Asia", "North America", "Europe", "Antarctica", "Oceania", "India"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which continent has the largest savanna biome?",
+        "correctAnswer": "Africa",
+        "distractors": ["South America", "Australia", "Asia"]
+      },
+      {
+        "type": "reverse",
+        "question": "Africa's Serengeti is the world's largest example of which biome?",
+        "correctAnswer": "Savanna",
+        "distractors": ["Rainforest", "Desert", "Tundra"]
+      },
+      {
+        "type": "true_false",
+        "question": "Africa has the world's largest savanna biome. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "_____ has the world's largest savanna, covering much of sub-Saharan land.",
+        "correctAnswer": "Africa",
+        "distractors": ["South America", "Australia", "Asia"]
+      }
+    ]
+  },
+  {
+    "id": "science-savanna-003",
+    "question": "What defines the dry season on a savanna?",
+    "correctAnswer": "Little to no rainfall",
+    "domain": "science",
+    "subcategory": "ecology",
+    "contentVolatility": "timeless",
+    "funScore": 4,
+    "quizQuestion": "What characterizes the dry season on a savanna?",
+    "distractors": ["Heavy snowfall", "Intense heat waves only", "Dense fog", "Frequent flooding", "Cool temperatures", "Strong winds only", "Monsoon rains", "Frost events"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What characterizes the dry season on a savanna?",
+        "correctAnswer": "Little to no rainfall",
+        "distractors": ["Heavy snowfall", "Dense fog", "Frequent flooding"]
+      },
+      {
+        "type": "reverse",
+        "question": "A savanna's dry season is defined by the near-absence of what?",
+        "correctAnswer": "Rainfall",
+        "distractors": ["Sunlight", "Wind", "Animal activity"]
+      },
+      {
+        "type": "true_false",
+        "question": "Savannas have a dry season with little to no rainfall. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Savannas alternate between a wet season and a dry season with _____ .",
+        "correctAnswer": "Little to no rainfall",
+        "distractors": ["Heavy snowfall", "Dense fog", "Frequent flooding"]
+      }
+    ]
+  },
+  {
+    "id": "science-crick-001",
+    "question": "What structure did Francis Crick and James Watson discover in 1953?",
+    "correctAnswer": "DNA double helix",
+    "domain": "science",
+    "subcategory": "biologists",
+    "contentVolatility": "timeless",
+    "funScore": 8,
+    "quizQuestion": "What structure did Francis Crick and James Watson discover in 1953?",
+    "distractors": ["RNA structure", "Cell membrane", "Mitochondria", "Chromosome structure", "Protein folding", "Nucleosome", "Ribosome structure", "Gene sequence"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What structure did Francis Crick and James Watson discover in 1953?",
+        "correctAnswer": "DNA double helix",
+        "distractors": ["RNA structure", "Cell membrane", "Mitochondria"]
+      },
+      {
+        "type": "reverse",
+        "question": "Who co-discovered the double helix structure of DNA in 1953?",
+        "correctAnswer": "Francis Crick",
+        "distractors": ["Gregor Mendel", "Charles Darwin", "Louis Pasteur"]
+      },
+      {
+        "type": "true_false",
+        "question": "Francis Crick co-discovered the DNA double helix structure. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Crick and Watson discovered the _____ structure of DNA in 1953.",
+        "correctAnswer": "DNA double helix",
+        "distractors": ["RNA structure", "Cell membrane", "Chromosome structure"]
+      }
+    ]
+  },
+  {
+    "id": "science-crick-002",
+    "question": "Whose X-ray images helped Crick and Watson determine the DNA structure?",
+    "correctAnswer": "Rosalind Franklin",
+    "domain": "science",
+    "subcategory": "biologists",
+    "contentVolatility": "timeless",
+    "funScore": 9,
+    "quizQuestion": "Whose X-ray images helped Crick and Watson determine DNA's structure?",
+    "distractors": ["Marie Curie", "Dorothy Hodgkin", "Lise Meitner", "Barbara McClintock", "Rita Levi-Montalcini", "Nettie Stevens", "Lynn Margulis", "Elizabeth Blackburn"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Whose X-ray images helped Crick and Watson determine DNA's structure?",
+        "correctAnswer": "Rosalind Franklin",
+        "distractors": ["Marie Curie", "Dorothy Hodgkin", "Lise Meitner"]
+      },
+      {
+        "type": "reverse",
+        "question": "Rosalind Franklin's X-ray Photo 51 was crucial for discovering what?",
+        "correctAnswer": "DNA double helix",
+        "distractors": ["RNA structure", "Protein synthesis", "Cell division"]
+      },
+      {
+        "type": "true_false",
+        "question": "Rosalind Franklin's X-ray images contributed to discovering the DNA structure. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "_____ took X-ray Photo 51, which was key evidence for the DNA helix.",
+        "correctAnswer": "Rosalind Franklin",
+        "distractors": ["Marie Curie", "Dorothy Hodgkin", "Lise Meitner"]
+      }
+    ]
+  },
+  {
+    "id": "science-crick-003",
+    "question": "What Nobel Prize did Crick, Watson, and Wilkins receive in 1962?",
+    "correctAnswer": "Nobel Prize in Physiology",
+    "domain": "science",
+    "subcategory": "biologists",
+    "contentVolatility": "timeless",
+    "funScore": 7,
+    "quizQuestion": "What Nobel Prize did Crick, Watson, and Wilkins receive in 1962?",
+    "distractors": ["Nobel Prize in Chemistry", "Nobel Prize in Physics", "Nobel Peace Prize", "Nobel Prize in Medicine", "Nobel Prize in Literature", "Nobel Prize in Economics", "Lasker Award", "Turing Award"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What Nobel Prize did Crick, Watson, and Wilkins receive in 1962?",
+        "correctAnswer": "Nobel Prize in Physiology",
+        "distractors": ["Nobel Prize in Chemistry", "Nobel Prize in Physics", "Nobel Peace Prize"]
+      },
+      {
+        "type": "reverse",
+        "question": "Crick and Watson received the 1962 Nobel Prize for discovering what?",
+        "correctAnswer": "DNA double helix",
+        "distractors": ["Genetic code", "RNA polymerase", "Cell division"]
+      },
+      {
+        "type": "true_false",
+        "question": "Crick, Watson, and Wilkins won the 1962 Nobel Prize in Physiology or Medicine. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Crick, Watson, and Wilkins shared the Nobel Prize for the _____ discovery.",
+        "correctAnswer": "DNA double helix",
+        "distractors": ["Genetic code", "RNA structure", "Chromosome mapping"]
+      }
+    ]
+  },
+  {
+    "id": "science-climatology-001",
+    "question": "What is the scientific study of climate patterns called?",
+    "correctAnswer": "Climatology",
+    "domain": "science",
+    "subcategory": "earth_science",
+    "contentVolatility": "timeless",
+    "funScore": 4,
+    "quizQuestion": "What is the scientific study of climate patterns called?",
+    "distractors": ["Meteorology", "Hydrology", "Ecology", "Geology", "Oceanography", "Atmospheric chemistry", "Phenology", "Biogeography"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the scientific study of climate patterns called?",
+        "correctAnswer": "Climatology",
+        "distractors": ["Meteorology", "Hydrology", "Ecology"]
+      },
+      {
+        "type": "reverse",
+        "question": "Climatology is the study of long-term patterns in what?",
+        "correctAnswer": "Climate",
+        "distractors": ["Weather", "Ocean currents", "Geological time"]
+      },
+      {
+        "type": "true_false",
+        "question": "Climatology is the study of long-term climate patterns. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "_____ studies long-term weather patterns and climate systems.",
+        "correctAnswer": "Climatology",
+        "distractors": ["Meteorology", "Hydrology", "Ecology"]
+      }
+    ]
+  },
+  {
+    "id": "science-climatology-002",
+    "question": "How does climatology differ from meteorology?",
+    "correctAnswer": "Studies long-term vs. daily weather",
+    "domain": "science",
+    "subcategory": "earth_science",
+    "contentVolatility": "timeless",
+    "funScore": 6,
+    "quizQuestion": "How does climatology differ from meteorology?",
+    "distractors": ["Climatology forecasts storms", "Meteorology studies oceans", "Climatology is more accurate", "Meteorology covers centuries", "They are the same field", "Climatology ignores temperature", "Meteorology tracks glaciers", "Climatology excludes atmosphere"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How does climatology differ from meteorology?",
+        "correctAnswer": "Studies long-term vs. daily weather",
+        "distractors": ["Climatology forecasts storms", "Meteorology studies oceans", "They are the same field"]
+      },
+      {
+        "type": "reverse",
+        "question": "Climatology focuses on long-term patterns, while meteorology focuses on what?",
+        "correctAnswer": "Short-term weather",
+        "distractors": ["Ocean temperatures", "Geological time", "Seasonal ecology"]
+      },
+      {
+        "type": "true_false",
+        "question": "Climatology studies long-term trends while meteorology focuses on short-term weather. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Climatology studies long-term averages, while meteorology studies _____ weather.",
+        "correctAnswer": "Studies long-term vs. daily weather",
+        "distractors": ["Climatology forecasts storms", "Meteorology covers centuries", "They are the same field"]
+      }
+    ]
+  },
+  {
+    "id": "science-climatology-003",
+    "question": "What modern concern has made climatology more important?",
+    "correctAnswer": "Climate change",
+    "domain": "science",
+    "subcategory": "earth_science",
+    "contentVolatility": "current",
+    "funScore": 6,
+    "quizQuestion": "What modern concern has made climatology more important globally?",
+    "distractors": ["Asteroid impacts", "Volcanic eruptions", "Solar flares", "Ozone depletion alone", "Magnetic pole reversals", "Ice age cycles", "Tidal changes", "Ocean salinity"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What modern concern has made climatology more important globally?",
+        "correctAnswer": "Climate change",
+        "distractors": ["Asteroid impacts", "Volcanic eruptions", "Solar flares"]
+      },
+      {
+        "type": "reverse",
+        "question": "Climatologists study climate change, which involves the long-term rise of what?",
+        "correctAnswer": "Global temperatures",
+        "distractors": ["Sea creature populations", "Volcanic activity", "Cosmic radiation"]
+      },
+      {
+        "type": "true_false",
+        "question": "Climatology has grown in importance due to concerns about climate change. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Climatology is central to understanding and addressing global _____.",
+        "correctAnswer": "Climate change",
+        "distractors": ["Asteroid impacts", "Volcanic eruptions", "Solar flares"]
+      }
+    ]
+  },
+  {
+    "id": "science-massdensity-001",
+    "question": "What is the formula for calculating density?",
+    "correctAnswer": "Mass divided by volume",
+    "domain": "science",
+    "subcategory": "physics",
+    "contentVolatility": "timeless",
+    "funScore": 5,
+    "quizQuestion": "What is the formula for calculating density?",
+    "distractors": ["Volume divided by mass", "Mass times volume", "Mass plus volume", "Volume minus mass", "Mass divided by area", "Force divided by area", "Weight divided by gravity", "Mass times velocity"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the formula for calculating density?",
+        "correctAnswer": "Mass divided by volume",
+        "distractors": ["Volume divided by mass", "Mass times volume", "Mass plus volume"]
+      },
+      {
+        "type": "reverse",
+        "question": "If density equals mass divided by volume, what does higher density mean?",
+        "correctAnswer": "More mass per unit volume",
+        "distractors": ["Larger total volume", "Lighter total weight", "Smaller surface area"]
+      },
+      {
+        "type": "true_false",
+        "question": "Density is calculated by dividing mass by volume. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Density = _____, expressed in units like kg/m³.",
+        "correctAnswer": "Mass divided by volume",
+        "distractors": ["Volume divided by mass", "Mass times volume", "Force divided by area"]
+      }
+    ]
+  },
+  {
+    "id": "science-massdensity-002",
+    "question": "Why does an object float in water?",
+    "correctAnswer": "Its density is less than water",
+    "domain": "science",
+    "subcategory": "physics",
+    "contentVolatility": "timeless",
+    "funScore": 7,
+    "quizQuestion": "Why does an object float in water?",
+    "distractors": ["It is heavier than water", "It repels water molecules", "It has no mass", "Water surface tension holds it", "It absorbs water quickly", "It has smooth surface", "Water is denser below it", "It has large volume only"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why does an object float in water?",
+        "correctAnswer": "Its density is less than water",
+        "distractors": ["It is heavier than water", "It repels water molecules", "Water surface tension holds it"]
+      },
+      {
+        "type": "reverse",
+        "question": "An object with lower density than water will do what?",
+        "correctAnswer": "Float",
+        "distractors": ["Sink", "Dissolve", "Absorb water"]
+      },
+      {
+        "type": "true_false",
+        "question": "An object floats in water when its density is less than water's density. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Objects float when their _____ is lower than that of water.",
+        "correctAnswer": "Its density is less than water",
+        "distractors": ["It is heavier than water", "It repels water molecules", "It has large volume only"]
+      }
+    ]
+  },
+  {
+    "id": "science-massdensity-003",
+    "question": "What is the SI unit for density?",
+    "correctAnswer": "Kilograms per cubic meter",
+    "domain": "science",
+    "subcategory": "physics",
+    "contentVolatility": "timeless",
+    "funScore": 5,
+    "quizQuestion": "What is the SI unit for density?",
+    "distractors": ["Grams per liter", "Pounds per cubic foot", "Newtons per meter", "Joules per kilogram", "Watts per meter", "Pascals per cubic meter", "Moles per liter", "Kilograms per second"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the SI unit for density?",
+        "correctAnswer": "Kilograms per cubic meter",
+        "distractors": ["Grams per liter", "Pounds per cubic foot", "Newtons per meter"]
+      },
+      {
+        "type": "reverse",
+        "question": "Kilograms per cubic meter (kg/m³) is the SI unit for which property?",
+        "correctAnswer": "Density",
+        "distractors": ["Pressure", "Weight", "Viscosity"]
+      },
+      {
+        "type": "true_false",
+        "question": "The SI unit for density is kilograms per cubic meter. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Density is measured in _____ in the International System of Units.",
+        "correctAnswer": "Kilograms per cubic meter",
+        "distractors": ["Grams per liter", "Newtons per meter", "Joules per kilogram"]
+      }
+    ]
+  },
+  {
+    "id": "science-holocene-001",
+    "question": "What is the name of the current geological epoch?",
+    "correctAnswer": "Holocene",
+    "domain": "science",
+    "subcategory": "earth_science",
+    "contentVolatility": "timeless",
+    "funScore": 7,
+    "quizQuestion": "What is the name of the current geological epoch?",
+    "distractors": ["Pleistocene", "Pliocene", "Miocene", "Eocene", "Oligocene", "Paleocene", "Anthropocene", "Cretaceous"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the name of the current geological epoch?",
+        "correctAnswer": "Holocene",
+        "distractors": ["Pleistocene", "Pliocene", "Miocene"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Holocene is the current geological epoch. When did it begin?",
+        "correctAnswer": "About 11,700 years ago",
+        "distractors": ["1 million years ago", "65 million years ago", "500,000 years ago"]
+      },
+      {
+        "type": "true_false",
+        "question": "The Holocene is the current geological epoch on Earth. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "We currently live in the _____ epoch, which began after the last ice age.",
+        "correctAnswer": "Holocene",
+        "distractors": ["Pleistocene", "Pliocene", "Eocene"]
+      }
+    ]
+  },
+  {
+    "id": "science-holocene-002",
+    "question": "When did the Holocene epoch begin?",
+    "correctAnswer": "11,700 years ago",
+    "domain": "science",
+    "subcategory": "earth_science",
+    "contentVolatility": "timeless",
+    "funScore": 6,
+    "quizQuestion": "When did the Holocene epoch begin?",
+    "distractors": ["65 million years ago", "2.5 million years ago", "100,000 years ago", "1 million years ago", "500,000 years ago", "250,000 years ago", "50,000 years ago", "5,000 years ago"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "When did the Holocene epoch begin?",
+        "correctAnswer": "11,700 years ago",
+        "distractors": ["65 million years ago", "2.5 million years ago", "100,000 years ago"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Holocene began approximately 11,700 years ago after which event?",
+        "correctAnswer": "Last ice age",
+        "distractors": ["Mass extinction", "Dinosaur era", "Formation of Earth"]
+      },
+      {
+        "type": "true_false",
+        "question": "The Holocene began about 11,700 years ago at the end of the last ice age. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Holocene started _____, marking the end of the last glacial period.",
+        "correctAnswer": "11,700 years ago",
+        "distractors": ["65 million years ago", "100,000 years ago", "2.5 million years ago"]
+      }
+    ]
+  },
+  {
+    "id": "science-holocene-003",
+    "question": "What proposed epoch name reflects major human impact on Earth?",
+    "correctAnswer": "Anthropocene",
+    "domain": "science",
+    "subcategory": "earth_science",
+    "contentVolatility": "current",
+    "funScore": 8,
+    "quizQuestion": "What proposed epoch reflects major human impact on Earth?",
+    "distractors": ["Technocene", "Capitalocene", "Plasticene", "Pyrocene", "Homogenocene", "Urbanocene", "Chthulucene", "Neocene"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What proposed epoch reflects major human impact on Earth?",
+        "correctAnswer": "Anthropocene",
+        "distractors": ["Technocene", "Capitalocene", "Plasticene"]
+      },
+      {
+        "type": "reverse",
+        "question": "The Anthropocene is a proposed epoch characterised by what?",
+        "correctAnswer": "Human impact on Earth",
+        "distractors": ["Asteroid impacts", "Volcanic eruptions", "Natural ice ages"]
+      },
+      {
+        "type": "true_false",
+        "question": "The Anthropocene is a proposed epoch reflecting human impact on Earth. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Some scientists propose we have entered the _____, defined by human effects on the planet.",
+        "correctAnswer": "Anthropocene",
+        "distractors": ["Technocene", "Capitalocene", "Plasticene"]
+      }
+    ]
+  }
+]

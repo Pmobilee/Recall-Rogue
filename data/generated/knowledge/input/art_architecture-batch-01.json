@@ -1,0 +1,215 @@
+{
+  "domain": "art_architecture",
+  "batchIndex": 1,
+  "totalBatches": 3,
+  "entities": [
+    {
+      "qid": "Q1107",
+      "label": "anime",
+      "description": "Japanese style of animation",
+      "subcategory": "architectural_styles",
+      "sitelinks": 153,
+      "monthlyPageviews": 154864,
+      "properties": {
+        "countryOfOrigin": "Q17"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q12495",
+      "label": "Burj Khalifa",
+      "description": "skyscraper in Dubai, United Arab Emirates",
+      "subcategory": "engineering_design",
+      "sitelinks": 139,
+      "monthlyPageviews": 194036,
+      "properties": {
+        "country": "Q878",
+        "inception": "+2004-00-00T00:00:00Z",
+        "material": "Q184190"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q243",
+      "label": "Eiffel Tower",
+      "description": "tower located on the Champ de Mars in Paris, France",
+      "subcategory": "historic_buildings",
+      "sitelinks": 188,
+      "monthlyPageviews": 112791,
+      "properties": {
+        "country": "Q142",
+        "inception": "+1887-01-28T00:00:00Z",
+        "material": "Q860451"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q39427",
+      "label": "Surrealism",
+      "description": "international cultural movement that began in the early 1920s",
+      "subcategory": "modern_contemporary",
+      "sitelinks": 117,
+      "monthlyPageviews": 58500,
+      "properties": {
+        "startDate": "+1920-00-00T00:00:00Z",
+        "endDate": "+1980-00-00T00:00:00Z",
+        "inception": "+1920-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q9960",
+      "label": "Ronald Reagan",
+      "description": "president of the United States from 1981 to 1989 and actor (1911–2004)",
+      "subcategory": "museums_institutions",
+      "sitelinks": 304,
+      "monthlyPageviews": 152000,
+      "properties": {
+        "birthDate": "+1911-02-06T00:00:00Z",
+        "deathDate": "+2004-06-05T00:00:00Z",
+        "occupation": "Q10798782"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q19020",
+      "label": "Academy Awards",
+      "description": "annual awards for cinematic achievements",
+      "subcategory": "painting_visual",
+      "sitelinks": 152,
+      "monthlyPageviews": 338204,
+      "properties": {
+        "country": "Q30",
+        "inception": "+1929-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q12684",
+      "label": "fashion",
+      "description": "popular style or practice in clothing, personal adornment, or decorative arts",
+      "subcategory": "sculpture_decorative",
+      "sitelinks": 163,
+      "monthlyPageviews": 81500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q254",
+      "label": "Wolfgang Amadeus Mozart",
+      "description": "Austrian composer of the Classical period (1756–1791)",
+      "subcategory": "architectural_styles",
+      "sitelinks": 269,
+      "monthlyPageviews": 134500,
+      "properties": {
+        "genre": "Q17723",
+        "movement": "Q17723",
+        "birthDate": "+1756-01-27T00:00:00Z",
+        "deathDate": "+1791-12-05T00:00:00Z",
+        "occupation": "Q36834",
+        "fieldOfWork": "Q1344"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q79822",
+      "label": "Adam Mickiewicz",
+      "description": "Polish national poet, dramatist, essayist, publicist, translator, and political activist (1798-1855)",
+      "subcategory": "engineering_design",
+      "sitelinks": 130,
+      "monthlyPageviews": 65000,
+      "properties": {
+        "genre": "Q474090",
+        "movement": "Q37068",
+        "birthDate": "+1798-12-24T00:00:00Z",
+        "deathDate": "+1855-11-26T00:00:00Z",
+        "occupation": "Q121594",
+        "fieldOfWork": "Q8253972"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q7235",
+      "label": "Sophocles",
+      "description": "ancient Greek playwright",
+      "subcategory": "historic_buildings",
+      "sitelinks": 211,
+      "monthlyPageviews": 105500,
+      "properties": {
+        "genre": "Q34620",
+        "birthDate": "-0496-00-00T00:00:00Z",
+        "deathDate": "-0406-00-00T00:00:00Z",
+        "occupation": "Q22073916",
+        "fieldOfWork": "Q8242"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q6034",
+      "label": "Dada",
+      "description": "avant-garde art movement in the early 20th century",
+      "subcategory": "modern_contemporary",
+      "sitelinks": 99,
+      "monthlyPageviews": 40164,
+      "properties": {
+        "inception": "+1910-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q8016",
+      "label": "Winston Churchill",
+      "description": "British statesman, soldier and writer (1874–1965)",
+      "subcategory": "museums_institutions",
+      "sitelinks": 257,
+      "monthlyPageviews": 128500,
+      "properties": {
+        "birthDate": "+1874-11-30T00:00:00Z",
+        "deathDate": "+1965-01-24T00:00:00Z",
+        "occupation": "Q82955"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q34316",
+      "label": "Doctor Who",
+      "description": "British science fiction TV series",
+      "subcategory": "painting_visual",
+      "sitelinks": 98,
+      "monthlyPageviews": 167983,
+      "properties": {
+        "startDate": "+1963-11-23T00:00:00Z",
+        "creator": "Q736114",
+        "genre": "Q336059",
+        "countryOfOrigin": "Q145"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q11634",
+      "label": "art of sculpture",
+      "description": "branch of the visual arts that operates in three dimensions",
+      "subcategory": "sculpture_decorative",
+      "sitelinks": 160,
+      "monthlyPageviews": 80000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q1398",
+      "label": "Virgil",
+      "description": "Roman poet (1st century BC)",
+      "subcategory": "architectural_styles",
+      "sitelinks": 244,
+      "monthlyPageviews": 122000,
+      "properties": {
+        "genre": "Q37484",
+        "movement": "Q4821017",
+        "birthDate": "-0070-10-15T00:00:00Z",
+        "deathDate": "-0019-09-21T00:00:00Z",
+        "occupation": "Q49757"
+      },
+      "processed": false
+    }
+  ]
+}

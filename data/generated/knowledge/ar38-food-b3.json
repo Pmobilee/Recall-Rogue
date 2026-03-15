@@ -1,0 +1,2270 @@
+[
+  {
+    "id": "food-padthai-origin",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Pad Thai was promoted in the 1930s–40s by the Thai government to create a national dish and reduce rice consumption during wartime shortages.",
+    "quizQuestion": "Why did Thailand's government promote Pad Thai in the 1930s?",
+    "correctAnswer": "Reduce rice consumption",
+    "distractors": [
+      "Boost tourism revenue",
+      "Honor the royal family",
+      "Replace Chinese noodle dishes",
+      "Fund military campaigns",
+      "Celebrate independence day",
+      "Export noodles abroad",
+      "Feed Buddhist monks",
+      "Win a world's fair"
+    ],
+    "acceptableAnswers": ["Reduce rice consumption", "save rice", "wartime rice shortage"],
+    "explanation": "Prime Minister Phibun championed Pad Thai as a patriotic dish using rice noodles instead of rice grains, stretching food supplies during WWII-era shortages while building a unified Thai national identity.",
+    "wowFactor": "Pad Thai is government-invented fast food — a 1940s propaganda campaign created Thailand's most iconic dish.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was Thailand's government trying to reduce when it promoted Pad Thai?",
+        "answer": "Reduce rice consumption",
+        "distractors": ["Boost tourism revenue", "Honor the royal family", "Replace Chinese noodle dishes"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which dish was invented as a Thai government strategy to conserve rice during WWII?",
+        "answer": "Pad Thai",
+        "distractors": ["Tom Yum", "Green Curry", "Khao Man Gai"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pad Thai is an ancient recipe passed down for over 500 years.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pad Thai was promoted in the 1940s to reduce ___ consumption during wartime.",
+        "answer": "rice",
+        "distractors": ["wheat", "sugar", "pork"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pad_thai",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A wok of stir-fried rice noodles with shrimp, peanuts, and lime, steam rising, pixel art style.",
+    "tags": ["Pad Thai", "Thailand", "noodles", "WWII", "government"]
+  },
+  {
+    "id": "food-padthai-noodle",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Pad Thai is made with sen lek rice noodles, which are soaked rather than boiled before stir-frying in a smoking-hot wok.",
+    "quizQuestion": "What type of noodle is used in authentic Pad Thai?",
+    "correctAnswer": "Sen lek rice noodles",
+    "distractors": [
+      "Udon wheat noodles",
+      "Soba buckwheat noodles",
+      "Glass mung bean noodles",
+      "Ramen egg noodles",
+      "Lo mein noodles",
+      "Spaghetti pasta",
+      "Rice vermicelli",
+      "Hokkien yellow noodles"
+    ],
+    "acceptableAnswers": ["Sen lek rice noodles", "rice noodles", "sen lek"],
+    "explanation": "Sen lek (meaning 'small thread') are flat, thin rice noodles about 3mm wide. They are soaked in room-temperature water to soften, then tossed in a very hot wok with tamarind paste, fish sauce, eggs, bean sprouts, and choice of protein.",
+    "wowFactor": "Pad Thai noodles are never boiled — soaking in cold water gives them the perfect chewy bite that boiling destroys.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which noodle variety is used in authentic Pad Thai?",
+        "answer": "Sen lek rice noodles",
+        "distractors": ["Udon wheat noodles", "Glass mung bean noodles", "Ramen egg noodles"]
+      },
+      {
+        "type": "reverse",
+        "question": "Sen lek flat rice noodles soaked before wok-frying are the base of which Thai dish?",
+        "answer": "Pad Thai",
+        "distractors": ["Pad See Ew", "Tom Yum", "Khao Pad"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pad Thai noodles are boiled in salted water before stir-frying.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pad Thai uses ___ rice noodles soaked before wok frying.",
+        "answer": "sen lek",
+        "distractors": ["udon", "soba", "ramen"]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pad_thai",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Flat rice noodles soaking in a bowl of water beside a Thai kitchen wok, pixel art style.",
+    "tags": ["Pad Thai", "rice noodles", "sen lek", "Thailand", "stir-fry"]
+  },
+  {
+    "id": "food-padthai-tamarind",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Tamarind paste provides Pad Thai's signature sour-sweet flavor, replacing the soy and oyster sauces common in other Asian noodle dishes.",
+    "quizQuestion": "What gives Pad Thai its signature sour-sweet flavor?",
+    "correctAnswer": "Tamarind paste",
+    "distractors": [
+      "Lime juice",
+      "Rice vinegar",
+      "Oyster sauce",
+      "Mango puree",
+      "Lemongrass extract",
+      "Pomelo zest",
+      "Palm sugar syrup",
+      "Kaffir lime leaves"
+    ],
+    "acceptableAnswers": ["Tamarind paste", "tamarind"],
+    "explanation": "Tamarind (makham) is a pod fruit with intensely sour-sweet pulp. In Pad Thai it is dissolved into a thick paste and combined with fish sauce and palm sugar to create the dish's unmistakable tangy caramel backbone.",
+    "wowFactor": "Tamarind is a fruit that tastes like a sweet-and-sour candy — it's the secret weapon that makes Pad Thai impossible to replicate with Western pantry sauces.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which ingredient gives Pad Thai its tangy sour-sweet taste?",
+        "answer": "Tamarind paste",
+        "distractors": ["Lime juice", "Rice vinegar", "Oyster sauce"]
+      },
+      {
+        "type": "reverse",
+        "question": "A sour-sweet paste from a tropical pod fruit is the flavor backbone of which noodle dish?",
+        "answer": "Pad Thai",
+        "distractors": ["Pho", "Laksa", "Yakisoba"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pad Thai's sour flavor comes primarily from lime juice.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pad Thai's sour-sweet flavor comes from ___ paste mixed with fish sauce.",
+        "answer": "tamarind",
+        "distractors": ["mango", "lemongrass", "oyster"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pad_thai",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A block of dark tamarind paste beside a wok of steaming Pad Thai noodles, pixel art style.",
+    "tags": ["Pad Thai", "tamarind", "Thailand", "flavor", "sour-sweet"]
+  },
+  {
+    "id": "food-cookie-chocolate-chip",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "american_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "american_cuisine",
+    "categoryL3": "",
+    "statement": "Ruth Wakefield invented the chocolate chip cookie in 1938 at her Toll House Inn in Massachusetts when she chopped a Nestlé chocolate bar into cookie dough.",
+    "quizQuestion": "Who invented the chocolate chip cookie in 1938?",
+    "correctAnswer": "Ruth Wakefield",
+    "distractors": [
+      "Julia Child",
+      "Fannie Farmer",
+      "Betty Crocker",
+      "Sara Lee",
+      "Irma Rombauer",
+      "Helen Corbitt",
+      "James Beard",
+      "Pillsbury Doughboy"
+    ],
+    "acceptableAnswers": ["Ruth Wakefield", "Wakefield"],
+    "explanation": "Ruth Wakefield ran the Toll House Inn near Whitman, MA. In 1938 she cut a Nestlé semi-sweet chocolate bar into small chunks expecting them to melt fully — they didn't, creating the first chocolate chip cookie. She sold the recipe to Nestlé for $1 and a lifetime supply of chocolate.",
+    "wowFactor": "The world's most beloved cookie was a happy accident — and its inventor sold the recipe to Nestlé for exactly one dollar.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who created the first chocolate chip cookie at Toll House Inn?",
+        "answer": "Ruth Wakefield",
+        "distractors": ["Julia Child", "Fannie Farmer", "Betty Crocker"]
+      },
+      {
+        "type": "reverse",
+        "question": "Ruth Wakefield's 1938 happy kitchen accident at Toll House Inn created which beloved treat?",
+        "answer": "Chocolate chip cookie",
+        "distractors": ["Brownie", "Snickerdoodle", "Oatmeal raisin cookie"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ruth Wakefield sold her chocolate chip cookie recipe to Nestlé for $1.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ruth Wakefield invented the chocolate chip cookie in 1938 at the ___ Inn.",
+        "answer": "Toll House",
+        "distractors": ["Plymouth", "Harbor", "Colonial"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chocolate_chip_cookie",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A golden chocolate chip cookie fresh from the oven on a baking sheet, 1930s kitchen in the background, pixel art style.",
+    "tags": ["cookie", "chocolate chip", "Ruth Wakefield", "Toll House", "invention"]
+  },
+  {
+    "id": "food-cookie-maillard",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "american_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "american_cuisine",
+    "categoryL3": "",
+    "statement": "The golden-brown crust on a baked cookie is created by the Maillard reaction — a chemical process between amino acids and sugars that occurs above 140°C.",
+    "quizQuestion": "What reaction creates a cookie's golden-brown crust?",
+    "correctAnswer": "Maillard reaction",
+    "distractors": [
+      "Caramelization",
+      "Oxidation",
+      "Fermentation",
+      "Hydrolysis",
+      "Emulsification",
+      "Gelatinization",
+      "Saponification",
+      "Polymerization"
+    ],
+    "acceptableAnswers": ["Maillard reaction", "Maillard"],
+    "explanation": "The Maillard reaction is a non-enzymatic browning process discovered by French chemist Louis-Camille Maillard in 1912. When proteins and sugars heat above ~140°C they form hundreds of flavor and color compounds — responsible for the taste of cookies, toast, seared meat, and roasted coffee.",
+    "wowFactor": "One chemical reaction — Maillard — is responsible for the delicious brown crust on cookies, steaks, coffee, and toast all at once.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which chemical reaction browns the outside of a baked cookie?",
+        "answer": "Maillard reaction",
+        "distractors": ["Caramelization", "Oxidation", "Fermentation"]
+      },
+      {
+        "type": "reverse",
+        "question": "The browning of cookies, toast, and seared steaks all share which chemical reaction?",
+        "answer": "Maillard reaction",
+        "distractors": ["Caramelization", "Fermentation", "Oxidation"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The golden crust on cookies is caused by caramelization of sugars alone.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Cookies brown due to the ___ reaction between amino acids and sugars above 140°C.",
+        "answer": "Maillard",
+        "distractors": ["oxidation", "caramelization", "fermentation"]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Maillard_reaction",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Close-up of a cookie with a crinkled golden-brown crust, science diagrams faintly overlaid, pixel art style.",
+    "tags": ["cookie", "Maillard reaction", "chemistry", "baking", "browning"]
+  },
+  {
+    "id": "food-cookie-butter-role",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "american_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "american_cuisine",
+    "categoryL3": "",
+    "statement": "Melted butter produces flat, chewy cookies while creamed butter traps air pockets that expand in the oven, making cookies taller and cakier.",
+    "quizQuestion": "What does creaming butter in cookies trap to make them rise?",
+    "correctAnswer": "Air pockets",
+    "distractors": [
+      "Carbon dioxide",
+      "Steam bubbles",
+      "Baking soda gas",
+      "Water vapor",
+      "Oxygen molecules",
+      "Gluten strands",
+      "Sugar crystals",
+      "Egg proteins"
+    ],
+    "acceptableAnswers": ["Air pockets", "air bubbles", "air"],
+    "explanation": "When butter is creamed with sugar, the sugar crystals cut microscopic air pockets into the fat. These pockets expand when heated, lifting the cookie dough upward. Melted butter, by contrast, coats flour proteins and inhibits gluten, spreading flat to produce denser, chewier texture.",
+    "wowFactor": "The difference between a chewy and a cakey cookie is decided entirely by whether you melt the butter or cream it — a 30-second choice changes everything.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Creamed butter makes cookies rise by trapping what in the dough?",
+        "answer": "Air pockets",
+        "distractors": ["Carbon dioxide", "Steam bubbles", "Baking soda gas"]
+      },
+      {
+        "type": "reverse",
+        "question": "Microscopic air pockets trapped during creaming are why which baked good rises taller?",
+        "answer": "Cookie",
+        "distractors": ["Croissant", "Sourdough bread", "Pound cake"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Melted butter makes cookies taller and cakier than creamed butter.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Creaming butter traps ___ pockets that expand in the oven to lift cookies.",
+        "answer": "air",
+        "distractors": ["CO2", "steam", "gluten"]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cookie",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Side-by-side comparison of a flat chewy cookie vs a tall cakey cookie, pixel art style.",
+    "tags": ["cookie", "butter", "baking", "creaming", "texture"]
+  },
+  {
+    "id": "food-fishandchips-origin",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "Fish and chips became a British staple in the 1860s when the railway network allowed fresh North Sea cod and haddock to reach inland cities overnight.",
+    "quizQuestion": "What transport network made fish and chips a national British dish?",
+    "correctAnswer": "Railway network",
+    "distractors": [
+      "Canal barges",
+      "Horse-drawn carts",
+      "Steam-powered ships",
+      "Telegraph network",
+      "Post road coaches",
+      "River ferries",
+      "Motorway trucks",
+      "Fishing trawlers"
+    ],
+    "acceptableAnswers": ["Railway network", "railways", "the railways"],
+    "explanation": "Before railways, fresh fish rotted before reaching inland towns. The expansion of the British rail network in the 1860s enabled overnight delivery of North Sea catches packed in ice. Combined with cheap potatoes, this made battered fish affordable for the working class, and chip shops proliferated rapidly.",
+    "wowFactor": "The British railway revolution didn't just move people — it accidentally created the nation's most iconic takeaway dish.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which transport system enabled fresh fish to reach British cities in the 1860s?",
+        "answer": "Railway network",
+        "distractors": ["Canal barges", "Horse-drawn carts", "Steam-powered ships"]
+      },
+      {
+        "type": "reverse",
+        "question": "Overnight rail delivery of North Sea cod in the 1860s popularized which British dish?",
+        "answer": "Fish and chips",
+        "distractors": ["Shepherd's pie", "Beef Wellington", "Bangers and mash"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Fish and chips became popular because of canal barge delivery of fresh fish.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ network in the 1860s allowed fresh fish to reach inland British cities.",
+        "answer": "railway",
+        "distractors": ["canal", "road", "telegraph"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fish_and_chips",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A newspaper cone of battered fish and golden chips beside a steam locomotive, pixel art style.",
+    "tags": ["fish and chips", "Britain", "railways", "Victorian", "takeaway"]
+  },
+  {
+    "id": "food-fishandchips-wwii",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "Fish and chips was one of the few foods not rationed in Britain during WWII because Churchill considered it vital for civilian morale.",
+    "quizQuestion": "Why wasn't fish and chips rationed in WWII Britain?",
+    "correctAnswer": "Vital for civilian morale",
+    "distractors": [
+      "Too cheap to regulate",
+      "Soldiers refused rations",
+      "Fish supply was limitless",
+      "Churchill disliked rationing fish",
+      "Potatoes grew year-round",
+      "Church groups lobbied for it",
+      "Navy needed the fishermen",
+      "Chips were a vegetable"
+    ],
+    "acceptableAnswers": ["Vital for civilian morale", "morale", "civilian morale"],
+    "explanation": "Churchill called fish and chips 'the good companions' and exempted them from wartime rationing. The government recognized that this cheap, filling, familiar comfort food was essential for keeping factory workers and bombed-out civilians psychologically resilient through the Blitz.",
+    "wowFactor": "Churchill personally protected fish and chips during WWII — he believed takeaway fish kept Britain's fighting spirit alive during the Blitz.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was Churchill's reason for not rationing fish and chips in WWII?",
+        "answer": "Vital for civilian morale",
+        "distractors": ["Too cheap to regulate", "Fish supply was limitless", "Soldiers refused rations"]
+      },
+      {
+        "type": "reverse",
+        "question": "Churchill called these 'the good companions' and refused to ration them during WWII — what were they?",
+        "answer": "Fish and chips",
+        "distractors": ["Tea and biscuits", "Bread and butter", "Sausage and mash"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Fish and chips was rationed in Britain during WWII like most other foods.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Fish and chips was not rationed in WWII because Churchill deemed it vital for civilian ___.",
+        "answer": "morale",
+        "distractors": ["nutrition", "economy", "exports"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fish_and_chips",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A chip shop during the London Blitz with a queue of civilians in 1940s clothing, pixel art style.",
+    "tags": ["fish and chips", "WWII", "Churchill", "rationing", "morale"]
+  },
+  {
+    "id": "food-fishandchips-batter",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "Traditional British fish and chip batter uses beer or sparkling water to create carbon dioxide bubbles that make the coating light and crispy when fried.",
+    "quizQuestion": "What makes traditional fish and chip batter light and crispy?",
+    "correctAnswer": "Beer or sparkling water",
+    "distractors": [
+      "Beaten egg whites",
+      "Baking powder only",
+      "Cornstarch coating",
+      "Buttermilk soak",
+      "Panko breadcrumbs",
+      "Club soda and vinegar",
+      "Self-raising flour",
+      "Yeast fermentation"
+    ],
+    "acceptableAnswers": ["Beer or sparkling water", "beer", "sparkling water", "carbonated liquid"],
+    "explanation": "Carbon dioxide dissolved in beer or sparkling water forms bubbles in the batter as it hits hot oil. These bubbles expand rapidly, creating a porous, crispy network. The alcohol in beer also evaporates faster than water, leaving a drier, crisper crust. Many chippies keep their batter recipe a closely guarded secret.",
+    "wowFactor": "Beer in fish batter isn't about flavor — the CO2 bubbles are doing structural engineering, building an ultra-crispy shell around the fish.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which ingredient creates the light crispy bubbles in fish and chip batter?",
+        "answer": "Beer or sparkling water",
+        "distractors": ["Beaten egg whites", "Baking powder only", "Cornstarch coating"]
+      },
+      {
+        "type": "reverse",
+        "question": "CO2 bubbles from carbonated liquid create the crispy coating of which British dish?",
+        "answer": "Fish and chips",
+        "distractors": ["Onion rings", "Tempura", "Chicken schnitzel"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Beer is used in fish batter primarily for its flavor.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Fish batter uses beer or sparkling water to create ___ bubbles that make it crispy.",
+        "answer": "carbon dioxide",
+        "distractors": ["oxygen", "steam", "nitrogen"]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fish_and_chips",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A piece of fish being dipped in bubbly golden batter, hot oil in a fryer below, pixel art style.",
+    "tags": ["fish and chips", "batter", "beer", "frying", "British cuisine"]
+  },
+  {
+    "id": "food-sake-brewing",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "beverages",
+    "categoryL3": "",
+    "statement": "Sake is brewed by a unique parallel fermentation where the koji mold converts rice starch to sugar at the same time yeast converts that sugar to alcohol.",
+    "quizQuestion": "What makes sake's fermentation process unique?",
+    "correctAnswer": "Parallel starch and alcohol fermentation",
+    "distractors": [
+      "Triple distillation method",
+      "Aging in cedar barrels",
+      "Using seawater instead of freshwater",
+      "Fermenting at below-freezing temperature",
+      "Adding honey mid-fermentation",
+      "Blending with rice vinegar",
+      "Boiling before fermentation",
+      "Wild yeast harvesting"
+    ],
+    "acceptableAnswers": ["Parallel starch and alcohol fermentation", "parallel fermentation", "simultaneous fermentation"],
+    "explanation": "Most alcoholic beverages require two sequential steps: first convert starch to sugar (saccharification), then ferment sugar to alcohol. Sake's multiple parallel fermentation (MPF) runs both processes simultaneously — koji mold saccharifies while yeast ferments — in the same vat. This allows sake to reach up to 20% ABV naturally, the highest of any brewed beverage.",
+    "wowFactor": "Sake achieves the highest natural alcohol content of any brewed drink — up to 20% ABV — because its fermentation runs two chemical processes at once.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is unique about sake's brewing fermentation process?",
+        "answer": "Parallel starch and alcohol fermentation",
+        "distractors": ["Triple distillation method", "Aging in cedar barrels", "Fermenting below freezing"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which Japanese drink achieves up to 20% ABV through simultaneous saccharification and fermentation?",
+        "answer": "Sake",
+        "distractors": ["Shochu", "Umeshu", "Amazake"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Sake is a distilled spirit like vodka or whiskey.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Sake uses koji mold in a ___ fermentation where starch converts to sugar and alcohol simultaneously.",
+        "answer": "parallel",
+        "distractors": ["sequential", "double", "triple"]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 7,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sake",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Discusses alcoholic beverage production",
+    "visualDescription": "A traditional Japanese sake brewery with cedar vats and koji mold trays, pixel art style.",
+    "tags": ["sake", "Japan", "brewing", "koji", "fermentation"]
+  },
+  {
+    "id": "food-sake-polishing",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "beverages",
+    "categoryL3": "",
+    "statement": "Premium sake quality is determined by the rice polishing ratio — junmai daiginjo must have at least 50% of each grain polished away before brewing.",
+    "quizQuestion": "How much rice must be polished away for junmai daiginjo sake?",
+    "correctAnswer": "At least 50%",
+    "distractors": [
+      "At least 10%",
+      "At least 25%",
+      "At least 70%",
+      "At least 90%",
+      "Exactly 33%",
+      "Exactly 15%",
+      "Exactly 66%",
+      "No polishing required"
+    ],
+    "acceptableAnswers": ["At least 50%", "50 percent", "50%", "half"],
+    "explanation": "Rice polishing (seimaibuai) removes the outer bran layers that contain proteins and fats which contribute rough flavors. Daiginjo-grade sake polishes away 50%+ of each grain, leaving only the pure starchy core. This takes hours per batch and is why premium sake costs significantly more.",
+    "wowFactor": "Premium sake brewers throw away at least half of every rice grain before brewing begins — the discarded bran is worth more as livestock feed than the sake revenue it sacrifices.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What percentage of each rice grain is polished away for junmai daiginjo sake?",
+        "answer": "At least 50%",
+        "distractors": ["At least 10%", "At least 25%", "Exactly 33%"]
+      },
+      {
+        "type": "reverse",
+        "question": "Junmai daiginjo is a grade of sake where at least half the rice grain is removed — what is this process called?",
+        "answer": "Rice polishing",
+        "distractors": ["Rice washing", "Rice milling", "Rice steaming"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: More rice polishing in sake brewing means lower quality sake.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Junmai daiginjo sake requires at least ___% of each rice grain polished away.",
+        "answer": "50",
+        "distractors": ["25", "10", "70"]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 6,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sake",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Discusses alcoholic beverage production",
+    "visualDescription": "Magnified rice grains being polished in a mill, sake brewing vats in the background, pixel art style.",
+    "tags": ["sake", "Japan", "rice polishing", "daiginjo", "premium"]
+  },
+  {
+    "id": "food-sake-temperature",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "beverages",
+    "categoryL3": "",
+    "statement": "Sake is uniquely versatile — it can be served chilled, at room temperature, or heated to 60°C, with different temperature ranges revealing distinct flavor profiles.",
+    "quizQuestion": "Up to what temperature can sake be served hot?",
+    "correctAnswer": "60°C",
+    "distractors": [
+      "40°C",
+      "50°C",
+      "70°C",
+      "80°C",
+      "100°C",
+      "30°C",
+      "45°C",
+      "55°C"
+    ],
+    "acceptableAnswers": ["60°C", "60 degrees", "sixty degrees Celsius"],
+    "explanation": "Sake has named temperature serving points: yukibie (5°C/snow cold), suzubie (15°C/cool), hitohada (35°C/skin warm), nuru (40°C/lukewarm), jo (45°C/warm), atsukan (50°C/hot), and tobikiri (60°C/extra hot). Premium ginjo sake is best cold; robust junmai often shines when heated.",
+    "wowFactor": "Sake has seven named serving temperatures in Japanese — the only beverage culture with a specific vocabulary for whether your drink should be 'skin warm' or 'snow cold'.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the maximum temperature for serving sake hot?",
+        "answer": "60°C",
+        "distractors": ["40°C", "50°C", "80°C"]
+      },
+      {
+        "type": "reverse",
+        "question": "Japanese tradition assigns seven named serving temperatures to which beverage?",
+        "answer": "Sake",
+        "distractors": ["Green tea", "Shochu", "Plum wine"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: All grades of sake are best served chilled.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Sake can be served from snow-cold to tobikiri hot at ___°C.",
+        "answer": "60",
+        "distractors": ["80", "40", "100"]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sake",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Discusses alcoholic beverage",
+    "visualDescription": "A ceramic sake cup being warmed in a small pot, snow visible through a Japanese shoji window, pixel art style.",
+    "tags": ["sake", "Japan", "temperature", "serving", "tradition"]
+  },
+  {
+    "id": "food-vanilla-madagascar",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients",
+    "categoryL3": "",
+    "statement": "Madagascar produces about 80% of the world's vanilla, yet vanilla orchids originally come from Mexico and require hand-pollination outside their native range.",
+    "quizQuestion": "What percentage of world vanilla comes from Madagascar?",
+    "correctAnswer": "About 80%",
+    "distractors": [
+      "About 20%",
+      "About 40%",
+      "About 50%",
+      "About 60%",
+      "About 90%",
+      "About 35%",
+      "About 15%",
+      "About 70%"
+    ],
+    "acceptableAnswers": ["About 80%", "80 percent", "80%"],
+    "explanation": "Vanilla planifolia originated in Mexico where the Melipona bee naturally pollinates it. When transplanted to Madagascar in the 1800s, the bees were absent, so farmers learned to hand-pollinate each flower with a thin stick — a labor-intensive skill that makes vanilla the world's second most expensive spice after saffron.",
+    "wowFactor": "Every vanilla bean from Madagascar exists because a farmer hand-pollinated an orchid flower with a toothpick — the native pollinator bee never made it to Africa.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Roughly what share of the world's vanilla supply comes from Madagascar?",
+        "answer": "About 80%",
+        "distractors": ["About 20%", "About 40%", "About 60%"]
+      },
+      {
+        "type": "reverse",
+        "question": "The island producing 80% of the world's vanilla supply, using hand-pollination, is which country?",
+        "answer": "Madagascar",
+        "distractors": ["Indonesia", "Tahiti", "Mexico"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Vanilla orchids originate from Madagascar where they naturally grow wild.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Madagascar produces about ___% of the world's vanilla through hand-pollination.",
+        "answer": "80",
+        "distractors": ["50", "20", "40"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vanilla",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A farmer hand-pollinating a vanilla orchid flower with a thin stick in a lush Madagascar plantation, pixel art style.",
+    "tags": ["vanilla", "Madagascar", "orchid", "spice", "hand-pollination"]
+  },
+  {
+    "id": "food-vanilla-orchid",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients",
+    "categoryL3": "",
+    "statement": "Vanilla is the only orchid in the world cultivated specifically for food, and its pods must be cured for three to six months after harvest to develop their flavor.",
+    "quizQuestion": "How long must vanilla pods be cured after harvest?",
+    "correctAnswer": "Three to six months",
+    "distractors": [
+      "One week",
+      "Two weeks",
+      "One month",
+      "Seven months",
+      "One year",
+      "Two years",
+      "Just a few days",
+      "Eighteen months"
+    ],
+    "acceptableAnswers": ["Three to six months", "3 to 6 months", "several months"],
+    "explanation": "Fresh vanilla pods are odorless and greenish. They undergo a multi-step curing process: killing (scalding or freezing), sweating (repeated wrapping in wool to trigger enzymatic reactions), drying (sun-drying to 25–38% moisture), and conditioning (storage in boxes). This converts glucovanillin into the aromatic vanillin compound.",
+    "wowFactor": "Fresh vanilla beans smell like nothing — the iconic vanilla scent only develops after months of precise curing, essentially through controlled rotting.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "For how long must vanilla pods be cured to develop their flavor?",
+        "answer": "Three to six months",
+        "distractors": ["One week", "One month", "One year"]
+      },
+      {
+        "type": "reverse",
+        "question": "A 3–6 month curing process after harvest is required to develop the flavor of which spice?",
+        "answer": "Vanilla",
+        "distractors": ["Cinnamon", "Cardamom", "Saffron"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Fresh vanilla pods have a strong sweet scent immediately after harvest.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Vanilla pods must be cured for three to ___ months to develop their aroma.",
+        "answer": "six",
+        "distractors": ["two", "twelve", "eighteen"]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vanilla",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Dark cured vanilla pods drying on wooden racks in tropical sunlight, pixel art style.",
+    "tags": ["vanilla", "orchid", "curing", "spice", "flavor"]
+  },
+  {
+    "id": "food-vanilla-synthetic",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients",
+    "categoryL3": "",
+    "statement": "About 99% of vanilla flavoring used worldwide is synthetic vanillin, most of which is produced as a byproduct of the wood pulp paper industry.",
+    "quizQuestion": "Most synthetic vanillin flavoring is a byproduct of which industry?",
+    "correctAnswer": "Wood pulp paper industry",
+    "distractors": [
+      "Petroleum refining",
+      "Coal tar processing",
+      "Corn syrup production",
+      "Soybean oil extraction",
+      "Pine resin distillation",
+      "Sugar beet processing",
+      "Rubber tree tapping",
+      "Rice husk burning"
+    ],
+    "acceptableAnswers": ["Wood pulp paper industry", "paper industry", "wood pulp"],
+    "explanation": "Lignin, a structural polymer in wood, contains phenolic compounds that can be converted to vanillin through alkaline oxidation. Paper mills generate large quantities of lignin as waste during pulping; chemists discovered they could valorize this waste stream into cheap vanillin, now used in the vast majority of vanilla-flavored products worldwide.",
+    "wowFactor": "That vanilla ice cream scent? It almost certainly comes from paper mill waste — 99% of vanillin is made from wood pulp, not orchids.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Synthetic vanillin is mainly produced as a byproduct of which industry?",
+        "answer": "Wood pulp paper industry",
+        "distractors": ["Petroleum refining", "Coal tar processing", "Corn syrup production"]
+      },
+      {
+        "type": "reverse",
+        "question": "Wood pulp lignin waste processed into cheap flavor compound supplies 99% of which flavoring?",
+        "answer": "Vanilla flavoring",
+        "distractors": ["Chocolate flavoring", "Strawberry flavoring", "Almond flavoring"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The majority of vanilla flavoring in food products comes from real vanilla orchid beans.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "About 99% of vanilla flavoring is synthetic vanillin made from ___ paper industry waste.",
+        "answer": "wood pulp",
+        "distractors": ["petroleum", "corn", "sugar beet"]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vanillin",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A vanilla ice cream cone beside a paper mill smokestack, chemical structure of vanillin overlaid, pixel art style.",
+    "tags": ["vanilla", "vanillin", "synthetic", "paper industry", "flavor"]
+  },
+  {
+    "id": "food-falafel-chickpea",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "middle_eastern_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "middle_eastern_cuisine",
+    "categoryL3": "",
+    "statement": "Authentic falafel uses raw chickpeas soaked overnight, never canned or cooked, which gives the fritter a lighter, crunchier texture than cooked-bean versions.",
+    "quizQuestion": "What type of chickpeas are used in authentic falafel?",
+    "correctAnswer": "Raw soaked overnight",
+    "distractors": [
+      "Canned pre-cooked",
+      "Boiled until soft",
+      "Roasted and ground",
+      "Fermented for days",
+      "Frozen then thawed",
+      "Dried and powdered",
+      "Steamed in broth",
+      "Pan-fried first"
+    ],
+    "acceptableAnswers": ["Raw soaked overnight", "raw chickpeas", "uncooked soaked"],
+    "explanation": "Raw chickpeas soaked in cold water for 12–24 hours are ground into a coarse paste that still contains intact starch granules. When this paste hits hot oil, the starches gelatinize and the outer surface fries crisp while the interior stays fluffy. Using cooked chickpeas produces a dense, heavy fritter that falls apart.",
+    "wowFactor": "Falafel masters guard the secret that raw chickpeas — never cooked — are the sole reason street-stall falafel is perfectly crispy outside and fluffy inside.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "For authentic falafel, chickpeas must be prepared how before grinding?",
+        "answer": "Raw soaked overnight",
+        "distractors": ["Canned pre-cooked", "Boiled until soft", "Roasted and ground"]
+      },
+      {
+        "type": "reverse",
+        "question": "Soaking raw chickpeas overnight before grinding creates the perfect crispy-fluffy texture of which Middle Eastern fritter?",
+        "answer": "Falafel",
+        "distractors": ["Kibbeh", "Börek", "Dolma"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Authentic falafel can be made with canned chickpeas for the same result.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Authentic falafel uses ___ chickpeas soaked overnight, never cooked ones.",
+        "answer": "raw",
+        "distractors": ["canned", "boiled", "roasted"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Falafel",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Golden falafel balls frying in a cast iron pan beside a bowl of soaking raw chickpeas, pixel art style.",
+    "tags": ["falafel", "chickpea", "Middle East", "street food", "frying"]
+  },
+  {
+    "id": "food-falafel-egypt",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "middle_eastern_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "middle_eastern_cuisine",
+    "categoryL3": "",
+    "statement": "Egypt's version of falafel, called ta'ameya, uses fava beans instead of chickpeas and is believed to have originated with Coptic Christians as a meat substitute during Lent.",
+    "quizQuestion": "What bean does Egyptian ta'ameya use instead of chickpeas?",
+    "correctAnswer": "Fava beans",
+    "distractors": [
+      "Lentils",
+      "Black beans",
+      "Cannellini beans",
+      "Mung beans",
+      "Pigeon peas",
+      "Adzuki beans",
+      "Navy beans",
+      "Kidney beans"
+    ],
+    "acceptableAnswers": ["Fava beans", "broad beans", "fava"],
+    "explanation": "Ta'ameya (Egyptian falafel) is made from fava beans and is arguably the older form of the dish, predating chickpea falafel. Coptic Christians in Egypt are said to have developed it as a protein-rich meat substitute during Lent fasting periods. The fava version is greener inside and has a distinctive earthy flavor.",
+    "wowFactor": "The original falafel was Egyptian Christian Lenten food — the chickpea version we know globally is a later Lebanese and Palestinian adaptation.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Egyptian ta'ameya is falafel made with which bean instead of chickpeas?",
+        "answer": "Fava beans",
+        "distractors": ["Lentils", "Black beans", "Mung beans"]
+      },
+      {
+        "type": "reverse",
+        "question": "Coptic Christians in Egypt invented ta'ameya using fava beans as a Lenten meat substitute — what is the modern name for this dish?",
+        "answer": "Falafel",
+        "distractors": ["Hummus", "Koshari", "Fuul"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The original Egyptian falafel uses fava beans, not chickpeas.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Egyptian ta'ameya is falafel made from ___ beans, linked to Coptic Christian fasting traditions.",
+        "answer": "fava",
+        "distractors": ["chickpea", "lentil", "kidney"]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Falafel",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Green ta'ameya falafel beside a Coptic church facade in Cairo, pixel art style.",
+    "tags": ["falafel", "ta'ameya", "Egypt", "fava beans", "Coptic"]
+  },
+  {
+    "id": "food-falafel-herb",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "middle_eastern_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "middle_eastern_cuisine",
+    "categoryL3": "",
+    "statement": "Falafel's bright green interior comes from fresh parsley, cilantro, and sometimes spinach blended into the batter, which also adds flavor and nutrition.",
+    "quizQuestion": "What makes the inside of falafel bright green?",
+    "correctAnswer": "Fresh herbs like parsley",
+    "distractors": [
+      "Food coloring dye",
+      "Matcha powder",
+      "Fava bean skin pigment",
+      "Spirulina algae",
+      "Green pepper paste",
+      "Avocado puree",
+      "Dried mint powder",
+      "Zucchini shreds"
+    ],
+    "acceptableAnswers": ["Fresh herbs like parsley", "parsley and cilantro", "fresh herbs"],
+    "explanation": "Generous amounts of fresh flat-leaf parsley and cilantro (and sometimes fresh spinach or leek) are blended raw into the chickpea or fava paste. The chlorophyll in these herbs gives falafel its characteristic vivid green center and contributes herbal, grassy notes that distinguish good street falafel from pale, flavor-flat versions.",
+    "wowFactor": "The green in falafel isn't dye — it's pure chlorophyll from handfuls of fresh herbs packed into every ball.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What natural ingredient gives the inside of falafel its bright green color?",
+        "answer": "Fresh herbs like parsley",
+        "distractors": ["Food coloring dye", "Matcha powder", "Spirulina algae"]
+      },
+      {
+        "type": "reverse",
+        "question": "Chlorophyll from blended parsley and cilantro creates the green interior of which Middle Eastern food?",
+        "answer": "Falafel",
+        "distractors": ["Hummus", "Tabbouleh", "Shakshuka"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The green color inside falafel comes from food dye.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Falafel's green interior comes from fresh ___ and cilantro blended into the batter.",
+        "answer": "parsley",
+        "distractors": ["spinach", "matcha", "mint"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Falafel",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A halved falafel ball showing its bright green herb-flecked interior on a wooden board, pixel art style.",
+    "tags": ["falafel", "parsley", "herbs", "green", "Middle East"]
+  },
+  {
+    "id": "food-biryani-dum",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "south_asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "south_asian_cuisine",
+    "categoryL3": "",
+    "statement": "Biryani's signature cooking method is dum — sealing the pot with dough or a tight lid so that steam pressure cooks the rice and meat together without escaping.",
+    "quizQuestion": "What cooking technique seals biryani in a pot with steam pressure?",
+    "correctAnswer": "Dum cooking",
+    "distractors": [
+      "Pressure canning",
+      "Tandoor baking",
+      "Slow braising",
+      "Wok tossing",
+      "Steam boiling",
+      "Pit roasting",
+      "Bain-marie heating",
+      "Clay pot firing"
+    ],
+    "acceptableAnswers": ["Dum cooking", "dum", "dum pukht"],
+    "explanation": "Dum pukht (meaning 'breathe and cook' in Persian) seals the pot with a thick flour dough (atta luti) or pressed lid. Steam trapped inside acts as pressure, penetrating rice and meat simultaneously. The seal is traditionally broken tableside, releasing an aromatic cloud of saffron, rose water, and spices that signals a perfect biryani.",
+    "wowFactor": "Biryani is cooked in a sealed pot you break open at the table — the escaping perfume cloud is part of the meal's theatre.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Biryani is cooked in a pot sealed with dough to trap steam — what is this method called?",
+        "answer": "Dum cooking",
+        "distractors": ["Pressure canning", "Tandoor baking", "Slow braising"]
+      },
+      {
+        "type": "reverse",
+        "question": "The dum pukht technique of sealing a pot with dough to cook with trapped steam is the hallmark of which dish?",
+        "answer": "Biryani",
+        "distractors": ["Pilaf", "Khichdi", "Pulao"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Biryani is typically cooked in an open pot with the lid removed to let steam escape.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Biryani uses ___ cooking — sealing the pot with dough to trap aromatic steam inside.",
+        "answer": "dum",
+        "distractors": ["tandoor", "wok", "braising"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Biryani",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A clay biryani pot sealed with golden dough crust being broken open at an ornate dinner table, steam rising, pixel art style.",
+    "tags": ["biryani", "dum cooking", "South Asia", "rice", "steam"]
+  },
+  {
+    "id": "food-biryani-mughal",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "south_asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "south_asian_cuisine",
+    "categoryL3": "",
+    "statement": "Biryani is believed to have been developed in the Mughal royal kitchens, blending Persian pilaf traditions with Indian spices brought to the subcontinent.",
+    "quizQuestion": "Which royal court is credited with developing biryani?",
+    "correctAnswer": "Mughal royal kitchens",
+    "distractors": [
+      "Ottoman imperial court",
+      "Maratha warrior court",
+      "Rajput palace kitchens",
+      "British colonial kitchens",
+      "Mauryan imperial court",
+      "Chola dynasty cooks",
+      "Gupta Empire palace",
+      "Nizam of Hyderabad"
+    ],
+    "acceptableAnswers": ["Mughal royal kitchens", "Mughal court", "Mughal Empire"],
+    "explanation": "The Mughals (1526–1857) brought Persian culinary arts — particularly the osh pilaf tradition — into the Indian subcontinent. Their royal chefs fused long-grain basmati rice, Persian saffron, and Central Asian dry fruits with Indian spices like cardamom, cloves, and turmeric, creating biryani. The dish then spread across the subcontinent with each regional variant.",
+    "wowFactor": "Biryani is the culinary legacy of an empire — a dish born when Persian, Central Asian, and Indian cooking traditions collided in Mughal palace kitchens.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which royal kitchen is credited with originating biryani by blending Persian and Indian traditions?",
+        "answer": "Mughal royal kitchens",
+        "distractors": ["Ottoman imperial court", "Maratha warrior court", "British colonial kitchens"]
+      },
+      {
+        "type": "reverse",
+        "question": "The fusion of Persian pilaf and Indian spices in Mughal palace cooking created which dish?",
+        "answer": "Biryani",
+        "distractors": ["Pulao", "Khichdi", "Dal makhani"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Biryani was invented in British colonial India as a fusion dish.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Biryani developed in ___ royal kitchens, blending Persian pilaf with Indian spices.",
+        "answer": "Mughal",
+        "distractors": ["Ottoman", "Maratha", "Rajput"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Biryani",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Mughal emperor's feast table with a golden biryani pot surrounded by Persian and Indian spices, pixel art style.",
+    "tags": ["biryani", "Mughal", "Persian", "India", "history"]
+  },
+  {
+    "id": "food-biryani-varieties",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "south_asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "south_asian_cuisine",
+    "categoryL3": "",
+    "statement": "India has dozens of regional biryani varieties — Hyderabadi uses raw meat cooked with rice, while Lucknowi (Awadhi) pre-cooks meat and rice separately before layering.",
+    "quizQuestion": "What makes Hyderabadi biryani different from Lucknowi biryani?",
+    "correctAnswer": "Raw meat cooks with rice",
+    "distractors": [
+      "Uses lamb not chicken",
+      "No saffron used",
+      "Cooked in a tandoor oven",
+      "Served cold not hot",
+      "Has no spices added",
+      "Uses jasmine rice",
+      "Made without onions",
+      "Always vegetarian"
+    ],
+    "acceptableAnswers": ["Raw meat cooks with rice", "raw meat method", "kacchi method"],
+    "explanation": "Hyderabadi biryani uses the kacchi (raw) method — raw marinated meat is layered directly with par-cooked rice and sealed for dum cooking, so both cook simultaneously. Lucknowi/Awadhi biryani uses the pakki (cooked) method — meat is pre-cooked in gravy and layered with separately cooked rice then briefly steamed together.",
+    "wowFactor": "Two cities, two philosophies: Hyderabad trusts raw meat to cook inside the sealed rice pot; Lucknow insists on pre-cooking everything first — the rivalry is centuries old.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In Hyderabadi biryani, how is the meat added before dum cooking?",
+        "answer": "Raw meat cooks with rice",
+        "distractors": ["Pre-cooked in gravy", "Grilled separately", "Deep-fried first"]
+      },
+      {
+        "type": "reverse",
+        "question": "The kacchi method of layering raw marinated meat with rice for dum cooking is signature to which city's biryani?",
+        "answer": "Hyderabad",
+        "distractors": ["Lucknow", "Kolkata", "Delhi"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Lucknowi biryani cooks raw meat together with rice in a single sealed pot.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Hyderabadi biryani uses the kacchi (___) method, layering raw marinated meat with par-cooked rice.",
+        "answer": "raw",
+        "distractors": ["cooked", "grilled", "smoked"]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Biryani",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two side-by-side biryani pots labeled Hyderabad and Lucknow with different rice-meat layering visible, pixel art style.",
+    "tags": ["biryani", "Hyderabad", "Lucknow", "kacchi", "India"]
+  },
+  {
+    "id": "food-baklava-phyllo",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "middle_eastern_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "middle_eastern_cuisine",
+    "categoryL3": "",
+    "statement": "Traditional baklava uses 40 or more layers of paper-thin phyllo dough, each individually brushed with clarified butter before baking.",
+    "quizQuestion": "How many phyllo layers does traditional baklava typically use?",
+    "correctAnswer": "40 or more layers",
+    "distractors": [
+      "5 to 10 layers",
+      "12 to 15 layers",
+      "20 to 25 layers",
+      "30 layers exactly",
+      "50 to 60 layers",
+      "Just 3 layers",
+      "100 layers minimum",
+      "8 layers only"
+    ],
+    "acceptableAnswers": ["40 or more layers", "40+ layers", "over 40 layers"],
+    "explanation": "Phyllo (from Greek 'phullon', meaning leaf) is stretched until transparent — each sheet is thinner than a business card. Authentic baklava from Ottoman court tradition uses up to 40–80 sheets, each individually buttered, which creates the characteristic shatteringly crisp texture. The word phyllo reflects how the sheets must be as thin as a leaf.",
+    "wowFactor": "Master baklava bakers in Istanbul use up to 80 sheets of dough so thin you can read through them — each one buttered individually by hand.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many phyllo dough layers does traditional baklava typically contain?",
+        "answer": "40 or more layers",
+        "distractors": ["5 to 10 layers", "20 to 25 layers", "Just 3 layers"]
+      },
+      {
+        "type": "reverse",
+        "question": "A pastry using 40 or more individually buttered paper-thin dough sheets, filled with nuts, is which dessert?",
+        "answer": "Baklava",
+        "distractors": ["Strudel", "Millefeuille", "Spanakopita"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Baklava uses fewer than 20 layers of phyllo dough in traditional recipes.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Traditional baklava uses 40 or more layers of ___ dough, each brushed with butter.",
+        "answer": "phyllo",
+        "distractors": ["puff", "shortcrust", "filo"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Baklava",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A tray of golden baklava cut into diamond shapes, phyllo layers visible at the cross-section, pixel art style.",
+    "tags": ["baklava", "phyllo", "Ottoman", "pastry", "layered"]
+  },
+  {
+    "id": "food-baklava-syrup",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "middle_eastern_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "middle_eastern_cuisine",
+    "categoryL3": "",
+    "statement": "Baklava's syrup is poured hot over cold pastry (or cold syrup over hot pastry) — the temperature contrast drives the syrup deep into every layer without making it soggy.",
+    "quizQuestion": "Why is hot syrup poured onto cold baklava pastry?",
+    "correctAnswer": "Drives syrup deep without sogginess",
+    "distractors": [
+      "Prevents sugar crystallization",
+      "Kills surface bacteria",
+      "Seals the nut filling inside",
+      "Adds glossy appearance only",
+      "Makes cutting easier",
+      "Removes excess butter",
+      "Prevents phyllo from cracking",
+      "Caramelizes the top layer"
+    ],
+    "acceptableAnswers": ["Drives syrup deep without sogginess", "syrup penetrates without sogginess", "temperature contrast absorbs syrup"],
+    "explanation": "When hot syrup meets cold pastry, the fat in the cool phyllo contracts slightly, creating tiny capillary gaps that draw the hot liquid deep between layers. A hot-on-hot combination would oversaturate the outer layers before the syrup reaches the interior, producing a mushy exterior. The reverse temperature shock is a precision technique perfected by Ottoman confectioners.",
+    "wowFactor": "The syrup-pouring step in baklava is precise physics — the temperature contrast makes the pastry literally suck syrup into every layer simultaneously.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does pouring hot syrup on cold baklava achieve that hot-on-hot would not?",
+        "answer": "Drives syrup deep without sogginess",
+        "distractors": ["Prevents sugar crystallization", "Seals the nut filling inside", "Adds glossy appearance only"]
+      },
+      {
+        "type": "reverse",
+        "question": "Temperature-contrast syrup absorption, where hot liquid meets cold pastry, is a key technique in making which dessert?",
+        "answer": "Baklava",
+        "distractors": ["Cannoli", "Churros", "Creme brulee"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Baklava should be soaked in hot syrup while the pastry is still hot from the oven.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Hot syrup poured on cold baklava uses ___ contrast to draw syrup deep into every layer.",
+        "answer": "temperature",
+        "distractors": ["pressure", "density", "gravity"]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Baklava",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Golden syrup being poured from a copper pot onto a tray of baked baklava, steam rising, pixel art style.",
+    "tags": ["baklava", "syrup", "Ottoman", "technique", "pastry"]
+  },
+  {
+    "id": "food-baklava-origin-dispute",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "middle_eastern_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "middle_eastern_cuisine",
+    "categoryL3": "",
+    "statement": "Turkey, Greece, Lebanon, and several other countries all claim to have invented baklava, with the Ottoman Empire acting as the dish's great cross-cultural distributor.",
+    "quizQuestion": "Which empire spread baklava across multiple cultures as its distributor?",
+    "correctAnswer": "Ottoman Empire",
+    "distractors": [
+      "Byzantine Empire",
+      "Persian Empire",
+      "Roman Empire",
+      "Mongol Empire",
+      "Arab Caliphate",
+      "Macedonian Empire",
+      "Seljuk Sultanate",
+      "British Empire"
+    ],
+    "acceptableAnswers": ["Ottoman Empire", "Ottomans"],
+    "explanation": "The earliest baklava-like dishes appear in ancient Assyrian and Central Asian cuisines, but the Ottoman Empire standardized and distributed the modern form. Through 600 years of rule across the Middle East, North Africa, and southeastern Europe, Ottoman imperial kitchens (particularly the Topkapi Palace) elevated baklava into a court delicacy and spread it to every conquered region.",
+    "wowFactor": "Baklava is a diplomatic flashpoint — Greece, Turkey, Lebanon, and Armenia have all filed competing cultural heritage claims for a single pastry.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which empire standardized and distributed baklava across the Middle East and Europe?",
+        "answer": "Ottoman Empire",
+        "distractors": ["Byzantine Empire", "Persian Empire", "Roman Empire"]
+      },
+      {
+        "type": "reverse",
+        "question": "Multiple nations including Turkey, Greece, and Lebanon dispute the origin of which layered nut pastry?",
+        "answer": "Baklava",
+        "distractors": ["Strudel", "Kunafa", "Halva"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Baklava's origin is undisputedly Turkish.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ Empire spread baklava from its Topkapi palace kitchens across three continents.",
+        "answer": "Ottoman",
+        "distractors": ["Byzantine", "Persian", "Roman"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Baklava",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A map of the Ottoman Empire with baklava trays scattered across its territories, pixel art style.",
+    "tags": ["baklava", "Ottoman Empire", "origin", "cultural heritage", "Middle East"]
+  },
+  {
+    "id": "food-ratatouille-provencal",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "Ratatouille is a Provençal dish from Nice in southern France, traditionally made from zucchini, eggplant, tomatoes, and bell peppers slow-cooked in olive oil.",
+    "quizQuestion": "Which French city is ratatouille traditionally from?",
+    "correctAnswer": "Nice",
+    "distractors": [
+      "Paris",
+      "Lyon",
+      "Marseille",
+      "Bordeaux",
+      "Toulouse",
+      "Montpellier",
+      "Avignon",
+      "Cannes"
+    ],
+    "acceptableAnswers": ["Nice", "Provence", "Nice, France"],
+    "explanation": "Ratatouille (from the Occitan 'ratatolha') is a quintessential Niçoise peasant dish from the Provence-Alpes-Côte d'Azur region. All its vegetables are summer crops from the Mediterranean garden — courgette, aubergine, tomates, poivrons — stewed slowly in local olive oil and herbes de Provence until they meld into a sweet, silky ragout.",
+    "wowFactor": "Ratatouille was originally scorned as poor peasant food in Nice — it took Parisian chefs to turn a cheap vegetable stew into a symbol of French cuisine.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Ratatouille is a traditional Provençal dish originating from which French city?",
+        "answer": "Nice",
+        "distractors": ["Paris", "Lyon", "Marseille"]
+      },
+      {
+        "type": "reverse",
+        "question": "A slow-cooked vegetable stew of eggplant, zucchini, tomatoes, and peppers from Nice is called what?",
+        "answer": "Ratatouille",
+        "distractors": ["Bouillabaisse", "Tian", "Piperade"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ratatouille is a Parisian dish invented by haute cuisine chefs.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ratatouille is a Provençal vegetable stew originating from ___, in southern France.",
+        "answer": "Nice",
+        "distractors": ["Paris", "Lyon", "Bordeaux"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ratatouille",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A rustic terracotta dish of colorful ratatouille vegetables beside a sunny Provençal window, pixel art style.",
+    "tags": ["ratatouille", "Nice", "Provence", "France", "vegetable stew"]
+  },
+  {
+    "id": "food-ratatouille-confit-byaldi",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "The elegant thinly-sliced layered version of ratatouille seen in the Pixar film is called confit byaldi, a refined variation created by French chef Michel Guérard.",
+    "quizQuestion": "What is the name of the elegant layered ratatouille in the Pixar film?",
+    "correctAnswer": "Confit byaldi",
+    "distractors": [
+      "Tian provençal",
+      "Gratin dauphinois",
+      "Vegetable terrine",
+      "Papeton d'aubergine",
+      "Millefeuille légumes",
+      "Brandade niçoise",
+      "Pissaladière",
+      "Socca niçoise"
+    ],
+    "acceptableAnswers": ["Confit byaldi", "byaldi"],
+    "explanation": "Chef Thomas Keller consulted on the Pixar film and reimagined the rustic stew as confit byaldi — a modernist technique in which paper-thin vegetable rounds are layered in concentric circles atop a tomato sauce, then slow-baked. Michel Guérard originally developed this refined version at his restaurant in the 1970s as nouvelle cuisine reinterpreted Provençal classics.",
+    "wowFactor": "The layered ratatouille in the Pixar movie is a real dish — it took a Michelin-starred chef to make a peasant stew elegant enough to impress a cartoon food critic.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the refined layered ratatouille variation featured in the Pixar film called?",
+        "answer": "Confit byaldi",
+        "distractors": ["Tian provençal", "Gratin dauphinois", "Vegetable terrine"]
+      },
+      {
+        "type": "reverse",
+        "question": "Michel Guérard's modernist layered vegetable dish, made famous by a Pixar film, is called what?",
+        "answer": "Confit byaldi",
+        "distractors": ["Tian", "Bouillabaisse", "Pissaladière"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The layered vegetable dish in the Pixar Ratatouille film is a fictional invention.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Pixar film Ratatouille features ___ byaldi, a refined layered vegetable creation.",
+        "answer": "confit",
+        "distractors": ["tian", "gratin", "terrine"]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Confit_byaldi",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Thin vegetable rounds layered in a spiral in a white baking dish, Pixar-style kitchen in the background, pixel art style.",
+    "tags": ["ratatouille", "confit byaldi", "Pixar", "Michel Guérard", "French cuisine"]
+  },
+  {
+    "id": "food-ratatouille-summer-veg",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "Ratatouille can only be made authentically in summer because all its core vegetables — tomatoes, zucchini, eggplant, and peppers — are warm-season crops harvested simultaneously.",
+    "quizQuestion": "Why is ratatouille considered a purely summer dish?",
+    "correctAnswer": "All ingredients harvest in summer",
+    "distractors": [
+      "Olive oil only flows in summer",
+      "Provençal ovens too hot otherwise",
+      "Tomatoes are toxic in winter",
+      "French law restricts its sale",
+      "Herbs only grow in summer heat",
+      "Cheese is added in winter instead",
+      "Eggplant is imported spring only",
+      "Rain ruins the vegetable texture"
+    ],
+    "acceptableAnswers": ["All ingredients harvest in summer", "summer vegetables only", "seasonal vegetables"],
+    "explanation": "Tomatoes, courgettes, aubergines, and sweet peppers are all solanaceae or cucurbit crops that reach peak ripeness simultaneously in July–August in the Mediterranean climate. Authentic ratatouille is impossible in winter without imported, out-of-season produce that lacks the sweetness and moisture of sun-ripened summer vegetables.",
+    "wowFactor": "Ratatouille is nature's calendar — every ingredient needs full Mediterranean summer sun to ripen at the exact same time.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why can authentic ratatouille only be made in summer?",
+        "answer": "All ingredients harvest in summer",
+        "distractors": ["Olive oil only flows in summer", "Herbs only grow in summer heat", "French law restricts its sale"]
+      },
+      {
+        "type": "reverse",
+        "question": "Eggplant, zucchini, peppers, and tomatoes all peak simultaneously in summer, making which dish seasonal?",
+        "answer": "Ratatouille",
+        "distractors": ["Bouillabaisse", "Vichyssoise", "Cassoulet"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ratatouille can be made year-round with the same quality using imported vegetables.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ratatouille is a true summer dish because tomatoes, zucchini, eggplant, and peppers all ___ at the same time.",
+        "answer": "harvest",
+        "distractors": ["wilt", "bloom", "ferment"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ratatouille",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Provençal market stall overflowing with summer eggplants, zucchini, peppers, and tomatoes, pixel art style.",
+    "tags": ["ratatouille", "seasonal", "summer", "Provence", "vegetables"]
+  },
+  {
+    "id": "food-whiskey-aging",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "beverages",
+    "categoryL3": "",
+    "statement": "Up to 60–70% of whiskey's final flavor comes from aging in oak barrels, where the spirit undergoes extraction, evaporation, and oxidation over years or decades.",
+    "quizQuestion": "What percentage of whiskey's flavor comes from oak barrel aging?",
+    "correctAnswer": "60 to 70 percent",
+    "distractors": [
+      "10 to 20 percent",
+      "20 to 30 percent",
+      "30 to 40 percent",
+      "40 to 50 percent",
+      "80 to 90 percent",
+      "Over 95 percent",
+      "Less than 5 percent",
+      "Exactly 50 percent"
+    ],
+    "acceptableAnswers": ["60 to 70 percent", "60–70%", "most of it"],
+    "explanation": "Freshly distilled whiskey is a clear, harsh spirit. Oak barrels contribute vanilla and caramel notes (from lignin breakdown), tannins and color (from wood), spice (from hemicellulose), and fruity esters (from oxidation through the barrel staves). The 'angel's share' — 2–4% evaporation per year — concentrates flavor further.",
+    "wowFactor": "A 12-year-old whiskey has lost up to 40% of its volume to evaporation — what remains is dense with concentrated flavor that simply didn't exist on distillation day.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What fraction of whiskey's flavor develops during barrel aging?",
+        "answer": "60 to 70 percent",
+        "distractors": ["10 to 20 percent", "30 to 40 percent", "Over 95 percent"]
+      },
+      {
+        "type": "reverse",
+        "question": "Oak barrel aging developing 60–70% of flavor through extraction and oxidation is the defining process of which spirit?",
+        "answer": "Whiskey",
+        "distractors": ["Vodka", "Gin", "Rum"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Freshly distilled whiskey already has most of its eventual flavor before barreling.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Up to ___% of whiskey's final flavor develops inside oak barrels during aging.",
+        "answer": "70",
+        "distractors": ["30", "10", "90"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Whisky",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Discusses alcoholic beverage production",
+    "visualDescription": "Oak whiskey barrels stacked in a dark warehouse, amber spirit visible through a bung hole, pixel art style.",
+    "tags": ["whiskey", "barrel aging", "oak", "distillation", "flavor"]
+  },
+  {
+    "id": "food-whiskey-angels-share",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "beverages",
+    "categoryL3": "",
+    "statement": "The 'angel's share' is the 2–4% of whiskey that evaporates through the barrel staves each year, meaning a 20-year-old cask may hold half its original volume.",
+    "quizQuestion": "What is the 'angel's share' in whiskey production?",
+    "correctAnswer": "Annual evaporation through barrel",
+    "distractors": [
+      "Tax paid to the government",
+      "The first pour discarded",
+      "Water added before bottling",
+      "Residue left in the still",
+      "Whiskey given to inspectors",
+      "Portion donated to charity",
+      "Sediment filtered out",
+      "Alcohol burned off in distillation"
+    ],
+    "acceptableAnswers": ["Annual evaporation through barrel", "evaporation from barrel", "whiskey that evaporates"],
+    "explanation": "Oak barrel staves are porous, allowing approximately 2–4% of the whiskey volume to evaporate annually. This 'angel's share' concentrates the remaining spirit, raises proof, and the vapors contribute to the distinctive musty-sweet aroma of traditional maturation warehouses (called rickhouses or dunnages). Distilleries in warmer climates lose more — Kentucky bourbon warehouses can lose 8–10% per year.",
+    "wowFactor": "Every old whiskey bottle represents a spirits ghost story — 20–60% of the original liquid has literally vanished into thin air, taken by the 'angels'.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does distillers mean when they say a barrel has given up its 'angel's share'?",
+        "answer": "Annual evaporation through barrel",
+        "distractors": ["Tax paid to the government", "The first pour discarded", "Water added before bottling"]
+      },
+      {
+        "type": "reverse",
+        "question": "The poetic term 'angel's share' describes the annual loss of which spirit to barrel evaporation?",
+        "answer": "Whiskey",
+        "distractors": ["Wine", "Beer", "Brandy"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The 'angel's share' refers to whiskey donated to charity by distilleries.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The '___ share' is the 2–4% of whiskey that evaporates through barrel staves each year.",
+        "answer": "angel's",
+        "distractors": ["devil's", "master's", "spirit's"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Angel%27s_share",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Discusses alcoholic beverage",
+    "visualDescription": "A misty whiskey warehouse with ethereal wisps rising from barrel staves toward the ceiling, pixel art style.",
+    "tags": ["whiskey", "angel's share", "evaporation", "barrel", "aging"]
+  },
+  {
+    "id": "food-whiskey-scotch-vs-bourbon",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "beverages",
+    "categoryL3": "",
+    "statement": "Scotch whisky must be aged at least 3 years in oak casks in Scotland, while American bourbon must be aged in new charred oak barrels and contain at least 51% corn.",
+    "quizQuestion": "What grain must make up at least 51% of bourbon whiskey?",
+    "correctAnswer": "Corn",
+    "distractors": [
+      "Barley",
+      "Rye",
+      "Wheat",
+      "Oats",
+      "Sorghum",
+      "Buckwheat",
+      "Millet",
+      "Rice"
+    ],
+    "acceptableAnswers": ["Corn", "maize"],
+    "explanation": "US Federal Standards of Identity require bourbon to be made from a grain mixture (mash bill) containing at least 51% corn, aged in new charred American white oak containers, distilled to no more than 80% ABV, and bottled at minimum 40% ABV. Scotch must use malted barley as its primary grain and age a minimum of 3 years in Scotland.",
+    "wowFactor": "Bourbon's sweetness isn't from added sugar — it's entirely from corn starch and the charred new oak barrels, which is why legally you can never use the same barrel twice.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "By US law, what grain must comprise at least 51% of bourbon's grain bill?",
+        "answer": "Corn",
+        "distractors": ["Barley", "Rye", "Wheat"]
+      },
+      {
+        "type": "reverse",
+        "question": "A US law requiring 51% corn and new charred oak barrels defines which type of whiskey?",
+        "answer": "Bourbon",
+        "distractors": ["Scotch", "Irish whiskey", "Rye whiskey"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Scotch whisky must contain at least 51% corn in its grain bill.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "American bourbon must contain at least 51% ___ in its grain mixture by law.",
+        "answer": "corn",
+        "distractors": ["barley", "rye", "wheat"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bourbon_whiskey",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Discusses alcoholic beverage",
+    "visualDescription": "Side-by-side Scotch and bourbon bottles with grain and barrel icons, pixel art style.",
+    "tags": ["whiskey", "bourbon", "Scotch", "corn", "distillation"]
+  },
+  {
+    "id": "food-rice-staple",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients",
+    "categoryL3": "",
+    "statement": "Rice feeds more than half the world's population and is the primary caloric staple for over 3 billion people, particularly across Asia, where 90% of it is grown and eaten.",
+    "quizQuestion": "What fraction of the world's population relies on rice as its primary food staple?",
+    "correctAnswer": "More than half",
+    "distractors": [
+      "About one quarter",
+      "About one third",
+      "About two thirds",
+      "About one fifth",
+      "About 80 percent",
+      "About 40 percent",
+      "Less than 10 percent",
+      "About 90 percent"
+    ],
+    "acceptableAnswers": ["More than half", "over half", "more than 50%", "over 50 percent"],
+    "explanation": "With over 3 billion consumers, rice is the world's most important food crop by caloric intake. Asia accounts for roughly 90% of global rice production and consumption. Countries like Bangladesh, Cambodia, Laos, and Vietnam derive 60–80% of their total caloric intake from rice alone, making it the single most critical crop in human nutrition history.",
+    "wowFactor": "Rice is the single food keeping over 3 billion humans alive — remove it from Asia's food supply and the largest human migration crisis in history would follow within weeks.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What share of the global population depends on rice as its primary caloric food?",
+        "answer": "More than half",
+        "distractors": ["About one quarter", "About one third", "About two thirds"]
+      },
+      {
+        "type": "reverse",
+        "question": "Over 3 billion people depend primarily on which grain as their daily caloric staple?",
+        "answer": "Rice",
+        "distractors": ["Wheat", "Corn", "Sorghum"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Asia produces and consumes about 90% of the world's rice.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Rice is the primary caloric staple for over ___ billion people worldwide.",
+        "answer": "3",
+        "distractors": ["1", "2", "5"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rice",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A vast terraced rice paddy in Southeast Asia with farmers harvesting, pixel art style.",
+    "tags": ["rice", "food security", "Asia", "staple grain", "nutrition"]
+  },
+  {
+    "id": "food-rice-varieties",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients",
+    "categoryL3": "",
+    "statement": "There are over 40,000 varieties of cultivated rice, divided into two main subspecies: indica (long-grain, fluffy) and japonica (short-grain, sticky).",
+    "quizQuestion": "What are the two main subspecies of cultivated rice?",
+    "correctAnswer": "Indica and japonica",
+    "distractors": [
+      "Sativa and basmati",
+      "Arborio and jasmine",
+      "Brown and white",
+      "Short and long grain",
+      "Sticky and dry",
+      "Asian and African",
+      "Wet and dry varieties",
+      "Wild and cultivated"
+    ],
+    "acceptableAnswers": ["Indica and japonica", "indica and japonica"],
+    "explanation": "Oryza sativa indica produces long, thin grains that cook dry and separate — basmati, jasmine, and long-grain American rice are all indica varieties. Oryza sativa japonica produces short, round grains that become sticky when cooked — sushi rice, arborio, and Korean short-grain are japonica. The two subspecies diverged from wild rice domestication events in China and India over 8,000 years ago.",
+    "wowFactor": "The 40,000+ rice varieties worldwide all descended from just two original domestication events over 8,000 years ago — one in China, one in India.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What are the two main subspecies that all 40,000+ rice varieties belong to?",
+        "answer": "Indica and japonica",
+        "distractors": ["Sativa and basmati", "Brown and white", "Short and long grain"]
+      },
+      {
+        "type": "reverse",
+        "question": "Basmati and jasmine are indica types, while sushi rice and arborio are japonica — these are subspecies of which crop?",
+        "answer": "Rice",
+        "distractors": ["Wheat", "Millet", "Sorghum"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Basmati rice is a japonica subspecies of rice.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The two main subspecies of cultivated rice are indica and ___.",
+        "answer": "japonica",
+        "distractors": ["sativa", "basmati", "arborio"]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rice",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Side-by-side bowls of long fluffy indica rice and short sticky japonica rice, labeled, pixel art style.",
+    "tags": ["rice", "indica", "japonica", "varieties", "grain"]
+  },
+  {
+    "id": "food-rice-paddy",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients",
+    "categoryL3": "",
+    "statement": "Rice paddies are deliberately flooded to suppress weeds, maintain soil temperature, and cycle nutrients — the water layer also prevents termites and reduces nitrogen loss.",
+    "quizQuestion": "Why are rice paddies flooded with water during cultivation?",
+    "correctAnswer": "Suppress weeds and cycle nutrients",
+    "distractors": [
+      "Rice is an aquatic plant",
+      "Water provides all nutrients",
+      "Prevent bird attacks",
+      "Make harvesting easier",
+      "Cool the rice grain",
+      "Stop root diseases",
+      "Attract beneficial insects",
+      "Keep temperature constant"
+    ],
+    "acceptableAnswers": ["Suppress weeds and cycle nutrients", "suppress weeds", "weed suppression and nutrients"],
+    "explanation": "Rice can grow without flooding, but the paddy system provides multiple simultaneous benefits: standing water prevents most weed species from establishing (they can't tolerate anaerobic conditions), regulates soil temperature through thermal mass, reduces evaporation, promotes anaerobic decomposition that cycles nitrogen, and prevents soil loss from erosion. It's a sophisticated multi-purpose agricultural technology developed over millennia.",
+    "wowFactor": "Flooded rice paddies are one of humanity's oldest multi-purpose technologies — the water layer simultaneously kills weeds, stores heat, and fertilizes the soil all at once.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the primary agricultural reason rice paddies are kept flooded?",
+        "answer": "Suppress weeds and cycle nutrients",
+        "distractors": ["Rice is an aquatic plant", "Water provides all nutrients", "Make harvesting easier"]
+      },
+      {
+        "type": "reverse",
+        "question": "Flooding to suppress weeds and cycle nutrients through anaerobic soil is the key management technique of what crop?",
+        "answer": "Rice",
+        "distractors": ["Taro", "Lotus", "Cranberry"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Rice must grow in flooded paddies because it is an aquatic plant that cannot survive without submersion.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Rice paddies are flooded mainly to suppress ___ and cycle soil nutrients.",
+        "answer": "weeds",
+        "distractors": ["insects", "disease", "birds"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Paddy_field",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Lush green flooded rice paddies with terraced hillsides reflected in still water, pixel art style.",
+    "tags": ["rice", "paddy", "agriculture", "flooding", "weeds"]
+  },
+  {
+    "id": "food-french-cuisine-escoffier",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "Auguste Escoffier codified modern French cuisine in his 1903 book 'Le Guide Culinaire', which organized 5,000 recipes and established the brigade system still used in professional kitchens today.",
+    "quizQuestion": "What year did Escoffier publish his foundational 'Le Guide Culinaire'?",
+    "correctAnswer": "1903",
+    "distractors": [
+      "1850",
+      "1875",
+      "1888",
+      "1912",
+      "1925",
+      "1867",
+      "1935",
+      "1899"
+    ],
+    "acceptableAnswers": ["1903"],
+    "explanation": "Auguste Escoffier (1846–1935) worked at the Savoy and Ritz hotels in London with César Ritz. His 'Le Guide Culinaire' (1903) standardized classical French cooking with 5,000+ recipes, replaced the chaotic old service à la française with service à la russe (sequential courses), and introduced the brigade de cuisine — the hierarchical kitchen team structure that every restaurant uses today.",
+    "wowFactor": "Every restaurant kitchen in the world — from a Michelin-starred palace to a fast food chain — still runs on the brigade system invented by one man in 1903.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year did Escoffier publish 'Le Guide Culinaire', codifying French cuisine?",
+        "answer": "1903",
+        "distractors": ["1850", "1875", "1925"]
+      },
+      {
+        "type": "reverse",
+        "question": "The 1903 culinary bible 'Le Guide Culinaire' establishing the brigade kitchen system was written by whom?",
+        "answer": "Auguste Escoffier",
+        "distractors": ["Marie-Antoine Carême", "Paul Bocuse", "Fernand Point"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Escoffier's brigade system for organizing kitchen staff is still widely used today.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Escoffier's 1903 'Le ___ Culinaire' codified 5,000 recipes and the modern kitchen brigade.",
+        "answer": "Guide",
+        "distractors": ["Grand", "Livre", "Manuel"]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Auguste_Escoffier",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Victorian-era chef in tall white hat beside a thick leather-bound cookbook labeled 'Le Guide Culinaire 1903', pixel art style.",
+    "tags": ["French cuisine", "Escoffier", "Le Guide Culinaire", "brigade system", "culinary history"]
+  },
+  {
+    "id": "food-french-cuisine-mother-sauces",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "French haute cuisine is built on five mother sauces — béchamel, velouté, espagnole, hollandaise, and sauce tomat — from which hundreds of derivative sauces are made.",
+    "quizQuestion": "How many mother sauces form the foundation of French cuisine?",
+    "correctAnswer": "Five",
+    "distractors": [
+      "Two",
+      "Three",
+      "Four",
+      "Six",
+      "Seven",
+      "Eight",
+      "Ten",
+      "Twelve"
+    ],
+    "acceptableAnswers": ["Five", "5"],
+    "explanation": "Marie-Antoine Carême originally identified four grande sauces; Escoffier codified five: béchamel (milk + roux), velouté (white stock + roux), espagnole (brown stock + mirepoix), sauce tomat (tomato), and hollandaise (egg yolk emulsion + butter). Each mother sauce has dozens of derivative (small) sauces — e.g., béchamel becomes mornay, velouté becomes suprême.",
+    "wowFactor": "All of French classical cooking flows from five sauce formulas — master those five and you unlock hundreds of dishes, like knowing five musical chords that generate all songs.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many mother sauces does French haute cuisine classify as foundational?",
+        "answer": "Five",
+        "distractors": ["Two", "Four", "Seven"]
+      },
+      {
+        "type": "reverse",
+        "question": "Béchamel, velouté, espagnole, hollandaise, and sauce tomat are the five ___ sauces of French cuisine.",
+        "answer": "Mother",
+        "distractors": ["Base", "Classic", "Grand"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Hollandaise is one of the five mother sauces in French cuisine.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "French haute cuisine has ___ mother sauces, including béchamel and hollandaise.",
+        "answer": "five",
+        "distractors": ["three", "seven", "ten"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/French_mother_sauces",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Five sauce pots labeled with French names arranged on a classic stovetop, pixel art style.",
+    "tags": ["French cuisine", "mother sauces", "béchamel", "hollandaise", "Escoffier"]
+  },
+  {
+    "id": "food-french-cuisine-nouvelle",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "Nouvelle cuisine emerged in the 1970s as French chefs rejected heavy cream sauces for lighter preparations, smaller portions, and artistic plating inspired by Japanese aesthetics.",
+    "quizQuestion": "What Japanese influence shaped nouvelle cuisine's presentation style?",
+    "correctAnswer": "Japanese aesthetic plating",
+    "distractors": [
+      "Japanese soy sauce flavors",
+      "Japanese portion sizes only",
+      "Buddhist vegetarian rules",
+      "Japanese knife techniques",
+      "Zen garden geometry",
+      "Japanese fermentation",
+      "Sashimi raw fish methods",
+      "Bento box compartments"
+    ],
+    "acceptableAnswers": ["Japanese aesthetic plating", "Japanese aesthetics", "Japanese visual presentation"],
+    "explanation": "Nouvelle cuisine, championed by Paul Bocuse, Michel Guérard, and the Troisgros brothers in 1970s France, broke from Escoffier's heavy classical tradition. The movement was influenced by Japanese culinary philosophy — particularly the idea that food should be beautiful to look at, use seasonal fresh ingredients at peak ripeness, and present small, precise portions on large white plates. This aesthetic philosophy reshapes plating in fine dining worldwide.",
+    "wowFactor": "Japanese art philosophy changed how French food looks — nouvelle cuisine's beautiful tiny portions on large plates were directly inspired by Japanese painting principles.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Nouvelle cuisine's artistic plating style was inspired by the aesthetics of which country?",
+        "answer": "Japanese aesthetic plating",
+        "distractors": ["Buddhist vegetarian rules", "Zen garden geometry", "Sashimi raw fish methods"]
+      },
+      {
+        "type": "reverse",
+        "question": "1970s French chefs inspired by Japanese aesthetics who rejected heavy sauces for artistic presentation created what movement?",
+        "answer": "Nouvelle cuisine",
+        "distractors": ["Haute cuisine", "Cuisine minceur", "Fusion cuisine"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Nouvelle cuisine in the 1970s increased portion sizes and made sauces heavier.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Nouvelle cuisine rejected heavy cream sauces for lighter preparations with ___ aesthetic plating.",
+        "answer": "Japanese",
+        "distractors": ["Moroccan", "Chinese", "Italian"]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nouvelle_cuisine",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An artistically plated nouvelle cuisine dish — a small portion on a large white plate with geometric vegetable garnish, pixel art style.",
+    "tags": ["French cuisine", "nouvelle cuisine", "Japanese influence", "plating", "Bocuse"]
+  }
+]

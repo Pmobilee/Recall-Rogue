@@ -202,3 +202,146 @@ export function getShortCardDescription(card: Card): string {
     default: return mechanic.name;
   }
 }
+
+/** Structured part of a card description for rich rendering */
+export type CardDescPart =
+  | { type: 'text'; value: string }
+  | { type: 'number'; value: string }
+  | { type: 'keyword'; value: string; keywordId: string }
+  | { type: 'conditional-number'; value: string; active: boolean };
+
+interface CardGameState {
+  playerHpPercent?: number;
+  enemyHpPercent?: number;
+}
+
+function num(v: number | string): CardDescPart {
+  return { type: 'number', value: String(v) };
+}
+function txt(v: string): CardDescPart {
+  return { type: 'text', value: v };
+}
+function kw(name: string, id: string): CardDescPart {
+  return { type: 'keyword', value: name, keywordId: id };
+}
+function cond(v: number, active: boolean): CardDescPart {
+  return { type: 'conditional-number', value: String(v), active };
+}
+
+/**
+ * Get structured description parts for rich card text rendering.
+ * Returns an array of typed segments for rendering with styled numbers,
+ * bold keywords, and conditional values.
+ */
+export function getCardDescriptionParts(card: Card, gameState?: CardGameState): CardDescPart[] {
+  const power = Math.round(card.baseEffectValue * card.effectMultiplier);
+  const mechanic = getMechanicDefinition(card.mechanicId);
+
+  if (!mechanic) {
+    switch (card.cardType) {
+      case 'attack': return [txt('Deal '), num(power), txt(' damage')];
+      case 'shield': return [txt('Gain '), num(power), txt(' '), kw('Block', 'block')];
+      case 'buff': return [txt('Buff +'), num(power), txt('%')];
+      case 'debuff': return [txt('Debuff '), num(power), txt(' turns')];
+      case 'utility': return [txt('Draw '), num(power)];
+      case 'wild': return [txt('Wild effect')];
+      default: return [txt(card.cardType)];
+    }
+  }
+
+  const secondary = card.secondaryValue ?? mechanic.secondaryValue;
+  const pHp = gameState?.playerHpPercent ?? 1;
+  const eHp = gameState?.enemyHpPercent ?? 1;
+
+  switch (mechanic.id) {
+    // Attacks
+    case 'strike':
+      return [txt('Deal '), num(power), txt(' damage')];
+    case 'multi_hit': {
+      const hits = secondary ?? 3;
+      return [txt('Hit '), num(hits), txt(' times for '), num(power), txt(' each')];
+    }
+    case 'heavy_strike':
+      return [txt('Deal '), num(power), txt(' damage')];
+    case 'piercing':
+      return [txt('Deal '), num(power), txt(' damage. Ignores '), kw('Block', 'block')];
+    case 'reckless':
+      return [txt('Deal '), num(power), txt(' damage. Take '), num(secondary ?? 3), txt(' self-damage')];
+    case 'execute': {
+      const bonus = secondary ?? 8;
+      const active = eHp < 0.3;
+      return [txt('Deal '), num(power), txt(' damage. +'), cond(active ? bonus : 0, active), txt(' below 30%')];
+    }
+    case 'lifetap':
+      return [txt('Deal '), num(power), txt(' damage. Heal 20% dealt')];
+
+    // Shields
+    case 'block':
+      return [txt('Gain '), num(power), txt(' '), kw('Block', 'block')];
+    case 'thorns':
+      return [txt('Gain '), num(power), txt(' '), kw('Block', 'block'), txt('. Reflect '), num(secondary ?? 2), txt(' damage')];
+    case 'fortify':
+      return [txt('Gain '), num(power), txt(' '), kw('Block', 'block'), txt('. Persists next turn')];
+    case 'parry':
+      return [txt('Gain '), num(power), txt(' '), kw('Block', 'block'), txt('. Draw 1 if attacked')];
+    case 'brace':
+      return [txt('Gain '), kw('Block', 'block'), txt(' equal to enemy attack')];
+    case 'overheal': {
+      const bonus = Math.round(power * 0.5);
+      const active = pHp < 0.5;
+      return [txt('Gain '), num(power), txt(' '), kw('Block', 'block'), txt('. +'), cond(active ? bonus : 0, active), txt(' below 50% HP')];
+    }
+    case 'emergency': {
+      const active = pHp < 0.3;
+      const val = active ? power * 2 : power;
+      return [txt('Gain '), num(val), txt(' '), kw('Block', 'block'), txt('. ×2 below 30% HP')];
+    }
+
+    // Buffs
+    case 'empower':
+      return [txt('Next card +'), num(power), txt('% damage')];
+    case 'quicken':
+      return [txt('Gain +'), num(1), txt(' AP this turn')];
+    case 'double_strike':
+      return [txt('Next attack hits twice at '), num(power), txt('%')];
+    case 'focus':
+      return [txt('Next card gets difficulty bonus')];
+
+    // Debuffs
+    case 'weaken':
+      return [txt('Apply '), kw('Weakness', 'weakness'), txt(' for '), num(power), txt(' turns')];
+    case 'expose':
+      return [txt('Apply '), kw('Vulnerable', 'vulnerable'), txt(' for '), num(power), txt(' turns')];
+    case 'slow':
+      return [txt("Skip enemy's next action")];
+    case 'hex': {
+      const turns = secondary ?? 3;
+      return [txt('Apply '), num(power), txt(' '), kw('Poison', 'poison'), txt(' for '), num(turns), txt(' turns')];
+    }
+
+    // Utility
+    case 'scout':
+      return [txt('Draw '), num(power), txt(' card'), power !== 1 ? txt('s') : txt('')];
+    case 'recycle':
+      return [txt('Discard, draw a new card')];
+    case 'foresight':
+      return [txt('Reveal next '), num(power), txt(' intents')];
+    case 'transmute':
+      return [txt('Transform a random hand card')];
+    case 'cleanse':
+      return [txt('Remove all debuffs. Draw 1')];
+    case 'immunity':
+      return [txt('Absorb next status damage')];
+
+    // Wild
+    case 'mirror':
+      return [txt("Copy previous card's effect")];
+    case 'adapt':
+      return [txt('Adapt to most needed effect')];
+    case 'overclock':
+      return [txt('Next card ×2 effect. −1 draw')];
+
+    default:
+      return [txt(mechanic.name)];
+  }
+}

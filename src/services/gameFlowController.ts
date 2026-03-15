@@ -734,8 +734,8 @@ async function proceedAfterReward(): Promise<void> {
     }
   }
   activeRunState.set(run);
-  gameFlowState.set('roomSelection');
-  currentScreen.set('roomSelection');
+  gameFlowState.set('dungeonMap');
+  currentScreen.set('dungeonMap');
 }
 
 function openCardReward(): void {
@@ -946,7 +946,7 @@ export function onCardRewardSelected(card: Card): void {
   activeCardRewardOptions.set([]);
   activeRewardBundle.set(null);
   activeRewardRevealStep.set('gold');
-  autoSaveRun('roomSelection');
+  autoSaveRun('dungeonMap');
   void proceedAfterReward();
 }
 
@@ -954,7 +954,7 @@ export function onCardRewardSkipped(): void {
   activeCardRewardOptions.set([]);
   activeRewardBundle.set(null);
   activeRewardRevealStep.set('gold');
-  autoSaveRun('roomSelection');
+  autoSaveRun('dungeonMap');
   void proceedAfterReward();
 }
 
@@ -1090,8 +1090,8 @@ export function onShopDone(): void {
   run.floor.lastSlotWasEvent = true;
   activeRunState.set(run);
   activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
-  gameFlowState.set('roomSelection');
-  currentScreen.set('roomSelection');
+  gameFlowState.set('dungeonMap');
+  currentScreen.set('dungeonMap');
 }
 
 export function onRetreat(): void {
@@ -1229,7 +1229,7 @@ export function onMapNodeSelected(nodeId: string): void {
   onRoomSelected(room);
 }
 
-export function onRoomSelected(room: RoomOption): void {
+export async function onRoomSelected(room: RoomOption): Promise<void> {
   const run = get(activeRunState);
   if (run) {
     analyticsService.track({
@@ -1519,8 +1519,8 @@ export function onMysteryResolved(): void {
   run.floor.lastSlotWasEvent = true;
   activeRunState.set(run);
   activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
-  gameFlowState.set('roomSelection');
-  currentScreen.set('roomSelection');
+  gameFlowState.set('dungeonMap');
+  currentScreen.set('dungeonMap');
 }
 
 export function onRestResolved(): void {
@@ -1529,8 +1529,8 @@ export function onRestResolved(): void {
   run.floor.lastSlotWasEvent = true;
   activeRunState.set(run);
   activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
-  gameFlowState.set('roomSelection');
-  currentScreen.set('roomSelection');
+  gameFlowState.set('dungeonMap');
+  currentScreen.set('dungeonMap');
 }
 
 export function returnToMenu(): void {

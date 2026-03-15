@@ -67,9 +67,47 @@ export interface HitAnimConfig {
   returnEase: string;
 }
 
+/** A single step in a custom idle movement pattern. */
+export interface IdlePatternStep {
+  /** Type of movement for this step. */
+  type: 'move' | 'pause' | 'flip' | 'squash' | 'pulse' | 'jitter' | 'drift'
+  /** Duration of this step in ms. */
+  duration: number
+  /** Target X offset from base position (for move/drift). */
+  dx?: number
+  /** Target Y offset from base position (for move/drift). */
+  dy?: number
+  /** Target scaleX (for squash/pulse). */
+  scaleX?: number
+  /** Target scaleY (for squash/pulse). */
+  scaleY?: number
+  /** Phaser ease string (defaults to 'Sine.easeInOut'). */
+  ease?: string
+  /** Whether this step yoyos back to start (for squash/pulse). */
+  yoyo?: boolean
+  /** Jitter intensity in pixels (for jitter type). */
+  intensity?: number
+  /** Jitter interval in ms between random offsets (for jitter type). */
+  interval?: number
+  /** Target scaleX direction for flip (-1 = mirror horizontally). */
+  flipX?: number
+}
+
+/** Full idle behavior: base layer + optional custom pattern. */
+export interface IdleBehavior {
+  /** Base idle parameters (bob/breathe/wobble). Always present for fallback. */
+  base: IdleAnimConfig
+  /** Optional custom movement pattern that loops continuously. */
+  pattern?: IdlePatternStep[]
+  /** If true, suppress the standard bob/breathe/wobble base layer. */
+  suppressBase?: boolean
+}
+
 /** Full animation configuration for an enemy archetype. */
 export interface AnimConfig {
   idle: IdleAnimConfig;
+  /** Extended idle behavior with optional custom pattern. */
+  idleBehavior?: IdleBehavior;
   attack: AttackAnimConfig;
   hit: HitAnimConfig;
 }
@@ -83,6 +121,9 @@ export const DEFAULT_ANIM_CONFIG: AnimConfig = {
     breatheDuration: 1500,
     wobbleAngle: 1,
     wobbleDuration: 2000,
+  },
+  idleBehavior: {
+    base: { bobAmplitude: 5, bobDuration: 1250, breatheScale: 1.02, breatheDuration: 1500, wobbleAngle: 1, wobbleDuration: 2000 },
   },
   attack: {
     lungeX: 0,
@@ -119,6 +160,13 @@ const ARCHETYPE_CONFIGS: Record<AnimArchetype, AnimConfig> = {
       wobbleAngle: 2.5,
       wobbleDuration: 1400,
     },
+    idleBehavior: {
+      base: { bobAmplitude: 8, bobDuration: 900, breatheScale: 1.01, breatheDuration: 1200, wobbleAngle: 2.5, wobbleDuration: 1400 },
+      pattern: [
+        { type: 'drift', dx: -15, dy: -8, duration: 2000, ease: 'Sine.easeInOut' },
+        { type: 'drift', dx: 15, dy: 8, duration: 2000, ease: 'Sine.easeInOut' },
+      ],
+    },
     attack: {
       lungeX: -15,
       lungeY: 30,
@@ -148,6 +196,15 @@ const ARCHETYPE_CONFIGS: Record<AnimArchetype, AnimConfig> = {
       breatheDuration: 2000,
       wobbleAngle: 0.5,
       wobbleDuration: 2500,
+    },
+    idleBehavior: {
+      base: { bobAmplitude: 2, bobDuration: 1800, breatheScale: 1.03, breatheDuration: 2000, wobbleAngle: 0.5, wobbleDuration: 2500 },
+      pattern: [
+        { type: 'pause', duration: 5000 },
+        { type: 'squash', scaleX: 1.15, scaleY: 0.85, duration: 120, yoyo: true },
+        { type: 'pause', duration: 150 },
+        { type: 'squash', scaleX: 0.95, scaleY: 1.05, duration: 100, yoyo: true },
+      ],
     },
     attack: {
       lungeX: 0,
@@ -179,6 +236,18 @@ const ARCHETYPE_CONFIGS: Record<AnimArchetype, AnimConfig> = {
       wobbleAngle: 0.8,
       wobbleDuration: 1600,
     },
+    idleBehavior: {
+      base: { bobAmplitude: 3, bobDuration: 1100, breatheScale: 1.01, breatheDuration: 1300, wobbleAngle: 0.8, wobbleDuration: 1600 },
+      suppressBase: true,
+      pattern: [
+        { type: 'move', dx: -20, dy: 0, duration: 3000, ease: 'Linear' },
+        { type: 'pause', duration: 4000 },
+        { type: 'flip', flipX: -1, duration: 200 },
+        { type: 'move', dx: 20, dy: 0, duration: 3000, ease: 'Linear' },
+        { type: 'pause', duration: 4000 },
+        { type: 'flip', flipX: 1, duration: 200 },
+      ],
+    },
     attack: {
       lungeX: 25,
       lungeY: 15,
@@ -208,6 +277,13 @@ const ARCHETYPE_CONFIGS: Record<AnimArchetype, AnimConfig> = {
       breatheDuration: 1800,
       wobbleAngle: 0,
       wobbleDuration: 2000,
+    },
+    idleBehavior: {
+      base: { bobAmplitude: 7, bobDuration: 1600, breatheScale: 1.04, breatheDuration: 1800, wobbleAngle: 0, wobbleDuration: 2000 },
+      pattern: [
+        { type: 'pause', duration: 3000 },
+        { type: 'pulse', scaleX: 1.12, scaleY: 1.12, duration: 200, yoyo: true },
+      ],
     },
     attack: {
       lungeX: 0,
@@ -239,6 +315,13 @@ const ARCHETYPE_CONFIGS: Record<AnimArchetype, AnimConfig> = {
       wobbleAngle: 1.5,
       wobbleDuration: 2800,
     },
+    idleBehavior: {
+      base: { bobAmplitude: 10, bobDuration: 2000, breatheScale: 1.02, breatheDuration: 2200, wobbleAngle: 1.5, wobbleDuration: 2800 },
+      pattern: [
+        { type: 'drift', dx: -8, dy: 0, duration: 3000, ease: 'Sine.easeInOut' },
+        { type: 'drift', dx: 8, dy: 0, duration: 3000, ease: 'Sine.easeInOut' },
+      ],
+    },
     attack: {
       lungeX: 0,
       lungeY: 15,
@@ -268,6 +351,16 @@ const ARCHETYPE_CONFIGS: Record<AnimArchetype, AnimConfig> = {
       breatheDuration: 1600,
       wobbleAngle: 3,
       wobbleDuration: 1800,
+    },
+    idleBehavior: {
+      base: { bobAmplitude: 4, bobDuration: 1400, breatheScale: 1.02, breatheDuration: 1600, wobbleAngle: 3, wobbleDuration: 1800 },
+      suppressBase: true,
+      pattern: [
+        { type: 'pause', duration: 4000 },
+        { type: 'move', dx: 12, dy: 0, duration: 150, ease: 'Power3' },
+        { type: 'pause', duration: 200 },
+        { type: 'move', dx: -12, dy: 0, duration: 600, ease: 'Sine.easeOut' },
+      ],
     },
     attack: {
       lungeX: 5,
@@ -299,6 +392,15 @@ const ARCHETYPE_CONFIGS: Record<AnimArchetype, AnimConfig> = {
       wobbleAngle: 0.5,
       wobbleDuration: 1200,
     },
+    idleBehavior: {
+      base: { bobAmplitude: 3, bobDuration: 1000, breatheScale: 1.015, breatheDuration: 800, wobbleAngle: 0.5, wobbleDuration: 1200 },
+      pattern: [
+        { type: 'jitter', intensity: 2, interval: 120, duration: 400 },
+        { type: 'pause', duration: 800 },
+        { type: 'jitter', intensity: 3, interval: 80, duration: 300 },
+        { type: 'pause', duration: 1200 },
+      ],
+    },
     attack: {
       lungeX: -10,
       lungeY: 25,
@@ -328,6 +430,14 @@ const ARCHETYPE_CONFIGS: Record<AnimArchetype, AnimConfig> = {
       breatheDuration: 2400,
       wobbleAngle: 0.3,
       wobbleDuration: 3000,
+    },
+    idleBehavior: {
+      base: { bobAmplitude: 1, bobDuration: 2200, breatheScale: 1.01, breatheDuration: 2400, wobbleAngle: 0.3, wobbleDuration: 3000 },
+      pattern: [
+        { type: 'pause', duration: 6000 },
+        { type: 'jitter', intensity: 4, interval: 40, duration: 500 },
+        { type: 'pause', duration: 500 },
+      ],
     },
     attack: {
       lungeX: 0,

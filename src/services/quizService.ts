@@ -1,5 +1,6 @@
 import { BALANCE } from '../data/balance'
 import type { Fact, ReviewState } from '../data/types'
+import { getVocabDistractors } from './vocabDistractorService'
 
 /**
  * Selects the next quiz fact from review-due cards only.
@@ -156,7 +157,14 @@ export function selectDifficultyWeightedQuestion(
  * @returns A shuffled array containing one correct answer and distractors.
  */
 export function getQuizChoices(fact: Fact): string[] {
-  const distractors = shuffleArray([...fact.distractors]).slice(0, BALANCE.QUIZ_DISTRACTORS_SHOWN)
+  let distractorSource = fact.distractors
+
+  // Runtime vocab distractor generation (spec 1.8 Option E)
+  if (distractorSource.length === 0 && fact.type === 'vocabulary') {
+    distractorSource = getVocabDistractors(fact)
+  }
+
+  const distractors = shuffleArray([...distractorSource]).slice(0, BALANCE.QUIZ_DISTRACTORS_SHOWN)
   const choices = [...distractors, fact.correctAnswer]
 
   return shuffleArray(choices)

@@ -1,0 +1,2021 @@
+[
+  {
+    "id": "animals-owls-silent-flight",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "adaptations",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "adaptations",
+    "categoryL3": "owls",
+    "statement": "Owls fly nearly silently because comb-like serrations on their leading wing feathers break up turbulence, eliminating the sound of air rushing over the wing.",
+    "quizQuestion": "What makes owl flight nearly silent?",
+    "correctAnswer": "Serrated wing feathers",
+    "distractors": [
+      "Hollow bones",
+      "Slow wingbeats",
+      "Soft downy coat",
+      "Small body size",
+      "Flexible talons",
+      "Wide wingspan",
+      "Asymmetric ears",
+      "Oil-coated feathers"
+    ],
+    "acceptableAnswers": [
+      "Serrated wing feathers",
+      "Comb-like feather serrations",
+      "feather serrations"
+    ],
+    "explanation": "Barn owls and great grey owls possess comb-like serrations on the leading edge of their primary feathers. These break turbulent airflow into smaller micro-turbulences that cancel each other out acoustically. Combined with a velvety feather surface that absorbs sound, owls can approach prey in near-total silence — critical for hunting by sound in darkness.",
+    "wowFactor": "An owl can hear a mouse moving under a foot of snow and dive straight through to catch it — their silent wings let them hear the prey without interference from their own flight noise.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What makes owl flight nearly silent?",
+        "answer": "Serrated wing feathers",
+        "distractors": ["Hollow bones", "Slow wingbeats", "Soft downy coat"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which bird has comb-like feather serrations for silent flight?",
+        "answer": "Owl",
+        "distractors": ["Hawk", "Eagle", "Heron"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Owls fly silently due to comb-like serrations on their wing feathers.",
+        "answer": "True",
+        "distractors": ["False", "Only barn owls", "Only in still air"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Owls break up wing turbulence using ___ on their feathers.",
+        "answer": "serrations",
+        "distractors": ["oil", "hooks", "barbs"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Journal of Experimental Biology — owl feather acoustics",
+    "sourceUrl": "https://journals.biologists.com/jeb",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Great grey owl gliding silently through a snowy forest at night, close-up on serrated wing feathers, pixel art in muted greys and white",
+    "tags": ["owls", "flight", "feathers", "adaptations", "Strigiformes", "silent"]
+  },
+  {
+    "id": "animals-owls-rotating-head",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "adaptations",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "adaptations",
+    "categoryL3": "owls",
+    "statement": "Owls can rotate their heads up to 270 degrees because they have 14 cervical vertebrae — twice as many as humans — and blood-pooling reservoirs that keep brain blood supply intact during rotation.",
+    "quizQuestion": "How far can an owl rotate its head?",
+    "correctAnswer": "270 degrees",
+    "distractors": [
+      "180 degrees",
+      "360 degrees",
+      "90 degrees",
+      "240 degrees",
+      "200 degrees",
+      "320 degrees",
+      "150 degrees",
+      "310 degrees"
+    ],
+    "acceptableAnswers": [
+      "270 degrees",
+      "270°",
+      "three-quarters of a full turn"
+    ],
+    "explanation": "Owls cannot move their eyes — their tubular eyes are fixed in their sockets. To compensate, evolution gave them 14 cervical vertebrae (humans have 7) and special blood-pooling reservoirs near the base of the skull. These reservoirs fill with blood when neck rotation cuts off circulation, preventing brain damage. The result: a nearly 270-degree head rotation in either direction.",
+    "wowFactor": "Owls technically can't roll their eyes — their eyes are tubes locked in their skulls. That's why they evolved a neck that practically unscrews their own head.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How far can an owl rotate its head?",
+        "answer": "270 degrees",
+        "distractors": ["180 degrees", "360 degrees", "90 degrees"]
+      },
+      {
+        "type": "reverse",
+        "question": "How many cervical vertebrae does an owl have?",
+        "answer": "14",
+        "distractors": ["7", "10", "18"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Owls can rotate their heads a full 360 degrees.",
+        "answer": "False",
+        "distractors": ["True", "Only great horned owls", "Only barn owls"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Owls have ___ cervical vertebrae, twice as many as humans.",
+        "answer": "14",
+        "distractors": ["7", "10", "21"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Science — Owl neck anatomy study, Johns Hopkins",
+    "sourceUrl": "https://www.science.org",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Cartoon owl twisting its head nearly backwards with wide disc-face staring forward, pixel art in warm browns and amber",
+    "tags": ["owls", "neck", "vertebrae", "anatomy", "Strigiformes", "adaptations"]
+  },
+  {
+    "id": "animals-owls-nocturnal-hearing",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "senses",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "senses",
+    "categoryL3": "owls",
+    "statement": "Many owls have asymmetrically positioned ears — one higher than the other — allowing them to pinpoint prey in three dimensions using sound alone, even in total darkness.",
+    "quizQuestion": "Why do many owls have asymmetric ears?",
+    "correctAnswer": "3D sound location",
+    "distractors": [
+      "Better balance",
+      "Filtering wind noise",
+      "Regulating body heat",
+      "Detecting ultrasound",
+      "Sensing vibration",
+      "Amplifying distant calls",
+      "Waterproofing",
+      "Attracting mates"
+    ],
+    "acceptableAnswers": [
+      "3D sound location",
+      "To locate prey in 3D",
+      "pinpoint prey by sound",
+      "vertical sound detection"
+    ],
+    "explanation": "The barn owl is the classic example: its left ear points slightly downward, its right slightly upward. Sound reaches each ear at fractionally different times, giving the owl vertical as well as horizontal positional data. The result is a 3D acoustic map so precise that barn owls can catch mice in a completely dark room with no visual cues at all.",
+    "wowFactor": "In lab tests, barn owls caught live mice in a pitch-black room with zero light — guided entirely by hearing. Their sound-targeting is as accurate as a human's best GPS.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why do many owls have asymmetric ears?",
+        "answer": "3D sound location",
+        "distractors": ["Better balance", "Filtering wind noise", "Regulating body heat"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which owl can catch prey in total darkness by hearing alone?",
+        "answer": "Barn owl",
+        "distractors": ["Great horned owl", "Snowy owl", "Burrowing owl"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Asymmetric owl ears allow vertical as well as horizontal sound detection.",
+        "answer": "True",
+        "distractors": ["False", "Only in barn owls", "Only in complete darkness"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Owls with asymmetric ears can locate prey using ___ alone.",
+        "answer": "sound",
+        "distractors": ["smell", "vibration", "magnetism"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Animal Behaviour — barn owl auditory neuroscience",
+    "sourceUrl": "https://www.journals.elsevier.com/animal-behaviour",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Barn owl face-on showing offset ear tufts, concave facial disc funneling sound, pixel art in cream and burnt orange",
+    "tags": ["owls", "hearing", "barn owl", "senses", "nocturnal", "Strigiformes"]
+  },
+  {
+    "id": "animals-ants-supercolony",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "social behavior",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "social_behavior",
+    "categoryL3": "ants",
+    "statement": "The Argentine ant has formed a single supercolony stretching 3,700 miles along Europe's Mediterranean coast — the largest cooperative society ever recorded on Earth.",
+    "quizQuestion": "Which ant species formed a 3,700-mile supercolony?",
+    "correctAnswer": "Argentine ant",
+    "distractors": [
+      "Fire ant",
+      "Leafcutter ant",
+      "Army ant",
+      "Carpenter ant",
+      "Bullet ant",
+      "Weaver ant",
+      "Pharaoh ant",
+      "Odorous house ant"
+    ],
+    "acceptableAnswers": [
+      "Argentine ant",
+      "Linepithema humile"
+    ],
+    "explanation": "Linepithema humile, native to South America, was accidentally introduced to Europe. Without the genetic diversity that triggers inter-colony aggression at home, the introduced ants recognize each other as nestmates across vast distances. Workers from Barcelona and workers from Italy will cooperate rather than fight. The result: a supercolony of billions spanning the entire Mediterranean coast, the largest known cooperative animal society.",
+    "wowFactor": "Take an ant from Spain and drop it in Italy — it will be accepted as a nestmate. The entire Mediterranean coast is functionally one ant city of trillions.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which ant species formed a 3,700-mile supercolony?",
+        "answer": "Argentine ant",
+        "distractors": ["Fire ant", "Leafcutter ant", "Army ant"]
+      },
+      {
+        "type": "reverse",
+        "question": "Where is the world's largest ant supercolony located?",
+        "answer": "Mediterranean coast",
+        "distractors": ["Amazon basin", "Sub-Saharan Africa", "Southeast Asia"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Argentine ants from different European countries recognize each other as nestmates.",
+        "answer": "True",
+        "distractors": ["False", "Only in summer", "Only queen ants do"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Argentine ant supercolony stretches ___ miles along Europe's coast.",
+        "answer": "3,700",
+        "distractors": ["500", "1,000", "10,000"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Proceedings of the National Academy of Sciences — Argentine ant supercolony",
+    "sourceUrl": "https://www.pnas.org",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Stylized map of Europe with a glowing ant trail stretching across the Mediterranean coast, pixel art in earthy reds and yellows",
+    "tags": ["ants", "supercolony", "Argentine ant", "Formicidae", "social behavior", "invasive species"]
+  },
+  {
+    "id": "animals-ants-strength",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "physiology",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "physiology",
+    "categoryL3": "ants",
+    "statement": "Leafcutter ants can carry objects up to 50 times their own body weight — equivalent to a human carrying a car — using their saw-like mandibles.",
+    "quizQuestion": "How much can a leafcutter ant carry relative to its weight?",
+    "correctAnswer": "50 times its weight",
+    "distractors": [
+      "5 times its weight",
+      "10 times its weight",
+      "20 times its weight",
+      "100 times its weight",
+      "Equal to its weight",
+      "Twice its weight",
+      "30 times its weight",
+      "3 times its weight"
+    ],
+    "acceptableAnswers": [
+      "50 times its weight",
+      "50x body weight",
+      "up to 50 times"
+    ],
+    "explanation": "Leafcutter ants (Atta and Acromyrmex) slice sections of leaves and carry them overhead back to their underground fungus gardens. Their mandibles act as scissors and grips simultaneously. The ants are proportionally the strongest animals on Earth relative to body weight — their muscles occupy a larger fraction of their body than those of any vertebrate.",
+    "wowFactor": "If a leafcutter ant were human-sized, it could carry a Toyota Camry overhead while jogging — and do it for hours without stopping.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How much can a leafcutter ant carry relative to its weight?",
+        "answer": "50 times its weight",
+        "distractors": ["10 times its weight", "100 times its weight", "Twice its weight"]
+      },
+      {
+        "type": "reverse",
+        "question": "What do leafcutter ants use as food in their underground gardens?",
+        "answer": "Fungus",
+        "distractors": ["Leaves directly", "Honeydew", "Aphid secretions"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Leafcutter ants eat the leaves they carry.",
+        "answer": "False",
+        "distractors": ["True", "Sometimes", "Only in dry seasons"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Leafcutter ants grow ___ in their underground chambers as food.",
+        "answer": "fungus",
+        "distractors": ["grain", "moss", "roots"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Journal of Biomechanics — insect load carrying",
+    "sourceUrl": "https://www.journals.elsevier.com/journal-of-biomechanics",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Leafcutter ant holding a green leaf fragment five times its body size overhead on a jungle floor, pixel art in vivid greens and browns",
+    "tags": ["ants", "leafcutter", "strength", "Formicidae", "physiology", "mandibles"]
+  },
+  {
+    "id": "animals-ants-zombie-fungus",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "parasites",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "parasites",
+    "categoryL3": "ants",
+    "statement": "Ophiocordyceps fungi infect ants, hijack their nervous systems, force them to climb to an optimal height, then kill them — sprouting spores from the dead ant's head.",
+    "quizQuestion": "What parasite turns ants into zombie climbers?",
+    "correctAnswer": "Ophiocordyceps fungus",
+    "distractors": [
+      "Toxoplasma gondii",
+      "Leucochloridium paradoxum",
+      "Hairworm parasite",
+      "Sacculina barnacle",
+      "Jewel wasp venom",
+      "Ribeiroia trematode",
+      "Acanthocephala worm",
+      "Lancet liver fluke"
+    ],
+    "acceptableAnswers": [
+      "Ophiocordyceps fungus",
+      "zombie-ant fungus",
+      "Ophiocordyceps"
+    ],
+    "explanation": "Ophiocordyceps unilateralis spores land on carpenter ants and penetrate their exoskeleton. The fungus releases chemicals that co-opt the ant's muscle control — not brain control. The ant climbs to exactly 25 cm above the forest floor (optimal humidity and temperature for spore dispersal), bites a leaf vein with a death grip, and dies. The fungus then erupts from the back of the ant's head, raining spores onto ants below.",
+    "wowFactor": "The fungus doesn't even infect the brain — it controls muscles directly. The ant's brain watches helplessly as its body walks to its own execution.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What parasite turns ants into zombie climbers?",
+        "answer": "Ophiocordyceps fungus",
+        "distractors": ["Toxoplasma gondii", "Hairworm parasite", "Jewel wasp venom"]
+      },
+      {
+        "type": "reverse",
+        "question": "Where does Ophiocordyceps fungus sprout from a killed ant?",
+        "answer": "The ant's head",
+        "distractors": ["The ant's abdomen", "The ant's thorax", "The ant's leg joints"]
+      },
+      {
+        "type": "truefalse",
+        "question": "The zombie-ant fungus directly infects and controls the ant's brain.",
+        "answer": "False",
+        "distractors": ["True", "It infects both brain and muscles", "Only queen ants' brains"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ophiocordyceps fungi control ant muscles and force them to climb before ___ them.",
+        "answer": "killing",
+        "distractors": ["eating", "reproducing inside", "expelling"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "PLOS ONE — Ophiocordyceps unilateralis zombie-ant behavior",
+    "sourceUrl": "https://journals.plos.org/plosone",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Horror-adjacent biological content; appropriate for teen+",
+    "visualDescription": "Carpenter ant mid-climb on a jungle leaf with orange fungal stalk erupting from its neck, pixel art in sickly greens and dark amber",
+    "tags": ["ants", "parasite", "Ophiocordyceps", "zombie", "fungus", "Formicidae", "horror"]
+  },
+  {
+    "id": "animals-horse-domestication",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "domestication",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "domestication",
+    "categoryL3": "equids",
+    "statement": "Horses were first domesticated around 3500 BCE on the Eurasian steppes, transforming warfare, trade, and human migration across the ancient world.",
+    "quizQuestion": "When were horses first domesticated by humans?",
+    "correctAnswer": "Around 3500 BCE",
+    "distractors": [
+      "Around 1000 BCE",
+      "Around 8000 BCE",
+      "Around 500 BCE",
+      "Around 10000 BCE",
+      "Around 2000 BCE",
+      "Around 5000 BCE",
+      "Around 6000 BCE",
+      "Around 1500 BCE"
+    ],
+    "acceptableAnswers": [
+      "Around 3500 BCE",
+      "3500 BCE",
+      "approximately 3500 BC"
+    ],
+    "explanation": "Archaeological evidence from the Botai culture in modern Kazakhstan shows domesticated horses around 3500 BCE — including bit wear on teeth and pottery with horse milk residues. Before horses, long-distance travel was limited to foot or ox-drawn carts. Horse domestication accelerated trade routes, enabled mounted warfare, and allowed human cultures to spread across continents at unprecedented speed.",
+    "wowFactor": "Before the horse, a day's travel meant about 20 miles. A mounted rider could cover 60-100 miles. The horse didn't just change war — it shrank the world.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "When were horses first domesticated by humans?",
+        "answer": "Around 3500 BCE",
+        "distractors": ["Around 1000 BCE", "Around 8000 BCE", "Around 500 BCE"]
+      },
+      {
+        "type": "reverse",
+        "question": "Where were horses first domesticated?",
+        "answer": "Eurasian steppes",
+        "distractors": ["Nile Valley", "Mesopotamia", "Chinese plains"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Horses were domesticated before dogs.",
+        "answer": "False",
+        "distractors": ["True", "At the same time", "In some regions, before"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Botai culture in modern ___ left the earliest evidence of horse domestication.",
+        "answer": "Kazakhstan",
+        "distractors": ["Mongolia", "Ukraine", "Iran"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Science — Botai horse domestication evidence",
+    "sourceUrl": "https://www.science.org",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Steppe warrior riding a stocky proto-horse across windswept grasslands at sunset, pixel art in warm ochres and browns",
+    "tags": ["horse", "domestication", "Equus", "Botai", "Eurasian steppe", "ancient history"]
+  },
+  {
+    "id": "animals-horse-sleep",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "physiology",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "physiology",
+    "categoryL3": "equids",
+    "statement": "Horses can sleep standing up using a stay apparatus — a system of interlocking tendons and ligaments that locks their legs in place without muscle effort.",
+    "quizQuestion": "How do horses sleep without falling over?",
+    "correctAnswer": "A leg-locking stay apparatus",
+    "distractors": [
+      "By leaning on each other",
+      "Very shallow sleep cycles",
+      "Extra-wide hooves",
+      "A low center of gravity",
+      "Weighted tail for balance",
+      "Rotating brain sleep",
+      "Leg muscles that never relax",
+      "Special ankle joints"
+    ],
+    "acceptableAnswers": [
+      "A leg-locking stay apparatus",
+      "stay apparatus",
+      "interlocking tendons and ligaments"
+    ],
+    "explanation": "The equine stay apparatus is a passive mechanical system of tendons and ligaments that allows a horse to lock its knees and hip joints without sustained muscle contraction. This lets a horse doze standing while expending almost no energy. However, horses still require REM sleep, which only happens lying down — so they do lie down briefly for deep sleep each day.",
+    "wowFactor": "Horses can literally fall asleep standing in a field and their legs hold them up mechanically — like a kickstand made of bone and tendons. No muscle needed.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How do horses sleep without falling over?",
+        "answer": "A leg-locking stay apparatus",
+        "distractors": ["By leaning on each other", "Very shallow sleep cycles", "Extra-wide hooves"]
+      },
+      {
+        "type": "reverse",
+        "question": "For which sleep stage must horses lie down?",
+        "answer": "REM sleep",
+        "distractors": ["Light sleep", "All sleep stages", "No sleep stage"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Horses never need to lie down because they sleep standing up.",
+        "answer": "False",
+        "distractors": ["True", "Only foals need to lie down", "Only in cold weather"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The horse's ___ apparatus locks leg joints using tendons rather than muscles.",
+        "answer": "stay",
+        "distractors": ["lock", "brace", "rest"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Equine Veterinary Journal — equine stay apparatus",
+    "sourceUrl": "https://onlinelibrary.wiley.com/journal/20423306",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Horse dozing in a sunny paddock, legs locked straight, eyes half-closed, pixel art in warm chestnuts and golden yellows",
+    "tags": ["horse", "sleep", "stay apparatus", "Equus", "physiology", "anatomy"]
+  },
+  {
+    "id": "animals-horse-hooves",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "anatomy",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "anatomy",
+    "categoryL3": "equids",
+    "statement": "A horse's hoof is actually a single highly modified toe — horses walk on the tip of their third finger, their other toes having been lost over 55 million years of evolution.",
+    "quizQuestion": "On how many toes does a modern horse walk?",
+    "correctAnswer": "One toe",
+    "distractors": [
+      "Two toes",
+      "Three toes",
+      "Four toes",
+      "Five toes",
+      "Six toes",
+      "No toes — on a pad",
+      "Half a toe",
+      "A fused toe cluster"
+    ],
+    "acceptableAnswers": [
+      "One toe",
+      "1 toe",
+      "a single toe",
+      "one"
+    ],
+    "explanation": "The ancestor of the horse, Eohippus (Hyracotherium), had four toes on its front feet and three on its back. Over 55 million years, as horses evolved for speed on open plains, the side toes gradually reduced and the central toe enlarged into the modern hoof. Today's horses walk entirely on the tip of what is anatomically the third finger/toe, encased in a keratinous hoof wall.",
+    "wowFactor": "Every time a horse gallops at full speed, it's essentially doing it on one giant fingernail. The hoof wall is the same material as your fingernails — just much, much thicker.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "On how many toes does a modern horse walk?",
+        "answer": "One toe",
+        "distractors": ["Two toes", "Three toes", "Four toes"]
+      },
+      {
+        "type": "reverse",
+        "question": "How many toes did the early horse ancestor Eohippus have on its front feet?",
+        "answer": "Four",
+        "distractors": ["Three", "Two", "One"]
+      },
+      {
+        "type": "truefalse",
+        "question": "A horse's hoof is made of the same material as human fingernails.",
+        "answer": "True",
+        "distractors": ["False", "Only partially", "Different protein structure"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Horses evolved over ___ million years to walk on a single toe.",
+        "answer": "55",
+        "distractors": ["10", "100", "200"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Natural History Museum — horse evolution",
+    "sourceUrl": "https://www.nhm.ac.uk",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Side-by-side evolution chart from multi-toed Eohippus to single-hoofed modern horse, pixel art silhouettes in sepia tones",
+    "tags": ["horse", "hoof", "evolution", "Equus", "Eohippus", "anatomy", "toes"]
+  },
+  {
+    "id": "animals-frogs-metamorphosis",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "life cycle",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "life_cycle",
+    "categoryL3": "frogs",
+    "statement": "During frog metamorphosis, the tadpole's tail is not shed but fully absorbed by the body — broken down by enzymes and recycled as building material for the frog's legs.",
+    "quizQuestion": "What happens to a tadpole's tail during metamorphosis?",
+    "correctAnswer": "It is absorbed by the body",
+    "distractors": [
+      "It falls off and rots",
+      "It is eaten by the frog",
+      "It dissolves in water",
+      "It becomes the spine",
+      "It shrinks and detaches",
+      "It transforms into lungs",
+      "It is expelled as waste",
+      "It fuses with the legs"
+    ],
+    "acceptableAnswers": [
+      "It is absorbed by the body",
+      "Absorbed into the body",
+      "reabsorbed",
+      "recycled into legs"
+    ],
+    "explanation": "Amphibian metamorphosis is triggered by thyroid hormones. The tail cells undergo programmed cell death (apoptosis), and macrophages break down the tissue. The resulting nutrients — proteins, fats, minerals — are transported through the bloodstream and reused to build the adult frog's legs and other structures. Nothing is wasted. The entire transformation from aquatic tadpole to terrestrial frog takes 2-4 weeks in most species.",
+    "wowFactor": "The tadpole essentially self-digests its own tail and uses the recycled nutrients to build brand new legs. It's full-body renovation from the inside out.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What happens to a tadpole's tail during metamorphosis?",
+        "answer": "It is absorbed by the body",
+        "distractors": ["It falls off and rots", "It becomes the spine", "It is eaten by the frog"]
+      },
+      {
+        "type": "reverse",
+        "question": "What hormones trigger frog metamorphosis?",
+        "answer": "Thyroid hormones",
+        "distractors": ["Adrenaline", "Growth hormone", "Estrogen"]
+      },
+      {
+        "type": "truefalse",
+        "question": "A tadpole's tail breaks off and is left behind when it becomes a frog.",
+        "answer": "False",
+        "distractors": ["True", "Only in some species", "Only tree frogs shed tails"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Tail reabsorption during metamorphosis is driven by programmed cell death called ___.",
+        "answer": "apoptosis",
+        "distractors": ["mitosis", "necrosis", "meiosis"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Developmental Biology — amphibian metamorphosis",
+    "sourceUrl": "https://www.journals.elsevier.com/developmental-biology",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Four-stage frog development from egg to frog with tail-absorption stage highlighted, pixel art in swampy greens and blues",
+    "tags": ["frogs", "metamorphosis", "tadpole", "Anura", "life cycle", "apoptosis"]
+  },
+  {
+    "id": "animals-frogs-glass-frog",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "adaptations",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "adaptations",
+    "categoryL3": "frogs",
+    "statement": "Glass frogs have transparent undersides through which their beating hearts, digestive organs, and developing eggs are fully visible to the naked eye.",
+    "quizQuestion": "What is visible through a glass frog's belly?",
+    "correctAnswer": "Internal organs",
+    "distractors": [
+      "Skeleton only",
+      "Blood vessels only",
+      "Spine and ribs",
+      "Eggs only",
+      "Nothing — it is reflective",
+      "Muscle fibers",
+      "Lung sacs",
+      "Fat reserves"
+    ],
+    "acceptableAnswers": [
+      "Internal organs",
+      "organs",
+      "heart and organs",
+      "beating heart and organs"
+    ],
+    "explanation": "Centrolenidae — the glass frogs of Central and South America — have lime-green backs but translucent or transparent ventral (belly) skin. The lack of pigment in the skin and muscle allows you to observe the frog's beating heart, liver, stomach, and even eggs in females. Scientists believe this transparency may help them camouflage against leaves when viewed from below, as their organs align with light patterns.",
+    "wowFactor": "You can watch a glass frog's heart beating through its skin with your naked eye. It looks like a tiny living anatomy model made of green glass.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is visible through a glass frog's belly?",
+        "answer": "Internal organs",
+        "distractors": ["Skeleton only", "Blood vessels only", "Spine and ribs"]
+      },
+      {
+        "type": "reverse",
+        "question": "What frog family has transparent belly skin?",
+        "answer": "Centrolenidae",
+        "distractors": ["Ranidae", "Hylidae", "Microhylidae"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Glass frogs have transparent skin on both their backs and bellies.",
+        "answer": "False",
+        "distractors": ["True", "Only juvenile glass frogs", "Only during breeding season"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Glass frogs are found in ___ and South America.",
+        "answer": "Central",
+        "distractors": ["North", "Sub-Saharan", "Southeast Asian"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Herpetologica — Centrolenidae transparency",
+    "sourceUrl": "https://www.herpetologica.org",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Tiny green glass frog perched on a leaf, transparent belly glowing with visible heart and red organs, pixel art in emerald and translucent pinks",
+    "tags": ["frogs", "glass frog", "Centrolenidae", "transparency", "Anura", "adaptations"]
+  },
+  {
+    "id": "animals-frogs-freeze",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "survival",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "survival",
+    "categoryL3": "frogs",
+    "statement": "Wood frogs survive winter by freezing solid — their hearts stop, blood crystallizes, and breathing ceases for months, yet they fully revive when thawed in spring.",
+    "quizQuestion": "How does the wood frog survive winter?",
+    "correctAnswer": "By freezing solid",
+    "distractors": [
+      "By burrowing deep underground",
+      "By entering warm caves",
+      "By slowing metabolism only",
+      "By producing antifreeze proteins",
+      "By migrating south",
+      "By going into water hibernation",
+      "By forming mucus cocoons",
+      "By clustering with other frogs"
+    ],
+    "acceptableAnswers": [
+      "By freezing solid",
+      "Freezes solid",
+      "freezing"
+    ],
+    "explanation": "Rana sylvatica (wood frog) can tolerate freezing of up to 65% of its body water. Before winter, the frog's liver rapidly converts glycogen to glucose and urea, flooding tissues with cryoprotectants. Ice forms between cells but not inside them. Heart stops, breathing stops, brain activity ceases. When spring arrives and temperatures rise, the frog thaws from the inside out and hops away within hours.",
+    "wowFactor": "A wood frog frozen solid in January — no heartbeat, no brainwaves, ice crystals in its blood — will be hopping around a pond by March. Nature built a resurrection machine.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How does the wood frog survive winter?",
+        "answer": "By freezing solid",
+        "distractors": ["By burrowing deep underground", "By slowing metabolism only", "By migrating south"]
+      },
+      {
+        "type": "reverse",
+        "question": "What chemical floods wood frog tissues to prevent cell damage when frozen?",
+        "answer": "Glucose",
+        "distractors": ["Antifreeze protein", "Uric acid", "Glycerol"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Ice forms inside the cells of frozen wood frogs.",
+        "answer": "False",
+        "distractors": ["True", "Only in muscle cells", "Only in the brain cells"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Up to ___% of a wood frog's body water can freeze in winter.",
+        "answer": "65",
+        "distractors": ["10", "30", "90"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Journal of Experimental Zoology — wood frog freeze tolerance",
+    "sourceUrl": "https://onlinelibrary.wiley.com/journal/1097010x",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Wood frog encased in leaf litter ice in winter forest, heart stopped, then same frog alive and thawing in spring sunlight, pixel art diptych in icy blues and warm greens",
+    "tags": ["frogs", "wood frog", "freeze tolerance", "hibernation", "Anura", "survival", "cryoprotection"]
+  },
+  {
+    "id": "animals-pigeon-homing",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "navigation",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "navigation",
+    "categoryL3": "pigeons",
+    "statement": "Homing pigeons can navigate back to their loft from over 1,000 miles away using Earth's magnetic field, the sun's position, and even infrasound landmarks.",
+    "quizQuestion": "What do homing pigeons use to navigate home?",
+    "correctAnswer": "Magnetic field and sun",
+    "distractors": [
+      "Smell only",
+      "Visual memory only",
+      "Star positions",
+      "Wind direction only",
+      "Familiar landmarks only",
+      "Electric fields",
+      "Barometric pressure",
+      "Moon phases"
+    ],
+    "acceptableAnswers": [
+      "Magnetic field and sun",
+      "Earth's magnetic field",
+      "sun position and magnetism",
+      "multiple navigation cues"
+    ],
+    "explanation": "Homing pigeons (Columba livia domestica) use a multi-cue navigation system. They detect Earth's magnetic field via magnetite crystals in their beaks and inner ears, use the sun as a compass (adjusting for time of day), and can detect infrasound — low-frequency sound waves below 20 Hz — that reflects off mountains and coastlines, giving them acoustic landmarks. Even blindfolded pigeons released far from home find their way back.",
+    "wowFactor": "Pigeons can hear sounds as low as 0.1 Hz — they can literally hear ocean waves and mountain ranges from hundreds of miles away, using the landscape as a bass guitar.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What do homing pigeons use to navigate home?",
+        "answer": "Magnetic field and sun",
+        "distractors": ["Smell only", "Visual memory only", "Star positions"]
+      },
+      {
+        "type": "reverse",
+        "question": "What mineral in pigeon beaks helps detect Earth's magnetic field?",
+        "answer": "Magnetite",
+        "distractors": ["Iron oxide", "Calcite", "Quartz"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Homing pigeons rely entirely on visual memory to navigate.",
+        "answer": "False",
+        "distractors": ["True", "Mostly true", "Only for short distances"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pigeons can detect ___, low-frequency sound that reflects off geographical features.",
+        "answer": "infrasound",
+        "distractors": ["ultrasound", "echolocation", "seismic waves"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Current Biology — pigeon navigation multi-cue study",
+    "sourceUrl": "https://www.cell.com/current-biology",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Homing pigeon in flight with magnetic field lines and sun compass overlaid, pixel art in steel blues and warm amber",
+    "tags": ["pigeon", "homing", "Columbidae", "navigation", "magnetic field", "infrasound"]
+  },
+  {
+    "id": "animals-pigeon-wartime",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "human relationship",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "human_relationship",
+    "categoryL3": "pigeons",
+    "statement": "Cher Ami, a homing pigeon in WWI, delivered a critical message saving 194 trapped soldiers despite being shot through the chest, losing a leg, and being nearly blinded.",
+    "quizQuestion": "What WWI pigeon saved 194 soldiers despite being shot?",
+    "correctAnswer": "Cher Ami",
+    "distractors": [
+      "Kaiser Bill",
+      "Mocker",
+      "Spike",
+      "Big Tom",
+      "John Silver",
+      "The Countess",
+      "Commando",
+      "Mary of Exeter"
+    ],
+    "acceptableAnswers": [
+      "Cher Ami",
+      "Cher-Ami"
+    ],
+    "explanation": "On October 3, 1918, the U.S. Army's 'Lost Battalion' was surrounded by German forces in the Argonne Forest, also taking friendly fire from American troops who didn't know their position. Two carrier pigeons were shot down. Cher Ami, the last pigeon, was released with the coordinates. She was shot through the breast, lost an eye, and had her leg dangling by a tendon — but flew 25 miles in 25 minutes to deliver the message. The friendly fire stopped. She received the Croix de Guerre medal.",
+    "wowFactor": "Cher Ami flew 25 miles with a bullet hole through her chest, her leg hanging by a thread, and one eye gone — and still delivered the message in time. She was literally taxidermied and put in the Smithsonian.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What WWI pigeon saved 194 soldiers despite being shot?",
+        "answer": "Cher Ami",
+        "distractors": ["Mocker", "Mary of Exeter", "Commando"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which medal did Cher Ami receive for her WWI service?",
+        "answer": "Croix de Guerre",
+        "distractors": ["Medal of Honor", "Victoria Cross", "Iron Cross"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Cher Ami delivered her WWI message despite being shot through the chest.",
+        "answer": "True",
+        "distractors": ["False", "She was not wounded", "She was captured and escaped"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Cher Ami flew ___ miles in 25 minutes to deliver the life-saving message.",
+        "answer": "25",
+        "distractors": ["5", "100", "50"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Smithsonian National Museum of American History — Cher Ami",
+    "sourceUrl": "https://americanhistory.si.edu",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Heroic pigeon flying through smoke and explosions with a tiny message capsule on its remaining leg, pixel art in dramatic grey and red",
+    "tags": ["pigeon", "Cher Ami", "WWI", "Columbidae", "homing", "history", "hero"]
+  },
+  {
+    "id": "animals-pigeon-eyesight",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "senses",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "senses",
+    "categoryL3": "pigeons",
+    "statement": "Pigeons can see ultraviolet light and are among the few animals that can recognize themselves in a mirror, passing the mirror self-recognition test.",
+    "quizQuestion": "What unusual light can pigeons see that humans cannot?",
+    "correctAnswer": "Ultraviolet light",
+    "distractors": [
+      "Infrared light",
+      "X-ray light",
+      "Polarized light only",
+      "Radio waves",
+      "Gamma radiation",
+      "Microwave radiation",
+      "Bioluminescence only",
+      "Deep red spectrum"
+    ],
+    "acceptableAnswers": [
+      "Ultraviolet light",
+      "UV light",
+      "ultraviolet"
+    ],
+    "explanation": "Pigeons possess four types of color receptors (humans have three) including one sensitive to UV wavelengths. This means pigeons see colors invisible to humans — feather patterns that look plain grey to us may be vivid UV displays to other pigeons. Additionally, pigeons have passed the mirror self-recognition test (MST), a benchmark of self-awareness previously thought limited to great apes, elephants, and dolphins.",
+    "wowFactor": "What looks like a grey pigeon to you is covered in vivid UV patterns that only other pigeons can see. The bird you ignore on the sidewalk is strutting around in a UV neon suit.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What unusual light can pigeons see that humans cannot?",
+        "answer": "Ultraviolet light",
+        "distractors": ["Infrared light", "Polarized light only", "Deep red spectrum"]
+      },
+      {
+        "type": "reverse",
+        "question": "How many color receptors do pigeons have compared to humans' three?",
+        "answer": "Four",
+        "distractors": ["Two", "Five", "Six"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Pigeons have passed the mirror self-recognition test.",
+        "answer": "True",
+        "distractors": ["False", "Only trained pigeons can", "Only in laboratory conditions"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pigeons have ___ types of color receptors, one more than humans.",
+        "answer": "four",
+        "distractors": ["three", "five", "two"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Journal of Experimental Psychology — pigeon self-recognition",
+    "sourceUrl": "https://www.apa.org/pubs/journals/xan",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pigeon with UV-spectrum overlay showing hidden iridescent feather patterns, pixel art in electric blues and purples against normal grey",
+    "tags": ["pigeon", "UV vision", "Columbidae", "senses", "self-recognition", "color"]
+  },
+  {
+    "id": "animals-shark-cartilage",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "anatomy",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "anatomy",
+    "categoryL3": "sharks",
+    "statement": "Sharks have no bones — their skeletons are made entirely of cartilage, which is lighter and more flexible than bone, allowing them to make sharper turns and swim more efficiently.",
+    "quizQuestion": "What material makes up a shark's entire skeleton?",
+    "correctAnswer": "Cartilage",
+    "distractors": [
+      "Bone",
+      "Dense muscle",
+      "Calcified scales",
+      "Fibrous ligament",
+      "Silica",
+      "Keratin",
+      "Ivory",
+      "Calcium plates"
+    ],
+    "acceptableAnswers": [
+      "Cartilage",
+      "cartilage only",
+      "entirely cartilage"
+    ],
+    "explanation": "Sharks belong to the class Chondrichthyes (cartilaginous fish) — their entire skeleton, including jaws, is cartilage rather than bone. Cartilage is about half the density of bone, making sharks lighter and more buoyant. However, cartilage rarely fossilizes, which is why most shark fossils consist of only teeth. Sharks have been replacing their teeth continuously for 450 million years — a single shark may produce over 30,000 teeth in its lifetime.",
+    "wowFactor": "Sharks almost never fossilize because cartilage dissolves. The entire 450-million-year history of sharks is written mostly in teeth. Tiny, terrifying teeth.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What material makes up a shark's entire skeleton?",
+        "answer": "Cartilage",
+        "distractors": ["Bone", "Dense muscle", "Calcium plates"]
+      },
+      {
+        "type": "reverse",
+        "question": "Why do shark skeletons rarely fossilize?",
+        "answer": "Cartilage dissolves",
+        "distractors": ["They sink too deep", "They are eaten by scavengers", "Bone is needed for preservation"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Sharks are classified as bony fish alongside tuna and salmon.",
+        "answer": "False",
+        "distractors": ["True", "Only some shark species", "Ancient sharks had bones"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Sharks belong to the class ___, meaning cartilaginous fish.",
+        "answer": "Chondrichthyes",
+        "distractors": ["Osteichthyes", "Actinopterygii", "Placodermi"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Smithsonian Ocean — shark anatomy",
+    "sourceUrl": "https://ocean.si.edu",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Great white shark with x-ray overlay showing cartilage skeleton glowing blue-white against dark ocean water, pixel art",
+    "tags": ["shark", "cartilage", "Chondrichthyes", "anatomy", "skeleton", "fossils"]
+  },
+  {
+    "id": "animals-shark-electroreception",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "senses",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "senses",
+    "categoryL3": "sharks",
+    "statement": "Sharks detect prey using the ampullae of Lorenzini — gel-filled pores on their snouts that sense the faint electrical fields generated by the muscle contractions of living animals.",
+    "quizQuestion": "What organ lets sharks detect electrical fields from prey?",
+    "correctAnswer": "Ampullae of Lorenzini",
+    "distractors": [
+      "Lateral line only",
+      "Olfactory bulb",
+      "Electroreceptor fins",
+      "Dermal denticles",
+      "Jacobson's organ",
+      "Barbels",
+      "Tympanic membrane",
+      "Placoid scales"
+    ],
+    "acceptableAnswers": [
+      "Ampullae of Lorenzini",
+      "ampullae",
+      "electroreceptors in the snout"
+    ],
+    "explanation": "The ampullae of Lorenzini are jelly-filled canals opening as small pores around a shark's snout and head. The jelly conducts electrical impulses from the environment to sensory cells. Every living animal generates a weak bioelectric field from muscle and nerve activity — a shark can detect fields as weak as 5 billionths of a volt per centimeter. A buried flatfish that stops moving and holds perfectly still can still be found by this sense alone.",
+    "wowFactor": "A shark can detect the electrical field of a flatfish's heartbeat while the fish is completely buried under sand, perfectly still, not moving a muscle. There is no hiding from a shark.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What organ lets sharks detect electrical fields from prey?",
+        "answer": "Ampullae of Lorenzini",
+        "distractors": ["Lateral line only", "Olfactory bulb", "Jacobson's organ"]
+      },
+      {
+        "type": "reverse",
+        "question": "What does the shark's electroreception system detect in living animals?",
+        "answer": "Bioelectric fields",
+        "distractors": ["Body heat", "Scent molecules", "Pressure waves"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Sharks can detect a buried fish's heartbeat using electrical sense.",
+        "answer": "True",
+        "distractors": ["False", "Only in salt water", "Only great white sharks can"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ampullae of Lorenzini are filled with conductive ___ that transmits electrical signals.",
+        "answer": "jelly",
+        "distractors": ["oil", "blood", "saline"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Marine Biology — elasmobranch electroreception",
+    "sourceUrl": "https://link.springer.com/journal/227",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Close-up of shark snout with glowing ampullae pores detecting electric field lines from a buried fish, pixel art in dark teal and electric yellow",
+    "tags": ["shark", "ampullae of Lorenzini", "electroreception", "senses", "hunting", "predator"]
+  },
+  {
+    "id": "animals-shark-teeth",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "anatomy",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "anatomy",
+    "categoryL3": "sharks",
+    "statement": "Sharks grow multiple rows of replacement teeth and shed and replace them throughout their lives — producing up to 30,000 teeth in a single shark's lifetime.",
+    "quizQuestion": "How many teeth can one shark produce in its lifetime?",
+    "correctAnswer": "Up to 30,000",
+    "distractors": [
+      "About 100",
+      "About 1,000",
+      "About 300",
+      "About 50,000",
+      "About 5,000",
+      "About 200",
+      "About 10",
+      "About 500"
+    ],
+    "acceptableAnswers": [
+      "Up to 30,000",
+      "30,000",
+      "tens of thousands"
+    ],
+    "explanation": "Unlike humans who get two sets of teeth, sharks have a conveyor belt of teeth in multiple rows. New teeth are continuously grown in rows behind the active front teeth. When a front tooth is lost or worn, the next row moves forward to replace it within 8-10 days. Over a lifespan of 20-30+ years, a single shark can go through 30,000 or more individual teeth. Shark teeth are the most common vertebrate fossil because they mineralize readily.",
+    "wowFactor": "If you had shark teeth, you'd get a brand new set every two weeks for life. No dentists. No cavities that matter. Just infinite replacement teeth on demand.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many teeth can one shark produce in its lifetime?",
+        "answer": "Up to 30,000",
+        "distractors": ["About 100", "About 5,000", "About 1,000"]
+      },
+      {
+        "type": "reverse",
+        "question": "How quickly does a shark replace a lost front tooth?",
+        "answer": "Within 8-10 days",
+        "distractors": ["Within a year", "Within a month", "Within 24 hours"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Shark teeth are among the most common vertebrate fossils found worldwide.",
+        "answer": "True",
+        "distractors": ["False", "Only Megalodon teeth fossilize", "Shark teeth are very rare fossils"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Sharks replace lost teeth within ___ to ___ days.",
+        "answer": "8-10",
+        "distractors": ["1-2", "30-60", "365"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Florida Museum of Natural History — shark teeth",
+    "sourceUrl": "https://www.floridamuseum.ufl.edu",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Cross-section diagram of shark jaw showing five rows of teeth with arrows indicating forward movement, pixel art in white, grey, and red",
+    "tags": ["shark", "teeth", "polyphyodont", "anatomy", "fossils", "predator"]
+  },
+  {
+    "id": "animals-amphibians-double-life",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "classification",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "classification",
+    "categoryL3": "amphibians",
+    "statement": "The word 'amphibian' comes from the Greek 'amphi' (both) and 'bios' (life) — reflecting their life split between water and land across developmental stages.",
+    "quizQuestion": "What does the word 'amphibian' literally mean?",
+    "correctAnswer": "Both lives",
+    "distractors": [
+      "Wet creature",
+      "Cold blood",
+      "Dual breather",
+      "Water walker",
+      "Two homes",
+      "Land swimmer",
+      "Scale-free",
+      "Smooth skinned"
+    ],
+    "acceptableAnswers": [
+      "Both lives",
+      "double life",
+      "both life",
+      "living both lives"
+    ],
+    "explanation": "From Greek: amphi = both/double, bios = life. Amphibians (class Amphibia) include frogs, salamanders, and caecilians. They typically lay eggs in water, hatch as aquatic larvae breathing through gills, then metamorphose into air-breathing adults that can live on land. Many retain the ability to breathe through their moist skin (cutaneous respiration). The class emerged ~340 million years ago as vertebrates first colonized land.",
+    "wowFactor": "Amphibians were the first vertebrates to walk on land — every lizard, dinosaur, bird, and mammal that ever existed owes its land-living existence to a frog-like ancestor that first crawled out of the water 340 million years ago.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does the word 'amphibian' literally mean?",
+        "answer": "Both lives",
+        "distractors": ["Cold blood", "Dual breather", "Water walker"]
+      },
+      {
+        "type": "reverse",
+        "question": "What three groups make up the class Amphibia?",
+        "answer": "Frogs, salamanders, caecilians",
+        "distractors": ["Frogs, lizards, newts", "Frogs, turtles, snakes", "Newts, skinks, geckos"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Many amphibians can breathe through their skin.",
+        "answer": "True",
+        "distractors": ["False", "Only during larval stage", "Only aquatic species"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Amphibians first colonized land approximately ___ million years ago.",
+        "answer": "340",
+        "distractors": ["65", "500", "100"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Encyclopedia of Life — Amphibia",
+    "sourceUrl": "https://eol.org",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Split scene: aquatic tadpole on left in blue water, terrestrial frog on right on green land, joined by an evolutionary arrow, pixel art",
+    "tags": ["amphibians", "Amphibia", "etymology", "classification", "evolution", "double life"]
+  },
+  {
+    "id": "animals-amphibians-skin-threat",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "conservation",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "conservation",
+    "categoryL3": "amphibians",
+    "statement": "Amphibians are the most threatened vertebrate class on Earth — over 40% of species face extinction, largely due to a chytrid fungus that infects and destroys their permeable skin.",
+    "quizQuestion": "What percentage of amphibian species face extinction?",
+    "correctAnswer": "Over 40%",
+    "distractors": [
+      "About 5%",
+      "About 10%",
+      "About 20%",
+      "About 60%",
+      "About 80%",
+      "About 1%",
+      "About 30%",
+      "About 70%"
+    ],
+    "acceptableAnswers": [
+      "Over 40%",
+      "more than 40%",
+      "40 percent",
+      "approximately 40%"
+    ],
+    "explanation": "The chytrid fungus Batrachochytrium dendrobatidis (Bd) infects the keratin layers of amphibian skin, disrupting osmotic balance — amphibians absorb water and electrolytes through their skin, so skin damage is fatal. Bd has contributed to at least 90 amphibian species extinctions since the 1980s — more than any other pathogen has caused in recorded history. Climate change, habitat loss, and pollution compound the crisis.",
+    "wowFactor": "A single fungus — Bd — has already driven over 90 amphibian species to extinction. It's the most destructive pathogen in recorded vertebrate history. We are living through a mass extinction event in slow motion.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What percentage of amphibian species face extinction?",
+        "answer": "Over 40%",
+        "distractors": ["About 5%", "About 20%", "About 60%"]
+      },
+      {
+        "type": "reverse",
+        "question": "What fungus is driving global amphibian extinction?",
+        "answer": "Batrachochytrium dendrobatidis",
+        "distractors": ["Ophiocordyceps", "Aspergillus fumigatus", "Candida auris"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Amphibians are the most endangered vertebrate class on Earth.",
+        "answer": "True",
+        "distractors": ["False", "Fish are more threatened", "Reptiles face greater extinction risk"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Chytrid fungus kills amphibians by destroying their ___, through which they absorb water.",
+        "answer": "skin",
+        "distractors": ["gills", "lungs", "kidneys"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Science — global amphibian crisis and chytridiomycosis",
+    "sourceUrl": "https://www.science.org",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Colorful tree frog on a dying grey leaf, chytrid spores illustrated as small dark circles, pixel art in vivid green against muted decay",
+    "tags": ["amphibians", "extinction", "chytrid", "Bd", "conservation", "Amphibia"]
+  },
+  {
+    "id": "animals-amphibians-poison-dart",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "defense",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "defense",
+    "categoryL3": "amphibians",
+    "statement": "Poison dart frogs are not born poisonous — they acquire their toxins from eating mites and other arthropods in the wild; captive-bred frogs fed different diets are completely non-toxic.",
+    "quizQuestion": "How do poison dart frogs obtain their toxins?",
+    "correctAnswer": "By eating wild mites",
+    "distractors": [
+      "They produce toxins internally",
+      "From toxic plant secretions",
+      "Inherited from parents",
+      "From skin-contact bacteria",
+      "From symbiotic fungi",
+      "By absorbing soil compounds",
+      "From their frog mothers' milk",
+      "Through UV exposure"
+    ],
+    "acceptableAnswers": [
+      "By eating wild mites",
+      "From eating arthropods",
+      "diet of mites and arthropods",
+      "from their prey"
+    ],
+    "explanation": "Poison dart frogs (family Dendrobatidae) sequester alkaloid toxins from their prey — particularly oribatid mites, ants, and other arthropods that contain or biosynthesize alkaloids. The frogs concentrate these compounds in their skin glands. Indigenous hunters used the most toxic species (Phyllobates terribilis, the golden poison frog) to coat blowgun darts. Captive-bred frogs raised on fruit flies and lab food develop no toxins whatsoever.",
+    "wowFactor": "You could keep a golden poison frog — the most toxic vertebrate on Earth — as a pet, and it would be harmless, because captive food doesn't give it the chemicals to be toxic. The deadliness is borrowed.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How do poison dart frogs obtain their toxins?",
+        "answer": "By eating wild mites",
+        "distractors": ["They produce toxins internally", "Inherited from parents", "From toxic plant secretions"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which is the most toxic poison dart frog species?",
+        "answer": "Phyllobates terribilis",
+        "distractors": ["Dendrobates tinctorius", "Oophaga pumilio", "Ranitomeya amazonica"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Captive-bred poison dart frogs on fruit fly diets are non-toxic.",
+        "answer": "True",
+        "distractors": ["False", "Only after several generations", "Only males become non-toxic"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Poison dart frogs belong to the family ___.",
+        "answer": "Dendrobatidae",
+        "distractors": ["Ranidae", "Hylidae", "Bufonidae"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "PNAS — dietary origin of poison dart frog alkaloids",
+    "sourceUrl": "https://www.pnas.org",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Bright blue and yellow poison dart frog sitting next to an oribatid mite illustration, pixel art in electric blue, gold, and black",
+    "tags": ["amphibians", "poison dart frog", "Dendrobatidae", "toxins", "diet", "alkaloids", "defense"]
+  },
+  {
+    "id": "animals-mammals-warm-blood",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "classification",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "classification",
+    "categoryL3": "mammals",
+    "statement": "Mammals maintain a constant internal body temperature using metabolic heat — a process called endothermy that allows them to remain active in cold environments where reptiles become sluggish.",
+    "quizQuestion": "What process lets mammals maintain constant body temperature?",
+    "correctAnswer": "Endothermy",
+    "distractors": [
+      "Ectothermy",
+      "Heterothermy",
+      "Thermoconformity",
+      "Countercurrent exchange",
+      "Poikilothermy",
+      "Metabolic torpor",
+      "Solar basking",
+      "Conductance regulation"
+    ],
+    "acceptableAnswers": [
+      "Endothermy",
+      "endothermic metabolism",
+      "warm-bloodedness",
+      "internal heat production"
+    ],
+    "explanation": "Endothermy means generating body heat internally through metabolic processes. Mammals (and birds) do this at significant caloric cost — a mammal needs roughly 10x more food than a reptile of similar size. But the payoff is temperature independence: a snow leopard can hunt in -40°C while lizards in the same environment are immobilized. Endothermy also enables larger brains, sustained activity, and nocturnal lifestyles.",
+    "wowFactor": "A mammal burns 10 times more calories just staying warm than a reptile the same size. Your baseline metabolism is essentially an always-on furnace, and the price is eating constantly.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What process lets mammals maintain constant body temperature?",
+        "answer": "Endothermy",
+        "distractors": ["Ectothermy", "Heterothermy", "Poikilothermy"]
+      },
+      {
+        "type": "reverse",
+        "question": "How many times more food does an endotherm need than a same-sized reptile?",
+        "answer": "About 10 times",
+        "distractors": ["About twice", "About 100 times", "About the same amount"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Reptiles and mammals are both endothermic.",
+        "answer": "False",
+        "distractors": ["True", "Only large reptiles are", "Only cold-climate reptiles are"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Animals that generate body heat internally are called ___ or warm-blooded.",
+        "answer": "endotherms",
+        "distractors": ["ectotherms", "heterotherms", "poikilotherms"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Encyclopedia Britannica — endothermy",
+    "sourceUrl": "https://www.britannica.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Snow leopard bounding through a blizzard alongside a torpid lizard frozen in snow, pixel art temperature contrast in blue-white and orange",
+    "tags": ["mammals", "endothermy", "warm-blooded", "thermoregulation", "classification", "evolution"]
+  },
+  {
+    "id": "animals-mammals-monotremes",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "classification",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "classification",
+    "categoryL3": "mammals",
+    "statement": "Monotremes — platypus and echidnas — are the only mammals that lay eggs, yet they still nurse their young with milk secreted through patches of skin rather than nipples.",
+    "quizQuestion": "Which mammals lay eggs?",
+    "correctAnswer": "Monotremes",
+    "distractors": [
+      "Marsupials",
+      "Placentals",
+      "Insectivores",
+      "Lagomorphs",
+      "Rodentia",
+      "Chiroptera",
+      "Xenarthra",
+      "Primates"
+    ],
+    "acceptableAnswers": [
+      "Monotremes",
+      "platypus and echidnas",
+      "egg-laying mammals"
+    ],
+    "explanation": "Monotremata is the most ancient surviving mammal lineage, diverging from other mammals around 166 million years ago. The platypus and four echidna species lay soft, leathery eggs similar to reptile eggs. After hatching, the young lap up milk that seeps through the mother's skin — monotremes have no nipples. The platypus also detects underwater electrical fields (like sharks), has venomous spurs on the male's hind feet, and has a genome that's part reptile and part mammal.",
+    "wowFactor": "The platypus was considered a hoax when first described to European scientists — a beaver-duck-otter with venom and electric sensing. They thought someone had sewn animals together. It is entirely real.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which mammals lay eggs?",
+        "answer": "Monotremes",
+        "distractors": ["Marsupials", "Insectivores", "Lagomorphs"]
+      },
+      {
+        "type": "reverse",
+        "question": "How do monotremes nurse their young without nipples?",
+        "answer": "Milk seeps through skin",
+        "distractors": ["Through gland openings in the mouth", "They don't nurse; young find food", "Through a specialized teat on the belly"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Monotremes are the only mammals to lay eggs.",
+        "answer": "True",
+        "distractors": ["False", "Marsupials also lay eggs", "All ancient mammals laid eggs"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Monotremes diverged from other mammals approximately ___ million years ago.",
+        "answer": "166",
+        "distractors": ["65", "300", "50"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Nature — platypus genome and monotreme evolution",
+    "sourceUrl": "https://www.nature.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Platypus emerging from water with a leathery egg visible in a burrow, pixel art in warm browns and duck-bill orange",
+    "tags": ["mammals", "monotremes", "platypus", "echidna", "egg-laying", "classification"]
+  },
+  {
+    "id": "animals-mammals-blue-whale",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "superlatives",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "superlatives",
+    "categoryL3": "mammals",
+    "statement": "The blue whale is the largest animal ever known to have existed — reaching 100 feet long and 200 tons — heavier than the largest dinosaur.",
+    "quizQuestion": "What is the largest animal ever to have existed?",
+    "correctAnswer": "Blue whale",
+    "distractors": [
+      "Sperm whale",
+      "Megalodon",
+      "Argentinosaurus",
+      "Mosasaurus",
+      "Patagotitan",
+      "Kronosaurus",
+      "Shonisaurus",
+      "Liopleurodon"
+    ],
+    "acceptableAnswers": [
+      "Blue whale",
+      "Balaenoptera musculus"
+    ],
+    "explanation": "Balaenoptera musculus, the blue whale, can reach 33 meters (100 ft) and weigh up to 200 metric tons. For comparison, Patagotitan mayorum — the largest known dinosaur — weighed about 70 tons. The blue whale's heart alone weighs 400 pounds and is the size of a small car. Its tongue alone weighs as much as an elephant. Blue whales were nearly hunted to extinction in the 20th century but have partially recovered under international protection.",
+    "wowFactor": "A blue whale's heart is the size of a small car, and its arteries are wide enough for a human to swim through. It is the most massive creature in 4 billion years of life on Earth.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the largest animal ever to have existed?",
+        "answer": "Blue whale",
+        "distractors": ["Argentinosaurus", "Megalodon", "Patagotitan"]
+      },
+      {
+        "type": "reverse",
+        "question": "How much can the largest blue whale weigh?",
+        "answer": "Up to 200 tons",
+        "distractors": ["About 50 tons", "About 100 tons", "About 500 tons"]
+      },
+      {
+        "type": "truefalse",
+        "question": "The blue whale is heavier than the largest known dinosaur.",
+        "answer": "True",
+        "distractors": ["False", "Only some blue whales are heavier", "Dinosaurs were much heavier"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A blue whale's heart alone weighs approximately ___ pounds.",
+        "answer": "400",
+        "distractors": ["50", "1,000", "10"]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "NOAA — blue whale facts",
+    "sourceUrl": "https://www.fisheries.noaa.gov",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Blue whale silhouette next to a school bus and a T. rex for scale comparison, pixel art in deep ocean blues and greys",
+    "tags": ["mammals", "blue whale", "largest animal", "size", "superlatives", "cetaceans"]
+  },
+  {
+    "id": "animals-insects-biomass",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "ecology",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "ecology",
+    "categoryL3": "insects",
+    "statement": "There are an estimated 10 quintillion (10,000,000,000,000,000,000) individual insects alive on Earth at any moment — about 1.4 billion insects for every human.",
+    "quizQuestion": "Approximately how many insects are alive on Earth right now?",
+    "correctAnswer": "10 quintillion",
+    "distractors": [
+      "1 billion",
+      "1 trillion",
+      "1 quadrillion",
+      "100 trillion",
+      "1 sextillion",
+      "10 million",
+      "100 quadrillion",
+      "1 billion trillion"
+    ],
+    "acceptableAnswers": [
+      "10 quintillion",
+      "10^19",
+      "ten quintillion",
+      "about 10 quintillion"
+    ],
+    "explanation": "A 2020 study estimated roughly 10^19 individual insects — 10 quintillion — on Earth at any given time. Ants and termites alone account for roughly 20% of all animal biomass on Earth, outweighing all wild birds and mammals combined. Despite representing over 1 million described species (about 60% of all described animal species), insect populations are declining at an estimated 2.5% per year due to habitat loss, pesticides, and climate change.",
+    "wowFactor": "All the ants on Earth, stacked on a scale, would outweigh all humans. And ants are only one group — insects as a whole outweigh every wild bird and mammal on the planet combined.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many insects are alive on Earth right now?",
+        "answer": "10 quintillion",
+        "distractors": ["1 trillion", "1 quadrillion", "100 trillion"]
+      },
+      {
+        "type": "reverse",
+        "question": "Roughly what fraction of all described animal species are insects?",
+        "answer": "About 60%",
+        "distractors": ["About 10%", "About 25%", "About 90%"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Insects outweigh all wild birds and mammals combined in total biomass.",
+        "answer": "True",
+        "distractors": ["False", "Only ants and termites do", "Insects are declining too fast to still be true"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "At current decline rates, insect populations drop about ___% per year.",
+        "answer": "2.5",
+        "distractors": ["0.1", "10", "50"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Biological Conservation — insect decline review 2020",
+    "sourceUrl": "https://www.journals.elsevier.com/biological-conservation",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Globe covered in a swarm of stylized insects with a tiny human figure for scale, pixel art in earthy greens and browns",
+    "tags": ["insects", "biomass", "ecology", "population", "decline", "10 quintillion"]
+  },
+  {
+    "id": "animals-insects-pollination",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "ecology",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "ecology",
+    "categoryL3": "insects",
+    "statement": "Insects pollinate about 75% of all flowering plant species and roughly one-third of all food crops globally — including most fruits, vegetables, nuts, and coffee.",
+    "quizQuestion": "What fraction of global food crops do insects pollinate?",
+    "correctAnswer": "About one-third",
+    "distractors": [
+      "About one-tenth",
+      "Almost none",
+      "About half",
+      "Nearly all of them",
+      "About one-fifth",
+      "About two-thirds",
+      "About 5%",
+      "About 90%"
+    ],
+    "acceptableAnswers": [
+      "About one-third",
+      "approximately 1/3",
+      "roughly a third",
+      "one third"
+    ],
+    "explanation": "The FAO estimates that animal pollinators — primarily insects — contribute to 75% of the world's leading food crops. Bees (wild and managed) are the primary pollinators, but flies, beetles, wasps, moths, and butterflies all contribute significantly. Crops like almonds are almost entirely dependent on honeybee pollination. The global economic value of insect pollination is estimated at $577 billion annually.",
+    "wowFactor": "Without insect pollinators, global food production would collapse within years. No almonds, blueberries, apples, chocolate, or coffee. Insects are not just a background detail — they are the engine of the food chain.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What fraction of global food crops do insects pollinate?",
+        "answer": "About one-third",
+        "distractors": ["About one-tenth", "About half", "Nearly all of them"]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the estimated annual economic value of insect pollination?",
+        "answer": "$577 billion",
+        "distractors": ["$10 million", "$2 billion", "$10 trillion"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Insect pollinators contribute to about 75% of flowering plant species.",
+        "answer": "True",
+        "distractors": ["False", "Only bees are counted in that figure", "Only in tropical regions"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Almonds are almost entirely dependent on ___ pollination.",
+        "answer": "honeybee",
+        "distractors": ["wind", "butterfly", "bat"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "FAO — pollination and food security",
+    "sourceUrl": "https://www.fao.org",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Bee dusted in pollen landing on an almond blossom with a grocery pile in background fading to grey without pollinators, pixel art",
+    "tags": ["insects", "pollination", "bees", "food crops", "ecology", "agriculture"]
+  },
+  {
+    "id": "animals-insects-metamorphosis",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "life cycle",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "life_cycle",
+    "categoryL3": "insects",
+    "statement": "Inside a butterfly chrysalis, the caterpillar's body fully dissolves into a soup of cells — almost all larval structures break down — and then completely reorganizes into an adult butterfly.",
+    "quizQuestion": "What happens to a caterpillar's body inside a chrysalis?",
+    "correctAnswer": "It dissolves into cell soup",
+    "distractors": [
+      "It grows wings gradually",
+      "It compresses and reshapes",
+      "It sheds skin in layers",
+      "It absorbs nutrients from the shell",
+      "It enters deep hibernation unchanged",
+      "It splits into segments that rejoin",
+      "It merges with the chrysalis wall",
+      "It hardens into a pupa shell"
+    ],
+    "acceptableAnswers": [
+      "It dissolves into cell soup",
+      "dissolves and reorganizes",
+      "breaks down completely",
+      "liquefies"
+    ],
+    "explanation": "Complete metamorphosis (holometabolism) in lepidopterans is more radical than most people know. Enzymes break down almost all larval tissues into a cellular soup — imaginal discs (clusters of undifferentiated cells present since egg stage) then use this nutrient bath as raw material to build the adult body from scratch. Studies have shown that memories formed as caterpillars can survive into the adult butterfly — suggesting some neural connectivity persists through the dissolution.",
+    "wowFactor": "A butterfly inside a chrysalis is not 'transforming' — it's mostly dead soup. Then it rebuilds itself from scratch using a set of stem cells that were waiting since it was an egg. And it remembers being a caterpillar.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What happens to a caterpillar's body inside a chrysalis?",
+        "answer": "It dissolves into cell soup",
+        "distractors": ["It grows wings gradually", "It sheds skin in layers", "It hardens into a pupa shell"]
+      },
+      {
+        "type": "reverse",
+        "question": "What cell clusters in a caterpillar become the adult butterfly's body?",
+        "answer": "Imaginal discs",
+        "distractors": ["Stem cell nodes", "Malpighian tubules", "Fat body cells"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Some memories formed as a caterpillar survive into the adult butterfly.",
+        "answer": "True",
+        "distractors": ["False", "Only wing-pattern memories", "Only in monarch butterflies"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Complete metamorphosis in insects is called ___.",
+        "answer": "holometabolism",
+        "distractors": ["hemimetabolism", "endometabolism", "ametabolism"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Current Biology — caterpillar memory retention post-metamorphosis",
+    "sourceUrl": "https://www.cell.com/current-biology",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Cross-section of a chrysalis showing liquid cellular contents glowing amber, with wing-disc shapes forming in the soup, pixel art",
+    "tags": ["insects", "butterfly", "metamorphosis", "chrysalis", "holometabolism", "imaginal discs"]
+  },
+  {
+    "id": "animals-maize-habitat",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "agriculture ecology",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "agriculture_ecology",
+    "categoryL3": "agricultural impact",
+    "statement": "Maize (corn) farming has replaced over 350,000 square miles of North American habitat — more than any other single crop — transforming grassland ecosystems that once supported bison, prairie dogs, and hundreds of bird species.",
+    "quizQuestion": "Which crop has replaced the most North American habitat?",
+    "correctAnswer": "Maize (corn)",
+    "distractors": [
+      "Wheat",
+      "Soybeans",
+      "Cotton",
+      "Rice",
+      "Sorghum",
+      "Sunflower",
+      "Barley",
+      "Canola"
+    ],
+    "acceptableAnswers": [
+      "Maize (corn)",
+      "corn",
+      "maize"
+    ],
+    "explanation": "North America's Corn Belt occupies roughly 350,000+ square miles of former tallgrass and mixed-grass prairie. This prairie once supported the largest terrestrial animal migration on Earth — 30-60 million bison — along with vast prairie dog towns, pronghorn herds, and hundreds of grassland bird species. Today over 95% of tallgrass prairie is gone, replaced almost entirely by row crops, predominantly corn and soy in a rotation that provides minimal wildlife habitat.",
+    "wowFactor": "The American prairies once held more bison than the Serengeti holds wildebeest today. Almost all of that ecosystem was plowed under in less than 100 years to grow corn.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which crop has replaced the most North American habitat?",
+        "answer": "Maize (corn)",
+        "distractors": ["Wheat", "Soybeans", "Cotton"]
+      },
+      {
+        "type": "reverse",
+        "question": "What percentage of North American tallgrass prairie remains today?",
+        "answer": "Less than 5%",
+        "distractors": ["About 50%", "About 25%", "About 10%"]
+      },
+      {
+        "type": "truefalse",
+        "question": "North American prairies once held 30-60 million bison before agricultural conversion.",
+        "answer": "True",
+        "distractors": ["False", "At most a few million", "Only after European arrival"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Corn Belt farmland replaced over ___ square miles of North American prairie.",
+        "answer": "350,000",
+        "distractors": ["10,000", "1,000,000", "50,000"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "USDA / Nature Conservancy — grassland conversion data",
+    "sourceUrl": "https://www.nature.org",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Split landscape: lush tallgrass prairie with bison on left, identical horizon now covered by endless corn rows on right, pixel art",
+    "tags": ["maize", "corn", "agriculture", "habitat loss", "prairie", "bison", "ecology"]
+  },
+  {
+    "id": "animals-maize-monarch-butterfly",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "agriculture ecology",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "agriculture_ecology",
+    "categoryL3": "agricultural impact",
+    "statement": "The expansion of herbicide-tolerant corn and soy has nearly eliminated milkweed from Midwest farmlands, causing a 90% collapse in the monarch butterfly population since the 1990s.",
+    "quizQuestion": "What plant loss caused the 90% monarch butterfly population collapse?",
+    "correctAnswer": "Milkweed",
+    "distractors": [
+      "Goldenrod",
+      "Clover",
+      "Thistle",
+      "Prairie grasses",
+      "Sunflowers",
+      "Wildflowers generally",
+      "Butterfly bush",
+      "Ironweed"
+    ],
+    "acceptableAnswers": [
+      "Milkweed",
+      "milkweed loss",
+      "milkweed elimination"
+    ],
+    "explanation": "Monarch butterfly larvae can only survive on milkweed (Asclepias), which once grew abundantly in corn and soy fields as a weed. The adoption of Roundup Ready (glyphosate-tolerant) crops in the late 1990s allowed farmers to spray entire fields with herbicide, eliminating milkweed from hundreds of millions of acres. Combined with logging in Mexican overwintering grounds, monarch numbers fell from roughly 1 billion individuals in the 1990s to fewer than 100 million by the 2010s.",
+    "wowFactor": "One agricultural herbicide application decision, scaled across hundreds of millions of acres, destroyed 90% of the world's monarch butterflies in under 20 years. Individual species depend on individual plants that depend on individual decisions.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What plant loss caused the 90% monarch butterfly population collapse?",
+        "answer": "Milkweed",
+        "distractors": ["Goldenrod", "Clover", "Prairie grasses"]
+      },
+      {
+        "type": "reverse",
+        "question": "What technology enabled the widespread elimination of milkweed from farmlands?",
+        "answer": "Herbicide-tolerant crops",
+        "distractors": ["Mechanical harvesting", "Irrigation expansion", "Synthetic fertilizers"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Monarch butterfly larvae can only survive by eating milkweed.",
+        "answer": "True",
+        "distractors": ["False", "They prefer milkweed but can eat others", "Only in Mexico they eat milkweed"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Since the 1990s, the monarch butterfly population has fallen by approximately ___%. ",
+        "answer": "90",
+        "distractors": ["10", "50", "99"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Insect Conservation and Diversity — monarch decline and milkweed loss",
+    "sourceUrl": "https://onlinelibrary.wiley.com/journal/17524598",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Monarch butterfly perched on a milkweed plant surrounded by vast herbicide-sprayed corn rows, pixel art in orange and industrial grey",
+    "tags": ["maize", "corn", "monarch butterfly", "milkweed", "herbicide", "Roundup Ready", "conservation"]
+  },
+  {
+    "id": "animals-maize-corn-earworm",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "agriculture ecology",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "agriculture_ecology",
+    "categoryL3": "agricultural impact",
+    "statement": "The corn earworm (Helicoverpa zea) is the costliest insect pest in North America, causing over $2 billion in crop losses annually by feeding on corn, cotton, tomatoes, and soy.",
+    "quizQuestion": "What is North America's costliest insect crop pest?",
+    "correctAnswer": "Corn earworm",
+    "distractors": [
+      "Boll weevil",
+      "Colorado potato beetle",
+      "Western corn rootworm",
+      "Aphid",
+      "Japanese beetle",
+      "Armyworm",
+      "Hessian fly",
+      "Spotted lanternfly"
+    ],
+    "acceptableAnswers": [
+      "Corn earworm",
+      "Helicoverpa zea",
+      "cotton bollworm"
+    ],
+    "explanation": "Helicoverpa zea — the corn earworm, also called the cotton bollworm — is a moth larva that attacks the ears of corn, feeding from the tip inward. Unlike most pests, it affects many of North America's most valuable crops: corn, cotton, soybean, tomato, and sorghum. It rapidly develops resistance to pesticides and Bt toxins, costing an estimated $2 billion annually. The scale of corn monoculture has created an enormous permanent food supply for this pest, compared to diverse native ecosystems where predation would control its numbers.",
+    "wowFactor": "Monoculture corn farming essentially built a 350,000-square-mile buffet specifically for the corn earworm. The pest problem is inseparable from the agricultural system that created the perfect conditions for it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is North America's costliest insect crop pest?",
+        "answer": "Corn earworm",
+        "distractors": ["Boll weevil", "Colorado potato beetle", "Aphid"]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the scientific name of the corn earworm moth?",
+        "answer": "Helicoverpa zea",
+        "distractors": ["Diabrotica virgifera", "Agrotis ipsilon", "Mythimna unipuncta"]
+      },
+      {
+        "type": "truefalse",
+        "question": "The corn earworm only attacks corn.",
+        "answer": "False",
+        "distractors": ["True", "It mainly attacks corn and a few others", "It never attacks cotton"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The corn earworm causes over $___ billion in annual crop losses in North America.",
+        "answer": "2",
+        "distractors": ["0.1", "10", "50"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "USDA Agricultural Research Service — Helicoverpa zea",
+    "sourceUrl": "https://www.ars.usda.gov",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Corn ear split open revealing corn earworm larva inside, pixel art in yellows, greens, and worm-pink",
+    "tags": ["maize", "corn earworm", "Helicoverpa zea", "pest", "agriculture ecology", "monoculture"]
+  }
+]

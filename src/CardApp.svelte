@@ -431,22 +431,12 @@
     if (saved.roomOptions && saved.roomOptions.length > 0) {
       activeRoomOptions.set(saved.roomOptions)
     }
-    // Navigate to the saved screen or default to dungeon map / room selection
+    // Navigate to the saved screen or default to dungeon map
     const screen = saved.currentScreen as import('./ui/stores/gameState').Screen
-    const hasMap = Boolean(saved.runState.floor?.actMap)
-    const mapOrRoom = hasMap ? 'dungeonMap' : 'roomSelection'
+    const mapOrRoom = 'dungeonMap'
     let targetScreen = screen === 'campfire' ? mapOrRoom : (screen || mapOrRoom)
     if (targetScreen === 'cardReward' && (saved.cardRewardOptions?.length ?? 0) === 0) {
       targetScreen = mapOrRoom
-    }
-    // If navigating to dungeonMap but no actMap exists, fall back to room selection
-    if (targetScreen === 'dungeonMap' && !saved.runState.floor?.actMap) {
-      targetScreen = 'roomSelection'
-      activeRoomOptions.set(generateCombatRoomOptions(saved.runState.floor.currentFloor))
-    }
-    // If navigating to roomSelection but no room options exist, regenerate them
-    if (targetScreen === 'roomSelection' && (!saved.roomOptions || saved.roomOptions.length === 0)) {
-      activeRoomOptions.set(generateCombatRoomOptions(saved.runState.floor.currentFloor))
     }
     if (screen === 'combat') {
       // Make Phaser container visible before combat re-init.
@@ -460,9 +450,7 @@
         onCombatResumed: () => {
           autoSaveRun('combat')
         },
-        onFallbackRoomSelection: (floor) => {
-          activeRoomOptions.set(generateCombatRoomOptions(floor))
-        },
+        onFallbackMap: () => { /* map will show automatically */ },
         logger: console,
       })
     }

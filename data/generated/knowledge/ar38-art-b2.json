@@ -1,0 +1,1457 @@
+[
+  {
+    "id": "art-sagrada-gaudi",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "architecture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "architecture",
+    "categoryL3": "",
+    "statement": "The Sagrada Família in Barcelona has been under continuous construction since 1882, making it the longest-running active building project in modern history.",
+    "quizQuestion": "Since what year has the Sagrada Família been under continuous construction?",
+    "correctAnswer": "1882",
+    "distractors": [
+      "1700",
+      "1950",
+      "1850",
+      "1920",
+      "1800",
+      "1970",
+      "1905",
+      "1830"
+    ],
+    "acceptableAnswers": [
+      "1882",
+      "eighteen eighty-two"
+    ],
+    "explanation": "Construction of the Sagrada Família began on 19 March 1882, designed by architect Francisco de Paula del Villar. Antoni Gaudí took over in 1883 and radically redesigned the project. Gaudí devoted the last 43 years of his life to it and was struck and killed by a tram in 1926 — with the church still less than a quarter complete. It is currently expected to finish around 2026.",
+    "wowFactor": "The Sagrada Família has been under construction for over 140 years — longer than most entire civilisations. Its architect died in 1926 before completing even 25% of it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year did construction of Gaudí's Sagrada Família begin in Barcelona?",
+        "answer": "1882",
+        "distractors": [
+          "1950",
+          "1850",
+          "1920"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Sagrada Família, under construction since 1882, is located in which European city?",
+        "answer": "Barcelona",
+        "distractors": [
+          "Madrid",
+          "Lisbon",
+          "Valencia"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Sagrada Família has been under construction since 1882.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Sagrada Família has been under construction since ___, the longest active building project in history.",
+        "answer": "1882",
+        "distractors": [
+          "1950",
+          "1700",
+          "1920"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sagrada_Família",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The towering spires of Sagrada Família rising from a Barcelona skyline with scaffolding still attached, pixel art style in warm afternoon light.",
+    "tags": ["Sagrada Família", "Gaudí", "Barcelona", "architecture", "unfinished"]
+  },
+  {
+    "id": "art-sagrada-nature",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "architecture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "architecture",
+    "categoryL3": "",
+    "statement": "Gaudí designed the Sagrada Família using hyperboloid and paraboloid geometric shapes inspired by natural forms — trees, bones, and crystalline structures — to create organic architecture.",
+    "quizQuestion": "What natural forms inspired Gaudí's geometric design of the Sagrada Família?",
+    "correctAnswer": "Trees, bones, crystals",
+    "distractors": [
+      "Ocean waves, clouds",
+      "Mountain peaks, glaciers",
+      "Seashells and coral",
+      "Desert dunes, rocks",
+      "Flower petals only",
+      "Spider webs, leaves",
+      "River deltas, caves",
+      "Animal skins, feathers"
+    ],
+    "acceptableAnswers": [
+      "Trees, bones, crystals",
+      "trees and bones",
+      "natural forms",
+      "nature"
+    ],
+    "explanation": "Gaudí was a devout Catholic and passionate naturalist who believed geometry existed in nature. The Sagrada Família's interior columns branch like trees, its surfaces are covered with organic textures, and its structure uses paraboloids and hyperboloids — the same forms found in bones, seashells, and crystals. He rejected straight lines as 'the lines of man' and curves as 'the lines of God.'",
+    "wowFactor": "Gaudí said 'straight lines are the lines of man, curves are the lines of God' — so every surface of the Sagrada Família was deliberately made to mimic living nature.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Gaudí modelled the Sagrada Família's branching columns on which natural structure?",
+        "answer": "Trees",
+        "distractors": [
+          "Ocean waves",
+          "Mountain peaks",
+          "Spider webs"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Gaudí's belief that curves are 'the lines of God' shaped which famous Barcelona church's organic architecture?",
+        "answer": "Sagrada Família",
+        "distractors": [
+          "Palau Güell",
+          "Casa Batlló",
+          "Notre-Dame de Paris"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Gaudí designed the Sagrada Família using geometric shapes inspired by trees and bones.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Gaudí designed the Sagrada Família using forms found in ___, bones, and crystals from nature.",
+        "answer": "Trees",
+        "distractors": [
+          "clouds",
+          "rivers",
+          "mountains"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sagrada_Família#Design",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The Sagrada Família's tree-like branching stone columns inside the nave, sunlight streaming through stained glass, pixel art organic style.",
+    "tags": ["Sagrada Família", "Gaudí", "organic architecture", "naturalism", "geometry"]
+  },
+  {
+    "id": "art-sagrada-gaudi-death",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "architecture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "architecture",
+    "categoryL3": "",
+    "statement": "Antoni Gaudí was struck by a tram in Barcelona in 1926 and died three days later — he was buried in the crypt of the unfinished Sagrada Família he had spent 43 years building.",
+    "quizQuestion": "How did Sagrada Família architect Antoni Gaudí die in 1926?",
+    "correctAnswer": "Struck by a tram",
+    "distractors": [
+      "Fell from scaffolding",
+      "Died of old age",
+      "Collapsed from overwork",
+      "Killed in a fire",
+      "Drowned at sea",
+      "Died in a carriage crash",
+      "Shot by an assassin",
+      "Fell ill from pneumonia"
+    ],
+    "acceptableAnswers": [
+      "Struck by a tram",
+      "hit by a tram",
+      "tram accident"
+    ],
+    "explanation": "On 7 June 1926, a 73-year-old Gaudí was struck by a tram on Gran Via in Barcelona. His appearance was so dishevelled that taxi drivers initially refused to take him to hospital, thinking him a beggar. He died three days later in a hospital ward. He was buried in the crypt of the Sagrada Família, which he had devoted the last 43 years of his life to — and left less than 25% complete.",
+    "wowFactor": "When Gaudí was hit by a tram, he was so shabbily dressed that taxi drivers refused to drive him to the hospital, thinking he was a homeless beggar — not one of history's greatest architects.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How did architect Antoni Gaudí die on the streets of Barcelona in 1926?",
+        "answer": "Struck by a tram",
+        "distractors": [
+          "Fell from scaffolding",
+          "Collapsed from overwork",
+          "Died in a fire"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Gaudí, struck by a tram in 1926, is buried in the crypt of which unfinished building he designed?",
+        "answer": "Sagrada Família",
+        "distractors": [
+          "Casa Batlló",
+          "Palau Güell",
+          "Casa Milà"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Antoni Gaudí was killed by a tram in 1926 and buried inside the Sagrada Família.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Gaudí was struck by a ___ in 1926 and died three days later, buried inside his unfinished masterpiece.",
+        "answer": "Tram",
+        "distractors": [
+          "horse",
+          "carriage",
+          "motor car"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Antoni_Gaudí#Death",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A dishevelled elderly man in tattered clothes on a Barcelona street, tram tracks in foreground, Sagrada Família spires in the background, pixel art.",
+    "tags": ["Gaudí", "Sagrada Família", "death", "tram", "1926"]
+  },
+  {
+    "id": "art-colosseum-capacity",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "architecture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "architecture",
+    "categoryL3": "",
+    "statement": "The Roman Colosseum could hold 50,000–80,000 spectators and had 80 entrances with a sophisticated ticketing system using numbered clay tokens called tesserae.",
+    "quizQuestion": "What were the numbered clay admission tokens for the Colosseum called?",
+    "correctAnswer": "Tesserae",
+    "distractors": [
+      "Tokens",
+      "Tabulae",
+      "Denarii",
+      "Scripta",
+      "Vela",
+      "Signata",
+      "Plumbea",
+      "Cippi"
+    ],
+    "acceptableAnswers": [
+      "Tesserae",
+      "tessera",
+      "clay tokens"
+    ],
+    "explanation": "The Colosseum (Flavian Amphitheatre) was completed in 80 CE with a capacity of 50,000–80,000. It had 76 numbered public entrances plus 4 special entrances for emperors and gladiators. Clay tokens (tesserae) were numbered to match specific sections and rows — essentially ancient event tickets. The velarium, a massive retractable awning, could shade the entire crowd.",
+    "wowFactor": "The Colosseum had a more sophisticated ticketing system than most modern stadiums — numbered clay tokens matched to specific seats, 76 numbered gates, 2,000 years ago.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What were the Colosseum's numbered clay admission tokens that assigned spectators to specific seats?",
+        "answer": "Tesserae",
+        "distractors": [
+          "Tabulae",
+          "Denarii",
+          "Signata"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Colosseum's tesserae token system assigned spectators to numbered sections in which type of structure?",
+        "answer": "Amphitheatre",
+        "distractors": [
+          "Forum",
+          "Circus",
+          "Basilica"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Colosseum used numbered clay tokens called tesserae as admission tickets.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Colosseum's 50,000 spectators used numbered clay ___ to find their specific numbered seats.",
+        "answer": "Tesserae",
+        "distractors": [
+          "coins",
+          "scrolls",
+          "tablets"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Colosseum",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Roman citizen holding a numbered clay tessera at a Colosseum entrance arch, numbered archways stretching into the distance, pixel art style.",
+    "tags": ["Colosseum", "Rome", "tesserae", "tickets", "amphitheatre"]
+  },
+  {
+    "id": "art-colosseum-velarium",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "architecture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "architecture",
+    "categoryL3": "",
+    "statement": "The Colosseum had a retractable canvas awning called the velarium, operated by 1,000 sailors from the Roman navy, which could shade the entire 50,000-seat arena from sun.",
+    "quizQuestion": "What was the Colosseum's retractable sunshade awning called?",
+    "correctAnswer": "Velarium",
+    "distractors": [
+      "Atrium",
+      "Podium",
+      "Vomitorium",
+      "Cavea",
+      "Maenianum",
+      "Hypogeum",
+      "Cuneus",
+      "Porticus"
+    ],
+    "acceptableAnswers": [
+      "Velarium",
+      "the velarium",
+      "canvas awning"
+    ],
+    "explanation": "The velarium was a complex system of ropes, wooden poles, and canvas sections that could be extended over the Colosseum's open top to shade spectators from the Roman sun. It was operated by teams of sailors from the Misenum fleet who were permanently stationed at the Colosseum due to their rope and rigging expertise. Opening the velarium was a major operation requiring coordination.",
+    "wowFactor": "The Colosseum had a retractable roof 2,000 years before modern stadiums — operated by 1,000 Roman sailors using ship rigging techniques.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the Colosseum's retractable canvas sunshade, operated by Roman sailors, called?",
+        "answer": "Velarium",
+        "distractors": [
+          "Atrium",
+          "Cavea",
+          "Podium"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The velarium at the Colosseum was operated by 1,000 trained specialists from which branch of the Roman military?",
+        "answer": "Navy (sailors)",
+        "distractors": [
+          "Legions (infantry)",
+          "Praetorian Guard",
+          "Roman engineers"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Colosseum had a retractable awning called the velarium operated by sailors.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Colosseum's ___ was a retractable canvas shade operated by Roman navy sailors.",
+        "answer": "Velarium",
+        "distractors": [
+          "cavea",
+          "atrium",
+          "podium"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Colosseum#Design",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Roman sailors hauling ropes to extend a massive canvas shade over the packed Colosseum, crowd visible below cheering, pixel art sunny Rome.",
+    "tags": ["Colosseum", "velarium", "awning", "Roman navy", "architecture"]
+  },
+  {
+    "id": "art-colosseum-hypogeum",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "architecture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "architecture",
+    "categoryL3": "",
+    "statement": "Beneath the Colosseum's arena floor was the hypogeum — a two-story underground network of tunnels and cages housing gladiators, animals, and stage machinery.",
+    "quizQuestion": "What was the name of the Colosseum's underground tunnel network beneath the arena?",
+    "correctAnswer": "Hypogeum",
+    "distractors": [
+      "Catacombs",
+      "Cryptoporticus",
+      "Subterraneum",
+      "Arena base",
+      "Vomitorium",
+      "Macellum",
+      "Thermae",
+      "Nymphaeum"
+    ],
+    "acceptableAnswers": [
+      "Hypogeum",
+      "underground tunnels",
+      "the hypogeum"
+    ],
+    "explanation": "The hypogeum ('underground' in Greek) was built by Emperor Domitian under the Colosseum's original wooden arena floor. It contained 32 animal pen trapdoors connected to winches, allowing beasts and scenery to appear suddenly in the middle of the arena. There were also 80 vertical shafts for rapid deployment of props. Before the hypogeum, the arena was sometimes flooded for mock naval battles (naumachiae).",
+    "wowFactor": "The Colosseum had 32 trapdoor lifts in its underground tunnels — ancient elevators that could launch lions and tigers directly into the arena to surprise the crowd.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the two-story underground tunnel system beneath the Colosseum's arena floor called?",
+        "answer": "Hypogeum",
+        "distractors": [
+          "Catacombs",
+          "Cryptoporticus",
+          "Vomitorium"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Colosseum's hypogeum contained 32 trapdoor winches that lifted which surprise elements into the arena?",
+        "answer": "Animals and scenery",
+        "distractors": [
+          "Gladiators and weapons",
+          "Chariots and horses",
+          "Fireworks and sand"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Colosseum's hypogeum was an underground network of tunnels and animal cages beneath the arena.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Colosseum's ___ was an underground labyrinth with 32 trapdoor lifts for launching animals into the arena.",
+        "answer": "Hypogeum",
+        "distractors": [
+          "catacombs",
+          "podium",
+          "crypts"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Colosseum#Hypogeum",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "References gladiatorial combat and animal fighting",
+    "visualDescription": "The Colosseum's underground stone tunnels and caged animal pens, wooden trapdoor lifts being cranked upward, pixel art dim torchlit atmosphere.",
+    "tags": ["Colosseum", "hypogeum", "underground", "Rome", "trapdoors"]
+  },
+  {
+    "id": "art-dada-zurich",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "art_movements",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "art_movements",
+    "categoryL3": "",
+    "statement": "Dada was founded in Zurich in 1916 by artists fleeing World War I, who rejected rational thought and aesthetics as complicit in the war's barbarity.",
+    "quizQuestion": "In which city was the Dada art movement founded in 1916?",
+    "correctAnswer": "Zurich",
+    "distractors": [
+      "Paris",
+      "Berlin",
+      "Vienna",
+      "New York",
+      "London",
+      "Rome",
+      "Amsterdam",
+      "Munich"
+    ],
+    "acceptableAnswers": [
+      "Zurich",
+      "Switzerland"
+    ],
+    "explanation": "Dada was born at the Cabaret Voltaire in Zurich, Switzerland, in February 1916. Hugo Ball, Emmy Hennings, Tristan Tzara, Jean Arp, and others — many refugees from WWI — gathered there and created deliberately nonsensical, anti-rational performances and art. They chose 'Dada' (French for 'hobby horse,' also a nonsense word) to mock serious artistic pretension. They blamed rational Western thought for enabling the war.",
+    "wowFactor": "Dada artists deliberately chose a meaningless word — 'dada' — as their movement's name to mock serious art. Their whole point was that art meaning nothing was more honest than art that claimed to mean everything.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which Swiss city was the anti-rational Dada movement founded in 1916?",
+        "answer": "Zurich",
+        "distractors": [
+          "Paris",
+          "Berlin",
+          "Vienna"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Artists fleeing WWI founded Dada in 1916 at the Cabaret Voltaire in which neutral country?",
+        "answer": "Switzerland",
+        "distractors": [
+          "France",
+          "Germany",
+          "Austria"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Dada was founded in Zurich in 1916 by artists who rejected rational thought as complicit in WWI.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Dada was born in 1916 at the Cabaret Voltaire in ___, founded by war refugees rejecting rational art.",
+        "answer": "Zurich",
+        "distractors": [
+          "Paris",
+          "Berlin",
+          "Vienna"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dada",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "World War I context",
+    "visualDescription": "Performers in bizarre costumes at Cabaret Voltaire, Zurich 1916, nonsense poetry on a chalkboard behind them, pixel art jazz-age atmosphere.",
+    "tags": ["Dada", "Zurich", "1916", "avant-garde", "WWI"]
+  },
+  {
+    "id": "art-dada-readymade",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "art_movements",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "art_movements",
+    "categoryL3": "",
+    "statement": "Marcel Duchamp's 1917 'Fountain' — a urinal signed 'R. Mutt' and submitted to an art exhibition — became Dada's most famous provocation and is called the most influential artwork of the 20th century.",
+    "quizQuestion": "What everyday object did Marcel Duchamp sign and submit as art in 1917?",
+    "correctAnswer": "A urinal",
+    "distractors": [
+      "A bicycle wheel",
+      "A toilet brush",
+      "A kitchen sink",
+      "A broken clock",
+      "A wine bottle",
+      "A newspaper",
+      "A steel pipe",
+      "A rubber glove"
+    ],
+    "acceptableAnswers": [
+      "A urinal",
+      "urinal",
+      "Fountain"
+    ],
+    "explanation": "Marcel Duchamp purchased a porcelain urinal, signed it 'R. Mutt, 1917,' and submitted it as artwork titled 'Fountain' to the Society of Independent Artists' exhibition in New York. It was rejected — and then became legendary. 'Fountain' introduced the 'readymade' concept: ordinary manufactured objects declared as art by the artist's choice alone. In a 2004 poll of 500 art experts, it was voted the most influential artwork of the 20th century.",
+    "wowFactor": "A urinal that was rejected from an art show and lost immediately after was later voted the most influential artwork of the 20th century by 500 art critics — beating Picasso's entire output.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What mass-produced object did Marcel Duchamp sign 'R. Mutt' and submit as his 1917 artwork 'Fountain'?",
+        "answer": "A urinal",
+        "distractors": [
+          "A bicycle wheel",
+          "A kitchen sink",
+          "A broken clock"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Duchamp's concept of 'readymades' — ordinary objects declared as art — was introduced by which Dada artwork?",
+        "answer": "Fountain",
+        "distractors": [
+          "The Large Glass",
+          "LHOOQ",
+          "Bicycle Wheel"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Marcel Duchamp submitted a signed urinal called 'Fountain' to an art exhibition in 1917.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Duchamp's 'Fountain' was a ___ signed 'R. Mutt,' voted the most influential 20th-century artwork.",
+        "answer": "Urinal",
+        "distractors": [
+          "bicycle wheel",
+          "kitchen sink",
+          "broken clock"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fountain_(Duchamp)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "References a urinal — mild",
+    "visualDescription": "A porcelain urinal on a gallery pedestal with 'R. Mutt 1917' written on it, a shocked Victorian art critic inspecting it, pixel art style.",
+    "tags": ["Dada", "Duchamp", "Fountain", "readymade", "modern art"]
+  },
+  {
+    "id": "art-dada-name",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "art_movements",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "art_movements",
+    "categoryL3": "",
+    "statement": "The word 'Dada' was supposedly chosen by randomly opening a French dictionary and pointing — deliberately selecting a nonsense word to mock artistic seriousness.",
+    "quizQuestion": "How was the nonsensical name 'Dada' for the art movement supposedly chosen?",
+    "correctAnswer": "Random dictionary stab",
+    "distractors": [
+      "Voted by all founders",
+      "Chosen by Hugo Ball",
+      "Sent in by audience",
+      "Drawn from a hat",
+      "Named after a child",
+      "Translated from Russian",
+      "Picked by Tzara alone",
+      "Based on a joke poem"
+    ],
+    "acceptableAnswers": [
+      "Random dictionary stab",
+      "random dictionary",
+      "stabbing a dictionary randomly"
+    ],
+    "explanation": "According to Dada founding member Richard Huelsenbeck, the word 'Dada' was found by randomly inserting a knife into a French-German dictionary. In French, 'dada' means 'hobby horse'; in German, it is a child's word for 'yes yes.' The randomness of the selection was itself a Dadaist act — meaning was arbitrary and naming should be too. (Some accounts dispute this origin story, which is itself very Dadaist.)",
+    "wowFactor": "The name 'Dada' was chosen by stabbing a dictionary at random — which is completely in keeping with a movement that believed art and meaning were both nonsense.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How did the Dada founders allegedly choose their movement's nonsense name?",
+        "answer": "Stabbing a dictionary at random",
+        "distractors": [
+          "Voting as a group",
+          "Drawing from a hat",
+          "Tristan Tzara chose it"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Dada movement's randomly-chosen name 'dada' means what in French?",
+        "answer": "Hobby horse",
+        "distractors": [
+          "Nothing",
+          "Yes yes",
+          "Child play"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The name 'Dada' was supposedly chosen by randomly stabbing a knife into a dictionary.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The name Dada was reportedly chosen by stabbing a ___ at random — a fitting act for an anti-rational movement.",
+        "answer": "Dictionary",
+        "distractors": [
+          "newspaper",
+          "book of art",
+          "poetry anthology"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dada#Etymology",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An artist's hand plunging a knife into an open French dictionary, the page landing on 'dada,' other artists watching in a smoky cafe, pixel art style.",
+    "tags": ["Dada", "name origin", "random", "dictionary", "art history"]
+  },
+  {
+    "id": "art-greatwall-length",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "architecture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "architecture",
+    "categoryL3": "",
+    "statement": "The Great Wall of China stretches over 21,196 km (13,170 miles) — longer than the distance from New York to Sydney — and took over 2,300 years to complete across multiple dynasties.",
+    "quizQuestion": "How long is the Great Wall of China?",
+    "correctAnswer": "Over 21,000 km",
+    "distractors": [
+      "About 1,000 km",
+      "Around 5,000 km",
+      "Roughly 8,000 km",
+      "About 15,000 km",
+      "Around 30,000 km",
+      "About 3,000 km",
+      "Roughly 12,000 km",
+      "About 40,000 km"
+    ],
+    "acceptableAnswers": [
+      "Over 21,000 km",
+      "21,196 km",
+      "over 13,000 miles"
+    ],
+    "explanation": "A 2012 Chinese archaeological survey measured the Great Wall at 21,196 km (13,171 miles), including all branches and sections built across different dynasties from 7th century BCE to the 17th century CE. The most-visited and recognizable sections (Mutianyu, Badaling) are Ming Dynasty (1368–1644). Much of the wall is made from rammed earth and is heavily eroded.",
+    "wowFactor": "The Great Wall is longer than the distance from New York to Sydney and back — built by hand over 2,300 years by millions of workers, some buried inside its foundations.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long is the Great Wall of China, as measured by a 2012 archaeological survey?",
+        "answer": "Over 21,000 km",
+        "distractors": [
+          "About 5,000 km",
+          "Around 8,000 km",
+          "About 15,000 km"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Great Wall of China's 21,000 km length took how many years of construction across multiple dynasties?",
+        "answer": "Over 2,300 years",
+        "distractors": [
+          "About 100 years",
+          "Around 500 years",
+          "Over 1,000 years"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Great Wall of China stretches over 21,000 km.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Great Wall spans over ___ km, longer than the distance from New York to Sydney.",
+        "answer": "21,000",
+        "distractors": [
+          "5,000",
+          "10,000",
+          "8,000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Great_Wall_of_China",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The Great Wall of China snaking over mountain ridges into the misty distance, guard towers every few hundred metres, pixel art aerial view.",
+    "tags": ["Great Wall", "China", "length", "architecture", "dynasties"]
+  },
+  {
+    "id": "art-greatwall-space-myth",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "architecture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "architecture",
+    "categoryL3": "",
+    "statement": "The claim that the Great Wall is visible from space with the naked eye is a myth — Chinese astronaut Yang Liwei confirmed in 2003 that he could not see it from orbit.",
+    "quizQuestion": "Which Chinese astronaut confirmed in 2003 that the Great Wall is invisible from space?",
+    "correctAnswer": "Yang Liwei",
+    "distractors": [
+      "Fei Junlong",
+      "Liu Boming",
+      "Zhai Zhigang",
+      "Wang Yaping",
+      "Jing Haipeng",
+      "Neil Armstrong",
+      "Buzz Aldrin",
+      "Nie Haisheng"
+    ],
+    "acceptableAnswers": [
+      "Yang Liwei",
+      "Liwei Yang"
+    ],
+    "explanation": "The 'Great Wall visible from space' claim dates to 1932 and was widely taught in schools. China's first astronaut, Yang Liwei, orbited Earth in Shenzhou 5 in October 2003 and specifically looked for the Wall — he could not see it. At orbital altitude (~340 km), the Wall is too narrow (4–9 metres wide) to resolve with the naked eye, though high-resolution cameras can detect it under ideal conditions.",
+    "wowFactor": "China's textbooks taught for decades that the Great Wall was visible from space — until China's own first astronaut orbited Earth and announced he couldn't see it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which Chinese astronaut's 2003 mission confirmed the Great Wall is not visible from space?",
+        "answer": "Yang Liwei",
+        "distractors": [
+          "Fei Junlong",
+          "Zhai Zhigang",
+          "Wang Yaping"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Yang Liwei's 2003 Shenzhou 5 orbit debunked which famous myth about a Chinese landmark?",
+        "answer": "Great Wall visible from space",
+        "distractors": [
+          "Terracotta Army size myth",
+          "Dragon bones medicine myth",
+          "Silk Road length myth"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Great Wall of China is NOT visible to the naked eye from space.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Chinese astronaut Yang Liwei confirmed in 2003 that the Great Wall is ___ from orbit with the naked eye.",
+        "answer": "Invisible",
+        "distractors": [
+          "barely visible",
+          "clearly visible",
+          "dimly visible"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Great_Wall_of_China#Visibility_from_space",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Chinese astronaut in a space capsule peering out a porthole toward Earth looking for the Great Wall, finding only brown terrain, pixel art style.",
+    "tags": ["Great Wall", "China", "space myth", "Yang Liwei", "astronomy"]
+  },
+  {
+    "id": "art-greatwall-workers",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "architecture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "architecture",
+    "categoryL3": "",
+    "statement": "Millions of workers built the Great Wall, including soldiers, peasants, and criminals. Historical accounts suggest many who died were buried within the wall itself, earning it the nickname 'the longest cemetery on Earth.'",
+    "quizQuestion": "Why has the Great Wall been called 'the longest cemetery on Earth'?",
+    "correctAnswer": "Workers buried in its walls",
+    "distractors": [
+      "It faces a burial ground",
+      "It marks battlefield sites",
+      "Generals are entombed inside",
+      "Emperors ordered graves built in",
+      "Prisoners were sealed inside",
+      "Sacrificial offerings inside",
+      "Memorial carvings along it",
+      "Ancient graves found under it"
+    ],
+    "acceptableAnswers": [
+      "Workers buried in its walls",
+      "workers buried inside",
+      "millions buried in it"
+    ],
+    "explanation": "Historical records, including from the Qin Dynasty (221–206 BCE) under Emperor Qin Shi Huang, describe workers — soldiers, peasants, and convicts — dying in enormous numbers from cold, exhaustion, and starvation. Many were reportedly buried within the wall's foundations rather than transported home. While archaeologists have found human remains near wall sections, the 'buried inside' claim is partly legend, though it reflects the wall's brutal human cost.",
+    "wowFactor": "The Great Wall has been called 'the longest cemetery on Earth' — millions of workers died building it, and many were reportedly buried inside its very foundations.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why is the Great Wall sometimes called 'the longest cemetery on Earth'?",
+        "answer": "Workers buried in the walls",
+        "distractors": [
+          "Battles fought along it",
+          "Emperors entombed beneath",
+          "Ancient graves line the route"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Great Wall's brutal construction under Emperor Qin Shi Huang caused millions of which type of workers to die?",
+        "answer": "Peasants and soldiers",
+        "distractors": [
+          "Architects and engineers",
+          "Merchants and traders",
+          "Monks and priests"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Great Wall has been called 'the longest cemetery' due to workers reportedly buried in it.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Great Wall is nicknamed 'the longest ___' because millions of workers who died may be buried inside it.",
+        "answer": "Cemetery",
+        "distractors": [
+          "battlefield",
+          "monument",
+          "prison"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Great_Wall_of_China#Construction",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "References forced labour and mass death in ancient China",
+    "visualDescription": "Exhausted workers hauling stone blocks up a mountain ridge in winter to build the Great Wall, distant section fading into grey mist, pixel art style.",
+    "tags": ["Great Wall", "China", "workers", "cemetery", "construction history"]
+  },
+  {
+    "id": "art-poetry-meter",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "literary_arts",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "literary_arts",
+    "categoryL3": "",
+    "statement": "The most common meter in English poetry is iambic pentameter — ten syllables per line alternating unstressed and stressed beats, used by Shakespeare in his plays and sonnets.",
+    "quizQuestion": "Which poetic meter did Shakespeare use in his plays and sonnets?",
+    "correctAnswer": "Iambic pentameter",
+    "distractors": [
+      "Dactylic hexameter",
+      "Trochaic tetrameter",
+      "Anapestic trimeter",
+      "Spondaic dimeter",
+      "Alexandrine verse",
+      "Free verse",
+      "Heroic couplets",
+      "Terza rima"
+    ],
+    "acceptableAnswers": [
+      "Iambic pentameter",
+      "iambic pentametre"
+    ],
+    "explanation": "Iambic pentameter consists of five iambs per line — each iamb being one unstressed syllable followed by one stressed syllable (da-DUM). Ten syllables total per line. Shakespeare used it throughout his plays and 154 sonnets. The pattern mirrors natural English speech rhythms, which is why poets and playwrights adopted it so widely. 'Shall I comPARE thee TO a SUMmer's DAY?' is a perfect example.",
+    "wowFactor": "Iambic pentameter sounds natural because it matches the human heartbeat — da-DUM, da-DUM, da-DUM — which is why Shakespeare chose it for characters expressing strong emotion.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What ten-syllable alternating meter did Shakespeare use throughout his plays and sonnets?",
+        "answer": "Iambic pentameter",
+        "distractors": [
+          "Dactylic hexameter",
+          "Trochaic tetrameter",
+          "Alexandrine verse"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Iambic pentameter has five iambs per line, each being one unstressed then one stressed syllable — how many syllables per line?",
+        "answer": "Ten",
+        "distractors": [
+          "Eight",
+          "Twelve",
+          "Six"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Shakespeare's sonnets and plays were written in iambic pentameter.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Iambic pentameter has five ___ per line, each an unstressed then stressed syllable pair.",
+        "answer": "Iambs",
+        "distractors": [
+          "dactyls",
+          "trochees",
+          "spondees"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Iambic_pentameter",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "William Shakespeare at a writing desk, quill in hand, a sonnet manuscript visible with syllable marks shown above words, pixel art candlelit study.",
+    "tags": ["poetry", "iambic pentameter", "Shakespeare", "meter", "literature"]
+  },
+  {
+    "id": "art-poetry-haiku",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "literary_arts",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "literary_arts",
+    "categoryL3": "",
+    "statement": "The haiku is a Japanese poem of exactly 17 syllables in three lines (5-7-5), traditionally centred on a single moment in nature and including a seasonal reference called a kigo.",
+    "quizQuestion": "What is the seasonal reference word in a traditional Japanese haiku called?",
+    "correctAnswer": "Kigo",
+    "distractors": [
+      "Kireji",
+      "Haiku",
+      "Mono no aware",
+      "Renga",
+      "Ma (pause)",
+      "Wabi",
+      "Sabi",
+      "Yūgen"
+    ],
+    "acceptableAnswers": [
+      "Kigo",
+      "seasonal word",
+      "seasonal reference"
+    ],
+    "explanation": "A kigo is a word or phrase associated with a particular season that is required in traditional haiku. Master Matsuo Bashō (1644–1694) established many conventions, including the kigo. Kireji (cutting word) is another required element — a pause or break that divides the haiku into two juxtaposed images. Bashō's most famous haiku: 'Old pond — / a frog jumps in / sound of water.'",
+    "wowFactor": "Every traditional haiku must contain a hidden seasonal clock — a single 'kigo' word that tells the reader the time of year without stating it directly.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In traditional Japanese haiku, what is the required seasonal reference word called?",
+        "answer": "Kigo",
+        "distractors": [
+          "Kireji",
+          "Renga",
+          "Wabi"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Matsuo Bashō's haiku 'old pond, a frog jumps in, sound of water' uses a frog as what type of seasonal marker?",
+        "answer": "Kigo (spring)",
+        "distractors": [
+          "Kireji (cut word)",
+          "Ma (silent pause)",
+          "Wabi (solitude)"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Traditional haiku must include a kigo — a word that references a specific season.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A traditional Japanese haiku must contain a ___ — a word encoding the season the poem is set in.",
+        "answer": "Kigo",
+        "distractors": [
+          "kireji",
+          "renga",
+          "yūgen"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kigo",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Japanese poet writing at a low wooden table, a frog on a mossy pond outside the shoji screen window, cherry blossoms drifting in, pixel art.",
+    "tags": ["poetry", "haiku", "kigo", "Japan", "Basho"]
+  },
+  {
+    "id": "art-poetry-epic",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "literary_arts",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "literary_arts",
+    "categoryL3": "",
+    "statement": "The Epic of Gilgamesh, written on clay tablets around 2100 BCE, is the world's oldest surviving written poem and contains the first recorded flood myth — predating the biblical Noah by over 1,000 years.",
+    "quizQuestion": "What is the world's oldest surviving written poem, dating to around 2100 BCE?",
+    "correctAnswer": "Epic of Gilgamesh",
+    "distractors": [
+      "Iliad by Homer",
+      "Odyssey by Homer",
+      "Mahabharata",
+      "Ramayana",
+      "Beowulf",
+      "Enuma Elish",
+      "Book of Job",
+      "Aeneid by Virgil"
+    ],
+    "acceptableAnswers": [
+      "Epic of Gilgamesh",
+      "Gilgamesh",
+      "the Gilgamesh epic"
+    ],
+    "explanation": "The Epic of Gilgamesh is a Sumerian/Akkadian epic poem from ancient Mesopotamia, the oldest surviving substantial piece of literature. It was rediscovered in the 1840s by Austen Henry Layard in Nineveh. The flood narrative in Tablet XI (where Utnapishtim survives a divine flood on a boat with animals) predates the Biblical Genesis flood by over 1,000 years and appears to share a common source tradition.",
+    "wowFactor": "The biblical flood of Noah is not the oldest flood story — a 4,000-year-old clay tablet poem from Mesopotamia describes the exact same story, written 1,000 years earlier.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which Mesopotamian clay tablet poem from 2100 BCE is the world's oldest surviving literature?",
+        "answer": "Epic of Gilgamesh",
+        "distractors": [
+          "Iliad by Homer",
+          "Mahabharata",
+          "Beowulf"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Epic of Gilgamesh contains the world's oldest written flood myth — how much older is it than the biblical Noah story?",
+        "answer": "Over 1,000 years",
+        "distractors": [
+          "About 100 years",
+          "Around 500 years",
+          "About 200 years"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Epic of Gilgamesh is the world's oldest surviving written poem, predating the Bible's flood story.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Epic of ___, written on clay tablets around 2100 BCE, contains the world's oldest flood myth.",
+        "answer": "Gilgamesh",
+        "distractors": [
+          "Homer",
+          "Enuma",
+          "Babylon"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Epic_of_Gilgamesh",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Comparison with biblical narrative",
+    "visualDescription": "A Mesopotamian scribe pressing cuneiform symbols into a clay tablet, the flood scene etched across multiple tablets visible behind them, pixel art.",
+    "tags": ["poetry", "Gilgamesh", "Mesopotamia", "ancient literature", "flood myth"]
+  },
+  {
+    "id": "art-sculpture-marble",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "sculpture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "sculpture",
+    "categoryL3": "",
+    "statement": "Michelangelo's David was carved from a single block of Carrara marble that had been abandoned for 26 years after two other sculptors found it too difficult to work with.",
+    "quizQuestion": "Where does the marble used for Michelangelo's David come from?",
+    "correctAnswer": "Carrara, Italy",
+    "distractors": [
+      "Athens, Greece",
+      "Istanbul, Turkey",
+      "Cairo, Egypt",
+      "Paros, Greece",
+      "Rome, Italy",
+      "Madrid, Spain",
+      "Petra, Jordan",
+      "Vienna, Austria"
+    ],
+    "acceptableAnswers": [
+      "Carrara, Italy",
+      "Carrara",
+      "Italy"
+    ],
+    "explanation": "Michelangelo's David (1501–1504) was carved from a 5.17-metre block of Carrara marble known as 'the Giant.' It had been quarried in 1464 and partially worked by sculptors Agostino di Duccio and then Antonio Rossellino, both of whom abandoned it as defective. The block lay in storage for 26 years before a 26-year-old Michelangelo was commissioned in 1501 and completed it in 1504.",
+    "wowFactor": "Michelangelo was 26 years old when he started carving David from a marble block two other sculptors had abandoned as impossible — and finished it in three years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "From which Italian city's quarries was the marble for Michelangelo's David excavated?",
+        "answer": "Carrara",
+        "distractors": [
+          "Paros",
+          "Rome",
+          "Athens"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Carrara marble block used for Michelangelo's David was abandoned for how many years before he carved it?",
+        "answer": "26 years",
+        "distractors": [
+          "5 years",
+          "100 years",
+          "10 years"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Michelangelo's David was carved from a marble block previously abandoned by two other sculptors.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Michelangelo carved David from a block of ___ marble that had been abandoned for 26 years.",
+        "answer": "Carrara",
+        "distractors": [
+          "Athenian",
+          "Roman",
+          "Parian"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/David_(Michelangelo)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Michelangelo chipping away at a towering white marble block in a Florentine workshop, David's face emerging from stone, pixel art dramatic lighting.",
+    "tags": ["sculpture", "Michelangelo", "David", "Carrara marble", "Florence"]
+  },
+  {
+    "id": "art-sculpture-lost-wax",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "sculpture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "sculpture",
+    "categoryL3": "",
+    "statement": "Ancient Greek and Roman bronze sculptures were made using the lost-wax casting technique, where a wax model is coated in clay, heated to melt out the wax, then molten bronze is poured in.",
+    "quizQuestion": "Which ancient technique for casting bronze sculptures involves melting out a wax model?",
+    "correctAnswer": "Lost-wax casting",
+    "distractors": [
+      "Sand casting",
+      "Die casting",
+      "Centrifugal casting",
+      "Slip casting",
+      "Electroforming",
+      "Investment casting",
+      "Open mould casting",
+      "Ceramic mould casting"
+    ],
+    "acceptableAnswers": [
+      "Lost-wax casting",
+      "cire perdue",
+      "investment casting"
+    ],
+    "explanation": "Lost-wax casting (cire perdue) dates to at least 3500 BCE and was the primary method for making large bronze sculptures in ancient Greece and Rome. A wax model (or wax-coated clay core) is encased in a ceramic shell, heated in a kiln so the wax melts out, and molten bronze is poured into the cavity. After cooling, the ceramic shell is broken away. The original wax is 'lost,' making each casting unique.",
+    "wowFactor": "Every ancient Greek bronze statue required destroying the original wax sculpture — there could only ever be one bronze. This is why ancient bronze originals are so rare.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which 5,000-year-old bronze casting technique involves heating out a wax model inside a clay shell?",
+        "answer": "Lost-wax casting",
+        "distractors": [
+          "Sand casting",
+          "Die casting",
+          "Slip casting"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Lost-wax casting (cire perdue) was used by ancient Greeks to make sculptures in which metal?",
+        "answer": "Bronze",
+        "distractors": [
+          "Marble",
+          "Gold",
+          "Iron"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Lost-wax casting involves melting a wax model inside a clay shell and filling it with bronze.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ancient Greek bronze statues were made by ___ casting, where a wax model is melted out and replaced with metal.",
+        "answer": "Lost-wax",
+        "distractors": [
+          "sand",
+          "die",
+          "slip"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lost-wax_casting",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An ancient Greek craftsman pouring molten bronze into a clay mould, wax melting out below, a finished bronze figure beside them, pixel art forge.",
+    "tags": ["sculpture", "lost-wax casting", "bronze", "ancient Greece", "technique"]
+  },
+  {
+    "id": "art-sculpture-venus",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "sculpture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "sculpture",
+    "categoryL3": "",
+    "statement": "The Venus of Willendorf, a tiny 11 cm limestone figurine carved around 25,000 BCE, is one of the world's oldest sculptures and may represent a fertility goddess.",
+    "quizQuestion": "Approximately how old is the Venus of Willendorf, one of the oldest known sculptures?",
+    "correctAnswer": "About 25,000 years",
+    "distractors": [
+      "About 5,000 years",
+      "Around 2,000 years",
+      "About 10,000 years",
+      "Around 50,000 years",
+      "About 3,500 years",
+      "Around 15,000 years",
+      "About 100,000 years",
+      "Around 8,000 years"
+    ],
+    "acceptableAnswers": [
+      "About 25,000 years",
+      "25,000 BCE",
+      "around 25,000 years old"
+    ],
+    "explanation": "The Venus of Willendorf was discovered in 1908 in Austria and is dated to approximately 25,000–30,000 BCE (Upper Palaeolithic). It is 11.1 cm tall, carved from oolitic limestone, and painted with red ochre. Its exaggerated female features (prominent breasts, hips, and belly) have led most scholars to interpret it as a fertility figure or goddess idol. It is one of the world's earliest known examples of figurative art.",
+    "wowFactor": "The Venus of Willendorf is a tiny fertility idol carved 25,000 years ago — 20,000 years before the first cities existed and older than written language by 20,000 years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How old is the Venus of Willendorf, one of the world's oldest known sculptures?",
+        "answer": "About 25,000 years",
+        "distractors": [
+          "About 5,000 years",
+          "Around 10,000 years",
+          "Around 50,000 years"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Venus of Willendorf's exaggerated female features have led scholars to interpret it as a what?",
+        "answer": "Fertility goddess idol",
+        "distractors": [
+          "Royal portrait",
+          "Hunting trophy",
+          "Ceremonial weight"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Venus of Willendorf is approximately 25,000 years old, making it one of the oldest sculptures.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Venus of Willendorf is a ___ cm limestone figurine carved around 25,000 BCE — one of the world's oldest sculptures.",
+        "answer": "11",
+        "distractors": [
+          "50",
+          "30",
+          "100"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Venus_of_Willendorf",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A tiny round limestone figurine with exaggerated curves held in a human hand for scale, red ochre pigment visible on its surface, pixel art.",
+    "tags": ["sculpture", "Venus of Willendorf", "Palaeolithic", "fertility", "ancient art"]
+  }
+]

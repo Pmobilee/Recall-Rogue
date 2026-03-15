@@ -1,0 +1,177 @@
+{
+  "domain": "natural_sciences",
+  "batchIndex": 1,
+  "totalBatches": 3,
+  "entities": [
+    {
+      "qid": "Q8081",
+      "label": "tornado",
+      "description": "violently rotating column of air that is in contact with both the earth's surface and a cumulonimbus cloud in the air",
+      "subcategory": "biology_organisms",
+      "sitelinks": 169,
+      "monthlyPageviews": 84500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q756",
+      "label": "plant",
+      "description": "living thing in the kingdom of photosynthetic eukaryotes",
+      "subcategory": "botany_plants",
+      "sitelinks": 264,
+      "monthlyPageviews": 132000,
+      "properties": {
+        "taxonName": "Plantae"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q283",
+      "label": "water",
+      "description": "chemical compound whose molecules are formed by two hydrogen atoms and one oxygen atom",
+      "subcategory": "chemistry_elements",
+      "sitelinks": 323,
+      "monthlyPageviews": 161500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q7937",
+      "label": "climate",
+      "description": "long-term statistical characterization of atmospheric conditions in a region, typically averaged over periods of 30 years or more",
+      "subcategory": "ecology_environment",
+      "sitelinks": 185,
+      "monthlyPageviews": 92500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q332",
+      "label": "Neptune",
+      "description": "eighth and farthest planet from the Sun in the Solar System, mainly composed of ice and rock",
+      "subcategory": "geology_earth",
+      "sitelinks": 248,
+      "monthlyPageviews": 124000,
+      "properties": {
+        "discoverer": "Q104154",
+        "orbitalPeriod": "+164.8"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q3196",
+      "label": "fire",
+      "description": "rapid oxidation of a material; phenomenon that emits light and heat",
+      "subcategory": "materials_engineering",
+      "sitelinks": 245,
+      "monthlyPageviews": 122500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q2",
+      "label": "Earth",
+      "description": "third planet from the Sun in the Solar System",
+      "subcategory": "physics_mechanics",
+      "sitelinks": 365,
+      "monthlyPageviews": 182500,
+      "properties": {
+        "orbitalPeriod": "+365.256363004",
+        "inception": "-4540000000-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q13188",
+      "label": "pomegranate",
+      "description": "fruit-bearing deciduous shrub",
+      "subcategory": "biology_organisms",
+      "sitelinks": 134,
+      "monthlyPageviews": 67000,
+      "properties": {
+        "taxonName": "Punica granatum",
+        "conservationStatus": "Q211005"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q4421",
+      "label": "forest",
+      "description": "dense collection of trees covering a relatively large area",
+      "subcategory": "botany_plants",
+      "sitelinks": 230,
+      "monthlyPageviews": 115000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q111",
+      "label": "Mars",
+      "description": "fourth planet from the Solar System, tellurian and orange-red due to iron oxide",
+      "subcategory": "chemistry_elements",
+      "sitelinks": 286,
+      "monthlyPageviews": 143000,
+      "properties": {
+        "orbitalPeriod": "+686.980",
+        "inception": "-4540000000-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q125928",
+      "label": "climate change",
+      "description": "human-caused changes to climate on Earth",
+      "subcategory": "ecology_environment",
+      "sitelinks": 130,
+      "monthlyPageviews": 65000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q8072",
+      "label": "volcano",
+      "description": "natural, surface vent or fissure usually in a mountainous form",
+      "subcategory": "geology_earth",
+      "sitelinks": 232,
+      "monthlyPageviews": 116000,
+      "properties": {
+        "material": "Q108689"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q7860",
+      "label": "nature",
+      "description": "natural, physical, or material world and its phenomena",
+      "subcategory": "materials_engineering",
+      "sitelinks": 224,
+      "monthlyPageviews": 112000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q525",
+      "label": "Sun",
+      "description": "star at the centre of the Solar System",
+      "subcategory": "physics_mechanics",
+      "sitelinks": 354,
+      "monthlyPageviews": 177000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q36101",
+      "label": "koala",
+      "description": "arboreal herbivorous marsupial native to Australia",
+      "subcategory": "biology_organisms",
+      "sitelinks": 129,
+      "monthlyPageviews": 64500,
+      "properties": {
+        "taxonName": "Phascolarctos cinereus",
+        "conservationStatus": "Q278113",
+        "startDate": "-700000-00-00T00:00:00Z"
+      },
+      "processed": false
+    }
+  ]
+}

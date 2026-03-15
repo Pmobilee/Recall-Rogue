@@ -1,0 +1,2347 @@
+[
+  {
+    "id": "science-water-boiling-point",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "chemistry_elements",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "chemistry_elements",
+    "categoryL3": "",
+    "statement": "Water boils at 100 degrees Celsius (212°F) at standard atmospheric pressure.",
+    "quizQuestion": "At what temperature does water boil at sea level?",
+    "correctAnswer": "100°C",
+    "distractors": [
+      "80°C",
+      "120°C",
+      "90°C",
+      "110°C",
+      "75°C",
+      "150°C",
+      "212°C",
+      "50°C"
+    ],
+    "acceptableAnswers": [
+      "100 degrees Celsius",
+      "100°C",
+      "212°F",
+      "373 K"
+    ],
+    "explanation": "Water boils at exactly 100°C (212°F) at 1 atmosphere of pressure (sea level). At higher altitudes where pressure is lower, water boils at a lower temperature — which is why cooking takes longer in the mountains.",
+    "wowFactor": "Water on Mount Everest boils at only about 70°C due to lower air pressure — so you couldn't make a proper cup of tea at the summit.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "At what temperature does water boil at sea level?",
+        "answer": "100°C",
+        "distractors": [
+          "80°C",
+          "120°C",
+          "90°C"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What happens to water's boiling point at higher altitudes?",
+        "answer": "It decreases",
+        "distractors": [
+          "It increases",
+          "It stays the same",
+          "It becomes unstable"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Water boils at 100 degrees Celsius at sea level.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Water boils at ___ degrees Celsius at standard atmospheric pressure.",
+        "answer": "100",
+        "distractors": [
+          "80",
+          "120",
+          "90"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Water",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pot of water over a flame in pixel art, bubbles rising vigorously from the base with steam curling upward into the air.",
+    "tags": [
+      "water",
+      "boiling point",
+      "chemistry",
+      "states of matter",
+      "H2O"
+    ]
+  },
+  {
+    "id": "science-water-formula",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "chemistry_elements",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "chemistry_elements",
+    "categoryL3": "",
+    "statement": "Water is composed of two hydrogen atoms bonded to one oxygen atom, giving it the formula H2O.",
+    "quizQuestion": "What is the chemical formula for water?",
+    "correctAnswer": "H2O",
+    "distractors": [
+      "HO2",
+      "H2O2",
+      "OH",
+      "H3O",
+      "O2H",
+      "HO",
+      "2H+O",
+      "H3O2"
+    ],
+    "acceptableAnswers": [
+      "H2O",
+      "H₂O"
+    ],
+    "explanation": "Water (H2O) consists of two hydrogen atoms covalently bonded to one oxygen atom. The molecule has a bent shape due to the lone electron pairs on oxygen, giving water its polarity and unique properties like surface tension and high boiling point.",
+    "wowFactor": "Water's bent molecular shape makes it a polar molecule — and that quirk is responsible for nearly all of water's amazing properties, from dissolving salt to forming raindrops.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the chemical formula for water?",
+        "answer": "H2O",
+        "distractors": [
+          "HO2",
+          "H2O2",
+          "H3O"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many hydrogen atoms are in one molecule of water?",
+        "answer": "2",
+        "distractors": [
+          "1",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Water's chemical formula is H2O.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The chemical formula for water is ___.",
+        "answer": "H2O",
+        "distractors": [
+          "H2O2",
+          "HO2",
+          "CO2"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 4,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Water",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A water molecule diagram in pixel art showing a large red oxygen atom with two smaller white hydrogen atoms bonded to it at an angle.",
+    "tags": [
+      "water",
+      "H2O",
+      "chemistry",
+      "molecules",
+      "hydrogen",
+      "oxygen"
+    ]
+  },
+  {
+    "id": "science-einstein-relativity",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Albert Einstein published his Special Theory of Relativity in 1905, introducing E=mc².",
+    "quizQuestion": "What famous equation did Einstein introduce in his 1905 Special Theory of Relativity?",
+    "correctAnswer": "E=mc²",
+    "distractors": [
+      "F=ma",
+      "E=hf",
+      "PV=nRT",
+      "a²+b²=c²",
+      "F=Gm₁m₂/r²",
+      "ΔE·Δt≥ℏ/2",
+      "v=at",
+      "v = d/t"
+    ],
+    "acceptableAnswers": [
+      "E=mc²",
+      "E = mc squared",
+      "mass-energy equivalence"
+    ],
+    "explanation": "Einstein's 1905 paper 'Does the Inertia of a Body Depend Upon Its Energy Content?' introduced E=mc², showing that mass and energy are equivalent. 'c' is the speed of light (~3×10⁸ m/s), so even tiny amounts of mass contain enormous energy.",
+    "wowFactor": "E=mc² means that 1 gram of matter, if fully converted to energy, would release about 90 trillion joules — equivalent to a nuclear bomb.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What equation came from Einstein's Special Theory of Relativity?",
+        "answer": "E=mc²",
+        "distractors": [
+          "F=ma",
+          "E=hf",
+          "F=Gm₁m₂/r²"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What do the letters 'c' represent in Einstein's equation E=mc²?",
+        "answer": "Speed of light",
+        "distractors": [
+          "Speed of sound",
+          "Charge of electron",
+          "Gravitational constant"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: E=mc² comes from Einstein's Special Theory of Relativity.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Einstein's equation E=___ shows that mass and energy are equivalent.",
+        "answer": "mc²",
+        "distractors": [
+          "hf",
+          "ma",
+          "Gm/r²"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Special_relativity",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A wild-haired scientist writing E=mc² on a blackboard in pixel art, equations and diagrams filling the background chalkboard.",
+    "tags": [
+      "Einstein",
+      "relativity",
+      "E=mc²",
+      "physics",
+      "energy"
+    ]
+  },
+  {
+    "id": "science-einstein-nobel",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Einstein won the 1921 Nobel Prize in Physics for his explanation of the photoelectric effect, not for relativity.",
+    "quizQuestion": "What discovery earned Einstein the Nobel Prize in Physics?",
+    "correctAnswer": "Photoelectric effect",
+    "distractors": [
+      "Theory of relativity",
+      "E=mc²",
+      "Black hole theory",
+      "Gravitational waves",
+      "Quantum entanglement",
+      "Nuclear fission",
+      "Brownian motion",
+      "General relativity"
+    ],
+    "acceptableAnswers": [
+      "photoelectric effect",
+      "the photoelectric effect"
+    ],
+    "explanation": "Despite being famous for relativity, Einstein's Nobel Prize was awarded for his 1905 paper explaining the photoelectric effect — that light comes in discrete quanta (photons). This was a key foundation of quantum mechanics.",
+    "wowFactor": "One of the greatest scientific minds of all time won his Nobel Prize for something most people have never heard of — not the theory that made him famous.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What discovery won Einstein the Nobel Prize in Physics?",
+        "answer": "Photoelectric effect",
+        "distractors": [
+          "Special relativity",
+          "General relativity",
+          "Nuclear fission"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What year did Einstein receive his Nobel Prize in Physics?",
+        "answer": "1921",
+        "distractors": [
+          "1905",
+          "1915",
+          "1933"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Einstein won his Nobel Prize for explaining the photoelectric effect, not relativity.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Einstein won the Nobel Prize for explaining the ___ effect.",
+        "answer": "photoelectric",
+        "distractors": [
+          "gravitational",
+          "Doppler",
+          "thermal"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Albert_Einstein",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art scene of a scientist with a Nobel medal standing next to a diagram of light striking metal and releasing electrons.",
+    "tags": [
+      "Einstein",
+      "Nobel Prize",
+      "photoelectric effect",
+      "physics",
+      "quantum mechanics"
+    ]
+  },
+  {
+    "id": "science-einstein-born",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Albert Einstein was born in Ulm, Germany in 1879 and later became a US citizen in 1940.",
+    "quizQuestion": "Where was Albert Einstein born?",
+    "correctAnswer": "Ulm, Germany",
+    "distractors": [
+      "Berlin, Germany",
+      "Zurich, Switzerland",
+      "Vienna, Austria",
+      "Munich, Germany",
+      "Princeton, USA",
+      "Bern, Switzerland",
+      "Frankfurt, Germany",
+      "Zurich, Switzerland"
+    ],
+    "acceptableAnswers": [
+      "Ulm",
+      "Ulm, Germany",
+      "Germany"
+    ],
+    "explanation": "Einstein was born on March 14, 1879, in Ulm, in the Kingdom of Württemberg in the German Empire. He later studied in Switzerland, became a Swiss citizen, and after fleeing Nazi Germany, settled in the United States and became a citizen in 1940.",
+    "wowFactor": "Einstein was reportedly told as a child that he would never amount to anything — he began speaking unusually late and was considered slow by his teachers.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where was Albert Einstein born?",
+        "answer": "Ulm, Germany",
+        "distractors": [
+          "Berlin, Germany",
+          "Zurich, Switzerland",
+          "Vienna, Austria"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What year did Einstein become an American citizen?",
+        "answer": "1940",
+        "distractors": [
+          "1932",
+          "1945",
+          "1921"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Einstein was born in Ulm, Germany.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Einstein was born in ___, Germany in 1879.",
+        "answer": "Ulm",
+        "distractors": [
+          "Berlin",
+          "Munich",
+          "Frankfurt"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Albert_Einstein",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art street scene in a 19th-century German town with cobblestones and timbered buildings, a small child playing near a doorway.",
+    "tags": [
+      "Einstein",
+      "biography",
+      "Germany",
+      "physics",
+      "history of science"
+    ]
+  },
+  {
+    "id": "science-gravity-acceleration",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Earth's gravitational acceleration at the surface is approximately 9.8 meters per second squared (m/s²).",
+    "quizQuestion": "What is the value of gravitational acceleration on Earth's surface?",
+    "correctAnswer": "9.8 m/s²",
+    "distractors": [
+      "1.6 m/s²",
+      "3.7 m/s²",
+      "24.8 m/s²",
+      "5.0 m/s²",
+      "15.0 m/s²",
+      "6.5 m/s²",
+      "20.0 m/s²",
+      "12.0 m/s²"
+    ],
+    "acceptableAnswers": [
+      "9.8 m/s²",
+      "9.81 m/s²",
+      "~10 m/s²",
+      "9.8 meters per second squared"
+    ],
+    "explanation": "The standard value of gravitational acceleration (g) at Earth's surface is 9.80665 m/s², commonly rounded to 9.8. This means a freely falling object accelerates at 9.8 m/s every second it falls. Gravity is weaker at the equator and at altitude.",
+    "wowFactor": "A penny dropped from any height follows the same acceleration as a bowling ball — all objects fall at the same rate regardless of mass, something Galileo proved by reportedly dropping weights from the Leaning Tower of Pisa.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is Earth's gravitational acceleration at the surface?",
+        "answer": "9.8 m/s²",
+        "distractors": [
+          "1.6 m/s²",
+          "3.7 m/s²",
+          "24.8 m/s²"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the gravitational acceleration on the Moon's surface?",
+        "answer": "1.6 m/s²",
+        "distractors": [
+          "9.8 m/s²",
+          "3.7 m/s²",
+          "4.9 m/s²"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Earth's surface gravity is approximately 9.8 m/s².",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Earth's gravitational acceleration at the surface is approximately ___ m/s².",
+        "answer": "9.8",
+        "distractors": [
+          "1.6",
+          "3.7",
+          "24.8"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gravitational_acceleration",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An apple falling from a tree in pixel art, with a dashed acceleration arrow pointing down and a small number label '9.8 m/s²'.",
+    "tags": [
+      "gravity",
+      "acceleration",
+      "physics",
+      "Earth",
+      "free fall"
+    ]
+  },
+  {
+    "id": "science-gravity-newton",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Isaac Newton formulated the law of universal gravitation, stating every mass attracts every other mass.",
+    "quizQuestion": "Who formulated the law of universal gravitation?",
+    "correctAnswer": "Isaac Newton",
+    "distractors": [
+      "Albert Einstein",
+      "Galileo Galilei",
+      "Johannes Kepler",
+      "Robert Hooke",
+      "Gottfried Leibniz",
+      "Edmund Halley",
+      "Henry Cavendish",
+      "James Clerk Maxwell"
+    ],
+    "acceptableAnswers": [
+      "Newton",
+      "Isaac Newton",
+      "Sir Isaac Newton"
+    ],
+    "explanation": "Newton published his law of universal gravitation in 'Principia Mathematica' (1687), stating that every mass attracts every other mass with a force proportional to their masses and inversely proportional to the square of the distance between them.",
+    "wowFactor": "Newton reportedly developed his theory of gravity in just 18 months while Cambridge University was closed during the Great Plague — isolation was incredibly productive for him.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who formulated the law of universal gravitation?",
+        "answer": "Isaac Newton",
+        "distractors": [
+          "Albert Einstein",
+          "Galileo",
+          "Johannes Kepler"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What book did Newton publish his law of universal gravitation in?",
+        "answer": "Principia Mathematica",
+        "distractors": [
+          "Opticks",
+          "The Almagest",
+          "De Revolutionibus"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Isaac Newton formulated the law of universal gravitation.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Isaac ___ formulated the law of universal gravitation in 1687.",
+        "answer": "Newton",
+        "distractors": [
+          "Einstein",
+          "Galileo",
+          "Kepler"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A man in 17th-century clothing sitting under an apple tree in pixel art, an apple falling nearby, with a quill and notebook in hand.",
+    "tags": [
+      "gravity",
+      "Newton",
+      "physics",
+      "universal gravitation",
+      "history of science"
+    ]
+  },
+  {
+    "id": "science-gravity-orbit",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Gravity keeps planets in orbit by continuously pulling them toward the Sun as they travel forward.",
+    "quizQuestion": "What force keeps planets in orbit around the Sun?",
+    "correctAnswer": "Gravity",
+    "distractors": [
+      "Magnetic force",
+      "Nuclear force",
+      "Electrostatic force",
+      "Solar wind",
+      "Dark energy",
+      "Centrifugal force",
+      "Friction",
+      "Tidal force"
+    ],
+    "acceptableAnswers": [
+      "gravity",
+      "gravitational force",
+      "the Sun's gravity"
+    ],
+    "explanation": "Gravity provides the centripetal force that keeps planets moving in elliptical orbits. Planets are perpetually 'falling' toward the Sun, but their orbital velocity causes them to continuously miss, resulting in stable curved paths.",
+    "wowFactor": "An orbit is essentially just falling while missing — a planet is falling toward the Sun endlessly, but keeps moving so fast sideways that it perpetually misses.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What force keeps planets orbiting the Sun?",
+        "answer": "Gravity",
+        "distractors": [
+          "Magnetic force",
+          "Nuclear force",
+          "Solar wind"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What shape are planetary orbits around the Sun?",
+        "answer": "Elliptical",
+        "distractors": [
+          "Circular",
+          "Parabolic",
+          "Straight line"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Gravity is the force that keeps planets in their orbits.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ keeps planets in orbit by continuously pulling them toward the Sun.",
+        "answer": "Gravity",
+        "distractors": [
+          "Magnetism",
+          "Nuclear force",
+          "Solar wind"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gravity",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A curved orbital path around a glowing star in pixel art with a planet following the path, gravity arrows pointing inward toward the star.",
+    "tags": [
+      "gravity",
+      "orbit",
+      "planets",
+      "physics",
+      "solar system"
+    ]
+  },
+  {
+    "id": "science-dna-double-helix",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_organisms",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_organisms",
+    "categoryL3": "",
+    "statement": "DNA has a double helix structure, discovered by Watson and Crick with Franklin's X-ray data in 1953.",
+    "quizQuestion": "What is the shape of DNA's molecular structure?",
+    "correctAnswer": "Double helix",
+    "distractors": [
+      "Single helix",
+      "Ladder",
+      "Ring",
+      "Zigzag chain",
+      "Sphere",
+      "Flat sheet",
+      "Triple helix",
+      "Triple helix"
+    ],
+    "acceptableAnswers": [
+      "double helix",
+      "double-helix structure",
+      "twisted ladder"
+    ],
+    "explanation": "In 1953, James Watson and Francis Crick published the double helix structure of DNA, using critical X-ray crystallography data produced by Rosalind Franklin. The structure — two intertwined strands with base pairs connecting them — explained how genetic information is stored and copied.",
+    "wowFactor": "If you uncoiled all the DNA from a single human cell, it would stretch about 2 meters long — yet it fits inside a nucleus smaller than a grain of sand.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the shape of a DNA molecule?",
+        "answer": "Double helix",
+        "distractors": [
+          "Single helix",
+          "Flat ladder",
+          "Ring"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who discovered the double helix structure of DNA in 1953?",
+        "answer": "Watson and Crick",
+        "distractors": [
+          "Darwin and Mendel",
+          "Franklin and Wilkins",
+          "Pauling and Corey"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: DNA has a double helix structure.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "DNA's molecular structure is a double ___.",
+        "answer": "helix",
+        "distractors": [
+          "ladder",
+          "ring",
+          "spiral"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/DNA",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing blue-white double helix strand of DNA in pixel art, twisting upward with colored base pair rungs connecting the two strands.",
+    "tags": [
+      "DNA",
+      "double helix",
+      "biology",
+      "genetics",
+      "Watson and Crick"
+    ]
+  },
+  {
+    "id": "science-dna-bases",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_organisms",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_organisms",
+    "categoryL3": "",
+    "statement": "DNA is made up of four bases: adenine (A), thymine (T), guanine (G), and cytosine (C).",
+    "quizQuestion": "How many different bases make up DNA?",
+    "correctAnswer": "Four",
+    "distractors": [
+      "Two",
+      "Three",
+      "Six",
+      "Five",
+      "Eight",
+      "Ten",
+      "Seven",
+      "Five"
+    ],
+    "acceptableAnswers": [
+      "4",
+      "four",
+      "four bases"
+    ],
+    "explanation": "The four DNA bases pair in specific combinations: adenine pairs with thymine (A-T), and guanine pairs with cytosine (G-C). This complementary base pairing is what allows DNA to be accurately copied during cell division.",
+    "wowFactor": "The entire genetic blueprint for a human — 3 billion base pairs — is spelled out using only 4 chemical 'letters'. It's the most information-dense storage medium ever known.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many bases make up DNA's genetic code?",
+        "answer": "Four",
+        "distractors": [
+          "Two",
+          "Six",
+          "Eight"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which DNA base pairs with adenine (A)?",
+        "answer": "Thymine (T)",
+        "distractors": [
+          "Guanine (G)",
+          "Cytosine (C)",
+          "Uracil (U)"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: DNA is composed of four chemical bases.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "DNA is made up of ___ bases: adenine, thymine, guanine, and cytosine.",
+        "answer": "four",
+        "distractors": [
+          "three",
+          "six",
+          "two"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/DNA",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A close-up pixel art view of DNA base pairs — color-coded A, T, G, C blocks connecting the two helix strands like colorful rungs on a ladder.",
+    "tags": [
+      "DNA",
+      "bases",
+      "adenine",
+      "thymine",
+      "genetics",
+      "biology"
+    ]
+  },
+  {
+    "id": "science-dna-genes",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_organisms",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_organisms",
+    "categoryL3": "",
+    "statement": "Genes are segments of DNA that encode instructions for building proteins in living organisms.",
+    "quizQuestion": "What do genes in DNA encode instructions for?",
+    "correctAnswer": "Building proteins",
+    "distractors": [
+      "Building cells",
+      "Creating energy",
+      "Forming bones",
+      "Making blood",
+      "Producing fat",
+      "Building DNA",
+      "Creating neurons",
+      "Building RNA only"
+    ],
+    "acceptableAnswers": [
+      "proteins",
+      "building proteins",
+      "protein synthesis"
+    ],
+    "explanation": "Genes are sequences of DNA that serve as templates for making proteins. The sequence of DNA bases is transcribed into RNA and then translated into a specific sequence of amino acids, forming a functional protein. Most biological functions depend on proteins.",
+    "wowFactor": "The human genome contains about 20,000 to 25,000 protein-coding genes — but only about 1.5% of human DNA actually codes for proteins. The rest was once called 'junk DNA' but is now known to have regulatory functions.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What do genes encode instructions for building?",
+        "answer": "Proteins",
+        "distractors": [
+          "Cells",
+          "Bones",
+          "Energy"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the process called when DNA instructions are used to build proteins?",
+        "answer": "Protein synthesis",
+        "distractors": [
+          "Photosynthesis",
+          "Cell division",
+          "Transcription only"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Genes are segments of DNA that encode instructions for making proteins.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Genes are DNA segments that encode instructions for building ___.",
+        "answer": "proteins",
+        "distractors": [
+          "cells",
+          "carbohydrates",
+          "lipids"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gene",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A DNA strand in pixel art with highlighted gene segments, arrows showing transcription to RNA and then to a folded protein structure.",
+    "tags": [
+      "DNA",
+      "genes",
+      "proteins",
+      "genetics",
+      "biology"
+    ]
+  },
+  {
+    "id": "science-periodic-table-mendeleev",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "chemistry_elements",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "chemistry_elements",
+    "categoryL3": "",
+    "statement": "Dmitri Mendeleev created the first widely recognized periodic table of elements in 1869.",
+    "quizQuestion": "Who created the first widely recognized periodic table of elements?",
+    "correctAnswer": "Dmitri Mendeleev",
+    "distractors": [
+      "Antoine Lavoisier",
+      "John Dalton",
+      "Robert Boyle",
+      "Henry Moseley",
+      "Marie Curie",
+      "Jöns Berzelius",
+      "Humphry Davy",
+      "Niels Bohr"
+    ],
+    "acceptableAnswers": [
+      "Mendeleev",
+      "Dmitri Mendeleev"
+    ],
+    "explanation": "Russian chemist Dmitri Mendeleev published his periodic table in 1869, arranging elements by atomic weight and identifying patterns. He famously left gaps for undiscovered elements and predicted their properties — all three were later found: gallium, scandium, and germanium.",
+    "wowFactor": "Mendeleev predicted the existence and properties of elements that hadn't been discovered yet — and was proven right when they were found years later.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who created the first widely recognized periodic table?",
+        "answer": "Dmitri Mendeleev",
+        "distractors": [
+          "Antoine Lavoisier",
+          "John Dalton",
+          "Marie Curie"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What year did Mendeleev publish his periodic table?",
+        "answer": "1869",
+        "distractors": [
+          "1803",
+          "1911",
+          "1905"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mendeleev created the first widely recognized periodic table of elements.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ Mendeleev created the first widely recognized periodic table in 1869.",
+        "answer": "Dmitri",
+        "distractors": [
+          "Antoine",
+          "John",
+          "Robert"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Periodic_table",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A bearded 19th-century scientist writing a grid of elements on paper in pixel art, with some boxes left blank and question marks in them.",
+    "tags": [
+      "periodic table",
+      "Mendeleev",
+      "chemistry",
+      "elements",
+      "history of science"
+    ]
+  },
+  {
+    "id": "science-periodic-table-groups",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "chemistry_elements",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "chemistry_elements",
+    "categoryL3": "",
+    "statement": "Elements in the same column (group) of the periodic table share similar chemical properties.",
+    "quizQuestion": "What do elements in the same column of the periodic table share?",
+    "correctAnswer": "Similar chemical properties",
+    "distractors": [
+      "Same atomic mass",
+      "Same number of protons",
+      "Same melting point",
+      "Same physical state",
+      "Same color",
+      "Same density",
+      "Same discovery date",
+      "Same boiling point"
+    ],
+    "acceptableAnswers": [
+      "similar chemical properties",
+      "similar properties",
+      "the same number of valence electrons"
+    ],
+    "explanation": "Elements in the same group (vertical column) have the same number of valence electrons, giving them similar chemical behavior. For example, Group 1 (alkali metals) all react vigorously with water; Group 18 (noble gases) are all chemically unreactive.",
+    "wowFactor": "The periodic table's power is that it lets chemists predict how an element will behave before they even touch it — just knowing its position reveals its personality.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What do elements in the same group of the periodic table share?",
+        "answer": "Similar chemical properties",
+        "distractors": [
+          "Same atomic mass",
+          "Same melting point",
+          "Same physical state"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What do elements in the same row (period) of the periodic table share?",
+        "answer": "Same number of electron shells",
+        "distractors": [
+          "Same number of electrons",
+          "Same reactivity",
+          "Same melting point"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Elements in the same column of the periodic table share similar chemical properties.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Elements in the same ___ of the periodic table share similar chemical properties.",
+        "answer": "group",
+        "distractors": [
+          "period",
+          "row",
+          "section"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Group_(periodic_table)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A highlighted column of the periodic table in pixel art, elements glowing the same color to indicate shared properties, chemical symbols visible.",
+    "tags": [
+      "periodic table",
+      "groups",
+      "chemistry",
+      "chemical properties",
+      "elements"
+    ]
+  },
+  {
+    "id": "science-photosynthesis-equation",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "botany_plants",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "statement": "Photosynthesis converts carbon dioxide and water into glucose and oxygen using light energy.",
+    "quizQuestion": "What does photosynthesis convert into glucose and oxygen?",
+    "correctAnswer": "CO2 and water",
+    "distractors": [
+      "Oxygen and glucose",
+      "Nitrogen and water",
+      "Glucose and sunlight",
+      "Water and sugar",
+      "CO2 and oxygen",
+      "Minerals and sunlight",
+      "Water and nitrogen",
+      "CO2 and nitrogen"
+    ],
+    "acceptableAnswers": [
+      "carbon dioxide and water",
+      "CO2 and H2O",
+      "water and carbon dioxide"
+    ],
+    "explanation": "Photosynthesis: 6CO2 + 6H2O + light energy → C6H12O6 + 6O2. Plants absorb CO2 through tiny pores (stomata), take up water through roots, and use sunlight energy to drive the reaction in chloroplasts. The glucose produced is used for energy and growth.",
+    "wowFactor": "All the oxygen in Earth's atmosphere was produced by photosynthesis — before photosynthetic life evolved, Earth had almost no free oxygen at all.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What raw materials does photosynthesis combine to make glucose?",
+        "answer": "CO2 and water",
+        "distractors": [
+          "Oxygen and glucose",
+          "Nitrogen and water",
+          "Minerals and sunlight"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the gas released as a byproduct of photosynthesis?",
+        "answer": "Oxygen",
+        "distractors": [
+          "Carbon dioxide",
+          "Nitrogen",
+          "Hydrogen"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Photosynthesis converts CO2 and water into glucose and oxygen.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Photosynthesis uses light to convert CO2 and water into glucose and ___.",
+        "answer": "oxygen",
+        "distractors": [
+          "nitrogen",
+          "carbon dioxide",
+          "hydrogen"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Photosynthesis",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cartoon leaf in pixel art with sunlight arrows entering it, CO2 bubbles going in, and O2 bubbles and glucose symbols coming out.",
+    "tags": [
+      "photosynthesis",
+      "plants",
+      "biology",
+      "oxygen",
+      "glucose"
+    ]
+  },
+  {
+    "id": "science-photosynthesis-chlorophyll",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "botany_plants",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "statement": "Chlorophyll is the green pigment in plant cells that absorbs light energy for photosynthesis.",
+    "quizQuestion": "What pigment in plants absorbs light energy for photosynthesis?",
+    "correctAnswer": "Chlorophyll",
+    "distractors": [
+      "Melanin",
+      "Carotene",
+      "Hemoglobin",
+      "Anthocyanin",
+      "Xanthophyll",
+      "Lycopene",
+      "Retinal",
+      "Xanthophyll"
+    ],
+    "acceptableAnswers": [
+      "chlorophyll",
+      "chlorophyl"
+    ],
+    "explanation": "Chlorophyll, found in chloroplasts, absorbs primarily red and blue light while reflecting green — which is why plants appear green. It is the molecule that captures light energy and uses it to power the chemical reactions of photosynthesis.",
+    "wowFactor": "Chlorophyll is why plants are green — it absorbs red and blue light for energy but reflects the green light right back at your eyes.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What green pigment absorbs light energy for photosynthesis?",
+        "answer": "Chlorophyll",
+        "distractors": [
+          "Melanin",
+          "Carotene",
+          "Hemoglobin"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Why do chlorophyll-containing leaves appear green?",
+        "answer": "Chlorophyll reflects green light",
+        "distractors": [
+          "Chlorophyll absorbs green light",
+          "Leaves contain green water",
+          "Cells have a green membrane"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Chlorophyll is the pigment that gives plants their green color.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ is the green pigment in plant cells that absorbs light for photosynthesis.",
+        "answer": "Chlorophyll",
+        "distractors": [
+          "Melanin",
+          "Carotene",
+          "Anthocyanin"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chlorophyll",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section of a plant cell in pixel art with bright green chloroplasts glowing, sunlight beams entering from above.",
+    "tags": [
+      "chlorophyll",
+      "photosynthesis",
+      "plants",
+      "pigment",
+      "biology"
+    ]
+  },
+  {
+    "id": "science-photosynthesis-location",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "botany_plants",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "botany_plants",
+    "categoryL3": "",
+    "statement": "Photosynthesis takes place in chloroplasts, organelles found in the cells of green plants and algae.",
+    "quizQuestion": "In which organelle does photosynthesis take place?",
+    "correctAnswer": "Chloroplast",
+    "distractors": [
+      "Mitochondria",
+      "Nucleus",
+      "Ribosome",
+      "Vacuole",
+      "Cell wall",
+      "Endoplasmic reticulum",
+      "Lysosome",
+      "Golgi apparatus"
+    ],
+    "acceptableAnswers": [
+      "chloroplast",
+      "chloroplasts"
+    ],
+    "explanation": "Chloroplasts are double-membrane organelles containing chlorophyll. They are found in the cells of plants and algae, and are responsible for carrying out photosynthesis. Chloroplasts are thought to have originated as independent cyanobacteria engulfed by a larger cell.",
+    "wowFactor": "Chloroplasts were once free-living bacteria — billions of years ago they were engulfed by plant-ancestor cells in an event so successful that it transformed Earth's atmosphere.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which cell organelle does photosynthesis occur?",
+        "answer": "Chloroplast",
+        "distractors": [
+          "Mitochondria",
+          "Nucleus",
+          "Ribosome"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What organelle is the powerhouse of the cell and produces energy via respiration (NOT photosynthesis)?",
+        "answer": "Mitochondria",
+        "distractors": [
+          "Chloroplast",
+          "Ribosome",
+          "Nucleus"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Photosynthesis takes place in chloroplasts.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Photosynthesis occurs in ___, organelles found in plant and algae cells.",
+        "answer": "chloroplasts",
+        "distractors": [
+          "mitochondria",
+          "ribosomes",
+          "vacuoles"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chloroplast",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A plant cell in pixel art with several oval green chloroplasts glowing inside, light energy arrows entering through the cell wall.",
+    "tags": [
+      "chloroplast",
+      "photosynthesis",
+      "plants",
+      "cell organelles",
+      "biology"
+    ]
+  },
+  {
+    "id": "science-volcano-lava",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "geology_earth",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "geology_earth",
+    "categoryL3": "",
+    "statement": "Lava is molten rock (magma) that has erupted from a volcano and reached Earth's surface.",
+    "quizQuestion": "What is the term for molten rock after it reaches Earth's surface?",
+    "correctAnswer": "Lava",
+    "distractors": [
+      "Magma",
+      "Pumice",
+      "Obsidian",
+      "Basalt",
+      "Pyroclast",
+      "Tuff",
+      "Scoria",
+      "Granite"
+    ],
+    "acceptableAnswers": [
+      "lava"
+    ],
+    "explanation": "Magma is molten rock beneath Earth's surface; it becomes lava once it erupts onto the surface. Lava can flow as a river or erupt explosively. When it cools, lava forms igneous rocks such as basalt (from fluid lava) or obsidian (from fast-cooling lava).",
+    "wowFactor": "Lava can reach temperatures over 1,200°C — hot enough to melt most metals — yet some lava flows move slowly enough to walk away from.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is molten rock called after it reaches Earth's surface?",
+        "answer": "Lava",
+        "distractors": [
+          "Magma",
+          "Pumice",
+          "Basalt"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the term for molten rock while it is still underground?",
+        "answer": "Magma",
+        "distractors": [
+          "Lava",
+          "Obsidian",
+          "Basalt"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Lava is the name for magma that has reached Earth's surface.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "When magma erupts and reaches the surface, it is called ___.",
+        "answer": "lava",
+        "distractors": [
+          "obsidian",
+          "pumice",
+          "basalt"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lava",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Glowing orange-red lava flowing slowly down a dark volcanic slope in pixel art, cooling and darkening at the edges with gray-black crust.",
+    "tags": [
+      "volcano",
+      "lava",
+      "magma",
+      "geology",
+      "igneous rock"
+    ]
+  },
+  {
+    "id": "science-volcano-plate-tectonics",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "geology_earth",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "geology_earth",
+    "categoryL3": "",
+    "statement": "Most volcanoes form at tectonic plate boundaries where plates converge, diverge, or at hot spots.",
+    "quizQuestion": "Where do most volcanoes form?",
+    "correctAnswer": "Tectonic plate boundaries",
+    "distractors": [
+      "Deep ocean floors only",
+      "Mountain tops",
+      "Continental centers",
+      "Polar regions",
+      "Near rivers",
+      "Fault valleys",
+      "Desert regions",
+      "Equatorial regions"
+    ],
+    "acceptableAnswers": [
+      "tectonic plate boundaries",
+      "plate boundaries",
+      "at plate boundaries"
+    ],
+    "explanation": "About 75% of Earth's volcanoes are found at subduction zones (converging plates) or mid-ocean ridges (diverging plates). Hot spot volcanoes like Hawaii form over mantle plumes in the middle of plates. The 'Ring of Fire' encircling the Pacific is the most volcanically active region on Earth.",
+    "wowFactor": "The Ring of Fire, circling the Pacific Ocean, hosts 75% of the world's volcanoes and 90% of all earthquakes — it's essentially the most geologically active zone on the planet.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where do most volcanoes form on Earth?",
+        "answer": "Tectonic plate boundaries",
+        "distractors": [
+          "Continental centers",
+          "Mountain tops",
+          "Polar regions"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the name for the highly volcanic and seismic belt around the Pacific Ocean?",
+        "answer": "Ring of Fire",
+        "distractors": [
+          "Pacific Rim",
+          "Volcanic Arc",
+          "Fire Zone"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Most volcanoes form at tectonic plate boundaries.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Most volcanoes form at tectonic plate ___.",
+        "answer": "boundaries",
+        "distractors": [
+          "centers",
+          "ridges only",
+          "poles"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Volcano",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A world map in pixel art with glowing red volcano icons clustered along tectonic plate edges, especially ringing the Pacific Ocean.",
+    "tags": [
+      "volcano",
+      "plate tectonics",
+      "geology",
+      "Ring of Fire",
+      "earth science"
+    ]
+  },
+  {
+    "id": "science-volcano-supervolcano",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "geology_earth",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "geology_earth",
+    "categoryL3": "",
+    "statement": "A supervolcano can erupt 1,000 cubic kilometers or more of material — enough to cause global climate effects.",
+    "quizQuestion": "What is the term for a volcano capable of an eruption exceeding 1,000 cubic km?",
+    "correctAnswer": "Supervolcano",
+    "distractors": [
+      "Megavolcano",
+      "Shield volcano",
+      "Caldera volcano",
+      "Stratovolcano",
+      "Hypercano",
+      "Cinder cone",
+      "Composite volcano",
+      "Hypercano"
+    ],
+    "acceptableAnswers": [
+      "supervolcano",
+      "super volcano"
+    ],
+    "explanation": "Supervolcanoes, such as those at Yellowstone and Lake Toba, can produce eruptions thousands of times larger than ordinary volcanoes. The Toba eruption ~74,000 years ago may have caused a global volcanic winter that nearly wiped out human populations.",
+    "wowFactor": "The Toba supervolcano eruption 74,000 years ago may have reduced the entire human population to just a few thousand individuals, nearly driving our species to extinction.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What do we call a volcano capable of erupting 1,000+ cubic km of material?",
+        "answer": "Supervolcano",
+        "distractors": [
+          "Megavolcano",
+          "Shield volcano",
+          "Stratovolcano"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Where is one of the world's most famous active supervolcanoes located?",
+        "answer": "Yellowstone, USA",
+        "distractors": [
+          "Hawaii, USA",
+          "Iceland",
+          "Indonesia"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A supervolcano eruption can affect global climate.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A ___ can erupt over 1,000 cubic km of material, causing global climate effects.",
+        "answer": "supervolcano",
+        "distractors": [
+          "stratovolcano",
+          "shield volcano",
+          "cinder cone"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Supervolcano",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A massive caldera eruption in pixel art with enormous ash columns rising into a darkened sky, pyroclastic flows spreading across a landscape.",
+    "tags": [
+      "supervolcano",
+      "geology",
+      "eruption",
+      "Toba",
+      "Yellowstone"
+    ]
+  },
+  {
+    "id": "science-electricity-electrons",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Electricity is the flow of electric charge, typically carried by electrons moving through a conductor.",
+    "quizQuestion": "What particles carry electric charge in typical electrical conduction?",
+    "correctAnswer": "Electrons",
+    "distractors": [
+      "Protons",
+      "Neutrons",
+      "Photons",
+      "Ions only",
+      "Atoms",
+      "Quarks",
+      "Muons",
+      "Positrons"
+    ],
+    "acceptableAnswers": [
+      "electrons",
+      "free electrons"
+    ],
+    "explanation": "In metallic conductors, electricity flows when free electrons move through the material. Electrons are negatively charged, and conventional current direction is defined as opposite to electron flow. In solutions, ions carry the charge; in plasma, both ions and electrons do.",
+    "wowFactor": "Individual electrons in a wire move surprisingly slowly — only about 1 mm per second — yet electricity propagates through the circuit at nearly the speed of light.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What particles carry electrical charge in a metal conductor?",
+        "answer": "Electrons",
+        "distractors": [
+          "Protons",
+          "Neutrons",
+          "Photons"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is a material that allows electrons to flow through it easily?",
+        "answer": "Conductor",
+        "distractors": [
+          "Insulator",
+          "Semiconductor",
+          "Dielectric"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Electricity in a metal conductor is carried by electrons.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Electricity flows when ___ move through a conductor.",
+        "answer": "electrons",
+        "distractors": [
+          "protons",
+          "neutrons",
+          "photons"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Electricity",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A copper wire in pixel art cross-section with small blue electron dots flowing from left to right, sparks at connection points.",
+    "tags": [
+      "electricity",
+      "electrons",
+      "physics",
+      "conductors",
+      "electric charge"
+    ]
+  },
+  {
+    "id": "science-electricity-ohms-law",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Ohm's Law states that voltage equals current multiplied by resistance (V = IR).",
+    "quizQuestion": "What does Ohm's Law state about voltage, current, and resistance?",
+    "correctAnswer": "V = IR",
+    "distractors": [
+      "V = I/R",
+      "V = R/I",
+      "I = VR",
+      "V = I²R",
+      "R = VI",
+      "V = 2IR",
+      "I = V²/R",
+      "P = IV"
+    ],
+    "acceptableAnswers": [
+      "V = IR",
+      "V=IR",
+      "voltage equals current times resistance"
+    ],
+    "explanation": "Ohm's Law (V = IR) states that the voltage across a conductor equals the current through it multiplied by its resistance. Named after Georg Ohm (1827), it is fundamental to electrical circuit design. Higher resistance means less current for a given voltage.",
+    "wowFactor": "Ohm's Law is so fundamental that nearly every electronic device you use — from phones to car engines — relies on engineers calculating V = IR thousands of times in a design.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the formula stated by Ohm's Law?",
+        "answer": "V = IR",
+        "distractors": [
+          "V = I/R",
+          "I = VR",
+          "V = I²R"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What does 'R' represent in Ohm's Law (V = IR)?",
+        "answer": "Resistance",
+        "distractors": [
+          "Rate",
+          "Reactance",
+          "Radiation"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ohm's Law states that V = IR.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ohm's Law states that voltage (V) equals current (I) times ___ (R).",
+        "answer": "resistance",
+        "distractors": [
+          "radiation",
+          "reactance",
+          "rate"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ohm%27s_law",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A simple circuit diagram in pixel art with a battery, resistor, and ammeter, V=IR formula written prominently above in glowing text.",
+    "tags": [
+      "electricity",
+      "Ohm's Law",
+      "physics",
+      "voltage",
+      "resistance"
+    ]
+  },
+  {
+    "id": "science-electricity-lightning",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Lightning is a massive electrical discharge caused by charge separation within storm clouds.",
+    "quizQuestion": "What natural phenomenon is caused by electrical discharge in storm clouds?",
+    "correctAnswer": "Lightning",
+    "distractors": [
+      "Thunder",
+      "Aurora",
+      "Hail",
+      "Tornado",
+      "Fog",
+      "Rainbow",
+      "Snow",
+      "Wind"
+    ],
+    "acceptableAnswers": [
+      "lightning",
+      "a lightning bolt",
+      "lightning strike"
+    ],
+    "explanation": "In a thunderstorm, turbulence causes ice crystals and water droplets to collide, building up charge — positive at the top, negative at the bottom. When the charge difference is large enough, a massive discharge occurs, briefly heating the air to about 30,000 K — hotter than the Sun's surface.",
+    "wowFactor": "A single lightning bolt heats the surrounding air to about 30,000 K — five times hotter than the surface of the Sun — for a fraction of a second.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What natural phenomenon results from electrical discharge in storm clouds?",
+        "answer": "Lightning",
+        "distractors": [
+          "Thunder",
+          "Aurora",
+          "Tornado"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What causes the sound of thunder we hear after lightning?",
+        "answer": "Rapid air expansion from heat",
+        "distractors": [
+          "Clouds colliding",
+          "Electrical sound waves",
+          "Rain hitting the ground"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Lightning is caused by electrical discharge in storm clouds.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ is a massive electrical discharge caused by charge separation in storm clouds.",
+        "answer": "Lightning",
+        "distractors": [
+          "Thunder",
+          "Aurora",
+          "Hail"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lightning",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A dramatic pixel art storm scene with jagged lightning bolts forking from dark clouds to the ground, rain falling, and city silhouettes below.",
+    "tags": [
+      "lightning",
+      "electricity",
+      "storms",
+      "atmosphere",
+      "physics"
+    ]
+  },
+  {
+    "id": "science-diamond-hardness",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "materials_engineering",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "materials_engineering",
+    "categoryL3": "",
+    "statement": "Diamond is the hardest natural material on Earth, rating 10 on the Mohs hardness scale.",
+    "quizQuestion": "What is diamond's rating on the Mohs hardness scale?",
+    "correctAnswer": "10",
+    "distractors": [
+      "8",
+      "9",
+      "7",
+      "6",
+      "100",
+      "5",
+      "15",
+      "11"
+    ],
+    "acceptableAnswers": [
+      "10",
+      "ten",
+      "10/10"
+    ],
+    "explanation": "The Mohs scale rates minerals from 1 (talc) to 10 (diamond). Diamond is the hardest because its carbon atoms are all covalently bonded in a rigid tetrahedral lattice with no planes of weakness. Only a diamond can scratch another diamond.",
+    "wowFactor": "Diamond is so hard that only a diamond can scratch a diamond — and scientists have created materials even harder in a lab by compressing carbon under extreme pressure into new configurations.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is diamond's rating on the Mohs hardness scale?",
+        "answer": "10",
+        "distractors": [
+          "9",
+          "8",
+          "7"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What natural mineral rates 1 (softest) on the Mohs hardness scale?",
+        "answer": "Talc",
+        "distractors": [
+          "Quartz",
+          "Calcite",
+          "Gypsum"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Diamond rates 10 on the Mohs hardness scale.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Diamond rates ___ on the Mohs hardness scale, making it the hardest natural material.",
+        "answer": "10",
+        "distractors": [
+          "9",
+          "8",
+          "100"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Diamond",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A sparkling clear diamond crystal in pixel art resting on a mineral hardness scale chart, glinting with rainbow light.",
+    "tags": [
+      "diamond",
+      "Mohs scale",
+      "hardness",
+      "materials",
+      "carbon"
+    ]
+  },
+  {
+    "id": "science-diamond-carbon",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "materials_engineering",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "materials_engineering",
+    "categoryL3": "",
+    "statement": "Diamond is made of pure carbon atoms arranged in a crystal lattice — the same element as graphite.",
+    "quizQuestion": "What element makes up diamond?",
+    "correctAnswer": "Carbon",
+    "distractors": [
+      "Silicon",
+      "Aluminum",
+      "Quartz",
+      "Beryllium",
+      "Boron",
+      "Nitrogen",
+      "Titanium",
+      "Graphene only"
+    ],
+    "acceptableAnswers": [
+      "carbon",
+      "pure carbon",
+      "C"
+    ],
+    "explanation": "Both diamond and graphite (pencil lead) are made entirely of carbon atoms. In diamond, each carbon bonds to four others in a tetrahedral arrangement, creating extreme hardness. In graphite, carbon bonds in flat sheets that slide over each other easily — making it soft and good for writing.",
+    "wowFactor": "Diamond and graphite are both pure carbon — the difference is only how the atoms are arranged. You could theoretically turn pencil lead into diamond given enough pressure.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What element is diamond made of?",
+        "answer": "Carbon",
+        "distractors": [
+          "Silicon",
+          "Aluminum",
+          "Boron"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What other common material is made of pure carbon like diamond?",
+        "answer": "Graphite",
+        "distractors": [
+          "Silicon",
+          "Quartz",
+          "Glass"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Diamond is made of pure carbon atoms.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Diamond is pure ___, the same element that makes up graphite.",
+        "answer": "carbon",
+        "distractors": [
+          "silicon",
+          "aluminum",
+          "boron"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Diamond",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two pixel art crystals side by side — a sparkling diamond and a dark gray graphite pencil tip — with carbon atom diagrams below each showing different arrangements.",
+    "tags": [
+      "diamond",
+      "carbon",
+      "graphite",
+      "materials",
+      "chemistry"
+    ]
+  },
+  {
+    "id": "science-diamond-formation",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "materials_engineering",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "materials_engineering",
+    "categoryL3": "",
+    "statement": "Natural diamonds form deep in Earth's mantle under extreme pressure and heat, then reach the surface via volcanic pipes.",
+    "quizQuestion": "How do natural diamonds reach Earth's surface?",
+    "correctAnswer": "Via volcanic pipes",
+    "distractors": [
+      "River erosion",
+      "Ocean upwelling",
+      "Tectonic uplift",
+      "Meteorite impacts",
+      "Glacial movement",
+      "Wind erosion",
+      "Hot springs",
+      "Coastal erosion"
+    ],
+    "acceptableAnswers": [
+      "volcanic pipes",
+      "kimberlite pipes",
+      "through volcanic eruptions",
+      "via kimberlite"
+    ],
+    "explanation": "Diamonds form 150–200 km deep in the mantle at pressures exceeding 45,000 atm and temperatures above 1,000°C. Rapid deep-source volcanic eruptions (kimberlite pipes) carry diamond-bearing rock to the surface before it can convert back to graphite.",
+    "wowFactor": "Diamonds have to travel from deep in the Earth to the surface incredibly fast — if a kimberlite eruption moved slowly, the diamonds would convert back to graphite before arriving.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How do natural diamonds reach Earth's surface?",
+        "answer": "Via volcanic pipes (kimberlite)",
+        "distractors": [
+          "River erosion",
+          "Tectonic uplift",
+          "Meteorite impacts"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "At what approximate depth in the Earth do diamonds form?",
+        "answer": "150–200 km deep",
+        "distractors": [
+          "10 km deep",
+          "500 km deep",
+          "At the surface"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Natural diamonds form deep in Earth's mantle under extreme pressure.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Diamonds are brought to Earth's surface by deep-source volcanic ___ called kimberlite pipes.",
+        "answer": "eruptions",
+        "distractors": [
+          "floods",
+          "earthquakes",
+          "erosion"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Diamond",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section of Earth in pixel art showing a deep volcanic pipe carrying glowing diamond crystals upward from the mantle to the surface.",
+    "tags": [
+      "diamond",
+      "geology",
+      "kimberlite",
+      "mantle",
+      "formation"
+    ]
+  },
+  {
+    "id": "science-evolution-natural-selection",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "ecology_environment",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "ecology_environment",
+    "categoryL3": "",
+    "statement": "Charles Darwin proposed that evolution occurs through natural selection: traits that aid survival are passed on.",
+    "quizQuestion": "What mechanism did Darwin propose as the driver of evolution?",
+    "correctAnswer": "Natural selection",
+    "distractors": [
+      "Genetic mutation",
+      "Sexual reproduction",
+      "Survival of the largest",
+      "Random drift",
+      "Inheritance of acquired traits",
+      "Divine creation",
+      "Planned adaptation",
+      "Intelligent design"
+    ],
+    "acceptableAnswers": [
+      "natural selection",
+      "survival of the fittest",
+      "Darwinian selection"
+    ],
+    "explanation": "Darwin proposed that organisms with traits better suited to their environment are more likely to survive and reproduce, passing those traits to offspring. Over many generations, this process changes the characteristics of populations — driving evolution.",
+    "wowFactor": "Darwin and Alfred Russel Wallace independently developed the theory of natural selection at almost exactly the same time — Darwin had been sitting on his theory for 20 years when Wallace's letter arrived.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What mechanism did Darwin propose drives evolution?",
+        "answer": "Natural selection",
+        "distractors": [
+          "Genetic mutation",
+          "Random drift",
+          "Inheritance of acquired traits"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who independently co-developed the theory of natural selection alongside Darwin?",
+        "answer": "Alfred Russel Wallace",
+        "distractors": [
+          "Gregor Mendel",
+          "Thomas Huxley",
+          "Jean-Baptiste Lamarck"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Darwin proposed that natural selection is the main driver of evolution.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Darwin proposed that evolution occurs through ___ selection.",
+        "answer": "natural",
+        "distractors": [
+          "artificial",
+          "random",
+          "sexual"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Natural_selection",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Evolution is a scientific consensus topic; some users may have religious objections. Framed scientifically.",
+    "visualDescription": "A series of animal silhouettes in pixel art evolving from left to right, each slightly different from the last, set against a changing landscape.",
+    "tags": [
+      "evolution",
+      "natural selection",
+      "Darwin",
+      "biology",
+      "species"
+    ]
+  },
+  {
+    "id": "science-evolution-common-ancestor",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "ecology_environment",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "ecology_environment",
+    "categoryL3": "",
+    "statement": "Evolution proposes that all life on Earth shares a common ancestor, supported by fossil and genetic evidence.",
+    "quizQuestion": "What does the theory of evolution say about the origin of all life on Earth?",
+    "correctAnswer": "Common ancestor",
+    "distractors": [
+      "Multiple independent origins",
+      "Extraterrestrial origin",
+      "Simultaneous creation",
+      "Ocean floor origin only",
+      "Separate divine designs",
+      "Random formation",
+      "Multiple common ancestors",
+      "Panspermia"
+    ],
+    "acceptableAnswers": [
+      "all life shares a common ancestor",
+      "common ancestor",
+      "universal common ancestor"
+    ],
+    "explanation": "The theory of universal common descent holds that all life on Earth evolved from a single ancestral population. Evidence comes from the shared genetic code (all life uses the same DNA/RNA), fossil record, comparative anatomy, and molecular biology.",
+    "wowFactor": "Humans share about 60% of their DNA with a banana — evidence that all life on Earth shares a single common ancestor and the same fundamental genetic code.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does evolution say about the relationship of all life on Earth?",
+        "answer": "All life shares a common ancestor",
+        "distractors": [
+          "Multiple independent origins",
+          "Extraterrestrial origin",
+          "Simultaneous creation"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What percentage of DNA do humans share with chimpanzees?",
+        "answer": "About 98%",
+        "distractors": [
+          "About 60%",
+          "About 50%",
+          "About 75%"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Evolution proposes all life on Earth descended from a common ancestor.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Evolution proposes that all life shares a ___ ancestor.",
+        "answer": "common",
+        "distractors": [
+          "single",
+          "marine",
+          "ancient"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Common_descent",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Evolution is a scientific consensus topic; some users may have religious objections. Framed scientifically.",
+    "visualDescription": "A tree of life diagram in pixel art branching from a single root into countless species — bacteria, plants, animals, fungi — spreading outward.",
+    "tags": [
+      "evolution",
+      "common ancestor",
+      "DNA",
+      "biology",
+      "tree of life"
+    ]
+  }
+]

@@ -1,0 +1,163 @@
+{
+  "domain": "human_body_health",
+  "batchIndex": 3,
+  "totalBatches": 3,
+  "entities": [
+    {
+      "qid": "Q10884",
+      "label": "tree",
+      "description": "perennial woody plant",
+      "subcategory": "anatomy_organs",
+      "sitelinks": 263,
+      "monthlyPageviews": 131500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q12202",
+      "label": "stroke",
+      "description": "death of a region of brain cells due to poor blood flow",
+      "subcategory": "brain_neuro",
+      "sitelinks": 132,
+      "monthlyPageviews": 66000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q11068",
+      "label": "circulatory system",
+      "description": "three independent systems that work together: cardiovascular, pulmonary and systemic",
+      "subcategory": "cardiovascular",
+      "sitelinks": 129,
+      "monthlyPageviews": 64500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q34956",
+      "label": "vitamin",
+      "description": "organic compound and a vital nutrient that an organism requires in limited amounts",
+      "subcategory": "digestion_metabolism",
+      "sitelinks": 135,
+      "monthlyPageviews": 67500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q7162",
+      "label": "genetics",
+      "description": "science of genes, heredity, and variation in living organisms",
+      "subcategory": "genetics_dna",
+      "sitelinks": 166,
+      "monthlyPageviews": 83000,
+      "properties": {
+        "inception": "+1900-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q12078",
+      "label": "cancer",
+      "description": "group of diseases involving abnormal cell growth and spread",
+      "subcategory": "immunity_disease",
+      "sitelinks": 198,
+      "monthlyPageviews": 99000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q40821",
+      "label": "surgery",
+      "description": "medical specialty",
+      "subcategory": "medical_science",
+      "sitelinks": 122,
+      "monthlyPageviews": 61000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q15807",
+      "label": "foot",
+      "description": "weight-bearing anatomical structure found in vertebrates",
+      "subcategory": "senses_perception",
+      "sitelinks": 154,
+      "monthlyPageviews": 77000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q830",
+      "label": "cattle",
+      "description": "large, domesticated, cloven-hooved herbivores",
+      "subcategory": "anatomy_organs",
+      "sitelinks": 253,
+      "monthlyPageviews": 126500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q12135",
+      "label": "mental disorder",
+      "description": "distressing thought or behavior pattern",
+      "subcategory": "brain_neuro",
+      "sitelinks": 131,
+      "monthlyPageviews": 65500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q9609",
+      "label": "vein",
+      "description": "blood vessel that carry deoxygenated blood towards the heart, with the exception of the pulmonary vein",
+      "subcategory": "cardiovascular",
+      "sitelinks": 123,
+      "monthlyPageviews": 61500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q40878",
+      "label": "diarrhea",
+      "description": "loose or liquid bowel movements",
+      "subcategory": "digestion_metabolism",
+      "sitelinks": 128,
+      "monthlyPageviews": 64000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q28472",
+      "label": "hair",
+      "description": "protein filament that grows from follicles found in the dermis, or skin",
+      "subcategory": "genetics_dna",
+      "sitelinks": 165,
+      "monthlyPageviews": 82500,
+      "properties": {
+        "material": "Q189474"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q12156",
+      "label": "malaria",
+      "description": "mosquito-borne infectious disease",
+      "subcategory": "immunity_disease",
+      "sitelinks": 192,
+      "monthlyPageviews": 96000,
+      "properties": {
+        "discoverer": "Q102034"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q12128",
+      "label": "dentistry",
+      "description": "branch of medicine dealing with oral health and teeth",
+      "subcategory": "medical_science",
+      "sitelinks": 121,
+      "monthlyPageviews": 60500,
+      "properties": {},
+      "processed": false
+    }
+  ]
+}

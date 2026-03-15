@@ -1,0 +1,1112 @@
+[
+  {
+    "id": "space-herschel-001",
+    "question": "Which planet did William Herschel discover in 1781?",
+    "correctAnswer": "Uranus",
+    "domain": "space",
+    "subcategory": "astronomers",
+    "contentVolatility": "timeless",
+    "funScore": 7,
+    "quizQuestion": "Which planet did William Herschel discover in 1781?",
+    "distractors": ["Saturn", "Neptune", "Jupiter", "Mars", "Venus", "Ceres", "Pluto", "Titan"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which planet did William Herschel discover in 1781?",
+        "correctAnswer": "Uranus",
+        "distractors": ["Saturn", "Neptune", "Jupiter"]
+      },
+      {
+        "type": "reverse",
+        "question": "Who discovered Uranus in 1781?",
+        "correctAnswer": "William Herschel",
+        "distractors": ["Giovanni Cassini", "Edmond Halley", "Johannes Kepler"]
+      },
+      {
+        "type": "true_false",
+        "question": "William Herschel discovered Uranus in 1781. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "William Herschel discovered _____ in 1781.",
+        "correctAnswer": "Uranus",
+        "distractors": ["Neptune", "Saturn", "Jupiter"]
+      }
+    ]
+  },
+  {
+    "id": "space-herschel-002",
+    "question": "What type of telescope did Herschel build to survey the sky?",
+    "correctAnswer": "Reflecting telescope",
+    "domain": "space",
+    "subcategory": "astronomers",
+    "contentVolatility": "timeless",
+    "funScore": 5,
+    "quizQuestion": "What type of telescope did Herschel build to survey the sky?",
+    "distractors": ["Refracting telescope", "Radio telescope", "X-ray telescope", "Infrared telescope", "Space telescope", "Gravitational lens", "Optical fiber scope", "Dobsonian telescope"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What type of telescope did Herschel build to survey the sky?",
+        "correctAnswer": "Reflecting telescope",
+        "distractors": ["Refracting telescope", "Radio telescope", "X-ray telescope"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which famous astronomer built large reflecting telescopes?",
+        "correctAnswer": "William Herschel",
+        "distractors": ["Galileo Galilei", "Tycho Brahe", "Edmund Halley"]
+      },
+      {
+        "type": "true_false",
+        "question": "Herschel used a refracting telescope to discover Uranus. True or false?",
+        "correctAnswer": "False",
+        "distractors": ["True", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Herschel built large _____ telescopes for sky surveys.",
+        "correctAnswer": "Reflecting telescope",
+        "distractors": ["Refracting telescope", "Radio telescope", "Infrared telescope"]
+      }
+    ]
+  },
+  {
+    "id": "space-herschel-003",
+    "question": "What did William Herschel discover besides Uranus?",
+    "correctAnswer": "Infrared radiation",
+    "domain": "space",
+    "subcategory": "astronomers",
+    "contentVolatility": "timeless",
+    "funScore": 8,
+    "quizQuestion": "What did William Herschel discover besides Uranus?",
+    "distractors": ["Radio waves", "X-rays", "Ultraviolet light", "Gamma rays", "Neutrinos", "Dark matter", "Cosmic rays", "Microwaves"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did William Herschel discover besides Uranus?",
+        "correctAnswer": "Infrared radiation",
+        "distractors": ["Radio waves", "X-rays", "Ultraviolet light"]
+      },
+      {
+        "type": "reverse",
+        "question": "Who discovered infrared radiation in 1800?",
+        "correctAnswer": "William Herschel",
+        "distractors": ["Isaac Newton", "James Clerk Maxwell", "Michael Faraday"]
+      },
+      {
+        "type": "true_false",
+        "question": "William Herschel discovered infrared radiation. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Herschel discovered _____ radiation beyond visible light.",
+        "correctAnswer": "Infrared radiation",
+        "distractors": ["Ultraviolet light", "X-rays", "Radio waves"]
+      }
+    ]
+  },
+  {
+    "id": "space-newhorizons-001",
+    "question": "What dwarf planet did New Horizons fly by in 2015?",
+    "correctAnswer": "Pluto",
+    "domain": "space",
+    "subcategory": "space_missions",
+    "contentVolatility": "timeless",
+    "funScore": 7,
+    "quizQuestion": "What dwarf planet did New Horizons fly by in 2015?",
+    "distractors": ["Ceres", "Eris", "Makemake", "Haumea", "Sedna", "Quaoar", "Orcus", "Ixion"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What dwarf planet did New Horizons fly by in 2015?",
+        "correctAnswer": "Pluto",
+        "distractors": ["Ceres", "Eris", "Makemake"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which spacecraft made the first close flyby of Pluto?",
+        "correctAnswer": "New Horizons",
+        "distractors": ["Voyager 2", "Cassini", "Pioneer 10"]
+      },
+      {
+        "type": "true_false",
+        "question": "New Horizons flew by Pluto in 2015. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "New Horizons flew by _____ in July 2015.",
+        "correctAnswer": "Pluto",
+        "distractors": ["Ceres", "Eris", "Makemake"]
+      }
+    ]
+  },
+  {
+    "id": "space-newhorizons-002",
+    "question": "What heart-shaped feature did New Horizons reveal on Pluto?",
+    "correctAnswer": "Tombaugh Regio",
+    "domain": "space",
+    "subcategory": "space_missions",
+    "contentVolatility": "timeless",
+    "funScore": 9,
+    "quizQuestion": "What heart-shaped feature did New Horizons reveal on Pluto?",
+    "distractors": ["Caloris Basin", "Valles Marineris", "Olympus Mons", "Hellas Planitia", "Mons Huygens", "Sputnik Planitia", "Argyre Planitia", "Valhalla crater"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What heart-shaped feature did New Horizons reveal on Pluto?",
+        "correctAnswer": "Tombaugh Regio",
+        "distractors": ["Caloris Basin", "Sputnik Planitia", "Valles Marineris"]
+      },
+      {
+        "type": "reverse",
+        "question": "Tombaugh Regio is a heart-shaped region on which body?",
+        "correctAnswer": "Pluto",
+        "distractors": ["Eris", "Charon", "Triton"]
+      },
+      {
+        "type": "true_false",
+        "question": "Tombaugh Regio is a heart-shaped plain on Pluto. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "New Horizons revealed _____, a heart-shaped plain on Pluto.",
+        "correctAnswer": "Tombaugh Regio",
+        "distractors": ["Sputnik Planitia", "Caloris Basin", "Hellas Planitia"]
+      }
+    ]
+  },
+  {
+    "id": "space-newhorizons-003",
+    "question": "What region of the solar system is New Horizons exploring?",
+    "correctAnswer": "Kuiper Belt",
+    "domain": "space",
+    "subcategory": "space_missions",
+    "contentVolatility": "timeless",
+    "funScore": 6,
+    "quizQuestion": "What region of the solar system is New Horizons exploring?",
+    "distractors": ["Asteroid Belt", "Oort Cloud", "Heliopause", "Van Allen Belt", "Trojan asteroids", "Scattered Disc", "Inner Solar System", "Zodiacal cloud"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What region of the solar system is New Horizons exploring?",
+        "correctAnswer": "Kuiper Belt",
+        "distractors": ["Asteroid Belt", "Oort Cloud", "Heliopause"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which mission is humanity's first probe into the Kuiper Belt?",
+        "correctAnswer": "New Horizons",
+        "distractors": ["Voyager 1", "Pioneer 11", "Cassini"]
+      },
+      {
+        "type": "true_false",
+        "question": "New Horizons is now exploring the Kuiper Belt. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "After Pluto, New Horizons continued into the _____.",
+        "correctAnswer": "Kuiper Belt",
+        "distractors": ["Oort Cloud", "Asteroid Belt", "Heliopause"]
+      }
+    ]
+  },
+  {
+    "id": "space-venus-001",
+    "question": "Why is Venus the hottest planet despite being farther from the Sun than Mercury?",
+    "correctAnswer": "Greenhouse effect",
+    "domain": "space",
+    "subcategory": "planets",
+    "contentVolatility": "timeless",
+    "funScore": 8,
+    "quizQuestion": "Why is Venus hotter than Mercury despite being farther from the Sun?",
+    "distractors": ["Volcanic activity", "Thin atmosphere", "Proximity to Earth", "Tidal heating", "Solar flares", "Dense iron core", "Methane clouds", "Magnetic field"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why is Venus hotter than Mercury despite being farther from the Sun?",
+        "correctAnswer": "Greenhouse effect",
+        "distractors": ["Volcanic activity", "Proximity to Earth", "Tidal heating"]
+      },
+      {
+        "type": "reverse",
+        "question": "What makes Venus the hottest planet in the solar system?",
+        "correctAnswer": "Greenhouse effect",
+        "distractors": ["Being closest to the Sun", "Dense iron core", "Volcanic heat alone"]
+      },
+      {
+        "type": "true_false",
+        "question": "Venus is the hottest planet because of its thick atmosphere. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Venus is so hot due to a runaway _____ effect.",
+        "correctAnswer": "Greenhouse effect",
+        "distractors": ["Volcanic activity", "Magnetic field", "Tidal heating"]
+      }
+    ]
+  },
+  {
+    "id": "space-venus-002",
+    "question": "What is Venus's atmosphere primarily composed of?",
+    "correctAnswer": "Carbon dioxide",
+    "domain": "space",
+    "subcategory": "planets",
+    "contentVolatility": "timeless",
+    "funScore": 6,
+    "quizQuestion": "What gas makes up most of Venus's thick atmosphere?",
+    "distractors": ["Nitrogen", "Oxygen", "Methane", "Hydrogen", "Argon", "Sulfur dioxide", "Water vapor", "Helium"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What gas makes up most of Venus's thick atmosphere?",
+        "correctAnswer": "Carbon dioxide",
+        "distractors": ["Nitrogen", "Oxygen", "Methane"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which planet has an atmosphere of mostly carbon dioxide?",
+        "correctAnswer": "Venus",
+        "distractors": ["Mars", "Jupiter", "Saturn"]
+      },
+      {
+        "type": "true_false",
+        "question": "Venus's atmosphere is mostly carbon dioxide. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Venus's atmosphere is mainly _____, trapping intense heat.",
+        "correctAnswer": "Carbon dioxide",
+        "distractors": ["Nitrogen", "Oxygen", "Methane"]
+      }
+    ]
+  },
+  {
+    "id": "space-venus-003",
+    "question": "In which direction does Venus rotate compared to most planets?",
+    "correctAnswer": "Retrograde (backwards)",
+    "domain": "space",
+    "subcategory": "planets",
+    "contentVolatility": "timeless",
+    "funScore": 8,
+    "quizQuestion": "In which direction does Venus rotate compared to most planets?",
+    "distractors": ["Prograde (forward)", "No rotation", "Clockwise from north", "Wobbling rotation", "Axial flip", "Tidally locked", "Elliptical spin", "Polar rotation"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which direction does Venus rotate compared to most planets?",
+        "correctAnswer": "Retrograde (backwards)",
+        "distractors": ["Prograde (forward)", "No rotation", "Clockwise from north"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which planet rotates backwards compared to most others?",
+        "correctAnswer": "Venus",
+        "distractors": ["Uranus", "Mars", "Neptune"]
+      },
+      {
+        "type": "true_false",
+        "question": "Venus spins in the opposite direction to Earth. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Venus has _____ rotation, so the Sun rises in the west.",
+        "correctAnswer": "Retrograde (backwards)",
+        "distractors": ["Prograde (forward)", "Tidally locked", "No rotation"]
+      }
+    ]
+  },
+  {
+    "id": "space-uranus-001",
+    "question": "By how many degrees is Uranus tilted on its axis?",
+    "correctAnswer": "98 degrees",
+    "domain": "space",
+    "subcategory": "planets",
+    "contentVolatility": "timeless",
+    "funScore": 7,
+    "quizQuestion": "By how many degrees is Uranus tilted on its axis?",
+    "distractors": ["23 degrees", "45 degrees", "60 degrees", "177 degrees", "30 degrees", "90 degrees", "120 degrees", "15 degrees"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "By how many degrees is Uranus tilted on its axis?",
+        "correctAnswer": "98 degrees",
+        "distractors": ["23 degrees", "45 degrees", "177 degrees"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which planet is tilted on its side at about 98 degrees?",
+        "correctAnswer": "Uranus",
+        "distractors": ["Neptune", "Saturn", "Pluto"]
+      },
+      {
+        "type": "true_false",
+        "question": "Uranus is tilted nearly on its side at 98 degrees. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Uranus is tilted _____ on its axis, rolling around the Sun.",
+        "correctAnswer": "98 degrees",
+        "distractors": ["23 degrees", "45 degrees", "177 degrees"]
+      }
+    ]
+  },
+  {
+    "id": "space-uranus-002",
+    "question": "What type of planet is Uranus classified as?",
+    "correctAnswer": "Ice giant",
+    "domain": "space",
+    "subcategory": "planets",
+    "contentVolatility": "timeless",
+    "funScore": 6,
+    "quizQuestion": "What type of planet is Uranus classified as?",
+    "distractors": ["Gas giant", "Rocky planet", "Dwarf planet", "Super-Earth", "Terrestrial planet", "Hot Jupiter", "Ocean planet", "Carbon planet"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What type of planet is Uranus classified as?",
+        "correctAnswer": "Ice giant",
+        "distractors": ["Gas giant", "Rocky planet", "Dwarf planet"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which planet type includes Uranus and Neptune?",
+        "correctAnswer": "Ice giant",
+        "distractors": ["Gas giant", "Terrestrial planet", "Dwarf planet"]
+      },
+      {
+        "type": "true_false",
+        "question": "Uranus is classified as an ice giant, not a gas giant. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Uranus is an _____, containing water, methane, and ammonia ices.",
+        "correctAnswer": "Ice giant",
+        "distractors": ["Gas giant", "Rocky planet", "Super-Earth"]
+      }
+    ]
+  },
+  {
+    "id": "space-uranus-003",
+    "question": "What gives Uranus its distinctive blue-green color?",
+    "correctAnswer": "Methane gas",
+    "domain": "space",
+    "subcategory": "planets",
+    "contentVolatility": "timeless",
+    "funScore": 7,
+    "quizQuestion": "What gives Uranus its distinctive blue-green color?",
+    "distractors": ["Ammonia clouds", "Sulfuric acid", "Water vapor", "Hydrogen gas", "Helium atmosphere", "Iron oxide", "Nitrogen ice", "Phosphine clouds"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What gives Uranus its distinctive blue-green color?",
+        "correctAnswer": "Methane gas",
+        "distractors": ["Ammonia clouds", "Sulfuric acid", "Water vapor"]
+      },
+      {
+        "type": "reverse",
+        "question": "Methane in its atmosphere gives which planet its blue-green color?",
+        "correctAnswer": "Uranus",
+        "distractors": ["Neptune", "Saturn", "Jupiter"]
+      },
+      {
+        "type": "true_false",
+        "question": "Methane gas gives Uranus its blue-green color. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Uranus is blue-green because _____ absorbs red light.",
+        "correctAnswer": "Methane gas",
+        "distractors": ["Ammonia clouds", "Hydrogen gas", "Water vapor"]
+      }
+    ]
+  },
+  {
+    "id": "space-neptune-001",
+    "question": "Neptune has the fastest winds in the solar system. How fast can they blow?",
+    "correctAnswer": "2,100 km/h",
+    "domain": "space",
+    "subcategory": "planets",
+    "contentVolatility": "timeless",
+    "funScore": 8,
+    "quizQuestion": "How fast can winds blow on Neptune?",
+    "distractors": ["500 km/h", "800 km/h", "1,200 km/h", "300 km/h", "1,500 km/h", "600 km/h", "900 km/h", "400 km/h"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How fast can winds blow on Neptune?",
+        "correctAnswer": "2,100 km/h",
+        "distractors": ["500 km/h", "800 km/h", "1,200 km/h"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which planet has the fastest recorded winds in the solar system?",
+        "correctAnswer": "Neptune",
+        "distractors": ["Jupiter", "Saturn", "Uranus"]
+      },
+      {
+        "type": "true_false",
+        "question": "Neptune has the fastest winds in the solar system. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "_____ has the fastest winds in the solar system, over 2,000 km/h.",
+        "correctAnswer": "Neptune",
+        "distractors": ["Jupiter", "Saturn", "Uranus"]
+      }
+    ]
+  },
+  {
+    "id": "space-neptune-002",
+    "question": "What gives Neptune its deep blue color?",
+    "correctAnswer": "Methane gas",
+    "domain": "space",
+    "subcategory": "planets",
+    "contentVolatility": "timeless",
+    "funScore": 6,
+    "quizQuestion": "What gives Neptune its deep blue color?",
+    "distractors": ["Ammonia ice", "Water oceans", "Hydrogen clouds", "Sulfur compounds", "Nitrogen gas", "Iron compounds", "Phosphine", "Helium"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What gives Neptune its deep blue color?",
+        "correctAnswer": "Methane gas",
+        "distractors": ["Ammonia ice", "Water oceans", "Hydrogen clouds"]
+      },
+      {
+        "type": "reverse",
+        "question": "What atmospheric gas makes Neptune appear deep blue?",
+        "correctAnswer": "Methane gas",
+        "distractors": ["Ammonia", "Hydrogen", "Helium"]
+      },
+      {
+        "type": "true_false",
+        "question": "Neptune's blue color comes from methane in its atmosphere. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Neptune appears deep blue because _____ absorbs red wavelengths.",
+        "correctAnswer": "Methane gas",
+        "distractors": ["Ammonia ice", "Water oceans", "Hydrogen clouds"]
+      }
+    ]
+  },
+  {
+    "id": "space-neptune-003",
+    "question": "Which spacecraft is the only one to have visited Neptune?",
+    "correctAnswer": "Voyager 2",
+    "domain": "space",
+    "subcategory": "planets",
+    "contentVolatility": "timeless",
+    "funScore": 7,
+    "quizQuestion": "Which spacecraft is the only one to have visited Neptune?",
+    "distractors": ["Voyager 1", "Cassini", "New Horizons", "Pioneer 10", "Galileo probe", "Juno", "Pioneer 11", "Ulysses"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which spacecraft is the only one to have visited Neptune?",
+        "correctAnswer": "Voyager 2",
+        "distractors": ["Voyager 1", "Cassini", "New Horizons"]
+      },
+      {
+        "type": "reverse",
+        "question": "Voyager 2 is the only spacecraft to have visited which planet?",
+        "correctAnswer": "Neptune",
+        "distractors": ["Saturn", "Uranus", "Jupiter"]
+      },
+      {
+        "type": "true_false",
+        "question": "Voyager 2 is the only spacecraft to have flown past Neptune. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Only _____ has ever visited Neptune, flying by in 1989.",
+        "correctAnswer": "Voyager 2",
+        "distractors": ["Voyager 1", "Cassini", "New Horizons"]
+      }
+    ]
+  },
+  {
+    "id": "space-pluto-001",
+    "question": "What is Pluto classified as since 2006?",
+    "correctAnswer": "Dwarf planet",
+    "domain": "space",
+    "subcategory": "dwarf_planets",
+    "contentVolatility": "timeless",
+    "funScore": 7,
+    "quizQuestion": "What is Pluto classified as since 2006?",
+    "distractors": ["Gas giant", "Ice giant", "Terrestrial planet", "Kuiper object", "Comet", "Asteroid", "Trans-Neptune object", "Minor moon"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is Pluto classified as since 2006?",
+        "correctAnswer": "Dwarf planet",
+        "distractors": ["Gas giant", "Ice giant", "Terrestrial planet"]
+      },
+      {
+        "type": "reverse",
+        "question": "Pluto was reclassified into which category in 2006?",
+        "correctAnswer": "Dwarf planet",
+        "distractors": ["Asteroid", "Comet", "Trans-Neptune object"]
+      },
+      {
+        "type": "true_false",
+        "question": "Pluto was reclassified as a dwarf planet in 2006. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In 2006, Pluto was reclassified as a _____.",
+        "correctAnswer": "Dwarf planet",
+        "distractors": ["Gas giant", "Ice giant", "Minor moon"]
+      }
+    ]
+  },
+  {
+    "id": "space-pluto-002",
+    "question": "In which belt of the outer solar system does Pluto reside?",
+    "correctAnswer": "Kuiper Belt",
+    "domain": "space",
+    "subcategory": "dwarf_planets",
+    "contentVolatility": "timeless",
+    "funScore": 6,
+    "quizQuestion": "In which belt of the outer solar system does Pluto reside?",
+    "distractors": ["Asteroid Belt", "Oort Cloud", "Van Allen Belt", "Scattered Disc", "Trojan Belt", "Inner Belt", "Zodiacal Belt", "Heliopause"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which belt of the outer solar system does Pluto reside?",
+        "correctAnswer": "Kuiper Belt",
+        "distractors": ["Asteroid Belt", "Oort Cloud", "Scattered Disc"]
+      },
+      {
+        "type": "reverse",
+        "question": "Pluto is one of the largest objects in which outer solar region?",
+        "correctAnswer": "Kuiper Belt",
+        "distractors": ["Asteroid Belt", "Oort Cloud", "Van Allen Belt"]
+      },
+      {
+        "type": "true_false",
+        "question": "Pluto orbits in the Kuiper Belt beyond Neptune. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pluto is found in the _____, a region of icy bodies past Neptune.",
+        "correctAnswer": "Kuiper Belt",
+        "distractors": ["Asteroid Belt", "Oort Cloud", "Scattered Disc"]
+      }
+    ]
+  },
+  {
+    "id": "space-pluto-003",
+    "question": "What is the name of Pluto's largest moon?",
+    "correctAnswer": "Charon",
+    "domain": "space",
+    "subcategory": "dwarf_planets",
+    "contentVolatility": "timeless",
+    "funScore": 8,
+    "quizQuestion": "What is the name of Pluto's largest moon?",
+    "distractors": ["Nix", "Hydra", "Styx", "Kerberos", "Dysnomia", "Vanth", "Hi'iaka", "Namaka"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the name of Pluto's largest moon?",
+        "correctAnswer": "Charon",
+        "distractors": ["Nix", "Hydra", "Styx"]
+      },
+      {
+        "type": "reverse",
+        "question": "Charon is the largest moon of which dwarf planet?",
+        "correctAnswer": "Pluto",
+        "distractors": ["Eris", "Makemake", "Ceres"]
+      },
+      {
+        "type": "true_false",
+        "question": "Charon is Pluto's largest moon. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pluto's largest moon is _____, nearly half the size of Pluto itself.",
+        "correctAnswer": "Charon",
+        "distractors": ["Nix", "Hydra", "Styx"]
+      }
+    ]
+  },
+  {
+    "id": "space-io-001",
+    "question": "What makes Io the most volcanically active body in the solar system?",
+    "correctAnswer": "Tidal heating from Jupiter",
+    "domain": "space",
+    "subcategory": "moons",
+    "contentVolatility": "timeless",
+    "funScore": 9,
+    "quizQuestion": "What makes Io the most volcanically active body in the solar system?",
+    "distractors": ["Radioactive decay", "Solar radiation", "Magnetic field heating", "Impact heating", "Atmospheric pressure", "Core cooling", "Chemical reactions", "Gravity waves"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What makes Io the most volcanically active body in the solar system?",
+        "correctAnswer": "Tidal heating from Jupiter",
+        "distractors": ["Radioactive decay", "Solar radiation", "Magnetic field heating"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which moon is the most volcanically active body in the solar system?",
+        "correctAnswer": "Io",
+        "distractors": ["Europa", "Titan", "Enceladus"]
+      },
+      {
+        "type": "true_false",
+        "question": "Io is the most volcanically active body in the solar system. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Io is volcanically active due to _____ from nearby Jupiter.",
+        "correctAnswer": "Tidal heating from Jupiter",
+        "distractors": ["Radioactive decay", "Solar radiation", "Magnetic field heating"]
+      }
+    ]
+  },
+  {
+    "id": "space-io-002",
+    "question": "Which planet does Io orbit?",
+    "correctAnswer": "Jupiter",
+    "domain": "space",
+    "subcategory": "moons",
+    "contentVolatility": "timeless",
+    "funScore": 4,
+    "quizQuestion": "Which planet does the volcanic moon Io orbit?",
+    "distractors": ["Saturn", "Neptune", "Uranus", "Mars", "Venus", "Earth", "Pluto", "Mercury"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which planet does the volcanic moon Io orbit?",
+        "correctAnswer": "Jupiter",
+        "distractors": ["Saturn", "Neptune", "Uranus"]
+      },
+      {
+        "type": "reverse",
+        "question": "Jupiter's moon Io is famous for having many of what?",
+        "correctAnswer": "Active volcanoes",
+        "distractors": ["Deep oceans", "Ice geysers", "Sand dunes"]
+      },
+      {
+        "type": "true_false",
+        "question": "Io is one of Jupiter's moons. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Io is a volcanic moon of _____.",
+        "correctAnswer": "Jupiter",
+        "distractors": ["Saturn", "Neptune", "Uranus"]
+      }
+    ]
+  },
+  {
+    "id": "space-io-003",
+    "question": "What covers much of Io's surface, giving it a yellow-orange color?",
+    "correctAnswer": "Sulfur deposits",
+    "domain": "space",
+    "subcategory": "moons",
+    "contentVolatility": "timeless",
+    "funScore": 8,
+    "quizQuestion": "What covers Io's surface, giving it a yellow-orange color?",
+    "distractors": ["Iron oxide", "Methane ice", "Silicate rock", "Salt flats", "Carbon dust", "Gold dust", "Phosphorus compounds", "Calcium deposits"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What covers Io's surface, giving it a yellow-orange color?",
+        "correctAnswer": "Sulfur deposits",
+        "distractors": ["Iron oxide", "Methane ice", "Silicate rock"]
+      },
+      {
+        "type": "reverse",
+        "question": "Sulfur deposits give which moon its yellow-orange appearance?",
+        "correctAnswer": "Io",
+        "distractors": ["Europa", "Titan", "Ganymede"]
+      },
+      {
+        "type": "true_false",
+        "question": "Io's yellow-orange color comes from sulfur deposits. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Io's yellow-orange surface is covered in _____ from volcanic eruptions.",
+        "correctAnswer": "Sulfur deposits",
+        "distractors": ["Iron oxide", "Methane ice", "Carbon dust"]
+      }
+    ]
+  },
+  {
+    "id": "space-polaris-001",
+    "question": "What is the common name for Polaris, the star used for navigation?",
+    "correctAnswer": "North Star",
+    "domain": "space",
+    "subcategory": "stars",
+    "contentVolatility": "timeless",
+    "funScore": 5,
+    "quizQuestion": "What common name is given to the navigation star Polaris?",
+    "distractors": ["Evening Star", "Morning Star", "Guiding Star", "Lodestar", "Waypoint Star", "Southern Cross", "Bright Star", "Fixed Star"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What common name is given to the navigation star Polaris?",
+        "correctAnswer": "North Star",
+        "distractors": ["Evening Star", "Morning Star", "Lodestar"]
+      },
+      {
+        "type": "reverse",
+        "question": "Polaris is known by what navigation-related common name?",
+        "correctAnswer": "North Star",
+        "distractors": ["Southern Cross", "Evening Star", "Guiding Star"]
+      },
+      {
+        "type": "true_false",
+        "question": "Polaris is commonly called the North Star. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Polaris is called the _____ because it sits above Earth's North Pole.",
+        "correctAnswer": "North Star",
+        "distractors": ["Evening Star", "Morning Star", "Lodestar"]
+      }
+    ]
+  },
+  {
+    "id": "space-polaris-002",
+    "question": "In which constellation is Polaris located?",
+    "correctAnswer": "Ursa Minor",
+    "domain": "space",
+    "subcategory": "stars",
+    "contentVolatility": "timeless",
+    "funScore": 7,
+    "quizQuestion": "In which constellation is Polaris the North Star located?",
+    "distractors": ["Ursa Major", "Cassiopeia", "Orion", "Draco", "Cepheus", "Perseus", "Cygnus", "Bootes"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which constellation is Polaris the North Star located?",
+        "correctAnswer": "Ursa Minor",
+        "distractors": ["Ursa Major", "Cassiopeia", "Orion"]
+      },
+      {
+        "type": "reverse",
+        "question": "Polaris is the brightest star in which constellation?",
+        "correctAnswer": "Ursa Minor",
+        "distractors": ["Ursa Major", "Cassiopeia", "Draco"]
+      },
+      {
+        "type": "true_false",
+        "question": "Polaris is located in the constellation Ursa Minor. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Polaris sits at the tip of the _____ (Little Dipper) constellation.",
+        "correctAnswer": "Ursa Minor",
+        "distractors": ["Ursa Major", "Cassiopeia", "Draco"]
+      }
+    ]
+  },
+  {
+    "id": "space-polaris-003",
+    "question": "What type of variable star is Polaris?",
+    "correctAnswer": "Cepheid variable",
+    "domain": "space",
+    "subcategory": "stars",
+    "contentVolatility": "timeless",
+    "funScore": 8,
+    "quizQuestion": "What type of pulsating variable star is Polaris?",
+    "distractors": ["RR Lyrae variable", "Mira variable", "T Tauri variable", "Eclipsing binary", "Beta Cephei star", "Delta Scuti star", "Semiregular variable", "Dwarf nova"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What type of pulsating variable star is Polaris?",
+        "correctAnswer": "Cepheid variable",
+        "distractors": ["RR Lyrae variable", "Mira variable", "T Tauri variable"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which famous North Star is also a Cepheid variable?",
+        "correctAnswer": "Polaris",
+        "distractors": ["Sirius", "Vega", "Arcturus"]
+      },
+      {
+        "type": "true_false",
+        "question": "Polaris is a Cepheid variable star that pulsates in brightness. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Polaris is a _____, a type of pulsating star used as a distance indicator.",
+        "correctAnswer": "Cepheid variable",
+        "distractors": ["RR Lyrae variable", "Mira variable", "Eclipsing binary"]
+      }
+    ]
+  },
+  {
+    "id": "space-altair-001",
+    "question": "In which constellation is the bright star Altair found?",
+    "correctAnswer": "Aquila",
+    "domain": "space",
+    "subcategory": "stars",
+    "contentVolatility": "timeless",
+    "funScore": 7,
+    "quizQuestion": "In which constellation is the bright star Altair found?",
+    "distractors": ["Cygnus", "Lyra", "Sagittarius", "Scorpius", "Ophiuchus", "Hercules", "Bootes", "Corona Borealis"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which constellation is the bright star Altair found?",
+        "correctAnswer": "Aquila",
+        "distractors": ["Cygnus", "Lyra", "Sagittarius"]
+      },
+      {
+        "type": "reverse",
+        "question": "Altair is the brightest star in which constellation?",
+        "correctAnswer": "Aquila",
+        "distractors": ["Cygnus", "Lyra", "Scorpius"]
+      },
+      {
+        "type": "true_false",
+        "question": "Altair is the brightest star in the constellation Aquila. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Altair is the alpha star of _____, the eagle constellation.",
+        "correctAnswer": "Aquila",
+        "distractors": ["Cygnus", "Lyra", "Sagittarius"]
+      }
+    ]
+  },
+  {
+    "id": "space-altair-002",
+    "question": "What makes Altair spin unusually fast for a star?",
+    "correctAnswer": "High rotation speed",
+    "domain": "space",
+    "subcategory": "stars",
+    "contentVolatility": "timeless",
+    "funScore": 8,
+    "quizQuestion": "What unusual feature does Altair have due to its rapid rotation?",
+    "distractors": ["Flat poles", "Extra rings", "Strong solar wind", "Binary companion", "Accretion disk", "X-ray jets", "Magnetic poles", "Double corona"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What unusual feature does Altair have due to its rapid rotation?",
+        "correctAnswer": "Oblate shape",
+        "distractors": ["Flat poles", "Extra rings", "Binary companion"]
+      },
+      {
+        "type": "reverse",
+        "question": "Altair is notable for its extremely fast rotation. What shape does this give it?",
+        "correctAnswer": "Oblate shape",
+        "distractors": ["Perfect sphere", "Elongated cigar", "Irregular blob"]
+      },
+      {
+        "type": "true_false",
+        "question": "Altair rotates so fast it is noticeably flattened at the poles. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Altair spins so fast it bulges at its equator, giving it an _____ shape.",
+        "correctAnswer": "Oblate shape",
+        "distractors": ["Flat poles", "Extra rings", "Binary companion"]
+      }
+    ]
+  },
+  {
+    "id": "space-altair-003",
+    "question": "Altair is part of which well-known summer asterism?",
+    "correctAnswer": "Summer Triangle",
+    "domain": "space",
+    "subcategory": "stars",
+    "contentVolatility": "timeless",
+    "funScore": 6,
+    "quizQuestion": "Altair is part of which well-known summer asterism?",
+    "distractors": ["Winter Hexagon", "Great Square", "Spring Triangle", "Autumn Trapezoid", "Big Dipper", "Orion's Belt", "Southern Cross", "The Pleiades"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Altair is part of which well-known summer asterism?",
+        "correctAnswer": "Summer Triangle",
+        "distractors": ["Winter Hexagon", "Great Square", "Spring Triangle"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which three stars form the Summer Triangle asterism?",
+        "correctAnswer": "Vega, Deneb, Altair",
+        "distractors": ["Sirius, Betelgeuse, Rigel", "Arcturus, Spica, Corvus", "Polaris, Dubhe, Merak"]
+      },
+      {
+        "type": "true_false",
+        "question": "Altair is one of the three stars forming the Summer Triangle. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Altair, Vega, and Deneb form the _____ asterism in summer skies.",
+        "correctAnswer": "Summer Triangle",
+        "distractors": ["Winter Hexagon", "Great Square", "Spring Triangle"]
+      }
+    ]
+  },
+  {
+    "id": "space-deneb-001",
+    "question": "In which constellation is the supergiant star Deneb located?",
+    "correctAnswer": "Cygnus",
+    "domain": "space",
+    "subcategory": "stars",
+    "contentVolatility": "timeless",
+    "funScore": 6,
+    "quizQuestion": "In which constellation is the supergiant star Deneb located?",
+    "distractors": ["Lyra", "Aquila", "Cassiopeia", "Perseus", "Andromeda", "Orion", "Taurus", "Gemini"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which constellation is the supergiant star Deneb located?",
+        "correctAnswer": "Cygnus",
+        "distractors": ["Lyra", "Aquila", "Cassiopeia"]
+      },
+      {
+        "type": "reverse",
+        "question": "Deneb is the brightest star in which constellation?",
+        "correctAnswer": "Cygnus",
+        "distractors": ["Lyra", "Aquila", "Orion"]
+      },
+      {
+        "type": "true_false",
+        "question": "Deneb is located in the constellation Cygnus the Swan. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Deneb is the alpha star of _____, the swan constellation.",
+        "correctAnswer": "Cygnus",
+        "distractors": ["Lyra", "Aquila", "Cassiopeia"]
+      }
+    ]
+  },
+  {
+    "id": "space-deneb-002",
+    "question": "What type of star is Deneb, making it one of the most luminous known?",
+    "correctAnswer": "Blue-white supergiant",
+    "domain": "space",
+    "subcategory": "stars",
+    "contentVolatility": "timeless",
+    "funScore": 8,
+    "quizQuestion": "What type of star is Deneb, one of the most luminous known?",
+    "distractors": ["Red supergiant", "Yellow dwarf", "Neutron star", "White dwarf", "Red dwarf", "Orange giant", "Main sequence star", "Binary star"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What type of star is Deneb, one of the most luminous known?",
+        "correctAnswer": "Blue-white supergiant",
+        "distractors": ["Red supergiant", "Yellow dwarf", "Neutron star"]
+      },
+      {
+        "type": "reverse",
+        "question": "Deneb is a blue-white supergiant in which constellation?",
+        "correctAnswer": "Cygnus",
+        "distractors": ["Lyra", "Aquila", "Orion"]
+      },
+      {
+        "type": "true_false",
+        "question": "Deneb is a blue-white supergiant and one of the most luminous stars known. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Deneb is a _____, intrinsically far brighter than our Sun.",
+        "correctAnswer": "Blue-white supergiant",
+        "distractors": ["Red supergiant", "Yellow dwarf", "White dwarf"]
+      }
+    ]
+  },
+  {
+    "id": "space-deneb-003",
+    "question": "Deneb forms part of which famous summer asterism?",
+    "correctAnswer": "Summer Triangle",
+    "domain": "space",
+    "subcategory": "stars",
+    "contentVolatility": "timeless",
+    "funScore": 5,
+    "quizQuestion": "Deneb forms part of which famous summer asterism?",
+    "distractors": ["Winter Hexagon", "Great Square", "Spring Triangle", "Autumn Trapezoid", "Southern Cross", "Big Dipper", "Orion's Belt", "Pleiades"],
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Deneb forms part of which famous summer asterism?",
+        "correctAnswer": "Summer Triangle",
+        "distractors": ["Winter Hexagon", "Great Square", "Spring Triangle"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which star in the Summer Triangle belongs to Cygnus?",
+        "correctAnswer": "Deneb",
+        "distractors": ["Vega", "Altair", "Arcturus"]
+      },
+      {
+        "type": "true_false",
+        "question": "Deneb is one of the three stars in the Summer Triangle asterism. True or false?",
+        "correctAnswer": "True",
+        "distractors": ["False", "Partially true", "Unknown"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Deneb, Vega, and Altair make up the _____ visible in summer.",
+        "correctAnswer": "Summer Triangle",
+        "distractors": ["Winter Hexagon", "Great Square", "Spring Triangle"]
+      }
+    ]
+  }
+]

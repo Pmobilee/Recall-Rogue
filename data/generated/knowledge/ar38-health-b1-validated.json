@@ -1,0 +1,2559 @@
+[
+  {
+    "id": "health-dog-smell-power",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "A dog's sense of smell is estimated to be 10,000 to 100,000 times more powerful than a human's, with up to 300 million scent receptors in their nose.",
+    "quizQuestion": "How many times stronger is a dog's sense of smell than a human's?",
+    "correctAnswer": "10,000–100,000 times",
+    "distractors": [
+      "10 times",
+      "100 times",
+      "1,000 times",
+      "500 times",
+      "50 times",
+      "200,000 times",
+      "1 million times",
+      "5,000 times"
+    ],
+    "acceptableAnswers": [
+      "10,000–100,000 times",
+      "10,000 to 100,000 times",
+      "Up to 100,000 times"
+    ],
+    "explanation": "Dogs have up to 300 million olfactory receptors in their noses compared to about 6 million in humans. The part of the dog brain devoted to smell is 40 times larger (proportionally) than the human equivalent. This is why dogs can detect cancer, track scents days old, and sniff out single molecules in a swimming pool.",
+    "wowFactor": "A dog could detect a teaspoon of sugar dissolved in a million gallons of water — the equivalent of two Olympic swimming pools. That's not a good nose, it's a superpower.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Dogs have how many olfactory receptors in their nose?",
+        "answer": "300 million",
+        "distractors": [
+          "6 million",
+          "50 million",
+          "1 billion"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A dog's nose is estimated to be up to 100,000 times stronger than whose?",
+        "answer": "A human's",
+        "distractors": [
+          "A cat's",
+          "A rat's",
+          "A shark's"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A dog's sense of smell is thousands of times stronger than a human's.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A dog's sense of smell is up to ___ times more powerful than a human's.",
+        "answer": "100,000",
+        "distractors": [
+          "1,000",
+          "10",
+          "500"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dog_anatomy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A golden retriever with a glowing nose, scent trails radiating outward in colorful waves across a landscape, pixel art style.",
+    "tags": [
+      "dog",
+      "smell",
+      "olfactory",
+      "senses",
+      "anatomy",
+      "canine"
+    ]
+  },
+  {
+    "id": "health-dog-sweat-paws",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "Dogs primarily cool themselves by panting, not sweating — their only sweat glands are located on their paw pads.",
+    "quizQuestion": "Where are a dog's only sweat glands located?",
+    "correctAnswer": "Paw pads",
+    "distractors": [
+      "Under their tongue",
+      "Behind their ears",
+      "In their armpits",
+      "On their belly",
+      "Along their spine",
+      "Inside their nose",
+      "On their tail",
+      "Around their eyes"
+    ],
+    "acceptableAnswers": [
+      "Paw pads",
+      "Their feet",
+      "The pads of their paws"
+    ],
+    "explanation": "Unlike humans, dogs do not sweat across their body surface to cool down. They have merocrine sweat glands only in their paw pads. Instead, they cool primarily through panting — rapid breathing that evaporates moisture from the tongue and respiratory tract. This is why dogs can leave wet paw prints on hot pavement.",
+    "wowFactor": "Dogs 'sweat' through their feet — that's why excited dogs sometimes leave damp paw prints on the floor even when it's not wet outside.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Dogs cool down primarily through which physical mechanism?",
+        "answer": "Panting",
+        "distractors": [
+          "Sweating",
+          "Shivering",
+          "Rolling in water"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Sweat glands in dogs are found only on which body part?",
+        "answer": "Paw pads",
+        "distractors": [
+          "Tongue",
+          "Belly",
+          "Armpits"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Dogs sweat only through their paw pads.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A dog's only sweat glands are located on their ___ pads.",
+        "answer": "paw",
+        "distractors": [
+          "ear",
+          "nose",
+          "belly"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dog_anatomy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A panting dog with visible steam rising from its tongue, and small damp paw prints visible behind it on a warm floor, pixel art style.",
+    "tags": [
+      "dog",
+      "panting",
+      "sweat",
+      "paw pads",
+      "thermoregulation",
+      "physiology"
+    ]
+  },
+  {
+    "id": "health-dog-heartbeat-rate",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "A dog's normal resting heart rate is 60–140 beats per minute — significantly faster than the human resting rate of 60–100 bpm, and up to 220 bpm in puppies.",
+    "quizQuestion": "What is the approximate resting heart rate of an adult dog?",
+    "correctAnswer": "60–140 bpm",
+    "distractors": [
+      "30–50 bpm",
+      "150–200 bpm",
+      "20–40 bpm",
+      "200–300 bpm",
+      "10–20 bpm",
+      "40–60 bpm",
+      "250–400 bpm",
+      "5–15 bpm"
+    ],
+    "acceptableAnswers": [
+      "60–140 bpm",
+      "60 to 140 beats per minute",
+      "Around 100 bpm"
+    ],
+    "explanation": "Normal dog heart rates vary by size: small dogs and puppies have faster rates (up to 220 bpm), while large breeds run slower (60–100 bpm). Vets use these benchmarks to assess cardiac health. Dogs' hearts are proportionally larger relative to body size than most mammals, contributing to their athletic endurance.",
+    "wowFactor": "A greyhound's heart is nearly twice the size of a comparably-weighted dog — their exceptional cardiac capacity is literally the reason they can run 45 mph.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "A dog's resting heart rate can reach up to how many beats per minute?",
+        "answer": "140 bpm",
+        "distractors": [
+          "60 bpm",
+          "200 bpm",
+          "50 bpm"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Puppies can have a heart rate as high as how many beats per minute?",
+        "answer": "220 bpm",
+        "distractors": [
+          "140 bpm",
+          "100 bpm",
+          "300 bpm"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A dog's resting heart rate is generally faster than a human's.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A dog's normal resting heart rate ranges from 60 to ___ beats per minute.",
+        "answer": "140",
+        "distractors": [
+          "200",
+          "50",
+          "100"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dog_anatomy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A dog with a visible glowing heart beating rapidly, a BPM counter reading 120 beside it, pixel art style.",
+    "tags": [
+      "dog",
+      "heart rate",
+      "physiology",
+      "cardiovascular",
+      "canine",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "health-eye-rods-cones",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "senses_perception",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "senses_perception",
+    "categoryL3": "",
+    "statement": "The human retina contains two types of photoreceptors: rods (120 million, detect light/dark) and cones (6–7 million, detect color).",
+    "quizQuestion": "Which photoreceptors in the eye are responsible for detecting color?",
+    "correctAnswer": "Cones",
+    "distractors": [
+      "Rods",
+      "Ganglion cells",
+      "Bipolar cells",
+      "Macula cells",
+      "Iris muscles",
+      "Lens fibers",
+      "Optic nerves",
+      "Fovea cells"
+    ],
+    "acceptableAnswers": [
+      "Cones",
+      "Cone cells"
+    ],
+    "explanation": "The retina contains two types of photoreceptors: rods (about 120 million) which work in low light and detect contrast and motion, and cones (about 6–7 million) concentrated in the fovea which detect color and fine detail. Humans have three types of cones sensitive to red, green, and blue wavelengths.",
+    "wowFactor": "Your eye has 120 million light-dark detectors but only 7 million color detectors — in dim light, everything goes monochrome because only the rods can fire, and rods are colorblind.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What do cone cells in the retina detect?",
+        "answer": "Color",
+        "distractors": [
+          "Light intensity",
+          "Motion",
+          "Depth"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Rods in the eye are specialized for detecting what?",
+        "answer": "Light and dark",
+        "distractors": [
+          "Color",
+          "Shape",
+          "Distance"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The human retina has far more rods than cones.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Color vision depends on ___ cells in the retina.",
+        "answer": "cone",
+        "distractors": [
+          "rod",
+          "ganglion",
+          "bipolar"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Photoreceptor_cell",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section of an eyeball with rods colored gray and cones colored in a spectrum, arranged along a curved retina, pixel art style.",
+    "tags": [
+      "eye",
+      "rods",
+      "cones",
+      "retina",
+      "vision",
+      "photoreceptors",
+      "color"
+    ]
+  },
+  {
+    "id": "health-eye-blind-spot",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "senses_perception",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "senses_perception",
+    "categoryL3": "",
+    "statement": "Every human eye has a blind spot where the optic nerve connects to the retina — this area has no photoreceptors at all, yet the brain fills in the gap seamlessly.",
+    "quizQuestion": "Why does every human eye have a natural blind spot?",
+    "correctAnswer": "Optic nerve attachment",
+    "distractors": [
+      "The lens is too thick",
+      "The pupil blocks light",
+      "The macula absorbs light",
+      "The cornea scatters photons",
+      "The iris covers the edge",
+      "The sclera absorbs color",
+      "The vitreous blocks signals",
+      "The fovea has no rods"
+    ],
+    "acceptableAnswers": [
+      "Optic nerve attachment",
+      "Where the optic nerve attaches",
+      "No photoreceptors at optic disc"
+    ],
+    "explanation": "The optic disc is where the optic nerve exits the eye. This area has no rods or cones, creating a blind spot in each eye. The brain compensates by using information from the other eye and pattern-filling to make vision feel complete. You can find your own blind spot with simple visual tests.",
+    "wowFactor": "Your brain is actively hallucinating right now — it's making up the content of your blind spot based on surrounding context, and you'll never notice unless you test for it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "The eye's blind spot occurs because the optic nerve has no what?",
+        "answer": "Photoreceptors",
+        "distractors": [
+          "Blood supply",
+          "Nerve endings",
+          "Lens coverage"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Your brain compensates for your eye's blind spot by doing what?",
+        "answer": "Filling it in with surrounding data",
+        "distractors": [
+          "Closing the eye faster",
+          "Widening the pupil",
+          "Rotating the eyeball"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Every human eye has a natural blind spot.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The eye's blind spot is where the ___ nerve attaches to the retina.",
+        "answer": "optic",
+        "distractors": [
+          "facial",
+          "trigeminal",
+          "auditory"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Blind_spot_(vision)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An eye cross-section with a glowing gap where the optic nerve attaches, the brain above filling it in with a hallucinated image, pixel art style.",
+    "tags": [
+      "eye",
+      "blind spot",
+      "optic nerve",
+      "vision",
+      "brain",
+      "perception"
+    ]
+  },
+  {
+    "id": "health-eye-blink-rate",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "senses_perception",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "senses_perception",
+    "categoryL3": "",
+    "statement": "Humans blink approximately 15–20 times per minute, meaning eyes are closed for roughly 10% of waking hours — yet the brain suppresses awareness of the blackout.",
+    "quizQuestion": "How many times per minute does an average human blink?",
+    "correctAnswer": "15–20 times",
+    "distractors": [
+      "2–5 times",
+      "30–40 times",
+      "50 times",
+      "1–3 times",
+      "60 times",
+      "100 times",
+      "5–8 times",
+      "25–30 times"
+    ],
+    "acceptableAnswers": [
+      "15–20 times",
+      "About 15 times",
+      "15 to 20 times"
+    ],
+    "explanation": "The average blink rate is 15–20 per minute, lasting about 150–400 milliseconds each. This means the eye is physically closed for roughly 10% of waking hours. The brain uses 'blink suppression' — it dampens visual processing during each blink so the blackout is invisible to conscious experience.",
+    "wowFactor": "You've been blind for about 10% of every waking moment of your life — and your brain has hidden every single instance from you. Right now, as you read this, you're blinking out reality regularly.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately what percentage of waking hours are human eyes closed from blinking?",
+        "answer": "10%",
+        "distractors": [
+          "1%",
+          "25%",
+          "50%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Humans blink 15–20 times per minute; the brain hides each blink through what?",
+        "answer": "Blink suppression",
+        "distractors": [
+          "Memory erasure",
+          "Eye acceleration",
+          "Pupil dilation"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Humans blink about 15–20 times per minute.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Humans blink approximately ___ times per minute on average.",
+        "answer": "15–20",
+        "distractors": [
+          "2–5",
+          "50",
+          "30–40"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Blinking",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cartoon eye rapidly blinking with a clock counting blinks, a small brain icon suppressing the blackout signal, pixel art style.",
+    "tags": [
+      "eye",
+      "blinking",
+      "blink rate",
+      "brain",
+      "vision",
+      "perception",
+      "suppression"
+    ]
+  },
+  {
+    "id": "health-heart-four-chambers",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "cardiovascular",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "cardiovascular",
+    "categoryL3": "",
+    "statement": "The human heart has four chambers: the right atrium and right ventricle pump blood to the lungs, while the left atrium and left ventricle pump blood to the body.",
+    "quizQuestion": "How many chambers does the human heart have?",
+    "correctAnswer": "Four",
+    "distractors": [
+      "Two",
+      "Three",
+      "Five",
+      "Six",
+      "One",
+      "Eight",
+      "Seven",
+      "Ten"
+    ],
+    "acceptableAnswers": [
+      "Four",
+      "4"
+    ],
+    "explanation": "The heart's four chambers work as two side-by-side pumps. The right side receives deoxygenated blood from the body and sends it to the lungs. The left side receives oxygenated blood from the lungs and pumps it to the body. This dual-pump design maintains two separate circulatory circuits simultaneously.",
+    "wowFactor": "The left ventricle wall is three times thicker than the right — because pumping blood to your entire body requires three times more force than pumping it just to your lungs.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "The left ventricle of the heart pumps blood to which destination?",
+        "answer": "The whole body",
+        "distractors": [
+          "The lungs",
+          "The brain only",
+          "The liver"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which side of the heart pumps blood to the lungs?",
+        "answer": "Right side",
+        "distractors": [
+          "Left side",
+          "Upper chambers",
+          "Lower chambers"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The human heart has four chambers.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The human heart has ___ chambers that work as two separate pumps.",
+        "answer": "four",
+        "distractors": [
+          "two",
+          "three",
+          "six"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An anatomical heart diagram with four glowing chambers color-coded in red and blue, arrows showing blood flow direction, pixel art style.",
+    "tags": [
+      "heart",
+      "chambers",
+      "cardiovascular",
+      "atrium",
+      "ventricle",
+      "circulation"
+    ]
+  },
+  {
+    "id": "health-heart-electrical-system",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "cardiovascular",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "cardiovascular",
+    "categoryL3": "",
+    "statement": "The heart generates its own electrical impulses via the sinoatrial (SA) node — called the heart's natural pacemaker — which triggers each heartbeat.",
+    "quizQuestion": "What structure in the heart acts as the natural pacemaker?",
+    "correctAnswer": "Sinoatrial node",
+    "distractors": [
+      "Aortic valve",
+      "Mitral valve",
+      "Atrioventricular node",
+      "Bundle of His",
+      "Purkinje fibers",
+      "Coronary artery",
+      "Pericardium",
+      "Ventricular wall"
+    ],
+    "acceptableAnswers": [
+      "Sinoatrial node",
+      "SA node",
+      "The SA node"
+    ],
+    "explanation": "The sinoatrial (SA) node is a cluster of specialized cells in the right atrium that spontaneously generates electrical impulses about 60–100 times per minute at rest. This signal spreads across the heart, coordinating the contraction sequence. Artificial pacemakers replicate this function when the SA node fails.",
+    "wowFactor": "Your heart doesn't wait for your brain to tell it to beat — it fires its own electrical signal autonomously. Cut every nerve to your heart, and it keeps going.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "The sinoatrial node is the natural pacemaker of which organ?",
+        "answer": "Heart",
+        "distractors": [
+          "Brain",
+          "Lungs",
+          "Kidney"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Artificial pacemakers replace which failing heart structure?",
+        "answer": "Sinoatrial node",
+        "distractors": [
+          "Aortic valve",
+          "Mitral valve",
+          "Coronary artery"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The SA node generates the heart's electrical impulses.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ node is the heart's natural electrical pacemaker.",
+        "answer": "sinoatrial",
+        "distractors": [
+          "atrioventricular",
+          "mitral",
+          "aortic"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sinoatrial_node",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing electrical spark originating in the upper right of an anatomical heart, spreading as a wave of light across all chambers, pixel art style.",
+    "tags": [
+      "heart",
+      "SA node",
+      "pacemaker",
+      "electrical",
+      "cardiovascular",
+      "sinoatrial"
+    ]
+  },
+  {
+    "id": "health-heart-size-fist",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "cardiovascular",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "cardiovascular",
+    "categoryL3": "",
+    "statement": "The human heart is roughly the size of a closed fist and weighs about 250–350 grams — yet it pumps approximately 5 liters of blood per minute at rest.",
+    "quizQuestion": "How much blood does the human heart pump per minute at rest?",
+    "correctAnswer": "About 5 liters",
+    "distractors": [
+      "About 1 liter",
+      "About 10 liters",
+      "About 20 liters",
+      "About 500 mL",
+      "About 50 liters",
+      "About 2 liters",
+      "About 15 liters",
+      "About 100 mL"
+    ],
+    "acceptableAnswers": [
+      "About 5 liters",
+      "5 liters",
+      "Around 5 liters per minute"
+    ],
+    "explanation": "At rest, the heart pumps about 5 liters of blood per minute (cardiac output). During intense exercise this can rise to 20–25 liters per minute in trained athletes. The heart is roughly the size of a fist and weighs 250–350 grams — a remarkable output for such a small organ that never rests.",
+    "wowFactor": "Your fist-sized heart moves your entire blood volume — about 5 liters — every single minute. In an hour it pumps 300 liters. In a day, about 7,200 liters. Without stopping. Ever.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "During exercise, an athlete's heart can pump up to how many liters per minute?",
+        "answer": "20–25 liters",
+        "distractors": [
+          "5 liters",
+          "10 liters",
+          "50 liters"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The heart pumps about 5 liters per minute, and its size is roughly that of what?",
+        "answer": "A closed fist",
+        "distractors": [
+          "A tennis ball",
+          "A grapefruit",
+          "A walnut"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The human heart pumps about 5 liters of blood per minute at rest.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The resting heart pumps approximately ___ liters of blood per minute.",
+        "answer": "5",
+        "distractors": [
+          "1",
+          "10",
+          "20"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cardiac_output",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing anatomical heart the same size as a cartoon fist beside it, with arrows showing 5L/min blood flow, pixel art style.",
+    "tags": [
+      "heart",
+      "cardiac output",
+      "blood",
+      "size",
+      "cardiovascular",
+      "circulation"
+    ]
+  },
+  {
+    "id": "health-liver-detox",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "digestion_metabolism",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "digestion_metabolism",
+    "categoryL3": "",
+    "statement": "The liver performs over 500 distinct functions including detoxification, protein synthesis, bile production, and glycogen storage.",
+    "quizQuestion": "Approximately how many distinct functions does the liver perform?",
+    "correctAnswer": "Over 500",
+    "distractors": [
+      "About 10",
+      "About 50",
+      "About 100",
+      "About 200",
+      "About 1,000",
+      "About 30",
+      "About 5",
+      "About 750"
+    ],
+    "acceptableAnswers": [
+      "Over 500",
+      "More than 500",
+      "500 or more"
+    ],
+    "explanation": "The liver is the most metabolically complex organ in the body, performing over 500 identified functions. Key roles include: filtering blood from the digestive tract, neutralizing toxins (including alcohol and drugs), producing clotting factors, synthesizing proteins, storing glycogen for blood sugar regulation, and producing bile for fat digestion.",
+    "wowFactor": "The liver is the only human organ that can completely regenerate — you can remove two-thirds of it and it grows back to full size within months. Ancient Greeks thought it was the seat of the soul.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "The liver is the only organ that can do what after partial removal?",
+        "answer": "Fully regenerate",
+        "distractors": [
+          "Replace itself with fat",
+          "Divide into two",
+          "Shrink permanently"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which organ performs over 500 functions including detoxification and bile production?",
+        "answer": "Liver",
+        "distractors": [
+          "Kidney",
+          "Pancreas",
+          "Spleen"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The liver performs over 500 distinct biological functions.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The liver performs over ___ functions including detoxification and bile synthesis.",
+        "answer": "500",
+        "distractors": [
+          "10",
+          "100",
+          "50"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Liver",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A large reddish-brown organ diagram with 500+ function labels radiating from it in miniature text bubbles, pixel art style.",
+    "tags": [
+      "liver",
+      "detoxification",
+      "organ",
+      "digestion",
+      "metabolism",
+      "regeneration"
+    ]
+  },
+  {
+    "id": "health-liver-bile-production",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "digestion_metabolism",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "digestion_metabolism",
+    "categoryL3": "",
+    "statement": "The liver produces about 500–1,000 mL of bile per day, which is stored in the gallbladder and released into the small intestine to help digest fats.",
+    "quizQuestion": "Where is bile stored after the liver produces it?",
+    "correctAnswer": "Gallbladder",
+    "distractors": [
+      "Stomach",
+      "Pancreas",
+      "Spleen",
+      "Kidney",
+      "Large intestine",
+      "Appendix",
+      "Duodenum",
+      "Liver itself"
+    ],
+    "acceptableAnswers": [
+      "Gallbladder",
+      "The gall bladder"
+    ],
+    "explanation": "The liver continuously produces bile — a digestive fluid containing bile salts, cholesterol, and bilirubin. Bile flows through bile ducts into the gallbladder, where it is concentrated and stored. When fatty food enters the small intestine, the gallbladder contracts and releases bile to emulsify (break up) fats for absorption.",
+    "wowFactor": "Bile is made from broken-down red blood cells — the greenish-yellow liquid that helps you digest a cheeseburger is essentially recycled from your old blood.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Bile produced by the liver is stored in which organ?",
+        "answer": "Gallbladder",
+        "distractors": [
+          "Stomach",
+          "Pancreas",
+          "Spleen"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The gallbladder releases bile into the small intestine to help digest what?",
+        "answer": "Fats",
+        "distractors": [
+          "Proteins",
+          "Carbohydrates",
+          "Vitamins"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Bile is stored in the gallbladder after the liver produces it.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Bile made by the liver is stored in the ___ until needed for digestion.",
+        "answer": "gallbladder",
+        "distractors": [
+          "stomach",
+          "pancreas",
+          "spleen"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bile",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A liver with a duct leading to a small pear-shaped gallbladder, a droplet of yellow-green bile flowing toward the intestine below, pixel art style.",
+    "tags": [
+      "liver",
+      "bile",
+      "gallbladder",
+      "digestion",
+      "fats",
+      "organ"
+    ]
+  },
+  {
+    "id": "health-liver-largest-organ",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "digestion_metabolism",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "digestion_metabolism",
+    "categoryL3": "",
+    "statement": "The liver is the largest internal organ in the human body, weighing about 1.5 kg (3.3 lbs) in adults — about the weight of a full water bottle.",
+    "quizQuestion": "Which is the largest internal organ in the human body?",
+    "correctAnswer": "Liver",
+    "distractors": [
+      "Lungs",
+      "Heart",
+      "Stomach",
+      "Kidneys",
+      "Pancreas",
+      "Spleen",
+      "Large intestine",
+      "Brain"
+    ],
+    "acceptableAnswers": [
+      "Liver"
+    ],
+    "explanation": "The liver is the largest solid internal organ, weighing roughly 1.4–1.6 kg in adults. (The skin is technically the largest organ overall, but it is external.) The liver occupies the upper right abdomen under the rib cage and is wedge-shaped, divided into two main lobes.",
+    "wowFactor": "If you laid out all your intestines they'd stretch 8 meters — but the liver, despite being the densest internal organ, fits neatly under your right ribs. Biology is very good at packing.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how much does the human liver weigh in an adult?",
+        "answer": "About 1.5 kg",
+        "distractors": [
+          "About 500 g",
+          "About 3 kg",
+          "About 200 g"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which internal organ weighs about 1.5 kg and is the body's largest solid organ?",
+        "answer": "Liver",
+        "distractors": [
+          "Brain",
+          "Lungs",
+          "Stomach"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The liver is the largest internal organ in the human body.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ is the largest internal organ in the human body.",
+        "answer": "liver",
+        "distractors": [
+          "heart",
+          "brain",
+          "lungs"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Liver",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A human torso outline with a large reddish-brown liver highlighted under the right rib cage, labeled with its weight, pixel art style.",
+    "tags": [
+      "liver",
+      "largest organ",
+      "anatomy",
+      "weight",
+      "internal organ"
+    ]
+  },
+  {
+    "id": "health-evolution-natural-selection",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "genetics_dna",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "genetics_dna",
+    "categoryL3": "",
+    "statement": "Charles Darwin proposed natural selection as the mechanism of evolution in 'On the Origin of Species' (1859): organisms with favorable traits survive and reproduce more.",
+    "quizQuestion": "What did Darwin call the mechanism that drives evolution?",
+    "correctAnswer": "Natural selection",
+    "distractors": [
+      "Survival instinct",
+      "Genetic drift",
+      "Lamarckism",
+      "Mutation only",
+      "Divine selection",
+      "Adaptive pressure",
+      "Sexual preference",
+      "Random variation"
+    ],
+    "acceptableAnswers": [
+      "Natural selection",
+      "Selection by nature"
+    ],
+    "explanation": "In 'On the Origin of Species' (1859), Darwin argued that individual organisms vary in traits, traits are heritable, organisms with advantageous traits survive and reproduce more (natural selection), and over generations, populations change. This mechanism, combined with Mendelian genetics, forms the foundation of modern evolutionary biology.",
+    "wowFactor": "Darwin spent 20 years sitting on his theory because he knew how explosive it would be — then published only when Alfred Russel Wallace independently discovered the same idea and was about to publish first.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Darwin published 'On the Origin of Species' in which year?",
+        "answer": "1859",
+        "distractors": [
+          "1776",
+          "1905",
+          "1820"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Natural selection is the key mechanism proposed by which scientist?",
+        "answer": "Darwin",
+        "distractors": [
+          "Lamarck",
+          "Mendel",
+          "Huxley"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Darwin proposed natural selection as the engine of evolution.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Darwin proposed ___ selection as the mechanism driving evolution.",
+        "answer": "natural",
+        "distractors": [
+          "divine",
+          "random",
+          "genetic"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Natural_selection",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Evolution is contested in some religious contexts",
+    "visualDescription": "A progression of silhouettes from fish to amphibian to mammal to human across a timeline, each more adapted than the last, pixel art style.",
+    "tags": [
+      "evolution",
+      "natural selection",
+      "darwin",
+      "genetics",
+      "biology",
+      "species"
+    ]
+  },
+  {
+    "id": "health-evolution-dna-shared",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "genetics_dna",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "genetics_dna",
+    "categoryL3": "",
+    "statement": "Humans share approximately 98.7% of their DNA with chimpanzees and about 60% with fruit flies — revealing deep evolutionary connections across all animal life.",
+    "quizQuestion": "What percentage of DNA do humans share with chimpanzees?",
+    "correctAnswer": "About 98.7%",
+    "distractors": [
+      "About 50%",
+      "About 75%",
+      "About 85%",
+      "About 100%",
+      "About 10%",
+      "About 30%",
+      "About 60%",
+      "About 99.9%"
+    ],
+    "acceptableAnswers": [
+      "About 98.7%",
+      "98.7%",
+      "About 99%"
+    ],
+    "explanation": "Comparative genomics shows humans and chimpanzees share about 98.7% identical DNA sequences. Humans also share about 85% with mice, 60% with fruit flies, 31% with yeast, and even 60% with bananas (for core cellular machinery genes). This reveals the deep shared ancestry of all complex life.",
+    "wowFactor": "You share 60% of your DNA with a banana. The genes for basic cellular operations are so fundamental that evolution hasn't dared touch them for a billion years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Humans share about 60% of their DNA with which surprising organism?",
+        "answer": "Fruit flies",
+        "distractors": [
+          "Bananas",
+          "Dogs",
+          "Fish"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal shares approximately 98.7% of its DNA with humans?",
+        "answer": "Chimpanzee",
+        "distractors": [
+          "Gorilla",
+          "Orangutan",
+          "Bonobo"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Humans share about 98.7% of their DNA with chimpanzees.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Humans share approximately ___% of their DNA with chimpanzees.",
+        "answer": "98.7",
+        "distractors": [
+          "50",
+          "75",
+          "85"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chimpanzee%E2%80%93human_last_common_ancestor",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Evolution context",
+    "visualDescription": "A DNA double helix split between a human silhouette and a chimpanzee silhouette, 98.7% of the helix identical, 1.3% highlighted differently, pixel art style.",
+    "tags": [
+      "evolution",
+      "DNA",
+      "chimpanzee",
+      "genetics",
+      "shared DNA",
+      "biology",
+      "genomics"
+    ]
+  },
+  {
+    "id": "health-evolution-vestigial-organs",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "genetics_dna",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "genetics_dna",
+    "categoryL3": "",
+    "statement": "Humans have several vestigial structures — evolutionary leftovers — including the appendix, wisdom teeth, the palmaris longus muscle, and goosebumps.",
+    "quizQuestion": "Which human structure is considered an evolutionary vestigial remnant?",
+    "correctAnswer": "Appendix",
+    "distractors": [
+      "Heart",
+      "Liver",
+      "Lungs",
+      "Kidney",
+      "Pancreas",
+      "Spleen",
+      "Thyroid",
+      "Adrenal gland"
+    ],
+    "acceptableAnswers": [
+      "Appendix",
+      "The appendix",
+      "Wisdom teeth",
+      "Goosebumps"
+    ],
+    "explanation": "Vestigial structures are anatomical features that have lost most of their original function through evolution. In humans: the appendix may be a remnant of a larger cecum used to digest plant matter; wisdom teeth are leftovers from ancestors with larger jaws; goosebumps (arrector pili) are muscle reflexes that raised body hair for warmth or to look larger — but human hair is too fine to matter.",
+    "wowFactor": "Goosebumps are an evolutionary memory — your body still tries to fluff up fur you no longer have, to look bigger to predators that no longer threaten you. A reflex from millions of years ago.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Goosebumps are a vestigial reflex originally used to do what?",
+        "answer": "Raise body fur",
+        "distractors": [
+          "Pump blood faster",
+          "Warm skin directly",
+          "Signal pain"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The appendix, wisdom teeth, and goosebumps are all examples of what?",
+        "answer": "Vestigial structures",
+        "distractors": [
+          "Vital organs",
+          "Adaptive mutations",
+          "Immune responses"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The appendix is considered a vestigial structure in humans.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The appendix and wisdom teeth are examples of ___ structures in humans.",
+        "answer": "vestigial",
+        "distractors": [
+          "vital",
+          "adaptive",
+          "immune"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vestigial_structure",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A human body outline with small labels pointing to the appendix, wisdom teeth, and goosebumped arm, each glowing faintly as 'remnants,' pixel art style.",
+    "tags": [
+      "evolution",
+      "vestigial",
+      "appendix",
+      "goosebumps",
+      "anatomy",
+      "biology",
+      "Darwin"
+    ]
+  },
+  {
+    "id": "health-medicine-penicillin",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medical_science",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medical_science",
+    "categoryL3": "",
+    "statement": "Alexander Fleming discovered penicillin in 1928 by accidentally noticing that mold had killed bacteria on a petri dish — launching the antibiotic era.",
+    "quizQuestion": "Who discovered penicillin in 1928?",
+    "correctAnswer": "Alexander Fleming",
+    "distractors": [
+      "Louis Pasteur",
+      "Joseph Lister",
+      "Edward Jenner",
+      "Robert Koch",
+      "Ignaz Semmelweis",
+      "Paul Ehrlich",
+      "Gerhard Domagk",
+      "Howard Florey"
+    ],
+    "acceptableAnswers": [
+      "Alexander Fleming",
+      "Fleming"
+    ],
+    "explanation": "In 1928, Alexander Fleming returned from vacation to find a petri dish contaminated with Penicillium notatum mold — and the bacteria around it were dead. He identified the mold's antibacterial substance as penicillin. Howard Florey and Ernst Chain later purified it for medical use in the 1940s. Penicillin has saved an estimated 200 million lives.",
+    "wowFactor": "Fleming almost threw the petri dish away — the discovery that saved 200 million lives came from a messy lab and a man who didn't clean up before his holiday.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Fleming discovered penicillin after noticing mold had killed what?",
+        "answer": "Bacteria",
+        "distractors": [
+          "Viruses",
+          "Fungi",
+          "Cancer cells"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Penicillin, the first antibiotic, was discovered in which year?",
+        "answer": "1928",
+        "distractors": [
+          "1905",
+          "1945",
+          "1860"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Alexander Fleming discovered penicillin in 1928.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ Fleming discovered penicillin after observing mold killing bacteria.",
+        "answer": "Alexander",
+        "distractors": [
+          "Louis",
+          "Joseph",
+          "Edward"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Alexander_Fleming",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A scientist staring at a petri dish with a glowing blue mold ring surrounded by dead bacteria, lightbulb appearing above his head, pixel art style.",
+    "tags": [
+      "medicine",
+      "penicillin",
+      "Fleming",
+      "antibiotics",
+      "discovery",
+      "bacteria",
+      "1928"
+    ]
+  },
+  {
+    "id": "health-medicine-germ-theory",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medical_science",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medical_science",
+    "categoryL3": "",
+    "statement": "Louis Pasteur's germ theory (1860s) proved that microorganisms cause disease — overturning the 2,000-year-old miasma theory that blamed 'bad air' for illness.",
+    "quizQuestion": "What theory did germ theory replace as the explanation for disease?",
+    "correctAnswer": "Miasma theory",
+    "distractors": [
+      "Humoral theory",
+      "Spontaneous generation",
+      "Contagion theory",
+      "Vital force theory",
+      "Elemental theory",
+      "Phlogiston theory",
+      "Planetary theory",
+      "Electromagnetic theory"
+    ],
+    "acceptableAnswers": [
+      "Miasma theory",
+      "The miasma theory",
+      "Bad air theory"
+    ],
+    "explanation": "For 2,000 years, disease was blamed on 'miasma' — bad or corrupt air from swamps, rotting matter, or foul smells. Louis Pasteur and Robert Koch's germ theory proved disease is caused by specific microorganisms. This transformed medicine: Lister introduced antiseptic surgery, Semmelweis insisted on handwashing, and vaccination became rational.",
+    "wowFactor": "Doctors used to believe malaria came from bad swamp air — 'mal aria' literally means 'bad air' in Italian. It took until the 1860s for anyone to prove that invisible life forms were actually killing people.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who is primarily credited with establishing germ theory in the 1860s?",
+        "answer": "Pasteur",
+        "distractors": [
+          "Koch",
+          "Lister",
+          "Semmelweis"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Miasma theory incorrectly blamed disease on what environmental factor?",
+        "answer": "Bad air",
+        "distractors": [
+          "Dirty water",
+          "Cold temperatures",
+          "Evil spirits"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Germ theory replaced the miasma theory as the explanation for disease.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Germ theory replaced the ___ theory, which blamed disease on foul air.",
+        "answer": "miasma",
+        "distractors": [
+          "humoral",
+          "contagion",
+          "spontaneous"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Germ_theory_of_disease",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A side-by-side of a bad-smelling swamp (miasma) being crossed out, and a microscope revealing glowing bacteria (germ theory), pixel art style.",
+    "tags": [
+      "medicine",
+      "germ theory",
+      "Pasteur",
+      "miasma",
+      "bacteria",
+      "disease",
+      "history"
+    ]
+  },
+  {
+    "id": "health-medicine-vaccination",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medical_science",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medical_science",
+    "categoryL3": "",
+    "statement": "Edward Jenner developed the first vaccine in 1796, using cowpox to protect against smallpox — a disease that had killed hundreds of millions of people.",
+    "quizQuestion": "Which disease did Jenner's 1796 vaccine protect against?",
+    "correctAnswer": "Smallpox",
+    "distractors": [
+      "Typhoid",
+      "Cholera",
+      "Polio",
+      "Measles",
+      "Tuberculosis",
+      "Yellow fever",
+      "Plague",
+      "Influenza"
+    ],
+    "acceptableAnswers": [
+      "Smallpox"
+    ],
+    "explanation": "Edward Jenner observed that milkmaids who caught cowpox seemed immune to smallpox. In 1796, he inoculated 8-year-old James Phipps with cowpox material, then exposed him to smallpox — Phipps did not get sick. Smallpox was declared eradicated in 1980, the only human disease ever fully eliminated from the wild.",
+    "wowFactor": "Smallpox killed 300 million people in the 20th century alone — then humanity deleted it from existence entirely. Jenner's cowpox experiment in 1796 started the process.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Edward Jenner used which animal disease to create a smallpox vaccine?",
+        "answer": "Cowpox",
+        "distractors": [
+          "Chickenpox",
+          "Horsepox",
+          "Monkeypox"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Smallpox was the first disease eradicated by vaccination, declared eliminated in which year?",
+        "answer": "1980",
+        "distractors": [
+          "1945",
+          "2000",
+          "1960"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Jenner developed his smallpox vaccine using cowpox in 1796.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Jenner developed the first vaccine in 1796 to protect against ___.",
+        "answer": "smallpox",
+        "distractors": [
+          "cholera",
+          "typhoid",
+          "plague"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Edward_Jenner",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A doctor in 18th-century clothing giving a child a cowpox inoculation while a crossed-out smallpox rash appears in the background, pixel art style.",
+    "tags": [
+      "medicine",
+      "vaccination",
+      "Jenner",
+      "smallpox",
+      "cowpox",
+      "eradication",
+      "1796"
+    ]
+  },
+  {
+    "id": "health-physician-hippocrates",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medical_science",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medical_science",
+    "categoryL3": "",
+    "statement": "Hippocrates (c. 460–370 BCE) is called the 'Father of Medicine' and established medicine as a discipline separate from religion and superstition.",
+    "quizQuestion": "Why is Hippocrates called the 'Father of Medicine'?",
+    "correctAnswer": "Founded secular medicine",
+    "distractors": [
+      "Invented surgery",
+      "Discovered germ theory",
+      "Created the first hospital",
+      "Invented anesthesia",
+      "Discovered penicillin",
+      "Developed vaccines",
+      "Created human dissection",
+      "Invented the stethoscope"
+    ],
+    "acceptableAnswers": [
+      "Founded secular medicine",
+      "Separated medicine from religion",
+      "Made medicine a scientific discipline"
+    ],
+    "explanation": "Hippocrates of Kos (c. 460–370 BCE) revolutionized medicine by arguing that disease had natural causes — not divine punishment or supernatural forces. He emphasized clinical observation, prognosis, and ethical standards. The Hippocratic Corpus is a collection of medical texts attributed to him, and the Hippocratic Oath derives from his school.",
+    "wowFactor": "Before Hippocrates, if you got sick, you went to a temple. He was the first person to argue systematically that disease has natural causes — radical enough to be considered heresy in 400 BCE.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "On which Greek island was Hippocrates, the Father of Medicine, born?",
+        "answer": "Kos",
+        "distractors": [
+          "Crete",
+          "Rhodes",
+          "Lesbos"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Hippocratic Oath taken by physicians derives from which ancient doctor?",
+        "answer": "Hippocrates",
+        "distractors": [
+          "Galen",
+          "Avicenna",
+          "Asclepius"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Hippocrates argued that disease has natural rather than divine causes.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Hippocrates is called the ___ of Medicine for establishing it as a science.",
+        "answer": "Father",
+        "distractors": [
+          "Creator",
+          "Founder",
+          "Pioneer"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hippocrates",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A robed Greek physician observing a patient on a stone table, writing on a scroll, a temple crossed out in the background, pixel art style.",
+    "tags": [
+      "physician",
+      "hippocrates",
+      "medicine",
+      "history",
+      "oath",
+      "ancient greece",
+      "father of medicine"
+    ]
+  },
+  {
+    "id": "health-physician-galen",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medical_science",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medical_science",
+    "categoryL3": "",
+    "statement": "Galen of Pergamon (129–216 CE) dominated Western medicine for 1,400 years — his theories, though later proven wrong in many cases, were treated as unchallengeable authority.",
+    "quizQuestion": "Galen's medical theories dominated Western medicine for approximately how long?",
+    "correctAnswer": "1,400 years",
+    "distractors": [
+      "100 years",
+      "500 years",
+      "50 years",
+      "200 years",
+      "3,000 years",
+      "700 years",
+      "2,000 years",
+      "300 years"
+    ],
+    "acceptableAnswers": [
+      "1,400 years",
+      "About 1,400 years",
+      "Over a thousand years"
+    ],
+    "explanation": "Galen was a prolific Roman physician whose synthesis of Greek medical knowledge became the unquestioned authority in European medicine from roughly 200 CE until the 16th century. Andreas Vesalius (1543) and William Harvey (1628, blood circulation) overturned his anatomical errors — but only after 14 centuries of unchallenged dominance.",
+    "wowFactor": "Galen was so influential that doctors were still citing him as unchallengeable authority 1,400 years after his death — anyone who contradicted Galen was dismissed as a heretic.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which 16th-century anatomist's work began overturning Galen's errors?",
+        "answer": "Vesalius",
+        "distractors": [
+          "Harvey",
+          "Pasteur",
+          "Avicenna"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Galen of Pergamon dominated Western medicine until the work of which physician proved him wrong?",
+        "answer": "Vesalius",
+        "distractors": [
+          "Hippocrates",
+          "Avicenna",
+          "Darwin"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Galen's medical theories were treated as authoritative for over 1,000 years.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Galen's medical theories dominated Western medicine for about ___ years.",
+        "answer": "1,400",
+        "distractors": [
+          "200",
+          "500",
+          "3,000"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Galen",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Roman physician surrounded by scrolls, a timeline stretching 1,400 years behind him, with a tiny modern doctor at the far end finally crossing out his notes, pixel art style.",
+    "tags": [
+      "physician",
+      "galen",
+      "medicine",
+      "history",
+      "anatomy",
+      "authority",
+      "Rome"
+    ]
+  },
+  {
+    "id": "health-ear-cochlea",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "senses_perception",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "senses_perception",
+    "categoryL3": "",
+    "statement": "The cochlea is a spiral-shaped structure in the inner ear that converts sound vibrations into electrical signals sent to the brain via the auditory nerve.",
+    "quizQuestion": "What does the cochlea in the inner ear convert sound into?",
+    "correctAnswer": "Electrical signals",
+    "distractors": [
+      "Mechanical pressure",
+      "Chemical signals",
+      "Magnetic fields",
+      "Heat energy",
+      "Fluid vibrations only",
+      "Radio waves",
+      "Visual impulses",
+      "Sound waves again"
+    ],
+    "acceptableAnswers": [
+      "Electrical signals",
+      "Nerve signals",
+      "Electrical nerve impulses"
+    ],
+    "explanation": "The cochlea (from Latin for 'snail shell' due to its shape) is the sensory organ of hearing in the inner ear. Sound waves cause the oval window to vibrate, creating fluid waves in the cochlea that stimulate thousands of tiny hair cells (stereocilia). These hair cells convert mechanical vibration into electrical signals transmitted via the auditory nerve to the brain.",
+    "wowFactor": "The cochlea has about 16,000 hair cells that encode the entire range of human hearing — damage any of them and that frequency is gone forever, because hair cells don't regenerate.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "The cochlea is shaped like which everyday object?",
+        "answer": "A snail shell",
+        "distractors": [
+          "A trumpet",
+          "A drum",
+          "A sphere"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The auditory nerve transmits signals from the cochlea to which organ?",
+        "answer": "The brain",
+        "distractors": [
+          "The eardrum",
+          "The throat",
+          "The eye"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The cochlea converts sound vibrations into electrical nerve signals.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ converts sound vibrations into electrical signals in the inner ear.",
+        "answer": "cochlea",
+        "distractors": [
+          "eardrum",
+          "ossicles",
+          "pinna"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cochlea",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A spiral snail-shell-shaped structure inside a cross-sectioned ear, with sound waves entering and electrical sparks exiting toward a brain, pixel art style.",
+    "tags": [
+      "ear",
+      "cochlea",
+      "hearing",
+      "inner ear",
+      "auditory nerve",
+      "sound",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "health-ear-balance",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "senses_perception",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "senses_perception",
+    "categoryL3": "",
+    "statement": "The inner ear contains the vestibular system — three semicircular canals filled with fluid — which detects head rotation and maintains balance.",
+    "quizQuestion": "Which inner ear structure is responsible for detecting head rotation?",
+    "correctAnswer": "Semicircular canals",
+    "distractors": [
+      "Cochlea",
+      "Eardrum",
+      "Ossicles",
+      "Pinna",
+      "Eustachian tube",
+      "Oval window",
+      "Tympanic cavity",
+      "Auditory cortex"
+    ],
+    "acceptableAnswers": [
+      "Semicircular canals",
+      "The semicircular canals",
+      "Vestibular canals"
+    ],
+    "explanation": "The vestibular system in the inner ear consists of three semicircular canals (detecting rotational movement) and two otolith organs — the utricle and saccule (detecting linear acceleration and gravity). When the head moves, fluid in the canals shifts, bending hair cells that signal the brain. This is why spinning makes you dizzy — the fluid keeps moving after you stop.",
+    "wowFactor": "When you spin and stop, you're still dizzy because the fluid in your semicircular canals is still moving — your inner ear is literally lying to your brain about whether you're rotating.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many semicircular canals are in the human inner ear?",
+        "answer": "Three",
+        "distractors": [
+          "One",
+          "Two",
+          "Five"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Dizziness after spinning is caused by continued fluid motion in which structure?",
+        "answer": "Semicircular canals",
+        "distractors": [
+          "Cochlea",
+          "Eardrum",
+          "Eustachian tube"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The semicircular canals in the inner ear help maintain balance.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Three ___ canals in the inner ear detect rotational head movement.",
+        "answer": "semicircular",
+        "distractors": [
+          "cochlear",
+          "auditory",
+          "vestibular"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Semicircular_canals",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Three looping fluid-filled tubes arranged in three planes inside an ear cross-section, arrows showing rotational detection, a dizzy character nearby, pixel art style.",
+    "tags": [
+      "ear",
+      "semicircular canals",
+      "balance",
+      "vestibular",
+      "inner ear",
+      "dizziness"
+    ]
+  },
+  {
+    "id": "health-ear-frequency-range",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "senses_perception",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "senses_perception",
+    "categoryL3": "",
+    "statement": "Humans can hear frequencies between approximately 20 Hz and 20,000 Hz (20 kHz) — dogs can hear up to 65,000 Hz and dolphins up to 160,000 Hz.",
+    "quizQuestion": "What is the upper limit of human hearing in hertz?",
+    "correctAnswer": "20,000 Hz",
+    "distractors": [
+      "1,000 Hz",
+      "5,000 Hz",
+      "50,000 Hz",
+      "100,000 Hz",
+      "500 Hz",
+      "10,000 Hz",
+      "200 Hz",
+      "1 million Hz"
+    ],
+    "acceptableAnswers": [
+      "20,000 Hz",
+      "20 kHz",
+      "About 20,000 Hz"
+    ],
+    "explanation": "Human hearing spans from about 20 Hz (very low rumbles) to 20,000 Hz (very high pitches). This range shrinks with age — high frequency loss begins in the mid-20s. Dogs hear up to 65,000 Hz (hence silent dog whistles), and dolphins echolocate with sounds up to 160,000 Hz, far beyond human perception.",
+    "wowFactor": "Silent dog whistles aren't silent — they're just above the 20,000 Hz ceiling of human hearing. The dog hears it perfectly. You've gone deaf to it gradually since your 20s.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Dogs can hear frequencies up to how many Hz — far beyond human range?",
+        "answer": "65,000 Hz",
+        "distractors": [
+          "20,000 Hz",
+          "100,000 Hz",
+          "10,000 Hz"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The human hearing range of 20–20,000 Hz represents sensitivity to what?",
+        "answer": "Sound frequencies",
+        "distractors": [
+          "Light wavelengths",
+          "Vibration strength",
+          "Air pressure"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Human hearing tops out at approximately 20,000 Hz.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Humans can hear from 20 Hz to approximately ___ Hz.",
+        "answer": "20,000",
+        "distractors": [
+          "1,000",
+          "50,000",
+          "100,000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hearing_range",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A frequency spectrum bar from 20 Hz to 20,000 Hz labeled for humans, with dog and dolphin ranges extending far beyond, pixel art style.",
+    "tags": [
+      "ear",
+      "hearing",
+      "frequency",
+      "Hz",
+      "dog",
+      "dolphin",
+      "range"
+    ]
+  },
+  {
+    "id": "health-cat-night-vision",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "Cats can see in light levels six times dimmer than humans because their eyes have a tapetum lucidum — a reflective layer behind the retina that amplifies available light.",
+    "quizQuestion": "What reflective eye layer gives cats their night vision advantage?",
+    "correctAnswer": "Tapetum lucidum",
+    "distractors": [
+      "Fovea",
+      "Sclera",
+      "Optic disc",
+      "Cornea",
+      "Macula",
+      "Iris",
+      "Choroid",
+      "Vitreous humor"
+    ],
+    "acceptableAnswers": [
+      "Tapetum lucidum",
+      "The tapetum lucidum"
+    ],
+    "explanation": "The tapetum lucidum (Latin: 'bright tapestry') is a retroreflective layer behind the retina found in cats, dogs, and many nocturnal animals. It reflects light back through the retina a second time, doubling photoreceptor stimulation. This is why cats' eyes glow in photos or headlights — the flash reflects off the tapetum.",
+    "wowFactor": "When a cat's eyes glow eerily in the dark, that's the tapetum lucidum doing its job — bouncing light back through the retina for a second hit. Cat eyes are literally double-dipping on every photon.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Cats' eyes glow in photos because of which reflective retinal layer?",
+        "answer": "Tapetum lucidum",
+        "distractors": [
+          "The fovea",
+          "The sclera",
+          "The iris"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The tapetum lucidum helps cats see in light how many times dimmer than humans can see in?",
+        "answer": "Six times",
+        "distractors": [
+          "Two times",
+          "Ten times",
+          "Fifty times"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Cats have a tapetum lucidum that reflects light back through the retina.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ lucidum is a reflective layer that gives cats exceptional night vision.",
+        "answer": "tapetum",
+        "distractors": [
+          "fovea",
+          "corneal",
+          "retinal"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tapetum_lucidum",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cat's cross-sectioned eye with a glowing silver reflective layer behind the retina, a photon bouncing off it twice, pixel art style.",
+    "tags": [
+      "cat",
+      "night vision",
+      "tapetum lucidum",
+      "eye",
+      "anatomy",
+      "feline",
+      "vision"
+    ]
+  },
+  {
+    "id": "health-cat-whiskers-function",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "Cat whiskers (vibrissae) are as wide as the cat's body and act as tactile sensors, helping cats judge whether they can fit through spaces and detect nearby air movements.",
+    "quizQuestion": "Cat whiskers are approximately as wide as what measurement of the cat?",
+    "correctAnswer": "Their body width",
+    "distractors": [
+      "Their head length",
+      "Their tail length",
+      "Their leg span",
+      "Their ear height",
+      "Half their body length",
+      "Their paw width",
+      "Their shoulder height",
+      "Their eye diameter"
+    ],
+    "acceptableAnswers": [
+      "Their body width",
+      "The cat's body width",
+      "As wide as their body"
+    ],
+    "explanation": "Cat whiskers (vibrissae) are deeply rooted sensory hairs connected to rich nerve endings. They're typically about as wide as the cat's body, functioning as a gauge for narrow passages. Whiskers also detect minute changes in airflow, helping cats sense nearby objects in the dark and track prey movement.",
+    "wowFactor": "A cat's whiskers are its built-in tape measure — evolved to exactly match body width so it can instantly sense whether it can squeeze through a gap without getting stuck.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Cat whiskers help them judge whether they can fit through what?",
+        "answer": "Narrow spaces",
+        "distractors": [
+          "Water depths",
+          "Wind speeds",
+          "Food temperatures"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Vibrissae is the scientific name for which cat body feature?",
+        "answer": "Whiskers",
+        "distractors": [
+          "Claws",
+          "Fur",
+          "Pupils"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Cat whiskers are approximately as wide as the cat's body.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Cat whiskers are as wide as the cat's ___, acting as a built-in measuring tool.",
+        "answer": "body",
+        "distractors": [
+          "head",
+          "tail",
+          "paw"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vibrissa",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cat squeezing through a narrow gap, its whiskers perfectly touching both sides simultaneously, acting as a fit gauge, pixel art style.",
+    "tags": [
+      "cat",
+      "whiskers",
+      "vibrissae",
+      "senses",
+      "anatomy",
+      "feline",
+      "touch"
+    ]
+  },
+  {
+    "id": "health-cat-righting-reflex",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "Cats have a 'righting reflex' allowing them to orient feet-first during a fall in under 0.3 seconds — even from as low as 30 cm off the ground.",
+    "quizQuestion": "How quickly can a cat activate its righting reflex during a fall?",
+    "correctAnswer": "Under 0.3 seconds",
+    "distractors": [
+      "Under 2 seconds",
+      "Under 1 second",
+      "Under 5 seconds",
+      "Under 0.1 seconds",
+      "Under 3 seconds",
+      "Under 10 seconds",
+      "Instantly (no delay)",
+      "Under 0.01 seconds"
+    ],
+    "acceptableAnswers": [
+      "Under 0.3 seconds",
+      "About 0.3 seconds",
+      "Less than half a second"
+    ],
+    "explanation": "The feline righting reflex involves a complex sequence: the cat senses orientation via the inner ear and eyes, rotates its head, then spine, then rear legs — all within 0.3 seconds. Cats also spread their limbs like a parachute (reducing terminal velocity) and use flexible spines to absorb impact. Their survival rate in high falls is surprisingly high.",
+    "wowFactor": "A cat falling from a high building has been found more likely to survive than one falling from a mid-floor — at terminal velocity, they relax, spread-eagle, and hit at a safer posture than during short falls.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "The feline righting reflex begins with the cat sensing orientation via which organ?",
+        "answer": "Inner ear",
+        "distractors": [
+          "Eyes alone",
+          "Whiskers",
+          "Paws"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Cats orient feet-first during falls through which specific reflex?",
+        "answer": "Righting reflex",
+        "distractors": [
+          "Balance reflex",
+          "Parachute reflex",
+          "Survival reflex"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Cats can orient themselves feet-first in a fall in under 0.3 seconds.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The feline ___ reflex lets cats orient feet-first during a fall in under 0.3 seconds.",
+        "answer": "righting",
+        "distractors": [
+          "balance",
+          "survival",
+          "landing"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cat_righting_reflex",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A sequence of four frames showing a cat mid-fall rotating from upside-down to perfectly feet-first in under a second, pixel art style.",
+    "tags": [
+      "cat",
+      "righting reflex",
+      "falling",
+      "physiology",
+      "feline",
+      "reflexes",
+      "balance"
+    ]
+  },
+  {
+    "id": "health-brain-neuron-count",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "brain_neuro",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "brain_neuro",
+    "categoryL3": "",
+    "statement": "The human brain contains approximately 86 billion neurons, not the commonly cited '100 billion' — each neuron can connect to up to 10,000 others via synapses.",
+    "quizQuestion": "How many neurons does the human brain actually contain?",
+    "correctAnswer": "About 86 billion",
+    "distractors": [
+      "About 100 billion",
+      "About 1 billion",
+      "About 10 billion",
+      "About 1 trillion",
+      "About 500 million",
+      "About 50 billion",
+      "About 1 million",
+      "About 200 billion"
+    ],
+    "acceptableAnswers": [
+      "About 86 billion",
+      "86 billion",
+      "Approximately 86 billion"
+    ],
+    "explanation": "The '100 billion neurons' figure is often repeated but was based on estimates. A 2009 study by Suzana Herculano-Houzel using precise cell counting found the human brain has approximately 86 billion neurons. The brain also contains roughly equal numbers of non-neuronal (glial) cells. Each neuron can form up to 10,000 synaptic connections.",
+    "wowFactor": "The '100 billion neurons' figure was a rough estimate repeated for decades with no one actually counting. When someone finally counted (dissolving brains into soup and using cell nuclei), it came out to 86 billion. Science embarrassed itself for decades.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many synaptic connections can a single neuron form with other neurons?",
+        "answer": "Up to 10,000",
+        "distractors": [
+          "About 100",
+          "About 1,000",
+          "About 1 million"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The commonly cited '100 billion neurons' was proven to be a myth; the real count is what?",
+        "answer": "86 billion",
+        "distractors": [
+          "50 billion",
+          "200 billion",
+          "1 trillion"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The human brain has approximately 86 billion neurons, not 100 billion.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The human brain contains approximately ___ billion neurons.",
+        "answer": "86",
+        "distractors": [
+          "100",
+          "50",
+          "200"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_animals_by_number_of_neurons",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A brain silhouette filled with glowing interconnected nodes, a counter displaying '86,000,000,000' in the center, pixel art style.",
+    "tags": [
+      "brain",
+      "neurons",
+      "86 billion",
+      "synapses",
+      "neuroscience",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "health-brain-energy-use",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "brain_neuro",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "brain_neuro",
+    "categoryL3": "",
+    "statement": "Despite being only 2% of body weight, the human brain consumes about 20% of the body's energy — and uses roughly the same energy asleep as awake.",
+    "quizQuestion": "What percentage of the body's energy does the brain consume?",
+    "correctAnswer": "About 20%",
+    "distractors": [
+      "About 5%",
+      "About 50%",
+      "About 2%",
+      "About 10%",
+      "About 75%",
+      "About 1%",
+      "About 35%",
+      "About 90%"
+    ],
+    "acceptableAnswers": [
+      "About 20%",
+      "20%",
+      "Around 20%"
+    ],
+    "explanation": "The human brain weighs about 1.4 kg (roughly 2% of body weight) but demands about 20% of total caloric intake and oxygen supply. Even during sleep, brain energy use drops by only 5–10%, largely because the brain is still consolidating memories, regulating body systems, and running autonomous processes.",
+    "wowFactor": "Your brain barely turns down at night — it burns almost as much energy asleep as awake. The 'rest' of sleep is mostly for the body, not the brain.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "The brain is 2% of body weight but uses roughly what fraction of body energy?",
+        "answer": "One fifth",
+        "distractors": [
+          "One tenth",
+          "One half",
+          "One quarter"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which organ uses 20% of body energy despite being only 2% of body weight?",
+        "answer": "Brain",
+        "distractors": [
+          "Heart",
+          "Liver",
+          "Kidneys"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The brain uses about 20% of the body's total energy.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The brain is only 2% of body weight but consumes about ___% of total body energy.",
+        "answer": "20",
+        "distractors": [
+          "2",
+          "50",
+          "10"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Brain",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A body silhouette with the small brain glowing at 20% brightness while all other organs together glow at 80%, pixel art style.",
+    "tags": [
+      "brain",
+      "energy",
+      "metabolism",
+      "neuroscience",
+      "body",
+      "calories"
+    ]
+  },
+  {
+    "id": "health-brain-neuroplasticity",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "brain_neuro",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "brain_neuro",
+    "categoryL3": "",
+    "statement": "Neuroplasticity is the brain's ability to reorganize itself by forming new neural connections throughout life — disproving the old belief that the adult brain is fixed and unchangeable.",
+    "quizQuestion": "What is the brain's ability to form new neural connections called?",
+    "correctAnswer": "Neuroplasticity",
+    "distractors": [
+      "Synaptogenesis",
+      "Neurogenesis",
+      "Myelin sheath growth",
+      "Axon sprouting",
+      "Cognitive reserve",
+      "Cortical mapping",
+      "Dendritic pruning",
+      "Glial remodeling"
+    ],
+    "acceptableAnswers": [
+      "Neuroplasticity",
+      "Neural plasticity",
+      "Brain plasticity"
+    ],
+    "explanation": "Neuroplasticity (brain plasticity) refers to the brain's ability to change its structure and function in response to learning, experience, or injury. Until the late 20th century, scientists believed adult brains were largely fixed after childhood. We now know the brain can form new connections, rewire existing pathways, and even generate new neurons (neurogenesis) in certain regions throughout life.",
+    "wowFactor": "London taxi drivers who memorize the entire city map have measurably larger hippocampi than other people — their brains physically grew from the experience of learning. Your brain is literally reshaped by what you study.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "London taxi drivers have enlarged hippocampi as evidence of what brain property?",
+        "answer": "Neuroplasticity",
+        "distractors": [
+          "Neurogenesis",
+          "Myelin growth",
+          "Cognitive reserve"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Neuroplasticity disproved which old belief about the adult brain?",
+        "answer": "That it was fixed and unchangeable",
+        "distractors": [
+          "That it had no neurons",
+          "That it did not dream",
+          "That it only used 10%"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Neuroplasticity allows the adult brain to form new neural connections.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ is the brain's ability to reorganize and form new neural connections throughout life.",
+        "answer": "Neuroplasticity",
+        "distractors": [
+          "Neurogenesis",
+          "Synaptogenesis",
+          "Myelination"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Neuroplasticity",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A brain with glowing new connections growing like vines between neurons, old weaker connections fading, pixel art style.",
+    "tags": [
+      "brain",
+      "neuroplasticity",
+      "neurons",
+      "learning",
+      "neuroscience",
+      "connections",
+      "hippocampus"
+    ]
+  }
+]

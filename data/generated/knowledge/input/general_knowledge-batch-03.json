@@ -1,0 +1,178 @@
+{
+  "domain": "general_knowledge",
+  "batchIndex": 3,
+  "totalBatches": 3,
+  "entities": [
+    {
+      "qid": "Q36442",
+      "label": "political science",
+      "description": "scientific study of politics",
+      "subcategory": "everyday_science",
+      "sitelinks": 140,
+      "monthlyPageviews": 70000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q11035",
+      "label": "telephone",
+      "description": "telecommunications device that permits two or more users to conduct a conversation",
+      "subcategory": "inventions_tech",
+      "sitelinks": 215,
+      "monthlyPageviews": 107500,
+      "properties": {
+        "discoverer": "Q77124"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q10931",
+      "label": "revolution",
+      "description": "fundamental change in power or organizational structures that takes place in a relatively short period of time",
+      "subcategory": "landmarks_wonders",
+      "sitelinks": 151,
+      "monthlyPageviews": 75500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q5891",
+      "label": "philosophy",
+      "description": "study of the truths and principles of being, schools of thought, knowledge, or conduct",
+      "subcategory": "oddities",
+      "sitelinks": 312,
+      "monthlyPageviews": 156000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q289",
+      "label": "television",
+      "description": "telecommunication medium for transmitting and receiving moving images",
+      "subcategory": "pop_culture",
+      "sitelinks": 264,
+      "monthlyPageviews": 132000,
+      "properties": {
+        "discoverer": "Q1064424"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q11633",
+      "label": "photography",
+      "description": "art, science, and practice of creating durable images by recording light or other electromagnetic radiation",
+      "subcategory": "records_firsts",
+      "sitelinks": 209,
+      "monthlyPageviews": 104500,
+      "properties": {
+        "discoverer": "Q933545",
+        "countryOfOrigin": "Q21"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q315",
+      "label": "language",
+      "description": "general system which gives humans the ability to communicate",
+      "subcategory": "words_language",
+      "sitelinks": 326,
+      "monthlyPageviews": 163000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q37732",
+      "label": "demography",
+      "description": "science that deals with populations and their structures statistically and theoretically",
+      "subcategory": "everyday_science",
+      "sitelinks": 126,
+      "monthlyPageviews": 63000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q9036",
+      "label": "Nikola Tesla",
+      "description": "Serbian-American engineer and inventor (1856–1943)",
+      "subcategory": "inventions_tech",
+      "sitelinks": 214,
+      "monthlyPageviews": 107000,
+      "properties": {
+        "birthDate": "+1856-07-10T00:00:00Z",
+        "deathDate": "+1943-01-07T00:00:00Z",
+        "occupation": "Q205375",
+        "fieldOfWork": "Q43035"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q13371",
+      "label": "Harvard University",
+      "description": "private university in Cambridge, Massachusetts",
+      "subcategory": "landmarks_wonders",
+      "sitelinks": 148,
+      "monthlyPageviews": 74000,
+      "properties": {
+        "country": "Q30",
+        "inception": "+1636-09-08T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q9174",
+      "label": "religion",
+      "description": "social-cultural system",
+      "subcategory": "oddities",
+      "sitelinks": 298,
+      "monthlyPageviews": 149000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q355",
+      "label": "Facebook",
+      "description": "American online social media and social networking service",
+      "subcategory": "pop_culture",
+      "sitelinks": 261,
+      "monthlyPageviews": 130500,
+      "properties": {
+        "creator": "Q36215",
+        "inception": "+2004-02-04T00:00:00Z",
+        "countryOfOrigin": "Q30"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q8171",
+      "label": "word",
+      "description": "smallest linguistic element that will be said in isolation with semantic or pragmatic content",
+      "subcategory": "records_firsts",
+      "sitelinks": 206,
+      "monthlyPageviews": 103000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q7737",
+      "label": "Russian",
+      "description": "East Slavic language",
+      "subcategory": "words_language",
+      "sitelinks": 318,
+      "monthlyPageviews": 159000,
+      "properties": {
+        "country": "Q159"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q11467",
+      "label": "metallurgy",
+      "description": "domain of materials science that studies the physical and chemical behavior of metals",
+      "subcategory": "everyday_science",
+      "sitelinks": 125,
+      "monthlyPageviews": 62500,
+      "properties": {},
+      "processed": false
+    }
+  ]
+}

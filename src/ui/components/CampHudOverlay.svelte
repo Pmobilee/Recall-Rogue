@@ -13,8 +13,8 @@
     <span class="hud-icon">&#x1F525;</span>
     <span class="hud-value">{streak}</span>
   </div>
-  <div class="hud-pill hud-right">
-    <span class="hud-icon">&#x1F48E;</span>
+  <div class="hud-pill hud-right" aria-label="Dust">
+    <span class="hud-icon">✦</span>
     <span class="hud-value">{dustBalance}</span>
   </div>
 </div>
@@ -65,7 +65,7 @@
   }
 
   .hud-overlay.banner-offset .hud-pill {
-    top: calc(56px + var(--safe-top));
+    top: calc(64px + var(--safe-top));
     transition: top 200ms ease;
   }
 </style>

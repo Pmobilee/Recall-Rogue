@@ -1,0 +1,1988 @@
+[
+  {
+    "id": "history-socrates-trial",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient Greece",
+    "categoryL1": "history",
+    "categoryL2": "ancient_greece",
+    "categoryL3": "philosophers",
+    "statement": "Socrates was executed in 399 BCE by drinking hemlock, sentenced to death by an Athenian jury on charges of corrupting youth and impiety against the gods of the city.",
+    "quizQuestion": "How was Socrates executed in 399 BCE?",
+    "correctAnswer": "Drinking hemlock",
+    "distractors": [
+      "Beheading",
+      "Crucifixion",
+      "Stoning",
+      "Drowning",
+      "Burning at the stake",
+      "Hanging",
+      "Stabbing",
+      "Starvation in prison"
+    ],
+    "acceptableAnswers": [
+      "Drinking hemlock",
+      "hemlock poison",
+      "poisoned with hemlock"
+    ],
+    "explanation": "In 399 BCE, Socrates was tried before a jury of 501 Athenian citizens on charges of asebeia (impiety) and corrupting the youth of Athens. He was convicted by a narrow margin (280 to 221). When given the opportunity to propose his own punishment, he famously suggested free meals at the Prytaneum — insulting the jury. He was sentenced to death and drank a cup of hemlock (Conium maculatum) surrounded by his students, as described by Plato in the Phaedo.",
+    "wowFactor": "When asked to name his own punishment, Socrates suggested the city give him free dinners as a reward. The jury, insulted, voted for death more decisively than they'd voted for guilty. His trolling got him killed.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How was Socrates executed in 399 BCE?",
+        "answer": "Drinking hemlock",
+        "distractors": [
+          "Beheading",
+          "Crucifixion",
+          "Stoning"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What were the charges against Socrates at his trial?",
+        "answer": "Impiety and corrupting youth",
+        "distractors": [
+          "Treason and murder",
+          "Fraud and sedition",
+          "Blasphemy and tax evasion"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Socrates was convicted by a unanimous Athenian jury.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "He was acquitted",
+          "He was exiled, not executed"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Plato described Socrates' death by hemlock in the dialogue called ___.",
+        "answer": "Phaedo",
+        "distractors": [
+          "Republic",
+          "Apology",
+          "Crito"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Plato — Phaedo / Apology",
+    "sourceUrl": "https://www.perseus.tufts.edu",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Socrates calmly drinking from a cup while disciples weep around him in an Athenian prison, pixel art in muted olive and stone grey",
+    "tags": [
+      "Socrates",
+      "ancient Greece",
+      "philosophy",
+      "hemlock",
+      "Athens",
+      "trial"
+    ]
+  },
+  {
+    "id": "history-socrates-method",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient Greece",
+    "categoryL1": "history",
+    "categoryL2": "ancient_greece",
+    "categoryL3": "philosophers",
+    "statement": "Socrates never wrote anything — all his philosophy survives only through the writings of his students, particularly Plato and Xenophon, a problem known as the Socratic Problem.",
+    "quizQuestion": "Who wrote down Socrates' philosophy since Socrates didn't?",
+    "correctAnswer": "Plato and Xenophon",
+    "distractors": [
+      "Aristotle and Homer",
+      "Thucydides and Herodotus",
+      "Pythagoras and Diogenes",
+      "Sophocles and Euripides",
+      "Epicurus and Zeno",
+      "Cicero and Plutarch",
+      "Anaximander and Thales",
+      "Democritus and Empedocles"
+    ],
+    "acceptableAnswers": [
+      "Plato and Xenophon",
+      "Plato",
+      "his students Plato and Xenophon"
+    ],
+    "explanation": "The 'Socratic Problem' refers to the difficulty of reconstructing what Socrates actually believed, since he left no writings. Plato wrote dialogues in which Socrates is the main speaker, but scholars debate how much reflects the real Socrates versus Plato's own views. Xenophon's Memorabilia presents a different, more practical Socrates. A third source is the comedy playwright Aristophanes, who mocked Socrates as a sophist in The Clouds — though this is likely satirical rather than accurate.",
+    "wowFactor": "The most famous philosopher in history wrote nothing. Everything we know about him comes from other people — and they sometimes contradict each other so severely that historians still argue about who the real Socrates was.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who wrote down Socrates' philosophy since Socrates didn't?",
+        "answer": "Plato and Xenophon",
+        "distractors": [
+          "Aristotle and Homer",
+          "Thucydides and Herodotus",
+          "Epicurus and Zeno"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the 'Socratic Problem' in philosophy?",
+        "answer": "Reconstructing his true views",
+        "distractors": [
+          "His execution's injustice",
+          "Whether he was a sophist",
+          "His conflict with democracy"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Socrates wrote extensive philosophical dialogues that survive today.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "He wrote short aphorisms only",
+          "His writings were all burned"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Aristophanes satirized Socrates as a sophist in his comedy ___.",
+        "answer": "The Clouds",
+        "distractors": [
+          "The Birds",
+          "The Wasps",
+          "The Frogs"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Stanford Encyclopedia of Philosophy — Socrates",
+    "sourceUrl": "https://plato.stanford.edu/entries/socrates/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Scroll with 'SOCRATES WROTE NOTHING' across it, surrounded by piles of Plato and Xenophon manuscripts, pixel art in aged parchment tones",
+    "tags": [
+      "Socrates",
+      "Plato",
+      "Xenophon",
+      "Socratic Problem",
+      "philosophy",
+      "ancient Greece"
+    ]
+  },
+  {
+    "id": "history-socrates-gadfly",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient Greece",
+    "categoryL1": "history",
+    "categoryL2": "ancient_greece",
+    "categoryL3": "philosophers",
+    "statement": "Socrates called himself the 'gadfly of Athens,' claiming the god Apollo had appointed him to sting the Athenian state into virtue by questioning its assumptions — even if it killed him.",
+    "quizQuestion": "What insect did Socrates use to describe his role in Athens?",
+    "correctAnswer": "Gadfly",
+    "distractors": [
+      "Bee",
+      "Hornet",
+      "Wasp",
+      "Moth",
+      "Locust",
+      "Cicada",
+      "Spider",
+      "Dragonfly"
+    ],
+    "acceptableAnswers": [
+      "Gadfly",
+      "a gadfly",
+      "horsefly"
+    ],
+    "explanation": "In his Apology (as recorded by Plato), Socrates compared himself to a gadfly — a biting fly that pestered horses — saying Athens was a great but sluggish horse that needed to be stung into awareness. He claimed Apollo had sent him to question Athenian assumptions about virtue, knowledge, and justice. The Delphic Oracle had declared no one wiser than Socrates, which he interpreted as a mission to expose false wisdom everywhere he found it.",
+    "wowFactor": "Socrates told the jury that condemned him: 'You can kill me, but you won't easily find another gadfly. Athens will sleep.' They killed him anyway — and he was right, nobody quite replaced him.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What insect did Socrates use to describe his role in Athens?",
+        "answer": "Gadfly",
+        "distractors": [
+          "Bee",
+          "Hornet",
+          "Cicada"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What oracle declared no one wiser than Socrates?",
+        "answer": "The Delphic Oracle",
+        "distractors": [
+          "The Oracle of Dodona",
+          "The Pythia at Olympia",
+          "The Oracle of Trophonius"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Socrates claimed he was appointed by Apollo to question Athenian society.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "He claimed to act on his own conscience only",
+          "He cited Zeus, not Apollo"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Delphic Oracle told Socrates that no man was ___ than him.",
+        "answer": "wiser",
+        "distractors": [
+          "braver",
+          "more virtuous",
+          "more just"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Plato — Apology of Socrates",
+    "sourceUrl": "https://www.perseus.tufts.edu",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Socrates as a tiny gadfly buzzing around a giant sleeping horse labeled Athens, pixel art in olive and bronze",
+    "tags": [
+      "Socrates",
+      "gadfly",
+      "Athens",
+      "Apollo",
+      "Delphic Oracle",
+      "philosophy"
+    ]
+  },
+  {
+    "id": "history-gulf-war-kuwait-invasion",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern wars",
+    "categoryL1": "history",
+    "categoryL2": "modern_wars",
+    "categoryL3": "Gulf War",
+    "statement": "Iraq's invasion of Kuwait on August 2, 1990, triggering the Gulf War, was partly motivated by disputes over oil prices, debt from the Iran-Iraq War, and Iraqi accusations that Kuwait was drilling into Iraqi oil reserves.",
+    "quizQuestion": "When did Iraq invade Kuwait to start the Gulf War?",
+    "correctAnswer": "August 2, 1990",
+    "distractors": [
+      "January 17, 1991",
+      "September 11, 1990",
+      "June 5, 1990",
+      "March 2, 1991",
+      "August 2, 1988",
+      "October 1, 1990",
+      "December 7, 1990",
+      "April 6, 1991"
+    ],
+    "acceptableAnswers": [
+      "August 2, 1990",
+      "August 1990",
+      "August 2nd, 1990"
+    ],
+    "explanation": "On August 2, 1990, Iraqi forces under Saddam Hussein crossed into Kuwait and overran the country in less than two days. Iraq had accumulated $80 billion in debt from the Iran-Iraq War (1980-88) and accused Kuwait of flooding oil markets to keep prices low (damaging Iraq's revenue) and of slant-drilling into the Rumaila oil field that crossed the border. Saddam also contested the border drawn by British colonizers. The UN condemned the invasion; a US-led coalition of 34 nations formed to reverse it.",
+    "wowFactor": "Kuwait was entirely occupied by Iraq within 12 hours. Saddam Hussein had the fourth-largest army on Earth at the time. 34 countries then assembled against him — the largest military coalition since World War II.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "When did Iraq invade Kuwait to start the Gulf War?",
+        "answer": "August 2, 1990",
+        "distractors": [
+          "January 17, 1991",
+          "September 11, 1990",
+          "March 2, 1991"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many nations joined the coalition against Iraq in the Gulf War?",
+        "answer": "34",
+        "distractors": [
+          "12",
+          "50",
+          "8"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Iraq invaded Kuwait partly over disputed oil field drilling rights.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "The sole reason was border disputes",
+          "Iraq was invited by Kuwait's government"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Iraq had accumulated $80 billion in debt from its earlier war with ___.",
+        "answer": "Iran",
+        "distractors": [
+          "Israel",
+          "Saudi Arabia",
+          "the US"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "History.com — Gulf War",
+    "sourceUrl": "https://www.history.com/topics/middle-east/persian-gulf-war",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "War content; appropriate for teen+",
+    "visualDescription": "Iraqi tanks crossing a desert border under a smoky orange sky, Kuwait City skyline visible in the distance, pixel art",
+    "tags": [
+      "Gulf War",
+      "Kuwait",
+      "Iraq",
+      "Saddam Hussein",
+      "1990",
+      "oil",
+      "invasion"
+    ]
+  },
+  {
+    "id": "history-gulf-war-highway-of-death",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern wars",
+    "categoryL1": "history",
+    "categoryL2": "modern_wars",
+    "categoryL3": "Gulf War",
+    "statement": "The 1991 Gulf War ground campaign lasted only 100 hours — from February 24 to February 28 — making it one of the shortest conventional military campaigns in history.",
+    "quizQuestion": "How long did the Gulf War ground campaign last?",
+    "correctAnswer": "100 hours",
+    "distractors": [
+      "30 days",
+      "6 months",
+      "2 weeks",
+      "48 hours",
+      "10 days",
+      "3 weeks",
+      "200 hours",
+      "1 year"
+    ],
+    "acceptableAnswers": [
+      "100 hours",
+      "4 days",
+      "approximately 100 hours"
+    ],
+    "explanation": "Operation Desert Storm's air campaign began January 17, 1991. The ground campaign, Operation Desert Sabre, launched February 24. Coalition forces used a famous 'left hook' flanking maneuver through the Iraqi desert, bypassing heavily defended front lines. Iraqi forces collapsed rapidly. President George H.W. Bush declared a ceasefire on February 28 after just 100 hours of ground combat. Kuwait was liberated; Saddam Hussein remained in power.",
+    "wowFactor": "The war was so lopsided that coalition forces barely stopped advancing — the problem was their tanks were moving faster than their supply lines. They literally had to stop because they were outrunning their own fuel trucks.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long did the Gulf War ground campaign last?",
+        "answer": "100 hours",
+        "distractors": [
+          "30 days",
+          "2 weeks",
+          "48 hours"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What flanking strategy did coalition forces use in the Gulf War ground war?",
+        "answer": "The left hook",
+        "distractors": [
+          "The right hook",
+          "The pincer",
+          "The Blitzkrieg"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "The Gulf War ended with Saddam Hussein removed from power.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "He was removed but reinstated",
+          "The war is still technically ongoing"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Gulf War ground phase was called Operation Desert ___.",
+        "answer": "Sabre",
+        "distractors": [
+          "Storm",
+          "Shield",
+          "Fox"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Department of Defense — Gulf War history",
+    "sourceUrl": "https://history.defense.gov",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "War content; appropriate for teen+",
+    "visualDescription": "Military map showing the coalition's left-hook flanking maneuver sweeping around Iraqi lines in the desert, pixel art in tan and red arrows",
+    "tags": [
+      "Gulf War",
+      "100 hours",
+      "Desert Sabre",
+      "Desert Storm",
+      "Kuwait",
+      "1991",
+      "ground war"
+    ]
+  },
+  {
+    "id": "history-gulf-war-oil-fires",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern wars",
+    "categoryL1": "history",
+    "categoryL2": "modern_wars",
+    "categoryL3": "Gulf War",
+    "statement": "Retreating Iraqi forces set fire to over 700 Kuwaiti oil wells in 1991, creating one of the worst environmental disasters in history — fires that burned for 10 months.",
+    "quizQuestion": "How many Kuwaiti oil wells did Iraq set fire to during retreat?",
+    "correctAnswer": "Over 700",
+    "distractors": [
+      "About 10",
+      "About 50",
+      "About 200",
+      "About 1,000",
+      "About 300",
+      "About 100",
+      "About 500",
+      "About 2,000"
+    ],
+    "acceptableAnswers": [
+      "Over 700",
+      "700",
+      "approximately 700",
+      "more than 700"
+    ],
+    "explanation": "In late February 1991, as Iraqi forces retreated from Kuwait, Saddam Hussein ordered the deliberate ignition and destruction of Kuwaiti oil infrastructure. 727 oil wells were set ablaze. The fires produced plumes of black smoke visible from space, dumped millions of barrels of oil into the desert, and released enormous quantities of carbon dioxide, sulfur dioxide, and soot. Red Adair and international firefighting teams worked for 9 months to cap the wells; the last fire was extinguished November 6, 1991.",
+    "wowFactor": "The Kuwaiti oil fires were visible from the Space Shuttle. The smoke plumes turned day into night across Kuwait City. One firefighter, Red Adair, became globally famous for helping cap the wells.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many Kuwaiti oil wells did Iraq set fire to during retreat?",
+        "answer": "Over 700",
+        "distractors": [
+          "About 50",
+          "About 200",
+          "About 1,000"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How long did the Kuwaiti oil well fires burn?",
+        "answer": "About 9-10 months",
+        "distractors": [
+          "3 days",
+          "2 years",
+          "About a month"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "The Kuwaiti oil fires were set deliberately by retreating Iraqi forces.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "They were accidents from combat",
+          "Kuwait set them as a defensive measure"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The last Kuwaiti oil fire was extinguished in ___ 1991.",
+        "answer": "November",
+        "distractors": [
+          "March",
+          "July",
+          "December"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "USGS — Kuwait oil fires environmental assessment",
+    "sourceUrl": "https://www.usgs.gov",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "War/environmental disaster content; appropriate for teen+",
+    "visualDescription": "Skyline of Kuwait City under a pitch-black smoke cloud from hundreds of burning oil wells, pixel art in black, orange, and choking grey",
+    "tags": [
+      "Gulf War",
+      "Kuwait",
+      "oil fires",
+      "environmental disaster",
+      "Saddam Hussein",
+      "1991",
+      "Red Adair"
+    ]
+  },
+  {
+    "id": "history-che-guevara-revolution",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "20th century revolutions",
+    "categoryL1": "history",
+    "categoryL2": "20th_century_revolutions",
+    "categoryL3": "Che Guevara",
+    "statement": "Che Guevara was an Argentine doctor who became a Marxist revolutionary, playing a central role in the Cuban Revolution that brought Fidel Castro to power in 1959.",
+    "quizQuestion": "What was Che Guevara's original profession?",
+    "correctAnswer": "Doctor",
+    "distractors": [
+      "Lawyer",
+      "Soldier",
+      "Journalist",
+      "Teacher",
+      "Engineer",
+      "Economist",
+      "Priest",
+      "Politician"
+    ],
+    "acceptableAnswers": [
+      "Doctor",
+      "physician",
+      "medical doctor"
+    ],
+    "explanation": "Ernesto 'Che' Guevara was born in Argentina in 1928 and trained as a medical doctor at the University of Buenos Aires. In 1952, a motorcycle journey across South America exposed him to widespread poverty and inequality. He met Fidel Castro in Mexico in 1955 and joined the revolutionary movement. During the Cuban Revolution (1956-59), Guevara served as a guerrilla commander and later as a minister in Castro's government.",
+    "wowFactor": "Che Guevara became one of the most recognizable revolutionaries in history — and he started as a doctor who went on a road trip and radicalized. His face is now on more T-shirts than any other historical figure in history.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was Che Guevara's original profession?",
+        "answer": "Doctor",
+        "distractors": [
+          "Lawyer",
+          "Soldier",
+          "Journalist"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What year did the Cuban Revolution bring Castro to power?",
+        "answer": "1959",
+        "distractors": [
+          "1953",
+          "1962",
+          "1955"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Che Guevara was Cuban by birth.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "He was born in Cuba to Argentine parents",
+          "He was Mexican"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Guevara met Fidel Castro in ___ in 1955 before joining the revolution.",
+        "answer": "Mexico",
+        "distractors": [
+          "Cuba",
+          "Argentina",
+          "Bolivia"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Jon Lee Anderson — Che Guevara: A Revolutionary Life",
+    "sourceUrl": "https://www.groveatlantic.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Political revolutionary content; appropriate for teen+",
+    "visualDescription": "Young Che Guevara in beret and guerrilla fatigues in Cuban jungle, looking determined, pixel art in jungle greens and muted red",
+    "tags": [
+      "Che Guevara",
+      "Cuba",
+      "revolution",
+      "Castro",
+      "Argentina",
+      "Marxism"
+    ]
+  },
+  {
+    "id": "history-che-guevara-execution",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "20th century revolutions",
+    "categoryL1": "history",
+    "categoryL2": "20th_century_revolutions",
+    "categoryL3": "Che Guevara",
+    "statement": "Che Guevara was captured and executed in Bolivia on October 9, 1967, by Bolivian soldiers assisted by the CIA, while trying to start a new revolution there.",
+    "quizQuestion": "In which country was Che Guevara captured and executed?",
+    "correctAnswer": "Bolivia",
+    "distractors": [
+      "Cuba",
+      "Argentina",
+      "Venezuela",
+      "Colombia",
+      "Peru",
+      "Guatemala",
+      "Nicaragua",
+      "Chile"
+    ],
+    "acceptableAnswers": [
+      "Bolivia",
+      "in Bolivia"
+    ],
+    "explanation": "After leaving Cuba in 1965, Guevara attempted to spread revolution to the Congo and then Bolivia. He believed Bolivia's poverty and indigenous population made it ideal for a Marxist uprising. The CIA, working with Bolivia's military, tracked his guerrilla force using intercepted communications and informants. Guevara was captured wounded on October 8, 1967 in La Higuera, Bolivia. He was executed without trial on October 9 by Sergeant Mario Terán, following orders from the Bolivian military and US advisors.",
+    "wowFactor": "When Bolivian Sergeant Mario Terán hesitated to shoot Guevara, Che reportedly said 'I know you've come to kill me. Shoot, coward — you are only going to kill a man.' Terán obeyed.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which country was Che Guevara captured and executed?",
+        "answer": "Bolivia",
+        "distractors": [
+          "Cuba",
+          "Argentina",
+          "Colombia"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who helped Bolivia track and capture Che Guevara?",
+        "answer": "CIA",
+        "distractors": [
+          "FBI",
+          "KGB",
+          "British MI6"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Che Guevara was given a formal trial before execution in Bolivia.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "He was given a military tribunal",
+          "He escaped before trial"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Guevara was executed on October ___, 1967.",
+        "answer": "9",
+        "distractors": [
+          "1",
+          "15",
+          "28"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "CIA declassified files — Che Guevara capture 1967",
+    "sourceUrl": "https://www.cia.gov/readingroom",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "Execution content; appropriate for teen+",
+    "visualDescription": "Remote Bolivian village schoolroom exterior with armed soldiers, Che Guevara seated wounded and defiant, pixel art in dusty brown and military green",
+    "tags": [
+      "Che Guevara",
+      "Bolivia",
+      "CIA",
+      "execution",
+      "revolution",
+      "1967"
+    ]
+  },
+  {
+    "id": "history-che-guevara-icon",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "20th century revolutions",
+    "categoryL1": "history",
+    "categoryL2": "20th_century_revolutions",
+    "categoryL3": "Che Guevara",
+    "statement": "The famous 'Guerrillero Heroico' photograph of Che Guevara, taken by Alberto Korda in 1960, has been called the most reproduced photograph in history.",
+    "quizQuestion": "Who took the famous iconic photo of Che Guevara in 1960?",
+    "correctAnswer": "Alberto Korda",
+    "distractors": [
+      "Henri Cartier-Bresson",
+      "Sebastião Salgado",
+      "Che's personal photographer",
+      "Fidel Castro's aide",
+      "Robert Capa",
+      "Dorothea Lange",
+      "Eddie Adams",
+      "Lee Miller"
+    ],
+    "acceptableAnswers": [
+      "Alberto Korda",
+      "Korda",
+      "Alberto Díaz Gutiérrez"
+    ],
+    "explanation": "Alberto Korda (born Alberto Díaz Gutiérrez) took the photograph 'Guerrillero Heroico' on March 5, 1960, at a memorial for victims of the La Coubre explosion in Havana. Guevara appeared briefly in the crowd; Korda took two frames. The image was barely published at first. After Guevara's death in 1967, it was used on Cuban revolutionary posters, then spread globally through the counterculture movement. It has since appeared on millions of T-shirts, posters, murals, and commercial products — making it arguably the most reproduced image in history.",
+    "wowFactor": "The most famous revolutionary photo in history was taken by accident, published almost nowhere, and sat in a drawer for 7 years until Guevara died and suddenly became a global symbol of rebellion.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who took the famous iconic photo of Che Guevara in 1960?",
+        "answer": "Alberto Korda",
+        "distractors": [
+          "Henri Cartier-Bresson",
+          "Robert Capa",
+          "Sebastião Salgado"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the official title of the famous Che Guevara photograph?",
+        "answer": "Guerrillero Heroico",
+        "distractors": [
+          "Revolucionario Eterno",
+          "El Comandante",
+          "La Revolución"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "The Guerrillero Heroico photo was widely published immediately when taken in 1960.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "It was published in Cuba only initially",
+          "Korda sold it immediately for profit"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Guerrillero Heroico photo was taken at a memorial for victims of the ___ explosion.",
+        "answer": "La Coubre",
+        "distractors": [
+          "Bay of Pigs",
+          "Havana Harbor",
+          "Moncada Barracks"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Time magazine — most influential photographs, Guerrillero Heroico",
+    "sourceUrl": "https://time.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Revolutionary political content; appropriate for teen+",
+    "visualDescription": "The iconic Guerrillero Heroico photograph stylized as a high-contrast pixel art portrait in black, grey, and red",
+    "tags": [
+      "Che Guevara",
+      "Alberto Korda",
+      "Guerrillero Heroico",
+      "photography",
+      "icon",
+      "Cuba"
+    ]
+  },
+  {
+    "id": "history-genghis-khan-empire",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "medieval conquests",
+    "categoryL1": "history",
+    "categoryL2": "medieval_conquests",
+    "categoryL3": "Genghis Khan",
+    "statement": "Genghis Khan built the largest contiguous land empire in history, stretching from the Pacific Ocean to Eastern Europe and covering about 24 million square kilometers at its peak.",
+    "quizQuestion": "What is the largest contiguous land empire in history?",
+    "correctAnswer": "Mongol Empire",
+    "distractors": [
+      "British Empire",
+      "Roman Empire",
+      "Ottoman Empire",
+      "Alexander's Empire",
+      "Russian Empire",
+      "Han Dynasty",
+      "Persian Empire",
+      "Spanish Empire"
+    ],
+    "acceptableAnswers": [
+      "Mongol Empire",
+      "the Mongol Empire",
+      "Genghis Khan's empire"
+    ],
+    "explanation": "The Mongol Empire at its height (1279 CE) covered about 24 million square kilometers — roughly 16% of Earth's total land area. Unlike the British Empire (which was larger overall but not contiguous), the Mongol Empire was a single connected landmass from Korea and China in the east to Poland, Hungary, and Persia in the west. Genghis Khan founded it through two decades of unifying Mongol tribes and then conquering outward. After his death in 1227, it was divided among his heirs but continued expanding.",
+    "wowFactor": "The Mongol Empire was so vast that you could ride a horse from the Pacific Coast to Poland through territory controlled by a single ruling family — a distance greater than the diameter of the Moon.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the largest contiguous land empire in history?",
+        "answer": "Mongol Empire",
+        "distractors": [
+          "British Empire",
+          "Roman Empire",
+          "Alexander's Empire"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many square kilometers did the Mongol Empire cover at its peak?",
+        "answer": "About 24 million",
+        "distractors": [
+          "About 5 million",
+          "About 50 million",
+          "About 10 million"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "The British Empire was larger in total area than the Mongol Empire.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "They were identical in size",
+          "The Roman Empire was the largest"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Mongol Empire covered roughly ___% of Earth's total land area at its peak.",
+        "answer": "16",
+        "distractors": [
+          "5",
+          "50",
+          "30"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Encyclopedia Britannica — Mongol Empire",
+    "sourceUrl": "https://www.britannica.com/place/Mongol-empire",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "World map with the Mongol Empire highlighted from Korea to Eastern Europe in a deep red, pixel art with horse archer silhouette",
+    "tags": [
+      "Genghis Khan",
+      "Mongol Empire",
+      "conquest",
+      "largest empire",
+      "medieval",
+      "Mongolia"
+    ]
+  },
+  {
+    "id": "history-genghis-khan-dna",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "medieval conquests",
+    "categoryL1": "history",
+    "categoryL2": "medieval_conquests",
+    "categoryL3": "Genghis Khan",
+    "statement": "Roughly 0.5% of all men alive today — about 16 million people — are direct patrilineal descendants of Genghis Khan, identified by a shared Y-chromosome haplotype.",
+    "quizQuestion": "What fraction of living men today are Genghis Khan's direct descendants?",
+    "correctAnswer": "About 0.5%",
+    "distractors": [
+      "About 0.001%",
+      "About 5%",
+      "About 10%",
+      "About 0.01%",
+      "About 25%",
+      "About 1%",
+      "About 50%",
+      "About 0.1%"
+    ],
+    "acceptableAnswers": [
+      "About 0.5%",
+      "0.5 percent",
+      "roughly 16 million men",
+      "half a percent"
+    ],
+    "explanation": "A 2003 study in the American Journal of Human Genetics identified a Y-chromosome haplotype (a set of genetic markers) shared by approximately 16 million men across Asia — concentrated in Mongolia, Central Asia, and China. The pattern of distribution is consistent with one highly prolific ancestor living around 1000 CE in Mongolia. Given the timing, location, and the Mongol Empire's culture of concubines and conquest, Genghis Khan (or a close male relative) is the most likely source.",
+    "wowFactor": "Genghis Khan may have more living descendants than any human in history. One in 200 men alive today carries his Y-chromosome — the genetic legacy of someone who lived 800 years ago.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What fraction of living men today are Genghis Khan's direct descendants?",
+        "answer": "About 0.5%",
+        "distractors": [
+          "About 0.001%",
+          "About 5%",
+          "About 10%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Approximately how many living men are estimated to be Genghis Khan's descendants?",
+        "answer": "16 million",
+        "distractors": [
+          "1,000",
+          "100,000",
+          "1 billion"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Scientists identified Genghis Khan's descendants through a shared Y-chromosome marker.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Through mitochondrial DNA",
+          "Through skull measurements"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The 2003 genetic study was published in the American Journal of Human ___.",
+        "answer": "Genetics",
+        "distractors": [
+          "Biology",
+          "History",
+          "Medicine"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "American Journal of Human Genetics — Star Cluster haplotype 2003",
+    "sourceUrl": "https://www.cell.com/ajhg",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "DNA double helix with Genghis Khan's silhouette inside, radiating branching lines to modern faces across a world map, pixel art",
+    "tags": [
+      "Genghis Khan",
+      "genetics",
+      "Y-chromosome",
+      "descendants",
+      "DNA",
+      "Mongolia"
+    ]
+  },
+  {
+    "id": "history-trump-45th-president",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern US history",
+    "categoryL1": "history",
+    "categoryL2": "modern_us_history",
+    "categoryL3": "Donald Trump",
+    "statement": "Donald Trump became the 45th President of the United States in January 2017, defeating Hillary Clinton in an election widely seen as one of the most surprising upsets in US political history.",
+    "quizQuestion": "Which presidential number was Donald Trump's first term?",
+    "correctAnswer": "45th",
+    "distractors": [
+      "43rd",
+      "44th",
+      "46th",
+      "42nd",
+      "47th",
+      "40th",
+      "41st",
+      "48th"
+    ],
+    "acceptableAnswers": [
+      "45th",
+      "45",
+      "forty-fifth"
+    ],
+    "explanation": "Donald Trump was inaugurated as the 45th President of the United States on January 20, 2017. He defeated Democratic candidate Hillary Clinton in the Electoral College (304 to 227) despite losing the popular vote by approximately 3 million votes — only the fifth time in US history that a candidate won the presidency without winning the popular vote. Trump had no prior political office experience, being the first US president never to have held elected office or served in the military.",
+    "wowFactor": "Trump is the only US president elected with zero prior elected office or military service. Every other president had at least one. He went from reality TV host to leader of the free world.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which presidential number was Donald Trump's first term?",
+        "answer": "45th",
+        "distractors": [
+          "43rd",
+          "44th",
+          "46th"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who did Donald Trump defeat in the 2016 presidential election?",
+        "answer": "Hillary Clinton",
+        "distractors": [
+          "Bernie Sanders",
+          "Joe Biden",
+          "Barack Obama"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Donald Trump won the 2016 popular vote as well as the Electoral College.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "He won the popular vote by a small margin",
+          "The popular vote was tied"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Trump was inaugurated on January ___, 2017.",
+        "answer": "20",
+        "distractors": [
+          "1",
+          "17",
+          "4"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Federal Election Commission — 2016 presidential results",
+    "sourceUrl": "https://www.fec.gov",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "Politically sensitive; present factually without opinion",
+    "visualDescription": "Donald Trump at the inauguration podium with the US Capitol in the background, pixel art in American red, white, and blue",
+    "tags": [
+      "Donald Trump",
+      "45th president",
+      "2016 election",
+      "Hillary Clinton",
+      "US history",
+      "inauguration"
+    ]
+  },
+  {
+    "id": "history-trump-second-term",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern US history",
+    "categoryL1": "history",
+    "categoryL2": "modern_us_history",
+    "categoryL3": "Donald Trump",
+    "statement": "Donald Trump won the 2024 presidential election to become the 47th President, making him only the second US president to serve two non-consecutive terms — the first being Grover Cleveland.",
+    "quizQuestion": "Which US president previously served two non-consecutive terms like Trump?",
+    "correctAnswer": "Grover Cleveland",
+    "distractors": [
+      "Ulysses S. Grant",
+      "Richard Nixon",
+      "Andrew Jackson",
+      "Theodore Roosevelt",
+      "Martin Van Buren",
+      "James Buchanan",
+      "William Howard Taft",
+      "Gerald Ford"
+    ],
+    "acceptableAnswers": [
+      "Grover Cleveland",
+      "Cleveland"
+    ],
+    "explanation": "Grover Cleveland served as the 22nd president (1885-1889), lost reelection to Benjamin Harrison, then won back the presidency as the 24th president (1893-1897). He remains the only president counted twice in the official numbering. Donald Trump served as the 45th president (2017-2021), lost to Joe Biden in 2020, then won the 2024 election to become the 47th president, making him the second president to serve non-consecutive terms.",
+    "wowFactor": "Trump is now both the 45th and 47th president — just like Grover Cleveland was both the 22nd and 24th. There's a real chance future historians will count them the same way.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which US president previously served two non-consecutive terms like Trump?",
+        "answer": "Grover Cleveland",
+        "distractors": [
+          "Ulysses S. Grant",
+          "Richard Nixon",
+          "Theodore Roosevelt"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What presidential number was Donald Trump's second term?",
+        "answer": "47th",
+        "distractors": [
+          "45th",
+          "46th",
+          "48th"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Grover Cleveland is counted as both the 22nd and 24th president.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "He is only counted as the 22nd",
+          "He was counted once as 23rd"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Trump won the ___ presidential election to begin his second term.",
+        "answer": "2024",
+        "distractors": [
+          "2020",
+          "2022",
+          "2028"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "National Archives — Presidential Records",
+    "sourceUrl": "https://www.archives.gov",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "Politically sensitive; present factually without opinion",
+    "visualDescription": "Two presidential portraits of the same figure numbered 45 and 47 side by side with a Cleveland comparison below, pixel art in formal tones",
+    "tags": [
+      "Donald Trump",
+      "47th president",
+      "Grover Cleveland",
+      "non-consecutive terms",
+      "2024 election",
+      "US history"
+    ]
+  },
+  {
+    "id": "history-mao-cultural-revolution",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "20th century revolutions",
+    "categoryL1": "history",
+    "categoryL2": "20th_century_revolutions",
+    "categoryL3": "Mao Zedong",
+    "statement": "Mao's Cultural Revolution (1966-1976) mobilized teenage Red Guards to destroy 'bourgeois' culture — burning books, demolishing temples, and persecuting intellectuals, teachers, and officials.",
+    "quizQuestion": "What youth group did Mao mobilize during the Cultural Revolution?",
+    "correctAnswer": "Red Guards",
+    "distractors": [
+      "Young Pioneers",
+      "Komsomol",
+      "Red Army Youth",
+      "People's Militia",
+      "Socialist Vanguard",
+      "Maoist Brigade",
+      "Youth League Guards",
+      "Revolutionary Youth Corps"
+    ],
+    "acceptableAnswers": [
+      "Red Guards",
+      "the Red Guards"
+    ],
+    "explanation": "The Cultural Revolution began in 1966 when Mao, who had lost political standing after the Great Leap Forward disaster, mobilized university and high school students as Red Guards to attack 'counter-revolutionaries' and the 'Four Olds' (old ideas, culture, customs, and habits). Schools and universities shut down for years. An estimated 1-2 million people were killed; millions more were sent to labor camps or persecuted. Chinese cultural heritage — temples, artwork, books — was systematically destroyed.",
+    "wowFactor": "Mao sent millions of teenagers to arrest their own teachers, destroy libraries, and demolish 2,000-year-old temples — and the teenagers believed they were saving China. An entire generation's education was deliberately destroyed.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What youth group did Mao mobilize during the Cultural Revolution?",
+        "answer": "Red Guards",
+        "distractors": [
+          "Young Pioneers",
+          "Komsomol",
+          "People's Militia"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What were the 'Four Olds' targeted during the Cultural Revolution?",
+        "answer": "Ideas, culture, customs, habits",
+        "distractors": [
+          "Rulers, priests, landlords, merchants",
+          "Cities, farms, factories, schools",
+          "Books, temples, art, music"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "The Cultural Revolution lasted from 1966 to 1976.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It lasted from 1958 to 1965",
+          "It lasted only two years"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "During the Cultural Revolution, Chinese universities and schools were shut down for ___ years.",
+        "answer": "several",
+        "distractors": [
+          "two weeks",
+          "two months",
+          "a few days"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "adult",
+    "rarity": "uncommon",
+    "sourceName": "Roderick MacFarquhar — Mao's Last Revolution",
+    "sourceUrl": "https://www.hup.harvard.edu",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "Political violence / persecution content; appropriate for adult",
+    "visualDescription": "Teenage Red Guards with Mao's Little Red Book destroying temple icons, pixel art in Communist red and harsh grey",
+    "tags": [
+      "Mao Zedong",
+      "Cultural Revolution",
+      "Red Guards",
+      "China",
+      "Four Olds",
+      "persecution"
+    ]
+  },
+  {
+    "id": "history-wwii-start",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "WWII",
+    "categoryL1": "history",
+    "categoryL2": "wwii",
+    "categoryL3": "World War II",
+    "statement": "World War II began on September 1, 1939, when Nazi Germany invaded Poland, prompting Britain and France to declare war on Germany two days later.",
+    "quizQuestion": "Which country did Germany invade to start World War II?",
+    "correctAnswer": "Poland",
+    "distractors": [
+      "France",
+      "Belgium",
+      "Austria",
+      "Czechoslovakia",
+      "Denmark",
+      "Netherlands",
+      "Norway",
+      "Soviet Union"
+    ],
+    "acceptableAnswers": [
+      "Poland",
+      "invaded Poland"
+    ],
+    "explanation": "On September 1, 1939, Germany invaded Poland from the west, using Blitzkrieg (lightning war) tactics combining fast armored units with air support. The Soviet Union invaded from the east on September 17 under the Molotov-Ribbentrop Pact's secret protocol. Britain and France had guaranteed Polish independence and declared war on Germany on September 3. Poland was divided between Germany and the USSR by early October. The invasion used a staged 'false flag' incident at Gleiwitz radio station as a pretext.",
+    "wowFactor": "Germany staged a fake Polish attack on a German radio station using the bodies of concentration camp prisoners dressed in Polish uniforms to create a pretext for invasion. The first casualty of WWII was a German lie.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which country did Germany invade to start World War II?",
+        "answer": "Poland",
+        "distractors": [
+          "France",
+          "Belgium",
+          "Czechoslovakia"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "When did Britain and France declare war on Germany in 1939?",
+        "answer": "September 3, 1939",
+        "distractors": [
+          "September 1, 1939",
+          "October 1, 1939",
+          "August 31, 1939"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "The Soviet Union also invaded Poland in September 1939.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "The USSR only entered WWII in 1941",
+          "The USSR defended Poland against Germany"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Germany's fast combined-arms invasion tactic was called ___.",
+        "answer": "Blitzkrieg",
+        "distractors": [
+          "Anschluss",
+          "Wehrmacht",
+          "Lebensraum"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Imperial War Museum — WWII timeline",
+    "sourceUrl": "https://www.iwm.org.uk",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "War content; appropriate for teen+",
+    "visualDescription": "German tanks crossing a Polish border crossing at dawn, Blitzkrieg formation with Stuka silhouettes above, pixel art in grey and black",
+    "tags": [
+      "WWII",
+      "Poland",
+      "Germany",
+      "1939",
+      "Blitzkrieg",
+      "invasion",
+      "World War II"
+    ]
+  },
+  {
+    "id": "history-wwii-d-day",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "WWII",
+    "categoryL1": "history",
+    "categoryL2": "wwii",
+    "categoryL3": "World War II",
+    "statement": "D-Day on June 6, 1944 was the largest seaborne invasion in history — 156,000 Allied troops landed on five Normandy beaches in a single day, beginning the liberation of Western Europe.",
+    "quizQuestion": "How many Allied troops landed on D-Day, June 6, 1944?",
+    "correctAnswer": "About 156,000",
+    "distractors": [
+      "About 10,000",
+      "About 500,000",
+      "About 50,000",
+      "About 1 million",
+      "About 5,000",
+      "About 300,000",
+      "About 20,000",
+      "About 80,000"
+    ],
+    "acceptableAnswers": [
+      "About 156,000",
+      "156,000",
+      "approximately 156,000"
+    ],
+    "explanation": "Operation Overlord's D-Day involved over 156,000 troops from the US, UK, Canada, and other Allied nations landing on five beaches (Utah, Omaha, Gold, Juno, Sword) in Normandy, France. The operation also deployed 11,590 aircraft and 6,939 naval vessels. American forces at Omaha Beach faced the heaviest resistance — roughly 2,000 of the total 4,413 Allied confirmed dead on D-Day fell at Omaha. The success of D-Day opened the Western Front and ultimately led to Germany's defeat in May 1945.",
+    "wowFactor": "D-Day involved 7,000 ships — the largest naval armada in history. If you lined them up end-to-end they would stretch from New York to Miami. Nothing before or since has approached its scale.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many Allied troops landed on D-Day, June 6, 1944?",
+        "answer": "About 156,000",
+        "distractors": [
+          "About 10,000",
+          "About 500,000",
+          "About 50,000"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which D-Day beach saw the heaviest Allied casualties on June 6?",
+        "answer": "Omaha Beach",
+        "distractors": [
+          "Utah Beach",
+          "Sword Beach",
+          "Gold Beach"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "D-Day involved soldiers from the US, UK, and Canada among others.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Only American and British troops landed",
+          "D-Day was exclusively an American operation"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The five D-Day beaches were Utah, Omaha, Gold, Juno, and ___.",
+        "answer": "Sword",
+        "distractors": [
+          "Arrow",
+          "Shield",
+          "Lance"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "National WWII Museum — D-Day statistics",
+    "sourceUrl": "https://www.nationalww2museum.org",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "War content; appropriate for teen+",
+    "visualDescription": "Aerial view of five Normandy beaches covered in landing craft at dawn, smoke and airborne troops overhead, pixel art in grey-green and blue",
+    "tags": [
+      "WWII",
+      "D-Day",
+      "Normandy",
+      "1944",
+      "invasion",
+      "Omaha Beach",
+      "liberation"
+    ]
+  },
+  {
+    "id": "history-wwii-atomic-bomb",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "WWII",
+    "categoryL1": "history",
+    "categoryL2": "wwii",
+    "categoryL3": "World War II",
+    "statement": "The United States dropped atomic bombs on Hiroshima on August 6, 1945 and Nagasaki on August 9 — the only two nuclear weapons ever used in warfare — killing approximately 200,000 people.",
+    "quizQuestion": "Which city was hit by the first atomic bomb used in warfare?",
+    "correctAnswer": "Hiroshima",
+    "distractors": [
+      "Nagasaki",
+      "Tokyo",
+      "Osaka",
+      "Kyoto",
+      "Yokohama",
+      "Kobe",
+      "Nanjing",
+      "Okinawa"
+    ],
+    "acceptableAnswers": [
+      "Hiroshima",
+      "Hiroshima, Japan"
+    ],
+    "explanation": "The Manhattan Project developed the first nuclear weapons. On August 6, 1945, the B-29 Enola Gay dropped 'Little Boy' (a uranium bomb) on Hiroshima, killing approximately 80,000 instantly with tens of thousands more dying from radiation in subsequent months. When Japan did not immediately surrender, 'Fat Man' (a plutonium bomb) was dropped on Nagasaki on August 9, killing approximately 40,000 instantly. Japan surrendered on August 15, 1945. The two bombings remain the only use of nuclear weapons in warfare.",
+    "wowFactor": "Kyoto was originally the top target but was removed from the list by US Secretary of War Henry Stimson, who had honeymooned there and considered it too culturally important to destroy. History turned on a vacation memory.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which city was hit by the first atomic bomb used in warfare?",
+        "answer": "Hiroshima",
+        "distractors": [
+          "Nagasaki",
+          "Tokyo",
+          "Osaka"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What was the name of the B-29 that dropped the Hiroshima atomic bomb?",
+        "answer": "Enola Gay",
+        "distractors": [
+          "Bock's Car",
+          "Great Artiste",
+          "Necessary Evil"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Nuclear weapons have been used in warfare exactly twice, both by the United States.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "The Soviets also used nuclear weapons in WWII",
+          "Three nuclear weapons were used in WWII"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Hiroshima bomb was nicknamed '___ Boy.'",
+        "answer": "Little",
+        "distractors": [
+          "Fat",
+          "Big",
+          "Thin"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Atomic Heritage Foundation — Manhattan Project and bombings",
+    "sourceUrl": "https://www.atomicheritage.org",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "Mass death / nuclear warfare; appropriate for teen+",
+    "visualDescription": "Mushroom cloud rising over Hiroshima with the Enola Gay B-29 silhouette above, pixel art in blinding white, orange, and grey",
+    "tags": [
+      "WWII",
+      "atomic bomb",
+      "Hiroshima",
+      "Nagasaki",
+      "1945",
+      "Manhattan Project",
+      "nuclear"
+    ]
+  },
+  {
+    "id": "history-alexander-conquests",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient conquests",
+    "categoryL1": "history",
+    "categoryL2": "ancient_conquests",
+    "categoryL3": "Alexander the Great",
+    "statement": "Alexander the Great conquered the Persian Empire, Egypt, and parts of India by age 30 — creating an empire spanning 2 million square miles without losing a single battle.",
+    "quizQuestion": "What age was Alexander the Great when he completed his major conquests?",
+    "correctAnswer": "About 30",
+    "distractors": [
+      "About 20",
+      "About 40",
+      "About 25",
+      "About 50",
+      "About 45",
+      "About 18",
+      "About 35",
+      "About 60"
+    ],
+    "acceptableAnswers": [
+      "About 30",
+      "around 30",
+      "by age 30",
+      "30 years old"
+    ],
+    "explanation": "Alexander III of Macedon became king at 20 in 336 BCE after his father Philip II was assassinated. Over the next 12 years, he campaigned from Greece through Asia Minor, Persia, Egypt, Central Asia, and into northern India. He died in Babylon in 323 BCE at age 32 — never having lost a pitched battle. His tactics at Gaugamela (defeating a Persian army of 250,000 with 47,000 soldiers) are still studied in military academies today.",
+    "wowFactor": "Alexander conquered more territory in 12 years than Rome would in 500. He did it while personally leading cavalry charges on the front line — he was wounded severely in at least three battles. His generals spent careers trying to catch up.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What age was Alexander the Great when he completed his major conquests?",
+        "answer": "About 30",
+        "distractors": [
+          "About 20",
+          "About 40",
+          "About 45"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "At what age did Alexander the Great become King of Macedon?",
+        "answer": "20",
+        "distractors": [
+          "16",
+          "25",
+          "30"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Alexander the Great never lost a major pitched battle in his entire military career.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "He lost at Gaugamela before winning",
+          "He lost his final battle in India"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Alexander the Great died in ___ at age 32 in 323 BCE.",
+        "answer": "Babylon",
+        "distractors": [
+          "Alexandria",
+          "Persepolis",
+          "Pella"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Peter Green — Alexander of Macedon",
+    "sourceUrl": "https://www.ucpress.edu",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Alexander the Great on horseback Bucephalus surveying a vast conquered landscape from Egypt to India, pixel art in bronze and golden tones",
+    "tags": [
+      "Alexander the Great",
+      "Macedon",
+      "conquest",
+      "Persian Empire",
+      "ancient history",
+      "battle"
+    ]
+  },
+  {
+    "id": "history-alexander-cities",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient conquests",
+    "categoryL1": "history",
+    "categoryL2": "ancient_conquests",
+    "categoryL3": "Alexander the Great",
+    "statement": "Alexander the Great founded over 70 cities across his empire, most named Alexandria — spreading Greek language, architecture, and culture from Egypt to Central Asia.",
+    "quizQuestion": "How many cities did Alexander the Great found across his empire?",
+    "correctAnswer": "Over 70",
+    "distractors": [
+      "About 5",
+      "About 20",
+      "About 100",
+      "About 10",
+      "Over 200",
+      "About 3",
+      "About 50",
+      "About 1,000"
+    ],
+    "acceptableAnswers": [
+      "Over 70",
+      "more than 70",
+      "around 70",
+      "at least 70"
+    ],
+    "explanation": "Alexander founded over 70 cities from Egypt to Afghanistan, most bearing his name in various forms (Alexandria, Alexandropolis, Alexandreia, Iskander). Alexandria in Egypt became the intellectual capital of the ancient world — home to the Great Library and the world's leading scholars for centuries. The cultural spread of Greek language and customs across his empire is called Hellenization, and its legacy lasted for centuries after his death, shaping the Roman Empire, early Christianity, and Islamic scholarship.",
+    "wowFactor": "There are 21 cities still called some form of 'Alexandria' today across Egypt, Turkey, Iran, Afghanistan, and Pakistan. A 32-year-old left his name on cities that are still inhabited 2,300 years later.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many cities did Alexander the Great found across his empire?",
+        "answer": "Over 70",
+        "distractors": [
+          "About 5",
+          "About 20",
+          "About 100"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What was the most famous Alexandria, which became the ancient world's intellectual center?",
+        "answer": "Alexandria in Egypt",
+        "distractors": [
+          "Alexandria in Persia",
+          "Alexandria in India",
+          "Alexandria in Babylon"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "The spread of Greek culture through Alexander's empire is called Hellenization.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It is called Romanization",
+          "It is called Macedonization"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Great ___ of Alexandria was a center of ancient world scholarship.",
+        "answer": "Library",
+        "distractors": [
+          "Temple",
+          "Academy",
+          "Museum"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "National Geographic — Alexander the Great's cities",
+    "sourceUrl": "https://www.nationalgeographic.com",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Map from Egypt to India dotted with 70+ city markers all labeled Alexandria variants, pixel art in parchment tan and blue",
+    "tags": [
+      "Alexander the Great",
+      "Alexandria",
+      "Hellenization",
+      "cities",
+      "Greek culture",
+      "empire"
+    ]
+  },
+  {
+    "id": "history-alexander-bucephalus",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "ancient conquests",
+    "categoryL1": "history",
+    "categoryL2": "ancient_conquests",
+    "categoryL3": "Alexander the Great",
+    "statement": "Alexander the Great named a city 'Bucephala' after his beloved horse Bucephalus, who died after the Battle of the Hydaspes in India in 326 BCE.",
+    "quizQuestion": "What city did Alexander name after his horse?",
+    "correctAnswer": "Bucephala",
+    "distractors": [
+      "Alexandria",
+      "Pella",
+      "Persepolis",
+      "Nikaia",
+      "Taxila",
+      "Babylon",
+      "Kandahar",
+      "Samarkand"
+    ],
+    "acceptableAnswers": [
+      "Bucephala",
+      "Bucephala (modern Pakistan)"
+    ],
+    "explanation": "Bucephalus was Alexander's warhorse from age 16. According to Plutarch, when no one else could tame the horse, the young Alexander noticed it was afraid of its own shadow and simply turned it to face the sun. He rode Bucephalus in every major battle for over 20 years. After the Battle of the Hydaspes River in India (326 BCE), Bucephalus died — either in battle or of old age (he was around 30). Alexander founded a city on the battle site named Bucephala in his honor. The site is in modern Pakistan.",
+    "wowFactor": "Alexander's greatest warhorse died at roughly age 30 in India — having crossed deserts, mountain ranges, and rivers with his owner for 20 years. Alexander wept and founded a city in its name. A horse has a city.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What city did Alexander name after his horse?",
+        "answer": "Bucephala",
+        "distractors": [
+          "Alexandria",
+          "Nikaia",
+          "Taxila"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What was the name of Alexander the Great's famous warhorse?",
+        "answer": "Bucephalus",
+        "distractors": [
+          "Incitatus",
+          "Copenhagen",
+          "Marengo"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Alexander tamed Bucephalus by noticing the horse feared its own shadow.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "He tamed it with music",
+          "He broke it through exhaustion"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Bucephalus died after the Battle of the ___ River in India in 326 BCE.",
+        "answer": "Hydaspes",
+        "distractors": [
+          "Indus",
+          "Tigris",
+          "Euphrates"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Plutarch — Life of Alexander",
+    "sourceUrl": "https://www.perseus.tufts.edu",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Alexander astride Bucephalus charging at the Battle of the Hydaspes, golden sunset over an Indian river, pixel art in gold and deep blue",
+    "tags": [
+      "Alexander the Great",
+      "Bucephalus",
+      "horse",
+      "Hydaspes",
+      "India",
+      "Bucephala",
+      "ancient history"
+    ]
+  },
+  {
+    "id": "history-iraq-war-fallujah",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern wars",
+    "categoryL1": "history",
+    "categoryL2": "modern_wars",
+    "categoryL3": "Iraq War",
+    "statement": "The 2004 Second Battle of Fallujah was the bloodiest American urban combat since the Battle of Hue in Vietnam — with over 100 US soldiers killed and an estimated 2,000 insurgents killed in six weeks.",
+    "quizQuestion": "Which 2004 Iraq battle was the bloodiest US urban combat since Vietnam?",
+    "correctAnswer": "Second Battle of Fallujah",
+    "distractors": [
+      "Battle of Mosul",
+      "Battle of Ramadi",
+      "Battle of Tikrit",
+      "Battle of Sadr City",
+      "Battle of Najaf",
+      "Operation Red Dawn",
+      "Battle of Basra",
+      "Battle of Baghdad"
+    ],
+    "acceptableAnswers": [
+      "Second Battle of Fallujah",
+      "Fallujah 2004",
+      "Operation Phantom Fury"
+    ],
+    "explanation": "Operation Phantom Fury (November-December 2004) was a US Marine and Army assault on Fallujah, which had become a stronghold of insurgents including foreign fighters linked to Abu Musab al-Zarqawi. About 10,000 US and Iraqi troops fought an estimated 3,500 insurgents in house-to-house combat through 39,000 buildings. 107 US and allied soldiers were killed, around 600 wounded. The battle cleared the city but contributed to ongoing insurgency as cleared fighters dispersed elsewhere.",
+    "wowFactor": "Marines were taught to check each room of a house in Fallujah by throwing grenades first and entering second — every doorway was potentially fatal. They cleared 39,000 buildings. One by one.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which 2004 Iraq battle was the bloodiest US urban combat since Vietnam?",
+        "answer": "Second Battle of Fallujah",
+        "distractors": [
+          "Battle of Mosul",
+          "Battle of Ramadi",
+          "Battle of Sadr City"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What was the operational name of the Second Battle of Fallujah?",
+        "answer": "Operation Phantom Fury",
+        "distractors": [
+          "Operation Iraqi Freedom",
+          "Operation Desert Storm",
+          "Operation Enduring Freedom"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "The Second Battle of Fallujah involved house-to-house fighting through tens of thousands of buildings.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "The battle was primarily an air campaign",
+          "It was resolved through negotiation, not combat"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Second Battle of Fallujah took place in ___ 2004.",
+        "answer": "November",
+        "distractors": [
+          "March",
+          "July",
+          "January"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "adult",
+    "rarity": "uncommon",
+    "sourceName": "Center for Military History — Operation Phantom Fury",
+    "sourceUrl": "https://history.army.mil",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "Intense military combat content; appropriate for adult",
+    "visualDescription": "Marines clearing a rubble-strewn street in Fallujah with smoke and destroyed buildings, pixel art in desert tan and grey",
+    "tags": [
+      "Iraq War",
+      "Fallujah",
+      "Operation Phantom Fury",
+      "2004",
+      "urban combat",
+      "Marines"
+    ]
+  },
+  {
+    "id": "history-iraq-war-troop-surge",
+    "type": "knowledge",
+    "domain": "History",
+    "subdomain": "modern wars",
+    "categoryL1": "history",
+    "categoryL2": "modern_wars",
+    "categoryL3": "Iraq War",
+    "statement": "The 2007 US troop surge in Iraq, sending 20,000 additional soldiers under General David Petraeus, coincided with a dramatic 80% reduction in violence and is credited with stabilizing Iraq temporarily.",
+    "quizQuestion": "Which US general commanded the 2007 Iraq troop surge?",
+    "correctAnswer": "David Petraeus",
+    "distractors": [
+      "Tommy Franks",
+      "George Casey",
+      "Stanley McChrystal",
+      "Norman Schwarzkopf",
+      "Colin Powell",
+      "John Abizaid",
+      "Ray Odierno",
+      "James Mattis"
+    ],
+    "acceptableAnswers": [
+      "David Petraeus",
+      "General Petraeus",
+      "Gen. David Petraeus"
+    ],
+    "explanation": "In January 2007, President George W. Bush ordered a surge of 20,000 additional US troops to Iraq, appointing General David Petraeus as commander of Multi-National Force Iraq. Petraeus implemented a new counterinsurgency strategy (COIN) focused on protecting the population rather than just killing insurgents. Combined with the 'Anbar Awakening' (Sunni tribal leaders turning against Al-Qaeda), violence fell dramatically through 2007-2008. The surge is widely studied in military circles, though the long-term stability it created was not maintained after US withdrawal.",
+    "wowFactor": "The surge reduced violence so dramatically that Petraeus appeared on every major magazine cover in the US. Then the troops left, and by 2014, ISIS had captured much of the same ground. The surge worked. The peace didn't.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which US general commanded the 2007 Iraq troop surge?",
+        "answer": "David Petraeus",
+        "distractors": [
+          "Tommy Franks",
+          "George Casey",
+          "Stanley McChrystal"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What Sunni development coincided with the surge to reduce Iraq violence?",
+        "answer": "Anbar Awakening",
+        "distractors": [
+          "Sadr ceasefire",
+          "Kurdish alliance",
+          "Shia reconciliation"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "The 2007 Iraq surge was ordered by President George W. Bush.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It was ordered by Barack Obama",
+          "It was ordered by Congress over Bush's objection"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The surge added approximately ___ additional US troops to Iraq.",
+        "answer": "20,000",
+        "distractors": [
+          "500",
+          "100,000",
+          "5,000"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "adult",
+    "rarity": "uncommon",
+    "sourceName": "Brookings Institution — Iraq Index, surge analysis",
+    "sourceUrl": "https://www.brookings.edu",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "Politically sensitive war content; appropriate for adult",
+    "visualDescription": "General Petraeus briefing at a military operations center in Baghdad, maps and casualty data on screens behind him, pixel art in military green and beige",
+    "tags": [
+      "Iraq War",
+      "troop surge",
+      "David Petraeus",
+      "2007",
+      "COIN",
+      "Anbar Awakening",
+      "counterinsurgency"
+    ]
+  }
+]

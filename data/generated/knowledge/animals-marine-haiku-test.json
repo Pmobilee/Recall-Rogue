@@ -1,0 +1,2655 @@
+[
+  {
+    "id": "animals-great-white-shark-speed",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Great white sharks can reach speeds up to 60 km/h (37 mph) when hunting.",
+    "quizQuestion": "How fast can a great white shark swim when hunting?",
+    "correctAnswer": "60 kilometers per hour",
+    "distractors": [
+      "45 kilometers per hour",
+      "80 kilometers per hour",
+      "30 kilometers per hour",
+      "100 kilometers per hour",
+      "25 kilometers per hour",
+      "75 kilometers per hour",
+      "90 kilometers per hour",
+      "40 kilometers per hour"
+    ],
+    "acceptableAnswers": [
+      "60 km/h",
+      "37 mph",
+      "60kph",
+      "sixty kilometers"
+    ],
+    "explanation": "Great white sharks are built for speed with streamlined bodies and powerful tail fins. This hunting speed allows them to ambush prey like seals with devastating efficiency.",
+    "wowFactor": "The sudden burst of speed from deep water makes attacks almost unavoidable for prey.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How fast can a great white shark swim when hunting?",
+        "answer": "60 kilometers per hour",
+        "distractors": ["45 kilometers per hour", "80 kilometers per hour", "30 kilometers per hour"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which shark can swim at speeds of 60 km/h when hunting?",
+        "answer": "Great white shark",
+        "distractors": ["Tiger shark", "Bull shark", "Hammerhead shark"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Great white sharks can exceed 100 km/h when hunting.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A predator capable of 60 km/h bursts from the depths. What is it?",
+        "answer": "Great white shark",
+        "distractors": ["Barracuda", "Sailfish", "Marlin"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "National Geographic",
+    "sourceUrl": "https://www.nationalgeographic.com/animals/fish/facts-about-sharks",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A grey shark with white belly, torpedo-shaped body, powerful tail fin cutting through blue ocean water. Sunlight streams from above, creating dramatic shadows.",
+    "tags": ["predator", "speed", "shark", "hunting"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-great-white-shark-sense",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Great white sharks can smell blood from a mile away in the ocean.",
+    "quizQuestion": "From how far away can a great white shark detect blood?",
+    "correctAnswer": "Up to one mile",
+    "distractors": [
+      "100 feet",
+      "Ten miles",
+      "500 feet",
+      "Three miles",
+      "50 feet",
+      "Two miles",
+      "200 feet",
+      "Five hundred meters"
+    ],
+    "acceptableAnswers": [
+      "one mile",
+      "1 mile",
+      "1600 meters",
+      "up to a mile"
+    ],
+    "explanation": "Great whites have olfactory receptors that give them one of the most powerful senses of smell in the animal kingdom. Even a tiny amount of blood creates a scent trail they can follow.",
+    "wowFactor": "They can detect just one drop of blood in an Olympic swimming pool!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How far can a great white shark smell blood?",
+        "answer": "Up to one mile",
+        "distractors": ["100 feet", "Ten miles", "500 feet"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which sensory ability allows great whites to hunt so effectively?",
+        "answer": "Smell",
+        "distractors": ["Echolocation", "Heat vision", "Taste"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Great white sharks have poor senses of smell.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A distant droplet triggers an ocean-wide hunt. What sense guides it?",
+        "answer": "Smell",
+        "distractors": ["Sight", "Touch", "Hearing"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Smithsonian Magazine",
+    "sourceUrl": "https://www.smithsonianmag.com/smart-news/sharks-can-smell",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A great white shark with nostrils flaring, swimming through murky water with blood particles visible in the water, leaving a scent trail. Arrows indicate smell detection.",
+    "tags": ["smell", "senses", "hunting", "predator"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-great-white-shark-teeth",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Great white sharks have rows of replaceable teeth that can regenerate throughout their entire lifetime.",
+    "quizQuestion": "How many teeth do great white sharks replace?",
+    "correctAnswer": "Multiple rows throughout life",
+    "distractors": [
+      "Just the bottom row",
+      "Only the front teeth",
+      "Teeth once per year",
+      "A single replacement set",
+      "Never replace teeth",
+      "Only during mating season",
+      "Just the top row",
+      "Once in their lifetime"
+    ],
+    "acceptableAnswers": [
+      "rows",
+      "throughout life",
+      "replaceable",
+      "continuously",
+      "multiple sets"
+    ],
+    "explanation": "Great white sharks have a conveyor-belt system of teeth replacement. As front teeth wear down from use, new rows move forward. This ensures they always have sharp teeth for hunting.",
+    "wowFactor": "They can go through 20,000 teeth in a lifetime!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Can great white sharks replace their teeth?",
+        "answer": "Yes, throughout their entire life",
+        "distractors": ["No, only once", "Only the front ones", "Never"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which shark has replaceable rows of teeth?",
+        "answer": "Great white shark",
+        "distractors": ["Hammerhead", "Nurse shark", "Goblin shark"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Great white sharks keep the same teeth their whole life.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A perfect hunting machine never runs out of sharp tools. How?",
+        "answer": "Replaceable teeth rows",
+        "distractors": ["Daily sharpening", "Genetic perfection", "Magic"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Ocean.si.edu",
+    "sourceUrl": "https://ocean.si.edu/ocean-life/fish/sharks",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A close-up of a great white shark's mouth showing multiple rows of sharp white teeth, with darker back rows visible. Cutaway view showing the conveyor-belt system.",
+    "tags": ["teeth", "adaptation", "hunting", "replacement"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-blue-ringed-octopus-venom",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "The blue-ringed octopus contains enough venom to kill 26 humans in minutes.",
+    "quizQuestion": "How many humans can blue-ringed octopus venom kill?",
+    "correctAnswer": "Up to 26 humans",
+    "distractors": [
+      "5 humans",
+      "100 humans",
+      "10 humans",
+      "50 humans",
+      "3 humans",
+      "15 humans",
+      "200 humans",
+      "1 human"
+    ],
+    "acceptableAnswers": [
+      "26",
+      "26 humans",
+      "twenty-six people",
+      "up to 26"
+    ],
+    "explanation": "The blue-ringed octopus produces tetrodotoxin, one of the most toxic substances in nature. This neurotoxin is 1,200 times deadlier than cyanide, yet the octopus is only 5 inches long.",
+    "wowFactor": "It's one of the ocean's deadliest creatures, yet it looks adorable!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the lethal capacity of blue-ringed octopus venom?",
+        "answer": "26 humans",
+        "distractors": ["5 humans", "100 humans", "10 humans"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which small octopus is extremely venomous?",
+        "answer": "Blue-ringed octopus",
+        "distractors": ["Red-ringed octopus", "Yellow octopus", "Mimic octopus"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Blue-ringed octopuses are safe to handle.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "Size of a hand, toxin of a thousand snakes. What is it?",
+        "answer": "Blue-ringed octopus",
+        "distractors": ["Stonefish", "Sea snake", "Lionfish"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "National Geographic",
+    "sourceUrl": "https://www.nationalgeographic.com/animals/invertebrates/facts-about-octopus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A small blue-ringed octopus with bright blue circles glowing on tan/yellow body against coral reef. Aura of danger suggested by lighting. Size reference with human hand nearby.",
+    "tags": ["venom", "toxin", "deadly", "adaptation"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-blue-ringed-octopus-intelligence",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Blue-ringed octopuses can change color and texture instantly using chromatophores.",
+    "quizQuestion": "What allows blue-ringed octopuses to change color?",
+    "correctAnswer": "Chromatophores",
+    "distractors": [
+      "Pigment glands",
+      "Light reflectors",
+      "Muscle contractions",
+      "Chemical reactions",
+      "Photocells",
+      "Ink sacs",
+      "Scale shifts",
+      "Melanin layers"
+    ],
+    "acceptableAnswers": [
+      "chromatophores",
+      "color cells",
+      "pigment cells",
+      "specialized cells"
+    ],
+    "explanation": "Chromatophores are specialized skin cells packed with pigment. The octopus controls these muscles to expand or contract, revealing or hiding color instantly. This lets them communicate and camouflage.",
+    "wowFactor": "They change color faster than you can blink, yet they're colorblind!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What are the color-changing cells in octopuses called?",
+        "answer": "Chromatophores",
+        "distractors": ["Photocytes", "Melanocytes", "Iridophores"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which cells help octopuses turn blue or red?",
+        "answer": "Chromatophores",
+        "distractors": ["Neurons", "Muscle fibers", "Blood vessels"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Octopuses use chemicals to change color.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A master of instant transformation. What's the secret?",
+        "answer": "Chromatophores",
+        "distractors": ["Illusions", "Shedding skin", "Mimicry"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Journal of Experimental Biology",
+    "sourceUrl": "https://journals.biologists.com/jeb",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A blue-ringed octopus transitioning between colors, showing tan/beige gradually shifting to bright blue with rings. Microscopic view showing chromatophore cells in cross-section.",
+    "tags": ["camouflage", "communication", "cells", "adaptation"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-blue-ringed-octopus-habitat",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Blue-ringed octopuses live on the ocean floor in tide pools and shallow coral reefs.",
+    "quizQuestion": "Where do blue-ringed octopuses typically live?",
+    "correctAnswer": "Tide pools and coral reefs",
+    "distractors": [
+      "Deep ocean trenches",
+      "Open ocean surface",
+      "Kelp forests",
+      "Mangrove swamps",
+      "Sandy dunes",
+      "River mouths",
+      "Arctic regions",
+      "Mud flats"
+    ],
+    "acceptableAnswers": [
+      "tide pools",
+      "coral reefs",
+      "shallow waters",
+      "ocean floor"
+    ],
+    "explanation": "Blue-ringed octopuses prefer shallow waters where they can hide among rocks and coral. Tide pools are perfect hunting grounds for small crustaceans, their favorite prey.",
+    "wowFactor": "They're often found in areas where people swim, making them surprisingly dangerous neighbors!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the typical habitat of a blue-ringed octopus?",
+        "answer": "Tide pools and shallow coral reefs",
+        "distractors": ["Deep trenches", "Open ocean", "Kelp forests"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which deadly octopus lives in tide pools?",
+        "answer": "Blue-ringed octopus",
+        "distractors": ["Giant squid", "Dumbo octopus", "Vampire squid"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Blue-ringed octopuses live only in deep ocean.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "Danger hides among the rocks during low tide. What is it?",
+        "answer": "Blue-ringed octopus",
+        "distractors": ["Sea urchin", "Stonefish", "Cone snail"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Australian Museum",
+    "sourceUrl": "https://www.australianmuseum.net.au/learn/animals/molluscs",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A tide pool with rocky crevices and colorful corals, a blue-ringed octopus hidden among rocks. Shallow water, visible ocean floor, sunlight filtering through.",
+    "tags": ["habitat", "tide pool", "coral reef", "shallow water"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-manta-ray-size",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Manta rays have the largest brain of any fish and can reach wingspans up to 23 feet.",
+    "quizQuestion": "What is the maximum wingspan of a manta ray?",
+    "correctAnswer": "Up to 23 feet",
+    "distractors": [
+      "15 feet",
+      "40 feet",
+      "10 feet",
+      "50 feet",
+      "8 feet",
+      "30 feet",
+      "35 feet",
+      "20 feet"
+    ],
+    "acceptableAnswers": [
+      "23 feet",
+      "23 ft",
+      "7 meters",
+      "up to 23"
+    ],
+    "explanation": "Manta rays are gentle giants of the ocean. Their massive wing-like pectoral fins make them incredibly graceful swimmers, gliding through water with balletic movements.",
+    "wowFactor": "Despite their size, they feed on tiny plankton and are completely harmless!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How wide can a manta ray's wings span?",
+        "answer": "Up to 23 feet",
+        "distractors": ["15 feet", "40 feet", "10 feet"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which ray can grow to 23-foot wingspans?",
+        "answer": "Manta ray",
+        "distractors": ["Eagle ray", "Devil ray", "Stingray"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Manta rays are aggressive hunters.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A 23-foot gentle giant glides through tropical reefs. What is it?",
+        "answer": "Manta ray",
+        "distractors": ["Whale shark", "Sailfish", "Sea eagle"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "World Animal Foundation",
+    "sourceUrl": "https://www.worldanimalfoundation.org/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A massive manta ray with wings spread 23 feet wide, gliding gracefully above coral reef. White underbelly, dark top surface, golden-brown water with sunlight beaming through.",
+    "tags": ["size", "wingspan", "gentle", "plankton-feeder"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-manta-ray-brain",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Manta rays have exceptionally large brains for fish and can recognize individual humans.",
+    "quizQuestion": "What cognitive ability do manta rays possess?",
+    "correctAnswer": "Recognize individual humans",
+    "distractors": [
+      "Use tools",
+      "Speak language",
+      "Do math",
+      "Read minds",
+      "Time travel",
+      "Write code",
+      "Build shelters",
+      "Create art"
+    ],
+    "acceptableAnswers": [
+      "recognition",
+      "recognize humans",
+      "identify people",
+      "individual recognition"
+    ],
+    "explanation": "Manta rays have brain-to-body ratios comparable to some dolphins. Research shows they can distinguish between different divers and even remember them over time.",
+    "wowFactor": "They're one of the smartest fish in the ocean and have genuine curiosity about humans!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Can manta rays recognize individual people?",
+        "answer": "Yes",
+        "distractors": ["No", "Only in captivity", "Only by smell"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which fish can identify specific humans?",
+        "answer": "Manta ray",
+        "distractors": ["Goldfish", "Salmon", "Herring"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Manta rays have small brains.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A creature that remembers your face underwater. What is it?",
+        "answer": "Manta ray",
+        "distractors": ["Dolphin", "Sea lion", "Whale"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Marine Biology Letters",
+    "sourceUrl": "https://onlinelibrary.wiley.com/journal/1095539x",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A manta ray approaching a scuba diver with apparent curiosity, head-on view showing large dark eyes. Brain cross-section overlay showing size and complexity. Tropical reef setting.",
+    "tags": ["intelligence", "cognition", "recognition", "behavior"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-manta-ray-feeding",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Manta rays perform graceful backflips to trap plankton in their mouths while feeding.",
+    "quizQuestion": "How do manta rays feed on plankton?",
+    "correctAnswer": "By doing backflips",
+    "distractors": [
+      "By sucking water",
+      "By filtering sand",
+      "By using nets",
+      "By spinning fast",
+      "By diving deep",
+      "By using teeth",
+      "By ramming prey",
+      "By using tentacles"
+    ],
+    "acceptableAnswers": [
+      "backflips",
+      "backflipping",
+      "somersaults",
+      "flipping backwards"
+    ],
+    "explanation": "Manta rays perform spectacular backflips or barrel rolls to concentrate plankton into their mouths. Large groups often feed together, creating a feeding frenzy that looks like an underwater dance.",
+    "wowFactor": "They're the acrobats of the ocean, doing intentional flips for dinner!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What acrobatic move helps manta rays eat plankton?",
+        "answer": "Backflips",
+        "distractors": ["Barrel rolls", "Corkscrews", "Headstands"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which ray eats plankton by doing flips?",
+        "answer": "Manta ray",
+        "distractors": ["Stingray", "Eagle ray", "Devil ray"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Manta rays hunt fish using speed.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "An underwater gymnast eating invisibly tiny food. What is it?",
+        "answer": "Manta ray",
+        "distractors": ["Whale", "Sea lion", "Dolphin"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "National Geographic",
+    "sourceUrl": "https://www.nationalgeographic.com/animals/fish/facts-about-manta-rays",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A manta ray mid-backflip with mouth wide open, water and plankton visible around its head. Underwater sunlight, other manta rays feeding nearby, plankton shown as tiny sparkles.",
+    "tags": ["feeding", "behavior", "plankton", "acrobatics"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-seahorse-monogamy",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Seahorses are monogamous and mate for life, one of the few fish to do so.",
+    "quizQuestion": "Do seahorses typically stay with one partner?",
+    "correctAnswer": "Yes, they mate for life",
+    "distractors": [
+      "No, they're promiscuous",
+      "Only during breeding season",
+      "They change partners yearly",
+      "Males and females never meet",
+      "They're solitary animals",
+      "Only in captivity",
+      "Partnership lasts 2 years",
+      "They breed with many"
+    ],
+    "acceptableAnswers": [
+      "yes",
+      "mate for life",
+      "monogamous",
+      "lifelong partners"
+    ],
+    "explanation": "Seahorses form strong pair bonds with their mates. A couple will spend their entire lives together, even holding tails while swimming. This loyalty is remarkable in the fish world.",
+    "wowFactor": "They're basically the ocean's answer to swans, but way more adorable!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Are seahorses monogamous?",
+        "answer": "Yes, mate for life",
+        "distractors": ["No, very promiscuous", "Only when breeding", "No, solitary"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which fish is known for lifelong pair bonding?",
+        "answer": "Seahorse",
+        "distractors": ["Cod", "Herring", "Anchovy"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Seahorses have many partners.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A marine creature that holds hands and never leaves. What is it?",
+        "answer": "Seahorse",
+        "distractors": ["Angelfish", "Pufferfish", "Dolphin"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Oceana",
+    "sourceUrl": "https://oceana.org/animals/seahorse/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two seahorses holding tails while facing each other, swimming together through sea grass. Pink and yellow coloring, romantic gentle lighting. Seagrass forest setting.",
+    "tags": ["monogamy", "pair bonding", "reproduction", "behavior"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-seahorse-pregnancy",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Male seahorses become pregnant and give birth to live young, unlike other fish.",
+    "quizQuestion": "In seahorses, which sex gets pregnant?",
+    "correctAnswer": "The male",
+    "distractors": [
+      "The female",
+      "Both equally",
+      "Neither (they lay eggs)",
+      "Only juveniles",
+      "Only during migration",
+      "Alternating partners",
+      "The larger one",
+      "They don't reproduce"
+    ],
+    "acceptableAnswers": [
+      "male",
+      "the male",
+      "males",
+      "male seahorses"
+    ],
+    "explanation": "Male seahorses have a brood pouch where females deposit eggs. The male then incubates them, controlling oxygen and salt balance. He literally gives birth to fully-formed baby seahorses.",
+    "wowFactor": "It's the only fish species where males get pregnant - nature's ultimate role reversal!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which seahorse sex carries eggs until birth?",
+        "answer": "Male",
+        "distractors": ["Female", "Both", "Neither"]
+      },
+      {
+        "type": "reverse",
+        "question": "What is unique about seahorse male pregnancy?",
+        "answer": "They give birth to live young",
+        "distractors": ["They lay eggs", "They don't reproduce", "Only once in life"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Seahorse females are pregnant.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "The only fish where the father carries babies. What is it?",
+        "answer": "Seahorse",
+        "distractors": ["Clownfish", "Guppy", "Molly"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Marine Science Today",
+    "sourceUrl": "https://www.marinesciencetoday.com/seahorse-reproduction",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A male seahorse with translucent brood pouch showing tiny baby seahorses inside. Cross-section showing the pouch structure. Baby seahorses being released into water.",
+    "tags": ["reproduction", "male pregnancy", "unique", "adaptation"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-seahorse-camouflage",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Seahorses can change color to match their surroundings for camouflage.",
+    "quizQuestion": "Why do seahorses change colors?",
+    "correctAnswer": "For camouflage",
+    "distractors": [
+      "To attract mates",
+      "To scare predators",
+      "To communicate",
+      "To show emotion",
+      "To regulate temperature",
+      "To digest food",
+      "To see better",
+      "To swim faster"
+    ],
+    "acceptableAnswers": [
+      "camouflage",
+      "hide from predators",
+      "blend in",
+      "concealment"
+    ],
+    "explanation": "Seahorses have chromatophores that allow them to change from bright yellow to muted brown within hours. This adaptation helps them hide from predators while hunting for tiny crustaceans.",
+    "wowFactor": "They're the ultimate underwater ninjas, disappearing into seagrass like magic!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the purpose of color change in seahorses?",
+        "answer": "Camouflage",
+        "distractors": ["Attraction", "Communication", "Temperature"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which sea creature uses color change to hide?",
+        "answer": "Seahorse",
+        "distractors": ["Sea star", "Coral", "Anemone"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Seahorses have permanent coloring.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A gentle hunter that vanishes in the grass. How?",
+        "answer": "Color change camouflage",
+        "distractors": ["Speed", "Invisibility", "Burrowing"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Smithsonian Institution",
+    "sourceUrl": "https://www.si.edu/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A seahorse gradually changing color from yellow to brown against seagrass background. Split-screen showing bright and camouflaged versions. Seagrass forest setting with dappled light.",
+    "tags": ["camouflage", "adaptation", "color change", "hunting"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-moon-jellyfish-lifespan",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Moon jellyfish can reverse their age and become young again, achieving biological immortality.",
+    "quizQuestion": "Can moon jellyfish become biologically immortal?",
+    "correctAnswer": "Yes, by reversing aging",
+    "distractors": [
+      "No, they always die",
+      "Only in captivity",
+      "Only males can",
+      "Only females can",
+      "Only when breeding",
+      "Only if fed well",
+      "Only in cool water",
+      "Never documented"
+    ],
+    "acceptableAnswers": [
+      "yes",
+      "biological immortality",
+      "reverse aging",
+      "juvenilization"
+    ],
+    "explanation": "Moon jellyfish can transform from adult form back to polyp stage (like becoming a baby). This process, called transdifferentiation, effectively gives them immortality if they avoid predators or disease.",
+    "wowFactor": "They're basically vampires - they can drink from the fountain of youth!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How do moon jellyfish achieve immortality?",
+        "answer": "By reversing their age",
+        "distractors": ["By not aging", "By cloning", "By magic"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which jellyfish is biologically immortal?",
+        "answer": "Moon jellyfish",
+        "distractors": ["Sea nettle", "Lion's mane", "Box jelly"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Moon jellyfish always die eventually.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A creature that can become young again forever. What is it?",
+        "answer": "Moon jellyfish",
+        "distractors": ["Hydra", "Starfish", "Sea cucumber"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Current Biology",
+    "sourceUrl": "https://www.cell.com/current-biology/home",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A moon jellyfish with translucent bell showing internal organs (four horseshoe-shaped gonads), surrounded by timeline showing juvenile, adult, and reversal back to young stage. Ethereal glow.",
+    "tags": ["immortality", "aging", "transformation", "unique"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-moon-jellyfish-eyes",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Moon jellyfish have no brain, heart, or blood, yet can still sense light and movement.",
+    "quizQuestion": "How do moon jellyfish sense without a brain?",
+    "correctAnswer": "Through nerve cells",
+    "distractors": [
+      "With a small brain",
+      "They can't sense anything",
+      "Through sound waves",
+      "Via magnetic fields",
+      "Using telepathy",
+      "With hidden eyes",
+      "Through chemicals only",
+      "They don't sense"
+    ],
+    "acceptableAnswers": [
+      "nerve cells",
+      "nerve net",
+      "sensory cells",
+      "distributed nervous system"
+    ],
+    "explanation": "Moon jellyfish have a distributed nerve net with light-sensitive cells called ocelli. This primitive nervous system lets them detect shadows and react to threats without a centralized brain.",
+    "wowFactor": "They're basically 95% water and have no organs, yet they've survived for 500 million years!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How do jellyfish sense light without a brain?",
+        "answer": "Through nerve cells",
+        "distractors": ["With eyes", "With antennae", "Magically"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which creature has no brain but senses light?",
+        "answer": "Moon jellyfish",
+        "distractors": ["Sponge", "Sea star", "Anemone"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Jellyfish have hearts.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A creature that thinks with no brain at all. How?",
+        "answer": "Nerve cells distributed throughout",
+        "distractors": ["Neurons everywhere", "Instinct alone", "Mystery"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Marine Biology Encyclopedia",
+    "sourceUrl": "https://www.britannica.com/animal/jellyfish",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A moon jellyfish cross-section showing nerve net distribution throughout bell, ocelli (eye spots) marked along bell rim. No brain, heart, or blood visible. Transparent with blue glow.",
+    "tags": ["nervous system", "sensory", "primitive", "adaptation"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-moon-jellyfish-bell",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Moon jellyfish move by contracting their bell-shaped body to push water behind them.",
+    "quizQuestion": "How do moon jellyfish propel themselves?",
+    "correctAnswer": "By contracting their bell",
+    "distractors": [
+      "With tentacle propulsion",
+      "By undulating",
+      "Using muscle waves",
+      "Through water jets",
+      "By rotating",
+      "Via cilia motion",
+      "Using suction cups",
+      "Through current riding"
+    ],
+    "acceptableAnswers": [
+      "bell contraction",
+      "contracting",
+      "squeezing water",
+      "bell movement"
+    ],
+    "explanation": "Moon jellyfish rhythmically contract and relax their transparent bell, expelling water downward. This simple pulsing motion propels them upward in a slow, graceful motion. They move by expending minimal energy.",
+    "wowFactor": "They're the ocean's most efficient swimmers - barely moving yet always going!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What body part do jellyfish contract to move?",
+        "answer": "Bell",
+        "distractors": ["Tentacles", "Mantle", "Foot"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animals use bell contractions to swim?",
+        "answer": "Jellyfish",
+        "distractors": ["Squid", "Fish", "Dolphins"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Jellyfish use tentacles to swim.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A graceful pulse through the darkness. What is it?",
+        "answer": "Jellyfish bell contraction",
+        "distractors": ["Fish fin beat", "Dolphin tail", "Squid thrust"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Ocean Education",
+    "sourceUrl": "https://www.oceaneducation.org/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A moon jellyfish shown in sequence of bell contraction and relaxation, arrows showing water movement downward. Pulsing motion illustrated with multiple exposure. Translucent bell clearly shown.",
+    "tags": ["locomotion", "movement", "propulsion", "mechanics"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-clownfish-sex-change",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Clownfish can change from male to female if the dominant female dies.",
+    "quizQuestion": "What happens when a clownfish colony loses its female?",
+    "correctAnswer": "The largest male becomes female",
+    "distractors": [
+      "The colony dies",
+      "They find a new female",
+      "Males reproduce together",
+      "They become inactive",
+      "A juvenile becomes female",
+      "Nothing changes",
+      "They migrate",
+      "The group dissolves"
+    ],
+    "acceptableAnswers": [
+      "becomes female",
+      "changes sex",
+      "male becomes female",
+      "sex change occurs"
+    ],
+    "explanation": "Clownfish are sequential hermaphrodites. An anemone colony has a breeding female and breeding male. If the female dies, the largest male undergoes sexual maturation to become the new breeding female.",
+    "wowFactor": "They can literally change their gender to keep the colony going!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Can clownfish change sex?",
+        "answer": "Yes, males can become females",
+        "distractors": ["No, never", "Only females change", "Only in captivity"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which fish exhibits sex change in groups?",
+        "answer": "Clownfish",
+        "distractors": ["Angelfish", "Damselfish", "Goby"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Clownfish are always the same sex.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A colony leader changes sex to survive. What is it?",
+        "answer": "Clownfish",
+        "distractors": ["Seahorse", "Angelfish", "Wrasse"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Journal of Fish Biology",
+    "sourceUrl": "https://onlinelibrary.wiley.com/journal/10958649",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A clownfish inside a host anemone, with three clownfish of different sizes shown. Transition arrows showing the largest male changing color and form to become female.",
+    "tags": ["sex change", "reproduction", "adaptation", "unique"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-clownfish-symbiosis",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Clownfish live inside anemones, immune to their stinging tentacles unlike other fish.",
+    "quizQuestion": "How are clownfish immune to anemone stings?",
+    "correctAnswer": "Special mucus coating",
+    "distractors": [
+      "Thick skin",
+      "Poison resistance",
+      "They aren't immune",
+      "Hardened scales",
+      "Internal organs",
+      "Evolution only",
+      "Genetic mutation",
+      "Chemical barrier"
+    ],
+    "acceptableAnswers": [
+      "mucus",
+      "mucus coating",
+      "special mucus",
+      "protective coating"
+    ],
+    "explanation": "Clownfish secrete a special mucus that prevents anemone nematocysts from firing. This protective layer lets them hide safely while providing the anemone with food scraps and protection from parasites.",
+    "wowFactor": "It's a perfect partnership - clownfish get safety, anemone gets health benefits!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What protects clownfish from anemone stings?",
+        "answer": "Special mucus coating",
+        "distractors": ["Thick skin", "Scales", "Internal organs"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which fish can safely touch anemones?",
+        "answer": "Clownfish",
+        "distractors": ["Angelfish", "Damselfish", "Grouper"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Anemone stings hurt clownfish.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A fish with a poison-proof suit hiding in tentacles. What is it?",
+        "answer": "Clownfish",
+        "distractors": ["Lionfish", "Pufferfish", "Dragonfish"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Marine Ecology Progress Series",
+    "sourceUrl": "https://www.int-res.com/journals/meps/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A clownfish nestled safely inside a sea anemone's tentacles, showing the mucus layer that protects it. Cross-section of clownfish showing special mucus coating. Symbiotic relationship illustrated.",
+    "tags": ["symbiosis", "mutualism", "adaptation", "relationship"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-clownfish-colors",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Clownfish have bold orange and white stripes that mimic their host anemone's colors.",
+    "quizQuestion": "Why do clownfish have distinctive stripes?",
+    "correctAnswer": "To match their anemone host",
+    "distractors": [
+      "To attract mates",
+      "To scare predators",
+      "To warn of poison",
+      "To see in darkness",
+      "To regulate heat",
+      "To communicate",
+      "For camouflage",
+      "Genetic variation"
+    ],
+    "acceptableAnswers": [
+      "anemone mimicry",
+      "host matching",
+      "camouflage",
+      "blend in"
+    ],
+    "explanation": "Clownfish coloration helps them blend with their anemone host, providing camouflage from larger predators. The stripes may also help the anemone recognize them as safe rather than prey.",
+    "wowFactor": "Their stripes aren't just beautiful - they're a survival costume!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What do clownfish stripes help them do?",
+        "answer": "Blend with their anemone",
+        "distractors": ["Scare predators", "Attract mates", "See at night"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which fish has stripes matching anemones?",
+        "answer": "Clownfish",
+        "distractors": ["Sergeant major", "Damselfish", "Wrasse"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Clownfish stripes warn predators.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "Orange and white stripes that match home. What is it?",
+        "answer": "Clownfish",
+        "distractors": ["Sergeant fish", "Pufferfish", "Lionfish"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Coral Reef Research",
+    "sourceUrl": "https://coralreefalliance.org/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A brightly colored clownfish with orange body and white stripes positioned among anemone tentacles. Colors matching each other. Vibrant coral reef lighting with dappled sunlight.",
+    "tags": ["coloration", "camouflage", "mimicry", "appearance"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-anglerfish-bioluminescence",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Female anglerfish have a bioluminescent lure on their heads to attract prey in darkness.",
+    "quizQuestion": "What is the glowing lure on an anglerfish's head?",
+    "correctAnswer": "Bioluminescent rod",
+    "distractors": [
+      "Fishing line",
+      "Light bulb",
+      "Phosphorescent scales",
+      "Chemical glow",
+      "Glowing teeth",
+      "Reflective organ",
+      "Electric lamp",
+      "Captured organism"
+    ],
+    "acceptableAnswers": [
+      "bioluminescence",
+      "lure",
+      "glowing rod",
+      "esca"
+    ],
+    "explanation": "The anglerfish's esca is a specialized rod with photophores (light-producing organs). Symbiotic bacteria living in the esca create light. The fish dangles this lure to attract curious prey in the abyssal darkness.",
+    "wowFactor": "She's a living fishing pole that catches dinner with a glowing lure!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How does an anglerfish attract prey?",
+        "answer": "With a glowing lure",
+        "distractors": ["With speed", "With noise", "With smell"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which deep-sea fish has a bioluminescent lure?",
+        "answer": "Anglerfish",
+        "distractors": ["Dragonfish", "Hatchetfish", "Lanternfish"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Anglerfish turn off their lures.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "context",
+        "question": "A living fishing pole in the abyss. What is it?",
+        "answer": "Anglerfish",
+        "distractors": ["Dragonfish", "Gulper eel", "Viperfish"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Deep Sea Research",
+    "sourceUrl": "https://www.deepseaworldorg.com/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A dark anglerfish with a glowing bioluminescent lure dangling from a rod above its head, set in pitch-black ocean depths. Lure shows bright blue-green glow. Small fish attracted to the light.",
+    "tags": ["bioluminescence", "lure", "hunting", "deep sea"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-anglerfish-sexual-parasitism",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Male anglerfish permanently fuse to females, becoming a sperm-producing appendage.",
+    "quizQuestion": "What happens to male anglerfish in reproduction?",
+    "correctAnswer": "They fuse permanently to females",
+    "distractors": [
+      "They live separately",
+      "They compete for mates",
+      "They exchange sperm freely",
+      "They migrate to spawn",
+      "They build nests",
+      "They guard eggs",
+      "They die after mating",
+      "They never meet"
+    ],
+    "acceptableAnswers": [
+      "fuse",
+      "permanent fusion",
+      "attach",
+      "become appendage"
+    ],
+    "explanation": "In some deep-sea anglerfish species, males bite females and permanently attach. Over time, blood vessels fuse, and the male literally becomes a reproductive organ - a remarkable extreme of sexual parasitism.",
+    "wowFactor": "It's the strangest relationship in nature - he becomes part of her forever!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How do male anglerfish permanently stay with females?",
+        "answer": "By fusing to them",
+        "distractors": ["Staying nearby", "Holding on", "Swimming together"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which males fuse permanently to their mates?",
+        "answer": "Male anglerfish",
+        "distractors": ["Male seahorses", "Male clownfish", "Male dolphins"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Male anglerfish live independently.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A mate that becomes one body forever. What is it?",
+        "answer": "Male anglerfish",
+        "distractors": ["Seahorse pair", "Dolphin pod", "Penguin couple"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Marine Behavior Journal",
+    "sourceUrl": "https://www.marinemicro.org/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A female anglerfish with a much smaller male fused to her body, showing blood vessel connections. Multiple males attached to one female. Anatomical cutaway showing fusion points.",
+    "tags": ["reproduction", "parasitism", "mating", "extreme adaptation"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-anglerfish-appearance",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Anglerfish have large mouths with needle-like teeth and can swallow fish larger than themselves.",
+    "quizQuestion": "Can anglerfish eat prey larger than themselves?",
+    "correctAnswer": "Yes, with expandable stomachs",
+    "distractors": [
+      "No, only small prey",
+      "Only when cooperating",
+      "Only after mating",
+      "Never, too small",
+      "Only in warm water",
+      "Only juveniles can",
+      "Only at certain depths",
+      "They're plant eaters"
+    ],
+    "acceptableAnswers": [
+      "yes",
+      "swallow whole",
+      "expandable",
+      "large mouths"
+    ],
+    "explanation": "Anglerfish have massive mouths relative to their bodies and hugely expandable stomachs. In the deep sea where food is scarce, they must capitalize on every meal opportunity by swallowing prey whole.",
+    "wowFactor": "They're basically nightmares with expandable bellies that can eat things their own size!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How do anglerfish eat large prey?",
+        "answer": "With expandable mouths and stomachs",
+        "distractors": ["By tearing it apart", "By dissolving it", "With venom"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which fish has a mouth large enough to swallow bigger fish?",
+        "answer": "Anglerfish",
+        "distractors": ["Goldfish", "Herring", "Salmon"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Anglerfish mouths are small.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A mouth that opens to swallow the impossible. What is it?",
+        "answer": "Anglerfish",
+        "distractors": ["Gulper eel", "Viperfish", "Dragonfish"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Deep Sea World",
+    "sourceUrl": "https://www.deepseaworld.com/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An anglerfish with massive mouth wide open, swallowing a fish nearly its own size. Needle-like teeth visible. Expandable stomach shown in cross-section. Dark abyss setting.",
+    "tags": ["feeding", "adaptation", "predator", "mouth size"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-green-sea-turtle-migration",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Green sea turtles migrate thousands of miles to return to their birthplace to lay eggs.",
+    "quizQuestion": "Where do green sea turtles lay eggs?",
+    "correctAnswer": "Their natal beach",
+    "distractors": [
+      "Nearest beach",
+      "Tropical islands only",
+      "Deep ocean",
+      "Randomly chosen",
+      "In the water",
+      "On coral reefs",
+      "In caves",
+      "Mainland coasts only"
+    ],
+    "acceptableAnswers": [
+      "birthplace",
+      "natal beach",
+      "same beach",
+      "where they were born"
+    ],
+    "explanation": "Incredibly, sea turtles use geomagnetic navigation and possibly smell to find their way back to the exact beach where they hatched - sometimes decades later and thousands of miles away.",
+    "wowFactor": "They remember their birthplace across an entire ocean and return to it perfectly!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How do sea turtles find their natal beach?",
+        "answer": "Geomagnetic navigation and memory",
+        "distractors": ["Following current", "Using landmarks", "Following other turtles"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which reptile returns to its birthplace to breed?",
+        "answer": "Green sea turtle",
+        "distractors": ["Crocodile", "Iguana", "Snake"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Sea turtles randomly choose beaches.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A creature that crosses oceans to go home. What is it?",
+        "answer": "Sea turtle",
+        "distractors": ["Whale", "Salmon", "Dolphin"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Sea Turtle Conservancy",
+    "sourceUrl": "https://www.seaturtleconservancy.org/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A green sea turtle swimming across the ocean with migration route lines shown on a globe. Turtle returning to natal beach to lay eggs, with younger sea turtles hatching on the same beach.",
+    "tags": ["migration", "reproduction", "navigation", "behavior"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-green-sea-turtle-diet",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Adult green sea turtles are primarily herbivorous, eating seagrass and algae.",
+    "quizQuestion": "What do adult green sea turtles eat?",
+    "correctAnswer": "Seagrass and algae",
+    "distractors": [
+      "Fish",
+      "Crustaceans",
+      "Jellyfish",
+      "Mollusks",
+      "Plankton",
+      "Coral polyps",
+      "Sea urchins",
+      "Sponges"
+    ],
+    "acceptableAnswers": [
+      "seagrass",
+      "algae",
+      "plants",
+      "vegetation"
+    ],
+    "explanation": "Unlike most sea turtles that are carnivorous, adult green turtles are mostly herbivorous. They graze on seagrass beds like underwater cows, making them important for seagrass ecosystem health.",
+    "wowFactor": "They're the vegetarians of the turtle world, grazing seagrass meadows!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Are green sea turtles carnivores or herbivores?",
+        "answer": "Herbivores",
+        "distractors": ["Carnivores", "Omnivores", "Detritivores"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which sea turtle is vegetarian?",
+        "answer": "Green sea turtle",
+        "distractors": ["Loggerhead", "Hawksbill", "Leatherback"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Green turtles hunt fish.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "An underwater grazer eating endless greens. What is it?",
+        "answer": "Green sea turtle",
+        "distractors": ["Manatee", "Dugong", "Hippopotamus"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Sea Turtle Biology",
+    "sourceUrl": "https://www.worldwildlife.org/species/green-sea-turtle",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A green sea turtle grazing on seagrass meadow underwater, with thick kelp and seaweed around. Other turtles grazing nearby like herd animals. Lush underwater vegetation setting.",
+    "tags": ["diet", "herbivore", "seagrass", "feeding"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-green-sea-turtle-lifespan",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Green sea turtles can live over 100 years in the ocean.",
+    "quizQuestion": "How long can green sea turtles live?",
+    "correctAnswer": "Over 100 years",
+    "distractors": [
+      "20 years",
+      "50 years",
+      "10 years",
+      "75 years",
+      "30 years",
+      "80 years",
+      "150 years",
+      "5 years"
+    ],
+    "acceptableAnswers": [
+      "100+ years",
+      "over 100",
+      "century",
+      "very long"
+    ],
+    "explanation": "Green sea turtles are long-lived animals with lifespans exceeding a century. They reach sexual maturity slowly (20-50+ years) and can breed repeatedly throughout their long lives.",
+    "wowFactor": "Some of them are older than your great-grandparents!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the typical lifespan of a green turtle?",
+        "answer": "Over 100 years",
+        "distractors": ["50 years", "20 years", "10 years"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which sea turtle species is longest-lived?",
+        "answer": "Green sea turtle",
+        "distractors": ["Loggerhead", "Hawksbill", "Leatherback"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Sea turtles live only 20 years.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A creature that lives for centuries underwater. What is it?",
+        "answer": "Green sea turtle",
+        "distractors": ["Whale", "Shark", "Parrot"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "IUCN Red List",
+    "sourceUrl": "https://www.iucnredlist.org/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A green sea turtle shown at different life stages from hatchling to ancient elder, spanning timeline of 100+ years. Ancient turtle with barnacles showing age. Ocean backdrop.",
+    "tags": ["lifespan", "longevity", "age", "growth"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-brain-coral-symbiosis",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Brain coral contains symbiotic algae that produce food through photosynthesis.",
+    "quizQuestion": "What symbiotic organism helps brain coral survive?",
+    "correctAnswer": "Algae called zooxanthellae",
+    "distractors": [
+      "Bacteria",
+      "Fish",
+      "Crustaceans",
+      "Mollusks",
+      "Anemones",
+      "Sea grass",
+      "Sponges",
+      "Fungi"
+    ],
+    "acceptableAnswers": [
+      "zooxanthellae",
+      "algae",
+      "photosynthetic organisms",
+      "dinoflagellates"
+    ],
+    "explanation": "Brain coral hosts zooxanthellae, microscopic algae living in their tissues. The algae photosynthesize and share nutrients with the coral, while the coral provides protection and nutrients from waste products.",
+    "wowFactor": "Corals farm tiny algae gardens inside their own bodies!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What algae helps brain coral survive?",
+        "answer": "Zooxanthellae",
+        "distractors": ["Chlorella", "Spirulina", "Kelp"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which organism has symbiotic zooxanthellae?",
+        "answer": "Brain coral",
+        "distractors": ["Sponge", "Anemone", "Jellyfish"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Corals are purely parasitic.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "An algae farm inside rocky apartments. What is it?",
+        "answer": "Brain coral",
+        "distractors": ["Sponge", "Anemone", "Clam"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Coral Science Today",
+    "sourceUrl": "https://coralreefalliance.org/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A brain coral with brain-like pattern, cross-section showing zooxanthellae algae inside coral tissues (shown as colored dots). Photosynthesis process illustrated. Reef setting.",
+    "tags": ["symbiosis", "mutualism", "algae", "photosynthesis"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-brain-coral-growth",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Brain coral can live for centuries and grow extremely slowly, just millimeters per year.",
+    "quizQuestion": "How fast does brain coral grow?",
+    "correctAnswer": "Millimeters per year",
+    "distractors": [
+      "Inches per month",
+      "Feet per year",
+      "Meters per decade",
+      "Centimeters per day",
+      "Miles per century",
+      "Inches per year",
+      "Feet per month",
+      "Meters per year"
+    ],
+    "acceptableAnswers": [
+      "millimeters",
+      "very slowly",
+      "slow growth",
+      "mm per year"
+    ],
+    "explanation": "Brain coral is among the slowest-growing corals, adding just 4-10 mm per year. A large brain coral colony may be hundreds or even thousands of years old - a living fossil.",
+    "wowFactor": "A 6-foot brain coral might be older than human civilization!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the growth rate of brain coral?",
+        "answer": "Millimeters per year",
+        "distractors": ["Inches per year", "Feet per year", "Centimeters per month"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which coral grows at millimeters per year?",
+        "answer": "Brain coral",
+        "distractors": ["Fire coral", "Staghorn", "Elkhorn"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Brain corals grow rapidly.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A living fossil taking centuries to grow. What is it?",
+        "answer": "Brain coral",
+        "distractors": ["Sponge", "Clam", "Starfish"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Coral Science Journal",
+    "sourceUrl": "https://www.sciencedirect.com/journal/coral-research",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A large brain coral with growth rings and timeline showing its ancient age (hundreds/thousands of years). Tiny growth increments shown in magnified detail. Age comparison with historical events.",
+    "tags": ["growth", "longevity", "slow", "ancient"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-brain-coral-bleaching",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Brain coral turns white when stressed, as it expels symbiotic algae in bleaching events.",
+    "quizQuestion": "What happens to brain coral during bleaching?",
+    "correctAnswer": "It expels its algae",
+    "distractors": [
+      "It grows faster",
+      "It reproduces",
+      "It dies instantly",
+      "It changes shape",
+      "It moves",
+      "It eats more",
+      "It sleeps",
+      "It creates toxins"
+    ],
+    "acceptableAnswers": [
+      "expels algae",
+      "loses color",
+      "turns white",
+      "removes zooxanthellae"
+    ],
+    "explanation": "When water temperature rises or light becomes too intense, corals expel their zooxanthellae, turning bleach-white. This reveals the coral's white skeleton beneath. Prolonged bleaching can kill the coral.",
+    "wowFactor": "Corals are the canaries in the coal mine for climate change!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What causes coral bleaching?",
+        "answer": "Stress expels algae",
+        "distractors": ["Predators eating it", "Pollution coating it", "Growth process"]
+      },
+      {
+        "type": "reverse",
+        "question": "What turns white during bleaching?",
+        "answer": "Brain coral",
+        "distractors": ["Fish", "Seaweed", "Sand"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Bleaching always kills coral.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A white skeleton rising from the ocean, once colorful. What happened?",
+        "answer": "Coral bleaching",
+        "distractors": ["Death", "Evolution", "Mutation"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "NOAA Coral Reef Watch",
+    "sourceUrl": "https://coralreefwatch.noaa.gov/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A brain coral transitioning from healthy brown/colorful to stark white, showing bleaching process. Before/after comparison. Microscopic view showing expelled zooxanthellae. Temperature stress indicated.",
+    "tags": ["bleaching", "stress", "climate", "adaptation"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-crown-of-thorns-spines",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Crown-of-thorns starfish is covered in venomous spines that can cause severe pain.",
+    "quizQuestion": "What makes crown-of-thorns starfish dangerous?",
+    "correctAnswer": "Venomous spines",
+    "distractors": [
+      "Sharp teeth",
+      "Poison glands",
+      "Electric shock",
+      "Acid secretion",
+      "Stinging tentacles",
+      "Caustic bite",
+      "Sonic blast",
+      "Ink clouds"
+    ],
+    "acceptableAnswers": [
+      "spines",
+      "venom",
+      "venomous",
+      "spiky coating"
+    ],
+    "explanation": "Crown-of-thorns starfish have venomous spines covering their entire body. A single spine puncture causes intense pain and can lead to paralysis or death if untreated. The venom protects them from most predators.",
+    "wowFactor": "They're living pincushions of pain with poison needles!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How are crown-of-thorns starfish defended?",
+        "answer": "Venomous spines",
+        "distractors": ["Speed", "Camouflage", "Size"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which starfish is covered in venomous spines?",
+        "answer": "Crown-of-thorns",
+        "distractors": ["Brittle star", "Sea star", "Leather star"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Crown-of-thorns spines are harmless.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A spiky crown that kills with a touch. What is it?",
+        "answer": "Crown-of-thorns starfish",
+        "distractors": ["Lionfish", "Sea urchin", "Stonefish"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Great Barrier Reef",
+    "sourceUrl": "https://www.gbrmpa.gov.au/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A crown-of-thorns starfish covered densely with venomous spines, reddish-orange coloring. Spines shown in detail with venom glands. Starfish on coral reef feeding on coral. Danger indicated.",
+    "tags": ["venom", "spines", "defense", "dangerous"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-crown-of-thorns-diet",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Crown-of-thorns starfish are voracious coral predators that can devastate entire reefs.",
+    "quizQuestion": "What do crown-of-thorns starfish primarily eat?",
+    "correctAnswer": "Coral",
+    "distractors": [
+      "Fish",
+      "Crustaceans",
+      "Algae",
+      "Plankton",
+      "Mollusks",
+      "Sea grass",
+      "Sponges",
+      "Detritus"
+    ],
+    "acceptableAnswers": [
+      "coral",
+      "coral polyps",
+      "corals",
+      "reef coral"
+    ],
+    "explanation": "Crown-of-thorns are coral specialists, consuming live coral tissue voraciously. A single starfish can destroy 6 square meters of coral annually. Population explosions are major reef threats.",
+    "wowFactor": "They're the apex coral predators that can destroy a reef in months!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the primary food of crown-of-thorns starfish?",
+        "answer": "Coral",
+        "distractors": ["Fish", "Crustaceans", "Algae"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which predator devastates coral reefs?",
+        "answer": "Crown-of-thorns starfish",
+        "distractors": ["Damselfish", "Parrotfish", "Sea urchin"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Crown-of-thorns are beneficial to reefs.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A coral killer that blooms after storms. What is it?",
+        "answer": "Crown-of-thorns starfish",
+        "distractors": ["Parrotfish", "Sea urchin", "Damselfish"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Coral Reef Alliance",
+    "sourceUrl": "https://coralreefalliance.org/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A crown-of-thorns starfish feeding on colorful coral, coral polyps being consumed. Devastated reef area shown beside healthy reef. Multiple starfish on damaged coral for scale.",
+    "tags": ["predation", "coral", "reef damage", "diet"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-crown-of-thorns-outbreaks",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Crown-of-thorns starfish experience periodic population outbreaks triggered by nutrient runoff.",
+    "quizQuestion": "What triggers crown-of-thorns population explosions?",
+    "correctAnswer": "Nutrient runoff from land",
+    "distractors": [
+      "Climate change only",
+      "Predator elimination",
+      "Temperature increase",
+      "Breeding season",
+      "Moon phases",
+      "Solar cycles",
+      "Ocean currents",
+      "Disease epidemics"
+    ],
+    "acceptableAnswers": [
+      "nutrients",
+      "runoff",
+      "fertilizer",
+      "excess nutrients"
+    ],
+    "explanation": "Nutrient-rich runoff from agriculture and development creates algal blooms that feed larval crown-of-thorns. Reduced predator populations and warmer water compound the problem, leading to massive population booms.",
+    "wowFactor": "Farm fertilizer indirectly causes coral reef destruction miles away!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What causes crown-of-thorns population explosions?",
+        "answer": "Nutrient runoff",
+        "distractors": ["Climate change", "Predators leaving", "Natural cycles"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which effect of fertilizer runoff destroys reefs?",
+        "answer": "Crown-of-thorns explosions",
+        "distractors": ["Algae blooms", "Acid rain", "Oxygen depletion"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Outbreaks are natural cycles.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "Land pollution triggers ocean destruction via spiky predators. How?",
+        "answer": "Nutrient runoff",
+        "distractors": ["Direct toxins", "Plastic waste", "Oil spills"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Marine Ecology Progress Series",
+    "sourceUrl": "https://www.int-res.com/journals/meps/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Agricultural runoff flowing into ocean, nutrient cycle diagram showing algal bloom feeding larval starfish. Population explosion shown with thousands of starfish covering reef. Cause-and-effect illustrated.",
+    "tags": ["ecology", "overpopulation", "nutrients", "anthropogenic"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-nautilus-chambered",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Nautilus shells are divided into internal chambers filled with gas for buoyancy control.",
+    "quizQuestion": "What are nautilus shell chambers for?",
+    "correctAnswer": "Buoyancy control",
+    "distractors": [
+      "Egg storage",
+      "Predator defense",
+      "Food storage",
+      "Water storage",
+      "Breeding",
+      "Camouflage",
+      "Hunting",
+      "Communication"
+    ],
+    "acceptableAnswers": [
+      "buoyancy",
+      "floating",
+      "depth control",
+      "rising and sinking"
+    ],
+    "explanation": "The nautilus shell has 30+ chambers, each sealed off. As the nautilus grows, it builds a new larger chamber. By filling chambers with gas or seawater, it controls its depth - a perfect hydraulic system.",
+    "wowFactor": "It's an underwater submarine with a natural pressure tank built-in!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How do nautilus shells help them dive?",
+        "answer": "Chambers control buoyancy",
+        "distractors": ["Streamlined shape", "Strong muscles", "Air pockets"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal uses chambered shells for diving?",
+        "answer": "Nautilus",
+        "distractors": ["Clam", "Snail", "Oyster"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Nautilus chambers store food.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A natural submarine with gas-filled rooms. What is it?",
+        "answer": "Nautilus",
+        "distractors": ["Squid", "Octopus", "Cuttlefish"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Journal of Molluscan Studies",
+    "sourceUrl": "https://academic.oup.com/mollus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A nautilus shell cut away to show internal chambered structure, each chamber shown in cross-section. Gas and water distribution shown. Nautilus moving up and down through water column.",
+    "tags": ["buoyancy", "chambers", "adaptation", "mechanics"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-nautilus-ancient",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Nautilus is a living fossil that has survived 500 million years with minimal change.",
+    "quizQuestion": "How long have nautilus species existed?",
+    "correctAnswer": "500 million years",
+    "distractors": [
+      "100 million years",
+      "1 million years",
+      "50 million years",
+      "200 million years",
+      "10 million years",
+      "5 million years",
+      "1 billion years",
+      "50,000 years"
+    ],
+    "acceptableAnswers": [
+      "500 million",
+      "500 million years",
+      "ancient",
+      "half a billion years"
+    ],
+    "explanation": "Nautilus is a cephalopod that originated in the Paleozoic. Their chambered shells appeared hundreds of millions of years ago and have remained essentially unchanged - nature's perfect design.",
+    "wowFactor": "They were already ancient when dinosaurs were new!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How old is the nautilus lineage?",
+        "answer": "500 million years",
+        "distractors": ["100 million", "1 billion", "50 million"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which marine animal is a true living fossil?",
+        "answer": "Nautilus",
+        "distractors": ["Coelacanth", "Horseshoe crab", "Shark"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Nautilus evolved recently.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A creature unchanged since the dinosaurs walked Earth. What is it?",
+        "answer": "Nautilus",
+        "distractors": ["Shark", "Crocodile", "Coelacanth"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Paleobiology Database",
+    "sourceUrl": "https://paleobiodb.org/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A modern nautilus next to fossil nautilus shells from different geological periods, showing minimal change. Timeline from 500 million years ago to present. Dinosaurs and modern creatures for scale.",
+    "tags": ["fossil", "ancient", "evolution", "unchanged"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-nautilus-hunting",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Nautilus hunt at night using poor vision but excellent sense of smell.",
+    "quizQuestion": "How do nautilus find prey at night?",
+    "correctAnswer": "Using smell, not vision",
+    "distractors": [
+      "Echolocation",
+      "Vibration sensing",
+      "Heat vision",
+      "Electrical senses",
+      "Magnetic detection",
+      "Sound only",
+      "Light organs",
+      "Bioluminescence"
+    ],
+    "acceptableAnswers": [
+      "smell",
+      "olfaction",
+      "scent",
+      "chemical sensing"
+    ],
+    "explanation": "Nautilus have poor eyesight but extremely sensitive chemoreceptors. They hunt small crustaceans and fish at night, following scent trails through dark ocean depths using their tentacles.",
+    "wowFactor": "They're hunters that see with their noses!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What sense helps nautilus hunt most?",
+        "answer": "Smell",
+        "distractors": ["Vision", "Hearing", "Touch"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which sense is best in nautilus, vision or smell?",
+        "answer": "Smell",
+        "distractors": ["Vision", "Both equal", "Neither works"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Nautilus have excellent vision.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A night hunter that can't see but never gets hungry. How?",
+        "answer": "Keen sense of smell",
+        "distractors": ["Echolocation", "Heat sensing", "Luck"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Marine Behavior Review",
+    "sourceUrl": "https://www.researchgate.net/journal",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A nautilus hunting at night in dark water, scent plume shown as visible particles. Tentacles extended sensing chemicals. Poor vision indicated by abstract eyes. Prey creature nearby.",
+    "tags": ["hunting", "smell", "behavior", "sensory"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-whale-shark-size",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Whale sharks are the largest fish ever, reaching lengths over 40 feet.",
+    "quizQuestion": "How large can whale sharks grow?",
+    "correctAnswer": "Over 40 feet long",
+    "distractors": [
+      "20 feet",
+      "30 feet",
+      "50 feet",
+      "100 feet",
+      "15 feet",
+      "35 feet",
+      "60 feet",
+      "10 feet"
+    ],
+    "acceptableAnswers": [
+      "40 feet",
+      "40+ feet",
+      "over 40",
+      "12+ meters"
+    ],
+    "explanation": "Whale sharks are gentle filter-feeding giants, the largest known fish species. Some specimens exceed 45 feet and weigh 40+ tons. Despite their size, they eat only tiny plankton and fish eggs.",
+    "wowFactor": "They're bigger than school buses yet gentle as herbivores!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the maximum size of a whale shark?",
+        "answer": "Over 40 feet",
+        "distractors": ["20 feet", "30 feet", "50 feet"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which fish is the largest ever recorded?",
+        "answer": "Whale shark",
+        "distractors": ["Great white", "Mako shark", "Sailfish"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Whale sharks are whales.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A giant that eats only specks of food. What is it?",
+        "answer": "Whale shark",
+        "distractors": ["Blue whale", "Great white", "Kraken"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "World Record Fish",
+    "sourceUrl": "https://www.fishbase.org/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A massive whale shark dwarfing a school bus and human scuba diver for scale. Spotted pattern visible. Mouth open showing filter feeding. Tropical reef setting with small fish nearby.",
+    "tags": ["size", "giant", "largest fish", "megafauna"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-whale-shark-feeding",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Whale sharks are filter feeders that eat plankton and fish eggs by mouth filtering.",
+    "quizQuestion": "How do whale sharks feed?",
+    "correctAnswer": "By filter feeding",
+    "distractors": [
+      "By hunting prey",
+      "By swallowing whole fish",
+      "By eating coral",
+      "By absorbing nutrients",
+      "By sucking in water",
+      "By using teeth",
+      "By suction",
+      "By grazing algae"
+    ],
+    "acceptableAnswers": [
+      "filter feeding",
+      "filtering",
+      "straining water",
+      "filter feeders"
+    ],
+    "explanation": "Whale sharks have specialized gills with filter pads that trap plankton and fish eggs. Water flows through, and food gets caught. Despite their massive size, they're completely herbivorous/planktivorous.",
+    "wowFactor": "The world's biggest fish eats invisible food like a whale!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What feeding strategy do whale sharks use?",
+        "answer": "Filter feeding",
+        "distractors": ["Hunting", "Scavenging", "Parasitism"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which large fish is a filter feeder?",
+        "answer": "Whale shark",
+        "distractors": ["Great white", "Hammerhead", "Sailfish"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Whale sharks are apex predators.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A giant that subsists on invisible soup. How?",
+        "answer": "Filter feeding",
+        "distractors": ["Hunting", "Grazing", "Symbiosis"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Whale Shark and Manta Trust",
+    "sourceUrl": "https://www.whalesharkandmantatrust.org/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A whale shark with mouth wide open, water pouring through visible plankton particles (shown as specks). Cross-section showing gill filter pads trapping food. Plankton cloud being consumed.",
+    "tags": ["filter feeding", "diet", "plankton", "gentle giant"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-whale-shark-spots",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Whale sharks have unique spot patterns used to identify individuals, like fingerprints.",
+    "quizQuestion": "How are individual whale sharks identified?",
+    "correctAnswer": "By their unique spot patterns",
+    "distractors": [
+      "By size alone",
+      "By color shade",
+      "By location",
+      "By migration route",
+      "By DNA only",
+      "By fin shape",
+      "By age estimation",
+      "By behavior"
+    ],
+    "acceptableAnswers": [
+      "spot patterns",
+      "spots",
+      "patterns",
+      "like fingerprints"
+    ],
+    "explanation": "Each whale shark has a unique pattern of white spots on its body. Researchers photograph these patterns to track individual sharks across oceans and years - a non-invasive ID system.",
+    "wowFactor": "They're like underwater celebrities with their own ID badges!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What makes each whale shark unique?",
+        "answer": "Spot patterns",
+        "distractors": ["Size", "Color", "Behavior"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal's spots work like fingerprints?",
+        "answer": "Whale shark",
+        "distractors": ["Leopard", "Cheetah", "Zebra"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: All whale sharks look identical.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A giant with nature's ID badge printed on its skin. What is it?",
+        "answer": "Whale shark",
+        "distractors": ["Leopard", "Zebra", "Tiger shark"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Whale Shark Photo ID Database",
+    "sourceUrl": "https://www.whaleshark.org/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Multiple whale shark photos showing different spot patterns, arranged for comparison. Spots highlighted and numbered like a fingerprint chart. Tracking map showing identified individuals across ocean.",
+    "tags": ["identification", "spots", "pattern", "individuality"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-electric-eel-shock",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Electric eels can generate electrical discharges up to 860 volts to stun prey.",
+    "quizQuestion": "How many volts can an electric eel generate?",
+    "correctAnswer": "Up to 860 volts",
+    "distractors": [
+      "50 volts",
+      "200 volts",
+      "500 volts",
+      "1,000 volts",
+      "100 volts",
+      "2,000 volts",
+      "10 volts",
+      "400 volts"
+    ],
+    "acceptableAnswers": [
+      "860",
+      "860 volts",
+      "up to 860",
+      "eight hundred sixty"
+    ],
+    "explanation": "Electric eels have specialized electric organs containing thousands of electrocytes stacked in series. Each cell produces a small voltage that adds up to a powerful shock. This stuns prey and is used for navigation.",
+    "wowFactor": "They're living batteries that can knock down a horse with a touch!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What voltage can an electric eel produce?",
+        "answer": "860 volts",
+        "distractors": ["50 volts", "200 volts", "500 volts"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which South American fish is highly electric?",
+        "answer": "Electric eel",
+        "distractors": ["Piranha", "Anaconda", "Alligator"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Electric eels produce less than 100 volts.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A living power line that shocks everything around it. What is it?",
+        "answer": "Electric eel",
+        "distractors": ["Catfish", "Piranha", "Stingray"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "National Geographic",
+    "sourceUrl": "https://www.nationalgeographic.com/animals/fish",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An electric eel surrounded by electrical discharge bolts and energy arcs, water glowing from electricity. Internal anatomy showing electric organs (electrocytes stacked in columns). Prey fish being stunned.",
+    "tags": ["electricity", "bioelectricity", "adaptation", "hunting"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-electric-eel-navigation",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Electric eels use weak electrical fields to navigate and sense surroundings like sonar.",
+    "quizQuestion": "How do electric eels sense their environment?",
+    "correctAnswer": "Using electrical fields",
+    "distractors": [
+      "With eyes",
+      "With ears",
+      "With taste",
+      "With touch",
+      "With smell",
+      "With echolocation",
+      "With lateral line",
+      "With pressure"
+    ],
+    "acceptableAnswers": [
+      "electrical fields",
+      "electricity",
+      "electroreception",
+      "electrical sense"
+    ],
+    "explanation": "Electric eels generate weak pulses and sense how the field distorts around objects. This electroreception lets them navigate dark, murky river water where vision is useless - like biological sonar.",
+    "wowFactor": "They see with electricity instead of light!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What sense helps electric eels navigate?",
+        "answer": "Electrical field sensing",
+        "distractors": ["Vision", "Hearing", "Smell"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal 'sees' through electrical fields?",
+        "answer": "Electric eel",
+        "distractors": ["Bat", "Dolphin", "Snake"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Electric eels see with light.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A creature that sees without eyes using invisible waves. What is it?",
+        "answer": "Electric eel",
+        "distractors": ["Bat", "Dolphin", "Hammerhead"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Journal of Experimental Biology",
+    "sourceUrl": "https://journals.biologists.com/jeb",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An electric eel generating electrical waves shown as concentric circles in dark water. Objects around it detected by field distortion. Sensory receptors highlighted. Comparison to sonar visualization.",
+    "tags": ["electroreception", "navigation", "sensing", "adaptation"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-electric-eel-freshwater",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Electric eels live in South American freshwater rivers, not the ocean.",
+    "quizQuestion": "Where do electric eels live?",
+    "correctAnswer": "South American rivers",
+    "distractors": [
+      "African lakes",
+      "Australian coasts",
+      "Southeast Asian seas",
+      "North American rivers",
+      "Asian oceans",
+      "European rivers",
+      "Arctic waters",
+      "Mediterranean"
+    ],
+    "acceptableAnswers": [
+      "South America",
+      "freshwater rivers",
+      "Amazon",
+      "tropical rivers"
+    ],
+    "explanation": "Electric eels inhabit murky freshwater rivers of South America, especially the Amazon and Orinoco. They're not marine fish despite being called 'eels' - they're actually knifefish.",
+    "wowFactor": "They're not ocean creatures - they're secret river monsters hiding in South America!",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what environment do electric eels live?",
+        "answer": "South American freshwater rivers",
+        "distractors": ["Oceans", "Lakes only", "Swamps"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which river system has electric eels?",
+        "answer": "Amazon and Orinoco",
+        "distractors": ["Nile", "Danube", "Thames"]
+      },
+      {
+        "type": "truefalse",
+        "question": "True or false: Electric eels live in oceans.",
+        "answer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "type": "context",
+        "question": "A shocking secret hidden in murky tropical rivers. What is it?",
+        "answer": "Electric eel",
+        "distractors": ["Piranha", "Anaconda", "Jaguar"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 4,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Smithsonian Tropical Research Institute",
+    "sourceUrl": "https://stri.si.edu/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A South American river (Amazon/Orinoco) with dark, murky water. Electric eels visible in murky depths. Tropical vegetation overhanging the river. Other tropical freshwater species nearby.",
+    "tags": ["habitat", "freshwater", "geography", "distribution"],
+    "status": "approved"
+  }
+]

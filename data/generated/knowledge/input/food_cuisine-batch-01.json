@@ -1,0 +1,157 @@
+{
+  "domain": "food_cuisine",
+  "batchIndex": 1,
+  "totalBatches": 3,
+  "entities": [
+    {
+      "qid": "Q46383",
+      "label": "Sushi",
+      "description": "Japanese rice-based dish with fish and vegetables",
+      "subcategory": "asian_cuisine",
+      "sitelinks": 110,
+      "monthlyPageviews": 75000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q195",
+      "label": "Chocolate",
+      "description": "Food made from cocoa beans",
+      "subcategory": "baking_desserts",
+      "sitelinks": 115,
+      "monthlyPageviews": 95000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q177",
+      "label": "Pizza",
+      "description": "Italian baked dish with cheese and toppings on dough",
+      "subcategory": "european_cuisine",
+      "sitelinks": 120,
+      "monthlyPageviews": 85000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q8486",
+      "label": "Coffee",
+      "description": "Beverage made from roasted coffee beans",
+      "subcategory": "fermentation_beverages",
+      "sitelinks": 130,
+      "monthlyPageviews": 120000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q207400",
+      "label": "Marco Polo",
+      "description": "Venetian merchant who traded spices on Silk Road",
+      "subcategory": "food_history",
+      "sitelinks": 100,
+      "monthlyPageviews": 65000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q1148",
+      "label": "Maillard reaction",
+      "description": "Chemical reaction that creates browning and flavor in cooking",
+      "subcategory": "food_science",
+      "sitelinks": 70,
+      "monthlyPageviews": 35000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q204081",
+      "label": "Pepper",
+      "description": "Pungent spice from peppercorns",
+      "subcategory": "ingredients_spices",
+      "sitelinks": 95,
+      "monthlyPageviews": 60000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q43565",
+      "label": "Tacos",
+      "description": "Mexican tortillas with fillings",
+      "subcategory": "world_cuisine",
+      "sitelinks": 95,
+      "monthlyPageviews": 65000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q82571",
+      "label": "Curry",
+      "description": "Indian spiced dish with sauce",
+      "subcategory": "asian_cuisine",
+      "sitelinks": 95,
+      "monthlyPageviews": 60000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q28520",
+      "label": "Bread",
+      "description": "Baked staple made from flour and water",
+      "subcategory": "baking_desserts",
+      "sitelinks": 100,
+      "monthlyPageviews": 65000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q23506",
+      "label": "Pasta",
+      "description": "Italian staple made from wheat flour dough",
+      "subcategory": "european_cuisine",
+      "sitelinks": 105,
+      "monthlyPageviews": 70000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q44",
+      "label": "Beer",
+      "description": "Fermented beverage made from grains",
+      "subcategory": "fermentation_beverages",
+      "sitelinks": 125,
+      "monthlyPageviews": 100000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q5580",
+      "label": "Spice trade",
+      "description": "Historical trade of valuable spices across continents",
+      "subcategory": "food_history",
+      "sitelinks": 85,
+      "monthlyPageviews": 50000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q1158",
+      "label": "Fermentation",
+      "description": "Biochemical process that preserves food and creates beverages",
+      "subcategory": "food_science",
+      "sitelinks": 85,
+      "monthlyPageviews": 50000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q2075",
+      "label": "Cinnamon",
+      "description": "Sweet spice from tree bark",
+      "subcategory": "ingredients_spices",
+      "sitelinks": 85,
+      "monthlyPageviews": 50000,
+      "properties": {},
+      "processed": false
+    }
+  ]
+}

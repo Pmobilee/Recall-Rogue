@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 import { getDeviceTier } from '../../services/deviceTierService'
-import { getAnimConfig, type AnimConfig, type AnimArchetype } from '../../data/enemyAnimations'
+import { getAnimConfig, type AnimConfig, type AnimArchetype, type IdlePatternStep, type IdleBehavior } from '../../data/enemyAnimations'
 
 type EnemyCategory = 'common' | 'elite' | 'mini_boss' | 'boss'
 
@@ -26,6 +26,9 @@ export class EnemySpriteSystem {
   private idleBobTween: Phaser.Tweens.Tween | null = null
   private breatheTween: Phaser.Tweens.Tween | null = null
   private wobbleTween: Phaser.Tweens.Tween | null = null
+  private customIdleTweens: Phaser.Tweens.Tween[] = []
+  private customIdleTimers: Phaser.Time.TimerEvent[] = []
+  private customPatternRunning = false
   private isAnimating = false
   private baseX = 0
   private baseY = 0
@@ -210,47 +213,57 @@ export class EnemySpriteSystem {
   }
 
   /**
-   * Start idle animations (bobbing, breathing, wobbling).
+   * Start idle animations (bobbing, breathing, wobbling) plus any custom archetype pattern.
    */
   public startIdle(): void {
     if (this.reduceMotion || this.isAnimating) return
 
     this.stopIdle()
 
-    const { idle } = this.animConfig
+    const behavior = this.animConfig.idleBehavior
+    const idleConfig = behavior?.base ?? this.animConfig.idle
 
-    // Bob tween: vertical oscillation
-    this.idleBobTween = this.scene.tweens.add({
-      targets: this.container,
-      y: this.baseY - idle.bobAmplitude,
-      duration: idle.bobDuration,
-      yoyo: true,
-      repeat: -1,
-      ease: 'Sine.easeInOut',
-    })
+    // Start base layer (bob/breathe/wobble) unless suppressed
+    if (!behavior?.suppressBase) {
+      // Bob tween: vertical oscillation
+      this.idleBobTween = this.scene.tweens.add({
+        targets: this.container,
+        y: this.baseY - idleConfig.bobAmplitude,
+        duration: idleConfig.bobDuration,
+        yoyo: true,
+        repeat: -1,
+        ease: 'Sine.easeInOut',
+      })
 
-    // Breathe tween: slight scale pulse
-    this.breatheTween = this.scene.tweens.add({
-      targets: this.container,
-      scaleX: idle.breatheScale,
-      scaleY: idle.breatheScale,
-      duration: idle.breatheDuration,
-      yoyo: true,
-      repeat: -1,
-      ease: 'Sine.easeInOut',
-      delay: 400,
-    })
+      // Breathe tween: slight scale pulse
+      this.breatheTween = this.scene.tweens.add({
+        targets: this.container,
+        scaleX: idleConfig.breatheScale,
+        scaleY: idleConfig.breatheScale,
+        duration: idleConfig.breatheDuration,
+        yoyo: true,
+        repeat: -1,
+        ease: 'Sine.easeInOut',
+        delay: 400,
+      })
 
-    // Wobble tween: subtle rotation
-    this.wobbleTween = this.scene.tweens.add({
-      targets: this.container,
-      angle: idle.wobbleAngle,
-      duration: idle.wobbleDuration,
-      yoyo: true,
-      repeat: -1,
-      ease: 'Sine.easeInOut',
-      delay: 800,
-    })
+      // Wobble tween: subtle rotation
+      this.wobbleTween = this.scene.tweens.add({
+        targets: this.container,
+        angle: idleConfig.wobbleAngle,
+        duration: idleConfig.wobbleDuration,
+        yoyo: true,
+        repeat: -1,
+        ease: 'Sine.easeInOut',
+        delay: 800,
+      })
+    }
+
+    // Start custom pattern if defined
+    if (behavior?.pattern && behavior.pattern.length > 0) {
+      this.customPatternRunning = true
+      this.runPatternStep(behavior.pattern, 0)
+    }
   }
 
   /**
@@ -260,6 +273,7 @@ export class EnemySpriteSystem {
     this.idleBobTween?.pause()
     this.breatheTween?.pause()
     this.wobbleTween?.pause()
+    this.killCustomIdleTweens()
     this.container.setPosition(this.baseX, this.baseY)
     this.container.setScale(1)
     this.container.setAngle(0)
@@ -273,6 +287,12 @@ export class EnemySpriteSystem {
     this.idleBobTween?.resume()
     this.breatheTween?.resume()
     this.wobbleTween?.resume()
+    // Restart custom pattern if it was running
+    const behavior = this.animConfig.idleBehavior
+    if (behavior?.pattern && behavior.pattern.length > 0) {
+      this.customPatternRunning = true
+      this.runPatternStep(behavior.pattern, 0)
+    }
   }
 
   /**
@@ -285,6 +305,125 @@ export class EnemySpriteSystem {
     this.idleBobTween = null
     this.breatheTween = null
     this.wobbleTween = null
+    this.killCustomIdleTweens()
+  }
+
+  /**
+   * Run a single step of the custom idle pattern, then advance to next.
+   */
+  private runPatternStep(pattern: IdlePatternStep[], index: number): void {
+    if (!this.customPatternRunning) return
+    const step = pattern[index]
+    const nextIndex = (index + 1) % pattern.length
+
+    switch (step.type) {
+      case 'move': {
+        const tween = this.scene.tweens.add({
+          targets: this.container,
+          x: this.baseX + (step.dx ?? 0),
+          y: this.baseY + (step.dy ?? 0),
+          duration: step.duration,
+          ease: step.ease ?? 'Sine.easeInOut',
+          onComplete: () => this.runPatternStep(pattern, nextIndex),
+        })
+        this.customIdleTweens.push(tween)
+        break
+      }
+
+      case 'pause': {
+        const timer = this.scene.time.delayedCall(step.duration, () => {
+          this.runPatternStep(pattern, nextIndex)
+        })
+        this.customIdleTimers.push(timer)
+        break
+      }
+
+      case 'flip': {
+        const targetScaleX = (step.flipX ?? -1) * Math.abs(this.container.scaleX)
+        const tween = this.scene.tweens.add({
+          targets: this.container,
+          scaleX: targetScaleX,
+          duration: step.duration,
+          ease: step.ease ?? 'Sine.easeInOut',
+          onComplete: () => this.runPatternStep(pattern, nextIndex),
+        })
+        this.customIdleTweens.push(tween)
+        break
+      }
+
+      case 'squash':
+      case 'pulse': {
+        const tween = this.scene.tweens.add({
+          targets: this.container,
+          scaleX: step.scaleX ?? 1,
+          scaleY: step.scaleY ?? 1,
+          duration: step.duration,
+          ease: step.ease ?? 'Power2',
+          yoyo: step.yoyo ?? true,
+          onComplete: () => this.runPatternStep(pattern, nextIndex),
+        })
+        this.customIdleTweens.push(tween)
+        break
+      }
+
+      case 'jitter': {
+        const intensity = (step.intensity ?? 2) * this.effectScale
+        const interval = step.interval ?? 100
+        const elapsed = { value: 0 }
+        const timer = this.scene.time.addEvent({
+          delay: interval,
+          loop: true,
+          callback: () => {
+            elapsed.value += interval
+            if (elapsed.value >= step.duration) {
+              timer.destroy()
+              // Reset position to base
+              this.container.x = this.baseX
+              this.container.y = this.baseY
+              this.runPatternStep(pattern, nextIndex)
+              return
+            }
+            this.container.x = this.baseX + (Math.random() - 0.5) * intensity * 2
+            this.container.y = this.baseY + (Math.random() - 0.5) * intensity * 2
+          },
+        })
+        this.customIdleTimers.push(timer)
+        break
+      }
+
+      case 'drift': {
+        // Drift works alongside the base bob by only affecting X
+        // (Y is controlled by the bob tween when base isn't suppressed)
+        const tween = this.scene.tweens.add({
+          targets: this.container,
+          x: this.baseX + (step.dx ?? 0),
+          duration: step.duration,
+          ease: step.ease ?? 'Sine.easeInOut',
+          onComplete: () => this.runPatternStep(pattern, nextIndex),
+        })
+        this.customIdleTweens.push(tween)
+        break
+      }
+
+      default:
+        // Unknown step type — skip to next
+        this.runPatternStep(pattern, nextIndex)
+    }
+  }
+
+  /**
+   * Stop and destroy all custom idle pattern tweens and timers.
+   */
+  private killCustomIdleTweens(): void {
+    this.customPatternRunning = false
+    for (const tween of this.customIdleTweens) {
+      tween.destroy()
+    }
+    this.customIdleTweens = []
+    for (const timer of this.customIdleTimers) {
+      timer.destroy()
+    }
+    this.customIdleTimers = []
   }
 
   /**
@@ -302,6 +441,18 @@ export class EnemySpriteSystem {
       }
       if (this.breatheTween) {
         this.breatheTween.timeScale = 1.3
+      }
+      // If base is suppressed, add a fast bob tween as enrage override
+      if (!this.idleBobTween && this.animConfig.idleBehavior?.suppressBase) {
+        this.idleBobTween = this.scene.tweens.add({
+          targets: this.container,
+          y: this.baseY - 6,
+          duration: 600,
+          yoyo: true,
+          repeat: -1,
+          ease: 'Sine.easeInOut',
+        })
+        this.idleBobTween.timeScale = 1.3
       }
 
       // Red/orange glow rectangle around enemy
@@ -375,6 +526,11 @@ export class EnemySpriteSystem {
       }
       if (this.breatheTween) {
         this.breatheTween.timeScale = 1
+      }
+      // If base was suppressed, remove the enrage override bob
+      if (this.animConfig.idleBehavior?.suppressBase && this.idleBobTween) {
+        this.idleBobTween.destroy()
+        this.idleBobTween = null
       }
       if (this.enrageGlowTween) {
         this.enrageGlowTween.destroy()
@@ -640,10 +796,12 @@ export class EnemySpriteSystem {
    * @param isBoss Whether this is a boss enemy (affects animation parameters)
    */
   public playEntry(isBoss: boolean): void {
-    const startScale = isBoss ? 0.76 : 0.86
-    const fadeDuration = isBoss ? 560 : 380
+    const startScale = isBoss ? 0.05 : 0.1
+    const overshootScale = isBoss ? 1.25 : 1.15
+    const popDuration = isBoss ? 400 : 300
+    const settleDuration = isBoss ? 250 : 180
 
-    this.container.setAlpha(this.reduceMotion ? 1 : 0.16)
+    this.container.setAlpha(this.reduceMotion ? 1 : 0)
     this.container.setScale(this.reduceMotion ? 1 : startScale)
 
     if (this.reduceMotion) {
@@ -651,15 +809,33 @@ export class EnemySpriteSystem {
       return
     }
 
+    // Phase 1: Pop up from tiny to overshoot
     this.scene.tweens.add({
       targets: this.container,
       alpha: 1,
-      scaleX: 1,
-      scaleY: 1,
-      duration: fadeDuration,
-      ease: isBoss ? 'Back.Out' : 'Quad.Out',
+      scaleX: overshootScale,
+      scaleY: overshootScale,
+      duration: popDuration,
+      ease: 'Back.Out',
       onComplete: () => {
-        this.startIdle()
+        // Camera shake on landing
+        this.scene.cameras.main.shake(
+          isBoss ? 150 : 80,
+          (isBoss ? 0.004 : 0.002) * this.effectScale,
+          true
+        )
+
+        // Phase 2: Settle back to 1.0
+        this.scene.tweens.add({
+          targets: this.container,
+          scaleX: 1,
+          scaleY: 1,
+          duration: settleDuration,
+          ease: 'Sine.easeInOut',
+          onComplete: () => {
+            this.startIdle()
+          },
+        })
       },
     })
   }

@@ -1,0 +1,971 @@
+[
+  {
+    "id": "animals-pistol-shrimp-temperature",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "The pistol shrimp's snapping claw creates a cavitation bubble hotter than the surface of the sun.",
+    "quizQuestion": "How hot is the pistol shrimp's cavitation bubble?",
+    "correctAnswer": "Hotter than the sun's surface",
+    "distractors": [
+      "Hotter than boiling water",
+      "Hotter than lava",
+      "As hot as a lightning bolt",
+      "Cooler than the sun's core",
+      "As hot as a blowtorch",
+      "As hot as a car engine",
+      "Hotter than a campfire",
+      "As hot as a welding arc"
+    ],
+    "acceptableAnswers": ["Hotter than the sun's surface", "~8000°F", "around 8000 degrees"],
+    "explanation": "When a pistol shrimp snaps its claw shut, it fires a jet of water so fast it creates a collapsing cavitation bubble. For a fraction of a millisecond, that bubble reaches temperatures around 8,000°F — hotter than the sun's visible surface — and emits a flash of light.",
+    "wowFactor": "A tiny shrimp snap briefly creates a phenomenon hotter than the surface of the sun — right in your aquarium.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How hot is the pistol shrimp's cavitation bubble?",
+        "answer": "Hotter than the sun's surface",
+        "distractors": ["Hotter than boiling water", "As hot as lava", "As hot as a lightning bolt"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal creates a bubble hotter than the sun's surface?",
+        "answer": "Pistol shrimp",
+        "distractors": ["Mantis shrimp", "Electric eel", "Bombardier beetle", "Archerfish"]
+      },
+      {
+        "type": "negative",
+        "question": "Which is NOT true of the pistol shrimp's cavitation bubble?",
+        "answer": "Heat lasts several seconds",
+        "distractors": ["It emits a flash of light", "Exceeds sun's surface temp", "It stuns or kills prey"]
+      },
+      {
+        "type": "truefalse",
+        "question": "The pistol shrimp's bubble is hotter than the sun's surface.",
+        "answer": "True",
+        "distractors": ["False", "Partially true", "Depends on shrimp species"]
+      },
+      {
+        "type": "context",
+        "question": "A pistol shrimp snaps — what dangerous phenomenon briefly occurs?",
+        "answer": "Superheated cavitation bubble",
+        "distractors": ["A sonic boom", "An electric discharge", "A venom sting", "Bioluminescent flash"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Smithsonian Ocean",
+    "sourceUrl": "https://ocean.si.edu/ocean-life/invertebrates/pistol-shrimp",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A vivid orange-and-white snapping shrimp on a coral reef, one massive claw reared back, a brilliant white flash and shockwave rippling through blue water as a small fish is blasted away.",
+    "tags": ["pistol shrimp", "cavitation", "marine life", "extreme temperature", "physics"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-pistol-shrimp-snap-speed",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "The pistol shrimp's claw snaps shut at around 97 km/h, one of the fastest movements in the animal kingdom.",
+    "quizQuestion": "How fast does a pistol shrimp's claw snap shut?",
+    "correctAnswer": "~97 km/h",
+    "distractors": [
+      "~10 km/h",
+      "~200 km/h",
+      "~50 km/h",
+      "~30 km/h",
+      "~150 km/h",
+      "~5 km/h",
+      "~70 km/h",
+      "~300 km/h"
+    ],
+    "acceptableAnswers": ["~97 km/h", "about 97 km/h", "around 60 mph"],
+    "explanation": "The pistol shrimp's snapper claw closes in under a millisecond, reaching ~97 km/h. It achieves this with a latch-and-spring mechanism — energy stores in a cocked position and releases all at once, rather than relying solely on muscle power.",
+    "wowFactor": "A shrimp launches its claw faster than highway traffic — using a built-in spring-loaded latch, not raw muscle.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How fast does a pistol shrimp's claw snap shut?",
+        "answer": "~97 km/h",
+        "distractors": ["~10 km/h", "~200 km/h", "~50 km/h"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal snaps its claw shut at roughly 97 km/h?",
+        "answer": "Pistol shrimp",
+        "distractors": ["Mantis shrimp", "Snapping turtle", "Alligator gar", "Moray eel"]
+      },
+      {
+        "type": "truefalse",
+        "question": "The pistol shrimp snaps its claw purely through direct muscle contraction.",
+        "answer": "False",
+        "distractors": ["True", "Mostly true", "Only in some species"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The pistol shrimp's claw uses a ___ mechanism to achieve extreme snap speed.",
+        "answer": "Latch-and-spring",
+        "distractors": ["Electric pulse", "Hydraulic pressure", "Venom injection", "Adhesive release"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Journal of Experimental Biology",
+    "sourceUrl": "https://journals.biologists.com/jeb/article/203/1/41/7640",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Extreme close-up pixel art of a translucent shrimp claw mid-snap, motion-blur streaks showing speed, tiny prey fish recoiling in shock, coral background blurred with the impact shockwave.",
+    "tags": ["pistol shrimp", "snap speed", "marine life", "biomechanics", "spring mechanism"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-pistol-shrimp-sonoluminescence",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "statement": "Pistol shrimp produce light when their cavitation bubble collapses, a phenomenon called sonoluminescence.",
+    "quizQuestion": "What phenomenon causes pistol shrimp to emit light when snapping?",
+    "correctAnswer": "Sonoluminescence",
+    "distractors": [
+      "Bioluminescence",
+      "Phosphorescence",
+      "Chemiluminescence",
+      "Fluorescence",
+      "Electroluminescence",
+      "Thermoluminescence",
+      "Photoluminescence",
+      "Triboluminescence"
+    ],
+    "acceptableAnswers": ["Sonoluminescence", "sonoluminescence"],
+    "explanation": "When the pistol shrimp's cavitation bubble collapses, the energy released produces a brief flash of light — a process called sonoluminescence. The bubble acts like a microscopic implosion reactor, converting mechanical energy into both heat and light simultaneously.",
+    "wowFactor": "A shrimp that snaps hard enough to make light — sonoluminescence is one of physics' most exotic phenomena, and a shrimp does it casually to catch dinner.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What phenomenon causes pistol shrimp to emit light when snapping?",
+        "answer": "Sonoluminescence",
+        "distractors": ["Bioluminescence", "Phosphorescence", "Chemiluminescence"]
+      },
+      {
+        "type": "reverse",
+        "question": "Sonoluminescence in animals is best demonstrated by which creature?",
+        "answer": "Pistol shrimp",
+        "distractors": ["Firefly squid", "Anglerfish", "Dinoflagellate", "Flashlight fish"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Pistol shrimp produce light via bioluminescent chemicals, not physics.",
+        "answer": "False",
+        "distractors": ["True", "True for some species", "Only in juveniles"]
+      },
+      {
+        "type": "negative",
+        "question": "Which is NOT a real form of animal light production?",
+        "answer": "Thermoluminescence",
+        "distractors": ["Bioluminescence", "Sonoluminescence", "Chemiluminescence"]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Nature — Sonoluminescence from the pistol shrimp",
+    "sourceUrl": "https://www.nature.com/articles/35077558",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Underwater scene, pistol shrimp claw snapping with a tiny starburst of white-blue light erupting from the collapse point, dark water background, coral silhouette, the shrimp's eyes wide and alert.",
+    "tags": ["pistol shrimp", "sonoluminescence", "marine life", "light", "physics"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-arctic-fox-fur-color",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "mammals",
+    "statement": "The Arctic fox changes its fur from white in winter to brown or gray in summer for seasonal camouflage.",
+    "quizQuestion": "What color is an Arctic fox's fur in summer?",
+    "correctAnswer": "Brown or gray",
+    "distractors": [
+      "White",
+      "Black",
+      "Red",
+      "Yellow",
+      "Orange",
+      "Silver",
+      "Tan",
+      "Blue-gray"
+    ],
+    "acceptableAnswers": ["Brown or gray", "brown", "gray", "grey", "brown or grey"],
+    "explanation": "Arctic foxes undergo a dramatic seasonal molt: stark white in winter to blend with snow, then brown or gray in summer to match the tundra's rocks and vegetation. This isn't dye — they grow an entirely new coat twice a year.",
+    "wowFactor": "The Arctic fox doesn't just shed its coat — it swaps from snow-white to earth-brown like a living chameleon, growing a whole new wardrobe twice a year.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What color is an Arctic fox's fur in summer?",
+        "answer": "Brown or gray",
+        "distractors": ["White", "Black", "Red"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal's fur turns white in winter and brown in summer?",
+        "answer": "Arctic fox",
+        "distractors": ["Snowshoe hare", "Ermine", "Polar bear", "Arctic wolf"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Arctic foxes stay white year-round for permanent Arctic camouflage.",
+        "answer": "False",
+        "distractors": ["True", "True in most regions", "Only false in coastal areas"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "An Arctic fox's white winter coat changes to ___ in summer.",
+        "answer": "Brown or gray",
+        "distractors": ["Tan and white", "Black and silver", "Orange and red", "Yellow and beige"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "National Geographic — Arctic Fox",
+    "sourceUrl": "https://www.nationalgeographic.com/animals/mammals/facts/arctic-fox",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Split-panel pixel art: left shows a pure-white fluffy fox on snow under blue sky; right shows the same fox in earthy brown tones crouching on mossy Arctic tundra in summer sun.",
+    "tags": ["arctic fox", "camouflage", "seasonal molt", "mammals", "tundra"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-arctic-fox-cold-tolerance",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "mammals",
+    "statement": "Arctic foxes can survive temperatures as low as -70°C without increasing their metabolic rate.",
+    "quizQuestion": "At what temperature does an Arctic fox start increasing metabolic rate?",
+    "correctAnswer": "Below -70°C",
+    "distractors": [
+      "Below -10°C",
+      "Below -30°C",
+      "Below -50°C",
+      "Below -20°C",
+      "Below -40°C",
+      "Below -90°C",
+      "Below -15°C",
+      "Below -60°C"
+    ],
+    "acceptableAnswers": ["-70°C", "-70 degrees Celsius", "negative 70", "below -70"],
+    "explanation": "The Arctic fox has the warmest fur of any Arctic mammal relative to its size. Its thick, layered coat insulates so effectively that the fox's metabolic rate doesn't increase until temperatures plunge to -70°C — far beyond what any other land predator of its size can tolerate.",
+    "wowFactor": "An Arctic fox sitting still at -70°C doesn't even have to shiver — its fur is so good that its body barely notices the cold.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "At what temperature does an Arctic fox start increasing metabolic rate?",
+        "answer": "Below -70°C",
+        "distractors": ["Below -10°C", "Below -30°C", "Below -50°C"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which mammal needs no extra metabolism until temperatures hit -70°C?",
+        "answer": "Arctic fox",
+        "distractors": ["Polar bear", "Snowy owl", "Wolverine", "Musk ox"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Arctic foxes must shiver to survive temperatures below -20°C.",
+        "answer": "False",
+        "distractors": ["True", "True for juveniles only", "Depends on wind speed"]
+      },
+      {
+        "type": "context",
+        "question": "An Arctic fox sits motionless at -65°C. Is it metabolically stressed?",
+        "answer": "No — below stress threshold",
+        "distractors": ["Yes — near its limit", "Yes — must shiver now", "Cannot determine without data"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "IUCN — Arctic Fox (Vulpes lagopus)",
+    "sourceUrl": "https://www.iucnredlist.org/species/899/57549321",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A fluffy white Arctic fox curled peacefully on a vast frozen tundra at night, blizzard swirling, temperature gauge showing -70°C, aurora borealis glowing green above — the fox utterly unbothered.",
+    "tags": ["arctic fox", "cold tolerance", "insulation", "mammals", "thermoregulation"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-arctic-fox-food-caching",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "mammals",
+    "statement": "Arctic foxes cache thousands of food items across their territory and use spatial memory to retrieve them in winter.",
+    "quizQuestion": "How do Arctic foxes survive winter food scarcity?",
+    "correctAnswer": "Caching thousands of food",
+    "distractors": [
+      "Hibernating underground",
+      "Following caribou herds",
+      "Eating lichen and moss",
+      "Migrating to warmer regions",
+      "Scavenging polar bear kills",
+      "Fasting on stored body fat",
+      "Hunting under sea ice",
+      "Communal den sharing"
+    ],
+    "acceptableAnswers": ["Caching food", "food caching", "storing food", "caching food items"],
+    "explanation": "Arctic foxes are meticulous food hoarders. During summer abundance, they cache thousands of items — birds, eggs, lemmings — scattered across their territory, frozen naturally by the Arctic climate. In winter they rely on spatial memory to locate each cache.",
+    "wowFactor": "An Arctic fox basically builds a distributed deep-freeze across miles of tundra, then retrieves individual items from memory months later.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How do Arctic foxes survive winter food scarcity?",
+        "answer": "Caching thousands of food",
+        "distractors": ["Hibernating underground", "Migrating south", "Eating lichen"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal uses frozen food caches and spatial memory to survive winter?",
+        "answer": "Arctic fox",
+        "distractors": ["Red fox", "Wolverine", "Snowshoe hare", "Stoat"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Arctic foxes hibernate during winter to avoid food scarcity.",
+        "answer": "False",
+        "distractors": ["True", "True in northern regions", "Only in severe winters"]
+      },
+      {
+        "type": "context",
+        "question": "In winter, an Arctic fox walks 2 km and digs up a stored lemming. What ability does this show?",
+        "answer": "Spatial memory for food caches",
+        "distractors": ["Scent tracking over months", "Random foraging luck", "Information from other foxes"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "National Geographic — Arctic Fox",
+    "sourceUrl": "https://www.nationalgeographic.com/animals/mammals/facts/arctic-fox",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Top-down pixel art of an Arctic fox trotting through snow, dotted lines mapping a web of buried food caches across a vast white landscape, tiny X marks showing dig sites, the fox's nose twitching.",
+    "tags": ["arctic fox", "food caching", "spatial memory", "mammals", "survival"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-peregrine-falcon-dive-speed",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "birds",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "birds",
+    "statement": "The peregrine falcon is the fastest animal on Earth, diving at over 320 km/h (200 mph).",
+    "quizQuestion": "What is the peregrine falcon's maximum recorded dive speed?",
+    "correctAnswer": "Over 320 km/h",
+    "distractors": [
+      "Over 100 km/h",
+      "Over 150 km/h",
+      "Over 200 km/h",
+      "Over 250 km/h",
+      "Over 400 km/h",
+      "Over 500 km/h",
+      "Over 80 km/h",
+      "Over 450 km/h"
+    ],
+    "acceptableAnswers": ["Over 320 km/h", "320 km/h", "200 mph", "over 200 mph"],
+    "explanation": "In a hunting stoop (dive), the peregrine falcon folds its wings tight and plummets nearly straight down, reaching documented speeds exceeding 320 km/h. Special baffles in its nostrils prevent lung damage from the air pressure, and a nictitating membrane protects its eyes.",
+    "wowFactor": "The peregrine is faster than a Formula 1 car at top speed — while steering, tracking prey, and braking at the last second with its talons.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the peregrine falcon's maximum recorded dive speed?",
+        "answer": "Over 320 km/h",
+        "distractors": ["Over 100 km/h", "Over 200 km/h", "Over 400 km/h"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal holds the speed record at over 320 km/h?",
+        "answer": "Peregrine falcon",
+        "distractors": ["Cheetah", "Spine-tailed swift", "Golden eagle", "Sailfish"]
+      },
+      {
+        "type": "truefalse",
+        "question": "The cheetah is faster than the peregrine falcon.",
+        "answer": "False",
+        "distractors": ["True", "True for short distances", "Depends on terrain"]
+      },
+      {
+        "type": "negative",
+        "question": "Which does the peregrine falcon NOT use during a high-speed dive?",
+        "answer": "Echolocation to track prey",
+        "distractors": ["Nostril baffles", "Nictitating membrane", "Folded wings"]
+      },
+      {
+        "type": "context",
+        "question": "A peregrine spots prey from 300 m up and folds its wings. What happens?",
+        "answer": "Dives at over 320 km/h",
+        "distractors": ["Glides slowly to save energy", "Calls to flush the prey", "Hovers in place like a kestrel"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Cornell Lab of Ornithology",
+    "sourceUrl": "https://www.allaboutbirds.org/guide/Peregrine_Falcon",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Peregrine falcon in a full vertical stoop, wings slashed back, feathers pressed flat, a streak of blue-gray lightning against a city skyline background, speed lines radiating behind it.",
+    "tags": ["peregrine falcon", "speed", "dive", "birds", "fastest animal"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-peregrine-falcon-urban-nesting",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "birds",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "birds",
+    "statement": "Peregrine falcons have colonized cities worldwide, nesting on skyscrapers that mimic their natural cliff habitat.",
+    "quizQuestion": "Why do peregrine falcons successfully nest on city skyscrapers?",
+    "correctAnswer": "Buildings mimic cliff habitat",
+    "distractors": [
+      "Warmth from HVAC systems",
+      "Pigeons only live in cities",
+      "Humans guard their nests",
+      "Light pollution helps hunting",
+      "Less raptor competition",
+      "Glass confuses their prey",
+      "Urban heat cuts energy needs",
+      "Noise masks their alarm calls"
+    ],
+    "acceptableAnswers": ["Buildings mimic cliff habitat", "skyscrapers mimic cliffs", "cliff-like structure"],
+    "explanation": "Peregrine falcons naturally nest on tall cliff ledges with wide sightlines. To them, a skyscraper is just a very smooth cliff — same height, same ledges, same commanding views for spotting prey. Cities also offer a nearly unlimited supply of pigeons.",
+    "wowFactor": "Peregrine falcons see a glass skyscraper and think 'nice cliff.' They've essentially conquered every major city on Earth without needing a single human hand to help.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why do peregrine falcons successfully nest on city skyscrapers?",
+        "answer": "Buildings mimic cliff habitat",
+        "distractors": ["Urban heat cuts energy needs", "Humans guard their nests", "Less raptor competition"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which raptor colonized cities by treating skyscrapers as cliff substitutes?",
+        "answer": "Peregrine falcon",
+        "distractors": ["Red-tailed hawk", "Osprey", "Barn owl", "Harris's hawk"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Conservationists deliberately introduced peregrines into cities.",
+        "answer": "False",
+        "distractors": ["True", "True in some cities", "Partially true in the US"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "To a peregrine falcon, a city skyscraper functions as a substitute ___.",
+        "answer": "Cliff",
+        "distractors": ["Forest canopy", "River bank", "Cave entrance", "Termite mound"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Audubon Society",
+    "sourceUrl": "https://www.audubon.org/news/peregrine-falcons-are-thriving-our-cities",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A peregrine falcon perched imperiously on a Manhattan skyscraper ledge, the city sprawl far below, a pigeon feather drifting past, the bird's yellow talons gripping the concrete as if it owns the city.",
+    "tags": ["peregrine falcon", "urban wildlife", "nesting", "birds", "adaptation"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-peregrine-falcon-ddt-recovery",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "birds",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "birds",
+    "statement": "DDT pesticide caused peregrine falcon eggshells to thin so much that parents crushed their own eggs, nearly driving the species extinct.",
+    "quizQuestion": "What nearly drove peregrine falcons extinct in North America?",
+    "correctAnswer": "DDT thinning their eggshells",
+    "distractors": [
+      "Habitat loss from logging",
+      "Lead poisoning from ammunition",
+      "Hunting for falconry",
+      "Window strikes in cities",
+      "Wind turbine collisions",
+      "Avian influenza outbreaks",
+      "Rat poison secondary exposure",
+      "Nest poaching for exotic trade"
+    ],
+    "acceptableAnswers": ["DDT thinning their eggshells", "DDT", "DDT pesticide", "eggshell thinning"],
+    "explanation": "DDT accumulated up the food chain into peregrines, causing their eggshells to become so thin that parents crushed their own eggs while incubating. After DDT was banned in the U.S. in 1972, intensive captive breeding and release programs brought the species back from the brink.",
+    "wowFactor": "Parents crushed their own eggs simply by sitting on them — DDT had made the shells paper-thin. The peregrine's comeback is one of conservation's greatest success stories.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What nearly drove peregrine falcons extinct in North America?",
+        "answer": "DDT thinning their eggshells",
+        "distractors": ["Habitat loss from logging", "Lead poisoning", "Hunting for falconry"]
+      },
+      {
+        "type": "reverse",
+        "question": "DDT-thinned eggshells nearly wiped out which North American raptor?",
+        "answer": "Peregrine falcon",
+        "distractors": ["Bald eagle", "California condor", "Osprey", "Whooping crane"]
+      },
+      {
+        "type": "truefalse",
+        "question": "DDT caused peregrine eggs to become so thin parents crushed them incubating.",
+        "answer": "True",
+        "distractors": ["False", "Only partially true", "True for eagles, not falcons"]
+      },
+      {
+        "type": "context",
+        "question": "After DDT was banned in 1972, peregrine populations did what?",
+        "answer": "Recovered and expanded",
+        "distractors": ["Continued to decline", "Stabilized but never recovered", "Moved entirely to urban areas"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "U.S. Fish & Wildlife Service",
+    "sourceUrl": "https://www.fws.gov/species/peregrine-falcon-falco-peregrinus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A peregrine on a nest, cracked paper-thin eggs beneath it, a shadowy DDT crop-duster in background; second panel showing a healthy chick hatching on a city ledge — recovery complete.",
+    "tags": ["peregrine falcon", "DDT", "conservation", "eggshell thinning", "recovery"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-bombardier-beetle-spray-temp",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "insects_arachnids",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "insects_arachnids",
+    "statement": "The bombardier beetle fires a boiling chemical spray from its abdomen at exactly 100°C (212°F).",
+    "quizQuestion": "At what temperature does a bombardier beetle fire its spray?",
+    "correctAnswer": "100°C (boiling point)",
+    "distractors": [
+      "37°C (body temperature)",
+      "50°C",
+      "200°C",
+      "75°C",
+      "150°C",
+      "25°C (room temperature)",
+      "60°C",
+      "300°C"
+    ],
+    "acceptableAnswers": ["100°C", "100 degrees Celsius", "212°F", "boiling point"],
+    "explanation": "The bombardier beetle stores two chemicals — hydroquinone and hydrogen peroxide — in separate chambers. When threatened, it mixes them with catalytic enzymes, triggering an exothermic reaction that produces quinones and oxygen, explosively ejecting a boiling spray at exactly 100°C.",
+    "wowFactor": "A beetle that literally boils its own chemical weapon inside its body and fires it at enemies — all without hurting itself.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "At what temperature does a bombardier beetle fire its spray?",
+        "answer": "100°C (boiling point)",
+        "distractors": ["37°C (body temperature)", "50°C", "200°C"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which beetle fires a boiling 100°C chemical spray in defense?",
+        "answer": "Bombardier beetle",
+        "distractors": ["Blister beetle", "Stink bug", "Fire ant", "Whirligig beetle"]
+      },
+      {
+        "type": "truefalse",
+        "question": "The bombardier beetle's spray is made by mixing two separate chemicals.",
+        "answer": "True",
+        "distractors": ["False", "True for some species only", "Only in mature beetles"]
+      },
+      {
+        "type": "negative",
+        "question": "Which chemical is NOT involved in the bombardier beetle's reaction?",
+        "answer": "Formic acid",
+        "distractors": ["Hydrogen peroxide", "Hydroquinone", "Catalytic enzymes"]
+      },
+      {
+        "type": "context",
+        "question": "A frog swallows a bombardier beetle. What often happens next?",
+        "answer": "The frog spits it out",
+        "distractors": ["The frog digests it normally", "The frog is paralyzed", "The beetle dissolves quickly"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Science — Bombardier beetle defense",
+    "sourceUrl": "https://www.science.org/doi/10.1126/science.aac8286",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A small brown beetle facing down, rear end raised, a bright orange boiling chemical jet blasting out toward a shocked cartoon frog, steam wisps rising, tiny explosion circles marking the impact point.",
+    "tags": ["bombardier beetle", "chemical defense", "insects", "boiling", "defense mechanism"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-bombardier-beetle-pulse-rate",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "insects_arachnids",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "insects_arachnids",
+    "statement": "The bombardier beetle fires its spray in rapid pulses — up to 500 bursts per second — rather than a continuous stream.",
+    "quizQuestion": "How does the bombardier beetle fire its defensive spray?",
+    "correctAnswer": "Rapid pulses, up to 500/sec",
+    "distractors": [
+      "One large continuous stream",
+      "A single explosive burst",
+      "Slow drips onto attackers",
+      "Aerosolized mist cloud",
+      "Directional foam spray",
+      "Absorbed through contact",
+      "Secreted passively",
+      "Flicked by leg motion"
+    ],
+    "acceptableAnswers": ["Rapid pulses", "500 pulses per second", "pulsed bursts"],
+    "explanation": "High-speed X-ray imaging revealed that bombardier beetles don't spray continuously — they pulse at up to 500 times per second, a mechanism that prevents the reaction chamber from overheating and maximizes spray effectiveness. The pulsing creates a stuttering, machine-gun-like chemical assault.",
+    "wowFactor": "The bombardier beetle fires its boiling spray like a tiny biological machine gun — 500 pulses a second, preventing its own chamber from melting.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How does the bombardier beetle fire its defensive spray?",
+        "answer": "Rapid pulses, up to 500/sec",
+        "distractors": ["One large continuous stream", "A single explosive burst", "Aerosolized mist cloud"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which insect fires chemical defense in pulses at 500 bursts per second?",
+        "answer": "Bombardier beetle",
+        "distractors": ["Whip scorpion", "Blister beetle", "Vinegaroon", "Stag beetle"]
+      },
+      {
+        "type": "truefalse",
+        "question": "The bombardier beetle sprays in rapid pulses, not a continuous jet.",
+        "answer": "True",
+        "distractors": ["False", "Only in cold temperatures", "Only when fully mature"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The bombardier beetle fires its spray in ___, not a continuous stream.",
+        "answer": "Rapid pulses",
+        "distractors": ["One large burst", "Slow waves", "Aerosolized mist", "Absorbed secretions"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Science — Pulse combustion in bombardier beetle",
+    "sourceUrl": "https://www.science.org/doi/10.1126/science.aac8286",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Extreme pixel art close-up of beetle abdomen with a rapid strobe of orange chemical bursts visible as individual puffs in sequence, speed lines, a tiny gauge showing '500x/sec' — machine-gun scale beetle.",
+    "tags": ["bombardier beetle", "pulse spray", "insects", "chemical defense", "biomechanics"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-bombardier-beetle-aim",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "insects_arachnids",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "insects_arachnids",
+    "statement": "The bombardier beetle can precisely aim its boiling spray in almost any direction by rotating its abdomen tip nearly 270 degrees.",
+    "quizQuestion": "How does the bombardier beetle aim its chemical spray?",
+    "correctAnswer": "Rotating its abdomen tip",
+    "distractors": [
+      "Turning its entire body",
+      "Tilting its head",
+      "Jumping toward the threat",
+      "Reflecting spray off its shell",
+      "Using leg shields to redirect",
+      "Spraying only backward",
+      "Angling its wing covers",
+      "Arcing spray via surface"
+    ],
+    "acceptableAnswers": ["Rotating its abdomen tip", "rotating abdomen", "aiming with its abdomen"],
+    "explanation": "The bombardier beetle has a flexible tip to its abdomen that can rotate nearly 270 degrees, allowing it to aim its boiling spray forward, sideways, or backward. This gives it near-omnidirectional defense without needing to reposition its body.",
+    "wowFactor": "The bombardier beetle has a swivel turret for a rear end — it can shoot boiling acid in almost any direction without moving its feet.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How does the bombardier beetle aim its chemical spray?",
+        "answer": "Rotating its abdomen tip",
+        "distractors": ["Turning its entire body", "Tilting its head", "Spraying only backward"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which beetle aims its spray by rotating its abdomen nearly 270 degrees?",
+        "answer": "Bombardier beetle",
+        "distractors": ["Blister beetle", "Darkling beetle", "Ground beetle", "Rove beetle"]
+      },
+      {
+        "type": "truefalse",
+        "question": "The bombardier beetle can only spray directly backward.",
+        "answer": "False",
+        "distractors": ["True", "True for most species", "Only false in tropical species"]
+      },
+      {
+        "type": "context",
+        "question": "Attacked from the front, can a bombardier beetle spray without turning around?",
+        "answer": "Yes — abdomen tip rotates",
+        "distractors": ["No — backward spray only", "Only if it jumps first", "Only using a curved carapace"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Journal of Experimental Biology",
+    "sourceUrl": "https://journals.biologists.com/jeb/article/202/16/2337/6861",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Top-view pixel art diagram of a bombardier beetle with a rotating arrow around its abdomen tip, four cardinal directions labeled with orange spray bursts at each angle, attacker silhouettes at various positions.",
+    "tags": ["bombardier beetle", "aiming", "insects", "abdomen", "defense mechanism"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-axolotl-regeneration",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "reptiles_amphibians",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "reptiles_amphibians",
+    "statement": "Axolotls can fully regenerate lost limbs, hearts, spinal cords, and even parts of their brain.",
+    "quizQuestion": "Which organs can an axolotl regenerate after injury?",
+    "correctAnswer": "Limbs, heart, and spinal cord",
+    "distractors": [
+      "Only limbs and skin",
+      "Only external gills",
+      "Only tail and skin",
+      "Only bone tissue",
+      "Only muscle tissue",
+      "Limbs only",
+      "Skin and pigment cells",
+      "Only peripheral nerves"
+    ],
+    "acceptableAnswers": ["Limbs, heart, and spinal cord", "all listed organs", "limbs, heart, brain, spinal cord"],
+    "explanation": "Axolotls possess extraordinary regenerative abilities far beyond any mammal — they can regrow entire limbs with bone, muscle, and nerve, repair spinal cord injuries, replace heart tissue after damage, and even regenerate portions of the brain. Scientists study them intensively for medical regeneration research.",
+    "wowFactor": "An axolotl that loses a leg, part of its heart, and a chunk of its spinal cord will simply grow them all back — perfectly.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which organs can an axolotl regenerate after injury?",
+        "answer": "Limbs, heart, and spinal cord",
+        "distractors": ["Only limbs and skin", "Only external gills", "Only tail and skin"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which amphibian can regenerate limbs, hearts, spinal cords, and brain tissue?",
+        "answer": "Axolotl",
+        "distractors": ["Common salamander", "Mudpuppy", "Caecilian", "Fire salamander"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Axolotls can regenerate brain tissue in addition to limbs and heart.",
+        "answer": "True",
+        "distractors": ["False", "Only partially true", "Brain only in juveniles"]
+      },
+      {
+        "type": "context",
+        "question": "A researcher studies spinal cord regeneration. Which animal model is most relevant?",
+        "answer": "Axolotl",
+        "distractors": ["Zebrafish", "Planaria worm", "Gecko", "Star-nosed mole"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Unlike most animals, the axolotl can fully regenerate its ___ after serious injury.",
+        "answer": "Heart and spinal cord",
+        "distractors": ["Immune system only", "Outer skin layer", "Digestive tract only", "Eye cornea only"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Nature — Axolotl genome and regeneration",
+    "sourceUrl": "https://www.nature.com/articles/nature25458",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A smiling pink axolotl with feathery pink gills, one small limb shown mid-regrowth in stages from stump to full leg, glowing green regeneration aura, cheerful bright blue water background.",
+    "tags": ["axolotl", "regeneration", "amphibians", "limb regrowth", "biology"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-axolotl-neoteny",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "reptiles_amphibians",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "reptiles_amphibians",
+    "statement": "Axolotls are neotenic — they reproduce while retaining their juvenile larval form, never metamorphosing into land animals.",
+    "quizQuestion": "What does it mean that axolotls are 'neotenic'?",
+    "correctAnswer": "Mature without metamorphosing",
+    "distractors": [
+      "They reproduce only once",
+      "They live entirely on land",
+      "They lose gills as adults",
+      "They metamorphose very slowly",
+      "They change color when mature",
+      "They absorb water via skin",
+      "They reproduce by cloning",
+      "They skip the larval stage"
+    ],
+    "acceptableAnswers": ["They mature without metamorphosing", "neoteny", "retaining larval form"],
+    "explanation": "Most salamanders metamorphose from aquatic larvae into land-dwelling adults. Axolotls skip this entirely — they grow up, develop reproductive organs, and breed while staying in their larval form with external gills. They are technically juveniles their entire lives, biologically speaking.",
+    "wowFactor": "The axolotl is a perpetual teenager — it becomes sexually mature and reproduces without ever 'growing up' into its adult form. Evolution's eternal Peter Pan.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does it mean that axolotls are 'neotenic'?",
+        "answer": "Mature without metamorphosing",
+        "distractors": ["They lose gills as adults", "They metamorphose very slowly", "They live on land"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which amphibian retains its larval form permanently while still reproducing?",
+        "answer": "Axolotl",
+        "distractors": ["Tiger salamander", "Mudpuppy", "Hellbender", "Olm"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Adult axolotls eventually lose their external gills and move onto land.",
+        "answer": "False",
+        "distractors": ["True", "True after 3 years", "Only in captivity"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The axolotl's ability to reproduce in its larval form is called ___.",
+        "answer": "Neoteny",
+        "distractors": ["Metamorphosis", "Parthenogenesis", "Holometabolism", "Paedogenesis"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Encyclopedia Britannica — Axolotl",
+    "sourceUrl": "https://www.britannica.com/animal/axolotl",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Side-by-side pixel art: a tiger salamander shown as larva then adult on land; an axolotl shown as larva then still a larva wearing a tiny graduation cap, gills waving proudly in the water.",
+    "tags": ["axolotl", "neoteny", "amphibians", "metamorphosis", "larval form"],
+    "status": "approved"
+  },
+  {
+    "id": "animals-axolotl-wild-habitat",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "reptiles_amphibians",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "reptiles_amphibians",
+    "statement": "Wild axolotls are critically endangered and exist in only one lake — Lake Xochimilco in Mexico City.",
+    "quizQuestion": "In which body of water do wild axolotls exclusively live?",
+    "correctAnswer": "Lake Xochimilco, Mexico",
+    "distractors": [
+      "Lake Titicaca, Peru",
+      "Lake Chapala, Mexico",
+      "Amazon River, Brazil",
+      "Orinoco River, Venezuela",
+      "Lake Nicaragua",
+      "Rio Grande, Mexico",
+      "Lake Texcoco, Mexico",
+      "Usumacinta River, Mexico"
+    ],
+    "acceptableAnswers": ["Lake Xochimilco", "Xochimilco", "Lake Xochimilco, Mexico"],
+    "explanation": "Wild axolotls survive in only the remnant canals of Lake Xochimilco within Mexico City — a fraction of what was once a vast lake system. Pollution, invasive fish, and urban development have reduced wild populations to near extinction. Millions exist in laboratories and pet trade worldwide, but wild axolotls are critically endangered.",
+    "wowFactor": "One of the world's most iconic amphibians lives wild in only a few canals in the middle of a city of 22 million people — and almost nobody living there knows it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which body of water do wild axolotls exclusively live?",
+        "answer": "Lake Xochimilco, Mexico",
+        "distractors": ["Lake Titicaca, Peru", "Amazon River, Brazil", "Lake Chapala, Mexico"]
+      },
+      {
+        "type": "reverse",
+        "question": "Lake Xochimilco in Mexico City is the last wild home of which amphibian?",
+        "answer": "Axolotl",
+        "distractors": ["Mexican giant salamander", "Baja treefrog", "Spectacled caiman", "Mexican caecilian"]
+      },
+      {
+        "type": "truefalse",
+        "question": "Wild axolotls are found throughout Mexican rivers and lakes.",
+        "answer": "False",
+        "distractors": ["True", "True historically", "True for 3 river systems"]
+      },
+      {
+        "type": "context",
+        "question": "A conservationist wants to protect wild axolotls. Where must they focus?",
+        "answer": "Xochimilco canals, Mexico City",
+        "distractors": ["Rivers throughout Mexico", "The Amazon basin", "Central American wetlands"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "IUCN Red List — Ambystoma mexicanum",
+    "sourceUrl": "https://www.iucnredlist.org/species/1095/53947343",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Aerial pixel art view of dense urban Mexico City sprawl surrounding a small patch of ancient canals, a lone pink axolotl visible in murky green water below boat-dotted channels, city towers looming all around.",
+    "tags": ["axolotl", "endangered", "Lake Xochimilco", "Mexico", "amphibians", "conservation"],
+    "status": "approved"
+  }
+]

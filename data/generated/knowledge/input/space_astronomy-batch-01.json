@@ -1,0 +1,191 @@
+{
+  "domain": "space_astronomy",
+  "batchIndex": 1,
+  "totalBatches": 3,
+  "entities": [
+    {
+      "qid": "Q307",
+      "label": "Galileo Galilei",
+      "description": "Italian polymath (1564–1642)",
+      "subcategory": "cosmology_universe",
+      "sitelinks": 266,
+      "monthlyPageviews": 133000,
+      "properties": {
+        "birthDate": "+1564-02-15T00:00:00Z",
+        "deathDate": "+1642-01-08T00:00:00Z",
+        "occupation": "Q11063",
+        "fieldOfWork": "Q333"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q43027",
+      "label": "Edwin Hubble",
+      "description": "American astronomer (1889–1953)",
+      "subcategory": "missions_spacecraft",
+      "sitelinks": 105,
+      "monthlyPageviews": 52500,
+      "properties": {
+        "birthDate": "+1889-11-20T00:00:00Z",
+        "deathDate": "+1953-09-28T00:00:00Z",
+        "occupation": "Q11063",
+        "fieldOfWork": "Q333"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q111",
+      "label": "Mars",
+      "description": "Fourth planet from the Sun, known as the Red Planet",
+      "subcategory": "planets_moons",
+      "sitelinks": 210,
+      "monthlyPageviews": 250000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q1615",
+      "label": "Neil Armstrong",
+      "description": "American astronaut and lunar explorer (1930–2012)",
+      "subcategory": "satellites_tech",
+      "sitelinks": 217,
+      "monthlyPageviews": 108500,
+      "properties": {
+        "birthDate": "+1930-08-05T00:00:00Z",
+        "deathDate": "+2012-08-25T00:00:00Z",
+        "occupation": "Q7890793",
+        "fieldOfWork": "Q1898464"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q525",
+      "label": "Sun",
+      "description": "The star at the center of our Solar System",
+      "subcategory": "stars_galaxies",
+      "sitelinks": 225,
+      "monthlyPageviews": 400000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q619",
+      "label": "Nicolaus Copernicus",
+      "description": "Polish mathematician and astronomer (1473–1543)",
+      "subcategory": "cosmology_universe",
+      "sitelinks": 211,
+      "monthlyPageviews": 105500,
+      "properties": {
+        "birthDate": "+1473-02-19T00:00:00Z",
+        "deathDate": "+1543-05-24T00:00:00Z",
+        "occupation": "Q11063",
+        "fieldOfWork": "Q333"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q43653",
+      "label": "Apollo 11",
+      "description": "First crewed mission to land on the Moon in 1969",
+      "subcategory": "missions_spacecraft",
+      "sitelinks": 210,
+      "monthlyPageviews": 380000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q319",
+      "label": "Jupiter",
+      "description": "Fifth planet from the Sun and largest planet in the Solar System",
+      "subcategory": "planets_moons",
+      "sitelinks": 215,
+      "monthlyPageviews": 280000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q7327",
+      "label": "Yuri Gagarin",
+      "description": "Soviet pilot and cosmonaut, first human in space (1934–1968)",
+      "subcategory": "satellites_tech",
+      "sitelinks": 202,
+      "monthlyPageviews": 101000,
+      "properties": {
+        "birthDate": "+1934-03-09T00:00:00Z",
+        "deathDate": "+1968-03-27T00:00:00Z",
+        "occupation": "Q2095549"
+      },
+      "processed": false
+    },
+    {
+      "qid": null,
+      "label": "Proxima Centauri",
+      "description": "Closest known star to the Sun at 4.24 light-years",
+      "subcategory": "stars_galaxies",
+      "sitelinks": 180,
+      "monthlyPageviews": 145000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q36330",
+      "label": "Giordano Bruno",
+      "description": "Italian Dominican friar, philosopher and mathematician (1548–1600)",
+      "subcategory": "cosmology_universe",
+      "sitelinks": 150,
+      "monthlyPageviews": 75000,
+      "properties": {
+        "movement": "Q846933",
+        "birthDate": "+1548-01-01T00:00:00Z",
+        "deathDate": "+1600-02-17T00:00:00Z",
+        "occupation": "Q11063",
+        "fieldOfWork": "Q5891"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q43654",
+      "label": "Apollo 13",
+      "description": "Lunar mission famous for the phrase 'Houston, we've had a problem'",
+      "subcategory": "missions_spacecraft",
+      "sitelinks": 190,
+      "monthlyPageviews": 280000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q193",
+      "label": "Saturn",
+      "description": "Sixth planet from the Sun, famous for its extensive ring system",
+      "subcategory": "planets_moons",
+      "sitelinks": 208,
+      "monthlyPageviews": 260000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q44371",
+      "label": "Valentina Tereshkova",
+      "description": "Russian cosmonaut and pilot, first woman to have flown in space",
+      "subcategory": "satellites_tech",
+      "sitelinks": 128,
+      "monthlyPageviews": 64000,
+      "properties": {
+        "birthDate": "+1937-03-06T00:00:00Z",
+        "occupation": "Q11631",
+        "fieldOfWork": "Q82955"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q3536",
+      "label": "Sirius",
+      "description": "Brightest star in the night sky, in the constellation Canis Major",
+      "subcategory": "stars_galaxies",
+      "sitelinks": 175,
+      "monthlyPageviews": 155000,
+      "properties": {},
+      "processed": false
+    }
+  ]
+}

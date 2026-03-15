@@ -735,3 +735,50 @@ build-facts-db.mjs
 - JMdict updated quarterly; version stored in `seed-pack.json` metadata
 - Re-run extraction scripts to refresh; `merge-japanese-facts.mjs` deduplicates by ID
 - Build cache: clear `public/facts.db` before rebuild if sources changed
+
+## Vocabulary Pipeline Architecture
+
+### Overview
+Vocabulary cards for 8 languages are built programmatically from open-source datasets — no LLM generation needed for the words themselves. The pipeline follows a 6-stage architecture (see `docs/RESEARCH/SOURCES/content-pipeline-spec.md` for the full spec).
+
+### 6-Stage Pipeline
+1. **Raw Data Ingestion** → `data/raw/{source}/` — Download dictionary files, level data
+2. **Curated Input Generation** → `data/curated/vocab/{language}/` — Parse, join, deduplicate
+3. **Fact Generation** → `data/generated/vocab/{language}/` — Convert words to quiz-ready facts (programmatic)
+4. **Automated Validation** → 11 validation gates from the spec
+5. **QA Review** → Spot-check 5-10% of output
+6. **Production Build** → `src/data/seed/vocab-{lang}.json` → `public/facts.db`
+
+### Runtime Distractor Selection (Spec Section 1.8)
+Vocabulary facts do NOT ship with pre-generated distractors. The `distractors` field is `[]`. The game client selects wrong answers at runtime using:
+- **POS match**: Nouns distract with nouns, verbs with verbs
+- **Level proximity**: Within ±1 HSK/CEFR/JLPT/TOPIK level
+- **Semantic bin distance**: Easy = different bins, Medium = same broad bin, Hard = same sub-bin
+- **Performance**: <10ms for 120 candidates on mobile
+
+Semantic bins (~50 broad, ~200 narrow sub-bins) are assigned at build time by Sonnet sub-agents and shipped as metadata (<300KB).
+
+### Programmatic Question Types (Spec Section 1.9)
+| Format | Tier | Template | Options |
+|--------|------|----------|---------|
+| L2→L1 meaning | 1 | "What does '{targetWord}' mean?" | 3 |
+| L1→L2 reverse | 2a | "How do you say '{english}' in {language}?" | 4 |
+| Reading (CJK) | 1 | "What is the reading of '{kanji}'?" | 3 |
+| Fill-blank | 2b | "'{___}' means '{english}' in {language}" | 5 |
+
+### Language Sources
+| Language | Source | Level System | Expected Words |
+|----------|--------|-------------|----------------|
+| Chinese | complete-hsk-vocabulary | HSK 1-7 | 11,092 |
+| Japanese | JMdict + JLPT lists | N5-N1 | ~10,000 |
+| Spanish | CEFRLex + Kaikki.org | CEFR A1-C2 | ~12,000 |
+| French | CEFRLex + Kaikki.org | CEFR A1-C2 | ~10,000 |
+| German | CEFRLex + Kaikki.org | CEFR A1-C2 | ~10,000 |
+| Dutch | CEFRLex + Kaikki.org | CEFR A1-C2 | ~8,000 |
+| Korean | NIKL + TOPIK PDFs | TOPIK I-II | ~5,500 |
+| Czech | Kaikki.org + wordfreq | Freq-inferred CEFR | ~5,000 |
+
+### Key Scripts
+- `scripts/content-pipeline/vocab/import-hsk-complete.mjs` — Chinese vocab import
+- `scripts/content-pipeline/vocab/vocab-to-facts-v2.mjs` — Vocab→fact conversion (all languages)
+- `scripts/build-facts-db.mjs` — Database builder

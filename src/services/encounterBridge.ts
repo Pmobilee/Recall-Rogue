@@ -407,12 +407,6 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   turnState.ascensionPreventFlee = ascensionModifiers.preventFlee;
   turnState.ascensionComboResetsOnTurnEnd = ascensionModifiers.comboResetsOnTurnEnd;
 
-  const onboarding = get(onboardingState);
-  if (!onboarding.hasCompletedOnboarding && run.floor.currentFloor === 1 && run.floor.currentEncounter <= 2) {
-    turnState.apMax = 2;
-    turnState.apCurrent = Math.min(turnState.apCurrent, 2);
-  }
-
   // Encounter-start relic hooks (resolved by relicEffectResolver).
   const encounterStartFx = resolveEncounterStartEffects(runRelicIds);
   if (encounterStartFx.bonusBlock > 0) {

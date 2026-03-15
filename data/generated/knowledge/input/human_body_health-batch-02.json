@@ -1,0 +1,163 @@
+{
+  "domain": "human_body_health",
+  "batchIndex": 2,
+  "totalBatches": 3,
+  "entities": [
+    {
+      "qid": "Q420",
+      "label": "biology",
+      "description": "scientific study of living things, especially their structure, function, growth, evolution, and distribution",
+      "subcategory": "anatomy_organs",
+      "sitelinks": 313,
+      "monthlyPageviews": 156500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q9404",
+      "label": "nervous system",
+      "description": "part of an animal that coordinates actions and senses",
+      "subcategory": "brain_neuro",
+      "sitelinks": 140,
+      "monthlyPageviews": 70000,
+      "properties": {
+        "material": "nervous tissue"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q12206",
+      "label": "diabetes",
+      "description": "group of metabolic disorders characterized by high blood sugar levels over a prolonged period",
+      "subcategory": "cardiovascular",
+      "sitelinks": 177,
+      "monthlyPageviews": 88500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q8047",
+      "label": "enzyme",
+      "description": "large biological molecule that acts as a catalyst",
+      "subcategory": "digestion_metabolism",
+      "sitelinks": 149,
+      "monthlyPageviews": 74500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q7430",
+      "label": "deoxyribonucleic acid",
+      "description": "molecule that encodes the genetic instructions used in the development and functioning of all known living organisms and many viruses",
+      "subcategory": "genetics_dna",
+      "sitelinks": 183,
+      "monthlyPageviews": 91500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q12136",
+      "label": "disease",
+      "description": "abnormal condition negatively affecting organisms",
+      "subcategory": "immunity_disease",
+      "sitelinks": 221,
+      "monthlyPageviews": 110500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q12174",
+      "label": "obesity",
+      "description": "medical condition in which individuals have an excess of body fat",
+      "subcategory": "medical_science",
+      "sitelinks": 149,
+      "monthlyPageviews": 74500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q7363",
+      "label": "nose",
+      "description": "organ that smells and facilitates breathing",
+      "subcategory": "senses_perception",
+      "sitelinks": 207,
+      "monthlyPageviews": 103500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q5",
+      "label": "human",
+      "description": "any single member of Homo sapiens, unique extant species of the genus Homo",
+      "subcategory": "anatomy_organs",
+      "sitelinks": 273,
+      "monthlyPageviews": 136500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q11081",
+      "label": "Alzheimer's disease",
+      "description": "progressive, neurodegenerative disease characterized by memory loss",
+      "subcategory": "brain_neuro",
+      "sitelinks": 138,
+      "monthlyPageviews": 69000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q12152",
+      "label": "myocardial infarction",
+      "description": "interruption of blood supply to a part of the heart",
+      "subcategory": "cardiovascular",
+      "sitelinks": 135,
+      "monthlyPageviews": 67500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q1057",
+      "label": "metabolism",
+      "description": "set of chemical reactions and pathways by which living organisms transform chemical substances",
+      "subcategory": "digestion_metabolism",
+      "sitelinks": 137,
+      "monthlyPageviews": 68500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q8054",
+      "label": "protein",
+      "description": "biomolecule or biomolecule complex largely consisting of chains of amino acid residues",
+      "subcategory": "genetics_dna",
+      "sitelinks": 178,
+      "monthlyPageviews": 89000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q12199",
+      "label": "HIV/AIDS",
+      "description": "spectrum of conditions caused by HIV infection",
+      "subcategory": "immunity_disease",
+      "sitelinks": 206,
+      "monthlyPageviews": 103000,
+      "properties": {
+        "startDate": "+1959-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q1578",
+      "label": "cigarette",
+      "description": "small roll of cut drug (typically tobacco) designed to be smoked",
+      "subcategory": "medical_science",
+      "sitelinks": 130,
+      "monthlyPageviews": 65000,
+      "properties": {
+        "material": "Q1566"
+      },
+      "processed": false
+    }
+  ]
+}

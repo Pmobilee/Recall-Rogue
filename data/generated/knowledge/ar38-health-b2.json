@@ -1,0 +1,1325 @@
+[
+  {
+    "id": "health-nervous-system-neurons",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "nervous_system",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "nervous_system",
+    "categoryL3": "",
+    "statement": "The human nervous system contains approximately 86 billion neurons, each capable of forming up to 10,000 synaptic connections with other neurons.",
+    "quizQuestion": "Roughly how many neurons does the human brain contain?",
+    "correctAnswer": "86 billion",
+    "distractors": [
+      "1 billion",
+      "100 million",
+      "1 trillion",
+      "10 billion",
+      "500 million",
+      "200 billion",
+      "50 billion",
+      "5 billion"
+    ],
+    "acceptableAnswers": ["86 billion", "About 86 billion", "~86 billion neurons"],
+    "explanation": "The human brain contains roughly 86 billion neurons (nerve cells), as determined by a 2009 study using an isotropic fractionator technique. Each neuron can connect to up to 10,000 others via synapses, creating roughly 100 trillion possible connections — more than the number of stars in the Milky Way. This complexity underpins all thought, memory, and sensation.",
+    "wowFactor": "Your brain has more possible synaptic connections than there are stars in the Milky Way galaxy — and it uses less power than a 20-watt light bulb to run all of it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many neurons are in the human brain?",
+        "answer": "86 billion",
+        "distractors": ["10 billion", "1 trillion", "50 billion"]
+      },
+      {
+        "type": "reverse",
+        "question": "86 billion neurons connected by synapses is found in which human organ?",
+        "answer": "Brain",
+        "distractors": ["Spinal cord", "Heart", "Liver"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The human brain contains approximately 86 billion neurons.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Each neuron can form up to ___ synaptic connections with other neurons.",
+        "answer": "10,000",
+        "distractors": ["100", "1,000", "1 million"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Neuron",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A branching neuron with electric sparks firing along its axon, connections glowing between dozens of other neurons in a dark blue network, pixel art.",
+    "tags": ["nervous system", "neurons", "brain", "synapses", "neuroscience"]
+  },
+  {
+    "id": "health-nervous-system-signals",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "nervous_system",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "nervous_system",
+    "categoryL3": "",
+    "statement": "Nerve signals travel at speeds up to 120 meters per second (268 mph) along the fastest myelinated axons in the human body.",
+    "quizQuestion": "How fast can nerve signals travel along myelinated axons?",
+    "correctAnswer": "120 meters per second",
+    "distractors": [
+      "1 meter per second",
+      "10 meters per second",
+      "500 meters per second",
+      "30 meters per second",
+      "1,000 m/s",
+      "5 meters per second",
+      "0.5 meters per second",
+      "200 meters per second"
+    ],
+    "acceptableAnswers": ["120 meters per second", "Up to 120 m/s", "120 m/s"],
+    "explanation": "Nerve impulses travel as electrical signals called action potentials. Unmyelinated fibers conduct signals slowly (0.5–2 m/s), while myelinated fibers — where the axon is wrapped in a fatty myelin sheath — can conduct at 70–120 m/s. The myelin sheath allows signals to 'jump' between nodes (saltatory conduction), dramatically increasing speed. Damage to myelin causes diseases like multiple sclerosis.",
+    "wowFactor": "Your nervous system can send a signal from your toe to your brain at 268 miles per hour. Yet it still feels slow when you stub your toe — pain signals use the slow, unmyelinated fibers.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What speeds up nerve signal conduction in myelinated axons?",
+        "answer": "Myelin sheath",
+        "distractors": ["More neurons", "Blood flow", "Hormones"]
+      },
+      {
+        "type": "reverse",
+        "question": "Nerve signals traveling at up to 120 m/s use which type of fiber?",
+        "answer": "Myelinated",
+        "distractors": ["Unmyelinated", "Sensory", "Motor"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The fastest nerve signals can travel at up to 120 meters per second.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ sheath around axons allows nerve signals to jump between nodes.",
+        "answer": "Myelin",
+        "distractors": ["Keratin", "Collagen", "Axon"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nerve_conduction_velocity",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section of a nerve fiber showing a white myelin-wrapped axon with electric signals leaping between Nodes of Ranvier, pixel art style.",
+    "tags": ["nervous system", "nerve signals", "myelin", "action potential", "conduction"]
+  },
+  {
+    "id": "health-nervous-system-reflex",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "nervous_system",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "nervous_system",
+    "categoryL3": "",
+    "statement": "Reflex actions bypass the brain entirely — signals travel from sensory nerves directly to the spinal cord and back to muscles, completing in milliseconds.",
+    "quizQuestion": "Where does a reflex arc bypass to speed up response?",
+    "correctAnswer": "The brain",
+    "distractors": [
+      "The spinal cord",
+      "The heart",
+      "The muscles",
+      "The nerves",
+      "The skin",
+      "The lungs",
+      "The stomach",
+      "The kidneys"
+    ],
+    "acceptableAnswers": ["The brain", "Brain processing", "Conscious brain"],
+    "explanation": "Reflex arcs are the simplest neural pathways. When you touch something hot, sensory neurons in your hand send signals to the spinal cord, which immediately signals motor neurons to pull the hand away — all before the signal even reaches your brain. You consciously feel the pain a fraction of a second AFTER your hand has already moved. The brain gets notified, but isn't in control.",
+    "wowFactor": "Your hand pulls away from fire BEFORE you feel pain. Your body literally acts without waiting for your brain's permission — survival is too important to waste time on consciousness.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "A reflex arc routes nerve signals through the spinal cord instead of what?",
+        "answer": "The brain",
+        "distractors": ["The nerves", "The muscles", "The skin"]
+      },
+      {
+        "type": "reverse",
+        "question": "The spinal cord, not the brain, coordinates which type of rapid nerve response?",
+        "answer": "Reflex",
+        "distractors": ["Thought", "Memory", "Emotion"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Reflex actions are processed through the spinal cord, bypassing the brain.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In a reflex arc, signals travel to the ___ and back to muscles without reaching the brain.",
+        "answer": "Spinal cord",
+        "distractors": ["Heart", "Brain stem", "Cerebellum"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Reflex_arc",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A diagram of a hand touching a flame, with signal arrows running through the spinal cord and back to the arm, bypassing a brain icon, pixel art.",
+    "tags": ["nervous system", "reflex arc", "spinal cord", "response", "neuroscience"]
+  },
+  {
+    "id": "health-blood-red-cells",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "blood_circulatory",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "blood_circulatory",
+    "categoryL3": "",
+    "statement": "Red blood cells (erythrocytes) have no nucleus and live for about 120 days, with the body producing 2 million new ones every second.",
+    "quizQuestion": "How many red blood cells does the body produce each second?",
+    "correctAnswer": "2 million",
+    "distractors": [
+      "100",
+      "10,000",
+      "1 billion",
+      "500,000",
+      "10 million",
+      "200",
+      "5 million",
+      "100,000"
+    ],
+    "acceptableAnswers": ["2 million", "About 2 million", "2 million per second"],
+    "explanation": "Red blood cells are produced in the red bone marrow via a process called erythropoiesis. Each RBC loses its nucleus during development to maximize room for hemoglobin (the oxygen-carrying protein). With about 25 trillion RBCs in the body and each living ~120 days, the math requires production of about 2 million cells per second to maintain steady levels.",
+    "wowFactor": "Your bone marrow is producing 2 million fresh red blood cells every single second — while you read this sentence, it made about 20 million new cells. It never stops.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Red blood cells have no nucleus to maximize space for what protein?",
+        "answer": "Hemoglobin",
+        "distractors": ["Collagen", "Keratin", "Myosin"]
+      },
+      {
+        "type": "reverse",
+        "question": "About how long does one red blood cell survive in the body?",
+        "answer": "120 days",
+        "distractors": ["7 days", "1 year", "30 days"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Red blood cells have no nucleus and live for about 120 days.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Red blood cells are produced in the red ___ marrow of bones.",
+        "answer": "Bone",
+        "distractors": ["Spinal", "Skull", "Muscle"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Red_blood_cell",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section of a blood vessel filled with biconcave red discs flowing in a red current, with marrow factories visible in bone walls, pixel art.",
+    "tags": ["blood", "red blood cells", "erythrocytes", "hemoglobin", "bone marrow"]
+  },
+  {
+    "id": "health-blood-plasma-composition",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "blood_circulatory",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "blood_circulatory",
+    "categoryL3": "",
+    "statement": "Blood plasma makes up about 55% of blood volume and is 92% water, carrying proteins, nutrients, hormones, and waste products throughout the body.",
+    "quizQuestion": "What percentage of blood is made up of plasma?",
+    "correctAnswer": "About 55%",
+    "distractors": [
+      "About 10%",
+      "About 90%",
+      "About 30%",
+      "About 70%",
+      "About 20%",
+      "About 80%",
+      "About 5%",
+      "About 45%"
+    ],
+    "acceptableAnswers": ["About 55%", "55%", "Roughly 55 percent"],
+    "explanation": "Blood is composed of plasma (~55%) and formed elements (~45%): red blood cells, white blood cells, and platelets. Plasma is a straw-colored liquid that is 92% water plus dissolved proteins (albumin, fibrinogen, globulins), glucose, hormones, clotting factors, and waste. The remaining 45% is mostly red blood cells (the hematocrit). Plasma without clotting factors is called serum.",
+    "wowFactor": "More than half your blood is just water with dissolved proteins and sugar. The dramatic red color is actually a thin minority — red blood cells are only about 40-45% of your blood volume.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the liquid portion of blood that makes up about 55% called?",
+        "answer": "Plasma",
+        "distractors": ["Serum", "Lymph", "Ichor"]
+      },
+      {
+        "type": "reverse",
+        "question": "Plasma is 92% water plus what type of dissolved molecules?",
+        "answer": "Proteins and nutrients",
+        "distractors": ["Iron and zinc", "Cells and platelets", "Sugars only"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Plasma makes up about 55% of blood and is mostly water.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Blood plasma is 92% ___ plus proteins, nutrients, and hormones.",
+        "answer": "Water",
+        "distractors": ["Salt", "Sugar", "Iron"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Blood_plasma",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A test tube of blood separating into golden plasma on top and deep red red-blood-cell layer on the bottom, labeled with percentages, pixel art.",
+    "tags": ["blood", "plasma", "composition", "blood volume", "proteins"]
+  },
+  {
+    "id": "health-blood-white-cells",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "blood_circulatory",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "blood_circulatory",
+    "categoryL3": "",
+    "statement": "White blood cells (leukocytes) make up less than 1% of blood but are the immune system's soldiers, identifying and destroying pathogens and foreign cells.",
+    "quizQuestion": "What is the main function of white blood cells?",
+    "correctAnswer": "Immune defense",
+    "distractors": [
+      "Carry oxygen",
+      "Clot wounds",
+      "Digest food",
+      "Store energy",
+      "Filter waste",
+      "Produce hormones",
+      "Regulate temperature",
+      "Transport carbon dioxide"
+    ],
+    "acceptableAnswers": ["Immune defense", "Fight infection", "Defend against pathogens", "Immunity"],
+    "explanation": "White blood cells (leukocytes) are the immune system's frontline defenders. Despite comprising less than 1% of blood, they are highly diverse: neutrophils engulf bacteria, T-cells kill infected cells, B-cells produce antibodies, macrophages consume pathogens and dead cells, and natural killer cells destroy cancer cells. During infection, the body rapidly increases WBC production.",
+    "wowFactor": "White blood cells are less than 1% of your blood, but they perform a feat of memory that no computer can match — they remember every pathogen they've ever encountered and can recognize it decades later.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which blood cell type is responsible for immune defense?",
+        "answer": "White blood cells",
+        "distractors": ["Red blood cells", "Platelets", "Plasma cells"]
+      },
+      {
+        "type": "reverse",
+        "question": "Leukocytes is another name for which type of blood cell?",
+        "answer": "White blood cells",
+        "distractors": ["Red blood cells", "Platelets", "Stem cells"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: White blood cells make up less than 1% of blood volume.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "White blood cells called T-cells and B-cells are key components of the ___ system.",
+        "answer": "Immune",
+        "distractors": ["Digestive", "Nervous", "Endocrine"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/White_blood_cell",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A white cell with spiky arms engulfing a green bacterium, surrounded by smooth red blood cells flowing past, pixel art microscope view.",
+    "tags": ["blood", "white blood cells", "leukocytes", "immune system", "T-cells"]
+  },
+  {
+    "id": "health-stomach-acid",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "digestive_system",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "digestive_system",
+    "categoryL3": "",
+    "statement": "The stomach produces hydrochloric acid with a pH of 1.5–3.5, strong enough to dissolve metal — yet the stomach lining replaces itself every 3–4 days.",
+    "quizQuestion": "What acid does the stomach produce for digestion?",
+    "correctAnswer": "Hydrochloric acid",
+    "distractors": [
+      "Sulfuric acid",
+      "Citric acid",
+      "Carbonic acid",
+      "Acetic acid",
+      "Lactic acid",
+      "Nitric acid",
+      "Phosphoric acid",
+      "Formic acid"
+    ],
+    "acceptableAnswers": ["Hydrochloric acid", "HCl", "Gastric acid"],
+    "explanation": "The stomach secretes hydrochloric acid (HCl) through parietal cells, creating a pH of 1.5–3.5 — acidic enough to dissolve iron nails slowly. This acid activates the enzyme pepsinogen into pepsin for protein digestion and kills most bacteria. The stomach avoids self-digestion through a thick mucus lining, which is entirely replaced every 3–4 days. When protection fails, peptic ulcers result.",
+    "wowFactor": "Your stomach acid could slowly dissolve a nail. The only thing stopping it from eating through you is a thin layer of mucus — which has to be completely rebuilt from scratch every three days.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "The stomach's hydrochloric acid has approximately what pH level?",
+        "answer": "1.5 to 3.5",
+        "distractors": ["6 to 7", "4 to 5", "Below 0"]
+      },
+      {
+        "type": "reverse",
+        "question": "Hydrochloric acid in the stomach activates which enzyme for protein digestion?",
+        "answer": "Pepsin",
+        "distractors": ["Amylase", "Lipase", "Trypsin"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The stomach produces hydrochloric acid strong enough to dissolve metal.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The stomach protects itself from its own acid with a thick layer of ___.",
+        "answer": "Mucus",
+        "distractors": ["Collagen", "Fat", "Enzymes"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gastric_acid",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A stomach cross-section with glowing green acid inside, the pink mucus wall glowing as a protective barrier, pixel art with chemistry lab aesthetic.",
+    "tags": ["stomach", "hydrochloric acid", "digestion", "pH", "gastric acid", "mucus"]
+  },
+  {
+    "id": "health-stomach-empty-time",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "digestive_system",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "digestive_system",
+    "categoryL3": "",
+    "statement": "The stomach takes 4–5 hours to empty a full mixed meal into the small intestine, and the entire digestion process from mouth to excretion takes 24–72 hours.",
+    "quizQuestion": "How long does the stomach take to empty a full meal?",
+    "correctAnswer": "4 to 5 hours",
+    "distractors": [
+      "30 minutes",
+      "10 hours",
+      "1 hour",
+      "24 hours",
+      "15 minutes",
+      "2 hours",
+      "12 hours",
+      "8 hours"
+    ],
+    "acceptableAnswers": ["4 to 5 hours", "4–5 hours", "About 4 hours"],
+    "explanation": "Gastric emptying varies by food type: liquids empty fastest (20–30 minutes), carbohydrates take about 2 hours, proteins 3–4 hours, and fatty meals can take 5+ hours. The stomach churns food with acid and enzymes into chyme, then releases small amounts through the pyloric sphincter into the small intestine. Total gut transit from mouth to excretion varies from 24–72 hours.",
+    "wowFactor": "That burger you ate for lunch won't leave your stomach for 4–5 hours — and it still has a full day or more of travel through your intestines before the journey ends.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which food type takes the longest for the stomach to digest and empty?",
+        "answer": "Fat",
+        "distractors": ["Carbohydrates", "Water", "Sugar"]
+      },
+      {
+        "type": "reverse",
+        "question": "A meal takes 4–5 hours to empty from which digestive organ?",
+        "answer": "Stomach",
+        "distractors": ["Small intestine", "Large intestine", "Colon"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The stomach can take 4–5 hours to empty a full mixed meal.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Total digestion from mouth to excretion takes ___ hours.",
+        "answer": "24 to 72",
+        "distractors": ["4 to 8", "1 to 5", "100 to 200"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gastric_emptying",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A stomach with a clock on it, food particles being churned and draining slowly through the pyloric valve, pixel art digestive illustration.",
+    "tags": ["stomach", "digestion", "gastric emptying", "chyme", "digestive system"]
+  },
+  {
+    "id": "health-stomach-hunger-growl",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "digestive_system",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "digestive_system",
+    "categoryL3": "",
+    "statement": "Stomach growling (borborygmi) is caused by the stomach and intestines squeezing air and liquid during normal muscle contractions, not only by hunger.",
+    "quizQuestion": "What is the medical term for stomach growling?",
+    "correctAnswer": "Borborygmi",
+    "distractors": [
+      "Peristalsis",
+      "Borborygmus",
+      "Tympany",
+      "Dyspepsia",
+      "Eructation",
+      "Emesis",
+      "Flatulence",
+      "Crepitus"
+    ],
+    "acceptableAnswers": ["Borborygmi", "Borborygmus", "Borborygmus/Borborygmi"],
+    "explanation": "Borborygmi (singular: borborygmus) is the rumbling sound produced by peristalsis — the wave-like muscular contractions that move food, gas, and liquid through the digestive tract. It happens all the time, but is louder when the stomach is empty because there is no food to muffle the sound. The brain also triggers stronger contractions when it anticipates food, making hunger-related growling louder.",
+    "wowFactor": "Your stomach growls louder when empty not because it's working harder, but because there's no food to muffle the sound — your gut is basically an amplified rumble strip.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What wave-like muscular process moves food through the digestive tract?",
+        "answer": "Peristalsis",
+        "distractors": ["Borborygmi", "Osmosis", "Digestion"]
+      },
+      {
+        "type": "reverse",
+        "question": "Borborygmi describes the sound produced by which digestive process?",
+        "answer": "Peristalsis",
+        "distractors": ["Acid secretion", "Absorption", "Enzyme release"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Stomach growling (borborygmi) occurs even when the stomach isn't empty.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The medical term for stomach growling caused by intestinal contractions is ___.",
+        "answer": "Borborygmi",
+        "distractors": ["Dyspepsia", "Peristalsis", "Eructation"]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Borborygmus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cartoon stomach with sound-wave lines radiating from it, intestines coiling below with small air bubbles and liquid being squeezed through, pixel art.",
+    "tags": ["stomach", "borborygmi", "digestion", "peristalsis", "growling", "hunger"]
+  },
+  {
+    "id": "health-covid19-sars-cov2",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "diseases_epidemics",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "diseases_epidemics",
+    "categoryL3": "",
+    "statement": "COVID-19 is caused by SARS-CoV-2, a coronavirus that spreads primarily through respiratory droplets and was declared a global pandemic by the WHO in March 2020.",
+    "quizQuestion": "Which virus causes the disease COVID-19?",
+    "correctAnswer": "SARS-CoV-2",
+    "distractors": [
+      "SARS-CoV-1",
+      "MERS-CoV",
+      "Influenza A",
+      "RSV",
+      "Rhinovirus",
+      "HIV",
+      "Ebola",
+      "H1N1"
+    ],
+    "acceptableAnswers": ["SARS-CoV-2", "Coronavirus SARS-CoV-2", "Novel coronavirus"],
+    "explanation": "COVID-19 (Coronavirus Disease 2019) is caused by the severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2). The virus was first identified in Wuhan, China in late 2019. The WHO declared it a Public Health Emergency of International Concern in January 2020 and a pandemic in March 2020. It belongs to the Betacoronavirus genus and uses the ACE2 receptor to enter human cells.",
+    "wowFactor": "SARS-CoV-2's spike protein evolved to fit the ACE2 receptor in human lungs so precisely that scientists still debate whether this was natural evolution or the most lucky accident in viral history.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "SARS-CoV-2 primarily enters human cells via which receptor?",
+        "answer": "ACE2",
+        "distractors": ["CD4", "ACE1", "ACE3"]
+      },
+      {
+        "type": "reverse",
+        "question": "The WHO declared COVID-19 a pandemic in which month of 2020?",
+        "answer": "March",
+        "distractors": ["January", "June", "February"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: COVID-19 is caused by the virus SARS-CoV-2.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "SARS-CoV-2 was first identified in ___, China in late 2019.",
+        "answer": "Wuhan",
+        "distractors": ["Beijing", "Shanghai", "Guangzhou"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/COVID-19",
+    "contentVolatility": "current",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Pandemic topic — present factually; avoid alarmist framing",
+    "visualDescription": "A spiked coronavirus particle with characteristic protein spikes illustrated in teal and red, magnified against a cellular background, pixel art.",
+    "tags": ["covid-19", "sars-cov-2", "pandemic", "coronavirus", "virus", "who"]
+  },
+  {
+    "id": "health-covid19-variants",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "diseases_epidemics",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "diseases_epidemics",
+    "categoryL3": "",
+    "statement": "SARS-CoV-2 evolved multiple variants of concern including Alpha, Delta, and Omicron, each with mutations affecting transmissibility or immune escape.",
+    "quizQuestion": "Which COVID-19 variant became dominant in late 2021 for high transmissibility?",
+    "correctAnswer": "Omicron",
+    "distractors": [
+      "Delta",
+      "Alpha",
+      "Beta",
+      "Gamma",
+      "Lambda",
+      "Epsilon",
+      "Mu",
+      "Eta"
+    ],
+    "acceptableAnswers": ["Omicron", "Omicron variant", "BA.1"],
+    "explanation": "SARS-CoV-2 variants are classified by the WHO using Greek letters. Delta (B.1.617.2) dominated mid-2021 with high transmissibility and severity. Omicron (B.1.1.529), identified in South Africa in November 2021, quickly replaced Delta due to even higher transmissibility and significant immune escape — it spread faster than any previous variant but caused less severe illness on average in vaccinated populations.",
+    "wowFactor": "Omicron spread so fast that epidemiologists had to invent new mathematical models — existing ones assumed no virus could move that quickly through a vaccinated population.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Omicron was first identified in late 2021 in which country?",
+        "answer": "South Africa",
+        "distractors": ["China", "Brazil", "India"]
+      },
+      {
+        "type": "reverse",
+        "question": "The COVID-19 Delta variant was notable for its high what in mid-2021?",
+        "answer": "Transmissibility",
+        "distractors": ["Vaccine resistance", "Mortality", "Incubation time"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Omicron replaced Delta as the dominant COVID-19 variant in late 2021.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "COVID-19 variants of concern are named using ___ letters.",
+        "answer": "Greek",
+        "distractors": ["Roman", "Latin", "Arabic"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/SARS-CoV-2_variants",
+    "contentVolatility": "current",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Pandemic and variant information may evolve — present with factual framing",
+    "visualDescription": "A phylogenetic tree of virus variants branching outward with Greek letter labels on each major branch, pixel art scientific illustration.",
+    "tags": ["covid-19", "omicron", "delta", "variants", "sars-cov-2", "pandemic"]
+  },
+  {
+    "id": "health-covid19-mrna-vaccine",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "diseases_epidemics",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "diseases_epidemics",
+    "categoryL3": "",
+    "statement": "The COVID-19 mRNA vaccines (Pfizer-BioNTech, Moderna) were the first mRNA vaccines ever approved for human use, marking a new era in vaccine technology.",
+    "quizQuestion": "What technology made COVID-19 Pfizer and Moderna vaccines historically new?",
+    "correctAnswer": "mRNA technology",
+    "distractors": [
+      "Live attenuated virus",
+      "Protein subunit",
+      "Viral vector",
+      "Inactivated virus",
+      "DNA plasmid",
+      "Toxoid",
+      "Recombinant protein",
+      "Killed pathogen"
+    ],
+    "acceptableAnswers": ["mRNA technology", "mRNA", "Messenger RNA vaccine"],
+    "explanation": "Traditional vaccines use weakened or inactivated viruses. mRNA vaccines instead deliver genetic instructions (messenger RNA) that tell your cells to temporarily produce the SARS-CoV-2 spike protein, triggering an immune response. The mRNA degrades within days and never enters the cell nucleus or affects DNA. The technology was researched for decades but COVID-19 was the first time it was used in approved human vaccines.",
+    "wowFactor": "mRNA vaccine technology had been in development for 30 years but never approved. The COVID-19 pandemic accelerated it from research to 100 million doses in under a year — the fastest vaccine development in human history.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "mRNA COVID vaccines instruct your cells to make which protein?",
+        "answer": "Spike protein",
+        "distractors": ["Nucleocapsid", "ACE2 receptor", "Antibodies"]
+      },
+      {
+        "type": "reverse",
+        "question": "Pfizer-BioNTech and Moderna COVID-19 vaccines use which type of technology?",
+        "answer": "mRNA",
+        "distractors": ["Live attenuated virus", "Protein subunit", "Viral vector"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The COVID-19 mRNA vaccines were the first mRNA vaccines approved for humans.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "mRNA vaccines deliver instructions for cells to produce the SARS-CoV-2 ___ protein.",
+        "answer": "Spike",
+        "distractors": ["Capsid", "Receptor", "Envelope"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/mRNA_vaccine",
+    "contentVolatility": "current",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Vaccine topic — factual only; no political framing",
+    "visualDescription": "A stylized mRNA strand entering a cell, a spike protein being assembled at a ribosome, and antibodies deploying in response, pixel art.",
+    "tags": ["covid-19", "mrna", "vaccine", "pfizer", "moderna", "spike protein"]
+  },
+  {
+    "id": "health-alzheimers-plaques",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "brain_neurology",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "brain_neurology",
+    "categoryL3": "",
+    "statement": "Alzheimer's disease is characterized by the buildup of amyloid beta plaques and tau tangles in the brain, which interfere with neuron communication and cause cell death.",
+    "quizQuestion": "What protein plaques accumulate in Alzheimer's disease brains?",
+    "correctAnswer": "Amyloid beta",
+    "distractors": [
+      "Tau only",
+      "Alpha-synuclein",
+      "Prion protein",
+      "Lewy bodies",
+      "Dopamine clusters",
+      "Cortisol deposits",
+      "Keratin plaques",
+      "Fibrin deposits"
+    ],
+    "acceptableAnswers": ["Amyloid beta", "Amyloid plaques", "Beta-amyloid", "Amyloid"],
+    "explanation": "Alzheimer's disease is associated with two abnormal protein buildups: amyloid beta plaques (clumps of protein fragments that form between neurons, disrupting cell function) and neurofibrillary tangles (twisted fibers of tau protein inside neurons). These accumulate over years, typically before symptoms appear. The exact cause-and-effect relationship is still debated — the 'amyloid hypothesis' is currently the dominant theory.",
+    "wowFactor": "Alzheimer's plaques may start forming in your brain 20 years before any memory symptoms appear. The disease is effectively silent for decades before it takes hold.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In addition to amyloid plaques, which protein tangles form inside neurons in Alzheimer's?",
+        "answer": "Tau",
+        "distractors": ["Lewy bodies", "Prions", "Synuclein"]
+      },
+      {
+        "type": "reverse",
+        "question": "Amyloid beta plaques and tau tangles are hallmarks of which brain disease?",
+        "answer": "Alzheimer's",
+        "distractors": ["Parkinson's", "Multiple sclerosis", "Huntington's"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Alzheimer's disease involves amyloid beta plaques that form between neurons.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Alzheimer's disease involves both amyloid plaques and ___ tangles disrupting brain cells.",
+        "answer": "Tau",
+        "distractors": ["Prion", "Lewy", "Dopamine"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Alzheimer%27s_disease",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "Disease affecting elderly; sensitive topic for some users with affected family members",
+    "visualDescription": "A neuron cross-section with dark protein clumps clogging the spaces between cells and tangled fibers inside the neuron, pixel art microscopy style.",
+    "tags": ["alzheimer's", "amyloid", "tau", "dementia", "plaques", "neurology"]
+  },
+  {
+    "id": "health-alzheimers-memory",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "brain_neurology",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "brain_neurology",
+    "categoryL3": "",
+    "statement": "Alzheimer's disease typically first affects the hippocampus, the brain region responsible for forming new memories, which is why short-term memory loss is the earliest symptom.",
+    "quizQuestion": "Which brain region does Alzheimer's disease damage first?",
+    "correctAnswer": "Hippocampus",
+    "distractors": [
+      "Cerebellum",
+      "Frontal lobe",
+      "Brain stem",
+      "Occipital lobe",
+      "Thalamus",
+      "Corpus callosum",
+      "Parietal lobe",
+      "Amygdala"
+    ],
+    "acceptableAnswers": ["Hippocampus", "The hippocampus"],
+    "explanation": "The hippocampus is critical for the formation of new memories (declarative memory). In Alzheimer's disease, neurodegeneration typically begins in the entorhinal cortex and spreads to the hippocampus, which is why short-term memory loss (inability to form new memories) is the classic early symptom. Long-term memories, stored in the neocortex, are preserved longer — patients may remember their childhood clearly but forget what they had for breakfast.",
+    "wowFactor": "In Alzheimer's, you lose the ability to make new memories before you lose old ones. A person may forget breakfast but vividly remember their wedding 50 years ago — the hippocampus writes new memories, but the past is saved elsewhere.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "The hippocampus is critical for forming which type of memory?",
+        "answer": "Short-term memories",
+        "distractors": ["Muscle memory", "Emotional responses", "Long-term memories"]
+      },
+      {
+        "type": "reverse",
+        "question": "Damage to the hippocampus in Alzheimer's causes loss of what ability?",
+        "answer": "Forming new memories",
+        "distractors": ["Movement", "Language", "Vision"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Alzheimer's disease first damages the hippocampus, causing early short-term memory loss.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Alzheimer's disease first attacks the ___, which forms new memories.",
+        "answer": "Hippocampus",
+        "distractors": ["Cerebellum", "Frontal lobe", "Brain stem"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Alzheimer%27s_disease#Signs_and_symptoms",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "Disease affecting elderly; sensitive topic — avoid grim framing",
+    "visualDescription": "A brain diagram with the hippocampus highlighted, areas of neurodegeneration shown as faded grey spots spreading outward, pixel art.",
+    "tags": ["alzheimer's", "hippocampus", "memory loss", "dementia", "neurology", "short-term memory"]
+  },
+  {
+    "id": "health-alzheimers-prevalence",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "brain_neurology",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "brain_neurology",
+    "categoryL3": "",
+    "statement": "Alzheimer's disease is the most common form of dementia, accounting for 60–70% of dementia cases globally and affecting more than 55 million people worldwide.",
+    "quizQuestion": "What percentage of dementia cases does Alzheimer's disease account for?",
+    "correctAnswer": "60 to 70 percent",
+    "distractors": [
+      "10 percent",
+      "90 percent",
+      "30 percent",
+      "50 percent",
+      "20 percent",
+      "80 percent",
+      "5 percent",
+      "40 percent"
+    ],
+    "acceptableAnswers": ["60 to 70 percent", "60–70%", "About 65 percent"],
+    "explanation": "Dementia is an umbrella term for conditions causing cognitive decline severe enough to interfere with daily life. Alzheimer's disease is the leading cause, accounting for 60–70% of cases. Other dementias include vascular dementia, Lewy body dementia, and frontotemporal dementia. As of 2023, over 55 million people worldwide have dementia, with Alzheimer's disproportionately affecting women and adults over 65.",
+    "wowFactor": "Alzheimer's affects over 55 million people globally — more than the populations of most countries. And because populations are aging worldwide, this number is expected to triple by 2050.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many people worldwide are affected by dementia diseases?",
+        "answer": "Over 55 million",
+        "distractors": ["1 million", "5 million", "100 million"]
+      },
+      {
+        "type": "reverse",
+        "question": "Alzheimer's disease accounts for the majority of which condition?",
+        "answer": "Dementia",
+        "distractors": ["Parkinson's", "Epilepsy", "Schizophrenia"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Alzheimer's disease causes 60–70% of all dementia cases worldwide.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Alzheimer's is the most common form of ___, affecting over 55 million people.",
+        "answer": "Dementia",
+        "distractors": ["Epilepsy", "Schizophrenia", "Psychosis"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Alzheimer%27s_disease#Epidemiology",
+    "contentVolatility": "current",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "Dementia statistics — sensitive topic for some; factual framing only",
+    "visualDescription": "A world map with millions of small human icons dotted across it, a highlighted section showing the proportion affected by Alzheimer's, pixel art.",
+    "tags": ["alzheimer's", "dementia", "prevalence", "global health", "aging"]
+  },
+  {
+    "id": "health-nose-olfactory-trillion",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "senses_perception",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "senses_perception",
+    "categoryL3": "",
+    "statement": "Humans can detect approximately 1 trillion different odors, far more than the previously estimated 10,000, as shown in a landmark 2014 Rockefeller University study.",
+    "quizQuestion": "How many different odors can humans detect according to 2014 research?",
+    "correctAnswer": "About 1 trillion",
+    "distractors": [
+      "10,000",
+      "1 million",
+      "100,000",
+      "10 billion",
+      "1 billion",
+      "100 million",
+      "500,000",
+      "50,000"
+    ],
+    "acceptableAnswers": ["About 1 trillion", "1 trillion", "Over 1 trillion", "~1 trillion"],
+    "explanation": "A 2014 study by Bushdid et al. in the journal Science tested humans' ability to distinguish between large numbers of odor mixtures and estimated humans can detect at least 1 trillion distinct odors. This was a dramatic revision of the outdated figure of ~10,000 odors. The human nose contains about 400 types of olfactory receptors, and combinations of these receptors generate an enormous detection space.",
+    "wowFactor": "Scientists thought humans could only smell 10,000 odors. In 2014 they actually tested it and found the answer was 1 trillion. We had been underestimating human smell by a factor of 100 million.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many types of olfactory receptors does the human nose contain?",
+        "answer": "About 400",
+        "distractors": ["About 10", "About 10,000", "About 1 million"]
+      },
+      {
+        "type": "reverse",
+        "question": "The ability to detect 1 trillion odors was demonstrated in a 2014 study from which university?",
+        "answer": "Rockefeller University",
+        "distractors": ["Harvard University", "MIT", "Stanford University"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Humans can detect approximately 1 trillion different odors.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Humans can distinguish about 1 ___ different odors, far more than previously thought.",
+        "answer": "Trillion",
+        "distractors": ["Million", "Billion", "Thousand"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Olfaction#Human_smell_sensitivity",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A nose cross-section with 400 different colored receptor types lighting up as trillions of tiny scent molecule shapes drift through the air, pixel art.",
+    "tags": ["nose", "olfactory", "smell", "trillion odors", "senses", "neuroscience"]
+  },
+  {
+    "id": "health-nose-olfactory-memory",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "senses_perception",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "senses_perception",
+    "categoryL3": "",
+    "statement": "Smell (olfaction) is the only sense with a direct neural pathway to the hippocampus and amygdala, which is why odors can trigger vivid emotional memories more powerfully than sight or sound.",
+    "quizQuestion": "Why do smells trigger stronger emotional memories than other senses?",
+    "correctAnswer": "Direct path to hippocampus",
+    "distractors": [
+      "The nose is closest to the brain",
+      "Smell is processed faster",
+      "Smell uses more neurons",
+      "Odors last longer in air",
+      "The brain stores smells first",
+      "We smell more than we see",
+      "Olfactory cells regenerate",
+      "Smell bypasses sleep"
+    ],
+    "acceptableAnswers": ["Direct path to hippocampus", "Direct neural connection to hippocampus and amygdala", "Bypasses thalamus to reach memory regions"],
+    "explanation": "All other senses (sight, hearing, touch, taste) are first routed through the thalamus — a relay station — before reaching the cortex. But olfactory signals travel directly from the nose to the olfactory bulb and then immediately to the hippocampus (memory) and amygdala (emotion), bypassing the thalamus entirely. This direct pathway is why a single whiff can trigger vivid autobiographical memories — called the Proustian memory effect.",
+    "wowFactor": "Every other sense goes through a relay station first. Smell goes straight to memory and emotion — which is why a single smell can instantly teleport you back to your grandmother's kitchen with full emotional detail.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which brain region does the olfactory system bypass to reach memory centers directly?",
+        "answer": "Thalamus",
+        "distractors": ["Brain stem", "Cerebellum", "Corpus callosum"]
+      },
+      {
+        "type": "reverse",
+        "question": "The ability of smells to trigger vivid memories is called the Proustian effect — after which author?",
+        "answer": "Marcel Proust",
+        "distractors": ["James Joyce", "Virginia Woolf", "Leo Tolstoy"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Olfactory signals travel directly to the hippocampus and amygdala, bypassing the thalamus.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Smells trigger stronger memories because they reach the hippocampus directly, bypassing the ___.",
+        "answer": "Thalamus",
+        "distractors": ["Brain stem", "Cerebellum", "Cortex"]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Olfactory_memory",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A brain diagram with a glowing direct path from the nose to the hippocampus and amygdala, bypassing a grey thalamus relay station, pixel art.",
+    "tags": ["nose", "olfactory", "memory", "hippocampus", "amygdala", "thalamus", "Proust"]
+  },
+  {
+    "id": "health-nose-smell-loss",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "senses_perception",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "senses_perception",
+    "categoryL3": "",
+    "statement": "Anosmia (loss of smell) became a well-known COVID-19 symptom, but olfactory cells are among the few neurons that can regenerate throughout a person's lifetime.",
+    "quizQuestion": "What is the medical term for the complete loss of the sense of smell?",
+    "correctAnswer": "Anosmia",
+    "distractors": [
+      "Ageusia",
+      "Aphasia",
+      "Hyposmia",
+      "Presbyosmia",
+      "Parosmia",
+      "Dysgeusia",
+      "Phantosmia",
+      "Anosia"
+    ],
+    "acceptableAnswers": ["Anosmia", "Anosmia (loss of smell)"],
+    "explanation": "Anosmia is the complete inability to perceive odors. It can be caused by sinus infections, head trauma, neurological diseases, or viral infection — including SARS-CoV-2. Notably, olfactory sensory neurons are among the rare neurons in the human body that can regenerate: new olfactory receptor cells are produced from basal stem cells throughout life, typically renewing every 4–8 weeks. This is why some COVID-19 patients recovered their smell over weeks or months.",
+    "wowFactor": "Your nose replaces its smell-detecting nerve cells every 4–8 weeks — they're some of the only neurons in your body that can fully regenerate. After COVID-19 anosmia, the nose can literally rewire itself.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Olfactory receptor neurons are unusual because they can do what throughout life?",
+        "answer": "Regenerate",
+        "distractors": ["Divide rapidly", "Store memories", "Migrate to the brain"]
+      },
+      {
+        "type": "reverse",
+        "question": "Anosmia is the loss of which human sense?",
+        "answer": "Smell",
+        "distractors": ["Taste", "Sight", "Touch"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Olfactory receptor neurons can regenerate, unlike most other neurons.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Loss of smell is called anosmia; partial smell loss is called ___.",
+        "answer": "Hyposmia",
+        "distractors": ["Ageusia", "Parosmia", "Phantosmia"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Anosmia",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section of the nasal cavity showing old olfactory cells fading grey while new cells grow bright green from the stem cell layer, pixel art.",
+    "tags": ["nose", "anosmia", "olfactory", "regeneration", "neurons", "covid-19"]
+  },
+  {
+    "id": "health-anatomy-body-systems",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "The human body is organized into 11 major organ systems: integumentary, skeletal, muscular, nervous, endocrine, cardiovascular, lymphatic, respiratory, digestive, urinary, and reproductive.",
+    "quizQuestion": "How many major organ systems does the human body have?",
+    "correctAnswer": "Eleven",
+    "distractors": [
+      "Six",
+      "Seven",
+      "Eight",
+      "Ten",
+      "Twelve",
+      "Five",
+      "Nine",
+      "Fifteen"
+    ],
+    "acceptableAnswers": ["Eleven", "11", "Eleven systems"],
+    "explanation": "Human anatomy is organized into 11 major organ systems that all work together. The integumentary system (skin, hair, nails) protects the body; the skeletal (206 bones) provides structure; muscular enables movement; nervous coordinates information; endocrine regulates hormones; cardiovascular circulates blood; lymphatic provides immunity; respiratory exchanges gases; digestive processes food; urinary filters waste; reproductive enables procreation.",
+    "wowFactor": "Your 11 organ systems are so interdependent that removing or failing any single one causes the others to cascade — the body is not a collection of parts but a single machine where every component is running at the same time.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many bones make up the adult human skeletal system?",
+        "answer": "206",
+        "distractors": ["106", "306", "250"]
+      },
+      {
+        "type": "reverse",
+        "question": "The integumentary system is the organ system that includes what body covering?",
+        "answer": "Skin",
+        "distractors": ["Muscles", "Bones", "Blood vessels"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The human body has 11 major organ systems.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ system, including the heart and blood vessels, circulates blood through the body.",
+        "answer": "Cardiovascular",
+        "distractors": ["Lymphatic", "Respiratory", "Digestive"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Organ_system",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A human silhouette with 11 organ systems illustrated as color-coded overlapping diagrams visible through the transparent body, pixel art.",
+    "tags": ["anatomy", "organ systems", "human body", "integumentary", "skeletal", "cardiovascular"]
+  },
+  {
+    "id": "health-anatomy-largest-organ",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "The skin is the largest organ of the human body, covering about 1.5–2 square meters and accounting for roughly 15% of total body weight in adults.",
+    "quizQuestion": "What is the largest organ in the human body?",
+    "correctAnswer": "Skin",
+    "distractors": [
+      "Liver",
+      "Lungs",
+      "Brain",
+      "Heart",
+      "Intestines",
+      "Kidneys",
+      "Stomach",
+      "Muscle"
+    ],
+    "acceptableAnswers": ["Skin", "The skin", "Human skin"],
+    "explanation": "The skin (integumentary system) is the body's largest organ by surface area and weight. It covers 1.5–2 m² and comprises about 15% of body weight. It performs vital functions: regulating temperature (sweating, blood vessel dilation), preventing water loss, detecting touch/pain/temperature, blocking pathogens, and synthesizing vitamin D via UV light. It contains three layers: epidermis, dermis, and hypodermis.",
+    "wowFactor": "Your skin is constantly working — it's making vitamin D from sunlight, regulating your temperature, fighting off microbes, and detecting danger, all while being the first thing anyone sees when they look at you.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Roughly how large is the surface area of human skin?",
+        "answer": "1.5–2 square meters",
+        "distractors": ["0.5 sq meters", "5 sq meters", "10 sq meters"]
+      },
+      {
+        "type": "reverse",
+        "question": "The integumentary system is the organ system containing which largest organ?",
+        "answer": "Skin",
+        "distractors": ["Liver", "Lungs", "Brain"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The skin is the largest organ in the human body.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Human skin synthesizes ___ D when exposed to ultraviolet light from the sun.",
+        "answer": "Vitamin",
+        "distractors": ["Iron", "Calcium", "Protein"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Skin",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section of human skin showing the three layers — epidermis, dermis, hypodermis — with hair follicles, sweat glands, and nerve endings, pixel art.",
+    "tags": ["anatomy", "skin", "largest organ", "integumentary", "vitamin D", "body"]
+  },
+  {
+    "id": "health-anatomy-smallest-bone",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "The smallest bone in the human body is the stapes, one of three ossicles in the middle ear — it measures only about 3 mm and transmits sound vibrations to the inner ear.",
+    "quizQuestion": "What is the smallest bone in the human body?",
+    "correctAnswer": "Stapes",
+    "distractors": [
+      "Malleus",
+      "Incus",
+      "Pisiform",
+      "Sesamoid",
+      "Tympanic",
+      "Hyoid",
+      "Phalanx",
+      "Navicular"
+    ],
+    "acceptableAnswers": ["Stapes", "The stapes", "Stirrup bone"],
+    "explanation": "The stapes (Latin for 'stirrup' due to its shape) is the smallest and lightest bone in the human body, measuring approximately 3 mm. Located in the middle ear, it is one of three ossicles (malleus, incus, stapes) that transmit sound vibrations from the eardrum to the oval window of the inner ear (cochlea). These three bones amplify sound by about 22 decibels and are among the first bones to reach adult size — in the fetus.",
+    "wowFactor": "The three ear bones reach full adult size before you're born — they're complete in the fetus. Your tiniest bones were the first to finish growing, and they've been amplifying sound since before you heard your first breath.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "The stapes is the smallest bone in the body. Where is it located?",
+        "answer": "Middle ear",
+        "distractors": ["Finger", "Toe", "Wrist"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which three bones (ossicles) transmit sound in the middle ear?",
+        "answer": "Malleus, incus, stapes",
+        "distractors": ["Femur, tibia, fibula", "Carpals, tarsals, metacarpals", "Clavicle, scapula, humerus"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The stapes, measuring about 3 mm, is the smallest bone in the human body.",
+        "answer": "True",
+        "distractors": ["False"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The stapes, incus, and malleus are the three ___ in the middle ear.",
+        "answer": "Ossicles",
+        "distractors": ["Tendons", "Cartilage", "Nerves"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Stapes",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A tiny stirrup-shaped bone next to a millimeter ruler, inside a cross-section of the ear showing all three ossicles linked together, pixel art.",
+    "tags": ["anatomy", "stapes", "smallest bone", "ossicles", "middle ear", "hearing"]
+  }
+]

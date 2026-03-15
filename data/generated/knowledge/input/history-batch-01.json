@@ -1,0 +1,220 @@
+{
+  "domain": "history",
+  "batchIndex": 1,
+  "totalBatches": 3,
+  "entities": [
+    {
+      "qid": "Q859",
+      "label": "Plato",
+      "description": "4th-century BCE Greek philosopher",
+      "subcategory": "ancient_classical",
+      "sitelinks": 300,
+      "monthlyPageviews": 150000,
+      "properties": {
+        "genre": "Q3026037",
+        "movement": "Q193589",
+        "birthDate": "-0427-05-07T00:00:00Z",
+        "deathDate": "-0347-00-00T00:00:00Z",
+        "occupation": "Q4964182",
+        "fieldOfWork": "Q5891"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q8663",
+      "label": "Korean War",
+      "description": "war between North and South Korea, 1950–1953",
+      "subcategory": "battles_military",
+      "sitelinks": 140,
+      "monthlyPageviews": 70000,
+      "properties": {
+        "startDate": "+1950-06-25T00:00:00Z",
+        "endDate": "+1953-07-27T00:00:00Z",
+        "country": "Q423"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q517",
+      "label": "Napoleon",
+      "description": "French military leader, French Emperor 1804–1814 and again in 1815 (1769–1821)",
+      "subcategory": "early_modern",
+      "sitelinks": 283,
+      "monthlyPageviews": 141500,
+      "properties": {
+        "birthDate": "+1769-08-15T00:00:00Z",
+        "deathDate": "+1821-05-05T00:00:00Z",
+        "occupation": "Q82955"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q12560",
+      "label": "Ottoman Empire",
+      "description": "multiethnic empire with the monarchs from the Ottoman dynasty (1299–1922)",
+      "subcategory": "medieval",
+      "sitelinks": 207,
+      "monthlyPageviews": 103500,
+      "properties": {
+        "country": "Ottoman Empire",
+        "inception": "+1302-07-27T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q302",
+      "label": "Jesus Christ",
+      "description": "central figure of Christianity (6 or 4 BC – AD 30 or 33)",
+      "subcategory": "modern_contemporary",
+      "sitelinks": 341,
+      "monthlyPageviews": 170500,
+      "properties": {
+        "genre": "Q208555",
+        "movement": "Q618859",
+        "birthDate": "-0007-00-00T00:00:00Z",
+        "deathDate": "+0030-04-07T00:00:00Z",
+        "occupation": "Q432386",
+        "fieldOfWork": "Q203605"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q76",
+      "label": "Barack Obama",
+      "description": "president of the United States from 2009 to 2017 (born 1961)",
+      "subcategory": "people_leaders",
+      "sitelinks": 339,
+      "monthlyPageviews": 169500,
+      "properties": {
+        "birthDate": "+1961-08-04T00:00:00Z",
+        "occupation": "Q82955",
+        "fieldOfWork": "Q25447176"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q8023",
+      "label": "Nelson Mandela",
+      "description": "First President of South Africa and anti-apartheid activist (1918–2013)",
+      "subcategory": "social_cultural",
+      "sitelinks": 292,
+      "monthlyPageviews": 146000,
+      "properties": {
+        "birthDate": "+1918-07-18T00:00:00Z",
+        "deathDate": "+2013-12-05T00:00:00Z",
+        "occupation": "Q82955"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q352",
+      "label": "Adolf Hitler",
+      "description": "dictator of Germany from 1933 to 1945, main instigator of World War II and leader of the Holocaust (1889–1945)",
+      "subcategory": "world_wars",
+      "sitelinks": 321,
+      "monthlyPageviews": 160500,
+      "properties": {
+        "birthDate": "+1889-04-20T00:00:00Z",
+        "deathDate": "+1945-04-30T00:00:00Z",
+        "occupation": "Q4991371",
+        "fieldOfWork": "Q7310"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q1048",
+      "label": "Julius Caesar",
+      "description": "Roman general and dictator",
+      "subcategory": "ancient_classical",
+      "sitelinks": 280,
+      "monthlyPageviews": 140000,
+      "properties": {
+        "birthDate": "-0100-07-12T00:00:00Z",
+        "deathDate": "-0044-03-15T00:00:00Z",
+        "occupation": "Q12859263"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q12551",
+      "label": "Hundred Years' War",
+      "description": "series of conflicts and wars between England and France between 1337 and 1453",
+      "subcategory": "battles_military",
+      "sitelinks": 125,
+      "monthlyPageviews": 62500,
+      "properties": {
+        "startDate": "+1337-05-24T00:00:00Z",
+        "endDate": "+1453-10-09T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q5809",
+      "label": "Che Guevara",
+      "description": "Argentine Marxist revolutionary (1928–1967)",
+      "subcategory": "early_modern",
+      "sitelinks": 225,
+      "monthlyPageviews": 112500,
+      "properties": {
+        "birthDate": "+1928-06-14T00:00:00Z",
+        "deathDate": "+1967-10-09T00:00:00Z",
+        "occupation": "Q82955"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q720",
+      "label": "Genghis Khan",
+      "description": "founder and first khan of the Mongol Empire (1162–1227)",
+      "subcategory": "medieval",
+      "sitelinks": 205,
+      "monthlyPageviews": 102500,
+      "properties": {
+        "birthDate": "+1162-05-31T00:00:00Z",
+        "deathDate": "+1227-08-18T00:00:00Z",
+        "occupation": "Q1402561"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q309",
+      "label": "history",
+      "description": "past events and their tracks or records",
+      "subcategory": "modern_contemporary",
+      "sitelinks": 316,
+      "monthlyPageviews": 158000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q22686",
+      "label": "Donald Trump",
+      "description": "President of the United States (2017–2021; since 2025)",
+      "subcategory": "people_leaders",
+      "sitelinks": 326,
+      "monthlyPageviews": 163000,
+      "properties": {
+        "birthDate": "+1946-06-14T00:00:00Z",
+        "occupation": "Q911554",
+        "fieldOfWork": "Q1885941"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q5816",
+      "label": "Mao Zedong",
+      "description": "1st chairman of the Chinese Communist Party and founder of the People's Republic of China (1893–1976)",
+      "subcategory": "social_cultural",
+      "sitelinks": 227,
+      "monthlyPageviews": 113500,
+      "properties": {
+        "movement": "Q18127879",
+        "birthDate": "+1893-12-26T00:00:00Z",
+        "deathDate": "+1976-09-09T00:00:00Z",
+        "occupation": "Q82955",
+        "fieldOfWork": "Q352842"
+      },
+      "processed": false
+    }
+  ]
+}

@@ -1,110 +1,286 @@
 ---
 name: manual-fact-ingest-dedup
-description: Autonomous end-to-end content factory. Generates knowledge facts from Wikidata raw data and vocabulary from Anki decks, via Sonnet sub-agents for quality work and Haiku for mechanical transforms. Handles normalization, dedup, and DB rebuild.
+description: Autonomous content pipeline for knowledge facts (10 domains via Sonnet sub-agents) and vocabulary (8 languages via programmatic source pipelines). Handles validation, dedup, and DB rebuild. Canonical spec is at docs/RESEARCH/SOURCES/content-pipeline-spec.md.
 ---
 
 # manual-fact-ingest-dedup
 
 ## Mission
-Run the full content pipeline autonomously: raw data → Sonnet-processed facts → universal normalizer → deduplicated DB.
+
+Run the full content pipeline autonomously: raw sources → curated entity lists → Sonnet-generated facts / programmatic vocab facts → universal normalizer → validated, deduplicated DB.
+
+**Canonical spec:** `docs/RESEARCH/SOURCES/content-pipeline-spec.md` — this skill is an operational summary. If anything here conflicts with the spec, the spec wins.
+
+**Active roadmap phase:** AR-34 in `docs/roadmap/PROGRESS.md` → [Phase doc](docs/roadmap/phases/AR-34-CONTENT-PIPELINE-SPEC-ALIGNMENT.md). Entity curation pipeline (Stage 2) must be built before any knowledge fact generation.
+
+**Live progress tracking:** `docs/RESEARCH/SOURCES/content-pipeline-progress.md` (per-domain status: generated, target, lastEntityIndex)
+
+**Work tracking:** All content pipeline work must follow the AR-based work tracking skill (`.claude/skills/work-tracking/SKILL.md`). After context compaction, always re-read the active phase doc and this spec.
+
+---
 
 ## Non-Negotiable Rules
-- **ABSOLUTE: No Anthropic API** — We do NOT have an API key. NEVER write scripts that call `@anthropic-ai/sdk` or any external LLM API. ALL LLM work MUST be done by spawning sub-agents via the Claude Code Agent tool. The `LOCAL_PAID_GENERATION_DISABLED = true` flag in `haiku-client.mjs` must stay true.
-- **Model selection**: Use **Sonnet** (`model: "sonnet"`) for all quality-critical work: fact generation, question writing, distractor generation, category verification, quality assessment. Use **Haiku** (`model: "haiku"`) ONLY for mechanical transforms: format normalization, counting, simple reclassification of clearly-labeled items. Sonnet produces significantly better distractor quality, preserves answer specificity, handles foreign-language diacritics correctly, and generates semantically coherent quiz content.
-- Keep every new fact schema-valid.
-- Every fact MUST have `_haikuProcessed: true` before DB insertion.
-- **`categoryL2` is mandatory for all knowledge facts** (use valid IDs from `src/data/subcategoryTaxonomy.ts` — 74 subcategories across 10 domains). Never use "general", "other", or empty values. After fact generation, run the subcategorization pipeline (see "DB Rebuild" section below).
+
+- **ABSOLUTE: No Anthropic API** — We do NOT have an API key. NEVER write scripts that import `@anthropic-ai/sdk`, call `fetch("https://api.anthropic.com/...")`, or use any external LLM API. ALL LLM work MUST be done by spawning sub-agents via the Claude Code Agent tool. The `LOCAL_PAID_GENERATION_DISABLED = true` flag in `haiku-client.mjs` must stay `true`.
+
+- **Model selection — USER OVERRIDE — MANDATORY:**
+  - **Sonnet (`model: "sonnet"`) is required for ALL quality work touching the database** — fact generation, distractor generation, question writing, explanation writing, semantic bin assignment for vocab, quality assessment, subcategorization, and any other work that determines what enters the DB.
+  - **Haiku is NOT acceptable for any database content.** Past failures: 7,000+ broken facts, 58,359 garbage distractors, 8,987 severe distractor format mismatches, all traced to Haiku quality being insufficient.
+  - **Haiku (`model: "haiku"`) is permitted ONLY for:** automated validation/classification checks, counting, flagging, and format normalization where no creative judgment is involved.
+  - The `_haikuProcessed: true` marker is a legacy field name retained for backward compatibility. Sonnet does the actual work — the field just marks that processing occurred.
+
+- **`categoryL2` is mandatory for all knowledge facts.** Use valid IDs from `src/data/subcategoryTaxonomy.ts` (74 subcategories across 10 domains). Never use "general", "other", or empty values. Subcategorization pipeline runs after fact generation.
+
+- **Every fact must be schema-valid** before DB insertion.
+
+- **Distractor pools from the database are PERMANENTLY BANNED.** See "Distractor Quality Rules" section.
+
+---
 
 ## Current Database State
-- **46,657 facts** in `src/data/seed/facts-generated.json` (46,780 total in DB with seed files)
-- **~10,546 knowledge facts** across 10 domains (all with valid `categoryL2` subcategories)
-- **~36,234 vocabulary facts** across 8 languages
-- **Knowledge domains**: animals_wildlife, general_knowledge, human_body_health, food_cuisine, geography, art_architecture, history, mythology_folklore, natural_sciences, space_astronomy
-- **Languages**: ja (13,125), ko (7,686), es (5,575), de (4,778), it (1,924), fr (1,200), nl (1,131), cs (1,049)
-- **All 6 Anki decks fully exhausted**: Spanish, Korean, German, Dutch, Czech, Japanese (Full-Japanese-Study-Deck + JMdict)
 
-## Mandatory Sonnet Processing (All Facts)
-Every single fact that enters the database MUST be processed by a **Sonnet** agent (`model: "sonnet"`).
+Database is being rebuilt from scratch per `docs/RESEARCH/SOURCES/content-pipeline-spec.md`. Previous data archived to `data/archived/`.
 
-### What Sonnet agents must do for each fact:
-1. **Assess worth** — Is this fact interesting/educational enough for a quiz game? Reject boring/trivial/too-obscure facts.
-2. **Write/rewrite quiz question** — Clear, concise, 10-20 words, ends with ?
-3. **Write correct answer** — Short (1-5 words), definitive
-4. **Generate 8 plausible distractors** — Same type as correct answer, domain-appropriate. BLOCKLIST (auto-stripped at build time): "Alternative option N", "Unknown option N", "Not applicable", "Invalid answer", "Unrelated concept", "Incorrect claim", "False statement", "Similar concept", "Related term", "Alternative word", "Different word", "Misleading choice", "Incorrect term", "Unrelated option", "Alternative theory", "Related concept", "Other meaning", "Alternative sense", "Another option", "Additional meaning", "Related idea", "Unknown", "Other", "None of the above", "All of the above", "N/A", "...", "", single-character answers, or any generic/placeholder text. The build script (`build-facts-db.mjs`) auto-strips these, but Sonnet agents should never generate them.
-5. **Write explanation** — Engaging 1-2 sentences
-6. **Generate 2+ variants** — Different question angles (forward, reverse, fill_blank)
-7. **Mark as processed** — Set `_haikuProcessed: true`, `_haikuProcessedAt: <ISO date>`
+The progress document at `docs/RESEARCH/SOURCES/content-pipeline-progress.md` tracks per-domain status: `{generated: N, target: 2000, lastEntityIndex: M}`. Consult it before starting any batch to know where to resume.
+
+---
+
+## Mandatory Sonnet Processing (All Knowledge Facts)
+
+Every knowledge fact entering the database MUST be processed by a **Sonnet** agent (`model: "sonnet"`). Vocabulary facts are generated programmatically (see below) — Sonnet handles only their semantic bin assignment.
+
+### What Sonnet agents must do for each knowledge fact:
+
+1. **Assess worth** — Is this fact interesting/educational enough for a quiz game? Reject boring, trivial, or too-obscure facts.
+2. **Write quiz question** — Clear, concise, max 15 words, ends with `?`. No self-answering questions.
+3. **Write correct answer** — Short, max 5 words / 30 chars, definitive.
+4. **Generate 8-12 plausible distractors** — Same type as correct answer, similar length, factually WRONG. See Distractor Quality Rules.
+5. **Write explanation** — Engaging 1-3 sentences, adds context. Never circular.
+6. **Write visual description** — 20-40 words, vivid mnemonic scene for pixel art cardback.
+7. **Generate 4+ variants** — Different question angles: `forward`, `reverse`, `negative`, `truefalse`, `context`, `fill_blank`.
+8. **Assign fun score** — Using calibration anchors (see Fun Score section).
+9. **Assign age rating** — `kid`, `teen`, or `adult` per rubric (see Age Rating section).
+10. **Set metadata** — `sourceName` REQUIRED. `sourceUrl` strongly recommended. Set `_haikuProcessed: true`, `_haikuProcessedAt: <ISO date>`.
+
+---
 
 ## Knowledge Fact Generation Workflow
 
 ### Pipeline
+
 ```
-1. Read raw Wikidata entries from data/raw/mixed/<domain>.json (preferred) or data/raw/<domain>.json
-2. Chunk entries into batches of 40-50 per Sonnet agent
-3. Write input chunks to /tmp/<session>/<domain>-input-bNN-M.json
-4. Spawn parallel Sonnet agents (5-7 at a time) via Claude Code Agent tool (`model: "sonnet"`)
-5. Each agent transforms entries into quiz facts, writes output to /tmp/<session>/<domain>-bNN-output-M.json
-6. Collect all output files, run universal normalizer to handle schema variants
-7. Append normalized facts to src/data/seed/facts-generated.json
-8. Rebuild DB: node scripts/build-facts-db.mjs
+1. Read curated entity list from data/curated/{domain}/entities.json
+   (Check progress doc — skip entities marked processed: true)
+2. Chunk unprocessed entities into sub-batches of 20-30 per Sonnet agent
+3. Write input chunks to /tmp/<session>/<domain>-input-bNN.json
+4. Spawn parallel Sonnet agents (5-7 at a time) via Claude Code Agent tool (model: "sonnet")
+   Each agent receives: system prompt (quality rules) + entity batch + target subcategory + full output schema
+5. Parse returned JSON, run 11 validation gates (see Validation Gates section)
+6. On malformed output: retry once with simplified prompt, then flag for review
+7. Collect validated output, run universal normalizer to handle schema variants
+8. Write normalized facts to data/generated/{domain}/batch-NN.json
+9. Mark processed entities in data/curated/{domain}/entities.json (processed: true)
+10. Update progress document (generated count, lastEntityIndex)
+11. Promote to src/data/seed/knowledge-{domain}.json
+12. Rebuild DB: node scripts/build-facts-db.mjs
 ```
 
-### Available Raw Data
-| Directory | Contents |
-|-----------|----------|
-| `data/raw/<domain>.json` | Primary Wikidata exports (10 domain files) |
-| `data/raw/mixed/<domain>.json` | Enriched/merged exports (preferred, larger) |
-| `data/raw/artic-artworks.json` | Art Institute of Chicago API dump |
-| `data/raw/gbif-species.json` | GBIF biodiversity species |
-| `data/raw/nasa-apod.json` | NASA Astronomy Picture of the Day |
-| `data/raw/met-objects.json` | Metropolitan Museum objects |
-| `data/raw/world-bank-countries.json` | World Bank country data |
-| `data/raw/pubchem-compounds.json` | PubChem chemical compounds |
+### Incremental Generation Support
+
+To continue where you left off (e.g., "generate another 1000 per domain"):
+1. Read `docs/RESEARCH/SOURCES/content-pipeline-progress.md` — find `lastEntityIndex` per domain
+2. Read `data/curated/{domain}/entities.json` — skip entities where `processed: true`
+3. Generate next batch of unprocessed entities
+4. Update `processed: true` on completed entities
+5. Update progress document with new counts and `lastEntityIndex`
+
+### Data Sources (Spec Part 2.3)
+
+**Primary sources (use for entity lists and structured data enrichment):**
+- **Wikidata SPARQL** — `https://query.wikidata.org` — filter by `?sitelinks > 20` for notability
+- **Wikipedia Vital Articles L4** — 10,000 articles organized by category, extractable via MediaWiki API
+- **Museum APIs** (Art domain) — Met Museum (CC0), Art Institute of Chicago (CC0), Rijksmuseum (CC0)
+- **NASA APIs** (Space domain) — APOD, NEO, Exoplanets — `https://api.nasa.gov`
+- **Nobel Prize API** (History/General) — `https://www.nobelprize.org/about/developer-zone-2/`
+- **USDA FoodData Central** (Food domain) — `https://fdc.nal.usda.gov`
+
+**Stage 1 raw data storage:** `data/raw/{source}/`
+**Stage 2 curated input:** `data/curated/{domain}/`
+
+### Subcategory Distributions (Mandatory — prevents clustering)
+
+No single subcategory exceeds 18% of its domain's facts. Target distributions per spec section 2.6:
+- **History 2,000:** Ancient 14%, Medieval 10%, Renaissance 10%, Colonial 10%, Industrial 8%, WWI 7%, WWII 10%, Cold War 8%, Social/Cultural 14%, Historical Figures 9%
+- **Animals 2,000:** Mammals 16%, Birds 12%, Marine 14%, Reptiles 10%, Insects 10%, Behaviors 15%, Endangered 10%, Records 13%
+- **Human Body 2,000:** Anatomy 14%, Neuro 14%, Immunity 12%, Cardiovascular 10%, Digestion 12%, Senses 10%, Genetics 12%, Medical Discoveries 8%, Human Records 8%
+- **Natural Sciences 2,000:** Physics 18%, Chemistry 16%, Biology 14%, Geology 12%, Ecology 10%, Materials 10%, Discoveries 10%, Math 10%
+- **General Knowledge 2,000:** Records 15%, Inventions 15%, Language 12%, Firsts 12%, Economics 10%, Symbols 10%, Calendar 8%, Transport 8%, Oddities 10%
+- **Space 2,000:** Planets/Moons 18%, Stars 15%, Missions 15%, Cosmology 12%, Astronauts 12%, Exoplanets 8%, Technology 10%, Records 10%
+- **Mythology 2,000:** Greek/Roman 20%, Norse/Celtic 15%, Eastern 15%, Creatures 15%, Creation 10%, Folk 15%, Gods 10%
+- **Food 2,000:** History 15%, Asian 15%, European 12%, Americas 10%, Ingredients 12%, Science 10%, Fermentation 10%, Baking 8%, Records 8%
+- **Art 2,000:** Painting 18%, Sculpture 12%, Styles 15%, Buildings 15%, Modern 12%, Museums 10%, Movements 10%, Engineering 8%
+
+---
 
 ## Vocabulary Generation Workflow
 
-### Method A: From Anki Decks (preferred for accuracy)
-```
-1. Extract word lists from .apkg files in data/references/
-   - Anki .apkg = ZIP containing SQLite DB (collection.anki2 or collection.anki21)
-   - Fields \x1f-separated; typically: field[0]=foreign word, field[1]=English meaning
-   - Pre-extracted files in data/extracted/anki-*.json
-2. Chunk extracted words into batches of 40-50
-3. Spawn Sonnet agents to transform word+meaning pairs into vocab quiz facts
-4. Normalize and append to facts-generated.json
-5. Rebuild DB
+### Design Principle
+
+Vocabulary facts are generated **programmatically** from open-licensed data sources. Questions are templated by code. Distractors are selected at **runtime** by the game client — NOT pre-generated. The `distractors` field ships as `[]`.
+
+Sonnet is NOT involved in question or distractor generation for vocabulary. Sonnet does ONE pass per language: semantic bin assignment (grouping words into ~50 broad bins for runtime distractor selection).
+
+### Vocabulary Sources
+
+| Language | Primary Source | Level Source | Expected Words |
+|----------|---------------|-------------|----------------|
+| Chinese | `drkameleon/complete-hsk-vocabulary` (MIT) | Built-in HSK levels | 11,092 |
+| Japanese | `scriptin/jmdict-simplified` (CC-BY-SA 4.0) | `jamsinclair/open-anki-jlpt-decks` | ~10,000 |
+| Spanish | Kaikki.org JSONL | CEFRLex ELELex TSV | ~12,000 |
+| French | Kaikki.org JSONL | CEFRLex FLELex TSV | ~10,000 |
+| German | Kaikki.org JSONL | CEFRLex DAFlex TSV | ~10,000 |
+| Dutch | Kaikki.org JSONL | CEFRLex NT2Lex TSV | ~8,000 |
+| Korean | NIKL Dictionary (HuggingFace) | TOPIK PDFs (learning-korean.com) | ~5,500 |
+| Czech | Kaikki.org JSONL | `wordfreq` (frequency-inferred) | ~5,000 |
+
+**Stage 1 raw data:** `data/raw/{source}/`
+**Stage 2 curated vocab:** `data/curated/vocab/{language}/`
+**Stage 3 generated vocab:** `data/generated/vocab/{language}/`
+
+### Runtime Distractor Generation (Game Client)
+
+Vocab facts ship with `distractors: []`. The game client selects distractors at runtime using:
+- **Same POS** — nouns distract with nouns, verbs with verbs
+- **Similar level** — within ±1 JLPT/HSK/CEFR level
+- **Semantic bin proximity** — easy: different bins; medium: same broad bin, different sub-bin; hard: same sub-bin
+
+**Build-time semantic bin assignment** (the ONLY LLM step for vocab): Spawn Sonnet sub-agent workers per language batch — prompt: "Assign each of these words to one of these ~50 semantic categories: [animals, colors, food, body, weather, emotions, ...]". Parse assignments. Store `bin_id` and `sub_bin_id` per word. Target: ~50 broad bins, ~200 sub-bins. Metadata per word is under 300 KB total per language.
+
+### Programmatic Question Types
+
+Generated by code (not LLM):
+
+| Format | Tier | Template | Options |
+|--------|------|----------|---------|
+| L2→L1 meaning | 1 | "What does '{targetWord}' mean?" | 3 |
+| L1→L2 reverse | 2a | "How do you say '{english}' in {language}?" | 4 |
+| Reading (CJK) | 1 | "What is the reading of '{kanji}'?" | 3 |
+| Fill-blank | 2b | "'{___}' means '{english}' in {language}" | 5 |
+
+Tier 1 = 3 options. Tier 2a = 4 options. Tier 2b = 5 options with close sub-bin distractors.
+
+### European 4-Pack (Spanish/French/German/Dutch)
+
+All four use an identical parameterized script (`build-european-vocab.mjs`):
+1. Parse CEFRLex TSV → `Map<lemma+pos, cefrLevel>`
+2. Parse Kaikki.org JSONL → `Array<{word, pos, english, ipa}>`
+3. Join on lemma + POS → `{targetWord, englishTranslation, pos, cefrLevel, ipa, language}`
+4. Write to `data/curated/vocab/{language}/words.json`
+
+**Implementation order:** Chinese (trivial) → European 4-pack (half day, single parameterized script) → Japanese → Korean → Czech.
+
+---
+
+## Output Schema (Knowledge Facts)
+
+Every knowledge fact MUST include all of these fields:
+
+```json
+{
+  "id": "domain-prefix-unique-slug",
+  "type": "knowledge",
+  "domain": "Animals & Wildlife",
+  "subdomain": "marine_life",
+  "categoryL1": "Animals & Wildlife",
+  "categoryL2": "marine_life",
+  "categoryL3": "",
+  "statement": "The pistol shrimp snaps its claw so fast it creates a cavitation bubble reaching nearly 4,700°C.",
+  "quizQuestion": "What extreme phenomenon does a pistol shrimp's claw snap produce?",
+  "correctAnswer": "A cavitation bubble",
+  "distractors": ["A sonic boom", "An electric discharge", "A bioluminescent flash", "A pressure wave", "A magnetic pulse", "An ink cloud", "A thermal vent", "A chemical spray"],
+  "acceptableAnswers": ["cavitation bubble"],
+  "explanation": "Pistol shrimp snap their oversized claw so fast it creates a cavitation bubble that briefly reaches temperatures comparable to the sun's surface.",
+  "wowFactor": "This tiny shrimp briefly creates temperatures hotter than the surface of the sun — with a claw snap!",
+  "variants": [
+    {"type": "forward", "question": "What does a pistol shrimp's claw snap produce?", "answer": "A cavitation bubble", "distractors": ["A sonic boom", "An electric discharge", "A bioluminescent flash"]},
+    {"type": "reverse", "question": "Which marine creature produces cavitation bubbles reaching 4,700°C?", "answer": "Pistol shrimp", "distractors": ["Mantis shrimp", "Electric eel", "Box jellyfish"]},
+    {"type": "negative", "question": "Which is NOT a result of a pistol shrimp's claw snap?", "answer": "Bioluminescent flash", "distractors": ["Cavitation bubble", "Extreme heat", "Shockwave"]},
+    {"type": "truefalse", "question": "A pistol shrimp's claw snap can produce temperatures reaching nearly 4,700°C.", "answer": "True", "distractors": ["False"]},
+    {"type": "context", "question": "A biologist observes a small crustacean stun prey with a snap producing extreme heat. What creature?", "answer": "Pistol shrimp", "distractors": ["Mantis shrimp", "Coconut crab", "Horseshoe crab"]}
+  ],
+  "difficulty": 3,
+  "funScore": 9,
+  "noveltyScore": 9,
+  "ageRating": "kid",
+  "rarity": "rare",
+  "sourceName": "Wikipedia",
+  "sourceUrl": "https://en.wikipedia.org/wiki/Alpheidae",
+  "contentVolatility": "timeless",
+  "sensitivityLevel": 0,
+  "sensitivityNote": null,
+  "visualDescription": "A tiny iridescent shrimp in dark ocean depths, its oversized claw glowing white-hot as a plasma bubble erupts from the snap, illuminating surrounding coral in brilliant orange light",
+  "tags": ["marine", "extreme_animals", "physics_in_nature"],
+  "_haikuProcessed": true,
+  "_haikuProcessedAt": "2026-03-14T00:00:00.000Z"
+}
 ```
 
-**Available Anki Decks**
-| File | Language | Entries |
-|------|----------|---------|
-| `data/references/SPANISH.apkg` | es | 5,000 |
-| `data/references/KOREAN.apkg` | ko | 7,627 |
-| `data/references/GERMAN.apkg` | de | 4,207 |
-| `data/references/DUTCH.apkg` | nl | 1,081 |
-| `data/references/CZECH.apkg` | cs | 1,006 |
-| `data/references/countries_cities_flags.apkg` | geo | 319 |
+### Fun Score Calibration (must be in Sonnet worker system prompt)
 
-**Pre-extracted JSON (ready to use)**
-| File | Entries |
-|------|---------|
-| `data/extracted/anki-spanish.json` | 5,000 |
-| `data/extracted/anki-korean-full.json` | 7,627 |
-| `data/extracted/anki-german.json` | 4,207 |
-| `data/extracted/anki-dutch.json` | 1,081 |
-| `data/extracted/anki-czech.json` | 1,006 |
-| `data/extracted/anki-geography.json` | 319 |
+`funScore = round((surprise × 0.4) + (relatability × 0.35) + (narrative × 0.25))`
 
-### Method B: From Training Knowledge (for languages without Anki decks)
-```
-1. Spawn Sonnet agents with prompt: "Generate 50 [Language] vocabulary quiz facts"
-2. Agent generates word+meaning pairs from training knowledge
-3. Used for: French (fr), Italian (it), and any future language without Anki source
-4. Same normalization and append process
-```
+Anchor examples:
+- **1-2:** "Water boils at 100°C", "The atomic number of hydrogen is 1"
+- **3-4:** "Tokyo is Japan's capital", "Gold is element 79"
+- **5-6:** "The Great Wall is visible from low orbit", "Octopuses have three hearts"
+- **7-8:** "Honey never spoils — 3,000-year-old Egyptian honey was still edible", "Wombat poop is cube-shaped"
+- **9-10:** "Cleopatra lived closer to the Moon landing than to the Great Pyramid's construction"
+
+Post-hoc check: reject batches where fun score std_dev < 1.5 or >30% cluster on a single integer.
+
+### Age Rating Rubric
+
+| Rating | Label | Criteria |
+|--------|-------|----------|
+| `kid` | Ages 8+ | No violence, death counts, substances, mature themes. Understandable by a 10-year-old. |
+| `teen` | Ages 13+ | Historical violence OK, mild medical content, basic chemistry. No graphic detail. |
+| `adult` | Ages 18+ | Detailed medical/pharmacological content, graphic historical events, controversial topics. |
+
+---
+
+## Validation Gates (11 Automated Checks)
+
+| # | Gate | Rule | Action |
+|---|------|------|--------|
+| 1 | Answer length | `len(answer) ≤ 30 chars` | Hard reject |
+| 2 | Schema validation | JSON validates against full schema | Hard reject |
+| 3 | Source attribution | `sourceName` is not null/empty | Hard reject |
+| 4 | Variant count | `variants.length ≥ 4` | Hard reject, regenerate |
+| 5 | Circular detection | Jaccard(question, answer) > 0.5 | Reject |
+| 6 | Duplicate detection | Embedding cosine sim > 0.92 vs existing facts | Reject |
+| 7 | Classification filter | Regex: `"What (type\|kind\|category) of.*is"` | Reject |
+| 8 | Entity validation | Entity name vs Wikidata label fuzzy match ≥ 0.85 | Reject |
+| 9 | Distractor quality | All distractors ≠ answer, same entity type, similar length | Reject variant |
+| 10 | Fun score distribution | Per-batch std_dev < 1.5 OR >30% in single bucket | Flag batch |
+| 11 | Age rating consistency | Content keyword scan matches declared rating | Flag for review |
+
+### Previous Failures Prevented by These Gates
+
+| Previous Failure | Root Cause | Gate |
+|------------------|-----------|------|
+| "What type of animal is X?" → "bird" | Unconstrained prompt | #7 regex |
+| 81% missing source attribution | Optional field | #3 hard reject |
+| 76% fun scores at 5-6 | Uncalibrated scoring | Anchor examples + #10 |
+| 61% of History was battles | No subcategory quotas | Pre-allocated quotas |
+| "X is X" circular explanations | No detection | #5 Jaccard + embedding |
+| 0.3% variant coverage | Variants optional | #4 minimum 4 required |
+| 3,199 answers > 30 chars | No enforcement | #1 hard reject |
+
+---
 
 ## Universal Output Normalizer
-Sub-agents independently choose different output schemas. MUST normalize before merging. Known schema variants:
+
+Sub-agents independently choose different output schemas. Normalize before merging. Known variants:
 
 | Variant | correctAnswer field | Distractors field |
 |---------|-------------------|-------------------|
@@ -115,28 +291,30 @@ Sub-agents independently choose different output schemas. MUST normalize before 
 | MCQ options | `mcqOptions: [{text, isCorrect: true/false}]` | derived from mcqOptions |
 | Answers array | `answers: [{text, correct: true/false}]` | derived from answers |
 
-**Standard Output Schema**
+**Standard output (always normalize to this):**
 ```json
 {
   "correctAnswer": "plain string",
-  "distractors": ["plain string", "plain string", ...]
+  "distractors": ["plain string", "plain string"]
 }
 ```
 
 Always ensure:
 - `correctAnswer` is a plain string (not an object)
 - `distractors` are plain strings (not objects with `.text`)
-- At least 8 distractors (if any facts have <8, spawn Sonnet agents to generate domain-appropriate replacements — see "Distractor Quality Rules")
+- At least 8 distractors for knowledge facts (if <8 after normalization, spawn Sonnet to generate replacements)
 - `difficulty` is integer 1-5
 - `funScore` is integer 1-10
 - `category` is an array
 - `_haikuProcessed: true` and `_haikuProcessedAt` are set
 
+---
+
 ## DB Rebuild
 
 ### Full Pipeline After Fact Generation
 
-After appending new knowledge facts to `src/data/seed/facts-generated.json`:
+After generating a domain batch and appending to `src/data/seed/knowledge-{domain}.json`:
 
 1. **Backfill subcategories** (keyword-based classification):
    ```bash
@@ -160,14 +338,12 @@ After appending new knowledge facts to `src/data/seed/facts-generated.json`:
    node scripts/build-facts-db.mjs
    ```
 
-6. **Strip placeholder distractors** (safety net — should be no-ops if Sonnet agents are well-behaved):
+6. **Strip placeholder distractors** (safety net):
    ```bash
    node scripts/content-pipeline/strip-placeholder-distractors.mjs
    ```
 
-7. **Generate missing distractors via Sonnet agents** (NEVER use mine-distractors.mjs — it produces cross-subcategory garbage):
-   - If any facts have <8 distractors after step 1, spawn Sonnet agents to generate domain-appropriate distractors
-   - See "Distractor Quality Rules — MANDATORY" section below for requirements
+7. **Generate missing distractors via Sonnet agents** if any facts have <8 distractors. See Distractor Quality Rules. NEVER use `mine-distractors.mjs`.
 
 8. **Rebuild the SQLite database** (again, to include regenerated distractors):
    ```bash
@@ -178,132 +354,93 @@ After appending new knowledge facts to `src/data/seed/facts-generated.json`:
    ```bash
    node scripts/content-pipeline/count-invalid-l2.mjs
    ```
-   Should return **0 invalid facts**. If any remain, re-run the subcategorization pipeline.
+   Must return **0 invalid facts**. If any remain, re-run subcategorization.
 
 ### Database Rebuild Details
+
 - `build-facts-db.mjs` reads all `src/data/seed/*.json` files
 - Inserts into SQLite via sql.js
 - Output: `public/facts.db` + `public/seed-pack.json`
 - `normalizeFactShape()` auto-derives missing fields (type, explanation, rarity)
 
-## Fact Schema (DB NOT NULL columns)
-Required fields (or auto-derived):
-- `id` string (unique)
-- `type` string — `"fact"` or `"vocabulary"` (auto-derived from `contentType`)
-- `statement` string
-- `explanation` string (auto-derived from `wowFactor` or `statement`)
-- `quizQuestion` string
-- `correctAnswer` string
-- `distractors` array (>= 8 recommended, minimum 3; serialized as JSON text in DB)
-- `category` string or array (auto-wrapped in array)
-- `rarity` string — `"common"|"uncommon"|"rare"|"epic"` (auto-derived from `difficulty`)
-- `difficulty` integer 1-5
-- `funScore` integer 1-10
-- `ageRating` string — `"kid"|"teen"|"adult"`
-
-Recommended:
-- `variants` array (>= 2)
-- `sourceUrl`, `sourceName` when available
-- `tags` array
-- `_haikuProcessed: true`, `_haikuProcessedAt: <ISO date>`
-
-## Variant & Answer Quality Rules
-1. **Variant coherence** — `correctAnswer` must directly answer the variant's `question`.
-2. **No self-answering** — No significant word (5+ chars) from `correctAnswer` may appear in the question.
-3. **Distractor format match** — Distractors must be the same type as the answer (numbers with numbers, proper nouns with proper nouns).
-4. **Variant structure** — `{ question, type, correctAnswer, distractors }` (NEVER a plain string). Types: `forward`, `reverse`, `context`, `fill_blank`, `negative`.
-5. **No parenthetical reveals** — Answers must be concise. Explanations go in the `explanation` field.
-6. **Variant-specific distractors** — Each variant SHOULD have its own tailored `distractors` array (3 minimum).
+---
 
 ## Distractor Quality Rules — MANDATORY
 
-**CRITICAL: NEVER generate distractors from database pools**
+**CRITICAL: NEVER generate distractors from database pools.**
 
-Distractors (wrong answers for quiz questions) must NEVER be pulled from `correct_answer` values of other facts in the same domain/subcategory. This approach produces semantically nonsensical garbage — a bird species name as a distractor for a bird behavior question, a random capital for a flag question, etc. On March 12, 2026 we had to strip 58,359 garbage distractors produced this way.
+Distractors must NEVER be pulled from `correct_answer` values of other facts in the same domain/subcategory. On March 12, 2026, 58,359 garbage distractors produced this way were stripped from the database.
 
-**MANDATORY:** ALL distractors MUST be generated by an LLM (Sonnet agent) that reads the specific question, understands what's being asked, and produces plausible wrong answers that:
+**ALL knowledge fact distractors MUST be generated by Sonnet** reading the specific question, understanding what is being asked, and producing plausible wrong answers that:
 - Are semantically coherent with what the question asks
 - Match the format and length of the correct answer
 - Are factually WRONG but plausible to a student
 - Come from the LLM's world knowledge, NOT from database queries
 
-The ONLY permitted use of DB queries for distractors is POST-GENERATION VALIDATION — checking that a generated distractor doesn't accidentally match another fact's correct answer.
+The ONLY permitted DB usage for distractors is POST-GENERATION VALIDATION — checking that a generated distractor doesn't accidentally match another fact's correct answer.
 
-Scripts like `mine-distractors.mjs` or any `SELECT correct_answer FROM facts WHERE category = ...` approach for distractor generation are PERMANENTLY BANNED.
+Scripts like `mine-distractors.mjs` or any `SELECT correct_answer FROM facts WHERE category = ...` approach are PERMANENTLY BANNED.
+
+### Auto-Stripped Distractor Blocklist
+
+`build-facts-db.mjs` auto-strips these via `isPlaceholderDistractor()` in `scripts/content-pipeline/qa/shared.mjs`. Sonnet agents must NEVER generate them:
+"Alternative option N", "Unknown option N", "Not applicable", "Invalid answer", "Unrelated concept", "Incorrect claim", "False statement", "Similar concept", "Related term", "Alternative word", "Different word", "Misleading choice", "Incorrect term", "Unrelated option", "Alternative theory", "Related concept", "Other meaning", "Alternative sense", "Another option", "Additional meaning", "Related idea", "Unknown", "Other", "None of the above", "All of the above", "N/A", "...", single-character answers, empty strings.
+
+### What Makes a Good Distractor
+
+- **Domain-appropriate:** For "What is the capital of France?", distractors should be OTHER capitals (Berlin, Madrid, Rome) — NOT generic words.
+- **Same entity type:** If the answer is a noun, distractors must be nouns. If a number, other numbers. If a name, other names.
+- **Plausible but wrong:** A player who doesn't know the answer should find all options equally plausible.
+- **Unique per fact:** NEVER reuse the same distractor set across multiple facts.
+
+### BANNED Distractor Patterns (Critical Failure if Generated)
+
+1. **Generic concept words:** "concept", "method", "process", "approach", "practice", "system", "theory", "technique", "aspect", "element", "idea", "item", "action", "condition", "feeling", "object", "quality"
+2. **Generic verb fillers:** "to change", "to find", "to know", "to make", "to move", "to be", "to do", "to give", "to go", "to have"
+3. **Random English nouns:** "book", "chair", "door", "flower", "house", "tree", "table"
+4. **Template German words:** "beispiel", "grund", "kraft", "muster", "raum"
+5. **Meta-category phrases:** "a quality or characteristic", "a state or condition", "a type of object or tool", "a concept or idea", "a feeling or emotion", "a location or place"
+6. **Template history phrases:** "A military campaign against the Roman Empire", "A religious movement that spread across Asia"
+7. **Category labels as distractors:** "vitamin", "hormone", "enzyme", "antibody" (unless the question IS about biochemistry)
+8. **Numbered placeholders:** "alternate meaning 8" or any numbered placeholder
+
+### Rules for Knowledge Facts
+
+- Distractors MUST be from the same domain/subcategory as the correct answer
+- For animal questions: other animal names. For country questions: other countries. For year questions: other years.
+- NEVER reuse the same 5 distractors across an entire batch — craft individual distractors for each fact.
+- Check: would a smart player eliminate ALL distractors by noticing they're the wrong category? If yes, they're garbage.
 
 ---
 
-These rules exist because past Haiku workers generated thousands of garbage distractors that made the game trivially easy. Over 7,000 facts had to be fixed. Do NOT repeat these mistakes.
+## Variant & Answer Quality Rules
 
-### What Makes a Good Distractor
-- **Domain-appropriate**: For "What is the capital of France?", distractors should be OTHER capitals (Berlin, Madrid, Rome) — NOT generic words like "concept" or "method"
-- **Same type as the answer**: If the answer is a noun, distractors must be nouns. If a number, other numbers. If a person's name, other people's names.
-- **Plausible but wrong**: A player who doesn't know the answer should find all options equally plausible
-- **Unique per fact**: NEVER reuse the same distractor set across multiple facts. Each fact must have individually crafted distractors.
-
-### BANNED Distractor Patterns (auto-stripped + flagged)
-These patterns were found in 7,000+ broken facts. Generating ANY of these is a critical failure:
-
-1. **Generic concept words**: "concept", "method", "process", "approach", "practice", "system", "theory", "technique", "aspect", "element", "idea", "item", "action", "condition", "feeling", "object", "quality"
-2. **Generic verb fillers**: "to change", "to find", "to know", "to make", "to move", "to be", "to do", "to give", "to go", "to have"
-3. **Random English nouns**: "book", "chair", "door", "flower", "house", "tree", "table"
-4. **Template German words**: "beispiel", "grund", "kraft", "muster", "raum"
-5. **Meta-category phrases**: "a quality or characteristic", "a state or condition", "a type of object or tool", "a concept or idea", "a feeling or emotion", "a location or place"
-6. **Template history phrases**: "A military campaign against the Roman Empire", "A religious movement that spread across Asia", etc.
-7. **Category labels as distractors**: "vitamin", "hormone", "enzyme", "antibody" (unless the question IS about biochemistry)
-8. **The word "alternate meaning 8"** or any numbered placeholder
-
-### Rules for Vocabulary Facts
-- Distractors MUST be other real translations from the SAME language
-- For "What does [German word] mean?": distractors should be other English meanings of DIFFERENT German words
-- NEVER use generic English words ("book", "chair") — use actual translations from the vocabulary pool
-- Each vocab fact must have 8 UNIQUE distractors from the same language domain
-
-### Vocabulary Distractor Format Matching — MANDATORY
-**CRITICAL anti-pattern-matching rule.** On March 12, 2026 we found 12,527 vocab facts (34.5% of all vocab) where distractors had exploitable format mismatches — players could learn to "always pick the longest option" or "always pick the multi-word phrase."
-
-**The Rule:** Every distractor MUST match the correct answer's format:
-1. **Word count match**: If the answer is 3 words, each distractor must be 2-4 words (±1 tolerance). A single-word distractor for a multi-word answer is ALWAYS wrong.
-2. **Length match**: Each distractor's character length must be within 50% of the answer's length. "sour" (4 chars) vs "as a matter of course" (21 chars) is ALWAYS wrong.
-3. **Style match**: If the answer contains commas/slashes (e.g., "fall, drop, plunge"), distractors must also be comma/slash-separated lists of similar length. If the answer is a single clean word, distractors must be single clean words.
-4. **Semantic relatedness**: Distractors must be plausible wrong translations — words from the same semantic field, part of speech, and register. "library" → "judge | receive | establish | gather" is GARBAGE. "library" → "museum | theater | bookstore | archive" is GOOD.
-5. **No nonsense templates**: NEVER generate "Xing process", "Act of X", "To X", "X action" style distractors. These are instantly recognizable as machine-generated garbage.
-
-**Examples of BAD vs GOOD:**
-| Answer | BAD Distractors | GOOD Distractors |
-|--------|----------------|-----------------|
-| "as a matter of course" (5 words) | "surprisingly \| regrettably \| accidentally" (1 word each) | "without a doubt \| in any event \| as a general rule" (4-5 words each) |
-| "simple and honest" (3 words) | "elaborate \| deceptive \| complex" (1 word each) | "proud and stubborn \| quick and clever \| calm and patient" (3 words each) |
-| "sour" (1 word) | "cause \| bad \| weak \| truth" (random words) | "bitter \| sweet \| spicy \| bland" (taste words) |
-| "library" (1 word) | "To library \| library action \| Act of library" (nonsense) | "museum \| hospital \| university \| station" (places) |
-| "get cold" (2 words) | "knowledge \| hospital room \| small scale" (random) | "get warm \| get lost \| get sick" (same "get X" pattern) |
-
-**Verification after generation:** For every batch of vocab distractors, compute:
-- `answerWordCount` = number of words in correctAnswer
-- `distWordCount` = number of words in each distractor
-- REJECT if any `|distWordCount - answerWordCount| > 1`
-- REJECT if any distractor length ratio > 2.0x or < 0.5x vs answer length
-
-### Rules for Knowledge Facts
-- Distractors MUST be from the same domain/subcategory as the correct answer
-- For animal questions: other animal names. For country questions: other countries. For year questions: other years.
-- NEVER reuse the same 5 distractors across an entire batch — craft individual distractors for each fact
-- Check: would a smart player be able to eliminate ALL distractors by noticing they're from the wrong category? If yes, they're garbage.
+1. **Variant coherence** — `correctAnswer` must directly answer the variant's `question`.
+2. **No self-answering** — No significant word (5+ chars) from `correctAnswer` may appear verbatim in the question.
+3. **Distractor format match** — Distractors must be the same type as the answer (numbers with numbers, proper nouns with proper nouns, same approximate length).
+4. **Variant structure** — `{ question, type, answer, distractors }` (NEVER a plain string). Types: `forward`, `reverse`, `context`, `fill_blank`, `negative`, `truefalse`.
+5. **No parenthetical reveals** — Concise answers only. Explanations go in `explanation`.
+6. **Variant-specific distractors** — Each variant SHOULD have its own tailored `distractors` array (3 minimum).
 
 ### Answer-in-Question Prevention
-- NEVER write a question where the correct answer appears verbatim in the question text
-- BAD: "What is Pasta gratin?" → "Pasta gratin" (circular — player just reads the answer from the question)
-- BAD: "What was the Fifth Xhosa War?" → "Fifth Xhosa War" (echo question)
+
+- NEVER write a question where the correct answer appears verbatim in the question text.
+- BAD: "What is Pasta gratin?" → "Pasta gratin"
+- BAD: "What was the Fifth Xhosa War?" → "Fifth Xhosa War"
 - GOOD: "What Italian dish features pasta baked with a crispy cheese topping?" → "Pasta gratin"
 - GOOD: "Which 1818–1819 conflict involved Xhosa resistance against colonial expansion?" → "Fifth Xhosa War"
-- Exception: Geography capitals where country name ≠ city name are acceptable ("What is the capital of France?" → "Paris")
+- Exception: Geography capitals where country name ≠ city name ("What is the capital of France?" → "Paris" is fine)
 
 ### Distractor = Answer Prevention
-- NEVER include the correct answer as one of the distractors
-- After generating distractors, CHECK that none of them match the correct answer (case-insensitive)
-- This was found in 583 facts and is a game-breaking bug
 
-### Quality Verification
+- NEVER include the correct answer as one of the distractors.
+- After generating distractors, CHECK that none match the correct answer (case-insensitive).
+- This was found in 583 facts and is a game-breaking bug.
+
+---
+
+## Quality Verification
+
 After generating facts, the build pipeline runs these checks automatically:
 - `isPlaceholderDistractor()` — catches template phrases
 - `isGarbageDistractor()` — catches reused generic words
@@ -313,22 +450,35 @@ After generating facts, the build pipeline runs these checks automatically:
 
 Run `node scripts/content-pipeline/fix-fact-quality.mjs --dry-run` to preview issues before committing.
 
+---
+
 ## Known Issues & Fixes
 
-### normalizeFactShape() auto-derivation
+### normalizeFactShape() Auto-Derivation
+
 Generated facts often lack fields the DB expects. These are auto-derived during promotion:
 - **`type`** — defaults to `"fact"`, or `"vocabulary"` if `contentType === 'vocabulary'`
 - **`explanation`** — falls back to `wowFactor`, then `statement`
 - **`rarity`** — derived from `difficulty`: 1-2 = common, 3 = uncommon, 4 = rare, 5 = epic
 
-### Distractor blocklist enforcement
-Invalid distractors are auto-stripped by `build-facts-db.mjs` using the `isPlaceholderDistractor()` regex from `scripts/content-pipeline/qa/shared.mjs`. This catches all placeholder patterns (see full list in shared.mjs). After build, spawn Sonnet agents to generate domain-appropriate replacements for any facts left with <8 distractors.
+### Distractor Blocklist Enforcement
 
-### Quality gate enforcement
-Every fact must have `_haikuProcessed: true` to pass promotion. QA validates:
-- Schema validity
-- Distractor blocklist
-- Dedup check for duplicate `id` and similar `quizQuestion` text
+Invalid distractors are auto-stripped by `build-facts-db.mjs` using `isPlaceholderDistractor()` from `scripts/content-pipeline/qa/shared.mjs`. After build, spawn Sonnet agents to generate domain-appropriate replacements for any facts left with <8 distractors.
+
+### Quality Gate Enforcement
+
+Every fact must have `_haikuProcessed: true` to pass promotion. QA validates schema, distractor blocklist, and dedup check for duplicate `id` and similar `quizQuestion` text.
+
+### Known Ingestion Issues to Avoid
+
+These were found in the March 2026 quality audit:
+- **Templated vocab prompts** (7,083 found): "What is the X word for Y?" — write natural questions instead
+- **Severe distractor length spread** (8,987 found): distractors must match answer format/length
+- **Low-context vocab prompts**: "What does X mean?" needs usage context, POS, or example
+- **Vague questions**: never generate "What does this mean?" without the foreign word in the question
+- **Miscategorized facts**: verify `category_l1` and `category_l2` against `subcategory-taxonomy.mjs`
+
+---
 
 ## Post-Ingestion Quality Sweep
 
@@ -348,34 +498,62 @@ node scripts/content-pipeline/qa/quality-sweep-db.mjs apply --db public/facts.db
 node scripts/content-pipeline/qa/quality-sweep-db.mjs verify --db public/facts.db
 ```
 
-### Known Issue Types to Avoid During Ingestion
-These issues were discovered in the March 2026 quality audit of 46,780 facts:
-- **Templated vocab prompts** (7,083 found): "What is the X word for Y?" — write natural questions instead
-- **Severe distractor length spread** (8,987 found): distractors must match answer format/length
-- **Low-context vocab prompts**: "What does X mean?" needs usage context, part of speech, or example
-- **Vague questions**: never generate "What does this mean?" without the foreign word in the question
-- **Miscategorized facts**: verify category_l1 and category_l2 against `subcategory-taxonomy.mjs`
+---
+
+## Directory Structure (Six-Stage Pipeline)
+
+```
+STAGE 1 — RAW DATA
+  data/raw/{source}/              — Wikidata dumps, dictionary files, museum APIs, CEFRLex TSVs, Kaikki.org JSONLs, HSK JSONs
+
+STAGE 2 — CURATED INPUT
+  data/curated/{domain}/          — Curated entity lists (entities.json with processed: true/false per entity)
+  data/curated/vocab/{language}/  — Parsed + joined vocab (words.json per language)
+
+STAGE 3 — GENERATED FACTS
+  data/generated/{domain}/        — Sonnet-generated knowledge facts (batch-NN.json)
+  data/generated/vocab/{language}/— Programmatically generated vocab facts
+  data/generated/qa-reports/      — Validation gate logs
+
+STAGE 4 — VALIDATION
+  (automated — 11 gates)
+
+STAGE 5 — QA REVIEW
+  (human review of 5-10% of generated facts)
+
+STAGE 6 — PRODUCTION
+  src/data/seed/knowledge-{domain}.json   — Per-domain seed files
+  src/data/seed/vocab-{language}.json     — Per-language vocab seed files
+  public/facts.db                          — Runtime SQLite database
+  public/seed-pack.json                    — Exported seed pack
+```
+
+---
 
 ## Key Files
+
 | File | Role |
 |------|------|
-| `src/data/seed/facts-generated.json` | Main generated facts file (46,657 facts) |
-| `src/data/seed/facts-general-a.json` | Seed facts subset A |
-| `src/data/seed/facts-general-b.json` | Seed facts subset B |
-| `src/data/seed/facts-general-c.json` | Seed facts subset C |
+| `docs/RESEARCH/SOURCES/content-pipeline-spec.md` | Canonical spec — authority over this skill |
+| `docs/RESEARCH/SOURCES/content-pipeline-progress.md` | Live per-domain progress tracking |
+| `src/data/seed/knowledge-{domain}.json` | Per-domain generated knowledge facts |
+| `src/data/seed/vocab-{language}.json` | Per-language vocabulary facts |
 | `src/data/seed/facts.json` | Hand-curated seed facts |
-| `scripts/build-facts-db.mjs` | Builds SQLite DB from seed files |
+| `src/data/subcategoryTaxonomy.ts` | Domain/subcategory taxonomy IDs (74 subcategories) |
+| `scripts/build-facts-db.mjs` | Builds SQLite DB from all seed files |
 | `scripts/content-pipeline/backfill-subcategories.mjs` | Keyword-based L2 classification |
 | `scripts/content-pipeline/extract-unclassified.mjs` | Extracts unclassified facts for LLM processing |
 | `scripts/content-pipeline/apply-llm-classifications.mjs` | Applies LLM classifications back to seed files |
 | `scripts/content-pipeline/count-invalid-l2.mjs` | Verifies 0 invalid subcategories |
+| `scripts/content-pipeline/strip-placeholder-distractors.mjs` | Strips placeholder/garbage distractors |
+| `scripts/content-pipeline/_DEPRECATED_mine-distractors.mjs` | DEPRECATED — BANNED — never use |
+| `scripts/content-pipeline/qa/shared.mjs` | Shared utilities including `isPlaceholderDistractor()` |
+| `scripts/content-pipeline/fix-fact-quality.mjs` | Preview quality issues before committing |
 | `public/facts.db` | Runtime SQLite database |
 | `public/seed-pack.json` | Exported seed pack for distribution |
-| `data/raw/<domain>.json` | Wikidata raw exports (10 domains) |
-| `data/raw/mixed/<domain>.json` | Enriched Wikidata exports (preferred) |
-| `data/extracted/anki-*.json` | Pre-extracted Anki word lists |
-| `data/references/*.apkg` | Source Anki deck files |
-| `src/data/subcategoryTaxonomy.ts` | Domain/subcategory taxonomy IDs (74 subcategories) |
-| `scripts/content-pipeline/strip-placeholder-distractors.mjs` | Strips placeholder/garbage distractors from seed file |
-| `scripts/content-pipeline/_DEPRECATED_mine-distractors.mjs` | DEPRECATED — use Sonnet agents instead to generate domain-appropriate distractors |
-| `scripts/content-pipeline/qa/shared.mjs` | Shared utilities including `isPlaceholderDistractor()` regex |
+| `data/raw/{source}/` | Stage 1: raw data downloads |
+| `data/curated/{domain}/` | Stage 2: curated entity lists |
+| `data/curated/vocab/{language}/` | Stage 2: parsed vocab per language |
+| `data/generated/{domain}/` | Stage 3: Sonnet-generated fact batches |
+| `data/generated/vocab/{language}/` | Stage 3: programmatic vocab batches |
+| `data/archived/` | Previous database content (archived) |

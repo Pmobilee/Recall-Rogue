@@ -1,0 +1,2011 @@
+[
+  {
+    "id": "general-tesla-ac-electricity",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "science_technology",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "science_technology",
+    "categoryL3": "electricity",
+    "statement": "Nikola Tesla pioneered alternating current (AC) electricity, which became the global standard for power transmission.",
+    "quizQuestion": "What type of electricity did Nikola Tesla pioneer?",
+    "correctAnswer": "Alternating current (AC)",
+    "distractors": [
+      "Direct current (DC)",
+      "Solar current",
+      "Static electricity",
+      "Magnetic induction",
+      "Thermal current",
+      "Pulse current",
+      "Ionic current",
+      "Galvanic current"
+    ],
+    "acceptableAnswers": [
+      "Alternating current (AC)",
+      "AC electricity",
+      "Alternating current"
+    ],
+    "explanation": "Tesla's AC system, backed by George Westinghouse, won the 'War of Currents' against Edison's DC system in the 1890s. AC can be easily transformed to different voltages, making long-distance transmission efficient.",
+    "wowFactor": "Tesla's AC system powers almost every home on Earth today — yet he died penniless in 1943, having lost his patents and fortune.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who was Tesla's main rival in the 'War of Currents'?",
+        "answer": "Thomas Edison",
+        "distractors": ["George Westinghouse", "Benjamin Franklin", "James Watt"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which inventor pioneered the AC electrical system used worldwide?",
+        "answer": "Nikola Tesla",
+        "distractors": ["Thomas Edison", "Michael Faraday", "James Clerk Maxwell"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Tesla's AC electricity system became the global power standard?",
+        "answer": "True",
+        "distractors": ["False", "Only in Europe", "Only in North America"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Nikola Tesla pioneered ___ current, now the global electricity standard.",
+        "answer": "alternating",
+        "distractors": ["direct", "static", "solar"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Britannica",
+    "sourceUrl": "https://www.britannica.com/biography/Nikola-Tesla",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Nikola Tesla standing beside a giant crackling electrical coil, lightning arcing in a laboratory, pixel art style.",
+    "tags": ["Tesla", "AC electricity", "inventor", "science", "energy"]
+  },
+  {
+    "id": "general-tesla-300-patents",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "science_technology",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "science_technology",
+    "categoryL3": "inventors",
+    "statement": "Nikola Tesla held approximately 300 patents across multiple countries for inventions spanning electrical systems, radio, and motors.",
+    "quizQuestion": "Roughly how many patents did Nikola Tesla hold?",
+    "correctAnswer": "About 300",
+    "distractors": [
+      "About 50",
+      "About 1,000",
+      "About 20",
+      "About 150",
+      "About 500",
+      "About 75",
+      "About 800",
+      "About 10"
+    ],
+    "acceptableAnswers": [
+      "About 300",
+      "Around 300",
+      "Nearly 300",
+      "Approximately 300"
+    ],
+    "explanation": "Tesla filed patents in the US and other countries for inventions including AC motors, transformers, the Tesla coil, and early radio systems. Many were filed in the late 1800s and early 1900s.",
+    "wowFactor": "Tesla patented a design for a 'death ray' in 1934 — a particle beam weapon he claimed could bring down 10,000 aircraft at 250 miles.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which field did Tesla NOT hold major patents?",
+        "answer": "Aviation",
+        "distractors": ["Electrical motors", "Radio", "AC systems"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which inventor is known for holding roughly 300 patents globally?",
+        "answer": "Nikola Tesla",
+        "distractors": ["Thomas Edison", "Alexander Graham Bell", "Guglielmo Marconi"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Tesla held patents in multiple countries for his inventions?",
+        "answer": "True",
+        "distractors": ["False", "Only in the USA", "Only in Europe"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Tesla held approximately ___ patents across multiple countries.",
+        "answer": "300",
+        "distractors": ["50", "1,000", "150"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Tesla Universe",
+    "sourceUrl": "https://teslauniverse.com/nikola-tesla/patents",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A wall of glowing patent documents with Tesla's portrait at center, pixel art style.",
+    "tags": ["Tesla", "patents", "invention", "science", "history"]
+  },
+  {
+    "id": "general-tesla-induction-motor",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "science_technology",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "science_technology",
+    "categoryL3": "electricity",
+    "statement": "Tesla invented the AC induction motor in 1887, enabling machines to run on alternating current without brushes or commutators.",
+    "quizQuestion": "What key machine did Tesla invent in 1887?",
+    "correctAnswer": "AC induction motor",
+    "distractors": [
+      "Steam turbine",
+      "Electric telegraph",
+      "Diesel engine",
+      "Dynamo generator",
+      "Gas combustion engine",
+      "Hydraulic pump",
+      "Radio transmitter",
+      "Nuclear reactor"
+    ],
+    "acceptableAnswers": [
+      "AC induction motor",
+      "Induction motor",
+      "AC motor"
+    ],
+    "explanation": "Tesla's induction motor used rotating magnetic fields to convert electrical energy to mechanical energy without physical contact between parts. This design is still the basis for most industrial motors today.",
+    "wowFactor": "Every electric vehicle motor today descends from Tesla's 1887 induction motor design — the company Tesla, Inc. was even named in his honor.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What year did Tesla invent the AC induction motor?",
+        "answer": "1887",
+        "distractors": ["1900", "1865", "1920"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which Tesla invention enabled brushless AC-powered machines?",
+        "answer": "Induction motor",
+        "distractors": ["Tesla coil", "AC transformer", "Radio antenna"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Tesla's induction motor required physical brushes to operate?",
+        "answer": "False",
+        "distractors": ["True", "Only at high speed", "Only in DC mode"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Tesla invented the AC ___ motor in 1887, still used in industry today.",
+        "answer": "induction",
+        "distractors": ["combustion", "steam", "synchronous"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Britannica",
+    "sourceUrl": "https://www.britannica.com/technology/induction-motor",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section diagram of a glowing induction motor with rotating magnetic field arrows, pixel art style.",
+    "tags": ["Tesla", "induction motor", "AC", "invention", "engineering"]
+  },
+  {
+    "id": "general-telephone-bell-1876",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "science_technology",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "science_technology",
+    "categoryL3": "communication",
+    "statement": "Alexander Graham Bell patented the telephone in 1876, enabling voice communication over electrical wires for the first time.",
+    "quizQuestion": "Who patented the telephone in 1876?",
+    "correctAnswer": "Alexander Graham Bell",
+    "distractors": [
+      "Thomas Edison",
+      "Nikola Tesla",
+      "Guglielmo Marconi",
+      "Samuel Morse",
+      "Heinrich Hertz",
+      "James Watt",
+      "Michael Faraday",
+      "Elisha Gray"
+    ],
+    "acceptableAnswers": [
+      "Alexander Graham Bell",
+      "Bell",
+      "Graham Bell"
+    ],
+    "explanation": "Bell filed his telephone patent on February 14, 1876 — just hours before Elisha Gray filed a competing patent caveat. Bell's patent is one of the most valuable and contested patents in history.",
+    "wowFactor": "Bell filed his patent just 2 hours before a rival inventor on the same day — a two-hour gap that changed the course of communication history.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year did Bell patent the telephone?",
+        "answer": "1876",
+        "distractors": ["1901", "1855", "1890"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which invention did Alexander Graham Bell patent in 1876?",
+        "answer": "Telephone",
+        "distractors": ["Telegraph", "Radio", "Phonograph"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Alexander Graham Bell was the first to patent the telephone?",
+        "answer": "True",
+        "distractors": ["False", "He shared the patent", "Edison patented it first"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Alexander Graham Bell patented the ___ in 1876.",
+        "answer": "telephone",
+        "distractors": ["telegraph", "radio", "phonograph"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Library of Congress",
+    "sourceUrl": "https://www.loc.gov/collections/alexander-graham-bell/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Victorian-era inventor holding an early telephone handset, wires running between two wooden boxes, pixel art style.",
+    "tags": ["telephone", "Bell", "invention", "communication", "1876"]
+  },
+  {
+    "id": "general-telephone-voice-wires",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "science_technology",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "science_technology",
+    "categoryL3": "communication",
+    "statement": "The telephone transmits voice by converting sound waves into electrical signals and back into sound at the receiving end.",
+    "quizQuestion": "How does a telephone transmit the human voice?",
+    "correctAnswer": "As electrical signals",
+    "distractors": [
+      "As radio waves",
+      "As light pulses",
+      "As magnetic waves",
+      "As sound directly",
+      "As digital packets",
+      "As thermal energy",
+      "As pressure waves",
+      "As microwaves"
+    ],
+    "acceptableAnswers": [
+      "As electrical signals",
+      "Via electrical signals",
+      "By converting to electricity"
+    ],
+    "explanation": "A telephone microphone converts sound pressure waves into varying electrical signals. These travel down the wire and are converted back to sound by the receiver's speaker element.",
+    "wowFactor": "The first telephone call Bell made to his assistant Thomas Watson — 'Mr. Watson, come here, I want to see you' — traveled only a few rooms away.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does a telephone microphone convert sound into for transmission?",
+        "answer": "Electrical signals",
+        "distractors": ["Radio waves", "Light pulses", "Magnetic pulses"]
+      },
+      {
+        "type": "reverse",
+        "question": "A telephone converts sound to electrical signals — who invented this device?",
+        "answer": "Alexander Graham Bell",
+        "distractors": ["Thomas Edison", "Guglielmo Marconi", "Samuel Morse"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Early telephones transmitted voice as radio waves?",
+        "answer": "False",
+        "distractors": ["True", "Partially true", "Only long distance"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A telephone converts sound into ___ signals to transmit voice.",
+        "answer": "electrical",
+        "distractors": ["radio", "optical", "magnetic"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "How Stuff Works",
+    "sourceUrl": "https://science.howstuffworks.com/telephone.htm",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Sound wave entering a telephone mouthpiece transforming into an electrical zigzag signal through a wire, pixel art style.",
+    "tags": ["telephone", "sound", "electrical signal", "physics", "communication"]
+  },
+  {
+    "id": "general-telephone-global-network",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "science_technology",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "science_technology",
+    "categoryL3": "communication",
+    "statement": "The global telephone network grew to connect billions of people, eventually evolving into the modern internet infrastructure.",
+    "quizQuestion": "What major network grew out of telephone infrastructure?",
+    "correctAnswer": "The internet",
+    "distractors": [
+      "The postal service",
+      "The railway network",
+      "The power grid",
+      "The radio network",
+      "Satellite systems",
+      "Cable television",
+      "The banking system",
+      "Air traffic control"
+    ],
+    "acceptableAnswers": [
+      "The internet",
+      "Internet",
+      "Modern internet"
+    ],
+    "explanation": "Early internet connections (dial-up) literally used telephone lines. The physical wire infrastructure laid for telephone networks was repurposed and expanded to carry internet data globally.",
+    "wowFactor": "The undersea telephone cables laid in the 1950s are the ancestors of today's fiber-optic internet cables — both rely on the same ocean floor routes.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What technology did early internet connections rely on?",
+        "answer": "Telephone lines",
+        "distractors": ["Satellite dishes", "Power cables", "Radio towers"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which network's physical infrastructure became the backbone of the internet?",
+        "answer": "Telephone network",
+        "distractors": ["Power grid", "Cable TV", "Radio network"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Early internet connections used telephone lines for dial-up access?",
+        "answer": "True",
+        "distractors": ["False", "Only in the US", "Only after 2000"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Early internet used ___ lines, connecting through telephone infrastructure.",
+        "answer": "telephone",
+        "distractors": ["power", "radio", "satellite"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Computer History Museum",
+    "sourceUrl": "https://computerhistory.org",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A globe wrapped in telephone wires transforming into fiber-optic cables glowing blue, pixel art style.",
+    "tags": ["telephone", "internet", "infrastructure", "network", "technology"]
+  },
+  {
+    "id": "general-television-baird-farnsworth",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "science_technology",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "science_technology",
+    "categoryL3": "media",
+    "statement": "Television was independently developed by John Logie Baird in the UK and Philo Farnsworth in the US during the 1920s.",
+    "quizQuestion": "Who independently developed early television systems?",
+    "correctAnswer": "Baird and Farnsworth",
+    "distractors": [
+      "Edison and Tesla",
+      "Bell and Marconi",
+      "Morse and Hertz",
+      "Einstein and Bohr",
+      "Lumiere and Edison",
+      "Faraday and Maxwell",
+      "Watt and Stevenson",
+      "Curie and Rutherford"
+    ],
+    "acceptableAnswers": [
+      "Baird and Farnsworth",
+      "Farnsworth and Baird",
+      "John Logie Baird and Philo Farnsworth"
+    ],
+    "explanation": "John Logie Baird demonstrated the first working television in London in 1926, while Philo Farnsworth demonstrated fully electronic television in 1927 in San Francisco. Both contributed key innovations.",
+    "wowFactor": "Farnsworth had the idea for electronic television at age 14 while plowing a field — he imagined scanning an image line by line, just like plowing rows.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which decade was television first publicly demonstrated?",
+        "answer": "1920s",
+        "distractors": ["1900s", "1940s", "1910s"]
+      },
+      {
+        "type": "reverse",
+        "question": "Philo Farnsworth is credited with inventing which mass-media technology?",
+        "answer": "Electronic television",
+        "distractors": ["Radio broadcasting", "Cinema projector", "Phonograph"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Television was developed independently by inventors in both the UK and US?",
+        "answer": "True",
+        "distractors": ["False", "Only in the UK", "Only in the US"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Philo ___ invented fully electronic television in the US in 1927.",
+        "answer": "Farnsworth",
+        "distractors": ["Edison", "Baird", "Marconi"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Britannica",
+    "sourceUrl": "https://www.britannica.com/technology/television-technology",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two inventors side-by-side in separate labs — one in foggy London, one in sunny San Francisco — each watching a glowing TV screen, pixel art style.",
+    "tags": ["television", "Baird", "Farnsworth", "invention", "media"]
+  },
+  {
+    "id": "general-television-cathode-ray",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "science_technology",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "science_technology",
+    "categoryL3": "media",
+    "statement": "Early televisions used cathode ray tubes (CRTs) to display images by firing electron beams at a phosphor-coated screen.",
+    "quizQuestion": "What technology did early TV screens use to display images?",
+    "correctAnswer": "Cathode ray tubes",
+    "distractors": [
+      "LCD panels",
+      "Plasma screens",
+      "OLED panels",
+      "LED arrays",
+      "Projector lamps",
+      "Fluorescent tubes",
+      "Fiber optic mesh",
+      "Laser grids"
+    ],
+    "acceptableAnswers": [
+      "Cathode ray tubes",
+      "CRT",
+      "CRTs"
+    ],
+    "explanation": "CRT televisions used an electron gun inside a vacuum tube to fire beams at a screen coated with phosphors. The beam scanned line by line to build up a full picture many times per second.",
+    "wowFactor": "The largest CRT TV ever made weighed over 300 kg — moving one required a forklift. Modern flat screens achieve the same picture in under 10 kg.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does CRT stand for in early television technology?",
+        "answer": "Cathode ray tube",
+        "distractors": ["Color resolution technology", "Central receiver terminal", "Compound radiation transmitter"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which display technology did televisions use before LCD screens?",
+        "answer": "Cathode ray tubes (CRT)",
+        "distractors": ["Plasma panels", "OLED displays", "LED arrays"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: CRT televisions worked by firing electron beams at a phosphor screen?",
+        "answer": "True",
+        "distractors": ["False", "They used light bulbs", "They used laser beams"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Early TVs used ___ ray tubes to create images on screen.",
+        "answer": "cathode",
+        "distractors": ["laser", "plasma", "light"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "How Stuff Works",
+    "sourceUrl": "https://electronics.howstuffworks.com/tv.htm",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Cross-section of a glowing CRT television showing electron beams scanning a phosphor screen, pixel art style.",
+    "tags": ["television", "CRT", "cathode ray", "display", "technology"]
+  },
+  {
+    "id": "general-television-broadcast-reach",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "culture_society",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "culture_society",
+    "categoryL3": "media",
+    "statement": "By the 1960s, television had become the dominant mass media, reaching hundreds of millions of households worldwide.",
+    "quizQuestion": "By what decade did TV become the dominant mass media?",
+    "correctAnswer": "1960s",
+    "distractors": [
+      "1920s",
+      "1980s",
+      "1940s",
+      "1990s",
+      "1930s",
+      "2000s",
+      "1950s",
+      "1970s"
+    ],
+    "acceptableAnswers": [
+      "1960s",
+      "The 1960s",
+      "Nineteen sixties"
+    ],
+    "explanation": "Television ownership exploded in the 1950s–60s. By 1960, about 90% of US homes had a TV. The Moon landing in 1969 was watched live by 600 million people worldwide — the largest broadcast audience to that date.",
+    "wowFactor": "The 1969 Moon landing was watched by 600 million people live — about 1 in 5 humans alive at that time all saw the same event simultaneously.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately what share of US homes had a TV by 1960?",
+        "answer": "About 90%",
+        "distractors": ["About 10%", "About 50%", "About 30%"]
+      },
+      {
+        "type": "reverse",
+        "question": "In what era did television first reach the majority of households globally?",
+        "answer": "1960s",
+        "distractors": ["1940s", "1980s", "1920s"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The 1969 Moon landing was watched live by hundreds of millions on TV?",
+        "answer": "True",
+        "distractors": ["False", "It was not televised", "Only in the US"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "By the ___, television had become the world's dominant mass media.",
+        "answer": "1960s",
+        "distractors": ["1920s", "1980s", "1940s"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Pew Research",
+    "sourceUrl": "https://www.pewresearch.org",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A family gathered around a glowing TV showing a rocket launch, living room in 1960s decor, pixel art style.",
+    "tags": ["television", "mass media", "1960s", "broadcast", "culture"]
+  },
+  {
+    "id": "general-photography-daguerreotype",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "science_technology",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "science_technology",
+    "categoryL3": "photography",
+    "statement": "The daguerreotype, invented by Louis Daguerre in 1839, was the first widely used photographic process, using silver-coated copper plates.",
+    "quizQuestion": "What was the first widely used photographic process?",
+    "correctAnswer": "Daguerreotype",
+    "distractors": [
+      "Calotype",
+      "Ambrotype",
+      "Cyanotype",
+      "Tintype",
+      "Film negative",
+      "Polaroid",
+      "Wet plate",
+      "Platinum print"
+    ],
+    "acceptableAnswers": [
+      "Daguerreotype",
+      "The daguerreotype"
+    ],
+    "explanation": "Louis Daguerre announced his photographic process in 1839, supported by the French government. It used a silver-coated copper plate treated with iodine vapor, exposed in a camera, then developed with mercury vapor.",
+    "wowFactor": "A daguerreotype from 1838 shows a busy Paris street that appears empty — because the exposure took 10 minutes, only a shoe-shiner standing still long enough was captured.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who invented the daguerreotype photographic process?",
+        "answer": "Louis Daguerre",
+        "distractors": ["William Fox Talbot", "George Eastman", "Joseph Niepce"]
+      },
+      {
+        "type": "reverse",
+        "question": "What material formed the image surface in a daguerreotype?",
+        "answer": "Silver-coated copper plate",
+        "distractors": ["Glass plate", "Paper negative", "Plastic film"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The daguerreotype was invented in the 19th century?",
+        "answer": "True",
+        "distractors": ["False", "It was 20th century", "It was 18th century"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Louis ___ invented the first widely used photographic process in 1839.",
+        "answer": "Daguerre",
+        "distractors": ["Eastman", "Talbot", "Niepce"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Metropolitan Museum of Art",
+    "sourceUrl": "https://www.metmuseum.org/toah/hd/dagu/hd_dagu.htm",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing silver plate inside an ornate wooden camera box showing a ghostly Paris street scene, pixel art style.",
+    "tags": ["photography", "daguerreotype", "Daguerre", "history", "invention"]
+  },
+  {
+    "id": "general-photography-exposure",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "science_technology",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "science_technology",
+    "categoryL3": "photography",
+    "statement": "Photographic exposure is the amount of light allowed to reach the film or sensor, controlled by shutter speed and aperture.",
+    "quizQuestion": "What controls photographic exposure in a camera?",
+    "correctAnswer": "Shutter speed and aperture",
+    "distractors": [
+      "Flash power and ISO",
+      "Lens length and focus",
+      "White balance and color",
+      "Zoom level and angle",
+      "Film type and brand",
+      "Battery power and voltage",
+      "Resolution and pixel count",
+      "Autofocus speed and mode"
+    ],
+    "acceptableAnswers": [
+      "Shutter speed and aperture",
+      "Aperture and shutter speed",
+      "Shutter and aperture"
+    ],
+    "explanation": "Aperture controls how wide the lens opens (measured in f-stops), and shutter speed controls how long the sensor is exposed to light. Together they determine the total exposure. ISO sensitivity is a third factor in digital cameras.",
+    "wowFactor": "The human eye adjusts aperture 100,000x per day — camera photographers try to mimic what our eyes do naturally with every shot.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What unit measures how wide a camera lens opens?",
+        "answer": "F-stop",
+        "distractors": ["ISO", "Pixel", "Megahertz"]
+      },
+      {
+        "type": "reverse",
+        "question": "Shutter speed and aperture together control what aspect of photography?",
+        "answer": "Exposure",
+        "distractors": ["Focus", "Color balance", "Resolution"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Exposure in photography is controlled by shutter speed and aperture?",
+        "answer": "True",
+        "distractors": ["False", "Only by shutter speed", "Only by ISO"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Camera exposure is controlled by shutter speed and ___.",
+        "answer": "aperture",
+        "distractors": ["ISO", "zoom", "resolution"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Cambridge in Colour",
+    "sourceUrl": "https://www.cambridgeincolour.com/tutorials/camera-exposure.htm",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A camera lens diagram showing light rays controlled by aperture blades and a shutter curtain, pixel art style.",
+    "tags": ["photography", "exposure", "aperture", "shutter", "camera"]
+  },
+  {
+    "id": "general-photography-digital-revolution",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "science_technology",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "science_technology",
+    "categoryL3": "photography",
+    "statement": "Digital photography, using electronic sensors instead of film, became mainstream in the 2000s and transformed how images are captured and shared.",
+    "quizQuestion": "When did digital photography become mainstream?",
+    "correctAnswer": "2000s",
+    "distractors": [
+      "1980s",
+      "1960s",
+      "1990s",
+      "1970s",
+      "2010s",
+      "1940s",
+      "1850s",
+      "1920s"
+    ],
+    "acceptableAnswers": [
+      "2000s",
+      "Early 2000s",
+      "The 2000s"
+    ],
+    "explanation": "While digital cameras existed in the 1990s, they became affordable and mainstream in the early 2000s. The iPhone launch in 2007 accelerated adoption dramatically, putting a quality camera in every pocket.",
+    "wowFactor": "In 2000, humans took about 80 billion photos per year. By 2023, that number surpassed 1.7 trillion annually — mostly taken on smartphones.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What replaced photographic film in digital cameras?",
+        "answer": "Electronic sensors",
+        "distractors": ["Magnetic tape", "Holographic plates", "Optical discs"]
+      },
+      {
+        "type": "reverse",
+        "question": "Digital photography becoming mainstream in the 2000s is linked to which device?",
+        "answer": "Smartphones",
+        "distractors": ["Laptop computers", "Video game consoles", "Flat-screen TVs"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Digital cameras use electronic sensors instead of film?",
+        "answer": "True",
+        "distractors": ["False", "They still use film", "Only some models do"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Digital cameras use electronic ___ instead of film to capture images.",
+        "answer": "sensors",
+        "distractors": ["tape", "plates", "mirrors"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Photography Life",
+    "sourceUrl": "https://photographylife.com/history-of-digital-photography",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A person photographing with a smartphone, pixels flowing from the lens into a glowing sensor chip, pixel art style.",
+    "tags": ["photography", "digital", "sensors", "smartphone", "technology"]
+  },
+  {
+    "id": "general-harvard-oldest-us-university",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "education",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "education",
+    "categoryL3": "universities",
+    "statement": "Harvard University, founded in 1636 in Cambridge, Massachusetts, is the oldest institution of higher education in the United States.",
+    "quizQuestion": "Which is the oldest university in the United States?",
+    "correctAnswer": "Harvard University",
+    "distractors": [
+      "Yale University",
+      "Princeton University",
+      "Columbia University",
+      "MIT",
+      "Stanford University",
+      "Oxford University",
+      "Brown University",
+      "Cornell University"
+    ],
+    "acceptableAnswers": [
+      "Harvard University",
+      "Harvard",
+      "Harvard College"
+    ],
+    "explanation": "Harvard was founded in 1636, just 16 years after the Pilgrims landed at Plymouth Rock. Originally a college to train Puritan ministers, it grew into one of the world's most prestigious research universities.",
+    "wowFactor": "Harvard's library system holds over 20 million volumes — if laid end to end, the books would stretch from Boston to Los Angeles.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year was Harvard University founded?",
+        "answer": "1636",
+        "distractors": ["1776", "1701", "1865"]
+      },
+      {
+        "type": "reverse",
+        "question": "In which US city is Harvard University located?",
+        "answer": "Cambridge, Massachusetts",
+        "distractors": ["Boston", "New Haven", "New York City"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Harvard University was originally founded to train Puritan ministers?",
+        "answer": "True",
+        "distractors": ["False", "It was a law school", "It was a military academy"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Harvard University was founded in ___, making it the oldest US university.",
+        "answer": "1636",
+        "distractors": ["1776", "1701", "1800"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Harvard University",
+    "sourceUrl": "https://www.harvard.edu/about/history/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Harvard's red-brick buildings and ivy-covered walls at dusk, a colonial-era sign in the foreground, pixel art style.",
+    "tags": ["Harvard", "university", "education", "USA", "history"]
+  },
+  {
+    "id": "general-harvard-endowment",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "education",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "education",
+    "categoryL3": "universities",
+    "statement": "Harvard University has the largest university endowment in the world, exceeding $50 billion, funding scholarships and research.",
+    "quizQuestion": "Which university has the world's largest endowment?",
+    "correctAnswer": "Harvard University",
+    "distractors": [
+      "Yale University",
+      "MIT",
+      "Stanford University",
+      "Oxford University",
+      "Cambridge University",
+      "Princeton University",
+      "Tokyo University",
+      "Columbia University"
+    ],
+    "acceptableAnswers": [
+      "Harvard University",
+      "Harvard"
+    ],
+    "explanation": "Harvard's endowment exceeded $50 billion as of 2021, dwarfing most universities. The fund generates investment returns that help fund financial aid, professorships, and research programs.",
+    "wowFactor": "Harvard's endowment is so large it generates enough annual returns to fully fund the operating costs of many smaller countries.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how large is Harvard's endowment fund?",
+        "answer": "Over $50 billion",
+        "distractors": ["Over $1 billion", "Over $10 million", "Over $500 million"]
+      },
+      {
+        "type": "reverse",
+        "question": "What does Harvard's endowment fund primarily support?",
+        "answer": "Scholarships and research",
+        "distractors": ["Athletic programs", "Real estate development", "Government lobbying"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Harvard University has the world's largest university endowment?",
+        "answer": "True",
+        "distractors": ["False", "Yale is larger", "MIT is larger"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Harvard's endowment exceeds $___ billion, the largest of any university.",
+        "answer": "50",
+        "distractors": ["5", "100", "1"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Harvard Financial Report",
+    "sourceUrl": "https://finance.harvard.edu/annual-report",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A towering pile of gold coins with a Harvard crest, surrounded by students reading books, pixel art style.",
+    "tags": ["Harvard", "endowment", "university", "wealth", "education"]
+  },
+  {
+    "id": "general-harvard-notable-alumni",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "education",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "education",
+    "categoryL3": "universities",
+    "statement": "Harvard alumni include 8 US presidents, over 160 Nobel laureates, and numerous world leaders, scientists, and business executives.",
+    "quizQuestion": "How many US presidents attended Harvard?",
+    "correctAnswer": "8",
+    "distractors": [
+      "2",
+      "15",
+      "5",
+      "20",
+      "1",
+      "12",
+      "30",
+      "3"
+    ],
+    "acceptableAnswers": [
+      "8",
+      "Eight",
+      "Eight presidents"
+    ],
+    "explanation": "Harvard alumni who became US presidents include John Adams, John Quincy Adams, Rutherford B. Hayes, Theodore Roosevelt, Franklin D. Roosevelt, John F. Kennedy, George W. Bush, and Barack Obama.",
+    "wowFactor": "Both father and son — John Adams and John Quincy Adams — attended Harvard and became US presidents, nearly 25 years apart.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many Nobel laureates are Harvard alumni?",
+        "answer": "Over 160",
+        "distractors": ["About 10", "About 50", "About 300"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which university counts 8 US presidents among its alumni?",
+        "answer": "Harvard University",
+        "distractors": ["Yale University", "Princeton University", "Columbia University"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Barack Obama attended Harvard Law School?",
+        "answer": "True",
+        "distractors": ["False", "He attended Yale", "He attended Columbia only"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Harvard alumni include ___ US presidents and over 160 Nobel laureates.",
+        "answer": "8",
+        "distractors": ["2", "20", "50"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Harvard Gazette",
+    "sourceUrl": "https://news.harvard.edu",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A gallery wall with portraits of presidents and Nobel medals, Harvard crest above, pixel art style.",
+    "tags": ["Harvard", "presidents", "Nobel", "alumni", "education"]
+  },
+  {
+    "id": "general-facebook-founding-2004",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "science_technology",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "science_technology",
+    "categoryL3": "social_media",
+    "statement": "Facebook was founded by Mark Zuckerberg in 2004 while he was a student at Harvard, originally as a social network for college students.",
+    "quizQuestion": "Who founded Facebook and in what year?",
+    "correctAnswer": "Zuckerberg, 2004",
+    "distractors": [
+      "Bezos, 1998",
+      "Jobs, 2001",
+      "Gates, 1995",
+      "Dorsey, 2006",
+      "Musk, 2003",
+      "Page, 1999",
+      "Brin, 2000",
+      "Systrom, 2010"
+    ],
+    "acceptableAnswers": [
+      "Zuckerberg, 2004",
+      "Mark Zuckerberg in 2004",
+      "Zuckerberg in 2004"
+    ],
+    "explanation": "Mark Zuckerberg launched 'TheFacebook' from his Harvard dorm room in February 2004. It initially spread to other Ivy League schools before opening to the general public in September 2006.",
+    "wowFactor": "When Zuckerberg launched Facebook from his dorm room, he was 19 years old. By 30 he was one of the youngest billionaires in history.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "From which university did Zuckerberg launch Facebook?",
+        "answer": "Harvard",
+        "distractors": ["MIT", "Stanford", "Yale"]
+      },
+      {
+        "type": "reverse",
+        "question": "What was Facebook originally called when it launched in 2004?",
+        "answer": "TheFacebook",
+        "distractors": ["FaceConnect", "SocialHub", "CampusNet"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Facebook was originally created only for college students?",
+        "answer": "True",
+        "distractors": ["False", "It launched publicly from day one", "It was for businesses first"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mark Zuckerberg founded Facebook in ___ from his Harvard dorm room.",
+        "answer": "2004",
+        "distractors": ["2001", "2008", "1999"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/Facebook",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A young man at a laptop in a messy dorm room, a social network diagram glowing on screen, pixel art style.",
+    "tags": ["Facebook", "Zuckerberg", "social media", "internet", "2004"]
+  },
+  {
+    "id": "general-facebook-meta-rebrand",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "science_technology",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "science_technology",
+    "categoryL3": "social_media",
+    "statement": "In 2021, Facebook's parent company rebranded as Meta Platforms, reflecting its focus on building the metaverse.",
+    "quizQuestion": "What did Facebook's parent company rebrand itself as in 2021?",
+    "correctAnswer": "Meta Platforms",
+    "distractors": [
+      "Alphabet",
+      "Horizon Inc",
+      "SocialCorp",
+      "VirtualWorld",
+      "Digital Realm",
+      "Connect Corp",
+      "FutureNet",
+      "Skylink"
+    ],
+    "acceptableAnswers": [
+      "Meta Platforms",
+      "Meta",
+      "Meta Inc"
+    ],
+    "explanation": "Mark Zuckerberg announced the rebrand to Meta in October 2021, signaling a strategic pivot toward virtual reality and the metaverse concept — immersive, interconnected digital spaces.",
+    "wowFactor": "The Meta rebrand cost over $10 billion in the first year — making it one of the most expensive corporate pivots in history, and the metaverse still hasn't arrived.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year did Facebook rebrand its parent company to Meta?",
+        "answer": "2021",
+        "distractors": ["2018", "2015", "2023"]
+      },
+      {
+        "type": "reverse",
+        "question": "What concept did Meta's rebrand signal a focus on building?",
+        "answer": "The metaverse",
+        "distractors": ["Cryptocurrency", "Artificial intelligence", "Autonomous vehicles"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Facebook's parent company rebranded as Meta in 2021?",
+        "answer": "True",
+        "distractors": ["False", "It rebranded in 2018", "It never rebranded"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Facebook's parent company rebranded to ___ in 2021.",
+        "answer": "Meta",
+        "distractors": ["Alphabet", "Horizon", "Connect"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Meta Newsroom",
+    "sourceUrl": "https://about.fb.com/news/2021/10/facebook-company-is-now-meta/",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing infinity symbol morphing from a thumbs-up Facebook logo, surrounded by VR headsets, pixel art style.",
+    "tags": ["Facebook", "Meta", "rebrand", "metaverse", "social media"]
+  },
+  {
+    "id": "general-facebook-3-billion-users",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "science_technology",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "science_technology",
+    "categoryL3": "social_media",
+    "statement": "Facebook has over 3 billion monthly active users, making it the most widely used social media platform in the world.",
+    "quizQuestion": "How many monthly active users does Facebook have?",
+    "correctAnswer": "Over 3 billion",
+    "distractors": [
+      "About 500 million",
+      "About 1 billion",
+      "About 100 million",
+      "About 800 million",
+      "About 2 billion",
+      "About 10 billion",
+      "About 50 million",
+      "About 4.5 billion"
+    ],
+    "acceptableAnswers": [
+      "Over 3 billion",
+      "3 billion",
+      "More than 3 billion"
+    ],
+    "explanation": "Facebook crossed the 3 billion monthly active user mark in 2023. This means roughly 37% of all people on Earth use Facebook at least once a month.",
+    "wowFactor": "If Facebook were a country, it would be the most populous nation on Earth — with nearly 3 times the population of China.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What percentage of Earth's population uses Facebook monthly?",
+        "answer": "About 37%",
+        "distractors": ["About 5%", "About 80%", "About 15%"]
+      },
+      {
+        "type": "reverse",
+        "question": "With over 3 billion users, which platform is the world's most used social network?",
+        "answer": "Facebook",
+        "distractors": ["Instagram", "TikTok", "YouTube"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Facebook has more monthly users than any other social platform?",
+        "answer": "True",
+        "distractors": ["False", "TikTok has more", "Instagram has more"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Facebook has over ___ billion monthly active users worldwide.",
+        "answer": "3",
+        "distractors": ["1", "10", "0.5"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Statista",
+    "sourceUrl": "https://www.statista.com/statistics/264810/number-of-monthly-active-facebook-users-worldwide/",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A globe with tiny glowing human icons packed across it, a Facebook logo radiating connections, pixel art style.",
+    "tags": ["Facebook", "users", "social media", "internet", "global"]
+  },
+  {
+    "id": "general-russian-250m-speakers",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "language_linguistics",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "language_linguistics",
+    "categoryL3": "world_languages",
+    "statement": "Russian is spoken by approximately 250 million people worldwide and is one of the six official languages of the United Nations.",
+    "quizQuestion": "How many people speak Russian worldwide?",
+    "correctAnswer": "About 250 million",
+    "distractors": [
+      "About 50 million",
+      "About 1 billion",
+      "About 10 million",
+      "About 500 million",
+      "About 30 million",
+      "About 800 million",
+      "About 100 million",
+      "About 20 million"
+    ],
+    "acceptableAnswers": [
+      "About 250 million",
+      "250 million",
+      "Around 250 million"
+    ],
+    "explanation": "Russian has about 150 million native speakers in Russia plus another 100 million second-language speakers across former Soviet states and diaspora communities. It is one of the UN's 6 official languages.",
+    "wowFactor": "Russian was the first human language ever spoken in outer space — Yuri Gagarin's historic 1961 broadcast was in Russian.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Russian is one of how many official languages of the United Nations?",
+        "answer": "Six",
+        "distractors": ["Three", "Ten", "Two"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which language with 250 million speakers uses the Cyrillic alphabet?",
+        "answer": "Russian",
+        "distractors": ["Arabic", "Hindi", "Greek"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Russian is an official language of the United Nations?",
+        "answer": "True",
+        "distractors": ["False", "It is not recognized", "Only as observer status"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Russian is spoken by approximately ___ million people worldwide.",
+        "answer": "250",
+        "distractors": ["50", "1,000", "30"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Ethnologue",
+    "sourceUrl": "https://www.ethnologue.com/language/rus",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A map of Russia and surrounding regions with speech bubbles in Cyrillic script, glowing satellite orbiting above, pixel art style.",
+    "tags": ["Russian", "language", "Cyrillic", "UN", "speakers"]
+  },
+  {
+    "id": "general-russian-cyrillic-alphabet",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "language_linguistics",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "language_linguistics",
+    "categoryL3": "world_languages",
+    "statement": "Russian uses the Cyrillic alphabet, which has 33 letters and was developed in the 9th century based on Greek script.",
+    "quizQuestion": "How many letters does the Russian Cyrillic alphabet have?",
+    "correctAnswer": "33 letters",
+    "distractors": [
+      "26 letters",
+      "52 letters",
+      "20 letters",
+      "40 letters",
+      "28 letters",
+      "45 letters",
+      "18 letters",
+      "60 letters"
+    ],
+    "acceptableAnswers": [
+      "33 letters",
+      "33",
+      "Thirty-three letters"
+    ],
+    "explanation": "The modern Russian Cyrillic alphabet has 33 letters. The script was created by Saints Cyril and Methodius in the 9th century, derived from Greek uncial letters to write Slavic languages.",
+    "wowFactor": "The Cyrillic alphabet was invented specifically as a missionary tool — Saints Cyril and Methodius created it to translate the Bible into Slavic languages.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "On which ancient script is the Cyrillic alphabet based?",
+        "answer": "Greek script",
+        "distractors": ["Latin script", "Hebrew script", "Arabic script"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which saints created the Cyrillic alphabet in the 9th century?",
+        "answer": "Cyril and Methodius",
+        "distractors": ["Augustine and Jerome", "Basil and Gregory", "Peter and Paul"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Cyrillic alphabet was based on Greek script?",
+        "answer": "True",
+        "distractors": ["False", "It was based on Latin", "It was invented from scratch"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Russian Cyrillic alphabet has ___ letters.",
+        "answer": "33",
+        "distractors": ["26", "52", "40"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Omniglot",
+    "sourceUrl": "https://www.omniglot.com/writing/russian.htm",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The Cyrillic alphabet glowing in gold letters arranged in a circle around a Byzantine cross, pixel art style.",
+    "tags": ["Russian", "Cyrillic", "alphabet", "language", "history"]
+  },
+  {
+    "id": "general-russian-literary-tradition",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "language_linguistics",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "language_linguistics",
+    "categoryL3": "world_languages",
+    "statement": "Russian literature produced world-renowned authors including Tolstoy, Dostoevsky, and Chekhov, who shaped modern storytelling.",
+    "quizQuestion": "Which country's literature includes Tolstoy and Dostoevsky?",
+    "correctAnswer": "Russia",
+    "distractors": [
+      "France",
+      "Germany",
+      "Poland",
+      "Ukraine",
+      "Sweden",
+      "Italy",
+      "Hungary",
+      "Czech Republic"
+    ],
+    "acceptableAnswers": [
+      "Russia",
+      "Russian literature"
+    ],
+    "explanation": "Leo Tolstoy (War and Peace, Anna Karenina), Fyodor Dostoevsky (Crime and Punishment, The Brothers Karamazov), and Anton Chekhov (The Cherry Orchard) are among Russia's greatest literary exports.",
+    "wowFactor": "Tolstoy's War and Peace is so long — over 1,200 pages — that many readers attempt it as a life challenge. Napoleon appears as a character alongside real battle scenes.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which famous Russian novel features Napoleon as a character?",
+        "answer": "War and Peace",
+        "distractors": ["Crime and Punishment", "Anna Karenina", "The Brothers Karamazov"]
+      },
+      {
+        "type": "reverse",
+        "question": "Who wrote Crime and Punishment, a landmark of Russian literature?",
+        "answer": "Fyodor Dostoevsky",
+        "distractors": ["Leo Tolstoy", "Anton Chekhov", "Ivan Turgenev"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Leo Tolstoy wrote War and Peace?",
+        "answer": "True",
+        "distractors": ["False", "Dostoevsky wrote it", "Chekhov wrote it"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ wrote War and Peace and Anna Karenina, classics of Russian literature.",
+        "answer": "Tolstoy",
+        "distractors": ["Dostoevsky", "Chekhov", "Pushkin"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Britannica",
+    "sourceUrl": "https://www.britannica.com/art/Russian-literature",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Three open books with portraits of Tolstoy, Dostoevsky, and Chekhov floating above each, snow falling behind them, pixel art style.",
+    "tags": ["Russian", "literature", "Tolstoy", "Dostoevsky", "language"]
+  },
+  {
+    "id": "general-philosophy-love-of-wisdom",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "humanities",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "humanities",
+    "categoryL3": "philosophy",
+    "statement": "The word 'philosophy' comes from ancient Greek, meaning 'love of wisdom', combining 'philos' (loving) and 'sophia' (wisdom).",
+    "quizQuestion": "What does the word 'philosophy' literally mean?",
+    "correctAnswer": "Love of wisdom",
+    "distractors": [
+      "Study of nature",
+      "Search for truth",
+      "Art of reasoning",
+      "Knowledge of gods",
+      "Science of mind",
+      "Theory of ethics",
+      "Pursuit of virtue",
+      "Logic of language"
+    ],
+    "acceptableAnswers": [
+      "Love of wisdom",
+      "Loving wisdom",
+      "Philo sophia — love of wisdom"
+    ],
+    "explanation": "Greek 'philosophia' combines 'philos' (loving, fond of) and 'sophia' (wisdom). The term is attributed to Pythagoras, who reportedly said only a god could be truly wise — a human could only be a 'lover of wisdom'.",
+    "wowFactor": "Pythagoras reportedly refused to call himself 'wise' — he invented the term 'philosopher' (lover of wisdom) as the most a human could honestly claim.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What Greek word for 'wisdom' forms part of 'philosophy'?",
+        "answer": "Sophia",
+        "distractors": ["Logos", "Nous", "Arete"]
+      },
+      {
+        "type": "reverse",
+        "question": "Who is credited with coining the term 'philosopher' meaning lover of wisdom?",
+        "answer": "Pythagoras",
+        "distractors": ["Socrates", "Plato", "Aristotle"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: 'Philosophy' is a Greek word meaning 'love of wisdom'?",
+        "answer": "True",
+        "distractors": ["False", "It means 'study of logic'", "It means 'knowledge of nature'"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The word philosophy combines 'philos' (loving) and '___ ' (wisdom).",
+        "answer": "sophia",
+        "distractors": ["logos", "arete", "nous"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Stanford Encyclopedia of Philosophy",
+    "sourceUrl": "https://plato.stanford.edu/entries/ancient-political/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Greek philosopher holding a glowing scroll with 'SOPHIA' inscribed in ancient letters, marble columns behind, pixel art style.",
+    "tags": ["philosophy", "wisdom", "Greek", "etymology", "Pythagoras"]
+  },
+  {
+    "id": "general-philosophy-socrates-method",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "humanities",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "humanities",
+    "categoryL3": "philosophy",
+    "statement": "Socrates developed the Socratic method — a form of inquiry through questioning that exposes contradictions to reach deeper truth.",
+    "quizQuestion": "What method of inquiry did Socrates develop?",
+    "correctAnswer": "Socratic method",
+    "distractors": [
+      "Scientific method",
+      "Dialectical method",
+      "Empirical method",
+      "Deductive method",
+      "Inductive method",
+      "Rhetorical method",
+      "Axiomatic method",
+      "Hermeneutic method"
+    ],
+    "acceptableAnswers": [
+      "Socratic method",
+      "The Socratic method",
+      "Elenchus"
+    ],
+    "explanation": "Socrates questioned his interlocutors to reveal inconsistencies in their thinking, guiding them toward more precise understanding. He never wrote anything — his ideas survive through Plato's dialogues.",
+    "wowFactor": "Socrates was executed by Athens for 'corrupting youth' with his questions — but his method became the foundation of Western education and law.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Socrates never wrote — whose writings preserve his ideas?",
+        "answer": "Plato's dialogues",
+        "distractors": ["Aristotle's works", "Xenophon's histories", "Herodotus's accounts"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which philosopher developed learning through systematic questioning?",
+        "answer": "Socrates",
+        "distractors": ["Plato", "Aristotle", "Pythagoras"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Socrates wrote down his philosophy in detailed texts?",
+        "answer": "False",
+        "distractors": ["True", "He wrote one book", "He wrote dialogues"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ method uses questioning to expose contradictions and reach truth.",
+        "answer": "Socratic",
+        "distractors": ["scientific", "dialectical", "empirical"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Stanford Encyclopedia of Philosophy",
+    "sourceUrl": "https://plato.stanford.edu/entries/socrates/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Socrates in a toga posing a question to a group of stunned Athenians, with a giant question mark glowing overhead, pixel art style.",
+    "tags": ["philosophy", "Socrates", "method", "inquiry", "Greece"]
+  },
+  {
+    "id": "general-philosophy-plato-forms",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "humanities",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "humanities",
+    "categoryL3": "philosophy",
+    "statement": "Plato's Theory of Forms proposed that abstract ideals (like Justice or Beauty) are more real than physical objects, which are imperfect copies.",
+    "quizQuestion": "What did Plato's Theory of Forms argue about abstract ideals?",
+    "correctAnswer": "They are more real than objects",
+    "distractors": [
+      "They exist only in the mind",
+      "They are human inventions",
+      "They match physical reality",
+      "They change over time",
+      "They are divine commands",
+      "They are social constructs",
+      "They require proof to exist",
+      "They are based on emotion"
+    ],
+    "acceptableAnswers": [
+      "They are more real than objects",
+      "More real than physical things",
+      "Abstract ideals are more real"
+    ],
+    "explanation": "Plato argued that physical objects are imperfect, temporary copies of eternal abstract Forms. A perfect circle drawn on paper is less real than the Form of a Circle itself — the eternal ideal that exists beyond matter.",
+    "wowFactor": "Plato's cave allegory imagines all humans chained in a cave, mistaking shadows on a wall for reality — a metaphor for mistaking physical objects for true reality.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is Plato's famous allegory for mistaking physical objects for reality?",
+        "answer": "The allegory of the cave",
+        "distractors": ["The Ship of Theseus", "Achilles and the tortoise", "Plato's ladder"]
+      },
+      {
+        "type": "reverse",
+        "question": "Whose philosophical work introduced the Theory of Forms?",
+        "answer": "Plato",
+        "distractors": ["Socrates", "Aristotle", "Heraclitus"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Plato believed abstract Forms are more real than physical objects?",
+        "answer": "True",
+        "distractors": ["False", "He believed the opposite", "He rejected abstract ideals"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Plato's Theory of ___ argues abstract ideals are more real than physical objects.",
+        "answer": "Forms",
+        "distractors": ["Ideas", "Logic", "Ethics"]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Stanford Encyclopedia of Philosophy",
+    "sourceUrl": "https://plato.stanford.edu/entries/plato/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Shadowy figures chained in a cave watching dancing shadows on a wall, a bright light behind them unseen, pixel art style.",
+    "tags": ["philosophy", "Plato", "Theory of Forms", "idealism", "metaphysics"]
+  },
+  {
+    "id": "general-polisci-democracy-origin",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "social_sciences",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "social_sciences",
+    "categoryL3": "political_science",
+    "statement": "Democracy originated in ancient Athens around 508 BCE, when Cleisthenes introduced reforms giving citizens voting power in governance.",
+    "quizQuestion": "Where did democracy originate in the ancient world?",
+    "correctAnswer": "Ancient Athens",
+    "distractors": [
+      "Ancient Rome",
+      "Ancient Egypt",
+      "Ancient Persia",
+      "Ancient India",
+      "Ancient China",
+      "Ancient Babylon",
+      "Ancient Sparta",
+      "Ancient Carthage"
+    ],
+    "acceptableAnswers": [
+      "Ancient Athens",
+      "Athens",
+      "Greece"
+    ],
+    "explanation": "Around 508 BCE, Athenian statesman Cleisthenes introduced democratic reforms — the first known system in which citizens (adult male landowners) directly voted on laws and policies.",
+    "wowFactor": "Athenian democracy excluded women, slaves, and foreigners — only about 10-15% of the population could actually vote in the world's 'first democracy'.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who introduced democratic reforms in ancient Athens around 508 BCE?",
+        "answer": "Cleisthenes",
+        "distractors": ["Pericles", "Solon", "Draco"]
+      },
+      {
+        "type": "reverse",
+        "question": "Ancient Athens is credited with inventing which system of government?",
+        "answer": "Democracy",
+        "distractors": ["Republic", "Oligarchy", "Monarchy"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: All adults in ancient Athens could vote in the democracy?",
+        "answer": "False",
+        "distractors": ["True", "Only slaves were excluded", "All free people voted"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Democracy originated in ancient ___ around 508 BCE.",
+        "answer": "Athens",
+        "distractors": ["Rome", "Egypt", "Persia"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/democracy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Athenian citizens in togas gathered in an open-air assembly, hands raised in a vote, the Parthenon glowing on the hill above, pixel art style.",
+    "tags": ["democracy", "Athens", "political science", "governance", "ancient"]
+  },
+  {
+    "id": "general-polisci-governance-branches",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "social_sciences",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "social_sciences",
+    "categoryL3": "political_science",
+    "statement": "Modern democracies typically divide governance into three branches: legislative (makes laws), executive (enforces laws), and judicial (interprets laws).",
+    "quizQuestion": "How many branches do most modern democracies have?",
+    "correctAnswer": "Three branches",
+    "distractors": [
+      "Two branches",
+      "Five branches",
+      "One branch",
+      "Four branches",
+      "Six branches",
+      "Seven branches",
+      "Eight branches",
+      "Ten branches"
+    ],
+    "acceptableAnswers": [
+      "Three branches",
+      "3 branches",
+      "Three"
+    ],
+    "explanation": "The separation of powers into legislative (parliament/congress), executive (president/prime minister), and judicial (courts) branches was theorized by Montesquieu in The Spirit of the Laws (1748) and adopted in democratic constitutions.",
+    "wowFactor": "Montesquieu's idea of three separate branches of government was written in 1748 — and almost every modern democracy still uses exactly this structure nearly 300 years later.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which philosopher's 1748 work theorized separation of government powers?",
+        "answer": "Montesquieu",
+        "distractors": ["Locke", "Rousseau", "Hobbes"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which branch of government makes laws in a democracy?",
+        "answer": "Legislative branch",
+        "distractors": ["Executive branch", "Judicial branch", "Administrative branch"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Modern democracies separate government into three branches?",
+        "answer": "True",
+        "distractors": ["False", "Most have two branches", "Most have five branches"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The three branches of government are legislative, executive, and ___.",
+        "answer": "judicial",
+        "distractors": ["military", "religious", "administrative"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/separation-of-powers",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Three glowing pillars labeled 'Legislative', 'Executive', 'Judicial' holding up a government building, pixel art style.",
+    "tags": ["political science", "democracy", "branches", "governance", "Montesquieu"]
+  },
+  {
+    "id": "general-polisci-political-spectrum",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "social_sciences",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "social_sciences",
+    "categoryL3": "political_science",
+    "statement": "The political spectrum ranges from left (progressive, socialist) to right (conservative, traditional), with centrist positions in between.",
+    "quizQuestion": "What does the political left generally favor?",
+    "correctAnswer": "Progressive social change",
+    "distractors": [
+      "Traditional social values",
+      "Reduced government power",
+      "Religious governance",
+      "Military expansion",
+      "Free market economics",
+      "Aristocratic rule",
+      "Territorial nationalism",
+      "Corporate deregulation"
+    ],
+    "acceptableAnswers": [
+      "Progressive social change",
+      "Progressive policies",
+      "Social reform"
+    ],
+    "explanation": "The left-right spectrum originated in the French Revolution's National Assembly, where conservatives sat on the right and reformers on the left. Today left broadly means progressive/socialist policies; right means conservative/traditional values.",
+    "wowFactor": "The terms 'left-wing' and 'right-wing' literally come from where people sat in the 1789 French National Assembly — a seating arrangement that shaped world politics forever.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where did the terms 'left-wing' and 'right-wing' politics originate?",
+        "answer": "French Revolution assembly",
+        "distractors": ["Ancient Greece", "Roman Senate", "British Parliament"]
+      },
+      {
+        "type": "reverse",
+        "question": "The political left-right spectrum was born during which revolution?",
+        "answer": "French Revolution",
+        "distractors": ["American Revolution", "Russian Revolution", "Industrial Revolution"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: 'Left-wing' and 'right-wing' originated from where people literally sat in 1789?",
+        "answer": "True",
+        "distractors": ["False", "The terms are metaphorical only", "They come from ancient Rome"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Left and right political terms came from seating in the ___ Revolution's assembly.",
+        "answer": "French",
+        "distractors": ["American", "Russian", "Industrial"]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/left-wing-and-right-wing",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Political topics — neutral framing maintained, purely historical origin",
+    "visualDescription": "A split assembly hall with revolutionaries in blue on the left and nobles in red on the right, 1789 Paris, pixel art style.",
+    "tags": ["political science", "left-right", "spectrum", "French Revolution", "politics"]
+  },
+  {
+    "id": "general-revolution-french",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "history",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "history",
+    "categoryL3": "revolutions",
+    "statement": "The French Revolution (1789–1799) overthrew the monarchy and aristocracy, establishing principles of liberty, equality, and fraternity.",
+    "quizQuestion": "What three ideals became the motto of the French Revolution?",
+    "correctAnswer": "Liberty, equality, fraternity",
+    "distractors": [
+      "Faith, hope, charity",
+      "Life, liberty, happiness",
+      "Freedom, justice, peace",
+      "Honor, duty, country",
+      "Power, glory, nation",
+      "Unity, progress, strength",
+      "Truth, reason, order",
+      "Justice, mercy, humility"
+    ],
+    "acceptableAnswers": [
+      "Liberty, equality, fraternity",
+      "Liberté, égalité, fraternité",
+      "Liberty equality brotherhood"
+    ],
+    "explanation": "The French Revolution's motto 'Liberté, égalité, fraternité' (Liberty, equality, fraternity) summarized Enlightenment ideals challenging divine right monarchy. It became France's national motto and influenced democratic movements worldwide.",
+    "wowFactor": "The guillotine was considered a humane innovation — before it, executions were prolonged torture. The French Revolution introduced it as an egalitarian death: the same for all classes.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What years did the French Revolution span?",
+        "answer": "1789 to 1799",
+        "distractors": ["1776 to 1783", "1815 to 1830", "1848 to 1871"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which revolution gave us the motto 'liberty, equality, fraternity'?",
+        "answer": "French Revolution",
+        "distractors": ["American Revolution", "Russian Revolution", "Glorious Revolution"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The French Revolution's motto became France's official national motto?",
+        "answer": "True",
+        "distractors": ["False", "It was abandoned after Napoleon", "It was only used temporarily"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The French Revolution's motto was liberty, ___, and fraternity.",
+        "answer": "equality",
+        "distractors": ["justice", "peace", "order"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Britannica",
+    "sourceUrl": "https://www.britannica.com/event/French-Revolution",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The storming of the Bastille fortress, crowds waving flags in blue, white and red, a rising sun behind the walls, pixel art style.",
+    "tags": ["French Revolution", "liberty", "equality", "history", "1789"]
+  },
+  {
+    "id": "general-revolution-american",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "history",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "history",
+    "categoryL3": "revolutions",
+    "statement": "The American Revolution (1775–1783) was a war of independence that established the United States as the first modern democratic republic.",
+    "quizQuestion": "What did the American Revolution establish?",
+    "correctAnswer": "First modern democratic republic",
+    "distractors": [
+      "First constitutional monarchy",
+      "First socialist state",
+      "First federal empire",
+      "First colonial dominion",
+      "First parliamentary democracy",
+      "First military republic",
+      "First aristocratic republic",
+      "First theocratic state"
+    ],
+    "acceptableAnswers": [
+      "First modern democratic republic",
+      "The United States",
+      "A democratic republic"
+    ],
+    "explanation": "The American Revolution ended British colonial rule and created a new nation governed by elected representatives and a written constitution — a radical experiment that influenced revolutions in France and across Latin America.",
+    "wowFactor": "The average age of the Founding Fathers who signed the Declaration of Independence was just 44 — and Thomas Jefferson wrote it at age 33.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How old was Thomas Jefferson when he wrote the Declaration of Independence?",
+        "answer": "33",
+        "distractors": ["55", "25", "45"]
+      },
+      {
+        "type": "reverse",
+        "question": "Which country's colonial rule ended with the American Revolution?",
+        "answer": "Great Britain",
+        "distractors": ["France", "Spain", "The Netherlands"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The American Revolution inspired later democratic revolutions in France and Latin America?",
+        "answer": "True",
+        "distractors": ["False", "It had no global influence", "Only France was influenced"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The American Revolution (1775–1783) established the US as a democratic ___.",
+        "answer": "republic",
+        "distractors": ["monarchy", "empire", "confederation"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Britannica",
+    "sourceUrl": "https://www.britannica.com/event/American-Revolution",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Minutemen crossing a river at dawn, colonial flags waving, a parchment Declaration glowing in the background, pixel art style.",
+    "tags": ["American Revolution", "independence", "democracy", "republic", "history"]
+  },
+  {
+    "id": "general-revolution-industrial",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "history",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "history",
+    "categoryL3": "revolutions",
+    "statement": "The Industrial Revolution began in Britain in the late 18th century, transforming manufacturing through steam power, factories, and mass production.",
+    "quizQuestion": "Where did the Industrial Revolution begin?",
+    "correctAnswer": "Britain",
+    "distractors": [
+      "France",
+      "Germany",
+      "United States",
+      "Netherlands",
+      "Belgium",
+      "Spain",
+      "Italy",
+      "Russia"
+    ],
+    "acceptableAnswers": [
+      "Britain",
+      "Great Britain",
+      "England",
+      "United Kingdom"
+    ],
+    "explanation": "Britain's Industrial Revolution began around 1760, driven by coal, iron, the steam engine, and textile mills. It transformed agrarian society into an urban industrial one and spread globally over the following century.",
+    "wowFactor": "Before the Industrial Revolution, a skilled weaver could produce one length of cloth per day. A single spinning jenny could do the work of 8 weavers — triggering riots from displaced workers.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In approximately what decade did the Industrial Revolution begin?",
+        "answer": "1760s",
+        "distractors": ["1820s", "1700s", "1850s"]
+      },
+      {
+        "type": "reverse",
+        "question": "Steam power and factories transforming production describes which revolution?",
+        "answer": "Industrial Revolution",
+        "distractors": ["French Revolution", "Agricultural Revolution", "Digital Revolution"]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Industrial Revolution began in Britain in the late 18th century?",
+        "answer": "True",
+        "distractors": ["False", "It began in France", "It began in the USA"]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Industrial Revolution began in ___ around 1760, powered by steam.",
+        "answer": "Britain",
+        "distractors": ["France", "Germany", "America"]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Britannica",
+    "sourceUrl": "https://www.britannica.com/event/Industrial-Revolution",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A British factory town with smoking chimneys, steam engines, and workers in silhouette against an orange industrial sky, pixel art style.",
+    "tags": ["Industrial Revolution", "Britain", "steam power", "factories", "history"]
+  }
+]

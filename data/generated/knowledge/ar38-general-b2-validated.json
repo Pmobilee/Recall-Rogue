@@ -1,0 +1,2134 @@
+[
+  {
+    "id": "general-unesco-world-heritage-count",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "culture_society",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "culture_society",
+    "categoryL3": "",
+    "statement": "UNESCO's World Heritage List recognizes over 1,100 sites of outstanding cultural or natural importance to humanity.",
+    "quizQuestion": "What does UNESCO's World Heritage List protect worldwide?",
+    "correctAnswer": "Outstanding cultural sites",
+    "distractors": [
+      "Endangered animal species",
+      "Historic world leaders",
+      "Ancient written languages",
+      "Sacred religious texts",
+      "Deep ocean trenches",
+      "Rare mineral deposits",
+      "Classified state secrets",
+      "Olympic host cities"
+    ],
+    "acceptableAnswers": [
+      "Outstanding cultural sites",
+      "Cultural and natural sites",
+      "Sites of cultural importance",
+      "Heritage sites"
+    ],
+    "explanation": "UNESCO established the World Heritage Convention in 1972 to identify and protect sites of outstanding universal value. As of 2024 there are over 1,100 inscribed sites across 167 countries.",
+    "wowFactor": "The Great Wall of China, the Galápagos Islands, and the Historic Centre of Rome are all on the same UNESCO list — a single document protecting humanity's most irreplaceable places.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year did UNESCO establish its World Heritage Convention?",
+        "answer": "1972",
+        "distractors": [
+          "1945",
+          "1989",
+          "1960"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which UN agency maintains the World Heritage List?",
+        "answer": "UNESCO",
+        "distractors": [
+          "UNICEF",
+          "WHO",
+          "UNEP"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: UNESCO's World Heritage List includes both natural and cultural sites?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Only cultural sites",
+          "Only natural sites"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "UNESCO's World Heritage List has over ___ inscribed sites worldwide.",
+        "answer": "1,100",
+        "distractors": [
+          "500",
+          "200",
+          "3,000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "UNESCO",
+    "sourceUrl": "https://whc.unesco.org/en/list/",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A mosaic of iconic landmarks — pyramids, rainforest, ancient temple — arranged in a glowing globe, pixel art style.",
+    "tags": [
+      "UNESCO",
+      "world heritage",
+      "culture",
+      "conservation",
+      "global"
+    ]
+  },
+  {
+    "id": "general-unesco-education-literacy",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "culture_society",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "culture_society",
+    "categoryL3": "",
+    "statement": "UNESCO leads global efforts to achieve universal literacy, and its data shows that around 763 million adults worldwide cannot read or write.",
+    "quizQuestion": "How many adults worldwide lack basic literacy according to UNESCO?",
+    "correctAnswer": "763 million",
+    "distractors": [
+      "100 million",
+      "50 million",
+      "2 billion",
+      "300 million",
+      "1.5 billion",
+      "10 million",
+      "500 million",
+      "4 billion"
+    ],
+    "acceptableAnswers": [
+      "763 million",
+      "About 763 million",
+      "Nearly 800 million"
+    ],
+    "explanation": "UNESCO tracks global literacy rates and advocates for Education for All. Literacy is defined as the ability to read and write a simple statement. Illiteracy disproportionately affects women and people in sub-Saharan Africa and South Asia.",
+    "wowFactor": "Two-thirds of the world's illiterate adults are women — a gender gap that UNESCO has been working to close since 1946.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What fraction of illiterate adults worldwide are women?",
+        "answer": "Two-thirds",
+        "distractors": [
+          "One-quarter",
+          "Half",
+          "One-third"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which UN body leads global campaigns against adult illiteracy?",
+        "answer": "UNESCO",
+        "distractors": [
+          "UNDP",
+          "ILO",
+          "UNICEF"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: UNESCO's data shows illiteracy affects more women than men globally?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Both equally",
+          "Data is unavailable"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "UNESCO was founded in ___ and has championed global education since.",
+        "answer": "1945",
+        "distractors": [
+          "1919",
+          "1960",
+          "1972"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "UNESCO",
+    "sourceUrl": "https://en.unesco.org/themes/literacy",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A child reading a glowing book under a lamp in a dark village, pixel art style.",
+    "tags": [
+      "UNESCO",
+      "literacy",
+      "education",
+      "global",
+      "women"
+    ]
+  },
+  {
+    "id": "general-unesco-founded-year",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "culture_society",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "culture_society",
+    "categoryL3": "",
+    "statement": "UNESCO — the United Nations Educational, Scientific and Cultural Organization — was founded in 1945 and is headquartered in Paris, France.",
+    "quizQuestion": "In what city is UNESCO's headquarters located?",
+    "correctAnswer": "Paris",
+    "distractors": [
+      "Geneva",
+      "New York",
+      "Brussels",
+      "London",
+      "Vienna",
+      "Nairobi",
+      "Zurich",
+      "Rome"
+    ],
+    "acceptableAnswers": [
+      "Paris",
+      "Paris, France"
+    ],
+    "explanation": "UNESCO was created in November 1945 in London and moved its headquarters to Paris in 1946. Its mission spans education, science, culture, communication, and information.",
+    "wowFactor": "UNESCO's Paris headquarters sits on the site of a former 18th-century convent — and one of its artworks is a massive mobile by Alexander Calder hanging in the lobby.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does the 'C' in UNESCO stand for?",
+        "answer": "Cultural",
+        "distractors": [
+          "Communication",
+          "Commerce",
+          "Conservation"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which year was UNESCO established as a UN agency?",
+        "answer": "1945",
+        "distractors": [
+          "1950",
+          "1919",
+          "1960"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: UNESCO is headquartered in Geneva, Switzerland?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Partially correct",
+          "It has no fixed HQ"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "UNESCO stands for United Nations Educational, ___ and Cultural Organization.",
+        "answer": "Scientific",
+        "distractors": [
+          "Social",
+          "Strategic",
+          "Sustainable"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 4,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/UNESCO",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A grand Parisian building with the UNESCO logo on its facade, flags of many nations flying outside, pixel art style.",
+    "tags": [
+      "UNESCO",
+      "United Nations",
+      "Paris",
+      "education",
+      "founded"
+    ]
+  },
+  {
+    "id": "general-edison-lightbulb",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "everyday_science",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "everyday_science",
+    "categoryL3": "",
+    "statement": "Thomas Edison developed a practical incandescent lightbulb in 1879 that could burn for about 13.5 hours — the first commercially viable electric light.",
+    "quizQuestion": "What did Thomas Edison make practical in 1879?",
+    "correctAnswer": "Incandescent lightbulb",
+    "distractors": [
+      "Steam engine",
+      "Telegraph",
+      "Electric motor",
+      "Radio transmitter",
+      "Telephone",
+      "Diesel engine",
+      "Solar panel",
+      "Arc lamp"
+    ],
+    "acceptableAnswers": [
+      "Incandescent lightbulb",
+      "Light bulb",
+      "Electric lightbulb",
+      "Lightbulb"
+    ],
+    "explanation": "Edison's lightbulb used a carbonized bamboo filament and lasted long enough to be commercially practical. He also built an entire electric distribution system to power homes and businesses.",
+    "wowFactor": "Edison tested over 6,000 different materials as a filament before bamboo worked — including hair from a colleague's beard.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What material did Edison use as a filament in his first successful lightbulb?",
+        "answer": "Carbonized bamboo",
+        "distractors": [
+          "Copper wire",
+          "Gold thread",
+          "Glass fiber"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Approximately how long did Edison's first practical lightbulb burn?",
+        "answer": "13.5 hours",
+        "distractors": [
+          "1 hour",
+          "100 hours",
+          "30 minutes"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Edison invented the very first electric light ever created?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "He co-invented it",
+          "Records are unclear"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Edison made a practical incandescent lightbulb in ___.",
+        "answer": "1879",
+        "distractors": [
+          "1900",
+          "1865",
+          "1895"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Incandescent_light_bulb",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing lightbulb in a dark workshop, filament visible as a tiny orange coil, tools and notebooks around it, pixel art style.",
+    "tags": [
+      "Edison",
+      "lightbulb",
+      "invention",
+      "electricity",
+      "1879"
+    ]
+  },
+  {
+    "id": "general-edison-phonograph",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "everyday_science",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "everyday_science",
+    "categoryL3": "",
+    "statement": "Thomas Edison invented the phonograph in 1877, the first device ever capable of recording and playing back sound.",
+    "quizQuestion": "What was the first device that could record and play back sound?",
+    "correctAnswer": "Phonograph",
+    "distractors": [
+      "Gramophone",
+      "Telephone",
+      "Telegraph",
+      "Radio",
+      "Microphone",
+      "Tape recorder",
+      "Turntable",
+      "Megaphone"
+    ],
+    "acceptableAnswers": [
+      "Phonograph",
+      "Edison's phonograph",
+      "The phonograph"
+    ],
+    "explanation": "Edison invented the phonograph in 1877. It recorded sound by engraving a groove onto a rotating tinfoil cylinder. The first words ever recorded and played back were 'Mary had a little lamb.'",
+    "wowFactor": "When Edison played back the first recording — himself reciting 'Mary had a little lamb' — his assistants reportedly thought it was a trick and refused to believe the machine had actually spoken.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What were the first words Edison recorded on his phonograph?",
+        "answer": "Mary had a little lamb",
+        "distractors": [
+          "Hello, world",
+          "Testing, one two three",
+          "God save the Queen"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In what year did Edison invent the phonograph?",
+        "answer": "1877",
+        "distractors": [
+          "1890",
+          "1865",
+          "1900"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The phonograph used tinfoil cylinders to record sound?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It used wax discs",
+          "It used magnetic tape"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Edison's phonograph, invented in 1877, was the first device to ___ sound.",
+        "answer": "record and play back",
+        "distractors": [
+          "amplify",
+          "transmit wirelessly",
+          "digitally encode"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Phonograph",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A brass phonograph horn over a spinning tinfoil cylinder, sound waves radiating outward, pixel art style.",
+    "tags": [
+      "Edison",
+      "phonograph",
+      "sound recording",
+      "invention",
+      "1877"
+    ]
+  },
+  {
+    "id": "general-edison-patents",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "everyday_science",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "everyday_science",
+    "categoryL3": "",
+    "statement": "Thomas Edison holds 1,093 US patents — more than any other inventor in American history — earning him the nickname 'The Wizard of Menlo Park'.",
+    "quizQuestion": "How many US patents did Thomas Edison hold?",
+    "correctAnswer": "1,093",
+    "distractors": [
+      "52",
+      "300",
+      "750",
+      "2,000",
+      "450",
+      "150",
+      "3,500",
+      "875"
+    ],
+    "acceptableAnswers": [
+      "1,093",
+      "Over 1,000",
+      "1093"
+    ],
+    "explanation": "Edison's Menlo Park laboratory in New Jersey was the world's first industrial research lab. He famously said invention is '1% inspiration and 99% perspiration', reflecting his systematic approach to discovery.",
+    "wowFactor": "Edison set himself a goal of producing a minor invention every 10 days and a major one every 6 months — and for years he actually hit that pace.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What nickname was Edison given for his prolific inventing at Menlo Park?",
+        "answer": "The Wizard of Menlo Park",
+        "distractors": [
+          "The Lightning King",
+          "The Iron Inventor",
+          "The Master of Machines"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In which US state was Edison's famous Menlo Park laboratory?",
+        "answer": "New Jersey",
+        "distractors": [
+          "New York",
+          "Ohio",
+          "Pennsylvania"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Edison held more US patents than any other inventor in American history?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "He shared the record",
+          "Records were not kept then"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Edison said invention is 1% inspiration and 99% ___.",
+        "answer": "perspiration",
+        "distractors": [
+          "imagination",
+          "luck",
+          "funding"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Thomas_Edison",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A wall covered in framed patents, a wizard hat and lab coat hanging nearby, glowing inventions on a workbench, pixel art style.",
+    "tags": [
+      "Edison",
+      "patents",
+      "invention",
+      "Menlo Park",
+      "American history"
+    ]
+  },
+  {
+    "id": "general-human-rights-udhr-year",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "culture_society",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "culture_society",
+    "categoryL3": "",
+    "statement": "The Universal Declaration of Human Rights was adopted by the UN General Assembly on December 10, 1948, establishing 30 fundamental rights for all people.",
+    "quizQuestion": "In what year was the Universal Declaration of Human Rights adopted?",
+    "correctAnswer": "1948",
+    "distractors": [
+      "1919",
+      "1945",
+      "1960",
+      "1975",
+      "1933",
+      "1952",
+      "1918",
+      "1965"
+    ],
+    "acceptableAnswers": [
+      "1948",
+      "December 1948"
+    ],
+    "explanation": "The UDHR was drafted after World War II as a response to the Holocaust and wartime atrocities. Eleanor Roosevelt chaired the drafting committee. It has been translated into over 500 languages.",
+    "wowFactor": "The UDHR is the most translated document in history, appearing in over 500 languages — including constructed languages like Esperanto.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who chaired the committee that drafted the Universal Declaration of Human Rights?",
+        "answer": "Eleanor Roosevelt",
+        "distractors": [
+          "Harry Truman",
+          "Winston Churchill",
+          "Mahatma Gandhi"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many fundamental rights does the UDHR establish?",
+        "answer": "30",
+        "distractors": [
+          "10",
+          "50",
+          "25"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Universal Declaration of Human Rights was adopted in response to World War II atrocities?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It predates WW2",
+          "It was purely philosophical"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The UDHR is the most ___ document in history with 500+ translations.",
+        "answer": "translated",
+        "distractors": [
+          "quoted",
+          "debated",
+          "amended"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "United Nations",
+    "sourceUrl": "https://www.un.org/en/about-us/universal-declaration-of-human-rights",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing scroll with 30 articles listed, surrounded by flags of many nations, rays of light emanating from it, pixel art style.",
+    "tags": [
+      "human rights",
+      "UDHR",
+      "United Nations",
+      "1948",
+      "Eleanor Roosevelt"
+    ]
+  },
+  {
+    "id": "general-human-rights-article-one",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "culture_society",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "culture_society",
+    "categoryL3": "",
+    "statement": "Article 1 of the UDHR states: 'All human beings are born free and equal in dignity and rights.'",
+    "quizQuestion": "What does Article 1 of the UDHR declare all humans are born with?",
+    "correctAnswer": "Equal dignity and rights",
+    "distractors": [
+      "Right to vote",
+      "Access to education",
+      "Freedom of speech",
+      "Property ownership",
+      "Right to a trial",
+      "National citizenship",
+      "Economic equality",
+      "Right to bear arms"
+    ],
+    "acceptableAnswers": [
+      "Equal dignity and rights",
+      "Freedom and equal rights",
+      "Dignity and rights",
+      "Free and equal in dignity"
+    ],
+    "explanation": "Article 1 sets the philosophical foundation for the entire UDHR. It asserts that rights are inherent to all humans — not granted by governments — and that all people must treat each other with a spirit of brotherhood.",
+    "wowFactor": "The phrase 'born free and equal' was controversial to draft — some nations wanted it to apply only to citizens, not all human beings. The universal scope almost didn't make it in.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "According to the UDHR, where do human rights come from?",
+        "answer": "Inherent to all humans",
+        "distractors": [
+          "Granted by governments",
+          "Awarded by courts",
+          "Earned through citizenship"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which article of the UDHR declares humans born free and equal?",
+        "answer": "Article 1",
+        "distractors": [
+          "Article 5",
+          "Article 10",
+          "The Preamble"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The UDHR states that governments grant human rights to citizens?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Only in democracies",
+          "It varies by article"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "UDHR Article 1: 'All human beings are born free and equal in ___ and rights.'",
+        "answer": "dignity",
+        "distractors": [
+          "law",
+          "wealth",
+          "status"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "United Nations",
+    "sourceUrl": "https://www.un.org/en/about-us/universal-declaration-of-human-rights",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing Article 1 text carved into a stone tablet, crowds of diverse people standing beneath it in unity, pixel art style.",
+    "tags": [
+      "human rights",
+      "UDHR",
+      "Article 1",
+      "dignity",
+      "equality"
+    ]
+  },
+  {
+    "id": "general-human-rights-international-day",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "culture_society",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "culture_society",
+    "categoryL3": "",
+    "statement": "Human Rights Day is observed every year on December 10 — the anniversary of the UDHR's adoption in 1948.",
+    "quizQuestion": "On what date is Human Rights Day observed each year?",
+    "correctAnswer": "December 10",
+    "distractors": [
+      "January 1",
+      "November 11",
+      "July 4",
+      "March 8",
+      "June 26",
+      "October 24",
+      "April 22",
+      "September 21"
+    ],
+    "acceptableAnswers": [
+      "December 10",
+      "10 December",
+      "December 10th"
+    ],
+    "explanation": "The UN General Assembly established Human Rights Day in 1950, designating December 10 to commemorate the UDHR's adoption date. It is used to highlight human rights abuses and advocacy worldwide.",
+    "wowFactor": "December 10 is also World Football (Soccer) Day — because the first FIFA World Cup final was played on December 10, 1932. Two very different December 10 milestones.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year did the UN establish Human Rights Day as an annual observance?",
+        "answer": "1950",
+        "distractors": [
+          "1948",
+          "1960",
+          "1945"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Why is December 10 chosen as Human Rights Day?",
+        "answer": "UDHR adoption anniversary",
+        "distractors": [
+          "End of World War II",
+          "UN founding date",
+          "First peace treaty signed"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Human Rights Day is observed on December 10 each year?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It changes each year",
+          "It's in November"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Human Rights Day falls on ___, the anniversary of the UDHR adoption.",
+        "answer": "December 10",
+        "distractors": [
+          "January 1",
+          "October 24",
+          "March 21"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 4,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "United Nations",
+    "sourceUrl": "https://www.un.org/en/observances/human-rights-day",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A calendar page showing December 10 glowing with the UN symbol, crowds celebrating peacefully below, pixel art style.",
+    "tags": [
+      "human rights",
+      "December 10",
+      "UN",
+      "observance",
+      "UDHR"
+    ]
+  },
+  {
+    "id": "general-soccer-most-popular",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "sports_games",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "sports_games",
+    "categoryL3": "",
+    "statement": "Association football (soccer) is the world's most popular sport, with an estimated 4 billion fans and over 265 million active players globally.",
+    "quizQuestion": "What is the world's most popular sport by fan count?",
+    "correctAnswer": "Soccer (football)",
+    "distractors": [
+      "Basketball",
+      "Cricket",
+      "Tennis",
+      "Baseball",
+      "Rugby",
+      "Volleyball",
+      "Swimming",
+      "Golf"
+    ],
+    "acceptableAnswers": [
+      "Soccer (football)",
+      "Football",
+      "Soccer",
+      "Association football"
+    ],
+    "explanation": "Soccer's popularity spans every continent. FIFA estimates over 265 million registered players. The FIFA World Cup is the most watched sporting event in history, with over 3.5 billion viewers in 2018.",
+    "wowFactor": "The 2022 FIFA World Cup final between Argentina and France drew an estimated 1.5 billion viewers — roughly 1 in 5 people on Earth watched a single match.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many people watched the 2022 FIFA World Cup final?",
+        "answer": "1.5 billion",
+        "distractors": [
+          "500 million",
+          "100 million",
+          "3 billion"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many registered soccer players does FIFA estimate worldwide?",
+        "answer": "265 million",
+        "distractors": [
+          "50 million",
+          "1 billion",
+          "10 million"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Cricket has more fans worldwide than soccer?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "They are equal",
+          "No data exists"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Soccer has an estimated ___ fans worldwide, making it the most popular sport.",
+        "answer": "4 billion",
+        "distractors": [
+          "500 million",
+          "1 billion",
+          "2 billion"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 6,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "FIFA",
+    "sourceUrl": "https://www.fifa.com/about-fifa/who-we-are/the-game/",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A soccer ball flying into a goal net in a packed stadium, fans roaring under a sunset sky, pixel art style.",
+    "tags": [
+      "soccer",
+      "football",
+      "FIFA",
+      "sport",
+      "popular"
+    ]
+  },
+  {
+    "id": "general-soccer-world-cup-history",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "sports_games",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "sports_games",
+    "categoryL3": "",
+    "statement": "The first FIFA World Cup was held in Uruguay in 1930, with Uruguay winning the inaugural tournament as hosts.",
+    "quizQuestion": "Which country hosted and won the first FIFA World Cup?",
+    "correctAnswer": "Uruguay",
+    "distractors": [
+      "Brazil",
+      "Argentina",
+      "England",
+      "Germany",
+      "France",
+      "Italy",
+      "Spain",
+      "Portugal"
+    ],
+    "acceptableAnswers": [
+      "Uruguay",
+      "Uruguay (1930)"
+    ],
+    "explanation": "The first World Cup took place in July 1930 in Uruguay, which was chosen partly to celebrate the country's centenary of independence. Only 13 national teams participated. Uruguay defeated Argentina 4-2 in the final.",
+    "wowFactor": "Several European nations boycotted the 1930 World Cup because of the expensive trans-Atlantic voyage — only France, Belgium, Romania, and Yugoslavia made the trip from Europe.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year was the first FIFA World Cup held?",
+        "answer": "1930",
+        "distractors": [
+          "1920",
+          "1938",
+          "1950"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who did Uruguay defeat in the 1930 World Cup final?",
+        "answer": "Argentina",
+        "distractors": [
+          "Brazil",
+          "England",
+          "Italy"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: England hosted the first FIFA World Cup in 1930?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "England co-hosted it",
+          "It wasn't held in 1930"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The first FIFA World Cup was held in ___ in 1930.",
+        "answer": "Uruguay",
+        "distractors": [
+          "Brazil",
+          "France",
+          "Italy"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "FIFA",
+    "sourceUrl": "https://www.fifa.com/about-fifa/history/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A trophy being lifted under fireworks above a Uruguayan stadium in 1930, players celebrating in vintage kits, pixel art style.",
+    "tags": [
+      "FIFA",
+      "World Cup",
+      "Uruguay",
+      "1930",
+      "football history"
+    ]
+  },
+  {
+    "id": "general-soccer-offsides-rule",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "sports_games",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "sports_games",
+    "categoryL3": "",
+    "statement": "In soccer, a player is offside if they are closer to the opponent's goal line than both the ball and the second-to-last defender when the ball is played to them.",
+    "quizQuestion": "What makes a soccer player offside when the ball is passed to them?",
+    "correctAnswer": "Ahead of last defender",
+    "distractors": [
+      "Standing in the penalty box",
+      "Being faster than defenders",
+      "Touching the ball twice",
+      "Running from own half",
+      "Handling the ball",
+      "Blocking the goalkeeper",
+      "Staying behind midfield",
+      "Not facing the ball"
+    ],
+    "acceptableAnswers": [
+      "Ahead of last defender",
+      "Closer to goal than last defender",
+      "Beyond the second-to-last defender"
+    ],
+    "explanation": "The offside rule prevents goal-hanging. A player must have at least two opponents (usually the goalkeeper and one outfield player) between them and the goal when the ball is played. VAR technology now detects offsides within millimeters.",
+    "wowFactor": "In 2021, VAR technology began using 3D body-mapping to track individual body parts for offside calls — meaning a player's armpit can legally be offside while their feet are not.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many opponents must be between an attacker and the goal to avoid offside?",
+        "answer": "Two",
+        "distractors": [
+          "One",
+          "Three",
+          "Four"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What technology does modern soccer use to detect offside positions precisely?",
+        "answer": "VAR",
+        "distractors": [
+          "Goal-line technology",
+          "GPS tracking",
+          "Infrared sensors"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A player cannot be offside if they are in their own half of the field?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Only in extra time",
+          "Depends on the referee"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "VAR 3D body-mapping can flag individual body ___ as offside in soccer.",
+        "answer": "parts",
+        "distractors": [
+          "shadows",
+          "jerseys",
+          "cleats"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "FIFA",
+    "sourceUrl": "https://www.fifa.com/technical/football-technology/standards/var/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A freeze-frame of a soccer attack with a glowing offside line drawn across the field, a player's shoulder highlighted, pixel art style.",
+    "tags": [
+      "soccer",
+      "football",
+      "offside",
+      "rules",
+      "VAR"
+    ]
+  },
+  {
+    "id": "general-money-first-coins",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "history_society",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "history_society",
+    "categoryL3": "",
+    "statement": "The world's first coins were minted in Lydia (modern Turkey) around 600 BC, made from electrum — a natural alloy of gold and silver.",
+    "quizQuestion": "Where were the world's first coins minted around 600 BC?",
+    "correctAnswer": "Lydia (Turkey)",
+    "distractors": [
+      "Ancient Egypt",
+      "Ancient Greece",
+      "Mesopotamia",
+      "Ancient China",
+      "Ancient Rome",
+      "Persia",
+      "India",
+      "Carthage"
+    ],
+    "acceptableAnswers": [
+      "Lydia (Turkey)",
+      "Lydia",
+      "Ancient Lydia",
+      "Modern-day Turkey"
+    ],
+    "explanation": "Lydian coins were stamped with a lion's head and made of electrum. Before coins, people used commodity money like grain, cattle, or metal by weight. Lydian coinage spread rapidly and became the model for Greek and later Roman currency.",
+    "wowFactor": "The richest man in ancient history, King Croesus of Lydia, introduced the first pure gold and silver coins around 550 BC — giving us the phrase 'rich as Croesus'.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What material were the world's first Lydian coins made from?",
+        "answer": "Electrum",
+        "distractors": [
+          "Pure gold",
+          "Bronze",
+          "Iron"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which ancient Lydian king introduced pure gold and silver coins around 550 BC?",
+        "answer": "Croesus",
+        "distractors": [
+          "Midas",
+          "Cyrus",
+          "Darius"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The world's first coins were minted in ancient Egypt?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Egypt co-developed coins",
+          "The origin is unknown"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The first coins were minted in Lydia around 600 BC from ___, a gold-silver alloy.",
+        "answer": "electrum",
+        "distractors": [
+          "bronze",
+          "copper",
+          "platinum"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lydian_lion",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ancient Lydian electrum coins with a lion's head stamp, displayed on a merchant's cloth in a market stall, pixel art style.",
+    "tags": [
+      "money",
+      "coins",
+      "Lydia",
+      "ancient history",
+      "currency"
+    ]
+  },
+  {
+    "id": "general-money-paper-currency",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "history_society",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "history_society",
+    "categoryL3": "",
+    "statement": "Paper money was invented in China during the Tang Dynasty around 618 AD, centuries before it reached Europe in the 17th century.",
+    "quizQuestion": "Which civilization invented paper money first?",
+    "correctAnswer": "China",
+    "distractors": [
+      "Ancient Rome",
+      "Medieval England",
+      "Ottoman Empire",
+      "Byzantine Empire",
+      "Mongol Empire",
+      "Ancient Persia",
+      "Medieval France",
+      "Ancient Egypt"
+    ],
+    "acceptableAnswers": [
+      "China",
+      "Ancient China",
+      "Chinese civilization"
+    ],
+    "explanation": "Early paper money in China began as receipts called 'flying money' used by merchants. The Song Dynasty (960-1279 AD) issued the first government-backed paper currency called Jiaozi. Marco Polo described it in his travels and Europeans were astonished.",
+    "wowFactor": "When Marco Polo described Chinese paper money to Europeans, they didn't believe him — the idea that a piece of paper could replace gold seemed like fantasy.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the first government-backed paper currency in China called?",
+        "answer": "Jiaozi",
+        "distractors": [
+          "Yuan",
+          "Fei-qian",
+          "Renminbi"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "During which Chinese dynasty was paper currency first used by merchants?",
+        "answer": "Tang Dynasty",
+        "distractors": [
+          "Han Dynasty",
+          "Ming Dynasty",
+          "Qing Dynasty"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Paper money reached Europe before it was used in China?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "They developed it simultaneously",
+          "Paper money originated in the Middle East"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Marco Polo described ___ paper money to disbelieving Europeans in the 13th century.",
+        "answer": "Chinese",
+        "distractors": [
+          "Arab",
+          "Persian",
+          "Indian"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Jiaozi_(currency)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Tang Dynasty merchant holding a sheet of 'flying money', silk road caravans in the background, pixel art style.",
+    "tags": [
+      "money",
+      "paper currency",
+      "China",
+      "Tang Dynasty",
+      "history"
+    ]
+  },
+  {
+    "id": "general-money-barter-origins",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "history_society",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "history_society",
+    "categoryL3": "",
+    "statement": "Before coins existed, humans used a barter system — trading goods and services directly — with items like grain, cattle, salt, and shells serving as commodity money.",
+    "quizQuestion": "What system did humans use to trade before coins existed?",
+    "correctAnswer": "Barter",
+    "distractors": [
+      "Credit",
+      "Taxation",
+      "Ledger accounts",
+      "Debt tokens",
+      "Gift exchange",
+      "Tally sticks",
+      "Promissory notes",
+      "Auction"
+    ],
+    "acceptableAnswers": [
+      "Barter",
+      "Barter system",
+      "Bartering"
+    ],
+    "explanation": "Barter requires a 'double coincidence of wants' — both parties must want what the other has. This limitation drove the invention of commodity money and eventually coinage. Salt was so valuable as a commodity that Roman soldiers were paid in it — the origin of the word 'salary'.",
+    "wowFactor": "The word 'salary' comes from the Latin 'salarium', meaning salt payment — because Roman soldiers were sometimes paid in salt, which was precious enough to be used as currency.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What word derives from the Latin for 'salt payment' to Roman soldiers?",
+        "answer": "Salary",
+        "distractors": [
+          "Wage",
+          "Fee",
+          "Stipend"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What economic problem makes pure barter inefficient compared to money?",
+        "answer": "Double coincidence of wants",
+        "distractors": [
+          "Inflation",
+          "Debt accumulation",
+          "Supply shortage"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Roman soldiers were sometimes paid with salt, giving us the word 'salary'?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Only in legends",
+          "Salary has a different origin"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The word 'salary' comes from the Latin 'salarium', meaning payment in ___.",
+        "answer": "salt",
+        "distractors": [
+          "silver",
+          "grain",
+          "gold"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Salary",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Roman soldier receiving a sack of salt as payment, a market stall behind him with grain and cattle, pixel art style.",
+    "tags": [
+      "money",
+      "barter",
+      "salt",
+      "salary",
+      "ancient history"
+    ]
+  },
+  {
+    "id": "general-german-language-speakers",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "language_linguistics",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "language_linguistics",
+    "categoryL3": "",
+    "statement": "German is spoken by about 100 million people as a native language, making it the most widely spoken native language in the European Union.",
+    "quizQuestion": "Which language is the most widely spoken native language in the EU?",
+    "correctAnswer": "German",
+    "distractors": [
+      "French",
+      "Spanish",
+      "Italian",
+      "Polish",
+      "English",
+      "Portuguese",
+      "Dutch",
+      "Romanian"
+    ],
+    "acceptableAnswers": [
+      "German",
+      "Deutsch"
+    ],
+    "explanation": "Although English is the most widely used lingua franca in Europe, German has the most native speakers within EU member states — about 100 million across Germany, Austria, and parts of Switzerland, Belgium, and Luxembourg.",
+    "wowFactor": "German has no official regulating body — unlike French (Académie française) — meaning new words are simply adopted through use, leading to creative compounds like 'Donaudampfschifffahrtsgesellschaft' (Danube steamship company).",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many native German speakers are there worldwide?",
+        "answer": "100 million",
+        "distractors": [
+          "40 million",
+          "300 million",
+          "20 million"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which EU country is the largest German-speaking nation by population?",
+        "answer": "Germany",
+        "distractors": [
+          "Austria",
+          "Switzerland",
+          "Belgium"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: German has an official language academy like France's Académie française?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Only for spelling",
+          "It's the Goethe Institute"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "German is the most widely spoken ___ language in the European Union.",
+        "answer": "native",
+        "distractors": [
+          "official",
+          "business",
+          "academic"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/German_language",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A map of Europe with German-speaking regions glowing in gold, a textbook open to a long compound word, pixel art style.",
+    "tags": [
+      "German",
+      "language",
+      "EU",
+      "linguistics",
+      "speakers"
+    ]
+  },
+  {
+    "id": "general-german-compound-words",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "language_linguistics",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "language_linguistics",
+    "categoryL3": "",
+    "statement": "German is famous for its compound words — nouns built by stacking existing words together, creating highly specific single words for complex concepts.",
+    "quizQuestion": "What linguistic feature is German famous for creating very long words?",
+    "correctAnswer": "Compound nouns",
+    "distractors": [
+      "Gendered articles",
+      "Verb conjugations",
+      "Silent consonants",
+      "Tonal pronunciations",
+      "Irregular plurals",
+      "Postpositions",
+      "Click sounds",
+      "Vowel harmony"
+    ],
+    "acceptableAnswers": [
+      "Compound nouns",
+      "Compound words",
+      "Compounding"
+    ],
+    "explanation": "German compounds words freely: 'Fingerspitzengefühl' (fingertip-feeling) means intuitive sensitivity; 'Weltschmerz' (world-pain) means existential sadness about the state of the world. Many German emotional concepts have no direct English equivalent.",
+    "wowFactor": "'Schadenfreude' — pleasure at another's misfortune — entered English directly from German because English had no word for that specific feeling.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does the German word 'Schadenfreude' mean in English?",
+        "answer": "Pleasure at others' misfortune",
+        "distractors": [
+          "Deep sadness",
+          "Guilty pleasure",
+          "Nostalgic longing"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What does the German compound 'Weltschmerz' literally translate to?",
+        "answer": "World-pain",
+        "distractors": [
+          "World peace",
+          "Global sadness",
+          "Earth-ache"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: German compound words must always be written as one word?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Only nouns",
+          "It depends on length"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The German word 'Fingerspitzengefühl' literally means 'fingertip-___'.",
+        "answer": "feeling",
+        "distractors": [
+          "touch",
+          "sense",
+          "knowledge"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Compound_(linguistics)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Stacks of word blocks being snapped together like Lego to form one enormous German word, pixel art style.",
+    "tags": [
+      "German",
+      "compound words",
+      "linguistics",
+      "Schadenfreude",
+      "language"
+    ]
+  },
+  {
+    "id": "general-german-alphabet-umlaut",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "language_linguistics",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "language_linguistics",
+    "categoryL3": "",
+    "statement": "The German alphabet has 30 letters — the standard 26 Latin letters plus four special characters: ä, ö, ü, and ß (Eszett).",
+    "quizQuestion": "How many letters does the German alphabet have?",
+    "correctAnswer": "30",
+    "distractors": [
+      "26",
+      "28",
+      "32",
+      "24",
+      "36",
+      "29",
+      "33",
+      "25"
+    ],
+    "acceptableAnswers": [
+      "30",
+      "Thirty"
+    ],
+    "explanation": "German uses three umlauted vowels (ä, ö, ü) and the ligature ß (Eszett or sharp S). The ß was reformed in 1996 and is used after long vowels and diphthongs. In 2017, the capital ẞ was officially added to the alphabet.",
+    "wowFactor": "Until 2017, German had no official capital version of ß — typists used 'SS' instead. When the capital ẞ was finally standardized, it ended a 130-year typographic debate.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What are the three umlauted vowels in the German alphabet?",
+        "answer": "Ä, Ö, Ü",
+        "distractors": [
+          "Â, Ê, Î",
+          "À, È, Ì",
+          "Å, Ø, Æ"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the German special letter ß also called in English?",
+        "answer": "Eszett or sharp S",
+        "distractors": [
+          "Umlaut",
+          "Ligature mark",
+          "Sibilant sigma"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A capital version of the letter ß was officially added to German in 2017?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It was added in 1945",
+          "German has no capital ß"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The German alphabet has ___ letters, including four special characters.",
+        "answer": "30",
+        "distractors": [
+          "26",
+          "28",
+          "32"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/German_orthography",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A chalkboard displaying the four special German letters ä, ö, ü, ß in chalk, with a Berlin backdrop, pixel art style.",
+    "tags": [
+      "German",
+      "alphabet",
+      "umlaut",
+      "Eszett",
+      "language"
+    ]
+  },
+  {
+    "id": "general-sociology-definition",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "everyday_science",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "everyday_science",
+    "categoryL3": "",
+    "statement": "Sociology is the scientific study of society, social behavior, and human relationships — a discipline coined by Auguste Comte in the 19th century.",
+    "quizQuestion": "Who coined the term 'sociology' as a scientific discipline?",
+    "correctAnswer": "Auguste Comte",
+    "distractors": [
+      "Karl Marx",
+      "Max Weber",
+      "Émile Durkheim",
+      "Sigmund Freud",
+      "Herbert Spencer",
+      "Georg Simmel",
+      "Alexis de Tocqueville",
+      "Adam Smith"
+    ],
+    "acceptableAnswers": [
+      "Auguste Comte",
+      "Comte"
+    ],
+    "explanation": "Auguste Comte coined 'sociology' in 1838, believing society could be studied using scientific methods like the natural sciences. He is considered the father of sociology. Émile Durkheim later established sociology as an academic discipline with rigorous methodology.",
+    "wowFactor": "Comte originally called the new science 'social physics' before switching to 'sociology' — he changed the name because a statistician had already stolen 'social physics' for his own work.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year did Auguste Comte coin the term 'sociology'?",
+        "answer": "1838",
+        "distractors": [
+          "1789",
+          "1900",
+          "1859"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What did Auguste Comte originally want to call sociology before switching the name?",
+        "answer": "Social physics",
+        "distractors": [
+          "Social science",
+          "Human ecology",
+          "Civil philosophy"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Émile Durkheim coined the word 'sociology'?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Durkheim and Comte together",
+          "The word has no single inventor"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Auguste Comte coined 'sociology' in 1838, believing society could be studied like the ___ sciences.",
+        "answer": "natural",
+        "distractors": [
+          "mathematical",
+          "political",
+          "physical"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Auguste_Comte",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A bearded 19th-century scholar surrounded by diagrams of social pyramids and crowd behavior charts, pixel art style.",
+    "tags": [
+      "sociology",
+      "Auguste Comte",
+      "social science",
+      "history",
+      "academia"
+    ]
+  },
+  {
+    "id": "general-sociology-durkheim-suicide",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "everyday_science",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "everyday_science",
+    "categoryL3": "",
+    "statement": "Émile Durkheim's 1897 book 'Suicide' showed that even personal acts like suicide are influenced by social forces — a landmark of sociological method.",
+    "quizQuestion": "What did Durkheim's study of suicide prove about human behavior?",
+    "correctAnswer": "Social forces shape it",
+    "distractors": [
+      "It is purely genetic",
+      "Religion prevents it",
+      "Only poverty causes it",
+      "Mental illness explains all",
+      "It is entirely random",
+      "Economics determines it",
+      "Age predicts it",
+      "Geography controls it"
+    ],
+    "acceptableAnswers": [
+      "Social forces shape it",
+      "Social factors influence it",
+      "It is shaped by society"
+    ],
+    "explanation": "Durkheim analyzed statistical patterns of suicide across different countries and found correlations with social integration and regulation. He identified four types: egoistic, altruistic, anomic, and fatalistic. This work established sociology's scientific legitimacy.",
+    "wowFactor": "Durkheim found that Protestant countries had higher suicide rates than Catholic ones — not because of theology, but because Protestant communities had weaker social bonds. Data over 120 years old still holds up.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year did Durkheim publish his landmark book 'Suicide'?",
+        "answer": "1897",
+        "distractors": [
+          "1859",
+          "1920",
+          "1875"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What did Durkheim call the type of suicide caused by excessive social regulation?",
+        "answer": "Fatalistic",
+        "distractors": [
+          "Egoistic",
+          "Altruistic",
+          "Anomic"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Durkheim showed that individual acts like suicide are shaped by social factors?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Only for anomic suicide",
+          "He disproved this idea"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Durkheim found Protestant countries had higher suicide rates due to weaker ___ bonds.",
+        "answer": "social",
+        "distractors": [
+          "economic",
+          "family",
+          "religious"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "adult",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/%C3%89mile_Durkheim",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "Discusses suicide as sociological topic — appropriate for adult academic context only.",
+    "visualDescription": "A scholarly desk with statistical charts and ledgers, the word 'SOCIOLOGY' carved above an arched library entrance, pixel art style.",
+    "tags": [
+      "sociology",
+      "Durkheim",
+      "social science",
+      "suicide study",
+      "methodology"
+    ]
+  },
+  {
+    "id": "general-sociology-social-stratification",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "everyday_science",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "everyday_science",
+    "categoryL3": "",
+    "statement": "Social stratification refers to the hierarchical arrangement of individuals in society based on wealth, power, prestige, or social class.",
+    "quizQuestion": "What sociological concept describes society arranged in class hierarchies?",
+    "correctAnswer": "Social stratification",
+    "distractors": [
+      "Cultural diffusion",
+      "Social mobility",
+      "Socialization",
+      "Role conflict",
+      "Social norms",
+      "Deviance theory",
+      "Group dynamics",
+      "Social capital"
+    ],
+    "acceptableAnswers": [
+      "Social stratification",
+      "Stratification",
+      "Class stratification"
+    ],
+    "explanation": "All known societies show some form of social stratification — from caste systems to class-based hierarchies. Sociologists distinguish between open systems (where movement between strata is possible) and closed systems (like caste, where it is not).",
+    "wowFactor": "Research shows your lifetime earnings are more strongly predicted by which ZIP code you were born in than by your IQ — a stark illustration of how stratification shapes life outcomes.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What type of stratification system allows movement between social classes?",
+        "answer": "Open system",
+        "distractors": [
+          "Caste system",
+          "Feudal system",
+          "Closed system"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the term for movement between social classes or strata?",
+        "answer": "Social mobility",
+        "distractors": [
+          "Social stratification",
+          "Class conflict",
+          "Social diffusion"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Sociologists have found societies with no social stratification at all?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Only hunter-gatherers",
+          "In Scandinavian countries"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Social ___ refers to the hierarchical arrangement of individuals by wealth, power, or class.",
+        "answer": "stratification",
+        "distractors": [
+          "mobility",
+          "cohesion",
+          "norms"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Social_stratification",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pyramid of society divided into layers — royals at top, workers at base — with arrows showing movement up and down, pixel art style.",
+    "tags": [
+      "sociology",
+      "stratification",
+      "class",
+      "social science",
+      "hierarchy"
+    ]
+  },
+  {
+    "id": "general-technology-internet-history",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "everyday_science",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "everyday_science",
+    "categoryL3": "",
+    "statement": "The Internet grew from ARPANET, a US Defense Department network launched in 1969 that sent the first message ever between two computers.",
+    "quizQuestion": "What US Defense project gave birth to the modern Internet?",
+    "correctAnswer": "ARPANET",
+    "distractors": [
+      "DARPALINK",
+      "MILNET",
+      "NetFlex",
+      "SPUTNIK",
+      "CompuServe",
+      "X.25 Network",
+      "NSFNET",
+      "BBS Network"
+    ],
+    "acceptableAnswers": [
+      "ARPANET",
+      "The ARPANET"
+    ],
+    "explanation": "ARPANET was funded by the Defense Advanced Research Projects Agency (DARPA). The first message sent was 'LOGIN' on October 29, 1969 — but the system crashed after just two letters ('LO'). The World Wide Web, invented by Tim Berners-Lee in 1989, made the Internet publicly accessible.",
+    "wowFactor": "The very first message ever sent on the Internet was supposed to be 'LOGIN' — but the system crashed after just 'LO'. The first Internet message was accidentally a poetic fragment.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the first message attempted on ARPANET in 1969?",
+        "answer": "LOGIN",
+        "distractors": [
+          "HELLO",
+          "READY",
+          "SEND"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who invented the World Wide Web in 1989?",
+        "answer": "Tim Berners-Lee",
+        "distractors": [
+          "Bill Gates",
+          "Steve Jobs",
+          "Vint Cerf"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: ARPANET was originally created for civilian academic research?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "It was for both",
+          "It was a commercial venture"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The first ARPANET message crashed after just '___ ' — the system couldn't send 'LOGIN'.",
+        "answer": "LO",
+        "distractors": [
+          "HI",
+          "GO",
+          "NET"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/ARPANET",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 1960s computer terminal sending a message that shows 'LO' before crashing, network nodes blinking across a US map, pixel art style.",
+    "tags": [
+      "technology",
+      "Internet",
+      "ARPANET",
+      "history",
+      "computing"
+    ]
+  },
+  {
+    "id": "general-technology-printing-press",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "history_society",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "history_society",
+    "categoryL3": "",
+    "statement": "Johannes Gutenberg's printing press, invented around 1440 in Germany, revolutionized the spread of knowledge by making books affordable for the first time.",
+    "quizQuestion": "Who invented the movable-type printing press around 1440?",
+    "correctAnswer": "Johannes Gutenberg",
+    "distractors": [
+      "Leonardo da Vinci",
+      "Galileo Galilei",
+      "Isaac Newton",
+      "Nicholas Copernicus",
+      "Aldus Manutius",
+      "William Caxton",
+      "Bi Sheng",
+      "Francis Bacon"
+    ],
+    "acceptableAnswers": [
+      "Johannes Gutenberg",
+      "Gutenberg"
+    ],
+    "explanation": "Gutenberg's press used movable metal type and oil-based ink. Before it, a Bible took a monk years to copy by hand; after it, Gutenberg printed 180 Bibles in two years. Within 50 years, 8 million books were printed in Europe — more than all manuscripts produced in the previous millennium.",
+    "wowFactor": "Gutenberg died nearly broke — he was sued by his financial backer Johann Fust, who took the printing equipment as debt repayment and ran the world's first printing business without Gutenberg.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many copies of the Bible did Gutenberg print with his first press run?",
+        "answer": "180",
+        "distractors": [
+          "10",
+          "1,000",
+          "50"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In which German city did Gutenberg develop his printing press?",
+        "answer": "Mainz",
+        "distractors": [
+          "Berlin",
+          "Frankfurt",
+          "Cologne"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Gutenberg became extremely wealthy from his printing press invention?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "He was moderately successful",
+          "He never finished the press"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Within 50 years of Gutenberg's press, ___ million books were printed in Europe.",
+        "answer": "8",
+        "distractors": [
+          "1",
+          "50",
+          "100"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Johannes_Gutenberg",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A wooden printing press with metal type blocks arranged in a frame, freshly printed pages drying on a line, pixel art style.",
+    "tags": [
+      "technology",
+      "Gutenberg",
+      "printing press",
+      "invention",
+      "books"
+    ]
+  },
+  {
+    "id": "general-technology-steam-engine",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "everyday_science",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "everyday_science",
+    "categoryL3": "",
+    "statement": "James Watt's improved steam engine (patented 1769) powered the Industrial Revolution, transforming manufacturing, transportation, and agriculture worldwide.",
+    "quizQuestion": "Whose steam engine improvement powered the Industrial Revolution?",
+    "correctAnswer": "James Watt",
+    "distractors": [
+      "Thomas Edison",
+      "Nikola Tesla",
+      "George Stephenson",
+      "Robert Fulton",
+      "John Kay",
+      "Richard Arkwright",
+      "Eli Whitney",
+      "Thomas Newcomen"
+    ],
+    "acceptableAnswers": [
+      "James Watt",
+      "Watt"
+    ],
+    "explanation": "Thomas Newcomen had built an earlier steam engine in 1712, but Watt's 1769 design added a separate condenser that made it far more fuel-efficient. Watt later added rotary motion, making the engine suitable for factories. The unit of power — the watt — is named after him.",
+    "wowFactor": "The unit 'horsepower' was invented by James Watt himself to market his steam engines — he measured how much work a horse could do per minute and used that as a relatable benchmark for customers.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which unit of power is named after James Watt?",
+        "answer": "Watt",
+        "distractors": [
+          "Joule",
+          "Newton",
+          "Ampere"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who invented the term 'horsepower' to market steam engines?",
+        "answer": "James Watt",
+        "distractors": [
+          "Thomas Newcomen",
+          "George Stephenson",
+          "Robert Fulton"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: James Watt invented the very first steam engine ever built?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "He co-invented it",
+          "Steam engines predate recorded history"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Watt added a ___ condenser to Newcomen's engine, making it far more efficient.",
+        "answer": "separate",
+        "distractors": [
+          "cooling",
+          "pressurized",
+          "rotating"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/James_Watt",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A massive iron steam engine with pistons pumping and smoke rising, factory workers in the background, pixel art style.",
+    "tags": [
+      "technology",
+      "steam engine",
+      "James Watt",
+      "Industrial Revolution",
+      "invention"
+    ]
+  }
+]

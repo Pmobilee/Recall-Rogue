@@ -1,0 +1,1822 @@
+[
+  {
+    "id": "geo-mount-everest-first-summit",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "extreme_records",
+    "categoryL1": "Geography",
+    "categoryL2": "extreme_records",
+    "categoryL3": "",
+    "statement": "Edmund Hillary and Tenzing Norgay were the first people to reach the summit of Mount Everest, on May 29, 1953.",
+    "quizQuestion": "Who were the first two people to summit Mount Everest?",
+    "correctAnswer": "Hillary and Norgay",
+    "distractors": [
+      "Mallory and Irvine",
+      "Messner and Habeler",
+      "Bonington and Scott",
+      "Herzog and Lachenal",
+      "Whittaker and Gombu",
+      "Tabei and Toshiaki",
+      "Buhl and Herrligkoffer",
+      "Haston and Scott"
+    ],
+    "acceptableAnswers": [
+      "Hillary and Norgay",
+      "Edmund Hillary and Tenzing Norgay",
+      "Hillary and Tenzing"
+    ],
+    "explanation": "New Zealander Edmund Hillary and Sherpa Tenzing Norgay of Nepal reached the summit at 11:30 AM on May 29, 1953, as part of a British expedition led by John Hunt.",
+    "wowFactor": "The summit news was delivered to Queen Elizabeth II on the morning of her coronation — June 2, 1953 — making it a double historic day for Britain.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What country was Edmund Hillary from?",
+        "answer": "New Zealand",
+        "distractors": [
+          "United Kingdom",
+          "Australia",
+          "Canada"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Tenzing Norgay belonged to which ethnic group famous for Himalayan climbing?",
+        "answer": "Sherpa",
+        "distractors": [
+          "Gurung",
+          "Tamang",
+          "Magar"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Everest was first summited in 1953 by Hillary and Tenzing Norgay.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Edmund Hillary and Tenzing Norgay first summited Everest on May ___, 1953.",
+        "answer": "29",
+        "distractors": [
+          "1",
+          "12",
+          "2"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/1953_British_Mount_Everest_expedition",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two climbers in 1950s oxygen gear standing on a snowy peak at sunrise, one planting a flag, the vast Himalayan range stretching below them, pixel art style.",
+    "tags": [
+      "Mount Everest",
+      "Hillary",
+      "Tenzing Norgay",
+      "exploration",
+      "records"
+    ]
+  },
+  {
+    "id": "geo-mount-everest-dead-zone",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "extreme_records",
+    "categoryL1": "Geography",
+    "categoryL2": "extreme_records",
+    "categoryL3": "",
+    "statement": "The area above 8,000 meters on Mount Everest is called the 'Death Zone', where oxygen levels are too low to sustain human life long-term.",
+    "quizQuestion": "What is the altitude threshold for Everest's 'Death Zone'?",
+    "correctAnswer": "8,000 meters",
+    "distractors": [
+      "7,000 meters",
+      "8,500 meters",
+      "6,000 meters",
+      "7,500 meters",
+      "9,000 meters",
+      "5,000 meters",
+      "6,500 meters",
+      "8,200 meters"
+    ],
+    "acceptableAnswers": [
+      "8,000 meters",
+      "8,000 m",
+      "8000 m"
+    ],
+    "explanation": "Above 8,000 meters the air has only one-third the oxygen available at sea level. The human body cannot acclimatize at this altitude and begins deteriorating — leading climbers to call it the Death Zone.",
+    "wowFactor": "In the Death Zone, the human brain and lungs are slowly dying with every minute spent there. Most Everest deaths occur above 8,000 meters, often from exhaustion on the descent.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why is the Death Zone above 8,000m called that?",
+        "answer": "Oxygen too low to sustain life",
+        "distractors": [
+          "Temperatures are lethal",
+          "Cosmic radiation is fatal",
+          "Wind speeds exceed survival limits"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "At 8,000 meters, the air has roughly what fraction of sea-level oxygen?",
+        "answer": "One-third",
+        "distractors": [
+          "One-half",
+          "One-quarter",
+          "Two-thirds"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The 'Death Zone' on Everest begins at 8,000 meters.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Climbers call the area above ___ meters on Everest the 'Death Zone' due to dangerously low oxygen.",
+        "answer": "8,000",
+        "distractors": [
+          "7,000",
+          "6,000",
+          "8,500"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Death_zone",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art climber above clouds on an icy slope, health bar depleting with every step, skull icons floating in the thin blue-tinged air around the summit.",
+    "tags": [
+      "Mount Everest",
+      "Death Zone",
+      "altitude",
+      "climbing",
+      "extreme"
+    ]
+  },
+  {
+    "id": "geo-amazon-river-longest",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "americas",
+    "categoryL1": "Geography",
+    "categoryL2": "americas",
+    "categoryL3": "",
+    "statement": "The Amazon River in South America is the world's largest river by discharge volume, carrying about 20% of all freshwater flowing into the world's oceans.",
+    "quizQuestion": "What percentage of global ocean-bound freshwater does the Amazon carry?",
+    "correctAnswer": "About 20%",
+    "distractors": [
+      "About 5%",
+      "About 10%",
+      "About 30%",
+      "About 50%",
+      "About 2%",
+      "About 15%",
+      "About 40%",
+      "About 8%"
+    ],
+    "acceptableAnswers": [
+      "About 20%",
+      "20%",
+      "roughly 20 percent"
+    ],
+    "explanation": "The Amazon River basin covers over 7 million km², the world's largest river basin. At its mouth, the Amazon discharges about 209,000 cubic meters of water per second — more than the next seven largest rivers combined.",
+    "wowFactor": "The Amazon discharges so much freshwater into the Atlantic that you can drink the ocean water 200 km from the Brazilian coast — it dilutes the salt that far.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "On which continent does the Amazon River flow?",
+        "answer": "South America",
+        "distractors": [
+          "Africa",
+          "Asia",
+          "North America"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Amazon River basin is the world's largest what?",
+        "answer": "River drainage basin",
+        "distractors": [
+          "Rainforest",
+          "Wetland",
+          "Wildlife reserve"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Amazon River carries about 20% of all freshwater flowing into the world's oceans.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Amazon River carries about ___ of all freshwater flowing into the world's oceans.",
+        "answer": "20%",
+        "distractors": [
+          "5%",
+          "50%",
+          "10%"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Amazon_River",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Vast dark-green jungle canopy bisected by a wide muddy brown river snaking to the horizon, pink dolphins visible near the surface, pixel art style.",
+    "tags": [
+      "Amazon River",
+      "South America",
+      "rivers",
+      "freshwater",
+      "geography"
+    ]
+  },
+  {
+    "id": "geo-amazon-river-pink-dolphin",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "americas",
+    "categoryL1": "Geography",
+    "categoryL2": "americas",
+    "categoryL3": "",
+    "statement": "The Amazon River is home to the boto, or Amazon river dolphin, the world's largest river dolphin and the only pink species.",
+    "quizQuestion": "What color are Amazon river dolphins (botos)?",
+    "correctAnswer": "Pink",
+    "distractors": [
+      "Grey",
+      "White",
+      "Blue-grey",
+      "Spotted brown",
+      "Black and white",
+      "Silver",
+      "Pale yellow",
+      "Red-tinged grey"
+    ],
+    "acceptableAnswers": [
+      "Pink",
+      "pink"
+    ],
+    "explanation": "The boto (Inia geoffrensis) is the largest river dolphin at up to 2.5 meters long. Adults turn increasingly pink as they age, possibly due to capillary flushing from frequent activity. They are considered sacred in some Amazonian cultures.",
+    "wowFactor": "In Amazonian folklore, the pink dolphin transforms into a handsome man at night and seduces villagers — so any unexplained pregnancy has sometimes been blamed on the boto.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the local name for the Amazon River dolphin?",
+        "answer": "Boto",
+        "distractors": [
+          "Tucuxi",
+          "Pirá",
+          "Cururu"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How long can an adult Amazon river dolphin grow?",
+        "answer": "Up to 2.5 meters",
+        "distractors": [
+          "Up to 1 meter",
+          "Up to 4 meters",
+          "Up to 5 meters"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Amazon river dolphin can be pink in color.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Amazon's boto is the world's largest river dolphin and the only ___ species.",
+        "answer": "pink",
+        "distractors": [
+          "blue",
+          "white",
+          "spotted"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Amazon_river_dolphin",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Glowing pink dolphin leaping from a dark murky Amazon river, dense jungle walls on both sides, sunlight filtering through canopy onto the water, pixel art style.",
+    "tags": [
+      "Amazon River",
+      "dolphin",
+      "boto",
+      "animals",
+      "South America"
+    ]
+  },
+  {
+    "id": "geo-sahara-largest-desert",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "africa",
+    "categoryL1": "Geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "statement": "The Sahara Desert is the world's largest hot desert, covering about 9.2 million square kilometers across North Africa.",
+    "quizQuestion": "How many square kilometers does the Sahara Desert cover?",
+    "correctAnswer": "About 9.2 million km²",
+    "distractors": [
+      "About 3 million km²",
+      "About 5 million km²",
+      "About 7 million km²",
+      "About 12 million km²",
+      "About 2 million km²",
+      "About 15 million km²",
+      "About 4 million km²",
+      "About 6 million km²"
+    ],
+    "acceptableAnswers": [
+      "About 9.2 million km²",
+      "9.2 million km²",
+      "over 9 million km²"
+    ],
+    "explanation": "The Sahara spans 11 countries and is roughly the size of the United States or China. Despite its image as endless sand dunes, about 75% of the Sahara is rocky desert (hamada) rather than sandy (erg).",
+    "wowFactor": "The Sahara is the same size as the entire contiguous United States — yet 75% of it is not sand but bare rock, shattering the classic image of endless dunes.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What percentage of the Sahara is rocky desert rather than sandy dunes?",
+        "answer": "About 75%",
+        "distractors": [
+          "About 25%",
+          "About 50%",
+          "About 10%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many African countries does the Sahara Desert span?",
+        "answer": "11",
+        "distractors": [
+          "5",
+          "8",
+          "15"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Sahara is the world's largest hot desert.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Sahara Desert covers about ___ million square kilometers across North Africa.",
+        "answer": "9.2",
+        "distractors": [
+          "3",
+          "5",
+          "12"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sahara",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Vast rippled orange sand dunes stretching to a heat-haze horizon under a blazing white sun, a lone camel caravan silhouetted against the dunes, pixel art style.",
+    "tags": [
+      "Sahara Desert",
+      "Africa",
+      "deserts",
+      "geography",
+      "records"
+    ]
+  },
+  {
+    "id": "geo-sahara-was-green",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "africa",
+    "categoryL1": "Geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "statement": "Around 10,000 years ago, the Sahara was a lush, green savanna with rivers, lakes, and diverse wildlife including hippos and crocodiles.",
+    "quizQuestion": "What was the Sahara Desert like approximately 10,000 years ago?",
+    "correctAnswer": "A lush green savanna",
+    "distractors": [
+      "A frozen tundra",
+      "A shallow sea",
+      "A dense rainforest",
+      "A volcanic plain",
+      "A grassy steppe only",
+      "An arctic desert",
+      "An ocean floor",
+      "A swamp"
+    ],
+    "acceptableAnswers": [
+      "A lush green savanna",
+      "green savanna",
+      "grassland with lakes"
+    ],
+    "explanation": "During the African Humid Period (approximately 11,000–5,000 years ago), monsoon rains extended north, turning the Sahara into a savanna teeming with elephants, hippos, crocodiles, and early human settlements. Rock art survives in the desert today depicting this lost world.",
+    "wowFactor": "Cave paintings deep in the Sahara show people swimming in rivers and hunting hippos — found in places that get less than 1mm of rain per year today.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What animals once lived in the green Sahara around 10,000 years ago?",
+        "answer": "Hippos and crocodiles",
+        "distractors": [
+          "Polar bears and wolves",
+          "Tigers and rhinoceroses",
+          "Kangaroos and emus"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What caused the Sahara to dry out from a savanna into a desert?",
+        "answer": "Shift in monsoon rainfall patterns",
+        "distractors": [
+          "An asteroid impact",
+          "Human deforestation",
+          "A volcanic eruption"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Sahara was once a green savanna with hippos and rivers.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "About 10,000 years ago, the Sahara was a lush ___ with rivers, lakes, and diverse wildlife.",
+        "answer": "savanna",
+        "distractors": [
+          "rainforest",
+          "tundra",
+          "shallow sea"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/African_humid_period",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Lush green ancient Sahara with hippos in a river and people in canoes, surrounded by savanna grasses and acacia trees where sandy dunes exist today, pixel art style.",
+    "tags": [
+      "Sahara Desert",
+      "climate history",
+      "Africa",
+      "prehistoric",
+      "green Sahara"
+    ]
+  },
+  {
+    "id": "geo-sahara-temperature",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "africa",
+    "categoryL1": "Geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "statement": "The Sahara can experience extreme temperature swings, reaching over 50°C (122°F) by day and dropping near freezing at night.",
+    "quizQuestion": "What maximum daytime temperature can the Sahara Desert reach?",
+    "correctAnswer": "Over 50°C (122°F)",
+    "distractors": [
+      "40°C (104°F)",
+      "35°C (95°F)",
+      "45°C (113°F)",
+      "60°C (140°F)",
+      "30°C (86°F)",
+      "55°C (131°F)",
+      "25°C (77°F)",
+      "65°C (149°F)"
+    ],
+    "acceptableAnswers": [
+      "Over 50°C",
+      "50°C",
+      "122°F"
+    ],
+    "explanation": "The Sahara holds the record for the highest reliably measured air temperature on Earth at 55°C (131°F) in 1931 in Tunisia. Ground surface temperatures can exceed 70°C (158°F). Nights can drop near 0°C due to lack of humidity to retain heat.",
+    "wowFactor": "The Sahara's temperature can swing more than 40°C in a single day — from scorching afternoon heat to near-freezing nights — a range more extreme than most climates see across entire seasons.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why do Sahara nights get so cold despite scorching days?",
+        "answer": "Dry air releases heat quickly",
+        "distractors": [
+          "Cold underground water cools the air",
+          "High altitude causes cooling",
+          "Desert winds bring cold air from the north"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In what country was the Sahara's highest air temperature record of 55°C set?",
+        "answer": "Tunisia",
+        "distractors": [
+          "Libya",
+          "Algeria",
+          "Egypt"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Sahara Desert can exceed 50°C during the day.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Sahara can reach over ___ °C during the day and drop near freezing at night.",
+        "answer": "50",
+        "distractors": [
+          "40",
+          "60",
+          "35"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sahara#Climate",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Split pixel art scene: blazing Sahara noon with heat waves and a red temperature gauge at max on the left, same dunes under a starry sky with frost on the sand on the right.",
+    "tags": [
+      "Sahara Desert",
+      "temperature",
+      "climate",
+      "extremes",
+      "Africa"
+    ]
+  },
+  {
+    "id": "geo-nile-river-length",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "africa",
+    "categoryL1": "Geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "statement": "The Nile River is traditionally considered the world's longest river at approximately 6,650 kilometers (4,130 miles).",
+    "quizQuestion": "What is the approximate length of the Nile River in kilometers?",
+    "correctAnswer": "About 6,650 km",
+    "distractors": [
+      "About 5,000 km",
+      "About 4,000 km",
+      "About 7,500 km",
+      "About 3,000 km",
+      "About 8,000 km",
+      "About 6,000 km",
+      "About 9,000 km",
+      "About 4,500 km"
+    ],
+    "acceptableAnswers": [
+      "About 6,650 km",
+      "6,650 km",
+      "6,650 kilometers"
+    ],
+    "explanation": "The Nile flows northward through northeastern Africa, passing through 11 countries before emptying into the Mediterranean Sea. Its status as the world's longest river is sometimes contested by the Amazon, depending on measurement methodology.",
+    "wowFactor": "The Nile flows north to south on a map, which confused ancient Europeans who assumed all great rivers flowed south — some ancient writers thought it was a river flowing uphill.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Into which sea does the Nile River flow?",
+        "answer": "Mediterranean Sea",
+        "distractors": [
+          "Red Sea",
+          "Arabian Sea",
+          "Atlantic Ocean"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many countries does the Nile flow through?",
+        "answer": "11",
+        "distractors": [
+          "4",
+          "7",
+          "15"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Nile is approximately 6,650 km long.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Nile River, approximately ___ km long, flows into the Mediterranean Sea.",
+        "answer": "6,650",
+        "distractors": [
+          "5,000",
+          "8,000",
+          "4,000"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nile",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ancient Egypt pixel art with the Nile snaking past pyramids and papyrus reeds northward to a delta emptying into a blue Mediterranean Sea.",
+    "tags": [
+      "Nile River",
+      "Africa",
+      "rivers",
+      "geography",
+      "Egypt"
+    ]
+  },
+  {
+    "id": "geo-nile-ancient-civilization",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "africa",
+    "categoryL1": "Geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "statement": "Ancient Egypt depended entirely on the Nile's annual flood to deposit fertile silt on farmland, enabling one of history's greatest civilizations.",
+    "quizQuestion": "What did the Nile's annual floods deposit on Egyptian farmland?",
+    "correctAnswer": "Fertile silt",
+    "distractors": [
+      "Sand",
+      "Minerals and salt",
+      "Clay only",
+      "Gravel",
+      "Volcanic ash",
+      "Peat",
+      "Chalk",
+      "Limestone dust"
+    ],
+    "acceptableAnswers": [
+      "Fertile silt",
+      "silt",
+      "rich soil"
+    ],
+    "explanation": "The Nile flooded predictably each summer, leaving a strip of fertile black silt (called 'kemet' — meaning 'black land') along its banks. This narrow fertile strip, surrounded by barren desert, supported millions in ancient Egypt for thousands of years.",
+    "wowFactor": "Ancient Egyptians named their country 'Kemet' (Black Land) after the dark Nile silt — the entire civilization was literally named after river mud.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did ancient Egyptians call their country, named after the black Nile silt?",
+        "answer": "Kemet",
+        "distractors": [
+          "Kush",
+          "Wadjet",
+          "Beket"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The annual Nile flood was caused by heavy rains in which region?",
+        "answer": "Ethiopian highlands",
+        "distractors": [
+          "Sahara Desert",
+          "Sudanese plateau",
+          "Libyan mountains"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ancient Egypt relied on Nile flood silt to fertilize its farmland.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ancient Egypt's farmland was fertilized by Nile flood ___, enabling a great civilization in the desert.",
+        "answer": "silt",
+        "distractors": [
+          "rain",
+          "sand",
+          "irrigation"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nile#Ancient_Egypt",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Nile flood waters receding to reveal dark rich farmland next to barren yellow desert, Egyptian farmers planting crops beside pyramids in the background, pixel art style.",
+    "tags": [
+      "Nile River",
+      "ancient Egypt",
+      "agriculture",
+      "civilization",
+      "history"
+    ]
+  },
+  {
+    "id": "geo-nile-source",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "africa",
+    "categoryL1": "Geography",
+    "categoryL2": "africa",
+    "categoryL3": "",
+    "statement": "The source of the Nile is Lake Victoria in East Africa, the world's largest tropical lake, straddling Uganda, Tanzania, and Kenya.",
+    "quizQuestion": "Which lake is considered the source of the Nile River?",
+    "correctAnswer": "Lake Victoria",
+    "distractors": [
+      "Lake Tanganyika",
+      "Lake Malawi",
+      "Lake Chad",
+      "Lake Albert",
+      "Lake Turkana",
+      "Lake Edward",
+      "Lake Volta",
+      "Lake Kariba"
+    ],
+    "acceptableAnswers": [
+      "Lake Victoria",
+      "Victoria Lake"
+    ],
+    "explanation": "Lake Victoria is the White Nile's source. The Nile has two main tributaries: the White Nile (from Lake Victoria) and the Blue Nile (from Lake Tana in Ethiopia). They merge at Khartoum in Sudan.",
+    "wowFactor": "Lake Victoria is so large that it creates its own weather — local storms form over the lake so regularly it has one of the highest lightning strike rates on Earth.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Lake Victoria straddles which three African countries?",
+        "answer": "Uganda, Tanzania, Kenya",
+        "distractors": [
+          "Rwanda, Burundi, Congo",
+          "Ethiopia, Sudan, Uganda",
+          "Zambia, Zimbabwe, Mozambique"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Blue Nile, the Nile's other main tributary, originates in which country?",
+        "answer": "Ethiopia",
+        "distractors": [
+          "Sudan",
+          "Uganda",
+          "Rwanda"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Lake Victoria is considered the source of the Nile River.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The source of the Nile is Lake ___, the world's largest tropical lake.",
+        "answer": "Victoria",
+        "distractors": [
+          "Tanganyika",
+          "Malawi",
+          "Chad"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lake_Victoria",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Vast shimmering tropical lake at sunset with fishing boats, hippos on the shore, and a thin river beginning to flow north from the lake's edge, pixel art style.",
+    "tags": [
+      "Nile River",
+      "Lake Victoria",
+      "Africa",
+      "rivers",
+      "geography"
+    ]
+  },
+  {
+    "id": "geo-pacific-ocean-largest",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "landforms_water",
+    "categoryL1": "Geography",
+    "categoryL2": "landforms_water",
+    "categoryL3": "",
+    "statement": "The Pacific Ocean is the world's largest ocean, covering more area than all of Earth's landmasses combined.",
+    "quizQuestion": "Is the Pacific Ocean larger than all of Earth's landmasses combined?",
+    "correctAnswer": "Yes",
+    "distractors": [
+      "No, it is slightly smaller",
+      "No, they are equal",
+      "No, the Atlantic is larger",
+      "No, the Arctic is largest",
+      "No, combined land is larger",
+      "No, only slightly smaller",
+      "Yes but only barely",
+      "Yes but only for half the year"
+    ],
+    "acceptableAnswers": [
+      "Yes",
+      "Yes, it is"
+    ],
+    "explanation": "The Pacific Ocean covers about 165 million km², which exceeds the total land area of all Earth's continents combined (~149 million km²). It spans more than one-third of Earth's entire surface.",
+    "wowFactor": "You could fit every continent on Earth into the Pacific Ocean and still have room left over — it is a truly mind-bending scale of water.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "The Pacific Ocean covers roughly what fraction of Earth's total surface?",
+        "answer": "More than one-third",
+        "distractors": [
+          "About one-fifth",
+          "About one-half",
+          "About one-quarter"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What does 'Pacific' mean, reflecting Magellan's experience crossing it?",
+        "answer": "Peaceful",
+        "distractors": [
+          "Vast",
+          "Blue",
+          "Great"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Pacific Ocean covers more area than all Earth's landmasses combined.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Pacific Ocean covers about ___ million square kilometers, more than all Earth's land combined.",
+        "answer": "165",
+        "distractors": [
+          "100",
+          "50",
+          "200"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pacific_Ocean",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "World map pixel art with all continents shrunk and piled into the Pacific Ocean, still leaving vast blue space around them, scale indicator blowing the viewer's mind.",
+    "tags": [
+      "Pacific Ocean",
+      "oceans",
+      "geography",
+      "records",
+      "Earth"
+    ]
+  },
+  {
+    "id": "geo-pacific-ocean-ring-of-fire",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "landforms_water",
+    "categoryL1": "Geography",
+    "categoryL2": "landforms_water",
+    "categoryL3": "",
+    "statement": "The Pacific Ocean is surrounded by the Ring of Fire, a belt containing 75% of Earth's active volcanoes and 90% of its earthquakes.",
+    "quizQuestion": "What percentage of Earth's earthquakes occur in the Pacific Ring of Fire?",
+    "correctAnswer": "About 90%",
+    "distractors": [
+      "About 50%",
+      "About 30%",
+      "About 60%",
+      "About 75%",
+      "About 40%",
+      "About 20%",
+      "About 99%",
+      "About 10%"
+    ],
+    "acceptableAnswers": [
+      "About 90%",
+      "90%",
+      "roughly 90 percent"
+    ],
+    "explanation": "The Ring of Fire is a 40,000 km horseshoe-shaped belt of volcanic activity and tectonic plate boundaries encircling the Pacific Ocean. It contains 452 volcanoes and produces the majority of the world's major earthquakes.",
+    "wowFactor": "Nine out of every ten earthquakes on Earth happen along the Pacific Ring of Fire — a nonstop geological battle happening right now under the ocean.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What percentage of Earth's active volcanoes are in the Ring of Fire?",
+        "answer": "About 75%",
+        "distractors": [
+          "About 50%",
+          "About 90%",
+          "About 30%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How long is the Pacific Ring of Fire?",
+        "answer": "About 40,000 km",
+        "distractors": [
+          "About 10,000 km",
+          "About 5,000 km",
+          "About 20,000 km"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Pacific Ring of Fire produces about 90% of Earth's earthquakes.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Ring of Fire surrounding the Pacific contains about 75% of Earth's active volcanoes and ___% of its earthquakes.",
+        "answer": "90",
+        "distractors": [
+          "50",
+          "30",
+          "99"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ring_of_Fire",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "World map with the Pacific Ocean encircled by a glowing orange ring of fire icons — volcanoes, earthquake epicenters, and lava arcs forming a horseshoe, pixel art style.",
+    "tags": [
+      "Pacific Ocean",
+      "Ring of Fire",
+      "volcanoes",
+      "earthquakes",
+      "geology"
+    ]
+  },
+  {
+    "id": "geo-pacific-ocean-deepest",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "landforms_water",
+    "categoryL1": "Geography",
+    "categoryL2": "landforms_water",
+    "categoryL3": "",
+    "statement": "The deepest point in the Pacific Ocean — and on Earth — is the Challenger Deep in the Mariana Trench, at about 11,034 meters below sea level.",
+    "quizQuestion": "What is the name of the deepest point in the Pacific Ocean?",
+    "correctAnswer": "Challenger Deep",
+    "distractors": [
+      "Puerto Rico Trench",
+      "Java Trench",
+      "Philippine Trench",
+      "Kuril Trench",
+      "Tonga Trench",
+      "Peru-Chile Trench",
+      "Aleutian Trench",
+      "Japan Trench"
+    ],
+    "acceptableAnswers": [
+      "Challenger Deep",
+      "The Challenger Deep"
+    ],
+    "explanation": "Challenger Deep in the Mariana Trench reaches about 11,034 meters below sea level. It is located in the western Pacific Ocean near Guam. It has been visited by fewer people than have walked on the Moon.",
+    "wowFactor": "Challenger Deep has been visited by fewer humans than have walked on the Moon — it is harder to reach the bottom of our own ocean than it is to travel to another world.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Challenger Deep is located in which Pacific Ocean trench?",
+        "answer": "Mariana Trench",
+        "distractors": [
+          "Puerto Rico Trench",
+          "Java Trench",
+          "Tonga Trench"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Challenger Deep is approximately how deep in meters?",
+        "answer": "About 11,034 m",
+        "distractors": [
+          "About 8,000 m",
+          "About 7,000 m",
+          "About 15,000 m"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Challenger Deep is the deepest known point in any ocean on Earth.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The deepest point on Earth is ___ Deep in the Mariana Trench at about 11,034 meters.",
+        "answer": "Challenger",
+        "distractors": [
+          "Hadal",
+          "Trieste",
+          "Pacific"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Challenger_Deep",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Deep ocean descent pixel art with a submersible descending into pitch-black water, depth meter clicking past 11,000 meters, alien-looking creatures glowing in the abyss.",
+    "tags": [
+      "Pacific Ocean",
+      "Challenger Deep",
+      "Mariana Trench",
+      "depth",
+      "records"
+    ]
+  },
+  {
+    "id": "geo-iceland-midnight-sun",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "europe",
+    "categoryL1": "Geography",
+    "categoryL2": "europe",
+    "categoryL3": "",
+    "statement": "In summer, Iceland experiences the midnight sun with up to 24 hours of daylight; in winter, Reykjavik gets only about 4–5 hours of sunlight per day.",
+    "quizQuestion": "How many hours of daylight does Iceland experience during its peak summer midnight sun?",
+    "correctAnswer": "Up to 24 hours",
+    "distractors": [
+      "About 18 hours",
+      "About 20 hours",
+      "About 16 hours",
+      "About 12 hours",
+      "About 22 hours",
+      "About 15 hours",
+      "About 10 hours",
+      "About 14 hours"
+    ],
+    "acceptableAnswers": [
+      "Up to 24 hours",
+      "24 hours",
+      "about 24 hours"
+    ],
+    "explanation": "Iceland lies close enough to the Arctic Circle that around the summer solstice (June 21), some parts experience continuous daylight. In Reykjavik, sunset doesn't occur until past midnight and the sky stays bright all night.",
+    "wowFactor": "Icelanders who want to sleep in summer must use blackout curtains — the sun sets at 11:48 PM and rises again by 3:04 AM, leaving only a brief twilight.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many hours of sunlight does Reykjavik get on its shortest winter days?",
+        "answer": "About 4–5 hours",
+        "distractors": [
+          "About 0 hours",
+          "About 8 hours",
+          "About 12 hours"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the opposite phenomenon to the midnight sun, where it is dark all day?",
+        "answer": "Polar night",
+        "distractors": [
+          "Arctic shadow",
+          "Winter solstice",
+          "Dark equinox"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Parts of Iceland experience up to 24 hours of daylight in summer.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Iceland experiences the midnight sun in summer with up to ___ hours of continuous daylight.",
+        "answer": "24",
+        "distractors": [
+          "12",
+          "18",
+          "20"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Midnight_sun",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Clock showing midnight with the sun still blazing over Icelandic fjords, a confused tourist in pajamas peering out a window at blazing daylight, pixel art style.",
+    "tags": [
+      "Iceland",
+      "midnight sun",
+      "daylight",
+      "Arctic",
+      "Europe"
+    ]
+  },
+  {
+    "id": "geo-japan-islands",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "asia_oceania",
+    "categoryL1": "Geography",
+    "categoryL2": "asia_oceania",
+    "categoryL3": "",
+    "statement": "Japan is an island nation composed of 6,852 islands, with four main islands — Honshu, Hokkaido, Kyushu, and Shikoku — making up about 97% of its land area.",
+    "quizQuestion": "How many islands make up the nation of Japan?",
+    "correctAnswer": "6,852",
+    "distractors": [
+      "100",
+      "500",
+      "2,000",
+      "10,000",
+      "1,000",
+      "400",
+      "3,500",
+      "15,000"
+    ],
+    "acceptableAnswers": [
+      "6,852",
+      "about 6,852",
+      "over 6,000"
+    ],
+    "explanation": "Japan's four main islands (Honshu, Hokkaido, Kyushu, Shikoku) account for most of the population and land area. Of the 6,852 islands, about 430 are inhabited.",
+    "wowFactor": "Japan has more than 6,800 islands, but 97% of its people live on just four of them — the rest are largely pristine wilderness.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which is the largest of Japan's four main islands?",
+        "answer": "Honshu",
+        "distractors": [
+          "Hokkaido",
+          "Kyushu",
+          "Shikoku"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Approximately how many of Japan's 6,852 islands are inhabited?",
+        "answer": "About 430",
+        "distractors": [
+          "All of them",
+          "About 100",
+          "About 2,000"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Japan consists of over 6,000 islands.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Japan is composed of ___ islands, with four main islands accounting for 97% of its land.",
+        "answer": "6,852",
+        "distractors": [
+          "100",
+          "2,000",
+          "10,000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Japan",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art map of Japan with all 6,852 islands dotted in blue ocean, the four main islands prominently lit while tiny green dots scatter across the sea.",
+    "tags": [
+      "Japan",
+      "islands",
+      "geography",
+      "Asia",
+      "Pacific"
+    ]
+  },
+  {
+    "id": "geo-japan-mount-fuji",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "asia_oceania",
+    "categoryL1": "Geography",
+    "categoryL2": "asia_oceania",
+    "categoryL3": "",
+    "statement": "Mount Fuji is Japan's tallest mountain at 3,776 meters and is an active stratovolcano that last erupted in 1707.",
+    "quizQuestion": "When did Mount Fuji last erupt?",
+    "correctAnswer": "1707",
+    "distractors": [
+      "1900",
+      "1850",
+      "1945",
+      "1500",
+      "1600",
+      "1800",
+      "2001",
+      "1650"
+    ],
+    "acceptableAnswers": [
+      "1707",
+      "in 1707"
+    ],
+    "explanation": "Mount Fuji's last eruption, the Hōei eruption of 1707, lasted 16 days and deposited ash over a wide area including Edo (present-day Tokyo). Despite its dormancy, scientists consider it still active.",
+    "wowFactor": "Ash from Mount Fuji's 1707 eruption buried Edo (now Tokyo) under centimeters of ash — and the same thing could theoretically happen again with little warning.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How tall is Mount Fuji in meters?",
+        "answer": "3,776 meters",
+        "distractors": [
+          "2,500 meters",
+          "4,500 meters",
+          "5,000 meters"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What type of volcano is Mount Fuji?",
+        "answer": "Stratovolcano",
+        "distractors": [
+          "Shield volcano",
+          "Cinder cone",
+          "Caldera volcano"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mount Fuji last erupted in 1707.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mount Fuji, Japan's tallest mountain, last erupted in ___.",
+        "answer": "1707",
+        "distractors": [
+          "1900",
+          "1850",
+          "1600"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mount_Fuji",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Perfect snow-capped conical Mount Fuji reflected in a calm lake below, cherry blossom trees framing the view, pixel art in a traditional Japanese woodblock print style.",
+    "tags": [
+      "Japan",
+      "Mount Fuji",
+      "volcanoes",
+      "geography",
+      "landmarks"
+    ]
+  },
+  {
+    "id": "geo-grand-canyon-size",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "americas",
+    "categoryL1": "Geography",
+    "categoryL2": "americas",
+    "categoryL3": "",
+    "statement": "The Grand Canyon is 446 km long, up to 29 km wide, and over 1,800 meters (1.1 miles) deep, carved by the Colorado River.",
+    "quizQuestion": "How deep is the Grand Canyon at its deepest point?",
+    "correctAnswer": "Over 1,800 meters",
+    "distractors": [
+      "About 500 meters",
+      "About 1,000 meters",
+      "About 3,000 meters",
+      "About 800 meters",
+      "About 2,500 meters",
+      "About 300 meters",
+      "About 1,200 meters",
+      "About 4,000 meters"
+    ],
+    "acceptableAnswers": [
+      "Over 1,800 meters",
+      "1,800 meters",
+      "about 1,800 m"
+    ],
+    "explanation": "The Grand Canyon in Arizona was carved over millions of years by the Colorado River cutting through layers of rock. Its exposed rock layers reveal nearly two billion years of Earth's geological history.",
+    "wowFactor": "Standing at the Grand Canyon's rim, you can see nearly two billion years of Earth's history exposed in the rock layers below — it is a geological time machine you can see with your eyes.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which river carved the Grand Canyon over millions of years?",
+        "answer": "Colorado River",
+        "distractors": [
+          "Mississippi River",
+          "Rio Grande",
+          "Snake River"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How long did it take the Colorado River to carve the Grand Canyon?",
+        "answer": "About 5–6 million years",
+        "distractors": [
+          "About 10,000 years",
+          "About 1 billion years",
+          "About 500,000 years"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Grand Canyon is over 1,800 meters deep.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Grand Canyon, carved by the ___ River, is over 1,800 meters deep.",
+        "answer": "Colorado",
+        "distractors": [
+          "Mississippi",
+          "Rio Grande",
+          "Snake"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Grand_Canyon",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Spectacular pixel art view of the Grand Canyon at sunrise, layered red and orange rock strata descending into shadow, a tiny river glinting at the bottom.",
+    "tags": [
+      "Grand Canyon",
+      "USA",
+      "geology",
+      "landmarks",
+      "Colorado River"
+    ]
+  },
+  {
+    "id": "geo-grand-canyon-geological-layers",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "americas",
+    "categoryL1": "Geography",
+    "categoryL2": "americas",
+    "categoryL3": "",
+    "statement": "The rock layers visible in the Grand Canyon record nearly 2 billion years of Earth's geological history, spanning from the Precambrian to the Permian era.",
+    "quizQuestion": "How many years of Earth's geological history are exposed in Grand Canyon rock layers?",
+    "correctAnswer": "Nearly 2 billion years",
+    "distractors": [
+      "About 10,000 years",
+      "About 1 million years",
+      "About 65 million years",
+      "About 500 million years",
+      "About 3 billion years",
+      "About 100 million years",
+      "About 4 billion years",
+      "About 250 million years"
+    ],
+    "acceptableAnswers": [
+      "Nearly 2 billion years",
+      "about 2 billion years",
+      "2 billion years"
+    ],
+    "explanation": "The deepest Vishnu Basement Rocks at the Canyon floor are about 1.8 billion years old. The youngest rocks at the rim are about 270 million years old. The gap represents nearly two billion years of Earth's story exposed in a single vertical face.",
+    "wowFactor": "Each horizontal stripe in the Grand Canyon's walls is a chapter in Earth's biography — you can literally read Earth's 2-billion-year history by looking down from the rim.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How old are the oldest rocks at the bottom of the Grand Canyon?",
+        "answer": "About 1.8 billion years",
+        "distractors": [
+          "About 10,000 years",
+          "About 500 million years",
+          "About 4 billion years"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Grand Canyon is located in which US state?",
+        "answer": "Arizona",
+        "distractors": [
+          "Colorado",
+          "Utah",
+          "Nevada"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Grand Canyon exposes nearly 2 billion years of geological history.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Grand Canyon's rock layers expose nearly ___ years of Earth's geological history.",
+        "answer": "2 billion",
+        "distractors": [
+          "10,000",
+          "500 million",
+          "4 billion"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Geology_of_the_Grand_Canyon_area",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Grand Canyon cross-section pixel art with labelled geological eras on each colorful rock layer from Precambrian black at the bottom to Permian red at the top.",
+    "tags": [
+      "Grand Canyon",
+      "geology",
+      "Earth history",
+      "USA",
+      "science"
+    ]
+  },
+  {
+    "id": "geo-mariana-trench-depth",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "extreme_records",
+    "categoryL1": "Geography",
+    "categoryL2": "extreme_records",
+    "categoryL3": "",
+    "statement": "The Mariana Trench is the deepest part of the world's oceans, with its lowest point — Challenger Deep — reaching about 11,034 meters below sea level.",
+    "quizQuestion": "How deep is the Mariana Trench's deepest point in meters?",
+    "correctAnswer": "About 11,034 meters",
+    "distractors": [
+      "About 8,000 meters",
+      "About 9,000 meters",
+      "About 7,500 meters",
+      "About 15,000 meters",
+      "About 6,000 meters",
+      "About 12,500 meters",
+      "About 10,000 meters",
+      "About 5,000 meters"
+    ],
+    "acceptableAnswers": [
+      "About 11,034 meters",
+      "11,034 meters",
+      "about 11,000 meters"
+    ],
+    "explanation": "The Mariana Trench is located in the western Pacific Ocean east of the Mariana Islands. At the Challenger Deep, the pressure reaches over 1,000 times atmospheric pressure at sea level.",
+    "wowFactor": "If you placed Mount Everest at the bottom of the Mariana Trench, its summit would still be over 2 km underwater — the trench is deeper than the world's tallest mountain is tall.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where in the Pacific Ocean is the Mariana Trench located?",
+        "answer": "West, near the Mariana Islands",
+        "distractors": [
+          "Near Hawaii",
+          "Near Japan's main islands",
+          "Near California"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the water pressure at Challenger Deep compared to sea level?",
+        "answer": "Over 1,000 times",
+        "distractors": [
+          "About 10 times",
+          "About 100 times",
+          "About 500 times"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Mariana Trench is deeper than Mount Everest is tall.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Mariana Trench's deepest point reaches about ___ meters below sea level.",
+        "answer": "11,034",
+        "distractors": [
+          "8,000",
+          "15,000",
+          "9,000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mariana_Trench",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Cross-section pixel art showing Mount Everest submerged in the Mariana Trench with its peak still 2 km underwater, bioluminescent creatures floating around the sunken mountain.",
+    "tags": [
+      "Mariana Trench",
+      "ocean depth",
+      "records",
+      "Pacific Ocean",
+      "geography"
+    ]
+  },
+  {
+    "id": "geo-mariana-trench-first-descent",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "extreme_records",
+    "categoryL1": "Geography",
+    "categoryL2": "extreme_records",
+    "categoryL3": "",
+    "statement": "In 1960, Jacques Piccard and Don Walsh became the first humans to reach the bottom of the Mariana Trench in a submersible called Trieste.",
+    "quizQuestion": "Who first reached the bottom of the Mariana Trench in 1960?",
+    "correctAnswer": "Piccard and Walsh",
+    "distractors": [
+      "James Cameron",
+      "Sylvia Earle",
+      "Robert Ballard",
+      "Victor Vescovo",
+      "Jacques Cousteau",
+      "Neil Armstrong",
+      "Thor Heyerdahl",
+      "William Beebe"
+    ],
+    "acceptableAnswers": [
+      "Piccard and Walsh",
+      "Jacques Piccard and Don Walsh"
+    ],
+    "explanation": "Jacques Piccard and US Navy Lieutenant Don Walsh descended to 10,916 meters in the bathyscaphe Trieste on January 23, 1960. Their dive took nearly 5 hours to descend. James Cameron made a solo dive to the Challenger Deep in 2012.",
+    "wowFactor": "When Piccard and Walsh reached the bottom in 1960, they saw a flatfish — proof that complex life exists even in the deepest, most crushing environment on Earth.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the name of the submersible that first reached the Mariana Trench floor in 1960?",
+        "answer": "Trieste",
+        "distractors": [
+          "Alvin",
+          "Nautilus",
+          "Deepsea Challenger"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who made a solo dive to the Challenger Deep in 2012?",
+        "answer": "James Cameron",
+        "distractors": [
+          "Sylvia Earle",
+          "Victor Vescovo",
+          "Robert Ballard"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Humans first reached the bottom of the Mariana Trench in 1960.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Jacques Piccard and Don Walsh descended to the Mariana Trench floor in 1960 aboard the ___.",
+        "answer": "Trieste",
+        "distractors": [
+          "Alvin",
+          "Nautilus",
+          "Deep Sea Challenger"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Trieste_(bathyscaphe)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Spherical deep-sea submersible Trieste descending through absolute darkness, interior light casting a small bubble of visibility, crushing ocean above and below, pixel art style.",
+    "tags": [
+      "Mariana Trench",
+      "Trieste",
+      "exploration",
+      "deep sea",
+      "records"
+    ]
+  },
+  {
+    "id": "geo-mariana-trench-life",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "extreme_records",
+    "categoryL1": "Geography",
+    "categoryL2": "extreme_records",
+    "categoryL3": "",
+    "statement": "Despite crushing pressure and complete darkness, the Mariana Trench hosts life including bacteria, shrimp, sea cucumbers, and snailfish.",
+    "quizQuestion": "What is the deepest-diving fish ever recorded, found near the Mariana Trench?",
+    "correctAnswer": "Snailfish",
+    "distractors": [
+      "Anglerfish",
+      "Viperfish",
+      "Dragonfish",
+      "Blobfish",
+      "Gulper eel",
+      "Fangtooth fish",
+      "Barreleye fish",
+      "Coelacanth"
+    ],
+    "acceptableAnswers": [
+      "Snailfish",
+      "snailfish"
+    ],
+    "explanation": "The Mariana snailfish (Pseudoliparis swirei) has been filmed at depths over 8,000 meters, making it the deepest-known fish. It thrives in conditions that would crush most organisms — its gelatinous body withstands the extreme pressure.",
+    "wowFactor": "Snailfish don't have hard bones or rigid skulls — their gelatinous, semi-transparent body is essentially a biological pressure suit, perfectly adapted to be crushed without being crushed.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How does the snailfish survive crushing pressure at extreme depths?",
+        "answer": "Its gelatinous body flexes under pressure",
+        "distractors": [
+          "It has a titanium-like exoskeleton",
+          "It inflates a gas bladder",
+          "It anchors to the seafloor"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "At what approximate depth has the Mariana snailfish been filmed?",
+        "answer": "Over 8,000 meters",
+        "distractors": [
+          "About 1,000 meters",
+          "About 3,000 meters",
+          "About 5,000 meters"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Life exists even at the bottom of the Mariana Trench.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ is the deepest-diving fish known, surviving at over 8,000 meters depth.",
+        "answer": "snailfish",
+        "distractors": [
+          "anglerfish",
+          "blobfish",
+          "viperfish"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mariana_snailfish",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Translucent pale ghostly snailfish drifting through absolute darkness at extreme depth, its body semi-transparent, bioluminescent bacteria glowing on the trench floor below, pixel art.",
+    "tags": [
+      "Mariana Trench",
+      "snailfish",
+      "deep sea life",
+      "extreme",
+      "ocean"
+    ]
+  }
+]

@@ -7,7 +7,7 @@ describe('resumeCombatWithFallback', () => {
     const startEncounter = vi.fn(async () => true)
     const hasTurnState = vi.fn(() => true)
     const onCombatResumed = vi.fn()
-    const onFallbackRoomSelection = vi.fn()
+    const onFallbackMap = vi.fn()
     const logger = { warn: vi.fn(), error: vi.fn() }
 
     const target = await resumeCombatWithFallback({
@@ -16,7 +16,7 @@ describe('resumeCombatWithFallback', () => {
       startEncounter,
       hasTurnState,
       onCombatResumed,
-      onFallbackRoomSelection,
+      onFallbackMap,
       logger,
     })
 
@@ -25,17 +25,17 @@ describe('resumeCombatWithFallback', () => {
     expect(startEncounter).toHaveBeenCalledOnce()
     expect(hasTurnState).toHaveBeenCalledOnce()
     expect(onCombatResumed).toHaveBeenCalledOnce()
-    expect(onFallbackRoomSelection).not.toHaveBeenCalled()
+    expect(onFallbackMap).not.toHaveBeenCalled()
     expect(logger.warn).not.toHaveBeenCalled()
     expect(logger.error).not.toHaveBeenCalled()
   })
 
-  it('falls back to room selection when encounter start fails', async () => {
+  it('falls back to dungeon map when encounter start fails', async () => {
     const ensurePhaserBooted = vi.fn(async () => {})
     const startEncounter = vi.fn(async () => false)
     const hasTurnState = vi.fn(() => false)
     const onCombatResumed = vi.fn()
-    const onFallbackRoomSelection = vi.fn()
+    const onFallbackMap = vi.fn()
     const logger = { warn: vi.fn(), error: vi.fn() }
 
     const target = await resumeCombatWithFallback({
@@ -44,22 +44,22 @@ describe('resumeCombatWithFallback', () => {
       startEncounter,
       hasTurnState,
       onCombatResumed,
-      onFallbackRoomSelection,
+      onFallbackMap,
       logger,
     })
 
-    expect(target).toBe('roomSelection')
-    expect(onFallbackRoomSelection).toHaveBeenCalledWith(7)
+    expect(target).toBe('dungeonMap')
+    expect(onFallbackMap).toHaveBeenCalledWith(7)
     expect(onCombatResumed).not.toHaveBeenCalled()
     expect(logger.warn).toHaveBeenCalledOnce()
   })
 
-  it('falls back to room selection when start succeeds but turn state is missing', async () => {
+  it('falls back to dungeon map when start succeeds but turn state is missing', async () => {
     const ensurePhaserBooted = vi.fn(async () => {})
     const startEncounter = vi.fn(async () => true)
     const hasTurnState = vi.fn(() => false)
     const onCombatResumed = vi.fn()
-    const onFallbackRoomSelection = vi.fn()
+    const onFallbackMap = vi.fn()
     const logger = { warn: vi.fn(), error: vi.fn() }
 
     const target = await resumeCombatWithFallback({
@@ -68,12 +68,12 @@ describe('resumeCombatWithFallback', () => {
       startEncounter,
       hasTurnState,
       onCombatResumed,
-      onFallbackRoomSelection,
+      onFallbackMap,
       logger,
     })
 
-    expect(target).toBe('roomSelection')
-    expect(onFallbackRoomSelection).toHaveBeenCalledWith(9)
+    expect(target).toBe('dungeonMap')
+    expect(onFallbackMap).toHaveBeenCalledWith(9)
     expect(onCombatResumed).not.toHaveBeenCalled()
     expect(logger.warn).toHaveBeenCalledOnce()
   })

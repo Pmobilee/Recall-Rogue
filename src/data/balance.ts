@@ -1225,17 +1225,17 @@ export const MAP_CONFIG = {
   START_PATHS: 3,
   BRANCH_CHANCE: 0.3,
   MERGE_CHANCE: 0.2,
-  ELITE_MIN_ROW: 5,
+  ELITE_MIN_ROW: 6,
   REST_MIN_ROW: 4,
   SHOP_MIN_ROW: 4,
-  FORCED_ELITE_ROW: 12,    // all nodes on this row are elite
+  FORCED_ELITE_ROW: -1,    // all nodes on this row are elite (-1 = disabled)
   PRE_BOSS_ROW: 13,        // rest or shop, paths converge
   BOSS_ROW: 14,            // single boss node
   ROOM_DISTRIBUTION: {
-    1: { combat: 0.45, elite: 0.08, mystery: 0.18, rest: 0.12, treasure: 0.10, shop: 0.07 },
-    2: { combat: 0.40, elite: 0.10, mystery: 0.18, rest: 0.12, treasure: 0.10, shop: 0.10 },
-    3: { combat: 0.38, elite: 0.12, mystery: 0.18, rest: 0.14, treasure: 0.08, shop: 0.10 },
-    4: { combat: 0.35, elite: 0.12, mystery: 0.18, rest: 0.15, treasure: 0.10, shop: 0.10 },
+    1: { combat: 0.48, elite: 0.06, mystery: 0.16, rest: 0.12, treasure: 0.10, shop: 0.08 },
+    2: { combat: 0.42, elite: 0.10, mystery: 0.16, rest: 0.12, treasure: 0.10, shop: 0.10 },
+    3: { combat: 0.36, elite: 0.14, mystery: 0.16, rest: 0.14, treasure: 0.10, shop: 0.10 },
+    4: { combat: 0.32, elite: 0.16, mystery: 0.16, rest: 0.14, treasure: 0.10, shop: 0.12 },
   } as Record<1 | 2 | 3 | 4, Record<string, number>>,
 } as const
 
@@ -1254,9 +1254,9 @@ export const STORY_MODE_FORCED_RUNS = 1;
 export const ARCHETYPE_UNLOCK_RUNS = 3;
 
 /** Minimum encounter cooldown applied to a fact after it is answered. */
-export const FACT_COOLDOWN_MIN = 1;
+export const FACT_COOLDOWN_MIN = 3;
 /** Maximum encounter cooldown applied to a fact after it is answered. */
-export const FACT_COOLDOWN_MAX = 3;
+export const FACT_COOLDOWN_MAX = 5;
 
 // === PARAMETER SWEEP: Balance Override System ===
 // Module-level mutable context for runtime balance overrides.

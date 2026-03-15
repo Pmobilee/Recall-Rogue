@@ -1,0 +1,2387 @@
+[
+  {
+    "id": "general-psychology-origin-of-word",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "everyday_science",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "everyday_science",
+    "categoryL3": "",
+    "statement": "The word 'psychology' comes from the Greek word 'psyche', meaning soul or mind, combined with 'logos', meaning study.",
+    "quizQuestion": "What Greek word does 'psychology' derive its 'psyche' from?",
+    "correctAnswer": "Soul or mind",
+    "distractors": [
+      "Brain",
+      "Spirit",
+      "Heart",
+      "Thought",
+      "Feeling",
+      "Knowledge",
+      "Reason",
+      "Consciousness"
+    ],
+    "acceptableAnswers": [
+      "Soul or mind",
+      "Soul",
+      "Mind",
+      "Psyche"
+    ],
+    "explanation": "Psychology literally means 'the study of the soul' from Greek. The field was formalized as a scientific discipline by Wilhelm Wundt in 1879 when he opened the first experimental psychology laboratory in Leipzig.",
+    "wowFactor": "Wilhelm Wundt's first psychology experiment involved measuring the time between hearing a bell and pressing a button — the birth of reaction time research.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who opened the first experimental psychology lab in 1879?",
+        "answer": "Wilhelm Wundt",
+        "distractors": [
+          "Sigmund Freud",
+          "William James",
+          "Ivan Pavlov"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In what German city did Wundt open psychology's first lab?",
+        "answer": "Leipzig",
+        "distractors": [
+          "Berlin",
+          "Vienna",
+          "Frankfurt"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The word psychology comes from Greek roots meaning 'study of the mind'.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The word psychology derives from the Greek 'psyche', meaning ___.",
+        "answer": "soul or mind",
+        "distractors": [
+          "brain",
+          "feeling",
+          "knowledge"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Psychology",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An open human skull glowing with a miniature cosmos inside it, ancient Greek columns framing the scene, pixel art style.",
+    "tags": [
+      "psychology",
+      "etymology",
+      "science",
+      "mind",
+      "greek"
+    ]
+  },
+  {
+    "id": "general-psychology-pavlov-dogs",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "everyday_science",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "everyday_science",
+    "categoryL3": "",
+    "statement": "Ivan Pavlov discovered classical conditioning by training dogs to salivate at the sound of a bell, associating it with food.",
+    "quizQuestion": "What did Pavlov train his dogs to salivate at?",
+    "correctAnswer": "A bell",
+    "distractors": [
+      "A whistle",
+      "A light",
+      "A clap",
+      "A horn",
+      "A drum",
+      "A buzzer",
+      "A word",
+      "A metronome"
+    ],
+    "acceptableAnswers": [
+      "A bell",
+      "Bell",
+      "Sound of a bell"
+    ],
+    "explanation": "Ivan Pavlov's classical conditioning experiments showed that animals learn to associate neutral stimuli (a bell) with meaningful ones (food), producing automatic responses. This became a cornerstone of behavioral psychology.",
+    "wowFactor": "Pavlov won the Nobel Prize in Physiology in 1904 — but his most famous conditioning work with bells happened AFTER he won the Nobel, which was for digestive research.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the name for Pavlov's learned response in dogs?",
+        "answer": "Classical conditioning",
+        "distractors": [
+          "Operant conditioning",
+          "Habituation",
+          "Imprinting"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Pavlov's conditioning work was foundational to which branch of psychology?",
+        "answer": "Behaviorism",
+        "distractors": [
+          "Psychoanalysis",
+          "Cognitive psychology",
+          "Humanistic psychology"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pavlov trained dogs to salivate at the sound of a bell.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pavlov's dogs learned to salivate at a ___ after it was paired with food.",
+        "answer": "bell",
+        "distractors": [
+          "light",
+          "whistle",
+          "clap"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Classical_conditioning",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A dog sitting alert next to a dinner bell ringing, drool drops flying, a scientist with a white coat watching with a clipboard, pixel art style.",
+    "tags": [
+      "psychology",
+      "pavlov",
+      "conditioning",
+      "behaviorism",
+      "dogs"
+    ]
+  },
+  {
+    "id": "general-psychology-milgram-obedience",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "everyday_science",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "everyday_science",
+    "categoryL3": "",
+    "statement": "Stanley Milgram's 1961 obedience experiment found that 65% of participants would deliver maximum electric shocks when ordered by an authority figure.",
+    "quizQuestion": "What percentage of Milgram's subjects delivered maximum shocks?",
+    "correctAnswer": "65%",
+    "distractors": [
+      "25%",
+      "40%",
+      "80%",
+      "50%",
+      "10%",
+      "90%",
+      "35%",
+      "55%"
+    ],
+    "acceptableAnswers": [
+      "65%",
+      "65 percent",
+      "about 65%"
+    ],
+    "explanation": "Milgram's experiment tested how far people would go in obeying authority. Participants were told to administer increasingly painful shocks to an actor. 65% went all the way to 450 volts despite hearing screams — no shocks were real.",
+    "wowFactor": "Milgram ran the experiment partly inspired by Adolf Eichmann's trial — trying to understand how ordinary people commit atrocities under orders.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Milgram's experiment primarily measure in humans?",
+        "answer": "Obedience to authority",
+        "distractors": [
+          "Empathy levels",
+          "Risk tolerance",
+          "Memory under stress"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Milgram designed his obedience study in reaction to whose wartime trial?",
+        "answer": "Adolf Eichmann",
+        "distractors": [
+          "Josef Mengele",
+          "Hermann Göring",
+          "Heinrich Himmler"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: In Milgram's experiment, most participants refused to give maximum shocks.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Partially true",
+          "It depends"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Milgram found that ___ of participants obeyed orders to deliver maximum electric shocks.",
+        "answer": "65%",
+        "distractors": [
+          "25%",
+          "80%",
+          "40%"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Milgram_experiment",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "References psychological harm and obedience to authority in disturbing contexts.",
+    "visualDescription": "A person in a lab coat pointing at a large dial labeled 'DANGER: XXX 450V' while a nervous subject sits at controls, pixel art style with a split-screen showing a pleading actor behind glass.",
+    "tags": [
+      "psychology",
+      "milgram",
+      "obedience",
+      "ethics",
+      "experiment"
+    ]
+  },
+  {
+    "id": "general-psychology-maslow-hierarchy",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "everyday_science",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "everyday_science",
+    "categoryL3": "",
+    "statement": "Abraham Maslow proposed a hierarchy of needs in 1943, placing self-actualization at the top of a five-level pyramid of human motivation.",
+    "quizQuestion": "What sits at the top of Maslow's needs hierarchy?",
+    "correctAnswer": "Self-actualization",
+    "distractors": [
+      "Love",
+      "Esteem",
+      "Safety",
+      "Belonging",
+      "Purpose",
+      "Happiness",
+      "Freedom",
+      "Wealth"
+    ],
+    "acceptableAnswers": [
+      "Self-actualization",
+      "Self actualization"
+    ],
+    "explanation": "Maslow's hierarchy has five levels: physiological (food, water), safety, love/belonging, esteem, and self-actualization (reaching full potential). It remains one of the most cited theories in management and education.",
+    "wowFactor": "Maslow originally proposed a sixth level above self-actualization called 'self-transcendence' — connecting to something beyond yourself — but it's rarely included in textbook diagrams.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the base level of Maslow's needs hierarchy?",
+        "answer": "Physiological needs",
+        "distractors": [
+          "Safety needs",
+          "Love and belonging",
+          "Esteem needs"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Maslow published his hierarchy of needs paper in what decade?",
+        "answer": "1940s",
+        "distractors": [
+          "1930s",
+          "1950s",
+          "1960s"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Self-actualization is the highest level in Maslow's hierarchy.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Maslow placed ___ at the pinnacle of his five-level pyramid of human needs.",
+        "answer": "self-actualization",
+        "distractors": [
+          "esteem",
+          "love",
+          "safety"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Maslow%27s_hierarchy_of_needs",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing pyramid with five colored tiers, the topmost tier crowned with a radiant star labeled 'SELF-ACTUALIZATION', tiny human figures climbing toward it, pixel art style.",
+    "tags": [
+      "psychology",
+      "maslow",
+      "motivation",
+      "needs",
+      "hierarchy"
+    ]
+  },
+  {
+    "id": "general-computer-turing-test",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "inventions_tech",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "inventions_tech",
+    "categoryL3": "",
+    "statement": "Alan Turing proposed the Turing Test in 1950 to measure a machine's ability to exhibit intelligent behavior indistinguishable from a human.",
+    "quizQuestion": "What did Alan Turing propose in 1950 to test machine intelligence?",
+    "correctAnswer": "The Turing Test",
+    "distractors": [
+      "The Lovelace Test",
+      "The Intelligence Test",
+      "The Imitation Game",
+      "The Computing Test",
+      "The Halting Problem",
+      "The Von Neumann Test",
+      "The Shannon Test",
+      "The Logic Gate"
+    ],
+    "acceptableAnswers": [
+      "The Turing Test",
+      "Turing Test"
+    ],
+    "explanation": "Turing's test, described in his paper 'Computing Machinery and Intelligence', asks whether a machine can fool a human judge into thinking it's human through text conversation. It remains a philosophical touchstone for AI research.",
+    "wowFactor": "Turing originally called it the 'Imitation Game' — the title of the 2014 film about his life. The term 'Turing Test' was coined by others years after his death.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year did Alan Turing propose his famous machine intelligence test?",
+        "answer": "1950",
+        "distractors": [
+          "1936",
+          "1945",
+          "1956"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What was Turing's original name for the test later called the Turing Test?",
+        "answer": "The Imitation Game",
+        "distractors": [
+          "The Logic Game",
+          "The Mind Test",
+          "The Robot Test"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Turing Test evaluates whether a machine can mimic human conversation.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Alan Turing proposed a test for machine intelligence in ___ in his paper on computing machinery.",
+        "answer": "1950",
+        "distractors": [
+          "1936",
+          "1944",
+          "1958"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Turing_test",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two terminals side by side — one operated by a human, one by a robot — connected by glowing text wires, a judge figure trying to tell them apart, pixel art style.",
+    "tags": [
+      "computer",
+      "turing",
+      "AI",
+      "intelligence",
+      "history"
+    ]
+  },
+  {
+    "id": "general-computer-first-bug",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "inventions_tech",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "inventions_tech",
+    "categoryL3": "",
+    "statement": "The first actual computer 'bug' was a real moth found in the Harvard Mark II computer in 1947, taped into a logbook by Grace Hopper's team.",
+    "quizQuestion": "What creature was the first real computer 'bug' found in 1947?",
+    "correctAnswer": "A moth",
+    "distractors": [
+      "A fly",
+      "A beetle",
+      "A cockroach",
+      "A spider",
+      "A wasp",
+      "A cricket",
+      "A grasshopper",
+      "An ant"
+    ],
+    "acceptableAnswers": [
+      "A moth",
+      "Moth"
+    ],
+    "explanation": "Grace Hopper's team found a moth stuck in a relay of the Harvard Mark II, causing a malfunction. They taped it into the logbook with the note 'First actual case of bug being found.' The logbook is preserved at the Smithsonian.",
+    "wowFactor": "The logbook entry reads: 'First actual case of bug being found' — technically coining the modern tech usage of 'bug', though engineers had used the term loosely for years before.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who led the team that found the first computer bug in 1947?",
+        "answer": "Grace Hopper",
+        "distractors": [
+          "Alan Turing",
+          "John von Neumann",
+          "Claude Shannon"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The first computer bug was found in which early Harvard computer?",
+        "answer": "Mark II",
+        "distractors": [
+          "Mark I",
+          "ENIAC",
+          "UNIVAC"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The first computer bug was literally an insect found inside a computer.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The first computer bug was a ___ found inside the Harvard Mark II in 1947.",
+        "answer": "moth",
+        "distractors": [
+          "fly",
+          "beetle",
+          "spider"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Software_bug#History",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An old logbook open to a page with a real moth taped to it alongside handwritten notes, beside a massive room-sized 1940s computer humming with vacuum tubes, pixel art style.",
+    "tags": [
+      "computer",
+      "bugs",
+      "grace hopper",
+      "history",
+      "programming"
+    ]
+  },
+  {
+    "id": "general-computer-binary-bits",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "inventions_tech",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "inventions_tech",
+    "categoryL3": "",
+    "statement": "All modern computers store and process information using binary code — sequences of just two digits: 0 and 1, called bits.",
+    "quizQuestion": "What are the only two digits used in binary computer code?",
+    "correctAnswer": "0 and 1",
+    "distractors": [
+      "1 and 2",
+      "0 and 9",
+      "A and B",
+      "T and F",
+      "Yes and No",
+      "On and Off",
+      "Plus and Minus",
+      "High and Low"
+    ],
+    "acceptableAnswers": [
+      "0 and 1",
+      "Zero and one",
+      "0 or 1"
+    ],
+    "explanation": "Binary (base-2) uses only 0 and 1 to represent all data. Eight bits make one byte. Modern computers use billions of transistors that switch between on (1) and off (0) states billions of times per second.",
+    "wowFactor": "The word 'bit' is a portmanteau of 'binary digit' — coined by statistician John Tukey in 1947, the same year as the first computer bug.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many bits make up one byte in computing?",
+        "answer": "8 bits",
+        "distractors": [
+          "4 bits",
+          "16 bits",
+          "2 bits"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who coined the term 'bit' as short for binary digit in 1947?",
+        "answer": "John Tukey",
+        "distractors": [
+          "Claude Shannon",
+          "Alan Turing",
+          "John von Neumann"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: All computer data is ultimately stored as combinations of 0s and 1s.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A computer bit represents a ___ digit — either 0 or 1.",
+        "answer": "binary",
+        "distractors": [
+          "decimal",
+          "hexadecimal",
+          "octal"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Binary_code",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Streams of glowing 0s and 1s flowing through circuit board pathways, converging into a processor chip that pulses with light, pixel art style.",
+    "tags": [
+      "computer",
+      "binary",
+      "bits",
+      "coding",
+      "fundamentals"
+    ]
+  },
+  {
+    "id": "general-constitution-magna-carta",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "landmarks_wonders",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "landmarks_wonders",
+    "categoryL3": "",
+    "statement": "The Magna Carta, signed in 1215, was the first document to limit the power of the English king and establish the rule of law.",
+    "quizQuestion": "In what year was the Magna Carta signed?",
+    "correctAnswer": "1215",
+    "distractors": [
+      "1066",
+      "1189",
+      "1300",
+      "1400",
+      "1100",
+      "1250",
+      "1350",
+      "1150"
+    ],
+    "acceptableAnswers": [
+      "1215"
+    ],
+    "explanation": "King John of England was forced by rebellious barons to sign the Magna Carta at Runnymede. It established that even the king was subject to the law and guaranteed certain rights. It influenced the US Constitution and Bill of Rights.",
+    "wowFactor": "Only four original copies of the 1215 Magna Carta survive — two are held by British cathedrals, one by the British Library, and one by Lincoln Cathedral.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which English king was forced to sign the Magna Carta?",
+        "answer": "King John",
+        "distractors": [
+          "King Henry II",
+          "King Richard I",
+          "King Edward I"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "At what meadow near Windsor was the Magna Carta signed?",
+        "answer": "Runnymede",
+        "distractors": [
+          "Salisbury Plain",
+          "Canterbury Fields",
+          "Windsor Meadow"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Magna Carta was signed in 1215 to limit the English king's power.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Magna Carta was signed in ___, limiting the English king's absolute power for the first time.",
+        "answer": "1215",
+        "distractors": [
+          "1066",
+          "1300",
+          "1189"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Magna_Carta",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An aged parchment scroll with a wax royal seal, surrounded by armored barons and a reluctant-looking king with a quill, pixel art style.",
+    "tags": [
+      "constitution",
+      "magna carta",
+      "history",
+      "law",
+      "england"
+    ]
+  },
+  {
+    "id": "general-constitution-us-amendments",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "landmarks_wonders",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "landmarks_wonders",
+    "categoryL3": "",
+    "statement": "The US Constitution's first ten amendments, ratified in 1791, are collectively called the Bill of Rights.",
+    "quizQuestion": "What are the first ten US Constitutional amendments called?",
+    "correctAnswer": "Bill of Rights",
+    "distractors": [
+      "Declaration of Rights",
+      "Articles of Freedom",
+      "Charter of Liberty",
+      "Rights of Man",
+      "Freedom Clauses",
+      "Founding Amendments",
+      "Liberty Articles",
+      "Rights of Citizens"
+    ],
+    "acceptableAnswers": [
+      "Bill of Rights",
+      "The Bill of Rights"
+    ],
+    "explanation": "The Bill of Rights was authored primarily by James Madison and ratified in 1791. It protects freedoms including speech, religion, press, assembly, and protection from unreasonable searches. The First Amendment alone protects five distinct freedoms.",
+    "wowFactor": "Originally twelve amendments were proposed — the first two (about congressional size and pay) failed to ratify. Amendment #2 finally became the 27th Amendment in 1992, over 200 years later.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who is credited as the primary author of the US Bill of Rights?",
+        "answer": "James Madison",
+        "distractors": [
+          "Thomas Jefferson",
+          "Alexander Hamilton",
+          "John Adams"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In what year was the US Bill of Rights ratified?",
+        "answer": "1791",
+        "distractors": [
+          "1776",
+          "1787",
+          "1789"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The US Bill of Rights comprises the first ten constitutional amendments.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The US Constitution's first ten amendments are collectively called the ___.",
+        "answer": "Bill of Rights",
+        "distractors": [
+          "Declaration of Rights",
+          "Freedom Charter",
+          "Liberty Articles"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/United_States_Bill_of_Rights",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A parchment document with 'BILL OF RIGHTS' in bold header, quill pen resting beside it, American eagle emblem at top, colonial-era Congress visible through a window, pixel art style.",
+    "tags": [
+      "constitution",
+      "bill of rights",
+      "USA",
+      "law",
+      "amendments"
+    ]
+  },
+  {
+    "id": "general-constitution-us-preamble",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "landmarks_wonders",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "landmarks_wonders",
+    "categoryL3": "",
+    "statement": "The US Constitution begins with the words 'We the People', establishing that government authority comes from the citizens, not the government itself.",
+    "quizQuestion": "What are the opening three words of the US Constitution?",
+    "correctAnswer": "We the People",
+    "distractors": [
+      "In the Name",
+      "By the Power",
+      "For All Citizens",
+      "Under God's Law",
+      "With Liberty Granted",
+      "Among the States",
+      "Through the Congress",
+      "By Consent Given"
+    ],
+    "acceptableAnswers": [
+      "We the People",
+      "We the people"
+    ],
+    "explanation": "The Preamble's famous opening 'We the People' was a radical concept — declaring that sovereignty belongs to citizens, not monarchs. It was written primarily by Gouverneur Morris during the 1787 Constitutional Convention.",
+    "wowFactor": "The phrase 'We the People' replaced earlier drafts listing all thirteen states by name. The final wording was chosen because ratification by all states wasn't guaranteed.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who is credited with writing the US Constitution's Preamble in final form?",
+        "answer": "Gouverneur Morris",
+        "distractors": [
+          "James Madison",
+          "Benjamin Franklin",
+          "Alexander Hamilton"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The US Constitution was written at the Constitutional Convention in what year?",
+        "answer": "1787",
+        "distractors": [
+          "1776",
+          "1791",
+          "1783"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The US Constitution opens with 'We the People'.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The US Constitution's Preamble begins with '___ the People', asserting citizen sovereignty.",
+        "answer": "We",
+        "distractors": [
+          "By",
+          "For",
+          "Through"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 4,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Preamble_to_the_United_States_Constitution",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Close-up of the original Constitution parchment with ornate calligraphy, 'We the People' dramatically large at the top, quill pen and inkwell nearby, pixel art style.",
+    "tags": [
+      "constitution",
+      "USA",
+      "preamble",
+      "law",
+      "founding"
+    ]
+  },
+  {
+    "id": "general-wikipedia-founding",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "oddities",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "oddities",
+    "categoryL3": "",
+    "statement": "Wikipedia was founded in January 2001 by Jimmy Wales and Larry Sanger, and it grew to become the world's largest free encyclopedia.",
+    "quizQuestion": "In what year was Wikipedia founded?",
+    "correctAnswer": "2001",
+    "distractors": [
+      "1999",
+      "1998",
+      "2003",
+      "2000",
+      "2004",
+      "2005",
+      "1997",
+      "2002"
+    ],
+    "acceptableAnswers": [
+      "2001"
+    ],
+    "explanation": "Wikipedia launched on January 15, 2001, as a complement to the expert-written Nupedia. Within a year it had 20,000 articles. Today it has over 60 million articles across 300+ languages, maintained by volunteer editors.",
+    "wowFactor": "Wikipedia's article on Wikipedia itself has been edited over 30,000 times — making it one of the most fought-over pages in internet history due to neutrality debates.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who co-founded Wikipedia alongside Jimmy Wales?",
+        "answer": "Larry Sanger",
+        "distractors": [
+          "Tim Berners-Lee",
+          "Ward Cunningham",
+          "Sergey Brin"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What earlier encyclopedia project did Wikipedia grow out of in 2001?",
+        "answer": "Nupedia",
+        "distractors": [
+          "Encyclopaedia Britannica",
+          "Encarta",
+          "Citizendium"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Wikipedia was founded in 2001 and anyone can edit most of its articles.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Wikipedia was founded on January 15, ___, by Jimmy Wales and Larry Sanger.",
+        "answer": "2001",
+        "distractors": [
+          "1999",
+          "2003",
+          "2000"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wikipedia",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing puzzle-globe logo hovering over a vast digital library of floating pages, tiny volunteer editors typing at computers surrounding it, pixel art style.",
+    "tags": [
+      "wikipedia",
+      "internet",
+      "encyclopedia",
+      "knowledge",
+      "web"
+    ]
+  },
+  {
+    "id": "general-wikipedia-languages",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "oddities",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "oddities",
+    "categoryL3": "",
+    "statement": "Wikipedia exists in over 300 languages, with the English edition containing more than 6 million articles — the most of any language edition.",
+    "quizQuestion": "Roughly how many articles does English Wikipedia contain?",
+    "correctAnswer": "Over 6 million",
+    "distractors": [
+      "Over 1 million",
+      "Over 10 million",
+      "Over 3 million",
+      "Over 500,000",
+      "Over 20 million",
+      "Under 1 million",
+      "Over 4 million",
+      "Over 8 million"
+    ],
+    "acceptableAnswers": [
+      "Over 6 million",
+      "6 million",
+      "More than 6 million",
+      "6+ million"
+    ],
+    "explanation": "English Wikipedia surpassed 6 million articles in 2020. The Cebuano (Filipino language) edition briefly had more articles thanks to automated bots, but English leads in quality and depth.",
+    "wowFactor": "The Cebuano Wikipedia once had more articles than English Wikipedia — almost entirely written by a single bot named 'Lsjbot' which auto-generated millions of stub articles about plants and animals.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which language edition of Wikipedia briefly had more articles than English?",
+        "answer": "Cebuano",
+        "distractors": [
+          "German",
+          "French",
+          "Swedish"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many languages does Wikipedia operate in?",
+        "answer": "Over 300",
+        "distractors": [
+          "About 50",
+          "About 100",
+          "About 200"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: English Wikipedia has more than 6 million articles.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "English Wikipedia contains over ___ million articles, the most of any language edition.",
+        "answer": "6",
+        "distractors": [
+          "1",
+          "10",
+          "3"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/English_Wikipedia",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A world map covered with Wikipedia globe icons in different colors for different languages, with the English icon glowing largest, pixel art style.",
+    "tags": [
+      "wikipedia",
+      "internet",
+      "languages",
+      "knowledge",
+      "web"
+    ]
+  },
+  {
+    "id": "general-bible-most-printed",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "pop_culture",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "pop_culture",
+    "categoryL3": "",
+    "statement": "The Bible is the best-selling and most widely distributed book in history, with an estimated 5 billion copies printed.",
+    "quizQuestion": "Roughly how many copies of the Bible have been printed throughout history?",
+    "correctAnswer": "5 billion",
+    "distractors": [
+      "1 billion",
+      "10 billion",
+      "500 million",
+      "2 billion",
+      "3 billion",
+      "100 million",
+      "7 billion",
+      "50 million"
+    ],
+    "acceptableAnswers": [
+      "5 billion",
+      "About 5 billion",
+      "Over 5 billion"
+    ],
+    "explanation": "The Bible has been translated into over 700 languages and printed in enormous quantities by organizations like the Gideons International, which alone has distributed over 2 billion copies worldwide since 1908.",
+    "wowFactor": "Despite being the most distributed book ever, the Bible was almost impossible for ordinary people to own before Gutenberg's press in 1455 — most Europeans had never held a book at all.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Into approximately how many languages has the Bible been translated?",
+        "answer": "Over 700",
+        "distractors": [
+          "About 100",
+          "About 300",
+          "About 500"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What organization has distributed over 2 billion Bibles since 1908?",
+        "answer": "Gideons International",
+        "distractors": [
+          "The Vatican",
+          "The Bible Society",
+          "World Vision"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Bible is the most widely distributed book in human history.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "An estimated ___ billion copies of the Bible have been printed, more than any other book.",
+        "answer": "5",
+        "distractors": [
+          "1",
+          "10",
+          "2"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bible",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An ancient leather-bound Bible glowing on a pedestal, surrounded by a cascade of open pages flying upward into a beam of light, pixel art style.",
+    "tags": [
+      "bible",
+      "books",
+      "religion",
+      "records",
+      "printing"
+    ]
+  },
+  {
+    "id": "general-bible-66-books",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "pop_culture",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "pop_culture",
+    "categoryL3": "",
+    "statement": "The Protestant Bible contains 66 books — 39 in the Old Testament and 27 in the New Testament.",
+    "quizQuestion": "How many books are in the Protestant Bible?",
+    "correctAnswer": "66",
+    "distractors": [
+      "73",
+      "72",
+      "52",
+      "78",
+      "60",
+      "80",
+      "44",
+      "39"
+    ],
+    "acceptableAnswers": [
+      "66",
+      "66 books"
+    ],
+    "explanation": "The Protestant canon has 66 books. Catholic Bibles have 73 books (adding 7 deuterocanonical books). The New Testament's 27 books were formally canonized at the Council of Carthage in 397 AD.",
+    "wowFactor": "The shortest book in the Bible is 3 John — just 14 verses. The longest is Psalms with 150 chapters. The middle chapter of the entire Bible is Psalm 117, also the shortest chapter.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many books are in the New Testament of the Protestant Bible?",
+        "answer": "27",
+        "distractors": [
+          "39",
+          "12",
+          "33"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many books does the Catholic Bible have compared to the Protestant Bible's 66?",
+        "answer": "73",
+        "distractors": [
+          "66",
+          "78",
+          "80"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Protestant Bible contains exactly 66 books.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Protestant Bible contains ___ books: 39 in the Old Testament and 27 in the New.",
+        "answer": "66",
+        "distractors": [
+          "73",
+          "52",
+          "80"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Biblical_canon",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An open Bible spread across two pages with tiny Roman numerals 1-66 glowing above each book name, a golden bookmarker splitting the Old and New Testaments, pixel art style.",
+    "tags": [
+      "bible",
+      "books",
+      "religion",
+      "canon",
+      "scripture"
+    ]
+  },
+  {
+    "id": "general-bible-shortest-verse",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "pop_culture",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "pop_culture",
+    "categoryL3": "",
+    "statement": "The shortest verse in the Bible is John 11:35 — 'Jesus wept' — containing just two words.",
+    "quizQuestion": "What is the shortest verse in the Bible?",
+    "correctAnswer": "Jesus wept",
+    "distractors": [
+      "God spoke",
+      "He rose",
+      "She wept",
+      "Be still",
+      "Fear not",
+      "Come forth",
+      "Love one",
+      "He died"
+    ],
+    "acceptableAnswers": [
+      "Jesus wept",
+      "John 11:35"
+    ],
+    "explanation": "John 11:35 reads simply 'Jesus wept' in the King James Bible. It occurs when Jesus arrived after the death of Lazarus and saw Mary weeping. Despite its brevity, theologians debate its significance — showing Jesus's humanity.",
+    "wowFactor": "'Jesus wept' is frequently used in English as an exclamation of frustration or disbelief — making it possibly the most quoted two-word Bible verse in secular contexts.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what Gospel does the shortest Bible verse 'Jesus wept' appear?",
+        "answer": "John",
+        "distractors": [
+          "Luke",
+          "Matthew",
+          "Mark"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Why did Jesus weep in John 11:35, the Bible's shortest verse?",
+        "answer": "Lazarus had died",
+        "distractors": [
+          "He was betrayed",
+          "Jerusalem was lost",
+          "His disciples left"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: 'Jesus wept' is the shortest verse in the Bible, at just two words.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The shortest Bible verse is John 11:35: '___ wept'.",
+        "answer": "Jesus",
+        "distractors": [
+          "God",
+          "He",
+          "Mary"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Jesus_wept",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An ornate Bible page zoomed in on a single short verse surrounded by elaborate gold illuminated borders, two tears falling from above, pixel art style.",
+    "tags": [
+      "bible",
+      "records",
+      "religion",
+      "verses",
+      "scripture"
+    ]
+  },
+  {
+    "id": "general-book-gutenberg-press",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "records_firsts",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "records_firsts",
+    "categoryL3": "",
+    "statement": "Johannes Gutenberg invented the movable-type printing press around 1440, making books mass-producible for the first time in Europe.",
+    "quizQuestion": "Who invented the movable-type printing press around 1440?",
+    "correctAnswer": "Johannes Gutenberg",
+    "distractors": [
+      "Leonardo da Vinci",
+      "Bi Sheng",
+      "William Caxton",
+      "Johann Fust",
+      "Nicolas Jenson",
+      "Aldus Manutius",
+      "Peter Schöffer",
+      "Robert Estienne"
+    ],
+    "acceptableAnswers": [
+      "Johannes Gutenberg",
+      "Gutenberg"
+    ],
+    "explanation": "Gutenberg's press used individual metal type letters that could be rearranged and reused. His first major print job was the Gutenberg Bible (1455). The press sparked the Reformation, Scientific Revolution, and spread of literacy.",
+    "wowFactor": "Gutenberg died nearly penniless — his investor Johann Fust sued him and seized the press. Gutenberg never profited from one of history's most transformative inventions.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the first major book printed on Gutenberg's press, around 1455?",
+        "answer": "The Gutenberg Bible",
+        "distractors": [
+          "The Canterbury Tales",
+          "The Iliad",
+          "Don Quixote"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In what German city did Gutenberg develop his printing press?",
+        "answer": "Mainz",
+        "distractors": [
+          "Frankfurt",
+          "Cologne",
+          "Strasbourg"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Gutenberg's movable-type press was invented around 1440 in Europe.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Johannes Gutenberg invented the movable-type ___ press around 1440, revolutionizing book production.",
+        "answer": "printing",
+        "distractors": [
+          "writing",
+          "copying",
+          "publishing"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Johannes_Gutenberg",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An elaborate medieval printing press with metal type stamps, a craftsman pressing a page, stacks of freshly printed books surrounding him, candlelight illuminating the workshop, pixel art style.",
+    "tags": [
+      "book",
+      "gutenberg",
+      "printing",
+      "history",
+      "invention"
+    ]
+  },
+  {
+    "id": "general-book-oldest-printed",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "records_firsts",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "records_firsts",
+    "categoryL3": "",
+    "statement": "The world's oldest dated printed book is the Diamond Sutra, a Buddhist text printed in China in 868 AD — over 500 years before Gutenberg.",
+    "quizQuestion": "What is the world's oldest dated printed book, from 868 AD?",
+    "correctAnswer": "The Diamond Sutra",
+    "distractors": [
+      "The Quran",
+      "The Torah",
+      "The Mahabharata",
+      "The Tao Te Ching",
+      "The Book of Changes",
+      "The Analects",
+      "The Vedas",
+      "The Epic of Gilgamesh"
+    ],
+    "acceptableAnswers": [
+      "The Diamond Sutra",
+      "Diamond Sutra"
+    ],
+    "explanation": "The Diamond Sutra was printed using woodblock printing in China in 868 AD. It was found in the Dunhuang caves by Aurel Stein in 1907 and is now held at the British Library. It predates Gutenberg's press by nearly 600 years.",
+    "wowFactor": "The Diamond Sutra scroll is 5.4 meters long and ends with a colophon that says it was printed on May 11, 868 — making it the oldest book with an exact printed date.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what country was the Diamond Sutra, the oldest printed book, produced?",
+        "answer": "China",
+        "distractors": [
+          "India",
+          "Japan",
+          "Korea"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "By how many years does the Diamond Sutra predate Gutenberg's press?",
+        "answer": "About 600 years",
+        "distractors": [
+          "About 100 years",
+          "About 200 years",
+          "About 400 years"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Diamond Sutra (868 AD) is the world's oldest dated printed book.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The world's oldest dated printed book, the ___ Sutra, was printed in China in 868 AD.",
+        "answer": "Diamond",
+        "distractors": [
+          "Lotus",
+          "Heart",
+          "Gold"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Diamond_Sutra",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A long horizontal scroll unrolling to reveal ornate Chinese woodblock print characters and a detailed illustration of the Buddha, glowing with age, pixel art style.",
+    "tags": [
+      "book",
+      "printing",
+      "history",
+      "china",
+      "records"
+    ]
+  },
+  {
+    "id": "general-english-lingua-franca",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "words_language",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "words_language",
+    "categoryL3": "",
+    "statement": "English is the world's primary lingua franca, spoken as a first or second language by over 1.5 billion people globally.",
+    "quizQuestion": "Approximately how many people speak English worldwide?",
+    "correctAnswer": "Over 1.5 billion",
+    "distractors": [
+      "Over 500 million",
+      "Over 3 billion",
+      "Over 800 million",
+      "About 300 million",
+      "Over 1 billion",
+      "About 600 million",
+      "Over 2 billion",
+      "About 400 million"
+    ],
+    "acceptableAnswers": [
+      "Over 1.5 billion",
+      "1.5 billion",
+      "About 1.5 billion"
+    ],
+    "explanation": "English has approximately 400 million native speakers, but over 1 billion more use it as a second language for business, science, diplomacy, and aviation. It's the official language of 67 countries.",
+    "wowFactor": "English is the official language of the skies — ALL international aviation communication must be in English, regardless of where the pilots or controllers are from.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many countries have English as an official language?",
+        "answer": "67 countries",
+        "distractors": [
+          "12 countries",
+          "25 countries",
+          "45 countries"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "English is mandated as the official language of communication in which industry worldwide?",
+        "answer": "Aviation",
+        "distractors": [
+          "Shipping",
+          "Medicine",
+          "Finance"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Over 1.5 billion people speak English as a first or second language.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "English is spoken by over ___ billion people worldwide as a first or second language.",
+        "answer": "1.5",
+        "distractors": [
+          "0.5",
+          "3",
+          "0.8"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/English_language",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A globe covered in speech bubbles in dozens of scripts, with 'English' speech bubbles the largest and spreading across every continent, pixel art style.",
+    "tags": [
+      "english",
+      "language",
+      "lingua franca",
+      "communication",
+      "global"
+    ]
+  },
+  {
+    "id": "general-english-germanic-roots",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "words_language",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "words_language",
+    "categoryL3": "",
+    "statement": "English is a Germanic language descended from Anglo-Saxon, but roughly 60% of its vocabulary comes from Latin and French.",
+    "quizQuestion": "What language family does English originally belong to?",
+    "correctAnswer": "Germanic",
+    "distractors": [
+      "Romance",
+      "Latin",
+      "Celtic",
+      "Norse",
+      "Slavic",
+      "Indo-Iranian",
+      "Semitic",
+      "Italic"
+    ],
+    "acceptableAnswers": [
+      "Germanic",
+      "West Germanic"
+    ],
+    "explanation": "English developed from Anglo-Saxon (Old English), a West Germanic language. The Norman Conquest of 1066 flooded English with French words. Today, about 29% of English words come from French and 29% from Latin.",
+    "wowFactor": "English has two words for almost every animal — a Germanic name for the living animal (cow, pig, sheep) and a French name for the meat (beef, pork, mutton) — a legacy of the Norman Conquest.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What historical event in 1066 flooded English with French vocabulary?",
+        "answer": "The Norman Conquest",
+        "distractors": [
+          "The Black Death",
+          "The Hundred Years' War",
+          "The Viking raids"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "About what percentage of English vocabulary comes from Latin and French combined?",
+        "answer": "About 60%",
+        "distractors": [
+          "About 20%",
+          "About 40%",
+          "About 80%"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: English is classified as a Germanic language despite heavy French and Latin vocabulary.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "English is a ___ language by origin, but gained vast French vocabulary after 1066.",
+        "answer": "Germanic",
+        "distractors": [
+          "Romance",
+          "Celtic",
+          "Norse"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/History_of_English",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An English word splitting in two like a tree — one branch labeled 'cow' (Anglo-Saxon) and one 'beef' (French), with a Norman knight and a Saxon farmer arguing below, pixel art style.",
+    "tags": [
+      "english",
+      "language",
+      "etymology",
+      "germanic",
+      "history"
+    ]
+  },
+  {
+    "id": "general-economics-supply-demand",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "everyday_science",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "everyday_science",
+    "categoryL3": "",
+    "statement": "The law of supply and demand is the foundation of economics: when demand rises and supply stays the same, prices increase.",
+    "quizQuestion": "In economics, when demand rises but supply stays fixed, what happens to price?",
+    "correctAnswer": "Price increases",
+    "distractors": [
+      "Price decreases",
+      "Price stays the same",
+      "Supply increases",
+      "Demand drops",
+      "Nothing changes",
+      "Quality improves",
+      "Production rises",
+      "Value falls"
+    ],
+    "acceptableAnswers": [
+      "Price increases",
+      "Prices go up",
+      "Price rises"
+    ],
+    "explanation": "Supply and demand is the central mechanism of market economies. Adam Smith described how prices act as signals — rising prices attract more supply, falling prices deter production. This self-regulating process is called the 'invisible hand'.",
+    "wowFactor": "Adam Smith described the 'invisible hand' in The Wealth of Nations (1776) — but he only used the phrase THREE times across all his writing. Its fame far exceeds how often he actually said it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who coined the economic concept of the 'invisible hand' in markets?",
+        "answer": "Adam Smith",
+        "distractors": [
+          "John Maynard Keynes",
+          "David Ricardo",
+          "Milton Friedman"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Adam Smith published The Wealth of Nations in what year?",
+        "answer": "1776",
+        "distractors": [
+          "1759",
+          "1800",
+          "1848"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: When demand increases and supply is unchanged, prices typically rise.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The law of supply and ___ is the foundation of market economics.",
+        "answer": "demand",
+        "distractors": [
+          "profit",
+          "trade",
+          "value"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Supply_and_demand",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two arrows crossing — one labeled 'Supply' going down and one 'Demand' going up — intersecting at a glowing price point, market stalls and goods visible in the background, pixel art style.",
+    "tags": [
+      "economics",
+      "supply",
+      "demand",
+      "market",
+      "adam smith"
+    ]
+  },
+  {
+    "id": "general-economics-gdp",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "everyday_science",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "everyday_science",
+    "categoryL3": "",
+    "statement": "GDP, or Gross Domestic Product, measures the total economic output of a country — the monetary value of all goods and services produced.",
+    "quizQuestion": "What does GDP stand for in economics?",
+    "correctAnswer": "Gross Domestic Product",
+    "distractors": [
+      "General Domestic Price",
+      "Global Demand Policy",
+      "Gross Daily Profit",
+      "General Domestic Production",
+      "Gross Development Plan",
+      "Growth Domestic Price",
+      "Global Domestic Profit",
+      "Gross Direct Payment"
+    ],
+    "acceptableAnswers": [
+      "Gross Domestic Product"
+    ],
+    "explanation": "GDP was developed by economist Simon Kuznets in 1934 for the US Congress. It's the standard measure of national economic size. The world's largest GDP belongs to the United States, followed by China.",
+    "wowFactor": "Simon Kuznets, who invented GDP, warned Congress in 1934 that 'the welfare of a nation can scarcely be inferred from a measurement of national income' — he knew it was incomplete even as he created it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which economist developed the concept of GDP in 1934?",
+        "answer": "Simon Kuznets",
+        "distractors": [
+          "John Maynard Keynes",
+          "Adam Smith",
+          "Paul Samuelson"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which country currently has the world's largest GDP?",
+        "answer": "United States",
+        "distractors": [
+          "China",
+          "Germany",
+          "Japan"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: GDP measures the total monetary value of all goods and services produced in a country.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "GDP stands for Gross ___ Product, the standard measure of a nation's economic output.",
+        "answer": "Domestic",
+        "distractors": [
+          "Daily",
+          "Development",
+          "Direct"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 4,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gross_domestic_product",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A large bar chart rising across a city skyline, each bar labeled with a country flag, the tallest bar glowing gold with a dollar sign, pixel art style.",
+    "tags": [
+      "economics",
+      "GDP",
+      "finance",
+      "measurement",
+      "national income"
+    ]
+  },
+  {
+    "id": "general-internet-arpanet",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "inventions_tech",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "inventions_tech",
+    "categoryL3": "",
+    "statement": "The Internet originated from ARPANET, a US military research network that sent its first message in 1969 — which crashed after two letters.",
+    "quizQuestion": "What network preceded and led to the modern Internet?",
+    "correctAnswer": "ARPANET",
+    "distractors": [
+      "MILNET",
+      "DARPANET",
+      "NSFNET",
+      "CompuServe",
+      "BITNET",
+      "CYCLADES",
+      "USENET",
+      "CSNET"
+    ],
+    "acceptableAnswers": [
+      "ARPANET",
+      "Arpanet"
+    ],
+    "explanation": "ARPANET (Advanced Research Projects Agency Network) was funded by the US Department of Defense. The first transmission in 1969 was meant to send 'LOGIN' from UCLA to Stanford — the system crashed after 'LO'. It still counts as the first internet message.",
+    "wowFactor": "The first message ever sent over what became the Internet was 'LO' — not 'Hello' — because the system crashed mid-word. Accidentally, it sent the most poetic first message possible.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year was the first ARPANET message transmitted?",
+        "answer": "1969",
+        "distractors": [
+          "1965",
+          "1971",
+          "1975"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What US government agency funded the creation of ARPANET?",
+        "answer": "Department of Defense",
+        "distractors": [
+          "NASA",
+          "NSF",
+          "CIA"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Internet originated from a US military network called ARPANET in 1969.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The modern Internet grew from ___, a US military research network first used in 1969.",
+        "answer": "ARPANET",
+        "distractors": [
+          "MILNET",
+          "NSFNET",
+          "BITNET"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/ARPANET",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A retro 1960s computer terminal with two glowing nodes connected by a dotted line, the words 'LO' on the screen with a crash symbol, military base exterior visible, pixel art style.",
+    "tags": [
+      "internet",
+      "ARPANET",
+      "history",
+      "technology",
+      "military"
+    ]
+  },
+  {
+    "id": "general-internet-world-wide-web",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "inventions_tech",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "inventions_tech",
+    "categoryL3": "",
+    "statement": "The World Wide Web was invented by Tim Berners-Lee in 1989 while working at CERN — it is distinct from the Internet itself.",
+    "quizQuestion": "Who invented the World Wide Web in 1989?",
+    "correctAnswer": "Tim Berners-Lee",
+    "distractors": [
+      "Vint Cerf",
+      "Bill Gates",
+      "Marc Andreessen",
+      "Steve Jobs",
+      "Linus Torvalds",
+      "Jeff Bezos",
+      "Larry Page",
+      "Bob Kahn"
+    ],
+    "acceptableAnswers": [
+      "Tim Berners-Lee",
+      "Berners-Lee",
+      "Timothy Berners-Lee"
+    ],
+    "explanation": "Tim Berners-Lee invented the Web while at CERN in Switzerland, proposing HTTP, HTML, and URLs to allow sharing of information via hyperlinks. The Web is a service that runs on top of the Internet — they're not the same thing.",
+    "wowFactor": "Tim Berners-Lee chose not to patent the World Wide Web — he gave it to the world for free. Had he patented it, he'd likely be the world's first trillionaire.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "At which particle physics laboratory did Tim Berners-Lee invent the Web?",
+        "answer": "CERN",
+        "distractors": [
+          "MIT",
+          "Bell Labs",
+          "Stanford Research Institute"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What three technologies did Berners-Lee create when inventing the Web?",
+        "answer": "HTTP, HTML, and URLs",
+        "distractors": [
+          "TCP, IP, and DNS",
+          "FTP, SMTP, and POP",
+          "CSS, JavaScript, and XML"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The World Wide Web and the Internet are the same thing.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Partially true",
+          "It depends"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Tim Berners-Lee invented the World Wide ___ in 1989 while working at CERN.",
+        "answer": "Web",
+        "distractors": [
+          "Net",
+          "Grid",
+          "Hub"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/World_Wide_Web",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing spider web of hyperlinks spanning the world, with Tim Berners-Lee at the center typing at a NeXT computer, CERN particle accelerator rings visible in the background, pixel art style.",
+    "tags": [
+      "internet",
+      "world wide web",
+      "berners-lee",
+      "CERN",
+      "invention"
+    ]
+  },
+  {
+    "id": "general-internet-first-website",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "inventions_tech",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "inventions_tech",
+    "categoryL3": "",
+    "statement": "The first website ever published went live at CERN on August 6, 1991, and described the World Wide Web project itself.",
+    "quizQuestion": "When did the world's first website go live?",
+    "correctAnswer": "August 6, 1991",
+    "distractors": [
+      "January 1, 1990",
+      "March 15, 1989",
+      "December 25, 1993",
+      "July 4, 1992",
+      "October 1, 1994",
+      "April 30, 1993",
+      "November 12, 1990",
+      "June 6, 1992"
+    ],
+    "acceptableAnswers": [
+      "August 6, 1991",
+      "1991",
+      "August 1991"
+    ],
+    "explanation": "The first website (http://info.cern.ch) was created by Tim Berners-Lee and went live on August 6, 1991. It was simply a page explaining what the World Wide Web was. CERN restored and still hosts a copy of it today.",
+    "wowFactor": "The world's first website is still online today — CERN restored it in 2013 at its original URL (info.cern.ch) so anyone can visit the exact page that started the web.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the content of the world's first website?",
+        "answer": "A description of the Web project",
+        "distractors": [
+          "A physics paper",
+          "A news article",
+          "A government document"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The first website was hosted on what type of computer at CERN?",
+        "answer": "A NeXT workstation",
+        "distractors": [
+          "An IBM mainframe",
+          "An Apple Macintosh",
+          "A Sun Microsystems server"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The world's first website went live in 1991 at CERN.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The world's first website went live on August 6, ___, at CERN.",
+        "answer": "1991",
+        "distractors": [
+          "1989",
+          "1993",
+          "1990"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/History_of_the_World_Wide_Web",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A monochrome early 1990s web browser showing a sparse text-only webpage with a blinking cursor, CERN logo in the corner, CRT monitor glow, pixel art style.",
+    "tags": [
+      "internet",
+      "web",
+      "CERN",
+      "history",
+      "records"
+    ]
+  },
+  {
+    "id": "general-bridge-golden-gate",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "landmarks_wonders",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "landmarks_wonders",
+    "categoryL3": "",
+    "statement": "The Golden Gate Bridge in San Francisco, completed in 1937, was the world's longest suspension bridge for 27 years after its construction.",
+    "quizQuestion": "In what year was the Golden Gate Bridge completed?",
+    "correctAnswer": "1937",
+    "distractors": [
+      "1929",
+      "1945",
+      "1933",
+      "1940",
+      "1925",
+      "1950",
+      "1955",
+      "1920"
+    ],
+    "acceptableAnswers": [
+      "1937"
+    ],
+    "explanation": "The Golden Gate Bridge spans 1,280 meters between its towers. It cost $35 million to build (about $700 million today) and took 4 years. It held the record for longest suspension span until 1964 when New York's Verrazano-Narrows Bridge surpassed it.",
+    "wowFactor": "The Golden Gate's distinctive 'International Orange' color was actually a primer coat — the US Navy wanted it painted black with yellow stripes, and the Air Force wanted black and white stripes. The architect kept the orange.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the distinctive color of the Golden Gate Bridge?",
+        "answer": "International Orange",
+        "distractors": [
+          "Vermilion Red",
+          "Rust Brown",
+          "Burnt Sienna"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which bridge surpassed the Golden Gate as the longest suspension bridge in 1964?",
+        "answer": "Verrazano-Narrows Bridge",
+        "distractors": [
+          "Brooklyn Bridge",
+          "George Washington Bridge",
+          "Mackinac Bridge"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Golden Gate Bridge was completed in 1937.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Golden Gate Bridge was completed in ___ and held the longest suspension span record for 27 years.",
+        "answer": "1937",
+        "distractors": [
+          "1929",
+          "1945",
+          "1940"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Golden_Gate_Bridge",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Iconic orange suspension bridge towers emerging from Bay fog, cable lines arcing dramatically against a sunset sky, sailboats passing underneath, pixel art style.",
+    "tags": [
+      "bridge",
+      "golden gate",
+      "engineering",
+      "San Francisco",
+      "landmarks"
+    ]
+  },
+  {
+    "id": "general-bridge-suspension-forces",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "landmarks_wonders",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "landmarks_wonders",
+    "categoryL3": "",
+    "statement": "Suspension bridges hang their roadway from cables draped over tall towers — the cables work entirely in tension, not compression.",
+    "quizQuestion": "In a suspension bridge, how do the main cables hold up the roadway?",
+    "correctAnswer": "Tension (being pulled)",
+    "distractors": [
+      "Compression (being pushed)",
+      "Adhesion",
+      "Magnetism",
+      "Counterbalance",
+      "Arch force",
+      "Torsion",
+      "Friction",
+      "Gravity offset"
+    ],
+    "acceptableAnswers": [
+      "Tension",
+      "Being pulled",
+      "Tensile force",
+      "Tension (being pulled)"
+    ],
+    "explanation": "Suspension bridges transfer the weight of the deck to cables that hang in tension between towers. The cables are anchored to massive concrete blocks at each end. This allows suspension bridges to span much longer distances than arch or beam bridges.",
+    "wowFactor": "The cables of the Golden Gate Bridge contain 80,000 miles of wire — enough to circle the Earth more than three times — despite the bridge itself being only 1.7 miles long.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What holds up the roadway of a suspension bridge?",
+        "answer": "Hanging cables under tension",
+        "distractors": [
+          "Stone arches",
+          "Steel beams",
+          "Underground pylons"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many miles of wire are in the Golden Gate Bridge's cables?",
+        "answer": "80,000 miles",
+        "distractors": [
+          "1,000 miles",
+          "10,000 miles",
+          "5,000 miles"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Suspension bridge cables work by being under tension rather than compression.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Suspension bridges hang their decks from cables under ___, allowing very long spans.",
+        "answer": "tension",
+        "distractors": [
+          "compression",
+          "torque",
+          "friction"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Suspension_bridge",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Cross-section diagram of a suspension bridge showing cable arcs, tension force arrows pointing outward to anchor blocks, the deck hanging from vertical suspender cables, pixel art engineering style.",
+    "tags": [
+      "bridge",
+      "engineering",
+      "physics",
+      "tension",
+      "suspension"
+    ]
+  },
+  {
+    "id": "general-bridge-longest-modern",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "landmarks_wonders",
+    "categoryL1": "General Knowledge",
+    "categoryL2": "landmarks_wonders",
+    "categoryL3": "",
+    "statement": "The Akashi Kaikyō Bridge in Japan, completed in 1998, is the world's longest suspension bridge with a main span of 1,991 meters.",
+    "quizQuestion": "Which country has the world's longest suspension bridge, the Akashi Kaikyō?",
+    "correctAnswer": "Japan",
+    "distractors": [
+      "China",
+      "USA",
+      "Denmark",
+      "UK",
+      "Turkey",
+      "South Korea",
+      "Sweden",
+      "Norway"
+    ],
+    "acceptableAnswers": [
+      "Japan"
+    ],
+    "explanation": "The Akashi Kaikyō (Pearl Bridge) connects Kobe to Awaji Island across the Akashi Strait. Its 1,991-meter main span is nearly 750 meters longer than the Golden Gate. It was designed to withstand an 8.5-magnitude earthquake.",
+    "wowFactor": "During the Great Hanshin earthquake of 1995 — while the bridge was still under construction — one of the foundations moved 1 meter. Engineers redesigned the final bridge on the fly to account for the shifted anchor point.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the main span length of the Akashi Kaikyō Bridge?",
+        "answer": "1,991 meters",
+        "distractors": [
+          "1,280 meters",
+          "1,624 meters",
+          "2,100 meters"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Akashi Kaikyō Bridge connects Kobe to which island in Japan?",
+        "answer": "Awaji Island",
+        "distractors": [
+          "Shikoku",
+          "Kyushu",
+          "Hokkaido"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Akashi Kaikyō Bridge in Japan is the world's longest suspension bridge.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Not proven"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The world's longest suspension bridge, the Akashi Kaikyō, is located in ___.",
+        "answer": "Japan",
+        "distractors": [
+          "China",
+          "USA",
+          "Denmark"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Akashi_Kaikyō_Bridge",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An enormous graceful bridge arcing across fog-filled water at dusk, twin towers lit up, distant Japanese city lights glowing on one shore and forested island on the other, pixel art style.",
+    "tags": [
+      "bridge",
+      "Japan",
+      "engineering",
+      "records",
+      "landmarks"
+    ]
+  }
+]

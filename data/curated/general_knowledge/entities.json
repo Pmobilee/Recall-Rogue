@@ -1,0 +1,6698 @@
+[
+  {
+    "qid": "Q571",
+    "label": "book",
+    "description": "medium for recording information (words or images) typically on bound pages or more abstractly in electronic or audio form",
+    "subcategory": "records_firsts",
+    "sitelinks": 276,
+    "monthlyPageviews": 138000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1368",
+    "label": "money",
+    "description": "object or record accepted as payment",
+    "subcategory": "records_firsts",
+    "sitelinks": 271,
+    "monthlyPageviews": 135500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q4916",
+    "label": "euro",
+    "description": "currency of most countries in the European Union",
+    "subcategory": "records_firsts",
+    "sitelinks": 237,
+    "monthlyPageviews": 118500,
+    "properties": {
+      "startDate": "+1999-01-01T00:00:00Z",
+      "country": "Q40"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q10987",
+    "label": "honey",
+    "description": "sweet food made by bees mostly using nectar from flowers",
+    "subcategory": "records_firsts",
+    "sitelinks": 218,
+    "monthlyPageviews": 109000,
+    "properties": {
+      "material": "Q171934"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q11633",
+    "label": "photography",
+    "description": "art, science, and practice of creating durable images by recording light or other electromagnetic radiation",
+    "subcategory": "records_firsts",
+    "sitelinks": 209,
+    "monthlyPageviews": 104500,
+    "properties": {
+      "discoverer": "Q933545",
+      "countryOfOrigin": "Q21"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q8171",
+    "label": "word",
+    "description": "smallest linguistic element that will be said in isolation with semantic or pragmatic content",
+    "subcategory": "records_firsts",
+    "sitelinks": 206,
+    "monthlyPageviews": 103000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q9592",
+    "label": "Catholic Church",
+    "description": "largest Christian Church, made up of 24 autonomous Churches in communion with the Pope, part of the Latin Church aka Latin Christianity aka western Christianity",
+    "subcategory": "records_firsts",
+    "sitelinks": 203,
+    "monthlyPageviews": 101500,
+    "properties": {
+      "country": "Q237",
+      "inception": "+0001-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7075",
+    "label": "library",
+    "description": "institution charged with the care of a collection of literary, musical, artistic, or reference materials, such as books, manuscripts, recordings, or films",
+    "subcategory": "records_firsts",
+    "sitelinks": 201,
+    "monthlyPageviews": 100500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q9610",
+    "label": "Bengali",
+    "description": "Indo-Aryan language mostly spoken in Bangladesh and India",
+    "subcategory": "records_firsts",
+    "sitelinks": 199,
+    "monthlyPageviews": 99500,
+    "properties": {
+      "country": "Q902"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q19786",
+    "label": "Old Testament",
+    "description": "first division of the Christian biblical canon",
+    "subcategory": "records_firsts",
+    "sitelinks": 176,
+    "monthlyPageviews": 88000,
+    "properties": {
+      "genre": "Q12617225"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9585",
+    "label": "Shia Islam",
+    "description": "second-most populous Islamic denomination",
+    "subcategory": "records_firsts",
+    "sitelinks": 157,
+    "monthlyPageviews": 78500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q34812",
+    "label": "New Year",
+    "description": "first day of the year according to some calendar (e.g., January 1 in the Julian and Gregorian calendar)",
+    "subcategory": "records_firsts",
+    "sitelinks": 157,
+    "monthlyPageviews": 78500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7785",
+    "label": "Commonwealth of Nations",
+    "description": "political association of mostly former British Empire territories",
+    "subcategory": "records_firsts",
+    "sitelinks": 155,
+    "monthlyPageviews": 77500,
+    "properties": {
+      "country": "Q145",
+      "inception": "+1931-12-11T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q1248784",
+    "label": "airport",
+    "description": "location where aircraft take off and land with extended support facilities, mostly for commercial air transport",
+    "subcategory": "records_firsts",
+    "sitelinks": 147,
+    "monthlyPageviews": 73500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q483654",
+    "label": "Sunni Islam",
+    "description": "most populous Islamic denomination",
+    "subcategory": "records_firsts",
+    "sitelinks": 146,
+    "monthlyPageviews": 73000,
+    "properties": {
+      "inception": "+0601-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q34990",
+    "label": "Torah",
+    "description": "first five books of the Hebrew Bible",
+    "subcategory": "records_firsts",
+    "sitelinks": 144,
+    "monthlyPageviews": 72000,
+    "properties": {
+      "genre": "Q55017318"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q8229",
+    "label": "Latin script",
+    "description": "writing system used to write most Western, Northern and Central European languages",
+    "subcategory": "records_firsts",
+    "sitelinks": 143,
+    "monthlyPageviews": 71500,
+    "properties": {
+      "inception": "-0700-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q35032",
+    "label": "Eastern Orthodox Church",
+    "description": "second-largest Christian church",
+    "subcategory": "records_firsts",
+    "sitelinks": 137,
+    "monthlyPageviews": 68500,
+    "properties": {
+      "inception": "+1054-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9192",
+    "label": "Mandarin",
+    "description": "major branch of Chinese spoken across most of northern and southwestern China",
+    "subcategory": "records_firsts",
+    "sitelinks": 135,
+    "monthlyPageviews": 67500,
+    "properties": {
+      "country": "Q921"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q38592",
+    "label": "Devanagari",
+    "description": "writing system used to write most North Indian and Nepalese languages",
+    "subcategory": "records_firsts",
+    "sitelinks": 133,
+    "monthlyPageviews": 66500,
+    "properties": {
+      "country": "Q668",
+      "inception": "+1100-00-00T00:00:00Z",
+      "countryOfOrigin": "Q668"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q464458",
+    "label": "Eid al-Fitr",
+    "description": "Islamic holiday on the first of Shawwal",
+    "subcategory": "records_firsts",
+    "sitelinks": 132,
+    "monthlyPageviews": 66000,
+    "properties": {
+      "country": "Q13780930"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q35856",
+    "label": "baptism",
+    "description": "Christian rite of admission and adoption, almost invariably with the use of water",
+    "subcategory": "records_firsts",
+    "sitelinks": 131,
+    "monthlyPageviews": 65500,
+    "properties": {
+      "country": "Q796"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q12861",
+    "label": "gunpowder",
+    "description": "explosive most commonly used as propellant in firearms",
+    "subcategory": "records_firsts",
+    "sitelinks": 126,
+    "monthlyPageviews": 63000,
+    "properties": {
+      "discoverer": "Q64236"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q80973",
+    "label": "breakfast",
+    "description": "first meal eaten in the early morning",
+    "subcategory": "records_firsts",
+    "sitelinks": 115,
+    "monthlyPageviews": 57500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q49228",
+    "label": "Austronesian",
+    "description": "large language family mostly of Southeast Asia and the Pacific",
+    "subcategory": "records_firsts",
+    "sitelinks": 114,
+    "monthlyPageviews": 57000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q48352",
+    "label": "head of state",
+    "description": "official who holds the highest-ranked protocol position in a sovereign state",
+    "subcategory": "records_firsts",
+    "sitelinks": 112,
+    "monthlyPageviews": 56000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q15328",
+    "label": "camera",
+    "description": "optical device for recording or transmitting photographic images or videos",
+    "subcategory": "records_firsts",
+    "sitelinks": 112,
+    "monthlyPageviews": 56000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q43653",
+    "label": "Apollo 11",
+    "description": "first Moon landing and fifth crewed flight of the United States Apollo program",
+    "subcategory": "records_firsts",
+    "sitelinks": 110,
+    "monthlyPageviews": 55000,
+    "properties": {
+      "country": "Q30",
+      "orbitalPeriod": "+2"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q103817",
+    "label": "indigenous people",
+    "description": "first inhabitants of an area and their descendants",
+    "subcategory": "records_firsts",
+    "sitelinks": 108,
+    "monthlyPageviews": 54000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q33311",
+    "label": "Dravidian",
+    "description": "language family mostly of southern India",
+    "subcategory": "records_firsts",
+    "sitelinks": 107,
+    "monthlyPageviews": 53500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q478798",
+    "label": "image",
+    "description": "artifact that depicts or records visual perception",
+    "subcategory": "records_firsts",
+    "sitelinks": 107,
+    "monthlyPageviews": 53500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q34508",
+    "label": "video recording",
+    "description": "technique of recording, copying and broadcasting of moving visual images",
+    "subcategory": "records_firsts",
+    "sitelinks": 104,
+    "monthlyPageviews": 52000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q171318",
+    "label": "kinship",
+    "description": "human relationship term; web of social relationships that form an important part of the lives of most humans in most societies; form of social connection",
+    "subcategory": "records_firsts",
+    "sitelinks": 103,
+    "monthlyPageviews": 51500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11411",
+    "label": "backgammon",
+    "description": "one of the oldest board games for two players",
+    "subcategory": "records_firsts",
+    "sitelinks": 102,
+    "monthlyPageviews": 51000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q45996",
+    "label": "mysticism",
+    "description": "religious experience where the soul reaches its highest degree of union with the sacred during earthly existence",
+    "subcategory": "records_firsts",
+    "sitelinks": 99,
+    "monthlyPageviews": 49500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1579",
+    "label": "Ganesha",
+    "description": "God of good luck, prosperity and well being in Hinduism; First worshipped God; Son of Shiva and Parvati",
+    "subcategory": "records_firsts",
+    "sitelinks": 98,
+    "monthlyPageviews": 49000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q51626",
+    "label": "Messiah",
+    "description": "saviour or liberator of a group of people, most commonly in the Abrahamic religions",
+    "subcategory": "records_firsts",
+    "sitelinks": 98,
+    "monthlyPageviews": 49000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q131772",
+    "label": "Chinese New Year",
+    "description": "traditional Chinese celebration of the first day of the lunar calendar",
+    "subcategory": "records_firsts",
+    "sitelinks": 97,
+    "monthlyPageviews": 48500,
+    "properties": {
+      "country": "Q148"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q483110",
+    "label": "stadium",
+    "description": "place or venue for (mostly) outdoor sports, concerts, or other events",
+    "subcategory": "records_firsts",
+    "sitelinks": 96,
+    "monthlyPageviews": 48000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q435",
+    "label": "Library of Alexandria",
+    "description": "one of the largest libraries in the ancient world, located in Alexandria, Egypt",
+    "subcategory": "records_firsts",
+    "sitelinks": 93,
+    "monthlyPageviews": 46500,
+    "properties": {
+      "country": "Q2320005",
+      "creator": "Q168261",
+      "inception": "-0300-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q43249",
+    "label": "morpheme",
+    "description": "smallest linguistic unit within a word that can carry a meaning",
+    "subcategory": "records_firsts",
+    "sitelinks": 92,
+    "monthlyPageviews": 46000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q80811",
+    "label": "Sputnik 1",
+    "description": "first artificial Earth satellite",
+    "subcategory": "records_firsts",
+    "sitelinks": 90,
+    "monthlyPageviews": 45000,
+    "properties": {
+      "orbitalPeriod": "+96.2"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q3624078",
+    "label": "sovereign state",
+    "description": "state that has the highest authority over a territory",
+    "subcategory": "records_firsts",
+    "sitelinks": 89,
+    "monthlyPageviews": 44500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q58701",
+    "label": "Adam and Eve",
+    "description": "first man and woman in Abrahamic creation myth",
+    "subcategory": "records_firsts",
+    "sitelinks": 88,
+    "monthlyPageviews": 44000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7064",
+    "label": "hedonism",
+    "description": "philosophy of pleasure as the highest value",
+    "subcategory": "records_firsts",
+    "sitelinks": 83,
+    "monthlyPageviews": 41500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q169399",
+    "label": "ENIAC",
+    "description": "First electronic general-purpose computer",
+    "subcategory": "records_firsts",
+    "sitelinks": 74,
+    "monthlyPageviews": 37000,
+    "properties": {
+      "country": "Q30"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q49377",
+    "label": "Oriental Orthodox Churches",
+    "description": "largest group of churches following Oriental Orthodoxy in full communion",
+    "subcategory": "records_firsts",
+    "sitelinks": 71,
+    "monthlyPageviews": 35500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q975085",
+    "label": "primary education",
+    "description": "first stage of compulsory education",
+    "subcategory": "records_firsts",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q752297",
+    "label": "Doctor of Philosophy",
+    "description": "postgraduate academic degree awarded by most universities worldwide",
+    "subcategory": "records_firsts",
+    "sitelinks": 69,
+    "monthlyPageviews": 34500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q229345",
+    "label": "karaoke",
+    "description": "form of entertainment involving singing to recorded music",
+    "subcategory": "records_firsts",
+    "sitelinks": 68,
+    "monthlyPageviews": 34000,
+    "properties": {
+      "discoverer": "Q124880053"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q12060728",
+    "label": "Aboriginal Australians",
+    "description": "First Nations people of Australia",
+    "subcategory": "records_firsts",
+    "sitelinks": 67,
+    "monthlyPageviews": 33500,
+    "properties": {
+      "country": "Q408"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q215304",
+    "label": "creation myth",
+    "description": "symbolic narrative of how the world began and how people first came to inhabit it",
+    "subcategory": "records_firsts",
+    "sitelinks": 66,
+    "monthlyPageviews": 33000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q27443",
+    "label": "hunter-gatherer",
+    "description": "human living in a society in which most or all food is obtained by foraging (collecting wild plants and pursuing wild animals)",
+    "subcategory": "records_firsts",
+    "sitelinks": 66,
+    "monthlyPageviews": 33000,
+    "properties": {
+      "fieldOfWork": "hunting"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q234668",
+    "label": "cart",
+    "description": "simple vehicle designed for transport, driven by one or more draught animals, mostly uniaxial",
+    "subcategory": "records_firsts",
+    "sitelinks": 64,
+    "monthlyPageviews": 32000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q107434",
+    "label": "Sioux",
+    "description": "Native American and First Nations ethnic group",
+    "subcategory": "records_firsts",
+    "sitelinks": 63,
+    "monthlyPageviews": 31500,
+    "properties": {
+      "country": "Q16"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q183414",
+    "label": "punched card",
+    "description": "paper-based recording medium",
+    "subcategory": "records_firsts",
+    "sitelinks": 61,
+    "monthlyPageviews": 30500,
+    "properties": {
+      "discoverer": "Q46633",
+      "fieldOfWork": "Q1505660"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q79785",
+    "label": "electrocardiography",
+    "description": "method to record the electrical activity of the heart through passive electrodes placed over the skin.",
+    "subcategory": "records_firsts",
+    "sitelinks": 60,
+    "monthlyPageviews": 30000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q41075",
+    "label": "civil union",
+    "description": "civil status similar to marriage, most often independent of the gender of partners",
+    "subcategory": "records_firsts",
+    "sitelinks": 57,
+    "monthlyPageviews": 28500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q207125",
+    "label": "nonverbal communication",
+    "description": "process of communication through sending and receiving wordless (mostly visual) cues between people",
+    "subcategory": "records_firsts",
+    "sitelinks": 56,
+    "monthlyPageviews": 28000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q717996",
+    "label": "Cain and Abel",
+    "description": "persons of the Bible, the first two sons of Adam and Eve",
+    "subcategory": "records_firsts",
+    "sitelinks": 54,
+    "monthlyPageviews": 27000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q516992",
+    "label": "cloak",
+    "description": "a cloak is a type of loose garment worn over clothing, mostly but not always as outerwear for outdoor wear, which serves the same purpose as an overcoat.",
+    "subcategory": "records_firsts",
+    "sitelinks": 51,
+    "monthlyPageviews": 25500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q657221",
+    "label": "dinner",
+    "description": "largest, most formal meal of the day",
+    "subcategory": "records_firsts",
+    "sitelinks": 48,
+    "monthlyPageviews": 24000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q860434",
+    "label": "Jade Emperor",
+    "description": "the highest god of many Taoist sects, overseeing the universe through administration of a celestial bureaucracy mirroring ancient and medieval China's",
+    "subcategory": "records_firsts",
+    "sitelinks": 45,
+    "monthlyPageviews": 22500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q117364",
+    "label": "clause",
+    "description": "smallest grammatical unit that can express a complete proposition",
+    "subcategory": "records_firsts",
+    "sitelinks": 43,
+    "monthlyPageviews": 21500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q501032",
+    "label": "origin of language",
+    "description": "first formation of language",
+    "subcategory": "records_firsts",
+    "sitelinks": 40,
+    "monthlyPageviews": 20000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q20077126",
+    "label": "sound recording and reproduction",
+    "description": "recording of sound and playing it back",
+    "subcategory": "records_firsts",
+    "sitelinks": 29,
+    "monthlyPageviews": 14500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q57515336",
+    "label": "data storage",
+    "description": "recording (storing) of information (data) in a storage medium (physical or digital)",
+    "subcategory": "records_firsts",
+    "sitelinks": 23,
+    "monthlyPageviews": 11500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q68",
+    "label": "computer",
+    "description": "general-purpose device for performing arithmetic or logical operations",
+    "subcategory": "inventions_tech",
+    "sitelinks": 294,
+    "monthlyPageviews": 147000,
+    "properties": {
+      "discoverer": "Q46633"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q75",
+    "label": "Internet",
+    "description": "global system of connected computer networks based on IP addressing and routing protocols",
+    "subcategory": "inventions_tech",
+    "sitelinks": 292,
+    "monthlyPageviews": 146000,
+    "properties": {
+      "discoverer": "Q92743",
+      "inception": "+1969-10-29T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q8743",
+    "label": "Thomas Edison",
+    "description": "American inventor and businessman (1847–1931)",
+    "subcategory": "inventions_tech",
+    "sitelinks": 250,
+    "monthlyPageviews": 125000,
+    "properties": {
+      "birthDate": "+1847-02-11T00:00:00Z",
+      "deathDate": "+1931-10-18T00:00:00Z",
+      "occupation": "Q81096",
+      "fieldOfWork": "Q12579633"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q11016",
+    "label": "technology",
+    "description": "making, modification, usage, and knowledge of tools, machines, techniques, crafts, systems, and methods of organization, or tools and techniques so created",
+    "subcategory": "inventions_tech",
+    "sitelinks": 233,
+    "monthlyPageviews": 116500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11035",
+    "label": "telephone",
+    "description": "telecommunications device that permits two or more users to conduct a conversation",
+    "subcategory": "inventions_tech",
+    "sitelinks": 215,
+    "monthlyPageviews": 107500,
+    "properties": {
+      "discoverer": "Q77124"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9036",
+    "label": "Nikola Tesla",
+    "description": "Serbian-American engineer and inventor (1856–1943)",
+    "subcategory": "inventions_tech",
+    "sitelinks": 214,
+    "monthlyPageviews": 107000,
+    "properties": {
+      "birthDate": "+1856-07-10T00:00:00Z",
+      "deathDate": "+1943-01-07T00:00:00Z",
+      "occupation": "Q205375",
+      "fieldOfWork": "Q43035"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q95",
+    "label": "Google",
+    "description": "American multinational technology company, a subsidiary of Alphabet Inc.",
+    "subcategory": "inventions_tech",
+    "sitelinks": 207,
+    "monthlyPageviews": 103500,
+    "properties": {
+      "country": "Q30",
+      "inception": "+1998-09-04T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q11660",
+    "label": "artificial intelligence",
+    "description": "field of computer science that develops and studies software enabling machines to exhibit intelligent behavior",
+    "subcategory": "inventions_tech",
+    "sitelinks": 203,
+    "monthlyPageviews": 101500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q21198",
+    "label": "computer science",
+    "description": "study of computation",
+    "subcategory": "inventions_tech",
+    "sitelinks": 200,
+    "monthlyPageviews": 100000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7251",
+    "label": "Alan Turing",
+    "description": "English computer scientist (1912–1954)",
+    "subcategory": "inventions_tech",
+    "sitelinks": 187,
+    "monthlyPageviews": 93500,
+    "properties": {
+      "birthDate": "+1912-06-23T00:00:00Z",
+      "deathDate": "+1954-06-07T00:00:00Z",
+      "occupation": "Q82594",
+      "fieldOfWork": "Q897511"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q872",
+    "label": "radio",
+    "description": "technology of signaling and communicating using radio waves",
+    "subcategory": "inventions_tech",
+    "sitelinks": 186,
+    "monthlyPageviews": 93000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q9135",
+    "label": "operating system",
+    "description": "software that manages computer hardware resources",
+    "subcategory": "inventions_tech",
+    "sitelinks": 183,
+    "monthlyPageviews": 91500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q312",
+    "label": "Apple Inc.",
+    "description": "American multinational technology company based in Cupertino, California",
+    "subcategory": "inventions_tech",
+    "sitelinks": 181,
+    "monthlyPageviews": 90500,
+    "properties": {
+      "country": "Q30",
+      "inception": "+1976-04-01T00:00:00Z",
+      "countryOfOrigin": "Q30"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q17517",
+    "label": "mobile phone",
+    "description": "portable device to make telephone calls using a radio link",
+    "subcategory": "inventions_tech",
+    "sitelinks": 179,
+    "monthlyPageviews": 89500,
+    "properties": {
+      "discoverer": "Q319383"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q8958",
+    "label": "Johannes Gutenberg",
+    "description": "German inventor and craftsman (1400-1468)",
+    "subcategory": "inventions_tech",
+    "sitelinks": 178,
+    "monthlyPageviews": 89000,
+    "properties": {
+      "birthDate": "+1400-00-00T00:00:00Z",
+      "deathDate": "+1468-02-03T00:00:00Z",
+      "occupation": "Q205375",
+      "fieldOfWork": "Q205375"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q446",
+    "label": "wheel",
+    "description": "circular item that rotates about an axial bearing; one of the six simple machines",
+    "subcategory": "inventions_tech",
+    "sitelinks": 177,
+    "monthlyPageviews": 88500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1406",
+    "label": "Microsoft Windows",
+    "description": "family of computer operating systems developed by Microsoft",
+    "subcategory": "inventions_tech",
+    "sitelinks": 176,
+    "monthlyPageviews": 88000,
+    "properties": {
+      "inception": "+1985-11-20T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q11023",
+    "label": "engineering",
+    "description": "type of applied science",
+    "subcategory": "inventions_tech",
+    "sitelinks": 175,
+    "monthlyPageviews": 87500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q2283",
+    "label": "Microsoft",
+    "description": "American multinational technology corporation",
+    "subcategory": "inventions_tech",
+    "sitelinks": 174,
+    "monthlyPageviews": 87000,
+    "properties": {
+      "country": "Q30",
+      "inception": "+1975-04-04T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q11650",
+    "label": "electronics",
+    "description": "physics, engineering, technology and applications that deal with the emission, flow and control of electrons in vacuum and matter",
+    "subcategory": "inventions_tech",
+    "sitelinks": 170,
+    "monthlyPageviews": 85000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7397",
+    "label": "software",
+    "description": "non-tangible executable component of a computer",
+    "subcategory": "inventions_tech",
+    "sitelinks": 169,
+    "monthlyPageviews": 84500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q15777",
+    "label": "C (programming language)",
+    "description": "general-purpose programming language",
+    "subcategory": "inventions_tech",
+    "sitelinks": 163,
+    "monthlyPageviews": 81500,
+    "properties": {
+      "inception": "+1972-01-01T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9143",
+    "label": "programming language",
+    "description": "language for communicating instructions to a machine",
+    "subcategory": "inventions_tech",
+    "sitelinks": 161,
+    "monthlyPageviews": 80500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q9041",
+    "label": "James Watt",
+    "description": "British engineer (1736–1819)",
+    "subcategory": "inventions_tech",
+    "sitelinks": 160,
+    "monthlyPageviews": 80000,
+    "properties": {
+      "birthDate": "+1736-01-19T00:00:00Z",
+      "deathDate": "+1819-08-25T00:00:00Z",
+      "occupation": "Q81096",
+      "fieldOfWork": "Q101333"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q80",
+    "label": "Tim Berners-Lee",
+    "description": "English computer scientist (born 1955)",
+    "subcategory": "inventions_tech",
+    "sitelinks": 160,
+    "monthlyPageviews": 80000,
+    "properties": {
+      "birthDate": "+1955-06-08T00:00:00Z",
+      "occupation": "Q82594",
+      "fieldOfWork": "Q11661"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q11019",
+    "label": "machine",
+    "description": "set of moving and fixed elements that uses energy to perform an intended action",
+    "subcategory": "inventions_tech",
+    "sitelinks": 160,
+    "monthlyPageviews": 80000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q2005",
+    "label": "JavaScript",
+    "description": "high-level programming language",
+    "subcategory": "inventions_tech",
+    "sitelinks": 159,
+    "monthlyPageviews": 79500,
+    "properties": {
+      "inception": "+1995-12-04T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q466",
+    "label": "World Wide Web",
+    "description": "global system of interlinked hypertext documents accessed via the Internet",
+    "subcategory": "inventions_tech",
+    "sitelinks": 158,
+    "monthlyPageviews": 79000,
+    "properties": {
+      "discoverer": "Q80"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q251",
+    "label": "Java",
+    "description": "object-oriented programming language",
+    "subcategory": "inventions_tech",
+    "sitelinks": 157,
+    "monthlyPageviews": 78500,
+    "properties": {
+      "inception": "+1995-00-00T00:00:00Z",
+      "countryOfOrigin": "Q30"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q94",
+    "label": "Android",
+    "description": "operating system created by Google for use on mobile devices",
+    "subcategory": "inventions_tech",
+    "sitelinks": 155,
+    "monthlyPageviews": 77500,
+    "properties": {
+      "inception": "+2008-09-23T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q12802",
+    "label": "nuclear weapon",
+    "description": "explosive device that gets its destructive force from nuclear reactions",
+    "subcategory": "inventions_tech",
+    "sitelinks": 154,
+    "monthlyPageviews": 77000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q6368",
+    "label": "web browser",
+    "description": "software application for retrieving, presenting, and traversing information resources on the World Wide Web",
+    "subcategory": "inventions_tech",
+    "sitelinks": 154,
+    "monthlyPageviews": 77000,
+    "properties": {
+      "discoverer": "Q80"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q11012",
+    "label": "robot",
+    "description": "mechanical or virtual artificial agent carrying out physical activities, which can be guided by an external control device or the control may be embedded within",
+    "subcategory": "inventions_tech",
+    "sitelinks": 151,
+    "monthlyPageviews": 75500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q34253",
+    "label": "Linus Torvalds",
+    "description": "Finnish software engineer (born 1969)",
+    "subcategory": "inventions_tech",
+    "sitelinks": 150,
+    "monthlyPageviews": 75000,
+    "properties": {
+      "birthDate": "+1969-12-28T00:00:00Z",
+      "occupation": "Q5482740",
+      "fieldOfWork": "Q1709010"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7987",
+    "label": "computer mouse",
+    "description": "hand-held device used to move a pointer on a computer display",
+    "subcategory": "inventions_tech",
+    "sitelinks": 141,
+    "monthlyPageviews": 70500,
+    "properties": {
+      "discoverer": "Q92614",
+      "inception": "+1963-01-01T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q5339",
+    "label": "transistor",
+    "description": "a semiconductor device",
+    "subcategory": "inventions_tech",
+    "sitelinks": 135,
+    "monthlyPageviews": 67500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11661",
+    "label": "information technology",
+    "description": "development, management, and use of computer-based information systems",
+    "subcategory": "inventions_tech",
+    "sitelinks": 134,
+    "monthlyPageviews": 67000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7108",
+    "label": "biotechnology",
+    "description": "technologies directly involving biology; formerly or more narrowly the use of living systems and organisms to develop or make useful products",
+    "subcategory": "inventions_tech",
+    "sitelinks": 132,
+    "monthlyPageviews": 66000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q4439",
+    "label": "hard disk",
+    "description": "data storage device",
+    "subcategory": "inventions_tech",
+    "sitelinks": 132,
+    "monthlyPageviews": 66000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q22645",
+    "label": "smartphone",
+    "description": "handheld mobile telephone/computer",
+    "subcategory": "inventions_tech",
+    "sitelinks": 131,
+    "monthlyPageviews": 65500,
+    "properties": {
+      "material": "Q11474"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q11468",
+    "label": "nanotechnology",
+    "description": "field of applied science whose theme is the control of matter on atomic and (supra)molecular scale",
+    "subcategory": "inventions_tech",
+    "sitelinks": 130,
+    "monthlyPageviews": 65000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q14076",
+    "label": "condom",
+    "description": "birth control and sexually transmitted disease prevention device with a physical barrier",
+    "subcategory": "inventions_tech",
+    "sitelinks": 129,
+    "monthlyPageviews": 64500,
+    "properties": {
+      "material": "Q131877"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q250",
+    "label": "computer keyboard",
+    "description": "device comprising an arrangement of buttons or keys used to input text in computers",
+    "subcategory": "inventions_tech",
+    "sitelinks": 129,
+    "monthlyPageviews": 64500,
+    "properties": {
+      "creator": "Q654495"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q3966",
+    "label": "computer hardware",
+    "description": "physical components of a computer",
+    "subcategory": "inventions_tech",
+    "sitelinks": 127,
+    "monthlyPageviews": 63500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1301371",
+    "label": "computer network",
+    "description": "network that allows computers to share resources and communicate with each other",
+    "subcategory": "inventions_tech",
+    "sitelinks": 127,
+    "monthlyPageviews": 63500,
+    "properties": {
+      "country": "Q884"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q39495",
+    "label": "tractor",
+    "description": "engineering vehicle specifically designed to deliver a high tractive effort",
+    "subcategory": "inventions_tech",
+    "sitelinks": 126,
+    "monthlyPageviews": 63000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q3884",
+    "label": "Amazon",
+    "description": "American multinational technology company",
+    "subcategory": "inventions_tech",
+    "sitelinks": 124,
+    "monthlyPageviews": 62000,
+    "properties": {
+      "country": "Q30",
+      "inception": "+1994-07-05T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q43035",
+    "label": "electrical engineering",
+    "description": "field of engineering that deals with electricity (its control and processing as information in electronic form, or during the control and generation of mechanical, magnetic, or other forms of energy; compare Q988785)",
+    "subcategory": "inventions_tech",
+    "sitelinks": 124,
+    "monthlyPageviews": 62000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q44167",
+    "label": "engine",
+    "description": "machine designed to produce mechanical energy from another form of energy",
+    "subcategory": "inventions_tech",
+    "sitelinks": 123,
+    "monthlyPageviews": 61500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11368",
+    "label": "Unix",
+    "description": "family of computer operating systems that derive from the original AT&T Unix from 1969",
+    "subcategory": "inventions_tech",
+    "sitelinks": 122,
+    "monthlyPageviews": 61000,
+    "properties": {
+      "inception": "+1969-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q31087",
+    "label": "calculator",
+    "description": "electronic device used for calculations",
+    "subcategory": "inventions_tech",
+    "sitelinks": 121,
+    "monthlyPageviews": 60500,
+    "properties": {
+      "startDate": "+1960-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q5300",
+    "label": "central processing unit",
+    "description": "central computer component that executes instructions",
+    "subcategory": "inventions_tech",
+    "sitelinks": 121,
+    "monthlyPageviews": 60500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q80006",
+    "label": "computer programming",
+    "description": "the process of designing and building an executable computer program to accomplish a specific computing result or to perform a specific task",
+    "subcategory": "inventions_tech",
+    "sitelinks": 121,
+    "monthlyPageviews": 60500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q41291",
+    "label": "rocket",
+    "description": "pyrokinetic engine used for propulsion; for the incendiary weapon, see Q2037215",
+    "subcategory": "inventions_tech",
+    "sitelinks": 121,
+    "monthlyPageviews": 60500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q12757",
+    "label": "internal combustion engine",
+    "description": "engine in which the combustion of a fuel occurs with an oxidizer in a combustion chamber",
+    "subcategory": "inventions_tech",
+    "sitelinks": 120,
+    "monthlyPageviews": 60000,
+    "properties": {
+      "discoverer": "Q12674"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q12579633",
+    "label": "invention",
+    "description": "unique or novel device, method, composition or process; product of the process of invention",
+    "subcategory": "inventions_tech",
+    "sitelinks": 120,
+    "monthlyPageviews": 60000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11658",
+    "label": "transformer",
+    "description": "electrical device that transfers energy through electromagnetic induction from one circuit to another circuit",
+    "subcategory": "inventions_tech",
+    "sitelinks": 120,
+    "monthlyPageviews": 60000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q42889",
+    "label": "vehicle",
+    "description": "mobile machine used for transport, whether it has an engine or not (eg, towed or prime mover), including wheeled and tracked vehicles, aircraft, watercraft, and spacecraft",
+    "subcategory": "inventions_tech",
+    "sitelinks": 119,
+    "monthlyPageviews": 59500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q267298",
+    "label": "battery",
+    "description": "assembly of one or more electrochemical cells, used to provide devices with stored electrical energy",
+    "subcategory": "inventions_tech",
+    "sitelinks": 118,
+    "monthlyPageviews": 59000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q38867",
+    "label": "laser",
+    "description": "device which emits light via optical amplification",
+    "subcategory": "inventions_tech",
+    "sitelinks": 118,
+    "monthlyPageviews": 59000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q12800",
+    "label": "machine gun",
+    "description": "fully automatic mounted or portable firearm",
+    "subcategory": "inventions_tech",
+    "sitelinks": 118,
+    "monthlyPageviews": 59000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11436",
+    "label": "aircraft",
+    "description": "machine that is able to fly by gaining support from the air other than the reactions of the air against the earth’s surface",
+    "subcategory": "inventions_tech",
+    "sitelinks": 117,
+    "monthlyPageviews": 58500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7857",
+    "label": "toilet",
+    "description": "sanitary hardware that collects human urine and feces for disposal",
+    "subcategory": "inventions_tech",
+    "sitelinks": 117,
+    "monthlyPageviews": 58500,
+    "properties": {
+      "material": "Q130693"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q40056",
+    "label": "computer program",
+    "description": "sequence of instructions written in programming language to perform a specified task with a computer",
+    "subcategory": "inventions_tech",
+    "sitelinks": 116,
+    "monthlyPageviews": 58000,
+    "properties": {
+      "fieldOfWork": "Q11661"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q12760",
+    "label": "steam engine",
+    "description": "heat engine that performs mechanical work using steam as its working fluid",
+    "subcategory": "inventions_tech",
+    "sitelinks": 116,
+    "monthlyPageviews": 58000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q82",
+    "label": "printer",
+    "description": "computer peripheral that prints text or graphics",
+    "subcategory": "inventions_tech",
+    "sitelinks": 114,
+    "monthlyPageviews": 57000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q37156",
+    "label": "IBM",
+    "description": "American multinational technology corporation",
+    "subcategory": "inventions_tech",
+    "sitelinks": 113,
+    "monthlyPageviews": 56500,
+    "properties": {
+      "country": "Q30",
+      "creator": "Q468160",
+      "inception": "+1911-06-16T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q40218",
+    "label": "spacecraft",
+    "description": "vehicle or machine designed to fly in space",
+    "subcategory": "inventions_tech",
+    "sitelinks": 112,
+    "monthlyPageviews": 56000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q646",
+    "label": "thermometer",
+    "description": "device that measures temperature or a temperature gradient",
+    "subcategory": "inventions_tech",
+    "sitelinks": 112,
+    "monthlyPageviews": 56000,
+    "properties": {
+      "discoverer": "Q57073"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q49108",
+    "label": "Massachusetts Institute of Technology",
+    "description": "private university in Cambridge, Massachusetts, USA, founded 1861",
+    "subcategory": "inventions_tech",
+    "sitelinks": 111,
+    "monthlyPageviews": 55500,
+    "properties": {
+      "country": "Q30",
+      "inception": "+1861-04-10T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q49013",
+    "label": "sewing machine",
+    "description": "machine used to stitch fabric",
+    "subcategory": "inventions_tech",
+    "sitelinks": 111,
+    "monthlyPageviews": 55500,
+    "properties": {
+      "discoverer": "Q130495495",
+      "material": "Q11427"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q5295",
+    "label": "random-access memory",
+    "description": "form of computer data storage",
+    "subcategory": "inventions_tech",
+    "sitelinks": 110,
+    "monthlyPageviews": 55000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q16338",
+    "label": "personal computer",
+    "description": "computer intended for use by an individual person",
+    "subcategory": "inventions_tech",
+    "sitelinks": 109,
+    "monthlyPageviews": 54500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q132911",
+    "label": "elevator",
+    "description": "vertical transport device",
+    "subcategory": "inventions_tech",
+    "sitelinks": 108,
+    "monthlyPageviews": 54000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q101333",
+    "label": "mechanical engineering",
+    "description": "type of engineering discipline (not the studies)",
+    "subcategory": "inventions_tech",
+    "sitelinks": 106,
+    "monthlyPageviews": 53000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q46335",
+    "label": "typewriter",
+    "description": "mechanical or electromechanical machine for typing characters",
+    "subcategory": "inventions_tech",
+    "sitelinks": 106,
+    "monthlyPageviews": 53000,
+    "properties": {
+      "discoverer": "Q453351"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q38720",
+    "label": "windmill",
+    "description": "machine that converts the energy of wind into rotational energy by means of adjustable sails",
+    "subcategory": "inventions_tech",
+    "sitelinks": 106,
+    "monthlyPageviews": 53000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q5290",
+    "label": "computer monitor",
+    "description": "stand-alone electronic visual display for computers connected via a cable and usually externally powered",
+    "subcategory": "inventions_tech",
+    "sitelinks": 105,
+    "monthlyPageviews": 52500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q127933",
+    "label": "firework",
+    "description": "low explosive pyrotechnic devices used for aesthetic and entertainment purposes",
+    "subcategory": "inventions_tech",
+    "sitelinks": 105,
+    "monthlyPageviews": 52500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q124441",
+    "label": "washing machine",
+    "description": "machine which washes clothes automatically",
+    "subcategory": "inventions_tech",
+    "sitelinks": 104,
+    "monthlyPageviews": 52000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q483382",
+    "label": "Steve Wozniak",
+    "description": "American computer pioneer, inventor, computer engineer and programmer; co-founder of Apple Inc.",
+    "subcategory": "inventions_tech",
+    "sitelinks": 103,
+    "monthlyPageviews": 51500,
+    "properties": {
+      "birthDate": "+1950-08-11T00:00:00Z",
+      "occupation": "Q82594",
+      "fieldOfWork": "Q43035"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q768575",
+    "label": "lens",
+    "description": "optical device which transmits and refracts light",
+    "subcategory": "inventions_tech",
+    "sitelinks": 102,
+    "monthlyPageviews": 51000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q47506",
+    "label": "compiler",
+    "description": "computer program that transforms source code into object code",
+    "subcategory": "inventions_tech",
+    "sitelinks": 101,
+    "monthlyPageviews": 50500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q40164",
+    "label": "lever",
+    "description": "simple machine consisting of a beam or rigid rod pivoted at a fixed hinge, or fulcrum",
+    "subcategory": "inventions_tech",
+    "sitelinks": 101,
+    "monthlyPageviews": 50500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q187939",
+    "label": "industrial manufacturing",
+    "description": "industrial activity producing goods for sale using labor and machines",
+    "subcategory": "inventions_tech",
+    "sitelinks": 99,
+    "monthlyPageviews": 49500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q72313",
+    "label": "electric motor",
+    "description": "electromechanical device",
+    "subcategory": "inventions_tech",
+    "sitelinks": 98,
+    "monthlyPageviews": 49000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q159236",
+    "label": "genetic engineering",
+    "description": "direct manipulation of an organism's genome using biotechnology",
+    "subcategory": "inventions_tech",
+    "sitelinks": 97,
+    "monthlyPageviews": 48500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q80993",
+    "label": "software engineering",
+    "description": "academic discipline that studies systematic approaches to developing software",
+    "subcategory": "inventions_tech",
+    "sitelinks": 97,
+    "monthlyPageviews": 48500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q12674",
+    "label": "Rudolf Diesel",
+    "description": "German inventor and mechanical engineer (1858–1913)",
+    "subcategory": "inventions_tech",
+    "sitelinks": 96,
+    "monthlyPageviews": 48000,
+    "properties": {
+      "birthDate": "+1858-03-18T00:00:00Z",
+      "deathDate": "+1913-09-30T00:00:00Z",
+      "occupation": "Q205375",
+      "fieldOfWork": "Q81096"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q173113",
+    "label": "agronomy",
+    "description": "science and technology of producing and using plants for food, fuel, fiber, and reclamation",
+    "subcategory": "inventions_tech",
+    "sitelinks": 96,
+    "monthlyPageviews": 48000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1860",
+    "label": "English",
+    "description": "West Germanic language",
+    "subcategory": "words_language",
+    "sitelinks": 391,
+    "monthlyPageviews": 195500,
+    "properties": {
+      "country": "Q16641"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q188",
+    "label": "German",
+    "description": "West Germanic language native to Central Europe",
+    "subcategory": "words_language",
+    "sitelinks": 352,
+    "monthlyPageviews": 176000,
+    "properties": {
+      "country": "Q183"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q1321",
+    "label": "Spanish",
+    "description": "Romance language originating in the Iberian Peninsula",
+    "subcategory": "words_language",
+    "sitelinks": 349,
+    "monthlyPageviews": 174500,
+    "properties": {
+      "country": "Q29"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q150",
+    "label": "French",
+    "description": "Romance language",
+    "subcategory": "words_language",
+    "sitelinks": 348,
+    "monthlyPageviews": 174000,
+    "properties": {
+      "country": "Q142"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q315",
+    "label": "language",
+    "description": "general system which gives humans the ability to communicate",
+    "subcategory": "words_language",
+    "sitelinks": 326,
+    "monthlyPageviews": 163000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7737",
+    "label": "Russian",
+    "description": "East Slavic language",
+    "subcategory": "words_language",
+    "sitelinks": 318,
+    "monthlyPageviews": 159000,
+    "properties": {
+      "country": "Q159"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q13955",
+    "label": "Arabic",
+    "description": "Semitic language and lingua franca of the Arab world",
+    "subcategory": "words_language",
+    "sitelinks": 307,
+    "monthlyPageviews": 153500,
+    "properties": {
+      "country": "Q79"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q652",
+    "label": "Italian",
+    "description": "Romance language",
+    "subcategory": "words_language",
+    "sitelinks": 298,
+    "monthlyPageviews": 149000,
+    "properties": {
+      "country": "Q224"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q397",
+    "label": "Latin",
+    "description": "Indo-European language of the Italic branch",
+    "subcategory": "words_language",
+    "sitelinks": 298,
+    "monthlyPageviews": 149000,
+    "properties": {
+      "startDate": "-0800-00-00T00:00:00Z",
+      "country": "Q237"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q5287",
+    "label": "Japanese",
+    "description": "language spoken in East Asia",
+    "subcategory": "words_language",
+    "sitelinks": 293,
+    "monthlyPageviews": 146500,
+    "properties": {
+      "country": "Q17"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q5146",
+    "label": "Portuguese",
+    "description": "Western Romance language",
+    "subcategory": "words_language",
+    "sitelinks": 292,
+    "monthlyPageviews": 146000,
+    "properties": {
+      "country": "Q45"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q143",
+    "label": "Esperanto",
+    "description": "international auxiliary language designed by L. L. Zamenhof",
+    "subcategory": "words_language",
+    "sitelinks": 280,
+    "monthlyPageviews": 140000,
+    "properties": {
+      "country": "Q946318",
+      "discoverer": "Q11758",
+      "creator": "Q11758",
+      "inception": "+1887-07-26T00:00:00Z",
+      "movement": "Q384764",
+      "countryOfOrigin": "Q34266"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9168",
+    "label": "Persian",
+    "description": "Western Iranian language",
+    "subcategory": "words_language",
+    "sitelinks": 264,
+    "monthlyPageviews": 132000,
+    "properties": {
+      "country": "Q794"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7850",
+    "label": "Chinese",
+    "description": "language group of the Sinitic languages",
+    "subcategory": "words_language",
+    "sitelinks": 259,
+    "monthlyPageviews": 129500,
+    "properties": {
+      "country": "Q148"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9129",
+    "label": "Greek",
+    "description": "Indo-European language",
+    "subcategory": "words_language",
+    "sitelinks": 258,
+    "monthlyPageviews": 129000,
+    "properties": {
+      "country": "Q41"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9288",
+    "label": "Hebrew",
+    "description": "Northwest Semitic language",
+    "subcategory": "words_language",
+    "sitelinks": 258,
+    "monthlyPageviews": 129000,
+    "properties": {
+      "country": "Q801",
+      "inception": "-1500-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7411",
+    "label": "Dutch",
+    "description": "West Germanic language",
+    "subcategory": "words_language",
+    "sitelinks": 253,
+    "monthlyPageviews": 126500,
+    "properties": {
+      "country": "Q55"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q809",
+    "label": "Polish",
+    "description": "West Slavic language",
+    "subcategory": "words_language",
+    "sitelinks": 251,
+    "monthlyPageviews": 125500,
+    "properties": {
+      "country": "Q36"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9027",
+    "label": "Swedish",
+    "description": "North Germanic language spoken in Sweden and Finland",
+    "subcategory": "words_language",
+    "sitelinks": 251,
+    "monthlyPageviews": 125500,
+    "properties": {
+      "country": "Q34"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q256",
+    "label": "Turkish",
+    "description": "Oghuz Turkic language of the Turkish people",
+    "subcategory": "words_language",
+    "sitelinks": 246,
+    "monthlyPageviews": 123000,
+    "properties": {
+      "country": "Q219"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q866",
+    "label": "YouTube",
+    "description": "American video-sharing platform owned by Alphabet Inc.",
+    "subcategory": "words_language",
+    "sitelinks": 237,
+    "monthlyPageviews": 118500,
+    "properties": {
+      "country": "Q30",
+      "inception": "+2005-02-14T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q8162",
+    "label": "linguistics",
+    "description": "scientific study of language",
+    "subcategory": "words_language",
+    "sitelinks": 231,
+    "monthlyPageviews": 115500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q8798",
+    "label": "Ukrainian",
+    "description": "East Slavic language",
+    "subcategory": "words_language",
+    "sitelinks": 223,
+    "monthlyPageviews": 111500,
+    "properties": {
+      "country": "Q212"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q1568",
+    "label": "Hindi",
+    "description": "Indo-Aryan language spoken in India",
+    "subcategory": "words_language",
+    "sitelinks": 219,
+    "monthlyPageviews": 109500,
+    "properties": {
+      "country": "Q668"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9176",
+    "label": "Korean",
+    "description": "language spoken in Korean Peninsula and some parts of North-eastern China",
+    "subcategory": "words_language",
+    "sitelinks": 218,
+    "monthlyPageviews": 109000,
+    "properties": {
+      "country": "Q884"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q1617",
+    "label": "Urdu",
+    "description": "Indo-Aryan language spoken in South Asia",
+    "subcategory": "words_language",
+    "sitelinks": 218,
+    "monthlyPageviews": 109000,
+    "properties": {
+      "country": "Q668"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9056",
+    "label": "Czech",
+    "description": "West Slavic language",
+    "subcategory": "words_language",
+    "sitelinks": 216,
+    "monthlyPageviews": 108000,
+    "properties": {
+      "country": "Q213"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q11059",
+    "label": "Sanskrit",
+    "description": "ancient Indo-Aryan language of South Asia",
+    "subcategory": "words_language",
+    "sitelinks": 216,
+    "monthlyPageviews": 108000,
+    "properties": {
+      "country": "Q668"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q19860",
+    "label": "Indo-European",
+    "description": "language family native to western and southern Eurasia— Europe, Iran and India",
+    "subcategory": "words_language",
+    "sitelinks": 212,
+    "monthlyPageviews": 106000,
+    "properties": {
+      "discoverer": "Q273969"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9035",
+    "label": "Danish",
+    "description": "North Germanic language spoken in Northern Europe",
+    "subcategory": "words_language",
+    "sitelinks": 210,
+    "monthlyPageviews": 105000,
+    "properties": {
+      "country": "Q756617"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7913",
+    "label": "Romanian",
+    "description": "Eastern Romance language, official in Romania and Moldova",
+    "subcategory": "words_language",
+    "sitelinks": 209,
+    "monthlyPageviews": 104500,
+    "properties": {
+      "country": "Q218"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7838",
+    "label": "Swahili",
+    "description": "Bantu language spoken mainly in East Africa",
+    "subcategory": "words_language",
+    "sitelinks": 207,
+    "monthlyPageviews": 103500,
+    "properties": {
+      "country": "Q924"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9067",
+    "label": "Hungarian",
+    "description": "Uralic language",
+    "subcategory": "words_language",
+    "sitelinks": 206,
+    "monthlyPageviews": 103000,
+    "properties": {
+      "country": "Q28"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9779",
+    "label": "alphabet",
+    "description": "standard set of letters present in some written languages",
+    "subcategory": "words_language",
+    "sitelinks": 199,
+    "monthlyPageviews": 99500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q9292",
+    "label": "Azerbaijani",
+    "description": "Oghuz Turkic language",
+    "subcategory": "words_language",
+    "sitelinks": 196,
+    "monthlyPageviews": 98000,
+    "properties": {
+      "country": "Q227"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q8091",
+    "label": "grammar",
+    "description": "set of structural rules that governs the composition of clauses, phrases, and words in any given natural language",
+    "subcategory": "words_language",
+    "sitelinks": 195,
+    "monthlyPageviews": 97500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q21204",
+    "label": "International Phonetic Alphabet",
+    "description": "alphabetic system of phonetic notation",
+    "subcategory": "words_language",
+    "sitelinks": 188,
+    "monthlyPageviews": 94000,
+    "properties": {
+      "discoverer": "Q23870",
+      "creator": "Q621776",
+      "inception": "+1888-08-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9240",
+    "label": "Indonesian",
+    "description": "official language of Indonesia",
+    "subcategory": "words_language",
+    "sitelinks": 184,
+    "monthlyPageviews": 92000,
+    "properties": {
+      "country": "Q252"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q8811",
+    "label": "HTML",
+    "description": "family of markup languages for displaying content in a web browser",
+    "subcategory": "words_language",
+    "sitelinks": 184,
+    "monthlyPageviews": 92000,
+    "properties": {
+      "country": "Q145",
+      "discoverer": "Q80",
+      "inception": "+1989-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q8209",
+    "label": "Cyrillic script",
+    "description": "writing system developed in Bulgaria and used for various oriental Eurasian languages",
+    "subcategory": "words_language",
+    "sitelinks": 183,
+    "monthlyPageviews": 91500,
+    "properties": {
+      "creator": "Q158504",
+      "inception": "+0870-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q8785",
+    "label": "Armenian",
+    "description": "Indo-European language",
+    "subcategory": "words_language",
+    "sitelinks": 181,
+    "monthlyPageviews": 90500,
+    "properties": {
+      "country": "Q399"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q5885",
+    "label": "Tamil",
+    "description": "Dravidian language native to South India and Sri Lanka",
+    "subcategory": "words_language",
+    "sitelinks": 178,
+    "monthlyPageviews": 89000,
+    "properties": {
+      "country": "Q668"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q12791",
+    "label": "sword",
+    "description": "bladed weapon longer than a knife or dagger",
+    "subcategory": "words_language",
+    "sitelinks": 172,
+    "monthlyPageviews": 86000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q8216",
+    "label": "Greek alphabet",
+    "description": "alphabet used to write the ancient or modern Greek language",
+    "subcategory": "words_language",
+    "sitelinks": 171,
+    "monthlyPageviews": 85500,
+    "properties": {
+      "inception": "-0750-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9217",
+    "label": "Thai",
+    "description": "Tai language",
+    "subcategory": "words_language",
+    "sitelinks": 171,
+    "monthlyPageviews": 85500,
+    "properties": {
+      "country": "Q869"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q24905",
+    "label": "verb",
+    "description": "class of words that semantically convey actions, processes, or states, and syntactically serve as the central element of the sentence predicate",
+    "subcategory": "words_language",
+    "sitelinks": 170,
+    "monthlyPageviews": 85000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q37260",
+    "label": "writing",
+    "description": "persistent representation of language",
+    "subcategory": "words_language",
+    "sitelinks": 168,
+    "monthlyPageviews": 84000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7553",
+    "label": "translation",
+    "description": "statement that explains the meaning of a word, phrase, concept, or idea",
+    "subcategory": "words_language",
+    "sitelinks": 167,
+    "monthlyPageviews": 83500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q9199",
+    "label": "Vietnamese",
+    "description": "Austroasiatic language originating in Vietnam",
+    "subcategory": "words_language",
+    "sitelinks": 167,
+    "monthlyPageviews": 83500,
+    "properties": {
+      "country": "Q148"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9252",
+    "label": "Kazakh",
+    "description": "Turkic language in Central Asia, state language of Kazakhstan",
+    "subcategory": "words_language",
+    "sitelinks": 165,
+    "monthlyPageviews": 82500,
+    "properties": {
+      "country": "Q232"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q234801",
+    "label": "Allah",
+    "description": "Arabic word for God",
+    "subcategory": "words_language",
+    "sitelinks": 163,
+    "monthlyPageviews": 81500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q9237",
+    "label": "Malay",
+    "description": "Austronesian macrolanguage, basis for Malaysian Malay and Indonesian",
+    "subcategory": "words_language",
+    "sitelinks": 162,
+    "monthlyPageviews": 81000,
+    "properties": {
+      "country": "Q833"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q1084",
+    "label": "noun",
+    "description": "word that functions as the name of a specific object or set of objects",
+    "subcategory": "words_language",
+    "sitelinks": 159,
+    "monthlyPageviews": 79500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q19814",
+    "label": "Romance languages",
+    "description": "group of Indo-European languages, direct descendants of Vulgar Latin",
+    "subcategory": "words_language",
+    "sitelinks": 157,
+    "monthlyPageviews": 78500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q8192",
+    "label": "writing system",
+    "description": "any conventional method of visually representing verbal or signed communication",
+    "subcategory": "words_language",
+    "sitelinks": 157,
+    "monthlyPageviews": 78500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q8641",
+    "label": "Yiddish",
+    "description": "High German-derived language used by Ashkenazi Jews",
+    "subcategory": "words_language",
+    "sitelinks": 156,
+    "monthlyPageviews": 78000,
+    "properties": {
+      "country": "Q408"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q6266",
+    "label": "nation",
+    "description": "community of people who share a common language, culture, ethnicity, descent, or history",
+    "subcategory": "words_language",
+    "sitelinks": 153,
+    "monthlyPageviews": 76500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q23526",
+    "label": "Slavic",
+    "description": "subfamily of Indo-European languages",
+    "subcategory": "words_language",
+    "sitelinks": 152,
+    "monthlyPageviews": 76000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q9788",
+    "label": "letter",
+    "description": "grapheme in an alphabetic system of writing",
+    "subcategory": "words_language",
+    "sitelinks": 151,
+    "monthlyPageviews": 75500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q21200",
+    "label": "Germanic languages",
+    "description": "branch of the Indo-European language family",
+    "subcategory": "words_language",
+    "sitelinks": 150,
+    "monthlyPageviews": 75000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q36368",
+    "label": "Kurdish",
+    "description": "language of Kurds",
+    "subcategory": "words_language",
+    "sitelinks": 145,
+    "monthlyPageviews": 72500,
+    "properties": {
+      "country": "Q43"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q8201",
+    "label": "Chinese characters",
+    "description": "logographic writing system with Han origin used in the Sinosphere for Chinese, Japanese, Korean and traditional Vietnamese languages",
+    "subcategory": "words_language",
+    "sitelinks": 143,
+    "monthlyPageviews": 71500,
+    "properties": {
+      "creator": "Q1033199",
+      "inception": "-1250-00-00T00:00:00Z",
+      "countryOfOrigin": "Q29520"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q36244",
+    "label": "vowel",
+    "description": "sound in spoken language, articulated with an open vocal tract",
+    "subcategory": "words_language",
+    "sitelinks": 142,
+    "monthlyPageviews": 71000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q58680",
+    "label": "Pashto",
+    "description": "Indo-Aryan language of Afghanistan and Pakistan",
+    "subcategory": "words_language",
+    "sitelinks": 141,
+    "monthlyPageviews": 70500,
+    "properties": {
+      "country": "Q889"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q8097",
+    "label": "Telugu",
+    "description": "Dravidian language native to South India",
+    "subcategory": "words_language",
+    "sitelinks": 141,
+    "monthlyPageviews": 70500,
+    "properties": {
+      "country": "Q668"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q8222",
+    "label": "Hangul",
+    "description": "native alphabet of the Korean language",
+    "subcategory": "words_language",
+    "sitelinks": 140,
+    "monthlyPageviews": 70000,
+    "properties": {
+      "creator": "Q37682",
+      "inception": "+1443-00-00T00:00:00Z",
+      "countryOfOrigin": "Q18097"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q58635",
+    "label": "Punjabi",
+    "description": "Indo-Aryan language spoken in the Punjab region of Pakistan and India",
+    "subcategory": "words_language",
+    "sitelinks": 140,
+    "monthlyPageviews": 70000,
+    "properties": {
+      "country": "Q843"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q33384",
+    "label": "dialect",
+    "description": "geographically- or socially-determined language variety",
+    "subcategory": "words_language",
+    "sitelinks": 139,
+    "monthlyPageviews": 69500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q9264",
+    "label": "Uzbek",
+    "description": "Turkic language",
+    "subcategory": "words_language",
+    "sitelinks": 139,
+    "monthlyPageviews": 69500,
+    "properties": {
+      "country": "Q265"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q33823",
+    "label": "Nepali",
+    "description": "official language of Nepal",
+    "subcategory": "words_language",
+    "sitelinks": 138,
+    "monthlyPageviews": 69000,
+    "properties": {
+      "country": "Q837"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q35395",
+    "label": "phonetics",
+    "description": "branch of linguistics that comprises the study of the sounds of human speech",
+    "subcategory": "words_language",
+    "sitelinks": 138,
+    "monthlyPageviews": 69000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q82799",
+    "label": "name",
+    "description": "word or phrase used for identification",
+    "subcategory": "words_language",
+    "sitelinks": 136,
+    "monthlyPageviews": 68000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q9418",
+    "label": "psychology",
+    "description": "study of mental functions and behaviours",
+    "subcategory": "everyday_science",
+    "sitelinks": 243,
+    "monthlyPageviews": 121500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q8134",
+    "label": "economics",
+    "description": "social science that studies the production, distribution, and consumption of goods and services",
+    "subcategory": "everyday_science",
+    "sitelinks": 237,
+    "monthlyPageviews": 118500,
+    "properties": {
+      "movement": "Q271857"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7809",
+    "label": "UNESCO",
+    "description": "specialised agency of the United Nations for education, sciences, and culture",
+    "subcategory": "everyday_science",
+    "sitelinks": 217,
+    "monthlyPageviews": 108500,
+    "properties": {
+      "country": "Q142",
+      "inception": "+1945-11-16T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q21201",
+    "label": "sociology",
+    "description": "social science that studies human society and its development",
+    "subcategory": "everyday_science",
+    "sitelinks": 201,
+    "monthlyPageviews": 100500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q34749",
+    "label": "social science",
+    "description": "academic disciplines concerned with society and the relationships between individuals in society",
+    "subcategory": "everyday_science",
+    "sitelinks": 143,
+    "monthlyPageviews": 71500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q35277",
+    "label": "metaphysics",
+    "description": "branch of philosophy dealing with the nature, structure, components and fundamental principles of reality",
+    "subcategory": "everyday_science",
+    "sitelinks": 140,
+    "monthlyPageviews": 70000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q36442",
+    "label": "political science",
+    "description": "scientific study of politics",
+    "subcategory": "everyday_science",
+    "sitelinks": 140,
+    "monthlyPageviews": 70000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q37732",
+    "label": "demography",
+    "description": "science that deals with populations and their structures statistically and theoretically",
+    "subcategory": "everyday_science",
+    "sitelinks": 126,
+    "monthlyPageviews": 63000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11467",
+    "label": "metallurgy",
+    "description": "domain of materials science that studies the physical and chemical behavior of metals",
+    "subcategory": "everyday_science",
+    "sitelinks": 125,
+    "monthlyPageviews": 62500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q41719",
+    "label": "hypothesis",
+    "description": "proposed explanation for an observation, phenomenon, or scientific problem",
+    "subcategory": "everyday_science",
+    "sitelinks": 113,
+    "monthlyPageviews": 56500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q193526",
+    "label": "conscience",
+    "description": "judgment that assists in distinguishing right from wrong",
+    "subcategory": "everyday_science",
+    "sitelinks": 110,
+    "monthlyPageviews": 55000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q483677",
+    "label": "pseudoscience",
+    "description": "unscientific claims wrongly presented as scientific",
+    "subcategory": "everyday_science",
+    "sitelinks": 96,
+    "monthlyPageviews": 48000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q131015",
+    "label": "positivism",
+    "description": "philosophy of science based on the view that information derived from scientific observation is the exclusive source of all authoritative knowledge",
+    "subcategory": "everyday_science",
+    "sitelinks": 88,
+    "monthlyPageviews": 44000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q62744",
+    "label": "yin and yang",
+    "description": "concept of dualism and complementarity in Chinese philosophy, cosmology, traditional medicine, fengshui, and protoscience, opposing “yang“ (for solar, masculine, active, warm) with “yin“ (for lunar, feminine, passive, cool)",
+    "subcategory": "everyday_science",
+    "sitelinks": 88,
+    "monthlyPageviews": 44000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q179805",
+    "label": "political philosophy",
+    "description": "sub-discipline of philosophy and political science",
+    "subcategory": "everyday_science",
+    "sitelinks": 86,
+    "monthlyPageviews": 43000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q59115",
+    "label": "philosophy of science",
+    "description": "branch of philosophy concerned with the foundations, methods, and implications of science",
+    "subcategory": "everyday_science",
+    "sitelinks": 85,
+    "monthlyPageviews": 42500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q38112",
+    "label": "forestry",
+    "description": "science and craft of creating, managing, using, conserving and repairing forests, woodlands, and associated resources for human and environmental benefits",
+    "subcategory": "everyday_science",
+    "sitelinks": 84,
+    "monthlyPageviews": 42000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q183257",
+    "label": "psychotherapy",
+    "description": "clinically applied psychology for desired behavior change",
+    "subcategory": "everyday_science",
+    "sitelinks": 83,
+    "monthlyPageviews": 41500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q168338",
+    "label": "behaviorism",
+    "description": "approach to psychology",
+    "subcategory": "everyday_science",
+    "sitelinks": 80,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q23373",
+    "label": "cognitive psychology",
+    "description": "subdiscipline of psychology",
+    "subcategory": "everyday_science",
+    "sitelinks": 73,
+    "monthlyPageviews": 36500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q175002",
+    "label": "developmental psychology",
+    "description": "scientific study of changes that occur in human beings over the course of their lives",
+    "subcategory": "everyday_science",
+    "sitelinks": 69,
+    "monthlyPageviews": 34500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q179098",
+    "label": "parapsychology",
+    "description": "study of paranormal and psychic phenomena",
+    "subcategory": "everyday_science",
+    "sitelinks": 68,
+    "monthlyPageviews": 34000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q272021",
+    "label": "Gestalt psychology",
+    "description": "theory of mind examining human perception, structures and organizing principles in sensory impressions",
+    "subcategory": "everyday_science",
+    "sitelinks": 67,
+    "monthlyPageviews": 33500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q5973845",
+    "label": "National Geographic",
+    "description": "monthly geography, history, nature, and science magazine",
+    "subcategory": "everyday_science",
+    "sitelinks": 65,
+    "monthlyPageviews": 32500,
+    "properties": {
+      "startDate": "+1888-00-00T00:00:00Z",
+      "inception": "+1888-00-00T00:00:00Z",
+      "countryOfOrigin": "Q30"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q10981881",
+    "label": "self-esteem",
+    "description": "term used in psychology to reflect a person's overall emotional evaluation of their own worth",
+    "subcategory": "everyday_science",
+    "sitelinks": 65,
+    "monthlyPageviews": 32500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q199906",
+    "label": "clinical psychology",
+    "description": "integration of science and clinical knowledge for the purpose of relieving psychologically based dysfunction",
+    "subcategory": "everyday_science",
+    "sitelinks": 62,
+    "monthlyPageviews": 31000,
+    "properties": {
+      "inception": "+1896-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q192386",
+    "label": "military science",
+    "description": "theory, method, and practice of producing military capability",
+    "subcategory": "everyday_science",
+    "sitelinks": 62,
+    "monthlyPageviews": 31000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q192864",
+    "label": "Science",
+    "description": "academic journal of the American Association for the Advancement of Science",
+    "subcategory": "everyday_science",
+    "sitelinks": 62,
+    "monthlyPageviews": 31000,
+    "properties": {
+      "startDate": "+1880-00-00T00:00:00Z",
+      "inception": "+1880-00-00T00:00:00Z",
+      "countryOfOrigin": "Q30",
+      "fieldOfWork": "Q336"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q269323",
+    "label": "natural philosophy",
+    "description": "ancient philosophical study of nature and physical universe that was dominant before the development of modern science. It is considered to be the precursor of natural science",
+    "subcategory": "everyday_science",
+    "sitelinks": 61,
+    "monthlyPageviews": 30500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q207645",
+    "label": "military tactics",
+    "description": "science and art of organizing a military force and techniques",
+    "subcategory": "everyday_science",
+    "sitelinks": 60,
+    "monthlyPageviews": 30000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q495304",
+    "label": "forensic science",
+    "description": "application of science to criminal and civil laws",
+    "subcategory": "everyday_science",
+    "sitelinks": 59,
+    "monthlyPageviews": 29500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q219695",
+    "label": "evolutionary psychology",
+    "description": "branch of psychology",
+    "subcategory": "everyday_science",
+    "sitelinks": 57,
+    "monthlyPageviews": 28500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q245179",
+    "label": "analytical psychology",
+    "description": "Jungian theories",
+    "subcategory": "everyday_science",
+    "sitelinks": 56,
+    "monthlyPageviews": 28000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q271716",
+    "label": "personality psychology",
+    "description": "branch of psychology focused on personality",
+    "subcategory": "everyday_science",
+    "sitelinks": 55,
+    "monthlyPageviews": 27500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q744593",
+    "label": "military–industrial complex",
+    "description": "concept in sociology and military and political science",
+    "subcategory": "everyday_science",
+    "sitelinks": 51,
+    "monthlyPageviews": 25500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q39379",
+    "label": "Scientific American",
+    "description": "American popular science magazine",
+    "subcategory": "everyday_science",
+    "sitelinks": 50,
+    "monthlyPageviews": 25000,
+    "properties": {
+      "startDate": "+1845-08-28T00:00:00Z",
+      "inception": "+1845-08-28T00:00:00Z",
+      "collection": "Q1420342",
+      "countryOfOrigin": "Q30",
+      "fieldOfWork": "Q309"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q788558",
+    "label": "plant breeding",
+    "description": "the art and science of changing the traits of plants in order to produce desired characteristics",
+    "subcategory": "everyday_science",
+    "sitelinks": 47,
+    "monthlyPageviews": 23500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q23364",
+    "label": "humanistic psychology",
+    "description": "psychological perspective",
+    "subcategory": "everyday_science",
+    "sitelinks": 45,
+    "monthlyPageviews": 22500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q368498",
+    "label": "psychology of religion",
+    "description": "analytic approach to religion",
+    "subcategory": "everyday_science",
+    "sitelinks": 45,
+    "monthlyPageviews": 22500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q3606845",
+    "label": "agricultural science",
+    "description": "academic field about agriculture and farming",
+    "subcategory": "everyday_science",
+    "sitelinks": 44,
+    "monthlyPageviews": 22000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q623971",
+    "label": "social control",
+    "description": "concept within the disciplines of the social sciences and within political science",
+    "subcategory": "everyday_science",
+    "sitelinks": 33,
+    "monthlyPageviews": 16500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q2910672",
+    "label": "cognitive development",
+    "description": "field of study in neuroscience and psychology",
+    "subcategory": "everyday_science",
+    "sitelinks": 20,
+    "monthlyPageviews": 10000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q52",
+    "label": "Wikipedia",
+    "description": "free multilingual online encyclopedia",
+    "subcategory": "oddities",
+    "sitelinks": 377,
+    "monthlyPageviews": 188500,
+    "properties": {
+      "country": "Q30",
+      "creator": "Q181",
+      "inception": "+2001-01-15T00:00:00Z",
+      "genre": "Q136559991",
+      "countryOfOrigin": "Q30"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q432",
+    "label": "Islam",
+    "description": "monotheistic Abrahamic religion founded by Muhammad",
+    "subcategory": "oddities",
+    "sitelinks": 332,
+    "monthlyPageviews": 166000,
+    "properties": {
+      "creator": "Q2095353",
+      "inception": "+0631-00-00T00:00:00Z",
+      "countryOfOrigin": "Q169977"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q1065",
+    "label": "United Nations",
+    "description": "global international and intergovernmental organization",
+    "subcategory": "oddities",
+    "sitelinks": 331,
+    "monthlyPageviews": 165500,
+    "properties": {
+      "country": "Q30",
+      "creator": "Q329888",
+      "inception": "+1945-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q5043",
+    "label": "Christianity",
+    "description": "Abrahamic monotheistic religion founded on the teachings, person and life of Jesus",
+    "subcategory": "oddities",
+    "sitelinks": 317,
+    "monthlyPageviews": 158500,
+    "properties": {
+      "inception": "+0033-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q5891",
+    "label": "philosophy",
+    "description": "study of the truths and principles of being, schools of thought, knowledge, or conduct",
+    "subcategory": "oddities",
+    "sitelinks": 312,
+    "monthlyPageviews": 156000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q9174",
+    "label": "religion",
+    "description": "social-cultural system",
+    "subcategory": "oddities",
+    "sitelinks": 298,
+    "monthlyPageviews": 149000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7163",
+    "label": "politics",
+    "description": "activities associated with group decisions",
+    "subcategory": "oddities",
+    "sitelinks": 286,
+    "monthlyPageviews": 143000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q458",
+    "label": "European Union",
+    "description": "political and economic union of 27 European states",
+    "subcategory": "oddities",
+    "sitelinks": 285,
+    "monthlyPageviews": 142500,
+    "properties": {
+      "country": "Q1072012",
+      "inception": "+1993-11-01T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q748",
+    "label": "Buddhism",
+    "description": "Indian religion",
+    "subcategory": "oddities",
+    "sitelinks": 282,
+    "monthlyPageviews": 141000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11042",
+    "label": "culture",
+    "description": "shared aspects of a society's way of life",
+    "subcategory": "oddities",
+    "sitelinks": 281,
+    "monthlyPageviews": 140500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q428",
+    "label": "Qur’an",
+    "description": "foundational Islamic religious text",
+    "subcategory": "oddities",
+    "sitelinks": 280,
+    "monthlyPageviews": 140000,
+    "properties": {
+      "inception": "+0631-00-00T00:00:00Z",
+      "genre": "Q12617225"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q19809",
+    "label": "Christmas",
+    "description": "holiday originating in Christianity, usually December 25",
+    "subcategory": "oddities",
+    "sitelinks": 277,
+    "monthlyPageviews": 138500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q467",
+    "label": "woman",
+    "description": "female adult human",
+    "subcategory": "oddities",
+    "sitelinks": 266,
+    "monthlyPageviews": 133000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q9089",
+    "label": "Hinduism",
+    "description": "religion widely practiced in the Indian subcontinent",
+    "subcategory": "oddities",
+    "sitelinks": 263,
+    "monthlyPageviews": 131500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q9268",
+    "label": "Judaism",
+    "description": "Abrahamic monotheistic ethnic religion of the Jews",
+    "subcategory": "oddities",
+    "sitelinks": 262,
+    "monthlyPageviews": 131000,
+    "properties": {
+      "inception": "-0500-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7174",
+    "label": "democracy",
+    "description": "form of government",
+    "subcategory": "oddities",
+    "sitelinks": 262,
+    "monthlyPageviews": 131000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q190",
+    "label": "God",
+    "description": "principal object of faith in monotheistic religions, a divine entity that created and typically supervises all existence",
+    "subcategory": "oddities",
+    "sitelinks": 261,
+    "monthlyPageviews": 130500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q198",
+    "label": "war",
+    "description": "organized and prolonged violent conflict between different nations, states, or different groups within a nation or state",
+    "subcategory": "oddities",
+    "sitelinks": 260,
+    "monthlyPageviews": 130000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q8486",
+    "label": "coffee",
+    "description": "brewed beverage made from seeds of Coffea genus",
+    "subcategory": "oddities",
+    "sitelinks": 257,
+    "monthlyPageviews": 128500,
+    "properties": {
+      "material": "Q153697",
+      "countryOfOrigin": "Q115"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q8495",
+    "label": "milk",
+    "description": "white liquid produced by the mammary glands of mammals",
+    "subcategory": "oddities",
+    "sitelinks": 254,
+    "monthlyPageviews": 127000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q6097",
+    "label": "tea",
+    "description": "brewed drink made from tea leaves",
+    "subcategory": "oddities",
+    "sitelinks": 253,
+    "monthlyPageviews": 126500,
+    "properties": {
+      "material": "Q1419245"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q8434",
+    "label": "education",
+    "description": "transmission of knowledge and skills",
+    "subcategory": "oddities",
+    "sitelinks": 253,
+    "monthlyPageviews": 126500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7802",
+    "label": "bread",
+    "description": "baked food made of flour, water and other ingredients",
+    "subcategory": "oddities",
+    "sitelinks": 249,
+    "monthlyPageviews": 124500,
+    "properties": {
+      "inception": "-30000-00-00T00:00:00Z",
+      "material": "Q283"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7748",
+    "label": "law",
+    "description": "system of rules and guidelines, generally backed by governmental authority",
+    "subcategory": "oddities",
+    "sitelinks": 248,
+    "monthlyPageviews": 124000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q316",
+    "label": "love",
+    "description": "strong, positive emotion based on affection",
+    "subcategory": "oddities",
+    "sitelinks": 246,
+    "monthlyPageviews": 123000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1420",
+    "label": "car",
+    "description": "motorized road vehicle designed to carry one to eight people rather than primarily goods",
+    "subcategory": "oddities",
+    "sitelinks": 246,
+    "monthlyPageviews": 123000,
+    "properties": {
+      "discoverer": "Q378277"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q2095",
+    "label": "food",
+    "description": "any substance consumed to provide nutritional support for the body; form of energy stored in chemical",
+    "subcategory": "oddities",
+    "sitelinks": 244,
+    "monthlyPageviews": 122000,
+    "properties": {
+      "material": "Q25403900"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q8436",
+    "label": "family",
+    "description": "group of people affiliated by consanguinity, law, affinity, or co-residence",
+    "subcategory": "oddities",
+    "sitelinks": 240,
+    "monthlyPageviews": 120000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q5284",
+    "label": "Bill Gates",
+    "description": "American businessman, investor, and philanthropist (born 1955)",
+    "subcategory": "oddities",
+    "sitelinks": 240,
+    "monthlyPageviews": 120000,
+    "properties": {
+      "birthDate": "+1955-10-28T00:00:00Z",
+      "occupation": "Q131524"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7813",
+    "label": "Universal Declaration of Human Rights",
+    "description": "declaration adopted in 1948 by the United Nations General Assembly",
+    "subcategory": "oddities",
+    "sitelinks": 239,
+    "monthlyPageviews": 119500,
+    "properties": {
+      "inception": "+1948-12-10T00:00:00Z",
+      "collection": "Q13360213",
+      "genre": "Q1864008"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7184",
+    "label": "NATO",
+    "description": "intergovernmental military alliance between 32 member states",
+    "subcategory": "oddities",
+    "sitelinks": 238,
+    "monthlyPageviews": 119000,
+    "properties": {
+      "country": "Q31",
+      "inception": "+1949-04-04T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q23393",
+    "label": "Lord's Prayer",
+    "description": "central Christian prayer, taught by Jesus Christ to his disciples",
+    "subcategory": "oddities",
+    "sitelinks": 236,
+    "monthlyPageviews": 118000,
+    "properties": {
+      "creator": "Q302",
+      "genre": "Q124455603"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q8441",
+    "label": "man",
+    "description": "male adult human",
+    "subcategory": "oddities",
+    "sitelinks": 233,
+    "monthlyPageviews": 116500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q8425",
+    "label": "society",
+    "description": "group of people connected to each other",
+    "subcategory": "oddities",
+    "sitelinks": 232,
+    "monthlyPageviews": 116000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7569",
+    "label": "child",
+    "description": "human between birth and puberty",
+    "subcategory": "oddities",
+    "sitelinks": 231,
+    "monthlyPageviews": 115500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q8445",
+    "label": "marriage",
+    "description": "social union or legal contract between people called spouses that creates kinship",
+    "subcategory": "oddities",
+    "sitelinks": 231,
+    "monthlyPageviews": 115500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q3947",
+    "label": "house",
+    "description": "building usually intended for living in",
+    "subcategory": "oddities",
+    "sitelinks": 230,
+    "monthlyPageviews": 115000,
+    "properties": {
+      "material": "Q206615"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q44",
+    "label": "beer",
+    "description": "alcoholic beverage obtained by fermenting starchy materials and not distilled",
+    "subcategory": "oddities",
+    "sitelinks": 229,
+    "monthlyPageviews": 114500,
+    "properties": {
+      "startDate": "-3500-00-00T00:00:00Z",
+      "material": "Q11577"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q19837",
+    "label": "Steve Jobs",
+    "description": "American entrepreneur; co-founder of Apple Inc. (1955–2011)",
+    "subcategory": "oddities",
+    "sitelinks": 228,
+    "monthlyPageviews": 114000,
+    "properties": {
+      "birthDate": "+1955-02-24T00:00:00Z",
+      "deathDate": "+2011-10-05T00:00:00Z",
+      "occupation": "Q131524"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7191",
+    "label": "Nobel Prize",
+    "description": "set of annual international awards, primarily 5 established in 1895 by Alfred Nobel",
+    "subcategory": "oddities",
+    "sitelinks": 228,
+    "monthlyPageviews": 114000,
+    "properties": {
+      "country": "Q34",
+      "inception": "+1901-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q282",
+    "label": "wine",
+    "description": "alcoholic drink typically made from grapes through the fermentation process",
+    "subcategory": "oddities",
+    "sitelinks": 227,
+    "monthlyPageviews": 113500,
+    "properties": {
+      "material": "Q10978"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q11451",
+    "label": "agriculture",
+    "description": "cultivation of plants and animals to provide useful products",
+    "subcategory": "oddities",
+    "sitelinks": 224,
+    "monthlyPageviews": 112000,
+    "properties": {
+      "startDate": "-8000-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q6186",
+    "label": "communism",
+    "description": "political and socioeconomic ideology",
+    "subcategory": "oddities",
+    "sitelinks": 224,
+    "monthlyPageviews": 112000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7066",
+    "label": "atheism",
+    "description": "absence of belief in the existence of deities; the opposite of theism",
+    "subcategory": "oddities",
+    "sitelinks": 223,
+    "monthlyPageviews": 111500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7275",
+    "label": "state",
+    "description": "organised community living under a system of government; either a sovereign state, constituent state, or federated state",
+    "subcategory": "oddities",
+    "sitelinks": 219,
+    "monthlyPageviews": 109500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q615",
+    "label": "Lionel Messi",
+    "description": "Argentine association football player (born 1987)",
+    "subcategory": "oddities",
+    "sitelinks": 217,
+    "monthlyPageviews": 108500,
+    "properties": {
+      "birthDate": "+1987-06-24T00:00:00Z",
+      "occupation": "Q937857",
+      "fieldOfWork": "Q2736"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q11460",
+    "label": "clothing",
+    "description": "covering worn on the body",
+    "subcategory": "oddities",
+    "sitelinks": 213,
+    "monthlyPageviews": 106500,
+    "properties": {
+      "startDate": "-57000-00-00T00:00:00Z",
+      "material": "Q28823"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q21196",
+    "label": "Easter",
+    "description": "Christian commemoration of the resurrection of Jesus",
+    "subcategory": "oddities",
+    "sitelinks": 211,
+    "monthlyPageviews": 105500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q12143",
+    "label": "time zone",
+    "description": "region on Earth that has a uniform standard time for legal, commercial, and social purposes",
+    "subcategory": "oddities",
+    "sitelinks": 210,
+    "monthlyPageviews": 105000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11571",
+    "label": "Cristiano Ronaldo",
+    "description": "Portuguese association football player (born 1985)",
+    "subcategory": "oddities",
+    "sitelinks": 208,
+    "monthlyPageviews": 104000,
+    "properties": {
+      "birthDate": "+1985-02-05T00:00:00Z",
+      "occupation": "Q937857"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q10943",
+    "label": "cheese",
+    "description": "yellow or white, creamy or solid food made from the pressed curds of milk",
+    "subcategory": "oddities",
+    "sitelinks": 207,
+    "monthlyPageviews": 103500,
+    "properties": {
+      "material": "Q8495"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q11004",
+    "label": "vegetable",
+    "description": "edible plant or part of a plant, involved in cooking",
+    "subcategory": "oddities",
+    "sitelinks": 207,
+    "monthlyPageviews": 103500,
+    "properties": {
+      "material": "Q1362373"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q3914",
+    "label": "school",
+    "description": "institution for the education of students by teachers",
+    "subcategory": "oddities",
+    "sitelinks": 207,
+    "monthlyPageviews": 103500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q12138",
+    "label": "Gregorian calendar",
+    "description": "internationally accepted civil calendar",
+    "subcategory": "oddities",
+    "sitelinks": 207,
+    "monthlyPageviews": 103500,
+    "properties": {
+      "inception": "+1582-10-15T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q11002",
+    "label": "sugar",
+    "description": "short-chain, water-soluble carbohydrate",
+    "subcategory": "oddities",
+    "sitelinks": 206,
+    "monthlyPageviews": 103000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q454",
+    "label": "peace",
+    "description": "state of harmony characterized by lack of violent conflict and freedom from fear of violence",
+    "subcategory": "oddities",
+    "sitelinks": 206,
+    "monthlyPageviews": 103000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q3918",
+    "label": "university",
+    "description": "academic institution for further education",
+    "subcategory": "oddities",
+    "sitelinks": 206,
+    "monthlyPageviews": 103000,
+    "properties": {
+      "fieldOfWork": "Q136822"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q10990",
+    "label": "meat",
+    "description": "culinary name for animal flesh eaten as food",
+    "subcategory": "oddities",
+    "sitelinks": 205,
+    "monthlyPageviews": 102500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7270",
+    "label": "republic",
+    "description": "form of government where the head of state is elected",
+    "subcategory": "oddities",
+    "sitelinks": 205,
+    "monthlyPageviews": 102500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7817",
+    "label": "World Health Organization",
+    "description": "United Nations agency concerned with international public health",
+    "subcategory": "oddities",
+    "sitelinks": 205,
+    "monthlyPageviews": 102500,
+    "properties": {
+      "country": "Q39",
+      "inception": "+1948-04-07T00:00:00Z",
+      "fieldOfWork": "Q189603"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q12132",
+    "label": "calendar system",
+    "description": "system of organizing days for social, religious, commercial, or administrative purposes",
+    "subcategory": "oddities",
+    "sitelinks": 205,
+    "monthlyPageviews": 102500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q8078",
+    "label": "logic",
+    "description": "study of correct reasoning",
+    "subcategory": "oddities",
+    "sitelinks": 204,
+    "monthlyPageviews": 102000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7188",
+    "label": "government",
+    "description": "system or group of people governing an organized community, often a state",
+    "subcategory": "oddities",
+    "sitelinks": 204,
+    "monthlyPageviews": 102000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11032",
+    "label": "newspaper",
+    "description": "scheduled publication containing news of events, articles, features, editorials, and advertising; online, in print, or (usually) both",
+    "subcategory": "oddities",
+    "sitelinks": 204,
+    "monthlyPageviews": 102000,
+    "properties": {
+      "material": "Q11472"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7252",
+    "label": "feminism",
+    "description": "group of movements that come about defining, and defending women liberation and gender equity",
+    "subcategory": "oddities",
+    "sitelinks": 202,
+    "monthlyPageviews": 101000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11442",
+    "label": "bicycle",
+    "description": "pedal-driven two-wheel vehicle",
+    "subcategory": "oddities",
+    "sitelinks": 202,
+    "monthlyPageviews": 101000,
+    "properties": {
+      "discoverer": "Q77122",
+      "material": "Q11426"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7269",
+    "label": "monarchy",
+    "description": "system of government where the head of state position is inherited within family",
+    "subcategory": "oddities",
+    "sitelinks": 201,
+    "monthlyPageviews": 100500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q9077",
+    "label": "Moses",
+    "description": "Abrahamic prophet said to have led the Israelites out of Egypt",
+    "subcategory": "oddities",
+    "sitelinks": 200,
+    "monthlyPageviews": 100000,
+    "properties": {
+      "birthDate": "-1393-00-00T00:00:00Z",
+      "deathDate": "-1273-00-00T00:00:00Z",
+      "occupation": "Q1402561",
+      "fieldOfWork": "Q16669800"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7560",
+    "label": "Mother",
+    "description": "female parent",
+    "subcategory": "oddities",
+    "sitelinks": 199,
+    "monthlyPageviews": 99500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11254",
+    "label": "table salt",
+    "description": "mineral used as food ingredient, composed primarily of sodium chloride",
+    "subcategory": "oddities",
+    "sitelinks": 198,
+    "monthlyPageviews": 99000,
+    "properties": {
+      "material": "Q5314"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q6206",
+    "label": "capitalism",
+    "description": "economic system based on private ownership of the means of production",
+    "subcategory": "oddities",
+    "sitelinks": 198,
+    "monthlyPageviews": 99000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q317521",
+    "label": "Elon Musk",
+    "description": "businessman and entrepreneur (born 1971)",
+    "subcategory": "oddities",
+    "sitelinks": 197,
+    "monthlyPageviews": 98500,
+    "properties": {
+      "birthDate": "+1971-06-28T00:00:00Z",
+      "occupation": "Q5482740",
+      "fieldOfWork": "Q110495845"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q8463",
+    "label": "slavery",
+    "description": "system under which people are treated as property to be bought and sold, and are forced to work",
+    "subcategory": "oddities",
+    "sitelinks": 197,
+    "monthlyPageviews": 98500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q8768",
+    "label": "Henry Ford",
+    "description": "American business magnate (1863–1947)",
+    "subcategory": "oddities",
+    "sitelinks": 196,
+    "monthlyPageviews": 98000,
+    "properties": {
+      "birthDate": "+1863-07-30T00:00:00Z",
+      "deathDate": "+1947-04-07T00:00:00Z",
+      "occupation": "Q131524"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q19546",
+    "label": "Pope",
+    "description": "leader of the worldwide Catholic Church",
+    "subcategory": "oddities",
+    "sitelinks": 196,
+    "monthlyPageviews": 98000,
+    "properties": {
+      "country": "Q237",
+      "inception": "+0033-00-00T00:00:00Z",
+      "fieldOfWork": "Q12829728"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q23404",
+    "label": "anthropology",
+    "description": "scientific study of humans, human behavior, and societies",
+    "subcategory": "oddities",
+    "sitelinks": 196,
+    "monthlyPageviews": 98000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11472",
+    "label": "paper",
+    "description": "thin, flexible material mainly used for writing upon, printing upon, drawing or for packaging",
+    "subcategory": "oddities",
+    "sitelinks": 196,
+    "monthlyPageviews": 98000,
+    "properties": {
+      "material": "Q1625473"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q18813",
+    "label": "New Testament",
+    "description": "second division of the Christian biblical canon",
+    "subcategory": "oddities",
+    "sitelinks": 195,
+    "monthlyPageviews": 97500,
+    "properties": {
+      "inception": "+0100-00-00T00:00:00Z",
+      "genre": "Q12617225"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7272",
+    "label": "socialism",
+    "description": "socio-economic system based on social ownership of the means of production; also the ideology that aims to implement it",
+    "subcategory": "oddities",
+    "sitelinks": 195,
+    "monthlyPageviews": 97500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q197",
+    "label": "airplane",
+    "description": "powered fixed-wing aircraft",
+    "subcategory": "oddities",
+    "sitelinks": 195,
+    "monthlyPageviews": 97500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q388",
+    "label": "Linux",
+    "description": "family of Unix-like operating systems",
+    "subcategory": "oddities",
+    "sitelinks": 195,
+    "monthlyPageviews": 97500,
+    "properties": {
+      "creator": "Q34253",
+      "inception": "+1991-09-17T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9081",
+    "label": "knowledge",
+    "description": "mental possession of information or skills, often contributing to understanding",
+    "subcategory": "oddities",
+    "sitelinks": 192,
+    "monthlyPageviews": 96000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11024",
+    "label": "communication",
+    "description": "act of conveying intended meaning",
+    "subcategory": "oddities",
+    "sitelinks": 192,
+    "monthlyPageviews": 96000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q9181",
+    "label": "Abraham",
+    "description": "Hebrew patriarch according to the Hebrew Bible",
+    "subcategory": "oddities",
+    "sitelinks": 191,
+    "monthlyPageviews": 95500,
+    "properties": {
+      "occupation": "Q12059906"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q6636",
+    "label": "homosexuality",
+    "description": "romantic or sexual attraction or behavior between members of the same sex",
+    "subcategory": "oddities",
+    "sitelinks": 189,
+    "monthlyPageviews": 94500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q195",
+    "label": "chocolate",
+    "description": "nutritionally dense or sweet food product from the seed of Theobroma cacao - cocoa bean",
+    "subcategory": "oddities",
+    "sitelinks": 188,
+    "monthlyPageviews": 94000,
+    "properties": {
+      "inception": "-1750-00-00T00:00:00Z",
+      "material": "Q1721876",
+      "countryOfOrigin": "Q13703"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7949",
+    "label": "truth",
+    "description": "what is in accord with fact or reality",
+    "subcategory": "oddities",
+    "sitelinks": 188,
+    "monthlyPageviews": 94000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q8461",
+    "label": "racism",
+    "description": "race or ethnic-based discrimination",
+    "subcategory": "oddities",
+    "sitelinks": 188,
+    "monthlyPageviews": 94000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q6235",
+    "label": "nationalism",
+    "description": "ideology and movement that promotes the interests of a particular nation (as in a group of people) especially with the aim of gaining and maintaining the nation's sovereignty (self-governance) over its homeland",
+    "subcategory": "oddities",
+    "sitelinks": 187,
+    "monthlyPageviews": 93500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q49389",
+    "label": "tourism",
+    "description": "travel for pleasure or business",
+    "subcategory": "oddities",
+    "sitelinks": 186,
+    "monthlyPageviews": 93000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7755",
+    "label": "constitution",
+    "description": "set of fundamental principles or established precedents according to which a state or other organization is governed",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 203,
+    "monthlyPageviews": 101500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q12280",
+    "label": "bridge",
+    "description": "structure that spans and provides a passage over a road, railway, river, or some other obstacle",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 201,
+    "monthlyPageviews": 100500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q8458",
+    "label": "human rights",
+    "description": "inalienable fundamental rights to which a person is inherently entitled",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 197,
+    "monthlyPageviews": 98500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q728",
+    "label": "weapon",
+    "description": "tool intended or likely to inflict damage or harm",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 181,
+    "monthlyPageviews": 90500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q10931",
+    "label": "revolution",
+    "description": "fundamental change in power or organizational structures that takes place in a relatively short period of time",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 151,
+    "monthlyPageviews": 75500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q13371",
+    "label": "Harvard University",
+    "description": "private university in Cambridge, Massachusetts",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 148,
+    "monthlyPageviews": 74000,
+    "properties": {
+      "country": "Q30",
+      "inception": "+1636-09-08T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q12516",
+    "label": "pyramid",
+    "description": "structure whose shape is roughly that of a pyramid in the geometric sense",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 145,
+    "monthlyPageviews": 72500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q12323",
+    "label": "dam",
+    "description": "barrier that impounds water or underground streams",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 140,
+    "monthlyPageviews": 70000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q12518",
+    "label": "tower",
+    "description": "structure with height greater than width",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 138,
+    "monthlyPageviews": 69000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q35794",
+    "label": "University of Cambridge",
+    "description": "collegiate public research university in Cambridge, England, United Kingdom",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 132,
+    "monthlyPageviews": 66000,
+    "properties": {
+      "country": "Q145",
+      "inception": "+1209-01-01T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7081",
+    "label": "materialism",
+    "description": "form of philosophical monism which holds matter to be the fundamental substance in nature",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 128,
+    "monthlyPageviews": 64000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q9149",
+    "label": "fundamentalism",
+    "description": "unwavering attachment to a set of irreducible beliefs",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 124,
+    "monthlyPageviews": 62000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q44539",
+    "label": "temple",
+    "description": "structure reserved for religious or spiritual activities",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 116,
+    "monthlyPageviews": 58000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q44440",
+    "label": "Golden Gate Bridge",
+    "description": "suspension bridge on the San Francisco Bay",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 110,
+    "monthlyPageviews": 55000,
+    "properties": {
+      "country": "Q30",
+      "inception": "+1937-05-27T00:00:00Z",
+      "material": "Q11427"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q12514",
+    "label": "Three Gorges Dam",
+    "description": "hydroelectric dam that spans the Yangtze River by the town of Sandouping, China",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 105,
+    "monthlyPageviews": 52500,
+    "properties": {
+      "country": "Q148",
+      "inception": "+2003-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q121359",
+    "label": "infrastructure",
+    "description": "fundamental facilities and systems serving a country, city, or other areas",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 103,
+    "monthlyPageviews": 51500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q12511",
+    "label": "stairs",
+    "description": "construction designed to bridge a large vertical distance by dividing it into steps",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 103,
+    "monthlyPageviews": 51500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q16560",
+    "label": "palace",
+    "description": "grand residence, especially a royal or episcopal residence",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 99,
+    "monthlyPageviews": 49500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q38891",
+    "label": "Aswan Dam",
+    "description": "dam in Aswan, Egypt",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 97,
+    "monthlyPageviews": 48500,
+    "properties": {
+      "country": "Q79",
+      "inception": "+1960-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q25653",
+    "label": "ferry",
+    "description": "type of ship travelling over short to medium distances between two places transporting people, cars or trains and acting like a replacement for a bridge",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 95,
+    "monthlyPageviews": 47500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q28813",
+    "label": "fraud",
+    "description": "intentional deception made for unfair or unlawful gain or damaging or depriving a victim",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 90,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q83125",
+    "label": "Tower Bridge",
+    "description": "bascule and suspension bridge in London",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 86,
+    "monthlyPageviews": 43000,
+    "properties": {
+      "country": "Q145",
+      "inception": "+1886-00-00T00:00:00Z",
+      "material": "Q11427"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q125006",
+    "label": "Brooklyn Bridge",
+    "description": "bridge in New York City, crossing the East River",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 83,
+    "monthlyPageviews": 41500,
+    "properties": {
+      "country": "Q30",
+      "material": "Q11427"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q131681",
+    "label": "reservoir",
+    "description": "artificial lake impounded using a dam or lock to store water",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 81,
+    "monthlyPageviews": 40500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q199451",
+    "label": "pagoda",
+    "description": "tiered tower built in an East Asian style, a kind of decorative garden structure",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 80,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q49394",
+    "label": "weapon of mass destruction",
+    "description": "weapon with the capacity to indiscriminately kill a very large number of people and cause great physical, economic and environmental damage",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 78,
+    "monthlyPageviews": 39000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q210272",
+    "label": "cultural heritage",
+    "description": "physical artifact or intangible attribute of a society inherited from past generations",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 73,
+    "monthlyPageviews": 36500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q780687",
+    "label": "rights",
+    "description": "fundamental legal, social, or ethical principles of freedom or entitlement according to some legal system, social convention, or ethical theory",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 73,
+    "monthlyPageviews": 36500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q172822",
+    "label": "Hoover Dam",
+    "description": "hydroelectric dam on the Colorado River, United States",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 73,
+    "monthlyPageviews": 36500,
+    "properties": {
+      "country": "Q30",
+      "inception": "+1931-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q49447",
+    "label": "world view",
+    "description": "fundamental cognitive orientation of an individual or society encompassing the entirety of the individual or society's knowledge and point of view",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 71,
+    "monthlyPageviews": 35500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q184213",
+    "label": "Akashi Kaikyō Bridge",
+    "description": "suspension bridge in Kobe, Japan",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {
+      "country": "Q17",
+      "inception": "+1996-09-18T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q188966",
+    "label": "contract bridge",
+    "description": "card game",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 67,
+    "monthlyPageviews": 33500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q10566551",
+    "label": "safety",
+    "description": "state of being secure from damage, injury, danger, or other non-desirable outcomes, or from causing them",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 64,
+    "monthlyPageviews": 32000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q274153",
+    "label": "water tower",
+    "description": "elevated structure supporting a water tank",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 59,
+    "monthlyPageviews": 29500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q187719",
+    "label": "Corpus Juris Civilis",
+    "description": "collection of fundamental works in jurisprudence as codified by Justinian",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 56,
+    "monthlyPageviews": 28000,
+    "properties": {
+      "pointInTime": "+0528-00-00T00:00:00Z",
+      "country": "Q12544",
+      "genre": "Q384515"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q244169",
+    "label": "Itaipu Dam",
+    "description": "hydroelectric dam on the Paraná River on the border between Brazil and Paraguay",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 56,
+    "monthlyPageviews": 28000,
+    "properties": {
+      "country": "Q155",
+      "inception": "+1970-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q25169",
+    "label": "The Hitchhiker's Guide to the Galaxy",
+    "description": "1979–1992 series of five books by Douglas Adams",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 48,
+    "monthlyPageviews": 24000,
+    "properties": {
+      "genre": "Q761469",
+      "countryOfOrigin": "Q145"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q211058",
+    "label": "circuit breaker",
+    "description": "automatically operated electrical switch designed to protect an electrical circuit from damage caused by excess current from an overload or short circuit",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 45,
+    "monthlyPageviews": 22500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11886611",
+    "label": "armor",
+    "description": "protective covering or reinforcement for objects, persons, or animals that is used to prevent damage from direct contact weapons or projectiles, usually in combat",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 43,
+    "monthlyPageviews": 21500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q308922",
+    "label": "damages",
+    "description": "legal term for compensation awarded for loss or injury",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 40,
+    "monthlyPageviews": 20000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q18142",
+    "label": "tower block",
+    "description": "tall building; as opposed to a low-rise building",
+    "subcategory": "landmarks_wonders",
+    "sitelinks": 40,
+    "monthlyPageviews": 20000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1845",
+    "label": "Bible",
+    "description": "collection of sacred books in Judaism and Christianity",
+    "subcategory": "pop_culture",
+    "sitelinks": 372,
+    "monthlyPageviews": 186000,
+    "properties": {
+      "genre": "Q12617225"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q2736",
+    "label": "association football",
+    "description": "sport that is practiced between two teams of eleven players",
+    "subcategory": "pop_culture",
+    "sitelinks": 295,
+    "monthlyPageviews": 147500,
+    "properties": {
+      "countryOfOrigin": "Q174193"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q718",
+    "label": "chess",
+    "description": "strategy board game",
+    "subcategory": "pop_culture",
+    "sitelinks": 266,
+    "monthlyPageviews": 133000,
+    "properties": {
+      "inception": "+0601-00-00T00:00:00Z",
+      "genre": "Q41595400",
+      "countryOfOrigin": "Q11774"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q349",
+    "label": "sport",
+    "description": "forms of recreational activity, usually physical",
+    "subcategory": "pop_culture",
+    "sitelinks": 266,
+    "monthlyPageviews": 133000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q289",
+    "label": "television",
+    "description": "telecommunication medium for transmitting and receiving moving images",
+    "subcategory": "pop_culture",
+    "sitelinks": 264,
+    "monthlyPageviews": 132000,
+    "properties": {
+      "discoverer": "Q1064424"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q355",
+    "label": "Facebook",
+    "description": "American online social media and social networking service",
+    "subcategory": "pop_culture",
+    "sitelinks": 261,
+    "monthlyPageviews": 130500,
+    "properties": {
+      "creator": "Q36215",
+      "inception": "+2004-02-04T00:00:00Z",
+      "countryOfOrigin": "Q30"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q5372",
+    "label": "basketball",
+    "description": "team sport played on a court with baskets on either end",
+    "subcategory": "pop_culture",
+    "sitelinks": 215,
+    "monthlyPageviews": 107500,
+    "properties": {
+      "discoverer": "Q188962",
+      "inception": "+1891-12-00T00:00:00Z",
+      "countryOfOrigin": "Q30"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7590",
+    "label": "transport",
+    "description": "human-directed movement of things or people between locations",
+    "subcategory": "pop_culture",
+    "sitelinks": 214,
+    "monthlyPageviews": 107000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q847",
+    "label": "tennis",
+    "description": "racket sport played on a court bisected by a net",
+    "subcategory": "pop_culture",
+    "sitelinks": 208,
+    "monthlyPageviews": 104000,
+    "properties": {
+      "inception": "+1873-00-00T00:00:00Z",
+      "countryOfOrigin": "Q21"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q5389",
+    "label": "Olympic Games",
+    "description": "major international multi-sport event organised by International Olympic Committee",
+    "subcategory": "pop_culture",
+    "sitelinks": 200,
+    "monthlyPageviews": 100000,
+    "properties": {
+      "inception": "+1896-00-00T00:00:00Z",
+      "movement": "Q11292772"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q870",
+    "label": "train",
+    "description": "form of rail transport consisting of a series of connected vehicles",
+    "subcategory": "pop_culture",
+    "sitelinks": 200,
+    "monthlyPageviews": 100000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11410",
+    "label": "game",
+    "description": "structured form of play",
+    "subcategory": "pop_culture",
+    "sitelinks": 190,
+    "monthlyPageviews": 95000,
+    "properties": {
+      "collection": "Q734266"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q32112",
+    "label": "boxing",
+    "description": "combat sport and martial art",
+    "subcategory": "pop_culture",
+    "sitelinks": 164,
+    "monthlyPageviews": 82000,
+    "properties": {
+      "countryOfOrigin": "Q21"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q1734",
+    "label": "volleyball",
+    "description": "team sport",
+    "subcategory": "pop_culture",
+    "sitelinks": 164,
+    "monthlyPageviews": 82000,
+    "properties": {
+      "discoverer": "Q313949",
+      "inception": "+1947-00-00T00:00:00Z",
+      "countryOfOrigin": "Q30"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7889",
+    "label": "video game",
+    "description": "electronic game with user interface and visual feedback",
+    "subcategory": "pop_culture",
+    "sitelinks": 163,
+    "monthlyPageviews": 81500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q5375",
+    "label": "cricket",
+    "description": "team sport played with a bat and ball",
+    "subcategory": "pop_culture",
+    "sitelinks": 159,
+    "monthlyPageviews": 79500,
+    "properties": {
+      "inception": "+1909-00-00T00:00:00Z",
+      "countryOfOrigin": "Q21"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q5377",
+    "label": "golf",
+    "description": "club-and-ball sport",
+    "subcategory": "pop_culture",
+    "sitelinks": 157,
+    "monthlyPageviews": 78500,
+    "properties": {
+      "countryOfOrigin": "Q22"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q542",
+    "label": "athletics",
+    "description": "sports involving running, jumping, throwing and walking",
+    "subcategory": "pop_culture",
+    "sitelinks": 157,
+    "monthlyPageviews": 78500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q5638",
+    "label": "bus",
+    "description": "large road vehicle for transporting people",
+    "subcategory": "pop_culture",
+    "sitelinks": 155,
+    "monthlyPageviews": 77500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q5369",
+    "label": "baseball",
+    "description": "American-originated sport in which teams compete to score runs by hitting a thrown ball and advancing around bases",
+    "subcategory": "pop_culture",
+    "sitelinks": 154,
+    "monthlyPageviews": 77000,
+    "properties": {
+      "discoverer": "Q322555",
+      "countryOfOrigin": "Q30"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q49740",
+    "label": "Minecraft",
+    "description": "2011 video game",
+    "subcategory": "pop_culture",
+    "sitelinks": 148,
+    "monthlyPageviews": 74000,
+    "properties": {
+      "creator": "Q266224",
+      "collection": "Q188740",
+      "genre": "Q21030988",
+      "countryOfOrigin": "Q34"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q5378",
+    "label": "rugby",
+    "description": "collective term for rugby union and rugby league team sports",
+    "subcategory": "pop_culture",
+    "sitelinks": 147,
+    "monthlyPageviews": 73500,
+    "properties": {
+      "countryOfOrigin": "Q174193"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q11420",
+    "label": "judo",
+    "description": "modern martial art, combat and Olympic/Paralympic sport",
+    "subcategory": "pop_culture",
+    "sitelinks": 146,
+    "monthlyPageviews": 73000,
+    "properties": {
+      "discoverer": "Q190141",
+      "inception": "+1882-00-00T00:00:00Z",
+      "countryOfOrigin": "Q17"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7291",
+    "label": "badminton",
+    "description": "racquet sport",
+    "subcategory": "pop_culture",
+    "sitelinks": 144,
+    "monthlyPageviews": 72000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1968",
+    "label": "Formula One",
+    "description": "motorsport championship held worldwide",
+    "subcategory": "pop_culture",
+    "sitelinks": 144,
+    "monthlyPageviews": 72000,
+    "properties": {
+      "inception": "+1950-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q11413",
+    "label": "go",
+    "description": "board game for two players that originated in China more than 2,500 years ago",
+    "subcategory": "pop_culture",
+    "sitelinks": 141,
+    "monthlyPageviews": 70500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q36192",
+    "label": "folklore",
+    "description": "cultural expressions of a particular group of people, manifested in verbal form (proverbs, jokes, legends, songs), material form (objects of art), customs (beliefs and ways of doing things)",
+    "subcategory": "pop_culture",
+    "sitelinks": 138,
+    "monthlyPageviews": 69000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11416",
+    "label": "gambling",
+    "description": "wagering of money on a game of chance or event with an uncertain outcome",
+    "subcategory": "pop_culture",
+    "sitelinks": 135,
+    "monthlyPageviews": 67500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q43812",
+    "label": "passport",
+    "description": "travel document usually issued by a country's government",
+    "subcategory": "pop_culture",
+    "sitelinks": 134,
+    "monthlyPageviews": 67000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q8418",
+    "label": "handball",
+    "description": "team sport played with a thrown ball and goals",
+    "subcategory": "pop_culture",
+    "sitelinks": 130,
+    "monthlyPageviews": 65000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q8093",
+    "label": "Nintendo",
+    "description": "Japanese multinational video game and consumer electronics company",
+    "subcategory": "pop_culture",
+    "sitelinks": 130,
+    "monthlyPageviews": 65000,
+    "properties": {
+      "startDate": "+1889-00-00T00:00:00Z",
+      "country": "Q17",
+      "inception": "+1889-09-23T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q18545",
+    "label": "ball",
+    "description": "round object used in sports or for playing",
+    "subcategory": "pop_culture",
+    "sitelinks": 123,
+    "monthlyPageviews": 61500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q3407658",
+    "label": "tram",
+    "description": "public transport vehicle running on rails predominantly located on streets",
+    "subcategory": "pop_culture",
+    "sitelinks": 123,
+    "monthlyPageviews": 61500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q81422",
+    "label": "Noah",
+    "description": "biblical prophet, son of Lamech, major figure in the Book of Genesis",
+    "subcategory": "pop_culture",
+    "sitelinks": 121,
+    "monthlyPageviews": 60500,
+    "properties": {
+      "birthDate": "-2948-00-00T00:00:00Z",
+      "deathDate": "-1998-00-00T00:00:00Z",
+      "occupation": "Q131512"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q5503",
+    "label": "rapid transit",
+    "description": "high-capacity public transport generally used in urban areas",
+    "subcategory": "pop_culture",
+    "sitelinks": 121,
+    "monthlyPageviews": 60500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q3930",
+    "label": "table tennis",
+    "description": "racket sport",
+    "subcategory": "pop_culture",
+    "sitelinks": 118,
+    "monthlyPageviews": 59000,
+    "properties": {
+      "inception": "+1891-00-00T00:00:00Z",
+      "countryOfOrigin": "Q21"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q42486",
+    "label": "wrestling",
+    "description": "form of combat sport involving grappling type techniques",
+    "subcategory": "pop_culture",
+    "sitelinks": 118,
+    "monthlyPageviews": 59000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q5916",
+    "label": "spaceflight",
+    "description": "travel or transportation into or through space",
+    "subcategory": "pop_culture",
+    "sitelinks": 116,
+    "monthlyPageviews": 58000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q4457",
+    "label": "Franz Beckenbauer",
+    "description": "German sports official and association football player (1945–2024)",
+    "subcategory": "pop_culture",
+    "sitelinks": 115,
+    "monthlyPageviews": 57500,
+    "properties": {
+      "birthDate": "+1945-09-11T00:00:00Z",
+      "deathDate": "+2024-01-07T00:00:00Z",
+      "occupation": "Q937857",
+      "fieldOfWork": "Q349"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q41466",
+    "label": "ice hockey",
+    "description": "team sport played on ice using sticks, skates, and a puck",
+    "subcategory": "pop_culture",
+    "sitelinks": 112,
+    "monthlyPageviews": 56000,
+    "properties": {
+      "countryOfOrigin": "Q16"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q36908",
+    "label": "mountaineering",
+    "description": "sport of mountain climbing",
+    "subcategory": "pop_culture",
+    "sitelinks": 111,
+    "monthlyPageviews": 55500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q41323",
+    "label": "American football",
+    "description": "form of team game played with an oval ball on a field marked out as a gridiron",
+    "subcategory": "pop_culture",
+    "sitelinks": 110,
+    "monthlyPageviews": 55000,
+    "properties": {
+      "countryOfOrigin": "Q30"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q34516",
+    "label": "imagination",
+    "description": "mental ability to produce and simulate novel objects, people and ideas in the mind without any immediate input of the senses",
+    "subcategory": "pop_culture",
+    "sitelinks": 110,
+    "monthlyPageviews": 55000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q53121",
+    "label": "cycling",
+    "description": "riding a bicycle (transportation, sport, exercise, recreation...)",
+    "subcategory": "pop_culture",
+    "sitelinks": 110,
+    "monthlyPageviews": 55000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q12100",
+    "label": "fencing",
+    "description": "type of armed combat sport",
+    "subcategory": "pop_culture",
+    "sitelinks": 109,
+    "monthlyPageviews": 54500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q43450",
+    "label": "gymnastics",
+    "description": "sport; includes artistic, rhythmic, trampoline, and other versions",
+    "subcategory": "pop_culture",
+    "sitelinks": 107,
+    "monthlyPageviews": 53500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q41484",
+    "label": "Hermes",
+    "description": "Olympian god in Greek religion and mythology; the emissary and messenger of the gods; the god of trade, heraldry, merchants, commerce, roads, thieves, trickery, sports, travelers, and athletes; the son of Zeus and the Pleiad Maia",
+    "subcategory": "pop_culture",
+    "sitelinks": 107,
+    "monthlyPageviews": 53500,
+    "properties": {
+      "occupation": "Q848466"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q80131",
+    "label": "poker",
+    "description": "family of card games",
+    "subcategory": "pop_culture",
+    "sitelinks": 106,
+    "monthlyPageviews": 53000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q108429",
+    "label": "archery",
+    "description": "art, sport, practice or skill of using a bow to shoot arrows",
+    "subcategory": "pop_culture",
+    "sitelinks": 104,
+    "monthlyPageviews": 52000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q130949",
+    "label": "skiing",
+    "description": "recreational activity and sport using skis",
+    "subcategory": "pop_culture",
+    "sitelinks": 104,
+    "monthlyPageviews": 52000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q159992",
+    "label": "surfing",
+    "description": "sport that consists of riding a wave",
+    "subcategory": "pop_culture",
+    "sitelinks": 103,
+    "monthlyPageviews": 51500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q40561",
+    "label": "sumo",
+    "description": "full-contact wrestling sport",
+    "subcategory": "pop_culture",
+    "sitelinks": 102,
+    "monthlyPageviews": 51000,
+    "properties": {
+      "country": "Q17",
+      "inception": "+0642-00-00T00:00:00Z",
+      "countryOfOrigin": "Q17"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q1455",
+    "label": "field hockey",
+    "description": "team sport version of hockey played on grass or artificial turf with sticks and a round ball",
+    "subcategory": "pop_culture",
+    "sitelinks": 101,
+    "monthlyPageviews": 50500,
+    "properties": {
+      "countryOfOrigin": "Q21"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q82414",
+    "label": "Winter Olympic Games",
+    "description": "major international multi-sport event",
+    "subcategory": "pop_culture",
+    "sitelinks": 100,
+    "monthlyPageviews": 50000,
+    "properties": {
+      "inception": "+1924-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q1293",
+    "label": "checkers",
+    "description": "board game",
+    "subcategory": "pop_culture",
+    "sitelinks": 98,
+    "monthlyPageviews": 49000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q83462",
+    "label": "weightlifting",
+    "description": "sport",
+    "subcategory": "pop_culture",
+    "sitelinks": 96,
+    "monthlyPageviews": 48000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q73633",
+    "label": "Paralympic Games",
+    "description": "major international sport event for people with disabilities",
+    "subcategory": "pop_culture",
+    "sitelinks": 96,
+    "monthlyPageviews": 48000,
+    "properties": {
+      "country": "Q13780930",
+      "inception": "+1960-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q171957",
+    "label": "hide-and-seek",
+    "description": "children's game",
+    "subcategory": "pop_culture",
+    "sitelinks": 95,
+    "monthlyPageviews": 47500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q13974",
+    "label": "NBC",
+    "description": "American television and radio network",
+    "subcategory": "pop_culture",
+    "sitelinks": 95,
+    "monthlyPageviews": 47500,
+    "properties": {
+      "country": "Q30",
+      "inception": "+1926-06-19T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q49845",
+    "label": "mail",
+    "description": "system for transporting documents and other small packages",
+    "subcategory": "pop_culture",
+    "sitelinks": 95,
+    "monthlyPageviews": 47500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q3341285",
+    "label": "cue sports",
+    "description": "skill games using cue stick to strike billiard balls",
+    "subcategory": "pop_culture",
+    "sitelinks": 93,
+    "monthlyPageviews": 46500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q136851",
+    "label": "curling",
+    "description": "winter team sport played on ice",
+    "subcategory": "pop_culture",
+    "sitelinks": 92,
+    "monthlyPageviews": 46000,
+    "properties": {
+      "inception": "+1966-00-00T00:00:00Z",
+      "countryOfOrigin": "Q22"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q159821",
+    "label": "Summer Olympic Games",
+    "description": "major international multi-sport event",
+    "subcategory": "pop_culture",
+    "sitelinks": 92,
+    "monthlyPageviews": 46000,
+    "properties": {
+      "startDate": "+1896-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q259745",
+    "label": "witchcraft",
+    "description": "belief in possibility of or attempts to trigger supernatural processes not possible per natural laws; alleged or fictional practice of magical skills and abilities",
+    "subcategory": "pop_culture",
+    "sitelinks": 92,
+    "monthlyPageviews": 46000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q71910",
+    "label": "Tetris",
+    "description": "1984 tile-matching puzzle video game series",
+    "subcategory": "pop_culture",
+    "sitelinks": 91,
+    "monthlyPageviews": 45500,
+    "properties": {
+      "creator": "Q92600",
+      "collection": "Q188740",
+      "genre": "Q54767",
+      "countryOfOrigin": "Q15180"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q159354",
+    "label": "rowing",
+    "description": "sport where individuals or teams row boats by oar or steer them as a coxswain",
+    "subcategory": "pop_culture",
+    "sitelinks": 88,
+    "monthlyPageviews": 44000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11015",
+    "label": "snooker",
+    "description": "variant of billiard sports",
+    "subcategory": "pop_culture",
+    "sitelinks": 88,
+    "monthlyPageviews": 44000,
+    "properties": {
+      "discoverer": "Q2565047"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q167172",
+    "label": "stereotype",
+    "description": "over-generalized belief about a particular category of people; often used in literature and films as means to emphasize characters",
+    "subcategory": "pop_culture",
+    "sitelinks": 88,
+    "monthlyPageviews": 44000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q3565868",
+    "label": "rail transport",
+    "description": "conveyance of passengers and goods by way of wheeled vehicles running on rail tracks",
+    "subcategory": "pop_culture",
+    "sitelinks": 88,
+    "monthlyPageviews": 44000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q166788",
+    "label": "biathlon",
+    "description": "winter sport that combines cross-country skiing and rifle sports shooting",
+    "subcategory": "pop_culture",
+    "sitelinks": 87,
+    "monthlyPageviews": 43500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q38108",
+    "label": "figure skating",
+    "description": "sport and art performed with figure skates on ice",
+    "subcategory": "pop_culture",
+    "sitelinks": 86,
+    "monthlyPageviews": 43000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q46970",
+    "label": "airline",
+    "description": "company that provides air transport services for traveling passengers and freight",
+    "subcategory": "pop_culture",
+    "sitelinks": 86,
+    "monthlyPageviews": 43000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q178512",
+    "label": "public transport",
+    "description": "shared transportation service for use by the general public",
+    "subcategory": "pop_culture",
+    "sitelinks": 86,
+    "monthlyPageviews": 43000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q187916",
+    "label": "horse racing",
+    "description": "equestrian sport in which several horses simultaneously race against each other",
+    "subcategory": "pop_culture",
+    "sitelinks": 84,
+    "monthlyPageviews": 42000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q174219",
+    "label": "paint",
+    "description": "pigmented liquid applied over a surface that dries as a solid film",
+    "subcategory": "pop_culture",
+    "sitelinks": 84,
+    "monthlyPageviews": 42000,
+    "properties": {
+      "material": "pigment"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q132730",
+    "label": "Grand Theft Auto",
+    "description": "action-adventure video game series",
+    "subcategory": "pop_culture",
+    "sitelinks": 83,
+    "monthlyPageviews": 41500,
+    "properties": {
+      "startDate": "+1997-00-00T00:00:00Z",
+      "creator": "Q2747788",
+      "genre": "Q343568",
+      "countryOfOrigin": "Q145"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q483463",
+    "label": "Asian Games",
+    "description": "Asian multi-sport event",
+    "subcategory": "pop_culture",
+    "sitelinks": 82,
+    "monthlyPageviews": 41000,
+    "properties": {
+      "inception": "+1951-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q131436",
+    "label": "board game",
+    "description": "game that involves counters or pieces moved or placed on a pre-marked surface or \"board\", according to a set of rules",
+    "subcategory": "pop_culture",
+    "sitelinks": 82,
+    "monthlyPageviews": 41000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q120931",
+    "label": "Muay Thai",
+    "description": "combat sport and martial art that uses stand-up striking along with various clinching techniques",
+    "subcategory": "pop_culture",
+    "sitelinks": 82,
+    "monthlyPageviews": 41000,
+    "properties": {
+      "countryOfOrigin": "Q869"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q32907",
+    "label": "dominoes",
+    "description": "game played with rectangular tiles",
+    "subcategory": "pop_culture",
+    "sitelinks": 81,
+    "monthlyPageviews": 40500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q184840",
+    "label": "smuggling",
+    "description": "illegal transportation of goods or people",
+    "subcategory": "pop_culture",
+    "sitelinks": 81,
+    "monthlyPageviews": 40500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q180481",
+    "label": "ambulance",
+    "description": "vehicle equipped for transporting and caring for ill and wounded people",
+    "subcategory": "pop_culture",
+    "sitelinks": 81,
+    "monthlyPageviews": 40500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7735",
+    "label": "diving",
+    "description": "sport of jumping or falling into water from a platform or springboard",
+    "subcategory": "pop_culture",
+    "sitelinks": 80,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q747802",
+    "label": "Mormonism",
+    "description": "religious tradition and theology founded by Joseph Smith and centered on the Book of Mormon",
+    "subcategory": "pop_culture",
+    "sitelinks": 80,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q17243",
+    "label": "Monopoly",
+    "description": "economics-themed board game",
+    "subcategory": "pop_culture",
+    "sitelinks": 79,
+    "monthlyPageviews": 39500,
+    "properties": {
+      "inception": "+1935-00-00T00:00:00Z",
+      "genre": "Q60735876",
+      "countryOfOrigin": "Q30"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q134211",
+    "label": "polo",
+    "description": "equestrian team sport",
+    "subcategory": "pop_culture",
+    "sitelinks": 79,
+    "monthlyPageviews": 39500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q114466",
+    "label": "mixed martial arts",
+    "description": "full-contact combat sport",
+    "subcategory": "pop_culture",
+    "sitelinks": 78,
+    "monthlyPageviews": 39000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q171724",
+    "label": "Daniel",
+    "description": "biblical figure associated to the Book of Daniel",
+    "subcategory": "pop_culture",
+    "sitelinks": 78,
+    "monthlyPageviews": 39000,
+    "properties": {
+      "birthDate": "-0700-00-00T00:00:00Z",
+      "deathDate": "-0600-00-00T00:00:00Z",
+      "occupation": "Q15995642"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q4543",
+    "label": "beach volleyball",
+    "description": "team sport",
+    "subcategory": "pop_culture",
+    "sitelinks": 77,
+    "monthlyPageviews": 38500,
+    "properties": {
+      "countryOfOrigin": "Q30"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q131471",
+    "label": "darts",
+    "description": "throwing game",
+    "subcategory": "pop_culture",
+    "sitelinks": 77,
+    "monthlyPageviews": 38500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q12014035",
+    "label": "hiking",
+    "description": "walking as a hobby, sport, or leisure activity",
+    "subcategory": "pop_culture",
+    "sitelinks": 76,
+    "monthlyPageviews": 38000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7718",
+    "label": "ski jumping",
+    "description": "skiing sport with jumping down a hill",
+    "subcategory": "pop_culture",
+    "sitelinks": 76,
+    "monthlyPageviews": 38000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q186222",
+    "label": "alpine skiing",
+    "description": "sport of skiing downhill",
+    "subcategory": "pop_culture",
+    "sitelinks": 75,
+    "monthlyPageviews": 37500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q177275",
+    "label": "bobsleigh",
+    "description": "Olympic team winter sport",
+    "subcategory": "pop_culture",
+    "sitelinks": 75,
+    "monthlyPageviews": 37500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q583269",
+    "label": "tarot deck",
+    "description": "set of cards used for games or divination",
+    "subcategory": "pop_culture",
+    "sitelinks": 75,
+    "monthlyPageviews": 37500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q276453",
+    "label": "monster",
+    "description": "type of fictional or mythological creature",
+    "subcategory": "pop_culture",
+    "sitelinks": 75,
+    "monthlyPageviews": 37500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q3972943",
+    "label": "publishing",
+    "description": "process of production and dissemination of literature, music, or information",
+    "subcategory": "pop_culture",
+    "sitelinks": 74,
+    "monthlyPageviews": 37000,
+    "properties": {
+      "country": "Q183"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q166376",
+    "label": "doping in sport",
+    "description": "illicit use of drugs or other substances to increase athletic performance",
+    "subcategory": "pop_culture",
+    "sitelinks": 73,
+    "monthlyPageviews": 36500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q178678",
+    "label": "kickboxing",
+    "description": "full-contact combat sport in which the gloved competitors may punch and kick with bare feet",
+    "subcategory": "pop_culture",
+    "sitelinks": 73,
+    "monthlyPageviews": 36500,
+    "properties": {
+      "discoverer": "Q6675243",
+      "countryOfOrigin": "Q17"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q178131",
+    "label": "snowboarding",
+    "description": "snow sport involving a single board",
+    "subcategory": "pop_culture",
+    "sitelinks": 73,
+    "monthlyPageviews": 36500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q133201",
+    "label": "squash",
+    "description": "racquet sport",
+    "subcategory": "pop_culture",
+    "sitelinks": 73,
+    "monthlyPageviews": 36500,
+    "properties": {
+      "countryOfOrigin": "Q21"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q206989",
+    "label": "shooting sports",
+    "description": "sports involving firearms used to hit targets",
+    "subcategory": "pop_culture",
+    "sitelinks": 72,
+    "monthlyPageviews": 36000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q159452",
+    "label": "capoeira",
+    "description": "Brazilian martial art that combines elements of dance fists kicks and music.",
+    "subcategory": "pop_culture",
+    "sitelinks": 71,
+    "monthlyPageviews": 35500,
+    "properties": {
+      "country": "Q155",
+      "creator": "Q388315",
+      "inception": "+1600-00-00T00:00:00Z",
+      "countryOfOrigin": "Q155"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q5849",
+    "label": "rugby union",
+    "description": "team sport, code of rugby football",
+    "subcategory": "pop_culture",
+    "sitelinks": 71,
+    "monthlyPageviews": 35500,
+    "properties": {
+      "inception": "+1823-00-00T00:00:00Z",
+      "countryOfOrigin": "Q174193"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q131359",
+    "label": "professional wrestling",
+    "description": "fictionalized martial arts events with professional athletes who are allowed the use of throws, jumps, grappling, and striking techniques",
+    "subcategory": "pop_culture",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {
+      "country": "Q30"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q188468",
+    "label": "ancient Olympic Games",
+    "description": "athletic competitions in ancient Greece",
+    "subcategory": "pop_culture",
+    "sitelinks": 69,
+    "monthlyPageviews": 34500,
+    "properties": {
+      "inception": "-0776-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q5386",
+    "label": "auto racing",
+    "description": "motorsport involving the racing of cars for competition",
+    "subcategory": "pop_culture",
+    "sitelinks": 69,
+    "monthlyPageviews": 34500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q31920",
+    "label": "competitive swimming",
+    "description": "water-based sport",
+    "subcategory": "pop_culture",
+    "sitelinks": 69,
+    "monthlyPageviews": 34500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q6223",
+    "label": "fascism",
+    "description": "far-right authoritarian ideology and movement",
+    "subcategory": "oddities",
+    "sitelinks": 186,
+    "monthlyPageviews": 93000,
+    "properties": {
+      "countryOfOrigin": "Q172579"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9165",
+    "label": "soul",
+    "description": "immaterial aspect or essence of a living being or object",
+    "subcategory": "oddities",
+    "sitelinks": 185,
+    "monthlyPageviews": 92500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q4917",
+    "label": "United States dollar",
+    "description": "official currency of the United States",
+    "subcategory": "oddities",
+    "sitelinks": 185,
+    "monthlyPageviews": 92500,
+    "properties": {
+      "startDate": "+1792-00-00T00:00:00Z",
+      "country": "Q30"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9420",
+    "label": "thought",
+    "description": "mental activity involving an individual's subjective consciousness",
+    "subcategory": "oddities",
+    "sitelinks": 182,
+    "monthlyPageviews": 91000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11446",
+    "label": "ship",
+    "description": "large buoyant watercraft",
+    "subcategory": "oddities",
+    "sitelinks": 182,
+    "monthlyPageviews": 91000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q12897",
+    "label": "Pelé",
+    "description": "Brazilian footballer (1940–2022)",
+    "subcategory": "oddities",
+    "sitelinks": 181,
+    "monthlyPageviews": 90500,
+    "properties": {
+      "birthDate": "+1940-10-23T00:00:00Z",
+      "deathDate": "+2022-12-29T00:00:00Z",
+      "occupation": "Q937857",
+      "fieldOfWork": "Q2736"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q32815",
+    "label": "mosque",
+    "description": "place of worship for followers of Islam",
+    "subcategory": "oddities",
+    "sitelinks": 181,
+    "monthlyPageviews": 90500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q6199",
+    "label": "anarchism",
+    "description": "a philosophy, movement, and political ideology that holds that any government, like the state, is undesirable, unnecessary, and harmful",
+    "subcategory": "oddities",
+    "sitelinks": 181,
+    "monthlyPageviews": 90500,
+    "properties": {
+      "discoverer": "Q5749"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7278",
+    "label": "political party",
+    "description": "organization that seeks to influence government policy and actions and be elected to directly take part on government or legislation",
+    "subcategory": "oddities",
+    "sitelinks": 181,
+    "monthlyPageviews": 90500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q10294",
+    "label": "poverty",
+    "description": "lack of a certain amount of material possessions or money",
+    "subcategory": "oddities",
+    "sitelinks": 181,
+    "monthlyPageviews": 90500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7242",
+    "label": "beauty",
+    "description": "aesthetic concept",
+    "subcategory": "oddities",
+    "sitelinks": 180,
+    "monthlyPageviews": 90000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7325",
+    "label": "Jewish people",
+    "description": "ethnoreligious group and nation from the Levant",
+    "subcategory": "oddities",
+    "sitelinks": 180,
+    "monthlyPageviews": 90000,
+    "properties": {
+      "country": "Q801",
+      "countryOfOrigin": "Q48685"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q6216",
+    "label": "liberalism",
+    "description": "political and moral philosophy based on liberty, consent of the governed and equality",
+    "subcategory": "oddities",
+    "sitelinks": 180,
+    "monthlyPageviews": 90000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q23548",
+    "label": "National Aeronautics and Space Administration",
+    "description": "American space and aeronautics agency",
+    "subcategory": "oddities",
+    "sitelinks": 180,
+    "monthlyPageviews": 90000,
+    "properties": {
+      "country": "Q30",
+      "inception": "+1958-07-29T00:00:00Z",
+      "occupation": "Q483501"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q23540",
+    "label": "Protestantism",
+    "description": "division within Christianity, originating from the Reformation in the 16th century against the Catholic Church, that rejects the Catholic doctrines of papal supremacy and sacraments",
+    "subcategory": "oddities",
+    "sitelinks": 179,
+    "monthlyPageviews": 89500,
+    "properties": {
+      "inception": "+1517-11-10T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7283",
+    "label": "terrorism",
+    "description": "use of violence as a form of political, economic or religious coercion",
+    "subcategory": "oddities",
+    "sitelinks": 179,
+    "monthlyPageviews": 89500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7565",
+    "label": "father",
+    "description": "male parent",
+    "subcategory": "oddities",
+    "sitelinks": 178,
+    "monthlyPageviews": 89000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q376",
+    "label": "timepiece",
+    "description": "instrument that measures the passage of time",
+    "subcategory": "oddities",
+    "sitelinks": 178,
+    "monthlyPageviews": 89000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11469",
+    "label": "glass",
+    "description": "amorphous solid that exhibits a glass transition when heated towards the liquid state",
+    "subcategory": "oddities",
+    "sitelinks": 177,
+    "monthlyPageviews": 88500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q450",
+    "label": "mind",
+    "description": "combination of cognitive faculties that provides consciousness, thinking, reasoning, perception, and judgement in humans and potentially other life forms",
+    "subcategory": "oddities",
+    "sitelinks": 176,
+    "monthlyPageviews": 88000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q8161",
+    "label": "tax",
+    "description": "mandatory financial charge or other type of levy imposed on a taxpayer (an individual or legal entity) by a governmental organization to collectively fund government spending, public expenditures, or to regulate and reduce negative externalities",
+    "subcategory": "oddities",
+    "sitelinks": 176,
+    "monthlyPageviews": 88000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q16970",
+    "label": "church building",
+    "description": "building for Christian worship",
+    "subcategory": "oddities",
+    "sitelinks": 175,
+    "monthlyPageviews": 87500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q9465",
+    "label": "ethics",
+    "description": "branch of philosophy that systematizes, defends, and recommends concepts of right and wrong conduct",
+    "subcategory": "oddities",
+    "sitelinks": 175,
+    "monthlyPageviews": 87500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11030",
+    "label": "journalism",
+    "description": "investigation and reporting of events, issues and trends to a broad audience",
+    "subcategory": "oddities",
+    "sitelinks": 175,
+    "monthlyPageviews": 87500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q37226",
+    "label": "teacher",
+    "description": "person who helps others to acquire knowledge, competences or values",
+    "subcategory": "oddities",
+    "sitelinks": 175,
+    "monthlyPageviews": 87500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q22656",
+    "label": "petroleum",
+    "description": "naturally occurring flammable liquid",
+    "subcategory": "oddities",
+    "sitelinks": 175,
+    "monthlyPageviews": 87500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7159",
+    "label": "African Union",
+    "description": "supranational union in Africa",
+    "subcategory": "oddities",
+    "sitelinks": 174,
+    "monthlyPageviews": 87000,
+    "properties": {
+      "inception": "+1999-09-09T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q8454",
+    "label": "capital punishment",
+    "description": "legal process whereby a person is put to death by the state as a punishment for an actual or supposed crime",
+    "subcategory": "oddities",
+    "sitelinks": 174,
+    "monthlyPageviews": 87000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q601401",
+    "label": "trade",
+    "description": "economic branch involving the exchange of goods and services",
+    "subcategory": "oddities",
+    "sitelinks": 174,
+    "monthlyPageviews": 87000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q32489",
+    "label": "knife",
+    "description": "tool with a cutting edge or blade",
+    "subcategory": "oddities",
+    "sitelinks": 174,
+    "monthlyPageviews": 87000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q17515",
+    "label": "Diego Maradona",
+    "description": "Argentine football player and manager (1960–2020)",
+    "subcategory": "oddities",
+    "sitelinks": 172,
+    "monthlyPageviews": 86000,
+    "properties": {
+      "birthDate": "+1960-10-30T00:00:00Z",
+      "deathDate": "+2020-11-25T00:00:00Z",
+      "occupation": "Q937857",
+      "fieldOfWork": "Q2736"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9598",
+    "label": "Taoism",
+    "description": "religious or philosophical tradition of Chinese origin",
+    "subcategory": "oddities",
+    "sitelinks": 172,
+    "monthlyPageviews": 86000,
+    "properties": {
+      "countryOfOrigin": "Q29520"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9158",
+    "label": "email",
+    "description": "electronic changing digital messages between a network",
+    "subcategory": "oddities",
+    "sitelinks": 172,
+    "monthlyPageviews": 86000,
+    "properties": {
+      "discoverer": "Q92631",
+      "creator": "Q92631"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q287",
+    "label": "wood",
+    "description": "fibrous material from trees or other plants",
+    "subcategory": "oddities",
+    "sitelinks": 172,
+    "monthlyPageviews": 86000,
+    "properties": {
+      "material": "Q12020010"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q8",
+    "label": "happiness",
+    "description": "positive emotional state",
+    "subcategory": "oddities",
+    "sitelinks": 170,
+    "monthlyPageviews": 85000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q22687",
+    "label": "bank",
+    "description": "financial institution that accepts deposits",
+    "subcategory": "oddities",
+    "sitelinks": 169,
+    "monthlyPageviews": 84500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1889",
+    "label": "diplomacy",
+    "description": "art and practice of conducting negotiations between representatives of groups or states",
+    "subcategory": "oddities",
+    "sitelinks": 169,
+    "monthlyPageviews": 84500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q9415",
+    "label": "emotion",
+    "description": "biological states associated with the nervous system",
+    "subcategory": "oddities",
+    "sitelinks": 169,
+    "monthlyPageviews": 84500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7181",
+    "label": "globalization",
+    "description": "process of international integration arising from world views, products, ideas, and other aspects of culture",
+    "subcategory": "oddities",
+    "sitelinks": 169,
+    "monthlyPageviews": 84500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q35102",
+    "label": "proverb",
+    "description": "saying that gives advice, usually as a metaphor",
+    "subcategory": "oddities",
+    "sitelinks": 169,
+    "monthlyPageviews": 84500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11033",
+    "label": "mass media",
+    "description": "media technologies that are intended to reach a large audience by mass communication",
+    "subcategory": "oddities",
+    "sitelinks": 168,
+    "monthlyPageviews": 84000,
+    "properties": {
+      "fieldOfWork": "Q11028"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q35535",
+    "label": "police",
+    "description": "law enforcement body",
+    "subcategory": "oddities",
+    "sitelinks": 168,
+    "monthlyPageviews": 84000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q19317",
+    "label": "FIFA World Cup",
+    "description": "international association football competition contested by the senior men's national teams",
+    "subcategory": "oddities",
+    "sitelinks": 167,
+    "monthlyPageviews": 83500,
+    "properties": {
+      "inception": "+1930-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q177",
+    "label": "pizza",
+    "description": "Italian universal popular dish with a flat dough-based base and toppings",
+    "subcategory": "oddities",
+    "sitelinks": 167,
+    "monthlyPageviews": 83500,
+    "properties": {
+      "material": "Q178024",
+      "countryOfOrigin": "Q38"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9316",
+    "label": "Sikhism",
+    "description": "monotheistic Indian religion",
+    "subcategory": "oddities",
+    "sitelinks": 167,
+    "monthlyPageviews": 83500,
+    "properties": {
+      "inception": "+1469-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q7264",
+    "label": "Marxism",
+    "description": "economic and sociopolitical worldview",
+    "subcategory": "oddities",
+    "sitelinks": 167,
+    "monthlyPageviews": 83500,
+    "properties": {
+      "discoverer": "Q9061"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q39397",
+    "label": "axe",
+    "description": "weapon or tool consisting of a shaft, with a head attached at a parallel angle that is used primarily for chopping, splitting, or shaping materials",
+    "subcategory": "oddities",
+    "sitelinks": 167,
+    "monthlyPageviews": 83500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q491",
+    "label": "friendship",
+    "description": "relationship between people who have mutual affection for each other",
+    "subcategory": "oddities",
+    "sitelinks": 166,
+    "monthlyPageviews": 83000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q8142",
+    "label": "currency",
+    "description": "generally accepted medium of exchange for goods or services",
+    "subcategory": "oddities",
+    "sitelinks": 166,
+    "monthlyPageviews": 83000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q317",
+    "label": "dictatorship",
+    "description": "form of government which is ruled by a sole leader",
+    "subcategory": "oddities",
+    "sitelinks": 166,
+    "monthlyPageviews": 83000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q12638",
+    "label": "gross domestic product",
+    "description": "market value of goods and services produced within a country",
+    "subcategory": "oddities",
+    "sitelinks": 165,
+    "monthlyPageviews": 82500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11028",
+    "label": "information",
+    "description": "that which informs; the answer to a question; that from which knowledge can be derived",
+    "subcategory": "oddities",
+    "sitelinks": 165,
+    "monthlyPageviews": 82500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q19828",
+    "label": "leap year",
+    "description": "type of year that has 366 days, instead of 365 for a common year",
+    "subcategory": "oddities",
+    "sitelinks": 165,
+    "monthlyPageviews": 82500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q34172",
+    "label": "butter",
+    "description": "dairy product",
+    "subcategory": "oddities",
+    "sitelinks": 164,
+    "monthlyPageviews": 82000,
+    "properties": {
+      "inception": "-8000-00-00T00:00:00Z",
+      "material": "Q13228"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q5873",
+    "label": "sexual intercourse",
+    "description": "intimate social activity typically involving the insertion of the erect male penis into another persons bodily orifice",
+    "subcategory": "oddities",
+    "sitelinks": 164,
+    "monthlyPageviews": 82000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7768",
+    "label": "Association of Southeast Asian Nations",
+    "description": "international organisation of Southeast Asian countries",
+    "subcategory": "oddities",
+    "sitelinks": 164,
+    "monthlyPageviews": 82000,
+    "properties": {
+      "inception": "+1967-08-08T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q83267",
+    "label": "crime",
+    "description": "unlawful act punishable by an authority",
+    "subcategory": "oddities",
+    "sitelinks": 164,
+    "monthlyPageviews": 82000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11457",
+    "label": "cotton",
+    "description": "plant fiber from the genus Gossypium",
+    "subcategory": "oddities",
+    "sitelinks": 164,
+    "monthlyPageviews": 82000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q35197",
+    "label": "mirror",
+    "description": "surface, typically glass coated with a metal amalgam, which reflects a clear image",
+    "subcategory": "oddities",
+    "sitelinks": 164,
+    "monthlyPageviews": 82000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q34396",
+    "label": "soap",
+    "description": "salt of fatty acids, used for washing and cleaning",
+    "subcategory": "oddities",
+    "sitelinks": 163,
+    "monthlyPageviews": 81500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q22676",
+    "label": "shoe",
+    "description": "footwear",
+    "subcategory": "oddities",
+    "sitelinks": 160,
+    "monthlyPageviews": 80000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q36348",
+    "label": "dream",
+    "description": "series of images, thoughts, and emotions, often with a story-like quality, generated by mental activity during sleep; the state in which this occurs",
+    "subcategory": "oddities",
+    "sitelinks": 160,
+    "monthlyPageviews": 80000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q36963",
+    "label": "hunting",
+    "description": "human activity of searching for, pursuing, and catching wild animals",
+    "subcategory": "oddities",
+    "sitelinks": 160,
+    "monthlyPageviews": 80000,
+    "properties": {
+      "startDate": "-1800000-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9159",
+    "label": "monotheism",
+    "description": "belief that there is only one god",
+    "subcategory": "oddities",
+    "sitelinks": 159,
+    "monthlyPageviews": 79500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q34178",
+    "label": "theology",
+    "description": "study of the nature of deities and religious beliefs",
+    "subcategory": "oddities",
+    "sitelinks": 159,
+    "monthlyPageviews": 79500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q9601",
+    "label": "Zoroastrianism",
+    "description": "Iranian religion founded by Zoroaster",
+    "subcategory": "oddities",
+    "sitelinks": 159,
+    "monthlyPageviews": 79500,
+    "properties": {
+      "country": "Q668"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q35473",
+    "label": "window",
+    "description": "opening to admit light or air",
+    "subcategory": "oddities",
+    "sitelinks": 159,
+    "monthlyPageviews": 79500,
+    "properties": {
+      "material": "Q11469"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q34442",
+    "label": "road",
+    "description": "wide way leading from one place to another, especially one with a specially prepared surface which vehicles can use",
+    "subcategory": "oddities",
+    "sitelinks": 158,
+    "monthlyPageviews": 79000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q35127",
+    "label": "website",
+    "description": "set of related web pages served from a single web domain",
+    "subcategory": "oddities",
+    "sitelinks": 158,
+    "monthlyPageviews": 79000,
+    "properties": {
+      "creator": "Q80",
+      "inception": "+1990-00-00T00:00:00Z"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q235113",
+    "label": "angel",
+    "description": "supernatural being or spirit in certain religions and mythologies",
+    "subcategory": "oddities",
+    "sitelinks": 157,
+    "monthlyPageviews": 78500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q34362",
+    "label": "astrology",
+    "description": "ensemble of traditions, beliefs and divinations that interpret the positions of the planets and other celestial bodies; along with their correlation with terrestrial events",
+    "subcategory": "oddities",
+    "sitelinks": 157,
+    "monthlyPageviews": 78500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q9232",
+    "label": "Jainism",
+    "description": "Indian religion",
+    "subcategory": "oddities",
+    "sitelinks": 157,
+    "monthlyPageviews": 78500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7804",
+    "label": "International Monetary Fund",
+    "description": "international financial institution",
+    "subcategory": "oddities",
+    "sitelinks": 157,
+    "monthlyPageviews": 78500,
+    "properties": {
+      "country": "Q30",
+      "inception": "+1944-07-22T00:00:00Z",
+      "fieldOfWork": "Q6663465"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q15026",
+    "label": "chair",
+    "description": "piece of furniture for sitting on",
+    "subcategory": "oddities",
+    "sitelinks": 156,
+    "monthlyPageviews": 78000,
+    "properties": {
+      "material": "Q354757"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q44619",
+    "label": "fear",
+    "description": "emotion induced by perceived danger or threat",
+    "subcategory": "oddities",
+    "sitelinks": 156,
+    "monthlyPageviews": 78000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q251868",
+    "label": "Halloween",
+    "description": "celebration observed in many countries on 31 October",
+    "subcategory": "oddities",
+    "sitelinks": 156,
+    "monthlyPageviews": 78000,
+    "properties": {
+      "countryOfOrigin": "Q27"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q1107656",
+    "label": "garden",
+    "description": "planned space set aside for the display, cultivation and enjoyment of plants",
+    "subcategory": "oddities",
+    "sitelinks": 156,
+    "monthlyPageviews": 78000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q12117",
+    "label": "cereal grain",
+    "description": "fruits (grains) of cereal crops used for food and agricultural products",
+    "subcategory": "oddities",
+    "sitelinks": 155,
+    "monthlyPageviews": 77500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q564",
+    "label": "hell",
+    "description": "religious or mythological place of (often eternal) suffering",
+    "subcategory": "oddities",
+    "sitelinks": 155,
+    "monthlyPageviews": 77500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q40953",
+    "label": "prayer",
+    "description": "invocation or act that seeks to activate a rapport with a deity",
+    "subcategory": "oddities",
+    "sitelinks": 155,
+    "monthlyPageviews": 77500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q7167",
+    "label": "colonialism",
+    "description": "domination, control, and exploitation of a territory and its people by a foreign power often accompanied by the settlement of other peoples and crimes against humanity",
+    "subcategory": "oddities",
+    "sitelinks": 155,
+    "monthlyPageviews": 77500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q13233",
+    "label": "ice cream",
+    "description": "frozen dessert made from frozen milk or cream, sugar, and a flavour",
+    "subcategory": "oddities",
+    "sitelinks": 154,
+    "monthlyPageviews": 77000,
+    "properties": {
+      "material": "Q4173974"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q9581",
+    "label": "Confucianism",
+    "description": "Chinese ethical and philosophical system",
+    "subcategory": "oddities",
+    "sitelinks": 154,
+    "monthlyPageviews": 77000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q9510",
+    "label": "reality",
+    "description": "sum or aggregate of all that is real or existent",
+    "subcategory": "oddities",
+    "sitelinks": 154,
+    "monthlyPageviews": 77000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q41662",
+    "label": "Ramadan",
+    "description": "holy month of fasting for Muslims, observed on the ninth month of the Islamic calendar",
+    "subcategory": "oddities",
+    "sitelinks": 154,
+    "monthlyPageviews": 77000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1536",
+    "label": "UTC",
+    "description": "principal time standard that underlies civil times on Earth",
+    "subcategory": "oddities",
+    "sitelinks": 154,
+    "monthlyPageviews": 77000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q12876",
+    "label": "tank",
+    "description": "armoured fighting vehicle intended as a primary offensive weapon in front-line ground combat",
+    "subcategory": "oddities",
+    "sitelinks": 154,
+    "monthlyPageviews": 77000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q9350",
+    "label": "yoga",
+    "description": "group of physical, mental and spiritual practices originating from ancient India",
+    "subcategory": "oddities",
+    "sitelinks": 153,
+    "monthlyPageviews": 76500,
+    "properties": {
+      "countryOfOrigin": "Q668"
+    },
+    "processed": false
+  },
+  {
+    "qid": "Q37038",
+    "label": "advertising",
+    "description": "form of communication for marketing, typically paid for",
+    "subcategory": "oddities",
+    "sitelinks": 153,
+    "monthlyPageviews": 76500,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q35497",
+    "label": "Ancient Greek",
+    "description": "forms of Greek used from around the 9th century BCE to the 6th century CE",
+    "subcategory": "oddities",
+    "sitelinks": 153,
+    "monthlyPageviews": 76500,
+    "properties": {},
+    "processed": false
+  }
+]

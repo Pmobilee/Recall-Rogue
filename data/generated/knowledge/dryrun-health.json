@@ -1,0 +1,2607 @@
+[
+  {
+    "id": "health-heart-beats",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "cardiovascular",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "cardiovascular",
+    "categoryL3": "",
+    "statement": "The human heart beats approximately 100,000 times per day, pumping about 2,000 gallons of blood through the body.",
+    "quizQuestion": "Roughly how many times does the human heart beat per day?",
+    "correctAnswer": "100,000 times",
+    "distractors": [
+      "10,000 times",
+      "50,000 times",
+      "200,000 times",
+      "500,000 times",
+      "1 million times",
+      "30,000 times",
+      "75,000 times",
+      "25,000 times"
+    ],
+    "acceptableAnswers": [
+      "100,000 times",
+      "About 100,000",
+      "Around 100,000"
+    ],
+    "explanation": "At an average resting heart rate of 70 beats per minute, the heart beats about 100,800 times per day. Over a lifetime of 70 years, that totals approximately 2.5 billion beats. The heart pumps roughly 70 mL of blood per beat, moving about 7,000 liters per day through the circulatory system.",
+    "wowFactor": "Your heart has beaten over 2.5 billion times by the time you're 70 — without ever taking a day off, not even for sleep.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many times does an average heart beat in a single day?",
+        "answer": "100,000 times",
+        "distractors": [
+          "10,000 times",
+          "50,000 times",
+          "500,000 times"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "An organ beating 100,000 times per day — what is it?",
+        "answer": "Heart",
+        "distractors": [
+          "Diaphragm",
+          "Lungs",
+          "Stomach"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The human heart beats approximately 100,000 times per day.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The heart beats approximately ___ times per day.",
+        "answer": "100,000",
+        "distractors": [
+          "10,000",
+          "50,000",
+          "200,000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing red anatomical heart surrounded by animated pulse lines and a counter ticking upward to 100,000, set against a dark body silhouette, pixel art style.",
+    "tags": [
+      "heart",
+      "heartbeat",
+      "cardiovascular",
+      "human body",
+      "circulation"
+    ]
+  },
+  {
+    "id": "health-heart-chambers",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "cardiovascular",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "cardiovascular",
+    "categoryL3": "",
+    "statement": "The human heart has four chambers: two atria on top that receive blood and two ventricles on the bottom that pump it out.",
+    "quizQuestion": "How many chambers does the human heart have?",
+    "correctAnswer": "Four",
+    "distractors": [
+      "Two",
+      "Three",
+      "Five",
+      "Six",
+      "One",
+      "Eight",
+      "Seven",
+      "Seven"
+    ],
+    "acceptableAnswers": [
+      "Four",
+      "4",
+      "Four chambers"
+    ],
+    "explanation": "The heart's four chambers are the right atrium, right ventricle, left atrium, and left ventricle. The right side receives deoxygenated blood from the body and sends it to the lungs; the left side receives oxygenated blood from the lungs and pumps it to the rest of the body. The septum separates the left and right sides.",
+    "wowFactor": "Before the heart divides into four chambers during fetal development, it briefly has just two chambers like a fish — we temporarily have fish hearts in the womb.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many chambers does the human heart contain?",
+        "answer": "Four",
+        "distractors": [
+          "Two",
+          "Three",
+          "Six"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Two atria and two ventricles make up how many heart chambers total?",
+        "answer": "Four",
+        "distractors": [
+          "Two",
+          "Three",
+          "Eight"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The human heart has four chambers.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The human heart has ___ chambers: two atria and two ventricles.",
+        "answer": "four",
+        "distractors": [
+          "two",
+          "three",
+          "six"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section of a glowing red heart with four labeled chambers in different colors, arrows showing blood flow direction, pixel art style.",
+    "tags": [
+      "heart",
+      "chambers",
+      "atria",
+      "ventricles",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "health-heart-electrical",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "cardiovascular",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "cardiovascular",
+    "categoryL3": "",
+    "statement": "The heart generates its own electrical signals from the sinoatrial node — the natural pacemaker — to trigger each beat.",
+    "quizQuestion": "What generates the electrical impulse that triggers each heartbeat?",
+    "correctAnswer": "The sinoatrial node",
+    "distractors": [
+      "The brain stem",
+      "The aorta",
+      "The vagus nerve",
+      "The cardiac muscle",
+      "The atrioventricular node",
+      "The spinal cord",
+      "The adrenal gland",
+      "The hypothalamus"
+    ],
+    "acceptableAnswers": [
+      "Sinoatrial node",
+      "SA node",
+      "The natural pacemaker",
+      "The sinoatrial node"
+    ],
+    "explanation": "The sinoatrial (SA) node is a cluster of specialized cells in the right atrium that spontaneously generate electrical impulses about 60-100 times per minute at rest. This signal spreads across the atria, passes through the AV node, and travels down the Bundle of His to make the ventricles contract. The SA node is called the heart's natural pacemaker.",
+    "wowFactor": "Your heart doesn't need your brain to tell it to beat — the SA node is fully autonomous and keeps firing even if completely separated from the nervous system.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the heart's natural pacemaker that generates its own electrical beats?",
+        "answer": "Sinoatrial node",
+        "distractors": [
+          "Brain stem",
+          "Vagus nerve",
+          "Aorta"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The sinoatrial node acts as the natural pacemaker for which organ?",
+        "answer": "Heart",
+        "distractors": [
+          "Lungs",
+          "Brain",
+          "Diaphragm"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The heart generates its own electrical signals independently of the brain.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ node acts as the heart's natural pacemaker.",
+        "answer": "sinoatrial",
+        "distractors": [
+          "atrioventricular",
+          "vagus",
+          "aortic"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sinoatrial_node",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing golden spark in the upper right of a cross-section heart, electric waves rippling outward in blue lines through all four chambers, pixel art style.",
+    "tags": [
+      "heart",
+      "sinoatrial node",
+      "pacemaker",
+      "electrical",
+      "heartbeat"
+    ]
+  },
+  {
+    "id": "health-brain-neurons",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "brain_neuro",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "brain_neuro",
+    "categoryL3": "",
+    "statement": "The human brain contains approximately 86 billion neurons, each potentially connected to thousands of other neurons.",
+    "quizQuestion": "Roughly how many neurons does the human brain contain?",
+    "correctAnswer": "86 billion",
+    "distractors": [
+      "1 billion",
+      "10 billion",
+      "100 billion",
+      "1 trillion",
+      "50 billion",
+      "200 billion",
+      "500 million",
+      "10 trillion"
+    ],
+    "acceptableAnswers": [
+      "86 billion",
+      "About 86 billion",
+      "~86 billion",
+      "Around 86 billion"
+    ],
+    "explanation": "A landmark 2009 study by Azevedo et al. precisely counted the human brain's cells, finding approximately 86 billion neurons and roughly equal numbers of non-neuronal glial cells. Earlier estimates of '100 billion neurons' were an oft-repeated myth. Each neuron can form up to 10,000 synaptic connections, giving the brain roughly 100 trillion connections.",
+    "wowFactor": "The '100 billion neurons' figure taught in schools for decades is wrong — it was a number someone made up in the 1960s and it took until 2009 to properly count them.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many neurons are in the human brain according to modern research?",
+        "answer": "86 billion",
+        "distractors": [
+          "100 billion",
+          "1 trillion",
+          "10 billion"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "86 billion is the neuron count of which human organ?",
+        "answer": "Brain",
+        "distractors": [
+          "Spinal cord",
+          "Eyes",
+          "Nervous system"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The brain has approximately 86 billion neurons.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The human brain contains approximately ___ billion neurons.",
+        "answer": "86",
+        "distractors": [
+          "100",
+          "50",
+          "1,000"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_brain",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing blue brain silhouette with thousands of tiny bright nodes connected by thin light-trails like a galaxy of neural connections, pixel art style.",
+    "tags": [
+      "brain",
+      "neurons",
+      "neuroscience",
+      "human body",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "health-brain-energy",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "brain_neuro",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "brain_neuro",
+    "categoryL3": "",
+    "statement": "The brain consumes about 20% of the body's total energy despite being only 2% of body weight.",
+    "quizQuestion": "What percentage of the body's energy does the brain consume?",
+    "correctAnswer": "20%",
+    "distractors": [
+      "5%",
+      "10%",
+      "30%",
+      "50%",
+      "2%",
+      "40%",
+      "15%",
+      "35%"
+    ],
+    "acceptableAnswers": [
+      "20%",
+      "About 20%",
+      "Around 20 percent"
+    ],
+    "explanation": "The brain is the body's most metabolically expensive organ. Though it constitutes only about 2% of body mass, it demands roughly 20% of the body's total glucose and oxygen supply. Most of this energy maintains resting neural activity (the default mode network) and ion gradients across neuron membranes, not just conscious thinking.",
+    "wowFactor": "Your brain burns as many calories just sitting idle as a leg muscle does during a brisk walk — doing 'nothing' is neurologically very expensive.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Despite being 2% of body weight, the brain uses what share of the body's energy?",
+        "answer": "20%",
+        "distractors": [
+          "5%",
+          "10%",
+          "50%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which organ uses 20% of the body's energy while weighing only 2% of body mass?",
+        "answer": "Brain",
+        "distractors": [
+          "Heart",
+          "Liver",
+          "Kidneys"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The brain uses about 20% of the body's total energy.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Though only 2% of body weight, the brain uses ___% of the body's energy.",
+        "answer": "20",
+        "distractors": [
+          "5",
+          "50",
+          "10"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_brain",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A body outline with 2% of mass highlighted in the head but 20% of total energy arrows flowing toward it, the brain glowing brightest of all organs, pixel art style.",
+    "tags": [
+      "brain",
+      "energy",
+      "metabolism",
+      "human body",
+      "neuroscience"
+    ]
+  },
+  {
+    "id": "health-brain-plasticity",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "brain_neuro",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "brain_neuro",
+    "categoryL3": "",
+    "statement": "Neuroplasticity is the brain's ability to reorganize itself by forming new neural connections throughout life, not just in childhood.",
+    "quizQuestion": "What term describes the brain's ability to form new neural connections throughout life?",
+    "correctAnswer": "Neuroplasticity",
+    "distractors": [
+      "Neurogenesis",
+      "Myelination",
+      "Synaptogenesis",
+      "Cortical mapping",
+      "Neural pruning",
+      "Brain elasticity",
+      "Cognitive reserve",
+      "Axon regeneration"
+    ],
+    "acceptableAnswers": [
+      "Neuroplasticity",
+      "Neural plasticity",
+      "Brain plasticity"
+    ],
+    "explanation": "Neuroplasticity (also called neural plasticity or brain plasticity) refers to the brain's capacity to change its structure and function in response to experience, learning, or injury. This includes forming new synapses, strengthening existing connections, and even generating new neurons in the hippocampus. It was once believed the adult brain was fixed and unchangeable.",
+    "wowFactor": "London taxi drivers who memorize the entire city map grow measurably larger hippocampi — their brains physically change shape from navigating streets.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the brain's ability to rewire itself called?",
+        "answer": "Neuroplasticity",
+        "distractors": [
+          "Neurogenesis",
+          "Myelination",
+          "Cortical mapping"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Neuroplasticity is the property of which organ allowing lifelong learning?",
+        "answer": "Brain",
+        "distractors": [
+          "Spinal cord",
+          "Nervous system",
+          "Cerebellum"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Neuroplasticity means the brain can form new connections throughout a person's life.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ is the brain's ability to reorganize by forming new neural connections.",
+        "answer": "Neuroplasticity",
+        "distractors": [
+          "Neurogenesis",
+          "Myelination",
+          "Synaptogenesis"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Neuroplasticity",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A brain with glowing pathways between nodes — some old pathways fading, new bright connections forming and strengthening in real time, pixel art style.",
+    "tags": [
+      "brain",
+      "neuroplasticity",
+      "learning",
+      "neuroscience",
+      "neural connections"
+    ]
+  },
+  {
+    "id": "health-dna-double-helix",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "genetics_dna",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "genetics_dna",
+    "categoryL3": "",
+    "statement": "DNA has a double helix structure — two complementary strands wound around each other like a twisted ladder.",
+    "quizQuestion": "What is the name of DNA's twisted ladder structure?",
+    "correctAnswer": "Double helix",
+    "distractors": [
+      "Triple helix",
+      "Double strand",
+      "Spiral coil",
+      "Twisted chain",
+      "Double loop",
+      "Molecular ladder",
+      "Double spiral",
+      "Single strand"
+    ],
+    "acceptableAnswers": [
+      "Double helix",
+      "Double-helix"
+    ],
+    "explanation": "The double helix structure of DNA was discovered by Watson and Crick in 1953, using X-ray crystallography data from Rosalind Franklin. The two strands are held together by hydrogen bonds between complementary base pairs: adenine pairs with thymine, and guanine pairs with cytosine (A-T and G-C). The strands run antiparallel to each other.",
+    "wowFactor": "Rosalind Franklin's X-ray photograph of DNA (Photo 51) showed the double helix structure — Watson and Crick saw it without her permission and won the Nobel Prize she was never eligible for.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What shape does DNA form, known as a 'double' what?",
+        "answer": "Double helix",
+        "distractors": [
+          "Double strand",
+          "Double loop",
+          "Double spiral"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The double helix is the iconic structure of which genetic molecule?",
+        "answer": "DNA",
+        "distractors": [
+          "RNA",
+          "Protein",
+          "Chromosome"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: DNA has a double helix structure like a twisted ladder.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "DNA's structure is called a double ___, like a twisted ladder.",
+        "answer": "helix",
+        "distractors": [
+          "strand",
+          "chain",
+          "spiral"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/DNA",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing blue-white twisted ladder structure with colorful base pair rungs spiraling upward, floating in a dark cellular background, pixel art style.",
+    "tags": [
+      "DNA",
+      "double helix",
+      "genetics",
+      "Watson and Crick",
+      "molecular biology"
+    ]
+  },
+  {
+    "id": "health-dna-length",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "genetics_dna",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "genetics_dna",
+    "categoryL3": "",
+    "statement": "If the DNA in a single human cell were stretched out, it would reach about 2 meters long — yet it fits inside a microscopic cell nucleus.",
+    "quizQuestion": "How long would the DNA from a single cell be if fully stretched out?",
+    "correctAnswer": "About 2 meters",
+    "distractors": [
+      "About 1 centimeter",
+      "About 1 millimeter",
+      "About 10 meters",
+      "About 30 centimeters",
+      "About 50 meters",
+      "About 1 nanometer",
+      "About 6 feet",
+      "About 1 kilometer"
+    ],
+    "acceptableAnswers": [
+      "2 meters",
+      "About 2 meters",
+      "~2 meters",
+      "6 feet"
+    ],
+    "explanation": "The human genome contains about 3.2 billion base pairs in each set of chromosomes. Fully stretched, all the DNA in one cell's 46 chromosomes would measure roughly 2 meters. Yet the cell nucleus housing it all is about 6 micrometers across — achieved through extraordinary levels of protein-spooled coiling called chromatin packaging.",
+    "wowFactor": "If you stretched out all the DNA in your body end-to-end, it would reach the Sun and back 300 times — from a body made mostly of water.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "If uncoiled, how long would the DNA in one human cell be?",
+        "answer": "About 2 meters",
+        "distractors": [
+          "1 centimeter",
+          "10 meters",
+          "1 millimeter"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The 2-meter length of stretched DNA fits inside the nucleus of what type of cell?",
+        "answer": "Human cell",
+        "distractors": [
+          "Bacterial cell",
+          "Plant cell",
+          "Red blood cell"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The DNA in a single human cell would stretch about 2 meters if uncoiled.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The DNA in a single cell stretches ___ meters when fully uncoiled.",
+        "answer": "2",
+        "distractors": [
+          "0.002",
+          "20",
+          "0.2"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/DNA",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A tiny cell nucleus next to a towering 2-meter ruler for scale, a thread of DNA stretching dramatically upward from the nucleus, pixel art style.",
+    "tags": [
+      "DNA",
+      "length",
+      "genetics",
+      "human cell",
+      "genome"
+    ]
+  },
+  {
+    "id": "health-dna-bases",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "genetics_dna",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "genetics_dna",
+    "categoryL3": "",
+    "statement": "DNA is built from four chemical bases: adenine (A), thymine (T), guanine (G), and cytosine (C), which pair as A-T and G-C.",
+    "quizQuestion": "Which base pairs with adenine in a DNA double helix?",
+    "correctAnswer": "Thymine",
+    "distractors": [
+      "Guanine",
+      "Cytosine",
+      "Uracil",
+      "Ribose",
+      "Phosphate",
+      "Histidine",
+      "Leucine",
+      "Proline"
+    ],
+    "acceptableAnswers": [
+      "Thymine",
+      "T"
+    ],
+    "explanation": "DNA base pairing follows Chargaff's rules: adenine (A) always pairs with thymine (T) via two hydrogen bonds, and guanine (G) always pairs with cytosine (C) via three hydrogen bonds. This complementary pairing is essential for DNA replication — each strand serves as a template for copying the other. In RNA, uracil (U) replaces thymine.",
+    "wowFactor": "The specific A-T and G-C pairing means if you know one strand's sequence, you automatically know the other — DNA encodes its own backup copy into its structure.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In DNA, adenine (A) always pairs with which base?",
+        "answer": "Thymine (T)",
+        "distractors": [
+          "Guanine (G)",
+          "Cytosine (C)",
+          "Uracil (U)"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Guanine pairs with which base in a DNA molecule?",
+        "answer": "Cytosine",
+        "distractors": [
+          "Adenine",
+          "Thymine",
+          "Uracil"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: In DNA, adenine always pairs with thymine.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In DNA, adenine pairs with ___ and guanine pairs with cytosine.",
+        "answer": "thymine",
+        "distractors": [
+          "uracil",
+          "guanine",
+          "cytosine"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/DNA",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A DNA ladder close-up showing color-coded rungs: blue A paired with red T, green G paired with yellow C, pixel art style.",
+    "tags": [
+      "DNA",
+      "base pairs",
+      "adenine",
+      "thymine",
+      "genetics"
+    ]
+  },
+  {
+    "id": "health-eye-blind-spot",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "senses_perception",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "senses_perception",
+    "categoryL3": "",
+    "statement": "Every human eye has a blind spot — a point with no photoreceptors where the optic nerve exits the retina.",
+    "quizQuestion": "Why does every human eye have a blind spot?",
+    "correctAnswer": "The optic nerve exits there, leaving no photoreceptors",
+    "distractors": [
+      "Lens blocks that area",
+      "Blood vessels cover it",
+      "The pupil casts a shadow",
+      "The iris overlaps the retina",
+      "Nerves cluster there",
+      "Eye pressure creates a gap",
+      "Rods and cones don't overlap",
+      "The macula degenerates"
+    ],
+    "acceptableAnswers": [
+      "Optic nerve exit point",
+      "No photoreceptors where optic nerve exits",
+      "Optic disc has no receptors"
+    ],
+    "explanation": "The optic disc (blind spot) is where the optic nerve fibers converge and exit the eye, and where blood vessels enter and exit the retina. There are no rod or cone photoreceptors at this point. The brain fills in the gap using surrounding visual information, which is why we don't normally perceive the blind spot — our brain seamlessly 'paints over' it.",
+    "wowFactor": "You have a small blind spot in each eye right now — but your brain is secretly inventing fake visual data to fill it in, and you'd never know without a test.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What creates the blind spot in each human eye?",
+        "answer": "Optic nerve exit with no receptors",
+        "distractors": [
+          "Lens shadow",
+          "Blood vessel blockage",
+          "Iris overlap"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The optic disc (optic nerve exit) creates what perceptual limitation in every eye?",
+        "answer": "Blind spot",
+        "distractors": [
+          "Color blindness",
+          "Night blindness",
+          "Peripheral blur"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Every human eye has a blind spot where the optic nerve exits.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Every eye has a blind spot where the ___ nerve exits with no photoreceptors.",
+        "answer": "optic",
+        "distractors": [
+          "visual",
+          "retinal",
+          "corneal"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Blind_spot_(vision)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An eye cross-section with the retina lit up except for one dark empty circle where the optic nerve cable exits, labeled as the blind spot, pixel art style.",
+    "tags": [
+      "eye",
+      "blind spot",
+      "optic nerve",
+      "vision",
+      "perception"
+    ]
+  },
+  {
+    "id": "health-eye-color",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "senses_perception",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "senses_perception",
+    "categoryL3": "",
+    "statement": "Eye color is determined by the amount of melanin in the iris — more melanin produces brown, less produces blue or green.",
+    "quizQuestion": "What determines whether someone has blue, green, or brown eyes?",
+    "correctAnswer": "Amount of melanin in the iris",
+    "distractors": [
+      "Type of photoreceptors",
+      "Blood flow to the iris",
+      "Lens curvature",
+      "Pupil size",
+      "Diet and nutrition",
+      "Light sensitivity",
+      "Corneal thickness",
+      "Pupil dilation"
+    ],
+    "acceptableAnswers": [
+      "Melanin in the iris",
+      "Amount of melanin",
+      "Melanin concentration in the iris"
+    ],
+    "explanation": "Melanin is the pigment responsible for eye color. High melanin concentration in the iris stroma produces brown eyes; low melanin produces blue eyes (which actually appear blue due to light scattering — there's no blue pigment). Green and hazel eyes have intermediate melanin levels combined with different light scattering effects. Eye color is polygenic, controlled by multiple genes.",
+    "wowFactor": "Blue eyes contain zero blue pigment — the color comes from light scattering off melanin-free tissue, the same way the sky appears blue with no blue material in it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What pigment determines whether eyes are brown, green, or blue?",
+        "answer": "Melanin",
+        "distractors": [
+          "Carotene",
+          "Hemoglobin",
+          "Rhodopsin"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "High amounts of melanin in the iris produce which eye color?",
+        "answer": "Brown",
+        "distractors": [
+          "Blue",
+          "Green",
+          "Grey"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Eye color is determined by the amount of melanin in the iris.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The amount of ___ in the iris determines eye color.",
+        "answer": "melanin",
+        "distractors": [
+          "hemoglobin",
+          "carotene",
+          "keratin"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Eye_color",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Three close-up pixel art eyes side by side — one deep brown, one vivid green, one pale blue — each showing the iris pattern in detail.",
+    "tags": [
+      "eye",
+      "color",
+      "melanin",
+      "iris",
+      "genetics"
+    ]
+  },
+  {
+    "id": "health-eye-rods-cones",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "senses_perception",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "senses_perception",
+    "categoryL3": "",
+    "statement": "The retina contains two types of photoreceptors: rods for low-light vision and cones for color and detail in bright light.",
+    "quizQuestion": "Which photoreceptors in the retina are responsible for color vision?",
+    "correctAnswer": "Cones",
+    "distractors": [
+      "Rods",
+      "Bipolar cells",
+      "Ganglion cells",
+      "Müller cells",
+      "Horizontal cells",
+      "Optic fibers",
+      "Fovea cells",
+      "Photopigment cells"
+    ],
+    "acceptableAnswers": [
+      "Cones",
+      "Cone cells"
+    ],
+    "explanation": "The human retina contains ~120 million rods and ~6-7 million cones. Rods are extremely light-sensitive and handle vision in dim conditions but cannot distinguish color. Cones are concentrated in the fovea and come in three types sensitive to red, green, and blue light — their combined signals produce full color vision. Color blindness results from missing or dysfunctional cone types.",
+    "wowFactor": "There are 20 times more rods than cones in your eye — your color-seeing system is dramatically outnumbered by the black-and-white night vision system.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which retinal cells — rods or cones — handle color vision?",
+        "answer": "Cones",
+        "distractors": [
+          "Rods",
+          "Both equally",
+          "Neither — the brain does"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Cones come in three types sensitive to what primary colors of light?",
+        "answer": "Red, green, and blue",
+        "distractors": [
+          "Red, yellow, blue",
+          "Cyan, magenta, yellow",
+          "Red, white, blue"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Rods handle low-light vision while cones handle color vision.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The retina's ___ cells enable color vision in bright light conditions.",
+        "answer": "cones",
+        "distractors": [
+          "rods",
+          "bipolar",
+          "ganglion"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Photoreceptor_cell",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A retina cross-section showing tall thin rods massed in the peripheral area and shorter fatter cones clustered in the bright central fovea, pixel art style.",
+    "tags": [
+      "eye",
+      "rods",
+      "cones",
+      "retina",
+      "vision"
+    ]
+  },
+  {
+    "id": "health-blood-red-cells",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "cardiovascular",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "cardiovascular",
+    "categoryL3": "",
+    "statement": "Red blood cells carry oxygen using hemoglobin, and they lack a nucleus — the only human cells without one.",
+    "quizQuestion": "Why are mature red blood cells unique among human cells?",
+    "correctAnswer": "They have no nucleus",
+    "distractors": [
+      "They have two nuclei",
+      "They can divide indefinitely",
+      "They contain no water",
+      "They live 10 years",
+      "They produce oxygen",
+      "They are square-shaped",
+      "They have no cell membrane",
+      "They have multiple nuclei"
+    ],
+    "acceptableAnswers": [
+      "No nucleus",
+      "They lack a nucleus",
+      "They have no cell nucleus"
+    ],
+    "explanation": "Mature red blood cells (erythrocytes) eject their nucleus and other organelles during development to maximize space for hemoglobin — the iron-containing protein that binds oxygen. Each red blood cell contains about 270 million hemoglobin molecules. Without a nucleus they cannot repair themselves, so they live only ~120 days before being broken down in the spleen.",
+    "wowFactor": "Red blood cells deliberately destroy their own nucleus — sacrificing the ability to reproduce in order to squeeze in more hemoglobin and carry more oxygen.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Mature red blood cells are unique because they lack what structure?",
+        "answer": "Nucleus",
+        "distractors": [
+          "Cell membrane",
+          "Hemoglobin",
+          "Water"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Red blood cells eject their nucleus to make more room for which protein?",
+        "answer": "Hemoglobin",
+        "distractors": [
+          "Myoglobin",
+          "Albumin",
+          "Collagen"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mature red blood cells have no nucleus.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Red blood cells carry oxygen using ___ and have no cell nucleus.",
+        "answer": "hemoglobin",
+        "distractors": [
+          "myoglobin",
+          "albumin",
+          "keratin"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Red_blood_cell",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A tight stream of biconcave disc-shaped red cells flowing through a blood vessel, each cell bright red with no visible nucleus, oxygen molecules attached, pixel art style.",
+    "tags": [
+      "blood",
+      "red blood cells",
+      "hemoglobin",
+      "oxygen",
+      "erythrocytes"
+    ]
+  },
+  {
+    "id": "health-blood-types",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "cardiovascular",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "cardiovascular",
+    "categoryL3": "",
+    "statement": "Blood type O negative is the universal donor because it lacks A, B, and Rh antigens, making it safe for all recipients.",
+    "quizQuestion": "Which blood type is considered the universal donor for blood transfusions?",
+    "correctAnswer": "O negative",
+    "distractors": [
+      "O positive",
+      "AB negative",
+      "A negative",
+      "B negative",
+      "AB positive",
+      "A positive",
+      "B positive",
+      "A positive"
+    ],
+    "acceptableAnswers": [
+      "O negative",
+      "O-",
+      "Type O negative"
+    ],
+    "explanation": "ABO blood type is determined by surface antigens on red blood cells. Type O red cells lack both A and B antigens; Rh-negative means no Rh (D) antigen. Because O- cells carry none of the common antigens, the immune system of any blood type recipient won't attack them. AB positive is the universal recipient (can accept any type). Emergency transfusions use O- when blood type is unknown.",
+    "wowFactor": "Emergency rooms keep O- blood in stock specifically for unconscious patients — it's the 'can't know, must act now' option that works for anyone.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which blood type can be safely given to any patient in an emergency transfusion?",
+        "answer": "O negative",
+        "distractors": [
+          "O positive",
+          "AB positive",
+          "A negative"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "O negative blood is called the universal donor because it lacks which antigens?",
+        "answer": "A, B, and Rh",
+        "distractors": [
+          "Only A and B",
+          "Only Rh",
+          "All known antigens"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Blood type O negative is the universal donor for transfusions.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Blood type ___ negative is the universal donor, safe for all patients.",
+        "answer": "O",
+        "distractors": [
+          "A",
+          "B",
+          "AB"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Blood_type",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Four blood type icons in bright red with an O- bag highlighted and arrows pointing to all other types, labeled 'Universal Donor,' pixel art style.",
+    "tags": [
+      "blood",
+      "blood type",
+      "O negative",
+      "transfusion",
+      "universal donor"
+    ]
+  },
+  {
+    "id": "health-blood-platelets",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "cardiovascular",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "cardiovascular",
+    "categoryL3": "",
+    "statement": "Platelets are tiny blood cells that rush to wounds and clump together to form clots, stopping bleeding.",
+    "quizQuestion": "What blood cells are responsible for forming clots to stop bleeding?",
+    "correctAnswer": "Platelets",
+    "distractors": [
+      "Red blood cells",
+      "White blood cells",
+      "Plasma",
+      "Fibrin",
+      "Lymphocytes",
+      "Neutrophils",
+      "Basophils",
+      "Monocytes"
+    ],
+    "acceptableAnswers": [
+      "Platelets",
+      "Thrombocytes"
+    ],
+    "explanation": "Platelets (thrombocytes) are small, disc-shaped cell fragments produced in bone marrow from megakaryocytes. When a blood vessel is damaged, platelets adhere to the exposed tissue and each other, forming a plug. They also release chemical signals that trigger the coagulation cascade, ultimately producing fibrin threads that strengthen the clot. Aspirin reduces clotting by inhibiting platelet aggregation.",
+    "wowFactor": "Aspirin's main function is stopping platelets from sticking together — which is why heart attack patients chew aspirin immediately; thin blood flows past artery blockages.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which blood cells clump together to seal wounds and stop bleeding?",
+        "answer": "Platelets",
+        "distractors": [
+          "Red blood cells",
+          "White blood cells",
+          "Plasma cells"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Platelets are produced in which organ?",
+        "answer": "Bone marrow",
+        "distractors": [
+          "Liver",
+          "Spleen",
+          "Lymph nodes"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Platelets form blood clots to stop bleeding.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ clump together at wound sites to form protective blood clots.",
+        "answer": "Platelets",
+        "distractors": [
+          "Red blood cells",
+          "Lymphocytes",
+          "Plasma"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Platelet",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Tiny irregular disc shapes clustering rapidly around a torn blood vessel wall, weaving together like a living patch to seal the gap, pixel art style.",
+    "tags": [
+      "blood",
+      "platelets",
+      "clotting",
+      "wound healing",
+      "hemostasis"
+    ]
+  },
+  {
+    "id": "health-immune-antibodies",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "immunity_disease",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "immunity_disease",
+    "categoryL3": "",
+    "statement": "Antibodies are Y-shaped proteins made by B cells that recognize and neutralize specific pathogens like bacteria and viruses.",
+    "quizQuestion": "What shape are antibody proteins produced by the immune system?",
+    "correctAnswer": "Y-shaped",
+    "distractors": [
+      "X-shaped",
+      "Spiral-shaped",
+      "Ring-shaped",
+      "Star-shaped",
+      "T-shaped",
+      "Globular",
+      "Chain-shaped",
+      "T-shaped"
+    ],
+    "acceptableAnswers": [
+      "Y-shaped",
+      "Y shape",
+      "Y"
+    ],
+    "explanation": "Antibodies (immunoglobulins) are glycoproteins with a characteristic Y-shape: two identical heavy chains and two identical light chains held together by disulfide bonds. The two tips of the Y (Fab regions) contain the antigen-binding sites, which are uniquely shaped to recognize specific molecular patterns on pathogens. The base of the Y (Fc region) recruits immune effector cells.",
+    "wowFactor": "The human immune system can produce roughly 10 billion different antibody shapes — one custom-fitted for virtually every possible pathogen that has ever existed.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Antibodies produced by B cells are described as having what distinctive shape?",
+        "answer": "Y-shaped",
+        "distractors": [
+          "X-shaped",
+          "Ring-shaped",
+          "Star-shaped"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "B cells produce Y-shaped proteins called what to fight pathogens?",
+        "answer": "Antibodies",
+        "distractors": [
+          "Antigens",
+          "Cytokines",
+          "Enzymes"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Antibodies are Y-shaped proteins that target specific pathogens.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Antibodies are ___ shaped proteins that recognize and neutralize specific pathogens.",
+        "answer": "Y",
+        "distractors": [
+          "X",
+          "T",
+          "O"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Antibody",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing Y-shaped protein molecule latching onto a spiky virus particle, immune cells rallying in the background, pixel art style.",
+    "tags": [
+      "immune system",
+      "antibodies",
+      "B cells",
+      "immunity",
+      "pathogens"
+    ]
+  },
+  {
+    "id": "health-immune-fever",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "immunity_disease",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "immunity_disease",
+    "categoryL3": "",
+    "statement": "Fever is a deliberate immune response — the body raises temperature to make conditions hostile for pathogens and speed up immune cell activity.",
+    "quizQuestion": "Why does the body raise temperature during a fever?",
+    "correctAnswer": "To inhibit pathogens and boost immune response",
+    "distractors": [
+      "To kill the infection with heat",
+      "To speed up breathing",
+      "To reduce inflammation",
+      "To produce more blood",
+      "To conserve energy",
+      "To signal pain",
+      "To flush out toxins",
+      "To slow the heart rate"
+    ],
+    "acceptableAnswers": [
+      "To make conditions hostile for pathogens",
+      "To inhibit pathogen growth and boost immune cells",
+      "To fight infection"
+    ],
+    "explanation": "Fever (pyrexia) is triggered by pyrogens — chemicals released by immune cells responding to infection. The hypothalamus raises the body's set point temperature. This serves multiple purposes: slowing pathogen reproduction (most pathogens thrive at 37°C), accelerating immune cell activity and metabolism, and triggering heat shock proteins that protect cells. Mild fever is generally beneficial.",
+    "wowFactor": "Your fever is an intentional immune attack — your body willingly burns more energy to heat itself up, gambling that the heat will harm the bacteria more than it harms you.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Fever helps the immune system by making the body hostile to pathogens — how?",
+        "answer": "By raising body temperature",
+        "distractors": [
+          "By stopping blood flow",
+          "By lowering pH",
+          "By reducing oxygen"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The hypothalamus raising the body's temperature set point causes what symptom?",
+        "answer": "Fever",
+        "distractors": [
+          "Inflammation",
+          "Swelling",
+          "Fatigue"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Fever is a deliberate immune response to fight infection.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A ___ is the body's intentional temperature increase to inhibit pathogens.",
+        "answer": "fever",
+        "distractors": [
+          "flush",
+          "chill",
+          "inflammation"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fever",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A body silhouette glowing warm red while bacteria wilt inside it, a thermometer reading 38.5C, immune cells rallying with increased speed, pixel art style.",
+    "tags": [
+      "immune system",
+      "fever",
+      "infection",
+      "immunity",
+      "body temperature"
+    ]
+  },
+  {
+    "id": "health-immune-memory",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "immunity_disease",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "immunity_disease",
+    "categoryL3": "",
+    "statement": "Immunological memory allows the immune system to recognize and rapidly destroy a pathogen it has previously encountered.",
+    "quizQuestion": "What allows the immune system to fight a disease faster the second time it encounters it?",
+    "correctAnswer": "Immunological memory cells",
+    "distractors": [
+      "Higher fever response",
+      "More white blood cells",
+      "Thicker skin barrier",
+      "Liver antibody storage",
+      "Genetic adaptation",
+      "Bone marrow expansion",
+      "Stronger inflammation",
+      "B cell proliferation"
+    ],
+    "acceptableAnswers": [
+      "Immunological memory",
+      "Memory cells",
+      "Memory B and T cells",
+      "Immune memory"
+    ],
+    "explanation": "After the primary immune response to a pathogen, some B and T cells differentiate into long-lived memory cells. These memory cells persist for years or decades and 'remember' the pathogen's antigens. When the same pathogen appears again, memory cells trigger a secondary response that is faster, stronger, and produces more antibodies than the first encounter — often eliminating the threat before symptoms appear.",
+    "wowFactor": "Memory immune cells from the 1918 flu pandemic were still detectable in survivors' blood 90 years later in 2008 — their bodies remembered a disease from a century earlier.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Memory B and T cells enable the immune system to do what in a second infection?",
+        "answer": "Respond faster and stronger",
+        "distractors": [
+          "Produce more fever",
+          "Grow more white cells",
+          "Seal the infection"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Immunological memory is the basis for which medical practice that prevents disease?",
+        "answer": "Vaccination",
+        "distractors": [
+          "Blood transfusion",
+          "Antibiotic treatment",
+          "Surgery"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Immunological memory cells let the body fight known pathogens faster on re-exposure.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Immunological ___ cells remember past pathogens and speed up future immune responses.",
+        "answer": "memory",
+        "distractors": [
+          "plasma",
+          "killer",
+          "helper"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Immunological_memory",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two infection scenes side by side: a slow messy first response vs a lightning-fast coordinated army of immune cells during the second encounter, pixel art style.",
+    "tags": [
+      "immune system",
+      "immunological memory",
+      "memory cells",
+      "vaccination",
+      "immunity"
+    ]
+  },
+  {
+    "id": "health-liver-detox",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "digestion_metabolism",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "digestion_metabolism",
+    "categoryL3": "",
+    "statement": "The liver filters all blood from the digestive system and detoxifies chemicals, drugs, and metabolic waste products.",
+    "quizQuestion": "What organ detoxifies drugs, alcohol, and metabolic waste from the blood?",
+    "correctAnswer": "Liver",
+    "distractors": [
+      "Kidneys",
+      "Spleen",
+      "Pancreas",
+      "Gallbladder",
+      "Appendix",
+      "Adrenal gland",
+      "Thymus",
+      "Heart"
+    ],
+    "acceptableAnswers": [
+      "Liver"
+    ],
+    "explanation": "The liver is the body's primary detoxification organ. The portal vein delivers all nutrient-laden blood from the intestines directly to the liver for processing first. The liver breaks down alcohol (via alcohol dehydrogenase), metabolizes drugs, converts ammonia to urea, and removes old red blood cell components. Cells called hepatocytes perform most of these functions, assisted by Kupffer cells for immune defense.",
+    "wowFactor": "Every drop of blood from your intestines goes through the liver before reaching the rest of your body — it's a mandatory customs inspection for everything you eat or drink.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which organ filters and detoxifies all blood from the digestive system?",
+        "answer": "Liver",
+        "distractors": [
+          "Kidneys",
+          "Spleen",
+          "Pancreas"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The liver detoxifies alcohol using which type of enzyme?",
+        "answer": "Alcohol dehydrogenase",
+        "distractors": [
+          "Lipase",
+          "Amylase",
+          "Protease"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The liver detoxifies drugs and alcohol from the blood.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ is the primary organ for detoxifying drugs, alcohol, and metabolic waste.",
+        "answer": "liver",
+        "distractors": [
+          "kidneys",
+          "spleen",
+          "pancreas"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Liver",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A large reddish-brown organ with blood vessels flowing in from the gut, toxins shown as dark particles being filtered out and expelled, pixel art style.",
+    "tags": [
+      "liver",
+      "detoxification",
+      "metabolism",
+      "human body",
+      "digestion"
+    ]
+  },
+  {
+    "id": "health-liver-regeneration",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "digestion_metabolism",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "digestion_metabolism",
+    "categoryL3": "",
+    "statement": "The liver is the only human organ that can regenerate — it can regrow to full size from as little as 25% of its original tissue.",
+    "quizQuestion": "The liver is unique because it is the only organ that can do what?",
+    "correctAnswer": "Fully regenerate itself",
+    "distractors": [
+      "Produce its own blood supply",
+      "Work outside the body",
+      "Divide without limits",
+      "Function with no blood",
+      "Absorb oxygen directly",
+      "Store electricity",
+      "Self-diagnose damage",
+      "Change its own color"
+    ],
+    "acceptableAnswers": [
+      "Regenerate",
+      "Regrow",
+      "Fully regenerate",
+      "Regenerate itself"
+    ],
+    "explanation": "The liver's remarkable regenerative capacity comes from its hepatocytes — which can rapidly proliferate after injury or partial removal. After a living-donor liver transplant (where ~60% is donated), both the donor's remnant and the recipient's new portion grow back to normal size within weeks. This is the basis of the ancient Greek myth of Prometheus, whose liver regrew nightly.",
+    "wowFactor": "The ancient Greeks figured out the liver could regenerate 3,000 years before science did — the Prometheus myth of his liver regrowing each night is medically accurate.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What makes the liver uniquely able to grow back after partial removal?",
+        "answer": "Hepatocytes can rapidly proliferate",
+        "distractors": [
+          "Stem cells fill the gap",
+          "It absorbs nearby tissue",
+          "It duplicates from blood"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which organ's regenerative power likely inspired the myth of Prometheus's regrown liver?",
+        "answer": "Liver",
+        "distractors": [
+          "Skin",
+          "Kidney",
+          "Spleen"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The liver can regenerate to full size from just 25% of its tissue.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The liver is the only human organ capable of full ___.",
+        "answer": "regeneration",
+        "distractors": [
+          "duplication",
+          "self-repair",
+          "cloning"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Liver",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 25% liver fragment glowing as it rapidly expands outward in stages, growing back to a full organ shape with visible cell activity, pixel art style.",
+    "tags": [
+      "liver",
+      "regeneration",
+      "healing",
+      "human body",
+      "prometheus"
+    ]
+  },
+  {
+    "id": "health-liver-bile",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "digestion_metabolism",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "digestion_metabolism",
+    "categoryL3": "",
+    "statement": "The liver produces bile, a digestive fluid stored in the gallbladder and released into the small intestine to break down dietary fats.",
+    "quizQuestion": "What digestive fluid does the liver produce to help break down fats?",
+    "correctAnswer": "Bile",
+    "distractors": [
+      "Insulin",
+      "Amylase",
+      "Pepsin",
+      "Gastric acid",
+      "Mucus",
+      "Lipase",
+      "Trypsin",
+      "Glucagon"
+    ],
+    "acceptableAnswers": [
+      "Bile",
+      "Bile salts"
+    ],
+    "explanation": "The liver produces up to 1 liter of bile per day. Bile is stored and concentrated in the gallbladder and released through the bile duct into the duodenum when fatty food enters. Bile contains bile salts that emulsify fats — breaking large fat globules into tiny droplets that lipase enzymes can more easily digest. Bile also carries waste products like bilirubin (broken-down hemoglobin) for excretion.",
+    "wowFactor": "Bile is basically soap made by your liver — it emulsifies fat the same way dish soap cuts through grease, except you produce it on demand with every meal.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What digestive juice does the liver make to emulsify dietary fats?",
+        "answer": "Bile",
+        "distractors": [
+          "Amylase",
+          "Pepsin",
+          "Gastric acid"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Bile is produced by the liver and stored in which organ?",
+        "answer": "Gallbladder",
+        "distractors": [
+          "Pancreas",
+          "Spleen",
+          "Small intestine"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The liver produces bile to help digest fats.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The liver produces ___, which is stored in the gallbladder to digest fats.",
+        "answer": "bile",
+        "distractors": [
+          "insulin",
+          "amylase",
+          "pepsin"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bile",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A green-yellow fluid flowing from liver to gallbladder to small intestine, surrounded by fat globules breaking apart on contact with bile, pixel art style.",
+    "tags": [
+      "liver",
+      "bile",
+      "digestion",
+      "fats",
+      "gallbladder"
+    ]
+  },
+  {
+    "id": "health-skeleton-bones",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "The adult human skeleton has 206 bones, but newborns start with about 270-300 bones that fuse together as they grow.",
+    "quizQuestion": "How many bones does an adult human skeleton have?",
+    "correctAnswer": "206",
+    "distractors": [
+      "189",
+      "215",
+      "180",
+      "250",
+      "300",
+      "170",
+      "230",
+      "120"
+    ],
+    "acceptableAnswers": [
+      "206",
+      "206 bones"
+    ],
+    "explanation": "Babies are born with 270-300 bones (mostly cartilage), which gradually ossify and fuse through childhood and adolescence. By adulthood, the number stabilizes at 206. The most common fusion sites are the skull (multiple plates fusing into a single unit), the sacrum (5 vertebrae fusing), and the coccyx (3-5 vertebrae). Most people finish fusing around age 25.",
+    "wowFactor": "You had nearly 100 more bones as a baby than you do now — most of your childhood skeleton slowly fused itself into the 206 bones you have as an adult.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many bones does a healthy adult human body contain?",
+        "answer": "206",
+        "distractors": [
+          "189",
+          "215",
+          "250"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "An adult has 206 bones, but babies have approximately how many?",
+        "answer": "270-300",
+        "distractors": [
+          "206",
+          "150",
+          "350"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The adult human skeleton has 206 bones.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "An adult human skeleton contains ___ bones.",
+        "answer": "206",
+        "distractors": [
+          "180",
+          "250",
+          "215"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Human_skeleton",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two skeletons side by side: a tiny newborn skeleton with 270 glowing pieces and an adult skeleton with 206 fused bones labeled, pixel art style.",
+    "tags": [
+      "skeleton",
+      "bones",
+      "anatomy",
+      "human body",
+      "206"
+    ]
+  },
+  {
+    "id": "health-skeleton-strongest",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "The femur (thighbone) is the longest and strongest bone in the human body, capable of supporting up to 30 times body weight.",
+    "quizQuestion": "What is the longest and strongest bone in the human body?",
+    "correctAnswer": "Femur",
+    "distractors": [
+      "Tibia",
+      "Humerus",
+      "Spine",
+      "Radius",
+      "Ulna",
+      "Fibula",
+      "Clavicle",
+      "Clavicle"
+    ],
+    "acceptableAnswers": [
+      "Femur",
+      "Thighbone",
+      "Femur (thighbone)"
+    ],
+    "explanation": "The femur (thighbone) connects the hip to the knee and is the only bone in the upper leg. It is typically about 48 cm long and can withstand forces up to 30 times body weight. The femur is critical for locomotion and bears the full weight of the upper body when standing. Breaking a femur is a serious medical emergency due to blood loss risk and long recovery time.",
+    "wowFactor": "Your femur can handle forces 30 times your body weight — but just one bad fall at the right angle can still snap it, which is why hip fractures are so dangerous in the elderly.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which bone is both the longest and strongest in the human body?",
+        "answer": "Femur",
+        "distractors": [
+          "Tibia",
+          "Humerus",
+          "Fibula"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The femur connects which two body parts?",
+        "answer": "Hip and knee",
+        "distractors": [
+          "Shoulder and elbow",
+          "Pelvis and spine",
+          "Ankle and knee"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The femur is the longest bone in the human body.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ (thighbone) is the longest and strongest bone in the human body.",
+        "answer": "femur",
+        "distractors": [
+          "tibia",
+          "humerus",
+          "fibula"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Femur",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A full leg skeleton with the femur highlighted in gold and labeled, arrows showing it supporting the entire upper body weight, pixel art style.",
+    "tags": [
+      "skeleton",
+      "femur",
+      "bones",
+      "anatomy",
+      "strongest bone"
+    ]
+  },
+  {
+    "id": "health-skeleton-marrow",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "Bone marrow inside large bones produces about 2 million red blood cells, white blood cells, and platelets every second.",
+    "quizQuestion": "Which organ produces red blood cells, white blood cells, and platelets?",
+    "correctAnswer": "Bone marrow",
+    "distractors": [
+      "Spleen",
+      "Liver",
+      "Thymus",
+      "Lymph nodes",
+      "Kidneys",
+      "Heart",
+      "Pancreas",
+      "Thymus"
+    ],
+    "acceptableAnswers": [
+      "Bone marrow",
+      "Red bone marrow"
+    ],
+    "explanation": "Red bone marrow, found in the cavities of flat and irregular bones (skull, vertebrae, pelvis, sternum, and ends of long bones), contains hematopoietic stem cells that produce all blood cell types (hematopoiesis). The human body produces approximately 200 billion red blood cells, 10 billion white blood cells, and 400 billion platelets per day. Bone marrow transplants can treat leukemia by replacing cancerous marrow with healthy donor cells.",
+    "wowFactor": "Your bones aren't just structure — they're non-stop blood cell factories that produce 2 million new cells every second for your entire life.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where in the body are blood cells manufactured?",
+        "answer": "Bone marrow",
+        "distractors": [
+          "Spleen",
+          "Liver",
+          "Thymus"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Bone marrow transplants treat leukemia by replacing which specific tissue?",
+        "answer": "Bone marrow",
+        "distractors": [
+          "Blood vessels",
+          "Lymph nodes",
+          "Stem cells"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Bone marrow produces red blood cells, white blood cells, and platelets.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Bone ___ produces all three types of blood cells inside the body.",
+        "answer": "marrow",
+        "distractors": [
+          "calcium",
+          "tissue",
+          "fluid"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bone_marrow",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A bone cross-section showing a spongy marrow interior glowing red with activity, tiny blood cells streaming outward through blood vessels in all directions, pixel art style.",
+    "tags": [
+      "skeleton",
+      "bone marrow",
+      "blood cells",
+      "hematopoiesis",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "health-vaccine-mechanism",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medical_science",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medical_science",
+    "categoryL3": "",
+    "statement": "Vaccines work by exposing the immune system to a harmless form of a pathogen, triggering the creation of memory cells without causing disease.",
+    "quizQuestion": "How do vaccines protect against disease?",
+    "correctAnswer": "By training immune memory without causing illness",
+    "distractors": [
+      "By killing the pathogen before it enters",
+      "By strengthening white blood cells",
+      "By coating viruses with antibiotics",
+      "By blocking virus entry into cells",
+      "By boosting vitamin production",
+      "By thickening the cell membrane",
+      "By raising baseline body temperature",
+      "By activating the lymphatic system"
+    ],
+    "acceptableAnswers": [
+      "Training immune memory",
+      "Creating memory cells without disease",
+      "Triggering immune memory safely"
+    ],
+    "explanation": "Vaccines introduce the immune system to antigens from a pathogen in a safe form — either a weakened/inactivated pathogen, a protein subunit, or (in mRNA vaccines) genetic instructions to produce an antigen. The immune system mounts a primary response and creates memory B and T cells. On real exposure, these memory cells trigger a rapid secondary response before the person becomes ill.",
+    "wowFactor": "mRNA vaccines don't inject any virus at all — they deliver a recipe for your own cells to cook up one viral protein, teach your immune system to recognize it, then discard the recipe.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What do vaccines create in the immune system to prevent future disease?",
+        "answer": "Memory cells",
+        "distractors": [
+          "Extra white blood cells",
+          "Permanent antibodies",
+          "Thicker cell walls"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Memory B and T cells formed by vaccines enable what kind of immune response?",
+        "answer": "Faster and stronger on real infection",
+        "distractors": [
+          "Slower but thorough",
+          "Suppressed to avoid overreaction",
+          "Identical to primary response"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Vaccines train the immune system by triggering memory without causing disease.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Vaccines create immune ___ cells that rapidly fight future infections.",
+        "answer": "memory",
+        "distractors": [
+          "plasma",
+          "killer",
+          "helper"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vaccine",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A syringe injecting tiny harmless pathogen fragments into a body, immune cells studying them and filing away in a 'memory' library for future defense, pixel art style.",
+    "tags": [
+      "vaccine",
+      "immunity",
+      "memory cells",
+      "immunology",
+      "medicine"
+    ]
+  },
+  {
+    "id": "health-vaccine-smallpox",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medical_science",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medical_science",
+    "categoryL3": "",
+    "statement": "Edward Jenner created the first vaccine in 1796 using cowpox material to protect against the deadly smallpox disease.",
+    "quizQuestion": "Who is credited with developing the first vaccine, against smallpox?",
+    "correctAnswer": "Edward Jenner",
+    "distractors": [
+      "Louis Pasteur",
+      "Robert Koch",
+      "Alexander Fleming",
+      "Joseph Lister",
+      "Ignaz Semmelweis",
+      "Jonas Salk",
+      "Albert Sabin",
+      "Joseph Lister"
+    ],
+    "acceptableAnswers": [
+      "Edward Jenner",
+      "Jenner"
+    ],
+    "explanation": "In 1796, English physician Edward Jenner noticed milkmaids who contracted cowpox appeared immune to smallpox. He tested this by inoculating 8-year-old James Phipps with cowpox material, then exposing him to smallpox — the boy didn't get sick. Jenner coined the term 'vaccine' from the Latin 'vacca' (cow). Smallpox was eradicated in 1980 through global vaccination, the only human disease ever fully eradicated.",
+    "wowFactor": "Jenner's first vaccine test involved deliberately exposing a child to a deadly disease after giving him cowpox — by modern ethics this would be impossible, but it saved hundreds of millions of lives.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Edward Jenner discovered that which animal disease protected against smallpox?",
+        "answer": "Cowpox",
+        "distractors": [
+          "Horsepox",
+          "Monkeypox",
+          "Chickenpox"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The word 'vaccine' comes from the Latin word for cow because the first vaccine used what?",
+        "answer": "Cowpox material",
+        "distractors": [
+          "Cow blood",
+          "Cow milk",
+          "Cattle antigen"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Edward Jenner created the first smallpox vaccine in 1796.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Edward Jenner created the first vaccine in 1796 to combat ___.",
+        "answer": "smallpox",
+        "distractors": [
+          "cholera",
+          "measles",
+          "typhoid"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Edward_Jenner",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 18th-century doctor in a country setting inoculating a child from cowpox pustules on a cow's flank, a notebook labeled 'Cowpox Experiment' open beside him, pixel art style.",
+    "tags": [
+      "vaccine",
+      "smallpox",
+      "Edward Jenner",
+      "history of medicine",
+      "cowpox"
+    ]
+  },
+  {
+    "id": "health-vaccine-herd",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medical_science",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medical_science",
+    "categoryL3": "",
+    "statement": "Herd immunity occurs when enough people in a population are immune that a disease can no longer spread efficiently.",
+    "quizQuestion": "What is 'herd immunity' in public health?",
+    "correctAnswer": "When enough population immunity stops disease spread",
+    "distractors": [
+      "When animals can't spread disease to humans",
+      "When all people are vaccinated",
+      "When a disease becomes harmless",
+      "When hospitals have enough staff",
+      "When medicines eliminate all pathogens",
+      "When antibodies last a lifetime",
+      "When children are naturally protected",
+      "When antibiotics are distributed widely"
+    ],
+    "acceptableAnswers": [
+      "When enough people are immune to block transmission",
+      "Population immunity stopping spread",
+      "Sufficient population immunity"
+    ],
+    "explanation": "Herd immunity (community immunity) occurs when a sufficient proportion of a population is immune to an infection — through vaccination or prior illness — that it becomes difficult for the disease to spread because immune individuals block transmission chains. The threshold varies by disease: measles requires ~95% immunity; polio ~80-85%; COVID-19 varies significantly by variant. It protects vulnerable people who cannot be vaccinated.",
+    "wowFactor": "Herd immunity protects newborns, cancer patients, and immunocompromised people who can't be vaccinated — their safety depends entirely on everyone else being immune.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What concept describes population-wide immunity that stops disease from spreading?",
+        "answer": "Herd immunity",
+        "distractors": [
+          "Passive immunity",
+          "Innate immunity",
+          "Cross immunity"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Herd immunity at 95% is required to stop which highly contagious disease?",
+        "answer": "Measles",
+        "distractors": [
+          "Flu",
+          "COVID-19",
+          "Chickenpox"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Herd immunity protects vulnerable people by blocking disease transmission.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ immunity protects vulnerable people by preventing disease from spreading in the population.",
+        "answer": "Herd",
+        "distractors": [
+          "Passive",
+          "Innate",
+          "Acquired"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Herd_immunity",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Vaccine topics can be politically sensitive — framed factually",
+    "visualDescription": "A crowd of person icons, most in green (immune), surrounding and blocking a red infected figure from reaching a handful of grey (unprotected) icons, pixel art style.",
+    "tags": [
+      "vaccine",
+      "herd immunity",
+      "public health",
+      "immunology",
+      "community protection"
+    ]
+  },
+  {
+    "id": "health-lungs-oxygen",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "The lungs contain about 600 million alveoli — tiny air sacs where oxygen enters the blood and carbon dioxide is expelled.",
+    "quizQuestion": "What tiny structures in the lungs exchange oxygen and carbon dioxide with blood?",
+    "correctAnswer": "Alveoli",
+    "distractors": [
+      "Bronchioles",
+      "Capillaries",
+      "Cilia",
+      "Pleura",
+      "Bronchi",
+      "Trachea",
+      "Lymph nodes",
+      "Bronchi"
+    ],
+    "acceptableAnswers": [
+      "Alveoli",
+      "Alveolar sacs",
+      "Air sacs"
+    ],
+    "explanation": "Alveoli are microscopic air sacs at the ends of the bronchial tree, each surrounded by a dense network of capillaries. Oxygen from inhaled air diffuses across the thin alveolar membrane into the blood; carbon dioxide diffuses in the opposite direction to be exhaled. The 600 million alveoli create a total gas exchange surface area of about 70 square meters — roughly the size of a tennis court.",
+    "wowFactor": "Your lungs' internal surface area is the size of a tennis court — all crumpled into your chest because alveoli fold the tissue to an extraordinary density.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Oxygen enters the blood in the lungs via which tiny structures?",
+        "answer": "Alveoli",
+        "distractors": [
+          "Bronchioles",
+          "Cilia",
+          "Pleura"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The 600 million alveoli in the lungs create a gas exchange surface equal to what area?",
+        "answer": "A tennis court",
+        "distractors": [
+          "A car hood",
+          "A dining table",
+          "A school classroom"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Alveoli are the tiny air sacs in the lungs where gas exchange happens.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The lungs contain 600 million ___ where oxygen and carbon dioxide are exchanged.",
+        "answer": "alveoli",
+        "distractors": [
+          "bronchioles",
+          "cilia",
+          "capillaries"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pulmonary_alveolus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cluster of bubble-like alveoli wrapped in red capillaries, blue carbon dioxide arrows pointing outward and red oxygen arrows pointing inward, pixel art style.",
+    "tags": [
+      "lungs",
+      "alveoli",
+      "gas exchange",
+      "oxygen",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "health-lungs-asymmetry",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "The left lung is smaller than the right and has a notch called the cardiac notch to make room for the heart.",
+    "quizQuestion": "Why is the left lung smaller than the right lung?",
+    "correctAnswer": "It has a notch to accommodate the heart",
+    "distractors": [
+      "It processes less blood",
+      "It has fewer alveoli",
+      "It sits higher in the chest",
+      "It connects to fewer arteries",
+      "It developed later",
+      "It stores oxygen reserves",
+      "It is paired with the liver",
+      "It processes less oxygen"
+    ],
+    "acceptableAnswers": [
+      "To make room for the heart",
+      "Cardiac notch for the heart",
+      "Heart sits there"
+    ],
+    "explanation": "The right lung has three lobes and is larger; the left lung has two lobes and is smaller due to the cardiac notch — an indentation where the apex of the heart rests. The heart is located slightly left of center, pushing into the space of the left lung. Despite being smaller, the left lung still functions fully; the reduced volume is approximately 10% less than the right.",
+    "wowFactor": "Your heart physically carved out a dent in your left lung — the cardiac notch is basically your heart saying 'I need that space' and your lung politely giving way.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why is the human left lung slightly smaller than the right?",
+        "answer": "To accommodate the heart's position",
+        "distractors": [
+          "It has fewer alveoli",
+          "It processes less blood",
+          "It developed differently"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The cardiac notch is an indentation in which lung?",
+        "answer": "Left lung",
+        "distractors": [
+          "Right lung",
+          "Both lungs",
+          "Neither lung"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The left lung has a cardiac notch to make space for the heart.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The left lung has a ___ notch, making room for the heart beside it.",
+        "answer": "cardiac",
+        "distractors": [
+          "aortic",
+          "pulmonary",
+          "vascular"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lung",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A chest diagram with two lungs visible: the left lung smaller with an obvious curved notch where a glowing heart sits against it, labeled clearly, pixel art style.",
+    "tags": [
+      "lungs",
+      "cardiac notch",
+      "heart",
+      "anatomy",
+      "asymmetry"
+    ]
+  },
+  {
+    "id": "health-lungs-surface",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "anatomy_organs",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "anatomy_organs",
+    "categoryL3": "",
+    "statement": "The lungs' total internal surface area is about 70 square meters — roughly the size of a tennis court — due to the folding of alveoli.",
+    "quizQuestion": "What is the approximate internal surface area of the human lungs?",
+    "correctAnswer": "70 square meters",
+    "distractors": [
+      "1 square meter",
+      "10 square meters",
+      "200 square meters",
+      "0.5 square meters",
+      "500 square meters",
+      "5 square meters",
+      "30 square meters",
+      "500 square meters"
+    ],
+    "acceptableAnswers": [
+      "70 square meters",
+      "About 70 square meters",
+      "~70 m²"
+    ],
+    "explanation": "By folding the alveolar surface into 600 million tiny sacs, the lungs achieve a gas exchange area of approximately 70 m² — compared to the body's external skin surface area of about 1.7-2 m². This maximizes contact between air and blood within the compact volume of the chest cavity. The surfactant coating alveoli prevents them from collapsing between breaths.",
+    "wowFactor": "Your skin's surface area is about 2 square meters — but your lungs have 35 times more internal surface area, all folded inside your chest.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "The human lungs' internal surface area is roughly equivalent to which sports surface?",
+        "answer": "Tennis court",
+        "distractors": [
+          "Basketball court",
+          "Ping-pong table",
+          "Swimming pool"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Approximately 70 square meters of gas exchange surface are packed into which organs?",
+        "answer": "Lungs",
+        "distractors": [
+          "Intestines",
+          "Skin",
+          "Kidneys"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The lungs' internal surface area is about 70 square meters.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The lungs have a total internal surface area of around ___ square meters.",
+        "answer": "70",
+        "distractors": [
+          "7",
+          "700",
+          "0.7"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lung",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A tiny pair of lungs next to a full tennis court, with an arrow showing the unfolded alveolar surface stretching out to match the court's area, pixel art style.",
+    "tags": [
+      "lungs",
+      "surface area",
+      "alveoli",
+      "anatomy",
+      "human body"
+    ]
+  }
+]

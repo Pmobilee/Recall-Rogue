@@ -1,0 +1,1879 @@
+[
+  {
+    "id": "science-koala-eucalyptus",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_zoology",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_zoology",
+    "categoryL3": "",
+    "statement": "Koalas eat almost exclusively eucalyptus leaves, which are toxic to most animals, but koalas have specialized gut bacteria that detoxify the chemicals.",
+    "quizQuestion": "What plant do koalas almost exclusively eat despite it being toxic?",
+    "correctAnswer": "Eucalyptus",
+    "distractors": [
+      "Bamboo",
+      "Acacia",
+      "Mangrove",
+      "Paperbark",
+      "Wattle",
+      "Fern",
+      "Banksia",
+      "Pine needles"
+    ],
+    "acceptableAnswers": [
+      "eucalyptus",
+      "eucalyptus leaves",
+      "gum leaves",
+      "gum trees"
+    ],
+    "explanation": "Eucalyptus leaves are low in nutrients and high in toxic phenolic compounds and terpenes. Koalas have an unusually long cecum — up to 200 cm — packed with microbes that break down these poisons.",
+    "wowFactor": "Koalas sleep 18-22 hours a day partly because eucalyptus is so nutritionally poor and toxic that digesting it takes enormous energy — they literally nap off the poison.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What toxic plant makes up almost all of a koala's diet?",
+        "answer": "Eucalyptus",
+        "distractors": [
+          "Bamboo",
+          "Acacia",
+          "Mangrove"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal has specialized gut bacteria to detoxify eucalyptus leaves?",
+        "answer": "Koala",
+        "distractors": [
+          "Wombat",
+          "Wallaby",
+          "Possum"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Koalas eat almost only eucalyptus, which is toxic to most animals?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Koalas eat many plants",
+          "Eucalyptus is not toxic"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Koalas eat almost exclusively ___ leaves, detoxifying them with gut bacteria.",
+        "answer": "eucalyptus",
+        "distractors": [
+          "bamboo",
+          "acacia",
+          "wattle"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Koala",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A fluffy grey koala clinging to a eucalyptus branch, chewing a leaf with a sleepy expression, tall Australian gum trees in the background.",
+    "tags": [
+      "koala",
+      "eucalyptus",
+      "diet",
+      "marsupial",
+      "australia"
+    ]
+  },
+  {
+    "id": "science-koala-not-bear",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_zoology",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_zoology",
+    "categoryL3": "",
+    "statement": "Despite being called 'koala bears,' koalas are not bears at all — they are marsupials, more closely related to wombats than to any bear species.",
+    "quizQuestion": "What type of animal is a koala, despite being called a 'koala bear'?",
+    "correctAnswer": "Marsupial",
+    "distractors": [
+      "Bear",
+      "Rodent",
+      "Primate",
+      "Placental mammal",
+      "Monotreme",
+      "Reptile",
+      "Carnivore",
+      "Ungulate"
+    ],
+    "acceptableAnswers": [
+      "marsupial",
+      "a marsupial",
+      "pouch animal"
+    ],
+    "explanation": "Koalas belong to the order Diprotodontia, closely related to wombats. Like all marsupials, koala joeys are born tiny and undeveloped, crawling into the mother's pouch to complete development.",
+    "wowFactor": "A newborn koala joey is the size of a jellybean — about 2 cm long — yet it climbs unaided through the mother's fur to reach her pouch, using only smell and instinct.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Koalas are often called bears, but what are they actually?",
+        "answer": "Marsupial",
+        "distractors": [
+          "Bear",
+          "Rodent",
+          "Primate"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal is the closest living relative of the koala?",
+        "answer": "Wombat",
+        "distractors": [
+          "Kangaroo",
+          "Possum",
+          "Echidna"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Koalas are marsupials, not bears?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "They are a bear subspecies",
+          "They are bears from Australia"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Despite the nickname, koalas are ___ not bears.",
+        "answer": "marsupials",
+        "distractors": [
+          "rodents",
+          "primates",
+          "reptiles"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Koala",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Side-by-side comparison of a koala and a wombat with matching fur texture and similar body shape, with a red X over a bear silhouette.",
+    "tags": [
+      "koala",
+      "marsupial",
+      "wombat",
+      "misconception",
+      "australia"
+    ]
+  },
+  {
+    "id": "science-koala-fingerprints",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_zoology",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_zoology",
+    "categoryL3": "",
+    "statement": "Koalas are one of the only non-human animals with fingerprints nearly identical to those of humans — so similar they have confused crime scene investigators.",
+    "quizQuestion": "Which animal besides humans has nearly identical fingerprints to ours?",
+    "correctAnswer": "Koala",
+    "distractors": [
+      "Chimpanzee",
+      "Gorilla",
+      "Dog",
+      "Orangutan",
+      "Cat",
+      "Bear",
+      "Raccoon",
+      "Baboon"
+    ],
+    "acceptableAnswers": [
+      "koala",
+      "koalas"
+    ],
+    "explanation": "Koala fingerprints have very similar ridge patterns to human fingerprints — whorls, arches, and loops. This is an example of convergent evolution: both species evolved friction ridges for gripping branches, independently developing near-identical patterns.",
+    "wowFactor": "In 1996, Australian criminologist's found koala prints at a crime scene that were mistaken for human fingerprints. The animals had been raiding the house's garden.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which non-human animal has fingerprints nearly identical to humans?",
+        "answer": "Koala",
+        "distractors": [
+          "Chimpanzee",
+          "Gorilla",
+          "Orangutan"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Why do koalas have human-like fingerprints despite being very different animals?",
+        "answer": "Convergent evolution",
+        "distractors": [
+          "Common ancestry",
+          "Genetic mutation",
+          "Selective breeding"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Koala fingerprints are nearly identical to human fingerprints?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Only chimps have similar prints",
+          "No animal has similar prints"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Koalas evolved ___ nearly identical to humans for gripping branches.",
+        "answer": "fingerprints",
+        "distractors": [
+          "claws",
+          "toe pads",
+          "grip pads"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "legendary",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Koala",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A close-up of a koala paw next to a human hand, both showing identical fingerprint whorl patterns on the fingertips.",
+    "tags": [
+      "koala",
+      "fingerprints",
+      "convergent evolution",
+      "biology",
+      "animals"
+    ]
+  },
+  {
+    "id": "science-fungi-kingdom",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_botany",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_botany",
+    "categoryL3": "",
+    "statement": "Fungi form their own biological kingdom, separate from plants, animals, and bacteria — they are more closely related to animals than to plants.",
+    "quizQuestion": "What biological kingdom do fungi belong to?",
+    "correctAnswer": "Fungi",
+    "distractors": [
+      "Plantae",
+      "Animalia",
+      "Bacteria",
+      "Protista",
+      "Archaea",
+      "Monera",
+      "Chromista",
+      "Algae"
+    ],
+    "acceptableAnswers": [
+      "Fungi",
+      "fungi",
+      "kingdom Fungi",
+      "their own kingdom"
+    ],
+    "explanation": "Fungi are neither plants nor animals. Unlike plants, they don't photosynthesize. They absorb nutrients by secreting enzymes outside their body. Genetically, fungi are more closely related to animals than to plants.",
+    "wowFactor": "Fungi are essentially inside-out animals — instead of digesting food inside a stomach, they secrete enzymes outside themselves and absorb the dissolved nutrients through their cell walls.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What distinct biological kingdom do mushrooms and molds belong to?",
+        "answer": "Fungi",
+        "distractors": [
+          "Plantae",
+          "Animalia",
+          "Protista"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Are fungi more closely related to animals or to plants?",
+        "answer": "Animals",
+        "distractors": [
+          "Plants",
+          "Bacteria",
+          "Equally both"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Fungi are more closely related to animals than to plants?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "They are equally related to both",
+          "They are most related to bacteria"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Fungi form their own kingdom, more closely related to ___ than plants.",
+        "answer": "animals",
+        "distractors": [
+          "bacteria",
+          "algae",
+          "plants"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fungus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A variety of mushrooms and molds arranged with a tree of life diagram showing fungi branching closer to animals than plants.",
+    "tags": [
+      "fungi",
+      "biology",
+      "kingdom",
+      "classification",
+      "mushrooms"
+    ]
+  },
+  {
+    "id": "science-fungi-mycelium",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_botany",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_botany",
+    "categoryL3": "",
+    "statement": "The main body of a fungus is the mycelium — a vast network of thread-like hyphae that can span kilometers underground and exchange nutrients with trees.",
+    "quizQuestion": "What is the underground thread-like body of a fungus called?",
+    "correctAnswer": "Mycelium",
+    "distractors": [
+      "Rhizome",
+      "Spore network",
+      "Root system",
+      "Hyphae",
+      "Stroma",
+      "Thallus",
+      "Sporangium",
+      "Fruiting body"
+    ],
+    "acceptableAnswers": [
+      "mycelium",
+      "the mycelium",
+      "mycelia"
+    ],
+    "explanation": "Mycelium consists of individual hyphae (thread-like cells) that branch and interconnect into vast networks. Fungi use mycelium to break down organic material and to trade nutrients with tree roots in mycorrhizal relationships.",
+    "wowFactor": "A single mycelium in Oregon's Malheur National Forest spans 9.6 km² — larger than 1,600 football fields — making it potentially the largest living organism on Earth.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the name for the underground fungal network made of thread-like cells?",
+        "answer": "Mycelium",
+        "distractors": [
+          "Rhizome",
+          "Spore network",
+          "Root system"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What relationship do mycelia form with tree roots to trade nutrients?",
+        "answer": "Mycorrhizal",
+        "distractors": [
+          "Parasitic",
+          "Symbiotic",
+          "Competitive"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mycelium is the underground thread-like body of a fungus?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Mycelium is the mushroom cap",
+          "Mycelium is a spore"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The underground body of a fungus, made of hyphae threads, is called ___.",
+        "answer": "mycelium",
+        "distractors": [
+          "rhizome",
+          "spores",
+          "stroma"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mycelium",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing underground network of white thread-like mycelium connecting tree roots, with mushroom caps poking above the soil surface.",
+    "tags": [
+      "fungi",
+      "mycelium",
+      "hyphae",
+      "decomposer",
+      "mycorrhizal"
+    ]
+  },
+  {
+    "id": "science-fungi-decomposers",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_botany",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_botany",
+    "categoryL3": "",
+    "statement": "Fungi are the primary decomposers in most ecosystems, breaking down dead organic matter like wood and leaves into nutrients that cycle back into the soil.",
+    "quizQuestion": "What ecological role do fungi primarily perform in most ecosystems?",
+    "correctAnswer": "Decomposers",
+    "distractors": [
+      "Producers",
+      "Predators",
+      "Pollinators",
+      "Primary consumers",
+      "Herbivores",
+      "Nitrogen fixers",
+      "Photosynthesizers",
+      "Seed dispersers"
+    ],
+    "acceptableAnswers": [
+      "decomposers",
+      "decomposition",
+      "breaking down dead matter"
+    ],
+    "explanation": "Fungi produce extracellular enzymes (like lignase and cellulase) that break down the tough structural molecules in wood and plant matter. Without fungi, dead trees would pile up for centuries, as bacteria cannot decompose lignin efficiently.",
+    "wowFactor": "For 60 million years after trees evolved lignin, nothing could break it down — dead wood just piled up globally until fungi evolved the enzyme. That massive wood pile became much of today's coal deposits.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the primary ecological role of fungi in ecosystems?",
+        "answer": "Decomposers",
+        "distractors": [
+          "Producers",
+          "Pollinators",
+          "Primary consumers"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What tough plant molecule do fungi uniquely break down that bacteria cannot?",
+        "answer": "Lignin",
+        "distractors": [
+          "Cellulose",
+          "Starch",
+          "Protein"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Fungi are the primary decomposers in most ecosystems?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Bacteria are the main decomposers",
+          "Insects are the main decomposers"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Fungi act as primary ___ in ecosystems, recycling dead organic matter.",
+        "answer": "decomposers",
+        "distractors": [
+          "producers",
+          "consumers",
+          "pollinators"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fungus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A decaying log covered in bracket fungi and white mycelium, surrounded by rich dark soil with new plant shoots growing from the decomposed matter.",
+    "tags": [
+      "fungi",
+      "decomposer",
+      "ecosystem",
+      "lignin",
+      "nutrient cycle"
+    ]
+  },
+  {
+    "id": "science-gold-element-79",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "chemistry",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "chemistry",
+    "categoryL3": "",
+    "statement": "Gold has the chemical symbol Au (from Latin 'aurum') and atomic number 79 on the periodic table.",
+    "quizQuestion": "What is the chemical symbol for gold on the periodic table?",
+    "correctAnswer": "Au",
+    "distractors": [
+      "Go",
+      "Gd",
+      "Ag",
+      "Cu",
+      "Pt",
+      "Fe",
+      "Gl",
+      "Ga"
+    ],
+    "acceptableAnswers": [
+      "Au",
+      "au"
+    ],
+    "explanation": "Gold's symbol Au comes from 'aurum,' the Latin word for gold. It has atomic number 79, meaning each gold atom has 79 protons. Gold is a transition metal in period 6 of the periodic table.",
+    "wowFactor": "The Latin 'aurum' gives us the English word 'aurora' (golden glow of dawn) — same root as gold, morning light, and the Aurora Borealis.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is gold's chemical symbol on the periodic table?",
+        "answer": "Au",
+        "distractors": [
+          "Go",
+          "Ag",
+          "Gd"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is gold's atomic number on the periodic table?",
+        "answer": "79",
+        "distractors": [
+          "47",
+          "29",
+          "78"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Gold's chemical symbol Au comes from the Latin word 'aurum'?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Au comes from the Greek word",
+          "Au is an abbreviation of 'gold'"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Gold's chemical symbol ___ comes from the Latin word 'aurum'.",
+        "answer": "Au",
+        "distractors": [
+          "Go",
+          "Ag",
+          "Gd"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gold",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A golden periodic table tile showing 'Au', atomic number 79, with a gold nugget and Latin text 'aurum' beside it.",
+    "tags": [
+      "gold",
+      "chemistry",
+      "periodic table",
+      "element",
+      "atomic number"
+    ]
+  },
+  {
+    "id": "science-gold-unreactive",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "chemistry",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "chemistry",
+    "categoryL3": "",
+    "statement": "Gold is one of the least reactive elements, meaning it does not rust, tarnish, or corrode in air, water, or most acids — which is why ancient gold artifacts still shine today.",
+    "quizQuestion": "Why do ancient gold artifacts still look shiny thousands of years later?",
+    "correctAnswer": "Gold does not corrode",
+    "distractors": [
+      "Gold is polished regularly",
+      "Gold absorbs rust",
+      "Gold is always coated",
+      "Gold is too hard to corrode",
+      "Gold is protected by oils",
+      "Gold oxidizes to a clear layer",
+      "Gold is kept in dry vaults",
+      "Gold emits anti-corrosion field"
+    ],
+    "acceptableAnswers": [
+      "gold does not corrode",
+      "gold is unreactive",
+      "gold resists corrosion",
+      "gold doesn't rust"
+    ],
+    "explanation": "Gold's extreme lack of reactivity comes from its electron configuration and relativistic effects. It doesn't react with oxygen (no rust), water, or common acids. Only a mixture called aqua regia (nitric + hydrochloric acid) can dissolve it.",
+    "wowFactor": "The only acid that can dissolve gold is 'aqua regia' — royal water — a fuming mixture of two acids. During WWII, Niels Bohr dissolved his Nobel Prize gold medal in aqua regia to hide it from the Nazis, then re-cast it after the war.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why does gold not rust or tarnish like iron or silver?",
+        "answer": "Gold does not corrode",
+        "distractors": [
+          "Gold is too hard",
+          "Gold has a protective coat",
+          "Gold emits no electrons"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What acid mixture called 'royal water' is one of the few things that dissolves gold?",
+        "answer": "Aqua regia",
+        "distractors": [
+          "Sulfuric acid",
+          "Hydrochloric acid",
+          "Nitric acid"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Gold does not corrode, rust, or tarnish in normal conditions?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Gold tarnishes slowly",
+          "Gold rusts underground"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Gold is chemically ___, which is why ancient gold still gleams today.",
+        "answer": "unreactive",
+        "distractors": [
+          "magnetic",
+          "radioactive",
+          "reactive"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gold",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A gleaming golden Egyptian pharaoh death mask and gold coins from ancient Rome, displayed alongside corroded iron and tarnished silver for comparison.",
+    "tags": [
+      "gold",
+      "chemistry",
+      "corrosion",
+      "reactivity",
+      "aqua regia"
+    ]
+  },
+  {
+    "id": "science-gold-asteroid-origin",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "chemistry",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "chemistry",
+    "categoryL3": "",
+    "statement": "Most of Earth's accessible gold came from asteroid impacts around 3.9 billion years ago — before that, nearly all gold had sunk to Earth's core.",
+    "quizQuestion": "Where did most of Earth's accessible gold originally come from?",
+    "correctAnswer": "Asteroid impacts",
+    "distractors": [
+      "Volcanic eruptions",
+      "Formed with Earth",
+      "Ocean vents",
+      "Tectonic uplift",
+      "Meteorite dust",
+      "Solar wind deposits",
+      "Deep mantle plumes",
+      "Formed in supernova"
+    ],
+    "acceptableAnswers": [
+      "asteroid impacts",
+      "asteroids",
+      "meteorite impacts",
+      "meteorites"
+    ],
+    "explanation": "When Earth formed, its gold sank to the liquid iron core due to its high density. The gold we mine today arrived later, delivered by a late heavy bombardment of asteroids about 3.9 billion years ago, seeding Earth's mantle and crust.",
+    "wowFactor": "All the gold ever mined in human history would form a cube about 21 meters per side — smaller than a typical apartment building. Yet it came from ancient asteroid bombardment of a young Earth.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What cosmic event delivered most of Earth's accessible gold 3.9 billion years ago?",
+        "answer": "Asteroid impacts",
+        "distractors": [
+          "Volcanic eruptions",
+          "Ocean vent activity",
+          "Tectonic uplift"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Why did nearly all of Earth's original gold sink before asteroids arrived?",
+        "answer": "It sank to the iron core",
+        "distractors": [
+          "It evaporated away",
+          "It dissolved in early oceans",
+          "It was destroyed by radiation"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Most of Earth's mineable gold arrived via asteroid impacts?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Gold formed with Earth's crust",
+          "Gold came from volcanoes"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Most gold we mine today arrived on Earth via ancient ___ impacts.",
+        "answer": "asteroid",
+        "distractors": [
+          "volcanic",
+          "tectonic",
+          "solar"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "teen",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gold",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section of early Earth with a dense iron core, and streaks of asteroid impacts seeding the outer crust with gold-bearing rock.",
+    "tags": [
+      "gold",
+      "asteroids",
+      "earth formation",
+      "late heavy bombardment",
+      "geology"
+    ]
+  },
+  {
+    "id": "science-climate-greenhouse",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "earth_science",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "earth_science",
+    "categoryL3": "",
+    "statement": "The greenhouse effect occurs when gases like CO2 trap heat from the Sun in Earth's atmosphere, preventing it from escaping back to space.",
+    "quizQuestion": "What does the greenhouse effect cause by trapping heat in Earth's atmosphere?",
+    "correctAnswer": "Global warming",
+    "distractors": [
+      "Acid rain",
+      "Ozone depletion",
+      "Ocean acidification",
+      "Magnetic reversal",
+      "UV radiation increase",
+      "Polar reversal",
+      "Increased rainfall",
+      "Reduced photosynthesis"
+    ],
+    "acceptableAnswers": [
+      "global warming",
+      "warming",
+      "temperature rise",
+      "climate warming"
+    ],
+    "explanation": "CO2, methane, and water vapor absorb infrared radiation from Earth's surface and re-emit it, warming the atmosphere. While a natural greenhouse effect makes Earth habitable, increased CO2 from burning fossil fuels intensifies it, causing climate change.",
+    "wowFactor": "Without any greenhouse effect at all, Earth's average temperature would be -18°C — completely frozen. The natural greenhouse effect is what makes Earth habitable; it's the enhanced version that's the problem.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the main result of greenhouse gases trapping heat in the atmosphere?",
+        "answer": "Global warming",
+        "distractors": [
+          "Acid rain",
+          "Ozone depletion",
+          "Ocean acidification"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which gas is the primary driver of enhanced greenhouse warming from human activity?",
+        "answer": "Carbon dioxide",
+        "distractors": [
+          "Oxygen",
+          "Nitrogen",
+          "Argon"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Without any greenhouse effect, Earth would be frozen solid?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Earth would be slightly cooler",
+          "The greenhouse effect has no impact"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ effect traps heat from the Sun in Earth's atmosphere.",
+        "answer": "greenhouse",
+        "distractors": [
+          "ozone",
+          "albedo",
+          "magnetic"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Greenhouse_effect",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A diagram of Earth surrounded by an atmospheric layer, with sun rays entering and heat rays bouncing back, trapped by a visible CO2 layer.",
+    "tags": [
+      "climate change",
+      "greenhouse effect",
+      "CO2",
+      "global warming",
+      "atmosphere"
+    ]
+  },
+  {
+    "id": "science-climate-co2-record",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "earth_science",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "earth_science",
+    "categoryL3": "",
+    "statement": "Atmospheric CO2 levels have risen from about 280 ppm before industrialization to over 420 ppm today — the highest level in at least 3 million years.",
+    "quizQuestion": "What are today's CO2 levels compared to pre-industrial levels, in ppm?",
+    "correctAnswer": "Over 420 ppm",
+    "distractors": [
+      "About 280 ppm",
+      "About 350 ppm",
+      "About 500 ppm",
+      "About 180 ppm",
+      "About 600 ppm",
+      "About 300 ppm",
+      "About 1,000 ppm",
+      "About 800 ppm"
+    ],
+    "acceptableAnswers": [
+      "over 420 ppm",
+      "420+ ppm",
+      "about 420 ppm",
+      "more than 420 ppm"
+    ],
+    "explanation": "Pre-industrial CO2 was about 280 ppm (parts per million). The Keeling Curve, measured at Mauna Loa since 1958, shows a steady rise. In 2023 CO2 exceeded 420 ppm — unprecedented in at least 3 million years of geological record.",
+    "wowFactor": "The Keeling Curve's 'sawtooth' pattern shows Earth breathing — CO2 dips every summer as Northern Hemisphere plants absorb it, then rises again each winter when they die back.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What are current atmospheric CO2 levels, compared to 280 ppm before industry?",
+        "answer": "Over 420 ppm",
+        "distractors": [
+          "About 350 ppm",
+          "About 500 ppm",
+          "About 300 ppm"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What was Earth's atmospheric CO2 concentration before industrialization?",
+        "answer": "About 280 ppm",
+        "distractors": [
+          "About 400 ppm",
+          "About 180 ppm",
+          "About 350 ppm"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: CO2 levels today are over 420 ppm, the highest in 3 million years?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "They are only at 350 ppm",
+          "CO2 levels are falling"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Current atmospheric CO2 levels exceed ___ ppm, the highest in millions of years.",
+        "answer": "420",
+        "distractors": [
+          "280",
+          "350",
+          "500"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Atmospheric_CO2",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A graph showing CO2 levels rising steeply from 280 ppm in 1800 to over 420 ppm today, with the Keeling Curve sawtooth visible.",
+    "tags": [
+      "climate change",
+      "CO2",
+      "greenhouse gases",
+      "atmosphere",
+      "keeling curve"
+    ]
+  },
+  {
+    "id": "science-climate-feedback",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "earth_science",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "earth_science",
+    "categoryL3": "",
+    "statement": "Climate change is amplified by positive feedback loops — for example, melting Arctic ice exposes dark ocean water that absorbs more heat, causing further warming.",
+    "quizQuestion": "What feedback loop amplifies Arctic warming by exposing dark water under ice?",
+    "correctAnswer": "Ice-albedo feedback",
+    "distractors": [
+      "Methane tipping point",
+      "Carbon cycle reversal",
+      "Thermohaline collapse",
+      "Permafrost thaw loop",
+      "Sea level feedback",
+      "Deforestation cycle",
+      "Ocean acidification loop",
+      "Solar reflection loss"
+    ],
+    "acceptableAnswers": [
+      "ice-albedo feedback",
+      "albedo feedback",
+      "ice melting feedback",
+      "positive feedback loop"
+    ],
+    "explanation": "White ice reflects about 80% of sunlight (high albedo). Dark ocean absorbs about 94%. As warming melts Arctic sea ice, more dark ocean is exposed, absorbing more heat, which melts more ice — a self-reinforcing loop.",
+    "wowFactor": "The Arctic is warming roughly 4 times faster than the global average. This Arctic Amplification is largely driven by the ice-albedo feedback — a small initial warming triggers a runaway local warming cycle.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the feedback loop where melting Arctic ice exposes heat-absorbing ocean?",
+        "answer": "Ice-albedo feedback",
+        "distractors": [
+          "Methane tipping point",
+          "Thermohaline collapse",
+          "Permafrost thaw loop"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Why does white ice reflect more sunlight than dark ocean water?",
+        "answer": "Higher albedo",
+        "distractors": [
+          "Lower density",
+          "Lower temperature",
+          "Smoother surface"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Melting sea ice creates a feedback loop that amplifies Arctic warming?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It reduces warming",
+          "The effect is negligible"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Melting Arctic ice exposes dark ocean, increasing heat absorption — an ice-___ feedback.",
+        "answer": "albedo",
+        "distractors": [
+          "methane",
+          "carbon",
+          "thermal"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ice%E2%80%93albedo_feedback",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A satellite view of the Arctic showing shrinking white sea ice with blue-black ocean water exposed, arrows indicating a self-reinforcing warming cycle.",
+    "tags": [
+      "climate change",
+      "albedo",
+      "arctic",
+      "feedback loop",
+      "global warming"
+    ]
+  },
+  {
+    "id": "science-volcano-magma",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "earth_science",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "earth_science",
+    "categoryL3": "",
+    "statement": "Magma is molten rock beneath Earth's surface; when it erupts from a volcano and reaches the surface, it is called lava.",
+    "quizQuestion": "What is magma called once it erupts and flows on Earth's surface?",
+    "correctAnswer": "Lava",
+    "distractors": [
+      "Magma",
+      "Pumice",
+      "Basalt",
+      "Obsidian",
+      "Tephra",
+      "Scoria",
+      "Pyroclast",
+      "Rhyolite"
+    ],
+    "acceptableAnswers": [
+      "lava",
+      "lava flow"
+    ],
+    "explanation": "The distinction is purely about location — the same molten rock is called magma when underground and lava when it reaches Earth's surface through a volcanic eruption. Lava can range from 700°C to 1,200°C.",
+    "wowFactor": "Lava can be so viscous that it moves at walking pace — or so fluid it travels at 60 km/h. The difference depends on silica content: high-silica lava is thick and explosive, low-silica lava is runny and calm.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What do we call magma once it exits a volcano onto Earth's surface?",
+        "answer": "Lava",
+        "distractors": [
+          "Tephra",
+          "Basalt",
+          "Pumice"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is molten rock called while it is still underground beneath a volcano?",
+        "answer": "Magma",
+        "distractors": [
+          "Lava",
+          "Basalt",
+          "Pyroclast"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Magma becomes lava only after erupting onto Earth's surface?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "They are completely different substances",
+          "Lava is cooled magma, not flowing"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "When magma erupts from a volcano, it is then called ___.",
+        "answer": "lava",
+        "distractors": [
+          "pumice",
+          "basalt",
+          "obsidian"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lava",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A split diagram showing red glowing magma in an underground chamber labeled 'magma' and glowing red lava flowing on the surface labeled 'lava'.",
+    "tags": [
+      "volcano",
+      "magma",
+      "lava",
+      "geology",
+      "earth science"
+    ]
+  },
+  {
+    "id": "science-volcano-tectonic",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "earth_science",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "earth_science",
+    "categoryL3": "",
+    "statement": "Most volcanoes occur at tectonic plate boundaries — either where plates collide (subduction zones) or where they pull apart (rift zones).",
+    "quizQuestion": "Where do most of the world's volcanoes occur?",
+    "correctAnswer": "Tectonic plate boundaries",
+    "distractors": [
+      "Random locations worldwide",
+      "Only on ocean floors",
+      "Only in mountain ranges",
+      "Near the equator",
+      "In the center of continents",
+      "At magnetic poles",
+      "Only in hot deserts",
+      "Along river deltas"
+    ],
+    "acceptableAnswers": [
+      "tectonic plate boundaries",
+      "plate boundaries",
+      "where plates meet"
+    ],
+    "explanation": "About 75% of Earth's volcanoes occur along the 'Ring of Fire' — the boundary of the Pacific Plate. Subduction zones (where one plate dives under another) and mid-ocean ridges (where plates separate) are the main volcanic regions.",
+    "wowFactor": "The 'Ring of Fire' encircling the Pacific Ocean contains 75% of Earth's volcanoes and produces 90% of all earthquakes. It's a 40,000 km horseshoe of geological chaos.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where do most of Earth's volcanoes form?",
+        "answer": "Tectonic plate boundaries",
+        "distractors": [
+          "Near the equator",
+          "In the center of continents",
+          "Only on ocean floors"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What region encircling the Pacific Ocean contains 75% of Earth's volcanoes?",
+        "answer": "Ring of Fire",
+        "distractors": [
+          "Mid-Atlantic Ridge",
+          "Pacific Rift Zone",
+          "Volcanic Belt"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Most volcanoes form at tectonic plate boundaries?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "They form randomly",
+          "Only at the poles"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Most volcanoes occur at tectonic ___ boundaries where plates meet or separate.",
+        "answer": "plate",
+        "distractors": [
+          "ocean",
+          "magnetic",
+          "fault"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Volcano",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A world map with glowing dots marking volcanoes, clearly clustered around the Pacific Rim and mid-ocean ridges, labeled 'Ring of Fire'.",
+    "tags": [
+      "volcano",
+      "tectonic plates",
+      "ring of fire",
+      "geology",
+      "earth science"
+    ]
+  },
+  {
+    "id": "science-volcano-hotspot",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "earth_science",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "earth_science",
+    "categoryL3": "",
+    "statement": "Some volcanoes form over 'hot spots' — fixed plumes of heat rising through the mantle — as seen in Hawaii, which formed as the Pacific Plate drifted over one.",
+    "quizQuestion": "How did the Hawaiian island chain form over millions of years?",
+    "correctAnswer": "Plate over a hotspot",
+    "distractors": [
+      "Tectonic collision built islands",
+      "Underwater landslides emerged",
+      "Coral reefs hardened over time",
+      "Sea level dropped exposing peaks",
+      "A continent broke apart",
+      "A meteorite created the chain",
+      "Rift zone expanded outward",
+      "Magnetic field pulled rock upward"
+    ],
+    "acceptableAnswers": [
+      "plate drifted over a hotspot",
+      "hotspot volcanism",
+      "mantle hotspot",
+      "a hotspot under the plate",
+      "Pacific plate over a hotspot"
+    ],
+    "explanation": "The Hawaiian hotspot is a fixed plume of extremely hot mantle material. As the Pacific Plate drifts northwest over it, new islands form sequentially — the oldest islands are farthest northwest, youngest are southeast. Hawaii's Big Island is currently over the hotspot.",
+    "wowFactor": "The Hawaiian island chain is a geological time stamp of the Pacific Plate's drift — the islands get progressively older to the northwest, revealing exactly how fast and what direction the plate has been moving for 70 million years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What geological feature created the Hawaiian island chain over millions of years?",
+        "answer": "Pacific plate drifted over a hotspot",
+        "distractors": [
+          "Tectonic collision built islands",
+          "A rift zone expanded",
+          "Sea level dropped exposing peaks"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which ocean island chain was created by a mantle hotspot under a drifting plate?",
+        "answer": "Hawaii",
+        "distractors": [
+          "Iceland",
+          "Canary Islands",
+          "Galapagos Islands"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Hawaii formed as the Pacific Plate drifted over a fixed mantle hotspot?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Hawaii formed at a tectonic rift",
+          "Hawaii was pushed up by collision"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Hawaii formed as the Pacific plate drifted over a mantle ___.",
+        "answer": "hotspot",
+        "distractors": [
+          "rift",
+          "trench",
+          "boundary"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hawaii_hotspot",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A diagram showing the Pacific Plate moving over a fixed orange mantle hotspot, with a chain of islands progressively older to the left.",
+    "tags": [
+      "volcano",
+      "hotspot",
+      "hawaii",
+      "tectonic plates",
+      "geology"
+    ]
+  },
+  {
+    "id": "science-pearl-nacre",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_zoology",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_zoology",
+    "categoryL3": "",
+    "statement": "Pearls form when a mollusk coats an irritant (like a grain of sand) with layers of nacre — the same iridescent material that lines the inside of their shells.",
+    "quizQuestion": "What material do mollusks use to coat irritants and create pearls?",
+    "correctAnswer": "Nacre",
+    "distractors": [
+      "Calcium",
+      "Chitin",
+      "Keratin",
+      "Silica",
+      "Enamel",
+      "Aragonite",
+      "Collagen",
+      "Mucus"
+    ],
+    "acceptableAnswers": [
+      "nacre",
+      "mother of pearl",
+      "nacreous layer"
+    ],
+    "explanation": "Nacre (mother of pearl) is composed of microscopic tiles of aragonite (a form of calcium carbonate) layered with an organic protein called conchiolin. The layered structure creates the iridescent shimmer through light interference.",
+    "wowFactor": "Nacre is so structurally strong that it is 3,000 times more fracture-resistant than pure aragonite crystal. Scientists are studying it to make stronger aircraft and bulletproof materials.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What iridescent material do mollusks coat irritants with to form pearls?",
+        "answer": "Nacre",
+        "distractors": [
+          "Calcium",
+          "Chitin",
+          "Keratin"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the common name for nacre, the shiny material inside oyster shells?",
+        "answer": "Mother of pearl",
+        "distractors": [
+          "Sea glass",
+          "Pearl dust",
+          "Shell enamel"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pearls are made of nacre, the same material lining mollusk shells?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Pearls are pure calcium",
+          "Pearls are made of chitin"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mollusks coat irritants in ___, the iridescent material that forms pearls.",
+        "answer": "nacre",
+        "distractors": [
+          "chitin",
+          "keratin",
+          "silica"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pearl",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section of an oyster shell showing concentric iridescent nacre layers building up around a central grain of sand to form a pearl.",
+    "tags": [
+      "pearl",
+      "nacre",
+      "oyster",
+      "mollusk",
+      "biology"
+    ]
+  },
+  {
+    "id": "science-pearl-mollusk-defense",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_zoology",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_zoology",
+    "categoryL3": "",
+    "statement": "Pearl formation is a defense mechanism — mollusks encase parasites or irritants in layers of nacre to isolate and neutralize the threat.",
+    "quizQuestion": "Why do mollusks form pearls around irritants that enter their shells?",
+    "correctAnswer": "As a defense mechanism",
+    "distractors": [
+      "To attract mates",
+      "For buoyancy control",
+      "To filter water",
+      "To store nutrients",
+      "For shell repair",
+      "To make the shell glow",
+      "To camouflage themselves",
+      "For thermal regulation"
+    ],
+    "acceptableAnswers": [
+      "as a defense mechanism",
+      "defense",
+      "to isolate irritants",
+      "to protect against parasites"
+    ],
+    "explanation": "When a parasite or foreign particle enters a mollusk's mantle tissue (not necessarily the shell), specialized cells called mantle cells encapsulate it and deposit nacre layers around it, forming a pearl sac that isolates the irritant.",
+    "wowFactor": "Contrary to popular belief, natural pearls are rarely caused by a grain of sand — they're usually triggered by a parasitic worm drilling into the mollusk's tissue. A pearl is basically a beautifully wrapped parasite.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the biological purpose of pearl formation in mollusks?",
+        "answer": "As a defense mechanism",
+        "distractors": [
+          "To attract mates",
+          "For buoyancy control",
+          "To store nutrients"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What usually triggers natural pearl formation — sand grains or parasites?",
+        "answer": "Parasites",
+        "distractors": [
+          "Sand grains",
+          "Shell debris",
+          "Food particles"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pearl formation is a defense response to isolate irritants in mollusks?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Pearls form for reproduction",
+          "Pearls form randomly"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mollusks form pearls as a ___ to isolate parasites and irritants.",
+        "answer": "defense",
+        "distractors": [
+          "decoration",
+          "food store",
+          "buoyancy aid"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pearl",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A microscopic view of a parasite being encased in concentric glowing nacre layers inside a mollusk's soft tissue.",
+    "tags": [
+      "pearl",
+      "mollusk",
+      "defense mechanism",
+      "parasite",
+      "biology"
+    ]
+  },
+  {
+    "id": "science-pearl-cultured",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_zoology",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_zoology",
+    "categoryL3": "",
+    "statement": "Cultured pearls are made by deliberately inserting a nucleus bead into a mollusk — a technique developed commercially by Mikimoto Kokichi in Japan in the 1890s.",
+    "quizQuestion": "Who pioneered the commercial production of cultured pearls in Japan?",
+    "correctAnswer": "Mikimoto Kokichi",
+    "distractors": [
+      "Hiroshige Ando",
+      "Yataro Iwasaki",
+      "Sakichi Toyoda",
+      "Soichiro Honda",
+      "Yamaha Torakusu",
+      "Kikkoman founder",
+      "Hatsune Ito",
+      "Tsutsumi Seiji"
+    ],
+    "acceptableAnswers": [
+      "Mikimoto Kokichi",
+      "Mikimoto",
+      "Kokichi Mikimoto"
+    ],
+    "explanation": "Mikimoto Kokichi received the first Japanese patent for cultured pearls in 1896. By inserting a small bead of shell material into oysters and waiting 3-7 years, he could reliably produce pearls. This made pearls affordable for the middle class.",
+    "wowFactor": "Before cultured pearls, natural pearls were so rare that they cost more than diamonds. Mikimoto's invention democratized pearl ownership — and briefly crashed the global natural pearl market.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who invented and commercialized cultured pearl production in Japan?",
+        "answer": "Mikimoto Kokichi",
+        "distractors": [
+          "Hiroshige Ando",
+          "Yataro Iwasaki",
+          "Sakichi Toyoda"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How are cultured pearls made differently from natural pearls?",
+        "answer": "A nucleus is inserted",
+        "distractors": [
+          "Special oysters are used",
+          "Chemicals trigger growth",
+          "They are lab-grown entirely"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Cultured pearls are made by inserting a bead nucleus into mollusks?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Cultured pearls are synthetic",
+          "Cultured means harvested naturally"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Cultured pearls are created by inserting a ___ bead into a mollusk to trigger nacre growth.",
+        "answer": "nucleus",
+        "distractors": [
+          "sand",
+          "crystal",
+          "mineral"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cultured_pearl",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Japanese pearl farmer inserting a tiny bead into an oyster with tweezers, surrounded by pearl oyster baskets in a calm bay.",
+    "tags": [
+      "pearl",
+      "mikimoto",
+      "cultured pearl",
+      "japan",
+      "mollusk"
+    ]
+  },
+  {
+    "id": "science-peanut-legume",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_botany",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_botany",
+    "categoryL3": "",
+    "statement": "Peanuts are not nuts at all — they are legumes, in the same family as beans, lentils, and peas, and they grow underground in pods.",
+    "quizQuestion": "What type of plant is a peanut — a nut or something else?",
+    "correctAnswer": "Legume",
+    "distractors": [
+      "True nut",
+      "Seed",
+      "Fruit",
+      "Root vegetable",
+      "Tuber",
+      "Grain",
+      "Drupe",
+      "Berry"
+    ],
+    "acceptableAnswers": [
+      "legume",
+      "a legume",
+      "pulse",
+      "bean"
+    ],
+    "explanation": "True nuts are hard-shelled fruits that don't split open (like acorns or hazelnuts). Peanuts are the seeds of a leguminous plant (Arachis hypogaea). The plant flowers above ground, then buries its seed pods underground to mature — an unusual trait called geocarpy.",
+    "wowFactor": "Peanut plants are geocarpic — after the flower is pollinated above ground, it bends down and buries itself, completing the seed development underground. The plant literally plants its own seeds.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is a peanut classified as botanically?",
+        "answer": "Legume",
+        "distractors": [
+          "True nut",
+          "Root vegetable",
+          "Grain"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which of these is a true nut: peanut, walnut, or almond?",
+        "answer": "Walnut",
+        "distractors": [
+          "Peanut",
+          "Almond",
+          "Cashew"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Peanuts are legumes, not true nuts?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Peanuts are nuts by definition",
+          "It depends on the country"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Peanuts are not true nuts — they are ___, related to beans and lentils.",
+        "answer": "legumes",
+        "distractors": [
+          "fruits",
+          "seeds",
+          "tubers"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Peanut",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A peanut plant uprooted showing pods hanging from underground roots, next to diagrams comparing peanuts to beans and peas in the legume family.",
+    "tags": [
+      "peanut",
+      "legume",
+      "botany",
+      "misconception",
+      "plants"
+    ]
+  },
+  {
+    "id": "science-peanut-geocarpy",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_botany",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_botany",
+    "categoryL3": "",
+    "statement": "Peanuts grow underground because the peanut plant flowers above ground, then bends its stalks down to push the seed pods into the soil — a process called geocarpy.",
+    "quizQuestion": "What unusual process causes peanut pods to develop underground?",
+    "correctAnswer": "Geocarpy",
+    "distractors": [
+      "Rhizome growth",
+      "Tuber formation",
+      "Mycorrhizal uptake",
+      "Root swelling",
+      "Nutrient burial",
+      "Seed dispersal",
+      "Gravity tropism",
+      "Underground pollination"
+    ],
+    "acceptableAnswers": [
+      "geocarpy",
+      "geocarpic growth",
+      "the plant buries its pods"
+    ],
+    "explanation": "After a peanut flower is fertilized above ground, a peg (gynophore) grows downward and buries the developing pod 2-7 cm underground. There the pod matures into what we eat. This is called geocarpy and is rare in plants.",
+    "wowFactor": "Peanuts essentially plant themselves — the flower appears above ground, gets pollinated, then the plant shoves its own developing baby underground for safe maturation. No other common crop does this.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the botanical term for peanuts burying their own pods underground after flowering?",
+        "answer": "Geocarpy",
+        "distractors": [
+          "Rhizome growth",
+          "Root swelling",
+          "Gravity tropism"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Where does peanut pollination and flowering actually occur on the plant?",
+        "answer": "Above ground",
+        "distractors": [
+          "Underground",
+          "Both above and below",
+          "At soil level"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Peanut flowers appear above ground but pods mature underground?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Both flower and pod are underground",
+          "Pods form above ground"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Peanuts use ___, bending their stalks to bury developing pods underground.",
+        "answer": "geocarpy",
+        "distractors": [
+          "rhizomes",
+          "tubers",
+          "stolons"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Geocarpy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A diagram of a peanut plant showing yellow flowers above ground and a curved peg growing downward to bury a pod in the soil below.",
+    "tags": [
+      "peanut",
+      "geocarpy",
+      "botany",
+      "plants",
+      "unusual plants"
+    ]
+  },
+  {
+    "id": "science-peanut-nitrogen",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "biology_botany",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "biology_botany",
+    "categoryL3": "",
+    "statement": "Like other legumes, peanut plants fix nitrogen from the air into the soil through bacteria in their root nodules, making them valuable for soil restoration.",
+    "quizQuestion": "What do legumes like peanuts add to soil through root nodule bacteria?",
+    "correctAnswer": "Nitrogen",
+    "distractors": [
+      "Phosphorus",
+      "Potassium",
+      "Carbon dioxide",
+      "Oxygen",
+      "Calcium",
+      "Iron",
+      "Sulfur",
+      "Magnesium"
+    ],
+    "acceptableAnswers": [
+      "nitrogen",
+      "fixed nitrogen",
+      "soil nitrogen"
+    ],
+    "explanation": "Rhizobium bacteria in legume root nodules convert atmospheric nitrogen (N2) into ammonium (NH4+), a form plants can absorb. Peanuts are used in crop rotation to restore nitrogen-depleted soils without synthetic fertilizers.",
+    "wowFactor": "George Washington Carver promoted peanuts partly because they restore nitrogen to cotton-depleted Southern U.S. soil. His agricultural revolution literally saved Southern farming after decades of cotton monoculture destroyed the land.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What soil nutrient do peanut root nodule bacteria fix from the atmosphere?",
+        "answer": "Nitrogen",
+        "distractors": [
+          "Phosphorus",
+          "Potassium",
+          "Calcium"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Why are legumes like peanuts planted in crop rotation after other crops?",
+        "answer": "They restore soil nitrogen",
+        "distractors": [
+          "They shade weeds",
+          "They break up hard soil",
+          "They add potassium"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Peanuts restore nitrogen to soil through root nodule bacteria?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Peanuts deplete soil nitrogen",
+          "Only soybeans fix nitrogen"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Peanut root nodules contain bacteria that fix ___ from air into the soil.",
+        "answer": "nitrogen",
+        "distractors": [
+          "oxygen",
+          "carbon",
+          "phosphorus"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Peanut",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A peanut plant root system with pink nodules visible, surrounded by a diagram showing nitrogen molecules being converted to ammonium in the soil.",
+    "tags": [
+      "peanut",
+      "nitrogen fixation",
+      "legume",
+      "soil",
+      "crop rotation"
+    ]
+  }
+]

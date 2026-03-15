@@ -1,0 +1,197 @@
+{
+  "domain": "animals_wildlife",
+  "batchIndex": 3,
+  "totalBatches": 3,
+  "entities": [
+    {
+      "qid": "Q29564928",
+      "label": "Cygnus",
+      "description": "genus of birds",
+      "subcategory": "birds",
+      "sitelinks": 149,
+      "monthlyPageviews": 74500,
+      "properties": {
+        "taxonName": "Cygnus"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q23485",
+      "label": "Onion",
+      "description": "species of plant",
+      "subcategory": "insects_arachnids",
+      "sitelinks": 199,
+      "monthlyPageviews": 99500,
+      "properties": {
+        "taxonName": "Allium cepa"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q18498",
+      "label": "Canis lupus",
+      "description": "species of mammal",
+      "subcategory": "mammals",
+      "sitelinks": 222,
+      "monthlyPageviews": 111000,
+      "properties": {
+        "taxonName": "Canis lupus",
+        "conservationStatus": "Q211005"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q26843",
+      "label": "Orcinus orca",
+      "description": "species in the oceanic dolphin family",
+      "subcategory": "marine_life",
+      "sitelinks": 114,
+      "monthlyPageviews": 57000,
+      "properties": {
+        "taxonName": "Orcinus orca",
+        "conservationStatus": "Q3245245"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q37686",
+      "label": "chameleon",
+      "description": "family of reptiles",
+      "subcategory": "reptiles_amphibians",
+      "sitelinks": 122,
+      "monthlyPageviews": 61000,
+      "properties": {
+        "taxonName": "Chamaeleonidae"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q9147",
+      "label": "penguin",
+      "description": "family of birds in the order Sphenisciformes",
+      "subcategory": "birds",
+      "sitelinks": 147,
+      "monthlyPageviews": 73500,
+      "properties": {
+        "taxonName": "Spheniscidae"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q10998",
+      "label": "potato",
+      "description": "species of plant (for the food, use Q16587531)",
+      "subcategory": "insects_arachnids",
+      "sitelinks": 195,
+      "monthlyPageviews": 97500,
+      "properties": {
+        "taxonName": "Solanum tuberosum"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q11788",
+      "label": "Ursidae",
+      "description": "family of mammals",
+      "subcategory": "mammals",
+      "sitelinks": 221,
+      "monthlyPageviews": 110500,
+      "properties": {
+        "taxonName": "Ursidae",
+        "startDate": "-38000000-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q42196",
+      "label": "Balaenoptera musculus",
+      "description": "species of marine mammal, largest living animal in the world",
+      "subcategory": "marine_life",
+      "sitelinks": 111,
+      "monthlyPageviews": 55500,
+      "properties": {
+        "taxonName": "Balaenoptera musculus",
+        "conservationStatus": "Q96377276",
+        "startDate": "-1500000-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q25363",
+      "label": "Crocodilia",
+      "description": "order of large reptiles",
+      "subcategory": "reptiles_amphibians",
+      "sitelinks": 112,
+      "monthlyPageviews": 56000,
+      "properties": {
+        "taxonName": "Crocodilia",
+        "startDate": "-83500000-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q31431",
+      "label": "Psittaciformes",
+      "description": "order of birds",
+      "subcategory": "birds",
+      "sitelinks": 146,
+      "monthlyPageviews": 73000,
+      "properties": {
+        "taxonName": "Psittaciformes",
+        "startDate": "-50000000-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q34706",
+      "label": "Panthera pardus",
+      "description": "species of mammal",
+      "subcategory": "insects_arachnids",
+      "sitelinks": 190,
+      "monthlyPageviews": 95000,
+      "properties": {
+        "taxonName": "Panthera pardus",
+        "conservationStatus": "Q278113"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q2934",
+      "label": "goat",
+      "description": "domesticated mammal raised for its meat and milk",
+      "subcategory": "mammals",
+      "sitelinks": 211,
+      "monthlyPageviews": 105500,
+      "properties": {
+        "taxonName": "Capra aegagrus hircus"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q123141",
+      "label": "goldfish",
+      "description": "species of freshwater fish, common in aquariums",
+      "subcategory": "marine_life",
+      "sitelinks": 109,
+      "monthlyPageviews": 54500,
+      "properties": {
+        "taxonName": "Carassius auratus",
+        "conservationStatus": "Q211005"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q43169",
+      "label": "Crocodile",
+      "description": "family of reptiles",
+      "subcategory": "reptiles_amphibians",
+      "sitelinks": 103,
+      "monthlyPageviews": 51500,
+      "properties": {
+        "taxonName": "Crocodylidae",
+        "startDate": "-55000000-00-00T00:00:00Z"
+      },
+      "processed": false
+    }
+  ]
+}

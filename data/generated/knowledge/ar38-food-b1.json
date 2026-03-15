@@ -1,0 +1,2522 @@
+[
+  {
+    "id": "food-sushi-vinegar",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Sushi gets its name from the Japanese word for 'sour taste', referring to the vinegared rice at its heart.",
+    "quizQuestion": "What ingredient defines sushi and gives it its name?",
+    "correctAnswer": "Vinegared rice",
+    "distractors": [
+      "Raw fish",
+      "Seaweed wrap",
+      "Soy sauce",
+      "Wasabi paste",
+      "Pickled ginger",
+      "Sesame seeds",
+      "Rice wine",
+      "Fish sauce"
+    ],
+    "acceptableAnswers": [
+      "Vinegared rice",
+      "seasoned rice",
+      "sushi rice"
+    ],
+    "explanation": "The word 'sushi' (寿司) derives from an archaic Japanese term meaning 'sour taste.' The defining component is rice seasoned with rice vinegar, sugar, and salt — not the fish topping, which is actually called 'neta.'",
+    "wowFactor": "Sushi is technically named after rice, not fish — the raw fish topping is optional and wasn't added until the 19th century.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What ingredient is essential to sushi and gives it its name?",
+        "answer": "Vinegared rice",
+        "distractors": [
+          "Raw fish",
+          "Seaweed",
+          "Wasabi"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Vinegared rice seasoned with sugar and salt is the foundation of which dish?",
+        "answer": "Sushi",
+        "distractors": [
+          "Ramen",
+          "Tempura",
+          "Dim sum"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Sushi gets its name from raw fish.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Sushi is defined by ___, not the fish on top.",
+        "answer": "Vinegared rice",
+        "distractors": [
+          "Seaweed wrap",
+          "Soy sauce",
+          "Wasabi"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sushi",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Japanese chef pressing vinegared rice into neat rectangles at a wooden counter, pixel art style with warm lantern lighting.",
+    "tags": [
+      "sushi",
+      "Japan",
+      "rice",
+      "vinegar",
+      "cuisine"
+    ]
+  },
+  {
+    "id": "food-sushi-edo",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Modern nigiri sushi was invented in 1820s Edo (now Tokyo) as a fast street food served from stalls.",
+    "quizQuestion": "In which city was modern nigiri sushi invented as street food?",
+    "correctAnswer": "Edo (Tokyo)",
+    "distractors": [
+      "Osaka",
+      "Kyoto",
+      "Nagasaki",
+      "Hiroshima",
+      "Yokohama",
+      "Nara",
+      "Sapporo",
+      "Kyushu"
+    ],
+    "acceptableAnswers": [
+      "Edo",
+      "Tokyo",
+      "Edo (Tokyo)"
+    ],
+    "explanation": "Hanaya Yohei is credited with inventing Edo-mae (Tokyo-style) nigiri sushi in the 1820s. He sold it from street stalls along the Sumida River — fast food for the city's bustling merchant class.",
+    "wowFactor": "The sushi you eat at fine restaurants today started as 19th-century Tokyo fast food eaten standing up at a street cart.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Nigiri sushi was invented as street food in which Japanese city?",
+        "answer": "Edo (Tokyo)",
+        "distractors": [
+          "Kyoto",
+          "Osaka",
+          "Nagasaki"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The city of Edo, now called Tokyo, is the birthplace of which sushi style?",
+        "answer": "Nigiri sushi",
+        "distractors": [
+          "Maki rolls",
+          "Temaki",
+          "Chirashi"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Nigiri sushi originated in Kyoto.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Nigiri sushi was invented as fast street food in ___ during the 1820s.",
+        "answer": "Edo (Tokyo)",
+        "distractors": [
+          "Osaka",
+          "Kyoto",
+          "Hiroshima"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sushi#History",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A crowded Edo-era street scene with a wooden sushi stall, paper lanterns, and merchants eating standing up beside a river, pixel art style.",
+    "tags": [
+      "sushi",
+      "Edo",
+      "Tokyo",
+      "Japan",
+      "street food",
+      "history"
+    ]
+  },
+  {
+    "id": "food-sushi-wasabi-antiparasitic",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Wasabi was traditionally served with raw fish sushi because its antimicrobial compounds help kill parasites.",
+    "quizQuestion": "Why was wasabi traditionally served with raw fish sushi?",
+    "correctAnswer": "Kills parasites",
+    "distractors": [
+      "Improves color",
+      "Adds sweetness",
+      "Preserves rice",
+      "Softens fish",
+      "Prevents browning",
+      "Adds crunch",
+      "Masks fishiness",
+      "Neutralises soy sauce"
+    ],
+    "acceptableAnswers": [
+      "Kills parasites",
+      "antimicrobial",
+      "kills bacteria"
+    ],
+    "explanation": "Wasabi (Wasabia japonica) contains isothiocyanates, which have documented antimicrobial and antiparasitic properties. Before modern refrigeration, pairing wasabi with raw fish was a practical food-safety measure.",
+    "wowFactor": "That burning nose sensation from wasabi? It's actually a chemical weapon evolved by the plant — and it works against fish parasites too.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What practical food-safety role did wasabi serve with raw fish sushi?",
+        "answer": "Kills parasites",
+        "distractors": [
+          "Adds flavor",
+          "Preserves freshness",
+          "Prevents browning"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Wasabi's antimicrobial compounds made it useful for killing what in raw sushi?",
+        "answer": "Parasites",
+        "distractors": [
+          "Salt crystals",
+          "Rice starch",
+          "Seaweed spores"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Wasabi was originally served with sushi purely for flavor.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Wasabi's ___ properties made it a traditional food-safety pairing with raw fish.",
+        "answer": "Antimicrobial",
+        "distractors": [
+          "Sweetening",
+          "Coloring",
+          "Thickening"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wasabi",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A close-up of a pale-green wasabi root being grated on a sharkskin grater beside a neat row of nigiri sushi, pixel art style.",
+    "tags": [
+      "wasabi",
+      "sushi",
+      "antimicrobial",
+      "food safety",
+      "Japan"
+    ]
+  },
+  {
+    "id": "food-chocolate-cacao-origin",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "baking_desserts",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "baking_desserts",
+    "categoryL3": "",
+    "statement": "Chocolate originated in Mesoamerica, where the Olmec were the first to cultivate cacao around 1500 BCE.",
+    "quizQuestion": "Which ancient people first cultivated cacao for chocolate?",
+    "correctAnswer": "The Olmec",
+    "distractors": [
+      "The Aztec",
+      "The Maya",
+      "The Inca",
+      "The Toltec",
+      "The Zapotec",
+      "The Mixtec",
+      "The Teotihuacan",
+      "The Zapotec"
+    ],
+    "acceptableAnswers": [
+      "The Olmec",
+      "Olmec"
+    ],
+    "explanation": "Archaeological evidence from the Gulf Coast of Mexico shows the Olmec cultivating and consuming cacao as early as 1500 BCE — predating both the Maya and Aztec civilisations. The word 'cacao' itself may derive from an Olmec word.",
+    "wowFactor": "Chocolate is 3,500 years old — the Olmec were sipping bitter cacao drinks before Rome was even founded.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which Mesoamerican people first cultivated cacao around 1500 BCE?",
+        "answer": "The Olmec",
+        "distractors": [
+          "The Aztec",
+          "The Maya",
+          "The Inca"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Olmec civilisation is credited as the first cultivators of which plant?",
+        "answer": "Cacao",
+        "distractors": [
+          "Maize",
+          "Tobacco",
+          "Vanilla"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Aztec were the first people to cultivate cacao.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ were the first known cultivators of cacao, around 1500 BCE.",
+        "answer": "Olmec",
+        "distractors": [
+          "Aztec",
+          "Maya",
+          "Inca"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/History_of_chocolate",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An Olmec figure in jade jewellery holding a cacao pod in a lush tropical forest, stone monuments in the background, pixel art style.",
+    "tags": [
+      "chocolate",
+      "cacao",
+      "Olmec",
+      "Mesoamerica",
+      "history"
+    ]
+  },
+  {
+    "id": "food-chocolate-solid-invention",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "baking_desserts",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "baking_desserts",
+    "categoryL3": "",
+    "statement": "The first solid eating chocolate was created by J.S. Fry & Sons in Bristol, England in 1847.",
+    "quizQuestion": "Which company first created solid eating chocolate in 1847?",
+    "correctAnswer": "J.S. Fry & Sons",
+    "distractors": [
+      "Cadbury",
+      "Nestlé",
+      "Lindt",
+      "Hershey",
+      "Rowntree's",
+      "Van Houten",
+      "Toblerone",
+      "Suchard"
+    ],
+    "acceptableAnswers": [
+      "J.S. Fry & Sons",
+      "Fry's",
+      "Fry and Sons"
+    ],
+    "explanation": "In 1847, J.S. Fry & Sons combined cocoa powder, sugar, and melted cacao butter to produce the first moulded solid chocolate bar — transforming chocolate from a drink into a food people could eat.",
+    "wowFactor": "For 3,000 years chocolate was only a drink — a Bristol company changed that with one recipe in 1847.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which English company invented solid eating chocolate in 1847?",
+        "answer": "J.S. Fry & Sons",
+        "distractors": [
+          "Cadbury",
+          "Nestlé",
+          "Rowntree's"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "J.S. Fry & Sons of Bristol created the world's first what in 1847?",
+        "answer": "Solid chocolate bar",
+        "distractors": [
+          "Milk powder",
+          "Cocoa drink",
+          "Sugar candy"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Cadbury invented the first solid chocolate bar.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ created the first solid eating chocolate bar in Bristol in 1847.",
+        "answer": "J.S. Fry & Sons",
+        "distractors": [
+          "Cadbury",
+          "Nestlé",
+          "Lindt"
+        ]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/J._S._Fry_%26_Sons",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Victorian-era confectionery workshop with workers pouring chocolate into rectangular moulds, gas lamps glowing, pixel art style.",
+    "tags": [
+      "chocolate",
+      "Fry's",
+      "Bristol",
+      "history",
+      "invention"
+    ]
+  },
+  {
+    "id": "food-chocolate-theobromine",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "baking_desserts",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "baking_desserts",
+    "categoryL3": "",
+    "statement": "Theobromine, the stimulant in chocolate, is toxic to dogs because they metabolize it far more slowly than humans.",
+    "quizQuestion": "Why is chocolate toxic to dogs but safe for humans?",
+    "correctAnswer": "Dogs metabolize it slowly",
+    "distractors": [
+      "Dogs lack taste receptors",
+      "Dogs have smaller stomachs",
+      "Humans have a neutralizing enzyme",
+      "Dogs cannot digest fat",
+      "Sugar harms dog teeth",
+      "Cocoa smells repel dogs",
+      "Dogs absorb more caffeine",
+      "Dogs are allergic to cocoa fat"
+    ],
+    "acceptableAnswers": [
+      "Dogs metabolize it slowly",
+      "slow theobromine metabolism",
+      "cannot process theobromine"
+    ],
+    "explanation": "Theobromine is a methylxanthine stimulant found in chocolate. Dogs and cats metabolize it about 10 times more slowly than humans, allowing toxic levels to accumulate in the bloodstream, causing vomiting, seizures, and heart problems.",
+    "wowFactor": "That feel-good chocolate chemical is basically a slow-acting poison for dogs — the same molecule that gives you a mild buzz can kill a spaniel.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What makes the theobromine in chocolate toxic to dogs?",
+        "answer": "Dogs metabolize it slowly",
+        "distractors": [
+          "Dogs lack enzymes",
+          "Dogs absorb more caffeine",
+          "Sugar damages kidneys"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Theobromine builds to toxic levels in dogs because they cannot do what fast enough?",
+        "answer": "Metabolize it",
+        "distractors": [
+          "Digest fat",
+          "Absorb water",
+          "Excrete caffeine"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Chocolate is toxic to dogs because of its sugar content.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Chocolate is toxic to dogs because they metabolize ___ far more slowly than humans.",
+        "answer": "Theobromine",
+        "distractors": [
+          "Caffeine",
+          "Sugar",
+          "Fat"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Theobromine_poisoning",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cartoon dog looking longingly at a chocolate bar with a red warning symbol, pixel art style with bold colours.",
+    "tags": [
+      "chocolate",
+      "theobromine",
+      "dogs",
+      "toxicity",
+      "food science"
+    ]
+  },
+  {
+    "id": "food-pizza-naples-origin",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "Pizza as we know it was born in Naples, Italy, where the first pizzeria, Antica Pizzeria Port'Alba, opened in 1830.",
+    "quizQuestion": "In which Italian city did modern pizza originate?",
+    "correctAnswer": "Naples",
+    "distractors": [
+      "Rome",
+      "Florence",
+      "Venice",
+      "Milan",
+      "Genoa",
+      "Bologna",
+      "Turin",
+      "Palermo"
+    ],
+    "acceptableAnswers": [
+      "Naples",
+      "Napoli"
+    ],
+    "explanation": "Naples in the 18th and 19th centuries was a densely populated city where cheap, portable flatbreads topped with tomato became street food for the poor. Antica Pizzeria Port'Alba, opened in 1830, is considered the world's first pizzeria.",
+    "wowFactor": "Pizza was considered poor people's food in Naples — it wasn't until a queen tasted it in 1889 that it gained respectability.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which Italian city is the birthplace of modern pizza?",
+        "answer": "Naples",
+        "distractors": [
+          "Rome",
+          "Florence",
+          "Venice"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Naples is credited as the birthplace of which iconic Italian dish?",
+        "answer": "Pizza",
+        "distractors": [
+          "Pasta",
+          "Risotto",
+          "Tiramisu"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pizza was invented in Rome.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Modern pizza originated in ___, where the world's first pizzeria opened in 1830.",
+        "answer": "Naples",
+        "distractors": [
+          "Rome",
+          "Milan",
+          "Florence"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pizza#History",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cobblestone Neapolitan street scene with a wood-fired oven and a baker sliding a pizza out, colourful laundry above, pixel art style.",
+    "tags": [
+      "pizza",
+      "Naples",
+      "Italy",
+      "history",
+      "cuisine"
+    ]
+  },
+  {
+    "id": "food-pizza-margherita-legend",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "Pizza Margherita was reportedly created in 1889 for Queen Margherita of Savoy, using tomato, mozzarella, and basil to represent the Italian flag.",
+    "quizQuestion": "Which Italian queen inspired the Margherita pizza in 1889?",
+    "correctAnswer": "Queen Margherita",
+    "distractors": [
+      "Queen Victoria",
+      "Queen Isabella",
+      "Queen Catherine",
+      "Queen Maria Theresa",
+      "Queen Adelaide",
+      "Queen Elena",
+      "Queen Anna",
+      "Queen Marie Antoinette"
+    ],
+    "acceptableAnswers": [
+      "Queen Margherita",
+      "Margherita of Savoy"
+    ],
+    "explanation": "According to legend, pizzaiolo Raffaele Esposito created three pizzas for Queen Margherita of Savoy's visit to Naples in 1889. She favoured the one with tomato (red), mozzarella (white), and basil (green) — the colours of the Italian flag.",
+    "wowFactor": "A pizza named after a queen helped legitimise what had been a food for the urban poor — royalty eats street food and suddenly everyone wants it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who was Pizza Margherita named after when it was created in 1889?",
+        "answer": "Queen Margherita",
+        "distractors": [
+          "Queen Victoria",
+          "Queen Isabella",
+          "Queen Elena"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Pizza Margherita's toppings of tomato, mozzarella, and basil represent the colours of which flag?",
+        "answer": "Italian flag",
+        "distractors": [
+          "French flag",
+          "Spanish flag",
+          "Vatican flag"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pizza Margherita was created to honour Queen Victoria.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Margherita pizza was created in 1889 for Queen Margherita, using toppings in ___ colours.",
+        "answer": "Italian flag",
+        "distractors": [
+          "Royal coat",
+          "Church banner",
+          "City crest"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pizza_Margherita",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 19th-century pizzaiolo presenting an ornate pizza to a regal woman in a crown, red, white, and green bunting draped above, pixel art style.",
+    "tags": [
+      "pizza",
+      "Margherita",
+      "Italy",
+      "history",
+      "royalty"
+    ]
+  },
+  {
+    "id": "food-pizza-gluten-structure",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "Pizza dough's stretchiness comes from gluten — a protein network formed when wheat flour and water are kneaded together.",
+    "quizQuestion": "What protein network makes pizza dough stretchy when kneaded?",
+    "correctAnswer": "Gluten",
+    "distractors": [
+      "Starch",
+      "Yeast",
+      "Pectin",
+      "Casein",
+      "Lecithin",
+      "Albumin",
+      "Collagen",
+      "Cellulose"
+    ],
+    "acceptableAnswers": [
+      "Gluten",
+      "gluten network"
+    ],
+    "explanation": "Kneading hydrated wheat flour causes glutenin and gliadin proteins to interlock, forming gluten — an elastic network that traps fermentation gases and gives pizza dough its signature stretchiness and chew.",
+    "wowFactor": "The same protein that celiac sufferers must avoid is the architectural marvel that lets a skilled pizzaiolo spin dough above their head without tearing it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What protein network develops when pizza dough is kneaded?",
+        "answer": "Gluten",
+        "distractors": [
+          "Starch",
+          "Yeast",
+          "Pectin"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Gluten forms from glutenin and gliadin proteins when flour is mixed with what?",
+        "answer": "Water",
+        "distractors": [
+          "Oil",
+          "Salt",
+          "Sugar"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pizza dough's stretchiness comes from yeast activity.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pizza dough owes its elasticity to ___, a protein network formed by kneading.",
+        "answer": "Gluten",
+        "distractors": [
+          "Starch",
+          "Casein",
+          "Pectin"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gluten",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A baker stretching pizza dough in a bright Italian kitchen, sunlight catching the translucent dough membrane, pixel art style.",
+    "tags": [
+      "pizza",
+      "gluten",
+      "dough",
+      "baking",
+      "food science"
+    ]
+  },
+  {
+    "id": "food-coffee-caffeine-mechanism",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "Caffeine keeps you awake by blocking adenosine receptors in the brain — the receptors that normally signal sleepiness.",
+    "quizQuestion": "How does caffeine prevent sleepiness in the brain?",
+    "correctAnswer": "Blocks adenosine receptors",
+    "distractors": [
+      "Boosts serotonin levels",
+      "Increases dopamine release",
+      "Stimulates adrenaline glands",
+      "Raises blood pressure directly",
+      "Depletes melatonin stores",
+      "Activates pain receptors",
+      "Inhibits GABA pathways",
+      "Neutralises acetylcholine"
+    ],
+    "acceptableAnswers": [
+      "Blocks adenosine receptors",
+      "adenosine receptor blocker",
+      "blocks adenosine"
+    ],
+    "explanation": "Adenosine accumulates in the brain during waking hours and binds to receptors to promote sleep. Caffeine's molecular structure is similar enough to adenosine that it fits the same receptors without activating them — a competitive block that keeps you alert.",
+    "wowFactor": "Coffee doesn't actually give you energy — it just steals your sleep signal by wearing an adenosine costume and sitting in the receptor.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does caffeine block in the brain to prevent sleepiness?",
+        "answer": "Adenosine receptors",
+        "distractors": [
+          "Serotonin receptors",
+          "Dopamine receptors",
+          "GABA pathways"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Adenosine receptors in the brain signal sleepiness; caffeine prevents this by doing what?",
+        "answer": "Blocking them",
+        "distractors": [
+          "Activating them",
+          "Destroying them",
+          "Flooding them"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Caffeine works by increasing dopamine in the brain.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Caffeine prevents sleepiness by blocking ___ receptors in the brain.",
+        "answer": "Adenosine",
+        "distractors": [
+          "Serotonin",
+          "Melatonin",
+          "Dopamine"
+        ]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Caffeine#Mechanism_of_action",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A microscopic brain synapse scene where a caffeine molecule shaped like a tiny coffee cup blocks a glowing receptor door, pixel art style.",
+    "tags": [
+      "coffee",
+      "caffeine",
+      "brain",
+      "adenosine",
+      "science"
+    ]
+  },
+  {
+    "id": "food-coffee-espresso-pressure",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "Espresso requires water forced through finely-ground coffee at 9 bars of pressure — about 9 times atmospheric pressure.",
+    "quizQuestion": "At how many bars of pressure is espresso typically brewed?",
+    "correctAnswer": "9 bars",
+    "distractors": [
+      "3 bars",
+      "5 bars",
+      "15 bars",
+      "20 bars",
+      "1 bar",
+      "25 bars",
+      "50 bars",
+      "12 bars"
+    ],
+    "acceptableAnswers": [
+      "9 bars",
+      "nine bars",
+      "9 bar"
+    ],
+    "explanation": "Standard espresso extraction uses 9 bars (approximately 130 psi) of pressure. This high pressure forces hot water through the tightly-packed puck of ground coffee in 20-30 seconds, extracting oils, acids, and solids that create espresso's distinctive crema.",
+    "wowFactor": "Your morning espresso shot is brewed under the same pressure as the deepest part of a 90-metre swimming pool — in 25 seconds.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What pressure is used to brew a standard espresso?",
+        "answer": "9 bars",
+        "distractors": [
+          "3 bars",
+          "15 bars",
+          "20 bars"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Espresso machines force water at 9 bars of pressure through what?",
+        "answer": "Finely ground coffee",
+        "distractors": [
+          "Coarsely ground beans",
+          "Coffee pods",
+          "Boiled grounds"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Espresso is brewed at 20 bars of pressure.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Espresso is brewed by forcing hot water at ___ bars of pressure through ground coffee.",
+        "answer": "9",
+        "distractors": [
+          "3",
+          "15",
+          "20"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Espresso",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section diagram of an espresso machine showing pressurised water arrows blasting through a dark coffee puck, pixel art style.",
+    "tags": [
+      "coffee",
+      "espresso",
+      "pressure",
+      "brewing",
+      "food science"
+    ]
+  },
+  {
+    "id": "food-marco-polo-pasta-myth",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_history",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_history",
+    "categoryL3": "",
+    "statement": "The popular claim that Marco Polo brought pasta to Italy from China is a myth — pasta existed in Italy before his 1295 return.",
+    "quizQuestion": "The claim that Marco Polo brought pasta to Italy from China is what?",
+    "correctAnswer": "A myth",
+    "distractors": [
+      "Historically confirmed",
+      "Partially proven",
+      "Disputed but likely",
+      "Based on his journals",
+      "Accepted by scholars",
+      "Proven by DNA analysis",
+      "Supported by Venetian records",
+      "Verified by the Vatican"
+    ],
+    "acceptableAnswers": [
+      "A myth",
+      "false",
+      "a misconception",
+      "debunked"
+    ],
+    "explanation": "A 1279 Italian document listing 'a basket of macaroni' predates Marco Polo's 1295 return from China. The myth was popularised by a 1929 American pasta industry newsletter — almost certainly invented for marketing purposes.",
+    "wowFactor": "The 'Marco Polo brought pasta' story was invented by an American pasta company in 1929 — it's advertising dressed up as history.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What verdict do historians give to the claim Marco Polo brought pasta from China?",
+        "answer": "It is a myth",
+        "distractors": [
+          "It is confirmed",
+          "It is disputed",
+          "It is partially true"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Italian documents from 1279 listing macaroni prove pasta existed before which explorer returned?",
+        "answer": "Marco Polo",
+        "distractors": [
+          "Christopher Columbus",
+          "Vasco da Gama",
+          "Ferdinand Magellan"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Marco Polo introduced pasta to Italy from China.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The story that Marco Polo brought pasta from China was invented in a ___ pasta industry newsletter.",
+        "answer": "1929",
+        "distractors": [
+          "1492",
+          "1750",
+          "1889"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Marco_Polo#Legacy_and_misconceptions",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A split panel: Marco Polo sailing with a spaghetti bowl marked 'MYTH' beside a medieval Italian kitchen already making pasta, pixel art style.",
+    "tags": [
+      "Marco Polo",
+      "pasta",
+      "Italy",
+      "myth",
+      "food history"
+    ]
+  },
+  {
+    "id": "food-marco-polo-silk-road-spices",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_history",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_history",
+    "categoryL3": "",
+    "statement": "Marco Polo's detailed descriptions of Asian spices and foods in 'The Travels of Marco Polo' helped fuel European demand for the Silk Road spice trade.",
+    "quizQuestion": "Which book by Marco Polo fuelled European demand for Asian spices?",
+    "correctAnswer": "The Travels of Marco Polo",
+    "distractors": [
+      "The Arabian Nights",
+      "The Book of Wonders",
+      "Suma Oriental",
+      "Imago Mundi",
+      "Book of Roger",
+      "The Spice Routes",
+      "Milione",
+      "The Silk Road ceased after his journey"
+    ],
+    "acceptableAnswers": [
+      "The Travels of Marco Polo",
+      "Travels of Marco Polo",
+      "Il Milione",
+      "Milione"
+    ],
+    "explanation": "Marco Polo's account (Il Milione, c. 1300) vividly described pepper, ginger, cinnamon, and other spices available in Asia. These descriptions inflamed European appetites for spices and provided commercial intelligence that helped justify the enormous cost of the spice trade.",
+    "wowFactor": "One travel book written in a Genoese prison changed European diets for centuries — and may have inspired Columbus's fateful westward voyage.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Marco Polo's travel writings do for the European spice trade?",
+        "answer": "Fuelled demand",
+        "distractors": [
+          "Ended monopolies",
+          "Reduced prices",
+          "Banned imports"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Marco Polo dictated 'The Travels of Marco Polo' while imprisoned in which Italian city?",
+        "answer": "Genoa",
+        "distractors": [
+          "Venice",
+          "Florence",
+          "Milan"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Marco Polo's book discouraged Europeans from seeking Asian spices.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Marco Polo's 'The Travels of Marco Polo' fuelled European appetite for ___ from Asia.",
+        "answer": "Spices",
+        "distractors": [
+          "Silk",
+          "Porcelain",
+          "Tea"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Travels_of_Marco_Polo",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Marco Polo in a Venetian robe reading from an illustrated manuscript showing colourful spice markets and camel caravans, pixel art style.",
+    "tags": [
+      "Marco Polo",
+      "Silk Road",
+      "spices",
+      "trade",
+      "food history"
+    ]
+  },
+  {
+    "id": "food-marco-polo-ice-cream",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_history",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_history",
+    "categoryL3": "",
+    "statement": "The claim that Marco Polo brought ice cream recipes from China to Europe is also a modern myth with no historical basis.",
+    "quizQuestion": "The story that Marco Polo brought ice cream from China is what?",
+    "correctAnswer": "A modern myth",
+    "distractors": [
+      "A confirmed fact",
+      "Based on his diary",
+      "Proven by archaeologists",
+      "Accepted in Italy",
+      "Partially documented",
+      "Supported by Chinese records",
+      "Mentioned in Il Milione",
+      "Confirmed by Kublai Khan records"
+    ],
+    "acceptableAnswers": [
+      "A modern myth",
+      "false",
+      "a myth",
+      "debunked"
+    ],
+    "explanation": "Like the pasta myth, the ice cream origin story linking Marco Polo and China first appeared in 20th-century American sources and has no basis in Polo's actual writings or contemporary records. Frozen desserts developed independently in multiple cultures.",
+    "wowFactor": "Two of the most famous food origin stories — pasta AND ice cream — were both invented by 20th-century Americans and pinned on Marco Polo.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Historians describe the claim that Marco Polo brought ice cream to Europe as what?",
+        "answer": "A modern myth",
+        "distractors": [
+          "Confirmed history",
+          "Possibly true",
+          "Debated by scholars"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Like the pasta myth, where did the false 'Marco Polo brought ice cream' story originate?",
+        "answer": "20th-century America",
+        "distractors": [
+          "Medieval Venice",
+          "Renaissance Rome",
+          "Victorian England"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Marco Polo's writings describe bringing ice cream recipes from China.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The claim that Marco Polo introduced ice cream from China is a ___ with no historical evidence.",
+        "answer": "Myth",
+        "distractors": [
+          "Confirmed event",
+          "Disputed account",
+          "Partial truth"
+        ]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ice_cream#History",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A startled Marco Polo figure stamped with 'MYTH' next to bowls of ice cream and pasta, with a 1920s newspaper headline in the background, pixel art style.",
+    "tags": [
+      "Marco Polo",
+      "ice cream",
+      "myth",
+      "food history"
+    ]
+  },
+  {
+    "id": "food-maillard-reaction-temperature",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_science",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_science",
+    "categoryL3": "",
+    "statement": "The Maillard reaction, responsible for the browning and flavour of cooked food, begins at around 140–165°C (280–330°F).",
+    "quizQuestion": "At roughly what temperature does the Maillard browning reaction begin?",
+    "correctAnswer": "140°C / 280°F",
+    "distractors": [
+      "50°C / 120°F",
+      "80°C / 175°F",
+      "100°C / 212°F",
+      "200°C / 390°F",
+      "250°C / 480°F",
+      "30°C / 85°F",
+      "300°C / 570°F",
+      "120°C / 250°F"
+    ],
+    "acceptableAnswers": [
+      "140°C",
+      "280°F",
+      "140–165°C",
+      "around 150°C"
+    ],
+    "explanation": "The Maillard reaction requires amino acids and reducing sugars to react under heat. It begins noticeably around 140°C — well above the 100°C boiling point of water, which is why boiling food doesn't brown but roasting and frying do.",
+    "wowFactor": "Every toasted bread crust, seared steak, and roasted coffee bean gets its complex flavour from the same chemical reaction discovered by a French physician in 1912.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "At approximately what temperature does the Maillard browning reaction begin?",
+        "answer": "140°C / 280°F",
+        "distractors": [
+          "100°C / 212°F",
+          "50°C / 120°F",
+          "200°C / 390°F"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Why does boiling food not trigger the Maillard reaction?",
+        "answer": "Temperature too low",
+        "distractors": [
+          "Water blocks sugars",
+          "No amino acids present",
+          "Steam cools the surface"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Maillard reaction begins at the boiling point of water (100°C).",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Maillard reaction begins around ___, which is why boiling does not brown food.",
+        "answer": "140°C",
+        "distractors": [
+          "100°C",
+          "50°C",
+          "200°C"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Maillard_reaction",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A split frying pan showing pale boiled chicken on one side and golden-brown seared chicken on the other, with a temperature arrow at 140°C, pixel art style.",
+    "tags": [
+      "Maillard reaction",
+      "browning",
+      "food science",
+      "cooking",
+      "chemistry"
+    ]
+  },
+  {
+    "id": "food-maillard-reaction-discoverer",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_science",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_science",
+    "categoryL3": "",
+    "statement": "The Maillard reaction was first described in 1912 by French chemist and physician Louis-Camille Maillard.",
+    "quizQuestion": "Who first described the Maillard browning reaction in 1912?",
+    "correctAnswer": "Louis-Camille Maillard",
+    "distractors": [
+      "Louis Pasteur",
+      "Antoine Lavoisier",
+      "Marie Curie",
+      "Justus von Liebig",
+      "Friedrich Wöhler",
+      "Gay-Lussac",
+      "Humphry Davy",
+      "Claude Bernard"
+    ],
+    "acceptableAnswers": [
+      "Louis-Camille Maillard",
+      "Maillard",
+      "L.C. Maillard"
+    ],
+    "explanation": "Louis-Camille Maillard (1878–1936) described the reaction between amino acids and reducing sugars when he was actually studying kidney disease — the browning chemistry was an incidental discovery that would later transform food science.",
+    "wowFactor": "The reaction that makes your breakfast smell incredible was discovered by a doctor studying kidney disease — he wasn't even thinking about food.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which French scientist described the browning reaction that bears his name in 1912?",
+        "answer": "Louis-Camille Maillard",
+        "distractors": [
+          "Louis Pasteur",
+          "Antoine Lavoisier",
+          "Justus von Liebig"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Louis-Camille Maillard first described his famous reaction while researching which disease?",
+        "answer": "Kidney disease",
+        "distractors": [
+          "Scurvy",
+          "Diabetes",
+          "Cholera"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Maillard reaction was discovered by Louis Pasteur.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Maillard reaction was described in 1912 by French physician ___.",
+        "answer": "Louis-Camille Maillard",
+        "distractors": [
+          "Louis Pasteur",
+          "Marie Curie",
+          "Antoine Lavoisier"
+        ]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Louis-Camille_Maillard",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A mustachioed early 20th-century French scientist in a white lab coat observing a bubbling flask of browning mixture, pixel art style.",
+    "tags": [
+      "Maillard reaction",
+      "Louis-Camille Maillard",
+      "chemistry",
+      "food science",
+      "history"
+    ]
+  },
+  {
+    "id": "food-maillard-reaction-searing",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_science",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_science",
+    "categoryL3": "",
+    "statement": "The Maillard reaction creates over 1,000 distinct flavour and aroma compounds in a seared steak.",
+    "quizQuestion": "How many flavour compounds can the Maillard reaction create in seared meat?",
+    "correctAnswer": "Over 1,000",
+    "distractors": [
+      "About 10",
+      "Around 50",
+      "Roughly 200",
+      "Exactly 500",
+      "About 750",
+      "Fewer than 100",
+      "Around 300",
+      "Around 100"
+    ],
+    "acceptableAnswers": [
+      "Over 1,000",
+      "more than 1000",
+      "1000+"
+    ],
+    "explanation": "The Maillard reaction between hundreds of amino acids and sugars in meat creates an extraordinarily complex mixture of aldehydes, ketones, pyrazines, and furans — over 1,000 volatile compounds contributing to the aroma and flavour of a properly seared steak.",
+    "wowFactor": "A seared steak is more chemically complex than a fine wine — the same reaction that browns toast is generating a symphony of over 1,000 flavour molecules.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Roughly how many distinct flavour compounds can form when meat is seared via Maillard reaction?",
+        "answer": "Over 1,000",
+        "distractors": [
+          "About 50",
+          "Around 200",
+          "Fewer than 100"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Maillard reaction in seared meat generates over 1,000 what?",
+        "answer": "Flavour compounds",
+        "distractors": [
+          "Amino acids",
+          "Fat molecules",
+          "Sugar crystals"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Maillard reaction creates fewer than 100 flavour compounds in seared meat.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Searing a steak via the Maillard reaction can generate over ___ distinct flavour compounds.",
+        "answer": "1,000",
+        "distractors": [
+          "50",
+          "200",
+          "500"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Maillard_reaction",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An explosion of coloured molecular structures bursting out of a sizzling steak in a cast iron pan, pixel art style with bright colours.",
+    "tags": [
+      "Maillard reaction",
+      "searing",
+      "flavour",
+      "food science",
+      "chemistry"
+    ]
+  },
+  {
+    "id": "food-pepper-king-of-spices",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "",
+    "statement": "Black pepper (Piper nigrum) is called the 'king of spices' and was so valuable in medieval Europe it was used as currency.",
+    "quizQuestion": "Which spice was so valuable in medieval Europe it was used as currency?",
+    "correctAnswer": "Black pepper",
+    "distractors": [
+      "Cinnamon",
+      "Saffron",
+      "Nutmeg",
+      "Cloves",
+      "Cardamom",
+      "Turmeric",
+      "Ginger",
+      "Vanilla"
+    ],
+    "acceptableAnswers": [
+      "Black pepper",
+      "pepper",
+      "Piper nigrum"
+    ],
+    "explanation": "In medieval Europe, black pepper was more valuable than gold by weight in some markets. Peppercorns were used to pay rents, taxes, and dowries. The Latin term 'piper' appears in legal documents recording pepper payments throughout the medieval period.",
+    "wowFactor": "Pepper was so precious that Alaric the Visigoth demanded 3,000 pounds of pepper as part of Rome's ransom in 408 CE.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which spice was used as currency in medieval Europe and called 'king of spices'?",
+        "answer": "Black pepper",
+        "distractors": [
+          "Saffron",
+          "Cinnamon",
+          "Nutmeg"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The spice Piper nigrum, once used as currency in Europe, is commonly called what?",
+        "answer": "Black pepper",
+        "distractors": [
+          "White pepper",
+          "Chilli pepper",
+          "Long pepper"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Saffron was the primary spice used as currency in medieval Europe.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Black pepper was so valuable in medieval Europe it was used as ___ to pay rents and taxes.",
+        "answer": "Currency",
+        "distractors": [
+          "Medicine",
+          "Dye",
+          "Fertilizer"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Black_pepper#History",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A medieval merchant weighing peppercorns on golden scales beside stacks of coins, a map of spice routes on the wall, pixel art style.",
+    "tags": [
+      "pepper",
+      "spices",
+      "medieval",
+      "trade",
+      "currency"
+    ]
+  },
+  {
+    "id": "food-pepper-piperine-heat",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "",
+    "statement": "The heat in black pepper comes from piperine, a compound that activates the same pain receptors as capsaicin in chillies.",
+    "quizQuestion": "What compound gives black pepper its pungent heat?",
+    "correctAnswer": "Piperine",
+    "distractors": [
+      "Capsaicin",
+      "Gingerol",
+      "Allicin",
+      "Eugenol",
+      "Cinnamaldehyde",
+      "Curcumin",
+      "Thymol",
+      "Terpineol"
+    ],
+    "acceptableAnswers": [
+      "Piperine"
+    ],
+    "explanation": "Piperine activates TRPV1 pain receptors — the same receptors triggered by capsaicin in chillies and by heat. Interestingly, piperine also enhances absorption of other compounds; it increases bioavailability of curcumin (turmeric) by up to 2,000%.",
+    "wowFactor": "Pepper's heat works the same way as chilli heat — both trick your body into thinking it's been burned. And pepper makes turmeric 20x more absorbable.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What compound in black pepper activates the same pain receptors as chilli's capsaicin?",
+        "answer": "Piperine",
+        "distractors": [
+          "Gingerol",
+          "Allicin",
+          "Eugenol"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Piperine is the compound responsible for the heat in which common kitchen spice?",
+        "answer": "Black pepper",
+        "distractors": [
+          "Ginger",
+          "Garlic",
+          "Cinnamon"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Black pepper gets its heat from capsaicin, the same compound as in chillies.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The compound ___ in black pepper activates the same pain receptors as capsaicin.",
+        "answer": "Piperine",
+        "distractors": [
+          "Gingerol",
+          "Allicin",
+          "Curcumin"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Piperine",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A molecular diagram of piperine beside a sneezing cartoon figure and a glowing pain-receptor neuron, pixel art style.",
+    "tags": [
+      "pepper",
+      "piperine",
+      "capsaicin",
+      "food science",
+      "spices"
+    ]
+  },
+  {
+    "id": "food-pepper-keralan-origin",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "",
+    "statement": "Black pepper is native to the Malabar Coast of Kerala, India, and has been traded internationally for over 4,000 years.",
+    "quizQuestion": "In which Indian region did black pepper originate?",
+    "correctAnswer": "Malabar Coast, Kerala",
+    "distractors": [
+      "Tamil Nadu",
+      "Maharashtra",
+      "Goa",
+      "Sri Lanka",
+      "Bengal",
+      "Rajasthan",
+      "Gujarat",
+      "Karnataka"
+    ],
+    "acceptableAnswers": [
+      "Malabar Coast, Kerala",
+      "Kerala",
+      "Malabar Coast"
+    ],
+    "explanation": "Black pepper (Piper nigrum) is indigenous to Kerala's Malabar Coast in southwest India. Archaeological evidence and ancient texts — including Egyptian papyri and Vedic scriptures — confirm it has been traded for at least 4,000 years.",
+    "wowFactor": "Every pepper grinder in the world traces back to a single region of southwest India — and peppercorns were found stuffed in Ramesses II's nostrils in 1213 BCE.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where in India did black pepper originate, making it a key ancient trade commodity?",
+        "answer": "Malabar Coast, Kerala",
+        "distractors": [
+          "Tamil Nadu",
+          "Goa",
+          "Bengal"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Malabar Coast in Kerala is the original home of which globally traded spice?",
+        "answer": "Black pepper",
+        "distractors": [
+          "Cardamom",
+          "Turmeric",
+          "Cinnamon"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Black pepper originally came from Sri Lanka.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Black pepper is native to the ___ of Kerala, India, and has been traded for 4,000 years.",
+        "answer": "Malabar Coast",
+        "distractors": [
+          "Coromandel Coast",
+          "Konkan Coast",
+          "Fisherman's Coast"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Black_pepper",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Lush Kerala pepper vines climbing wooden poles on a tropical hillside, a merchant boat visible on blue water below, pixel art style.",
+    "tags": [
+      "pepper",
+      "Kerala",
+      "Malabar Coast",
+      "India",
+      "trade",
+      "spices"
+    ]
+  },
+  {
+    "id": "food-tacos-corn-tortilla",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "world_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "world_cuisine",
+    "categoryL3": "",
+    "statement": "Traditional Mexican tacos use corn tortillas, which are made through nixtamalisation — soaking maize in limewater to release nutrients.",
+    "quizQuestion": "What process is used to make corn tortillas for traditional tacos?",
+    "correctAnswer": "Nixtamalisation",
+    "distractors": [
+      "Fermentation",
+      "Milling",
+      "Bleaching",
+      "Pasteurisation",
+      "Extrusion",
+      "Leavening",
+      "Stone grinding",
+      "Pasteurisation"
+    ],
+    "acceptableAnswers": [
+      "Nixtamalisation",
+      "nixtamalization",
+      "nixtamal process"
+    ],
+    "explanation": "Nixtamalisation involves soaking dried maize in an alkaline solution (traditionally limewater — calcium hydroxide). This breaks down the corn's pericarp, releases bound niacin, and improves protein quality — making nixtamal far more nutritious than plain ground corn.",
+    "wowFactor": "Corn tortillas are a nutritional upgrade — the 3,000-year-old limewater soak process converts corn's locked niacin into a form humans can actually absorb.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What ancient process using limewater makes corn tortillas more nutritious?",
+        "answer": "Nixtamalisation",
+        "distractors": [
+          "Fermentation",
+          "Bleaching",
+          "Stone grinding"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Nixtamalisation involves soaking maize in what alkaline solution?",
+        "answer": "Limewater",
+        "distractors": [
+          "Salt water",
+          "Vinegar",
+          "Ash water"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Traditional corn tortillas are made by simply grinding dry maize into flour.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Corn tortillas are made from maize processed through ___, which unlocks nutrients.",
+        "answer": "Nixtamalisation",
+        "distractors": [
+          "Fermentation",
+          "Bleaching",
+          "Milling"
+        ]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 7,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nixtamalization",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Mesoamerican woman pressing soaked nixtamal corn dough on a stone metate, a clay pot of limewater beside her, pixel art style.",
+    "tags": [
+      "tacos",
+      "tortilla",
+      "nixtamalisation",
+      "Mexico",
+      "corn",
+      "food science"
+    ]
+  },
+  {
+    "id": "food-tacos-origin-mining",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "world_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "world_cuisine",
+    "categoryL3": "",
+    "statement": "The word 'taco' likely originated in 18th-century Mexican silver mines, where gunpowder wrapped in paper resembled the filled tortilla fold.",
+    "quizQuestion": "Where did the word 'taco' most likely originate in 18th-century Mexico?",
+    "correctAnswer": "Silver mines",
+    "distractors": [
+      "Aztec palaces",
+      "Street markets",
+      "Spanish courts",
+      "Fishing villages",
+      "Franciscan missions",
+      "Mayan temples",
+      "Cattle ranches",
+      "Aztec royal courts"
+    ],
+    "acceptableAnswers": [
+      "Silver mines",
+      "Mexican silver mines",
+      "mining camps"
+    ],
+    "explanation": "Food historian Jeffrey Pilcher's research suggests the word 'taco' derives from mining terminology in 18th-century New Spain. Miners used 'tacos' to refer to pieces of paper wrapped around gunpowder for blasting — the shape resembled a filled tortilla fold.",
+    "wowFactor": "The world's most popular street food may be named after 18th-century silver mine explosives — tacos were gunpowder charges before they were dinner.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Food historians believe the word 'taco' originated among workers in 18th-century Mexican what?",
+        "answer": "Silver mines",
+        "distractors": [
+          "Aztec markets",
+          "Spanish courts",
+          "Fishing villages"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In silver mines, 'tacos' originally referred to gunpowder wrapped in paper — a shape resembling what food?",
+        "answer": "Filled tortilla",
+        "distractors": [
+          "Tamale",
+          "Burrito",
+          "Enchilada"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The word 'taco' comes directly from an Aztec word for flatbread.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The word 'taco' likely comes from 18th-century ___ terminology for wrapped gunpowder charges.",
+        "answer": "Mining",
+        "distractors": [
+          "Farming",
+          "Fishing",
+          "Military"
+        ]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Taco#Etymology",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A darkened colonial-era silver mine with a miner holding paper-wrapped gunpowder beside a glowing taco stand at the mine entrance, pixel art style.",
+    "tags": [
+      "tacos",
+      "etymology",
+      "Mexico",
+      "silver mines",
+      "food history"
+    ]
+  },
+  {
+    "id": "food-tacos-globalization",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "world_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "world_cuisine",
+    "categoryL3": "",
+    "statement": "Tacos al pastor — a Mexican taco style — was inspired by Lebanese shawarma brought to Mexico by Lebanese immigrants in the early 20th century.",
+    "quizQuestion": "Which Middle Eastern dish inspired the Mexican taco al pastor?",
+    "correctAnswer": "Shawarma",
+    "distractors": [
+      "Falafel",
+      "Kebab",
+      "Döner",
+      "Kofta",
+      "Kibbeh",
+      "Hummus wrap",
+      "Lahmacun",
+      "Turkish döner"
+    ],
+    "acceptableAnswers": [
+      "Shawarma",
+      "Lebanese shawarma"
+    ],
+    "explanation": "Lebanese immigrants arrived in central Mexico (particularly Puebla) from the 1890s onwards. They brought the vertical rotisserie shawarma technique, which Mexicans adapted using pork and achiote marinade — creating tacos al pastor, now one of Mexico's most beloved street foods.",
+    "wowFactor": "Your favourite 'authentic Mexican' taco al pastor is actually a Lebanese-Mexican fusion invented by immigrants less than 100 years ago.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Tacos al pastor was inspired by which Lebanese dish brought to Mexico?",
+        "answer": "Shawarma",
+        "distractors": [
+          "Falafel",
+          "Kebab",
+          "Kofta"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Lebanese immigrants brought the shawarma technique to Mexico, inspiring which taco style?",
+        "answer": "Tacos al pastor",
+        "distractors": [
+          "Tacos de birria",
+          "Tacos de canasta",
+          "Tacos dorados"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Tacos al pastor has Aztec origins.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Tacos al pastor was created by adapting ___, brought to Mexico by Lebanese immigrants.",
+        "answer": "Shawarma",
+        "distractors": [
+          "Falafel",
+          "Döner",
+          "Kebab"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Taco_al_pastor",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A split panel showing a Lebanese shawarma rotisserie on the left and a Mexican taco al pastor vertical spit on the right, with an immigrant ship connecting them, pixel art style.",
+    "tags": [
+      "tacos",
+      "al pastor",
+      "shawarma",
+      "Lebanon",
+      "Mexico",
+      "food history"
+    ]
+  },
+  {
+    "id": "food-curry-word-origin",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "The word 'curry' is a British anglicisation of the Tamil word 'kari', meaning sauce — the spice blend concept was largely invented for Western markets.",
+    "quizQuestion": "From which language does the word 'curry' originate?",
+    "correctAnswer": "Tamil",
+    "distractors": [
+      "Hindi",
+      "Sanskrit",
+      "Urdu",
+      "Bengali",
+      "Arabic",
+      "Persian",
+      "Malay",
+      "Kannada"
+    ],
+    "acceptableAnswers": [
+      "Tamil",
+      "Tamil language"
+    ],
+    "explanation": "The word 'curry' derives from the Tamil word 'kari' (கறி), meaning sauce or relish. British colonists in India used it as a catch-all term for a vast range of distinct spiced dishes. The packaged 'curry powder' blend was largely a British commercial invention.",
+    "wowFactor": "There is no single dish called 'curry' in India — it's a British colonial label applied to hundreds of completely different regional dishes.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which language gave us the word 'curry', meaning sauce?",
+        "answer": "Tamil",
+        "distractors": [
+          "Hindi",
+          "Sanskrit",
+          "Urdu"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Tamil word 'kari', meaning sauce, was anglicised by the British into which word?",
+        "answer": "Curry",
+        "distractors": [
+          "Masala",
+          "Dal",
+          "Biryani"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: 'Curry powder' as sold in supermarkets is a traditional Indian spice blend.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The word 'curry' is an anglicisation of the ___ word 'kari', meaning sauce.",
+        "answer": "Tamil",
+        "distractors": [
+          "Hindi",
+          "Urdu",
+          "Sanskrit"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Curry#Etymology",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A British colonial officer in a pith helmet pointing at a diverse array of Indian dishes while a Tamil cook looks exasperated, pixel art style.",
+    "tags": [
+      "curry",
+      "Tamil",
+      "etymology",
+      "India",
+      "colonialism",
+      "food history"
+    ]
+  },
+  {
+    "id": "food-curry-turmeric-colour",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Turmeric gives curry its yellow colour through curcumin, which also has documented anti-inflammatory properties.",
+    "quizQuestion": "What compound in turmeric gives curry its yellow colour?",
+    "correctAnswer": "Curcumin",
+    "distractors": [
+      "Capsaicin",
+      "Piperine",
+      "Beta-carotene",
+      "Lycopene",
+      "Anthocyanin",
+      "Quercetin",
+      "Chlorophyll",
+      "Flavonoid"
+    ],
+    "acceptableAnswers": [
+      "Curcumin"
+    ],
+    "explanation": "Curcumin (C21H20O6) is the primary curcuminoid in turmeric root. It absorbs blue-violet light, reflecting yellow. Beyond colour, curcumin is a potent inhibitor of NF-κB, a key inflammatory signalling molecule — though bioavailability is low unless combined with piperine (black pepper).",
+    "wowFactor": "The yellow in curry has been used as fabric dye, Buddhist monk's robes, and medicine for 4,000 years — and black pepper makes it 2,000% more absorbable by the body.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What compound in turmeric gives curry dishes their yellow colour?",
+        "answer": "Curcumin",
+        "distractors": [
+          "Capsaicin",
+          "Beta-carotene",
+          "Lycopene"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Curcumin is the yellow pigment and anti-inflammatory compound found in which spice?",
+        "answer": "Turmeric",
+        "distractors": [
+          "Saffron",
+          "Paprika",
+          "Mustard"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Curry's yellow colour comes from saffron.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Turmeric's ___ gives curry its yellow colour and has anti-inflammatory properties.",
+        "answer": "Curcumin",
+        "distractors": [
+          "Capsaicin",
+          "Piperine",
+          "Beta-carotene"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Curcumin",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section of a turmeric root glowing yellow beside a bowl of golden curry, with molecular structure floating above, pixel art style.",
+    "tags": [
+      "curry",
+      "turmeric",
+      "curcumin",
+      "colour",
+      "food science"
+    ]
+  },
+  {
+    "id": "food-curry-thousand-variations",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "India has no single 'curry' — the country has thousands of distinct spiced stew dishes varying by region, religion, and season.",
+    "quizQuestion": "What misconception do most Westerners have about Indian curry?",
+    "correctAnswer": "That it is one dish",
+    "distractors": [
+      "That it is always spicy",
+      "That it uses a single spice",
+      "That it is vegetarian",
+      "That it is always served with rice",
+      "That it originated in Britain",
+      "That it contains meat",
+      "That it is always yellow",
+      "That it uses no spices"
+    ],
+    "acceptableAnswers": [
+      "That it is one dish",
+      "it's a single dish",
+      "it's one recipe"
+    ],
+    "explanation": "India encompasses over 28 states and 8 union territories, each with distinct culinary traditions. What Westerners call 'curry' encompasses dal, saag, korma, vindaloo, rogan josh, biryani, and thousands of other dishes with entirely different spice profiles and techniques.",
+    "wowFactor": "Saying you like 'Indian curry' is like saying you like 'European food' — it's a meaningless umbrella over thousands of completely different dishes.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is wrong with treating 'curry' as a single Indian dish?",
+        "answer": "India has thousands of distinct dishes",
+        "distractors": [
+          "Curry is Chinese",
+          "India has no spiced food",
+          "Only one curry exists"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Dal, korma, vindaloo, and rogan josh are all examples of dishes incorrectly lumped together as what?",
+        "answer": "Curry",
+        "distractors": [
+          "Masala",
+          "Biryani",
+          "Tikka"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: 'Curry' refers to a single standardised Indian dish.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "India has ___ of distinct spiced dishes — what Westerners call 'curry' is a misleading simplification.",
+        "answer": "Thousands",
+        "distractors": [
+          "Dozens",
+          "Hundreds",
+          "Millions"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Indian_cuisine",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A colourful map of India with dozens of different dishes labelled across different regions, a confused Western tourist in the corner, pixel art style.",
+    "tags": [
+      "curry",
+      "India",
+      "cuisine",
+      "diversity",
+      "misconception"
+    ]
+  },
+  {
+    "id": "food-bread-yeast-leavening",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "baking_desserts",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "baking_desserts",
+    "categoryL3": "",
+    "statement": "Leavened bread requires yeast to ferment sugars, producing carbon dioxide gas bubbles that make the dough rise.",
+    "quizQuestion": "What gas does yeast produce that makes bread dough rise?",
+    "correctAnswer": "Carbon dioxide",
+    "distractors": [
+      "Oxygen",
+      "Nitrogen",
+      "Hydrogen",
+      "Methane",
+      "Ethylene",
+      "Steam only",
+      "Ammonia",
+      "Carbon monoxide"
+    ],
+    "acceptableAnswers": [
+      "Carbon dioxide",
+      "CO2"
+    ],
+    "explanation": "Saccharomyces cerevisiae (baker's yeast) ferments sugars anaerobically, producing CO2 and ethanol. The CO2 is trapped in gluten's elastic network, creating bubbles that expand in the oven's heat, giving bread its light, airy texture.",
+    "wowFactor": "Every loaf of bread is essentially a network of tiny bubbles — bread's soft texture is 85% air, trapped there by living organisms eating sugar.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What gas does yeast produce during fermentation to make bread dough rise?",
+        "answer": "Carbon dioxide",
+        "distractors": [
+          "Oxygen",
+          "Nitrogen",
+          "Hydrogen"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Carbon dioxide produced by yeast is trapped by gluten to create which food's light texture?",
+        "answer": "Bread",
+        "distractors": [
+          "Cake only",
+          "Pasta",
+          "Crackers"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Bread rises because yeast produces oxygen.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Yeast ferments sugars to produce ___, which makes bread dough rise.",
+        "answer": "Carbon dioxide",
+        "distractors": [
+          "Oxygen",
+          "Nitrogen",
+          "Steam"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Leavening_agent",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A magnified cross-section of bread dough showing tiny CO2 bubbles inside a gluten network, with yeast cells visibly eating sugar, pixel art style.",
+    "tags": [
+      "bread",
+      "yeast",
+      "carbon dioxide",
+      "fermentation",
+      "baking"
+    ]
+  },
+  {
+    "id": "food-bread-ancient-egypt",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "baking_desserts",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "baking_desserts",
+    "categoryL3": "",
+    "statement": "Ancient Egyptians were among the first to bake leavened bread around 3000 BCE, and used bread as wages for pyramid workers.",
+    "quizQuestion": "What did ancient Egyptians use bread as for pyramid workers?",
+    "correctAnswer": "Wages",
+    "distractors": [
+      "Religious offering only",
+      "Animal fodder",
+      "Building material",
+      "Fuel for fires",
+      "Trade with Rome",
+      "Medicine",
+      "Decoration",
+      "Barley wine only"
+    ],
+    "acceptableAnswers": [
+      "Wages",
+      "payment",
+      "currency"
+    ],
+    "explanation": "Workers who built the pyramids at Giza received daily rations of bread and beer as payment — ancient payslips found near Giza record precise allocations. Bread was so fundamental to Egyptian life that the hieroglyph for 'food' was a loaf of bread.",
+    "wowFactor": "The Great Pyramid was literally built on bread and beer — workers were paid in food, not gold, and we have the ancient payslips to prove it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did ancient Egyptians give pyramid workers as wages alongside beer?",
+        "answer": "Bread",
+        "distractors": [
+          "Gold",
+          "Salt",
+          "Grain only"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Ancient Egypt used bread as wages; surviving payslips near which site confirm this?",
+        "answer": "Giza",
+        "distractors": [
+          "Luxor",
+          "Memphis",
+          "Thebes"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pyramid workers at Giza were paid primarily in gold.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ancient Egyptians paid pyramid workers in bread and ___ as daily rations.",
+        "answer": "Beer",
+        "distractors": [
+          "Wine",
+          "Water",
+          "Oil"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ancient_Egyptian_cuisine",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An Egyptian overseer handing a stack of round flatbreads to a muscular pyramid worker under a blazing sun, with a pyramid rising in the background, pixel art style.",
+    "tags": [
+      "bread",
+      "Egypt",
+      "pyramids",
+      "wages",
+      "history"
+    ]
+  },
+  {
+    "id": "food-bread-sourdough-microbiome",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "baking_desserts",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "baking_desserts",
+    "categoryL3": "",
+    "statement": "Sourdough bread is leavened by a wild yeast and lactic acid bacteria community — a living culture that bakers feed and maintain for years.",
+    "quizQuestion": "What living community of microbes leavens sourdough bread?",
+    "correctAnswer": "Wild yeast and bacteria",
+    "distractors": [
+      "Commercial yeast only",
+      "Mould spores",
+      "Baking soda reaction",
+      "Vinegar and salt",
+      "Egg white proteins",
+      "Buttermilk cultures",
+      "Fermented honey",
+      "Dried yeast flakes"
+    ],
+    "acceptableAnswers": [
+      "Wild yeast and bacteria",
+      "wild yeast and lactic acid bacteria",
+      "sourdough starter culture"
+    ],
+    "explanation": "A sourdough starter is a stable symbiotic culture of wild Saccharomyces yeasts and lactic acid bacteria (primarily Lactobacillus). The yeast produces CO2 for leavening while the bacteria produce lactic and acetic acids for sourdough's characteristic tang.",
+    "wowFactor": "Some sourdough starters are over 150 years old — bakers have been keeping the same living culture alive longer than most countries have existed.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Sourdough bread is leavened by a symbiotic culture of wild yeast and what else?",
+        "answer": "Lactic acid bacteria",
+        "distractors": [
+          "Commercial yeast",
+          "Mould spores",
+          "Baking powder"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Wild yeast and lactic acid bacteria working together create the tang and rise of which bread?",
+        "answer": "Sourdough",
+        "distractors": [
+          "Focaccia",
+          "Rye bread",
+          "Brioche"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Sourdough is leavened using commercial yeast packets.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A sourdough starter is a living culture of ___ that bakers feed and maintain over years.",
+        "answer": "Wild yeast and bacteria",
+        "distractors": [
+          "Commercial yeast",
+          "Mould spores",
+          "Baking soda"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sourdough",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glass jar of bubbling sourdough starter on a wooden shelf, with tiny illustrated yeast and bacteria cells visible inside, pixel art style.",
+    "tags": [
+      "bread",
+      "sourdough",
+      "fermentation",
+      "microbiome",
+      "baking"
+    ]
+  }
+]

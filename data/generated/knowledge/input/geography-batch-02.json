@@ -1,0 +1,192 @@
+{
+  "domain": "geography",
+  "batchIndex": 2,
+  "totalBatches": 3,
+  "entities": [
+    {
+      "qid": "Q15",
+      "label": "Africa",
+      "description": "continent",
+      "subcategory": "africa",
+      "sitelinks": 368,
+      "monthlyPageviews": 184000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q16",
+      "label": "Canada",
+      "description": "country in North America",
+      "subcategory": "americas",
+      "sitelinks": 390,
+      "monthlyPageviews": 195000,
+      "properties": {
+        "country": "Canada",
+        "inception": "+1867-07-01T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q17",
+      "label": "Japan",
+      "description": "island country in East Asia",
+      "subcategory": "asia_oceania",
+      "sitelinks": 412,
+      "monthlyPageviews": 206000,
+      "properties": {
+        "country": "Japan",
+        "inception": "-0660-02-11T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q182657",
+      "label": "Antarctic Circle",
+      "description": "boundary of the Antarctic",
+      "subcategory": "climate_biomes",
+      "sitelinks": 81,
+      "monthlyPageviews": 40500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q33",
+      "label": "Finland",
+      "description": "country in Northern Europe",
+      "subcategory": "europe",
+      "sitelinks": 399,
+      "monthlyPageviews": 199500,
+      "properties": {
+        "inception": "+1917-12-06T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q64",
+      "label": "Berlin",
+      "description": "federated state, capital and largest city of Germany",
+      "subcategory": "extreme_records",
+      "sitelinks": 330,
+      "monthlyPageviews": 165000,
+      "properties": {
+        "country": "Q148499",
+        "inception": "+1244-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q1071",
+      "label": "geography",
+      "description": "science that studies the terrestrial surface, the societies that inhabit it and the territories, landscapes, places or regions that form it when interacting with each other",
+      "subcategory": "landforms_water",
+      "sitelinks": 306,
+      "monthlyPageviews": 153000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q262",
+      "label": "Algeria",
+      "description": "country in North Africa",
+      "subcategory": "africa",
+      "sitelinks": 363,
+      "monthlyPageviews": 181500,
+      "properties": {
+        "country": "Algeria",
+        "inception": "+1962-07-05T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q155",
+      "label": "Brazil",
+      "description": "country in South America",
+      "subcategory": "americas",
+      "sitelinks": 381,
+      "monthlyPageviews": 190500,
+      "properties": {
+        "country": "Q200464",
+        "discoverer": "Q174432",
+        "inception": "+1822-09-07T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q46",
+      "label": "Europe",
+      "description": "terrestrial continent located in north-western Eurasia",
+      "subcategory": "asia_oceania",
+      "sitelinks": 400,
+      "monthlyPageviews": 200000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q133060",
+      "label": "Willem Barents",
+      "description": "Dutch navigator, cartographer, and Arctic explorer (1550–1597)",
+      "subcategory": "climate_biomes",
+      "sitelinks": 79,
+      "monthlyPageviews": 39500,
+      "properties": {
+        "birthDate": "+1550-01-01T00:00:00Z",
+        "deathDate": "+1597-06-20T00:00:00Z",
+        "occupation": "Q11900058",
+        "fieldOfWork": "Q6502154"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q20",
+      "label": "Norway",
+      "description": "country in Northern Europe",
+      "subcategory": "europe",
+      "sitelinks": 389,
+      "monthlyPageviews": 194500,
+      "properties": {
+        "country": "Norway",
+        "inception": "+1905-10-26T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q1490",
+      "label": "Tokyo",
+      "description": "capital and largest city of Japan",
+      "subcategory": "extreme_records",
+      "sitelinks": 311,
+      "monthlyPageviews": 155500,
+      "properties": {
+        "country": "Q17",
+        "inception": "+1868-09-06T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q398",
+      "label": "Bahrain",
+      "description": "country in the Persian Gulf",
+      "subcategory": "landforms_water",
+      "sitelinks": 299,
+      "monthlyPageviews": 149500,
+      "properties": {
+        "country": "Bahrain",
+        "inception": "+1971-08-14T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q258",
+      "label": "South Africa",
+      "description": "country in southern Africa",
+      "subcategory": "africa",
+      "sitelinks": 362,
+      "monthlyPageviews": 181000,
+      "properties": {
+        "country": "South Africa",
+        "inception": "+1910-05-31T00:00:00Z"
+      },
+      "processed": false
+    }
+  ]
+}

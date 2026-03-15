@@ -1,0 +1,216 @@
+{
+  "domain": "history",
+  "batchIndex": 3,
+  "totalBatches": 3,
+  "entities": [
+    {
+      "qid": "Q1405",
+      "label": "Augustus",
+      "description": "first emperor of the Roman Empire and founder of the Julio-Claudian dynasty",
+      "subcategory": "ancient_classical",
+      "sitelinks": 245,
+      "monthlyPageviews": 122500,
+      "properties": {
+        "birthDate": "-0063-00-00T00:00:00Z",
+        "deathDate": "+0014-08-19T00:00:00Z",
+        "occupation": "Q82955"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q78994",
+      "label": "Napoleonic Wars",
+      "description": "1803–1815 wars involving the French Empire",
+      "subcategory": "battles_military",
+      "sitelinks": 99,
+      "monthlyPageviews": 49500,
+      "properties": {
+        "startDate": "+1803-00-00T00:00:00Z",
+        "endDate": "+1815-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q7231",
+      "label": "Rosa Luxemburg",
+      "description": "Polish-German Marxist revolutionary (1871–1919)",
+      "subcategory": "early_modern",
+      "sitelinks": 185,
+      "monthlyPageviews": 92500,
+      "properties": {
+        "birthDate": "+1871-03-05T00:00:00Z",
+        "deathDate": "+1919-01-15T00:00:00Z",
+        "occupation": "Q82955"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q12567",
+      "label": "Vikings",
+      "description": "Norse people, farmers, merchants, explorers, raiders and pirates",
+      "subcategory": "medieval",
+      "sitelinks": 155,
+      "monthlyPageviews": 77500,
+      "properties": {
+        "startDate": "+0745-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q1394",
+      "label": "Vladimir Lenin",
+      "description": "founding leader of the Soviet Union from 1922 to 1924 (1870–1924)",
+      "subcategory": "modern_contemporary",
+      "sitelinks": 292,
+      "monthlyPageviews": 146000,
+      "properties": {
+        "movement": "Q1144178",
+        "birthDate": "+1870-04-10T00:00:00Z",
+        "deathDate": "+1924-01-21T00:00:00Z",
+        "occupation": "Q82955",
+        "fieldOfWork": "Q155059"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q207",
+      "label": "George W. Bush",
+      "description": "President of the United States from 2001 to 2009",
+      "subcategory": "people_leaders",
+      "sitelinks": 278,
+      "monthlyPageviews": 139000,
+      "properties": {
+        "birthDate": "+1946-07-06T00:00:00Z",
+        "occupation": "Q82955"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q23498",
+      "label": "archaeology",
+      "description": "study of the past via material culture",
+      "subcategory": "social_cultural",
+      "sitelinks": 181,
+      "monthlyPageviews": 90500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q361",
+      "label": "World War I",
+      "description": "global war originating in Europe, 1914–1918",
+      "subcategory": "world_wars",
+      "sitelinks": 260,
+      "monthlyPageviews": 130000,
+      "properties": {
+        "startDate": "+1914-07-28T00:00:00Z",
+        "endDate": "+1918-11-11T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q2277",
+      "label": "Roman Empire",
+      "description": "period of ancient Rome following the Republic",
+      "subcategory": "ancient_classical",
+      "sitelinks": 202,
+      "monthlyPageviews": 101000,
+      "properties": {
+        "startDate": "-0027-01-00T00:00:00Z",
+        "endDate": "+0395-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q254106",
+      "label": "Crimean War",
+      "description": "military conflict fought between October 1853 – March 1856",
+      "subcategory": "battles_military",
+      "sitelinks": 98,
+      "monthlyPageviews": 49000,
+      "properties": {
+        "startDate": "+1853-10-01T00:00:00Z",
+        "endDate": "+1856-02-01T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q33391",
+      "label": "Leon Trotsky",
+      "description": "Russian Marxist revolutionary (1879–1940)",
+      "subcategory": "early_modern",
+      "sitelinks": 180,
+      "monthlyPageviews": 90000,
+      "properties": {
+        "movement": "Q181133",
+        "birthDate": "+1879-10-26T00:00:00Z",
+        "deathDate": "+1940-08-21T00:00:00Z",
+        "occupation": "Q82955"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q8474",
+      "label": "Suleiman the Magnificent",
+      "description": "the tenth and greatest Sultan of Ottoman Empire (1520–1566)",
+      "subcategory": "medieval",
+      "sitelinks": 152,
+      "monthlyPageviews": 76000,
+      "properties": {
+        "birthDate": "+1494-11-06T00:00:00Z",
+        "deathDate": "+1566-09-06T00:00:00Z",
+        "occupation": "Q1097498",
+        "fieldOfWork": "Q1791716"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q1001",
+      "label": "Mahatma Gandhi",
+      "description": "Indian independence activist (1869–1948)",
+      "subcategory": "modern_contemporary",
+      "sitelinks": 282,
+      "monthlyPageviews": 141000,
+      "properties": {
+        "movement": "Q76611",
+        "birthDate": "+1869-10-02T00:00:00Z",
+        "deathDate": "+1948-01-30T00:00:00Z",
+        "occupation": "Q82955",
+        "fieldOfWork": "Q5891"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q9441",
+      "label": "The Buddha",
+      "description": "Indian philosopher and the founder of Buddhism (623 or 563 BCE – 543 or 483 BCE)",
+      "subcategory": "people_leaders",
+      "sitelinks": 270,
+      "monthlyPageviews": 135000,
+      "properties": {
+        "movement": "Q185514",
+        "birthDate": "-0563-04-08T00:00:00Z",
+        "deathDate": "-0483-00-00T00:00:00Z",
+        "occupation": "Q854997",
+        "fieldOfWork": "Q5891"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q38193",
+      "label": "Arthur Schopenhauer",
+      "description": "German philosopher (1788–1860)",
+      "subcategory": "social_cultural",
+      "sitelinks": 172,
+      "monthlyPageviews": 86000,
+      "properties": {
+        "movement": "Q7481907",
+        "birthDate": "+1788-02-22T00:00:00Z",
+        "deathDate": "+1860-09-21T00:00:00Z",
+        "occupation": "Q1622272",
+        "fieldOfWork": "Q35277"
+      },
+      "processed": false
+    }
+  ]
+}

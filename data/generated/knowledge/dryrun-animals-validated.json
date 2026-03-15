@@ -1,0 +1,2164 @@
+[
+  {
+    "id": "animals-horse-gestation",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Horses carry their young for approximately 11 months before giving birth.",
+    "quizQuestion": "How long is a horse's gestation period?",
+    "correctAnswer": "11 months",
+    "distractors": [
+      "6 months",
+      "9 months",
+      "14 months",
+      "3 months",
+      "18 months",
+      "8 months",
+      "2 years",
+      "12 months"
+    ],
+    "acceptableAnswers": [
+      "11 months",
+      "about 11 months",
+      "eleven months"
+    ],
+    "explanation": "A mare's gestation period averages 340 days, or roughly 11 months. Foals are born highly precocial and can stand and walk within hours of birth.",
+    "wowFactor": "A newborn foal can run alongside its mother within just a few hours of being born.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long is a horse's gestation period?",
+        "answer": "11 months",
+        "distractors": [
+          "9 months",
+          "6 months",
+          "14 months"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal has an 11-month gestation period?",
+        "answer": "Horse",
+        "distractors": [
+          "Cow",
+          "Donkey",
+          "Zebra"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A horse's pregnancy lasts approximately 11 months.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A horse carries its foal for approximately ___ months.",
+        "answer": "11",
+        "distractors": [
+          "9",
+          "6",
+          "14"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Horse",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A chestnut mare stands in a green meadow beside a wobbly newborn foal on spindly legs, golden sunrise behind rolling hills.",
+    "tags": [
+      "horse",
+      "gestation",
+      "reproduction",
+      "mammals"
+    ]
+  },
+  {
+    "id": "animals-horse-speed",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "The fastest recorded speed for a horse in a quarter-mile race was 55 mph (88 km/h).",
+    "quizQuestion": "What is the top recorded speed of a racing horse?",
+    "correctAnswer": "55 mph",
+    "distractors": [
+      "35 mph",
+      "45 mph",
+      "60 mph",
+      "70 mph",
+      "40 mph",
+      "80 mph",
+      "30 mph",
+      "65 mph"
+    ],
+    "acceptableAnswers": [
+      "55 mph",
+      "55 miles per hour",
+      "88 km/h",
+      "88 kilometers per hour"
+    ],
+    "explanation": "A Quarter Horse named Winning Brew set the record at 55 mph in 2008. Thoroughbreds average around 40 mph in longer races, but short-burst Quarter Horses are the speed kings.",
+    "wowFactor": "A Quarter Horse running at full speed could outpace a highway car—55 mph in a quarter-mile dash.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the top recorded speed of a racing horse?",
+        "answer": "55 mph",
+        "distractors": [
+          "45 mph",
+          "40 mph",
+          "65 mph"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A horse breed set the speed record at 55 mph in 2008. Which breed?",
+        "answer": "Quarter Horse",
+        "distractors": [
+          "Thoroughbred",
+          "Arabian",
+          "Appaloosa"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The fastest horse ever recorded reached 55 mph.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The fastest recorded horse speed is ___ mph.",
+        "answer": "55",
+        "distractors": [
+          "45",
+          "40",
+          "70"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Horse",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A sleek chestnut racehorse tears down a dirt track at full gallop, jockey low on its neck, dust clouds billowing under pounding hooves.",
+    "tags": [
+      "horse",
+      "speed",
+      "racing",
+      "records"
+    ]
+  },
+  {
+    "id": "animals-lion-pride",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Lions are the only cats that live in social groups called prides, which typically contain 10 to 15 members.",
+    "quizQuestion": "What is a group of lions called?",
+    "correctAnswer": "A pride",
+    "distractors": [
+      "A pack",
+      "A clan",
+      "A coalition",
+      "A troop",
+      "A murder",
+      "A sleuth",
+      "A bloat",
+      "A crash"
+    ],
+    "acceptableAnswers": [
+      "pride",
+      "a pride"
+    ],
+    "explanation": "A pride typically consists of related females, their cubs, and a small number of adult males. Females do most of the hunting and cooperatively raise their young.",
+    "wowFactor": "Lions are the only truly social cats — every other big cat leads a solitary life.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is a group of lions called?",
+        "answer": "A pride",
+        "distractors": [
+          "A pack",
+          "A clan",
+          "A troop"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which big cat lives in a group called a pride?",
+        "answer": "Lion",
+        "distractors": [
+          "Tiger",
+          "Leopard",
+          "Cheetah"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A group of lions is called a pride.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A group of lions living together is called a ___.",
+        "answer": "pride",
+        "distractors": [
+          "pack",
+          "clan",
+          "herd"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lion",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A majestic maned lion presides over a pride resting in golden savanna grass at sunset, cubs tumbling playfully around his massive paws.",
+    "tags": [
+      "lion",
+      "pride",
+      "social behavior",
+      "mammals"
+    ]
+  },
+  {
+    "id": "animals-lion-roar",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "A lion's roar can be heard from up to 8 kilometers (5 miles) away.",
+    "quizQuestion": "How far away can a lion's roar be heard?",
+    "correctAnswer": "8 km / 5 miles",
+    "distractors": [
+      "1 km",
+      "2 miles",
+      "10 miles",
+      "500 meters",
+      "3 km",
+      "20 km",
+      "15 miles",
+      "Half a mile"
+    ],
+    "acceptableAnswers": [
+      "8 km",
+      "5 miles",
+      "8 kilometers",
+      "5 miles away"
+    ],
+    "explanation": "Lions roar to communicate with pride members and warn rivals away from their territory. The sound can travel up to 8 km on a still night, making it one of the loudest calls in the animal kingdom.",
+    "wowFactor": "A lion's roar is loud enough to rattle the windows of a house nearly 5 miles away.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How far away can a lion's roar be heard?",
+        "answer": "8 km / 5 miles",
+        "distractors": [
+          "2 km",
+          "1 mile",
+          "20 km"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which big cat has a roar audible up to 8 km away?",
+        "answer": "Lion",
+        "distractors": [
+          "Tiger",
+          "Jaguar",
+          "Cougar"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A lion's roar can be heard 8 kilometers away.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A lion's roar can be heard up to ___ kilometers away.",
+        "answer": "8",
+        "distractors": [
+          "2",
+          "15",
+          "3"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lion",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A lion throws its head back mid-roar beneath a star-filled African sky, mouth wide open, mane rippling as sound waves radiate outward.",
+    "tags": [
+      "lion",
+      "roar",
+      "communication",
+      "sound"
+    ]
+  },
+  {
+    "id": "animals-lion-sleep",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Lions sleep up to 20 hours a day to conserve energy in the hot African savanna.",
+    "quizQuestion": "How many hours per day do lions typically sleep?",
+    "correctAnswer": "Up to 20 hours",
+    "distractors": [
+      "8 hours",
+      "10 hours",
+      "12 hours",
+      "6 hours",
+      "14 hours",
+      "16 hours",
+      "4 hours",
+      "22 hours"
+    ],
+    "acceptableAnswers": [
+      "20 hours",
+      "up to 20 hours",
+      "about 20 hours",
+      "16-20 hours"
+    ],
+    "explanation": "Lions are apex predators that expend enormous energy in short bursts during hunts. Resting up to 20 hours conserves energy and helps them cope with daytime heat.",
+    "wowFactor": "Lions sleep more than almost any other mammal — your average house cat has nothing on the king of the jungle.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many hours per day do lions typically sleep?",
+        "answer": "Up to 20 hours",
+        "distractors": [
+          "8 hours",
+          "12 hours",
+          "16 hours"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which big cat sleeps up to 20 hours a day?",
+        "answer": "Lion",
+        "distractors": [
+          "Cheetah",
+          "Snow leopard",
+          "Puma"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Lions sleep up to 20 hours per day.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Lions sleep up to ___ hours each day to conserve energy.",
+        "answer": "20",
+        "distractors": [
+          "12",
+          "8",
+          "16"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lion",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A group of lions sprawled lazily under the sparse shade of an acacia tree, paws in the air, completely unbothered under the blazing savanna sun.",
+    "tags": [
+      "lion",
+      "sleep",
+      "behavior",
+      "energy"
+    ]
+  },
+  {
+    "id": "animals-chicken-eggs",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "birds",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "birds",
+    "categoryL3": "",
+    "statement": "A hen can lay up to 300 eggs per year, but only if a rooster is absent — no rooster needed for unfertilized eggs.",
+    "quizQuestion": "Does a hen need a rooster to produce eggs?",
+    "correctAnswer": "No",
+    "distractors": [
+      "Yes, always",
+      "Only in winter",
+      "Yes, once a month",
+      "Only for the first clutch",
+      "Yes, for daily laying",
+      "Only outdoors",
+      "Yes, for brown eggs",
+      "Only after age 2"
+    ],
+    "acceptableAnswers": [
+      "no",
+      "no it doesn't",
+      "not for unfertilized eggs"
+    ],
+    "explanation": "Hens lay unfertilized eggs as a natural reproductive cycle — no rooster required. A rooster is only needed if you want fertilized eggs that could hatch into chicks.",
+    "wowFactor": "Almost every egg you've ever eaten was laid entirely without a rooster ever being involved.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Does a hen need a rooster to produce eggs for eating?",
+        "answer": "No",
+        "distractors": [
+          "Yes",
+          "Only sometimes",
+          "Only for the first egg"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is required for a hen to produce a fertilized egg that can hatch?",
+        "answer": "A rooster",
+        "distractors": [
+          "More sunlight",
+          "Special feed",
+          "A nest box"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A hen can lay eggs without a rooster present.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A hen lays ___ eggs naturally without any rooster.",
+        "answer": "unfertilized",
+        "distractors": [
+          "fertilized",
+          "blank",
+          "sterile"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chicken",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A plump speckled hen in a cozy straw nest proudly sitting beside a clutch of pale brown eggs, warm barn light glowing behind her.",
+    "tags": [
+      "chicken",
+      "eggs",
+      "reproduction",
+      "farming"
+    ]
+  },
+  {
+    "id": "animals-chicken-color-vision",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "birds",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "birds",
+    "categoryL3": "",
+    "statement": "Chickens have tetrachromatic vision, allowing them to see ultraviolet light that is invisible to humans.",
+    "quizQuestion": "What special type of light can chickens see that humans cannot?",
+    "correctAnswer": "Ultraviolet light",
+    "distractors": [
+      "Infrared light",
+      "X-rays",
+      "Radio waves",
+      "Gamma rays",
+      "Microwave radiation",
+      "Blue light only",
+      "Green light only",
+      "Red light only"
+    ],
+    "acceptableAnswers": [
+      "ultraviolet",
+      "UV light",
+      "UV",
+      "ultraviolet light"
+    ],
+    "explanation": "Chickens have four types of cone cells in their eyes (tetrachromacy), including one sensitive to UV light. This helps them find food, detect healthy mates, and navigate their environment.",
+    "wowFactor": "Chickens see a hidden world of ultraviolet patterns on feathers, fruits, and insects that is completely invisible to us.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What type of light can chickens see that humans cannot?",
+        "answer": "Ultraviolet light",
+        "distractors": [
+          "Infrared light",
+          "X-rays",
+          "Radio waves"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which common farm bird can see ultraviolet light?",
+        "answer": "Chicken",
+        "distractors": [
+          "Duck",
+          "Turkey",
+          "Goose"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Chickens can see ultraviolet light invisible to humans.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Chickens have ___ vision, letting them see UV light.",
+        "answer": "tetrachromatic",
+        "distractors": [
+          "dichromatic",
+          "monochromatic",
+          "trichromatic"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chicken",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A bright red-combed rooster gazes intently at a patch of ground glowing with unseen ultraviolet patterns, colorful UV halos around seeds and bugs.",
+    "tags": [
+      "chicken",
+      "vision",
+      "ultraviolet",
+      "senses"
+    ]
+  },
+  {
+    "id": "animals-chicken-dinosaur",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "birds",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "birds",
+    "categoryL3": "",
+    "statement": "The chicken is the closest living relative to the T. rex, confirmed by collagen proteins extracted from 68-million-year-old fossils.",
+    "quizQuestion": "Which modern animal is the closest living relative to the T. rex?",
+    "correctAnswer": "Chicken",
+    "distractors": [
+      "Crocodile",
+      "Komodo dragon",
+      "Iguana",
+      "Alligator",
+      "Ostrich",
+      "Cassowary",
+      "Tuatara",
+      "Monitor lizard"
+    ],
+    "acceptableAnswers": [
+      "chicken",
+      "chickens",
+      "the chicken"
+    ],
+    "explanation": "In 2008, scientists extracted and sequenced collagen proteins from a T. rex fossil, finding the closest match to be modern birds — specifically chickens. Birds are the only living dinosaurs.",
+    "wowFactor": "The humble barnyard chicken is the closest living animal relative to the most fearsome predator that ever walked the Earth.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which living animal is most closely related to T. rex by protein analysis?",
+        "answer": "Chicken",
+        "distractors": [
+          "Crocodile",
+          "Komodo dragon",
+          "Ostrich"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A 2008 study found collagen from T. rex most closely matched which bird?",
+        "answer": "Chicken",
+        "distractors": [
+          "Ostrich",
+          "Eagle",
+          "Emu"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The chicken is confirmed as the closest living relative to the T. rex.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Protein analysis shows the ___ is the closest living relative to T. rex.",
+        "answer": "chicken",
+        "distractors": [
+          "crocodile",
+          "alligator",
+          "iguana"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chicken",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A tiny fluffy chicken stands defiantly before the silhouette of a massive T. rex skeleton, a glowing evolutionary tree connecting them in the background.",
+    "tags": [
+      "chicken",
+      "dinosaur",
+      "evolution",
+      "T. rex",
+      "paleontology"
+    ]
+  },
+  {
+    "id": "animals-ant-strength",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "insects_arachnids",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "insects_arachnids",
+    "categoryL3": "",
+    "statement": "Ants can carry objects up to 50 times their own body weight, making them pound-for-pound among the strongest animals on Earth.",
+    "quizQuestion": "How many times its own weight can an ant carry?",
+    "correctAnswer": "Up to 50 times",
+    "distractors": [
+      "5 times",
+      "10 times",
+      "3 times",
+      "100 times",
+      "2 times",
+      "20 times",
+      "75 times",
+      "Equal to its weight"
+    ],
+    "acceptableAnswers": [
+      "50 times",
+      "up to 50 times",
+      "50x its body weight"
+    ],
+    "explanation": "The ant's small size means its muscles make up a proportionally larger cross-section relative to its body mass compared to larger animals, giving it extraordinary relative strength.",
+    "wowFactor": "If a human had ant-level strength, they could lift a car over their head without breaking a sweat.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many times its body weight can an ant carry?",
+        "answer": "Up to 50 times",
+        "distractors": [
+          "5 times",
+          "10 times",
+          "100 times"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which insect can carry up to 50 times its own body weight?",
+        "answer": "Ant",
+        "distractors": [
+          "Beetle",
+          "Grasshopper",
+          "Bee"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ants can carry objects up to 50 times their body weight.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "An ant can carry up to ___ times its own body weight.",
+        "answer": "50",
+        "distractors": [
+          "5",
+          "10",
+          "20"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ant",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A tiny pixel ant hauls a massive green leaf segment many times its size across a dirt path, other ants forming a trail behind it.",
+    "tags": [
+      "ant",
+      "strength",
+      "insects",
+      "biology"
+    ]
+  },
+  {
+    "id": "animals-ant-supercolony",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "insects_arachnids",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "insects_arachnids",
+    "categoryL3": "",
+    "statement": "The Argentine ant has formed a single global supercolony spanning Europe, North America, and Japan, with billions of cooperative individuals.",
+    "quizQuestion": "Which ant species has formed a single global supercolony?",
+    "correctAnswer": "Argentine ant",
+    "distractors": [
+      "Fire ant",
+      "Leafcutter ant",
+      "Carpenter ant",
+      "Army ant",
+      "Bullet ant",
+      "Weaver ant",
+      "Driver ant",
+      "Pharaoh ant"
+    ],
+    "acceptableAnswers": [
+      "Argentine ant",
+      "Argentine ants",
+      "Linepithema humile"
+    ],
+    "explanation": "Argentine ants from the same supercolony recognize each other by shared chemical signatures and cooperate even across continents. Workers from California, Europe, and Japan do not fight each other.",
+    "wowFactor": "There is a single ant colony that effectively spans three continents — the largest cooperative society ever documented.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which ant species formed a massive global supercolony?",
+        "answer": "Argentine ant",
+        "distractors": [
+          "Fire ant",
+          "Army ant",
+          "Leafcutter ant"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Argentine ant's global supercolony spans Europe, North America, and which other region?",
+        "answer": "Japan",
+        "distractors": [
+          "Australia",
+          "China",
+          "Brazil"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Argentine ant has formed a continent-spanning supercolony.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ ant has formed a single global supercolony across three continents.",
+        "answer": "Argentine",
+        "distractors": [
+          "fire",
+          "army",
+          "leafcutter"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Argentine_ant",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A stylized world map with glowing ant trails connecting three continents, a pixelated Argentine ant queen at the center surrounded by a vast marching army.",
+    "tags": [
+      "ant",
+      "supercolony",
+      "Argentine ant",
+      "invasive species"
+    ]
+  },
+  {
+    "id": "animals-ant-queen-lifespan",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "insects_arachnids",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "insects_arachnids",
+    "categoryL3": "",
+    "statement": "Queen ants can live for up to 30 years, making them among the longest-lived insects on the planet.",
+    "quizQuestion": "How long can a queen ant live?",
+    "correctAnswer": "Up to 30 years",
+    "distractors": [
+      "1 year",
+      "6 months",
+      "5 years",
+      "10 years",
+      "2 years",
+      "50 years",
+      "6 weeks",
+      "15 years"
+    ],
+    "acceptableAnswers": [
+      "30 years",
+      "up to 30 years",
+      "about 30 years"
+    ],
+    "explanation": "Queen ants of some species can live 20–30 years, spending their entire adult lives laying eggs. Worker ants, by contrast, live only weeks to a few months.",
+    "wowFactor": "A single queen ant can spend three decades laying eggs — she may outlive entire generations of the humans who walk over her nest.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long can a queen ant live?",
+        "answer": "Up to 30 years",
+        "distractors": [
+          "1 year",
+          "5 years",
+          "10 years"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Among insects, the ant queen is notable for living up to how many years?",
+        "answer": "30 years",
+        "distractors": [
+          "5 years",
+          "10 years",
+          "2 years"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Some queen ants can live up to 30 years.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A queen ant can live for up to ___ years.",
+        "answer": "30",
+        "distractors": [
+          "5",
+          "10",
+          "1"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ant",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An oversized pixel queen ant on a royal throne of dirt and leaves, surrounded by her worker subjects in a glowing underground chamber.",
+    "tags": [
+      "ant",
+      "queen",
+      "lifespan",
+      "insects"
+    ]
+  },
+  {
+    "id": "animals-tiger-swimming",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Tigers are powerful swimmers and will readily cross rivers up to 6 km wide to hunt or patrol territory.",
+    "quizQuestion": "How wide a river can a tiger swim across?",
+    "correctAnswer": "Up to 6 km",
+    "distractors": [
+      "100 meters",
+      "500 meters",
+      "1 km",
+      "3 km",
+      "10 km",
+      "Tigers cannot swim",
+      "Only narrow streams",
+      "2 km"
+    ],
+    "acceptableAnswers": [
+      "6 km",
+      "up to 6 km",
+      "6 kilometers"
+    ],
+    "explanation": "Unlike most big cats, tigers love water and are exceptional swimmers. They cool off in lakes and rivers during hot weather and have been recorded crossing wide waterways while hunting prey.",
+    "wowFactor": "While house cats avoid puddles, tigers casually swim across rivers wider than Manhattan to go on a hunt.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How wide a river can a tiger swim across?",
+        "answer": "Up to 6 km",
+        "distractors": [
+          "500 meters",
+          "1 km",
+          "3 km"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which big cat is known to swim across rivers up to 6 km wide?",
+        "answer": "Tiger",
+        "distractors": [
+          "Leopard",
+          "Cheetah",
+          "Snow leopard"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Tigers are strong swimmers and can cross wide rivers.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Tigers can swim across rivers up to ___ km wide.",
+        "answer": "6",
+        "distractors": [
+          "1",
+          "3",
+          "10"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tiger",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A massive striped tiger cuts through a wide jungle river, head and back above the water, lush green mangroves lining both banks.",
+    "tags": [
+      "tiger",
+      "swimming",
+      "behavior",
+      "territory"
+    ]
+  },
+  {
+    "id": "animals-pig-intelligence",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Pigs are considered among the five smartest animals on Earth, outperforming dogs and three-year-old children on some cognitive tests.",
+    "quizQuestion": "How do pigs rank in animal intelligence?",
+    "correctAnswer": "Among the top 5",
+    "distractors": [
+      "Average intelligence",
+      "Below dogs",
+      "Similar to sheep",
+      "Top 20",
+      "Similar to chickens",
+      "Below cows",
+      "Near the bottom",
+      "Equal to goldfish"
+    ],
+    "acceptableAnswers": [
+      "among the top 5",
+      "top 5",
+      "one of the smartest",
+      "very intelligent"
+    ],
+    "explanation": "Pigs can learn their own names, solve puzzles, understand symbolic language, and even play video games using joysticks. They have complex social structures and show empathy.",
+    "wowFactor": "Pigs have been trained to play video games using joysticks — and some outperformed chimpanzees.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How do pigs rank among animals in intelligence?",
+        "answer": "Among the top 5",
+        "distractors": [
+          "Average",
+          "Near the bottom",
+          "Top 20"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which farm animal outperforms dogs on some cognitive tests?",
+        "answer": "Pig",
+        "distractors": [
+          "Cow",
+          "Horse",
+          "Sheep"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pigs are among the five smartest animals in the world.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pigs are considered among the ___ smartest animals on Earth.",
+        "answer": "five",
+        "distractors": [
+          "twenty",
+          "fifty",
+          "ten"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pig",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pink pig using its snout to operate a game controller, pixel-art game characters running across a small screen, other pigs watching curiously.",
+    "tags": [
+      "pig",
+      "intelligence",
+      "cognition",
+      "animals"
+    ]
+  },
+  {
+    "id": "animals-wolf-howl",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Wolves howl to communicate across distances — a wolf's howl can be heard up to 10 km away in open terrain.",
+    "quizQuestion": "How far can a wolf's howl be heard?",
+    "correctAnswer": "Up to 10 km",
+    "distractors": [
+      "1 km",
+      "500 meters",
+      "3 km",
+      "5 km",
+      "20 km",
+      "30 km",
+      "Half a kilometer",
+      "2 km"
+    ],
+    "acceptableAnswers": [
+      "10 km",
+      "up to 10 km",
+      "10 kilometers",
+      "6 miles"
+    ],
+    "explanation": "Wolves use howling to coordinate pack movements, announce their location to other packs, and reinforce social bonds. Each wolf has a distinctive howl that pack members can recognize.",
+    "wowFactor": "A lone wolf's howl drifting through a forest can be answered by pack members 10 km away — a wilderness phone call.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How far can a wolf's howl be heard in open terrain?",
+        "answer": "Up to 10 km",
+        "distractors": [
+          "1 km",
+          "3 km",
+          "20 km"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal communicates with howls audible up to 10 km away?",
+        "answer": "Wolf",
+        "distractors": [
+          "Coyote",
+          "Fox",
+          "Hyena"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A wolf's howl can be heard up to 10 km away.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A wolf's howl can travel up to ___ km in open terrain.",
+        "answer": "10",
+        "distractors": [
+          "3",
+          "5",
+          "20"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wolf",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A grey wolf silhouetted against a full moon on a rocky ridge, head thrown back mid-howl, pine trees and snowy peaks stretching into the distance.",
+    "tags": [
+      "wolf",
+      "howl",
+      "communication",
+      "behavior"
+    ]
+  },
+  {
+    "id": "animals-wolf-pack",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Wolf packs are typically led by a breeding pair (alpha pair), not by a single dominant alpha wolf as once believed.",
+    "quizQuestion": "Who actually leads a wolf pack?",
+    "correctAnswer": "A breeding pair",
+    "distractors": [
+      "The largest male",
+      "The oldest wolf",
+      "The fastest hunter",
+      "A single alpha male",
+      "The most aggressive wolf",
+      "A council of elders",
+      "The female alone",
+      "Rotating leadership"
+    ],
+    "acceptableAnswers": [
+      "a breeding pair",
+      "breeding pair",
+      "alpha pair",
+      "two wolves"
+    ],
+    "explanation": "Wolf researcher L. David Mech, who popularized the 'alpha wolf' concept, later recanted it. Packs are family units led by a mated pair — the 'alpha' idea came from observing unrelated captive wolves.",
+    "wowFactor": "The scientist who invented the 'alpha wolf' myth spent years trying to correct it — wolf packs are just families, not dominance hierarchies.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who leads a wolf pack in the wild?",
+        "answer": "A breeding pair",
+        "distractors": [
+          "The largest male",
+          "The oldest wolf",
+          "The fastest hunter"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The 'alpha wolf' concept was shown to be a myth. What do packs actually resemble?",
+        "answer": "Family units",
+        "distractors": [
+          "Military squads",
+          "Dominance hierarchies",
+          "Democratic groups"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Wolf packs are led by a breeding pair, not a single alpha male.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Wolf packs are actually family groups led by a ___ pair.",
+        "answer": "breeding",
+        "distractors": [
+          "dominant",
+          "aggressive",
+          "senior"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wolf",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A wolf family group trotting through snow: two adult wolves side by side at the front with several smaller wolves and pups following behind.",
+    "tags": [
+      "wolf",
+      "pack",
+      "alpha",
+      "social structure",
+      "mythology"
+    ]
+  },
+  {
+    "id": "animals-wolf-dogs",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "All domestic dogs are descendants of grey wolves, with domestication beginning approximately 15,000 to 40,000 years ago.",
+    "quizQuestion": "What wild animal are all domestic dogs descended from?",
+    "correctAnswer": "Grey wolf",
+    "distractors": [
+      "Coyote",
+      "African wild dog",
+      "Dingo",
+      "Red wolf",
+      "Fox",
+      "Jackal",
+      "Hyena",
+      "Ancient dog ancestor"
+    ],
+    "acceptableAnswers": [
+      "grey wolf",
+      "gray wolf",
+      "wolf",
+      "Canis lupus"
+    ],
+    "explanation": "Genetic analysis confirms all domestic dogs (Canis lupus familiaris) are a domesticated subspecies of the grey wolf. The exact timing and location of domestication remain debated, but it occurred through human-wolf interactions.",
+    "wowFactor": "Every dog from a tiny Chihuahua to a Great Dane is the same species as a pack-hunting grey wolf.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What wild animal are all domestic dogs descended from?",
+        "answer": "Grey wolf",
+        "distractors": [
+          "Coyote",
+          "Fox",
+          "Jackal"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Domestic dogs are a domesticated subspecies of which wild animal?",
+        "answer": "Grey wolf",
+        "distractors": [
+          "Coyote",
+          "Dingo",
+          "African wild dog"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: All domestic dogs are descended from grey wolves.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "All domestic dogs descend from the ___ wolf.",
+        "answer": "grey",
+        "distractors": [
+          "red",
+          "Ethiopian",
+          "maned"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dog",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Side-by-side pixel art of a fierce grey wolf and a friendly golden retriever, a glowing family tree connecting them thousands of years back.",
+    "tags": [
+      "wolf",
+      "dog",
+      "domestication",
+      "evolution"
+    ]
+  },
+  {
+    "id": "animals-bear-hibernation",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Bears do not truly hibernate — they enter a lighter sleep called torpor, during which females can wake to give birth.",
+    "quizQuestion": "What is a bear's winter sleep technically called?",
+    "correctAnswer": "Torpor",
+    "distractors": [
+      "Hibernation",
+      "Dormancy",
+      "Estivation",
+      "Diapause",
+      "Suspended animation",
+      "Deep sleep",
+      "Winter coma",
+      "Hypersomnia"
+    ],
+    "acceptableAnswers": [
+      "torpor",
+      "winter torpor"
+    ],
+    "explanation": "Unlike true hibernators whose body temperature drops drastically, bears in torpor maintain near-normal body temperature. A bear can wake up relatively quickly if disturbed, unlike ground squirrels who take hours to rouse.",
+    "wowFactor": "A mother bear can wake from her winter sleep, give birth, nurse cubs, and go back to sleep — all while appearing to hibernate.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is a bear's winter rest technically called?",
+        "answer": "Torpor",
+        "distractors": [
+          "Hibernation",
+          "Estivation",
+          "Dormancy"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Bears enter a light winter sleep called torpor. True hibernators experience what difference?",
+        "answer": "Much lower body temperature",
+        "distractors": [
+          "Longer sleep",
+          "No dreaming",
+          "No breathing"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Bears enter torpor, not true hibernation, during winter.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Bears sleep in winter in a light state called ___.",
+        "answer": "torpor",
+        "distractors": [
+          "hibernation",
+          "estivation",
+          "dormancy"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bear",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A brown bear curled in a snowy den, two tiny cubs nestled against her belly, soft glow from outside the den's entrance, steam rising from her breath.",
+    "tags": [
+      "bear",
+      "torpor",
+      "hibernation",
+      "winter",
+      "cubs"
+    ]
+  },
+  {
+    "id": "animals-bear-strength",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "A grizzly bear can lift boulders weighing over 300 kg (660 lbs) and run at speeds up to 56 km/h (35 mph).",
+    "quizQuestion": "How fast can a grizzly bear run?",
+    "correctAnswer": "Up to 56 km/h",
+    "distractors": [
+      "20 km/h",
+      "30 km/h",
+      "10 km/h",
+      "80 km/h",
+      "15 km/h",
+      "100 km/h",
+      "5 km/h",
+      "40 km/h"
+    ],
+    "acceptableAnswers": [
+      "56 km/h",
+      "35 mph",
+      "up to 56 km/h",
+      "about 35 mph"
+    ],
+    "explanation": "Despite their massive size, grizzly bears can sprint at 56 km/h — faster than an Olympic sprinter. They use this speed to pursue prey and defend territory.",
+    "wowFactor": "You cannot outrun a grizzly bear — they sprint faster than Usain Bolt.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How fast can a grizzly bear run?",
+        "answer": "Up to 56 km/h",
+        "distractors": [
+          "20 km/h",
+          "30 km/h",
+          "80 km/h"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "At 56 km/h, which animal runs faster than a human sprinter?",
+        "answer": "Grizzly bear",
+        "distractors": [
+          "Black bear",
+          "Polar bear",
+          "Panda"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A grizzly bear can run faster than an Olympic sprinter.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A grizzly bear can sprint at up to ___ km/h.",
+        "answer": "56",
+        "distractors": [
+          "30",
+          "20",
+          "80"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Grizzly_bear",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A massive grizzly bear at full gallop through a riverside meadow, muscles rippling, spray flying, sheer power evident in every stride.",
+    "tags": [
+      "bear",
+      "grizzly",
+      "speed",
+      "strength"
+    ]
+  },
+  {
+    "id": "animals-bear-smell",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Bears have the best sense of smell of any land mammal, detecting odors up to 20 miles away — 7 times better than a bloodhound.",
+    "quizQuestion": "Which land animal has the best sense of smell?",
+    "correctAnswer": "Bear",
+    "distractors": [
+      "Bloodhound",
+      "Dog",
+      "Elephant",
+      "Shark",
+      "Rat",
+      "Moth",
+      "Wolf",
+      "Bat"
+    ],
+    "acceptableAnswers": [
+      "bear",
+      "bears"
+    ],
+    "explanation": "A bear's nose contains 100 times more scent receptors than a human's and seven times more than a dog's. They can smell food, mates, and danger from enormous distances.",
+    "wowFactor": "A bear's nose is so powerful it can smell a dead animal from 20 miles away — making bloodhounds look like amateurs.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which land animal has the most powerful sense of smell?",
+        "answer": "Bear",
+        "distractors": [
+          "Bloodhound",
+          "Wolf",
+          "Elephant"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A bear's sense of smell is how many times better than a bloodhound's?",
+        "answer": "7 times",
+        "distractors": [
+          "2 times",
+          "100 times",
+          "Equal"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Bears have a better sense of smell than bloodhounds.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Bears can detect odors up to ___ miles away.",
+        "answer": "20",
+        "distractors": [
+          "5",
+          "1",
+          "50"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bear",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A brown bear with an enormous twitching nose raised to the air, glowing scent trails visible stretching off into mountains miles in the distance.",
+    "tags": [
+      "bear",
+      "smell",
+      "senses",
+      "biology"
+    ]
+  },
+  {
+    "id": "animals-goat-pupils",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Goats have rectangular pupils that give them a 320-degree field of vision, helping them spot predators without turning their heads.",
+    "quizQuestion": "What shape are a goat's pupils?",
+    "correctAnswer": "Rectangular",
+    "distractors": [
+      "Round",
+      "Vertical slit",
+      "Diamond",
+      "Oval",
+      "Cross-shaped",
+      "Triangular",
+      "Horizontal slit only",
+      "Hexagonal"
+    ],
+    "acceptableAnswers": [
+      "rectangular",
+      "square",
+      "horizontal rectangle"
+    ],
+    "explanation": "The rectangular (horizontal) pupils allow goats to see nearly all the way around their bodies, staying aware of approaching threats while grazing with their heads down.",
+    "wowFactor": "Goats have alien-looking rectangular pupils that let them see almost entirely around their own bodies.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What shape are a goat's pupils?",
+        "answer": "Rectangular",
+        "distractors": [
+          "Round",
+          "Vertical slit",
+          "Diamond"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which grazing animal has rectangular pupils for wide-angle predator detection?",
+        "answer": "Goat",
+        "distractors": [
+          "Sheep",
+          "Horse",
+          "Cow"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Goats have rectangular pupils that give near 360-degree vision.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Goats have ___ pupils that provide a 320-degree field of vision.",
+        "answer": "rectangular",
+        "distractors": [
+          "round",
+          "slit",
+          "oval"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Goat",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A close-up pixel art image of a goat's striking amber eye with an eerie wide horizontal rectangular pupil, green pasture reflected in the iris.",
+    "tags": [
+      "goat",
+      "vision",
+      "pupils",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "animals-goat-climbing",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Mountain goats can scale nearly vertical cliff faces thanks to hooves with hard outer edges and soft inner pads that grip rock like suction cups.",
+    "quizQuestion": "What helps mountain goats grip nearly vertical cliffs?",
+    "correctAnswer": "Split hooves with soft pads",
+    "distractors": [
+      "Sharp claws",
+      "Sticky saliva on feet",
+      "Magnetic hooves",
+      "Suction-cup toe tips",
+      "Wide flat hooves",
+      "Extra-long toes",
+      "Rubber-like skin",
+      "Tiny hooks on heels"
+    ],
+    "acceptableAnswers": [
+      "split hooves with soft pads",
+      "soft hooves",
+      "specialized hooves",
+      "hoof pads"
+    ],
+    "explanation": "Mountain goat hooves have two toes that spread apart for balance, hard outer edges for gripping edges, and rough textured soles that act like anti-slip rubber. They can navigate cliffs that defeat most other mammals.",
+    "wowFactor": "Mountain goats can stand on a ledge the width of a credit card on a sheer cliff face — their hooves are essentially built-in rock-climbing shoes.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What helps mountain goats climb nearly vertical cliffs?",
+        "answer": "Split hooves with soft pads",
+        "distractors": [
+          "Sharp claws",
+          "Wide flat feet",
+          "Sticky saliva"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A mountain goat's hooves function similarly to what human climbing equipment?",
+        "answer": "Rock-climbing shoes",
+        "distractors": [
+          "Ropes",
+          "Pitons",
+          "Carabiners"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mountain goats have specialized hooves that help them grip rocky cliffs.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mountain goat hooves have hard outer edges and soft inner ___ for gripping rock.",
+        "answer": "pads",
+        "distractors": [
+          "claws",
+          "hooks",
+          "spikes"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mountain_goat",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A white mountain goat balanced impossibly on a tiny rock ledge on a sheer cliff face thousands of feet above a valley, perfectly calm.",
+    "tags": [
+      "goat",
+      "climbing",
+      "hooves",
+      "adaptations"
+    ]
+  },
+  {
+    "id": "animals-goat-memory",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Goats have excellent long-term memory and can recall how to solve complex puzzles for up to 10 months after learning.",
+    "quizQuestion": "How long can goats remember how to solve a learned puzzle?",
+    "correctAnswer": "Up to 10 months",
+    "distractors": [
+      "1 week",
+      "1 month",
+      "3 months",
+      "2 weeks",
+      "A few days",
+      "2 years",
+      "6 months",
+      "1 year"
+    ],
+    "acceptableAnswers": [
+      "10 months",
+      "up to 10 months",
+      "about 10 months"
+    ],
+    "explanation": "A 2014 Queen Mary University study trained goats to pull a lever for food. When retested 10 months later, the goats remembered the solution quickly and showed excitement at doing it again.",
+    "wowFactor": "Goats remember puzzle solutions for nearly a year — challenging the idea that farm animals have poor memories.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long can goats remember how to solve a puzzle?",
+        "answer": "Up to 10 months",
+        "distractors": [
+          "1 month",
+          "3 months",
+          "1 week"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which farm animal was shown to remember puzzle solutions for 10 months?",
+        "answer": "Goat",
+        "distractors": [
+          "Sheep",
+          "Pig",
+          "Cow"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Goats can remember puzzle solutions for up to 10 months.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Goats recall learned puzzle solutions for up to ___ months.",
+        "answer": "10",
+        "distractors": [
+          "1",
+          "3",
+          "6"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Goat",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A goat confidently pulling a rope lever with its mouth to release food pellets, a lightbulb memory icon glowing above its head in a cartoon thought bubble.",
+    "tags": [
+      "goat",
+      "memory",
+      "intelligence",
+      "cognition"
+    ]
+  },
+  {
+    "id": "animals-camel-hump",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "adaptations",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "adaptations",
+    "categoryL3": "",
+    "statement": "Camel humps store fat, not water — camels draw on this fat reserve for energy during long desert journeys without food.",
+    "quizQuestion": "What do camel humps actually store?",
+    "correctAnswer": "Fat",
+    "distractors": [
+      "Water",
+      "Muscle",
+      "Air",
+      "Glycogen",
+      "Salt",
+      "Blood",
+      "Nutrients",
+      "Protein"
+    ],
+    "acceptableAnswers": [
+      "fat",
+      "fatty tissue",
+      "stored fat"
+    ],
+    "explanation": "A common myth is that camel humps store water. They actually store fatty tissue that can be metabolized for energy. Camels conserve water through efficient kidneys and can drink up to 40 gallons at once to rehydrate.",
+    "wowFactor": "Camel humps are essentially backpacks of stored fat — not water — that power marathon desert journeys.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What do camel humps actually store?",
+        "answer": "Fat",
+        "distractors": [
+          "Water",
+          "Air",
+          "Glycogen"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Where do camels actually store most of their water?",
+        "answer": "In their blood and tissues",
+        "distractors": [
+          "In their humps",
+          "In their stomachs",
+          "In their legs"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Camel humps store fat, not water.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Camel humps store ___, not water.",
+        "answer": "fat",
+        "distractors": [
+          "water",
+          "air",
+          "glycogen"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Camel",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A camel standing in a vast desert, its large hump prominently displayed with a cross-section diagram showing layers of fat inside, not a drop of water.",
+    "tags": [
+      "camel",
+      "hump",
+      "adaptations",
+      "desert",
+      "myth-busting"
+    ]
+  },
+  {
+    "id": "animals-camel-drinking",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "adaptations",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "adaptations",
+    "categoryL3": "",
+    "statement": "A dehydrated camel can drink up to 200 liters (53 gallons) of water in a single session — about a bathtub's worth.",
+    "quizQuestion": "How much water can a camel drink in one sitting?",
+    "correctAnswer": "Up to 200 liters",
+    "distractors": [
+      "10 liters",
+      "50 liters",
+      "100 liters",
+      "5 liters",
+      "500 liters",
+      "30 liters",
+      "2 liters",
+      "400 liters"
+    ],
+    "acceptableAnswers": [
+      "200 liters",
+      "up to 200 liters",
+      "53 gallons"
+    ],
+    "explanation": "Camels can survive extreme dehydration, losing up to 25% of their body weight in water. When they find water, they can rapidly rehydrate by drinking 200 liters in roughly 15 minutes.",
+    "wowFactor": "A camel can chug the equivalent of a full bathtub of water in less time than it takes to watch a TV episode.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How much water can a camel drink in one session?",
+        "answer": "Up to 200 liters",
+        "distractors": [
+          "50 liters",
+          "10 liters",
+          "400 liters"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A camel can drink a bathtub's worth of water at once. That is roughly how many liters?",
+        "answer": "200 liters",
+        "distractors": [
+          "50 liters",
+          "100 liters",
+          "500 liters"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A camel can drink up to 200 liters of water in a single sitting.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A thirsty camel can drink up to ___ liters in one session.",
+        "answer": "200",
+        "distractors": [
+          "50",
+          "10",
+          "500"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Camel",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A camel with its face deep in an oasis pool, gulping furiously, water rippling outward, a visible meter filling up rapidly beside it.",
+    "tags": [
+      "camel",
+      "drinking",
+      "adaptations",
+      "desert survival"
+    ]
+  },
+  {
+    "id": "animals-camel-eyelashes",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "adaptations",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "adaptations",
+    "categoryL3": "",
+    "statement": "Camels have three eyelids and two rows of eyelashes to protect their eyes from blowing desert sand.",
+    "quizQuestion": "How many eyelids does a camel have?",
+    "correctAnswer": "Three",
+    "distractors": [
+      "Two",
+      "Four",
+      "One",
+      "Five",
+      "Six",
+      "Two per eye",
+      "A single membrane",
+      "No eyelids"
+    ],
+    "acceptableAnswers": [
+      "three",
+      "3",
+      "three eyelids"
+    ],
+    "explanation": "The third eyelid is a translucent nictitating membrane that slides horizontally across the eye to clear dust while still allowing the camel to see. The double row of eyelashes also acts as a sand filter.",
+    "wowFactor": "Camels have three eyelids — including a see-through one that works like built-in goggles during sandstorms.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many eyelids does a camel have on each eye?",
+        "answer": "Three",
+        "distractors": [
+          "Two",
+          "Four",
+          "One"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Camels have a translucent third eyelid called what?",
+        "answer": "Nictitating membrane",
+        "distractors": [
+          "Corneal shield",
+          "Sand screen",
+          "Eye membrane"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Camels have three eyelids per eye to protect against sand.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Camels have ___ eyelids to protect their eyes from desert sand.",
+        "answer": "three",
+        "distractors": [
+          "two",
+          "four",
+          "one"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Camel",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Close-up pixel art of a camel's eye with its translucent third eyelid partially closed over it, swirling golden sandstorm in the background.",
+    "tags": [
+      "camel",
+      "eyelids",
+      "adaptations",
+      "sand",
+      "anatomy"
+    ]
+  }
+]

@@ -1,0 +1,2501 @@
+[
+  {
+    "id": "animals-wolverine-strength",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "adaptations",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "adaptations",
+    "categoryL3": "mustelids",
+    "statement": "The wolverine is the largest land-dwelling member of the weasel family, capable of driving bears and wolves off kills.",
+    "quizQuestion": "What family does the wolverine belong to?",
+    "correctAnswer": "Weasel family",
+    "distractors": [
+      "Bear family",
+      "Badger family",
+      "Dog family",
+      "Cat family",
+      "Raccoon family",
+      "Marten family",
+      "Mongoose family",
+      "Skunk family"
+    ],
+    "acceptableAnswers": [
+      "Weasel family",
+      "Mustelidae",
+      "mustelids"
+    ],
+    "explanation": "The wolverine (Gulo gulo) is the largest terrestrial mustelid — the family that includes weasels, otters, badgers, and ferrets. Despite weighing only 20–55 lbs, wolverines have been documented driving grizzly bears and wolves away from carcasses through sheer ferocity. Their jaws can crush frozen bone, and they can travel 15 miles a day across deep snow in search of food.",
+    "wowFactor": "Pound for pound, wolverines may be the most ferocious mammals on Earth — there are documented cases of single wolverines fending off a pack of wolves over a caribou carcass.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What family does the wolverine belong to?",
+        "answer": "Weasel family",
+        "distractors": [
+          "Bear family",
+          "Badger family",
+          "Dog family"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal is the largest land mustelid?",
+        "answer": "Wolverine",
+        "distractors": [
+          "Badger",
+          "River otter",
+          "Fisher"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "The wolverine is the largest land-dwelling member of the weasel family.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Only in some species"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "What gives wolverines their ability to eat frozen carrion?",
+        "answer": "Bone-crushing jaws",
+        "distractors": [
+          "Stomach acid",
+          "Sharp claws",
+          "Warm saliva"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "IUCN Red List — Gulo gulo",
+    "sourceUrl": "https://www.iucnredlist.org/species/9561/45198537",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Stocky dark-furred wolverine standing over a snowy carcass, snarling with white-tipped fur, pixel art in icy blues and deep browns",
+    "tags": [
+      "wolverine",
+      "mustelid",
+      "weasel family",
+      "predator",
+      "adaptations"
+    ]
+  },
+  {
+    "id": "animals-wolverine-territory",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "adaptations",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "adaptations",
+    "categoryL3": "mustelids",
+    "statement": "Male wolverines patrol territories up to 620 square miles — one of the largest home ranges of any land mammal relative to body size.",
+    "quizQuestion": "How large can a male wolverine's territory be?",
+    "correctAnswer": "620 square miles",
+    "distractors": [
+      "50 square miles",
+      "100 square miles",
+      "200 square miles",
+      "1000 square miles",
+      "30 square miles",
+      "400 square miles",
+      "800 square miles",
+      "75 square miles"
+    ],
+    "acceptableAnswers": [
+      "620 square miles",
+      "620 sq miles",
+      "up to 620 miles"
+    ],
+    "explanation": "Male wolverines have home ranges averaging 240–620 square miles — enormous for an animal their size. They mark this territory with powerful musk glands (earning them the nickname 'skunk bear') and their range often overlaps with several females. Their massive territories are a survival adaptation to sparse prey availability in boreal and arctic environments.",
+    "wowFactor": "Wolverines are so associated with boreal wilderness that the entire state of Michigan's nickname — 'The Wolverine State' — comes from the animal, even though wolverines haven't lived there in over a century.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How large can a male wolverine's territory be?",
+        "answer": "620 square miles",
+        "distractors": [
+          "100 square miles",
+          "200 square miles",
+          "1000 square miles"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What animal has a home range up to 620 square miles?",
+        "answer": "Male wolverine",
+        "distractors": [
+          "Gray wolf",
+          "Mountain lion",
+          "Brown bear"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Wolverines have one of the largest home ranges relative to body size.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Only in some species"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Why do wolverines need such large territories?",
+        "answer": "Sparse prey availability",
+        "distractors": [
+          "To avoid humans",
+          "Mating displays",
+          "Seasonal migration"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "National Wildlife Federation — Wolverine",
+    "sourceUrl": "https://www.nwf.org/Educational-Resources/Wildlife-Guide/Mammals/Wolverine",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Topographic map with giant territory outline dwarfing a tiny wolverine silhouette, pine forest border, pixel art in green and brown",
+    "tags": [
+      "wolverine",
+      "territory",
+      "home range",
+      "adaptations",
+      "boreal"
+    ]
+  },
+  {
+    "id": "animals-wolverine-claws",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "adaptations",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "adaptations",
+    "categoryL3": "mustelids",
+    "statement": "Wolverines have semi-retractable claws that act like crampons, allowing them to climb sheer ice faces and vertical rock cliffs.",
+    "quizQuestion": "What climbing ability do wolverine claws enable?",
+    "correctAnswer": "Climbing ice and rock",
+    "distractors": [
+      "Tree canopy jumping",
+      "Swimming underwater",
+      "Burrowing through permafrost",
+      "Running at 40 mph",
+      "Digging in hard soil",
+      "Gripping slippery fish",
+      "Hanging upside down",
+      "Breaking frozen soil"
+    ],
+    "acceptableAnswers": [
+      "Climbing ice and rock",
+      "scaling ice faces",
+      "climbing cliffs"
+    ],
+    "explanation": "Wolverine claws are semi-retractable and strongly curved — functionally similar to ice axes. Combined with their plantigrade stance (walking flat-footed like bears), they can ascend near-vertical snowfields and rocky cliffs that would stop most predators. This vertical mobility helps them access alpine prey, steal eggs from cliff-nesting birds, and escape from larger predators.",
+    "wowFactor": "Wolverines are among the few mammals that seek out avalanche zones — they dig through packed snow to reach prey buried by avalanches, essentially doing search-and-rescue in reverse.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What climbing ability do wolverine claws enable?",
+        "answer": "Climbing ice and rock",
+        "distractors": [
+          "Tree canopy jumping",
+          "Swimming underwater",
+          "Burrowing through permafrost"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal has semi-retractable claws adapted for ice climbing?",
+        "answer": "Wolverine",
+        "distractors": [
+          "Snow leopard",
+          "Ibex",
+          "Mountain goat"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Wolverines can climb sheer ice faces using their semi-retractable claws.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Only in some species"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Why do wolverines benefit from climbing steep terrain?",
+        "answer": "Access prey and escape threats",
+        "distractors": [
+          "Build dens on ledges",
+          "Find water sources",
+          "Sunbathe on rocks"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wildlife Conservation Society — Wolverine Biology",
+    "sourceUrl": "https://www.wcs.org/our-work/species/wolverines",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Wolverine scaling a snowy cliff face, curved claws gripping blue ice, determined expression, pixel art in icy blue and dark fur tones",
+    "tags": [
+      "wolverine",
+      "claws",
+      "climbing",
+      "ice",
+      "adaptations"
+    ]
+  },
+  {
+    "id": "animals-bird-feathers",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "birds",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "birds",
+    "categoryL3": "class_aves",
+    "statement": "Birds are the only living animals with feathers, a trait that distinguishes class Aves from all other vertebrates.",
+    "quizQuestion": "Which animal class is the only one with feathers?",
+    "correctAnswer": "Birds (Aves)",
+    "distractors": [
+      "Reptiles",
+      "Mammals",
+      "Amphibians",
+      "Fish",
+      "Insects",
+      "Dinosaurs",
+      "Pterosaurs",
+      "Marsupials"
+    ],
+    "acceptableAnswers": [
+      "Birds",
+      "Aves",
+      "class Aves",
+      "birds (Aves)"
+    ],
+    "explanation": "Feathers are the defining synapomorphy of class Aves — no other living animal has them. Structurally, feathers are highly modified scales made of beta-keratin, the same protein in reptile scales. They serve multiple functions: insulation, flight aerodynamics, waterproofing, camouflage, and communication through color displays. There are approximately 10,000 living bird species, ranging from 2-inch bee hummingbirds to 9-foot ostriches.",
+    "wowFactor": "Birds ARE living dinosaurs — they are the only surviving lineage of theropod dinosaurs, making your backyard robin more closely related to a T. rex than a crocodile is.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which animal class is the only one with feathers?",
+        "answer": "Birds (Aves)",
+        "distractors": [
+          "Reptiles",
+          "Mammals",
+          "Amphibians"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What makes birds unique among all living vertebrates?",
+        "answer": "They have feathers",
+        "distractors": [
+          "They lay eggs",
+          "They have wings",
+          "They have beaks"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Birds are the only living animals with feathers.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Only in some species"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "What material are bird feathers made of?",
+        "answer": "Beta-keratin",
+        "distractors": [
+          "Alpha-keratin",
+          "Chitin",
+          "Collagen"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Cornell Lab of Ornithology — All About Birds",
+    "sourceUrl": "https://www.allaboutbirds.org/guide/biology/feathers",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Colorful array of different feather types arranged in a fan pattern — flight feather, down, contour, filoplume — pixel art on white background",
+    "tags": [
+      "birds",
+      "aves",
+      "feathers",
+      "vertebrates",
+      "classification"
+    ]
+  },
+  {
+    "id": "animals-bird-hollow-bones",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "birds",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "birds",
+    "categoryL3": "class_aves",
+    "statement": "Most birds have hollow bones with internal struts, making their skeletons lighter than their feathers.",
+    "quizQuestion": "What makes birds' skeletons unusually light for flight?",
+    "correctAnswer": "Hollow bones",
+    "distractors": [
+      "Fewer bones overall",
+      "Cartilage instead of bone",
+      "Bone made of keratin",
+      "No leg bones",
+      "Porous calcium deposits",
+      "Air-filled marrow",
+      "Flexible fused vertebrae",
+      "Sponge-like ribs"
+    ],
+    "acceptableAnswers": [
+      "Hollow bones",
+      "pneumatized bones",
+      "air-filled bones"
+    ],
+    "explanation": "Bird bones are pneumatized — hollow and reinforced internally with struts called trabeculae, similar to aerospace engineering. Counterintuitively, the skeleton of a frigate bird with a 7-foot wingspan weighs less than its feathers — around 4 oz. The hollow spaces in bones also connect to the respiratory system, allowing birds to extract oxygen on both inhalation AND exhalation, unlike mammals who only extract oxygen while inhaling.",
+    "wowFactor": "A bird's respiratory system is so efficient it extracts oxygen from air that's already been exhaled — this is why birds can fly at altitudes where humans would lose consciousness within seconds.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What makes birds' skeletons unusually light for flight?",
+        "answer": "Hollow bones",
+        "distractors": [
+          "Fewer bones overall",
+          "Cartilage instead of bone",
+          "No leg bones"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In birds, hollow bones also connect to which body system?",
+        "answer": "Respiratory system",
+        "distractors": [
+          "Circulatory system",
+          "Digestive system",
+          "Nervous system"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "A large bird's skeleton can weigh less than its feathers.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Only in some species"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "What are the internal struts inside bird bones called?",
+        "answer": "Trabeculae",
+        "distractors": [
+          "Cancellae",
+          "Lacunae",
+          "Foramina"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Smithsonian National Museum of Natural History — Bird Anatomy",
+    "sourceUrl": "https://naturalhistory.si.edu/education/teaching-resources/life-science/bird-anatomy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "X-ray style pixel art of a bird skeleton showing hollow cross-sections in the wing bones, with glowing internal struts visible",
+    "tags": [
+      "birds",
+      "hollow bones",
+      "flight",
+      "anatomy",
+      "pneumatized"
+    ]
+  },
+  {
+    "id": "animals-bird-species-count",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "birds",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "birds",
+    "categoryL3": "class_aves",
+    "statement": "There are approximately 10,000 living bird species on Earth, ranging from 2-inch hummingbirds to 9-foot ostriches.",
+    "quizQuestion": "Roughly how many living bird species exist on Earth?",
+    "correctAnswer": "10,000",
+    "distractors": [
+      "1,000",
+      "3,000",
+      "5,000",
+      "20,000",
+      "50,000",
+      "500",
+      "7,500",
+      "15,000"
+    ],
+    "acceptableAnswers": [
+      "10,000",
+      "10000",
+      "about 10,000",
+      "ten thousand"
+    ],
+    "explanation": "Current estimates count approximately 10,000 described bird species, though some taxonomies list up to 11,000 depending on how subspecies are split. Birds have colonized every continent including Antarctica (penguins, skuas), and occupy niches from deep-ocean divers to mountain soaring specialists. New species are still being described — over 100 new bird species were identified in the 2000s alone, mostly from remote tropical regions.",
+    "wowFactor": "The total biomass of wild birds on Earth is roughly 3 times that of all wild mammals combined — birds have been extraordinarily successful as a lineage.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Roughly how many living bird species exist on Earth?",
+        "answer": "10,000",
+        "distractors": [
+          "3,000",
+          "5,000",
+          "20,000"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal group numbers approximately 10,000 living species?",
+        "answer": "Birds",
+        "distractors": [
+          "Mammals",
+          "Reptiles",
+          "Amphibians"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "There are approximately 10,000 living bird species on Earth.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Only in some species"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Where can birds be found that no other warm-blooded animals inhabit?",
+        "answer": "Antarctica year-round",
+        "distractors": [
+          "Deep ocean trenches",
+          "Active volcanoes",
+          "Polar ice caps only"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "BirdLife International — State of the World's Birds",
+    "sourceUrl": "https://www.birdlife.org/state-of-the-worlds-birds/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Grid of tiny pixel art bird silhouettes in varied shapes — hummingbird, ostrich, penguin, eagle, parrot — representing global diversity",
+    "tags": [
+      "birds",
+      "species diversity",
+      "aves",
+      "biodiversity",
+      "taxonomy"
+    ]
+  },
+  {
+    "id": "animals-dodo-extinction",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "conservation",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "conservation",
+    "categoryL3": "extinct_species",
+    "statement": "The dodo went extinct by 1681, less than 90 years after Europeans first arrived on Mauritius in 1598.",
+    "quizQuestion": "When did the dodo go extinct?",
+    "correctAnswer": "Around 1681",
+    "distractors": [
+      "Around 1500",
+      "Around 1750",
+      "Around 1800",
+      "Around 1900",
+      "Around 1400",
+      "Around 1620",
+      "Around 1850",
+      "Around 1700"
+    ],
+    "acceptableAnswers": [
+      "Around 1681",
+      "1681",
+      "late 1600s",
+      "by 1700"
+    ],
+    "explanation": "The dodo (Raphus cucullatus) was a flightless bird endemic to Mauritius in the Indian Ocean. Dutch sailors first documented it in 1598, and within just 83 years the species was gone — driven to extinction by a combination of hunting, habitat destruction, and invasive species (pigs, rats, and monkeys introduced by Europeans that ate eggs and chicks). The last confirmed sighting was in 1681.",
+    "wowFactor": "The dodo had no natural predators on Mauritius and had been evolutionarily isolated for so long it had lost all fear of humans — it would walk directly toward sailors, making it trivially easy to catch and kill.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "When did the dodo go extinct?",
+        "answer": "Around 1681",
+        "distractors": [
+          "Around 1750",
+          "Around 1800",
+          "Around 1620"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "On which island did the dodo live before going extinct?",
+        "answer": "Mauritius",
+        "distractors": [
+          "Madagascar",
+          "Réunion",
+          "Seychelles"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "The dodo went extinct less than 90 years after Europeans first arrived on Mauritius.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Only in some species"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "What key survival trait did the dodo lack due to island isolation?",
+        "answer": "Fear of predators",
+        "distractors": [
+          "Speed on land",
+          "Camouflage coloring",
+          "Nest-hiding behavior"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Natural History Museum London — Dodo",
+    "sourceUrl": "https://www.nhm.ac.uk/discover/dodo-what-do-we-actually-know.html",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Rotund pixel art dodo standing on tropical beach, palm trees behind, looking curiously at a tiny Dutch sailor ship on the horizon",
+    "tags": [
+      "dodo",
+      "extinction",
+      "mauritius",
+      "flightless bird",
+      "conservation"
+    ]
+  },
+  {
+    "id": "animals-dodo-weight",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "conservation",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "conservation",
+    "categoryL3": "extinct_species",
+    "statement": "The dodo weighed approximately 23–47 lbs and stood about 3 feet tall, making it one of the largest birds of its era.",
+    "quizQuestion": "How tall did the dodo bird stand?",
+    "correctAnswer": "About 3 feet",
+    "distractors": [
+      "About 1 foot",
+      "About 5 feet",
+      "About 6 feet",
+      "About 18 inches",
+      "About 4 feet",
+      "About 2 feet",
+      "About 8 feet",
+      "About 7 feet"
+    ],
+    "acceptableAnswers": [
+      "About 3 feet",
+      "3 feet",
+      "roughly 3 feet",
+      "around 90cm"
+    ],
+    "explanation": "Adult dodos stood approximately 3 feet (90 cm) tall and weighed between 23–47 lbs, with significant variation between individuals. Despite the 'obese dodo' image popularized by Lewis Carroll's Alice in Wonderland, scientists now believe the fattest depictions came from captive dodos overfed in Europe. Wild dodos went through seasonal weight cycles — fattening up when fruits were abundant and losing weight in leaner months.",
+    "wowFactor": "Most dodo skeletons and models in museums are composites assembled from multiple individuals — no single complete skeleton has ever been found. What we 'know' about dodo anatomy is partly educated reconstruction.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How tall did the dodo bird stand?",
+        "answer": "About 3 feet",
+        "distractors": [
+          "About 1 foot",
+          "About 5 feet",
+          "About 18 inches"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which extinct bird stood 3 feet tall and weighed up to 47 lbs?",
+        "answer": "Dodo",
+        "distractors": [
+          "Moa",
+          "Elephant bird",
+          "Great auk"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Wild dodos were as obese as the famous museum reconstructions suggest.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Partially true",
+          "Only historically"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Why were early museum dodo models overly fat?",
+        "answer": "Based on overfed captive birds",
+        "distractors": [
+          "Exaggerated by sailors",
+          "Stuffed with padding",
+          "Skeleton was oversized"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Natural History Museum London — Dodo Anatomy",
+    "sourceUrl": "https://www.nhm.ac.uk/discover/dodo-what-do-we-actually-know.html",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Side profile pixel art dodo with height measurement arrows showing 3 feet, realistic proportions, tropical setting",
+    "tags": [
+      "dodo",
+      "size",
+      "anatomy",
+      "flightless bird",
+      "mauritius"
+    ]
+  },
+  {
+    "id": "animals-lion-pride",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "big_cats",
+    "statement": "Lions are the only cats that live in social groups called prides, which typically consist of 10–15 females and their cubs, with 1–4 males.",
+    "quizQuestion": "What is a group of lions called?",
+    "correctAnswer": "A pride",
+    "distractors": [
+      "A pack",
+      "A coalition",
+      "A clan",
+      "A leap",
+      "A mob",
+      "A streak",
+      "A troop",
+      "A band"
+    ],
+    "acceptableAnswers": [
+      "A pride",
+      "pride"
+    ],
+    "explanation": "Lions (Panthera leo) are uniquely social among the 40 wild cat species — all others are largely solitary. A typical pride consists of 10–15 related females who cooperate in raising cubs and hunting, plus 1–4 resident males. Male coalitions defend the pride territory against rival males; when new males take over a pride, they often kill existing cubs to bring females back into estrus. Prides can range in size from 3 to over 40 individuals.",
+    "wowFactor": "Female lions in a pride synchronize their reproductive cycles so cubs are born at the same time — this allows communal nursing where any female will suckle any cub in the pride, dramatically improving survival rates.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is a group of lions called?",
+        "answer": "A pride",
+        "distractors": [
+          "A pack",
+          "A coalition",
+          "A clan"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which big cat is the only one to live in social groups?",
+        "answer": "Lion",
+        "distractors": [
+          "Cheetah",
+          "Leopard",
+          "Tiger"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Lions are the only cats that live in permanent social groups.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Only in some species"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Why do new male lions often kill existing cubs when taking over a pride?",
+        "answer": "To bring females into estrus",
+        "distractors": [
+          "To reduce competition for food",
+          "To establish dominance visibly",
+          "To eliminate rivals' genetics"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "African Wildlife Foundation — Lion",
+    "sourceUrl": "https://www.awf.org/wildlife-conservation/lion",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Mentions infanticide as natural behavior",
+    "visualDescription": "Pixel art pride of lions resting on savanna rock — females grooming, cubs playing, male surveying horizon, golden sunset behind",
+    "tags": [
+      "lion",
+      "pride",
+      "social behavior",
+      "big cats",
+      "africa"
+    ]
+  },
+  {
+    "id": "animals-lion-roar",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "big_cats",
+    "statement": "A lion's roar can be heard up to 5 miles (8 km) away, made possible by a square-shaped vocal cord that vibrates at lower frequencies than other cats.",
+    "quizQuestion": "How far away can a lion's roar be heard?",
+    "correctAnswer": "5 miles away",
+    "distractors": [
+      "1 mile away",
+      "Half a mile away",
+      "10 miles away",
+      "2 miles away",
+      "20 miles away",
+      "3 miles away",
+      "15 miles away",
+      "7 miles away"
+    ],
+    "acceptableAnswers": [
+      "5 miles away",
+      "5 miles",
+      "8 km",
+      "up to 5 miles"
+    ],
+    "explanation": "The lion's roar is the loudest of any big cat — audible up to 5 miles. Unlike domestic cats, lions (along with tigers, leopards, and jaguars) have a specially adapted larynx with a square-shaped epihyal bone that allows the vocal cords to flex and vibrate at very low frequencies. This anatomical quirk is what distinguishes 'roaring cats' (Panthera genus) from 'purring cats' — the two abilities are mutually exclusive.",
+    "wowFactor": "Lions roar most intensively at dawn and dusk to communicate territory boundaries — each pride member has a unique roar, and lions can identify individuals from over a mile away purely by roar acoustics.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How far away can a lion's roar be heard?",
+        "answer": "5 miles away",
+        "distractors": [
+          "1 mile away",
+          "10 miles away",
+          "2 miles away"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What feature allows lions to produce such loud roars?",
+        "answer": "Square vocal cord shape",
+        "distractors": [
+          "Larger lung capacity",
+          "Wider nasal passages",
+          "Thicker throat muscles"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Lions can both roar and purr like domestic cats.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Partially true",
+          "Only historically"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "When do lions roar most intensively?",
+        "answer": "Dawn and dusk",
+        "distractors": [
+          "Only at night",
+          "During hunts",
+          "After feeding"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "National Geographic — Lions",
+    "sourceUrl": "https://www.nationalgeographic.com/animals/mammals/facts/lion",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Male lion mid-roar on a termite mound, mouth wide open, mane rippling, sound waves radiating outward in pixel art, savanna at golden hour",
+    "tags": [
+      "lion",
+      "roar",
+      "communication",
+      "big cats",
+      "acoustics"
+    ]
+  },
+  {
+    "id": "animals-lion-mane",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "big_cats",
+    "statement": "Only male lions have manes, and darker, fuller manes signal higher testosterone and better genetic fitness to females.",
+    "quizQuestion": "What does a darker mane signal in male lions?",
+    "correctAnswer": "Higher testosterone",
+    "distractors": [
+      "Greater age",
+      "Dominant rank",
+      "Better hunting skill",
+      "Larger territory",
+      "More kills this season",
+      "Genetic disease resistance",
+      "Greater body weight",
+      "Northern origin"
+    ],
+    "acceptableAnswers": [
+      "Higher testosterone",
+      "better genetic fitness",
+      "high testosterone levels"
+    ],
+    "explanation": "The lion's mane is a sexually selected trait — females prefer males with darker, fuller manes because they correlate with higher testosterone, better health, and superior fighting ability. Studies in the Serengeti showed that females consistently approached darker-maned males in choice experiments. Mane color also correlates with temperature: lions in hotter climates (like Tsavo) often have reduced or absent manes, as the extra insulation would be a thermal burden.",
+    "wowFactor": "The famous 'Tsavo man-eaters' — two male lions that killed up to 135 railway workers in Kenya in 1898 — were both maneless. The absence of manes in hot, dry Tsavo is a documented geographic adaptation.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does a darker mane signal in male lions?",
+        "answer": "Higher testosterone",
+        "distractors": [
+          "Greater age",
+          "Dominant rank",
+          "Better hunting skill"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Why do lions in hotter climates often have smaller manes?",
+        "answer": "To reduce heat burden",
+        "distractors": [
+          "Less food available",
+          "More fighting occurs",
+          "Younger population"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Female lions prefer males with darker, fuller manes.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Only in some species"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "What can a lion's mane color reveal about where it lives?",
+        "answer": "Climate — hotter areas have less mane",
+        "distractors": [
+          "Its age precisely",
+          "Pack hierarchy",
+          "Prey preference"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "West, P.M. & Packer, C. (2002). Sexual Selection, Temperature, and the Lion's Mane. Science.",
+    "sourceUrl": "https://www.science.org/doi/10.1126/science.1073257",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two male lions side by side — one with a thick dark mane, one with a thin light mane — females watching from right, pixel art on savanna",
+    "tags": [
+      "lion",
+      "mane",
+      "sexual selection",
+      "testosterone",
+      "evolution"
+    ]
+  },
+  {
+    "id": "animals-animalia-definition",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "biology",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "biology",
+    "categoryL3": "classification",
+    "statement": "Kingdom Animalia contains all multicellular organisms that are heterotrophic, lack cell walls, and are typically motile at some life stage.",
+    "quizQuestion": "What distinguishes animals from plants at the cellular level?",
+    "correctAnswer": "Animals lack cell walls",
+    "distractors": [
+      "Animals have fewer cells",
+      "Animals use photosynthesis",
+      "Animals have no nucleus",
+      "Animals lack mitochondria",
+      "Animals reproduce asexually",
+      "Animals are unicellular",
+      "Animals have rigid bodies",
+      "Animals are autotrophic"
+    ],
+    "acceptableAnswers": [
+      "Animals lack cell walls",
+      "no cell walls",
+      "lack rigid cell walls"
+    ],
+    "explanation": "Kingdom Animalia is defined by several key features that distinguish it from other kingdoms: cells lack rigid cell walls (unlike plants and fungi), animals are heterotrophic (they must consume organic matter), they are multicellular, and most are motile at some stage of their life cycle. The kingdom contains approximately 8.7 million known species, from sponges (the simplest) to humans. All animals share a common ancestor — a single-celled ancestor from about 800 million years ago.",
+    "wowFactor": "Sponges (phylum Porifera) are technically animals but have no nerves, no muscles, no mouth, and no organs — they are essentially colonies of specialized cells filtering water. Yet they share common ancestry with all complex animals.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What distinguishes animals from plants at the cellular level?",
+        "answer": "Animals lack cell walls",
+        "distractors": [
+          "Animals use photosynthesis",
+          "Animals are unicellular",
+          "Animals lack mitochondria"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which kingdom includes all multicellular heterotrophic organisms without cell walls?",
+        "answer": "Animalia",
+        "distractors": [
+          "Plantae",
+          "Fungi",
+          "Protista"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "All animals must consume organic matter to obtain energy.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Only in some species"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "What is the estimated number of known animal species on Earth?",
+        "answer": "8.7 million",
+        "distractors": [
+          "1 million",
+          "50 million",
+          "500,000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Encyclopedia of Life — Animalia",
+    "sourceUrl": "https://eol.org/pages/1",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Classification tree pixel art showing kingdom Animalia branching into mammals, birds, fish, insects, and worms, with each branch illustrated",
+    "tags": [
+      "animalia",
+      "kingdom",
+      "classification",
+      "cell walls",
+      "heterotrophic"
+    ]
+  },
+  {
+    "id": "animals-animalia-oldest",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "biology",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "biology",
+    "categoryL3": "classification",
+    "statement": "Sponges are considered the earliest-branching animals, with fossils dating back over 600 million years to the Ediacaran period.",
+    "quizQuestion": "Which animals have the oldest fossil record, dating 600 million years?",
+    "correctAnswer": "Sponges",
+    "distractors": [
+      "Jellyfish",
+      "Worms",
+      "Trilobites",
+      "Corals",
+      "Starfish",
+      "Mollusks",
+      "Sea urchins",
+      "Crabs"
+    ],
+    "acceptableAnswers": [
+      "Sponges",
+      "sea sponges",
+      "Porifera"
+    ],
+    "explanation": "Molecular clock studies and fossil evidence agree that sponges (phylum Porifera) represent the earliest-diverging animal lineage. Sponge fossils from the Ediacaran period (~635–541 million years ago) predate the Cambrian explosion. Sponges lack true tissues or organs — they are organized colonies of cells with specialized functions, representing what the earliest animal body plan may have looked like before evolution produced complex organ systems.",
+    "wowFactor": "Ocean sponges can filter their own body volume in water every 5 seconds — a 1-liter sponge processes 24,000 liters of seawater per day. They are among the most ecologically important filter feeders in marine ecosystems.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which animals have the oldest fossil record, dating 600 million years?",
+        "answer": "Sponges",
+        "distractors": [
+          "Jellyfish",
+          "Trilobites",
+          "Corals"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which geological period contains the oldest known sponge fossils?",
+        "answer": "Ediacaran",
+        "distractors": [
+          "Cambrian",
+          "Permian",
+          "Devonian"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Sponges are considered the earliest-branching animal lineage.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Only in some species"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "What makes sponges unique compared to all other animals?",
+        "answer": "No true tissues or organs",
+        "distractors": [
+          "They photosynthesize",
+          "They are unicellular",
+          "They have exoskeletons"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Botting, J.P. & Muir, L.A. (2018). Early sponge evolution. Palaeontological Research.",
+    "sourceUrl": "https://www.jstage.jst.go.jp/article/prpsj/22/1/22_1/_article",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Deep ocean pixel art showing ancient sponges on a seafloor, Ediacaran sea fauna floating nearby, deep blue bioluminescent lighting",
+    "tags": [
+      "sponges",
+      "animalia",
+      "evolution",
+      "ediacaran",
+      "oldest animals"
+    ]
+  },
+  {
+    "id": "animals-animalia-symmetry",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "biology",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "biology",
+    "categoryL3": "classification",
+    "statement": "Most animals have bilateral symmetry, meaning their left and right sides are mirror images — a trait linked to the evolution of directed movement.",
+    "quizQuestion": "What symmetry do most animals have?",
+    "correctAnswer": "Bilateral symmetry",
+    "distractors": [
+      "Radial symmetry",
+      "Spherical symmetry",
+      "No symmetry",
+      "Pentameral symmetry",
+      "Asymmetry",
+      "Hexagonal symmetry",
+      "Rotational symmetry",
+      "Dorsal symmetry"
+    ],
+    "acceptableAnswers": [
+      "Bilateral symmetry",
+      "bilateral",
+      "left-right symmetry"
+    ],
+    "explanation": "Bilateral symmetry — having a definite left side, right side, front (anterior), and back (posterior) — evolved in the ancestor of Bilateria, which includes the vast majority of animal species. The evolution of bilateralism is associated with directional movement: an animal moving forward benefits from having sense organs concentrated at the leading end (the head), which is why bilateral animals tend to develop brains. Radially symmetric animals (sea anemones, jellyfish) move in any direction and lack concentrated sense organs.",
+    "wowFactor": "Bilateral symmetry evolved once in animal history — all bilaterally symmetric animals, from earthworms to humans, share a single common ancestor that first developed this body plan approximately 555 million years ago.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What symmetry do most animals have?",
+        "answer": "Bilateral symmetry",
+        "distractors": [
+          "Radial symmetry",
+          "Spherical symmetry",
+          "No symmetry"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which body symmetry is associated with the evolution of heads and brains?",
+        "answer": "Bilateral symmetry",
+        "distractors": [
+          "Radial symmetry",
+          "Pentameral symmetry",
+          "Asymmetry"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Jellyfish and sea anemones are bilaterally symmetric.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Partially true",
+          "Only historically"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Why does bilateral symmetry favor brain development?",
+        "answer": "Senses concentrate at the leading end",
+        "distractors": [
+          "More neurons can fit",
+          "Bilateral eyes improve depth",
+          "Muscles work more efficiently"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "University of California Museum of Paleontology — Bilateria",
+    "sourceUrl": "https://ucmp.berkeley.edu/history/bilateria.html",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art body plan comparison: symmetrical human silhouette with center axis, vs radially symmetric jellyfish with spokes, side by side",
+    "tags": [
+      "bilateral symmetry",
+      "animalia",
+      "evolution",
+      "body plans",
+      "bilateria"
+    ]
+  },
+  {
+    "id": "animals-fish-gills",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "categoryL3": "fish",
+    "statement": "Fish extract oxygen from water using gills, which force water over thin membranes where oxygen diffuses into the blood and CO2 diffuses out.",
+    "quizQuestion": "How do fish extract oxygen from water?",
+    "correctAnswer": "Using gills",
+    "distractors": [
+      "Through their skin",
+      "By swallowing water",
+      "Via air bladders",
+      "Through fin membranes",
+      "By gulping surface air",
+      "Through lateral lines",
+      "Via specialized kidneys",
+      "Through mucus layers"
+    ],
+    "acceptableAnswers": [
+      "Using gills",
+      "through gills",
+      "via gills"
+    ],
+    "explanation": "Fish gills are thin, highly vascularized membranes arranged in lamellae (stacked plates) that maximize surface area for gas exchange. Water flows in through the mouth and out through the gill slits, moving across the gill lamellae in a direction counter to blood flow — this countercurrent exchange mechanism lets fish extract up to 80% of available oxygen from water (versus ~25% that mammals extract from air). Most fish suffocate out of water not from lack of oxygen in air, but because gills collapse without water support.",
+    "wowFactor": "Some fish, like mudskippers and lungfish, can breathe air and survive out of water for hours or even years — lungfish burrow into mud during droughts and can survive up to 4 years dormant in a sealed mucus cocoon.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How do fish extract oxygen from water?",
+        "answer": "Using gills",
+        "distractors": [
+          "Through their skin",
+          "Via air bladders",
+          "By gulping surface air"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What gas exchange mechanism makes fish gills so efficient?",
+        "answer": "Countercurrent exchange",
+        "distractors": [
+          "Parallel flow diffusion",
+          "Active oxygen pumping",
+          "Membrane pressurization"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Fish gills extract more oxygen from water than mammals extract from air.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Only in some species"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Why do fish suffocate when removed from water even though air has more oxygen?",
+        "answer": "Gills collapse without water",
+        "distractors": [
+          "They drink water to breathe",
+          "CO2 builds up too fast",
+          "Air is too warm for gills"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "NOAA Fisheries — Fish Biology",
+    "sourceUrl": "https://www.fisheries.noaa.gov/national/sustainable-fisheries/fisheries-science",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Cutaway pixel art of fish head showing gill anatomy — water flow arrows, red oxygenated blood, blue deoxygenated blood, gill lamellae detail",
+    "tags": [
+      "fish",
+      "gills",
+      "respiration",
+      "marine life",
+      "oxygen"
+    ]
+  },
+  {
+    "id": "animals-fish-diversity",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "categoryL3": "fish",
+    "statement": "Fish are the most diverse group of vertebrates with over 34,000 species — more than all other vertebrates combined.",
+    "quizQuestion": "Which vertebrate group has the most species?",
+    "correctAnswer": "Fish",
+    "distractors": [
+      "Birds",
+      "Reptiles",
+      "Mammals",
+      "Amphibians",
+      "Sharks",
+      "Insects",
+      "Bony fish only",
+      "Ray-finned fish"
+    ],
+    "acceptableAnswers": [
+      "Fish",
+      "fishes",
+      "Pisces"
+    ],
+    "explanation": "With over 34,000 described species, fish (a paraphyletic grouping of aquatic vertebrates) outnumber birds (~10,000), reptiles (~10,000), amphibians (~8,000), and mammals (~6,000) combined. Fish occupy nearly every aquatic habitat on Earth: from deep ocean trenches at 8 km depth (hadal snailfish) to high-altitude Himalayan rivers, from hydrothermal vents to Antarctic ice fish whose blood contains antifreeze proteins instead of hemoglobin.",
+    "wowFactor": "The Antarctic icefish (family Channichthyidae) is the only known vertebrate with no hemoglobin — its blood is literally transparent. It survives in near-freezing water because cold water holds more dissolved oxygen, making red blood cells unnecessary.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which vertebrate group has the most species?",
+        "answer": "Fish",
+        "distractors": [
+          "Birds",
+          "Reptiles",
+          "Mammals"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many fish species are currently described by scientists?",
+        "answer": "Over 34,000",
+        "distractors": [
+          "Over 10,000",
+          "Over 5,000",
+          "Over 50,000"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Fish have more species than all other vertebrates combined.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Only in some species"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "What unique adaptation lets Antarctic icefish survive without hemoglobin?",
+        "answer": "Cold water holds more oxygen",
+        "distractors": [
+          "Antifreeze in blood cells",
+          "Slower metabolism rate",
+          "Oxygen from sea ice"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "FishBase — Species Statistics",
+    "sourceUrl": "https://www.fishbase.se/home.htm",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Colorful array of diverse fish pixel art — clownfish, shark, anglerfish, sunfish, seahorse — arranged in a collage on deep blue background",
+    "tags": [
+      "fish",
+      "vertebrate diversity",
+      "marine life",
+      "species count",
+      "aquatic"
+    ]
+  },
+  {
+    "id": "animals-fish-lateral-line",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "marine_life",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "marine_life",
+    "categoryL3": "fish",
+    "statement": "Fish have a lateral line system — a row of sensory organs along their sides that detects water pressure changes and vibrations.",
+    "quizQuestion": "What does a fish's lateral line sense?",
+    "correctAnswer": "Water pressure changes",
+    "distractors": [
+      "Electric fields",
+      "Water temperature",
+      "Chemical signals",
+      "Magnetic north",
+      "Light intensity",
+      "Sound frequency",
+      "Water salinity",
+      "Gravity direction"
+    ],
+    "acceptableAnswers": [
+      "Water pressure changes",
+      "pressure changes",
+      "vibrations in water"
+    ],
+    "explanation": "The lateral line is a mechanosensory system unique to fish and aquatic amphibians, consisting of hair-cell receptors (neuromasts) arranged in canals along the body. It detects minute changes in water pressure and flow, allowing fish to sense nearby movement without seeing it — enabling schooling behavior (thousands of fish turning simultaneously), predator detection in murky water, and locating prey by their movement signatures. The system also helps fish navigate currents.",
+    "wowFactor": "The lateral line is essentially a 'sixth sense' — fish schools can perform simultaneous turns across thousands of individuals in milliseconds because the pressure wave from one fish turning propagates through the school via lateral lines, not visual signals.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does a fish's lateral line sense?",
+        "answer": "Water pressure changes",
+        "distractors": [
+          "Electric fields",
+          "Water temperature",
+          "Magnetic north"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What sensory system allows fish schools to turn simultaneously?",
+        "answer": "Lateral line",
+        "distractors": [
+          "Vision",
+          "Hearing",
+          "Electroreception"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "The lateral line system is unique to fish and aquatic amphibians.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Only in some species"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "How does the lateral line help fish in murky water?",
+        "answer": "Detects movement without sight",
+        "distractors": [
+          "Amplifies smell signals",
+          "Glows to attract prey",
+          "Emits sonar pulses"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Journal of Experimental Biology — Lateral Line Hydrodynamics",
+    "sourceUrl": "https://journals.biologists.com/jeb",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art fish with glowing lateral line highlighted in blue-white dots along its side, ripple pressure waves radiating from a nearby predator",
+    "tags": [
+      "fish",
+      "lateral line",
+      "sensory systems",
+      "schooling",
+      "mechanoreception"
+    ]
+  },
+  {
+    "id": "animals-dinosaur-extinction",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "reptiles_amphibians",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "reptiles_amphibians",
+    "categoryL3": "dinosaurs",
+    "statement": "Non-avian dinosaurs went extinct approximately 66 million years ago when an asteroid impact triggered a global winter by filling the atmosphere with debris.",
+    "quizQuestion": "When did non-avian dinosaurs go extinct?",
+    "correctAnswer": "66 million years ago",
+    "distractors": [
+      "100 million years ago",
+      "50 million years ago",
+      "250 million years ago",
+      "10 million years ago",
+      "200 million years ago",
+      "35 million years ago",
+      "500 million years ago",
+      "150 million years ago"
+    ],
+    "acceptableAnswers": [
+      "66 million years ago",
+      "66 mya",
+      "~66 million years ago"
+    ],
+    "explanation": "The Cretaceous-Paleogene extinction event 66 million years ago was triggered by the Chicxulub impactor — a 10-km asteroid that struck the Yucatán Peninsula. The impact released energy equivalent to a billion atomic bombs, ignited global wildfires, and ejected enough debris to block sunlight for years, collapsing food chains. Three-quarters of all species were wiped out. Crucially, birds (avian dinosaurs) survived — making the dinosaurs technically not fully extinct.",
+    "wowFactor": "The Chicxulub impact caused such extreme heating that the global average temperature spiked by 15°C for the first day alone — animals far from the impact crater were likely incinerated by radiant heat raining from re-entering debris before the nuclear winter even began.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "When did non-avian dinosaurs go extinct?",
+        "answer": "66 million years ago",
+        "distractors": [
+          "100 million years ago",
+          "250 million years ago",
+          "50 million years ago"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What caused the extinction of non-avian dinosaurs 66 million years ago?",
+        "answer": "Asteroid impact",
+        "distractors": [
+          "Volcanic eruptions",
+          "Ice age",
+          "Sea level rise"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Birds are technically avian dinosaurs that survived the mass extinction.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Only in some species"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "What is the name of the asteroid impact site that caused dinosaur extinction?",
+        "answer": "Chicxulub",
+        "distractors": [
+          "Vredefort",
+          "Sudbury",
+          "Popigai"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Alvarez, L.W. et al. (1980). Extraterrestrial Cause for the Cretaceous-Tertiary Extinction. Science.",
+    "sourceUrl": "https://www.science.org/doi/10.1126/science.208.4448.1095",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Epic pixel art scene: giant asteroid trail across sky above fleeing dinosaurs, horizon glowing orange, T-rex silhouette in foreground",
+    "tags": [
+      "dinosaurs",
+      "extinction",
+      "asteroid",
+      "chicxulub",
+      "cretaceous"
+    ]
+  },
+  {
+    "id": "animals-dinosaur-warm-blooded",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "reptiles_amphibians",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "reptiles_amphibians",
+    "categoryL3": "dinosaurs",
+    "statement": "Many dinosaurs were warm-blooded (endothermic), able to regulate their own body temperature like modern birds and mammals.",
+    "quizQuestion": "What evidence suggests many dinosaurs were warm-blooded?",
+    "correctAnswer": "Fast bone growth rates",
+    "distractors": [
+      "Fossilized fat deposits",
+      "Large jaw muscles",
+      "Long tail structures",
+      "Evidence of hibernation",
+      "Scaled skin impressions",
+      "Hollow tooth roots",
+      "Dense solid bones",
+      "Low metabolic byproducts"
+    ],
+    "acceptableAnswers": [
+      "Fast bone growth rates",
+      "rapid bone growth",
+      "bone growth rings"
+    ],
+    "explanation": "Bone histology (microscopic analysis of bone tissue) reveals that many dinosaurs had fibro-lamellar bone — a fast-growing tissue found only in endothermic (warm-blooded) animals. Cold-blooded animals grow slowly with lamellar bone showing distinct seasonal rings. Additionally, many theropod dinosaurs (including T. rex relatives) had feathers, which are primarily insulating structures — feathers on a cold-blooded animal would be metabolically wasteful.",
+    "wowFactor": "T. rex grew at rates comparable to modern large mammals — a young T. rex gained about 2.2 lbs per day during its teenage growth spurt, reaching full size in ~20 years. Cold-blooded reptiles of equivalent size would take centuries to grow that fast.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What evidence suggests many dinosaurs were warm-blooded?",
+        "answer": "Fast bone growth rates",
+        "distractors": [
+          "Fossilized fat deposits",
+          "Evidence of hibernation",
+          "Dense solid bones"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What type of bone tissue is unique to warm-blooded animals?",
+        "answer": "Fibro-lamellar bone",
+        "distractors": [
+          "Lamellar bone",
+          "Compact bone",
+          "Cancellous bone"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Feathers on dinosaurs suggest they were cold-blooded like modern reptiles.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Partially true",
+          "Only historically"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "How fast did young T. rex grow during its teenage growth spurt?",
+        "answer": "About 2.2 lbs per day",
+        "distractors": [
+          "About 10 lbs per day",
+          "About 0.5 lbs per day",
+          "About 5 lbs per week"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Erickson, G.M. et al. (2004). Gigantism and comparative life-history parameters of tyrannosaurid dinosaurs. Nature.",
+    "sourceUrl": "https://www.nature.com/articles/nature02699",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Split pixel art — T. rex cross-section bone showing fast-growth fibro-lamellar tissue on left, crocodile bone with slow growth rings on right",
+    "tags": [
+      "dinosaurs",
+      "warm-blooded",
+      "endothermy",
+      "bone histology",
+      "t-rex"
+    ]
+  },
+  {
+    "id": "animals-dinosaur-feathers",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "reptiles_amphibians",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "reptiles_amphibians",
+    "categoryL3": "dinosaurs",
+    "statement": "Over 150 dinosaur species have been found with evidence of feathers, including large theropods related to T. rex.",
+    "quizQuestion": "How many dinosaur species show evidence of feathers?",
+    "correctAnswer": "Over 150 species",
+    "distractors": [
+      "Only 3 species",
+      "About 20 species",
+      "Over 500 species",
+      "Only bird ancestors",
+      "About 50 species",
+      "Just 10 species",
+      "Over 1,000 species",
+      "About 75 species"
+    ],
+    "acceptableAnswers": [
+      "Over 150 species",
+      "150+ species",
+      "more than 150"
+    ],
+    "explanation": "Feathered dinosaur fossils have been found primarily in China's Yixian Formation (125 million years ago), where exceptional preservation captured soft tissue including feathers. Over 150 species across the dinosaur family tree — not just small bird ancestors — show feather evidence. The tyrannosaurid Yutyrannus huali (a T. rex relative weighing 3,000 lbs) had filamentous feathers. Feathers likely originated for insulation and display before being co-opted for flight.",
+    "wowFactor": "If we repainted popular dinosaur movies with scientific accuracy, T. rex would likely have had feathers on parts of its body — though the exact extent is debated since large animals (like elephants) tend to reduce insulation as they get bigger.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many dinosaur species show evidence of feathers?",
+        "answer": "Over 150 species",
+        "distractors": [
+          "Only 3 species",
+          "About 50 species",
+          "Over 1,000 species"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Where are most feathered dinosaur fossils found?",
+        "answer": "China's Yixian Formation",
+        "distractors": [
+          "Mongolian Gobi Desert",
+          "South American Patagonia",
+          "Canadian Badlands"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Feathers in dinosaurs originally evolved for flight.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Partially true",
+          "Only historically"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "What were dinosaur feathers likely originally used for?",
+        "answer": "Insulation and display",
+        "distractors": [
+          "Gliding between trees",
+          "Waterproofing scales",
+          "Camouflage coloring"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Xu, X. et al. (2012). A gigantic feathered dinosaur from the Lower Cretaceous of China. Nature.",
+    "sourceUrl": "https://www.nature.com/articles/nature10906",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art Yutyrannus — a massive feathered theropod with reddish-brown plumage walking through a Cretaceous Chinese forest",
+    "tags": [
+      "dinosaurs",
+      "feathers",
+      "theropods",
+      "yutyrannus",
+      "paleontology"
+    ]
+  },
+  {
+    "id": "animals-dromedary-hump",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "adaptations",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "adaptations",
+    "categoryL3": "desert_animals",
+    "statement": "A dromedary camel's hump stores fat, not water — the fat can be metabolized into energy and water when food is scarce.",
+    "quizQuestion": "What does a dromedary camel's hump store?",
+    "correctAnswer": "Fat",
+    "distractors": [
+      "Water",
+      "Muscle",
+      "Air",
+      "Blood",
+      "Digestive fluid",
+      "Salt reserves",
+      "Bone marrow",
+      "Lymph fluid"
+    ],
+    "acceptableAnswers": [
+      "Fat",
+      "stored fat",
+      "fatty tissue"
+    ],
+    "explanation": "Contrary to popular belief, a camel's hump does not store water — it stores approximately 80 lbs of fat. When food and water are unavailable, the fat is metabolized: oxidation of fat produces both energy and metabolic water (roughly 1.1 g of water per gram of fat oxidized). When a camel's fat reserves are depleted, the hump deflates and flops to the side. Dromedaries (one hump) are adapted for hot desert climates; Bactrian camels (two humps) are adapted for cold Central Asian steppes.",
+    "wowFactor": "Camels can lose up to 30% of their body weight in water and survive — a loss of just 12-15% would be fatal for humans. When they finally reach water, they can drink 53 gallons in about 13 minutes.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does a dromedary camel's hump store?",
+        "answer": "Fat",
+        "distractors": [
+          "Water",
+          "Air",
+          "Blood"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How does fat in a camel's hump provide water in the desert?",
+        "answer": "Fat oxidation produces water",
+        "distractors": [
+          "Fat absorbs humidity",
+          "Fat is converted to blood serum",
+          "Fat stores are liquid"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "A camel's hump stores water for use in desert conditions.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Partially true",
+          "Only historically"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "What happens to a camel's hump when its fat reserves are depleted?",
+        "answer": "It deflates and flops over",
+        "distractors": [
+          "It shrinks evenly",
+          "It becomes rigid",
+          "It fills with air"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "National Geographic — Camel Facts",
+    "sourceUrl": "https://www.nationalgeographic.com/animals/mammals/facts/dromedary-camel",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art dromedary camel cross-section showing a fat-filled hump next to a deflated floppy hump after long desert trek, sandy dune background",
+    "tags": [
+      "camel",
+      "dromedary",
+      "hump",
+      "fat storage",
+      "desert adaptations"
+    ]
+  },
+  {
+    "id": "animals-dromedary-temperature",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "adaptations",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "adaptations",
+    "categoryL3": "desert_animals",
+    "statement": "Dromedary camels can tolerate a body temperature swing of 11°F (6°C) between night and day, reducing the need to sweat.",
+    "quizQuestion": "How much can a camel's body temperature safely fluctuate?",
+    "correctAnswer": "11°F in a day",
+    "distractors": [
+      "2°F in a day",
+      "20°F in a day",
+      "5°F in a day",
+      "30°F in a day",
+      "1°F in a day",
+      "15°F in a day",
+      "8°F in a day",
+      "25°F in a day"
+    ],
+    "acceptableAnswers": [
+      "11°F in a day",
+      "6°C in a day",
+      "up to 11°F",
+      "6 degrees Celsius"
+    ],
+    "explanation": "Camels are heterothermic — they allow their core body temperature to vary between 93°F (34°C) at night and 104°F (40°C) during the day. This 6°C temperature swing acts as a heat buffer: the camel absorbs heat during the day (storing it in its body mass) rather than sweating to stay cool, then radiates it at night. This adaptation alone saves several liters of water daily. By comparison, humans maintain a narrow 98.6°F ± 2°F range and must sweat immediately when hot.",
+    "wowFactor": "Camel blood cells are oval-shaped rather than round like other mammals — allowing them to flow through thickened, dehydrated blood that would clog round cells. This is why camels can survive losing 30% of body water without their blood thickening fatally.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How much can a camel's body temperature safely fluctuate?",
+        "answer": "11°F in a day",
+        "distractors": [
+          "2°F in a day",
+          "20°F in a day",
+          "5°F in a day"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What survival advantage does a camel's body temperature flexibility provide?",
+        "answer": "Reduces sweating and water loss",
+        "distractors": [
+          "Allows faster running",
+          "Prevents heatstroke instantly",
+          "Improves night vision"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Camels maintain a constant body temperature like humans do.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Partially true",
+          "Only historically"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "What unique shape are camel blood cells that helps in dehydration?",
+        "answer": "Oval",
+        "distractors": [
+          "Biconcave disc",
+          "Triangular",
+          "Spherical"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Schmidt-Nielsen, K. (1964). Desert Animals: Physiological Problems of Heat and Water. Oxford.",
+    "sourceUrl": "https://archive.org/details/desertanimals00schm",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art infographic camel with thermometer showing 34°C at night (cool blue hue) to 40°C during day (warm orange glow), desert backdrop",
+    "tags": [
+      "camel",
+      "dromedary",
+      "thermoregulation",
+      "desert adaptations",
+      "heterothermy"
+    ]
+  },
+  {
+    "id": "animals-dromedary-nostrils",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "adaptations",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "adaptations",
+    "categoryL3": "desert_animals",
+    "statement": "Dromedary camels can close their nostrils tightly to block sand, and their nasal passages recapture moisture from exhaled air.",
+    "quizQuestion": "How do camel nostrils help conserve water?",
+    "correctAnswer": "Recapture exhaled moisture",
+    "distractors": [
+      "Filter water from air",
+      "Store water directly",
+      "Absorb dew from plants",
+      "Pump water to stomach",
+      "Block heat from entering",
+      "Produce cooling mucus",
+      "Sense underground water",
+      "Exhale less CO2"
+    ],
+    "acceptableAnswers": [
+      "Recapture exhaled moisture",
+      "recover moisture from breath",
+      "condense water from exhalation"
+    ],
+    "explanation": "Camels have a highly efficient nasal turbinate system: during exhalation, warm moisture-laden air passes over cooled turbinate bones in the nasal cavity, where water vapor condenses and is reabsorbed into the body rather than lost to the air. This can reduce respiratory water loss by up to 66% compared to simple mouth breathing. Additionally, camels can voluntarily seal their nostrils to block sandstorms, and their double row of long eyelashes protects their eyes from blowing sand.",
+    "wowFactor": "A camel's eyes have three eyelids — two normal ones and a thin, transparent inner eyelid (nictitating membrane) that can wipe debris off the eye while still allowing the camel to see through it, like a built-in windshield wiper.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How do camel nostrils help conserve water?",
+        "answer": "Recapture exhaled moisture",
+        "distractors": [
+          "Filter water from air",
+          "Absorb dew from plants",
+          "Store water directly"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What structure in camel nostrils condenses moisture from exhalation?",
+        "answer": "Turbinate bones",
+        "distractors": [
+          "Mucous membranes",
+          "Nasal sponge tissue",
+          "Cartilage rings"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Camels can completely seal their nostrils against sandstorms.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Only in some species"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "How many eyelids does a camel have?",
+        "answer": "Three",
+        "distractors": [
+          "Two",
+          "Four",
+          "One"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Physiological Zoology — Camel Water Conservation Mechanisms",
+    "sourceUrl": "https://www.journals.uchicago.edu/toc/pz/current",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Close-up pixel art of camel nose showing sealed nostrils in sandstorm on left, cross-section diagram of turbinate moisture recovery on right",
+    "tags": [
+      "camel",
+      "dromedary",
+      "nostrils",
+      "water conservation",
+      "desert adaptations"
+    ]
+  },
+  {
+    "id": "animals-chicken-population",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "birds",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "birds",
+    "categoryL3": "domesticated_birds",
+    "statement": "With over 33 billion individuals, the chicken is the most numerous bird on Earth — outnumbering all wild birds combined.",
+    "quizQuestion": "How many chickens exist on Earth?",
+    "correctAnswer": "Over 33 billion",
+    "distractors": [
+      "1 billion",
+      "5 billion",
+      "10 billion",
+      "100 billion",
+      "500 million",
+      "50 billion",
+      "3 billion",
+      "20 billion"
+    ],
+    "acceptableAnswers": [
+      "Over 33 billion",
+      "33 billion",
+      "about 33 billion"
+    ],
+    "explanation": "Domestic chickens (Gallus gallus domesticus) number approximately 33 billion — roughly 4 chickens for every human on Earth — making them by far the most numerous bird species. They also outnumber all wild birds combined (estimated at ~300 billion, but the majority are small songbirds with fleeting lifespans). Chickens were first domesticated from the red junglefowl in Southeast Asia approximately 8,000 years ago, initially for cockfighting rather than food.",
+    "wowFactor": "Chickens have been in space: NASA sent chicken embryos on Space Shuttle Discovery in 1989 to study the effects of microgravity on vertebrate development. The embryos developed normally, suggesting vertebrates could reproduce in space.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many chickens exist on Earth?",
+        "answer": "Over 33 billion",
+        "distractors": [
+          "1 billion",
+          "10 billion",
+          "50 billion"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What was the original reason chickens were domesticated?",
+        "answer": "Cockfighting",
+        "distractors": [
+          "Egg production",
+          "Meat supply",
+          "Religious sacrifice"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Chickens are the most numerous bird species on Earth.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Only in some species"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Where were chickens first domesticated approximately 8,000 years ago?",
+        "answer": "Southeast Asia",
+        "distractors": [
+          "Egypt",
+          "Mesopotamia",
+          "China"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "FAO Global Livestock Statistics 2022",
+    "sourceUrl": "https://www.fao.org/faostat/en/#data/QCL",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art aerial view of endless chickens filling a field as far as the eye can see, tiny Earth visible in background showing scale",
+    "tags": [
+      "chicken",
+      "domestication",
+      "birds",
+      "population",
+      "most numerous bird"
+    ]
+  },
+  {
+    "id": "animals-chicken-junglefowl",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "birds",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "birds",
+    "categoryL3": "domesticated_birds",
+    "statement": "The domestic chicken descended from the red junglefowl of Southeast Asia and was domesticated approximately 8,000 years ago.",
+    "quizQuestion": "What wild bird is the ancestor of domestic chickens?",
+    "correctAnswer": "Red junglefowl",
+    "distractors": [
+      "Grey francolin",
+      "Peacock",
+      "Wild turkey",
+      "Pheasant",
+      "Guinea fowl",
+      "Quail",
+      "Grouse",
+      "Partridge"
+    ],
+    "acceptableAnswers": [
+      "Red junglefowl",
+      "Gallus gallus",
+      "jungle fowl"
+    ],
+    "explanation": "The domestic chicken (Gallus gallus domesticus) was domesticated from the red junglefowl (Gallus gallus), a wild bird still found across South and Southeast Asia. Genetic studies confirm initial domestication occurred around 8,000 years ago in the Yangtze River valley region of China, with additional domestication events in South Asia and potentially India. Modern chickens have been selectively bred so aggressively that they now bear little resemblance behaviorally or physically to their wild ancestor.",
+    "wowFactor": "Broiler chickens (raised for meat) have been bred to grow so fast they reach slaughter weight in 47 days — their wild ancestor took 6 months to reach maturity. Modern broilers' legs often struggle to support their own weight due to the extreme selective pressure for rapid muscle growth.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What wild bird is the ancestor of domestic chickens?",
+        "answer": "Red junglefowl",
+        "distractors": [
+          "Grey francolin",
+          "Wild turkey",
+          "Peacock"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Where was the domestic chicken first domesticated?",
+        "answer": "Southeast Asia / China",
+        "distractors": [
+          "Egypt",
+          "India",
+          "Mesopotamia"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Domestic chickens descended from the wild turkey.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Partially true",
+          "Only historically"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Why do modern broiler chickens often struggle to walk?",
+        "answer": "Bred too fast for legs to support",
+        "distractors": [
+          "Kept in small cages",
+          "Lack of exercise",
+          "Genetic bone disease"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Lawler, A. (2014). Why Did the Chicken Cross the World? Atria Books.",
+    "sourceUrl": "https://www.atria.com/books/why-did-the-chicken-cross-the-world/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Side-by-side pixel art: vibrant red junglefowl in jungle canopy on left, domestic chicken in farmyard on right, evolutionary arrow between them",
+    "tags": [
+      "chicken",
+      "red junglefowl",
+      "domestication",
+      "evolution",
+      "gallus gallus"
+    ]
+  },
+  {
+    "id": "animals-chicken-eggs",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "birds",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "birds",
+    "categoryL3": "domesticated_birds",
+    "statement": "A modern laying hen produces up to 300 eggs per year; wild red junglefowl lay only 10–15 eggs annually.",
+    "quizQuestion": "How many eggs can a modern laying hen produce per year?",
+    "correctAnswer": "Up to 300 eggs",
+    "distractors": [
+      "50 eggs",
+      "100 eggs",
+      "500 eggs",
+      "365 eggs",
+      "150 eggs",
+      "30 eggs",
+      "200 eggs",
+      "1,000 eggs"
+    ],
+    "acceptableAnswers": [
+      "Up to 300 eggs",
+      "300 eggs",
+      "about 300",
+      "nearly 300"
+    ],
+    "explanation": "Modern laying hen breeds (such as the White Leghorn) have been selectively bred over centuries to produce up to 300–320 eggs per year — essentially an egg almost every day. Their wild ancestor, the red junglefowl, lays only 10–15 eggs per year in two seasonal clutches. This 20-fold increase in egg production required reshaping the entire hormonal and reproductive physiology of the bird, representing one of the most extreme domestication transformations in agricultural history.",
+    "wowFactor": "A hen's egg is formed from scratch in about 26 hours inside the oviduct. The entire shell — made of calcium carbonate — is deposited over a 20-hour period. High-production hens essentially deplete their own bone calcium reserves to produce shells, requiring calcium-rich feed to avoid skeletal damage.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many eggs can a modern laying hen produce per year?",
+        "answer": "Up to 300 eggs",
+        "distractors": [
+          "50 eggs",
+          "100 eggs",
+          "500 eggs"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "How many eggs does a wild red junglefowl lay annually?",
+        "answer": "10 to 15 eggs",
+        "distractors": [
+          "50 to 75 eggs",
+          "100 to 150 eggs",
+          "5 to 8 eggs"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Modern hens produce about 20 times more eggs than their wild ancestors.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Only in some species"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "How long does it take a hen to form a single egg?",
+        "answer": "About 26 hours",
+        "distractors": [
+          "About 3 hours",
+          "About 12 hours",
+          "About 48 hours"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "University of Illinois Extension — Egg Production",
+    "sourceUrl": "https://extension.illinois.edu/eggs/eggs1.cfm",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art comparison: wild junglefowl nest with 12 eggs in forest, modern white leghorn hen in coop surrounded by 300 eggs stacked in rows",
+    "tags": [
+      "chicken",
+      "eggs",
+      "domestication",
+      "selective breeding",
+      "laying hens"
+    ]
+  },
+  {
+    "id": "animals-passenger-pigeon-numbers",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "conservation",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "conservation",
+    "categoryL3": "extinct_species",
+    "statement": "The Passenger Pigeon was once North America's most abundant bird with 3–5 billion individuals — roughly 25–40% of all birds on the continent.",
+    "quizQuestion": "How many Passenger Pigeons existed at their peak?",
+    "correctAnswer": "3 to 5 billion",
+    "distractors": [
+      "1 million",
+      "100 million",
+      "500 million",
+      "10 billion",
+      "50 million",
+      "1 billion",
+      "20 billion",
+      "200 million"
+    ],
+    "acceptableAnswers": [
+      "3 to 5 billion",
+      "3-5 billion",
+      "billions",
+      "about 5 billion"
+    ],
+    "explanation": "At their peak, Passenger Pigeons (Ectopistes migratorius) were estimated at 3–5 billion individuals — accounting for roughly 25–40% of the total bird population in North America. Migrating flocks were so massive they darkened the sky for days. Naturalist John James Audubon described a single flock that took three days to pass overhead and blocked the sun. Despite this extraordinary abundance, the species was entirely extinct by 1914 due to industrial-scale commercial hunting and habitat destruction.",
+    "wowFactor": "The last Passenger Pigeon on Earth — a female named Martha — died alone in the Cincinnati Zoo on September 1, 1914. Her species went from billions to zero in under 50 years, making it the most dramatic extinction event in recorded bird history.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many Passenger Pigeons existed at their peak?",
+        "answer": "3 to 5 billion",
+        "distractors": [
+          "100 million",
+          "500 million",
+          "10 billion"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What was the name of the last Passenger Pigeon?",
+        "answer": "Martha",
+        "distractors": [
+          "Incas",
+          "Lady Jane",
+          "George"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Passenger Pigeon flocks were large enough to block out the sun for days.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Only in some species"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "When did the last Passenger Pigeon die?",
+        "answer": "September 1, 1914",
+        "distractors": [
+          "June 15, 1900",
+          "December 3, 1920",
+          "August 14, 1899"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Greenberg, J. (2014). A Feathered River Across the Sky. Bloomsbury.",
+    "sourceUrl": "https://www.bloomsbury.com/us/a-feathered-river-across-the-sky-9781620405345/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Epic pixel art panorama: horizon-spanning flock of Passenger Pigeons darkening the sky above 1800s frontier landscape, hunters with guns below",
+    "tags": [
+      "passenger pigeon",
+      "extinction",
+      "conservation",
+      "most abundant bird",
+      "north america"
+    ]
+  },
+  {
+    "id": "animals-passenger-pigeon-extinction",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "conservation",
+    "categoryL1": "animals_wildlife",
+    "categoryL2": "conservation",
+    "categoryL3": "extinct_species",
+    "statement": "The Passenger Pigeon went extinct in 1914 due to commercial hunting — hunters used railroads to follow migrating flocks and shoot millions per day.",
+    "quizQuestion": "What primarily caused the Passenger Pigeon's extinction?",
+    "correctAnswer": "Commercial hunting",
+    "distractors": [
+      "Disease epidemic",
+      "Habitat destruction alone",
+      "Climate change",
+      "Competition from doves",
+      "Predator species invasion",
+      "Overharvesting of food trees",
+      "Poisoning by farmers",
+      "Migration route disruption"
+    ],
+    "acceptableAnswers": [
+      "Commercial hunting",
+      "industrial hunting",
+      "mass hunting"
+    ],
+    "explanation": "The Passenger Pigeon's extinction was primarily driven by commercial hunting enabled by the telegraph and railroad — hunters could receive telegrams about flock locations and travel by rail to intercept them. Professional pigeoners used nets, traps, and guns to kill millions of birds per day, shipping them to cities as cheap food. Combined with deforestation of eastern North American forests (destroying beech nut and acorn food sources), the population collapsed faster than it could recover. By 1900, the wild population was functionally extinct.",
+    "wowFactor": "The Passenger Pigeon's extinction gave birth to the modern conservation movement in the United States. Martha's death in 1914 directly inspired the passage of the Migratory Bird Treaty Act of 1918, which still protects over 1,000 bird species today.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What primarily caused the Passenger Pigeon's extinction?",
+        "answer": "Commercial hunting",
+        "distractors": [
+          "Disease epidemic",
+          "Climate change",
+          "Habitat destruction alone"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What legislation was directly inspired by the Passenger Pigeon's extinction?",
+        "answer": "Migratory Bird Treaty Act",
+        "distractors": [
+          "Endangered Species Act",
+          "Clean Air Act",
+          "National Wildlife Refuge Act"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "The Passenger Pigeon extinction inspired major US conservation legislation.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Partially true",
+          "Only in some species"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "What technology allowed hunters to track and intercept Passenger Pigeon flocks?",
+        "answer": "Telegraph and railroad",
+        "distractors": [
+          "Early aircraft",
+          "Morse code alone",
+          "River transport"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Smithsonian Institution — Passenger Pigeon",
+    "sourceUrl": "https://americanhistory.si.edu/blog/passenger-pigeon",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Describes mass killing of animals in historical context",
+    "visualDescription": "Pixel art split image: crowded hunting camp with piles of birds (sepia tones, 1870s), next to a lone pigeon in a zoo cage (muted grey tones)",
+    "tags": [
+      "passenger pigeon",
+      "extinction",
+      "commercial hunting",
+      "conservation",
+      "1914"
+    ]
+  }
+]

@@ -1,0 +1,3322 @@
+[
+  {
+    "qid": "Q177",
+    "label": "Pizza",
+    "description": "Italian baked dish with cheese and toppings on dough",
+    "subcategory": "european_cuisine",
+    "sitelinks": 120,
+    "monthlyPageviews": 85000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q46383",
+    "label": "Sushi",
+    "description": "Japanese rice-based dish with fish and vegetables",
+    "subcategory": "asian_cuisine",
+    "sitelinks": 110,
+    "monthlyPageviews": 75000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q8486",
+    "label": "Coffee",
+    "description": "Beverage made from roasted coffee beans",
+    "subcategory": "fermentation_beverages",
+    "sitelinks": 130,
+    "monthlyPageviews": 120000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q195",
+    "label": "Chocolate",
+    "description": "Food made from cocoa beans",
+    "subcategory": "baking_desserts",
+    "sitelinks": 115,
+    "monthlyPageviews": 95000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q44",
+    "label": "Beer",
+    "description": "Fermented beverage made from grains",
+    "subcategory": "fermentation_beverages",
+    "sitelinks": 125,
+    "monthlyPageviews": 100000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q282",
+    "label": "Wine",
+    "description": "Fermented alcoholic beverage from grapes",
+    "subcategory": "fermentation_beverages",
+    "sitelinks": 120,
+    "monthlyPageviews": 90000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q23506",
+    "label": "Pasta",
+    "description": "Italian staple made from wheat flour dough",
+    "subcategory": "european_cuisine",
+    "sitelinks": 105,
+    "monthlyPageviews": 70000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q28520",
+    "label": "Bread",
+    "description": "Baked staple made from flour and water",
+    "subcategory": "baking_desserts",
+    "sitelinks": 100,
+    "monthlyPageviews": 65000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q82571",
+    "label": "Curry",
+    "description": "Indian spiced dish with sauce",
+    "subcategory": "asian_cuisine",
+    "sitelinks": 95,
+    "monthlyPageviews": 60000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q53817",
+    "label": "Dim sum",
+    "description": "Chinese small plates and dumplings",
+    "subcategory": "asian_cuisine",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q10588",
+    "label": "Ramen",
+    "description": "Japanese noodle soup with broth and toppings",
+    "subcategory": "asian_cuisine",
+    "sitelinks": 95,
+    "monthlyPageviews": 65000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q170055",
+    "label": "Pad Thai",
+    "description": "Thai stir-fried noodle dish",
+    "subcategory": "asian_cuisine",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q188953",
+    "label": "Biryani",
+    "description": "Indian rice dish with meat and spices",
+    "subcategory": "asian_cuisine",
+    "sitelinks": 90,
+    "monthlyPageviews": 55000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1464305",
+    "label": "Pho",
+    "description": "Vietnamese soup with noodles and broth",
+    "subcategory": "asian_cuisine",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q43015",
+    "label": "Croissant",
+    "description": "French buttery crescent pastry",
+    "subcategory": "baking_desserts",
+    "sitelinks": 90,
+    "monthlyPageviews": 55000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q38775",
+    "label": "Baguette",
+    "description": "French long thin bread loaf",
+    "subcategory": "european_cuisine",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q200420",
+    "label": "Paella",
+    "description": "Spanish rice dish with seafood or meat",
+    "subcategory": "european_cuisine",
+    "sitelinks": 90,
+    "monthlyPageviews": 55000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q2202",
+    "label": "Fish and chips",
+    "description": "British fried fish with potato chips",
+    "subcategory": "european_cuisine",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q43565",
+    "label": "Tacos",
+    "description": "Mexican tortillas with fillings",
+    "subcategory": "world_cuisine",
+    "sitelinks": 95,
+    "monthlyPageviews": 65000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q20723",
+    "label": "Hummus",
+    "description": "Middle Eastern chickpea paste",
+    "subcategory": "world_cuisine",
+    "sitelinks": 80,
+    "monthlyPageviews": 48000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q207394",
+    "label": "Falafel",
+    "description": "Middle Eastern fried chickpea balls",
+    "subcategory": "world_cuisine",
+    "sitelinks": 85,
+    "monthlyPageviews": 52000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q207407",
+    "label": "Shawarma",
+    "description": "Middle Eastern grilled meat wrap",
+    "subcategory": "world_cuisine",
+    "sitelinks": 80,
+    "monthlyPageviews": 48000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q210946",
+    "label": "Ceviche",
+    "description": "Peruvian raw fish dish with citrus",
+    "subcategory": "world_cuisine",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q309674",
+    "label": "Injera",
+    "description": "Ethiopian flatbread",
+    "subcategory": "world_cuisine",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1009364",
+    "label": "Jollof rice",
+    "description": "West African spiced rice dish",
+    "subcategory": "world_cuisine",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q204081",
+    "label": "Pepper",
+    "description": "Pungent spice from peppercorns",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 95,
+    "monthlyPageviews": 60000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q2075",
+    "label": "Cinnamon",
+    "description": "Sweet spice from tree bark",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q42385",
+    "label": "Saffron",
+    "description": "Golden-red expensive spice from crocus flower",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 90,
+    "monthlyPageviews": 55000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q33573",
+    "label": "Turmeric",
+    "description": "Golden spice from ginger root",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q41677",
+    "label": "Vanilla",
+    "description": "Sweet flavoring from orchid pods",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q12511",
+    "label": "Rice",
+    "description": "Staple grain eaten worldwide",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 95,
+    "monthlyPageviews": 65000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q16940",
+    "label": "Olive oil",
+    "description": "Oil pressed from olives",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q23548",
+    "label": "Basil",
+    "description": "Aromatic herb used in cooking",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q25373",
+    "label": "Oregano",
+    "description": "Mediterranean herb in dried form",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q42136",
+    "label": "Cilantro",
+    "description": "Herb with distinctive pungent flavor",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1148",
+    "label": "Maillard reaction",
+    "description": "Chemical reaction that creates browning and flavor in cooking",
+    "subcategory": "food_science",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1158",
+    "label": "Fermentation",
+    "description": "Biochemical process that preserves food and creates beverages",
+    "subcategory": "food_science",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q205",
+    "label": "Pasteurization",
+    "description": "Heat treatment to kill bacteria in food",
+    "subcategory": "food_science",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q2005",
+    "label": "Food preservation",
+    "description": "Methods to extend shelf life of food",
+    "subcategory": "food_science",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q12174",
+    "label": "Vitamin A",
+    "description": "Fat-soluble nutrient essential for vision",
+    "subcategory": "food_science",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q12363",
+    "label": "Protein",
+    "description": "Macronutrient essential for body building",
+    "subcategory": "food_science",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q12368",
+    "label": "Carbohydrate",
+    "description": "Macronutrient that provides energy",
+    "subcategory": "food_science",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q57595",
+    "label": "Tea",
+    "description": "Beverage made from brewed tea leaves",
+    "subcategory": "fermentation_beverages",
+    "sitelinks": 110,
+    "monthlyPageviews": 80000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1234",
+    "label": "Sake",
+    "description": "Japanese rice wine",
+    "subcategory": "fermentation_beverages",
+    "sitelinks": 90,
+    "monthlyPageviews": 55000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q860",
+    "label": "Whiskey",
+    "description": "Spirit made from fermented grain",
+    "subcategory": "fermentation_beverages",
+    "sitelinks": 100,
+    "monthlyPageviews": 65000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q4711",
+    "label": "Rum",
+    "description": "Spirit made from sugarcane",
+    "subcategory": "fermentation_beverages",
+    "sitelinks": 95,
+    "monthlyPageviews": 60000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1034",
+    "label": "Gin",
+    "description": "Spirit flavored with juniper berries",
+    "subcategory": "fermentation_beverages",
+    "sitelinks": 90,
+    "monthlyPageviews": 55000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q201567",
+    "label": "Kombucha",
+    "description": "Fermented tea beverage with probiotics",
+    "subcategory": "fermentation_beverages",
+    "sitelinks": 70,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q37803",
+    "label": "Yogurt",
+    "description": "Fermented dairy product with beneficial bacteria",
+    "subcategory": "fermentation_beverages",
+    "sitelinks": 95,
+    "monthlyPageviews": 60000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1548",
+    "label": "Sourdough",
+    "description": "Bread made with fermented starter culture",
+    "subcategory": "fermentation_beverages",
+    "sitelinks": 80,
+    "monthlyPageviews": 48000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q80027",
+    "label": "Kimchi",
+    "description": "Korean fermented vegetable dish",
+    "subcategory": "fermentation_beverages",
+    "sitelinks": 85,
+    "monthlyPageviews": 52000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q206799",
+    "label": "Miso",
+    "description": "Japanese fermented soybean paste",
+    "subcategory": "fermentation_beverages",
+    "sitelinks": 80,
+    "monthlyPageviews": 48000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q206848",
+    "label": "Sauerkraut",
+    "description": "Fermented cabbage dish",
+    "subcategory": "fermentation_beverages",
+    "sitelinks": 80,
+    "monthlyPageviews": 48000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q192451",
+    "label": "Cake",
+    "description": "Sweet baked dessert",
+    "subcategory": "baking_desserts",
+    "sitelinks": 95,
+    "monthlyPageviews": 60000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q5330",
+    "label": "Cookie",
+    "description": "Small sweet baked treat",
+    "subcategory": "baking_desserts",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1009817",
+    "label": "Baklava",
+    "description": "Mediterranean pastry with nuts and honey",
+    "subcategory": "baking_desserts",
+    "sitelinks": 80,
+    "monthlyPageviews": 48000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q333543",
+    "label": "Tiramisu",
+    "description": "Italian dessert with mascarpone and coffee",
+    "subcategory": "baking_desserts",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q207429",
+    "label": "Crème brûlée",
+    "description": "French custard dessert with caramel top",
+    "subcategory": "baking_desserts",
+    "sitelinks": 80,
+    "monthlyPageviews": 48000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q11202",
+    "label": "Ice cream",
+    "description": "Frozen sweet dairy dessert",
+    "subcategory": "baking_desserts",
+    "sitelinks": 95,
+    "monthlyPageviews": 65000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q207400",
+    "label": "Marco Polo",
+    "description": "Venetian merchant who traded spices on Silk Road",
+    "subcategory": "food_history",
+    "sitelinks": 100,
+    "monthlyPageviews": 65000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q5580",
+    "label": "Spice trade",
+    "description": "Historical trade of valuable spices across continents",
+    "subcategory": "food_history",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1037",
+    "label": "Ancient Rome food",
+    "description": "Culinary traditions of the Roman Empire",
+    "subcategory": "food_history",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1039",
+    "label": "Medieval cuisine",
+    "description": "Food culture during the Middle Ages",
+    "subcategory": "food_history",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1040",
+    "label": "Renaissance food",
+    "description": "Cuisine during the Renaissance period",
+    "subcategory": "food_history",
+    "sitelinks": 65,
+    "monthlyPageviews": 32000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q206787",
+    "label": "French cuisine",
+    "description": "Culinary traditions of France",
+    "subcategory": "food_history",
+    "sitelinks": 90,
+    "monthlyPageviews": 55000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q206788",
+    "label": "Italian cuisine",
+    "description": "Culinary traditions of Italy",
+    "subcategory": "food_history",
+    "sitelinks": 95,
+    "monthlyPageviews": 60000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q206789",
+    "label": "Chinese cuisine",
+    "description": "Culinary traditions of China",
+    "subcategory": "food_history",
+    "sitelinks": 90,
+    "monthlyPageviews": 55000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q206790",
+    "label": "Japanese cuisine",
+    "description": "Culinary traditions of Japan",
+    "subcategory": "food_history",
+    "sitelinks": 90,
+    "monthlyPageviews": 55000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1233",
+    "label": "Tempura",
+    "description": "Japanese deep-fried vegetables and seafood",
+    "subcategory": "asian_cuisine",
+    "sitelinks": 80,
+    "monthlyPageviews": 48000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1235",
+    "label": "Kung Pao chicken",
+    "description": "Chinese stir-fried chicken with peanuts",
+    "subcategory": "asian_cuisine",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q206851",
+    "label": "Bibimbap",
+    "description": "Korean mixed rice bowl with vegetables",
+    "subcategory": "asian_cuisine",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1236",
+    "label": "Banh mi",
+    "description": "Vietnamese sandwich with meat and vegetables",
+    "subcategory": "asian_cuisine",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1237",
+    "label": "Naan",
+    "description": "Indian flatbread baked in tandoor",
+    "subcategory": "asian_cuisine",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1238",
+    "label": "Ratatouille",
+    "description": "French vegetable stew",
+    "subcategory": "european_cuisine",
+    "sitelinks": 80,
+    "monthlyPageviews": 48000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1239",
+    "label": "Risotto",
+    "description": "Italian creamy rice dish",
+    "subcategory": "european_cuisine",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1240",
+    "label": "Tapas",
+    "description": "Spanish small appetizer dishes",
+    "subcategory": "european_cuisine",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1241",
+    "label": "Pretzel",
+    "description": "German twisted bread snack",
+    "subcategory": "european_cuisine",
+    "sitelinks": 80,
+    "monthlyPageviews": 48000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1242",
+    "label": "Gyros",
+    "description": "Greek grilled meat sandwich",
+    "subcategory": "european_cuisine",
+    "sitelinks": 80,
+    "monthlyPageviews": 48000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1243",
+    "label": "Moussaka",
+    "description": "Greek layered eggplant and meat dish",
+    "subcategory": "european_cuisine",
+    "sitelinks": 80,
+    "monthlyPageviews": 48000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1244",
+    "label": "Empanada",
+    "description": "Latin American stuffed pastry",
+    "subcategory": "world_cuisine",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1245",
+    "label": "Mole",
+    "description": "Mexican complex spiced sauce",
+    "subcategory": "world_cuisine",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1246",
+    "label": "Garlic",
+    "description": "Pungent bulb vegetable used in cooking",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1247",
+    "label": "Cumin",
+    "description": "Warm spice from seeds",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1248",
+    "label": "Ginger",
+    "description": "Warm spicy root used in cooking",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1249",
+    "label": "Clove",
+    "description": "Fragrant spice from flower buds",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1250",
+    "label": "Cardamom",
+    "description": "Aromatic spice from seed pods",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1251",
+    "label": "Nutmeg",
+    "description": "Warm spice from tree seed",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1252",
+    "label": "Paprika",
+    "description": "Red spice made from dried peppers",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1253",
+    "label": "Chili pepper",
+    "description": "Hot spicy pepper used in many cuisines",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1254",
+    "label": "Salt",
+    "description": "Essential mineral seasoning",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 90,
+    "monthlyPageviews": 55000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1255",
+    "label": "Sugar",
+    "description": "Sweet crystalline substance from plants",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 90,
+    "monthlyPageviews": 55000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1256",
+    "label": "Honey",
+    "description": "Sweet substance made by bees",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1257",
+    "label": "Vinegar",
+    "description": "Sour liquid made from fermented foods",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1258",
+    "label": "Soy sauce",
+    "description": "Fermented salty liquid condiment",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1259",
+    "label": "Butter",
+    "description": "Dairy fat made from milk",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1260",
+    "label": "Cream",
+    "description": "Rich fatty dairy product",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1261",
+    "label": "Milk",
+    "description": "Nutritious dairy beverage",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1262",
+    "label": "Cheese",
+    "description": "Solid dairy product made from milk",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 90,
+    "monthlyPageviews": 55000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1263",
+    "label": "Egg",
+    "description": "Protein-rich food laid by birds",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1264",
+    "label": "Fish",
+    "description": "Aquatic protein source in many cuisines",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 90,
+    "monthlyPageviews": 55000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1265",
+    "label": "Chicken",
+    "description": "Poultry meat commonly eaten worldwide",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1266",
+    "label": "Beef",
+    "description": "Red meat from cattle",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1267",
+    "label": "Pork",
+    "description": "Meat from pigs",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1268",
+    "label": "Tomato",
+    "description": "Red fruit vegetable used in many dishes",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1269",
+    "label": "Onion",
+    "description": "Pungent bulb vegetable",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1270",
+    "label": "Potato",
+    "description": "Starchy tuber vegetable",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1271",
+    "label": "Carrot",
+    "description": "Orange root vegetable",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1272",
+    "label": "Lettuce",
+    "description": "Leafy green vegetable",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1273",
+    "label": "Broccoli",
+    "description": "Green cruciferous vegetable",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1274",
+    "label": "Apple",
+    "description": "Sweet fruit from trees",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1275",
+    "label": "Banana",
+    "description": "Yellow tropical fruit",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1276",
+    "label": "Orange",
+    "description": "Citrus fruit",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1277",
+    "label": "Lemon",
+    "description": "Sour citrus fruit",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1278",
+    "label": "Lime",
+    "description": "Small sour citrus fruit",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "mothlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1279",
+    "label": "Strawberry",
+    "description": "Red berry fruit",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1280",
+    "label": "Blueberry",
+    "description": "Blue berry fruit",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1281",
+    "label": "Watermelon",
+    "description": "Large sweet summer fruit",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1282",
+    "label": "Pineapple",
+    "description": "Tropical spiky fruit",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1283",
+    "label": "Coconut",
+    "description": "Tropical fruit with milk and flesh",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1284",
+    "label": "Almond",
+    "description": "Nutty seed from trees",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1285",
+    "label": "Walnut",
+    "description": "Wrinkled nut seed",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1286",
+    "label": "Peanut",
+    "description": "Legume nut used in many dishes",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1287",
+    "label": "Pistachio",
+    "description": "Green nutty seed",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1288",
+    "label": "Cashew",
+    "description": "Curved creamy nut",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1289",
+    "label": "Bean",
+    "description": "Legume seed used in cooking",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1290",
+    "label": "Lentil",
+    "description": "Small lens-shaped legume",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "mothlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1291",
+    "label": "Chickpea",
+    "description": "Round legume also called garbanzo",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1292",
+    "label": "Caramelization",
+    "description": "Cooking process where sugar turns brown",
+    "subcategory": "food_science",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1293",
+    "label": "Emulsion",
+    "description": "Mixture of two immiscible liquids",
+    "subcategory": "food_science",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1294",
+    "label": "Gluten",
+    "description": "Protein found in wheat and grains",
+    "subcategory": "food_science",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1295",
+    "label": "Lactose",
+    "description": "Sugar found in milk",
+    "subcategory": "food_science",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1296",
+    "label": "Cholesterol",
+    "description": "Fatty substance in animal products",
+    "subcategory": "food_science",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1297",
+    "label": "Fat",
+    "description": "Energy-dense macronutrient",
+    "subcategory": "food_science",
+    "sitelinks": 80,
+    "mothlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1298",
+    "label": "Fiber",
+    "description": "Indigestible carbohydrate in plants",
+    "subcategory": "food_science",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1299",
+    "label": "Iron",
+    "description": "Mineral essential for blood health",
+    "subcategory": "food_science",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1300",
+    "label": "Calcium",
+    "description": "Mineral for bone health",
+    "subcategory": "food_science",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1301",
+    "label": "Flan",
+    "description": "Spanish custard dessert",
+    "subcategory": "baking_desserts",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1302",
+    "label": "Brownie",
+    "description": "Chocolate cake-like dessert",
+    "subcategory": "baking_desserts",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1303",
+    "label": "Cheesecake",
+    "description": "Creamy dessert with cream cheese",
+    "subcategory": "baking_desserts",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1304",
+    "label": "Donut",
+    "description": "Fried dough pastry",
+    "subcategory": "baking_desserts",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1305",
+    "label": "Muffin",
+    "description": "Individual-sized cake",
+    "subcategory": "baking_desserts",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1306",
+    "label": "Pancake",
+    "description": "Flat cake cooked on griddle",
+    "subcategory": "baking_desserts",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1307",
+    "label": "Waffle",
+    "description": "Grid-patterned breakfast cake",
+    "subcategory": "baking_desserts",
+    "sitelinks": 80,
+    "mothlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1308",
+    "label": "Pie",
+    "description": "Baked pastry with filling",
+    "subcategory": "baking_desserts",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1309",
+    "label": "Tart",
+    "description": "Open-faced pastry with filling",
+    "subcategory": "baking_desserts",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1311",
+    "label": "Mousse",
+    "description": "Airy dessert made with whipped egg or cream",
+    "subcategory": "baking_desserts",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1312",
+    "label": "Pudding",
+    "description": "Creamy dessert",
+    "subcategory": "baking_desserts",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1313",
+    "label": "Custard",
+    "description": "Thick dessert made with egg and milk",
+    "subcategory": "baking_desserts",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1314",
+    "label": "Sorbet",
+    "description": "Frozen dessert without dairy",
+    "subcategory": "baking_desserts",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1315",
+    "label": "Gelato",
+    "description": "Italian ice cream",
+    "subcategory": "baking_desserts",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1316",
+    "label": "Eclair",
+    "description": "Choux pastry with cream filling",
+    "subcategory": "baking_desserts",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1317",
+    "label": "Macaroon",
+    "description": "Almond meringue cookie",
+    "subcategory": "baking_desserts",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1318",
+    "label": "Candy",
+    "description": "Sweet confection",
+    "subcategory": "baking_desserts",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1319",
+    "label": "Caramel",
+    "description": "Sweet candy made from sugar",
+    "subcategory": "baking_desserts",
+    "sitelinks": 75,
+    "mothlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1320",
+    "label": "Fudge",
+    "description": "Rich chocolate candy",
+    "subcategory": "baking_desserts",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1321",
+    "label": "Nougat",
+    "description": "Light chewy candy",
+    "subcategory": "baking_desserts",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1322",
+    "label": "Wafer",
+    "description": "Thin crispy cookie",
+    "subcategory": "baking_desserts",
+    "sitelinks": 70,
+    "mothlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1323",
+    "label": "Scone",
+    "description": "British baked pastry",
+    "subcategory": "baking_desserts",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1324",
+    "label": "Churro",
+    "description": "Spanish fried pastry",
+    "subcategory": "baking_desserts",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1325",
+    "label": "Doughnut",
+    "description": "Fried ring-shaped pastry",
+    "subcategory": "baking_desserts",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1326",
+    "label": "Biscuit",
+    "description": "British hard cookie",
+    "subcategory": "baking_desserts",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1327",
+    "label": "Cracker",
+    "description": "Thin crispy baked snack",
+    "subcategory": "baking_desserts",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1329",
+    "label": "Popcorn",
+    "description": "Puffed corn snack",
+    "subcategory": "baking_desserts",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1330",
+    "label": "Chip",
+    "description": "Thin fried or baked snack",
+    "subcategory": "baking_desserts",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1331",
+    "label": "Julia Child",
+    "description": "American chef and food personality",
+    "subcategory": "food_history",
+    "sitelinks": 90,
+    "mothlyPageviews": 55000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1332",
+    "label": "Gordon Ramsay",
+    "description": "British celebrity chef",
+    "subcategory": "food_history",
+    "sitelinks": 100,
+    "monthlyPageviews": 65000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1333",
+    "label": "Jacques Pepin",
+    "description": "French chef and cookbook author",
+    "subcategory": "food_history",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1334",
+    "label": "Bobby Flay",
+    "description": "American chef and television personality",
+    "subcategory": "food_history",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1335",
+    "label": "Wolfgang Puck",
+    "description": "Austrian-American celebrity chef",
+    "subcategory": "food_history",
+    "sitelinks": 85,
+    "mothlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1336",
+    "label": "Thomas Keller",
+    "description": "American chef known for fine dining",
+    "subcategory": "food_history",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1337",
+    "label": "Emeril Lagasse",
+    "description": "American chef known for spicy food",
+    "subcategory": "food_history",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1338",
+    "label": "Food pyramid",
+    "description": "Nutritional guidance chart",
+    "subcategory": "food_science",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1339",
+    "label": "Calorie",
+    "description": "Unit of food energy",
+    "subcategory": "food_science",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1340",
+    "label": "Diet",
+    "description": "Planned eating habits",
+    "subcategory": "food_science",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1341",
+    "label": "Nutrition",
+    "description": "Study of food and health",
+    "subcategory": "food_science",
+    "sitelinks": 90,
+    "monthlyPageviews": 55000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1342",
+    "label": "Microwave",
+    "description": "Appliance for quick cooking",
+    "subcategory": "food_science",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1343",
+    "label": "Oven",
+    "description": "Cooking appliance for baking and roasting",
+    "subcategory": "food_science",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1344",
+    "label": "Stove",
+    "description": "Cooking appliance with burners",
+    "subcategory": "food_science",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1345",
+    "label": "Grill",
+    "description": "Cooking device using heat from below",
+    "subcategory": "food_science",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1346",
+    "label": "Roasting",
+    "description": "Cooking method with dry heat",
+    "subcategory": "food_science",
+    "sitelinks": 70,
+    "mothlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1347",
+    "label": "Boiling",
+    "description": "Cooking in hot liquid",
+    "subcategory": "food_science",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1348",
+    "label": "Steaming",
+    "description": "Cooking with steam",
+    "subcategory": "food_science",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1349",
+    "label": "Frying",
+    "description": "Cooking in hot oil",
+    "subcategory": "food_science",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1350",
+    "label": "Baking",
+    "description": "Cooking with dry heat in oven",
+    "subcategory": "food_science",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1351",
+    "label": "Grilling",
+    "description": "Cooking on grate over heat",
+    "subcategory": "food_science",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1352",
+    "label": "Poaching",
+    "description": "Gentle cooking in simmering liquid",
+    "subcategory": "food_science",
+    "sitelinks": 65,
+    "mothlyPageviews": 30000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1353",
+    "label": "Sauteing",
+    "description": "Quick cooking in hot oil or butter",
+    "subcategory": "food_science",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1354",
+    "label": "Simmering",
+    "description": "Cooking at below boiling temperature",
+    "subcategory": "food_science",
+    "sitelinks": 65,
+    "monthlyPageviews": 30000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1355",
+    "label": "Blanching",
+    "description": "Brief boiling then ice bath",
+    "subcategory": "food_science",
+    "sitelinks": 60,
+    "monthlyPageviews": 28000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1356",
+    "label": "Broiling",
+    "description": "Cooking with heat from above",
+    "subcategory": "food_science",
+    "sitelinks": 65,
+    "monthlyPageviews": 30000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1357",
+    "label": "Food pyramid nutrition guide",
+    "description": "USDA visual nutrition recommendation",
+    "subcategory": "food_science",
+    "sitelinks": 65,
+    "mothlyPageviews": 30000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1358",
+    "label": "Vitamin B",
+    "description": "Water-soluble vitamin group",
+    "subcategory": "food_science",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1359",
+    "label": "Vitamin C",
+    "description": "Antioxidant vitamin in citrus",
+    "subcategory": "food_science",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1360",
+    "label": "Vitamin D",
+    "description": "Vitamin made by sun exposure",
+    "subcategory": "food_science",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1361",
+    "label": "Vitamin E",
+    "description": "Antioxidant vitamin",
+    "subcategory": "food_science",
+    "sitelinks": 75,
+    "mothlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1362",
+    "label": "Sodium",
+    "description": "Mineral in salt",
+    "subcategory": "food_science",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1363",
+    "label": "Potassium",
+    "description": "Mineral important for health",
+    "subcategory": "food_science",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1364",
+    "label": "Phosphorus",
+    "description": "Mineral in bones",
+    "subcategory": "food_science",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1365",
+    "label": "Magnesium",
+    "description": "Essential mineral",
+    "subcategory": "food_science",
+    "sitelinks": 75,
+    "mothlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1366",
+    "label": "Zinc",
+    "description": "Mineral for immune health",
+    "subcategory": "food_science",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1367",
+    "label": "Copper",
+    "description": "Trace mineral",
+    "subcategory": "food_science",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1368",
+    "label": "Selenium",
+    "description": "Antioxidant mineral",
+    "subcategory": "food_science",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1369",
+    "label": "Iodine",
+    "description": "Mineral for thyroid health",
+    "subcategory": "food_science",
+    "sitelinks": 75,
+    "mothlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1370",
+    "label": "Manganese",
+    "description": "Trace mineral",
+    "subcategory": "food_science",
+    "sitelinks": 65,
+    "monthlyPageviews": 30000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1371",
+    "label": "Organic food",
+    "description": "Food grown without synthetic chemicals",
+    "subcategory": "food_science",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1372",
+    "label": "Genetically modified food",
+    "description": "Food with altered genes",
+    "subcategory": "food_science",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1373",
+    "label": "Pesticide",
+    "description": "Chemical to kill pests",
+    "subcategory": "food_science",
+    "sitelinks": 80,
+    "mothlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1374",
+    "label": "Herbicide",
+    "description": "Chemical to kill plants",
+    "subcategory": "food_science",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1375",
+    "label": "Food additives",
+    "description": "Chemicals added to food",
+    "subcategory": "food_science",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1376",
+    "label": "Preservative",
+    "description": "Additive to extend shelf life",
+    "subcategory": "food_science",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1377",
+    "label": "Flavor enhancer",
+    "description": "Additive to improve taste",
+    "subcategory": "food_science",
+    "sitelinks": 70,
+    "mothlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1378",
+    "label": "Food coloring",
+    "description": "Additive to change color",
+    "subcategory": "food_science",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1379",
+    "label": "Food allergy",
+    "description": "Immune reaction to food",
+    "subcategory": "food_science",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1380",
+    "label": "Food intolerance",
+    "description": "Digestive difficulty with food",
+    "subcategory": "food_science",
+    "sitelinks": 75,
+    "mothlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1381",
+    "label": "Vegetarian",
+    "description": "Diet without meat",
+    "subcategory": "food_science",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1382",
+    "label": "Vegan",
+    "description": "Diet without animal products",
+    "subcategory": "food_science",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1383",
+    "label": "Pescatarian",
+    "description": "Diet with fish but no meat",
+    "subcategory": "food_science",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1384",
+    "label": "Keto diet",
+    "description": "Low-carb high-fat diet",
+    "subcategory": "food_science",
+    "sitelinks": 80,
+    "mothlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1385",
+    "label": "Paleo diet",
+    "description": "Diet based on prehistoric foods",
+    "subcategory": "food_science",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1386",
+    "label": "Mediterranean diet",
+    "description": "Heart-healthy diet from Mediterranean region",
+    "subcategory": "food_science",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1387",
+    "label": "Fast food",
+    "description": "Quick-service restaurant food",
+    "subcategory": "food_science",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1388",
+    "label": "Slow food",
+    "description": "Movement for traditional food preparation",
+    "subcategory": "food_history",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1389",
+    "label": "Farm to table",
+    "description": "Dining with locally sourced ingredients",
+    "subcategory": "food_history",
+    "sitelinks": 75,
+    "mothlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1390",
+    "label": "Street food",
+    "description": "Food sold on streets",
+    "subcategory": "food_history",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1392",
+    "label": "Dumplings",
+    "description": "Filled pastry pockets",
+    "subcategory": "asian_cuisine",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1393",
+    "label": "Spring rolls",
+    "description": "Asian fried appetizer wraps",
+    "subcategory": "asian_cuisine",
+    "sitelinks": 80,
+    "mothlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1394",
+    "label": "Egg rolls",
+    "description": "Chinese fried appetizer",
+    "subcategory": "asian_cuisine",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1395",
+    "label": "Gyoza",
+    "description": "Japanese dumplings",
+    "subcategory": "asian_cuisine",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1396",
+    "label": "Samosa",
+    "description": "Indian fried pastry",
+    "subcategory": "asian_cuisine",
+    "sitelinks": 85,
+    "mothlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1397",
+    "label": "Tandoori chicken",
+    "description": "Indian marinated grilled chicken",
+    "subcategory": "asian_cuisine",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1398",
+    "label": "Tikka masala",
+    "description": "Indian spiced creamy curry",
+    "subcategory": "asian_cuisine",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1399",
+    "label": "Satay",
+    "description": "Southeast Asian grilled meat skewer",
+    "subcategory": "asian_cuisine",
+    "sitelinks": 80,
+    "mothlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1400",
+    "label": "Lasagna",
+    "description": "Italian layered pasta dish",
+    "subcategory": "european_cuisine",
+    "sitelinks": 90,
+    "monthlyPageviews": 55000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1401",
+    "label": "Spaghetti",
+    "description": "Long thin pasta",
+    "subcategory": "european_cuisine",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1402",
+    "label": "Ravioli",
+    "description": "Filled pasta pockets",
+    "subcategory": "european_cuisine",
+    "sitelinks": 80,
+    "mothlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1404",
+    "label": "Polenta",
+    "description": "Italian cornmeal dish",
+    "subcategory": "european_cuisine",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1405",
+    "label": "Goulash",
+    "description": "Hungarian stew",
+    "subcategory": "european_cuisine",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1406",
+    "label": "Schnitzel",
+    "description": "German breaded meat cutlet",
+    "subcategory": "european_cuisine",
+    "sitelinks": 80,
+    "monthlyPageviews": 48000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1407",
+    "label": "Wiener schnitzel",
+    "description": "Austrian veal cutlet",
+    "subcategory": "european_cuisine",
+    "sitelinks": 75,
+    "mothlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1408",
+    "label": "Beef stroganov",
+    "description": "Russian creamy beef stew",
+    "subcategory": "european_cuisine",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1409",
+    "label": "Pierogi",
+    "description": "Polish filled dumplings",
+    "subcategory": "european_cuisine",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1410",
+    "label": "Burrito",
+    "description": "Mexican wrapped tortilla",
+    "subcategory": "world_cuisine",
+    "sitelinks": 90,
+    "monthlyPageviews": 55000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1411",
+    "label": "Enchilada",
+    "description": "Mexican rolled tortilla with sauce",
+    "subcategory": "world_cuisine",
+    "sitelinks": 85,
+    "mothlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1412",
+    "label": "Quesadilla",
+    "description": "Mexican cheese-filled tortilla",
+    "subcategory": "world_cuisine",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1413",
+    "label": "Taco bell pepper",
+    "description": "Mexican sauteed peppers",
+    "subcategory": "world_cuisine",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1414",
+    "label": "Fajitas",
+    "description": "Mexican grilled meat with peppers",
+    "subcategory": "world_cuisine",
+    "sitelinks": 80,
+    "mothlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1415",
+    "label": "Churros",
+    "description": "Spanish fried pastry",
+    "subcategory": "world_cuisine",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1416",
+    "label": "Nachos",
+    "description": "Mexican tortilla chips with toppings",
+    "subcategory": "world_cuisine",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1417",
+    "label": "Guacamole",
+    "description": "Mexican avocado dip",
+    "subcategory": "world_cuisine",
+    "sitelinks": 85,
+    "mothlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1418",
+    "label": "Salsa",
+    "description": "Mexican tomato-based sauce",
+    "subcategory": "world_cuisine",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1419",
+    "label": "Pita",
+    "description": "Middle Eastern pocket bread",
+    "subcategory": "world_cuisine",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1420",
+    "label": "Kebab",
+    "description": "Middle Eastern grilled meat skewer",
+    "subcategory": "world_cuisine",
+    "sitelinks": 85,
+    "mothlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1421",
+    "label": "Tabouleh",
+    "description": "Middle Eastern parsley salad",
+    "subcategory": "world_cuisine",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1422",
+    "label": "Tzatziki",
+    "description": "Greek yogurt cucumber sauce",
+    "subcategory": "world_cuisine",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1423",
+    "label": "Dolma",
+    "description": "Grape leaves with filling",
+    "subcategory": "world_cuisine",
+    "sitelinks": 75,
+    "mothlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1424",
+    "label": "Couscous",
+    "description": "North African grain dish",
+    "subcategory": "world_cuisine",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1425",
+    "label": "Tagine",
+    "description": "Moroccan stewed dish",
+    "subcategory": "world_cuisine",
+    "sitelinks": 75,
+    "mothlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1426",
+    "label": "Hummus bi tahini",
+    "description": "Chickpea sesame paste",
+    "subcategory": "world_cuisine",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1427",
+    "label": "Baba ganoush",
+    "description": "Eggplant dip",
+    "subcategory": "world_cuisine",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1428",
+    "label": "Tabbouleh",
+    "description": "Middle Eastern herb salad",
+    "subcategory": "world_cuisine",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1429",
+    "label": "Okra",
+    "description": "Green vegetable pod",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "mothlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1430",
+    "label": "Eggplant",
+    "description": "Purple vegetable used in many dishes",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1431",
+    "label": "Asparagus",
+    "description": "Green spear vegetable",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1432",
+    "label": "Spinach",
+    "description": "Leafy green vegetable",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "mothlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1433",
+    "label": "Kale",
+    "description": "Nutrient-dense green vegetable",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1434",
+    "label": "Cabbage",
+    "description": "Round leafy vegetable",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1435",
+    "label": "Cauliflower",
+    "description": "White cruciferous vegetable",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "mothlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1436",
+    "label": "Celery",
+    "description": "Crunchy stalky vegetable",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1437",
+    "label": "Bell pepper",
+    "description": "Sweet pepper vegetable",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "mothlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1438",
+    "label": "Cucumber",
+    "description": "Long green vegetable",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1439",
+    "label": "Zucchini",
+    "description": "Green summer squash",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1440",
+    "label": "Squash",
+    "description": "Winter vegetable",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "mothlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1441",
+    "label": "Pumpkin",
+    "description": "Orange autumn vegetable",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1442",
+    "label": "Beet",
+    "description": "Sweet red root vegetable",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "mothlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1443",
+    "label": "Radish",
+    "description": "Peppery small root vegetable",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1444",
+    "label": "Turnip",
+    "description": "Root vegetable",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1445",
+    "label": "Parsnip",
+    "description": "Sweet root vegetable",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 70,
+    "mothlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1446",
+    "label": "Leek",
+    "description": "Mild onion vegetable",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1447",
+    "label": "Artichoke",
+    "description": "Spiky green vegetable",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "mothlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1448",
+    "label": "Green bean",
+    "description": "Young bean vegetable",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1449",
+    "label": "Pea",
+    "description": "Round green legume",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "mothlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1450",
+    "label": "Corn",
+    "description": "Yellow grain vegetable",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1451",
+    "label": "Mushroom",
+    "description": "Fungus used in cooking",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "mothlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1452",
+    "label": "Truffle",
+    "description": "Expensive underground fungus",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1453",
+    "label": "Grape",
+    "description": "Small round fruit in clusters",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1454",
+    "label": "Fig",
+    "description": "Sweet Mediterranean fruit",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "mothlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1455",
+    "label": "Date",
+    "description": "Sweet fruit from palm tree",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1456",
+    "label": "Pomegranate",
+    "description": "Fruit with seeds and tart juice",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "mothlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1457",
+    "label": "Peach",
+    "description": "Fuzzy stone fruit",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1458",
+    "label": "Plum",
+    "description": "Stone fruit",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1459",
+    "label": "Cherry",
+    "description": "Small round stone fruit",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "mothlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1460",
+    "label": "Apricot",
+    "description": "Orange stone fruit",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1461",
+    "label": "Pear",
+    "description": "Sweet bell-shaped fruit",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "mothlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1462",
+    "label": "Mango",
+    "description": "Tropical stone fruit",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1463",
+    "label": "Papaya",
+    "description": "Tropical melon-like fruit",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "mothlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1464",
+    "label": "Kiwi",
+    "description": "Small brown fuzzy fruit",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1465",
+    "label": "Passion fruit",
+    "description": "Tropical purple fruit",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 70,
+    "mothlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1466",
+    "label": "Guava",
+    "description": "Tropical pink fruit",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1467",
+    "label": "Avocado",
+    "description": "Creamy green fruit",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1468",
+    "label": "Olive",
+    "description": "Small fruit from Mediterranean tree",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "mothlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1469",
+    "label": "Caramel apple",
+    "description": "Apple dipped in caramel",
+    "subcategory": "baking_desserts",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1470",
+    "label": "Candy apple",
+    "description": "Apple dipped in candy coating",
+    "subcategory": "baking_desserts",
+    "sitelinks": 70,
+    "mothlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1471",
+    "label": "Mochi",
+    "description": "Japanese glutinous rice cake",
+    "subcategory": "baking_desserts",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1472",
+    "label": "Dorayaki",
+    "description": "Japanese red bean pastry",
+    "subcategory": "baking_desserts",
+    "sitelinks": 70,
+    "mothlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1473",
+    "label": "Taiyaki",
+    "description": "Japanese fish-shaped pastry",
+    "subcategory": "baking_desserts",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1474",
+    "label": "Imagawayaki",
+    "description": "Japanese stuffed pancake",
+    "subcategory": "baking_desserts",
+    "sitelinks": 65,
+    "mothlyPageviews": 30000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1475",
+    "label": "Pastilla",
+    "description": "Moroccan savory pastry",
+    "subcategory": "european_cuisine",
+    "sitelinks": 65,
+    "monthlyPageviews": 30000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1476",
+    "label": "Basboosa",
+    "description": "Middle Eastern coconut cake",
+    "subcategory": "baking_desserts",
+    "sitelinks": 65,
+    "mothlyPageviews": 30000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1477",
+    "label": "Knafeh",
+    "description": "Middle Eastern cheese dessert",
+    "subcategory": "baking_desserts",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1478",
+    "label": "Halva",
+    "description": "Middle Eastern sesame paste",
+    "subcategory": "baking_desserts",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1479",
+    "label": "Loukoumades",
+    "description": "Greek fried pastry balls",
+    "subcategory": "baking_desserts",
+    "sitelinks": 70,
+    "mothlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1480",
+    "label": "Galaktoboureko",
+    "description": "Greek custard pastry",
+    "subcategory": "baking_desserts",
+    "sitelinks": 65,
+    "monthlyPageviews": 30000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1481",
+    "label": "Spanakopita",
+    "description": "Greek spinach pastry",
+    "subcategory": "european_cuisine",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1482",
+    "label": "Tzantziki",
+    "description": "Greek yogurt sauce",
+    "subcategory": "world_cuisine",
+    "sitelinks": 75,
+    "mothlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1483",
+    "label": "Souvlaki",
+    "description": "Greek grilled meat skewer",
+    "subcategory": "european_cuisine",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1484",
+    "label": "Saganaki",
+    "description": "Greek fried cheese",
+    "subcategory": "european_cuisine",
+    "sitelinks": 70,
+    "mothlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1485",
+    "label": "Satziki",
+    "description": "Greek cucumber yogurt sauce",
+    "subcategory": "world_cuisine",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1486",
+    "label": "Horta",
+    "description": "Greek boiled greens",
+    "subcategory": "european_cuisine",
+    "sitelinks": 65,
+    "mothlyPageviews": 30000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1487",
+    "label": "Pastitsio",
+    "description": "Greek baked pasta dish",
+    "subcategory": "european_cuisine",
+    "sitelinks": 70,
+    "monthlyPageviews": 35000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1488",
+    "label": "Kleftiko",
+    "description": "Greek slow-roasted lamb",
+    "subcategory": "european_cuisine",
+    "sitelinks": 65,
+    "mothlyPageviews": 30000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1489",
+    "label": "Lamb",
+    "description": "Meat from young sheep",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1490",
+    "label": "Veal",
+    "description": "Meat from young cattle",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "mothlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1491",
+    "label": "Duck",
+    "description": "Poultry meat",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "mothlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1492",
+    "label": "Goose",
+    "description": "Large poultry meat",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1493",
+    "label": "Turkey",
+    "description": "Large poultry meat",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1494",
+    "label": "Bacon",
+    "description": "Cured pork meat",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "mothlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1495",
+    "label": "Ham",
+    "description": "Cured pork leg",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1496",
+    "label": "Sausage",
+    "description": "Meat in intestinal casing",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1497",
+    "label": "Prosciutto",
+    "description": "Italian cured ham",
+    "subcategory": "european_cuisine",
+    "sitelinks": 80,
+    "mothlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1498",
+    "label": "Pancetta",
+    "description": "Italian cured pork",
+    "subcategory": "european_cuisine",
+    "sitelinks": 75,
+    "monthlyPageviews": 40000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1499",
+    "label": "Calamari",
+    "description": "Squid as food",
+    "subcategory": "european_cuisine",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false
+  },
+  {
+    "qid": "Q1500",
+    "label": "Shrimp",
+    "description": "Small shellfish",
+    "subcategory": "ingredients_spices",
+    "sitelinks": 85,
+    "mothlyPageviews": 50000,
+    "properties": {},
+    "processed": false
+  }
+]

@@ -1,0 +1,218 @@
+{
+  "domain": "history",
+  "batchIndex": 2,
+  "totalBatches": 3,
+  "entities": [
+    {
+      "qid": "Q913",
+      "label": "Socrates",
+      "description": "5th-century BCE Greek philosopher",
+      "subcategory": "ancient_classical",
+      "sitelinks": 276,
+      "monthlyPageviews": 138000,
+      "properties": {
+        "birthDate": "-0470-00-00T00:00:00Z",
+        "deathDate": "-0399-02-15T00:00:00Z",
+        "occupation": "Q4964182",
+        "fieldOfWork": "Q5891"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q37643",
+      "label": "Gulf War",
+      "description": "1990–1991 conflict between Iraq and a 42-country coalition",
+      "subcategory": "battles_military",
+      "sitelinks": 113,
+      "monthlyPageviews": 56500,
+      "properties": {
+        "startDate": "+1990-08-02T00:00:00Z",
+        "endDate": "+1991-02-28T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q6534",
+      "label": "French Revolution",
+      "description": "revolution in France from 1789 to 1799",
+      "subcategory": "early_modern",
+      "sitelinks": 187,
+      "monthlyPageviews": 93500,
+      "properties": {
+        "startDate": "+1789-07-14T00:00:00Z",
+        "endDate": "+1799-11-09T00:00:00Z",
+        "pointInTime": "+1789-05-05T00:00:00Z",
+        "country": "Q142"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q12554",
+      "label": "Middle Ages",
+      "description": "period of European history from the 5th to the late 15th-century",
+      "subcategory": "medieval",
+      "sitelinks": 198,
+      "monthlyPageviews": 99000,
+      "properties": {
+        "startDate": "+0476-00-00T00:00:00Z",
+        "endDate": "+1520-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q4604",
+      "label": "Confucius",
+      "description": "5th-century BCE Chinese philosopher and politician",
+      "subcategory": "modern_contemporary",
+      "sitelinks": 309,
+      "monthlyPageviews": 154500,
+      "properties": {
+        "movement": "Q9581",
+        "birthDate": "-0552-10-09T00:00:00Z",
+        "deathDate": "-0479-03-09T00:00:00Z",
+        "occupation": "Q4964182",
+        "fieldOfWork": "Q5891"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q91",
+      "label": "Abraham Lincoln",
+      "description": "president of the United States from 1861 to 1865 (1809–1865)",
+      "subcategory": "people_leaders",
+      "sitelinks": 290,
+      "monthlyPageviews": 145000,
+      "properties": {
+        "birthDate": "+1809-02-12T00:00:00Z",
+        "deathDate": "+1865-04-15T00:00:00Z",
+        "occupation": "Q82955"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q9364",
+      "label": "Jean-Paul Sartre",
+      "description": "French existentialist philosopher (1905–1980)",
+      "subcategory": "social_cultural",
+      "sitelinks": 197,
+      "monthlyPageviews": 98500,
+      "properties": {
+        "movement": "Q38066",
+        "birthDate": "+1905-06-21T00:00:00Z",
+        "deathDate": "+1980-04-15T00:00:00Z",
+        "occupation": "Q214917",
+        "fieldOfWork": "Q5891"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q362",
+      "label": "World War II",
+      "description": "1939–1945 global conflict",
+      "subcategory": "world_wars",
+      "sitelinks": 287,
+      "monthlyPageviews": 143500,
+      "properties": {
+        "startDate": "+1939-09-01T00:00:00Z",
+        "endDate": "+1945-09-02T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q8409",
+      "label": "Alexander the Great",
+      "description": "king of Macedonia and conqueror of Achaemenid Persia (356–323 BC)",
+      "subcategory": "ancient_classical",
+      "sitelinks": 259,
+      "monthlyPageviews": 129500,
+      "properties": {
+        "birthDate": "-0356-07-20T00:00:00Z",
+        "deathDate": "-0323-06-10T00:00:00Z",
+        "occupation": "Q82955"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q545449",
+      "label": "Iraq War",
+      "description": "2003–2011 war after an American-led invasion",
+      "subcategory": "battles_military",
+      "sitelinks": 107,
+      "monthlyPageviews": 53500,
+      "properties": {
+        "startDate": "+2003-03-20T00:00:00Z",
+        "endDate": "+2011-12-15T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q4692",
+      "label": "Renaissance",
+      "description": "cultural movement that spanned the period roughly from the 14th to the 17th century",
+      "subcategory": "early_modern",
+      "sitelinks": 187,
+      "monthlyPageviews": 93500,
+      "properties": {
+        "startDate": "+1400-00-00T00:00:00Z",
+        "endDate": "+1650-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q12546",
+      "label": "Crusades",
+      "description": "mass military expeditions and wars initiated by the Catholic Church in the High Middle Ages",
+      "subcategory": "medieval",
+      "sitelinks": 163,
+      "monthlyPageviews": 81500,
+      "properties": {
+        "startDate": "+1095-00-00T00:00:00Z",
+        "endDate": "+1291-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q9061",
+      "label": "Karl Marx",
+      "description": "German-born philosopher (1818–1883)",
+      "subcategory": "modern_contemporary",
+      "sitelinks": 309,
+      "monthlyPageviews": 154500,
+      "properties": {
+        "birthDate": "+1818-05-05T00:00:00Z",
+        "deathDate": "+1883-03-14T00:00:00Z",
+        "occupation": "Q188094",
+        "fieldOfWork": "Q47555"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q9458",
+      "label": "Muhammad",
+      "description": "Arabian political leader and the founder of Islam (c. 570–632)",
+      "subcategory": "people_leaders",
+      "sitelinks": 283,
+      "monthlyPageviews": 141500,
+      "properties": {
+        "birthDate": "+0571-04-20T00:00:00Z",
+        "deathDate": "+0632-06-08T00:00:00Z",
+        "occupation": "Q42857"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q15031",
+      "label": "Xi Jinping",
+      "description": "General Secretary of the Chinese Communist Party since 2012 (born 1953)",
+      "subcategory": "social_cultural",
+      "sitelinks": 186,
+      "monthlyPageviews": 93000,
+      "properties": {
+        "birthDate": "+1953-06-15T00:00:00Z",
+        "occupation": "Q372436",
+        "fieldOfWork": "Q7163"
+      },
+      "processed": false
+    }
+  ]
+}

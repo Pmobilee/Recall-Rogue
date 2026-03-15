@@ -80,7 +80,7 @@ function getAvailableScreens(): string[] {
 
   const runState = readStore<any>('terra:activeRunState');
   if (runState) {
-    extras.push('combat', 'roomSelection', 'cardReward', 'retreatOrDelve');
+    extras.push('combat', 'dungeonMap', 'cardReward', 'retreatOrDelve');
   }
 
   return [...new Set([...always, ...extras])];

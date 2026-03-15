@@ -1,18 +1,20 @@
-# Subcategorize Unclassified Facts — Haiku LLM Skill
+# Subcategorize Unclassified Facts — Sonnet LLM Skill
+
+> See `docs/RESEARCH/SOURCES/content-pipeline-spec.md` for the canonical pipeline spec and `content-pipeline-progress.md` for current state.
 
 **Purpose**: Assign subcategories (`categoryL2`) to knowledge facts that the deterministic keyword classifier cannot handle.
 
-**Status**: ✅ COMPLETE — All 10,546 knowledge facts have valid subcategories as of 2026-03-12.
+**Status**: Database being rebuilt from scratch. Run this skill after each batch of knowledge facts is generated.
 
 **Invoked by**: Orchestrator (Opus) via `npm run subcategorize` or direct Agent spawning.
 
-**Workers**: Haiku sub-agents (`model: "haiku"`) via Claude Code Agent tool.
+**Workers**: Sonnet sub-agents (`model: "sonnet"`) via Claude Code Agent tool.
 
 ---
 
 ## Current State
 
-**0 unclassified facts** as of 2026-03-12. All 10,546 knowledge facts across 10 domains have valid taxonomy subcategories assigned via the workflow below. This skill successfully classified 606 remaining ambiguous facts in the final run.
+Database is being rebuilt. Check `docs/RESEARCH/SOURCES/content-pipeline-progress.md` for current fact counts per domain.
 
 ---
 
@@ -23,10 +25,11 @@
 **Orchestrator action**: Read seed JSON files and identify facts where `categoryL2` is invalid for their domain.
 
 Files to scan:
+- `src/data/seed/tutorial.json`
 - `src/data/seed/facts-general-a.json`
 - `src/data/seed/facts-general-b.json`
 - `src/data/seed/facts-general-c.json`
-- `src/data/seed/facts-generated.json`
+- `src/data/seed/knowledge-*.json` (per-domain seed files as they are created)
 
 **Criteria for "unclassified"**:
 - `categoryL1` is a valid domain (not "Language" or empty)
@@ -73,9 +76,9 @@ Keep this in memory for validation (step 5).
 
 ---
 
-### 4. Spawn Haiku Sub-Agents (Parallel)
+### 4. Spawn Sonnet Sub-Agents (Parallel)
 
-**Orchestrator action**: For each batch, spawn a Haiku sub-agent with this prompt template:
+**Orchestrator action**: For each batch, spawn a Sonnet sub-agent with this prompt template:
 
 ```
 You are a fact subcategorizer for educational trivia. Given a list of facts from the "{DOMAIN_LABEL}" domain, assign each fact to exactly ONE subcategory from the provided taxonomy.
@@ -117,23 +120,23 @@ Do not include any other text, markdown, or explanation. Just the array.
 
 **Sub-agent instructions**:
 - Timeout: 60s per batch
-- Model: Haiku (cost-optimized)
+- Model: Sonnet (quality-critical)
 - Temperature: 0.3 (deterministic, reproducible)
 - Validate each ID in the returned JSON against the domain taxonomy — reject invalid IDs
 
-**Parallelization**: Spawn multiple Haiku agents in parallel (one per batch) to speed up processing.
+**Parallelization**: Spawn multiple Sonnet agents in parallel (one per batch) to speed up processing.
 
 ---
 
-### 5. Parse & Validate Haiku Responses
+### 5. Parse & Validate Sonnet Responses
 
-**Orchestrator action**: For each Haiku response:
+**Orchestrator action**: For each Sonnet response:
 
 1. **Extract JSON**: Parse the response as a JSON array. If parsing fails, log error and skip batch.
    ```javascript
    let classified;
    try {
-     classified = JSON.parse(haikus_response_text);
+     classified = JSON.parse(sonnet_response_text);
      if (!Array.isArray(classified)) throw new Error("Not an array");
    } catch (e) {
      console.error(`Batch failed (JSON parse): ${e.message}`);
@@ -243,7 +246,7 @@ This normalizes and validates all facts, deriving `type`, `explanation`, and `ra
 
 ### CRITICAL: No Anthropic SDK
 - **NEVER** `import('@anthropic-ai/sdk')` or call the Anthropic Messages API directly
-- **ALL LLM work** is done by spawning Haiku sub-agents via the Claude Code Agent tool
+- **ALL LLM work** is done by spawning Sonnet sub-agents via the Claude Code Agent tool
 - Sub-agents receive fully self-contained prompts (no external data fetches within the agent)
 
 ### Domain Key Mapping
@@ -263,18 +266,18 @@ Map `categoryL1` values from seed files to canonical domain keys in `subcategory
 | `art_architecture` | `art_architecture` |
 
 ### Batch Size & Context Window
-- **One domain per Haiku agent** (not multiple batches per agent)
+- **One domain per Sonnet agent** (not multiple batches per agent)
 - Truncate fact fields: statement (180 chars), question (100 chars), answer (as-is)
-- Avoid token bloat: don't include `explanation` or `distractors` in Haiku prompt
-- Haiku context: 8K tokens, ~200 tokens per fact, ~40-50 facts per agent maximum
+- Avoid token bloat: don't include `explanation` or `distractors` in Sonnet prompt
+- Sonnet context: 200K tokens — can handle larger batches if needed, but keep at 40-50 facts per agent for quality
 
 ### Validation
-- **Reject invalid responses**: If a Haiku agent returns invalid JSON or invalid subcategory IDs, log and skip — do NOT write garbage to the seed files
+- **Reject invalid responses**: If a Sonnet agent returns invalid JSON or invalid subcategory IDs, log and skip — do NOT write garbage to the seed files
 - **No fallback assumptions**: If a subcategory ID fails validation, do NOT guess or assign a default. Require manual review.
 - **Track failures**: Save failed facts to `data/generated/manual-review-{TIMESTAMP}.json` for human review
 
 ### Parallelization
-- Spawn **up to 3–5 Haiku agents in parallel** (adjust based on API rate limits)
+- Spawn **up to 3–5 Sonnet agents in parallel** (adjust based on API rate limits)
 - Wait for all agents to complete before proceeding to write-back
 - Use `Promise.all()` or equivalent async control
 
@@ -299,7 +302,7 @@ Run these in order to set up and execute the full subcategorization pipeline:
    node scripts/content-pipeline/extract-unclassified.mjs
    ```
 
-4. **Spawn Haiku agents** to classify remaining facts (this skill — see "Invocation" below)
+4. **Spawn Sonnet agents** to classify remaining facts (this skill — see "Invocation" below)
 
 5. **Apply LLM classifications back to seed files**:
    ```bash
@@ -334,7 +337,7 @@ npm run subcategorize
 ```javascript
 const result = await agent({
   subagent_type: "general-purpose",
-  model: "haiku",
+  model: "sonnet",
   prompt: `[Full skill workflow script as described above]`
 });
 ```
@@ -348,10 +351,10 @@ node .claude/skills/subcategorize/index.mjs
 
 ## Success Criteria
 
-1. ✅ All 4 seed JSON files scanned for unclassified facts
-2. ✅ ~1,200 facts extracted and grouped by domain
-3. ✅ Haiku sub-agents process all domains in batches
-4. ✅ <5% failure rate on Haiku responses (invalid JSON or IDs)
+1. ✅ All seed JSON files scanned for unclassified facts
+2. ✅ Facts extracted and grouped by domain
+3. ✅ Sonnet sub-agents process all domains in batches
+4. ✅ <5% failure rate on Sonnet responses (invalid JSON or IDs)
 5. ✅ All classified facts written back to seed files with valid `categoryL2` values
 6. ✅ `npm run build-facts-db` succeeds with no errors
 7. ✅ SQLite database shows 0 "general"/"other" in `categoryL2` for approved facts
@@ -362,14 +365,14 @@ node .claude/skills/subcategorize/index.mjs
 
 ## Common Issues & Troubleshooting
 
-### Issue: Haiku returns invalid JSON
+### Issue: Sonnet returns invalid JSON
 **Solution**: Log the response, skip batch, add to manual-review queue. Do NOT attempt to parse or fix.
 
 ### Issue: Subcategory ID not in taxonomy
 **Solution**: Log fact ID and returned ID, skip that fact, add to manual-review queue. DO NOT write it back.
 
-### Issue: Haiku assigns ambiguous facts poorly
-**Solution**: This is acceptable — Haiku is instructed to pick the PRIMARY fit. If edge cases exist, they will be caught in post-launch analytics. Document in report as "borderline cases".
+### Issue: Sonnet assigns ambiguous facts poorly
+**Solution**: This is acceptable — Sonnet is instructed to pick the PRIMARY fit. If edge cases exist, they will be caught in post-launch analytics. Document in report as "borderline cases".
 
 ### Issue: Rebuild fails after write-back
 **Solution**: Check for JSON syntax errors in modified seed files. Re-run with `--verbose` to see which file is malformed.
@@ -380,26 +383,26 @@ node .claude/skills/subcategorize/index.mjs
 
 ### Generated During Run
 - **Seed JSON files** (modified in-place):
+  - `src/data/seed/tutorial.json`
   - `src/data/seed/facts-general-a.json`
   - `src/data/seed/facts-general-b.json`
   - `src/data/seed/facts-general-c.json`
-  - `src/data/seed/facts-generated.json`
+  - `src/data/seed/knowledge-*.json` (per-domain seed files as they are created)
 
 - **Reports** (new):
   - `data/generated/subcategorization-report-{TIMESTAMP}.json` — summary + stats
   - `data/generated/manual-review-{TIMESTAMP}.json` — facts with invalid responses (if any)
 
 ### Side Effects
-- **SQLite database rebuilt**: `src/db/facts.db` (via `build-facts-db.mjs`)
+- **SQLite database rebuilt**: `public/facts.db` (via `build-facts-db.mjs`)
 - **Seed files persisted**: All changes written via Write tool
 
 ---
 
 ## Notes for Orchestrator
 
-- This skill is **deterministic and repeatable** — running it twice on the same unclassified set should produce identical results (Haiku temperature 0.3)
-- **Cost**: ~1,200 facts ÷ 50 facts/batch = 24 batches × ~3K Haiku tokens ≈ 72K tokens ($0.54 at Haiku pricing)
-- **Time**: ~5–10 minutes wall-clock (with parallelization), depends on Haiku queue
+- This skill is **deterministic and repeatable** — running it twice on the same unclassified set should produce identical results (Sonnet temperature 0.3)
+- **Time**: ~5–10 minutes wall-clock (with parallelization), depends on Sonnet queue
 - **Maintenance**: If new domains are added, update the taxonomy map and re-run for those domains only
 - **Post-launch**: Use in-game analytics to validate assignments. If a fact is often marked "unhelpful", it may need reclassification.
 
@@ -417,9 +420,9 @@ node tests/e2e/01-app-loads.cjs
 npx vitest run -- subcategorize.test.ts
 ```
 
-And manually check a sample of the database:
+And manually check a sample of the database (rebuilt by `build-facts-db.mjs` from seed files):
 ```bash
-sqlite3 src/db/facts.db "SELECT id, statement, category_l1, category_l2 FROM facts WHERE status='approved' AND category_l1='natural_sciences' LIMIT 10;"
+sqlite3 public/facts.db "SELECT id, statement, category_l1, category_l2 FROM facts WHERE status='approved' AND category_l1='natural_sciences' LIMIT 10;"
 ```
 
 Verify all `category_l2` values match the taxonomy.

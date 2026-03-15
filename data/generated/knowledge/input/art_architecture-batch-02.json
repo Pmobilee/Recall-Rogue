@@ -1,0 +1,218 @@
+{
+  "domain": "art_architecture",
+  "batchIndex": 2,
+  "totalBatches": 3,
+  "entities": [
+    {
+      "qid": "Q482",
+      "label": "poetry",
+      "description": "literary style characterized by a strong expressiveness of words",
+      "subcategory": "architectural_styles",
+      "sitelinks": 242,
+      "monthlyPageviews": 121000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q48435",
+      "label": "Basilica and Expiatory Church of the Holy Family",
+      "description": "basilica under construction since 1882 in Barcelona, Spain",
+      "subcategory": "engineering_design",
+      "sitelinks": 106,
+      "monthlyPageviews": 53000,
+      "properties": {
+        "country": "Q29",
+        "material": "Q22731"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q10285",
+      "label": "Colosseum",
+      "description": "ancient Roman amphitheatre, a landmark of Rome, Italy",
+      "subcategory": "historic_buildings",
+      "sitelinks": 144,
+      "monthlyPageviews": 100349,
+      "properties": {
+        "country": "Q38",
+        "inception": "+0082-00-00T00:00:00Z",
+        "material": "Q1124525"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q134147",
+      "label": "pop art",
+      "description": "art movement",
+      "subcategory": "modern_contemporary",
+      "sitelinks": 79,
+      "monthlyPageviews": 39500,
+      "properties": {
+        "inception": "+1950-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q33506",
+      "label": "museum",
+      "description": "institution that holds artifacts and other objects of scientific, artistic, cultural, historical, or other importance",
+      "subcategory": "museums_institutions",
+      "sitelinks": 176,
+      "monthlyPageviews": 88000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q692",
+      "label": "William Shakespeare",
+      "description": "English playwright and poet (1564–1616)",
+      "subcategory": "painting_visual",
+      "sitelinks": 332,
+      "monthlyPageviews": 166000,
+      "properties": {
+        "genre": "Q6624392",
+        "movement": "Q2272912",
+        "birthDate": "+1564-04-00T00:00:00Z",
+        "deathDate": "+1616-04-23T00:00:00Z",
+        "occupation": "Q214917",
+        "fieldOfWork": "Q8253972"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q187483",
+      "label": "Bayeux Tapestry",
+      "description": "embroidered wall-hanging art depicting the Norman invasion of England",
+      "subcategory": "sculpture_decorative",
+      "sitelinks": 63,
+      "monthlyPageviews": 63524,
+      "properties": {
+        "country": "Q142",
+        "inception": "+1070-00-00T00:00:00Z",
+        "material": "Q1426327",
+        "collection": "Q21631145",
+        "genre": "Q958255",
+        "countryOfOrigin": "Q21"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q5679",
+      "label": "Lord Byron",
+      "description": "English Romantic poet and lyricist (1788–1824)",
+      "subcategory": "architectural_styles",
+      "sitelinks": 214,
+      "monthlyPageviews": 107000,
+      "properties": {
+        "genre": "Q474090",
+        "movement": "Q37068",
+        "birthDate": "+1788-01-22T00:00:00Z",
+        "deathDate": "+1824-04-19T00:00:00Z",
+        "occupation": "Q49757",
+        "fieldOfWork": "Q184485"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q180989",
+      "label": "Jane Addams",
+      "description": "American feminist social activist, reformer, social worker, sociologist, philosopher, and writer (1860–1935)",
+      "subcategory": "engineering_design",
+      "sitelinks": 93,
+      "monthlyPageviews": 46500,
+      "properties": {
+        "movement": "Q58848",
+        "birthDate": "+1860-09-06T00:00:00Z",
+        "deathDate": "+1935-06-21T00:00:00Z",
+        "occupation": "Q1930187",
+        "fieldOfWork": "Q5891"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q12501",
+      "label": "Great Wall of China",
+      "description": "series of fortifications built along the historical border of China",
+      "subcategory": "historic_buildings",
+      "sitelinks": 192,
+      "monthlyPageviews": 96000,
+      "properties": {
+        "country": "Q148",
+        "creator": "Q7192",
+        "inception": "-0700-00-00T00:00:00Z",
+        "material": "Q23757"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q128115",
+      "label": "abstract art",
+      "description": "art with a degree of independence from visual references in the world",
+      "subcategory": "modern_contemporary",
+      "sitelinks": 88,
+      "monthlyPageviews": 11347,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q19675",
+      "label": "Louvre Museum",
+      "description": "art and archeology museum in Paris, France",
+      "subcategory": "museums_institutions",
+      "sitelinks": 164,
+      "monthlyPageviews": 82000,
+      "properties": {
+        "country": "Q142",
+        "inception": "+1793-08-10T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q2831",
+      "label": "Michael Jackson",
+      "description": "American singer, songwriter, dancer, and philanthropist (1958–2009)",
+      "subcategory": "painting_visual",
+      "sitelinks": 325,
+      "monthlyPageviews": 162500,
+      "properties": {
+        "genre": "Q37073",
+        "birthDate": "+1958-08-29T00:00:00Z",
+        "deathDate": "+2009-06-25T00:00:00Z",
+        "occupation": "Q488205",
+        "fieldOfWork": "Q746359"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q101638",
+      "label": "Mary Wollstonecraft",
+      "description": "English writer and intellectual (1759–1797)",
+      "subcategory": "sculpture_decorative",
+      "sitelinks": 127,
+      "monthlyPageviews": 63500,
+      "properties": {
+        "movement": "Q7252",
+        "birthDate": "+1759-04-27T00:00:00Z",
+        "deathDate": "+1797-09-10T00:00:00Z",
+        "occupation": "Q333634",
+        "fieldOfWork": "Q35760"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q7198",
+      "label": "Ovid",
+      "description": "Roman poet (43 BC – 17/18 AD)",
+      "subcategory": "architectural_styles",
+      "sitelinks": 198,
+      "monthlyPageviews": 99000,
+      "properties": {
+        "genre": "Q80930",
+        "birthDate": "-0043-03-20T00:00:00Z",
+        "deathDate": "+0017-00-00T00:00:00Z",
+        "occupation": "Q49757"
+      },
+      "processed": false
+    }
+  ]
+}

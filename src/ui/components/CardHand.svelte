@@ -7,6 +7,7 @@
   import { getTierDisplayName } from '../../services/tierDerivation'
   import { getCardFrameUrl, onCardFrameReady } from '../utils/cardFrameManifest'
   import { getShortCardDescription } from '../../services/cardDescriptionService'
+  import { getCardDescriptionParts, type CardDescPart } from '../../services/cardDescriptionService'
 
   interface Props {
     cards: Card[]
@@ -80,7 +81,7 @@
     if (total <= 1) return 0
     const mid = (total - 1) / 2
     const normalized = (index - mid) / mid
-    return (1 - Math.abs(normalized)) * 20
+    return (1 - Math.abs(normalized)) * 30
   }
 
   let viewportWidth = $state(typeof window !== 'undefined' ? Math.min(window.innerWidth, window.innerHeight * 571 / 1024) : 390)
@@ -88,10 +89,10 @@
   const cardSpacing = $derived.by(() => {
     const total = cards.length
     if (total <= 1) return 0
-    const maxHandWidth = viewportWidth * 0.82
+    const maxHandWidth = viewportWidth * 0.92
     // 60% of card width overlap
-    const cardW = viewportWidth * 0.22
-    const overlapSpacing = cardW * 0.55
+    const cardW = viewportWidth * 0.30
+    const overlapSpacing = cardW * 0.58
     return Math.min(overlapSpacing, Math.floor((maxHandWidth - cardW) / (total - 1)))
   })
 
@@ -374,6 +375,7 @@
       class:card-upgraded={card.isUpgraded}
       class:insufficient-ap={insufficientAp}
       class:card-playable={!insufficientAp && !isSelected && !isOther && selectedIndex === null}
+      class:card-combo={comboMultiplier > 1 && !insufficientAp && !isSelected && !isOther && selectedIndex === null}
       class:card-fizzle={cardAnim === 'fizzle'}
       class:card-discard={cardAnim === 'discard'}
       class:card-reveal={isAnimating}
@@ -410,16 +412,25 @@
       onpointerenter={(e) => handlePointerEnter(e, i)}
       onpointerleave={handlePointerLeave}
     >
-      <div class="card-inner" class:flipped={isRevealing || isTierUp || isSwoosh || isImpact}>
+      <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
         <div class="card-front">
           {#if cardFrameUrl}
             <img class="card-frame-img" src={cardFrameUrl} alt={card.mechanicName ?? card.cardType} />
             <div class="ap-gem">{apCost}</div>
             <div class="card-parchment-text">
-              {#if showFrontValue}
-                <span class="effect-value" class:boosted={isBoosted() && effectVal > 0}>{effectVal}</span>
-              {/if}
-              <span class="effect-desc">{getShortCardDescription(card)}</span>
+              <span class="parchment-inner">
+                {#each getCardDescriptionParts(card) as part}
+                  {#if part.type === 'number'}
+                    <span class="desc-number">{part.value}</span>
+                  {:else if part.type === 'keyword'}
+                    <span class="desc-keyword">{part.value}</span>
+                  {:else if part.type === 'conditional-number'}
+                    <span class="desc-conditional" class:active={part.active}>{part.active ? part.value : '0'}</span>
+                  {:else}
+                    {part.value}
+                  {/if}
+                {/each}
+              </span>
             </div>
           {:else}
             {#if cardbackUrl}
@@ -507,7 +518,7 @@
         border-color: {domainColor};
       "
     >
-      <div class="card-inner" class:flipped={isRevealing || isTierUp || isSwoosh || isImpact}>
+      <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
         <div class="card-front">
           {#if cardFrameUrl}
             <img class="card-frame-img" src={cardFrameUrl} alt={card.mechanicName ?? card.cardType} />
@@ -556,14 +567,14 @@
 
 <style>
   .card-hand-container {
-    --card-w: calc(var(--gw, 390px) * 0.22);
+    --card-w: calc(var(--gw, 390px) * 0.30);
     --card-h: calc(var(--card-w) * 1.42);
     position: absolute;
-    bottom: calc(68px + 10vh);
+    bottom: calc(40px + 12vh);
     left: 50%;
     z-index: 20;
     transform: translateX(-50%);
-    height: 200px;
+    height: 280px;
     width: 100%;
     display: flex;
     align-items: flex-end;
@@ -603,7 +614,11 @@
   }
 
   .card-has-frame.card-playable {
-    box-shadow: 0 0 10px rgba(34, 197, 94, 0.55), 0 4px 12px rgba(0, 0, 0, 0.5);
+    filter: drop-shadow(0 0 4px rgba(34, 197, 94, 0.9)) drop-shadow(0 0 10px rgba(34, 197, 94, 0.4));
+  }
+
+  .card-combo {
+    filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.9)) drop-shadow(0 0 10px rgba(251, 191, 36, 0.4));
   }
 
   .card-frame-img {
@@ -619,8 +634,8 @@
 
   .ap-gem {
     position: absolute;
-    top: 3.5%;
-    left: 5.5%;
+    top: 1%;
+    left: 2.5%;
     width: calc(var(--card-w) * 0.18);
     height: calc(var(--card-w) * 0.18);
     display: flex;
@@ -637,17 +652,47 @@
 
   .card-parchment-text {
     position: absolute;
-    bottom: 4%;
-    left: 10%;
-    right: 10%;
-    height: 28%;
+    top: 66%;
+    bottom: 7%;
+    left: 8%;
+    right: 8%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2px;
+    text-align: center;
+    font-family: 'Georgia', serif;
+    font-size: calc(var(--card-w) * 0.095);
+    font-weight: 700;
+    line-height: 1.3;
+    color: #2a1f14;
+    -webkit-text-stroke: 0.3px rgba(0,0,0,0.4);
+    text-shadow: 0 1px 1px rgba(0,0,0,0.15);
     z-index: 2;
     pointer-events: none;
+    overflow: hidden;
+  }
+
+  .desc-number {
+    font-weight: 900;
+    color: #1a1208;
+  }
+
+  .desc-keyword {
+    font-weight: 900;
+  }
+
+  .parchment-inner {
+    display: inline;
+  }
+
+  .desc-conditional {
+    color: #9ca3af;
+    font-weight: 700;
+  }
+
+  .desc-conditional.active {
+    color: #22c55e;
+    font-weight: 900;
   }
 
   .effect-value {
@@ -692,11 +737,11 @@
   }
 
   .card-playable {
-    box-shadow: 0 0 8px rgba(34, 197, 94, 0.5), 0 4px 8px rgba(0, 0, 0, 0.4);
+    filter: drop-shadow(0 0 4px rgba(34, 197, 94, 0.9)) drop-shadow(0 0 10px rgba(34, 197, 94, 0.4));
   }
 
   .drag-ready {
-    box-shadow: 0 0 16px rgba(34, 197, 94, 0.7), 0 0 32px rgba(34, 197, 94, 0.3) !important;
+    filter: drop-shadow(0 0 12px rgba(34, 197, 94, 0.7)) drop-shadow(0 0 24px rgba(34, 197, 94, 0.3)) !important;
   }
 
   .card-selected {
@@ -715,16 +760,16 @@
   }
 
   .tier-2a {
-    box-shadow: 0 0 6px rgba(192, 192, 192, 0.45);
+    filter: drop-shadow(0 0 6px rgba(192, 192, 192, 0.45));
   }
 
   .tier-2b {
-    box-shadow: 0 0 10px rgba(192, 192, 192, 0.8);
+    filter: drop-shadow(0 0 10px rgba(192, 192, 192, 0.8));
   }
 
   .tier-3 {
     border-color: #ffd700 !important;
-    box-shadow: 0 0 12px rgba(255, 215, 0, 0.8);
+    filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.8));
   }
 
   .echo-card {
@@ -765,7 +810,6 @@
     z-index: 1;
     padding: 0;
     overflow: hidden;
-    position: relative;
     justify-content: flex-start;
   }
 

@@ -196,7 +196,24 @@ function pickMechanic(
   });
 
   const source = eligible.length > 0 ? eligible : pool;
-  const selected = source[Math.floor(Math.random() * source.length)];
+
+  // Weight basic mechanics (strike, block) at 60% of their type pool
+  const BASIC_MECHANICS: Record<string, string> = {
+    attack: 'strike',
+    shield: 'block',
+  };
+  const basicId = BASIC_MECHANICS[cardType];
+  let selected: MechanicDefinition;
+
+  if (basicId && Math.random() < 0.6) {
+    // 60% chance to pick the basic mechanic for attack/shield
+    const basic = source.find(m => m.id === basicId);
+    selected = basic ?? source[Math.floor(Math.random() * source.length)];
+  } else {
+    // 40% chance for any mechanic (including basic)
+    selected = source[Math.floor(Math.random() * source.length)];
+  }
+
   mechanicCounts.set(selected.id, (mechanicCounts.get(selected.id) ?? 0) + 1);
   return selected;
 }

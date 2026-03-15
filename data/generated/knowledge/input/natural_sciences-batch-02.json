@@ -1,0 +1,188 @@
+{
+  "domain": "natural_sciences",
+  "batchIndex": 2,
+  "totalBatches": 3,
+  "entities": [
+    {
+      "qid": "Q43436",
+      "label": "pearl",
+      "description": "hard object produced within the soft tissue of a living shelled mollusc",
+      "subcategory": "biology_organisms",
+      "sitelinks": 122,
+      "monthlyPageviews": 61000,
+      "properties": {
+        "material": "Q215865"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q764",
+      "label": "fungi",
+      "description": "organism belonging to kingdom Fungi",
+      "subcategory": "botany_plants",
+      "sitelinks": 205,
+      "monthlyPageviews": 102500,
+      "properties": {
+        "taxonName": "Fungi",
+        "startDate": "-410000000-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q897",
+      "label": "gold",
+      "description": "chemical element with symbol Au and atomic number 79",
+      "subcategory": "chemistry_elements",
+      "sitelinks": 269,
+      "monthlyPageviews": 134500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q43262",
+      "label": "tundra",
+      "description": "biome where plant growth is hindered by frigid temperatures",
+      "subcategory": "ecology_environment",
+      "sitelinks": 109,
+      "monthlyPageviews": 54500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q8074",
+      "label": "cloud",
+      "description": "visible mass of liquid droplets or frozen crystals suspended in the atmosphere",
+      "subcategory": "geology_earth",
+      "sitelinks": 230,
+      "monthlyPageviews": 115000,
+      "properties": {
+        "material": "Q190120"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q8104",
+      "label": "atmosphere",
+      "description": "layer of gases surrounding a material body",
+      "subcategory": "materials_engineering",
+      "sitelinks": 143,
+      "monthlyPageviews": 71500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q405",
+      "label": "Moon",
+      "description": "Earth's only natural satellite",
+      "subcategory": "physics_mechanics",
+      "sitelinks": 353,
+      "monthlyPageviews": 176500,
+      "properties": {
+        "orbitalPeriod": "+27.321661",
+        "inception": "-4527000000-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q43522",
+      "label": "Antonie van Leeuwenhoek",
+      "description": "Dutch scientist known as \"the Father of Microbiology\", and one of the first microscopists (1632–1723)",
+      "subcategory": "biology_organisms",
+      "sitelinks": 108,
+      "monthlyPageviews": 54000,
+      "properties": {
+        "birthDate": "+1632-10-24T00:00:00Z",
+        "deathDate": "+1723-08-26T00:00:00Z",
+        "occupation": "Q864503",
+        "fieldOfWork": "Q1074953"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q37383",
+      "label": "peanut",
+      "description": "legume cultivated for use of the underground seedpods as a grain crop, and also processed as peanut oil",
+      "subcategory": "botany_plants",
+      "sitelinks": 127,
+      "monthlyPageviews": 63500,
+      "properties": {
+        "taxonName": "Arachis hypogaea"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q319",
+      "label": "Jupiter",
+      "description": "fifth planet in the Solar System and largest among all; gaseous giant mainly composed of hydrogen and helium",
+      "subcategory": "chemistry_elements",
+      "sitelinks": 267,
+      "monthlyPageviews": 133500,
+      "properties": {
+        "orbitalPeriod": "+4332.589"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q100948",
+      "label": "Rachel Carson",
+      "description": "American marine biologist and conservationist (1907–1964)",
+      "subcategory": "ecology_environment",
+      "sitelinks": 107,
+      "monthlyPageviews": 53500,
+      "properties": {
+        "birthDate": "+1907-05-27T00:00:00Z",
+        "deathDate": "+1964-04-14T00:00:00Z",
+        "occupation": "Q3640160",
+        "fieldOfWork": "Q420"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q7561",
+      "label": "snow",
+      "description": "precipitation in the form of ice crystal flakes",
+      "subcategory": "geology_earth",
+      "sitelinks": 227,
+      "monthlyPageviews": 113500,
+      "properties": {
+        "material": "Q1325808"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q11421",
+      "label": "magnet",
+      "description": "material or object that produces a magnetic field",
+      "subcategory": "materials_engineering",
+      "sitelinks": 138,
+      "monthlyPageviews": 69000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q395",
+      "label": "mathematics",
+      "description": "field of study",
+      "subcategory": "physics_mechanics",
+      "sitelinks": 334,
+      "monthlyPageviews": 167000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q83333",
+      "label": "James Watson",
+      "description": "American molecular biologist, geneticist, zoologist and Nobel Laureate (1928–2025)",
+      "subcategory": "biology_organisms",
+      "sitelinks": 107,
+      "monthlyPageviews": 53500,
+      "properties": {
+        "birthDate": "+1928-04-06T00:00:00Z",
+        "deathDate": "+2025-11-06T00:00:00Z",
+        "occupation": "Q864503",
+        "fieldOfWork": "Q7094"
+      },
+      "processed": false
+    }
+  ]
+}

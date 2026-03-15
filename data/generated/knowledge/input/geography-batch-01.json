@@ -1,0 +1,200 @@
+{
+  "domain": "geography",
+  "batchIndex": 1,
+  "totalBatches": 3,
+  "entities": [
+    {
+      "qid": "Q142",
+      "label": "France",
+      "description": "country in Western Europe and other continents (through its overseas territories in America, Africa and Oceania)",
+      "subcategory": "africa",
+      "sitelinks": 406,
+      "monthlyPageviews": 203000,
+      "properties": {
+        "country": "France",
+        "inception": "+1958-10-04T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q30",
+      "label": "United States",
+      "description": "country located primarily in North America",
+      "subcategory": "americas",
+      "sitelinks": 422,
+      "monthlyPageviews": 211000,
+      "properties": {
+        "country": "United States",
+        "inception": "+1776-07-04T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q43",
+      "label": "Turkey",
+      "description": "country in West Asia and Southeast Europe",
+      "subcategory": "asia_oceania",
+      "sitelinks": 417,
+      "monthlyPageviews": 208500,
+      "properties": {
+        "country": "Turkey",
+        "inception": "+1923-10-29T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q51",
+      "label": "Antarctica",
+      "description": "terrestrial continent in the Southern Hemisphere",
+      "subcategory": "climate_biomes",
+      "sitelinks": 310,
+      "monthlyPageviews": 155000,
+      "properties": {
+        "discoverer": "Q76754"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q38",
+      "label": "Italy",
+      "description": "country in southern Europe",
+      "subcategory": "europe",
+      "sitelinks": 404,
+      "monthlyPageviews": 202000,
+      "properties": {
+        "country": "Italy",
+        "inception": "+1946-06-18T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q84",
+      "label": "London",
+      "description": "capital and largest city of England and the United Kingdom",
+      "subcategory": "extreme_records",
+      "sitelinks": 351,
+      "monthlyPageviews": 175500,
+      "properties": {
+        "country": "Q2277",
+        "inception": "+0047-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q189",
+      "label": "Iceland",
+      "description": "Nordic island country in the North Atlantic Ocean",
+      "subcategory": "landforms_water",
+      "sitelinks": 350,
+      "monthlyPageviews": 175000,
+      "properties": {
+        "country": "Iceland",
+        "inception": "+1918-12-01T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q29",
+      "label": "Spain",
+      "description": "country in southwestern Europe with territories in Africa",
+      "subcategory": "africa",
+      "sitelinks": 389,
+      "monthlyPageviews": 194500,
+      "properties": {
+        "country": "Spain",
+        "inception": "+1715-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q96",
+      "label": "Mexico",
+      "description": "country in North America",
+      "subcategory": "americas",
+      "sitelinks": 398,
+      "monthlyPageviews": 199000,
+      "properties": {
+        "country": "Mexico",
+        "inception": "+1821-08-24T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q159",
+      "label": "Russia",
+      "description": "country in Eastern Europe and Northern Asia",
+      "subcategory": "asia_oceania",
+      "sitelinks": 416,
+      "monthlyPageviews": 208000,
+      "properties": {
+        "country": "Russia",
+        "inception": "+1991-12-25T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q176609",
+      "label": "Arctic Circle",
+      "description": "boundary of the Arctic",
+      "subcategory": "climate_biomes",
+      "sitelinks": 96,
+      "monthlyPageviews": 48000,
+      "properties": {
+        "country": "Q20"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q183",
+      "label": "Germany",
+      "description": "country in Central Europe",
+      "subcategory": "europe",
+      "sitelinks": 400,
+      "monthlyPageviews": 200000,
+      "properties": {
+        "country": "Germany",
+        "inception": "+1949-05-23T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q220",
+      "label": "Rome",
+      "description": "capital and largest city of Italy",
+      "subcategory": "extreme_records",
+      "sitelinks": 339,
+      "monthlyPageviews": 169500,
+      "properties": {
+        "country": "Q38",
+        "inception": "-0753-04-21T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q60",
+      "label": "New York City",
+      "description": "most populous city in the United States",
+      "subcategory": "landforms_water",
+      "sitelinks": 320,
+      "monthlyPageviews": 160000,
+      "properties": {
+        "country": "Q30",
+        "inception": "+1624-01-01T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q79",
+      "label": "Egypt",
+      "description": "country in Northeast Africa and Southwest Asia",
+      "subcategory": "africa",
+      "sitelinks": 383,
+      "monthlyPageviews": 191500,
+      "properties": {
+        "country": "Egypt",
+        "inception": "+1922-02-28T00:00:00Z"
+      },
+      "processed": false
+    }
+  ]
+}

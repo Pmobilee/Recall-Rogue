@@ -6,6 +6,9 @@ const config: CapacitorConfig = {
   webDir: 'dist',
   server: {
     androidScheme: 'https',
+    // Live reload: point Android WebView at Mac's Vite dev server via adb reverse
+    url: 'http://localhost:5173',
+    cleartext: true,
   },
   plugins: {
     SplashScreen: {

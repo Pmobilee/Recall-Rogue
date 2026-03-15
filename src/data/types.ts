@@ -94,7 +94,8 @@ export interface PendingArtifact {
 export interface QuestionVariant {
   question: string;
   type: 'forward' | 'reverse' | 'negative' | 'context' | 'fill_blank' | 'true_false';
-  correctAnswer: string;  // May differ from fact.correctAnswer for reverse questions
+  correctAnswer?: string; // May differ from fact.correctAnswer for reverse questions
+  answer?: string;        // Alternate field name used by some generated variants
   distractors?: string[]; // Variant-specific distractors (optional, falls back to fact.distractors)
 }
 

@@ -1,0 +1,1783 @@
+[
+  {
+    "id": "food-coffee-origin",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "Coffee originated in Ethiopia, where the Kaffa region gave the beverage its name.",
+    "quizQuestion": "Which country is considered the birthplace of coffee?",
+    "correctAnswer": "Ethiopia",
+    "distractors": [
+      "Brazil",
+      "Colombia",
+      "Yemen",
+      "Kenya",
+      "Indonesia",
+      "Vietnam",
+      "Guatemala"
+    ],
+    "acceptableAnswers": [
+      "Ethiopia",
+      "Ethiopian highlands"
+    ],
+    "explanation": "Coffee's origins trace to Ethiopia's Kaffa region, where legend says a goat herder named Kaldi noticed his goats became energetic after eating certain berries. The plant spread to the Arabian Peninsula, then the world.",
+    "wowFactor": "The world's most popular psychoactive drug began as goat snacks in a mountainous African kingdom.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where did coffee originate?",
+        "answer": "Ethiopia",
+        "distractors": [
+          "Brazil",
+          "Colombia",
+          "Yemen"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Ethiopia is credited as the birthplace of which beverage?",
+        "answer": "Coffee",
+        "distractors": [
+          "Tea",
+          "Wine",
+          "Beer"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Coffee originated in Brazil.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Coffee originated in ___, specifically the Kaffa region.",
+        "answer": "Ethiopia",
+        "distractors": [
+          "Brazil",
+          "Yemen",
+          "Colombia"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Coffee",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A goat herder in green Ethiopian highlands watches energetic goats near red-berried coffee bushes at golden dawn, pixel art style.",
+    "tags": [
+      "coffee",
+      "Ethiopia",
+      "beverages",
+      "origins"
+    ]
+  },
+  {
+    "id": "food-coffee-roast",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "Coffee beans are actually seeds from the cherry-like fruit of the Coffea plant.",
+    "quizQuestion": "What part of the coffee plant are 'coffee beans' actually?",
+    "correctAnswer": "Seeds",
+    "distractors": [
+      "Berries",
+      "Roots",
+      "Bark extracts",
+      "Dried leaves",
+      "Flower buds",
+      "Stem pith",
+      "Pod shells"
+    ],
+    "acceptableAnswers": [
+      "Seeds",
+      "Plant seeds"
+    ],
+    "explanation": "Coffee beans are the pit-like seeds inside a red or yellow fruit called a coffee cherry. Each cherry typically contains two seeds, which are dried, roasted, and ground to make coffee.",
+    "wowFactor": "Every cup of coffee you drink is made from seeds—'beans' is a misnomer for the pit of a tropical fruit.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What are coffee beans actually from the Coffea plant?",
+        "answer": "Seeds",
+        "distractors": [
+          "Berries",
+          "Dried leaves",
+          "Flower buds"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The seeds of the Coffea plant are commonly known as what?",
+        "answer": "Coffee beans",
+        "distractors": [
+          "Coffee cherries",
+          "Coffee pods",
+          "Coffee pits"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Coffee beans are seeds inside a fruit.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Coffee 'beans' are really the ___ of the coffee cherry fruit.",
+        "answer": "Seeds",
+        "distractors": [
+          "Skin",
+          "Pulp",
+          "Leaves"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Coffee_bean",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Cross-section of a red coffee cherry revealing two pale green seeds inside, surrounded by tropical leaves, pixel art botanical illustration.",
+    "tags": [
+      "coffee",
+      "botany",
+      "seeds",
+      "coffee cherry"
+    ]
+  },
+  {
+    "id": "food-coffee-caffeine",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "Decaffeinated coffee still contains trace amounts of caffeine, just significantly less than regular coffee.",
+    "quizQuestion": "Does decaffeinated coffee contain any caffeine at all?",
+    "correctAnswer": "Yes, trace amounts",
+    "distractors": [
+      "No, none at all",
+      "Same as regular coffee",
+      "Only if not brewed properly",
+      "Depends on the brand",
+      "Only in espresso form",
+      "Removed entirely by law",
+      "Zero milligrams"
+    ],
+    "acceptableAnswers": [
+      "Yes, trace amounts",
+      "Yes",
+      "Small amounts"
+    ],
+    "explanation": "Decaf coffee typically retains about 3% of its original caffeine. A standard decaf cup has roughly 2–15 mg of caffeine compared to 95 mg in regular coffee. The removal process can't strip every molecule.",
+    "wowFactor": "Drinking ten decaf coffees could give you the caffeine hit of one regular cup—decaf is really just 'less-caf.'",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How much caffeine does decaf coffee contain?",
+        "answer": "Trace amounts",
+        "distractors": [
+          "None at all",
+          "Same as regular",
+          "Half as much"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Coffee with only trace caffeine remaining is called what?",
+        "answer": "Decaffeinated",
+        "distractors": [
+          "Half-caf",
+          "Light roast",
+          "Cold brew"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Decaf coffee contains zero caffeine.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Decaffeinated coffee still contains ___ amounts of caffeine.",
+        "answer": "Trace",
+        "distractors": [
+          "Large",
+          "Equal",
+          "Zero"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Decaffeination",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Side-by-side coffee cups labeled 'Regular' and 'Decaf' with tiny caffeine molecules floating above both, pixel art style.",
+    "tags": [
+      "coffee",
+      "caffeine",
+      "decaf",
+      "chemistry"
+    ]
+  },
+  {
+    "id": "food-pizza-naples",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "Modern pizza was invented in Naples, Italy, in the 18th century as affordable street food.",
+    "quizQuestion": "In which Italian city was modern pizza invented?",
+    "correctAnswer": "Naples",
+    "distractors": [
+      "Rome",
+      "Milan",
+      "Florence",
+      "Venice",
+      "Bologna",
+      "Turin",
+      "Palermo"
+    ],
+    "acceptableAnswers": [
+      "Naples",
+      "Napoli"
+    ],
+    "explanation": "Naples gave birth to modern pizza in the 18th century as cheap, fast street food for the city's poor. The Margherita pizza, created in 1889, honored Queen Margherita of Savoy with its red, white, and green toppings.",
+    "wowFactor": "The world's most beloved fast food was invented as peasant street food that nobles once considered disgusting.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where was modern pizza invented in Italy?",
+        "answer": "Naples",
+        "distractors": [
+          "Rome",
+          "Milan",
+          "Florence"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Naples, Italy is famous as the birthplace of which food?",
+        "answer": "Pizza",
+        "distractors": [
+          "Pasta",
+          "Gelato",
+          "Risotto"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Modern pizza was invented in Naples.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Modern pizza originated in ___, Italy as affordable street food.",
+        "answer": "Naples",
+        "distractors": [
+          "Rome",
+          "Milan",
+          "Venice"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pizza",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Neapolitan street vendor selling flatbreads from a wooden cart by colorful harbor buildings under Mediterranean sun, pixel art style.",
+    "tags": [
+      "pizza",
+      "Italy",
+      "Naples",
+      "street food"
+    ]
+  },
+  {
+    "id": "food-pizza-margherita",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "The Margherita pizza's red, white, and green toppings represent the colors of the Italian flag.",
+    "quizQuestion": "What do the toppings on a Margherita pizza symbolize?",
+    "correctAnswer": "Italian flag colors",
+    "distractors": [
+      "Seasonal ingredients",
+      "Queen's favorite flavors",
+      "Mediterranean diet staples",
+      "Regional specialties",
+      "Church colors",
+      "Market availability",
+      "Nutritional balance"
+    ],
+    "acceptableAnswers": [
+      "Italian flag colors",
+      "Colors of Italy",
+      "The Italian flag"
+    ],
+    "explanation": "The Margherita pizza features tomato sauce (red), mozzarella (white), and basil (green) — the three colors of the Italian flag. It was created in 1889 by pizzaiolo Raffaele Esposito to honor Queen Margherita of Savoy.",
+    "wowFactor": "A pizza made to impress a queen accidentally created the most recognized food on Earth, still flying Italy's colors.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What do the red, white, and green toppings on Margherita pizza represent?",
+        "answer": "Italian flag colors",
+        "distractors": [
+          "Queen's favorites",
+          "Seasonal produce",
+          "Regional specialties"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which pizza topping combination represents the Italian flag?",
+        "answer": "Tomato, mozzarella, basil",
+        "distractors": [
+          "Pepperoni and cheese",
+          "Mushrooms and olives",
+          "Ham and pineapple"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Margherita pizza's toppings represent the Italian flag.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Margherita pizza's red, white, and green toppings represent the ___.",
+        "answer": "Italian flag",
+        "distractors": [
+          "Italian seasons",
+          "Queen's colors",
+          "Mediterranean palette"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pizza_Margherita",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Classic Margherita pizza from above with vibrant red tomato, white mozzarella, and green basil matching Italian flag colors, pixel art overhead view.",
+    "tags": [
+      "pizza",
+      "Margherita",
+      "Italy",
+      "flag"
+    ]
+  },
+  {
+    "id": "food-pizza-yeast",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "Neapolitan pizza dough must ferment for at least 8 hours to develop its characteristic flavor.",
+    "quizQuestion": "How long must authentic Neapolitan pizza dough ferment?",
+    "correctAnswer": "At least 8 hours",
+    "distractors": [
+      "30 minutes",
+      "2 hours",
+      "4 hours",
+      "24 hours minimum",
+      "72 hours",
+      "Overnight only",
+      "No fermentation needed"
+    ],
+    "acceptableAnswers": [
+      "At least 8 hours",
+      "8 hours or more",
+      "8+ hours"
+    ],
+    "explanation": "Traditional Neapolitan pizza dough requires slow fermentation of at least 8 hours, and often 24–72 hours. This develops complex flavors, creates an airy texture, and makes the crust easier to digest by breaking down gluten proteins.",
+    "wowFactor": "The difference between mediocre and magnificent pizza is literally just time—patience is the secret ingredient.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long must authentic Neapolitan dough ferment to develop flavor?",
+        "answer": "At least 8 hours",
+        "distractors": [
+          "30 minutes",
+          "2 hours",
+          "1 hour"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Slow fermentation for 8+ hours is required for which type of pizza dough?",
+        "answer": "Neapolitan",
+        "distractors": [
+          "New York style",
+          "Chicago deep dish",
+          "Sicilian"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Neapolitan pizza dough must ferment at least 8 hours.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Neapolitan pizza dough must ferment for at least ___ hours.",
+        "answer": "8",
+        "distractors": [
+          "2",
+          "1",
+          "4"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Neapolitan_pizza",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pizza dough rising in a wooden bowl covered by a cloth in rustic Italian kitchen, clock showing 8 hours elapsed, pixel art style.",
+    "tags": [
+      "pizza",
+      "dough",
+      "fermentation",
+      "Neapolitan"
+    ]
+  },
+  {
+    "id": "food-chocolate-cacao",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "baking_desserts",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "baking_desserts",
+    "categoryL3": "",
+    "statement": "Chocolate comes from cacao beans fermented inside the pods of the Theobroma cacao tree.",
+    "quizQuestion": "What is the source plant of chocolate called?",
+    "correctAnswer": "Theobroma cacao",
+    "distractors": [
+      "Vanilla planifolia",
+      "Cinnamomum verum",
+      "Coffea arabica",
+      "Camellia sinensis",
+      "Capsicum annuum",
+      "Piper nigrum",
+      "Elettaria cardamomum"
+    ],
+    "acceptableAnswers": [
+      "Theobroma cacao",
+      "Cacao tree",
+      "Cocoa tree"
+    ],
+    "explanation": "Chocolate is made from fermented seeds of Theobroma cacao, a tropical tree whose name means 'food of the gods' in Greek. The seeds grow inside large football-shaped pods directly on the trunk and branches.",
+    "wowFactor": "The scientific name for the chocolate tree literally means 'food of the gods'—and whoever named it was absolutely right.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the scientific name of the tree that produces chocolate?",
+        "answer": "Theobroma cacao",
+        "distractors": [
+          "Coffea arabica",
+          "Vanilla planifolia",
+          "Camellia sinensis"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Theobroma cacao trees produce seeds used to make which food?",
+        "answer": "Chocolate",
+        "distractors": [
+          "Coffee",
+          "Vanilla",
+          "Tea"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Theobroma cacao means 'food of the gods' in Greek.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Chocolate comes from fermented seeds of the ___ tree.",
+        "answer": "Theobroma cacao",
+        "distractors": [
+          "Coffea arabica",
+          "Vanilla planifolia",
+          "Cinnamomum"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Theobroma_cacao",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Tropical cacao tree with large yellow-orange pods growing directly from its trunk in a lush rainforest, pixel art botanical style.",
+    "tags": [
+      "chocolate",
+      "cacao",
+      "botany",
+      "Theobroma"
+    ]
+  },
+  {
+    "id": "food-chocolate-mesoamerica",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "baking_desserts",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "baking_desserts",
+    "categoryL3": "",
+    "statement": "The Aztecs used cacao beans as currency and drank chocolate as an unsweetened, spiced beverage.",
+    "quizQuestion": "How did the Aztecs originally consume chocolate?",
+    "correctAnswer": "Spiced bitter drink",
+    "distractors": [
+      "Sweetened candy bars",
+      "Mixed with milk",
+      "Baked in cakes",
+      "Eaten raw from pods",
+      "As honey mixture",
+      "Dried and chewed",
+      "Fermented wine"
+    ],
+    "acceptableAnswers": [
+      "Spiced bitter drink",
+      "As a bitter drink",
+      "Unsweetened beverage"
+    ],
+    "explanation": "Aztecs consumed chocolate as 'xocolatl'—a cold, frothy, bitter drink mixed with chili, vanilla, and other spices. It was considered a divine gift and reserved for warriors, priests, and nobility. Cacao beans also functioned as currency.",
+    "wowFactor": "The Aztecs would be horrified by Hershey's—their sacred chocolate was a spicy, bitter warrior drink nothing like our candy bars.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How did the Aztecs drink chocolate?",
+        "answer": "Bitter and spiced",
+        "distractors": [
+          "Sweet with milk",
+          "With honey",
+          "As warm cocoa"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Xocolatl was the Aztec name for what beverage?",
+        "answer": "Chocolate drink",
+        "distractors": [
+          "Coffee drink",
+          "Corn beer",
+          "Agave wine"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Aztecs used cacao beans as currency.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Aztecs drank chocolate as an unsweetened, ___ beverage.",
+        "answer": "Spiced",
+        "distractors": [
+          "Sweet",
+          "Milky",
+          "Fermented"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chocolate#History",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Aztec warrior in feathered headdress drinking frothy dark liquid from ornate cup in stone temple, cacao pods and chili peppers nearby, pixel art.",
+    "tags": [
+      "chocolate",
+      "Aztec",
+      "history",
+      "Mesoamerica"
+    ]
+  },
+  {
+    "id": "food-sushi-rice",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "The word 'sushi' refers to the vinegared rice, not the raw fish, which is called sashimi.",
+    "quizQuestion": "What does the word 'sushi' actually refer to in Japanese cuisine?",
+    "correctAnswer": "Vinegared rice",
+    "distractors": [
+      "Raw fish",
+      "Seaweed wrap",
+      "Wasabi paste",
+      "Soy sauce dish",
+      "Rolled seaweed",
+      "Fish and rice combo",
+      "Cold seafood platter"
+    ],
+    "acceptableAnswers": [
+      "Vinegared rice",
+      "Seasoned rice",
+      "Rice with vinegar"
+    ],
+    "explanation": "The term 'sushi' refers specifically to rice seasoned with rice vinegar, sugar, and salt. Raw fish served without rice is called sashimi. A dish must contain vinegared rice to be called sushi—making vegetarian sushi perfectly authentic.",
+    "wowFactor": "Most people order 'sushi' thinking they're ordering fish, but they're actually ordering a specific preparation of rice.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In Japanese cuisine, 'sushi' refers to what specific component?",
+        "answer": "Vinegared rice",
+        "distractors": [
+          "Raw fish",
+          "Seaweed",
+          "Wasabi"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What Japanese term describes raw fish served without rice?",
+        "answer": "Sashimi",
+        "distractors": [
+          "Sushi",
+          "Nigiri",
+          "Maki"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The word 'sushi' refers to vinegared rice, not raw fish.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The word 'sushi' means ___ in Japanese culinary terms.",
+        "answer": "Vinegared rice",
+        "distractors": [
+          "Raw fish",
+          "Seaweed roll",
+          "Cold fish"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sushi",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Japanese sushi chef carefully seasoning steaming white rice with vinegar in wooden bowl, fresh fish cuts arranged nearby, pixel art kitchen scene.",
+    "tags": [
+      "sushi",
+      "Japan",
+      "rice",
+      "vinegar"
+    ]
+  },
+  {
+    "id": "food-sushi-wasabi-fake",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Most restaurant wasabi outside Japan is actually dyed horseradish mixed with mustard, not real wasabi.",
+    "quizQuestion": "What is most sushi restaurant 'wasabi' actually made from?",
+    "correctAnswer": "Dyed horseradish",
+    "distractors": [
+      "Real wasabi root",
+      "Green food coloring only",
+      "Seaweed paste",
+      "Pea puree",
+      "Jalapeño paste",
+      "Matcha powder",
+      "Cucumber extract"
+    ],
+    "acceptableAnswers": [
+      "Dyed horseradish",
+      "Horseradish and mustard",
+      "Imitation wasabi"
+    ],
+    "explanation": "True wasabi (Wasabia japonica) is expensive and rare—it grows only in cold, running water streams and is notoriously difficult to cultivate. Most restaurants outside Japan (and many inside) use horseradish paste dyed green with food coloring as a much cheaper substitute.",
+    "wowFactor": "The green paste at almost every sushi restaurant is horseradish in disguise—real wasabi is so rare it's sold by the gram.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is most sushi restaurant 'wasabi' made from outside Japan?",
+        "answer": "Dyed horseradish",
+        "distractors": [
+          "Real wasabi root",
+          "Seaweed paste",
+          "Green mustard"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Real Wasabia japonica is so expensive it's often replaced by what dyed condiment?",
+        "answer": "Horseradish paste",
+        "distractors": [
+          "Green mustard",
+          "Cucumber paste",
+          "Spinach puree"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Most restaurant wasabi is actually dyed horseradish, not real wasabi.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Most 'wasabi' at sushi restaurants is actually ___ dyed green.",
+        "answer": "Horseradish",
+        "distractors": [
+          "Mustard",
+          "Pickle",
+          "Spinach"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wasabi",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Split-screen comparison: real wasabi plant in mountain stream vs bright green paste from tube labeled 'horseradish,' pixel art infographic style.",
+    "tags": [
+      "sushi",
+      "wasabi",
+      "horseradish",
+      "food fraud"
+    ]
+  },
+  {
+    "id": "food-tea-camellia",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "Black, green, white, and oolong tea all come from the same plant — Camellia sinensis.",
+    "quizQuestion": "Which single plant species produces black, green, and oolong tea?",
+    "correctAnswer": "Camellia sinensis",
+    "distractors": [
+      "Different plants each",
+      "Camellia japonica",
+      "Theobroma sinensis",
+      "Hibiscus rosa-sinensis",
+      "Aspalathus linearis",
+      "Ilex paraguariensis",
+      "Mentha piperita"
+    ],
+    "acceptableAnswers": [
+      "Camellia sinensis",
+      "The tea plant",
+      "One plant species"
+    ],
+    "explanation": "All true teas—black, green, white, oolong, and pu-erh—come from Camellia sinensis. The difference between types lies entirely in how the leaves are processed: oxidation time creates the range from delicate white tea to bold black tea.",
+    "wowFactor": "The entire spectrum of tea—from delicate white to robust black—is the same plant, transformed purely by how long you let it oxidize.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What plant produces all varieties of true tea?",
+        "answer": "Camellia sinensis",
+        "distractors": [
+          "Different plants",
+          "Hibiscus plant",
+          "Mint varieties"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Camellia sinensis is the source of which popular beverage varieties?",
+        "answer": "All types of tea",
+        "distractors": [
+          "Only green tea",
+          "Coffee varieties",
+          "Herbal teas"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Black, green, and oolong tea all come from Camellia sinensis.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "All true teas come from one plant species called ___.",
+        "answer": "Camellia sinensis",
+        "distractors": [
+          "Camellia japonica",
+          "Coffea arabica",
+          "Hibiscus rosa"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Camellia_sinensis",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Single Camellia sinensis tea bush with four branches holding different colored tea leaves: white, green, oolong brown, and black, pixel art botanical.",
+    "tags": [
+      "tea",
+      "Camellia sinensis",
+      "botany",
+      "varieties"
+    ]
+  },
+  {
+    "id": "food-tea-oxidation",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "fermentation_beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "fermentation_beverages",
+    "categoryL3": "",
+    "statement": "Green tea is not oxidized during processing, which preserves its green color and grassy flavor.",
+    "quizQuestion": "Why does green tea stay green while black tea turns dark?",
+    "correctAnswer": "No oxidation in processing",
+    "distractors": [
+      "Different plant variety",
+      "Lower water temperature",
+      "Dried in shade",
+      "Added green dye",
+      "Younger leaves used",
+      "Shorter steeping time",
+      "Higher altitude grown"
+    ],
+    "acceptableAnswers": [
+      "No oxidation",
+      "Green tea isn't oxidized",
+      "Lack of oxidation"
+    ],
+    "explanation": "When tea leaves are harvested, natural enzymes begin oxidizing the leaf, turning it dark—this is what creates black tea. Green tea makers halt this process quickly by applying heat (steaming or pan-firing), preserving the chlorophyll and creating a grassy, vegetal flavor profile.",
+    "wowFactor": "Green tea and black tea are the same leaf—one is flash-heated to stop nature's color change, the other is allowed to transform.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What process is halted in green tea to preserve its color and flavor?",
+        "answer": "Oxidation",
+        "distractors": [
+          "Fermentation",
+          "Drying",
+          "Steeping"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Tea that undergoes full oxidation during processing is called what?",
+        "answer": "Black tea",
+        "distractors": [
+          "Green tea",
+          "White tea",
+          "Oolong tea"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Green tea stays green because oxidation is halted during processing.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Green tea preserves its color by halting ___ during processing.",
+        "answer": "Oxidation",
+        "distractors": [
+          "Fermentation",
+          "Drying",
+          "Growth"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Green_tea",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Side by side: green tea leaves being steam-heated in a pan vs black tea leaves darkening naturally on a drying mat, pixel art comparison.",
+    "tags": [
+      "tea",
+      "green tea",
+      "oxidation",
+      "processing"
+    ]
+  },
+  {
+    "id": "food-bread-leavening",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "baking_desserts",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "baking_desserts",
+    "categoryL3": "",
+    "statement": "Sourdough bread rises because wild yeast and bacteria ferment the dough, producing carbon dioxide bubbles.",
+    "quizQuestion": "What makes sourdough bread rise without commercial yeast?",
+    "correctAnswer": "Wild yeast and bacteria",
+    "distractors": [
+      "Baking soda reaction",
+      "Egg proteins expanding",
+      "Steam from water",
+      "Chemical leavening agents",
+      "Gluten elastic network",
+      "Commercial yeast added",
+      "Air folded into dough"
+    ],
+    "acceptableAnswers": [
+      "Wild yeast and bacteria",
+      "Natural fermentation",
+      "Wild yeast"
+    ],
+    "explanation": "Sourdough starter contains wild yeast (Saccharomyces cerevisiae and others) alongside lactic acid bacteria. These microorganisms ferment sugars in the flour, producing CO₂ that gets trapped in the gluten network, causing the bread to rise. The bacteria also produce lactic and acetic acids, giving sourdough its tangy flavor.",
+    "wowFactor": "Sourdough bread is basically a living ecosystem of microbes—your starter is a pet you feed and the bread they bake is their gift.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What microorganisms make sourdough bread rise?",
+        "answer": "Wild yeast and bacteria",
+        "distractors": [
+          "Commercial yeast only",
+          "Baking powder",
+          "Egg whites"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Wild yeast and bacteria producing CO2 is the science behind which type of bread rising?",
+        "answer": "Sourdough",
+        "distractors": [
+          "Brioche",
+          "Baguette",
+          "Ciabatta"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Sourdough rises because wild yeast and bacteria produce carbon dioxide.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Sourdough bread rises because ___ ferment the dough and release CO2.",
+        "answer": "Wild yeast and bacteria",
+        "distractors": [
+          "Baking soda",
+          "Gluten proteins",
+          "Heat alone"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sourdough",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Microscopic view of bubbling sourdough starter with tiny yeast and bacteria organisms amid flour granules, pixel art science illustration.",
+    "tags": [
+      "bread",
+      "sourdough",
+      "fermentation",
+      "yeast"
+    ]
+  },
+  {
+    "id": "food-pasta-italy-not-china",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "Despite popular myth, pasta was not brought to Italy by Marco Polo—Italy had pasta before his travels to China.",
+    "quizQuestion": "Did Marco Polo introduce pasta to Italy from China?",
+    "correctAnswer": "No, Italy had pasta first",
+    "distractors": [
+      "Yes, in 1295 AD",
+      "Yes, via the Silk Road",
+      "Yes, from his travels",
+      "Possibly, evidence unclear",
+      "Yes, he brought noodles",
+      "Yes, from Japan not China",
+      "Unproven but likely true"
+    ],
+    "acceptableAnswers": [
+      "No, Italy had pasta first",
+      "No, it's a myth",
+      "False, pasta existed in Italy before"
+    ],
+    "explanation": "Italian records document pasta production before Marco Polo's 1271-1295 journey to China. A 1154 Sicilian document describes pasta being exported from Sicily. Arab traders likely introduced pasta to Sicily centuries earlier, and Italian varieties developed independently from Chinese noodle traditions.",
+    "wowFactor": "The Marco Polo pasta story is one of food history's biggest myths—Italy had pasta for over a century before he ever left Venice.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Did Marco Polo introduce pasta to Italy from China?",
+        "answer": "No, Italy had it before",
+        "distractors": [
+          "Yes, in 1295 AD",
+          "Yes via Silk Road",
+          "Possibly, unclear"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What popular food history myth incorrectly credits a Venetian explorer?",
+        "answer": "Pasta brought from China",
+        "distractors": [
+          "Pizza from Greece",
+          "Wine from Persia",
+          "Tomatoes from India"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Italy had pasta before Marco Polo's travels to China.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Contrary to popular belief, ___ did not bring pasta to Italy from China.",
+        "answer": "Marco Polo",
+        "distractors": [
+          "Christopher Columbus",
+          "Julius Caesar",
+          "Leonardo da Vinci"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pasta#History",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Marco Polo arriving in Venice with bags, while Italian chef in background holds up old pasta scroll dated 100 years earlier, pixel art humor.",
+    "tags": [
+      "pasta",
+      "Italy",
+      "Marco Polo",
+      "food myths"
+    ]
+  },
+  {
+    "id": "food-cinnamon-bark",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "",
+    "statement": "Cinnamon is the dried inner bark of Cinnamomum trees, harvested by peeling and letting it curl dry.",
+    "quizQuestion": "What part of the cinnamon tree is harvested to make cinnamon spice?",
+    "correctAnswer": "Inner bark",
+    "distractors": [
+      "Seeds",
+      "Flower petals",
+      "Root extract",
+      "Leaf oil only",
+      "Fruit rinds",
+      "Dried berries",
+      "Sap resin"
+    ],
+    "acceptableAnswers": [
+      "Inner bark",
+      "The bark",
+      "Tree bark"
+    ],
+    "explanation": "Cinnamon is produced from the inner bark of Cinnamomum trees. Harvesters cut young shoots, remove the outer bark, and scrape the thin inner bark. As it dries, it naturally curls into the familiar quill shape. Sri Lanka and Indonesia are the world's top producers.",
+    "wowFactor": "Cinnamon sticks are just bark that curled itself—one of the few spices that packages itself for you.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which part of the Cinnamomum tree is used to make cinnamon?",
+        "answer": "Inner bark",
+        "distractors": [
+          "Seeds",
+          "Flower petals",
+          "Root extract"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The dried inner bark of Cinnamomum trees becomes which popular spice?",
+        "answer": "Cinnamon",
+        "distractors": [
+          "Clove",
+          "Nutmeg",
+          "Cardamom"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Cinnamon comes from the dried inner bark of Cinnamomum trees.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Cinnamon is the dried ___ of Cinnamomum trees that curls into quill shapes.",
+        "answer": "Inner bark",
+        "distractors": [
+          "Seeds",
+          "Leaves",
+          "Roots"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cinnamon",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Harvester peeling bark from young cinnamon tree branch in Sri Lankan plantation, bark curling into quills on drying rack, pixel art scene.",
+    "tags": [
+      "cinnamon",
+      "spices",
+      "bark",
+      "harvest"
+    ]
+  },
+  {
+    "id": "food-cinnamon-ceylon-vs-cassia",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "",
+    "statement": "Ceylon cinnamon (true cinnamon) differs from cassia cinnamon, with cassia being more common in North America.",
+    "quizQuestion": "Which type of cinnamon is most commonly sold in North American grocery stores?",
+    "correctAnswer": "Cassia cinnamon",
+    "distractors": [
+      "Ceylon cinnamon",
+      "Vietnamese cinnamon",
+      "Indonesian cinnamon",
+      "Japanese cinnamon",
+      "Saigon cinnamon",
+      "Madagascar cinnamon",
+      "Chinese cinnamon"
+    ],
+    "acceptableAnswers": [
+      "Cassia cinnamon",
+      "Cassia",
+      "Chinese cinnamon"
+    ],
+    "explanation": "Most cinnamon sold in North America is cassia (Cinnamomum cassia or aromaticum), which has a stronger, hotter flavor and higher coumarin content. Ceylon cinnamon (C. verum), called 'true cinnamon,' is sweeter, more complex, and contains much less coumarin—making it safer for large consumption.",
+    "wowFactor": "The cinnamon in your kitchen might not be 'real' cinnamon at all—cassia is a cheaper imposter with a completely different flavor profile.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What type of cinnamon dominates North American grocery stores?",
+        "answer": "Cassia cinnamon",
+        "distractors": [
+          "Ceylon cinnamon",
+          "True cinnamon",
+          "Vietnamese cinnamon"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Cinnamomum verum is known as 'true cinnamon' or what other name?",
+        "answer": "Ceylon cinnamon",
+        "distractors": [
+          "Cassia",
+          "Chinese cinnamon",
+          "Saigon cinnamon"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Cassia cinnamon is more common in North American stores than Ceylon cinnamon.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Most cinnamon sold in North America is ___, not Ceylon cinnamon.",
+        "answer": "Cassia",
+        "distractors": [
+          "True cinnamon",
+          "Vietnamese",
+          "Saigon"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cinnamomum_cassia",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two cinnamon stick types side by side in labeled jars — tightly curled pale Ceylon and thicker darker cassia — in a spice shop, pixel art.",
+    "tags": [
+      "cinnamon",
+      "Ceylon",
+      "cassia",
+      "spice varieties"
+    ]
+  },
+  {
+    "id": "food-cinnamon-medieval-gold",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "",
+    "statement": "In medieval Europe, cinnamon was so valuable it was given as royal gifts and used to pay ransoms.",
+    "quizQuestion": "How was cinnamon used in medieval Europe due to its extreme value?",
+    "correctAnswer": "Royal gifts and ransoms",
+    "distractors": [
+      "Only in religious rituals",
+      "As a medical cure-all",
+      "Purely for cooking",
+      "As a perfume base",
+      "Only by church leaders",
+      "As a writing ink",
+      "For body preservation"
+    ],
+    "acceptableAnswers": [
+      "Royal gifts and ransoms",
+      "As currency",
+      "For payment"
+    ],
+    "explanation": "Cinnamon was worth more than silver in medieval Europe, traded along Arab spice routes at enormous markup. It was used to flavor expensive meats, preserve food, create medicine, and as incense. Controlling cinnamon trade routes was a geopolitical priority — Portugal conquered Ceylon in 1517 specifically to monopolize it.",
+    "wowFactor": "Nations went to war and empires were built to control something you casually shake on your oatmeal today.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How was cinnamon's extreme medieval value used?",
+        "answer": "Royal gifts and payment",
+        "distractors": [
+          "Only in cooking",
+          "As religious incense",
+          "Medical treatment only"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Portugal conquered Ceylon (Sri Lanka) in 1517 to monopolize the trade of which spice?",
+        "answer": "Cinnamon",
+        "distractors": [
+          "Black pepper",
+          "Nutmeg",
+          "Cloves"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Cinnamon was so valuable in medieval Europe it was used as currency and royal gifts.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In medieval Europe, cinnamon was used as currency and for ___ due to its extreme value.",
+        "answer": "Royal gifts",
+        "distractors": [
+          "Medical treatments",
+          "Religious prayers",
+          "Military armor"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cinnamon#History",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Medieval European nobleman presenting ornate cinnamon chest to a king on throne, guards present, treasure room with gold coins visible, pixel art.",
+    "tags": [
+      "cinnamon",
+      "medieval history",
+      "spice trade",
+      "value"
+    ]
+  },
+  {
+    "id": "food-kimchi-kimjang",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Kimjang, the Korean tradition of making large batches of kimchi for winter, is a UNESCO cultural heritage practice.",
+    "quizQuestion": "What is the traditional Korean name for communal winter kimchi-making?",
+    "correctAnswer": "Kimjang",
+    "distractors": [
+      "Jangajji",
+      "Banchan",
+      "Doenjang",
+      "Makgeolli",
+      "Bap-sang",
+      "Ssambap",
+      "Haejang"
+    ],
+    "acceptableAnswers": [
+      "Kimjang",
+      "Gimjang"
+    ],
+    "explanation": "Kimjang (also spelled Gimjang) is the traditional Korean practice of communities gathering in late autumn to make hundreds of heads of kimchi to last through winter. It was inscribed on UNESCO's Intangible Cultural Heritage list in 2013, recognized as a cornerstone of Korean community and family culture.",
+    "wowFactor": "Korea has a UNESCO-protected national tradition dedicated to making a single food—and it involves the whole neighborhood working together.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the UNESCO-recognized Korean tradition of communal winter kimchi-making called?",
+        "answer": "Kimjang",
+        "distractors": [
+          "Banchan",
+          "Doenjang",
+          "Makgeolli"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Kimjang, a UNESCO heritage practice, is a communal tradition from which country?",
+        "answer": "Korea",
+        "distractors": [
+          "Japan",
+          "China",
+          "Vietnam"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Kimjang, the tradition of communal kimchi-making, is UNESCO cultural heritage.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Korean winter kimchi-making tradition called ___ is UNESCO cultural heritage.",
+        "answer": "Kimjang",
+        "distractors": [
+          "Banchan",
+          "Doenjang",
+          "Ssambap"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kimjang",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Korean neighborhood gathering around long outdoor tables piled with hundreds of cabbages and red pepper paste in late autumn, pixel art community scene.",
+    "tags": [
+      "kimchi",
+      "Korea",
+      "kimjang",
+      "UNESCO"
+    ]
+  },
+  {
+    "id": "food-kimchi-varieties",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "There are over 200 distinct varieties of kimchi in Korea, made from vegetables including radish, cucumber, and green onion.",
+    "quizQuestion": "Approximately how many varieties of kimchi exist in Korea?",
+    "correctAnswer": "Over 200",
+    "distractors": [
+      "About 10",
+      "Around 50",
+      "Exactly 100",
+      "More than 500",
+      "Only 5",
+      "About 30",
+      "Fewer than 20"
+    ],
+    "acceptableAnswers": [
+      "Over 200",
+      "More than 200",
+      "About 200"
+    ],
+    "explanation": "While napa cabbage kimchi (baechu-kimchi) is the most famous, Korea has over 200 recorded varieties using different vegetables and regional recipes. Radish (kkakdugi), cucumber (oi sobagi), green onion (pa-kimchi), and water kimchi (mul-kimchi) are among the most common alternatives.",
+    "wowFactor": "Kimchi isn't a dish—it's an entire food universe with 200+ varieties, most of which most non-Koreans have never heard of.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many varieties of kimchi exist in Korean cuisine?",
+        "answer": "Over 200",
+        "distractors": [
+          "About 10",
+          "Around 50",
+          "Exactly 100"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A fermented Korean side dish with over 200 recorded varieties is called what?",
+        "answer": "Kimchi",
+        "distractors": [
+          "Banchan",
+          "Doenjang",
+          "Jangajji"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: There are over 200 distinct varieties of kimchi in Korea.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Korea has over ___ distinct varieties of kimchi beyond just cabbage kimchi.",
+        "answer": "200",
+        "distractors": [
+          "50",
+          "10",
+          "100"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kimchi#Types",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Grid of 16 colorful kimchi bowls showing radish, cucumber, green onion, water kimchi and more varieties in traditional Korean pottery, pixel art.",
+    "tags": [
+      "kimchi",
+      "Korea",
+      "varieties",
+      "fermentation"
+    ]
+  },
+  {
+    "id": "food-oliveoil-cold-press",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "",
+    "statement": "Extra virgin olive oil must be extracted using only cold mechanical pressing with no heat or chemicals.",
+    "quizQuestion": "How must extra virgin olive oil be extracted to earn that classification?",
+    "correctAnswer": "Cold mechanical pressing only",
+    "distractors": [
+      "Any extraction method",
+      "Chemical solvent extraction",
+      "Hot pressing allowed",
+      "Centrifuge only",
+      "Steam distillation",
+      "Blending with seed oils",
+      "Enzyme-assisted extraction"
+    ],
+    "acceptableAnswers": [
+      "Cold mechanical pressing only",
+      "Cold pressing",
+      "Mechanical cold extraction"
+    ],
+    "explanation": "Extra virgin olive oil (EVOO) requires extraction through mechanical means only, at temperatures below 27°C (80°F), with no chemical solvents or excessive heat. It must also have less than 0.8% acidity. Lower grades like 'pure olive oil' may use heat or chemicals to extract oil from previously pressed pulp.",
+    "wowFactor": "Extra virgin olive oil is the only common cooking oil that must be essentially raw—no heat, no chemicals, just pressing.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What extraction method is required for extra virgin olive oil?",
+        "answer": "Cold mechanical pressing",
+        "distractors": [
+          "Chemical extraction",
+          "Hot pressing",
+          "Steam distillation"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Cold mechanical pressing below 27°C produces what classification of olive oil?",
+        "answer": "Extra virgin",
+        "distractors": [
+          "Pure olive oil",
+          "Light olive oil",
+          "Refined olive oil"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Extra virgin olive oil must be extracted using only cold mechanical pressing.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "To be 'extra virgin,' olive oil must be extracted using only ___ pressing.",
+        "answer": "Cold mechanical",
+        "distractors": [
+          "Hot chemical",
+          "Steam",
+          "Enzyme"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Olive_oil#Classification",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Traditional stone olive press crushing green olives, golden oil flowing out at room temperature in a Mediterranean stone mill, pixel art.",
+    "tags": [
+      "olive oil",
+      "extra virgin",
+      "cold press",
+      "extraction"
+    ]
+  },
+  {
+    "id": "food-oliveoil-ancient",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "",
+    "statement": "Olive cultivation dates back over 6,000 years in the Mediterranean, making olive oil one of humanity's oldest foods.",
+    "quizQuestion": "How many years ago did olive cultivation begin in the Mediterranean?",
+    "correctAnswer": "Over 6,000 years ago",
+    "distractors": [
+      "About 500 years ago",
+      "Around 1,000 years ago",
+      "About 2,000 years ago",
+      "Approximately 3,000 years ago",
+      "Around 10,000 years ago",
+      "About 4,000 years ago",
+      "Only in Roman times"
+    ],
+    "acceptableAnswers": [
+      "Over 6,000 years ago",
+      "6,000+ years ago",
+      "About 6,000 years"
+    ],
+    "explanation": "Archaeological evidence from Crete and the Levant indicates olive cultivation began around 4,000 BCE. Ancient Egyptians, Greeks, and Romans all used olive oil for cooking, lighting, religious rites, cosmetics, and medicine. Homer called it 'liquid gold' and it symbolized peace, wisdom, and victory.",
+    "wowFactor": "Olive oil predates the wheel—it's been in continuous use for over 6,000 years, unchanged in purpose from ancient Crete to modern kitchens.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How ancient is olive cultivation in the Mediterranean region?",
+        "answer": "Over 6,000 years old",
+        "distractors": [
+          "About 2,000 years",
+          "Roman times only",
+          "About 1,000 years"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Homer called 'liquid gold' an oil that has been produced for over 6,000 years. What was it?",
+        "answer": "Olive oil",
+        "distractors": [
+          "Sesame oil",
+          "Walnut oil",
+          "Almond oil"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Olive cultivation dates back over 6,000 years in the Mediterranean.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Olive cultivation began over ___ years ago, making olive oil one of humanity's oldest foods.",
+        "answer": "6,000",
+        "distractors": [
+          "1,000",
+          "2,000",
+          "500"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Olive_oil#History",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Ancient Minoan olive press on Crete with amphora collecting golden oil, Mediterranean coast visible through stone archway, pixel art historical scene.",
+    "tags": [
+      "olive oil",
+      "ancient history",
+      "Mediterranean",
+      "Crete"
+    ]
+  }
+]

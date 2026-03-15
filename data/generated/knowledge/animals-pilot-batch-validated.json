@@ -1,0 +1,2178 @@
+[
+  {
+    "id": "animals-wolverine-strength",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "adaptations",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "adaptations",
+    "categoryL3": "",
+    "statement": "The wolverine can take down prey many times its own size, including caribou and moose.",
+    "quizQuestion": "What large prey can a wolverine kill despite its small size?",
+    "correctAnswer": "Caribou and moose",
+    "distractors": [
+      "Bears and wolves",
+      "Elk and bison",
+      "Deer and lynx",
+      "Musk ox and reindeer",
+      "Mountain goats and sheep",
+      "Horses and boar",
+      "Pronghorn and coyotes",
+      "Seals and otters"
+    ],
+    "acceptableAnswers": [
+      "caribou and moose",
+      "moose",
+      "caribou"
+    ],
+    "explanation": "Despite weighing only 20–35 lbs, wolverines are ferocious hunters with bone-crushing jaws and relentless aggression. They've been documented killing caribou and even weakened moose — a feat few predators their size can match. Their powerful build and thick fur make them supremely adapted to harsh boreal environments.",
+    "wowFactor": "A 30-pound weasel relative regularly takes down animals 10 times its weight through sheer ferocity.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What large prey can a wolverine bring down?",
+        "answer": "Caribou and moose",
+        "distractors": [
+          "Bears and wolves",
+          "Elk and bison",
+          "Deer and lynx"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal kills prey 10 times its size despite weighing ~30 lbs?",
+        "answer": "Wolverine",
+        "distractors": [
+          "Badger",
+          "Fisher cat",
+          "Weasel"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Wolverines can kill caribou despite weighing under 35 lbs.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The wolverine can take down ___, a prey many times its body weight.",
+        "answer": "caribou and moose",
+        "distractors": [
+          "rabbits and squirrels",
+          "foxes and raccoons",
+          "voles and lemmings"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wolverine",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A stocky brown wolverine crouched in deep snow, hackles raised, staring down a massive bull caribou ten times its size on a frozen tundra.",
+    "tags": [
+      "wolverine",
+      "mustelidae",
+      "predators",
+      "tundra",
+      "strength"
+    ]
+  },
+  {
+    "id": "animals-wolverine-scent",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "adaptations",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "adaptations",
+    "categoryL3": "",
+    "statement": "Wolverines spray a powerful musk to mark territory and deter rivals, earning them the nickname 'skunk bear'.",
+    "quizQuestion": "What nickname do wolverines earn from their powerful musk spray?",
+    "correctAnswer": "Skunk bear",
+    "distractors": [
+      "Stink wolf",
+      "Musk devil",
+      "Bog weasel",
+      "Spray badger",
+      "Scent fox",
+      "Stench cat",
+      "Musk hound",
+      "Odor beast"
+    ],
+    "acceptableAnswers": [
+      "skunk bear"
+    ],
+    "explanation": "Wolverines possess enlarged musk glands and spray a pungent chemical to mark food caches, territory, and potential mates. The smell is potent enough to deter bears from approaching cached food. Indigenous Arctic peoples gave them the nickname 'skunk bear' for this distinctive defense.",
+    "wowFactor": "Wolverines use their brutal musk to scare bears away from stolen food — even a grizzly backs off.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What nickname do wolverines earn from their strong musk?",
+        "answer": "Skunk bear",
+        "distractors": [
+          "Musk devil",
+          "Stink wolf",
+          "Bog weasel"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which mustelid nicknamed 'skunk bear' uses musk to deter bears?",
+        "answer": "Wolverine",
+        "distractors": [
+          "Badger",
+          "Mink",
+          "Ferret"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Wolverines are nicknamed 'skunk bear' because of their musk spray.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The wolverine's musk spray earned it the nickname ___.",
+        "answer": "skunk bear",
+        "distractors": [
+          "snow devil",
+          "bog weasel",
+          "musk hound"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wolverine",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A fierce wolverine spraying musk from raised tail near a cached elk carcass in snowy boreal forest, a retreating brown bear barely visible in background.",
+    "tags": [
+      "wolverine",
+      "mustelidae",
+      "musk",
+      "adaptations",
+      "scent"
+    ]
+  },
+  {
+    "id": "animals-wolverine-paws",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "adaptations",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "adaptations",
+    "categoryL3": "",
+    "statement": "Wolverines have large, snowshoe-like paws that spread their weight, letting them run on top of deep snow.",
+    "quizQuestion": "What physical feature lets wolverines run on deep snow?",
+    "correctAnswer": "Large snowshoe-like paws",
+    "distractors": [
+      "Wide flat hooves",
+      "Hollow fur shafts",
+      "Webbed toes",
+      "Extra-thick leg fat",
+      "Curved retractile claws",
+      "Low body weight",
+      "Broad rounded ears",
+      "Stiff bristle undercoat"
+    ],
+    "acceptableAnswers": [
+      "large paws",
+      "snowshoe paws",
+      "wide paws"
+    ],
+    "explanation": "Each wolverine paw is disproportionately large for its body, functioning like natural snowshoes by distributing weight across a wider surface. This adaptation lets wolverines chase prey across deep snowpack that slows larger predators like wolves, giving them a critical hunting advantage in boreal winters.",
+    "wowFactor": "Built-in snowshoes let wolverines outrun wolves across the same deep snowdrifts that trap their larger competitors.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What lets wolverines run on top of deep snow?",
+        "answer": "Large snowshoe-like paws",
+        "distractors": [
+          "Webbed toes",
+          "Wide flat hooves",
+          "Hollow fur shafts"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Wolverines outrun wolves on snow due to which adaptation?",
+        "answer": "Oversized wide paws",
+        "distractors": [
+          "Longer legs",
+          "Lower body weight",
+          "Thicker fur"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Wolverines have large paws that act like natural snowshoes.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Wolverines use their ___ paws like snowshoes to cross deep snowpack.",
+        "answer": "large wide",
+        "distractors": [
+          "webbed clawed",
+          "retractile curved",
+          "thick padded"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wolverine",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Close-up of a wolverine mid-stride across glittering white snowpack, oversized paws splayed wide on the surface while it bounds forward effortlessly.",
+    "tags": [
+      "wolverine",
+      "adaptations",
+      "snow",
+      "paws",
+      "boreal"
+    ]
+  },
+  {
+    "id": "animals-wolverine-jaw",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "adaptations",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "adaptations",
+    "categoryL3": "",
+    "statement": "Wolverines have specialized rear molars rotated 90 degrees inward, allowing them to shear frozen meat and crush bone.",
+    "quizQuestion": "What unusual jaw feature lets wolverines eat frozen meat and bone?",
+    "correctAnswer": "Rotated rear molars",
+    "distractors": [
+      "Extra-strong jaw hinges",
+      "Double-layered enamel",
+      "Forward-jutting incisors",
+      "Self-sharpening canines",
+      "Flexible lower jaw",
+      "Hollow tooth roots",
+      "Folded gum tissue",
+      "Wide-set jaw sockets"
+    ],
+    "acceptableAnswers": [
+      "rotated molars",
+      "90-degree molars",
+      "rear molars rotated inward"
+    ],
+    "explanation": "The wolverine's carnassial teeth include a unique rear upper molar that is rotated 90 degrees, pointing inward toward the throat. This lets wolverines crack open frozen carcasses and crush bone to access marrow — food sources most predators cannot access in deep winter.",
+    "wowFactor": "A wolverine's twisted back molar is an evolutionary hack for cracking frozen bones when nothing else in the boreal forest can.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What unique tooth feature helps wolverines crack frozen bone?",
+        "answer": "Rotated rear molars",
+        "distractors": [
+          "Extra-strong jaw hinges",
+          "Double-layered enamel",
+          "Self-sharpening canines"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal has rear molars rotated 90 degrees to crush bone?",
+        "answer": "Wolverine",
+        "distractors": [
+          "Spotted hyena",
+          "Honey badger",
+          "Tasmanian devil"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Wolverines have rear molars rotated inward to help crush bone.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The wolverine's ___ are rotated 90° inward, enabling it to shear frozen meat.",
+        "answer": "rear molars",
+        "distractors": [
+          "front incisors",
+          "canine teeth",
+          "jaw hinges"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wolverine",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art cross-section diagram of a wolverine skull, rear molar highlighted in red and visibly rotated sideways against a snowy blue background.",
+    "tags": [
+      "wolverine",
+      "teeth",
+      "anatomy",
+      "adaptations",
+      "bone-crushing"
+    ]
+  },
+  {
+    "id": "animals-dodo-extinction-date",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "conservation",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "conservation",
+    "categoryL3": "",
+    "statement": "The dodo went extinct around 1681, less than 100 years after Europeans first arrived on Mauritius.",
+    "quizQuestion": "Approximately when did the dodo go extinct?",
+    "correctAnswer": "Around 1681",
+    "distractors": [
+      "Around 1500",
+      "Around 1750",
+      "Around 1800",
+      "Around 1620",
+      "Around 1900",
+      "Around 1550",
+      "Around 1720",
+      "Around 1850"
+    ],
+    "acceptableAnswers": [
+      "1681",
+      "late 1600s",
+      "around 1681",
+      "circa 1681"
+    ],
+    "explanation": "Dutch sailors first encountered the dodo on Mauritius around 1598. Within 83 years, the bird was extinct. Hunting, habitat destruction, and invasive species (pigs, rats, dogs) introduced by settlers destroyed nests and food sources. The dodo became one of history's most famous extinction cautionary tales.",
+    "wowFactor": "Humans drove the dodo from first contact to complete extinction in under 100 years — a blisteringly fast ecological collapse.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately when did the dodo go extinct?",
+        "answer": "Around 1681",
+        "distractors": [
+          "Around 1750",
+          "Around 1800",
+          "Around 1620"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What went extinct around 1681, less than a century after first contact?",
+        "answer": "Dodo",
+        "distractors": [
+          "Passenger pigeon",
+          "Great auk",
+          "Moa"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The dodo went extinct less than 100 years after Europeans discovered Mauritius.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The dodo was last seen around ___, roughly 83 years after Dutch sailors arrived.",
+        "answer": "1681",
+        "distractors": [
+          "1750",
+          "1620",
+          "1800"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dodo",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A plump grey-brown dodo standing at the edge of a lush Mauritius beach at sunset, Dutch sailing ships visible on the horizon in the distance.",
+    "tags": [
+      "dodo",
+      "extinction",
+      "mauritius",
+      "conservation",
+      "birds"
+    ]
+  },
+  {
+    "id": "animals-dodo-flightless",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "conservation",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "conservation",
+    "categoryL3": "",
+    "statement": "The dodo lost the ability to fly because Mauritius had no ground predators — flight became unnecessary over millions of years.",
+    "quizQuestion": "Why did the dodo lose its ability to fly?",
+    "correctAnswer": "No ground predators existed",
+    "distractors": [
+      "Wings became too small",
+      "Island food was underground",
+      "Climate was too humid",
+      "Heavy bones prevented flight",
+      "Trees were too short to roost",
+      "Feathers became waterproof",
+      "Body grew too large first",
+      "It never had wings"
+    ],
+    "acceptableAnswers": [
+      "no predators",
+      "absence of predators",
+      "no ground predators on island"
+    ],
+    "explanation": "On isolated Mauritius, there were no mammalian predators to flee from, so dodos had no evolutionary pressure to maintain flight. Over generations, wings shrank and bodies grew heavier as resources went toward other traits. This island naivety — fearlessness of humans — made dodos easy prey once Dutch sailors arrived.",
+    "wowFactor": "The dodo's very fearlessness — evolved over millions of safe years — became the trait that sealed its doom when humans arrived.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why did the dodo evolve to lose its ability to fly?",
+        "answer": "No ground predators existed",
+        "distractors": [
+          "Wings became too small",
+          "Body grew too heavy first",
+          "Island had no tall trees"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The absence of ground predators caused which bird to lose flight?",
+        "answer": "Dodo",
+        "distractors": [
+          "Kiwi",
+          "Emu",
+          "Ostrich"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The dodo lost flight because Mauritius had no natural ground predators.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "With no ground predators on Mauritius, the dodo evolved to lose ___.",
+        "answer": "flight",
+        "distractors": [
+          "feathers",
+          "its beak",
+          "color vision"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dodo",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A round dodo with tiny vestigial wings spread uselessly, standing confidently near Dutch sailor boots on a sun-drenched Mauritius forest floor.",
+    "tags": [
+      "dodo",
+      "evolution",
+      "flightless",
+      "island biology",
+      "mauritius"
+    ]
+  },
+  {
+    "id": "animals-dodo-related-species",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "conservation",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "conservation",
+    "categoryL3": "",
+    "statement": "The dodo's closest living relative is the Nicobar pigeon, a colorful bird from Southeast Asian islands.",
+    "quizQuestion": "What is the closest living relative of the extinct dodo?",
+    "correctAnswer": "Nicobar pigeon",
+    "distractors": [
+      "Rock pigeon",
+      "Victoria crowned pigeon",
+      "Mourning dove",
+      "Passenger pigeon",
+      "Crowned pigeon",
+      "Wood pigeon",
+      "Turtle dove",
+      "Laughing dove"
+    ],
+    "acceptableAnswers": [
+      "nicobar pigeon",
+      "caloenas nicobarica"
+    ],
+    "explanation": "DNA analysis revealed the dodo's closest living relative is the Nicobar pigeon (Caloenas nicobarica), a metallic green bird found on small islands from the Andaman Islands to the Philippines. Both share a common island-hopping pigeon ancestor, and like the dodo, the Nicobar pigeon is now considered near-threatened.",
+    "wowFactor": "The dodo's nearest living cousin is a stunning iridescent pigeon — the two birds could hardly look more different.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the closest living relative of the dodo?",
+        "answer": "Nicobar pigeon",
+        "distractors": [
+          "Rock pigeon",
+          "Victoria crowned pigeon",
+          "Mourning dove"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Nicobar pigeon is the closest living relative of which extinct bird?",
+        "answer": "Dodo",
+        "distractors": [
+          "Passenger pigeon",
+          "Great auk",
+          "Moa"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Nicobar pigeon is the dodo's closest living relative.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "DNA shows the dodo's closest living relative is the ___, a Southeast Asian island bird.",
+        "answer": "Nicobar pigeon",
+        "distractors": [
+          "Victoria crowned pigeon",
+          "mourning dove",
+          "rock dove"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dodo",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Side-by-side pixel art portraits: a squat grey dodo on tropical ground and an iridescent green Nicobar pigeon on a jungle branch, connected by a DNA helix.",
+    "tags": [
+      "dodo",
+      "nicobar pigeon",
+      "phylogeny",
+      "relatives",
+      "evolution"
+    ]
+  },
+  {
+    "id": "animals-lion-mane",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "A male lion's mane darkens with age, and females prefer darker-maned males as mates.",
+    "quizQuestion": "What does a darker mane signal to female lions?",
+    "correctAnswer": "Older, healthier male",
+    "distractors": [
+      "Greater hunting speed",
+      "Dominant pride rank",
+      "Larger territory size",
+      "Stronger night vision",
+      "Higher aggression level",
+      "Better camouflage ability",
+      "Resistance to disease",
+      "Younger, more fertile male"
+    ],
+    "acceptableAnswers": [
+      "older healthier male",
+      "age and health",
+      "fitness and maturity"
+    ],
+    "explanation": "Research on Serengeti lions found that females consistently choose males with darker, fuller manes. A dark mane signals high testosterone, good nutrition, and that a male survived long enough to mature — all indicators of genetic fitness. Hotter climates tend to produce shorter, lighter manes as a heat-regulation trade-off.",
+    "wowFactor": "A lion's mane is essentially a living resume — darker means older, healthier, and more attractive to every female in the pride.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does a darker mane indicate to female lions choosing mates?",
+        "answer": "Older, healthier male",
+        "distractors": [
+          "Greater hunting speed",
+          "Dominant pride rank",
+          "Larger territory"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Female lions prefer mates with what mane characteristic?",
+        "answer": "Darker, fuller mane",
+        "distractors": [
+          "Shorter, lighter mane",
+          "Spotted mane",
+          "No mane at all"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Female lions prefer males with darker manes as mates.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A male lion's mane ___ with age, and darker manes attract more females.",
+        "answer": "darkens",
+        "distractors": [
+          "lightens",
+          "thins",
+          "spots"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lion",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two male lions side by side on a sun-baked savanna: one with a pale thin mane, one with a thick jet-black mane, a female lion eyeing the darker-maned male.",
+    "tags": [
+      "lion",
+      "mane",
+      "sexual selection",
+      "behavior",
+      "mammals"
+    ]
+  },
+  {
+    "id": "animals-lion-social",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Lions are the only truly social big cats, living in family groups called prides of up to 30 individuals.",
+    "quizQuestion": "What is the name for a lion's family group?",
+    "correctAnswer": "Pride",
+    "distractors": [
+      "Pack",
+      "Coalition",
+      "Clan",
+      "Troop",
+      "Band",
+      "Mob",
+      "Streak",
+      "Ambush"
+    ],
+    "acceptableAnswers": [
+      "pride",
+      "a pride"
+    ],
+    "explanation": "A lion pride typically consists of related females, their cubs, and a small coalition of males. Females do most of the cooperative hunting while males defend the territory. This social structure is unique among felids — all other wild cats are predominantly solitary hunters.",
+    "wowFactor": "Every other wild cat on Earth is a lone hunter — lions alone evolved the full social playbook.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is a group of lions called?",
+        "answer": "Pride",
+        "distractors": [
+          "Pack",
+          "Coalition",
+          "Clan"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Lions are the only big cats to live in social groups called what?",
+        "answer": "Prides",
+        "distractors": [
+          "Packs",
+          "Coalitions",
+          "Clans"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Lions are the only big cats that live in social groups.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Lions live in family groups called ___, which can include up to 30 individuals.",
+        "answer": "prides",
+        "distractors": [
+          "packs",
+          "clans",
+          "coalitions"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lion",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A wide savanna panorama at golden hour showing a pride of 15 lions — cubs tumbling, females grooming, and one large maned male surveying the plains.",
+    "tags": [
+      "lion",
+      "pride",
+      "social behavior",
+      "big cats",
+      "mammals"
+    ]
+  },
+  {
+    "id": "animals-lion-roar",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "A lion's roar can be heard up to 8 kilometers (5 miles) away and is used to communicate with pride members.",
+    "quizQuestion": "How far away can a lion's roar be heard?",
+    "correctAnswer": "8 km (5 miles)",
+    "distractors": [
+      "2 km (1.2 miles)",
+      "20 km (12 miles)",
+      "1 km (0.6 miles)",
+      "50 km (30 miles)",
+      "5 km (3 miles)",
+      "15 km (9 miles)",
+      "30 km (18 miles)",
+      "3 km (1.9 miles)"
+    ],
+    "acceptableAnswers": [
+      "8 km",
+      "5 miles",
+      "8 kilometers",
+      "about 5 miles"
+    ],
+    "explanation": "Lions produce their powerful roar using unique square vocal folds that sustain airflow efficiently, allowing a roar lasting up to 30 seconds. Used primarily at dawn and dusk, roars coordinate pride movements, advertise territory, and help separated members reunite across the vast savanna.",
+    "wowFactor": "A lion's roar is loud enough to reach the next town over — all powered by unusually shaped vocal folds shared with tigers.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How far can a lion's roar travel across the savanna?",
+        "answer": "8 km / 5 miles",
+        "distractors": [
+          "2 km",
+          "20 km",
+          "1 km"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal's roar can be heard 8 kilometers away?",
+        "answer": "Lion",
+        "distractors": [
+          "Tiger",
+          "Gorilla",
+          "Elephant"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A lion's roar can be heard up to 8 kilometers away.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A lion's roar travels up to ___ km, helping pride members find each other.",
+        "answer": "8",
+        "distractors": [
+          "2",
+          "20",
+          "50"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lion",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A male lion head thrown back mid-roar at twilight, sound waves rippling outward across the orange savanna toward distant acacia silhouettes.",
+    "tags": [
+      "lion",
+      "roar",
+      "communication",
+      "anatomy",
+      "sound"
+    ]
+  },
+  {
+    "id": "animals-dinosaur-birds",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "reptiles_amphibians",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "reptiles_amphibians",
+    "categoryL3": "",
+    "statement": "Birds are living dinosaurs — they evolved from theropod dinosaurs and are the only dinosaur lineage that survived the mass extinction.",
+    "quizQuestion": "What modern animals are direct descendants of theropod dinosaurs?",
+    "correctAnswer": "Birds",
+    "distractors": [
+      "Crocodilians",
+      "Lizards",
+      "Turtles",
+      "Snakes",
+      "Komodo dragons",
+      "Tuataras",
+      "Salamanders",
+      "Monitor lizards"
+    ],
+    "acceptableAnswers": [
+      "birds",
+      "all birds",
+      "avians"
+    ],
+    "explanation": "Scientific consensus since the 1970s confirms that birds (class Aves) evolved from small feathered theropod dinosaurs, making them technically avian dinosaurs. Fossil evidence from Archaeopteryx onward shows a continuous lineage. When the asteroid struck 66 million years ago, all non-avian dinosaurs perished — but birds survived.",
+    "wowFactor": "Every time you see a chicken, sparrow, or eagle, you're looking at a living dinosaur that survived a mass extinction.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which living animals are classified as avian dinosaurs?",
+        "answer": "Birds",
+        "distractors": [
+          "Crocodilians",
+          "Lizards",
+          "Turtles"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Birds evolved from which group of dinosaurs?",
+        "answer": "Theropods",
+        "distractors": [
+          "Sauropods",
+          "Ornithopods",
+          "Ceratopsians"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Birds are the only living descendants of dinosaurs.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Birds evolved from ___ dinosaurs and are technically avian dinosaurs.",
+        "answer": "theropod",
+        "distractors": [
+          "sauropod",
+          "ceratopsian",
+          "hadrosaur"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dinosaur",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A split-screen pixel art panel: a feathered Velociraptor on one side morphing into a modern red-tailed hawk on the other, mid-transition in flight.",
+    "tags": [
+      "dinosaurs",
+      "birds",
+      "evolution",
+      "theropods",
+      "extinction"
+    ]
+  },
+  {
+    "id": "animals-dinosaur-feathers",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "reptiles_amphibians",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "reptiles_amphibians",
+    "categoryL3": "",
+    "statement": "Fossils prove many theropod dinosaurs had feathers, including Velociraptor, which was covered in quill-like structures.",
+    "quizQuestion": "Which famous theropod dinosaur had feathers, proven by fossil evidence?",
+    "correctAnswer": "Velociraptor",
+    "distractors": [
+      "Triceratops",
+      "Brachiosaurus",
+      "Ankylosaurus",
+      "Stegosaurus",
+      "Iguanodon",
+      "Diplodocus",
+      "Parasaurolophus",
+      "Pachycephalosaurus"
+    ],
+    "acceptableAnswers": [
+      "velociraptor",
+      "Velociraptor mongoliensis"
+    ],
+    "explanation": "Fossil quill knobs discovered on Velociraptor forearm bones in 2007 confirmed feather attachment points, meaning the real Velociraptor was a feathered, turkey-sized hunter — not the scaly monster from Jurassic Park. Multiple related genera (Microraptor, Yi qi) show even more elaborate feathered plumage.",
+    "wowFactor": "The real Velociraptor was a feathered turkey-sized predator — Jurassic Park got it wrong on every dimension.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What famous dinosaur had feather attachment points on its arm bones?",
+        "answer": "Velociraptor",
+        "distractors": [
+          "Triceratops",
+          "Brachiosaurus",
+          "Stegosaurus"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Fossil quill knobs proved feathers on which Hollywood-famous dinosaur?",
+        "answer": "Velociraptor",
+        "distractors": [
+          "T. rex",
+          "Triceratops",
+          "Spinosaurus"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Fossil evidence shows Velociraptor had feathers on its forearms.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Quill knob fossils on ___ arm bones confirmed it was feathered, not scaly.",
+        "answer": "Velociraptor",
+        "distractors": [
+          "Brachiosaurus",
+          "Triceratops",
+          "Ankylosaurus"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Velociraptor",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A turkey-sized Velociraptor covered in brown feathers crouching low in tall ferns, looking nothing like the movie version, its small sickle claw raised.",
+    "tags": [
+      "velociraptor",
+      "feathers",
+      "dinosaurs",
+      "theropods",
+      "paleontology"
+    ]
+  },
+  {
+    "id": "animals-camel-hump",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "adaptations",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "adaptations",
+    "categoryL3": "",
+    "statement": "A dromedary camel's hump stores fat, not water — the fat can be metabolized for energy during long desert crossings.",
+    "quizQuestion": "What does a dromedary camel's hump actually store?",
+    "correctAnswer": "Fat (not water)",
+    "distractors": [
+      "Water reserves",
+      "Muscle tissue",
+      "Minerals and salts",
+      "Glycogen stores",
+      "Air pockets",
+      "Protein reserves",
+      "Blood plasma",
+      "Lymph fluid"
+    ],
+    "acceptableAnswers": [
+      "fat",
+      "fat reserves",
+      "stored fat",
+      "fatty tissue"
+    ],
+    "explanation": "The common myth that camel humps store water is false. The hump is a deposit of fatty tissue — when food and water are scarce, the camel metabolizes this fat for energy. As the fat is used, the hump deflates and flops to one side. Camels actually get some water as a byproduct of fat metabolism.",
+    "wowFactor": "A camel's hump literally deflates and flops sideways when the animal is starving — it's a built-in fuel tank, not a water jug.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is actually stored in a dromedary camel's hump?",
+        "answer": "Fat reserves",
+        "distractors": [
+          "Water",
+          "Muscle tissue",
+          "Minerals"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "When a camel's hump deflates and flops sideways, what has been depleted?",
+        "answer": "Fat reserves",
+        "distractors": [
+          "Water stores",
+          "Blood plasma",
+          "Glycogen"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A camel's hump stores fat, not water.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Despite the popular myth, a camel's hump stores ___, not water.",
+        "answer": "fat",
+        "distractors": [
+          "water",
+          "salt",
+          "glycogen"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dromedary",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A dromedary camel in bright desert sun, one side showing a tall firm hump and a dotted cutaway revealing golden fat tissue inside instead of water.",
+    "tags": [
+      "camel",
+      "hump",
+      "fat storage",
+      "desert",
+      "adaptations"
+    ]
+  },
+  {
+    "id": "animals-camel-water",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "adaptations",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "adaptations",
+    "categoryL3": "",
+    "statement": "A dromedary camel can drink up to 200 liters of water in a single session after severe dehydration.",
+    "quizQuestion": "How much water can a dehydrated dromedary camel drink at once?",
+    "correctAnswer": "Up to 200 liters",
+    "distractors": [
+      "Up to 20 liters",
+      "Up to 50 liters",
+      "Up to 500 liters",
+      "Up to 10 liters",
+      "Up to 100 liters",
+      "Up to 5 liters",
+      "Up to 300 liters",
+      "Up to 75 liters"
+    ],
+    "acceptableAnswers": [
+      "200 liters",
+      "up to 200 liters",
+      "200 L"
+    ],
+    "explanation": "Camels can tolerate losing up to 25% of their body weight in water — a level that would cause fatal cardiac arrest in humans at 15%. When water is available, they rehydrate rapidly by drinking up to 200 liters in one session. Their oval-shaped red blood cells (not round like other mammals) prevent cell bursting during rapid rehydration.",
+    "wowFactor": "A camel can slam 200 liters of water in one sitting — more than a full bathtub — without any ill effects.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How much water can a thirsty dromedary camel drink at once?",
+        "answer": "Up to 200 liters",
+        "distractors": [
+          "Up to 20 liters",
+          "Up to 50 liters",
+          "Up to 500 liters"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which animal can rehydrate by drinking 200 liters in a single session?",
+        "answer": "Dromedary camel",
+        "distractors": [
+          "Elephant",
+          "Hippopotamus",
+          "Bactrian camel"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A dromedary camel can drink up to 200 liters of water at one time.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "After severe dehydration, a dromedary camel can drink up to ___ liters in one session.",
+        "answer": "200",
+        "distractors": [
+          "50",
+          "500",
+          "20"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dromedary",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A dromedary camel drinking furiously from a desert oasis pool, water streaming from its lips, the pool visibly lowering as it gulps hundreds of liters.",
+    "tags": [
+      "camel",
+      "dehydration",
+      "water",
+      "desert",
+      "adaptations"
+    ]
+  },
+  {
+    "id": "animals-camel-eyes",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "adaptations",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "adaptations",
+    "categoryL3": "",
+    "statement": "Dromedary camels have three eyelids and two rows of eyelashes to protect their eyes from blowing desert sand.",
+    "quizQuestion": "How many eyelids does a dromedary camel have per eye?",
+    "correctAnswer": "Three",
+    "distractors": [
+      "Two",
+      "Four",
+      "One",
+      "Five",
+      "Six",
+      "Two plus goggles",
+      "Two with extra lashes",
+      "Two fused lids"
+    ],
+    "acceptableAnswers": [
+      "three",
+      "3",
+      "three eyelids"
+    ],
+    "explanation": "Camels have two regular eyelids plus a third translucent nictitating membrane that slides horizontally across the eye. This membrane clears sand and debris while still allowing limited vision in sandstorms. Double rows of long, interlocking eyelashes add a further physical barrier against flying grit.",
+    "wowFactor": "Camels have a built-in clear protective screen for their eyes — a wiping lid that cleans grit while they can still sort-of see through it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many eyelids does a camel have per eye?",
+        "answer": "Three",
+        "distractors": [
+          "Two",
+          "Four",
+          "One"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which desert animal has three eyelids including a nictitating membrane?",
+        "answer": "Dromedary camel",
+        "distractors": [
+          "Fennec fox",
+          "Saharan horned viper",
+          "Sand cat"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Dromedary camels have three eyelids to protect against desert sand.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Camels have ___ eyelids per eye, including a transparent nictitating membrane.",
+        "answer": "three",
+        "distractors": [
+          "two",
+          "four",
+          "five"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dromedary",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Extreme close-up pixel art of a camel's eye mid-sandstorm: three layered eyelids visible, double rows of thick curved lashes deflecting blowing golden sand.",
+    "tags": [
+      "camel",
+      "eyelids",
+      "adaptations",
+      "desert",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "animals-chicken-dinosaur-link",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "birds",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "birds",
+    "categoryL3": "",
+    "statement": "DNA analysis confirmed the chicken's closest living relative among non-bird dinosaurs is the T. rex, not modern reptiles.",
+    "quizQuestion": "Which extinct animal is the chicken's closest non-bird relative by DNA?",
+    "correctAnswer": "Tyrannosaurus rex",
+    "distractors": [
+      "Crocodile",
+      "Komodo dragon",
+      "Alligator",
+      "Velociraptor",
+      "Monitor lizard",
+      "Tuatara",
+      "Iguana",
+      "Triceratops"
+    ],
+    "acceptableAnswers": [
+      "T. rex",
+      "Tyrannosaurus rex",
+      "tyrannosaurus"
+    ],
+    "explanation": "In 2008, scientists extracted collagen proteins from a 68-million-year-old T. rex femur and compared them to modern animals. The closest match was the chicken. This confirmed birds' descent from theropod dinosaurs using molecular evidence rather than just bone structure — a landmark result in paleontology.",
+    "wowFactor": "Collagen from a 68-million-year-old T. rex bone matched the chicken more than any living reptile — the grocery store chicken aisle is a dinosaur exhibit.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Protein analysis shows which extinct animal is closest to the chicken?",
+        "answer": "T. rex",
+        "distractors": [
+          "Crocodile",
+          "Komodo dragon",
+          "Velociraptor"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "T. rex collagen proteins most closely matched which modern animal?",
+        "answer": "Chicken",
+        "distractors": [
+          "Crocodile",
+          "Alligator",
+          "Lizard"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Molecular evidence shows the chicken is more closely related to T. rex than to modern reptiles.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Protein from a T. rex fossil most closely matched the modern ___ by molecular analysis.",
+        "answer": "chicken",
+        "distractors": [
+          "crocodile",
+          "lizard",
+          "alligator"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chicken",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cartoon chicken standing defiantly beside a T. rex skeleton in a museum, a molecular DNA helix connecting them glowing between their bodies.",
+    "tags": [
+      "chicken",
+      "T. rex",
+      "evolution",
+      "paleontology",
+      "DNA"
+    ]
+  },
+  {
+    "id": "animals-chicken-color-vision",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "birds",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "birds",
+    "categoryL3": "",
+    "statement": "Chickens have tetrachromatic vision with four color receptors, seeing ultraviolet light invisible to humans.",
+    "quizQuestion": "How many color receptors do chickens have in their eyes?",
+    "correctAnswer": "Four (tetrachromatic)",
+    "distractors": [
+      "Three (trichromatic)",
+      "Two (dichromatic)",
+      "Five (pentachromatic)",
+      "One (monochromatic)",
+      "Six (hexachromatic)",
+      "Seven color receptors",
+      "Same as humans (3)",
+      "Zero (colorblind)"
+    ],
+    "acceptableAnswers": [
+      "four",
+      "4",
+      "tetrachromatic",
+      "four color receptors"
+    ],
+    "explanation": "Humans have three types of color cone cells, but chickens have four — including one sensitive to ultraviolet light. This lets chickens see UV patterns on food, plumage, and the ground invisible to humans. Chick down and feathers reflect UV in ways important for mate selection and foraging.",
+    "wowFactor": "Chickens see a secret UV world completely invisible to us — their feathers probably look wildly different to each other than they do to us.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many color receptors do chickens have in their eyes?",
+        "answer": "Four",
+        "distractors": [
+          "Three",
+          "Two",
+          "Five"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which common farm animal has tetrachromatic vision including UV sight?",
+        "answer": "Chicken",
+        "distractors": [
+          "Cow",
+          "Pig",
+          "Sheep"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Chickens can see ultraviolet light that is invisible to humans.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Chickens have ___ color receptors and can see ultraviolet light invisible to people.",
+        "answer": "four",
+        "distractors": [
+          "three",
+          "two",
+          "five"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chicken",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A chicken's-eye-view perspective showing a farm yard in UV-enhanced color — UV glowing feathers, luminous food scraps, and plants glowing in colors humans cannot see.",
+    "tags": [
+      "chicken",
+      "vision",
+      "ultraviolet",
+      "tetrachromatic",
+      "birds"
+    ]
+  },
+  {
+    "id": "animals-passenger-pigeon-abundance",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "conservation",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "conservation",
+    "categoryL3": "",
+    "statement": "The Passenger Pigeon was once the most abundant bird in North America, with flocks of up to 3 billion birds that darkened the sky for days.",
+    "quizQuestion": "How large were the largest Passenger Pigeon flocks?",
+    "correctAnswer": "Up to 3 billion birds",
+    "distractors": [
+      "Up to 3 million birds",
+      "Up to 300 million birds",
+      "Up to 30 million birds",
+      "Up to 1 billion birds",
+      "Up to 500 million birds",
+      "Up to 100 million birds",
+      "Up to 10 million birds",
+      "Up to 5 billion birds"
+    ],
+    "acceptableAnswers": [
+      "3 billion",
+      "up to 3 billion",
+      "billions of birds"
+    ],
+    "explanation": "Passenger Pigeon flocks were the most spectacular wildlife spectacle in recorded North American history. Eyewitnesses reported flocks a mile wide passing overhead for multiple days, blocking the sun. The total population may have been 3–5 billion birds — roughly 25–40% of all birds in North America — yet the species went from billions to zero in roughly 50 years.",
+    "wowFactor": "A flock so massive it darkened the sky for days and contained more individual animals than humans alive on Earth today — then completely vanished.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How large were Passenger Pigeon flocks at their peak?",
+        "answer": "Up to 3 billion birds",
+        "distractors": [
+          "Up to 3 million",
+          "Up to 300 million",
+          "Up to 1 billion"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which bird once formed flocks of 3 billion that darkened the sky for days?",
+        "answer": "Passenger Pigeon",
+        "distractors": [
+          "Mourning dove",
+          "American robin",
+          "Starling"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Passenger Pigeon flocks could number up to 3 billion birds.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Passenger Pigeon flocks contained up to ___ billion birds, blocking sunlight for days.",
+        "answer": "3",
+        "distractors": [
+          "3 million",
+          "300 thousand",
+          "1"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Passenger_pigeon",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 19th-century forest scene with the sky completely blotted out by an endless mass of pigeons, a tiny human figure below staring upward in awe.",
+    "tags": [
+      "passenger pigeon",
+      "abundance",
+      "extinction",
+      "birds",
+      "North America"
+    ]
+  },
+  {
+    "id": "animals-passenger-pigeon-extinction-speed",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "conservation",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "conservation",
+    "categoryL3": "",
+    "statement": "The last Passenger Pigeon, named Martha, died at Cincinnati Zoo on September 1, 1914, ending the species.",
+    "quizQuestion": "What was the name of the last Passenger Pigeon?",
+    "correctAnswer": "Martha",
+    "distractors": [
+      "Lady Jane",
+      "Incas",
+      "Boone",
+      "Helena",
+      "Pearl",
+      "Clara",
+      "Victoria",
+      "Dolly"
+    ],
+    "acceptableAnswers": [
+      "martha",
+      "Martha"
+    ],
+    "explanation": "Martha (named after Martha Washington) was the last known Passenger Pigeon. She died at 1:00 PM on September 1, 1914, at the Cincinnati Zoo. Her body was frozen in a 300-lb block of ice and sent to the Smithsonian Institution. Within decades of being hunted from billions to one, the species was permanently erased.",
+    "wowFactor": "We know the exact moment the last Passenger Pigeon died — 1:00 PM, September 1, 1914 — because a zookeeper was watching.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the last known Passenger Pigeon's name?",
+        "answer": "Martha",
+        "distractors": [
+          "Lady Jane",
+          "Incas",
+          "Clara"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Martha, the last of her kind, died at Cincinnati Zoo in what year?",
+        "answer": "1914",
+        "distractors": [
+          "1899",
+          "1930",
+          "1880"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The last Passenger Pigeon was named Martha and died in 1914.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The last Passenger Pigeon, named ___, died at Cincinnati Zoo on September 1, 1914.",
+        "answer": "Martha",
+        "distractors": [
+          "Incas",
+          "Clara",
+          "Lady Jane"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Passenger_pigeon",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A lone blue-grey pigeon with orange-red breast perched on a bare zoo cage branch, a date plaque reading 'September 1, 1914' on the wall behind her.",
+    "tags": [
+      "passenger pigeon",
+      "Martha",
+      "extinction",
+      "conservation",
+      "1914"
+    ]
+  },
+  {
+    "id": "animals-passenger-pigeon-hunting",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "conservation",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "conservation",
+    "categoryL3": "",
+    "statement": "Passenger Pigeons were so plentiful that hunters shot them by the barrel-load and used them as cheap pig feed.",
+    "quizQuestion": "Why were Passenger Pigeons commercially hunted to extinction?",
+    "correctAnswer": "Cheap food and pig feed",
+    "distractors": [
+      "Prized feathers for fashion",
+      "Rare collector specimens",
+      "Crop pest control",
+      "Medicinal oil extraction",
+      "Sport trophy hunting",
+      "Exotic pet trade",
+      "Leather goods industry",
+      "Ship ballast weight"
+    ],
+    "acceptableAnswers": [
+      "cheap food",
+      "cheap pig feed",
+      "food and feed",
+      "commercial hunting for food"
+    ],
+    "explanation": "Passenger Pigeons were so abundant that professional hunters killed millions per year, selling them as cheap meat and pig feed. Their communal roosting made them easy targets — hunters could kill hundreds with a single shotgun blast. The combination of commercial slaughter and deforestation of their beech-mast food forests drove a species of billions to zero in about 50 years.",
+    "wowFactor": "A species of billions was slaughtered so fast partly because they were too common to seem worth protecting — extinction by abundance.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What drove the commercial hunting of Passenger Pigeons to extinction?",
+        "answer": "Cheap food and pig feed",
+        "distractors": [
+          "Prized feathers",
+          "Sport trophy hunting",
+          "Crop pest control"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which bird's abundance made it cheap enough to use as pig feed before extinction?",
+        "answer": "Passenger Pigeon",
+        "distractors": [
+          "Mourning dove",
+          "Rock pigeon",
+          "Carrier pigeon"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Passenger Pigeons were hunted as cheap food and pig feed until extinct.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Passenger Pigeons were commercially killed for cheap ___, their abundance making them easy targets.",
+        "answer": "food and pig feed",
+        "distractors": [
+          "decorative feathers",
+          "sport trophies",
+          "medicinal oil"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Passenger_pigeon",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "19th-century hunters in forest clearing firing into a sky black with pigeons, birds falling in piles around wooden barrels already overflowing with carcasses.",
+    "tags": [
+      "passenger pigeon",
+      "hunting",
+      "extinction",
+      "conservation",
+      "commercial hunting"
+    ]
+  },
+  {
+    "id": "animals-ant-superorganism",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "insects_arachnids",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "insects_arachnids",
+    "categoryL3": "",
+    "statement": "An ant colony behaves as a single superorganism — individual ants act as cells, with the colony as the collective organism.",
+    "quizQuestion": "What term describes an ant colony acting as a single unified organism?",
+    "correctAnswer": "Superorganism",
+    "distractors": [
+      "Hive mind",
+      "Colonial organism",
+      "Eusocial network",
+      "Collective being",
+      "Unified swarm",
+      "Meta-organism",
+      "Group intelligence",
+      "Macro-colony"
+    ],
+    "acceptableAnswers": [
+      "superorganism",
+      "super-organism"
+    ],
+    "explanation": "In a superorganism, individual ants fulfill roles analogous to cells or organs — workers are muscle cells, soldiers are immune cells, the queen is the reproductive organ. The colony-level organism can solve maze problems, optimize foraging routes, and regulate temperature with a sophistication no single ant could achieve. This concept emerged from E.O. Wilson's research.",
+    "wowFactor": "An ant colony isn't a city of insects — it's a single living creature where each ant is just one cell of a much larger mind.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What term describes an ant colony functioning as a single organism?",
+        "answer": "Superorganism",
+        "distractors": [
+          "Hive mind",
+          "Colonial organism",
+          "Meta-organism"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Ant colonies are a classic example of which biological concept?",
+        "answer": "Superorganism",
+        "distractors": [
+          "Symbiosis",
+          "Parasitism",
+          "Mutualism"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ant colonies are described as superorganisms where each ant acts like a single cell.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ants collectively form a ___, with workers acting like cells of a larger organism.",
+        "answer": "superorganism",
+        "distractors": [
+          "hive mind",
+          "colonial network",
+          "group intelligence"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ant",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An ant colony viewed from above as a single glowing organism, individual ants forming its shape like cells, tunnels radiating outward like blood vessels.",
+    "tags": [
+      "ants",
+      "superorganism",
+      "colonies",
+      "eusocial",
+      "behavior"
+    ]
+  },
+  {
+    "id": "animals-horse-sleep",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Horses can sleep standing up using a 'stay apparatus' that locks their legs — but they need to lie down for REM sleep.",
+    "quizQuestion": "What mechanism allows horses to sleep while standing?",
+    "correctAnswer": "Stay apparatus (locking legs)",
+    "distractors": [
+      "Muscle memory balance",
+      "Tail counterweight system",
+      "Spinal column locking",
+      "Hip flexor bracing",
+      "Hoof suction gripping",
+      "Inner ear balance reflex",
+      "Knee joint hydraulics",
+      "Tendon tension springs"
+    ],
+    "acceptableAnswers": [
+      "stay apparatus",
+      "locking leg mechanism",
+      "stay apparatus locks legs"
+    ],
+    "explanation": "The horse's stay apparatus is a system of tendons and ligaments that locks the major leg joints in place without muscular effort, allowing the horse to doze without falling. However, horses still need REM sleep — which requires lying down — for about 30 minutes per day. A horse deprived of lying-down time will eventually collapse from REM deprivation.",
+    "wowFactor": "Horses have passive mechanical leg locks that let them nap standing up — but they'll still collapse if denied proper lying-down REM sleep.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What allows horses to sleep without falling while standing?",
+        "answer": "Stay apparatus",
+        "distractors": [
+          "Muscle memory balance",
+          "Spinal column locking",
+          "Hip flexor bracing"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which mammal uses a tendon-ligament stay apparatus to sleep upright?",
+        "answer": "Horse",
+        "distractors": [
+          "Elephant",
+          "Giraffe",
+          "Zebra"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Horses can sleep standing up but still need to lie down for REM sleep.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The horse's ___ locks its legs passively, allowing standing sleep without muscle effort.",
+        "answer": "stay apparatus",
+        "distractors": [
+          "balance reflex",
+          "spinal lock",
+          "tendon spring"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Horse",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A horse dozing upright in a moonlit stable, one back leg resting with hoof tilted up, the other three locked straight by mechanical tendon diagrams overlaid.",
+    "tags": [
+      "horse",
+      "sleep",
+      "stay apparatus",
+      "anatomy",
+      "behavior"
+    ]
+  },
+  {
+    "id": "animals-horse-vision",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "mammals",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "mammals",
+    "categoryL3": "",
+    "statement": "Horses have nearly 360-degree vision because their eyes are on the sides of their heads, with only two small blind spots.",
+    "quizQuestion": "How much of their surroundings can horses see at once?",
+    "correctAnswer": "Nearly 360 degrees",
+    "distractors": [
+      "About 180 degrees",
+      "About 270 degrees",
+      "About 90 degrees",
+      "Exactly 360 degrees",
+      "About 120 degrees",
+      "About 240 degrees",
+      "About 45 degrees",
+      "About 300 degrees"
+    ],
+    "acceptableAnswers": [
+      "nearly 360 degrees",
+      "almost 360 degrees",
+      "350 degrees",
+      "360-degree vision"
+    ],
+    "explanation": "With eyes positioned on the sides of their skulls, horses can see almost all the way around their body simultaneously. Their two blind spots are directly in front of the nose and directly behind the hindquarters. This wide field of vision evolved as a prey animal defense — predators approaching from nearly any direction are visible.",
+    "wowFactor": "A horse can see a lion sneaking up from behind without turning its head — nearly all-seeing eyes evolved to avoid becoming dinner.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What visual field can a horse see due to its side-positioned eyes?",
+        "answer": "Nearly 360 degrees",
+        "distractors": [
+          "About 180 degrees",
+          "About 270 degrees",
+          "About 90 degrees"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which prey animal has nearly 360-degree vision as a predator defense?",
+        "answer": "Horse",
+        "distractors": [
+          "Deer",
+          "Rabbit",
+          "Cow"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Horses can see nearly 360 degrees around their body at once.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Horses have nearly ___ degree vision, with only two small blind spots.",
+        "answer": "360",
+        "distractors": [
+          "180",
+          "270",
+          "90"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Horse",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An overhead diagram of a horse with a radial green vision cone spreading almost 360 degrees around it, two small red wedges marking the blind spots at nose and tail.",
+    "tags": [
+      "horse",
+      "vision",
+      "prey animal",
+      "adaptations",
+      "anatomy"
+    ]
+  },
+  {
+    "id": "animals-frog-poison",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "reptiles_amphibians",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "reptiles_amphibians",
+    "categoryL3": "",
+    "statement": "Poison dart frogs get their toxins from their diet — captive-bred frogs fed different foods are completely non-toxic.",
+    "quizQuestion": "Where do poison dart frogs get their deadly toxins?",
+    "correctAnswer": "From their diet (insects)",
+    "distractors": [
+      "They produce toxins internally",
+      "From symbiotic bacteria",
+      "From plant chemicals absorbed",
+      "From genetic mutation",
+      "From mother's milk",
+      "From environmental chemicals",
+      "From sunlight exposure",
+      "From skin gland secretions"
+    ],
+    "acceptableAnswers": [
+      "from their diet",
+      "from food",
+      "from insects they eat",
+      "dietary toxins"
+    ],
+    "explanation": "Poison dart frogs acquire their toxins — primarily alkaloids like batrachotoxin — by eating specific mites, ants, and beetles in the wild. When raised in captivity on fruit flies and non-toxic prey, they are harmless. The toxins are sequestered in skin glands unchanged from dietary sources, making the frogs dependent on a particular wild food chain to be poisonous.",
+    "wowFactor": "Raise a deadly poison dart frog on the wrong bugs in captivity and it's completely harmless — its venom is borrowed, not built.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where does the poison dart frog get its deadly skin toxins?",
+        "answer": "From its diet (insects)",
+        "distractors": [
+          "Produced internally",
+          "From symbiotic bacteria",
+          "From absorbed plant chemicals"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Captive-bred with a different diet, which deadly frog becomes completely harmless?",
+        "answer": "Poison dart frog",
+        "distractors": [
+          "Green tree frog",
+          "Horned frog",
+          "Fire-bellied toad"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Poison dart frogs in captivity with a different diet are completely non-toxic.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Poison dart frogs acquire their toxins from ___, not internal production.",
+        "answer": "their diet",
+        "distractors": [
+          "symbiotic bacteria",
+          "plant absorption",
+          "genetic mutation"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Poison_dart_frog",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A vivid blue-and-gold poison dart frog eating a tiny ant, with the ant's alkaloid molecules shown traveling from the gut up through the skin glands in a glowing orange path.",
+    "tags": [
+      "poison dart frog",
+      "toxins",
+      "diet",
+      "amphibians",
+      "chemistry"
+    ]
+  },
+  {
+    "id": "animals-frog-metamorphosis",
+    "type": "knowledge",
+    "domain": "Animals & Wildlife",
+    "subdomain": "reptiles_amphibians",
+    "categoryL1": "Animals & Wildlife",
+    "categoryL2": "reptiles_amphibians",
+    "categoryL3": "",
+    "statement": "During frog metamorphosis, the tadpole's tail is reabsorbed as fuel for growing the frog's legs — nothing is wasted.",
+    "quizQuestion": "What happens to a tadpole's tail during metamorphosis into a frog?",
+    "correctAnswer": "It is reabsorbed as fuel",
+    "distractors": [
+      "It falls off and decomposes",
+      "It splits into two back legs",
+      "It hardens into a bony stub",
+      "It detaches and is eaten",
+      "It dissolves in water",
+      "It shrinks into a tail nub",
+      "It grows into a spine",
+      "It flattens into the belly"
+    ],
+    "acceptableAnswers": [
+      "reabsorbed",
+      "absorbed as fuel",
+      "reabsorbed as nutrients",
+      "used as nutrients"
+    ],
+    "explanation": "Frog metamorphosis is driven by thyroid hormone, which triggers programmed cell death (apoptosis) in tail tissues. The cells are broken down and the nutrients — proteins, fats, minerals — are systematically recycled to fuel the growth of legs, lungs, and other adult structures. It's biological recycling at the cellular level.",
+    "wowFactor": "A frog essentially eats itself from the inside — its own disappearing tail becomes the raw material for building brand-new legs.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What happens to a tadpole's tail when it transforms into a frog?",
+        "answer": "Reabsorbed as fuel",
+        "distractors": [
+          "It falls off",
+          "It splits into legs",
+          "It hardens into a stub"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "During metamorphosis, frog tadpoles recycle their tails through which process?",
+        "answer": "Cellular reabsorption",
+        "distractors": [
+          "Shedding",
+          "Tail splitting",
+          "External digestion"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A tadpole's tail is reabsorbed as nutrient fuel when it transforms into a frog.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "During metamorphosis, a tadpole's tail is ___ to fuel the growth of adult frog legs.",
+        "answer": "reabsorbed",
+        "distractors": [
+          "shed",
+          "split apart",
+          "hardened"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Frog",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A sequential pixel art panel: a tadpole with a long tail morphing stage by stage, the tail shrinking as tiny back legs bud and grow, cells glowing as they transfer.",
+    "tags": [
+      "frog",
+      "metamorphosis",
+      "tadpole",
+      "development",
+      "biology"
+    ]
+  }
+]

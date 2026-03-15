@@ -1,0 +1,2430 @@
+[
+  {
+    "id": "food-dimsum-origin",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Dim sum originated as small snacks served at yum cha teahouses along ancient Silk Road rest stops.",
+    "quizQuestion": "Where did dim sum originate as small snacks?",
+    "correctAnswer": "Silk Road teahouses",
+    "distractors": [
+      "Hong Kong restaurants",
+      "Imperial palace kitchens",
+      "Cantonese street markets",
+      "Buddhist monasteries",
+      "Fishing village docks",
+      "Guangzhou night markets",
+      "Song Dynasty courts",
+      "River cargo boats"
+    ],
+    "acceptableAnswers": [
+      "Silk Road teahouses",
+      "teahouses",
+      "yum cha teahouses"
+    ],
+    "explanation": "Dim sum began as bite-sized snacks (yum cha, meaning 'drink tea') served to weary Silk Road travellers resting at teahouses. Over centuries it evolved into a social dining tradition in Cantonese culture, particularly in Hong Kong and Guangdong province.",
+    "wowFactor": "Dim sum was essentially ancient Silk Road fast food — bite-sized snacks designed for traders on the move.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where did dim sum originate as food for weary travellers?",
+        "answer": "Silk Road teahouses",
+        "distractors": [
+          "Imperial palace kitchens",
+          "Hong Kong restaurants",
+          "Buddhist monasteries"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Yum cha teahouses serving travellers along ancient trade routes gave birth to which cuisine tradition?",
+        "answer": "Dim sum",
+        "distractors": [
+          "Tempura",
+          "Tapas",
+          "Mezze"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Dim sum was invented in Hong Kong restaurants in the 20th century.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Dim sum began as snacks at ___ teahouses along ancient trade routes.",
+        "answer": "Silk Road",
+        "distractors": [
+          "imperial",
+          "Buddhist",
+          "riverside"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dim_sum",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A bamboo steamer basket filled with dumplings on a wooden teahouse table, Silk Road caravans visible through a window, pixel art style.",
+    "tags": ["dim sum", "Cantonese", "Silk Road", "teahouse", "China"]
+  },
+  {
+    "id": "food-dimsum-steamer",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Dim sum is traditionally served in stacked bamboo steamers, which allow dozens of different dishes to cook simultaneously over boiling water.",
+    "quizQuestion": "What vessel is traditionally used to cook and serve dim sum?",
+    "correctAnswer": "Bamboo steamer",
+    "distractors": [
+      "Clay pot",
+      "Wok",
+      "Cast iron pan",
+      "Copper tagine",
+      "Stone mortar",
+      "Lacquered box",
+      "Rice cooker",
+      "Ceramic crock"
+    ],
+    "acceptableAnswers": [
+      "Bamboo steamer",
+      "bamboo basket",
+      "steamer basket"
+    ],
+    "explanation": "The iconic stacked bamboo steamer (zhēnglóng) is central to dim sum service. Multiple tiers stack over a wok of boiling water, allowing many different dumplings and buns to steam simultaneously. The bamboo absorbs excess moisture, keeping the dough perfectly tender.",
+    "wowFactor": "The bamboo steamer is a 2,000-year-old technology — stacking multiple tiers is essentially an ancient multi-rack oven powered by steam.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which traditional vessel is used to cook dim sum dumplings?",
+        "answer": "Bamboo steamer",
+        "distractors": [
+          "Clay pot",
+          "Wok",
+          "Cast iron pan"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Stacked bamboo tiers placed over boiling water are used to prepare which Cantonese cuisine?",
+        "answer": "Dim sum",
+        "distractors": [
+          "Ramen",
+          "Bibimbap",
+          "Pho"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Dim sum is traditionally cooked in clay pots.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Dim sum is cooked in stacked ___ steamers placed over boiling water.",
+        "answer": "Bamboo",
+        "distractors": [
+          "ceramic",
+          "metal",
+          "clay"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dim_sum",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Stacked bamboo steamers releasing wisps of steam on a busy Cantonese restaurant cart, pixel art style with warm golden lighting.",
+    "tags": ["dim sum", "bamboo steamer", "Cantonese", "cooking", "China"]
+  },
+  {
+    "id": "food-dimsum-har-gow",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Har gow, the shrimp dumpling wrapped in a translucent starch skin with exactly seven pleats, is considered the benchmark dish that tests a dim sum chef's skill.",
+    "quizQuestion": "Which dim sum dish tests a chef's skill with its seven pleats?",
+    "correctAnswer": "Har gow",
+    "distractors": [
+      "Siu mai",
+      "Char siu bao",
+      "Lo mai gai",
+      "Turnip cake",
+      "Taro dumpling",
+      "Cheung fun",
+      "Egg tart",
+      "Pork ribs"
+    ],
+    "acceptableAnswers": [
+      "Har gow",
+      "har gao",
+      "shrimp dumpling"
+    ],
+    "explanation": "Har gow (虾饺) is the crown jewel of dim sum. A master chef's har gow must have a translucent skin that doesn't tear, exactly seven or more folds/pleats, and hold its shape when picked up with chopsticks. It is the yardstick by which dim sum chefs are judged.",
+    "wowFactor": "A dim sum chef is judged by one dumpling — har gow. The perfect skin must be so thin it's translucent, yet strong enough to hold shrimp without tearing.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which dim sum shrimp dumpling with translucent skin is the benchmark for chef skill?",
+        "answer": "Har gow",
+        "distractors": [
+          "Siu mai",
+          "Char siu bao",
+          "Egg tart"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Har gow, a benchmark dumpling for Cantonese chefs, must have how many pleats minimum?",
+        "answer": "Seven",
+        "distractors": [
+          "Three",
+          "Five",
+          "Ten"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Har gow is a dim sum dumpling used to judge a chef's skill.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Har gow must have exactly ___ pleats to meet the standard of a skilled dim sum chef.",
+        "answer": "Seven",
+        "distractors": [
+          "Five",
+          "Three",
+          "Nine"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Har_gow",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A close-up of a perfectly pleated har gow dumpling with translucent skin revealing pink shrimp inside, resting on a bamboo steamer, pixel art style.",
+    "tags": ["dim sum", "har gow", "dumpling", "Cantonese", "chef skill"]
+  },
+  {
+    "id": "food-croissant-vienna",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "The croissant was invented in Vienna, Austria, not France — French bakers only popularised it after an Austrian artillery officer brought the recipe to Paris.",
+    "quizQuestion": "In which city was the croissant actually invented?",
+    "correctAnswer": "Vienna",
+    "distractors": [
+      "Paris",
+      "Lyon",
+      "Brussels",
+      "Geneva",
+      "Prague",
+      "Budapest",
+      "Berlin",
+      "Zurich"
+    ],
+    "acceptableAnswers": [
+      "Vienna",
+      "Wien",
+      "Austria"
+    ],
+    "explanation": "The croissant descends from the Austrian kipferl, a crescent-shaped pastry. The modern laminated dough version was developed in Vienna around the 1830s. Artillery officer August Zang opened a Viennese bakery in Paris around 1838–1839, introducing the style that French bakers then perfected and made famous worldwide.",
+    "wowFactor": "France's most iconic pastry is actually Austrian — the croissant was invented in Vienna and brought to Paris by an Austrian soldier opening a bakery.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where was the croissant invented before becoming France's signature pastry?",
+        "answer": "Vienna",
+        "distractors": [
+          "Paris",
+          "Brussels",
+          "Budapest"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Vienna's kipferl pastry evolved into which buttery crescent-shaped breakfast staple?",
+        "answer": "Croissant",
+        "distractors": [
+          "Brioche",
+          "Eclair",
+          "Strudel"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The croissant was invented in France.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The croissant originated in ___, not France, descending from the Austrian kipferl.",
+        "answer": "Vienna",
+        "distractors": [
+          "Berlin",
+          "Brussels",
+          "Geneva"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Croissant",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A golden flaky croissant on a Viennese marble countertop beside an Austrian kipferl, pixel art style with warm morning bakery light.",
+    "tags": ["croissant", "Vienna", "Austria", "pastry", "France"]
+  },
+  {
+    "id": "food-croissant-lamination",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "A croissant's distinctive flaky layers are created by laminating dough — folding cold butter into it dozens of times to build hundreds of paper-thin layers.",
+    "quizQuestion": "What technique creates a croissant's hundreds of flaky layers?",
+    "correctAnswer": "Lamination",
+    "distractors": [
+      "Deep frying",
+      "Steam baking",
+      "Proofing",
+      "Fermentation",
+      "Glazing",
+      "Kneading",
+      "Chilling",
+      "Double baking"
+    ],
+    "acceptableAnswers": [
+      "Lamination",
+      "laminating",
+      "folding butter"
+    ],
+    "explanation": "Laminated dough is made by repeatedly folding cold butter into the dough in a process called lamination. A classic croissant involves 27 layers achieved through three sets of three folds. When baked, steam from the butter separates each layer, creating the characteristic airy, flaky texture.",
+    "wowFactor": "A single croissant contains 27 to 81 paper-thin layers — all created by nothing more than butter, dough, and patient folding.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What pastry technique involves repeatedly folding butter into dough to create flaky layers?",
+        "answer": "Lamination",
+        "distractors": [
+          "Fermentation",
+          "Deep frying",
+          "Steam baking"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The lamination technique of folding butter into dough dozens of times is essential to which pastry?",
+        "answer": "Croissant",
+        "distractors": [
+          "Brioche",
+          "Baguette",
+          "Madeleine"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Croissant layers are created by laminating butter into the dough through repeated folding.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A croissant's flaky layers come from ___, folding cold butter into dough repeatedly.",
+        "answer": "Lamination",
+        "distractors": [
+          "fermentation",
+          "deep frying",
+          "proofing"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Laminated_dough",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A baker folding cold butter into golden dough layers on a marble surface, cross-section showing dozens of thin layers, pixel art style.",
+    "tags": ["croissant", "lamination", "pastry", "butter", "baking"]
+  },
+  {
+    "id": "food-croissant-crescent",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "The croissant's crescent shape may commemorate the Ottoman siege of Vienna in 1683, where bakers supposedly heard tunnelling enemies and raised the alarm.",
+    "quizQuestion": "Which historic siege may have inspired the croissant's crescent shape?",
+    "correctAnswer": "Ottoman siege of Vienna",
+    "distractors": [
+      "Battle of Tours",
+      "Siege of Constantinople",
+      "Mongol invasion",
+      "Crusades of Jerusalem",
+      "Siege of Paris",
+      "Battle of Lepanto",
+      "Spanish Armada",
+      "Siege of Malta"
+    ],
+    "acceptableAnswers": [
+      "Ottoman siege of Vienna",
+      "Siege of Vienna",
+      "1683 Vienna siege"
+    ],
+    "explanation": "Legend holds that Viennese bakers working before dawn in 1683 heard Ottoman soldiers tunnelling under the city walls, alerted defenders, and helped repel the siege. The crescent-shaped pastry was supposedly created to mock the defeated Ottoman crescent moon symbol. Historians debate how much is myth, but the connection persists.",
+    "wowFactor": "Your breakfast croissant might be shaped like a crescent moon to mock the Ottoman Empire's defeat — bakers making edible victory symbols in 1683.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which 1683 Ottoman siege may have inspired the croissant's crescent moon shape?",
+        "answer": "Siege of Vienna",
+        "distractors": [
+          "Siege of Constantinople",
+          "Battle of Tours",
+          "Siege of Paris"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The crescent shape of a croissant may reference which empire's failed siege of Vienna?",
+        "answer": "Ottoman Empire",
+        "distractors": [
+          "Mongol Empire",
+          "Byzantine Empire",
+          "Roman Empire"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The croissant's crescent shape may have been inspired by defeating the Ottomans.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The croissant's crescent shape may mock the ___ crescent symbol after their 1683 defeat.",
+        "answer": "Ottoman",
+        "distractors": [
+          "Byzantine",
+          "Mongol",
+          "Persian"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Croissant#History",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Involves historical conflict between Christian Europe and Ottoman Empire",
+    "visualDescription": "A crescent-shaped pastry resting beside a crescent-moon flag, Vienna's city walls in the pixelated background with torchlight glow.",
+    "tags": ["croissant", "crescent", "Ottoman", "Vienna 1683", "history"]
+  },
+  {
+    "id": "food-pasta-durum",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "Pasta is made from durum wheat semolina, a hard grain with high gluten content that gives pasta its characteristic firm, chewy texture.",
+    "quizQuestion": "Which type of wheat gives pasta its firm, chewy texture?",
+    "correctAnswer": "Durum wheat",
+    "distractors": [
+      "Soft wheat",
+      "Spelt",
+      "Buckwheat",
+      "Rye",
+      "Barley",
+      "Einkorn",
+      "Emmer wheat",
+      "Kamut"
+    ],
+    "acceptableAnswers": [
+      "Durum wheat",
+      "semolina",
+      "durum"
+    ],
+    "explanation": "Durum wheat (Triticum durum) is the hardest wheat variety, with extremely high protein and gluten content. When ground into semolina and mixed with water, it forms a stiff dough that holds its shape during cooking, giving pasta its distinctive al dente bite.",
+    "wowFactor": "Pasta's satisfying chew comes from durum wheat — one of the hardest grains on Earth, so tough that ancient Romans used it to make their ship's rigging.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What hard wheat variety, ground into semolina, gives pasta its al dente texture?",
+        "answer": "Durum wheat",
+        "distractors": [
+          "Soft wheat",
+          "Rye",
+          "Spelt"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Durum wheat semolina mixed with water forms the dough for which staple Italian food?",
+        "answer": "Pasta",
+        "distractors": [
+          "Polenta",
+          "Focaccia",
+          "Gnocchi"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pasta is made from durum wheat, which has high gluten content.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pasta dough is made from ___ wheat semolina, which gives it a firm texture when cooked.",
+        "answer": "Durum",
+        "distractors": [
+          "soft",
+          "rye",
+          "barley"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pasta",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Golden durum wheat ears beside a rolling pin and fresh pasta sheets on a floured wooden board, pixel art style with warm afternoon light.",
+    "tags": ["pasta", "durum wheat", "semolina", "Italy", "gluten"]
+  },
+  {
+    "id": "food-pasta-shapes",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "Italy has over 300 officially recognised pasta shapes, each designed for specific sauces — ridged shapes trap chunky sauces while thin shapes suit light oils.",
+    "quizQuestion": "Approximately how many pasta shapes does Italy officially recognise?",
+    "correctAnswer": "Over 300",
+    "distractors": [
+      "About 50",
+      "Around 100",
+      "Exactly 200",
+      "About 500",
+      "Fewer than 30",
+      "Around 150",
+      "Exactly 400",
+      "About 75"
+    ],
+    "acceptableAnswers": [
+      "Over 300",
+      "300+",
+      "more than 300"
+    ],
+    "explanation": "Italy officially recognises over 300 pasta shapes (some counts exceed 600 regional variants). Shape design is functional: ridged rigatoni grabs meaty ragu, thin spaghetti suits olive oil and seafood, hollow tubes like penne trap chunky tomato sauces, while wide pappardelle pairs with rich slow-cooked braised meats.",
+    "wowFactor": "Pasta shape isn't aesthetic — it's engineering. Each of 300+ shapes is precisely designed to hold a specific type of sauce.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many officially recognised pasta shapes exist in Italy?",
+        "answer": "Over 300",
+        "distractors": [
+          "About 50",
+          "Around 100",
+          "About 500"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Italy's 300+ pasta shapes each pair with specific sauces — ridged shapes are designed to trap what?",
+        "answer": "Chunky sauces",
+        "distractors": [
+          "Oil-based sauces",
+          "Cream sauces",
+          "Seafood broths"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Different pasta shapes are designed for different types of sauces.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Italy has over ___ officially recognised pasta shapes, each matched to specific sauces.",
+        "answer": "300",
+        "distractors": [
+          "50",
+          "100",
+          "500"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/List_of_pasta",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A grid of colourful pasta shapes — spirals, tubes, ribbons, shells — laid out on a white surface with sauce pairings, pixel art style.",
+    "tags": ["pasta", "shapes", "Italy", "sauce", "cuisine design"]
+  },
+  {
+    "id": "food-pasta-notchina",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "The myth that Marco Polo brought pasta from China to Italy is false — pasta was already being made in Sicily by the 12th century, likely brought by Arab traders.",
+    "quizQuestion": "Who most likely introduced pasta to Sicily before Marco Polo's time?",
+    "correctAnswer": "Arab traders",
+    "distractors": [
+      "Marco Polo",
+      "Roman legions",
+      "Greek colonists",
+      "Chinese merchants",
+      "Phoenician sailors",
+      "Norman invaders",
+      "Byzantine monks",
+      "Venetian traders"
+    ],
+    "acceptableAnswers": [
+      "Arab traders",
+      "Arab merchants",
+      "Arabs"
+    ],
+    "explanation": "A 12th-century Arab geographer, Muhammad al-Idrisi, documented dried pasta being produced in Sicily and exported across the Mediterranean. Arab traders had been in Sicily for centuries before Marco Polo was even born (1254). The Marco Polo myth was essentially invented by a 1929 American macaroni trade magazine.",
+    "wowFactor": "The 'Marco Polo brought pasta from China' story was fabricated by an American macaroni magazine in 1929 — pasta had been in Sicily for 200 years before Marco Polo was born.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who introduced dried pasta to Sicily in the 12th century, centuries before Marco Polo?",
+        "answer": "Arab traders",
+        "distractors": [
+          "Marco Polo",
+          "Greek colonists",
+          "Roman legions"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The myth that pasta came from China was supposedly invented by which publication in 1929?",
+        "answer": "American macaroni magazine",
+        "distractors": [
+          "Italian cooking journal",
+          "French culinary review",
+          "British food almanac"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Marco Polo brought pasta from China to Italy.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pasta was in Sicily by the 12th century, brought by ___ traders — before Marco Polo was born.",
+        "answer": "Arab",
+        "distractors": [
+          "Chinese",
+          "Greek",
+          "Roman"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pasta#History",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 12th-century Arab trader unloading dried pasta bundles at a Sicilian harbour, palm trees and stone dock in warm pixel art style.",
+    "tags": ["pasta", "Sicily", "Arab traders", "Marco Polo", "food history"]
+  },
+  {
+    "id": "food-beer-oldest",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "beverages",
+    "categoryL3": "",
+    "statement": "Beer is one of the world's oldest alcoholic drinks, with evidence of brewing dating back over 5,000 years to ancient Mesopotamia and Egypt.",
+    "quizQuestion": "How far back does evidence of beer brewing date?",
+    "correctAnswer": "Over 5,000 years",
+    "distractors": [
+      "About 500 years",
+      "Around 1,000 years",
+      "Roughly 2,000 years",
+      "About 3,000 years",
+      "Around 7,000 years",
+      "About 10,000 years",
+      "Around 800 years",
+      "About 4,000 years"
+    ],
+    "acceptableAnswers": [
+      "Over 5,000 years",
+      "5,000 years",
+      "five thousand years"
+    ],
+    "explanation": "Archaeological evidence from ancient Mesopotamia (Sumer) and Egypt places beer brewing at over 5,000 years ago. A 3,900-year-old Sumerian poem to the goddess Ninkasi is literally a beer recipe. Egyptian workers building the pyramids received beer as part of their daily rations.",
+    "wowFactor": "The world's oldest written recipe is a Sumerian beer recipe from 1,900 BCE — pyramid builders were paid partly in beer.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Archaeological evidence of beer brewing dates back how many years to Mesopotamia and Egypt?",
+        "answer": "Over 5,000 years",
+        "distractors": [
+          "About 2,000 years",
+          "Around 1,000 years",
+          "About 3,000 years"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Ancient Mesopotamian pyramid workers received which alcoholic drink as part of their daily wages?",
+        "answer": "Beer",
+        "distractors": [
+          "Wine",
+          "Mead",
+          "Cider"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Beer brewing has been documented for over 5,000 years.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Beer is over 5,000 years old — the oldest written beer recipe comes from ancient ___.",
+        "answer": "Mesopotamia",
+        "distractors": [
+          "Greece",
+          "China",
+          "Rome"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Beer#History",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Alcohol content — appropriate for teens and adults",
+    "visualDescription": "Ancient Sumerian workers drinking from clay jugs through reed straws beside pyramid construction, pixel art style with desert sun.",
+    "tags": ["beer", "Mesopotamia", "brewing", "ancient history", "alcohol"]
+  },
+  {
+    "id": "food-beer-hops",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "beverages",
+    "categoryL3": "",
+    "statement": "Hops — the flowers of the Humulus lupulus plant — were adopted as a beer preservative in medieval Europe and give beer its characteristic bitter flavour.",
+    "quizQuestion": "Which plant's flowers give beer its bitter flavour?",
+    "correctAnswer": "Hops (Humulus lupulus)",
+    "distractors": [
+      "Barley malt",
+      "Juniper berries",
+      "Yarrow herb",
+      "Mugwort plant",
+      "Gruit mixture",
+      "Heather flower",
+      "Bitter orange peel",
+      "Wormwood plant"
+    ],
+    "acceptableAnswers": [
+      "Hops",
+      "Humulus lupulus",
+      "hop flowers"
+    ],
+    "explanation": "Before hops became standard, medieval brewers used gruit — a mixture of herbs like yarrow, mugwort, and sweet gale. German and Flemish brewers began adding hops in the 8th–9th century for flavour and preservation (hops have natural antibacterial properties). By the 16th century, hops dominated European brewing.",
+    "wowFactor": "Before hops, beer was flavoured with a secret herbal mixture called gruit — the church often held a monopoly on selling it, making beer a religious business.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which flower is used as a bittering and preserving agent in most modern beer?",
+        "answer": "Hops",
+        "distractors": [
+          "Juniper berries",
+          "Yarrow",
+          "Heather"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Hops replaced the herbal mixture called gruit in medieval European beer to provide bitterness and what else?",
+        "answer": "Preservation",
+        "distractors": [
+          "Colour",
+          "Carbonation",
+          "Sweetness"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Hops are the flowers of a plant added to beer for bitterness and preservation.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Beer's bitterness comes from ___, the flowers of Humulus lupulus, used since medieval Europe.",
+        "answer": "Hops",
+        "distractors": [
+          "yarrow",
+          "gruit",
+          "juniper"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hops",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Alcohol content — appropriate for teens and adults",
+    "visualDescription": "Green hop cones hanging from vines in a medieval European brewery, barrel and clay jugs nearby, pixel art style with amber lighting.",
+    "tags": ["beer", "hops", "brewing", "medieval", "preservation"]
+  },
+  {
+    "id": "food-beer-reinheitsgebot",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "beverages",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "beverages",
+    "categoryL3": "",
+    "statement": "Germany's Reinheitsgebot of 1516 is one of the world's oldest food safety laws, limiting beer ingredients to water, barley, and hops only.",
+    "quizQuestion": "What three ingredients did Germany's 1516 beer purity law permit?",
+    "correctAnswer": "Water, barley, hops",
+    "distractors": [
+      "Water, wheat, yeast",
+      "Barley, rye, malt",
+      "Hops, sugar, yeast",
+      "Water, rye, hops",
+      "Grain, herbs, water",
+      "Malt, wheat, water",
+      "Barley, corn, hops",
+      "Yeast, barley, water"
+    ],
+    "acceptableAnswers": [
+      "Water, barley, hops",
+      "water, hops, barley",
+      "barley, water, hops"
+    ],
+    "explanation": "The Reinheitsgebot (purity order) of 1516 was issued by William IV, Duke of Bavaria, permitting only water, barley malt, and hops in beer. Yeast wasn't listed because its role in fermentation wasn't yet understood. It is one of the oldest existing food and beverage regulation laws in the world.",
+    "wowFactor": "Germany's 1516 beer law didn't include yeast — not because brewers didn't use it, but because nobody knew yeast existed yet.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What three ingredients did Germany's 1516 Reinheitsgebot beer purity law allow?",
+        "answer": "Water, barley, hops",
+        "distractors": [
+          "Water, wheat, yeast",
+          "Malt, sugar, hops",
+          "Barley, rye, water"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Reinheitsgebot purity law of 1516 was issued in which country to regulate beer ingredients?",
+        "answer": "Germany",
+        "distractors": [
+          "Belgium",
+          "Austria",
+          "England"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Germany's 1516 Reinheitsgebot is one of the world's oldest food safety laws.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Germany's 1516 beer purity law, the Reinheitsgebot, permitted only water, ___, and hops.",
+        "answer": "Barley",
+        "distractors": [
+          "wheat",
+          "rye",
+          "corn"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Reinheitsgebot",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Alcohol content — appropriate for teens and adults",
+    "visualDescription": "A 16th-century German duke reading a scroll beside barley sacks and hop bines, Bavarian castle in background, pixel art style.",
+    "tags": ["beer", "Reinheitsgebot", "Germany", "1516", "food law"]
+  },
+  {
+    "id": "food-spicetrade-nutmeg",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_history",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_history",
+    "categoryL3": "",
+    "statement": "Nutmeg was once so valuable that the Dutch traded Manhattan Island to the English in 1667 in exchange for the tiny spice island of Run in Indonesia.",
+    "quizQuestion": "For which spice island did the Dutch trade Manhattan Island in 1667?",
+    "correctAnswer": "Run (Indonesia)",
+    "distractors": [
+      "Banda Naira",
+      "Zanzibar",
+      "Ceylon island",
+      "Ternate island",
+      "Spice Island Java",
+      "Maluku island",
+      "Borneo coast",
+      "Timor island"
+    ],
+    "acceptableAnswers": [
+      "Run",
+      "Run island",
+      "Pulau Run",
+      "Indonesia"
+    ],
+    "explanation": "In the 1667 Treaty of Breda, the Dutch exchanged the settlement of New Amsterdam (Manhattan) to England in return for England ceding Run island in the Banda Sea. Run was the world's only source of nutmeg at the time. The Dutch destroyed nutmeg trees everywhere else to maintain their monopoly. Nutmeg sold for 60,000% markup in Europe.",
+    "wowFactor": "The Dutch gave up Manhattan for a tiny nutmeg island — and then destroyed all other nutmeg trees in the world to maintain their spice monopoly.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "The Dutch traded Manhattan Island for which nutmeg island in 1667?",
+        "answer": "Run island",
+        "distractors": [
+          "Zanzibar",
+          "Banda Naira",
+          "Ternate"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Run island in Indonesia was so valuable that the Dutch traded New Amsterdam (Manhattan) for it due to which spice?",
+        "answer": "Nutmeg",
+        "distractors": [
+          "Pepper",
+          "Cloves",
+          "Cinnamon"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Dutch once traded Manhattan for a small spice island.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Dutch gave up Manhattan Island for ___ island in Indonesia to secure a nutmeg monopoly.",
+        "answer": "Run",
+        "distractors": [
+          "Zanzibar",
+          "Banda",
+          "Timor"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Run_(island)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Colonial history context",
+    "visualDescription": "A Dutch merchant ship exchanging a map of Manhattan for a tiny island labelled 'Run,' nutmeg trees in background, pixel art colonial era.",
+    "tags": ["spice trade", "nutmeg", "Manhattan", "Dutch", "colonialism"]
+  },
+  {
+    "id": "food-spicetrade-pepper",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_history",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_history",
+    "categoryL3": "",
+    "statement": "Black pepper was so valuable in medieval Europe that it was used as currency, accepted as rent payment, and a pound of pepper could buy a serf's freedom.",
+    "quizQuestion": "Which spice was used as currency and could buy a serf's freedom in medieval Europe?",
+    "correctAnswer": "Black pepper",
+    "distractors": [
+      "Cinnamon",
+      "Saffron",
+      "Nutmeg",
+      "Cloves",
+      "Cardamom",
+      "Ginger",
+      "Turmeric",
+      "Vanilla"
+    ],
+    "acceptableAnswers": [
+      "Black pepper",
+      "pepper",
+      "peppercorn"
+    ],
+    "explanation": "Black pepper (Piper nigrum) was called 'black gold' in medieval Europe. Roman Emperor Alaric demanded 3,000 pounds of pepper as part of his ransom for Rome in 408 CE. Trade guilds of pepper merchants (pepperers) became enormously wealthy. The quest to find a direct sea route to Indian pepper sources was a major driver of the Age of Exploration.",
+    "wowFactor": "When Visigoths sacked Rome in 408 CE, they demanded 3,000 pounds of pepper as ransom — the same spice sitting in your kitchen shaker.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which spice was so precious in medieval Europe it was used as currency to pay rent?",
+        "answer": "Black pepper",
+        "distractors": [
+          "Cinnamon",
+          "Nutmeg",
+          "Saffron"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Visigoths demanded 3,000 pounds of which spice as ransom when they sacked Rome in 408 CE?",
+        "answer": "Black pepper",
+        "distractors": [
+          "Cinnamon",
+          "Gold",
+          "Cloves"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Black pepper was used as currency in medieval Europe.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In medieval Europe, ___ pepper was so valuable it could be used to pay rent or buy freedom.",
+        "answer": "Black",
+        "distractors": [
+          "white",
+          "red",
+          "green"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Black_pepper#History",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A medieval European merchant counting black peppercorns on scales as payment for land deeds, trade ships in background, pixel art style.",
+    "tags": ["spice trade", "black pepper", "medieval", "currency", "Rome"]
+  },
+  {
+    "id": "food-spicetrade-routes",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_history",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_history",
+    "categoryL3": "",
+    "statement": "The Portuguese explorer Vasco da Gama opened the first direct sea route from Europe to India in 1498, breaking the Arab monopoly on the spice trade.",
+    "quizQuestion": "Which explorer opened the first sea route from Europe to India in 1498?",
+    "correctAnswer": "Vasco da Gama",
+    "distractors": [
+      "Christopher Columbus",
+      "Ferdinand Magellan",
+      "Bartolomeu Dias",
+      "Francis Drake",
+      "John Cabot",
+      "Amerigo Vespucci",
+      "Henry the Navigator",
+      "Pedro Álvares Cabral"
+    ],
+    "acceptableAnswers": [
+      "Vasco da Gama",
+      "da Gama"
+    ],
+    "explanation": "In 1497–1498, Portuguese explorer Vasco da Gama rounded the Cape of Good Hope and reached Calicut (Kozhikode) in India, establishing the first direct European sea route to the spice sources. This route bypassed Arab and Venetian middlemen, who had controlled overland spice trade for centuries, and transformed Portugal into a global power.",
+    "wowFactor": "Vasco da Gama's route to India cut out middlemen who marked up spices 1,000%. It transferred so much wealth to Portugal that it built the Jerónimos Monastery entirely from spice taxes.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which Portuguese explorer opened the direct sea route to India in 1498 for the spice trade?",
+        "answer": "Vasco da Gama",
+        "distractors": [
+          "Columbus",
+          "Magellan",
+          "Bartolomeu Dias"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Vasco da Gama's 1498 voyage to India broke which group's monopoly on European spice trade?",
+        "answer": "Arab traders",
+        "distractors": [
+          "Venetian merchants",
+          "Ottoman Empire",
+          "Chinese traders"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Vasco da Gama opened the first European sea route to India in 1498.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Vasco da Gama reached India by sea in 1498, breaking the ___ monopoly on spice trade routes.",
+        "answer": "Arab",
+        "distractors": [
+          "Ottoman",
+          "Chinese",
+          "Venetian"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vasco_da_Gama",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Colonial exploration context",
+    "visualDescription": "A Portuguese caravel rounding the Cape of Good Hope, spice barrels on deck, star charts spread on a table, pixel art style.",
+    "tags": ["spice trade", "Vasco da Gama", "Portugal", "Age of Exploration", "India"]
+  },
+  {
+    "id": "food-fermentation-yeast",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_science",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_science",
+    "categoryL3": "",
+    "statement": "Yeast are microscopic fungi that consume sugars and excrete alcohol and carbon dioxide — a process that creates wine, beer, bread, and cheese.",
+    "quizQuestion": "What do yeast produce when they consume sugars?",
+    "correctAnswer": "Alcohol and CO2",
+    "distractors": [
+      "Lactic acid only",
+      "Water and heat",
+      "Oxygen and sugar",
+      "Salt and nitrogen",
+      "Acetic acid only",
+      "Methane and heat",
+      "Hydrogen and salt",
+      "Glucose and water"
+    ],
+    "acceptableAnswers": [
+      "Alcohol and CO2",
+      "alcohol and carbon dioxide",
+      "ethanol and carbon dioxide"
+    ],
+    "explanation": "Saccharomyces cerevisiae (baker's/brewer's yeast) is a single-celled fungus that ferments sugars through anaerobic respiration, producing ethanol and carbon dioxide as by-products. The CO2 makes bread rise; the ethanol creates the alcohol in beer and wine. Without yeast, human civilisation would lack bread, wine, beer, and many cheeses.",
+    "wowFactor": "One microscopic fungus — yeast — is responsible for bread, wine, beer, and much of human civilisation. Every bakery and brewery runs on the same single-celled creature.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What two substances does yeast produce when fermenting sugars?",
+        "answer": "Alcohol and CO2",
+        "distractors": [
+          "Lactic acid only",
+          "Water and oxygen",
+          "Salt and heat"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Yeast producing CO2 makes bread rise, while the same process's alcohol output creates which drink?",
+        "answer": "Beer and wine",
+        "distractors": [
+          "Milk and juice",
+          "Tea and coffee",
+          "Cider and mead"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Yeast are fungi that produce alcohol and CO2 by consuming sugars.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Yeast ferments sugar into alcohol and ___, the gas that makes bread dough rise.",
+        "answer": "CO2",
+        "distractors": [
+          "oxygen",
+          "nitrogen",
+          "methane"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fermentation",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Microscopic yeast cells magnified beside a rising bread loaf and foaming beer mug, pixel art style with warm golden tones.",
+    "tags": ["fermentation", "yeast", "bread", "beer", "food science"]
+  },
+  {
+    "id": "food-fermentation-kimchi",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Kimchi, the Korean fermented cabbage dish, undergoes lacto-fermentation where naturally occurring bacteria produce lactic acid, preserving the vegetables and creating its sour tang.",
+    "quizQuestion": "Which fermentation process preserves kimchi and creates its sour flavour?",
+    "correctAnswer": "Lacto-fermentation",
+    "distractors": [
+      "Yeast fermentation",
+      "Acetic fermentation",
+      "Alcoholic fermentation",
+      "Mold fermentation",
+      "Salt curing only",
+      "Vinegar pickling",
+      "Smoke curing",
+      "Sugar fermentation"
+    ],
+    "acceptableAnswers": [
+      "Lacto-fermentation",
+      "lactic acid fermentation",
+      "lactobacillus fermentation"
+    ],
+    "explanation": "Kimchi fermentation is driven by Lactobacillus bacteria naturally present on cabbage leaves. When packed with salt, the bacteria thrive and produce lactic acid, which preserves the vegetables and creates the distinctive sour, umami-rich flavour. This is the same process used for yogurt, sauerkraut, and pickles.",
+    "wowFactor": "Kimchi is essentially a 2,000-year-old science experiment that still runs in Korean homes — the same bacterial process that makes yogurt and sauerkraut.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which fermentation type preserves kimchi using Lactobacillus bacteria to create lactic acid?",
+        "answer": "Lacto-fermentation",
+        "distractors": [
+          "Yeast fermentation",
+          "Alcoholic fermentation",
+          "Acetic fermentation"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Lacto-fermentation by bacteria creates the sour flavour in kimchi, yogurt, and which European dish?",
+        "answer": "Sauerkraut",
+        "distractors": [
+          "Hummus",
+          "Taramasalata",
+          "Aioli"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Kimchi gets its sour flavour from lacto-fermentation by bacteria.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Kimchi is preserved through ___, where bacteria produce lactic acid to create its sour tang.",
+        "answer": "Lacto-fermentation",
+        "distractors": [
+          "yeast fermentation",
+          "vinegar pickling",
+          "smoke curing"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kimchi",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A clay kimchi jar being packed with red cabbage and salt in a Korean kitchen, bacteria diagram overlay, pixel art style.",
+    "tags": ["fermentation", "kimchi", "Korea", "lacto-fermentation", "bacteria"]
+  },
+  {
+    "id": "food-fermentation-cheese",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "european_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "european_cuisine",
+    "categoryL3": "",
+    "statement": "Cheese is made by adding rennet — an enzyme found in calf stomachs — to milk to separate curds (solid protein) from whey (liquid), which are then pressed and aged.",
+    "quizQuestion": "Which enzyme from calf stomachs is used to make cheese curds?",
+    "correctAnswer": "Rennet",
+    "distractors": [
+      "Lactase",
+      "Pepsin",
+      "Lipase",
+      "Amylase",
+      "Protease",
+      "Chymosin only",
+      "Casein",
+      "Riboflavin"
+    ],
+    "acceptableAnswers": [
+      "Rennet",
+      "chymosin",
+      "calf rennet"
+    ],
+    "explanation": "Rennet contains the enzyme chymosin, which coagulates milk proteins (casein) into curds. Ancient peoples likely discovered cheesemaking accidentally when storing milk in calf stomach pouches. Today most cheese uses microbial or fermentation-produced chymosin rather than animal rennet, making it suitable for vegetarians.",
+    "wowFactor": "Cheese was likely discovered by accident — a calf stomach used as a milk bag naturally curdled it, leading to one of humanity's most diverse foods.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which enzyme, found naturally in calf stomachs, coagulates milk into cheese curds?",
+        "answer": "Rennet",
+        "distractors": [
+          "Lactase",
+          "Pepsin",
+          "Amylase"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Rennet is added to milk in cheesemaking to separate the solid protein curds from which liquid?",
+        "answer": "Whey",
+        "distractors": [
+          "Cream",
+          "Buttermilk",
+          "Lactose"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Rennet is an enzyme from calf stomachs used to make cheese.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Cheese is made by adding ___ to milk, which separates it into solid curds and liquid whey.",
+        "answer": "Rennet",
+        "distractors": [
+          "lactase",
+          "pepsin",
+          "vinegar"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cheese#Production",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cheesemaker pressing curds in a wooden mould, whey draining away, wheels of cheese aging on wooden shelves behind, pixel art style.",
+    "tags": ["fermentation", "cheese", "rennet", "calf", "dairy"]
+  },
+  {
+    "id": "food-cinnamon-srilanka",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "",
+    "statement": "True cinnamon (Ceylon cinnamon) comes from the inner bark of trees grown in Sri Lanka and is considered the world's oldest known spice.",
+    "quizQuestion": "Where does true Ceylon cinnamon come from?",
+    "correctAnswer": "Sri Lanka",
+    "distractors": [
+      "India",
+      "Indonesia",
+      "Vietnam",
+      "Malaysia",
+      "China",
+      "Egypt",
+      "Thailand",
+      "Myanmar"
+    ],
+    "acceptableAnswers": [
+      "Sri Lanka",
+      "Ceylon",
+      "Lanka"
+    ],
+    "explanation": "Cinnamomum verum, or Ceylon cinnamon, is native to Sri Lanka (formerly called Ceylon). It is harvested by peeling back the outer bark of cinnamon trees to reveal the inner bark, which is then dried into cinnamon sticks (quills). Most commercial cinnamon sold globally is actually cassia (Cinnamomum cassia) from China and Vietnam, which is cheaper but sharper in flavour.",
+    "wowFactor": "Most grocery store cinnamon is actually fake — it's cassia from China. Real Ceylon cinnamon from Sri Lanka has a delicate sweetness that cassia can't match.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "From which country does true Ceylon cinnamon, the world's oldest spice, originate?",
+        "answer": "Sri Lanka",
+        "distractors": [
+          "India",
+          "Indonesia",
+          "Vietnam"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Sri Lanka (formerly Ceylon) is the origin of which spice often faked in supermarkets with cheap cassia?",
+        "answer": "Ceylon cinnamon",
+        "distractors": [
+          "Cardamom",
+          "Turmeric",
+          "Cloves"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Most supermarket cinnamon is actually cassia, not true Ceylon cinnamon.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "True Ceylon cinnamon comes from the inner ___ of trees grown only in Sri Lanka.",
+        "answer": "Bark",
+        "distractors": [
+          "root",
+          "seed",
+          "flower"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cinnamon",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cinnamon tree being peeled to reveal inner bark in a Sri Lankan jungle, rolled cinnamon quills beside it, pixel art style.",
+    "tags": ["cinnamon", "Sri Lanka", "Ceylon", "spice", "bark"]
+  },
+  {
+    "id": "food-cinnamon-ancient",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "",
+    "statement": "Ancient Egyptians used cinnamon in embalming mummies and as a gift worthy of kings — it was so rare that the Romans burned it at funerals to show enormous wealth.",
+    "quizQuestion": "How did ancient Romans display wealth by using cinnamon?",
+    "correctAnswer": "Burning it at funerals",
+    "distractors": [
+      "Sprinkling in baths",
+      "Adding to wine goblets",
+      "Perfuming palace floors",
+      "Coating chariot wheels",
+      "Feeding it to horses",
+      "Gilding temple offerings",
+      "Seasoning emperor's food",
+      "Mixing it in perfume"
+    ],
+    "acceptableAnswers": [
+      "Burning it at funerals",
+      "burning at funerals",
+      "funeral pyres"
+    ],
+    "explanation": "Cinnamon is mentioned in ancient Chinese records dating to 2700 BCE and in the Old Testament. Egyptians used it in mummification. In ancient Rome, cinnamon was so rare and expensive that burning it at a funeral was an ostentatious display of extreme wealth. Roman Emperor Nero reportedly burned a year's worth of the city's cinnamon supply at his wife Poppaea's funeral in 65 CE.",
+    "wowFactor": "Nero burned an entire year's supply of Rome's cinnamon at his wife's funeral — the ancient equivalent of setting a Bugatti on fire to prove you're rich.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "To show extreme wealth, how did ancient Romans use cinnamon at funerals?",
+        "answer": "Burned it on pyres",
+        "distractors": [
+          "Coated coffins with it",
+          "Mixed it into wine",
+          "Scattered it on floors"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Nero reportedly burned a year's supply of Rome's cinnamon to mourn which person at her funeral?",
+        "answer": "Poppaea (his wife)",
+        "distractors": [
+          "His mother Agrippina",
+          "His teacher Seneca",
+          "Julius Caesar"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ancient Romans burned cinnamon at funerals as a display of extreme wealth.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Romans burned ___ at funerals to show wealth — it was rarer and costlier than gold by weight.",
+        "answer": "Cinnamon",
+        "distractors": [
+          "Pepper",
+          "Nutmeg",
+          "Saffron"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cinnamon#History",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Roman nobleman burning cinnamon sticks on a gold funeral pyre, mourners in togas, cinnamon smoke rising in pixel art style.",
+    "tags": ["cinnamon", "Rome", "Nero", "ancient history", "spice wealth"]
+  },
+  {
+    "id": "food-cinnamon-bark",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "",
+    "statement": "Cinnamon sticks are made by hand-rolling thin strips of inner tree bark into quills; a skilled worker in Sri Lanka can peel and roll up to 100 sticks per hour.",
+    "quizQuestion": "What part of the cinnamon tree is dried into sticks?",
+    "correctAnswer": "Inner bark",
+    "distractors": [
+      "Outer bark",
+      "Root wood",
+      "Dried leaves",
+      "Seed pods",
+      "Flower petals",
+      "Fruit pulp",
+      "Tree resin",
+      "Dried sap"
+    ],
+    "acceptableAnswers": [
+      "Inner bark",
+      "bark",
+      "cinnamon bark"
+    ],
+    "explanation": "Ceylon cinnamon sticks (quills) are made entirely by hand in Sri Lanka. Workers strip the grey outer bark off young branches, then slide a curved knife under the inner bark to peel it in long strips. Multiple thin strips are layered together and left to dry, naturally curling into tight quills. No machinery is used in traditional production.",
+    "wowFactor": "Every cinnamon stick was hand-rolled by a skilled worker — it is one of the few modern spices still made entirely without machines in traditional Sri Lankan farms.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What part of the cinnamon tree is peeled and hand-rolled into cinnamon sticks?",
+        "answer": "Inner bark",
+        "distractors": [
+          "Outer bark",
+          "Root wood",
+          "Dried leaves"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Hand-peeled inner bark strips that curl as they dry into quills are the source of which spice?",
+        "answer": "Cinnamon",
+        "distractors": [
+          "Cloves",
+          "Cardamom",
+          "Vanilla"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Cinnamon sticks are made from the inner bark of the cinnamon tree.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Cinnamon sticks are made by hand-rolling strips of ___ bark peeled from young cinnamon trees.",
+        "answer": "Inner",
+        "distractors": [
+          "outer",
+          "root",
+          "dried"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cinnamon#Production",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Sri Lankan spice worker peeling cinnamon bark from a branch and rolling it into tight quills on a wooden table, pixel art style.",
+    "tags": ["cinnamon", "bark", "Sri Lanka", "spice", "handcraft"]
+  },
+  {
+    "id": "food-hummus-chickpea",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "middle_eastern_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "middle_eastern_cuisine",
+    "categoryL3": "",
+    "statement": "Hummus bi tahini — the full name means 'chickpeas with sesame paste' in Arabic — is made by blending cooked chickpeas with tahini, lemon, garlic, and olive oil.",
+    "quizQuestion": "What does 'hummus' literally mean in Arabic?",
+    "correctAnswer": "Chickpeas",
+    "distractors": [
+      "Sesame paste",
+      "Crushed beans",
+      "Olive dip",
+      "Lemon spread",
+      "Garlic paste",
+      "Bean mash",
+      "Ground seeds",
+      "Herb cream"
+    ],
+    "acceptableAnswers": [
+      "Chickpeas",
+      "chickpea",
+      "garbanzo beans"
+    ],
+    "explanation": "The word 'hummus' (حمص) means 'chickpeas' in Arabic. The full dish name is 'hummus bi tahini' — chickpeas with tahini (ground sesame paste). Chickpeas are the main ingredient, cooked until soft and blended with tahini, fresh lemon juice, garlic, and olive oil. It is one of the most ancient prepared foods still eaten today, with roots possibly going back 7,000 years.",
+    "wowFactor": "When you ask for hummus, you're literally asking for 'chickpeas' in Arabic — the full dish name is 'chickpeas with sesame paste.'",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does the Arabic word 'hummus' literally mean?",
+        "answer": "Chickpeas",
+        "distractors": [
+          "Sesame paste",
+          "Olive dip",
+          "Bean mash"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Hummus bi tahini means 'chickpeas with' what ingredient in Arabic?",
+        "answer": "Tahini (sesame paste)",
+        "distractors": [
+          "Olive oil",
+          "Garlic",
+          "Lemon juice"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: 'Hummus' is the Arabic word for chickpeas.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The word hummus means '___ ' in Arabic — the full dish is hummus bi tahini.",
+        "answer": "Chickpeas",
+        "distractors": [
+          "sesame",
+          "beans",
+          "garlic"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hummus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A bowl of creamy hummus topped with olive oil, paprika, and whole chickpeas, warm Middle Eastern kitchen tiles behind, pixel art style.",
+    "tags": ["hummus", "chickpeas", "Middle Eastern", "Arabic", "tahini"]
+  },
+  {
+    "id": "food-hummus-dispute",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "middle_eastern_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "middle_eastern_cuisine",
+    "categoryL3": "",
+    "statement": "Lebanon and Israel both claim hummus as their national dish, and Lebanon set a world record in 2010 by making a 10-tonne hummus bowl to assert its ownership.",
+    "quizQuestion": "Which country made a 10-tonne hummus bowl in 2010 to assert ownership of the dish?",
+    "correctAnswer": "Lebanon",
+    "distractors": [
+      "Israel",
+      "Jordan",
+      "Palestine",
+      "Syria",
+      "Turkey",
+      "Egypt",
+      "Greece",
+      "Iran"
+    ],
+    "acceptableAnswers": [
+      "Lebanon",
+      "Lebanese"
+    ],
+    "explanation": "Hummus is a source of intense culinary nationalism in the Middle East. In 2008, Lebanon's Association of Lebanese Industrialists filed a complaint with the European Commission seeking Protected Designation of Origin status. In 2010, Lebanese chefs made a world record 10,452 kg hummus dish in response to Israel also claiming the food. The dish is so contested it has been called 'the hummus wars.'",
+    "wowFactor": "Lebanon and Israel have been fighting over who invented hummus for decades — Lebanon once made 10 tonnes of it as a political statement.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which country made a 10-tonne hummus dish in 2010 to claim the dish as their own?",
+        "answer": "Lebanon",
+        "distractors": [
+          "Israel",
+          "Jordan",
+          "Syria"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Lebanon's 2010 world-record hummus bowl was a response to which country also claiming hummus as its dish?",
+        "answer": "Israel",
+        "distractors": [
+          "Jordan",
+          "Greece",
+          "Turkey"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Lebanon made a world-record hummus dish in 2010 to assert national ownership of the food.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Lebanon made a 10-tonne hummus dish in 2010 in the so-called 'hummus ___' with Israel.",
+        "answer": "Wars",
+        "distractors": [
+          "Contest",
+          "Festival",
+          "Dispute"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hummus#Cultural_and_political_dispute",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "Involves Israeli-Lebanese political context",
+    "visualDescription": "An enormous hummus-filled satellite dish surrounded by Lebanese chefs celebrating a world record, pixel art Middle Eastern cityscape.",
+    "tags": ["hummus", "Lebanon", "Israel", "world record", "food politics"]
+  },
+  {
+    "id": "food-hummus-ancient",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "middle_eastern_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "middle_eastern_cuisine",
+    "categoryL3": "",
+    "statement": "Chickpeas have been cultivated in the Middle East for at least 7,500 years, making hummus one of the oldest prepared foods still eaten in its original form.",
+    "quizQuestion": "How long have chickpeas, the base of hummus, been cultivated?",
+    "correctAnswer": "7,500 years",
+    "distractors": [
+      "500 years",
+      "1,000 years",
+      "2,000 years",
+      "3,500 years",
+      "10,000 years",
+      "500 years",
+      "4,000 years",
+      "6,000 years"
+    ],
+    "acceptableAnswers": [
+      "7,500 years",
+      "over 7,000 years",
+      "at least 7,000 years"
+    ],
+    "explanation": "Archaeological evidence from Israel's Neolithic sites shows chickpeas being cultivated around 7,500 years ago. Written recipes for a dish resembling hummus appear in 13th-century Egyptian manuscripts. Chickpeas were central to the diet of ancient Mesopotamia, Egypt, Greece, and Rome. Hummus may be the closest living link to ancient Levantine cuisine.",
+    "wowFactor": "Hummus may be over 7,000 years old — making it one of the few foods eaten today in essentially the same form as in the Stone Age.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long have chickpeas been cultivated in the Middle East, making hummus one of the oldest foods?",
+        "answer": "7,500 years",
+        "distractors": [
+          "2,000 years",
+          "3,500 years",
+          "4,000 years"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "7,500-year-old cultivation records of which legume make hummus one of humanity's oldest prepared foods?",
+        "answer": "Chickpeas",
+        "distractors": [
+          "Lentils",
+          "Fava beans",
+          "Soybeans"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Chickpeas have been cultivated in the Middle East for at least 7,500 years.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Chickpeas have been farmed for ___ years, making hummus one of the oldest still-eaten foods.",
+        "answer": "7,500",
+        "distractors": [
+          "2,000",
+          "500",
+          "4,000"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Chickpea#History",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Neolithic farmer in the Levant tending chickpea plants, ancient stone tools nearby, modern hummus bowl inset, pixel art style.",
+    "tags": ["hummus", "chickpeas", "Neolithic", "ancient food", "Middle East"]
+  },
+  {
+    "id": "food-ramen-umami",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Ramen broth is renowned for its umami depth, achieved by simmering bones, kombu seaweed, and dried mushrooms for hours to extract glutamate compounds.",
+    "quizQuestion": "Which amino acid compound gives ramen broth its deep umami flavour?",
+    "correctAnswer": "Glutamate",
+    "distractors": [
+      "Sucrose",
+      "Capsaicin",
+      "Fructose",
+      "Citric acid",
+      "Acetic acid",
+      "Lactic acid",
+      "Tannin",
+      "Menthol"
+    ],
+    "acceptableAnswers": [
+      "Glutamate",
+      "glutamic acid",
+      "MSG"
+    ],
+    "explanation": "Umami is the fifth basic taste, identified by Japanese chemist Kikunae Ikeda in 1908. It is driven by glutamate compounds found naturally in kombu seaweed, dried shiitake mushrooms, soy sauce, and meat. When ramen broth is simmered for 12–18 hours, bones release collagen that becomes gelatin, and proteins break down into free glutamate — creating the complex savoury depth the dish is famous for.",
+    "wowFactor": "Umami was dismissed by Western scientists for 80 years after its discovery in 1908 — ramen chefs were engineering it long before science acknowledged the fifth taste existed.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What flavour compound, extracted by hours of simmering, gives ramen broth its savouriness?",
+        "answer": "Glutamate",
+        "distractors": [
+          "Sucrose",
+          "Capsaicin",
+          "Tannin"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Glutamate compounds extracted from kombu and bones are the source of which Japanese broth's deep flavour?",
+        "answer": "Ramen",
+        "distractors": [
+          "Miso soup",
+          "Dashi",
+          "Tom yum"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ramen broth's deep flavour comes from glutamate compounds extracted by long simmering.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ramen's deep umami comes from ___ compounds released by simmering bones, kombu, and mushrooms for hours.",
+        "answer": "Glutamate",
+        "distractors": [
+          "sucrose",
+          "tannin",
+          "capsaicin"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Umami",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A huge stock pot simmering with bones, kombu, and mushrooms in a Japanese ramen kitchen, steam rising, pixel art warm amber tones.",
+    "tags": ["ramen", "umami", "glutamate", "Japanese cuisine", "broth"]
+  },
+  {
+    "id": "food-ramen-origins",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Ramen was introduced to Japan by Chinese immigrants in the late 19th century and only became a nationwide staple after World War II, when cheap US wheat flooded Japan.",
+    "quizQuestion": "What food event made ramen a nationwide Japanese staple after World War II?",
+    "correctAnswer": "Cheap US wheat imports",
+    "distractors": [
+      "Japanese rice shortages",
+      "Chinese immigration surge",
+      "American GI rations",
+      "Meiji industrial growth",
+      "Tokyo restaurant boom",
+      "Government food subsidies",
+      "Korean War rationing",
+      "Osaka noodle factories"
+    ],
+    "acceptableAnswers": [
+      "Cheap US wheat imports",
+      "US wheat surplus",
+      "American wheat aid"
+    ],
+    "explanation": "Chinese immigrants brought Chinese-style wheat noodles to Japan in the Meiji era (1868–1912). But ramen only exploded nationwide after WWII when the US dumped surplus wheat into Japan, making wheat noodles far cheaper than rice. The Japanese government promoted wheat products to absorb the surplus. By the 1950s, ramen stalls spread across Japan, and in 1958 Momofuku Ando invented instant ramen.",
+    "wowFactor": "Ramen became Japan's soul food because of American foreign policy — post-WWII US wheat dumps made wheat noodles cheaper than Japanese rice overnight.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "After WWII, what made wheat ramen dramatically cheaper than rice in Japan?",
+        "answer": "US wheat surplus imports",
+        "distractors": [
+          "Japanese rice blight",
+          "Chinese noodle factories",
+          "Government food rationing"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Ramen was introduced to Japan by immigrants from which country in the late 19th century?",
+        "answer": "China",
+        "distractors": [
+          "Korea",
+          "Vietnam",
+          "Thailand"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ramen became a nationwide Japanese staple partly because of US wheat exports after WWII.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Post-WWII ramen's rise in Japan was fuelled by surplus ___ wheat imports making noodles cheaper than rice.",
+        "answer": "American",
+        "distractors": [
+          "Chinese",
+          "Soviet",
+          "Australian"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ramen#History",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Post-WWII US-Japan relations context",
+    "visualDescription": "A ramen stall in 1950s Tokyo, US wheat bags visible in background, bowls of steaming noodles served to hungry workers, pixel art style.",
+    "tags": ["ramen", "Japan", "WWII", "wheat", "US foreign policy"]
+  },
+  {
+    "id": "food-ramen-instant",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "asian_cuisine",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "asian_cuisine",
+    "categoryL3": "",
+    "statement": "Momofuku Ando invented instant ramen in 1958 by flash-frying noodles to dehydrate them, creating the world's best-selling noodle product.",
+    "quizQuestion": "What cooking technique did Momofuku Ando use to invent instant ramen in 1958?",
+    "correctAnswer": "Flash-frying noodles",
+    "distractors": [
+      "Freeze-drying noodles",
+      "Sun-drying noodles",
+      "Air-drying noodles",
+      "Oven-baking noodles",
+      "Steam-pressing noodles",
+      "Salt-curing noodles",
+      "Microwave-drying noodles",
+      "Smoking the noodles"
+    ],
+    "acceptableAnswers": [
+      "Flash-frying noodles",
+      "flash frying",
+      "deep frying"
+    ],
+    "explanation": "Momofuku Ando (founder of Nissin Foods) invented instant ramen in 1958 after observing people queuing for ramen in post-war Japan. He discovered that briefly frying noodles in hot oil dehydrated them while creating micro-pores that allowed boiling water to rehydrate them in minutes. Chicken Ramen became the world's first instant noodle. Today over 100 billion servings of instant ramen are consumed annually.",
+    "wowFactor": "Over 100 billion servings of instant ramen are eaten every year — all descended from one man's 1958 discovery that frying noodles creates instant food.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How did Momofuku Ando dehydrate noodles to create instant ramen in 1958?",
+        "answer": "Flash-frying them",
+        "distractors": [
+          "Freeze-drying them",
+          "Sun-drying them",
+          "Oven-baking them"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Momofuku Ando's 1958 invention of instant ramen founded which major food company?",
+        "answer": "Nissin Foods",
+        "distractors": [
+          "Kikkoman",
+          "Maruchan",
+          "Nongshim"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Instant ramen was invented in 1958 by flash-frying noodles to dehydrate them.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Momofuku Ando invented instant ramen by ___ noodles in hot oil to rapidly dehydrate them.",
+        "answer": "Flash-frying",
+        "distractors": [
+          "freeze-drying",
+          "sun-drying",
+          "baking"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Instant_noodle",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A 1950s inventor beside an industrial fryer with noodles emerging dry and golden, Chicken Ramen packaging prototype on a bench, pixel art style.",
+    "tags": ["ramen", "instant noodles", "Momofuku Ando", "Nissin", "1958"]
+  },
+  {
+    "id": "food-cake-birthday",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "baking_desserts",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "baking_desserts",
+    "categoryL3": "",
+    "statement": "The tradition of putting candles on a birthday cake originated in 18th-century Germany, where children's birthday parties called 'Kinderfest' featured a candle for each year of life.",
+    "quizQuestion": "In which country did the birthday cake candle tradition originate?",
+    "correctAnswer": "Germany",
+    "distractors": [
+      "France",
+      "England",
+      "United States",
+      "Italy",
+      "Austria",
+      "Netherlands",
+      "Sweden",
+      "Denmark"
+    ],
+    "acceptableAnswers": [
+      "Germany",
+      "German"
+    ],
+    "explanation": "The Kinderfest ('children's festival') tradition in 18th-century Germany involved placing candles on a sweet cake — one for each year of life plus one for 'the light of life.' The candles were kept burning all day and extinguished after dinner, when a wish was made. Johann Wolfgang von Goethe described this tradition in his 1774 work.",
+    "wowFactor": "The birthday candle tradition is 250 years old and German — one candle per year of life, kept burning all day until blown out after dinner.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Birthday cake candles originated in 18th-century children's parties called Kinderfest in which country?",
+        "answer": "Germany",
+        "distractors": [
+          "France",
+          "England",
+          "United States"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The 18th-century German tradition of Kinderfest introduced which now-universal birthday celebration element?",
+        "answer": "Candles on cake",
+        "distractors": [
+          "Singing happy birthday",
+          "Making a birthday wish",
+          "Wrapping presents"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The birthday cake candle tradition started in 18th-century Germany.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Birthday candles originated at German children's parties called ___ in the 18th century.",
+        "answer": "Kinderfest",
+        "distractors": [
+          "Geburtstag",
+          "Karneval",
+          "Fasching"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Birthday_cake",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An 18th-century German child's birthday celebration with a candle-lit cake in a cosy timbered room, Kinderfest banner, pixel art style.",
+    "tags": ["cake", "birthday", "Germany", "Kinderfest", "candles"]
+  },
+  {
+    "id": "food-cake-maillard",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "food_science",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "food_science",
+    "categoryL3": "",
+    "statement": "Cake's golden-brown crust is created by the Maillard reaction — a chemical process between amino acids and sugars above 140°C that produces hundreds of new flavour and aroma compounds.",
+    "quizQuestion": "Which chemical reaction creates cake's golden-brown crust?",
+    "correctAnswer": "Maillard reaction",
+    "distractors": [
+      "Caramelisation",
+      "Fermentation",
+      "Oxidation",
+      "Hydrolysis",
+      "Saponification",
+      "Emulsification",
+      "Gelatinisation",
+      "Denaturation"
+    ],
+    "acceptableAnswers": [
+      "Maillard reaction",
+      "Maillard",
+      "browning reaction"
+    ],
+    "explanation": "The Maillard reaction (named after French chemist Louis-Camille Maillard) occurs when amino acids and reducing sugars react at temperatures above 140–165°C. It is distinct from caramelisation, which involves only sugars. The Maillard reaction creates hundreds of aroma and flavour compounds responsible for the brown colour and delicious smell of baked cakes, bread crusts, roasted meat, and coffee.",
+    "wowFactor": "The smell of baking cake is caused by hundreds of different molecules simultaneously created by the Maillard reaction — a chemistry process happening in every oven on Earth.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What chemical reaction between amino acids and sugars above 140°C gives cake its golden crust?",
+        "answer": "Maillard reaction",
+        "distractors": [
+          "Caramelisation",
+          "Oxidation",
+          "Fermentation"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Maillard reaction creating golden crusts occurs when baking cake, roasting meat, and making which beverage?",
+        "answer": "Coffee",
+        "distractors": [
+          "Tea",
+          "Beer",
+          "Wine"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Maillard reaction creates the golden-brown colour and flavour of baked cake.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Cake's golden crust is formed by the ___ reaction between amino acids and sugars above 140°C.",
+        "answer": "Maillard",
+        "distractors": [
+          "caramelisation",
+          "fermentation",
+          "oxidation"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Maillard_reaction",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A golden cake emerging from an oven with a chemistry diagram showing amino acids and sugars reacting at high temperature, pixel art style.",
+    "tags": ["cake", "Maillard reaction", "food science", "baking", "browning"]
+  },
+  {
+    "id": "food-cake-fruitcake",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "baking_desserts",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "baking_desserts",
+    "categoryL3": "",
+    "statement": "Fruitcake soaked in alcohol can last for decades — a 2017 expedition found a 106-year-old fruitcake in Antarctica left by Robert Scott's 1910–1913 expedition, still edible.",
+    "quizQuestion": "How old was a fruitcake found in Antarctica in 2017 from Scott's expedition?",
+    "correctAnswer": "106 years old",
+    "distractors": [
+      "10 years old",
+      "25 years old",
+      "50 years old",
+      "75 years old",
+      "15 years old",
+      "200 years old",
+      "80 years old",
+      "30 years old"
+    ],
+    "acceptableAnswers": [
+      "106 years old",
+      "over 100 years old",
+      "about 106 years"
+    ],
+    "explanation": "In 2017, conservators from the Antarctic Heritage Trust discovered a fruitcake tin in one of Robert Falcon Scott's expedition huts at Cape Adare. The tin contained a nearly century-and-a-half-old fruitcake still in 'excellent' condition — still smelling of fruit and alcohol. Fruitcake's combination of alcohol, sugar, and minimal water content makes it extraordinarily shelf-stable.",
+    "wowFactor": "Antarctica's deep freeze preserved a 106-year-old fruitcake from Robert Scott's doomed South Pole expedition — and it was still edible.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How old was the fruitcake found in 2017 in Robert Scott's Antarctic expedition hut?",
+        "answer": "106 years old",
+        "distractors": [
+          "50 years old",
+          "25 years old",
+          "200 years old"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A 106-year-old fruitcake was found in which polar explorer's hut in 2017?",
+        "answer": "Robert Scott",
+        "distractors": [
+          "Roald Amundsen",
+          "Ernest Shackleton",
+          "Douglas Mawson"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A fruitcake from Robert Scott's 1910 Antarctic expedition was found still edible in 2017.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "A 106-year-old fruitcake from Scott's ___ expedition was found in excellent condition in 2017.",
+        "answer": "Antarctic",
+        "distractors": [
+          "Arctic",
+          "Himalayan",
+          "Siberian"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fruitcake",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "An Antarctic explorer opening a century-old tin to find a perfectly preserved fruitcake in an icy hut, pixel art style with frozen landscape.",
+    "tags": ["cake", "fruitcake", "Antarctica", "Robert Scott", "preservation"]
+  }
+]

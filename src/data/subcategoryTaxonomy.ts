@@ -108,6 +108,26 @@ export const SUBCATEGORY_TAXONOMY: Partial<Record<CanonicalFactDomain, Subcatego
     { id: 'architectural_styles', label: 'Architectural Styles', description: 'Gothic, Baroque, Art Deco, Brutalism, Modernism' },
     { id: 'engineering_design', label: 'Engineering & Design', description: 'Structural engineering, bridges, dams, infrastructure' },
   ],
+  language: [
+    { id: 'chinese_hsk1', label: 'Chinese HSK 1', description: 'HSK Level 1 (A1) beginner Chinese vocabulary' },
+    { id: 'chinese_hsk2', label: 'Chinese HSK 2', description: 'HSK Level 2 (A2) elementary Chinese vocabulary' },
+    { id: 'chinese_hsk3', label: 'Chinese HSK 3', description: 'HSK Level 3 (B1) intermediate Chinese vocabulary' },
+    { id: 'chinese_hsk4', label: 'Chinese HSK 4', description: 'HSK Level 4 (B2) upper-intermediate Chinese vocabulary' },
+    { id: 'chinese_hsk5', label: 'Chinese HSK 5', description: 'HSK Level 5 (C1) advanced Chinese vocabulary' },
+    { id: 'chinese_hsk6', label: 'Chinese HSK 6', description: 'HSK Level 6 (C2) proficient Chinese vocabulary' },
+    { id: 'chinese_hsk7', label: 'Chinese HSK 7-9', description: 'HSK Level 7-9 (C2+) mastery Chinese vocabulary' },
+    { id: 'japanese_n5', label: 'Japanese N5', description: 'JLPT N5 beginner Japanese vocabulary' },
+    { id: 'japanese_n4', label: 'Japanese N4', description: 'JLPT N4 elementary Japanese vocabulary' },
+    { id: 'japanese_n3', label: 'Japanese N3', description: 'JLPT N3 intermediate Japanese vocabulary' },
+    { id: 'japanese_n2', label: 'Japanese N2', description: 'JLPT N2 upper-intermediate Japanese vocabulary' },
+    { id: 'japanese_n1', label: 'Japanese N1', description: 'JLPT N1 advanced Japanese vocabulary' },
+    { id: 'spanish_vocab', label: 'Spanish', description: 'Spanish vocabulary (CEFR-leveled)' },
+    { id: 'french_vocab', label: 'French', description: 'French vocabulary (CEFR-leveled)' },
+    { id: 'german_vocab', label: 'German', description: 'German vocabulary (CEFR-leveled)' },
+    { id: 'dutch_vocab', label: 'Dutch', description: 'Dutch vocabulary (CEFR-leveled)' },
+    { id: 'czech_vocab', label: 'Czech', description: 'Czech vocabulary (frequency-inferred CEFR levels)' },
+    { id: 'korean_vocab', label: 'Korean', description: 'Korean vocabulary (TOPIK-leveled)' },
+  ],
 }
 
 /** Look up the display label for a subcategory ID within a domain. Returns the raw ID if not found. */

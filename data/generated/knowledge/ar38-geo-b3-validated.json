@@ -1,0 +1,2301 @@
+[
+  {
+    "id": "geo-nigeria-most-populous-africa",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "Africa",
+    "statement": "Nigeria is the most populous country in Africa, with over 220 million people, and is projected to be the world's third-largest country by 2050.",
+    "quizQuestion": "Which country is the most populous in Africa?",
+    "correctAnswer": "Nigeria",
+    "distractors": [
+      "Ethiopia",
+      "Egypt",
+      "South Africa",
+      "Democratic Republic of Congo",
+      "Tanzania",
+      "Kenya",
+      "Algeria",
+      "Sudan"
+    ],
+    "acceptableAnswers": [
+      "Nigeria"
+    ],
+    "explanation": "Nigeria has over 220 million people as of 2024, more than any other African nation. Its rapid population growth means it could become the world's third most populous country by 2050, behind only India and China.",
+    "wowFactor": "By 2050, Nigeria's population is projected to surpass the US — a country on a different continent with more than 100 years of industrial head start.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many people live in Nigeria?",
+        "answer": "Over 220 million",
+        "distractors": [
+          "About 50 million",
+          "About 100 million",
+          "About 500 million"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which African country is projected to become the world's 3rd most populous by 2050?",
+        "answer": "Nigeria",
+        "distractors": [
+          "Ethiopia",
+          "Egypt",
+          "South Africa"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Nigeria is currently the most populous country in Africa?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Ethiopia is larger",
+          "Egypt is larger"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "___ is the most populous country in Africa with over 220 million people.",
+        "answer": "Nigeria",
+        "distractors": [
+          "Ethiopia",
+          "Egypt",
+          "Kenya"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "UN World Population Prospects",
+    "sourceUrl": "https://population.un.org/wpp/",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A map of Africa with Nigeria highlighted, crowds of tiny pixel people spilling out from its borders.",
+    "tags": [
+      "Nigeria",
+      "Africa",
+      "population",
+      "geography",
+      "demographics"
+    ]
+  },
+  {
+    "id": "geo-nigeria-oil-economy",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "Africa",
+    "statement": "Nigeria is Africa's largest oil producer, with vast reserves in the Niger Delta, making oil its dominant export and economic driver.",
+    "quizQuestion": "Which natural resource dominates Nigeria's economy?",
+    "correctAnswer": "Oil",
+    "distractors": [
+      "Gold",
+      "Diamonds",
+      "Coltan",
+      "Copper",
+      "Natural gas only",
+      "Timber",
+      "Coal",
+      "Uranium"
+    ],
+    "acceptableAnswers": [
+      "Oil",
+      "Petroleum",
+      "Crude oil"
+    ],
+    "explanation": "Nigeria is Africa's largest crude oil producer and a major OPEC member. The Niger Delta region holds most of the reserves. Oil accounts for roughly 90% of Nigeria's export revenue.",
+    "wowFactor": "Nigeria earns 90% of its export income from oil — yet most Nigerians have no reliable electricity, highlighting the 'resource curse' that can trap oil-rich nations.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What percentage of Nigeria's export revenue does oil account for?",
+        "answer": "About 90%",
+        "distractors": [
+          "About 20%",
+          "About 50%",
+          "About 10%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In which Nigerian region are most oil reserves found?",
+        "answer": "Niger Delta",
+        "distractors": [
+          "Lake Chad basin",
+          "Sahel region",
+          "Guinea coast"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Nigeria is Africa's largest oil producer?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Libya is larger",
+          "Angola is larger"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Nigeria's oil reserves are mainly in the ___ Delta region.",
+        "answer": "Niger",
+        "distractors": [
+          "Congo",
+          "Nile",
+          "Volta"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "OPEC",
+    "sourceUrl": "https://www.opec.org/opec_web/en/about_us/167.htm",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Oil derricks rising from a lush green delta, a map of Nigeria below with OPEC emblem, pixel art style.",
+    "tags": [
+      "Nigeria",
+      "oil",
+      "Niger Delta",
+      "Africa",
+      "economy"
+    ]
+  },
+  {
+    "id": "geo-nigeria-nollywood",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "Africa",
+    "statement": "Nigeria's film industry, known as Nollywood, is the second-largest in the world by volume of films produced annually, after India's Bollywood.",
+    "quizQuestion": "Which country has the world's second-largest film industry by volume?",
+    "correctAnswer": "Nigeria",
+    "distractors": [
+      "United States",
+      "China",
+      "South Korea",
+      "France",
+      "Japan",
+      "Brazil",
+      "Egypt",
+      "Mexico"
+    ],
+    "acceptableAnswers": [
+      "Nigeria",
+      "Nollywood"
+    ],
+    "explanation": "Nollywood produces over 2,000 films per year, more than Hollywood and second only to Bollywood. Nigerian films are widely distributed across Africa and in diaspora communities worldwide.",
+    "wowFactor": "Nollywood produces over 2,500 films a year — more than twice Hollywood's output — often filmed with consumer cameras in days, not months.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the nickname for Nigeria's film industry?",
+        "answer": "Nollywood",
+        "distractors": [
+          "Lollywood",
+          "Kollywood",
+          "Tollywood"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Nollywood produces over 2,000 films annually — which country does this refer to?",
+        "answer": "Nigeria",
+        "distractors": [
+          "India",
+          "Egypt",
+          "South Africa"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Nigeria's Nollywood produces more films annually than Hollywood?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Hollywood produces more",
+          "They produce the same"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Nigeria's film industry is known as ___, the world's second largest by volume.",
+        "answer": "Nollywood",
+        "distractors": [
+          "Bollywood",
+          "Hollywood",
+          "Kollywood"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "UNESCO",
+    "sourceUrl": "https://en.unesco.org/creativity/policy-monitoring-platform/nollywood-culture-economy",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A movie clapper board with 'Nollywood' written on it, colorful movie posters filling the background in Lagos, pixel art style.",
+    "tags": [
+      "Nigeria",
+      "Nollywood",
+      "film",
+      "Africa",
+      "culture"
+    ]
+  },
+  {
+    "id": "geo-chile-longest-country",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "South_America",
+    "statement": "Chile is the world's longest country, stretching 4,300 km from north to south along South America's Pacific coast.",
+    "quizQuestion": "Which country is the world's longest from north to south?",
+    "correctAnswer": "Chile",
+    "distractors": [
+      "Argentina",
+      "Brazil",
+      "Russia",
+      "Norway",
+      "Canada",
+      "Peru",
+      "Colombia",
+      "Bolivia"
+    ],
+    "acceptableAnswers": [
+      "Chile"
+    ],
+    "explanation": "Chile stretches about 4,300 km (2,670 miles) from the Atacama Desert in the north to Patagonia and Cape Horn in the south, while averaging only 177 km (110 miles) wide.",
+    "wowFactor": "Chile is so long that if you laid it across Europe it would stretch from London to Baghdad — yet it's barely as wide as Colorado.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how long is Chile from north to south?",
+        "answer": "4,300 km",
+        "distractors": [
+          "1,000 km",
+          "8,000 km",
+          "2,000 km"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "On which coast of South America does Chile sit?",
+        "answer": "Pacific coast",
+        "distractors": [
+          "Atlantic coast",
+          "Caribbean coast",
+          "Gulf coast"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Chile is the world's longest country from north to south?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Argentina is longer",
+          "Russia is longer"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Chile stretches ___ km from north to south, making it the world's longest country.",
+        "answer": "4,300",
+        "distractors": [
+          "1,000",
+          "8,000",
+          "2,000"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Britannica",
+    "sourceUrl": "https://www.britannica.com/place/Chile",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A map of South America with Chile's impossibly thin strip highlighted in red along the Pacific coast, pixel art style.",
+    "tags": [
+      "Chile",
+      "longest country",
+      "geography",
+      "South America",
+      "Pacific"
+    ]
+  },
+  {
+    "id": "geo-chile-atacama-desert",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "South_America",
+    "statement": "The Atacama Desert in northern Chile is the driest non-polar desert on Earth, with some areas receiving no measurable rainfall for centuries.",
+    "quizQuestion": "Which desert is the driest non-polar desert on Earth?",
+    "correctAnswer": "Atacama Desert",
+    "distractors": [
+      "Sahara Desert",
+      "Arabian Desert",
+      "Gobi Desert",
+      "Namib Desert",
+      "Mojave Desert",
+      "Patagonian Desert",
+      "Kalahari Desert",
+      "Sonoran Desert"
+    ],
+    "acceptableAnswers": [
+      "Atacama Desert",
+      "The Atacama",
+      "Atacama"
+    ],
+    "explanation": "The Atacama averages 1–3 mm of rainfall per year, and some weather stations there have never recorded rain. Its extreme dryness is caused by the cold Humboldt Current offshore and rain shadows from the Andes.",
+    "wowFactor": "Some parts of the Atacama have had no rain recorded in 400 years — yet it hosts some of the world's most powerful telescopes because the sky is perfectly clear.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What feature makes the Atacama ideal for astronomical telescopes?",
+        "answer": "Extremely clear, dry skies",
+        "distractors": [
+          "High altitude only",
+          "Magnetic stability",
+          "Low light pollution only"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which country contains the Atacama Desert, the driest non-polar desert?",
+        "answer": "Chile",
+        "distractors": [
+          "Peru",
+          "Bolivia",
+          "Argentina"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Some areas of the Atacama Desert have had no rain for centuries?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It rains monthly",
+          "It rains seasonally"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ Desert in northern Chile is the world's driest non-polar desert.",
+        "answer": "Atacama",
+        "distractors": [
+          "Sahara",
+          "Gobi",
+          "Namib"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "National Geographic",
+    "sourceUrl": "https://www.nationalgeographic.com/environment/article/atacama-desert",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cracked, bone-dry salt flat stretching to the horizon under a vivid night sky filled with stars, Andes mountains behind, pixel art style.",
+    "tags": [
+      "Atacama",
+      "desert",
+      "Chile",
+      "driest",
+      "geography"
+    ]
+  },
+  {
+    "id": "geo-chile-copper-producer",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "South_America",
+    "statement": "Chile is the world's largest producer of copper, accounting for roughly 27% of global supply, making it vital to global electronics manufacturing.",
+    "quizQuestion": "Which metal does Chile produce more of than any other country?",
+    "correctAnswer": "Copper",
+    "distractors": [
+      "Gold",
+      "Silver",
+      "Lithium",
+      "Iron",
+      "Zinc",
+      "Nickel",
+      "Tin",
+      "Cobalt"
+    ],
+    "acceptableAnswers": [
+      "Copper"
+    ],
+    "explanation": "Chile holds about 20% of the world's known copper reserves and produces 27% of annual global supply. The Escondida mine in the Atacama is the world's largest copper mine.",
+    "wowFactor": "Every iPhone, electric car, and computer on Earth contains Chilean copper — Chile's Atacama mines supply nearly a third of the world's entire copper demand.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What share of global copper supply does Chile produce?",
+        "answer": "About 27%",
+        "distractors": [
+          "About 5%",
+          "About 60%",
+          "About 10%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Escondida mine, the world's largest copper mine, is in which country?",
+        "answer": "Chile",
+        "distractors": [
+          "Peru",
+          "Australia",
+          "Zambia"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Chile is the world's largest copper producer?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Peru produces more",
+          "Congo produces more"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Chile produces about 27% of the world's ___, the most of any country.",
+        "answer": "copper",
+        "distractors": [
+          "gold",
+          "silver",
+          "lithium"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "USGS Mineral Resources",
+    "sourceUrl": "https://www.usgs.gov/centers/national-minerals-information-center/copper",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Giant open-pit copper mine carved into orange Atacama earth, copper-colored rivers flowing below, pixel art style.",
+    "tags": [
+      "Chile",
+      "copper",
+      "mining",
+      "economy",
+      "Atacama"
+    ]
+  },
+  {
+    "id": "geo-india-ganges-river",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "Asia",
+    "statement": "The Ganges River is India's most sacred river, flowing 2,525 km from the Himalayas to the Bay of Bengal and supporting over 400 million people.",
+    "quizQuestion": "From which mountains does the Ganges River originate?",
+    "correctAnswer": "The Himalayas",
+    "distractors": [
+      "Western Ghats",
+      "Vindhya Range",
+      "Eastern Ghats",
+      "Hindu Kush",
+      "Karakoram Range",
+      "Satpura Range",
+      "Deccan Plateau",
+      "Aravalli Hills"
+    ],
+    "acceptableAnswers": [
+      "The Himalayas",
+      "Himalayas",
+      "Himalayan mountains"
+    ],
+    "explanation": "The Ganges originates at Gangotri glacier in the Himalayas and flows southeast 2,525 km through northern India before emptying into the Bay of Bengal. It sustains roughly 40% of India's population.",
+    "wowFactor": "The Ganges is so sacred that Hindus believe bathing in it cleanses all sin — yet it is also one of the world's most polluted rivers, carrying industrial waste and sewage.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Into which body of water does the Ganges River empty?",
+        "answer": "Bay of Bengal",
+        "distractors": [
+          "Arabian Sea",
+          "Indian Ocean",
+          "Persian Gulf"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which sacred river supports over 400 million people in India?",
+        "answer": "Ganges",
+        "distractors": [
+          "Indus",
+          "Brahmaputra",
+          "Yamuna"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Ganges River originates in the Himalayan mountains?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It originates in the Deccan",
+          "It originates in Bangladesh"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Ganges flows from the ___ mountains to the Bay of Bengal.",
+        "answer": "Himalayas",
+        "distractors": [
+          "Western Ghats",
+          "Hindu Kush",
+          "Vindhya"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "National Geographic",
+    "sourceUrl": "https://www.nationalgeographic.com/environment/article/ganges-river",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A wide river winding from snowy Himalayan peaks through crowded Indian cities with temples on the banks, pixel art style.",
+    "tags": [
+      "India",
+      "Ganges",
+      "river",
+      "Himalayas",
+      "sacred"
+    ]
+  },
+  {
+    "id": "geo-india-1-4-billion-people",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "Asia",
+    "statement": "India surpassed China in 2023 to become the world's most populous country, with over 1.4 billion people.",
+    "quizQuestion": "Which country became the world's most populous in 2023?",
+    "correctAnswer": "India",
+    "distractors": [
+      "China",
+      "United States",
+      "Indonesia",
+      "Pakistan",
+      "Nigeria",
+      "Brazil",
+      "Bangladesh",
+      "Russia"
+    ],
+    "acceptableAnswers": [
+      "India"
+    ],
+    "explanation": "In 2023, India's population exceeded China's for the first time in modern history. India's younger demographic profile means it will remain the most populous country for decades while China's population declines.",
+    "wowFactor": "India and China together account for over 35% of all humans on Earth — roughly 1 in 3 people alive today is either Indian or Chinese.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year did India's population surpass China's?",
+        "answer": "2023",
+        "distractors": [
+          "2010",
+          "2030",
+          "2000"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which country did India surpass to become the world's most populous nation?",
+        "answer": "China",
+        "distractors": [
+          "United States",
+          "Indonesia",
+          "Pakistan"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: India became the world's most populous country in 2023?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "China is still more populous",
+          "The US surpassed India"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "India surpassed ___ in 2023 to become the world's most populous country.",
+        "answer": "China",
+        "distractors": [
+          "USA",
+          "Indonesia",
+          "Pakistan"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "UN Population Division",
+    "sourceUrl": "https://population.un.org/wpp/",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two maps of India and China side by side, with India's population counter ticking above China's, pixel art style.",
+    "tags": [
+      "India",
+      "population",
+      "China",
+      "demographics",
+      "2023"
+    ]
+  },
+  {
+    "id": "geo-india-independence-gandhi",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "Asia",
+    "statement": "India gained independence from British rule in 1947, following decades of nonviolent resistance led by Mahatma Gandhi.",
+    "quizQuestion": "When did India gain independence from Britain?",
+    "correctAnswer": "1947",
+    "distractors": [
+      "1776",
+      "1919",
+      "1960",
+      "1930",
+      "1956",
+      "1900",
+      "1969",
+      "1935"
+    ],
+    "acceptableAnswers": [
+      "1947",
+      "August 1947",
+      "Nineteen forty-seven"
+    ],
+    "explanation": "India's independence on August 15, 1947 ended nearly 200 years of British colonial rule. Gandhi's nonviolent civil disobedience movement (satyagraha) was pivotal, though independence also came alongside the violent Partition of India and Pakistan.",
+    "wowFactor": "When India gained independence, it held elections in 1952 — the largest democratic election in history at the time, with 173 million voters, most of whom were illiterate.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was Gandhi's term for his nonviolent resistance method?",
+        "answer": "Satyagraha",
+        "distractors": [
+          "Ahimsa",
+          "Dharma",
+          "Karma"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which independence leader used nonviolent civil disobedience against British rule?",
+        "answer": "Mahatma Gandhi",
+        "distractors": [
+          "Jawaharlal Nehru",
+          "Subhas Chandra Bose",
+          "Bhimrao Ambedkar"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: India gained independence from Britain in 1947?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It was 1919",
+          "It was 1960"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "India gained independence from Britain in ___, led by Mahatma Gandhi.",
+        "answer": "1947",
+        "distractors": [
+          "1919",
+          "1960",
+          "1930"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Britannica",
+    "sourceUrl": "https://www.britannica.com/event/Indian-Independence-Movement",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Gandhi leading a march along a dusty Indian road, the British Raj flag lowering behind him, crowds stretching to the horizon, pixel art style.",
+    "tags": [
+      "India",
+      "independence",
+      "Gandhi",
+      "1947",
+      "British rule"
+    ]
+  },
+  {
+    "id": "geo-uk-four-countries",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "Europe",
+    "statement": "The United Kingdom is made up of four countries: England, Scotland, Wales, and Northern Ireland, each with distinct cultures and histories.",
+    "quizQuestion": "How many countries make up the United Kingdom?",
+    "correctAnswer": "Four countries",
+    "distractors": [
+      "Two countries",
+      "One country",
+      "Three countries",
+      "Five countries",
+      "Six countries",
+      "Eight countries",
+      "Seven countries",
+      "Ten countries"
+    ],
+    "acceptableAnswers": [
+      "Four countries",
+      "4 countries",
+      "Four"
+    ],
+    "explanation": "The UK comprises England, Scotland, Wales (which together form Great Britain), and Northern Ireland. Each has its own devolved parliament or assembly, though defense and foreign policy are controlled by Westminster.",
+    "wowFactor": "Each of the UK's four countries has its own football (soccer) team that competes internationally — which is uniquely allowed by FIFA despite being one nation politically.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which four countries make up the United Kingdom?",
+        "answer": "England, Scotland, Wales, N. Ireland",
+        "distractors": [
+          "England, Scotland, Wales, Ireland",
+          "England, Scotland, Wales, Cornwall",
+          "England, Scotland, Ireland, Guernsey"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "England, Scotland, and Wales together form which island?",
+        "answer": "Great Britain",
+        "distractors": [
+          "British Isles",
+          "Britannia",
+          "United Kingdom"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The United Kingdom is made up of four separate countries?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It is one country",
+          "It is two countries"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The UK is made up of England, Scotland, Wales, and ___ Ireland.",
+        "answer": "Northern",
+        "distractors": [
+          "Southern",
+          "Eastern",
+          "Western"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "UK Government",
+    "sourceUrl": "https://www.gov.uk/government/how-government-works",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A map of the British Isles with England, Scotland, Wales, and Northern Ireland each colored differently and labeled, pixel art style.",
+    "tags": [
+      "UK",
+      "United Kingdom",
+      "countries",
+      "England",
+      "Scotland"
+    ]
+  },
+  {
+    "id": "geo-uk-brexit",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "Europe",
+    "statement": "In 2020, the United Kingdom formally left the European Union following the 2016 Brexit referendum vote, becoming the first EU member to leave.",
+    "quizQuestion": "In what year did the UK formally leave the European Union?",
+    "correctAnswer": "2020",
+    "distractors": [
+      "2016",
+      "2019",
+      "2018",
+      "2022",
+      "2015",
+      "2012",
+      "2025",
+      "2010"
+    ],
+    "acceptableAnswers": [
+      "2020",
+      "January 2020"
+    ],
+    "explanation": "The UK voted 52% to leave the EU in a June 2016 referendum. After years of negotiations, the UK officially left on January 31, 2020. A transition period lasted until December 31, 2020.",
+    "wowFactor": "Brexit was the first time a country had ever left the European Union — rewriting political and economic ties that had been built over nearly 50 years of membership.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What percentage voted to leave the EU in the 2016 Brexit referendum?",
+        "answer": "52%",
+        "distractors": [
+          "62%",
+          "48%",
+          "70%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Brexit was the first time a country left the EU — which country was it?",
+        "answer": "United Kingdom",
+        "distractors": [
+          "Greece",
+          "France",
+          "Italy"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The UK formally left the European Union in 2020?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It left in 2016",
+          "It has not yet left"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The UK voted to leave the EU in the 2016 ___ referendum.",
+        "answer": "Brexit",
+        "distractors": [
+          "Frexit",
+          "Union",
+          "Independence"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "BBC News",
+    "sourceUrl": "https://www.bbc.co.uk/news/politics/uk-eu-referendum",
+    "contentVolatility": "current",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Political topic — framed factually without taking sides",
+    "visualDescription": "A Union Jack flag and EU circle of stars slowly separating apart, Big Ben in the middle, pixel art style.",
+    "tags": [
+      "UK",
+      "Brexit",
+      "European Union",
+      "2020",
+      "politics"
+    ]
+  },
+  {
+    "id": "geo-jerusalem-three-religions",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_cities",
+    "categoryL1": "Geography",
+    "categoryL2": "world_cities",
+    "categoryL3": "Middle_East",
+    "statement": "Jerusalem is a holy city for three major religions — Judaism, Christianity, and Islam — each with sacred sites within the city.",
+    "quizQuestion": "How many major religions consider Jerusalem a holy city?",
+    "correctAnswer": "Three religions",
+    "distractors": [
+      "One religion",
+      "Two religions",
+      "Four religions",
+      "Five religions",
+      "Six religions",
+      "All religions equally",
+      "Only monotheistic faiths",
+      "Seven religions"
+    ],
+    "acceptableAnswers": [
+      "Three religions",
+      "3 religions",
+      "Judaism, Christianity, Islam"
+    ],
+    "explanation": "Judaism's Western Wall, Christianity's Church of the Holy Sepulchre, and Islam's Al-Aqsa Mosque and Dome of the Rock are all within Jerusalem's Old City — making it uniquely sacred to all three Abrahamic faiths.",
+    "wowFactor": "The Temple Mount in Jerusalem contains both the holiest site in Judaism (underneath) and the third holiest site in Islam (on top) — stacked within a single city block.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the name of Islam's shrine on Jerusalem's Temple Mount?",
+        "answer": "Dome of the Rock",
+        "distractors": [
+          "Al-Kaaba",
+          "Hagia Sophia",
+          "Mount of Olives shrine"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Western Wall is a sacred site in Jerusalem for which religion?",
+        "answer": "Judaism",
+        "distractors": [
+          "Christianity",
+          "Islam",
+          "Zoroastrianism"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Jerusalem is considered holy by Judaism, Christianity, and Islam?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Only Judaism and Christianity",
+          "Only Islam and Judaism"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Jerusalem is a holy city for Judaism, Christianity, and ___.",
+        "answer": "Islam",
+        "distractors": [
+          "Hinduism",
+          "Buddhism",
+          "Zoroastrianism"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Britannica",
+    "sourceUrl": "https://www.britannica.com/place/Jerusalem",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Religious topic — factually framed, no advocacy",
+    "visualDescription": "Jerusalem's Old City skyline showing the Western Wall, Dome of the Rock, and Church of the Holy Sepulchre all side by side, pixel art style.",
+    "tags": [
+      "Jerusalem",
+      "holy city",
+      "religion",
+      "Judaism",
+      "Islam",
+      "Christianity"
+    ]
+  },
+  {
+    "id": "geo-jerusalem-oldest-city",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_cities",
+    "categoryL1": "Geography",
+    "categoryL2": "world_cities",
+    "categoryL3": "Middle_East",
+    "statement": "Jerusalem is one of the oldest cities in the world, with continuous human settlement dating back at least 5,000 years.",
+    "quizQuestion": "How long has Jerusalem been continuously settled?",
+    "correctAnswer": "At least 5,000 years",
+    "distractors": [
+      "About 500 years",
+      "About 2,000 years",
+      "About 1,000 years",
+      "About 200 years",
+      "About 10,000 years",
+      "About 3,000 years",
+      "About 100 years",
+      "About 7,500 years"
+    ],
+    "acceptableAnswers": [
+      "At least 5,000 years",
+      "5,000 years",
+      "About 5,000 years"
+    ],
+    "explanation": "Archaeological evidence shows settlement at Jerusalem going back to at least 3500 BCE, and possibly earlier. The city has been conquered, destroyed, and rebuilt over 40 times across its history.",
+    "wowFactor": "Jerusalem has been conquered and destroyed over 40 times throughout history — no other city on Earth has endured more conflict over so many millennia.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many times has Jerusalem been conquered or destroyed?",
+        "answer": "Over 40 times",
+        "distractors": [
+          "3 times",
+          "15 times",
+          "100 times"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which city, settled for 5,000 years, has been conquered over 40 times?",
+        "answer": "Jerusalem",
+        "distractors": [
+          "Rome",
+          "Athens",
+          "Babylon"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Jerusalem has been continuously settled for at least 5,000 years?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It was founded 2,000 years ago",
+          "It was founded in medieval times"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Jerusalem has continuous human settlement going back at least ___ years.",
+        "answer": "5,000",
+        "distractors": [
+          "500",
+          "2,000",
+          "10,000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Britannica",
+    "sourceUrl": "https://www.britannica.com/place/Jerusalem/History",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Historical topic about a contested city — framed around archaeology, no political claims",
+    "visualDescription": "Layers of a city visible in cross-section showing ancient walls, medieval streets, and modern skyline all stacked, pixel art style.",
+    "tags": [
+      "Jerusalem",
+      "ancient city",
+      "history",
+      "Middle East",
+      "archaeology"
+    ]
+  },
+  {
+    "id": "geo-ethiopia-oldest-african-nation",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "Africa",
+    "statement": "Ethiopia is one of Africa's oldest nations, never colonized by European powers, and is often considered the origin of coffee.",
+    "quizQuestion": "Which African country was never colonized and is the origin of coffee?",
+    "correctAnswer": "Ethiopia",
+    "distractors": [
+      "Nigeria",
+      "Kenya",
+      "Somalia",
+      "Sudan",
+      "Tanzania",
+      "Uganda",
+      "Rwanda",
+      "Zambia"
+    ],
+    "acceptableAnswers": [
+      "Ethiopia"
+    ],
+    "explanation": "Ethiopia was never colonized (defeating Italy at the Battle of Adwa in 1896) and remains a symbol of African independence. The Kaffa region of Ethiopia is the birthplace of coffee — the word 'coffee' itself may derive from 'Kaffa'.",
+    "wowFactor": "Coffee was discovered in Ethiopia when a goat herder noticed his goats became energetic after eating berries from a certain tree — a chance encounter that now fuels a $100 billion global industry.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "At which battle did Ethiopia defeat Italy in 1896?",
+        "answer": "Battle of Adwa",
+        "distractors": [
+          "Battle of Omdurman",
+          "Battle of Isandlwana",
+          "Battle of Majuba"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which country's Kaffa region is considered the birthplace of coffee?",
+        "answer": "Ethiopia",
+        "distractors": [
+          "Yemen",
+          "Brazil",
+          "Colombia"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ethiopia was never colonized by European powers?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It was colonized by Britain",
+          "It was colonized by Italy temporarily"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Coffee originated in Ethiopia's ___ region, giving coffee its name.",
+        "answer": "Kaffa",
+        "distractors": [
+          "Tigray",
+          "Oromia",
+          "Amhara"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "National Coffee Association",
+    "sourceUrl": "https://www.ncausa.org/About-Coffee/History-of-Coffee",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A goat herder in the Ethiopian highlands watching his goats dance among coffee berry trees at sunrise, pixel art style.",
+    "tags": [
+      "Ethiopia",
+      "coffee",
+      "Africa",
+      "never colonized",
+      "history"
+    ]
+  },
+  {
+    "id": "geo-ethiopia-lucy-human-ancestor",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "Africa",
+    "statement": "Ethiopia is home to 'Lucy', a 3.2-million-year-old Australopithecus fossil discovered in 1974, one of humanity's oldest known ancestors.",
+    "quizQuestion": "Where was 'Lucy', one of humanity's oldest ancestors, discovered?",
+    "correctAnswer": "Ethiopia",
+    "distractors": [
+      "Kenya",
+      "South Africa",
+      "Tanzania",
+      "Chad",
+      "Morocco",
+      "Egypt",
+      "Zambia",
+      "Sudan"
+    ],
+    "acceptableAnswers": [
+      "Ethiopia"
+    ],
+    "explanation": "Lucy (Australopithecus afarensis) was found in the Afar region of Ethiopia in 1974 by paleoanthropologist Donald Johanson. She lived 3.2 million years ago and walked upright, bridging apes and modern humans.",
+    "wowFactor": "Lucy was named after the Beatles song 'Lucy in the Sky with Diamonds,' which was playing in the camp when the fossil was discovered — one of science's most famous naming moments.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How old is the 'Lucy' fossil discovered in Ethiopia?",
+        "answer": "3.2 million years",
+        "distractors": [
+          "50,000 years",
+          "1 million years",
+          "10 million years"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What species is the 'Lucy' fossil, found in Ethiopia in 1974?",
+        "answer": "Australopithecus afarensis",
+        "distractors": [
+          "Homo erectus",
+          "Homo habilis",
+          "Neanderthal"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: 'Lucy' was named after a Beatles song playing when she was discovered?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "She was named after the discoverer's daughter",
+          "She was named after a river"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The 'Lucy' fossil, found in ___, is 3.2 million years old.",
+        "answer": "Ethiopia",
+        "distractors": [
+          "Kenya",
+          "Tanzania",
+          "South Africa"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Smithsonian Human Origins",
+    "sourceUrl": "https://humanorigins.si.edu/evidence/human-fossils/fossils/al-288-1",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A partial skeleton fossil glowing in an Ethiopian cave, a young scientist brushing dust away, Beatles album art on a cassette nearby, pixel art style.",
+    "tags": [
+      "Ethiopia",
+      "Lucy",
+      "fossil",
+      "human ancestor",
+      "archaeology"
+    ]
+  },
+  {
+    "id": "geo-ethiopia-nile-source",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "Africa",
+    "statement": "The Blue Nile, which provides about 85% of the Nile River's water, originates from Lake Tana in the Ethiopian highlands.",
+    "quizQuestion": "Where does the Blue Nile originate?",
+    "correctAnswer": "Lake Tana, Ethiopia",
+    "distractors": [
+      "Lake Victoria, Uganda",
+      "Lake Malawi, Malawi",
+      "Lake Tanganyika, Tanzania",
+      "Mount Kilimanjaro, Tanzania",
+      "Lake Chad, Chad",
+      "Ruwenzori Mountains, Uganda",
+      "Lake Turkana, Kenya",
+      "Nile Delta, Egypt"
+    ],
+    "acceptableAnswers": [
+      "Lake Tana, Ethiopia",
+      "Lake Tana",
+      "Ethiopia"
+    ],
+    "explanation": "Lake Tana in the Ethiopian highlands feeds the Blue Nile, which flows north and west into Sudan, joining the White Nile at Khartoum. The Blue Nile contributes 85% of the Nile's annual flow.",
+    "wowFactor": "The Blue Nile brings Ethiopia's fertile highland soil all the way to Egypt — the ancient Egyptians called the Nile flood season 'Akhet' and owed their entire civilization to Ethiopian rains.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What percentage of the Nile's water comes from the Blue Nile?",
+        "answer": "About 85%",
+        "distractors": [
+          "About 15%",
+          "About 50%",
+          "About 30%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Blue Nile originates from Lake Tana — in which country is this lake?",
+        "answer": "Ethiopia",
+        "distractors": [
+          "Uganda",
+          "Sudan",
+          "Kenya"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Blue Nile provides most of the Nile River's total water volume?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "The White Nile provides more",
+          "Both provide equal amounts"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Blue Nile originates from Lake ___ in the Ethiopian highlands.",
+        "answer": "Tana",
+        "distractors": [
+          "Victoria",
+          "Malawi",
+          "Turkana"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "National Geographic",
+    "sourceUrl": "https://www.nationalgeographic.com/environment/article/nile-river",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Lake Tana surrounded by Ethiopian highlands with the Blue Nile flowing north toward distant pyramids, pixel art style.",
+    "tags": [
+      "Ethiopia",
+      "Blue Nile",
+      "Lake Tana",
+      "Nile River",
+      "geography"
+    ]
+  },
+  {
+    "id": "geo-netherlands-below-sea-level",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "Europe",
+    "statement": "About 26% of the Netherlands lies below sea level, protected by an extensive network of dikes, polders, and water management systems.",
+    "quizQuestion": "What percentage of the Netherlands lies below sea level?",
+    "correctAnswer": "About 26%",
+    "distractors": [
+      "About 5%",
+      "About 80%",
+      "About 10%",
+      "About 50%",
+      "About 1%",
+      "About 60%",
+      "About 15%",
+      "About 90%"
+    ],
+    "acceptableAnswers": [
+      "About 26%",
+      "26%",
+      "Around a quarter",
+      "Nearly a third"
+    ],
+    "explanation": "The Dutch have been managing water for over a thousand years. About 26% of the country is below sea level, and 21% sits below the sea itself. The Delta Works is one of the largest flood-protection systems ever built.",
+    "wowFactor": "The Netherlands has reclaimed over 17% of its total land area from the sea — the Dutch did not simply adapt to their environment, they literally built a country from the ocean floor.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the Dutch name for reclaimed land below sea level?",
+        "answer": "Polder",
+        "distractors": [
+          "Dyke",
+          "Moat",
+          "Fjord"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which European country has built the most extensive sea-defense dike systems?",
+        "answer": "Netherlands",
+        "distractors": [
+          "Denmark",
+          "Belgium",
+          "Germany"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Netherlands has reclaimed land from the sea using polders and dikes?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "They imported fill from mountains",
+          "They use only natural barriers"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "About ___ % of the Netherlands lies below sea level.",
+        "answer": "26",
+        "distractors": [
+          "5",
+          "80",
+          "50"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Rijkswaterstaat",
+    "sourceUrl": "https://www.rijkswaterstaat.nl/water/waterbeheer/bescherming-tegen-het-water",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cross-section of the Dutch landscape showing roads and farms below the ocean waterline, held back by a massive dike, pixel art style.",
+    "tags": [
+      "Netherlands",
+      "below sea level",
+      "polders",
+      "dikes",
+      "geography"
+    ]
+  },
+  {
+    "id": "geo-netherlands-windmills",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "Europe",
+    "statement": "The Netherlands' iconic windmills were originally built to pump water from low-lying polders, not just to mill grain.",
+    "quizQuestion": "What was the original primary function of Dutch windmills?",
+    "correctAnswer": "Pumping water from polders",
+    "distractors": [
+      "Grinding grain into flour",
+      "Generating electricity",
+      "Irrigating farmland",
+      "Powering sawmills",
+      "Signaling ships offshore",
+      "Processing tulip bulbs",
+      "Ventilating mines",
+      "Churning butter"
+    ],
+    "acceptableAnswers": [
+      "Pumping water from polders",
+      "Draining polders",
+      "Water management"
+    ],
+    "explanation": "While windmills did grind grain and process lumber, their most critical Dutch function was drainage — pumping water out of low-lying polders to make land habitable and farmable. The Dutch called this 'water management'.",
+    "wowFactor": "Without windmills, much of the Netherlands would have flooded permanently — they were literally the machines that created the nation by keeping the sea out.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is a polder in the Dutch context?",
+        "answer": "Reclaimed land below sea level",
+        "distractors": [
+          "A type of windmill",
+          "A canal boat",
+          "A tulip variety"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Dutch windmills that pump water from polders are found in which country?",
+        "answer": "Netherlands",
+        "distractors": [
+          "Belgium",
+          "Denmark",
+          "Germany"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Dutch windmills were mainly built to pump water from low land?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "They were built only for grain",
+          "They were purely decorative"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Dutch windmills originally pumped water from ___, reclaimed land below sea level.",
+        "answer": "polders",
+        "distractors": [
+          "fjords",
+          "deltas",
+          "marshes"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Dutch Heritage",
+    "sourceUrl": "https://www.holland.com/global/tourism/destinations/more-destinations/windmills.htm",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A classic Dutch windmill at the edge of a polder canal, water flowing into a drainage channel, tulip fields behind, pixel art style.",
+    "tags": [
+      "Netherlands",
+      "windmills",
+      "polders",
+      "water management",
+      "history"
+    ]
+  },
+  {
+    "id": "geo-china-great-wall",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "Asia",
+    "statement": "China's Great Wall stretches over 21,000 km and was built across many dynasties to protect against nomadic invasions from the north.",
+    "quizQuestion": "How long is China's Great Wall in total?",
+    "correctAnswer": "Over 21,000 km",
+    "distractors": [
+      "About 1,000 km",
+      "About 5,000 km",
+      "About 50,000 km",
+      "About 500 km",
+      "About 10,000 km",
+      "About 3,000 km",
+      "About 100,000 km",
+      "About 8,000 km"
+    ],
+    "acceptableAnswers": [
+      "Over 21,000 km",
+      "21,000 km",
+      "About 21,000 km"
+    ],
+    "explanation": "Modern surveys put the total length of all Great Wall sections at 21,196 km (13,171 miles), including all branches from multiple dynasties. Construction began in the 7th century BCE and continued through the Ming Dynasty (1368–1644).",
+    "wowFactor": "The myth that the Great Wall is visible from space is false — astronauts have confirmed you cannot see it. It's wide as a road, but a road 21,000 km long.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which Chinese dynasty built most of the Great Wall visible today?",
+        "answer": "Ming Dynasty",
+        "distractors": [
+          "Qin Dynasty",
+          "Han Dynasty",
+          "Tang Dynasty"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Great Wall of China was primarily built to defend against whom?",
+        "answer": "Nomadic northern invaders",
+        "distractors": [
+          "Japanese invasions",
+          "Mongol naval attacks",
+          "Southern tribes"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Great Wall of China is visible from space with the naked eye?",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Only from low orbit",
+          "Only on clear days"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "China's Great Wall stretches over ___ km in total.",
+        "answer": "21,000",
+        "distractors": [
+          "1,000",
+          "5,000",
+          "50,000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "National Geographic",
+    "sourceUrl": "https://www.nationalgeographic.com/travel/article/great-wall-of-china",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "The Great Wall snaking over misty mountain ridges as far as the eye can see, watchtowers glowing in evening light, pixel art style.",
+    "tags": [
+      "China",
+      "Great Wall",
+      "history",
+      "construction",
+      "geography"
+    ]
+  },
+  {
+    "id": "geo-china-yellow-river",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "Asia",
+    "statement": "The Yellow River (Huang He) is called 'the mother river of China', as Chinese civilization first developed along its banks over 4,000 years ago.",
+    "quizQuestion": "Which river is called 'the mother river of China'?",
+    "correctAnswer": "Yellow River (Huang He)",
+    "distractors": [
+      "Yangtze River",
+      "Pearl River",
+      "Mekong River",
+      "Amur River",
+      "Li River",
+      "Wei River",
+      "Min River",
+      "Liao River"
+    ],
+    "acceptableAnswers": [
+      "Yellow River (Huang He)",
+      "Yellow River",
+      "Huang He"
+    ],
+    "explanation": "The Yellow River is about 5,464 km long and flows through northern China. It carries enormous amounts of yellow silt, giving it its name and color. Early Chinese dynasties, writing, and agriculture developed along its banks.",
+    "wowFactor": "The Yellow River has flooded so catastrophically throughout history — killing millions — that it is also known as 'China's Sorrow'. It changed course completely 26 times in recorded history.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What gives the Yellow River its distinctive color?",
+        "answer": "Yellow loess silt",
+        "distractors": [
+          "Mineral-rich algae",
+          "Iron oxide rocks",
+          "Desert sand runoff"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Huang He river's catastrophic floods gave it which grim nickname?",
+        "answer": "China's Sorrow",
+        "distractors": [
+          "River of Death",
+          "The Dragon's Curse",
+          "The Yellow Flood"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Chinese civilization first developed along the Yellow River's banks?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It developed along the Yangtze",
+          "It developed along the Pearl River"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The ___ River is called the 'mother river of China' and cradle of civilization.",
+        "answer": "Yellow",
+        "distractors": [
+          "Yangtze",
+          "Pearl",
+          "Mekong"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Britannica",
+    "sourceUrl": "https://www.britannica.com/place/Huang-He",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A murky yellow river flowing past ancient Chinese temples, loess cliffs rising on both sides, pixel art style.",
+    "tags": [
+      "China",
+      "Yellow River",
+      "Huang He",
+      "civilization",
+      "geography"
+    ]
+  },
+  {
+    "id": "geo-china-most-populous",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "Asia",
+    "statement": "China has over 1.4 billion people and was the world's most populous country until 2023, when India surpassed it.",
+    "quizQuestion": "Which country surpassed China as most populous in 2023?",
+    "correctAnswer": "India",
+    "distractors": [
+      "United States",
+      "Indonesia",
+      "Pakistan",
+      "Bangladesh",
+      "Nigeria",
+      "Brazil",
+      "Russia",
+      "Ethiopia"
+    ],
+    "acceptableAnswers": [
+      "India"
+    ],
+    "explanation": "China held the title of world's most populous nation for thousands of years. In 2023, India's population crossed 1.4286 billion, narrowly exceeding China's 1.4257 billion — a historic shift.",
+    "wowFactor": "China's one-child policy (1980–2015) prevented an estimated 400 million births — the equivalent of wiping out the entire population of the United States from ever being born.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was China's controversial population policy from 1980 to 2015?",
+        "answer": "One-child policy",
+        "distractors": [
+          "Two-child policy",
+          "Population tax",
+          "Resettlement program"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which country's one-child policy prevented an estimated 400 million births?",
+        "answer": "China",
+        "distractors": [
+          "India",
+          "Japan",
+          "South Korea"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: China's one-child policy ran from 1980 to 2015?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It ran from 1960 to 2000",
+          "It is still active"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "China's one-child policy (1980–2015) prevented an estimated ___ million births.",
+        "answer": "400",
+        "distractors": [
+          "10",
+          "1,000",
+          "50"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "UN Population Division",
+    "sourceUrl": "https://population.un.org/wpp/",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A bar chart with India's red bar just nudging past China's yellow bar in 2023, crowds filling both countries on a globe, pixel art style.",
+    "tags": [
+      "China",
+      "population",
+      "one-child policy",
+      "India",
+      "demographics"
+    ]
+  },
+  {
+    "id": "geo-poland-solidarity-movement",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "Europe",
+    "statement": "Poland's Solidarity movement, founded in 1980 by Lech Wałęsa, became the first independent trade union in the communist Eastern Bloc.",
+    "quizQuestion": "Who founded Poland's Solidarity movement in 1980?",
+    "correctAnswer": "Lech Wałęsa",
+    "distractors": [
+      "Wojciech Jaruzelski",
+      "Józef Piłsudski",
+      "Aleksander Kwaśniewski",
+      "Tadeusz Mazowiecki",
+      "Edward Gierek",
+      "Jan Paweł II",
+      "Karol Wojtyła",
+      "Adam Michnik"
+    ],
+    "acceptableAnswers": [
+      "Lech Wałęsa",
+      "Walesa",
+      "Lech Walesa"
+    ],
+    "explanation": "Lech Wałęsa, a shipyard electrician, co-founded Solidarity (Solidarność) in Gdańsk in August 1980. It grew to 10 million members and helped bring down communist rule in Poland, triggering the collapse of Soviet-aligned governments across Eastern Europe.",
+    "wowFactor": "Solidarity grew from a single shipyard strike to 10 million members in 16 months — one of the fastest-growing mass movements in history, toppling communism without firing a single bullet.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which Polish city was Solidarity founded in 1980?",
+        "answer": "Gdańsk",
+        "distractors": [
+          "Warsaw",
+          "Kraków",
+          "Wrocław"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Solidarity, the movement that helped end communism in Eastern Europe, began in which country?",
+        "answer": "Poland",
+        "distractors": [
+          "Czech Republic",
+          "Hungary",
+          "East Germany"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Poland's Solidarity was the first independent trade union in the communist Eastern Bloc?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Hungary had one first",
+          "East Germany had one first"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Lech ___ founded Poland's Solidarity movement in a Gdańsk shipyard in 1980.",
+        "answer": "Wałęsa",
+        "distractors": [
+          "Jaruzelski",
+          "Piłsudski",
+          "Mazowiecki"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/Solidarity-Polish-trade-union",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A shipyard worker holding a Solidarity banner against a communist-era grey factory backdrop, crowds joining from all sides, pixel art style.",
+    "tags": [
+      "Poland",
+      "Solidarity",
+      "Wałęsa",
+      "communism",
+      "history"
+    ]
+  },
+  {
+    "id": "geo-poland-geographic-center-europe",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "Europe",
+    "statement": "Poland lies at the geographic heart of Europe and has been invaded from both east and west throughout its history due to its central position.",
+    "quizQuestion": "Why has Poland been repeatedly invaded throughout history?",
+    "correctAnswer": "Central European location",
+    "distractors": [
+      "Rich mineral deposits",
+      "Access to warm water ports",
+      "Control of trade routes",
+      "Religious conflicts",
+      "Colonial ambitions",
+      "River dam control",
+      "Access to the Mediterranean",
+      "Nuclear resource deposits"
+    ],
+    "acceptableAnswers": [
+      "Central European location",
+      "Its geographic position",
+      "Located between East and West"
+    ],
+    "explanation": "Poland occupies the North European Plain with no natural mountain or sea barriers on its eastern or western flanks. This flat, central location made it militarily vulnerable — it was partitioned three times (1772, 1793, 1795) and ceased to exist as a state for 123 years.",
+    "wowFactor": "Poland was wiped from the map for 123 years (1795–1918) after being divided between Russia, Prussia, and Austria — yet its language, culture, and identity survived entirely.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many years did Poland cease to exist as a state after the 1795 partition?",
+        "answer": "123 years",
+        "distractors": [
+          "20 years",
+          "50 years",
+          "200 years"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which country was partitioned three times between 1772 and 1795?",
+        "answer": "Poland",
+        "distractors": [
+          "Czech Republic",
+          "Hungary",
+          "Lithuania"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Poland disappeared from the map for over 100 years after 1795?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It was only 20 years",
+          "It was never partitioned"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Poland was partitioned and vanished from the map for ___ years, from 1795 to 1918.",
+        "answer": "123",
+        "distractors": [
+          "20",
+          "50",
+          "200"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Britannica",
+    "sourceUrl": "https://www.britannica.com/place/Poland/History",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A map of Europe with Poland's borders erased and carved into three colored sections by Prussia, Russia, and Austria, pixel art style.",
+    "tags": [
+      "Poland",
+      "partition",
+      "history",
+      "Europe",
+      "geography"
+    ]
+  },
+  {
+    "id": "geo-kenya-great-rift-valley",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "Africa",
+    "statement": "Kenya is home to part of the Great Rift Valley, a massive geological feature that stretches 6,000 km from Lebanon to Mozambique.",
+    "quizQuestion": "The Great Rift Valley stretches across which continent primarily?",
+    "correctAnswer": "Africa",
+    "distractors": [
+      "Asia",
+      "South America",
+      "North America",
+      "Australia",
+      "Europe",
+      "Antarctica",
+      "Pacific islands",
+      "Eurasia"
+    ],
+    "acceptableAnswers": [
+      "Africa",
+      "Primarily Africa",
+      "Eastern Africa"
+    ],
+    "explanation": "The East African Rift stretches 6,000 km, with Kenya lying at its heart. It is a diverging tectonic plate boundary where Africa is slowly splitting apart. The rift hosts some of Africa's largest lakes including Victoria, Tanganyika, and Malawi.",
+    "wowFactor": "The Great Rift Valley is slowly splitting Africa apart — in about 50 million years, the Horn of Africa will become a new island continent and a new ocean will fill the rift.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long is the Great Rift Valley from north to south?",
+        "answer": "About 6,000 km",
+        "distractors": [
+          "About 500 km",
+          "About 2,000 km",
+          "About 15,000 km"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which East African country lies at the heart of the Great Rift Valley?",
+        "answer": "Kenya",
+        "distractors": [
+          "Tanzania",
+          "Ethiopia",
+          "Uganda"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Great Rift Valley is slowly splitting Africa into two plates?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It is a stable formation",
+          "The plates are converging"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Great Rift Valley stretches ___ km from Lebanon to Mozambique.",
+        "answer": "6,000",
+        "distractors": [
+          "500",
+          "2,000",
+          "15,000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "National Geographic",
+    "sourceUrl": "https://www.nationalgeographic.com/environment/article/great-rift-valley",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A dramatic aerial view of the Great Rift Valley with steep cliffs, a chain of blue lakes, and steam rising from geothermal vents, pixel art style.",
+    "tags": [
+      "Kenya",
+      "Great Rift Valley",
+      "geology",
+      "Africa",
+      "tectonic"
+    ]
+  },
+  {
+    "id": "geo-kenya-maasai-mara",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "Africa",
+    "statement": "Kenya's Maasai Mara is famous for the Great Migration, where over 1.5 million wildebeest travel between Tanzania and Kenya annually.",
+    "quizQuestion": "What is the Maasai Mara famous for in Kenya?",
+    "correctAnswer": "The Great Migration",
+    "distractors": [
+      "The largest lion pride",
+      "Africa's highest waterfall",
+      "Rare mountain gorillas",
+      "Africa's longest river",
+      "Coffee plantation tours",
+      "Desert safari drives",
+      "Marine wildlife diving",
+      "Snow-capped peaks"
+    ],
+    "acceptableAnswers": [
+      "The Great Migration",
+      "Wildebeest migration",
+      "Annual wildebeest migration"
+    ],
+    "explanation": "Each year, approximately 1.5 million wildebeest, 200,000 zebra, and 350,000 gazelle migrate in a circular route between Tanzania's Serengeti and Kenya's Maasai Mara. The Mara River crossing, where crocodiles wait, is its most dramatic moment.",
+    "wowFactor": "The wildebeest migration is so large it can be seen from space — a moving mass of animals crossing the Mara River that stretches for kilometres in every direction.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many wildebeest participate in the Great Migration annually?",
+        "answer": "About 1.5 million",
+        "distractors": [
+          "About 10,000",
+          "About 500,000",
+          "About 10 million"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Great Migration passes between Tanzania's Serengeti and which Kenyan reserve?",
+        "answer": "Maasai Mara",
+        "distractors": [
+          "Amboseli",
+          "Tsavo",
+          "Samburu"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Great Migration involves wildebeest crossing between Kenya and Tanzania?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "It stays within Kenya",
+          "It crosses five countries"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Great Migration in the Maasai ___ involves 1.5 million wildebeest.",
+        "answer": "Mara",
+        "distractors": [
+          "Serengeti",
+          "Amboseli",
+          "Rift"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Kenya Wildlife Service",
+    "sourceUrl": "https://www.kws.go.ke/content/masai-mara-national-reserve",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Thousands of wildebeest leaping into a crocodile-filled river at the Maasai Mara crossing, dust clouds rising, acacia trees on the bank, pixel art style.",
+    "tags": [
+      "Kenya",
+      "Maasai Mara",
+      "Great Migration",
+      "wildlife",
+      "Africa"
+    ]
+  },
+  {
+    "id": "geo-kenya-marathon-dominance",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "world_countries",
+    "categoryL1": "Geography",
+    "categoryL2": "world_countries",
+    "categoryL3": "Africa",
+    "statement": "Kenya dominates long-distance running, with Kenyan athletes winning the majority of Olympic marathon medals and breaking world records.",
+    "quizQuestion": "Which country dominates international long-distance running?",
+    "correctAnswer": "Kenya",
+    "distractors": [
+      "Ethiopia",
+      "United States",
+      "Jamaica",
+      "Morocco",
+      "Uganda",
+      "Japan",
+      "Britain",
+      "Tanzania"
+    ],
+    "acceptableAnswers": [
+      "Kenya",
+      "Kenyans"
+    ],
+    "explanation": "Kenyan runners, particularly from the Rift Valley's Kalenjin people, dominate marathon and distance running. Factors include high-altitude training, running culture, and physiological adaptations. Kenya has won over 30% of all Olympic marathon medals.",
+    "wowFactor": "The village of Iten in Kenya, population 4,000, has produced more sub-2:10 marathon runners than the entire United States — a tiny town that rewrote what humans thought was possible.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "From which Kenyan ethnic group do many world-class distance runners come?",
+        "answer": "Kalenjin people",
+        "distractors": [
+          "Maasai",
+          "Kikuyu",
+          "Luo"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which African country's athletes have won over 30% of all Olympic marathon medals?",
+        "answer": "Kenya",
+        "distractors": [
+          "Ethiopia",
+          "Uganda",
+          "Tanzania"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Kenyan runners dominate Olympic marathon and long-distance events?",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Ethiopia dominates more",
+          "Jamaica dominates"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Kenya's ___ people, from the Rift Valley, dominate world long-distance running.",
+        "answer": "Kalenjin",
+        "distractors": [
+          "Maasai",
+          "Kikuyu",
+          "Luo"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "World Athletics",
+    "sourceUrl": "https://www.worldathletics.org",
+    "contentVolatility": "current",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A Kenyan runner crossing a finish line tape at the Olympics, the Great Rift Valley landscape visible on a screen behind, pixel art style.",
+    "tags": [
+      "Kenya",
+      "marathon",
+      "running",
+      "Kalenjin",
+      "athletics"
+    ]
+  }
+]

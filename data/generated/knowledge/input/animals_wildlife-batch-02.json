@@ -1,0 +1,196 @@
+{
+  "domain": "animals_wildlife",
+  "batchIndex": 2,
+  "totalBatches": 3,
+  "entities": [
+    {
+      "qid": "Q10856",
+      "label": "Columbidae",
+      "description": "family of birds (Aves)",
+      "subcategory": "birds",
+      "sitelinks": 178,
+      "monthlyPageviews": 89000,
+      "properties": {
+        "taxonName": "Columbidae"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q1390",
+      "label": "insect",
+      "description": "class of arthropods",
+      "subcategory": "insects_arachnids",
+      "sitelinks": 220,
+      "monthlyPageviews": 110000,
+      "properties": {
+        "taxonName": "Insecta",
+        "startDate": "-400000000-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q11575",
+      "label": "maize",
+      "description": "species of grass cultivated as a food crop",
+      "subcategory": "mammals",
+      "sitelinks": 244,
+      "monthlyPageviews": 122000,
+      "properties": {
+        "taxonName": "Zea mays",
+        "conservationStatus": "Q211005"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q7372",
+      "label": "shark",
+      "description": "clade of predatory cartilaginous fish (Chondrichthyes)",
+      "subcategory": "marine_life",
+      "sitelinks": 172,
+      "monthlyPageviews": 86000,
+      "properties": {
+        "taxonName": "Selachimorpha",
+        "startDate": "-425000000-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q10908",
+      "label": "Amphibia",
+      "description": "class of tetrapods, whose living forms include frogs, toads, salamanders, newts and caecilians",
+      "subcategory": "reptiles_amphibians",
+      "sitelinks": 174,
+      "monthlyPageviews": 87000,
+      "properties": {
+        "taxonName": "Amphibia",
+        "startDate": "-370000000-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q2092297",
+      "label": "eagle",
+      "description": "large carnivorous bird",
+      "subcategory": "birds",
+      "sitelinks": 167,
+      "monthlyPageviews": 83500,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q23501",
+      "label": "tomato",
+      "description": "type of plant species with edible, often red, berry fruit",
+      "subcategory": "insects_arachnids",
+      "sitelinks": 206,
+      "monthlyPageviews": 103000,
+      "properties": {
+        "taxonName": "Solanum lycopersicum"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q19939",
+      "label": "tiger",
+      "description": "species of big cat",
+      "subcategory": "mammals",
+      "sitelinks": 232,
+      "monthlyPageviews": 116000,
+      "properties": {
+        "taxonName": "Panthera tigris",
+        "conservationStatus": "Q96377276"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q160",
+      "label": "Cetacea",
+      "description": "infraorder of marine mammals",
+      "subcategory": "marine_life",
+      "sitelinks": 146,
+      "monthlyPageviews": 73000,
+      "properties": {
+        "taxonName": "Cetacea",
+        "startDate": "-50000000-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q223044",
+      "label": "Testudines",
+      "description": "order of reptiles characterized by a shell",
+      "subcategory": "reptiles_amphibians",
+      "sitelinks": 173,
+      "monthlyPageviews": 86500,
+      "properties": {
+        "taxonName": "Testudines"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q17592",
+      "label": "Common Ostrich",
+      "description": "species of large flightless bird",
+      "subcategory": "birds",
+      "sitelinks": 149,
+      "monthlyPageviews": 74500,
+      "properties": {
+        "taxonName": "Struthio camelus",
+        "conservationStatus": "Q211005",
+        "startDate": "-15000000-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q1357",
+      "label": "Araneae",
+      "description": "order of arachnids",
+      "subcategory": "insects_arachnids",
+      "sitelinks": 204,
+      "monthlyPageviews": 102000,
+      "properties": {
+        "taxonName": "Araneae",
+        "startDate": "-319000000-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q787",
+      "label": "pig",
+      "description": "domesticated omnivorous even-toed ungulate",
+      "subcategory": "mammals",
+      "sitelinks": 222,
+      "monthlyPageviews": 111000,
+      "properties": {
+        "taxonName": "Sus scrofa domesticus"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q15343",
+      "label": "platypus",
+      "description": "semi aquatic egg laying mammal native to Australia",
+      "subcategory": "marine_life",
+      "sitelinks": 115,
+      "monthlyPageviews": 57500,
+      "properties": {
+        "taxonName": "Ornithorhynchus anatinus",
+        "conservationStatus": "Q719675",
+        "startDate": "-9000000-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q15879",
+      "label": "Lacertilia",
+      "description": "paraphyletic group of squamate reptiles, no longer recognised as a valid suborder",
+      "subcategory": "reptiles_amphibians",
+      "sitelinks": 148,
+      "monthlyPageviews": 74000,
+      "properties": {
+        "taxonName": "Lacertilia"
+      },
+      "processed": false
+    }
+  ]
+}

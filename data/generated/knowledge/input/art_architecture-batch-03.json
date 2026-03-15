@@ -1,0 +1,216 @@
+{
+  "domain": "art_architecture",
+  "batchIndex": 3,
+  "totalBatches": 3,
+  "entities": [
+    {
+      "qid": "Q7071",
+      "label": "Li Bai",
+      "description": "Classical Chinese poet of the Tang dynasty (701–762)",
+      "subcategory": "architectural_styles",
+      "sitelinks": 194,
+      "monthlyPageviews": 97000,
+      "properties": {
+        "birthDate": "+0701-05-19T00:00:00Z",
+        "deathDate": "+0762-11-30T00:00:00Z",
+        "occupation": "Q49757"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q193417",
+      "label": "Madame Bovary",
+      "description": "novel by Gustave Flaubert (1857)",
+      "subcategory": "engineering_design",
+      "sitelinks": 73,
+      "monthlyPageviews": 36500,
+      "properties": {
+        "inception": "+1856-00-00T00:00:00Z",
+        "genre": "Q1248788",
+        "movement": "Q667661",
+        "countryOfOrigin": "Q142"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q9141",
+      "label": "Taj Mahal",
+      "description": "marble mausoleum in Agra, India",
+      "subcategory": "historic_buildings",
+      "sitelinks": 179,
+      "monthlyPageviews": 89500,
+      "properties": {
+        "country": "Q668",
+        "inception": "+1631-00-00T00:00:00Z",
+        "material": "Q40861"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q177725",
+      "label": "abstract expressionism",
+      "description": "American post–World War II art movement",
+      "subcategory": "modern_contemporary",
+      "sitelinks": 64,
+      "monthlyPageviews": 10875,
+      "properties": {
+        "startDate": "+1940-00-00T00:00:00Z"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q9202",
+      "label": "Statue of Liberty",
+      "description": "American icon in New York, United States",
+      "subcategory": "museums_institutions",
+      "sitelinks": 153,
+      "monthlyPageviews": 76500,
+      "properties": {
+        "country": "Q30",
+        "creator": "Q223274",
+        "inception": "+1886-00-00T00:00:00Z",
+        "material": "Q753",
+        "genre": "Q4731380",
+        "movement": "Q14378",
+        "countryOfOrigin": "Q70802"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q638",
+      "label": "music",
+      "description": "art using sound",
+      "subcategory": "painting_visual",
+      "sitelinks": 314,
+      "monthlyPageviews": 157000,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q169566",
+      "label": "H. P. Lovecraft",
+      "description": "American writer and editor (1890–1937)",
+      "subcategory": "sculpture_decorative",
+      "sitelinks": 115,
+      "monthlyPageviews": 57500,
+      "properties": {
+        "genre": "Q6585139",
+        "birthDate": "+1890-08-20T00:00:00Z",
+        "deathDate": "+1937-03-15T00:00:00Z",
+        "occupation": "Q6625963",
+        "fieldOfWork": "Q16575965"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q8341",
+      "label": "jazz",
+      "description": "musical style and genre",
+      "subcategory": "architectural_styles",
+      "sitelinks": 173,
+      "monthlyPageviews": 86500,
+      "properties": {
+        "inception": "+1917-00-00T00:00:00Z",
+        "countryOfOrigin": "Q30"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q60809",
+      "label": "Ansel Adams",
+      "description": "American photographer and environmentalist (1902–1984)",
+      "subcategory": "engineering_design",
+      "sitelinks": 66,
+      "monthlyPageviews": 33000,
+      "properties": {
+        "genre": "Q191163",
+        "birthDate": "+1902-02-20T00:00:00Z",
+        "deathDate": "+1984-04-22T00:00:00Z",
+        "occupation": "Q33231",
+        "fieldOfWork": "Q11633"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q8276",
+      "label": "Mahabharata",
+      "description": "ancient Sanskrit epic by Vyasa",
+      "subcategory": "historic_buildings",
+      "sitelinks": 167,
+      "monthlyPageviews": 83500,
+      "properties": {
+        "genre": "Q37484"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q186030",
+      "label": "contemporary art",
+      "description": "art produced from the 1940s to the present",
+      "subcategory": "modern_contemporary",
+      "sitelinks": 62,
+      "monthlyPageviews": 8688,
+      "properties": {},
+      "processed": false
+    },
+    {
+      "qid": "Q9188",
+      "label": "Empire State Building",
+      "description": "skyscraper located in Midtown Manhattan, New York City, USA",
+      "subcategory": "museums_institutions",
+      "sitelinks": 121,
+      "monthlyPageviews": 76352,
+      "properties": {
+        "country": "Q30",
+        "inception": "+1931-05-08T00:00:00Z",
+        "material": "Q11427"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q103474",
+      "label": "2001: A Space Odyssey",
+      "description": "1968 film by Stanley Kubrick",
+      "subcategory": "painting_visual",
+      "sitelinks": 90,
+      "monthlyPageviews": 154809,
+      "properties": {
+        "genre": "Q66914288",
+        "movement": "Q377616",
+        "countryOfOrigin": "Q30"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q179900",
+      "label": "David",
+      "description": "sculpture by Michelangelo",
+      "subcategory": "sculpture_decorative",
+      "sitelinks": 80,
+      "monthlyPageviews": 56025,
+      "properties": {
+        "country": "Q38",
+        "creator": "Q5592",
+        "inception": "+1500-00-00T00:00:00Z",
+        "material": "Q40088",
+        "collection": "Q849846",
+        "genre": "Q16675884",
+        "movement": "Q1474884"
+      },
+      "processed": false
+    },
+    {
+      "qid": "Q7011",
+      "label": "Kalidasa",
+      "description": "Classical Sanskrit poet and playwright",
+      "subcategory": "architectural_styles",
+      "sitelinks": 172,
+      "monthlyPageviews": 86000,
+      "properties": {
+        "genre": "Q37484",
+        "occupation": "Q49757"
+      },
+      "processed": false
+    }
+  ]
+}

@@ -376,7 +376,7 @@ export function addCardToDeck(deck: CardRunState, card: Card, place: 'top' | 'bo
  * Draw pile is stack-mode (`pop` from the end), so lower indices are deeper.
  */
 /**
- * Adds answered fact IDs to the cooldown list (3 encounters).
+ * Adds answered fact IDs to the cooldown list (3–5 encounters).
  * Call at the end of each encounter.
  */
 export function addFactsToCooldown(deck: CardRunState, answeredFactIds: string[]): void {
