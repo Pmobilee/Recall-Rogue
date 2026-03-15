@@ -12917,5 +12917,1818 @@
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "history-wwii-dday-normandy",
+    "type": "knowledge",
+    "domain": "History & Civilization",
+    "subdomain": "modern_history",
+    "categoryL1": "history",
+    "categoryL2": "modern_history",
+    "categoryL3": "world_war_ii",
+    "statement": "D-Day on June 6, 1944 was the largest seaborne invasion in history, landing over 156,000 Allied troops on five Normandy beaches in a single day.",
+    "quizQuestion": "How many Allied troops landed on Normandy beaches on D-Day?",
+    "correctAnswer": "Over 156,000 troops",
+    "distractors": [
+      "Around 50,000 troops",
+      "Approximately 75,000 troops",
+      "Nearly 200,000 troops",
+      "About 30,000 troops",
+      "Exactly 100,000 troops",
+      "More than 250,000 troops",
+      "Roughly 120,000 troops",
+      "Fewer than 80,000 troops"
+    ],
+    "acceptableAnswers": [
+      "Over 156,000 troops",
+      "156,000",
+      "156,000 Allied troops",
+      "about 156,000"
+    ],
+    "explanation": "Operation Overlord's D-Day assault on June 6, 1944 involved five beaches — Utah, Omaha, Gold, Juno, and Sword. Over 156,000 Allied soldiers from the US, UK, Canada, and other nations landed by sea and air. It was the largest amphibious military operation in history and marked the beginning of the liberation of Western Europe from Nazi Germany. The planning was code-named Operation Neptune and involved an elaborate deception campaign, Operation Bodyguard, to mislead the Germans about the landing location.",
+    "wowFactor": "The Allies deceived Hitler so completely that even after the D-Day landings began, he refused to release the Panzer reserve for nearly 24 hours — believing the real invasion was still coming at Pas-de-Calais. That hesitation may have saved the entire operation.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the codename for the D-Day Normandy invasion operation?",
+        "answer": "Operation Overlord",
+        "distractors": [
+          "Operation Torch",
+          "Operation Market Garden",
+          "Operation Barbarossa"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "On what date did the largest seaborne invasion in history take place?",
+        "answer": "June 6, 1944",
+        "distractors": [
+          "May 8, 1945",
+          "September 1, 1939",
+          "August 15, 1945"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "D-Day landings occurred on three Normandy beaches.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Partially true",
+          "Only for US forces"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "What deception operation convinced Germans the real D-Day landing was elsewhere?",
+        "answer": "Operation Bodyguard",
+        "distractors": [
+          "Operation Torch",
+          "Operation Sea Lion",
+          "Operation Overlord"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "D-Day took place on June 6, _____, on the beaches of Normandy, France.",
+        "answer": "1944",
+        "distractors": [
+          "1943",
+          "1945",
+          "1942"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Ambrose, Stephen E. D-Day June 6, 1944: The Climactic Battle of WWII. Simon & Schuster, 1994.",
+    "sourceUrl": "https://www.history.com/topics/world-war-ii/d-day",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Covers wartime deaths; appropriate for teen+",
+    "visualDescription": "Pixel art Allied landing craft breach Normandy surf at dawn, soldiers wading ashore under smoke-filled sky, five beaches visible across the horizon with barrage balloons overhead",
+    "tags": [
+      "d-day",
+      "normandy",
+      "world war ii",
+      "operation overlord",
+      "1944",
+      "amphibious invasion"
+    ]
+  },
+  {
+    "id": "history-wwii-atomic-bomb-hiroshima",
+    "type": "knowledge",
+    "domain": "History & Civilization",
+    "subdomain": "modern_history",
+    "categoryL1": "history",
+    "categoryL2": "modern_history",
+    "categoryL3": "world_war_ii",
+    "statement": "The atomic bomb dropped on Hiroshima on August 6, 1945 was nicknamed 'Little Boy' and instantly killed an estimated 70,000–80,000 people.",
+    "quizQuestion": "What was the nickname of the atomic bomb dropped on Hiroshima?",
+    "correctAnswer": "Little Boy",
+    "distractors": [
+      "Fat Man",
+      "Big Bang",
+      "Thin Man",
+      "Gadget",
+      "Trinity",
+      "The Device",
+      "Iron Fist",
+      "Black Sun"
+    ],
+    "acceptableAnswers": [
+      "Little Boy",
+      "little boy"
+    ],
+    "explanation": "Little Boy was a gun-type uranium-235 fission bomb dropped by the B-29 Enola Gay on Hiroshima on August 6, 1945. It detonated at about 600 meters altitude, creating a fireball reaching 3,500°C and a shockwave that flattened 5 square miles. Estimates of immediate deaths range from 70,000 to 80,000; total deaths by year's end from radiation and burns reached 90,000–166,000. The second bomb, 'Fat Man,' was dropped on Nagasaki three days later. Together they precipitated Japan's surrender on August 15, 1945.",
+    "wowFactor": "The Enola Gay's co-pilot Robert Lewis wrote in his flight log as he watched Hiroshima vaporize: 'My God, what have we done?' — a question that still echoes through nuclear ethics 80 years later.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "On which Japanese city was the first atomic bomb used in warfare dropped?",
+        "answer": "Hiroshima",
+        "distractors": [
+          "Nagasaki",
+          "Tokyo",
+          "Osaka"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What was the name of the B-29 bomber that dropped Little Boy on Hiroshima?",
+        "answer": "Enola Gay",
+        "distractors": [
+          "Bockscar",
+          "Memphis Belle",
+          "Lucky Lady II"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "The atomic bomb dropped on Hiroshima used plutonium as its fissile material.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Partially true",
+          "Only in the core"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "What type of fissile material powered the Little Boy bomb?",
+        "answer": "Uranium-235",
+        "distractors": [
+          "Plutonium-239",
+          "Polonium-210",
+          "Tritium"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The atomic bomb 'Little Boy' was dropped on Hiroshima on August 6, _____.",
+        "answer": "1945",
+        "distractors": [
+          "1944",
+          "1946",
+          "1943"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Rhodes, Richard. The Making of the Atomic Bomb. Simon & Schuster, 1986.",
+    "sourceUrl": "https://www.atomicheritage.org/history/little-boy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "Covers mass casualty event; handle with historical context",
+    "visualDescription": "Pixel art mushroom cloud rising over Hiroshima silhouette at dawn, the Enola Gay banking away in upper sky, city grid dissolving into white light below",
+    "tags": [
+      "atomic bomb",
+      "hiroshima",
+      "little boy",
+      "world war ii",
+      "1945",
+      "nuclear weapon"
+    ]
+  },
+  {
+    "id": "history-wwii-enigma-bletchley",
+    "type": "knowledge",
+    "domain": "History & Civilization",
+    "subdomain": "modern_history",
+    "categoryL1": "history",
+    "categoryL2": "modern_history",
+    "categoryL3": "world_war_ii",
+    "statement": "British codebreakers at Bletchley Park cracked the German Enigma cipher machine, with Alan Turing's Bombe device playing a crucial role in reading Nazi communications.",
+    "quizQuestion": "Where was the British WWII codebreaking operation that cracked Enigma based?",
+    "correctAnswer": "Bletchley Park",
+    "distractors": [
+      "Oxford University",
+      "Cambridge University",
+      "Buckingham Palace",
+      "Whitehall",
+      "Bletchford Manor",
+      "Hut Six Station",
+      "Windsor Castle",
+      "The Admiralty London"
+    ],
+    "acceptableAnswers": [
+      "Bletchley Park",
+      "Bletchley",
+      "Station X",
+      "BP"
+    ],
+    "explanation": "Enigma was an electro-mechanical cipher device used by Nazi Germany. Its settings changed daily, creating billions of possible configurations. At Bletchley Park (Station X), mathematician Alan Turing and others built electromechanical 'Bombe' machines that exploited weaknesses in Enigma procedures — especially predictable phrases like 'Heil Hitler' or weather reports. The intelligence produced, codenamed Ultra, is credited with shortening the war by an estimated 2–4 years. Over 10,000 people worked at Bletchley in total secrecy until 1974.",
+    "wowFactor": "Alan Turing's work at Bletchley Park was so secret that when he received the OBE, he couldn't tell anyone what for. The 30-year veil of secrecy meant the man who arguably saved millions of lives died in 1954 with almost no public recognition of his war work.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was Alan Turing's electromechanical device used to crack Enigma called?",
+        "answer": "The Bombe",
+        "distractors": [
+          "The Colossus",
+          "The Analyzer",
+          "The Decoder"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What codename was given to intelligence derived from cracking Enigma?",
+        "answer": "Ultra",
+        "distractors": [
+          "Overlord",
+          "Bluebird",
+          "Magnum"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "The secrets of Bletchley Park remained classified for 30 years after WWII.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Only partially true",
+          "Classified for 10 years only"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "What predictable message patterns did codebreakers exploit to crack Enigma?",
+        "answer": "Routine phrases like weather reports and 'Heil Hitler'",
+        "distractors": [
+          "Ship tonnage figures",
+          "Unit serial numbers",
+          "Officer name lists"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "British codebreakers cracking Enigma worked at _____ Park during WWII.",
+        "answer": "Bletchley",
+        "distractors": [
+          "Huxley",
+          "Turing",
+          "Churchill"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Hodges, Andrew. Alan Turing: The Enigma. Princeton University Press, 1983.",
+    "sourceUrl": "https://www.bletchleypark.org.uk/learn/history",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art codebreaker at candlelit desk with Enigma machine and spinning Bombe rotors in background, charts of letter frequencies pinned to stone walls of a wartime hut",
+    "tags": [
+      "enigma",
+      "bletchley park",
+      "alan turing",
+      "world war ii",
+      "codebreaking",
+      "bombe"
+    ]
+  },
+  {
+    "id": "history-cold-war-sputnik-space-race",
+    "type": "knowledge",
+    "domain": "History & Civilization",
+    "subdomain": "modern_history",
+    "categoryL1": "history",
+    "categoryL2": "modern_history",
+    "categoryL3": "cold_war",
+    "statement": "The Soviet Union launched Sputnik 1 on October 4, 1957 — the first artificial satellite — shocking the US and igniting the Space Race.",
+    "quizQuestion": "What was the name of the first artificial satellite launched into Earth orbit?",
+    "correctAnswer": "Sputnik 1",
+    "distractors": [
+      "Explorer 1",
+      "Vostok 1",
+      "Cosmos 1",
+      "Luna 1",
+      "Mir",
+      "Salyut 1",
+      "Vanguard 1",
+      "Pioneer 1"
+    ],
+    "acceptableAnswers": [
+      "Sputnik 1",
+      "Sputnik",
+      "Sputnik-1"
+    ],
+    "explanation": "Sputnik 1 ('Satellite 1' in Russian) weighed 83.6 kg and orbited Earth every 96 minutes, transmitting a radio beep audible to amateur operators worldwide. Its launch by the Soviet R-7 rocket revealed that the USSR had ballistic missile capability that could reach American soil. The shock — dubbed 'Sputnik Moment' — drove the US to create NASA (1958), pass the National Defense Education Act, and ultimately achieve the Moon landing in 1969. Sputnik burned up re-entering the atmosphere in January 1958.",
+    "wowFactor": "American civilians could look up and track Sputnik as a moving dot of light crossing the night sky — and their radio sets could pick up its eerie 'beep beep' signal. Nothing before had made the Cold War feel so viscerally immediate and terrifying.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year was Sputnik 1 launched, marking the start of the Space Race?",
+        "answer": "1957",
+        "distractors": [
+          "1955",
+          "1959",
+          "1961"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which government agency was created by the United States in response to Sputnik?",
+        "answer": "NASA",
+        "distractors": [
+          "CIA",
+          "DARPA",
+          "NSA"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "The United States launched the first artificial satellite before the Soviet Union.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Both launched simultaneously",
+          "Only in low orbit"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Why did Sputnik's launch cause strategic alarm in the United States?",
+        "answer": "It proved the USSR had ballistic missiles capable of reaching America",
+        "distractors": [
+          "It demonstrated Soviet nuclear miniaturization",
+          "It carried spy cameras over US cities",
+          "It jammed US military communications"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Sputnik 1 was launched by the Soviet Union in October _____, starting the Space Race.",
+        "answer": "1957",
+        "distractors": [
+          "1955",
+          "1959",
+          "1962"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Asif Siddiqi. Sputnik and the Soviet Space Challenge. University Press of Florida, 2003.",
+    "sourceUrl": "https://history.nasa.gov/sputnik.html",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art silver sphere with four antennae orbiting Earth against star field, Cold War-era Soviet launch pad below with rocket exhaust trail, blue-and-white planet curve visible",
+    "tags": [
+      "sputnik",
+      "space race",
+      "cold war",
+      "soviet union",
+      "satellite",
+      "1957",
+      "nasa"
+    ]
+  },
+  {
+    "id": "history-cold-war-berlin-wall",
+    "type": "knowledge",
+    "domain": "History & Civilization",
+    "subdomain": "modern_history",
+    "categoryL1": "history",
+    "categoryL2": "modern_history",
+    "categoryL3": "cold_war",
+    "statement": "The Berlin Wall was constructed starting August 13, 1961, physically dividing East and West Berlin, and fell on November 9, 1989.",
+    "quizQuestion": "On what date did the Berlin Wall begin construction, sealing the border between East and West Berlin?",
+    "correctAnswer": "August 13, 1961",
+    "distractors": [
+      "September 1, 1961",
+      "June 17, 1953",
+      "October 4, 1957",
+      "November 9, 1989",
+      "March 5, 1953",
+      "July 4, 1962",
+      "January 1, 1960",
+      "May 8, 1945"
+    ],
+    "acceptableAnswers": [
+      "August 13, 1961",
+      "August 1961",
+      "13 August 1961"
+    ],
+    "explanation": "East Germany began erecting barbed wire and concrete barriers on August 13, 1961 to stop the exodus of East Germans fleeing to the West — over 3.5 million had left since 1949. The Wall eventually stretched 155 km around West Berlin with guard towers, trip wires, and a 'death strip.' At least 140 people were killed attempting to cross. Its fall on November 9, 1989, after East Germany announced relaxed travel rules, was triggered by a miscommunication — a spokesperson said the rules applied 'immediately, without delay.'",
+    "wowFactor": "The Berlin Wall fell because of a press conference blunder: East German spokesman Günter Schabowski was handed a note about new travel rules just before facing cameras, hadn't been briefed, and when asked when they took effect, shrugged and said 'immediately, without delay.' Within hours, thousands of Germans flooded the checkpoints and guards stood aside.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year did the Berlin Wall fall, reuniting East and West Germany?",
+        "answer": "1989",
+        "distractors": [
+          "1991",
+          "1987",
+          "1990"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Why did East Germany build the Berlin Wall in 1961?",
+        "answer": "To stop mass emigration of citizens to West Germany",
+        "distractors": [
+          "To defend against NATO invasion",
+          "To protect nuclear facilities",
+          "To prevent American spies from entering"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "The Berlin Wall physically divided the city of Berlin for over 28 years.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "Only for 10 years",
+          "It was a temporary barrier"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "How many people were killed attempting to cross the Berlin Wall during its existence?",
+        "answer": "At least 140 people",
+        "distractors": [
+          "Over 1,000 people",
+          "Fewer than 10 people",
+          "Approximately 500 people"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Berlin Wall fell on November 9, _____, ending the physical division of Berlin.",
+        "answer": "1989",
+        "distractors": [
+          "1991",
+          "1990",
+          "1987"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Frederick Taylor. The Berlin Wall: A World Divided 1961–1989. HarperCollins, 2006.",
+    "sourceUrl": "https://www.history.com/topics/cold-war/berlin-wall",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Covers deaths at the wall; appropriate for teen+",
+    "visualDescription": "Pixel art graffiti-covered concrete wall splitting a city at dusk, crowds with sledgehammers celebrating, searchlight beams crossing from watchtower, Brandenburg Gate visible in misty background",
+    "tags": [
+      "berlin wall",
+      "cold war",
+      "germany",
+      "1961",
+      "1989",
+      "iron curtain"
+    ]
+  },
+  {
+    "id": "history-cold-war-cuban-missile-crisis",
+    "type": "knowledge",
+    "domain": "History & Civilization",
+    "subdomain": "modern_history",
+    "categoryL1": "history",
+    "categoryL2": "modern_history",
+    "categoryL3": "cold_war",
+    "statement": "The Cuban Missile Crisis of October 1962 brought the US and USSR to the brink of nuclear war for 13 days after American spy planes discovered Soviet missiles in Cuba.",
+    "quizQuestion": "How many days did the Cuban Missile Crisis last?",
+    "correctAnswer": "13 days",
+    "distractors": [
+      "7 days",
+      "30 days",
+      "21 days",
+      "45 days",
+      "6 weeks",
+      "3 months",
+      "5 days",
+      "18 days"
+    ],
+    "acceptableAnswers": [
+      "13 days",
+      "thirteen days"
+    ],
+    "explanation": "On October 14, 1962, U-2 spy plane photographs revealed Soviet nuclear missile installations under construction in Cuba, just 90 miles from Florida. President Kennedy demanded their removal and established a naval 'quarantine' (blockade). For 13 days (October 16–28), the world teetered on nuclear war. The crisis resolved when the USSR agreed to remove the missiles in exchange for a US pledge not to invade Cuba and a secret agreement to remove US Jupiter missiles from Turkey. Soviet submarine B-59, its captain thinking war had begun, nearly launched a nuclear torpedo — only vetoed by officer Vasili Arkhipov.",
+    "wowFactor": "One man may have prevented nuclear war: Soviet submarine officer Vasili Arkhipov refused to authorize a nuclear torpedo launch when his sub was being depth-charged by US destroyers and the captain believed WWIII had already started. A unanimous vote of three officers was required — Arkhipov cast the lone 'no.'",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What US reconnaissance aircraft discovered Soviet missiles in Cuba in 1962?",
+        "answer": "U-2 spy plane",
+        "distractors": [
+          "SR-71 Blackbird",
+          "B-52 Stratofortress",
+          "F-100 Super Sabre"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What did the US secretly agree to remove from Turkey as part of resolving the Cuban Missile Crisis?",
+        "answer": "Jupiter missiles",
+        "distractors": [
+          "Pershing missiles",
+          "Polaris submarines",
+          "Nike missiles"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "The Cuban Missile Crisis was resolved entirely through military force.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Partially through force",
+          "Through UN intervention alone"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Which Soviet officer is credited with preventing nuclear war by vetoing a torpedo launch from submarine B-59?",
+        "answer": "Vasili Arkhipov",
+        "distractors": [
+          "Nikita Khrushchev",
+          "Yuri Gagarin",
+          "Anastas Mikoyan"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Soviet missiles in Cuba were discovered by US _____ spy plane photographs in October 1962.",
+        "answer": "U-2",
+        "distractors": [
+          "SR-71",
+          "B-52",
+          "F-4"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 10,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Dobbs, Michael. One Minute to Midnight: Kennedy, Khrushchev, and Castro on the Brink of Nuclear War. Knopf, 2008.",
+    "sourceUrl": "https://millercenter.org/the-presidency/educational-resources/cuban-missile-crisis",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Discusses nuclear war threat; appropriate for teen+",
+    "visualDescription": "Pixel art split-screen: Kennedy at oval office desk on left, Khrushchev across conference table on right, Cuba island between them with missile icons, nuclear clock at 11:58 overhead",
+    "tags": [
+      "cuban missile crisis",
+      "cold war",
+      "kennedy",
+      "khrushchev",
+      "nuclear war",
+      "1962",
+      "cuba"
+    ]
+  },
+  {
+    "id": "history-renaissance-rebirth-learning",
+    "type": "knowledge",
+    "domain": "History & Civilization",
+    "subdomain": "early_modern",
+    "categoryL1": "history",
+    "categoryL2": "early_modern",
+    "categoryL3": "renaissance",
+    "statement": "The Renaissance, beginning in 14th-century Italy, was a cultural movement that revived classical Greek and Roman learning after centuries of medieval scholasticism.",
+    "quizQuestion": "Where did the Renaissance cultural movement begin in the 14th century?",
+    "correctAnswer": "Italy",
+    "distractors": [
+      "France",
+      "Germany",
+      "England",
+      "Spain",
+      "Greece",
+      "The Netherlands",
+      "Portugal",
+      "Venice only"
+    ],
+    "acceptableAnswers": [
+      "Italy",
+      "Italian peninsula",
+      "14th-century Italy"
+    ],
+    "explanation": "The Renaissance ('rebirth' in French) emerged in the Italian city-states around the 1300s–1400s, fueled by the rediscovery of classical Greco-Roman texts, the patronage of wealthy merchants like the Medici family, the fall of Constantinople in 1453 (which scattered Byzantine scholars westward), and the invention of the printing press around 1440. It represented a shift from medieval theology-centered worldview toward humanism — the study of human potential and earthly life. The movement spread through Northern Europe in the 15th–16th centuries.",
+    "wowFactor": "The Renaissance was partly sparked by a catastrophe: the Black Death wiped out 30–60% of Europe's population in 1347–1351. The survivors — inheriting wealth, questioning the Church's explanations, and witnessing human fragility — became more focused on earthly life and human achievement. Death invented the Renaissance.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does the word 'Renaissance' literally mean?",
+        "answer": "Rebirth",
+        "distractors": [
+          "Renewal",
+          "Reformation",
+          "Revolution"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which powerful Florentine banking family were major patrons of the Renaissance?",
+        "answer": "The Medici",
+        "distractors": [
+          "The Borgias",
+          "The Sforzas",
+          "The Doges of Venice"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "The Renaissance began in Northern Europe before spreading to Italy.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Both regions simultaneously",
+          "Began in Spain"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "What event in 1453 contributed to the Renaissance by scattering Greek scholars westward?",
+        "answer": "Fall of Constantinople",
+        "distractors": [
+          "End of the Crusades",
+          "Black Death peak",
+          "Discovery of America"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Renaissance was driven by a revival of classical _____ and Roman learning.",
+        "answer": "Greek",
+        "distractors": [
+          "Egyptian",
+          "Persian",
+          "Arab"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Burckhardt, Jacob. The Civilization of the Renaissance in Italy. 1860.",
+    "sourceUrl": "https://www.britannica.com/event/Renaissance",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art Florentine piazza at golden hour, sculptor chiseling marble statue, scholars debating around a fountain, domed cathedral in background, Greek manuscripts unfurled on stone steps",
+    "tags": [
+      "renaissance",
+      "humanism",
+      "italy",
+      "classical learning",
+      "14th century",
+      "medici"
+    ]
+  },
+  {
+    "id": "history-renaissance-florence-medici",
+    "type": "knowledge",
+    "domain": "History & Civilization",
+    "subdomain": "early_modern",
+    "categoryL1": "history",
+    "categoryL2": "early_modern",
+    "categoryL3": "renaissance",
+    "statement": "Florence under the Medici family became the epicenter of the Renaissance, funding artists like Botticelli, Leonardo da Vinci, and Michelangelo.",
+    "quizQuestion": "Which Italian city was the primary center of Renaissance art and learning under the Medici family?",
+    "correctAnswer": "Florence",
+    "distractors": [
+      "Rome",
+      "Venice",
+      "Milan",
+      "Naples",
+      "Siena",
+      "Genoa",
+      "Pisa",
+      "Padua"
+    ],
+    "acceptableAnswers": [
+      "Florence",
+      "Firenze",
+      "Florence, Italy"
+    ],
+    "explanation": "Florence (Firenze) became the intellectual and artistic heart of the Renaissance under the patronage of the Medici banking dynasty, especially Cosimo de' Medici (1389–1464) and his grandson Lorenzo 'the Magnificent' (1449–1492). Lorenzo ran a Platonic Academy gathering the greatest minds of the age, supported artists including Botticelli, Ghirlandaio, Leonardo, and the young Michelangelo. The Duomo cathedral's dome, engineered by Brunelleschi without scaffolding, stands as an emblem of Renaissance ingenuity. Florence's banking wealth made Renaissance patronage economically possible.",
+    "wowFactor": "Lorenzo de' Medici spotted Michelangelo's talent when the boy was just 14 and took him into his palace to live with the family — giving him his own room, dining with him nightly, and treating him like a son. Without this, the Sistine Chapel might never have existed.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who was the Florentine architect who engineered the Duomo dome without traditional scaffolding?",
+        "answer": "Filippo Brunelleschi",
+        "distractors": [
+          "Leon Battista Alberti",
+          "Donato Bramante",
+          "Michelozzo"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which Medici ruler was known as 'the Magnificent' and was a major Renaissance patron?",
+        "answer": "Lorenzo de' Medici",
+        "distractors": [
+          "Cosimo de' Medici",
+          "Giovanni de' Medici",
+          "Piero de' Medici"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Leonardo da Vinci was born and spent his entire career in Florence.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly true",
+          "Only his early career"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "What institution did Lorenzo de' Medici establish to gather Renaissance scholars?",
+        "answer": "The Platonic Academy",
+        "distractors": [
+          "The Papal Library",
+          "The University of Bologna",
+          "The Order of Saint Mark"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Florence's Duomo dome was a feat of Renaissance engineering designed by Filippo _____.",
+        "answer": "Brunelleschi",
+        "distractors": [
+          "Michelangelo",
+          "Alberti",
+          "Bramante"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Hibbert, Christopher. The House of Medici: Its Rise and Fall. William Morrow, 1975.",
+    "sourceUrl": "https://www.museumsinflorence.com/musei/medici.html",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art Renaissance Florence skyline dominated by the terracotta Duomo dome, Medici crest on a palazzo gate, artist's studio window open with canvas and palette visible, cypress trees flanking",
+    "tags": [
+      "florence",
+      "medici",
+      "renaissance",
+      "brunelleschi",
+      "patronage",
+      "michelangelo",
+      "botticelli"
+    ]
+  },
+  {
+    "id": "history-renaissance-humanism-pico",
+    "type": "knowledge",
+    "domain": "History & Civilization",
+    "subdomain": "early_modern",
+    "categoryL1": "history",
+    "categoryL2": "early_modern",
+    "categoryL3": "renaissance",
+    "statement": "Renaissance humanism placed human beings — their potential, dignity, and earthly achievements — at the center of intellectual inquiry, in contrast to medieval theology's focus on divine authority.",
+    "quizQuestion": "What Renaissance philosophy placed human dignity and potential at the center of intellectual life?",
+    "correctAnswer": "Humanism",
+    "distractors": [
+      "Scholasticism",
+      "Nominalism",
+      "Platonism",
+      "Stoicism",
+      "Deism",
+      "Empiricism",
+      "Rationalism",
+      "Naturalism"
+    ],
+    "acceptableAnswers": [
+      "Humanism",
+      "Renaissance humanism",
+      "civic humanism"
+    ],
+    "explanation": "Renaissance humanism was championed by scholars including Petrarch (considered its 'father'), Erasmus of Rotterdam, Thomas More, and Pico della Mirandola, whose 'Oration on the Dignity of Man' (c. 1486) is called the 'Manifesto of the Renaissance.' Humanists studied the studia humanitatis — grammar, rhetoric, poetry, history, and moral philosophy — derived from classical Latin and Greek texts. They emphasized individual potential, civic virtue, and the value of earthly life. This didn't reject Christianity but reoriented human self-understanding from sinful creature toward capable, reasoning agent.",
+    "wowFactor": "Pico della Mirandola proposed to defend 900 theses from all known philosophy and religion in one public debate in Rome at age 23. The Pope banned the debate, condemned 13 theses as heretical, and Pico fled to France. His 'Oration on the Dignity of Man' — written for that forbidden debate — became the most famous statement of Renaissance humanism.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which Renaissance scholar is considered the 'father of humanism'?",
+        "answer": "Petrarch",
+        "distractors": [
+          "Erasmus",
+          "Pico della Mirandola",
+          "Thomas More"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the Renaissance document called the 'Manifesto of Humanism'?",
+        "answer": "Oration on the Dignity of Man",
+        "distractors": [
+          "The Prince",
+          "Utopia",
+          "Praise of Folly"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Renaissance humanism rejected Christianity in favor of ancient Greek religion.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Partially true",
+          "Only in Florence"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "What five subjects formed the core curriculum of Renaissance humanist education?",
+        "answer": "Grammar, rhetoric, poetry, history, and moral philosophy",
+        "distractors": [
+          "Theology, logic, arithmetic, geometry, music",
+          "Astronomy, alchemy, medicine, law, rhetoric",
+          "Latin, Greek, mathematics, art, architecture"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Renaissance humanist concept of _____ humanitatis covered grammar, rhetoric, poetry, history, and philosophy.",
+        "answer": "studia",
+        "distractors": [
+          "via",
+          "ars",
+          "alma"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Kristeller, Paul Oskar. Renaissance Thought: The Classic, Scholastic, and Humanist Strains. Harper & Row, 1961.",
+    "sourceUrl": "https://www.britannica.com/topic/humanism",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art scholar in Renaissance robes at lectern, Vitruvian Man diagram on the wall behind, scrolls of Cicero and Plato stacked beside an hourglass, candle flame casting warm light",
+    "tags": [
+      "humanism",
+      "renaissance",
+      "petrarch",
+      "pico della mirandola",
+      "studia humanitatis",
+      "dignity of man"
+    ]
+  },
+  {
+    "id": "history-ottoman-constantinople-1453",
+    "type": "knowledge",
+    "domain": "History & Civilization",
+    "subdomain": "early_modern",
+    "categoryL1": "history",
+    "categoryL2": "early_modern",
+    "categoryL3": "ottoman_empire",
+    "statement": "Sultan Mehmed II captured Constantinople on May 29, 1453, ending the Byzantine Empire and transforming the city into the Ottoman capital, renamed Istanbul.",
+    "quizQuestion": "Which Ottoman sultan conquered Constantinople in 1453, ending the Byzantine Empire?",
+    "correctAnswer": "Mehmed II",
+    "distractors": [
+      "Suleiman the Magnificent",
+      "Selim I",
+      "Murad II",
+      "Bayezid I",
+      "Osman I",
+      "Mehmed I",
+      "Selim II",
+      "Orhan"
+    ],
+    "acceptableAnswers": [
+      "Mehmed II",
+      "Mehmed the Conqueror",
+      "Sultan Mehmed II",
+      "Mehmed II (the Conqueror)"
+    ],
+    "explanation": "On May 29, 1453, after a 53-day siege, Ottoman forces under 21-year-old Mehmed II breached the walls of Constantinople using massive bronze cannons cast by a Hungarian engineer named Urban. The last Byzantine emperor, Constantine XI, died fighting on the walls. The fall ended the Eastern Roman Empire, which had survived 1,000 years after Rome's fall. Mehmed renamed himself 'the Conqueror' (Fatih) and converted the Hagia Sophia from a church into a mosque. The fall is considered a marker for the end of the Middle Ages and hastened the Renaissance by dispersing Greek scholars to Italy.",
+    "wowFactor": "Mehmed II was only 21 years old when he conquered Constantinople. To breach the city's legendary sea walls, he moved his fleet overland — rolling 70 ships across a greased log road for miles over a hill to bypass the chain blocking the Golden Horn harbor. It was a feat of logistical audacity that stunned the defenders.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the new name given to Constantinople after the Ottoman conquest?",
+        "answer": "Istanbul",
+        "distractors": [
+          "Ankara",
+          "Bursa",
+          "Edirne"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What great Byzantine church did Mehmed II convert to a mosque after taking Constantinople?",
+        "answer": "Hagia Sophia",
+        "distractors": [
+          "Church of the Holy Apostles",
+          "Chora Church",
+          "Blachernae Church"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "The Byzantine Empire fell when Constantinople was conquered in 1453.",
+        "answer": "True",
+        "distractors": [
+          "False",
+          "The Empire continued until 1461",
+          "It ended when Rome fell in 476"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "What innovation helped Mehmed II breach Constantinople's legendary walls?",
+        "answer": "Massive bronze cannons",
+        "distractors": [
+          "Tunneling under the walls",
+          "Bribery of gate guards",
+          "Poison in the water supply"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mehmed II conquered Constantinople after a ___-day siege in 1453.",
+        "answer": "53",
+        "distractors": [
+          "90",
+          "30",
+          "120"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Runciman, Steven. The Fall of Constantinople 1453. Cambridge University Press, 1965.",
+    "sourceUrl": "https://www.britannica.com/event/Fall-of-Constantinople-1453",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Covers religious conversion of sacred sites; use with historical context",
+    "visualDescription": "Pixel art young Mehmed II on horseback at dawn before towering Constantinople walls, bronze cannons lined up in foreground, crescent banner raised above a breached tower, Bosphorus shimmering",
+    "tags": [
+      "ottoman empire",
+      "constantinople",
+      "1453",
+      "mehmed ii",
+      "byzantine empire",
+      "istanbul",
+      "hagia sophia"
+    ]
+  },
+  {
+    "id": "history-ottoman-suleiman-magnificent",
+    "type": "knowledge",
+    "domain": "History & Civilization",
+    "subdomain": "early_modern",
+    "categoryL1": "history",
+    "categoryL2": "early_modern",
+    "categoryL3": "ottoman_empire",
+    "statement": "Suleiman the Magnificent (r. 1520–1566) expanded the Ottoman Empire to its greatest extent, codified Ottoman law, and was celebrated in Europe as 'the Lawgiver.'",
+    "quizQuestion": "What nickname did Europeans give Suleiman I for his legal reforms, distinct from the Ottoman title 'the Magnificent'?",
+    "correctAnswer": "The Lawgiver",
+    "distractors": [
+      "The Great",
+      "The Conqueror",
+      "The Just",
+      "The Wise",
+      "The Builder",
+      "The Reformer",
+      "The Golden",
+      "The Victorious"
+    ],
+    "acceptableAnswers": [
+      "The Lawgiver",
+      "Lawgiver",
+      "Kanuni (The Lawgiver)"
+    ],
+    "explanation": "Suleiman I reigned for 46 years and oversaw the Ottoman Empire at its zenith. He conquered Belgrade (1521), Rhodes (1522), and most of Hungary after the Battle of Mohács (1526). His siege of Vienna in 1529, though ultimately unsuccessful, reached the heart of Europe. Within the empire he was called 'Kanuni' (The Lawgiver) for restructuring the entire legal code. He was also a poet, goldsmith, and patron of the arts. His chief architect Mimar Sinan built the Süleymaniye Mosque in Istanbul — considered one of the greatest works of Islamic architecture.",
+    "wowFactor": "Suleiman conducted the largest mass execution in Ottoman history — and it was of his own sons. He had his capable eldest son Mustafa strangled in his tent in 1553, manipulated by his wife Hürrem Sultan (Roxelana), a former slave who became his legal wife and the most powerful woman in Ottoman history — setting off a succession crisis that haunted the empire for decades.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which famous Ottoman architect built the Süleymaniye Mosque under Suleiman I?",
+        "answer": "Mimar Sinan",
+        "distractors": [
+          "Mehmed Agha",
+          "Hayreddin",
+          "Koca Sinan Pasha"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "At the Battle of Mohács in 1526, Suleiman defeated which European kingdom?",
+        "answer": "Hungary",
+        "distractors": [
+          "Austria",
+          "Poland",
+          "Croatia"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Suleiman the Magnificent successfully captured Vienna during his 1529 siege.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "He captured it briefly",
+          "The siege was never attempted"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "What was the Ottoman title 'Kanuni' that Suleiman carried within the empire?",
+        "answer": "The Lawgiver",
+        "distractors": [
+          "The Conqueror",
+          "The Magnificent",
+          "The Holy"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Suleiman the Magnificent reigned from 1520 to _____, the longest Ottoman sultancy of his dynasty.",
+        "answer": "1566",
+        "distractors": [
+          "1571",
+          "1550",
+          "1580"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Freely, John. Inside the Seraglio: Private Lives of the Sultans in Istanbul. Penguin, 1999.",
+    "sourceUrl": "https://www.britannica.com/biography/Suleyman-the-Magnificent",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Covers politically ordered executions; appropriate for teen+",
+    "visualDescription": "Pixel art Suleiman in gold-trimmed robes and tall turban on jeweled throne, map of Ottoman Empire spread behind him from Vienna to Persia, Süleymaniye Mosque dome silhouetted at sunset",
+    "tags": [
+      "suleiman",
+      "ottoman empire",
+      "lawgiver",
+      "kanuni",
+      "1520",
+      "hungary",
+      "renaissance"
+    ]
+  },
+  {
+    "id": "history-ottoman-coffee-houses",
+    "type": "knowledge",
+    "domain": "History & Civilization",
+    "subdomain": "early_modern",
+    "categoryL1": "history",
+    "categoryL2": "early_modern",
+    "categoryL3": "ottoman_empire",
+    "statement": "Ottoman coffee houses (kahvehane) first appeared in Constantinople around 1554 and became revolutionary social spaces where men of all classes debated politics, played chess, and read aloud.",
+    "quizQuestion": "What were Ottoman coffee houses called in Turkish?",
+    "correctAnswer": "Kahvehane",
+    "distractors": [
+      "Caravanserai",
+      "Hammam",
+      "Bazaar",
+      "Tekke",
+      "Meyhanesi",
+      "Imaret",
+      "Bozahane",
+      "Medrese"
+    ],
+    "acceptableAnswers": [
+      "Kahvehane",
+      "kahvehanes",
+      "kahvehane (coffee house)"
+    ],
+    "explanation": "The first coffee houses in Constantinople opened around 1554, established by two Yemeni traders named Shems and Hekim. By the late 16th century, the city had over 600 kahvehanes. They were radical social levelers — merchants, scholars, poets, and artisans could sit together regardless of class and discuss news, politics, and literature. Sultans periodically banned them fearing sedition (Murad IV closed them in 1633), but they always reopened. Ottoman traders introduced coffee to Vienna, Venice, and London — directly spawning Europe's coffeehouse culture and, through Lloyd's coffeehouse, modern insurance markets.",
+    "wowFactor": "Coffee houses were so politically threatening that they were banned — multiple times. Sultan Murad IV made drinking coffee punishable by death in 1633. He reportedly roamed the streets of Istanbul in disguise executing coffee drinkers himself. The bans never lasted — coffee always won.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many coffee houses did Constantinople have by the late 16th century?",
+        "answer": "Over 600",
+        "distractors": [
+          "About 50",
+          "Over 2,000",
+          "Fewer than 100"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which Sultan famously banned coffee houses in 1633, making coffee drinking punishable by death?",
+        "answer": "Murad IV",
+        "distractors": [
+          "Suleiman I",
+          "Mehmed IV",
+          "Selim II"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Ottoman coffee houses were restricted exclusively to the noble class.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Only in Istanbul",
+          "Until the 17th century"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Which London coffee house's tradition of maritime insurance eventually became Lloyd's of London?",
+        "answer": "Lloyd's Coffee House",
+        "distractors": [
+          "Jonathan's Coffee House",
+          "Garraway's Coffee House",
+          "The Turk's Head"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The first Ottoman coffee houses appeared in Constantinople around _____, introduced by Yemeni traders.",
+        "answer": "1554",
+        "distractors": [
+          "1453",
+          "1600",
+          "1700"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Hattox, Ralph S. Coffee and Coffeehouses: The Origins of a Social Beverage in the Medieval Near East. University of Washington Press, 1985.",
+    "sourceUrl": "https://www.smithsonianmag.com/history/how-coffeehouses-changed-the-world-180949600/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art Ottoman men in turbans and robes seated cross-legged in an ornate tiled kahvehane, small brass coffee cups on low tables, chess game in foreground, hookah smoke curling, lattice windows casting geometric light",
+    "tags": [
+      "ottoman empire",
+      "coffee house",
+      "kahvehane",
+      "constantinople",
+      "coffee",
+      "social history",
+      "1554"
+    ]
+  },
+  {
+    "id": "history-samurai-bushido-code",
+    "type": "knowledge",
+    "domain": "History & Civilization",
+    "subdomain": "asian_history",
+    "categoryL1": "history",
+    "categoryL2": "asian_history",
+    "categoryL3": "feudal_japan",
+    "statement": "Bushido ('the way of the warrior') was the samurai code of ethics emphasizing loyalty, martial skill, honor, and the willingness to die rather than face disgrace.",
+    "quizQuestion": "What does the Japanese word 'bushido' literally translate to in English?",
+    "correctAnswer": "The way of the warrior",
+    "distractors": [
+      "The code of honor",
+      "The path of loyalty",
+      "The sword of righteousness",
+      "The spirit of Japan",
+      "The law of the samurai",
+      "The art of combat",
+      "The duty of service",
+      "The way of death"
+    ],
+    "acceptableAnswers": [
+      "The way of the warrior",
+      "Way of the warrior",
+      "Warrior's way"
+    ],
+    "explanation": "Bushido (武士道) combines 'bushi' (warrior) and 'do' (way/path). It was not a single codified document but an evolving set of cultural expectations drawing from Zen Buddhism, Confucian ethics, and Shinto. Its core virtues — righteousness (gi), courage (yu), benevolence (jin), respect (rei), honesty (makoto), honor (meiyo), and loyalty (chugi) — were popularized in Inazo Nitobe's 1900 book 'Bushido: The Soul of Japan.' The code obligated samurai to serve their lord with absolute fidelity and, if captured or shamed, to perform seppuku (ritual suicide). It shaped Japanese military culture through WWII.",
+    "wowFactor": "Bushido was mostly a romantic invention of the Meiji Era. For most of Japan's feudal history, samurai actually switched lords, surrendered, and cut practical deals just like warriors everywhere. The hyper-idealized 'die before dishonor' version was created in the 1700s when samurai had become peacetime bureaucrats with no wars to fight — and were compensating in literature.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What ritual suicide were disgraced samurai expected to perform under Bushido?",
+        "answer": "Seppuku",
+        "distractors": [
+          "Harakiri",
+          "Kamikaze",
+          "Sudoku"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who wrote 'Bushido: The Soul of Japan' in 1900, popularizing the code for Western audiences?",
+        "answer": "Inazo Nitobe",
+        "distractors": [
+          "Miyamoto Musashi",
+          "Yamamoto Tsunetomo",
+          "Lafcadio Hearn"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Bushido was a single official code written down by the Japanese government in the feudal era.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "It was written in the 12th century",
+          "The Shogun codified it in 1600"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Which three philosophical traditions shaped the Bushido code's values?",
+        "answer": "Zen Buddhism, Confucianism, and Shinto",
+        "distractors": [
+          "Taoism, Buddhism, and Christianity",
+          "Shintoism, Daoism, and Islam",
+          "Confucianism, Animism, and Hinduism"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The seven core virtues of Bushido included righteousness, courage, benevolence, respect, honesty, honor, and _____.",
+        "answer": "loyalty",
+        "distractors": [
+          "purity",
+          "wisdom",
+          "strength"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Nitobe, Inazo. Bushido: The Soul of Japan. 1900; Nitobe, Tsunetomo Yamamoto. Hagakure. c. 1709–1716.",
+    "sourceUrl": "https://www.britannica.com/topic/Bushido",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Mentions ritual suicide; appropriate for teen+",
+    "visualDescription": "Pixel art armored samurai in full black-lacquered yoroi at sunset, katana raised, cherry blossom petals falling, feudal Japanese castle silhouette behind, Bushido character kanji etched on stone lantern",
+    "tags": [
+      "samurai",
+      "bushido",
+      "feudal japan",
+      "warrior code",
+      "honor",
+      "seppuku",
+      "zen"
+    ]
+  },
+  {
+    "id": "history-samurai-katana-sword",
+    "type": "knowledge",
+    "domain": "History & Civilization",
+    "subdomain": "asian_history",
+    "categoryL1": "history",
+    "categoryL2": "asian_history",
+    "categoryL3": "feudal_japan",
+    "statement": "The katana's distinctive curved blade is produced through a process of folding and differential hardening — the cutting edge is harder than the spine, preventing both shattering and bending.",
+    "quizQuestion": "What makes the katana's edge harder than its spine without making the whole blade brittle?",
+    "correctAnswer": "Differential hardening using clay coating",
+    "distractors": [
+      "Folding the steel 1,000 times",
+      "Quenching in sacred river water",
+      "Adding chromium to the outer edge",
+      "Double tempering in volcanic ash",
+      "Using two separate grades of steel welded together",
+      "Carburizing only the cutting edge",
+      "Hammering at different temperatures",
+      "Ancient mineral additives in tamahagane"
+    ],
+    "acceptableAnswers": [
+      "Differential hardening using clay coating",
+      "differential hardening",
+      "clay tempering",
+      "tsuchioki clay coating"
+    ],
+    "explanation": "Katana smiths apply clay (tsuchioki) thickly to the spine and thinly (or not at all) to the edge before quenching the blade in water. The exposed edge cools rapidly, becoming hard martensite steel. The clay-insulated spine cools slowly, remaining softer and more flexible pearlite steel. This differential creates the distinctive hamon (temper line) visible on authentic blades. The blade's curve itself emerges during quenching — the edge contracts faster than the spine, bending the blade. Tamahagane (jewel steel) is the traditional raw material, smelted in a tatara furnace from iron sand over 72 hours.",
+    "wowFactor": "The katana's curve is not designed in — it happens automatically during the quenching process. When the smith plunges the straight hot blade into water, the hard edge contracts faster than the soft spine and the blade simply bends itself into the iconic curve. Every katana curves itself into existence.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the name of the temper line visible on an authentic katana blade?",
+        "answer": "Hamon",
+        "distractors": [
+          "Habaki",
+          "Tsuba",
+          "Nagasa"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the traditional Japanese steel used to forge katanas called?",
+        "answer": "Tamahagane",
+        "distractors": [
+          "Nihonto",
+          "Tetsu",
+          "Hagane"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "A katana's curved shape is hammered into the blade by the swordsmith.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "The curve is both hammered and quenched",
+          "Only on ceremonial katanas"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "What type of furnace is traditionally used to smelt tamahagane iron sand for katana production?",
+        "answer": "Tatara furnace",
+        "distractors": [
+          "Blast furnace",
+          "Crucible furnace",
+          "Reverberatory furnace"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The katana smith applies _____ to the blade spine before quenching to control differential hardening.",
+        "answer": "clay",
+        "distractors": [
+          "lacquer",
+          "wax",
+          "charcoal paste"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "teen",
+    "rarity": "epic",
+    "sourceName": "Kapp, Leon & Hiroko, and Joe Yoshihara. The Craft of the Japanese Sword. Kodansha International, 1987.",
+    "sourceUrl": "https://www.metmuseum.org/toah/hd/kswd/hd_kswd.htm",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art swordsmith at forge with red-glowing blade on anvil, clay coating visible on spine, quench bucket of water beside him, apprentice fanning bellows, hamon pattern glowing on the cutting edge",
+    "tags": [
+      "katana",
+      "samurai",
+      "sword",
+      "tamahagane",
+      "hamon",
+      "differential hardening",
+      "japanese craftsmanship"
+    ]
+  },
+  {
+    "id": "history-samurai-meiji-restoration",
+    "type": "knowledge",
+    "domain": "History & Civilization",
+    "subdomain": "asian_history",
+    "categoryL1": "history",
+    "categoryL2": "asian_history",
+    "categoryL3": "feudal_japan",
+    "statement": "The Meiji Restoration of 1868 abolished the samurai class, ended 265 years of Tokugawa shogunate rule, and modernized Japan through rapid adoption of Western technology and institutions.",
+    "quizQuestion": "In what year did the Meiji Restoration end shogunate rule and begin Japan's rapid modernization?",
+    "correctAnswer": "1868",
+    "distractors": [
+      "1853",
+      "1871",
+      "1889",
+      "1900",
+      "1854",
+      "1912",
+      "1876",
+      "1860"
+    ],
+    "acceptableAnswers": [
+      "1868",
+      "1868 CE"
+    ],
+    "explanation": "The Meiji Restoration ('Meiji' meaning 'enlightened rule') began when the last Tokugawa shogun Yoshinobu resigned power to the 15-year-old Emperor Meiji in January 1868. Within decades, Japan built a modern army (modeled on Prussia), navy (modeled on Britain), legal system (modeled on France and Germany), and industrial economy. The samurai class was officially dissolved with the Sword Abolition Edict of 1876, which banned wearing swords in public. Former samurai were compensated with government bonds — then the bonds were inflated away. The Satsuma Rebellion of 1877, led by Saigo Takamori, was the last major samurai uprising against modernization.",
+    "wowFactor": "Japan went from a feudal society with samurai swords to having a modern navy that defeated the entire Russian Imperial Fleet in 1905 — in just 37 years. The Battle of Tsushima was the first time an Asian power had ever defeated a European great power in naval combat. Russia never fully recovered from the humiliation.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which edict in 1876 banned samurai from wearing swords in public during the Meiji period?",
+        "answer": "Sword Abolition Edict",
+        "distractors": [
+          "Samurai Dissolution Act",
+          "Imperial Arms Ban",
+          "Haitorei Decree"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who led the last major samurai rebellion against Meiji modernization in 1877?",
+        "answer": "Saigo Takamori",
+        "distractors": [
+          "Yoshida Shoin",
+          "Ito Hirobumi",
+          "Tokugawa Yoshinobu"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "The Meiji Restoration resulted in Japan modeling its new institutions primarily on Chinese examples.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Mostly Chinese models",
+          "Only the legal system was Western"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In the 1905 Battle of Tsushima, Meiji Japan's modernized navy defeated which European power's fleet?",
+        "answer": "Russia",
+        "distractors": [
+          "France",
+          "Britain",
+          "Germany"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Meiji Restoration ended the _____ shogunate that had ruled Japan for 265 years.",
+        "answer": "Tokugawa",
+        "distractors": [
+          "Ashikaga",
+          "Kamakura",
+          "Minamoto"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Jansen, Marius B. The Making of Modern Japan. Belknap Press of Harvard, 2000.",
+    "sourceUrl": "https://www.britannica.com/event/Meiji-Restoration",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art split image: left half shows armored samurai with katana, right half shows Meiji-era Japanese soldier in Western uniform, industrial factory and steam train between them, rising sun flag overhead",
+    "tags": [
+      "meiji restoration",
+      "samurai",
+      "japan",
+      "1868",
+      "modernization",
+      "tokugawa",
+      "saigo takamori"
+    ]
+  },
+  {
+    "id": "history-amrev-declaration-independence",
+    "type": "knowledge",
+    "domain": "History & Civilization",
+    "subdomain": "modern_history",
+    "categoryL1": "history",
+    "categoryL2": "modern_history",
+    "categoryL3": "american_revolution",
+    "statement": "The Declaration of Independence was primarily drafted by Thomas Jefferson and adopted by the Continental Congress on July 4, 1776, declaring the thirteen American colonies independent from Britain.",
+    "quizQuestion": "Who was the primary author of the Declaration of Independence?",
+    "correctAnswer": "Thomas Jefferson",
+    "distractors": [
+      "Benjamin Franklin",
+      "John Adams",
+      "George Washington",
+      "James Madison",
+      "Alexander Hamilton",
+      "John Hancock",
+      "Patrick Henry",
+      "Thomas Paine"
+    ],
+    "acceptableAnswers": [
+      "Thomas Jefferson",
+      "Jefferson",
+      "Thomas Jefferson (with a committee)"
+    ],
+    "explanation": "Thomas Jefferson was selected to draft the Declaration because of his reputation as a skilled writer. He worked with a five-man committee (also including Franklin and Adams) but wrote most of it himself in 17 days. The document draws heavily on Enlightenment philosophy — especially John Locke's theory of natural rights (life, liberty, and property, which Jefferson changed to 'the pursuit of happiness'). Congress debated and revised it, notably removing Jefferson's passage condemning slavery (he was himself an enslaver). It was officially adopted on July 4, 1776, though most delegates didn't sign until August 2.",
+    "wowFactor": "Thomas Jefferson agonized over the Declaration for 17 days — and most delegates signed not on July 4 but on August 2. John Hancock signed large so King George could 'read it without his spectacles.' And John Adams and Thomas Jefferson both died on the same day — July 4, 1826, exactly 50 years after the Declaration was adopted.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "From which Enlightenment philosopher's 'natural rights' theory did Jefferson draw for the Declaration?",
+        "answer": "John Locke",
+        "distractors": [
+          "Jean-Jacques Rousseau",
+          "Voltaire",
+          "Thomas Hobbes"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Jefferson changed Locke's 'life, liberty, and property' to what famous phrase in the Declaration?",
+        "answer": "Life, liberty, and the pursuit of happiness",
+        "distractors": [
+          "Life, freedom, and property",
+          "Liberty, equality, and fraternity",
+          "Life, justice, and prosperity"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Most delegates signed the Declaration of Independence on July 4, 1776.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Only southern delegates signed later",
+          "Jefferson signed on July 4th"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "What controversial passage did Congress remove from Jefferson's draft of the Declaration?",
+        "answer": "A passage condemning the slave trade",
+        "distractors": [
+          "A passage calling for universal suffrage",
+          "A passage demanding religious freedom",
+          "A passage proposing immediate war with France"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Declaration of Independence was adopted by the Continental Congress on July 4, _____.",
+        "answer": "1776",
+        "distractors": [
+          "1775",
+          "1777",
+          "1778"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Maier, Pauline. American Scripture: Making the Declaration of Independence. Knopf, 1997.",
+    "sourceUrl": "https://www.archives.gov/founding-docs/declaration",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Mentions Jefferson as enslaver; use with historical context",
+    "visualDescription": "Pixel art Thomas Jefferson at writing desk by candlelight, quill pen poised over parchment, colonial Philadelphia street visible through window, Liberty Bell silhouette in distance",
+    "tags": [
+      "declaration of independence",
+      "american revolution",
+      "thomas jefferson",
+      "1776",
+      "natural rights",
+      "john locke"
+    ]
+  },
+  {
+    "id": "history-amrev-boston-tea-party",
+    "type": "knowledge",
+    "domain": "History & Civilization",
+    "subdomain": "modern_history",
+    "categoryL1": "history",
+    "categoryL2": "modern_history",
+    "categoryL3": "american_revolution",
+    "statement": "On December 16, 1773, Sons of Liberty members disguised as Mohawk warriors dumped 342 chests of British East India Company tea into Boston Harbor to protest taxation without representation.",
+    "quizQuestion": "How many chests of tea were thrown into Boston Harbor during the Boston Tea Party?",
+    "correctAnswer": "342 chests",
+    "distractors": [
+      "100 chests",
+      "500 chests",
+      "1,000 chests",
+      "200 chests",
+      "46 chests",
+      "600 chests",
+      "75 chests",
+      "425 chests"
+    ],
+    "acceptableAnswers": [
+      "342 chests",
+      "342",
+      "342 crates",
+      "342 chests of tea"
+    ],
+    "explanation": "The Boston Tea Party was a political protest against the Tea Act of 1773, which granted the British East India Company a monopoly on tea sales in the American colonies, undercutting colonial merchants. About 116 men (members of the Sons of Liberty organized by Samuel Adams) boarded three ships — Dartmouth, Eleanor, and Beaver — and dumped 342 chests of Darjeeling tea worth approximately £10,000 (over $1.7 million today) into Boston Harbor. The protestors wore disguises as Mohawk warriors, in part to suggest Native American solidarity. The British response — the Coercive Acts — only intensified colonial resistance.",
+    "wowFactor": "The Boston Tea Party was kept almost completely secret — no one was ever tried for it. Despite the colonial government offering rewards, not a single participant was identified publicly for years. The conspirators maintained near-perfect silence their entire lives. The last participant only revealed his identity in 1835 — 62 years later.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What British legislation triggered the Boston Tea Party by giving a tea monopoly to one company?",
+        "answer": "Tea Act of 1773",
+        "distractors": [
+          "Stamp Act",
+          "Townshend Acts",
+          "Intolerable Acts"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What were the British punitive laws passed in response to the Boston Tea Party called?",
+        "answer": "Coercive Acts (Intolerable Acts)",
+        "distractors": [
+          "Navigation Acts",
+          "Declaratory Acts",
+          "Quebec Act"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Boston Tea Party participants were tried and imprisoned by British authorities.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Only Samuel Adams was tried",
+          "Three men were briefly imprisoned"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Why did Boston Tea Party participants disguise themselves as Mohawk warriors?",
+        "answer": "To conceal identities and suggest Native American solidarity",
+        "distractors": [
+          "To intimidate British soldiers",
+          "It was a Mohawk tradition at protests",
+          "To avoid Stamp Act taxes on costumes"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Boston Tea Party took place on December 16, _____, organized by Samuel Adams and the Sons of Liberty.",
+        "answer": "1773",
+        "distractors": [
+          "1775",
+          "1770",
+          "1776"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Unger, Harlow Giles. American Tempest: How the Boston Tea Party Sparked a Revolution. Da Capo Press, 2011.",
+    "sourceUrl": "https://www.britannica.com/event/Boston-Tea-Party",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art nighttime Boston Harbor scene, men in Mohawk disguises heaving chests of tea from ship's deck into dark water, torchlight reflecting on harbor, crescent moon overhead, British redcoat silhouette watching from dock",
+    "tags": [
+      "boston tea party",
+      "american revolution",
+      "1773",
+      "sons of liberty",
+      "samuel adams",
+      "taxation",
+      "tea act"
+    ]
+  },
+  {
+    "id": "history-amrev-george-washington",
+    "type": "knowledge",
+    "domain": "History & Civilization",
+    "subdomain": "modern_history",
+    "categoryL1": "history",
+    "categoryL2": "modern_history",
+    "categoryL3": "american_revolution",
+    "statement": "George Washington's surprise crossing of the Delaware River on the night of December 25–26, 1776 and the resulting victory at Trenton saved the Continental Army from collapse.",
+    "quizQuestion": "What river did George Washington famously cross on the night of December 25, 1776 before the Battle of Trenton?",
+    "correctAnswer": "The Delaware River",
+    "distractors": [
+      "The Hudson River",
+      "The Potomac River",
+      "The Susquehanna River",
+      "The Connecticut River",
+      "The James River",
+      "The Ohio River",
+      "The Schuylkill River",
+      "The Raritan River"
+    ],
+    "acceptableAnswers": [
+      "The Delaware River",
+      "Delaware River",
+      "the Delaware"
+    ],
+    "explanation": "By December 1776, the Continental Army was in desperate condition — routed from New York, shrinking through desertions, and facing the expiration of most enlistments on January 1. Washington gambled on a surprise attack on the Hessian garrison at Trenton, New Jersey. In a blizzard, he led 2,400 troops across the ice-choked Delaware in flat-bottomed Durham boats on Christmas night. The Hessians were caught off guard and 900 were captured. The victory (and a second at Princeton days later) revived American morale and convinced France to consider alliance with the colonies. Thomas Paine's 'The American Crisis' — 'These are the times that try men's souls' — was read to troops that same week.",
+    "wowFactor": "Washington's army was about to dissolve — literally. On January 1, 1777, most soldiers' enlistments expired. After crossing the Delaware and winning at Trenton, Washington got on his horse and personally rode among the ranks, begging exhausted men to re-enlist for six more weeks. Most of them did. The war survived on six-week extensions of tired men's promises.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which enemy garrison did Washington defeat in the surprise attack following the Delaware crossing?",
+        "answer": "Hessian soldiers at Trenton",
+        "distractors": [
+          "British Redcoats at Princeton",
+          "Loyalist militia at Morristown",
+          "Cornwallis's forces at New Brunswick"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What Thomas Paine pamphlet — opening 'These are the times that try men's souls' — was read to Washington's troops that same week?",
+        "answer": "The American Crisis",
+        "distractors": [
+          "Common Sense",
+          "The Rights of Man",
+          "The Age of Reason"
+        ]
+      },
+      {
+        "type": "truefalse",
+        "question": "Washington crossed the Delaware River in calm, clear weather on Christmas night 1776.",
+        "answer": "False",
+        "distractors": [
+          "True",
+          "Only the second crossing was in a storm",
+          "Weather was cold but clear"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "How did Washington personally prevent his army from dissolving on January 1, 1777?",
+        "answer": "He rode among the ranks personally asking men to re-enlist for six more weeks",
+        "distractors": [
+          "He offered a cash bonus from his personal fortune",
+          "Congress passed emergency conscription law",
+          "He threatened courts-martial for desertion"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Washington crossed the Delaware River with 2,400 troops using flat-bottomed _____ boats.",
+        "answer": "Durham",
+        "distractors": [
+          "Flat",
+          "Scow",
+          "Bateau"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Fischer, David Hackett. Washington's Crossing. Oxford University Press, 2004.",
+    "sourceUrl": "https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/article/crossing-of-the-delaware/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art George Washington standing at prow of Durham boat crossing ice-choked Delaware River in blizzard, soldiers rowing in darkness, snow falling, torch light illuminating colonial flag and Washington's determined face",
+    "tags": [
+      "george washington",
+      "american revolution",
+      "delaware river",
+      "battle of trenton",
+      "1776",
+      "hessians",
+      "continental army"
+    ]
   }
 ]

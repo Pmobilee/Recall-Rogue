@@ -13270,5 +13270,1675 @@
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "food-salt-essential-mineral",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "salt",
+    "statement": "Salt (sodium chloride) is the only rock that humans regularly eat, and it is essential for nerve transmission and muscle contraction.",
+    "quizQuestion": "What makes salt unique among minerals that humans consume?",
+    "correctAnswer": "It is the only rock humans regularly eat",
+    "distractors": [
+      "It is the only mineral that dissolves in water",
+      "It is the only mineral found underground",
+      "It is the only mineral with no taste",
+      "It is the only mineral used in cooking",
+      "It is the only mineral that preserves food",
+      "It is the only mineral extracted from the sea",
+      "It is the only mineral that melts ice",
+      "It is the most abundant mineral on Earth"
+    ],
+    "acceptableAnswers": [
+      "It is the only rock humans regularly eat",
+      "It is a rock that humans eat"
+    ],
+    "explanation": "Salt is technically a mineral rock — sodium chloride — and it holds the distinction of being the only rock that humans eat directly as food. It is essential for life: sodium ions regulate nerve impulses, muscle contractions, and fluid balance. Without dietary salt, muscles cramp and neurons fail.",
+    "wowFactor": "You are literally eating rocks every time you salt your food — and you'd die without them.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is sodium chloride commonly known as?",
+        "answer": "Salt",
+        "distractors": [
+          "Baking soda",
+          "Potassium chloride",
+          "Calcium carbonate"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Salt is essential to human life primarily because it regulates what?",
+        "answer": "Nerve transmission and muscle contraction",
+        "distractors": [
+          "Blood sugar levels",
+          "Bone density",
+          "Oxygen absorption"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Salt is the only rock that humans regularly eat.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Salt's chemical name is ___ chloride.",
+        "answer": "Sodium",
+        "distractors": [
+          "Calcium",
+          "Potassium",
+          "Magnesium"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "A soldier in ancient Rome received a 'salarium' — an allowance to buy salt. What modern word derives from this practice?",
+        "answer": "Salary",
+        "distractors": [
+          "Sale",
+          "Saline",
+          "Salute"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Britannica / Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Salt",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A sparkling white salt crystal pyramid on a wooden table, with tiny pixel-art nerves and muscles glowing in the background.",
+    "tags": [
+      "salt",
+      "minerals",
+      "sodium",
+      "nutrition",
+      "geology"
+    ]
+  },
+  {
+    "id": "food-salt-mines",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "salt",
+    "statement": "The Wieliczka Salt Mine in Poland, active for over 700 years, contains underground chapels and sculptures carved entirely from rock salt.",
+    "quizQuestion": "What remarkable structures are found inside Poland's Wieliczka Salt Mine?",
+    "correctAnswer": "Chapels and sculptures carved from rock salt",
+    "distractors": [
+      "Prehistoric cave paintings",
+      "Underground rivers and waterfalls",
+      "Roman military barracks",
+      "Diamond and gold deposits",
+      "Medieval torture chambers",
+      "Natural crystal formations",
+      "Viking burial chambers",
+      "Ancient Roman aqueducts"
+    ],
+    "acceptableAnswers": [
+      "Chapels and sculptures carved from rock salt",
+      "Underground chapels carved from salt",
+      "Salt sculptures and chapels"
+    ],
+    "explanation": "The Wieliczka Salt Mine near Kraków, Poland, has been mined continuously since the 13th century. Over centuries, miners carved chapels, altars, bas-reliefs, and even chandeliers from the salt rock itself. The Chapel of St. Kinga — 54 meters underground — is the most famous, with every surface including floors and chandeliers made from salt. It is a UNESCO World Heritage Site.",
+    "wowFactor": "Miners spent centuries underground carving a cathedral out of salt. The chandeliers are salt. The floor is salt. Even the Last Supper bas-relief is salt.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which country is the famous Wieliczka Salt Mine located?",
+        "answer": "Poland",
+        "distractors": [
+          "Germany",
+          "Ukraine",
+          "Czech Republic"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Chapel of St. Kinga, a UNESCO World Heritage Site, is carved entirely from what material?",
+        "answer": "Rock salt",
+        "distractors": [
+          "Limestone",
+          "Marble",
+          "Granite"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Wieliczka Salt Mine contains chapels and sculptures carved from salt.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Wieliczka Salt Mine is located near the city of ___, Poland.",
+        "answer": "Kraków",
+        "distractors": [
+          "Warsaw",
+          "Gdańsk",
+          "Wrocław"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Wieliczka Salt Mine has been mined continuously since which century?",
+        "answer": "13th century",
+        "distractors": [
+          "9th century",
+          "16th century",
+          "18th century"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "UNESCO / Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wieliczka_Salt_Mine",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A glowing underground chapel with salt-crystal chandeliers and carved salt walls, pixel art in warm amber light 54 meters underground.",
+    "tags": [
+      "salt",
+      "Poland",
+      "Wieliczka",
+      "mines",
+      "UNESCO",
+      "architecture"
+    ]
+  },
+  {
+    "id": "food-salt-preservation",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "salt",
+    "statement": "Salt preserves food by drawing out moisture through osmosis, creating an environment too dry and salty for bacteria to survive.",
+    "quizQuestion": "How does salt prevent food from spoiling?",
+    "correctAnswer": "It draws out moisture through osmosis, making conditions inhospitable for bacteria",
+    "distractors": [
+      "It kills bacteria with its sharp crystals",
+      "It coats food in an airtight chemical layer",
+      "It acidifies food enough to destroy pathogens",
+      "It raises the temperature of food above bacterial thresholds",
+      "It blocks sunlight from reaching bacteria",
+      "It produces alcohol that sterilizes the food",
+      "It reacts with oxygen to create antimicrobial compounds",
+      "It freezes moisture within food cells"
+    ],
+    "acceptableAnswers": [
+      "It draws out moisture through osmosis, making conditions inhospitable for bacteria",
+      "It removes moisture via osmosis so bacteria cannot survive",
+      "Osmosis — salt pulls water out, so bacteria die"
+    ],
+    "explanation": "Salt is hygroscopic — it attracts and binds water molecules. When applied to food, osmosis pulls water out of bacterial cells and out of the food itself. Bacteria need moisture to reproduce; without it, they die or become dormant. This principle underpins cured meats, salted fish, pickles, and cheese rinds — preservation methods used for thousands of years before refrigeration.",
+    "wowFactor": "Salt killed bacteria by thirst. Entire civilizations survived winters because someone figured out that rubbing rocks on meat made it last forever.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What process does salt use to draw moisture out of food and bacteria?",
+        "answer": "Osmosis",
+        "distractors": [
+          "Diffusion",
+          "Evaporation",
+          "Fermentation"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Curing, brining, and pickling all rely on salt's ability to prevent spoilage via what mechanism?",
+        "answer": "Osmosis — removing moisture bacteria need to survive",
+        "distractors": [
+          "Acidification",
+          "Oxygenation",
+          "Freezing"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Salt preserves food by making it too dry for bacteria to grow.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Salt preserves food by using ___ to pull water out of bacterial cells.",
+        "answer": "Osmosis",
+        "distractors": [
+          "Fermentation",
+          "Oxidation",
+          "Acidification"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Which ancient food preservation method relies on salt's osmotic properties to cure fish and meat?",
+        "answer": "Salt curing",
+        "distractors": [
+          "Smoking",
+          "Fermenting",
+          "Drying in sun"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Curing_(food_preservation)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art side view of salt crystals on a fish fillet, tiny water droplets being drawn out with osmosis arrows, blue bacterial cells shriveling.",
+    "tags": [
+      "salt",
+      "preservation",
+      "osmosis",
+      "bacteria",
+      "food science",
+      "curing"
+    ]
+  },
+  {
+    "id": "food-sugar-sugarcane-origin",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "sugar",
+    "statement": "Sugarcane was first domesticated in New Guinea around 8000 BCE, making it one of the oldest cultivated crops in human history.",
+    "quizQuestion": "Where was sugarcane first domesticated?",
+    "correctAnswer": "New Guinea",
+    "distractors": [
+      "India",
+      "Brazil",
+      "Egypt",
+      "China",
+      "Caribbean islands",
+      "Mexico",
+      "Indonesia",
+      "Persia"
+    ],
+    "acceptableAnswers": [
+      "New Guinea",
+      "Papua New Guinea"
+    ],
+    "explanation": "Archaeological and genetic evidence points to New Guinea as the origin of sugarcane cultivation, approximately 10,000 years ago. From there it spread to India around 6000 BCE, where people first learned to crystallize sugar from the juice. The word 'sugar' itself traces through Arabic sukkar, Persian shakar, and ultimately Sanskrit sharkara, meaning 'gravel' or 'grit' — a reference to raw crystallized sugar.",
+    "wowFactor": "Sugar started as a New Guinea crop chewed for its sweet juice 10,000 years ago. The entire global sugar industry traces back to one island.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately when was sugarcane first domesticated?",
+        "answer": "Around 8000 BCE",
+        "distractors": [
+          "Around 3000 BCE",
+          "Around 500 CE",
+          "Around 1000 BCE"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "New Guinea is historically significant in food history because it was the origin of what crop?",
+        "answer": "Sugarcane",
+        "distractors": [
+          "Rice",
+          "Yam",
+          "Banana"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Sugarcane was first domesticated in Brazil.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The word 'sugar' ultimately derives from the Sanskrit word meaning 'gravel,' which is ___.",
+        "answer": "Sharkara",
+        "distractors": [
+          "Sukkar",
+          "Shakar",
+          "Shakti"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "From New Guinea, sugarcane cultivation spread next to which country, where sugar was first crystallized?",
+        "answer": "India",
+        "distractors": [
+          "China",
+          "Egypt",
+          "Persia"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sugarcane",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Tall green sugarcane stalks on a tropical island hillside, pixel art with golden dawn light and a Pacific Ocean backdrop.",
+    "tags": [
+      "sugar",
+      "sugarcane",
+      "New Guinea",
+      "agriculture",
+      "origins",
+      "history"
+    ]
+  },
+  {
+    "id": "food-sugar-refined-history",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "sugar",
+    "statement": "Refined white sugar became widely available in Europe only after the 17th century, when Caribbean sugar plantations driven by enslaved labor dramatically reduced its price.",
+    "quizQuestion": "What event made refined white sugar widely affordable in Europe during the 17th century?",
+    "correctAnswer": "Mass production on Caribbean plantations using enslaved labor",
+    "distractors": [
+      "The invention of the steam-powered sugar press in England",
+      "Discovery of sugar beet as a cheaper source",
+      "Trade agreements with China allowing bulk import",
+      "A Dutch chemist discovering a new refining process",
+      "Portuguese explorers finding wild sugar forests in Brazil",
+      "The fall of the Ottoman Empire opening Arab trade routes",
+      "Venetian merchants monopolizing the spice trade",
+      "Napoleon funding a French agricultural program for sugar production"
+    ],
+    "acceptableAnswers": [
+      "Mass production on Caribbean plantations using enslaved labor",
+      "Caribbean sugar plantations powered by enslaved people",
+      "Slave-driven Caribbean sugar production"
+    ],
+    "explanation": "For most of history, sugar was an expensive luxury — a spice used by the wealthy in tiny amounts. The colonization of Caribbean islands, combined with the transatlantic slave trade that forced millions of Africans into brutal labor on sugar plantations, created industrial-scale production that collapsed sugar prices. By the mid-17th century, sugar transformed from a luxury to a staple across Europe, fundamentally changing diet, dental health, and global trade — at tremendous human cost.",
+    "wowFactor": "Sugar was once literally worth its weight in gold. The reason it's cheap today is one of history's darkest economic engines: the Atlantic slave trade.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Before the 17th century, sugar in Europe was considered what?",
+        "answer": "A luxury spice for the wealthy",
+        "distractors": [
+          "A common sweetener",
+          "A medicinal herb",
+          "A grain product"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The dramatic drop in sugar prices in 17th-century Europe was directly linked to which atrocity?",
+        "answer": "The transatlantic slave trade and Caribbean plantation labor",
+        "distractors": [
+          "The Black Death reducing population",
+          "The Crusades opening new trade routes",
+          "The Protestant Reformation changing dietary laws"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Sugar was a common affordable food in Europe before the 1600s.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Caribbean sugar production in the 17th century relied on the labor of ___ people.",
+        "answer": "Enslaved",
+        "distractors": [
+          "Indentured",
+          "Volunteer",
+          "Colonial"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "The widespread availability of cheap sugar in Europe led to a dramatic rise in what health problem?",
+        "answer": "Tooth decay (dental caries)",
+        "distractors": [
+          "Blindness",
+          "Scurvy",
+          "Gout"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/History_of_sugar",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "Discusses the transatlantic slave trade in historical context.",
+    "visualDescription": "A pixel art split scene: a European nobleman with a tiny sugar bowl on the left; a vast Caribbean cane field under a harsh sun on the right.",
+    "tags": [
+      "sugar",
+      "history",
+      "slavery",
+      "Caribbean",
+      "colonialism",
+      "trade"
+    ]
+  },
+  {
+    "id": "food-sugar-caramelization",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "sugar",
+    "statement": "Caramelization is a chemical reaction that begins when sugar is heated above 160°C (320°F), breaking sugar molecules into hundreds of new flavor compounds.",
+    "quizQuestion": "What temperature does sugar need to reach for caramelization to begin?",
+    "correctAnswer": "Around 160°C (320°F)",
+    "distractors": [
+      "Around 100°C (212°F)",
+      "Around 200°C (392°F)",
+      "Around 75°C (167°F)",
+      "Around 230°C (446°F)",
+      "Around 50°C (122°F)",
+      "Around 130°C (266°F)",
+      "Around 250°C (482°F)",
+      "Around 90°C (194°F)"
+    ],
+    "acceptableAnswers": [
+      "Around 160°C (320°F)",
+      "160°C",
+      "320°F",
+      "About 160 degrees Celsius"
+    ],
+    "explanation": "Caramelization is the non-enzymatic browning of sugar, distinct from the Maillard reaction (which involves proteins). When sucrose is heated past approximately 160°C, its molecules break apart and recombine into over 100 new compounds including furans, maltol, and diacetyl — producing the complex nutty, buttery, golden-brown flavor we call caramel. Different sugars caramelize at different temperatures: fructose at ~110°C, glucose at ~160°C, sucrose at ~160-180°C.",
+    "wowFactor": "One sugar molecule, 160 degrees of heat, and nature produces over 100 new flavor compounds. Caramel is sugar falling apart beautifully.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is caramelization?",
+        "answer": "The browning of sugar when heated, creating new flavor compounds",
+        "distractors": [
+          "Sugar dissolving in hot liquid",
+          "Proteins browning when cooked",
+          "Sugar fermenting under heat"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Heating sugar past 160°C causes which culinary reaction?",
+        "answer": "Caramelization",
+        "distractors": [
+          "Maillard reaction",
+          "Fermentation",
+          "Crystallization"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Caramelization and the Maillard reaction are the same process.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Caramelization creates over ___ new flavor compounds from a single sugar molecule.",
+        "answer": "100",
+        "distractors": [
+          "10",
+          "5",
+          "50"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "The Maillard reaction and caramelization both cause food to brown, but the Maillard reaction requires proteins AND what else?",
+        "answer": "Sugars (reducing sugars reacting with amino acids)",
+        "distractors": [
+          "Only fat",
+          "Only water",
+          "Only heat above 200°C"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Caramelization",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of white sugar crystals in a pan turning golden-brown with heat waves rising, tiny molecular fragments floating around them.",
+    "tags": [
+      "sugar",
+      "caramelization",
+      "food chemistry",
+      "cooking",
+      "Maillard",
+      "heat"
+    ]
+  },
+  {
+    "id": "food-pepper-peppercorn-trade",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "pepper",
+    "statement": "Black, white, and green peppercorns all come from the same plant (Piper nigrum) — the difference is when the berries are harvested and how they are processed.",
+    "quizQuestion": "How are black, white, and green peppercorns different if they come from the same plant?",
+    "correctAnswer": "They differ in harvest time and processing method",
+    "distractors": [
+      "They come from different varieties of the pepper vine",
+      "They are grown in different countries",
+      "They differ only in the soil type used",
+      "Black is dried, white is cooked, green is pickled in brine",
+      "They are different parts of the plant: stem, root, and berry",
+      "Black is unripe, green is ripe, white is overripe",
+      "They are simply different names for the same product",
+      "White and green are artificial flavors added to black pepper"
+    ],
+    "acceptableAnswers": [
+      "They differ in harvest time and processing method",
+      "Harvest timing and processing differ",
+      "They're the same berry processed differently"
+    ],
+    "explanation": "All three come from the Piper nigrum vine. Green peppercorns are unripe berries harvested early and either freeze-dried or brined. Black peppercorns are unripe berries dried in the sun — the skin wrinkles and darkens through enzymatic reactions. White peppercorns are fully ripe berries with the outer skin soaked off, leaving just the seed. Pink peppercorns are actually from a completely different plant (Schinus molle), despite being sold alongside the others.",
+    "wowFactor": "Black, green, and white pepper are literally the same berry at different life stages with different sunburn levels. And pink pepper is a total impostor from a different plant.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What plant do black, white, and green peppercorns all come from?",
+        "answer": "Piper nigrum",
+        "distractors": [
+          "Capsicum annuum",
+          "Piper longum",
+          "Schinus molle"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "White peppercorns are made by taking fully ripe pepper berries and doing what?",
+        "answer": "Soaking and removing the outer skin",
+        "distractors": [
+          "Roasting them at high heat",
+          "Bleaching them with lime",
+          "Grinding and re-pressing them"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pink peppercorns come from the same plant as black peppercorns.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Green peppercorns are ___ pepper berries that have been harvested early.",
+        "answer": "Unripe",
+        "distractors": [
+          "Overripe",
+          "Fermented",
+          "Bleached"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "The dark color and wrinkled texture of black peppercorns is caused by what process during drying?",
+        "answer": "Enzymatic browning reaction in the skin",
+        "distractors": [
+          "Mold growth on the surface",
+          "Chemical bleaching in reverse",
+          "Natural ink pigment released by the berry"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Black_pepper",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art trio of peppercorn berries: a green fresh one, a wrinkled black dried one, and a smooth white skinless one, side by side on a leaf.",
+    "tags": [
+      "pepper",
+      "peppercorn",
+      "Piper nigrum",
+      "food science",
+      "spices",
+      "processing"
+    ]
+  },
+  {
+    "id": "food-pepper-types",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "pepper",
+    "statement": "The heat of black pepper comes from piperine, while the heat of chili peppers comes from capsaicin — two entirely different chemical compounds from unrelated plants.",
+    "quizQuestion": "What chemical compound gives black pepper its distinctive heat?",
+    "correctAnswer": "Piperine",
+    "distractors": [
+      "Capsaicin",
+      "Allicin",
+      "Cinnamaldehyde",
+      "Eugenol",
+      "Quercetin",
+      "Terpineol",
+      "Vanillin",
+      "Gingerol"
+    ],
+    "acceptableAnswers": [
+      "Piperine",
+      "Piperine alkaloid"
+    ],
+    "explanation": "Piperine is an alkaloid found in Piper nigrum that binds to the same TRPV1 pain receptor as capsaicin (the compound in chili peppers), but via a different mechanism and with different sensory qualities. Piperine's heat is shorter-lived, more diffuse, and less intense than capsaicin's. It also increases the bioavailability of certain nutrients, including curcumin (the active compound in turmeric), by up to 2000% — which is why black pepper is often paired with turmeric.",
+    "wowFactor": "Black pepper contains a compound that makes turmeric 2000% more absorbable by your body. Traditional cuisines pairing turmeric and pepper discovered this synergy thousands of years before modern science did.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which compound in black pepper activates the same pain receptor as capsaicin?",
+        "answer": "Piperine",
+        "distractors": [
+          "Gingerol",
+          "Allicin",
+          "Eugenol"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Piperine dramatically increases the absorption of curcumin from which spice?",
+        "answer": "Turmeric",
+        "distractors": [
+          "Cinnamon",
+          "Cardamom",
+          "Saffron"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Black pepper and chili peppers both get their heat from capsaicin.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Black pepper's heat compound piperine can increase turmeric's bioavailability by up to ___.",
+        "answer": "2000%",
+        "distractors": [
+          "10%",
+          "50%",
+          "500%"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Both piperine and capsaicin trigger heat sensations because they activate the same receptor. What is it called?",
+        "answer": "TRPV1 (transient receptor potential vanilloid 1)",
+        "distractors": [
+          "GABA receptor",
+          "ACE receptor",
+          "Dopamine receptor"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Piperine",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art molecular diagram of piperine and capsaicin side by side, with a shared lightning-bolt receptor between them labeled TRPV1.",
+    "tags": [
+      "pepper",
+      "piperine",
+      "capsaicin",
+      "chemistry",
+      "TRPV1",
+      "turmeric",
+      "bioavailability"
+    ]
+  },
+  {
+    "id": "food-garlic-vampire-folklore",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "garlic",
+    "statement": "The belief that garlic repels vampires likely originated from Eastern European folklore where garlic was used to ward off disease-carrying creatures, such as mosquitoes and rabid wolves.",
+    "quizQuestion": "What is the most likely origin of the belief that garlic repels vampires?",
+    "correctAnswer": "Eastern European folk practices of using garlic to repel disease-carrying pests",
+    "distractors": [
+      "The smell of garlic was said to repel demons in ancient Egypt",
+      "A Transylvanian priest declared garlic holy in the Middle Ages",
+      "Dracula author Bram Stoker invented it entirely",
+      "Roman soldiers wore garlic to repel evil spirits in battle",
+      "Garlic's white color was associated with purity against dark forces",
+      "The Catholic Church mandated garlic use in vampire exorcisms",
+      "A plague outbreak in Romania was blamed on vampires, and garlic cured it",
+      "Greek mythology linked garlic to Hecate's protection against the undead"
+    ],
+    "acceptableAnswers": [
+      "Eastern European folk practices of using garlic to repel disease-carrying pests",
+      "Folk medicine using garlic against disease and pests",
+      "Eastern European folklore where garlic repelled harmful creatures"
+    ],
+    "explanation": "Before germ theory, Eastern Europeans used garlic to repel mosquitoes, rats, and wolves — all vectors of disease. Epidemics of plague, rabies, and porphyria (a disease causing pale skin and sun sensitivity) were sometimes attributed to vampiric possession. Since garlic was already associated with protection from the creatures that spread disease, it became linked to warding off the 'vampires' that were really just disease victims. Bram Stoker drew heavily on existing Eastern European vampire lore for Dracula (1897).",
+    "wowFactor": "Vampire mythology may have originated from rabies outbreaks — rabies causes aggression, sensitivity to light, and can be spread by bite. Garlic repels rabid animals. The folklore was proto-epidemiology.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what region did most vampire folklore — including the garlic connection — originate?",
+        "answer": "Eastern Europe",
+        "distractors": [
+          "Ancient Egypt",
+          "Victorian England",
+          "Ancient Greece"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which real disease — causing pale skin, sunlight sensitivity, and aggression — may have inspired vampire legends?",
+        "answer": "Rabies (or porphyria)",
+        "distractors": [
+          "Tuberculosis",
+          "Typhoid fever",
+          "Leprosy"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Bram Stoker invented the idea that garlic repels vampires.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Garlic was used in Eastern Europe to repel ___ and other disease-carrying creatures, linking it to protection against supernatural evil.",
+        "answer": "Mosquitoes",
+        "distractors": [
+          "Snakes",
+          "Spiders",
+          "Ravens"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Bram Stoker published Dracula, the novel that popularized vampire lore in the English-speaking world, in what year?",
+        "answer": "1897",
+        "distractors": [
+          "1847",
+          "1865",
+          "1912"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vampire",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a garlic bulb glowing white against a dark Gothic castle backdrop, bats fleeing into a stormy purple sky.",
+    "tags": [
+      "garlic",
+      "vampire",
+      "folklore",
+      "Eastern Europe",
+      "mythology",
+      "disease",
+      "history"
+    ]
+  },
+  {
+    "id": "food-garlic-medicinal",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "garlic",
+    "statement": "Garlic has been used medicinally for at least 5,000 years, with records from ancient Egypt, Greece, Rome, and China prescribing it for everything from infections to heart disease.",
+    "quizQuestion": "How far back does documented medicinal use of garlic extend?",
+    "correctAnswer": "At least 5,000 years",
+    "distractors": [
+      "About 500 years, since European Renaissance herbalists",
+      "About 2,000 years, since ancient Rome",
+      "About 1,000 years, since medieval Islamic medicine",
+      "About 200 years, since 19th-century folk medicine",
+      "About 800 years, since the Crusades",
+      "About 3,000 years, since ancient Greece only",
+      "About 100 years, since Louis Pasteur's germ theory experiments",
+      "About 4,000 years, since Babylon"
+    ],
+    "acceptableAnswers": [
+      "At least 5,000 years",
+      "5,000 years or more",
+      "Since ancient Egypt (~3000 BCE)"
+    ],
+    "explanation": "The Ebers Papyrus (ca. 1550 BCE) lists 22 garlic remedies in ancient Egyptian medicine. Hippocrates prescribed it in ancient Greece. Roman soldiers were given garlic to boost stamina. Traditional Chinese medicine has used it for millennia. Louis Pasteur noted garlic's antibacterial properties in 1858. During World War I and II, garlic was used as a field antiseptic when antibiotics ran out. Modern research has confirmed properties including cardiovascular benefits, antimicrobial activity, and immune support — primarily from the compound allicin.",
+    "wowFactor": "Garlic was issued to Roman legions as a performance enhancer and survival food. When antibiotics ran out in World War II, field surgeons turned back to garlic. A 5,000-year prescription that actually works.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which ancient document, dated to approximately 1550 BCE, records 22 garlic remedies?",
+        "answer": "The Ebers Papyrus",
+        "distractors": [
+          "The Hippocratic Corpus",
+          "The Yellow Emperor's Classic",
+          "The Roman Materia Medica"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "During which conflicts was garlic used as a field antiseptic when conventional medical supplies ran out?",
+        "answer": "World War I and World War II",
+        "distractors": [
+          "The Crusades",
+          "The American Civil War",
+          "The Napoleonic Wars"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Louis Pasteur noted garlic's antibacterial properties in the 19th century.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Hippocrates, the ancient Greek 'father of medicine,' prescribed ___ for numerous ailments.",
+        "answer": "Garlic",
+        "distractors": [
+          "Cinnamon",
+          "Pepper",
+          "Turmeric"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Roman soldiers were given garlic to improve what two things?",
+        "answer": "Stamina and resistance to infection",
+        "distractors": [
+          "Vision and hearing",
+          "Speed and aggression",
+          "Intelligence and memory"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Garlic",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art timeline: Egyptian papyrus scroll with garlic drawing, Roman soldier with garlic bunch, WWII field medic with garlic — all connected by a glowing thread.",
+    "tags": [
+      "garlic",
+      "medicine",
+      "history",
+      "Egypt",
+      "Rome",
+      "antibacterial",
+      "allicin"
+    ]
+  },
+  {
+    "id": "food-garlic-allicin",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "garlic",
+    "statement": "Allicin, the compound responsible for garlic's pungent smell and most of its health benefits, is only created when a garlic clove is crushed or chopped — not in the intact clove.",
+    "quizQuestion": "How is allicin, garlic's key active compound, created?",
+    "correctAnswer": "When a garlic clove is crushed or chopped, triggering an enzyme reaction",
+    "distractors": [
+      "It is present in garlic from the moment the bulb forms",
+      "It is produced when garlic is heated above 100°C",
+      "It forms when garlic is dried and powdered",
+      "It is created when garlic absorbs moisture from the air",
+      "It forms when garlic is peeled and exposed to light",
+      "It is released when garlic is fermented",
+      "It forms in garlic only after it has been frozen",
+      "It is created by sunlight reacting with garlic's outer skin"
+    ],
+    "acceptableAnswers": [
+      "When a garlic clove is crushed or chopped, triggering an enzyme reaction",
+      "Crushing or chopping triggers alliin + alliinase → allicin",
+      "Physical damage to the clove triggers enzyme activity"
+    ],
+    "explanation": "Intact garlic contains two precursors kept separate by cell walls: alliin (an amino acid) and alliinase (an enzyme). When the clove is crushed or chopped, the cell walls break, alliin and alliinase combine, and allicin is produced within seconds. Allicin is unstable — it breaks down further into other sulfur compounds (diallyl disulfide, ajoene). Importantly, heat quickly destroys alliinase, so cooking whole garlic cloves produces much less allicin than crushing first, then cooking. Crushing and waiting 10 minutes before cooking maximizes allicin formation.",
+    "wowFactor": "Garlic has a chemical defense system: crushing triggers a reaction that wasn't possible in the intact clove. The smell is basically garlic's alarm system going off.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What two precursor compounds combine to create allicin when garlic is crushed?",
+        "answer": "Alliin and alliinase",
+        "distractors": [
+          "Allicin and sulfide",
+          "Terpenes and aldehydes",
+          "Quercetin and piperine"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "To maximize allicin production, you should crush garlic and then wait how long before cooking?",
+        "answer": "About 10 minutes",
+        "distractors": [
+          "Cook immediately",
+          "Wait 1 hour",
+          "Refrigerate overnight"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: An intact, uncut garlic clove contains allicin.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Allicin is created when crushing garlic combines the amino acid alliin with the enzyme ___.",
+        "answer": "Alliinase",
+        "distractors": [
+          "Lipase",
+          "Amylase",
+          "Protease"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Why does cooking whole garlic cloves produce much less allicin than pre-crushed garlic?",
+        "answer": "Heat destroys alliinase before it can react with alliin",
+        "distractors": [
+          "Heat makes garlic absorb allicin from the pan",
+          "Whole cloves contain no alliin",
+          "High temperature creates allicin faster"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Allicin",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art cross-section of a garlic clove being crushed: two labeled compartments merging, releasing a glowing green cloud of allicin molecules.",
+    "tags": [
+      "garlic",
+      "allicin",
+      "chemistry",
+      "enzymes",
+      "food science",
+      "alliin",
+      "alliinase"
+    ]
+  },
+  {
+    "id": "food-vanilla-orchid-origin",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "vanilla",
+    "statement": "Vanilla is the only edible fruit produced by an orchid, and it originated in Mexico, where the Totonac people cultivated it for centuries before Spanish colonizers encountered it.",
+    "quizQuestion": "What is unique about vanilla among orchid species?",
+    "correctAnswer": "It is the only orchid that produces an edible fruit",
+    "distractors": [
+      "It is the only orchid that grows underground",
+      "It is the only orchid native to Mexico",
+      "It is the only orchid that requires hand pollination",
+      "It is the only orchid with a pleasant scent",
+      "It is the only orchid cultivated for commerce",
+      "It is the only orchid that produces seeds",
+      "It is the only orchid that grows as a vine",
+      "It is the only orchid that can survive in cold climates"
+    ],
+    "acceptableAnswers": [
+      "It is the only orchid that produces an edible fruit",
+      "Vanilla is the only edible orchid fruit",
+      "The only orchid with an edible seed pod"
+    ],
+    "explanation": "With over 25,000 orchid species, vanilla (Vanilla planifolia) stands alone as the only one producing an edible fruit used as food. The Totonac people of eastern Mexico cultivated vanilla for centuries, using it in ritual offerings and as a perfume. The Aztecs later mixed it with chocolate in their xocolatl drinks. Spanish conquistadors brought vanilla back to Europe in the 16th century, though Europe couldn't successfully grow it for 300 years because the native Mexican bee (Melipona) that pollinates vanilla flowers was absent. Today, 80% of the world's vanilla comes from Madagascar.",
+    "wowFactor": "For 300 years, Europeans who grew vanilla plants could never get the fruit — because the only bee that naturally pollinates vanilla lived only in Mexico. Every vanilla pod in Europe required hand-pollination or import.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which indigenous people of Mexico first cultivated vanilla?",
+        "answer": "The Totonac",
+        "distractors": [
+          "The Aztecs",
+          "The Maya",
+          "The Olmec"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Today, roughly 80% of the world's vanilla supply comes from which country?",
+        "answer": "Madagascar",
+        "distractors": [
+          "Mexico",
+          "Indonesia",
+          "India"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Vanilla is the only orchid species that produces an edible fruit.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Vanilla plants outside Mexico require ___ pollination because the native Melipona bee is absent.",
+        "answer": "Hand",
+        "distractors": [
+          "Wind",
+          "Water",
+          "Chemical"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "The Aztecs mixed vanilla with which other ingredient in their traditional drink xocolatl?",
+        "answer": "Chocolate (cacao)",
+        "distractors": [
+          "Chili pepper only",
+          "Honey and corn",
+          "Fermented agave"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vanilla",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A climbing vanilla orchid vine in a tropical forest, long green seed pods hanging from it, a Melipona bee hovering at the flower, pixel art.",
+    "tags": [
+      "vanilla",
+      "orchid",
+      "Mexico",
+      "Totonac",
+      "spices",
+      "Madagascar",
+      "history"
+    ]
+  },
+  {
+    "id": "food-vanilla-expensive-spice",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "vanilla",
+    "statement": "Natural vanilla is the second most expensive spice in the world after saffron, largely because each vanilla flower must be hand-pollinated and the pods take nine months to mature.",
+    "quizQuestion": "Why is natural vanilla the second most expensive spice in the world?",
+    "correctAnswer": "Each flower must be hand-pollinated and pods take nine months to mature",
+    "distractors": [
+      "Vanilla orchids grow only on a single volcanic island",
+      "The fermentation process requires rare bacteria",
+      "Vanilla beans must be aged for 10 years to develop flavor",
+      "A single plant produces only one pod per decade",
+      "The extraction requires expensive chemical equipment",
+      "Vanilla is taxed heavily as a luxury import in most countries",
+      "Wild vanilla is endangered and cannot be farmed",
+      "The pods must be harvested during a 48-hour window or they spoil"
+    ],
+    "acceptableAnswers": [
+      "Each flower must be hand-pollinated and pods take nine months to mature",
+      "Labor-intensive hand pollination and long growing cycle",
+      "Hand pollination and 9-month pod maturation"
+    ],
+    "explanation": "Natural vanilla production is extraordinarily labor-intensive. Each vanilla flower blooms for only one day and must be hand-pollinated (outside Mexico, which has no native vanilla bee). After pollination, the pod takes 9 months to mature, then requires a months-long curing process involving blanching, sweating, drying, and conditioning — before the characteristic vanillin flavor compounds develop. Vanilla prices can spike dramatically (reaching $600/kg in 2018) due to cyclones hitting Madagascar, which produces 80% of the global supply. This is why 99% of 'vanilla flavoring' in food is synthetic vanillin made from wood pulp lignin or petrochemicals.",
+    "wowFactor": "Your vanilla ice cream almost certainly contains zero real vanilla. Natural vanilla is too expensive for mass-market food — it's made from wood pulp or petroleum instead. And it smells the same.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which spice is MORE expensive than natural vanilla?",
+        "answer": "Saffron",
+        "distractors": [
+          "Cardamom",
+          "Truffle",
+          "Cinnamon"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is synthetic vanillin — the most common vanilla flavor in food — made from?",
+        "answer": "Wood pulp lignin or petrochemicals",
+        "distractors": [
+          "Artificial vanilla orchid extract",
+          "Concentrated natural vanilla diluted with water",
+          "Fermented sugar cane"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Most commercial 'vanilla' flavor comes from real vanilla beans.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "After hand-pollination, vanilla pods take ___ months to mature on the vine.",
+        "answer": "Nine",
+        "distractors": [
+          "Three",
+          "Twenty-four",
+          "One"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In 2018, vanilla prices spiked to around $600 per kilogram. What caused this price surge?",
+        "answer": "Cyclones damaging vanilla crops in Madagascar",
+        "distractors": [
+          "A global bee population collapse",
+          "A vanilla blight disease",
+          "Trade sanctions on Madagascar"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vanilla",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a person carefully hand-pollinating a single vanilla orchid flower with a tiny brush, nine-month hourglass beside a growing green pod.",
+    "tags": [
+      "vanilla",
+      "saffron",
+      "spice price",
+      "Madagascar",
+      "hand pollination",
+      "synthetic vanillin"
+    ]
+  },
+  {
+    "id": "food-vanilla-artificial-vs-natural",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "vanilla",
+    "statement": "The primary flavor compound in natural vanilla is vanillin, which is also the main compound in synthetic vanilla — making artificial vanilla chemically nearly identical to natural vanilla.",
+    "quizQuestion": "What is the primary flavor compound shared by both natural vanilla and synthetic vanilla?",
+    "correctAnswer": "Vanillin",
+    "distractors": [
+      "Eugenol",
+      "Coumarin",
+      "Allicin",
+      "Piperine",
+      "Cinnamaldehyde",
+      "Limonene",
+      "Terpineol",
+      "Carvone"
+    ],
+    "acceptableAnswers": [
+      "Vanillin",
+      "4-hydroxy-3-methoxybenzaldehyde",
+      "Vanillin (methyl vanillin)"
+    ],
+    "explanation": "Natural vanilla pods contain over 200 flavor compounds, but vanillin (4-hydroxy-3-methoxybenzaldehyde) is the dominant one responsible for the characteristic taste and aroma. Synthetic vanillin — produced from wood pulp lignin, guaiacol (a petrochemical), or fermented ferulic acid — is molecularly identical to natural vanillin. Trained tasters CAN distinguish natural vanilla from synthetic because natural vanilla's 200+ minor compounds create complexity. But in blind tests, most people cannot reliably tell the difference in ice cream or baked goods. The world produces approximately 18,000 tonnes of synthetic vanillin per year, vs. only ~3,000 tonnes equivalent from natural sources.",
+    "wowFactor": "Most people cannot tell natural from synthetic vanilla in a blind taste test. The molecule is identical — only the minor supporting compounds differ. Your 'real vanilla' preference might be entirely psychological.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Natural vanilla pods contain over 200 flavor compounds, but which one is responsible for the primary flavor?",
+        "answer": "Vanillin",
+        "distractors": [
+          "Eugenol",
+          "Coumarin",
+          "Limonene"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Synthetic vanillin, made from wood pulp or petrochemicals, is molecularly identical to vanillin from what source?",
+        "answer": "Natural vanilla orchid pods",
+        "distractors": [
+          "Synthetic vanilla extract from lab synthesis only",
+          "Artificial flavoring created by DuPont in 1900",
+          "Sugar-derived fermentation byproduct"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Synthetic vanillin is a different molecule from the vanillin found in natural vanilla pods.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Natural vanilla contains over ___ flavor compounds, but vanillin is the most dominant.",
+        "answer": "200",
+        "distractors": [
+          "5",
+          "50",
+          "1,000"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "In side-by-side blind taste tests with vanilla ice cream, what can most untrained tasters reliably do?",
+        "answer": "They cannot reliably distinguish natural from synthetic vanilla",
+        "distractors": [
+          "Correctly identify natural vanilla 9 out of 10 times",
+          "Always prefer natural vanilla by a 3:1 margin",
+          "Detect synthetic vanilla by its slightly chemical aftertaste"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vanillin",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art split panel: a vanilla orchid pod on the left, a chemical lab flask with the same molecule structure on the right — labeled 'vanillin' glowing at center.",
+    "tags": [
+      "vanilla",
+      "vanillin",
+      "synthetic vanilla",
+      "food chemistry",
+      "artificial flavoring",
+      "natural vs artificial"
+    ]
+  },
+  {
+    "id": "food-cinnamon-bark-of-tree",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "cinnamon",
+    "statement": "Cinnamon is made from the inner bark of Cinnamomum trees, which is peeled, dried, and rolled into the characteristic quills or ground into powder.",
+    "quizQuestion": "What part of the Cinnamomum tree does cinnamon come from?",
+    "correctAnswer": "The inner bark",
+    "distractors": [
+      "The dried berries",
+      "The tree's roots",
+      "The dried flower petals",
+      "The seed pods",
+      "The outer bark",
+      "The dried sap",
+      "The leaves",
+      "The wood shavings"
+    ],
+    "acceptableAnswers": [
+      "The inner bark",
+      "Inner bark of the Cinnamomum tree",
+      "The bark (inner layer)"
+    ],
+    "explanation": "Cinnamon is harvested by cutting branches from the Cinnamomum tree, stripping off the outer bark, and scraping away the inner bark in thin layers. As these strips dry, they naturally curl inward to form the spiral 'quills' (cinnamon sticks). The process is done by hand, requiring skilled workers — and the same tree can be harvested every two years as branches regenerate. The characteristic cinnamon flavor comes from cinnamaldehyde, an essential oil concentrated in the inner bark.",
+    "wowFactor": "Every cinnamon stick is a ribbon of tree bark that curled up on its own while drying. You're eating the inside of a tree, rolled by itself, flavored by its own essential oils.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What causes cinnamon sticks to form their characteristic curled quill shape?",
+        "answer": "The inner bark curls naturally as it dries",
+        "distractors": [
+          "Workers hand-roll the bark strips",
+          "The bark is wound around a mold",
+          "Steam heat forces the bark to curl"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The essential oil cinnamaldehyde gives cinnamon its flavor and is also used for what other purpose?",
+        "answer": "Insect repellent",
+        "distractors": [
+          "Fuel additive",
+          "Fabric dye",
+          "Medical anesthetic"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Cinnamon comes from the inner bark of a tree.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The flavor compound cinnamaldehyde is concentrated in the ___ bark of Cinnamomum trees.",
+        "answer": "Inner",
+        "distractors": [
+          "Outer",
+          "Root",
+          "Leaf"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "How often can a cinnamon tree branch be harvested for bark without killing the tree?",
+        "answer": "Every two years, as branches regenerate",
+        "distractors": [
+          "Once in its lifetime",
+          "Every six months",
+          "Every ten years"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cinnamon",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a cinnamon tree branch being peeled: outer bark removed, thin inner bark strips curling into quills as they dry in warm sunlight.",
+    "tags": [
+      "cinnamon",
+      "bark",
+      "Cinnamomum",
+      "cinnamaldehyde",
+      "spice production",
+      "quills"
+    ]
+  },
+  {
+    "id": "food-cinnamon-ancient-egypt",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "cinnamon",
+    "statement": "Ancient Egyptians imported cinnamon from Southeast Asia over 4,000 years ago — one of the longest-documented long-distance spice trades in human history.",
+    "quizQuestion": "How long ago did ancient Egyptians begin importing cinnamon?",
+    "correctAnswer": "Over 4,000 years ago",
+    "distractors": [
+      "About 500 years ago, during the Age of Exploration",
+      "About 1,000 years ago, through Arab traders",
+      "About 2,000 years ago, via Roman trade routes",
+      "About 800 years ago, during the Crusades",
+      "About 3,000 years ago, via Phoenician traders",
+      "About 300 years ago, by Dutch East India Company ships",
+      "About 1,500 years ago, through Byzantine merchants",
+      "About 200 years ago, via British colonial trade"
+    ],
+    "acceptableAnswers": [
+      "Over 4,000 years ago",
+      "Around 2000 BCE",
+      "Approximately 4,000 years ago"
+    ],
+    "explanation": "Cinnamon is mentioned in Egyptian medical texts dating to approximately 2000 BCE. Egyptians used it in mummification, religious rituals, and medicine — imported from the island of Sri Lanka (Ceylon) or Southeast Asian regions via Red Sea traders. The trade route was so profitable that Arab traders kept its origin secret for centuries, inventing elaborate myths about cinnamon birds (cinnamologus) that nested in tall trees to maintain their monopoly. The Roman historian Pliny the Elder wrote about cinnamon with awe, noting its extraordinary price and mysterious origin.",
+    "wowFactor": "Arab traders told Europeans that cinnamon came from giant birds' nests in impassable mountains — for CENTURIES — to protect their trade monopoly. Pliny the Elder believed it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "For what purpose did ancient Egyptians primarily use imported cinnamon?",
+        "answer": "Mummification, religious rituals, and medicine",
+        "distractors": [
+          "Cooking and seasoning food only",
+          "Dying fabrics gold",
+          "Making ink for papyrus scrolls"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Arab traders invented myths about cinnamon coming from giant birds' nests to protect what?",
+        "answer": "Their trade monopoly on cinnamon's true origin",
+        "distractors": [
+          "Their religious beliefs about sacred spices",
+          "Their military secrets about Indian Ocean routes",
+          "Their cultural traditions about spice spirits"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Egyptians were using cinnamon over 4,000 years ago.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Arab traders claimed cinnamon came from the nests of mythical birds called ___.",
+        "answer": "Cinnamologus",
+        "distractors": [
+          "Phoenix",
+          "Roc",
+          "Simurgh"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "The original source of the cinnamon traded to ancient Egypt was which island?",
+        "answer": "Sri Lanka (Ceylon)",
+        "distractors": [
+          "Madagascar",
+          "Java",
+          "The Maldives"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cinnamon",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of an Egyptian merchant receiving cinnamon bundles from a Red Sea trader, with a fantastical bird nesting in cinnamon sticks in the background — an obvious myth.",
+    "tags": [
+      "cinnamon",
+      "Egypt",
+      "spice trade",
+      "ancient history",
+      "Sri Lanka",
+      "mummification",
+      "myths"
+    ]
+  },
+  {
+    "id": "food-cinnamon-types",
+    "type": "knowledge",
+    "domain": "Food & World Cuisine",
+    "subdomain": "ingredients_spices",
+    "categoryL1": "Food & World Cuisine",
+    "categoryL2": "ingredients_spices",
+    "categoryL3": "cinnamon",
+    "statement": "True cinnamon (Ceylon cinnamon) and cassia cinnamon are two different species — most cinnamon sold in the United States is actually cassia, which contains much higher levels of the potentially harmful compound coumarin.",
+    "quizQuestion": "What is the main health difference between Ceylon cinnamon and cassia cinnamon?",
+    "correctAnswer": "Cassia contains far more coumarin, which can be harmful in large doses",
+    "distractors": [
+      "Ceylon cinnamon is toxic to people with tree nut allergies",
+      "Cassia cinnamon raises blood pressure dangerously",
+      "Ceylon cinnamon contains vanillin that may cause liver damage",
+      "Cassia contains less cinnamaldehyde, making it medically inert",
+      "Ceylon is associated with allergic reactions in children",
+      "Cassia cinnamon is fermented, making it higher in alcohol",
+      "Ceylon contains caffeine, which can cause heart palpitations",
+      "Cassia contains large amounts of heavy metals from the soil"
+    ],
+    "acceptableAnswers": [
+      "Cassia contains far more coumarin, which can be harmful in large doses",
+      "Cassia has high coumarin levels that can harm the liver",
+      "High coumarin in cassia is a health concern"
+    ],
+    "explanation": "Ceylon cinnamon (Cinnamomum verum, 'true cinnamon') originates from Sri Lanka and has light, delicate flavor with very low coumarin content (~0.004%). Cassia cinnamon (Cinnamomum cassia, from China, Indonesia, Vietnam) is darker, harder, and more pungent — with coumarin levels up to 1%, roughly 250x higher than Ceylon. Coumarin is a natural compound that can cause liver damage in high doses. The European Food Safety Authority has set safe daily intake limits, and Germany has restricted the sale of high-coumarin cinnamon in baked goods. The US FDA has not set a limit, and most US 'cinnamon' is cassia.",
+    "wowFactor": "Most cinnamon sold in the US is not technically cinnamon — it's cassia. And it contains 250x more of a liver-toxic compound than real cinnamon. Your holiday baking has a medical footnote.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the scientific name for 'true cinnamon' (Ceylon cinnamon)?",
+        "answer": "Cinnamomum verum",
+        "distractors": [
+          "Cinnamomum cassia",
+          "Cinnamomum aromaticum",
+          "Cinnamomum zeylanicum only"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The compound coumarin, present at high levels in cassia cinnamon, can cause damage to which organ?",
+        "answer": "The liver",
+        "distractors": [
+          "The kidneys",
+          "The pancreas",
+          "The lungs"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Most cinnamon sold in the United States is Ceylon (true) cinnamon.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Cassia cinnamon contains approximately ___ times more coumarin than Ceylon cinnamon.",
+        "answer": "250",
+        "distractors": [
+          "2",
+          "10",
+          "1,000"
+        ]
+      },
+      {
+        "type": "context",
+        "question": "Which country or regulatory body has officially restricted the use of high-coumarin cinnamon in baked goods?",
+        "answer": "Germany (and the European Food Safety Authority)",
+        "distractors": [
+          "The United States FDA",
+          "Japan's Ministry of Health",
+          "The World Health Organization"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia / EFSA",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cinnamomum_cassia",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Discusses potential liver toxicity of coumarin; informational, not alarmist.",
+    "visualDescription": "Pixel art comparison: a thin, light-brown Ceylon cinnamon quill on the left vs. a thick, dark red-brown cassia stick on the right, with a coumarin warning icon between them.",
+    "tags": [
+      "cinnamon",
+      "cassia",
+      "Ceylon",
+      "coumarin",
+      "food safety",
+      "liver",
+      "spice types"
+    ]
   }
 ]

@@ -11663,5 +11663,1585 @@
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "art-michelangelo-sistine-ceiling-time",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "painting_visual",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "painting_visual",
+    "categoryL3": "Renaissance",
+    "statement": "Michelangelo painted the Sistine Chapel ceiling largely alone over four years (1508–1512), covering 5,000 square feet with over 300 figures.",
+    "quizQuestion": "How long did Michelangelo take to paint the Sistine Chapel ceiling?",
+    "correctAnswer": "Four years",
+    "distractors": [
+      "One year",
+      "Two years",
+      "Seven years",
+      "Ten years",
+      "Fifteen years",
+      "Six months",
+      "Eight years",
+      "Three years"
+    ],
+    "acceptableAnswers": [
+      "Four years",
+      "About four years",
+      "1508 to 1512"
+    ],
+    "explanation": "Michelangelo was commissioned by Pope Julius II in 1508 and completed the ceiling in 1512. He painted over 5,000 square feet of fresco largely single-handedly, depicting scenes from Genesis including the iconic Creation of Adam. Contrary to legend, he painted standing on scaffolding, not lying on his back.",
+    "wowFactor": "Michelangelo hated painting and considered himself a sculptor — he spent four miserable years on his back (or standing) creating one of humanity's greatest artworks.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Over how many years did Michelangelo paint the Sistine Chapel ceiling?",
+        "answer": "Four years",
+        "distractors": [
+          "Two years",
+          "Seven years",
+          "One year"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which artist spent four years painting 300+ figures across 5,000 square feet of the Sistine Chapel ceiling?",
+        "answer": "Michelangelo",
+        "distractors": [
+          "Leonardo da Vinci",
+          "Raphael",
+          "Botticelli"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Michelangelo painted the Sistine Chapel ceiling in under two years.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Michelangelo painted the Sistine Chapel ceiling over ___ years, from 1508 to 1512.",
+        "answer": "four",
+        "distractors": [
+          "two",
+          "seven",
+          "ten"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sistine_Chapel_ceiling",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Scaffolding silhouette inside a grand chapel vault, lone figure painting ceiling fresco under candlelight, pixel art.",
+    "tags": [
+      "Michelangelo",
+      "Sistine Chapel",
+      "Renaissance",
+      "fresco",
+      "Vatican"
+    ]
+  },
+  {
+    "id": "art-michelangelo-david-marble",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "sculpture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "sculpture",
+    "categoryL3": "Renaissance",
+    "statement": "Michelangelo's statue of David was carved from a single block of marble that had been abandoned by two other sculptors as too difficult to work.",
+    "quizQuestion": "What was unusual about the marble block Michelangelo used for his statue of David?",
+    "correctAnswer": "It had been abandoned by two previous sculptors",
+    "distractors": [
+      "It was the largest marble block ever quarried",
+      "It had been specially imported from Greece",
+      "It was carved from two separate pieces joined together",
+      "It had been used for a different statue first",
+      "It was a rejected block from a cathedral project",
+      "It was found buried underground",
+      "It had natural veins that formed a pattern",
+      "It was donated by the Medici family"
+    ],
+    "acceptableAnswers": [
+      "It had been abandoned by two previous sculptors",
+      "Two other sculptors had given up on it",
+      "Previous sculptors abandoned it"
+    ],
+    "explanation": "The marble block, known as 'the Giant,' had been quarried in 1464 and worked on unsuccessfully by Agostino di Duccio and Antonio Rossellino before being left in a cathedral workshop for decades. In 1501, the 26-year-old Michelangelo took on the challenge and completed David in 1504. The statue stands 17 feet tall.",
+    "wowFactor": "Michelangelo's David — considered the world's most perfect sculpture — was carved from a block two other masters gave up on as garbage.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What was the history of the marble block Michelangelo used for David?",
+        "answer": "Abandoned by two previous sculptors",
+        "distractors": [
+          "Specially commissioned",
+          "Quarried fresh for him",
+          "Donated by the Pope"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which Renaissance sculptor transformed a twice-abandoned marble block into the 17-foot statue of David?",
+        "answer": "Michelangelo",
+        "distractors": [
+          "Donatello",
+          "Bernini",
+          "Cellini"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The marble Michelangelo used for David had been rejected by earlier sculptors.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The marble for Michelangelo's David had been abandoned by ___ previous sculptors before he took it.",
+        "answer": "two",
+        "distractors": [
+          "three",
+          "four",
+          "no"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/David_(Michelangelo)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Towering white marble statue of a young man in contrapposto stance inside a Renaissance gallery, pixel art.",
+    "tags": [
+      "Michelangelo",
+      "David",
+      "sculpture",
+      "marble",
+      "Florence",
+      "Renaissance"
+    ]
+  },
+  {
+    "id": "art-michelangelo-st-peters-dome",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "architecture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "architecture",
+    "categoryL3": "Renaissance",
+    "statement": "Michelangelo served as chief architect of St. Peter's Basilica in Rome from age 72 until his death at 88, designing its iconic dome.",
+    "quizQuestion": "At what age did Michelangelo begin designing the dome of St. Peter's Basilica?",
+    "correctAnswer": "72",
+    "distractors": [
+      "40",
+      "55",
+      "60",
+      "65",
+      "80",
+      "35",
+      "50",
+      "45"
+    ],
+    "acceptableAnswers": [
+      "72",
+      "Age 72",
+      "Seventy-two"
+    ],
+    "explanation": "Pope Paul III appointed Michelangelo chief architect of St. Peter's Basilica in 1546 when the artist was 72 years old. He worked without pay as an act of devotion, redesigning much of the structure and creating the plans for the famous dome. He died in 1564 at age 88 before the dome's completion; it was finished in 1590 largely following his design.",
+    "wowFactor": "At an age when most people are retired, Michelangelo took on the greatest architectural commission in the world — for free.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How old was Michelangelo when he became chief architect of St. Peter's Basilica?",
+        "answer": "72",
+        "distractors": [
+          "55",
+          "65",
+          "40"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which artist designed the iconic dome of St. Peter's Basilica starting at age 72?",
+        "answer": "Michelangelo",
+        "distractors": [
+          "Bramante",
+          "Bernini",
+          "Raphael"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Michelangelo designed St. Peter's dome as a young man in his 30s.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Michelangelo began designing the dome of St. Peter's Basilica at the age of ___.",
+        "answer": "72",
+        "distractors": [
+          "55",
+          "40",
+          "65"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/St._Peter%27s_Basilica",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Grand basilica exterior with enormous Renaissance dome against blue sky, architectural blueprints overlaid, pixel art.",
+    "tags": [
+      "Michelangelo",
+      "St. Peter's Basilica",
+      "architecture",
+      "Rome",
+      "Vatican",
+      "dome"
+    ]
+  },
+  {
+    "id": "art-monet-water-lilies-series",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "painting_visual",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "painting_visual",
+    "categoryL3": "Impressionism",
+    "statement": "Claude Monet's Water Lilies series consists of approximately 250 paintings made over 30 years, with a set of enormous murals permanently installed in Paris's Orangerie museum.",
+    "quizQuestion": "Approximately how many paintings are in Monet's Water Lilies series?",
+    "correctAnswer": "About 250",
+    "distractors": [
+      "About 10",
+      "Exactly 50",
+      "More than 1,000",
+      "Around 30",
+      "About 100",
+      "Fewer than 20",
+      "About 500",
+      "Around 75"
+    ],
+    "acceptableAnswers": [
+      "About 250",
+      "Around 250",
+      "Approximately 250"
+    ],
+    "explanation": "Monet created his water lily paintings between 1896 and his death in 1926, inspired by the pond he designed at his Giverny estate. The culminating works are eight enormous mural panels (totalling 91 metres) permanently installed in two oval rooms at the Musée de l'Orangerie in Paris, installed in 1927 — just after Monet's death.",
+    "wowFactor": "Monet's final water lily murals wrap around you like a 360-degree dream — he designed the oval rooms himself despite being nearly blind.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many paintings make up Monet's Water Lilies series?",
+        "answer": "About 250",
+        "distractors": [
+          "About 10",
+          "About 100",
+          "More than 1,000"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which Impressionist painter created a 30-year series of approximately 250 water lily paintings?",
+        "answer": "Claude Monet",
+        "distractors": [
+          "Pierre-Auguste Renoir",
+          "Camille Pissarro",
+          "Alfred Sisley"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Monet's Water Lilies series contains over 200 paintings.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Monet's Water Lilies series spans approximately ___ paintings, created over 30 years.",
+        "answer": "250",
+        "distractors": [
+          "50",
+          "10",
+          "500"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Water_Lilies_(Monet_series)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Curved museum room with floor-to-ceiling lily pond murals, soft green and lavender reflections, pixel art.",
+    "tags": [
+      "Monet",
+      "Water Lilies",
+      "Impressionism",
+      "painting",
+      "Orangerie",
+      "Giverny"
+    ]
+  },
+  {
+    "id": "art-monet-impressionism-name",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "painting_visual",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "painting_visual",
+    "categoryL3": "Impressionism",
+    "statement": "The term 'Impressionism' was coined as an insult by a critic mocking Monet's painting 'Impression, Sunrise' at the 1874 Paris exhibition.",
+    "quizQuestion": "How did the art movement 'Impressionism' get its name?",
+    "correctAnswer": "A critic used it as an insult against Monet's painting",
+    "distractors": [
+      "Monet invented the term himself",
+      "It was chosen by vote among the artists",
+      "A Paris museum coined it as a compliment",
+      "The French government officially named the movement",
+      "It came from an art school textbook of the era",
+      "Renoir proposed it at the first group exhibition",
+      "An art dealer branded it to boost sales",
+      "It was taken from a poem by Baudelaire"
+    ],
+    "acceptableAnswers": [
+      "A critic used it as an insult against Monet's painting",
+      "A hostile critic mocked Monet's work with the term",
+      "It was mockingly coined by a critic"
+    ],
+    "explanation": "At the first Impressionist exhibition in 1874, critic Louis Leroy wrote a satirical review in Le Charivari, mocking Monet's 'Impression, Sunrise' with the sarcastic headline 'Exhibition of the Impressionists.' The artists embraced the insult as their name. The same pattern repeated with the Fauves ('wild beasts') and the Cubists.",
+    "wowFactor": "One of art history's most influential movements got its name from a critic trying to humiliate Monet — and the artists thought it was so good they kept it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where did the word 'Impressionism' come from?",
+        "answer": "A critic's insult against Monet's painting",
+        "distractors": [
+          "Monet named it himself",
+          "A museum coined it",
+          "The French government named it"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which painter's work 'Impression, Sunrise' accidentally gave the Impressionist movement its name?",
+        "answer": "Claude Monet",
+        "distractors": [
+          "Edgar Degas",
+          "Édouard Manet",
+          "Berthe Morisot"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The name 'Impressionism' started as a critical insult.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The name 'Impressionism' was first used as an ___ against Monet's painting at the 1874 exhibition.",
+        "answer": "insult",
+        "distractors": [
+          "award",
+          "compliment",
+          "title"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Impressionism",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Foggy harbor at sunrise with orange reflection in water, loose brushstrokes visible, angry newspaper headline overlay, pixel art.",
+    "tags": [
+      "Monet",
+      "Impressionism",
+      "art history",
+      "Impression Sunrise",
+      "1874",
+      "Louis Leroy"
+    ]
+  },
+  {
+    "id": "art-monet-cataracts-color",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "painting_visual",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "painting_visual",
+    "categoryL3": "Impressionism",
+    "statement": "In his final years, Monet developed severe cataracts that made him see predominantly in yellow and muddy tones, visibly changing the color palette of his late paintings.",
+    "quizQuestion": "How did Monet's cataracts change his late paintings?",
+    "correctAnswer": "His palette shifted toward yellow and muddy tones",
+    "distractors": [
+      "He began painting in black and white only",
+      "He switched to brighter, more vivid colors",
+      "He stopped painting outdoors entirely",
+      "He used only blue and purple hues",
+      "He abandoned oil paint for watercolor",
+      "His brushwork became more precise and detailed",
+      "He painted exclusively at night",
+      "He lost interest in painting water subjects"
+    ],
+    "acceptableAnswers": [
+      "His palette shifted toward yellow and muddy tones",
+      "Colors became yellow and murky",
+      "He saw mostly yellows and murky hues"
+    ],
+    "explanation": "Cataracts caused Monet's lens to yellow, filtering out blues and violets and leaving everything appearing yellow, red, and muddy. Scholars can literally trace his worsening vision in the paintings: pre-surgery works (1912–1922) are noticeably yellower. After cataract surgery in 1923, his palette temporarily overcorrected to heavy blues, as his operated eye now saw ultraviolet light.",
+    "wowFactor": "After cataract surgery, Monet could see ultraviolet light that normal human eyes filter out — his post-surgery paintings contain colors invisible to most people.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What visible effect did Monet's cataracts have on his late paintings?",
+        "answer": "A shift toward yellow and muddy tones",
+        "distractors": [
+          "More vivid blues",
+          "Black-and-white palette",
+          "Night scenes only"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which Impressionist painter's late work is visibly affected by cataracts that shifted his palette toward yellows?",
+        "answer": "Claude Monet",
+        "distractors": [
+          "Edgar Degas",
+          "Camille Pissarro",
+          "Paul Cézanne"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Monet's cataracts caused his late paintings to shift toward yellow and muddy colors.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Monet's cataracts caused his late paintings to shift toward ___ and muddy tones.",
+        "answer": "yellow",
+        "distractors": [
+          "blue",
+          "red",
+          "grey"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Claude_Monet#Late_works",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Artist palette drenched in yellows and ochres, blurry lily pond visible in background, cataract lens overlay effect, pixel art.",
+    "tags": [
+      "Monet",
+      "cataracts",
+      "Impressionism",
+      "late paintings",
+      "color perception",
+      "vision"
+    ]
+  },
+  {
+    "id": "art-dali-persistence-clocks",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "painting_visual",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "painting_visual",
+    "categoryL3": "Surrealism",
+    "statement": "Salvador Dalí claimed the melting clocks in 'The Persistence of Memory' (1931) were inspired by watching a wheel of Camembert cheese melting in the sun.",
+    "quizQuestion": "What everyday object reportedly inspired the melting clocks in Dalí's 'The Persistence of Memory'?",
+    "correctAnswer": "A melting wheel of Camembert cheese",
+    "distractors": [
+      "A pocket watch left on a hot windowsill",
+      "A Salvador Dalí dream he wrote in a notebook",
+      "A wax figure melting in summer heat",
+      "A painting by Giorgio de Chirico",
+      "A butter dish left out in Spain",
+      "A childhood memory of melted candles",
+      "A rubber mask left in the sun",
+      "An ant colony devouring food"
+    ],
+    "acceptableAnswers": [
+      "A melting wheel of Camembert cheese",
+      "Camembert cheese melting in the sun",
+      "Melting Camembert"
+    ],
+    "explanation": "Dalí painted 'The Persistence of Memory' in just a few hours in 1931 after Gala left for the cinema. He later said the iconic melting watches came from staring at a soft, runny piece of Camembert after lunch. The small (24×33 cm) canvas depicting the dreamlike Catalan landscape is now one of the most recognized paintings in the world, housed at MoMA.",
+    "wowFactor": "One of the most analysed paintings in history was painted in a single afternoon by a man staring at cheese.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What inspired the melting clocks in Dalí's 'Persistence of Memory'?",
+        "answer": "Melting Camembert cheese",
+        "distractors": [
+          "A dream",
+          "A melted candle",
+          "A pocket watch left in the sun"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which Surrealist painted 'The Persistence of Memory' after being inspired by soft Camembert cheese?",
+        "answer": "Salvador Dalí",
+        "distractors": [
+          "René Magritte",
+          "Max Ernst",
+          "Joan Miró"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Dalí said the melting clocks in 'The Persistence of Memory' were inspired by melting cheese.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Dalí reportedly got the idea for melting clocks from watching a wheel of ___ cheese melt in the sun.",
+        "answer": "Camembert",
+        "distractors": [
+          "Brie",
+          "Cheddar",
+          "Gruyère"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 10,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "MoMA / Salvador Dalí Museum",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Persistence_of_Memory",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Barren desert landscape with drooping pocket watches draped over branches and a melting face, surreal style, pixel art.",
+    "tags": [
+      "Dalí",
+      "Persistence of Memory",
+      "Surrealism",
+      "melting clocks",
+      "cheese",
+      "MoMA"
+    ]
+  },
+  {
+    "id": "art-dali-surrealism-manifesto",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "painting_visual",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "painting_visual",
+    "categoryL3": "Surrealism",
+    "statement": "Surrealism was officially launched in 1924 by the poet André Breton with a written manifesto declaring that the unconscious mind is the true source of artistic creativity.",
+    "quizQuestion": "Who wrote the Surrealist Manifesto that officially launched Surrealism in 1924?",
+    "correctAnswer": "André Breton",
+    "distractors": [
+      "Salvador Dalí",
+      "Sigmund Freud",
+      "Pablo Picasso",
+      "Max Ernst",
+      "Guillaume Apollinaire",
+      "Giorgio de Chirico",
+      "Louis Aragon",
+      "René Magritte"
+    ],
+    "acceptableAnswers": [
+      "André Breton",
+      "Andre Breton"
+    ],
+    "explanation": "André Breton published the Manifeste du surréalisme in 1924, defining Surrealism as 'pure psychic automatism' to express the true functioning of thought, free from reason and aesthetic conventions. Breton drew heavily on Freudian theories of the unconscious. Dalí joined the movement in 1929 and became its most famous face, though Breton eventually expelled him in 1934.",
+    "wowFactor": "Dalí was eventually expelled from Surrealism by the very man who founded it — Breton called him 'Avida Dollars,' an anagram of 'Salvador Dalí.'",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who published the Surrealist Manifesto in 1924 that founded the Surrealism movement?",
+        "answer": "André Breton",
+        "distractors": [
+          "Salvador Dalí",
+          "Sigmund Freud",
+          "Max Ernst"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "André Breton published a 1924 manifesto that officially founded which art movement?",
+        "answer": "Surrealism",
+        "distractors": [
+          "Dadaism",
+          "Cubism",
+          "Expressionism"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Dalí wrote the Surrealist Manifesto that founded the movement in 1924.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Surrealism was officially launched in 1924 by ___ Breton's written manifesto.",
+        "answer": "André",
+        "distractors": [
+          "Salvador",
+          "Max",
+          "Pablo"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Surrealist_Manifesto",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Crumpled manifesto page with eye emerging from ink blot, dreamlike hand-written script, pixel art.",
+    "tags": [
+      "Surrealism",
+      "André Breton",
+      "manifesto",
+      "Dalí",
+      "art history",
+      "1924"
+    ]
+  },
+  {
+    "id": "art-dali-eccentric-ocelot",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "painting_visual",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "painting_visual",
+    "categoryL3": "Surrealism",
+    "statement": "Salvador Dalí famously kept an ocelot (wild cat) named Babou as a pet and traveled with it publicly, including on the ocean liner SS France.",
+    "quizQuestion": "What exotic pet did Salvador Dalí famously travel with in public?",
+    "correctAnswer": "An ocelot named Babou",
+    "distractors": [
+      "A cheetah on a diamond leash",
+      "A trained anteater",
+      "A pet boa constrictor",
+      "A trained raven",
+      "A domesticated fox",
+      "A pet panther",
+      "A trained macaw parrot",
+      "A white tiger cub"
+    ],
+    "acceptableAnswers": [
+      "An ocelot named Babou",
+      "An ocelot",
+      "Babou the ocelot"
+    ],
+    "explanation": "Dalí's ocelot Babou accompanied him on travels including the ocean liner SS France, where Dalí assured a frightened passenger that it was merely 'a common house cat I've painted over in an op-art pattern.' Dalí cultivated extreme eccentricity as a deliberate personal brand — from his signature waxed mustache to carrying a scepter and wearing a diving suit to a London exhibition.",
+    "wowFactor": "When a passenger on an ocean liner panicked at Dalí's wild ocelot, he calmly explained it was 'a regular cat painted in a surrealist pattern.'",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What kind of animal was Dalí's famous exotic pet Babou?",
+        "answer": "An ocelot (wild cat)",
+        "distractors": [
+          "A cheetah",
+          "An anteater",
+          "A boa constrictor"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which Surrealist artist traveled publicly with an ocelot named Babou?",
+        "answer": "Salvador Dalí",
+        "distractors": [
+          "René Magritte",
+          "Max Ernst",
+          "Frida Kahlo"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Dalí kept a wild ocelot as a pet and traveled with it publicly.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Dalí's exotic pet ocelot was named ___.",
+        "answer": "Babou",
+        "distractors": [
+          "Gala",
+          "Surreal",
+          "Dada"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "epic",
+    "sourceName": "Salvador Dalí Museum / various biographies",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Salvador_Dal%C3%AD#Personal_life",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Extravagantly mustachioed man in a tuxedo walking an ocelot on a leash down a ship corridor, pixel art.",
+    "tags": [
+      "Dalí",
+      "ocelot",
+      "Babou",
+      "eccentricity",
+      "Surrealism",
+      "pets"
+    ]
+  },
+  {
+    "id": "art-flw-fallingwater-cantilevered",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "architecture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "architecture",
+    "categoryL3": "Modern Architecture",
+    "statement": "Frank Lloyd Wright's Fallingwater (1939) was built directly over a waterfall in Pennsylvania, with dramatic cantilevered terraces projecting out over the stream below.",
+    "quizQuestion": "What makes the location of Frank Lloyd Wright's Fallingwater architecturally unusual?",
+    "correctAnswer": "It was built directly over a waterfall",
+    "distractors": [
+      "It was built on a floating platform in a lake",
+      "It was constructed entirely underground",
+      "It was built on stilts above a cliff edge",
+      "It was suspended from a hillside by cables",
+      "It was carved into the side of a mountain",
+      "It was built on an artificial island",
+      "It was raised on a single central pillar",
+      "It was anchored into a live glacier"
+    ],
+    "acceptableAnswers": [
+      "It was built directly over a waterfall",
+      "Built over a waterfall",
+      "Cantilevered over a waterfall"
+    ],
+    "explanation": "Fallingwater (officially Kaufmann Residence) was designed for Pittsburgh department store owner Edgar Kaufmann and completed in 1939. Rather than siting the house to view the waterfall, Wright controversially placed it on top of it, with reinforced concrete terraces cantilevering dramatically over Bear Run stream. It was named the 'greatest American work of architecture of all time' in a 2007 AIA survey.",
+    "wowFactor": "The client wanted a house WITH a view of the waterfall — Frank Lloyd Wright built him a house ON the waterfall instead.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is architecturally unusual about where Fallingwater sits?",
+        "answer": "It is built directly over a waterfall",
+        "distractors": [
+          "It is underground",
+          "It is on a floating platform",
+          "It is suspended by cables"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Frank Lloyd Wright designed which famous house built directly over a waterfall in Pennsylvania?",
+        "answer": "Fallingwater",
+        "distractors": [
+          "Robie House",
+          "Guggenheim Museum",
+          "Taliesin West"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Fallingwater was designed by Frank Lloyd Wright to sit on top of a waterfall.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Frank Lloyd Wright's Fallingwater is famous for being built directly ___ a waterfall.",
+        "answer": "over",
+        "distractors": [
+          "beside",
+          "beneath",
+          "above on stilts"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fallingwater",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Low horizontal house with stacked white concrete terraces jutting over a rushing forest waterfall, pixel art.",
+    "tags": [
+      "Frank Lloyd Wright",
+      "Fallingwater",
+      "architecture",
+      "cantilever",
+      "Pennsylvania",
+      "waterfall"
+    ]
+  },
+  {
+    "id": "art-flw-organic-architecture",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "architecture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "architecture",
+    "categoryL3": "Modern Architecture",
+    "statement": "Frank Lloyd Wright coined the term 'organic architecture' to describe his philosophy that buildings should harmonize with their natural environment and the humans who use them.",
+    "quizQuestion": "What did Frank Lloyd Wright mean by 'organic architecture'?",
+    "correctAnswer": "Buildings should harmonize with their natural environment and occupants",
+    "distractors": [
+      "Buildings should be made entirely from natural materials like wood and stone",
+      "Structures should be built using only pre-industrial construction methods",
+      "Architecture should incorporate living plants into structural walls",
+      "Buildings should be biodegradable at the end of their lifecycle",
+      "All buildings should be circular to mimic shapes found in nature",
+      "Architecture must avoid all right angles, like natural forms",
+      "Buildings should be constructed in undisturbed wilderness only",
+      "Structures should use sustainable and recycled materials exclusively"
+    ],
+    "acceptableAnswers": [
+      "Buildings should harmonize with their natural environment and occupants",
+      "Architecture in harmony with nature and people",
+      "Design that integrates with the natural landscape"
+    ],
+    "explanation": "Wright developed the concept of 'organic architecture' over his long career, meaning that form, function, materials, and landscape should be unified. He believed buildings should grow from their site as naturally as a plant grows from the soil. This philosophy influenced how he used local materials, low horizontal profiles, and open floor plans that connect interior and exterior spaces.",
+    "wowFactor": "Wright's idea that a building should grow from the land like a plant — not be placed on it — changed how the entire world thinks about design.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is Frank Lloyd Wright's design philosophy called?",
+        "answer": "Organic architecture",
+        "distractors": [
+          "Brutalism",
+          "Prairie style only",
+          "Deconstructivism"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which architect coined the term 'organic architecture' to mean buildings in harmony with nature and people?",
+        "answer": "Frank Lloyd Wright",
+        "distractors": [
+          "Le Corbusier",
+          "Mies van der Rohe",
+          "Walter Gropius"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Frank Lloyd Wright coined the term 'organic architecture' to describe buildings that harmonize with nature.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Frank Lloyd Wright called his design philosophy '___ architecture,' meaning buildings should harmonize with their environment.",
+        "answer": "organic",
+        "distractors": [
+          "natural",
+          "living",
+          "prairie"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Organic_architecture",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Low Prairie-style house nestled into a wooded hillside, horizontal lines echoing the landscape, pixel art.",
+    "tags": [
+      "Frank Lloyd Wright",
+      "organic architecture",
+      "design philosophy",
+      "Prairie style",
+      "modernism"
+    ]
+  },
+  {
+    "id": "art-flw-guggenheim-spiral",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "architecture",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "architecture",
+    "categoryL3": "Modern Architecture",
+    "statement": "Frank Lloyd Wright's Guggenheim Museum in New York (opened 1959) features a continuous spiral ramp gallery that allows visitors to ride the elevator to the top and walk down through the art.",
+    "quizQuestion": "What is the distinctive architectural feature of Frank Lloyd Wright's Guggenheim Museum in New York?",
+    "correctAnswer": "A continuous spiral ramp that visitors walk down to view art",
+    "distractors": [
+      "A glass pyramid entrance similar to the Louvre",
+      "A rotating circular floor on the top level",
+      "Individual gallery rooms arranged around a central courtyard",
+      "A suspended cable-supported roof over the entire interior",
+      "Multiple zigzagging staircases connecting split-level floors",
+      "An underground exhibit space beneath a glass ceiling",
+      "A series of concentric square galleries",
+      "A transparent glass dome over the central atrium"
+    ],
+    "acceptableAnswers": [
+      "A continuous spiral ramp that visitors walk down to view art",
+      "A spiral ramp",
+      "Continuous spiral ramp gallery"
+    ],
+    "explanation": "Wright worked on the Guggenheim design for 16 years before it opened in 1959, six months after his death at age 91. The building is an inverted ziggurat — wider at the top than the base — with a continuous half-mile-long spiral ramp winding around an open central atrium capped by a glass skylight. It broke nearly every convention of museum design and remains one of the most recognized buildings of the 20th century.",
+    "wowFactor": "Wright designed the Guggenheim for 16 years and died six months before it opened — but his spiral ramp changed museum architecture forever.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What architectural feature makes the interior of Wright's Guggenheim Museum unique?",
+        "answer": "A continuous spiral ramp for viewing art",
+        "distractors": [
+          "A glass pyramid entrance",
+          "A rotating floor",
+          "A central courtyard"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Frank Lloyd Wright designed which New York museum with a famous continuous spiral ramp?",
+        "answer": "The Guggenheim Museum",
+        "distractors": [
+          "MoMA",
+          "The Whitney Museum",
+          "The Metropolitan Museum of Art"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Guggenheim Museum in New York has a spiral ramp visitors walk down to view art.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Frank Lloyd Wright's Guggenheim Museum features a continuous ___ ramp that visitors descend while viewing art.",
+        "answer": "spiral",
+        "distractors": [
+          "circular",
+          "zigzag",
+          "straight"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Solomon_R._Guggenheim_Museum",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Cylindrical white building widening toward top on a New York street, spiral interior ramp visible in cutaway, pixel art.",
+    "tags": [
+      "Frank Lloyd Wright",
+      "Guggenheim",
+      "New York",
+      "architecture",
+      "spiral ramp",
+      "museum"
+    ]
+  },
+  {
+    "id": "art-egypt-hieroglyphs-rosetta",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "ancient_art",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "ancient_art",
+    "categoryL3": "Ancient Egypt",
+    "statement": "Egyptian hieroglyphs were undecipherable for 1,400 years until the Rosetta Stone — a decree written in hieroglyphs, Demotic, and Greek — was used to crack the code in 1822.",
+    "quizQuestion": "What allowed scholars to finally decode Egyptian hieroglyphs in 1822?",
+    "correctAnswer": "The Rosetta Stone, which had the same text in three scripts",
+    "distractors": [
+      "An ancient Egyptian dictionary found in a tomb",
+      "A Roman scholar's explanation discovered in a library",
+      "A mummy's bandages containing alphabetical labels",
+      "A temple wall inscription with a bilingual key",
+      "A series of coded papyrus scrolls found in Alexandria",
+      "A Byzantine text that translated ancient Egyptian",
+      "The discovery of an Egyptian-Greek grammar manual",
+      "A Coptic monk's notes deciphering priestly symbols"
+    ],
+    "acceptableAnswers": [
+      "The Rosetta Stone, which had the same text in three scripts",
+      "The Rosetta Stone",
+      "A trilingual stone decree"
+    ],
+    "explanation": "The Rosetta Stone (196 BC) was found by Napoleon's troops in 1799 and carries a priestly decree in hieroglyphics, Demotic script, and Greek. Because scholars could read Greek, Thomas Young and then Jean-François Champollion used it as a key to crack hieroglyphs in 1822. The stone is now in the British Museum, a source of ongoing dispute with Egypt.",
+    "wowFactor": "For over a millennium, the writing system of one of history's greatest civilizations was completely unreadable — until one stone changed everything in 1822.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What object made it possible to decode Egyptian hieroglyphs?",
+        "answer": "The Rosetta Stone",
+        "distractors": [
+          "An Egyptian dictionary",
+          "A mummy's bandages",
+          "A Roman translation manual"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Rosetta Stone was crucial for decoding which ancient writing system?",
+        "answer": "Egyptian hieroglyphs",
+        "distractors": [
+          "Sumerian cuneiform",
+          "Linear B",
+          "Mayan glyphs"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Egyptian hieroglyphs were unreadable for over 1,000 years before the Rosetta Stone was used to decode them.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Rosetta Stone allowed scholars to decode hieroglyphs because it had the same text in three different ___.",
+        "answer": "scripts",
+        "distractors": [
+          "languages",
+          "colors",
+          "symbols"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rosetta_Stone",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Dark stone tablet covered in three distinct rows of text scripts, candlelit museum display, pixel art.",
+    "tags": [
+      "hieroglyphs",
+      "Rosetta Stone",
+      "Ancient Egypt",
+      "Champollion",
+      "decipherment",
+      "writing"
+    ]
+  },
+  {
+    "id": "art-egypt-tomb-painting-rules",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "ancient_art",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "ancient_art",
+    "categoryL3": "Ancient Egypt",
+    "statement": "Ancient Egyptian tomb paintings followed a strict visual code for 3,000 years: faces shown in profile, eyes shown from the front, and bodies twisted to show both shoulders simultaneously.",
+    "quizQuestion": "What distinctive visual rule did Ancient Egyptian artists use when depicting the human body?",
+    "correctAnswer": "Face in profile, eye from front, shoulders shown simultaneously from both sides",
+    "distractors": [
+      "Full-body frontal view with hands at sides",
+      "Three-quarter view with shadowing on one side",
+      "Figures shown only from behind to preserve anonymity",
+      "Naturalistic proportions matching real human anatomy",
+      "Bird's-eye view perspective for all human figures",
+      "Figures depicted only in sitting or kneeling positions",
+      "Bodies shown in pure silhouette without detail",
+      "All figures drawn smaller than landscape elements"
+    ],
+    "acceptableAnswers": [
+      "Face in profile, eye from front, shoulders shown simultaneously from both sides",
+      "Twisted perspective combining profile and frontal views",
+      "Head sideways, eye forward, body twisted to show both sides"
+    ],
+    "explanation": "Egyptian art used 'conceptual perspective' — showing the most recognizable or complete view of each body part simultaneously. This composite convention was applied consistently for over 3,000 years across thousands of artists, showing the face in profile but the eye from the front, the upper body facing the viewer, and feet in profile. It was not naivety but a deliberate system conveying completeness rather than a single viewpoint.",
+    "wowFactor": "Egyptian art wasn't 'wrong' about anatomy — it deliberately combined multiple viewpoints into one image to show the complete, perfect human form.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How did ancient Egyptian artists typically show the human body in paintings?",
+        "answer": "Composite view: face in profile, eye from front, body twisted to show both sides",
+        "distractors": [
+          "Fully frontal",
+          "Purely from the side",
+          "From above"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which ancient civilization used a 'composite perspective' showing faces in profile but eyes from the front for 3,000 years?",
+        "answer": "Ancient Egypt",
+        "distractors": [
+          "Ancient Greece",
+          "Ancient Mesopotamia",
+          "Ancient Rome"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Ancient Egyptian art showed figures with the face in profile but the eye drawn from the front.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In ancient Egyptian painting, the human face was shown in ___ but the eye was drawn from the front.",
+        "answer": "profile",
+        "distractors": [
+          "full face",
+          "three-quarter view",
+          "bird's eye"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ancient_Egyptian_art",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Colorful tomb wall with figures in composite profile-frontal poses, hieroglyph columns on either side, torch-lit, pixel art.",
+    "tags": [
+      "Ancient Egypt",
+      "tomb painting",
+      "composite perspective",
+      "art conventions",
+      "hieroglyphs"
+    ]
+  },
+  {
+    "id": "art-egypt-nefertiti-bust-discovery",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "ancient_art",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "ancient_art",
+    "categoryL3": "Ancient Egypt",
+    "statement": "The famous painted limestone bust of Nefertiti was created around 1345 BC but was only rediscovered in 1912 by a German archaeological team and has been housed in Berlin ever since, despite Egyptian demands for its return.",
+    "quizQuestion": "When was the famous bust of Nefertiti rediscovered after being lost for over 3,000 years?",
+    "correctAnswer": "1912",
+    "distractors": [
+      "1799",
+      "1857",
+      "1922",
+      "1965",
+      "1830",
+      "1880",
+      "1945",
+      "1901"
+    ],
+    "acceptableAnswers": [
+      "1912",
+      "In 1912"
+    ],
+    "explanation": "The bust was found in Amarna (ancient Akhetaten) in 1912 by archaeologist Ludwig Borchardt, who is accused of deliberately understating its value to Egyptian inspectors so Germany could legally export it. It depicts Queen Nefertiti with striking asymmetry — the left eye has no iris painted in, possibly intentional or possibly unfinished. Egypt has repeatedly requested its return, which Germany has consistently refused.",
+    "wowFactor": "One of the most copied faces in history has a mysterious blank eye — and the archaeologist who found it may have smuggled it out of Egypt by pretending it was worth almost nothing.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In what year was the bust of Nefertiti rediscovered by a German archaeological team?",
+        "answer": "1912",
+        "distractors": [
+          "1799",
+          "1922",
+          "1857"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The 1912 rediscovery of which ancient Egyptian queen's bust is now housed controversially in Berlin?",
+        "answer": "Nefertiti",
+        "distractors": [
+          "Cleopatra",
+          "Hatshepsut",
+          "Nefertari"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The bust of Nefertiti was found in 1912 and is now housed in Berlin despite Egyptian requests for its return.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The bust of Nefertiti was rediscovered in ___ by a German archaeological expedition.",
+        "answer": "1912",
+        "distractors": [
+          "1922",
+          "1799",
+          "1965"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nefertiti_Bust",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Involves ongoing cultural repatriation dispute between Egypt and Germany.",
+    "visualDescription": "Elegant painted limestone bust with tall blue crown, one eye blank, museum spotlit pedestal, pixel art.",
+    "tags": [
+      "Nefertiti",
+      "Ancient Egypt",
+      "bust",
+      "Berlin",
+      "repatriation",
+      "1912",
+      "archaeology"
+    ]
+  },
+  {
+    "id": "art-banksy-anonymous-identity",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "street_art",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "street_art",
+    "categoryL3": "Contemporary",
+    "statement": "Banksy has maintained complete anonymity for over 25 years despite being one of the world's most famous artists, and their true identity has never been officially confirmed.",
+    "quizQuestion": "What is notable about the identity of street artist Banksy?",
+    "correctAnswer": "It has never been officially confirmed despite 25+ years of fame",
+    "distractors": [
+      "Banksy revealed their identity in a 2013 documentary",
+      "Banksy is known to be a collective of several artists",
+      "The UK government knows but has agreed to protect Banksy's identity",
+      "Banksy legally registered a trademark under their real name",
+      "Banksy's identity was exposed by a hacker in 2020",
+      "Banksy confirmed their identity in a 2021 Instagram post",
+      "Interpol has an arrest warrant with Banksy's real name",
+      "Banksy's identity is widely known but never publicly reported"
+    ],
+    "acceptableAnswers": [
+      "It has never been officially confirmed despite 25+ years of fame",
+      "Banksy's identity remains unknown",
+      "True identity has never been confirmed"
+    ],
+    "explanation": "Banksy has been active since the early 1990s in Bristol and remains unidentified. Investigative journalists, including The Daily Mail and a scientific analysis team using geographic profiling, have pointed to Bristol-born artist Robin Gunningham as a leading suspect. Banksy's anonymity is central to their art and politics — they have never confirmed or denied any name. Their company is legally registered as 'Pest Control.'",
+    "wowFactor": "Scientists used criminal geographic profiling — a technique for catching serial killers — to try to identify Banksy.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is unique about Banksy compared to most famous artists?",
+        "answer": "Their true identity has never been officially confirmed",
+        "distractors": [
+          "They only work digitally",
+          "They have never sold any art",
+          "They work as a collective"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which world-famous street artist has maintained complete anonymity for over 25 years?",
+        "answer": "Banksy",
+        "distractors": [
+          "Shepard Fairey",
+          "Jean-Michel Basquiat",
+          "Keith Haring"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Banksy's true identity has never been officially confirmed.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Despite 25+ years of global fame, Banksy's true ___ has never been officially confirmed.",
+        "answer": "identity",
+        "distractors": [
+          "nationality",
+          "hometown",
+          "age"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Banksy",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Masked stencil artist spray-painting a brick wall at night, shadowy figure with hidden face, pixel art.",
+    "tags": [
+      "Banksy",
+      "street art",
+      "anonymity",
+      "identity",
+      "contemporary art"
+    ]
+  },
+  {
+    "id": "art-banksy-shredder-auction",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "street_art",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "street_art",
+    "categoryL3": "Contemporary",
+    "statement": "Seconds after selling for £1.04 million at Sotheby's in 2018, Banksy's 'Girl with Balloon' painting self-destructed through a hidden shredder built into its frame — which paradoxically doubled its value.",
+    "quizQuestion": "What happened to Banksy's 'Girl with Balloon' immediately after it sold at Sotheby's in 2018?",
+    "correctAnswer": "It self-shredded through a hidden mechanism in the frame",
+    "distractors": [
+      "It burst into flames triggered by a hidden device",
+      "The buyer returned it and demanded a refund",
+      "It dissolved in water when the canvas was revealed",
+      "Banksy appeared in person and claimed it back",
+      "The canvas split apart due to structural failure",
+      "A protester splashed paint over it in the auction room",
+      "Banksy released a statement voiding the sale",
+      "The painting was revealed to be a forgery"
+    ],
+    "acceptableAnswers": [
+      "It self-shredded through a hidden mechanism in the frame",
+      "A hidden shredder in the frame partially destroyed it",
+      "It self-destructed via a shredder built into the frame"
+    ],
+    "explanation": "At a Sotheby's auction on October 5, 2018, the hammer fell at £1,042,000 for 'Girl with Balloon.' A buzzer sounded and the canvas fed itself through a shredder concealed in the bottom of the gilded frame, leaving half the painting in strips. Rather than void the sale, the buyer kept it. The partially shredded work — renamed 'Love Is in the Bin' — was reoffered at Sotheby's in 2021 and sold for £18.6 million.",
+    "wowFactor": "Banksy tried to destroy a £1 million painting live at auction — and accidentally made it worth 18 times more.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Banksy's 'Girl with Balloon' do right after selling for over £1 million at Sotheby's?",
+        "answer": "Self-shredded through a hidden frame mechanism",
+        "distractors": [
+          "Burst into flames",
+          "Was stolen",
+          "Dissolved in water"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Banksy's auction stunt in which a painting self-shredded at Sotheby's ultimately increased its value to how much?",
+        "answer": "£18.6 million",
+        "distractors": [
+          "£2 million",
+          "£5 million",
+          "£500,000"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Banksy's 'Girl with Balloon' painting shredded itself right after selling at auction in 2018.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Banksy hid a ___ inside the frame of 'Girl with Balloon,' which activated seconds after it sold at Sotheby's.",
+        "answer": "shredder",
+        "distractors": [
+          "bomb",
+          "speaker",
+          "camera"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 10,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "epic",
+    "sourceName": "Sotheby's / Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Love_Is_in_the_Bin",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Gold auction frame with canvas half-shredded into dangling strips, auction paddle raised, shocked crowd silhouette, pixel art.",
+    "tags": [
+      "Banksy",
+      "Girl with Balloon",
+      "Love Is in the Bin",
+      "Sotheby's",
+      "shredder",
+      "auction",
+      "street art"
+    ]
+  },
+  {
+    "id": "art-banksy-political-commentary",
+    "type": "knowledge",
+    "domain": "Art & Architecture",
+    "subdomain": "street_art",
+    "categoryL1": "Art & Architecture",
+    "categoryL2": "street_art",
+    "categoryL3": "Contemporary",
+    "statement": "Banksy has painted murals on the Israeli West Bank barrier, including the famous image of a girl being lifted by balloons appearing to float over the wall, using art as political commentary on confinement.",
+    "quizQuestion": "Where did Banksy famously paint murals to make a political statement about confinement?",
+    "correctAnswer": "On the Israeli West Bank barrier",
+    "distractors": [
+      "On the Berlin Wall before it fell",
+      "On the US-Mexico border fence",
+      "On the walls of Guantanamo Bay detention center",
+      "On the gates of Buckingham Palace",
+      "On the walls of Gaza's parliamentary building",
+      "On the Korean Demilitarized Zone fence",
+      "On former apartheid walls in South Africa",
+      "On the walls of Alcatraz prison"
+    ],
+    "acceptableAnswers": [
+      "On the Israeli West Bank barrier",
+      "The West Bank separation wall",
+      "The Israeli West Bank wall"
+    ],
+    "explanation": "In 2005, Banksy painted nine murals on the Israeli West Bank barrier — a 700-km concrete wall — including a girl floating over it held by balloons, a child painter revealing a tropical beach, and a dove in a flak jacket. He described his motivation as wanting to highlight the wall's oppressive nature. Palestinian authorities initially suspected him of working for Israeli intelligence. The murals are now major tourist attractions.",
+    "wowFactor": "Banksy's murals on the West Bank wall became such tourist attractions that local Palestinians complained — they were now selling refreshments to visitors.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "On what famous barrier did Banksy paint political murals in 2005?",
+        "answer": "The Israeli West Bank barrier",
+        "distractors": [
+          "The Berlin Wall",
+          "The US-Mexico border fence",
+          "The Korean DMZ fence"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Banksy's 2005 murals depicting children escaping confinement were painted on which barrier?",
+        "answer": "The Israeli West Bank barrier",
+        "distractors": [
+          "The Berlin Wall",
+          "The US-Mexico border fence",
+          "An Egyptian border wall"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Banksy painted political murals on the Israeli West Bank barrier in 2005.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In 2005, Banksy painted murals on the Israeli ___ barrier to comment on confinement.",
+        "answer": "West Bank",
+        "distractors": [
+          "Gaza",
+          "Sinai",
+          "Golan"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Banksy#West_Bank_barrier",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 2,
+    "sensitivityNote": "Involves the Israeli-Palestinian conflict; present factually without taking sides.",
+    "visualDescription": "Grey concrete separation wall with colorful stencil mural of a girl lifted by heart-shaped balloons, desert landscape beyond, pixel art.",
+    "tags": [
+      "Banksy",
+      "West Bank",
+      "political art",
+      "street art",
+      "murals",
+      "barrier"
+    ]
   }
 ]

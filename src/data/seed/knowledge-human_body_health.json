@@ -12956,5 +12956,1575 @@
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "health-antibiotics-penicillin-discovery",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medicine_pharmacology",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medicine_pharmacology",
+    "categoryL3": "antibiotics",
+    "statement": "Alexander Fleming discovered penicillin in 1928 when he noticed a mold (Penicillium notatum) killing bacteria on an accidentally contaminated petri dish.",
+    "quizQuestion": "Who discovered penicillin in 1928 by observing mold killing bacteria on a petri dish?",
+    "correctAnswer": "Alexander Fleming",
+    "distractors": [
+      "Louis Pasteur",
+      "Robert Koch",
+      "Joseph Lister",
+      "Howard Florey",
+      "Ernst Chain",
+      "Paul Ehrlich",
+      "Edward Jenner",
+      "Rudolf Virchow"
+    ],
+    "acceptableAnswers": [
+      "Alexander Fleming",
+      "Fleming",
+      "Sir Alexander Fleming"
+    ],
+    "explanation": "In September 1928, Fleming returned from holiday to find that a Penicillium mold had contaminated one of his staphylococcus cultures and was dissolving the bacteria around it. He identified the active substance as penicillin. Florey and Chain later developed it into a practical antibiotic drug, with all three sharing the 1945 Nobel Prize in Physiology or Medicine.",
+    "wowFactor": "Fleming almost discarded the contaminated dish — one of the most important medical discoveries in history very nearly ended up in the bin.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which scientist discovered penicillin in 1928?",
+        "answer": "Alexander Fleming",
+        "distractors": [
+          "Louis Pasteur",
+          "Robert Koch",
+          "Howard Florey"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Alexander Fleming discovered which antibiotic substance in 1928?",
+        "answer": "Penicillin",
+        "distractors": [
+          "Streptomycin",
+          "Tetracycline",
+          "Ampicillin"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Penicillin was discovered in 1928 when a mold was observed killing bacteria on a petri dish.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Alexander Fleming discovered ___ in 1928 after noticing a mold destroying bacteria in his lab.",
+        "answer": "penicillin",
+        "distractors": [
+          "streptomycin",
+          "aspirin",
+          "insulin"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Alexander_Fleming",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art scientist peering at a glowing petri dish with a blue-green mold halo dissolving red bacterial dots around it, lab bench in background.",
+    "tags": [
+      "penicillin",
+      "antibiotics",
+      "Fleming",
+      "discovery",
+      "medicine"
+    ]
+  },
+  {
+    "id": "health-antibiotics-resistance-crisis",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medicine_pharmacology",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medicine_pharmacology",
+    "categoryL3": "antibiotics",
+    "statement": "Antibiotic resistance occurs when bacteria evolve mechanisms to survive antibiotic treatment, and is projected to kill 10 million people per year by 2050 if left unchecked.",
+    "quizQuestion": "How many deaths per year is antibiotic resistance projected to cause by 2050 if left unchecked?",
+    "correctAnswer": "10 million",
+    "distractors": [
+      "1 million",
+      "500,000",
+      "5 million",
+      "20 million",
+      "50 million",
+      "100,000",
+      "2 million",
+      "30 million"
+    ],
+    "acceptableAnswers": [
+      "10 million",
+      "10 million per year",
+      "Around 10 million"
+    ],
+    "explanation": "The 2016 O'Neill Review on Antimicrobial Resistance, commissioned by the UK government, projected that drug-resistant infections could kill 10 million people annually by 2050 — surpassing cancer deaths. Overuse of antibiotics in medicine and agriculture accelerates resistance by creating selection pressure on bacterial populations, favoring strains with resistance genes.",
+    "wowFactor": "Every time you don't finish a course of antibiotics, surviving bacteria — the toughest ones — are given a chance to reproduce and teach the next generation how to beat the drug.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the projected annual death toll from antibiotic resistance by 2050?",
+        "answer": "10 million",
+        "distractors": [
+          "1 million",
+          "5 million",
+          "50 million"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A 2050 projection of 10 million annual deaths is associated with which global health threat?",
+        "answer": "Antibiotic resistance",
+        "distractors": [
+          "Climate change",
+          "Viral pandemics",
+          "Malaria"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Antibiotic resistance is projected to kill more people annually than cancer by 2050.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Antibiotic resistance could kill ___ people per year by 2050 if left unchecked.",
+        "answer": "10 million",
+        "distractors": [
+          "1 million",
+          "5 million",
+          "100 million"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "O'Neill Review on Antimicrobial Resistance",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Antimicrobial_resistance",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Projection figure; may be revised by future studies.",
+    "visualDescription": "A pixel art bacterium with a glowing red shield deflecting antibiotic capsules, a skull-and-crossbones calendar showing 2050 in the background.",
+    "tags": [
+      "antibiotic resistance",
+      "superbugs",
+      "public health",
+      "bacteria",
+      "AMR"
+    ]
+  },
+  {
+    "id": "health-antibiotics-mechanism",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medicine_pharmacology",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medicine_pharmacology",
+    "categoryL3": "antibiotics",
+    "statement": "Antibiotics kill or inhibit bacteria by targeting structures unique to bacterial cells — such as cell walls, ribosomes, or DNA replication enzymes — that human cells lack.",
+    "quizQuestion": "Why can antibiotics kill bacteria without directly harming human cells?",
+    "correctAnswer": "They target structures unique to bacteria that human cells lack",
+    "distractors": [
+      "They are too small to enter human cells",
+      "Human cells destroy them before they cause harm",
+      "They only work outside the bloodstream",
+      "They attack the immune system instead",
+      "Human cells neutralize them with enzymes",
+      "They only affect cold-blooded organisms",
+      "Human DNA repairs itself too quickly",
+      "They evaporate before reaching human cells"
+    ],
+    "acceptableAnswers": [
+      "They target structures unique to bacteria that human cells lack",
+      "Bacteria have unique structures like cell walls that human cells don't have",
+      "They target bacterial-specific structures"
+    ],
+    "explanation": "Antibiotics exploit differences between prokaryotic bacteria and eukaryotic human cells. For example, penicillin disrupts bacterial cell wall synthesis — human cells have no cell wall. Other antibiotics target the 70S ribosome (bacteria) rather than the 80S ribosome (humans), or inhibit bacterial DNA gyrase. This selective toxicity is why antibiotics are effective medicines rather than simple poisons.",
+    "wowFactor": "Antibiotics are essentially precision-guided missiles: they're chemically programmed to destroy only the 'enemy' architecture that bacteria have and your own cells don't.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How do antibiotics selectively kill bacteria without harming human cells?",
+        "answer": "They target structures unique to bacteria that human cells lack",
+        "distractors": [
+          "They are too large to enter human cells",
+          "Human enzymes neutralize them",
+          "They only work in the digestive tract"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Bacterial cell walls and 70S ribosomes are targets of antibiotics because human cells lack these structures — what property of antibiotics does this illustrate?",
+        "answer": "Selective toxicity",
+        "distractors": [
+          "Broad-spectrum activity",
+          "Immunostimulation",
+          "Viral suppression"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Antibiotics can distinguish between bacteria and human cells because bacteria have unique structures like cell walls.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Penicillin works by disrupting bacterial ___ synthesis, a structure that human cells do not have.",
+        "answer": "cell wall",
+        "distractors": [
+          "DNA",
+          "membrane",
+          "ribosome"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Antibiotic",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art split-view: a bacterium with a thick green cell wall being shattered by a blue antibiotic capsule, contrasted with an intact human cell on the right.",
+    "tags": [
+      "antibiotics",
+      "mechanism",
+      "cell wall",
+      "selective toxicity",
+      "bacteria"
+    ]
+  },
+  {
+    "id": "health-xray-discovery",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medicine_diagnostic",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medicine_diagnostic",
+    "categoryL3": "radiology",
+    "statement": "Wilhelm Röntgen discovered X-rays on November 8, 1895, while experimenting with cathode ray tubes, and his first famous image showed the bones of his wife Anna's hand.",
+    "quizQuestion": "Who discovered X-rays in 1895?",
+    "correctAnswer": "Wilhelm Röntgen",
+    "distractors": [
+      "Marie Curie",
+      "Henri Becquerel",
+      "Nikola Tesla",
+      "Thomas Edison",
+      "James Clerk Maxwell",
+      "Ernest Rutherford",
+      "J.J. Thomson",
+      "Max Planck"
+    ],
+    "acceptableAnswers": [
+      "Wilhelm Röntgen",
+      "Röntgen",
+      "Roentgen",
+      "Wilhelm Roentgen"
+    ],
+    "explanation": "On November 8, 1895, German physicist Wilhelm Röntgen was experimenting with cathode ray tubes at the University of Würzburg when he noticed that a fluorescent screen across the room glowed even though the tube was covered. He named the mysterious radiation 'X-rays' (X for unknown). He took the first radiograph of a human body part — his wife Anna Bertha's hand — on December 22, 1895. Röntgen won the very first Nobel Prize in Physics in 1901.",
+    "wowFactor": "When Anna Bertha saw the image of her own skeleton, she reportedly said 'I have seen my death' — within months, X-rays were being used in battlefield hospitals to locate bullets.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which physicist discovered X-rays in November 1895?",
+        "answer": "Wilhelm Röntgen",
+        "distractors": [
+          "Marie Curie",
+          "Henri Becquerel",
+          "Nikola Tesla"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The discovery of X-rays in 1895 earned the first-ever Nobel Prize in Physics for which scientist?",
+        "answer": "Wilhelm Röntgen",
+        "distractors": [
+          "Marie Curie",
+          "Ernest Rutherford",
+          "Max Planck"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The first X-ray image ever taken of a human body part was of Röntgen's wife's hand.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Wilhelm ___ discovered X-rays in 1895 and won the first Nobel Prize in Physics.",
+        "answer": "Röntgen",
+        "distractors": [
+          "Curie",
+          "Becquerel",
+          "Tesla"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wilhelm_R%C3%B6ntgen",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a glowing cathode tube on a lab bench, a skeletal hand X-ray image hovering above it in blue-white light, year 1895 etched in the corner.",
+    "tags": [
+      "X-rays",
+      "Röntgen",
+      "discovery",
+      "radiology",
+      "Nobel Prize"
+    ]
+  },
+  {
+    "id": "health-xray-medical-imaging",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medicine_diagnostic",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medicine_diagnostic",
+    "categoryL3": "radiology",
+    "statement": "X-rays create images by passing radiation through the body: dense tissues like bone absorb more X-rays (appearing white), while soft tissues absorb less (appearing grey or black).",
+    "quizQuestion": "Why do bones appear white on an X-ray image?",
+    "correctAnswer": "They absorb more X-rays than soft tissue",
+    "distractors": [
+      "They reflect X-rays back at the detector",
+      "They emit their own radiation",
+      "Calcium fluoresces when exposed to X-rays",
+      "They are denser and block all light wavelengths",
+      "X-rays are repelled by calcium",
+      "Bone marrow amplifies the signal",
+      "They scatter X-rays toward the film",
+      "Bone crystals convert X-rays to visible light"
+    ],
+    "acceptableAnswers": [
+      "They absorb more X-rays than soft tissue",
+      "Bone is denser and absorbs more X-ray radiation",
+      "Dense tissue absorbs more X-rays"
+    ],
+    "explanation": "X-rays are a form of electromagnetic radiation that passes through the body and exposes a detector or film on the other side. Calcium phosphate in bone is very dense and absorbs X-ray photons effectively, so fewer photons reach the film — producing a white area. Soft tissue like muscle allows more X-rays through, appearing grey. Air (in lungs) barely absorbs any, appearing black. This differential absorption creates the contrast in the image.",
+    "wowFactor": "A modern chest X-ray exposes you to about 0.1 mSv of radiation — roughly the same as a single day's worth of natural background radiation from cosmic rays and soil.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "On an X-ray image, why do bones appear white?",
+        "answer": "They absorb more X-rays than soft tissue",
+        "distractors": [
+          "They reflect X-rays back",
+          "They emit their own radiation",
+          "Calcium glows under X-rays"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "On an X-ray, which tissue type appears darkest because it absorbs the fewest X-ray photons?",
+        "answer": "Air (in the lungs)",
+        "distractors": [
+          "Bone",
+          "Muscle",
+          "Fat"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Bones appear white on X-rays because they absorb more radiation than soft tissue.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "On an X-ray, dense tissues like bone appear ___ because they absorb more radiation.",
+        "answer": "white",
+        "distractors": [
+          "black",
+          "grey",
+          "transparent"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/X-ray",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art chest X-ray on a light box: bright white ribs and spine contrasting against dark lung fields, a glowing X-ray beam icon in the corner.",
+    "tags": [
+      "X-ray",
+      "medical imaging",
+      "radiology",
+      "bone",
+      "absorption"
+    ]
+  },
+  {
+    "id": "health-xray-radiation-risk",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medicine_diagnostic",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medicine_diagnostic",
+    "categoryL3": "radiology",
+    "statement": "Ionizing radiation from X-rays can damage DNA by knocking electrons out of atoms, which is why medical X-ray exposure is kept as low as reasonably achievable (the ALARA principle).",
+    "quizQuestion": "What principle guides keeping medical X-ray radiation doses to the minimum necessary?",
+    "correctAnswer": "ALARA — As Low As Reasonably Achievable",
+    "distractors": [
+      "SAFE — Systematic Avoidance of Frequency Exposure",
+      "DOSE — Directed Optimized Safety Exposure",
+      "ZERO — Zero Excess Radiation Order",
+      "MINI — Minimized Individual Noninvasive Imaging",
+      "LIMIT — Low Ionization Medical Imaging Target",
+      "PRIME — Patient Radiation Intake Minimization Effort",
+      "CARE — Controlled Attenuation Radiation Exposure",
+      "GUARD — General Unified Attenuation Radiation Directive"
+    ],
+    "acceptableAnswers": [
+      "ALARA",
+      "As Low As Reasonably Achievable",
+      "ALARA principle"
+    ],
+    "explanation": "ALARA (As Low As Reasonably Achievable) is the guiding safety principle in radiation medicine. X-rays are a form of ionizing radiation — they carry enough energy to remove electrons from atoms and break chemical bonds, including in DNA. While the risk from a single diagnostic X-ray is very small, cumulative or high-dose exposure raises cancer risk. Radiologists use lead shielding, minimize repeat exposures, and select the lowest effective dose protocols.",
+    "wowFactor": "Radiographers wear lead aprons and stand behind screens not because X-rays are immediately lethal — but because they do this every single day, and tiny repeated doses add up over a career.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does ALARA stand for in radiation safety?",
+        "answer": "As Low As Reasonably Achievable",
+        "distractors": [
+          "As Light As Radiatively Allowed",
+          "Automatic Limit for All Radiation Applications",
+          "Adjusted Level for All Radiation Assessments"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "X-rays can cause cancer by doing what to DNA?",
+        "answer": "Damaging it through ionizing radiation",
+        "distractors": [
+          "Methylating it",
+          "Blocking its replication",
+          "Binding to histones"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The ALARA principle means medical X-ray doses should be kept as low as reasonably achievable.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The radiation safety acronym ALARA stands for 'As Low As Reasonably ___'.",
+        "answer": "Achievable",
+        "distractors": [
+          "Allowable",
+          "Applicable",
+          "Avoidable"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/As_low_as_reasonably_practicable",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Involves radiation risk — framing should remain calm and educational.",
+    "visualDescription": "Pixel art radiographer in lead apron standing behind a protective screen, X-ray machine aiming at a patient silhouette, radiation warning symbol in yellow.",
+    "tags": [
+      "ALARA",
+      "radiation safety",
+      "X-ray",
+      "DNA damage",
+      "radiology"
+    ]
+  },
+  {
+    "id": "health-heart-pacemaker-cells",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "cardiovascular",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "cardiovascular",
+    "categoryL3": "cardiac_physiology",
+    "statement": "Pacemaker cells in the sinoatrial node fire spontaneously about 60–100 times per minute through a process called automaticity — no nerve signal is needed to trigger each beat.",
+    "quizQuestion": "What property of sinoatrial node cells allows them to generate heartbeats without any nerve input?",
+    "correctAnswer": "Automaticity",
+    "distractors": [
+      "Contractility",
+      "Excitability",
+      "Conductivity",
+      "Rhythmicity",
+      "Depolarization reflex",
+      "Autonomic resonance",
+      "Sarcoplasmic cycling",
+      "Vagal override"
+    ],
+    "acceptableAnswers": [
+      "Automaticity",
+      "Automatic depolarization",
+      "Spontaneous depolarization"
+    ],
+    "explanation": "Pacemaker cells in the SA node exhibit automaticity: they spontaneously depolarize due to a slow inward 'funny current' (If) of sodium and potassium ions that gradually raises the membrane potential until threshold is reached and an action potential fires. This cycle repeats ~60-100 times per minute at rest. The autonomic nervous system modulates rate (faster with adrenaline, slower with acetylcholine) but does not initiate the beat.",
+    "wowFactor": "If you removed your heart from your chest and kept it in the right nutrient solution, it would continue beating on its own — pacemaker cells never need to be told to fire.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the term for the property of SA node cells that allows them to beat spontaneously without nerve input?",
+        "answer": "Automaticity",
+        "distractors": [
+          "Contractility",
+          "Conductivity",
+          "Excitability"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Automaticity is the property that allows which cluster of cardiac cells to spontaneously generate heartbeats?",
+        "answer": "Sinoatrial node cells",
+        "distractors": [
+          "Purkinje fibers",
+          "AV node cells",
+          "Ventricular muscle cells"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Pacemaker cells in the sinoatrial node can generate heartbeats spontaneously without any nerve signal.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Sinoatrial node cells fire spontaneously due to a property called ___, requiring no external nerve trigger.",
+        "answer": "automaticity",
+        "distractors": [
+          "contractility",
+          "conductivity",
+          "rhythmicity"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sinoatrial_node",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art close-up of a glowing heart cell with tiny ion channel doors opening in sequence, a timer counting 60–100 bpm, electric sparks emanating from the SA node region.",
+    "tags": [
+      "pacemaker cells",
+      "sinoatrial node",
+      "automaticity",
+      "heart",
+      "cardiac physiology"
+    ]
+  },
+  {
+    "id": "health-heart-transplant-history",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "cardiovascular",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "cardiovascular",
+    "categoryL3": "cardiac_surgery",
+    "statement": "The first successful human heart transplant was performed by Dr. Christiaan Barnard at Groote Schuur Hospital in Cape Town, South Africa, on December 3, 1967.",
+    "quizQuestion": "Who performed the world's first successful human heart transplant in 1967?",
+    "correctAnswer": "Christiaan Barnard",
+    "distractors": [
+      "Michael DeBakey",
+      "Denton Cooley",
+      "Norman Shumway",
+      "Adrian Kantrowitz",
+      "Joseph Murray",
+      "Thomas Starzl",
+      "Paul Dudley White",
+      "René Favaloro"
+    ],
+    "acceptableAnswers": [
+      "Christiaan Barnard",
+      "Dr. Christiaan Barnard",
+      "Barnard"
+    ],
+    "explanation": "On December 3, 1967, South African cardiac surgeon Christiaan Barnard transplanted the heart of 25-year-old Denise Darvall (who had died in a car accident) into 53-year-old Louis Washkansky at Groote Schuur Hospital. Washkansky survived 18 days before dying of pneumonia. The surgery marked a turning point in medicine. Norman Shumway at Stanford had developed most of the underlying techniques, but Barnard performed the first human case.",
+    "wowFactor": "The patient lived 18 days — and Barnard became a global celebrity overnight, gracing magazine covers and dining with heads of state while surgeons worldwide scrambled to replicate the feat.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which surgeon performed the first human heart transplant in December 1967?",
+        "answer": "Christiaan Barnard",
+        "distractors": [
+          "Norman Shumway",
+          "Michael DeBakey",
+          "Denton Cooley"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The world's first human heart transplant in 1967 was performed in which country?",
+        "answer": "South Africa",
+        "distractors": [
+          "United States",
+          "United Kingdom",
+          "France"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The first successful human heart transplant was performed in 1967 in South Africa.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Christiaan ___ performed the first human heart transplant on December 3, 1967, in Cape Town.",
+        "answer": "Barnard",
+        "distractors": [
+          "DeBakey",
+          "Cooley",
+          "Shumway"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Christiaan_Barnard",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Involves organ transplant and patient death — handled factually.",
+    "visualDescription": "Pixel art operating theatre lit in cool blue, a surgeon in mask and gown holding a glowing red heart, 'Dec 3, 1967' on a calendar on the wall.",
+    "tags": [
+      "heart transplant",
+      "Christiaan Barnard",
+      "cardiac surgery",
+      "South Africa",
+      "1967"
+    ]
+  },
+  {
+    "id": "health-heart-hrv",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "cardiovascular",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "cardiovascular",
+    "categoryL3": "cardiac_physiology",
+    "statement": "Heart rate variability (HRV) is the natural variation in time between consecutive heartbeats; higher HRV generally indicates better cardiovascular fitness and autonomic nervous system health.",
+    "quizQuestion": "What does high heart rate variability (HRV) generally indicate about a person's health?",
+    "correctAnswer": "Better cardiovascular fitness and autonomic health",
+    "distractors": [
+      "An irregular or dangerous arrhythmia",
+      "A weaker heart muscle",
+      "Overtraining and fatigue",
+      "Low blood pressure",
+      "A damaged sinoatrial node",
+      "Poor lung capacity",
+      "High resting heart rate",
+      "Reduced blood oxygen saturation"
+    ],
+    "acceptableAnswers": [
+      "Better cardiovascular fitness and autonomic health",
+      "Good cardiovascular fitness",
+      "Good autonomic nervous system function",
+      "Better overall health and recovery"
+    ],
+    "explanation": "HRV measures the millisecond-level variation between successive R-R intervals on an ECG. A healthy autonomic nervous system constantly modulates heart rate: the sympathetic system speeds it up and the parasympathetic (vagal) system slows it down. High HRV means these systems are both active and well-balanced. Athletes and well-rested individuals typically have high HRV. Low HRV can signal stress, fatigue, illness, or cardiovascular disease.",
+    "wowFactor": "Your heart does NOT beat like a metronome — elite athletes have beats that vary by dozens of milliseconds in a constantly shifting rhythm, and that variability is the actual sign of a healthy heart.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does high heart rate variability (HRV) typically indicate?",
+        "answer": "Better cardiovascular fitness and autonomic health",
+        "distractors": [
+          "An irregular arrhythmia",
+          "Overtraining",
+          "High blood pressure"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Heart rate variability (HRV) measures the variation in time between what two things?",
+        "answer": "Consecutive heartbeats",
+        "distractors": [
+          "Inhalation and exhalation",
+          "Systole and diastole",
+          "Blood pressure peaks"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Higher heart rate variability (HRV) is generally a sign of better cardiovascular health.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Heart rate ___ (HRV) is the natural variation in time between heartbeats, and higher values indicate better fitness.",
+        "answer": "variability",
+        "distractors": [
+          "rhythm",
+          "frequency",
+          "intensity"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heart_rate_variability",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art ECG graph with uneven peaks labeled in green (high HRV) next to a rigid metronome-like ECG in red (low HRV), a heart icon above each.",
+    "tags": [
+      "HRV",
+      "heart rate variability",
+      "cardiovascular fitness",
+      "autonomic nervous system",
+      "heart health"
+    ]
+  },
+  {
+    "id": "health-dna-fingerprinting-jeffreys",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "genetics",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "genetics",
+    "categoryL3": "forensic_genetics",
+    "statement": "DNA fingerprinting was invented by Sir Alec Jeffreys at the University of Leicester on September 10, 1984, when he discovered that certain DNA regions vary uniquely between individuals.",
+    "quizQuestion": "Who invented DNA fingerprinting in 1984?",
+    "correctAnswer": "Alec Jeffreys",
+    "distractors": [
+      "Francis Crick",
+      "James Watson",
+      "Kary Mullis",
+      "Frederick Sanger",
+      "Barbara McClintock",
+      "Oswald Avery",
+      "Rosalind Franklin",
+      "Craig Venter"
+    ],
+    "acceptableAnswers": [
+      "Alec Jeffreys",
+      "Sir Alec Jeffreys",
+      "Jeffreys"
+    ],
+    "explanation": "On September 10, 1984 — a Monday morning he called an 'eureka moment' — Alec Jeffreys at the University of Leicester developed restriction fragment length polymorphism (RFLP) profiling by examining a family's X-ray autoradiograph. He noticed that patterns of minisatellite DNA repeats were unique to each individual and could be used to identify people. The technique was first used legally in 1986 to both convict Colin Pitchfork and exonerate an innocent suspect in a double murder case in Narborough.",
+    "wowFactor": "The same technique that identified a murderer also freed an innocent man in the very first criminal case where DNA fingerprinting was used — making it the only forensic tool that simultaneously convicted and exonerated in its debut.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which British geneticist invented DNA fingerprinting in 1984?",
+        "answer": "Alec Jeffreys",
+        "distractors": [
+          "Kary Mullis",
+          "Frederick Sanger",
+          "Francis Crick"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "DNA fingerprinting, invented in 1984, was first used in a criminal case in which country?",
+        "answer": "United Kingdom",
+        "distractors": [
+          "United States",
+          "Germany",
+          "Australia"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: DNA fingerprinting was invented by Alec Jeffreys in 1984 at the University of Leicester.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Alec Jeffreys invented DNA ___ in 1984, a technique that identifies individuals by unique patterns in their DNA.",
+        "answer": "fingerprinting",
+        "distractors": [
+          "sequencing",
+          "cloning",
+          "hybridization"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Alec_Jeffreys",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art DNA gel electrophoresis strip with glowing banded lanes, a magnifying glass highlighting one unique barcode pattern, a fingerprint overlaid in translucent blue.",
+    "tags": [
+      "DNA fingerprinting",
+      "Alec Jeffreys",
+      "genetics",
+      "forensics",
+      "1984"
+    ]
+  },
+  {
+    "id": "health-dna-fingerprinting-forensics",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "genetics",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "genetics",
+    "categoryL3": "forensic_genetics",
+    "statement": "DNA fingerprinting in forensics works by comparing STR (short tandem repeat) profiles from crime scene samples with a suspect's DNA — a match across multiple loci is statistically near-impossible to fake.",
+    "quizQuestion": "What type of DNA sequences does modern forensic DNA profiling primarily compare to identify individuals?",
+    "correctAnswer": "Short tandem repeats (STRs)",
+    "distractors": [
+      "Single nucleotide polymorphisms (SNPs)",
+      "Mitochondrial gene sequences",
+      "Coding exon sequences",
+      "CRISPR target sites",
+      "Restriction enzyme cut sites",
+      "Promoter methylation patterns",
+      "Telomere length patterns",
+      "Intron splice sites"
+    ],
+    "acceptableAnswers": [
+      "Short tandem repeats",
+      "STRs",
+      "Short tandem repeat profiles"
+    ],
+    "explanation": "Modern forensic DNA profiling uses STR (short tandem repeat) analysis, replacing the original RFLP method. STRs are regions where a short DNA sequence (2-7 base pairs) repeats a variable number of times. By comparing the number of repeats at 13-20 different STR loci, forensic scientists can calculate match probabilities of 1 in quadrillions. The UK National DNA Database (NDNAD) and the US CODIS system both use STR profiling.",
+    "wowFactor": "A match across 20 STR loci has a random probability of about 1 in 1 quintillion — there are only 8 billion people on Earth, so the math alone makes a coincidental match essentially impossible.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What DNA sequences does modern forensic profiling compare to identify individuals?",
+        "answer": "Short tandem repeats (STRs)",
+        "distractors": [
+          "Single nucleotide polymorphisms",
+          "Mitochondrial genes",
+          "Coding exons"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The CODIS system used by the US FBI for criminal identification stores profiles of which type of DNA marker?",
+        "answer": "Short tandem repeats (STRs)",
+        "distractors": [
+          "Mitochondrial DNA sequences",
+          "Blood type genes",
+          "SNP arrays"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Modern forensic DNA profiling uses short tandem repeat (STR) analysis, not the original RFLP method.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Forensic DNA profiling compares ___ (STR) profiles across multiple DNA locations to identify individuals.",
+        "answer": "short tandem repeats",
+        "distractors": [
+          "single nucleotide polymorphisms",
+          "mitochondrial sequences",
+          "restriction fragments"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/DNA_profiling",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art forensics lab: a glowing crime scene evidence bag, a DNA strand being analyzed on a glowing terminal screen showing banded STR profiles side by side.",
+    "tags": [
+      "DNA profiling",
+      "STR",
+      "forensics",
+      "CODIS",
+      "criminal identification"
+    ]
+  },
+  {
+    "id": "health-dna-fingerprinting-identical-twins",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "genetics",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "genetics",
+    "categoryL3": "forensic_genetics",
+    "statement": "Identical (monozygotic) twins share nearly identical nuclear DNA, meaning traditional STR-based DNA fingerprinting cannot distinguish them — but differences in epigenetics and somatic mutations can.",
+    "quizQuestion": "Why can traditional STR-based DNA fingerprinting fail to distinguish identical twins?",
+    "correctAnswer": "Identical twins share nearly the same nuclear DNA sequences",
+    "distractors": [
+      "Identical twins have no unique STR loci",
+      "STR profiling only works on blood samples, not other tissue",
+      "Twin DNA degrades too quickly for STR analysis",
+      "Identical twins share the same fingerprints too",
+      "STR databases exclude twin profiles by law",
+      "Identical twins produce the same enzymes that destroy STR markers",
+      "Twin chromosomes cross-link during PCR amplification",
+      "STR loci are identical only in siblings, not twins"
+    ],
+    "acceptableAnswers": [
+      "Identical twins share nearly the same nuclear DNA sequences",
+      "They have nearly identical DNA",
+      "Their STR profiles are essentially identical"
+    ],
+    "explanation": "Monozygotic twins originate from a single fertilized egg that splits, giving them virtually identical nuclear DNA and therefore identical STR profiles in standard forensic testing. This is a real limitation: in rare criminal cases involving identical twins, STR profiling alone could not definitively identify the perpetrator. However, whole-genome sequencing can detect rare somatic mutations (errors acquired after the split) and epigenetic methylation differences that distinguish twins, though these methods are expensive and not yet routine.",
+    "wowFactor": "In at least one real murder case, identical twin brothers both walked free because neither could be forensically distinguished — standard DNA testing hit its absolute limit.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why can traditional DNA fingerprinting struggle to tell identical twins apart?",
+        "answer": "Identical twins share nearly the same nuclear DNA sequences",
+        "distractors": [
+          "They have the same fingerprints",
+          "STR testing is unreliable for siblings",
+          "Their DNA degrades at the same rate"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What advanced technique CAN distinguish identical twins that standard DNA fingerprinting cannot?",
+        "answer": "Whole-genome sequencing detecting somatic mutations",
+        "distractors": [
+          "Blood typing",
+          "Mitochondrial DNA testing",
+          "Hair color analysis"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Traditional STR-based DNA fingerprinting cannot reliably distinguish identical twins because they share nearly the same DNA.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Identical twins share nearly identical ___ DNA, making standard forensic profiling unable to distinguish between them.",
+        "answer": "nuclear",
+        "distractors": [
+          "mitochondrial",
+          "somatic",
+          "viral"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Twin",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "References real criminal cases — framed educationally.",
+    "visualDescription": "Pixel art of two identical silhouetted figures side by side with matching DNA barcode strips below them, a question mark between the two strips glowing orange.",
+    "tags": [
+      "identical twins",
+      "DNA fingerprinting",
+      "forensics",
+      "limitations",
+      "somatic mutations"
+    ]
+  },
+  {
+    "id": "health-microbiome-bacteria-cells",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "microbiology",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "microbiology",
+    "categoryL3": "microbiome",
+    "statement": "The human body contains roughly equal numbers of bacterial and human cells — approximately 38 trillion bacteria to 30 trillion human cells — overturning the older '10-to-1' myth.",
+    "quizQuestion": "What is the approximate ratio of bacterial cells to human cells in the human body?",
+    "correctAnswer": "Roughly 1-to-1 (about equal numbers)",
+    "distractors": [
+      "10 bacteria for every 1 human cell",
+      "100 bacteria for every 1 human cell",
+      "1 bacterium for every 10 human cells",
+      "3 bacteria for every 1 human cell",
+      "50 bacteria for every 1 human cell",
+      "1 bacterium for every 100 human cells",
+      "5 bacteria for every 1 human cell",
+      "20 bacteria for every 1 human cell"
+    ],
+    "acceptableAnswers": [
+      "Roughly 1-to-1",
+      "About equal numbers",
+      "Approximately equal",
+      "1.3 to 1"
+    ],
+    "explanation": "A 2016 study by Ron Sender and Ron Milo (Weizmann Institute) revised the long-cited '10 bacteria per human cell' figure. Using more accurate cell counts, they found an average adult has ~38 trillion bacteria (mostly in the gut) and ~30 trillion human cells, giving a ratio closer to 1.3:1. The old 10:1 figure originated from a 1970s rough estimate and was never rigorously measured. Still, bacterial cells in and on us outnumber our human cells.",
+    "wowFactor": "You are only marginally more 'you' than you are 'them' — in purely numerical terms, roughly half the cells in your body right now are not yours.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the actual ratio of bacterial cells to human cells in the human body?",
+        "answer": "Roughly 1-to-1 (about equal numbers)",
+        "distractors": [
+          "10 bacteria per human cell",
+          "100 bacteria per human cell",
+          "1 bacterium per 10 human cells"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "A 2016 Weizmann Institute study corrected which long-believed myth about the human microbiome?",
+        "answer": "That bacteria outnumber human cells 10-to-1",
+        "distractors": [
+          "That gut bacteria cause obesity",
+          "That probiotics are ineffective",
+          "That bacteria are harmful to the immune system"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The human body contains roughly equal numbers of bacterial and human cells, not 10 times more bacteria.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The human body contains approximately ___ numbers of bacterial and human cells, not the often-cited 10-to-1 ratio.",
+        "answer": "equal",
+        "distractors": [
+          "unequal",
+          "10x more bacterial",
+          "100x more human"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Sender et al., Cell 2016",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gut_microbiota",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a human body silhouette half-filled with glowing blue bacterial icons and half with red human cell icons, a scale showing near-equal balance below.",
+    "tags": [
+      "microbiome",
+      "bacteria",
+      "human cells",
+      "gut flora",
+      "cell count"
+    ]
+  },
+  {
+    "id": "health-microbiome-probiotics",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "microbiology",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "microbiology",
+    "categoryL3": "microbiome",
+    "statement": "Probiotics are live microorganisms that, when consumed in adequate amounts, confer a health benefit on the host — primarily by supporting gut microbiome diversity and displacing harmful bacteria.",
+    "quizQuestion": "What is the WHO/FAO definition of a probiotic?",
+    "correctAnswer": "Live microorganisms that confer a health benefit on the host when consumed in adequate amounts",
+    "distractors": [
+      "Dietary fibers that feed beneficial gut bacteria",
+      "Antibiotics derived from fermented foods",
+      "Enzymes that break down lactose in the gut",
+      "Dead bacterial cultures used to stimulate immunity",
+      "Vitamins produced naturally by intestinal bacteria",
+      "Synthetic compounds that mimic gut bacteria",
+      "Yeast extracts that reduce intestinal inflammation",
+      "Mineral supplements that support the gut lining"
+    ],
+    "acceptableAnswers": [
+      "Live microorganisms that confer a health benefit on the host when consumed in adequate amounts",
+      "Live microorganisms providing health benefits",
+      "Beneficial live bacteria or yeasts"
+    ],
+    "explanation": "The WHO/FAO 2001 definition of probiotics is: 'live microorganisms which when administered in adequate amounts confer a health benefit on the host.' Common probiotic strains include Lactobacillus and Bifidobacterium species (found in yogurt, kefir) and Saccharomyces boulardii (a yeast). Evidence supports their use for antibiotic-associated diarrhea, IBS, and certain immune functions. Note: probiotics differ from prebiotics (dietary fibers that feed gut bacteria).",
+    "wowFactor": "Eating yogurt is technically a form of targeted bacterial warfare — you're sending billions of reinforcements into your gut to compete against the less beneficial strains already living there.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What are probiotics, by WHO/FAO definition?",
+        "answer": "Live microorganisms that confer a health benefit when consumed in adequate amounts",
+        "distractors": [
+          "Dietary fibers that feed gut bacteria",
+          "Dead bacterial cultures for immunity",
+          "Enzymes that break down lactose"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Lactobacillus and Bifidobacterium are common strains of which type of health supplement?",
+        "answer": "Probiotics",
+        "distractors": [
+          "Prebiotics",
+          "Antibiotics",
+          "Enzymes"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Probiotics are defined as live microorganisms that provide health benefits when consumed in adequate amounts.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Probiotics are ___ microorganisms that confer a health benefit when consumed in adequate amounts.",
+        "answer": "live",
+        "distractors": [
+          "dead",
+          "synthetic",
+          "freeze-dried"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "WHO/FAO 2001",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Probiotic",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a yogurt pot with smiley-faced bacterial icons floating out, arrows pointing toward a happy gut silhouette labeled 'microbiome'.",
+    "tags": [
+      "probiotics",
+      "microbiome",
+      "gut health",
+      "Lactobacillus",
+      "beneficial bacteria"
+    ]
+  },
+  {
+    "id": "health-microbiome-mental-health",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "microbiology",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "microbiology",
+    "categoryL3": "microbiome",
+    "statement": "The gut-brain axis links the gut microbiome to mental health: about 90% of the body's serotonin is produced in the gut, and gut bacteria influence mood, anxiety, and cognition.",
+    "quizQuestion": "What percentage of the body's serotonin is produced in the gut?",
+    "correctAnswer": "About 90%",
+    "distractors": [
+      "About 10%",
+      "About 30%",
+      "About 50%",
+      "About 5%",
+      "About 70%",
+      "About 20%",
+      "About 99%",
+      "About 1%"
+    ],
+    "acceptableAnswers": [
+      "About 90%",
+      "90%",
+      "Approximately 90%",
+      "Around 90 percent"
+    ],
+    "explanation": "Roughly 90-95% of the body's serotonin is synthesized and stored in the gastrointestinal tract — primarily by enterochromaffin cells, stimulated in part by gut microbiota. The gut-brain axis is a bidirectional communication system involving the vagus nerve, immune signaling, and microbially produced neurotransmitter precursors. Research links gut dysbiosis (microbial imbalance) to anxiety, depression, and even cognitive changes, though causation is still being established.",
+    "wowFactor": "The 'happy chemical' is mostly made in your belly, not your brain — which may explain why gut problems so often come paired with anxiety and low mood.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately what fraction of the body's serotonin is produced in the gut?",
+        "answer": "About 90%",
+        "distractors": [
+          "About 10%",
+          "About 50%",
+          "About 30%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The gut-brain axis is a bidirectional communication link primarily involving the vagus nerve and which other system?",
+        "answer": "The gut microbiome",
+        "distractors": [
+          "The pancreas",
+          "The lymphatic system",
+          "The endocrine system"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: About 90% of the body's serotonin is produced in the gut, not the brain.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Approximately ___% of the body's serotonin is produced in the gut, linking the microbiome to mental health.",
+        "answer": "90",
+        "distractors": [
+          "10",
+          "50",
+          "5"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gut%E2%80%93brain_axis",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Mentions mental health — framed scientifically and positively.",
+    "visualDescription": "Pixel art split-screen: intestines glowing with serotonin (golden sparkles) on the left, a brain connected by a glowing vagus nerve highway on the right.",
+    "tags": [
+      "serotonin",
+      "gut-brain axis",
+      "microbiome",
+      "mental health",
+      "neurotransmitters"
+    ]
+  },
+  {
+    "id": "health-anesthesia-ether-day",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medicine_pharmacology",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medicine_pharmacology",
+    "categoryL3": "anesthesia",
+    "statement": "On October 16, 1846 — 'Ether Day' — William Morton gave the first public demonstration of surgical anesthesia using diethyl ether at Massachusetts General Hospital, making painless surgery a reality.",
+    "quizQuestion": "What date is known as 'Ether Day' — the first public demonstration of surgical anesthesia?",
+    "correctAnswer": "October 16, 1846",
+    "distractors": [
+      "March 30, 1842",
+      "November 8, 1895",
+      "December 3, 1967",
+      "January 19, 1839",
+      "September 4, 1882",
+      "July 14, 1854",
+      "February 22, 1900",
+      "April 7, 1853"
+    ],
+    "acceptableAnswers": [
+      "October 16, 1846",
+      "October 16th, 1846",
+      "16 October 1846"
+    ],
+    "explanation": "On October 16, 1846, dentist William T.G. Morton administered ether to patient Edward Gilbert Abbott at Massachusetts General Hospital's surgical amphitheatre (now called the Ether Dome). Surgeon John Collins Warren then removed a neck tumor while Abbott remained unconscious and pain-free. Warren reportedly declared: 'Gentlemen, this is no humbug.' The news spread globally within weeks, transforming surgery. The date is now recognized as 'World Anesthesia Day.'",
+    "wowFactor": "Before Ether Day, surgery meant being held down screaming while wide awake — surgeons were judged on speed, not precision, because patients couldn't survive longer operations without dying of shock.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "On what date did William Morton make the first public demonstration of surgical anesthesia?",
+        "answer": "October 16, 1846",
+        "distractors": [
+          "March 30, 1842",
+          "November 8, 1895",
+          "December 3, 1967"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "William Morton's 1846 demonstration of ether anesthesia took place at which Boston hospital?",
+        "answer": "Massachusetts General Hospital",
+        "distractors": [
+          "Johns Hopkins Hospital",
+          "Brigham and Women's Hospital",
+          "New York Presbyterian Hospital"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: 'Ether Day' on October 16, 1846 was the first public demonstration of surgical anesthesia using diethyl ether.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "On October 16, ___, William Morton publicly demonstrated surgical anesthesia using ether — now called 'Ether Day'.",
+        "answer": "1846",
+        "distractors": [
+          "1842",
+          "1895",
+          "1850"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ether_Day",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Historical surgical context — pre-anesthesia surgery is disturbing but historically important.",
+    "visualDescription": "Pixel art of a Victorian surgical theatre with a patient on a table, a dentist holding a glass ether inhaler, gaslight fixtures, and '1846' on a chalk board.",
+    "tags": [
+      "anesthesia",
+      "Ether Day",
+      "William Morton",
+      "1846",
+      "surgery history"
+    ]
+  },
+  {
+    "id": "health-anesthesia-mechanism",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medicine_pharmacology",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medicine_pharmacology",
+    "categoryL3": "anesthesia",
+    "statement": "General anesthesia works primarily by enhancing inhibitory GABA-A receptor activity and/or blocking excitatory NMDA receptors in the brain, suppressing consciousness and pain perception.",
+    "quizQuestion": "General anesthetics produce unconsciousness primarily by acting on which two types of brain receptors?",
+    "correctAnswer": "GABA-A (enhancing inhibition) and NMDA receptors (blocking excitation)",
+    "distractors": [
+      "Dopamine and serotonin receptors",
+      "Acetylcholine and norepinephrine receptors",
+      "Opioid and cannabinoid receptors",
+      "Beta-adrenergic and muscarinic receptors",
+      "Histamine and adenosine receptors",
+      "Glycine and AMPA receptors",
+      "Insulin and glucagon receptors",
+      "Sigma and kappa receptors"
+    ],
+    "acceptableAnswers": [
+      "GABA-A and NMDA receptors",
+      "GABA receptors and NMDA receptors",
+      "Inhibitory GABA-A and excitatory NMDA receptors"
+    ],
+    "explanation": "The exact molecular mechanism of general anesthesia was poorly understood for over a century. Current evidence shows most general anesthetics work via two main pathways: (1) potentiating GABA-A receptors — increasing the effect of the brain's main inhibitory neurotransmitter GABA, causing neuronal silencing; and (2) blocking NMDA receptors — preventing glutamate-driven excitatory signaling. Propofol, barbiturates, and volatile anesthetics primarily target GABA-A; ketamine primarily blocks NMDA. The net effect is a reversible, dose-controlled loss of consciousness.",
+    "wowFactor": "Despite using anesthesia millions of times per day worldwide, scientists still don't fully understand exactly why it makes you unconscious — it's one of medicine's most commonly used yet least understood procedures.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "General anesthetics mainly produce unconsciousness by acting on which receptors?",
+        "answer": "GABA-A (enhancing inhibition) and NMDA (blocking excitation)",
+        "distractors": [
+          "Opioid and cannabinoid receptors",
+          "Dopamine and serotonin receptors",
+          "Acetylcholine receptors only"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Propofol and barbiturates produce anesthesia primarily by potentiating which inhibitory receptor?",
+        "answer": "GABA-A receptor",
+        "distractors": [
+          "NMDA receptor",
+          "Opioid receptor",
+          "Dopamine receptor"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: General anesthetics work primarily by enhancing GABA-A inhibitory signaling and/or blocking NMDA excitatory signaling in the brain.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "General anesthesia works partly by enhancing ___ receptor activity, increasing the brain's main inhibitory neurotransmitter effect.",
+        "answer": "GABA-A",
+        "distractors": [
+          "NMDA",
+          "dopamine",
+          "serotonin"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "adult",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/General_anaesthetic",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art brain cross-section: green GABA-A receptor channels opening wide on the left, red NMDA receptor channels blocked by blue anesthetic molecules on the right, neural activity lines going quiet.",
+    "tags": [
+      "anesthesia",
+      "GABA",
+      "NMDA",
+      "mechanism",
+      "pharmacology"
+    ]
+  },
+  {
+    "id": "health-anesthesia-crawford-long",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "medicine_pharmacology",
+    "categoryL1": "Human Body & Health",
+    "categoryL2": "medicine_pharmacology",
+    "categoryL3": "anesthesia",
+    "statement": "Crawford Long used ether anesthesia for surgery as early as March 30, 1842 — four years before 'Ether Day' — but did not publish his findings, allowing William Morton to gain historical credit.",
+    "quizQuestion": "Who used ether anesthesia for surgery in 1842 — four years before Morton's famous public demonstration — but lost credit by not publishing?",
+    "correctAnswer": "Crawford Long",
+    "distractors": [
+      "William Morton",
+      "Horace Wells",
+      "Charles Jackson",
+      "John Snow",
+      "James Young Simpson",
+      "Joseph Priestley",
+      "Humphry Davy",
+      "Henry Hickman"
+    ],
+    "acceptableAnswers": [
+      "Crawford Long",
+      "Dr. Crawford Long",
+      "Crawford Williamson Long"
+    ],
+    "explanation": "On March 30, 1842, Georgia physician Crawford Williamson Long removed a neck cyst from James M. Venable using ether anesthesia — the first recorded use of ether in surgery. However, Long was cautious and didn't publish his results until 1849, after Ether Day had already made Morton famous. The priority dispute over anesthesia credit became bitter and legally contested. Long is now recognized as an important pioneer: his birth date, November 1, is National Anesthesiologist Day in the US.",
+    "wowFactor": "Crawford Long quietly changed surgery four years before Morton's famous debut — and then simply didn't tell anyone. History nearly forgot him entirely because of a stack of unpublished papers.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which American physician first used ether in surgery in 1842 but failed to publish his findings?",
+        "answer": "Crawford Long",
+        "distractors": [
+          "Horace Wells",
+          "William Morton",
+          "Charles Jackson"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Crawford Long used ether in surgery on March 30, 1842 — in which US state did this take place?",
+        "answer": "Georgia",
+        "distractors": [
+          "Massachusetts",
+          "New York",
+          "Virginia"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Crawford Long used ether for surgery in 1842, four years before Morton's public demonstration, but did not publish his results.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Crawford ___ first used ether anesthesia in surgery in 1842 but lost historical credit by not publishing his results.",
+        "answer": "Long",
+        "distractors": [
+          "Morton",
+          "Wells",
+          "Jackson"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Crawford_Long",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a rural 1840s doctor's office, a bearded physician holding an ether-soaked cloth over a patient, a calendar showing March 30 1842 and a blank stack of papers on the desk.",
+    "tags": [
+      "Crawford Long",
+      "anesthesia",
+      "ether",
+      "1842",
+      "medical history"
+    ]
   }
 ]

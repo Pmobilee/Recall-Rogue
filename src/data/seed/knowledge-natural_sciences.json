@@ -10647,5 +10647,1583 @@
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "science-marie-curie-radioactivity-discovery",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "radioactivity",
+    "statement": "Marie Curie coined the term 'radioactivity' and was the first person to win two Nobel Prizes, in Physics (1903) and Chemistry (1911).",
+    "quizQuestion": "Who was the first person to win Nobel Prizes in two different sciences?",
+    "correctAnswer": "Marie Curie",
+    "distractors": [
+      "Albert Einstein",
+      "Linus Pauling",
+      "Ernest Rutherford",
+      "Max Planck",
+      "Niels Bohr",
+      "Henri Becquerel",
+      "Wilhelm Röntgen",
+      "Pierre Curie"
+    ],
+    "acceptableAnswers": [
+      "Marie Curie",
+      "Marie Sklodowska-Curie",
+      "Madame Curie"
+    ],
+    "explanation": "Marie Curie won the 1903 Nobel Prize in Physics (shared with her husband Pierre and Henri Becquerel) for research on spontaneous radiation, and the 1911 Nobel Prize in Chemistry for discovering polonium and radium. She remains the only person to have won Nobel Prizes in two different sciences.",
+    "wowFactor": "Marie Curie's personal notebooks are still so radioactive that they're stored in lead-lined boxes in Paris — and researchers must sign a waiver before handling them.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who was the first person to win Nobel Prizes in two different sciences?",
+        "answer": "Marie Curie",
+        "distractors": [
+          "Albert Einstein",
+          "Ernest Rutherford",
+          "Linus Pauling"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In what year did Marie Curie win her Nobel Prize in Chemistry?",
+        "answer": "1911",
+        "distractors": [
+          "1903",
+          "1898",
+          "1919"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Marie Curie coined the term 'radioactivity'.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Marie Curie won Nobel Prizes in Physics and ___.",
+        "answer": "Chemistry",
+        "distractors": [
+          "Biology",
+          "Medicine",
+          "Mathematics"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Marie_Curie",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art portrait of a woman scientist in a late 1800s laboratory, holding a glowing vial with faint green radiation emanating from it.",
+    "tags": [
+      "Marie Curie",
+      "radioactivity",
+      "Nobel Prize",
+      "physics",
+      "chemistry",
+      "women in science"
+    ]
+  },
+  {
+    "id": "science-radioactivity-half-life",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "radioactivity",
+    "statement": "Half-life is the time required for exactly half of the radioactive atoms in a sample to decay. It is constant for any given isotope.",
+    "quizQuestion": "What does the term 'half-life' describe in nuclear physics?",
+    "correctAnswer": "The time for half of a radioactive sample to decay",
+    "distractors": [
+      "The time for all radioactive atoms to decay",
+      "The time for an atom to split in two",
+      "The energy released by one decay event",
+      "The distance radiation travels before losing half its energy",
+      "Half the lifespan of a radioactive element",
+      "The time for radiation to halve in strength",
+      "The period between two nuclear reactions",
+      "The ratio of stable to unstable isotopes"
+    ],
+    "acceptableAnswers": [
+      "The time for half of a radioactive sample to decay",
+      "Time for half the radioactive atoms to decay",
+      "Time taken for half of a radioactive substance to decay"
+    ],
+    "explanation": "Half-life is a statistical concept: because radioactive decay is random, you can't predict when any single atom will decay. But averaged over many atoms, exactly half will decay in one half-life period. This constant rate means scientists can use half-lives to date ancient materials with radiocarbon dating.",
+    "wowFactor": "Carbon-14 has a half-life of about 5,730 years — letting archaeologists date organic materials up to roughly 50,000 years old. But uranium-238's half-life is 4.5 billion years, nearly the age of the Earth itself.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What does 'half-life' mean in nuclear physics?",
+        "answer": "The time for half of a radioactive sample to decay",
+        "distractors": [
+          "The time for all radioactive atoms to decay",
+          "The energy released by one decay event",
+          "The distance radiation travels before halving"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Carbon-14 is used in radiocarbon dating because of which property?",
+        "answer": "Its known half-life of ~5,730 years",
+        "distractors": [
+          "Its chemical reactivity",
+          "Its abundance in the atmosphere",
+          "Its ability to emit gamma rays"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The half-life of a radioactive isotope is constant and does not change with temperature.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "After two half-lives, ___ of the original radioactive sample remains.",
+        "answer": "25%",
+        "distractors": [
+          "50%",
+          "12.5%",
+          "75%"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Half-life",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel art bar chart showing a sample halving over equal time steps, with glowing atoms fading from green to dim grey.",
+    "tags": [
+      "half-life",
+      "radioactive decay",
+      "nuclear physics",
+      "carbon dating",
+      "isotopes"
+    ]
+  },
+  {
+    "id": "science-nuclear-decay-types",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "radioactivity",
+    "statement": "The three main types of nuclear radiation are alpha particles (helium nuclei), beta particles (electrons or positrons), and gamma rays (high-energy photons).",
+    "quizQuestion": "Which type of nuclear radiation consists of high-energy photons with no mass or charge?",
+    "correctAnswer": "Gamma rays",
+    "distractors": [
+      "Alpha particles",
+      "Beta particles",
+      "Neutron radiation",
+      "X-rays",
+      "Positrons",
+      "Cosmic rays",
+      "Delta radiation"
+    ],
+    "acceptableAnswers": [
+      "Gamma rays",
+      "Gamma radiation",
+      "Gamma"
+    ],
+    "explanation": "Alpha particles (2 protons + 2 neutrons) are the most massive and least penetrating — stopped by a sheet of paper. Beta particles (electrons or positrons) are faster and need aluminum to stop them. Gamma rays are electromagnetic radiation with no mass or charge, the most penetrating, requiring lead or thick concrete to absorb.",
+    "wowFactor": "Alpha particles are so large they can't penetrate your skin — but if you inhale or swallow an alpha-emitting substance like radon gas, the damage is devastating because the particles fire directly into your lung cells.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which type of nuclear radiation has no mass and no charge?",
+        "answer": "Gamma rays",
+        "distractors": [
+          "Alpha particles",
+          "Beta particles",
+          "Neutron radiation"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Alpha particles are equivalent to the nucleus of which element?",
+        "answer": "Helium",
+        "distractors": [
+          "Hydrogen",
+          "Lithium",
+          "Beryllium"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Alpha radiation is the most penetrating type of nuclear radiation.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The three main types of nuclear radiation are alpha, beta, and ___.",
+        "answer": "gamma",
+        "distractors": [
+          "delta",
+          "omega",
+          "sigma"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Radioactive_decay",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art diagram showing three radiation types emanating from a glowing nucleus — a fat slow alpha, a thin fast beta electron, and a wavy gamma ray cutting through shields.",
+    "tags": [
+      "alpha radiation",
+      "beta radiation",
+      "gamma rays",
+      "nuclear decay",
+      "radioactivity",
+      "physics"
+    ]
+  },
+  {
+    "id": "science-sound-speed-media",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "sound_waves",
+    "statement": "Sound travels faster through solids than liquids, and faster through liquids than gases, because particles in solids are closer together and transmit vibrations more efficiently.",
+    "quizQuestion": "In which medium does sound travel fastest?",
+    "correctAnswer": "Solids",
+    "distractors": [
+      "Gases",
+      "Liquids",
+      "Vacuum",
+      "Plasma",
+      "Steam",
+      "Air",
+      "Water"
+    ],
+    "acceptableAnswers": [
+      "Solids",
+      "Solid materials",
+      "Dense solids"
+    ],
+    "explanation": "Sound is a mechanical wave that requires a medium to travel. In air (at 20°C) sound moves at about 343 m/s. In water it travels at roughly 1,480 m/s. In steel it reaches around 5,960 m/s. The closer together the particles, the faster the vibration energy is passed along.",
+    "wowFactor": "Whales can communicate across entire ocean basins — thousands of kilometres — because sound travels so efficiently through seawater that a blue whale's low-frequency call can be detected 1,600 km away.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which medium does sound travel fastest?",
+        "answer": "Solids",
+        "distractors": [
+          "Gases",
+          "Liquids",
+          "Vacuum"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Approximately how fast does sound travel in air at room temperature?",
+        "answer": "343 m/s",
+        "distractors": [
+          "100 m/s",
+          "1,480 m/s",
+          "1,000 m/s"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Sound cannot travel through a vacuum.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Sound travels ___ through solids than through liquids.",
+        "answer": "faster",
+        "distractors": [
+          "slower",
+          "the same speed",
+          "more quietly"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Speed_of_sound",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art showing sound waves radiating differently through three panels — gas (sparse particles, wide waves), liquid (closer particles), and solid (tightly packed particles, tight rapid waves).",
+    "tags": [
+      "sound",
+      "speed of sound",
+      "waves",
+      "physics",
+      "acoustics",
+      "solids liquids gases"
+    ]
+  },
+  {
+    "id": "science-doppler-effect",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "sound_waves",
+    "statement": "The Doppler effect is the change in frequency of a wave as its source moves toward or away from an observer — causing a higher pitch when approaching and lower pitch when receding.",
+    "quizQuestion": "What phenomenon explains why a siren sounds higher-pitched as an ambulance approaches and lower as it drives away?",
+    "correctAnswer": "The Doppler effect",
+    "distractors": [
+      "Resonance",
+      "Interference",
+      "Diffraction",
+      "Refraction",
+      "The Bernoulli effect",
+      "Wave attenuation",
+      "Sonic compression"
+    ],
+    "acceptableAnswers": [
+      "The Doppler effect",
+      "Doppler effect",
+      "Doppler shift"
+    ],
+    "explanation": "As a sound source approaches, successive wave compressions are crowded together, raising the detected frequency (higher pitch). As it moves away, compressions spread out, lowering the frequency. Named after Austrian physicist Christian Doppler (1842), the effect also applies to light — astronomers use redshift/blueshift of starlight to measure how fast galaxies are moving.",
+    "wowFactor": "The Doppler effect in light is how astronomers know the universe is expanding — distant galaxies' light is redshifted (stretched to longer wavelengths), meaning they're all racing away from us.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What causes an ambulance siren to sound higher-pitched as it approaches?",
+        "answer": "The Doppler effect",
+        "distractors": [
+          "Resonance",
+          "Diffraction",
+          "Wave interference"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Doppler effect applied to light from receding galaxies produces what observable shift?",
+        "answer": "Redshift",
+        "distractors": [
+          "Blueshift",
+          "Greenshift",
+          "Whiteshift"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Doppler effect applies to light waves as well as sound waves.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "As a sound source moves away from you, the pitch you hear becomes ___.",
+        "answer": "lower",
+        "distractors": [
+          "higher",
+          "the same",
+          "silent"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Doppler_effect",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of an ambulance moving right with crowded sound waves in front and stretched waves behind, observer on the right looking surprised.",
+    "tags": [
+      "Doppler effect",
+      "sound",
+      "frequency",
+      "waves",
+      "acoustics",
+      "redshift",
+      "physics"
+    ]
+  },
+  {
+    "id": "science-decibel-scale",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "sound_waves",
+    "statement": "The decibel (dB) scale measures sound intensity logarithmically — each 10 dB increase represents a tenfold increase in sound power, and roughly a doubling of perceived loudness.",
+    "quizQuestion": "How much does sound power increase with every 10 decibels on the dB scale?",
+    "correctAnswer": "10 times (tenfold)",
+    "distractors": [
+      "2 times",
+      "100 times",
+      "5 times",
+      "20 times",
+      "Linearly by 10 units",
+      "3 times",
+      "50 times"
+    ],
+    "acceptableAnswers": [
+      "10 times (tenfold)",
+      "Tenfold",
+      "10x",
+      "Ten times"
+    ],
+    "explanation": "The decibel scale is logarithmic: 0 dB is the threshold of human hearing, 60 dB is normal conversation, 120 dB is a jet engine at close range. Because it's logarithmic, 20 dB is 100 times more powerful than 0 dB, and 30 dB is 1,000 times more powerful. This matches how human hearing perceives loudness.",
+    "wowFactor": "A blue whale's call at 188 dB is the loudest sound produced by any animal — so powerful that if you were underwater nearby, it could rupture your eardrums and internal organs.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Each 10 dB increase represents how much change in sound power?",
+        "answer": "10 times (tenfold)",
+        "distractors": [
+          "2 times",
+          "100 times",
+          "5 times"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Approximately how many decibels is normal conversation?",
+        "answer": "60 dB",
+        "distractors": [
+          "30 dB",
+          "90 dB",
+          "120 dB"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The decibel scale is logarithmic, not linear.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Prolonged exposure to sounds above ___ dB can cause permanent hearing damage.",
+        "answer": "85",
+        "distractors": [
+          "60",
+          "100",
+          "70"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Decibel",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art logarithmic bar chart from whisper to rocket, each bar jumping dramatically in height, with ears covering at the loud end.",
+    "tags": [
+      "decibel",
+      "sound intensity",
+      "acoustics",
+      "logarithmic scale",
+      "hearing",
+      "physics"
+    ]
+  },
+  {
+    "id": "science-magnetism-lodestone",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "magnetism",
+    "statement": "Lodestone is a naturally occurring magnetic rock made of magnetite (Fe₃O₄), and was the first natural magnet discovered — used in the earliest compasses around 200 BCE in China.",
+    "quizQuestion": "What naturally occurring magnetic mineral was used to make the first compasses?",
+    "correctAnswer": "Lodestone (magnetite)",
+    "distractors": [
+      "Hematite",
+      "Pyrite",
+      "Galena",
+      "Ferrite",
+      "Iron ore",
+      "Cobalt ore",
+      "Nickel ore"
+    ],
+    "acceptableAnswers": [
+      "Lodestone (magnetite)",
+      "Lodestone",
+      "Magnetite",
+      "Fe3O4"
+    ],
+    "explanation": "Lodestone is a piece of the mineral magnetite (Fe₃O₄) that is naturally magnetized. Scientists believe lodestones become magnetized when struck by lightning while in the presence of Earth's magnetic field. Ancient Chinese navigators suspended lodestones on silk threads to make the first compasses around 200 BCE.",
+    "wowFactor": "Lodestones can magnetize other iron objects just by touching them — ancient people thought they were alive or magical. Thales of Miletus wrote that magnets had souls because they could move iron without touching it.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What naturally magnetized rock was used in the earliest compasses?",
+        "answer": "Lodestone (magnetite)",
+        "distractors": [
+          "Hematite",
+          "Pyrite",
+          "Galena"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Where were the first compasses using lodestone developed, around 200 BCE?",
+        "answer": "China",
+        "distractors": [
+          "Egypt",
+          "Greece",
+          "Rome"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Lodestone is a naturally occurring magnetic rock.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Lodestone is a natural magnet composed of the mineral ___.",
+        "answer": "magnetite",
+        "distractors": [
+          "hematite",
+          "ferrite",
+          "cobaltite"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lodestone",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art dark grey rock with visible magnetic field lines glowing blue around it, a primitive compass needle aligned to it.",
+    "tags": [
+      "lodestone",
+      "magnetite",
+      "magnets",
+      "compass",
+      "history of science",
+      "natural magnets"
+    ]
+  },
+  {
+    "id": "science-electromagnetic-induction",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "magnetism",
+    "statement": "Electromagnetic induction, discovered by Michael Faraday in 1831, is the process by which a changing magnetic field generates an electric current in a nearby conductor.",
+    "quizQuestion": "Who discovered that a changing magnetic field can generate an electric current?",
+    "correctAnswer": "Michael Faraday",
+    "distractors": [
+      "James Clerk Maxwell",
+      "Nikola Tesla",
+      "Thomas Edison",
+      "Heinrich Hertz",
+      "André-Marie Ampère",
+      "Alessandro Volta",
+      "Georg Ohm"
+    ],
+    "acceptableAnswers": [
+      "Michael Faraday",
+      "Faraday"
+    ],
+    "explanation": "Faraday's discovery in 1831 that a moving magnet near a coil of wire generates an electric current became the foundation for all electrical generators and transformers. James Clerk Maxwell later provided the mathematical framework in his famous equations. This principle still powers virtually every electrical generator on Earth today.",
+    "wowFactor": "Every time you plug in your phone charger, electromagnetic induction is at work — the power plant generating your electricity is just a massive coil spinning inside a magnet, exactly as Faraday demonstrated with a simple wire and magnet in 1831.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who discovered electromagnetic induction in 1831?",
+        "answer": "Michael Faraday",
+        "distractors": [
+          "James Clerk Maxwell",
+          "Nikola Tesla",
+          "André-Marie Ampère"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Electromagnetic induction is the basis for which everyday devices?",
+        "answer": "Electrical generators and transformers",
+        "distractors": [
+          "Batteries and capacitors",
+          "Solar panels and LEDs",
+          "Resistors and transistors"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Electromagnetic induction requires a changing magnetic field to generate current.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Faraday's discovery that a changing ___ field generates electricity is called electromagnetic induction.",
+        "answer": "magnetic",
+        "distractors": [
+          "electric",
+          "gravitational",
+          "thermal"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Electromagnetic_induction",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a magnet plunging into a copper coil with sparks of electricity jumping out, a galvanometer needle swinging on the right.",
+    "tags": [
+      "electromagnetic induction",
+      "Faraday",
+      "magnetism",
+      "electricity",
+      "generators",
+      "physics"
+    ]
+  },
+  {
+    "id": "science-mri-magnetism",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "magnetism",
+    "statement": "MRI (Magnetic Resonance Imaging) uses powerful magnetic fields and radio waves to align and then perturb hydrogen protons in the body, generating detailed images of soft tissue.",
+    "quizQuestion": "What does MRI primarily use to image the inside of the human body?",
+    "correctAnswer": "Magnetic fields and radio waves",
+    "distractors": [
+      "X-rays and radiation",
+      "Sound waves and gel",
+      "Infrared light and heat sensors",
+      "Gamma rays and a detector ring",
+      "Visible light and fiber optics",
+      "Electric current and electrodes",
+      "Ultrasound and microwaves"
+    ],
+    "acceptableAnswers": [
+      "Magnetic fields and radio waves",
+      "Strong magnets and radio waves",
+      "Nuclear magnetic resonance"
+    ],
+    "explanation": "MRI exploits the fact that hydrogen atoms (abundant in the body's water) have nuclei that act like tiny magnets. A powerful external magnetic field aligns them; a pulse of radio waves then knocks them out of alignment. As they realign, they emit signals that computers process into detailed images. Unlike X-rays, MRI involves no ionizing radiation.",
+    "wowFactor": "The magnets in a clinical MRI machine are so powerful they can accelerate a steel oxygen tank across a room like a missile — which is why ferromagnetic objects are strictly banned from MRI suites.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What physical principles does MRI use to create body images?",
+        "answer": "Magnetic fields and radio waves",
+        "distractors": [
+          "X-rays and radiation",
+          "Sound waves and gel",
+          "Gamma rays and a detector ring"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which element's protons does MRI primarily detect in body tissue?",
+        "answer": "Hydrogen",
+        "distractors": [
+          "Carbon",
+          "Oxygen",
+          "Nitrogen"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: MRI scans expose patients to ionizing radiation.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "MRI stands for Magnetic ___ Imaging.",
+        "answer": "Resonance",
+        "distractors": [
+          "Radiation",
+          "Reflection",
+          "Refraction"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Magnetic_resonance_imaging",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art cross-section of a human torso lit up in a glowing MRI tube, with magnetic field lines and radio wave arcs visible around the scanner.",
+    "tags": [
+      "MRI",
+      "magnetism",
+      "medical imaging",
+      "hydrogen",
+      "radio waves",
+      "soft tissue"
+    ]
+  },
+  {
+    "id": "science-ocean-covers-earth",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "earth_environment",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "earth_environment",
+    "categoryL3": "oceanography",
+    "statement": "Oceans cover approximately 71% of Earth's surface and contain about 97% of all the water on the planet.",
+    "quizQuestion": "Approximately what percentage of Earth's surface is covered by ocean?",
+    "correctAnswer": "71%",
+    "distractors": [
+      "50%",
+      "60%",
+      "80%",
+      "90%",
+      "65%",
+      "55%",
+      "75%"
+    ],
+    "acceptableAnswers": [
+      "71%",
+      "About 71 percent",
+      "Roughly 71%",
+      "70%"
+    ],
+    "explanation": "The five oceans (Pacific, Atlantic, Indian, Southern, and Arctic) cover about 361 million square kilometers, or 71% of Earth's surface. They contain approximately 1.335 billion cubic kilometres of water — about 97% of all surface water on Earth. The Pacific alone covers more area than all of Earth's landmasses combined.",
+    "wowFactor": "The Pacific Ocean is so vast that all of Earth's continents could fit inside it with room to spare — it covers more area (165 million km²) than all land on the planet (148 million km²) combined.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What fraction of Earth's surface is covered by ocean?",
+        "answer": "71%",
+        "distractors": [
+          "50%",
+          "60%",
+          "80%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What percentage of Earth's water is found in the oceans?",
+        "answer": "About 97%",
+        "distractors": [
+          "About 50%",
+          "About 75%",
+          "About 90%"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Pacific Ocean covers more area than all Earth's continents combined.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Earth has ___ named oceans.",
+        "answer": "five",
+        "distractors": [
+          "four",
+          "three",
+          "six"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ocean",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art globe with deep blue oceans dominating most of the surface and small green-brown land masses at the edges.",
+    "tags": [
+      "ocean",
+      "Earth",
+      "geography",
+      "water",
+      "Pacific",
+      "surface coverage"
+    ]
+  },
+  {
+    "id": "science-ocean-deep-sea-trenches",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "earth_environment",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "earth_environment",
+    "categoryL3": "oceanography",
+    "statement": "The Mariana Trench in the western Pacific Ocean is the deepest point on Earth, reaching approximately 11,034 metres (36,201 feet) at the Challenger Deep.",
+    "quizQuestion": "What is the name of the deepest point in Earth's oceans?",
+    "correctAnswer": "Challenger Deep (Mariana Trench)",
+    "distractors": [
+      "Puerto Rico Trench",
+      "Java Trench",
+      "Tonga Trench",
+      "Philippine Trench",
+      "Kermadec Trench",
+      "Izu-Ogasawara Trench",
+      "South Sandwich Trench"
+    ],
+    "acceptableAnswers": [
+      "Challenger Deep (Mariana Trench)",
+      "Challenger Deep",
+      "The Mariana Trench",
+      "Mariana Trench"
+    ],
+    "explanation": "The Challenger Deep, located at the southern end of the Mariana Trench, is approximately 11,034 m deep — nearly 2,000 m deeper than Mount Everest is tall. Pressure there is about 1,086 times atmospheric pressure at sea level. Despite this, microbial life and even small crustaceans (amphipods) have been found there.",
+    "wowFactor": "If you dropped Mount Everest into the Challenger Deep, its peak would still be more than 2 kilometres underwater. The pressure at the bottom is so intense it would crush a standard submarine like a tin can.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the deepest known point on Earth?",
+        "answer": "Challenger Deep (Mariana Trench)",
+        "distractors": [
+          "Puerto Rico Trench",
+          "Tonga Trench",
+          "Java Trench"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Approximately how deep is the Challenger Deep?",
+        "answer": "About 11,000 metres",
+        "distractors": [
+          "About 5,000 metres",
+          "About 8,000 metres",
+          "About 15,000 metres"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Mariana Trench is located in the Pacific Ocean.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The deepest point in the ocean is called ___ Deep.",
+        "answer": "Challenger",
+        "distractors": [
+          "Mariana",
+          "Pacific",
+          "Abyssal"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Challenger_Deep",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art cross-section of ocean with a deep V-shaped trench plunging into blackness, tiny submarine dwarfed by the depth, bioluminescent creatures glowing below.",
+    "tags": [
+      "Mariana Trench",
+      "Challenger Deep",
+      "deepest ocean",
+      "Pacific",
+      "oceanography",
+      "geography"
+    ]
+  },
+  {
+    "id": "science-thermohaline-circulation",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "earth_environment",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "earth_environment",
+    "categoryL3": "oceanography",
+    "statement": "Thermohaline circulation is the global ocean conveyor belt driven by differences in water temperature and salinity, redistributing heat around the planet over a cycle of ~1,000 years.",
+    "quizQuestion": "What drives thermohaline ocean circulation?",
+    "correctAnswer": "Differences in water temperature and salinity",
+    "distractors": [
+      "Wind patterns only",
+      "Earth's rotation alone",
+      "Tidal forces from the Moon",
+      "Underwater volcanic activity",
+      "Solar heating of the surface",
+      "Pressure differences at depth",
+      "Magnetic field gradients"
+    ],
+    "acceptableAnswers": [
+      "Differences in water temperature and salinity",
+      "Temperature and salt concentration",
+      "Density differences caused by temperature and salinity"
+    ],
+    "explanation": "Cold, salty water is denser and sinks in polar regions (e.g., the North Atlantic), while warmer, less salty surface water flows in to replace it. This creates a slow conveyor belt that carries heat from the tropics to higher latitudes. It regulates Europe's mild climate; if it shuts down (as feared with climate change), northern Europe could become dramatically colder.",
+    "wowFactor": "Water entering this conveyor belt near Greenland today won't surface again until roughly the year 3000 — a single trip around the global ocean takes about 1,000 years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What two factors drive thermohaline ocean circulation?",
+        "answer": "Differences in water temperature and salinity",
+        "distractors": [
+          "Wind patterns and tides",
+          "Earth's rotation and gravity",
+          "Volcanic activity and pressure"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Approximately how long does one full cycle of the thermohaline conveyor belt take?",
+        "answer": "About 1,000 years",
+        "distractors": [
+          "About 100 years",
+          "About 10,000 years",
+          "About 50 years"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Thermohaline circulation helps moderate the climate of Europe by transporting heat northward.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The word 'thermohaline' comes from Greek roots meaning heat and ___.",
+        "answer": "salt",
+        "distractors": [
+          "water",
+          "current",
+          "depth"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Thermohaline_circulation",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art world map with a glowing ocean current ribbon snaking around all continents, arrows showing deep cold flow in blue and warm surface flow in orange.",
+    "tags": [
+      "thermohaline circulation",
+      "ocean conveyor belt",
+      "climate",
+      "salinity",
+      "oceanography",
+      "deep currents"
+    ]
+  },
+  {
+    "id": "science-fossils-oldest",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "earth_environment",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "earth_environment",
+    "categoryL3": "paleontology",
+    "statement": "The oldest confirmed fossils are stromatolites — layered mounds of cyanobacteria — dating to approximately 3.5 billion years ago, found in the Pilbara region of Western Australia.",
+    "quizQuestion": "How old are the oldest known fossils on Earth?",
+    "correctAnswer": "About 3.5 billion years old",
+    "distractors": [
+      "About 65 million years old",
+      "About 500 million years old",
+      "About 1 billion years old",
+      "About 2 billion years old",
+      "About 4.5 billion years old",
+      "About 250 million years old",
+      "About 10 million years old"
+    ],
+    "acceptableAnswers": [
+      "About 3.5 billion years old",
+      "3.5 billion years",
+      "~3.5 billion years ago",
+      "3,500 million years"
+    ],
+    "explanation": "Stromatolites are layered rock structures formed by communities of cyanobacteria that trap and bind sediment. The Apex Chert in Western Australia contains microfossil structures dated to 3.5 billion years. These early photosynthetic organisms were responsible for the 'Great Oxidation Event' — flooding Earth's atmosphere with oxygen ~2.4 billion years ago.",
+    "wowFactor": "Stromatolites are still alive today in Shark Bay, Western Australia — living fossils that look exactly like their 3.5-billion-year-old ancestors. You can walk among creatures that have survived virtually unchanged since before animals existed.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How old are the oldest known fossils on Earth?",
+        "answer": "About 3.5 billion years old",
+        "distractors": [
+          "About 500 million years old",
+          "About 1 billion years old",
+          "About 65 million years old"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What type of organism formed the oldest known fossils (stromatolites)?",
+        "answer": "Cyanobacteria",
+        "distractors": [
+          "Algae",
+          "Fungi",
+          "Archaea"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Living stromatolites can still be found today in Australia.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The oldest fossils, called ___, are found in Western Australia.",
+        "answer": "stromatolites",
+        "distractors": [
+          "trilobites",
+          "ammonites",
+          "crinoids"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Stromatolite",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art layered dome-shaped mounds in shallow teal water, with tiny microbial filaments visible in the top layer and a glowing '3.5 billion years' timestamp floating above.",
+    "tags": [
+      "fossils",
+      "stromatolites",
+      "cyanobacteria",
+      "paleontology",
+      "oldest life",
+      "Australia",
+      "Precambrian"
+    ]
+  },
+  {
+    "id": "science-amber-preservation",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "earth_environment",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "earth_environment",
+    "categoryL3": "paleontology",
+    "statement": "Amber is fossilized tree resin that can preserve ancient organisms — including insects, spiders, and even small vertebrates — in extraordinary detail for tens of millions of years.",
+    "quizQuestion": "What is amber in the context of fossil preservation?",
+    "correctAnswer": "Fossilized tree resin that entombs ancient organisms",
+    "distractors": [
+      "Compressed volcanic ash",
+      "Ancient hardened mud",
+      "Crystallized plant sap turned to quartz",
+      "Solidified ocean sediment",
+      "Petrified wood resin mixed with minerals",
+      "Ancient salt deposits trapping organisms",
+      "Hardened lake bed sediment"
+    ],
+    "acceptableAnswers": [
+      "Fossilized tree resin that entombs ancient organisms",
+      "Fossilized tree resin",
+      "Hardened ancient tree resin"
+    ],
+    "explanation": "Resin from trees can trap insects, spiders, pollen, feathers, and even small lizards. Once buried, resin undergoes polymerization over millions of years to form amber. Because it encases organisms in an anoxic (oxygen-free) environment, soft tissues, iridescent colors, and microscopic structures can be preserved with almost unparalleled fidelity. The oldest amber with inclusions is about 230 million years old (Triassic).",
+    "wowFactor": "In 2016, scientists found a dinosaur tail — complete with feathers and soft tissue — preserved in amber from Myanmar, approximately 99 million years old. It's the most detailed soft-tissue dinosaur specimen ever discovered.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What substance is amber made from?",
+        "answer": "Fossilized tree resin",
+        "distractors": [
+          "Compressed volcanic ash",
+          "Hardened lake sediment",
+          "Ancient crystallized sap turned quartz"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Why does amber preserve organisms so exceptionally well?",
+        "answer": "It encases them in an oxygen-free environment",
+        "distractors": [
+          "It rapidly freezes them",
+          "It mineralizes them instantly",
+          "It dehydrates them completely"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Amber can preserve soft tissues and colors of ancient organisms.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The oldest amber with trapped organisms dates to the ___ period.",
+        "answer": "Triassic",
+        "distractors": [
+          "Jurassic",
+          "Cretaceous",
+          "Permian"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Amber",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art golden amber chunk with a perfectly preserved insect visible inside, glowing warmly against a dark background.",
+    "tags": [
+      "amber",
+      "fossils",
+      "preservation",
+      "tree resin",
+      "paleontology",
+      "insects",
+      "dinosaurs"
+    ]
+  },
+  {
+    "id": "science-index-fossils",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "earth_environment",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "earth_environment",
+    "categoryL3": "paleontology",
+    "statement": "Index fossils are remains of organisms that lived during a specific, well-defined time period and are used to date and correlate rock layers around the world.",
+    "quizQuestion": "What are index fossils used for in geology?",
+    "correctAnswer": "Dating and correlating rock layers",
+    "distractors": [
+      "Identifying ancient climates only",
+      "Locating oil and gas deposits",
+      "Measuring prehistoric ocean temperatures",
+      "Determining ancient atmospheric composition",
+      "Mapping ancient coastlines",
+      "Estimating extinct species population sizes",
+      "Identifying meteorite impact sites"
+    ],
+    "acceptableAnswers": [
+      "Dating and correlating rock layers",
+      "Determining the age of rock strata",
+      "Correlating geological strata across regions"
+    ],
+    "explanation": "A good index fossil comes from a species that: (1) had a wide geographic range, (2) existed for a relatively short, well-defined time span, and (3) is easily recognizable. Trilobites, ammonites, and graptolites are classic index fossils. When geologists find the same index fossil in rock layers on different continents, they can confidently say those layers formed at the same time.",
+    "wowFactor": "Ammonite fossils are so reliable as index fossils that geologists can match a rock layer in England with one in South Africa within a few million years of accuracy — just from a common shell shape found in both.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the primary use of index fossils in geology?",
+        "answer": "Dating and correlating rock layers",
+        "distractors": [
+          "Identifying ancient climates",
+          "Locating oil deposits",
+          "Mapping ancient coastlines"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which of these is an example of a classic index fossil?",
+        "answer": "Ammonite",
+        "distractors": [
+          "T. rex tooth",
+          "Mammoth tusk",
+          "Coelacanth scale"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: A good index fossil comes from a species that existed for a long, poorly-defined time period.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Index fossils must have had a ___ geographic range to be useful for global correlation.",
+        "answer": "wide",
+        "distractors": [
+          "narrow",
+          "local",
+          "regional"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Index_fossil",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art split-screen of two distant rock cliffs showing identical spiral ammonite fossils in matching strata layers, connected by a glowing timeline arrow.",
+    "tags": [
+      "index fossils",
+      "ammonites",
+      "trilobites",
+      "stratigraphy",
+      "geology",
+      "paleontology",
+      "rock dating"
+    ]
+  },
+  {
+    "id": "science-hydrogen-most-abundant",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "chemistry_elements",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "chemistry_elements",
+    "categoryL3": "chemical_elements",
+    "statement": "Hydrogen is the most abundant element in the universe, making up about 75% of all normal matter by mass and about 90% by number of atoms.",
+    "quizQuestion": "Which element is the most abundant in the universe?",
+    "correctAnswer": "Hydrogen",
+    "distractors": [
+      "Helium",
+      "Oxygen",
+      "Carbon",
+      "Nitrogen",
+      "Iron",
+      "Silicon",
+      "Neon"
+    ],
+    "acceptableAnswers": [
+      "Hydrogen",
+      "H",
+      "Element 1"
+    ],
+    "explanation": "Hydrogen (atomic number 1) is the lightest and most abundant element, formed in the first minutes after the Big Bang. Stars are primarily hydrogen fuel — the Sun is about 71% hydrogen by mass. On Earth, hydrogen is mostly found bound to oxygen in water (H₂O). Its fusion into helium powers all main-sequence stars.",
+    "wowFactor": "Every second, the Sun converts about 600 million tonnes of hydrogen into helium through nuclear fusion — releasing energy equivalent to 4 million nuclear bomb explosions per second. And it has enough hydrogen fuel to keep doing this for another 5 billion years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which is the most abundant element in the universe?",
+        "answer": "Hydrogen",
+        "distractors": [
+          "Helium",
+          "Oxygen",
+          "Carbon"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Approximately what percentage of the universe's normal matter is hydrogen by mass?",
+        "answer": "About 75%",
+        "distractors": [
+          "About 25%",
+          "About 50%",
+          "About 90%"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Hydrogen is the lightest element on the periodic table.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Hydrogen is element number ___ on the periodic table.",
+        "answer": "1",
+        "distractors": [
+          "2",
+          "6",
+          "8"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hydrogen",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art periodic table fragment with element 1 glowing bright white, with tiny H atoms radiating outward against a starfield background.",
+    "tags": [
+      "hydrogen",
+      "periodic table",
+      "most abundant element",
+      "universe",
+      "Big Bang",
+      "chemistry"
+    ]
+  },
+  {
+    "id": "science-noble-gases",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "chemistry_elements",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "chemistry_elements",
+    "categoryL3": "chemical_elements",
+    "statement": "Noble gases (helium, neon, argon, krypton, xenon, and radon) are the elements in Group 18 of the periodic table, characterized by full outer electron shells that make them extremely unreactive.",
+    "quizQuestion": "Why are noble gases extremely unreactive?",
+    "correctAnswer": "They have full outer electron shells",
+    "distractors": [
+      "They have no electrons at all",
+      "They are all radioactive and unstable",
+      "They exist only as solids at room temperature",
+      "They have single electrons in their outer shells",
+      "They form strong covalent bonds with themselves",
+      "They are too heavy to react with lighter elements",
+      "Their atoms are too small to bond with others"
+    ],
+    "acceptableAnswers": [
+      "They have full outer electron shells",
+      "Their outer electron shells are complete",
+      "They have a full valence shell"
+    ],
+    "explanation": "Chemical reactivity depends on gaining, losing, or sharing electrons. Noble gases already have the maximum number of electrons in their outermost shell (2 for helium, 8 for the rest), so they have no tendency to form chemical bonds. This makes them ideal for applications needing an inert atmosphere: argon in light bulbs, helium in MRI machines, neon in signs.",
+    "wowFactor": "Xenon was thought to be completely inert until 1962 when chemist Neil Bartlett created xenon hexafluoroplatinate — the first noble gas compound ever made. It shattered decades of chemistry dogma and won him instant fame.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why are noble gases so chemically unreactive?",
+        "answer": "They have full outer electron shells",
+        "distractors": [
+          "They have no electrons",
+          "They are always solid at room temperature",
+          "They form only single bonds"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which noble gas is used in glowing signs because of its bright red-orange light?",
+        "answer": "Neon",
+        "distractors": [
+          "Argon",
+          "Krypton",
+          "Xenon"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Noble gases are found in Group 18 of the periodic table.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "There are ___ naturally occurring noble gases.",
+        "answer": "six",
+        "distractors": [
+          "four",
+          "five",
+          "seven"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Noble_gas",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art periodic table column 18 glowing with noble gas symbols, neon sign flickering red-orange in the corner and helium balloon floating above.",
+    "tags": [
+      "noble gases",
+      "helium",
+      "neon",
+      "argon",
+      "periodic table",
+      "chemistry",
+      "unreactive",
+      "Group 18"
+    ]
+  },
+  {
+    "id": "science-transuranium-elements",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "chemistry_elements",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "chemistry_elements",
+    "categoryL3": "chemical_elements",
+    "statement": "Transuranium elements are synthetic elements with atomic numbers greater than 92 (uranium). All are radioactive and most have half-lives of seconds or less, existing only briefly after being created in particle accelerators.",
+    "quizQuestion": "What defines a transuranium element?",
+    "correctAnswer": "It has an atomic number greater than 92 (uranium)",
+    "distractors": [
+      "It is heavier than gold (atomic number 79)",
+      "It has more than 100 neutrons in its nucleus",
+      "It was discovered before 1900",
+      "It occurs naturally in large quantities on Earth",
+      "It has an atomic number less than 26 (iron)",
+      "It is a noble gas with no known compounds",
+      "It exists only in stars, never on Earth"
+    ],
+    "acceptableAnswers": [
+      "It has an atomic number greater than 92 (uranium)",
+      "Atomic number above uranium (92)",
+      "Elements beyond uranium on the periodic table"
+    ],
+    "explanation": "Uranium (element 92) is the heaviest element found in significant natural quantities. Elements 93 (neptunium) through 118 (oganesson) are all synthetic — created by bombarding heavy nuclei with lighter particles in particle accelerators. Many exist for only milliseconds before decaying. Element 118, oganesson, was first synthesized in 2002 by smashing calcium-48 atoms into californium-249.",
+    "wowFactor": "Element 115 (moscovium) was predicted by Russian scientist Yuri Oganessian years before it was synthesized — he calculated it should exist based on the 'island of stability' theory, predicting a region where superheavy elements might be surprisingly long-lived.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What makes an element a 'transuranium' element?",
+        "answer": "It has an atomic number greater than 92 (uranium)",
+        "distractors": [
+          "It is heavier than gold",
+          "It has more than 100 neutrons",
+          "It was discovered before 1900"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the heaviest element found in significant amounts in nature?",
+        "answer": "Uranium",
+        "distractors": [
+          "Plutonium",
+          "Thorium",
+          "Lead"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: All transuranium elements are synthetic and do not occur naturally in significant amounts.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The heaviest currently known element is oganesson, element number ___.",
+        "answer": "118",
+        "distractors": [
+          "100",
+          "92",
+          "110"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Transuranium_element",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art periodic table tail end glowing radioactive green beyond element 92, with unstable atoms exploding in flashes above the heavy element symbols.",
+    "tags": [
+      "transuranium elements",
+      "synthetic elements",
+      "periodic table",
+      "nuclear physics",
+      "oganesson",
+      "particle accelerator",
+      "radioactive"
+    ]
   }
 ]

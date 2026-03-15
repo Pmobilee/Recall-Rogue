@@ -13620,5 +13620,1498 @@
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "geo-china-great-wall-length",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "landmarks",
+    "categoryL1": "Geography",
+    "categoryL2": "landmarks",
+    "categoryL3": "",
+    "statement": "The Great Wall of China stretches approximately 21,196 kilometers (13,171 miles) when all branches and sections are measured together.",
+    "quizQuestion": "Approximately how long is the Great Wall of China in total?",
+    "correctAnswer": "21,196 kilometers",
+    "distractors": [
+      "8,000 kilometers",
+      "15,000 kilometers",
+      "5,000 kilometers",
+      "30,000 kilometers",
+      "10,000 kilometers",
+      "6,700 kilometers",
+      "18,000 kilometers",
+      "25,000 kilometers"
+    ],
+    "acceptableAnswers": [
+      "21,196 kilometers",
+      "21,196 km",
+      "about 21,000 kilometers",
+      "over 21,000 km"
+    ],
+    "explanation": "Archaeological surveys completed in 2012 by China's State Administration of Cultural Heritage measured all walls, trenches, and natural barriers ever built under the name 'Great Wall' and arrived at 21,196 km — far longer than popular estimates of ~6,700 km, which refer only to the Ming Dynasty section.",
+    "wowFactor": "The Great Wall is not one continuous wall — it is a patchwork of walls built over 2,000 years by different dynasties. Some sections have completely disappeared; others are buried under sand.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which Chinese dynasty built the most famous and best-preserved sections of the Great Wall?",
+        "answer": "Ming Dynasty",
+        "distractors": [
+          "Qin Dynasty",
+          "Han Dynasty",
+          "Tang Dynasty"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Great Wall of China was primarily built to defend against threats from which direction?",
+        "answer": "North (nomadic steppe peoples)",
+        "distractors": [
+          "South (tropical kingdoms)",
+          "East (coastal pirates)",
+          "West (Persian armies)"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Great Wall of China is visible from space with the naked eye.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Great Wall of China stretches approximately ___ kilometers when all historic sections are counted.",
+        "answer": "21,196",
+        "distractors": [
+          "6,700",
+          "10,000",
+          "15,000"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "China State Administration of Cultural Heritage",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Great_Wall_of_China",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art bird's-eye view of a winding stone wall snaking across green mountains and yellow desert, watchtowers dotting its length, a lone guard silhouetted at dawn.",
+    "tags": [
+      "China",
+      "Great Wall",
+      "landmarks",
+      "ancient",
+      "records"
+    ]
+  },
+  {
+    "id": "geo-china-population-most-populous",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "countries",
+    "categoryL1": "Geography",
+    "categoryL2": "countries",
+    "categoryL3": "",
+    "statement": "China has a population of over 1.4 billion people, making it the most populous country on Earth — though India surpassed it in 2023.",
+    "quizQuestion": "Which country did India surpass in 2023 to become the world's most populous?",
+    "correctAnswer": "China",
+    "distractors": [
+      "United States",
+      "Indonesia",
+      "Pakistan",
+      "Brazil",
+      "Russia",
+      "Nigeria",
+      "Bangladesh",
+      "Mexico"
+    ],
+    "acceptableAnswers": [
+      "China",
+      "People's Republic of China",
+      "PRC"
+    ],
+    "explanation": "For decades China held the title of world's most populous nation with over 1.4 billion people. In April 2023 the United Nations confirmed India had overtaken China, crossing 1.428 billion. China's strict One-Child Policy (1980–2015) slowed its growth dramatically.",
+    "wowFactor": "China's One-Child Policy resulted in an estimated 400 million fewer births. The policy is now reversed — China actively encourages families to have three children — but the demographic damage may take generations to correct.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What year did India overtake China as the world's most populous country?",
+        "answer": "2023",
+        "distractors": [
+          "2019",
+          "2021",
+          "2025"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "China's One-Child Policy was in force roughly from 1980 until what year?",
+        "answer": "2015",
+        "distractors": [
+          "2000",
+          "2010",
+          "2020"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: China still has the world's largest population as of 2024.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "China's population is over ___ billion people.",
+        "answer": "1.4",
+        "distractors": [
+          "1.0",
+          "2.0",
+          "1.2"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "United Nations Population Division",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Population_of_China",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "One-Child Policy references may be sensitive in Chinese contexts.",
+    "visualDescription": "Pixel art overhead view of a vast, densely packed city grid with countless tiny figures, a single tally counter in the corner rolling past 1.4 billion.",
+    "tags": [
+      "China",
+      "population",
+      "demography",
+      "India",
+      "world records"
+    ]
+  },
+  {
+    "id": "geo-china-yangtze-river-longest",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "rivers",
+    "categoryL1": "Geography",
+    "categoryL2": "rivers",
+    "categoryL3": "",
+    "statement": "The Yangtze River is the longest river in Asia and the third longest in the world, stretching 6,300 kilometers (3,917 miles) across China.",
+    "quizQuestion": "What is the longest river in Asia?",
+    "correctAnswer": "Yangtze River",
+    "distractors": [
+      "Yellow River",
+      "Mekong River",
+      "Ganges River",
+      "Irrawaddy River",
+      "Indus River",
+      "Ob River",
+      "Lena River",
+      "Euphrates River"
+    ],
+    "acceptableAnswers": [
+      "Yangtze River",
+      "Yangtze",
+      "Chang Jiang",
+      "Chang Jiang River"
+    ],
+    "explanation": "The Yangtze (Chang Jiang) flows from the Tibetan Plateau east to the East China Sea. At 6,300 km it is Asia's longest river and the world's third longest after the Nile and the Amazon. The Three Gorges Dam — the world's largest power station — sits on the Yangtze.",
+    "wowFactor": "The Three Gorges Dam on the Yangtze is so massive that its reservoir holds enough water to slow Earth's rotation very slightly — and its weight redistributed enough mass to actually change the planet's axis by about 2 centimeters.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Where does the Yangtze River originate?",
+        "answer": "Tibetan Plateau",
+        "distractors": [
+          "Gobi Desert",
+          "Himalayas (Nepal side)",
+          "Mongolian Steppe"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Three Gorges Dam — the world's largest power station — is built on which river?",
+        "answer": "Yangtze River",
+        "distractors": [
+          "Yellow River",
+          "Mekong River",
+          "Pearl River"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Yangtze River is the longest river in the world.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Yangtze River stretches approximately ___ kilometers, making it Asia's longest.",
+        "answer": "6,300",
+        "distractors": [
+          "4,000",
+          "5,000",
+          "8,000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Yangtze",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art panoramic river winding through misty green gorges, a massive concrete dam blocking the valley, tiny cargo ships queued in the locks below.",
+    "tags": [
+      "China",
+      "Yangtze",
+      "rivers",
+      "Asia",
+      "Three Gorges Dam"
+    ]
+  },
+  {
+    "id": "geo-mexico-aztec-capital-tenochtitlan",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "history_and_culture",
+    "categoryL1": "Geography",
+    "categoryL2": "history_and_culture",
+    "categoryL3": "",
+    "statement": "Mexico City was built on the ruins of Tenochtitlan, the grand island capital of the Aztec Empire, which was destroyed by Spanish conquistadors in 1521.",
+    "quizQuestion": "What was the name of the Aztec capital city that now lies beneath Mexico City?",
+    "correctAnswer": "Tenochtitlan",
+    "distractors": [
+      "Chichen Itza",
+      "Tula",
+      "Teotihuacan",
+      "Palenque",
+      "Monte Alban",
+      "Xochicalco",
+      "Cholula",
+      "Uxmal"
+    ],
+    "acceptableAnswers": [
+      "Tenochtitlan",
+      "Tenochtitlán"
+    ],
+    "explanation": "Founded around 1325 CE on an island in Lake Texcoco, Tenochtitlan grew into one of the largest cities in the world with a population estimated at 200,000–300,000. Spanish conquistador Hernán Cortés allied with rival indigenous groups, besieged and destroyed the city in 1521, and built colonial Mexico City directly over its ruins.",
+    "wowFactor": "Tenochtitlan had a sophisticated system of aqueducts, causeways, and floating gardens (chinampas) that amazed the Spanish. When workers dig in Mexico City today, they still regularly unearth Aztec temples and artifacts.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "On what geographic feature was Tenochtitlan originally built?",
+        "answer": "An island in Lake Texcoco",
+        "distractors": [
+          "A coastal peninsula",
+          "A river delta",
+          "A highland plateau"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which Spanish conquistador led the siege and destruction of Tenochtitlan?",
+        "answer": "Hernán Cortés",
+        "distractors": [
+          "Francisco Pizarro",
+          "Vasco de Gama",
+          "Ferdinand Magellan"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Tenochtitlan was destroyed in 1521 by Spanish conquistadors.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Aztec capital Tenochtitlan was founded around the year ___.",
+        "answer": "1325",
+        "distractors": [
+          "1100",
+          "1450",
+          "1200"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Tenochtitlan",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Colonial history topic; present factually.",
+    "visualDescription": "Pixel art aerial view of an island city connected by causeways over a shimmering lake, pyramid temples at its center, canoe traffic in the canals below.",
+    "tags": [
+      "Mexico",
+      "Aztec",
+      "Tenochtitlan",
+      "history",
+      "indigenous"
+    ]
+  },
+  {
+    "id": "geo-mexico-day-of-dead-origin",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "history_and_culture",
+    "categoryL1": "Geography",
+    "categoryL2": "history_and_culture",
+    "categoryL3": "",
+    "statement": "Mexico's Día de los Muertos (Day of the Dead) is a multi-day holiday on November 1–2, blending indigenous Aztec rituals with Spanish Catholic All Saints' Day to honor deceased loved ones.",
+    "quizQuestion": "On which dates is Mexico's Day of the Dead (Día de los Muertos) celebrated?",
+    "correctAnswer": "November 1–2",
+    "distractors": [
+      "October 31",
+      "December 1–2",
+      "September 15–16",
+      "October 28–29",
+      "November 11",
+      "October 1–2",
+      "January 1–2",
+      "February 2–3"
+    ],
+    "acceptableAnswers": [
+      "November 1–2",
+      "November 1 and 2",
+      "Nov 1–2"
+    ],
+    "explanation": "Día de los Muertos has roots in Aztec celebrations honoring the goddess Mictecacihuatl (Lady of the Dead). When Spanish colonizers arrived, the tradition merged with Catholic All Saints' Day (Nov 1) and All Souls' Day (Nov 2). Families build ofrendas (altars), bring marigolds to graves, and share food with the spirits of the dead.",
+    "wowFactor": "UNESCO inscribed Día de los Muertos on its list of Intangible Cultural Heritage of Humanity in 2008. The vibrant sugar skull (calavera) imagery has become globally recognized, but the holiday is fundamentally joyful — a celebration of life, not mourning.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What flower is most associated with Mexico's Day of the Dead altars?",
+        "answer": "Marigold (cempasúchil)",
+        "distractors": [
+          "Rose",
+          "Dahlia",
+          "Sunflower"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What is the Spanish name for the altar built during Día de los Muertos?",
+        "answer": "Ofrenda",
+        "distractors": [
+          "Calavera",
+          "Calaca",
+          "Cempasúchil"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Día de los Muertos is celebrated on Halloween, October 31.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Día de los Muertos blends Aztec traditions with Spanish ___ religious observances.",
+        "answer": "Catholic",
+        "distractors": [
+          "Protestant",
+          "Jewish",
+          "Muslim"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "UNESCO / Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Day_of_the_Dead",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art cemetery at night lit by hundreds of candles and orange marigold petals, a colorful ofrenda altar adorned with sugar skulls and photos, families gathered peacefully.",
+    "tags": [
+      "Mexico",
+      "Day of the Dead",
+      "culture",
+      "holidays",
+      "Aztec"
+    ]
+  },
+  {
+    "id": "geo-mexico-cenotes-yucatan",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "natural_features",
+    "categoryL1": "Geography",
+    "categoryL2": "natural_features",
+    "categoryL3": "",
+    "statement": "Mexico's Yucatán Peninsula contains an estimated 6,000–10,000 cenotes — natural sinkholes filled with fresh groundwater, sacred to the ancient Maya and formed by the collapse of limestone bedrock.",
+    "quizQuestion": "What are the freshwater sinkholes sacred to the ancient Maya, found throughout Mexico's Yucatán Peninsula, called?",
+    "correctAnswer": "Cenotes",
+    "distractors": [
+      "Calderas",
+      "Dolines",
+      "Aguadas",
+      "Ceibas",
+      "Lagunas",
+      "Manantiales",
+      "Karst wells",
+      "Sascabes"
+    ],
+    "acceptableAnswers": [
+      "Cenotes",
+      "Cenote",
+      "sinkholes",
+      "sacred sinkholes"
+    ],
+    "explanation": "Cenotes (from Maya 'dz'onot', meaning sacred well) form when the thin limestone cap of the Yucatán collapses into underground rivers. The Maya considered them portals to Xibalba, the underworld, and used them for religious offerings — archaeologists have recovered jade, gold, and human remains from their depths.",
+    "wowFactor": "The Yucatán's cenotes are all interconnected through one of the world's largest underground river systems. The ring of cenotes around the peninsula traces the edge of the Chicxulub crater — the very asteroid impact that killed the dinosaurs 66 million years ago.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What geological process forms cenotes in the Yucatán Peninsula?",
+        "answer": "Collapse of limestone bedrock into underground rivers",
+        "distractors": [
+          "Volcanic eruption",
+          "Tidal erosion",
+          "Glacial melting"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Maya believed cenotes were portals to which underworld realm?",
+        "answer": "Xibalba",
+        "distractors": [
+          "Mictlan",
+          "Tlalocan",
+          "Tamoanchan"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The ring of cenotes in the Yucatán outlines the ancient Chicxulub asteroid crater.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Yucatán Peninsula contains an estimated ___ to 10,000 cenotes.",
+        "answer": "6,000",
+        "distractors": [
+          "500",
+          "2,000",
+          "20,000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia / INAH Mexico",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cenote",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art cross-section of a sunlit cenote shaft, turquoise water far below, vines hanging from the limestone rim, a Maya jade pendant resting on the underwater floor.",
+    "tags": [
+      "Mexico",
+      "cenotes",
+      "Maya",
+      "Yucatán",
+      "geology",
+      "sinkholes"
+    ]
+  },
+  {
+    "id": "geo-new-zealand-maori-tangata-whenua",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "history_and_culture",
+    "categoryL1": "Geography",
+    "categoryL2": "history_and_culture",
+    "categoryL3": "",
+    "statement": "The Māori are the indigenous people of New Zealand (Aotearoa), arriving by canoe from Polynesia around 1250–1300 CE — making New Zealand one of the last large landmasses settled by humans.",
+    "quizQuestion": "What is the indigenous name for New Zealand in the Māori language?",
+    "correctAnswer": "Aotearoa",
+    "distractors": [
+      "Te Ika-a-Māui",
+      "Hawaiki",
+      "Rārotonga",
+      "Tūhoe",
+      "Papatūānuku",
+      "Tangaroa",
+      "Niue",
+      "Rangitoto"
+    ],
+    "acceptableAnswers": [
+      "Aotearoa",
+      "Aotearoa New Zealand"
+    ],
+    "explanation": "Māori navigators arrived from eastern Polynesia (a mythical homeland called Hawaiki) in large double-hulled waka (canoes), guided by stars, currents, and bird behavior. They became known as tangata whenua ('people of the land'). New Zealand's official name today is Aotearoa New Zealand.",
+    "wowFactor": "Māori navigated thousands of kilometers of open Pacific Ocean without instruments, using only stars, wave patterns, and the flight paths of birds. Modern re-enactments have confirmed that this navigation was astoundingly precise.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Māori navigators arrived in New Zealand from which broader region?",
+        "answer": "Polynesia",
+        "distractors": [
+          "Melanesia",
+          "Micronesia",
+          "Southeast Asia"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What does 'tangata whenua' mean in Māori?",
+        "answer": "People of the land",
+        "distractors": [
+          "Children of the sea",
+          "Keepers of the flame",
+          "Lords of the mountain"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: New Zealand was one of the last large landmasses settled by humans.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Māori settlers arrived in New Zealand around ___ CE, navigating by stars from Polynesia.",
+        "answer": "1250",
+        "distractors": [
+          "500",
+          "1000",
+          "1500"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/M%C4%81ori_people",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Indigenous peoples topic; treat respectfully.",
+    "visualDescription": "Pixel art double-hulled waka canoe under a star-filled night sky on the open Pacific, a navigator kneeling at the prow reading the stars, a faint forested coastline ahead.",
+    "tags": [
+      "New Zealand",
+      "Māori",
+      "Aotearoa",
+      "indigenous",
+      "Polynesia"
+    ]
+  },
+  {
+    "id": "geo-new-zealand-no-native-land-mammals",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "natural_features",
+    "categoryL1": "Geography",
+    "categoryL2": "natural_features",
+    "categoryL3": "",
+    "statement": "New Zealand has no native land mammals except for two species of bat — the long-tailed bat and the lesser short-tailed bat — because the islands were isolated for 80 million years before humans arrived.",
+    "quizQuestion": "Which group of animals dominates New Zealand's native wildlife niche that would normally be filled by land mammals?",
+    "correctAnswer": "Birds",
+    "distractors": [
+      "Reptiles",
+      "Amphibians",
+      "Insects",
+      "Fish",
+      "Marsupials",
+      "Rodents",
+      "Spiders",
+      "Crustaceans"
+    ],
+    "acceptableAnswers": [
+      "Birds",
+      "flightless birds",
+      "native birds"
+    ],
+    "explanation": "With no predatory land mammals for millions of years, New Zealand's birds evolved to fill every ecological niche. Many became flightless — including the kiwi, kakapo (world's heaviest parrot), and the extinct moa (up to 3.6 m tall). When humans and rats arrived, these birds had no fear of ground predators and were devastated.",
+    "wowFactor": "New Zealand's kakapo is the world's heaviest parrot — it can weigh up to 4 kg, cannot fly, has a lifespan of 90+ years, and smells distinctly of musty flowers. It is also critically endangered, with a total world population of fewer than 250 individuals.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What are New Zealand's only two native land mammals?",
+        "answer": "Two species of bat",
+        "distractors": [
+          "A rat and a shrew",
+          "A lizard and a possum",
+          "A seal and a dolphin"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The kiwi, kakapo, and moa are all examples of which evolutionary adaptation in New Zealand?",
+        "answer": "Flightlessness in birds (due to no land predators)",
+        "distractors": [
+          "Bioluminescence",
+          "Extreme burrowing",
+          "Venom development"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: New Zealand has no native land mammals except bats.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "New Zealand was isolated for approximately ___ million years before humans arrived, allowing unique bird evolution.",
+        "answer": "80",
+        "distractors": [
+          "10",
+          "40",
+          "200"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Fauna_of_New_Zealand",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art forest floor scene with a round fluffy kiwi sniffing for worms, a giant fat kakapo perched on a branch, and a towering moa skeleton fossil in the background.",
+    "tags": [
+      "New Zealand",
+      "wildlife",
+      "birds",
+      "kiwi",
+      "evolution",
+      "islands"
+    ]
+  },
+  {
+    "id": "geo-new-zealand-tectonic-ring-of-fire",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "geology",
+    "categoryL1": "Geography",
+    "categoryL2": "geology",
+    "categoryL3": "",
+    "statement": "New Zealand sits on the boundary of the Pacific and Australian tectonic plates, making it one of the most geologically active countries in the world, with frequent earthquakes and active volcanoes.",
+    "quizQuestion": "New Zealand's geological activity is caused by the collision of which two tectonic plates?",
+    "correctAnswer": "Pacific and Australian plates",
+    "distractors": [
+      "Eurasian and African plates",
+      "North American and Caribbean plates",
+      "Nazca and South American plates",
+      "Indian and Arabian plates",
+      "Philippine and Pacific plates",
+      "Cocos and Caribbean plates",
+      "Juan de Fuca and North American plates",
+      "Scotia and South American plates"
+    ],
+    "acceptableAnswers": [
+      "Pacific and Australian plates",
+      "Pacific Plate and Australian Plate",
+      "Australian and Pacific plates"
+    ],
+    "explanation": "The boundary between the Pacific and Australian plates runs directly through New Zealand. The South Island's Southern Alps were thrust upward by this collision. The North Island has active volcanoes including Ruapehu and the volatile Taupo Volcanic Zone. New Zealand experiences around 20,000 earthquakes per year — though most are too small to feel.",
+    "wowFactor": "Lake Taupo in New Zealand was formed by a supervolcano eruption around 232 CE that was so powerful it turned skies red across the Roman Empire and China. It remains one of the most violent eruptions in the last 5,000 years.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how many earthquakes does New Zealand experience per year?",
+        "answer": "Around 20,000",
+        "distractors": [
+          "Around 500",
+          "Around 2,000",
+          "Around 100,000"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Southern Alps mountain range in New Zealand was formed by which geological process?",
+        "answer": "Collision of the Pacific and Australian tectonic plates",
+        "distractors": [
+          "Volcanic uplift",
+          "Glacial deposition",
+          "River erosion over millions of years"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: New Zealand experiences around 20,000 earthquakes per year.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "New Zealand sits on the boundary of the Pacific and ___ tectonic plates.",
+        "answer": "Australian",
+        "distractors": [
+          "Eurasian",
+          "Antarctic",
+          "Indian"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "GNS Science / Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Geology_of_New_Zealand",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art cross-section cutaway showing two tectonic plates grinding together, one diving under the other, with mountains erupting upward and a volcano spewing lava above a snowy peak.",
+    "tags": [
+      "New Zealand",
+      "tectonic plates",
+      "earthquakes",
+      "volcanoes",
+      "geology"
+    ]
+  },
+  {
+    "id": "geo-iceland-geothermal-energy",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "natural_features",
+    "categoryL1": "Geography",
+    "categoryL2": "natural_features",
+    "categoryL3": "",
+    "statement": "Iceland generates nearly 100% of its electricity from renewable sources — about 70% from hydropower and 30% from geothermal energy — thanks to its position on the Mid-Atlantic Ridge.",
+    "quizQuestion": "What percentage of Iceland's electricity comes from renewable sources?",
+    "correctAnswer": "Nearly 100%",
+    "distractors": [
+      "About 50%",
+      "About 30%",
+      "About 75%",
+      "About 60%",
+      "About 85%",
+      "About 20%",
+      "About 40%",
+      "About 90% — mostly nuclear"
+    ],
+    "acceptableAnswers": [
+      "Nearly 100%",
+      "Almost 100%",
+      "Around 100%",
+      "99%",
+      "100%"
+    ],
+    "explanation": "Iceland sits atop the Mid-Atlantic Ridge where the Eurasian and North American plates are pulling apart, creating intense volcanic activity. This gives Iceland an almost unlimited supply of geothermal heat used for electricity generation and direct heating of 90% of homes. Geothermal also heats outdoor pools, greenhouses, and the famous Blue Lagoon.",
+    "wowFactor": "Because geothermal energy is so cheap and abundant in Iceland, the country smelts aluminum ore shipped from as far as Australia — it's economically rational to ship bauxite halfway around the world just to use Iceland's near-free electricity.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Iceland's geothermal activity is caused by its location on which geological feature?",
+        "answer": "Mid-Atlantic Ridge",
+        "distractors": [
+          "Pacific Ring of Fire",
+          "East African Rift",
+          "Himalayan Collision Zone"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What percentage of Icelandic homes are heated directly by geothermal water?",
+        "answer": "About 90%",
+        "distractors": [
+          "About 30%",
+          "About 50%",
+          "About 70%"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Iceland generates nearly all its electricity from renewable sources.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Iceland generates about 30% of its electricity from ___ energy and 70% from hydropower.",
+        "answer": "geothermal",
+        "distractors": [
+          "solar",
+          "wind",
+          "tidal"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Orkustofnun (National Energy Authority of Iceland)",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Energy_in_Iceland",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art scene of geysers erupting against an aurora-lit sky, pipes channeling steam into a glowing power station, snow-covered houses all warmly lit in a dark winter night.",
+    "tags": [
+      "Iceland",
+      "geothermal",
+      "renewable energy",
+      "Mid-Atlantic Ridge",
+      "environment"
+    ]
+  },
+  {
+    "id": "geo-iceland-viking-settlement",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "history_and_culture",
+    "categoryL1": "Geography",
+    "categoryL2": "history_and_culture",
+    "categoryL3": "",
+    "statement": "Iceland was settled by Norse Vikings around 874 CE, making it one of the last places on Earth settled without displacing indigenous people — Irish monks (papar) may have arrived a century earlier.",
+    "quizQuestion": "Approximately when did Norse Vikings first permanently settle Iceland?",
+    "correctAnswer": "874 CE",
+    "distractors": [
+      "1066 CE",
+      "500 CE",
+      "1000 CE",
+      "750 CE",
+      "1200 CE",
+      "600 CE",
+      "900 CE",
+      "1100 CE"
+    ],
+    "acceptableAnswers": [
+      "874 CE",
+      "around 874",
+      "874 AD",
+      "late 9th century"
+    ],
+    "explanation": "According to the Landnámabók (Book of Settlements), Norwegian chieftain Ingólfr Arnarson became Iceland's first permanent settler around 874 CE, naming his homestead Reykjavík ('Smoky Bay') for the geothermal steam rising from the ground. Iceland went on to establish the world's oldest parliament, the Althing, in 930 CE.",
+    "wowFactor": "The Althing, established in Iceland in 930 CE, is often called the world's oldest parliament still in operation. Viking settlers also used Iceland as a base to reach Greenland and North America (Vinland) — 500 years before Columbus.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the name of the world's oldest parliament, established in Iceland in 930 CE?",
+        "answer": "Althing (Alþingi)",
+        "distractors": [
+          "Riksdag",
+          "Storting",
+          "Dáil Éireann"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who is traditionally considered Iceland's first permanent Norse settler, arriving around 874 CE?",
+        "answer": "Ingólfr Arnarson",
+        "distractors": [
+          "Leif Eriksson",
+          "Erik the Red",
+          "Harald Hardrada"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Iceland's Althing, founded in 930 CE, is considered the world's oldest parliament still operating.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Ingólfr Arnarson named Iceland's first settlement Reykjavík, meaning '___ Bay' in Norse.",
+        "answer": "Smoky",
+        "distractors": [
+          "Icy",
+          "Windy",
+          "Fiery"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Landnámabók / Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/History_of_Iceland",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art Viking longship beaching on a black volcanic shore, steam venting from the hillside behind, a bearded Norse settler driving a stake into the ground at dusk.",
+    "tags": [
+      "Iceland",
+      "Vikings",
+      "Norse",
+      "settlement",
+      "Althing",
+      "history"
+    ]
+  },
+  {
+    "id": "geo-iceland-no-mosquitoes",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "natural_features",
+    "categoryL1": "Geography",
+    "categoryL2": "natural_features",
+    "categoryL3": "",
+    "statement": "Iceland is one of the only countries in the world with no native mosquito population — scientists believe the island's irregular freeze-thaw cycles prevent mosquito larvae from surviving.",
+    "quizQuestion": "Why does Iceland have no native mosquitoes despite having plenty of standing water?",
+    "correctAnswer": "Irregular freeze-thaw cycles kill mosquito larvae",
+    "distractors": [
+      "The water is too geothermally hot",
+      "Iceland uses nationwide insecticide programs",
+      "High volcanic sulfur content poisons larvae",
+      "UV radiation levels are too high in summer",
+      "The wind speeds are too strong year-round",
+      "The water pH is incompatible with mosquito breeding",
+      "Native birds eat all eggs before hatching",
+      "Extreme tides flush standing water pools constantly"
+    ],
+    "acceptableAnswers": [
+      "Irregular freeze-thaw cycles kill mosquito larvae",
+      "freeze-thaw cycles",
+      "unpredictable freezing temperatures",
+      "the climate freezes larvae"
+    ],
+    "explanation": "Mosquitoes need stable standing water for larvae to survive. In Iceland, lakes and pools thaw and refreeze unpredictably throughout spring, repeatedly killing larvae before they can mature into adults. Neighboring Greenland has mosquitoes, as its freeze-thaw patterns are more stable. Iceland's mosquito-free status has puzzled and delighted scientists for decades.",
+    "wowFactor": "Despite being just across the water from mosquito-infested Greenland and Scandinavia, Iceland remains mosquito-free. Scientists occasionally joke that Iceland may be one of the most pleasant countries to be outdoors in summer — precisely because of this geological quirk.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Does neighboring Greenland have mosquitoes?",
+        "answer": "Yes, Greenland has mosquitoes",
+        "distractors": [
+          "No, Greenland also has none",
+          "Greenland has midges but not mosquitoes",
+          "Only in southern Greenland in summer"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which other nearby country also has notoriously bad mosquito populations, making Iceland's absence even more remarkable?",
+        "answer": "Greenland",
+        "distractors": [
+          "Norway",
+          "The Faroe Islands",
+          "Scotland"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Iceland has no native mosquito population.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Iceland's lack of mosquitoes is explained by ___ freeze-thaw cycles that destroy larvae before they mature.",
+        "answer": "irregular",
+        "distractors": [
+          "rapid",
+          "annual",
+          "shallow"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia / scientific literature",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mosquitoes_in_Iceland",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art of a tourist happily picnicking outdoors in Iceland with a big grin, a 'No Mosquitoes' sign nearby, while across the water a Greenland coastline shows a swarm of tiny dots.",
+    "tags": [
+      "Iceland",
+      "mosquitoes",
+      "wildlife",
+      "climate",
+      "fun facts"
+    ]
+  },
+  {
+    "id": "geo-pacific-mariana-trench-deepest",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "oceans",
+    "categoryL1": "Geography",
+    "categoryL2": "oceans",
+    "categoryL3": "",
+    "statement": "The Mariana Trench in the western Pacific Ocean contains Challenger Deep, the deepest known point on Earth at approximately 10,935 meters (35,876 feet) below sea level.",
+    "quizQuestion": "What is the name of the deepest known point on Earth, located in the Mariana Trench?",
+    "correctAnswer": "Challenger Deep",
+    "distractors": [
+      "Puerto Rico Trench",
+      "Java Deep",
+      "Izu-Bonin Trench",
+      "Tonga Trench",
+      "Kuril Deep",
+      "Kermadec Trench",
+      "South Sandwich Trench",
+      "Philippine Deep"
+    ],
+    "acceptableAnswers": [
+      "Challenger Deep",
+      "Challenger Deep, Mariana Trench"
+    ],
+    "explanation": "Challenger Deep was first sounded by HMS Challenger in 1875. At ~10,935 m depth it is deeper than Mount Everest is tall. The pressure at the bottom is about 1,100 times sea-level atmospheric pressure. James Cameron became the third person to reach the bottom in 2012, traveling alone in a specially designed submersible.",
+    "wowFactor": "If you placed Mount Everest (8,849 m) at the bottom of Challenger Deep, its peak would still be more than 2 km underwater. Yet life exists even there — scientists have found single-celled organisms, shrimp-like amphipods, and microbes surviving at the extreme pressure.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately how deep is Challenger Deep in the Mariana Trench?",
+        "answer": "About 11,000 meters (11 km)",
+        "distractors": [
+          "About 5,000 meters",
+          "About 8,000 meters",
+          "About 15,000 meters"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Film director James Cameron descended to the bottom of the Mariana Trench in what year?",
+        "answer": "2012",
+        "distractors": [
+          "1960",
+          "1985",
+          "2005"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mount Everest would be completely submerged if placed at the bottom of Challenger Deep.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Challenger Deep in the Mariana Trench is approximately ___ meters deep.",
+        "answer": "10,935",
+        "distractors": [
+          "5,000",
+          "8,000",
+          "7,000"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "NOAA / Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Challenger_Deep",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art cross-section of the ocean showing a tiny submersible descending into crushing darkness, bioluminescent creatures drifting around it, Mount Everest overlaid in scale beside the trench.",
+    "tags": [
+      "Pacific Ocean",
+      "Mariana Trench",
+      "Challenger Deep",
+      "oceans",
+      "records",
+      "depth"
+    ]
+  },
+  {
+    "id": "geo-pacific-ring-of-fire",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "geology",
+    "categoryL1": "Geography",
+    "categoryL2": "geology",
+    "categoryL3": "",
+    "statement": "The Ring of Fire is a 40,000-kilometer horseshoe-shaped zone around the Pacific Ocean containing about 75% of the world's active volcanoes and generating about 90% of Earth's earthquakes.",
+    "quizQuestion": "What percentage of the world's earthquakes occur along the Ring of Fire?",
+    "correctAnswer": "About 90%",
+    "distractors": [
+      "About 50%",
+      "About 30%",
+      "About 70%",
+      "About 40%",
+      "About 60%",
+      "About 25%",
+      "About 80%",
+      "About 95%"
+    ],
+    "acceptableAnswers": [
+      "About 90%",
+      "90%",
+      "approximately 90%",
+      "around 90 percent"
+    ],
+    "explanation": "The Ring of Fire traces the boundaries of the Pacific Plate as it collides with, slides under, or grinds against surrounding plates. This subduction and collision activity drives intense volcanic and seismic events. Countries in the Ring of Fire include Japan, Indonesia, Chile, the Philippines, the USA (Alaska, Pacific Northwest), and New Zealand.",
+    "wowFactor": "The Ring of Fire hosts 452 volcanoes — more than half of all the world's active and dormant volcanoes. The most powerful earthquake ever recorded (Chile, 1960, magnitude 9.5) and the deadliest volcanic eruption in recorded history (Tambora, Indonesia, 1815) both occurred within the Ring of Fire.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately what percentage of the world's active volcanoes are found in the Ring of Fire?",
+        "answer": "About 75%",
+        "distractors": [
+          "About 30%",
+          "About 50%",
+          "About 90%"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which ocean's perimeter does the Ring of Fire trace?",
+        "answer": "Pacific Ocean",
+        "distractors": [
+          "Atlantic Ocean",
+          "Indian Ocean",
+          "Southern Ocean"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Ring of Fire generates about 90% of the world's earthquakes.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Ring of Fire is approximately ___ kilometers long, ringing the Pacific Ocean.",
+        "answer": "40,000",
+        "distractors": [
+          "10,000",
+          "20,000",
+          "60,000"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "USGS / Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ring_of_Fire",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art world map with the Pacific Ocean at center, a bright glowing orange horseshoe of fire and erupting volcanoes ringing it, tiny earthquake wave icons pulsing outward from multiple points.",
+    "tags": [
+      "Pacific Ocean",
+      "Ring of Fire",
+      "volcanoes",
+      "earthquakes",
+      "geology"
+    ]
+  },
+  {
+    "id": "geo-everest-highest-peak-height",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "extreme_records",
+    "categoryL1": "Geography",
+    "categoryL2": "extreme_records",
+    "categoryL3": "",
+    "statement": "Mount Everest is the highest mountain on Earth above sea level, standing at 8,848.86 meters (29,031.7 feet), as officially measured by China and Nepal in 2020.",
+    "quizQuestion": "What is the officially recognized height of Mount Everest as of 2020?",
+    "correctAnswer": "8,848.86 meters",
+    "distractors": [
+      "8,000 meters",
+      "8,611 meters",
+      "8,516 meters",
+      "9,000 meters",
+      "8,750 meters",
+      "8,485 meters",
+      "8,200 meters",
+      "8,900 meters"
+    ],
+    "acceptableAnswers": [
+      "8,848.86 meters",
+      "8,849 meters",
+      "8,848 meters",
+      "29,032 feet",
+      "29,031.7 feet"
+    ],
+    "explanation": "The 2020 joint China-Nepal survey used GPS and gravimetric measurements to confirm 8,848.86 m — slightly higher than the previous official 8,848 m measurement from 1954. The mountain is part of the Himalayas and straddles the border of Nepal and Tibet (China). It is called Sagarmatha in Nepali and Chomolungma in Tibetan.",
+    "wowFactor": "Mount Everest grows about 4 millimeters taller every year as the Indian tectonic plate continues to push into Asia. Meanwhile the 2015 Nepal earthquake actually shrank it by about 2.5 cm in a single moment.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is Mount Everest called in the Tibetan/Chinese language?",
+        "answer": "Chomolungma",
+        "distractors": [
+          "Sagarmatha",
+          "Qomolangma",
+          "Kangchenjunga"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Mount Everest sits on the border of which two countries?",
+        "answer": "Nepal and China (Tibet)",
+        "distractors": [
+          "India and Pakistan",
+          "Nepal and India",
+          "China and Bhutan"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Mount Everest grows slightly taller every year due to tectonic plate movement.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The official height of Mount Everest as measured in 2020 is ___ meters.",
+        "answer": "8,848.86",
+        "distractors": [
+          "8,848",
+          "8,849",
+          "8,800"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "China-Nepal Joint Survey 2020 / Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mount_Everest",
+    "contentVolatility": "stable",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art summit of Everest at dawn, the peak cutting above a sea of clouds, Nepal and Chinese flags both planted in the snow, tiny survey equipment beside them.",
+    "tags": [
+      "Mount Everest",
+      "altitude",
+      "records",
+      "Himalayas",
+      "Nepal",
+      "China"
+    ]
+  },
+  {
+    "id": "geo-everest-first-summit-1953",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "extreme_records",
+    "categoryL1": "Geography",
+    "categoryL2": "extreme_records",
+    "categoryL3": "",
+    "statement": "On May 29, 1953, Edmund Hillary (New Zealand) and Tenzing Norgay (Nepal) became the first confirmed humans to reach the summit of Mount Everest.",
+    "quizQuestion": "In what year did Edmund Hillary and Tenzing Norgay first summit Mount Everest?",
+    "correctAnswer": "1953",
+    "distractors": [
+      "1948",
+      "1960",
+      "1924",
+      "1936",
+      "1945",
+      "1965",
+      "1970",
+      "1938"
+    ],
+    "acceptableAnswers": [
+      "1953",
+      "May 29, 1953",
+      "1953 CE"
+    ],
+    "explanation": "Hillary and Tenzing were part of the ninth British expedition to Everest, led by Colonel John Hunt. They reached the summit at 11:30 AM local time. Hillary radioed down: 'We knocked the bastard off.' Earlier climbers George Mallory and Andrew Irvine disappeared near the summit in 1924 and may have reached the top, but this was never confirmed.",
+    "wowFactor": "The news of Everest's conquest was deliberately held until coronation morning in the UK — it arrived as a gift to Queen Elizabeth II on June 2, 1953, the day of her coronation, turning it into a double historic celebration for Britain.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "George Mallory and Andrew Irvine disappeared on Everest in which year, possibly having summited?",
+        "answer": "1924",
+        "distractors": [
+          "1938",
+          "1953",
+          "1948"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who led the 1953 British Everest expedition that included Hillary and Tenzing?",
+        "answer": "Colonel John Hunt",
+        "distractors": [
+          "General Charles Bruce",
+          "Eric Shipton",
+          "George Mallory"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Tenzing Norgay was Nepali and Edmund Hillary was from New Zealand.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Hillary and Tenzing Norgay reached the summit of Everest on May ___, 1953.",
+        "answer": "29",
+        "distractors": [
+          "1",
+          "15",
+          "7"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/1953_British_Mount_Everest_expedition",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Pixel art two climbers in oxygen masks at the summit of Everest, shaking hands against a brilliant blue-sky backdrop, the curvature of the Earth visible on the horizon below them.",
+    "tags": [
+      "Mount Everest",
+      "Hillary",
+      "Tenzing Norgay",
+      "exploration",
+      "1953",
+      "records"
+    ]
+  },
+  {
+    "id": "geo-everest-death-zone-physiology",
+    "type": "knowledge",
+    "domain": "Geography",
+    "subdomain": "extreme_records",
+    "categoryL1": "Geography",
+    "categoryL2": "extreme_records",
+    "categoryL3": "",
+    "statement": "Above 8,000 meters on Mount Everest — the 'Death Zone' — the human body cannot acclimatize: oxygen levels are one-third of sea level, and prolonged exposure causes organs to fail and climbers to hallucinate.",
+    "quizQuestion": "What term describes the zone above 8,000 meters on Everest where the human body cannot survive long-term?",
+    "correctAnswer": "Death Zone",
+    "distractors": [
+      "Hypoxia Band",
+      "Void Zone",
+      "Summit Zone",
+      "Altitude Ceiling",
+      "Oxygen Threshold",
+      "Black Zone",
+      "Lethal Belt",
+      "Anoxia Zone"
+    ],
+    "acceptableAnswers": [
+      "Death Zone",
+      "the Death Zone",
+      "death zone"
+    ],
+    "explanation": "At 8,000 m the barometric pressure is roughly one-third of sea level, forcing the body to work impossibly hard for every breath. Even with supplemental oxygen, climbers in the Death Zone experience deteriorating cognition, frostbite, pulmonary edema, and hallucinations. Most of Everest's ~310 recorded deaths have occurred in or above the Death Zone.",
+    "wowFactor": "Some climbers in the Death Zone report vivid hallucinations of companions who don't exist, warm rooms they can step into, or voices giving advice. Climbers have died following these hallucinations off the ridge. Yet others have survived 26+ hours in the Death Zone without supplemental oxygen.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "At what altitude does Everest's Death Zone begin?",
+        "answer": "8,000 meters",
+        "distractors": [
+          "7,000 meters",
+          "9,000 meters",
+          "6,500 meters"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What fraction of sea-level oxygen is available in Everest's Death Zone?",
+        "answer": "About one-third",
+        "distractors": [
+          "About one-half",
+          "About one-quarter",
+          "About two-thirds"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The majority of Mount Everest deaths occur in or above the Death Zone.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In Everest's Death Zone, oxygen levels are roughly ___ of sea-level pressure.",
+        "answer": "one-third",
+        "distractors": [
+          "one-half",
+          "one-quarter",
+          "two-thirds"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia / Alpine Journal",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Death_zone",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "Mentions death; appropriate for teen+.",
+    "visualDescription": "Pixel art climber hunched on an icy ridge in the dark, O2 mask cracked, a ghostly hallucination of a warm campfire glowing just ahead on empty air, skull icon pulsing above the altitude indicator.",
+    "tags": [
+      "Mount Everest",
+      "Death Zone",
+      "altitude",
+      "physiology",
+      "extreme",
+      "climbing"
+    ]
   }
 ]

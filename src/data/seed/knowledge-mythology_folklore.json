@@ -14316,5 +14316,1399 @@
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "myth-odysseus-trojan-horse",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "greek_roman",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "greek_roman",
+    "categoryL3": "",
+    "statement": "Odysseus devised the plan of the Trojan Horse — a giant wooden horse hiding Greek soldiers — which allowed the Greeks to infiltrate and destroy Troy.",
+    "quizQuestion": "Who devised the plan for the Trojan Horse?",
+    "correctAnswer": "Odysseus",
+    "distractors": [
+      "Achilles",
+      "Agamemnon",
+      "Menelaus",
+      "Ajax",
+      "Diomedes",
+      "Nestor",
+      "Patroclus",
+      "Hector"
+    ],
+    "acceptableAnswers": [
+      "Odysseus",
+      "Ulysses"
+    ],
+    "explanation": "After ten years of warfare, it was Odysseus's cunning mind that broke the stalemate at Troy. He proposed building a massive wooden horse, hiding a select force of Greek warriors inside, and feigning retreat. The Trojans wheeled the horse inside their walls, and the Greeks crept out at night to open the gates.",
+    "wowFactor": "The most famous trick in military history — a giant wooden horse that ended a decade-long war in a single night.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What famous deception did Odysseus devise to end the Trojan War?",
+        "answer": "Trojan Horse",
+        "distractors": [
+          "Siege towers",
+          "A night raid",
+          "Burning the fleet"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The Trojan Horse was the scheme of which Greek hero?",
+        "answer": "Odysseus",
+        "distractors": [
+          "Achilles",
+          "Agamemnon",
+          "Diomedes"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: The Trojan Horse was Achilles's idea.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Odysseus hid Greek soldiers inside a giant wooden ___ to infiltrate Troy.",
+        "answer": "horse",
+        "distractors": [
+          "ship",
+          "statue",
+          "cart"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Trojan_Horse",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A colossal wooden horse on wheels in front of towering stone walls, tiny Greek soldiers peering from a hidden hatch, pixel art style at dusk.",
+    "tags": [
+      "odysseus",
+      "trojan horse",
+      "troy",
+      "greek mythology",
+      "trickery"
+    ]
+  },
+  {
+    "id": "myth-odysseus-ten-year-voyage",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "greek_roman",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "greek_roman",
+    "categoryL3": "",
+    "statement": "After the fall of Troy, Odysseus wandered the seas for ten years, facing monsters and divine wrath before returning home to Ithaca.",
+    "quizQuestion": "How many years did Odysseus's journey home from Troy take?",
+    "correctAnswer": "Ten years",
+    "distractors": [
+      "Three years",
+      "Five years",
+      "Seven years",
+      "Twenty years",
+      "One year",
+      "Fifteen years",
+      "Two years",
+      "Forty years"
+    ],
+    "acceptableAnswers": [
+      "Ten years",
+      "10 years",
+      "A decade"
+    ],
+    "explanation": "The Odyssey recounts Odysseus's ten-year journey home after the Trojan War — itself ten years long. He faced the Cyclops, the witch Circe, the Sirens, the whirlpool Charybdis, and the wrath of Poseidon. In total he was away from his wife Penelope and son Telemachus for twenty years.",
+    "wowFactor": "He spent ten years fighting at Troy and another ten years just trying to get home — a forty-year adventure in total if you count his life before the war.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How long did Odysseus's voyage home from Troy last?",
+        "answer": "Ten years",
+        "distractors": [
+          "Five years",
+          "Twenty years",
+          "Three years"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which Greek hero's homeward voyage is the subject of Homer's Odyssey?",
+        "answer": "Odysseus",
+        "distractors": [
+          "Achilles",
+          "Agamemnon",
+          "Ajax"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Odysseus reached home within a year after the Trojan War ended.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Odysseus wandered the seas for ___ years before returning to Ithaca.",
+        "answer": "ten",
+        "distractors": [
+          "five",
+          "three",
+          "twenty"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Odyssey",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A lone ship on a storm-tossed sea, a tiny helmeted figure at the prow staring at a distant island, pixel art style with moonlit waves.",
+    "tags": [
+      "odysseus",
+      "odyssey",
+      "voyage",
+      "homer",
+      "greek mythology"
+    ]
+  },
+  {
+    "id": "myth-odysseus-cyclops",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "greek_roman",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "greek_roman",
+    "categoryL3": "",
+    "statement": "Odysseus blinded the Cyclops Polyphemus and escaped by hiding under sheep, after tricking the giant by claiming his name was 'Nobody'.",
+    "quizQuestion": "What fake name did Odysseus give the Cyclops Polyphemus?",
+    "correctAnswer": "Nobody",
+    "distractors": [
+      "Stranger",
+      "No-man",
+      "Ulysses",
+      "Noman the sailor",
+      "A wanderer",
+      "Ghost",
+      "Everyman",
+      "Nothing"
+    ],
+    "acceptableAnswers": [
+      "Nobody",
+      "No one",
+      "No-man",
+      "Outis"
+    ],
+    "explanation": "When the Cyclops Polyphemus asked Odysseus his name, Odysseus replied 'Nobody' (Outis in Greek). After blinding Polyphemus with a burning stake, the Cyclops cried out for help — but when other Cyclopes asked who hurt him, he answered 'Nobody,' so they left. Odysseus and his men then escaped by clinging to the undersides of Polyphemus's sheep.",
+    "wowFactor": "Saying your name is 'Nobody' is so clever it's been used in stories ever since — when Polyphemus screamed 'Nobody is hurting me!' his neighbors just shrugged and went back to sleep.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How did Odysseus trick Polyphemus so his cry for help would be ignored?",
+        "answer": "He said his name was 'Nobody'",
+        "distractors": [
+          "He bribed him with wine",
+          "He cast a sleeping spell",
+          "He disguised as a shepherd"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which Cyclops did Odysseus blind during his voyage home?",
+        "answer": "Polyphemus",
+        "distractors": [
+          "Arges",
+          "Brontes",
+          "Steropes"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Odysseus told the Cyclops his real name was 'Nobody'.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Odysseus escaped the Cyclops by hiding under the giant's ___.",
+        "answer": "sheep",
+        "distractors": [
+          "bed",
+          "rocks",
+          "cloak"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 10,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Polyphemus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A one-eyed giant reeling in a cave, clutching its blinded eye, while small armored figures cling to the undersides of woolly sheep fleeing through the cave entrance, pixel art style.",
+    "tags": [
+      "odysseus",
+      "polyphemus",
+      "cyclops",
+      "nobody",
+      "greek mythology"
+    ]
+  },
+  {
+    "id": "myth-achilles-heel",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "greek_roman",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "greek_roman",
+    "categoryL3": "",
+    "statement": "Achilles was nearly invulnerable after being dipped in the River Styx by his mother Thetis, but his heel — where she held him — remained his only weak point.",
+    "quizQuestion": "Why was Achilles's heel his only vulnerable spot?",
+    "correctAnswer": "His mother held him there when dipping him in the River Styx",
+    "distractors": [
+      "He was cursed by Apollo",
+      "He was wounded there as a child",
+      "A prophecy foretold it",
+      "He refused to wear armor on his feet",
+      "Ares touched him there",
+      "He removed divine protection himself",
+      "Hephaestus forged incomplete armor",
+      "He bathed in only partial moonlight"
+    ],
+    "acceptableAnswers": [
+      "His mother held him there when dipping him in the River Styx",
+      "Thetis held his heel while dipping him in the Styx",
+      "It was the part his mother held"
+    ],
+    "explanation": "Thetis, Achilles's sea-nymph mother, tried to make her son immortal by dipping him in the River Styx. Because she held him by the heel, that one spot never touched the water and remained vulnerable. During the Trojan War, the god Apollo guided an arrow shot by Paris directly to that heel, killing Achilles.",
+    "wowFactor": "One small spot on the back of a foot — and it undid the greatest warrior in Greek mythology. Today 'Achilles heel' means any fatal weakness.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In which river was Achilles dipped to gain near-invulnerability?",
+        "answer": "River Styx",
+        "distractors": [
+          "River Lethe",
+          "River Phlegethon",
+          "River Alpheus"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Whose mother dipped them in the River Styx to grant invulnerability?",
+        "answer": "Achilles",
+        "distractors": [
+          "Hercules",
+          "Perseus",
+          "Theseus"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Achilles was completely invulnerable after bathing in the River Styx.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Achilles's only weak spot was his ___, the place his mother held when dipping him in the Styx.",
+        "answer": "heel",
+        "distractors": [
+          "wrist",
+          "neck",
+          "shoulder"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Achilles%27_heel",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A warrior in gleaming bronze armor with a glowing arrow struck in the back of his heel, rivers of dark supernatural water swirling around his feet, pixel art style.",
+    "tags": [
+      "achilles",
+      "heel",
+      "thetis",
+      "river styx",
+      "greek mythology",
+      "vulnerability"
+    ]
+  },
+  {
+    "id": "myth-achilles-trojan-war",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "greek_roman",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "greek_roman",
+    "categoryL3": "",
+    "statement": "Achilles was the greatest Greek warrior in the Trojan War and slew the Trojan champion Hector in single combat.",
+    "quizQuestion": "Which Trojan champion did Achilles kill in single combat during the Trojan War?",
+    "correctAnswer": "Hector",
+    "distractors": [
+      "Paris",
+      "Priam",
+      "Aeneas",
+      "Deiphobus",
+      "Sarpedon",
+      "Glaucus",
+      "Troilus",
+      "Polydamas"
+    ],
+    "acceptableAnswers": [
+      "Hector",
+      "Prince Hector"
+    ],
+    "explanation": "Hector, eldest son of King Priam and Troy's greatest defender, was killed by Achilles to avenge the death of Patroclus. After the duel, Achilles dragged Hector's body around Troy's walls. King Priam later came personally to ransom his son's body — one of the most moving scenes in Homer's Iliad.",
+    "wowFactor": "After killing Hector, Achilles dragged the body around Troy's walls for twelve days — but the gods kept it miraculously preserved to shame him.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who was Troy's greatest warrior, killed by Achilles?",
+        "answer": "Hector",
+        "distractors": [
+          "Paris",
+          "Aeneas",
+          "Priam"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Achilles was the greatest warrior fighting for which side in the Trojan War?",
+        "answer": "The Greeks",
+        "distractors": [
+          "The Trojans",
+          "The Persians",
+          "The Thracians"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Achilles killed Hector to avenge the death of Patroclus.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Achilles slew the Trojan champion ___ in single combat outside the walls of Troy.",
+        "answer": "Hector",
+        "distractors": [
+          "Paris",
+          "Aeneas",
+          "Priam"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Achilles",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "Two armored warriors in bronze and plumed helmets facing off on a dusty plain before towering city walls, one standing victorious over the fallen other, pixel art style.",
+    "tags": [
+      "achilles",
+      "hector",
+      "troy",
+      "trojan war",
+      "greek mythology"
+    ]
+  },
+  {
+    "id": "myth-achilles-patroclus",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "greek_roman",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "greek_roman",
+    "categoryL3": "",
+    "statement": "Achilles refused to fight until his beloved companion Patroclus was killed wearing his armor, which drove Achilles back into battle in a grief-fueled rage.",
+    "quizQuestion": "What event drove Achilles to return to battle after his withdrawal from the Trojan War?",
+    "correctAnswer": "The death of Patroclus",
+    "distractors": [
+      "The fall of the Greek ships",
+      "An oracle's prophecy",
+      "A bribe of gold from Agamemnon",
+      "The death of Ajax",
+      "Hector challenging him personally",
+      "A dream sent by Zeus",
+      "Losing a wrestling match",
+      "The capture of Briseis"
+    ],
+    "acceptableAnswers": [
+      "The death of Patroclus",
+      "Patroclus dying",
+      "Patroclus was killed"
+    ],
+    "explanation": "After a quarrel with Agamemnon, Achilles withdrew from fighting. His companion Patroclus borrowed Achilles's armor to rally the Greeks, but was killed by Hector. This loss devastated Achilles — Homer makes clear the depth of their bond. Consumed by grief and rage, Achilles returned to battle, killed Hector, and ultimately sealed his own fate (knowing he would die shortly after Hector).",
+    "wowFactor": "Achilles knew that killing Hector would lead to his own death soon after — he chose vengeance over survival, making it one of mythology's most tragic choices.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who was Achilles's closest companion, whose death drove him back into battle?",
+        "answer": "Patroclus",
+        "distractors": [
+          "Ajax",
+          "Diomedes",
+          "Phoenix"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Patroclus borrowed whose armor before being killed by Hector?",
+        "answer": "Achilles",
+        "distractors": [
+          "Agamemnon",
+          "Odysseus",
+          "Ajax"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Patroclus was killed while wearing Achilles's armor.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The death of ___ drove Achilles back into the Trojan War in a grief-fueled rage.",
+        "answer": "Patroclus",
+        "distractors": [
+          "Ajax",
+          "Phoenix",
+          "Diomedes"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Patroclus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A grief-stricken warrior in golden armor kneeling over a fallen companion on a blood-red battlefield, clenching his fist at the sky, pixel art style.",
+    "tags": [
+      "achilles",
+      "patroclus",
+      "trojan war",
+      "grief",
+      "greek mythology"
+    ]
+  },
+  {
+    "id": "myth-hercules-twelve-labors",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "greek_roman",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "greek_roman",
+    "categoryL3": "",
+    "statement": "Hercules performed Twelve Labors — an epic series of seemingly impossible tasks — as penance for killing his family in a fit of divine madness sent by Hera.",
+    "quizQuestion": "How many labors did Hercules have to complete as penance?",
+    "correctAnswer": "Twelve",
+    "distractors": [
+      "Seven",
+      "Nine",
+      "Ten",
+      "Thirteen",
+      "Six",
+      "Fifteen",
+      "Three",
+      "Eight"
+    ],
+    "acceptableAnswers": [
+      "Twelve",
+      "12",
+      "Twelve labors"
+    ],
+    "explanation": "After Hera drove Hercules temporarily insane and he killed his own wife and children, he sought purification. The Oracle of Delphi told him to serve King Eurystheus for twelve years and complete whatever tasks were given. These became the famous Twelve Labors — from slaying monsters to cleaning the Augean stables — and their completion earned him immortality.",
+    "wowFactor": "The Twelve Labors were designed to be literally impossible — Eurystheus expected Hercules to die. He didn't.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why did Hercules have to perform his Twelve Labors?",
+        "answer": "As penance for killing his family",
+        "distractors": [
+          "To win a princess",
+          "To prove his divine parentage",
+          "To earn a kingdom"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who assigned the Twelve Labors to Hercules?",
+        "answer": "King Eurystheus",
+        "distractors": [
+          "Zeus",
+          "Apollo",
+          "Hera"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Hercules performed the Twelve Labors to become king of Thebes.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Hercules completed ___ labors as ordered by King Eurystheus.",
+        "answer": "twelve",
+        "distractors": [
+          "seven",
+          "nine",
+          "ten"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Labours_of_Hercules",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A muscular hero with a lion-skin cape standing before a stone tablet engraved with twelve symbols, each depicting a different monster or challenge, pixel art style.",
+    "tags": [
+      "hercules",
+      "twelve labors",
+      "greek mythology",
+      "hero",
+      "penance"
+    ]
+  },
+  {
+    "id": "myth-hercules-nemean-lion",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "greek_roman",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "greek_roman",
+    "categoryL3": "",
+    "statement": "Hercules's first labor was to slay the Nemean Lion, a beast with impenetrable golden fur, which he strangled with his bare hands.",
+    "quizQuestion": "What was the first of Hercules's Twelve Labors?",
+    "correctAnswer": "Slaying the Nemean Lion",
+    "distractors": [
+      "Slaying the Lernaean Hydra",
+      "Capturing the Erymanthian Boar",
+      "Cleaning the Augean Stables",
+      "Slaying the Stymphalian Birds",
+      "Capturing the Cretan Bull",
+      "Fetching Cerberus from the Underworld",
+      "Stealing the Mares of Diomedes",
+      "Obtaining the Belt of Hippolyta"
+    ],
+    "acceptableAnswers": [
+      "Slaying the Nemean Lion",
+      "Killing the Nemean Lion",
+      "Nemean Lion"
+    ],
+    "explanation": "The Nemean Lion terrorized the region around Nemea with fur so tough that no weapon could pierce it. Hercules drove it into a cave, blocked the exits, and strangled it with his bare hands. He then used the lion's own claws to skin it, wearing the pelt as armor for the rest of his labors — making him both the slayer and the wearer of the invincible hide.",
+    "wowFactor": "No weapon could harm the Nemean Lion — so Hercules just strangled it with his hands. Then he wore its indestructible skin as armor for the rest of his adventures.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How did Hercules kill the Nemean Lion, whose fur no weapon could pierce?",
+        "answer": "He strangled it with his bare hands",
+        "distractors": [
+          "He drowned it",
+          "He poisoned it",
+          "He burned it with fire"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The first of Hercules's labors was to slay which monster?",
+        "answer": "The Nemean Lion",
+        "distractors": [
+          "The Lernaean Hydra",
+          "The Erymanthian Boar",
+          "Cerberus"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Hercules used a sword to kill the Nemean Lion.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Hercules wore the Nemean Lion's skin as ___ after strangling it with his bare hands.",
+        "answer": "armor",
+        "distractors": [
+          "a trophy",
+          "a cloak",
+          "a mask"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nemean_Lion",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A massive golden-furred lion locked in a stranglehold by a barrel-chested hero in a cave, pixel art style with golden highlights on the lion's impenetrable coat.",
+    "tags": [
+      "hercules",
+      "nemean lion",
+      "first labor",
+      "greek mythology",
+      "strength"
+    ]
+  },
+  {
+    "id": "myth-hercules-demigod",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "greek_roman",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "greek_roman",
+    "categoryL3": "",
+    "statement": "Hercules was a demigod — born of Zeus and the mortal woman Alcmene — giving him superhuman strength but also making him a target for Hera's jealousy.",
+    "quizQuestion": "Who were the parents of Hercules?",
+    "correctAnswer": "Zeus and Alcmene",
+    "distractors": [
+      "Ares and Aphrodite",
+      "Poseidon and a sea nymph",
+      "Apollo and a mortal woman",
+      "Zeus and Hera",
+      "Hephaestus and Athena",
+      "Hermes and Persephone",
+      "Zeus and Demeter",
+      "Ares and a Spartan queen"
+    ],
+    "acceptableAnswers": [
+      "Zeus and Alcmene",
+      "Zeus (father) and Alcmene (mother)"
+    ],
+    "explanation": "Zeus disguised himself as Alcmene's husband Amphitryon to father Hercules. Hera, Zeus's wife, was enraged by this affair and tormented Hercules throughout his life — including sending the madness that caused him to kill his family. Yet Hercules's divine heritage gave him his famous superhuman strength, and after death he ascended to full godhood on Mount Olympus.",
+    "wowFactor": "Hercules was so strong as a baby that when Hera sent two serpents to kill him in his crib, he strangled them with his bare hands.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What term describes Hercules's status as child of a god and a mortal?",
+        "answer": "Demigod",
+        "distractors": [
+          "Titan",
+          "Nymph",
+          "Satyr"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which goddess persecuted Hercules throughout his life out of jealousy?",
+        "answer": "Hera",
+        "distractors": [
+          "Artemis",
+          "Athena",
+          "Demeter"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Hercules's father was the god Zeus.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Hercules was the son of Zeus and the mortal woman ___.",
+        "answer": "Alcmene",
+        "distractors": [
+          "Helen",
+          "Hera",
+          "Penelope"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heracles",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A baby in a stone crib casually holding two hissing serpents by the throats with chubby fists, while a horrified goddess watches from a cloud above, pixel art style.",
+    "tags": [
+      "hercules",
+      "demigod",
+      "zeus",
+      "hera",
+      "greek mythology",
+      "origin"
+    ]
+  },
+  {
+    "id": "myth-pandora-hope",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "greek_roman",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "greek_roman",
+    "categoryL3": "",
+    "statement": "After Pandora opened the jar releasing all evils, she closed the lid just in time to trap the last thing inside — Hope — which remained with humanity.",
+    "quizQuestion": "What was the only thing left inside Pandora's jar after she released all the evils?",
+    "correctAnswer": "Hope",
+    "distractors": [
+      "Love",
+      "Wisdom",
+      "Fire",
+      "Light",
+      "Courage",
+      "Mercy",
+      "Peace",
+      "Truth"
+    ],
+    "acceptableAnswers": [
+      "Hope",
+      "Elpis",
+      "Elpis (Hope)"
+    ],
+    "explanation": "In Hesiod's telling, Hope (Elpis in Greek) was the last thing remaining in the jar when Pandora slammed the lid shut. Scholars have long debated whether Hope was a good thing trapped inside to sustain humanity, or whether its imprisonment means humans are denied even hope — making the myth ambiguous about whether Hope's retention is mercy or cruelty.",
+    "wowFactor": "Philosophers have debated for 2,700 years whether Hope being trapped inside is good news or the cruelest punishment of all.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the Greek name (Elpis) for the thing left in Pandora's jar?",
+        "answer": "Hope",
+        "distractors": [
+          "Love",
+          "Courage",
+          "Wisdom"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The myth of Pandora's jar ends with which virtue remaining trapped inside?",
+        "answer": "Hope",
+        "distractors": [
+          "Love",
+          "Justice",
+          "Mercy"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Hope escaped from Pandora's jar along with all the other evils.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "When Pandora slammed the lid of the jar shut, only ___ remained trapped inside.",
+        "answer": "Hope",
+        "distractors": [
+          "Love",
+          "Wisdom",
+          "Fire"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pandora%27s_box",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A woman slamming shut a clay jar, a single glowing golden wisp just barely contained inside, dark empty sky all around where evils have already fled, pixel art style.",
+    "tags": [
+      "pandora",
+      "hope",
+      "elpis",
+      "jar",
+      "greek mythology"
+    ]
+  },
+  {
+    "id": "myth-orpheus-lyre",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "greek_roman",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "greek_roman",
+    "categoryL3": "",
+    "statement": "Orpheus was a legendary musician whose lyre playing was so beautiful that it could charm wild animals, move trees, and even make rivers stop to listen.",
+    "quizQuestion": "What instrument did Orpheus play with legendary skill?",
+    "correctAnswer": "Lyre",
+    "distractors": [
+      "Aulos (double flute)",
+      "Kithara (harp)",
+      "Syrinx (pan pipes)",
+      "Tympanum (drum)",
+      "Hydraulis (water organ)",
+      "Chelys (tortoise-shell lute)",
+      "Salpinx (trumpet)",
+      "Trigonon (triangular harp)"
+    ],
+    "acceptableAnswers": [
+      "Lyre",
+      "His lyre"
+    ],
+    "explanation": "Orpheus received his lyre from Apollo (or was taught by the Muses) and became the greatest musician in Greek myth. His playing surpassed all human musicians. Rocks and trees uprooted themselves to follow the sound. Wild beasts lay down beside lambs. Rivers paused in their courses. This divine musical gift was central to every story about him.",
+    "wowFactor": "Orpheus's music was literally supernatural — rocks moved, trees walked, and lions forgot to be hungry. He was the ancient world's concept of a perfect musician.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "According to Greek myth, which god gave or taught Orpheus his musical gift?",
+        "answer": "Apollo",
+        "distractors": [
+          "Hermes",
+          "Dionysus",
+          "Zeus"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which mythical musician could charm wild animals and move rocks with his music?",
+        "answer": "Orpheus",
+        "distractors": [
+          "Pan",
+          "Marsyas",
+          "Amphion"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Orpheus played a lyre with such skill that even rivers stopped to listen.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Orpheus's ___ playing was so beautiful it could charm wild animals and move trees.",
+        "answer": "lyre",
+        "distractors": [
+          "flute",
+          "harp",
+          "trumpet"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Orpheus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A robed figure playing a glowing lyre in a forest clearing, animals of all kinds — lions, deer, eagles — sitting peacefully around him, trees bending toward the music, pixel art style.",
+    "tags": [
+      "orpheus",
+      "lyre",
+      "music",
+      "greek mythology",
+      "animals"
+    ]
+  },
+  {
+    "id": "myth-orpheus-eurydice",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "greek_roman",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "greek_roman",
+    "categoryL3": "",
+    "statement": "Orpheus descended into the Underworld to rescue his dead wife Eurydice, charming Hades himself with his music — but lost her when he looked back as they ascended.",
+    "quizQuestion": "Why did Orpheus lose Eurydice on their way out of the Underworld?",
+    "correctAnswer": "He looked back at her before reaching the surface",
+    "distractors": [
+      "Cerberus blocked their path",
+      "Hades changed his mind and called her back",
+      "Eurydice refused to leave",
+      "Persephone intervened",
+      "He stopped playing his lyre",
+      "He spoke her name aloud",
+      "He crossed the River Styx the wrong way",
+      "A Fury blocked the exit"
+    ],
+    "acceptableAnswers": [
+      "He looked back at her before reaching the surface",
+      "He turned around to look at her",
+      "He glanced back"
+    ],
+    "explanation": "Hades agreed to let Eurydice return on one condition: Orpheus must not look back at her until both of them had reached the upper world. Agonized by doubt and longing, Orpheus turned to check she was there — just before they reached the surface. Eurydice was instantly dragged back to the dead. The condition was so close to being met that the tragedy is all the more devastating.",
+    "wowFactor": "He made it all the way to the last few steps before the surface — and then looked back. One moment of doubt cost him everything.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What one condition did Hades set for Orpheus to bring Eurydice back to life?",
+        "answer": "Not look back at her until both reached the surface",
+        "distractors": [
+          "Play music for one year",
+          "Give up his lyre forever",
+          "Never speak again"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Orpheus descended into which realm to rescue his wife Eurydice?",
+        "answer": "The Underworld",
+        "distractors": [
+          "Elysium",
+          "Tartarus",
+          "The Labyrinth"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Orpheus successfully rescued Eurydice from the Underworld.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Orpheus lost Eurydice when he ___ back at her before they both reached the living world.",
+        "answer": "looked",
+        "distractors": [
+          "called",
+          "stopped",
+          "wept"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 10,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Orpheus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A cloaked figure on a dark stone stairway leading upward to bright light, turning his head back toward a fading translucent woman behind him who is dissolving back into darkness, pixel art style.",
+    "tags": [
+      "orpheus",
+      "eurydice",
+      "underworld",
+      "hades",
+      "greek mythology",
+      "tragedy"
+    ]
+  },
+  {
+    "id": "myth-orpheus-taming-beasts",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "greek_roman",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "greek_roman",
+    "categoryL3": "",
+    "statement": "Orpheus used his divine music to tame wild beasts, charm the monstrous Cerberus, and even convince the stone-hearted Furies to weep when he sought Eurydice.",
+    "quizQuestion": "Which fearsome three-headed dog guarding the Underworld did Orpheus charm with his music?",
+    "correctAnswer": "Cerberus",
+    "distractors": [
+      "Orthrus",
+      "Ladon",
+      "Scylla",
+      "Chimera",
+      "The Lernaean Hydra",
+      "Typhon",
+      "The Sphinx",
+      "Argus Panoptes"
+    ],
+    "acceptableAnswers": [
+      "Cerberus",
+      "Kerberos"
+    ],
+    "explanation": "When Orpheus entered the Underworld, he played his lyre to gain passage. Cerberus, the three-headed hound guarding the entrance to Hades, was lulled to sleep by the music. The Furies — ancient goddesses of vengeance who never wept — were moved to tears. Even Sisyphus stopped his eternal boulder-pushing to listen. Hades and Persephone themselves relented and agreed to free Eurydice.",
+    "wowFactor": "The Furies — beings literally designed never to show mercy — cried at Orpheus's music. That's how good he was.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What emotion did Orpheus's music cause in the Furies, who had never wept before?",
+        "answer": "Tears (weeping)",
+        "distractors": [
+          "Laughter",
+          "Anger",
+          "Sleep"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which mythological musician charmed Cerberus and the Furies with his playing?",
+        "answer": "Orpheus",
+        "distractors": [
+          "Apollo",
+          "Pan",
+          "Amphion"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Orpheus charmed Cerberus to sleep with his lyre music.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Orpheus's music even made the ___ weep — they were ancient goddesses of vengeance who had never cried before.",
+        "answer": "Furies",
+        "distractors": [
+          "Fates",
+          "Graces",
+          "Muses"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Orpheus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A musician in a torch-lit stone hall deep underground, playing his lyre while a three-headed dog curls up asleep at his feet and shadowy weeping figures hover in the darkness behind him, pixel art style.",
+    "tags": [
+      "orpheus",
+      "cerberus",
+      "furies",
+      "underworld",
+      "music",
+      "greek mythology"
+    ]
+  },
+  {
+    "id": "myth-icarus-wax-wings",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "greek_roman",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "greek_roman",
+    "categoryL3": "",
+    "statement": "Daedalus crafted wings from feathers and wax so that he and his son Icarus could escape imprisonment on the island of Crete.",
+    "quizQuestion": "What material held the feathers together in the wings Daedalus built for himself and Icarus?",
+    "correctAnswer": "Wax",
+    "distractors": [
+      "Honey",
+      "Pine resin",
+      "Clay",
+      "Spider silk",
+      "Tree sap",
+      "Olive oil",
+      "Leather straps",
+      "Divine glue"
+    ],
+    "acceptableAnswers": [
+      "Wax",
+      "Beeswax"
+    ],
+    "explanation": "Daedalus, the master craftsman imprisoned by King Minos on Crete (after building the Labyrinth and helping Theseus), constructed wings from bird feathers held together with wax. He warned Icarus not to fly too high (the sun's heat would melt the wax) and not too low (sea spray would dampen and weigh down the feathers). The middle path was the safe route.",
+    "wowFactor": "Daedalus literally invented the world's first aircraft — and programmed it with a speed governor that Icarus ignored.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why did Daedalus warn Icarus not to fly too high?",
+        "answer": "The sun's heat would melt the wax holding the feathers",
+        "distractors": [
+          "The air is too thin at altitude",
+          "Gods would be angered",
+          "The feathers would be scorched"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who built the wax-and-feather wings for Icarus?",
+        "answer": "Daedalus",
+        "distractors": [
+          "Hephaestus",
+          "Hermes",
+          "Apollo"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Icarus's wings were held together with beeswax.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Daedalus fastened feathers together with ___ to build wings capable of flight.",
+        "answer": "wax",
+        "distractors": [
+          "resin",
+          "honey",
+          "clay"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Icarus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A craftsman carefully pressing feathers into a large wax-coated wing frame on a stone workbench, a young man watching eagerly in the background, pixel art style with warm candlelight.",
+    "tags": [
+      "icarus",
+      "daedalus",
+      "wax wings",
+      "crete",
+      "greek mythology",
+      "flight"
+    ]
+  },
+  {
+    "id": "myth-icarus-too-close-to-sun",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "greek_roman",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "greek_roman",
+    "categoryL3": "",
+    "statement": "Icarus ignored his father Daedalus's warning and flew too close to the sun, melting the wax in his wings and plunging to his death in the sea.",
+    "quizQuestion": "What caused Icarus's wings to fail and send him plunging into the sea?",
+    "correctAnswer": "Flying too close to the sun melted the wax",
+    "distractors": [
+      "A storm blew him off course",
+      "A god struck his wings",
+      "He flew too low and the sea spray soaked the feathers",
+      "The feathers fell out in strong wind",
+      "Poseidon pulled him down",
+      "He collided with a flock of birds",
+      "His strength gave out from flapping",
+      "Hera cast a curse on him"
+    ],
+    "acceptableAnswers": [
+      "Flying too close to the sun melted the wax",
+      "The sun melted the wax in his wings",
+      "The heat of the sun"
+    ],
+    "explanation": "Ecstatic with the sensation of flight, Icarus spiraled higher and higher despite Daedalus's desperate cries. The sun's heat softened then melted the beeswax, releasing the feathers. Icarus fell from the sky and drowned in the sea, which was thereafter called the Icarian Sea. The myth endures as a warning against hubris — the reckless overreach of human ambition.",
+    "wowFactor": "The sea where Icarus fell still bears his name — the Icarian Sea, between Greece and Turkey — and his fall became the defining metaphor for hubris.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which sea is named after the place where Icarus fell to his death?",
+        "answer": "The Icarian Sea",
+        "distractors": [
+          "The Aegean Sea",
+          "The Ionian Sea",
+          "The Adriatic Sea"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The story of Icarus is a classical warning against what human failing?",
+        "answer": "Hubris (reckless overreach)",
+        "distractors": [
+          "Cowardice",
+          "Greed",
+          "Envy"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Icarus died because he flew too close to the sun and the wax in his wings melted.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Icarus flew too close to the ___, which melted the wax holding his wings together.",
+        "answer": "sun",
+        "distractors": [
+          "clouds",
+          "gods",
+          "stars"
+        ]
+      }
+    ],
+    "difficulty": 1,
+    "funScore": 9,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "common",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Icarus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A winged figure spiraling downward against a blazing sun, feathers scattering in all directions, the sparkling sea far below, pixel art style with dramatic orange and blue contrast.",
+    "tags": [
+      "icarus",
+      "sun",
+      "wax wings",
+      "hubris",
+      "greek mythology",
+      "flight"
+    ]
+  },
+  {
+    "id": "myth-icarus-daedalus",
+    "type": "knowledge",
+    "domain": "Mythology & Folklore",
+    "subdomain": "greek_roman",
+    "categoryL1": "Mythology & Folklore",
+    "categoryL2": "greek_roman",
+    "categoryL3": "",
+    "statement": "Daedalus was Icarus's father and a master craftsman who built the Labyrinth for King Minos — and later designed the wings that led to his son's death.",
+    "quizQuestion": "What famous structure did Daedalus build for King Minos before escaping Crete with Icarus?",
+    "correctAnswer": "The Labyrinth",
+    "distractors": [
+      "The Parthenon",
+      "The Palace of Knossos",
+      "The Colosseum",
+      "The Temple of Poseidon",
+      "The Walls of Troy",
+      "The Oracle of Delphi",
+      "The Tomb of Minos",
+      "The Forge of Hephaestus"
+    ],
+    "acceptableAnswers": [
+      "The Labyrinth",
+      "The Minoan Labyrinth",
+      "The maze for the Minotaur"
+    ],
+    "explanation": "Daedalus was the ancient world's greatest inventor and architect. For King Minos of Crete, he built the Labyrinth — an inescapable maze to contain the Minotaur. When Daedalus helped Theseus navigate and escape the Labyrinth (by telling Ariadne to give Theseus a thread), Minos imprisoned him and Icarus. Daedalus then devised wings to escape, only to watch his son disregard his warnings and die.",
+    "wowFactor": "Daedalus built the most famous prison in mythology — then ended up imprisoned in it himself. His genius couldn't save his son.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Who was the creature imprisoned inside Daedalus's Labyrinth?",
+        "answer": "The Minotaur",
+        "distractors": [
+          "Cerberus",
+          "The Chimera",
+          "Medusa"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Icarus's father Daedalus was the inventor-craftsman who built which famous maze?",
+        "answer": "The Labyrinth",
+        "distractors": [
+          "The Catacombs",
+          "The Dungeon of Minos",
+          "The Underworld"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "True or false: Daedalus built the Labyrinth for King Minos to contain the Minotaur.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Daedalus and Icarus escaped Crete by flying on wings because King Minos had imprisoned them after Daedalus helped Theseus escape the ___.",
+        "answer": "Labyrinth",
+        "distractors": [
+          "dungeon",
+          "palace",
+          "island"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Daedalus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A bearded craftsman kneeling over blueprints of a vast maze carved on stone tablets, a small boy peering at the designs curiously, pixel art style with architectural detail.",
+    "tags": [
+      "daedalus",
+      "icarus",
+      "labyrinth",
+      "minotaur",
+      "greek mythology",
+      "craftsman"
+    ]
   }
 ]

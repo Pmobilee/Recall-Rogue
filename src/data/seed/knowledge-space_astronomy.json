@@ -11397,5 +11397,1658 @@
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-15T00:00:00.000Z"
+  },
+  {
+    "id": "space-milky-way-001-star-count",
+    "type": "knowledge",
+    "statement": "The Milky Way galaxy contains between 100 and 400 billion stars, making it one of the largest spiral galaxies in the Local Group.",
+    "quizQuestion": "Approximately how many stars does the Milky Way contain?",
+    "correctAnswer": "100 to 400 billion",
+    "explanation": "Estimating the Milky Way's star count is difficult because we live inside it. Astronomers use stellar mass surveys and infrared observations to arrive at a range of 100–400 billion stars, with uncertainty driven by the abundance of faint red dwarf stars.",
+    "wowFactor": "If you counted one star per second, tallying the Milky Way's stars would take over 3,000 years!",
+    "visualDescription": "A sweeping top-down spiral galaxy viewed from above, glowing arms of white-yellow starlight curling outward against deep black space, with a bright golden core at the center. Pixel art style with twinkling specks.",
+    "distractors": [
+      "10 to 50 billion",
+      "1 to 5 trillion",
+      "About 8 billion",
+      "50 to 100 billion",
+      "500 billion to 1 trillion",
+      "200 to 600 billion",
+      "80 to 320 billion",
+      "150 to 500 billion"
+    ],
+    "variants": [
+      {
+        "question": "Scientists estimate the Milky Way holds how many stars?",
+        "type": "forward",
+        "distractors": [
+          "10–50 billion",
+          "1–5 trillion",
+          "500 billion–1 trillion"
+        ],
+        "answer": "100–400 billion"
+      },
+      {
+        "question": "Which galaxy contains 100 to 400 billion stars and is home to our Solar System?",
+        "type": "reverse",
+        "distractors": [
+          "Andromeda Galaxy",
+          "Triangulum Galaxy",
+          "Large Magellanic Cloud"
+        ],
+        "answer": "The Milky Way"
+      },
+      {
+        "question": "Which statement about the Milky Way's star count is FALSE?",
+        "type": "negative",
+        "distractors": [
+          "It contains hundreds of billions of stars",
+          "Exact count is uncertain",
+          "Most stars are faint red dwarfs"
+        ],
+        "answer": "It has exactly 200 billion stars, precisely counted"
+      },
+      {
+        "question": "The Milky Way contains between _____ and 400 billion stars.",
+        "type": "fill_blank",
+        "distractors": [
+          "10 billion",
+          "1 trillion",
+          "500 billion"
+        ],
+        "answer": "100 billion"
+      },
+      {
+        "question": "The Milky Way is estimated to contain more than 100 billion stars.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "stars_galaxies",
+    "categoryL3": "milky_way",
+    "tags": [
+      "milky_way",
+      "stars",
+      "galaxy",
+      "spiral_galaxy"
+    ],
+    "sourceName": "Generated",
+    "sourceUrl": "",
+    "contentVolatility": "stable",
+    "acceptableAnswers": [
+      "100 to 400 billion"
+    ],
+    "sensitivityLevel": 0,
+    "noveltyScore": 5
+  },
+  {
+    "id": "space-milky-way-002-black-hole",
+    "type": "knowledge",
+    "statement": "At the center of the Milky Way lies a supermassive black hole called Sagittarius A*, with a mass roughly 4 million times that of our Sun.",
+    "quizQuestion": "What is the name of the supermassive black hole at the center of the Milky Way?",
+    "correctAnswer": "Sagittarius A*",
+    "explanation": "Sagittarius A* (pronounced 'Sagittarius A-star') was confirmed through decades of tracking the orbits of stars near the galactic center. In 2022, the Event Horizon Telescope collaboration released the first direct image of it.",
+    "wowFactor": "The Event Horizon Telescope captured the first-ever photo of our galaxy's black hole in 2022 — a fuzzy orange ring of doom!",
+    "visualDescription": "A glowing orange accretion ring surrounding a void of perfect blackness at a galactic core, surrounded by swirling stars and golden gas clouds in pixel art style.",
+    "distractors": [
+      "Cygnus X-1",
+      "Andromeda Core",
+      "Black Eye Nebula",
+      "TON 618",
+      "M87*",
+      "Centaurus A*",
+      "Sagittarius B2",
+      "GRS 1915+105"
+    ],
+    "variants": [
+      {
+        "question": "Which object sits at the very center of the Milky Way galaxy?",
+        "type": "forward",
+        "distractors": [
+          "A neutron star",
+          "A white dwarf cluster",
+          "A massive open nebula"
+        ],
+        "answer": "A supermassive black hole"
+      },
+      {
+        "question": "Sagittarius A* is located at the center of which galaxy?",
+        "type": "reverse",
+        "distractors": [
+          "Andromeda Galaxy",
+          "Triangulum Galaxy",
+          "Centaurus A"
+        ],
+        "answer": "The Milky Way"
+      },
+      {
+        "question": "Which is NOT true about Sagittarius A*?",
+        "type": "negative",
+        "distractors": [
+          "It has 4 million solar masses",
+          "It is a black hole",
+          "Its first image was taken in 2022"
+        ],
+        "answer": "It is visible to the naked eye on clear nights"
+      },
+      {
+        "question": "The supermassive black hole at the Milky Way's center is called Sagittarius _____.",
+        "type": "fill_blank",
+        "distractors": [
+          "B*",
+          "C-Prime",
+          "X-1"
+        ],
+        "answer": "A*"
+      },
+      {
+        "question": "Sagittarius A* is a supermassive black hole at the center of our galaxy.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 10,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "stars_galaxies",
+    "categoryL3": "black_holes",
+    "tags": [
+      "milky_way",
+      "black_hole",
+      "sagittarius_a",
+      "galactic_center"
+    ],
+    "sourceName": "Generated",
+    "sourceUrl": "",
+    "contentVolatility": "stable",
+    "acceptableAnswers": [
+      "Sagittarius A*"
+    ],
+    "sensitivityLevel": 0,
+    "noveltyScore": 5
+  },
+  {
+    "id": "space-milky-way-003-andromeda-collision",
+    "type": "knowledge",
+    "statement": "The Milky Way and Andromeda Galaxy are on a collision course and are predicted to merge in approximately 4.5 billion years.",
+    "quizQuestion": "Which galaxy is predicted to collide and merge with the Milky Way in about 4.5 billion years?",
+    "correctAnswer": "The Andromeda Galaxy",
+    "explanation": "Despite Andromeda approaching at roughly 110 km/s, the vast empty space between stars means very few stellar collisions will actually occur. The two galaxies will pass through each other, gravitationally distort, and eventually merge into a large elliptical galaxy sometimes nicknamed 'Milkomeda'.",
+    "wowFactor": "Two galaxies smashing together sounds catastrophic, but stars are so spread out that almost none will actually collide!",
+    "visualDescription": "Two spiral galaxies slowly approaching each other in deep space, their glowing arms beginning to stretch and distort toward one another, with swirling star trails in pixel art style.",
+    "distractors": [
+      "The Triangulum Galaxy",
+      "The Whirlpool Galaxy",
+      "The Sombrero Galaxy",
+      "The Large Magellanic Cloud",
+      "The Sculptor Galaxy",
+      "The Pinwheel Galaxy",
+      "Centaurus A",
+      "IC 1101"
+    ],
+    "variants": [
+      {
+        "question": "In about 4.5 billion years, the Milky Way will merge with which galaxy?",
+        "type": "forward",
+        "distractors": [
+          "Triangulum",
+          "Whirlpool",
+          "Sombrero"
+        ],
+        "answer": "Andromeda"
+      },
+      {
+        "question": "Andromeda Galaxy is currently heading toward which galaxy for a future collision?",
+        "type": "reverse",
+        "distractors": [
+          "Centaurus A",
+          "Triangulum Galaxy",
+          "Large Magellanic Cloud"
+        ],
+        "answer": "The Milky Way"
+      },
+      {
+        "question": "Which statement about the Milky Way–Andromeda collision is FALSE?",
+        "type": "negative",
+        "distractors": [
+          "The merger is billions of years away",
+          "The result will be an elliptical galaxy",
+          "Andromeda is approaching the Milky Way"
+        ],
+        "answer": "Most stars in both galaxies will physically crash into each other"
+      },
+      {
+        "question": "The merged galaxy from Milky Way and Andromeda is nicknamed '_____omeda'.",
+        "type": "fill_blank",
+        "distractors": [
+          "Andr",
+          "Spiral",
+          "Cosm"
+        ],
+        "answer": "Milk"
+      },
+      {
+        "question": "The Milky Way and Andromeda are predicted to collide in roughly 4–5 billion years.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "stars_galaxies",
+    "categoryL3": "milky_way",
+    "tags": [
+      "milky_way",
+      "andromeda",
+      "galaxy_collision",
+      "cosmology"
+    ],
+    "sourceName": "Generated",
+    "sourceUrl": "",
+    "contentVolatility": "stable",
+    "acceptableAnswers": [
+      "The Andromeda Galaxy"
+    ],
+    "sensitivityLevel": 0,
+    "noveltyScore": 5
+  },
+  {
+    "id": "space-exoplanets-001-first-confirmed",
+    "type": "knowledge",
+    "statement": "The first confirmed exoplanets were discovered in 1992, orbiting a pulsar called PSR 1257+12, not a Sun-like star.",
+    "quizQuestion": "In what year were the first confirmed exoplanets discovered?",
+    "correctAnswer": "1992",
+    "explanation": "Astronomers Aleksander Wolszczan and Dale Frail detected slight timing anomalies in the pulsar PSR 1257+12's radio pulses, indicating orbiting bodies. This was surprising because pulsars are the remnants of exploded stars — these planets survived a supernova.",
+    "wowFactor": "The first confirmed planets outside our solar system orbit a dead star — they survived a supernova explosion!",
+    "visualDescription": "Two rocky planets orbiting a rapidly spinning neutron star shooting beams of blue-white light in opposite directions, with a glowing purple nebula remnant in the background. Pixel art style.",
+    "distractors": [
+      "1969",
+      "2000",
+      "1975",
+      "1995",
+      "1988",
+      "2001",
+      "1994",
+      "1990"
+    ],
+    "variants": [
+      {
+        "question": "The first confirmed exoplanets orbited what type of stellar object?",
+        "type": "forward",
+        "distractors": [
+          "A Sun-like star",
+          "A red dwarf",
+          "A white dwarf"
+        ],
+        "answer": "A pulsar"
+      },
+      {
+        "question": "PSR 1257+12 made history in 1992 as the host of what?",
+        "type": "reverse",
+        "distractors": [
+          "The first detected pulsar",
+          "The first observed supernova",
+          "The first measured gravitational wave"
+        ],
+        "answer": "The first confirmed exoplanets"
+      },
+      {
+        "question": "Which claim about the first confirmed exoplanets is FALSE?",
+        "type": "negative",
+        "distractors": [
+          "They were confirmed in 1992",
+          "They orbit a pulsar",
+          "Their detection used radio timing"
+        ],
+        "answer": "They orbit a star very similar to our Sun"
+      },
+      {
+        "question": "The first confirmed exoplanets were found orbiting pulsar PSR ___+12.",
+        "type": "fill_blank",
+        "distractors": [
+          "0833",
+          "1919",
+          "0531"
+        ],
+        "answer": "1257"
+      },
+      {
+        "question": "The first confirmed exoplanets were discovered before the year 2000.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "exoplanets_astrobio",
+    "categoryL3": "exoplanet_discovery",
+    "tags": [
+      "exoplanets",
+      "pulsar",
+      "psr1257",
+      "first_discovery",
+      "1992"
+    ],
+    "sourceName": "Generated",
+    "sourceUrl": "",
+    "contentVolatility": "stable",
+    "acceptableAnswers": [
+      "1992"
+    ],
+    "sensitivityLevel": 0,
+    "noveltyScore": 5
+  },
+  {
+    "id": "space-exoplanets-002-habitable-zone",
+    "type": "knowledge",
+    "statement": "The habitable zone around a star is the range of orbital distances where liquid water could exist on a planet's surface.",
+    "quizQuestion": "What defines the 'habitable zone' around a star?",
+    "correctAnswer": "The range where liquid water could exist on a planet's surface",
+    "explanation": "Also called the 'Goldilocks Zone,' the habitable zone is not too hot (water evaporates) and not too cold (water freezes). Its exact position depends on the star's brightness. Earth sits comfortably within our Sun's habitable zone.",
+    "wowFactor": "The habitable zone is called the Goldilocks Zone — not too hot, not too cold, just right for liquid water and maybe life!",
+    "visualDescription": "A star at center with three concentric orbital rings: the innermost labeled 'Too Hot' in red, the middle glowing green labeled 'Habitable,' and the outer one icy blue labeled 'Too Cold.' A small Earth-like planet sits in the green zone. Pixel art style.",
+    "distractors": [
+      "Where a planet has an oxygen atmosphere",
+      "Where a planet receives the same radiation as Earth",
+      "Where a planet has visible continents",
+      "Where the gravity matches Earth's surface gravity",
+      "Where magnetic fields protect the surface from radiation",
+      "Where a planet's day length equals Earth's",
+      "Where tectonic activity is possible",
+      "Where the planet's albedo is within 20% of Earth's"
+    ],
+    "variants": [
+      {
+        "question": "The habitable zone is also nicknamed what?",
+        "type": "forward",
+        "distractors": [
+          "The Green Zone",
+          "The Life Band",
+          "The Temperate Belt"
+        ],
+        "answer": "The Goldilocks Zone"
+      },
+      {
+        "question": "Liquid water on a planet's surface is the key criterion for which region around a star?",
+        "type": "reverse",
+        "distractors": [
+          "The frost line",
+          "The stellar corona",
+          "The magnetopause"
+        ],
+        "answer": "The habitable zone"
+      },
+      {
+        "question": "Which is NOT a requirement for a planet to be in the habitable zone?",
+        "type": "negative",
+        "distractors": [
+          "Temperature must allow liquid water",
+          "It must orbit within a certain distance",
+          "The star's brightness determines the zone's width"
+        ],
+        "answer": "It must have a moon"
+      },
+      {
+        "question": "Earth resides in the Sun's _____ zone.",
+        "type": "fill_blank",
+        "distractors": [
+          "frost",
+          "corona",
+          "magnetic"
+        ],
+        "answer": "habitable"
+      },
+      {
+        "question": "The habitable zone is sometimes called the Goldilocks Zone.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "exoplanets_astrobio",
+    "categoryL3": "astrobiology",
+    "tags": [
+      "exoplanets",
+      "habitable_zone",
+      "goldilocks",
+      "liquid_water",
+      "astrobiology"
+    ],
+    "sourceName": "Generated",
+    "sourceUrl": "",
+    "contentVolatility": "stable",
+    "acceptableAnswers": [
+      "The range where liquid water could exist on a planet's surface"
+    ],
+    "sensitivityLevel": 0,
+    "noveltyScore": 5
+  },
+  {
+    "id": "space-exoplanets-003-kepler-mission",
+    "type": "knowledge",
+    "statement": "NASA's Kepler Space Telescope, launched in 2009, discovered over 2,600 confirmed exoplanets by detecting the tiny dip in starlight when a planet passes in front of its star.",
+    "quizQuestion": "What method did NASA's Kepler telescope use to discover exoplanets?",
+    "correctAnswer": "Detecting dips in starlight as planets transit their stars",
+    "explanation": "The transit method relies on the fact that a planet crossing in front of its star blocks a fraction of its light. Kepler stared at over 150,000 stars simultaneously and logged brightness changes as small as 0.01%, enabling it to find thousands of planets including many in habitable zones.",
+    "wowFactor": "Kepler found over 2,600 planets by looking for stars that slightly dim — like catching a fly crossing a flashlight beam from miles away!",
+    "visualDescription": "A space telescope with open solar panels pointing toward a dense starfield, with one star dimming slightly as a tiny silhouetted planet crosses in front of it. A graph below shows a dip in the brightness curve. Pixel art style.",
+    "distractors": [
+      "Photographing planets directly with infrared cameras",
+      "Measuring radio signals emitted by orbiting planets",
+      "Sending probes to nearby star systems",
+      "Measuring wobble in a star's spectral lines caused by a planet's gravity",
+      "Detecting gravitational lensing events in distant stars",
+      "Tracking stellar position shifts caused by planetary gravity",
+      "Measuring polarization changes in reflected starlight",
+      "Detecting coronagraphic nulls in stellar emission spectra"
+    ],
+    "variants": [
+      {
+        "question": "Kepler Space Telescope detected exoplanets using which technique?",
+        "type": "forward",
+        "distractors": [
+          "Radial velocity",
+          "Direct imaging",
+          "Gravitational microlensing"
+        ],
+        "answer": "Transit photometry"
+      },
+      {
+        "question": "Which NASA telescope, launched in 2009, discovered over 2,600 confirmed exoplanets?",
+        "type": "reverse",
+        "distractors": [
+          "Hubble Space Telescope",
+          "TESS",
+          "Spitzer Space Telescope"
+        ],
+        "answer": "Kepler Space Telescope"
+      },
+      {
+        "question": "Which is FALSE about the Kepler mission?",
+        "type": "negative",
+        "distractors": [
+          "It was launched in 2009",
+          "It detected starlight dips",
+          "It found over 2,600 confirmed planets"
+        ],
+        "answer": "It discovered exoplanets by directly photographing them"
+      },
+      {
+        "question": "Kepler detected exoplanets by watching for stars that temporarily _____ in brightness.",
+        "type": "fill_blank",
+        "distractors": [
+          "brightened",
+          "pulsed",
+          "wobbled"
+        ],
+        "answer": "dimmed"
+      },
+      {
+        "question": "The Kepler Space Telescope used the transit method to find exoplanets.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "exoplanets_astrobio",
+    "categoryL3": "exoplanet_discovery",
+    "tags": [
+      "kepler",
+      "exoplanets",
+      "transit_method",
+      "nasa",
+      "space_telescope"
+    ],
+    "sourceName": "Generated",
+    "sourceUrl": "",
+    "contentVolatility": "stable",
+    "acceptableAnswers": [
+      "Detecting dips in starlight as planets transit their stars"
+    ],
+    "sensitivityLevel": 0,
+    "noveltyScore": 5
+  },
+  {
+    "id": "space-solar-wind-001-charged-particles",
+    "type": "knowledge",
+    "statement": "Solar wind is a continuous stream of charged particles — mainly electrons and protons — that flows outward from the Sun's corona at speeds of 400 to 800 km/s.",
+    "quizQuestion": "What are the main particles that make up solar wind?",
+    "correctAnswer": "Electrons and protons",
+    "explanation": "The Sun's outer atmosphere, the corona, is so hot (over 1 million °C) that particles escape its gravity and stream into space. This plasma travels at hundreds of kilometers per second and carries the Sun's magnetic field throughout the solar system.",
+    "wowFactor": "Solar wind travels at up to 800 km/s — that's fast enough to cross the distance from Earth to the Moon in about 8 minutes!",
+    "visualDescription": "The Sun blazing at left with golden streams of glowing particles shooting outward like a fierce wind, passing a small blue Earth in the center. Tiny arrows show particle flow direction. Pixel art style.",
+    "distractors": [
+      "Photons and neutrinos",
+      "Carbon and nitrogen atoms",
+      "Ice crystals and dust grains",
+      "Alpha particles and neutrons",
+      "Positrons and muons",
+      "Helium nuclei and gamma rays",
+      "Plasma ions and cosmic rays",
+      "Protons and alpha particles only"
+    ],
+    "variants": [
+      {
+        "question": "Solar wind originates from which part of the Sun?",
+        "type": "forward",
+        "distractors": [
+          "The photosphere",
+          "The chromosphere",
+          "The radiative zone"
+        ],
+        "answer": "The corona"
+      },
+      {
+        "question": "Which solar phenomenon consists of a continuous outflow of electrons and protons into space?",
+        "type": "reverse",
+        "distractors": [
+          "Solar flare",
+          "Coronal mass ejection",
+          "Sunspot cycle"
+        ],
+        "answer": "Solar wind"
+      },
+      {
+        "question": "Which is FALSE about solar wind?",
+        "type": "negative",
+        "distractors": [
+          "It travels at hundreds of km/s",
+          "It originates in the corona",
+          "It carries charged particles"
+        ],
+        "answer": "It is composed of neutral gas molecules like nitrogen and oxygen"
+      },
+      {
+        "question": "Solar wind travels at speeds of 400 to _____ km/s.",
+        "type": "fill_blank",
+        "distractors": [
+          "80",
+          "8,000",
+          "50"
+        ],
+        "answer": "800"
+      },
+      {
+        "question": "Solar wind is made of charged particles that stream outward from the Sun.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "ageRating": "kid",
+    "rarity": "common",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "solar_system",
+    "categoryL3": "sun_solar_physics",
+    "tags": [
+      "solar_wind",
+      "sun",
+      "corona",
+      "plasma",
+      "charged_particles"
+    ],
+    "sourceName": "Generated",
+    "sourceUrl": "",
+    "contentVolatility": "stable",
+    "acceptableAnswers": [
+      "Electrons and protons"
+    ],
+    "sensitivityLevel": 0,
+    "noveltyScore": 5
+  },
+  {
+    "id": "space-solar-wind-002-auroras",
+    "type": "knowledge",
+    "statement": "When solar wind particles collide with gases in Earth's upper atmosphere near the magnetic poles, they produce glowing light displays called auroras.",
+    "quizQuestion": "What causes the colorful light displays known as auroras?",
+    "correctAnswer": "Solar wind particles colliding with atmospheric gases near Earth's magnetic poles",
+    "explanation": "Charged solar wind particles follow Earth's magnetic field lines toward the poles, where they slam into oxygen and nitrogen molecules. These collisions excite the molecules, releasing light — oxygen glows green or red, nitrogen produces blue and purple hues. The aurora borealis occurs in the north; the aurora australis in the south.",
+    "wowFactor": "Auroras are actually solar wind setting the sky on fire — and they happen on Jupiter and Saturn too!",
+    "visualDescription": "Sweeping curtains of green and purple light rippling across a dark night sky above a snowy tundra silhouette, with faint stars visible behind the aurora. Pixel art style with glowing wave effects.",
+    "distractors": [
+      "Sunlight reflecting off polar ice caps",
+      "Lightning storms in the upper atmosphere",
+      "Meteors burning up in thin upper air",
+      "Cosmic rays ionizing the stratosphere",
+      "Bioluminescent clouds at high altitude",
+      "Gravitational waves interacting with the ionosphere",
+      "Geomagnetic substorms triggering airglow emissions",
+      "Proton precipitation in the polar cusp region"
+    ],
+    "variants": [
+      {
+        "question": "Auroras are most commonly seen near which regions of Earth?",
+        "type": "forward",
+        "distractors": [
+          "The equator",
+          "The tropics",
+          "Mountain summits"
+        ],
+        "answer": "The magnetic poles"
+      },
+      {
+        "question": "The aurora borealis and aurora australis are both caused by what?",
+        "type": "reverse",
+        "distractors": [
+          "Volcanic gas clouds rising to high altitude",
+          "Reflected moonlight through ice crystals",
+          "Gamma ray bursts from distant stars"
+        ],
+        "answer": "Solar wind interacting with Earth's magnetic field and atmosphere"
+      },
+      {
+        "question": "Which is NOT a color produced by auroras?",
+        "type": "negative",
+        "distractors": [
+          "Green from oxygen",
+          "Blue from nitrogen",
+          "Red from high-altitude oxygen"
+        ],
+        "answer": "Bright white from hydrogen combustion"
+      },
+      {
+        "question": "The northern lights are called aurora _____.",
+        "type": "fill_blank",
+        "distractors": [
+          "australis",
+          "polaris",
+          "solaris"
+        ],
+        "answer": "borealis"
+      },
+      {
+        "question": "Auroras occur when solar wind particles energize gases in Earth's upper atmosphere.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "ageRating": "kid",
+    "rarity": "common",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "solar_system",
+    "categoryL3": "sun_solar_physics",
+    "tags": [
+      "aurora",
+      "solar_wind",
+      "magnetosphere",
+      "northern_lights",
+      "atmosphere"
+    ],
+    "sourceName": "Generated",
+    "sourceUrl": "",
+    "contentVolatility": "stable",
+    "acceptableAnswers": [
+      "Solar wind particles colliding with atmospheric gases near Earth's magnetic poles"
+    ],
+    "sensitivityLevel": 0,
+    "noveltyScore": 5
+  },
+  {
+    "id": "space-solar-wind-003-magnetosphere-shield",
+    "type": "knowledge",
+    "statement": "Earth's magnetosphere acts as a shield, deflecting most solar wind particles and protecting the planet's atmosphere and surface from harmful radiation.",
+    "quizQuestion": "What protects Earth from the harmful effects of solar wind?",
+    "correctAnswer": "Earth's magnetosphere",
+    "explanation": "Generated by the motion of molten iron in Earth's outer core, the magnetosphere extends thousands of kilometers into space. Without it, solar wind would strip away our atmosphere over geological time — as happened on Mars after its core cooled and it lost its magnetic field.",
+    "wowFactor": "Mars lost its atmosphere billions of years ago because it has no magnetosphere — Earth's invisible magnetic shield is the reason life exists here!",
+    "visualDescription": "Earth surrounded by a glowing blue teardrop-shaped magnetic field bubble, with golden solar wind arrows deflecting around it harmlessly. The side facing the sun is compressed, the opposite side streams into a long tail. Pixel art style.",
+    "distractors": [
+      "The ozone layer",
+      "The Van Allen radiation belts only",
+      "The stratosphere",
+      "The ionosphere",
+      "The thermosphere's heat barrier",
+      "The gravitational field",
+      "The plasmapause boundary",
+      "Geomagnetic induced current systems"
+    ],
+    "variants": [
+      {
+        "question": "What generates Earth's magnetosphere?",
+        "type": "forward",
+        "distractors": [
+          "Rotation of Earth's solid inner core alone",
+          "The Moon's gravitational pull",
+          "Solar radiation heating the atmosphere"
+        ],
+        "answer": "Motion of molten iron in Earth's outer core"
+      },
+      {
+        "question": "Mars likely lost its atmosphere because it lost what feature?",
+        "type": "reverse",
+        "distractors": [
+          "Its moons",
+          "Its tectonic activity",
+          "Its water oceans"
+        ],
+        "answer": "Its magnetic field / magnetosphere"
+      },
+      {
+        "question": "Which is FALSE about Earth's magnetosphere?",
+        "type": "negative",
+        "distractors": [
+          "It deflects solar wind",
+          "It is created by Earth's molten core",
+          "It protects life on the surface"
+        ],
+        "answer": "It is generated by the atmosphere's interaction with sunlight"
+      },
+      {
+        "question": "Earth's magnetic shield is called the _____.",
+        "type": "fill_blank",
+        "distractors": [
+          "ionosphere",
+          "troposphere",
+          "heliosphere"
+        ],
+        "answer": "magnetosphere"
+      },
+      {
+        "question": "Without Earth's magnetosphere, solar wind would gradually strip away our atmosphere.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "solar_system",
+    "categoryL3": "sun_solar_physics",
+    "tags": [
+      "magnetosphere",
+      "solar_wind",
+      "earth",
+      "planetary_protection",
+      "mars"
+    ],
+    "sourceName": "Generated",
+    "sourceUrl": "",
+    "contentVolatility": "stable",
+    "acceptableAnswers": [
+      "Earth's magnetosphere"
+    ],
+    "sensitivityLevel": 0,
+    "noveltyScore": 5
+  },
+  {
+    "id": "space-comets-001-ice-and-dust",
+    "type": "knowledge",
+    "statement": "Comets are small icy bodies composed of frozen gases, ice, and dust that develop a bright coma and tail when they travel close to the Sun.",
+    "quizQuestion": "What are comets primarily made of?",
+    "correctAnswer": "Frozen gases, ice, and dust",
+    "explanation": "Comets are sometimes called 'dirty snowballs.' When a comet nears the Sun, solar heat vaporizes its ices, releasing gas and dust that form the coma (a fuzzy cloud) and the two distinct tails: a straight blue ion tail pointing directly away from the Sun and a curved yellow-white dust tail.",
+    "wowFactor": "Comets are cosmic dirty snowballs — and some scientists think they delivered water and the building blocks of life to early Earth!",
+    "visualDescription": "A glowing icy rock with a blue ion tail pointing directly away from the Sun and a curved white dust tail trailing behind, against a starfield background. Pixel art style with sparkle details on the nucleus.",
+    "distractors": [
+      "Solid iron and nickel",
+      "Pure liquid water and carbon",
+      "Dense silica rock and aluminum",
+      "Liquid hydrogen and helium",
+      "Radioactive minerals and plasma",
+      "Compressed gas clouds with no solid core",
+      "Silicate dust mantles with subsurface volatiles",
+      "Chondritic minerals and polycyclic aromatic hydrocarbons"
+    ],
+    "variants": [
+      {
+        "question": "What is the fuzzy cloud that forms around a comet's nucleus as it nears the Sun?",
+        "type": "forward",
+        "distractors": [
+          "The nucleus",
+          "The ion tail",
+          "The heliosheath"
+        ],
+        "answer": "The coma"
+      },
+      {
+        "question": "A 'dirty snowball' is a nickname for which solar system body?",
+        "type": "reverse",
+        "distractors": [
+          "An asteroid",
+          "A meteor",
+          "A dwarf planet"
+        ],
+        "answer": "A comet"
+      },
+      {
+        "question": "Which statement about comet tails is FALSE?",
+        "type": "negative",
+        "distractors": [
+          "Comets have two types of tails",
+          "The ion tail points away from the Sun",
+          "The dust tail curves along the comet's path"
+        ],
+        "answer": "A comet's tail always points in the direction the comet is traveling"
+      },
+      {
+        "question": "The glowing cloud surrounding a comet's nucleus is called the _____.",
+        "type": "fill_blank",
+        "distractors": [
+          "corona",
+          "nebula",
+          "aurora"
+        ],
+        "answer": "coma"
+      },
+      {
+        "question": "Comets develop tails only when they are far from the Sun.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "ageRating": "kid",
+    "rarity": "common",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "solar_system",
+    "categoryL3": "comets_asteroids",
+    "tags": [
+      "comets",
+      "dirty_snowball",
+      "coma",
+      "tail",
+      "solar_system"
+    ],
+    "sourceName": "Generated",
+    "sourceUrl": "",
+    "contentVolatility": "stable",
+    "acceptableAnswers": [
+      "Frozen gases, ice, and dust"
+    ],
+    "sensitivityLevel": 0,
+    "noveltyScore": 5
+  },
+  {
+    "id": "space-comets-002-halleys-comet",
+    "type": "knowledge",
+    "statement": "Halley's Comet is the most famous periodic comet, visible from Earth approximately every 75–76 years, last seen in 1986 and next expected around 2061.",
+    "quizQuestion": "Approximately how often does Halley's Comet return to the inner solar system?",
+    "correctAnswer": "Every 75–76 years",
+    "explanation": "Edmond Halley used Newton's laws of gravity to calculate that comet sightings in 1531, 1607, and 1682 were all the same comet. His prediction of its 1758 return proved correct, and it was named in his honour. Records of Halley's Comet go back at least 2,000 years in Chinese astronomical records.",
+    "wowFactor": "Halley's Comet was spotted by Edmond Halley in 1682, and he predicted its return 76 years later — he died before he could see if he was right!",
+    "visualDescription": "A bright comet with a glowing white-blue nucleus and a brilliant streaming tail arcing across a night sky above a silhouette of a city skyline. People look up in wonder. Pixel art style.",
+    "distractors": [
+      "Every 10–12 years",
+      "Every 365 days",
+      "Every 500–600 years",
+      "Every 50 years",
+      "Every 100 years",
+      "Every 200–300 years",
+      "Every 71–72 years",
+      "Every 82–83 years"
+    ],
+    "variants": [
+      {
+        "question": "When is Halley's Comet next expected to be visible from Earth?",
+        "type": "forward",
+        "distractors": [
+          "Around 2030",
+          "Around 2100",
+          "Around 2150"
+        ],
+        "answer": "Around 2061"
+      },
+      {
+        "question": "Which scientist calculated that comet sightings in 1531, 1607, and 1682 were all the same object?",
+        "type": "reverse",
+        "distractors": [
+          "Isaac Newton",
+          "Johannes Kepler",
+          "Galileo Galilei"
+        ],
+        "answer": "Edmond Halley"
+      },
+      {
+        "question": "Which is FALSE about Halley's Comet?",
+        "type": "negative",
+        "distractors": [
+          "It was last seen in 1986",
+          "It is named after Edmond Halley",
+          "It returns approximately every 75–76 years"
+        ],
+        "answer": "It completes one orbit of the Sun every 10 years"
+      },
+      {
+        "question": "Halley's Comet was last visible from Earth in _____.",
+        "type": "fill_blank",
+        "distractors": [
+          "1976",
+          "1996",
+          "2006"
+        ],
+        "answer": "1986"
+      },
+      {
+        "question": "Historical records of Halley's Comet stretch back at least 2,000 years.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "solar_system",
+    "categoryL3": "comets_asteroids",
+    "tags": [
+      "comets",
+      "halleys_comet",
+      "periodic_comet",
+      "edmond_halley",
+      "1986"
+    ],
+    "sourceName": "Generated",
+    "sourceUrl": "",
+    "contentVolatility": "stable",
+    "acceptableAnswers": [
+      "Every 75–76 years"
+    ],
+    "sensitivityLevel": 0,
+    "noveltyScore": 5
+  },
+  {
+    "id": "space-comets-003-oort-cloud",
+    "type": "knowledge",
+    "statement": "The Oort Cloud is a vast spherical shell of icy bodies at the outer edge of the solar system, believed to be the source of long-period comets.",
+    "quizQuestion": "Where do long-period comets that take thousands of years to orbit the Sun originate?",
+    "correctAnswer": "The Oort Cloud",
+    "explanation": "Proposed by Jan Oort in 1950, this hypothetical region extends from about 2,000 to 100,000 AU from the Sun. Gravitational disturbances — from passing stars or the galactic tide — can nudge icy bodies inward, sending them on long elliptical paths to the inner solar system as comets.",
+    "wowFactor": "The Oort Cloud is so far away it sits at the very edge of the Sun's gravitational grip — it's never been directly observed, only inferred from the comets it sends us!",
+    "visualDescription": "The Sun at the center of a vast, faint spherical haze of tiny white specks extending to the edge of the frame, with the labeled inner planets tiny dots near the center. Pixel art style with subtle sparkle texture.",
+    "distractors": [
+      "The asteroid belt between Mars and Jupiter",
+      "The surface of Neptune",
+      "The corona of the Sun",
+      "The Kuiper Belt beyond Neptune",
+      "The heliopause at the solar wind boundary",
+      "Interstellar space beyond the heliosphere",
+      "The scattered disc beyond the Kuiper Belt",
+      "The Hills Cloud inner region at 2,000–20,000 AU"
+    ],
+    "variants": [
+      {
+        "question": "Who first proposed the existence of the Oort Cloud in 1950?",
+        "type": "forward",
+        "distractors": [
+          "Gerard Kuiper",
+          "Fred Whipple",
+          "Edmond Halley"
+        ],
+        "answer": "Jan Oort"
+      },
+      {
+        "question": "The Oort Cloud is a source of which type of solar system body?",
+        "type": "reverse",
+        "distractors": [
+          "Near-Earth asteroids",
+          "Short-period comets only",
+          "Trans-Neptunian dwarf planets"
+        ],
+        "answer": "Long-period comets"
+      },
+      {
+        "question": "Which is FALSE about the Oort Cloud?",
+        "type": "negative",
+        "distractors": [
+          "It is thought to be the source of long-period comets",
+          "It is a spherical shell around the solar system",
+          "It was proposed by Jan Oort"
+        ],
+        "answer": "It has been directly observed by space probes"
+      },
+      {
+        "question": "The Oort Cloud lies at the outermost edge of the solar system, beyond the _____ Belt.",
+        "type": "fill_blank",
+        "distractors": [
+          "Asteroid",
+          "Van Allen",
+          "Radiation"
+        ],
+        "answer": "Kuiper"
+      },
+      {
+        "question": "The Oort Cloud has never been directly observed and remains a theoretical region.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "solar_system",
+    "categoryL3": "comets_asteroids",
+    "tags": [
+      "oort_cloud",
+      "comets",
+      "solar_system_edge",
+      "jan_oort",
+      "long_period"
+    ],
+    "sourceName": "Generated",
+    "sourceUrl": "",
+    "contentVolatility": "stable",
+    "acceptableAnswers": [
+      "The Oort Cloud"
+    ],
+    "sensitivityLevel": 0,
+    "noveltyScore": 5
+  },
+  {
+    "id": "space-space-suits-001-fourteen-layers",
+    "type": "knowledge",
+    "statement": "A NASA extravehicular activity (EVA) spacesuit consists of 14 layers of specialized materials that protect astronauts from vacuum, micrometeoroids, extreme temperatures, and radiation.",
+    "quizQuestion": "How many layers does a NASA EVA spacesuit have?",
+    "correctAnswer": "14 layers",
+    "explanation": "Each layer serves a specific purpose. The innermost layer is a cooling garment with water tubes. Middle layers provide pressure retention, insulation, and thermal protection. The outermost orthofabric layer resists micrometeoroids and the extreme thermal swings of space (-157°C to +121°C). Building a suit that is simultaneously flexible, pressurized, and protective is an extraordinary engineering challenge.",
+    "wowFactor": "A spacesuit is essentially a wearable spacecraft — its 14 layers protect you from vacuum, radiation, micrometeorites, and temperatures that swing 278 degrees Celsius!",
+    "visualDescription": "A cross-section diagram of a spacesuit showing 14 labeled layers in different colors — from a blue inner cooling layer to a white outer shell — with an astronaut silhouette wearing the complete suit beside it. Pixel art style.",
+    "distractors": [
+      "4 layers",
+      "2 layers",
+      "3 layers",
+      "7 layers",
+      "10 layers",
+      "20 layers",
+      "11 layers",
+      "18 layers"
+    ],
+    "variants": [
+      {
+        "question": "What does EVA stand for in the context of a NASA spacesuit?",
+        "type": "forward",
+        "distractors": [
+          "Extended Vacuum Armor",
+          "External Venting Array",
+          "Environmental Ventilation Apparatus"
+        ],
+        "answer": "Extravehicular Activity"
+      },
+      {
+        "question": "A 14-layer garment designed to protect astronauts in the vacuum of space is called what?",
+        "type": "reverse",
+        "distractors": [
+          "A pressurized flight suit",
+          "A thermal microsuit",
+          "A radiation vest"
+        ],
+        "answer": "An EVA spacesuit"
+      },
+      {
+        "question": "Which is NOT a hazard that spacesuit layers protect against?",
+        "type": "negative",
+        "distractors": [
+          "Vacuum of space",
+          "Extreme temperature swings",
+          "Micrometeoroid impacts"
+        ],
+        "answer": "Powerful sound waves from solar flares"
+      },
+      {
+        "question": "The outermost layer of an EVA spacesuit is made of _____, resistant to micrometeoroids.",
+        "type": "fill_blank",
+        "distractors": [
+          "Kevlar",
+          "polycarbonate",
+          "aerogel"
+        ],
+        "answer": "orthofabric"
+      },
+      {
+        "question": "A NASA EVA spacesuit has more than 10 individual protective layers.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "missions_spacecraft",
+    "categoryL3": "spacesuits_equipment",
+    "tags": [
+      "spacesuit",
+      "eva",
+      "nasa",
+      "astronaut",
+      "engineering"
+    ],
+    "sourceName": "Generated",
+    "sourceUrl": "",
+    "contentVolatility": "stable",
+    "acceptableAnswers": [
+      "14 layers"
+    ],
+    "sensitivityLevel": 0,
+    "noveltyScore": 5
+  },
+  {
+    "id": "space-space-suits-002-cost",
+    "type": "knowledge",
+    "statement": "A single NASA Extravehicular Mobility Unit (EMU) spacesuit costs approximately $12 million USD, making it one of the most expensive garments ever produced.",
+    "quizQuestion": "Approximately how much does a NASA EMU spacesuit cost?",
+    "correctAnswer": "$12 million",
+    "explanation": "The Extravehicular Mobility Unit worn on the International Space Station was originally developed in the 1970s–80s. When development and maintenance costs are included, NASA's Inspector General reported in 2017 that each suit has cost about $150 million over its lifetime. The raw hardware cost is about $12 million per unit, reflecting the extreme engineering precision required.",
+    "wowFactor": "At $12 million each, a spacesuit costs more than most private jets — and NASA only has about 11 of them left in working order!",
+    "visualDescription": "A gleaming white NASA spacesuit displayed on a stand in a clean room, with a price tag showing $12,000,000 attached. Gold-visored helmet reflects a tiny rocket. Pixel art style.",
+    "distractors": [
+      "$500,000",
+      "$50,000",
+      "$100,000",
+      "$3 million",
+      "$25 million",
+      "$1 million",
+      "$8 million",
+      "$18 million"
+    ],
+    "variants": [
+      {
+        "question": "What is the full name of the NASA spacesuit used on the International Space Station?",
+        "type": "forward",
+        "distractors": [
+          "Advanced Crew Escape Suit (ACES)",
+          "Shuttle Entry Air Lock Suit (SEALS)",
+          "Orbital Maneuvering Pressure Suit (OMPS)"
+        ],
+        "answer": "Extravehicular Mobility Unit (EMU)"
+      },
+      {
+        "question": "At approximately $12 million each, which piece of equipment is one of the most expensive garments ever made?",
+        "type": "reverse",
+        "distractors": [
+          "A Formula 1 racing helmet",
+          "A deep-sea diving suit",
+          "A fighter pilot's pressure suit"
+        ],
+        "answer": "A NASA EMU spacesuit"
+      },
+      {
+        "question": "Which is FALSE about the cost of a NASA spacesuit?",
+        "type": "negative",
+        "distractors": [
+          "Each EMU costs approximately $12 million",
+          "Lifetime costs including maintenance are far higher",
+          "Spacesuits are among the most expensive garments ever made"
+        ],
+        "answer": "Spacesuits can be bought commercially for under $1 million"
+      },
+      {
+        "question": "Each NASA EMU spacesuit hardware costs approximately $_____ million.",
+        "type": "fill_blank",
+        "distractors": [
+          "1",
+          "50",
+          "150"
+        ],
+        "answer": "12"
+      },
+      {
+        "question": "A NASA EVA spacesuit costs more than $10 million per unit.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "missions_spacecraft",
+    "categoryL3": "spacesuits_equipment",
+    "tags": [
+      "spacesuit",
+      "emu",
+      "nasa",
+      "cost",
+      "engineering"
+    ],
+    "sourceName": "Generated",
+    "sourceUrl": "",
+    "contentVolatility": "stable",
+    "acceptableAnswers": [
+      "$12 million"
+    ],
+    "sensitivityLevel": 0,
+    "noveltyScore": 5
+  },
+  {
+    "id": "space-space-suits-003-life-support",
+    "type": "knowledge",
+    "statement": "A spacesuit's Primary Life Support System (PLSS) provides oxygen, removes carbon dioxide, regulates pressure and temperature, and supplies water cooling — allowing an astronaut to survive up to 8 hours during a spacewalk.",
+    "quizQuestion": "What is the backpack-like unit called that provides life support during a spacewalk?",
+    "correctAnswer": "Primary Life Support System (PLSS)",
+    "explanation": "The PLSS is the backpack worn on the EMU. It contains oxygen tanks, a CO2 scrubber using lithium hydroxide canisters, a water cooling pump, communications gear, and a fan to circulate air. Without it, an astronaut in a pressurized suit would suffocate in minutes from CO2 buildup even with a full oxygen supply.",
+    "wowFactor": "The PLSS backpack is like a tiny spaceship on your back — without it, even a perfect spacesuit becomes a coffin within minutes!",
+    "visualDescription": "An astronaut floating in space with a large white rectangular backpack (PLSS) visible, with labeled arrows pointing to the O2 tanks, CO2 scrubber, and cooling water lines. Stars and Earth curve below. Pixel art style.",
+    "distractors": [
+      "Supplemental Oxygen Respirator (SOR)",
+      "Astronaut Breathing Tank (ABT)",
+      "Portable Air Canister (PAC)",
+      "Secondary Oxygen Pack (SOP)",
+      "Crew Life Support Assembly (CLSA)",
+      "Oxygen Replenishment System (ORS)",
+      "Simplified Aid for EVA Rescue (SAFER)",
+      "Display and Control Module (DCM)"
+    ],
+    "variants": [
+      {
+        "question": "The PLSS in a spacesuit removes which dangerous gas exhaled by the astronaut?",
+        "type": "forward",
+        "distractors": [
+          "Nitrogen",
+          "Methane",
+          "Water vapor"
+        ],
+        "answer": "Carbon dioxide"
+      },
+      {
+        "question": "Which system in a spacesuit provides oxygen, removes CO2, and regulates temperature during a spacewalk?",
+        "type": "reverse",
+        "distractors": [
+          "Thermal Micrometeoroid Garment (TMG)",
+          "Liquid Cooling and Ventilation Garment (LCVG)",
+          "Hard Upper Torso (HUT)"
+        ],
+        "answer": "Primary Life Support System (PLSS)"
+      },
+      {
+        "question": "Which is NOT a function of the spacesuit's PLSS?",
+        "type": "negative",
+        "distractors": [
+          "Supplying oxygen",
+          "Removing carbon dioxide",
+          "Regulating suit temperature"
+        ],
+        "answer": "Generating thrust to move the astronaut through space"
+      },
+      {
+        "question": "An astronaut's PLSS can support a spacewalk for up to _____ hours.",
+        "type": "fill_blank",
+        "distractors": [
+          "2",
+          "24",
+          "12"
+        ],
+        "answer": "8"
+      },
+      {
+        "question": "Without the PLSS, an astronaut in a pressurized suit would suffocate from CO2 buildup in minutes.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "missions_spacecraft",
+    "categoryL3": "spacesuits_equipment",
+    "tags": [
+      "spacesuit",
+      "plss",
+      "life_support",
+      "eva",
+      "astronaut"
+    ],
+    "sourceName": "Generated",
+    "sourceUrl": "",
+    "contentVolatility": "stable",
+    "acceptableAnswers": [
+      "Primary Life Support System (PLSS)"
+    ],
+    "sensitivityLevel": 0,
+    "noveltyScore": 5
+  },
+  {
+    "id": "space-dark-matter-001-universe-fraction",
+    "type": "knowledge",
+    "statement": "Dark matter makes up approximately 27% of the total mass-energy content of the universe, while all visible ordinary matter accounts for only about 5%.",
+    "quizQuestion": "Approximately what percentage of the universe's total mass-energy is dark matter?",
+    "correctAnswer": "About 27%",
+    "explanation": "The universe's total content is estimated as roughly 68% dark energy, 27% dark matter, and 5% ordinary (baryonic) matter. This means everything we can see — galaxies, stars, planets, gas — is a small fraction of what actually exists. Dark matter cannot be seen, but its gravitational effects on visible matter reveal its presence.",
+    "wowFactor": "Everything humans have ever seen — every star, planet, and galaxy — makes up only 5% of the universe. The rest is invisible dark matter and dark energy!",
+    "visualDescription": "A pie chart of the universe: a tiny 5% slice glowing yellow (ordinary matter), a large 27% slice in dark purple (dark matter), and the vast remainder in black with swirls (dark energy). Pixel art style with glowing labels.",
+    "distractors": [
+      "About 5%",
+      "About 50%",
+      "About 90%",
+      "About 68%",
+      "About 15%",
+      "About 40%",
+      "About 23%",
+      "About 31%"
+    ],
+    "variants": [
+      {
+        "question": "Ordinary visible matter — everything humans can see — makes up approximately what fraction of the universe?",
+        "type": "forward",
+        "distractors": [
+          "About 27%",
+          "About 50%",
+          "About 68%"
+        ],
+        "answer": "About 5%"
+      },
+      {
+        "question": "Which component of the universe is estimated to make up 27% of its total mass-energy content?",
+        "type": "reverse",
+        "distractors": [
+          "Dark energy",
+          "Ordinary matter",
+          "Neutrinos"
+        ],
+        "answer": "Dark matter"
+      },
+      {
+        "question": "Which is FALSE about the universe's composition?",
+        "type": "negative",
+        "distractors": [
+          "Dark matter is about 27%",
+          "Dark energy dominates at about 68%",
+          "Visible matter is only about 5%"
+        ],
+        "answer": "Ordinary matter makes up the majority of the universe's mass-energy"
+      },
+      {
+        "question": "The universe is approximately 68% dark energy, _____% dark matter, and 5% ordinary matter.",
+        "type": "fill_blank",
+        "distractors": [
+          "50",
+          "15",
+          "40"
+        ],
+        "answer": "27"
+      },
+      {
+        "question": "Dark matter makes up more of the universe's mass-energy content than ordinary visible matter.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology",
+    "categoryL3": "dark_matter_energy",
+    "tags": [
+      "dark_matter",
+      "cosmology",
+      "universe_composition",
+      "dark_energy",
+      "baryonic_matter"
+    ],
+    "sourceName": "Generated",
+    "sourceUrl": "",
+    "contentVolatility": "stable",
+    "acceptableAnswers": [
+      "About 27%"
+    ],
+    "sensitivityLevel": 0,
+    "noveltyScore": 5
+  },
+  {
+    "id": "space-dark-matter-002-invisible",
+    "type": "knowledge",
+    "statement": "Dark matter does not emit, absorb, or reflect light or any other electromagnetic radiation, making it completely invisible to all current telescopes.",
+    "quizQuestion": "Why can't dark matter be seen with any telescope?",
+    "correctAnswer": "It does not interact with electromagnetic radiation (light)",
+    "explanation": "All standard astronomical observation — from visible light to radio waves to X-rays — relies on detecting electromagnetic radiation. Dark matter interacts only through gravity and possibly the weak nuclear force. It passes through ordinary matter with no electromagnetic interaction, making it undetectable by conventional instruments.",
+    "wowFactor": "Dark matter passes right through you, through the Earth, through walls — trillions of dark matter particles may be streaming through your body right now!",
+    "visualDescription": "A glowing galaxy spiral with normal stars rendered in bright yellows and blues, but surrounded by a faint ghostly purple haze representing the dark matter halo that cannot be directly seen. Pixel art style with subtle transparency effects.",
+    "distractors": [
+      "It is too far away to be detected",
+      "It moves too fast for telescopes to track",
+      "It is hidden behind dense nebulae",
+      "It only exists at temperatures too extreme to detect",
+      "It absorbs all light but emits none back",
+      "It is located in regions of empty space where telescopes cannot point",
+      "Its particles decay into forms below telescope detection thresholds",
+      "Its weak interaction cross-section is below current detector sensitivity"
+    ],
+    "variants": [
+      {
+        "question": "What force does dark matter interact with that allows astronomers to detect its presence?",
+        "type": "forward",
+        "distractors": [
+          "Electromagnetism",
+          "The strong nuclear force",
+          "Radiation pressure"
+        ],
+        "answer": "Gravity"
+      },
+      {
+        "question": "Which type of matter makes up 27% of the universe but cannot be seen by any telescope?",
+        "type": "reverse",
+        "distractors": [
+          "Antimatter",
+          "Dark energy",
+          "Cold gas clouds"
+        ],
+        "answer": "Dark matter"
+      },
+      {
+        "question": "Which is FALSE about dark matter?",
+        "type": "negative",
+        "distractors": [
+          "It cannot be seen by any telescope",
+          "It does not interact with light",
+          "Its existence is inferred from gravitational effects"
+        ],
+        "answer": "It emits faint infrared radiation that specialized telescopes can detect"
+      },
+      {
+        "question": "Dark matter interacts through gravity but not through _____.",
+        "type": "fill_blank",
+        "distractors": [
+          "time",
+          "space",
+          "mass"
+        ],
+        "answer": "electromagnetism"
+      },
+      {
+        "question": "Dark matter has been directly photographed using special X-ray telescopes.",
+        "type": "true_false",
+        "distractors": [
+          "True"
+        ],
+        "answer": "False"
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 10,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology",
+    "categoryL3": "dark_matter_energy",
+    "tags": [
+      "dark_matter",
+      "invisible",
+      "electromagnetism",
+      "gravity",
+      "cosmology"
+    ],
+    "sourceName": "Generated",
+    "sourceUrl": "",
+    "contentVolatility": "stable",
+    "acceptableAnswers": [
+      "It does not interact with electromagnetic radiation (light)"
+    ],
+    "sensitivityLevel": 0,
+    "noveltyScore": 5
+  },
+  {
+    "id": "space-dark-matter-003-gravitational-evidence",
+    "type": "knowledge",
+    "statement": "The primary evidence for dark matter comes from observing that galaxies rotate too fast at their outer edges to be held together by their visible matter alone — requiring additional invisible mass.",
+    "quizQuestion": "What observational evidence most directly suggests that dark matter exists?",
+    "correctAnswer": "Galaxies rotate faster at their outer edges than visible matter alone can explain",
+    "explanation": "In the 1970s, Vera Rubin and Kent Ford measured the rotation curves of spiral galaxies and found that stars far from a galaxy's center orbit just as fast as those near the center — defying Newtonian predictions. The only explanation was a halo of unseen mass (dark matter) surrounding each galaxy. Gravitational lensing of light from distant galaxies provides further confirmation.",
+    "wowFactor": "Vera Rubin discovered dark matter's fingerprints in the 1970s by timing how fast galaxies spin — and was never given the Nobel Prize for it before she died!",
+    "visualDescription": "A top-down spiral galaxy with a dotted white ring showing 'expected orbit speed' dropping off at distance, and a solid yellow line showing the actual flat rotation curve extending far out. A ghostly blue halo extends beyond the visible galaxy. Pixel art style.",
+    "distractors": [
+      "Stars near galactic centers orbit much faster than expected",
+      "Entire galaxies are hotter than standard models predict",
+      "Dark matter emits a faint glow detected by radio telescopes",
+      "Cosmic microwave background anisotropies show dark matter absorption lines",
+      "Supernovae in dark matter-dense regions are systematically dimmer",
+      "Galaxy clusters move through the cosmic web slower than models predict",
+      "Baryonic acoustic oscillation peak ratios deviate from visible matter models",
+      "Bullet Cluster hot gas aligns with dark matter mass distribution from lensing"
+    ],
+    "variants": [
+      {
+        "question": "Which astronomer in the 1970s provided key evidence for dark matter through galaxy rotation measurements?",
+        "type": "forward",
+        "distractors": [
+          "Edwin Hubble",
+          "Cecilia Payne-Gaposchkin",
+          "Jocelyn Bell Burnell"
+        ],
+        "answer": "Vera Rubin"
+      },
+      {
+        "question": "A galaxy rotation curve that stays flat instead of dropping off at the outer edge is evidence for what?",
+        "type": "reverse",
+        "distractors": [
+          "The galaxy accelerating its expansion",
+          "Strong dark energy within the galaxy",
+          "The galaxy being pulled by a nearby black hole"
+        ],
+        "answer": "Dark matter surrounding the galaxy"
+      },
+      {
+        "question": "Which is NOT a piece of evidence for dark matter?",
+        "type": "negative",
+        "distractors": [
+          "Flat galaxy rotation curves",
+          "Gravitational lensing by unseen mass",
+          "Bullet Cluster mass-light offset"
+        ],
+        "answer": "Dark matter particles have been captured in underground detectors"
+      },
+      {
+        "question": "The technique of observing how mass bends light from distant galaxies is called gravitational _____.",
+        "type": "fill_blank",
+        "distractors": [
+          "shifting",
+          "bending",
+          "arcing"
+        ],
+        "answer": "lensing"
+      },
+      {
+        "question": "Vera Rubin's galaxy rotation measurements in the 1970s provided strong evidence for dark matter.",
+        "type": "true_false",
+        "distractors": [
+          "False"
+        ],
+        "answer": "True"
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 10,
+    "ageRating": "teen",
+    "rarity": "epic",
+    "categoryL1": "Space & Astronomy",
+    "categoryL2": "cosmology",
+    "categoryL3": "dark_matter_energy",
+    "tags": [
+      "dark_matter",
+      "vera_rubin",
+      "rotation_curves",
+      "gravitational_lensing",
+      "evidence"
+    ],
+    "sourceName": "Generated",
+    "sourceUrl": "",
+    "contentVolatility": "stable",
+    "acceptableAnswers": [
+      "Galaxies rotate faster at their outer edges than visible matter alone can explain"
+    ],
+    "sensitivityLevel": 0,
+    "noveltyScore": 5
   }
 ]
