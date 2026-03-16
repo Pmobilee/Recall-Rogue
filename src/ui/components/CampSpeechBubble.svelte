@@ -12,7 +12,7 @@
 {#if visible}
   <div
     class="speech-bubble"
-    style="position: absolute; top: {top}; left: {left}; transform: translate(-50%, -100%);"
+    style="position: absolute; top: {top}; left: {left}; transform: translate(-80%, 0);"
   >
     <span class="bubble-text">{text}</span>
   </div>
@@ -35,14 +35,13 @@
   .speech-bubble::after {
     content: '';
     position: absolute;
-    bottom: -6px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: -6px;
+    right: 10px;
     width: 0;
     height: 0;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-top: 6px solid rgba(20, 20, 30, 0.9);
+    border-bottom: 6px solid rgba(20, 20, 30, 0.9);
   }
 
   .bubble-text {
@@ -52,11 +51,11 @@
   @keyframes bubble-fade-in {
     from {
       opacity: 0;
-      transform: translate(-50%, -90%);
+      transform: translate(-80%, 10%);
     }
     to {
       opacity: 1;
-      transform: translate(-50%, -100%);
+      transform: translate(-80%, 0);
     }
   }
 </style>

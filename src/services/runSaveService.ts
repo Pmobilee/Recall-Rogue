@@ -10,6 +10,7 @@ import { getAscensionModifiers } from './ascension';
 import type { Card, CardRunState } from '../data/card-types';
 import type { RewardBundle, RewardRevealStep } from '../ui/stores/gameState';
 import type { EncounterSnapshot } from './encounterBridge';
+import { serializeRunRngState } from './seededRng';
 
 const SAVE_KEY = 'recall-rogue-active-run';
 
@@ -38,6 +39,8 @@ export interface RunSaveState {
   rewardRevealStep?: RewardRevealStep;
   /** Serialized encounter bridge state required for exact resume. */
   encounterSnapshot?: SerializedEncounterSnapshot;
+  /** Serialized RNG fork states for deterministic resume. */
+  rngState?: { seed: number; forks: Record<string, number> } | null;
 }
 
 /** RunState with Sets replaced by arrays for JSON serialization. */
@@ -103,6 +106,7 @@ export function saveActiveRun(state: {
   activeRewardBundle?: RewardBundle | null;
   rewardRevealStep?: RewardRevealStep;
   encounterSnapshot?: EncounterSnapshot | null;
+  rngState?: { seed: number; forks: Record<string, number> } | null;
 }): void {
   const encounterSnapshot: SerializedEncounterSnapshot | undefined = state.encounterSnapshot
     ? {
@@ -123,6 +127,7 @@ export function saveActiveRun(state: {
     activeRewardBundle: state.activeRewardBundle ?? null,
     rewardRevealStep: state.rewardRevealStep ?? 'gold',
     encounterSnapshot,
+    rngState: serializeRunRngState(),
   };
   try {
     localStorage.setItem(SAVE_KEY, JSON.stringify(serialized));
@@ -143,6 +148,7 @@ export function loadActiveRun(): {
   activeRewardBundle?: RewardBundle | null;
   rewardRevealStep?: RewardRevealStep;
   encounterSnapshot?: EncounterSnapshot | null;
+  rngState?: { seed: number; forks: Record<string, number> } | null;
 } | null {
   try {
     const raw = localStorage.getItem(SAVE_KEY);
@@ -165,6 +171,7 @@ export function loadActiveRun(): {
           activeRunPool: parsed.encounterSnapshot.activeRunPool ?? [],
         }
         : null,
+      rngState: parsed.rngState ?? null,
     };
   } catch {
     return null;

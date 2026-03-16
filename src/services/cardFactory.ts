@@ -1,9 +1,17 @@
 import type { Fact, ReviewState } from '../data/types';
 import type { Card, CardTier, CardType } from '../data/card-types';
 import { resolveDomain } from './domainResolver';
-import { BASE_EFFECT, EASE_POWER } from '../data/balance';
+import { BASE_EFFECT } from '../data/balance';
 import { getCardTier, qualifiesForMasteryTrial } from './tierDerivation';
 import { deriveCardTypeForFactId } from './cardTypeAllocator';
+
+/** Card power scales with mastery tier — learning makes cards stronger. */
+const TIER_MULTIPLIER: Record<CardTier, number> = {
+  '1': 1.0,    // Learning — base power
+  '2a': 1.3,   // Proven — 30% bonus
+  '2b': 1.6,   // Deep recall — 60% bonus
+  '3': 1.6,    // Mastered — permanent 60% bonus
+};
 
 let _cardIdCounter = 0;
 
@@ -31,31 +39,6 @@ export function computeTier(reviewState: ReviewState | undefined): CardTier {
   });
 }
 
-/**
- * Computes the effect multiplier from the SM-2 ease factor.
- *
- * Lower ease = harder card = higher multiplier (difficulty-proportional power).
- * Cards the player struggles with hit harder — rewarding perseverance.
- *
- * Uses the EASE_POWER lookup table from balance.ts:
- *   ease < 1.5  → 1.6x (Very Hard)
- *   ease < 2.0  → 1.3x (Hard)
- *   ease < 2.5  → 1.0x (Medium)
- *   ease >= 2.5 → 0.8x (Easy)
- *
- * If no reviewState, defaults to 1.0x (medium).
- */
-export function computeEffectMultiplier(reviewState: ReviewState | undefined): number {
-  if (!reviewState) return 1.0;
-  const ease = reviewState.easeFactor;
-  for (const bracket of EASE_POWER) {
-    if (ease < bracket.maxEase) {
-      return bracket.multiplier;
-    }
-  }
-  // Fallback (should not reach here given Infinity sentinel)
-  return 1.0;
-}
 
 /**
  * Creates a Card entity from a Fact and its optional review state.
@@ -74,7 +57,7 @@ export function createCard(
   const cardType = cardTypeOverride ?? deriveCardTypeForFactId(fact.id);
   const tier = computeTier(reviewState);
   const baseEffectValue = BASE_EFFECT[cardType] ?? 0;
-  const effectMultiplier = computeEffectMultiplier(reviewState);
+  const effectMultiplier = TIER_MULTIPLIER[tier] ?? 1.0;
   const isMasteryTrial = qualifiesForMasteryTrial({
     stability: reviewState?.stability ?? reviewState?.interval ?? 0,
     consecutiveCorrect: reviewState?.consecutiveCorrect ?? reviewState?.repetitions ?? 0,

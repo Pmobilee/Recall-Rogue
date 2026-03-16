@@ -90,6 +90,7 @@ export function resolveDomain(fact: Fact): FactDomain {
     }
   }
 
+
   // Route geography drill subcategories (capitals, flags) to dedicated domain
   if (resolved === 'geography') {
     const sub = fact.categoryL2 ?? fact.category[1] ?? ''

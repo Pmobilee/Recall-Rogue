@@ -1,6 +1,7 @@
 import type { Fact, QuestionVariant, ReviewState } from '../data/types'
 import { factsDB } from './factsDB'
 import { getCardTier } from './tierDerivation'
+import { getRunRng, isRunRngActive } from './seededRng'
 
 export interface MasteryChallengeQuestion {
   factId: string
@@ -30,8 +31,9 @@ function normalizeText(value: string): string {
 
 function shuffle<T>(items: T[]): T[] {
   const next = [...items]
+  const rng = isRunRngActive() ? getRunRng('mastery') : null
   for (let index = next.length - 1; index > 0; index -= 1) {
-    const swapIndex = Math.floor(Math.random() * (index + 1))
+    const swapIndex = Math.floor((rng ? rng.next() : Math.random()) * (index + 1))
     const temp = next[index]
     next[index] = next[swapIndex]
     next[swapIndex] = temp
@@ -102,12 +104,14 @@ function pickChallengeCandidate(states: ReviewState[]): ReviewState | null {
     .sort((left, right) => (left.masteredAt ?? 0) - (right.masteredAt ?? 0))
 
   if (eligible.length === 0) return null
-  return eligible[Math.floor(Math.random() * eligible.length)] ?? null
+  const rng = isRunRngActive() ? getRunRng('mastery') : null
+  return eligible[Math.floor((rng ? rng.next() : Math.random()) * eligible.length)] ?? null
 }
 
 export function rollMasteryChallenge(states: ReviewState[]): MasteryChallengeQuestion | null {
   if (!factsDB.isReady()) return null
-  if (Math.random() > ROOM_CHALLENGE_CHANCE) return null
+  const rng = isRunRngActive() ? getRunRng('mastery') : null
+  if ((rng ? rng.next() : Math.random()) > ROOM_CHALLENGE_CHANCE) return null
 
   const candidate = pickChallengeCandidate(states)
   if (!candidate) return null

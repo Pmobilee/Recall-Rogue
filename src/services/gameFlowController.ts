@@ -88,6 +88,7 @@ import {
   activateDeterministicRandom,
   deactivateDeterministicRandom,
 } from './deterministicRandom'
+import { initRunRng, destroyRunRng } from './seededRng'
 import {
   rollMasteryChallenge,
   type MasteryChallengeQuestion,
@@ -164,6 +165,7 @@ export function startNewRun(options?: { includeOutsideDueReviews?: boolean }): v
   activeDailySeed = null
   pendingIncludeOutsideDueReviews = options?.includeOutsideDueReviews ?? false
   deactivateDeterministicRandom()
+  destroyRunRng()
   // Always set deck mode from hub selector, even for onboarding flow
   const save = get(playerSave);
   pendingDeckMode = save?.activeDeckMode ?? { type: 'general' as const };
@@ -284,6 +286,7 @@ export async function startDailyExpeditionRun(): Promise<{ ok: true } | { ok: fa
     activeRunMode = 'standard'
     activeDailySeed = null
     deactivateDeterministicRandom()
+    destroyRunRng()
     return { ok: false, reason: 'failed_to_start_encounter' }
   }
   autoSaveRun('combat')
@@ -329,6 +332,7 @@ export async function startScholarChallengeRun(): Promise<{ ok: true } | { ok: f
     activeRunMode = 'standard'
     activeDailySeed = null
     deactivateDeterministicRandom()
+    destroyRunRng()
     return { ok: false, reason: 'failed_to_start_encounter' }
   }
   autoSaveRun('combat')
@@ -347,6 +351,7 @@ export async function startEndlessDepthsRun(): Promise<{ ok: true } | { ok: fals
   activeDailySeed = null
   pendingIncludeOutsideDueReviews = false
   deactivateDeterministicRandom()
+  destroyRunRng()
   pendingDomainSelection = { primary: 'general_knowledge', secondary: 'history' }
   onArchetypeSelected('balanced')
 
@@ -495,6 +500,7 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
   activeRunMode = 'standard'
   activeDailySeed = null
   deactivateDeterministicRandom()
+  destroyRunRng()
   resetEncounterBridge()
   clearActiveRun();
   lastRunSummary.set(captureRunSummary(run, endData));
@@ -636,6 +642,8 @@ export function onArchetypeSelected(archetype: RewardArchetype): void {
   // Generate the initial ActMap for the first segment
   run.floor.actMap = generateActMap(run.floor.segment, run.runSeed);
   activeRunState.set(run);
+  // Initialize forked RNG system for all modes that use a seed
+  initRunRng(run.runSeed);
   // Activate deterministic random for standard and endless_depths runs
   if (activeRunMode === 'standard' || activeRunMode === 'endless_depths') {
     activateDeterministicRandom(run.runSeed);
@@ -1365,6 +1373,7 @@ export function abandonActiveRun(): void {
   activeRunMode = 'standard'
   activeDailySeed = null
   deactivateDeterministicRandom()
+  destroyRunRng()
   resetEncounterBridge()
   clearActiveRun();
   activeRunState.set(null);
@@ -1537,6 +1546,7 @@ export function returnToMenu(): void {
   activeRunMode = 'standard'
   activeDailySeed = null
   deactivateDeterministicRandom()
+  destroyRunRng()
   clearActiveRun();
   activeRunState.set(null);
   activeRunEndData.set(null);
@@ -1562,6 +1572,7 @@ export function playAgain(): void {
   activeRunMode = 'standard'
   activeDailySeed = null
   deactivateDeterministicRandom()
+  destroyRunRng()
   clearActiveRun();
   activeRunState.set(null);
   activeRunEndData.set(null);
@@ -1598,27 +1609,32 @@ export function restoreRunMode(runMode?: 'standard' | 'daily_expedition' | 'endl
     activeRunMode = 'daily_expedition'
     activeDailySeed = dailySeed
     activateDeterministicRandom(dailySeed)
+    initRunRng(dailySeed)
     return
   }
   if (runMode === 'scholar_challenge' && typeof dailySeed === 'number' && Number.isFinite(dailySeed)) {
     activeRunMode = 'scholar_challenge'
     activeDailySeed = dailySeed
     activateDeterministicRandom(dailySeed)
+    initRunRng(dailySeed)
     return
   }
   if (runMode === 'endless_depths' && typeof runSeed === 'number' && Number.isFinite(runSeed)) {
     activeRunMode = 'endless_depths'
     activeDailySeed = null
     activateDeterministicRandom(runSeed)
+    initRunRng(runSeed)
     return
   }
   if (runMode === 'standard' && typeof runSeed === 'number' && Number.isFinite(runSeed)) {
     activeRunMode = 'standard'
     activeDailySeed = null
     activateDeterministicRandom(runSeed)
+    initRunRng(runSeed)
     return
   }
   activeRunMode = 'standard'
   activeDailySeed = null
   deactivateDeterministicRandom()
+  destroyRunRng()
 }

@@ -14,7 +14,7 @@ import { selectRunBounties } from './bountyManager';
 import type { CanaryState } from './canaryService';
 import { createCanaryState, recordCanaryAnswer } from './canaryService';
 import { getAscensionModifiers, type AscensionModifiers } from './ascension';
-import { getRewardMultiplier } from './masteryScalingService';
+import { getRewardMultiplier, isPracticeRun } from './masteryScalingService';
 import type { DeckMode } from '../data/studyPreset';
 
 export type RewardArchetype = 'balanced' | 'aggressive' | 'defensive' | 'control' | 'hybrid';
@@ -65,6 +65,8 @@ export interface RunState {
   phoenixFeatherUsed: boolean;
   /** Mastery percentage of the deck/pool at run start (0-1). */
   deckMasteryPct?: number;
+  /** True when the selected pool is >75% mastered — rewards are disabled for this run. */
+  practiceRunDetected?: boolean;
   /** Whether rewards are disabled (e.g. pool too small). */
   rewardsDisabled?: boolean;
   /** Active deck mode for this run (general/preset/language). */
@@ -81,6 +83,14 @@ export interface RunState {
   domainAccuracy: Record<string, { answered: number; correct: number }>;
   /** Number of cards upgraded during this run. */
   cardsUpgraded: number;
+  /** Total questions answered this run (all tiers). */
+  questionsAnswered: number;
+  /** Total questions answered correctly this run (all tiers). */
+  questionsCorrect: number;
+  /** Novel (Tier 1) questions answered this run. */
+  novelQuestionsAnswered: number;
+  /** Novel (Tier 1) questions answered correctly this run. */
+  novelQuestionsCorrect: number;
   /** Deterministic seed for this run (used in all modes for fair multiplayer/daily comparisons). */
   runSeed: number;
 }
@@ -104,6 +114,8 @@ export interface RunEndData {
   currencyEarned: number;
   /** Relics collected during the run. */
   relicsCollected?: number;
+  /** Whether this was a practice run (player already mastered the material) — camp rewards disabled. */
+  isPracticeRun: boolean;
 }
 
 export function createRunState(
@@ -125,8 +137,8 @@ export function createRunState(
     includeOutsideDueReviews?: boolean;
   },
 ): RunState {
-  const runSeed = Math.floor(Math.random() * 0xFFFFFFFF);
-  const bountyCount = Math.random() < 0.5 ? 1 : 2;
+  const runSeed = crypto.getRandomValues(new Uint32Array(1))[0];
+  const bountyCount = (crypto.getRandomValues(new Uint32Array(1))[0] % 2 === 0) ? 1 : 2;
   const ascensionLevel = options?.ascensionLevel ?? 0;
   const ascensionModifiers = getAscensionModifiers(ascensionLevel);
   const maxHp = ascensionModifiers.playerMaxHpOverride ?? PLAYER_MAX_HP;
@@ -173,6 +185,10 @@ export function createRunState(
     phoenixFeatherUsed: false,
     domainAccuracy: {},
     cardsUpgraded: 0,
+    questionsAnswered: 0,
+    questionsCorrect: 0,
+    novelQuestionsAnswered: 0,
+    novelQuestionsCorrect: 0,
     runSeed,
     deckMode: options?.deckMode,
     deckMasteryPct: options?.deckMasteryPct,
@@ -190,10 +206,13 @@ export function recordCardPlay(
   comboCount: number,
   factId?: string,
   domain?: string,
+  isNovel?: boolean,
 ): void {
   state.factsAnswered += 1;
+  state.questionsAnswered += 1;
   if (correct) {
     state.factsCorrect += 1;
+    state.questionsCorrect += 1;
     state.cardsEarned += 1;
     if (factId) {
       state.factsAnsweredCorrectly.add(factId);
@@ -205,6 +224,10 @@ export function recordCardPlay(
       state.factsAnsweredIncorrectly.add(factId);
       state.factsAnsweredCorrectly.delete(factId);
     }
+  }
+  if (isNovel) {
+    state.novelQuestionsAnswered += 1;
+    if (correct) state.novelQuestionsCorrect += 1;
   }
   state.correctAnswers = state.factsCorrect;
   state.canary = recordCanaryAnswer(state.canary, correct);
@@ -251,8 +274,9 @@ export function endRun(state: RunState, reason: 'victory' | 'defeat' | 'retreat'
   const rewardMultiplier = deathPenalty * difficultyBonus * masteryRewardScale * poolRewardScale;
   const completedBounties = state.bounties.filter((bounty) => bounty.completed).map((bounty) => bounty.name);
   const rewardsSuppressed = (reason === 'retreat' && state.retreatRewardLocked) || state.rewardsDisabled;
-  const bountyBonusCurrency = rewardsSuppressed ? 0 : completedBounties.length * 20;
-  const baseCurrency = rewardsSuppressed ? 0 : (state.currency + bountyBonusCurrency);
+  const practiceRun = isPracticeRun(state);
+  const bountyBonusCurrency = (rewardsSuppressed || practiceRun) ? 0 : completedBounties.length * 20;
+  const baseCurrency = (rewardsSuppressed || practiceRun) ? 0 : (state.currency + bountyBonusCurrency);
   const currencyEarned = Math.floor(baseCurrency * rewardMultiplier);
 
   return {
@@ -273,5 +297,6 @@ export function endRun(state: RunState, reason: 'victory' | 'defeat' | 'retreat'
     rewardMultiplier,
     currencyEarned,
     relicsCollected: state.runRelics.length,
+    isPracticeRun: practiceRun,
   };
 }

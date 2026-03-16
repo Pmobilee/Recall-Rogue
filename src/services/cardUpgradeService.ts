@@ -26,32 +26,32 @@ export const UPGRADE_DEFS: Record<string, MechanicUpgrade> = {
   strike:    { baseValueDelta: 3 },                                    // 8→11
   multi_hit: { baseValueDelta: 0, apCostDelta: -1 },                  // AP 2→1
   block:     { baseValueDelta: 3 },                                    // 6→9
-  thorns:    { baseValueDelta: 0, secondaryValueDelta: 1, apCostDelta: -1 }, // AP 2→1, reflect +1
+  thorns:    { baseValueDelta: 0, secondaryValueDelta: 1, apCostDelta: -1 }, // AP 1→0, reflect +1 (4 total)
   emergency: { baseValueDelta: 2 },                                    // 4→6
-  scout:     { baseValueDelta: 0, apCostDelta: -1 },                  // AP 1→0
-  recycle:   { baseValueDelta: 0, apCostDelta: -1 },                  // AP 1→0
+  scout:     { baseValueDelta: 1, apCostDelta: -1 },                  // AP 1→0, draw 2→3
+  recycle:   { baseValueDelta: 1 },                                    // draw 3→4
   cleanse:   { baseValueDelta: 0, apCostDelta: -1 },                  // AP 1→0
-  empower:   { baseValueDelta: 15 },                                   // 30→45%
+  empower:   { baseValueDelta: 15 },                                   // 50→65%
   quicken:   { baseValueDelta: 0, addTag: 'draw' },                   // +draw (stays 0 AP)
   weaken:    { baseValueDelta: 1 },                                    // 2→3 turns
   expose:    { baseValueDelta: 1 },                                    // 1→2 turns
   mirror:    { baseValueDelta: 0.25 },                                 // 1.0→1.25x
   adapt:     { baseValueDelta: 0.25 },                                 // 1.0→1.25x
+  focus:         { baseValueDelta: 0, secondaryValueDelta: 1 },        // next TWO cards cost 1 less AP
   // Phase 2
   heavy_strike:  { baseValueDelta: 0, apCostDelta: -1 },              // AP 3→2
   piercing:      { baseValueDelta: 3 },                                // 6→9
   reckless:      { baseValueDelta: 3 },                                // 12→15
   execute:       { baseValueDelta: 0, secondaryValueDelta: 4 },       // bonus 8→12
   lifetap:       { baseValueDelta: 1, apCostDelta: -1 },              // AP 2→1, 8→9
-  fortify:       { baseValueDelta: 0, apCostDelta: -1 },              // AP 2→1
+  fortify:       { baseValueDelta: 0, apCostDelta: -1 },              // AP 2→1 (7 block)
   parry:         { baseValueDelta: 2 },                                // 3→5
   brace:         { baseValueDelta: 3 },                                // +3 flat bonus
-  overheal:      { baseValueDelta: 0, apCostDelta: -1 },              // AP 2→1
+  overheal:      { baseValueDelta: 0, apCostDelta: -1 },              // AP 2→1 (10 block, ×2 <50%)
   double_strike: { baseValueDelta: 0, apCostDelta: -1 },              // AP 2→1
-  focus:         { baseValueDelta: 20 },                               // 130→150 (1.3x→1.5x)
   slow:          { baseValueDelta: 0, apCostDelta: -1 },              // AP 2→1
   hex:           { baseValueDelta: 1 },                                // 3→4/turn
-  foresight:     { baseValueDelta: 0, apCostDelta: -1 },              // AP 1→0
+  foresight:     { baseValueDelta: 0, secondaryValueDelta: 1 },        // draw 1→2 extra cards
   transmute:     { baseValueDelta: 1 },                                // transform 1→2
   immunity:      { baseValueDelta: 0, apCostDelta: -1 },              // AP 1→0
   overclock:     { baseValueDelta: 0, apCostDelta: -1 },              // AP 2→1
@@ -148,7 +148,7 @@ export function getUpgradeCandidates(deck: Card[], count: number): Card[] {
     const tierA = TIER_PRIORITY[a.tier] ?? 0;
     const tierB = TIER_PRIORITY[b.tier] ?? 0;
     if (tierB !== tierA) return tierB - tierA;
-    // Within same tier, prefer higher effectMultiplier (harder facts = stronger cards)
+    // Within same tier, prefer higher effectMultiplier (higher tier = stronger cards)
     return (b.effectMultiplier ?? 1) - (a.effectMultiplier ?? 1);
   });
 

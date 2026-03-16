@@ -83,17 +83,28 @@ Card slots (type + mechanic + base effect) and facts (the questions to answer) a
 2. Each `drawHand()` call draws N card slots from the draw pile
 3. N facts are drawn from the fact pool (excluding cooldown facts)
 4. Slots and facts are paired randomly
-5. Tier multiplier (1.0x/1.3x/1.6x) follows the FACT, not the slot — mastered facts are still more powerful regardless of which card type they land on
+5. Tier multiplier (1.0x/1.3x/1.6x) is derived from the fact's FSRS mastery tier — mastered facts are more powerful regardless of which card type they land on
 
 **First-draw funScore bias:** On the very first encounter of a run (floor 1, encounter 1), fact assignment is weighted so facts with funScore >= 7 are 2x more likely to appear in the opening hand. This creates a strong first impression with the most engaging content. Subsequent draws use uniform random assignment.
 
 **Applies to:** All cards (knowledge AND vocabulary).
 
-### Encounter Cooldown
+### Encounter Cooldown & Anti-Repetition (AR-53)
 
-Facts answered in an encounter enter a 3-encounter cooldown. They cannot appear in the next 3 encounters, preventing the same fact from being used to one-shot consecutive enemies.
+**All facts seen during an encounter** (not just answered ones) enter a 3–5 encounter cooldown. This prevents the same fact from appearing on consecutive encounters even if the player skipped or didn't play that card.
 
-**Edge case:** If cooldown would exhaust the fact pool (available facts < hand size), cooldown reduces to 1 encounter. If available < 3, cooldown is disabled for that draw.
+**Three layers of deduplication prevent repetition:**
+
+1. **Same-hand dedup**: No two cards in the same 5-card hand can share the same underlying fact. This uses three filters:
+   - Exact fact ID dedup (no `ja-grammar-n5-ga-meaning` twice)
+   - Base key dedup (same language + statement + answer combination)
+   - **Root ID dedup**: Strips variant suffixes (`-meaning`, `-recall`, `-fill`, `-forward`, `-reverse`, etc.) to group related facts. If `ga-meaning` is in hand, `ga-recall` and `ga-fill` are blocked too.
+
+2. **Encounter cooldown**: ALL facts that appeared in ANY hand during an encounter enter cooldown (3–5 encounters, random per fact). Root-sibling variants are also blocked — if `ga-meaning` is in cooldown, `ga-recall` is blocked too.
+
+3. **Cross-run dedup**: Facts from the last 2 runs are deprioritized (pushed to end of shuffle) when building the next run's pool.
+
+**Edge case:** If cooldown would exhaust the fact pool (available facts < hand size), cooldown relaxes to 1 encounter. If still insufficient, cooldown is disabled for that draw.
 
 ### The Commit-Before-Reveal Rule (CRITICAL)
 
@@ -120,16 +131,17 @@ AP scaling: Base 3, hard cap 4 (only via specific passives or rare events).
 Cards now cost 0, 1, 2, or 3 AP instead of all costing 1 AP. This creates resource allocation tension — "one big play or two small plays?" decisions.
 
 **AP Cost Distribution (base, pre-upgrade):**
-- **0 AP:** Quicken (free AP gain). When activated, grants +1 AP this turn.
-- **1 AP:** Most cards (Strike, Block, Emergency, Scout, Recycle, Cleanse, Empower, Weaken, Expose, Mirror, Adapt, Piercing, Reckless, Execute, Parry, Brace, Focus, Hex, Foresight, Transmute, Immunity)
-- **2 AP:** Multi-Hit, Thorns, Lifetap, Fortify, Overheal, Double Strike, Slow, Overclock
+- **0 AP:** Quicken (free +1 AP), Foresight (free: reveal 2 intents + draw 1)
+- **1 AP:** Strike, Block, Emergency, Scout, Recycle, Focus, Cleanse, Empower, Weaken, Expose, Mirror, Adapt, Piercing, Reckless, Execute, Parry, Brace, Hex, Transmute, Immunity, Thorns
+- **2 AP:** Multi-Hit, Lifetap, Fortify, Overheal, Double Strike, Slow, Overclock
 - **3 AP:** Heavy Strike (consumes entire turn for 20 damage)
 
 **AP Cost as Upgrade Axis:**
 Many 2-3 AP cards can have their AP cost reduced by 1 via upgrade, creating meaningful upgrade decisions. Example: upgrade Heavy Strike from 3→2 AP (transformative resource unlock) vs upgrade Strike for +3 damage (incremental). This makes upgrades more interesting — not just about power creep, but about opening new strategic possibilities.
 
 **Upgraded AP distribution:**
-- 0 AP: 7 cards (Scout+, Recycle+, Cleanse+, Foresight+, Immunity+, plus base Quicken)
+- 0 AP base: Quicken, Recycle, Foresight (3 cards)
+- 0 AP upgraded: Scout+, Cleanse+, Immunity+ (plus the 3 base 0-AP cards = 6 total at 0 AP)
 - 1 AP: 16 cards (most upgrades keep 1 AP)
 - 2 AP: 1 card (Heavy Strike+, reduced from 3→2)
 
@@ -138,6 +150,66 @@ Many 2-3 AP cards can have their AP cost reduced by 1 via upgrade, creating mean
 - Blue (#1e40af): 1 AP (standard)
 - Orange (#d97706): 2 AP (heavy)
 - Red (#dc2626): 3 AP (full turn)
+
+### Complete Card Mechanics Reference (AR-55)
+
+All 31 card mechanics available in the game, organized by type and phase.
+
+#### Phase 1 Mechanics (Core Set)
+
+| Mechanic | Type | AP | Effect | Notes |
+|----------|------|-----|--------|-------|
+| **Strike** | Attack | 1 | 8 damage | Bread and butter |
+| **Multi-Hit** | Attack | 2 | 4 damage × 3 hits | One question, multi-hit. Synergizes with buffs |
+| **Block** | Shield | 1 | 6 block | Standard defense |
+| **Thorns** | Shield | 1 | 6 block + 3 reflect | Block + retaliate when hit (AR-55: was 2 AP) |
+| **Emergency** | Shield | 1 | 4 block (8 if HP < 30%) | Desperation shield |
+| **Empower** | Buff | 1 | +50% to next card | Setup for big plays (AR-55: was +30%) |
+| **Quicken** | Buff | 0 | +1 AP this turn | Free action — quiz IS the cost |
+| **Weaken** | Debuff | 1 | -25% enemy damage, 2 turns | Defensive debuff |
+| **Expose** | Debuff | 1 | +50% damage taken, 1 turn | Offensive debuff. Combo with big attacks |
+| **Scout** | Utility | 1 | Draw 2 cards | Hand cycling tool (AR-55: was draw 1) |
+| **Recycle** | Utility | 1 | Draw 3 cards | Premium cycling tool |
+| **Cleanse** | Utility | 1 | Remove all debuffs + draw 1 | Situational lifesaver |
+| **Mirror** | Wild | 1 | Copy previous card's effect | High skill ceiling. Requires setup |
+| **Adapt** | Wild | 1 | Auto-picks best needed effect | Smart auto-play. Always useful |
+
+#### Phase 2 Mechanics (Post-Launch)
+
+| Mechanic | Type | AP | Effect | Notes |
+|----------|------|-----|--------|-------|
+| **Heavy Strike** | Attack | 3 | 20 damage | All-in. Entire turn on one question |
+| **Piercing** | Attack | 1 | 6 damage (ignores block) | Anti-shield |
+| **Reckless** | Attack | 1 | 12 damage, 3 self-damage | High risk, high reward |
+| **Execute** | Attack | 1 | 6 + 8 bonus if enemy < 30% HP | Finisher |
+| **Lifetap** | Attack | 2 | 8 damage + heal 20% dealt | Sustain attack |
+| **Fortify** | Shield | 2 | 7 persistent block (carries to next turn) | Proactive defense (AR-55: was 5) |
+| **Parry** | Shield | 1 | 3 block + draw 1 if enemy attacks | Conditional card advantage |
+| **Brace** | Shield | 1 | Block = enemy telegraph | Perfect block. Reads the enemy |
+| **Overheal** | Shield | 2 | 10 block (2× if HP < 50%) | Emergency mega-shield (AR-55: was 9/1.5×) |
+| **Double Strike** | Buff | 2 | Next attack hits twice at full power | Burst enabler (AR-55: was 2×60%) |
+| **Slow** | Debuff | 2 | Skip enemy's next action | Expensive but powerful vs bosses |
+| **Hex** | Debuff | 1 | 3 poison × 3 turns (9 total) | Damage over time |
+| **Foresight** | Utility | 0 | Reveal 2 intents + draw 1 | Free scouting (AR-55: was 1 AP, no draw) |
+| **Transmute** | Utility | 1 | Transform random hand card | Gamble on better options |
+| **Immunity** | Utility | 1 | Absorb next hit up to 8 damage | Universal defense (AR-55: was status-only) |
+| **Focus** | Buff | 1 | Next card costs 1 less AP | AP efficiency combos. Focus + Heavy Strike = 3 AP total |
+| **Overclock** | Wild | 2 | 2× next card effect | Burst amplifier (AR-55: removed -1 draw penalty) |
+
+#### Free-Play Design (AR-55)
+
+Two 0-AP cards (Quicken, Foresight) create "bonus action" moments where answering a quiz correctly IS the cost — no AP spent. This:
+- Rewards quiz knowledge with extra plays
+- Creates exciting hands where you can play 4-5 cards in a turn (3 AP cards + 1-2 free cards)
+- Eliminates "dead draw" frustration — even utility cards feel worth playing
+- Maintains the quiz-as-cost philosophy: you still must answer correctly to get the effect
+
+#### Key Balance Principles
+
+1. **Every card must be worth the quiz risk.** Getting a question wrong = fizzle + wasted AP. Weak effects (old Scout draw-1, old Empower +30%) felt terrible because the fizzle downside outweighed the success upside.
+2. **Power scales with mastery, not difficulty.** Tier 1 = 1.0×, Tier 2a = 1.3×, Tier 2b/3 = 1.6×. No ease-based multiplier.
+3. **Challenge scales via quiz format, not card power.** Higher tiers face harder questions (more options, fill-blank, reverse), not weaker cards.
+4. **No strictly dominated cards.** Every mechanic should have at least one situation where it's the best play.
 
 ### Dynamic Timer System
 
@@ -206,9 +278,19 @@ After answering correctly, cards execute a 5-phase animation sequence:
 - **Utility:** Prismatic shimmer + morph shape
 - **Wild:** Multi-color flash + adaptive motion
 
-**Wrong answers:** Fizzle animation (400ms) — violent shake, sparks, fade out
+**Wrong answers:** Fizzle animation (400ms) — violent shake, sparks, fade out. The card exits to the **discard pile position (bottom-left)** with a swoosh — same exit direction as discarded cards. AP cost is always paid on a wrong answer (see §2 Action Points / Wrong Answer AP Cost).
 
-**Discard pile indicator:** Bottom-right of combat HUD shows growing card pile count as cards are discarded.
+**Draw / discard swoosh animations (Web Animations API):**
+
+- **Draw**: Cards spring from the draw pile icon as tiny dots (scale 0.05) to their fan position via WAAPI with staggered delays (80ms per card index). Uses `composite: 'replace'` with the card's inline fan `transform` as the end state, so Svelte's positioning is never overridden.
+- **Played card discard**: A ghost card (animation buffer copy) flies from its current position to the discard pile via WAAPI, triggered by a `MutationObserver` detecting the `card-discard` class change (200ms).
+- **Fizzle**: Same ghost card path but with grayscale filter applied at the end keyframe and longer duration (400ms).
+- **End-of-turn**: Remaining hand cards stagger-fly to the discard pile (250ms + 40ms per card stagger), then `onendturn()` fires after the last animation completes.
+- **Reshuffle sequence**: When the draw pile empties, `reshuffleHoldingHand` holds `handCards` as an empty array during the reshuffle animation (discard→draw). Once the reshuffle completes, hand cards mount and swoosh in from the refilled draw pile.
+
+*Implementation note:* CSS keyframe animations were tried first but conflict with Svelte's inline `transform`-based fan positioning — `!important` in keyframes is ignored per spec, and CSS custom properties (`--draw-pile-x/y`) aren't guaranteed set when the `0%` frame resolves. WAAPI with double `requestAnimationFrame` solves both issues.
+
+**Discard pile indicator:** Bottom-left of combat HUD shows growing card pile count as cards are discarded. Draw pile indicator sits bottom-right.
 
 #### Quiz panel wireframe (appears above card hand when committed)
 ```
@@ -321,12 +403,17 @@ Each TYPE has 4-6 mechanics. Per run, each fact gets a random mechanic from its 
 
 ### Buff Mechanics
 
+The three buff identities in Recall Rogue:
+- **Empower** = more POWER (+50% next card effect)
+- **Quicken** = more ACTIONS (+1 AP free, quiz IS the cost)
+- **Focus** = cheaper COSTS (next card -1 AP)
+
 | Mechanic | Effect | Base Value |
 |----------|--------|------------|
-| Empower | Next card effect +X% | +30% |
-| Double Strike | Next attack hits twice at 60% each | 2x 60% |
+| Empower | Next card effect +50% | +50% |
+| Double Strike | Next attack hits twice at full power | 2x 100% |
 | Quicken | +1 AP this turn only | +1 AP |
-| Focus | Next card minimum 1.3x difficulty multiplier | Override |
+| Focus | Next card costs 1 less AP | -1 AP |
 
 ### Debuff Mechanics
 
@@ -381,6 +468,56 @@ Appearance 4: "True or false: Gold's atomic number is 79" [True / False]
 ```
 
 Each fact needs 2-4 question variants. System tracks `lastVariantIndex` per fact and never repeats the same format consecutively.
+
+---
+
+## 4.5. Status Effects & Combat Buffs
+
+Every active effect on the player or enemy is displayed as a clickable icon during combat. Tapping any icon shows a popup listing ALL active effects on that target with natural language descriptions.
+
+### Debuffs (applied to enemy or player)
+
+| Icon | Effect | Description | Source |
+|------|--------|-------------|--------|
+| ☠️ | Poison | Deals X damage at end of turn, then decreases by 1 | Hex card, enemy debuff intents |
+| 💧 | Weakness | Attacks deal 25% less damage per stack | Weaken card, enemy debuff intents |
+| 🎯 | Vulnerable | Takes 50% more damage | Expose card, enemy debuff intents |
+| 🐌 | Slow | Skips next defend/buff action | Slow card |
+| 🔥 | Burn | Deals X fire damage at end of turn | Future use |
+| 🩸 | Bleed | Deals X bleed damage at end of turn | Future use |
+| ❄️ | Freeze | Skips action | Future use |
+
+### Buffs (applied to enemy or player)
+
+| Icon | Effect | Description | Source |
+|------|--------|-------------|--------|
+| 💪 | Strength | Attacks deal +25% damage per stack | Enemy buff intents |
+| 💚 | Regen | Heals X HP at end of turn | Future use |
+| 🛡️ | Immunity | Absorbs next poison instance | Immunity card |
+
+### Player Turn Buffs (from card mechanics, last 1 turn)
+
+| Icon | Effect | Description | Source Card |
+|------|--------|-------------|------------|
+| 🌿 | Thorns | Deals X damage back when enemy attacks | Thorns |
+| ⚡ | Empower | Next card gets +X% effect | Empower |
+| ⚔️ | Double Strike | Next attack hits twice at 60% power | Double Strike |
+| 🔮 | Focus | Next card gets minimum 1.3x multiplier | Focus |
+| 👁️ | Foresight | Can see future enemy intents for X turns | Foresight |
+| 🏰 | Fortify | Block persists into next turn | Fortify |
+| ⚙️ | Overclock | Next card effect doubled, draw -1 next turn | Overclock |
+
+### Stacking Rules
+- **Poison**: Stacks additively (2 poison + 3 poison = 5 poison). Decreases by 1 each turn after dealing damage.
+- **Weakness/Vulnerable**: Duration extends to max(existing, new). Stacks increase effect count.
+- **Strength**: Stacks additively per buff application.
+- **Turn buffs** (Thorns, Empower, Double Strike, etc.): Do not stack — reapplying refreshes the effect.
+
+### Visual Display
+- Status effect icons appear below enemy HP bar (enemy effects) and above player HP bar (player effects)
+- Each icon shows: effect emoji, stack count badge (if >1), turns remaining counter
+- Tapping any icon opens a full-list popup showing ALL active effects on that target with descriptions
+- Icons appear when effects are applied and disappear when they expire
 
 ---
 
@@ -855,11 +992,17 @@ Certain relic combinations trigger hidden synergies that provide subtle bonuses 
 
 | Segment | Floors | Encounters/Floor | Bosses | Death Penalty |
 |---------|--------|-----------------|--------|---------------|
-| Shallow Depths | 1-6 | 3 (2 regular + 1 mini-boss) + events | Floor 3: "The Excavator", Floor 6: "Magma Core" | Die = keep 80% |
-| Deep Caverns | 7-12 | 3 (2 regular + 1 mini-boss) + events | Floor 9: "The Archivist", Floor 12: "Crystal Warden" | Die = keep 65% |
-| The Abyss | 13-18 | 3 (2 regular + 1 mini-boss) + events | Floor 15: "Shadow Hydra", Floor 18: "Void Weaver" | Die = keep 50% |
-| The Archive | 19-24 | 3 (2 regular + 1 mini-boss) + events | Floor 21: "Knowledge Golem", Floor 24: "The Curator" (final) | Die = keep 35% |
-| Endless | 25+ | Scaling | Boss every 3 floors (cycles through bosses) | Die = keep 35% |
+| Shallow Depths | 1-6 | 3 (2 regular + 1 mini-boss) + events | Floor 3 & 6: randomly The Excavator **or** Magma Core | Die = keep 80% |
+| Deep Caverns | 7-12 | 3 (2 regular + 1 mini-boss) + events | Floor 9 & 12: randomly The Archivist **or** Crystal Warden | Die = keep 65% |
+| The Abyss | 13-18 | 3 (2 regular + 1 mini-boss) + events | Floor 15 & 18: randomly Shadow Hydra **or** Void Weaver | Die = keep 50% |
+| The Archive | 19-24 | 3 (2 regular + 1 mini-boss) + events | Floor 21 & 24: randomly Knowledge Golem **or** The Curator | Die = keep 35% |
+| Endless | 25+ | Scaling | Boss every 3 floors (cycles through boss pool) | Die = keep 35% |
+
+**Boss Selection:** Each boss floor randomly picks one boss from its segment's pool using the seeded RNG, so the same run seed always produces the same boss sequence but different seeds vary the encounter. Both bosses in a pool may appear in the same run (e.g., both The Excavator and Magma Core on floors 3 and 6). Boss pools by segment:
+- **Shallow Depths:** The Excavator, Magma Core
+- **Deep Caverns:** The Archivist, Crystal Warden
+- **The Abyss:** Shadow Hydra, Void Weaver
+- **The Archive:** Knowledge Golem, The Curator
 
 Each floor has 3 encounters: encounters 1-2 are regular combat (common enemies), encounter 3 is always a mini-boss (or full boss on boss floors: 3, 6, 9, 12, 15, 18, 21, 24).
 
@@ -899,6 +1042,12 @@ Each act uses a scrollable vertical map with branching paths, similar to Slay th
 - Boss defeated → special event → retreat-or-delve checkpoint
 - Retreat → hub; Delve → new act map generated for the next segment
 - Guaranteed 3–5 elite nodes per act, with `ELITE_MIN_ROW = 4` (row index, = 5th row). Excess elites are demoted to combat; too few are promoted from combat.
+
+**Map Cinematic Scroll (Floor Entry):** When entering a new floor (run start + after each boss), the map plays a one-time cinematic sequence (tracked by map seed — plays only once per floor):
+1. Map zooms to 1.5× centered on the boss node for ~1 second
+2. Zooms out to full-map view
+3. Camera sweeps down to the player's starting nodes
+The boss node renders the actual boss sprite (not a crown emoji) with a 3D floating animation. Elite nodes display a purple menacing pulse. The scrollbar is hidden during the cinematic. Subsequent re-visits to the same floor's map do not replay the cinematic.
 
 **Player interaction:**
 1. After `onArchetypeSelected()`, an ActMap is generated and the `dungeonMap` screen appears
@@ -1158,18 +1307,37 @@ Events are randomly selected from the pool after each boss fight.
 | Shade Stalker | 42 | 11 | Copies player's last played card type |
 | Bone Collector | 54 | 10 | Heals 5 HP when player answers wrong |
 
-### Bosses (Every 3rd floor)
+### Bosses (Every 3rd floor — Randomized Per Region)
 
-| Boss | Floor | HP | Pattern |
-|------|-------|-----|---------|
-| The Excavator | 3 | 70 | 12 damage, phase 2 at 40% HP, escalating. Phase 2 can charge for 35 dmg spike. |
-| Magma Core | 6 | 75 | 8 + poison, phase 2 volcanic blast buffed at 40% HP |
-| The Archivist | 9 | 85 | 7 + shuffles hand, phase 2 at 50% HP |
-| Crystal Warden | 12 | 90 | 12 damage, status immunity, counter + heal |
-| Shadow Hydra | 15 | 110 | 14 damage, phase 2 at 50% HP doubles attacks |
-| Void Weaver | 18 | 140 | 18 damage, hand disruption, Void Storm multi-attack, debuffs |
-| Knowledge Golem | 21 | 120 | 17 damage, +5 bonus on wrong answers. Can charge for 32 dmg spike. |
-| The Curator | 24 | 140 | 18 damage, all mechanics, phase 2 nerfed at 40% HP (final boss) |
+Boss selection is **randomized per region** using the seeded RNG. Each boss floor draws from its segment's pool of 2 bosses. Both bosses in a pool can appear in the same run.
+
+**Shallow Depths pool (floors 3 and 6):**
+
+| Boss | HP | Pattern |
+|------|----|---------|
+| The Excavator | 70 | 12 damage, phase 2 at 40% HP, escalating. Phase 2 can charge for 35 dmg spike. |
+| Magma Core | 75 | 8 + poison, phase 2 volcanic blast buffed at 40% HP |
+
+**Deep Caverns pool (floors 9 and 12):**
+
+| Boss | HP | Pattern |
+|------|----|---------|
+| The Archivist | 85 | 7 + shuffles hand, phase 2 at 50% HP |
+| Crystal Warden | 90 | 12 damage, status immunity, counter + heal |
+
+**The Abyss pool (floors 15 and 18):**
+
+| Boss | HP | Pattern |
+|------|----|---------|
+| Shadow Hydra | 110 | 14 damage, phase 2 at 50% HP doubles attacks |
+| Void Weaver | 140 | 18 damage, hand disruption, Void Storm multi-attack, debuffs |
+
+**The Archive pool (floors 21 and 24):**
+
+| Boss | HP | Pattern |
+|------|----|---------|
+| Knowledge Golem | 120 | 17 damage, +5 bonus on wrong answers. Can charge for 32 dmg spike. |
+| The Curator | 140 | 18 damage, all mechanics, phase 2 nerfed at 40% HP (final boss) |
 
 Floor scaling: HP and damage +15% per depth segment. Player: 100 HP start and max, 0 block (resets each turn).
 
@@ -1237,9 +1405,13 @@ All players play on Normal difficulty. Difficulty selection is currently disable
 
 | Internal ID | Display Name | Timer | Wrong Penalty | Enemy Dmg | Reward Multiplier |
 |-------------|-------------|-------|--------------|-----------|-------------------|
-| normal | Normal | Dynamic (floor + question length) | Fizzle (costs 1 AP) | Normal | 1.00x |
+| normal | Normal | Dynamic (floor + question length) | Fizzle + costs 1 AP | Normal | 1.00x |
 
 *Note: Relaxed mode (no timer, reduced penalties) exists in the codebase but is hidden from the UI. `STORY_MODE_FORCED_RUNS` is set to 0 and all forced-difficulty code defaults to Normal.*
+
+### Wrong Answer AP Cost (All Modes)
+
+**Wrong answers ALWAYS deduct 1 AP, even in relaxed mode.** Previously, relaxed mode refunded the AP cost on wrong answers. This was removed to preserve the core economy constraint: every card play commits an action point regardless of outcome. The card still fizzles (no combat effect) in relaxed mode, but the AP is consumed. This ensures that wrong answers have a real cost in all modes and prevents relaxed mode from trivializing resource management.
 
 **Reward multipliers** are applied at run end via `DIFFICULTY_REWARD_MULTIPLIER` in `balance.ts`. Normal mode earns standard rewards (1.00x multiplier).
 
@@ -1247,14 +1419,49 @@ All players play on Normal difficulty. Difficulty selection is currently disable
 
 Adds flat +3 seconds to all timers. Timer bar color changes from red to amber (less stressful). Preserves urgency without panic. NOT Story Mode (which removes timers entirely). Can be changed in Settings anytime. (Previously asked during onboarding; now set exclusively in the Settings panel.)
 
-### Difficulty-Proportional Power
+### Tier-Based Card Power (AR-54)
 
-| FSRS Difficulty | Label | Multiplier |
-|----------------|-------|------------|
-| 1-3 | Easy | 0.8x |
-| 4-5 | Medium | 1.0x |
-| 6-7 | Hard | 1.3x |
-| 8-10 | Very Hard | 1.6x |
+Card power scales with mastery tier — learning makes cards stronger, never weaker. The old ease-based system (EASE_POWER) was removed because it created a perverse incentive where struggling = more power and mastery = less power.
+
+| Tier | Display | Power | Quiz Format |
+|------|---------|-------|-------------|
+| 1 | Learning | 1.0x | 3-option MCQ, generous timer |
+| 2a | Proven | 1.3x | 4-option MCQ or reverse |
+| 2b | Proven | 1.6x | 5-option close distractors or fill-blank |
+| 3 | Mastered | 1.6x (permanent) | Not asked — earns Mastery Coin |
+
+**Design rationale:** Players who learn get stronger decks. Challenge at higher tiers comes from harder quiz formats (more options, fill-blank, reverse), not from weaker cards. This aligns gameplay incentives with educational goals — there is never a reason to deliberately get answers wrong.
+
+### Learning Threshold Reward Gate
+
+Players can play any content they want — no limitations. But camp/meta-progression rewards are disabled when the system detects the run wasn't a genuine learning experience.
+
+**Philosophy:** "Play whatever you want. Learn whatever you want. But you can't grind mastered content for camp rewards."
+
+**Detection signals (any one triggers practice run mode):**
+
+| Signal | Threshold | When Checked |
+|--------|-----------|-------------|
+| Pool mastery > 75% | Tier 2b+ facts exceed 75% of pool | Run start |
+| Overall accuracy > 85% | All facts answered during run | Run end |
+| Novel fact accuracy > 80% | Tier 1 (new/unseen) facts, min 3 answered | Run end |
+| Perfect run | Zero wrong answers, 5+ questions | Run end |
+
+**What gets disabled:**
+- Dust (camp currency)
+- Relic shards
+- Any persistent progression rewards
+
+**What still works:**
+- SM-2 spaced repetition updates (learning always counts)
+- In-run gold and card rewards (already consumed during play)
+- Run stats display (accuracy, floors, cards played)
+
+**Player feedback:**
+- Pre-run: "Practice Run — Camp rewards disabled" banner shown during combat if pool mastery > 75%
+- Post-run: Informative message on RunEndScreen — neutral tone, suggests trying a less familiar domain
+
+**Implementation:** `isPracticeRun()` in `masteryScalingService.ts`, accuracy counters in `RunState`, reward zeroing in `endRun()`.
 
 ---
 
@@ -1706,9 +1913,11 @@ Invisible. Never announced. Never reduces educational rigor (answer count, forma
 
 **Data sources:** Full-Japanese-Study-Deck (GitHub) + JMdict (215,611 entries)
 
-Japanese language learning integrates 4 specialized subdecks totaling **13,125 facts** across JLPT proficiency levels (N5 beginner → N1 expert). Players select Japanese as a study domain at run start (`StudyModeSelector`), and the run pool builder routes them to Japanese facts via language-specific domain resolution.
+Japanese language learning integrates 4 specialized subdecks totaling **13,073 facts** across JLPT proficiency levels (N5 beginner → N1 expert). Players select Japanese as a study domain at run start (`StudyModeSelector`), and the run pool builder routes them to Japanese facts via language-specific domain resolution.
 
-### Vocabulary Subdeck (10,013 facts)
+**Korean** (11,400 facts) and **Chinese** (13,472 facts) also have grammar decks alongside vocabulary, generated from hanabira.org (MIT license). See Architecture doc section 13.5 for the full breakdown across all 8 languages (108,950 total language facts).
+
+### Vocabulary Subdeck (7,726 facts)
 
 JLPT level distribution:
 - **N5** (beginner): 822 facts
@@ -1748,12 +1957,13 @@ Quiz format (Tier 1): "What does the grammar pattern '〜が' mean?" Answers: [m
 
 Includes usage examples and sentence context.
 
-### Kana Subdeck (372 facts)
+### Kana Subdeck (416 facts)
 
-Hiragana and katakana recognition:
-- **Hiragana**: 71 facts (basic + dakuten variants)
-- **Katakana**: 71 facts (basic + dakuten variants)
-- **Extended**: 230 facts (less common, compound kana)
+Hiragana and katakana recognition with pre-generated distractors using visually similar kana pairs (e.g., あ/お, ソ/ン, シ/ツ). Two subcategories:
+- **`japanese_hiragana`**: 208 facts (basic + dakuten + compound hiragana)
+- **`japanese_katakana`**: 208 facts (basic + dakuten + compound katakana)
+
+Distractors are curated hand-matched pairs based on visual similarity rather than random pool selection, ensuring distractors are genuinely confusable and pedagogically useful.
 
 Quiz format (Tier 1): "What is the romaji reading for 'あ'?" Answers: [a / i / u].
 
@@ -1785,7 +1995,7 @@ Settings persisted in localStorage (`card:deckOptions`), keyed by `targetLanguag
   - `LanguageConfig` extended with `subdecks: Subdeck[]` and `options: LanguageDeckOption[]`
 
 **Content Pipeline:**
-- `scripts/content-pipeline/vocab/extract-fjsd-japanese.mjs` — Extracts 13,125 Japanese facts from Full-Japanese-Study-Deck repo (vocab IDs, kanji-info, grammar, kana) and JMdict (meaning lookups). Outputs to `data/raw/japanese/{vocabulary,kanji,grammar,kana}.json`.
+- `scripts/content-pipeline/vocab/extract-fjsd-japanese.mjs` — Extracts 13,073 Japanese facts from Full-Japanese-Study-Deck repo (vocab IDs, kanji-info, grammar, kana) and JMdict (meaning lookups). Outputs to `data/raw/japanese/{vocabulary,kanji,grammar,kana}.json`.
 - `scripts/content-pipeline/vocab/merge-japanese-facts.mjs` — Merges extracted facts per subdeck into `src/data/seed/facts-generated.json` with proper schema (targetLanguage, subdeck, jlptLevel, visualization_description for card backs).
 
 ### Data Sources
@@ -1811,7 +2021,7 @@ merge-japanese-facts.mjs
   → src/data/seed/facts-generated.json (appended)
   ↓
 build-facts-db.mjs
-  → public/facts.db (13,125 Japanese facts indexed)
+  → public/facts.db (13,073 Japanese facts indexed)
   → seed-pack.json (includes Japanese metadata)
 ```
 
@@ -2391,6 +2601,16 @@ Every fact requires a `visualDescription` for card back art generation. See §22
 - `pixelArtStatus` tracks generation state: `none` → `generating` → `review` → `approved`/`rejected`
 - Cards with `pixelArtStatus: 'none'` use a generic domain-colored card back as fallback
 
+### Data Quality Maintenance
+
+The pipeline includes ongoing normalization passes to maintain schema consistency across the growing fact database:
+
+- **Domain normalization (March 2026):** 171 facts had non-canonical domain names normalized to correct enum values (e.g., misspelled or legacy domain strings).
+- **Variant quality fixes:** 934 variant-level corrections applied, including true/false distractor cleanup, `answer` field consistency alignment, and empty distractor backfills.
+- **Entity reclassification:** 148 entities moved to their correct domains based on content review. 110 Latin taxonomic group entries flagged to skip (pure taxonomy groups with no quiz-worthy facts).
+
+These passes run as part of the `audit-fact-quality.mjs` quality gate and are re-run whenever new batches are ingested.
+
 ### Scale
 
 122 current → 10K+ per domain → 5K+ per language pack. All human-verified. All sourced.
@@ -2729,6 +2949,14 @@ Native App Store / Play Store review prompts are triggered at emotionally positi
 
 - **Reintroduce Knowledge Tree UI (exploration mode):**
   Bring back a dedicated tree-view progression screen that visualizes category/subcategory mastery across all 11 domains, with zoom levels (forest -> branch -> leaf), overdue-state visual cues, and tap-through fact detail. This is currently not part of the primary run loop and should return only after launch-critical stability/content pipeline work is complete.
+
+- **Extended Language Content (Grammar, Characters, Script Systems):**
+  Beyond vocabulary, each language could support additional study dimensions:
+  - **Japanese**: Kanji deck (~2,200 characters by JLPT level) and Grammar deck (~800 grammar points by JLPT level) — tracked as AR-49 and AR-50.
+  - **Chinese**: Hanzi character deck (parallel to kanji), HSK grammar patterns.
+  - **Korean**: Hangul character deck (for absolute beginners), TOPIK grammar patterns.
+  - **European languages (ES/FR/DE/NL/CS)**: Grammar decks per CEFR level (verb conjugation, sentence patterns, case systems for German/Czech).
+  These are post-launch content expansions. The infrastructure (per-level subcategories, subdeck filtering, `inferLanguageSubdeck()`) is already in place — only the content generation pipeline work remains.
 
 - **Mastery Skins (Animated Card Backs):**
   Every card that reaches "Learned" state (Tier 2a+) unlocks a unique animated card back — a short looping animation generated with WAN2.1 (video diffusion model). This replaces the static pixel art cardback with a living, breathing scene. If the player's FSRS retrievability drops below the learned threshold (i.e., the fact decays back to Tier 1 due to missed reviews), the animated skin is lost and reverts to the static card back. Re-learning the fact re-unlocks the animation. This creates a powerful visual incentive loop: players SEE their knowledge literally come alive, and neglecting review causes their collection to visually decay. The transience makes mastery feel earned, not permanent — matching how real memory works.

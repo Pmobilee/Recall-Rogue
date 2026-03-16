@@ -107,6 +107,8 @@ export interface TurnState {
   secondWindUsed: boolean;
   doubleStrikeReady: boolean;
   focusReady: boolean;
+  /** Number of remaining cards that benefit from Focus AP reduction (0 = inactive). */
+  focusCharges: number;
   overclockReady: boolean;
   slowEnemyIntent: boolean;
   foresightTurnsRemaining: number;
@@ -137,6 +139,12 @@ export interface TurnState {
   phoenixRageTurnsRemaining: number;
   /** Turns remaining for glass cannon penalty removal. 0 = inactive. */
   glassPenaltyRemovedTurnsRemaining: number;
+  /** thorns: whether thorns retaliation is active this turn */
+  thornsActive: boolean;
+  /** thorns: damage to reflect back to enemy when hit */
+  thornsValue: number;
+  /** mirror: the last successfully resolved card effect this turn */
+  lastCardEffect: CardEffectResult | null;
 }
 
 export interface PlayCardResult {
@@ -245,6 +253,7 @@ export function startEncounter(
     secondWindUsed: false,
     doubleStrikeReady: false,
     focusReady: false,
+    focusCharges: 0,
     overclockReady: false,
     slowEnemyIntent: false,
     foresightTurnsRemaining: 0,
@@ -270,6 +279,9 @@ export function startEncounter(
     tier3CardCount: 0,
     phoenixRageTurnsRemaining: 0,
     glassPenaltyRemovedTurnsRemaining: 0,
+    thornsActive: false,
+    thornsValue: 0,
+    lastCardEffect: null,
   };
 
   const isFirstEncounter = deck.currentFloor === 1 && deck.currentEncounter <= 1;
@@ -317,7 +329,11 @@ export function playCardAction(
   const cardInHand = deck.hand.find((card) => card.id === cardId);
   if (!cardInHand) throw new Error(`Card ${cardId} not found in hand`);
 
-  const apCost = Math.max(1, cardInHand.apCost ?? 1);
+  let apCost = Math.max(0, cardInHand.apCost ?? 1);
+  // Focus: reduce this card's AP cost by 1 (minimum 0); consume one focus charge
+  if (turnState.focusReady && turnState.focusCharges > 0 && apCost > 0) {
+    apCost = Math.max(0, apCost - 1);
+  }
   if (turnState.apCurrent < apCost) {
     const blockedEffect: CardEffectResult = createNoEffect(cardInHand);
     turnState.turnLog.push({
@@ -372,7 +388,7 @@ export function playCardAction(
 
     const mode = get(difficultyMode);
     if (mode === 'relaxed') {
-      turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + apCost);
+      // AP is NOT refunded — wrong answers always cost AP regardless of mode
       const fizzledEffect = createNoEffect(card);
       turnState.comboCount = turnState.baseComboCount;
       turnState.consecutiveCorrectThisEncounter = 0;
@@ -380,7 +396,7 @@ export function playCardAction(
       turnState.isPerfectTurn = false;
       turnState.turnLog.push({
         type: 'fizzle',
-        message: 'Relaxed mode: card fizzled — AP refunded',
+        message: 'Relaxed mode: card fizzled',
         cardId,
       });
 
@@ -465,10 +481,30 @@ export function playCardAction(
 
   if (card.cardType === 'attack') turnState.firstAttackUsed = true;
   if (useDoubleStrike && card.cardType === 'attack') turnState.doubleStrikeReady = false;
-  if (useFocus) turnState.focusReady = false;
+  if (useFocus) {
+    turnState.focusCharges = Math.max(0, turnState.focusCharges - 1);
+    if (turnState.focusCharges === 0) turnState.focusReady = false;
+  }
   if (useOverclock) {
     turnState.overclockReady = false;
-    turnState.pendingDrawCountOverride = 4;
+  }
+
+  // mirror: copy the previous card effect (fizzle if no previous card)
+  if (effect.mirrorCopy) {
+    if (turnState.lastCardEffect) {
+      const prev = turnState.lastCardEffect;
+      effect.damageDealt = prev.damageDealt;
+      effect.shieldApplied = prev.shieldApplied;
+      effect.healApplied = prev.healApplied;
+      effect.extraCardsDrawn = prev.extraCardsDrawn;
+      effect.finalValue = prev.finalValue;
+      effect.effectType = prev.effectType;
+      effect.statusesApplied = prev.statusesApplied.map(s => ({ ...s }));
+    } else {
+      // No previous card — fizzle
+      effect.targetHit = false;
+      effect.finalValue = 0;
+    }
   }
 
   // Tier 3 synergy: Mastery Ascension — +1 flat damage per T3 card (min 5 T3 cards, max +8)
@@ -533,7 +569,7 @@ export function playCardAction(
   if (effect.applyImmunity) {
     applyStatusEffect(playerState.statusEffects, {
       type: 'immunity',
-      value: 1,
+      value: 8,
       turnsRemaining: 99,
     });
   }
@@ -547,11 +583,38 @@ export function playCardAction(
   }
 
   if (effect.applyDoubleStrikeBuff) turnState.doubleStrikeReady = true;
-  if (effect.applyFocusBuff) turnState.focusReady = true;
+  if (effect.applyFocusBuff) {
+    turnState.focusReady = true;
+    turnState.focusCharges = effect.focusCharges ?? 1;
+  }
   if (effect.applyOverclock) turnState.overclockReady = true;
   if (effect.applySlow) turnState.slowEnemyIntent = true;
   if (effect.applyForesight) turnState.foresightTurnsRemaining = 2;
   if (effect.applyTransmute) transmuteRandomHandCard(turnState);
+
+  // cleanse: remove all debuff-type status effects from player
+  if (effect.applyCleanse) {
+    const debuffTypes = new Set(['poison', 'weakness', 'vulnerable', 'burn', 'bleed', 'freeze']);
+    playerState.statusEffects = playerState.statusEffects.filter(s => !debuffTypes.has(s.type));
+  }
+
+  // adapt: remove one random debuff from player
+  if (effect.adaptCleanse) {
+    const debuffTypes = new Set(['poison', 'weakness', 'vulnerable', 'burn', 'bleed', 'freeze']);
+    const debuffIndices = playerState.statusEffects
+      .map((s, i) => (debuffTypes.has(s.type) ? i : -1))
+      .filter(i => i !== -1);
+    if (debuffIndices.length > 0) {
+      const removeIdx = debuffIndices[Math.floor(Math.random() * debuffIndices.length)];
+      playerState.statusEffects.splice(removeIdx, 1);
+    }
+  }
+
+  // thorns: register retaliation for the upcoming enemy attack
+  if ((effect.thornsValue ?? 0) > 0) {
+    turnState.thornsActive = true;
+    turnState.thornsValue = effect.thornsValue ?? 0;
+  }
 
   if ((effect.grantsAp ?? 0) > 0) {
     turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + (effect.grantsAp ?? 0));
@@ -562,6 +625,9 @@ export function playCardAction(
   } else {
     turnState.buffNextCard = 0;
   }
+
+  // Store last resolved effect for mirror
+  turnState.lastCardEffect = { ...effect };
 
   turnState.comboCount += 1;
 
@@ -698,7 +764,20 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       applyDamageToEnemy(enemy, damageTakenFx.thornReflect);
       turnState.triggeredRelicId = 'thorned_vest';
     }
+
+    // thorns card mechanic: reflect thornsValue damage back to enemy
+    if (turnState.thornsActive && turnState.thornsValue > 0) {
+      applyDamageToEnemy(enemy, turnState.thornsValue);
+      if (enemy.currentHP <= 0) {
+        turnState.result = 'victory';
+        turnState.phase = 'encounter_end';
+      }
+    }
   }
+
+  // Reset thorns retaliation after the attack phase
+  turnState.thornsActive = false;
+  turnState.thornsValue = 0;
 
   turnState.turnLog.push({
     type: 'enemy_action',
@@ -860,6 +939,7 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   turnState.isPerfectTurn = false;
   turnState.buffNextCard = 0;
   turnState.lastCardType = undefined;
+  turnState.lastCardEffect = null;
   turnState.damageDealtThisTurn = 0;
   turnState.firstAttackUsed = false;
   turnState.apCurrent = Math.min(turnState.apMax, START_AP_PER_TURN + turnState.bonusApNextTurn);

@@ -170,6 +170,40 @@ export function getLeaderboardEligibility(deckMode: DeckMode): string | null {
 }
 
 /**
+ * Determines if a run qualifies as a "practice run" where the player
+ * already knew the material, disabling camp rewards.
+ */
+export function isPracticeRun(runState: {
+  questionsAnswered?: number;
+  questionsCorrect?: number;
+  novelQuestionsAnswered?: number;
+  novelQuestionsCorrect?: number;
+  practiceRunDetected?: boolean;
+}): boolean {
+  // Already flagged from pre-run mastery check
+  if (runState.practiceRunDetected) return true;
+
+  const answered = runState.questionsAnswered ?? 0;
+  const correct = runState.questionsCorrect ?? 0;
+  const novelAnswered = runState.novelQuestionsAnswered ?? 0;
+  const novelCorrect = runState.novelQuestionsCorrect ?? 0;
+
+  // Need minimum 5 questions to evaluate
+  if (answered < 5) return false;
+
+  // Perfect run (zero wrong answers)
+  if (correct === answered) return true;
+
+  // Overall accuracy > 85%
+  if (correct / answered > 0.85) return true;
+
+  // Novel fact accuracy > 80% (with minimum 3 novel facts)
+  if (novelAnswered >= 3 && novelCorrect / novelAnswered > 0.80) return true;
+
+  return false;
+}
+
+/**
  * Calculates the percentage of facts in the pool that are at tier 1 (new/learning).
  * Used to warn players when their pool is too heavily mastered.
  *

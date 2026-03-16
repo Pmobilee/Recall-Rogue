@@ -125,6 +125,8 @@ export interface CardRunState {
   factPool: string[];
   /** Facts currently on cooldown (recently answered) — see encounter cooldown */
   factCooldown: { factId: string; encountersRemaining: number }[];
+  /** All fact IDs that appeared in any hand during the current encounter (for cooldown on encounter end) */
+  currentEncounterSeenFacts?: Set<string>;
 }
 
 // === Deck Stats ===

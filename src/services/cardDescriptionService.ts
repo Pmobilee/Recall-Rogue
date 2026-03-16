@@ -66,7 +66,7 @@ export function getDetailedCardDescription(card: Card): string {
     case 'block':
       return `Gain ${power} block. Absorbs damage before HP.` + apSuffix;
     case 'thorns': {
-      const reflect = secondary ?? 2;
+      const reflect = secondary ?? 3;
       return `Gain ${power} block. Reflect ${reflect} damage when hit.` + apSuffix;
     }
     case 'fortify':
@@ -80,13 +80,13 @@ export function getDetailedCardDescription(card: Card): string {
     case 'cleanse':
       return `Remove all debuffs. Draw 1 card.` + apSuffix;
     case 'overheal':
-      return `Gain ${power} block. +50% if HP below half.` + apSuffix;
+      return `Gain ${power} block. Double if HP below 50%.` + apSuffix;
     case 'lifetap':
       return `Deal ${power} damage. Heal 20% of damage dealt.` + apSuffix;
     case 'emergency':
       return `Gain ${power} block. Double if HP below 30%.` + apSuffix;
     case 'immunity':
-      return `Absorb the next status damage instance.` + apSuffix;
+      return `Absorb next damage instance (up to ${power}).` + apSuffix;
 
     // Buff mechanics
     case 'empower':
@@ -94,9 +94,7 @@ export function getDetailedCardDescription(card: Card): string {
     case 'quicken':
       return `Gain +1 AP this turn.` + apSuffix;
     case 'double_strike':
-      return `Next attack hits twice at ${power}% power.` + apSuffix;
-    case 'focus':
-      return `Next card gets a guaranteed difficulty bonus.` + apSuffix;
+      return `Next attack hits twice at full power (${power}% each).` + apSuffix;
 
     // Debuff mechanics
     case 'weaken':
@@ -113,10 +111,12 @@ export function getDetailedCardDescription(card: Card): string {
     // Utility mechanics
     case 'scout':
       return `Draw ${power} extra card(s) this turn.` + apSuffix;
+    case 'focus':
+      return `Next card costs 1 less AP to play.` + apSuffix;
     case 'recycle':
-      return `Discard this card and draw a new one.` + apSuffix;
+      return `Draw 3 cards.` + apSuffix;
     case 'foresight':
-      return `Reveal the next ${power} enemy intents.` + apSuffix;
+      return `Reveal the next ${power} enemy intents. Draw 1 card.` + apSuffix;
     case 'transmute':
       return `Transform a random card in your hand to a new type.` + apSuffix;
 
@@ -126,7 +126,7 @@ export function getDetailedCardDescription(card: Card): string {
     case 'adapt':
       return `Adapt to the most needed effect (attack, heal, or block).` + apSuffix;
     case 'overclock':
-      return `Next card effect is doubled, but draw 1 less next turn.` + apSuffix;
+      return `Next card effect is doubled.` + apSuffix;
 
     default:
       return (mechanic.description || (GENERIC_TYPE_DESCRIPTIONS[card.cardType] ?? '')) + apSuffix;
@@ -175,30 +175,30 @@ export function getShortCardDescription(card: Card): string {
     case 'reckless': return `${power} dmg, ${secondary ?? 3} self`;
     case 'execute': return `${power}+${secondary ?? 8} <30%`;
     case 'block': return `${power} block`;
-    case 'thorns': return `${power} block +${secondary ?? 2} reflect`;
+    case 'thorns': return `${power} block +${secondary ?? 3} reflect`;
     case 'fortify': return `${power} persistent`;
     case 'parry': return `${power} block +draw`;
     case 'brace': return 'Match telegraph';
     case 'cleanse': return 'Purge debuffs';
-    case 'overheal': return `${power} block +50%`;
+    case 'overheal': return `${power} block ×2 <50%`;
     case 'lifetap': return `${power} drain`;
     case 'emergency': return `${power} block ×2`;
-    case 'immunity': return 'Absorb status';
+    case 'immunity': return `Absorb next hit`;
     case 'empower': return `Next +${power}%`;
     case 'quicken': return '+1 AP';
-    case 'double_strike': return `2× at ${power}%`;
-    case 'focus': return 'Boost difficulty';
+    case 'focus': return 'Next −1 AP';
+    case 'double_strike': return `2× full power`;
     case 'weaken': return `Weak ${power}t`;
     case 'expose': return `Vuln ${power}t`;
     case 'slow': return 'Skip action';
     case 'hex': return `${power} poison ×${secondary ?? 3}`;
     case 'scout': return `Draw ${power}`;
-    case 'recycle': return 'Cycle card';
+    case 'recycle': return 'Draw 3 cards';
     case 'foresight': return `See ${power} intents`;
     case 'transmute': return 'Transform card';
     case 'mirror': return 'Copy last';
     case 'adapt': return 'Adapt effect';
-    case 'overclock': return '2× effect −1 draw';
+    case 'overclock': return '2× effect';
     default: return mechanic.name;
   }
 }
@@ -279,7 +279,7 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState): 
     case 'block':
       return [txt('Gain '), num(power), txt(' '), kw('Block', 'block')];
     case 'thorns':
-      return [txt('Gain '), num(power), txt(' '), kw('Block', 'block'), txt('. Reflect '), num(secondary ?? 2), txt(' damage')];
+      return [txt('Gain '), num(power), txt(' '), kw('Block', 'block'), txt('. Reflect '), num(secondary ?? 3), txt(' damage')];
     case 'fortify':
       return [txt('Gain '), num(power), txt(' '), kw('Block', 'block'), txt('. Persists next turn')];
     case 'parry':
@@ -287,9 +287,9 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState): 
     case 'brace':
       return [txt('Gain '), kw('Block', 'block'), txt(' equal to enemy attack')];
     case 'overheal': {
-      const bonus = Math.round(power * 0.5);
+      const bonus = Math.round(power * 1.0); // doubled power when below 50%
       const active = pHp < 0.5;
-      return [txt('Gain '), num(power), txt(' '), kw('Block', 'block'), txt('. +'), cond(active ? bonus : 0, active), txt(' below 50% HP')];
+      return [txt('Gain '), num(power), txt(' '), kw('Block', 'block'), txt('. ×2 ('), cond(active ? bonus * 2 : power, active), txt(') below 50% HP')];
     }
     case 'emergency': {
       const active = pHp < 0.3;
@@ -302,10 +302,10 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState): 
       return [txt('Next card +'), num(power), txt('% damage')];
     case 'quicken':
       return [txt('Gain +'), num(1), txt(' AP this turn')];
-    case 'double_strike':
-      return [txt('Next attack hits twice at '), num(power), txt('%')];
     case 'focus':
-      return [txt('Next card gets difficulty bonus')];
+      return [txt('Next card costs '), num(1), txt(' less AP')];
+    case 'double_strike':
+      return [txt('Next attack hits twice at full power')];
 
     // Debuffs
     case 'weaken':
@@ -323,15 +323,15 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState): 
     case 'scout':
       return [txt('Draw '), num(power), txt(' card'), power !== 1 ? txt('s') : txt('')];
     case 'recycle':
-      return [txt('Discard, draw a new card')];
+      return [txt('Draw '), num(3), txt(' cards')];
     case 'foresight':
-      return [txt('Reveal next '), num(power), txt(' intents')];
+      return [txt('Reveal next '), num(power), txt(' intents. Draw 1')];
     case 'transmute':
       return [txt('Transform a random hand card')];
     case 'cleanse':
       return [txt('Remove all debuffs. Draw 1')];
     case 'immunity':
-      return [txt('Absorb next status damage')];
+      return [txt('Absorb next damage instance (up to '), num(power), txt(')')];
 
     // Wild
     case 'mirror':
@@ -339,7 +339,7 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState): 
     case 'adapt':
       return [txt('Adapt to most needed effect')];
     case 'overclock':
-      return [txt('Next card ×2 effect. −1 draw')];
+      return [txt('Next card ×2 effect')];
 
     default:
       return [txt(mechanic.name)];

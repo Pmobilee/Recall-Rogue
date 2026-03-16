@@ -15,6 +15,7 @@ import { DEFAULT_POOL_SIZE } from '../data/balance';
 import { MECHANICS_BY_TYPE, type MechanicDefinition } from '../data/mechanics';
 import { assignTypesToCards } from './cardTypeAllocator';
 import { shuffled } from './randomUtils';
+import { getRunRng, isRunRngActive, seededShuffled } from './seededRng';
 import { funScoreWeight } from './funnessBoost';
 import { factMatchesDomainSelection, factMatchesPresetSelection } from './presetSelectionService';
 
@@ -69,13 +70,13 @@ function stratifiedSample(facts: Fact[], target: number, funnessBoostFactor?: nu
 
   const boostFactor = funnessBoostFactor ?? 0;
   const funnessWeightedShuffle = (arr: Fact[]): Fact[] => {
-    if (boostFactor <= 0) return shuffled(arr);
+    if (boostFactor <= 0) return isRunRngActive() ? seededShuffled(getRunRng('rewards'), arr) : shuffled(arr);
     const weighted = arr.map(f => ({ fact: f, _w: funScoreWeight(f.funScore ?? 5, boostFactor) }));
     const result: Fact[] = [];
     const pool = [...weighted];
     while (pool.length > 0) {
       const totalW = pool.reduce((sum, item) => sum + item._w, 0);
-      let roll = Math.random() * totalW;
+      let roll = (isRunRngActive() ? getRunRng('rewards').next() : Math.random()) * totalW;
       let picked = 0;
       for (let j = 0; j < pool.length; j++) {
         roll -= pool[j]._w;
@@ -137,7 +138,7 @@ function weightedShuffle<T extends { _weight: number }>(items: T[], count: numbe
   const pool = [...items];
   for (let i = 0; i < count && pool.length > 0; i++) {
     const totalWeight = pool.reduce((sum, item) => sum + item._weight, 0);
-    let roll = Math.random() * totalWeight;
+    let roll = (isRunRngActive() ? getRunRng('rewards').next() : Math.random()) * totalWeight;
     let picked = 0;
     for (let j = 0; j < pool.length; j++) {
       roll -= pool[j]._weight;
@@ -162,7 +163,8 @@ function pickMechanic(
   });
 
   const source = eligible.length > 0 ? eligible : pool;
-  const selected = source[Math.floor(Math.random() * source.length)];
+  const rng = isRunRngActive() ? getRunRng('cardtype') : null;
+  const selected = source[Math.floor((rng ? rng.next() : Math.random()) * source.length)];
   mechanicCounts.set(selected.id, (mechanicCounts.get(selected.id) ?? 0) + 1);
   return selected;
 }
@@ -225,6 +227,25 @@ function applyCategoryFilters(
   return facts.filter((f) => allowed.has(normalizeSubcategoryLabel(factSubcategory(f))));
 }
 
+// ── Fact question quality filter ─────────────────────────────────
+
+/**
+ * Returns true if the fact has a valid quiz question (either a direct
+ * quizQuestion or at least one variant with a question). Facts without
+ * any question must never enter the run pool.
+ */
+function factHasQuestion(fact: Fact): boolean {
+  const hasQuizQuestion =
+    !!fact.quizQuestion &&
+    fact.quizQuestion.trim().length > 0 &&
+    fact.quizQuestion !== 'undefined';
+  const hasVariantQuestions =
+    Array.isArray(fact.variants) &&
+    fact.variants.length > 0 &&
+    fact.variants.some((v) => v.question && v.question.trim().length > 0);
+  return hasQuizQuestion || hasVariantQuestions;
+}
+
 // ── Main pool builder ────────────────────────────────────────────
 
 /**
@@ -281,6 +302,9 @@ export function buildPresetRunPool(
       facts = applyCategoryFilters(normalized, facts, options?.categoryFilters);
     }
 
+    // Remove facts without a valid question before any further processing.
+    facts = facts.filter(factHasQuestion);
+
     // Apply preset subcategory/token filter for this domain key.
     facts = applyDomainSelectionFilter(facts, domain, domainSelections[domain] ?? []);
 
@@ -322,6 +346,7 @@ export function buildPresetRunPool(
     if (usedFactIds.has(state.factId)) return false;
     const fact = factsDB.getById(state.factId);
     if (!fact) return false;
+    if (!factHasQuestion(fact)) return false;
     return factMatchesPresetSelection(fact, domainSelections);
   });
 
@@ -332,6 +357,7 @@ export function buildPresetRunPool(
       if (state.nextReviewAt > now) return false;
       const fact = factsDB.getById(state.factId);
       if (!fact) return false;
+      if (!factHasQuestion(fact)) return false;
       return !factMatchesPresetSelection(fact, domainSelections);
     })
     : [];
@@ -363,7 +389,8 @@ export function buildPresetRunPool(
     const fillerCandidates = factsDB
       .getAll()
       .filter((fact) => !usedFactIds.has(fact.id))
-      .filter((fact) => factMatchesPresetSelection(fact, domainSelections));
+      .filter((fact) => factMatchesPresetSelection(fact, domainSelections))
+      .filter(factHasQuestion);
     const fillerFacts = stratifiedSample(fillerCandidates, shortage, options?.funnessBoostFactor);
     for (const fact of fillerFacts) {
       if (usedFactIds.has(fact.id)) continue;
@@ -384,7 +411,7 @@ export function buildPresetRunPool(
   pool = assignTypesToCards(pool);
   pool = applyMechanics(pool);
 
-  return shuffled(pool);
+  return isRunRngActive() ? seededShuffled(getRunRng('rewards'), pool) : shuffled(pool);
 }
 
 /**

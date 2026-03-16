@@ -476,10 +476,10 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     baseHP: 28,
     intentPool: [
       { type: 'attack', value: 9, weight: 2, telegraph: 'Mud slash' },
-      { type: 'debuff', value: 1, weight: 3, telegraph: 'Bog grasp', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
+      { type: 'debuff', value: 2, weight: 3, telegraph: 'Bog grasp', statusEffect: { type: 'poison', value: 2, turns: 2 } },
       { type: 'defend', value: 5, weight: 1, telegraph: 'Sliming' },
     ],
-    description: 'A sluglike creature composed of wet clay. Slow and sticky.',
+    description: 'A sluglike creature composed of wet clay. Its touch seeps poison through the skin.',
     rarity: 'standard',
     spawnWeight: 10,
     animArchetype: 'lurcher',

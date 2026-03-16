@@ -292,6 +292,97 @@ export function normalizeFactInput(raw, options = {}) {
   }
 }
 
+/**
+ * Validates a normalized fact meets minimum quality standards.
+ * Called during ingestion — facts that fail are rejected and logged.
+ * @param {object} fact - Normalized fact object
+ * @returns {{ valid: boolean, issues: string[] }}
+ */
+export function validateFactQuality(fact) {
+  const issues = []
+
+  // 1. Question must exist and be meaningful
+  const question = fact.quizQuestion || ''
+  if (question.length < 10) {
+    issues.push('question_too_short: quizQuestion is <10 chars')
+  }
+
+  // 2. Answer must exist
+  if (!fact.correctAnswer || fact.correctAnswer.trim().length === 0) {
+    issues.push('empty_answer: correctAnswer is empty')
+  }
+
+  // 3. Knowledge facts need at least 3 distractors (vocab uses runtime generation)
+  const distractors = fact.distractors || []
+  if (fact.type !== 'vocabulary' && distractors.length < 3) {
+    issues.push(`too_few_distractors: ${distractors.length} distractors (need 3+)`)
+  }
+
+  // 4. No distractor matches correct answer
+  const answer = (fact.correctAnswer || '').trim().toLowerCase()
+  for (const d of distractors) {
+    if (typeof d === 'string' && d.trim().toLowerCase() === answer) {
+      issues.push(`distractor_matches_answer: "${d}"`)
+      break
+    }
+  }
+
+  // 5. No duplicate distractors
+  const seen = new Set()
+  for (const d of distractors) {
+    const norm = typeof d === 'string' ? d.trim().toLowerCase() : ''
+    if (norm && seen.has(norm)) {
+      issues.push(`duplicate_distractor: "${d}"`)
+      break
+    }
+    if (norm) seen.add(norm)
+  }
+
+  // 6. Distractor length spread (knowledge facts only)
+  if (fact.type !== 'vocabulary' && distractors.length >= 3) {
+    const lengths = distractors.filter(d => typeof d === 'string' && d.trim().length > 0).map(d => d.trim().length)
+    if (lengths.length >= 2) {
+      const maxLen = Math.max(...lengths)
+      const minLen = Math.min(...lengths)
+      if (minLen > 0 && maxLen / minLen >= 3.5 && (maxLen - minLen) >= 18) {
+        issues.push(`distractor_length_spread: max=${maxLen} min=${minLen} ratio=${(maxLen/minLen).toFixed(1)}`)
+      }
+    }
+  }
+
+  // 7. Distractor type should match answer type
+  if (fact.type !== 'vocabulary' && distractors.length >= 3 && answer) {
+    const answerIsNumeric = /^\d{1,6}$/.test(answer.trim()) || /^\d{4}\s*(BCE|CE|AD|BC)?$/i.test(answer.trim())
+    if (answerIsNumeric) {
+      const numericDistractors = distractors.filter(d => typeof d === 'string' && /^\d{1,6}/.test(d.trim()))
+      if (numericDistractors.length < distractors.length * 0.5) {
+        issues.push('distractor_type_mismatch: numeric answer but non-numeric distractors')
+      }
+    }
+  }
+
+  // 8. Variants use correct field names
+  if (Array.isArray(fact.variants)) {
+    for (let i = 0; i < fact.variants.length; i++) {
+      const v = fact.variants[i]
+      if (typeof v === 'string') continue // string variants are OK after normalization
+      if (v.quizQuestion && !v.question) {
+        issues.push(`variant_wrong_field: variant[${i}] uses quizQuestion instead of question`)
+      }
+      if (typeof v === 'object' && v !== null && !v.question && !v.quizQuestion) {
+        issues.push(`variant_empty_question: variant[${i}] has no question`)
+      }
+    }
+  }
+
+  // 9. Category is present
+  if (!fact.category || (Array.isArray(fact.category) && fact.category.length === 0)) {
+    issues.push('missing_category: no category assigned')
+  }
+
+  return { valid: issues.length === 0, issues }
+}
+
 export function validateFactRecord(fact) {
   const errors = []
   const warnings = []

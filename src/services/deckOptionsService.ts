@@ -121,3 +121,16 @@ export function setFuriganaEnabled(enabled: boolean): void {
 export function setRomajiEnabled(enabled: boolean): void {
   setDeckOption('ja', 'romaji', enabled)
 }
+
+/**
+ * Check if kana-only mode is enabled for Japanese cards.
+ * When enabled, all kanji should be replaced with hiragana readings.
+ * Defaults to false.
+ */
+export function isKanaOnlyEnabled(): boolean {
+  return getDeckOption('ja', 'kanaOnly', false)
+}
+
+export function setKanaOnlyEnabled(enabled: boolean): void {
+  setDeckOption('ja', 'kanaOnly', enabled)
+}

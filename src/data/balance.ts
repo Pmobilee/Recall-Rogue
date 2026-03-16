@@ -929,15 +929,6 @@ export const TIER_QUESTION_FORMAT: Record<'1' | '2a' | '2b' | '3', {
   '3': { options: 0, allowReverse: false, allowFillBlank: false, useCloseDistractors: false },
 };
 
-// Difficulty-proportional power: lower ease = harder card = higher multiplier
-// Sorted ascending by maxEase. First match wins.
-export const EASE_POWER: Array<{ maxEase: number; multiplier: number }> = [
-  { maxEase: 1.5,      multiplier: 1.6 },  // Very Hard (ease < 1.5)
-  { maxEase: 2.0,      multiplier: 1.3 },  // Hard      (ease < 2.0)
-  { maxEase: 2.5,      multiplier: 1.0 },  // Medium    (ease < 2.5)
-  { maxEase: Infinity,  multiplier: 0.8 },  // Easy      (ease >= 2.5)
-];
-
 // Player defaults
 export const PLAYER_START_HP = 120;
 export const PLAYER_MAX_HP = 100;

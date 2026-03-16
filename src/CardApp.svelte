@@ -850,6 +850,7 @@
         runDurationMs={end.runDurationMs}
         rewardMultiplier={end.rewardMultiplier}
         currencyEarned={end.currencyEarned}
+        isPracticeRun={end.isPracticeRun}
         onplayagain={playAgain}
         onhome={returnToMenu}
       />

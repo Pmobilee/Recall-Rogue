@@ -65,7 +65,7 @@
   }
 
   .hud-overlay.banner-offset .hud-pill {
-    top: calc(64px + var(--safe-top));
+    top: calc(76px + var(--safe-top));
     transition: top 200ms ease;
   }
 </style>

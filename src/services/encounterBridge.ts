@@ -6,7 +6,7 @@ import { writable, get } from 'svelte/store';
 import type { TurnState } from './turnManager';
 import { startEncounter, playCardAction, skipCard, endPlayerTurn } from './turnManager';
 import { buildRunPool, recordRunFacts } from './runPoolBuilder';
-import { addCardToDeck, createDeck, insertCardWithDelay, addFactsToCooldown, tickFactCooldowns } from './deckManager';
+import { addCardToDeck, createDeck, insertCardWithDelay, addFactsToCooldown, tickFactCooldowns, getEncounterSeenFacts, resetEncounterSeenFacts } from './deckManager';
 import { createEnemy } from './enemyManager';
 import { ENEMY_TEMPLATES } from '../data/enemies';
 import { activeRunState } from './runStateStore';
@@ -372,6 +372,9 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
     if (shouldSuppressRewardsForTinyPool(uniquePoolFactIds.length)) {
       run.rewardsDisabled = true;
     }
+    if (deckMasteryPct > 0.75) {
+      run.practiceRunDetected = true;
+    }
     activeRunState.set(run);
 
     // Record pool fact IDs for recently-played deprioritization in future runs
@@ -437,6 +440,8 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   activeDeck.hintsRemaining = HINTS_PER_ENCOUNTER;
   // Tick encounter cooldowns at the start of each new encounter
   tickFactCooldowns(activeDeck);
+  // Reset seen-facts tracker so this encounter starts fresh
+  resetEncounterSeenFacts(activeDeck);
   turnState.playerState.hp = run.playerHp;
   turnState.apMax = Math.max(2, run.startingAp);
   turnState.apCurrent = Math.min(turnState.apCurrent, turnState.apMax);
@@ -538,7 +543,7 @@ export function handlePlayCard(
   const run = get(activeRunState);
 
   if (run && playedCard) {
-    recordCardPlay(run, correct, result.comboCount, playedCard.factId, playedCard.domain);
+    recordCardPlay(run, correct, result.comboCount, playedCard.factId, playedCard.domain, playedCard.tier === '1');
     analyticsService.track({
       name: 'card_play',
       properties: {
@@ -660,9 +665,10 @@ export function handlePlayCard(
   }
 
   if (result.enemyDefeated) {
-    // Record answered facts for cooldown before encounter ends
-    if (activeDeck && result.turnState.encounterAnsweredFacts.length > 0) {
-      addFactsToCooldown(activeDeck, result.turnState.encounterAnsweredFacts);
+    // Record ALL facts seen this encounter for cooldown (not just answered ones)
+    if (activeDeck) {
+      const seenFacts = getEncounterSeenFacts(activeDeck);
+      if (seenFacts.length > 0) addFactsToCooldown(activeDeck, seenFacts);
     }
     // Post-encounter healing: restore a percentage of max HP
     // Boss/mini-boss encounters grant bonus healing (AR-32)
@@ -795,9 +801,10 @@ export function handleEndTurn(): void {
   }
 
   if (result.playerDefeated) {
-    // Record answered facts for cooldown before encounter ends
-    if (activeDeck && result.turnState.encounterAnsweredFacts.length > 0) {
-      addFactsToCooldown(activeDeck, result.turnState.encounterAnsweredFacts);
+    // Record ALL facts seen this encounter for cooldown (not just answered ones)
+    if (activeDeck) {
+      const seenFacts = getEncounterSeenFacts(activeDeck);
+      if (seenFacts.length > 0) addFactsToCooldown(activeDeck, seenFacts);
     }
     setTimeout(() => {
       activeTurnState.set(null);

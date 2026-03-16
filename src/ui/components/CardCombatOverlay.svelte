@@ -30,6 +30,7 @@
   import { audioManager } from '../../services/audioService'
   import { REVEAL_DURATION, SWOOSH_DURATION, IMPACT_DURATION, DISCARD_DURATION, TIER_UP_DURATION, type CardAnimPhase } from '../utils/mechanicAnimations'
   import { shuffled } from '../../services/randomUtils'
+  import { getRunRng, isRunRngActive, seededShuffled } from '../../services/seededRng'
   import { isPlaceholderDistractor } from '../../services/distractorFilter'
   import { getVocabDistractors } from '../../services/vocabDistractorService'
   import { activeRunState } from '../../services/runStateStore'
@@ -37,6 +38,7 @@
   import { getMasteryScalingTier, getRewardMultiplier, getDifficultyBoostFloors } from '../../services/masteryScalingService'
   import { synergyFlash } from '../stores/gameState'
   import { getNonCuratedQuestion, getQuestionVariantCount } from '../utils/combatQuestionPolicy'
+  import StatusEffectBar from './StatusEffectBar.svelte'
 
   interface Props {
     turnState: TurnState | null
@@ -70,6 +72,22 @@
   let committedCardIndex = $state<number | null>(null)
   let committedQuizData = $state<QuizData | null>(null)
   let committedAtMs = $state(0)
+
+  /** Refs to the draw/discard pile indicator elements — used to set CSS vars for card animations. */
+  let drawPileEl = $state<HTMLDivElement | undefined>(undefined)
+  let discardPileEl = $state<HTMLDivElement | undefined>(undefined)
+
+  /** Set CSS custom properties for pile positions so card animations can target them. */
+  $effect(() => {
+    if (!drawPileEl || !discardPileEl) return
+    const drawRect = drawPileEl.getBoundingClientRect()
+    const discardRect = discardPileEl.getBoundingClientRect()
+    const root = document.documentElement
+    root.style.setProperty('--draw-pile-x', `${drawRect.left + drawRect.width / 2}px`)
+    root.style.setProperty('--draw-pile-y', `${drawRect.top + drawRect.height / 2}px`)
+    root.style.setProperty('--discard-pile-x', `${discardRect.left + discardRect.width / 2}px`)
+    root.style.setProperty('--discard-pile-y', `${discardRect.top + discardRect.height / 2}px`)
+  })
 
   let answeredThisTurn = $state(0)
   let damageNumbers = $state<Array<{ id: number; value: string; isCritical: boolean }>>([])
@@ -109,30 +127,27 @@
   // Deck reshuffle animation state
   let showReshuffle = $state(false)
   let reshuffleCardCount = $state(0)
+  /** Hold hand cards until reshuffle animation finishes, so draw swoosh plays AFTER shuffle. */
+  let reshuffleHoldingHand = $state(false)
 
   $effect(() => {
     const event = $reshuffleEvent
     if (event && event.cardCount > 0) {
-      reshuffleCardCount = event.cardCount
+      reshuffleCardCount = Math.min(event.cardCount, 12)
       showReshuffle = true
-      // Play staggered flop sounds for each card (max 15)
-      const soundCount = Math.min(event.cardCount, 15)
-      const timers: ReturnType<typeof setTimeout>[] = []
-      for (let i = 0; i < soundCount; i++) {
-        timers.push(setTimeout(() => audioManager.playSound('card_deal'), i * 60))
+      reshuffleHoldingHand = true
+      const totalDuration = reshuffleCardCount * 40 + 300
+      for (let i = 0; i < reshuffleCardCount; i++) {
+        setTimeout(() => audioManager.playSound('card_shuffle'), i * 40)
       }
-      // Auto-hide after animation completes
-      const hideTimer = setTimeout(() => {
+      setTimeout(() => {
         showReshuffle = false
-      }, soundCount * 60 + 400)
-      return () => {
-        timers.forEach(clearTimeout)
-        clearTimeout(hideTimer)
-      }
+        reshuffleHoldingHand = false  // release hand — cards will mount and swoosh from draw pile
+      }, totalDuration)
     }
   })
 
-  let handCards = $derived<Card[]>(turnState?.deck.hand ?? [])
+  let handCards = $derived<Card[]>(reshuffleHoldingHand ? [] : (turnState?.deck.hand ?? []))
   let comboCount = $derived(turnState?.comboCount ?? 0)
   let comboMultiplier = $derived(getComboMultiplier(comboCount))
   let isPerfectTurn = $derived(turnState?.isPerfectTurn ?? false)
@@ -151,6 +166,9 @@
   let apMax = $derived(turnState?.apMax ?? 0)
   let drawPileCount = $derived(turnState?.deck.drawPile.length ?? 0)
   let discardPileCount = $derived(turnState?.deck.discardPile.length ?? 0)
+  /** Number of visual card stacks to show (1-5 based on pile size). */
+  let drawStackCount = $derived(Math.max(1, Math.min(5, Math.ceil(drawPileCount / 3))))
+  let discardStackCount = $derived(Math.max(0, Math.min(5, Math.ceil(discardPileCount / 3))))
 
   const run = $derived($activeRunState)
   const expertModeActive = $derived(
@@ -162,12 +180,63 @@
   const expertModeRewardMult = $derived(
     expertModeActive ? getRewardMultiplier(run?.deckMasteryPct ?? 0) : 1.0
   )
+  const isPracticeRun = $derived(run?.practiceRunDetected === true)
 
   let enemyIntent = $derived(turnState?.enemy.nextIntent ?? null)
   let enemyName = $derived(turnState?.enemy.template.name ?? '')
   let enemyCategory = $derived(turnState?.enemy.template.category ?? 'common')
   let currentFloor = $derived(turnState?.deck.currentFloor ?? 0)
   let currentEncounter = $derived(turnState?.deck.currentEncounter ?? 0)
+
+  // Unified effect type for the icon bar
+  interface DisplayEffect {
+    type: string
+    value: number
+    turnsRemaining: number
+  }
+
+  let enemyEffects = $derived<DisplayEffect[]>(
+    (() => {
+      if (!turnState) return []
+      const effects: DisplayEffect[] = [...(turnState.enemy?.statusEffects ?? [])]
+      return effects.filter(e => e.turnsRemaining > 0)
+    })()
+  )
+
+  let playerEffects = $derived<DisplayEffect[]>(
+    (() => {
+      if (!turnState) return []
+      const effects: DisplayEffect[] = [...(turnState.playerState?.statusEffects ?? [])]
+
+      // Add TurnState flags as virtual effects
+      if (turnState.thornsActive && turnState.thornsValue > 0) {
+        effects.push({ type: 'thorns', value: turnState.thornsValue, turnsRemaining: 1 })
+      }
+      if (turnState.buffNextCard > 0) {
+        effects.push({ type: 'empower', value: turnState.buffNextCard, turnsRemaining: 1 })
+      }
+      if (turnState.doubleStrikeReady) {
+        effects.push({ type: 'double_strike', value: 60, turnsRemaining: 1 })
+      }
+      if (turnState.foresightTurnsRemaining > 0) {
+        effects.push({ type: 'foresight', value: 2, turnsRemaining: turnState.foresightTurnsRemaining })
+      }
+      if (turnState.focusReady && turnState.focusCharges > 0) {
+        effects.push({ type: 'focus', value: turnState.focusCharges, turnsRemaining: 1 })
+      }
+      if (turnState.overclockReady) {
+        effects.push({ type: 'overclock', value: 1, turnsRemaining: 1 })
+      }
+      if (turnState.persistentShield > 0) {
+        effects.push({ type: 'fortify', value: turnState.persistentShield, turnsRemaining: 1 })
+      }
+      if (turnState.phoenixRageTurnsRemaining > 0) {
+        effects.push({ type: 'strength', value: 1, turnsRemaining: turnState.phoenixRageTurnsRemaining })
+      }
+
+      return effects.filter(e => e.turnsRemaining > 0)
+    })()
+  )
 
   let intentPopupOpen = $state(false)
 
@@ -308,9 +377,8 @@
     selectedIndex !== null && handCards[selectedIndex] ? handCards[selectedIndex] : null,
   )
 
-  let committedCard = $derived<Card | null>(
-    committedCardIndex !== null && handCards[committedCardIndex] ? handCards[committedCardIndex] : null,
-  )
+  let committedCardSnapshot = $state<Card | null>(null)
+  let committedCard = $derived<Card | null>(committedCardSnapshot)
 
   function applyAscensionQuestionPresentation(card: Card, base: ReturnType<typeof getQuestionPresentation>) {
     const tier1OptionCount = turnState?.ascensionTier1OptionCount ?? 3
@@ -390,7 +458,7 @@
   )
 
   let castDisabled = $derived(
-    !selectedCard || !turnState || Math.max(1, selectedCard.apCost ?? 1) > turnState.apCurrent,
+    !selectedCard || !turnState || (selectedCard.apCost ?? 1) > turnState.apCurrent,
   )
 
   let playerHpCurrent = $derived(turnState?.playerState.hp ?? 0)
@@ -575,10 +643,10 @@
     }
 
     if (!preferClose) {
-      return shuffled(unique).slice(0, Math.min(distractorCount, unique.length))
+      return (isRunRngActive() ? seededShuffled(getRunRng('quiz'), unique) : shuffled(unique)).slice(0, Math.min(distractorCount, unique.length))
     }
 
-    const ranked = shuffled(unique)
+    const ranked = (isRunRngActive() ? seededShuffled(getRunRng('quiz'), unique) : shuffled(unique))
       .map((entry) => ({ entry, score: distractorSimilarityScore(correctAnswer, entry) }))
       .sort((a, b) => b.score - a.score)
       .map((entry) => entry.entry)
@@ -586,7 +654,7 @@
     const hardCount = Math.min(distractorCount, Math.max(1, Math.ceil(distractorCount * 0.7)))
     const primary = ranked.slice(0, hardCount)
     const secondaryPool = ranked.slice(hardCount)
-    return [...primary, ...shuffled(secondaryPool).slice(0, distractorCount - primary.length)]
+    return [...primary, ...(isRunRngActive() ? seededShuffled(getRunRng('quiz'), secondaryPool) : shuffled(secondaryPool)).slice(0, distractorCount - primary.length)]
   }
 
   function getQuizForCard(card: Card, optionCount: number): QuizData {
@@ -603,13 +671,15 @@
     // Vocab cards use the legacy 3-variant system (forward/reverse/fill-blank)
     // Knowledge facts with a variants array use the new N-variant system
     const hasVariantsArray = fact.type !== 'vocabulary' && Array.isArray(fact.variants) && fact.variants.length > 0
+      && fact.variants.some((v: any) => typeof v === 'string' ? v.trim().length > 0 : (v.question || v.quizQuestion || '').trim().length > 0)
     const forceHardFormats = turnState?.ascensionForceHardQuestionFormats === true
     const variantPool = hasVariantsArray
       ? (() => {
         const variants = fact.variants!
         if (!forceHardFormats) return variants
+        // String variants have no type field — skip hard format filtering for them
         const preferred = variants.filter((variant) => (
-          variant.type === 'fill_blank' || variant.type === 'reverse' || variant.type === 'context'
+          typeof variant !== 'string' && (variant.type === 'fill_blank' || variant.type === 'reverse' || variant.type === 'context')
         ))
         return preferred.length > 0 ? preferred : variants
       })()
@@ -624,13 +694,13 @@
       } else if (canaryQuestionBias > 0) {
         const indices = Array.from({ length: variantCount }, (_, i) => i).filter(i => i !== 0 && i !== lastVariant)
         variantIndex = indices.length > 0
-          ? indices[Math.floor(Math.random() * indices.length)]
+          ? indices[Math.floor((isRunRngActive() ? getRunRng('quiz').next() : Math.random()) * indices.length)]
           : Math.min(1, variantCount - 1)
       } else {
-        variantIndex = Math.floor(Math.random() * variantCount)
+        variantIndex = Math.floor((isRunRngActive() ? getRunRng('quiz').next() : Math.random()) * variantCount)
         let attempts = 0
         while (variantCount > 1 && variantIndex === lastVariant && attempts < 10) {
-          variantIndex = Math.floor(Math.random() * variantCount)
+          variantIndex = Math.floor((isRunRngActive() ? getRunRng('quiz').next() : Math.random()) * variantCount)
           attempts++
         }
       }
@@ -641,15 +711,24 @@
     let distractorSource: string[]
 
     if (hasVariantsArray) {
-      // Use the fact's variants array
+      // Use the fact's variants array — handle both string[] and object[] formats
       const variant = variantPool[variantIndex % variantPool.length]
-      question = variant.question
-      correctAnswer = variant.answer ?? variant.correctAnswer ?? fact.correctAnswer
-      distractorSource = variant.distractors ?? fact.distractors
+      if (typeof variant === 'string') {
+        // Plain string variant = just an alternate question text
+        question = variant
+        correctAnswer = fact.correctAnswer
+        distractorSource = fact.distractors
+      } else {
+        question = variant.question || (variant as any).quizQuestion || ''
+        correctAnswer = variant.answer ?? variant.correctAnswer ?? fact.correctAnswer
+        distractorSource = variant.distractors ?? fact.distractors
+      }
       // Store back the source index in the original array for variety tracking.
-      const sourceVariantIndex = fact.variants!.findIndex((entry) => (
-        entry.question === variant.question && (entry.answer ?? entry.correctAnswer) === correctAnswer
-      ))
+      const variantQuestion = typeof variant === 'string' ? variant : (variant.question || (variant as any).quizQuestion || '')
+      const sourceVariantIndex = fact.variants!.findIndex((entry) => {
+        const entryQ = typeof entry === 'string' ? entry : (entry.question || (entry as any).quizQuestion || '')
+        return entryQ === variantQuestion
+      })
       if (sourceVariantIndex >= 0) variantIndex = sourceVariantIndex
     } else {
       // Legacy system for vocab cards and facts without variants
@@ -666,18 +745,41 @@
     }
 
     const distractorCount = Math.max(2, optionCount - 1)
-    const picked = pickDistractors(
+    let picked = pickDistractors(
       distractorSource,
       correctAnswer,
       Math.min(distractorCount, distractorSource.length),
       turnState?.ascensionPreferCloseDistractors === true,
     )
 
+    // Runtime distractor type validation — last line of defense
+    // If correct answer is numeric but most distractors are text (or vice versa),
+    // filter to only type-matching distractors
+    if (picked.length >= 2) {
+      const answerIsShort = correctAnswer.trim().length <= 5
+      const answerIsNumeric = /^\d/.test(correctAnswer.trim()) || /^(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)\b/i.test(correctAnswer.trim())
+
+      if (answerIsNumeric) {
+        const numericPicked = picked.filter(d => /^\d/.test(d.trim()) || /^(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)\b/i.test(d.trim()))
+        if (numericPicked.length >= 2) {
+          picked = numericPicked.slice(0, distractorCount)
+        }
+      }
+
+      // Length sanity: if answer is very short (<=5 chars), filter out distractors >5x longer
+      if (answerIsShort) {
+        const reasonable = picked.filter(d => d.trim().length <= correctAnswer.trim().length * 5)
+        if (reasonable.length >= 2) {
+          picked = reasonable.slice(0, distractorCount)
+        }
+      }
+    }
+
     // Redact answer if it appears verbatim in the question text
     question = redactAnswerFromQuestion(question, correctAnswer)
 
     const allAnswers = [...picked]
-    const insertIdx = Math.floor(Math.random() * (allAnswers.length + 1))
+    const insertIdx = Math.floor((isRunRngActive() ? getRunRng('quiz').next() : Math.random()) * (allAnswers.length + 1))
     allAnswers.splice(insertIdx, 0, correctAnswer)
 
     return {
@@ -704,6 +806,7 @@
     cardPlayStage = 'hand'
     selectedIndex = null
     committedCardIndex = null
+    committedCardSnapshot = null
     committedQuizData = null
     committedAtMs = 0
   }
@@ -725,6 +828,7 @@
         if (!state.hasCompletedOnboarding && !state.hasSeenAPTooltip) {
           markOnboardingTooltipSeen('hasSeenAPTooltip')
         }
+
       }
     }
   })
@@ -739,7 +843,7 @@
 
   let hasPlayableCards = $derived.by(() => {
     if (!turnState || turnState.phase !== 'player_action') return false
-    return handCards.some((c) => Math.max(1, c.apCost ?? 1) <= turnState!.apCurrent)
+    return handCards.some((c) => (c.apCost ?? 1) <= turnState!.apCurrent)
   })
 
   function handleSelect(index: number): void {
@@ -774,7 +878,7 @@
 
     const card = handCards[index]
     if (!card) return
-    if (Math.max(1, card.apCost ?? 1) > (turnState?.apCurrent ?? 0)) return
+    if ((card.apCost ?? 1) > (turnState?.apCurrent ?? 0)) return
 
     // Select and immediately cast
     selectedIndex = index
@@ -790,6 +894,7 @@
     playCardAudio('card-cast')
     cardPlayStage = 'committed'
     committedCardIndex = selectedIndex
+    committedCardSnapshot = { ...selectedCard }
     committedQuizData = getQuizForCard(selectedCard, selectedPresentation.optionCount)
     committedAtMs = Date.now()
     selectedIndex = null
@@ -951,7 +1056,39 @@
     }
 
     showEndTurnConfirm = false
-    onendturn()
+
+    // Animate remaining hand cards to the discard pile before ending the turn
+    const handCardEls = document.querySelectorAll('.card-in-hand:not(.card-animating)')
+    if (handCardEls.length > 0) {
+      const root = getComputedStyle(document.documentElement)
+      const discardX = parseFloat(root.getPropertyValue('--discard-pile-x')) || 0
+      const discardY = parseFloat(root.getPropertyValue('--discard-pile-y')) || 0
+
+      handCardEls.forEach((el, i) => {
+        const rect = el.getBoundingClientRect()
+        const cx = rect.left + rect.width / 2
+        const cy = rect.top + rect.height / 2
+        const currentTransform = getComputedStyle(el).transform || 'none'
+
+        const offX = discardX - cx
+        const offY = discardY - cy
+        el.animate([
+          { transform: currentTransform, opacity: 1 },
+          { transform: `translate(${offX * 0.7}px, ${offY * 0.7}px) scale(0.15)`, opacity: 0.5, offset: 0.65 },
+          { transform: `translate(${offX}px, ${offY}px) scale(0.05)`, opacity: 0 },
+        ], {
+          duration: 250,
+          delay: i * 40,
+          easing: 'ease-in',
+          fill: 'forwards',
+        })
+      })
+
+      // Wait for animations to finish, then end the turn
+      setTimeout(() => onendturn(), 250 + handCardEls.length * 40)
+    } else {
+      onendturn()
+    }
   }
 
   function cancelEndTurn(): void {
@@ -980,22 +1117,41 @@
       </div>
     {/if}
 
+    {#if isPracticeRun && turnState}
+      <div class="practice-run-banner">
+        Practice Run — Camp rewards disabled
+      </div>
+    {/if}
+
     {#if turnState && enemyName}
       <div class="enemy-name-header" style="color: {categoryColor}">
         {enemyName}
       </div>
     {/if}
 
+    <StatusEffectBar effects={enemyEffects} position="enemy" />
+
     <div class="ap-orb" class:ap-active={apCurrent > 0} class:ap-empty={apCurrent === 0} aria-label="Action points: {apCurrent}">
       <span class="ap-number">{apCurrent}</span>
     </div>
 
-    <button class="deck-pile draw-pile" type="button" title={pileTooltip('Draw pile', turnState.deck.drawPile, true)} aria-label="Draw pile: {drawPileCount}">
-      <span class="deck-pile-count">{drawPileCount}</span>
-    </button>
-    <button class="deck-pile discard-pile" type="button" title={pileTooltip('Discard pile', turnState.deck.discardPile, true)} aria-label="Discard pile: {discardPileCount}">
-      <span class="deck-pile-count">{discardPileCount}</span>
-    </button>
+    <div class="pile-indicator draw-pile-indicator" bind:this={drawPileEl} aria-label="Draw pile: {drawPileCount}">
+      <div class="pile-icon" style="--stack-count: {drawStackCount}">
+        {#each Array(drawStackCount) as _, idx}
+          <div class="pile-card-stack" style="top: calc({idx * 2}px * var(--layout-scale, 1)); left: calc({idx * 2}px * var(--layout-scale, 1));"></div>
+        {/each}
+      </div>
+      <span class="pile-count-label">{drawPileCount}</span>
+    </div>
+
+    <div class="pile-indicator discard-pile-indicator" bind:this={discardPileEl} aria-label="Discard pile: {discardPileCount}">
+      <div class="pile-icon" style="--stack-count: {discardStackCount}">
+        {#each Array(Math.max(1, discardStackCount)) as _, idx}
+          <div class="pile-card-stack" style="top: calc({idx * 2}px * var(--layout-scale, 1)); left: calc({idx * 2}px * var(--layout-scale, 1)); {discardStackCount === 0 ? 'opacity: 0.3;' : ''}"></div>
+        {/each}
+      </div>
+      <span class="pile-count-label">{discardPileCount}</span>
+    </div>
 
     {#if intentDisplay && cardPlayStage !== 'committed'}
       <button
@@ -1074,6 +1230,8 @@
       <div class="screen-edge-pulse" style="pointer-events: none;"></div>
     {/if}
 
+    <StatusEffectBar effects={playerEffects} position="player" />
+
     <div class="player-status-strip" aria-label="Player health and block">
       {#if playerShield > 0}
         <div class="player-block-badge">
@@ -1131,15 +1289,6 @@
       </div>
     {/if}
 
-    {#if turnState}
-      <div class="discard-pile-indicator" data-testid="discard-pile">
-        <div class="discard-pile-icon">
-          <div class="discard-card-stack"></div>
-          <div class="discard-card-stack"></div>
-        </div>
-        <span class="discard-count">{turnState.deck.discardPile.length}</span>
-      </div>
-    {/if}
   {/if}
 
   {#if synergyFlashText}
@@ -1149,16 +1298,10 @@
   {/if}
 
   {#if showReshuffle}
-    <div class="reshuffle-overlay">
-      <div class="reshuffle-text">Reshuffling...</div>
-      <div class="reshuffle-cards">
-        {#each Array(Math.min(reshuffleCardCount, 12)) as _, i}
-          <div
-            class="reshuffle-card"
-            style="animation-delay: {i * 60}ms"
-          ></div>
-        {/each}
-      </div>
+    <div class="reshuffle-fly-zone">
+      {#each Array(reshuffleCardCount) as _, i}
+        <div class="reshuffle-fly-card" style="animation-delay: {i * 40}ms"></div>
+      {/each}
     </div>
   {/if}
 </div>
@@ -1218,7 +1361,7 @@
   .ap-orb {
     position: absolute;
     left: calc(16px * var(--layout-scale, 1));
-    bottom: calc(calc(48px * var(--layout-scale, 1)) + 8vh + calc(280px * var(--layout-scale, 1)));
+    bottom: 45vh;
     z-index: 8;
     width: calc(44px * var(--layout-scale, 1));
     height: calc(44px * var(--layout-scale, 1));
@@ -1292,49 +1435,12 @@
     to { transform: rotate(360deg) scale(0.97); }
   }
 
-  .deck-pile {
-    position: absolute;
-    z-index: 8;
-    width: calc(52px * var(--layout-scale, 1));
-    height: calc(68px * var(--layout-scale, 1));
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: default;
-    -webkit-tap-highlight-color: transparent;
-    font-family: inherit;
-    border: 2px solid;
-    background: rgba(10, 18, 30, 0.85);
-    backdrop-filter: blur(6px);
-  }
-
-  .draw-pile {
-    left: calc(8px * var(--layout-scale, 1));
-    top: calc(calc(50px * var(--layout-scale, 1)) + var(--safe-top, 0px));
-    border-color: rgba(39, 174, 96, 0.7);
-    box-shadow: 0 0 8px rgba(39, 174, 96, 0.2);
-  }
-
-  .discard-pile {
-    right: calc(8px * var(--layout-scale, 1));
-    bottom: calc(24px * var(--layout-scale, 1));
-    border-color: rgba(230, 126, 34, 0.7);
-    box-shadow: 0 0 8px rgba(230, 126, 34, 0.2);
-  }
-
-  .deck-pile-count {
-    font-size: calc(20px * var(--layout-scale, 1));
-    font-weight: 800;
-    color: #f8fafc;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
-  }
 
   .enemy-intent-bubble {
     --intent-expanded-width: calc(200px * var(--layout-scale, 1));
     position: fixed;
     top: calc(calc(12px * var(--layout-scale, 1)) + var(--safe-top));
-    left: calc(max((100vw - 500px) / 2, 0px) + calc(8px * var(--layout-scale, 1)));
+    left: calc(8px * var(--layout-scale, 1));
     z-index: 12;
     border: 2px solid;
     border-radius: 14px;
@@ -1557,9 +1663,8 @@
 
   .end-turn-btn {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: calc(calc(40px * var(--layout-scale, 1)) + 8vh + calc(280px * var(--layout-scale, 1)));
+    left: calc(12px * var(--layout-scale, 1));
+    bottom: calc(12px * var(--layout-scale, 1));
     width: auto;
     min-width: calc(110px * var(--layout-scale, 1));
     padding: 0 calc(20px * var(--layout-scale, 1));
@@ -1816,102 +1921,119 @@
     100% { opacity: 0; transform: scale(1.5); }
   }
 
-  .discard-pile-indicator {
-    position: fixed;
-    bottom: calc(68px + 4vh);
-    right: 12px;
+  .pile-indicator {
+    position: absolute;
+    z-index: 8;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2px;
-    z-index: 15;
-    opacity: 0.6;
-    pointer-events: none;
+    gap: calc(3px * var(--layout-scale, 1));
+    cursor: default;
   }
 
-  .discard-pile-icon {
-    width: 24px;
-    height: 32px;
+  .draw-pile-indicator {
+    right: calc(12px * var(--layout-scale, 1));
+    bottom: calc(68px * var(--layout-scale, 1));
+  }
+
+  .discard-pile-indicator {
+    left: calc(12px * var(--layout-scale, 1));
+    bottom: calc(68px * var(--layout-scale, 1));
+  }
+
+  .pile-icon {
+    width: calc(36px * var(--layout-scale, 1));
+    height: calc(46px * var(--layout-scale, 1));
     position: relative;
   }
 
-  .discard-card-stack {
+  .pile-card-stack {
     position: absolute;
-    width: 20px;
-    height: 28px;
-    border: 1.5px solid rgba(148, 163, 184, 0.6);
+    width: calc(26px * var(--layout-scale, 1));
+    height: calc(36px * var(--layout-scale, 1));
     border-radius: 3px;
-    background: rgba(30, 41, 59, 0.7);
+    background: rgba(10, 18, 30, 0.7);
   }
 
-  .discard-card-stack:first-child {
-    top: 0;
-    left: 0;
+  .pile-card-stack:last-child {
+    /* Last card in stack is the "top" — slightly more visible */
+    opacity: 1;
   }
 
-  .discard-card-stack:last-child {
-    top: 2px;
-    left: 3px;
+  /* Draw pile = green */
+  .draw-pile-indicator .pile-card-stack {
+    border: 2px solid rgba(39, 174, 96, 0.7);
   }
 
-  .discard-count {
-    font-size: 10px;
-    color: rgba(148, 163, 184, 0.8);
-    font-weight: 600;
+  /* Discard pile = orange */
+  .discard-pile-indicator .pile-card-stack {
+    border: 2px solid rgba(230, 126, 34, 0.7);
   }
 
-  .reshuffle-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 25;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.5);
-    pointer-events: none;
-  }
-
-  .reshuffle-text {
-    font-size: calc(18px * var(--layout-scale, 1));
+  .pile-count-label {
+    font-size: calc(13px * var(--layout-scale, 1));
+    font-weight: 800;
     color: #f8fafc;
-    font-weight: 700;
-    margin-bottom: calc(16px * var(--layout-scale, 1));
-    letter-spacing: 1px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
   }
 
-  .reshuffle-cards {
-    display: flex;
-    gap: calc(4px * var(--layout-scale, 1));
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: calc(300px * var(--layout-scale, 1));
-  }
-
-  .reshuffle-card {
-    width: calc(36px * var(--layout-scale, 1));
+  .reshuffle-fly-zone {
+    position: absolute;
+    bottom: calc(68px * var(--layout-scale, 1));
+    left: 0;
+    right: 0;
     height: calc(50px * var(--layout-scale, 1));
-    border-radius: 4px;
-    background: linear-gradient(135deg, #1a2332, #2a3442);
-    border: 1px solid rgba(230, 126, 34, 0.5);
-    opacity: 0;
-    animation: reshuffleCardMove 300ms ease-out forwards;
+    z-index: 9;
+    pointer-events: none;
+    overflow: hidden;
   }
 
-  @keyframes reshuffleCardMove {
+  .reshuffle-fly-card {
+    position: absolute;
+    left: calc(20px * var(--layout-scale, 1));
+    bottom: calc(10px * var(--layout-scale, 1));
+    width: calc(16px * var(--layout-scale, 1));
+    height: calc(22px * var(--layout-scale, 1));
+    border-radius: 2px;
+    background: rgba(230, 126, 34, 0.6);
+    border: 1px solid rgba(230, 126, 34, 0.8);
+    opacity: 0;
+    animation: reshuffleFly 250ms ease-in-out forwards;
+  }
+
+  @keyframes reshuffleFly {
     0% {
-      opacity: 0;
-      transform: translateX(calc(-40px * var(--layout-scale, 1))) scale(0.7);
+      opacity: 0.8;
+      transform: translateX(0) scale(1);
+      background: rgba(230, 126, 34, 0.6);
+      border-color: rgba(230, 126, 34, 0.8);
     }
     50% {
-      opacity: 1;
-      transform: translateX(calc(10px * var(--layout-scale, 1))) scale(1.05);
+      opacity: 0.6;
+      transform: translateX(calc(50vw - 40px)) translateY(calc(-10px * var(--layout-scale, 1))) scale(0.8);
     }
     100% {
-      opacity: 1;
-      transform: translateX(0) scale(1);
-      border-color: rgba(39, 174, 96, 0.5);
-      background: linear-gradient(135deg, #1a2332, #1a3025);
+      opacity: 0;
+      transform: translateX(calc(100vw - 60px)) scale(0.5);
+      background: rgba(39, 174, 96, 0.6);
+      border-color: rgba(39, 174, 96, 0.8);
     }
+  }
+
+  .practice-run-banner {
+    position: absolute;
+    top: calc(calc(32px * var(--layout-scale, 1)) + var(--safe-top, 0px));
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    padding: calc(4px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    background: rgba(100, 116, 139, 0.8);
+    color: #e2e8f0;
+    font-size: calc(11px * var(--layout-scale, 1));
+    font-weight: 600;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+    pointer-events: none;
+    white-space: nowrap;
   }
 </style>

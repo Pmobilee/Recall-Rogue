@@ -1,0 +1,15 @@
+{
+  "generatedAt": "2026-03-16T07:51:42.205Z",
+  "command": "apply-fixes",
+  "dbPath": "public/facts.db",
+  "inputPath": "../../../../tmp/re-apply-fixes.jsonl",
+  "fixer": "sonnet-1",
+  "dryRun": false,
+  "counts": {
+    "inputRows": 9,
+    "updated": 9,
+    "missing": 0,
+    "cleared": 9,
+    "keptFlagged": 0
+  }
+}

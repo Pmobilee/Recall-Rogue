@@ -2,6 +2,7 @@ import type { Card } from '../data/card-types';
 import type { CardType } from '../data/card-types';
 import type { RewardArchetype } from './runManager';
 import { shuffled } from './randomUtils';
+import { getRunRng, isRunRngActive, seededShuffled } from './seededRng';
 
 const ALL_REWARD_TYPES: CardType[] = ['attack', 'shield', 'buff', 'debuff', 'utility', 'wild'];
 
@@ -37,7 +38,8 @@ function pickWeightedType(availableTypes: CardType[], archetype: RewardArchetype
 
   if (buckets.length === 0 || total <= 0) return null;
 
-  let cursor = Math.random() * total;
+  const rng = isRunRngActive() ? getRunRng('rewards') : null;
+  let cursor = (rng ? rng.next() : Math.random()) * total;
   for (const bucket of buckets) {
     cursor -= bucket.weight;
     if (cursor <= 0) return bucket.type;
@@ -57,7 +59,8 @@ export function generateCardRewardOptions(
 ): Card[] {
   const eligible = filterEligible(runPool, activeDeckFactIds, consumedRewardFactIds);
 
-  return shuffled(eligible).slice(0, count);
+  const rng = isRunRngActive() ? getRunRng('rewards') : null;
+  return (rng ? seededShuffled(rng, eligible) : shuffled(eligible)).slice(0, count);
 }
 
 /**
@@ -103,7 +106,8 @@ export function generateCardRewardOptionsByType(
   for (const type of typeOptions) {
     const bucket = eligible.filter((card) => card.cardType === type && !usedFactIds.has(card.factId));
     if (bucket.length === 0) continue;
-    const card = bucket[Math.floor(Math.random() * bucket.length)];
+    const rng = isRunRngActive() ? getRunRng('rewards') : null;
+    const card = bucket[Math.floor((rng ? rng.next() : Math.random()) * bucket.length)];
     selected.push(card);
     usedFactIds.add(card.factId);
   }
@@ -135,6 +139,7 @@ export function rerollRewardCardInType(
   );
   if (bucket.length === 0) return currentOptions;
 
-  const next = bucket[Math.floor(Math.random() * bucket.length)];
+  const rng = isRunRngActive() ? getRunRng('rewards') : null;
+  const next = bucket[Math.floor((rng ? rng.next() : Math.random()) * bucket.length)];
   return currentOptions.map((option) => option.id === current.id ? next : option);
 }

@@ -7,6 +7,7 @@ import { DEFAULT_POOL_SIZE, POOL_PRIMARY_PCT, POOL_SECONDARY_PCT, POOL_SUBCATEGO
 import { MECHANICS_BY_TYPE, type MechanicDefinition } from '../data/mechanics';
 import { assignTypesToCards } from './cardTypeAllocator';
 import { shuffled } from './randomUtils';
+import { getRunRng, isRunRngActive, seededShuffled } from './seededRng';
 import type { DifficultyDistribution } from './difficultyCalibration';
 import { funScoreWeight } from './funnessBoost';
 
@@ -31,6 +32,25 @@ const DOMAIN_TO_CATEGORY: Record<FactDomain, string[]> = {
   technology: ['General Knowledge', 'Technology'],
 };
 
+// ── Fact question quality filter ─────────────────────────────────
+
+/**
+ * Returns true if the fact has a valid quiz question (either a direct
+ * quizQuestion or at least one variant with a question). Facts without
+ * any question must never enter the run pool.
+ */
+function factHasQuestion(fact: Fact): boolean {
+  const hasQuizQuestion =
+    !!fact.quizQuestion &&
+    fact.quizQuestion.trim().length > 0 &&
+    fact.quizQuestion !== 'undefined';
+  const hasVariantQuestions =
+    Array.isArray(fact.variants) &&
+    fact.variants.length > 0 &&
+    fact.variants.some((v) => v.question && v.question.trim().length > 0);
+  return hasQuizQuestion || hasVariantQuestions;
+}
+
 const FALLBACK_DOMAIN_ORDER: FactDomain[] = [
   'general_knowledge',
   'natural_sciences',
@@ -45,7 +65,8 @@ function weightedShuffle<T extends { _weight: number }>(items: T[], count: numbe
   const pool = [...items];
   for (let i = 0; i < count && pool.length > 0; i++) {
     const totalWeight = pool.reduce((sum, item) => sum + item._weight, 0);
-    let roll = Math.random() * totalWeight;
+    const rng = isRunRngActive() ? getRunRng('rewards') : null;
+    let roll = (rng ? rng.next() : Math.random()) * totalWeight;
     let picked = 0;
     for (let j = 0; j < pool.length; j++) {
       roll -= pool[j]._weight;
@@ -98,7 +119,8 @@ function stratifiedSample(facts: Fact[], target: number, distribution?: Difficul
     const pool = [...weighted];
     while (pool.length > 0) {
       const totalW = pool.reduce((sum, item) => sum + item._w, 0);
-      let roll = Math.random() * totalW;
+      const rng = isRunRngActive() ? getRunRng('rewards') : null;
+      let roll = (rng ? rng.next() : Math.random()) * totalW;
       let picked = 0;
       for (let j = 0; j < pool.length; j++) {
         roll -= pool[j]._w;
@@ -154,7 +176,8 @@ function stratifiedSample(facts: Fact[], target: number, distribution?: Difficul
 }
 
 function pickRandomSubset<T>(items: T[], count: number): T[] {
-  return shuffled(items).slice(0, Math.max(0, count));
+  const s = isRunRngActive() ? seededShuffled(getRunRng('rewards'), items) : shuffled(items);
+  return s.slice(0, Math.max(0, count));
 }
 
 function buildProbeOrdering(cards: Card[], domain: FactDomain): Card[] {
@@ -205,13 +228,16 @@ function pickMechanic(
   const basicId = BASIC_MECHANICS[cardType];
   let selected: MechanicDefinition;
 
-  if (basicId && Math.random() < 0.6) {
+  const rng = isRunRngActive() ? getRunRng('cardtype') : null;
+  const rand = () => rng ? rng.next() : Math.random();
+
+  if (basicId && rand() < 0.6) {
     // 60% chance to pick the basic mechanic for attack/shield
     const basic = source.find(m => m.id === basicId);
-    selected = basic ?? source[Math.floor(Math.random() * source.length)];
+    selected = basic ?? source[Math.floor(rand() * source.length)];
   } else {
     // 40% chance for any mechanic (including basic)
-    selected = source[Math.floor(Math.random() * source.length)];
+    selected = source[Math.floor(rand() * source.length)];
   }
 
   mechanicCounts.set(selected.id, (mechanicCounts.get(selected.id) ?? 0) + 1);
@@ -299,7 +325,8 @@ export function buildRunPool(
     };
 
     const categoryFactsRaw = factsDB.getByCategory(categories, limit * 3)
-      .filter(f => !excludedFactIds.has(f.id));
+      .filter(f => !excludedFactIds.has(f.id))
+      .filter(factHasQuestion);
     const categoryFacts = applySubscriberSubcategoryFilter(normalized, categoryFactsRaw);
 
     // --- Subcategory-balanced sampling ---
@@ -323,7 +350,7 @@ export function buildRunPool(
 
       // First pass: take up to maxPerSubcat from each subcategory (stratified within each)
       const remainingFacts: Fact[] = [];
-      for (const key of shuffled(subcatKeys)) {
+      for (const key of (isRunRngActive() ? seededShuffled(getRunRng('rewards'), subcatKeys) : shuffled(subcatKeys))) {
         const group = subcatGroups.get(key)!;
         const stratified = stratifiedSample(group, maxPerSubcat, distribution, options?.funnessBoostFactor);
         for (const fact of stratified) pushUnique(fact);
@@ -353,7 +380,7 @@ export function buildRunPool(
       const fallbackCategories = DOMAIN_TO_CATEGORY[fallbackDomain] ?? [];
       const fallbackFacts = applySubscriberSubcategoryFilter(
         fallbackDomain,
-        factsDB.getByCategory(fallbackCategories, needed + 30),
+        factsDB.getByCategory(fallbackCategories, needed + 30).filter(factHasQuestion),
       );
       for (const fact of fallbackFacts) {
         if (selected.length >= limit) break;
@@ -398,6 +425,7 @@ export function buildRunPool(
     if (reviewCards.length >= reviewTarget) break;
     const fact = factsDB.getById(state.factId);
     if (!fact || usedFactIds.has(fact.id)) continue;
+    if (!factHasQuestion(fact)) continue;
     reviewCards.push(createCard(fact, state));
     usedFactIds.add(fact.id);
   }
@@ -408,6 +436,7 @@ export function buildRunPool(
     const shortage = poolSize - pool.length;
     const fillerFacts = factsDB.getRandom(shortage + 20)
       .filter((fact) => !usedFactIds.has(fact.id))
+      .filter(factHasQuestion)
       .slice(0, shortage);
     pool.push(...factsToCards(fillerFacts));
   }
@@ -421,10 +450,15 @@ export function buildRunPool(
     const probeDomain = options.probeDomain ?? primaryDomain;
     const probe = buildProbeOrdering(pool, probeDomain);
     const probeIds = new Set(probe.map((card) => card.id));
-    const remaining = shuffled(pool.filter((card) => !probeIds.has(card.id)));
+    const remaining = isRunRngActive()
+      ? seededShuffled(getRunRng('rewards'), pool.filter((card) => !probeIds.has(card.id)))
+      : shuffled(pool.filter((card) => !probeIds.has(card.id)));
     return [...probe, ...remaining];
   }
 
+  if (isRunRngActive()) {
+    return seededShuffled(getRunRng('rewards'), pool);
+  }
   return shuffled(pool);
 }
 

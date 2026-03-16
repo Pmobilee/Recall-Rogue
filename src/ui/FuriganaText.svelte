@@ -41,13 +41,29 @@
   })
 
   /**
-   * Derive whether we should render ruby markup.
-   * True only if: reading exists AND furigana is enabled AND reading is not empty.
+   * Derive whether kana-only mode is enabled.
+   * When true and a reading is available, show only the hiragana reading — no kanji.
    */
-  let shouldShowRuby = $derived(reading && reading.trim() && showFurigana)
+  let showKanaOnly = $derived.by(() => {
+    const opts = $deckOptions
+    return opts?.ja?.kanaOnly ?? false
+  })
+
+  /**
+   * Derive whether we should render ruby markup.
+   * True only if: reading exists AND furigana is enabled AND reading is not empty AND kana-only is off.
+   */
+  let shouldShowRuby = $derived(reading && reading.trim() && showFurigana && !showKanaOnly)
 </script>
 
-{#if shouldShowRuby}
+{#if showKanaOnly && reading && reading.trim()}
+  <span class="furigana-wrapper size-{size}">
+    <span>{reading}</span>
+    {#if showRomaji && romaji && romaji.trim()}
+      <span class="romaji">{romaji}</span>
+    {/if}
+  </span>
+{:else if shouldShowRuby}
   <span class="furigana-wrapper size-{size}">
     <ruby>{text}<rp>(</rp><rt>{reading}</rt><rp>)</rp></ruby>
     {#if showRomaji && romaji && romaji.trim()}

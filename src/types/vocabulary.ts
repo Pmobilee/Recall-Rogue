@@ -143,6 +143,7 @@ export const SUPPORTED_LANGUAGES: LanguageConfig[] = [
     options: [
       { id: 'furigana', label: 'Show Furigana', description: 'Display hiragana readings above kanji', type: 'toggle', default: true },
       { id: 'romaji', label: 'Show Romaji', description: 'Display romanized readings', type: 'toggle', default: false },
+      { id: 'kanaOnly', label: 'Kana Only', description: 'Replace all kanji with hiragana (for beginners)', type: 'toggle', default: false },
     ]
   },
   {
@@ -157,7 +158,8 @@ export const SUPPORTED_LANGUAGES: LanguageConfig[] = [
       { id: 'C1', name: 'CEFR C1', wordCount: 4600, order: 5 },
       { id: 'C2', name: 'CEFR C2', wordCount: 5200, order: 6 }
     ],
-    voiceId: 'es-ES-ElviraNeural'
+    voiceId: 'es-ES-ElviraNeural',
+    subdecks: ['spanish_a1', 'spanish_a2', 'spanish_b1', 'spanish_b2', 'spanish_c1']
   },
   {
     code: 'fr',
@@ -171,7 +173,8 @@ export const SUPPORTED_LANGUAGES: LanguageConfig[] = [
       { id: 'C1', name: 'CEFR C1', wordCount: 4400, order: 5 },
       { id: 'C2', name: 'CEFR C2', wordCount: 5000, order: 6 }
     ],
-    voiceId: 'fr-FR-DeniseNeural'
+    voiceId: 'fr-FR-DeniseNeural',
+    subdecks: ['french_a1', 'french_a2', 'french_b1', 'french_b2', 'french_c1', 'french_c2']
   },
   {
     code: 'de',
@@ -185,7 +188,36 @@ export const SUPPORTED_LANGUAGES: LanguageConfig[] = [
       { id: 'C1', name: 'CEFR C1', wordCount: 4700, order: 5 },
       { id: 'C2', name: 'CEFR C2', wordCount: 5300, order: 6 }
     ],
-    voiceId: 'de-DE-KatjaNeural'
+    voiceId: 'de-DE-KatjaNeural',
+    subdecks: ['german_a1', 'german_a2', 'german_b1', 'german_b2', 'german_c1', 'german_c2']
+  },
+  {
+    code: 'nl',
+    name: 'Dutch',
+    nativeName: 'Nederlands',
+    levels: [
+      { id: 'A1', name: 'CEFR A1', wordCount: 650, order: 1 },
+      { id: 'A2', name: 'CEFR A2', wordCount: 1400, order: 2 },
+      { id: 'B1', name: 'CEFR B1', wordCount: 2500, order: 3 },
+      { id: 'B2', name: 'CEFR B2', wordCount: 3600, order: 4 },
+      { id: 'C1', name: 'CEFR C1', wordCount: 4400, order: 5 }
+    ],
+    voiceId: 'nl-NL-ColetteNeural',
+    subdecks: ['dutch_a1', 'dutch_a2', 'dutch_b1', 'dutch_b2', 'dutch_c1']
+  },
+  {
+    code: 'cs',
+    name: 'Czech',
+    nativeName: '\u010ce\u0161tina',
+    levels: [
+      { id: 'A1', name: 'CEFR A1', wordCount: 650, order: 1 },
+      { id: 'A2', name: 'CEFR A2', wordCount: 1400, order: 2 },
+      { id: 'B1', name: 'CEFR B1', wordCount: 2500, order: 3 },
+      { id: 'B2', name: 'CEFR B2', wordCount: 3600, order: 4 },
+      { id: 'C1', name: 'CEFR C1', wordCount: 4400, order: 5 }
+    ],
+    voiceId: 'cs-CZ-VlastaNeural',
+    subdecks: ['czech_a1', 'czech_a2', 'czech_b1', 'czech_b2', 'czech_c1']
   },
   {
     code: 'ko',
@@ -199,7 +231,8 @@ export const SUPPORTED_LANGUAGES: LanguageConfig[] = [
       { id: 'TOPIK5', name: 'TOPIK 5', wordCount: 4500, order: 5 },
       { id: 'TOPIK6', name: 'TOPIK 6', wordCount: 5400, order: 6 }
     ],
-    voiceId: 'ko-KR-SunHiNeural'
+    voiceId: 'ko-KR-SunHiNeural',
+    subdecks: ['korean_beginner', 'korean_intermediate', 'korean_advanced']
   },
   {
     code: 'zh',
@@ -213,7 +246,8 @@ export const SUPPORTED_LANGUAGES: LanguageConfig[] = [
       { id: 'HSK5', name: 'HSK 5', wordCount: 4316, order: 5 },
       { id: 'HSK6', name: 'HSK 6', wordCount: 5456, order: 6 }
     ],
-    voiceId: 'zh-CN-XiaoxiaoNeural'
+    voiceId: 'zh-CN-XiaoxiaoNeural',
+    subdecks: ['chinese_hsk1', 'chinese_hsk2', 'chinese_hsk3', 'chinese_hsk4', 'chinese_hsk5', 'chinese_hsk6', 'chinese_hsk7']
   },
 ]
 

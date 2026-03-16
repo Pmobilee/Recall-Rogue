@@ -12,6 +12,7 @@
   import KidWowStars from './KidWowStars.svelte'
   import { getWowScore } from '../../services/wowScore'
   import FuriganaText from '../FuriganaText.svelte'
+  import { deckOptions } from '../../services/deckOptionsService'
 
   // GAIA sprite imports for reaction bubble
   const gaiaNeutralImg = '/assets/sprites/dome/gaia_neutral.png'
@@ -98,6 +99,12 @@
   const japaneseParts = $derived.by(() => {
     if (fact.language !== 'ja' || !fact.pronunciation) return null
     return parseJapaneseQuestion(fact.quizQuestion, fact.pronunciation)
+  })
+
+  /** Whether kana-only mode is active for Japanese questions. */
+  const kanaOnly = $derived.by(() => {
+    const opts = $deckOptions
+    return opts?.ja?.kanaOnly ?? false
   })
 
   const resultClass = $derived.by(() => {
@@ -320,7 +327,7 @@
 
     {#if japaneseParts}
       <p class="question" data-testid="quiz-question">
-        {japaneseParts.before}<FuriganaText text={japaneseParts.word} reading={japaneseParts.reading} size="md" />{japaneseParts.after}
+        {japaneseParts.before}<FuriganaText text={kanaOnly && japaneseParts.reading ? japaneseParts.reading : japaneseParts.word} reading={japaneseParts.reading} size="md" />{japaneseParts.after}
       </p>
     {:else}
       <p class="question" data-testid="quiz-question">{fact.quizQuestion}</p>

@@ -221,11 +221,12 @@ export function executeEnemyIntent(enemy: EnemyInstance): {
     case 'debuff': {
       // Apply debuff to player
       if (intent.statusEffect) {
-        playerEffects.push({
+        const effect = {
           type: intent.statusEffect.type,
           value: intent.statusEffect.value,
           turnsRemaining: intent.statusEffect.turns,
-        });
+        };
+        playerEffects.push(effect);
       }
       break;
     }

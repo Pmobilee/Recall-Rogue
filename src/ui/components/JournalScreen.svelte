@@ -52,6 +52,7 @@
         runDurationMs: summary.runDurationMs,
         rewardMultiplier: 1,
         currencyEarned: summary.goldEarned,
+        isPracticeRun: false,
       })
       shareState = 'done'
     } catch {

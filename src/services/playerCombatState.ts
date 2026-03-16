@@ -73,6 +73,22 @@ export function takeDamage(
     remaining -= absorbed;
   }
 
+  // Immunity absorbs the next damage instance up to its stored value
+  if (remaining > 0) {
+    const immunityEffect = state.statusEffects.find(
+      (e) => e.type === 'immunity' && e.turnsRemaining > 0,
+    );
+    if (immunityEffect) {
+      const immunityAbsorbed = Math.min(immunityEffect.value, remaining);
+      remaining -= immunityAbsorbed;
+      // Consume immunity
+      immunityEffect.turnsRemaining = 0;
+      // Remove expired immunity
+      const idx = state.statusEffects.indexOf(immunityEffect);
+      if (idx !== -1) state.statusEffects.splice(idx, 1);
+    }
+  }
+
   // Remaining damage hits HP
   state.hp = Math.max(0, state.hp - remaining);
 

@@ -1,1411 +1,2929 @@
 [
   {
-    "id": "general-messiah-meaning-origin",
+    "id": "general-messiah-001",
     "type": "knowledge",
     "domain": "General Knowledge",
-    "subdomain": "language_words",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "language_words",
+    "subdomain": "Religion & Culture",
+    "categoryL1": "Religion",
+    "categoryL2": "Abrahamic Traditions",
     "categoryL3": "",
-    "statement": "The word 'Messiah' comes from the Hebrew word meaning 'anointed one.'",
+    "statement": "The word 'Messiah' comes from Hebrew 'mashiach', meaning 'anointed one'.",
     "quizQuestion": "What does the Hebrew word 'Messiah' literally mean?",
     "correctAnswer": "Anointed one",
     "distractors": [
-      "Chosen prophet",
-      "Son of God",
-      "Holy savior",
+      "Chosen savior",
+      "Holy prophet",
       "Divine king",
-      "Blessed leader",
-      "Sacred one",
-      "Righteous judge",
-      "Eternal lord"
+      "Sacred leader",
+      "Blessed redeemer",
+      "Eternal guide",
+      "True believer",
+      "Promised lord"
     ],
     "acceptableAnswers": [
       "anointed one",
-      "the anointed",
-      "anointed"
+      "the anointed"
     ],
-    "explanation": "The word 'Messiah' derives from the Hebrew 'mashiach,' meaning 'anointed one.' In ancient Israel, kings and priests were anointed with oil as a sign of divine appointment. The Greek equivalent is 'Christos,' which is the origin of the word 'Christ.'",
-    "wowFactor": "Every time someone says 'Jesus Christ,' they're literally saying 'Jesus the Anointed One' in Greek.",
+    "explanation": "Messiah derives from Hebrew 'mashiach' meaning 'anointed one'. In ancient Israel, kings and priests were literally anointed with oil as a consecration ritual.",
+    "wowFactor": "The same concept in Greek is 'Christos' — Christ — so Jesus Christ literally means 'Jesus the Anointed One'.",
     "variants": [
       {
-        "id": "general-messiah-meaning-origin-v2",
-        "quizQuestion": "The Greek equivalent of 'Messiah' gave us which word?",
+        "quizQuestion": "The word 'Messiah' shares its meaning with which Greek title?",
         "correctAnswer": "Christ",
-        "distractors": ["Gospel", "Savior", "Prophet", "Holy", "Lord", "Messiah", "Divine", "Sacred"]
+        "distractors": [
+          "Prophet",
+          "Savior",
+          "Lord",
+          "Rabbi",
+          "Master",
+          "Priest",
+          "King",
+          "Angel"
+        ]
       },
       {
-        "id": "general-messiah-meaning-origin-v3",
-        "quizQuestion": "In which religion did the concept of a Messiah originate?",
-        "correctAnswer": "Judaism",
-        "distractors": ["Christianity", "Islam", "Zoroastrianism", "Hinduism", "Buddhism", "Paganism", "Gnosticism", "Manichaeism"]
+        "quizQuestion": "From which ancient language does the word Messiah originate?",
+        "correctAnswer": "Hebrew",
+        "distractors": [
+          "Aramaic",
+          "Greek",
+          "Latin",
+          "Arabic",
+          "Persian",
+          "Sumerian",
+          "Egyptian",
+          "Akkadian"
+        ]
       },
       {
-        "id": "general-messiah-meaning-origin-v4",
-        "quizQuestion": "Ancient Israelite kings were anointed with what substance?",
-        "correctAnswer": "Oil",
-        "distractors": ["Water", "Wine", "Blood", "Honey", "Milk", "Incense", "Salt", "Ash"]
+        "quizQuestion": "In ancient Israel, who was literally anointed with oil?",
+        "correctAnswer": "Kings and priests",
+        "distractors": [
+          "Soldiers and scribes",
+          "Prophets and elders",
+          "Merchants and judges",
+          "Warriors and healers",
+          "Scholars and monks",
+          "Farmers and craftsmen",
+          "Nobles and advisors",
+          "Teachers and poets"
+        ]
+      },
+      {
+        "quizQuestion": "What ritual gave rise to the title 'Messiah' in ancient Israel?",
+        "correctAnswer": "Anointing with oil",
+        "distractors": [
+          "Baptism with water",
+          "Blessing with incense",
+          "Crowning with gold",
+          "Washing with wine",
+          "Marking with ashes",
+          "Sealing with wax",
+          "Binding with cloth",
+          "Touching with fire"
+        ]
       }
     ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/messiah",
     "contentVolatility": "timeless",
+    "sensitivityLevel": "low",
+    "sensitivityNote": "Religious topic; factual etymology focus minimizes sensitivity.",
+    "visualDescription": "Ancient scroll unfurling to reveal Hebrew letters glowing gold, a vial of olive oil beside it, candlelight flickering in a stone chamber.",
+    "tags": [
+      "religion",
+      "etymology",
+      "hebrew",
+      "christianity",
+      "judaism",
+      "abrahamic"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-messiah-002",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "Religion & Culture",
+    "categoryL1": "Religion",
+    "categoryL2": "Abrahamic Traditions",
+    "categoryL3": "",
+    "statement": "The concept of a Messiah appears in Judaism, Christianity, and Islam, each with distinct expectations.",
+    "quizQuestion": "How many major Abrahamic religions include a messianic concept?",
+    "correctAnswer": "Three",
+    "distractors": [
+      "Two",
+      "Four",
+      "One",
+      "Five",
+      "Six",
+      "Seven",
+      "Eight",
+      "Nine"
+    ],
+    "acceptableAnswers": [
+      "three",
+      "3"
+    ],
+    "explanation": "Judaism awaits a future Messiah; Christianity holds Jesus fulfilled that role; Islam recognizes Jesus (Isa) as a messianic figure who will return before the Day of Judgment.",
+    "wowFactor": "Islam also has a messianic tradition — Jesus is believed to return and the Mahdi will appear as a guided leader before the end times.",
+    "variants": [
+      {
+        "quizQuestion": "In Islam, which figure is expected to return as a messianic figure?",
+        "correctAnswer": "Jesus (Isa)",
+        "distractors": [
+          "Muhammad",
+          "Abraham",
+          "Moses",
+          "David",
+          "Solomon",
+          "Elijah",
+          "Noah",
+          "Adam"
+        ]
+      },
+      {
+        "quizQuestion": "In Judaism, has the Messiah already come?",
+        "correctAnswer": "No, still awaited",
+        "distractors": [
+          "Yes, long ago",
+          "Yes, recently",
+          "Multiple times",
+          "Spiritually only",
+          "In secret form",
+          "Through Moses",
+          "Through David",
+          "Not believed"
+        ]
+      },
+      {
+        "quizQuestion": "What does Christianity believe distinguishes Jesus from Judaism's messianic expectation?",
+        "correctAnswer": "He already came",
+        "distractors": [
+          "He never existed",
+          "He was a prophet only",
+          "He came twice already",
+          "He was an angel",
+          "He was a king only",
+          "He was not anointed",
+          "He came in secret",
+          "He refused the title"
+        ]
+      },
+      {
+        "quizQuestion": "The Arabic equivalent of 'Messiah' used for Jesus in Islam is?",
+        "correctAnswer": "Al-Masih",
+        "distractors": [
+          "Al-Nabi",
+          "Al-Rasul",
+          "Al-Imam",
+          "Al-Wali",
+          "Al-Mahdi",
+          "Al-Amin",
+          "Al-Karim",
+          "Al-Hakim"
+        ]
+      }
+    ],
+    "difficulty": 3,
     "funScore": 6,
-    "rarity": "common",
-    "tags": ["religion", "language", "etymology", "abrahamic"],
-    "entityQid": "Q51626",
-    "entityLabel": "Messiah"
-  },
-  {
-    "id": "general-messiah-abrahamic-beliefs",
-    "type": "knowledge",
-    "domain": "General Knowledge",
-    "subdomain": "language_words",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "language_words",
-    "categoryL3": "",
-    "statement": "In Judaism, the Messiah is a future human leader who will redeem Israel and usher in world peace.",
-    "quizQuestion": "In Judaism, the Messiah is expected to be what kind of figure?",
-    "correctAnswer": "A human leader",
-    "distractors": [
-      "A divine being",
-      "An angel",
-      "A reincarnated prophet",
-      "A supernatural warrior",
-      "A spiritual force",
-      "A resurrected king",
-      "A heavenly judge",
-      "An immortal sage"
-    ],
-    "acceptableAnswers": [
-      "human leader",
-      "a human",
-      "mortal leader"
-    ],
-    "explanation": "In traditional Jewish belief, the Messiah is a great but fully human leader — not divine — who will rebuild the Temple, gather all Jews to Israel, and usher in an era of world peace. Christianity and Islam have different but related messianic concepts.",
-    "wowFactor": "Judaism, Christianity, and Islam all await a messianic figure, yet they disagree on almost every detail about who it is.",
-    "variants": [
-      {
-        "id": "general-messiah-abrahamic-beliefs-v2",
-        "quizQuestion": "Which religion believes Jesus Christ was the Messiah?",
-        "correctAnswer": "Christianity",
-        "distractors": ["Judaism", "Islam", "Zoroastrianism", "Sikhism", "Hinduism", "Buddhism", "Baha'i", "Jainism"]
-      },
-      {
-        "id": "general-messiah-abrahamic-beliefs-v3",
-        "quizQuestion": "Islam's messianic figure who returns before Judgment Day is called?",
-        "correctAnswer": "Mahdi",
-        "distractors": ["Imam", "Caliph", "Rasul", "Nabi", "Wali", "Sahib", "Sheikh", "Hafiz"]
-      },
-      {
-        "id": "general-messiah-abrahamic-beliefs-v4",
-        "quizQuestion": "The Jewish Messiah is expected to rebuild what structure in Jerusalem?",
-        "correctAnswer": "The Temple",
-        "distractors": ["The Ark", "The Tabernacle", "The Synagogue", "The Citadel", "The Altar", "The Palace", "The Tomb", "The Sanctuary"]
-      }
-    ],
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/messiah",
     "contentVolatility": "timeless",
-    "funScore": 7,
-    "rarity": "common",
-    "tags": ["religion", "judaism", "christianity", "islam"],
-    "entityQid": "Q51626",
-    "entityLabel": "Messiah"
+    "sensitivityLevel": "medium",
+    "sensitivityNote": "Comparative religion; handled factually without favoring any tradition.",
+    "visualDescription": "Three sacred texts — Torah, Bible, and Quran — open side by side on a stone altar, glowing with soft golden light.",
+    "tags": [
+      "religion",
+      "messiah",
+      "judaism",
+      "christianity",
+      "islam",
+      "abrahamic",
+      "comparative religion"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   },
   {
-    "id": "general-chinese-new-year-duration",
+    "id": "general-chinesenewyear-001",
     "type": "knowledge",
     "domain": "General Knowledge",
-    "subdomain": "calendar_time",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "calendar_time",
+    "subdomain": "Holidays & Celebrations",
+    "categoryL1": "Culture",
+    "categoryL2": "Festivals",
     "categoryL3": "",
-    "statement": "Chinese New Year celebrations traditionally last 15 days, ending with the Lantern Festival.",
-    "quizQuestion": "How many days do Chinese New Year celebrations traditionally last?",
-    "correctAnswer": "15 days",
+    "statement": "Chinese New Year is the world's most widely celebrated new year, observed by over 1.5 billion people.",
+    "quizQuestion": "Approximately how many people celebrate Chinese New Year worldwide?",
+    "correctAnswer": "1.5 billion",
     "distractors": [
-      "7 days",
-      "3 days",
-      "30 days",
-      "10 days",
-      "21 days",
-      "5 days",
-      "14 days",
-      "28 days"
+      "500 million",
+      "800 million",
+      "2.5 billion",
+      "200 million",
+      "3 billion",
+      "1 million",
+      "750 million",
+      "4 billion"
     ],
     "acceptableAnswers": [
-      "15 days",
-      "fifteen days",
-      "two weeks"
+      "1.5 billion",
+      "over a billion",
+      "1 billion+"
     ],
-    "explanation": "Chinese New Year, also called Spring Festival, traditionally spans 15 days of celebrations. The festivities begin on the first day of the lunar new year and culminate with the Lantern Festival on the 15th day. Each day has its own customs and rituals.",
-    "wowFactor": "Chinese New Year is the world's largest annual human migration — hundreds of millions travel home for the holiday.",
+    "explanation": "Chinese New Year, also called Lunar New Year or Spring Festival, is celebrated by Chinese diaspora worldwide and in many Asian nations, making it the most widely observed new year globally.",
+    "wowFactor": "The Chinese New Year celebration period traditionally lasts 15 days, ending with the Lantern Festival.",
     "variants": [
       {
-        "id": "general-chinese-new-year-duration-v2",
-        "quizQuestion": "What festival ends the 15-day Chinese New Year celebrations?",
-        "correctAnswer": "Lantern Festival",
-        "distractors": ["Dragon Boat Festival", "Moon Festival", "Qingming Festival", "Double Ninth", "Hungry Ghost", "Winter Solstice", "Spring Festival", "Fire Festival"]
+        "quizQuestion": "How many days does the traditional Chinese New Year celebration last?",
+        "correctAnswer": "15 days",
+        "distractors": [
+          "7 days",
+          "3 days",
+          "30 days",
+          "1 day",
+          "10 days",
+          "21 days",
+          "5 days",
+          "28 days"
+        ]
       },
       {
-        "id": "general-chinese-new-year-duration-v3",
-        "quizQuestion": "Chinese New Year is based on which type of calendar?",
-        "correctAnswer": "Lunar calendar",
-        "distractors": ["Solar calendar", "Gregorian calendar", "Julian calendar", "Hebrew calendar", "Persian calendar", "Islamic calendar", "Mayan calendar", "Roman calendar"]
-      },
-      {
-        "id": "general-chinese-new-year-duration-v4",
-        "quizQuestion": "Chinese New Year is also known by what other name?",
+        "quizQuestion": "What other name is commonly used for Chinese New Year?",
         "correctAnswer": "Spring Festival",
-        "distractors": ["Harvest Festival", "New Moon Festival", "Dragon Festival", "Jade Festival", "Prosperity Festival", "Ancestor Festival", "Light Festival", "Fire Festival"]
+        "distractors": [
+          "Harvest Festival",
+          "Moon Festival",
+          "Dragon Festival",
+          "Lantern Festival",
+          "Flower Festival",
+          "Golden Festival",
+          "Star Festival",
+          "Sky Festival"
+        ]
       },
       {
-        "id": "general-chinese-new-year-duration-v5",
-        "quizQuestion": "In which month does Chinese New Year typically fall?",
-        "correctAnswer": "January or February",
-        "distractors": ["March or April", "November or December", "September or October", "May or June", "July or August", "February or March", "December or January", "October or November"]
+        "quizQuestion": "What festival marks the end of the Chinese New Year celebrations?",
+        "correctAnswer": "Lantern Festival",
+        "distractors": [
+          "Dragon Boat Festival",
+          "Moon Festival",
+          "Qingming Festival",
+          "Dumpling Festival",
+          "Fire Festival",
+          "Candle Festival",
+          "Temple Festival",
+          "Cloud Festival"
+        ]
+      },
+      {
+        "quizQuestion": "The Chinese New Year follows which type of calendar?",
+        "correctAnswer": "Lunar calendar",
+        "distractors": [
+          "Solar calendar",
+          "Gregorian calendar",
+          "Julian calendar",
+          "Islamic calendar",
+          "Mayan calendar",
+          "Hindu calendar",
+          "Roman calendar",
+          "Egyptian calendar"
+        ]
       }
     ],
-    "contentVolatility": "timeless",
-    "funScore": 7,
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "all",
     "rarity": "common",
-    "tags": ["china", "holidays", "calendar", "culture"],
-    "entityQid": "Q131772",
-    "entityLabel": "Chinese New Year"
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/Chinese-New-Year",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Vibrant red lanterns strung above a night street, fireworks exploding in the sky, crowds in colorful traditional clothing celebrating below.",
+    "tags": [
+      "chinese new year",
+      "lunar new year",
+      "spring festival",
+      "culture",
+      "holidays",
+      "china",
+      "celebration"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   },
   {
-    "id": "general-chinese-new-year-zodiac",
+    "id": "general-chinesenewyear-002",
     "type": "knowledge",
     "domain": "General Knowledge",
-    "subdomain": "calendar_time",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "calendar_time",
+    "subdomain": "Holidays & Celebrations",
+    "categoryL1": "Culture",
+    "categoryL2": "Festivals",
     "categoryL3": "",
-    "statement": "The Chinese zodiac cycles through 12 animals, with each year named after one animal.",
+    "statement": "The Chinese zodiac cycles through 12 animals, each representing a year in a repeating pattern.",
     "quizQuestion": "How many animals are in the Chinese zodiac cycle?",
     "correctAnswer": "12",
     "distractors": [
       "10",
       "8",
-      "14",
       "16",
-      "9",
-      "13",
       "24",
-      "6"
+      "9",
+      "7",
+      "13",
+      "15"
     ],
     "acceptableAnswers": [
       "12",
       "twelve"
     ],
-    "explanation": "The Chinese zodiac consists of 12 animals: Rat, Ox, Tiger, Rabbit, Dragon, Snake, Horse, Goat, Monkey, Rooster, Dog, and Pig. The cycle repeats every 12 years. Your birth year determines your zodiac animal, which is said to influence your personality.",
-    "wowFactor": "The Dragon is the only mythical creature in the Chinese zodiac — every other animal is real.",
+    "explanation": "The 12 Chinese zodiac animals are Rat, Ox, Tiger, Rabbit, Dragon, Snake, Horse, Goat, Monkey, Rooster, Dog, and Pig — each year is associated with one animal in rotation.",
+    "wowFactor": "The Dragon is the only mythical creature in the Chinese zodiac — the other 11 are all real animals.",
     "variants": [
       {
-        "id": "general-chinese-new-year-zodiac-v2",
-        "quizQuestion": "Which mythical creature is the only one in the Chinese zodiac?",
+        "quizQuestion": "Which is the only mythical creature in the Chinese zodiac?",
         "correctAnswer": "Dragon",
-        "distractors": ["Phoenix", "Unicorn", "Qilin", "Fox spirit", "Tiger", "Snake", "Horse", "Ox"]
+        "distractors": [
+          "Phoenix",
+          "Unicorn",
+          "Griffin",
+          "Qilin",
+          "Kirin",
+          "Serpent",
+          "Sphinx",
+          "Pegasus"
+        ]
       },
       {
-        "id": "general-chinese-new-year-zodiac-v3",
-        "quizQuestion": "According to legend, which zodiac animal came first in the race?",
+        "quizQuestion": "Which animal comes first in the Chinese zodiac cycle?",
         "correctAnswer": "Rat",
-        "distractors": ["Ox", "Tiger", "Dragon", "Horse", "Rabbit", "Dog", "Pig"]
+        "distractors": [
+          "Ox",
+          "Tiger",
+          "Dragon",
+          "Rabbit",
+          "Snake",
+          "Horse",
+          "Dog"
+        ]
       },
       {
-        "id": "general-chinese-new-year-zodiac-v4",
-        "quizQuestion": "How many years does one full Chinese zodiac cycle last?",
+        "quizQuestion": "How many years does one complete Chinese zodiac cycle take?",
         "correctAnswer": "12 years",
-        "distractors": ["10 years", "8 years", "24 years", "60 years", "20 years", "16 years", "9 years", "15 years"]
+        "distractors": [
+          "10 years",
+          "24 years",
+          "8 years",
+          "60 years",
+          "6 years",
+          "16 years",
+          "20 years",
+          "30 years"
+        ]
+      },
+      {
+        "quizQuestion": "In Chinese tradition, your zodiac year is considered?",
+        "correctAnswer": "Unlucky for you",
+        "distractors": [
+          "Especially lucky",
+          "Neutral",
+          "Your power year",
+          "Your best year",
+          "A turning point",
+          "Spiritually empty",
+          "Full of blessings",
+          "A year of wealth"
+        ]
       }
     ],
-    "contentVolatility": "timeless",
+    "difficulty": 2,
     "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "all",
     "rarity": "common",
-    "tags": ["china", "zodiac", "culture", "mythology"],
-    "entityQid": "Q131772",
-    "entityLabel": "Chinese New Year"
-  },
-  {
-    "id": "general-stadium-largest-world",
-    "type": "knowledge",
-    "domain": "General Knowledge",
-    "subdomain": "world_records",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "world_records",
-    "categoryL3": "",
-    "statement": "The Narendra Modi Stadium in India is the world's largest cricket stadium, with a seating capacity of over 130,000.",
-    "quizQuestion": "Which country hosts the world's largest cricket stadium?",
-    "correctAnswer": "India",
-    "distractors": [
-      "Australia",
-      "England",
-      "Pakistan",
-      "South Africa",
-      "West Indies",
-      "New Zealand",
-      "Sri Lanka",
-      "Bangladesh"
-    ],
-    "acceptableAnswers": [
-      "India",
-      "indian"
-    ],
-    "explanation": "The Narendra Modi Stadium in Ahmedabad, India, is the world's largest cricket stadium with a capacity exceeding 130,000 spectators. It surpassed the Melbourne Cricket Ground in Australia. The stadium was renamed from Sardar Patel Stadium in 2020.",
-    "wowFactor": "The Narendra Modi Stadium holds more than 130,000 fans — bigger than any American football stadium.",
-    "variants": [
-      {
-        "id": "general-stadium-largest-world-v2",
-        "quizQuestion": "The world's largest cricket stadium is located in which Indian city?",
-        "correctAnswer": "Ahmedabad",
-        "distractors": ["Mumbai", "Delhi", "Kolkata", "Chennai", "Bangalore", "Hyderabad", "Pune", "Jaipur"]
-      },
-      {
-        "id": "general-stadium-largest-world-v3",
-        "quizQuestion": "What is the approximate capacity of the Narendra Modi Stadium?",
-        "correctAnswer": "130,000",
-        "distractors": ["80,000", "100,000", "90,000", "70,000", "150,000", "110,000", "60,000", "120,000"]
-      },
-      {
-        "id": "general-stadium-largest-world-v4",
-        "quizQuestion": "Which Roman structure is considered the ancient world's most famous stadium?",
-        "correctAnswer": "The Colosseum",
-        "distractors": ["The Pantheon", "The Forum", "The Circus Maximus", "The Hippodrome", "The Odeon", "The Theater of Pompey", "The Arena of Verona", "The Stadium of Domitian"]
-      }
-    ],
-    "contentVolatility": "current",
-    "funScore": 6,
-    "rarity": "rare",
-    "tags": ["sports", "architecture", "india", "records"],
-    "entityQid": "Q483110",
-    "entityLabel": "stadium"
-  },
-  {
-    "id": "general-stadium-ancient-rome",
-    "type": "knowledge",
-    "domain": "General Knowledge",
-    "subdomain": "world_records",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "world_records",
-    "categoryL3": "",
-    "statement": "The Circus Maximus in ancient Rome could hold up to 250,000 spectators, making it the largest venue ever built.",
-    "quizQuestion": "Ancient Rome's Circus Maximus held how many spectators?",
-    "correctAnswer": "250,000",
-    "distractors": [
-      "50,000",
-      "100,000",
-      "150,000",
-      "80,000",
-      "300,000",
-      "60,000",
-      "200,000",
-      "120,000"
-    ],
-    "acceptableAnswers": [
-      "250,000",
-      "up to 250,000",
-      "250000"
-    ],
-    "explanation": "The Circus Maximus in Rome was an ancient chariot-racing stadium that could accommodate around 250,000 spectators — roughly a quarter of Rome's entire population. It remains the largest entertainment venue ever constructed in human history, dwarfing any modern stadium.",
-    "wowFactor": "The Circus Maximus held a quarter of Rome's entire population at once — imagine fitting 250,000 people to watch chariot races.",
-    "variants": [
-      {
-        "id": "general-stadium-ancient-rome-v2",
-        "quizQuestion": "What sport was the Circus Maximus primarily built for?",
-        "correctAnswer": "Chariot racing",
-        "distractors": ["Gladiator fights", "Athletics", "Boxing", "Wrestling", "Archery", "Bull fighting", "Javelin throwing", "Swimming"]
-      },
-      {
-        "id": "general-stadium-ancient-rome-v3",
-        "quizQuestion": "Modern Olympic stadiums typically hold how many spectators?",
-        "correctAnswer": "Around 80,000",
-        "distractors": ["Around 20,000", "Around 50,000", "Around 250,000", "Around 150,000", "Around 30,000", "Around 10,000", "Around 200,000", "Around 40,000"]
-      },
-      {
-        "id": "general-stadium-ancient-rome-v4",
-        "quizQuestion": "The word 'stadium' comes from a Greek unit of what?",
-        "correctAnswer": "Distance",
-        "distractors": ["Time", "Weight", "Area", "Volume", "Speed", "Force", "Temperature", "Angle"]
-      }
-    ],
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/Chinese-New-Year",
     "contentVolatility": "timeless",
-    "funScore": 8,
-    "rarity": "rare",
-    "tags": ["ancient rome", "sports", "architecture", "history"],
-    "entityQid": "Q483110",
-    "entityLabel": "stadium"
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Twelve zodiac animals arranged in a glowing circle on red silk, the dragon at center breathing golden flames.",
+    "tags": [
+      "chinese zodiac",
+      "lunar new year",
+      "dragon",
+      "rat",
+      "animals",
+      "china",
+      "astrology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   },
   {
-    "id": "general-library-alexandria-destruction",
+    "id": "general-stadium-001",
     "type": "knowledge",
     "domain": "General Knowledge",
-    "subdomain": "famous_firsts",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "famous_firsts",
+    "subdomain": "World Records",
+    "categoryL1": "Architecture",
+    "categoryL2": "Sports Venues",
     "categoryL3": "",
-    "statement": "The Library of Alexandria was the largest library in the ancient world and held an estimated 400,000–700,000 scrolls.",
+    "statement": "The word 'stadium' comes from a Greek unit of length — the distance of the original Olympic footrace.",
+    "quizQuestion": "What does the word 'stadium' originally refer to in ancient Greek?",
+    "correctAnswer": "A unit of length",
+    "distractors": [
+      "A type of arena",
+      "A racing chariot",
+      "A crowd gathering",
+      "A stone platform",
+      "A victory prize",
+      "A training ground",
+      "A marble hall",
+      "A circular field"
+    ],
+    "acceptableAnswers": [
+      "a unit of length",
+      "unit of distance",
+      "measure of length"
+    ],
+    "explanation": "A 'stadion' in ancient Greece was approximately 600 feet (about 185 meters). The original Olympic footrace was exactly one stadion long, and the venue took the name of the distance.",
+    "wowFactor": "The ancient Greek stadion was not a fixed length — it varied by city. Olympia's stadion was ~192 meters; Athens' was ~185 meters.",
+    "variants": [
+      {
+        "quizQuestion": "How long was the original Olympic footrace (one stadion)?",
+        "correctAnswer": "About 185 meters",
+        "distractors": [
+          "100 meters",
+          "400 meters",
+          "1 kilometer",
+          "500 meters",
+          "50 meters",
+          "200 meters",
+          "800 meters",
+          "1500 meters"
+        ]
+      },
+      {
+        "quizQuestion": "The largest stadium in the world by capacity is located in which country?",
+        "correctAnswer": "North Korea",
+        "distractors": [
+          "USA",
+          "India",
+          "China",
+          "Brazil",
+          "Australia",
+          "South Korea",
+          "Germany",
+          "England"
+        ]
+      },
+      {
+        "quizQuestion": "What is the largest stadium in the world called?",
+        "correctAnswer": "Rungrado 1st of May",
+        "distractors": [
+          "Camp Nou",
+          "Wembley Stadium",
+          "Melbourne Cricket Ground",
+          "Rose Bowl",
+          "Narendra Modi Stadium",
+          "Michigan Stadium",
+          "Beaver Stadium",
+          "Ohio Stadium"
+        ]
+      },
+      {
+        "quizQuestion": "Approximately how many people can the world's largest stadium hold?",
+        "correctAnswer": "114,000",
+        "distractors": [
+          "50,000",
+          "80,000",
+          "200,000",
+          "65,000",
+          "150,000",
+          "45,000",
+          "95,000",
+          "130,000"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/sports/stadium",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Ancient Greek running track carved into a hillside, white marble columns framing the finish line, spectators in togas watching from stone terraces.",
+    "tags": [
+      "stadium",
+      "etymology",
+      "ancient greece",
+      "olympics",
+      "architecture",
+      "sports",
+      "world records"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-stadium-002",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "World Records",
+    "categoryL1": "Architecture",
+    "categoryL2": "Sports Venues",
+    "categoryL3": "",
+    "statement": "India's Narendra Modi Stadium is the world's largest cricket stadium, holding over 132,000 spectators.",
+    "quizQuestion": "What is the capacity of the world's largest cricket stadium?",
+    "correctAnswer": "132,000",
+    "distractors": [
+      "80,000",
+      "100,000",
+      "50,000",
+      "120,000",
+      "90,000",
+      "150,000",
+      "70,000",
+      "60,000"
+    ],
+    "acceptableAnswers": [
+      "132,000",
+      "over 130,000",
+      "132000"
+    ],
+    "explanation": "The Narendra Modi Stadium in Ahmedabad, India was renovated and expanded, becoming the largest cricket venue and one of the largest sports stadiums in the world.",
+    "wowFactor": "The Narendra Modi Stadium cost over $100 million to renovate and features a massive drainage system allowing play to resume within 30 minutes of rain.",
+    "variants": [
+      {
+        "quizQuestion": "In which Indian city is the Narendra Modi Stadium located?",
+        "correctAnswer": "Ahmedabad",
+        "distractors": [
+          "Mumbai",
+          "Delhi",
+          "Kolkata",
+          "Chennai",
+          "Bangalore",
+          "Hyderabad",
+          "Pune",
+          "Jaipur"
+        ]
+      },
+      {
+        "quizQuestion": "What was the Narendra Modi Stadium previously called?",
+        "correctAnswer": "Sardar Patel Stadium",
+        "distractors": [
+          "Eden Gardens",
+          "Wankhede Stadium",
+          "Lords of India",
+          "Chinnaswamy Stadium",
+          "Green Park Stadium",
+          "Feroz Shah Kotla",
+          "Brabourne Stadium",
+          "Holkar Stadium"
+        ]
+      },
+      {
+        "quizQuestion": "Which sport is primarily played at the Narendra Modi Stadium?",
+        "correctAnswer": "Cricket",
+        "distractors": [
+          "Football",
+          "Field hockey",
+          "Kabaddi",
+          "Tennis",
+          "Athletics",
+          "Basketball",
+          "Polo",
+          "Badminton"
+        ]
+      },
+      {
+        "quizQuestion": "How quickly can the Narendra Modi Stadium drainage system clear water?",
+        "correctAnswer": "30 minutes",
+        "distractors": [
+          "2 hours",
+          "1 hour",
+          "45 minutes",
+          "15 minutes",
+          "3 hours",
+          "5 minutes",
+          "90 minutes",
+          "4 hours"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "rare",
+    "sourceName": "ESPN Cricinfo",
+    "sourceUrl": "https://www.espncricinfo.com/ground/narendra-modi-stadium",
+    "contentVolatility": "current",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Massive oval cricket stadium filled to capacity under floodlights at dusk, the pitch bright green at center, fireworks exploding above the roof.",
+    "tags": [
+      "stadium",
+      "cricket",
+      "india",
+      "world records",
+      "sports venues",
+      "ahmedabad"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-libraryofalexandria-001",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "Famous Firsts",
+    "categoryL1": "History",
+    "categoryL2": "Ancient World",
+    "categoryL3": "",
+    "statement": "The Library of Alexandria may have held up to 700,000 scrolls at its peak — the largest collection in the ancient world.",
     "quizQuestion": "How many scrolls did the Library of Alexandria hold at its peak?",
     "correctAnswer": "Up to 700,000",
     "distractors": [
-      "About 10,000",
-      "About 50,000",
-      "About 100,000",
-      "About 1 million",
-      "About 200,000",
-      "About 5,000",
-      "About 2 million",
-      "About 30,000"
+      "10,000",
+      "100,000",
+      "50,000",
+      "1 million",
+      "200,000",
+      "500",
+      "2 million",
+      "350,000"
     ],
     "acceptableAnswers": [
       "700,000",
-      "400,000 to 700,000",
+      "up to 700,000",
       "hundreds of thousands"
     ],
-    "explanation": "The Library of Alexandria, founded in the 3rd century BCE in Egypt, was the largest repository of knowledge in the ancient world. It held an estimated 400,000 to 700,000 papyrus scrolls. Scholars from across the Mediterranean came to study there, making it an ancient center of learning.",
-    "wowFactor": "The Library of Alexandria's destruction is one of history's greatest intellectual tragedies — centuries of accumulated human knowledge lost forever.",
+    "explanation": "Ancient sources estimate the Library of Alexandria contained between 400,000 and 700,000 papyrus scrolls. It was founded in the 3rd century BCE under the Ptolemaic dynasty.",
+    "wowFactor": "Ships docking at Alexandria were required to surrender any scrolls they carried for copying — the copies were returned, but the originals were kept by the library.",
     "variants": [
       {
-        "id": "general-library-alexandria-destruction-v2",
-        "quizQuestion": "In which ancient country was the Library of Alexandria located?",
-        "correctAnswer": "Egypt",
-        "distractors": ["Greece", "Rome", "Persia", "Babylon", "Carthage", "Syria", "Turkey", "Libya"]
+        "quizQuestion": "Ships docking at Alexandria had to surrender what to the library?",
+        "correctAnswer": "Any scrolls they carried",
+        "distractors": [
+          "Gold coins as tax",
+          "Food supplies",
+          "Maps of trade routes",
+          "Weapons on board",
+          "Passenger manifests",
+          "Cargo declarations",
+          "Their captain's log",
+          "Navigation charts"
+        ]
       },
       {
-        "id": "general-library-alexandria-destruction-v3",
-        "quizQuestion": "The Library of Alexandria was founded in approximately which century BCE?",
+        "quizQuestion": "In which century BCE was the Library of Alexandria founded?",
         "correctAnswer": "3rd century BCE",
-        "distractors": ["1st century BCE", "5th century BCE", "7th century BCE", "2nd century BCE", "4th century BCE", "1st century CE", "6th century BCE", "8th century BCE"]
+        "distractors": [
+          "1st century BCE",
+          "5th century BCE",
+          "2nd century BCE",
+          "6th century BCE",
+          "4th century BCE",
+          "1st century CE",
+          "7th century BCE",
+          "8th century BCE"
+        ]
       },
       {
-        "id": "general-library-alexandria-destruction-v4",
-        "quizQuestion": "The Library of Alexandria was part of a larger scholarly institution called the?",
-        "correctAnswer": "Mouseion",
-        "distractors": ["Lyceum", "Academy", "Agora", "Gymnasium", "Stoa", "Prytaneion", "Bouleuterion", "Odeon"]
+        "quizQuestion": "Under which dynasty was the Library of Alexandria established?",
+        "correctAnswer": "Ptolemaic dynasty",
+        "distractors": [
+          "Roman Empire",
+          "Persian Empire",
+          "Greek city-states",
+          "Ottoman Empire",
+          "Byzantine Empire",
+          "Seleucid Empire",
+          "Macedonian kingdom",
+          "Achaemenid dynasty"
+        ]
+      },
+      {
+        "quizQuestion": "What material were most of the Library of Alexandria's books made of?",
+        "correctAnswer": "Papyrus scrolls",
+        "distractors": [
+          "Parchment pages",
+          "Clay tablets",
+          "Stone tablets",
+          "Wooden boards",
+          "Silk sheets",
+          "Bamboo strips",
+          "Leather rolls",
+          "Metal plates"
+        ]
       }
     ],
-    "contentVolatility": "timeless",
-    "funScore": 8,
-    "rarity": "uncommon",
-    "tags": ["ancient history", "egypt", "knowledge", "books"],
-    "entityQid": "Q435",
-    "entityLabel": "Library of Alexandria"
-  },
-  {
-    "id": "general-library-alexandria-founder",
-    "type": "knowledge",
-    "domain": "General Knowledge",
-    "subdomain": "famous_firsts",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "famous_firsts",
-    "categoryL3": "",
-    "statement": "Ptolemy I Soter founded the Library of Alexandria around 300 BCE as part of a research center called the Mouseion.",
-    "quizQuestion": "Who founded the Library of Alexandria?",
-    "correctAnswer": "Ptolemy I Soter",
-    "distractors": [
-      "Alexander the Great",
-      "Julius Caesar",
-      "Cleopatra",
-      "Aristotle",
-      "Ramesses II",
-      "Demetrius of Phalerum",
-      "Hypatia",
-      "Euclid"
-    ],
-    "acceptableAnswers": [
-      "Ptolemy I",
-      "Ptolemy I Soter",
-      "Ptolemy"
-    ],
-    "explanation": "The Library of Alexandria was founded around 300 BCE by Ptolemy I Soter, a general of Alexander the Great who became ruler of Egypt. Ptolemy wanted Alexandria to be the intellectual capital of the world. The library was part of the Mouseion — meaning 'temple of the Muses' — a broader research institution.",
-    "wowFactor": "The library employed staff whose sole job was to board every ship that docked at Alexandria and copy any scrolls on board.",
-    "variants": [
-      {
-        "id": "general-library-alexandria-founder-v2",
-        "quizQuestion": "What does 'Mouseion' — the parent institution of the library — mean?",
-        "correctAnswer": "Temple of the Muses",
-        "distractors": ["Hall of wisdom", "House of scrolls", "Place of learning", "Seat of knowledge", "Shrine of truth", "School of thought", "Circle of scholars", "Academy of arts"]
-      },
-      {
-        "id": "general-library-alexandria-founder-v3",
-        "quizQuestion": "The Library of Alexandria sought to collect all books written in which language first?",
-        "correctAnswer": "Greek",
-        "distractors": ["Egyptian", "Latin", "Hebrew", "Persian", "Aramaic", "Sanskrit", "Phoenician", "Coptic"]
-      },
-      {
-        "id": "general-library-alexandria-founder-v4",
-        "quizQuestion": "Julius Caesar's siege of Alexandria is blamed for burning how many scrolls?",
-        "correctAnswer": "Around 40,000",
-        "distractors": ["Around 1,000", "Around 5,000", "Around 100,000", "Around 10,000", "Around 200,000", "Around 500", "Around 20,000", "Around 700,000"]
-      }
-    ],
-    "contentVolatility": "timeless",
-    "funScore": 7,
-    "rarity": "uncommon",
-    "tags": ["ancient history", "egypt", "ptolemy", "scholarship"],
-    "entityQid": "Q435",
-    "entityLabel": "Library of Alexandria"
-  },
-  {
-    "id": "general-morpheme-definition",
-    "type": "knowledge",
-    "domain": "General Knowledge",
-    "subdomain": "language_words",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "language_words",
-    "categoryL3": "",
-    "statement": "A morpheme is the smallest unit of language that carries meaning — for example, 'un-' in 'unhappy' is a morpheme.",
-    "quizQuestion": "What is the smallest unit of language that carries meaning?",
-    "correctAnswer": "A morpheme",
-    "distractors": [
-      "A phoneme",
-      "A syllable",
-      "A word",
-      "A grapheme",
-      "A lexeme",
-      "A phoneme",
-      "A sememe",
-      "A vowel"
-    ],
-    "acceptableAnswers": [
-      "morpheme",
-      "a morpheme"
-    ],
-    "explanation": "A morpheme is the smallest meaningful unit in a language. Unlike phonemes (which are just sounds), morphemes carry meaning. For example, the word 'unhappiness' contains three morphemes: 'un-' (not), 'happy' (the root), and '-ness' (a state). Understanding morphemes helps decode unfamiliar words.",
-    "wowFactor": "Once you learn common morphemes like 'un-', 'pre-', '-tion', and '-ness', you can decode thousands of words you've never seen before.",
-    "variants": [
-      {
-        "id": "general-morpheme-definition-v2",
-        "quizQuestion": "How many morphemes does the word 'unhappiness' contain?",
-        "correctAnswer": "Three",
-        "distractors": ["One", "Two", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
-      },
-      {
-        "id": "general-morpheme-definition-v3",
-        "quizQuestion": "A morpheme that cannot stand alone as a word is called what?",
-        "correctAnswer": "A bound morpheme",
-        "distractors": ["A free morpheme", "A root morpheme", "A core morpheme", "A base morpheme", "A stem morpheme", "A lone morpheme", "A prefix morpheme", "A suffix morpheme"]
-      },
-      {
-        "id": "general-morpheme-definition-v4",
-        "quizQuestion": "The prefix 'un-' in 'undo' is an example of what type of morpheme?",
-        "correctAnswer": "Bound morpheme",
-        "distractors": ["Free morpheme", "Root morpheme", "Stem morpheme", "Base morpheme", "Core morpheme", "Lexical morpheme", "Open morpheme", "Content morpheme"]
-      },
-      {
-        "id": "general-morpheme-definition-v5",
-        "quizQuestion": "The study of morphemes and word structure is called what?",
-        "correctAnswer": "Morphology",
-        "distractors": ["Phonology", "Syntax", "Semantics", "Pragmatics", "Etymology", "Lexicology", "Orthography", "Graphemics"]
-      }
-    ],
-    "contentVolatility": "timeless",
-    "funScore": 6,
-    "rarity": "rare",
-    "tags": ["linguistics", "language", "grammar", "words"],
-    "entityQid": "Q43249",
-    "entityLabel": "morpheme"
-  },
-  {
-    "id": "general-sputnik-first-satellite",
-    "type": "knowledge",
-    "domain": "General Knowledge",
-    "subdomain": "famous_firsts",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "famous_firsts",
-    "categoryL3": "",
-    "statement": "Sputnik 1, launched by the Soviet Union in 1957, was the first artificial satellite to orbit Earth.",
-    "quizQuestion": "What year was the first artificial satellite launched?",
-    "correctAnswer": "1957",
-    "distractors": [
-      "1961",
-      "1945",
-      "1969",
-      "1953",
-      "1965",
-      "1950",
-      "1963",
-      "1955"
-    ],
-    "acceptableAnswers": [
-      "1957"
-    ],
-    "explanation": "Sputnik 1 was launched by the Soviet Union on October 4, 1957, becoming the first artificial object to orbit Earth. It was about the size of a beach ball and transmitted radio pulses that could be heard by amateur radio operators worldwide. Its launch shocked the Western world and triggered the Space Race.",
-    "wowFactor": "Sputnik 1 was the size of a beach ball but its beeping radio signal terrified the entire Western world and started the Space Race.",
-    "variants": [
-      {
-        "id": "general-sputnik-first-satellite-v2",
-        "quizQuestion": "Which country launched Sputnik 1, the first satellite?",
-        "correctAnswer": "Soviet Union",
-        "distractors": ["United States", "Germany", "China", "France", "United Kingdom", "Japan", "India", "Russia"]
-      },
-      {
-        "id": "general-sputnik-first-satellite-v3",
-        "quizQuestion": "Sputnik 1's orbital period was approximately how many minutes?",
-        "correctAnswer": "96 minutes",
-        "distractors": ["24 hours", "45 minutes", "180 minutes", "60 minutes", "30 minutes", "12 hours", "200 minutes", "72 minutes"]
-      },
-      {
-        "id": "general-sputnik-first-satellite-v4",
-        "quizQuestion": "What event did Sputnik 1's launch trigger between the US and USSR?",
-        "correctAnswer": "The Space Race",
-        "distractors": ["The Arms Race", "The Cold War", "The Moon Race", "The Nuclear Race", "The Tech Race", "The Science Race", "The Satellite War", "The Orbital Contest"]
-      },
-      {
-        "id": "general-sputnik-first-satellite-v5",
-        "quizQuestion": "Sputnik 1 was approximately the size of what everyday object?",
-        "correctAnswer": "A beach ball",
-        "distractors": ["A basketball", "A car tire", "A football", "A watermelon", "A medicine ball", "A bowling ball", "A soccer ball", "A kitchen table"]
-      }
-    ],
-    "contentVolatility": "timeless",
+    "difficulty": 3,
     "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "all",
     "rarity": "uncommon",
-    "tags": ["space", "soviet union", "history", "cold war"],
-    "entityQid": "Q80811",
-    "entityLabel": "Sputnik 1"
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/Library-of-Alexandria",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Vast columned hall lined floor to ceiling with papyrus scrolls, scholars in robes reading at wooden tables, sunlight streaming through high windows.",
+    "tags": [
+      "library of alexandria",
+      "ancient history",
+      "egypt",
+      "knowledge",
+      "famous firsts",
+      "ptolemaic"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   },
   {
-    "id": "general-sputnik-radio-signal",
+    "id": "general-libraryofalexandria-002",
     "type": "knowledge",
     "domain": "General Knowledge",
-    "subdomain": "famous_firsts",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "famous_firsts",
+    "subdomain": "Famous Firsts",
+    "categoryL1": "History",
+    "categoryL2": "Ancient World",
     "categoryL3": "",
-    "statement": "Sputnik 1 transmitted radio signals that amateur radio operators around the world could pick up during its 3-week operation.",
-    "quizQuestion": "How long did Sputnik 1 transmit radio signals for?",
-    "correctAnswer": "3 weeks",
+    "statement": "The Library of Alexandria was not destroyed in a single event — it declined gradually over centuries.",
+    "quizQuestion": "How did the Library of Alexandria actually end?",
+    "correctAnswer": "Gradual decline over centuries",
     "distractors": [
-      "3 months",
-      "3 years",
+      "Burned by Julius Caesar",
+      "Destroyed by Muslims",
+      "Buried by earthquake",
+      "Flooded by the Nile",
+      "Torn down by Romans",
+      "Burned by Napoleon",
+      "Demolished by Persians",
+      "Swept away by storm"
+    ],
+    "acceptableAnswers": [
+      "gradual decline",
+      "slow decline",
+      "declined over time"
+    ],
+    "explanation": "Popular myth blames Julius Caesar or later Muslim conquerors, but historians believe the library declined gradually due to funding cuts, civil wars, and multiple smaller fires across several centuries.",
+    "wowFactor": "Julius Caesar's fire of 48 BCE may have burned a warehouse of scrolls near the docks — often confused with the main library, which survived.",
+    "variants": [
+      {
+        "quizQuestion": "Who is most popularly (but inaccurately) blamed for burning the Library of Alexandria?",
+        "correctAnswer": "Julius Caesar",
+        "distractors": [
+          "Cleopatra",
+          "Alexander the Great",
+          "Napoleon",
+          "Nero",
+          "Attila the Hun",
+          "Genghis Khan",
+          "Hannibal",
+          "Augustus Caesar"
+        ]
+      },
+      {
+        "quizQuestion": "What did Julius Caesar accidentally burn near Alexandria in 48 BCE?",
+        "correctAnswer": "A warehouse of scrolls",
+        "distractors": [
+          "The main library itself",
+          "The royal palace",
+          "The harbor fleet",
+          "A school of scholars",
+          "The Pharos lighthouse",
+          "A temple archive",
+          "The public market",
+          "Caesar's own ship"
+        ]
+      },
+      {
+        "quizQuestion": "Where was the Library of Alexandria located?",
+        "correctAnswer": "Alexandria, Egypt",
+        "distractors": [
+          "Athens, Greece",
+          "Rome, Italy",
+          "Carthage, Tunisia",
+          "Babylon, Iraq",
+          "Antioch, Syria",
+          "Memphis, Egypt",
+          "Thebes, Egypt",
+          "Constantinople"
+        ]
+      },
+      {
+        "quizQuestion": "What was the companion institution to the Library of Alexandria called?",
+        "correctAnswer": "The Mouseion",
+        "distractors": [
+          "The Lyceum",
+          "The Academy",
+          "The Stoa",
+          "The Atheneum",
+          "The Agora",
+          "The Prytaneion",
+          "The Gymnasium",
+          "The Areopagus"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "all",
+    "rarity": "rare",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/Library-of-Alexandria",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Ancient scroll hall with crumbling columns, dusty shelves half-empty, a lone scholar reading by fading lamplight as the roof shows cracks above.",
+    "tags": [
+      "library of alexandria",
+      "myth busting",
+      "julius caesar",
+      "ancient history",
+      "egypt",
+      "misconceptions"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-morpheme-001",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "Language & Words",
+    "categoryL1": "Linguistics",
+    "categoryL2": "Language Structure",
+    "categoryL3": "",
+    "statement": "A morpheme is the smallest unit of meaning in a language — smaller than a word, larger than a letter.",
+    "quizQuestion": "What is the smallest meaningful unit in language called?",
+    "correctAnswer": "Morpheme",
+    "distractors": [
+      "Phoneme",
+      "Syllable",
+      "Lexeme",
+      "Grapheme",
+      "Sememe",
+      "Moneme",
+      "Toneme",
+      "Allophone"
+    ],
+    "acceptableAnswers": [
+      "morpheme"
+    ],
+    "explanation": "A morpheme cannot be divided further without losing its meaning. 'Cats' has two morphemes: 'cat' (animal) and 's' (plural). Phonemes are the smallest units of sound, not meaning.",
+    "wowFactor": "The word 'unbreakable' contains three morphemes: 'un-' (not), 'break' (to fracture), and '-able' (capable of) — each adding distinct meaning.",
+    "variants": [
+      {
+        "quizQuestion": "How many morphemes does the word 'unbreakable' contain?",
+        "correctAnswer": "Three",
+        "distractors": [
+          "One",
+          "Two",
+          "Four",
+          "Five",
+          "Six",
+          "Seven",
+          "Eight",
+          "Nine"
+        ]
+      },
+      {
+        "quizQuestion": "Which of these is a morpheme that cannot stand alone as a word?",
+        "correctAnswer": "un- (prefix)",
+        "distractors": [
+          "cat",
+          "run",
+          "book",
+          "tree",
+          "fish",
+          "ball",
+          "door",
+          "wind"
+        ]
+      },
+      {
+        "quizQuestion": "What do linguists call a morpheme that can stand alone as a word?",
+        "correctAnswer": "Free morpheme",
+        "distractors": [
+          "Bound morpheme",
+          "Root morpheme",
+          "Open morpheme",
+          "Simple morpheme",
+          "Core morpheme",
+          "Stem morpheme",
+          "Base morpheme",
+          "Prime morpheme"
+        ]
+      },
+      {
+        "quizQuestion": "The plural '-s' added to 'cat' to make 'cats' is what type of morpheme?",
+        "correctAnswer": "Bound morpheme",
+        "distractors": [
+          "Free morpheme",
+          "Root morpheme",
+          "Lexical morpheme",
+          "Prime morpheme",
+          "Open morpheme",
+          "Core morpheme",
+          "Simple morpheme",
+          "Base morpheme"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/morpheme",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Colorful word 'unbreakable' split into three glowing segments on a chalkboard, each piece labeled with its meaning in a linguistics classroom.",
+    "tags": [
+      "morpheme",
+      "linguistics",
+      "language",
+      "words",
+      "grammar",
+      "etymology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-sputnik1-001",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "Famous Firsts",
+    "categoryL1": "Science & Technology",
+    "categoryL2": "Space Exploration",
+    "categoryL3": "",
+    "statement": "Sputnik 1, launched in 1957, was the first artificial satellite — it beeped radio signals for 21 days.",
+    "quizQuestion": "How many days did Sputnik 1 transmit radio signals?",
+    "correctAnswer": "21 days",
+    "distractors": [
       "3 days",
+      "7 days",
+      "90 days",
+      "1 day",
+      "365 days",
+      "48 hours",
       "6 months",
-      "1 year",
-      "6 weeks",
-      "1 month",
       "2 years"
     ],
     "acceptableAnswers": [
-      "3 weeks",
-      "three weeks",
-      "21 days"
+      "21 days",
+      "21"
     ],
-    "explanation": "After launch on October 4, 1957, Sputnik 1 transmitted radio signals for about 21 days until its batteries died on October 26. The satellite itself continued orbiting until January 4, 1958, when it re-entered Earth's atmosphere and burned up. In total it completed about 1,440 orbits.",
-    "wowFactor": "Sputnik 1 completed 1,440 orbits before burning up — amateur radio operators worldwide tracked its famous beeping signal.",
+    "explanation": "Sputnik 1 transmitted a simple radio beep for 21 days before its batteries died. It remained in orbit for 3 months before burning up on re-entry in January 1958.",
+    "wowFactor": "Sputnik 1 was only the size of a beach ball — 58 cm in diameter and 83.6 kg — yet its launch caused a political shockwave that started the Space Race.",
     "variants": [
       {
-        "id": "general-sputnik-radio-signal-v2",
-        "quizQuestion": "Sputnik 1 burned up re-entering Earth's atmosphere in which year?",
-        "correctAnswer": "1958",
-        "distractors": ["1957", "1959", "1960", "1961", "1962", "1963", "1965", "1970"]
+        "quizQuestion": "How large was Sputnik 1?",
+        "correctAnswer": "58 cm diameter (beach ball)",
+        "distractors": [
+          "2 meters wide",
+          "10 cm diameter",
+          "3 meters long",
+          "1 meter wide",
+          "5 meters across",
+          "30 cm diameter",
+          "20 cm diameter",
+          "Half a meter long"
+        ]
       },
       {
-        "id": "general-sputnik-radio-signal-v3",
-        "quizQuestion": "Approximately how many orbits did Sputnik 1 complete in total?",
-        "correctAnswer": "1,440 orbits",
-        "distractors": ["100 orbits", "500 orbits", "10,000 orbits", "50 orbits", "3,000 orbits", "200 orbits", "700 orbits", "5,000 orbits"]
+        "quizQuestion": "In which year was Sputnik 1 launched?",
+        "correctAnswer": "1957",
+        "distractors": [
+          "1961",
+          "1955",
+          "1960",
+          "1969",
+          "1953",
+          "1945",
+          "1965",
+          "1950"
+        ]
       },
       {
-        "id": "general-sputnik-radio-signal-v4",
-        "quizQuestion": "The launch of Sputnik 1 prompted which US government act?",
-        "correctAnswer": "The National Defense Education Act",
-        "distractors": ["The Space Exploration Act", "The Science Advancement Act", "The Satellite Defense Act", "The NASA Founding Act", "The Orbital Security Act", "The Missile Defense Act", "The Aerospace Act", "The Technology Defense Act"]
+        "quizQuestion": "How long did Sputnik 1 remain in orbit before burning up?",
+        "correctAnswer": "3 months",
+        "distractors": [
+          "1 week",
+          "6 months",
+          "1 year",
+          "2 weeks",
+          "1 day",
+          "5 years",
+          "10 days",
+          "24 hours"
+        ]
+      },
+      {
+        "quizQuestion": "What political consequence did Sputnik 1's launch trigger?",
+        "correctAnswer": "The Space Race",
+        "distractors": [
+          "World War III fears",
+          "The Nuclear Arms Race",
+          "The Vietnam War",
+          "The Cold War start",
+          "The Moon Treaty",
+          "The UN Space Agency",
+          "NATO expansion",
+          "The Berlin Wall"
+        ]
       }
     ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "NASA History Division",
+    "sourceUrl": "https://history.nasa.gov/sputnik/",
     "contentVolatility": "timeless",
-    "funScore": 7,
-    "rarity": "rare",
-    "tags": ["space", "cold war", "technology", "soviet union"],
-    "entityQid": "Q80811",
-    "entityLabel": "Sputnik 1"
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Polished silver sphere with four radio antennas drifting above Earth against a star-filled backdrop, the Soviet hammer and sickle barely visible on its surface.",
+    "tags": [
+      "sputnik",
+      "space race",
+      "cold war",
+      "famous firsts",
+      "satellite",
+      "soviet union",
+      "1957"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   },
   {
-    "id": "general-sovereign-state-criteria",
+    "id": "general-sputnik1-002",
     "type": "knowledge",
     "domain": "General Knowledge",
-    "subdomain": "miscellaneous_oddities",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "miscellaneous_oddities",
+    "subdomain": "Famous Firsts",
+    "categoryL1": "Science & Technology",
+    "categoryL2": "Space Exploration",
     "categoryL3": "",
-    "statement": "A sovereign state requires four elements: a permanent population, a defined territory, an effective government, and the capacity to enter international relations.",
-    "quizQuestion": "The Montevideo Convention lists how many criteria for statehood?",
-    "correctAnswer": "Four",
+    "statement": "Sputnik means 'satellite' or 'traveling companion' in Russian.",
+    "quizQuestion": "What does the Russian word 'Sputnik' mean in English?",
+    "correctAnswer": "Traveling companion",
     "distractors": [
+      "Star seeker",
+      "Space pioneer",
+      "Sky machine",
+      "Iron moon",
+      "Red star",
+      "Soviet eagle",
+      "Night wanderer",
+      "Moon child"
+    ],
+    "acceptableAnswers": [
+      "traveling companion",
+      "satellite",
+      "fellow traveler"
+    ],
+    "explanation": "In Russian, 'sputnik' (спутник) means 'companion' or 'fellow traveler'. Its technical meaning became 'satellite' — an object that travels alongside a planet.",
+    "wowFactor": "The word 'sputnik' entered English dictionaries after 1957 and briefly became synonymous with artificial satellite in many languages.",
+    "variants": [
+      {
+        "quizQuestion": "In which country was Sputnik 1 built and launched?",
+        "correctAnswer": "Soviet Union (USSR)",
+        "distractors": [
+          "USA",
+          "Russia (modern)",
+          "Germany",
+          "France",
+          "China",
+          "United Kingdom",
+          "Japan",
+          "India"
+        ]
+      },
+      {
+        "quizQuestion": "Who was the chief rocket engineer behind Sputnik 1?",
+        "correctAnswer": "Sergei Korolev",
+        "distractors": [
+          "Yuri Gagarin",
+          "Wernher von Braun",
+          "Nikita Khrushchev",
+          "Valentina Tereshkova",
+          "Konstantin Tsiolkovsky",
+          "Vladimir Lenin",
+          "Igor Kurchatov",
+          "Mikhail Tikhonravov"
+        ]
+      },
+      {
+        "quizQuestion": "What signal did Sputnik 1 broadcast from orbit?",
+        "correctAnswer": "A radio beeping sound",
+        "distractors": [
+          "A voice message",
+          "Music",
+          "Morse code text",
+          "Mathematical sequences",
+          "Weather data",
+          "Temperature readings",
+          "Photographs",
+          "Video signals"
+        ]
+      },
+      {
+        "quizQuestion": "How much did Sputnik 1 weigh?",
+        "correctAnswer": "83.6 kg",
+        "distractors": [
+          "500 kg",
+          "10 kg",
+          "1,000 kg",
+          "5 kg",
+          "200 kg",
+          "50 kg",
+          "2,000 kg",
+          "1 kg"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "NASA History Division",
+    "sourceUrl": "https://history.nasa.gov/sputnik/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Russian Cyrillic letters spelling 'Sputnik' in bold red on a white background, beside an illustration of the satellite orbiting Earth.",
+    "tags": [
+      "sputnik",
+      "etymology",
+      "russian",
+      "space race",
+      "satellite",
+      "cold war",
+      "korolev"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-sovereignstate-001",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "Miscellaneous Oddities",
+    "categoryL1": "Politics & Society",
+    "categoryL2": "Nations & Borders",
+    "categoryL3": "",
+    "statement": "The world's smallest sovereign state, Vatican City, covers just 0.44 square kilometers.",
+    "quizQuestion": "How large is Vatican City, the world's smallest sovereign state?",
+    "correctAnswer": "0.44 sq km",
+    "distractors": [
+      "1 sq km",
+      "10 sq km",
+      "0.1 sq km",
+      "5 sq km",
+      "2 sq km",
+      "44 sq km",
+      "100 sq km",
+      "0.01 sq km"
+    ],
+    "acceptableAnswers": [
+      "0.44 sq km",
+      "0.44 square kilometers",
+      "less than half a square kilometer"
+    ],
+    "explanation": "Vatican City, the headquarters of the Roman Catholic Church, is entirely surrounded by Rome, Italy. With about 800 residents, it is also the world's least populous internationally recognized country.",
+    "wowFactor": "Vatican City has its own passports, license plates, radio station, railway station, and even its own army — the Swiss Guard, founded in 1506.",
+    "variants": [
+      {
+        "quizQuestion": "Which country entirely surrounds Vatican City?",
+        "correctAnswer": "Italy",
+        "distractors": [
+          "France",
+          "Spain",
+          "Switzerland",
+          "Germany",
+          "Greece",
+          "Portugal",
+          "Austria",
+          "Belgium"
+        ]
+      },
+      {
+        "quizQuestion": "What is the world's second smallest sovereign state?",
+        "correctAnswer": "Monaco",
+        "distractors": [
+          "San Marino",
+          "Liechtenstein",
+          "Andorra",
+          "Nauru",
+          "Tuvalu",
+          "Maldives",
+          "Luxembourg",
+          "Malta"
+        ]
+      },
+      {
+        "quizQuestion": "In what year was the Swiss Guard of Vatican City founded?",
+        "correctAnswer": "1506",
+        "distractors": [
+          "1800",
+          "1648",
+          "1200",
+          "1900",
+          "1776",
+          "1492",
+          "1350",
+          "1066"
+        ]
+      },
+      {
+        "quizQuestion": "Approximately how many people live permanently in Vatican City?",
+        "correctAnswer": "About 800",
+        "distractors": [
+          "10,000",
+          "50,000",
+          "100",
+          "5,000",
+          "200,000",
+          "1 million",
+          "25",
+          "10 million"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/place/Vatican-City",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Aerial view of St. Peter's Square surrounded by Rome's cityscape, the tiny walled enclave of Vatican City marked with a glowing border.",
+    "tags": [
+      "vatican city",
+      "sovereign state",
+      "world records",
+      "smallest country",
+      "pope",
+      "catholic church"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-adamandeve-001",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "Miscellaneous Oddities",
+    "categoryL1": "Religion & Mythology",
+    "categoryL2": "Creation Stories",
+    "categoryL3": "",
+    "statement": "Adam's name in Hebrew is related to 'adamah', meaning 'ground' or 'earth', reflecting his creation from dust.",
+    "quizQuestion": "What does the Hebrew name 'Adam' relate to in meaning?",
+    "correctAnswer": "Ground or earth",
+    "distractors": [
+      "First man",
+      "God's image",
+      "Living soul",
+      "Breath of life",
+      "Light of day",
+      "Ruler of all",
+      "Made of clay",
+      "Child of God"
+    ],
+    "acceptableAnswers": [
+      "ground",
+      "earth",
+      "soil",
+      "adamah"
+    ],
+    "explanation": "In Hebrew, 'Adam' (אָדָם) is closely linked to 'adamah' (אֲדָמָה), meaning ground or earth. This reflects the Genesis account where God forms Adam from the dust of the earth.",
+    "wowFactor": "The name 'Eve' (Chava in Hebrew) means 'living' or 'mother of all living' — a direct reference to her role in the creation narrative.",
+    "variants": [
+      {
+        "quizQuestion": "What does the Hebrew name 'Eve' (Chava) mean?",
+        "correctAnswer": "Living or mother of living",
+        "distractors": [
+          "First woman",
+          "Rib of man",
+          "God's daughter",
+          "Garden keeper",
+          "Night sky",
+          "Star woman",
+          "Earth mother",
+          "Soul of life"
+        ]
+      },
+      {
+        "quizQuestion": "In the Bible, from what did God form Adam's body?",
+        "correctAnswer": "Dust of the earth",
+        "distractors": [
+          "Water and clay",
+          "Stone and fire",
+          "Wood and earth",
+          "Sand and ash",
+          "Bone and flesh",
+          "Light and shadow",
+          "Leaves and soil",
+          "River mud"
+        ]
+      },
+      {
+        "quizQuestion": "In Genesis, from what part of Adam was Eve created?",
+        "correctAnswer": "A rib",
+        "distractors": [
+          "His blood",
+          "His tears",
+          "His shadow",
+          "His breath",
+          "His heartbeat",
+          "His hair",
+          "His hand",
+          "His eye"
+        ]
+      },
+      {
+        "quizQuestion": "Which religion does NOT include Adam and Eve in its scripture?",
+        "correctAnswer": "Hinduism",
+        "distractors": [
+          "Christianity",
+          "Judaism",
+          "Islam",
+          "All include them",
+          "None exclude them",
+          "Zoroastrianism",
+          "Mormonism",
+          "Gnosticism"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/Adam-and-Eve",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "low",
+    "sensitivityNote": "Religious content; presented as cultural/etymological fact.",
+    "visualDescription": "Two figures standing in a lush garden with golden light filtering through tall trees, a glowing apple on a branch above them.",
+    "tags": [
+      "adam and eve",
+      "genesis",
+      "hebrew",
+      "etymology",
+      "creation myth",
+      "abrahamic",
+      "religion"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-hedonism-001",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "Language & Words",
+    "categoryL1": "Philosophy",
+    "categoryL2": "Ethics",
+    "categoryL3": "",
+    "statement": "Hedonism, the philosophy that pleasure is life's highest good, was championed by the ancient Greek Epicurus.",
+    "quizQuestion": "Which ancient Greek philosopher is most associated with hedonistic philosophy?",
+    "correctAnswer": "Epicurus",
+    "distractors": [
+      "Socrates",
+      "Aristotle",
+      "Plato",
+      "Diogenes",
+      "Pythagoras",
+      "Heraclitus",
+      "Democritus",
+      "Zeno of Citium"
+    ],
+    "acceptableAnswers": [
+      "epicurus",
+      "epicurus of samos"
+    ],
+    "explanation": "Epicurus (341–270 BCE) founded Epicureanism, arguing that pleasure (specifically tranquility and freedom from pain) is the greatest good. He is often mischaracterized as promoting indulgence.",
+    "wowFactor": "Epicurus didn't advocate wild indulgence — he lived simply, ate bread and water, and argued that friendship and philosophical thinking were the greatest pleasures.",
+    "variants": [
+      {
+        "quizQuestion": "What did Epicurus consider the greatest pleasure?",
+        "correctAnswer": "Tranquility and freedom from pain",
+        "distractors": [
+          "Feasting and wine",
+          "Fame and glory",
+          "Wealth and power",
+          "Love and passion",
+          "Art and beauty",
+          "Battle and victory",
+          "Sex and indulgence",
+          "Sports and games"
+        ]
+      },
+      {
+        "quizQuestion": "The word 'hedonism' comes from which ancient language?",
+        "correctAnswer": "Greek",
+        "distractors": [
+          "Latin",
+          "Hebrew",
+          "Arabic",
+          "Sanskrit",
+          "Persian",
+          "Egyptian",
+          "Sumerian",
+          "Akkadian"
+        ]
+      },
+      {
+        "quizQuestion": "What was the rival philosophy to Epicureanism in ancient Greece?",
+        "correctAnswer": "Stoicism",
+        "distractors": [
+          "Platonism",
+          "Aristotelianism",
+          "Cynicism",
+          "Sophism",
+          "Skepticism",
+          "Pythagoreanism",
+          "Atomism",
+          "Neoplatonism"
+        ]
+      },
+      {
+        "quizQuestion": "What simple diet did Epicurus reportedly live on?",
+        "correctAnswer": "Bread and water",
+        "distractors": [
+          "Fruit and nuts",
+          "Meat and wine",
+          "Fish and olives",
+          "Grain and milk",
+          "Vegetables only",
+          "Honey and figs",
+          "Legumes and herbs",
+          "Cheese and bread"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Stanford Encyclopedia of Philosophy",
+    "sourceUrl": "https://plato.stanford.edu/entries/epicurus/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Ancient Greek philosopher reclining under an olive tree in a simple garden, disciples gathered around him, a loaf of bread and water cup on a stone table.",
+    "tags": [
+      "hedonism",
+      "epicurus",
+      "philosophy",
+      "ancient greece",
+      "ethics",
+      "pleasure",
+      "epicureanism"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-eniac-001",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "Inventions & Discoveries",
+    "categoryL1": "Science & Technology",
+    "categoryL2": "Computing",
+    "categoryL3": "",
+    "statement": "ENIAC, the first general-purpose electronic computer, weighed 27 tonnes and filled an entire room.",
+    "quizQuestion": "How much did ENIAC, the first general-purpose computer, weigh?",
+    "correctAnswer": "27 tonnes",
+    "distractors": [
+      "1 tonne",
+      "5 tonnes",
+      "100 tonnes",
+      "500 kg",
+      "50 tonnes",
+      "200 kg",
+      "10 tonnes",
+      "3 tonnes"
+    ],
+    "acceptableAnswers": [
+      "27 tonnes",
+      "27 tons",
+      "about 27 tonnes"
+    ],
+    "explanation": "ENIAC (Electronic Numerical Integrator and Computer) was completed in 1945 at the University of Pennsylvania. It contained 17,468 vacuum tubes and consumed 150 kilowatts of electricity.",
+    "wowFactor": "ENIAC was reportedly so hot that the room temperature rose significantly when running, and it required dedicated cooling and constant maintenance by a team of technicians.",
+    "variants": [
+      {
+        "quizQuestion": "How many vacuum tubes did ENIAC contain?",
+        "correctAnswer": "17,468",
+        "distractors": [
+          "100",
+          "1,000",
+          "500,000",
+          "50",
+          "10,000",
+          "100,000",
+          "250",
+          "5,000"
+        ]
+      },
+      {
+        "quizQuestion": "In which year was ENIAC completed?",
+        "correctAnswer": "1945",
+        "distractors": [
+          "1957",
+          "1939",
+          "1951",
+          "1960",
+          "1930",
+          "1965",
+          "1948",
+          "1920"
+        ]
+      },
+      {
+        "quizQuestion": "At which university was ENIAC built?",
+        "correctAnswer": "University of Pennsylvania",
+        "distractors": [
+          "MIT",
+          "Harvard",
+          "Princeton",
+          "Stanford",
+          "Cornell",
+          "Yale",
+          "Columbia",
+          "Carnegie Mellon"
+        ]
+      },
+      {
+        "quizQuestion": "How much electricity did ENIAC consume?",
+        "correctAnswer": "150 kilowatts",
+        "distractors": [
+          "1 watt",
+          "10 kilowatts",
+          "1 megawatt",
+          "500 watts",
+          "50 kilowatts",
+          "5 megawatts",
+          "100 watts",
+          "1 kilowatt"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Computer History Museum",
+    "sourceUrl": "https://computerhistory.org/blog/eniac-the-first-general-purpose-electronic-computer/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Room-sized machine filling a warehouse, panels of vacuum tubes glowing orange, wires bundled across the floor, technicians in white coats adjusting dials.",
+    "tags": [
+      "eniac",
+      "computer history",
+      "famous firsts",
+      "technology",
+      "vacuum tubes",
+      "computing",
+      "inventions"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-eniac-002",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "Inventions & Discoveries",
+    "categoryL1": "Science & Technology",
+    "categoryL2": "Computing",
+    "categoryL3": "",
+    "statement": "ENIAC was programmed primarily by six women mathematicians, now called the 'ENIAC Programmers'.",
+    "quizQuestion": "Who primarily programmed the ENIAC computer?",
+    "correctAnswer": "Six women mathematicians",
+    "distractors": [
+      "Male army officers",
+      "University professors",
+      "IBM engineers",
+      "Government scientists",
+      "MIT graduates",
+      "British codebreakers",
+      "Bell Labs engineers",
+      "Radio operators"
+    ],
+    "acceptableAnswers": [
+      "six women",
+      "women mathematicians",
+      "female programmers"
+    ],
+    "explanation": "The six original ENIAC programmers were Kay McNulty, Betty Jennings, Betty Snyder, Marlyn Wescoff, Fran Bilas, and Ruth Lichterman. They were trained mathematicians hired as 'computers' to do calculations by hand before being assigned to ENIAC.",
+    "wowFactor": "The six ENIAC women were not invited to the celebratory dinner after ENIAC's public demonstration in 1946 — they were mistaken for military dates by the male guests.",
+    "variants": [
+      {
+        "quizQuestion": "What were female human calculators called before electronic computers existed?",
+        "correctAnswer": "Computers",
+        "distractors": [
+          "Calculators",
+          "Analysts",
+          "Operators",
+          "Tabbers",
+          "Processors",
+          "Mathematicians",
+          "Counters",
+          "Clerks"
+        ]
+      },
+      {
+        "quizQuestion": "How many women originally programmed ENIAC?",
+        "correctAnswer": "Six",
+        "distractors": [
+          "Two",
+          "One",
+          "Ten",
+          "Three",
+          "Twelve",
+          "Twenty",
+          "Four",
+          "Eight"
+        ]
+      },
+      {
+        "quizQuestion": "In what year did ENIAC have its public demonstration?",
+        "correctAnswer": "1946",
+        "distractors": [
+          "1945",
+          "1950",
+          "1948",
+          "1955",
+          "1943",
+          "1960",
+          "1942",
+          "1951"
+        ]
+      },
+      {
+        "quizQuestion": "What was the original military purpose ENIAC was designed for?",
+        "correctAnswer": "Calculating artillery trajectories",
+        "distractors": [
+          "Breaking German codes",
+          "Simulating nuclear blasts",
+          "Tracking enemy submarines",
+          "Encrypting communications",
+          "Designing aircraft",
+          "Computing weather forecasts",
+          "Processing payroll",
+          "Mapping terrain"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "all",
+    "rarity": "rare",
+    "sourceName": "Computer History Museum",
+    "sourceUrl": "https://computerhistory.org/blog/the-women-of-eniac/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Six women in 1940s attire standing before banks of blinking computer panels, wiring diagrams in hand, confident expressions on their faces.",
+    "tags": [
+      "eniac",
+      "women in computing",
+      "history",
+      "programmers",
+      "famous firsts",
+      "gender history",
+      "technology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-karaoke-001",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "Inventions & Discoveries",
+    "categoryL1": "Culture",
+    "categoryL2": "Entertainment",
+    "categoryL3": "",
+    "statement": "Karaoke was invented in Japan around 1971, and the word means 'empty orchestra' in Japanese.",
+    "quizQuestion": "What does the Japanese word 'karaoke' literally mean?",
+    "correctAnswer": "Empty orchestra",
+    "distractors": [
+      "Sing along",
+      "Without singer",
+      "Music box",
+      "Solo performer",
+      "Voice machine",
+      "Open mic",
+      "Dance floor",
+      "Sound maker"
+    ],
+    "acceptableAnswers": [
+      "empty orchestra",
+      "kara okesutora"
+    ],
+    "explanation": "'Karaoke' combines 'kara' (empty) and 'okesutora' (orchestra). It was invented around 1971 by Daisuke Inoue, a Japanese musician who created a machine so bar patrons could sing along to his backing tracks.",
+    "wowFactor": "Daisuke Inoue, karaoke's inventor, never patented his invention — he said he didn't want the hassle and was happy it brought joy to people worldwide.",
+    "variants": [
+      {
+        "quizQuestion": "Who is credited with inventing karaoke around 1971?",
+        "correctAnswer": "Daisuke Inoue",
+        "distractors": [
+          "Akio Morita",
+          "Honda Soichiro",
+          "Shigeru Miyamoto",
+          "Masaru Ibuka",
+          "Konosuke Matsushita",
+          "Hitoshi Matsumoto",
+          "Hiroo Onoda",
+          "Tadao Kashio"
+        ]
+      },
+      {
+        "quizQuestion": "Did karaoke's inventor patent his invention?",
+        "correctAnswer": "No, he never patented it",
+        "distractors": [
+          "Yes, made millions",
+          "Yes, but it expired",
+          "Yes, sold to Sony",
+          "Yes, to the government",
+          "No, someone else did",
+          "Partially patented",
+          "Filed but rejected",
+          "Patented in 1985"
+        ]
+      },
+      {
+        "quizQuestion": "In which country did karaoke originate?",
+        "correctAnswer": "Japan",
+        "distractors": [
+          "South Korea",
+          "China",
+          "USA",
+          "Philippines",
+          "Taiwan",
+          "Hong Kong",
+          "Vietnam",
+          "Thailand"
+        ]
+      },
+      {
+        "quizQuestion": "The Philippines has the most karaoke bars per capita in the world — roughly how many are there?",
+        "correctAnswer": "Over 100,000",
+        "distractors": [
+          "500",
+          "10,000",
+          "1 million",
+          "50,000",
+          "5,000",
+          "200",
+          "2,000",
+          "500,000"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/art/karaoke",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Person belting into a microphone in a neon-lit karaoke booth, lyrics scrolling across a screen, friends cheering in the background.",
+    "tags": [
+      "karaoke",
+      "japan",
+      "inventions",
+      "etymology",
+      "entertainment",
+      "music",
+      "culture"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-aboriginalaustralians-001",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "Famous Firsts",
+    "categoryL1": "History",
+    "categoryL2": "Indigenous Peoples",
+    "categoryL3": "",
+    "statement": "Aboriginal Australians have the world's oldest continuous culture, dating back at least 65,000 years.",
+    "quizQuestion": "How old is Aboriginal Australian culture — the world's oldest continuous culture?",
+    "correctAnswer": "At least 65,000 years",
+    "distractors": [
+      "10,000 years",
+      "30,000 years",
+      "5,000 years",
+      "100,000 years",
+      "20,000 years",
+      "1,000 years",
+      "50,000 years",
+      "200,000 years"
+    ],
+    "acceptableAnswers": [
+      "65,000 years",
+      "over 60,000 years",
+      "at least 65,000 years"
+    ],
+    "explanation": "Archaeological evidence from Madjedbebe rock shelter in northern Australia dates Aboriginal presence to at least 65,000 years ago — predating the arrival of modern humans in Europe.",
+    "wowFactor": "Aboriginal Australians observed the night sky for tens of thousands of years, developing what is considered the world's oldest astronomical tradition.",
+    "variants": [
+      {
+        "quizQuestion": "Aboriginal Australians developed what is considered the world's oldest tradition in which field?",
+        "correctAnswer": "Astronomy",
+        "distractors": [
+          "Pottery",
+          "Agriculture",
+          "Medicine",
+          "Music",
+          "Metalworking",
+          "Writing",
+          "Architecture",
+          "Navigation"
+        ]
+      },
+      {
+        "quizQuestion": "At which site was the 65,000-year-old evidence of Aboriginal presence found?",
+        "correctAnswer": "Madjedbebe rock shelter",
+        "distractors": [
+          "Uluru",
+          "Kakadu National Park",
+          "Mungo Lake",
+          "Shark Bay",
+          "Koonalda Cave",
+          "Devil's Lair",
+          "Lake Mungo",
+          "Naracoorte Caves"
+        ]
+      },
+      {
+        "quizQuestion": "When did Aboriginal Australians arrive in Australia, according to current evidence?",
+        "correctAnswer": "At least 65,000 years ago",
+        "distractors": [
+          "12,000 years ago",
+          "40,000 years ago",
+          "100,000 years ago",
+          "5,000 years ago",
+          "20,000 years ago",
+          "80,000 years ago",
+          "10,000 years ago",
+          "150,000 years ago"
+        ]
+      },
+      {
+        "quizQuestion": "Aboriginal culture predates the arrival of modern humans in which continent?",
+        "correctAnswer": "Europe",
+        "distractors": [
+          "Asia",
+          "Africa",
+          "Americas",
+          "Antarctica",
+          "Greenland",
+          "Russia",
+          "Middle East",
+          "India"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Australian Museum",
+    "sourceUrl": "https://australian.museum/learn/cultures/indigenous-australia/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "low",
+    "sensitivityNote": "Indigenous peoples topic; presented respectfully and factually.",
+    "visualDescription": "Ancient rock art painted in ochre on red sandstone, depicting human figures and animals under a vast starry outback sky.",
+    "tags": [
+      "aboriginal australians",
+      "indigenous",
+      "world records",
+      "ancient history",
+      "astronomy",
+      "culture",
+      "oldest"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-huntergatherer-001",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "Miscellaneous Oddities",
+    "categoryL1": "History",
+    "categoryL2": "Prehistoric Life",
+    "categoryL3": "",
+    "statement": "Hunter-gatherers worked only about 15–20 hours per week to meet their food needs — less than modern workers.",
+    "quizQuestion": "How many hours per week did hunter-gatherers typically work for food?",
+    "correctAnswer": "15–20 hours",
+    "distractors": [
+      "60–80 hours",
+      "40–50 hours",
+      "70 hours",
+      "30–40 hours",
+      "5 hours",
+      "100 hours",
+      "10 hours",
+      "55 hours"
+    ],
+    "acceptableAnswers": [
+      "15-20 hours",
+      "15 to 20 hours",
+      "about 20 hours"
+    ],
+    "explanation": "Anthropologist Marshall Sahlins famously called hunter-gatherers members of the 'original affluent society' because they worked far fewer hours than industrial workers while meeting all their basic needs.",
+    "wowFactor": "Hunter-gatherer diets were more diverse and nutritious than early farming diets — the shift to agriculture actually made humans shorter and less healthy for thousands of years.",
+    "variants": [
+      {
+        "quizQuestion": "Anthropologist Marshall Sahlins called hunter-gatherers the 'original' what?",
+        "correctAnswer": "Affluent society",
+        "distractors": [
+          "Free society",
+          "Happy people",
+          "Lazy civilization",
+          "Peaceful culture",
+          "Noble savages",
+          "Forest dwellers",
+          "Natural humans",
+          "Primitive society"
+        ]
+      },
+      {
+        "quizQuestion": "What happened to human height and health when farming replaced hunting and gathering?",
+        "correctAnswer": "Decreased for thousands of years",
+        "distractors": [
+          "Immediately improved",
+          "Stayed the same",
+          "Increased rapidly",
+          "Became more variable",
+          "Dramatically improved",
+          "Became unpredictable",
+          "Increased then dropped",
+          "Showed no change"
+        ]
+      },
+      {
+        "quizQuestion": "Approximately what percentage of human history was spent as hunter-gatherers?",
+        "correctAnswer": "About 95%",
+        "distractors": [
+          "10%",
+          "50%",
+          "25%",
+          "75%",
+          "5%",
+          "60%",
+          "30%",
+          "80%"
+        ]
+      },
+      {
+        "quizQuestion": "How many distinct plant species did typical hunter-gatherer groups use for food?",
+        "correctAnswer": "Over 100 species",
+        "distractors": [
+          "3–5 species",
+          "10–15 species",
+          "50 species",
+          "1,000 species",
+          "2 species",
+          "20–25 species",
+          "300 species",
+          "500 species"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/hunter-gatherer",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Small group of people in a lush forest gathering colorful fruits and berries, a fire burning at a nearby camp, children playing freely nearby.",
+    "tags": [
+      "hunter-gatherer",
+      "prehistoric",
+      "work-life balance",
+      "anthropology",
+      "history",
+      "diet",
+      "sahlins"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-cart-001",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "Inventions & Discoveries",
+    "categoryL1": "History",
+    "categoryL2": "Transportation",
+    "categoryL3": "",
+    "statement": "The wheel and cart were invented around 3500 BCE in Mesopotamia — one of humanity's most transformative inventions.",
+    "quizQuestion": "Approximately when was the wheel invented in Mesopotamia?",
+    "correctAnswer": "3500 BCE",
+    "distractors": [
+      "1000 BCE",
+      "10,000 BCE",
+      "500 BCE",
+      "100 BCE",
+      "5000 BCE",
+      "2000 BCE",
+      "200 BCE",
+      "1500 BCE"
+    ],
+    "acceptableAnswers": [
+      "3500 BCE",
+      "around 3500 BCE",
+      "about 3500 BC"
+    ],
+    "explanation": "The earliest wheeled vehicles appeared around 3500 BCE in Mesopotamia (modern Iraq). Interestingly, the potter's wheel appears to have been invented slightly before the wheel for transport.",
+    "wowFactor": "The wheel was NOT invented in one place and spread — civilizations in Europe, Asia, and the Americas independently developed wheeled devices, though Mesoamerican wheels were only used on toys, never for transport.",
+    "variants": [
+      {
+        "quizQuestion": "Which was likely invented first: the wheel for transport or the potter's wheel?",
+        "correctAnswer": "The potter's wheel",
+        "distractors": [
+          "The transport wheel",
+          "Both at the same time",
+          "Neither — axes came first",
+          "The cart axle",
+          "The spinning wheel",
+          "The gear wheel",
+          "The water wheel",
+          "The mill wheel"
+        ]
+      },
+      {
+        "quizQuestion": "Mesoamerican civilizations had wheeled objects — what were they used for?",
+        "correctAnswer": "Toys only",
+        "distractors": [
+          "Heavy transport",
+          "War chariots",
+          "Water pumping",
+          "Grain grinding",
+          "Textile weaving",
+          "Metal casting",
+          "Building construction",
+          "Crop harvesting"
+        ]
+      },
+      {
+        "quizQuestion": "In which modern-day country was the oldest wheeled vehicle found?",
+        "correctAnswer": "Iraq (ancient Mesopotamia)",
+        "distractors": [
+          "Egypt",
+          "Turkey",
+          "Iran",
+          "India",
+          "China",
+          "Greece",
+          "Jordan",
+          "Israel"
+        ]
+      },
+      {
+        "quizQuestion": "What material was the earliest wheel likely made from?",
+        "correctAnswer": "Solid wood",
+        "distractors": [
+          "Stone",
+          "Bronze",
+          "Iron",
+          "Bone",
+          "Leather",
+          "Clay",
+          "Reed",
+          "Gold"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/technology/wheel",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Ancient wooden cart with solid disc wheels loaded with clay pots, being pulled by an ox along a dusty Mesopotamian road beside a river.",
+    "tags": [
+      "cart",
+      "wheel",
+      "inventions",
+      "mesopotamia",
+      "ancient history",
+      "transportation",
+      "3500 bce"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-sioux-001",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "Miscellaneous Oddities",
+    "categoryL1": "History",
+    "categoryL2": "Indigenous Peoples",
+    "categoryL3": "",
+    "statement": "The Sioux are not one tribe but a confederation of three major groups: Dakota, Lakota, and Nakota.",
+    "quizQuestion": "How many major groups make up the Sioux Nation?",
+    "correctAnswer": "Three",
+    "distractors": [
+      "One",
       "Two",
-      "Three",
+      "Four",
       "Five",
       "Six",
       "Seven",
       "Eight",
-      "One",
       "Ten"
     ],
     "acceptableAnswers": [
-      "4",
-      "four",
-      "four criteria"
+      "three",
+      "3"
     ],
-    "explanation": "The 1933 Montevideo Convention on Rights and Duties of States defined the four criteria for statehood: a permanent population, a defined territory, an effective government, and capacity to enter into relations with other states. This is the most widely cited definition of a sovereign state in international law.",
-    "wowFactor": "By the Montevideo Convention criteria, some would argue entities like the Holy See or Kosovo qualify as states — leading to ongoing diplomatic controversies.",
+    "explanation": "The Sioux Nation consists of Dakota (Eastern), Nakota (Middle), and Lakota (Western) peoples. The name 'Sioux' comes from an Ojibwe/French term — most prefer to be called Lakota, Dakota, or Nakota.",
+    "wowFactor": "The Lakota word 'Sioux' was an insult used by their enemies the Ojibwe — many prefer to be called by their actual names: Lakota, Dakota, or Nakota.",
     "variants": [
       {
-        "id": "general-sovereign-state-criteria-v2",
-        "quizQuestion": "Which 1933 treaty defined the legal criteria for statehood?",
-        "correctAnswer": "Montevideo Convention",
-        "distractors": ["Geneva Convention", "Vienna Convention", "Paris Treaty", "Westphalia Treaty", "UN Charter", "Hague Convention", "Versailles Treaty", "Maastricht Treaty"]
+        "quizQuestion": "What does the name 'Sioux' actually originate from?",
+        "correctAnswer": "An Ojibwe insult",
+        "distractors": [
+          "A French explorer's name",
+          "Their own word for people",
+          "A treaty term",
+          "A Spanish corruption",
+          "A British nickname",
+          "A Lakota word",
+          "A geographic feature",
+          "A military designation"
+        ]
       },
       {
-        "id": "general-sovereign-state-criteria-v3",
-        "quizQuestion": "How many sovereign states are currently UN member states?",
-        "correctAnswer": "193",
-        "distractors": ["150", "175", "200", "210", "180", "220", "160", "100"]
+        "quizQuestion": "Where did the Battle of Little Bighorn take place in 1876?",
+        "correctAnswer": "Montana",
+        "distractors": [
+          "South Dakota",
+          "Wyoming",
+          "Nebraska",
+          "Kansas",
+          "Minnesota",
+          "Colorado",
+          "North Dakota",
+          "Oklahoma"
+        ]
       },
       {
-        "id": "general-sovereign-state-criteria-v4",
-        "quizQuestion": "Which tiny city-state is considered the world's smallest sovereign state?",
-        "correctAnswer": "Vatican City",
-        "distractors": ["Monaco", "San Marino", "Liechtenstein", "Andorra", "Nauru", "Tuvalu", "Palau", "Maldives"]
+        "quizQuestion": "Which famous Lakota leader was killed at the Battle of Little Bighorn?",
+        "correctAnswer": "Crazy Horse and Sitting Bull led (Custer died)",
+        "distractors": [
+          "Geronimo",
+          "Chief Joseph",
+          "Red Cloud",
+          "Tecumseh",
+          "Black Hawk",
+          "Cochise",
+          "Sequoyah",
+          "Pontiac"
+        ]
+      },
+      {
+        "quizQuestion": "The Lakota people are associated with which iconic animal?",
+        "correctAnswer": "American bison (buffalo)",
+        "distractors": [
+          "Eagle",
+          "Horse",
+          "Wolf",
+          "Bear",
+          "Deer",
+          "Elk",
+          "Coyote",
+          "Mountain lion"
+        ]
       }
     ],
-    "contentVolatility": "timeless",
-    "funScore": 6,
-    "rarity": "rare",
-    "tags": ["politics", "international law", "geography", "government"],
-    "entityQid": "Q3624078",
-    "entityLabel": "sovereign state"
-  },
-  {
-    "id": "general-adam-eve-creation",
-    "type": "knowledge",
-    "domain": "General Knowledge",
-    "subdomain": "miscellaneous_oddities",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "miscellaneous_oddities",
-    "categoryL3": "",
-    "statement": "According to Genesis, God created Eve from one of Adam's ribs, making her the second human in the Abrahamic creation story.",
-    "quizQuestion": "What did God use to create Eve, according to Genesis?",
-    "correctAnswer": "Adam's rib",
-    "distractors": [
-      "Clay from the earth",
-      "Dust from Eden",
-      "A bone from the ground",
-      "Water from the river",
-      "Breath from God",
-      "Light from heaven",
-      "Mud from the garden",
-      "Adam's heartbeat"
-    ],
-    "acceptableAnswers": [
-      "a rib",
-      "Adam's rib",
-      "his rib"
-    ],
-    "explanation": "In Genesis 2, God creates Eve by causing Adam to fall into a deep sleep, removing one of his ribs, and fashioning it into a woman. The Hebrew word used is 'tsela,' which some scholars argue means 'side' rather than 'rib,' suggesting Eve was made from Adam's side — an equal companion, not a lesser being.",
-    "wowFactor": "The Hebrew word 'tsela' translated as 'rib' might actually mean 'side,' suggesting Eve was created as Adam's equal — half of him.",
-    "variants": [
-      {
-        "id": "general-adam-eve-creation-v2",
-        "quizQuestion": "In Genesis, what did God put Adam into before creating Eve?",
-        "correctAnswer": "A deep sleep",
-        "distractors": ["A trance", "A coma", "A dream", "A vision", "A stupor", "A meditation", "A slumber", "A prayer"]
-      },
-      {
-        "id": "general-adam-eve-creation-v3",
-        "quizQuestion": "The name 'Adam' in Hebrew means what?",
-        "correctAnswer": "Man or earth",
-        "distractors": ["First one", "Chosen one", "Breath of life", "Living soul", "God's creation", "Sacred being", "Strong one", "Beloved child"]
-      },
-      {
-        "id": "general-adam-eve-creation-v4",
-        "quizQuestion": "Adam and Eve were expelled from Eden for eating fruit from which tree?",
-        "correctAnswer": "Tree of Knowledge",
-        "distractors": ["Tree of Life", "Tree of Wisdom", "Tree of Truth", "Tree of Good", "Tree of Eden", "Tree of God", "Tree of Power", "Tree of Ages"]
-      },
-      {
-        "id": "general-adam-eve-creation-v5",
-        "quizQuestion": "Which creature tempted Eve to eat the forbidden fruit?",
-        "correctAnswer": "A serpent",
-        "distractors": ["An angel", "A raven", "A lion", "A dove", "A wolf", "An eagle", "A fox", "A goat"]
-      }
-    ],
-    "contentVolatility": "timeless",
+    "difficulty": 3,
     "funScore": 7,
-    "rarity": "common",
-    "tags": ["religion", "bible", "creation", "mythology"],
-    "entityQid": "Q58701",
-    "entityLabel": "Adam and Eve"
-  },
-  {
-    "id": "general-hedonism-epicurus",
-    "type": "knowledge",
-    "domain": "General Knowledge",
-    "subdomain": "miscellaneous_oddities",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "miscellaneous_oddities",
-    "categoryL3": "",
-    "statement": "Hedonism is the philosophical view that pleasure is the highest good in life and the primary human motivation.",
-    "quizQuestion": "In hedonism, what is considered the highest good in life?",
-    "correctAnswer": "Pleasure",
-    "distractors": [
-      "Virtue",
-      "Wisdom",
-      "Power",
-      "Duty",
-      "Honor",
-      "Knowledge",
-      "Faith",
-      "Justice"
-    ],
-    "acceptableAnswers": [
-      "pleasure",
-      "happiness",
-      "enjoyment"
-    ],
-    "explanation": "Hedonism is the ethical theory that pleasure is the highest good and the proper aim of human life. The ancient Greek philosopher Epicurus is often associated with hedonism, though he actually advocated for simple pleasures — tranquility and freedom from pain — rather than indulgence. Modern interpretations vary widely.",
-    "wowFactor": "Epicurus, history's most famous 'hedonist,' actually lived on bread, water, and the occasional cheese — he called tranquility and no pain the ultimate pleasure.",
-    "variants": [
-      {
-        "id": "general-hedonism-epicurus-v2",
-        "quizQuestion": "Which ancient philosopher is most associated with hedonism?",
-        "correctAnswer": "Epicurus",
-        "distractors": ["Aristotle", "Plato", "Socrates", "Pythagoras", "Democritus", "Heraclitus", "Diogenes", "Zeno"]
-      },
-      {
-        "id": "general-hedonism-epicurus-v3",
-        "quizQuestion": "Epicurus' form of hedonism focused on which type of pleasure?",
-        "correctAnswer": "Tranquility and peace",
-        "distractors": ["Wealth and luxury", "Physical pleasure", "Fame and glory", "Sensual pleasure", "Power and dominance", "Food and drink", "Adventure and risk", "Social status"]
-      },
-      {
-        "id": "general-hedonism-epicurus-v4",
-        "quizQuestion": "The opposing philosophy to hedonism that values virtue over pleasure is called?",
-        "correctAnswer": "Stoicism",
-        "distractors": ["Nihilism", "Cynicism", "Empiricism", "Rationalism", "Asceticism", "Pragmatism", "Existentialism", "Idealism"]
-      }
-    ],
-    "contentVolatility": "timeless",
-    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "all",
     "rarity": "uncommon",
-    "tags": ["philosophy", "ancient greece", "ethics", "epicurus"],
-    "entityQid": "Q7064",
-    "entityLabel": "hedonism"
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/Sioux",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "low",
+    "sensitivityNote": "Indigenous peoples topic; handled respectfully with acknowledgment of preferred names.",
+    "visualDescription": "Three warriors on horseback crossing a vast grassy plain, eagle feather headdresses catching the wind under a wide open sky.",
+    "tags": [
+      "sioux",
+      "lakota",
+      "dakota",
+      "nakota",
+      "native american",
+      "indigenous",
+      "history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   },
   {
-    "id": "general-eniac-first-computer",
+    "id": "general-punchedcard-001",
     "type": "knowledge",
     "domain": "General Knowledge",
-    "subdomain": "inventions_discoveries",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "inventions_discoveries",
+    "subdomain": "Inventions & Discoveries",
+    "categoryL1": "Science & Technology",
+    "categoryL2": "Computing",
     "categoryL3": "",
-    "statement": "ENIAC, completed in 1945, was the first general-purpose electronic digital computer, filling an entire room and weighing 30 tons.",
-    "quizQuestion": "What year was ENIAC, the first electronic computer, completed?",
-    "correctAnswer": "1945",
+    "statement": "Punched cards were used to program computers for decades — IBM's 80-column card design lasted from 1928 to the 1980s.",
+    "quizQuestion": "How many columns did the standard IBM punched card have?",
+    "correctAnswer": "80 columns",
     "distractors": [
-      "1939",
-      "1957",
-      "1950",
-      "1936",
-      "1960",
-      "1942",
-      "1948",
-      "1952"
+      "40 columns",
+      "100 columns",
+      "64 columns",
+      "32 columns",
+      "128 columns",
+      "16 columns",
+      "50 columns",
+      "256 columns"
     ],
     "acceptableAnswers": [
-      "1945"
+      "80",
+      "80 columns"
     ],
-    "explanation": "ENIAC (Electronic Numerical Integrator and Computer) was completed in 1945 at the University of Pennsylvania, though it wasn't officially unveiled until 1946. It weighed about 30 tons, occupied 1,800 square feet, and used about 18,000 vacuum tubes. It could perform thousands of calculations per second — revolutionary for its time.",
-    "wowFactor": "ENIAC used 18,000 vacuum tubes and consumed as much power as a small town — yet a modern smartphone is billions of times more powerful.",
+    "explanation": "IBM's 80-column punched card, introduced in 1928, became so standard that early computer terminals were designed with 80-character display widths — a legacy that persists in terminal defaults today.",
+    "wowFactor": "The 80-character default width of modern computer terminals traces directly back to IBM's 1928 punched card — the card's 80 columns set the standard for half a century.",
     "variants": [
       {
-        "id": "general-eniac-first-computer-v2",
-        "quizQuestion": "ENIAC was built at which American university?",
-        "correctAnswer": "University of Pennsylvania",
-        "distractors": ["MIT", "Harvard University", "Princeton University", "Stanford University", "Columbia University", "Yale University", "Cornell University", "Johns Hopkins"]
+        "quizQuestion": "What modern computing standard traces back to the 80-column punched card?",
+        "correctAnswer": "80-character terminal width",
+        "distractors": [
+          "8-bit byte size",
+          "16-bit color depth",
+          "64-bit processors",
+          "8-track audio",
+          "16 MB RAM limit",
+          "32-bit addressing",
+          "128 ASCII characters",
+          "256 color palette"
+        ]
       },
       {
-        "id": "general-eniac-first-computer-v3",
-        "quizQuestion": "How much did ENIAC weigh?",
-        "correctAnswer": "30 tons",
-        "distractors": ["1 ton", "5 tons", "100 tons", "10 tons", "50 tons", "500 kg", "2 tons", "200 tons"]
+        "quizQuestion": "Punched cards were first used with which revolutionary 19th-century machine?",
+        "correctAnswer": "Jacquard loom",
+        "distractors": [
+          "Steam engine",
+          "Telegraph",
+          "Typewriter",
+          "Printing press",
+          "Cotton gin",
+          "Clock mechanism",
+          "Difference engine",
+          "Telephone"
+        ]
       },
       {
-        "id": "general-eniac-first-computer-v4",
-        "quizQuestion": "ENIAC used how many vacuum tubes to perform calculations?",
-        "correctAnswer": "18,000",
-        "distractors": ["100", "1,000", "5,000", "50,000", "100,000", "500", "10,000", "200,000"]
+        "quizQuestion": "In which year did IBM introduce its famous 80-column punched card format?",
+        "correctAnswer": "1928",
+        "distractors": [
+          "1945",
+          "1900",
+          "1965",
+          "1910",
+          "1950",
+          "1935",
+          "1920",
+          "1955"
+        ]
       },
       {
-        "id": "general-eniac-first-computer-v5",
-        "quizQuestion": "ENIAC was originally built to calculate what for the US military?",
-        "correctAnswer": "Artillery firing tables",
-        "distractors": ["Bomb trajectories", "Naval routes", "Troop logistics", "Radar signals", "Cryptographic codes", "Weather predictions", "Missile paths", "Supply chains"]
+        "quizQuestion": "The Jacquard loom's punched card system inspired which computing pioneer?",
+        "correctAnswer": "Charles Babbage",
+        "distractors": [
+          "Alan Turing",
+          "John von Neumann",
+          "Ada Lovelace",
+          "Herman Hollerith",
+          "Claude Shannon",
+          "Grace Hopper",
+          "Konrad Zuse",
+          "John Atanasoff"
+        ]
       }
     ],
-    "contentVolatility": "timeless",
-    "funScore": 9,
-    "rarity": "uncommon",
-    "tags": ["computers", "technology", "history", "inventions"],
-    "entityQid": "Q169399",
-    "entityLabel": "ENIAC"
-  },
-  {
-    "id": "general-primary-education-age",
-    "type": "knowledge",
-    "domain": "General Knowledge",
-    "subdomain": "miscellaneous_oddities",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "miscellaneous_oddities",
-    "categoryL3": "",
-    "statement": "Primary education typically covers ages 5–12 and is the first stage of formal schooling in most countries worldwide.",
-    "quizQuestion": "At what age does primary education typically begin in most countries?",
-    "correctAnswer": "Around age 5–6",
-    "distractors": [
-      "Around age 3–4",
-      "Around age 7–8",
-      "Around age 2–3",
-      "Around age 9–10",
-      "Around age 10–11",
-      "Around age 12–13",
-      "Around age 1–2",
-      "Around age 14–15"
-    ],
-    "acceptableAnswers": [
-      "5",
-      "6",
-      "age 5",
-      "age 6",
-      "5 or 6"
-    ],
-    "explanation": "Primary education is the first stage of compulsory schooling, typically starting at age 5 or 6 in most countries and lasting 4–7 years. It covers fundamental literacy, numeracy, and basic knowledge. The UN's Sustainable Development Goals call for universal primary education as a basic human right.",
-    "wowFactor": "Over 60 million children worldwide are still denied access to primary education — the most basic building block of opportunity.",
-    "variants": [
-      {
-        "id": "general-primary-education-age-v2",
-        "quizQuestion": "The UN SDGs call for universal access to what level of education?",
-        "correctAnswer": "Primary education",
-        "distractors": ["University education", "Secondary education", "Vocational education", "Tertiary education", "Adult education", "Graduate education", "Special education", "Online education"]
-      },
-      {
-        "id": "general-primary-education-age-v3",
-        "quizQuestion": "Which country has the world's highest primary school enrollment rate?",
-        "correctAnswer": "Several developed nations at ~100%",
-        "distractors": ["United States", "China", "India", "Brazil", "Russia", "Germany", "Canada", "Japan"]
-      },
-      {
-        "id": "general-primary-education-age-v4",
-        "quizQuestion": "What is the main focus of primary education worldwide?",
-        "correctAnswer": "Literacy and numeracy",
-        "distractors": ["Science and technology", "Arts and crafts", "Sports and fitness", "History and geography", "Languages and music", "Critical thinking", "Computer skills", "Civic education"]
-      }
-    ],
-    "contentVolatility": "timeless",
-    "funScore": 5,
-    "rarity": "common",
-    "tags": ["education", "schools", "children", "global"],
-    "entityQid": "Q975085",
-    "entityLabel": "primary education"
-  },
-  {
-    "id": "general-phd-degree-origin",
-    "type": "knowledge",
-    "domain": "General Knowledge",
-    "subdomain": "famous_firsts",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "famous_firsts",
-    "categoryL3": "",
-    "statement": "The Doctor of Philosophy (PhD) degree originated in medieval European universities in the 12th and 13th centuries.",
-    "quizQuestion": "In which centuries did the PhD degree originate?",
-    "correctAnswer": "12th–13th century",
-    "distractors": [
-      "16th–17th century",
-      "18th–19th century",
-      "9th–10th century",
-      "15th–16th century",
-      "14th–15th century",
-      "17th–18th century",
-      "19th–20th century",
-      "6th–7th century"
-    ],
-    "acceptableAnswers": [
-      "12th century",
-      "13th century",
-      "medieval period",
-      "middle ages"
-    ],
-    "explanation": "The Doctor of Philosophy degree traces its origins to medieval European universities, particularly the University of Bologna (founded 1088) and the University of Paris. The term 'doctor' comes from the Latin word for 'teacher.' Originally, a doctorate certified one as qualified to teach at a university.",
-    "wowFactor": "The world's oldest university, Bologna, has been granting doctoral degrees since the 11th century — longer than most modern nations have existed.",
-    "variants": [
-      {
-        "id": "general-phd-degree-origin-v2",
-        "quizQuestion": "What does 'doctor' mean in Latin, the origin of the PhD title?",
-        "correctAnswer": "Teacher",
-        "distractors": ["Learned one", "Scholar", "Wise man", "Expert", "Master", "Thinker", "Philosopher", "Advisor"]
-      },
-      {
-        "id": "general-phd-degree-origin-v3",
-        "quizQuestion": "What is the typical minimum duration of a PhD program in the US?",
-        "correctAnswer": "4–6 years",
-        "distractors": ["1–2 years", "2–3 years", "7–10 years", "10+ years", "6 months", "3 months", "1 year", "15 years"]
-      },
-      {
-        "id": "general-phd-degree-origin-v4",
-        "quizQuestion": "A PhD requires completing an original piece of research called a?",
-        "correctAnswer": "Dissertation",
-        "distractors": ["Thesis paper", "Capstone project", "Research report", "Academic paper", "Final essay", "Study guide", "Review article", "Case study"]
-      }
-    ],
-    "contentVolatility": "timeless",
-    "funScore": 6,
-    "rarity": "uncommon",
-    "tags": ["education", "history", "universities", "academic"],
-    "entityQid": "Q752297",
-    "entityLabel": "Doctor of Philosophy"
-  },
-  {
-    "id": "general-karaoke-invention",
-    "type": "knowledge",
-    "domain": "General Knowledge",
-    "subdomain": "inventions_discoveries",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "inventions_discoveries",
-    "categoryL3": "",
-    "statement": "Karaoke was invented in Japan in the early 1970s by musician Daisuke Inoue, who built a machine called the Juke-8.",
-    "quizQuestion": "Who invented karaoke in the early 1970s?",
-    "correctAnswer": "Daisuke Inoue",
-    "distractors": [
-      "Akio Morita",
-      "Masaru Ibuka",
-      "Hiroshi Yamauchi",
-      "Soichiro Honda",
-      "Konosuke Matsushita",
-      "Norio Ohga",
-      "Eiichi Yamamoto",
-      "Tadashi Yamamoto"
-    ],
-    "acceptableAnswers": [
-      "Daisuke Inoue",
-      "Inoue"
-    ],
-    "explanation": "Daisuke Inoue, a drummer from Osaka, invented karaoke around 1971. He built the 'Juke-8' machine — a coin-operated device that played recorded music for people to sing along with. Crucially, he never patented the invention, so he didn't profit from the global karaoke boom. He later received an Ig Nobel Peace Prize for 'teaching the world to sing.'",
-    "wowFactor": "The inventor of karaoke never patented it, missing out on billions — he received an Ig Nobel Peace Prize instead for 'teaching the world to sing.'",
-    "variants": [
-      {
-        "id": "general-karaoke-invention-v2",
-        "quizQuestion": "In which country was karaoke invented?",
-        "correctAnswer": "Japan",
-        "distractors": ["South Korea", "China", "United States", "Philippines", "Taiwan", "Hong Kong", "Vietnam", "Thailand"]
-      },
-      {
-        "id": "general-karaoke-invention-v3",
-        "quizQuestion": "What does the word 'karaoke' mean in Japanese?",
-        "correctAnswer": "Empty orchestra",
-        "distractors": ["Singing box", "Music alone", "Open stage", "Voice machine", "Solo singing", "No music", "Free song", "Sound room"]
-      },
-      {
-        "id": "general-karaoke-invention-v4",
-        "quizQuestion": "Why did karaoke's inventor miss out on the global fortune it generated?",
-        "correctAnswer": "He never patented it",
-        "distractors": ["He sold the rights cheaply", "He was cheated by a partner", "He gave it away for free", "He lost a legal battle", "He went bankrupt", "He donated it to the public", "He couldn't afford a patent", "He retired early"]
-      },
-      {
-        "id": "general-karaoke-invention-v5",
-        "quizQuestion": "What unusual prize did karaoke inventor Daisuke Inoue receive in 2004?",
-        "correctAnswer": "Ig Nobel Peace Prize",
-        "distractors": ["Grammy Award", "Nobel Prize", "UN Peace Medal", "Japan Culture Prize", "Asia Music Award", "Tokyo Inventor Prize", "Global Innovation Medal", "Honorary Doctorate"]
-      }
-    ],
-    "contentVolatility": "timeless",
-    "funScore": 9,
-    "rarity": "uncommon",
-    "tags": ["japan", "music", "inventions", "entertainment"],
-    "entityQid": "Q229345",
-    "entityLabel": "karaoke"
-  },
-  {
-    "id": "general-aboriginal-australians-oldest",
-    "type": "knowledge",
-    "domain": "General Knowledge",
-    "subdomain": "famous_firsts",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "famous_firsts",
-    "categoryL3": "",
-    "statement": "Aboriginal Australians are among the world's oldest continuous cultures, with evidence of habitation in Australia dating back 65,000 years.",
-    "quizQuestion": "How long ago did Aboriginal Australians first arrive on the continent?",
-    "correctAnswer": "Around 65,000 years",
-    "distractors": [
-      "Around 10,000 years",
-      "Around 5,000 years",
-      "Around 30,000 years",
-      "Around 100,000 years",
-      "Around 20,000 years",
-      "Around 50,000 years",
-      "Around 200,000 years",
-      "Around 1,000 years"
-    ],
-    "acceptableAnswers": [
-      "65,000 years",
-      "about 65,000 years",
-      "over 60,000 years"
-    ],
-    "explanation": "Archaeological evidence at Madjedbebe rock shelter in Australia's Northern Territory suggests Aboriginal Australians have lived on the continent for at least 65,000 years, making theirs one of the oldest continuous cultures on Earth. This predates the arrival of modern humans in Europe by tens of thousands of years.",
-    "wowFactor": "Aboriginal Australians have been telling the same stories about volcanoes and rising sea levels for 10,000+ years — verified by geology.",
-    "variants": [
-      {
-        "id": "general-aboriginal-australians-oldest-v2",
-        "quizQuestion": "In which Australian territory was the Madjedbebe rock shelter discovered?",
-        "correctAnswer": "Northern Territory",
-        "distractors": ["Western Australia", "Queensland", "New South Wales", "South Australia", "Victoria", "Tasmania", "Australian Capital Territory", "Papua New Guinea"]
-      },
-      {
-        "id": "general-aboriginal-australians-oldest-v3",
-        "quizQuestion": "How many distinct Aboriginal language groups exist in Australia?",
-        "correctAnswer": "Around 250",
-        "distractors": ["Around 10", "Around 50", "Around 500", "Around 1,000", "Around 100", "Around 1,500", "Around 25", "Around 750"]
-      },
-      {
-        "id": "general-aboriginal-australians-oldest-v4",
-        "quizQuestion": "Aboriginal oral traditions about sea level rise have been verified as how old?",
-        "correctAnswer": "Over 10,000 years",
-        "distractors": ["Over 1,000 years", "Over 500 years", "Over 5,000 years", "Over 50,000 years", "Over 100 years", "Over 2,000 years", "Over 20,000 years", "Over 100,000 years"]
-      }
-    ],
-    "contentVolatility": "timeless",
-    "funScore": 9,
-    "rarity": "uncommon",
-    "tags": ["australia", "indigenous", "history", "culture"],
-    "entityQid": "Q12060728",
-    "entityLabel": "Aboriginal Australians"
-  },
-  {
-    "id": "general-creation-myth-common-themes",
-    "type": "knowledge",
-    "domain": "General Knowledge",
-    "subdomain": "miscellaneous_oddities",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "miscellaneous_oddities",
-    "categoryL3": "",
-    "statement": "Nearly every human culture has a creation myth, and many share common themes like a primordial flood, an egg, or chaos giving way to order.",
-    "quizQuestion": "What theme appears in creation myths across many different cultures?",
-    "correctAnswer": "A great flood",
-    "distractors": [
-      "A fire from the sky",
-      "An earthquake splitting the earth",
-      "A battle between gods",
-      "A sleeping giant",
-      "A singing god",
-      "A dancing universe",
-      "A falling star",
-      "A frozen world"
-    ],
-    "acceptableAnswers": [
-      "a flood",
-      "great flood",
-      "primordial flood"
-    ],
-    "explanation": "Flood myths appear in cultures across the world — Mesopotamian (Utnapishtim), Hebrew (Noah), Hindu (Manu), Greek (Deucalion), Chinese (Gun-Yu), and Mesoamerican traditions all feature a great flood. Scholars debate whether this reflects a shared cultural memory of actual prehistoric flooding events or universal archetypal thinking.",
-    "wowFactor": "Flood myths appear on every inhabited continent — scientists think real Ice Age sea level rises of 120 meters may have inspired them all.",
-    "variants": [
-      {
-        "id": "general-creation-myth-common-themes-v2",
-        "quizQuestion": "In Mesopotamian mythology, who was the flood survivor equivalent to Noah?",
-        "correctAnswer": "Utnapishtim",
-        "distractors": ["Gilgamesh", "Enkidu", "Marduk", "Tiamat", "Enlil", "Ishtar", "Anu", "Shamash"]
-      },
-      {
-        "id": "general-creation-myth-common-themes-v3",
-        "quizQuestion": "Which ancient creation story describes the world beginning as a cosmic egg?",
-        "correctAnswer": "Hindu and Finnish myths",
-        "distractors": ["Greek mythology", "Norse mythology", "Aztec mythology", "Egyptian mythology", "Mayan mythology", "Chinese mythology", "Celtic mythology", "Roman mythology"]
-      },
-      {
-        "id": "general-creation-myth-common-themes-v4",
-        "quizQuestion": "The study of creation myths and religious stories is called what?",
-        "correctAnswer": "Mythology",
-        "distractors": ["Theology", "Cosmology", "Folklore", "Anthropology", "Archaeology", "Philology", "Ethnology", "Comparative religion"]
-      }
-    ],
-    "contentVolatility": "timeless",
+    "difficulty": 3,
     "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "all",
     "rarity": "uncommon",
-    "tags": ["mythology", "religion", "anthropology", "culture"],
-    "entityQid": "Q215304",
-    "entityLabel": "creation myth"
+    "sourceName": "Computer History Museum",
+    "sourceUrl": "https://computerhistory.org/blog/punched-cards/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Stack of beige rectangular cards with rows of neat rectangular holes punched through them, a 1960s mainframe computer visible in the background.",
+    "tags": [
+      "punched card",
+      "ibm",
+      "computing history",
+      "inventions",
+      "jacquard loom",
+      "technology",
+      "terminals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   },
   {
-    "id": "general-hunter-gatherer-lifestyle",
+    "id": "general-punchedcard-002",
     "type": "knowledge",
     "domain": "General Knowledge",
-    "subdomain": "famous_firsts",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "famous_firsts",
+    "subdomain": "Inventions & Discoveries",
+    "categoryL1": "Science & Technology",
+    "categoryL2": "Computing",
     "categoryL3": "",
-    "statement": "For 95% of human history, all people lived as hunter-gatherers, foraging and hunting for food rather than farming.",
-    "quizQuestion": "What percentage of human history was spent as hunter-gatherers?",
-    "correctAnswer": "About 95%",
+    "statement": "Herman Hollerith invented the punched card system for the 1890 US Census, reducing tabulation time from 8 years to 18 months.",
+    "quizQuestion": "Herman Hollerith's punched cards cut US Census tabulation time from 8 years to how long?",
+    "correctAnswer": "18 months",
+    "distractors": [
+      "4 years",
+      "6 years",
+      "5 years",
+      "3 years",
+      "2 years",
+      "6 months",
+      "1 month",
+      "7 years"
+    ],
+    "acceptableAnswers": [
+      "18 months",
+      "a year and a half"
+    ],
+    "explanation": "The 1880 US Census took 8 years to process manually. Herman Hollerith's electric tabulating machine using punched cards completed the 1890 Census in just 18 months. Hollerith later founded a company that became IBM.",
+    "wowFactor": "Herman Hollerith's company, the Tabulating Machine Company, eventually merged with others to form IBM in 1911 — making the 1890 Census the indirect origin of the world's most famous computer company.",
+    "variants": [
+      {
+        "quizQuestion": "What company did Herman Hollerith found that later became IBM?",
+        "correctAnswer": "Tabulating Machine Company",
+        "distractors": [
+          "Computing Corp",
+          "Digital Systems Inc",
+          "American Data Corp",
+          "Analytical Engines Ltd",
+          "National Calculator Co",
+          "Electric Tabulator Inc",
+          "Census Machines Corp",
+          "United Computers Inc"
+        ]
+      },
+      {
+        "quizQuestion": "In what year did Herman Hollerith's company help form IBM?",
+        "correctAnswer": "1911",
+        "distractors": [
+          "1945",
+          "1928",
+          "1900",
+          "1935",
+          "1920",
+          "1950",
+          "1890",
+          "1965"
+        ]
+      },
+      {
+        "quizQuestion": "For which event did Hollerith create his punched card tabulation system?",
+        "correctAnswer": "1890 US Census",
+        "distractors": [
+          "1876 World's Fair",
+          "1900 US Census",
+          "1880 US Census",
+          "1905 Olympics",
+          "1910 Stock market",
+          "1885 Election",
+          "1895 Railroad survey",
+          "1870 US Census"
+        ]
+      },
+      {
+        "quizQuestion": "How long did the 1880 US Census take to process manually?",
+        "correctAnswer": "8 years",
+        "distractors": [
+          "1 year",
+          "3 years",
+          "10 years",
+          "6 months",
+          "2 years",
+          "15 years",
+          "5 years",
+          "20 years"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "rare",
+    "sourceName": "Computer History Museum",
+    "sourceUrl": "https://computerhistory.org/blog/punched-cards/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Victorian-era office with rows of clerks feeding cards into early tabulating machines, electric sparks visible in the mechanism, ledgers piled high around them.",
+    "tags": [
+      "punched card",
+      "herman hollerith",
+      "ibm",
+      "census",
+      "computing history",
+      "inventions",
+      "data processing"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-primaryeducation-001",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "Miscellaneous Oddities",
+    "categoryL1": "Education",
+    "categoryL2": "School Systems",
+    "categoryL3": "",
+    "statement": "Finland consistently ranks among the world's top education systems despite starting formal school at age 7.",
+    "quizQuestion": "At what age do children in Finland start formal school?",
+    "correctAnswer": "Age 7",
+    "distractors": [
+      "Age 4",
+      "Age 5",
+      "Age 6",
+      "Age 3",
+      "Age 8",
+      "Age 9",
+      "Age 2",
+      "Age 10"
+    ],
+    "acceptableAnswers": [
+      "7",
+      "age 7",
+      "seven"
+    ],
+    "explanation": "Finland begins compulsory formal education at age 7, later than most countries. Yet Finnish students consistently outperform peers globally in PISA rankings — suggesting earlier isn't necessarily better.",
+    "wowFactor": "In Finland, homework is minimal, standardized tests are rare, and there are no school rankings — yet Finland regularly places in the world's top 5 education systems.",
+    "variants": [
+      {
+        "quizQuestion": "What international assessment consistently shows Finland as a top education system?",
+        "correctAnswer": "PISA rankings",
+        "distractors": [
+          "SAT scores",
+          "IQ rankings",
+          "TIMSS results",
+          "Olympic math awards",
+          "UNESCO index",
+          "World Bank ratings",
+          "OECD surveys",
+          "Nobel prize count"
+        ]
+      },
+      {
+        "quizQuestion": "How much homework do Finnish school children typically get?",
+        "correctAnswer": "Very little or none",
+        "distractors": [
+          "2 hours nightly",
+          "4 hours nightly",
+          "The most in Europe",
+          "More than Americans",
+          "Equal to South Korea",
+          "6 hours weekly",
+          "30 minutes daily",
+          "1 hour per class"
+        ]
+      },
+      {
+        "quizQuestion": "Which country is known for the most homework-heavy primary education system?",
+        "correctAnswer": "South Korea",
+        "distractors": [
+          "USA",
+          "Finland",
+          "Japan",
+          "Germany",
+          "France",
+          "UK",
+          "China",
+          "Singapore"
+        ]
+      },
+      {
+        "quizQuestion": "What is the compulsory school starting age in most of the United States?",
+        "correctAnswer": "Age 5–6",
+        "distractors": [
+          "Age 3",
+          "Age 7",
+          "Age 8",
+          "Age 4",
+          "Age 9",
+          "Age 2",
+          "Age 10",
+          "Age 12"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "OECD PISA Reports",
+    "sourceUrl": "https://www.oecd.org/pisa/",
+    "contentVolatility": "current",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Children playing outdoors in a snowy Finnish schoolyard, a modern wooden school building behind them, colorful winter coats and wide smiles.",
+    "tags": [
+      "finland",
+      "education",
+      "primary school",
+      "pisa",
+      "world records",
+      "school systems",
+      "learning"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-phd-001",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "Miscellaneous Oddities",
+    "categoryL1": "Education",
+    "categoryL2": "Academic Degrees",
+    "categoryL3": "",
+    "statement": "The Doctor of Philosophy (PhD) degree originated in medieval Europe, not ancient Greece — first awarded in the 1150s.",
+    "quizQuestion": "When was the first PhD degree awarded in Europe?",
+    "correctAnswer": "1150s",
+    "distractors": [
+      "Ancient Greece",
+      "500 CE",
+      "1800s",
+      "1600s",
+      "1400s",
+      "1900s",
+      "1300s",
+      "800 CE"
+    ],
+    "acceptableAnswers": [
+      "1150s",
+      "12th century",
+      "twelfth century"
+    ],
+    "explanation": "The PhD originated at the University of Bologna (est. 1088) and University of Paris (est. ~1150) in medieval Europe. Despite being called 'Philosophy', it was originally a license to teach — not specifically a philosophy degree.",
+    "wowFactor": "The word 'Doctor' comes from the Latin 'docere', meaning 'to teach' — a PhD was originally a license granting permission to teach at a university, not just a research credential.",
+    "variants": [
+      {
+        "quizQuestion": "What does the Latin word 'Doctor' (as in PhD) originally mean?",
+        "correctAnswer": "To teach",
+        "distractors": [
+          "To heal",
+          "To learn",
+          "To research",
+          "To publish",
+          "To lead",
+          "To argue",
+          "To discover",
+          "To advise"
+        ]
+      },
+      {
+        "quizQuestion": "Which institution is generally considered the world's first university?",
+        "correctAnswer": "University of Bologna",
+        "distractors": [
+          "Oxford University",
+          "University of Paris",
+          "Harvard University",
+          "Plato's Academy",
+          "Al-Azhar University",
+          "Cambridge University",
+          "Heidelberg University",
+          "University of Salamanca"
+        ]
+      },
+      {
+        "quizQuestion": "Despite being called 'Doctor of Philosophy', a PhD is primarily a credential in what?",
+        "correctAnswer": "Research in any discipline",
+        "distractors": [
+          "Only philosophy",
+          "Only science",
+          "Only humanities",
+          "Only medicine",
+          "Only law",
+          "Only theology",
+          "Only mathematics",
+          "Only arts"
+        ]
+      },
+      {
+        "quizQuestion": "Approximately how long does a typical PhD take to complete?",
+        "correctAnswer": "4–7 years",
+        "distractors": [
+          "1 year",
+          "2 years",
+          "10–15 years",
+          "6 months",
+          "20 years",
+          "3 months",
+          "8–10 years",
+          "15–20 years"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/doctor-of-philosophy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Medieval scholar in long robes presenting a thesis scroll to a panel of professors in a Gothic stone hall, candlelight flickering on the arched ceiling.",
+    "tags": [
+      "phd",
+      "doctor of philosophy",
+      "university",
+      "medieval history",
+      "education",
+      "etymology",
+      "academia"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "general-creationmyth-001",
+    "type": "knowledge",
+    "domain": "General Knowledge",
+    "subdomain": "Miscellaneous Oddities",
+    "categoryL1": "Religion & Mythology",
+    "categoryL2": "Creation Stories",
+    "categoryL3": "",
+    "statement": "Every known human culture throughout history has developed some form of creation myth.",
+    "quizQuestion": "What percentage of human cultures have some form of creation myth?",
+    "correctAnswer": "100% — all cultures",
     "distractors": [
       "About 50%",
       "About 75%",
-      "About 30%",
-      "About 10%",
+      "Only Western cultures",
+      "Only religious cultures",
+      "About 90%",
+      "Only ancient cultures",
       "About 60%",
-      "About 99%",
-      "About 20%",
-      "About 40%"
+      "Only farming cultures"
     ],
     "acceptableAnswers": [
-      "95%",
-      "about 95%",
-      "95 percent"
+      "100%",
+      "all",
+      "every culture",
+      "all cultures"
     ],
-    "explanation": "Homo sapiens have existed for about 300,000 years, and agriculture only developed around 10,000–12,000 years ago. That means roughly 95–97% of human history was spent as hunter-gatherers, living in small nomadic bands, foraging for plants, and hunting animals. Agriculture — the basis of civilization — is a very recent development.",
-    "wowFactor": "Farming is so new in human history that our bodies still haven't fully adapted to a grain-heavy diet — many health issues trace back to this mismatch.",
+    "explanation": "Anthropologists and mythologists have found that every known human society has developed some narrative explaining the origin of the world and humanity — suggesting it is a universal human psychological need.",
+    "wowFactor": "The Enuma Elish, a Babylonian creation myth from around 1700 BCE, predates the Biblical Genesis account and contains striking similarities — a watery chaos, divine conflict, and the creation of humans from clay.",
     "variants": [
       {
-        "id": "general-hunter-gatherer-lifestyle-v2",
-        "quizQuestion": "Approximately when did humans first begin farming?",
-        "correctAnswer": "10,000–12,000 years ago",
-        "distractors": ["1,000 years ago", "5,000 years ago", "50,000 years ago", "100,000 years ago", "3,000 years ago", "500 years ago", "200,000 years ago", "2,000 years ago"]
+        "quizQuestion": "What is the name of the ancient Babylonian creation myth that predates Genesis?",
+        "correctAnswer": "Enuma Elish",
+        "distractors": [
+          "Epic of Gilgamesh",
+          "Atrahasis Epic",
+          "Theogony",
+          "Popol Vuh",
+          "Kojiki",
+          "Rig Veda",
+          "Mahabharata",
+          "Book of the Dead"
+        ]
       },
       {
-        "id": "general-hunter-gatherer-lifestyle-v3",
-        "quizQuestion": "Which region is known as the 'Fertile Crescent' where farming first developed?",
-        "correctAnswer": "Middle East",
-        "distractors": ["East Africa", "South Asia", "East Asia", "Central America", "North Africa", "Southeast Asia", "Mediterranean Europe", "Eastern Europe"]
+        "quizQuestion": "Approximately when was the Babylonian creation myth Enuma Elish written?",
+        "correctAnswer": "Around 1700 BCE",
+        "distractors": [
+          "100 BCE",
+          "500 CE",
+          "3500 BCE",
+          "1000 CE",
+          "100 CE",
+          "5000 BCE",
+          "200 BCE",
+          "900 CE"
+        ]
       },
       {
-        "id": "general-hunter-gatherer-lifestyle-v4",
-        "quizQuestion": "On average, how many hours per day did hunter-gatherers work for food?",
-        "correctAnswer": "About 4–6 hours",
-        "distractors": ["About 12 hours", "About 8 hours", "About 16 hours", "About 1 hour", "About 10 hours", "About 14 hours", "About 18 hours", "About 2 hours"]
+        "quizQuestion": "The Mayan creation myth is told in which ancient text?",
+        "correctAnswer": "Popol Vuh",
+        "distractors": [
+          "Enuma Elish",
+          "Theogony",
+          "Kojiki",
+          "Rig Veda",
+          "Epic of Gilgamesh",
+          "Book of the Dead",
+          "Mahabharata",
+          "Upanishads"
+        ]
+      },
+      {
+        "quizQuestion": "In most creation myths, what existed before the world was created?",
+        "correctAnswer": "Chaos or void",
+        "distractors": [
+          "Perfect order",
+          "A single god alone",
+          "The first humans",
+          "Animals and plants",
+          "Light and fire",
+          "Water only",
+          "A golden age",
+          "A giant egg"
+        ]
       }
     ],
-    "contentVolatility": "timeless",
+    "difficulty": 2,
     "funScore": 8,
-    "rarity": "uncommon",
-    "tags": ["prehistory", "anthropology", "human evolution", "agriculture"],
-    "entityQid": "Q27443",
-    "entityLabel": "hunter-gatherer"
-  },
-  {
-    "id": "general-cart-invention-wheel",
-    "type": "knowledge",
-    "domain": "General Knowledge",
-    "subdomain": "transportation",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "transportation",
-    "categoryL3": "",
-    "statement": "The cart is one of humanity's oldest transport inventions, with evidence of wheeled carts dating back to around 3500 BCE in Mesopotamia.",
-    "quizQuestion": "Where were the earliest wheeled carts invented around 3500 BCE?",
-    "correctAnswer": "Mesopotamia",
-    "distractors": [
-      "Ancient Egypt",
-      "Ancient China",
-      "Ancient India",
-      "Ancient Greece",
-      "Ancient Rome",
-      "Ancient Persia",
-      "Ancient Britain",
-      "Ancient Mexico"
-    ],
-    "acceptableAnswers": [
-      "Mesopotamia",
-      "modern Iraq",
-      "the Middle East"
-    ],
-    "explanation": "The earliest evidence of wheeled vehicles comes from Mesopotamia (modern-day Iraq) and the Eurasian steppes around 3500–3300 BCE. The wheel itself may have been invented for pottery before transportation. Early carts were likely pulled by oxen and used for hauling agricultural goods, fundamentally transforming trade and civilization.",
-    "wowFactor": "The wheel may have been invented for pottery spinning 500 years before anyone thought to put it on a cart — the most transformative transport innovation was almost an accident.",
-    "variants": [
-      {
-        "id": "general-cart-invention-wheel-v2",
-        "quizQuestion": "What was the wheel most likely first used for before transportation?",
-        "correctAnswer": "Pottery making",
-        "distractors": ["Grinding grain", "Pulling water", "Weaving cloth", "Milling stone", "Lifting weights", "Pumping water", "Generating fire", "Sharpening tools"]
-      },
-      {
-        "id": "general-cart-invention-wheel-v3",
-        "quizQuestion": "What animals primarily pulled early carts in ancient Mesopotamia?",
-        "correctAnswer": "Oxen",
-        "distractors": ["Horses", "Donkeys", "Camels", "Elephants", "Mules", "Buffaloes", "Goats", "Dogs"]
-      },
-      {
-        "id": "general-cart-invention-wheel-v4",
-        "quizQuestion": "The spoked wheel, allowing faster carts, was invented around which date?",
-        "correctAnswer": "2000 BCE",
-        "distractors": ["3500 BCE", "1000 BCE", "500 BCE", "100 BCE", "500 CE", "1000 CE", "200 BCE", "4000 BCE"]
-      }
-    ],
-    "contentVolatility": "timeless",
-    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "all",
     "rarity": "common",
-    "tags": ["history", "transportation", "inventions", "mesopotamia"],
-    "entityQid": "Q234668",
-    "entityLabel": "cart"
-  },
-  {
-    "id": "general-sioux-great-plains",
-    "type": "knowledge",
-    "domain": "General Knowledge",
-    "subdomain": "miscellaneous_oddities",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "miscellaneous_oddities",
-    "categoryL3": "",
-    "statement": "The Sioux are a confederation of Native American tribes originally from the Great Plains, known for the Battle of Little Bighorn in 1876.",
-    "quizQuestion": "In which year did the famous Battle of Little Bighorn occur?",
-    "correctAnswer": "1876",
-    "distractors": [
-      "1865",
-      "1890",
-      "1848",
-      "1900",
-      "1812",
-      "1857",
-      "1920",
-      "1870"
-    ],
-    "acceptableAnswers": [
-      "1876"
-    ],
-    "explanation": "The Battle of Little Bighorn on June 25–26, 1876, was a decisive victory for the Lakota Sioux, Northern Cheyenne, and Arapaho against the 7th Cavalry Regiment led by Lt. Col. George Custer. Custer and all 268 men under his direct command were killed. It became known as 'Custer's Last Stand.'",
-    "wowFactor": "At Little Bighorn, Sioux and Cheyenne warriors wiped out an entire US cavalry regiment — the last major Native American military victory against the US Army.",
-    "variants": [
-      {
-        "id": "general-sioux-great-plains-v2",
-        "quizQuestion": "Who commanded the US cavalry defeated at Little Bighorn?",
-        "correctAnswer": "Lt. Col. George Custer",
-        "distractors": ["Ulysses S. Grant", "William Sherman", "Phil Sheridan", "Nelson Miles", "Crook Mitchell", "John Pope", "Winfield Scott", "George McClellan"]
-      },
-      {
-        "id": "general-sioux-great-plains-v3",
-        "quizQuestion": "The Sioux leader at Little Bighorn was which famous chief?",
-        "correctAnswer": "Sitting Bull",
-        "distractors": ["Crazy Horse", "Red Cloud", "Geronimo", "Chief Joseph", "Cochise", "Black Hawk", "Tecumseh", "Sequoyah"]
-      },
-      {
-        "id": "general-sioux-great-plains-v4",
-        "quizQuestion": "What name is the Battle of Little Bighorn also commonly known by?",
-        "correctAnswer": "Custer's Last Stand",
-        "distractors": ["The Plains Massacre", "The Dakota War", "The Sioux Uprising", "The Great Plains Battle", "The Buffalo War", "The Western Rebellion", "The Indian Victory", "The Cavalry Defeat"]
-      }
-    ],
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/creation-myth",
     "contentVolatility": "timeless",
-    "funScore": 8,
-    "rarity": "uncommon",
-    "tags": ["native american", "history", "united states", "military"],
-    "entityQid": "Q107434",
-    "entityLabel": "Sioux"
+    "sensitivityLevel": "low",
+    "sensitivityNote": "Religious/mythological content; treated anthropologically without privileging any tradition.",
+    "visualDescription": "Mosaic of creation symbols from world cultures — a cosmic egg, a primordial ocean, swirling nebula, and human figures emerging from the earth.",
+    "tags": [
+      "creation myth",
+      "mythology",
+      "anthropology",
+      "religion",
+      "babylon",
+      "enuma elish",
+      "universal"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   },
   {
-    "id": "general-punched-card-invention",
+    "id": "general-orientalorthodox-001",
     "type": "knowledge",
     "domain": "General Knowledge",
-    "subdomain": "inventions_discoveries",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "inventions_discoveries",
+    "subdomain": "Miscellaneous Oddities",
+    "categoryL1": "Religion",
+    "categoryL2": "Christianity",
     "categoryL3": "",
-    "statement": "Punched cards were invented by Herman Hollerith for the 1890 US Census and became the dominant data storage medium for early computers.",
-    "quizQuestion": "Who invented the punched card system for data processing?",
-    "correctAnswer": "Herman Hollerith",
+    "statement": "Oriental Orthodox Churches split from the rest of Christianity in 451 CE over a single word in describing Jesus.",
+    "quizQuestion": "In what year did Oriental Orthodox Churches split from mainstream Christianity?",
+    "correctAnswer": "451 CE",
     "distractors": [
-      "Charles Babbage",
-      "Alan Turing",
-      "John von Neumann",
-      "Ada Lovelace",
-      "Thomas Edison",
-      "Nikola Tesla",
-      "Gottfried Leibniz",
-      "Blaise Pascal"
+      "1054 CE",
+      "325 CE",
+      "1517 CE",
+      "100 CE",
+      "600 CE",
+      "800 CE",
+      "200 CE",
+      "1200 CE"
     ],
     "acceptableAnswers": [
-      "Herman Hollerith",
-      "Hollerith"
+      "451 CE",
+      "451 AD",
+      "451"
     ],
-    "explanation": "Herman Hollerith developed the punched card tabulating machine for the 1890 US Census, reducing the tabulation time from 8 years (for 1880 data) to just 2.5 years. His company later merged with others to become IBM. The punched card remained a key computing medium until the 1970s–80s.",
-    "wowFactor": "Without punched cards, IBM might never have existed — Hollerith's 1890 Census machine directly evolved into the company that dominated 20th-century computing.",
+    "explanation": "The Council of Chalcedon in 451 CE split Christianity over Christ's nature. Oriental Orthodox churches (Coptic, Ethiopian, Armenian, Syriac) rejected the Council's definition, becoming separate from Roman and Eastern Christianity.",
+    "wowFactor": "The split was essentially over one Greek word: whether Christ has 'two natures' (Chalcedonian) or 'one nature' (Miaphysite). This theological disagreement has kept churches divided for over 1,500 years.",
     "variants": [
       {
-        "id": "general-punched-card-invention-v2",
-        "quizQuestion": "For which event did Hollerith invent the punched card tabulator?",
-        "correctAnswer": "1890 US Census",
-        "distractors": ["1880 US Census", "1900 US Census", "1880 UK Census", "World War I logistics", "1892 election count", "1895 tax records", "1900 railway planning", "1890 stock market"]
+        "quizQuestion": "The Oriental Orthodox split happened at which church council?",
+        "correctAnswer": "Council of Chalcedon",
+        "distractors": [
+          "Council of Nicaea",
+          "Council of Trent",
+          "First Vatican Council",
+          "Council of Ephesus",
+          "Council of Constantinople",
+          "Council of Florence",
+          "Council of Lyons",
+          "Council of Basel"
+        ]
       },
       {
-        "id": "general-punched-card-invention-v3",
-        "quizQuestion": "Hollerith's tabulating company eventually became which technology giant?",
-        "correctAnswer": "IBM",
-        "distractors": ["Microsoft", "Apple", "AT&T", "Remington", "Xerox", "Intel", "Oracle", "HP"]
-      },
-      {
-        "id": "general-punched-card-invention-v4",
-        "quizQuestion": "Early punched cards were the same size as what everyday item?",
-        "correctAnswer": "A dollar bill",
-        "distractors": ["A credit card", "A postcard", "A business card", "A playing card", "A library card", "A bus ticket", "A bookmark", "A notepad"]
-      },
-      {
-        "id": "general-punched-card-invention-v5",
-        "quizQuestion": "By what decade did punched cards largely disappear from computing?",
-        "correctAnswer": "1980s",
-        "distractors": ["1950s", "1960s", "1970s", "1990s", "2000s", "1940s", "1930s", "2010s"]
-      }
-    ],
-    "contentVolatility": "timeless",
-    "funScore": 8,
-    "rarity": "rare",
-    "tags": ["computers", "history", "ibm", "inventions"],
-    "entityQid": "Q183414",
-    "entityLabel": "punched card"
-  },
-  {
-    "id": "general-oriental-orthodox-churches",
-    "type": "knowledge",
-    "domain": "General Knowledge",
-    "subdomain": "miscellaneous_oddities",
-    "categoryL1": "General Knowledge",
-    "categoryL2": "miscellaneous_oddities",
-    "categoryL3": "",
-    "statement": "The Oriental Orthodox Churches separated from the rest of Christianity in 451 CE after rejecting the Council of Chalcedon's definition of Christ's nature.",
-    "quizQuestion": "The Oriental Orthodox split from mainstream Christianity occurred at which council?",
-    "correctAnswer": "Council of Chalcedon",
-    "distractors": [
-      "Council of Nicaea",
-      "Council of Trent",
-      "First Vatican Council",
-      "Council of Constantinople",
-      "Council of Ephesus",
-      "Council of Florence",
-      "Council of Basel",
-      "Council of Lyon"
-    ],
-    "acceptableAnswers": [
-      "Chalcedon",
-      "Council of Chalcedon",
-      "the Chalcedon council"
-    ],
-    "explanation": "The Oriental Orthodox Churches — including the Coptic, Ethiopian, Armenian, Syriac, and Malankara Orthodox churches — rejected the Council of Chalcedon (451 CE), which declared Christ has two natures (divine and human). They believe Christ has one united nature (miaphysitism). This theological split created a division that lasted over 1,500 years.",
-    "wowFactor": "A single disagreement about Jesus's divine versus human nature in 451 CE split Christianity into factions that remained divided for over 1,500 years.",
-    "variants": [
-      {
-        "id": "general-oriental-orthodox-churches-v2",
-        "quizQuestion": "The Oriental Orthodox Church in Egypt is called what?",
+        "quizQuestion": "Which of these is an Oriental Orthodox Church?",
         "correctAnswer": "Coptic Orthodox Church",
-        "distractors": ["Ethiopian Orthodox Church", "Armenian Church", "Syriac Church", "Maronite Church", "Greek Orthodox Church", "Russian Orthodox Church", "Byzantine Church", "Antiochian Church"]
+        "distractors": [
+          "Russian Orthodox Church",
+          "Greek Orthodox Church",
+          "Roman Catholic Church",
+          "Anglican Church",
+          "Lutheran Church",
+          "Presbyterian Church",
+          "Serbian Orthodox Church",
+          "Bulgarian Orthodox Church"
+        ]
       },
       {
-        "id": "general-oriental-orthodox-churches-v3",
-        "quizQuestion": "The Council of Chalcedon was held in which year?",
-        "correctAnswer": "451 CE",
-        "distractors": ["325 CE", "381 CE", "1054 CE", "1517 CE", "787 CE", "553 CE", "680 CE", "869 CE"]
+        "quizQuestion": "The theological dispute causing the Oriental Orthodox split was about Christ's what?",
+        "correctAnswer": "Nature (one or two natures)",
+        "distractors": [
+          "Resurrection method",
+          "Mother's status",
+          "Birth circumstances",
+          "Final words on cross",
+          "Relationship to God",
+          "Teaching methods",
+          "Physical appearance",
+          "Number of miracles"
+        ]
       },
       {
-        "id": "general-oriental-orthodox-churches-v4",
-        "quizQuestion": "How many natures does Oriental Orthodoxy believe Christ has?",
-        "correctAnswer": "One united nature",
-        "distractors": ["Two separate natures", "Three natures", "No distinct nature", "Four aspects", "Divine nature only", "Human nature only", "Spiritual essence", "Holy trinity"]
+        "quizQuestion": "Which nation has had an Oriental Orthodox Church since the 4th century, making it among the oldest?",
+        "correctAnswer": "Ethiopia",
+        "distractors": [
+          "Russia",
+          "Greece",
+          "England",
+          "France",
+          "Germany",
+          "Spain",
+          "China",
+          "India"
+        ]
       }
     ],
-    "contentVolatility": "timeless",
-    "funScore": 6,
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "all",
     "rarity": "rare",
-    "tags": ["religion", "christianity", "history", "theology"],
-    "entityQid": "Q49377",
-    "entityLabel": "Oriental Orthodox Churches"
+    "sourceName": "Encyclopaedia Britannica",
+    "sourceUrl": "https://www.britannica.com/topic/Oriental-Orthodoxy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "low",
+    "sensitivityNote": "Religious history; handled as factual theological history.",
+    "visualDescription": "Ancient stone church in Ethiopia carved directly into a cliff, crosses etched above the entrance, robed priests in procession outside.",
+    "tags": [
+      "oriental orthodox",
+      "coptic church",
+      "council of chalcedon",
+      "christianity",
+      "religion",
+      "ethiopia",
+      "church history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   }
 ]

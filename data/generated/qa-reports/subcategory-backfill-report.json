@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-12T07:11:45.013Z",
+  "generatedAt": "2026-03-15T18:39:31.579Z",
   "mode": "write",
   "options": {
     "force": true,
@@ -12,216 +12,216 @@
     "includeSeed": true
   },
   "totals": {
-    "rows": 14778,
-    "updated": 5046,
+    "rows": 6650,
+    "updated": 2495,
     "kept": 0,
-    "legacy": 2439,
-    "scored": 11604,
+    "legacy": 1107,
+    "scored": 5309,
     "fallback": 0
   },
   "perDomain": {
     "general_knowledge": {
-      "total": 992,
-      "updated": 335,
+      "total": 554,
+      "updated": 170,
       "kept": 0,
-      "legacy": 0,
-      "scored": 912,
+      "legacy": 9,
+      "scored": 488,
       "fallback": 0,
       "unresolvedDomain": 0,
       "skippedByLimit": 0,
-      "skippedLowConfidence": 80,
+      "skippedLowConfidence": 57,
       "bySubcategory": {
-        "records_firsts": 20,
-        "inventions_tech": 57,
-        "landmarks_wonders": 621,
-        "pop_culture": 38,
-        "words_language": 29,
-        "everyday_science": 133,
-        "oddities": 14
+        "records_firsts": 38,
+        "inventions_tech": 83,
+        "landmarks_wonders": 190,
+        "pop_culture": 31,
+        "words_language": 39,
+        "everyday_science": 108,
+        "oddities": 8
       }
     },
     "natural_sciences": {
-      "total": 937,
-      "updated": 141,
+      "total": 550,
+      "updated": 177,
       "kept": 0,
-      "legacy": 0,
-      "scored": 910,
+      "legacy": 30,
+      "scored": 492,
       "fallback": 0,
       "unresolvedDomain": 0,
       "skippedByLimit": 0,
-      "skippedLowConfidence": 27,
+      "skippedLowConfidence": 28,
       "bySubcategory": {
-        "chemistry_elements": 311,
-        "materials_engineering": 121,
-        "biology_organisms": 174,
-        "physics_mechanics": 166,
-        "geology_earth": 68,
-        "botany_plants": 44,
-        "ecology_environment": 26
+        "chemistry_elements": 117,
+        "materials_engineering": 49,
+        "biology_organisms": 116,
+        "physics_mechanics": 123,
+        "geology_earth": 60,
+        "botany_plants": 36,
+        "ecology_environment": 21
       }
     },
     "space_astronomy": {
-      "total": 752,
-      "updated": 201,
+      "total": 497,
+      "updated": 157,
       "kept": 0,
-      "legacy": 0,
-      "scored": 730,
+      "legacy": 7,
+      "scored": 462,
       "fallback": 0,
       "unresolvedDomain": 0,
       "skippedByLimit": 0,
-      "skippedLowConfidence": 22,
+      "skippedLowConfidence": 28,
       "bySubcategory": {
-        "missions_spacecraft": 297,
-        "planets_moons": 116,
-        "stars_galaxies": 101,
-        "cosmology_universe": 76,
-        "satellites_tech": 107,
-        "exoplanets_astrobio": 33
+        "missions_spacecraft": 129,
+        "planets_moons": 104,
+        "stars_galaxies": 74,
+        "cosmology_universe": 75,
+        "satellites_tech": 64,
+        "exoplanets_astrobio": 23
       }
     },
     "geography": {
-      "total": 2203,
-      "updated": 1158,
+      "total": 1143,
+      "updated": 383,
       "kept": 0,
-      "legacy": 398,
-      "scored": 1762,
+      "legacy": 412,
+      "scored": 728,
       "fallback": 0,
       "unresolvedDomain": 0,
       "skippedByLimit": 0,
-      "skippedLowConfidence": 43,
+      "skippedLowConfidence": 3,
       "bySubcategory": {
-        "capitals_countries": 1259,
-        "africa": 134,
-        "asia_oceania": 208,
-        "europe": 88,
-        "americas": 273,
-        "landforms_water": 134,
-        "extreme_records": 43,
-        "climate_biomes": 21
+        "capitals_countries": 520,
+        "africa": 198,
+        "asia_oceania": 107,
+        "europe": 49,
+        "americas": 120,
+        "landforms_water": 92,
+        "extreme_records": 35,
+        "climate_biomes": 19
       }
     },
     "history": {
-      "total": 1697,
-      "updated": 303,
+      "total": 663,
+      "updated": 332,
       "kept": 0,
-      "legacy": 194,
-      "scored": 1503,
+      "legacy": 121,
+      "scored": 540,
       "fallback": 0,
       "unresolvedDomain": 0,
       "skippedByLimit": 0,
-      "skippedLowConfidence": 0,
+      "skippedLowConfidence": 2,
       "bySubcategory": {
-        "ancient_classical": 239,
-        "medieval": 69,
-        "early_modern": 136,
-        "modern_contemporary": 157,
-        "world_wars": 118,
-        "battles_military": 944,
-        "people_leaders": 0,
-        "social_cultural": 34
+        "ancient_classical": 252,
+        "medieval": 54,
+        "early_modern": 76,
+        "modern_contemporary": 87,
+        "world_wars": 53,
+        "battles_military": 126,
+        "people_leaders": 5,
+        "social_cultural": 8
       }
     },
     "mythology_folklore": {
-      "total": 1115,
-      "updated": 419,
+      "total": 598,
+      "updated": 205,
       "kept": 0,
       "legacy": 0,
-      "scored": 1115,
+      "scored": 598,
       "fallback": 0,
       "unresolvedDomain": 0,
       "skippedByLimit": 0,
       "skippedLowConfidence": 0,
       "bySubcategory": {
-        "greek_roman": 374,
-        "norse_celtic": 66,
-        "eastern_myths": 71,
-        "creatures_monsters": 230,
-        "creation_cosmology": 91,
-        "folk_legends": 239,
-        "gods_deities": 44
+        "greek_roman": 187,
+        "norse_celtic": 47,
+        "eastern_myths": 46,
+        "creatures_monsters": 82,
+        "creation_cosmology": 65,
+        "folk_legends": 131,
+        "gods_deities": 40
       }
     },
     "animals_wildlife": {
-      "total": 2351,
-      "updated": 653,
+      "total": 678,
+      "updated": 291,
       "kept": 0,
-      "legacy": 1141,
-      "scored": 878,
+      "legacy": 417,
+      "scored": 252,
       "fallback": 0,
       "unresolvedDomain": 0,
       "skippedByLimit": 0,
-      "skippedLowConfidence": 332,
+      "skippedLowConfidence": 9,
       "bySubcategory": {
-        "mammals": 366,
-        "birds": 751,
-        "marine_life": 377,
-        "insects_arachnids": 115,
-        "reptiles_amphibians": 148,
-        "behavior_intelligence": 35,
-        "conservation": 193,
-        "adaptations": 34
+        "mammals": 216,
+        "birds": 148,
+        "marine_life": 85,
+        "insects_arachnids": 37,
+        "reptiles_amphibians": 39,
+        "behavior_intelligence": 39,
+        "conservation": 60,
+        "adaptations": 45
       }
     },
     "human_body_health": {
-      "total": 1492,
-      "updated": 689,
+      "total": 609,
+      "updated": 271,
       "kept": 0,
-      "legacy": 706,
-      "scored": 786,
+      "legacy": 73,
+      "scored": 536,
       "fallback": 0,
       "unresolvedDomain": 0,
       "skippedByLimit": 0,
       "skippedLowConfidence": 0,
       "bySubcategory": {
-        "anatomy_organs": 832,
-        "brain_neuro": 132,
-        "genetics_dna": 55,
-        "cardiovascular": 76,
-        "digestion_metabolism": 84,
-        "senses_perception": 55,
-        "immunity_disease": 228,
-        "medical_science": 30
+        "anatomy_organs": 183,
+        "brain_neuro": 104,
+        "genetics_dna": 50,
+        "cardiovascular": 78,
+        "digestion_metabolism": 64,
+        "senses_perception": 43,
+        "immunity_disease": 49,
+        "medical_science": 38
       }
     },
     "food_cuisine": {
-      "total": 1521,
-      "updated": 707,
+      "total": 712,
+      "updated": 307,
       "kept": 0,
-      "legacy": 0,
-      "scored": 1359,
+      "legacy": 10,
+      "scored": 685,
       "fallback": 0,
       "unresolvedDomain": 0,
       "skippedByLimit": 0,
-      "skippedLowConfidence": 162,
+      "skippedLowConfidence": 17,
       "bySubcategory": {
-        "european_cuisine": 179,
-        "asian_cuisine": 146,
-        "world_cuisine": 33,
-        "baking_desserts": 92,
-        "fermentation_beverages": 63,
-        "food_history": 611,
-        "food_science": 110,
-        "ingredients_spices": 125
+        "european_cuisine": 118,
+        "asian_cuisine": 112,
+        "world_cuisine": 9,
+        "baking_desserts": 63,
+        "fermentation_beverages": 80,
+        "food_history": 130,
+        "food_science": 97,
+        "ingredients_spices": 86
       }
     },
     "art_architecture": {
-      "total": 1718,
-      "updated": 440,
+      "total": 646,
+      "updated": 202,
       "kept": 0,
-      "legacy": 0,
-      "scored": 1649,
+      "legacy": 28,
+      "scored": 528,
       "fallback": 0,
       "unresolvedDomain": 0,
       "skippedByLimit": 0,
-      "skippedLowConfidence": 69,
+      "skippedLowConfidence": 90,
       "bySubcategory": {
-        "museums_institutions": 646,
-        "historic_buildings": 613,
-        "painting_visual": 147,
-        "sculpture_decorative": 50,
-        "modern_contemporary": 78,
-        "architectural_styles": 48,
-        "engineering_design": 67
+        "museums_institutions": 98,
+        "historic_buildings": 139,
+        "painting_visual": 131,
+        "sculpture_decorative": 45,
+        "modern_contemporary": 58,
+        "architectural_styles": 36,
+        "engineering_design": 49
       }
     }
   },
@@ -230,67 +230,67 @@
       "path": "data/generated/animals_wildlife.jsonl",
       "type": "jsonl",
       "totalRows": 378,
-      "changedRows": 41
+      "changedRows": 0
     },
     {
       "path": "data/generated/art_architecture.jsonl",
       "type": "jsonl",
       "totalRows": 357,
-      "changedRows": 48
+      "changedRows": 0
     },
     {
       "path": "data/generated/food_cuisine.jsonl",
       "type": "jsonl",
       "totalRows": 396,
-      "changedRows": 58
+      "changedRows": 0
     },
     {
       "path": "data/generated/general_knowledge.jsonl",
       "type": "jsonl",
       "totalRows": 350,
-      "changedRows": 36
+      "changedRows": 0
     },
     {
       "path": "data/generated/geography-capitals.jsonl",
       "type": "jsonl",
       "totalRows": 195,
-      "changedRows": 30
+      "changedRows": 0
     },
     {
       "path": "data/generated/geography-flags.jsonl",
       "type": "jsonl",
       "totalRows": 194,
-      "changedRows": 34
+      "changedRows": 0
     },
     {
       "path": "data/generated/geography.jsonl",
       "type": "jsonl",
       "totalRows": 370,
-      "changedRows": 128
+      "changedRows": 0
     },
     {
       "path": "data/generated/history.jsonl",
       "type": "jsonl",
       "totalRows": 328,
-      "changedRows": 69
+      "changedRows": 0
     },
     {
       "path": "data/generated/human_body_health.jsonl",
       "type": "jsonl",
       "totalRows": 338,
-      "changedRows": 20
+      "changedRows": 0
     },
     {
       "path": "data/generated/mythology_folklore.jsonl",
       "type": "jsonl",
       "totalRows": 393,
-      "changedRows": 99
+      "changedRows": 0
     },
     {
       "path": "data/generated/natural_sciences.jsonl",
       "type": "jsonl",
       "totalRows": 354,
-      "changedRows": 59
+      "changedRows": 0
     },
     {
       "path": "data/generated/production-facts.jsonl",
@@ -302,1045 +302,1123 @@
       "path": "data/generated/space_astronomy.jsonl",
       "type": "jsonl",
       "totalRows": 321,
-      "changedRows": 77
-    },
-    {
-      "path": "data/generated/vocab-overnight-batch.jsonl",
-      "type": "jsonl",
-      "totalRows": 5042,
-      "changedRows": 311
-    },
-    {
-      "path": "src/data/seed/facts-general-a.json",
-      "type": "json",
-      "totalRows": 41,
-      "changedRows": 1
-    },
-    {
-      "path": "src/data/seed/facts-general-b.json",
-      "type": "json",
-      "totalRows": 41,
-      "changedRows": 7
-    },
-    {
-      "path": "src/data/seed/facts-general-c.json",
-      "type": "json",
-      "totalRows": 40,
       "changedRows": 0
     },
     {
-      "path": "src/data/seed/facts-generated.json",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
       "type": "json",
-      "totalRows": 46657,
-      "changedRows": 4028
+      "totalRows": 300,
+      "changedRows": 291
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "type": "json",
+      "totalRows": 289,
+      "changedRows": 202
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "type": "json",
+      "totalRows": 316,
+      "changedRows": 307
+    },
+    {
+      "path": "src/data/seed/knowledge-general_knowledge.json",
+      "type": "json",
+      "totalRows": 258,
+      "changedRows": 180
+    },
+    {
+      "path": "src/data/seed/knowledge-geography.json",
+      "type": "json",
+      "totalRows": 384,
+      "changedRows": 383
+    },
+    {
+      "path": "src/data/seed/knowledge-history.json",
+      "type": "json",
+      "totalRows": 322,
+      "changedRows": 322
+    },
+    {
+      "path": "src/data/seed/knowledge-human_body_health.json",
+      "type": "json",
+      "totalRows": 271,
+      "changedRows": 271
+    },
+    {
+      "path": "src/data/seed/knowledge-mythology_folklore.json",
+      "type": "json",
+      "totalRows": 301,
+      "changedRows": 205
+    },
+    {
+      "path": "src/data/seed/knowledge-natural_sciences.json",
+      "type": "json",
+      "totalRows": 270,
+      "changedRows": 177
+    },
+    {
+      "path": "src/data/seed/knowledge-space_astronomy.json",
+      "type": "json",
+      "totalRows": 262,
+      "changedRows": 157
     },
     {
       "path": "src/data/seed/tutorial.json",
       "type": "json",
       "totalRows": 1,
       "changedRows": 0
+    },
+    {
+      "path": "src/data/seed/vocab-cs.json",
+      "type": "json",
+      "totalRows": 15393,
+      "changedRows": 0
+    },
+    {
+      "path": "src/data/seed/vocab-de.json",
+      "type": "json",
+      "totalRows": 18610,
+      "changedRows": 0
+    },
+    {
+      "path": "src/data/seed/vocab-es.json",
+      "type": "json",
+      "totalRows": 11434,
+      "changedRows": 0
+    },
+    {
+      "path": "src/data/seed/vocab-fr.json",
+      "type": "json",
+      "totalRows": 12728,
+      "changedRows": 0
+    },
+    {
+      "path": "src/data/seed/vocab-ja.json",
+      "type": "json",
+      "totalRows": 7726,
+      "changedRows": 0
+    },
+    {
+      "path": "src/data/seed/vocab-ko.json",
+      "type": "json",
+      "totalRows": 9757,
+      "changedRows": 0
+    },
+    {
+      "path": "src/data/seed/vocab-nl.json",
+      "type": "json",
+      "totalRows": 9866,
+      "changedRows": 0
+    },
+    {
+      "path": "src/data/seed/vocab-zh.json",
+      "type": "json",
+      "totalRows": 11470,
+      "changedRows": 0
     }
   ],
   "samples": [
     {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "laetacara-curviceps-001",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-horse-gestation",
       "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "Laetacara curviceps is a small freshwater fish species of least concern."
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Horses carry their young for approximately 11 months before giving birth."
     },
     {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "mullus-barbatus-001",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-horse-speed",
       "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "Mullus barbatus is a red mullet fish species with least concern conservation status."
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "The fastest recorded speed for a horse in a quarter-mile race was 55 mph (88 km/h)."
     },
     {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "nannacara_aureocephalus_001",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-lion-pride",
       "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "Nannacara aureocephalus is a small fish species with least concern conservation status."
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Lions are the only cats that live in social groups called prides, which typically contain 10 to 15 members."
     },
     {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "anim-atlantic-emperor-013",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-lion-roar",
       "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "The Atlantic emperor (Lethrinus atlanticus) is classified as Least Concern."
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "A lion's roar can be heard from up to 8 kilometers (5 miles) away."
     },
     {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "anim-lethrinus-reticulatus-014",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-lion-sleep",
       "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "The Lethrinus reticulatus (Lethrinus reticulatus) is classified as Least Concern."
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Lions sleep up to 20 hours a day to conserve energy in the hot African savanna."
     },
     {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "anim-lethrinus-enigmaticus-015",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-chicken-eggs",
       "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "The Lethrinus enigmaticus (Lethrinus enigmaticus) is classified as Least Concern."
+      "reason": "legacy",
+      "fromCategoryL2": "birds",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "birds",
+      "statement": "A hen can lay up to 300 eggs per year, but only if a rooster is absent — no rooster needed for unfertilized eggs."
     },
     {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "anim-spotted-wobbegong-016",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-chicken-color-vision",
       "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "The spotted wobbegong (Orectolobus maculatus) is classified as Least Concern."
+      "reason": "legacy",
+      "fromCategoryL2": "birds",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "birds",
+      "statement": "Chickens have tetrachromatic vision, allowing them to see ultraviolet light that is invisible to humans."
     },
     {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "anim-northern-wobbegong-017",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-chicken-dinosaur",
       "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "The northern wobbegong (Orectolobus wardi) is classified as Least Concern."
+      "reason": "legacy",
+      "fromCategoryL2": "birds",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "birds",
+      "statement": "The chicken is the closest living relative to the T. rex, confirmed by collagen proteins extracted from 68-million-year-old fossils."
     },
     {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "anim-ornate-wobbegong-018",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "The ornate wobbegong (Orectolobus ornatus) is classified as Least Concern."
-    },
-    {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "anim-dwarf-spotted-wobbegong-021",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "The dwarf spotted wobbegong (Orectolobus parvimaculatus) is classified as Least Concern."
-    },
-    {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "anim-necklace-carpetshark-022",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "The necklace carpetshark (Parascyllium variolatum) is classified as Least Concern."
-    },
-    {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "anim-saddle-carpetshark-023",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "The saddle carpetshark (Cirrhoscyllium japonicum) is classified as Least Concern."
-    },
-    {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "anim-ginger-carpetshark-024",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "The ginger carpetshark (Parascyllium sparsimaculatum) is classified as Least Concern."
-    },
-    {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "anim-collared-carpetshark-025",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "The Collared carpetshark (Parascyllium collare) is classified as Least Concern."
-    },
-    {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "anim-parascyllium-ferrugineum-026",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "The Parascyllium ferrugineum (Parascyllium ferrugineum) is classified as Least Concern."
-    },
-    {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "anim-mahi-mahi-039",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "The Mahi-mahi (Coryphaena hippurus) is classified as Least Concern."
-    },
-    {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-aequidens-chimantanus-066",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "The Aequidens chimantanus (Aequidens chimantanus) is a fish classified as Least Concern by conservation authorities."
-    },
-    {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-alburnoides-eichwaldii-067",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "Alburnoides eichwaldii is the common name for Alburnoides eichwaldii, a species of fish with Least Concern conservation status."
-    },
-    {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-galaxias-fasciatus-068",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "Known scientifically as Galaxias fasciatus, the Galaxias fasciatus is a fish currently listed as Least Concern."
-    },
-    {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-nephila-clavata-070",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-ant-strength",
       "domain": "animals_wildlife",
       "reason": "scored",
       "fromCategoryL2": "insects arachnids",
-      "fromCategorySecondary": "insects arachnids",
-      "toCategoryL2": "conservation",
-      "statement": "Nephila clavata is the common name for Nephila clavata, a species of arachnid with Least Concern conservation status."
+      "fromCategorySecondary": null,
+      "toCategoryL2": "insects_arachnids",
+      "statement": "Ants can carry objects up to 50 times their own body weight, making them pound-for-pound among the strongest animals on Earth."
     },
     {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-fringed-lipped-peninsula-carp-072",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "The Fringed-lipped Peninsula Carp, or Labeo fimbriatus, is a fish species that holds Least Concern conservation status."
-    },
-    {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-tramitichromis-lituris-077",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "Known scientifically as Tramitichromis lituris, the Tramitichromis lituris is a fish currently listed as Least Concern."
-    },
-    {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-tramea-insularis-090",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-ant-supercolony",
       "domain": "animals_wildlife",
       "reason": "scored",
       "fromCategoryL2": "insects arachnids",
-      "fromCategorySecondary": "insects arachnids",
-      "toCategoryL2": "conservation",
-      "statement": "Tramea insularis is the common name for Tramea insularis, a species of insect with Least Concern conservation status."
+      "fromCategorySecondary": null,
+      "toCategoryL2": "insects_arachnids",
+      "statement": "The Argentine ant has formed a single global supercolony spanning Europe, North America, and Japan, with billions of cooperative individuals."
     },
     {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-spiny-blaasop-091",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "Known scientifically as Tylerius spinosissimus, the spiny blaasop is a fish currently listed as Least Concern."
-    },
-    {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-largescale-yellowfish-093",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "Largescale yellowfish is the common name for Labeobarbus marequensis, a species of fish with Least Concern conservation status."
-    },
-    {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-papilio-aristodemus-094",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-ant-queen-lifespan",
       "domain": "animals_wildlife",
       "reason": "scored",
       "fromCategoryL2": "insects arachnids",
-      "fromCategorySecondary": "insects arachnids",
-      "toCategoryL2": "conservation",
-      "statement": "The Papilio aristodemus (Papilio aristodemus) is a insect classified as Least Concern by conservation authorities."
+      "fromCategorySecondary": null,
+      "toCategoryL2": "insects_arachnids",
+      "statement": "Queen ants can live for up to 30 years, making them among the longest-lived insects on the planet."
     },
     {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-monotrete-leiurus-097",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-tiger-swimming",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Tigers are powerful swimmers and will readily cross rivers up to 6 km wide to hunt or patrol territory."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-pig-intelligence",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Pigs are considered among the five smartest animals on Earth, outperforming dogs and three-year-old children on some cognitive tests."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-wolf-howl",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Wolves howl to communicate across distances — a wolf's howl can be heard up to 10 km away in open terrain."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-wolf-pack",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Wolf packs are typically led by a breeding pair (alpha pair), not by a single dominant alpha wolf as once believed."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-wolf-dogs",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "All domestic dogs are descendants of grey wolves, with domestication beginning approximately 15,000 to 40,000 years ago."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-bear-hibernation",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Bears do not truly hibernate — they enter a lighter sleep called torpor, during which females can wake to give birth."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-bear-strength",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "A grizzly bear can lift boulders weighing over 300 kg (660 lbs) and run at speeds up to 56 km/h (35 mph)."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-bear-smell",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Bears have the best sense of smell of any land mammal, detecting odors up to 20 miles away — 7 times better than a bloodhound."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-goat-pupils",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Goats have rectangular pupils that give them a 320-degree field of vision, helping them spot predators without turning their heads."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-goat-climbing",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Mountain goats can scale nearly vertical cliff faces thanks to hooves with hard outer edges and soft inner pads that grip rock like suction cups."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-goat-memory",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Goats have excellent long-term memory and can recall how to solve complex puzzles for up to 10 months after learning."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-camel-hump",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "adaptations",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "adaptations",
+      "statement": "Camel humps store fat, not water — camels draw on this fat reserve for energy during long desert journeys without food."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-camel-drinking",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "adaptations",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "adaptations",
+      "statement": "A dehydrated camel can drink up to 200 liters (53 gallons) of water in a single session — about a bathtub's worth."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-camel-eyelashes",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "adaptations",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "adaptations",
+      "statement": "Camels have three eyelids and two rows of eyelashes to protect their eyes from blowing desert sand."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-wolverine-strength",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "adaptations",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "adaptations",
+      "statement": "The wolverine is the largest land-dwelling member of the weasel family, capable of driving bears and wolves off kills."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-wolverine-territory",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "adaptations",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "adaptations",
+      "statement": "Male wolverines patrol territories up to 620 square miles — one of the largest home ranges of any land mammal relative to body size."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-wolverine-claws",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "adaptations",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "adaptations",
+      "statement": "Wolverines have semi-retractable claws that act like crampons, allowing them to climb sheer ice faces and vertical rock cliffs."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-bird-feathers",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "birds",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "birds",
+      "statement": "Birds are the only living animals with feathers, a trait that distinguishes class Aves from all other vertebrates."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-bird-hollow-bones",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "birds",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "birds",
+      "statement": "Most birds have hollow bones with internal struts, making their skeletons lighter than their feathers."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-bird-species-count",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "birds",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "birds",
+      "statement": "There are approximately 10,000 living bird species on Earth, ranging from 2-inch hummingbirds to 9-foot ostriches."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-dodo-extinction",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "conservation",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "conservation",
+      "statement": "The dodo went extinct by 1681, less than 90 years after Europeans first arrived on Mauritius in 1598."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-dodo-weight",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "conservation",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "conservation",
+      "statement": "The dodo weighed approximately 23–47 lbs and stood about 3 feet tall, making it one of the largest birds of its era."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-lion-mane",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Only male lions have manes, and darker, fuller manes signal higher testosterone and better genetic fitness to females."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-animalia-oldest",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "biology",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "marine_life",
+      "statement": "Sponges are considered the earliest-branching animals, with fossils dating back over 600 million years to the Ediacaran period."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-animalia-symmetry",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "biology",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "marine_life",
+      "statement": "Most animals have bilateral symmetry, meaning their left and right sides are mirror images — a trait linked to the evolution of directed movement."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-fish-gills",
       "domain": "animals_wildlife",
       "reason": "scored",
       "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "The Monotrete leiurus, or Monotrete leiurus, is a fish species that holds Least Concern conservation status."
+      "fromCategorySecondary": null,
+      "toCategoryL2": "marine_life",
+      "statement": "Fish extract oxygen from water using gills, which force water over thin membranes where oxygen diffuses into the blood and CO2 diffuses out."
     },
     {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-protobothrops-elegans-102",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-fish-diversity",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "marine_life",
+      "statement": "Fish are the most diverse group of vertebrates with over 34,000 species — more than all other vertebrates combined."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-fish-lateral-line",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "marine_life",
+      "statement": "Fish have a lateral line system — a row of sensory organs along their sides that detects water pressure changes and vibrations."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-dinosaur-extinction",
       "domain": "animals_wildlife",
       "reason": "scored",
       "fromCategoryL2": "reptiles amphibians",
-      "fromCategorySecondary": "reptiles amphibians",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "birds",
+      "statement": "Non-avian dinosaurs went extinct approximately 66 million years ago when an asteroid impact triggered a global winter by filling the atmosphere with debris."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-dinosaur-warm-blooded",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "reptiles amphibians",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "reptiles_amphibians",
+      "statement": "Many dinosaurs were warm-blooded (endothermic), able to regulate their own body temperature like modern birds and mammals."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-dinosaur-feathers",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "reptiles amphibians",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "reptiles_amphibians",
+      "statement": "Over 150 dinosaur species have been found with evidence of feathers, including large theropods related to T. rex."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-dromedary-hump",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "adaptations",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "adaptations",
+      "statement": "A dromedary camel's hump stores fat, not water — the fat can be metabolized into energy and water when food is scarce."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-dromedary-temperature",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "adaptations",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "adaptations",
+      "statement": "Dromedary camels can tolerate a body temperature swing of 11°F (6°C) between night and day, reducing the need to sweat."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-dromedary-nostrils",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "adaptations",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "adaptations",
+      "statement": "Dromedary camels can close their nostrils tightly to block sand, and their nasal passages recapture moisture from exhaled air."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-chicken-population",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "birds",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "birds",
+      "statement": "With over 33 billion individuals, the chicken is the most numerous bird on Earth — outnumbering all wild birds combined."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-chicken-junglefowl",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "birds",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "birds",
+      "statement": "The domestic chicken descended from the red junglefowl of Southeast Asia and was domesticated approximately 8,000 years ago."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-passenger-pigeon-numbers",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "conservation",
+      "fromCategorySecondary": null,
       "toCategoryL2": "conservation",
-      "statement": "The Protobothrops elegans (Protobothrops elegans) is a reptile classified as Least Concern by conservation authorities."
+      "statement": "The Passenger Pigeon was once North America's most abundant bird with 3–5 billion individuals — roughly 25–40% of all birds on the continent."
     },
     {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-tauriphila-australis-110",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-passenger-pigeon-extinction",
       "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "insects arachnids",
-      "fromCategorySecondary": "insects arachnids",
+      "reason": "legacy",
+      "fromCategoryL2": "conservation",
+      "fromCategorySecondary": null,
       "toCategoryL2": "conservation",
-      "statement": "Tauriphila australis is the common name for Tauriphila australis, a species of insect with Least Concern conservation status."
+      "statement": "The Passenger Pigeon went extinct in 1914 due to commercial hunting — hunters used railroads to follow migrating flocks and shoot millions per day."
     },
     {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-roosterfish-111",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-owls-silent-flight",
       "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "Roosterfish is the common name for Nematistius pectoralis, a species of fish with Least Concern conservation status."
-    },
-    {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-murray-cod-113",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "conservation",
-      "statement": "Known scientifically as Maccullochella peelii, the Murray cod is a fish currently listed as Least Concern."
-    },
-    {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-mantis-shrimp-punch-114",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
+      "reason": "legacy",
+      "fromCategoryL2": "adaptations",
+      "fromCategorySecondary": null,
       "toCategoryL2": "adaptations",
-      "statement": "The mantis shrimp can strike with its club-like appendages at speeds up to 50 mph, generating forces comparable to a .22 caliber bullet."
+      "statement": "Owls fly nearly silently because comb-like serrations on their leading wing feathers break up turbulence, eliminating the sound of air rushing over the wing."
     },
     {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-pistol-shrimp-snap-118",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-owls-rotating-head",
       "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
+      "reason": "legacy",
+      "fromCategoryL2": "adaptations",
+      "fromCategorySecondary": null,
       "toCategoryL2": "adaptations",
-      "statement": "The pistol shrimp snaps its oversized claw so fast it creates a cavitation bubble that reaches temperatures of nearly 4,700°C — almost as hot as the sun's surface."
+      "statement": "Owls can rotate their heads up to 270 degrees because they have 14 cervical vertebrae — twice as many as humans — and blood-pooling reservoirs that keep brain blood supply intact during rotation."
     },
     {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-cone-snail-venom-156",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-owls-nocturnal-hearing",
       "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "adaptations",
-      "statement": "Cone snails fire venomous harpoon-like teeth at prey with lightning speed, and their complex venom contains hundreds of unique compounds, some of which are now used as powerful painkillers."
+      "fromCategoryL2": "senses",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "birds",
+      "statement": "Many owls have asymmetrically positioned ears — one higher than the other — allowing them to pinpoint prey in three dimensions using sound alone, even in total darkness."
     },
     {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-decorator-crab-178",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-ants-supercolony",
       "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "adaptations",
-      "statement": "Decorator crabs attach sponges, algae, anemones, and even small venomous animals to hook-like hairs on their shells to create living camouflage suits."
+      "fromCategoryL2": "social behavior",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "behavior_intelligence",
+      "statement": "The Argentine ant has formed a single supercolony stretching 3,700 miles along Europe's Mediterranean coast — the largest cooperative society ever recorded on Earth."
     },
     {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-leafy-seadragon-189",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-ants-strength",
       "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "adaptations",
-      "statement": "The leafy seadragon has elaborate leaf-shaped appendages covering its body that serve no purpose for swimming — they exist solely as camouflage to mimic drifting seaweed."
-    },
-    {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-harbour-porpoise-echolocation-312",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "mammals",
-      "statement": "Harbour porpoises produce echolocation clicks at frequencies above 120 kHz — so high-pitched that they are inaudible to their main predator, the killer whale, which cannot hear above 100 kHz."
-    },
-    {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-sperm-whale-sleep-vertical-328",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
-      "toCategoryL2": "mammals",
-      "statement": "Sperm whales sleep vertically — they hang motionless in the water like enormous grey pillars, sometimes in groups, completely unconscious for about 10-15 minutes at a time."
-    },
-    {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-pistol-shrimp-colony-332",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
+      "fromCategoryL2": "physiology",
+      "fromCategorySecondary": null,
       "toCategoryL2": "insects_arachnids",
-      "statement": "Certain pistol shrimp species live in eusocial colonies inside sponges — with a single breeding queen, soldier castes, and worker divisions — making them the only known eusocial marine animal."
+      "statement": "Leafcutter ants can carry objects up to 50 times their own body weight — equivalent to a human carrying a car — using their saw-like mandibles."
     },
     {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-cuttlefish-final-flash-335",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-ants-zombie-fungus",
       "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
+      "fromCategoryL2": "parasites",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "behavior_intelligence",
+      "statement": "Ophiocordyceps fungi infect ants, hijack their nervous systems, force them to climb to an optimal height, then kill them — sprouting spores from the dead ant's head."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-horse-domestication",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "domestication",
+      "fromCategorySecondary": null,
       "toCategoryL2": "adaptations",
-      "statement": "Male cuttlefish can split their body display in half — showing female-mimicking patterns on one side to fool a rival male, while flashing mating colours to a female on the other side simultaneously."
+      "statement": "Horses were first domesticated around 3500 BCE on the Eurasian steppes, transforming warfare, trade, and human migration across the ancient world."
     },
     {
-      "path": "data/generated/animals_wildlife.jsonl",
-      "id": "animal-pistol-shrimp-louder-whale-351",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-horse-hooves",
       "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": "marine life",
+      "fromCategoryL2": "anatomy",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "adaptations",
+      "statement": "A horse's hoof is actually a single highly modified toe — horses walk on the tip of their third finger, their other toes having been lost over 55 million years of evolution."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-frogs-glass-frog",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "adaptations",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "adaptations",
+      "statement": "Glass frogs have transparent undersides through which their beating hearts, digestive organs, and developing eggs are fully visible to the naked eye."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-pigeon-homing",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "navigation",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "marine_life",
+      "statement": "Homing pigeons can navigate back to their loft from over 1,000 miles away using Earth's magnetic field, the sun's position, and even infrasound landmarks."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-pigeon-eyesight",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "senses",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "birds",
+      "statement": "Pigeons can see ultraviolet light and are among the few animals that can recognize themselves in a mirror, passing the mirror self-recognition test."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-shark-cartilage",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "anatomy",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "marine_life",
+      "statement": "Sharks have no bones — their skeletons are made entirely of cartilage, which is lighter and more flexible than bone, allowing them to make sharper turns and swim more efficiently."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-shark-electroreception",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "senses",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "marine_life",
+      "statement": "Sharks detect prey using the ampullae of Lorenzini — gel-filled pores on their snouts that sense the faint electrical fields generated by the muscle contractions of living animals."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-shark-teeth",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "anatomy",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "marine_life",
+      "statement": "Sharks grow multiple rows of replacement teeth and shed and replace them throughout their lives — producing up to 30,000 teeth in a single shark's lifetime."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-amphibians-double-life",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "classification",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "reptiles_amphibians",
+      "statement": "The word 'amphibian' comes from the Greek 'amphi' (both) and 'bios' (life) — reflecting their life split between water and land across developmental stages."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-amphibians-skin-threat",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "conservation",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "conservation",
+      "statement": "Amphibians are the most threatened vertebrate class on Earth — over 40% of species face extinction, largely due to a chytrid fungus that infects and destroys their permeable skin."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-amphibians-poison-dart",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "defense",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "reptiles_amphibians",
+      "statement": "Poison dart frogs are not born poisonous — they acquire their toxins from eating mites and other arthropods in the wild; captive-bred frogs fed different diets are completely non-toxic."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-mammals-warm-blood",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "classification",
+      "fromCategorySecondary": null,
       "toCategoryL2": "mammals",
-      "statement": "The snap of a pistol shrimp's claw reaches 218 decibels — louder than a gunshot and even louder than a blue whale's call — making it one of the loudest sounds produced by any living creature."
+      "statement": "Mammals maintain a constant internal body temperature using metabolic heat — a process called endothermy that allows them to remain active in cold environments where reptiles become sluggish."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art-young-va-068",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-mammals-monotremes",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "museums institutions",
-      "fromCategorySecondary": "museums institutions",
-      "toCategoryL2": "engineering_design",
-      "statement": "Young V&A, formerly the Bethnal Green Museum of Childhood, is a national museum in London that opened in 1872."
+      "fromCategoryL2": "classification",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Monotremes — platypus and echidnas — are the only mammals that lay eggs, yet they still nurse their young with milk secreted through patches of skin rather than nipples."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art-spencer-museum-071",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-mammals-blue-whale",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "museums institutions",
-      "fromCategorySecondary": "museums institutions",
-      "toCategoryL2": "modern_contemporary",
-      "statement": "The Spencer Museum of Art at the University of Kansas in Lawrence opened in 1928 and houses over 45,000 works."
+      "fromCategoryL2": "superlatives",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "The blue whale is the largest animal ever known to have existed — reaching 100 feet long and 200 tons — heavier than the largest dinosaur."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art-evoluon-072",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-insects-biomass",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "museums institutions",
-      "fromCategorySecondary": "museums institutions",
-      "toCategoryL2": "architectural_styles",
-      "statement": "The Evoluon in Eindhoven, Netherlands, is a futuristic flying saucer-shaped building commissioned by Philips in 1966."
+      "fromCategoryL2": "ecology",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "conservation",
+      "statement": "There are an estimated 10 quintillion (10,000,000,000,000,000,000) individual insects alive on Earth at any moment — about 1.4 billion insects for every human."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art-arctic-antarctic-museum-074",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-insects-pollination",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "museums institutions",
-      "fromCategorySecondary": "museums institutions",
-      "toCategoryL2": "historic_buildings",
-      "statement": "The Russian Arctic and Antarctic Museum in Saint Petersburg, founded in 1930, is the only museum in Russia dedicated to polar exploration."
+      "fromCategoryL2": "ecology",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "insects_arachnids",
+      "statement": "Insects pollinate about 75% of all flowering plant species and roughly one-third of all food crops globally — including most fruits, vegetables, nuts, and coffee."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art-far-east-laken-076",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-maize-habitat",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "museums institutions",
-      "fromCategorySecondary": "museums institutions",
-      "toCategoryL2": "historic_buildings",
-      "statement": "The Museums of the Far East in Laeken, Belgium, opened in 1921 and showcase Asian art in pavilions built for the 1910 World's Fair."
+      "fromCategoryL2": "agriculture ecology",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "conservation",
+      "statement": "Maize (corn) farming has replaced over 350,000 square miles of North American habitat — more than any other single crop — transforming grassland ecosystems that once supported bison, prairie dogs, and hundreds of bird sp"
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art-national-building-museum-090",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-maize-monarch-butterfly",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "museums institutions",
-      "fromCategorySecondary": "museums institutions",
-      "toCategoryL2": "engineering_design",
-      "statement": "The National Building Museum in Washington, D.C. opened in 1985 inside the historic Pension Building, completed in 1887."
+      "fromCategoryL2": "agriculture ecology",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "insects_arachnids",
+      "statement": "The expansion of herbicide-tolerant corn and soy has nearly eliminated milkweed from Midwest farmlands, causing a 90% collapse in the monarch butterfly population since the 1990s."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art-holy-blood-bruges-099",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-maize-corn-earworm",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "historic buildings",
-      "fromCategorySecondary": "historic buildings",
-      "toCategoryL2": "architectural_styles",
-      "statement": "The Basilica of the Holy Blood in Bruges, Belgium, dates from 1157 and houses a venerated relic said to contain the blood of Jesus Christ."
+      "fromCategoryL2": "agriculture ecology",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "insects_arachnids",
+      "statement": "The corn earworm (Helicoverpa zea) is the costliest insect pest in North America, causing over $2 billion in crop losses annually by feeding on corn, cotton, tomatoes, and soy."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art-moma-nyc-100",
-      "domain": "art_architecture",
-      "reason": "scored",
-      "fromCategoryL2": "museums institutions",
-      "fromCategorySecondary": "museums institutions",
-      "toCategoryL2": "modern_contemporary",
-      "statement": "The Museum of Modern Art (MoMA) in New York City was founded in 1929 and houses one of the most influential modern art collections in the world."
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-swan-lifelong-mates",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "behavior",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "behavior_intelligence",
+      "statement": "Swans form lifelong pair bonds and typically mate for life, with pairs reuniting each breeding season for decades."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art-nai-rotterdam-102",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-swan-cygnus-genus",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "museums institutions",
-      "fromCategorySecondary": "museums institutions",
-      "toCategoryL2": "architectural_styles",
-      "statement": "The Netherlands Architecture Institute (NAi) in Rotterdam, founded in 1988, housed the world's largest architecture archive."
+      "fromCategoryL2": "taxonomy",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "birds",
+      "statement": "Swans belong to the genus Cygnus within the family Anatidae, making them close relatives of ducks and geese."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art-krippenmuseum-brixen-107",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-swan-neck-length",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "museums institutions",
-      "fromCategorySecondary": "museums institutions",
-      "toCategoryL2": "modern_contemporary",
-      "statement": "The Krippenmuseum in Brixen (Bressanone), Italy, houses one of the world's largest collections of nativity scenes with over 5,000 figures."
+      "fromCategoryL2": "anatomy",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "birds",
+      "statement": "Swans have 25 cervical (neck) vertebrae, more than any other bird, which allows them to reach submerged aquatic plants while swimming."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art-galleria-continua-109",
-      "domain": "art_architecture",
-      "reason": "scored",
-      "fromCategoryL2": "museums institutions",
-      "fromCategorySecondary": "museums institutions",
-      "toCategoryL2": "modern_contemporary",
-      "statement": "Galleria Continua in San Gimignano, Tuscany, is a contemporary art gallery housed in a former medieval cinema and theater."
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-wolf-pack-alpha",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "behavior",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "behavior_intelligence",
+      "statement": "Gray wolf packs are led by a breeding pair, often called alpha wolves, whose offspring from multiple years form most of the pack's members."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_070",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-wolf-howl-communication",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "painting visual",
-      "fromCategorySecondary": "painting visual",
-      "toCategoryL2": "historic_buildings",
-      "statement": "Islamic geometric art uses complex mathematical patterns that can tile infinitely without repeating, a concept Western mathematicians didn't formally describe until Roger Penrose's work in the 1970s."
+      "fromCategoryL2": "communication",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "behavior_intelligence",
+      "statement": "Gray wolves howl to communicate across distances up to 10 km, coordinating pack movements, asserting territory, and reuniting separated members."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_079",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-wolf-canis-lupus",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "painting visual",
-      "fromCategorySecondary": "painting visual",
-      "toCategoryL2": "modern_contemporary",
-      "statement": "Piet Mondrian's iconic grid paintings with primary colors were so influential that Yves Saint Laurent created a famous dress based on them in 1965, blurring the line between fine art and fashion forever."
+      "fromCategoryL2": "taxonomy",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "The gray wolf's scientific name is Canis lupus, and domestic dogs (Canis lupus familiaris) are a subspecies that were domesticated at least 15,000 years ago."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_090",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-orca-apex-predator",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "painting visual",
-      "fromCategorySecondary": "painting visual",
-      "toCategoryL2": "museums_institutions",
-      "statement": "The color wheel was invented by Isaac Newton in 1666 when he split white light through a prism and arranged the resulting spectrum into a circle, establishing the foundation of modern color theory."
+      "fromCategoryL2": "ecology",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "marine_life",
+      "statement": "Orcas are apex predators with no natural predators, and they hunt great white sharks, eating their livers — one of the most energy-rich organs in a shark's body."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_110",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-orca-not-a-whale",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "modern contemporary",
-      "fromCategorySecondary": "modern contemporary",
-      "toCategoryL2": "engineering_design",
-      "statement": "Salvador Dalí designed the Chupa Chups lollipop logo in 1969, and his design has remained virtually unchanged for over 50 years, making it one of the most commercially successful works by a fine artist."
+      "fromCategoryL2": "taxonomy",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "marine_life",
+      "statement": "Despite being called 'killer whales,' orcas are actually the largest members of the dolphin family (Delphinidae), not true whales."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_115",
-      "domain": "art_architecture",
-      "reason": "scored",
-      "fromCategoryL2": "painting visual",
-      "fromCategorySecondary": "painting visual",
-      "toCategoryL2": "modern_contemporary",
-      "statement": "Pablo Picasso and Georges Braque co-founded Cubism around 1907, breaking objects into geometric fragments viewed from multiple angles simultaneously."
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-chameleon-color-change",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "adaptations",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "adaptations",
+      "statement": "Chameleons change color primarily for communication and thermoregulation — not camouflage — by adjusting layers of nanocrystals in their skin cells called iridophores."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_116",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-chameleon-tongue",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "painting visual",
-      "fromCategorySecondary": "painting visual",
-      "toCategoryL2": "modern_contemporary",
-      "statement": "Salvador Dalí's The Persistence of Memory (1931) features melting clocks draped over a barren landscape, becoming one of Surrealism's most iconic images."
+      "fromCategoryL2": "anatomy",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "adaptations",
+      "statement": "A chameleon's tongue can extend up to twice its body length and accelerates faster than a fighter jet — reaching full extension in under 0.07 seconds."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_122",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-chameleon-eyes",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "painting visual",
-      "fromCategorySecondary": "painting visual",
-      "toCategoryL2": "modern_contemporary",
-      "statement": "Han van Meegeren was a Dutch art forger who fooled experts with fake Vermeer paintings, only discovered when he was accused of selling national treasures to the Nazis."
+      "fromCategoryL2": "anatomy",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "adaptations",
+      "statement": "Chameleons have independently moving eyes that can rotate 360 degrees combined, giving them a near-total field of view without turning their head."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_126",
-      "domain": "art_architecture",
-      "reason": "scored",
-      "fromCategoryL2": "sculpture decorative",
-      "fromCategorySecondary": "sculpture decorative",
-      "toCategoryL2": "modern_contemporary",
-      "statement": "Donald Judd's minimalist sculptures, often consisting of identical metal boxes arranged in precise rows, challenged traditional ideas of what art could be."
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-penguin-flightless",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "adaptations",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "adaptations",
+      "statement": "Penguins are flightless birds whose wings evolved into flippers; they are the fastest swimming birds, reaching up to 36 km/h underwater."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_136",
-      "domain": "art_architecture",
-      "reason": "scored",
-      "fromCategoryL2": "sculpture decorative",
-      "fromCategorySecondary": "sculpture decorative",
-      "toCategoryL2": "modern_contemporary",
-      "statement": "The Cloud Gate sculpture in Chicago, nicknamed 'The Bean,' is made of 168 stainless steel plates polished so seamlessly that no visible seams remain."
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-penguin-emperor-colony",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "behavior",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "behavior_intelligence",
+      "statement": "Emperor penguin fathers incubate their single egg through the Antarctic winter — temperatures reaching -60°C — balancing it on their feet under a brood pouch for up to 65 days without eating."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_140",
-      "domain": "art_architecture",
-      "reason": "scored",
-      "fromCategoryL2": "painting visual",
-      "fromCategorySecondary": "painting visual",
-      "toCategoryL2": "architectural_styles",
-      "statement": "Georgia O'Keeffe's large-scale flower paintings, such as Jimson Weed (1932), were so oversized that viewers felt they were stepping inside the bloom."
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-penguin-tuxedo",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "adaptations",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "adaptations",
+      "statement": "Penguins' black-and-white coloring is countershading camouflage: dark backs are hard to see from above against dark ocean depths; white fronts blend with sunlit surface water from below."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_148",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-bear-ursidae",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "painting visual",
-      "fromCategorySecondary": "painting visual",
-      "toCategoryL2": "architectural_styles",
-      "statement": "The Baroque period's trompe-l'oeil ceiling paintings created the illusion that church ceilings opened up to the heavens, with figures seemingly floating above the viewer."
+      "fromCategoryL2": "taxonomy",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "The family Ursidae contains eight living bear species, including the polar bear — the largest land carnivore — and the sun bear, the smallest."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_152",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-blue-whale-largest",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "modern contemporary",
-      "fromCategorySecondary": "modern contemporary",
-      "toCategoryL2": "engineering_design",
-      "statement": "Piet Mondrian's abstract paintings of primary colors in a black grid, such as Composition with Red, Blue, and Yellow, were meant to express universal harmony."
+      "fromCategoryL2": "records",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "The blue whale is the largest animal known to have ever existed — reaching 33 meters long and 190 tonnes — larger than any dinosaur."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_157",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-blue-whale-krill",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "painting visual",
-      "fromCategorySecondary": "painting visual",
-      "toCategoryL2": "modern_contemporary",
-      "statement": "Banksy is an anonymous British street artist whose identity remains unconfirmed despite creating some of the world's most recognizable graffiti art."
+      "fromCategoryL2": "ecology",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Blue whales eat almost exclusively krill, consuming up to 3,600 kg (8,000 lbs) of the tiny crustaceans per day during feeding season."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_167",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-blue-whale-sound",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "painting visual",
-      "fromCategorySecondary": "painting visual",
-      "toCategoryL2": "modern_contemporary",
-      "statement": "Hilma af Klint, a Swedish artist, created abstract paintings as early as 1906—years before Kandinsky, Mondrian, or Malevich, who are usually credited with inventing abstraction."
+      "fromCategoryL2": "communication",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "behavior_intelligence",
+      "statement": "Blue whale calls can reach 188 decibels — louder than a jet engine — and travel thousands of kilometers through ocean sound channels."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_168",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-crocodilian-ancient",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "historic buildings",
-      "fromCategorySecondary": "historic buildings",
-      "toCategoryL2": "engineering_design",
-      "statement": "The Leaning Tower of Pisa began tilting during construction in 1173 because it was built on soft clay soil on one side, and it took 199 years to complete."
+      "fromCategoryL2": "evolution",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "conservation",
+      "statement": "Crocodilians have remained virtually unchanged for 200 million years — surviving the mass extinction that killed the dinosaurs — making them among Earth's most successful animals."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_169",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-crocodilian-cold-blooded",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "painting visual",
-      "fromCategorySecondary": "painting visual",
-      "toCategoryL2": "modern_contemporary",
-      "statement": "René Magritte's The Treachery of Images (1929) shows a pipe with the text 'Ceci n'est pas une pipe' (This is not a pipe), challenging the relationship between objects and their representations."
+      "fromCategoryL2": "physiology",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "birds",
+      "statement": "Crocodilians are ectotherms (cold-blooded), but they have a four-chambered heart — rare among reptiles — which is more efficient and shared with mammals and birds."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_170",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-crocodilian-bite-force",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "historic buildings",
-      "fromCategorySecondary": "historic buildings",
-      "toCategoryL2": "architectural_styles",
-      "statement": "The ancient city of Petra in Jordan was carved directly into rose-colored sandstone cliffs by the Nabataean people over 2,000 years ago."
+      "fromCategoryL2": "anatomy",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "reptiles_amphibians",
+      "statement": "Saltwater crocodiles have the strongest bite force ever measured in a living animal — up to 16,460 Newtons (3,700 lbs of force), stronger than any shark."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_171",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-parrot-speech-mimicry",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "painting visual",
-      "fromCategorySecondary": "painting visual",
-      "toCategoryL2": "modern_contemporary",
-      "statement": "Jackson Pollock's drip paintings were created by laying canvas on the floor and flinging, dripping, and pouring paint from above, a technique called action painting."
+      "fromCategoryL2": "cognition",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "adaptations",
+      "statement": "African grey parrots can mimic human speech with such accuracy they can fool people on the phone — and research shows they may actually understand words contextually, not just mimic them."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_174",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-parrot-psittaciformes",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "historic buildings",
-      "fromCategorySecondary": "historic buildings",
-      "toCategoryL2": "engineering_design",
-      "statement": "The ancient Inca city of Machu Picchu was built with stones cut so precisely that no mortar was needed, and a knife blade cannot fit between them."
+      "fromCategoryL2": "taxonomy",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "behavior_intelligence",
+      "statement": "Parrots belong to the order Psittaciformes and are characterized by curved beaks, zygodactyl feet (two toes forward, two back), and being some of the most intelligent birds."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_192",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-parrot-longevity",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "museums institutions",
-      "fromCategorySecondary": "museums institutions",
-      "toCategoryL2": "engineering_design",
-      "statement": "The Centre Pompidou in Paris was so controversial when it opened in 1977 that critics called it an 'oil refinery' and a 'catastrophe' — its inside-out design puts all the pipes, ducts, and escalators on the outside of th"
+      "fromCategoryL2": "physiology",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "birds",
+      "statement": "Large parrots like macaws and cockatoos can live 50–80 years — some species outliving their owners — making them among the longest-lived birds."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_193",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-leopard-range",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "museums institutions",
-      "fromCategorySecondary": "museums institutions",
-      "toCategoryL2": "engineering_design",
-      "statement": "The Mole Antonelliana in Turin, originally designed as a synagogue in 1863, grew so tall during construction that the Jewish community ran out of money — the city took it over, and it eventually became the world's talles"
+      "fromCategoryL2": "ecology",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "conservation",
+      "statement": "The leopard has the widest geographic range of any wild cat, living across sub-Saharan Africa, North Africa, the Middle East, Central Asia, and the Russian Far East."
     },
     {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_198",
-      "domain": "art_architecture",
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-goldfish-memory",
+      "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "painting visual",
-      "fromCategorySecondary": "painting visual",
-      "toCategoryL2": "museums_institutions",
-      "statement": "Rembrandt went bankrupt in 1656 despite being one of the most famous painters in the Netherlands — he had a compulsive habit of buying art, curiosities, and exotic costumes at auction that he couldn't afford."
-    },
-    {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_200",
-      "domain": "art_architecture",
-      "reason": "scored",
-      "fromCategoryL2": "historic buildings",
-      "fromCategorySecondary": "historic buildings",
-      "toCategoryL2": "engineering_design",
-      "statement": "Gaudi's Sagrada Familia generates so much tourist revenue that it is paying off 140 years of unpaid building permits to the city of Barcelona — a debt of 36 million euros finally settled in 2019."
-    },
-    {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_209",
-      "domain": "art_architecture",
-      "reason": "scored",
-      "fromCategoryL2": "painting visual",
-      "fromCategorySecondary": "painting visual",
-      "toCategoryL2": "architectural_styles",
-      "statement": "Gustav Klimt's famous painting The Kiss uses real gold leaf — and the gold in the painting was inspired by the Byzantine mosaics Klimt saw during a trip to Ravenna, Italy, which blew his mind so thoroughly it changed his"
-    },
-    {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_221",
-      "domain": "art_architecture",
-      "reason": "scored",
-      "fromCategoryL2": "painting visual",
-      "fromCategorySecondary": "painting visual",
-      "toCategoryL2": "modern_contemporary",
-      "statement": "Picasso was questioned as a suspect in the 1911 theft of the Mona Lisa from the Louvre — his friend, poet Guillaume Apollinaire, had been arrested and named Picasso under interrogation."
-    },
-    {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_226",
-      "domain": "art_architecture",
-      "reason": "scored",
-      "fromCategoryL2": "museums institutions",
-      "fromCategorySecondary": "museums institutions",
-      "toCategoryL2": "engineering_design",
-      "statement": "The Zeugma Mosaic Museum in Turkey contains the 'Gypsy Girl' mosaic — a 2nd-century Roman floor mosaic so hauntingly beautiful that it has been called the 'Mona Lisa of mosaics,' with eyes that seem to follow you around "
-    },
-    {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_231",
-      "domain": "art_architecture",
-      "reason": "scored",
-      "fromCategoryL2": "painting visual",
-      "fromCategorySecondary": "painting visual",
-      "toCategoryL2": "architectural_styles",
-      "statement": "Caravaggio killed a man in a street brawl in 1606 and spent the rest of his life on the run — he continued to paint masterpieces while fleeing across Italy, Malta, and Sicily before dying under mysterious circumstances a"
-    },
-    {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_236",
-      "domain": "art_architecture",
-      "reason": "scored",
-      "fromCategoryL2": "painting visual",
-      "fromCategorySecondary": "painting visual",
-      "toCategoryL2": "modern_contemporary",
-      "statement": "The color 'International Klein Blue' was patented by artist Yves Klein in 1960 — he literally owned a shade of blue, created using a special synthetic resin that makes pure ultramarine pigment appear to float in space."
-    },
-    {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_238",
-      "domain": "art_architecture",
-      "reason": "scored",
-      "fromCategoryL2": "historic buildings",
-      "fromCategorySecondary": "historic buildings",
-      "toCategoryL2": "engineering_design",
-      "statement": "The Leaning Tower of Pisa started tilting during construction in 1173 because its foundation is only 3 meters deep on soil that is softer on one side — and took 199 years to finish because builders kept pausing to let th"
-    },
-    {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_241",
-      "domain": "art_architecture",
-      "reason": "scored",
-      "fromCategoryL2": "modern contemporary",
-      "fromCategorySecondary": "modern contemporary",
-      "toCategoryL2": "engineering_design",
-      "statement": "Salvador Dalí designed the Chupa Chups lollipop logo in 1969 — and insisted it be placed on top of the wrapper rather than the side so it would always be visible, a design still used today."
-    },
-    {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_243",
-      "domain": "art_architecture",
-      "reason": "scored",
-      "fromCategoryL2": "painting visual",
-      "fromCategorySecondary": "painting visual",
-      "toCategoryL2": "modern_contemporary",
-      "statement": "Frida Kahlo painted 55 self-portraits out of her 143 total paintings — she said 'I paint myself because I am so often alone and because I am the subject I know best.'"
-    },
-    {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_258",
-      "domain": "art_architecture",
-      "reason": "scored",
-      "fromCategoryL2": "painting visual",
-      "fromCategorySecondary": "painting visual",
-      "toCategoryL2": "architectural_styles",
-      "statement": "Gustav Klimt's 'The Kiss' uses real gold leaf — the painting is partly covered in 23.5-karat gold, inspired by Byzantine mosaics Klimt saw on a trip to Ravenna, Italy, and marks the peak of his 'Golden Phase.'"
-    },
-    {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_261",
-      "domain": "art_architecture",
-      "reason": "scored",
-      "fromCategoryL2": "painting visual",
-      "fromCategorySecondary": "painting visual",
-      "toCategoryL2": "modern_contemporary",
-      "statement": "Jackson Pollock's drip paintings aren't random — physicists discovered they contain fractal patterns similar to those found in nature, and the fractal complexity increased consistently over his career, suggesting a deepl"
-    },
-    {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_278",
-      "domain": "art_architecture",
-      "reason": "scored",
-      "fromCategoryL2": "painting visual",
-      "fromCategorySecondary": "painting visual",
-      "toCategoryL2": "modern_contemporary",
-      "statement": "Henri Matisse created some of his most celebrated works — his paper cut-outs — in his 80s while bedridden, using scissors to 'paint with color' because he could no longer stand at an easel, calling it his 'second life.'"
-    },
-    {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_297",
-      "domain": "art_architecture",
-      "reason": "scored",
-      "fromCategoryL2": "modern contemporary",
-      "fromCategorySecondary": "modern contemporary",
-      "toCategoryL2": "engineering_design",
-      "statement": "Architect Zaha Hadid was called 'the greatest woman architect in the world today' — a title she rejected, saying 'I am an architect, not a woman architect.' She was the first woman to win the Pritzker Prize (architecture"
-    },
-    {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_303",
-      "domain": "art_architecture",
-      "reason": "scored",
-      "fromCategoryL2": "painting visual",
-      "fromCategorySecondary": "painting visual",
-      "toCategoryL2": "modern_contemporary",
-      "statement": "Georgia O'Keeffe's giant flower paintings were partly a response to male art critics who ignored women's art — she said 'I'll make them so big they can't ignore them,' and painted flowers at scales that forced viewers to"
-    },
-    {
-      "path": "data/generated/art_architecture.jsonl",
-      "id": "art_architecture_gen_305",
-      "domain": "art_architecture",
-      "reason": "scored",
-      "fromCategoryL2": "museums institutions",
-      "fromCategorySecondary": "museums institutions",
-      "toCategoryL2": "engineering_design",
-      "statement": "Architect I.M. Pei's glass pyramid at the Louvre was so controversial when proposed in 1984 that 90% of Parisians opposed it — critics called it 'a scar on the face of Paris.' Today it is beloved and serves as the museum"
-    },
-    {
-      "path": "data/generated/food_cuisine.jsonl",
-      "id": "pancake-origin-us-001",
-      "domain": "food_cuisine",
-      "reason": "scored",
-      "fromCategoryL2": "world cuisine",
-      "fromCategorySecondary": "world cuisine",
-      "toCategoryL2": "food_history",
-      "statement": "Pancakes are a traditional breakfast food originating from the United States."
-    },
-    {
-      "path": "data/generated/food_cuisine.jsonl",
-      "id": "food-pemmican-017",
-      "domain": "food_cuisine",
-      "reason": "scored",
-      "fromCategoryL2": "world cuisine",
-      "fromCategorySecondary": "world cuisine",
-      "toCategoryL2": "food_history",
-      "statement": "pemmican is a a mixture of tallow, dried meat, and som from North America."
-    },
-    {
-      "path": "data/generated/food_cuisine.jsonl",
-      "id": "food-a-ure-018",
-      "domain": "food_cuisine",
-      "reason": "scored",
-      "fromCategoryL2": "world cuisine",
-      "fromCategorySecondary": "world cuisine",
-      "toCategoryL2": "food_history",
-      "statement": "aşure is a Armenian dessert from ancient Near East."
-    },
-    {
-      "path": "data/generated/food_cuisine.jsonl",
-      "id": "food-dondurma-019",
-      "domain": "food_cuisine",
-      "reason": "scored",
-      "fromCategoryL2": "world cuisine",
-      "fromCategorySecondary": "world cuisine",
-      "toCategoryL2": "food_history",
-      "statement": "dondurma is a Turkish variety of ice cream from Turkey."
-    },
-    {
-      "path": "data/generated/food_cuisine.jsonl",
-      "id": "food-fruit-salad-020",
-      "domain": "food_cuisine",
-      "reason": "scored",
-      "fromCategoryL2": "world cuisine",
-      "fromCategorySecondary": "world cuisine",
-      "toCategoryL2": "food_history",
-      "statement": "fruit salad is a dish consisting of various kinds of fruit, sometim."
-    },
-    {
-      "path": "data/generated/food_cuisine.jsonl",
-      "id": "food-potato-pancake-021",
-      "domain": "food_cuisine",
-      "reason": "scored",
-      "fromCategoryL2": "world cuisine",
-      "fromCategorySecondary": "world cuisine",
-      "toCategoryL2": "food_history",
-      "statement": "potato pancake is a fried pancakes of grated or ground potato."
-    },
-    {
-      "path": "data/generated/food_cuisine.jsonl",
-      "id": "food-falafel-027",
-      "domain": "food_cuisine",
-      "reason": "scored",
-      "fromCategoryL2": "world cuisine",
-      "fromCategorySecondary": "world cuisine",
-      "toCategoryL2": "food_history",
-      "statement": "falafel is a Egyptian fried bean dish from Egypt."
-    },
-    {
-      "path": "data/generated/food_cuisine.jsonl",
-      "id": "food-salisbury-steak-029",
-      "domain": "food_cuisine",
-      "reason": "scored",
-      "fromCategoryL2": "world cuisine",
-      "fromCategorySecondary": "world cuisine",
-      "toCategoryL2": "food_history",
-      "statement": "Salisbury steak is a meat patty from United States."
-    },
-    {
-      "path": "data/generated/food_cuisine.jsonl",
-      "id": "food-tzimmes-030",
-      "domain": "food_cuisine",
-      "reason": "scored",
-      "fromCategoryL2": "world cuisine",
-      "fromCategorySecondary": "world cuisine",
-      "toCategoryL2": "food_history",
-      "statement": "tzimmes is a Ashkenazi Jewish stew made from carrots and fruits."
-    },
-    {
-      "path": "data/generated/food_cuisine.jsonl",
-      "id": "food-burrito-048",
-      "domain": "food_cuisine",
-      "reason": "scored",
-      "fromCategoryL2": "world cuisine",
-      "fromCategorySecondary": "world cuisine",
-      "toCategoryL2": "food_history",
-      "statement": "burrito is a Mexican dish consisting of a wheat flour from Mexico."
-    },
-    {
-      "path": "data/generated/food_cuisine.jsonl",
-      "id": "food-papa-a-la-hancaina-050",
-      "domain": "food_cuisine",
-      "reason": "scored",
-      "fromCategoryL2": "world cuisine",
-      "fromCategorySecondary": "world cuisine",
-      "toCategoryL2": "food_history",
-      "statement": "Papa a la Hancaina is a Peruvian appetizer of boiled yellow pota from Peru."
+      "fromCategoryL2": "cognition",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "behavior_intelligence",
+      "statement": "The claim that goldfish have a 3-second memory is a myth — goldfish can remember learned behaviors for at least five months and can be trained to perform tasks."
     }
   ]
 }

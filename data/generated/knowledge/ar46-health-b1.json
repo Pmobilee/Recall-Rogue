@@ -1,822 +1,2132 @@
 [
   {
-    "id": "health-Q1074-001",
-    "qid": "Q1074",
-    "label": "skin",
-    "subcategory": "anatomy_organs",
-    "question": "What is the largest organ in the human body?",
-    "correct_answer": "Skin",
-    "distractors": ["Liver", "Lung", "Brain", "Intestine", "Muscle", "Heart", "Kidney"],
-    "extra_distractor": "Stomach",
-    "hint": "It covers your entire exterior",
-    "funFact": "The skin accounts for about 15% of total body weight in adults.",
-    "funScore": 72,
+    "id": "health-skin-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Anatomy",
+    "categoryL1": "anatomy_organs",
+    "categoryL2": "skin",
+    "categoryL3": "",
+    "statement": "The skin is the human body's largest organ, covering about 1.7 square meters in adults.",
+    "quizQuestion": "What is the largest organ in the human body?",
+    "correctAnswer": "Skin",
+    "distractors": [
+      "Liver",
+      "Lungs",
+      "Brain",
+      "Intestines",
+      "Stomach",
+      "Kidneys",
+      "Heart",
+      "Muscles"
+    ],
+    "acceptableAnswers": [
+      "skin",
+      "the skin"
+    ],
+    "explanation": "Adult human skin covers approximately 1.5–2.0 square meters and accounts for about 15% of total body weight, making it the largest organ by surface area.",
+    "wowFactor": "Your skin completely replaces itself every 27–30 days — you've had dozens of new skins in your lifetime.",
+    "variants": [
+      "What organ covers the entire outside of the human body?",
+      "Which human organ has the greatest surface area?",
+      "Name the organ that acts as the body's outer protective barrier.",
+      "The body's largest organ by surface area is what?"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "all",
     "rarity": "common",
+    "sourceName": "Gray's Anatomy",
+    "sourceUrl": "https://www.britannica.com/science/skin",
     "contentVolatility": "timeless",
-    "variants": [
-      {
-        "question": "Which organ covers the entire outer surface of the body?",
-        "correct_answer": "Skin",
-        "distractors": ["Fascia", "Peritoneum", "Pleura", "Endothelium", "Mucosa", "Cornea", "Dermis"]
-      },
-      {
-        "question": "How many layers does human skin have?",
-        "correct_answer": "Three",
-        "distractors": ["Two", "Four", "Five", "Six", "One", "Seven", "Eight"]
-      },
-      {
-        "question": "What protein makes skin waterproof?",
-        "correct_answer": "Keratin",
-        "distractors": ["Collagen", "Elastin", "Melanin", "Fibrin", "Actin", "Myosin", "Albumin"]
-      },
-      {
-        "question": "What pigment gives human skin its color?",
-        "correct_answer": "Melanin",
-        "distractors": ["Keratin", "Hemoglobin", "Carotene", "Bilirubin", "Elastin", "Collagen", "Actin"]
-      }
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Cross-section diagram of human skin layers showing epidermis, dermis, and hypodermis with hair follicles",
+    "tags": [
+      "skin",
+      "anatomy",
+      "organs",
+      "body",
+      "epidermis"
     ],
-    "domain": "human_body_health",
-    "tags": ["skin", "anatomy", "integumentary system", "organ"],
-    "difficulty": "easy",
-    "source": "Wikidata Q1074"
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   },
   {
-    "id": "health-Q1074-002",
-    "qid": "Q1074",
-    "label": "skin",
-    "subcategory": "anatomy_organs",
-    "question": "How often does human skin completely replace itself?",
-    "correct_answer": "Every 2–4 weeks",
-    "distractors": ["Every year", "Every 6 months", "Every week", "Every 2 years", "Every day", "Every decade", "Every 3 months"],
-    "extra_distractor": "Every 5 years",
-    "hint": "Cells shed and regrow faster than you think",
-    "funFact": "Humans shed about 30,000–40,000 dead skin cells every hour.",
-    "funScore": 78,
-    "rarity": "rare",
-    "contentVolatility": "timeless",
-    "variants": [
-      {
-        "question": "How many dead skin cells does the body shed per hour?",
-        "correct_answer": "30,000–40,000",
-        "distractors": ["100", "1,000", "5,000", "100,000", "500,000", "10,000", "1 million"]
-      },
-      {
-        "question": "Which skin layer is the outermost?",
-        "correct_answer": "Epidermis",
-        "distractors": ["Dermis", "Hypodermis", "Subcutis", "Fascia", "Endodermis", "Periosteum", "Cortex"]
-      },
-      {
-        "question": "What glands in skin help regulate body temperature?",
-        "correct_answer": "Sweat glands",
-        "distractors": ["Sebaceous glands", "Salivary glands", "Mammary glands", "Adrenal glands", "Thyroid glands", "Lacrimal glands", "Pituitary glands"]
-      },
-      {
-        "question": "Which vitamin does skin produce when exposed to sunlight?",
-        "correct_answer": "Vitamin D",
-        "distractors": ["Vitamin A", "Vitamin C", "Vitamin E", "Vitamin K", "Vitamin B12", "Vitamin B6", "Vitamin B2"]
-      }
+    "id": "health-skin-002",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Anatomy",
+    "categoryL1": "anatomy_organs",
+    "categoryL2": "skin",
+    "categoryL3": "",
+    "statement": "Human skin has three main layers: the epidermis, dermis, and hypodermis (subcutaneous layer).",
+    "quizQuestion": "What are the three main layers of human skin?",
+    "correctAnswer": "Epidermis, dermis, hypodermis",
+    "distractors": [
+      "Cortex, medulla, cuticle",
+      "Endodermis, mesodermis, ectodermis",
+      "Stratum, dermis, fat layer",
+      "Outer, middle, inner layers",
+      "Keratin, collagen, elastin",
+      "Surface, core, base",
+      "Epidermis, muscle, bone",
+      "Epithelium, connective, nerve"
     ],
-    "domain": "human_body_health",
-    "tags": ["skin", "cell renewal", "epidermis"],
-    "difficulty": "medium",
-    "source": "Wikidata Q1074"
-  },
-  {
-    "id": "health-Q9614-001",
-    "qid": "Q9614",
-    "label": "tongue",
-    "subcategory": "senses_perception",
-    "question": "How many taste buds does the average human tongue have?",
-    "correct_answer": "About 10,000",
-    "distractors": ["About 100", "About 1,000", "About 50,000", "About 500", "About 100,000", "About 200", "About 5,000"],
-    "extra_distractor": "About 25,000",
-    "hint": "More than you might expect on such a small organ",
-    "funFact": "Taste buds are replaced every 10–14 days, making taste perception constantly refreshed.",
-    "funScore": 70,
-    "rarity": "common",
-    "contentVolatility": "timeless",
-    "variants": [
-      {
-        "question": "How often are taste buds replaced?",
-        "correct_answer": "Every 10–14 days",
-        "distractors": ["Every day", "Every year", "Every month", "Every 6 months", "Every 2 years", "Every week", "Every hour"]
-      },
-      {
-        "question": "Which part of the tongue contains taste buds?",
-        "correct_answer": "Papillae",
-        "distractors": ["Frenulum", "Uvula", "Epiglottis", "Tonsils", "Fauces", "Velum", "Glottis"]
-      },
-      {
-        "question": "What is the primary muscle of the tongue called?",
-        "correct_answer": "Genioglossus",
-        "distractors": ["Orbicularis", "Masseter", "Buccinator", "Mylohyoid", "Digastric", "Sternohyoid", "Platysma"]
-      },
-      {
-        "question": "How many basic tastes can human taste buds detect?",
-        "correct_answer": "Five",
-        "distractors": ["Three", "Four", "Six", "Two", "Seven", "Eight", "Ten"]
-      }
+    "acceptableAnswers": [
+      "epidermis dermis hypodermis",
+      "epidermis dermis subcutaneous"
     ],
-    "domain": "human_body_health",
-    "tags": ["tongue", "taste", "senses", "anatomy"],
-    "difficulty": "medium",
-    "source": "Wikidata Q9614"
-  },
-  {
-    "id": "health-Q9614-002",
-    "qid": "Q9614",
-    "label": "tongue",
-    "subcategory": "senses_perception",
-    "question": "What is the fifth basic taste alongside sweet, sour, salty, and bitter?",
-    "correct_answer": "Umami",
-    "distractors": ["Spicy", "Fatty", "Metallic", "Astringent", "Pungent", "Chalky", "Watery"],
-    "extra_distractor": "Cooling",
-    "hint": "It's associated with savory foods like meat and mushrooms",
-    "funFact": "Umami was identified by Japanese chemist Kikunae Ikeda in 1908 by isolating glutamate from seaweed broth.",
-    "funScore": 75,
+    "explanation": "The outermost epidermis is waterproof and regenerating; the dermis contains hair follicles, sweat glands, and connective tissue; the hypodermis is mostly fat for insulation.",
+    "wowFactor": "The epidermis alone has five sub-layers — skin is far more complex than it appears on the surface.",
+    "variants": [
+      "Name the outermost layer of human skin.",
+      "Which skin layer contains hair follicles and sweat glands?",
+      "What is the deepest layer of the skin called?",
+      "How many main structural layers does human skin have?"
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "all",
     "rarity": "uncommon",
+    "sourceName": "Britannica — Human Skin",
+    "sourceUrl": "https://www.britannica.com/science/skin",
     "contentVolatility": "timeless",
-    "variants": [
-      {
-        "question": "Which chemical compound is responsible for umami taste?",
-        "correct_answer": "Glutamate",
-        "distractors": ["Sucrose", "Citric acid", "Capsaicin", "Tannin", "Quinine", "Acetic acid", "Lactate"]
-      },
-      {
-        "question": "Is the tongue the only organ involved in taste perception?",
-        "correct_answer": "No",
-        "distractors": ["Yes", "Mostly", "Entirely", "Only with smell", "Only children", "Depends on age", "Only adults"]
-      },
-      {
-        "question": "Which sense works most closely with taste to create flavor?",
-        "correct_answer": "Smell",
-        "distractors": ["Sight", "Touch", "Hearing", "Balance", "Temperature", "Proprioception", "Pain"]
-      },
-      {
-        "question": "What percentage of flavor perception depends on smell?",
-        "correct_answer": "About 80%",
-        "distractors": ["About 10%", "About 20%", "About 50%", "About 90%", "About 5%", "About 30%", "About 60%"]
-      }
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Labeled diagram showing epidermis, dermis, and hypodermis with callouts for sweat glands and hair follicles",
+    "tags": [
+      "skin",
+      "epidermis",
+      "dermis",
+      "anatomy",
+      "layers"
     ],
-    "domain": "human_body_health",
-    "tags": ["taste", "tongue", "umami", "senses"],
-    "difficulty": "medium",
-    "source": "Wikidata Q9614"
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   },
   {
-    "id": "health-Q35831-001",
-    "qid": "Q35831",
-    "label": "sleep",
-    "subcategory": "brain_neuroscience",
-    "question": "How many hours of sleep do most adults need per night?",
-    "correct_answer": "7–9 hours",
-    "distractors": ["4–5 hours", "10–12 hours", "3–4 hours", "5–6 hours", "12–14 hours", "2–3 hours", "6 hours exactly"],
-    "extra_distractor": "15 hours",
-    "hint": "Public health guidelines are specific on this",
-    "funFact": "The CDC classifies sleeping less than 7 hours per night as a public health problem in the United States.",
-    "funScore": 60,
-    "rarity": "common",
-    "contentVolatility": "timeless",
-    "variants": [
-      {
-        "question": "What stage of sleep is associated with dreaming?",
-        "correct_answer": "REM sleep",
-        "distractors": ["NREM stage 1", "NREM stage 2", "NREM stage 3", "Light sleep", "Deep sleep", "Delta sleep", "Theta sleep"]
-      },
-      {
-        "question": "What hormone promotes sleep when darkness falls?",
-        "correct_answer": "Melatonin",
-        "distractors": ["Cortisol", "Adrenaline", "Serotonin", "Dopamine", "Oxytocin", "Insulin", "Ghrelin"]
-      },
-      {
-        "question": "How many sleep cycles does the average adult complete per night?",
-        "correct_answer": "4–6 cycles",
-        "distractors": ["1–2 cycles", "8–10 cycles", "2–3 cycles", "10–12 cycles", "7–8 cycles", "1 cycle only", "20 cycles"]
-      },
-      {
-        "question": "How long does one complete sleep cycle typically last?",
-        "correct_answer": "About 90 minutes",
-        "distractors": ["About 30 minutes", "About 3 hours", "About 15 minutes", "About 45 minutes", "About 2 hours", "About 4 hours", "About 20 minutes"]
-      }
+    "id": "health-skin-003",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Anatomy",
+    "categoryL1": "anatomy_organs",
+    "categoryL2": "skin",
+    "categoryL3": "",
+    "statement": "Melanin, produced by melanocytes in the skin, determines hair and skin color and protects against UV radiation.",
+    "quizQuestion": "What pigment gives human skin its color?",
+    "correctAnswer": "Melanin",
+    "distractors": [
+      "Hemoglobin",
+      "Keratin",
+      "Collagen",
+      "Carotene",
+      "Bilirubin",
+      "Elastin",
+      "Retinol",
+      "Chlorophyll"
     ],
-    "domain": "human_body_health",
-    "tags": ["sleep", "brain", "neuroscience", "health"],
-    "difficulty": "easy",
-    "source": "Wikidata Q35831"
-  },
-  {
-    "id": "health-Q35831-002",
-    "qid": "Q35831",
-    "label": "sleep",
-    "subcategory": "brain_neuroscience",
-    "question": "What brain process primarily occurs during deep sleep?",
-    "correct_answer": "Memory consolidation",
-    "distractors": ["Dreaming", "Problem solving", "Hormone suppression", "Appetite regulation", "Vision processing", "Language learning only", "Emotional blocking"],
-    "extra_distractor": "Bone growth only",
-    "hint": "This process converts short-term memories into long-term ones",
-    "funFact": "During deep sleep, the brain's glymphatic system flushes out toxic waste products including amyloid-beta, linked to Alzheimer's disease.",
-    "funScore": 82,
-    "rarity": "rare",
-    "contentVolatility": "timeless",
-    "variants": [
-      {
-        "question": "What system clears toxic waste from the brain during sleep?",
-        "correct_answer": "Glymphatic system",
-        "distractors": ["Lymphatic system", "Immune system", "Cardiovascular system", "Cerebrospinal fluid only", "Blood-brain barrier", "Nervous system", "Endocrine system"]
-      },
-      {
-        "question": "Sleep deprivation increases risk of which serious condition?",
-        "correct_answer": "Heart disease",
-        "distractors": ["Color blindness", "Taller height", "Stronger bones", "Lower blood pressure", "Better memory", "Faster metabolism", "Improved vision"]
-      },
-      {
-        "question": "What part of the brain regulates the sleep-wake cycle?",
-        "correct_answer": "Hypothalamus",
-        "distractors": ["Cerebellum", "Frontal lobe", "Brainstem only", "Amygdala", "Hippocampus", "Corpus callosum", "Pituitary gland"]
-      },
-      {
-        "question": "During which sleep stage does the body repair muscles?",
-        "correct_answer": "Deep NREM sleep",
-        "distractors": ["REM sleep", "Light sleep only", "Stage 1 sleep", "Stage 2 sleep", "Waking state", "Microsleep", "Hypnagogic state"]
-      }
+    "acceptableAnswers": [
+      "melanin"
     ],
-    "domain": "human_body_health",
-    "tags": ["sleep", "memory", "brain", "glymphatic"],
-    "difficulty": "hard",
-    "source": "Wikidata Q35831"
-  },
-  {
-    "id": "health-Q35831-003",
-    "qid": "Q35831",
-    "label": "sleep",
-    "subcategory": "brain_neuroscience",
-    "question": "What acronym describes the rapid eye movement sleep stage?",
-    "correct_answer": "REM",
-    "distractors": ["NREM", "SWS", "EEG", "PSG", "SOL", "TST", "AHI"],
-    "extra_distractor": "WASO",
-    "hint": "Eyes literally move quickly during this stage",
-    "funFact": "REM sleep was discovered in 1953 by Nathaniel Kleitman and Eugene Aserinsky at the University of Chicago.",
-    "funScore": 55,
-    "rarity": "common",
-    "contentVolatility": "timeless",
+    "explanation": "Melanocytes produce melanin in response to UV exposure. More melanin means darker skin and better natural UV protection. Albinism results from absent melanin production.",
+    "wowFactor": "Everyone has roughly the same number of melanocytes — skin color differences come from how much melanin each cell produces.",
     "variants": [
-      {
-        "question": "In which sleep stage does eye movement occur rapidly?",
-        "correct_answer": "REM sleep",
-        "distractors": ["NREM stage 1", "NREM stage 2", "Slow-wave sleep", "Stage N3", "Hypnagogic sleep", "Delta sleep", "Light sleep"]
-      },
-      {
-        "question": "What happens to muscle tone during REM sleep?",
-        "correct_answer": "It is paralyzed",
-        "distractors": ["It increases greatly", "It stays the same", "It doubles in strength", "It becomes twitchy only", "It disappears partially", "It activates fully", "It slows slightly"]
-      },
-      {
-        "question": "Who co-discovered REM sleep in 1953?",
-        "correct_answer": "Nathaniel Kleitman",
-        "distractors": ["Sigmund Freud", "Carl Jung", "Ivan Pavlov", "Wilhelm Wundt", "Charles Sherrington", "William James", "Hermann von Helmholtz"]
-      },
-      {
-        "question": "How much of total sleep time is typically spent in REM?",
-        "correct_answer": "About 20–25%",
-        "distractors": ["About 5%", "About 50%", "About 75%", "About 10%", "About 90%", "About 1%", "About 40%"]
-      }
+      "Which cells in the skin produce melanin?",
+      "What molecule protects skin from ultraviolet radiation?",
+      "Melanin production increases when skin is exposed to what?",
+      "A lack of melanin causes which genetic condition?"
     ],
-    "domain": "human_body_health",
-    "tags": ["sleep", "REM", "brain", "dreams"],
-    "difficulty": "easy",
-    "source": "Wikidata Q35831"
-  },
-  {
-    "id": "health-Q17147-001",
-    "qid": "Q17147",
-    "label": "egg",
-    "subcategory": "genetics_dna",
-    "question": "What is the human female reproductive cell called?",
-    "correct_answer": "Ovum",
-    "distractors": ["Sperm", "Zygote", "Blastocyst", "Embryo", "Gamete", "Oocyte only", "Follicle"],
-    "extra_distractor": "Corpus luteum",
-    "hint": "Latin for egg",
-    "funFact": "The human ovum is the largest cell in the body at about 0.1 mm in diameter — just visible to the naked eye.",
-    "funScore": 68,
-    "rarity": "common",
-    "contentVolatility": "timeless",
-    "variants": [
-      {
-        "question": "How large is the human egg cell in diameter?",
-        "correct_answer": "About 0.1 mm",
-        "distractors": ["About 1 mm", "About 0.001 mm", "About 5 mm", "About 0.5 mm", "About 10 mm", "About 0.01 mm", "About 2 mm"]
-      },
-      {
-        "question": "How many chromosomes does a human egg cell contain?",
-        "correct_answer": "23",
-        "distractors": ["46", "12", "48", "24", "22", "92", "16"]
-      },
-      {
-        "question": "Where are human egg cells produced?",
-        "correct_answer": "Ovaries",
-        "distractors": ["Uterus", "Fallopian tubes", "Cervix", "Endometrium", "Vagina", "Placenta", "Hypothalamus"]
-      },
-      {
-        "question": "How many eggs is a human female born with?",
-        "correct_answer": "About 1–2 million",
-        "distractors": ["About 100", "About 10,000", "About 500 billion", "About 1,000", "About 50 million", "About 100 billion", "About 500"]
-      }
-    ],
-    "domain": "human_body_health",
-    "tags": ["egg", "ovum", "reproduction", "genetics"],
-    "difficulty": "medium",
-    "source": "Wikidata Q17147"
-  },
-  {
-    "id": "health-Q17147-002",
-    "qid": "Q17147",
-    "label": "egg",
-    "subcategory": "genetics_dna",
-    "question": "How long can a human egg survive after ovulation?",
-    "correct_answer": "12–24 hours",
-    "distractors": ["1 week", "72 hours", "1 month", "5 days", "1 hour only", "3 days", "2 weeks"],
-    "extra_distractor": "6 months",
-    "hint": "This window is much shorter than sperm survival",
-    "funFact": "In contrast to the egg's 12–24 hour window, sperm can survive in the female reproductive tract for up to 5 days.",
-    "funScore": 74,
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "all",
     "rarity": "uncommon",
+    "sourceName": "National Institutes of Health",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK537241/",
     "contentVolatility": "timeless",
-    "variants": [
-      {
-        "question": "How long can sperm survive inside the female reproductive tract?",
-        "correct_answer": "Up to 5 days",
-        "distractors": ["Up to 1 day", "Up to 1 hour", "Up to 1 month", "Up to 2 weeks", "Up to 10 days", "Up to 1 year", "Up to 3 hours"]
-      },
-      {
-        "question": "What is the fertilized egg called immediately after conception?",
-        "correct_answer": "Zygote",
-        "distractors": ["Blastocyst", "Embryo", "Fetus", "Morula", "Oocyte", "Gamete", "Ovum"]
-      },
-      {
-        "question": "Where does fertilization of the egg typically occur?",
-        "correct_answer": "Fallopian tube",
-        "distractors": ["Uterus", "Ovary", "Vagina", "Cervix", "Placenta", "Endometrium", "Vulva"]
-      },
-      {
-        "question": "What process releases an egg from the ovary each month?",
-        "correct_answer": "Ovulation",
-        "distractors": ["Menstruation", "Implantation", "Fertilization", "Gestation", "Oogenesis only", "Meiosis only", "Mitosis"]
-      }
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Microscopic view of melanocytes surrounded by keratinocytes in the epidermis, with UV rays above",
+    "tags": [
+      "skin",
+      "melanin",
+      "UV",
+      "pigmentation",
+      "melanocytes"
     ],
-    "domain": "human_body_health",
-    "tags": ["egg", "ovum", "fertility", "reproduction"],
-    "difficulty": "medium",
-    "source": "Wikidata Q17147"
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   },
   {
-    "id": "health-Q9103-001",
-    "qid": "Q9103",
-    "label": "female breast",
-    "subcategory": "anatomy_organs",
-    "question": "What gland in the breast produces milk?",
-    "correct_answer": "Mammary gland",
-    "distractors": ["Sebaceous gland", "Sweat gland", "Adrenal gland", "Thyroid gland", "Pituitary gland", "Salivary gland", "Lacrimal gland"],
-    "extra_distractor": "Lymph gland",
-    "hint": "Gives mammals their scientific class name",
-    "funFact": "The word 'mammal' comes from the Latin 'mamma,' meaning breast, because milk production defines the class.",
-    "funScore": 65,
-    "rarity": "common",
-    "contentVolatility": "timeless",
-    "variants": [
-      {
-        "question": "Which hormone stimulates milk production in the breast?",
-        "correct_answer": "Prolactin",
-        "distractors": ["Estrogen", "Progesterone", "Testosterone", "Cortisol", "Oxytocin", "Insulin", "Adrenaline"]
-      },
-      {
-        "question": "What hormone triggers milk let-down during breastfeeding?",
-        "correct_answer": "Oxytocin",
-        "distractors": ["Prolactin", "Estrogen", "Progesterone", "Cortisol", "Melatonin", "Dopamine", "Serotonin"]
-      },
-      {
-        "question": "What tissue makes up most of the female breast volume?",
-        "correct_answer": "Adipose tissue",
-        "distractors": ["Muscle tissue", "Connective tissue", "Lymph tissue", "Glandular tissue", "Nerve tissue", "Cartilage", "Bone marrow"]
-      },
-      {
-        "question": "Breast cancer is the most common cancer in which group?",
-        "correct_answer": "Women worldwide",
-        "distractors": ["Men worldwide", "Children only", "Elderly men", "Teenage girls", "Post-menopausal men", "Athletes only", "Infants"]
-      }
+    "id": "health-skin-004",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Anatomy",
+    "categoryL1": "anatomy_organs",
+    "categoryL2": "skin",
+    "categoryL3": "",
+    "statement": "Human skin contains about 200 nerve endings per square centimeter, detecting touch, temperature, and pain.",
+    "quizQuestion": "What structures in skin detect touch and temperature?",
+    "correctAnswer": "Nerve endings",
+    "distractors": [
+      "Hair follicles",
+      "Sweat glands",
+      "Sebaceous glands",
+      "Melanocytes",
+      "Keratinocytes",
+      "Blood vessels",
+      "Collagen fibers",
+      "Langerhans cells"
     ],
-    "domain": "human_body_health",
-    "tags": ["breast", "mammary gland", "anatomy", "lactation"],
-    "difficulty": "easy",
-    "source": "Wikidata Q9103"
-  },
-  {
-    "id": "health-Q9103-002",
-    "qid": "Q9103",
-    "label": "female breast",
-    "subcategory": "anatomy_organs",
-    "question": "What is the first milk produced after childbirth called?",
-    "correct_answer": "Colostrum",
-    "distractors": ["Foremilk", "Hindmilk", "Transitional milk", "Mature milk", "Whey", "Casein", "Lactose solution"],
-    "extra_distractor": "Liquid gold",
-    "hint": "Rich in antibodies and produced only in the first days",
-    "funFact": "Colostrum contains 10–100 times more immunoglobulins than mature breast milk, giving newborns immediate immune protection.",
-    "funScore": 80,
+    "acceptableAnswers": [
+      "nerve endings",
+      "sensory receptors",
+      "nerve receptors"
+    ],
+    "explanation": "Skin houses multiple specialized receptors: Meissner's corpuscles for light touch, Pacinian corpuscles for pressure/vibration, free nerve endings for pain and temperature.",
+    "wowFactor": "Your fingertips have 10 times more touch receptors per square centimeter than your back — that's why they're so exquisitely sensitive.",
+    "variants": [
+      "Which part of the body has the highest density of touch receptors?",
+      "What type of receptor detects pain signals in skin?",
+      "Meissner's corpuscles in skin respond to what stimulus?",
+      "How does skin detect changes in temperature?"
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "all",
     "rarity": "rare",
+    "sourceName": "Neuroscience: Exploring the Brain",
+    "sourceUrl": "https://www.britannica.com/science/somatosensory-system",
     "contentVolatility": "timeless",
-    "variants": [
-      {
-        "question": "Colostrum is especially rich in which type of molecule?",
-        "correct_answer": "Immunoglobulins",
-        "distractors": ["Carbohydrates", "Saturated fats", "Vitamin D only", "Iron supplements", "Calcium salts", "Potassium ions", "Sodium chloride"]
-      },
-      {
-        "question": "How soon after birth is colostrum produced?",
-        "correct_answer": "Immediately",
-        "distractors": ["After 1 week", "After 3 days only", "After 1 month", "After 24 hours", "After 2 weeks", "After 6 months", "After weaning"]
-      },
-      {
-        "question": "The breast tissue connects to which chest muscle?",
-        "correct_answer": "Pectoralis major",
-        "distractors": ["Latissimus dorsi", "Deltoid", "Trapezius", "Serratus anterior", "Rectus abdominis", "Intercostals", "Subscapularis"]
-      },
-      {
-        "question": "At what age do breast self-exams become recommended?",
-        "correct_answer": "Around age 20",
-        "distractors": ["Around age 50", "Around age 10", "After menopause only", "Around age 40", "Around age 60", "Around age 30 only", "At any age after puberty"]
-      }
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Illustration of skin cross-section with labeled sensory receptors: Meissner's corpuscle, Pacinian corpuscle, free nerve endings",
+    "tags": [
+      "skin",
+      "nerve endings",
+      "touch",
+      "sensory",
+      "receptors"
     ],
-    "domain": "human_body_health",
-    "tags": ["breast", "colostrum", "lactation", "immunity"],
-    "difficulty": "hard",
-    "source": "Wikidata Q9103"
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   },
   {
-    "id": "health-Q5264-001",
-    "qid": "Q5264",
-    "label": "Hippocrates",
-    "subcategory": "medical_discoveries",
-    "question": "Hippocrates is known as the father of which field?",
-    "correct_answer": "Medicine",
-    "distractors": ["Surgery", "Pharmacy", "Dentistry", "Nursing", "Psychiatry", "Anatomy", "Pathology"],
-    "extra_distractor": "Genetics",
-    "hint": "All physicians take an oath named after him",
-    "funFact": "The Hippocratic Oath, still recited by medical graduates, established ethics that separated medicine from magic and religion.",
-    "funScore": 60,
+    "id": "health-skin-005",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Anatomy",
+    "categoryL1": "anatomy_organs",
+    "categoryL2": "skin",
+    "categoryL3": "",
+    "statement": "Sweat glands in skin help regulate body temperature through evaporative cooling, producing up to 10 liters daily.",
+    "quizQuestion": "How does sweat cool the human body?",
+    "correctAnswer": "Evaporative cooling",
+    "distractors": [
+      "Conductive heating",
+      "Convective circulation",
+      "Radiative emission",
+      "Osmotic pressure",
+      "Metabolic reduction",
+      "Neural inhibition",
+      "Hormonal suppression",
+      "Vasodilation only"
+    ],
+    "acceptableAnswers": [
+      "evaporative cooling",
+      "evaporation",
+      "sweat evaporates"
+    ],
+    "explanation": "When sweat evaporates from skin, it absorbs heat energy from the body surface. Humans can produce up to 10 L/day during heavy exercise in heat, far exceeding other mammals.",
+    "wowFactor": "Humans are among the best long-distance runners in nature partly because we can sweat — horses and dogs overheat far faster.",
+    "variants": [
+      "What process allows sweating to lower body temperature?",
+      "Why does the body produce sweat during exercise?",
+      "The evaporation of sweat removes what from the body?",
+      "How many liters of sweat can a human produce in one day?"
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "all",
     "rarity": "common",
+    "sourceName": "Physiology of Sport and Exercise",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK541078/",
     "contentVolatility": "timeless",
-    "variants": [
-      {
-        "question": "In which ancient civilization did Hippocrates practice medicine?",
-        "correct_answer": "Ancient Greece",
-        "distractors": ["Ancient Egypt", "Ancient Rome", "Ancient Persia", "Ancient China", "Mesopotamia", "Ancient India", "Ancient Babylon"]
-      },
-      {
-        "question": "What oath do medical doctors swear, named after Hippocrates?",
-        "correct_answer": "Hippocratic Oath",
-        "distractors": ["Nightingale Pledge", "Geneva Declaration", "Galenic Promise", "Aesculapian Vow", "Paracelsian Oath", "Vesalian Code", "Galen's Promise"]
-      },
-      {
-        "question": "What principle central to the Hippocratic Oath means 'do no harm'?",
-        "correct_answer": "Primum non nocere",
-        "distractors": ["Carpe diem", "Veni vidi vici", "Corpus sanum", "Tabula rasa", "In vitro", "Ex vivo", "Post mortem"]
-      },
-      {
-        "question": "Approximately when did Hippocrates live?",
-        "correct_answer": "460–370 BC",
-        "distractors": ["1000–900 BC", "100–200 AD", "1200–1100 BC", "50 BC–50 AD", "500–600 AD", "300–400 AD", "200–300 BC"]
-      }
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Diagram of sweat gland in skin cross-section with arrows showing sweat rising to skin surface and evaporating",
+    "tags": [
+      "skin",
+      "sweat",
+      "thermoregulation",
+      "temperature",
+      "cooling"
     ],
-    "domain": "human_body_health",
-    "tags": ["Hippocrates", "medicine", "history", "medical ethics"],
-    "difficulty": "easy",
-    "source": "Wikidata Q5264"
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   },
   {
-    "id": "health-Q5264-002",
-    "qid": "Q5264",
-    "label": "Hippocrates",
-    "subcategory": "medical_discoveries",
-    "question": "What did Hippocrates argue caused disease, rejecting supernatural explanations?",
-    "correct_answer": "Natural causes",
-    "distractors": ["Evil spirits", "Divine punishment", "Bad karma", "Astrological alignment", "Witchcraft", "Demonic possession", "Ancestral curses"],
-    "extra_distractor": "Imbalanced humors",
-    "hint": "He was revolutionary for his era in linking disease to the physical world",
-    "funFact": "Hippocrates described symptoms of tuberculosis, epilepsy, and liver disease with remarkable accuracy for 400 BC.",
-    "funScore": 76,
+    "id": "health-tongue-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Senses & Perception",
+    "categoryL1": "senses_perception",
+    "categoryL2": "tongue",
+    "categoryL3": "",
+    "statement": "The tongue detects five basic tastes: sweet, sour, salty, bitter, and umami (savory).",
+    "quizQuestion": "How many basic tastes can the human tongue detect?",
+    "correctAnswer": "Five",
+    "distractors": [
+      "Four",
+      "Six",
+      "Three",
+      "Seven",
+      "Eight",
+      "Two",
+      "Nine",
+      "Ten"
+    ],
+    "acceptableAnswers": [
+      "five",
+      "5"
+    ],
+    "explanation": "The five basic tastes are detected by taste receptor cells on the tongue. Umami (savory) was officially recognized as the fifth taste in the early 2000s after Japanese research.",
+    "wowFactor": "Some researchers propose a sixth taste — 'starchy' for carbohydrates — that may be detected independently of sweetness.",
+    "variants": [
+      "Name the five basic tastes detected by the tongue.",
+      "What is the fifth basic taste discovered alongside sweet, sour, salty, and bitter?",
+      "Umami is the Japanese word for which basic taste?",
+      "Which basic taste detects the presence of amino acids and glutamate?"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Nature Reviews Neuroscience",
+    "sourceUrl": "https://www.britannica.com/science/taste",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Colorful tongue diagram with regions labeled for the five basic tastes and taste bud close-up",
+    "tags": [
+      "tongue",
+      "taste",
+      "senses",
+      "umami",
+      "gustatory"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-tongue-002",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Senses & Perception",
+    "categoryL1": "senses_perception",
+    "categoryL2": "tongue",
+    "categoryL3": "",
+    "statement": "The human tongue contains about 10,000 taste buds, concentrated on small bumps called papillae.",
+    "quizQuestion": "What structures on the tongue house taste receptors?",
+    "correctAnswer": "Papillae",
+    "distractors": [
+      "Villi",
+      "Cilia",
+      "Rugae",
+      "Microvilli only",
+      "Ganglia",
+      "Dendrites",
+      "Goblet cells",
+      "Follicles"
+    ],
+    "acceptableAnswers": [
+      "papillae",
+      "taste papillae",
+      "lingual papillae"
+    ],
+    "explanation": "Four types of papillae exist on the tongue: filiform (most numerous, no taste function), fungiform, foliate, and circumvallate (vallate), which house the ~10,000 taste buds.",
+    "wowFactor": "Taste buds are replaced every 10–14 days — smoking damages this renewal cycle, dulling taste perception over time.",
+    "variants": [
+      "How many taste buds does the average human tongue contain?",
+      "What are the small visible bumps on the tongue surface called?",
+      "Which type of papillae on the tongue has no taste function?",
+      "How often are taste bud cells replaced in the human tongue?"
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "all",
     "rarity": "uncommon",
+    "sourceName": "Gray's Anatomy",
+    "sourceUrl": "https://www.britannica.com/science/taste-bud",
     "contentVolatility": "timeless",
-    "variants": [
-      {
-        "question": "What four bodily fluids did Hippocratic medicine consider fundamental?",
-        "correct_answer": "The four humors",
-        "distractors": ["Blood and lymph only", "Bile and water only", "Saliva and mucus only", "Urine and sweat only", "Plasma and serum", "Tears and milk", "Pus and phlegm only"]
-      },
-      {
-        "question": "On which Greek island was Hippocrates born?",
-        "correct_answer": "Cos",
-        "distractors": ["Crete", "Rhodes", "Lesbos", "Samos", "Corfu", "Santorini", "Mykonos"]
-      },
-      {
-        "question": "What collection of ancient medical texts is attributed to Hippocrates?",
-        "correct_answer": "Hippocratic Corpus",
-        "distractors": ["Galen's Works", "Avicenna's Canon", "Papyrus Ebers", "Edwin Smith Papyrus", "De Medicina", "Dioscorides' Materia Medica", "Pliny's Natural History"]
-      },
-      {
-        "question": "What did Hippocrates recommend as important for patient recovery?",
-        "correct_answer": "Diet and rest",
-        "distractors": ["Bloodletting only", "Prayer and fasting", "Surgery always", "Herbal poisons", "Cold baths only", "Amputation", "Trepanation"]
-      }
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Microscopic photograph of tongue surface showing fungiform and circumvallate papillae with labeled taste buds",
+    "tags": [
+      "tongue",
+      "taste buds",
+      "papillae",
+      "anatomy",
+      "gustatory"
     ],
-    "domain": "human_body_health",
-    "tags": ["Hippocrates", "medicine history", "natural causes", "ancient Greece"],
-    "difficulty": "hard",
-    "source": "Wikidata Q5264"
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   },
   {
-    "id": "health-Q7365-001",
-    "qid": "Q7365",
-    "label": "muscle",
-    "subcategory": "anatomy_organs",
-    "question": "What is the strongest muscle in the human body relative to its size?",
-    "correct_answer": "Masseter (jaw)",
-    "distractors": ["Bicep", "Quadricep", "Gluteus maximus", "Heart", "Soleus", "Deltoid", "Trapezius"],
-    "extra_distractor": "Diaphragm",
-    "hint": "Used for chewing, it can exert enormous bite force",
-    "funFact": "The masseter can exert up to 200 pounds (890 N) of force on the molars, making it the strongest muscle per unit area.",
-    "funScore": 83,
+    "id": "health-tongue-003",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Senses & Perception",
+    "categoryL1": "senses_perception",
+    "categoryL2": "tongue",
+    "categoryL3": "",
+    "statement": "The tongue is the only muscle in the human body attached at only one end, enabling its wide range of motion.",
+    "quizQuestion": "How is the tongue uniquely attached compared to other muscles?",
+    "correctAnswer": "Attached at one end only",
+    "distractors": [
+      "Attached at both ends",
+      "Floating freely",
+      "Attached in the middle",
+      "Connected to the teeth",
+      "Fixed to the jaw bone",
+      "Suspended by tendons",
+      "Anchored by three points",
+      "Fully embedded in tissue"
+    ],
+    "acceptableAnswers": [
+      "one end",
+      "attached at one end",
+      "single attachment"
+    ],
+    "explanation": "The tongue is anchored at the back by the hyoid bone and muscles, but free at the tip, giving it exceptional mobility for speech, chewing, and swallowing.",
+    "wowFactor": "The tongue is actually eight interwoven muscles — not one — making it one of the most flexible structures in the human body.",
+    "variants": [
+      "How many muscles make up the human tongue?",
+      "What bone anchors the base of the tongue?",
+      "Why can the tongue move in so many directions?",
+      "Which organ in the human body has the most flexible muscle structure?"
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
     "rarity": "rare",
+    "sourceName": "Gray's Anatomy",
+    "sourceUrl": "https://www.britannica.com/science/tongue",
     "contentVolatility": "timeless",
-    "variants": [
-      {
-        "question": "What is the largest muscle in the human body?",
-        "correct_answer": "Gluteus maximus",
-        "distractors": ["Quadricep", "Latissimus dorsi", "Trapezius", "Pectoralis major", "Hamstring", "Sartorius", "Soleus"]
-      },
-      {
-        "question": "What protein is responsible for muscle contraction?",
-        "correct_answer": "Actin and myosin",
-        "distractors": ["Collagen and elastin", "Keratin and fibrin", "Hemoglobin only", "Tubulin and dynein", "Titin only", "Troponin only", "Fibronectin"]
-      },
-      {
-        "question": "How many muscles are in the human body?",
-        "correct_answer": "About 600",
-        "distractors": ["About 100", "About 1,000", "About 200", "About 50", "About 2,000", "About 10,000", "About 300"]
-      },
-      {
-        "question": "What type of muscle works involuntarily to pump the heart?",
-        "correct_answer": "Cardiac muscle",
-        "distractors": ["Smooth muscle", "Skeletal muscle", "Voluntary muscle", "Striated muscle", "Fast-twitch muscle", "Slow-twitch muscle", "Sphincter muscle"]
-      }
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Anatomical illustration of the tongue showing its eight muscle groups and hyoid bone attachment",
+    "tags": [
+      "tongue",
+      "muscle",
+      "anatomy",
+      "flexibility",
+      "hyoid"
     ],
-    "domain": "human_body_health",
-    "tags": ["muscle", "anatomy", "masseter", "strength"],
-    "difficulty": "hard",
-    "source": "Wikidata Q7365"
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   },
   {
-    "id": "health-Q7365-002",
-    "qid": "Q7365",
-    "label": "muscle",
-    "subcategory": "anatomy_organs",
-    "question": "What fuel do muscles primarily use during intense exercise?",
-    "correct_answer": "Glucose (glycogen)",
-    "distractors": ["Fat only", "Protein", "Water", "Oxygen alone", "Calcium", "Sodium", "Potassium"],
-    "extra_distractor": "ATP only",
-    "hint": "Stored in the liver and muscles as a polysaccharide",
-    "funFact": "During maximum exertion, muscles can consume ATP at 1,000 times the resting rate, exhausting glycogen stores in minutes.",
-    "funScore": 70,
-    "rarity": "uncommon",
-    "contentVolatility": "timeless",
-    "variants": [
-      {
-        "question": "What molecule directly powers muscle contraction?",
-        "correct_answer": "ATP",
-        "distractors": ["ADP", "Glucose", "Oxygen", "Creatine only", "Lactate", "NADH", "Glycogen directly"]
-      },
-      {
-        "question": "Lactic acid buildup in muscles causes which sensation?",
-        "correct_answer": "Burning pain",
-        "distractors": ["Cooling relief", "Numbness", "Itching", "Tingling only", "Increased strength", "Relaxation", "Electrical shock"]
-      },
-      {
-        "question": "What condition describes muscle soreness 24–72 hours after exercise?",
-        "correct_answer": "DOMS",
-        "distractors": ["Cramp", "Strain", "Sprain", "Torn ligament", "Tendinitis", "Myositis", "Bursitis"]
-      },
-      {
-        "question": "Which mineral is essential for muscle contraction?",
-        "correct_answer": "Calcium",
-        "distractors": ["Iron", "Zinc", "Magnesium only", "Fluoride", "Iodine", "Copper", "Selenium"]
-      }
+    "id": "health-tongue-004",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Anatomy",
+    "categoryL1": "anatomy_organs",
+    "categoryL2": "tongue",
+    "categoryL3": "",
+    "statement": "The tongue is essential for speech articulation; most consonants require specific tongue positions in the mouth.",
+    "quizQuestion": "Besides tasting, the tongue is essential for what other function?",
+    "correctAnswer": "Speech",
+    "distractors": [
+      "Hearing",
+      "Breathing",
+      "Balance",
+      "Vision",
+      "Digestion only",
+      "Blood pressure",
+      "Hormone release",
+      "Temperature sensing"
     ],
-    "domain": "human_body_health",
-    "tags": ["muscle", "exercise", "physiology", "energy"],
-    "difficulty": "medium",
-    "source": "Wikidata Q7365"
+    "acceptableAnswers": [
+      "speech",
+      "speaking",
+      "articulation",
+      "talking"
+    ],
+    "explanation": "The tongue shapes sounds by changing position relative to the palate, teeth, and lips. Tongue-related disorders (ankyloglossia, paralysis) significantly impair speech clarity.",
+    "wowFactor": "Clicking languages like Xhosa and Zulu use the tongue to produce sounds that most human languages don't even have — expanding what speech can be.",
+    "variants": [
+      "What role does the tongue play in human communication?",
+      "Tongue-tied infants often struggle with which learned skill?",
+      "Which process requires the tongue to contact the hard palate?",
+      "How does the tongue help in swallowing food?"
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Journal of Speech, Language, and Hearing Research",
+    "sourceUrl": "https://www.britannica.com/science/tongue",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Side-view diagram of the mouth showing tongue positions for different consonant sounds: T, L, S, R",
+    "tags": [
+      "tongue",
+      "speech",
+      "articulation",
+      "language",
+      "anatomy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   },
   {
-    "id": "health-Q7365-003",
-    "qid": "Q7365",
-    "label": "muscle",
-    "subcategory": "anatomy_organs",
-    "question": "What is the smallest muscle in the human body?",
-    "correct_answer": "Stapedius",
-    "distractors": ["Lumbricals", "Corrugator supercilii", "Arrector pili", "Orbicularis oculi", "Risorius", "Nasalis", "Procerus"],
-    "extra_distractor": "Palmaris brevis",
-    "hint": "Found in the middle ear, it protects hearing from loud sounds",
-    "funFact": "The stapedius muscle is just 1.27 mm long and stabilizes the smallest bone in the body — the stapes — in the middle ear.",
-    "funScore": 88,
+    "id": "health-sleep-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Brain & Neuroscience",
+    "categoryL1": "brain_neuroscience",
+    "categoryL2": "sleep",
+    "categoryL3": "",
+    "statement": "During REM sleep, the brain is nearly as active as when awake, and most vivid dreaming occurs in this stage.",
+    "quizQuestion": "During which sleep stage does most vivid dreaming occur?",
+    "correctAnswer": "REM sleep",
+    "distractors": [
+      "Deep sleep",
+      "Stage 1 NREM",
+      "Stage 2 NREM",
+      "Slow-wave sleep",
+      "Light sleep",
+      "Hypnagogic state",
+      "Stage 3 NREM",
+      "Sleep onset"
+    ],
+    "acceptableAnswers": [
+      "REM",
+      "REM sleep",
+      "rapid eye movement sleep"
+    ],
+    "explanation": "REM (Rapid Eye Movement) sleep is characterized by paralyzed muscles, fast eye movements, and vivid dreams. The brain consolidates emotional memories and supports creativity during REM.",
+    "wowFactor": "During REM sleep your muscles are actively paralyzed — a protective mechanism so you don't physically act out your dreams.",
+    "variants": [
+      "What does REM stand for in sleep science?",
+      "Why are muscles paralyzed during REM sleep?",
+      "Which sleep stage is most important for emotional memory consolidation?",
+      "How much of total sleep time is typically REM sleep in adults?"
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Why We Sleep — Matthew Walker",
+    "sourceUrl": "https://www.sleepfoundation.org/stages-of-sleep/rem-sleep",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Sleep cycle chart showing NREM and REM stages across a full night, with brain activity waves",
+    "tags": [
+      "sleep",
+      "REM",
+      "dreaming",
+      "brain",
+      "neuroscience"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-sleep-002",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Brain & Neuroscience",
+    "categoryL1": "brain_neuroscience",
+    "categoryL2": "sleep",
+    "categoryL3": "",
+    "statement": "Sleep is regulated by two systems: circadian rhythm (24-hour clock) and sleep pressure from adenosine buildup.",
+    "quizQuestion": "What molecule builds up in the brain to create sleep pressure?",
+    "correctAnswer": "Adenosine",
+    "distractors": [
+      "Melatonin",
+      "Cortisol",
+      "Serotonin",
+      "Dopamine",
+      "GABA",
+      "Histamine",
+      "Norepinephrine",
+      "Acetylcholine"
+    ],
+    "acceptableAnswers": [
+      "adenosine"
+    ],
+    "explanation": "Adenosine accumulates in the brain during wakefulness. Caffeine works by blocking adenosine receptors — masking sleepiness rather than eliminating the underlying sleep debt.",
+    "wowFactor": "Caffeine doesn't destroy adenosine — it just blocks its receptors. When caffeine wears off, all that adenosine crashes back in at once: the infamous 'caffeine crash'.",
+    "variants": [
+      "How does caffeine prevent sleepiness?",
+      "What is the chemical mechanism of the caffeine crash?",
+      "Which neurotransmitter regulates the sleep-wake cycle along with melatonin?",
+      "What happens to adenosine levels during deep sleep?"
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "rare",
+    "sourceName": "Why We Sleep — Matthew Walker",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3774421/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Diagram showing adenosine molecules accumulating in awake brain and being cleared during sleep",
+    "tags": [
+      "sleep",
+      "adenosine",
+      "caffeine",
+      "circadian",
+      "neuroscience"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-sleep-003",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Brain & Neuroscience",
+    "categoryL1": "brain_neuroscience",
+    "categoryL2": "sleep",
+    "categoryL3": "",
+    "statement": "The glymphatic system clears toxic waste proteins from the brain during sleep, including Alzheimer's-linked amyloid-beta.",
+    "quizQuestion": "What brain waste-clearing system is most active during sleep?",
+    "correctAnswer": "Glymphatic system",
+    "distractors": [
+      "Lymphatic system",
+      "Blood-brain barrier",
+      "Cerebrospinal system",
+      "Ventricular system",
+      "Reticular system",
+      "Meningeal system",
+      "Choroid plexus",
+      "Cerebral cortex"
+    ],
+    "acceptableAnswers": [
+      "glymphatic system",
+      "glymphatic"
+    ],
+    "explanation": "Discovered in 2012, the glymphatic system uses cerebrospinal fluid to flush toxic metabolites from the brain. Sleep deprivation leads to amyloid-beta accumulation, linked to Alzheimer's disease.",
+    "wowFactor": "Brain cells actually shrink by 60% during sleep to widen fluid channels — essentially your brain taking out its own trash.",
+    "variants": [
+      "What toxic protein linked to Alzheimer's is cleared during sleep?",
+      "The glymphatic system was discovered in what year?",
+      "Why might chronic sleep deprivation increase Alzheimer's risk?",
+      "What fluid does the glymphatic system use to clean the brain?"
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "all",
     "rarity": "epic",
+    "sourceName": "Science — Nedergaard et al. 2013",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3880190/",
     "contentVolatility": "timeless",
-    "variants": [
-      {
-        "question": "Where is the stapedius muscle located?",
-        "correct_answer": "Middle ear",
-        "distractors": ["Inner ear", "Eye socket", "Throat", "Nose", "Fingertip", "Tongue base", "Eardrum surface"]
-      },
-      {
-        "question": "What is the longest muscle in the human body?",
-        "correct_answer": "Sartorius",
-        "distractors": ["Bicep femoris", "Rectus femoris", "Iliotibial band", "Quadricep", "Hamstring", "Adductor longus", "Gracilis"]
-      },
-      {
-        "question": "What are the two types of skeletal muscle fibers?",
-        "correct_answer": "Fast-twitch and slow-twitch",
-        "distractors": ["Red and white only", "Large and small", "Cardiac and smooth", "Voluntary and involuntary", "Thick and thin", "Striated and smooth", "Deep and superficial"]
-      },
-      {
-        "question": "Which muscle type lines the walls of internal organs?",
-        "correct_answer": "Smooth muscle",
-        "distractors": ["Cardiac muscle", "Skeletal muscle", "Striated muscle", "Voluntary muscle", "Fast-twitch muscle", "Hypertrophied muscle", "Isotonic muscle"]
-      }
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Brain diagram showing glymphatic fluid channels widening during sleep, with arrows indicating waste protein clearance",
+    "tags": [
+      "sleep",
+      "glymphatic",
+      "Alzheimer's",
+      "brain",
+      "waste clearance"
     ],
-    "domain": "human_body_health",
-    "tags": ["muscle", "anatomy", "stapedius", "ear"],
-    "difficulty": "hard",
-    "source": "Wikidata Q7365"
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   },
   {
-    "id": "health-Q1566-001",
-    "qid": "Q1566",
-    "label": "tobacco",
-    "subcategory": "immunity_disease",
-    "question": "What addictive chemical in tobacco causes dependence?",
-    "correct_answer": "Nicotine",
-    "distractors": ["Caffeine", "Alcohol", "Morphine", "Codeine", "Aspirin", "Menthol", "Benzene"],
-    "extra_distractor": "Tar",
-    "hint": "It stimulates dopamine release in the brain",
-    "funFact": "Nicotine reaches the brain within 10 seconds of inhaling cigarette smoke, making tobacco one of the fastest-acting addictive substances.",
-    "funScore": 58,
+    "id": "health-sleep-004",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Brain & Neuroscience",
+    "categoryL1": "brain_neuroscience",
+    "categoryL2": "sleep",
+    "categoryL3": "",
+    "statement": "Adults need 7–9 hours of sleep per night; consistently sleeping fewer than 6 hours impairs cognitive function.",
+    "quizQuestion": "How many hours of sleep do adults need per night?",
+    "correctAnswer": "7–9 hours",
+    "distractors": [
+      "4–5 hours",
+      "5–6 hours",
+      "6–7 hours",
+      "10–12 hours",
+      "3–4 hours",
+      "9–11 hours",
+      "Exactly 8 hours",
+      "6–8 hours"
+    ],
+    "acceptableAnswers": [
+      "7-9 hours",
+      "7 to 9 hours",
+      "seven to nine hours"
+    ],
+    "explanation": "The National Sleep Foundation recommends 7–9 hours for adults aged 18–64. Less than 6 hours increases risk of diabetes, cardiovascular disease, impaired immunity, and cognitive decline.",
+    "wowFactor": "Humans are one of the only mammals that voluntarily deprive themselves of sleep — a behavior with no known biological precedent.",
+    "variants": [
+      "What is the recommended sleep duration for a healthy adult?",
+      "Below how many hours does sleep deprivation impair human cognition?",
+      "How does chronic sleep loss affect cardiovascular health?",
+      "Why do teenagers need more sleep than adults?"
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "all",
     "rarity": "common",
+    "sourceName": "National Sleep Foundation",
+    "sourceUrl": "https://www.sleepfoundation.org/how-sleep-works/how-much-sleep-do-we-really-need",
     "contentVolatility": "timeless",
-    "variants": [
-      {
-        "question": "Smoking is the leading preventable cause of death in which country?",
-        "correct_answer": "United States",
-        "distractors": ["China", "India", "Russia", "Brazil", "Japan", "Germany", "France"]
-      },
-      {
-        "question": "Tobacco smoke contains approximately how many chemicals?",
-        "correct_answer": "Over 7,000",
-        "distractors": ["About 10", "About 100", "About 500", "About 10,000 only", "About 50", "About 200", "About 2,000"]
-      },
-      {
-        "question": "Tobacco use is the leading cause of which disease?",
-        "correct_answer": "Lung cancer",
-        "distractors": ["Diabetes", "Osteoporosis", "Color blindness", "Kidney stones", "Appendicitis", "Cataracts only", "Tinnitus"]
-      },
-      {
-        "question": "Which tobacco product is considered smokeless but still harmful?",
-        "correct_answer": "Chewing tobacco",
-        "distractors": ["Cigar", "Cigarette", "Pipe tobacco", "E-cigarette only", "Hookah", "Clove cigarette", "Bidis"]
-      }
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Infographic showing recommended sleep durations for different age groups with clock icons",
+    "tags": [
+      "sleep",
+      "health",
+      "cognition",
+      "sleep deprivation",
+      "recommendations"
     ],
-    "domain": "human_body_health",
-    "tags": ["tobacco", "nicotine", "cancer", "addiction"],
-    "difficulty": "easy",
-    "source": "Wikidata Q1566"
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   },
   {
-    "id": "health-Q1566-002",
-    "qid": "Q1566",
-    "label": "tobacco",
-    "subcategory": "immunity_disease",
-    "question": "How many people does tobacco kill globally each year?",
-    "correct_answer": "About 8 million",
-    "distractors": ["About 100,000", "About 500,000", "About 1 million", "About 50 million", "About 100 million", "About 3 million", "About 10,000"],
-    "extra_distractor": "About 20 million",
-    "hint": "One of the deadliest public health crises globally",
-    "funFact": "Of the 8 million tobacco-related deaths per year, about 1.2 million are non-smokers dying from secondhand smoke exposure.",
-    "funScore": 72,
+    "id": "health-egg-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Genetics & DNA",
+    "categoryL1": "genetics_dna",
+    "categoryL2": "egg",
+    "categoryL3": "",
+    "statement": "The human egg cell (ovum) is the largest cell in the human body, visible to the naked eye at about 0.1 mm.",
+    "quizQuestion": "What is the largest cell in the human body?",
+    "correctAnswer": "Ovum (egg cell)",
+    "distractors": [
+      "Neuron",
+      "Red blood cell",
+      "Muscle fiber",
+      "White blood cell",
+      "Skin cell",
+      "Liver cell",
+      "Sperm cell",
+      "Platelet"
+    ],
+    "acceptableAnswers": [
+      "ovum",
+      "egg cell",
+      "human egg",
+      "oocyte"
+    ],
+    "explanation": "At ~0.1 mm diameter, the ovum is the only human cell visible without magnification. It contains abundant cytoplasm to nourish the embryo through early development.",
+    "wowFactor": "The human egg is 10,000 times larger by volume than a sperm cell — yet both contribute exactly the same number of chromosomes.",
+    "variants": [
+      "How large is a human egg cell?",
+      "Is the human ovum visible to the naked eye?",
+      "What human cell contains the most cytoplasm?",
+      "How does the size of an egg cell compare to a sperm cell?"
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "all",
     "rarity": "uncommon",
+    "sourceName": "Cell Biology: A Short Course",
+    "sourceUrl": "https://www.britannica.com/science/ovum",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Size comparison illustration: human ovum vs sperm cell vs red blood cell with scale bar",
+    "tags": [
+      "egg",
+      "ovum",
+      "genetics",
+      "cell biology",
+      "reproduction"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-egg-002",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Genetics & DNA",
+    "categoryL1": "genetics_dna",
+    "categoryL2": "egg",
+    "categoryL3": "",
+    "statement": "Females are born with all their egg cells (approximately 1–2 million oocytes), which decline to ~300,000 by puberty.",
+    "quizQuestion": "When does a human female produce all her egg cells?",
+    "correctAnswer": "Before birth",
+    "distractors": [
+      "During puberty",
+      "Throughout her lifetime",
+      "At first menstruation",
+      "During adolescence",
+      "After ovulation begins",
+      "During childhood",
+      "At age 13",
+      "Continuously until menopause"
+    ],
+    "acceptableAnswers": [
+      "before birth",
+      "in utero",
+      "before they are born",
+      "in the womb"
+    ],
+    "explanation": "Female fetuses develop all egg cells before birth. By puberty only ~300,000 remain; by age 37 roughly 25,000; at menopause fewer than 1,000 viable follicles remain.",
+    "wowFactor": "The egg that became you was formed while your grandmother was pregnant with your mother — your origins go back three generations.",
+    "variants": [
+      "How many oocytes does a female have at birth?",
+      "Why does female fertility decline with age?",
+      "How many eggs does a woman typically ovulate in her lifetime?",
+      "What is the term for the depletion of ovarian follicles causing menopause?"
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Human Reproductive Biology",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3667707/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "low",
+    "sensitivityNote": "Discusses human reproduction and fertility; appropriate for teen and adult audiences",
+    "visualDescription": "Timeline diagram showing female ovarian reserve from fetal development to menopause with follicle count at each stage",
+    "tags": [
+      "egg",
+      "ovum",
+      "fertility",
+      "oocyte",
+      "genetics",
+      "reproduction"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-egg-003",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Genetics & DNA",
+    "categoryL1": "genetics_dna",
+    "categoryL2": "egg",
+    "categoryL3": "",
+    "statement": "Fertilization occurs when a sperm penetrates the egg, creating a zygote with 46 chromosomes — 23 from each parent.",
+    "quizQuestion": "How many chromosomes does a human zygote contain after fertilization?",
+    "correctAnswer": "46",
+    "distractors": [
+      "23",
+      "92",
+      "48",
+      "44",
+      "24",
+      "64",
+      "22",
+      "47"
+    ],
+    "acceptableAnswers": [
+      "46",
+      "forty-six"
+    ],
+    "explanation": "Human egg and sperm each carry 23 chromosomes (haploid). At fertilization they combine to form a 46-chromosome diploid zygote — the first cell of a new human organism.",
+    "wowFactor": "Down syndrome occurs when chromosome 21 fails to separate properly — resulting in three copies instead of two, called trisomy 21.",
+    "variants": [
+      "How many chromosomes are in a human sperm cell?",
+      "What is the term for a fertilized human egg?",
+      "What is trisomy 21 also known as?",
+      "How many chromosomes does a normal human body cell contain?"
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Molecular Biology of the Cell",
+    "sourceUrl": "https://www.britannica.com/science/fertilization-reproduction",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "low",
+    "sensitivityNote": "Discusses human reproduction; appropriate for teen and adult audiences",
+    "visualDescription": "Diagram of sperm meeting egg with chromosome count labels: 23+23=46, with resulting zygote",
+    "tags": [
+      "egg",
+      "fertilization",
+      "chromosomes",
+      "genetics",
+      "zygote"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-breast-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Anatomy",
+    "categoryL1": "anatomy_organs",
+    "categoryL2": "female_breast",
+    "categoryL3": "",
+    "statement": "The female breast is primarily composed of mammary glands, fatty tissue, and connective tissue, not muscle.",
+    "quizQuestion": "What type of tissue makes up most of the female breast?",
+    "correctAnswer": "Fatty (adipose) tissue",
+    "distractors": [
+      "Muscle tissue",
+      "Bone tissue",
+      "Cartilage",
+      "Dense connective tissue",
+      "Lymphatic tissue",
+      "Smooth muscle",
+      "Glandular only",
+      "Nervous tissue"
+    ],
+    "acceptableAnswers": [
+      "fatty tissue",
+      "adipose tissue",
+      "fat",
+      "adipose"
+    ],
+    "explanation": "Breast composition is mainly adipose (fat) tissue interspersed with mammary glands and connective tissue. Breast size is mostly determined by the proportion of fatty to glandular tissue.",
+    "wowFactor": "Mammography detects dense breast tissue, which actually increases cancer risk — denser breasts are harder to image and more metabolically active.",
+    "variants": [
+      "What determines the size of a human female breast?",
+      "Which tissue type contains milk-producing cells in the breast?",
+      "Why does breast tissue composition matter for cancer screening?",
+      "What are Cooper's ligaments in the breast?"
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Gray's Anatomy",
+    "sourceUrl": "https://www.britannica.com/science/breast",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "low",
+    "sensitivityNote": "Discusses human anatomy; clinical and educational context",
+    "visualDescription": "Cross-sectional anatomical diagram of the female breast showing adipose tissue, mammary glands, milk ducts, and connective tissue",
+    "tags": [
+      "breast",
+      "anatomy",
+      "mammary",
+      "adipose",
+      "glands"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-breast-002",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Anatomy",
+    "categoryL1": "anatomy_organs",
+    "categoryL2": "female_breast",
+    "categoryL3": "",
+    "statement": "Breast cancer is the most commonly diagnosed cancer worldwide, accounting for about 12% of all new cancer cases.",
+    "quizQuestion": "What is the most commonly diagnosed cancer worldwide?",
+    "correctAnswer": "Breast cancer",
+    "distractors": [
+      "Lung cancer",
+      "Colorectal cancer",
+      "Cervical cancer",
+      "Skin cancer",
+      "Prostate cancer",
+      "Stomach cancer",
+      "Ovarian cancer",
+      "Leukemia"
+    ],
+    "acceptableAnswers": [
+      "breast cancer"
+    ],
+    "explanation": "In 2020, breast cancer surpassed lung cancer as the most commonly diagnosed cancer globally, with 2.3 million new cases. Early detection via mammography significantly improves survival rates.",
+    "wowFactor": "Men can also develop breast cancer — about 1% of all breast cancer cases occur in males, but it is often diagnosed later due to lower awareness.",
+    "variants": [
+      "What percentage of global cancer cases does breast cancer represent?",
+      "When did breast cancer become the most common cancer worldwide?",
+      "Can men develop breast cancer?",
+      "What screening method is used to detect breast cancer early?"
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "WHO Global Cancer Observatory 2020",
+    "sourceUrl": "https://www.who.int/news-room/fact-sheets/detail/breast-cancer",
     "contentVolatility": "current",
-    "variants": [
-      {
-        "question": "What is secondhand smoke also called?",
-        "correct_answer": "Passive smoking",
-        "distractors": ["Active smoking", "Sidestream smoking only", "Indoor pollution", "Ambient smoking", "Filtered smoking", "Involuntary breathing", "Residual smoking"]
-      },
-      {
-        "question": "Smoking during pregnancy increases risk of what condition?",
-        "correct_answer": "Low birth weight",
-        "distractors": ["Overweight baby", "Early puberty", "Increased IQ", "Stronger immune system", "Earlier walking", "Faster growth", "Better eyesight"]
-      },
-      {
-        "question": "What percentage of lung cancer cases are caused by tobacco?",
-        "correct_answer": "About 85%",
-        "distractors": ["About 10%", "About 25%", "About 50%", "About 100%", "About 5%", "About 30%", "About 60%"]
-      },
-      {
-        "question": "Which organ does tobacco chewing most directly damage?",
-        "correct_answer": "Mouth and throat",
-        "distractors": ["Liver only", "Kidneys only", "Heart only", "Lungs only", "Stomach only", "Intestines only", "Eyes only"]
-      }
+    "sensitivityLevel": "low",
+    "sensitivityNote": "Discusses cancer diagnosis; educational health context",
+    "visualDescription": "Global cancer incidence chart with breast cancer highlighted as the most common type",
+    "tags": [
+      "breast cancer",
+      "cancer",
+      "public health",
+      "oncology",
+      "screening"
     ],
-    "domain": "human_body_health",
-    "tags": ["tobacco", "mortality", "public health", "smoking"],
-    "difficulty": "medium",
-    "source": "Wikidata Q1566"
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   },
   {
-    "id": "health-Q5880-001",
-    "qid": "Q5880",
-    "label": "vagina",
-    "subcategory": "anatomy_organs",
-    "question": "What is the pH of a healthy vaginal environment?",
-    "correct_answer": "3.8–4.5 (acidic)",
-    "distractors": ["7.4 (neutral)", "8–9 (alkaline)", "6–7 (slightly acidic)", "1–2 (very acidic)", "9–10 (basic)", "5–6 only", "7–8 only"],
-    "extra_distractor": "2–3 (gastric acid level)",
-    "hint": "This acidity protects against harmful bacteria",
-    "funFact": "The acidic vaginal environment is maintained by Lactobacillus bacteria, which produce lactic acid and inhibit pathogen growth.",
-    "funScore": 75,
+    "id": "health-breast-003",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Anatomy",
+    "categoryL1": "anatomy_organs",
+    "categoryL2": "female_breast",
+    "categoryL3": "",
+    "statement": "Human breast milk provides infants with antibodies, nutrients, and growth factors for immune system development.",
+    "quizQuestion": "What immune components does breast milk provide to infants?",
+    "correctAnswer": "Antibodies",
+    "distractors": [
+      "Stem cells only",
+      "Vaccines",
+      "Platelets",
+      "White blood cells only",
+      "Hormones only",
+      "Enzymes only",
+      "Red blood cells",
+      "Clotting factors"
+    ],
+    "acceptableAnswers": [
+      "antibodies",
+      "immunoglobulins",
+      "IgA"
+    ],
+    "explanation": "Colostrum (early breast milk) is especially rich in secretory IgA antibodies. Breast milk also contains lactoferrin, lysozyme, and oligosaccharides that foster healthy gut microbiome development.",
+    "wowFactor": "Breast milk composition changes daily — even between feedings — adapting in real time to the infant's age and immune needs.",
+    "variants": [
+      "What is colostrum and why is it important for newborns?",
+      "Which immunoglobulin is most abundant in breast milk?",
+      "How does breast milk support infant gut microbiome development?",
+      "What protein in breast milk has antimicrobial properties?"
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
     "rarity": "uncommon",
+    "sourceName": "Pediatrics — AAP",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4882692/",
     "contentVolatility": "timeless",
-    "variants": [
-      {
-        "question": "Which type of bacteria maintains healthy vaginal pH?",
-        "correct_answer": "Lactobacillus",
-        "distractors": ["E. coli", "Staphylococcus", "Streptococcus", "Candida", "Bifidobacterium", "Clostridium", "Bacteroides"]
-      },
-      {
-        "question": "The vagina connects the uterus to which external structure?",
-        "correct_answer": "Vulva",
-        "distractors": ["Urethra", "Cervix externally", "Fallopian tube", "Ovary", "Clitoris directly", "Labia majora only", "Perineum only"]
-      },
-      {
-        "question": "What separates the vagina from the uterus?",
-        "correct_answer": "Cervix",
-        "distractors": ["Fallopian tube", "Endometrium", "Myometrium", "Fundus", "Placenta", "Perimetrium", "Ovary"]
-      },
-      {
-        "question": "What tissue lines the vaginal walls?",
-        "correct_answer": "Stratified squamous epithelium",
-        "distractors": ["Columnar epithelium", "Cuboidal epithelium", "Ciliated epithelium", "Simple squamous epithelium", "Transitional epithelium", "Pseudostratified epithelium", "Keratinized epithelium"]
-      }
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Infographic showing breast milk components: antibodies, proteins, fats, sugars, and their roles in infant development",
+    "tags": [
+      "breast",
+      "breast milk",
+      "antibodies",
+      "infant immunity",
+      "colostrum"
     ],
-    "domain": "human_body_health",
-    "tags": ["vagina", "anatomy", "pH", "microbiome"],
-    "difficulty": "hard",
-    "source": "Wikidata Q5880"
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   },
   {
-    "id": "health-Q5880-002",
-    "qid": "Q5880",
-    "label": "vagina",
-    "subcategory": "anatomy_organs",
-    "question": "What is the average length of the vaginal canal at rest?",
-    "correct_answer": "7–10 cm",
-    "distractors": ["1–2 cm", "20–25 cm", "15–20 cm", "2–3 cm", "30 cm", "50 cm", "12–15 cm"],
-    "extra_distractor": "5 cm exactly",
-    "hint": "Roughly the length of a finger",
-    "funFact": "The vagina can expand significantly during childbirth due to the rugae — ridged folds that allow stretching — and hormonal changes.",
-    "funScore": 65,
-    "rarity": "common",
-    "contentVolatility": "timeless",
-    "variants": [
-      {
-        "question": "What ridged folds allow the vagina to expand during childbirth?",
-        "correct_answer": "Rugae",
-        "distractors": ["Villi", "Papillae", "Cilia", "Microvilli", "Trabeculae", "Crypts", "Sinuses"]
-      },
-      {
-        "question": "What does the vaginal canal serve as during childbirth?",
-        "correct_answer": "Birth canal",
-        "distractors": ["Hormone producer", "Egg storage site", "Sperm destroyer", "Nutrient absorber", "Amniotic sac", "Placenta site", "Umbilical connector"]
-      },
-      {
-        "question": "What common vaginal infection is caused by Candida yeast?",
-        "correct_answer": "Yeast infection",
-        "distractors": ["Bacterial vaginosis", "Trichomoniasis", "Chlamydia", "Gonorrhea", "Herpes", "HPV infection", "Syphilis"]
-      },
-      {
-        "question": "What is the Pap smear test designed to detect?",
-        "correct_answer": "Cervical cancer cells",
-        "distractors": ["Ovarian cysts", "Uterine fibroids", "Vaginal yeast", "Fallopian blockage", "Endometriosis only", "Kidney disease", "Bladder infection"]
-      }
+    "id": "health-hippocrates-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Medical Science",
+    "categoryL1": "medical_science",
+    "categoryL2": "hippocrates",
+    "categoryL3": "",
+    "statement": "Hippocrates (c. 460–370 BC) is called the 'Father of Medicine' for establishing medicine as a rational discipline.",
+    "quizQuestion": "Who is known as the Father of Medicine?",
+    "correctAnswer": "Hippocrates",
+    "distractors": [
+      "Galen",
+      "Avicenna",
+      "Aristotle",
+      "Vesalius",
+      "Paracelsus",
+      "Asclepius",
+      "Herophilus",
+      "Dioscorides"
     ],
-    "domain": "human_body_health",
-    "tags": ["vagina", "anatomy", "childbirth", "health"],
-    "difficulty": "medium",
-    "source": "Wikidata Q5880"
+    "acceptableAnswers": [
+      "Hippocrates",
+      "hippocrates"
+    ],
+    "explanation": "Hippocrates separated medicine from superstition, emphasizing clinical observation and natural causes of disease. His Hippocratic Corpus of ~60 medical texts influenced medicine for 2,000 years.",
+    "wowFactor": "Hippocrates described finger clubbing as a sign of disease ~2,400 years ago — doctors still call it 'Hippocratic fingers' today.",
+    "variants": [
+      "What did Hippocrates do to separate medicine from religion?",
+      "How many medical texts are in the Hippocratic Corpus?",
+      "In which country was Hippocrates born?",
+      "What ancient Greek island was Hippocrates from?"
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Britannica — Hippocrates",
+    "sourceUrl": "https://www.britannica.com/biography/Hippocrates",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Classical marble bust of Hippocrates with ancient Greek medical scrolls in the background",
+    "tags": [
+      "Hippocrates",
+      "medicine",
+      "history",
+      "ancient Greece",
+      "medical science"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-hippocrates-002",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Medical Science",
+    "categoryL1": "medical_science",
+    "categoryL2": "hippocrates",
+    "categoryL3": "",
+    "statement": "The Hippocratic Oath, traditionally taken by physicians, includes a commitment to patient welfare and non-maleficence ('first, do no harm').",
+    "quizQuestion": "What Latin phrase summarizes the Hippocratic principle of non-maleficence?",
+    "correctAnswer": "Primum non nocere",
+    "distractors": [
+      "Carpe diem",
+      "In vino veritas",
+      "Cogito ergo sum",
+      "Mens sana",
+      "Nil desperandum",
+      "Vis medicatrix",
+      "Omnia vincit amor",
+      "Per aspera ad astra"
+    ],
+    "acceptableAnswers": [
+      "primum non nocere",
+      "first do no harm",
+      "do no harm"
+    ],
+    "explanation": "'Primum non nocere' — 'first, do no harm' — is a foundational principle of medical ethics. Ironically, this exact phrase doesn't appear in the original Hippocratic Oath but emerged in the 19th century.",
+    "wowFactor": "The original Hippocratic Oath also swore allegiance to Apollo and included a prohibition on performing surgery — doctors were to leave that to specialists.",
+    "variants": [
+      "What are the core ethical principles of the Hippocratic Oath?",
+      "Is 'first, do no harm' actually in the original Hippocratic Oath?",
+      "When do modern medical students typically take the Hippocratic Oath?",
+      "What is the principle of non-maleficence in medical ethics?"
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Journal of Medical Ethics",
+    "sourceUrl": "https://www.britannica.com/topic/Hippocratic-oath",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Ancient papyrus scroll with Greek text and a modern physician's hand taking an oath, side by side",
+    "tags": [
+      "Hippocrates",
+      "medical ethics",
+      "Hippocratic Oath",
+      "do no harm",
+      "history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-hippocrates-003",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Medical Science",
+    "categoryL1": "medical_science",
+    "categoryL2": "hippocrates",
+    "categoryL3": "",
+    "statement": "Hippocrates proposed the humoral theory: that health depends on balance among four humors — blood, phlegm, yellow bile, and black bile.",
+    "quizQuestion": "Hippocrates proposed that health depends on balancing how many humors?",
+    "correctAnswer": "Four",
+    "distractors": [
+      "Three",
+      "Five",
+      "Two",
+      "Six",
+      "Seven",
+      "Eight",
+      "One",
+      "Ten"
+    ],
+    "acceptableAnswers": [
+      "four",
+      "4"
+    ],
+    "explanation": "The four humors (blood, phlegm, yellow bile, black bile) were thought to correspond to personality types: sanguine, phlegmatic, choleric, and melancholic. This theory dominated medicine for 1,500 years.",
+    "wowFactor": "The word 'melancholy' literally means 'black bile' in Greek — our emotional vocabulary still carries the ghost of ancient humoral medicine.",
+    "variants": [
+      "Name the four humors in ancient Greek medicine.",
+      "What personality type did ancient medicine associate with excess blood?",
+      "What does the word 'melancholy' literally mean in Greek?",
+      "How long did humoral theory dominate Western medicine?"
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "History of Medicine",
+    "sourceUrl": "https://www.britannica.com/science/humorism",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Medieval illustration of the four humors shown as four figures representing sanguine, phlegmatic, choleric, and melancholic temperaments",
+    "tags": [
+      "Hippocrates",
+      "humoral theory",
+      "ancient medicine",
+      "history",
+      "personality"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-muscle-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Anatomy",
+    "categoryL1": "anatomy_organs",
+    "categoryL2": "muscle",
+    "categoryL3": "",
+    "statement": "The human body contains about 600 skeletal muscles, which make up roughly 40% of total body weight.",
+    "quizQuestion": "Approximately how many skeletal muscles are in the human body?",
+    "correctAnswer": "600",
+    "distractors": [
+      "200",
+      "100",
+      "300",
+      "1000",
+      "50",
+      "450",
+      "800",
+      "150"
+    ],
+    "acceptableAnswers": [
+      "600",
+      "~600",
+      "about 600"
+    ],
+    "explanation": "Skeletal muscles are voluntarily controlled and attached to bones via tendons. They account for ~40% of body weight in men and ~35% in women, making them the largest tissue type by mass.",
+    "wowFactor": "The gluteus maximus is the body's largest muscle, but the hardest-working is the heart — contracting 100,000 times per day without rest for a lifetime.",
+    "variants": [
+      "What percentage of body weight do muscles represent?",
+      "Which is the largest skeletal muscle in the human body?",
+      "How many types of muscle tissue exist in the human body?",
+      "What connects skeletal muscles to bones?"
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 5,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Gray's Anatomy",
+    "sourceUrl": "https://www.britannica.com/science/muscle",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Full-body anatomical illustration showing major skeletal muscles from anterior and posterior views",
+    "tags": [
+      "muscle",
+      "anatomy",
+      "skeletal muscle",
+      "body composition",
+      "tendons"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-muscle-002",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Anatomy",
+    "categoryL1": "anatomy_organs",
+    "categoryL2": "muscle",
+    "categoryL3": "",
+    "statement": "Muscles contract by shortening sarcomeres: actin and myosin filaments slide past each other in the sliding filament theory.",
+    "quizQuestion": "What protein filaments are responsible for muscle contraction?",
+    "correctAnswer": "Actin and myosin",
+    "distractors": [
+      "Collagen and elastin",
+      "Keratin and fibrin",
+      "Tubulin and actin",
+      "Troponin and fibrin",
+      "Titin and collagen",
+      "Fibronectin and laminin",
+      "Desmin and vimentin",
+      "Spectrin and ankyrin"
+    ],
+    "acceptableAnswers": [
+      "actin and myosin",
+      "myosin and actin"
+    ],
+    "explanation": "Sliding filament theory (1954, Huxley) explains that myosin heads pull actin filaments toward the center of the sarcomere, shortening the muscle. ATP powers each cycle of the power stroke.",
+    "wowFactor": "The myosin motor protein 'walks' along actin like feet on a treadmill — one of the most elegant molecular machines in biology.",
+    "variants": [
+      "What is the sliding filament theory of muscle contraction?",
+      "What molecule provides energy for myosin power strokes?",
+      "What is the structural unit of muscle contraction called?",
+      "Who proposed the sliding filament theory of muscle contraction?"
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Nature — Huxley & Niedergerke 1954",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK537140/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Diagram of a sarcomere showing actin (thin) and myosin (thick) filaments with arrows indicating sliding direction during contraction",
+    "tags": [
+      "muscle",
+      "actin",
+      "myosin",
+      "contraction",
+      "sliding filament",
+      "cell biology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-muscle-003",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Anatomy",
+    "categoryL1": "anatomy_organs",
+    "categoryL2": "muscle",
+    "categoryL3": "",
+    "statement": "There are three types of muscle tissue: skeletal (voluntary), cardiac (involuntary striated), and smooth (involuntary).",
+    "quizQuestion": "Which type of muscle tissue is found only in the heart?",
+    "correctAnswer": "Cardiac muscle",
+    "distractors": [
+      "Skeletal muscle",
+      "Smooth muscle",
+      "Striated voluntary muscle",
+      "Visceral muscle",
+      "Slow-twitch muscle",
+      "Fast-twitch muscle",
+      "Postural muscle",
+      "Sphincter muscle"
+    ],
+    "acceptableAnswers": [
+      "cardiac muscle",
+      "cardiac"
+    ],
+    "explanation": "Cardiac muscle is unique: striated like skeletal muscle but involuntary like smooth muscle. It contracts rhythmically without external nerve signals due to pacemaker cells in the sinoatrial node.",
+    "wowFactor": "Cardiac muscle cells can spontaneously beat even when isolated in a lab — they are the only cells in the body that can generate their own electrical rhythm.",
+    "variants": [
+      "What makes cardiac muscle different from skeletal muscle?",
+      "Which cells in the heart generate the electrical signal to beat?",
+      "Smooth muscle is found in which organs?",
+      "What is the sinoatrial node's role in the heart?"
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Principles of Anatomy and Physiology",
+    "sourceUrl": "https://www.britannica.com/science/muscle/Types-of-muscle",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Side-by-side microscopy images comparing skeletal, cardiac, and smooth muscle cells with labeled structural features",
+    "tags": [
+      "muscle",
+      "cardiac",
+      "smooth muscle",
+      "anatomy",
+      "heart"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-muscle-004",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Anatomy",
+    "categoryL1": "anatomy_organs",
+    "categoryL2": "muscle",
+    "categoryL3": "",
+    "statement": "Muscle hypertrophy (growth) occurs when mechanical stress causes satellite cells to fuse with muscle fibers, increasing their size.",
+    "quizQuestion": "What cells help muscle fibers grow larger after exercise?",
+    "correctAnswer": "Satellite cells",
+    "distractors": [
+      "Schwann cells",
+      "Fibroblasts",
+      "Mast cells",
+      "Macrophages",
+      "Osteoblasts",
+      "Chondrocytes",
+      "Myoblasts only",
+      "Stem cells generally"
+    ],
+    "acceptableAnswers": [
+      "satellite cells",
+      "muscle satellite cells"
+    ],
+    "explanation": "Satellite cells are muscle stem cells that activate in response to mechanical damage from exercise. They proliferate and fuse with existing fibers, adding nuclei and enabling protein synthesis for growth.",
+    "wowFactor": "Muscle memory is real and partly explained by satellite cells — previous muscle nuclei persist even after detraining, allowing faster regrowth when you return to exercise.",
+    "variants": [
+      "What is muscle hypertrophy?",
+      "How does resistance training cause muscle growth at the cellular level?",
+      "Why does muscle 'remember' how to regrow after a period of inactivity?",
+      "What is the role of satellite cells in muscle repair?"
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "rare",
+    "sourceName": "Cell Stem Cell Journal",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3567524/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Illustration of muscle fiber cross-section showing satellite cells activating and fusing with the fiber after resistance exercise",
+    "tags": [
+      "muscle",
+      "hypertrophy",
+      "satellite cells",
+      "exercise",
+      "muscle memory"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-tobacco-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Immunity & Disease",
+    "categoryL1": "immunity_disease",
+    "categoryL2": "tobacco",
+    "categoryL3": "",
+    "statement": "Tobacco smoke contains over 7,000 chemicals, at least 70 of which are known carcinogens (cancer-causing agents).",
+    "quizQuestion": "How many known carcinogens are found in tobacco smoke?",
+    "correctAnswer": "At least 70",
+    "distractors": [
+      "About 10",
+      "About 5",
+      "Over 200",
+      "Exactly 20",
+      "Fewer than 50",
+      "About 100",
+      "Only 3",
+      "Over 500"
+    ],
+    "acceptableAnswers": [
+      "at least 70",
+      "70",
+      "more than 70"
+    ],
+    "explanation": "Of the 7,000+ chemicals in cigarette smoke, at least 70 are carcinogenic. Key carcinogens include nitrosamines, benzene, formaldehyde, and polycyclic aromatic hydrocarbons.",
+    "wowFactor": "Tobacco kills more people annually than alcohol, drugs, car accidents, HIV, guns, and suicide combined — about 8 million deaths per year.",
+    "variants": [
+      "How many total chemicals does cigarette smoke contain?",
+      "Name three carcinogens found in tobacco smoke.",
+      "How many people die annually due to tobacco use?",
+      "What disease is most strongly linked to cigarette smoking?"
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "CDC — Smoking and Tobacco Use",
+    "sourceUrl": "https://www.cdc.gov/tobacco/data_statistics/fact_sheets/health_effects/chemicals_smoke/index.htm",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "low",
+    "sensitivityNote": "Discusses health harms of tobacco; educational public health content",
+    "visualDescription": "Infographic of cigarette smoke composition showing 7,000 chemicals with the 70 carcinogens highlighted in red",
+    "tags": [
+      "tobacco",
+      "smoking",
+      "carcinogens",
+      "cancer",
+      "public health"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-tobacco-002",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Immunity & Disease",
+    "categoryL1": "immunity_disease",
+    "categoryL2": "tobacco",
+    "categoryL3": "",
+    "statement": "Nicotine in tobacco is highly addictive because it triggers dopamine release in the brain's reward pathway.",
+    "quizQuestion": "Why is nicotine addictive?",
+    "correctAnswer": "It triggers dopamine release",
+    "distractors": [
+      "It suppresses cortisol",
+      "It blocks serotonin reuptake",
+      "It increases adrenaline only",
+      "It mimics endorphins",
+      "It raises blood glucose",
+      "It activates GABA receptors",
+      "It reduces acetylcholine",
+      "It stimulates growth hormone"
+    ],
+    "acceptableAnswers": [
+      "triggers dopamine release",
+      "releases dopamine",
+      "dopamine reward"
+    ],
+    "explanation": "Nicotine binds to acetylcholine receptors in the brain, causing dopamine release in the nucleus accumbens — the brain's reward center. Over time, the brain reduces receptor sensitivity, requiring more nicotine.",
+    "wowFactor": "Nicotine reaches the brain within 10 seconds of inhalation — faster than intravenous drug injection, which contributes to its powerful addictive potential.",
+    "variants": [
+      "What brain region does nicotine target to cause addiction?",
+      "How quickly does inhaled nicotine reach the brain?",
+      "Why does quitting smoking cause withdrawal symptoms?",
+      "What neurotransmitter receptor does nicotine mimic?"
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "NIDA — Tobacco, Nicotine, and E-Cigarettes",
+    "sourceUrl": "https://nida.nih.gov/research-topics/tobacco-nicotine-e-cigarettes",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "low",
+    "sensitivityNote": "Discusses drug addiction mechanisms; educational health context",
+    "visualDescription": "Brain diagram showing nicotine binding to acetylcholine receptors in the nucleus accumbens with dopamine release pathway highlighted",
+    "tags": [
+      "tobacco",
+      "nicotine",
+      "addiction",
+      "dopamine",
+      "brain",
+      "neuroscience"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-tobacco-003",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Immunity & Disease",
+    "categoryL1": "immunity_disease",
+    "categoryL2": "tobacco",
+    "categoryL3": "",
+    "statement": "Smoking damages cilia in the respiratory tract, impairing the body's ability to clear mucus and pathogens from airways.",
+    "quizQuestion": "What respiratory structures does smoking damage, impairing mucus clearance?",
+    "correctAnswer": "Cilia",
+    "distractors": [
+      "Alveoli only",
+      "Bronchioles",
+      "Tracheal cartilage",
+      "Pleural lining",
+      "Diaphragm",
+      "Capillary beds",
+      "Nasal hairs only",
+      "Surfactant cells"
+    ],
+    "acceptableAnswers": [
+      "cilia",
+      "respiratory cilia"
+    ],
+    "explanation": "Cilia are hair-like structures lining airways that sweep mucus and trapped pathogens upward. Tobacco smoke paralyzes then destroys cilia, causing 'smoker's cough' as the body tries to compensate.",
+    "wowFactor": "After quitting smoking, cilia begin regrowing within days — within 1–9 months, lung function measurably improves as the mucociliary escalator is restored.",
+    "variants": [
+      "What is the 'mucociliary escalator' in the respiratory tract?",
+      "Why do smokers often develop chronic coughs?",
+      "How soon after quitting smoking does lung function begin to recover?",
+      "What lung disease results from long-term smoking destroying alveoli?"
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "American Lung Association",
+    "sourceUrl": "https://www.lung.org/quit-smoking/smoking-facts/health-effects",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Electron microscope-style illustration comparing healthy beating cilia vs paralyzed/absent cilia in a smoker's airway",
+    "tags": [
+      "tobacco",
+      "smoking",
+      "cilia",
+      "respiratory",
+      "lung health"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-orange-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Digestion & Metabolism",
+    "categoryL1": "digestion_metabolism",
+    "categoryL2": "orange",
+    "categoryL3": "",
+    "statement": "A medium orange provides about 70 mg of vitamin C, meeting the entire adult daily recommended intake.",
+    "quizQuestion": "What vitamin is oranges most famous for providing?",
+    "correctAnswer": "Vitamin C",
+    "distractors": [
+      "Vitamin A",
+      "Vitamin D",
+      "Vitamin B12",
+      "Vitamin E",
+      "Vitamin K",
+      "Vitamin B6",
+      "Folate",
+      "Niacin"
+    ],
+    "acceptableAnswers": [
+      "vitamin C",
+      "ascorbic acid"
+    ],
+    "explanation": "Vitamin C (ascorbic acid) in oranges is essential for collagen synthesis, immune function, and iron absorption. Deficiency causes scurvy — historically devastating to sailors on long voyages.",
+    "wowFactor": "British sailors were given limes (a citrus relative) to prevent scurvy — that's why they were nicknamed 'limeys', a slang term still used today.",
+    "variants": [
+      "What disease results from severe vitamin C deficiency?",
+      "Why were British sailors given citrus fruits on long voyages?",
+      "How does vitamin C help the immune system?",
+      "What is the chemical name for vitamin C?"
+    ],
+    "difficulty": 1,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "USDA FoodData Central",
+    "sourceUrl": "https://fdc.nal.usda.gov/fdc-app.html#/?query=orange",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Cross-section of an orange with labeled vitamin C content and an illustration of collagen molecule structure",
+    "tags": [
+      "orange",
+      "vitamin C",
+      "nutrition",
+      "digestion",
+      "scurvy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-orange-002",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Digestion & Metabolism",
+    "categoryL1": "digestion_metabolism",
+    "categoryL2": "orange",
+    "categoryL3": "",
+    "statement": "Oranges are rich in flavonoids like hesperidin, which support cardiovascular health by reducing inflammation.",
+    "quizQuestion": "What flavonoid in oranges supports cardiovascular health?",
+    "correctAnswer": "Hesperidin",
+    "distractors": [
+      "Quercetin",
+      "Resveratrol",
+      "Lycopene",
+      "Curcumin",
+      "Anthocyanin",
+      "Epicatechin",
+      "Naringenin",
+      "Lutein"
+    ],
+    "acceptableAnswers": [
+      "hesperidin"
+    ],
+    "explanation": "Hesperidin, abundant in orange peel and pulp, is a flavanone glycoside that improves blood vessel function, lowers blood pressure, and reduces LDL cholesterol oxidation.",
+    "wowFactor": "The white pith inside an orange actually contains more hesperidin than the juice — most people discard the most nutritious part.",
+    "variants": [
+      "Why is orange pith nutritionally valuable?",
+      "What class of compounds are hesperidin and quercetin?",
+      "How do flavonoids protect cardiovascular health?",
+      "What part of an orange has the highest concentration of hesperidin?"
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "rare",
+    "sourceName": "Nutrients Journal",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6431442/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Cross-section of orange with the pith (albedo) highlighted and a molecular structure of hesperidin",
+    "tags": [
+      "orange",
+      "hesperidin",
+      "flavonoids",
+      "cardiovascular",
+      "nutrition"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-orange-003",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Digestion & Metabolism",
+    "categoryL1": "digestion_metabolism",
+    "categoryL2": "orange",
+    "categoryL3": "",
+    "statement": "Oranges contain natural sugars (mainly fructose and sucrose) plus fiber, which slows sugar absorption and prevents blood glucose spikes.",
+    "quizQuestion": "Why do whole oranges cause a slower blood sugar rise than orange juice?",
+    "correctAnswer": "Fiber slows sugar absorption",
+    "distractors": [
+      "Less sugar content",
+      "Higher water content",
+      "More protein present",
+      "Fructose is different",
+      "Smaller serving size",
+      "Lower glycemic acids",
+      "More minerals present",
+      "Slower digestion generally"
+    ],
+    "acceptableAnswers": [
+      "fiber slows absorption",
+      "fiber",
+      "dietary fiber"
+    ],
+    "explanation": "Whole orange fiber slows gastric emptying and glucose absorption, producing a glycemic index of ~43 vs ~57 for orange juice. Juicing removes fiber, turning a health food into concentrated sugar.",
+    "wowFactor": "Orange juice and soda have almost identical sugar content per serving — the difference is vitamins and absence of added preservatives, not sugar load.",
+    "variants": [
+      "What is the glycemic index of a whole orange?",
+      "Why is whole fruit healthier than fruit juice for blood sugar control?",
+      "What sugars are naturally found in oranges?",
+      "How does dietary fiber affect glucose absorption in the gut?"
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "American Journal of Clinical Nutrition",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3257742/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Comparison infographic: whole orange vs glass of orange juice showing fiber content, glycemic index, and sugar content",
+    "tags": [
+      "orange",
+      "fiber",
+      "blood sugar",
+      "glycemic index",
+      "nutrition",
+      "digestion"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-biochemistry-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Medical Science",
+    "categoryL1": "medical_science",
+    "categoryL2": "biochemistry",
+    "categoryL3": "",
+    "statement": "ATP (adenosine triphosphate) is the universal energy currency of all living cells, powering virtually every biological process.",
+    "quizQuestion": "What molecule serves as the universal energy currency in living cells?",
+    "correctAnswer": "ATP",
+    "distractors": [
+      "ADP",
+      "NADH",
+      "Glucose",
+      "Glycogen",
+      "Creatine phosphate",
+      "GTP",
+      "FAD",
+      "Pyruvate"
+    ],
+    "acceptableAnswers": [
+      "ATP",
+      "adenosine triphosphate"
+    ],
+    "explanation": "ATP releases energy by hydrolysis of its phosphate bonds. A human body at rest produces and consumes its own body weight in ATP daily, recycled continuously through cellular respiration.",
+    "wowFactor": "You produce your body weight in ATP every single day — about 70 kg — yet your total ATP pool at any moment is only about 250 g. It's recycled ~300 times per day.",
+    "variants": [
+      "What does ATP stand for?",
+      "How much ATP does a human body recycle daily?",
+      "What process generates ATP in mitochondria?",
+      "What happens when a phosphate group is removed from ATP?"
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Biochemistry — Berg et al.",
+    "sourceUrl": "https://www.britannica.com/science/adenosine-triphosphate",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Molecular diagram of ATP with three phosphate groups and an arrow showing hydrolysis to ADP releasing energy",
+    "tags": [
+      "biochemistry",
+      "ATP",
+      "energy",
+      "cellular respiration",
+      "metabolism"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-biochemistry-002",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Medical Science",
+    "categoryL1": "medical_science",
+    "categoryL2": "biochemistry",
+    "categoryL3": "",
+    "statement": "Enzymes are biological catalysts that speed up chemical reactions in cells without being consumed in the process.",
+    "quizQuestion": "What are biological catalysts called in the human body?",
+    "correctAnswer": "Enzymes",
+    "distractors": [
+      "Hormones",
+      "Cofactors",
+      "Substrates",
+      "Coenzymes",
+      "Ligands",
+      "Ribosomes",
+      "Promoters",
+      "Vitamins"
+    ],
+    "acceptableAnswers": [
+      "enzymes"
+    ],
+    "explanation": "Enzymes are proteins (rarely RNA) that lower activation energy, accelerating reactions up to a billion times faster. Each enzyme has an active site complementary to its specific substrate (lock-and-key model).",
+    "wowFactor": "The enzyme carbonic anhydrase is the fastest known enzyme — it processes 600,000 molecules per second, helping red blood cells transport CO2.",
+    "variants": [
+      "What is the lock-and-key model of enzyme action?",
+      "What is the fastest known enzyme?",
+      "How do enzymes speed up chemical reactions?",
+      "What happens to an enzyme when it overheats (denaturation)?"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Lehninger Principles of Biochemistry",
+    "sourceUrl": "https://www.britannica.com/science/enzyme",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Lock-and-key diagram showing enzyme active site binding to substrate and releasing product, with activation energy curve",
+    "tags": [
+      "biochemistry",
+      "enzymes",
+      "catalysts",
+      "metabolism",
+      "cell biology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-biochemistry-003",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Medical Science",
+    "categoryL1": "medical_science",
+    "categoryL2": "biochemistry",
+    "categoryL3": "",
+    "statement": "DNA stores genetic information using four nucleotide bases: adenine (A), thymine (T), guanine (G), and cytosine (C).",
+    "quizQuestion": "Which base pairs with adenine in DNA?",
+    "correctAnswer": "Thymine",
+    "distractors": [
+      "Cytosine",
+      "Guanine",
+      "Uracil",
+      "Adenine",
+      "Serine",
+      "Proline",
+      "Leucine",
+      "Alanine"
+    ],
+    "acceptableAnswers": [
+      "thymine",
+      "T"
+    ],
+    "explanation": "DNA follows Chargaff's rules: A always pairs with T (two hydrogen bonds), and G always pairs with C (three hydrogen bonds). In RNA, uracil replaces thymine as the complementary base to adenine.",
+    "wowFactor": "If you uncoiled all the DNA in one human body, it would stretch from Earth to the Sun and back about 300 times.",
+    "variants": [
+      "What base pairs with guanine in DNA?",
+      "In RNA, what base replaces thymine?",
+      "What are Chargaff's rules in molecular biology?",
+      "How many hydrogen bonds link an A-T base pair vs a G-C pair?"
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Molecular Biology of the Gene",
+    "sourceUrl": "https://www.britannica.com/science/DNA",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "DNA double helix diagram with A-T and G-C base pairs labeled and hydrogen bonds shown as dashed lines",
+    "tags": [
+      "biochemistry",
+      "DNA",
+      "base pairs",
+      "genetics",
+      "nucleotides"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-biochemistry-004",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Medical Science",
+    "categoryL1": "medical_science",
+    "categoryL2": "biochemistry",
+    "categoryL3": "",
+    "statement": "Cholesterol, despite its negative reputation, is essential for cell membrane structure and hormone synthesis.",
+    "quizQuestion": "What essential biological functions does cholesterol perform?",
+    "correctAnswer": "Cell membrane and hormone synthesis",
+    "distractors": [
+      "Only energy storage",
+      "Oxygen transport",
+      "Blood clotting only",
+      "Protein synthesis",
+      "Immune defense",
+      "Nerve insulation only",
+      "pH buffering",
+      "Muscle contraction"
+    ],
+    "acceptableAnswers": [
+      "cell membrane structure",
+      "hormone synthesis",
+      "membrane and hormone synthesis"
+    ],
+    "explanation": "Cholesterol is a sterol lipid found in every cell membrane, maintaining fluidity and stability. It is the precursor to steroid hormones (cortisol, estrogen, testosterone) and bile acids for fat digestion.",
+    "wowFactor": "About 75% of your blood cholesterol is made by your own liver — dietary cholesterol has far less effect on blood levels than the saturated fat you eat.",
+    "variants": [
+      "What steroid hormones are synthesized from cholesterol?",
+      "How does the liver regulate blood cholesterol levels?",
+      "What is the difference between LDL and HDL cholesterol?",
+      "Why does dietary saturated fat raise blood cholesterol?"
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Biochemistry — Berg et al.",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK470561/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Molecular structure of cholesterol alongside diagrams of cell membrane bilayer and steroid hormone family",
+    "tags": [
+      "biochemistry",
+      "cholesterol",
+      "lipids",
+      "hormones",
+      "cell membrane"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-vagina-001",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Anatomy",
+    "categoryL1": "anatomy_organs",
+    "categoryL2": "vagina",
+    "categoryL3": "",
+    "statement": "The vagina has a self-cleaning mechanism: Lactobacillus bacteria maintain an acidic pH (3.8–4.5) to prevent infections.",
+    "quizQuestion": "What type of bacteria keeps the vaginal environment healthy and acidic?",
+    "correctAnswer": "Lactobacillus",
+    "distractors": [
+      "Streptococcus",
+      "E. coli",
+      "Staphylococcus",
+      "Bifidobacterium",
+      "Bacteroides",
+      "Clostridium",
+      "Candida",
+      "Prevotella"
+    ],
+    "acceptableAnswers": [
+      "Lactobacillus",
+      "lactobacilli",
+      "Lactobacillus bacteria"
+    ],
+    "explanation": "Lactobacillus species produce lactic acid and hydrogen peroxide, maintaining vaginal pH around 3.8–4.5. This acidic environment inhibits pathogenic bacteria and yeast. Disruption leads to bacterial vaginosis.",
+    "wowFactor": "The vaginal microbiome is one of the least diverse in the human body — dominated by a single genus — yet this simplicity is precisely what makes it protective.",
+    "variants": [
+      "What is the normal pH of a healthy vagina?",
+      "What happens when vaginal pH becomes less acidic?",
+      "What acid do Lactobacillus bacteria produce in the vagina?",
+      "What is bacterial vaginosis caused by?"
+    ],
+    "difficulty": 4,
+    "funScore": 7,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "uncommon",
+    "sourceName": "Nature Reviews Microbiology",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4148456/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "medium",
+    "sensitivityNote": "Clinical reproductive anatomy; appropriate for teen and adult educational contexts",
+    "visualDescription": "Diagram of vaginal microbiome composition showing Lactobacillus dominance and pH scale from 3.5 to 7.0",
+    "tags": [
+      "vagina",
+      "microbiome",
+      "Lactobacillus",
+      "anatomy",
+      "reproductive health"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-vagina-002",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Anatomy",
+    "categoryL1": "anatomy_organs",
+    "categoryL2": "vagina",
+    "categoryL3": "",
+    "statement": "The vagina is a muscular canal connecting the cervix to the external genitalia, averaging 7–10 cm in length.",
+    "quizQuestion": "What structure does the vagina connect the cervix to?",
+    "correctAnswer": "External genitalia",
+    "distractors": [
+      "The uterus directly",
+      "The ovaries",
+      "The fallopian tubes",
+      "The bladder",
+      "The rectum",
+      "The ureters",
+      "The peritoneum",
+      "The pelvic floor only"
+    ],
+    "acceptableAnswers": [
+      "external genitalia",
+      "vulva",
+      "the outside"
+    ],
+    "explanation": "The vagina serves multiple functions: birth canal, menstrual flow pathway, and copulatory canal. Its walls contain rugae (folds) allowing significant expansion, particularly during childbirth.",
+    "wowFactor": "The vaginal canal can expand from its resting state by 200% during childbirth, accommodating a full-term infant's passage — one of the most remarkable tissue elasticity feats in biology.",
+    "variants": [
+      "What are rugae in the vaginal wall?",
+      "What is the average resting length of the vaginal canal?",
+      "What role does the vagina play during childbirth?",
+      "What structure is located at the upper end of the vagina?"
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "teen",
+    "rarity": "common",
+    "sourceName": "Gray's Anatomy",
+    "sourceUrl": "https://www.britannica.com/science/vagina",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "medium",
+    "sensitivityNote": "Clinical reproductive anatomy; appropriate for teen and adult educational contexts",
+    "visualDescription": "Sagittal cross-section diagram of female pelvic anatomy showing vagina, cervix, uterus, and surrounding structures with labels",
+    "tags": [
+      "vagina",
+      "anatomy",
+      "reproductive system",
+      "cervix",
+      "pelvic anatomy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "health-vagina-003",
+    "type": "knowledge",
+    "domain": "Human Body & Health",
+    "subdomain": "Anatomy",
+    "categoryL1": "anatomy_organs",
+    "categoryL2": "vagina",
+    "categoryL3": "",
+    "statement": "The vaginal wall contains no glands; lubrication during arousal comes from plasma transudation through the vaginal walls.",
+    "quizQuestion": "Where does vaginal lubrication during arousal come from?",
+    "correctAnswer": "Plasma transudation through vaginal walls",
+    "distractors": [
+      "Vaginal glands",
+      "Bartholin's glands only",
+      "Cervical mucus only",
+      "Sweat glands",
+      "Sebaceous glands",
+      "Urethral glands",
+      "Intestinal secretions",
+      "Ovarian fluid"
+    ],
+    "acceptableAnswers": [
+      "plasma transudation",
+      "transudation",
+      "blood plasma seeping through walls"
+    ],
+    "explanation": "Unlike many mucous membranes, the vaginal wall has no secretory glands. Lubrication results from increased blood flow causing plasma to transudate (seep) through the epithelium, a process called vaginal transudation.",
+    "wowFactor": "Vaginal lubrication can begin within 10–30 seconds of sexual arousal — one of the fastest vascular responses in the human body.",
+    "variants": [
+      "Does the vagina contain secretory glands?",
+      "What is vaginal transudation?",
+      "How quickly can vaginal lubrication begin during arousal?",
+      "What role do Bartholin's glands play in vaginal lubrication?"
+    ],
+    "difficulty": 5,
+    "funScore": 6,
+    "noveltyScore": 9,
+    "ageRating": "adult",
+    "rarity": "rare",
+    "sourceName": "Human Sexual Response — Masters & Johnson",
+    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK539782/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "high",
+    "sensitivityNote": "Discusses sexual physiology; appropriate for adult educational contexts only",
+    "visualDescription": "Anatomical diagram showing increased blood vessel vasodilation in vaginal wall with fluid transudation arrows during arousal response",
+    "tags": [
+      "vagina",
+      "anatomy",
+      "lubrication",
+      "arousal",
+      "physiology",
+      "reproductive health"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
   }
 ]

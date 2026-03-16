@@ -42,6 +42,13 @@
   let icon        = $derived(TYPE_ICON[node.type])
   let label       = $derived(TYPE_LABEL[node.type])
   let isClickable = $derived(node.state === 'available')
+
+  /** Sprite URL for boss node only — shows the actual boss enemy instead of an emoji. */
+  let spriteUrl = $derived(
+    node.type === 'boss' && node.enemyId
+      ? `assets/sprites/enemies/${node.enemyId}_idle.webp`
+      : null
+  )
 </script>
 
 <button
@@ -50,13 +57,19 @@
   class:state-available={node.state === 'available'}
   class:state-locked={node.state === 'locked'}
   class:state-current={node.state === 'current'}
+  class:type-boss={node.type === 'boss'}
+  class:type-elite={node.type === 'elite'}
   style="--node-color: {borderColor};"
   aria-label="{label} — {node.state}"
   data-testid="map-node-{node.id}"
   disabled={!isClickable}
   {onclick}
 >
-  <span class="node-icon" aria-hidden="true">{icon}</span>
+  {#if spriteUrl}
+    <img class="node-sprite" src={spriteUrl} alt={label} />
+  {:else}
+    <span class="node-icon" aria-hidden="true">{icon}</span>
+  {/if}
   {#if node.state === 'visited'}
     <span class="visited-check" aria-hidden="true">✓</span>
   {/if}
@@ -147,6 +160,72 @@
     display: block;
   }
 
+  .node-sprite {
+    width: calc(38px * var(--layout-scale, 1));
+    height: calc(38px * var(--layout-scale, 1));
+    object-fit: contain;
+    image-rendering: auto; /* bilinear — good for downscaling */
+    border-radius: 50%;
+    /* 3D floating animation */
+    animation: spriteFloat 3s ease-in-out infinite;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+    pointer-events: none;
+  }
+
+  /* Override sprite animation for boss — slower, more dramatic float */
+  .type-boss .node-sprite {
+    animation: bossFloat 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(192, 57, 43, 0.5)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+  }
+
+  /* Elite sprite — menacing wobble */
+  .type-elite .node-sprite {
+    animation: eliteFloat 2.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 6px rgba(142, 68, 173, 0.4)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+  }
+
+  @keyframes spriteFloat {
+    0%, 100% {
+      transform: translateY(0) rotateY(0deg) scale(1);
+    }
+    25% {
+      transform: translateY(-2px) rotateY(5deg) scale(1.02);
+    }
+    50% {
+      transform: translateY(-3px) rotateY(0deg) scale(1.04);
+    }
+    75% {
+      transform: translateY(-2px) rotateY(-5deg) scale(1.02);
+    }
+  }
+
+  @keyframes bossFloat {
+    0%, 100% {
+      transform: translateY(0) rotateY(0deg) scale(1) perspective(200px) rotateX(0deg);
+    }
+    25% {
+      transform: translateY(-3px) rotateY(8deg) scale(1.05) perspective(200px) rotateX(2deg);
+    }
+    50% {
+      transform: translateY(-5px) rotateY(0deg) scale(1.08) perspective(200px) rotateX(-2deg);
+    }
+    75% {
+      transform: translateY(-3px) rotateY(-8deg) scale(1.05) perspective(200px) rotateX(2deg);
+    }
+  }
+
+  @keyframes eliteFloat {
+    0%, 100% {
+      transform: translateY(0) rotateY(0deg) scale(1);
+    }
+    33% {
+      transform: translateY(-2px) rotateY(6deg) scale(1.03);
+    }
+    66% {
+      transform: translateY(-3px) rotateY(-6deg) scale(1.03);
+    }
+  }
+
   .visited-check {
     position: absolute;
     top: calc(-4px * var(--layout-scale, 1));
@@ -166,9 +245,69 @@
     z-index: 1;
   }
 
+  /* --- boss node: dramatic slow pulse with large glow, always active, larger --- */
+  .map-node.type-boss {
+    width: calc(54px * var(--layout-scale, 1));
+    height: calc(54px * var(--layout-scale, 1));
+    animation: bossPulse 3s ease-in-out infinite;
+    border-width: 3px;
+  }
+  .map-node.type-boss.state-visited {
+    animation: none;
+  }
+
+  /* --- elite node: menacing purple pulse, always active --- */
+  .map-node.type-elite {
+    animation: elitePulse 2s ease-in-out infinite;
+    border-width: 2.5px;
+  }
+  .map-node.type-elite.state-visited {
+    animation: none;
+  }
+
+  @keyframes bossPulse {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow:
+        0 0 12px rgba(192, 57, 43, 0.6),
+        0 0 24px rgba(192, 57, 43, 0.3),
+        0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+    50% {
+      transform: scale(1.15);
+      box-shadow:
+        0 0 20px rgba(192, 57, 43, 0.8),
+        0 0 40px rgba(192, 57, 43, 0.4),
+        0 0 60px rgba(192, 57, 43, 0.2),
+        0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  @keyframes elitePulse {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow:
+        0 0 8px rgba(142, 68, 173, 0.5),
+        0 0 16px rgba(142, 68, 173, 0.2),
+        0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+    50% {
+      transform: scale(1.08);
+      box-shadow:
+        0 0 14px rgba(142, 68, 173, 0.7),
+        0 0 28px rgba(142, 68, 173, 0.35),
+        0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .map-node.state-available,
-    .map-node.state-current {
+    .map-node.state-current,
+    .map-node.type-boss,
+    .map-node.type-elite {
+      animation: none;
+    }
+    .node-sprite {
       animation: none;
     }
   }

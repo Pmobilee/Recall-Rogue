@@ -22,6 +22,7 @@
     runDurationMs?: number
     rewardMultiplier: number
     currencyEarned: number
+    isPracticeRun?: boolean
     onplayagain: () => void
     onhome: () => void
   }
@@ -42,6 +43,7 @@
     runDurationMs = 0,
     rewardMultiplier,
     currencyEarned,
+    isPracticeRun = false,
     onplayagain,
     onhome,
   }: Props = $props()
@@ -91,6 +93,7 @@
         runDurationMs,
         rewardMultiplier,
         currencyEarned,
+        isPracticeRun,
       })
       analyticsService.track({
         name: 'share_card_generated',
@@ -141,6 +144,7 @@
       <span class="stat-label">Cards Earned</span>
       <span class="stat-value">{cardsEarned}</span>
     </div>
+    {#if !isPracticeRun}
     <div class="stat-row" style="--stagger: 6">
       <span class="stat-label">Reward Multiplier</span>
       <span class="stat-value">{Math.round(rewardMultiplier * 100)}%</span>
@@ -149,6 +153,7 @@
       <span class="stat-label">Currency Earned</span>
       <span class="stat-value">{currencyEarned}</span>
     </div>
+    {/if}
     <div class="stat-row" style="--stagger: 8">
       <span class="stat-label">New Facts Learned</span>
       <span class="stat-value">{newFactsLearned}</span>
@@ -174,6 +179,14 @@
       </div>
     {/if}
   </div>
+
+  {#if isPracticeRun}
+    <div class="practice-run-notice">
+      <p class="practice-title">Practice Run</p>
+      <p class="practice-desc">You already know this material well — camp rewards disabled.</p>
+      <p class="practice-tip">Try a less familiar domain to earn rewards!</p>
+    </div>
+  {/if}
 
   <div class="btn-row" class:btns-visible={showButtons}>
     <button
@@ -302,6 +315,37 @@
   .btn-share {
     background: #1d4ed8;
     color: #e2e8f0;
+  }
+
+  .practice-run-notice {
+    text-align: center;
+    padding: calc(16px * var(--layout-scale, 1));
+    background: rgba(100, 116, 139, 0.15);
+    border: 1px solid rgba(100, 116, 139, 0.3);
+    border-radius: 10px;
+    margin-bottom: calc(16px * var(--layout-scale, 1));
+    width: 100%;
+    max-width: calc(300px * var(--layout-scale, 1));
+  }
+
+  .practice-title {
+    font-size: calc(18px * var(--layout-scale, 1));
+    font-weight: 700;
+    color: #94a3b8;
+    margin: 0 0 calc(8px * var(--layout-scale, 1));
+  }
+
+  .practice-desc {
+    font-size: calc(13px * var(--layout-scale, 1));
+    color: #cbd5e1;
+    margin: 0 0 calc(4px * var(--layout-scale, 1));
+  }
+
+  .practice-tip {
+    font-size: calc(12px * var(--layout-scale, 1));
+    color: #64748b;
+    font-style: italic;
+    margin: 0;
   }
 
   .bounty-list {

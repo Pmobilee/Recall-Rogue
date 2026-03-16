@@ -261,8 +261,8 @@
   <CampSpeechBubble
     text="Grrr..."
     visible={petBubbleVisible}
-    top="64%"
-    left="42%"
+    top="74%"
+    left="66%"
   />
 
   <!-- Upgrade modal -->

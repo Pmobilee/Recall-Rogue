@@ -1,0 +1,4169 @@
+[
+  {
+    "id": "science-light-001",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Physics",
+    "categoryL1": "Physics",
+    "categoryL2": "Optics",
+    "categoryL3": "",
+    "statement": "Light travels at approximately 299,792 kilometres per second in a vacuum.",
+    "quizQuestion": "What is the speed of light in a vacuum?",
+    "correctAnswer": "299,792 km/s",
+    "distractors": [
+      "150,000 km/s",
+      "500,000 km/s",
+      "186,000 km/s",
+      "100,000 km/s",
+      "400,000 km/s",
+      "250,000 km/s",
+      "340 m/s",
+      "3,000 km/s"
+    ],
+    "acceptableAnswers": [
+      "300,000 km/s",
+      "3×10⁸ m/s",
+      "186,282 miles/s"
+    ],
+    "explanation": "The speed of light in a vacuum (c) is exactly 299,792,458 metres per second — a fundamental constant of physics.",
+    "wowFactor": "Light from the Sun takes about 8 minutes to reach Earth, yet it crosses 150 million kilometres.",
+    "variants": [
+      "How fast does light travel in empty space?",
+      "What constant is denoted by 'c' in Einstein's E=mc²?",
+      "Approximately how many kilometres does light travel per second?",
+      "What is the universal speed limit for information in physics?"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "NIST CODATA",
+    "sourceUrl": "https://physics.nist.gov/cgi-bin/cuu/Value?c",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A beam of white light splitting into a rainbow spectrum through a glass prism against a dark background.",
+    "tags": [
+      "light",
+      "speed",
+      "physics",
+      "optics",
+      "constants",
+      "relativity"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-light-002",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Physics",
+    "categoryL1": "Physics",
+    "categoryL2": "Optics",
+    "categoryL3": "",
+    "statement": "Visible light occupies a narrow band of the electromagnetic spectrum between infrared and ultraviolet radiation.",
+    "quizQuestion": "Which radiation type has shorter wavelength than visible light?",
+    "correctAnswer": "Ultraviolet",
+    "distractors": [
+      "Infrared",
+      "Microwaves",
+      "Radio waves",
+      "X-rays",
+      "Gamma rays",
+      "Terahertz waves",
+      "Sound waves",
+      "Cosmic rays"
+    ],
+    "acceptableAnswers": [
+      "UV",
+      "ultraviolet radiation"
+    ],
+    "explanation": "Visible light spans roughly 380–700 nm. Ultraviolet sits just above this range (shorter wavelength, higher energy), while infrared sits just below.",
+    "wowFactor": "Bees can see ultraviolet patterns on flowers that are completely invisible to humans.",
+    "variants": [
+      "What type of radiation lies just beyond violet light?",
+      "Which part of the EM spectrum causes sunburn?",
+      "What radiation has wavelengths just shorter than visible light?",
+      "Which radiation type is blocked by sunscreen?"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "NASA Electromagnetic Spectrum",
+    "sourceUrl": "https://science.nasa.gov/ems/09_visiblelight",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A diagram of the electromagnetic spectrum showing visible light as a narrow colourful band between infrared and ultraviolet.",
+    "tags": [
+      "light",
+      "electromagnetic spectrum",
+      "ultraviolet",
+      "wavelength",
+      "optics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-light-003",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Physics",
+    "categoryL1": "Physics",
+    "categoryL2": "Optics",
+    "categoryL3": "",
+    "statement": "Light behaves as both a particle (photon) and a wave — a phenomenon called wave-particle duality.",
+    "quizQuestion": "What term describes light acting as both wave and particle?",
+    "correctAnswer": "Wave-particle duality",
+    "distractors": [
+      "Quantum entanglement",
+      "Superposition",
+      "Diffraction",
+      "Interference",
+      "Refraction",
+      "Polarisation",
+      "Photoelectric effect",
+      "Compton scattering"
+    ],
+    "acceptableAnswers": [
+      "wave-particle duality",
+      "dual nature of light"
+    ],
+    "explanation": "Light exhibits wave properties (diffraction, interference) and particle properties (photoelectric effect). Einstein won the 1921 Nobel Prize explaining the latter.",
+    "wowFactor": "The same photon can interfere with itself in a double-slit experiment — no classical explanation works.",
+    "variants": [
+      "What quantum property means light is both a wave and a particle?",
+      "Which concept did Einstein's photoelectric effect help establish?",
+      "What duality is fundamental to quantum mechanics?",
+      "How do physicists describe the nature of photons?"
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Britannica — Wave-Particle Duality",
+    "sourceUrl": "https://www.britannica.com/science/wave-particle-duality",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A double-slit experiment diagram showing an interference pattern on a screen, with individual photon dots forming stripes.",
+    "tags": [
+      "light",
+      "photon",
+      "quantum mechanics",
+      "wave-particle duality",
+      "physics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-light-004",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Physics",
+    "categoryL1": "Physics",
+    "categoryL2": "Optics",
+    "categoryL3": "",
+    "statement": "When light passes from air into glass it slows down and bends — a process called refraction.",
+    "quizQuestion": "What is it called when light bends entering a denser medium?",
+    "correctAnswer": "Refraction",
+    "distractors": [
+      "Reflection",
+      "Diffraction",
+      "Dispersion",
+      "Scattering",
+      "Absorption",
+      "Polarisation",
+      "Interference",
+      "Transmission"
+    ],
+    "acceptableAnswers": [
+      "refraction"
+    ],
+    "explanation": "Refraction occurs because light slows when entering a denser medium like glass or water, causing its direction to change according to Snell's Law.",
+    "wowFactor": "Rainbows form because water droplets refract and reflect sunlight, separating colours by wavelength.",
+    "variants": [
+      "Why does a straw appear bent in a glass of water?",
+      "What law governs the bending of light at a surface?",
+      "What causes a prism to split white light into colours?",
+      "What process makes lenses in glasses work?"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "HyperPhysics — Refraction",
+    "sourceUrl": "http://hyperphysics.phy-astr.gsu.edu/hbase/geoopt/refr.html",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A ray of light entering a glass block at an angle, bending toward the normal as it slows inside the denser medium.",
+    "tags": [
+      "light",
+      "refraction",
+      "optics",
+      "Snell's law",
+      "wavelength"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-energy-001",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Physics",
+    "categoryL1": "Physics",
+    "categoryL2": "Thermodynamics",
+    "categoryL3": "",
+    "statement": "Energy cannot be created or destroyed — it can only be converted from one form to another.",
+    "quizQuestion": "What law states energy cannot be created or destroyed?",
+    "correctAnswer": "Conservation of energy",
+    "distractors": [
+      "Newton's first law",
+      "Entropy law",
+      "Boyle's law",
+      "Faraday's law",
+      "Coulomb's law",
+      "Ohm's law",
+      "Pascal's law",
+      "Hooke's law"
+    ],
+    "acceptableAnswers": [
+      "law of conservation of energy",
+      "first law of thermodynamics"
+    ],
+    "explanation": "The first law of thermodynamics states that the total energy of an isolated system is constant. Energy transforms between kinetic, potential, thermal, and other forms.",
+    "wowFactor": "Every calorie you burn was originally solar energy captured by a plant millions of years ago.",
+    "variants": [
+      "Which thermodynamic law governs energy conservation?",
+      "What happens to energy in a closed system?",
+      "What principle explains why a pendulum eventually stops?",
+      "What does the first law of thermodynamics state?"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "HyperPhysics — First Law of Thermodynamics",
+    "sourceUrl": "http://hyperphysics.phy-astr.gsu.edu/hbase/thermo/firlaw.html",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A diagram showing energy transformations: chemical energy in a battery converting to electrical energy, then light and heat in a bulb.",
+    "tags": [
+      "energy",
+      "thermodynamics",
+      "conservation",
+      "physics",
+      "first law"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-energy-002",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Physics",
+    "categoryL1": "Physics",
+    "categoryL2": "Mechanics",
+    "categoryL3": "",
+    "statement": "Kinetic energy is the energy possessed by an object due to its motion, equal to ½mv².",
+    "quizQuestion": "What formula gives the kinetic energy of a moving object?",
+    "correctAnswer": "½mv²",
+    "distractors": [
+      "mv²",
+      "mgh",
+      "½mv",
+      "F×d",
+      "mv",
+      "½mgh",
+      "p²/2m",
+      "ma²"
+    ],
+    "acceptableAnswers": [
+      "one half m v squared",
+      "0.5mv²",
+      "KE = ½mv²"
+    ],
+    "explanation": "Kinetic energy (KE) = ½mv², where m is mass in kg and v is velocity in m/s. Doubling speed quadruples kinetic energy — which is why car crash severity rises steeply with speed.",
+    "wowFactor": "A car at 100 km/h has four times the kinetic energy of one at 50 km/h — making crashes dramatically more deadly.",
+    "variants": [
+      "Which energy depends on the square of velocity?",
+      "What is the kinetic energy of an object with mass m and speed v?",
+      "Why does doubling speed quadruple kinetic energy?",
+      "What type of energy does a moving bullet have?"
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "HyperPhysics — Kinetic Energy",
+    "sourceUrl": "http://hyperphysics.phy-astr.gsu.edu/hbase/ke.html",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A speeding red sports car with motion blur, with an equation ½mv² overlaid in bold white text.",
+    "tags": [
+      "energy",
+      "kinetic energy",
+      "mechanics",
+      "physics",
+      "velocity"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-energy-003",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Physics",
+    "categoryL1": "Physics",
+    "categoryL2": "Nuclear Physics",
+    "categoryL3": "",
+    "statement": "Einstein's equation E=mc² shows that mass and energy are interchangeable, with c being the speed of light.",
+    "quizQuestion": "What does the 'c' represent in Einstein's E=mc²?",
+    "correctAnswer": "Speed of light",
+    "distractors": [
+      "Speed of sound",
+      "Charge of electron",
+      "Coulomb constant",
+      "Specific heat capacity",
+      "Curvature constant",
+      "Compression ratio",
+      "Centripetal force",
+      "Chemical potential"
+    ],
+    "acceptableAnswers": [
+      "the speed of light",
+      "light speed",
+      "299,792 km/s"
+    ],
+    "explanation": "In E=mc², E is energy, m is mass, and c is the speed of light (~3×10⁸ m/s). Because c² is enormous, a tiny amount of mass converts to a colossal amount of energy.",
+    "wowFactor": "1 gram of matter converted entirely to energy would release about 90 terajoules — equivalent to a Hiroshima-scale explosion.",
+    "variants": [
+      "What does E=mc² describe?",
+      "In mass-energy equivalence, what is c?",
+      "Who derived the equation E=mc²?",
+      "What constant makes E=mc² yield such enormous energies?"
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 6,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Einstein — Annalen der Physik (1905)",
+    "sourceUrl": "https://www.britannica.com/science/E-mc2-equation",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "The equation E=mc² written in glowing white chalk on a black chalkboard beside a portrait of Albert Einstein.",
+    "tags": [
+      "energy",
+      "Einstein",
+      "E=mc²",
+      "mass-energy equivalence",
+      "nuclear physics",
+      "physics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-energy-004",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Physics",
+    "categoryL1": "Physics",
+    "categoryL2": "Thermodynamics",
+    "categoryL3": "",
+    "statement": "The SI unit of energy is the joule, defined as the work done when a force of one newton moves an object one metre.",
+    "quizQuestion": "What is the SI unit of energy?",
+    "correctAnswer": "Joule",
+    "distractors": [
+      "Watt",
+      "Newton",
+      "Pascal",
+      "Calorie",
+      "Electron-volt",
+      "Erg",
+      "Hertz",
+      "Ampere"
+    ],
+    "acceptableAnswers": [
+      "joule",
+      "J"
+    ],
+    "explanation": "The joule (J) honours physicist James Prescott Joule. One joule = one newton-metre = one kg·m²/s². It measures work, heat, and all other forms of energy.",
+    "wowFactor": "One joule is roughly the energy needed to lift an apple one metre — or the energy in a single heartbeat.",
+    "variants": [
+      "Which unit measures energy in the metric system?",
+      "Who is the joule unit named after?",
+      "What unit equals one newton times one metre?",
+      "How is the joule defined in terms of base SI units?"
+    ],
+    "difficulty": 1,
+    "funScore": 5,
+    "noveltyScore": 4,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "BIPM — SI Units",
+    "sourceUrl": "https://www.bipm.org/en/publications/si-brochure",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A stylised apple floating one metre above a table, labelled '1 Joule of work done' with a simple force arrow.",
+    "tags": [
+      "energy",
+      "joule",
+      "SI units",
+      "thermodynamics",
+      "physics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-pluto-001",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Astronomy",
+    "categoryL1": "Astronomy",
+    "categoryL2": "Solar System",
+    "categoryL3": "",
+    "statement": "Pluto was reclassified from a planet to a dwarf planet by the IAU in 2006.",
+    "quizQuestion": "In what year was Pluto reclassified as a dwarf planet?",
+    "correctAnswer": "2006",
+    "distractors": [
+      "1992",
+      "2000",
+      "2003",
+      "2010",
+      "2015",
+      "1999",
+      "2012",
+      "2018"
+    ],
+    "acceptableAnswers": [
+      "2006"
+    ],
+    "explanation": "The International Astronomical Union (IAU) redefined 'planet' in 2006, requiring an object to clear its orbital neighbourhood. Pluto, sharing the Kuiper Belt, was reclassified as a dwarf planet.",
+    "wowFactor": "Pluto was discovered in 1930 by 24-year-old Clyde Tombaugh, who had submitted hand-drawn planet sketches to get his job.",
+    "variants": [
+      "Which body demoted Pluto from planet status?",
+      "What classification replaced 'planet' for Pluto in 2006?",
+      "Who discovered Pluto in 1930?",
+      "Why did scientists reclassify Pluto in 2006?"
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "IAU 2006 General Assembly Resolution B5",
+    "sourceUrl": "https://www.iau.org/public/themes/pluto/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Pluto as a small, icy, reddish-brown world against the black of space, with its moon Charon visible in the distance.",
+    "tags": [
+      "Pluto",
+      "dwarf planet",
+      "IAU",
+      "solar system",
+      "astronomy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-pluto-002",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Astronomy",
+    "categoryL1": "Astronomy",
+    "categoryL2": "Solar System",
+    "categoryL3": "",
+    "statement": "Pluto's largest moon, Charon, is so big relative to Pluto that the two form a binary system, orbiting a common centre of mass.",
+    "quizQuestion": "What is the name of Pluto's largest moon?",
+    "correctAnswer": "Charon",
+    "distractors": [
+      "Nix",
+      "Hydra",
+      "Styx",
+      "Kerberos",
+      "Eris",
+      "Dysnomia",
+      "Triton",
+      "Oberon"
+    ],
+    "acceptableAnswers": [
+      "Charon"
+    ],
+    "explanation": "Charon has roughly half the diameter and 12% the mass of Pluto. The barycentre of the Pluto–Charon system lies outside Pluto itself, making them a true binary dwarf planet system.",
+    "wowFactor": "Charon and Pluto are tidally locked — each always shows the same face to the other, like two dancers always facing each other.",
+    "variants": [
+      "Which of Pluto's moons is largest?",
+      "What moon forms a binary system with Pluto?",
+      "What is the name of Pluto's moon discovered in 1978?",
+      "Which moon is almost half the size of Pluto?"
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "NASA New Horizons — Pluto System",
+    "sourceUrl": "https://www.nasa.gov/mission/new-horizons/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Side-by-side images of Pluto and its large grey moon Charon to scale, connected by a dotted orbital line.",
+    "tags": [
+      "Pluto",
+      "Charon",
+      "moon",
+      "binary system",
+      "solar system",
+      "astronomy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-pluto-003",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Astronomy",
+    "categoryL1": "Astronomy",
+    "categoryL2": "Solar System",
+    "categoryL3": "",
+    "statement": "NASA's New Horizons spacecraft performed the first close flyby of Pluto in July 2015, revealing a heart-shaped nitrogen ice plain.",
+    "quizQuestion": "Which spacecraft made the first flyby of Pluto in 2015?",
+    "correctAnswer": "New Horizons",
+    "distractors": [
+      "Voyager 1",
+      "Voyager 2",
+      "Cassini",
+      "Pioneer 10",
+      "Dawn",
+      "Juno",
+      "OSIRIS-REx",
+      "Galileo"
+    ],
+    "acceptableAnswers": [
+      "New Horizons",
+      "NASA New Horizons"
+    ],
+    "explanation": "New Horizons passed within 12,500 km of Pluto on July 14, 2015, revealing mountains of water ice, nitrogen glaciers, and the iconic Tombaugh Regio heart plain.",
+    "wowFactor": "The famous 'heart' on Pluto — Tombaugh Regio — is about the size of Texas and Oklahoma combined, made of nitrogen ice.",
+    "variants": [
+      "What NASA mission first photographed Pluto up close?",
+      "In what year did New Horizons reach Pluto?",
+      "What feature on Pluto did New Horizons reveal in 2015?",
+      "How long did New Horizons travel before reaching Pluto?"
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "NASA New Horizons Mission",
+    "sourceUrl": "https://www.nasa.gov/mission/new-horizons/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "The iconic New Horizons image of Pluto showing its reddish surface and the bright white heart-shaped Tombaugh Regio region.",
+    "tags": [
+      "Pluto",
+      "New Horizons",
+      "NASA",
+      "flyby",
+      "space exploration",
+      "astronomy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-geometry-001",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Mathematics",
+    "categoryL1": "Mathematics",
+    "categoryL2": "Geometry",
+    "categoryL3": "",
+    "statement": "Euclidean geometry, codified by the Greek mathematician Euclid around 300 BC, is based on five fundamental postulates.",
+    "quizQuestion": "How many postulates underpin Euclidean geometry?",
+    "correctAnswer": "Five",
+    "distractors": [
+      "Three",
+      "Four",
+      "Six",
+      "Seven",
+      "Ten",
+      "Two",
+      "Eight",
+      "Twelve"
+    ],
+    "acceptableAnswers": [
+      "5",
+      "five"
+    ],
+    "explanation": "Euclid's five postulates in his Elements include: a straight line can be drawn between any two points, and the famous parallel postulate. Questioning the fifth led to non-Euclidean geometries.",
+    "wowFactor": "Questioning Euclid's fifth postulate (about parallel lines) led directly to Einstein's general relativity — spacetime is non-Euclidean.",
+    "variants": [
+      "Who wrote the foundational geometry text 'Elements'?",
+      "What Greek mathematician systematised geometry around 300 BC?",
+      "How many axioms does classical Euclidean geometry rest on?",
+      "What geometry assumes the parallel postulate holds true?"
+    ],
+    "difficulty": 3,
+    "funScore": 6,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Euclid — Elements (Heath translation)",
+    "sourceUrl": "https://www.britannica.com/biography/Euclid-Greek-mathematician",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "An ancient scroll beside geometric diagrams of triangles, circles, and parallel lines on yellowed papyrus.",
+    "tags": [
+      "geometry",
+      "Euclid",
+      "mathematics",
+      "postulates",
+      "axioms",
+      "Elements"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-geometry-002",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Mathematics",
+    "categoryL1": "Mathematics",
+    "categoryL2": "Geometry",
+    "categoryL3": "",
+    "statement": "The sum of interior angles in any triangle is always 180 degrees in flat (Euclidean) space.",
+    "quizQuestion": "What is the sum of interior angles in a triangle?",
+    "correctAnswer": "180 degrees",
+    "distractors": [
+      "90 degrees",
+      "270 degrees",
+      "360 degrees",
+      "120 degrees",
+      "240 degrees",
+      "160 degrees",
+      "200 degrees",
+      "150 degrees"
+    ],
+    "acceptableAnswers": [
+      "180°",
+      "180 degrees",
+      "π radians"
+    ],
+    "explanation": "In Euclidean geometry, the three interior angles of any triangle always sum to 180°. On a curved surface (like a sphere), this rule breaks — triangles drawn on Earth's surface can have angle sums greater than 180°.",
+    "wowFactor": "A triangle drawn on Earth with one side along the equator can have three right angles — a 270° total — on the curved surface.",
+    "variants": [
+      "What do the three angles of a flat triangle add up to?",
+      "In Euclidean geometry, how many degrees are in a triangle?",
+      "What is the angle sum property of triangles?",
+      "Does a triangle on a sphere have angles summing to 180°?"
+    ],
+    "difficulty": 1,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Britannica — Triangle",
+    "sourceUrl": "https://www.britannica.com/science/triangle-mathematics",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A colourful triangle with each interior angle labelled, and an equation showing their sum equals 180°.",
+    "tags": [
+      "geometry",
+      "triangle",
+      "angles",
+      "Euclidean",
+      "mathematics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-geometry-003",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Mathematics",
+    "categoryL1": "Mathematics",
+    "categoryL2": "Geometry",
+    "categoryL3": "",
+    "statement": "Pi (π) is the ratio of a circle's circumference to its diameter, approximately equal to 3.14159.",
+    "quizQuestion": "What is the approximate value of pi (π)?",
+    "correctAnswer": "3.14159",
+    "distractors": [
+      "2.71828",
+      "1.61803",
+      "3.14512",
+      "3.41159",
+      "3.12159",
+      "2.14159",
+      "3.14295",
+      "3.00000"
+    ],
+    "acceptableAnswers": [
+      "3.14",
+      "3.14159",
+      "22/7",
+      "π ≈ 3.14"
+    ],
+    "explanation": "π is irrational and transcendental — its decimal expansion never repeats. It appears throughout mathematics and physics far beyond circles, including in wave equations, probability, and quantum mechanics.",
+    "wowFactor": "Pi has been calculated to over 100 trillion decimal places, yet engineers only need about 40 digits to calculate the circumference of the observable universe to atom-width precision.",
+    "variants": [
+      "What Greek letter represents the ratio of circumference to diameter?",
+      "Is pi a rational or irrational number?",
+      "What constant appears in the area formula for a circle?",
+      "How many decimal places of pi does NASA use for space missions?"
+    ],
+    "difficulty": 1,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Britannica — Pi",
+    "sourceUrl": "https://www.britannica.com/science/pi-mathematics",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "The Greek letter π overlaid on a bright blue circle, with circumference and diameter labelled and the ratio shown.",
+    "tags": [
+      "geometry",
+      "pi",
+      "circle",
+      "mathematics",
+      "irrational numbers"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-linnaeus-001",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Biology",
+    "categoryL1": "Biology",
+    "categoryL2": "Taxonomy",
+    "categoryL3": "",
+    "statement": "Carl Linnaeus created the binomial nomenclature system, giving every species a two-part Latin name still used today.",
+    "quizQuestion": "Who invented the binomial nomenclature system for naming species?",
+    "correctAnswer": "Carl Linnaeus",
+    "distractors": [
+      "Charles Darwin",
+      "Aristotle",
+      "Georges Cuvier",
+      "Ernst Haeckel",
+      "John Ray",
+      "Robert Hooke",
+      "Gregor Mendel",
+      "William Harvey"
+    ],
+    "acceptableAnswers": [
+      "Linnaeus",
+      "Carl Linnaeus",
+      "Carolus Linnaeus"
+    ],
+    "explanation": "In his 1758 work Systema Naturae (10th edition), Linnaeus formalised binomial nomenclature. Every species gets a genus name and specific epithet — e.g., Homo sapiens for humans.",
+    "wowFactor": "Linnaeus named over 12,000 species himself and even named a plant after a scientific rival using an unflattering description — a form of scientific revenge.",
+    "variants": [
+      "What naming system did Linnaeus introduce for organisms?",
+      "Who wrote Systema Naturae in 1758?",
+      "What does Homo sapiens exemplify in Linnaean taxonomy?",
+      "Which Swedish naturalist is called the 'father of taxonomy'?"
+    ],
+    "difficulty": 2,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Linnaeus — Systema Naturae (1758)",
+    "sourceUrl": "https://www.britannica.com/biography/Carolus-Linnaeus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "An 18th-century botanical illustration beside a specimen label reading 'Homo sapiens Linnaeus, 1758' in formal Latin typeface.",
+    "tags": [
+      "Linnaeus",
+      "taxonomy",
+      "binomial nomenclature",
+      "biology",
+      "classification"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-linnaeus-002",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Biology",
+    "categoryL1": "Biology",
+    "categoryL2": "Taxonomy",
+    "categoryL3": "",
+    "statement": "Linnaeus grouped organisms into a hierarchy: Kingdom, Class, Order, Genus, Species — later expanded by others.",
+    "quizQuestion": "What is the most specific rank in Linnaeus's original classification?",
+    "correctAnswer": "Species",
+    "distractors": [
+      "Genus",
+      "Order",
+      "Class",
+      "Kingdom",
+      "Family",
+      "Phylum",
+      "Variety",
+      "Tribe"
+    ],
+    "acceptableAnswers": [
+      "species"
+    ],
+    "explanation": "Linnaeus's original system ranked from Kingdom (broadest) down to Species (most specific). The ranks Family and Phylum were added later by other taxonomists to handle the growing complexity of life's diversity.",
+    "wowFactor": "Modern taxonomy still uses Linnaeus's framework, but now recognises Domain as a rank above Kingdom — which Linnaeus never imagined.",
+    "variants": [
+      "What is the broadest rank in Linnaean taxonomy?",
+      "What are the two words in a binomial species name drawn from?",
+      "What level sits just above species in Linnaean taxonomy?",
+      "How many original ranks did Linnaeus define in his hierarchy?"
+    ],
+    "difficulty": 2,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Britannica — Taxonomy",
+    "sourceUrl": "https://www.britannica.com/science/taxonomy",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A pyramid diagram showing Linnaean taxonomic ranks from Kingdom at the top to Species at the base, with example animals at each level.",
+    "tags": [
+      "Linnaeus",
+      "taxonomy",
+      "classification",
+      "biology",
+      "species",
+      "genus"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-linnaeus-003",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Biology",
+    "categoryL1": "Biology",
+    "categoryL2": "Taxonomy",
+    "categoryL3": "",
+    "statement": "Linnaeus placed humans in the order Primates alongside monkeys and apes — a controversial classification in 1758.",
+    "quizQuestion": "What order did Linnaeus place humans in, alongside apes?",
+    "correctAnswer": "Primates",
+    "distractors": [
+      "Hominidae",
+      "Simians",
+      "Anthropoids",
+      "Mammals",
+      "Hominins",
+      "Carnivora",
+      "Insectivora",
+      "Rodentia"
+    ],
+    "acceptableAnswers": [
+      "Primates",
+      "Order Primates"
+    ],
+    "explanation": "In Systema Naturae (1758), Linnaeus classified Homo sapiens in the order Primates, grouped with monkeys, apes, and bats. This was deeply controversial among theologians who insisted on human uniqueness.",
+    "wowFactor": "Linnaeus actually received death threats for placing humans alongside apes — though he justified it purely on physical anatomy, not theology.",
+    "variants": [
+      "What does Linnaeus's classification of humans with apes imply?",
+      "What class does Homo sapiens belong to in Linnaean taxonomy?",
+      "When did Linnaeus first formally classify humans as primates?",
+      "Which order do humans, chimps, and gorillas all share?"
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Linnaeus — Systema Naturae (1758); Britannica",
+    "sourceUrl": "https://www.britannica.com/biography/Carolus-Linnaeus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A side-by-side illustration from an 18th-century natural history book showing a human figure next to a chimpanzee skeleton.",
+    "tags": [
+      "Linnaeus",
+      "primates",
+      "Homo sapiens",
+      "biology",
+      "taxonomy",
+      "evolution"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-pasteur-001",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Biology",
+    "categoryL1": "Biology",
+    "categoryL2": "Microbiology",
+    "categoryL3": "",
+    "statement": "Louis Pasteur disproved the theory of spontaneous generation through his famous swan-neck flask experiments in 1859.",
+    "quizQuestion": "What theory did Pasteur's swan-neck flask experiment disprove?",
+    "correctAnswer": "Spontaneous generation",
+    "distractors": [
+      "Germ theory",
+      "Evolution",
+      "Cell theory",
+      "Miasma theory",
+      "Panspermia",
+      "Biogenesis",
+      "Vitalism",
+      "Lamarckism"
+    ],
+    "acceptableAnswers": [
+      "spontaneous generation",
+      "abiogenesis"
+    ],
+    "explanation": "Pasteur's elegant experiment showed that broth in swan-neck flasks (which allowed air but not dust) stayed sterile for years. Breaking the necks caused contamination, proving microbes come from the air, not from nothing.",
+    "wowFactor": "Some of Pasteur's original sealed swan-neck flasks still exist at the Institut Pasteur in Paris — and the broth inside is still sterile after 160+ years.",
+    "variants": [
+      "What did Pasteur's swan-neck flask experiment prove about microbes?",
+      "Who was instrumental in establishing germ theory of disease?",
+      "What 1859 experiment finally settled the debate over life's origin from nothing?",
+      "Why did breaking Pasteur's flask neck cause contamination?"
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Pasteur — Annales des Sciences Naturelles (1861)",
+    "sourceUrl": "https://www.britannica.com/biography/Louis-Pasteur",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A curved swan-neck glass flask containing clear broth, with arrows showing air flowing in but dust particles being trapped in the curve.",
+    "tags": [
+      "Pasteur",
+      "spontaneous generation",
+      "microbiology",
+      "germ theory",
+      "experiment",
+      "biology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-pasteur-002",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Biology",
+    "categoryL1": "Biology",
+    "categoryL2": "Microbiology",
+    "categoryL3": "",
+    "statement": "Pasteurisation — the process of heating food to kill harmful microbes — is named after Louis Pasteur.",
+    "quizQuestion": "What process involves heating food to destroy harmful microbes?",
+    "correctAnswer": "Pasteurisation",
+    "distractors": [
+      "Sterilisation",
+      "Fermentation",
+      "Homogenisation",
+      "Irradiation",
+      "Canning",
+      "Refrigeration",
+      "Fumigation",
+      "Dehydration"
+    ],
+    "acceptableAnswers": [
+      "pasteurisation",
+      "pasteurization"
+    ],
+    "explanation": "Pasteur discovered that heating wine and beer to ~60°C for a short time killed spoilage microbes without ruining flavour. This principle was later applied to milk, dramatically reducing food-borne illness.",
+    "wowFactor": "Before pasteurised milk became standard in the early 1900s, tuberculosis from raw milk killed tens of thousands of children per year.",
+    "variants": [
+      "Who invented the process of pasteurisation?",
+      "Why is milk heated during processing?",
+      "What temperature range is used in typical milk pasteurisation?",
+      "What everyday food process is named after a 19th-century French chemist?"
+    ],
+    "difficulty": 1,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Britannica — Pasteurisation",
+    "sourceUrl": "https://www.britannica.com/technology/pasteurization",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A glass milk bottle beside a thermometer showing 72°C, with a label reading 'Pasteurised' in bold text.",
+    "tags": [
+      "Pasteur",
+      "pasteurisation",
+      "microbiology",
+      "food safety",
+      "biology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-pasteur-003",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Biology",
+    "categoryL1": "Biology",
+    "categoryL2": "Microbiology",
+    "categoryL3": "",
+    "statement": "Pasteur developed the first vaccines for chicken cholera and anthrax, and a treatment for rabies using weakened pathogens.",
+    "quizQuestion": "What disease did Pasteur develop the first successful human vaccine treatment for?",
+    "correctAnswer": "Rabies",
+    "distractors": [
+      "Smallpox",
+      "Anthrax",
+      "Cholera",
+      "Typhoid",
+      "Tuberculosis",
+      "Diphtheria",
+      "Polio",
+      "Measles"
+    ],
+    "acceptableAnswers": [
+      "rabies"
+    ],
+    "explanation": "In 1885, Pasteur treated 9-year-old Joseph Meister with a series of injections of attenuated (weakened) rabies virus, saving his life. This was the first successful rabies treatment and laid the groundwork for modern vaccinology.",
+    "wowFactor": "Joseph Meister, the boy saved by Pasteur's rabies treatment, later became a gatekeeper at the Institut Pasteur and reportedly died defending Pasteur's crypt from Nazi soldiers.",
+    "variants": [
+      "In what year did Pasteur first use a rabies vaccine on a human?",
+      "What innovative principle did Pasteur use to weaken pathogens for vaccines?",
+      "Which disease made Pasteur famous for his human vaccination experiment?",
+      "Who was the first human patient to receive Pasteur's rabies treatment?"
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Pasteur — Comptes Rendus (1885); Britannica",
+    "sourceUrl": "https://www.britannica.com/biography/Louis-Pasteur",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A portrait of Pasteur in his laboratory, with glass vaccine vials and a notebook, circa 1885.",
+    "tags": [
+      "Pasteur",
+      "rabies",
+      "vaccine",
+      "microbiology",
+      "biology",
+      "scientific discoveries"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-pythagoras-001",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Mathematics",
+    "categoryL1": "Mathematics",
+    "categoryL2": "Geometry",
+    "categoryL3": "",
+    "statement": "The Pythagorean theorem states that in a right triangle, a² + b² = c², where c is the hypotenuse.",
+    "quizQuestion": "In a right triangle, what is the relationship between the three sides?",
+    "correctAnswer": "a² + b² = c²",
+    "distractors": [
+      "a + b = c",
+      "a² + b² = c",
+      "a² - b² = c²",
+      "a × b = c²",
+      "2a + 2b = c",
+      "a² + b = c²",
+      "a + b² = c²",
+      "ab = c²"
+    ],
+    "acceptableAnswers": [
+      "a² + b² = c²",
+      "Pythagorean theorem"
+    ],
+    "explanation": "The Pythagorean theorem relates the squares of all three sides of a right-angled triangle. The hypotenuse (c) is opposite the right angle. This theorem was known to Babylonians over 1,000 years before Pythagoras.",
+    "wowFactor": "The Pythagorean theorem has over 370 known proofs — including one devised by US President James Garfield in 1876.",
+    "variants": [
+      "What theorem relates the sides of a right-angled triangle?",
+      "Who is the theorem a² + b² = c² attributed to?",
+      "What is the longest side of a right triangle called?",
+      "How would you find the hypotenuse if two legs are 3 and 4?"
+    ],
+    "difficulty": 1,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Britannica — Pythagorean Theorem",
+    "sourceUrl": "https://www.britannica.com/science/Pythagorean-theorem",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A right triangle with legs labelled 'a' and 'b' and hypotenuse labelled 'c', with squares drawn on each side showing area relationships.",
+    "tags": [
+      "Pythagoras",
+      "Pythagorean theorem",
+      "geometry",
+      "mathematics",
+      "right triangle"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-pythagoras-002",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Mathematics",
+    "categoryL1": "Mathematics",
+    "categoryL2": "History of Mathematics",
+    "categoryL3": "",
+    "statement": "Pythagoras founded a philosophical and religious school in Croton, Italy, around 530 BC, believing numbers governed the universe.",
+    "quizQuestion": "In which ancient city did Pythagoras found his philosophical school?",
+    "correctAnswer": "Croton",
+    "distractors": [
+      "Athens",
+      "Samos",
+      "Syracuse",
+      "Miletus",
+      "Corinth",
+      "Sparta",
+      "Alexandria",
+      "Rome"
+    ],
+    "acceptableAnswers": [
+      "Croton",
+      "Crotona",
+      "Kroton"
+    ],
+    "explanation": "Pythagoras emigrated from Samos to Croton (in modern southern Italy) around 530 BC, founding a semi-mystical brotherhood. Members believed mathematics was the foundation of all reality — a philosophy that influenced Plato.",
+    "wowFactor": "Pythagoreans had strange rules: no member was allowed to eat beans, step over a broom, or touch a white rooster — rules treated as sacred as mathematics.",
+    "variants": [
+      "What city in Italy did Pythagoras emigrate to?",
+      "What was unique about the Pythagorean school's view of numbers?",
+      "What island was Pythagoras originally from?",
+      "Who founded a mathematical brotherhood in ancient Italy?"
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "rare",
+    "sourceName": "Britannica — Pythagoras",
+    "sourceUrl": "https://www.britannica.com/biography/Pythagoras",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "An ancient Greek marble bust of Pythagoras with a long beard, set against a mosaic floor pattern of geometric shapes.",
+    "tags": [
+      "Pythagoras",
+      "mathematics",
+      "ancient Greece",
+      "philosophy",
+      "Croton"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-pythagoras-003",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Mathematics",
+    "categoryL1": "Mathematics",
+    "categoryL2": "Number Theory",
+    "categoryL3": "",
+    "statement": "The Pythagoreans discovered that the square root of 2 cannot be expressed as a fraction, making it the first known irrational number.",
+    "quizQuestion": "What was the first irrational number discovered by Pythagorean mathematicians?",
+    "correctAnswer": "√2",
+    "distractors": [
+      "π",
+      "e",
+      "√3",
+      "φ (golden ratio)",
+      "√5",
+      "1/3",
+      "√7",
+      "ln(2)"
+    ],
+    "acceptableAnswers": [
+      "√2",
+      "square root of 2",
+      "root 2"
+    ],
+    "explanation": "A Pythagorean (possibly Hippasus) proved that √2 cannot be written as a ratio of integers. This shattered the Pythagorean belief that all numbers are rational — legend says he was drowned for revealing this.",
+    "wowFactor": "According to legend, the Pythagorean who proved √2 is irrational was thrown overboard at sea for destroying their mathematical worldview.",
+    "variants": [
+      "Which discovery disproved the Pythagorean belief that all numbers are rational?",
+      "What number did Hippasus prove to be irrational, reportedly at the cost of his life?",
+      "What is the approximate decimal value of the square root of 2?",
+      "Why did √2 challenge Pythagorean philosophy?"
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 10,
+    "ageRating": "all",
+    "rarity": "rare",
+    "sourceName": "Britannica — Irrational Number",
+    "sourceUrl": "https://www.britannica.com/science/irrational-number",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A geometric proof of √2 drawn on a papyrus, with a right isosceles triangle and the diagonal labelled as an irrational length.",
+    "tags": [
+      "Pythagoras",
+      "irrational numbers",
+      "√2",
+      "mathematics",
+      "number theory",
+      "Hippasus"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-electricity-001",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Physics",
+    "categoryL1": "Physics",
+    "categoryL2": "Electromagnetism",
+    "categoryL3": "",
+    "statement": "Electric current is the flow of electric charge through a conductor, measured in amperes (A).",
+    "quizQuestion": "What is the SI unit of electric current?",
+    "correctAnswer": "Ampere",
+    "distractors": [
+      "Volt",
+      "Watt",
+      "Ohm",
+      "Coulomb",
+      "Farad",
+      "Henry",
+      "Tesla",
+      "Siemens"
+    ],
+    "acceptableAnswers": [
+      "ampere",
+      "amp",
+      "A"
+    ],
+    "explanation": "The ampere (named after French physicist André-Marie Ampère) measures the rate of charge flow. One ampere = one coulomb of charge passing per second. A typical household circuit carries 15–20 amperes.",
+    "wowFactor": "The ampere is defined using quantum effects — it's based on the exact charge of an electron, fixed at 1.602×10⁻¹⁹ coulombs since 2019.",
+    "variants": [
+      "What unit measures electrical current?",
+      "Which French physicist is the unit of current named after?",
+      "What does one ampere equal in terms of charge flow?",
+      "How is electric current measured in circuits?"
+    ],
+    "difficulty": 1,
+    "funScore": 5,
+    "noveltyScore": 5,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "BIPM — SI Units; Britannica",
+    "sourceUrl": "https://www.britannica.com/science/ampere",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A circuit diagram showing a battery, wires, and an ammeter, with arrows indicating direction of current flow.",
+    "tags": [
+      "electricity",
+      "ampere",
+      "electric current",
+      "physics",
+      "SI units",
+      "electromagnetism"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-electricity-002",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Physics",
+    "categoryL1": "Physics",
+    "categoryL2": "Electromagnetism",
+    "categoryL3": "",
+    "statement": "Ohm's Law states that voltage equals current multiplied by resistance: V = IR.",
+    "quizQuestion": "What does Ohm's Law state about voltage, current, and resistance?",
+    "correctAnswer": "V = IR",
+    "distractors": [
+      "V = I/R",
+      "V = I + R",
+      "V = R/I",
+      "V = I²R",
+      "V = √(IR)",
+      "P = IV",
+      "I = V × R",
+      "R = V × I"
+    ],
+    "acceptableAnswers": [
+      "V = IR",
+      "voltage = current × resistance"
+    ],
+    "explanation": "Ohm's Law (V = IR) is the fundamental relationship in circuit analysis. V is voltage in volts, I is current in amperes, and R is resistance in ohms. Georg Ohm published this in 1827.",
+    "wowFactor": "When Ohm first published his law in 1827, the German educational establishment dismissed it — he lost his job as a teacher and lived in poverty for years before being vindicated.",
+    "variants": [
+      "Who formulated the law relating voltage, current, and resistance?",
+      "If resistance doubles and voltage stays constant, what happens to current?",
+      "What is the unit of electrical resistance?",
+      "How do you calculate resistance using Ohm's Law?"
+    ],
+    "difficulty": 2,
+    "funScore": 6,
+    "noveltyScore": 6,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "Britannica — Ohm's Law",
+    "sourceUrl": "https://www.britannica.com/science/Ohms-law",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A triangle diagram dividing into V, I, and R sections — the classic 'Ohm's Law triangle' used in physics education.",
+    "tags": [
+      "electricity",
+      "Ohm's law",
+      "voltage",
+      "current",
+      "resistance",
+      "physics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-electricity-003",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Physics",
+    "categoryL1": "Physics",
+    "categoryL2": "Electromagnetism",
+    "categoryL3": "",
+    "statement": "Lightning is a giant electrical discharge caused by charge separation between storm clouds and the ground.",
+    "quizQuestion": "What natural phenomenon is caused by electrical discharge between clouds and ground?",
+    "correctAnswer": "Lightning",
+    "distractors": [
+      "Thunder",
+      "Aurora borealis",
+      "St Elmo's fire",
+      "Ball lightning",
+      "Static shock",
+      "Earthquake",
+      "Tornado",
+      "Hailstorm"
+    ],
+    "acceptableAnswers": [
+      "lightning"
+    ],
+    "explanation": "In thunderstorms, ice crystals and water droplets collide, separating charge. When the potential difference becomes large enough (up to 1 billion volts), a massive spark (lightning bolt) equalises the charge.",
+    "wowFactor": "A single lightning bolt heats the surrounding air to about 30,000 K — roughly five times hotter than the surface of the Sun.",
+    "variants": [
+      "What causes the bright flash in a thunderstorm?",
+      "How hot does a lightning bolt make the air around it?",
+      "What charge difference causes lightning to strike?",
+      "How many lightning strikes hit Earth per second on average?"
+    ],
+    "difficulty": 1,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "NOAA — Lightning",
+    "sourceUrl": "https://www.noaa.gov/education/resource-collections/weather-atmosphere/lightning",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A dramatic photograph of a forked lightning bolt striking a flat plain at night, with dark storm clouds above.",
+    "tags": [
+      "electricity",
+      "lightning",
+      "electromagnetism",
+      "thunderstorm",
+      "physics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-electricity-004",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Physics",
+    "categoryL1": "Physics",
+    "categoryL2": "Electromagnetism",
+    "categoryL3": "",
+    "statement": "Michael Faraday discovered that moving a magnet through a coil of wire generates an electric current — the basis of all generators.",
+    "quizQuestion": "Who discovered electromagnetic induction in 1831?",
+    "correctAnswer": "Michael Faraday",
+    "distractors": [
+      "James Clerk Maxwell",
+      "Nikola Tesla",
+      "André-Marie Ampère",
+      "Heinrich Hertz",
+      "Alessandro Volta",
+      "Georg Ohm",
+      "Hans Ørsted",
+      "James Watt"
+    ],
+    "acceptableAnswers": [
+      "Faraday",
+      "Michael Faraday"
+    ],
+    "explanation": "In 1831, Faraday showed that changing magnetic flux through a circuit induces an electromotive force (EMF). This discovery underpins every electric generator and transformer on Earth.",
+    "wowFactor": "When a government minister asked Faraday what electromagnetic induction was useful for, he reportedly replied: 'Sir, I don't know, but someday you will tax it.'",
+    "variants": [
+      "What is the principle behind all electrical generators?",
+      "What law did Faraday derive about changing magnetic fields?",
+      "What year did Faraday discover electromagnetic induction?",
+      "Who invented the first electric generator based on induction?"
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Britannica — Faraday",
+    "sourceUrl": "https://www.britannica.com/biography/Michael-Faraday",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A coil of copper wire with a bar magnet being thrust through it, with arrows showing the induced current flowing in the circuit.",
+    "tags": [
+      "electricity",
+      "Faraday",
+      "electromagnetic induction",
+      "generator",
+      "physics",
+      "magnetism"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-milkyway-001",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Astronomy",
+    "categoryL1": "Astronomy",
+    "categoryL2": "Galaxies",
+    "categoryL3": "",
+    "statement": "The Milky Way is a barred spiral galaxy containing an estimated 100–400 billion stars.",
+    "quizQuestion": "Approximately how many stars does the Milky Way contain?",
+    "correctAnswer": "100–400 billion",
+    "distractors": [
+      "1 million",
+      "1 billion",
+      "1 trillion",
+      "10 billion",
+      "500 billion",
+      "50 billion",
+      "2 trillion",
+      "10 trillion"
+    ],
+    "acceptableAnswers": [
+      "100–400 billion",
+      "200 billion",
+      "hundreds of billions",
+      "about 200 billion"
+    ],
+    "explanation": "Current estimates place the Milky Way's stellar population at 100–400 billion stars, along with hundreds of billions of brown dwarfs and other objects. It spans about 100,000 light-years across.",
+    "wowFactor": "There are more stars in the Milky Way alone than there are grains of sand on all of Earth's beaches.",
+    "variants": [
+      "What type of galaxy is the Milky Way?",
+      "How wide is the Milky Way in light-years?",
+      "Where in the Milky Way is our Solar System located?",
+      "How long does it take our Solar System to orbit the Milky Way's centre?"
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "NASA — Milky Way Galaxy",
+    "sourceUrl": "https://science.nasa.gov/resource/the-milky-way-galaxy/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A sweeping top-down artistic rendering of the Milky Way's spiral arms in blue and gold, with a small marker showing the Sun's position.",
+    "tags": [
+      "Milky Way",
+      "galaxy",
+      "stars",
+      "astronomy",
+      "barred spiral"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-milkyway-002",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Astronomy",
+    "categoryL1": "Astronomy",
+    "categoryL2": "Galaxies",
+    "categoryL3": "",
+    "statement": "At the centre of the Milky Way lies Sagittarius A*, a supermassive black hole with a mass of about 4 million suns.",
+    "quizQuestion": "What is the name of the supermassive black hole at the Milky Way's centre?",
+    "correctAnswer": "Sagittarius A*",
+    "distractors": [
+      "Cygnus X-1",
+      "M87*",
+      "NGC 1277",
+      "TON 618",
+      "Markarian 501",
+      "Centaurus A",
+      "3C 273",
+      "IC 1101"
+    ],
+    "acceptableAnswers": [
+      "Sagittarius A*",
+      "Sgr A*",
+      "Sagittarius A-star"
+    ],
+    "explanation": "Sagittarius A* (Sgr A*) was confirmed as a supermassive black hole with a mass of ~4 million solar masses. The Event Horizon Telescope captured the first image of Sgr A* in 2022.",
+    "wowFactor": "The first direct image of Sagittarius A* was captured in 2022 by a global array of telescopes spanning the entire diameter of Earth.",
+    "variants": [
+      "What lies at the centre of our galaxy?",
+      "What is the mass of Sagittarius A* in solar masses?",
+      "Which telescope collaboration first imaged the Milky Way's black hole?",
+      "In what year was the first image of Sagittarius A* released?"
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Event Horizon Telescope — Sgr A* (2022)",
+    "sourceUrl": "https://eventhorizontelescope.org/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "The first EHT image of Sagittarius A* — a glowing orange ring of hot gas surrounding a dark circular shadow at the galactic centre.",
+    "tags": [
+      "Milky Way",
+      "Sagittarius A*",
+      "black hole",
+      "supermassive black hole",
+      "astronomy",
+      "galactic centre"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-milkyway-003",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Astronomy",
+    "categoryL1": "Astronomy",
+    "categoryL2": "Galaxies",
+    "categoryL3": "",
+    "statement": "The Milky Way is on a collision course with the Andromeda Galaxy, expected to merge in about 4.5 billion years.",
+    "quizQuestion": "Which galaxy is the Milky Way destined to collide with?",
+    "correctAnswer": "Andromeda",
+    "distractors": [
+      "Triangulum",
+      "Centaurus A",
+      "Large Magellanic Cloud",
+      "Sombrero",
+      "Whirlpool",
+      "Pinwheel",
+      "Sculptor",
+      "NGC 1300"
+    ],
+    "acceptableAnswers": [
+      "Andromeda",
+      "Andromeda Galaxy",
+      "M31"
+    ],
+    "explanation": "The Andromeda Galaxy (M31) is approaching at ~110 km/s. Simulations show the galaxies will merge in ~4.5 billion years, forming a giant elliptical galaxy. Most stars won't collide due to the vast distances between them.",
+    "wowFactor": "Despite billions of stars colliding in the merger, the odds of any two individual stars actually colliding are astronomically small — stars are so tiny compared to the gaps between them.",
+    "variants": [
+      "What is the nearest large galaxy to the Milky Way?",
+      "In how many billion years will the Milky Way collide with Andromeda?",
+      "What type of galaxy will result from the Milky Way–Andromeda merger?",
+      "How far away is the Andromeda Galaxy in light-years?"
+    ],
+    "difficulty": 3,
+    "funScore": 10,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "NASA Hubble — Galaxy Collision Simulations",
+    "sourceUrl": "https://hubblesite.org/contents/news-releases/2012/news-2012-20.html",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A simulation image showing two spiral galaxies in the early stages of merger, with tidal streams of stars stretching between them.",
+    "tags": [
+      "Milky Way",
+      "Andromeda",
+      "galaxy collision",
+      "astronomy",
+      "cosmology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-leibniz-001",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Mathematics",
+    "categoryL1": "Mathematics",
+    "categoryL2": "Calculus",
+    "categoryL3": "",
+    "statement": "Gottfried Wilhelm Leibniz independently developed calculus in the 1670s–1680s, introducing the notation dy/dx and ∫ still used today.",
+    "quizQuestion": "Who introduced the integral sign (∫) and dy/dx notation for calculus?",
+    "correctAnswer": "Leibniz",
+    "distractors": [
+      "Newton",
+      "Euler",
+      "Gauss",
+      "Lagrange",
+      "Cauchy",
+      "Bernoulli",
+      "Fermat",
+      "Descartes"
+    ],
+    "acceptableAnswers": [
+      "Leibniz",
+      "Gottfried Leibniz",
+      "Gottfried Wilhelm Leibniz"
+    ],
+    "explanation": "Leibniz developed calculus independently of Newton in the 1670s and introduced the symbols ∫ (integral) and d (differential) that are universally used today. A bitter priority dispute with Newton lasted decades.",
+    "wowFactor": "The notation war between Newton and Leibniz was so bitter that British mathematicians stubbornly used Newton's inferior dot notation for 150 years — setting UK mathematics back significantly.",
+    "variants": [
+      "Who co-invented calculus independently of Newton?",
+      "What symbol did Leibniz introduce for integration?",
+      "Why did Leibniz's calculus notation win out over Newton's?",
+      "What nationality was Leibniz?"
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Britannica — Leibniz",
+    "sourceUrl": "https://www.britannica.com/biography/Gottfried-Wilhelm-Leibniz",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A portrait of Leibniz in a powdered wig beside a blackboard showing the integral sign ∫ and the differential notation dy/dx.",
+    "tags": [
+      "Leibniz",
+      "calculus",
+      "mathematics",
+      "integral",
+      "differential",
+      "notation"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-leibniz-002",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Mathematics",
+    "categoryL1": "Mathematics",
+    "categoryL2": "Logic",
+    "categoryL3": "",
+    "statement": "Leibniz conceived of a binary number system and envisioned a calculating machine that could perform logical operations.",
+    "quizQuestion": "Which number system did Leibniz develop as the foundation for computing?",
+    "correctAnswer": "Binary",
+    "distractors": [
+      "Hexadecimal",
+      "Octal",
+      "Decimal",
+      "Duodecimal",
+      "Ternary",
+      "Sexagesimal",
+      "Quaternary",
+      "Roman numerals"
+    ],
+    "acceptableAnswers": [
+      "binary",
+      "base-2",
+      "binary number system"
+    ],
+    "explanation": "Leibniz developed the binary number system (0 and 1) in the late 1600s, seeing it as reflecting creation from nothing (0) by God (1). Three centuries later, it became the mathematical foundation of all digital computers.",
+    "wowFactor": "Every digital device you've ever used — from smartphones to supercomputers — operates on Leibniz's binary system, conceived in 1679.",
+    "variants": [
+      "What mathematical system forms the basis of all modern computers?",
+      "Who developed the binary number system in the 17th century?",
+      "How many digits does the binary number system use?",
+      "What inspired Leibniz to develop the binary system?"
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Britannica — Binary Number System",
+    "sourceUrl": "https://www.britannica.com/science/binary-number-system",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A portrait of Leibniz alongside streams of 0s and 1s in green digital font — connecting 17th-century mathematics to modern computing.",
+    "tags": [
+      "Leibniz",
+      "binary",
+      "mathematics",
+      "computing",
+      "logic",
+      "number theory"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-leibniz-003",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Mathematics",
+    "categoryL1": "Mathematics",
+    "categoryL2": "Philosophy of Mathematics",
+    "categoryL3": "",
+    "statement": "Leibniz and Newton were embroiled in one of history's most famous scientific priority disputes over who invented calculus first.",
+    "quizQuestion": "Who disputed credit for inventing calculus with Leibniz?",
+    "correctAnswer": "Isaac Newton",
+    "distractors": [
+      "René Descartes",
+      "Leonhard Euler",
+      "Blaise Pascal",
+      "Pierre de Fermat",
+      "Jakob Bernoulli",
+      "John Wallis",
+      "Brook Taylor",
+      "Colin Maclaurin"
+    ],
+    "acceptableAnswers": [
+      "Newton",
+      "Isaac Newton",
+      "Sir Isaac Newton"
+    ],
+    "explanation": "Newton developed calculus ('method of fluxions') around 1666 but published it late. Leibniz independently developed his version in the 1670s and published first in 1684. Both deserve credit; the dispute split European mathematics.",
+    "wowFactor": "The Royal Society's 1712 'independent' investigation of the dispute was secretly chaired by Newton himself — he wrote the verdict declaring himself the winner.",
+    "variants": [
+      "Who invented calculus — Newton or Leibniz?",
+      "What was the famous 'calculus controversy' of the 17th century?",
+      "Who published the first calculus notation in 1684?",
+      "Who wrote the (biased) Royal Society report declaring Newton first?"
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "Britannica — Calculus Controversy",
+    "sourceUrl": "https://www.britannica.com/biography/Gottfried-Wilhelm-Leibniz",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Split portrait of Newton and Leibniz facing away from each other, with calculus equations written between them.",
+    "tags": [
+      "Leibniz",
+      "Newton",
+      "calculus",
+      "priority dispute",
+      "mathematics",
+      "history of science"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-comet-001",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Astronomy",
+    "categoryL1": "Astronomy",
+    "categoryL2": "Solar System",
+    "categoryL3": "",
+    "statement": "Comets are icy bodies from the outer Solar System that develop a glowing coma and tail when they approach the Sun.",
+    "quizQuestion": "What causes a comet to develop a visible tail?",
+    "correctAnswer": "Solar wind and radiation",
+    "distractors": [
+      "Gravitational friction",
+      "Atmospheric drag",
+      "Magnetic fields",
+      "Nuclear reactions",
+      "Tidal heating",
+      "Comet rotation",
+      "Electrostatic charge",
+      "Cosmic rays"
+    ],
+    "acceptableAnswers": [
+      "solar wind",
+      "solar radiation",
+      "the Sun's radiation and solar wind",
+      "sunlight and solar wind"
+    ],
+    "explanation": "As a comet approaches the Sun, solar radiation and solar wind vaporise its ices and blow gas and dust away, forming two tails: an ion tail (pointing directly away from the Sun) and a dust tail (curved).",
+    "wowFactor": "A comet can have two separate tails — one pointing directly away from the Sun (ion tail) and one following a curved orbital path (dust tail).",
+    "variants": [
+      "What are comets primarily composed of?",
+      "What are the two types of tails a comet can have?",
+      "From where in the Solar System do most comets originate?",
+      "Why do comet tails always point away from the Sun?"
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "NASA Solar System Exploration — Comets",
+    "sourceUrl": "https://solarsystem.nasa.gov/small-bodies/comets/overview/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A comet with a bright nucleus and two distinct tails — a straight blue ion tail and a curved white dust tail — against a star-filled background.",
+    "tags": [
+      "comet",
+      "solar wind",
+      "astronomy",
+      "solar system",
+      "tail",
+      "coma"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-comet-002",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Astronomy",
+    "categoryL1": "Astronomy",
+    "categoryL2": "Solar System",
+    "categoryL3": "",
+    "statement": "Halley's Comet has an orbital period of about 75 years and was last visible from Earth in 1986.",
+    "quizQuestion": "Approximately how often does Halley's Comet return to Earth's skies?",
+    "correctAnswer": "Every 75 years",
+    "distractors": [
+      "Every 10 years",
+      "Every 50 years",
+      "Every 100 years",
+      "Every 200 years",
+      "Every 25 years",
+      "Every 30 years",
+      "Every 500 years",
+      "Every 1,000 years"
+    ],
+    "acceptableAnswers": [
+      "75 years",
+      "every 75–76 years",
+      "about 75 years"
+    ],
+    "explanation": "Halley's Comet (1P/Halley) takes 75–76 years to orbit the Sun. Edmond Halley proved the 1531, 1607, and 1682 apparitions were the same comet. Its next return is expected in 2061.",
+    "wowFactor": "Mark Twain was born in 1835 when Halley's Comet appeared and died in 1910 when it appeared again — he famously predicted this himself.",
+    "variants": [
+      "What is the orbital period of Halley's Comet?",
+      "Who proved that a recurring comet was the same object each appearance?",
+      "When will Halley's Comet next be visible from Earth?",
+      "In what year was Halley's Comet last visible from Earth?"
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "all",
+    "rarity": "common",
+    "sourceName": "NASA — Halley's Comet",
+    "sourceUrl": "https://solarsystem.nasa.gov/small-bodies/comets/1p-halley/in-depth/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "Halley's Comet photographed in 1986 against a dark sky, with a bright nucleus and long tail stretching across the frame.",
+    "tags": [
+      "comet",
+      "Halley's Comet",
+      "orbital period",
+      "astronomy",
+      "solar system"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-comet-003",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Astronomy",
+    "categoryL1": "Astronomy",
+    "categoryL2": "Solar System",
+    "categoryL3": "",
+    "statement": "Most long-period comets originate from the Oort Cloud, a spherical shell of icy bodies at the outer edge of the Solar System.",
+    "quizQuestion": "What is the source region of most long-period comets?",
+    "correctAnswer": "Oort Cloud",
+    "distractors": [
+      "Kuiper Belt",
+      "Asteroid belt",
+      "Van Allen Belt",
+      "Heliopause",
+      "Scattered disc",
+      "Interstellar medium",
+      "Trojan asteroids",
+      "Oort Region"
+    ],
+    "acceptableAnswers": [
+      "Oort Cloud",
+      "the Oort Cloud"
+    ],
+    "explanation": "The Oort Cloud is a theoretical, vast spherical shell extending up to 100,000 AU from the Sun. Gravitational perturbations send icy bodies inward on orbits taking thousands of years — these become long-period comets.",
+    "wowFactor": "The Oort Cloud may contain up to 2 trillion icy objects — yet it's so far away no telescope has ever directly imaged it.",
+    "variants": [
+      "Where do short-period comets originate from?",
+      "Who hypothesised the existence of the Oort Cloud in 1950?",
+      "How far does the Oort Cloud extend from the Sun in AU?",
+      "What is the Kuiper Belt and how does it differ from the Oort Cloud?"
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "all",
+    "rarity": "uncommon",
+    "sourceName": "NASA — Oort Cloud",
+    "sourceUrl": "https://solarsystem.nasa.gov/solar-system/oort-cloud/overview/",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A diagram of the Solar System showing the Sun and planets at the centre, surrounded by the Kuiper Belt, then an enormous spherical Oort Cloud at the outer edge.",
+    "tags": [
+      "comet",
+      "Oort Cloud",
+      "solar system",
+      "astronomy",
+      "long-period comets"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-comet-004",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "Astronomy",
+    "categoryL1": "Astronomy",
+    "categoryL2": "Solar System",
+    "categoryL3": "",
+    "statement": "The ESA Rosetta mission landed a probe (Philae) on comet 67P/Churyumov–Gerasimenko in November 2014.",
+    "quizQuestion": "Which ESA mission successfully landed a probe on a comet in 2014?",
+    "correctAnswer": "Rosetta",
+    "distractors": [
+      "Deep Impact",
+      "Stardust",
+      "New Horizons",
+      "Dawn",
+      "Hayabusa",
+      "Cassini",
+      "Galileo",
+      "Giotto"
+    ],
+    "acceptableAnswers": [
+      "Rosetta",
+      "ESA Rosetta"
+    ],
+    "explanation": "ESA's Rosetta orbiter deployed the Philae lander onto comet 67P on 12 November 2014 — the first soft landing on a comet. Philae bounced twice before coming to rest in a shadowed crater.",
+    "wowFactor": "Philae's landing was calculated across a journey of 6.4 billion km over 10 years — and it bounced twice on landing, lodging in a crack too dark for its solar panels.",
+    "variants": [
+      "What was the name of the lander Rosetta deployed onto the comet?",
+      "In what year did the Philae probe land on comet 67P?",
+      "What comet did ESA's Rosetta mission study?",
+      "What challenge did Philae face after landing on the comet?"
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "all",
+    "rarity": "rare",
+    "sourceName": "ESA Rosetta Mission",
+    "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/Rosetta",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": "none",
+    "sensitivityNote": "",
+    "visualDescription": "A rendering of the Philae lander descending toward the cratered, duck-shaped surface of comet 67P in the darkness of space.",
+    "tags": [
+      "comet",
+      "Rosetta",
+      "Philae",
+      "ESA",
+      "space exploration",
+      "astronomy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-geometry-euclid",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "math_numbers",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "math_numbers",
+    "categoryL3": "",
+    "statement": "Euclid's Elements, written around 300 BC, systematized geometry into axioms and proofs — forming the foundation of mathematics for over 2,000 years.",
+    "quizQuestion": "Who systematized geometry into axioms in ~300 BC?",
+    "correctAnswer": "Euclid",
+    "distractors": [
+      "Archimedes",
+      "Pythagoras",
+      "Thales",
+      "Plato",
+      "Aristotle",
+      "Hipparchus",
+      "Eratosthenes",
+      "Apollonius"
+    ],
+    "acceptableAnswers": [
+      "euclid",
+      "euclid of alexandria"
+    ],
+    "explanation": "Euclid's Elements compiled and organized all known Greek geometry into a rigorous axiomatic system. Starting from five postulates, Euclid derived hundreds of theorems. It was the most influential mathematics textbook for over 2,000 years.",
+    "wowFactor": "A textbook written in 300 BC was still being used to teach math in the 20th century.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Euclid's Elements organized geometry into what logical structure?",
+        "answer": "Axioms and proofs",
+        "distractors": [
+          "Tables and formulas",
+          "Diagrams and rules",
+          "Numbers and patterns"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Euclid's Elements, the oldest math textbook, was written around what year?",
+        "answer": "300 BC",
+        "distractors": [
+          "500 BC",
+          "100 AD",
+          "50 BC"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Euclid's Elements remained a key math reference for over 2,000 years.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Euclid built geometry from just five ___, deriving all else by logic.",
+        "answer": "postulates",
+        "distractors": [
+          "theorems",
+          "experiments",
+          "diagrams"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Euclid%27s_Elements",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art scroll unrolling to reveal triangles, circles, and geometric proofs, with a quill pen writing axioms in ancient Greek style.",
+    "tags": [
+      "geometry",
+      "mathematics",
+      "Euclid",
+      "axioms",
+      "ancient Greece"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-geometry-pi",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "math_numbers",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "math_numbers",
+    "categoryL3": "",
+    "statement": "The ratio of a circle's circumference to its diameter is always π (pi), approximately 3.14159 — an irrational number that never repeats or terminates.",
+    "quizQuestion": "What is the ratio of a circle's circumference to its diameter?",
+    "correctAnswer": "Pi (π)",
+    "distractors": [
+      "Phi (φ)",
+      "Tau (τ)",
+      "Euler's number (e)",
+      "Square root of 2",
+      "The golden ratio",
+      "Infinity",
+      "One half",
+      "2π"
+    ],
+    "acceptableAnswers": [
+      "pi",
+      "π",
+      "3.14159",
+      "3.14"
+    ],
+    "explanation": "Pi is defined as circumference ÷ diameter for any circle. It's irrational — its decimal expansion is infinite and never repeats. Archimedes approximated it around 250 BC, and computers have now calculated trillions of its digits.",
+    "wowFactor": "Pi has been calculated to over 100 trillion digits and we still haven't found a pattern.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Pi is approximately equal to which decimal value?",
+        "answer": "3.14159",
+        "distractors": [
+          "2.71828",
+          "1.61803",
+          "4.13159"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Pi is classified as what type of number because it never terminates?",
+        "answer": "Irrational",
+        "distractors": [
+          "Prime",
+          "Imaginary",
+          "Transcendental only"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The decimal expansion of pi eventually repeats in a pattern.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The circumference of a circle equals ___ times its diameter.",
+        "answer": "π (pi)",
+        "distractors": [
+          "phi",
+          "2",
+          "e"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pi",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art circle with its diameter and circumference labeled, floating among cascading digits of 3.14159 in a glowing number rain.",
+    "tags": [
+      "geometry",
+      "pi",
+      "mathematics",
+      "irrational numbers",
+      "circles"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-geometry-non-euclidean",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "math_numbers",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "math_numbers",
+    "categoryL3": "",
+    "statement": "Non-Euclidean geometry, developed in the 1800s, proved that parallel lines can meet on curved surfaces — shattering 2,000 years of geometric certainty.",
+    "quizQuestion": "Can parallel lines meet in non-Euclidean geometry?",
+    "correctAnswer": "Yes, on curved surfaces",
+    "distractors": [
+      "No, never by definition",
+      "Only in infinite space",
+      "Only if they are wavy",
+      "No, they diverge instead",
+      "Yes, but only in 4D",
+      "Only on a cylinder",
+      "No, this is impossible",
+      "Only in negative space"
+    ],
+    "acceptableAnswers": [
+      "yes",
+      "yes on curved surfaces",
+      "yes they can"
+    ],
+    "explanation": "On a sphere, lines of longitude are parallel at the equator but meet at the poles. Gauss, Bolyai, and Lobachevsky independently discovered non-Euclidean geometry in the 19th century. Einstein later used it to describe the curvature of spacetime in General Relativity.",
+    "wowFactor": "The geometry that seemed impossible for 2,000 years turned out to describe the actual shape of the universe.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Which real-world surface makes parallel lines eventually meet?",
+        "answer": "A sphere",
+        "distractors": [
+          "A flat plane",
+          "A cylinder",
+          "A cube"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Non-Euclidean geometry was later used by Einstein to describe what?",
+        "answer": "Curved spacetime",
+        "distractors": [
+          "Quantum mechanics",
+          "Atomic structure",
+          "Wave behavior"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "On the surface of a sphere, parallel lines remain parallel forever.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Lines of longitude are parallel at the equator but meet at the ___.",
+        "answer": "poles",
+        "distractors": [
+          "horizon",
+          "equator",
+          "tropics"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Non-Euclidean_geometry",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art globe with glowing longitude lines converging at the north pole, contrasted with a flat grid where lines never meet.",
+    "tags": [
+      "geometry",
+      "non-Euclidean",
+      "curved space",
+      "mathematics",
+      "General Relativity"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-carl-linnaeus-binomial",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "Carl Linnaeus invented binomial nomenclature — the two-name system for species (genus + species) still used by scientists worldwide today.",
+    "quizQuestion": "Who invented the two-name system for naming species?",
+    "correctAnswer": "Carl Linnaeus",
+    "distractors": [
+      "Charles Darwin",
+      "Gregor Mendel",
+      "Alexander von Humboldt",
+      "Georges Cuvier",
+      "John Ray",
+      "Antoine Jussieu",
+      "Conrad Gessner",
+      "Francis Bacon"
+    ],
+    "acceptableAnswers": [
+      "linnaeus",
+      "carl linnaeus",
+      "carolus linnaeus"
+    ],
+    "explanation": "Before Linnaeus, species had long, unwieldy Latin descriptions. In 1753 (plants) and 1758 (animals), he introduced a clean two-part system: genus + species. Homo sapiens, Panthera leo, Canis lupus — all follow his format. It's one of science's greatest organizational achievements.",
+    "wowFactor": "Every organism on Earth — all 8 million species — is named using a system invented by one 18th-century Swedish botanist.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In binomial nomenclature, what two words form a species name?",
+        "answer": "Genus and species",
+        "distractors": [
+          "Family and order",
+          "Kingdom and phylum",
+          "Class and genus"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Homo sapiens follows what naming system created by Linnaeus?",
+        "answer": "Binomial nomenclature",
+        "distractors": [
+          "Trinomial taxonomy",
+          "Phylogenetic coding",
+          "Latin classification"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Carl Linnaeus introduced the two-part Latin naming system for all species.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The scientific name Panthera leo uses genus Panthera and species ___.",
+        "answer": "leo",
+        "distractors": [
+          "tigris",
+          "lupus",
+          "sapiens"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Carl_Linnaeus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art botanist with a quill writing 'Homo sapiens' on a scroll, surrounded by labeled plants and animals in a golden-lit study.",
+    "tags": [
+      "Carl Linnaeus",
+      "taxonomy",
+      "binomial nomenclature",
+      "biology",
+      "classification"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-carl-linnaeus-taxonomy",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "Linnaeus created the hierarchical taxonomy used today: Kingdom, Phylum, Class, Order, Family, Genus, Species — organizing all life into nested groups.",
+    "quizQuestion": "How many main ranks does Linnaeus's taxonomy hierarchy have?",
+    "correctAnswer": "Seven",
+    "distractors": [
+      "Five",
+      "Six",
+      "Eight",
+      "Ten",
+      "Four",
+      "Twelve",
+      "Nine",
+      "Three"
+    ],
+    "acceptableAnswers": [
+      "7",
+      "seven",
+      "seven ranks"
+    ],
+    "explanation": "Kingdom → Phylum → Class → Order → Family → Genus → Species. The mnemonic 'King Philip Came Over For Good Soup' helps students remember this. Linnaeus originally had fewer ranks; the full seven-rank system evolved over time from his framework.",
+    "wowFactor": "A single mnemonic — King Philip Came Over For Good Soup — encodes the organizational system for all life on Earth.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the broadest rank in Linnaeus's taxonomic hierarchy?",
+        "answer": "Kingdom",
+        "distractors": [
+          "Phylum",
+          "Domain",
+          "Order"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "In taxonomy, which rank comes directly above 'species'?",
+        "answer": "Genus",
+        "distractors": [
+          "Family",
+          "Order",
+          "Class"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "In Linnaeus's system, Kingdom is more specific than Genus.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The full taxonomic hierarchy ends at: Family → Genus → ___.",
+        "answer": "Species",
+        "distractors": [
+          "Order",
+          "Subspecies",
+          "Kingdom"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 5,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Taxonomy_(biology)",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art branching tree with each tier labeled from Kingdom at the top root down to Species at the leaf nodes, in earthy greens and browns.",
+    "tags": [
+      "Carl Linnaeus",
+      "taxonomy",
+      "hierarchy",
+      "biology",
+      "classification"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-carl-linnaeus-plants",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "Linnaeus classified plants primarily by their reproductive organs — the number and arrangement of stamens and pistils — in his 'sexual system' of botany.",
+    "quizQuestion": "Linnaeus classified plants primarily by which organ?",
+    "correctAnswer": "Reproductive organs",
+    "distractors": [
+      "Leaf shape",
+      "Root structure",
+      "Bark texture",
+      "Fruit type",
+      "Seed color",
+      "Stem height",
+      "Flower color",
+      "Habitat type"
+    ],
+    "acceptableAnswers": [
+      "reproductive organs",
+      "stamens and pistils",
+      "flowers",
+      "sexual organs"
+    ],
+    "explanation": "Linnaeus's 'sexual system' organized plants by counting stamens (male) and pistils (female). It was controversial for its explicit sexual language but proved highly practical. His 1753 work Species Plantarum named over 5,900 plant species.",
+    "wowFactor": "Linnaeus's plant classification system was considered scandalous in polite 18th-century society for describing plants in sexual terms.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Linnaeus counted stamens to classify plants — what are stamens?",
+        "answer": "Male flower organs",
+        "distractors": [
+          "Female flower organs",
+          "Leaf veins",
+          "Root hairs"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Linnaeus named over 5,900 plant species in which 1753 work?",
+        "answer": "Species Plantarum",
+        "distractors": [
+          "Systema Naturae",
+          "Genera Plantarum",
+          "Philosophia Botanica"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Linnaeus's plant classification system was considered controversial in his time.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Linnaeus classified plants by their ___, specifically stamens and pistils.",
+        "answer": "reproductive organs",
+        "distractors": [
+          "leaf shape",
+          "root depth",
+          "seed size"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Carl_Linnaeus",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 1,
+    "sensitivityNote": "References plant sexual organs — appropriate for teen+ audience in educational context",
+    "visualDescription": "A pixel-art flower cross-section with stamens and pistils labeled in gold, surrounded by botanical illustration style scrollwork.",
+    "tags": [
+      "Carl Linnaeus",
+      "botany",
+      "plant classification",
+      "sexual system",
+      "stamens"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-lake-stratification",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "geology_earth",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "geology_earth",
+    "categoryL3": "",
+    "statement": "Lakes stratify into distinct temperature layers — warm surface water (epilimnion), cool middle water (metalimnion), and cold deep water (hypolimnion) — that don't mix in summer.",
+    "quizQuestion": "What is the warm upper layer of a stratified lake called?",
+    "correctAnswer": "Epilimnion",
+    "distractors": [
+      "Hypolimnion",
+      "Thermocline",
+      "Metalimnion",
+      "Photic zone",
+      "Littoral zone",
+      "Benthic layer",
+      "Euphotic zone",
+      "Pelagic zone"
+    ],
+    "acceptableAnswers": [
+      "epilimnion",
+      "epilimnon",
+      "warm layer",
+      "surface layer"
+    ],
+    "explanation": "During summer, sunlight warms the surface faster than the depths. This creates three distinct layers that resist mixing. In autumn, surface cooling reverses stratification — the lake 'turns over,' bringing oxygen-rich surface water to the bottom and nutrients up from the sediment.",
+    "wowFactor": "Every autumn, lakes essentially flip upside down — a phenomenon called lake turnover that oxygenates the deep water and stirs up nutrients.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the cold, oxygen-poor bottom layer of a stratified lake?",
+        "answer": "Hypolimnion",
+        "distractors": [
+          "Epilimnion",
+          "Thermocline",
+          "Benthic zone"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Lake 'turnover' occurs in what season as surface water cools and sinks?",
+        "answer": "Autumn",
+        "distractors": [
+          "Spring",
+          "Summer",
+          "Winter"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "In summer, the warm and cold layers of a lake mix freely.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The boundary layer between warm and cold lake water is called the ___.",
+        "answer": "thermocline",
+        "distractors": [
+          "epilimnion",
+          "benthic zone",
+          "photic layer"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 7,
+    "noveltyScore": 8,
+    "ageRating": "teen",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lake_stratification",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art lake cross-section showing three glowing colored bands — warm orange at top, cool blue in middle, cold dark blue at bottom — with fish swimming between layers.",
+    "tags": [
+      "lake",
+      "stratification",
+      "epilimnion",
+      "thermocline",
+      "limnology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-lake-largest",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "geology_earth",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "geology_earth",
+    "categoryL3": "",
+    "statement": "The Caspian Sea is the world's largest lake by surface area at ~371,000 km², despite being called a 'sea' due to its salt water and vast size.",
+    "quizQuestion": "What is the world's largest lake by surface area?",
+    "correctAnswer": "Caspian Sea",
+    "distractors": [
+      "Lake Superior",
+      "Lake Victoria",
+      "Lake Baikal",
+      "Aral Sea",
+      "Lake Huron",
+      "Lake Tanganyika",
+      "Lake Michigan",
+      "Dead Sea"
+    ],
+    "acceptableAnswers": [
+      "caspian sea",
+      "the caspian sea",
+      "caspian"
+    ],
+    "explanation": "The Caspian Sea covers about 371,000 km² and borders Russia, Kazakhstan, Turkmenistan, Iran, and Azerbaijan. It's landlocked saltwater, technically making it a lake. Lake Superior is the largest freshwater lake by surface area. Lake Baikal holds more volume than any other lake.",
+    "wowFactor": "The world's largest lake is called a 'sea' — and it's bigger than all five Great Lakes combined.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why is the Caspian Sea considered a lake rather than a sea?",
+        "answer": "It is landlocked",
+        "distractors": [
+          "It has no currents",
+          "It has fresh water",
+          "It is too shallow"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Lake Baikal holds more freshwater volume than any other lake — where is it?",
+        "answer": "Russia (Siberia)",
+        "distractors": [
+          "Canada",
+          "Africa",
+          "China"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Lake Superior is the world's largest lake by total surface area.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Caspian Sea is landlocked and contains ___ water, not fresh water.",
+        "answer": "salt",
+        "distractors": [
+          "fresh",
+          "mineral",
+          "brackish"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Caspian_Sea",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art top-down map showing the Caspian Sea surrounded by five countries, with a size comparison bar next to Lake Superior.",
+    "tags": [
+      "lake",
+      "Caspian Sea",
+      "geography",
+      "largest lake",
+      "geology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-lake-baikal",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "geology_earth",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "geology_earth",
+    "categoryL3": "",
+    "statement": "Lake Baikal in Siberia is the world's deepest lake at 1,642 meters and holds approximately 20% of all the world's unfrozen surface fresh water.",
+    "quizQuestion": "What fraction of Earth's unfrozen fresh water does Baikal hold?",
+    "correctAnswer": "About 20%",
+    "distractors": [
+      "About 5%",
+      "About 10%",
+      "About 50%",
+      "About 1%",
+      "About 30%",
+      "About 40%",
+      "About 15%",
+      "About 2%"
+    ],
+    "acceptableAnswers": [
+      "20%",
+      "about 20%",
+      "one fifth",
+      "20 percent"
+    ],
+    "explanation": "Lake Baikal is over 25 million years old — one of the world's oldest lakes — and sits in a rift valley formed by tectonic plates pulling apart. Its extraordinary depth (1,642 m) gives it a volume of 23,615 km³. It hosts 1,000+ species found nowhere else on Earth.",
+    "wowFactor": "One single lake in Siberia holds more fresh water than all of North America's Great Lakes combined.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How deep is Lake Baikal, the world's deepest lake?",
+        "answer": "1,642 meters",
+        "distractors": [
+          "800 meters",
+          "500 meters",
+          "2,000 meters"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Lake Baikal sits in a rift valley caused by what geological process?",
+        "answer": "Tectonic plates pulling apart",
+        "distractors": [
+          "Glacial erosion",
+          "Volcanic collapse",
+          "River damming"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Lake Baikal is one of the youngest major lakes on Earth, formed 100,000 years ago.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Lake Baikal is located in ___, Russia, in a tectonic rift valley.",
+        "answer": "Siberia",
+        "distractors": [
+          "Kazakhstan",
+          "Mongolia",
+          "Yakutia"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lake_Baikal",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art cross-section of a deep azure lake in snowy Siberian mountains, with a depth indicator showing 1,642 m plunging into darkness.",
+    "tags": [
+      "lake",
+      "Lake Baikal",
+      "Siberia",
+      "deepest lake",
+      "fresh water"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-pasteur-germ-theory",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "Louis Pasteur's experiments in the 1860s disproved spontaneous generation and established germ theory — proving that microorganisms cause disease, not bad air.",
+    "quizQuestion": "What theory did Pasteur prove: microorganisms cause disease?",
+    "correctAnswer": "Germ theory",
+    "distractors": [
+      "Miasma theory",
+      "Humoral theory",
+      "Cell theory",
+      "Contagion theory",
+      "Vital force theory",
+      "Spontaneous generation",
+      "Zymotic theory",
+      "Epidemic theory"
+    ],
+    "acceptableAnswers": [
+      "germ theory",
+      "germ theory of disease"
+    ],
+    "explanation": "Using his famous swan-neck flask experiments, Pasteur showed that sterilized broth only spoiled when exposed to airborne microbes — not spontaneously. His germ theory transformed medicine: surgery, vaccines, sanitation, and antibiotics all depend on the understanding that invisible microbes cause disease.",
+    "wowFactor": "Before Pasteur, doctors didn't wash their hands between patients — they thought disease came from bad smells, not invisible germs.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What did Pasteur's swan-neck flask experiments disprove?",
+        "answer": "Spontaneous generation",
+        "distractors": [
+          "Cell theory",
+          "Evolution",
+          "Miasma theory"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The pre-scientific belief that disease came from bad air was called what?",
+        "answer": "Miasma theory",
+        "distractors": [
+          "Germ theory",
+          "Humoral theory",
+          "Contagion theory"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Pasteur's germ theory showed that microorganisms could cause disease.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pasteur's broth experiments showed spoilage needed ___ from the air.",
+        "answer": "microbes",
+        "distractors": [
+          "oxygen",
+          "heat",
+          "light"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 9,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Germ_theory_of_disease",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art scientist holding a glowing swan-neck flask, with microbe sprites emerging from broken flasks and a crossed-out miasma cloud nearby.",
+    "tags": [
+      "Louis Pasteur",
+      "germ theory",
+      "spontaneous generation",
+      "microbiology",
+      "disease"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-pasteur-pasteurization",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "Pasteur invented pasteurization in 1864 — briefly heating liquids like wine and milk to kill pathogens without altering taste, saving millions of lives.",
+    "quizQuestion": "What process did Pasteur invent to kill pathogens in milk?",
+    "correctAnswer": "Pasteurization",
+    "distractors": [
+      "Sterilization",
+      "Fermentation",
+      "Homogenization",
+      "Chlorination",
+      "Irradiation",
+      "Distillation",
+      "Refrigeration",
+      "UV treatment"
+    ],
+    "acceptableAnswers": [
+      "pasteurization",
+      "pasteurisation"
+    ],
+    "explanation": "Originally developed to save French wine from bacterial spoilage, pasteurization heats liquid to ~72°C for 15 seconds, killing harmful bacteria like Salmonella, Listeria, and E. coli. Before pasteurization, contaminated milk killed thousands of children annually. It is still one of the most life-saving food safety innovations in history.",
+    "wowFactor": "Pasteurization was invented to save wine — its application to milk accidentally became one of the greatest child-life-saving discoveries in history.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Pasteurization was originally developed to save which beverage from spoilage?",
+        "answer": "Wine",
+        "distractors": [
+          "Milk",
+          "Beer",
+          "Water"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Pasteurized milk is heated to approximately what temperature briefly?",
+        "answer": "72°C (161°F)",
+        "distractors": [
+          "100°C",
+          "50°C",
+          "120°C"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Pasteurization was invented primarily to make milk taste better.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pasteurization kills ___ in liquids by briefly heating them to ~72°C.",
+        "answer": "pathogens",
+        "distractors": [
+          "vitamins",
+          "proteins",
+          "enzymes"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pasteurization",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art milk bottle glowing orange as it passes through a heating chamber, with microbe sprites disappearing in puffs of steam.",
+    "tags": [
+      "Louis Pasteur",
+      "pasteurization",
+      "food safety",
+      "microbiology",
+      "public health"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-pasteur-rabies-vaccine",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "In 1885, Pasteur saved 9-year-old Joseph Meister from rabies with an experimental vaccine — the first successful rabies vaccination in a human being.",
+    "quizQuestion": "In 1885, Pasteur gave the first successful human vaccine for what disease?",
+    "correctAnswer": "Rabies",
+    "distractors": [
+      "Smallpox",
+      "Cholera",
+      "Anthrax",
+      "Typhoid",
+      "Diphtheria",
+      "Tetanus",
+      "Tuberculosis",
+      "Plague"
+    ],
+    "acceptableAnswers": [
+      "rabies"
+    ],
+    "explanation": "Joseph Meister had been mauled by a rabid dog and was expected to die. Pasteur, not yet a licensed doctor, gave him 13 inoculations of weakened rabies virus over 10 days. The boy survived. The experiment made international news and cemented Pasteur's legacy. Meister later became caretaker of the Pasteur Institute.",
+    "wowFactor": "The boy Pasteur saved from rabies in 1885 later became the gatekeeper of the Pasteur Institute — defending his hero's tomb until his death in 1940.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "How many inoculations did Pasteur give young Joseph Meister over 10 days?",
+        "answer": "13",
+        "distractors": [
+          "5",
+          "3",
+          "20"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Joseph Meister was 9 years old when mauled by what type of animal in 1885?",
+        "answer": "A rabid dog",
+        "distractors": [
+          "A rabid wolf",
+          "A rabid bat",
+          "A rabid fox"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Louis Pasteur was a licensed doctor when he vaccinated Joseph Meister.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pasteur's rabies vaccine used a ___ form of the rabies virus.",
+        "answer": "weakened",
+        "distractors": [
+          "dead",
+          "frozen",
+          "synthetic"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "legendary",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Louis_Pasteur",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art scientist in a lab coat holding a syringe beside a brave young boy, with a rabid dog silhouette in the background and glowing vaccine vials on the table.",
+    "tags": [
+      "Louis Pasteur",
+      "rabies vaccine",
+      "Joseph Meister",
+      "vaccination",
+      "medical history"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-pythagoras-theorem",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "The Pythagorean theorem states that in a right triangle, a² + b² = c², where c is the hypotenuse — a relationship known to Babylonians 1,000 years before Pythagoras.",
+    "quizQuestion": "In a right triangle with legs a, b, what does a² + b² equal?",
+    "correctAnswer": "c² (hypotenuse squared)",
+    "distractors": [
+      "a × b",
+      "2c",
+      "(a+b)²",
+      "a³ + b³",
+      "c",
+      "ab/2",
+      "√(a+b)",
+      "c/2"
+    ],
+    "acceptableAnswers": [
+      "c²",
+      "c squared",
+      "the hypotenuse squared"
+    ],
+    "explanation": "The theorem links the three sides of any right-angled triangle. The Babylonians knew this relationship by 1800 BC — 1,000 years before Pythagoras. The famous 3-4-5 triangle satisfies it: 9+16=25. The theorem is the foundation of trigonometry, navigation, and engineering.",
+    "wowFactor": "The most famous theorem in math is named after a man who didn't discover it — the Babylonians knew it over 1,000 years earlier.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In a 3-4-5 right triangle, what does 3² + 4² equal?",
+        "answer": "25 (which is 5²)",
+        "distractors": [
+          "12",
+          "49",
+          "7"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which ancient civilization knew the Pythagorean theorem 1,000 years before Pythagoras?",
+        "answer": "Babylonians",
+        "distractors": [
+          "Egyptians",
+          "Romans",
+          "Chinese"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "The Pythagorean theorem applies to all triangles, not just right triangles.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In a right triangle, the longest side opposite the right angle is the ___.",
+        "answer": "hypotenuse",
+        "distractors": [
+          "adjacent",
+          "opposite",
+          "base"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 8,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pythagorean_theorem",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art right triangle with glowing squares built on each side, labeled a², b², and c², with a golden '=' sign connecting them.",
+    "tags": [
+      "Pythagoras",
+      "Pythagorean theorem",
+      "mathematics",
+      "right triangle",
+      "geometry"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-pythagoras-music",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "Pythagoras discovered that musical intervals correspond to simple integer ratios — an octave is 2:1, a perfect fifth is 3:2 — connecting mathematics to music.",
+    "quizQuestion": "What ratio of string lengths creates a musical octave, per Pythagoras?",
+    "correctAnswer": "2:1",
+    "distractors": [
+      "3:2",
+      "4:3",
+      "1:1",
+      "5:3",
+      "3:1",
+      "7:4",
+      "2:3",
+      "5:4"
+    ],
+    "acceptableAnswers": [
+      "2:1",
+      "2 to 1",
+      "one to two"
+    ],
+    "explanation": "Pythagoras noticed that when a string is halved, it produces a note exactly one octave higher — a 2:1 frequency ratio. A string shortened to 2/3 produces a perfect fifth (3:2). This discovery united mathematics and music, and influenced Western musical tuning for centuries.",
+    "wowFactor": "Music and math were unified by Pythagoras — every chord you've ever heard is secretly a fraction.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "A perfect fifth in music corresponds to what string-length ratio?",
+        "answer": "3:2",
+        "distractors": [
+          "2:1",
+          "4:3",
+          "5:4"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Halving a vibrating string raises its pitch by exactly how much?",
+        "answer": "One octave",
+        "distractors": [
+          "A perfect fifth",
+          "A major third",
+          "Two octaves"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Pythagoras showed that musical harmony is based on irrational numbers.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Pythagoras found musical intervals correspond to ___ number ratios.",
+        "answer": "simple integer",
+        "distractors": [
+          "irrational",
+          "prime",
+          "complex"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pythagorean_tuning",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art lyre with strings of different lengths, each labeled with a glowing fraction ratio, notes floating up as musical symbols in gold and purple.",
+    "tags": [
+      "Pythagoras",
+      "music",
+      "mathematics",
+      "octave",
+      "harmonics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-pythagoras-harmony-spheres",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "Pythagoras believed the planets moved to produce an inaudible cosmic 'Music of the Spheres' — harmonious tones based on their orbital ratios, too pure for human ears.",
+    "quizQuestion": "What did Pythagoras call the inaudible music produced by planetary orbits?",
+    "correctAnswer": "Music of the Spheres",
+    "distractors": [
+      "Celestial harmony",
+      "Cosmic resonance",
+      "Orbital symphony",
+      "Divine chord",
+      "Stellar vibration",
+      "Astral tone",
+      "Planetary song",
+      "Universal frequency"
+    ],
+    "acceptableAnswers": [
+      "music of the spheres",
+      "musica universalis",
+      "harmony of the spheres"
+    ],
+    "explanation": "Pythagoras proposed that celestial bodies — the Moon, Sun, and planets — each emit a unique tone based on their distance and orbital speed. These tones combine into a cosmic harmony (musica universalis) too perfect and constant to be perceived. Kepler revisited this idea in the 17th century, computing actual orbital ratios.",
+    "wowFactor": "Pythagoras believed the entire cosmos was playing a silent symphony — and Kepler 2,000 years later found the orbital math was actually close to musical ratios.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Why could humans not hear the Music of the Spheres, per Pythagoras?",
+        "answer": "It was constant and inaudible",
+        "distractors": [
+          "It was too low frequency",
+          "It was blocked by clouds",
+          "It was only heard at death"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Which astronomer revisited Pythagorean Music of the Spheres with orbital math?",
+        "answer": "Johannes Kepler",
+        "distractors": [
+          "Galileo Galilei",
+          "Nicolaus Copernicus",
+          "Tycho Brahe"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Pythagoras believed that humans could hear the Music of the Spheres clearly.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The Latin term for Pythagoras's cosmic music theory is 'musica ___.'",
+        "answer": "universalis",
+        "distractors": [
+          "celestia",
+          "divina",
+          "harmonia"
+        ]
+      }
+    ],
+    "difficulty": 5,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Musica_universalis",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art solar system with musical staff lines spiraling between the planets, glowing notes orbiting in cosmic silence against a starry background.",
+    "tags": [
+      "Pythagoras",
+      "music of the spheres",
+      "philosophy",
+      "cosmos",
+      "musica universalis"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-electricity-lightning-franklin",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Benjamin Franklin's 1752 kite experiment proved that lightning is electrical — and led to the invention of the lightning rod, saving countless buildings and lives.",
+    "quizQuestion": "What did Franklin's kite experiment prove about lightning in 1752?",
+    "correctAnswer": "It is electrical",
+    "distractors": [
+      "It is magnetic",
+      "It is caused by friction",
+      "It travels in circles",
+      "It is a form of fire",
+      "It comes from clouds only",
+      "It is caused by static ice",
+      "It is plasma discharge",
+      "It is acoustic energy"
+    ],
+    "acceptableAnswers": [
+      "it is electrical",
+      "lightning is electricity",
+      "electrical discharge"
+    ],
+    "explanation": "Franklin flew a kite in a thunderstorm with a metal key attached. Sparks jumped from the key, proving lightning is an electrical discharge. He then invented the lightning rod — a metal spike connected to ground — which safely diverts lightning. It was one of the first practical applications of electrical science.",
+    "wowFactor": "Franklin flew a kite in a thunderstorm holding a key and a wet hemp string — one of the most reckless experiments in the history of science.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What practical invention came directly from Franklin's kite experiment?",
+        "answer": "Lightning rod",
+        "distractors": [
+          "Battery",
+          "Electric motor",
+          "Telegraph"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "What object did Franklin attach to his kite string to detect electricity?",
+        "answer": "A metal key",
+        "distractors": [
+          "A compass",
+          "A glass rod",
+          "A copper coin"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Franklin's kite experiment showed that lightning is a magnetic phenomenon.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "The lightning rod protects buildings by directing lightning into the ___.",
+        "answer": "ground",
+        "distractors": [
+          "air",
+          "water",
+          "metal frame"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 9,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kite_experiment",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art stormy night with a colonial-era man holding a kite string attached to a glowing key, lightning bolt arcing down from purple thunderclouds.",
+    "tags": [
+      "electricity",
+      "Benjamin Franklin",
+      "lightning",
+      "kite experiment",
+      "lightning rod"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-electricity-ohms-law",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Ohm's Law states that voltage (V) equals current (I) multiplied by resistance (R) — V = IR — describing how electricity flows through circuits.",
+    "quizQuestion": "In Ohm's Law, V = IR, what does 'R' represent?",
+    "correctAnswer": "Resistance",
+    "distractors": [
+      "Reactance",
+      "Rate of flow",
+      "Resonance",
+      "Radiation",
+      "Ratio",
+      "Reversal",
+      "Refraction",
+      "Relay"
+    ],
+    "acceptableAnswers": [
+      "resistance",
+      "electrical resistance"
+    ],
+    "explanation": "Georg Ohm published this law in 1827. Voltage is the 'push' (measured in volts), current is the flow of electrons (amperes), and resistance opposes flow (ohms). Double the voltage and current doubles. Double the resistance and current halves. Every electrical circuit design uses this relationship.",
+    "wowFactor": "A single equation — V=IR — underlies every electrical device ever built, from a flashlight to a supercomputer.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "If voltage doubles and resistance stays constant, what happens to current?",
+        "answer": "It doubles",
+        "distractors": [
+          "It halves",
+          "It stays the same",
+          "It quadruples"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Who published Ohm's Law in 1827, describing V = IR?",
+        "answer": "Georg Ohm",
+        "distractors": [
+          "André-Marie Ampère",
+          "Alessandro Volta",
+          "James Watt"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "In Ohm's Law, increasing resistance increases current if voltage is constant.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In V = IR, current (I) is measured in ___, named after a French physicist.",
+        "answer": "amperes",
+        "distractors": [
+          "volts",
+          "ohms",
+          "watts"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 7,
+    "noveltyScore": 6,
+    "ageRating": "kid",
+    "rarity": "uncommon",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ohm%27s_law",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art circuit diagram with glowing wires, a battery, resistor, and voltmeter, with V=IR written in bright yellow on the dark background.",
+    "tags": [
+      "electricity",
+      "Ohm's Law",
+      "V=IR",
+      "resistance",
+      "physics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-electricity-static",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Static electricity occurs when electrons transfer from one material to another, building up charge — a balloon rubbed on hair gains 1 million+ extra electrons.",
+    "quizQuestion": "How does rubbing a balloon on hair create static electricity?",
+    "correctAnswer": "Electrons transfer to balloon",
+    "distractors": [
+      "Friction creates new electrons",
+      "Heat ionizes the air",
+      "Protons move from hair",
+      "Magnetic fields form",
+      "Air molecules split",
+      "Atoms fuse together",
+      "Neutrons are released",
+      "Light energy converts"
+    ],
+    "acceptableAnswers": [
+      "electrons transfer",
+      "electrons transfer to balloon",
+      "charge transfer"
+    ],
+    "explanation": "When rubber (balloon) rubs against hair, the triboelectric effect causes electrons to jump from hair to balloon. The balloon becomes negatively charged; the hair becomes positively charged. Opposite charges attract, so the balloon sticks to the wall. The same principle causes lightning — charge builds up in storm clouds.",
+    "wowFactor": "The spark from a doorknob shock can jump 3,000 volts — yet it barely tickles because it carries almost no current.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "After rubbing a balloon on hair, the hair becomes positively charged because it lost what?",
+        "answer": "Electrons",
+        "distractors": [
+          "Protons",
+          "Neutrons",
+          "Ions"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "The triboelectric effect describes what phenomenon when materials are rubbed together?",
+        "answer": "Electron transfer",
+        "distractors": [
+          "Heat generation",
+          "Magnetic induction",
+          "Light emission"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "A doorknob static shock can reach 3,000 volts despite feeling harmless.",
+        "answer": "True",
+        "distractors": [
+          "False"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Static electricity builds when charged objects have unequal numbers of ___.",
+        "answer": "electrons",
+        "distractors": [
+          "protons",
+          "neutrons",
+          "photons"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Static_electricity",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art balloon stuck to a wall with hair standing on end nearby, electric sparks arcing between them in blue and white pixel art.",
+    "tags": [
+      "electricity",
+      "static electricity",
+      "electrons",
+      "triboelectric effect",
+      "charge"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-red-wavelength",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Red light has the longest wavelength in the visible spectrum (~700 nm), which is why it scatters least in atmosphere — making red the color of sunsets and danger signals.",
+    "quizQuestion": "Which color has the longest wavelength in the visible spectrum?",
+    "correctAnswer": "Red",
+    "distractors": [
+      "Violet",
+      "Blue",
+      "Orange",
+      "Yellow",
+      "Green",
+      "Indigo",
+      "Cyan",
+      "White"
+    ],
+    "acceptableAnswers": [
+      "red"
+    ],
+    "explanation": "Visible light spans 380–700 nm. Red sits at ~700 nm (lowest frequency); violet at ~380 nm (highest). Longer wavelengths scatter less — so red light travels farther through atmosphere. This is why the setting sun appears red and why red is used for stop lights and emergency signals: it's visible from the greatest distance.",
+    "wowFactor": "Red traffic lights exist because red light travels farthest through rain, fog, and dust — physics built into every stop signal.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Approximately what wavelength does red light have in nanometers?",
+        "answer": "700 nm",
+        "distractors": [
+          "380 nm",
+          "500 nm",
+          "450 nm"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Red light scatters least in atmosphere, which is why sunsets appear what color?",
+        "answer": "Red and orange",
+        "distractors": [
+          "Blue and purple",
+          "Green and yellow",
+          "White and gold"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Violet light has a longer wavelength than red light.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In the visible spectrum, ROY G BIV lists colors from ___ to violet wavelength.",
+        "answer": "longest (red)",
+        "distractors": [
+          "shortest (violet)",
+          "brightest",
+          "most energetic"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Red",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art rainbow spectrum with the red band glowing largest, arrows indicating wavelength size, and a tiny sunset silhouette in the red portion.",
+    "tags": [
+      "red",
+      "light",
+      "wavelength",
+      "visible spectrum",
+      "physics",
+      "optics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-red-blood-hemoglobin",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Blood appears red because hemoglobin, the protein carrying oxygen in red blood cells, absorbs blue/green light and reflects red wavelengths.",
+    "quizQuestion": "Why does blood appear red to our eyes?",
+    "correctAnswer": "Hemoglobin reflects red light",
+    "distractors": [
+      "Red blood cells emit red light",
+      "Iron oxidizes to red rust",
+      "Plasma is naturally red",
+      "Arteries add red pigment",
+      "Oxygen itself is red",
+      "Red cells are dyed by diet",
+      "Blood contains red minerals",
+      "UV light converts to red"
+    ],
+    "acceptableAnswers": [
+      "hemoglobin reflects red light",
+      "hemoglobin",
+      "hemoglobin absorbs other colors"
+    ],
+    "explanation": "Hemoglobin contains iron-porphyrin rings (heme groups) that absorb blue and green light. The unabsorbed red wavelengths are reflected back to our eyes. Oxygenated blood (arteries) is bright red; deoxygenated blood (veins) is darker red — never blue, despite the myth. Veins appear blue because skin absorbs red light more than blue.",
+    "wowFactor": "Veins look blue through skin but blood itself is always red — skin selectively absorbs red light, creating an optical illusion.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Deoxygenated blood in veins is actually what color — not blue?",
+        "answer": "Dark red",
+        "distractors": [
+          "Blue",
+          "Purple",
+          "Black"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Why do veins appear blue through skin if blood is always red?",
+        "answer": "Skin absorbs red light",
+        "distractors": [
+          "Veins contain blue pigment",
+          "Deoxygenated blood is blue",
+          "Blue light penetrates deeper"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Deoxygenated blood in your veins is actually blue in color.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Hemoglobin in red blood cells contains ___ atoms that bind to oxygen.",
+        "answer": "iron",
+        "distractors": [
+          "copper",
+          "calcium",
+          "zinc"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "kid",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hemoglobin",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art cross-section of a blood vessel showing red blood cells with hemoglobin molecules glowing red, absorbing blue-green light beams and reflecting red.",
+    "tags": [
+      "red",
+      "blood",
+      "hemoglobin",
+      "light absorption",
+      "biology",
+      "optics"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-red-mars",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "physics_mechanics",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "physics_mechanics",
+    "categoryL3": "",
+    "statement": "Mars appears red because its surface is covered in iron oxide (rust) — the same chemical that makes rust red on Earth, formed when iron reacts with oxygen.",
+    "quizQuestion": "What chemical makes Mars appear red from space?",
+    "correctAnswer": "Iron oxide (rust)",
+    "distractors": [
+      "Sulfur deposits",
+      "Red sand silica",
+      "Carbon dioxide ice",
+      "Volcanic magma",
+      "Copper oxide",
+      "Red clay minerals",
+      "Manganese oxide",
+      "Nitrogen compounds"
+    ],
+    "acceptableAnswers": [
+      "iron oxide",
+      "rust",
+      "iron oxide rust",
+      "ferric oxide"
+    ],
+    "explanation": "Mars's surface regolith is rich in iron(III) oxide (Fe₂O₃) — the same rust that forms on iron exposed to oxygen. Billions of years ago, Mars had liquid water and oxygen-rich atmosphere that oxidized iron-rich rocks. The resulting dust is fine and globally distributed, giving the entire planet its iconic red hue.",
+    "wowFactor": "The entire planet of Mars is basically a giant rust ball — covered in the same iron oxide that turns your bike red.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What is the chemical formula for the iron oxide giving Mars its red color?",
+        "answer": "Fe₂O₃",
+        "distractors": [
+          "FeO",
+          "Fe₃O₄",
+          "FeCO₃"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Iron oxide formed on Mars billions of years ago when it had what, now mostly gone?",
+        "answer": "Liquid water and oxygen",
+        "distractors": [
+          "Active volcanoes",
+          "Dense atmosphere",
+          "Strong magnetic field"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Mars is red because of volcanic sulfur on its surface.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Mars is covered in fine ___ dust, the same compound as rust on Earth.",
+        "answer": "iron oxide",
+        "distractors": [
+          "carbon",
+          "sulfur",
+          "silica"
+        ]
+      }
+    ],
+    "difficulty": 2,
+    "funScore": 8,
+    "noveltyScore": 7,
+    "ageRating": "kid",
+    "rarity": "rare",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mars",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art view of Mars from space, red dust storms swirling across its rusty surface, with a small inset showing iron rust flakes at the molecular level.",
+    "tags": [
+      "red",
+      "Mars",
+      "iron oxide",
+      "rust",
+      "planetary science",
+      "chemistry"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-leibniz-calculus",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "Leibniz independently invented calculus in the 1670s and his notation — dy/dx for derivatives, ∫ for integrals — is what every student uses today, not Newton's.",
+    "quizQuestion": "Whose calculus notation do students use today — Leibniz or Newton?",
+    "correctAnswer": "Leibniz",
+    "distractors": [
+      "Newton",
+      "Euler",
+      "Lagrange",
+      "Both equally",
+      "Neither, it was Euler's",
+      "Bernoulli",
+      "Fermat",
+      "Gauss"
+    ],
+    "acceptableAnswers": [
+      "leibniz",
+      "gottfried leibniz",
+      "leibniz's notation"
+    ],
+    "explanation": "Newton invented calculus first (~1666) but published late and used dot notation (ẋ, ẍ). Leibniz independently invented it in 1675-1676 and published in 1684. His notation — dy/dx and ∫ — was far more intuitive and is universally used today. The priority dispute between Newton and Leibniz was one of the most bitter in scientific history.",
+    "wowFactor": "Newton invented calculus first but Leibniz's notation was so much better that we use it instead — Newton's dots are nearly forgotten.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "What symbol did Leibniz introduce for the integral in calculus?",
+        "answer": "∫ (elongated S)",
+        "distractors": [
+          "Δ (delta)",
+          "Σ (sigma)",
+          "π (pi)"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Newton's calculus notation used dots above variables — what did ẋ represent?",
+        "answer": "Rate of change (derivative)",
+        "distractors": [
+          "Integral",
+          "Limit",
+          "Approximation"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Newton published his calculus before Leibniz developed his own version.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "In Leibniz notation, the derivative of y with respect to x is written as ___.",
+        "answer": "dy/dx",
+        "distractors": [
+          "ẋ",
+          "Δy/Δx",
+          "∂y"
+        ]
+      }
+    ],
+    "difficulty": 4,
+    "funScore": 9,
+    "noveltyScore": 9,
+    "ageRating": "teen",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art split panel: left shows Newton's dot notation on a scroll, right shows Leibniz's dy/dx and ∫ glowing brightly — both marked as 'calculus.'",
+    "tags": [
+      "Leibniz",
+      "calculus",
+      "mathematics",
+      "notation",
+      "Newton",
+      "derivatives"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-leibniz-binary",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "Leibniz developed the modern binary number system (0s and 1s) in 1703 — the same system that underlies all computers, smartphones, and digital technology today.",
+    "quizQuestion": "Who developed the binary number system used by all computers today?",
+    "correctAnswer": "Leibniz",
+    "distractors": [
+      "George Boole",
+      "Alan Turing",
+      "Charles Babbage",
+      "John von Neumann",
+      "Claude Shannon",
+      "Ada Lovelace",
+      "Blaise Pascal",
+      "Euclid"
+    ],
+    "acceptableAnswers": [
+      "leibniz",
+      "gottfried leibniz",
+      "gottfried wilhelm leibniz"
+    ],
+    "explanation": "Leibniz published his binary system (Explication de l'Arithmétique Binaire) in 1703. He saw it as a representation of creation — 1 for God, 0 for nothing. Three centuries later, engineers discovered binary was perfect for electronic circuits: on=1, off=0. Every calculation your computer makes traces back to Leibniz.",
+    "wowFactor": "A 17th-century philosopher invented binary as a metaphor for God and nothingness — and accidentally designed the foundation of all digital computing.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "In Leibniz's binary system, what did '1' originally symbolize philosophically?",
+        "answer": "God (creation)",
+        "distractors": [
+          "The Sun",
+          "Truth",
+          "Unity"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Binary is ideal for computers because electronic circuits have two states — on and off. When was binary formalized?",
+        "answer": "1703 by Leibniz",
+        "distractors": [
+          "1854 by Boole",
+          "1936 by Turing",
+          "1945 by von Neumann"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "Leibniz invented binary as a practical tool specifically for computing machines.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "All modern digital computers operate on ___ code — only 0s and 1s.",
+        "answer": "binary",
+        "distractors": [
+          "decimal",
+          "hexadecimal",
+          "octal"
+        ]
+      }
+    ],
+    "difficulty": 3,
+    "funScore": 10,
+    "noveltyScore": 10,
+    "ageRating": "kid",
+    "rarity": "legendary",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Binary_number",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art portrait of a baroque-era man beside a cascade of 0s and 1s transforming into a glowing circuit board, bridging 1703 to the digital age.",
+    "tags": [
+      "Leibniz",
+      "binary",
+      "computing",
+      "mathematics",
+      "digital technology"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  },
+  {
+    "id": "science-leibniz-monadology",
+    "type": "knowledge",
+    "domain": "Natural Sciences",
+    "subdomain": "scientific_discoveries",
+    "categoryL1": "Natural Sciences",
+    "categoryL2": "scientific_discoveries",
+    "categoryL3": "",
+    "statement": "Leibniz proposed that reality is made of indivisible 'monads' — immaterial, windowless units of consciousness that together compose all of existence.",
+    "quizQuestion": "What did Leibniz call the fundamental indivisible units of reality?",
+    "correctAnswer": "Monads",
+    "distractors": [
+      "Atoms",
+      "Quanta",
+      "Essences",
+      "Elements",
+      "Souls",
+      "Forces",
+      "Vortices",
+      "Corpuscles"
+    ],
+    "acceptableAnswers": [
+      "monads",
+      "monad"
+    ],
+    "explanation": "In his Monadology (1714), Leibniz argued that the universe is not made of matter but of infinite simple substances called monads. Each monad mirrors the entire universe from its own perspective and has no windows — it cannot interact causally with others. God coordinates them in 'pre-established harmony.' It was philosophy's most elegant attempt to solve mind-body dualism.",
+    "wowFactor": "Leibniz said reality is made of infinite tiny mind-like units with no windows — each one perfectly reflecting the entire universe from inside.",
+    "variants": [
+      {
+        "type": "forward",
+        "question": "Leibniz said monads have 'no windows' — what does this mean?",
+        "answer": "They cannot causally interact",
+        "distractors": [
+          "They are invisible",
+          "They cannot be observed",
+          "They have no properties"
+        ]
+      },
+      {
+        "type": "reverse",
+        "question": "Leibniz's 'pre-established harmony' explains how monads appear to interact despite being what?",
+        "answer": "Causally isolated",
+        "distractors": [
+          "Physically connected",
+          "Mathematically identical",
+          "Spatially overlapping"
+        ]
+      },
+      {
+        "type": "true_false",
+        "question": "In Leibniz's Monadology, monads are made of invisible physical matter.",
+        "answer": "False",
+        "distractors": [
+          "True"
+        ]
+      },
+      {
+        "type": "fill_blank",
+        "question": "Leibniz published his monad theory in a work called the ___.",
+        "answer": "Monadology",
+        "distractors": [
+          "Principia",
+          "Theodicy",
+          "Discourse"
+        ]
+      }
+    ],
+    "difficulty": 6,
+    "funScore": 8,
+    "noveltyScore": 9,
+    "ageRating": "adult",
+    "rarity": "epic",
+    "sourceName": "Wikipedia",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Monadology",
+    "contentVolatility": "timeless",
+    "sensitivityLevel": 0,
+    "sensitivityNote": null,
+    "visualDescription": "A pixel-art cosmos of glowing spheres within spheres — each tiny orb mirroring the entire universe in miniature, with no connecting lines between them.",
+    "tags": [
+      "Leibniz",
+      "monadology",
+      "philosophy",
+      "metaphysics",
+      "consciousness"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-16T00:00:00.000Z"
+  }
+]

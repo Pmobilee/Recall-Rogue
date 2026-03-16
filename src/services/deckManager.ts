@@ -1,7 +1,9 @@
 import type { Card, CardRunState, DeckStats } from '../data/card-types';
 import { HAND_SIZE, PLAYER_START_HP, PLAYER_MAX_HP, HINTS_PER_ENCOUNTER, FACT_COOLDOWN_MIN, FACT_COOLDOWN_MAX } from '../data/balance';
 import { factsDB } from './factsDB';
+import { resolveDomain } from './domainResolver';
 import { shuffled } from './randomUtils';
+import { getRunRng, isRunRngActive, seededShuffled } from './seededRng';
 import { writable } from 'svelte/store';
 
 /** Emitted whenever the discard pile is reshuffled into the draw pile. */
@@ -14,6 +16,17 @@ function normalizeFactKeyPart(value: string | undefined): string {
     .replace(/[^\p{L}\p{N}]+/gu, ' ')
     .replace(/\s+/g, ' ')
     .trim();
+}
+
+/**
+ * Strips known variant suffixes from a fact ID to get the root fact group.
+ * Prevents multiple variants of the same grammar/vocab point from appearing
+ * in the same hand (e.g. ja-grammar-n5-ga-meaning and ja-grammar-n5-ga-recall).
+ */
+function getFactRootId(factId: string): string {
+  return factId
+    .replace(/-(meaning|recall|fill|forward|reverse|true_false|fill_blank|negative|context)$/i, '')
+    .replace(/-\d{4}-(meaning|recall|fill)$/i, (match) => match.replace(/-(meaning|recall|fill)$/i, ''));
 }
 
 function buildFactBaseKey(factId: string, cache: Map<string, string>): string {
@@ -42,6 +55,7 @@ function buildFactBaseKey(factId: string, cache: Map<string, string>): string {
  * Used only for the first draw of a run to create a strong first impression.
  */
 function weightedFactShuffle(factIds: string[]): string[] {
+  const rng = isRunRngActive() ? getRunRng('facts') : null;
   const weighted = factIds.map(id => {
     const fact = factsDB.getById(id);
     const funScore = fact?.funScore ?? 5;
@@ -53,7 +67,7 @@ function weightedFactShuffle(factIds: string[]): string[] {
 
   while (pool.length > 0) {
     const totalWeight = pool.reduce((sum, item) => sum + item.weight, 0);
-    let random = Math.random() * totalWeight;
+    let random = (rng ? rng.next() : Math.random()) * totalWeight;
 
     let selectedIdx = 0;
     for (let i = 0; i < pool.length; i++) {
@@ -80,8 +94,12 @@ function weightedFactShuffle(factIds: string[]): string[] {
  * @param pool - The card pool produced by buildRunPool.
  * @returns A fully initialized CardRunState.
  */
-/** Crypto-safe Fisher-Yates shuffle (immune to seeded Math.random override). */
-function trueShuffled<T>(items: readonly T[]): T[] {
+/** Shuffle using the run's seeded RNG when active, otherwise crypto-safe. */
+function deckShuffled<T>(items: readonly T[]): T[] {
+  if (isRunRngActive()) {
+    return seededShuffled(getRunRng('deck'), items);
+  }
+  // Fallback: crypto-safe Fisher-Yates for non-seeded contexts
   const copy = [...items];
   for (let i = copy.length - 1; i > 0; i--) {
     const j = crypto.getRandomValues(new Uint32Array(1))[0] % (i + 1);
@@ -92,7 +110,7 @@ function trueShuffled<T>(items: readonly T[]): T[] {
 
 export function createDeck(pool: Card[]): CardRunState {
   return {
-    drawPile: trueShuffled(pool),
+    drawPile: deckShuffled(pool),
     discardPile: [],
     hand: [],
     exhaustPile: [],
@@ -106,6 +124,7 @@ export function createDeck(pool: Card[]): CardRunState {
     currency: 0,
     factPool: pool.map(c => c.factId),
     factCooldown: [],
+    currentEncounterSeenFacts: new Set(),
   };
 }
 
@@ -125,7 +144,6 @@ export function drawHand(deck: CardRunState, count?: number, options?: { firstDr
   const availableSpace = Math.max(0, HAND_SIZE - deck.hand.length);
   const toDraw = Math.max(0, Math.min(requested, availableSpace));
   const drawn: Card[] = [];
-  const mechanicsInHand = new Set(deck.hand.map((card) => card.mechanicId).filter(Boolean) as string[]);
 
   for (let i = 0; i < toDraw; i++) {
     // If draw pile empty, reshuffle discard into draw
@@ -134,28 +152,11 @@ export function drawHand(deck: CardRunState, count?: number, options?: { firstDr
       reshuffleDiscard(deck);
     }
 
-    let card = deck.drawPile.pop();
+    const card = deck.drawPile.pop();
     if (!card) break;
 
-    // No duplicate mechanics in a drawn hand when avoidable.
-    if (card.mechanicId && mechanicsInHand.has(card.mechanicId)) {
-      const rerollIndex = [...deck.drawPile]
-        .reverse()
-        .findIndex((candidate) => !candidate.mechanicId || !mechanicsInHand.has(candidate.mechanicId));
-
-      if (rerollIndex >= 0) {
-        const actualIndex = deck.drawPile.length - 1 - rerollIndex;
-        const [rerolled] = deck.drawPile.splice(actualIndex, 1);
-        deck.drawPile.push(card);
-        card = rerolled;
-      }
-    }
-
-    if (card) {
-      deck.hand.push(card);
-      drawn.push(card);
-      if (card.mechanicId) mechanicsInHand.add(card.mechanicId);
-    }
+    deck.hand.push(card);
+    drawn.push(card);
   }
 
   // === Hand Composition Guard ===
@@ -175,7 +176,6 @@ export function drawHand(deck: CardRunState, count?: number, options?: { firstDr
       if (handIdx >= 0) {
         deck.hand[handIdx] = attackCard;
         drawn[drawn.length - 1] = attackCard;
-        if (attackCard.mechanicId) mechanicsInHand.add(attackCard.mechanicId);
       }
     }
   }
@@ -183,8 +183,10 @@ export function drawHand(deck: CardRunState, count?: number, options?: { firstDr
   // === Fact-Card Shuffling ===
   // Reassign facts to drawn card slots from the available fact pool
   if (deck.factPool.length > 0 && drawn.length > 0) {
+    const cooldownRootIds = new Set(deck.factCooldown.map(c => getFactRootId(c.factId)));
     const availableFacts = deck.factPool.filter(
       fId => !deck.factCooldown.some(c => c.factId === fId)
+        && !cooldownRootIds.has(getFactRootId(fId))
     );
 
     // Edge case: if cooldown removes too many facts, reduce cooldown
@@ -211,7 +213,7 @@ export function drawHand(deck: CardRunState, count?: number, options?: { firstDr
       // Weighted shuffle: facts with funScore >= 7 are 2x more likely to appear first
       shuffledFacts = weightedFactShuffle(factsToUse);
     } else {
-      shuffledFacts = shuffled(factsToUse);
+      shuffledFacts = isRunRngActive() ? seededShuffled(getRunRng('facts'), factsToUse) : shuffled(factsToUse);
     }
 
     const factKeyCache = new Map<string, string>();
@@ -226,6 +228,11 @@ export function drawHand(deck: CardRunState, count?: number, options?: { firstDr
         .filter((card) => !drawnCardIds.has(card.id))
         .map((card) => buildFactBaseKey(card.factId, factKeyCache))
     );
+    const usedRootIds = new Set(
+      deck.hand
+        .filter((card) => !drawnCardIds.has(card.id))
+        .map((card) => getFactRootId(card.factId))
+    );
     const candidateFacts = [...shuffledFacts];
 
     const pickCandidateFactId = (): string | null => {
@@ -234,6 +241,7 @@ export function drawHand(deck: CardRunState, count?: number, options?: { firstDr
       let candidateIndex = candidateFacts.findIndex((candidateFactId) => (
         !usedFactIds.has(candidateFactId)
           && !usedBaseKeys.has(buildFactBaseKey(candidateFactId, factKeyCache))
+          && !usedRootIds.has(getFactRootId(candidateFactId))
       ));
 
       if (candidateIndex < 0) {
@@ -252,11 +260,19 @@ export function drawHand(deck: CardRunState, count?: number, options?: { firstDr
     };
 
     // Pair each drawn card slot with a random fact, avoiding duplicate base facts when possible.
+    if (!deck.currentEncounterSeenFacts) deck.currentEncounterSeenFacts = new Set();
     for (let i = 0; i < drawn.length; i++) {
       const factId = pickCandidateFactId() ?? shuffledFacts[i % shuffledFacts.length];
       drawn[i].factId = factId;
+      // Update domain to match the new fact (fact-card shuffling decouples factId from original card)
+      const newFact = factsDB.isReady() ? factsDB.getById(factId) : null;
+      if (newFact) {
+        drawn[i].domain = resolveDomain(newFact);
+      }
       usedFactIds.add(factId);
       usedBaseKeys.add(buildFactBaseKey(factId, factKeyCache));
+      usedRootIds.add(getFactRootId(factId));
+      deck.currentEncounterSeenFacts.add(factId);
     }
   }
 
@@ -352,7 +368,7 @@ export function reshuffleDiscard(deck: CardRunState): void {
   const count = deck.discardPile.length;
   deck.drawPile.push(...deck.discardPile);
   deck.discardPile = [];
-  deck.drawPile = trueShuffled(deck.drawPile);
+  deck.drawPile = deckShuffled(deck.drawPile);
   reshuffleEvent.set({ cardCount: count, timestamp: Date.now() });
 }
 
@@ -399,7 +415,9 @@ export function addFactsToCooldown(deck: CardRunState, answeredFactIds: string[]
   for (const factId of answeredFactIds) {
     // Don't add duplicates
     if (!deck.factCooldown.some(c => c.factId === factId)) {
-      deck.factCooldown.push({ factId, encountersRemaining: FACT_COOLDOWN_MIN + Math.floor(Math.random() * (FACT_COOLDOWN_MAX - FACT_COOLDOWN_MIN + 1)) });
+      const rng = isRunRngActive() ? getRunRng('facts') : null;
+      const range = FACT_COOLDOWN_MAX - FACT_COOLDOWN_MIN + 1;
+      deck.factCooldown.push({ factId, encountersRemaining: FACT_COOLDOWN_MIN + Math.floor((rng ? rng.next() : Math.random()) * range) });
     }
   }
 }
@@ -417,6 +435,22 @@ export function tickFactCooldowns(deck: CardRunState): void {
 // Exported for unit testing only — not part of the public API.
 export { weightedFactShuffle as _weightedFactShuffle_forTest };
 
+/**
+ * Returns all fact IDs that appeared in any hand during the current encounter.
+ * Used by encounterBridge to add ALL seen facts (not just answered ones) to cooldown.
+ */
+export function getEncounterSeenFacts(deck: CardRunState): string[] {
+  return [...(deck.currentEncounterSeenFacts ?? [])];
+}
+
+/**
+ * Resets the per-encounter seen-facts tracking set.
+ * Call at the start of each new encounter (before drawHand).
+ */
+export function resetEncounterSeenFacts(deck: CardRunState): void {
+  deck.currentEncounterSeenFacts = new Set();
+}
+
 export function insertCardWithDelay(deck: CardRunState, card: Card, minDelayCards: number): void {
   if (deck.drawPile.length === 0) {
     deck.drawPile.push(card);
@@ -426,6 +460,7 @@ export function insertCardWithDelay(deck: CardRunState, card: Card, minDelayCard
   const maxByDepth = Math.floor(deck.drawPile.length * 0.6);
   const maxByDelay = Math.max(0, deck.drawPile.length - minDelayCards);
   const upperBound = Math.max(0, Math.min(maxByDepth, maxByDelay));
-  const index = Math.floor(Math.random() * (upperBound + 1));
+  const rng = isRunRngActive() ? getRunRng('deck') : null;
+  const index = Math.floor((rng ? rng.next() : Math.random()) * (upperBound + 1));
   deck.drawPile.splice(index, 0, card);
 }

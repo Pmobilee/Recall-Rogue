@@ -73,10 +73,18 @@ After answering a quiz, cards go through a 5-phase animation sequence using hand
 - **Reveal** (250ms): Card flips to cardback using CSS 3D `rotateY(180deg)` transformation.
 - **Swoosh** (250ms): Type-specific animation plays (attack=golden slash+lunge, shield=blue pulse+rise, buff=golden radiate+expand, debuff=purple tendrils+dissolve, utility=prismatic shimmer+morph, wild=multi-color flash). Archetype-matched synthesized sound triggers.
 - **Impact** (300ms): 3D directional movement toward target (enemy or center); particles and screen shake effects fire.
-- **Discard** (200ms): Card minimizes and flies to discard pile indicator in bottom-right; discard pile count increments.
+- **Discard** (200ms): Card minimizes and flies to discard pile indicator in **bottom-left**; discard pile count increments.
 
 **Wrong answers:**
-- **Fizzle** (400ms): Violent shake + sparks + fade out, no multi-phase sequence.
+- **Fizzle** (400ms): Violent shake + sparks + fade out, no multi-phase sequence. Card exits to the discard pile (bottom-left) with the same swoosh direction as normal discards.
+
+**Draw/discard swoosh (Web Animations API):** CSS keyframe animations were permanently replaced with WAAPI (`el.animate()`) to avoid conflicts with Svelte's inline `transform`-based fan positioning (`!important` in keyframes is ignored per spec; pile CSS vars aren't set when the `0%` frame resolves).
+
+- **Draw swoosh**: `initCardAnimOffsets` Svelte action (in `CardHand.svelte`) fires after a double `requestAnimationFrame` to ensure `--draw-pile-x/y` CSS vars are set by `CardCombatOverlay`. Animates from the draw pile position at scale 0.05 to the card's inline fan `transform` as end state. `composite: 'replace'` mode. Staggered 80ms per card.
+- **Ghost card discard**: `ghostCardAnim` Svelte action uses a `MutationObserver` to detect `card-discard` class on ghost cards. Fires WAAPI from current `getBoundingClientRect()` to discard pile viewport coords (`--discard-pile-x/y` CSS vars). 200ms duration.
+- **Fizzle**: Same `ghostCardAnim` action detects `card-fizzle` class. Identical trajectory but with `filter: grayscale(1)` at the end keyframe and 400ms duration.
+- **End-of-turn**: `handleEndTurn()` queries `.card-in-hand:not(.card-animating)`, triggers staggered WAAPI (250ms + 40ms stagger), calls `onendturn()` after `Promise.all` on animation finish events.
+- **Reshuffle hold**: `reshuffleHoldingHand` state in `CardCombatOverlay` keeps `handCards` empty during the reshuffle animation. When shuffle completes, cards mount and `initCardAnimOffsets` swooshes them from the refilled draw pile.
 
 **Card frame system:**
 - 30 hand-crafted PNG frames (hires + lowres WebP variants) grouped by 6 mechanic categories (Attack, Defence, Buff, Debuff, Utility, Wild)
@@ -84,7 +92,7 @@ After answering a quiz, cards go through a 5-phase animation sequence using hand
 - Card rendering in `CardHand.svelte` uses frame images instead of programmatic CSS styling
 - Dynamic card description text (`getShortCardDescription()`) displays in parchment area
 
-**Animation buffer pattern**: Cards are copied to an `animatingCards` array before logical removal from the hand. A separate `{#each animatingCards}` loop renders non-interactive copies with animation CSS classes. Cards are cleaned from the buffer after animation completes via `setTimeout`. This prevents cards from disappearing mid-animation when the hand state updates.
+**Ghost card (animation buffer) pattern**: Cards are copied to an `animatingCards` array before logical removal from the hand. A separate `{#each animatingCards}` loop renders non-interactive ghost copies. The `ghostCardAnim` Svelte action on each ghost uses a `MutationObserver` to detect CSS class changes (`card-discard`, `card-fizzle`) and triggers the appropriate WAAPI exit animation. Ghosts are cleaned from the buffer after animation completes. This prevents cards from disappearing mid-animation when hand state updates.
 
 **Cardback discovery**: `cardbackManifest.ts` uses `import.meta.glob` at build time to discover which facts have cardback WebP images in `/public/assets/cardbacks/lowres/`. Images are preloaded via Svelte `$effect` when cards enter the hand.
 
@@ -201,7 +209,8 @@ These systems transfer from the mining codebase with minimal changes:
 | Room selection overlay | `src/ui/components/RoomSelectionOverlay.svelte` | Built — preserved as fallback for pre-map saves |
 | Dungeon map | `src/ui/components/DungeonMap.svelte` | Built — scrollable vertical act map with SVG paths and HTML nodes |
 | Map node | `src/ui/components/MapNode.svelte` | Built — 44px circle node button, type-coded by icon/color |
-| Map generator | `src/services/mapGenerator.ts` | Built — ActMap/MapNode types, generateActMap(), selectMapNode(), navigation helpers |
+| Map generator | `src/services/mapGenerator.ts` | Built — ActMap/MapNode types, generateActMap(), selectMapNode(), navigation helpers. Boss selection uses seeded RNG to pick randomly from a 2-boss pool per region (Shallow Depths, Deep Caverns, The Abyss, The Archive). |
+| Map cinematic | `src/ui/components/DungeonMap.svelte` | Built — Floor-entry cinematic: 1.5× zoom on boss node (~1s), zoom-out to full map, camera sweep to starting nodes. Boss node renders actual boss sprite (3D float animation). Elite nodes show purple menacing pulse. Tracked by map seed — plays once per floor. |
 | Rest room overlay | `src/ui/components/RestRoomOverlay.svelte` | Built — wired upgrade button (removed "Coming soon" stub) |
 | Shop room overlay | `src/ui/components/ShopRoomOverlay.svelte` | Complete redesign — buy relics + buy cards + sell sections |
 | Mystery event overlay | `src/ui/components/MysteryEventOverlay.svelte` | Built |
@@ -421,7 +430,7 @@ Run state serialization target: <50KB (SM-2 data for 500 facts ≈ 25KB).
 | Frame rate | 60fps |
 | Run state size | <50KB |
 | Texture atlases in memory | 3 max (via TextureAtlasLRU) |
-| Card animations | CSS 3D transforms + @keyframes (31 mechanic animations, GPU-accelerated via `will-change: transform`) |
+| Card animations | Web Animations API (WAAPI) for draw swoosh, ghost card discard, and end-of-turn discard; CSS 3D transforms + @keyframes for 31 mechanic animations (reveal/swoosh/impact phases), GPU-accelerated via `will-change: transform` |
 
 ## 9. Typed Event Bus
 
@@ -638,23 +647,72 @@ Distractors must NEVER be pulled from `correct_answer` values of other facts in 
 
 **PERMANENTLY BANNED:** Scripts like `mine-distractors.mjs` or any `SELECT correct_answer FROM facts WHERE category = ...` approach for distractor generation.
 
-## 13.5. Japanese Language Content Pipeline
+## 13.5. Language Content Pipeline
 
-Parallel pipeline for extracting and merging JLPT-structured Japanese facts (vocabulary, kanji, grammar, kana).
+Multi-language content pipeline producing vocabulary, kanji, grammar, and kana facts across 8 languages.
 
-### Source Files
+### Current Content (as of AR-52)
 
-- `data/references/full-japanese-study-deck/` — Cloned FJSD repo with:
-  - Vocab IDs mapped to JLPT levels (N5–N1)
-  - `kanji-info.json` — radical mappings, stroke count, JLPT assignment
-  - `grammar.json` — grammar patterns, JLPT levels, example sentences
-  - `kana.json` — hiragana, katakana, extended kana (dakuten, handakuten)
-- `data/references/jmdict/jmdict-eng.json` — JMdict English dictionary (215,611 entries, CC-BY-SA 4.0)
-- `data/raw/japanese/` — Extracted per-subdeck JSON files:
-  - `vocabulary.json` — 10,013 vocab facts with JLPT level, part-of-speech, example sentence
-  - `kanji.json` — 2,096 kanji facts with radical, stroke count, JLPT assignment
-  - `grammar.json` — 644 grammar pattern facts with JLPT level
-  - `kana.json` — 372 kana facts (hiragana, katakana, extended)
+| Language | Vocab | Kanji | Grammar | Kana | Total |
+|----------|-------|-------|---------|------|-------|
+| Japanese | 7,726 | 2,230 | 2,701 | 416 | 13,073 |
+| Chinese | 11,470 | — | 2,002 | — | 13,472 |
+| Korean | 9,757 | — | 1,643 | — | 11,400 |
+| Spanish | 11,434 | — | — | — | 11,434 |
+| German | 18,610 | — | — | — | 18,610 |
+| Czech | 15,393 | — | — | — | 15,393 |
+| French | 12,728 | — | — | — | 12,728 |
+| Dutch | 9,866 | — | — | — | 9,866 |
+
+### Seed Files
+
+- `src/data/seed/vocab-{lang}.json` — Vocabulary per language (8 files)
+- `src/data/seed/kanji-ja.json` — 2,230 JLPT kanji (N5–N1) from KANJIDIC2 + davidluzgouveia/kanji-data
+- `src/data/seed/grammar-ja.json` — 2,701 multi-type grammar facts (meaning + recall + sentence completion)
+- `src/data/seed/grammar-ko.json` — 1,643 Korean grammar facts (TOPIK levels 1–6)
+- `src/data/seed/grammar-zh.json` — 2,002 Chinese grammar facts (HSK 1–6)
+- `src/data/seed/vocab-ja-hiragana.json` — 208 hiragana facts
+- `src/data/seed/vocab-ja-katakana.json` — 208 katakana facts
+
+### Grammar Fact Types (AR-51)
+
+Each grammar point generates 2–3 quiz facts of different cognitive types:
+1. **Meaning (L2→L1)**: "What does ～ている mean?" → "ongoing action"
+2. **Recall (L1→L2)**: "Which pattern means 'ongoing action'?" → "～ている"
+3. **Sentence completion**: "今、本を___います。" → "読んで" (with furigana readings for kana-only mode)
+
+### Display Options (Japanese)
+
+Three toggleable display settings accessible via ⚙️ in the deck builder:
+- **Show Furigana** (default: ON): Hiragana readings above kanji via `<FuriganaText>` component
+- **Show Romaji** (default: OFF): Romanized readings below text
+- **Kana Only** (default: OFF): Replaces ALL kanji with hiragana for absolute beginners (AR-51)
+
+### Vocabulary Answer Normalization (AR-45)
+
+All vocabulary `correctAnswer` fields are normalized to concise quiz-appropriate length:
+- Parenthetical clarifications stripped: "wing (of a bird)" → "wing"
+- First meaning before semicolons: "he; him" → "he"
+- Capped at 45 characters
+- Korean NIKL definitions rewritten from sentences to 1–3 word translations via Haiku batch
+- Runtime `vocabDistractorService.ts` filters distractors by answer length (±2.5x ratio) to prevent length-exploit guessing
+
+### Per-Level Subcategories (AR-47)
+
+All languages have per-level `categoryL2` values enabling level-specific deck selection:
+- Japanese: `japanese_n5` through `japanese_n1`
+- Chinese: `chinese_hsk1` through `chinese_hsk7`
+- Korean: `korean_beginner`, `korean_intermediate`, `korean_advanced`
+- European (ES/FR/DE/NL/CS): `{lang}_a1` through `{lang}_c2` (CEFR levels)
+
+### Source Data
+
+- `data/references/full-japanese-study-deck/` — FJSD repo (vocab, kanji, grammar, kana)
+- `data/references/jmdict/` — JMdict English dictionary (CC-BY-SA 4.0)
+- `data/references/kanji-data-davidluzgouveia.json` — 13,108 kanji with JLPT levels, meanings, readings (CC)
+- `data/references/cefrlex/` — CEFR level data for European languages
+- `data/references/kaikki/` — Wiktionary extracts for European vocab
+- `/tmp/hanabira-grammar/` — Grammar data from hanabira.org (MIT license) for JA/KO/ZH
 
 ### Extraction Script
 

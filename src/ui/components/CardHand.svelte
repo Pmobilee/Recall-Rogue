@@ -20,6 +20,7 @@
     comboMultiplier?: number
     cardAnimations?: Record<string, CardAnimPhase>
     tierUpTransitions?: Record<string, TierUpTransition>
+    discarding?: boolean
     onselectcard: (index: number) => void
     ondeselectcard: () => void
     oncastdirect?: (index: number) => void
@@ -40,6 +41,7 @@
     comboMultiplier = 1,
     cardAnimations,
     tierUpTransitions = {},
+    discarding = false,
     onselectcard,
     oncastdirect,
   }: Props = $props()
@@ -127,7 +129,7 @@
   }
 
   function hasEnoughAp(card: Card): boolean {
-    return Math.max(1, card.apCost ?? 1) <= apCurrent
+    return (card.apCost ?? 1) <= apCurrent
   }
 
   function getDomainColor(domain: FactDomain): string {
@@ -343,10 +345,130 @@
     dragState = null
   }
 
+  /**
+   * Svelte action: uses the Web Animations API to animate cards from the
+   * draw pile to their fan position, and sets discard offset CSS vars.
+   *
+   * Web Animations API with composite: 'add' stacks on TOP of the inline
+   * transform (fan position) without conflicting.
+   */
+  /**
+   * Svelte action for ghost cards: watches for card-discard or card-fizzle class
+   * and triggers a WAAPI animation to fly the card to the discard pile.
+   */
+  function ghostCardAnim(el: HTMLElement): { destroy: () => void } {
+    const observer = new MutationObserver(() => {
+      if (el.classList.contains('card-discard') || el.classList.contains('card-fizzle')) {
+        const root = getComputedStyle(document.documentElement)
+        const discardX = parseFloat(root.getPropertyValue('--discard-pile-x')) || 0
+        const discardY = parseFloat(root.getPropertyValue('--discard-pile-y')) || 0
+        const rect = el.getBoundingClientRect()
+        const cx = rect.left + rect.width / 2
+        const cy = rect.top + rect.height / 2
+        const offX = discardX - cx
+        const offY = discardY - cy
+
+        const isFizzle = el.classList.contains('card-fizzle')
+        const currentTransform = getComputedStyle(el).transform || 'none'
+
+        el.animate([
+          {
+            transform: currentTransform,
+            opacity: isFizzle ? 0.4 : 0.7,
+            filter: isFizzle ? 'grayscale(0.5)' : 'none',
+          },
+          {
+            transform: `translate(${offX * 0.7}px, ${offY * 0.7}px) scale(0.15)`,
+            opacity: isFizzle ? 0.2 : 0.4,
+            filter: isFizzle ? 'grayscale(0.8)' : 'none',
+            offset: 0.7,
+          },
+          {
+            transform: `translate(${offX}px, ${offY}px) scale(0.05)`,
+            opacity: 0,
+            filter: isFizzle ? 'grayscale(1)' : 'none',
+          },
+        ], {
+          duration: isFizzle ? 400 : 250,
+          easing: 'ease-in',
+          fill: 'forwards',
+        })
+
+        observer.disconnect()
+      }
+    })
+    observer.observe(el, { attributes: true, attributeFilter: ['class'] })
+    return { destroy: () => observer.disconnect() }
+  }
+
+  function initCardAnimOffsets(el: HTMLElement): void {
+    // Get stagger index from the animation-delay inline style
+    const delayMatch = el.style.animationDelay?.match(/(\d+)/)
+    const staggerMs = delayMatch ? parseInt(delayMatch[1], 10) : 0
+
+    // Double rAF to ensure CardCombatOverlay's $effect has set --draw-pile-x/y
+    requestAnimationFrame(() => { requestAnimationFrame(() => {
+      const root = getComputedStyle(document.documentElement)
+      const drawX = parseFloat(root.getPropertyValue('--draw-pile-x')) || 0
+      const drawY = parseFloat(root.getPropertyValue('--draw-pile-y')) || 0
+      const discardX = parseFloat(root.getPropertyValue('--discard-pile-x')) || 0
+      const discardY = parseFloat(root.getPropertyValue('--discard-pile-y')) || 0
+
+      const rect = el.getBoundingClientRect()
+      const cx = rect.left + rect.width / 2
+      const cy = rect.top + rect.height / 2
+
+      // Store discard offsets as CSS vars for fizzle/discard keyframe animations
+      el.style.setProperty('--discard-offset-x', `${discardX - cx}px`)
+      el.style.setProperty('--discard-offset-y', `${discardY - cy}px`)
+
+      // Read the current inline transform (fan position) so we can use it as the end state
+      const fanTransform = el.style.transform || 'none'
+
+      // Only animate from draw pile if we have valid pile coordinates
+      // (they're 0 on first render before CardCombatOverlay sets them)
+      if (drawX > 0 && drawY > 0) {
+        const drawOffX = drawX - cx
+        const drawOffY = drawY - cy
+
+        el.animate([
+          {
+            transform: `translate3d(${drawOffX}px, ${drawOffY}px, 0) scale(0.05)`,
+            opacity: 0,
+          },
+          {
+            transform: `translate3d(${drawOffX * 0.6}px, ${drawOffY * 0.6}px, 0) scale(0.4)`,
+            opacity: 1,
+            offset: 0.25,
+          },
+          {
+            transform: fanTransform,
+            opacity: 1,
+          },
+        ], {
+          duration: 450,
+          delay: staggerMs,
+          easing: 'cubic-bezier(0.22, 1.2, 0.36, 1)',
+          fill: 'backwards',
+        })
+      } else {
+        // Fallback: simple fade-in when pile positions aren't available yet
+        el.animate([
+          { opacity: 0, transform: `${fanTransform} scale(0.8)` },
+          { opacity: 1, transform: fanTransform },
+        ], {
+          duration: 300,
+          delay: staggerMs,
+          easing: 'ease-out',
+          fill: 'backwards',
+        })
+      }
+    }) })
+  }
 
 </script>
 
-<div class="card-hand-container" role="group" aria-label="Card hand">
+<div class="card-hand-container" class:card-hand-discard={discarding} role="group" aria-label="Card hand">
   {#each cards as card, i (card.id)}
     {@const isSelected = selectedIndex === i}
     {@const isOther = selectedIndex !== null && !isSelected}
@@ -358,7 +480,7 @@
     {@const showFrontValue = shouldShowFrontValue(card)}
     {@const cardAnim = cardAnimations?.[card.id] ?? null}
     {@const tierBadge = getTierBadge(card)}
-    {@const apCost = Math.max(1, card.apCost ?? 1)}
+    {@const apCost = card.apCost ?? 1}
     {@const insufficientAp = !hasEnoughAp(card)}
     {@const cardbackUrl = cardbackUrls.get(card.factId) ?? null}
     {@const cardFrameUrl = cardFrameUrls.get(card.mechanicId ?? '') ?? null}
@@ -420,6 +542,7 @@
       "
       data-testid="card-hand-{i}"
       disabled={disabled || isOther}
+      use:initCardAnimOffsets
       onpointerdown={(e) => handlePointerDown(e, i)}
       onpointermove={(e) => handlePointerMove(e)}
       onpointerup={(e) => handlePointerUp(e)}
@@ -513,6 +636,7 @@
       class:card-reveal={isAnimating}
       class:card-fizzle={cardAnim === 'fizzle'}
       class:card-discard={cardAnim === 'discard'}
+      use:ghostCardAnim
       class:card-tier-up={isTierUp}
       class:card-tier-up-1-2a={isTierUp && tierUpTransition === 'tier1_to_2a'}
       class:card-tier-up-2a-2b={isTierUp && tierUpTransition === 'tier2a_to_2b'}
@@ -537,7 +661,7 @@
         <div class="card-front">
           {#if cardFrameUrl}
             <img class="card-frame-img" src={cardFrameUrl} alt={card.mechanicName ?? card.cardType} />
-            <div class="ap-gem">{Math.max(1, card.apCost ?? 1)}</div>
+            <div class="ap-gem">{card.apCost ?? 1}</div>
             <div class="card-parchment-text">
               {#if showFrontValue}
                 <span class="effect-value">{effectVal}</span>
@@ -585,7 +709,7 @@
     --card-w: calc(var(--gw, 390px) * 0.30);
     --card-h: calc(var(--card-w) * 1.42);
     position: absolute;
-    bottom: calc(calc(48px * var(--layout-scale, 1)) + 8vh);
+    bottom: calc(calc(56px * var(--layout-scale, 1)) + 10vh);
     left: 50%;
     z-index: 20;
     transform: translateX(-50%);
@@ -612,7 +736,6 @@
     padding: 0;
     overflow: visible;
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
-    animation: card-fan-in 300ms ease-out both;
     -webkit-tap-highlight-color: transparent;
     touch-action: none;
     font-family: inherit;
@@ -791,7 +914,7 @@
     opacity: 0.65;
     border-style: dashed;
     filter: brightness(1.2) contrast(0.85);
-    animation: card-fan-in 300ms ease-out both, echo-shimmer 2s ease-in-out infinite;
+    animation: echo-shimmer 2s ease-in-out infinite;
   }
 
   .trial-card {
@@ -992,16 +1115,6 @@
 
 
 
-  @keyframes card-fan-in {
-    from {
-      opacity: 0;
-      transform: translateX(120px) translateY(30px) rotate(15deg) scale(0.8);
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
   @keyframes echo-shimmer {
     0% { opacity: 0.55; }
     50% { opacity: 0.75; }
@@ -1009,13 +1122,25 @@
   }
 
   .card-fizzle {
+    position: fixed !important;
+    z-index: 100 !important;
     animation: cardFizzle 400ms ease-out forwards;
     pointer-events: none;
   }
 
   @keyframes cardFizzle {
-    0% { transform: translateY(0) scale(1); opacity: 0.4; filter: grayscale(0.5); }
-    100% { transform: translateY(100px) scale(0.8); opacity: 0; filter: grayscale(1); }
+    0% {
+      opacity: 0.4;
+      filter: grayscale(0.5);
+    }
+    100% {
+      transform: translate(
+        calc(var(--discard-pile-x, 30px) - 50vw),
+        calc(var(--discard-pile-y, 90vh) - 100vh + 40px * var(--layout-scale, 1))
+      ) rotate(-8deg) scale(0.05);
+      opacity: 0;
+      filter: grayscale(1);
+    }
   }
 
   .card-tier-up .card-inner {
@@ -1315,8 +1440,36 @@
     pointer-events: none;
   }
   @keyframes discardMinimize {
-    0% { opacity: 0.5; }
-    100% { transform: translate(-30vw, 40vh) scale(0.12); opacity: 0; }
+    0% {
+      opacity: 0.7;
+      transform: scale(1);
+    }
+    100% {
+      transform: translate(
+        calc(var(--discard-pile-x, 30px) - 50vw),
+        calc(var(--discard-pile-y, 90vh) - 100vh + 40px * var(--layout-scale, 1))
+      ) rotate(-10deg) scale(0.05) !important;
+      opacity: 0;
+    }
+  }
+
+  /* ═══ END-OF-TURN HAND DISCARD ANIMATION ═══ */
+
+  .card-hand-discard .card-in-hand {
+    animation: cardHandDiscard 300ms ease-in forwards;
+    pointer-events: none;
+  }
+
+  @keyframes cardHandDiscard {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      translate: var(--discard-offset-x, -40vw) var(--discard-offset-y, 30vh);
+      scale: 0.05;
+      rotate: -10deg;
+      opacity: 0;
+    }
   }
 
   /* ═══ UPGRADED CARD GLOW ═══ */

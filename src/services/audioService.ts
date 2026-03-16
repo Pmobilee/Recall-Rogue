@@ -43,6 +43,7 @@ export type SoundName =
   | 'card_swoosh_wild'
   | 'card_discard'
   | 'card_deal'
+  | 'card_shuffle'
 
 // Webkit-prefixed AudioContext fallback for older iOS Safari.
 type AnyAudioContext = AudioContext
@@ -339,6 +340,34 @@ function playCardDeal(ctx: AnyAudioContext, dest: GainNode): void {
   noise.stop(now + 0.06)
 }
 
+/**
+ * Card shuffle — Shorter, quieter papery rustle through a bandpass filter.
+ * Simulates cards being shuffled back into the draw pile.
+ */
+function playCardShuffle(ctx: AnyAudioContext, dest: GainNode): void {
+  const now = ctx.currentTime
+  const bufferSize = Math.round(ctx.sampleRate * 0.04)
+  const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate)
+  const data = buffer.getChannelData(0)
+  for (let i = 0; i < bufferSize; i++) {
+    data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / bufferSize, 10)
+  }
+  const noise = ctx.createBufferSource()
+  noise.buffer = buffer
+  const filter = ctx.createBiquadFilter()
+  filter.type = 'bandpass'
+  filter.frequency.value = 2500
+  filter.Q.value = 1.0
+  const gain = ctx.createGain()
+  gain.gain.setValueAtTime(0.12, now)
+  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04)
+  noise.connect(filter)
+  filter.connect(gain)
+  gain.connect(dest)
+  noise.start(now)
+  noise.stop(now + 0.04)
+}
+
 // ---------------------------------------------------------------------------
 // Sound dispatch map
 // ---------------------------------------------------------------------------
@@ -447,6 +476,7 @@ const SOUND_MAP: Record<SoundName, SoundFn> = {
   card_swoosh_wild: playCardSwooshWild,
   card_discard: playCardDiscard,
   card_deal: playCardDeal,
+  card_shuffle: playCardShuffle,
 }
 
 // ---------------------------------------------------------------------------

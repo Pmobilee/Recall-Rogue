@@ -1,3 +1,9 @@
+<script module lang="ts">
+  /** Set of map seeds that have already played the cinematic scroll.
+   *  Module-level so it persists across component remounts (e.g., returning from a room). */
+  const cinematicPlayedForSeed = new Set<number>()
+</script>
+
 <script lang="ts">
   import { onMount } from 'svelte'
   import type { ActMap, MapNode } from '../../services/mapGenerator'
@@ -61,6 +67,7 @@
 
   /** Current layout scale factor, read once on mount and updated on resize. */
   let layoutScale = $state(1)
+
 
   /** Scaled map constants derived from layoutScale. */
   let TOTAL_MAP_HEIGHT = $derived(BASE_MAP_HEIGHT * layoutScale)
@@ -154,20 +161,115 @@
 
   let availableMarker = $state<HTMLDivElement | undefined>(undefined)
 
-  $effect(() => {
-    // Run after the DOM is ready whenever the marker reference changes.
-    if (availableMarker) {
-      availableMarker.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    }
-  })
-
   /** Y pixel position of the lowest available node — used to place the scroll marker. */
   let lowestAvailablePy = $derived.by<number | null>(() => {
     const available = allNodes.filter(n => n.state === 'available' || n.state === 'current')
     if (available.length === 0) return null
-    // Lowest available = largest py (nearest to the bottom of the canvas)
     return Math.max(...available.map(n => nodePixelPos(n).py))
   })
+
+  /** Reference to the map-canvas element for direct transform manipulation. */
+  let mapCanvas = $state<HTMLDivElement | undefined>(undefined)
+
+  $effect(() => {
+    const container = scrollContainer
+    const targetPy = lowestAvailablePy
+    if (!container || targetPy === null) return
+
+    const mapSeed = map.seed
+    if (!cinematicPlayedForSeed.has(mapSeed)) {
+      cinematicPlayedForSeed.add(mapSeed)
+      // Cinematic only on first view of a new floor (start of run + after boss)
+      requestAnimationFrame(() => {
+        playCinematic(container, targetPy)
+      })
+    } else if (availableMarker) {
+      // Returning from a room: just jump to current position (no animation)
+      availableMarker.scrollIntoView({ behavior: 'instant', block: 'center' })
+    }
+  })
+
+  /**
+   * 3-phase cinematic using direct DOM manipulation (avoids Svelte reactivity loops):
+   *   Phase 1 (0–900ms):    Zoomed 1.5x on boss at top, subtle breathe
+   *   Phase 2 (900–2000ms): Zoom out 1.5x → 1.0x
+   *   Phase 3 (2000–3500ms): Scroll down to player's available nodes
+   */
+  function playCinematic(container: HTMLDivElement, targetPy: number) {
+    if (!mapCanvas) return
+    const canvas = mapCanvas as HTMLDivElement
+
+    const viewportH = container.clientHeight
+    const anchorOffset = 120 * layoutScale
+    // Maximum scroll: bottom of the map canvas (where starting nodes are)
+    const maxScroll = container.scrollHeight - viewportH
+
+    // Find the boss node's pixel Y to set transform-origin precisely
+    const bossNode = allNodes.find(n => n.type === 'boss')
+    const bossY = bossNode ? nodePixelPos(bossNode).py : V_PADDING
+
+    const PHASE1_END = 900
+    const PHASE2_END = 2000
+    const PHASE3_END = 3800
+    const ZOOM_START = 1.5
+    const ZOOM_END = 1.0
+
+    // Set initial state immediately via DOM (not reactive state)
+    canvas.style.transform = `scale(${ZOOM_START})`
+    canvas.style.transformOrigin = `50% ${bossY}px`
+    container.scrollTop = 0
+
+    let startTime: number | null = null
+
+    function easeOutCubic(t: number): number {
+      return 1 - Math.pow(1 - t, 3)
+    }
+
+    function easeInOutCubic(t: number): number {
+      return t < 0.5
+        ? 4 * t * t * t
+        : 1 - Math.pow(-2 * t + 2, 3) / 2
+    }
+
+    function step(timestamp: number) {
+      if (!startTime) startTime = timestamp
+      const elapsed = timestamp - startTime
+
+      if (elapsed < PHASE1_END) {
+        // Phase 1: Hold zoomed on boss with subtle breathe
+        const breathe = Math.sin((elapsed / PHASE1_END) * Math.PI) * 0.03
+        canvas.style.transform = `scale(${ZOOM_START + breathe})`
+        container.scrollTop = 0
+      } else if (elapsed < PHASE2_END) {
+        // Phase 2: Zoom out to normal
+        const p = (elapsed - PHASE1_END) / (PHASE2_END - PHASE1_END)
+        const eased = easeOutCubic(p)
+        const zoom = ZOOM_START + (ZOOM_END - ZOOM_START) * eased
+        canvas.style.transform = `scale(${zoom})`
+        // Gradually shift transform-origin from boss to top-center
+        const originY = bossY * (1 - eased)
+        canvas.style.transformOrigin = `50% ${originY}px`
+        container.scrollTop = 0
+      } else if (elapsed < PHASE3_END) {
+        // Phase 3: Scroll all the way down to the bottom of the map
+        canvas.style.transform = 'scale(1)'
+        canvas.style.transformOrigin = '50% 0%'
+        const p = (elapsed - PHASE2_END) / (PHASE3_END - PHASE2_END)
+        const eased = easeInOutCubic(p)
+        container.scrollTop = maxScroll * eased
+      } else {
+        // Done — stay at the bottom where the starting nodes are
+        canvas.style.transform = ''
+        canvas.style.transformOrigin = ''
+        container.scrollTop = maxScroll
+        return
+      }
+
+      requestAnimationFrame(step)
+    }
+
+    requestAnimationFrame(step)
+  }
 
   // =========================================================
   // Container width tracking
@@ -207,7 +309,7 @@
     class="map-scroll-container"
     bind:this={scrollContainer}
   >
-    <div class="map-canvas" style="height: {TOTAL_MAP_HEIGHT}px; width: {containerWidth}px;">
+    <div class="map-canvas" bind:this={mapCanvas} style="height: {TOTAL_MAP_HEIGHT}px; width: {containerWidth}px;">
       <!-- SVG layer — paths between nodes (pointer-events: none so it doesn't block scrolling) -->
       <svg
         class="map-paths"
@@ -340,6 +442,13 @@
     justify-content: center;
     /* Bottom safe-area padding so nodes are never hidden behind nav bars */
     padding-bottom: var(--safe-bottom, 16px);
+    /* Hide scrollbar — map scrolls via touch/cinematic only */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+  }
+
+  .map-scroll-container::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
   }
 
   /* =========================================================
@@ -350,6 +459,7 @@
     /* width set inline via containerWidth */
     background: radial-gradient(ellipse at 50% 0%, rgba(20, 40, 80, 0.3) 0%, transparent 70%);
     flex-shrink: 0;
+    will-change: transform;
   }
 
   /* =========================================================

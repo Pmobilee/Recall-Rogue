@@ -10,7 +10,7 @@
  */
 
 import { MAP_CONFIG } from '../data/balance'
-import { pickCombatEnemy, getMiniBossForFloor, getBossForFloor } from './floorManager'
+import { pickCombatEnemy, getMiniBossForFloor, pickBossForFloor } from './floorManager'
 
 // ============================================================
 // Public types
@@ -392,6 +392,7 @@ function assignRoomTypes(
 function assignEnemyIds(
   nodes: Record<string, MapNode>,
   startFloor: number,
+  rng: () => number,
 ): void {
   const { ROWS_PER_ACT } = MAP_CONFIG
 
@@ -407,7 +408,7 @@ function assignEnemyIds(
         break
       case 'boss': {
         const bossFloor = startFloor + 5
-        node.enemyId = getBossForFloor(bossFloor) ?? 'the_excavator'
+        node.enemyId = pickBossForFloor(bossFloor, rng())
         break
       }
       default:
@@ -465,8 +466,8 @@ export function generateActMap(segment: 1 | 2 | 3 | 4, seed: number): ActMap {
   // Step 4 — Room types
   assignRoomTypes(nodes, sizes, segment, rng)
 
-  // Step 5 — Enemy IDs (uses Math.random internally via floorManager helpers — acceptable)
-  assignEnemyIds(nodes, startFloor)
+  // Step 5 — Enemy IDs (boss uses seeded rng for variety across runs)
+  assignEnemyIds(nodes, startFloor, rng)
 
   // Step 6 — Initial states
   initialiseState(nodes, sizes)

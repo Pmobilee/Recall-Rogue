@@ -1,4 +1,5 @@
 import type { Card, CardType } from '../data/card-types'
+import { getRunRng, isRunRngActive } from './seededRng'
 
 export const CARD_TYPE_DISTRIBUTION: Array<{ type: CardType; weight: number }> = [
   { type: 'attack', weight: 0.40 },
@@ -10,6 +11,14 @@ export const CARD_TYPE_DISTRIBUTION: Array<{ type: CardType; weight: number }> =
 ]
 
 function shuffle<T>(arr: T[]): T[] {
+  if (isRunRngActive()) {
+    const rng = getRunRng('cardtype')
+    for (let i = arr.length - 1; i > 0; i -= 1) {
+      const j = rng.nextInt(i + 1)
+      ;[arr[i], arr[j]] = [arr[j], arr[i]]
+    }
+    return arr
+  }
   for (let i = arr.length - 1; i > 0; i -= 1) {
     const j = Math.floor(Math.random() * (i + 1))
     ;[arr[i], arr[j]] = [arr[j], arr[i]]
@@ -87,7 +96,7 @@ export function assignTypesToCards(cards: Card[]): Card[] {
 export function pickWeightedType(seed?: string): CardType {
   const roll = seed
     ? (hashString(seed) / 0xffffffff) * sum(CARD_TYPE_DISTRIBUTION)
-    : Math.random() * sum(CARD_TYPE_DISTRIBUTION)
+    : (isRunRngActive() ? getRunRng('cardtype').next() : Math.random()) * sum(CARD_TYPE_DISTRIBUTION)
 
   let cursor = roll
   for (const entry of CARD_TYPE_DISTRIBUTION) {

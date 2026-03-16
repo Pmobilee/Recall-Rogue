@@ -1,27 +1,5 @@
 [
   {
-    "qid": "Q144",
-    "label": "dog",
-    "description": "domesticated species of canid",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 331,
-    "monthlyPageviews": 165500,
-    "properties": {},
-    "processed": true
-  },
-  {
-    "qid": "Q146",
-    "label": "cat",
-    "description": "small domesticated carnivorous mammal",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 317,
-    "monthlyPageviews": 158500,
-    "properties": {
-      "startDate": "-8000-00-00T00:00:00Z"
-    },
-    "processed": true
-  },
-  {
     "qid": "Q420",
     "label": "biology",
     "description": "scientific study of living things, especially their structure, function, growth, evolution, and distribution",
@@ -42,69 +20,12 @@
     "processed": true
   },
   {
-    "qid": "Q10884",
-    "label": "tree",
-    "description": "perennial woody plant",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 263,
-    "monthlyPageviews": 131500,
-    "properties": {},
-    "processed": true
-  },
-  {
-    "qid": "Q830",
-    "label": "cattle",
-    "description": "large, domesticated, cloven-hooved herbivores",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 253,
-    "monthlyPageviews": 126500,
-    "properties": {},
-    "processed": true
-  },
-  {
     "qid": "Q12147",
     "label": "health",
     "description": "desirable level of functional or metabolic efficiency of a living being",
     "subcategory": "anatomy_organs",
     "sitelinks": 248,
     "monthlyPageviews": 124000,
-    "properties": {},
-    "processed": true
-  },
-  {
-    "qid": "Q506",
-    "label": "flower",
-    "description": "sexual reproductive structure found on flowering plants",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 245,
-    "monthlyPageviews": 122500,
-    "properties": {},
-    "processed": true
-  },
-  {
-    "qid": "Q5685",
-    "label": "Anton Chekhov",
-    "description": "Russian dramatist and author (1860–1904)",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 237,
-    "monthlyPageviews": 118500,
-    "properties": {
-      "genre": "Q667661",
-      "movement": "Q667661",
-      "birthDate": "+1860-01-17T00:00:00Z",
-      "deathDate": "+1904-07-02T00:00:00Z",
-      "occupation": "Q39631",
-      "fieldOfWork": "Q676"
-    },
-    "processed": true
-  },
-  {
-    "qid": "Q89",
-    "label": "apple",
-    "description": "edible fruit of the apple tree",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 235,
-    "monthlyPageviews": 117500,
     "properties": {},
     "processed": true
   },
@@ -119,29 +40,9 @@
     "processed": true
   },
   {
-    "qid": "Q2102",
-    "label": "snake",
-    "description": "limbless, scaly, elongate reptile",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 233,
-    "monthlyPageviews": 116500,
-    "properties": {},
-    "processed": true
-  },
-  {
     "qid": "Q3",
     "label": "life",
     "description": "matter capable of extracting energy from the environment for replication",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 230,
-    "monthlyPageviews": 115000,
-    "properties": {},
-    "processed": true
-  },
-  {
-    "qid": "Q7368",
-    "label": "sheep",
-    "description": "domesticated ruminant bred for meat, wool, and milk",
     "subcategory": "anatomy_organs",
     "sitelinks": 230,
     "monthlyPageviews": 115000,
@@ -159,36 +60,6 @@
     "processed": true
   },
   {
-    "qid": "Q5090",
-    "label": "rice",
-    "description": "staple food grain of Oryza and Zizania species, for the plant see Q161426",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 224,
-    "monthlyPageviews": 112000,
-    "properties": {},
-    "processed": true
-  },
-  {
-    "qid": "Q503",
-    "label": "banana",
-    "description": "elongated, edible fruit produced by several kinds of large herbaceous flowering plants in the genus Musa",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 222,
-    "monthlyPageviews": 111000,
-    "properties": {},
-    "processed": true
-  },
-  {
-    "qid": "Q7378",
-    "label": "elephant",
-    "description": "large terrestrial mammals from Africa and Asia",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 219,
-    "monthlyPageviews": 109500,
-    "properties": {},
-    "processed": true
-  },
-  {
     "qid": "Q441",
     "label": "botany",
     "description": "science of plant life",
@@ -196,22 +67,6 @@
     "sitelinks": 206,
     "monthlyPageviews": 103000,
     "properties": {},
-    "processed": true
-  },
-  {
-    "qid": "Q9353",
-    "label": "John Locke",
-    "description": "English philosopher and physician (1632–1704)",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 205,
-    "monthlyPageviews": 102500,
-    "properties": {
-      "movement": "Q83368",
-      "birthDate": "+1632-08-29T00:00:00Z",
-      "deathDate": "+1704-10-28T00:00:00Z",
-      "occupation": "Q4964182",
-      "fieldOfWork": "Q5891"
-    },
     "processed": true
   },
   {
@@ -231,16 +86,6 @@
     "subcategory": "anatomy_organs",
     "sitelinks": 195,
     "monthlyPageviews": 97500,
-    "properties": {},
-    "processed": true
-  },
-  {
-    "qid": "Q10978",
-    "label": "grape",
-    "description": "edible berry of a flowering plant in the family Vitaceae",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 193,
-    "monthlyPageviews": 96500,
     "properties": {},
     "processed": true
   },
@@ -300,16 +145,6 @@
     "processed": true
   },
   {
-    "qid": "Q15645384",
-    "label": "wheat",
-    "description": "widely cultivated cereal grain",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 183,
-    "monthlyPageviews": 91500,
-    "properties": {},
-    "processed": true
-  },
-  {
     "qid": "Q265868",
     "label": "bone",
     "description": "rigid organ that constitutes part of the endoskeleton of vertebrates",
@@ -353,7 +188,7 @@
       "occupation": "Q39631",
       "fieldOfWork": "Q208505"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q1074",
@@ -363,7 +198,7 @@
     "sitelinks": 180,
     "monthlyPageviews": 90000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q9614",
@@ -373,7 +208,7 @@
     "sitelinks": 178,
     "monthlyPageviews": 89000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q35831",
@@ -383,7 +218,7 @@
     "sitelinks": 176,
     "monthlyPageviews": 88000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q33971",
@@ -393,7 +228,7 @@
     "sitelinks": 173,
     "monthlyPageviews": 86500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q431",
@@ -403,7 +238,7 @@
     "sitelinks": 172,
     "monthlyPageviews": 86000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q17147",
@@ -413,7 +248,7 @@
     "sitelinks": 171,
     "monthlyPageviews": 85500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q7391",
@@ -426,7 +261,7 @@
       "taxonName": "Anthophila",
       "startDate": "-100000000-00-00T00:00:00Z"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q9103",
@@ -436,7 +271,7 @@
     "sitelinks": 170,
     "monthlyPageviews": 85000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q7239",
@@ -446,7 +281,7 @@
     "sitelinks": 170,
     "monthlyPageviews": 85000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q5264",
@@ -461,7 +296,7 @@
       "occupation": "Q39631",
       "fieldOfWork": "Q11190"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q1367",
@@ -471,7 +306,7 @@
     "sitelinks": 168,
     "monthlyPageviews": 84000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q11982",
@@ -481,7 +316,7 @@
     "sitelinks": 167,
     "monthlyPageviews": 83500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q7365",
@@ -491,7 +326,7 @@
     "sitelinks": 159,
     "monthlyPageviews": 79500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q7432",
@@ -501,7 +336,7 @@
     "sitelinks": 159,
     "monthlyPageviews": 79500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q1566",
@@ -511,7 +346,7 @@
     "sitelinks": 159,
     "monthlyPageviews": 79500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q13191",
@@ -521,7 +356,7 @@
     "sitelinks": 158,
     "monthlyPageviews": 79000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q7094",
@@ -531,7 +366,7 @@
     "sitelinks": 157,
     "monthlyPageviews": 78500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q11946202",
@@ -543,7 +378,7 @@
     "properties": {
       "taxonName": "Papilionoformes"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q5880",
@@ -553,7 +388,7 @@
     "sitelinks": 157,
     "monthlyPageviews": 78500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q58",
@@ -563,7 +398,7 @@
     "sitelinks": 156,
     "monthlyPageviews": 78000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q37017",
@@ -573,7 +408,7 @@
     "sitelinks": 154,
     "monthlyPageviews": 77000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q3736439",
@@ -583,7 +418,7 @@
     "sitelinks": 153,
     "monthlyPageviews": 76500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q8573",
@@ -597,7 +432,7 @@
       "deathDate": "+1925-03-12T00:00:00Z",
       "occupation": "Q82955"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q290",
@@ -607,7 +442,7 @@
     "sitelinks": 151,
     "monthlyPageviews": 75500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q11358",
@@ -617,7 +452,7 @@
     "sitelinks": 149,
     "monthlyPageviews": 74500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q81",
@@ -627,7 +462,7 @@
     "sitelinks": 147,
     "monthlyPageviews": 73500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q169",
@@ -637,7 +472,7 @@
     "sitelinks": 143,
     "monthlyPageviews": 71500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q7881",
@@ -647,7 +482,7 @@
     "sitelinks": 143,
     "monthlyPageviews": 71500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q25314",
@@ -659,7 +494,7 @@
     "properties": {
       "taxonName": "Angiosperms"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q12192",
@@ -669,7 +504,7 @@
     "sitelinks": 141,
     "monthlyPageviews": 70500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q40763",
@@ -679,7 +514,7 @@
     "sitelinks": 139,
     "monthlyPageviews": 69500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q11364",
@@ -689,7 +524,7 @@
     "sitelinks": 138,
     "monthlyPageviews": 69000,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q8331",
@@ -699,7 +534,7 @@
     "sitelinks": 137,
     "monthlyPageviews": 68500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q36864",
@@ -709,7 +544,7 @@
     "sitelinks": 137,
     "monthlyPageviews": 68500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q712378",
@@ -719,7 +554,7 @@
     "sitelinks": 137,
     "monthlyPageviews": 68500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q37868",
@@ -731,7 +566,7 @@
     "properties": {
       "taxonName": "Algae"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q23852",
@@ -741,7 +576,7 @@
     "sitelinks": 133,
     "monthlyPageviews": 66500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q521",
@@ -751,7 +586,7 @@
     "sitelinks": 133,
     "monthlyPageviews": 66500,
     "properties": {},
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q8778",
@@ -766,7 +601,7 @@
       "occupation": "Q551835",
       "fieldOfWork": "Q11190"
     },
-    "processed": false
+    "processed": true
   },
   {
     "qid": "Q482853",
@@ -2422,16 +2257,6 @@
     "processed": false
   },
   {
-    "qid": "Q34956",
-    "label": "vitamin",
-    "description": "organic compound and a vital nutrient that an organism requires in limited amounts",
-    "subcategory": "digestion_metabolism",
-    "sitelinks": 135,
-    "monthlyPageviews": 67500,
-    "properties": {},
-    "processed": false
-  },
-  {
     "qid": "Q40878",
     "label": "diarrhea",
     "description": "loose or liquid bowel movements",
@@ -2646,26 +2471,6 @@
     "processed": false
   },
   {
-    "qid": "Q37525",
-    "label": "glucose",
-    "description": "simple sugar, or monosaccharide, with the chemical formula C6H12O6; also called dextrose, d-glucopyranose, cerelose, grape sugar, and corn sugar",
-    "subcategory": "senses_perception",
-    "sitelinks": 114,
-    "monthlyPageviews": 57000,
-    "properties": {},
-    "processed": false
-  },
-  {
-    "qid": "Q3314483",
-    "label": "fruit",
-    "description": "typically sweet and/or sour, edible part/s of a plant that resembles seed-bearing fruit",
-    "subcategory": "senses_perception",
-    "sitelinks": 110,
-    "monthlyPageviews": 55000,
-    "properties": {},
-    "processed": false
-  },
-  {
     "qid": "Q33196",
     "label": "embryo",
     "description": "multicellular diploid eukaryote in its earliest stage of development",
@@ -2696,16 +2501,6 @@
     "processed": false
   },
   {
-    "qid": "Q162668",
-    "label": "visual perception",
-    "description": "ability to interpret the surrounding environment using light in the visible spectrum",
-    "subcategory": "senses_perception",
-    "sitelinks": 98,
-    "monthlyPageviews": 49000,
-    "properties": {},
-    "processed": false
-  },
-  {
     "qid": "Q175854",
     "label": "phobia",
     "description": "anxiety disorder defined by a persistent and excessive fear of a concept, an object or a situation",
@@ -2723,21 +2518,6 @@
     "sitelinks": 94,
     "monthlyPageviews": 47000,
     "properties": {},
-    "processed": false
-  },
-  {
-    "qid": "Q100196",
-    "label": "Archaeopteryx",
-    "description": "genus of early bird-like dinosaur",
-    "subcategory": "senses_perception",
-    "sitelinks": 93,
-    "monthlyPageviews": 46500,
-    "properties": {
-      "taxonName": "Archaeopteryx",
-      "startDate": "-150800000-00-00T00:00:00Z",
-      "endDate": "-148500000-00-00T00:00:00Z",
-      "discoverer": "Q123555128"
-    },
     "processed": false
   },
   {
@@ -2918,32 +2698,12 @@
     "processed": false
   },
   {
-    "qid": "Q374259",
-    "label": "color vision",
-    "description": "ability of an organism or machine to distinguish objects based on wavelengths of light",
-    "subcategory": "senses_perception",
-    "sitelinks": 43,
-    "monthlyPageviews": 21500,
-    "properties": {},
-    "processed": false
-  },
-  {
     "qid": "Q942537",
     "label": "compound eye",
     "description": "arthropod eye",
     "subcategory": "senses_perception",
     "sitelinks": 43,
     "monthlyPageviews": 21500,
-    "properties": {},
-    "processed": false
-  },
-  {
-    "qid": "Q47793",
-    "label": "tilapia",
-    "description": "common name for nearly a hundred species of cichlid fish from the tilapiine cichlid tribe",
-    "subcategory": "senses_perception",
-    "sitelinks": 41,
-    "monthlyPageviews": 20500,
     "properties": {},
     "processed": false
   },
@@ -3020,16 +2780,6 @@
     "processed": false
   },
   {
-    "qid": "Q7430",
-    "label": "deoxyribonucleic acid",
-    "description": "molecule that encodes the genetic instructions used in the development and functioning of all known living organisms and many viruses",
-    "subcategory": "genetics_dna",
-    "sitelinks": 183,
-    "monthlyPageviews": 91500,
-    "properties": {},
-    "processed": false
-  },
-  {
     "qid": "Q8054",
     "label": "protein",
     "description": "biomolecule or biomolecule complex largely consisting of chains of amino acid residues",
@@ -3100,16 +2850,6 @@
     "subcategory": "genetics_dna",
     "sitelinks": 126,
     "monthlyPageviews": 63000,
-    "properties": {},
-    "processed": false
-  },
-  {
-    "qid": "Q37748",
-    "label": "chromosome",
-    "description": "DNA molecule containing genetic material of a cell",
-    "subcategory": "genetics_dna",
-    "sitelinks": 124,
-    "monthlyPageviews": 62000,
     "properties": {},
     "processed": false
   },
@@ -3360,16 +3100,6 @@
     "processed": false
   },
   {
-    "qid": "Q130996",
-    "label": "DNA replication",
-    "description": "cellular metabolic process in which a cell duplicates one or more molecules of DNA",
-    "subcategory": "genetics_dna",
-    "sitelinks": 69,
-    "monthlyPageviews": 34500,
-    "properties": {},
-    "processed": false
-  },
-  {
     "qid": "Q165963",
     "label": "plastid",
     "description": "membrane-bound DNA-containing organelle found in the cytoplasm of autotrophic eukaryotes (plants, some protists)",
@@ -3400,42 +3130,12 @@
     "processed": false
   },
   {
-    "qid": "Q177900",
-    "label": "transcription",
-    "description": "biosynthesis of RNA carried out on a template of DNA",
-    "subcategory": "genetics_dna",
-    "sitelinks": 66,
-    "monthlyPageviews": 33000,
-    "properties": {},
-    "processed": false
-  },
-  {
     "qid": "Q842083",
     "label": "male reproductive system",
     "description": "reproductive system of the animal or human male, made up of internal and external organs",
     "subcategory": "genetics_dna",
     "sitelinks": 65,
     "monthlyPageviews": 32500,
-    "properties": {},
-    "processed": false
-  },
-  {
-    "qid": "Q486420",
-    "label": "genetic drift",
-    "description": "variation in the relative frequency of different genotypes in a small population",
-    "subcategory": "genetics_dna",
-    "sitelinks": 64,
-    "monthlyPageviews": 32000,
-    "properties": {},
-    "processed": false
-  },
-  {
-    "qid": "Q172778",
-    "label": "plasmid",
-    "description": "small DNA molecule within a cell that is physically separated from a chromosomal DNA and can replicate independently",
-    "subcategory": "genetics_dna",
-    "sitelinks": 63,
-    "monthlyPageviews": 31500,
     "properties": {},
     "processed": false
   },
@@ -3590,16 +3290,6 @@
     "subcategory": "genetics_dna",
     "sitelinks": 30,
     "monthlyPageviews": 15000,
-    "properties": {},
-    "processed": false
-  },
-  {
-    "qid": "Q21296145",
-    "label": "protein",
-    "description": "nutrient for the human body",
-    "subcategory": "genetics_dna",
-    "sitelinks": 26,
-    "monthlyPageviews": 13000,
     "properties": {},
     "processed": false
   },
@@ -3777,16 +3467,6 @@
     "properties": {
       "occupation": "Q14467526"
     },
-    "processed": false
-  },
-  {
-    "qid": "Q7218",
-    "label": "toxicology",
-    "description": "branch of biology, chemistry, and medicine",
-    "subcategory": "medical_science",
-    "sitelinks": 78,
-    "monthlyPageviews": 39000,
-    "properties": {},
     "processed": false
   },
   {
@@ -4246,16 +3926,6 @@
     "subcategory": "anatomy_organs",
     "sitelinks": 117,
     "monthlyPageviews": 58500,
-    "properties": {},
-    "processed": false
-  },
-  {
-    "qid": "Q8066",
-    "label": "amino acid",
-    "description": "organic compound containing both amino and acidic functional groups, important in biology",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 115,
-    "monthlyPageviews": 57500,
     "properties": {},
     "processed": false
   },
@@ -4764,16 +4434,6 @@
     "processed": false
   },
   {
-    "qid": "Q60235",
-    "label": "caffeine",
-    "description": "chemical compound used as a stimulant",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 97,
-    "monthlyPageviews": 48500,
-    "properties": {},
-    "processed": false
-  },
-  {
     "qid": "Q47715",
     "label": "Down syndrome",
     "description": "chromosomal condition",
@@ -4801,16 +4461,6 @@
     "qid": "Q7390",
     "label": "human voice",
     "description": "sound made by a human being using the vocal tract",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 97,
-    "monthlyPageviews": 48500,
-    "properties": {},
-    "processed": false
-  },
-  {
-    "qid": "Q125525",
-    "label": "jackal",
-    "description": "several species of the wolf genus of mammals",
     "subcategory": "anatomy_organs",
     "sitelinks": 97,
     "monthlyPageviews": 48500,
@@ -4965,18 +4615,6 @@
     "processed": false
   },
   {
-    "qid": "Q80294",
-    "label": "cellulose",
-    "description": "chemical compound",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 92,
-    "monthlyPageviews": 46000,
-    "properties": {
-      "discoverer": "Q560917"
-    },
-    "processed": false
-  },
-  {
     "qid": "Q1321695",
     "label": "egg cell",
     "description": "haploid female reproductive cell or gamete",
@@ -5042,16 +4680,6 @@
     "processed": false
   },
   {
-    "qid": "Q81225",
-    "label": "morphine",
-    "description": "chemical compound",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 91,
-    "monthlyPageviews": 45500,
-    "properties": {},
-    "processed": false
-  },
-  {
     "qid": "Q101065",
     "label": "puberty",
     "description": "transition from a sexually immature child to a sexually mature adult",
@@ -5099,16 +4727,6 @@
     "processed": false
   },
   {
-    "qid": "Q79899",
-    "label": "cytoplasm",
-    "description": "all of the contents of a cell excluding the plasma membrane and nucleus, but including other subcellular structures",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 89,
-    "monthlyPageviews": 44500,
-    "properties": {},
-    "processed": false
-  },
-  {
     "qid": "Q121176",
     "label": "nursing",
     "description": "caring for people who are sick or injured",
@@ -5142,16 +4760,6 @@
     "qid": "Q483921",
     "label": "adaptation",
     "description": "evolutionary biological process that fits organisms to their environment, adaptive trait, or state reached by an evolving population",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 88,
-    "monthlyPageviews": 44000,
-    "properties": {},
-    "processed": false
-  },
-  {
-    "qid": "Q132621",
-    "label": "epinephrine",
-    "description": "chemical compound",
     "subcategory": "anatomy_organs",
     "sitelinks": 88,
     "monthlyPageviews": 44000,
@@ -5196,16 +4804,6 @@
     "qid": "Q379813",
     "label": "bean",
     "description": "seed of several plants in the legume family",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 87,
-    "monthlyPageviews": 43500,
-    "properties": {},
-    "processed": false
-  },
-  {
-    "qid": "Q29548",
-    "label": "plasma membrane",
-    "description": "biological membrane that separates the interior of a cell from its outside environment",
     "subcategory": "anatomy_organs",
     "sitelinks": 87,
     "monthlyPageviews": 43500,
@@ -5359,18 +4957,6 @@
     "processed": false
   },
   {
-    "qid": "Q122043",
-    "label": "keto-D-fructose",
-    "description": "chemical compound",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 84,
-    "monthlyPageviews": 42000,
-    "properties": {
-      "discoverer": "Q767549"
-    },
-    "processed": false
-  },
-  {
     "qid": "Q4620674",
     "label": "sex organ",
     "description": "biological part involved in sexual reproduction",
@@ -5384,16 +4970,6 @@
     "qid": "Q712294",
     "label": "adrenal gland",
     "description": "endocrine gland that produces a variety of hormones",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 83,
-    "monthlyPageviews": 41500,
-    "properties": {},
-    "processed": false
-  },
-  {
-    "qid": "Q48428",
-    "label": "bird of prey",
-    "description": "any species of bird that primarily hunts and feeds on relatively large vertebrates",
     "subcategory": "anatomy_organs",
     "sitelinks": 83,
     "monthlyPageviews": 41500,
@@ -5437,16 +5013,6 @@
     "subcategory": "anatomy_organs",
     "sitelinks": 83,
     "monthlyPageviews": 41500,
-    "properties": {},
-    "processed": false
-  },
-  {
-    "qid": "Q80863",
-    "label": "adenosine triphosphate",
-    "description": "the energy-carrying molecule in living cells",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 82,
-    "monthlyPageviews": 41000,
     "properties": {},
     "processed": false
   },
@@ -5597,16 +5163,6 @@
     "qid": "Q561",
     "label": "human tooth",
     "description": "calcified whitish structure in humans' mouths used to break down food",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 79,
-    "monthlyPageviews": 39500,
-    "properties": {},
-    "processed": false
-  },
-  {
-    "qid": "Q127900",
-    "label": "β-lactose",
-    "description": "chemical compound",
     "subcategory": "anatomy_organs",
     "sitelinks": 79,
     "monthlyPageviews": 39500,
@@ -5895,16 +5451,6 @@
     "qid": "Q167980",
     "label": "transpiration",
     "description": "process of water moving through a plant and its evaporation from aerial parts",
-    "subcategory": "anatomy_organs",
-    "sitelinks": 75,
-    "monthlyPageviews": 37500,
-    "properties": {},
-    "processed": false
-  },
-  {
-    "qid": "Q2258881",
-    "label": "trout",
-    "description": "number of species of freshwater fish",
     "subcategory": "anatomy_organs",
     "sitelinks": 75,
     "monthlyPageviews": 37500,
@@ -6265,5 +5811,41 @@
     "monthlyPageviews": 35000,
     "properties": {},
     "processed": false
+  },
+  {
+    "qid": "Q1299",
+    "label": "Iron",
+    "description": "Mineral essential for blood health",
+    "subcategory": "",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false,
+    "movedFrom": "food_cuisine",
+    "movedAt": "2026-03-15T18:51:59.990Z"
+  },
+  {
+    "qid": "Q1300",
+    "label": "Calcium",
+    "description": "Mineral for bone health",
+    "subcategory": "",
+    "sitelinks": 85,
+    "monthlyPageviews": 50000,
+    "properties": {},
+    "processed": false,
+    "movedFrom": "food_cuisine",
+    "movedAt": "2026-03-15T18:51:59.990Z"
+  },
+  {
+    "qid": "Q1366",
+    "label": "Zinc",
+    "description": "Mineral for immune health",
+    "subcategory": "",
+    "sitelinks": 80,
+    "monthlyPageviews": 45000,
+    "properties": {},
+    "processed": false,
+    "movedFrom": "food_cuisine",
+    "movedAt": "2026-03-15T18:51:59.990Z"
   }
 ]

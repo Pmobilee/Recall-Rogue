@@ -55,6 +55,54 @@
   let optionsPopupLang = $state<string | null>(null)
   let subcategoryCache: Record<string, DomainSubcategoryInfo[]> = {}
 
+  /** Cached counts keyed by `langCode:token`. Built once on first access. */
+  let langSubdeckCountCache: Map<string, number> | null = null
+
+  /**
+   * Returns the number of facts matching a given language+token key.
+   * For Japanese, also counts subdeck keys like `ja:n5:vocabulary`.
+   * Results are cached after the first call.
+   */
+  function getLangSubdeckCount(langCode: string, token: string): number {
+    if (!langSubdeckCountCache) {
+      langSubdeckCountCache = new Map()
+      const sym = Symbol.for('terra:factsDB')
+      const db = (globalThis as any)[sym]
+      if (!db?.isReady?.() || !db?.getAll) return 0
+      for (const fact of db.getAll()) {
+        if (!fact.language) continue
+        const catL2 = (fact.categoryL2 || '').toLowerCase()
+        // Count by language:categoryL2
+        const catKey = `${fact.language}:${catL2}`
+        langSubdeckCountCache.set(catKey, (langSubdeckCountCache.get(catKey) || 0) + 1)
+        // Extra Japanese subdeck counting by fact id patterns
+        const id = fact.id || ''
+        if (fact.language === 'ja') {
+          const jlptMatch = catL2.match(/japanese_(n[1-5])/i)
+          if (jlptMatch) {
+            const level = jlptMatch[1].toLowerCase()
+            if (id.includes('-jlpt-')) {
+              const k = `ja:${level}:vocabulary`
+              langSubdeckCountCache.set(k, (langSubdeckCountCache.get(k) || 0) + 1)
+            }
+            if (id.includes('-kanji-')) {
+              const k = `ja:${level}:kanji`
+              langSubdeckCountCache.set(k, (langSubdeckCountCache.get(k) || 0) + 1)
+            }
+            if (id.includes('-grammar-')) {
+              const k = `ja:${level}:grammar`
+              langSubdeckCountCache.set(k, (langSubdeckCountCache.get(k) || 0) + 1)
+            }
+          }
+          if (id.includes('-kana-')) {
+            langSubdeckCountCache.set('ja:kana', (langSubdeckCountCache.get('ja:kana') || 0) + 1)
+          }
+        }
+      }
+    }
+    return langSubdeckCountCache.get(`${langCode}:${token.toLowerCase()}`) || 0
+  }
+
   // Save enable popup state
   let showEnablePrompt = $state(false)
   let savedPresetToEnable = $state<StudyPreset | null>(null)
@@ -337,6 +385,24 @@
   function formatSubdeckLabel(token: string): string {
     const normalized = normalizeToken(token)
     if (normalized === 'kana') return 'Kana'
+
+    // CEFR-level tokens: "spanish_a1" → "A1", "french_b2" → "B2"
+    const cefrMatch = normalized.match(/^(?:spanish|french|german|dutch|czech)_([abc][12])$/)
+    if (cefrMatch) return cefrMatch[1].toUpperCase()
+
+    // HSK tokens: "chinese_hsk1" → "HSK 1"
+    const hskMatch = normalized.match(/^chinese_hsk(\d)$/)
+    if (hskMatch) return `HSK ${hskMatch[1]}`
+
+    // Korean tokens: "korean_beginner" → "Beginner"
+    const koreanMatch = normalized.match(/^korean_(\w+)$/)
+    if (koreanMatch) return koreanMatch[1].charAt(0).toUpperCase() + koreanMatch[1].slice(1)
+
+    // Japanese tokens: "japanese_n5" → "N5"
+    const jpMatch = normalized.match(/^japanese_(n[1-5])$/)
+    if (jpMatch) return jpMatch[1].toUpperCase()
+
+    // Fallback
     return normalized.charAt(0).toUpperCase() + normalized.slice(1)
   }
 
@@ -451,7 +517,7 @@
 
           {#if expandedDomain === domain.id && isDomainSelected(domain.id)}
             <div class="subcategory-list" style="grid-column: 1 / -1;">
-              {#each loadSubcategories(domain.id) as sub (sub.id)}
+              {#each loadSubcategories(domain.id).filter(s => s.count > 0) as sub (sub.id)}
                 <label class="sub-check">
                   <input
                     type="checkbox"
@@ -461,7 +527,7 @@
                   <span>{sub.name} ({sub.count})</span>
                 </label>
               {/each}
-              {#if loadSubcategories(domain.id).length === 0}
+              {#if loadSubcategories(domain.id).filter(s => s.count > 0).length === 0}
                 <p class="empty-subs">No subcategories found</p>
               {/if}
             </div>
@@ -513,34 +579,42 @@
           {#if expandedDomain === lang.id && isDomainSelected(lang.id)}
             <div class="subcategory-list" class:japanese-subcategory-list={lang.config.code === 'ja'} style="grid-column: 1 / -1;">
               {#if lang.config.code === 'ja'}
-                <label class="sub-check kana-check">
-                  <input
-                    type="checkbox"
-                    checked={isSubcategoryOn(lang.id, JAPANESE_KANA_SELECTION_KEY)}
-                    onchange={() => toggleSubcategory(lang.id, JAPANESE_KANA_SELECTION_KEY)}
-                  />
-                  <span>Kana</span>
-                </label>
+                {#if getLangSubdeckCount('ja', 'kana') > 0}
+                  <label class="sub-check kana-check">
+                    <input
+                      type="checkbox"
+                      checked={isSubcategoryOn(lang.id, JAPANESE_KANA_SELECTION_KEY)}
+                      onchange={() => toggleSubcategory(lang.id, JAPANESE_KANA_SELECTION_KEY)}
+                    />
+                    <span>Kana</span>
+                  </label>
+                {/if}
 
                 {#each JAPANESE_DECK_GROUPS as group (group.level)}
-                  <div class="jp-level-group">
-                    <h5 class="jp-level-title">{group.label}</h5>
-                    <div class="jp-level-subdeck-grid">
-                      {#each group.keys as token (token)}
-                        <label class="sub-check">
-                          <input
-                            type="checkbox"
-                            checked={isSubcategoryOn(lang.id, token)}
-                            onchange={() => toggleSubcategory(lang.id, token)}
-                          />
-                          <span>{formatSubdeckLabel(token.split(':')[1] ?? token)}</span>
-                        </label>
-                      {/each}
+                  {@const visibleKeys = group.keys.filter(token => {
+                    const [level, subdeck] = token.split(':')
+                    return getLangSubdeckCount('ja', `${level}:${subdeck}`) > 0
+                  })}
+                  {#if visibleKeys.length > 0}
+                    <div class="jp-level-group">
+                      <h5 class="jp-level-title">{group.label}</h5>
+                      <div class="jp-level-subdeck-grid">
+                        {#each visibleKeys as token (token)}
+                          <label class="sub-check">
+                            <input
+                              type="checkbox"
+                              checked={isSubcategoryOn(lang.id, token)}
+                              onchange={() => toggleSubcategory(lang.id, token)}
+                            />
+                            <span>{formatSubdeckLabel(token.split(':')[1] ?? token)}</span>
+                          </label>
+                        {/each}
+                      </div>
                     </div>
-                  </div>
+                  {/if}
                 {/each}
               {:else}
-                {#each getLanguageSubcategoryTokens(lang.id) as subdeckToken (subdeckToken)}
+                {#each getLanguageSubcategoryTokens(lang.id).filter(token => getLangSubdeckCount(lang.config.code, token) > 0) as subdeckToken (subdeckToken)}
                   <label class="sub-check">
                     <input
                       type="checkbox"

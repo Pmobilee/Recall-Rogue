@@ -1,9 +1,9 @@
 # Content Pipeline — Progress Tracker
 
 **Canonical Spec:** [content-pipeline-spec.md](content-pipeline-spec.md) (same directory)
-**Last Updated:** 2026-03-15
-**Current Phase:** Knowledge pipeline — entity curation DONE, generation + validation infrastructure DONE (AR-34 B+C+D). Next: scale fact generation across all 10 domains.
-**Active AR Phase:** AR-34 — Content Pipeline Spec Alignment. Phase doc: `docs/roadmap/phases/AR-34-CONTENT-PIPELINE-SPEC-ALIGNMENT.md`
+**Last Updated:** 2026-03-16
+**Current Phase:** Knowledge pipeline — entity curation DONE, generation + validation infrastructure DONE (AR-34 B+C+D). AR-46 batch complete: +538 facts (20 entities per domain).
+**Active AR Phase:** AR-46 Complete. Next: Continue scaling with AR-47 (20 more per domain)
 
 ---
 
@@ -46,18 +46,18 @@ Any agent continuing this work MUST:
 
 | Domain | Status | Fact Count | Target | Seed File | Entities Curated | Notes |
 |--------|--------|------------|--------|-----------|-----------------|-------|
-| Animals & Wildlife | 🟡 In Progress | 214 | 2,000 | `knowledge-animals_wildlife.json` | ✅ 600 | AR-43 batch: +25 from 10 entities (7 valid, 3 skipped: maize/virus/bacteria) |
-| History | 🟡 In Progress | 202 | 2,000 | `knowledge-history.json` | ✅ 600 | AR-43 batch: +30 from 10 entities |
-| Space & Astronomy | 🟡 In Progress | 176 | 2,000 | `knowledge-space_astronomy.json` | ⚠️ 83 | AR-43 batch: +25 from 8 entities (2 skipped: Bolt/Melanchthon) |
-| General Knowledge | 🟡 In Progress | 204 | 2,000 | `knowledge-general_knowledge.json` | ✅ 600 | AR-43 batch: +25 from 10 entities |
-| Natural Sciences | 🟡 In Progress | 172 | 2,000 | `knowledge-natural_sciences.json` | ✅ 600 | AR-43 batch: +27 from 10 entities |
-| Art & Architecture | 🟡 In Progress | 187 | 2,000 | `knowledge-art_architecture.json` | ✅ 600 | AR-43 batch: +27 from 9 entities (1 skipped: Putin) |
-| Mythology & Folklore | 🟡 In Progress | 205 | 2,000 | `knowledge-mythology_folklore.json` | ⚠️ 232 | AR-43 batch: +24 from 10 entities |
-| Human Body & Health | 🟡 In Progress | 193 | 2,000 | `knowledge-human_body_health.json` | ✅ 600 | AR-43 batch: +22 from 7 entities (3 skipped: tree/flower/Chekhov) |
-| Food & World Cuisine | 🟡 In Progress | 196 | 2,000 | `knowledge-food_cuisine.json` | ✅ 332 | AR-43 batch: +21 from 10 entities |
-| Geography (knowledge) | 🟡 In Progress | 208 | 2,000 | `knowledge-geography.json` | ✅ 600 | AR-43 batch: +29 from 10 entities |
+| Animals & Wildlife | 🟡 In Progress | 300 | 2,000 | `knowledge-animals_wildlife.json` | ✅ 600 | AR-46: +43 from 20 entities (6 skipped: non-wildlife) |
+| Art & Architecture | 🟡 In Progress | 289 | 2,000 | `knowledge-art_architecture.json` | ✅ 600 | AR-46: +54 from 20 entities (1 skipped: film concept) |
+| Food & World Cuisine | 🟡 In Progress | 316 | 2,000 | `knowledge-food_cuisine.json` | ✅ 332 | AR-46: +60 from 20 entities (0 skipped) |
+| General Knowledge | 🟡 In Progress | 258 | 2,000 | `knowledge-general_knowledge.json` | ✅ 600 | AR-46: +27 from 20 entities (0 skipped) |
+| Geography | 🟡 In Progress | 384 | 2,000 | `knowledge-geography.json` | ✅ 600 | AR-46: +103 from 20 entities (0 skipped) |
+| History | 🟡 In Progress | 322 | 2,000 | `knowledge-history.json` | ✅ 600 | AR-46: +60 from 20 entities (0 skipped) |
+| Human Body & Health | 🟡 In Progress | 271 | 2,000 | `knowledge-human_body_health.json` | ✅ 600 | AR-46: +39 from 20 entities (11 skipped: non-health) |
+| Mythology & Folklore | 🟡 In Progress | 301 | 2,000 | `knowledge-mythology_folklore.json` | ⚠️ 232 | AR-46: +48 from 20 entities (1 skipped: Freya duplicate) |
+| Natural Sciences | 🟡 In Progress | 270 | 2,000 | `knowledge-natural_sciences.json` | ✅ 600 | AR-46: +61 from 20 entities (4 skipped: wrong domain) |
+| Space & Astronomy | 🟡 In Progress | 262 | 2,000 | `knowledge-space_astronomy.json` | ⚠️ 83 | AR-46: +43 from 20 entities (0 skipped) |
 
-**Total knowledge facts: 1,957 / 20,000 target** (AR-43: +255 from 10-entity parallel batch across all domains)
+**Total knowledge facts: 2,973 / 20,000 target** (AR-43: +255, AR-46: +538 from 20-entity parallel batch across all domains)
 
 ---
 

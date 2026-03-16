@@ -132,18 +132,44 @@ function matchesJapaneseSelection(fact: Fact, selectedSubcategories: string[]): 
   if (selectedSubcategories.length === 0) return true
   const selected = expandJapaneseSelectionTokens(selectedSubcategories)
   const factToken = getJapaneseFactSelectionToken(fact)
-  if (!factToken) return false
-  return selected.has(factToken)
+  if (factToken) return selected.has(factToken)
+
+  // Fallback for vocab facts (ja-jlpt-*) that don't have -vocab-/-kanji-/-grammar- in ID:
+  // Match by categoryL2 (e.g., "japanese_n5") against the JLPT level in selected tokens
+  const catL2 = normalizeToken(fact.categoryL2 ?? '')
+  if (!catL2) return false
+
+  // Selected tokens look like "n5:vocabulary", "n5:kanji", etc.
+  // Extract the level portion and check if any selected token starts with the fact's JLPT level
+  const jlptMatch = catL2.match(/^japanese_(n[1-5])$/)
+  if (jlptMatch?.[1]) {
+    const factLevel = jlptMatch[1]
+    // Match if ANY selected token starts with this level (e.g., "n5:vocabulary", "n5:kanji", "n5:grammar")
+    for (const token of selected) {
+      if (token.startsWith(`${factLevel}:`)) return true
+    }
+  }
+
+  return false
 }
 
 function matchesGenericLanguageSelection(fact: Fact, selectedSubcategories: string[]): boolean {
   if (selectedSubcategories.length === 0) return true
   const selected = new Set(selectedSubcategories.map(normalizeToken))
+
+  // Primary: match by categoryL2 (e.g., "spanish_a1", "french_b2", "korean_beginner")
+  const catL2 = normalizeToken(fact.categoryL2 ?? '')
+  if (catL2 && selected.has(catL2)) return true
+
+  // Fallback: match by inferred subdeck (backward compat for vocabulary/kanji/grammar)
   const subdeck = inferLanguageSubdeck(fact)
   if (subdeck && selected.has(subdeck)) return true
 
+  // Fallback: match by category[1]
   const factSubcategory = normalizeToken(getFactSubcategory(fact))
-  return selected.has(factSubcategory)
+  if (selected.has(factSubcategory)) return true
+
+  return false
 }
 
 function normalizeDomainKey(domainKey: string): string {

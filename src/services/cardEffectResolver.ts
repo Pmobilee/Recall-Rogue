@@ -39,12 +39,22 @@ export interface CardEffectResult {
   grantsAp?: number;
   applyDoubleStrikeBuff?: boolean;
   applyFocusBuff?: boolean;
+  /** Number of cards that will benefit from Focus AP reduction (1 = normal, 2 = Focus+). */
+  focusCharges?: number;
   applySlow?: boolean;
   applyForesight?: boolean;
   applyTransmute?: boolean;
   applyImmunity?: boolean;
   applyOverclock?: boolean;
   drawCountOverride?: number;
+  /** thorns: reflect this much damage back to enemy when hit */
+  thornsValue?: number;
+  /** cleanse: remove debuffs from player */
+  applyCleanse?: boolean;
+  /** mirror: copy the previous card's full effect result */
+  mirrorCopy?: boolean;
+  /** adapt: cleanse one random debuff from player */
+  adaptCleanse?: boolean;
 }
 
 export interface AdvancedResolveOptions {
@@ -132,9 +142,8 @@ export function resolveCardEffect(
     card = { ...card, baseEffectValue: baseValue > 0 ? baseValue : card.baseEffectValue };
   }
 
-  const focusAdjustedMultiplier = advanced.isFocusActive
-    ? Math.max(card.effectMultiplier, 1.3)
-    : card.effectMultiplier;
+  // Focus is now AP-reduction only — no damage multiplier applied here.
+  const focusAdjustedMultiplier = card.effectMultiplier;
   const tierMultiplier = getTierMultiplier(card.tier);
   const comboMultiplier = getComboMultiplier(comboCount);
   const buffMultiplier = 1 + buffNextCard / 100;
@@ -167,9 +176,9 @@ export function resolveCardEffect(
     result.enemyDefeated = damage >= enemy.currentHP;
   };
 
-  // Double Strike buff consumes on next attack card.
+  // Double Strike buff consumes on next attack card — full power per hit.
   if (advanced.isDoubleStrikeActive && effectiveType === 'attack') {
-    const perHit = Math.round(finalValue * 0.6);
+    const perHit = Math.round(finalValue * 1.0);
     applyAttackDamage(perHit * 2);
     return result;
   }
@@ -220,7 +229,7 @@ export function resolveCardEffect(
     case 'overheal': {
       const targetShield = finalValue + (passiveBonuses?.shield ?? 0);
       const healthPercentage = playerState.hp / playerState.maxHP;
-      const bonusMultiplier = healthPercentage < 0.5 ? 1.5 : 1.0;
+      const bonusMultiplier = healthPercentage < 0.5 ? 2.0 : 1.0;
       result.shieldApplied = Math.round(targetShield * bonusMultiplier);
       return result;
     }
@@ -236,12 +245,15 @@ export function resolveCardEffect(
       result.finalValue = 1;
       return result;
     }
-    case 'double_strike': {
-      result.applyDoubleStrikeBuff = true;
-      return result;
-    }
     case 'focus': {
       result.applyFocusBuff = true;
+      // Focus+: secondaryValue = 1 means grant 2 charges (two cards get AP reduction)
+      const focusCharges = (card.secondaryValue ?? mechanic?.secondaryValue ?? 0) > 0 ? 2 : 1;
+      result.focusCharges = focusCharges;
+      return result;
+    }
+    case 'double_strike': {
+      result.applyDoubleStrikeBuff = true;
       return result;
     }
     case 'slow': {
@@ -254,6 +266,7 @@ export function resolveCardEffect(
     }
     case 'foresight': {
       result.applyForesight = true;
+      result.extraCardsDrawn = 1;
       return result;
     }
     case 'transmute': {
@@ -266,7 +279,49 @@ export function resolveCardEffect(
     }
     case 'overclock': {
       result.applyOverclock = true;
-      result.drawCountOverride = 4;
+      return result;
+    }
+    case 'thorns': {
+      result.shieldApplied = finalValue + (passiveBonuses?.shield ?? 0);
+      result.thornsValue = card.secondaryValue ?? mechanic?.secondaryValue ?? 2;
+      return result;
+    }
+    case 'cleanse': {
+      result.applyCleanse = true;
+      result.extraCardsDrawn = 1;
+      return result;
+    }
+    case 'empower': {
+      // empower sets buffNextCard — handled via buff fallback, but we need it to
+      // set finalValue correctly so turnManager picks it up for buffNextCard.
+      result.finalValue = finalValue;
+      return result;
+    }
+    case 'recycle': {
+      result.extraCardsDrawn = Math.max(1, finalValue);
+      return result;
+    }
+    case 'emergency': {
+      const hpPercent = playerState.hp / playerState.maxHP;
+      const block = hpPercent < 0.3 ? finalValue * 2 : finalValue;
+      result.shieldApplied = Math.round(block) + (passiveBonuses?.shield ?? 0);
+      return result;
+    }
+    case 'mirror': {
+      result.mirrorCopy = true;
+      // Actual copy happens in turnManager after checking lastCardEffect.
+      return result;
+    }
+    case 'adapt': {
+      const intentType = enemy.nextIntent.type;
+      if (intentType === 'attack' || intentType === 'multi_attack') {
+        result.shieldApplied = finalValue + (passiveBonuses?.shield ?? 0);
+      } else if (intentType === 'debuff') {
+        result.adaptCleanse = true;
+      } else {
+        // defend, buff, heal, or unknown — go offensive
+        applyAttackDamage(finalValue);
+      }
       return result;
     }
     default:

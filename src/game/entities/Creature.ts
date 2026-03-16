@@ -1,4 +1,5 @@
 import type { Rarity } from '../../data/types'
+import { getRunRng, isRunRngActive } from '../../services/seededRng'
 
 /** Creature behavior type */
 export type CreatureBehavior = 'passive' | 'territorial' | 'aggressive' | 'guardian'
@@ -67,7 +68,8 @@ export function createCreature(
  */
 export function calculateDamage(attackerPower: number, defenderDefense: number): number {
   const baseDamage = Math.max(1, attackerPower - defenderDefense * 0.5)
-  const variance = 0.8 + Math.random() * 0.4  // 80%-120% variance
+  const rng = isRunRngActive() ? getRunRng('combat') : null
+  const variance = 0.8 + (rng ? rng.next() : Math.random()) * 0.4  // 80%-120% variance
   return Math.round(baseDamage * variance)
 }
 

@@ -4,6 +4,7 @@
  */
 
 import type { FactDomain } from '../data/card-types'
+import { getRunRng, isRunRngActive } from './seededRng'
 import { FLOOR_TIMER, SEGMENT_BOSS_FLOORS, ENDLESS_BOSS_INTERVAL, MAX_FLOORS } from '../data/balance'
 import { ENEMY_TEMPLATES, type EnemyRegion } from '../data/enemies'
 
@@ -155,6 +156,14 @@ const BOSS_MAP: Record<number, string> = {
   24: 'the_curator',
 }
 
+/** Boss pool per region — 2 bosses each, randomly selected per run. */
+const BOSS_POOL_BY_REGION: Record<EnemyRegion, string[]> = {
+  shallow_depths: ['the_excavator', 'magma_core'],
+  deep_caverns: ['the_archivist', 'crystal_warden'],
+  the_abyss: ['shadow_hydra', 'void_weaver'],
+  the_archive: ['knowledge_golem', 'the_curator'],
+}
+
 /** Maps a floor number to its dungeon region for enemy selection. */
 export function getRegionForFloor(floor: number): EnemyRegion {
   if (floor <= 6) return 'shallow_depths'
@@ -209,7 +218,8 @@ export function getEncountersForFloor(_floor: number): number {
 export function getEventsForFloor(floor: number): number {
   const seg = getSegment(floor)
   if (seg === 1) return 1
-  if (seg === 2) return Math.random() < 0.5 ? 1 : 2
+  const rng = isRunRngActive() ? getRunRng('map') : null
+  if (seg === 2) return (rng ? rng.next() : Math.random()) < 0.5 ? 1 : 2
   return 2
 }
 
@@ -232,6 +242,13 @@ export function getBossForFloor(floor: number): string | null {
   return null
 }
 
+/** Pick a random boss from the region's pool using a seeded random value (0–1). */
+export function pickBossForFloor(floor: number, rngValue: number): string {
+  const region = getRegionForFloor(floor)
+  const pool = BOSS_POOL_BY_REGION[region]
+  return pool[Math.floor(rngValue * pool.length)]
+}
+
 /**
  * Check if a given encounter on a floor is a mini-boss encounter.
  * Returns true if encounter === 3 AND the floor is NOT a boss floor.
@@ -248,7 +265,8 @@ export function isMiniBossEncounter(floor: number, encounter: number): boolean {
 export function getMiniBossForFloor(floor: number): string {
   const region = getRegionForFloor(floor)
   const pool = MINI_BOSS_POOL_BY_REGION[region]
-  const idx = Math.floor(Math.random() * pool.length)
+  const rng = isRunRngActive() ? getRunRng('enemies') : null
+  const idx = Math.floor((rng ? rng.next() : Math.random()) * pool.length)
   return pool[idx]
 }
 
@@ -285,7 +303,8 @@ export function generateRoomOptions(floor: number): RoomOption[] {
 /** Roll whether the next room selection should be an event (non-combat) slot. */
 export function shouldOfferEvent(floor: number): boolean {
   const segment = getSegment(floor)
-  return Math.random() < EVENT_CHANCE_BY_SEGMENT[segment]
+  const rng = isRunRngActive() ? getRunRng('map') : null
+  return (rng ? rng.next() : Math.random()) < EVENT_CHANCE_BY_SEGMENT[segment]
 }
 
 /**
@@ -339,7 +358,8 @@ export function pickCombatEnemy(floor: number): string {
 /** Weighted random selection from an enemy pool using spawnWeight (default 10). */
 function weightedEnemyPick(pool: typeof ENEMY_TEMPLATES): string {
   const totalWeight = pool.reduce((sum, e) => sum + (e.spawnWeight ?? 10), 0)
-  let roll = Math.random() * totalWeight
+  const rng = isRunRngActive() ? getRunRng('enemies') : null
+  let roll = (rng ? rng.next() : Math.random()) * totalWeight
   for (const e of pool) {
     roll -= (e.spawnWeight ?? 10)
     if (roll <= 0) return e.id
@@ -349,7 +369,8 @@ function weightedEnemyPick(pool: typeof ENEMY_TEMPLATES): string {
 
 /** Generate a random mystery event. */
 export function generateMysteryEvent(): MysteryEvent {
-  const idx = Math.floor(Math.random() * MYSTERY_EVENTS.length)
+  const rng = isRunRngActive() ? getRunRng('map') : null
+  const idx = Math.floor((rng ? rng.next() : Math.random()) * MYSTERY_EVENTS.length)
   // Return a deep-ish copy to avoid mutation
   return { ...MYSTERY_EVENTS[idx] }
 }
@@ -385,7 +406,8 @@ export function advanceFloor(state: FloorState): void {
 /** Pick a room type based on weighted probabilities. */
 function pickWeightedRoomType(weights: RoomWeight[]): RoomType {
   const total = weights.reduce((sum, w) => sum + w.weight, 0)
-  let roll = Math.random() * total
+  const rng = isRunRngActive() ? getRunRng('map') : null
+  let roll = (rng ? rng.next() : Math.random()) * total
   for (const w of weights) {
     roll -= w.weight
     if (roll <= 0) return w.type

@@ -1,92 +1,92 @@
 {
-  "generatedAt": "2026-03-13T15:41:16.808Z",
+  "generatedAt": "2026-03-16T07:50:44.759Z",
   "command": "check",
   "dbPath": "public/facts.db",
-  "checker": "gpt-5.2-quality-audit",
+  "checker": "gpt-5.1-mini",
   "dryRun": false,
   "fromInput": null,
   "reviewedFile": null,
   "status": "approved",
-  "limit": 50000,
+  "limit": 500,
   "offset": 0,
   "requiredTags": [],
   "tagMode": "any",
   "counts": {
-    "scanned": 46780,
-    "flagged": 15260,
-    "clear": 31520,
+    "scanned": 500,
+    "flagged": 16,
+    "clear": 484,
     "reviewedOverrides": 0
   },
   "sampleFlagged": [
     {
-      "id": "anim-collared-carpetshark-025",
-      "issue": "severe distractor length spread",
-      "needsFix": 1,
-      "checkedAt": 1773416476350,
-      "checkedBy": "gpt-5.2-quality-audit"
-    },
-    {
-      "id": "anim-dwarf-spotted-wobbegong-021",
-      "issue": "severe distractor length spread",
-      "needsFix": 1,
-      "checkedAt": 1773416476350,
-      "checkedBy": "gpt-5.2-quality-audit"
-    },
-    {
-      "id": "anim-ginger-carpetshark-024",
-      "issue": "severe distractor length spread",
-      "needsFix": 1,
-      "checkedAt": 1773416476350,
-      "checkedBy": "gpt-5.2-quality-audit"
-    },
-    {
-      "id": "anim-ornate-wobbegong-018",
-      "issue": "severe distractor length spread",
-      "needsFix": 1,
-      "checkedAt": 1773416476350,
-      "checkedBy": "gpt-5.2-quality-audit"
-    },
-    {
-      "id": "anim-parascyllium-ferrugineum-026",
-      "issue": "severe distractor length spread",
-      "needsFix": 1,
-      "checkedAt": 1773416476350,
-      "checkedBy": "gpt-5.2-quality-audit"
-    },
-    {
-      "id": "anim-saddle-carpetshark-023",
-      "issue": "severe distractor length spread",
-      "needsFix": 1,
-      "checkedAt": 1773416476350,
-      "checkedBy": "gpt-5.2-quality-audit"
-    },
-    {
-      "id": "anim-spotted-wobbegong-016",
-      "issue": "severe distractor length spread",
-      "needsFix": 1,
-      "checkedAt": 1773416476350,
-      "checkedBy": "gpt-5.2-quality-audit"
-    },
-    {
-      "id": "animal-barn-swallow-range-293",
+      "id": "animals-eagle-vision-acuity",
       "issue": "question expects numeric/date answer",
       "needsFix": 1,
-      "checkedAt": 1773416476350,
-      "checkedBy": "gpt-5.2-quality-audit"
+      "checkedAt": 1773647444745,
+      "checkedBy": "gpt-5.1-mini"
     },
     {
-      "id": "animal-crimson-rosella-colour-291",
-      "issue": "severe distractor length spread",
+      "id": "animals-octopus-nine-brains",
+      "issue": "question expects numeric/date answer",
       "needsFix": 1,
-      "checkedAt": 1773416476350,
-      "checkedBy": "gpt-5.2-quality-audit"
+      "checkedAt": 1773647444745,
+      "checkedBy": "gpt-5.1-mini"
     },
     {
-      "id": "animal-deep-sea-bioluminescence-170",
-      "issue": "severe distractor length spread",
+      "id": "animals-squirrel-spatial-memory",
+      "issue": "question expects numeric/date answer",
       "needsFix": 1,
-      "checkedAt": 1773416476350,
-      "checkedBy": "gpt-5.2-quality-audit"
+      "checkedAt": 1773647444745,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "animals-wild-boar-invasive",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773647444745,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "art-beethoven-ninth-deaf",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773647444745,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "art-mahabharata-length",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773647444745,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "art-michelangelo-sistine",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773647444745,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "art-mona-lisa-smile-science",
+      "issue": "location question has non-location style answer",
+      "needsFix": 1,
+      "checkedAt": 1773647444745,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "art-oscars-engraved-name",
+      "issue": "question expects numeric/date answer",
+      "needsFix": 1,
+      "checkedAt": 1773647444745,
+      "checkedBy": "gpt-5.1-mini"
+    },
+    {
+      "id": "cs-freq-1",
+      "issue": "low-context vocab prompt | no distractors",
+      "needsFix": 1,
+      "checkedAt": 1773647444745,
+      "checkedBy": "gpt-5.1-mini"
     }
   ]
 }
