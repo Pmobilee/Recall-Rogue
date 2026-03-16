@@ -1,9 +1,11 @@
 <script lang="ts">
+  import { getRelicIconPath } from '../utils/iconAssets'
+
   interface DisplayRelic {
     definitionId: string
     name: string
     description: string
-    initial: string
+    icon: string
   }
 
   interface Props {
@@ -18,11 +20,22 @@
   <div class="relic-tray">
     {#each relics as relic (relic.definitionId)}
       <div
-        class="relic"
+        class="relic-slot"
         class:triggered={triggeredRelicId === relic.definitionId}
         title={`${relic.name}: ${relic.description}`}
       >
-        {relic.initial}
+        <img
+          class="relic-icon"
+          src={getRelicIconPath(relic.definitionId)}
+          alt={relic.name}
+          onerror={(e) => {
+            const target = e.currentTarget as HTMLImageElement
+            target.style.display = 'none'
+            const fallback = target.nextElementSibling as HTMLElement
+            if (fallback) fallback.style.display = 'grid'
+          }}
+        />
+        <span class="relic-emoji-fallback">{relic.icon}</span>
       </div>
     {/each}
   </div>
@@ -31,36 +44,60 @@
 <style>
   .relic-tray {
     position: absolute;
-    top: calc(8px + var(--safe-top));
-    right: 10px;
+    right: calc(6px * var(--layout-scale, 1));
+    top: 50%;
+    transform: translateY(-50%);
     display: flex;
-    gap: 6px;
-    max-width: calc(100% - 20px);
-    overflow-x: auto;
+    flex-direction: column;
+    gap: calc(4px * var(--layout-scale, 1));
     z-index: 7;
+    pointer-events: auto;
   }
 
-  .relic {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: rgba(24, 33, 46, 0.95);
-    border: 1px solid #C9A227;
-    color: #F4D35E;
+  .relic-slot {
+    width: calc(28px * var(--layout-scale, 1));
+    height: calc(28px * var(--layout-scale, 1));
+    border-radius: calc(6px * var(--layout-scale, 1));
+    background: rgba(24, 33, 46, 0.9);
+    border: 1.5px solid #C9A227;
     display: grid;
     place-items: center;
-    font-weight: 800;
-    font-size: 14px;
-    flex: 0 0 auto;
+    overflow: hidden;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 150ms ease, box-shadow 150ms ease;
   }
 
-  .relic.triggered {
-    animation: relicPulse 280ms ease-out;
+  .relic-slot:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 8px rgba(201, 162, 39, 0.5);
+  }
+
+  .relic-slot.triggered {
+    animation: relicPulse 350ms ease-out;
+  }
+
+  .relic-icon {
+    width: calc(22px * var(--layout-scale, 1));
+    height: calc(22px * var(--layout-scale, 1));
+    object-fit: contain;
+    image-rendering: auto;
+  }
+
+  .relic-emoji-fallback {
+    display: none;
+    place-items: center;
+    font-size: calc(14px * var(--layout-scale, 1));
+    line-height: 1;
   }
 
   @keyframes relicPulse {
-    0% { transform: scale(1); }
-    45% { transform: scale(1.18); box-shadow: 0 0 14px rgba(244, 211, 94, 0.8); }
-    100% { transform: scale(1); }
+    0% { transform: scale(1); box-shadow: none; }
+    40% { transform: scale(1.25); box-shadow: 0 0 14px rgba(244, 211, 94, 0.8); }
+    100% { transform: scale(1); box-shadow: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .relic-slot.triggered { animation: none; }
   }
 </style>

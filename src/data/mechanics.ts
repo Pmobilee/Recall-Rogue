@@ -50,7 +50,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
 
   // Buff (phase 2)
   { id: 'focus', name: 'Focus', type: 'buff', description: 'Next card costs 1 less AP.', baseValue: 1, apCost: 1, maxPerPool: 0, tags: ['focus'], launchPhase: 2 },
-  { id: 'double_strike', name: 'Double Strike', type: 'buff', description: 'Next attack hits twice at full power.', baseValue: 100, apCost: 2, maxPerPool: 0, secondaryValue: 100, tags: ['double_strike'], launchPhase: 2 },
+  { id: 'double_strike', name: 'Double Strike', type: 'buff', description: 'Next attack card hits twice at full power.', baseValue: 100, apCost: 2, maxPerPool: 0, secondaryValue: 100, tags: ['double_strike'], launchPhase: 2 },
 
   // Debuff (phase 1)
   { id: 'weaken', name: 'Weaken', type: 'debuff', description: 'Apply weakness.', baseValue: 2, apCost: 1, maxPerPool: 0, tags: ['weakness'], launchPhase: 1 },
@@ -65,8 +65,8 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
   { id: 'recycle', name: 'Recycle', type: 'utility', description: 'Draw 3 cards.', baseValue: 3, apCost: 1, maxPerPool: 0, tags: ['cycle'], launchPhase: 1 },
 
   // Utility (phase 2)
-  { id: 'foresight', name: 'Foresight', type: 'utility', description: 'Reveal next 2 enemy intents and draw 1 card.', baseValue: 2, apCost: 0, maxPerPool: 0, secondaryValue: 1, tags: ['foresight'], launchPhase: 2 },
-  { id: 'transmute', name: 'Transmute', type: 'utility', description: 'Transform a random hand card type.', baseValue: 1, apCost: 1, maxPerPool: 0, tags: ['transmute'], launchPhase: 2 },
+  { id: 'foresight', name: 'Foresight', type: 'utility', description: 'Draw 2 cards.', baseValue: 2, apCost: 0, maxPerPool: 0, tags: ['foresight'], launchPhase: 2 },
+  { id: 'transmute', name: 'Transmute', type: 'utility', description: 'Transform your weakest hand card into a different type.', baseValue: 1, apCost: 1, maxPerPool: 0, tags: ['transmute'], launchPhase: 2 },
 
   // Emergency (shield phase 1)
   { id: 'emergency', name: 'Emergency', type: 'shield', description: 'Gain block. Double if HP below 30%.', baseValue: 4, apCost: 1, maxPerPool: 0, tags: ['emergency'], launchPhase: 1 },

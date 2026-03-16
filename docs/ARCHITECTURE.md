@@ -331,10 +331,11 @@ The relic system uses an STS-inspired economy replacing the old FSRS-tied passiv
 - `relicAcquisitionService.ts` — In-run pool filtering, weighted random selection, boss/mini-boss choice generation, random drop logic.
 
 **UI components**:
+- `StarterRelicSelection.svelte` — Run-start screen shown after archetype selection; presents 3 fixed choices from `STARTER_RELIC_CHOICES` (balance.ts); selected relic is excluded from all subsequent in-run drops
 - `RelicCollectionScreen.svelte` — Hub screen (via Anvil) for browsing, unlocking, and excluding relics
 - `RelicRewardScreen.svelte` — Full-screen 1-of-3 relic choice (boss/first mini-boss)
 - `RelicPickupToast.svelte` — Brief toast for random relic drops
-- `RelicTray.svelte` — Combat HUD horizontal relic display (no dormancy)
+- `RelicTray.svelte` — Combat HUD vertical strip on the right edge (between enemy intent area and draw pile counter); 28px sprite icons with gold borders; img tag with emoji fallback; pulse animation on trigger; tap for tooltip
 
 **Integration points** (all combat-loop relic checks now delegate to `relicEffectResolver.ts` as the centralized source of truth):
 - `encounterBridge.ts` — Builds `activeRelicIds` from `runRelics` at encounter start; delegates encounter-start effects (herbal_pouch, quicksilver), draw count (swift_boots, blood_price), and combo start (combo_ring) to resolver
@@ -494,6 +495,7 @@ src/
       ComboCounter.svelte       — Knowledge combo display
       DamageNumber.svelte       — Floating damage numbers
       DomainSelection.svelte    — Run-start domain picker (legacy, replaced by StudyModeSelector for run setup)
+      StarterRelicSelection.svelte — Run-start relic picker (archetype selection → starter relic → dungeon map)
       DeckBuilder.svelte        — Study preset creation/editing (tab within Library screen)
       StudyModeSelector.svelte  — Hub dropdown: All Topics, saved presets, languages, Build New Deck
       DungeonMap.svelte         — Scrollable vertical act map (SVG paths + HTML node buttons)
@@ -517,7 +519,7 @@ src/
     flagManifest.ts        — Maps 218 country names to flag SVG URLs; exports getFlagUrl(countryName), getFlagUrlBySlug(slug)
     studyPreset.ts         — StudyPreset, DeckMode types (preset selection + mastery scaling)
     enemies.ts             — Enemy template definitions
-    balance.ts             — (extended with card combat constants)
+    balance.ts             — (extended with card combat constants; includes STARTER_RELIC_CHOICES for run-start relic selection)
     types.ts, biomes.ts, relics/ (types, starters, unlockable, index), saveState.ts, ...
   events/                  EventBus, types
   dev/                     presets, debug bridge
@@ -562,8 +564,8 @@ encounterBridge
 gameFlowController
   → services/floorManager (room generation)
   → services/mapGenerator (ActMap generation, node selection)
-  → ui/stores/gameState (currentScreen — routes to 'dungeonMap' after archetype selection)
-  → data/balance (run parameters)
+  → ui/stores/gameState (currentScreen — routes to 'starterRelicSelection' after archetype selection, then 'dungeonMap' after relic pick)
+  → data/balance (run parameters, STARTER_RELIC_CHOICES)
 
 CardCombatOverlay.svelte
   → services/factsDB (real quiz questions)

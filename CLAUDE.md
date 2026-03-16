@@ -233,6 +233,7 @@ Each phase doc MUST contain:
 - Parallelize independent sub-agent tasks whenever possible
 - The orchestrator must NEVER edit files directly — always delegate via Agent tool
 - **EVERY worker task prompt MUST include**: "Update `docs/GAME_DESIGN.md` and `docs/ARCHITECTURE.md` if your changes affect gameplay, balance, systems, or file structure. Stale docs = bugs."
+- **EVERY worker that touches gameplay, UI, or balance MUST update docs IN THE SAME TASK** — not as a follow-up. If the worker adds a new screen, mechanic, relic, enemy, card type, or changes any player-facing behavior, the doc updates are PART of the task, not optional. The orchestrator MUST verify docs were updated before marking the task complete.
 
 ## Specialized Task Patterns
 ### Security Audit

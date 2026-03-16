@@ -68,6 +68,7 @@
     activeRelicPickup,
     onRelicRewardSelected,
     onMapNodeSelected,
+    onStarterRelicSelected,
     gameFlowState,
   } from './services/gameFlowController'
   import {
@@ -122,6 +123,7 @@
   import UpgradeSelectionOverlay from './ui/components/UpgradeSelectionOverlay.svelte'
   import PostMiniBossRestOverlay from './ui/components/PostMiniBossRestOverlay.svelte'
   import DungeonMap from './ui/components/DungeonMap.svelte'
+  import StarterRelicSelection from './ui/components/StarterRelicSelection.svelte'
   import TopicInterestsPage from './ui/components/TopicInterestsPage.svelte'
   import KnowledgeLevelPopup from './ui/components/KnowledgeLevelPopup.svelte'
   import { knowledgeLevelSelected } from './services/cardPreferences'
@@ -762,6 +764,10 @@
         aria-label="Pause"
       ><span class="pause-icon" aria-hidden="true"></span></button>
     {/if}
+  {/if}
+
+  {#if $currentScreen === 'starterRelicSelection'}
+    <StarterRelicSelection onselect={onStarterRelicSelected} />
   {/if}
 
   {#if $currentScreen === 'dungeonMap'}

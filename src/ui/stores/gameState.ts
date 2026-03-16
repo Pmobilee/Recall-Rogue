@@ -36,6 +36,7 @@ export type Screen =
   | 'upgradeSelection'
   | 'postMiniBossRest'
   | 'dungeonMap'
+  | 'starterRelicSelection'
 
 const SCREEN_STORAGE_KEY = 'card:currentScreen'
 
@@ -70,6 +71,7 @@ const VALID_SCREENS: Screen[] = [
   'upgradeSelection',
   'postMiniBossRest',
   'dungeonMap',
+  'starterRelicSelection',
 ]
 
 const PERSISTABLE_SCREENS = new Set<Screen>([

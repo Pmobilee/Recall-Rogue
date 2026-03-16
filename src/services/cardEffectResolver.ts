@@ -265,8 +265,7 @@ export function resolveCardEffect(
       return result;
     }
     case 'foresight': {
-      result.applyForesight = true;
-      result.extraCardsDrawn = 1;
+      result.extraCardsDrawn = Math.max(1, Math.round(finalValue));
       return result;
     }
     case 'transmute': {

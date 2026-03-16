@@ -1302,6 +1302,9 @@ export function getBalanceOverrides(): BalanceOverrides | null {
   return _activeOverrides;
 }
 
+/** The 3 relics always offered at the start of every run. */
+export const STARTER_RELIC_CHOICES = ['scholars_hat', 'iron_buckler', 'war_drum'] as const
+
 /** Get an override value if set, otherwise return the default constant. */
 export function getBalanceValue<K extends keyof BalanceOverrides>(
   key: K,

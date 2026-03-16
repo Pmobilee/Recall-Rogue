@@ -131,7 +131,7 @@ AP scaling: Base 3, hard cap 4 (only via specific passives or rare events).
 Cards now cost 0, 1, 2, or 3 AP instead of all costing 1 AP. This creates resource allocation tension — "one big play or two small plays?" decisions.
 
 **AP Cost Distribution (base, pre-upgrade):**
-- **0 AP:** Quicken (free +1 AP), Foresight (free: reveal 2 intents + draw 1)
+- **0 AP:** Quicken (free +1 AP), Foresight (free: draw 2 cards)
 - **1 AP:** Strike, Block, Emergency, Scout, Recycle, Focus, Cleanse, Empower, Weaken, Expose, Mirror, Adapt, Piercing, Reckless, Execute, Parry, Brace, Hex, Transmute, Immunity, Thorns
 - **2 AP:** Multi-Hit, Lifetap, Fortify, Overheal, Double Strike, Slow, Overclock
 - **3 AP:** Heavy Strike (consumes entire turn for 20 damage)
@@ -140,7 +140,7 @@ Cards now cost 0, 1, 2, or 3 AP instead of all costing 1 AP. This creates resour
 Many 2-3 AP cards can have their AP cost reduced by 1 via upgrade, creating meaningful upgrade decisions. Example: upgrade Heavy Strike from 3→2 AP (transformative resource unlock) vs upgrade Strike for +3 damage (incremental). This makes upgrades more interesting — not just about power creep, but about opening new strategic possibilities.
 
 **Upgraded AP distribution:**
-- 0 AP base: Quicken, Recycle, Foresight (3 cards)
+- 0 AP base: Quicken, Foresight (2 cards)
 - 0 AP upgraded: Scout+, Cleanse+, Immunity+ (plus the 3 base 0-AP cards = 6 total at 0 AP)
 - 1 AP: 16 cards (most upgrades keep 1 AP)
 - 2 AP: 1 card (Heavy Strike+, reduced from 3→2)
@@ -190,7 +190,7 @@ All 31 card mechanics available in the game, organized by type and phase.
 | **Double Strike** | Buff | 2 | Next attack hits twice at full power | Burst enabler (AR-55: was 2×60%) |
 | **Slow** | Debuff | 2 | Skip enemy's next action | Expensive but powerful vs bosses |
 | **Hex** | Debuff | 1 | 3 poison × 3 turns (9 total) | Damage over time |
-| **Foresight** | Utility | 0 | Reveal 2 intents + draw 1 | Free scouting (AR-55: was 1 AP, no draw) |
+| **Foresight** | Utility | 0 | Draw 2 cards | Free card advantage — quiz is the cost |
 | **Transmute** | Utility | 1 | Transform random hand card | Gamble on better options |
 | **Immunity** | Utility | 1 | Absorb next hit up to 8 damage | Universal defense (AR-55: was status-only) |
 | **Focus** | Buff | 1 | Next card costs 1 less AP | AP efficiency combos. Focus + Heavy Strike = 3 AP total |
@@ -198,7 +198,7 @@ All 31 card mechanics available in the game, organized by type and phase.
 
 #### Free-Play Design (AR-55)
 
-Two 0-AP cards (Quicken, Foresight) create "bonus action" moments where answering a quiz correctly IS the cost — no AP spent. This:
+The two 0-AP cards (Quicken, Foresight) create "bonus action" moments where answering a quiz correctly IS the cost — no AP spent. This:
 - Rewards quiz knowledge with extra plays
 - Creates exciting hands where you can play 4-5 cards in a turn (3 AP cards + 1-2 free cards)
 - Eliminates "dead draw" frustration — even utility cards feel worth playing
@@ -429,7 +429,7 @@ The three buff identities in Recall Rogue:
 | Mechanic | Effect | Base Value |
 |----------|--------|------------|
 | Scout | Draw +1 next turn | +1 draw |
-| Foresight | See enemy's next 2 intents | 2-turn vision |
+| Foresight | Draw 2 cards | Free card advantage |
 | Recycle | Return 1 card from discard to draw pile top | 1 reclaim |
 | Transmute | Transform 1 random hand card to different type | 1 transform |
 | Immunity | Prevent next status damage instance | 1 shield |
@@ -503,7 +503,6 @@ Every active effect on the player or enemy is displayed as a clickable icon duri
 | ⚡ | Empower | Next card gets +X% effect | Empower |
 | ⚔️ | Double Strike | Next attack hits twice at 60% power | Double Strike |
 | 🔮 | Focus | Next card gets minimum 1.3x multiplier | Focus |
-| 👁️ | Foresight | Can see future enemy intents for X turns | Foresight |
 | 🏰 | Fortify | Block persists into next turn | Fortify |
 | ⚙️ | Overclock | Next card effect doubled, draw -1 next turn | Overclock |
 
@@ -924,12 +923,27 @@ The camp **Anvil** opens the **Relic Archive** screen (internally still routed a
 
 Unlocking a relic does not equip it directly. It only makes that relic eligible for future in-run drops/reward choices.
 
+### Starter Relic Selection (Run Start)
+
+After archetype selection, before the first encounter, players choose **1 of 3 fixed starter relics**. These three options are always the same (not random), each incentivising a distinct playstyle:
+
+| Relic | Playstyle | Effect |
+|-------|-----------|--------|
+| Scholar's Hat | Knowledge Path | +3 HP on correct answer, +2 damage, +1 HP on wrong answer |
+| Iron Buckler | Guardian Path | +5 block at the start of each turn |
+| War Drum | Warrior Path | Up to +3 damage per combo level |
+
+All three are **Common** rarity and provide roughly equal total value. The selected relic is added to the run immediately and is **permanently excluded** from subsequent in-run drops and boss reward pools — it cannot be offered again.
+
+The screen is implemented as `StarterRelicSelection.svelte`. The three choices are defined by `STARTER_RELIC_CHOICES` in `src/data/balance.ts`.
+
 ### In-Run Acquisition
 
 Relics are collected during runs. No active relic limit — all collected relics stay active.
 
 | Trigger | Relic Award |
 |---------|-------------|
+| Starter relic (run start) | Choose 1 of 3 fixed starters (StarterRelicSelection.svelte) |
 | First mini-boss of run (Floor 1, Enc 3) | Choose 1 of 3 relics (RelicRewardScreen) |
 | Subsequent mini-bosses | 1 random relic (toast notification) |
 | Boss encounters | Choose 1 of 3 relics (better rarity weights) |
@@ -946,7 +960,7 @@ Relic effects are resolved by `relicEffectResolver.ts` — a centralized service
 
 ### Relic Display
 
-During runs, collected relics appear in the **RelicTray** at the bottom of the combat screen (horizontal scroll, overflow badge). Tapping shows name + description tooltip. Trigger pulse animation on activation.
+During runs, collected relics appear in the **RelicTray** as a **vertical strip of downscaled sprite icons on the right edge of the combat screen** (between the enemy intent area and the draw pile). Each icon is 28px with a gold border. Icons pulse when their effect triggers. Tapping an icon shows a tooltip with the relic's name and description. If a sprite asset is not found, the icon falls back to the relic's emoji.
 
 ### Dormancy
 
@@ -1004,7 +1018,7 @@ Certain relic combinations trigger hidden synergies that provide subtle bonuses 
 - **The Abyss:** Shadow Hydra, Void Weaver
 - **The Archive:** Knowledge Golem, The Curator
 
-Each floor has 3 encounters: encounters 1-2 are regular combat (common enemies), encounter 3 is always a mini-boss (or full boss on boss floors: 3, 6, 9, 12, 15, 18, 21, 24).
+Each act segment has a branching 15-row map (Slay the Spire model). Players choose their path through 3-5 nodes per row, encountering ~12-15 rooms per segment. Room types are weighted by segment: more combat early (42%), more variety later (rest/shop/mystery increase). The final row is always a single boss node, preceded by a rest/shop row.
 
 ### Retreat-or-Delve Psychology
 
@@ -1070,22 +1084,26 @@ Cards can be upgraded at rest sites and post-mini-boss encounters, gaining a "+"
 | Mechanic | Base | Upgraded | Change |
 |----------|------|----------|--------|
 | strike | 8 dmg | 11 dmg | +3 base |
-| multi_hit | 3×3 | 4×3 | +1 hit |
+| multi_hit | 4×3 | 5×3 | +1 per hit |
 | block | 6 | 8 | +2 |
-| thorns | 4/2 | 5/3 | +1/+1 |
-| restore | 8 | 11 | +3 |
-| cleanse | 6 | 8 | +2 |
-| empower | 30% | 40% | +10% |
+| thorns | 6 block/3 reflect | 7/4 | +1/+1 |
+| cleanse | remove debuffs + draw 1 | + draw 2 | +1 draw |
+| empower | +50% | +60% | +10% |
 | quicken | +1 AP | +1 AP + draw 1 | adds draw |
+| focus | -1 AP next card | -1 AP next 2 cards | +1 charge |
 | weaken | 2 turns | 3 turns | +1 turn |
 | expose | 1 turn | 2 turns | +1 turn |
-| scout | draw 1 | draw 2 | +1 draw |
-| recycle | cycle 1 | cycle 1 + draw 1 | +1 draw |
-| sustained | 3 regen | 4 regen | +1 |
-| emergency | 4 burst | 6 burst | +2 |
-| mirror | 1.0x | 1.25x | +0.25 |
-| adapt | 1.0x | 1.25x | +0.25 |
+| scout | draw 2 | draw 3 | +1 draw |
+| recycle | draw 3 | draw 4 | +1 draw |
+| foresight | draw 2 (free) | draw 3 (free) | +1 draw |
+| emergency | 4 block (8 if <30%) | 6 block (12 if <30%) | +2 |
+| mirror | copy last | copy last × 1.25 | +0.25x |
+| adapt | adaptive | adaptive × 1.25 | +0.25x |
 | heavy_strike | 3 AP, 20 dmg | 2 AP, 20 dmg | AP cost -1 |
+| double_strike | 2× next attack | 2× next attack, -1 AP | AP cost -1 |
+| fortify | 7 persistent | 9 persistent | +2 |
+| overheal | 10 (2× if <50%) | 12 (2× if <50%) | +2 |
+| overclock | 2× next card | 2× next card, -1 AP | AP cost -1 |
 
 **Upgrade Axes:**
 Upgrades fall into two categories:
@@ -1530,7 +1548,7 @@ Mastery milestones (10th, 25th, 50th, 100th mastered fact) unlock a Lore Fragmen
 1-2 randomly selected per run, visible at start:
 
 - "Arcane Surge: Answer 5 Science facts correctly" → +1 card reward at next shop
-- "Flawless Descent: Complete 3 encounters without wrong answers" → Mastery Coins
+- "Flawless Descent: Complete 3 consecutive rooms without wrong answers" → Mastery Coins
 - "Deep Delve: Reach Floor 6" → 50% extra currency
 - "Speed Caster: Answer 10 facts in under 3 seconds each" → Card upgrade token
 - "Scholar's Path: Play cards from 4 different domains in one run" → Domain preview unlock
@@ -1603,12 +1621,17 @@ Instead of a separate placement test (immersion-breaking) or accepting slow cali
 | Control | Prioritizes disruption and enemy manipulation | +3 Debuff, +2 Utility, -2 Attack, -1 Heal | Strategic, puzzle-like |
 | Hybrid | Custom blend (pick 2-3 preferred types) | Player-selected weighting | Highly personalized |
 
-**How It Works:**
+**Run-Start Flow:**
 
-1. Player selects an archetype at run start (simple UI: 5 icons, select 1, or "Custom" for Hybrid)
-2. This archetype is stored as a soft preference for the run
-3. When the 3 card TYPE options appear after each encounter, they are weighted toward the chosen archetype, but NOT exclusively
-4. Example: If "Aggressive" is chosen, the reward screen might show [Attack, Attack, Buff] most of the time, but occasionally show other types (Shield, Heal, Debuff) to avoid forced homogeneity
+1. Player selects an archetype (simple UI: 5 icons, select 1, or "Custom" for Hybrid)
+2. Player selects a starter relic from 3 fixed options (`StarterRelicSelection.svelte`) — see §6 Starter Relic Selection
+3. Dungeon map is generated and the run begins
+
+**How Archetype Bias Works:**
+
+1. Archetype is stored as a soft preference for the run
+2. When the 3 card TYPE options appear after each encounter, they are weighted toward the chosen archetype, but NOT exclusively
+3. Example: If "Aggressive" is chosen, the reward screen might show [Attack, Attack, Buff] most of the time, but occasionally show other types (Shield, Heal, Debuff) to avoid forced homogeneity
 
 **Why This Matters:**
 
@@ -1642,7 +1665,9 @@ Research: 94% of smartphone users hold vertically. 49% one-hand, 75% thumb-drive
 
 **Top 55% (Display):** Enemy sprite, enemy HP bar, enemy name header (color-coded by category). No interactives. Top-third tap accuracy: 61%. Phaser renders the enemy sprite and HP bars; Svelte overlay renders the enemy name header, intent panel, floor info, and bounty strip.
 
-**Bottom 45% (Interaction):** Card hand, answer buttons, hint, End Turn, player HP bar (at 88% Y), relic tray (at 92% Y, horizontal scroll), bounty strip (bottom-right, above End Turn). Bottom-third accuracy: 96%.
+**Bottom 45% (Interaction):** Card hand, answer buttons, hint, End Turn, player HP bar (at 88% Y), bounty strip (bottom-right, above End Turn). Bottom-third accuracy: 96%.
+
+**Right Edge:** Relic tray — vertical strip of 28px sprite icons with gold borders, positioned between the enemy intent area and the draw pile counter. Tap any icon for a tooltip. Icons pulse on activation. Falls back to emoji if sprite not found.
 
 ### Touch Targets
 
@@ -1725,7 +1750,7 @@ Combat and room exploration use a first-person viewpoint — the player characte
 - Upper ~55% of screen: first-person view of the room with the enemy/boss looming large, facing the player directly
 - Lower ~45%: card hand and interaction area (unchanged)
 - Enemy sprite sizes (Phaser): Common 200px, Elite 250px, Boss 300px. Enemy Y position at 35% of scene height.
-- Player HP bar at 88% Y, relic tray at 92% Y (both near bottom of display zone, above interaction area)
+- Player HP bar at 88% Y; relic tray on the right edge (vertical strip, between enemy intent panel and draw pile counter)
 - Boss encounters use even larger sprites with a dramatic zoom-in on room entry
 
 **Phaser vs Svelte rendering split:**
@@ -1930,7 +1955,7 @@ Quiz format (Tier 1): "What does '食べる' (たべる) mean in English?" with 
 
 Tier 2 reverse: "How do you say 'to eat' in Japanese?" Answers: [食べる / 飲む / 見る].
 
-### Kanji Subdeck (2,096 facts)
+### Kanji Subdeck (2,230 facts)
 
 Radical-based kanji learning with JLPT distribution:
 - **N5**: 79 facts
@@ -1943,7 +1968,7 @@ Quiz format (Tier 1): "What does the kanji '日' mean?" Answers: [sun/day / moon
 
 Includes mnemonic explanation (e.g., "日 (square shape) = sun in enclosed space"). Tier 2 reverse: "Write the kanji for 'sun'" (production mode).
 
-### Grammar Subdeck (644 facts)
+### Grammar Subdeck (2,701 facts)
 
 Grammatical patterns with 6 JLPT levels:
 - **N5**: 16 facts
@@ -2073,7 +2098,7 @@ Wrong answers are selected at runtime from the same-language vocabulary pool —
 
 ## 22. Language Learning Integration (Post-Launch)
 
-**Status:** Language domains are hidden from the Study Mode Selector at launch (`ENABLE_LANGUAGE_DOMAINS = false` in `balance.ts`). Language content (Japanese N3-N5, etc.) exists in the facts database but is not selectable until the feature flag is enabled post-launch. This allows focus on knowledge domains for initial launch quality.
+**Status:** Language domains are enabled (`ENABLE_LANGUAGE_DOMAINS = true` in `balance.ts`). Language content (Japanese N3-N5, etc.) is available in the domain picker alongside knowledge domains.
 
 Vocabulary cards require different UI and interaction patterns.
 
@@ -2313,7 +2338,7 @@ Two systems work together to ensure players don't see the same facts repeatedly 
 
 This preserves FSRS integrity (overdue cards are still strongly prioritized) while introducing enough randomness that the opening hand of each run feels fresh.
 
-**Recently-played deprioritization:** The last 2 runs' fact IDs are stored in localStorage. When building the domain portion of the run pool (~55% of total), facts seen in recent runs are deprioritized. Review cards (FSRS queue, ~45% of pool) are NOT affected — FSRS scheduling always takes priority for spaced repetition correctness.
+**Recently-played deprioritization:** The last 2 runs' fact IDs are stored in localStorage. When building the domain portion of the run pool (~30% primary domain + ~25% secondary domain = ~55% total domain), facts seen in recent runs are deprioritized. Review cards (FSRS queue, ~45% of pool) are NOT affected — FSRS scheduling always takes priority for spaced repetition correctness.
 
 ### Stratified Difficulty Sampling
 
@@ -3089,7 +3114,7 @@ data/playtests/
 | Tier | Evolution stage: 1 (Learning), 2a (Recall), 2b (Deep Recall), 3 (Mastered/Passive) |
 | Domain | Subject category (Science, History, etc.). Content label only. Does NOT determine card type. |
 | Run | Single playthrough: enter dungeon, delve through floors, retreat or die |
-| Floor | One dungeon depth containing 3 encounters + optional events |
+| Floor | One depth level within an act segment. Floors are derived from map row position, not separate encounter sets |
 | Segment | Group of 6 floors ending in boss + retreat-or-delve checkpoint |
 | Encounter | Single combat: player plays cards vs one enemy |
 | Hand | 5 cards drawn from draw pile for current turn |

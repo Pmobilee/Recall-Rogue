@@ -181,10 +181,22 @@ function randomCardTypeDifferentFrom(type: CardType): CardType {
   return candidates[Math.floor(Math.random() * candidates.length)];
 }
 
-function transmuteRandomHandCard(turnState: TurnState): void {
+function transmuteWeakestHandCard(turnState: TurnState): void {
   const { hand } = turnState.deck;
   if (hand.length === 0) return;
-  const targetIndex = Math.floor(Math.random() * hand.length);
+
+  // Find the weakest card (lowest baseEffectValue) — always improve the worst card
+  let weakestIndex = 0;
+  let weakestValue = Infinity;
+  for (let i = 0; i < hand.length; i++) {
+    const val = hand[i].baseEffectValue ?? 0;
+    if (val < weakestValue) {
+      weakestValue = val;
+      weakestIndex = i;
+    }
+  }
+
+  const targetIndex = weakestIndex;
   const target = hand[targetIndex];
   const newType = randomCardTypeDifferentFrom(target.cardType);
   const mechanicPool = MECHANICS_BY_TYPE[newType];
@@ -590,7 +602,7 @@ export function playCardAction(
   if (effect.applyOverclock) turnState.overclockReady = true;
   if (effect.applySlow) turnState.slowEnemyIntent = true;
   if (effect.applyForesight) turnState.foresightTurnsRemaining = 2;
-  if (effect.applyTransmute) transmuteRandomHandCard(turnState);
+  if (effect.applyTransmute) transmuteWeakestHandCard(turnState);
 
   // cleanse: remove all debuff-type status effects from player
   if (effect.applyCleanse) {

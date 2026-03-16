@@ -158,7 +158,7 @@
         definitionId: id,
         name: def?.name ?? id,
         description: def?.description ?? '',
-        initial: (def?.name ?? id).charAt(0),
+        icon: def?.icon ?? '?',
       };
     })
   )

@@ -133,7 +133,8 @@ export type GameFlowState =
   | 'relicSanctum'
   | 'runEnd'
   | 'upgradeSelection'
-  | 'postMiniBossRest';
+  | 'postMiniBossRest'
+  | 'starterRelicSelection';
 
 export const gameFlowState = writable<GameFlowState>('idle');
 export { activeRunState };
@@ -649,6 +650,31 @@ export function onArchetypeSelected(archetype: RewardArchetype): void {
     activateDeterministicRandom(run.runSeed);
   }
   pendingDomainSelection = null;
+  gameFlowState.set('starterRelicSelection');
+  currentScreen.set('starterRelicSelection');
+}
+
+/**
+ * Called when the player selects a starter relic.
+ * Adds the relic to the run, then transitions to the dungeon map.
+ */
+export function onStarterRelicSelected(relicId: string): void {
+  const run = get(activeRunState);
+  if (!run) return;
+
+  // Add starter relic to the run (with safety check for duplicates)
+  const alreadyHeld = run.runRelics.some(r => r.definitionId === relicId);
+  if (!alreadyHeld) {
+    run.runRelics.push({
+      definitionId: relicId,
+      acquiredAtFloor: 0,
+      acquiredAtEncounter: 0,
+      triggerCount: 0,
+    });
+    run.offeredRelicIds.add(relicId);
+  }
+
+  activeRunState.set(run);
   gameFlowState.set('dungeonMap');
   currentScreen.set('dungeonMap');
 }
@@ -818,6 +844,8 @@ function buildRelicPool(): RelicDefinition[] {
 function addRelicToRun(relic: RelicDefinition): void {
   const run = get(activeRunState)
   if (!run) return
+  const alreadyHeld = run.runRelics.some(r => r.definitionId === relic.id)
+  if (alreadyHeld) return // Prevent duplicate relics
   run.runRelics.push({
     definitionId: relic.id,
     acquiredAtFloor: run.floor.currentFloor,

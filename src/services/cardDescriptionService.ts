@@ -94,7 +94,7 @@ export function getDetailedCardDescription(card: Card): string {
     case 'quicken':
       return `Gain +1 AP this turn.` + apSuffix;
     case 'double_strike':
-      return `Next attack hits twice at full power (${power}% each).` + apSuffix;
+      return `Next ATTACK card hits twice at full power (${power}% each).` + apSuffix;
 
     // Debuff mechanics
     case 'weaken':
@@ -116,9 +116,9 @@ export function getDetailedCardDescription(card: Card): string {
     case 'recycle':
       return `Draw 3 cards.` + apSuffix;
     case 'foresight':
-      return `Reveal the next ${power} enemy intents. Draw 1 card.` + apSuffix;
+      return `Draw ${power} cards.` + apSuffix;
     case 'transmute':
-      return `Transform a random card in your hand to a new type.` + apSuffix;
+      return `Transform your weakest hand card into a different type.` + apSuffix;
 
     // Wild mechanics
     case 'mirror':
@@ -194,7 +194,7 @@ export function getShortCardDescription(card: Card): string {
     case 'hex': return `${power} poison ×${secondary ?? 3}`;
     case 'scout': return `Draw ${power}`;
     case 'recycle': return 'Draw 3 cards';
-    case 'foresight': return `See ${power} intents`;
+    case 'foresight': return `Draw ${power}`;
     case 'transmute': return 'Transform card';
     case 'mirror': return 'Copy last';
     case 'adapt': return 'Adapt effect';
@@ -305,7 +305,7 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState): 
     case 'focus':
       return [txt('Next card costs '), num(1), txt(' less AP')];
     case 'double_strike':
-      return [txt('Next attack hits twice at full power')];
+      return [txt('Next ATTACK card hits twice at full power')];
 
     // Debuffs
     case 'weaken':
@@ -325,9 +325,9 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState): 
     case 'recycle':
       return [txt('Draw '), num(3), txt(' cards')];
     case 'foresight':
-      return [txt('Reveal next '), num(power), txt(' intents. Draw 1')];
+      return [txt('Draw '), num(power), txt(' cards')];
     case 'transmute':
-      return [txt('Transform a random hand card')];
+      return [txt('Transform your weakest hand card')];
     case 'cleanse':
       return [txt('Remove all debuffs. Draw 1')];
     case 'immunity':
