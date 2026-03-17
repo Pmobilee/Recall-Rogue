@@ -310,67 +310,82 @@ export default class BootAnimScene extends Phaser.Scene {
   // Ring 1 drifts most, ring 3 least — arching flight path.
 
   private playPartTwo(cx: number, cy: number): void {
-    const s = this.coverScale
+    const viewW = this.scale.width
+    const viewH = this.scale.height
 
-    // Make camera transparent so blurred hub shows through ring holes
+    // Cave rings are 1536×1536 SQUARE with vignette edges fading to black
+    const rs = Math.max(viewW / 1536, viewH / 1536)
+
     this.cameras.main.setBackgroundColor('rgba(0,0,0,0)')
 
-    // ALL 3 rings placed simultaneously at different scales, ALL growing.
-    // You see ring 2 growing inside ring 1's hole, ring 3 inside ring 2's.
-    // Each ring does ONE continuous scale-up tween (small → huge), staggered.
-    // As ring 1 zooms past, ring 2 fills the screen. Then ring 2 zooms past,
-    // ring 3 fills. Creates the tunnel fly-through feel.
+    // ═══ L-SHAPED DIVE: zoom INTO each ring's center ═══
+    //
+    // All 3 rings start small (in the distance), all growing simultaneously.
+    // We zoom INTO ring 1's hole — as it grows past us, ring 2 (which was
+    // a tiny speck inside ring 1's hole) is now filling the screen. Same
+    // for ring 3. The vignette hides PNG edges seamlessly.
+    //
+    // L-shape: ring 1 drifts up strongly (steep dive), ring 2 less,
+    // ring 3 barely moves (leveled out). Each ring also has slight
+    // position offsets so holes don't perfectly overlap = visible depth.
 
-    const endScale = s * 4  // everything ends enormous (way past camera)
-    const dur = 2800         // total animation time per ring
+    const endScale = rs * 5
+    const dur = 2400
 
-    // Ring 1 (front): starts at cover size, already filling screen
-    const ring1 = this.add.image(cx, cy + 120, 'boot_cave_ring_1')
-      .setScale(s * 1.0).setDepth(12).setAlpha(0)
+    // Ring 1: starts medium-small, we zoom into it
+    // Positioned below center (we're looking down at the entrance)
+    const ring1 = this.add.image(cx, cy + 100, 'boot_cave_ring_1')
+      .setScale(rs * 0.6).setDepth(12).setAlpha(0)
     this.sceneSprites.push(ring1)
 
-    // Ring 2 (middle): starts small, visible through ring 1's hole
-    const ring2 = this.add.image(cx, cy + 80, 'boot_cave_ring_2')
-      .setScale(s * 0.4).setDepth(11).setAlpha(1)
+    // Ring 2: starts tiny inside ring 1's hole
+    const ring2 = this.add.image(cx + 15, cy + 60, 'boot_cave_ring_2')
+      .setScale(rs * 0.18).setDepth(11).setAlpha(0.9)
     this.sceneSprites.push(ring2)
 
-    // Ring 3 (back): starts tiny, visible through ring 2's hole
-    const ring3 = this.add.image(cx, cy + 50, 'boot_cave_ring_3')
-      .setScale(s * 0.15).setDepth(10).setAlpha(1)
+    // Ring 3: starts as a speck inside ring 2's hole
+    const ring3 = this.add.image(cx - 10, cy + 30, 'boot_cave_ring_3')
+      .setScale(rs * 0.06).setDepth(10).setAlpha(0.8)
     this.sceneSprites.push(ring3)
 
-    // Ring 1 fades in then scales to huge
-    this.tweens.add({
-      targets: ring1, alpha: 1, duration: 400, ease: 'Sine.easeOut',
-    })
+    // ── Ring 1: fade in + STEEP DIVE (strong upward drift) ──
+    this.tweens.add({ targets: ring1, alpha: 1, duration: 300, ease: 'Sine.easeOut' })
     this.tweens.add({
       targets: ring1,
       scaleX: endScale, scaleY: endScale,
-      y: cy - 180,
-      duration: dur, ease: 'Quad.easeIn',
+      x: cx - 30,
+      y: cy - 300,   // steep dive — massive upward pan
+      duration: dur,
+      ease: 'Cubic.easeIn',
       onComplete: () => { if (ring1.active) ring1.destroy() },
     })
 
-    // Ring 2 scales continuously (starts 400ms later)
-    this.time.delayedCall(400, () => {
+    // ── Ring 2: very tight follow-up ──
+    this.time.delayedCall(100, () => {
       this.tweens.add({
         targets: ring2,
         scaleX: endScale, scaleY: endScale,
-        y: cy - 140, angle: 1.5,
-        duration: dur, ease: 'Quad.easeIn',
+        x: cx - 15,
+        y: cy - 150,   // moderate drift — curving out of the dive
+        angle: 2,
+        duration: dur,
+        ease: 'Cubic.easeIn',
         onComplete: () => { if (ring2.active) ring2.destroy() },
       })
     })
 
-    // Ring 3 scales continuously (starts 800ms later) + deblur
-    this.time.delayedCall(800, () => {
+    // ── Ring 3: practically immediate — tight chain ──
+    this.time.delayedCall(200, () => {
       this.game.events.emit('boot-anim-deblur')
 
       this.tweens.add({
         targets: ring3,
         scaleX: endScale, scaleY: endScale,
-        y: cy - 100, angle: -1.5,
-        duration: dur + 200, ease: 'Quad.easeIn',
+        x: cx,
+        y: cy - 30,    // almost stationary — stabilized flight
+        angle: -1,
+        duration: dur + 600,
+        ease: 'Cubic.easeIn',
         onComplete: () => {
           if (ring3.active) ring3.destroy()
           this.complete()

@@ -21,6 +21,7 @@ const SRC_DIR = join(ROOT, 'data/generated/boot_anim');
 const OUT_DIR = join(ROOT, 'public/assets/boot');
 
 const OUTPUT_WIDTH = 1024;
+const CAVE_RING_SIZE = 1536;
 
 // --- Helpers ---
 
@@ -91,17 +92,44 @@ async function processLogoLayer(srcFilename, outBasename) {
 }
 
 /**
+ * Create a radial vignette overlay: transparent center → black edges.
+ * Returns a Buffer of a PNG with radial gradient alpha.
+ */
+async function createVignetteMask(size) {
+  // SVG radial gradient: transparent center, black edges
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}">
+    <defs>
+      <radialGradient id="v" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="black" stop-opacity="0"/>
+        <stop offset="55%" stop-color="black" stop-opacity="0"/>
+        <stop offset="80%" stop-color="black" stop-opacity="0.7"/>
+        <stop offset="95%" stop-color="black" stop-opacity="1"/>
+        <stop offset="100%" stop-color="black" stop-opacity="1"/>
+      </radialGradient>
+    </defs>
+    <rect width="${size}" height="${size}" fill="url(#v)"/>
+  </svg>`;
+  return Buffer.from(svg);
+}
+
+/**
  * Process a cave ring image:
- * - Resize to 512px wide
+ * - Resize to 1536×1536 (square)
+ * - Apply radial vignette (edges fade to black, center stays clear)
  * - Save as cave_ring_N.png (no # in name)
- * - No blur variants
  */
 async function processCaveRing(srcFilename, outBasename) {
   const srcPath = join(SRC_DIR, srcFilename);
   const outPath = join(OUT_DIR, outBasename);
 
+  const vignetteSvg = await createVignetteMask(CAVE_RING_SIZE);
+
   await sharp(srcPath)
-    .resize({ width: OUTPUT_WIDTH })
+    .resize(CAVE_RING_SIZE, CAVE_RING_SIZE, { fit: 'cover' })
+    .composite([{
+      input: vignetteSvg,
+      blend: 'over',
+    }])
     .png()
     .toFile(outPath);
   await reportOutput(outPath);
@@ -123,7 +151,7 @@ async function main() {
   await processLogoLayer('recallrogue.png', 'recallrogue.png');
   await processLogoLayer('bramblegategames.png', 'bramblegategames.png');
 
-  // Cave rings (1536×2752 → 1024×1835, # removed from name)
+  // Cave rings (4096×4096 → 1536×1536, # removed from name)
   console.log('\nCave rings:');
   await processCaveRing('cave_ring_#1.png', 'cave_ring_1.png');
   await processCaveRing('cave_ring_#2.png', 'cave_ring_2.png');

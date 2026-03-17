@@ -800,8 +800,6 @@
   function updateLayoutScale(): void {
     const container = document.querySelector('.card-app') as HTMLElement | null
     if (!container) return
-    const w = container.clientWidth || window.innerWidth
-    const h = window.innerHeight
 
     const mode = get(layoutMode)
     let scale: number
@@ -809,12 +807,17 @@
     let scaleY: number
 
     if (mode === 'landscape') {
-      // Landscape: fit 1280×720 design canvas into viewport — uniform scale limited by both axes
-      scaleX = w / 1280
-      scaleY = h / 720
+      // Landscape: always use the real viewport dimensions, NOT .card-app clientWidth.
+      // .card-app has a portrait-aspect-ratio CSS width constraint (~603px at 1920×1080)
+      // which would give a bogus scale of ~0.47 instead of the correct ~1.5.
+      const vw = window.innerWidth
+      const vh = window.innerHeight
+      scaleX = vw / 1280
+      scaleY = vh / 720
       scale = Math.min(scaleX, scaleY)
     } else {
-      // Portrait: existing behaviour — scale from 390px base (clamped for safety)
+      // Portrait: existing behaviour — scale from 390px base using .card-app clientWidth
+      const w = container.clientWidth || window.innerWidth
       scale = Math.max(0.8, Math.min(1.4, w / BASE_WIDTH))
       scaleX = scale
       scaleY = scale
@@ -878,7 +881,7 @@
 <div class:hidden-during-boot={showBootAnimation}>
   <FireflyBackground />
 </div>
-<div class="card-app" class:boot-bg-black={showBootAnimation && !hubShowBlurred} class:boot-bg-clear={hubShowBlurred && showBootAnimation} data-screen={$currentScreen}>
+<div class="card-app" class:boot-bg-black={showBootAnimation && !hubShowBlurred} class:boot-bg-clear={hubShowBlurred && showBootAnimation} data-screen={$currentScreen} data-layout={$layoutMode}>
   <div
     id="phaser-container"
     class="phaser-container"
@@ -1353,6 +1356,22 @@
     width: min(100vw, calc(100vh * 571 / 1024)); /* GAME_ASPECT_RATIO: 9/16 ≈ 0.5625, legacy: 571/1024 ≈ 0.5576 */
     background: #0d1117;
     overflow: hidden;
+  }
+
+  /* Landscape: expand .card-app to fill the full viewport — remove portrait column constraints.
+     All landscape screens use position:fixed so they already escape any parent, but this ensures
+     the container background, Phaser canvas, and non-fixed children span the full viewport. */
+  .card-app[data-layout="landscape"] {
+    left: 0;
+    transform: none;
+    width: 100vw;
+    overflow: visible;
+  }
+
+  /* Suppress the portrait-mode side-curtain gradients in landscape — they would overlay the hub. */
+  .card-app[data-layout="landscape"]::before,
+  .card-app[data-layout="landscape"]::after {
+    display: none !important;
   }
 
   @media (min-width: 450px) {
