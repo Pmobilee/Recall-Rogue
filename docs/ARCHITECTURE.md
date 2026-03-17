@@ -146,8 +146,8 @@ Located in `src/services/`:
 | Push notifications | `notificationService.ts` | Built — 4 types, local scheduling via Capacitor |
 | Funness boost | `funnessBoost.ts` | Built — new player bias toward higher-funScore facts (runs 0–99, linear decay) |
 | Surge system | `surgeSystem.ts` | Built (v2) — Surge turn timing (turns 2, 5, 8, …), state flags, Surge multiplier application |
-| Chain system | `chainSystem.ts` | Built (v2) — Knowledge Chain tracking, categoryL2 sequence, chain multiplier calculation |
-| Chain visuals | `chainVisuals.ts` | Built (v2) — categoryL2 → 12-color mapping, chain counter display state |
+| Chain system | `chainSystem.ts` | Built (AR-70) — Knowledge Chain tracking, chainType (0-5) sequence, chain multiplier calculation |
+| Chain visuals | `chainVisuals.ts` | Built (AR-70) — chainType (0-5) → 6-color palette mapping via `chainTypes.ts`; chain counter display state |
 | Boss quiz phase | `bossQuizPhase.ts` | Built (v2) — Boss quiz phase logic, sequential question flow, pass/fail thresholds |
 | Discovery system | `discoverySystem.ts` | Built (v2) — Free First Charge tracking: `isFirstChargeFree()`, `markFirstChargeUsed()`, `getFirstChargeWrongMultiplier()`. Pure functions, no side effects. |
 | Save migration | `saveMigration.ts` | Built (v2) — V1→V2 relic migration via `migrateRelicsV1toV2(save)`; `V1_TO_V2_RELIC_MAP` authoritative table |
@@ -164,6 +164,7 @@ Located in `src/data/`:
 - Enemy definitions — `src/data/enemies.ts`. `EnemyInstance` interface includes `floor: number`, `difficultyVariance` (0.8–1.2x HP/damage variance), `enrageBonusDamage` (cumulative bonus added to attack damage), and `playerChargedThisTurn` (reset each enemy turn for `onPlayerNoCharge` detection). `EnemyTemplate` includes `rarity`, `spawnWeight`, `animArchetype` (8 animation types), and v2 quiz-reactive callbacks: `onPlayerChargeWrong`, `onPlayerChargeCorrect`, `onPlayerNoCharge`, `onEnemyTurnStart`. Passive flags: `quickPlayImmune` (Quick Play deals 0 damage), `chainMultiplierOverride` (caps chain multiplier). Boss templates include `quizPhases: QuizPhaseConfig[]` (hpThreshold, questionCount, timerSeconds, rapidFire). Exports `ACT_ENEMY_POOLS` (3-act pool structure) and `getEnemiesForNode(act, nodeType)` for map node enemy selection.
 - Enemy animations — `src/data/enemyAnimations.ts` — Animation archetype configs (8 types). Defines `AnimConfig` interface with tween parameters and `getAnimConfig(archetype)` resolver. Pure data, no Phaser/Svelte imports.
 - Card type mappings — `src/data/card-types.ts`
+- Chain type definitions — `src/data/chainTypes.ts` — AR-70: `CHAIN_TYPES` array with 6 entries (Obsidian, Crimson, Azure, Amber, Violet, Jade), each with `index`, `name`, `hexColor`, `glowColor`. Exports `getChainTypeName(index)`, `getChainTypeColor(index)`, `getChainTypeGlowColor(index)`.
 
 ## 3. Retained Systems
 
@@ -202,8 +203,8 @@ These systems transfer from the mining codebase with minimal changes:
 | Game flow controller | `src/services/gameFlowController.ts` | Built (v2) — 3-act run flow; no retreat-or-delve branch; no archetype selection; no starter relic selection; routes directly to dungeonMap at run start |
 | Encounter bridge | `src/services/encounterBridge.ts` | Built (v2) — Fixed 10-card starter deck; categoryL2 concentration (5–8 categories); removed archetype-based pool building; v2 Echo handling; post-encounter healing |
 | Surge system | `src/services/surgeSystem.ts` | Built (v2) — Surge turn timing (turns 2, 5, 8, …); `isSurgeTurn(turnNumber)`, `getSurgeMultiplier()`. Surge doubles all Charge multipliers; visually signaled one turn in advance |
-| Chain system | `src/services/chainSystem.ts` | Built (v2) — Per-turn categoryL2 tracking; `advanceChain(categoryL2, current)`, `getChainMultiplier(chainLength)`. Chain resets on categoryL2 change |
-| Chain visuals | `src/services/chainVisuals.ts` | Built (v2) — `getCategoryColor(categoryL2)` maps 12 categories to distinct colors; chain counter display state |
+| Chain system | `src/services/chainSystem.ts` | Built (AR-70) — Per-turn chainType tracking; `extendOrResetChain(chainType, override?)`, `getChainMultiplier(length)`, `getChainState()`. Chain resets on chainType change |
+| Chain visuals | `src/services/chainVisuals.ts` | Built (AR-70) — `getChainColor(chainType)` and `getChainGlowColor(chainType)` map chainType 0-5 to 6-color palette from `chainTypes.ts`; `getChainColorGroups(cards)` groups cards by shared chainType |
 | Boss quiz phase | `src/services/bossQuizPhase.ts` | Built (v2) — Sequential boss quiz questions; `startBossQuizPhase(config)`, pass/fail threshold tracking; integrates with bossQuizPhase QuizPhaseConfig on enemy templates |
 | Discovery system | `src/services/discoverySystem.ts` | Built (v2) — Free First Charge: `isFirstChargeFree(factId, freeChargeIds)`, `markFirstChargeUsed(factId, freeChargeIds)`, `getFirstChargeWrongMultiplier()`. Pure functions, no side effects |
 | Save migration | `src/services/saveMigration.ts` | Built (v2) — `migrateRelicsV1toV2(save)` walks all 50 v1 relic IDs and applies preserve/rename/auto_unlock/refund/drop actions per `V1_TO_V2_RELIC_MAP` |
@@ -269,8 +270,25 @@ These systems transfer from the mining codebase with minimal changes:
 | Camp sprites | `public/assets/camp/sprites/{name}/{name}-base.png` | 11 sprites + background |
 | Firefly background | `src/ui/components/FireflyBackground.svelte` | Built |
 | Game frame (responsive) | `src/CardApp.svelte` (`.card-app` CSS) | Built |
+| Layout mode store | `src/stores/layoutStore.ts` | AR-71 — NEW |
+| Layout constants (landscape) | `src/data/layout.ts` | AR-71 — extended |
+| Input service (pub/sub) | `src/services/inputService.ts` | AR-74 — NEW |
+| Keyboard input module | `src/services/keyboardInput.ts` | AR-74 — NEW |
+| Keyboard shortcut help overlay | `src/ui/components/KeyboardShortcutHelp.svelte` | AR-74 — UPDATED |
 
 **Global CSS variable `--gw`** (`src/app.css`): `min(100vw, 430px)` — represents the game viewport width. Used by HubScreen sprites instead of `vw` units to ensure proper sizing within the phone frame on desktop.
+
+**AR-71 CSS variables** (set on `:root` by `CardApp.svelte`):
+- `--layout-scale` — uniform scale factor (portrait: `viewportWidth/390`, landscape: `min(vw/1280, vh/720)`)
+- `--layout-scale-x` — horizontal scale (same as `--layout-scale` in portrait)
+- `--layout-scale-y` — vertical scale (same as `--layout-scale` in portrait)
+- `--layout-mode` — `"portrait"` or `"landscape"` string value
+
+**AR-71 HTML attribute**: `.card-app[data-layout="portrait|landscape"]` — set on root container for CSS selector branching.
+
+**AR-71 Phaser integration**: `CardGameManager` subscribes to `layoutMode` store and calls `game.scale.resize()` + notifies scenes via `handleLayoutChange(mode)` on change. `CombatScene`, `BootAnimScene`, and `RewardRoomScene` each have a stub `handleLayoutChange` method (full implementation in AR-73/AR-79).
+
+**AR-74 Input system**: `inputService` (singleton pub/sub) decouples input sources from UI. `keyboardInput` module auto-subscribes to `layoutMode` and only binds `keydown` listeners in landscape. Components register `inputService.on(actionType, handler)` in `onMount` and call the returned unsubscribe in `onDestroy`. `CardCombatOverlay` calls `setQuizVisible()` on `cardPlayStage` change to enable context-aware key routing (1-4 = quiz answers when quiz visible, card select otherwise). `CardHand` subscribes to `SELECT_CARD` and `DESELECT`. Mouse hover tooltip in `CardHand` is gated by `$isLandscape`.
 
 ### Implemented (P0.5 — Mastery Tiers)
 
@@ -463,11 +481,11 @@ Combat Loop (per encounter, v2):
   1. Draw 5 cards from draw pile (Tier 3 extracted as passives)
   2. Player taps card → chooses Quick Play OR Charge:
      Quick Play: card resolves at base power immediately (no quiz, no AP surcharge)
-                 Chain resets if categoryL2 changes
+                 Chain resets if chainType changes
      Charge:     +1 AP surcharge (0 if first Charge of this fact this run — Free First Charge)
                  Quiz panel slides in (3 answer options)
                  Correct → card resolves at Charge multiplier × chain multiplier × (Surge ×2 if Surge turn)
-                           Chain advances if categoryL2 matches
+                           Chain advances if chainType matches (0-5)
                  Wrong   → card resolves at 0.7× base (partial effect); chain resets; no fizzle
   3. SM-2 update via encounterBridge (both Charge outcomes; Quick Play does not update SM-2)
   4. Enemy turn → telegraphed attack executes
@@ -580,14 +598,14 @@ src/
     discoverySystem.ts     — V2 Free First Charge: `isFirstChargeFree(factId, freeChargeIds)`, `markFirstChargeUsed(factId, freeChargeIds)`, `getFirstChargeWrongMultiplier()`. Pure functions with no side effects. First Charge of any fact in a run is free (0 AP surcharge, 1.0× wrong multiplier).
     gameFlowController.ts  — Screen routing + run lifecycle. V2: 3-act flow; no retreat-or-delve; no archetype selection; no starter relic selection; routes directly to 'dungeonMap' at run start.
     surgeSystem.ts         — V2 Surge turn timing: turns 2, 5, 8, … (every 3rd starting from turn 2). `isSurgeTurn(n)`, `getSurgeMultiplier()`. Surge doubles all Charge multipliers. Visually signaled one turn in advance.
-    chainSystem.ts         — V2 Knowledge Chain tracking: per-turn categoryL2 sequence. `advanceChain(categoryL2, current)`, `getChainMultiplier(chainLength)`. Chain resets on categoryL2 change; multiplier caps at configured max.
-    chainVisuals.ts        — V2 chain color mapping: `getCategoryColor(categoryL2)` → 12 distinct colors. Drives chain counter color in combat HUD.
+    chainSystem.ts         — AR-70 Knowledge Chain tracking: per-turn chainType (0-5) sequence. `extendOrResetChain(chainType, override?)`, `getChainMultiplier(length)`, `getChainState()`. Chain resets on chainType change; multiplier caps at configured max.
+    chainVisuals.ts        — AR-70 chain color mapping: `getChainColor(chainType)` / `getChainGlowColor(chainType)` → 6-color palette from `chainTypes.ts`. `getChainColorGroups(cards)` → Map<chainType, cardId[]> for in-hand pulse grouping.
     bossQuizPhase.ts       — V2 boss quiz phase: sequential questions during boss HP threshold events. `startBossQuizPhase(config, callbacks)`. Configures question count, timer, pass/fail thresholds from `QuizPhaseConfig` on enemy template.
     saveMigration.ts       — V2 relic migration: `migrateRelicsV1toV2(save)` maps all 50 v1 relic IDs via `V1_TO_V2_RELIC_MAP` (preserve/rename/auto_unlock/refund/drop actions).
     turnManager.ts         — V2 turn-based encounter logic. Quick Play / Charge branching; Surge integration via surgeSystem; per-turn chain tracking via chainSystem; free first Charge via discoverySystem (0 AP surcharge, 1.0× wrong multiplier on first Charge per fact per run). Removed combo accumulator, speed bonus, full fizzle paths. `PlayCardResult.usedFreeCharge: boolean` reports free Charge consumption.
-    deckManager.ts         — Draw/discard/shuffle/exhaust
+    deckManager.ts         — Draw/discard/shuffle/exhaust. AR-70: facts are bound to card slots at run start (not re-randomized per draw). `buildRunPool()` assigns each fact a `chainType` (0-5) via `index % 6` for even distribution; the same fact stays with its card slot for the entire run, enabling strategic chain planning.
     cardFactory.ts         — Creates Card from Fact + ReviewState
-    runPoolBuilder.ts      — Builds 120-fact run pool (30/25/45 split) with subcategory balancing (max 35% per subcategory within a domain)
+    runPoolBuilder.ts      — Builds 120-fact run pool (30/25/45 split) with subcategory balancing (max 35% per subcategory within a domain). Fact-to-slot binding happens here (AR-70).
     enemyManager.ts        — Creates enemies, floor scaling, intent rolling, block/damage resolution. Exports `getFloorDamageScaling(floor)` (+3%/floor above 6). Applies per-turn damage caps via `ENEMY_TURN_DAMAGE_CAP` and `getSegmentForFloor()`. Implements charge mechanic: `isCharging` flag, `chargedDamage` storage, `bypassDamageCap` intent flag for automatic deferred attacks. `dispatchEnemyTurnStart(enemy, turnNumber)` fires `onEnemyTurnStart` callbacks (Venomfang enrage). `executeEnemyIntent` applies `enrageBonusDamage` to attack/multi_attack intents.
     floorManager.ts        — Floor/room/boss/mini-boss generation
     mapGenerator.ts        — Act map generation: ActMap/MapNode types, generateActMap() (seed-deterministic, 15 rows, 3-5 nodes/row, non-crossing edges), selectMapNode(), reachability helpers

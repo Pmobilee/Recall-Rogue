@@ -1,0 +1,23 @@
+LANDSCAPE COMBAT BACKGROUND SPEC — Segment 3: The Abyss
+========================================================
+
+Dimensions:   1920 × 1080 px
+Format:       WebP (lossy, quality 85)
+Count needed: 5
+Naming:       the-abyss-01_landscape.webp through the-abyss-05_landscape.webp
+
+Art Direction:
+  Biome: The Abyss — an impossibly deep chasm, reality begins to warp
+  Palette: Deep blacks, blood reds, sickly magentas, void purples
+  Mood: Oppressive, reality-bending, existential dread
+  Key elements: Endless vertical drops, warped stone geometry, eldritch
+                light sources that make no physical sense, floating debris,
+                corrupted rock formations, faint screaming faces in walls
+  Horizon: Wide horizontal composition — enemy platform on right third,
+           player card zone on left third, open middle for combat actions
+  Pixel art style: Heavy use of negative space and darkness, horror undertones
+  Reference vibe: Late-game Slay the Spire, eldritch horror dungeons
+
+Fallback:
+  Portrait variants live at: /assets/backgrounds/combat/segment3/the-abyss-0N.webp
+  Loader checks _landscape suffix first, falls back to portrait if missing.

@@ -1,0 +1,33 @@
+HUB SIDE PANEL SPEC
+===================
+
+Dimensions:   565 × 1080 px  (each panel)
+Format:       WebP (lossy, quality 85)
+Count needed: 2 (left panel + right panel)
+Naming:       side-panel-left.webp
+              side-panel-right.webp
+
+Art Direction:
+  Theme: Dark cave/stone — matches the camp/hub aesthetic
+  Left panel:  Dark gradient (#1a1a2e → #0f0f23, top-to-bottom) with subtle
+               rocky cave wall texture on the right edge (facing inward).
+               Stone columns or stalactites visible at edge.
+               Faint torch glow at top suggesting the camp fire beyond.
+  Right panel: Mirror image composition — cave wall texture on left edge.
+               May include hanging chains, dungeon lanterns, or relic displays
+               along the wall to fill visual interest.
+  Both panels: Subtle noise/grain texture overlay (10-15% opacity) for
+               pixel art feel. No hard horizontal features that would look
+               bad when cropped at different aspect ratios.
+
+Usage in Layout:
+  These panels flank the central HubScreen content in landscape mode.
+  The center content area is ~790px wide (1920 - 565 - 565 = 790).
+  Panels must tile cleanly with the central hub background (camp-background.jpg).
+  Left edge of left panel and right edge of right panel should be dark/opaque
+  (they meet the viewport edge).
+
+Placement:
+  Left panel:  x=0, y=0, width=565, height=1080
+  Right panel: x=1355, y=0, width=565, height=1080
+  (1920 - 565 = 1355 for right panel x-position)

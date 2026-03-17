@@ -7,10 +7,13 @@ import BootAnimScene from './scenes/BootAnimScene'
 import { BootScene } from './scenes/BootScene'
 import { CombatScene } from './scenes/CombatScene'
 import { RewardRoomScene } from './scenes/RewardRoomScene'
+import { layoutMode, getCanvasForMode } from '../stores/layoutStore'
+import type { LayoutMode } from '../stores/layoutStore'
 
 export class CardGameManager {
   private static instance: CardGameManager | null = null
   private game: Phaser.Game | null = null
+  private unsubLayoutMode: (() => void) | null = null
 
   static getInstance(): CardGameManager {
     if (!CardGameManager.instance) {
@@ -27,6 +30,7 @@ export class CardGameManager {
     const reg = globalThis as Record<symbol, unknown>
     reg[Symbol.for('terra:cardGameManager')] = this
 
+    // Boot always starts in portrait mode — landscape resize happens via subscription below
     this.game = new Phaser.Game({
       type: Phaser.AUTO,
       parent: 'phaser-container',
@@ -50,6 +54,29 @@ export class CardGameManager {
       // Transparent during boot animation so HubScreen renders behind Phaser canvas
       transparent: startAnimation,
     })
+
+    // Subscribe to layout mode changes — resize Phaser canvas and notify scenes
+    this.unsubLayoutMode = layoutMode.subscribe((mode) => {
+      this.handleLayoutChange(mode)
+    })
+  }
+
+  /**
+   * Resize the Phaser canvas to match the new layout mode and notify all active scenes.
+   * Called automatically when layoutMode store changes.
+   */
+  private handleLayoutChange(mode: LayoutMode): void {
+    if (!this.game) return
+    const canvas = getCanvasForMode(mode)
+    this.game.scale.resize(canvas.width, canvas.height)
+
+    // Notify active scenes — each scene may implement handleLayoutChange(mode)
+    const activeScenes = this.game.scene.getScenes(true) as Array<Phaser.Scene & { handleLayoutChange?: (m: LayoutMode) => void }>
+    for (const scene of activeScenes) {
+      if (typeof scene.handleLayoutChange === 'function') {
+        scene.handleLayoutChange(mode)
+      }
+    }
   }
 
   /** Get the Phaser Game instance for event listening. */
@@ -118,6 +145,8 @@ export class CardGameManager {
 
   /** Destroy the Phaser game instance. */
   destroy(): void {
+    this.unsubLayoutMode?.()
+    this.unsubLayoutMode = null
     this.game?.destroy(true)
     this.game = null
     CardGameManager.instance = null

@@ -1,5 +1,6 @@
 import Phaser from 'phaser'
 import { BASE_WIDTH } from '../../data/layout'
+import type { LayoutMode } from '../../stores/layoutStore'
 import type { Card } from '../../data/card-types'
 import type { RelicDefinition } from '../../data/relics/types'
 
@@ -91,9 +92,19 @@ export class RewardRoomScene extends Phaser.Scene {
   private goldTiers: GoldTierEntry[] = []
   private continueButton!: Phaser.GameObjects.Container
   private sf = 1
+  private currentLayoutMode: LayoutMode = 'portrait'
 
   constructor() {
     super({ key: 'RewardRoom' })
+  }
+
+  /**
+   * Called by CardGameManager when the layout mode changes (portrait ↔ landscape).
+   * Actual landscape adaptation is implemented in AR-73.
+   * This stub stores the mode for future use.
+   */
+  handleLayoutChange(mode: LayoutMode): void {
+    this.currentLayoutMode = mode
   }
 
   // ─── Preload ────────────────────────────────────────────────────────────────

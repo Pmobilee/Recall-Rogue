@@ -1,0 +1,28 @@
+LANDSCAPE COMBAT BACKGROUND SPEC — Boss Arena
+==============================================
+
+Dimensions:   1920 × 1080 px
+Format:       WebP (lossy, quality 85)
+Count needed: 5
+Naming:       boss-arena-01_landscape.webp through boss-arena-05_landscape.webp
+
+Art Direction:
+  Biome: Boss Arena — dramatic confrontation chamber, unique per act
+  Palette: High contrast, dramatic lighting — varies by act depth
+           Act 1 boss: Red-orange volcanic/lava chamber
+           Act 2 boss: Ice blue frozen throne room
+           Act 3 boss: Purple/gold ancient ritual chamber
+           Act 4 boss: Blinding white clockwork/mechanical arena
+           Act 5 boss: Pure void with shattering reality seams
+  Mood: Epic, climactic — this is the moment of reckoning
+  Key elements: Grand scale architecture, dramatic lighting pillars,
+                boss-themed environmental details, clear foreground
+                platform for boss positioning, atmospheric particles
+  Horizon: Wide horizontal composition with extra vertical drama —
+           Boss centered or right-biased, wide open combat space
+  Pixel art style: Maximum detail, cinematic framing, particle-heavy
+  Reference vibe: Mega Man boss rooms, Final Fantasy boss arenas
+
+Fallback:
+  Portrait variants live at: /assets/backgrounds/combat/boss/boss-arena-0N.webp
+  Loader checks _landscape suffix first, falls back to portrait if missing.

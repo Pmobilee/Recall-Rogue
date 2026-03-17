@@ -105,6 +105,7 @@
   import { collectMatchingFactIds } from './services/presetSelectionService'
   import { resumeCombatWithFallback } from './services/combatResumeService'
   import { BASE_WIDTH } from './data/layout'
+  import { layoutMode } from './stores/layoutStore'
 
   import ArchetypeSelection from './ui/components/ArchetypeSelection.svelte'
   import CardCombatOverlay from './ui/components/CardCombatOverlay.svelte'
@@ -296,7 +297,9 @@
         game.scene.start('BootAnimScene')
         console.log('[BootAnim] started scene, active scenes:', game.scene.getScenes(true).map((s: Phaser.Scene) => s.scene.key))
 
-        // Listen for completion
+        // Listen for show-blurred, deblur, completion
+        game.events.once('boot-anim-show-blurred', () => { hubShowBlurred = true })
+        game.events.once('boot-anim-deblur', () => { hubDeblurring = true })
         game.events.once('boot-anim-complete', () => {
           const el = document.getElementById('phaser-container')
           if (el) {
@@ -305,6 +308,8 @@
           }
           setTimeout(() => {
             showBootAnimation = false
+            hubDeblurring = false
+            hubShowBlurred = false
             mgr.stopBootAnim()
             if (el) {
               el.style.transition = ''
@@ -619,6 +624,8 @@
   }
 
   let showBootAnimation = $state(false)
+  let hubDeblurring = $state(false)
+  let hubShowBlurred = $state(false) // true = hub visible but heavily blurred during cave fly-through
 
   let showAbandonConfirm = $state(false)
   let abandonRunInfo = $state<{ floor: number; gold: number; encounters: number; factsCorrect: number } | null>(null)
@@ -702,8 +709,13 @@
         if (startAnimation) {
           const game = mgr.getGame()
           if (game) {
+            game.events.once('boot-anim-show-blurred', () => {
+              hubShowBlurred = true
+            })
+            game.events.once('boot-anim-deblur', () => {
+              hubDeblurring = true
+            })
             game.events.once('boot-anim-complete', () => {
-              // Fade Phaser container out via CSS transition, then hide it
               const container = document.getElementById('phaser-container')
               if (container) {
                 container.style.transition = 'opacity 0.3s ease-out'
@@ -711,9 +723,10 @@
               }
               setTimeout(() => {
                 showBootAnimation = false
+                hubDeblurring = false
+                hubShowBlurred = false
                 mgr.stopBootAnim()
                 localStorage.setItem('recall-rogue-boot-anim-seen', 'true')
-                // Reset container styles for future combat use
                 if (container) {
                   container.style.transition = ''
                   container.style.opacity = ''
@@ -742,8 +755,33 @@
     const container = document.querySelector('.card-app') as HTMLElement | null
     if (!container) return
     const w = container.clientWidth || window.innerWidth
-    const scale = Math.max(0.8, Math.min(1.4, w / BASE_WIDTH))
-    document.documentElement.style.setProperty('--layout-scale', String(scale))
+    const h = window.innerHeight
+
+    const mode = get(layoutMode)
+    let scale: number
+    let scaleX: number
+    let scaleY: number
+
+    if (mode === 'landscape') {
+      // Landscape: fit 1280×720 design canvas into viewport — uniform scale limited by both axes
+      scaleX = w / 1280
+      scaleY = h / 720
+      scale = Math.min(scaleX, scaleY)
+    } else {
+      // Portrait: existing behaviour — scale from 390px base (clamped for safety)
+      scale = Math.max(0.8, Math.min(1.4, w / BASE_WIDTH))
+      scaleX = scale
+      scaleY = scale
+    }
+
+    const root = document.documentElement
+    root.style.setProperty('--layout-scale', String(scale))
+    root.style.setProperty('--layout-scale-x', String(scaleX))
+    root.style.setProperty('--layout-scale-y', String(scaleY))
+    root.style.setProperty('--layout-mode', mode)
+
+    // Attribute on root container for CSS selectors: [data-layout="landscape"]
+    container.setAttribute('data-layout', mode)
   }
 
   onMount(() => {
@@ -758,6 +796,11 @@
 
     updateLayoutScale()
     window.addEventListener('resize', updateLayoutScale)
+
+    // Re-run scale computation whenever layout mode changes (dev toggle or orientation flip)
+    const unsubLayoutMode = layoutMode.subscribe(() => {
+      updateLayoutScale()
+    })
 
     // Boot animation — play once on first launch
     const urlParams = new URLSearchParams(window.location.search)
@@ -777,14 +820,15 @@
       window.removeEventListener('pointerdown', onInteraction)
       window.removeEventListener('keydown', onInteraction)
       window.removeEventListener('resize', updateLayoutScale)
+      unsubLayoutMode()
     }
   })
 </script>
 
-{#if !showBootAnimation}
+<div class:hidden-during-boot={showBootAnimation}>
   <FireflyBackground />
-{/if}
-<div class="card-app" data-screen={$currentScreen}>
+</div>
+<div class="card-app" class:boot-bg-black={showBootAnimation && !hubShowBlurred} class:boot-bg-clear={hubShowBlurred && showBootAnimation} data-screen={$currentScreen}>
   <div
     id="phaser-container"
     class="phaser-container"
@@ -795,7 +839,7 @@
 
   {#if $currentScreen === 'hub' || $currentScreen === 'mainMenu' || $currentScreen === 'base'}
     <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <div class="hub-wrapper" class:no-interact={showBootAnimation} class:blurred={showBootAnimation && !hubDeblurring} class:deblurring={hubDeblurring}>
+    <div class="hub-wrapper" class:no-interact={showBootAnimation} class:boot-hidden={showBootAnimation && !hubShowBlurred} class:blurred={hubShowBlurred && !hubDeblurring} class:deblurring={hubDeblurring}>
     <HubScreen
       streak={$playerSave?.stats.currentStreak ?? 0}
       lastRunSummary={$lastRunSummary}
@@ -811,6 +855,7 @@
       onOpenDeckBuilder={handleOpenDeckBuilder}
       onOpenTopicInterests={handleOpenTopicInterests}
       onReplayBootAnim={handleReplayBootAnim}
+      disableEffects={showBootAnimation}
     />
     {#if showActiveRunBanner}
       <div class="active-run-banner" data-testid="active-run-banner">
@@ -1296,6 +1341,22 @@
   .hub-wrapper.no-interact {
     display: block;
     pointer-events: none;
+  }
+
+  .hub-wrapper.boot-hidden {
+    visibility: hidden;
+  }
+
+  .hidden-during-boot {
+    display: none !important;
+  }
+
+  .card-app.boot-bg-black {
+    background: #000 !important;
+  }
+
+  .card-app.boot-bg-clear {
+    background: transparent !important;
   }
 
   .hub-wrapper.blurred {

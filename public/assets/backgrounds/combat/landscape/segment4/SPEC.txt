@@ -1,0 +1,23 @@
+LANDSCAPE COMBAT BACKGROUND SPEC — Segment 4: The Archive
+==========================================================
+
+Dimensions:   1920 × 1080 px
+Format:       WebP (lossy, quality 85)
+Count needed: 5
+Naming:       the-archive-01_landscape.webp through the-archive-05_landscape.webp
+
+Art Direction:
+  Biome: The Archive — an ancient library-dungeon, repository of forgotten knowledge
+  Palette: Aged parchment yellows, library greens, candlelight amber, dark mahogany
+  Mood: Ancient, scholarly, secrets buried in dust — knowledge as power
+  Key elements: Towering bookshelves stretching into darkness, scrolls and tomes,
+                brass instruments and orreries, candelabras, stone reading lecterns,
+                floating glowing text fragments, arcane sigils on the floor
+  Horizon: Wide horizontal composition — enemy platform on right third,
+           player card zone on left third, open middle for combat actions
+  Pixel art style: Rich detailed library environment, warm candlelight
+  Reference vibe: Endless Library, The Stormlight Archive, arcane academia
+
+Fallback:
+  Portrait variants live at: /assets/backgrounds/combat/segment4/the-archive-0N.webp
+  Loader checks _landscape suffix first, falls back to portrait if missing.

@@ -7,6 +7,7 @@ import type { AnimArchetype } from '../../data/enemyAnimations'
 import { getRandomCombatBg } from '../../data/backgroundManifest'
 import { ENEMY_TEMPLATES } from '../../data/enemies'
 import { BASE_WIDTH } from '../../data/layout'
+import type { LayoutMode } from '../../stores/layoutStore'
 
 /** Layout constants for first-person combat display zone (top ~58% of viewport). */
 const DISPLAY_ZONE_HEIGHT_PCT = 0.58
@@ -173,6 +174,20 @@ export class CombatScene extends Phaser.Scene {
   // ── Stored layout values ─────────────────────────────────
   private displayH = 0
   private scaleFactor: number = 1
+  private currentLayoutMode: LayoutMode = 'portrait'
+
+  // ═════════════════════════════════════════════════════════
+  // Layout change handler (AR-71)
+  // ═════════════════════════════════════════════════════════
+
+  /**
+   * Called by CardGameManager when the layout mode changes (portrait ↔ landscape).
+   * Actual repositioning for landscape is implemented in AR-73.
+   * This stub stores the mode so AR-73 workers can branch on it.
+   */
+  handleLayoutChange(mode: LayoutMode): void {
+    this.currentLayoutMode = mode
+  }
 
   // ═════════════════════════════════════════════════════════
   // Lifecycle
@@ -687,6 +702,22 @@ export class CombatScene extends Phaser.Scene {
     })
   }
 
+  /**
+   * Returns the appropriate background texture key for the current layout mode.
+   * In landscape mode, checks for a `_landscape`-suffixed variant first.
+   * Falls back to the portrait key if no landscape variant is loaded.
+   *
+   * @param bgKey The base background texture key (portrait variant)
+   * @returns The landscape key if available in landscape mode, otherwise the base key
+   */
+  private getBackgroundKey(bgKey: string): string {
+    if (this.currentLayoutMode === 'landscape') {
+      const landscapeKey = `${bgKey}_landscape`
+      if (this.textures.exists(landscapeKey)) return landscapeKey
+    }
+    return bgKey
+  }
+
   /** Dynamically load and display a random combat background for the given floor. */
   setBackground(floor: number, isBoss: boolean): Promise<void> {
     if (!this.sceneReady) return Promise.resolve()
@@ -696,20 +727,31 @@ export class CombatScene extends Phaser.Scene {
     const cleanPath = bgPath.startsWith('/') ? bgPath.slice(1) : bgPath
     const bgKey = `bg-combat-${cleanPath.split('/').pop()?.replace('.webp', '') ?? 'default'}`
 
-    // If same texture already loaded, skip
-    if (bgKey === this.currentBgKey) return Promise.resolve()
+    // In landscape mode, attempt to load the _landscape variant alongside the portrait.
+    // getBackgroundKey() will select whichever is available at swap time.
+    const landscapeKey = `${bgKey}_landscape`
+    const landscapePath = cleanPath.replace('.webp', '_landscape.webp')
 
-    // If texture already exists in cache, just swap
-    if (hasTexture(this, bgKey)) {
-      this._swapBackground(bgKey)
+    // If same texture (resolved for current mode) already loaded, skip
+    const resolvedKey = this.getBackgroundKey(bgKey)
+    if (resolvedKey === this.currentBgKey) return Promise.resolve()
+
+    // If texture already exists in cache, just swap using the resolved key
+    if (hasTexture(this, resolvedKey)) {
+      this._swapBackground(resolvedKey)
       return Promise.resolve()
     }
 
-    // Load new texture dynamically
+    // Load new texture dynamically.
+    // In landscape mode, also attempt to load the _landscape variant — if it 404s,
+    // Phaser silently skips it and getBackgroundKey() will fall back to portrait.
     return new Promise<void>((resolve) => {
       this.load.image(bgKey, cleanPath)
+      if (this.currentLayoutMode === 'landscape') {
+        this.load.image(landscapeKey, landscapePath)
+      }
       this.load.once('complete', () => {
-        this._swapBackground(bgKey)
+        this._swapBackground(this.getBackgroundKey(bgKey))
         resolve()
       })
       this.load.start()

@@ -1,0 +1,22 @@
+LANDSCAPE COMBAT BACKGROUND SPEC — Segment 1: Shallow Depths
+=============================================================
+
+Dimensions:   1920 × 1080 px
+Format:       WebP (lossy, quality 85)
+Count needed: 5
+Naming:       shallow-depths-01_landscape.webp through shallow-depths-05_landscape.webp
+
+Art Direction:
+  Biome: Shallow underground cave entrance / dungeon foyer
+  Palette: Warm amber torch-light, sandy brown stone, mossy greens
+  Mood: Inviting but slightly foreboding — the adventure begins here
+  Key elements: Rough-hewn stone walls, torches/braziers, distant passages,
+                faint surface light filtering from above
+  Horizon: Wide horizontal composition — enemy platform on right third,
+           player card zone on left third, open middle for combat actions
+  Pixel art style: Detailed background with layered parallax depth
+  Reference vibe: Early Slay the Spire floors, warm dungeon entrance
+
+Fallback:
+  Portrait variants live at: /assets/backgrounds/combat/segment1/shallow-depths-0N.webp
+  Loader checks _landscape suffix first, falls back to portrait if missing.

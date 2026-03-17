@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import type { LayoutMode } from '../../stores/layoutStore'
 
 /**
  * BootAnimScene — Cinematic boot/splash for Recall Rogue.
@@ -19,9 +20,19 @@ export default class BootAnimScene extends Phaser.Scene {
   private activeEmitters: Phaser.GameObjects.Particles.ParticleEmitter[] = []
   private sceneSprites: Phaser.GameObjects.GameObject[] = []
   private coverScale = 1
+  private currentLayoutMode: LayoutMode = 'portrait'
 
   constructor() {
     super({ key: 'BootAnimScene' })
+  }
+
+  /**
+   * Called by CardGameManager when the layout mode changes (portrait ↔ landscape).
+   * Actual landscape adaptation is implemented in AR-79.
+   * This stub stores the mode for future use.
+   */
+  handleLayoutChange(mode: LayoutMode): void {
+    this.currentLayoutMode = mode
   }
 
   preload(): void {
@@ -38,8 +49,7 @@ export default class BootAnimScene extends Phaser.Scene {
     this.load.image('boot_cave_ring_1', base + 'cave_ring_1.png')
     this.load.image('boot_cave_ring_2', base + 'cave_ring_2.png')
     this.load.image('boot_cave_ring_3', base + 'cave_ring_3.png')
-    // Campsite background — shown through cave ring holes
-    this.load.image('boot_campsite', '/assets/camp/sprites/background/camp-background.jpg')
+    // (campsite is the Svelte HubScreen behind the canvas — no Phaser image needed)
   }
 
   create(): void {
@@ -62,7 +72,7 @@ export default class BootAnimScene extends Phaser.Scene {
       'boot_logo', 'boot_logo_blur_medium', 'boot_logo_blur_heavy',
       'boot_recallrogue', 'boot_recallrogue_blur_medium', 'boot_recallrogue_blur_heavy',
       'boot_bramblegategames', 'boot_bramblegategames_blur_medium', 'boot_bramblegategames_blur_heavy',
-      'boot_cave_ring_1', 'boot_cave_ring_2', 'boot_cave_ring_3', 'boot_campsite',
+      'boot_cave_ring_1', 'boot_cave_ring_2', 'boot_cave_ring_3',
     ]
     for (const key of bootKeys) {
       const tex = this.textures.get(key)
@@ -225,126 +235,121 @@ export default class BootAnimScene extends Phaser.Scene {
   // ═══ Transition: Sky → Cave (4.8–5.6s) ═══════════════════════════════════════
 
   private transition(cx: number, cy: number): void {
-    // 1) Fade out logo elements (depth 100-103)
+    // 1) Kill ALL existing tweens (stars have infinite yoyo tweens)
+    this.tweens.killAll()
+
+    // 2) Logo drifts up and fades out (no sparks)
     const logoTargets = this.sceneSprites.filter(obj => {
       const d = (obj as Phaser.GameObjects.Image).depth
       return d >= 100 && d <= 103 && obj.active
     })
     if (logoTargets.length > 0) {
-      this.tweens.add({
-        targets: logoTargets, alpha: 0, duration: 600,
-        onComplete: () => { for (const t of logoTargets) { if (t.active) t.destroy() } },
-      })
+      for (const t of logoTargets) {
+        this.tweens.add({
+          targets: t, alpha: 0,
+          y: (t as Phaser.GameObjects.Image).y - 80,
+          duration: 700, ease: 'Quad.easeIn',
+          onComplete: () => { if (t.active) t.destroy() },
+        })
+      }
     }
 
-    // 2) Stars drift UPWARD and fade — "looking down" effect
+    // 3) Stars drift UPWARD and fade
     const stars = this.sceneSprites.filter(obj => (obj as Phaser.GameObjects.Arc).depth === 1 && obj.active)
     for (const star of stars) {
       this.tweens.add({
         targets: star,
         y: (star as Phaser.GameObjects.Arc).y - Phaser.Math.Between(150, 300),
         alpha: 0,
-        duration: 800,
-        ease: 'Quad.easeIn',
+        duration: 600, ease: 'Quad.easeIn',
+        onComplete: () => { if ((star as Phaser.GameObjects.Arc).active) (star as Phaser.GameObjects.Arc).destroy() },
       })
     }
 
-    // 3) After stars drift, start the cave tunnel
+    // 4) Kill all fireflies and particle emitters
+    for (const emitter of this.activeEmitters) {
+      if (emitter?.active) { emitter.stop(); emitter.destroy() }
+    }
+    this.activeEmitters = []
+    const fireflies = this.sceneSprites.filter(obj => (obj as Phaser.GameObjects.Arc).depth === 103 && obj.active)
+    for (const ff of fireflies) { if (ff.active) ff.destroy() }
+
+    // 5) Signal hub to show blurred campsite BEFORE cave tunnel starts
+    this.game.events.emit('boot-anim-show-blurred')
+
+    // 6) Start cave tunnel after disintegration
     this.time.delayedCall(800, () => this.playPartTwo(cx, cy))
   }
 
   // ═══ Part 2: Layered Cave Tunnel (5.6–~10s) ═════════════════════════════════
   //
-  // All 3 rings start at coverScale (fully filling screen). You only see deeper
-  // layers through each ring's transparent center hole. Each ring scales from
-  // 1× → 3× coverScale to "fly past the camera." Rings behind are dimmed/dark,
-  // brightening as the ring in front passes. Campsite is visible through all holes.
+  // All 3 rings at coverScale (filling screen). You see deeper layers through
+  // each ring's transparent hole. Each ring scales 1×→3× to fly past camera.
+  // Rings drift UPWARD during fly-past (arch trajectory — descending into cave).
+  // Campsite is the CSS-blurred Svelte HubScreen behind the transparent canvas.
+  // Ring 1 drifts most, ring 3 least — arching flight path.
 
   private playPartTwo(cx: number, cy: number): void {
     const s = this.coverScale
-    const viewW = this.scale.width
-    const viewH = this.scale.height
 
-    // ── Campsite at the very back (depth 5) — visible through all ring holes ──
-    const campScale = Math.max(viewW / 571, viewH / 1024)
-    const camp = this.add.image(cx, cy, 'boot_campsite')
-      .setScale(campScale).setDepth(5).setAlpha(0.15) // very dim initially
-    this.sceneSprites.push(camp)
+    // Make camera transparent so blurred hub shows through ring holes
+    this.cameras.main.setBackgroundColor('rgba(0,0,0,0)')
 
-    // Dark overlay between campsite and rings
-    const overlay = this.add.rectangle(cx, cy, viewW + 40, viewH + 40, 0x000000)
-      .setDepth(6).setAlpha(0.75)
-    this.sceneSprites.push(overlay)
+    const big = s * 1.3
+    const mid = s * 0.55
+    const small = s * 0.45
+    const flyPastScale = s * 3.5
 
-    // ── All 3 rings at coverScale, layered front-to-back ──
-    // Ring 1 (front/closest, depth 12) — fully visible, we fly through this first
-    // Ring 2 (middle, depth 11) — dim, seen through ring 1's hole
-    // Ring 3 (back/deepest, depth 10) — very dim, seen through ring 2's hole
-    const ring1 = this.add.image(cx, cy, 'boot_cave_ring_1')
-      .setScale(s).setDepth(12).setAlpha(1)
-    const ring2 = this.add.image(cx, cy, 'boot_cave_ring_2')
-      .setScale(s).setDepth(11).setAlpha(0.4).setTint(0x666688) // dim/blue = "far away"
-    const ring3 = this.add.image(cx, cy, 'boot_cave_ring_3')
-      .setScale(s).setDepth(10).setAlpha(0.25).setTint(0x444466) // very dim
+    // Create rings — no masks, all 3 visible through each other's holes
+    const ring1 = this.add.image(cx, cy + 200, 'boot_cave_ring_1')
+      .setScale(big).setDepth(12).setAlpha(0)
+    const ring2 = this.add.image(cx, cy + 160, 'boot_cave_ring_2')
+      .setScale(mid).setDepth(11).setAlpha(1).setTint(0x667788)
+    const ring3 = this.add.image(cx, cy + 120, 'boot_cave_ring_3')
+      .setScale(small).setDepth(10).setAlpha(1).setTint(0x556677)
     this.sceneSprites.push(ring1, ring2, ring3)
 
-    // ── Ring 1 flies past (0ms): scale 1→3, alpha 1→0 ──
-    // As it passes, ring 2 brightens and clears tint
-    this.tweens.add({
-      targets: ring1,
-      scaleX: s * 3, scaleY: s * 3, alpha: 0,
-      duration: 1500, ease: 'Quad.easeIn',
-      onComplete: () => { if (ring1.active) ring1.destroy() },
-    })
-    // Ring 2 brightens as ring 1 passes
-    this.tweens.add({
-      targets: ring2, alpha: 1, duration: 1200, ease: 'Quad.easeOut',
-    })
-    this.time.delayedCall(400, () => { ring2.clearTint() })
+    // Ring 1 fades in gradually
+    this.tweens.add({ targets: ring1, alpha: 1, duration: 600, ease: 'Sine.easeOut' })
 
-    // ── Ring 2 flies past (800ms after ring 1 starts) ──
-    this.time.delayedCall(800, () => {
-      this.tweens.add({
-        targets: ring2,
-        scaleX: s * 3, scaleY: s * 3, alpha: 0, angle: 1.5,
-        duration: 1500, ease: 'Quad.easeIn',
-        onComplete: () => { if (ring2.active) ring2.destroy() },
-      })
-      // Ring 3 brightens
-      this.tweens.add({ targets: ring3, alpha: 1, duration: 1200, ease: 'Quad.easeOut' })
-      this.time.delayedCall(400, () => { ring3.clearTint() })
-    })
-
-    // ── Ring 3 flies past (1600ms after ring 1 starts) ──
-    this.time.delayedCall(1600, () => {
-      // Brighten campsite as ring 3 starts flying past
-      this.tweens.add({ targets: camp, alpha: 1, duration: 1200 })
-      this.tweens.add({ targets: overlay, alpha: 0, duration: 1200 })
-
-      this.tweens.add({
-        targets: ring3,
-        scaleX: s * 3, scaleY: s * 3, alpha: 0, angle: -1.5,
-        duration: 1800, ease: 'Quad.easeIn',
-        onComplete: () => {
-          if (ring3.active) ring3.destroy()
-          // Campsite fully visible — fade to transparent hub
-          this.time.delayedCall(600, () => this.fadeToHub())
-          this.time.delayedCall(1400, () => this.complete())
-        },
-      })
-    })
-  }
-
-  /** Fade everything to transparent, revealing the Svelte HubScreen underneath. */
-  private fadeToHub(): void {
-    this.cameras.main.setBackgroundColor('rgba(0,0,0,0)')
-    const remaining = this.sceneSprites.filter(obj => obj?.active)
-    if (remaining.length > 0) {
-      this.tweens.add({ targets: remaining, alpha: 0, duration: 800 })
+    const flyRing = (
+      ring: Phaser.GameObjects.Image,
+      targetY: number, angle: number, duration: number, delay: number,
+      onDone?: () => void
+    ): void => {
+      const doFly = (): void => {
+        this.tweens.add({
+          targets: ring,
+          scaleX: flyPastScale, scaleY: flyPastScale,
+          y: targetY, alpha: 0,
+          angle, duration, ease: 'Quad.easeIn',
+          onComplete: () => {
+            if (ring.active) ring.destroy()
+            onDone?.()
+          },
+        })
+      }
+      if (delay > 0) { this.time.delayedCall(delay, doFly) }
+      else { doFly() }
     }
-    for (const emitter of this.activeEmitters) {
-      if (emitter?.active) emitter.stop()
-    }
+
+    flyRing(ring1, cy - 250, 0, 1500, 0)
+
+    // As ring 1 passes, clear ring 2's depth tint
+    this.time.delayedCall(300, () => { if (ring2.active) ring2.clearTint() })
+
+    flyRing(ring2, cy - 200, 1.5, 1500, 350)
+
+    // As ring 2 passes, clear ring 3's depth tint
+    this.time.delayedCall(650, () => { if (ring3.active) ring3.clearTint() })
+
+    // Ring 3 fly-past + deblur campsite
+    this.time.delayedCall(700, () => {
+      this.game.events.emit('boot-anim-deblur')
+    })
+    flyRing(ring3, cy - 150, -1.5, 1700, 700, () => {
+      this.complete()
+    })
   }
 
   private complete(): void {

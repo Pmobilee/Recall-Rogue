@@ -1,5 +1,6 @@
 <script lang="ts">
   import { get } from 'svelte/store'
+  import { onMount, onDestroy } from 'svelte'
   import { fade } from 'svelte/transition'
   import type { Card } from '../../data/card-types'
   import type { TurnState } from '../../services/turnManager'
@@ -14,6 +15,10 @@
     markOnboardingTooltipSeen,
     type DifficultyMode,
   } from '../../services/cardPreferences'
+  import { isLandscape } from '../../stores/layoutStore'
+  import { inputService } from '../../services/inputService'
+  import { setQuizVisible } from '../../services/keyboardInput'
+  import KeyboardShortcutHelp from './KeyboardShortcutHelp.svelte'
   import CardHand from './CardHand.svelte'
   import CardExpanded from './CardExpanded.svelte'
   import DamageNumber from './DamageNumber.svelte'
@@ -787,8 +792,11 @@
       }
     }
 
-    // Redact answer if it appears verbatim in the question text
-    question = redactAnswerFromQuestion(question, correctAnswer)
+    // Redact answer if it appears verbatim in the question text (knowledge facts only).
+    // Vocab questions intentionally show the target word — never redact them.
+    if (fact?.type !== 'vocabulary') {
+      question = redactAnswerFromQuestion(question, correctAnswer)
+    }
 
     const allAnswers = [...picked]
     const insertIdx = Math.floor((isRunRngActive() ? getRunRng('quiz').next() : Math.random()) * (allAnswers.length + 1))
@@ -1181,6 +1189,79 @@
     showEndTurnConfirm = false
   }
 
+  // ---------------------------------------------------------------------------
+  // AR-74: Keyboard input wiring (landscape only)
+  // ---------------------------------------------------------------------------
+
+  /** Notify keyboardInput module whenever quiz visibility changes. */
+  $effect(() => {
+    const quizVisible = cardPlayStage === 'committed'
+    setQuizVisible(quizVisible)
+  })
+
+  let kbdUnsubscribers: Array<() => void> = []
+
+  onMount(() => {
+    // END_TURN: keyboard Enter → end turn
+    kbdUnsubscribers.push(
+      inputService.on('END_TURN', () => {
+        if (!$isLandscape) return
+        if (!endTurnDisabled && showEndTurn) {
+          handleEndTurn()
+        }
+      })
+    )
+
+    // CANCEL: keyboard Escape → deselect card or cancel end-turn confirm
+    kbdUnsubscribers.push(
+      inputService.on('CANCEL', () => {
+        if (!$isLandscape) return
+        if (showEndTurnConfirm) {
+          cancelEndTurn()
+        } else if (cardPlayStage === 'selected') {
+          handleDeselect()
+        }
+      })
+    )
+
+    // QUICK_PLAY: keyboard Q → quick-play selected card
+    kbdUnsubscribers.push(
+      inputService.on('QUICK_PLAY', () => {
+        if (!$isLandscape) return
+        if (cardPlayStage === 'selected' && selectedIndex !== null) {
+          handleCastDirect(selectedIndex)
+        }
+      })
+    )
+
+    // CHARGE: keyboard E → charge-play selected card
+    kbdUnsubscribers.push(
+      inputService.on('CHARGE', () => {
+        if (!$isLandscape) return
+        if (cardPlayStage === 'selected' && selectedIndex !== null) {
+          handleCast()
+        }
+      })
+    )
+
+    // SELECT_CARD: keyboard 1-5 → select card from hand
+    kbdUnsubscribers.push(
+      inputService.on('SELECT_CARD', (action) => {
+        if (!$isLandscape) return
+        if (action.type !== 'SELECT_CARD') return
+        if (cardPlayStage === 'committed') return
+        handleSelect(action.index)
+      })
+    )
+  })
+
+  onDestroy(() => {
+    for (const unsub of kbdUnsubscribers) unsub()
+    kbdUnsubscribers = []
+    // Clear quiz visibility flag
+    setQuizVisible(false)
+  })
+
 </script>
 
 <div class="card-combat-overlay" class:near-death-tension={isNearDeath}>
@@ -1398,9 +1479,50 @@
       {/each}
     </div>
   {/if}
+
+  <!-- AR-74: Keyboard help button (landscape only) -->
+  {#if $isLandscape}
+    <button
+      class="kbd-help-trigger"
+      type="button"
+      onclick={() => inputService.dispatch({ type: 'TOGGLE_KEYBOARD_HELP' })}
+      aria-label="Show keyboard shortcuts (?)"
+      title="Keyboard shortcuts"
+    >?</button>
+  {/if}
 </div>
 
+<!-- AR-74: Keyboard shortcut help overlay -->
+<KeyboardShortcutHelp />
+
 <style>
+  /* AR-74: Keyboard help trigger button (landscape only) */
+  .kbd-help-trigger {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 20;
+    display: grid;
+    place-items: center;
+    transition: background 120ms, color 120ms, border-color 120ms;
+  }
+
+  .kbd-help-trigger:hover {
+    background: rgba(78, 205, 196, 0.15);
+    border-color: rgba(78, 205, 196, 0.4);
+    color: rgba(78, 205, 196, 0.9);
+  }
+
   .card-combat-overlay {
     position: fixed;
     bottom: 0;

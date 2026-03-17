@@ -54,7 +54,7 @@ PLAYER TURN:
        - CORRECT ANSWER → card plays at 2.5× / 3.0× / 3.5× (per tier). 500ms celebration.
        - WRONG ANSWER → card plays at 0.6× / 0.7× / 0.7× (per tier). 300ms muted resolve.
        - Card is never wasted — wrong answers still resolve (at 0.7× or lower).
-       - Contributes to Knowledge Chain if same categoryL2 as previous Charge.
+       - Contributes to Knowledge Chain if same chainType (0-5) as previous Charge.
 
   4. End Turn when AP is spent or player chooses to stop.
      Remaining unplayed cards discarded.
@@ -123,21 +123,18 @@ AP badge colors:
 - Orange: 2 AP (heavy)
 - Red: 3 AP (full turn)
 
-### Fact-Card Shuffling (Per-Draw Randomization)
+### Fact-Card Binding (AR-70 — Implemented)
 
-Card slots (type + mechanic + base effect) and facts (the questions to answer) are paired RANDOMLY each time a hand is drawn. The deck tracks card slots and facts as separate pools.
+Card slots (type + mechanic + base effect) and facts (the questions to answer) are **bound persistently for the entire run**. At run start, `buildRunPool()` assigns each fact a `chainType` (0-5) via `index % 6` for even distribution, and binds facts to card slots.
 
-**Why:** Without shuffling, a known fact permanently bonded to Heavy Strike becomes a guaranteed nuke. Shuffling ensures every hand is a fresh chain puzzle.
+**Why binding:** Without binding, chain types would re-randomize every draw, making chain-building impossible to plan. With binding, players learn which cards share chain types and can make strategic deck decisions (card removal, reward selection) around chain composition.
 
-1. At run start, `buildRunPool()` creates card SLOTS and a separate fact pool
-2. Each `drawHand()` call draws N card slots from the draw pile
-3. N facts are drawn from the fact pool (excluding cooldown facts)
-4. Slots and facts are paired randomly
-5. Tier multiplier is derived from the FSRS mastery tier of the fact
+1. At run start, `buildRunPool()` creates card SLOTS and binds facts to them
+2. Each `drawHand()` call draws N bound card-slots from the draw pile
+3. The fact stays with its slot for the entire run
+4. Tier multiplier is derived from the FSRS mastery tier of the bound fact
 
-**First-draw funScore bias:** On the very first encounter of a run, facts with `funScore >= 7` are 2× more likely to appear in the opening hand.
-
-**categoryL2 chain color** is derived from the fact's category — same categoryL2 = same chain color = can chain together.
+**Chain color** is derived from the card's `chainType` (0-5) — same chainType = same chain color = can chain together. Colors are defined in `src/data/chainTypes.ts` (Obsidian, Crimson, Azure, Amber, Violet, Jade).
 
 ### Encounter Cooldown & Anti-Repetition
 
@@ -178,7 +175,7 @@ Research: Roediger & Karpicke (2006) — retrieval practice = 87% retention vs 4
 Cards use hand-crafted PNG card frames per mechanic category, with the following additions in v2:
 
 - **CHARGE button:** Displayed below the card in the popped state. Shows "FREE" (first Charge of fact) or "+1 AP" (subsequent Charges). Tap to initiate quiz.
-- **Chain color tint:** 2–3px colored tint on the left frame edge indicates `categoryL2`. Same color = can chain. Pulse in sync when 2+ cards in hand share a `categoryL2`.
+- **Chain color tint:** 2–3px colored tint on the left frame edge indicates `chainType` (0-5). Same color = can chain. Pulse in sync when 2+ cards in hand share a `chainType`.
 - **AP cost badge:** Gemstone badge top-right, colored by AP cost.
 
 Card frame categories: Attack (golden slash), Defence (blue shield), Buff (golden radiate), Debuff (purple tendrils), Utility (prismatic), Wild (morphic).
@@ -226,11 +223,11 @@ Balance constants: `COMBO_DECAY_QUICK_PLAY = 1`, `COMBO_DECAY_WRONG_ANSWER = 2`,
 
 ### How It Works
 
-Facts have `categoryL2` values (e.g., `asian_cuisine`, `mammals`, `planets_moons`, `japanese_n5`). When you Charge cards consecutively within the same turn that share a `categoryL2`, they form a chain. Each card in the chain gets a multiplier.
+Cards have a `chainType` value (integer 0-5, corresponding to Obsidian, Crimson, Azure, Amber, Violet, Jade). When you Charge cards consecutively within the same turn that share a `chainType`, they form a chain. Each card in the chain gets a multiplier.
 
 **Chain is built exclusively by Charge plays.** Quick Play resets the chain counter. Wrong Charge answers also break the chain.
 
-**No new tagging required.** The ~50 existing `categoryL2` values are the chain groups.
+**Six distinct chain types** (0-5) map to the 6-color palette defined in `src/data/chainTypes.ts`. Cards without a `chainType` field contribute no chain.
 
 ### Chain Multipliers
 
@@ -254,13 +251,13 @@ The 122-damage Surge chain is the "holy shit" peak. Rare. Players will chase it.
 
 ### Chain Visual System (AR-59.17)
 
-**Frame edge tint:** Each `categoryL2` maps to one of ~12 distinct colors. Cards show a subtle 2–3px colored tint on their left frame edge (visible even when cards overlap in the fan).
+**Frame edge tint:** Each `chainType` (0-5) maps to one of 6 distinct colors (Obsidian, Crimson, Azure, Amber, Violet, Jade). Cards show a subtle 2–3px colored tint on their left frame edge (visible even when cards overlap in the fan).
 
-**In-hand pulse:** When 2+ cards in hand share a `categoryL2`, their tinted edges pulse in sync.
+**In-hand pulse:** When 2+ cards in hand share a `chainType`, their tinted edges pulse in sync.
 
 **During chain play:** A thin glowing line briefly connects played cards as they resolve (animation only, not persistent UI).
 
-**Chain counter:** Displayed above the hand, shows current chain length and `categoryL2` name.
+**Chain counter:** Displayed above the hand, shows current chain length and chain type name.
 
 ### Chain Examples
 
@@ -268,7 +265,7 @@ The 122-damage Surge chain is the "holy shit" peak. Rare. Players will chase it.
 - "Mount Fuji is Japan's highest peak" — `asia_oceania`
 - "Tokyo was formerly called Edo" — `asia_oceania`
 - "The Meiji Restoration began in 1868" — `asia_oceania`
-→ 3-chain on `asia_oceania` at 1.7×
+→ 3-chain on shared chainType at 1.7×
 
 **Language deck (Japanese N5):**
 - 食べる (to eat) — `japanese_n5`
@@ -485,8 +482,8 @@ See §8 for complete enemy roster with quiz integration behaviors.
 
 ### Chain Visual System (AR-59.17)
 
-- Card left-edge tint: ~12 distinct colors mapped from `categoryL2` groups
-- In-hand pulse: tinted edges pulse in sync when 2+ cards share a `categoryL2`
+- Card left-edge tint: 6 distinct colors mapped from `chainType` (0-5) via `chainTypes.ts`
+- In-hand pulse: tinted edges pulse in sync when 2+ cards share a `chainType`
 - Play animation: thin glowing line connects chained cards during resolution
 - Chain counter: displayed above hand with current chain length + milestone celebrations
 
@@ -782,7 +779,7 @@ Run state saved after each completed node. On resume, player returns to the map 
 
 ### Deck Building Strategy
 
-**Pool building:** Run pools are concentrated on 5–8 `categoryL2` values to enable chains. The domain selection at run start determines which `categoryL2` groups appear.
+**Pool building:** Run pools are concentrated on a subset of `chainType` values to enable chains. The domain selection at run start determines which chain type groups appear.
 
 **Deck size:** Starts at 10 cards. Each card reward adds 1 card (no limit). Card removal at shops and Meditate at rest sites thin the deck. Optimal decks: 15–20 cards (tight and consistent).
 
@@ -888,11 +885,11 @@ Enrage thresholds by segment: Shallows = turn 9, Depths = turn 8, Archive = turn
 
 See §3 for full detail. Summary for quick reference:
 
-- **Chain trigger:** Consecutive Charge plays of same `categoryL2` in one turn
-- **Chain break:** Quick Play, wrong Charge answer, different `categoryL2`
+- **Chain trigger:** Consecutive Charge plays of same `chainType` (0-5) in one turn
+- **Chain break:** Quick Play, wrong Charge answer, different `chainType`
 - **Multipliers:** 1.0× (no chain), 1.3× (2-chain), 1.7× (3-chain), 2.2× (4-chain), 3.0× (5-chain)
 - **Stacks with:** Charge multiplier (multiplicative), Surge (free Charge, enabling more chains per turn)
-- **Visuals:** `categoryL2`-colored card edge tint, in-hand pulse, connection line animation, chain counter
+- **Visuals:** `chainType`-colored card edge tint (6-color palette), in-hand pulse, connection line animation, chain counter
 
 ---
 
@@ -1179,7 +1176,7 @@ Each chain link beyond 2 draws +1 card at end of turn.
 *Long chains refill your hand, enabling longer chains next turn. Snowball engine.*
 
 **Tag Magnet** — Uncommon
-When drawing cards, +30% chance to draw cards sharing a `categoryL2` with your last played card.
+When drawing cards, +30% chance to draw cards sharing a `chainType` with your last played card.
 *Makes chains more consistent.*
 
 **Echo Chamber** — Rare
@@ -1345,7 +1342,11 @@ Some relic combinations trigger undocumented bonuses to reward exploration:
 
 ---
 
-## 17. Portrait UX (Split-Stage Layout)
+## 17. Layout System (Portrait + Landscape)
+
+The layout system supports two modes — **portrait** (mobile, 390×844px) and **landscape** (desktop, 1280×720px) — detected at runtime from the viewport aspect ratio. A single `layoutMode` Svelte store (`src/stores/layoutStore.ts`) drives all reactive branching. Portrait mode is pixel-identical to the pre-port design. Landscape is the new desktop work (AR-71+).
+
+**AR-71 foundation (implemented):** `layoutMode` store, CSS vars `--layout-scale`, `--layout-scale-x`, `--layout-scale-y`, `--layout-mode`, `data-layout` attribute on `.card-app`, and Phaser canvas resize on mode change. Dev toggle: `Ctrl+Shift+L`.
 
 Card hand occupies the bottom ~45% of screen. Enemy arena occupies the top 55%. Quiz panel slides in between when Charge is committed.
 
@@ -1384,6 +1385,18 @@ Enemy intent icon and damage preview shown above enemy sprite at all times. Thre
 - Clear color transitions: green (>60%) → yellow (30–60%) → red (<30%)
 - Numerical HP value alongside bar
 - Flash red on damage taken
+
+### Landscape Layout (Desktop — AR-73)
+
+See §36 for the complete landscape layout specification (Option D). The landscape layout is planned for the Steam Early Access desktop port.
+
+Key differences from portrait:
+- Enemy panel on right 30% (always visible, even during quiz)
+- Quiz panel in center stage area (left 70%)
+- Card hand as full-width bottom strip (25-30% height)
+- Hub: portrait camp centered with decorative side panels
+- Navigation: left sidebar instead of bottom tab bar
+- Modals: centered panels instead of full-screen overlays
 
 ---
 
@@ -1590,9 +1603,23 @@ The hub screen includes a **Study Mode dropdown** near the dungeon gate:
 
 ## 25. Monetization
 
-- **Free:** All gameplay content. Full run loop. No time gates.
-- **Paid (Subscription/One-time):** Premium domains (specialist/advanced content), cosmetic card backs/frames, additional study preset slots.
+### Mobile (F2P + Subscription)
+- **Free:** All gameplay content. Full run loop. 2-3 base knowledge domains. No time gates. No pay-to-win.
+- **Scholar Pass ($4.99/mo):** All domains, languages, study decks, cosmetics, multiplayer (future), daily challenges (future).
+
+### Steam (Premium + DLC)
+| Product | Price | Content |
+|---------|-------|---------|
+| Base Game (Early Access) | $9.99 | All 10+ knowledge domains, full roguelike, all card mechanics, all relics |
+| Base Game (1.0 Release) | $14.99 | Same + post-EA polish |
+| Language DLC (each) | $4.99 | Japanese N5-N3, Korean A1-B1, Spanish A1-B1, etc. |
+| Curated Study Packs | $2.99 | SAT Prep, Medical Terminology, etc. |
+| Cosmetic DLC | $1.99-3.99 | Card backs, particles, chain themes |
+
+### Universal Rules
 - **No pay-to-win:** Relics, card power, run advantages — none purchaseable for real money.
+- **Anki imports and community packs:** ALWAYS free on all platforms.
+- **Steam purchases are permanent.** Mobile subscription unlocks are active while subscribed.
 
 ---
 
@@ -1667,7 +1694,7 @@ Unlocks after first successful run completion (reach Act 3+ and retreat, or defe
 
 ### Fact Schema
 
-Each fact contains: `id`, `question`, `answer`, `distractors[]`, `domain`, `categoryL2`, `difficulty` (1–5), `funScore` (1–10), `variants[]`, FSRS fields.
+Each fact contains: `id`, `question`, `answer`, `distractors[]`, `domain`, `categoryL2`, `chainType` (0-5), `difficulty` (1–5), `funScore` (1–10), `variants[]`, FSRS fields.
 
 ### Distractor Generation (MANDATORY RULE)
 
@@ -1757,7 +1784,7 @@ What makes Recall Rogue hard to clone:
 
 1. **Fact database with 20,000+ quality facts** — takes years to build, not months
 2. **FSRS integration powering the tier system** — facts get stronger as players learn them
-3. **Chains tied to real categoryL2 taxonomy** — not arbitrary groupings; actual knowledge structure
+3. **Chains tied to named chain types (chainType 0-5)** — Obsidian, Crimson, Azure, Amber, Violet, Jade; assigned evenly at run start via `chainTypes.ts`
 4. **Knowledge Surge rhythm** — turns spaced repetition into gameplay rhythm
 5. **Quiz as amplifier, not gate** — requires a fundamental rethink vs. "chocolate-covered broccoli" designs
 
@@ -1800,6 +1827,142 @@ AI-driven playtesting system using headless combat simulation:
 - **Extended Language Content:** Japanese Grammar deck (JLPT levels), Chinese Hanzi deck, Korean TOPIK grammar, European languages (ES/FR/DE) grammar decks.
 - **Mastery Skins (Animated Card Backs):** Tier 2a+ cards unlock looping animated card backs (WAN2.1 video diffusion). Card back reverts to static if FSRS retrievability drops below learned threshold — knowledge decay visualized.
 - **Multi-enemy Encounters:** Toxic Bloom and Chain Reactor interactions designed for future multi-enemy rooms.
+- **Desktop Port / Steam Release:** Responsive landscape layout, keyboard+mouse input, Tauri wrapper, Steam achievements, Steam Cloud Save, Steam Rich Presence. See `docs/roadmap/phases/desktop-port/` for individual ARs.
+- **Anki Deck Import:** Import .apkg files, self-graded quiz system (Wrong/Hard/Good/Easy), FSRS tier conversion from Anki intervals. See `docs/roadmap/phases/anki-import/AR-85-ANKI-DECK-IMPORT.md`.
+- **Multiplayer (Seeded Competitive):** Race Mode and Same Cards mode — two players, same seed, compare scores. See `docs/roadmap/phases/future/AR-86-MULTIPLAYER-SEEDED.md`.
+- **Leaderboards & Daily Challenge:** Global leaderboards, daily seeded challenge (one attempt/day), scoring formula. See `docs/roadmap/phases/future/AR-87-LEADERBOARD-DAILY-CHALLENGE.md`.
+- **Community Packs & Steam Workshop:** User-created fact packs, Workshop distribution, self-graded quiz for community content. See `docs/roadmap/phases/future/AR-88-COMMUNITY-PACKS-WORKSHOP.md`.
+- **Cross-Platform Save Sync:** Cloud save across mobile and Steam, conflict resolution, account linking. See `docs/roadmap/phases/future/AR-89-CROSS-PLATFORM-SAVE.md`.
+
+---
+
+## 36. Desktop Port & Responsive Layout [PLANNED — Steam Early Access]
+
+### Overview
+
+One codebase, two layout modes. The app detects viewport aspect ratio at runtime and switches between portrait (mobile) and landscape (desktop) layouts. No separate branches or builds — layout mode is determined by viewport shape, platform is determined by runtime wrapper (Capacitor = mobile, Tauri = desktop, bare = web).
+
+### Layout Modes
+
+**Portrait (existing, unchanged):**
+- 390×844px design canvas, 9:16 aspect ratio
+- Top 58% = enemy display (Phaser), bottom 42% = card hand overlay (Svelte)
+- Touch-first input, 48px touch targets
+
+**Landscape (new — "Option D"):**
+```
++----------------------------------------------------+
+| [Relics] [Chain Counter] [Combo]  |   ENEMY        |
+|                                   |   Sprite       |
+|                                   |   HP Bar       |
+|        CENTER STAGE               |   Intent       |
+|    (Quiz panel appears here       |   Status FX    |
+|     when Charge is committed)     |   Damage nums  |
+|                                   |                |
++-----------------------------------+----------------+
+|  [Card1]  [Card2]  [Card3]  [Card4]  [Card5]      |
+|              [AP: 3/3]  [Surge indicator]          |
+|         [Quick Play]  [CHARGE +1 AP]               |
++----------------------------------------------------+
+```
+
+- 1280×720px design canvas, 16:9 aspect ratio
+- Right 30% = enemy panel (always visible, even during quiz)
+- Left 70% = center stage (background, VFX, quiz panel when active)
+- Bottom 25-30% = card hand strip (full width)
+- Hub: portrait campsite centered with decorative side panels (Phase 1)
+
+### Input System (Landscape) [IMPLEMENTED — AR-74]
+
+Keyboard shortcuts (landscape only — portrait remains touch-only):
+
+| Key | Action | Context |
+|-----|--------|---------|
+| 1-5 | Select card from hand | Card hand visible |
+| Q | Quick Play (no quiz) | Card selected |
+| E | Charge Play (quiz for bonus AP) | Card selected |
+| 1-4 | Select quiz answer | Quiz visible (overrides card select) |
+| Enter | End Turn | Combat |
+| Escape | Deselect / Cancel / Navigate Back | Context-dependent (blocked during quiz) |
+| Space | Confirm / Skip Animation | Any |
+| Tab | Toggle deck/discard view | Combat |
+| ? or / | Open/close keyboard shortcut help | Any |
+
+**Input service architecture:** `src/services/inputService.ts` provides a pub/sub dispatcher for semantic `GameAction` types. `src/services/keyboardInput.ts` subscribes to `layoutMode` and only binds keyboard listeners in landscape mode. Components subscribe to `inputService` in `onMount` and unsubscribe in `onDestroy`. Keyboard module calls `setQuizVisible()` context-awareness from `CardCombatOverlay`.
+
+**Mouse-only guarantee:** Every action is performable with mouse clicks alone. Keyboard shortcuts are acceleration, not requirements. Verified:
+- Select card: clickable
+- Quick Play / Charge: clickable buttons
+- Quiz answer: clickable buttons
+- End turn: clickable button
+- Navigate back: clickable back button
+
+Mouse enhancements (landscape only):
+- Hover card: 1.05× scale lift + info preview tooltip showing mechanic name, AP cost, chain type
+- Hover enemy: expanded intent tooltip (planned — AR-74 hover base implemented)
+- Right-click card: detailed info popup (planned)
+- Click outside modal: dismiss
+
+**Keyboard shortcut help overlay:** `KeyboardShortcutHelp.svelte` — toggle with `?` key, only renders in landscape, shows all shortcuts organized by context (Combat, Quiz, Navigation, General). A `?` button in `CardCombatOverlay` provides mouse-accessible trigger.
+
+### Steam Integration
+
+- **Tauri v2** desktop wrapper (~10MB installer)
+- Steam Achievements mapped 1:1 from in-game achievements
+- Steam Cloud Save
+- Steam Rich Presence (shows current floor, enemy, activity)
+- Steam Deck Verified target (1280×800)
+
+### Target Resolutions
+
+| Viewport | Priority |
+|----------|----------|
+| 1920×1080 (FHD) | Must pass |
+| 1280×800 (Steam Deck) | Must pass |
+| 2560×1440 (QHD) | Should pass |
+| 3440×1440 (Ultrawide) | Should pass (letterbox OK) |
+
+### Implementation ARs
+
+See `docs/roadmap/phases/desktop-port/README.md` for the full dependency graph and status of 14 individual implementation ARs (AR-71 through AR-84).
+
+---
+
+## 37. Anki Deck Import [PLANNED — Future Release]
+
+Players import existing Anki decks (.apkg files). Anki cards become facts in the game's fact pool. Instead of multiple-choice quiz, Anki-imported facts use a **self-graded recall system** — see question, think, reveal answer, self-rate.
+
+### Self-Graded Quiz System
+
+```
+Phase 1: See question (front of card) → [Reveal Answer]
+Phase 2: See answer (back of card) → [Wrong] [Hard] [Good] [Easy]
+```
+
+| Self-Grade | Charge Multiplier | Chain Effect |
+|------------|------------------|--------------|
+| Wrong | 0.6× | Breaks chain |
+| Hard | 1.5× | Continues chain |
+| Good | 2.5× | Continues chain |
+| Easy | 3.5× | Continues chain |
+
+### FSRS Tier Conversion
+
+| Anki Interval | FSRS Tier |
+|---------------|-----------|
+| 0-7 days | Tier 1 (Learning) |
+| 8-30 days | Tier 2a (Familiar) |
+| 31-90 days | Tier 2b (Confident) |
+| 91+ days | Tier 3 (Mastered) |
+
+### Key Rules
+- **No distractors.** Anki facts use self-graded recall only.
+- **Always free** on all platforms.
+- **Stored locally** (not in cloud fact database).
+- Imported decks appear as selectable domains at run start.
+- Re-import updates existing facts, no duplicates.
+
+See `docs/roadmap/phases/anki-import/AR-85-ANKI-DECK-IMPORT.md` for implementation details.
 
 ---
 

@@ -13,6 +13,12 @@
   import { isFirstChargeFree } from '../../services/discoverySystem'
   import { getMechanicDefinition } from '../../data/mechanics'
   import { activeRunState } from '../../services/runStateStore'
+  import { getChainColor, getChainGlowColor, getChainColorGroups } from '../../services/chainVisuals'
+  import { getChainTypeName } from '../../data/chainTypes'
+  import { isLandscape } from '../../stores/layoutStore'
+  import { inputService } from '../../services/inputService'
+  // AR-74: Importing keyboardInput activates the landscape-mode keyboard listener subscription.
+  import '../../services/keyboardInput'
 
   interface Props {
     cards: Card[]
@@ -50,6 +56,7 @@
     tierUpTransitions = {},
     discarding = false,
     onselectcard,
+    ondeselectcard,
     oncastdirect,
     onchargeplay,
     isSurgeActive = false,
@@ -214,7 +221,37 @@
     }
   })
 
+  // AR-74: Register inputService handlers for keyboard shortcuts (landscape only).
+  // These map keyboard GameActions to the same functions that pointer handlers call.
+  let kbdUnsubscribers: Array<() => void> = []
+
+  $effect(() => {
+    // Clean up previous subscriptions on re-mount or effect re-run
+    for (const unsub of kbdUnsubscribers) unsub()
+    kbdUnsubscribers = []
+
+    kbdUnsubscribers.push(
+      inputService.on('SELECT_CARD', (action) => {
+        if (action.type !== 'SELECT_CARD') return
+        if (!$isLandscape) return
+        if (disabled) return
+        if (action.index >= 0 && action.index < cards.length) {
+          onselectcard(action.index)
+        }
+      })
+    )
+
+    kbdUnsubscribers.push(
+      inputService.on('DESELECT', () => {
+        if (!$isLandscape) return
+        ondeselectcard()
+      })
+    )
+  })
+
   onDestroy(() => {
+    for (const unsub of kbdUnsubscribers) unsub()
+    kbdUnsubscribers = []
     if (dragFrameId !== null) {
       cancelAnimationFrame(dragFrameId)
       dragFrameId = null
@@ -254,6 +291,16 @@
       return map
     })()
   )
+
+  // Chain pulse groups: cards sharing a chainType (2+ cards = pulse together)
+  let chainPulseCardIds = $derived.by(() => {
+    const groups = getChainColorGroups(cards)
+    const pulsingIds = new Set<string>()
+    for (const ids of groups.values()) {
+      for (const id of ids) pulsingIds.add(id)
+    }
+    return pulsingIds
+  })
 
   // Preload cardback images for cards in hand
   $effect(() => {
@@ -623,7 +670,14 @@
         <div class="card-front">
           {#if cardFrameUrl}
             <img class="card-frame-img" src={cardFrameUrl} alt={card.mechanicName ?? card.cardType} />
-            <div class="ap-gem">{apCost}</div>
+            <div class="ap-gem" style="color: {getChainColor(card.chainType)}; text-shadow: 0 0 2px rgba(0,0,0,0.6);">{apCost}</div>
+            {#if card.chainType !== undefined}
+              <div
+                class="chain-glow"
+                class:chain-pulse={chainPulseCardIds.has(card.id)}
+                style="background: radial-gradient(circle, {getChainGlowColor(card.chainType)} 0%, transparent 70%);"
+              ></div>
+            {/if}
             <div class="card-parchment-text">
               <span class="parchment-inner">
                 {#each getCardDescriptionParts(card, undefined, descPower) as part}
@@ -718,6 +772,25 @@
         <span class="charge-ap-badge">{isSurgeActive ? '+0' : '+1'} AP</span>
       </button>
     {/if}
+
+    <!-- AR-74: Mouse hover tooltip for landscape mode -->
+    {#if isHovered && $isLandscape && selectedIndex === null}
+      {@const chainName = card.chainType !== undefined ? getChainTypeName(card.chainType) : null}
+      {@const mechanic = getMechanicDefinition(card.mechanicId ?? '')}
+      <div
+        class="card-hover-tooltip"
+        style="transform: translate3d({xOffset}px, calc(-80px - var(--card-h) - 8px), 0) translateX(-50%);"
+        role="tooltip"
+      >
+        {#if mechanic?.name}
+          <span class="tooltip-mechanic">{mechanic.name}</span>
+        {/if}
+        <span class="tooltip-cost">{card.apCost ?? 1} AP</span>
+        {#if chainName}
+          <span class="tooltip-chain" style="color: {getChainColor(card.chainType)}">{chainName}</span>
+        {/if}
+      </div>
+    {/if}
   {/each}
 
   {#each animatingCards as card (card.id)}
@@ -765,7 +838,14 @@
         <div class="card-front">
           {#if cardFrameUrl}
             <img class="card-frame-img" src={cardFrameUrl} alt={card.mechanicName ?? card.cardType} />
-            <div class="ap-gem">{card.apCost ?? 1}</div>
+            <div class="ap-gem" style="color: {getChainColor(card.chainType)}; text-shadow: 0 0 2px rgba(0,0,0,0.6);">{card.apCost ?? 1}</div>
+            {#if card.chainType !== undefined}
+              <div
+                class="chain-glow"
+                class:chain-pulse={chainPulseCardIds.has(card.id)}
+                style="background: radial-gradient(circle, {getChainGlowColor(card.chainType)} 0%, transparent 70%);"
+              ></div>
+            {/if}
             <div class="card-parchment-text">
               {#if showFrontValue}
                 <span class="effect-value">{effectVal}</span>
@@ -886,10 +966,30 @@
     font-family: 'Cinzel', 'Georgia', serif;
     font-size: calc(var(--card-w) * 0.13);
     font-weight: 900;
-    color: #fff;
     text-shadow: 0 1px 3px rgba(0,0,0,0.95), 0 0 8px rgba(0,0,0,0.6);
     z-index: 2;
     pointer-events: none;
+  }
+
+  .chain-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.3;
+  }
+
+  .chain-glow.chain-pulse {
+    animation: chain-pulse-anim 1.5s ease-in-out infinite;
+  }
+
+  @keyframes chain-pulse-anim {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
   }
 
   .card-parchment-text {
@@ -1754,5 +1854,48 @@
     color: #facc15 !important;
     text-shadow: 0 0 6px rgba(250, 204, 21, 0.6), -1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000;
     transition: color 150ms ease;
+  }
+
+  /* === AR-74: Mouse hover tooltip (landscape only) === */
+  .card-hover-tooltip {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    background: rgba(15, 15, 30, 0.92);
+    border: 1px solid rgba(78, 205, 196, 0.4);
+    border-radius: 6px;
+    padding: 5px 10px;
+    pointer-events: none;
+    z-index: 30;
+    white-space: nowrap;
+    font-family: 'Courier New', monospace;
+    font-size: 0.68rem;
+    animation: tooltip-fade-in 120ms ease-out;
+  }
+
+  @keyframes tooltip-fade-in {
+    from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+
+  .tooltip-mechanic {
+    color: #e0e0e0;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+
+  .tooltip-cost {
+    color: rgba(255, 211, 105, 0.85);
+    font-size: 0.62rem;
+  }
+
+  .tooltip-chain {
+    font-size: 0.6rem;
+    opacity: 0.85;
+    font-weight: 600;
   }
 </style>
