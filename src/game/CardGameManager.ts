@@ -8,6 +8,7 @@ import { BootScene } from './scenes/BootScene'
 import { CombatScene } from './scenes/CombatScene'
 import { RewardRoomScene } from './scenes/RewardRoomScene'
 import { layoutMode, getCanvasForMode } from '../stores/layoutStore'
+import { get } from 'svelte/store'
 import type { LayoutMode } from '../stores/layoutStore'
 
 export class CardGameManager {
@@ -59,6 +60,17 @@ export class CardGameManager {
     this.unsubLayoutMode = layoutMode.subscribe((mode) => {
       this.handleLayoutChange(mode)
     })
+
+    // AR-91: If we're already in landscape when Phaser boots, the subscription
+    // fires immediately before `this.game` is set, so the resize is a no-op.
+    // Apply the current layout mode explicitly after game creation.
+    const currentMode = get(layoutMode)
+    if (currentMode !== 'portrait') {
+      // Use game.events.once('ready') so the ScaleManager is fully initialized
+      this.game.events.once('ready', () => {
+        this.handleLayoutChange(currentMode)
+      })
+    }
   }
 
   /**

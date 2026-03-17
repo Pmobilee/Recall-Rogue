@@ -1260,6 +1260,12 @@
     pointer-events: none;
   }
 
+  /* AR-91: Override .card-in-hand's position:absolute so flex layout
+     distributes landscape cards correctly in the flex row */
+  .card-hand-landscape .card-landscape {
+    position: relative !important;
+  }
+
   .card-landscape {
     position: relative;
     width: var(--card-w);

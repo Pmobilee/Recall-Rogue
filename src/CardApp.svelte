@@ -14,7 +14,8 @@
     activeRewardRevealStep,
   } from './ui/stores/gameState'
   import type { Screen } from './ui/stores/gameState'
-  import { navigateToScreen } from './services/screenController'
+  import { navigateToScreen, normalizeHomeScreen } from './services/screenController'
+  import type { HubScreenName } from './services/screenController'
   import { openTestRewardRoom } from './services/rewardRoomBridge'
   import {
     activeCardRewardOptions,
@@ -112,7 +113,7 @@
   import { collectMatchingFactIds } from './services/presetSelectionService'
   import { resumeCombatWithFallback } from './services/combatResumeService'
   import { BASE_WIDTH } from './data/layout'
-  import { layoutMode } from './stores/layoutStore'
+  import { layoutMode, isLandscape } from './stores/layoutStore'
 
   import ArchetypeSelection from './ui/components/ArchetypeSelection.svelte'
   import CardCombatOverlay from './ui/components/CardCombatOverlay.svelte'
@@ -127,6 +128,7 @@
   import RetreatOrDelve from './ui/components/RetreatOrDelve.svelte'
   import DungeonEntrance from './ui/components/DungeonEntrance.svelte'
   import HubScreen from './ui/components/HubScreen.svelte'
+  import HubNavBar from './ui/components/HubNavBar.svelte'
   import ShopRoomOverlay from './ui/components/ShopRoomOverlay.svelte'
   import CampfirePause from './ui/components/CampfirePause.svelte'
   import SpecialEventOverlay from './ui/components/SpecialEventOverlay.svelte'
@@ -162,6 +164,11 @@
   function transitionScreen(target: Screen): void {
     const nextScreen = navigateToScreen(target, $currentScreen)
     currentScreen.set(nextScreen)
+  }
+
+  /** AR-91: Hub nav sidebar handler — routes hub nav buttons to the correct screen. */
+  function handleHubNavigate(target: HubScreenName): void {
+    transitionScreen(target)
   }
 
   let showOutsideDuePrompt = $state(false)
@@ -893,6 +900,10 @@
   {#if $currentScreen === 'hub' || $currentScreen === 'mainMenu' || $currentScreen === 'base'}
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div class="hub-wrapper" class:no-interact={showBootAnimation} class:boot-hidden={showBootAnimation && !hubShowBlurred} class:blurred={hubShowBlurred && !hubDeblurring} class:deblurring={hubDeblurring}>
+    <!-- AR-91: Landscape sidebar navigation (portrait renders its own bottom tab bar) -->
+    {#if $isLandscape}
+      <HubNavBar current={normalizeHomeScreen($currentScreen)} onNavigate={handleHubNavigate} />
+    {/if}
     <HubScreen
       streak={$playerSave?.stats.currentStreak ?? 0}
       lastRunSummary={$lastRunSummary}

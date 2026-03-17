@@ -122,15 +122,27 @@ Total: N files created/modified, M verification steps
 - **If a task is blocked** — note the blocker in the phase doc, move to the next unblocked task
 - **After every 3-5 completed tasks** — re-read the phase doc to confirm you're on track
 
+### 🚨 Visual Inspection After EVERY Task — NON-NEGOTIABLE 🚨
+
+After completing ANY task that touches UI, visuals, gameplay, or layout:
+1. **The Opus orchestrator MUST visually inspect** using Playwright MCP (screenshot + snapshot + console)
+2. **Navigate to the affected screen** and verify it looks correct as the user would see it
+3. **If it doesn't look right: FIX IT** — spawn another worker, iterate, re-inspect
+4. **NEVER report a task as done without visual confirmation**
+5. **Edge cases must be examined programmatically** — run unit tests, use `browser_evaluate` for boundary conditions
+
+This applies to every single fix, implementation, and AR completion. Even if it costs more tokens. It is ALWAYS worth it. The user has been burned repeatedly by changes that "should work" but don't look right visually.
+
 ### Completing a Phase
 
 When ALL checkboxes in the phase doc are `[x]`:
 
 1. **Run the verification gate** — every command must pass
-2. **Set status to `Complete`** in the phase doc header
-3. **Move the phase doc** from `docs/roadmap/phases/` to `docs/roadmap/completed/`
-4. **Update `docs/roadmap/PROGRESS.md`** — check off the phase
-5. **Update `docs/GAME_DESIGN.md`** and `docs/ARCHITECTURE.md` if changes affect gameplay/systems/files
+2. **VISUALLY INSPECT with Playwright** — screenshot every affected screen, check for visual regressions
+3. **Set status to `Complete`** in the phase doc header
+4. **Move the phase doc** from `docs/roadmap/phases/` to `docs/roadmap/completed/`
+5. **Update `docs/roadmap/PROGRESS.md`** — check off the phase
+6. **Update `docs/GAME_DESIGN.md`** and `docs/ARCHITECTURE.md` if changes affect gameplay/systems/files
 6. **Clear TodoWrite** — remove all completed tasks for this phase
 
 Do NOT leave a completed phase in `phases/`. Do NOT leave unchecked boxes in a moved phase doc.

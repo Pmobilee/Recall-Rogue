@@ -101,10 +101,10 @@ async function createVignetteMask(size) {
     <defs>
       <radialGradient id="v" cx="50%" cy="50%" r="50%">
         <stop offset="0%" stop-color="black" stop-opacity="0"/>
-        <stop offset="55%" stop-color="black" stop-opacity="0"/>
-        <stop offset="80%" stop-color="black" stop-opacity="0.7"/>
-        <stop offset="95%" stop-color="black" stop-opacity="1"/>
-        <stop offset="100%" stop-color="black" stop-opacity="1"/>
+        <stop offset="80%" stop-color="black" stop-opacity="0"/>
+        <stop offset="92%" stop-color="black" stop-opacity="0.3"/>
+        <stop offset="98%" stop-color="black" stop-opacity="0.7"/>
+        <stop offset="100%" stop-color="black" stop-opacity="0.9"/>
       </radialGradient>
     </defs>
     <rect width="${size}" height="${size}" fill="url(#v)"/>

@@ -344,7 +344,7 @@ export default class BootAnimScene extends Phaser.Scene {
     this.sceneSprites.push(ring2)
 
     // Ring 3: starts as a speck inside ring 2's hole
-    const ring3 = this.add.image(cx - 10, cy + 30, 'boot_cave_ring_3')
+    const ring3 = this.add.image(cx + 10, cy + 30, 'boot_cave_ring_3')
       .setScale(rs * 0.06).setDepth(10).setAlpha(0.8)
     this.sceneSprites.push(ring3)
 
@@ -381,7 +381,7 @@ export default class BootAnimScene extends Phaser.Scene {
       this.tweens.add({
         targets: ring3,
         scaleX: endScale, scaleY: endScale,
-        x: cx,
+        x: cx - 10,
         y: cy - 30,    // almost stationary — stabilized flight
         angle: -1,
         duration: dur + 600,

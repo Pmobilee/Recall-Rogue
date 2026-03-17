@@ -2345,13 +2345,15 @@
   }
 
   /* Player status strip (HP bar): bottom-left above card hand */
+  /* AR-91: constrain max-width so HP bar doesn't span the full viewport */
   .layout-landscape .player-status-strip {
     position: fixed;
     bottom: 27vh;
     left: 50%;
     right: auto;
     transform: translateX(-50%);
-    width: 60%;
+    width: 40%;
+    max-width: 480px;
   }
 
   /* Pile indicators: left edge area for draw/discard */

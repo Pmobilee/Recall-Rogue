@@ -9,6 +9,7 @@
   import type { ActMap, MapNode } from '../../services/mapGenerator'
   import MapNodeComponent from './MapNode.svelte'
   import { BASE_WIDTH } from '../../data/layout'
+  import { isLandscape } from '../../stores/layoutStore'
 
   // =========================================================
   // Props
@@ -63,14 +64,23 @@
   // =========================================================
 
   let scrollContainer = $state<HTMLDivElement | undefined>(undefined)
-  let containerWidth  = $state(Math.min(typeof window !== 'undefined' ? window.innerWidth : BASE_WIDTH, MAX_WIDTH))
+
+  /** AR-91: In landscape, use full viewport width so nodes spread horizontally. */
+  function getInitialContainerWidth(): number {
+    if (typeof window === 'undefined') return BASE_WIDTH
+    return $isLandscape ? window.innerWidth : Math.min(window.innerWidth, MAX_WIDTH)
+  }
+
+  let containerWidth  = $state(getInitialContainerWidth())
 
   /** Current layout scale factor, read once on mount and updated on resize. */
   let layoutScale = $state(1)
 
+  /** AR-91: In landscape, compress map height so the whole map fits without heavy scrolling. */
+  let effectiveMapHeight = $derived($isLandscape ? BASE_MAP_HEIGHT * 0.7 : BASE_MAP_HEIGHT)
 
   /** Scaled map constants derived from layoutScale. */
-  let TOTAL_MAP_HEIGHT = $derived(BASE_MAP_HEIGHT * layoutScale)
+  let TOTAL_MAP_HEIGHT = $derived(effectiveMapHeight * layoutScale)
   let H_PADDING = $derived(BASE_H_PADDING * layoutScale)
   let V_PADDING = $derived(BASE_V_PADDING * layoutScale)
 
@@ -281,7 +291,8 @@
 
     const observer = new ResizeObserver(entries => {
       for (const entry of entries) {
-        containerWidth = Math.min(entry.contentRect.width, MAX_WIDTH)
+        // AR-91: In landscape, use full container width; in portrait, cap at MAX_WIDTH
+        containerWidth = $isLandscape ? entry.contentRect.width : Math.min(entry.contentRect.width, MAX_WIDTH)
         // Re-read scale whenever the container resizes (viewport change)
         layoutScale = getLayoutScale()
       }
