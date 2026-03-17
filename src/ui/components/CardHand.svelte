@@ -1013,7 +1013,7 @@
               <span class="parchment-inner">
                 {#each getCardDescriptionParts(card, undefined, descPower) as part}
                   {#if part.type === 'number'}
-                    <span class="desc-number" class:charge-preview={isChargePreview}>{part.value}</span>
+                    <span class="desc-number" class:charge-preview={isChargePreview && !isBtnChargePreview} class:charge-preview-btn={isBtnChargePreview}>{part.value}</span>
                   {:else if part.type === 'keyword'}
                     <span class="desc-keyword">{part.value}</span>
                   {:else if part.type === 'conditional-number'}
@@ -1032,7 +1032,7 @@
             <div class="card-domain-stripe" style="background: {domainColor};"></div>
             <div class="card-front-name">{card.mechanicName ?? card.cardType}</div>
             {#if showFrontValue}
-              <div class="card-effect-value" class:boosted={isBoosted() && effectVal > 0} class:charge-preview={isChargePreview}>{effectVal}</div>
+              <div class="card-effect-value" class:boosted={isBoosted() && effectVal > 0} class:charge-preview={isChargePreview && !isBtnChargePreview} class:charge-preview-btn={isBtnChargePreview}>{effectVal}</div>
             {/if}
           {/if}
           {#if card.isMasteryTrial}
@@ -2353,6 +2353,13 @@
   .charge-preview {
     color: #facc15 !important;
     text-shadow: 0 0 6px rgba(250, 204, 21, 0.6), -1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000;
+    transition: color 150ms ease;
+  }
+
+  /* === CHARGE PREVIEW (button hover) — green number tint when hovering the CHARGE button === */
+  .charge-preview-btn {
+    color: #4ade80 !important;
+    text-shadow: 0 0 6px rgba(74, 222, 128, 0.6), -1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000;
     transition: color 150ms ease;
   }
 

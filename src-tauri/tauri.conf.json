@@ -1,5 +1,4 @@
 {
-  "$schema": "https://raw.githubusercontent.com/nicklason/tauri-settings/v2/schema.json",
   "productName": "Recall Rogue",
   "version": "0.1.0",
   "identifier": "com.bramblegategames.recallrogue",
@@ -10,7 +9,6 @@
     "beforeBuildCommand": "npm run build"
   },
   "app": {
-    "title": "Recall Rogue",
     "windows": [
       {
         "title": "Recall Rogue",

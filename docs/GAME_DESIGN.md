@@ -174,7 +174,7 @@ Research: Roediger & Karpicke (2006) — retrieval practice = 87% retention vs 4
 
 Cards use hand-crafted PNG card frames per mechanic category, with the following additions in v2:
 
-- **CHARGE button:** Displayed below the card in the popped state. Shows "FREE" (first Charge of fact) or "+1 AP" (subsequent Charges). Tap to initiate quiz.
+- **CHARGE button:** Displayed below the card in the popped state. Shows "FREE" (first Charge of fact) or "+1 AP" (subsequent Charges). Tap to initiate quiz. **Hover/press preview:** Hovering or touch-pressing the CHARGE button triggers a real-time charge value preview on the selected card — numeric values in the card's description update to show their charged equivalents in green (`#4ADE80`). Leaving the button reverts to normal display. Only active when the charge is affordable.
 - **Chain color tint:** 2–3px colored tint on the left frame edge indicates `chainType` (0-5). Same color = can chain. Pulse in sync when 2+ cards in hand share a `chainType`.
 - **Chain ember particles (AR-71.2):** Cards with a `chainType` display 5 small CSS particle dots rising from their top edge, colored in the chain color. The smoldering effect signals chain affinity at a glance. Pure CSS `@keyframes`, `pointer-events: none`.
 - **AP cost badge:** Gemstone badge top-right, colored by AP cost.
@@ -700,12 +700,14 @@ At each Rest Site, player chooses exactly one:
 | Choice | Effect | Quiz Count |
 |--------|--------|------------|
 | **Rest** | Heal 30% max HP | 0 |
-| **Study** | Player chooses 1 eligible card from their deck to upgrade. | 0 |
+| **Study** | Answer 3 quiz questions — each correct answer upgrades a random eligible card | 3 |
 | **Meditate** | Remove 1 card from your deck (deck thinning) | 0 |
 
-**Study flow:** Player is shown all upgrade-eligible cards from their deck and selects one to upgrade. The selected card gains boosted values ("+" suffix, blue glow border). No quiz required.
+**Study flow:** A standalone 3-question quiz is shown (`StudyQuizOverlay`). Questions are drawn from the run's current fact pool. For each correct answer, one random upgrade-eligible (non-upgraded) card in the deck is upgraded in-place (gains "+" suffix and boosted values). Perfect score = 3 upgrades. Disabled if no upgrade-eligible cards remain.
 
-This mirrors STS's Rest vs. Upgrade at campfires, but adds a third option (Meditate for deck thinning).
+**Meditate flow:** A scrollable list of all deck cards is shown (`MeditateOverlay`). Player taps a card to select it, then confirms via a red "Remove" button. A confirm dialog prevents accidental removal. Disabled if the deck has 5 or fewer cards.
+
+This design makes Study on-brand with the knowledge/learning theme — upgrades must be earned through correct answers, not handed out for free.
 
 ### Shop System
 

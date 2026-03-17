@@ -2,21 +2,41 @@
  * Steam platform service for Recall Rogue.
  *
  * Wraps all Steamworks SDK calls behind a `hasSteam` platform guard. On non-Steam
- * platforms (mobile, web), every function is a no-op. When Tauri + steamworks-rs
- * integration is ready (AR-80 Rust side), un-comment the `invoke` calls below
- * and remove the stub console.log lines.
+ * platforms (mobile, web), every function is a no-op.
+ *
+ * The Rust backend (src-tauri/src/steam.rs) implements the actual Steamworks calls.
+ * This module communicates with it via Tauri IPC (`invoke`).
  *
  * DLC ownership results are cached for the session to avoid per-frame Steam API polls.
  */
 
 import { hasSteam } from './platformService';
 
-// Tauri invoke — un-comment when Rust backend is ready:
-// import { invoke } from '@tauri-apps/api/core';
-
 // ── DLC cache ────────────────────────────────────────────────────────────────
 
 const _dlcCache = new Map<string, boolean>();
+
+// ── Internal Tauri IPC helper ─────────────────────────────────────────────────
+
+/**
+ * Thin wrapper around Tauri `invoke` that:
+ *  - Dynamically imports `@tauri-apps/api/core` (safe in non-Tauri builds)
+ *  - Returns `null` and logs a warning on any failure
+ *  - Short-circuits if `hasSteam` is false (non-desktop platforms)
+ */
+async function tauriInvoke<T = unknown>(
+  cmd: string,
+  args?: Record<string, unknown>,
+): Promise<T | null> {
+  if (!hasSteam) return null;
+  try {
+    const { invoke } = await import('@tauri-apps/api/core');
+    return await invoke<T>(cmd, args);
+  } catch (e) {
+    console.warn(`[Steam] invoke '${cmd}' failed:`, e);
+    return null;
+  }
+}
 
 // ── Achievements ──────────────────────────────────────────────────────────────
 
@@ -26,13 +46,7 @@ const _dlcCache = new Map<string, boolean>();
  */
 export async function unlockAchievement(achievementId: string): Promise<void> {
   if (!hasSteam) return;
-  try {
-    // When Tauri + Steam SDK is ready:
-    // await invoke('steam_unlock_achievement', { id: achievementId });
-    console.log(`[Steam] Achievement unlocked: ${achievementId}`);
-  } catch (e) {
-    console.warn('[Steam] Failed to unlock achievement:', e);
-  }
+  await tauriInvoke('steam_unlock_achievement', { id: achievementId });
 }
 
 // ── Rich Presence ─────────────────────────────────────────────────────────────
@@ -44,12 +58,7 @@ export async function unlockAchievement(achievementId: string): Promise<void> {
  */
 export async function setRichPresence(key: string, value: string): Promise<void> {
   if (!hasSteam) return;
-  try {
-    // await invoke('steam_set_rich_presence', { key, value });
-    console.log(`[Steam] Rich Presence: ${key} = ${value}`);
-  } catch (e) {
-    console.warn('[Steam] Failed to set rich presence:', e);
-  }
+  await tauriInvoke('steam_set_rich_presence', { key, value });
 }
 
 // ── Cloud Save ────────────────────────────────────────────────────────────────
@@ -58,32 +67,29 @@ export async function setRichPresence(key: string, value: string): Promise<void>
  * Write serialized save data to Steam Cloud.
  * Called on run end and encounter end for incremental cloud backup.
  * No-op on non-Steam platforms.
+ *
+ * TODO (AR-80 follow-up): Wire to `steam_cloud_save` Tauri command once the
+ * Rust backend implements RemoteStorage. For now this is a logged stub.
  */
 export async function cloudSave(data: string): Promise<void> {
   if (!hasSteam) return;
-  try {
-    // await invoke('steam_cloud_save', { data });
-    console.log('[Steam] Cloud save written');
-  } catch (e) {
-    console.warn('[Steam] Cloud save failed:', e);
-  }
+  // TODO: await tauriInvoke('steam_cloud_save', { data });
+  console.log('[Steam] Cloud save (stub — Rust backend not yet implemented)', data.length, 'bytes');
 }
 
 /**
  * Read serialized save data from Steam Cloud.
  * Returns null on non-Steam platforms or when no cloud save exists.
  * Caller is responsible for conflict resolution (compare timestamps).
+ *
+ * TODO (AR-80 follow-up): Wire to `steam_cloud_load` Tauri command once the
+ * Rust backend implements RemoteStorage.
  */
 export async function cloudLoad(): Promise<string | null> {
   if (!hasSteam) return null;
-  try {
-    // return await invoke<string>('steam_cloud_load');
-    console.log('[Steam] Cloud load requested (stub — no data)');
-    return null;
-  } catch (e) {
-    console.warn('[Steam] Cloud load failed:', e);
-    return null;
-  }
+  // TODO: return await tauriInvoke<string>('steam_cloud_load');
+  console.log('[Steam] Cloud load (stub — Rust backend not yet implemented)');
+  return null;
 }
 
 // ── DLC Ownership ─────────────────────────────────────────────────────────────
@@ -92,6 +98,8 @@ export async function cloudLoad(): Promise<string | null> {
  * Check whether the player owns a specific Steam DLC.
  * Results are cached for the lifetime of the session.
  * Returns false on non-Steam platforms.
+ *
+ * TODO (AR-80 follow-up): Wire to `steam_has_dlc` Tauri command once implemented.
  */
 export async function hasDLC(dlcId: string): Promise<boolean> {
   if (!hasSteam) return false;
@@ -100,15 +108,10 @@ export async function hasDLC(dlcId: string): Promise<boolean> {
     return _dlcCache.get(dlcId)!;
   }
 
-  try {
-    // const owned = await invoke<boolean>('steam_has_dlc', { dlcId });
-    const owned = false; // stub until Rust backend is ready
-    _dlcCache.set(dlcId, owned);
-    return owned;
-  } catch (e) {
-    console.warn('[Steam] DLC check failed for', dlcId, ':', e);
-    return false;
-  }
+  // TODO: const owned = await tauriInvoke<boolean>('steam_has_dlc', { dlcId }) ?? false;
+  const owned = false; // stub until Rust backend implements DLC check
+  _dlcCache.set(dlcId, owned);
+  return owned;
 }
 
 // ── Leaderboards ──────────────────────────────────────────────────────────────
@@ -123,31 +126,27 @@ export interface SteamLeaderboardEntry {
 /**
  * Fetch the top entries for a named Steam leaderboard.
  * Returns an empty array on non-Steam platforms or on failure.
+ *
+ * TODO (AR-80 follow-up): Wire to `steam_get_leaderboard_entries` once Rust backend
+ * implements async leaderboard fetching.
  */
 export async function getLeaderboardEntries(board: string): Promise<SteamLeaderboardEntry[]> {
   if (!hasSteam) return [];
-  try {
-    // return await invoke<SteamLeaderboardEntry[]>('steam_get_leaderboard_entries', { board });
-    console.log(`[Steam] Leaderboard fetch (stub): ${board}`);
-    return [];
-  } catch (e) {
-    console.warn('[Steam] Leaderboard fetch failed for', board, ':', e);
-    return [];
-  }
+  // TODO: return await tauriInvoke<SteamLeaderboardEntry[]>('steam_get_leaderboard_entries', { board }) ?? [];
+  console.log(`[Steam] Leaderboard fetch (stub — Rust backend not yet implemented): ${board}`);
+  return [];
 }
 
 /**
  * Submit a score to a named Steam leaderboard.
  * No-op on non-Steam platforms.
+ *
+ * TODO (AR-80 follow-up): Wire to `steam_submit_score` once Rust backend is implemented.
  */
 export async function submitScore(board: string, score: number): Promise<void> {
   if (!hasSteam) return;
-  try {
-    // await invoke('steam_submit_score', { board, score });
-    console.log(`[Steam] Score submitted to ${board}: ${score}`);
-  } catch (e) {
-    console.warn('[Steam] Score submission failed:', e);
-  }
+  // TODO: await tauriInvoke('steam_submit_score', { board, score });
+  console.log(`[Steam] Score submitted (stub — Rust backend not yet implemented) ${board}: ${score}`);
 }
 
 // ── Rich Presence Helper ──────────────────────────────────────────────────────

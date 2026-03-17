@@ -50,6 +50,11 @@
     hasRestUpgradeCandidates,
     onUpgradeSelected,
     onUpgradeSkipped,
+    generateStudyQuestions,
+    onStudyComplete,
+    getMeditateCandidates,
+    onMeditateRemove,
+    canMeditate,
     onPostMiniBossUpgradeSelected,
     onPostMiniBossUpgradeSkipped,
     resumeFromCampfire,
@@ -90,6 +95,7 @@
     startEncounterForRoom,
   } from './services/encounterBridge'
   import type { FactDomain } from './data/card-types'
+  import type { QuizQuestion } from './services/bossQuizPhase'
   import type { MysteryEffect } from './services/floorManager'
   import { generateCombatRoomOptions } from './services/floorManager'
   import { healPlayer } from './services/runManager'
@@ -114,6 +120,8 @@
   import MysteryEventOverlay from './ui/components/MysteryEventOverlay.svelte'
   import MasteryChallengeOverlay from './ui/components/MasteryChallengeOverlay.svelte'
   import RestRoomOverlay from './ui/components/RestRoomOverlay.svelte'
+  import StudyQuizOverlay from './ui/components/StudyQuizOverlay.svelte'
+  import MeditateOverlay from './ui/components/MeditateOverlay.svelte'
   import RunEndScreen from './ui/components/RunEndScreen.svelte'
   import CardRewardScreen from './ui/components/CardRewardScreen.svelte'
   import RetreatOrDelve from './ui/components/RetreatOrDelve.svelte'
@@ -562,6 +570,37 @@
     if (!openUpgradeSelection()) {
       return
     }
+  }
+
+  let studyQuestions = $state<QuizQuestion[]>([])
+  let meditateCandidates = $state<import('./data/card-types').Card[]>([])
+
+  function handleRestStudy(): void {
+    studyQuestions = generateStudyQuestions()
+    gameFlowState.set('restStudy')
+    currentScreen.set('restStudy')
+  }
+
+  function handleRestMeditate(): void {
+    meditateCandidates = getMeditateCandidates()
+    gameFlowState.set('restMeditate')
+    currentScreen.set('restMeditate')
+  }
+
+  function handleStudyComplete(correctCount: number): void {
+    studyQuestions = []
+    onStudyComplete(correctCount)
+  }
+
+  function handleMeditateRemove(cardId: string): void {
+    meditateCandidates = []
+    onMeditateRemove(cardId)
+  }
+
+  function handleMeditateCancel(): void {
+    meditateCandidates = []
+    gameFlowState.set('restRoom')
+    currentScreen.set('restRoom')
   }
 
   function handleRewardSelected(card: import('./data/card-types').Card): void {
@@ -1102,14 +1141,35 @@
 
   {#if $currentScreen === 'restRoom'}
     {@const run = $activeRunState}
-    {@const upgradeDisabled = !hasRestUpgradeCandidates()}
     <RestRoomOverlay
       playerHp={run?.playerHp ?? 0}
       playerMaxHp={run?.playerMaxHp ?? 0}
       onheal={handleRestHeal}
-      onupgrade={handleRestUpgrade}
-      upgradeDisabled={upgradeDisabled}
-      upgradeDisabledReason={upgradeDisabled ? 'No cards to upgrade' : undefined}
+      onstudy={handleRestStudy}
+      onmeditate={handleRestMeditate}
+      studyDisabled={!hasRestUpgradeCandidates()}
+      studyDisabledReason="No cards to upgrade"
+      meditateDisabled={!canMeditate()}
+      meditateDisabledReason="Deck too small (min 5)"
+    />
+  {/if}
+
+  {#if $currentScreen === 'restStudy'}
+    <StudyQuizOverlay questions={studyQuestions} oncomplete={handleStudyComplete} />
+  {/if}
+
+  {#if $currentScreen === 'restMeditate'}
+    {@const run = $activeRunState}
+    <MeditateOverlay
+      cards={meditateCandidates.map(c => ({
+        id: c.id,
+        mechanicName: c.mechanicName ?? '',
+        factQuestion: c.factId ? (factsDB.getById(c.factId)?.quizQuestion ?? '') : '',
+        isUpgraded: c.isUpgraded ?? false,
+        tier: c.tier ?? '1',
+      }))}
+      onremove={handleMeditateRemove}
+      oncancel={handleMeditateCancel}
     />
   {/if}
 

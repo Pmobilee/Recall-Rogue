@@ -8,12 +8,25 @@
     playerHp: number
     playerMaxHp: number
     onheal: () => void
-    onupgrade: () => void
-    upgradeDisabled?: boolean
-    upgradeDisabledReason?: string
+    onstudy: () => void
+    onmeditate: () => void
+    studyDisabled?: boolean
+    studyDisabledReason?: string
+    meditateDisabled?: boolean
+    meditateDisabledReason?: string
   }
 
-  let { playerHp, playerMaxHp, onheal, onupgrade, upgradeDisabled = false, upgradeDisabledReason = 'No cards to upgrade' }: Props = $props()
+  let {
+    playerHp,
+    playerMaxHp,
+    onheal,
+    onstudy,
+    onmeditate,
+    studyDisabled = false,
+    studyDisabledReason = 'No cards to upgrade',
+    meditateDisabled = false,
+    meditateDisabledReason = 'Deck too small',
+  }: Props = $props()
   const bgUrl = getRandomRoomBg('rest')
   holdScreenTransition()
   preloadImages([bgUrl]).then(releaseScreenTransition)
@@ -26,7 +39,7 @@
   <img class="screen-bg" src={bgUrl} alt="" aria-hidden="true" loading="eager" decoding="async" />
   <div class="rest-card" style="position: relative; z-index: 1;">
     <h2 class="rest-title">Rest Site</h2>
-    <p class="rest-choice-caption">Choose one: Rest or Upgrade</p>
+    <p class="rest-choice-caption">Choose one: Rest, Study, or Meditate</p>
 
     <div class="hp-info">
       HP: {playerHp} / {playerMaxHp}
@@ -38,23 +51,36 @@
         data-testid="rest-heal"
         onclick={onheal}
       >
-        <span class="option-icon">{'\u2764\uFE0F'}</span>
+        <span class="option-icon">❤️</span>
         <span class="option-label">Rest</span>
         <span class="option-detail">Heal 30% HP</span>
         <span class="option-preview">+{healAmount} HP &rarr; {projectedHp}</span>
       </button>
 
       <button
-        class="option-card upgrade-card"
-        class:disabled={upgradeDisabled}
-        data-testid="rest-upgrade"
-        onclick={() => { if (!upgradeDisabled) onupgrade() }}
-        disabled={upgradeDisabled}
+        class="option-card study-card"
+        class:disabled={studyDisabled}
+        data-testid="rest-study"
+        onclick={() => { if (!studyDisabled) onstudy() }}
+        disabled={studyDisabled}
       >
-        <span class="option-icon">{'\u2B06\uFE0F'}</span>
-        <span class="option-label">Upgrade</span>
-        <span class="option-detail">Boost one card</span>
-        <span class="option-preview">{upgradeDisabled ? upgradeDisabledReason : 'Enhance one card'}</span>
+        <span class="option-icon">📖</span>
+        <span class="option-label">Study</span>
+        <span class="option-detail">Quiz 3 questions — each correct upgrades a card</span>
+        <span class="option-preview">{studyDisabled ? studyDisabledReason : 'Answer questions to upgrade cards'}</span>
+      </button>
+
+      <button
+        class="option-card meditate-card"
+        class:disabled={meditateDisabled}
+        data-testid="rest-meditate"
+        onclick={() => { if (!meditateDisabled) onmeditate() }}
+        disabled={meditateDisabled}
+      >
+        <span class="option-icon">🧘</span>
+        <span class="option-label">Meditate</span>
+        <span class="option-detail">Remove 1 card from your deck</span>
+        <span class="option-preview">{meditateDisabled ? meditateDisabledReason : 'Remove 1 card from deck'}</span>
       </button>
     </div>
   </div>
@@ -87,7 +113,7 @@
     border: 2px solid #2ECC71;
     border-radius: 12px;
     padding: calc(24px * var(--layout-scale, 1));
-    max-width: calc(340px * var(--layout-scale, 1));
+    max-width: calc(480px * var(--layout-scale, 1));
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -116,7 +142,7 @@
 
   .option-cards {
     display: flex;
-    gap: calc(12px * var(--layout-scale, 1));
+    gap: calc(10px * var(--layout-scale, 1));
     width: 100%;
   }
 
@@ -125,11 +151,11 @@
     background: #1E2D3D;
     border: 2px solid #484F58;
     border-radius: 8px;
-    padding: calc(16px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
+    padding: calc(14px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1));
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: calc(6px * var(--layout-scale, 1));
+    gap: calc(5px * var(--layout-scale, 1));
     cursor: pointer;
     transition: transform 0.1s, border-color 0.15s;
   }
@@ -146,11 +172,16 @@
     border-color: #2ECC71;
   }
 
-  .upgrade-card:hover {
-    border-color: #3498DB;
+  .study-card:hover:not(.disabled) {
+    border-color: #7C3AED;
   }
 
-  .upgrade-card.disabled {
+  .meditate-card:hover:not(.disabled) {
+    border-color: #14B8A6;
+  }
+
+  .study-card.disabled,
+  .meditate-card.disabled {
     border-color: #5b6471;
     background: #17212b;
     filter: grayscale(0.35);
@@ -158,29 +189,30 @@
     transform: none;
   }
 
-  .upgrade-card.disabled:hover {
+  .study-card.disabled:hover,
+  .meditate-card.disabled:hover {
     border-color: #5b6471;
     transform: none;
   }
 
   .option-icon {
-    font-size: calc(28px * var(--layout-scale, 1));
+    font-size: calc(26px * var(--layout-scale, 1));
   }
 
   .option-label {
-    font-size: calc(14px * var(--layout-scale, 1));
+    font-size: calc(13px * var(--layout-scale, 1));
     color: #E6EDF3;
     font-weight: 700;
   }
 
   .option-detail {
-    font-size: calc(11px * var(--layout-scale, 1));
+    font-size: calc(10px * var(--layout-scale, 1));
     color: #8B949E;
     text-align: center;
   }
 
   .option-preview {
-    font-size: calc(10px * var(--layout-scale, 1));
+    font-size: calc(9px * var(--layout-scale, 1));
     color: #6E7681;
     text-align: center;
     margin-top: calc(4px * var(--layout-scale, 1));
@@ -195,37 +227,35 @@
   }
 
   .rest-overlay.landscape .rest-card {
-    /* Centered modal panel */
     border: 2px solid #2ECC71;
     border-radius: 12px;
     border-top: 2px solid #2ECC71;
-    max-width: min(65vw, 800px);
+    max-width: min(80vw, 900px);
     padding: calc(32px * var(--layout-scale, 1)) calc(40px * var(--layout-scale, 1));
     padding-top: calc(32px * var(--layout-scale, 1));
   }
 
   .rest-overlay.landscape .option-cards {
-    /* Horizontal row with more space */
-    gap: calc(20px * var(--layout-scale, 1));
+    gap: calc(16px * var(--layout-scale, 1));
   }
 
   .rest-overlay.landscape .option-card {
-    padding: calc(24px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    padding: calc(24px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
   }
 
   .rest-overlay.landscape .option-icon {
-    font-size: calc(40px * var(--layout-scale, 1));
+    font-size: calc(36px * var(--layout-scale, 1));
   }
 
   .rest-overlay.landscape .option-label {
-    font-size: calc(18px * var(--layout-scale, 1));
+    font-size: calc(16px * var(--layout-scale, 1));
   }
 
   .rest-overlay.landscape .option-detail {
-    font-size: calc(14px * var(--layout-scale, 1));
+    font-size: calc(12px * var(--layout-scale, 1));
   }
 
   .rest-overlay.landscape .option-preview {
-    font-size: calc(12px * var(--layout-scale, 1));
+    font-size: calc(11px * var(--layout-scale, 1));
   }
 </style>

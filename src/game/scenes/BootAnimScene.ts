@@ -315,60 +315,67 @@ export default class BootAnimScene extends Phaser.Scene {
     // Make camera transparent so blurred hub shows through ring holes
     this.cameras.main.setBackgroundColor('rgba(0,0,0,0)')
 
-    // All rings at coverScale — they FILL the screen. You see deeper rings
-    // only through each ring's transparent center hole. Each ring has unique
-    // rock patterns so you get distinct layered depth through the holes.
-    const rs = s * 1.2 // slight overscan so edges never show
-    const flyPastScale = s * 3.5
+    // ALL 3 rings placed simultaneously at different scales, ALL growing.
+    // You see ring 2 growing inside ring 1's hole, ring 3 inside ring 2's.
+    // Each ring does ONE continuous scale-up tween (small → huge), staggered.
+    // As ring 1 zooms past, ring 2 fills the screen. Then ring 2 zooms past,
+    // ring 3 fills. Creates the tunnel fly-through feel.
 
-    const ring1 = this.add.image(cx, cy + 200, 'boot_cave_ring_1')
-      .setScale(rs).setDepth(12).setAlpha(0)
-    const ring2 = this.add.image(cx, cy + 160, 'boot_cave_ring_2')
-      .setScale(rs).setDepth(11).setAlpha(1).setTint(0x778899)
-    const ring3 = this.add.image(cx, cy + 120, 'boot_cave_ring_3')
-      .setScale(rs).setDepth(10).setAlpha(1).setTint(0x556677)
-    this.sceneSprites.push(ring1, ring2, ring3)
+    const endScale = s * 4  // everything ends enormous (way past camera)
+    const dur = 2800         // total animation time per ring
 
-    // Ring 1 fades in gradually
-    this.tweens.add({ targets: ring1, alpha: 1, duration: 600, ease: 'Sine.easeOut' })
+    // Ring 1 (front): starts at cover size, already filling screen
+    const ring1 = this.add.image(cx, cy + 120, 'boot_cave_ring_1')
+      .setScale(s * 1.0).setDepth(12).setAlpha(0)
+    this.sceneSprites.push(ring1)
 
-    const flyRing = (
-      ring: Phaser.GameObjects.Image,
-      targetY: number, angle: number, duration: number, delay: number,
-      onDone?: () => void
-    ): void => {
-      const doFly = (): void => {
-        this.tweens.add({
-          targets: ring,
-          scaleX: flyPastScale, scaleY: flyPastScale,
-          y: targetY, alpha: 0,
-          angle, duration, ease: 'Quad.easeIn',
-          onComplete: () => {
-            if (ring.active) ring.destroy()
-            onDone?.()
-          },
-        })
-      }
-      if (delay > 0) { this.time.delayedCall(delay, doFly) }
-      else { doFly() }
-    }
+    // Ring 2 (middle): starts small, visible through ring 1's hole
+    const ring2 = this.add.image(cx, cy + 80, 'boot_cave_ring_2')
+      .setScale(s * 0.4).setDepth(11).setAlpha(1)
+    this.sceneSprites.push(ring2)
 
-    flyRing(ring1, cy - 250, 0, 1500, 0)
+    // Ring 3 (back): starts tiny, visible through ring 2's hole
+    const ring3 = this.add.image(cx, cy + 50, 'boot_cave_ring_3')
+      .setScale(s * 0.15).setDepth(10).setAlpha(1)
+    this.sceneSprites.push(ring3)
 
-    // As ring 1 passes, clear ring 2's depth tint
-    this.time.delayedCall(300, () => { if (ring2.active) ring2.clearTint() })
-
-    flyRing(ring2, cy - 200, 1.5, 1500, 350)
-
-    // As ring 2 passes, clear ring 3's depth tint
-    this.time.delayedCall(650, () => { if (ring3.active) ring3.clearTint() })
-
-    // Ring 3 fly-past + deblur campsite
-    this.time.delayedCall(700, () => {
-      this.game.events.emit('boot-anim-deblur')
+    // Ring 1 fades in then scales to huge
+    this.tweens.add({
+      targets: ring1, alpha: 1, duration: 400, ease: 'Sine.easeOut',
     })
-    flyRing(ring3, cy - 150, -1.5, 1700, 700, () => {
-      this.complete()
+    this.tweens.add({
+      targets: ring1,
+      scaleX: endScale, scaleY: endScale,
+      y: cy - 180,
+      duration: dur, ease: 'Quad.easeIn',
+      onComplete: () => { if (ring1.active) ring1.destroy() },
+    })
+
+    // Ring 2 scales continuously (starts 400ms later)
+    this.time.delayedCall(400, () => {
+      this.tweens.add({
+        targets: ring2,
+        scaleX: endScale, scaleY: endScale,
+        y: cy - 140, angle: 1.5,
+        duration: dur, ease: 'Quad.easeIn',
+        onComplete: () => { if (ring2.active) ring2.destroy() },
+      })
+    })
+
+    // Ring 3 scales continuously (starts 800ms later) + deblur
+    this.time.delayedCall(800, () => {
+      this.game.events.emit('boot-anim-deblur')
+
+      this.tweens.add({
+        targets: ring3,
+        scaleX: endScale, scaleY: endScale,
+        y: cy - 100, angle: -1.5,
+        duration: dur + 200, ease: 'Quad.easeIn',
+        onComplete: () => {
+          if (ring3.active) ring3.destroy()
+          this.complete()
+        },
+      })
     })
   }
 

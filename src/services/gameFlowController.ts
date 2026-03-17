@@ -110,6 +110,8 @@ import {
 import { isRelicSlotsFull, getMaxRelicSlots } from './relicEffectResolver'
 import type { UpgradePreview } from './cardUpgradeService';
 import { getUpgradeCandidates, getUpgradePreview, upgradeCard } from './cardUpgradeService'
+import type { QuizQuestion } from './bossQuizPhase';
+import { factsDB } from './factsDB';
 import type { ShopInventory } from './shopService';
 import { generateShopRelics, priceShopCards, removalPrice } from './shopService';
 import type { DeckMode } from '../data/studyPreset'
@@ -137,7 +139,9 @@ export type GameFlowState =
   | 'runEnd'
   | 'upgradeSelection'
   | 'postMiniBossRest'
-  | 'relicSwapOverlay';
+  | 'relicSwapOverlay'
+  | 'restStudy'
+  | 'restMeditate';
   // 'starterRelicSelection' removed AR-59.12 — runs start directly at dungeonMap
 
 export const gameFlowState = writable<GameFlowState>('idle');
@@ -1830,6 +1834,104 @@ export function onUpgradeSelected(cardId: string): void {
 export function onUpgradeSkipped(): void {
   activeUpgradeCandidates.set([]);
   onRestResolved();
+}
+
+// ---------------------------------------------------------------------------
+// Study (quiz-gated card upgrading)
+// ---------------------------------------------------------------------------
+
+/**
+ * Generate 3 study questions from the run's current fact pool.
+ * Falls back to any available facts if the pool is too small.
+ */
+export function generateStudyQuestions(): QuizQuestion[] {
+  const allFacts = factsDB.getAll();
+  const factMap = new Map(allFacts.map(f => [f.id, f]));
+
+  // Get fact IDs from the run's pool cards
+  const poolCards = getRunPoolCards();
+  const poolFactIds = [...new Set(poolCards.map(c => c.factId))];
+
+  // Filter to facts that have valid quiz data
+  const validPoolIds = poolFactIds.filter(id => {
+    const fact = factMap.get(id);
+    return fact && fact.quizQuestion && fact.correctAnswer && (fact.distractors ?? []).length >= 1;
+  });
+
+  // If pool too small, supplement from all facts
+  let candidateIds = validPoolIds;
+  if (candidateIds.length < 3) {
+    const allValidIds = allFacts
+      .filter(f => f.quizQuestion && f.correctAnswer && (f.distractors ?? []).length >= 1)
+      .map(f => f.id);
+    candidateIds = [...new Set([...validPoolIds, ...allValidIds])];
+  }
+
+  const selected = shuffled(candidateIds).slice(0, 3);
+
+  const questions: QuizQuestion[] = [];
+  for (const factId of selected) {
+    const fact = factMap.get(factId);
+    if (!fact) continue;
+    const distractors = (fact.distractors ?? []).slice(0, 3);
+    const answers = shuffled([fact.correctAnswer, ...distractors]);
+    questions.push({
+      factId: fact.id,
+      question: fact.quizQuestion,
+      answers,
+      correctAnswer: fact.correctAnswer,
+      categoryL2: fact.categoryL2,
+    });
+  }
+
+  return questions;
+}
+
+/**
+ * Called when Study quiz completes.
+ * Upgrades one random eligible card per correct answer.
+ */
+export function onStudyComplete(correctCount: number): void {
+  const run = get(activeRunState);
+  if (!run) return;
+
+  const allCards = getActiveDeckCards();
+  for (let i = 0; i < correctCount; i++) {
+    const candidates = getUpgradeCandidates(allCards, Infinity).filter(c => !c.isUpgraded);
+    if (candidates.length === 0) break;
+    const pick = candidates[Math.floor(Math.random() * candidates.length)];
+    upgradeCard(pick);
+    run.cardsUpgraded = (run.cardsUpgraded ?? 0) + 1;
+  }
+
+  activeRunState.set(run);
+  onRestResolved();
+}
+
+// ---------------------------------------------------------------------------
+// Meditate (deck thinning)
+// ---------------------------------------------------------------------------
+
+/**
+ * Get all active deck cards for the meditate card picker.
+ */
+export function getMeditateCandidates(): Card[] {
+  return getActiveDeckCards();
+}
+
+/**
+ * Called when player confirms card removal via Meditate.
+ */
+export function onMeditateRemove(cardId: string): void {
+  sellCardFromActiveDeck(cardId);
+  onRestResolved();
+}
+
+/**
+ * Returns true if Meditate is available (deck must have more than 5 cards).
+ */
+export function canMeditate(): boolean {
+  return getActiveDeckCards().length > 5;
 }
 
 /** Opens the post-mini-boss rest overlay with heal + upgrade. */
