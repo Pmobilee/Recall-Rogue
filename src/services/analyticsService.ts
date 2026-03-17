@@ -290,6 +290,8 @@ interface ShopBuyRelicEvent {
   properties: {
     relic_id: string
     price: number
+    base_price?: number
+    haggled?: boolean
     rarity: string
     floor: number
     remaining_currency: number
@@ -303,6 +305,23 @@ interface ShopBuyCardEvent {
     card_type: string
     tier: string
     price: number
+    base_price?: number
+    haggled?: boolean
+    floor: number
+    remaining_currency: number
+  }
+}
+
+/** Fired when the player uses the card removal service in the shop (AR-59.15). */
+interface ShopBuyRemovalEvent {
+  name: 'shop_buy_removal'
+  properties: {
+    card_id: string
+    card_type: string
+    tier: string
+    price: number
+    base_price: number
+    haggled: boolean
     floor: number
     remaining_currency: number
   }
@@ -479,6 +498,7 @@ export type AnalyticsEvent =
   | ShopSellEvent
   | ShopBuyRelicEvent
   | ShopBuyCardEvent
+  | ShopBuyRemovalEvent
   | RoomSelectedEvent
   | CardPlayEvent
   | AnswerCorrectEvent

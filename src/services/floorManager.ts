@@ -6,7 +6,7 @@
 import type { FactDomain } from '../data/card-types'
 import { getRunRng, isRunRngActive } from './seededRng'
 import { FLOOR_TIMER, SEGMENT_BOSS_FLOORS, ENDLESS_BOSS_INTERVAL, MAX_FLOORS } from '../data/balance'
-import { ENEMY_TEMPLATES, type EnemyRegion } from '../data/enemies'
+import { ENEMY_TEMPLATES, type EnemyRegion, getEnemiesForNode, type EnemyTemplate } from '../data/enemies'
 
 // ============================================================
 // Types
@@ -156,12 +156,43 @@ const BOSS_MAP: Record<number, string> = {
   24: 'the_curator',
 }
 
-/** Boss pool per region — 2 bosses each, randomly selected per run. */
+/**
+ * Boss pool per region — 2 bosses each, randomly selected per run.
+ * @deprecated Use ACT_ENEMY_POOLS + getEnemiesForNode() instead (AR-59.13). Remove in AR-59.19.
+ */
 const BOSS_POOL_BY_REGION: Record<EnemyRegion, string[]> = {
   shallow_depths: ['the_excavator', 'magma_core'],
   deep_caverns: ['the_archivist', 'crystal_warden'],
   the_abyss: ['shadow_hydra', 'void_weaver'],
   the_archive: ['knowledge_golem', 'the_curator'],
+}
+
+/**
+ * Returns the act number (1, 2, or 3) for a given floor in the v2 3-act run structure.
+ * Act 1: floors 1-4, Act 2: floors 5-8, Act 3: floors 9-12.
+ * Floors outside 1-12 clamp to the nearest act.
+ *
+ * @param floor - The current floor number (1-indexed).
+ */
+export function getActForFloor(floor: number): 1 | 2 | 3 {
+  if (floor <= 4) return 1
+  if (floor <= 8) return 2
+  return 3
+}
+
+/**
+ * Returns the appropriate EnemyTemplate array for the given floor and node type.
+ * Uses the v2 ACT_ENEMY_POOLS structure from AR-59.13.
+ *
+ * @param floor - The current floor number.
+ * @param nodeType - The node type: 'combat', 'elite', 'mini_boss', or 'boss'.
+ */
+export function getEnemiesForFloorNode(
+  floor: number,
+  nodeType: 'combat' | 'elite' | 'mini_boss' | 'boss',
+): EnemyTemplate[] {
+  const act = getActForFloor(floor)
+  return getEnemiesForNode(act, nodeType)
 }
 
 /** Maps a floor number to its dungeon region for enemy selection. */
@@ -172,7 +203,10 @@ export function getRegionForFloor(floor: number): EnemyRegion {
   return 'the_archive'
 }
 
-/** Mini-boss pools per region. */
+/**
+ * Mini-boss pools per region.
+ * @deprecated Use ACT_ENEMY_POOLS + getEnemiesForNode() instead (AR-59.13). Remove in AR-59.19.
+ */
 const MINI_BOSS_POOL_BY_REGION: Record<EnemyRegion, string[]> = {
   shallow_depths: ['venomfang', 'bone_collector', 'root_mother', 'iron_matriarch', 'bog_witch', 'mushroom_sovereign'],
   deep_caverns: ['crystal_guardian', 'stone_sentinel', 'sulfur_queen', 'granite_colossus', 'deep_lurker', 'lava_salamander'],

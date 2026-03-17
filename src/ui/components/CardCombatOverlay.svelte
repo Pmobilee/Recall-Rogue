@@ -5,6 +5,7 @@
   import type { TurnState } from '../../services/turnManager'
   import { getComboMultiplier } from '../../services/turnManager'
   import { FLOOR_TIMER } from '../../data/balance'
+  import { isSurgeTurn } from '../../services/surgeSystem'
   import { getQuestionPresentation } from '../../services/questionFormatter'
   import {
     difficultyMode,
@@ -19,6 +20,7 @@
   import ComboCounter from './ComboCounter.svelte'
   import RelicTray from './RelicTray.svelte'
   import { RELIC_BY_ID } from '../../data/relics/index'
+  import { getMaxRelicSlots } from '../../services/relicEffectResolver'
   import { juiceManager } from '../../services/juiceManager'
   import { getCombatScene } from '../../services/encounterBridge'
   import { factsDB } from '../../services/factsDB'
@@ -48,6 +50,7 @@
       speedBonus: boolean,
       responseTimeMs?: number,
       variantIndex?: number,
+      playMode?: 'charge' | 'quick',
     ) => void
     onskipcard: (cardId: string) => void
     onendturn: () => void
@@ -72,6 +75,10 @@
   let committedCardIndex = $state<number | null>(null)
   let committedQuizData = $state<QuizData | null>(null)
   let committedAtMs = $state(0)
+
+  // V2 Echo: "Must Charge!" tooltip state — shown when Quick Play is attempted on an Echo card
+  let showMustChargeTooltip = $state(false)
+  let mustChargeTimer = $state<ReturnType<typeof setTimeout> | null>(null)
 
   /** Refs to the draw/discard pile indicator elements — used to set CSS vars for card animations. */
   let drawPileEl = $state<HTMLDivElement | undefined>(undefined)
@@ -148,6 +155,7 @@
   })
 
   let handCards = $derived<Card[]>(reshuffleHoldingHand ? [] : (turnState?.deck.hand ?? []))
+
   let comboCount = $derived(turnState?.comboCount ?? 0)
   let comboMultiplier = $derived(getComboMultiplier(comboCount))
   let isPerfectTurn = $derived(turnState?.isPerfectTurn ?? false)
@@ -171,6 +179,7 @@
   let discardStackCount = $derived(Math.max(0, Math.min(5, Math.ceil(discardPileCount / 3))))
 
   const run = $derived($activeRunState)
+  const maxRelicSlots = $derived(run ? getMaxRelicSlots(run.runRelics) : 5)
   const expertModeActive = $derived(
     (run?.deckMasteryPct ?? 0) >= 0.40
   )
@@ -460,6 +469,9 @@
   let castDisabled = $derived(
     !selectedCard || !turnState || (selectedCard.apCost ?? 1) > turnState.apCurrent,
   )
+
+  /** True on Surge turns — Charge Play costs +0 AP instead of +1. */
+  let isSurgeActive = $derived(isSurgeTurn(turnState?.turnNumber ?? 1))
 
   let playerHpCurrent = $derived(turnState?.playerState.hp ?? 0)
   let playerHpMax = $derived(turnState?.playerState.maxHP ?? 1)
@@ -846,6 +858,35 @@
     return handCards.some((c) => (c.apCost ?? 1) <= turnState!.apCurrent)
   })
 
+  /** V2 Echo: Show "Must Charge!" tooltip for ~1500ms, then auto-dismiss. */
+  function triggerMustChargeTooltip(): void {
+    showMustChargeTooltip = true
+    if (mustChargeTimer !== null) clearTimeout(mustChargeTimer)
+    mustChargeTimer = setTimeout(() => {
+      showMustChargeTooltip = false
+      mustChargeTimer = null
+    }, 1500)
+  }
+
+  /** Fling-to-Charge: card was dragged 80px+ upward. Select it and immediately open quiz (Charge flow). */
+  function handleChargeDirect(index: number): void {
+    if (!turnState || turnState.phase !== 'player_action') return
+    if (cardPlayStage === 'committed') return
+
+    const card = handCards[index]
+    if (!card) return
+
+    // Check AP: Charge costs +1 (or +0 on Surge)
+    const chargeCost = (card.apCost ?? 1) + (isSurgeActive ? 0 : 1)
+    if (chargeCost > (turnState?.apCurrent ?? 0)) return
+
+    selectedIndex = index
+    cardPlayStage = 'selected'
+
+    // Immediately commit to quiz (Charge flow)
+    handleCast()
+  }
+
   function handleSelect(index: number): void {
     if (!turnState || turnState.phase !== 'player_action') return
     if (cardPlayStage === 'committed') return
@@ -854,7 +895,13 @@
     if (!card) return
 
     if (selectedIndex === index && cardPlayStage === 'selected') {
-      handleCast()
+      // V2 Echo: block Quick Play on Echo cards — show "Must Charge!" tooltip
+      if (card.isEcho) {
+        triggerMustChargeTooltip()
+        return
+      }
+      // Second tap on selected card = Quick Play (no quiz). Delegate to handleCastDirect.
+      handleCastDirect(index)
       return
     }
 
@@ -880,12 +927,51 @@
     if (!card) return
     if ((card.apCost ?? 1) > (turnState?.apCurrent ?? 0)) return
 
-    // Select and immediately cast
-    selectedIndex = index
-    cardPlayStage = 'selected'
+    // V2 Echo: block Quick Play on Echo cards — select but show "Must Charge!" tooltip
+    if (card.isEcho) {
+      selectedIndex = index
+      cardPlayStage = 'selected'
+      triggerMustChargeTooltip()
+      return
+    }
 
-    // Now cast
-    handleCast()
+    // Quick Play: bypass quiz entirely — play card immediately as correct (no quiz shown)
+    const cardId = card.id
+    playCardAudio('card-cast')
+    cardPlayStage = 'committed'
+
+    // Animate as reveal → swoosh → impact → discard
+    animatingCards = [...animatingCards, card]
+    cardAnimations = { ...cardAnimations, [cardId]: 'reveal' }
+
+    // Fire the play immediately with playMode: 'quick'
+    onplaycard(cardId, true, false, undefined, undefined, 'quick')
+
+    juiceManager.fire({
+      type: 'correct',
+      damage: Math.round(card.baseEffectValue * card.effectMultiplier),
+      isCritical: false,
+      comboCount: (turnState?.comboCount ?? 0) + 1,
+      effectLabel: `${card.cardType.toUpperCase()} ${Math.round(card.baseEffectValue * card.effectMultiplier)}`,
+      isPerfectTurn: false,
+      cardType: card.cardType,
+    })
+
+    setTimeout(() => {
+      cardAnimations = { ...cardAnimations, [cardId]: 'swoosh' }
+      setTimeout(() => {
+        cardAnimations = { ...cardAnimations, [cardId]: 'impact' }
+        setTimeout(() => {
+          cardAnimations = { ...cardAnimations, [cardId]: 'discard' }
+          setTimeout(() => {
+            cardAnimations = { ...cardAnimations, [cardId]: null }
+            animatingCards = animatingCards.filter(c => c.id !== cardId)
+            cardPlayStage = 'hand'
+            selectedIndex = null
+          }, DISCARD_DURATION)
+        }, IMPACT_DURATION)
+      }, SWOOSH_DURATION)
+    }, REVEAL_DURATION)
   }
 
   function handleCast(): void {
@@ -928,7 +1014,7 @@
       // Wrong answer: fizzle (unchanged)
       animatingCards = [...animatingCards, card]
       cardAnimations = { ...cardAnimations, [cardId]: 'fizzle' }
-      onplaycard(cardId, false, false, responseTimeMs, quizVariantIndex)
+      onplaycard(cardId, false, false, responseTimeMs, quizVariantIndex, 'charge')
 
       juiceManager.fire({
         type: 'wrong',
@@ -949,7 +1035,7 @@
 
       // Correct answer: new 5-phase animation sequence
       animatingCards = [...animatingCards, card]
-      onplaycard(cardId, true, speedBonus, responseTimeMs, quizVariantIndex)
+      onplaycard(cardId, true, speedBonus, responseTimeMs, quizVariantIndex, 'charge')
 
       // Determine tier-up
       const nextReviewState = getReviewStateByFactId(card.factId)
@@ -1106,7 +1192,7 @@
       {/if}
     </div>
   {:else}
-    <RelicTray relics={displayRelics} triggeredRelicId={turnState.triggeredRelicId} />
+    <RelicTray relics={displayRelics} triggeredRelicId={turnState.triggeredRelicId} maxSlots={maxRelicSlots} />
 
     {#if expertModeActive}
       <div class="expert-badge" data-testid="expert-mode-badge">
@@ -1191,6 +1277,12 @@
       ></button>
     {/if}
 
+    {#if showMustChargeTooltip}
+      <div class="must-charge-tooltip" transition:fade={{ duration: 150 }}>
+        ⚡ Must Charge!
+      </div>
+    {/if}
+
     {#if cardPlayStage === 'committed' && committedCard && committedQuizData && committedPresentation}
       <CardExpanded
         card={committedCard}
@@ -1262,6 +1354,8 @@
       onselectcard={handleSelect}
       ondeselectcard={handleDeselect}
       oncastdirect={handleCastDirect}
+      onchargeplay={handleChargeDirect}
+      {isSurgeActive}
     />
 
     {#if showEndTurn}
@@ -2034,6 +2128,26 @@
     border-radius: 6px;
     letter-spacing: 0.5px;
     pointer-events: none;
+    white-space: nowrap;
+  }
+
+  /* V2 Echo: "Must Charge!" tooltip — shown when Quick Play is attempted on an Echo card */
+  .must-charge-tooltip {
+    position: fixed;
+    bottom: calc(220px * var(--layout-scale, 1));
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(147, 51, 234, 0.92);
+    color: #f5f3ff;
+    font-size: calc(13px * var(--layout-scale, 1));
+    font-weight: 700;
+    padding: calc(6px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    border-radius: calc(8px * var(--layout-scale, 1));
+    border: 1px solid rgba(196, 181, 253, 0.5);
+    box-shadow: 0 0 calc(12px * var(--layout-scale, 1)) rgba(147, 51, 234, 0.5);
+    letter-spacing: 0.05em;
+    pointer-events: none;
+    z-index: 200;
     white-space: nowrap;
   }
 </style>

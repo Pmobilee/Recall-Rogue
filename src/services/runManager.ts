@@ -47,6 +47,12 @@ export interface RunState {
   startedAt: number;
   echoFactIds: Set<string>;
   echoCount: number;
+  /**
+   * Fact IDs for which the player has already used their one free first Charge this run.
+   * Once a factId is in this set, that fact costs the normal +1 AP Charge surcharge.
+   * Per-run, not per-encounter. Cleared on new run.
+   */
+  firstChargeFreeFactIds: Set<string>;
   consumedRewardFactIds: Set<string>;
   factsAnsweredCorrectly: Set<string>;
   factsAnsweredIncorrectly: Set<string>;
@@ -61,6 +67,12 @@ export interface RunState {
   offeredRelicIds: Set<string>;
   /** Whether the first mini-boss relic choice has occurred. */
   firstMiniBossRelicAwarded: boolean;
+  /**
+   * Consecutive Common-only relic acquisitions since last Uncommon+ acquisition.
+   * Resets to 0 whenever an Uncommon, Rare, or Legendary relic is acquired.
+   * When this reaches RELIC_PITY_THRESHOLD (4), the next draw is forced Uncommon+.
+   */
+  relicPityCounter: number;
   /** Whether the phoenix feather (once-per-run lethal save) has been used. */
   phoenixFeatherUsed: boolean;
   /** Mastery percentage of the deck/pool at run start (0-1). */
@@ -83,6 +95,12 @@ export interface RunState {
   domainAccuracy: Record<string, { answered: number; correct: number }>;
   /** Number of cards upgraded during this run. */
   cardsUpgraded: number;
+  /** Cards removed via shop removal service this run. Affects removal price escalation. */
+  cardsRemovedAtShop: number;
+  /** Total haggle attempts this run (telemetry). */
+  haggleAttempts: number;
+  /** Successful haggle attempts this run (telemetry). */
+  haggleSuccesses: number;
   /** Total questions answered this run (all tiers). */
   questionsAnswered: number;
   /** Total questions answered correctly this run (all tiers). */
@@ -171,6 +189,7 @@ export function createRunState(
     startedAt: Date.now(),
     echoFactIds: new Set<string>(),
     echoCount: 0,
+    firstChargeFreeFactIds: new Set<string>(),
     consumedRewardFactIds: new Set<string>(),
     factsAnsweredCorrectly: new Set<string>(),
     factsAnsweredIncorrectly: new Set<string>(),
@@ -182,9 +201,13 @@ export function createRunState(
     runRelics: [],
     offeredRelicIds: new Set<string>(),
     firstMiniBossRelicAwarded: false,
+    relicPityCounter: 0,
     phoenixFeatherUsed: false,
     domainAccuracy: {},
     cardsUpgraded: 0,
+    cardsRemovedAtShop: 0,
+    haggleAttempts: 0,
+    haggleSuccesses: 0,
     questionsAnswered: 0,
     questionsCorrect: 0,
     novelQuestionsAnswered: 0,

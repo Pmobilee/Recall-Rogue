@@ -90,6 +90,8 @@ export interface Card {
   isUpgraded?: boolean;
   /** Per-card secondary value override (set on upgrade for mechanics like multi_hit). */
   secondaryValue?: number;
+  /** Knowledge sub-category level 2 (e.g. 'ancient_classical'). Used by chain system and boss quiz phases. */
+  categoryL2?: string;
 }
 
 // === Card Run State ===

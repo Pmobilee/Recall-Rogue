@@ -22,7 +22,7 @@ import {
   shouldOfferEvent,
 } from './floorManager';
 import type { Card, FactDomain } from '../data/card-types';
-import { DEATH_PENALTY, POST_MINI_BOSS_HEAL_PCT, SHOP_RELIC_PRICE, SHOP_CARD_PRICE } from '../data/balance';
+import { DEATH_PENALTY, POST_MINI_BOSS_HEAL_PCT, SHOP_RELIC_PRICE, SHOP_HAGGLE_DISCOUNT, RELIC_SELL_REFUND_PCT, RELIC_REROLL_COST, RELIC_REROLL_MAX, RELIC_BOSS_CHOICES, RELIC_PITY_THRESHOLD, RELIC_RARITY_WEIGHTS } from '../data/balance';
 import { generateCardRewardOptionsByType, rerollRewardCardInType } from './rewardGenerator';
 import {
   addRewardCardToActiveDeck,
@@ -97,7 +97,7 @@ import { getCardTier } from './tierDerivation'
 import { shuffled } from './randomUtils'
 import { getAscensionModifiers } from './ascension';
 import type { RelicDefinition } from '../data/relics/types'
-import { STARTER_RELIC_IDS } from '../data/relics/index'
+import { STARTER_RELIC_IDS, RELIC_BY_ID } from '../data/relics/index'
 import {
   getEligibleRelicPool,
   generateBossRelicChoices,
@@ -105,10 +105,11 @@ import {
   generateRandomRelicDrop,
   shouldDropRandomRelic,
 } from './relicAcquisitionService'
+import { isRelicSlotsFull, getMaxRelicSlots } from './relicEffectResolver'
 import type { UpgradePreview } from './cardUpgradeService';
 import { getUpgradeCandidates, getUpgradePreview, upgradeCard } from './cardUpgradeService'
 import type { ShopInventory } from './shopService';
-import { generateShopRelics, priceShopCards } from './shopService';
+import { generateShopRelics, priceShopCards, removalPrice } from './shopService';
 import type { DeckMode } from '../data/studyPreset'
 import { generateActMap, selectMapNode, deriveFloorFromNode, type ActMap } from './mapGenerator'
 
@@ -134,7 +135,8 @@ export type GameFlowState =
   | 'runEnd'
   | 'upgradeSelection'
   | 'postMiniBossRest'
-  | 'starterRelicSelection';
+  | 'relicSwapOverlay';
+  // 'starterRelicSelection' removed AR-59.12 — runs start directly at dungeonMap
 
 export const gameFlowState = writable<GameFlowState>('idle');
 export { activeRunState };
@@ -157,6 +159,104 @@ let pendingClearedFloor = 0;
 let pendingDomainSelection: { primary: FactDomain; secondary: FactDomain } | null = null;
 type ActiveRunMode = 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge'
 let activeRunMode: ActiveRunMode = 'standard'
+
+/** The relic being offered when the player's slots are full (pending swap decision). */
+let pendingSwapRelicId: string | null = null;
+
+/** Number of rerolls used for the current relic selection screen (resets per opening). */
+let currentSelectionRerollsUsed = 0;
+
+/** Tracks relic IDs shown during the current reroll session. Cleared at end of selection event. */
+let rerollSeenIds: Set<string> = new Set();
+
+/** Returns the ID of the relic being offered for swap, or null if none pending. */
+export function getPendingSwapRelicId(): string | null {
+  return pendingSwapRelicId;
+}
+
+/** Clears the pending swap relic without acquiring it. */
+export function clearPendingSwapRelicId(): void {
+  pendingSwapRelicId = null;
+}
+
+/** Resets the reroll counter and session-seen IDs for the current relic selection screen. */
+export function resetRelicSelectionRerolls(): void {
+  currentSelectionRerollsUsed = 0;
+  rerollSeenIds = new Set();
+}
+
+/** Returns true if the player can still reroll the current relic selection. */
+export function canRerollRelicSelection(): boolean {
+  const run = get(activeRunState);
+  if (!run) return false;
+  return currentSelectionRerollsUsed < RELIC_REROLL_MAX && run.currency >= RELIC_REROLL_COST;
+}
+
+/** Returns true when the pity counter has reached the threshold for Uncommon+ guarantee. */
+export function isRelicPityActive(): boolean {
+  const run = get(activeRunState);
+  return (run?.relicPityCounter ?? 0) >= RELIC_PITY_THRESHOLD;
+}
+
+/** Update the pity counter after any relic acquisition. Call inside addRelicToRun. */
+function updateRelicPityCounter(relic: RelicDefinition): void {
+  const run = get(activeRunState);
+  if (!run) return;
+  if (relic.rarity === 'common') {
+    run.relicPityCounter = (run.relicPityCounter ?? 0) + 1;
+  } else {
+    run.relicPityCounter = 0;
+  }
+  activeRunState.set(run);
+}
+
+/**
+ * Rerolls the current relic reward selection.
+ * Deducts RELIC_REROLL_COST gold, marks current offers as seen, draws fresh choices.
+ */
+export function rerollRelicSelection(currentOfferedIds: string[]): void {
+  const run = get(activeRunState);
+  if (!run || !canRerollRelicSelection()) return;
+  run.currency = Math.max(0, run.currency - RELIC_REROLL_COST);
+  for (const id of currentOfferedIds) {
+    rerollSeenIds.add(id);
+  }
+  currentSelectionRerollsUsed++;
+  activeRunState.set(run);
+  const pool = buildRelicPool();
+  const choices = generateBossRelicChoices(pool);
+  activeRelicRewardOptions.set(choices);
+}
+
+/**
+ * Removes an equipped relic and refunds RELIC_SELL_REFUND_PCT of its base buy price.
+ */
+export function sellEquippedRelic(definitionId: string): void {
+  const run = get(activeRunState);
+  if (!run) return;
+  const idx = run.runRelics.findIndex(r => r.definitionId === definitionId);
+  if (idx === -1) return;
+  run.runRelics.splice(idx, 1);
+  const def = RELIC_BY_ID[definitionId];
+  if (def) {
+    const basePrice = SHOP_RELIC_PRICE[def.rarity] ?? 0;
+    const refund = Math.floor(basePrice * RELIC_SELL_REFUND_PCT);
+    run.currency += refund;
+  }
+  activeRunState.set(run);
+}
+
+/**
+ * Completes a pending relic swap: acquires the pending relic directly (bypassing slot check).
+ * Call after sellEquippedRelic to add the new relic.
+ */
+export function acquirePendingSwapRelic(): void {
+  if (!pendingSwapRelicId) return;
+  const def = RELIC_BY_ID[pendingSwapRelicId];
+  if (def) {
+    addRelicToRunDirect(def);
+  }
+}
 let activeDailySeed: number | null = null
 let pendingDeckMode: DeckMode | null = null
 let pendingIncludeOutsideDueReviews = false
@@ -650,8 +750,9 @@ export function onArchetypeSelected(archetype: RewardArchetype): void {
     activateDeterministicRandom(run.runSeed);
   }
   pendingDomainSelection = null;
-  gameFlowState.set('starterRelicSelection');
-  currentScreen.set('starterRelicSelection');
+  // AR-59.12: No starter relic. Runs start with 0 relics. First relic earned at Act 1 mini-boss.
+  gameFlowState.set('dungeonMap');
+  currentScreen.set('dungeonMap');
 }
 
 /**
@@ -829,19 +930,23 @@ export function onCardRewardReroll(type: Card['cardType']): void {
   });
 }
 
-/** Build the eligible relic pool for the current run. */
+/** Build the eligible relic pool for the current run. Excludes reroll-session-seen IDs during active reroll events. */
 function buildRelicPool(): RelicDefinition[] {
   const run = get(activeRunState)
   const save = get(playerSave)
   if (!run || !save) return []
   const unlockedIds = save.unlockedRelicIds ?? []
-  const excludedIds = save.excludedRelicIds ?? []
+  // Merge persistent exclusions with current reroll-session seen IDs
+  const excludedIds = [...(save.excludedRelicIds ?? []), ...rerollSeenIds]
   const heldIds = run.runRelics.map((r) => r.definitionId)
   return getEligibleRelicPool(unlockedIds, excludedIds, heldIds)
 }
 
-/** Add a relic to the current run state. */
-function addRelicToRun(relic: RelicDefinition): void {
+/**
+ * Adds a relic directly to the run without checking slot capacity.
+ * Use for post-swap acquisition or when slot check is not needed.
+ */
+function addRelicToRunDirect(relic: RelicDefinition): void {
   const run = get(activeRunState)
   if (!run) return
   const alreadyHeld = run.runRelics.some(r => r.definitionId === relic.id)
@@ -852,8 +957,46 @@ function addRelicToRun(relic: RelicDefinition): void {
     acquiredAtEncounter: run.floor.currentEncounter,
     triggerCount: 0,
   })
+  // Only acquired relics are added to offeredRelicIds (declined options are NOT tracked)
   run.offeredRelicIds.add(relic.id)
   activeRunState.set(run)
+  updateRelicPityCounter(relic)
+}
+
+/**
+ * Adds a relic to the run with slot-cap enforcement.
+ * If at capacity, stores the relic as pending and routes to relicSwapOverlay.
+ * Used for choose-1-of-3 events where the selection screen is clearing.
+ */
+function addRelicToRun(relic: RelicDefinition): void {
+  const run = get(activeRunState)
+  if (!run) return
+  if (isRelicSlotsFull(run.runRelics)) {
+    pendingSwapRelicId = relic.id
+    gameFlowState.set('relicSwapOverlay')
+    currentScreen.set('relicSwapOverlay')
+    return
+  }
+  addRelicToRunDirect(relic)
+}
+
+/**
+ * Gives a relic as a toast (random drop).
+ * If slots are full: stores as pending swap and shows toast with "Swap" button.
+ * Player can dismiss to forfeit, or tap Swap to open the swap overlay.
+ * If slots available: adds immediately and shows simple toast.
+ */
+function giveRelicAsToastDrop(relic: RelicDefinition): void {
+  const run = get(activeRunState)
+  if (!run) return
+  if (isRelicSlotsFull(run.runRelics)) {
+    // Store pending swap but don't navigate yet — toast will show swap button
+    pendingSwapRelicId = relic.id
+    activeRelicPickup.set(relic)
+  } else {
+    addRelicToRunDirect(relic)
+    activeRelicPickup.set(relic)
+  }
 }
 
 export function onEncounterComplete(result: 'victory' | 'defeat'): void {
@@ -910,46 +1053,62 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
   const wasMiniBoss = isMiniBossEncounter(justCompletedFloor, justCompletedEncounter);
   const wasBoss = isBossFloor(justCompletedFloor) && justCompletedEncounter === run.floor.encountersPerFloor;
 
+  // Capture actMap node type BEFORE advancing (for elite detection)
+  const justCompletedNodeId = run.floor.actMap?.currentNodeId ?? null;
+  const justCompletedNode = justCompletedNodeId
+    ? run.floor.actMap?.nodes[justCompletedNodeId] ?? null
+    : null;
+  const wasElite = justCompletedNode?.type === 'elite';
+
   pendingFloorCompleted = advanceEncounter(run.floor);
   pendingClearedFloor = run.floor.currentFloor;
   activeRunState.set(run);
 
-  // Relic acquisition
-  if (wasBoss || wasMiniBoss) {
-    const pool = buildRelicPool();
-    if (pool.length > 0) {
-      if (wasMiniBoss && !run.firstMiniBossRelicAwarded) {
-        run.firstMiniBossRelicAwarded = true;
-        activeRunState.set(run);
-        const choices = generateMiniBossRelicChoices(pool);
-        if (choices.length > 0) {
-          activeRelicRewardOptions.set(choices);
-          gameFlowState.set('relicReward');
-          currentScreen.set('relicReward');
-          return;
-        }
-      } else if (wasBoss) {
-        const choices = generateBossRelicChoices(pool);
-        if (choices.length > 0) {
-          activeRelicRewardOptions.set(choices);
-          gameFlowState.set('relicReward');
-          currentScreen.set('relicReward');
-          return;
-        }
-      } else if (wasMiniBoss) {
-        const drop = generateRandomRelicDrop(pool);
-        if (drop) {
-          addRelicToRun(drop);
-          activeRelicPickup.set(drop);
-        }
-      }
+  // Relic acquisition — priority: boss > elite > first-mini-boss > subsequent-mini-boss > regular
+  const relicPool = buildRelicPool();
+
+  if (wasBoss && relicPool.length > 0) {
+    const choices = generateBossRelicChoices(relicPool);
+    if (choices.length > 0) {
+      resetRelicSelectionRerolls();
+      activeRelicRewardOptions.set(choices);
+      gameFlowState.set('relicReward');
+      currentScreen.set('relicReward');
+      return;
     }
-  } else if (shouldDropRandomRelic()) {
-    const pool = buildRelicPool();
-    const drop = generateRandomRelicDrop(pool);
+  } else if (wasElite && relicPool.length > 0) {
+    // Elite: choose-1-of-3 with regular weights (same as first mini-boss)
+    const choices = generateMiniBossRelicChoices(relicPool);
+    if (choices.length > 0) {
+      resetRelicSelectionRerolls();
+      activeRelicRewardOptions.set(choices);
+      gameFlowState.set('relicReward');
+      currentScreen.set('relicReward');
+      return;
+    }
+  } else if (wasMiniBoss && !run.firstMiniBossRelicAwarded && relicPool.length > 0) {
+    // First mini-boss: choose-1-of-3
+    run.firstMiniBossRelicAwarded = true;
+    activeRunState.set(run);
+    const choices = generateMiniBossRelicChoices(relicPool);
+    if (choices.length > 0) {
+      resetRelicSelectionRerolls();
+      activeRelicRewardOptions.set(choices);
+      gameFlowState.set('relicReward');
+      currentScreen.set('relicReward');
+      return;
+    }
+  } else if (wasMiniBoss && run.firstMiniBossRelicAwarded && relicPool.length > 0) {
+    // Subsequent mini-boss: single random toast drop with full rarity table
+    const drop = generateRandomRelicDrop(relicPool, RELIC_RARITY_WEIGHTS, isRelicPityActive());
     if (drop) {
-      addRelicToRun(drop);
-      activeRelicPickup.set(drop);
+      giveRelicAsToastDrop(drop);
+    }
+  } else if (!wasBoss && !wasMiniBoss && !wasElite && shouldDropRandomRelic() && relicPool.length > 0) {
+    // Regular combat: 10% random toast drop with full rarity table
+    const drop = generateRandomRelicDrop(relicPool, RELIC_RARITY_WEIGHTS, isRelicPityActive());
+    if (drop) {
+      giveRelicAsToastDrop(drop);
     }
   }
 
@@ -997,6 +1156,8 @@ export function onCardRewardSkipped(): void {
 export function onRelicRewardSelected(relic: RelicDefinition): void {
   addRelicToRun(relic);
   activeRelicRewardOptions.set([]);
+  // Clear reroll session state when selection event resolves
+  resetRelicSelectionRerolls();
   openCardReward();
 }
 
@@ -1021,11 +1182,12 @@ function openShopRoom(): void {
     run.consumedRewardFactIds,
     run.selectedArchetype,
   );
-  const shopCards = priceShopCards(cardRewardOptions.slice(0, 2), run.floor.currentFloor);
+  const shopCards = priceShopCards(cardRewardOptions.slice(0, 3), run.floor.currentFloor);
 
   const inventory: ShopInventory = {
     relics: shopRelics,
     cards: shopCards,
+    removalCost: removalPrice(run.cardsRemovedAtShop ?? 0),
   };
   activeShopInventory.set(inventory);
 
@@ -1061,16 +1223,20 @@ export function onShopSell(cardId: string): void {
   });
 }
 
-/** Buy a relic from the shop. */
-export function onShopBuyRelic(relicId: string): boolean {
+/** Buy a relic from the shop. When haggled=true, applies 30% discount before deducting. */
+export function onShopBuyRelic(relicId: string, haggled = false): boolean {
   const run = get(activeRunState);
   const inventory = get(activeShopInventory);
   if (!run || !inventory) return false;
 
   const item = inventory.relics.find(r => r.relic.id === relicId);
-  if (!item || run.currency < item.price) return false;
+  if (!item) return false;
 
-  run.currency -= item.price;
+  const finalPrice = haggled ? Math.floor(item.price * (1 - SHOP_HAGGLE_DISCOUNT)) : item.price;
+  if (run.currency < finalPrice) return false;
+
+  run.currency -= finalPrice;
+  if (haggled) run.haggleSuccesses = (run.haggleSuccesses ?? 0) + 1;
   addRelicToRun(item.relic);
   inventory.relics = inventory.relics.filter(r => r.relic.id !== relicId);
   activeShopInventory.set(inventory);
@@ -1080,7 +1246,9 @@ export function onShopBuyRelic(relicId: string): boolean {
     name: 'shop_buy_relic',
     properties: {
       relic_id: relicId,
-      price: item.price,
+      price: finalPrice,
+      base_price: item.price,
+      haggled,
       rarity: item.relic.rarity,
       floor: run.floor.currentFloor,
       remaining_currency: run.currency,
@@ -1089,16 +1257,20 @@ export function onShopBuyRelic(relicId: string): boolean {
   return true;
 }
 
-/** Buy a card from the shop. */
-export function onShopBuyCard(cardIndex: number): boolean {
+/** Buy a card from the shop. When haggled=true, applies 30% discount before deducting. */
+export function onShopBuyCard(cardIndex: number, haggled = false): boolean {
   const run = get(activeRunState);
   const inventory = get(activeShopInventory);
   if (!run || !inventory) return false;
 
   const item = inventory.cards[cardIndex];
-  if (!item || run.currency < item.price) return false;
+  if (!item) return false;
 
-  run.currency -= item.price;
+  const finalPrice = haggled ? Math.floor(item.price * (1 - SHOP_HAGGLE_DISCOUNT)) : item.price;
+  if (run.currency < finalPrice) return false;
+
+  run.currency -= finalPrice;
+  if (haggled) run.haggleSuccesses = (run.haggleSuccesses ?? 0) + 1;
   run.consumedRewardFactIds.add(item.card.factId);
   addRewardCardToActiveDeck(item.card);
   inventory.cards.splice(cardIndex, 1);
@@ -1110,12 +1282,69 @@ export function onShopBuyCard(cardIndex: number): boolean {
     properties: {
       card_type: item.card.cardType,
       tier: item.card.tier,
-      price: item.price,
+      price: finalPrice,
+      base_price: item.price,
+      haggled,
       floor: run.floor.currentFloor,
       remaining_currency: run.currency,
     },
   });
   return true;
+}
+
+/**
+ * Remove a card from the active deck via the shop removal service.
+ * Price escalates with each removal: 50g base +25g per prior removal.
+ * When haggled=true, applies 30% discount before deducting.
+ */
+export function onShopBuyRemoval(cardId: string, haggled = false): boolean {
+  const run = get(activeRunState);
+  if (!run) return false;
+
+  const basePrice = removalPrice(run.cardsRemovedAtShop ?? 0);
+  const finalPrice = haggled ? Math.floor(basePrice * (1 - SHOP_HAGGLE_DISCOUNT)) : basePrice;
+  if (run.currency < finalPrice) return false;
+
+  const { soldCard } = sellCardFromActiveDeck(cardId);
+  if (!soldCard) return false;
+
+  run.currency -= finalPrice;
+  run.cardsRemovedAtShop = (run.cardsRemovedAtShop ?? 0) + 1;
+  if (haggled) run.haggleSuccesses = (run.haggleSuccesses ?? 0) + 1;
+
+  // Update removal cost in shop inventory to reflect new count
+  const inventory = get(activeShopInventory);
+  if (inventory) {
+    inventory.removalCost = removalPrice(run.cardsRemovedAtShop);
+    activeShopInventory.set(inventory);
+  }
+  activeRunState.set(run);
+
+  analyticsService.track({
+    name: 'shop_buy_removal',
+    properties: {
+      card_id: cardId,
+      card_type: soldCard.cardType,
+      tier: soldCard.tier,
+      price: finalPrice,
+      base_price: basePrice,
+      haggled,
+      floor: run.floor.currentFloor,
+      remaining_currency: run.currency,
+    },
+  });
+  return true;
+}
+
+/**
+ * Record a haggle attempt for telemetry (called when a haggle quiz answer is submitted).
+ * Call regardless of correct/wrong outcome.
+ */
+export function recordHaggleAttempt(): void {
+  const run = get(activeRunState);
+  if (!run) return;
+  run.haggleAttempts = (run.haggleAttempts ?? 0) + 1;
+  activeRunState.set(run);
 }
 
 export function onShopDone(): void {

@@ -896,6 +896,22 @@ export const LEGACY_TIER_MULTIPLIER: Record<1 | 2 | 3, number> = {
   3: TIER_MULTIPLIER['3'],
 };
 
+/** Charge play multipliers for correct answers, by tier. */
+export const CHARGE_CORRECT_MULTIPLIERS: Record<string, number> = {
+  '1': 2.5,
+  '2a': 3.0,
+  '2b': 3.5,
+  '3': 1.2,
+};
+
+/** Charge play multipliers for wrong answers, by tier. */
+export const CHARGE_WRONG_MULTIPLIERS: Record<string, number> = {
+  '1': 0.6,
+  '2a': 0.7,
+  '2b': 0.7,
+  '3': 0.6,
+};
+
 /** Passive bonus values for Tier 3 mastered cards by card type. */
 export const TIER3_PASSIVE_VALUE: Record<string, number> = {
   attack: 1,    // +1 flat damage to all attacks
@@ -928,6 +944,30 @@ export const TIER_QUESTION_FORMAT: Record<'1' | '2a' | '2b' | '3', {
   '2b': { options: 5, allowReverse: true, allowFillBlank: true, useCloseDistractors: true },
   '3': { options: 0, allowReverse: false, allowFillBlank: false, useCloseDistractors: false },
 };
+
+// Knowledge Chain system (AR-59.3)
+/**
+ * Damage multipliers per chain length.
+ * Index 0 = no card played yet (1.0×), 1 = first card (1.0× no bonus), 2 = second same-domain (1.3×), etc.
+ */
+export const CHAIN_MULTIPLIERS: number[] = [1.0, 1.0, 1.3, 1.7, 2.2, 3.0];
+/** Maximum chain length (after which the multiplier stays at the last value). */
+export const MAX_CHAIN_LENGTH = 5;
+
+// Knowledge Surge system (AR-59.4)
+/** Turn number of the first Surge turn per encounter. */
+export const SURGE_FIRST_TURN = 2;
+/** Number of turns between Surge turns. */
+export const SURGE_INTERVAL = 3;
+
+// Free First Charge system (AR-59.23)
+/** AP surcharge for the first Charge of a fact in a run. 0 = free. */
+export const FIRST_CHARGE_FREE_AP_SURCHARGE = 0;
+/**
+ * Damage multiplier for a wrong answer on the first free Charge.
+ * Same as Quick Play (1.0×) — no penalty for trying a new fact.
+ */
+export const FIRST_CHARGE_FREE_WRONG_MULTIPLIER = 1.0;
 
 // Player defaults
 export const PLAYER_START_HP = 120;
@@ -1089,8 +1129,14 @@ export const SPEED_BONUS_MULTIPLIER = 1.5;
 
 export const ECHO = {
   REAPPEARANCE_CHANCE: 0.85,
-  POWER_MULTIPLIER: 0.70,
+  /** V2: Echo cards store full base power at spawn; multiplier applied at resolve time. */
+  POWER_MULTIPLIER: 1.0,
+  /** V2: Wrong Charge on an Echo card applies this penalty at resolve time (0.5× base). */
+  POWER_MULTIPLIER_WRONG: 0.5,
+  /** Standard FSRS stability bonus — kept for legacy/wrong-echo path. */
   FSRS_STABILITY_BONUS: 3.0,
+  /** V2: Correct Echo Charge receives double FSRS credit (6.0× multiplier). */
+  FSRS_STABILITY_BONUS_CORRECT_V2: 6.0,
   MAX_ECHOES_PER_RUN: 20,
   INSERT_DELAY_CARDS: 3,
 } as const;
@@ -1098,7 +1144,105 @@ export const ECHO = {
 /** Wrong answer still applies this fraction of card effect (0 = full fizzle, 1 = no penalty). */
 export const FIZZLE_EFFECT_RATIO = 0.25;
 
+// === BOSS QUIZ PHASE SYSTEM (AR-59.7) ===
+
+/**
+ * Configuration for a single boss quiz phase.
+ */
+export interface BossQuizPhaseConfig {
+  /** HP fraction (0–1) at which this phase triggers. Lower = triggers when boss is lower HP. */
+  hpThreshold: number;
+  /** Number of quiz questions shown during this phase. */
+  questionCount: number;
+  /** True = rapid-fire: effects applied per-answer. False = effects applied at phase end. */
+  rapidFire: boolean;
+  /** True = draws from the player's weakest categoryL2 knowledge domain. */
+  useWeakestDomain: boolean;
+  /**
+   * Optional per-answer timer override in milliseconds.
+   * null = use the standard encounter timer. Rapid-fire phases often use 4000ms.
+   */
+  timerOverrideMs?: number | null;
+  /** Rewards for correct answers during this phase. */
+  rewards: {
+    /** Fraction of boss's current HP to drain per correct answer. */
+    correctHpDrainPct?: number;
+    /** Flat damage per correct answer. */
+    correctDirectDamage?: number;
+    /** True = grant a random buff per correct answer. */
+    correctRandomBuff?: boolean;
+  };
+  /** Penalties for wrong answers during this phase. */
+  penalties: {
+    /** Strength stacks to add to boss per wrong answer. */
+    wrongStrengthGain?: number;
+    /** HP to restore to boss per wrong answer. */
+    wrongBossHeal?: number;
+  };
+}
+
+/**
+ * HP drain multiplier used in boss quiz phase reward calculations.
+ * Applied to the boss's current HP for each correct answer.
+ */
+export const QUIZ_PHASE_CORRECT_HP_DRAIN = 0.05;
+
+/**
+ * Boss quiz phase configurations keyed by enemy template ID.
+ * Each entry is an array of phases ordered by hpThreshold (descending).
+ */
+export const BOSS_QUIZ_PHASES: Record<string, BossQuizPhaseConfig[]> = {
+  /** The Archivist: standard phase at 50% HP. */
+  the_archivist: [
+    {
+      hpThreshold: 0.50,
+      questionCount: 5,
+      rapidFire: false,
+      useWeakestDomain: false,
+      timerOverrideMs: null,
+      rewards: { correctHpDrainPct: QUIZ_PHASE_CORRECT_HP_DRAIN },
+      penalties: { wrongBossHeal: 5 },
+    },
+  ],
+  /** The Curator: weakest-domain phase at 66%, then rapid-fire at 33%. */
+  the_curator: [
+    {
+      hpThreshold: 0.66,
+      questionCount: 4,
+      rapidFire: false,
+      useWeakestDomain: true,
+      timerOverrideMs: null,
+      rewards: { correctHpDrainPct: QUIZ_PHASE_CORRECT_HP_DRAIN },
+      penalties: { wrongStrengthGain: 1 },
+    },
+    {
+      hpThreshold: 0.33,
+      questionCount: 6,
+      rapidFire: true,
+      useWeakestDomain: false,
+      timerOverrideMs: 4000,
+      rewards: { correctDirectDamage: 8 },
+      penalties: { wrongBossHeal: 5 },
+    },
+  ],
+};
+
 // === RELIC SYSTEM ===
+
+/** Maximum number of relics a player can equip simultaneously. */
+export const MAX_RELIC_SLOTS = 5;
+
+/** Extra slot granted by Scholar's Gambit (total becomes 6). */
+export const SCHOLARS_GAMBIT_EXTRA_SLOT = 1;
+
+/** Fraction of rarity-based shop price refunded when selling an equipped relic mid-run. */
+export const RELIC_SELL_REFUND_PCT = 0.40;
+
+/** Gold cost to reroll all relic options at boss/mini-boss selection. */
+export const RELIC_REROLL_COST = 50;
+
+/** Maximum rerolls allowed per relic selection event. */
+export const RELIC_REROLL_MAX = 1;
 
 /** Chance of random relic drop after regular encounters. */
 export const RELIC_DROP_CHANCE_REGULAR = 0.10;
@@ -1116,11 +1260,38 @@ export const RELIC_RARITY_WEIGHTS = {
 
 /** Rarity weights for boss relic choices (better quality). */
 export const RELIC_BOSS_RARITY_WEIGHTS = {
-  common: 0.25,
+  common: 0.20,    // AR-59.12: was 0.25
   uncommon: 0.35,
-  rare: 0.25,
+  rare: 0.30,      // AR-59.12: was 0.25
   legendary: 0.15,
 } as const;
+
+/** Consecutive Common-only acquisitions before pity guarantees Uncommon+. */
+export const RELIC_PITY_THRESHOLD = 4;
+
+/** Alias used by new v2 code — same value as RELIC_PITY_THRESHOLD. */
+export const RELIC_PITY_TIMER_UNCOMMON_PLUS = 4;
+
+/** Maximum relic slots with Scholar's Gambit equipped. */
+export const RELIC_SLOT_MAX = 6;
+
+/** Gold refund values when selling a held relic to make room for a new one. */
+export const RELIC_SELL_VALUE_COMMON = 15;
+export const RELIC_SELL_VALUE_UNCOMMON = 25;
+export const RELIC_SELL_VALUE_RARE = 35;
+export const RELIC_SELL_VALUE_LEGENDARY = 50;
+
+/** Maximum block that Aegis Stone can carry between turns. */
+export const RELIC_AEGIS_STONE_MAX_CARRY = 25;
+
+/** Maximum unused AP that Capacitor can store per turn. */
+export const RELIC_CAPACITOR_MAX_STORED_AP = 3;
+
+/** Answer time threshold in ms for Quicksilver Quill 1.5× multiplier. */
+export const RELIC_QUICKSILVER_QUILL_FAST_MS = 2000;
+
+/** Answer time threshold in ms for Adrenaline Shard AP refund. */
+export const RELIC_ADRENALINE_SHARD_FAST_MS = 3000;
 
 /** Currency multiplier per difficulty mode. Applied at end-of-run. */
 export const DIFFICULTY_REWARD_MULTIPLIER: Record<DifficultyMode, number> = {
@@ -1166,25 +1337,43 @@ export const SHOP_RELIC_COUNT = 3;
 /** Number of cards available per shop visit. */
 export const SHOP_CARD_COUNT = 3;
 
-/** Relic prices by rarity. */
+/** Relic prices by rarity (v2 pricing — AR-59.15). */
 export const SHOP_RELIC_PRICE: Record<string, number> = {
-  common: 60,
-  uncommon: 100,
-  rare: 160,
-  legendary: 250,
+  common: 100,
+  uncommon: 160,
+  rare: 250,
+  legendary: 400,
 };
 
-/** Card prices by tier. */
+/**
+ * Card prices by rarity (v2 pricing — AR-59.15).
+ * Use with cardTierToRarity() in shopService.ts.
+ * Tier 1 = common (50g), Tier 2a/2b = uncommon (80g), Tier 3 = rare (140g).
+ */
+export const SHOP_CARD_PRICE_V2: Record<string, number> = {
+  common: 50,
+  uncommon: 80,
+  rare: 140,
+};
+
+/** @deprecated Use SHOP_CARD_PRICE_V2 with cardTierToRarity(). Kept for backward compatibility. */
 export const SHOP_CARD_PRICE: Record<string, number> = {
-  '1': 15,
-  '2a': 30,
-  '2b': 45,
-  '3': 75,
+  '1': 50,
+  '2a': 80,
+  '2b': 80,
+  '3': 140,
 };
 
 /** Floor discount for shop prices (3% per floor, max 40%). */
 export const SHOP_FLOOR_DISCOUNT_PER_FLOOR = 0.03;
 export const SHOP_MAX_DISCOUNT = 0.40;
+
+/** Base price for the shop card removal service — first removal in run. */
+export const SHOP_REMOVAL_BASE_PRICE = 50;
+/** Additional gold cost per subsequent card removal in the same run (+25g each). */
+export const SHOP_REMOVAL_PRICE_INCREMENT = 25;
+/** Haggle discount fraction (0.30 = 30% off — player pays 70% of base price). */
+export const SHOP_HAGGLE_DISCOUNT = 0.30;
 
 /** Number of food/consumable items offered per shop visit. */
 export const SHOP_FOOD_COUNT = 3;
@@ -1210,19 +1399,19 @@ export const PHOENIX_RAGE_PENALTY_REMOVAL_TURNS = 3;
 
 // === DUNGEON MAP ===
 export const MAP_CONFIG = {
-  ROWS_PER_ACT: 15,
-  MIN_NODES_PER_ROW: 3,
-  MAX_NODES_PER_ROW: 5,
+  ROWS_PER_ACT: 8,
+  MIN_NODES_PER_ROW: 2,
+  MAX_NODES_PER_ROW: 4,
   START_PATHS: 3,
   BRANCH_CHANCE: 0.3,
   MERGE_CHANCE: 0.2,
-  ELITE_MIN_ROW: 4,
-  REST_MIN_ROW: 4,
-  SHOP_MIN_ROW: 4,
-  ELITE_MIN_COUNT: 3,
-  ELITE_MAX_COUNT: 5,
-  PRE_BOSS_ROW: 13,        // rest or shop, paths converge
-  BOSS_ROW: 14,            // single boss node
+  ELITE_MIN_ROW: 2,
+  REST_MIN_ROW: 2,
+  SHOP_MIN_ROW: 2,
+  ELITE_MIN_COUNT: 1,
+  ELITE_MAX_COUNT: 2,
+  PRE_BOSS_ROW: 6,         // rest or shop, paths converge
+  BOSS_ROW: 7,             // single boss node
   ROOM_DISTRIBUTION: {
     1: { combat: 0.42, elite: 0.12, mystery: 0.16, rest: 0.12, treasure: 0.10, shop: 0.08 },
     2: { combat: 0.38, elite: 0.14, mystery: 0.16, rest: 0.12, treasure: 0.10, shop: 0.10 },
@@ -1302,8 +1491,22 @@ export function getBalanceOverrides(): BalanceOverrides | null {
   return _activeOverrides;
 }
 
-/** The 3 relics always offered at the start of every run. */
-export const STARTER_RELIC_CHOICES = ['scholars_hat', 'iron_buckler', 'war_drum'] as const
+// REMOVED AR-59.12: Starter relic selection screen removed. Relics are earned through encounters.
+// export const STARTER_RELIC_CHOICES = ['scholars_hat', 'iron_buckler', 'war_drum'] as const
+
+/** Total number of cards in the fixed starter deck (AR-59.6). */
+export const STARTER_DECK_SIZE = 10;
+
+/**
+ * Fixed starter deck composition (AR-59.6).
+ * 5 Strike, 4 Block, 1 Surge (foresight mechanic: 0 AP, draw 2).
+ * Cards are drawn from the run pool so they carry real fact IDs/domains.
+ */
+export const STARTER_DECK_COMPOSITION = [
+  { mechanicId: 'strike', count: 5 },
+  { mechanicId: 'block',  count: 4 },
+  { mechanicId: 'foresight', count: 1 },
+] as const;
 
 /** Get an override value if set, otherwise return the default constant. */
 export function getBalanceValue<K extends keyof BalanceOverrides>(

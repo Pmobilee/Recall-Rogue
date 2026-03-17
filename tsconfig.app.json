@@ -18,5 +18,5 @@
     "moduleDetection": "force"
   },
   "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],
-  "exclude": ["src/_archived-mining"]
+  "exclude": ["src/_archived-mining", "src/_archived"]
 }

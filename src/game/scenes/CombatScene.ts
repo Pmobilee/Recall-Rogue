@@ -196,6 +196,10 @@ export class CombatScene extends Phaser.Scene {
       loadBarFill.destroy()
       loadText.destroy()
     })
+    // Suppress file-not-found errors for missing enemy sprites — game shows colored placeholder instead.
+    this.load.on('loaderror', (_file: Phaser.Loader.File) => {
+      // intentionally silent — missing sprites fall back to colored rectangle placeholder
+    })
 
     const suffix = getDeviceTier() === 'low-end' ? '_1x.webp' : '.webp'
 

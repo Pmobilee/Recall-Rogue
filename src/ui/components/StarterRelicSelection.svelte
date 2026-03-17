@@ -1,5 +1,7 @@
 <script lang="ts">
-  import { STARTER_RELIC_CHOICES } from '../../data/balance'
+  // AR-59.12: STARTER_RELIC_CHOICES was removed from balance.ts (starter relic selection screen is dead code).
+  // This component is unreachable but kept pending deletion approval.
+  const STARTER_RELIC_CHOICES = ['scholars_hat', 'iron_buckler', 'war_drum'] as const
   import { RELIC_BY_ID } from '../../data/relics/index'
   import { getRelicIconPath } from '../utils/iconAssets'
 

@@ -4,9 +4,17 @@
   interface Props {
     options: RelicDefinition[]
     onselect: (relic: RelicDefinition) => void
+    /** Shows and enables the reroll button when truthy. Defaults to false (button hidden). */
+    canReroll?: boolean
+    /** Gold cost shown on the reroll button. Defaults to 50. */
+    rerollCost?: number
+    /** Called when the player taps the reroll button (only when canReroll is true). */
+    onreroll?: () => void
+    /** When true, shows a pity-active indicator (guaranteed Uncommon+). */
+    pityActive?: boolean
   }
 
-  let { options, onselect }: Props = $props()
+  let { options, onselect, canReroll = false, rerollCost = 50, onreroll, pityActive = false }: Props = $props()
 
   let selectedId = $state<string | null>(null)
 
@@ -63,6 +71,22 @@
         </button>
       {/each}
     </div>
+
+    {#if onreroll !== undefined}
+      <button
+        class="reroll-btn"
+        class:reroll-disabled={!canReroll}
+        onclick={() => { if (canReroll) onreroll?.() }}
+        disabled={!canReroll}
+        aria-label={canReroll ? `Reroll relic options for ${rerollCost} gold` : 'Already rerolled this event'}
+      >
+        {canReroll ? `Reroll (${rerollCost}g)` : 'Rerolled'}
+      </button>
+    {/if}
+
+    {#if pityActive}
+      <p class="pity-indicator">Pity active — guaranteed Uncommon+</p>
+    {/if}
   </div>
 </div>
 
@@ -247,5 +271,40 @@
   @keyframes hintPulse {
     0%, 100% { opacity: 0.7; }
     50%      { opacity: 1; }
+  }
+
+  .reroll-btn {
+    margin-top: 4px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background: rgba(30, 45, 80, 0.95);
+    border: 2px solid #ffd700;
+    color: #ffd700;
+    font-family: 'Courier New', monospace;
+    font-size: calc(12px * var(--text-scale, 1));
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.15s ease, transform 0.1s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .reroll-btn:active:not(.reroll-disabled) {
+    transform: scale(0.96);
+  }
+
+  .reroll-btn.reroll-disabled {
+    border-color: #4b5563;
+    color: #6b7280;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  .pity-indicator {
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #22c55e;
+    font-style: italic;
+    text-align: center;
+    margin: 0;
+    opacity: 0.85;
   }
 </style>

@@ -318,22 +318,25 @@ function assignRoomTypes(
     }
   }
 
-  // Guarantee at least 1 rest in rows 1–11
-  const hasRest = Object.values(nodes).some(n => n.type === 'rest' && n.row >= 1 && n.row <= 11)
+  // The last regular row (before pre-boss) for guarantee checks
+  const lastRegularRow = PRE_BOSS_ROW - 1
+
+  // Guarantee at least 1 rest in rows 1–lastRegularRow
+  const hasRest = Object.values(nodes).some(n => n.type === 'rest' && n.row >= 1 && n.row <= lastRegularRow)
   if (!hasRest) {
     const candidates = Object.values(nodes).filter(
-      n => n.type === 'combat' && n.row >= REST_MIN_ROW && n.row <= 11,
+      n => n.type === 'combat' && n.row >= REST_MIN_ROW && n.row <= lastRegularRow,
     )
     if (candidates.length > 0) {
       candidates[Math.floor(rng() * candidates.length)].type = 'rest'
     }
   }
 
-  // Guarantee at least 1 shop in rows 1–11
-  const hasShop = Object.values(nodes).some(n => n.type === 'shop' && n.row >= 1 && n.row <= 11)
+  // Guarantee at least 1 shop in rows 1–lastRegularRow
+  const hasShop = Object.values(nodes).some(n => n.type === 'shop' && n.row >= 1 && n.row <= lastRegularRow)
   if (!hasShop) {
     const candidates = Object.values(nodes).filter(
-      n => n.type === 'combat' && n.row >= SHOP_MIN_ROW && n.row <= 11,
+      n => n.type === 'combat' && n.row >= SHOP_MIN_ROW && n.row <= lastRegularRow,
     )
     if (candidates.length > 0) {
       candidates[Math.floor(rng() * candidates.length)].type = 'shop'
@@ -342,14 +345,14 @@ function assignRoomTypes(
 
   // Guarantee ELITE_MIN_COUNT–ELITE_MAX_COUNT elites in eligible rows
   const eliteNodes = Object.values(nodes).filter(
-    n => n.type === 'elite' && n.row >= ELITE_MIN_ROW && n.row <= 11,
+    n => n.type === 'elite' && n.row >= ELITE_MIN_ROW && n.row <= lastRegularRow,
   )
   let eliteCount = eliteNodes.length
 
   // Too few elites — convert some combat nodes to elite
   if (eliteCount < ELITE_MIN_COUNT) {
     const candidates = Object.values(nodes).filter(
-      n => n.type === 'combat' && n.row >= ELITE_MIN_ROW && n.row <= 11,
+      n => n.type === 'combat' && n.row >= ELITE_MIN_ROW && n.row <= lastRegularRow,
     )
     // Shuffle candidates using rng
     for (let i = candidates.length - 1; i > 0; i--) {

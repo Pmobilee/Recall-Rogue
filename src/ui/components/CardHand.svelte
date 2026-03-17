@@ -10,6 +10,8 @@
   import { getCardDescriptionParts, type CardDescPart } from '../../services/cardDescriptionService'
   import { BASE_WIDTH, GAME_ASPECT_RATIO } from '../../data/layout'
   import { audioManager } from '../../services/audioService'
+  import { isFirstChargeFree } from '../../services/discoverySystem'
+  import { activeRunState } from '../../services/runStateStore'
 
   interface Props {
     cards: Card[]
@@ -24,6 +26,10 @@
     onselectcard: (index: number) => void
     ondeselectcard: () => void
     oncastdirect?: (index: number) => void
+    /** Charge Play — triggers quiz flow for selected card (AR-59.2). */
+    onchargeplay?: (index: number) => void
+    /** True during Surge turns — CHARGE! button shows "+0 AP" instead of "+1 AP". */
+    isSurgeActive?: boolean
   }
 
   // Session-level preload guard: avoid creating duplicate Image objects for the same URL.
@@ -44,6 +50,8 @@
     discarding = false,
     onselectcard,
     oncastdirect,
+    onchargeplay,
+    isSurgeActive = false,
   }: Props = $props()
 
   interface TierUpVisualSignature {
@@ -150,9 +158,11 @@
   let dragDeltaX = $derived(dragState ? dragState.currentX - dragState.startX : 0)
   let dragDeltaY = $derived(dragState ? Math.max(0, dragState.startY - dragState.currentY) : 0)
   let dragRawDeltaY = $derived(dragState ? dragState.startY - dragState.currentY : 0)
-  let dragScale = $derived(1 + Math.min(0.3, dragDeltaY / 200))
+  let dragScale = $derived(1 + Math.min(0.15, dragDeltaY / 500))
   let isDragPastThreshold = $derived(dragDeltaY > 60)
   let isDragPreview = $derived(dragDeltaY > 40)
+  /** True when drag has passed the 80px Charge threshold — release triggers Charge Play. */
+  let isDragChargeReady = $derived(dragDeltaY > 80)
   let pendingDragPoint: { x: number; y: number } | null = null
   let dragFrameId: number | null = null
 
@@ -325,9 +335,12 @@
     const index = dragState.cardIndex
     dragState = null
 
-    if (deltaY > 60) {
-      // Upward drag past threshold — cast directly
-      if (oncastdirect) {
+    if (deltaY > 80) {
+      // Upward fling past 80px Charge threshold — trigger Charge Play (quiz)
+      if (onchargeplay) {
+        onchargeplay(index)
+      } else if (oncastdirect) {
+        // Graceful fallback: Quick Play if onchargeplay not wired
         oncastdirect(index)
       } else {
         onselectcard(index)
@@ -336,7 +349,7 @@
       // Tap (minimal movement) — normal select behavior
       onselectcard(index)
     }
-    // Below threshold with movement: card returns to hand (no action)
+    // Drag released below 80px threshold: card returns to hand (no action)
   }
 
   function handlePointerCancel(e: PointerEvent): void {
@@ -498,6 +511,9 @@
     {@const cardDragRawY = isDraggingThis ? dragRawDeltaY : 0}
     {@const cardDragScale = isDraggingThis ? dragScale : 1}
     {@const tierVisual = getTierUpVisualSignature(card.factId)}
+    {@const runState = $activeRunState}
+    {@const isFreeCharge = card.factId ? isFirstChargeFree(card.factId, runState?.firstChargeFreeFactIds ?? new Set()) : false}
+    {@const isMastered = card.tier === '3'}
 
     <button
       class="card-in-hand"
@@ -585,10 +601,16 @@
             <div class="trial-badge">TRIAL</div>
           {/if}
           {#if card.isEcho}
-            <div class="echo-badge">ECHO</div>
+            <div class="echo-badge">
+              <span>ECHO</span>
+              <span class="echo-charge-label">⚡ CHARGE</span>
+            </div>
           {/if}
           {#if tierBadge}
             <div class="card-tier-badge">{tierBadge}</div>
+          {/if}
+          {#if isMastered}
+            <div class="card-tier-label card-tier-label--mastered">MASTERED</div>
           {/if}
         </div>
         {#if cardbackUrl}
@@ -614,6 +636,22 @@
         ></div>
       {/if}
     </button>
+
+    {#if selectedIndex === i && card.tier !== '3' && onchargeplay && !disabled}
+      {@const chargeApCost = (card.apCost ?? 1) + (isSurgeActive ? 0 : 1)}
+      {@const chargeAffordable = chargeApCost <= apCurrent}
+      <button
+        class="charge-play-btn"
+        class:charge-btn-disabled={!chargeAffordable}
+        disabled={!chargeAffordable}
+        title={!chargeAffordable ? 'Not enough AP' : 'Charge — answer a quiz for bonus power'}
+        onclick={() => onchargeplay!(i)}
+        style="transform: translate3d(calc({xOffset}px + var(--card-w) / 2), calc(-80px - var(--card-h)), 0) translateX(-50%);"
+      >
+        ⚡ CHARGE
+        <span class="charge-ap-badge">{isSurgeActive ? '+0' : '+1'} AP</span>
+      </button>
+    {/if}
   {/each}
 
   {#each animatingCards as card (card.id)}
@@ -922,6 +960,24 @@
     box-shadow: 0 0 10px rgba(241, 196, 15, 0.65);
   }
 
+  /* AR-59.23: Mastered tier label */
+  .card-tier-label--mastered {
+    position: absolute;
+    bottom: calc(4px * var(--layout-scale, 1));
+    left: calc(2px * var(--layout-scale, 1));
+    right: calc(2px * var(--layout-scale, 1));
+    font-size: calc(9px * var(--layout-scale, 1));
+    color: rgba(255, 215, 0, 1);
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0 calc(4px * var(--layout-scale, 1));
+    pointer-events: none;
+    z-index: 2;
+  }
+
   /* Card 3D flip infrastructure */
   .card-inner {
     position: relative;
@@ -1111,9 +1167,26 @@
     background: rgba(31, 41, 55, 0.8);
     border-radius: 3px;
     padding: calc(1px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1));
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.1;
   }
 
+  .echo-charge-label {
+    display: block;
+    font-size: calc(7px * var(--layout-scale, 1));
+    color: #c39bd3;
+    letter-spacing: 0.03em;
+    margin-top: calc(1px * var(--layout-scale, 1));
+  }
 
+  /* V2 Echo: golden flash on correct Charge resolve */
+  @keyframes echo-correct-flash {
+    0%   { box-shadow: 0 0 0px rgba(255, 215, 0, 0); }
+    40%  { box-shadow: 0 0 calc(18px * var(--layout-scale, 1)) rgba(255, 215, 0, 0.9); }
+    100% { box-shadow: 0 0 0px rgba(255, 215, 0, 0); }
+  }
 
   @keyframes echo-shimmer {
     0% { opacity: 0.55; }
@@ -1510,5 +1583,49 @@
     .card-swoosh-wild::after {
       display: none;
     }
+  }
+
+  /* === CHARGE! button (AR-59.2) === */
+  .charge-play-btn {
+    position: absolute;
+    z-index: 40;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #fff;
+    border: none;
+    border-radius: calc(10px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    min-height: calc(40px * var(--layout-scale, 1));
+    font-size: calc(13px * var(--layout-scale, 1));
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.55), 0 2px 6px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    white-space: nowrap;
+    animation: chargeBtnPulse 1.2s ease-in-out infinite;
+    pointer-events: all;
+  }
+
+  .charge-play-btn.charge-btn-disabled {
+    background: #4b5563;
+    box-shadow: none;
+    animation: none;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  .charge-ap-badge {
+    display: inline-block;
+    margin-left: 5px;
+    padding: 1px 5px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    font-size: 0.75em;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+
+  @keyframes chargeBtnPulse {
+    0%, 100% { box-shadow: 0 4px 16px rgba(245, 158, 11, 0.55), 0 2px 6px rgba(0, 0, 0, 0.4); }
+    50%       { box-shadow: 0 4px 28px rgba(245, 158, 11, 0.9), 0 2px 8px rgba(0, 0, 0, 0.5); }
   }
 </style>

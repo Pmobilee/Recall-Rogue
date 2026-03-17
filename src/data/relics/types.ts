@@ -9,7 +9,12 @@ export type RelicCategory =
   | 'tactical'
   | 'knowledge'
   | 'economy'
-  | 'cursed';
+  | 'cursed'
+  | 'chain'
+  | 'speed'
+  | 'burst'
+  | 'poison'
+  | 'glass_cannon';
 
 /** When a relic's effect fires. */
 export type RelicTrigger =
@@ -35,7 +40,11 @@ export type RelicTrigger =
   | 'on_boss_kill'
   | 'on_parry'
   | 'on_overheal'
-  | 'on_encounter_end';
+  | 'on_encounter_end'
+  | 'on_charge_correct'
+  | 'on_charge_wrong'
+  | 'on_chain_complete'
+  | 'on_surge_start';
 
 /** A single mechanical effect within a relic. */
 export interface RelicEffect {
@@ -75,6 +84,24 @@ export interface RelicDefinition {
   unlockCost: number;
   /** True for the 25 relics available to all players from the start. */
   isStarter: boolean;
+  /**
+   * True for the 25 relics available to all players from run start
+   * (no Mastery Coin purchase required). Distinct from `isStarter`,
+   * which identifies the old fixed-starter-screen relics.
+   */
+  startsUnlocked?: boolean;
+  /**
+   * True if this relic requires an unbuilt game mechanic and should
+   * be excluded from the in-run relic pool in Phase 1.
+   * Does not hide the relic in the Hub Relic Archive.
+   */
+  excludeFromPool?: boolean;
+  /**
+   * True if this relic depends on a mechanic not yet built for Phase 1.
+   * Relic drop system filters this out until Phase 2.
+   * The relic definition is still present in the catalogue for future use.
+   */
+  excludeFromPhase1?: boolean;
   /** For cursed relics: describes the downside. */
   curseDescription?: string;
 }

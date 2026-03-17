@@ -5,9 +5,11 @@
   interface Props {
     relic: RelicDefinition
     ondismiss: () => void
+    /** If provided, shows a "Swap" button — used when relic slots are full. */
+    onswap?: () => void
   }
 
-  let { relic, ondismiss }: Props = $props()
+  let { relic, ondismiss, onswap }: Props = $props()
 
   let dismissing = $state(false)
 
@@ -21,9 +23,11 @@
   const accentColor = $derived(rarityColors[relic.rarity] ?? '#9ca3af')
 
   onMount(() => {
+    // When a swap option is shown (slots full), give more time for the player to decide
+    const timeout = onswap ? 5000 : 2500
     const timer = setTimeout(() => {
       dismiss()
-    }, 2500)
+    }, timeout)
     return () => clearTimeout(timer)
   })
 
@@ -36,21 +40,32 @@
 </script>
 
 <!-- svelte-ignore a11y_no_interactive_element_to_noninteractive_role -->
-<button
+<div
   class="relic-toast"
   class:dismissing
+  class:has-swap={onswap !== undefined}
   style="border-left-color: {accentColor}"
-  onclick={dismiss}
-  aria-label="Relic found: {relic.name}. Tap to dismiss."
   role="status"
+  aria-label="Relic found: {relic.name}{onswap ? ' — slots full' : ''}"
 >
-  <div class="toast-icon">{relic.icon}</div>
-  <div class="toast-body">
-    <div class="toast-header">Relic Found!</div>
-    <div class="toast-name">{relic.name}</div>
-    <span class="toast-rarity" style="background: {accentColor}">{relic.rarity}</span>
-  </div>
-</button>
+  <button class="toast-main" onclick={dismiss} aria-label="Dismiss relic toast">
+    <div class="toast-icon">{relic.icon}</div>
+    <div class="toast-body">
+      <div class="toast-header">{onswap ? 'Relic Drop! (Slots Full)' : 'Relic Found!'}</div>
+      <div class="toast-name">{relic.name}</div>
+      <span class="toast-rarity" style="background: {accentColor}">{relic.rarity}</span>
+    </div>
+  </button>
+  {#if onswap}
+    <button
+      class="toast-swap-btn"
+      onclick={() => { onswap(); ondismiss(); }}
+      aria-label="Swap a relic to keep {relic.name}"
+    >
+      Swap
+    </button>
+  {/if}
+</div>
 
 <style>
   .relic-toast {
@@ -61,26 +76,54 @@
     z-index: 500;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     background: rgba(22, 33, 62, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-left: 4px solid;
     border-radius: 12px;
     padding: 12px 16px;
-    max-width: 320px;
+    max-width: 360px;
     width: max-content;
     color: var(--color-text, #eee);
     font-family: 'Courier New', monospace;
-    cursor: pointer;
     animation: toastSlideIn 0.35s ease-out;
+  }
 
-    /* Reset button defaults */
-    outline: none;
+  .toast-main {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
+    font-family: inherit;
+    cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+    outline: none;
   }
 
   .relic-toast.dismissing {
     animation: toastSlideOut 0.3s ease-in forwards;
+  }
+
+  .toast-swap-btn {
+    flex-shrink: 0;
+    padding: 6px 14px;
+    border-radius: 6px;
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid #22c55e;
+    color: #22c55e;
+    font-family: 'Courier New', monospace;
+    font-size: calc(11px * var(--text-scale, 1));
+    font-weight: 700;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.15s ease;
+  }
+
+  .toast-swap-btn:active {
+    background: rgba(34, 197, 94, 0.3);
   }
 
   @keyframes toastSlideIn {

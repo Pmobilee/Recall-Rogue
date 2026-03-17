@@ -6,12 +6,12 @@ import { writable, get } from 'svelte/store';
 import type { TurnState } from './turnManager';
 import { startEncounter, playCardAction, skipCard, endPlayerTurn } from './turnManager';
 import { buildRunPool, recordRunFacts } from './runPoolBuilder';
-import { addCardToDeck, createDeck, insertCardWithDelay, addFactsToCooldown, tickFactCooldowns, getEncounterSeenFacts, resetEncounterSeenFacts } from './deckManager';
+import { addCardToDeck, createDeck, insertCardWithDelay, addFactsToCooldown, tickFactCooldowns, getEncounterSeenFacts, resetEncounterSeenFacts, exhaustCard } from './deckManager';
 import { createEnemy } from './enemyManager';
 import { ENEMY_TEMPLATES } from '../data/enemies';
 import { activeRunState } from './runStateStore';
-import { getBossForFloor, pickCombatEnemy, isBossFloor, isMiniBossEncounter, getMiniBossForFloor, getRegionForFloor } from './floorManager';
-import type { Card, CardRunState, CardType } from '../data/card-types';
+import { getBossForFloor, pickCombatEnemy, isBossFloor, isMiniBossEncounter, getMiniBossForFloor, getRegionForFloor, getEnemiesForFloorNode } from './floorManager';
+import type { Card, CardRunState } from '../data/card-types';
 import { recordCardPlay } from './runManager';
 import {
   applyEchoStabilityBonus,
@@ -21,7 +21,7 @@ import {
   playerSave,
   updateReviewStateByButton,
 } from '../ui/stores/playerData';
-import { ECHO, HINTS_PER_ENCOUNTER, POST_ENCOUNTER_HEAL_PCT, RELAXED_POST_ENCOUNTER_HEAL_BONUS, POST_BOSS_ENCOUNTER_HEAL_BONUS, EARLY_MINI_BOSS_HP_MULTIPLIER, POST_ENCOUNTER_HEAL_CAP, getBalanceValue } from '../data/balance';
+import { ECHO, HINTS_PER_ENCOUNTER, POST_ENCOUNTER_HEAL_PCT, RELAXED_POST_ENCOUNTER_HEAL_BONUS, POST_BOSS_ENCOUNTER_HEAL_BONUS, EARLY_MINI_BOSS_HP_MULTIPLIER, POST_ENCOUNTER_HEAL_CAP, getBalanceValue, STARTER_DECK_COMPOSITION } from '../data/balance';
 import { generateCurrencyReward, generateComboBonus } from './encounterRewards';
 import type { CombatScene } from '../game/scenes/CombatScene';
 import { factsDB } from './factsDB';
@@ -31,7 +31,7 @@ import { updateBounties } from './bountyManager';
 import { juiceManager } from './juiceManager';
 import { getCardTier } from './tierDerivation';
 import { playCardAudio } from './cardAudioManager';
-import { MECHANIC_BY_ID } from '../data/mechanics';
+import { MECHANIC_BY_ID, type PlayMode } from '../data/mechanics';
 import { analyticsService } from './analyticsService';
 import { isSubscriber } from './subscriptionService';
 import {
@@ -150,93 +150,34 @@ export function hydrateEncounterSnapshot(snapshot?: EncounterSnapshot | null): v
   activeRunPool = (snapshot.activeRunPool ?? []).map(cloneCard)
 }
 
-/** Simplify starter deck: mostly basic Strike/Block, with a few advanced sprinkled in. */
-function simplifyStarterMechanics(deck: Card[]): Card[] {
-  // Step 1: Reset all attack/shield cards to basics
-  const result = deck.map(card => {
-    if (card.cardType === 'attack') {
-      const m = MECHANIC_BY_ID['strike'];
-      return { ...card, mechanicId: m.id, mechanicName: m.name, baseEffectValue: m.baseValue, originalBaseEffectValue: m.baseValue, apCost: m.apCost };
+/**
+ * Builds the fixed 10-card starter deck: 5 Strike, 4 Block, 1 Surge (foresight).
+ * Cards are drawn from the run pool so they carry real fact IDs and domains.
+ * Mechanic slots are filled strictly to STARTER_DECK_COMPOSITION ratios (AR-59.6).
+ */
+function buildFixedStarterDeck(runPool: Card[]): Card[] {
+  const result: Card[] = [];
+  const usedIds = new Set<string>();
+
+  for (const { mechanicId, count } of STARTER_DECK_COMPOSITION) {
+    const m = MECHANIC_BY_ID[mechanicId];
+    if (!m) continue;
+    const candidates = runPool.filter(c => !usedIds.has(c.id));
+    const picked = candidates.slice(0, count);
+    for (const card of picked) {
+      result.push({
+        ...card,
+        mechanicId: m.id,
+        mechanicName: m.name,
+        baseEffectValue: m.baseValue,
+        originalBaseEffectValue: m.baseValue,
+        apCost: m.apCost,
+      });
+      usedIds.add(card.id);
     }
-    if (card.cardType === 'shield') {
-      const m = MECHANIC_BY_ID['block'];
-      return { ...card, mechanicId: m.id, mechanicName: m.name, baseEffectValue: m.baseValue, originalBaseEffectValue: m.baseValue, apCost: m.apCost };
-    }
-    return card;
-  });
-
-  // Step 2: Upgrade 2-3 random cards to advanced mechanics
-  const attacks = result.filter(c => c.cardType === 'attack');
-  const shields = result.filter(c => c.cardType === 'shield');
-
-  // Upgrade 1 attack to multi_hit
-  const multiHit = MECHANIC_BY_ID['multi_hit'];
-  if (multiHit && attacks.length >= 2) {
-    const idx = Math.floor(Math.random() * attacks.length);
-    const card = attacks[idx];
-    Object.assign(card, {
-      mechanicId: multiHit.id,
-      mechanicName: multiHit.name,
-      baseEffectValue: multiHit.baseValue,
-      originalBaseEffectValue: multiHit.baseValue,
-      apCost: multiHit.apCost,
-    });
-  }
-
-  // Upgrade 1 shield to thorns
-  const thorns = MECHANIC_BY_ID['thorns'];
-  if (thorns && shields.length >= 2) {
-    const idx = Math.floor(Math.random() * shields.length);
-    const card = shields[idx];
-    Object.assign(card, {
-      mechanicId: thorns.id,
-      mechanicName: thorns.name,
-      baseEffectValue: thorns.baseValue,
-      originalBaseEffectValue: thorns.baseValue,
-      apCost: thorns.apCost,
-    });
   }
 
   return result;
-}
-
-function buildStarterDeckFromRunPool(runPool: Card[], targetSize: number): Card[] {
-  const byType = new Map<CardType, Card[]>();
-  for (const card of runPool) {
-    if (!byType.has(card.cardType)) byType.set(card.cardType, []);
-    byType.get(card.cardType)!.push(card);
-  }
-
-  const size = Math.max(9, Math.min(targetSize, runPool.length));
-  const attackTarget = Math.max(1, Math.round(size * 0.4));
-  const shieldTarget = Math.max(1, Math.round(size * 0.35));
-  const utilityTarget = Math.max(1, size - attackTarget - shieldTarget);
-  const picked: Card[] = [];
-  const used = new Set<string>();
-
-  const take = (type: CardType, count: number): void => {
-    const bucket = byType.get(type) ?? [];
-    for (const card of bucket) {
-      if (picked.length >= size || count <= 0) break;
-      if (used.has(card.id)) continue;
-      picked.push(card);
-      used.add(card.id);
-      count -= 1;
-    }
-  };
-
-  take('attack', attackTarget);
-  take('shield', shieldTarget);
-  take('utility', utilityTarget);
-
-  for (const card of runPool) {
-    if (picked.length >= size) break;
-    if (used.has(card.id)) continue;
-    picked.push(card);
-    used.add(card.id);
-  }
-
-  return picked;
 }
 
 function syncCombatScene(turnState: TurnState): void {
@@ -383,9 +324,8 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
       console.warn('[encounterBridge] Empty run pool — cannot start encounter');
       return false;
     }
-    const starterDeck = simplifyStarterMechanics(
-      buildStarterDeckFromRunPool(activeRunPool, run.starterDeckSize)
-    );
+    // AR-59.6: fixed 10-card starter deck (5 Strike, 4 Block, 1 Surge)
+    const starterDeck = buildFixedStarterDeck(activeRunPool);
     activeDeck = createDeck(starterDeck);
   }
 
@@ -397,18 +337,35 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   let templateId = enemyId;
   if (!templateId) {
     if (isBossFloor(run.floor.currentFloor) && run.floor.currentEncounter === run.floor.encountersPerFloor) {
-      templateId = getBossForFloor(run.floor.currentFloor) ?? pickCombatEnemy(run.floor.currentFloor);
+      // V2: use act-based boss pool
+      const bossCandidates = getEnemiesForFloorNode(run.floor.currentFloor, 'boss');
+      templateId = bossCandidates.length > 0
+        ? bossCandidates[Math.floor(Math.random() * bossCandidates.length)].id
+        : (getBossForFloor(run.floor.currentFloor) ?? pickCombatEnemy(run.floor.currentFloor));
     } else if (isMiniBossEncounter(run.floor.currentFloor, run.floor.currentEncounter)) {
-      templateId = getMiniBossForFloor(run.floor.currentFloor);
+      // V2: use act-based mini-boss pool, fall back to legacy
+      const miniBossCandidates = getEnemiesForFloorNode(run.floor.currentFloor, 'mini_boss');
+      templateId = miniBossCandidates.length > 0
+        ? miniBossCandidates[Math.floor(Math.random() * miniBossCandidates.length)].id
+        : getMiniBossForFloor(run.floor.currentFloor);
     } else {
       if (run.canary.mode === 'challenge' && Math.random() < 0.35) {
-        const region = getRegionForFloor(run.floor.currentFloor);
-        const eliteCandidates = ENEMY_TEMPLATES.filter((enemyTemplate) => enemyTemplate.category === 'elite' && enemyTemplate.region === region);
-        // Fallback to any elite if no region-specific ones available
-        const effectiveElites = eliteCandidates.length > 0 ? eliteCandidates : ENEMY_TEMPLATES.filter((enemyTemplate) => enemyTemplate.category === 'elite');
-        templateId = effectiveElites[Math.floor(Math.random() * effectiveElites.length)]?.id ?? pickCombatEnemy(run.floor.currentFloor);
+        // V2: use act-based elite pool, fall back to region-based
+        const eliteCandidates = getEnemiesForFloorNode(run.floor.currentFloor, 'elite');
+        if (eliteCandidates.length > 0) {
+          templateId = eliteCandidates[Math.floor(Math.random() * eliteCandidates.length)].id;
+        } else {
+          const region = getRegionForFloor(run.floor.currentFloor);
+          const regionElites = ENEMY_TEMPLATES.filter((enemyTemplate) => enemyTemplate.category === 'elite' && enemyTemplate.region === region);
+          const effectiveElites = regionElites.length > 0 ? regionElites : ENEMY_TEMPLATES.filter((enemyTemplate) => enemyTemplate.category === 'elite');
+          templateId = effectiveElites[Math.floor(Math.random() * effectiveElites.length)]?.id ?? pickCombatEnemy(run.floor.currentFloor);
+        }
       } else {
-        templateId = pickCombatEnemy(run.floor.currentFloor);
+        // V2: use act-based common pool for regular encounters
+        const commonCandidates = getEnemiesForFloorNode(run.floor.currentFloor, 'combat');
+        templateId = commonCandidates.length > 0
+          ? commonCandidates[Math.floor(Math.random() * commonCandidates.length)].id
+          : pickCombatEnemy(run.floor.currentFloor);
       }
     }
   }
@@ -492,16 +449,24 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
 }
 
 function createEchoCardFrom(card: Card): Card {
+  // V2: Store full base power at spawn. Multiplier (if any) is applied at resolve time in
+  // resolveEchoBase(), not here. originalBaseEffectValue is kept for echo_lens compatibility.
   return {
     ...card,
     id: `echo_${Math.random().toString(36).slice(2, 10)}`,
     isEcho: true,
     originalBaseEffectValue: card.originalBaseEffectValue ?? card.baseEffectValue,
-    baseEffectValue: Math.max(1, Math.round(card.baseEffectValue * ECHO.POWER_MULTIPLIER)),
+    baseEffectValue: card.originalBaseEffectValue ?? card.baseEffectValue,
   };
 }
 
-function maybeGenerateEcho(card: Card, wasCorrect: boolean): void {
+/**
+ * V2: Spawns an Echo card only when a Charge play is answered incorrectly.
+ * Quick Play answers never spawn Echoes.
+ */
+function maybeGenerateEcho(card: Card, wasCorrect: boolean, playMode: PlayMode): void {
+  // V2: only wrong Charge answers spawn Echoes; Quick Play never creates Echoes
+  if (playMode !== 'charge') return;
   const run = get(activeRunState);
   if (!run || !activeDeck) return;
   if (run.ascensionModifiers?.disableEcho) return;
@@ -532,6 +497,7 @@ export function handlePlayCard(
   speedBonus: boolean,
   responseTimeMs?: number,
   variantIndex?: number,
+  playMode: PlayMode = 'charge',
 ): void {
   const turnState = get(activeTurnState);
   if (!turnState) return;
@@ -539,7 +505,7 @@ export function handlePlayCard(
   const playedCard = turnState.deck.hand.find((card) => card.id === cardId);
   const previousReviewState = playedCard?.factId ? getReviewStateByFactId(playedCard.factId) : undefined;
   const previousTier = previousReviewState ? getCardTier(previousReviewState) : null;
-  const result = playCardAction(turnState, cardId, correct, speedBonus);
+  const result = playCardAction(turnState, cardId, correct, speedBonus, playMode);
   const run = get(activeRunState);
 
   if (run && playedCard) {
@@ -603,8 +569,20 @@ export function handlePlayCard(
       runNumber: run?.primaryDomainRunNumber,
     });
 
-    if (playedCard.isEcho && correct) {
-      applyEchoStabilityBonus(playedCard.factId, ECHO.FSRS_STABILITY_BONUS);
+    // V2: Correct Echo Charge — double FSRS credit + redeem fact (cannot spawn another Echo)
+    if (playedCard.isEcho && correct && playMode === 'charge' && run) {
+      applyEchoStabilityBonus(playedCard.factId, ECHO.FSRS_STABILITY_BONUS_CORRECT_V2);
+      run.echoFactIds.delete(playedCard.factId);
+      activeRunState.set(run);
+    }
+
+    // V2: Wrong Echo Charge — exhaust the card (cannot be re-drawn this run)
+    if (playedCard.isEcho && !correct && playMode === 'charge' && activeDeck) {
+      try {
+        exhaustCard(activeDeck, playedCard.id);
+      } catch {
+        // Card may already have been removed from hand by playCardAction — safe to ignore
+      }
     }
 
     const updatedReviewState = getReviewStateByFactId(playedCard.factId);
@@ -632,7 +610,7 @@ export function handlePlayCard(
     }
 
     maybeApplyMasteryOutcome(playedCard, correct);
-    maybeGenerateEcho(playedCard, correct);
+    maybeGenerateEcho(playedCard, correct, playMode);
   }
 
   activeTurnState.set(freshTurnState(result.turnState));

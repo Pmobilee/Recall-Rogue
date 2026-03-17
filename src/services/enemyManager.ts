@@ -2,7 +2,7 @@
 // Creates and manages enemy instances during encounters.
 // NO Phaser, Svelte, or DOM imports.
 
-import type { EnemyTemplate, EnemyInstance, EnemyIntent } from '../data/enemies';
+import type { EnemyTemplate, EnemyInstance, EnemyIntent, EnemyTurnStartContext } from '../data/enemies';
 import type { StatusEffect } from '../data/statusEffects';
 import { applyStatusEffect, tickStatusEffects, getStrengthModifier } from '../data/statusEffects';
 import { ENEMY_TURN_DAMAGE_CAP, FLOOR_DAMAGE_SCALING_PER_FLOOR, FLOOR_DAMAGE_SCALE_MID, getBalanceValue } from '../data/balance';
@@ -84,6 +84,8 @@ export function createEnemy(
     isCharging: false,
     chargedDamage: 0,
     difficultyVariance,
+    enrageBonusDamage: 0,
+    playerChargedThisTurn: false,
   };
 }
 
@@ -173,7 +175,22 @@ function getSegmentForFloor(floor: number): 1 | 2 | 3 | 4 | 'endless' {
 }
 
 /**
- * Executes the enemy's current intent, applying strength modifier.
+ * Dispatches the onEnemyTurnStart callback for the given enemy, if defined.
+ * Called at the start of each enemy turn (after player ends their turn).
+ * Used for enrage logic (Timer Wyrm) and other per-turn enemy effects.
+ *
+ * @param enemy - The enemy instance (mutated in place by callback).
+ * @param turnNumber - The current turn number (1-indexed).
+ */
+export function dispatchEnemyTurnStart(enemy: EnemyInstance, turnNumber: number): void {
+  if (enemy.template.onEnemyTurnStart) {
+    const ctx: EnemyTurnStartContext = { enemy, turnNumber };
+    enemy.template.onEnemyTurnStart(ctx);
+  }
+}
+
+/**
+ * Executes the enemy's current intent, applying strength modifier and enrage bonus.
  *
  * Returns the results of the intent execution without modifying player state
  * (the turn manager is responsible for applying effects to the player).
@@ -195,12 +212,14 @@ export function executeEnemyIntent(enemy: EnemyInstance): {
 
   switch (intent.type) {
     case 'attack': {
-      damage = Math.round(intent.value * strengthMod * getFloorDamageScaling(enemy.floor));
+      const baseValue = intent.value + (enemy.enrageBonusDamage ?? 0);
+      damage = Math.round(baseValue * strengthMod * getFloorDamageScaling(enemy.floor));
       break;
     }
     case 'multi_attack': {
       const hits = intent.hitCount ?? 1;
-      damage = Math.round(intent.value * strengthMod * getFloorDamageScaling(enemy.floor)) * hits;
+      const baseValue = intent.value + (enemy.enrageBonusDamage ?? 0);
+      damage = Math.round(baseValue * strengthMod * getFloorDamageScaling(enemy.floor)) * hits;
       break;
     }
     case 'defend': {

@@ -3,6 +3,7 @@
 // NO Phaser, Svelte, or DOM imports.
 
 import type { StatusEffectType, StatusEffect } from './statusEffects';
+import { applyStatusEffect } from './statusEffects';
 import type { FactDomain } from './card-types';
 import type { AnimArchetype } from './enemyAnimations';
 
@@ -28,6 +29,44 @@ export interface EnemyIntent {
   hitCount?: number;
   /** Whether this intent bypasses the per-turn damage cap (used for charged attacks). */
   bypassDamageCap?: boolean;
+}
+
+/**
+ * Minimal snapshot passed to enemy reaction callbacks.
+ * Enemy manager reads this; callbacks may mutate enemy instance fields via the ref.
+ */
+export interface EnemyReactContext {
+  /** The live enemy instance (mutable). */
+  enemy: EnemyInstance;
+  /** Base damage value of the card just played (before multipliers). */
+  cardBaseDamage: number;
+  /** The playMode used: 'quick' | 'charge'. */
+  playMode: 'quick' | 'charge';
+  /** Whether the Charge quiz was answered correctly (false if quick play). */
+  chargeCorrect: boolean;
+}
+
+/** Context passed to onEnemyTurnStart callbacks. */
+export interface EnemyTurnStartContext {
+  /** The live enemy instance (mutable). */
+  enemy: EnemyInstance;
+  /** Current turn number (1-indexed). */
+  turnNumber: number;
+}
+
+/**
+ * Boss Quiz Phase configuration. Combat pauses at each HP threshold.
+ * Full runtime implementation handled by AR-59.7 quiz phase service.
+ */
+export interface QuizPhaseConfig {
+  /** HP fraction threshold (0-1) at which this phase triggers. E.g. 0.5 = 50% HP. */
+  hpThreshold: number;
+  /** Number of questions in this phase. */
+  questionCount: number;
+  /** Timer in seconds per question (null = use floor default). */
+  timerSeconds?: number;
+  /** Whether this phase is RAPID FIRE mode (shorter timers, more questions). */
+  rapidFire?: boolean;
 }
 
 /** Template definition for an enemy type. */
@@ -58,6 +97,43 @@ export interface EnemyTemplate {
   spawnWeight?: number;
   /** Animation archetype controlling idle/attack/hit tween parameters. */
   animArchetype?: AnimArchetype;
+  /** Informational only: the base enemy ID this variant is derived from. */
+  variantOf?: string;
+  /**
+   * Called after a player Charge play resolves as WRONG.
+   * Receives a partial combat state snapshot for computing effect values.
+   */
+  onPlayerChargeWrong?: (ctx: EnemyReactContext) => void;
+  /**
+   * Called at the end of a player's turn if the player made NO Charge plays that turn.
+   * Fires once per turn, regardless of how many Quick Plays were made.
+   */
+  onPlayerNoCharge?: (ctx: EnemyReactContext) => void;
+  /**
+   * Called after a player Charge play resolves as CORRECT.
+   */
+  onPlayerChargeCorrect?: (ctx: EnemyReactContext) => void;
+  /**
+   * Called at the start of each enemy turn.
+   * Used by Timer Wyrm for enrage logic.
+   */
+  onEnemyTurnStart?: (ctx: EnemyTurnStartContext) => void;
+  /**
+   * If set, forces all Knowledge Chain multipliers to this value while this enemy is alive.
+   * Does not affect Charge multipliers. Used by The Nullifier.
+   */
+  chainMultiplierOverride?: number;
+  /**
+   * If true, Quick Play card plays deal 0 damage to this enemy.
+   * Charge plays (correct or wrong) deal normal damage.
+   * Used by The Librarian.
+   */
+  quickPlayImmune?: boolean;
+  /**
+   * Boss Quiz Phase configurations. Combat pauses at each HP threshold.
+   * Full spec in AR-59.7. Handled by the quiz phase service (AR-59.7 scope).
+   */
+  quizPhases?: QuizPhaseConfig[];
 }
 
 /** A live enemy instance in an encounter. */
@@ -84,6 +160,17 @@ export interface EnemyInstance {
   chargedDamage: number;
   /** Difficulty variance multiplier applied to both HP and damage (0.8-1.2 for common enemies). */
   difficultyVariance: number;
+  /**
+   * Cumulative enrage damage bonus added by Timer Wyrm's onEnemyTurnStart hook.
+   * Added to all attack intent values before floor scaling. Defaults to 0.
+   */
+  enrageBonusDamage: number;
+  /**
+   * Tracks whether the player has made at least one Charge play this turn.
+   * Reset to false at the start of every player turn.
+   * Read by onPlayerNoCharge logic at end-of-player-turn.
+   */
+  playerChargedThisTurn: boolean;
 }
 
 // ============================================================
@@ -94,18 +181,21 @@ export interface EnemyInstance {
 export const ENEMY_TEMPLATES: EnemyTemplate[] = [
   // ── COMMON (4) ──
 
+  // ── ACT 1 BASE ENEMIES ──
+  // AR-59.13: v2 roster. Stats updated to match phase doc.
+
   {
     id: 'cave_bat',
     name: 'Cave Bat',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 30,
+    baseHP: 19,
     intentPool: [
-      { type: 'attack', value: 11, weight: 3, telegraph: 'Swooping strike' },
-      { type: 'attack', value: 15, weight: 1, telegraph: 'Frenzied bite' },
+      { type: 'attack', value: 8, weight: 3, telegraph: 'Swooping strike' },
+      { type: 'attack', value: 11, weight: 2, telegraph: 'Frenzied bite' },
       { type: 'buff', value: 2, weight: 1, telegraph: 'Screeching', statusEffect: { type: 'strength', value: 1, turns: 2 } },
     ],
-    description: 'A common cave-dwelling bat. Quick but fragile.',
+    description: 'A common cave-dwelling bat. Quick but fragile. Acts as a tutorial encounter.',
     rarity: 'standard',
     spawnWeight: 10,
     animArchetype: 'swooper',
@@ -116,13 +206,13 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Crystal Golem',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 55,
+    baseHP: 38,
     intentPool: [
       { type: 'attack', value: 12, weight: 2, telegraph: 'Crystal slam' },
       { type: 'defend', value: 8, weight: 2, telegraph: 'Hardening crystals' },
-      { type: 'charge', value: 25, weight: 1, telegraph: 'Charging: Crystal Crush!' },
+      { type: 'charge', value: 25, weight: 1, telegraph: 'Charging: Crystal Crush!', bypassDamageCap: true },
     ],
-    description: 'A slow golem encrusted with resonating crystals.',
+    description: 'A slow golem encrusted with resonating crystals. Defends off-turns; charges every 4th turn for a devastating spike.',
     rarity: 'standard',
     spawnWeight: 10,
     animArchetype: 'slammer',
@@ -133,36 +223,70 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Toxic Spore',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 25,
+    baseHP: 15,
     intentPool: [
-      { type: 'attack', value: 10, weight: 2, telegraph: 'Spore burst' },
+      { type: 'attack', value: 8, weight: 2, telegraph: 'Spore burst' },
       { type: 'debuff', value: 2, weight: 3, telegraph: 'Toxic cloud', statusEffect: { type: 'poison', value: 2, turns: 3 } },
       { type: 'debuff', value: 1, weight: 1, telegraph: 'Weakening mist', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
     ],
-    description: 'A fungal growth that releases debilitating spores.',
+    description: 'A fungal growth with very low HP. Applies poison DoT — kill fast or suffer stacks.',
     rarity: 'standard',
     spawnWeight: 10,
     animArchetype: 'caster',
   },
+
+  // ── ACT 2 BASE ENEMIES ──
+  // AR-59.13: quiz-reactive behaviors introduced.
 
   {
     id: 'shadow_mimic',
     name: 'Shadow Mimic',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 38,
+    baseHP: 30,
     intentPool: [
-      { type: 'attack', value: 12, weight: 2, telegraph: 'Shadow strike' },
+      { type: 'attack', value: 8, weight: 2, telegraph: 'Shadow strike' },
       { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Flurry of shadows', hitCount: 3 },
       { type: 'debuff', value: 1, weight: 1, telegraph: 'Expose weakness', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
     ],
-    description: 'A shifting shadow that mimics the miner\'s movements.',
+    description: 'A shifting shadow that copies your moves. When you fail a Charge, it deals the card\'s base damage back at you.',
     rarity: 'standard',
     spawnWeight: 10,
     animArchetype: 'lurcher',
+    onPlayerChargeWrong: (ctx) => {
+      // Mirror the card's base damage back to the player via context
+      // (actual player damage application handled in turnManager after callback)
+      (ctx as any)._mirrorDamage = ctx.cardBaseDamage;
+    },
   },
 
-  // ── ELITE (2) ──
+  // ── ACT 2 ELITE ──
+
+  {
+    id: 'the_examiner',
+    name: 'The Examiner',
+    category: 'elite',
+    region: 'deep_caverns',
+    baseHP: 55,
+    intentPool: [
+      { type: 'attack', value: 10, weight: 2, telegraph: 'Examiner\'s strike' },
+      { type: 'buff', value: 3, weight: 2, telegraph: 'Academic rigor', statusEffect: { type: 'strength', value: 1, turns: 2 } },
+      { type: 'attack', value: 8, weight: 1, telegraph: 'Pop quiz' },
+    ],
+    description: 'A stern examiner who rewards disciplined Charging. Gains +3 Strength every turn you don\'t Charge.',
+    animArchetype: 'caster',
+    onPlayerNoCharge: (ctx) => {
+      // Apply +3 Strength (encounter-permanent: 999 turns)
+      applyStatusEffect(ctx.enemy.statusEffects, {
+        type: 'strength',
+        value: 3,
+        turnsRemaining: 999,
+      });
+    },
+  },
+
+  // ── DEPRECATED ELITES (pre-v2 roster) ──
+  // @deprecated — kept for backwards compatibility, not in ACT_ENEMY_POOLS. Remove in AR-59.19.
 
   {
     id: 'ore_wyrm',
@@ -250,27 +374,31 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     animArchetype: 'trembler',
   },
 
+  // AR-59.13: The Archivist is the Act 2 boss. Stats updated; quizPhases added for AR-59.7.
   {
     id: 'the_archivist',
     name: 'The Archivist',
     category: 'boss',
     region: 'deep_caverns',
-    baseHP: 85,
+    baseHP: 80,
     intentPool: [
-      { type: 'attack', value: 7, weight: 1, telegraph: 'Data beam' },
+      { type: 'attack', value: 12, weight: 2, telegraph: 'Data beam' },
       { type: 'defend', value: 12, weight: 1, telegraph: 'Firewall' },
       { type: 'debuff', value: 2, weight: 1, telegraph: 'System scan', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
       { type: 'heal', value: 8, weight: 1, telegraph: 'Self-repair' },
     ],
-    description: 'The ancient AI librarian, guardian of forgotten knowledge.',
+    description: 'The ancient AI librarian, guardian of forgotten knowledge. Initiates a quiz phase when bloodied.',
     phaseTransitionAt: 0.5,
     phase2IntentPool: [
-      { type: 'attack', value: 12, weight: 2, telegraph: 'Archive purge' },
+      { type: 'attack', value: 14, weight: 2, telegraph: 'Archive purge' },
       { type: 'multi_attack', value: 4, weight: 1, telegraph: 'Rapid queries', hitCount: 4 },
       { type: 'debuff', value: 3, weight: 1, telegraph: 'Memory wipe', statusEffect: { type: 'weakness', value: 2, turns: 2 } },
       { type: 'heal', value: 10, weight: 1, telegraph: 'Backup restore' },
     ],
     animArchetype: 'caster',
+    quizPhases: [
+      { hpThreshold: 0.5, questionCount: 5 },
+    ],
   },
 
   {
@@ -346,30 +474,34 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     animArchetype: 'slammer',
   },
 
+  // AR-59.13: The Curator is the Act 3 final boss with 2 quiz phases at 66% and 33% HP.
   {
     id: 'the_curator',
     name: 'The Curator',
     category: 'boss',
     region: 'the_archive',
-    baseHP: 140,
+    baseHP: 120,
     intentPool: [
-      { type: 'attack', value: 16, weight: 25, telegraph: 'Cataloguing strike' },
-      { type: 'multi_attack', value: 5, weight: 20, telegraph: 'Archive barrage', hitCount: 4 },
-      { type: 'debuff', value: 3, weight: 20, telegraph: 'Forgotten lore', statusEffect: { type: 'weakness', value: 2, turns: 2 } },
-      { type: 'buff', value: 3, weight: 15, telegraph: 'Ancient wisdom', statusEffect: { type: 'strength', value: 2, turns: 3 } },
-      { type: 'heal', value: 12, weight: 10, telegraph: 'Restoration protocol' },
-      { type: 'attack', value: 18, weight: 10, telegraph: 'Final examination' },
+      { type: 'attack', value: 15, weight: 3, telegraph: 'Cataloguing strike' },
+      { type: 'multi_attack', value: 5, weight: 2, telegraph: 'Archive barrage', hitCount: 4 },
+      { type: 'debuff', value: 3, weight: 2, telegraph: 'Forgotten lore', statusEffect: { type: 'weakness', value: 2, turns: 2 } },
+      { type: 'buff', value: 3, weight: 2, telegraph: 'Ancient wisdom', statusEffect: { type: 'strength', value: 2, turns: 3 } },
+      { type: 'heal', value: 12, weight: 1, telegraph: 'Restoration protocol' },
     ],
-    description: 'The ultimate guardian of the Archive. Master of all knowledge domains, it tests the worth of those who dare reach the deepest floor.',
-    phaseTransitionAt: 0.4,
+    description: 'The ultimate guardian of the Archive. Master of all knowledge domains. Triggers quiz phases at 66% and 33% HP — Phase 2 is Rapid Fire.',
+    phaseTransitionAt: 0.33,
     phase2IntentPool: [
-      { type: 'attack', value: 16, weight: 3, telegraph: 'Judgement' },
+      { type: 'attack', value: 15, weight: 3, telegraph: 'Judgement' },
       { type: 'multi_attack', value: 7, weight: 2, telegraph: 'Knowledge storm', hitCount: 4 },
       { type: 'debuff', value: 4, weight: 2, telegraph: 'Mind shatter', statusEffect: { type: 'vulnerable', value: 2, turns: 3 } },
       { type: 'heal', value: 10, weight: 1, telegraph: 'Archive restoration' },
       { type: 'buff', value: 3, weight: 1, telegraph: 'Final form', statusEffect: { type: 'strength', value: 3, turns: 5 } },
     ],
     animArchetype: 'caster',
+    quizPhases: [
+      { hpThreshold: 0.66, questionCount: 5 },
+      { hpThreshold: 0.33, questionCount: 8, timerSeconds: 4, rapidFire: true },
+    ],
   },
 
   // ── MINI-BOSS (6) ──
@@ -450,20 +582,28 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     animArchetype: 'striker',
   },
 
+  // AR-59.13: Bone Collector promoted to Act 2 common with onPlayerChargeWrong hook.
+  // The old mini_boss variant is kept as 'bone_collector_old' for backwards compat (deprecated).
   {
     id: 'bone_collector',
     name: 'Bone Collector',
-    category: 'mini_boss',
-    region: 'shallow_depths',
-    baseHP: 54,
+    category: 'common',
+    region: 'deep_caverns',
+    baseHP: 35,
     intentPool: [
       { type: 'attack', value: 10, weight: 3, telegraph: 'Bone slash' },
       { type: 'heal', value: 5, weight: 2, telegraph: 'Consume remains' },
       { type: 'defend', value: 6, weight: 1, telegraph: 'Bone armor' },
       { type: 'debuff', value: 2, weight: 1, telegraph: 'Marrow drain', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
     ],
-    description: 'A skeletal scavenger that feeds on failure. Heals when the player answers wrong.',
+    description: 'A skeletal scavenger that feasts on failed Charges. Heals 5 HP each time you answer wrong.',
+    rarity: 'standard',
+    spawnWeight: 10,
     animArchetype: 'lurcher',
+    onPlayerChargeWrong: (ctx) => {
+      const healAmount = Math.min(5, ctx.enemy.maxHP - ctx.enemy.currentHP);
+      ctx.enemy.currentHP += healAmount;
+    },
   },
 
   // ── SHALLOW DEPTHS — COMMON (8 new) ──
@@ -1657,4 +1797,348 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     ],
     animArchetype: 'caster',
   },
+
+  // ============================================================
+  // AR-59.13: NEW v2 ENEMIES
+  // ============================================================
+
+  // ── ACT 1 MINI-BOSS: Timer Wyrm ──
+  // Enrage handled via onEnemyTurnStart — gains +5 damage per turn starting turn 4.
+
+  {
+    id: 'timer_wyrm',
+    name: 'Timer Wyrm',
+    category: 'mini_boss',
+    region: 'shallow_depths',
+    baseHP: 45,
+    intentPool: [
+      { type: 'attack', value: 12, weight: 3, telegraph: 'Serpent lunge' },
+      { type: 'attack', value: 10, weight: 2, telegraph: 'Tail whip' },
+      { type: 'debuff', value: 1, weight: 1, telegraph: 'Venom bite', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
+    ],
+    description: 'A temporal serpent that grows faster with each passing turn. Survive until turn 4 and it enrages — dealing +5 more damage permanently each subsequent turn.',
+    animArchetype: 'lurcher',
+    onEnemyTurnStart: (ctx) => {
+      if (ctx.turnNumber >= 4) {
+        ctx.enemy.enrageBonusDamage += 5;
+      }
+    },
+  },
+
+  // ── ACT 3 COMMONS ──
+
+  {
+    id: 'the_scholar',
+    name: 'The Scholar',
+    category: 'common',
+    region: 'the_archive',
+    baseHP: 40,
+    intentPool: [
+      { type: 'attack', value: 6, weight: 3, telegraph: 'Academic strike' },
+      { type: 'defend', value: 8, weight: 2, telegraph: 'Study shield' },
+      { type: 'heal', value: 5, weight: 1, telegraph: 'Knowledge recovery' },
+    ],
+    description: 'A studious enemy that heals when you answer correctly. Forces a dilemma: Quick Play to deny healing, or Charge for the multiplier knowing it heals 5 HP.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'caster',
+    onPlayerChargeCorrect: (ctx) => {
+      const healAmount = Math.min(5, ctx.enemy.maxHP - ctx.enemy.currentHP);
+      ctx.enemy.currentHP += healAmount;
+    },
+  },
+
+  // ── ACT 3 ELITES ──
+
+  {
+    id: 'the_nullifier',
+    name: 'The Nullifier',
+    category: 'elite',
+    region: 'the_archive',
+    baseHP: 70,
+    intentPool: [
+      { type: 'attack', value: 14, weight: 3, telegraph: 'Nullification strike' },
+      { type: 'debuff', value: 2, weight: 2, telegraph: 'Chain disruption', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
+      { type: 'attack', value: 12, weight: 2, telegraph: 'Void impact' },
+      { type: 'defend', value: 8, weight: 1, telegraph: 'Null barrier' },
+    ],
+    description: 'An entity that negates Knowledge Chain multipliers. All chain stacking is nullified to 1.0x while it lives. Normal Charge multipliers are unaffected.',
+    animArchetype: 'caster',
+    chainMultiplierOverride: 1.0,
+  },
+
+  {
+    id: 'the_librarian',
+    name: 'The Librarian',
+    category: 'elite',
+    region: 'the_archive',
+    baseHP: 65,
+    intentPool: [
+      { type: 'attack', value: 12, weight: 3, telegraph: 'Tome strike' },
+      { type: 'buff', value: 2, weight: 2, telegraph: 'Study buff', statusEffect: { type: 'strength', value: 2, turns: 3 } },
+      { type: 'attack', value: 10, weight: 2, telegraph: 'Shelf sweep' },
+      { type: 'defend', value: 10, weight: 1, telegraph: 'Book barrier' },
+    ],
+    description: 'A guardian of knowledge who is immune to Quick Play damage. Only Charged plays deal damage. Forces Charge discipline under duress.',
+    animArchetype: 'slammer',
+    quickPlayImmune: true,
+  },
+
+  // ── VARIANT TEMPLATES ──
+  // AR-59.13 variants: same behavior as base, ±10-15% HP/damage.
+  // variantOf is informational only.
+
+  // Cave Bat variants
+  {
+    id: 'cave_bat_alpha',
+    name: 'Cave Bat Alpha',
+    category: 'common',
+    region: 'shallow_depths',
+    baseHP: 22, // +15% of 19
+    intentPool: [
+      { type: 'attack', value: 9, weight: 3, telegraph: 'Alpha swooping strike' },
+      { type: 'attack', value: 12, weight: 2, telegraph: 'Alpha frenzied bite' },
+      { type: 'buff', value: 2, weight: 1, telegraph: 'Alpha screech', statusEffect: { type: 'strength', value: 1, turns: 2 } },
+    ],
+    description: 'A larger, fiercer cave bat. Faster and harder-hitting than its kin.',
+    rarity: 'uncommon',
+    spawnWeight: 5,
+    animArchetype: 'swooper',
+    variantOf: 'cave_bat',
+  },
+
+  {
+    id: 'dusk_bat',
+    name: 'Dusk Bat',
+    category: 'common',
+    region: 'shallow_depths',
+    baseHP: 19,
+    intentPool: [
+      { type: 'attack', value: 8, weight: 3, telegraph: 'Dusk swooping strike' },
+      { type: 'attack', value: 11, weight: 2, telegraph: 'Dusk frenzied bite' },
+      { type: 'buff', value: 2, weight: 1, telegraph: 'Dusk screech', statusEffect: { type: 'strength', value: 1, turns: 2 } },
+    ],
+    description: 'A shadow-colored cave bat that hunts at dusk. Same behavior, darker coloring.',
+    rarity: 'standard',
+    spawnWeight: 10,
+    animArchetype: 'swooper',
+    variantOf: 'cave_bat',
+  },
+
+  // Crystal Golem variants
+  {
+    id: 'iron_golem',
+    name: 'Iron Golem',
+    category: 'common',
+    region: 'shallow_depths',
+    baseHP: 42, // +10% of 38
+    intentPool: [
+      { type: 'attack', value: 12, weight: 2, telegraph: 'Iron slam' },
+      { type: 'defend', value: 8, weight: 2, telegraph: 'Iron hardening' },
+      { type: 'charge', value: 25, weight: 1, telegraph: 'Charging: Iron Crush!', bypassDamageCap: true },
+    ],
+    description: 'A brownish iron-alloy golem variant. Slightly tougher than the crystal type.',
+    rarity: 'uncommon',
+    spawnWeight: 5,
+    animArchetype: 'slammer',
+    variantOf: 'crystal_golem',
+  },
+
+  // Toxic Spore variants
+  {
+    id: 'poison_bloom',
+    name: 'Poison Bloom',
+    category: 'common',
+    region: 'shallow_depths',
+    baseHP: 15,
+    intentPool: [
+      { type: 'attack', value: 9, weight: 2, telegraph: 'Bloom burst' }, // +15% dmg
+      { type: 'debuff', value: 2, weight: 3, telegraph: 'Bloom cloud', statusEffect: { type: 'poison', value: 2, turns: 3 } },
+      { type: 'debuff', value: 1, weight: 1, telegraph: 'Weakening pollen', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
+    ],
+    description: 'A flowering fungal variant with more virulent spores. Deals slightly more damage.',
+    rarity: 'uncommon',
+    spawnWeight: 5,
+    animArchetype: 'caster',
+    variantOf: 'toxic_spore',
+  },
+
+  // Shadow Mimic variants
+  {
+    id: 'dark_shade',
+    name: 'Dark Shade',
+    category: 'common',
+    region: 'deep_caverns',
+    baseHP: 33, // +10% of 30
+    intentPool: [
+      { type: 'attack', value: 8, weight: 2, telegraph: 'Dark shadow strike' },
+      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Dark flurry', hitCount: 3 },
+      { type: 'debuff', value: 1, weight: 1, telegraph: 'Dark expose', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
+    ],
+    description: 'A deeper shadow variant of the Mimic. Slightly more durable.',
+    rarity: 'uncommon',
+    spawnWeight: 5,
+    animArchetype: 'lurcher',
+    variantOf: 'shadow_mimic',
+    onPlayerChargeWrong: (ctx) => {
+      (ctx as any)._mirrorDamage = ctx.cardBaseDamage;
+    },
+  },
+
+  // Bone Collector variants
+  {
+    id: 'grave_warden',
+    name: 'Grave Warden',
+    category: 'common',
+    region: 'deep_caverns',
+    baseHP: 39, // +12% of 35
+    intentPool: [
+      { type: 'attack', value: 11, weight: 3, telegraph: 'Warden slash' }, // +10% dmg
+      { type: 'heal', value: 5, weight: 2, telegraph: 'Consume fallen' },
+      { type: 'defend', value: 6, weight: 1, telegraph: 'Bone ward' },
+      { type: 'debuff', value: 2, weight: 1, telegraph: 'Marrow curse', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
+    ],
+    description: 'An armored skeletal variant. Tougher than the Bone Collector, same wrong-answer healing.',
+    rarity: 'uncommon',
+    spawnWeight: 5,
+    animArchetype: 'lurcher',
+    variantOf: 'bone_collector',
+    onPlayerChargeWrong: (ctx) => {
+      const healAmount = Math.min(5, ctx.enemy.maxHP - ctx.enemy.currentHP);
+      ctx.enemy.currentHP += healAmount;
+    },
+  },
+
+  // The Scholar variants
+  {
+    id: 'lore_keeper',
+    name: 'Lore Keeper',
+    category: 'common',
+    region: 'the_archive',
+    baseHP: 46, // +15% of 40
+    intentPool: [
+      { type: 'attack', value: 6, weight: 3, telegraph: 'Lore strike' },
+      { type: 'defend', value: 8, weight: 2, telegraph: 'Lore shield' },
+      { type: 'heal', value: 5, weight: 1, telegraph: 'Ancient knowledge recovery' },
+    ],
+    description: 'A robed keeper of ancient lore. More durable than The Scholar, same correct-Charge healing.',
+    rarity: 'uncommon',
+    spawnWeight: 5,
+    animArchetype: 'caster',
+    variantOf: 'the_scholar',
+    onPlayerChargeCorrect: (ctx) => {
+      const healAmount = Math.min(5, ctx.enemy.maxHP - ctx.enemy.currentHP);
+      ctx.enemy.currentHP += healAmount;
+    },
+  },
 ];
+
+// ============================================================
+// ACT ENEMY POOLS
+// ============================================================
+
+/**
+ * Enemy pool configuration for each act in the 3-act structure.
+ * Used by getEnemiesForNode() to select appropriate enemies by act and node type.
+ */
+export interface ActEnemyPool {
+  act: 1 | 2 | 3;
+  /** Enemy template IDs eligible for standard combat nodes. */
+  commons: string[];
+  /** Enemy template IDs eligible for elite nodes. */
+  elites: string[];
+  /** Enemy template IDs eligible for mini-boss gate. */
+  miniBosses: string[];
+  /** Enemy template IDs eligible for act boss node (usually 1). */
+  bosses: string[];
+}
+
+/**
+ * Act-based enemy pools for the v2 3-act run structure (AR-59.5).
+ * Replaces the legacy region-based BOSS_POOL_BY_REGION and MINI_BOSS_POOL_BY_REGION
+ * lookups in floorManager.ts.
+ */
+export const ACT_ENEMY_POOLS: ActEnemyPool[] = [
+  // ── ACT 1: Shallow Depths ──
+  {
+    act: 1,
+    commons: [
+      'cave_bat', 'crystal_golem', 'toxic_spore',
+      'mud_crawler', 'root_strangler', 'iron_beetle', 'limestone_imp',
+      'cave_spider', 'peat_shambler', 'fungal_sprout', 'blind_grub',
+      'cave_bat_alpha', 'dusk_bat', 'iron_golem', 'poison_bloom',
+    ],
+    elites: ['ore_wyrm', 'cave_troll'],
+    miniBosses: ['venomfang', 'root_mother', 'iron_matriarch', 'bog_witch', 'mushroom_sovereign', 'timer_wyrm'],
+    bosses: ['the_excavator', 'magma_core'],
+  },
+  // ── ACT 2: Deep Caverns + The Abyss ──
+  {
+    act: 2,
+    commons: [
+      // deep_caverns commons
+      'shadow_mimic', 'bone_collector', 'basalt_crawler', 'salt_wraith',
+      'coal_imp', 'granite_hound', 'sulfur_sprite', 'magma_tick',
+      'deep_angler', 'rock_hermit', 'gas_phantom', 'stalactite_drake',
+      'ember_moth', 'dark_shade', 'grave_warden',
+      // the_abyss commons
+      'obsidian_shard', 'magma_slime', 'quartz_elemental', 'fossil_raptor',
+      'geode_beetle', 'lava_crawler', 'crystal_bat', 'void_mite',
+      'ash_wraith', 'prismatic_jelly', 'ember_skeleton',
+    ],
+    elites: [
+      'the_examiner', 'fossil_guardian', 'magma_serpent', 'basalt_titan',
+      'geode_king', 'abyssal_leviathan', 'crystal_lich',
+    ],
+    miniBosses: [
+      'crystal_guardian', 'stone_sentinel', 'sulfur_queen', 'granite_colossus',
+      'deep_lurker', 'lava_salamander',
+      'ember_drake', 'shade_stalker', 'obsidian_knight', 'quartz_hydra',
+      'fossil_wyvern', 'magma_broodmother',
+    ],
+    bosses: ['the_archivist', 'crystal_warden', 'shadow_hydra', 'void_weaver'],
+  },
+  // ── ACT 3: The Archive ──
+  {
+    act: 3,
+    commons: [
+      'pressure_djinn', 'core_worm', 'biolume_jellyfish', 'tectonic_scarab',
+      'mantle_fiend', 'iron_core_golem', 'glyph_sentinel', 'archive_moth',
+      'rune_spider', 'void_tendril', 'tome_mimic', 'the_scholar', 'lore_keeper',
+    ],
+    elites: ['mantle_dragon', 'core_harbinger', 'the_nullifier', 'the_librarian'],
+    miniBosses: [
+      'primordial_wyrm', 'iron_archon', 'pressure_colossus', 'biolume_monarch',
+      'tectonic_titan', 'glyph_warden', 'archive_specter',
+    ],
+    bosses: ['knowledge_golem', 'the_curator'],
+  },
+];
+
+/**
+ * Returns enemy template objects for a given act and node type.
+ *
+ * @param act - The act number (1, 2, or 3).
+ * @param nodeType - The node type: 'combat', 'elite', 'mini_boss', or 'boss'.
+ * @returns Array of EnemyTemplate objects matching the request.
+ */
+export function getEnemiesForNode(
+  act: 1 | 2 | 3,
+  nodeType: 'combat' | 'elite' | 'mini_boss' | 'boss',
+): EnemyTemplate[] {
+  const pool = ACT_ENEMY_POOLS.find(p => p.act === act);
+  if (!pool) return [];
+
+  let ids: string[];
+  switch (nodeType) {
+    case 'combat': ids = pool.commons; break;
+    case 'elite': ids = pool.elites; break;
+    case 'mini_boss': ids = pool.miniBosses; break;
+    case 'boss': ids = pool.bosses; break;
+    default: ids = [];
+  }
+
+  return ids
+    .map(id => ENEMY_TEMPLATES.find(t => t.id === id))
+    .filter((t): t is EnemyTemplate => t !== undefined);
+}

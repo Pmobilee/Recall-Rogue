@@ -319,13 +319,15 @@ describe('Status Effects', () => {
 
 describe('Enemy Templates', () => {
   it('has 4 common enemies', () => {
+    // AR-59.13: v2 roster adds Act 2/3 commons and variants — 54 total
     const common = ENEMY_TEMPLATES.filter(t => t.category === 'common');
-    expect(common).toHaveLength(45);
+    expect(common).toHaveLength(54);
   });
 
   it('has 2 elite enemies', () => {
+    // AR-59.13: v2 roster adds the_examiner, the_nullifier, the_librarian — 13 total
     const elite = ENEMY_TEMPLATES.filter(t => t.category === 'elite');
-    expect(elite).toHaveLength(10);
+    expect(elite).toHaveLength(13);
   });
 
   it('has 8 boss enemies', () => {
@@ -338,19 +340,19 @@ describe('Enemy Templates', () => {
     expect(miniBoss).toHaveLength(25);
   });
 
-  it('cave_bat has 30 baseHP', () => {
+  it('cave_bat has 19 baseHP (AR-59.13 v2 stats)', () => {
     const bat = ENEMY_TEMPLATES.find(t => t.id === 'cave_bat');
-    expect(bat?.baseHP).toBe(30);
+    expect(bat?.baseHP).toBe(19);
   });
 
-  it('crystal_golem has 55 baseHP', () => {
+  it('crystal_golem has 38 baseHP (AR-59.13 v2 stats)', () => {
     const golem = ENEMY_TEMPLATES.find(t => t.id === 'crystal_golem');
-    expect(golem?.baseHP).toBe(55);
+    expect(golem?.baseHP).toBe(38);
   });
 
-  it('the_archivist has 85 baseHP', () => {
+  it('the_archivist has 80 baseHP (AR-59.13 v2 stats)', () => {
     const archivist = ENEMY_TEMPLATES.find(t => t.id === 'the_archivist');
-    expect(archivist?.baseHP).toBe(85);
+    expect(archivist?.baseHP).toBe(80);
   });
 
   it('fossil_guardian has history immuneDomain', () => {

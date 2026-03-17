@@ -115,7 +115,11 @@ export function incrementRunsCompleted(): void {
 export function markOnboardingTooltipSeen(
   key: keyof Pick<
     OnboardingState,
-    'hasSeenCardTapTooltip' | 'hasSeenCastTooltip' | 'hasSeenAnswerTooltip' | 'hasSeenEndTurnTooltip' | 'hasSeenAPTooltip'
+    | 'hasSeenCardTapTooltip'
+    | 'hasSeenCastTooltip'
+    | 'hasSeenAnswerTooltip'
+    | 'hasSeenEndTurnTooltip'
+    | 'hasSeenAPTooltip'
   >,
 ): void {
   onboardingState.update((state) => ({ ...state, [key]: true }))

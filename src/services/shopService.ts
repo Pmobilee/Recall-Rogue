@@ -11,10 +11,12 @@ import {
   SHOP_RELIC_COUNT,
   SHOP_CARD_COUNT,
   SHOP_RELIC_PRICE,
-  SHOP_CARD_PRICE,
+  SHOP_CARD_PRICE_V2,
   SHOP_FLOOR_DISCOUNT_PER_FLOOR,
   SHOP_MAX_DISCOUNT,
   SHOP_FOOD_ITEMS,
+  SHOP_REMOVAL_BASE_PRICE,
+  SHOP_REMOVAL_PRICE_INCREMENT,
 } from '../data/balance';
 
 /** A purchasable relic in the shop. */
@@ -40,6 +42,8 @@ export interface ShopFoodItem {
 export interface ShopInventory {
   relics: ShopRelicItem[];
   cards: ShopCardItem[];
+  /** Price for card removal service this visit (escalates per removal in run). */
+  removalCost?: number;
 }
 
 /** Rarity weights for shop relic selection. */
@@ -115,7 +119,20 @@ export function generateShopRelics(
 }
 
 /**
- * Prices shop cards based on their tier and floor.
+ * Maps a card tier to its pricing rarity category.
+ * - Tier '1' → 'common'
+ * - Tier '2a' | '2b' → 'uncommon'
+ * - Tier '3' → 'rare'
+ */
+function cardTierToRarity(tier: string): string {
+  if (tier === '1') return 'common';
+  if (tier === '2a' || tier === '2b') return 'uncommon';
+  return 'rare'; // tier '3'
+}
+
+/**
+ * Prices shop cards based on their tier (mapped to rarity) and floor.
+ * Uses v2 rarity-based pricing (AR-59.15): Common 50g, Uncommon 80g, Rare 140g.
  *
  * @param cards - Card options to price.
  * @param floor - Current floor number (affects pricing).
@@ -123,12 +140,24 @@ export function generateShopRelics(
  */
 export function priceShopCards(cards: Card[], floor: number): ShopCardItem[] {
   return cards.map(card => {
-    const basePrice = SHOP_CARD_PRICE[card.tier] ?? 15;
+    const rarity = cardTierToRarity(card.tier);
+    const basePrice = SHOP_CARD_PRICE_V2[rarity] ?? 50;
     return {
       card,
       price: calculateShopPrice(basePrice, floor),
     };
   });
+}
+
+/**
+ * Calculates the card removal service price for a given removal count.
+ * Base price is 50g; each subsequent removal in the same run costs +25g more.
+ *
+ * @param cardsRemovedCount - Number of cards already removed this run.
+ * @returns Gold cost for the next removal.
+ */
+export function removalPrice(cardsRemovedCount: number): number {
+  return SHOP_REMOVAL_BASE_PRICE + cardsRemovedCount * SHOP_REMOVAL_PRICE_INCREMENT;
 }
 
 /**

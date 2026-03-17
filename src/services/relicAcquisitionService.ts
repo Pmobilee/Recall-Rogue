@@ -26,7 +26,8 @@ export function getEligibleRelicPool(
     (r) =>
       (starterSet.has(r.id) || unlockedSet.has(r.id)) &&
       !excludedSet.has(r.id) &&
-      !heldSet.has(r.id),
+      !heldSet.has(r.id) &&
+      r.excludeFromPool !== true, // Exclude relics requiring unbuilt mechanics (Phase 1)
   );
 }
 
@@ -85,13 +86,28 @@ export function generateRelicChoices(
 }
 
 /**
- * Picks a single random common or uncommon relic from the pool.
- * Returns null if no eligible relics of those rarities exist.
+ * Picks a single random relic from the pool using the provided rarity weights.
+ * If pityActive is true, forces the selection to Uncommon or higher rarity.
+ * Falls back to the full pool if no Uncommon+ relics are available (prevents deadlock).
+ * Returns null if the pool is empty.
  */
-export function generateRandomRelicDrop(pool: RelicDefinition[]): RelicDefinition | null {
-  const eligible = pool.filter((r) => r.rarity === 'common' || r.rarity === 'uncommon');
-  if (eligible.length === 0) return null;
-  return eligible[Math.floor(Math.random() * eligible.length)];
+export function generateRandomRelicDrop(
+  pool: RelicDefinition[],
+  rarityWeights: Record<RelicRarity, number> = RELIC_RARITY_WEIGHTS,
+  pityActive: boolean = false,
+): RelicDefinition | null {
+  if (pool.length === 0) return null;
+
+  let eligible = pool;
+  if (pityActive) {
+    const uncommonPlus = pool.filter((r) => r.rarity !== 'common');
+    if (uncommonPlus.length > 0) {
+      eligible = uncommonPlus;
+    }
+    // If no Uncommon+ available, fall through to full pool
+  }
+
+  return generateRelicChoices(eligible, 1, rarityWeights)[0] ?? null;
 }
 
 /**

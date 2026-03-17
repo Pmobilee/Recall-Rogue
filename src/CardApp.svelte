@@ -41,6 +41,7 @@
     onShopSell,
     onShopBuyRelic,
     onShopBuyCard,
+    onShopBuyRemoval,
     onSpecialEventResolved,
     openCampfire,
     openUpgradeSelection,
@@ -68,8 +69,14 @@
     activeRelicPickup,
     onRelicRewardSelected,
     onMapNodeSelected,
-    onStarterRelicSelected,
     gameFlowState,
+    getPendingSwapRelicId,
+    clearPendingSwapRelicId,
+    sellEquippedRelic,
+    acquirePendingSwapRelic,
+    canRerollRelicSelection,
+    rerollRelicSelection,
+    isRelicPityActive,
   } from './services/gameFlowController'
   import {
     activeTurnState,
@@ -84,7 +91,9 @@
   import type { MysteryEffect } from './services/floorManager'
   import { generateCombatRoomOptions } from './services/floorManager'
   import { healPlayer } from './services/runManager'
-  import { POST_MINI_BOSS_HEAL_PCT } from './data/balance'
+  import { POST_MINI_BOSS_HEAL_PCT, SHOP_RELIC_PRICE, RELIC_SELL_REFUND_PCT, RELIC_REROLL_COST } from './data/balance'
+  import { RELIC_BY_ID } from './data/relics/index'
+  import { getMaxRelicSlots, isRelicSlotsFull } from './services/relicEffectResolver'
   import { isSlowReader, onboardingState } from './services/cardPreferences'
   import { unlockCardAudio } from './services/cardAudioManager'
   import { languageService } from './services/languageService'
@@ -119,11 +128,12 @@
   import SocialScreen from './ui/components/SocialScreen.svelte'
   import RelicCollectionScreen from './ui/components/RelicCollectionScreen.svelte'
   import RelicRewardScreen from './ui/components/RelicRewardScreen.svelte'
+  import RelicSwapOverlay from './ui/components/RelicSwapOverlay.svelte'
   import RelicPickupToast from './ui/components/RelicPickupToast.svelte'
   import UpgradeSelectionOverlay from './ui/components/UpgradeSelectionOverlay.svelte'
   import PostMiniBossRestOverlay from './ui/components/PostMiniBossRestOverlay.svelte'
   import DungeonMap from './ui/components/DungeonMap.svelte'
-  import StarterRelicSelection from './ui/components/StarterRelicSelection.svelte'
+  // StarterRelicSelection removed in AR-59.12 — file kept as dead code pending deletion approval
   import TopicInterestsPage from './ui/components/TopicInterestsPage.svelte'
   import KnowledgeLevelPopup from './ui/components/KnowledgeLevelPopup.svelte'
   import { knowledgeLevelSelected } from './services/cardPreferences'
@@ -263,6 +273,64 @@
 
   function handleRelicRewardSelect(relic: import('./data/relics/types').RelicDefinition): void {
     onRelicRewardSelected(relic)
+  }
+
+  function handleRelicReroll(): void {
+    const currentIds = $activeRelicRewardOptions.map((r) => r.id)
+    rerollRelicSelection(currentIds)
+  }
+
+  function handleRelicPickupSwap(): void {
+    // Toast "Swap" button tapped: navigate to swap overlay.
+    // pendingSwapRelicId was already set when the toast drop was stored at full capacity.
+    activeRelicPickup.set(null)
+    currentScreen.set('relicSwapOverlay')
+    gameFlowState.set('relicSwapOverlay')
+  }
+
+  /** Derived data for the RelicSwapOverlay: the relic being offered and equipped relic display. */
+  let swapOfferedRelic = $derived.by(() => {
+    const offeredId = getPendingSwapRelicId()
+    if (!offeredId) return null
+    return RELIC_BY_ID[offeredId] ?? null
+  })
+
+  let swapEquippedRelics = $derived.by(() => {
+    const run = $activeRunState
+    if (!run) return []
+    return run.runRelics.map(r => {
+      const def = RELIC_BY_ID[r.definitionId]
+      const basePrice = def ? (SHOP_RELIC_PRICE[def.rarity] ?? 60) : 60
+      return {
+        definitionId: r.definitionId,
+        name: def?.name ?? r.definitionId,
+        description: def?.description ?? '',
+        icon: def?.icon ?? '?',
+        rarity: def?.rarity ?? 'common',
+        sellRefund: Math.floor(basePrice * RELIC_SELL_REFUND_PCT),
+      }
+    })
+  })
+
+  let swapSlotLabel = $derived.by(() => {
+    const run = $activeRunState
+    if (!run) return '5/5'
+    const max = getMaxRelicSlots(run.runRelics)
+    return `${run.runRelics.length}/${max}`
+  })
+
+  function handleSwapSellAndAcquire(sellId: string): void {
+    sellEquippedRelic(sellId)
+    acquirePendingSwapRelic()
+    clearPendingSwapRelicId()
+    gameFlowState.set('dungeonMap')
+    currentScreen.set('dungeonMap')
+  }
+
+  function handleSwapPass(): void {
+    clearPendingSwapRelicId()
+    gameFlowState.set('dungeonMap')
+    currentScreen.set('dungeonMap')
   }
 
   async function handleArchetypeSelect(archetype: import('./services/runManager').RewardArchetype): Promise<void> {
@@ -695,6 +763,7 @@
       onsell={onShopSell}
       onbuyRelic={onShopBuyRelic}
       onbuyCard={onShopBuyCard}
+      onbuyRemoval={onShopBuyRemoval}
       ondone={onShopDone}
     />
   {/if}
@@ -764,10 +833,6 @@
         aria-label="Pause"
       ><span class="pause-icon" aria-hidden="true"></span></button>
     {/if}
-  {/if}
-
-  {#if $currentScreen === 'starterRelicSelection'}
-    <StarterRelicSelection onselect={onStarterRelicSelected} />
   {/if}
 
   {#if $currentScreen === 'dungeonMap'}
@@ -909,6 +974,20 @@
     <RelicRewardScreen
       options={$activeRelicRewardOptions}
       onselect={handleRelicRewardSelect}
+      canReroll={canRerollRelicSelection()}
+      rerollCost={RELIC_REROLL_COST}
+      onreroll={handleRelicReroll}
+      pityActive={isRelicPityActive()}
+    />
+  {/if}
+
+  {#if $currentScreen === 'relicSwapOverlay' && swapOfferedRelic}
+    <RelicSwapOverlay
+      offeredRelic={swapOfferedRelic}
+      equippedRelics={swapEquippedRelics}
+      slotLabel={swapSlotLabel}
+      onSellAndAcquire={handleSwapSellAndAcquire}
+      onPass={handleSwapPass}
     />
   {/if}
 
@@ -916,6 +995,7 @@
     <RelicPickupToast
       relic={$activeRelicPickup}
       ondismiss={() => activeRelicPickup.set(null)}
+      onswap={$activeRunState && isRelicSlotsFull($activeRunState.runRelics) ? handleRelicPickupSwap : undefined}
     />
   {/if}
 

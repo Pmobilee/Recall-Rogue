@@ -36,7 +36,8 @@ export type Screen =
   | 'upgradeSelection'
   | 'postMiniBossRest'
   | 'dungeonMap'
-  | 'starterRelicSelection'
+  | 'relicSwapOverlay'
+  // 'starterRelicSelection' removed in AR-59.12 — runs start directly at dungeonMap
 
 const SCREEN_STORAGE_KEY = 'card:currentScreen'
 
@@ -71,7 +72,8 @@ const VALID_SCREENS: Screen[] = [
   'upgradeSelection',
   'postMiniBossRest',
   'dungeonMap',
-  'starterRelicSelection',
+  'relicSwapOverlay',
+  // 'starterRelicSelection' removed AR-59.12
 ]
 
 const PERSISTABLE_SCREENS = new Set<Screen>([
@@ -222,6 +224,10 @@ if (typeof window !== 'undefined') {
 
 /** Brief flash when a relic synergy activates. Cleared automatically after display. */
 export const synergyFlash = singletonWritable<string | null>('synergyFlash', null)
+
+// =========================================================
+// Discovery event (AR-59.23: Fact Discovery System)
+// =========================================================
 
 // =========================================================
 // Post-combat reward reveal

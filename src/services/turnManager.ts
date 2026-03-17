@@ -3,6 +3,10 @@
 
 import { get } from 'svelte/store';
 import type { Card, CardRunState, CardType, PassiveEffect } from '../data/card-types';
+import { isFirstChargeFree, markFirstChargeUsed, getFirstChargeWrongMultiplier } from './discoverySystem';
+import { getSurgeChargeSurcharge, isSurgeTurn } from './surgeSystem';
+import { FIRST_CHARGE_FREE_AP_SURCHARGE } from '../data/balance';
+import { activeRunState } from './runStateStore';
 import type { EnemyInstance } from '../data/enemies';
 import type { StatusEffect } from '../data/statusEffects';
 import type { PlayerCombatState } from './playerCombatState';
@@ -17,8 +21,9 @@ import {
   resetTurnState,
 } from './playerCombatState';
 import { resolveCardEffect, isCardBlocked } from './cardEffectResolver';
-import { applyDamageToEnemy, executeEnemyIntent, rollNextIntent, tickEnemyStatusEffects } from './enemyManager';
+import { applyDamageToEnemy, executeEnemyIntent, rollNextIntent, tickEnemyStatusEffects, dispatchEnemyTurnStart } from './enemyManager';
 import { applyStatusEffect } from '../data/statusEffects';
+import type { EnemyReactContext } from '../data/enemies';
 import { hasSynergy, getMasteryAscensionBonus } from './relicSynergyResolver';
 import {
   COMBO_MULTIPLIERS,
@@ -36,7 +41,7 @@ import {
   FIZZLE_EFFECT_RATIO,
   getBalanceValue,
 } from '../data/balance';
-import { MECHANICS_BY_TYPE } from '../data/mechanics';
+import { MECHANICS_BY_TYPE, type PlayMode } from '../data/mechanics';
 import { difficultyMode } from './cardPreferences';
 import {
   resolveDamageTakenEffects,
@@ -145,6 +150,8 @@ export interface TurnState {
   thornsValue: number;
   /** mirror: the last successfully resolved card effect this turn */
   lastCardEffect: CardEffectResult | null;
+  /** True when the current turn is a Surge turn (Charge costs +0 AP). Updated at turn start/end. */
+  isSurge: boolean;
 }
 
 export interface PlayCardResult {
@@ -155,6 +162,8 @@ export interface PlayCardResult {
   blocked: boolean;
   isPerfectTurn: boolean;
   turnState: TurnState;
+  /** Whether the free first Charge was used on this play. */
+  usedFreeCharge: boolean;
 }
 
 export interface EnemyTurnResult {
@@ -294,6 +303,7 @@ export function startEncounter(
     thornsActive: false,
     thornsValue: 0,
     lastCardEffect: null,
+    isSurge: isSurgeTurn(1),
   };
 
   const isFirstEncounter = deck.currentFloor === 1 && deck.currentEncounter <= 1;
@@ -306,6 +316,7 @@ export function playCardAction(
   cardId: string,
   answeredCorrectly: boolean,
   speedBonusEarned: boolean,
+  playMode: PlayMode = 'charge',
 ): PlayCardResult {
   if (turnState.phase !== 'player_action' || turnState.result !== null) {
     const fallbackCard = turnState.deck.hand.find((card) => card.id === cardId);
@@ -331,6 +342,7 @@ export function playCardAction(
       blocked: true,
       isPerfectTurn: turnState.isPerfectTurn,
       turnState,
+      usedFreeCharge: false,
     };
   }
 
@@ -342,6 +354,25 @@ export function playCardAction(
   if (!cardInHand) throw new Error(`Card ${cardId} not found in hand`);
 
   let apCost = Math.max(0, cardInHand.apCost ?? 1);
+
+  // Charge AP surcharge: +1 AP for Charge plays.
+  // Waived during Surge turns (every 3rd turn) or for Free First Charge.
+  let usedFreeCharge = false;
+  if (playMode === 'charge') {
+    const runStateForCharge = get(activeRunState);
+    const isSurge = getSurgeChargeSurcharge(turnState.turnNumber) === 0;
+    if (isSurge) {
+      // Surge turns: no surcharge (already 0)
+    } else if (cardInHand.factId && runStateForCharge && isFirstChargeFree(cardInHand.factId, runStateForCharge.firstChargeFreeFactIds)) {
+      // Free first Charge: AP surcharge is 0
+      apCost += FIRST_CHARGE_FREE_AP_SURCHARGE;
+      usedFreeCharge = true;
+    } else {
+      // Normal Charge: +1 AP surcharge
+      apCost += 1;
+    }
+  }
+
   // Focus: reduce this card's AP cost by 1 (minimum 0); consume one focus charge
   if (turnState.focusReady && turnState.focusCharges > 0 && apCost > 0) {
     apCost = Math.max(0, apCost - 1);
@@ -361,6 +392,7 @@ export function playCardAction(
       blocked: true,
       isPerfectTurn: turnState.isPerfectTurn,
       turnState,
+      usedFreeCharge: false,
     };
   }
 
@@ -390,12 +422,18 @@ export function playCardAction(
       blocked: true,
       isPerfectTurn: false,
       turnState,
+      usedFreeCharge: false,
     };
   }
 
   if (!answeredCorrectly) {
     if (turnState.ascensionWrongAnswerSelfDamage > 0) {
       turnState.playerState.hp = Math.max(0, turnState.playerState.hp - turnState.ascensionWrongAnswerSelfDamage);
+    }
+
+    // Step 5e (AR-59.13): Mark that a Charge was attempted this turn (even on wrong answer)
+    if (playMode === 'charge') {
+      enemy.playerChargedThisTurn = true;
     }
 
     const mode = get(difficultyMode);
@@ -406,6 +444,31 @@ export function playCardAction(
       turnState.consecutiveCorrectThisEncounter = 0;
       turnState.cardsPlayedThisTurn += 1;
       turnState.isPerfectTurn = false;
+
+      // Step 5a (AR-59.13): onPlayerChargeWrong callback — relaxed mode, Charge plays only
+      if (playMode === 'charge' && enemy.template.onPlayerChargeWrong) {
+        const ctx: EnemyReactContext = {
+          enemy,
+          cardBaseDamage: card.baseEffectValue ?? 0,
+          playMode: 'charge',
+          chargeCorrect: false,
+        };
+        enemy.template.onPlayerChargeWrong(ctx);
+        const mirrorDmg = (ctx as any)._mirrorDamage as number | undefined;
+        if (mirrorDmg && mirrorDmg > 0) {
+          turnState.playerState.hp = Math.max(0, turnState.playerState.hp - mirrorDmg);
+        }
+      }
+
+      // Free First Charge: mark as used after resolution (win or lose)
+      if (usedFreeCharge && card.factId) {
+        const runState = get(activeRunState);
+        if (runState) {
+          markFirstChargeUsed(card.factId, runState.firstChargeFreeFactIds);
+          activeRunState.set(runState);
+        }
+      }
+
       turnState.turnLog.push({
         type: 'fizzle',
         message: 'Relaxed mode: card fizzled',
@@ -420,6 +483,7 @@ export function playCardAction(
         blocked: false,
         isPerfectTurn: false,
         turnState,
+        usedFreeCharge,
       };
     }
 
@@ -429,8 +493,13 @@ export function playCardAction(
     turnState.cardsPlayedThisTurn += 1;
     turnState.isPerfectTurn = false;
 
-    // Partial fizzle: wrong answers still apply a fraction of the base effect
-    const fizzleBase = Math.round(card.baseEffectValue * getBalanceValue('fizzleEffectRatio', FIZZLE_EFFECT_RATIO));
+    // Partial fizzle: wrong answers still apply a fraction of the base effect.
+    // Exception: Free First Charge on wrong answer uses 1.0× (FIRST_CHARGE_FREE_WRONG_MULTIPLIER),
+    // same as Quick Play — no penalty for exploring a new fact.
+    const wrongMultiplier = (usedFreeCharge && playMode === 'charge')
+      ? getFirstChargeWrongMultiplier()  // 1.0× — same as Quick Play
+      : getBalanceValue('fizzleEffectRatio', FIZZLE_EFFECT_RATIO);  // 0.25× normally
+    const fizzleBase = Math.round(card.baseEffectValue * wrongMultiplier);
     const fizzledEffect: CardEffectResult = {
       ...createNoEffect(card),
       targetHit: true,
@@ -450,9 +519,36 @@ export function playCardAction(
     if (fizzledEffect.shieldApplied > 0) applyShield(playerState, fizzledEffect.shieldApplied);
     if (fizzledEffect.healApplied > 0) healPlayer(playerState, fizzledEffect.healApplied);
 
+    // Step 5a (AR-59.13): onPlayerChargeWrong callback — normal mode, Charge plays only
+    if (playMode === 'charge' && enemy.template.onPlayerChargeWrong) {
+      const ctx: EnemyReactContext = {
+        enemy,
+        cardBaseDamage: card.baseEffectValue ?? 0,
+        playMode: 'charge',
+        chargeCorrect: false,
+      };
+      enemy.template.onPlayerChargeWrong(ctx);
+      const mirrorDmg = (ctx as any)._mirrorDamage as number | undefined;
+      if (mirrorDmg && mirrorDmg > 0) {
+        turnState.playerState.hp = Math.max(0, turnState.playerState.hp - mirrorDmg);
+      }
+    }
+
+    // Free First Charge: mark as used after resolution (win or lose)
+    if (usedFreeCharge && card.factId) {
+      const runState = get(activeRunState);
+      if (runState) {
+        markFirstChargeUsed(card.factId, runState.firstChargeFreeFactIds);
+        activeRunState.set(runState);
+      }
+    }
+
+    const wrongPct = Math.round(wrongMultiplier * 100);
     turnState.turnLog.push({
       type: 'fizzle',
-      message: `Card fizzled — wrong answer (${Math.round(getBalanceValue('fizzleEffectRatio', FIZZLE_EFFECT_RATIO) * 100)}% effect applied)`,
+      message: usedFreeCharge
+        ? `Free Charge: wrong answer (${wrongPct}% effect — no penalty for trying)`
+        : `Card fizzled — wrong answer (${wrongPct}% effect applied)`,
       cardId,
     });
 
@@ -464,6 +560,7 @@ export function playCardAction(
       blocked: false,
       isPerfectTurn: false,
       turnState,
+      usedFreeCharge,
     };
   }
 
@@ -488,6 +585,8 @@ export function playCardAction(
       isFocusActive: useFocus,
       isOverclockActive: useOverclock,
       damageDealtThisTurn: turnState.damageDealtThisTurn,
+      correct: answeredCorrectly,
+      playMode,
     },
   );
 
@@ -544,10 +643,34 @@ export function playCardAction(
     effect.finalValue += stormBonus;
   }
 
+  // Step 7 (AR-59.13): Quick Play immunity — The Librarian absorbs Quick Play damage entirely.
+  // Animation still plays (damage not suppressed at effect layer), but HP is not reduced.
+  if (effect.damageDealt > 0 && playMode === 'quick' && enemy.template.quickPlayImmune) {
+    effect.damageDealt = 0;
+    effect.finalValue = 0;
+    effect.enemyDefeated = false;
+  }
+
   if (effect.damageDealt > 0) {
     const damageResult = applyDamageToEnemy(enemy, effect.damageDealt);
     effect.enemyDefeated = damageResult.defeated;
     turnState.damageDealtThisTurn += effect.damageDealt;
+  }
+
+  // Step 5e (AR-59.13): Mark Charge was used this turn on correct answer
+  if (playMode === 'charge') {
+    enemy.playerChargedThisTurn = true;
+  }
+
+  // Step 5b (AR-59.13): onPlayerChargeCorrect callback — Charge play, correct answer only
+  if (playMode === 'charge' && enemy.template.onPlayerChargeCorrect) {
+    const ctx: EnemyReactContext = {
+      enemy,
+      cardBaseDamage: card.baseEffectValue ?? 0,
+      playMode: 'charge',
+      chargeCorrect: true,
+    };
+    enemy.template.onPlayerChargeCorrect(ctx);
   }
 
   if (effect.selfDamage && effect.selfDamage > 0) {
@@ -675,6 +798,16 @@ export function playCardAction(
     });
   }
 
+  // Free First Charge: mark as used after successful Charge resolution.
+  // Tier 3 auto-Charge does NOT consume the free Charge (player didn't consciously Charge it).
+  if (usedFreeCharge && card.factId && card.tier !== '3') {
+    const runState = get(activeRunState);
+    if (runState) {
+      markFirstChargeUsed(card.factId, runState.firstChargeFreeFactIds);
+      activeRunState.set(runState);
+    }
+  }
+
   return {
     effect,
     comboCount: turnState.comboCount,
@@ -683,6 +816,7 @@ export function playCardAction(
     blocked: false,
     isPerfectTurn: turnState.isPerfectTurn,
     turnState,
+    usedFreeCharge,
   };
 }
 
@@ -712,6 +846,23 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   }
 
   const { playerState, enemy, deck } = turnState;
+
+  // Step 5c (AR-59.13): onPlayerNoCharge — fires if player made NO Charge plays this turn
+  if (enemy.template.onPlayerNoCharge && !enemy.playerChargedThisTurn) {
+    const ctx: EnemyReactContext = {
+      enemy,
+      cardBaseDamage: 0,
+      playMode: 'quick',
+      chargeCorrect: false,
+    };
+    enemy.template.onPlayerNoCharge(ctx);
+  }
+
+  // Step 5d (AR-59.13): Reset playerChargedThisTurn for the next player turn
+  enemy.playerChargedThisTurn = false;
+
+  // Step 4 (AR-59.13): Dispatch onEnemyTurnStart for enrage logic (Timer Wyrm)
+  dispatchEnemyTurnStart(enemy, turnState.turnNumber);
 
   // Block decays each turn — enemy must re-defend to maintain it (STS-style)
   enemy.block = 0;
@@ -805,7 +956,7 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   if (playerDefeated) {
     const lethalFx = resolveLethalEffects(turnState.activeRelicIds, {
       lastBreathUsedThisEncounter: turnState.secondWindUsed,
-      phoenixUsedThisEncounter: false,
+      phoenixUsedThisRun: false, // TODO: wire up run-level phoenix flag (AR-59.11)
       isBossEncounter: turnState.enemy?.template?.category === 'boss',
     });
     if (lethalFx.lastBreathSave) {
@@ -971,6 +1122,7 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
 
   rollNextIntent(enemy);
   turnState.turnNumber += 1;
+  turnState.isSurge = isSurgeTurn(turnState.turnNumber);
 
   const discardedAtTurnEnd = discardHand(deck);
   if (discardedAtTurnEnd.length > 0) {
