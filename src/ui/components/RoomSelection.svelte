@@ -5,6 +5,7 @@
   import { getRandomRoomBg } from '../../data/backgroundManifest'
   import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
   import { preloadImages } from '../utils/assetPreloader'
+  import { isLandscape } from '../../stores/layoutStore'
 
   interface Props {
     options: RoomOption[]
@@ -23,6 +24,7 @@
   let hpPercent = $derived(playerMaxHp > 0 ? Math.round((playerHp / playerMaxHp) * 100) : 0)
 
   let tappedIndex = $state<number | null>(null)
+  let focusedIndex = $state<number>(0)
   let introVisible = $state(false)
 
   onMount(() => {
@@ -52,8 +54,92 @@
     }
   }
 
+  function getRoomDescription(type: RoomOption['type']): string {
+    switch (type) {
+      case 'combat': return 'Face an enemy and test your knowledge in battle'
+      case 'mystery': return 'Unknown dangers and rewards await behind this door'
+      case 'rest': return 'Recover HP and prepare for the challenges ahead'
+      case 'treasure': return 'Discover powerful cards and rare relics'
+      case 'shop': return 'Spend gold on upgrades, cards, and consumables'
+      default: return 'A path deeper into the dungeon'
+    }
+  }
+
+  function handleKeydown(event: KeyboardEvent): void {
+    if (!$isLandscape) return
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+      event.preventDefault()
+      focusedIndex = (focusedIndex - 1 + options.length) % options.length
+    } else if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+      event.preventDefault()
+      focusedIndex = (focusedIndex + 1) % options.length
+    } else if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault()
+      handleTap(focusedIndex)
+    } else if (event.key >= '1' && event.key <= '9') {
+      const idx = parseInt(event.key) - 1
+      if (idx < options.length) handleTap(idx)
+    }
+  }
+
 </script>
 
+{#if $isLandscape}
+<!-- LANDSCAPE: horizontal card layout with descriptions and keyboard nav -->
+<div
+  class="room-selection-overlay landscape"
+  class:intro-visible={introVisible}
+  role="presentation"
+  onkeydown={handleKeydown}
+  tabindex="-1"
+>
+  <img class="screen-bg" src={bgUrl} alt="" aria-hidden="true" loading="eager" decoding="async" />
+  <div class="hallway-backdrop" aria-hidden="true"></div>
+
+  <header class="hud hud-landscape">
+    <div class="hud-left">
+      <h1 class="title">Choose Your Path</h1>
+      <p class="floor-info">Floor {currentFloor} · Encounter {encounterNumber}</p>
+    </div>
+    <div class="hp-bar-container">
+      <div class="hp-bar-bg">
+        <div class="hp-bar-fill" style="width: {hpPercent}%"></div>
+      </div>
+      <span class="hp-text">{playerHp} / {playerMaxHp}</span>
+    </div>
+  </header>
+
+  <div class="hallway-stage landscape-stage">
+    <div class="door-row-landscape">
+      {#each options as option, i (i)}
+        <button
+          class="room-door room-door-landscape"
+          class:tapped={tappedIndex === i}
+          class:dimmed={tappedIndex !== null && tappedIndex !== i}
+          class:keyboard-focused={focusedIndex === i}
+          style={`--door-border: ${getBorderColor(option.type)};`}
+          data-testid="room-choice-{i}"
+          onclick={() => handleTap(i)}
+          onfocus={() => { focusedIndex = i }}
+        >
+          <img
+            class="door-sprite door-sprite-lg"
+            src={getDoorSpritePath(option.type)}
+            alt={`${option.label} door`}
+            loading="lazy"
+          />
+          <div class="door-info-landscape">
+            <span class="room-label">{option.label}</span>
+            <span class="room-description">{getRoomDescription(option.type)}</span>
+            <span class="room-key-hint">Press {i + 1}</span>
+          </div>
+        </button>
+      {/each}
+    </div>
+  </div>
+</div>
+{:else}
+<!-- PORTRAIT: original layout, pixel-identical -->
 <div class="room-selection-overlay" class:intro-visible={introVisible}>
   <img class="screen-bg" src={bgUrl} alt="" aria-hidden="true" loading="eager" decoding="async" />
   <div class="hallway-backdrop" aria-hidden="true"></div>
@@ -98,6 +184,7 @@
     </div>
   </div>
 </div>
+{/if}
 
 <style>
   .room-selection-overlay {
@@ -356,5 +443,111 @@
       font-size: 14px;
     }
 
+  }
+
+  /* ── Landscape Styles ── */
+
+  .room-selection-overlay.landscape {
+    grid-template-rows: auto 1fr;
+    outline: none;
+  }
+
+  .hud-landscape {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: none;
+    padding: 0 24px;
+    gap: 20px;
+  }
+
+  .hud-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .landscape-stage {
+    display: grid;
+    place-items: center;
+    padding: 20px 32px 28px;
+  }
+
+  .door-row-landscape {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    max-width: 1100px;
+    justify-content: center;
+  }
+
+  .room-door-landscape {
+    flex: 1;
+    max-width: 320px;
+    height: auto;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 18px;
+    grid-template-columns: unset;
+    border: 2px solid var(--door-border);
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(29, 42, 58, 0.92), rgba(11, 18, 26, 0.96));
+    cursor: pointer;
+    transition: transform 180ms ease, filter 180ms ease, opacity 180ms ease, box-shadow 180ms ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  }
+
+  .room-door-landscape:hover,
+  .room-door-landscape.keyboard-focused {
+    transform: scale(1.04);
+    filter: brightness(1.1);
+    box-shadow: 0 0 22px var(--door-border), 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .room-door-landscape.tapped {
+    transform: scale(1.06);
+    filter: brightness(1.14);
+  }
+
+  .room-door-landscape.dimmed {
+    opacity: 0.22;
+    filter: grayscale(0.5);
+  }
+
+  .door-sprite-lg {
+    width: 64px;
+    height: 80px;
+    object-fit: contain;
+    image-rendering: pixelated;
+  }
+
+  .door-info-landscape {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .room-description {
+    font-size: 13px;
+    color: #94a3b8;
+    line-height: 1.4;
+    max-width: 220px;
+  }
+
+  .room-key-hint {
+    font-size: 11px;
+    color: #475569;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-family: monospace;
   }
 </style>

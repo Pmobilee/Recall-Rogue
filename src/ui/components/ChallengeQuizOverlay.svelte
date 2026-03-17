@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte'
+  import { isLandscape } from '../../stores/layoutStore'
   import type { ReviewState } from '../../data/types'
   import { factsDB } from '../../services/factsDB'
   import { challengeService, type ChallengeMode } from '../../services/challengeService'
@@ -96,7 +97,8 @@
 </script>
 
 {#if fact}
-  <div class="challenge-overlay" role="dialog" aria-modal="true">
+  <!-- AR-76: landscape class applied to outer overlay, panel adapts -->
+  <div class="challenge-overlay" class:challenge-overlay-landscape={$isLandscape} role="dialog" aria-modal="true">
     <div class="challenge-panel">
       <div class="mode-badge mode-{mode}">
         {mode === 'speed' ? 'SPEED ROUND' : mode === 'no_hint' ? 'NO HINT MODE' : 'REVERSE MODE'}
@@ -170,6 +172,13 @@
     justify-content: center;
     background: rgba(0, 0, 0, 0.85);
     pointer-events: all;
+  }
+
+  /* AR-76: In landscape, constrain the challenge overlay to center stage */
+  .challenge-overlay-landscape {
+    right: 30%;
+    bottom: 26vh;
+    background: rgba(0, 0, 0, 0.55);
   }
 
   .challenge-panel {

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { shareRunSummaryCard } from '../../services/runShareService'
   import type { RunSummary } from '../../services/hubState'
+  import { isLandscape } from '../../stores/layoutStore'
 
   interface Props {
     summary: RunSummary | null
@@ -29,6 +30,13 @@
     const minutes = Math.floor(totalSeconds / 60)
     const seconds = totalSeconds % 60
     return `${minutes}m ${String(seconds).padStart(2, '0')}s`
+  }
+
+  let searchQuery = $state('')
+
+  function handleKeydown(event: KeyboardEvent): void {
+    if (event.key === 'Escape' && !searchQuery) onBack()
+    else if (event.key === 'Escape' && searchQuery) searchQuery = ''
   }
 
   async function handleShare(): Promise<void> {
@@ -65,6 +73,76 @@
   }
 </script>
 
+{#if $isLandscape}
+<!-- LANDSCAPE: wider layout with search bar in top bar -->
+<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+<section class="journal-screen journal-screen-landscape" aria-label="Adventurer's Journal" onkeydown={handleKeydown}>
+  <header class="header header-landscape">
+    <h2>Adventurer&apos;s Journal</h2>
+    <div class="header-search">
+      <input
+        type="search"
+        class="search-input"
+        placeholder="Search domain or bounty..."
+        bind:value={searchQuery}
+        aria-label="Search journal"
+      />
+    </div>
+    <button type="button" class="back-btn" onclick={onBack}>Back</button>
+  </header>
+
+  {#if summary}
+    <article class="summary-card summary-card-landscape">
+      <div class="summary-left">
+        <h3>Last Expedition</h3>
+        <p class="meta">{formatDate(summary.runDate)}</p>
+
+        <div class="stats-grid stats-grid-landscape">
+          <div><span>Floor</span><strong>{summary.floorReached}</strong></div>
+          <div><span>Foes</span><strong>{summary.enemiesDefeated}/{summary.encountersTotal}</strong></div>
+          <div><span>Facts</span><strong>{summary.factsLearned}</strong></div>
+          <div><span>Gold</span><strong>{summary.goldEarned}</strong></div>
+          <div><span>Cards</span><strong>{summary.cardsCollected}</strong></div>
+          <div><span>Accuracy</span><strong>{summary.accuracy}%</strong></div>
+        </div>
+      </div>
+
+      <div class="summary-right">
+        <div class="meta-line">
+          Domains: <strong>{summary.primaryDomain}</strong> + <strong>{summary.secondaryDomain}</strong>
+        </div>
+        <div class="meta-line">Run time: {formatDuration(summary.runDurationMs)} • Best combo: x{summary.bestCombo}</div>
+
+        {#if summary.completedBounties.length > 0}
+          <div class="bounties">
+            <strong>Bounties Cleared</strong>
+            {#each summary.completedBounties as bounty}
+              <span>{bounty}</span>
+            {/each}
+          </div>
+        {/if}
+
+        <button
+          type="button"
+          class="share-btn"
+          data-testid="btn-share-run-journal"
+          onclick={handleShare}
+          disabled={shareState === 'sharing'}
+        >
+          {shareState === 'sharing' ? 'Sharing...' : shareState === 'done' ? 'Shared' : shareState === 'error' ? 'Retry Share' : 'Share Summary'}
+        </button>
+      </div>
+    </article>
+  {:else}
+    <article class="empty-card">
+      <h3>No expeditions yet</h3>
+      <p>Complete a run to populate your journal summary.</p>
+    </article>
+  {/if}
+</section>
+
+{:else}
+<!-- PORTRAIT: original layout, pixel-identical -->
 <section class="journal-screen" aria-label="Adventurer's Journal">
   <header class="header">
     <h2>Adventurer&apos;s Journal</h2>
@@ -116,6 +194,7 @@
     </article>
   {/if}
 </section>
+{/if}
 
 <style>
   .journal-screen {
@@ -225,5 +304,64 @@
     background: linear-gradient(180deg, #0f4c81, #1d4ed8);
     color: #e0f2fe;
     font-weight: 700;
+  }
+
+  /* ── Landscape Styles ── */
+
+  .journal-screen-landscape {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+    padding: 16px 24px 20px;
+  }
+
+  .header-landscape {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .header-landscape h2 {
+    flex-shrink: 0;
+  }
+
+  .header-search {
+    flex: 1;
+  }
+
+  .search-input {
+    width: 100%;
+    max-width: 360px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 0 12px;
+    font-size: calc(13px * var(--text-scale, 1));
+  }
+
+  .search-input::placeholder {
+    color: #475569;
+  }
+
+  .summary-card-landscape {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    overflow-y: auto;
+    align-self: start;
+  }
+
+  .summary-left,
+  .summary-right {
+    display: grid;
+    gap: 10px;
+    align-content: start;
+  }
+
+  .stats-grid-landscape {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 </style>

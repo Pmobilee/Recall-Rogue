@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { isLandscape } from '../../stores/layoutStore'
+
   interface Props {
     streak: number
     dustBalance: number
@@ -8,7 +10,10 @@
   let { streak, dustBalance, hasActiveRunBanner = false }: Props = $props()
 </script>
 
-<div class="hud-overlay" class:banner-offset={hasActiveRunBanner} aria-label="Camp HUD">
+<!-- In landscape, this component is rendered inside .hub-center (position: relative),
+     so left/right: 0 constrains it to the center column automatically.
+     No viewport-spanning occurs — positioning is correct in both modes. -->
+<div class="hud-overlay" class:banner-offset={hasActiveRunBanner} class:landscape={$isLandscape} aria-label="Camp HUD">
   <div class="hud-pill hud-left">
     <span class="hud-icon">&#x1F525;</span>
     <span class="hud-value">{streak}</span>
@@ -66,6 +71,17 @@
 
   .hud-overlay.banner-offset .hud-pill {
     top: calc(76px + var(--safe-top));
+    transition: top 200ms ease;
+  }
+
+  /* Landscape: HUD is inside .hub-center so left/right: 0 is already correct.
+     Tighten top padding slightly since no mobile safe area needed. */
+  .hud-overlay.landscape .hud-pill {
+    top: 10px;
+  }
+
+  .hud-overlay.landscape.banner-offset .hud-pill {
+    top: calc(76px);
     transition: top 200ms ease;
   }
 </style>

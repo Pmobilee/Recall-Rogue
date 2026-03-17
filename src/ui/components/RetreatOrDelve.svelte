@@ -2,6 +2,7 @@
   import { getRandomRoomBg } from '../../data/backgroundManifest'
   import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
   import { preloadImages } from '../utils/assetPreloader'
+  import { isLandscape } from '../../stores/layoutStore'
 
   interface Props {
     bossName: string
@@ -38,7 +39,7 @@
   let retainedOnDeath = $derived(Math.floor(currency * deathPenalty))
 </script>
 
-<div class="decision">
+<div class="decision" class:landscape={$isLandscape}>
   <img class="overlay-bg" src={bgUrl} alt="" aria-hidden="true" />
   <div class="decision-content">
     <h1>SEGMENT CLEARED</h1>
@@ -50,21 +51,23 @@
       <div>Next Segment: <strong>{nextSegmentName}</strong></div>
     </div>
 
-    <button class="retreat" onclick={onretreat} data-testid="btn-retreat">
-      Retreat
-      <span>
-        {#if retreatRewardsLocked}
-          No rewards before Floor {retreatRewardsMinFloor ?? 12}
-        {:else}
-          Keep all {currency}
-        {/if}
-      </span>
-    </button>
+    <div class="btn-row">
+      <button class="retreat" onclick={onretreat} data-testid="btn-retreat">
+        Retreat
+        <span>
+          {#if retreatRewardsLocked}
+            No rewards before Floor {retreatRewardsMinFloor ?? 12}
+          {:else}
+            Keep all {currency}
+          {/if}
+        </span>
+      </button>
 
-    <button class="delve" onclick={ondelve} data-testid="btn-delve">
-      Delve Deeper
-      <span>Death keeps {Math.round(deathPenalty * 100)}% ({retainedOnDeath})</span>
-    </button>
+      <button class="delve" onclick={ondelve} data-testid="btn-delve">
+        Delve Deeper
+        <span>Death keeps {Math.round(deathPenalty * 100)}% ({retainedOnDeath})</span>
+      </button>
+    </div>
 
     <div class="risk">
       Enemies are stronger. Timer is shorter.
@@ -128,9 +131,16 @@
     text-align: center;
   }
 
+  .btn-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: min(420px, 100%);
+  }
+
   .retreat,
   .delve {
-    width: min(420px, 100%);
+    width: 100%;
     border: none;
     border-radius: 12px;
     min-height: 56px;
@@ -162,5 +172,34 @@
     margin-top: 10px;
     font-size: 13px;
     color: #C9D1D9;
+  }
+
+  /* === Landscape layout === */
+  .decision.landscape {
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  .decision.landscape .decision-content {
+    background: #161b22;
+    border: 1px solid #3b434f;
+    border-radius: 16px;
+    padding: 32px 40px;
+    width: min(65vw, 860px);
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+
+  /* Wrap the two buttons in a row when landscape */
+  .decision.landscape .btn-row {
+    flex-direction: row;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .decision.landscape .btn-row .retreat,
+  .decision.landscape .btn-row .delve {
+    flex: 1;
+    min-height: 72px;
+    font-size: 19px;
   }
 </style>

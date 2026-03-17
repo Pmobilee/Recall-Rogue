@@ -1264,7 +1264,7 @@
 
 </script>
 
-<div class="card-combat-overlay" class:near-death-tension={isNearDeath}>
+<div class="card-combat-overlay" class:near-death-tension={isNearDeath} class:layout-landscape={$isLandscape}>
   {#if turnState === null}
     <div class="empty-state">
       <p>Waiting for encounter...</p>
@@ -1437,6 +1437,7 @@
       oncastdirect={handleCastDirect}
       onchargeplay={handleChargeDirect}
       {isSurgeActive}
+      quizVisible={cardPlayStage === 'committed'}
     />
 
     {#if showEndTurn}
@@ -2279,5 +2280,124 @@
     pointer-events: none;
     z-index: 200;
     white-space: nowrap;
+  }
+
+  /* ══════════════════════════════════════════════════════════
+     AR-73: Landscape (Option D) overlay repositioning
+     Enemy panel = right 30%  |  Center stage = left 70%
+     Card hand = bottom 26vh strip (rendered by CardHand)
+     ══════════════════════════════════════════════════════════ */
+
+  /* In landscape, reduce the bottom-gradient so center stage is visible */
+  .layout-landscape {
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 12%, transparent 35%);
+  }
+
+  /* Relics: top-left of center stage area */
+  :global(.layout-landscape .relic-tray) {
+    position: fixed;
+    top: 4%;
+    left: 2%;
+    bottom: auto;
+    transform: none;
+  }
+
+  /* AP orb: left edge of hand strip, above hand area */
+  .layout-landscape :global(.ap-orb),
+  .layout-landscape .ap-orb {
+    position: fixed;
+    bottom: 28vh;
+    left: 1.5%;
+    right: auto;
+    transform: none;
+  }
+
+  /* Enemy name: top of enemy panel (right 30%) */
+  .layout-landscape .enemy-name-header {
+    position: fixed;
+    top: 2%;
+    left: 70%;
+    right: 0;
+    text-align: center;
+    bottom: auto;
+    transform: none;
+  }
+
+  /* Intent bubble: below enemy name in right panel */
+  .layout-landscape .enemy-intent-bubble {
+    position: fixed;
+    top: 8%;
+    left: 72%;
+    right: 2%;
+    bottom: auto;
+    transform: none;
+  }
+
+  /* Player status strip (HP bar): bottom-left above card hand */
+  .layout-landscape .player-status-strip {
+    position: fixed;
+    bottom: 27vh;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: 60%;
+  }
+
+  /* Pile indicators: left edge area for draw/discard */
+  .layout-landscape .draw-pile-indicator {
+    position: fixed;
+    bottom: 27vh;
+    left: 2%;
+    right: auto;
+    transform: none;
+  }
+
+  .layout-landscape .discard-pile-indicator {
+    position: fixed;
+    bottom: 27vh;
+    left: 8%;
+    right: auto;
+    transform: none;
+  }
+
+  /* End turn button: right side above card hand, left of enemy panel */
+  .layout-landscape .end-turn-btn {
+    position: fixed;
+    bottom: 27vh;
+    right: 31%;
+    left: auto;
+    transform: none;
+  }
+
+  /* Combo counter: top of center stage */
+  :global(.layout-landscape .combo-counter) {
+    position: fixed;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: auto;
+  }
+
+  /* Status effect bars — enemy: top of center stage */
+  :global(.layout-landscape .status-effect-bar-enemy) {
+    position: fixed;
+    top: 2%;
+    left: 70%;
+    right: 1%;
+    bottom: auto;
+  }
+
+  /* Status effect bars — player: above card hand strip */
+  :global(.layout-landscape .status-effect-bar-player) {
+    position: fixed;
+    bottom: 28vh;
+    left: 35%;
+    right: 32%;
+    top: auto;
+  }
+
+  /* Must-charge tooltip: above center of hand strip */
+  .layout-landscape .must-charge-tooltip {
+    bottom: 28vh;
   }
 </style>

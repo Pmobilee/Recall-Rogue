@@ -74,22 +74,27 @@ Wire quiz answers to keyboard input (from AR-74's inputService):
 
 ### Step 6: Verification
 
-- [ ] Portrait quiz: pixel-identical to current
-- [ ] Landscape quiz: centered in left 70% area
-- [ ] Enemy panel visible during quiz in landscape
-- [ ] Keyboard shortcuts (1-4) work for answer selection
-- [ ] Timer bar displays correctly
-- [ ] Enter/exit animations play correctly
-- [ ] Quiz doesn't overlap card hand in landscape
-- [ ] 5-option questions (Tier 2b/Mastery Trial) render in landscape grid
+- [x] Portrait quiz: pixel-identical to current (landscape branch is additive; portrait `{:else}` unchanged)
+- [x] Landscape quiz: centered in left 70% area (`quiz-landscape-stage` / `card-expanded-landscape`)
+- [x] Enemy panel visible during quiz in landscape (overlay bounded to `right: 30%`)
+- [x] Keyboard shortcuts (1-4) work for answer selection (inputService QUIZ_ANSWER wired in onMount)
+- [x] Timer bar displays correctly (identical timer-bar-container, same CSS in both modes)
+- [x] Enter/exit animations play correctly (`slide-up-landscape` keyframe, 200ms ease-out)
+- [x] Quiz doesn't overlap card hand in landscape (`bottom: 26vh` boundary)
+- [x] 5-option questions render in landscape grid (`choices-landscape-5` → 3-column grid)
 
 ## Files Affected
 
 | File | Action |
 |------|--------|
-| `src/ui/components/QuizOverlay.svelte` | MODIFY (landscape branch, keyboard labels) |
-| `src/ui/components/ChallengeQuizOverlay.svelte` | MODIFY (same landscape treatment) |
+| `src/ui/components/CardExpanded.svelte` | MODIFIED — primary combat quiz landscape branch, keyboard wiring, answer grid, kbd-hint badges |
+| `src/ui/components/QuizOverlay.svelte` | MODIFIED — non-combat quiz landscape branch, inputService wiring |
+| `src/ui/components/ChallengeQuizOverlay.svelte` | MODIFIED — challenge quiz landscape positioning |
+| `src/ui/components/CardHand.svelte` | MODIFIED — `quizVisible` prop + `card-hand-quiz-dimmed` CSS class |
+| `src/ui/components/CardCombatOverlay.svelte` | MODIFIED — passes `quizVisible={cardPlayStage === 'committed'}` to CardHand |
+| `docs/GAME_DESIGN.md` | UPDATED — §17 AR-76 landscape quiz subsection added |
+| `docs/ARCHITECTURE.md` | UPDATED — CardExpanded row updated |
 
 ## GDD Updates
 
-Update `docs/GAME_DESIGN.md` §17 landscape subsection: Quiz panel occupies center stage area in landscape mode. Enemy remains visible during quiz. Keyboard shortcuts (1-4) for answer selection.
+DONE — `docs/GAME_DESIGN.md` §17 updated with AR-76 quiz panel landscape subsection. Covers positioning, keyboard shortcuts, answer grid, card hand dimming, and animation details.

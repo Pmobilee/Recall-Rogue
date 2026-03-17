@@ -37,6 +37,8 @@
     onchargeplay?: (index: number) => void
     /** True during Surge turns — CHARGE! button shows "+0 AP" instead of "+1 AP". */
     isSurgeActive?: boolean
+    /** AR-76: True when quiz is active in landscape — dims the card hand slightly. */
+    quizVisible?: boolean
   }
 
   // Session-level preload guard: avoid creating duplicate Image objects for the same URL.
@@ -60,6 +62,7 @@
     oncastdirect,
     onchargeplay,
     isSurgeActive = false,
+    quizVisible = false,
   }: Props = $props()
 
   interface TierUpVisualSignature {
@@ -563,6 +566,279 @@
 
 </script>
 
+{#if $isLandscape}
+<!-- AR-73: Landscape card hand — full viewport width bottom strip -->
+<div class="card-hand-landscape" class:card-hand-discard={discarding} class:card-hand-quiz-dimmed={quizVisible && $isLandscape} role="group" aria-label="Card hand">
+  {#each cards as card, i (card.id)}
+    {@const isSelected = selectedIndex === i}
+    {@const isOther = selectedIndex !== null && !isSelected}
+    {@const domainColor = getDomainColor(card.domain)}
+    {@const showFrontValue = shouldShowFrontValue(card)}
+    {@const cardAnim = cardAnimations?.[card.id] ?? null}
+    {@const tierBadge = getTierBadge(card)}
+    {@const apCost = card.apCost ?? 1}
+    {@const insufficientAp = !hasEnoughAp(card)}
+    {@const cardbackUrl = cardbackUrls.get(card.factId) ?? null}
+    {@const cardFrameUrl = cardFrameUrls.get(card.mechanicId ?? '') ?? null}
+    {@const isRevealing = cardAnim === 'reveal'}
+    {@const isTierUp = cardAnim === 'tier-up'}
+    {@const isSwoosh = cardAnim === 'swoosh'}
+    {@const isImpact = cardAnim === 'impact'}
+    {@const isAnimating = isRevealing || isTierUp || isSwoosh || isImpact}
+    {@const tierUpTransition = tierUpTransitions[card.id] ?? null}
+    {@const isHovered = hoveredIndex === i && !isSelected && !isOther && selectedIndex === null}
+    {@const isDraggingThis = dragState?.cardIndex === i}
+    {@const cardDragX = isDraggingThis ? dragDeltaX : 0}
+    {@const cardDragRawY = isDraggingThis ? dragRawDeltaY : 0}
+    {@const cardDragScale = isDraggingThis ? dragScale : 1}
+    {@const tierVisual = getTierUpVisualSignature(card.factId)}
+    {@const runState = $activeRunState}
+    {@const isMastered = card.tier === '3'}
+    {@const chargeApCostForDrag = (card.apCost ?? 1) + (isSurgeActive ? 0 : 1)}
+    {@const chargeAffordableForDrag = chargeApCostForDrag <= apCurrent}
+    {@const showChargeZoneIndicator = isDraggingThis && isInChargeZone && !isMastered && !!onchargeplay}
+    {@const isDragInChargeZone = isDraggingThis && isInChargeZone && !isMastered}
+    {@const chargeProgress = isDraggingThis && dragState ? (() => {
+      const startY = dragState.startY
+      const ratio = 0.4
+      const chargeZoneY = window.innerHeight * ratio
+      const totalDistance = startY - chargeZoneY
+      if (totalDistance <= 0) return 0
+      const currentDistance = startY - dragState.currentY
+      return Math.max(0, Math.min(1, currentDistance / totalDistance))
+    })() : 0}
+    {@const isChargePreview = chargeProgress > 0.3 && !isMastered}
+    {@const effectVal = getEffectValue(card, isChargePreview)}
+
+    <button
+      class="card-in-hand card-landscape"
+      class:card-selected={isSelected}
+      class:card-dimmed={isOther}
+      class:tier-2a={card.tier === '2a'}
+      class:tier-2b={card.tier === '2b'}
+      class:tier-3={card.tier === '3'}
+      class:echo-card={card.isEcho}
+      class:trial-card={card.isMasteryTrial}
+      class:card-upgraded={card.isUpgraded}
+      class:insufficient-ap={insufficientAp}
+      class:card-playable={!insufficientAp && !isSelected && !isOther && selectedIndex === null}
+      class:card-combo={comboMultiplier > 1 && !insufficientAp && !isSelected && !isOther && selectedIndex === null}
+      class:card-fizzle={cardAnim === 'fizzle'}
+      class:card-discard={cardAnim === 'discard'}
+      class:card-reveal={isAnimating}
+      class:card-tier-up={isTierUp}
+      class:card-swoosh={isSwoosh}
+      class:card-impact={isImpact}
+      class:drag-ready={isDragPastThreshold && isDraggingThis && !isDragInChargeZone}
+      class:drag-charge-zone={isDragInChargeZone}
+      class:drag-charge-zone-disabled={isDragInChargeZone && !chargeAffordableForDrag}
+      style="
+        {isAnimating ? '' : isDraggingThis
+          ? `transform: translate3d(${cardDragX}px, ${isSelected ? -70 : -cardDragRawY}px, 0) scale(${cardDragScale});`
+          : `transform: translate3d(0, ${isSelected ? -70 : 0}px, 0) scale(${isSelected ? 1.15 : isHovered ? 1.08 : 1});`}
+        {cardFrameUrl ? '' : `border-color: ${domainColor};`}
+        animation-delay: {i * 60}ms;
+        opacity: {isOther ? 0.3 : 1};
+        z-index: {isDraggingThis ? 20 : isHovered ? 10 : ''};
+        {isDraggingThis && chargeProgress > 0.05 ? `filter: drop-shadow(0 0 ${8 + chargeProgress * 8}px rgba(250, 204, 21, ${chargeProgress * 0.8})) drop-shadow(0 0 ${16 + chargeProgress * 16}px rgba(250, 204, 21, ${chargeProgress * 0.4}));` : ''}
+      "
+      data-testid="card-hand-{i}"
+      disabled={disabled || isOther}
+      use:initCardAnimOffsets
+      onpointerdown={(e) => handlePointerDown(e, i)}
+      onpointermove={(e) => handlePointerMove(e)}
+      onpointerup={(e) => handlePointerUp(e)}
+      onpointercancel={(e) => handlePointerCancel(e)}
+      onpointerenter={(e) => handlePointerEnter(e, i)}
+      onpointerleave={handlePointerLeave}
+    >
+      <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
+        <div class="card-front">
+          {#if cardFrameUrl}
+            <img class="card-frame-img" src={cardFrameUrl} alt={card.mechanicName ?? card.cardType} />
+            <div class="ap-gem" style="color: {getChainColor(card.chainType)}; text-shadow: 0 0 2px rgba(0,0,0,0.6);">{apCost}</div>
+            {#if card.chainType !== undefined}
+              <div
+                class="chain-glow"
+                class:chain-pulse={chainPulseCardIds.has(card.id)}
+                style="background: radial-gradient(circle, {getChainGlowColor(card.chainType)} 0%, transparent 70%);"
+              ></div>
+            {/if}
+            <div class="card-parchment-text">
+              <span class="parchment-inner">
+                {#each getCardDescriptionParts(card, undefined, isChargePreview ? getEffectValue(card, true) : undefined) as part}
+                  {#if part.type === 'number'}
+                    <span class="desc-number" class:charge-preview={isChargePreview}>{part.value}</span>
+                  {:else if part.type === 'keyword'}
+                    <span class="desc-keyword">{part.value}</span>
+                  {:else if part.type === 'conditional-number'}
+                    <span class="desc-conditional" class:active={part.active}>{part.active ? part.value : '0'}</span>
+                  {:else}
+                    {part.value}
+                  {/if}
+                {/each}
+              </span>
+            </div>
+          {:else}
+            {#if cardbackUrl}
+              <img class="card-front-bg" src={cardbackUrl} alt="" />
+            {/if}
+            <div class="ap-badge" class:ap-free={apCost === 0} class:ap-heavy={apCost === 2} class:ap-full-turn={apCost >= 3}>{apCost}</div>
+            <div class="card-domain-stripe" style="background: {domainColor};"></div>
+            <div class="card-front-name">{card.mechanicName ?? card.cardType}</div>
+            {#if showFrontValue}
+              <div class="card-effect-value">{effectVal}</div>
+            {/if}
+          {/if}
+          {#if card.isMasteryTrial}
+            <div class="trial-badge">TRIAL</div>
+          {/if}
+          {#if card.isEcho}
+            <div class="echo-badge">
+              <span>ECHO</span>
+              <span class="echo-charge-label">⚡ CHARGE</span>
+            </div>
+          {/if}
+          {#if tierBadge}
+            <div class="card-tier-badge">{tierBadge}</div>
+          {/if}
+          {#if isMastered}
+            <div class="card-tier-label card-tier-label--mastered">MASTERED</div>
+          {/if}
+        </div>
+        {#if cardbackUrl}
+          <div class="card-back">
+            <img src={cardbackUrl} alt="Card art" class="cardback-img" />
+          </div>
+        {/if}
+      </div>
+
+      {#if isTierUp}
+        <div
+          class="tier-up-overlay"
+          style="
+            --tier-hue: {tierVisual.hue};
+            --spark-x: {tierVisual.sparkX}%;
+            --spark-y: {tierVisual.sparkY}%;
+            --spark-spin: {tierVisual.spinDeg}deg;
+            --spark-intensity: {tierVisual.intensity};
+          "
+        ></div>
+      {/if}
+
+      {#if showChargeZoneIndicator}
+        <div
+          class="charge-zone-indicator"
+          class:charge-zone-indicator-disabled={!chargeAffordableForDrag}
+        >
+          {#if !chargeAffordableForDrag}
+            <span class="charge-zone-text charge-zone-text-disabled">NOT ENOUGH AP</span>
+          {:else}
+            <span class="charge-zone-text">⚡ CHARGE {isSurgeActive ? '+0' : '+1'} AP</span>
+          {/if}
+        </div>
+      {/if}
+    </button>
+
+    {#if selectedIndex === i && card.tier !== '3' && onchargeplay && !disabled}
+      {@const chargeApCost = (card.apCost ?? 1) + (isSurgeActive ? 0 : 1)}
+      {@const chargeAffordable = chargeApCost <= apCurrent}
+      <button
+        class="charge-play-btn charge-play-btn-landscape"
+        class:charge-btn-disabled={!chargeAffordable}
+        disabled={!chargeAffordable}
+        title={!chargeAffordable ? 'Not enough AP' : 'Charge — answer a quiz for bonus power'}
+        onclick={() => onchargeplay!(i)}
+      >
+        ⚡ CHARGE
+        <span class="charge-ap-badge">{isSurgeActive ? '+0' : '+1'} AP</span>
+      </button>
+    {/if}
+
+    <!-- Landscape hover tooltip -->
+    {#if isHovered && selectedIndex === null}
+      {@const chainName = card.chainType !== undefined ? getChainTypeName(card.chainType) : null}
+      <div
+        class="card-hover-tooltip card-hover-tooltip-landscape"
+        role="tooltip"
+      >
+        {#if (card.mechanicName ?? card.mechanicId)}
+          <span class="tooltip-mechanic">{card.mechanicName ?? card.cardType}</span>
+        {/if}
+        <span class="tooltip-cost">{card.apCost ?? 1} AP</span>
+        {#if chainName}
+          <span class="tooltip-chain" style="color: {getChainColor(card.chainType)}">{chainName}</span>
+        {/if}
+      </div>
+    {/if}
+  {/each}
+
+  {#each animatingCards as card (card.id)}
+    {@const cardAnim = cardAnimations?.[card.id] ?? null}
+    {@const cardbackUrl = cardbackUrls.get(card.factId) ?? null}
+    {@const isRevealing = cardAnim === 'reveal'}
+    {@const isTierUp = cardAnim === 'tier-up'}
+    {@const isSwoosh = cardAnim === 'swoosh'}
+    {@const isImpact = cardAnim === 'impact'}
+    {@const isAnimating = isRevealing || isTierUp || isSwoosh || isImpact}
+    {@const tierUpTransition = tierUpTransitions[card.id] ?? null}
+    {@const domainColor = getDomainColor(card.domain)}
+    {@const effectVal = getEffectValue(card)}
+    {@const showFrontValue = shouldShowFrontValue(card)}
+    {@const cardFrameUrl = cardFrameUrls.get(card.mechanicId ?? '') ?? null}
+    {@const tierVisual = getTierUpVisualSignature(card.factId)}
+
+    <div
+      class="card-in-hand card-landscape card-animating"
+      class:card-reveal={isAnimating}
+      class:card-fizzle={cardAnim === 'fizzle'}
+      class:card-discard={cardAnim === 'discard'}
+      use:ghostCardAnim
+      class:card-tier-up={isTierUp}
+      class:card-swoosh={isSwoosh}
+      class:card-impact={isImpact}
+      style="border-color: {domainColor};"
+    >
+      <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
+        <div class="card-front">
+          {#if cardFrameUrl}
+            <img class="card-frame-img" src={cardFrameUrl} alt={card.mechanicName ?? card.cardType} />
+            <div class="ap-gem">{card.apCost ?? 1}</div>
+          {:else}
+            {#if cardbackUrl}
+              <img class="card-front-bg" src={cardbackUrl} alt="" />
+            {/if}
+            <div class="card-domain-stripe" style="background: {domainColor};"></div>
+            <div class="card-front-name">{card.mechanicName ?? card.cardType}</div>
+            {#if showFrontValue}
+              <div class="card-effect-value">{effectVal}</div>
+            {/if}
+          {/if}
+        </div>
+        {#if cardbackUrl}
+          <div class="card-back">
+            <img src={cardbackUrl} alt="Card art" class="cardback-img" />
+          </div>
+        {/if}
+      </div>
+
+      {#if isTierUp}
+        <div
+          class="tier-up-overlay"
+          style="
+            --tier-hue: {tierVisual.hue};
+            --spark-x: {tierVisual.sparkX}%;
+            --spark-y: {tierVisual.sparkY}%;
+            --spark-spin: {tierVisual.spinDeg}deg;
+            --spark-intensity: {tierVisual.intensity};
+          "
+        ></div>
+      {/if}
+    </div>
+  {/each}
+</div>
+{:else}
+<!-- Portrait card hand — UNCHANGED from pre-AR-73 -->
 <div class="card-hand-container" class:card-hand-discard={discarding} role="group" aria-label="Card hand">
   {#each cards as card, i (card.id)}
     {@const isSelected = selectedIndex === i}
@@ -887,8 +1163,70 @@
     </div>
   {/each}
 </div>
+{/if}
 
 <style>
+  /* ── AR-73: Landscape card hand ──────────────────────────── */
+  .card-hand-landscape {
+    --card-w: calc(25vh * 0.65);
+    --card-h: calc(var(--card-w) * 1.42);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 26vh;
+    z-index: 20;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 12px 8px;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .card-landscape {
+    position: relative;
+    width: var(--card-w);
+    height: var(--card-h);
+    background-color: #1e2d3d;
+    border: 2px solid;
+    border-radius: 8px;
+    cursor: pointer;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    overflow: visible;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: none;
+    font-family: inherit;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    perspective: 800px;
+    will-change: transform, opacity;
+    flex-shrink: 0;
+  }
+
+  .charge-play-btn-landscape {
+    position: absolute;
+    bottom: calc(var(--card-h) + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+
+  .card-hover-tooltip-landscape {
+    position: absolute;
+    bottom: calc(var(--card-h) + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+
   .card-hand-container {
     --card-w: calc(var(--gw, 390px) * 0.30);
     --card-h: calc(var(--card-w) * 1.42);
@@ -1744,6 +2082,12 @@
       ) rotate(-10deg) scale(0.05) !important;
       opacity: 0;
     }
+  }
+
+  /* AR-76: Dim card hand when quiz is visible in landscape */
+  .card-hand-quiz-dimmed {
+    opacity: 0.7;
+    transition: opacity 200ms ease;
   }
 
   /* ═══ END-OF-TURN HAND DISCARD ANIMATION ═══ */

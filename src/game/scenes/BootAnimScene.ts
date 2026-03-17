@@ -28,11 +28,31 @@ export default class BootAnimScene extends Phaser.Scene {
 
   /**
    * Called by CardGameManager when the layout mode changes (portrait ↔ landscape).
-   * Actual landscape adaptation is implemented in AR-79.
-   * This stub stores the mode for future use.
+   * Stores the mode so create() can pick the correct scale strategy.
    */
   handleLayoutChange(mode: LayoutMode): void {
     this.currentLayoutMode = mode
+  }
+
+  /**
+   * Calculates the logo scale for the current layout mode.
+   *
+   * Portrait: COVER scale — logo fills the viewport (existing behavior).
+   * Landscape: FIT scale with slight overscan — logo fits within viewport height,
+   *   allowing dark pillarboxing on sides. Avoids extreme cropping of portrait
+   *   assets on wide displays.
+   *
+   * FUTURE: Create landscape boot assets (1920x1080) for desktop.
+   * For now, portrait assets centered with pillarboxing is acceptable.
+   */
+  private calcLogoScale(viewW: number, viewH: number): number {
+    if (this.currentLayoutMode === 'landscape') {
+      // FIT to viewport height with slight overscan (1.1×) so the logo
+      // fills vertical space while dark bars appear on sides — intentional.
+      return Math.min(viewW / 1024, viewH / 1835) * 1.1
+    }
+    // Portrait: COVER — fills viewport (original behavior, unchanged).
+    return Math.max(viewW / 1024, viewH / 1835)
   }
 
   preload(): void {
@@ -58,7 +78,7 @@ export default class BootAnimScene extends Phaser.Scene {
     const cy = this.cameras.main.centerY
     const viewW = this.scale.width
     const viewH = this.scale.height
-    this.coverScale = Math.max(viewW / 1024, viewH / 1835)
+    this.coverScale = this.calcLogoScale(viewW, viewH)
 
     // Particle texture
     const gfx = this.make.graphics({ x: 0, y: 0 })

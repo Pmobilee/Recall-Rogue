@@ -13,6 +13,8 @@
   import { getWowScore } from '../../services/wowScore'
   import FuriganaText from '../FuriganaText.svelte'
   import { deckOptions } from '../../services/deckOptionsService'
+  import { isLandscape } from '../../stores/layoutStore'
+  import { inputService } from '../../services/inputService'
 
   // GAIA sprite imports for reaction bubble
   const gaiaNeutralImg = '/assets/sprites/dome/gaia_neutral.png'
@@ -85,6 +87,8 @@
   let showReportModal = $state(false)
   /** True when a wrong answer result is being displayed, waiting for the player to tap "Got it". */
   let waitingForTap = $state<boolean>(false)
+  /** Index of answer highlighted briefly by keyboard shortcut (landscape, 150ms). */
+  let kbdHighlightIndex = $state<number | null>(null)
 
   const CORRECT_PHRASES = ["That's it!", "Nailed it!", "Locked in!"] as const
   const WRONG_PHRASES = ["Not quite!", "Hmm, let me remind you..."] as const
@@ -251,20 +255,168 @@
     return isCorrect ? 'anim-correct-pulse' : 'anim-wrong-shake'
   }
 
+  /** Select answer by index, with optional 150ms highlight flash before submitting. */
+  function selectAnswerByIndex(index: number, flash = false): void {
+    if (showResult) return
+    if (index < 0 || index >= choices.length) return
+    if (flash) {
+      kbdHighlightIndex = index
+      setTimeout(() => {
+        kbdHighlightIndex = null
+        void handleAnswer(choices[index])
+      }, 150)
+    } else {
+      void handleAnswer(choices[index])
+    }
+  }
+
   onMount(() => {
     function handleKeyDown(e: KeyboardEvent): void {
       if (showResult) return
       const num = parseInt(e.key, 10)
       if (num >= 1 && num <= choices.length) {
-        void handleAnswer(choices[num - 1])
+        // In landscape use flash highlight via inputService path; portrait uses direct call
+        if ($isLandscape) {
+          selectAnswerByIndex(num - 1, true)
+        } else {
+          void handleAnswer(choices[num - 1])
+        }
       }
     }
 
     document.addEventListener('keydown', handleKeyDown)
-    return () => document.removeEventListener('keydown', handleKeyDown)
+
+    // AR-76: Also wire inputService QUIZ_ANSWER for landscape keyboard shortcut
+    const unsubInputService = inputService.on('QUIZ_ANSWER', (action) => {
+      if (action.type !== 'QUIZ_ANSWER') return
+      if (!$isLandscape) return
+      selectAnswerByIndex(action.index, true)
+    })
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+      unsubInputService()
+    }
   })
 </script>
 
+{#if $isLandscape}
+  <!-- AR-76: Landscape quiz — center stage area (left 70% of viewport, above card hand) -->
+  <div class="quiz-landscape-stage" role="dialog" aria-modal="true" aria-label="Quiz Question">
+    <div class={`quiz-landscape-panel quiz-card-enter ${cardOutcomeClass}`} class:high-contrast-quiz={$highContrastQuiz}>
+      <button class="close-button" type="button" onclick={onClose} aria-label="Close field scan">x</button>
+
+      {#if mode === 'random'}
+        <p class="pop-quiz-header">Scanner ping!</p>
+        <p class="pop-quiz-sub">Residual data detected...</p>
+        <p class="pop-quiz-reward">Nailed it: +{BALANCE.RANDOM_QUIZ_REWARD_DUST} dust &nbsp;|&nbsp; Not quite: -{BALANCE.RANDOM_QUIZ_WRONG_O2_COST} O2</p>
+      {/if}
+
+      {#if mode === 'gate' && gateProgress}
+        <p class="gate-progress">Knowledge Gate: {gateProgress.total - gateProgress.remaining + 1} / {gateProgress.total}</p>
+      {/if}
+
+      {#if mode === 'artifact' && gateProgress}
+        <p class="artifact-appraisal-header">Artifact Analysis {gateProgress.total - gateProgress.remaining + 1} / {gateProgress.total}</p>
+        <p class="artifact-appraisal-hint">Artifact uplink — your knowledge calibrates the analysis.</p>
+      {/if}
+
+      {#if mode === 'artifact_boost'}
+        <p class="artifact-boost-header">Analyze This Discovery!</p>
+        <p class="artifact-boost-hint">Correct answers boost the artifact's rarity before you claim it</p>
+      {/if}
+
+      {#if mode === 'layer'}
+        <p class="layer-entrance-header">Depth Calibration</p>
+        {#if layerChallengeProgress}
+          <div class="layer-progress">
+            <span class="layer-progress-text">Question {layerChallengeProgress.current} of {layerChallengeProgress.total}</span>
+            <div class="layer-progress-bar">
+              {#each Array(layerChallengeProgress.total) as _, i}
+                <div class="layer-progress-pip" class:filled={i < layerChallengeProgress.current}></div>
+              {/each}
+            </div>
+          </div>
+        {/if}
+        <p class="layer-entrance-hint">Depth calibration sequence — what do you recall?</p>
+      {/if}
+
+      {#if fact?.hasPixelArt}
+        <div class="fact-art-wrapper">
+          <FactArtwork factId={fact.id} size={80} />
+        </div>
+      {/if}
+
+      {#if japaneseParts}
+        <p class="question" data-testid="quiz-question">
+          {japaneseParts.before}<FuriganaText text={kanaOnly && japaneseParts.reading ? japaneseParts.reading : japaneseParts.word} reading={japaneseParts.reading} size="md" />{japaneseParts.after}
+        </p>
+      {:else}
+        <p class="question" data-testid="quiz-question">{fact.quizQuestion}</p>
+      {/if}
+
+      {#if mode === 'gate'}
+        <p class="attempts">Attempts: {attemptsRemaining}/{totalAttempts}</p>
+      {/if}
+
+      <div class="choices choices-landscape" class:choices-landscape-5={choices.length === 5}>
+        {#each choices as choice, i}
+          <button
+            class={`choice-button ${getChoiceClass(choice)} ${getResultAnimClass(choice)} choice-stagger`}
+            class:choice-kbd-highlight={kbdHighlightIndex === i}
+            style="animation-delay: {STAGGER_DELAYS[i] ?? 350}ms"
+            type="button"
+            disabled={showResult}
+            aria-label="Choice {i + 1}: {choice}"
+            onclick={() => void handleAnswer(choice)}
+            data-testid="quiz-answer-{i}"
+          >
+            <span class="key-badge" aria-hidden="true">{i + 1}</span>
+            <span class="choice-text">{choice}</span>
+          </button>
+        {/each}
+      </div>
+
+      {#if isDev && !showResult}
+        <button class="dev-skip-btn" type="button" onclick={() => onAnswer(true)}>⏭ Skip (✓)</button>
+      {/if}
+
+      {#if showResult}
+        <p class={`result-text ${resultClass}`} data-testid="quiz-result-text">{resultText}</p>
+      {/if}
+
+      {#if showResult && isCorrect !== null}
+        <div class="gaia-reaction" class:gaia-reaction-correct={isCorrect} class:gaia-reaction-wrong={!isCorrect} role="note" aria-label="GAIA reaction">
+          <img class="gaia-reaction-sprite" src={gaiaReactionSpriteUrl} alt={`G.A.I.A. ${gaiaReactionExpressionId}`} width="28" height="28" />
+          <span class="gaia-reaction-name">{KEEPER_NAME}</span>
+          <span class="gaia-reaction-text" data-testid="gaia-reaction-text">
+            {#if isCorrect}
+              {["Great work!", "Nailed it!", "Excellent!", "Well done!"][Math.floor(Math.random() * 4)]}
+            {:else}
+              {["Keep at it.", "Almost!", "Not quite.", "Hmm, let me remind you..."][Math.floor(Math.random() * 4)]}
+            {/if}
+          </span>
+        </div>
+      {/if}
+
+      {#if showMemoryTip}
+        <div class="memory-tip" role="note" aria-label="Memory Tip">
+          <span class="memory-tip-label">💡 Memory Tip:</span>
+          <span class="memory-tip-text" data-testid="quiz-memory-tip">{memoryTipText}</span>
+        </div>
+      {/if}
+
+      {#if waitingForTap}
+        <button class="got-it-btn" type="button" onclick={handleWrongAnswerTap}>Got it — Continue</button>
+      {/if}
+
+      {#if showResult && isCorrect === false}
+        <button class="report-fact-btn" type="button" onclick={() => (showReportModal = true)}>Report this fact</button>
+      {/if}
+    </div>
+  </div>
+{:else}
+<!-- PORTRAIT: pixel-identical to pre-AR-76 implementation -->
 <div class="quiz-overlay quiz-overlay-enter" class:high-contrast-quiz={$highContrastQuiz} role="dialog" aria-modal="true" aria-label="Quiz Question">
   <div class={`quiz-card quiz-card-enter ${cardOutcomeClass}`}>
     <button class="close-button" type="button" onclick={onClose} aria-label="Close field scan">
@@ -425,6 +577,7 @@
     {/if}
   </div>
 </div>
+{/if}<!-- end landscape/portrait branch -->
 
 {#if showReportModal}
   <ReportModal factId={fact.id} onClose={() => (showReportModal = false)} />
@@ -997,5 +1150,77 @@
     letter-spacing: calc(0.5px * var(--layout-scale, 1));
     margin-top: calc(-0.4rem * var(--layout-scale, 1));
     font-style: italic;
+  }
+
+  /* ── AR-76: Landscape quiz layout ─────────────────────────────────────── */
+
+  /**
+   * Transparent backdrop covering center stage (left 70%, above 26vh card hand).
+   * Does NOT cover the right-30% enemy panel.
+   */
+  .quiz-landscape-stage {
+    position: fixed;
+    left: 0;
+    right: 30%;
+    top: 0;
+    bottom: 26vh;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    /* subtle backdrop only in center stage */
+    background: rgba(0, 0, 0, 0.45);
+    font-family: 'Courier New', monospace;
+    animation: landscape-stage-fade-in 200ms ease-out both;
+  }
+
+  @keyframes landscape-stage-fade-in {
+    from { background: rgba(0, 0, 0, 0); }
+    to   { background: rgba(0, 0, 0, 0.45); }
+  }
+
+  /** The quiz card panel inside the center stage */
+  .quiz-landscape-panel {
+    position: relative;
+    width: min(50vw, 640px);
+    max-width: min(50vw, 640px);
+    max-height: calc(74vh - 26vh);
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    border: 2px solid var(--color-primary);
+    border-radius: 16px;
+    padding: 1.1rem 1.25rem;
+    background: var(--color-surface);
+    color: var(--color-text);
+    pointer-events: auto;
+  }
+
+  .quiz-landscape-panel::-webkit-scrollbar {
+    display: none;
+  }
+
+  /** Landscape answer grid: 2 columns for 3-4 options, 3+2 for 5 */
+  .choices-landscape {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(8px * var(--layout-scale, 1));
+    flex-direction: unset;
+  }
+
+  /** 5-option landscape: first 3 in top row via spanning trick */
+  .choices-landscape-5 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  /** Keyboard shortcut flash highlight (landscape) */
+  .choice-kbd-highlight {
+    border-color: #60a5fa !important;
+    background: rgba(96, 165, 250, 0.15) !important;
+    box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.35);
   }
 </style>

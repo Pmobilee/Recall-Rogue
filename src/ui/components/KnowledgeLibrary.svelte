@@ -21,6 +21,7 @@
   } from '../../services/loreService'
   import { playerSave } from '../stores/playerData'
   import DeckBuilder from './DeckBuilder.svelte'
+  import { isLandscape } from '../../stores/layoutStore'
 
   interface Props {
     onback: () => void
@@ -100,6 +101,19 @@
     loreFragments = getUnlockedLoreFragments()
   })
 
+  function handleKeydown(event: KeyboardEvent): void {
+    if (event.key === 'Escape') {
+      if (selectedEntry) {
+        selectedEntry = null
+      } else if (selectedDomain) {
+        selectedDomain = null
+        selectedSubcategory = null
+      } else {
+        onback()
+      }
+    }
+  }
+
   onMount(() => {
     let active = true
 
@@ -129,7 +143,7 @@
   })
 </script>
 
-<div class="library-overlay">
+<div class="library-overlay" class:landscape={$isLandscape} onkeydown={handleKeydown} role="presentation">
   <div class="library-topbar">
     {#if activeTab === 'knowledge' && selectedEntry}
       <button class="back-btn" onclick={() => (selectedEntry = null)}>Back</button>
@@ -560,5 +574,84 @@
   .sub-count {
     opacity: 0.6;
     font-size: calc(10px * var(--layout-scale, 1));
+  }
+
+  /* ── Landscape Styles ── */
+
+  .library-overlay.landscape {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    overflow: hidden;
+    padding: calc(10px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+  }
+
+  .library-overlay.landscape .library-topbar {
+    position: static;
+  }
+
+  /* Wider domain grid in landscape: 4 columns */
+  .library-overlay.landscape .domain-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  /* Fact list as 2-column grid in landscape */
+  .library-overlay.landscape .fact-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Lore grid with more columns in landscape */
+  .library-overlay.landscape .lore-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* Content area scrollable in landscape */
+  .library-overlay.landscape .summary-section,
+  .library-overlay.landscape .domain-section,
+  .library-overlay.landscape .detail-card {
+    overflow-y: auto;
+    max-height: calc(100vh - 140px);
+  }
+
+  /* Filters inline in landscape */
+  .library-overlay.landscape .filters {
+    grid-template-columns: repeat(4, auto);
+    justify-content: start;
+    align-items: center;
+  }
+
+  /* Wider subcategory bar in landscape */
+  .library-overlay.landscape .subcategory-bar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: calc(4px * var(--layout-scale, 1));
+  }
+
+  /* Detail card two-column in landscape */
+  .library-overlay.landscape .detail-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(12px * var(--layout-scale, 1));
+  }
+
+  .library-overlay.landscape .detail-card h3 {
+    grid-column: 1 / -1;
+  }
+
+  .library-overlay.landscape .detail-card .detail-domain {
+    grid-column: 1 / -1;
+  }
+
+  .library-overlay.landscape .detail-card h4 {
+    grid-column: 1 / -1;
+  }
+
+  .library-overlay.landscape .detail-card .detail-grid {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  /* Tabs max-width removed in landscape */
+  .library-overlay.landscape .library-tabs {
+    max-width: none;
   }
 </style>

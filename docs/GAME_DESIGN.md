@@ -1386,17 +1386,57 @@ Enemy intent icon and damage preview shown above enemy sprite at all times. Thre
 - Numerical HP value alongside bar
 - Flash red on damage taken
 
-### Landscape Layout (Desktop — AR-73)
+### Landscape Layout (Desktop — AR-73) [IMPLEMENTED]
 
-See §36 for the complete landscape layout specification (Option D). The landscape layout is planned for the Steam Early Access desktop port.
+Option D split-stage layout for desktop/landscape viewports:
 
-Key differences from portrait:
-- Enemy panel on right 30% (always visible, even during quiz)
-- Quiz panel in center stage area (left 70%)
-- Card hand as full-width bottom strip (25-30% height)
-- Hub: portrait camp centered with decorative side panels
-- Navigation: left sidebar instead of bottom tab bar
-- Modals: centered panels instead of full-screen overlays
+**Three-zone split:**
+- **Right 30% — Enemy Panel:** Enemy sprite, HP bar, block bar, intent telegraph. Always visible including during quiz. Enemy centered at `(85%, 45%)` of viewport.
+- **Left 70% — Center Stage:** Reserved for quiz panel (AR-76), VFX, and floating HUD elements (relics top-left, combo counter top-center, chain counter top-right).
+- **Bottom 26vh — Card Hand Strip:** Full-viewport-width horizontal card row. Cards in `flex-row`, no arc/rotation fan. Selected card rises vertically by 70px. Charge/Quick Play buttons appear above selected card.
+
+**Player HP bar:** Vertical bar at left edge of enemy panel (`x=68%` of viewport), spanning top 20%–80% of viewport height.
+
+**HUD element repositioning (landscape):**
+- Relics: top-left of center stage (`2%, 5%`)
+- AP orb: left of hand strip, above card hand at `bottom: 28vh`
+- Enemy name: top of right panel (`70%–100%`, `2%` from top)
+- Intent bubble: below enemy name in right panel
+- Pile indicators: left edge above card hand
+- End Turn button: right side above hand strip, left of enemy panel
+- Combo counter: top-center of viewport
+
+**Background:** Cover-scales to fill full viewport in both modes. Landscape variant loaded first (`_landscape` suffix) with portrait fallback.
+
+**Toggle:** Ctrl+Shift+L (dev only) toggles layout mid-combat without crash. `repositionAll()` in CombatScene recalculates all object positions on layout change.
+
+**Vignette (landscape):** Lighter side vignette (40% vs 52% portrait) on left side only — no right-side vignette to keep enemy panel clean.
+
+### Quiz Panel — Landscape Mode (AR-76) [IMPLEMENTED]
+
+In landscape mode the combat quiz panel (`CardExpanded`) occupies the **center stage** area (left 70% of viewport, above the 26vh card hand), keeping the enemy panel fully visible throughout the quiz.
+
+**Positioning:**
+- Outer container: `position: fixed; left: 0; right: auto; top: 50%; transform: translateY(calc(-50% - 13vh))` — vertically centered in the space above the card hand
+- Panel width: `min(50vw, 640px)` — constrained within the left-70% zone with padding room
+
+**Keyboard shortcuts (landscape only):**
+- Keys `1`–`4` select the corresponding answer button via the `inputService` `QUIZ_ANSWER` action
+- A 150 ms blue highlight flash is shown on the selected button before the answer is processed, giving the player visible feedback
+- Duplicate keypresses are ignored once an answer is committed (`answersDisabled`)
+
+**Answer button grid (landscape):**
+- 3–4 options: 2×2 CSS grid (`grid-template-columns: 1fr 1fr`)
+- 5 options: 3-column grid (3 top row + 2 bottom row)
+- Each button shows a monospace keyboard-hint badge `[1]`–`[4]` at the left edge
+
+**Card hand dimming:** When the quiz is visible in landscape, the card hand strip dims to `opacity: 0.7` to focus attention. The dimming is applied via the `quizVisible` prop on `CardHand`.
+
+**Animation:** Panel slides up from 30px below target position (200ms ease-out), distinct from the portrait `slide-up-landscape` keyframe.
+
+**Portrait mode:** Pixel-identical to pre-AR-76 implementation. No changes to portrait layout, sizing, or behavior.
+
+**Non-combat quiz screens:** `QuizOverlay.svelte` (gate, study, artifact modes) and `ChallengeQuizOverlay.svelte` use the same center-stage positioning (`left: 0; right: 30%; bottom: 26vh`) in landscape, with the quiz panel centered within that region.
 
 ---
 

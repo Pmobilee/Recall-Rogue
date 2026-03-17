@@ -2,6 +2,7 @@
   import { playerSave } from '../stores/playerData'
   import { activeProfile } from '../stores/profileStore'
   import { getDomainMetadata } from '../../data/domainMetadata'
+  import { isLandscape } from '../../stores/layoutStore'
 
   interface Props {
     onBack: () => void
@@ -30,8 +31,65 @@
       return id.charAt(0).toUpperCase() + id.slice(1).replaceAll('_', ' ')
     }
   }
+
+  function handleKeydown(event: KeyboardEvent): void {
+    if (event.key === 'Escape') onBack()
+  }
 </script>
 
+{#if $isLandscape}
+<!-- LANDSCAPE: two-column layout -->
+<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+<section class="profile-screen profile-screen-landscape" aria-label="Profile" onkeydown={handleKeydown}>
+  <header class="header">
+    <h2>Profile</h2>
+    <button type="button" class="back" onclick={onBack}>Back</button>
+  </header>
+
+  <div class="landscape-columns">
+    <!-- Left column: identity + stats -->
+    <div class="landscape-left">
+      <article class="hero">
+        <div class="avatar" aria-hidden="true">👤</div>
+        <div>
+          <h3>{profileName}</h3>
+          <p>All-time run and learning stats</p>
+        </div>
+      </article>
+
+      <div class="stats-grid stats-grid-landscape">
+        <div class="stat"><span>Facts Learned</span><strong>{factsLearned}</strong></div>
+        <div class="stat"><span>Mastered Facts</span><strong>{masteredFacts}</strong></div>
+        <div class="stat"><span>Runs Completed</span><strong>{totalRuns}</strong></div>
+        <div class="stat"><span>Best Floor</span><strong>{bestFloor}</strong></div>
+        <div class="stat"><span>Best Streak</span><strong>{stats?.bestStreak ?? 0}</strong></div>
+        <div class="stat"><span>Milestones</span><strong>{milestones}</strong></div>
+      </div>
+    </div>
+
+    <!-- Right column: domain breakdown -->
+    <div class="landscape-right">
+      {#if domainRuns.length > 0}
+        <section class="domain-runs">
+          <h4>Runs Per Domain</h4>
+          <div class="domain-grid domain-grid-landscape">
+            {#each domainRuns as [domain, count] (domain)}
+              <div class="domain-item">
+                <span>{labelDomain(domain)}</span>
+                <strong>{count}</strong>
+              </div>
+            {/each}
+          </div>
+        </section>
+      {:else}
+        <div class="empty-domains">No domain runs recorded yet.</div>
+      {/if}
+    </div>
+  </div>
+</section>
+
+{:else}
+<!-- PORTRAIT: original layout, pixel-identical -->
 <section class="profile-screen" aria-label="Profile">
   <header class="header">
     <h2>Profile</h2>
@@ -69,6 +127,7 @@
     </section>
   {/if}
 </section>
+{/if}
 
 <style>
   .profile-screen {
@@ -195,5 +254,45 @@
   .domain-item strong {
     color: #f8fafc;
     font-size: calc(14px * var(--text-scale, 1));
+  }
+
+  /* ── Landscape Styles ── */
+
+  .profile-screen-landscape {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+    padding-bottom: calc(20px * var(--layout-scale, 1));
+  }
+
+  .landscape-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(20px * var(--layout-scale, 1));
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .landscape-left,
+  .landscape-right {
+    overflow-y: auto;
+    display: grid;
+    gap: calc(14px * var(--layout-scale, 1));
+    align-content: start;
+  }
+
+  .stats-grid-landscape {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .domain-grid-landscape {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .empty-domains {
+    color: #475569;
+    font-size: calc(13px * var(--text-scale, 1));
+    text-align: center;
+    padding: calc(20px * var(--layout-scale, 1));
   }
 </style>

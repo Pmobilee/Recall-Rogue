@@ -12,6 +12,7 @@
   import { recordHaggleAttempt } from '../../services/gameFlowController'
   import { SHOP_HAGGLE_DISCOUNT } from '../../data/balance'
   import { getChainTypeName, getChainTypeColor } from '../../data/chainTypes'
+  import { isLandscape } from '../../stores/layoutStore'
 
   interface ShopRelicItem {
     relic: { id: string; name: string; description: string; rarity: string; icon: string }
@@ -221,7 +222,7 @@
   )
 </script>
 
-<section class="shop-overlay" aria-label="Shop room">
+<section class="shop-overlay" class:landscape={$isLandscape} aria-label="Shop room">
   <h1>Shop Room</h1>
   <div class="gold">Gold: {currency}</div>
 
@@ -845,5 +846,42 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+  }
+
+  /* === Landscape layout === */
+  .shop-overlay.landscape {
+    /* Centered panel on dimmed backdrop */
+    background: rgba(5, 8, 12, 0.7);
+    align-content: center;
+    justify-items: center;
+    padding: 0;
+  }
+
+  .shop-overlay.landscape > * {
+    /* All direct children constrained to panel width */
+    width: min(70vw, 960px);
+    box-sizing: border-box;
+  }
+
+  .shop-overlay.landscape h1 {
+    padding-top: calc(20px * var(--layout-scale, 1));
+    margin: 0;
+  }
+
+  .shop-overlay.landscape .card-list {
+    /* In landscape: items in a horizontal row */
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(10px * var(--layout-scale, 1));
+  }
+
+  .shop-overlay.landscape .card-item {
+    flex: 1 1 calc(30% - 10px);
+    min-width: 220px;
+  }
+
+  .shop-overlay.landscape .done {
+    width: min(70vw, 960px);
+    margin-bottom: calc(20px * var(--layout-scale, 1));
   }
 </style>

@@ -221,7 +221,7 @@ These systems transfer from the mining codebase with minimal changes:
 | CardGameManager | `src/game/CardGameManager.ts` | Built |
 | CardApp (root) | `src/CardApp.svelte` | Built |
 | Card hand UI | `src/ui/components/CardHand.svelte` | Built — card rendering now uses hand-crafted PNG card frame images instead of programmatic UI; supports hires/lowres variants based on device capabilities |
-| Card expanded UI | `src/ui/components/CardExpanded.svelte` | Built |
+| Card expanded UI | `src/ui/components/CardExpanded.svelte` | Built — AR-76: landscape branch centers quiz in left-70% center stage (above 26vh card hand), 2×2 answer grid, `kbd-hint` badges, inputService QUIZ_ANSWER wiring with 150ms highlight flash, card hand dimming via `quizVisible` prop on CardHand |
 | Card combat overlay | `src/ui/components/CardCombatOverlay.svelte` | Built — added synergy flash UI element; v2: boss quiz phase overlay rendered inline |
 | Combo counter | `src/ui/components/ComboCounter.svelte` | **ARCHIVED** — Knowledge Combo system removed in v2; replaced by Knowledge Chain (chainSystem.ts + ChainCounter HUD element). File retained as dead code. |
 | Damage numbers | `src/ui/components/DamageNumber.svelte` | Built |
@@ -286,7 +286,9 @@ These systems transfer from the mining codebase with minimal changes:
 
 **AR-71 HTML attribute**: `.card-app[data-layout="portrait|landscape"]` — set on root container for CSS selector branching.
 
-**AR-71 Phaser integration**: `CardGameManager` subscribes to `layoutMode` store and calls `game.scale.resize()` + notifies scenes via `handleLayoutChange(mode)` on change. `CombatScene`, `BootAnimScene`, and `RewardRoomScene` each have a stub `handleLayoutChange` method (full implementation in AR-73/AR-79).
+**AR-71 Phaser integration**: `CardGameManager` subscribes to `layoutMode` store and calls `game.scale.resize()` + notifies scenes via `handleLayoutChange(mode)` on change. `CombatScene` has a full landscape implementation (AR-73). `BootAnimScene` and `RewardRoomScene` still have stub handlers.
+
+**AR-73 CombatScene landscape layout**: `handleLayoutChange(mode)` calls `repositionAll()` which branches on `currentLayoutMode`. All positioning uses helper methods `getEnemyX()`, `getEnemyY()`, `getEnemyHpBarCenter()` that return portrait or landscape coordinates respectively. The `LANDSCAPE` const object defines all landscape position percentages. Portrait code paths are never touched when in portrait mode — pure additive branching. The `CardHand` component renders a separate `.card-hand-landscape` container (fixed bottom strip, flex-row, no arc/rotation) when `$isLandscape` is true, and the original `.card-hand-container` (portrait fan) when false. `CardCombatOverlay` applies `.layout-landscape` class which repositions HUD elements via CSS.
 
 **AR-74 Input system**: `inputService` (singleton pub/sub) decouples input sources from UI. `keyboardInput` module auto-subscribes to `layoutMode` and only binds `keydown` listeners in landscape. Components register `inputService.on(actionType, handler)` in `onMount` and call the returned unsubscribe in `onDestroy`. `CardCombatOverlay` calls `setQuizVisible()` on `cardPlayStage` change to enable context-aware key routing (1-4 = quiz answers when quiz visible, card select otherwise). `CardHand` subscribes to `SELECT_CARD` and `DESELECT`. Mouse hover tooltip in `CardHand` is gated by `$isLandscape`.
 

@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { RelicDefinition } from '../../data/relics'
+  import { isLandscape } from '../../stores/layoutStore'
 
   interface Props {
     relic: RelicDefinition
@@ -16,7 +17,7 @@
   }
 </script>
 
-<div class="relic-overlay" role="dialog" aria-modal="true">
+<div class="relic-overlay" class:landscape={$isLandscape} role="dialog" aria-modal="true">
   <div class="relic-card" style="border-color: {tierColors[relic.tier] ?? '#aaa'}">
     <div class="tier-label" style="color: {tierColors[relic.tier] ?? '#aaa'}">{relic.tier.toUpperCase()}</div>
     <div class="relic-icon">{relic.icon}</div>
@@ -67,4 +68,22 @@
   .btn-decline { background: #333; color: #ccc; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; min-height: 44px; font-family: inherit; }
   .btn-accept:hover { background: #3a62a8; }
   .btn-decline:hover { background: #444; }
+
+  /* === Landscape layout === */
+  .relic-overlay.landscape .relic-card {
+    max-width: min(55vw, 640px);
+    padding: 32px 40px;
+  }
+
+  .relic-overlay.landscape .relic-icon {
+    font-size: 4rem;
+  }
+
+  .relic-overlay.landscape .relic-name {
+    font-size: 1.3rem;
+  }
+
+  .relic-overlay.landscape .relic-desc {
+    font-size: 1rem;
+  }
 </style>

@@ -5,6 +5,7 @@
   import { getRandomScreenBg } from '../../data/backgroundManifest'
   import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
   import { preloadImages } from '../utils/assetPreloader'
+  import { isLandscape } from '../../stores/layoutStore'
 
   interface Props {
     result: 'victory' | 'defeat' | 'retreat'
@@ -73,6 +74,10 @@
     return `${minutes}m ${String(seconds).padStart(2, '0')}s`
   }
 
+  function handleKeydown(event: KeyboardEvent): void {
+    if (event.key === 'Escape') onhome()
+  }
+
   async function handleShare(): Promise<void> {
     shareStatus = 'sharing'
     try {
@@ -115,6 +120,125 @@
   }
 </script>
 
+{#if $isLandscape}
+<!-- LANDSCAPE: two-column, stats left / summary right, buttons bottom-right -->
+<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+<div
+  class="run-end-overlay run-end-landscape"
+  class:victory-result={isVictory}
+  class:defeat-result={!isVictory}
+  onkeydown={handleKeydown}
+  role="presentation"
+>
+  <img class="overlay-bg" src={bgUrl} alt="" aria-hidden="true" />
+
+  <h1 class="header" style="color: {headerColor}">{headerText}</h1>
+
+  <div class="landscape-body">
+    <!-- Left: run stats -->
+    <div class="landscape-stats" class:stats-revealed={showStats}>
+      <div class="stat-row" style="--stagger: 0">
+        <span class="stat-label">Floor Reached</span>
+        <span class="stat-value">{floorReached}</span>
+      </div>
+      <div class="stat-row" style="--stagger: 1">
+        <span class="stat-label">Facts Answered</span>
+        <span class="stat-value">{factsAnswered}</span>
+      </div>
+      <div class="stat-row" style="--stagger: 2">
+        <span class="stat-label">Accuracy</span>
+        <span class="stat-value">{accuracy}%</span>
+      </div>
+      <div class="stat-row" style="--stagger: 3">
+        <span class="stat-label">Correct Answers</span>
+        <span class="stat-value">{correctAnswers}</span>
+      </div>
+      <div class="stat-row" style="--stagger: 4">
+        <span class="stat-label">Best Combo</span>
+        <span class="stat-value">{bestCombo}x</span>
+      </div>
+      <div class="stat-row" style="--stagger: 5">
+        <span class="stat-label">Encounters</span>
+        <span class="stat-value">{encountersWon}/{encountersTotal}</span>
+      </div>
+      <div class="stat-row" style="--stagger: 6">
+        <span class="stat-label">Run Time</span>
+        <span class="stat-value">{formatDuration(runDurationMs)}</span>
+      </div>
+    </div>
+
+    <!-- Right: earned / learned -->
+    <div class="landscape-earned" class:stats-revealed={showStats}>
+      <div class="stat-row" style="--stagger: 2">
+        <span class="stat-label">Cards Earned</span>
+        <span class="stat-value">{cardsEarned}</span>
+      </div>
+      <div class="stat-row" style="--stagger: 3">
+        <span class="stat-label">New Facts Learned</span>
+        <span class="stat-value">{newFactsLearned}</span>
+      </div>
+      <div class="stat-row" style="--stagger: 4">
+        <span class="stat-label">Facts Mastered</span>
+        <span class="stat-value">{factsMastered}</span>
+      </div>
+      {#if !isPracticeRun}
+      <div class="stat-row" style="--stagger: 5">
+        <span class="stat-label">Reward Multiplier</span>
+        <span class="stat-value">{Math.round(rewardMultiplier * 100)}%</span>
+      </div>
+      <div class="stat-row" style="--stagger: 6">
+        <span class="stat-label">Currency Earned</span>
+        <span class="stat-value">{currencyEarned}</span>
+      </div>
+      {/if}
+
+      {#if completedBounties.length > 0}
+        <div class="bounty-list">
+          <strong>Bounties Cleared</strong>
+          {#each completedBounties as bounty}
+            <span class="bounty-item">{bounty}</span>
+          {/each}
+        </div>
+      {/if}
+
+      {#if isPracticeRun}
+        <div class="practice-run-notice">
+          <p class="practice-title">Practice Run</p>
+          <p class="practice-desc">Camp rewards disabled.</p>
+          <p class="practice-tip">Try a less familiar domain to earn rewards!</p>
+        </div>
+      {/if}
+    </div>
+  </div>
+
+  <div class="btn-row btn-row-landscape" class:btns-visible={showButtons}>
+    <button
+      class="btn btn-share"
+      data-testid="btn-share-run"
+      onclick={handleShare}
+      disabled={shareStatus === 'sharing'}
+    >
+      {shareStatus === 'sharing' ? 'Sharing...' : shareStatus === 'done' ? 'Shared' : shareStatus === 'error' ? 'Retry Share' : 'Share'}
+    </button>
+    <button
+      class="btn btn-play-again"
+      data-testid="btn-play-again"
+      onclick={onplayagain}
+    >
+      Play Again
+    </button>
+    <button
+      class="btn btn-home"
+      data-testid="btn-home"
+      onclick={onhome}
+    >
+      Home
+    </button>
+  </div>
+</div>
+
+{:else}
+<!-- PORTRAIT: original layout, pixel-identical -->
 <div class="run-end-overlay" class:victory-result={isVictory} class:defeat-result={!isVictory}>
   <img class="overlay-bg" src={bgUrl} alt="" aria-hidden="true" />
   <h1 class="header" style="color: {headerColor}">{headerText}</h1>
@@ -213,6 +337,7 @@
     </button>
   </div>
 </div>
+{/if}
 
 <style>
   .run-end-overlay {
@@ -452,6 +577,48 @@
   @keyframes defeatPulse {
     0%, 100% { text-shadow: 0 0 10px rgba(231, 76, 60, 0.3); }
     50% { text-shadow: 0 0 20px rgba(231, 76, 60, 0.6); }
+  }
+
+  /* ── Landscape Styles ── */
+
+  .run-end-landscape {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    align-items: start;
+    padding: calc(16px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1));
+    overflow: hidden;
+    position: fixed;
+  }
+
+  .run-end-landscape .header {
+    margin-bottom: calc(12px * var(--layout-scale, 1));
+  }
+
+  .landscape-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(16px * var(--layout-scale, 1));
+    overflow-y: auto;
+    min-height: 0;
+  }
+
+  .landscape-stats,
+  .landscape-earned {
+    display: flex;
+    flex-direction: column;
+    gap: calc(8px * var(--layout-scale, 1));
+  }
+
+  .landscape-stats .stat-row,
+  .landscape-earned .stat-row {
+    max-width: none;
+    width: 100%;
+  }
+
+  .btn-row-landscape {
+    justify-content: flex-end;
+    margin-top: calc(12px * var(--layout-scale, 1));
+    padding-right: 0;
   }
 
   /* Reduced motion */

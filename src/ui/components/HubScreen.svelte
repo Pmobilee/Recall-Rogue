@@ -7,6 +7,7 @@
   import { getAmbientClass } from '../effects/HubAmbientEffects'
   import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
   import { preloadImages } from '../utils/assetPreloader'
+  import { isLandscape } from '../../stores/layoutStore'
   import CampSpriteButton from './CampSpriteButton.svelte'
   import CampfireCanvas from './CampfireCanvas.svelte'
   import CampSpeechBubble from './CampSpeechBubble.svelte'
@@ -106,184 +107,425 @@
   }
 </script>
 
-<section class="camp-hub" aria-label="Camp hub">
-  <CampHudOverlay {streak} {dustBalance} {hasActiveRunBanner} />
+{#if $isLandscape}
+  <!-- ═══ LANDSCAPE LAYOUT ═══════════════════════════════════════════════════ -->
+  <!-- PHASE 2 (Post-Launch): Replace side panels with full widescreen campsite -->
+  <!-- background (1920x1080). Redistribute interactive hotspots across wider   -->
+  <!-- scene. New interactive elements: bookshelf=deck viewer, map table=run    -->
+  <!-- selector, notice board=daily challenge. See GDD §35 Future Todo.         -->
+  <div class="hub-landscape" aria-label="Camp hub">
+    <!-- Decorative side panels — atmospheric stone/cave texture -->
+    <div class="hub-side-panel hub-side-left" aria-hidden="true"></div>
 
-  <img
-    class="camp-bg"
-    src={getCampBackgroundUrl()}
-    alt=""
-    aria-hidden="true"
-    loading="lazy"
-    decoding="async"
-  />
+    <!-- Center column: portrait campsite at 9:16 aspect ratio -->
+    <div class="hub-center">
+      <CampHudOverlay {streak} {dustBalance} {hasActiveRunBanner} />
 
-  <!-- Study Mode Selector — above dungeon gate -->
-  <div class="study-mode-container" class:banner-offset={hasActiveRunBanner}>
-    <StudyModeSelector
-      disabled={false}
-      onNavigateToDeckBuilder={onOpenDeckBuilder}
-    />
-  </div>
+      <img
+        class="camp-bg"
+        src={getCampBackgroundUrl()}
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        decoding="async"
+      />
 
-  <!-- 1. Dungeon Gate - Start Run -->
-  <CampSpriteButton
-    spriteUrl={getCampSpriteUrl('dungeon-gate')}
-    label="Enter Dungeon"
-    testId="btn-start-run"
-    zIndex={10}
-    onclick={onStartRun}
-    hitTop="11%" hitLeft="28%" hitWidth="44%" hitHeight="27%"
-    labelTop="40%" labelLeft="50%"
-    showBorder
-  />
+      <!-- Study Mode Selector — above dungeon gate -->
+      <div class="study-mode-container" class:banner-offset={hasActiveRunBanner}>
+        <StudyModeSelector
+          disabled={false}
+          onNavigateToDeckBuilder={onOpenDeckBuilder}
+        />
+      </div>
 
-  <!-- 2. Bookshelf - Library -->
-  <CampSpriteButton
-    spriteUrl={getCampSpriteUrl('bookshelf')}
-    label="Library"
-    zIndex={20}
-    onclick={onOpenLibrary}
-    hitTop="31%" hitLeft="2%" hitWidth="32%" hitHeight="23%"
-    labelTop="29%" labelLeft="18%"
-    showBorder
-  />
+      <!-- 1. Dungeon Gate - Start Run -->
+      <CampSpriteButton
+        spriteUrl={getCampSpriteUrl('dungeon-gate')}
+        label="Enter Dungeon"
+        testId="btn-start-run"
+        zIndex={10}
+        onclick={onStartRun}
+        hitTop="11%" hitLeft="28%" hitWidth="44%" hitHeight="27%"
+        labelTop="40%" labelLeft="50%"
+        showBorder
+      />
 
-  <!-- 3. Signpost - Settings -->
-  <CampSpriteButton
-    spriteUrl={getCampSpriteUrl('signpost')}
-    label="Settings"
-    zIndex={20}
-    onclick={onOpenSettings}
-    hitTop="29%" hitLeft="76%" hitWidth="16%" hitHeight="18%"
-    labelTop="27%" labelLeft="84%"
-    showBorder
-  />
+      <!-- 2. Bookshelf - Library -->
+      <CampSpriteButton
+        spriteUrl={getCampSpriteUrl('bookshelf')}
+        label="Library"
+        zIndex={20}
+        onclick={onOpenLibrary}
+        hitTop="31%" hitLeft="2%" hitWidth="32%" hitHeight="23%"
+        labelTop="29%" labelLeft="18%"
+        showBorder
+      />
 
-  <!-- 4. Anvil - Relics -->
-  <CampSpriteButton
-    spriteUrl={getCampSpriteUrl('anvil')}
-    label="Relics"
-    zIndex={20}
-    onclick={handleRelicClick}
-    hitTop="54%" hitLeft="26%" hitWidth="18%" hitHeight="9%"
-    labelTop="52%" labelLeft="35%"
-    ambientClass={getAmbientClass('Relics')}
-    showBorder
-  />
+      <!-- 3. Signpost - Settings -->
+      <CampSpriteButton
+        spriteUrl={getCampSpriteUrl('signpost')}
+        label="Settings"
+        zIndex={20}
+        onclick={onOpenSettings}
+        hitTop="29%" hitLeft="76%" hitWidth="16%" hitHeight="18%"
+        labelTop="27%" labelLeft="84%"
+        showBorder
+      />
 
-  <!-- 5. Campfire - Sparkle burst on click -->
-  <CampSpriteButton
-    spriteUrl={getCampSpriteUrl('campfire')}
-    label=""
-    zIndex={15}
-    onclick={handleCampfireClick}
-    hitTop="55%" hitLeft="38%" hitWidth="24%" hitHeight="18%"
-  />
+      <!-- 4. Anvil - Relics -->
+      <CampSpriteButton
+        spriteUrl={getCampSpriteUrl('anvil')}
+        label="Relics"
+        zIndex={20}
+        onclick={handleRelicClick}
+        hitTop="54%" hitLeft="26%" hitWidth="18%" hitHeight="9%"
+        labelTop="52%" labelLeft="35%"
+        ambientClass={getAmbientClass('Relics')}
+        showBorder
+      />
 
-  <!-- Campfire VFX overlay -->
-  {#if !disableEffects}
-    <CampfireCanvas {streak} />
-  {/if}
+      <!-- 5. Campfire - Sparkle burst on click -->
+      <CampSpriteButton
+        spriteUrl={getCampSpriteUrl('campfire')}
+        label=""
+        zIndex={15}
+        onclick={handleCampfireClick}
+        hitTop="55%" hitLeft="38%" hitWidth="24%" hitHeight="18%"
+      />
 
-  <!-- Campfire sparkle bursts -->
-  {#each sparkleBursts as burstId (burstId)}
-    <div class="campfire-sparkle-burst" aria-hidden="true">
-      {#each Array(8) as _, i}
-        <span class="sparkle-particle" style="--i: {i};"></span>
+      <!-- Campfire VFX overlay -->
+      {#if !disableEffects}
+        <CampfireCanvas {streak} />
+      {/if}
+
+      <!-- Campfire sparkle bursts -->
+      {#each sparkleBursts as burstId (burstId)}
+        <div class="campfire-sparkle-burst" aria-hidden="true">
+          {#each Array(8) as _, i}
+            <span class="sparkle-particle" style="--i: {i};"></span>
+          {/each}
+        </div>
       {/each}
+
+      <!-- 6. Tent - Profile -->
+      <CampSpriteButton
+        spriteUrl={getCampSpriteUrl('tent')}
+        label="Profile"
+        zIndex={18}
+        onclick={onOpenProfile}
+        hitTop="44%" hitLeft="64%" hitWidth="36%" hitHeight="22%"
+        labelTop="46%" labelLeft="74%"
+        ambientClass={getAmbientClass('Profile')}
+        showBorder
+      />
+
+      <!-- 7. Character - Social -->
+      <CampSpriteButton
+        spriteUrl={getCampSpriteUrl('character')}
+        label="Social"
+        zIndex={25}
+        onclick={onOpenSocial}
+        hitTop="58%" hitLeft="57%" hitWidth="21%" hitHeight="11%"
+        labelTop="57%" labelLeft="58%"
+        showBorder
+      />
+
+      <!-- 8. Cat - Pet, shows speech bubble -->
+      <CampSpriteButton
+        spriteUrl={getCampSpriteUrl('cat')}
+        label=""
+        zIndex={22}
+        onclick={showPetBubble}
+        hitTop="69%" hitLeft="66%" hitWidth="11%" hitHeight="4%"
+        showBorder
+      />
+
+      <!-- 9. Journal (Book) -->
+      <CampSpriteButton
+        spriteUrl={getCampSpriteUrl('journal')}
+        label="Journal"
+        zIndex={25}
+        onclick={onOpenJournal}
+        hitTop="76%" hitLeft="5%" hitWidth="23%" hitHeight="9%"
+        labelTop="86%" labelLeft="16%"
+        showBorder
+      />
+
+      <!-- 9.5. Scroll - Topics & Difficulty (hidden: no scroll sprite asset yet) -->
+
+      <!-- 10. Quest Board - Leaderboards -->
+      <CampSpriteButton
+        spriteUrl={getCampSpriteUrl('quest-board')}
+        label="Quests"
+        zIndex={25}
+        onclick={onOpenLeaderboards}
+        hitTop="75%" hitLeft="72%" hitWidth="26%" hitHeight="20%"
+        labelTop="96%" labelLeft="85%"
+        showBorder
+      />
+
+      <!-- 11. Treasure Chest - Shop (opens upgrade modal) -->
+      <CampSpriteButton
+        spriteUrl={getCampSpriteUrl('treasure-chest')}
+        label="Shop"
+        zIndex={25}
+        onclick={openUpgradeModal}
+        hitTop="87%" hitLeft="52%" hitWidth="19%" hitHeight="11%"
+        labelTop="84%" labelLeft="62%"
+        showBorder
+      />
+
+      <!-- Pet speech bubble -->
+      <CampSpeechBubble
+        text="Grrr..."
+        visible={petBubbleVisible}
+        top="74%"
+        left="66%"
+      />
+
+      <!-- Upgrade modal -->
+      {#if showUpgradeModal}
+        <CampUpgradeModal onClose={() => { showUpgradeModal = false }} />
+      {/if}
+
+      <!-- Replay boot animation (dev) -->
+      {#if onReplayBootAnim}
+        <button class="replay-boot-btn" onclick={onReplayBootAnim}>Intro</button>
+      {/if}
     </div>
-  {/each}
 
-  <!-- 6. Tent - Profile -->
-  <CampSpriteButton
-    spriteUrl={getCampSpriteUrl('tent')}
-    label="Profile"
-    zIndex={18}
-    onclick={onOpenProfile}
-    hitTop="44%" hitLeft="64%" hitWidth="36%" hitHeight="22%"
-    labelTop="46%" labelLeft="74%"
-    ambientClass={getAmbientClass('Profile')}
-    showBorder
-  />
+    <!-- Decorative side panel — mirrored -->
+    <div class="hub-side-panel hub-side-right" aria-hidden="true"></div>
+  </div>
+{:else}
+  <!-- ═══ PORTRAIT LAYOUT — PIXEL-IDENTICAL TO PRE-PORT ════════════════════ -->
+  <section class="camp-hub" aria-label="Camp hub">
+    <CampHudOverlay {streak} {dustBalance} {hasActiveRunBanner} />
 
-  <!-- 7. Character - Social -->
-  <CampSpriteButton
-    spriteUrl={getCampSpriteUrl('character')}
-    label="Social"
-    zIndex={25}
-    onclick={onOpenSocial}
-    hitTop="58%" hitLeft="57%" hitWidth="21%" hitHeight="11%"
-    labelTop="57%" labelLeft="58%"
-    showBorder
-  />
+    <img
+      class="camp-bg"
+      src={getCampBackgroundUrl()}
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+      decoding="async"
+    />
 
-  <!-- 8. Cat - Pet, shows speech bubble -->
-  <CampSpriteButton
-    spriteUrl={getCampSpriteUrl('cat')}
-    label=""
-    zIndex={22}
-    onclick={showPetBubble}
-    hitTop="69%" hitLeft="66%" hitWidth="11%" hitHeight="4%"
-    showBorder
-  />
+    <!-- Study Mode Selector — above dungeon gate -->
+    <div class="study-mode-container" class:banner-offset={hasActiveRunBanner}>
+      <StudyModeSelector
+        disabled={false}
+        onNavigateToDeckBuilder={onOpenDeckBuilder}
+      />
+    </div>
 
-  <!-- 9. Journal (Book) -->
-  <CampSpriteButton
-    spriteUrl={getCampSpriteUrl('journal')}
-    label="Journal"
-    zIndex={25}
-    onclick={onOpenJournal}
-    hitTop="76%" hitLeft="5%" hitWidth="23%" hitHeight="9%"
-    labelTop="86%" labelLeft="16%"
-    showBorder
-  />
+    <!-- 1. Dungeon Gate - Start Run -->
+    <CampSpriteButton
+      spriteUrl={getCampSpriteUrl('dungeon-gate')}
+      label="Enter Dungeon"
+      testId="btn-start-run"
+      zIndex={10}
+      onclick={onStartRun}
+      hitTop="11%" hitLeft="28%" hitWidth="44%" hitHeight="27%"
+      labelTop="40%" labelLeft="50%"
+      showBorder
+    />
 
-  <!-- 9.5. Scroll - Topics & Difficulty (hidden: no scroll sprite asset yet) -->
+    <!-- 2. Bookshelf - Library -->
+    <CampSpriteButton
+      spriteUrl={getCampSpriteUrl('bookshelf')}
+      label="Library"
+      zIndex={20}
+      onclick={onOpenLibrary}
+      hitTop="31%" hitLeft="2%" hitWidth="32%" hitHeight="23%"
+      labelTop="29%" labelLeft="18%"
+      showBorder
+    />
 
-  <!-- 10. Quest Board - Leaderboards -->
-  <CampSpriteButton
-    spriteUrl={getCampSpriteUrl('quest-board')}
-    label="Quests"
-    zIndex={25}
-    onclick={onOpenLeaderboards}
-    hitTop="75%" hitLeft="72%" hitWidth="26%" hitHeight="20%"
-    labelTop="96%" labelLeft="85%"
-    showBorder
-  />
+    <!-- 3. Signpost - Settings -->
+    <CampSpriteButton
+      spriteUrl={getCampSpriteUrl('signpost')}
+      label="Settings"
+      zIndex={20}
+      onclick={onOpenSettings}
+      hitTop="29%" hitLeft="76%" hitWidth="16%" hitHeight="18%"
+      labelTop="27%" labelLeft="84%"
+      showBorder
+    />
 
-  <!-- 11. Treasure Chest - Shop (opens upgrade modal) -->
-  <CampSpriteButton
-    spriteUrl={getCampSpriteUrl('treasure-chest')}
-    label="Shop"
-    zIndex={25}
-    onclick={openUpgradeModal}
-    hitTop="87%" hitLeft="52%" hitWidth="19%" hitHeight="11%"
-    labelTop="84%" labelLeft="62%"
-    showBorder
-  />
+    <!-- 4. Anvil - Relics -->
+    <CampSpriteButton
+      spriteUrl={getCampSpriteUrl('anvil')}
+      label="Relics"
+      zIndex={20}
+      onclick={handleRelicClick}
+      hitTop="54%" hitLeft="26%" hitWidth="18%" hitHeight="9%"
+      labelTop="52%" labelLeft="35%"
+      ambientClass={getAmbientClass('Relics')}
+      showBorder
+    />
 
-  <!-- Pet speech bubble -->
-  <CampSpeechBubble
-    text="Grrr..."
-    visible={petBubbleVisible}
-    top="74%"
-    left="66%"
-  />
+    <!-- 5. Campfire - Sparkle burst on click -->
+    <CampSpriteButton
+      spriteUrl={getCampSpriteUrl('campfire')}
+      label=""
+      zIndex={15}
+      onclick={handleCampfireClick}
+      hitTop="55%" hitLeft="38%" hitWidth="24%" hitHeight="18%"
+    />
 
-  <!-- Upgrade modal -->
-  {#if showUpgradeModal}
-    <CampUpgradeModal onClose={() => { showUpgradeModal = false }} />
-  {/if}
+    <!-- Campfire VFX overlay -->
+    {#if !disableEffects}
+      <CampfireCanvas {streak} />
+    {/if}
 
-  <!-- Replay boot animation (dev) -->
-  {#if onReplayBootAnim}
-    <button class="replay-boot-btn" onclick={onReplayBootAnim}>Intro</button>
-  {/if}
+    <!-- Campfire sparkle bursts -->
+    {#each sparkleBursts as burstId (burstId)}
+      <div class="campfire-sparkle-burst" aria-hidden="true">
+        {#each Array(8) as _, i}
+          <span class="sparkle-particle" style="--i: {i};"></span>
+        {/each}
+      </div>
+    {/each}
 
-</section>
+    <!-- 6. Tent - Profile -->
+    <CampSpriteButton
+      spriteUrl={getCampSpriteUrl('tent')}
+      label="Profile"
+      zIndex={18}
+      onclick={onOpenProfile}
+      hitTop="44%" hitLeft="64%" hitWidth="36%" hitHeight="22%"
+      labelTop="46%" labelLeft="74%"
+      ambientClass={getAmbientClass('Profile')}
+      showBorder
+    />
+
+    <!-- 7. Character - Social -->
+    <CampSpriteButton
+      spriteUrl={getCampSpriteUrl('character')}
+      label="Social"
+      zIndex={25}
+      onclick={onOpenSocial}
+      hitTop="58%" hitLeft="57%" hitWidth="21%" hitHeight="11%"
+      labelTop="57%" labelLeft="58%"
+      showBorder
+    />
+
+    <!-- 8. Cat - Pet, shows speech bubble -->
+    <CampSpriteButton
+      spriteUrl={getCampSpriteUrl('cat')}
+      label=""
+      zIndex={22}
+      onclick={showPetBubble}
+      hitTop="69%" hitLeft="66%" hitWidth="11%" hitHeight="4%"
+      showBorder
+    />
+
+    <!-- 9. Journal (Book) -->
+    <CampSpriteButton
+      spriteUrl={getCampSpriteUrl('journal')}
+      label="Journal"
+      zIndex={25}
+      onclick={onOpenJournal}
+      hitTop="76%" hitLeft="5%" hitWidth="23%" hitHeight="9%"
+      labelTop="86%" labelLeft="16%"
+      showBorder
+    />
+
+    <!-- 9.5. Scroll - Topics & Difficulty (hidden: no scroll sprite asset yet) -->
+
+    <!-- 10. Quest Board - Leaderboards -->
+    <CampSpriteButton
+      spriteUrl={getCampSpriteUrl('quest-board')}
+      label="Quests"
+      zIndex={25}
+      onclick={onOpenLeaderboards}
+      hitTop="75%" hitLeft="72%" hitWidth="26%" hitHeight="20%"
+      labelTop="96%" labelLeft="85%"
+      showBorder
+    />
+
+    <!-- 11. Treasure Chest - Shop (opens upgrade modal) -->
+    <CampSpriteButton
+      spriteUrl={getCampSpriteUrl('treasure-chest')}
+      label="Shop"
+      zIndex={25}
+      onclick={openUpgradeModal}
+      hitTop="87%" hitLeft="52%" hitWidth="19%" hitHeight="11%"
+      labelTop="84%" labelLeft="62%"
+      showBorder
+    />
+
+    <!-- Pet speech bubble -->
+    <CampSpeechBubble
+      text="Grrr..."
+      visible={petBubbleVisible}
+      top="74%"
+      left="66%"
+    />
+
+    <!-- Upgrade modal -->
+    {#if showUpgradeModal}
+      <CampUpgradeModal onClose={() => { showUpgradeModal = false }} />
+    {/if}
+
+    <!-- Replay boot animation (dev) -->
+    {#if onReplayBootAnim}
+      <button class="replay-boot-btn" onclick={onReplayBootAnim}>Intro</button>
+    {/if}
+
+  </section>
+{/if}
 
 <style>
+  /* ═══ LANDSCAPE LAYOUT ══════════════════════════════════════════════════════ */
+
+  .hub-landscape {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    background: #0f0f23;
+    overflow: hidden;
+  }
+
+  .hub-side-panel {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to right, #0a0a1a, #1a1a2e);
+  }
+
+  .hub-side-right {
+    background: linear-gradient(to left, #0a0a1a, #1a1a2e);
+  }
+
+  /* Subtle torch glow at inner edge of side panels */
+  .hub-side-left::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at right center, rgba(255, 160, 50, 0.05) 0%, transparent 60%);
+  }
+
+  .hub-side-right::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at left center, rgba(255, 160, 50, 0.05) 0%, transparent 60%);
+  }
+
+  .hub-center {
+    /* Portrait 9:16 aspect ratio, fills full viewport height */
+    aspect-ratio: 9 / 16;
+    height: 100%;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+    background: #000000;
+  }
+
+  /* ═══ PORTRAIT LAYOUT ═══════════════════════════════════════════════════════ */
+
   .camp-hub {
     position: fixed;
     inset: 0;

@@ -2,6 +2,7 @@
   import { getRandomRoomBg } from '../../data/backgroundManifest'
   import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
   import { preloadImages } from '../utils/assetPreloader'
+  import { isLandscape } from '../../stores/layoutStore'
 
   interface Props {
     playerHp: number
@@ -21,7 +22,7 @@
   let projectedHp = $derived(Math.min(playerMaxHp, playerHp + healAmount))
 </script>
 
-<div class="rest-overlay">
+<div class="rest-overlay" class:landscape={$isLandscape}>
   <img class="screen-bg" src={bgUrl} alt="" aria-hidden="true" loading="eager" decoding="async" />
   <div class="rest-card" style="position: relative; z-index: 1;">
     <h2 class="rest-title">Rest Site</h2>
@@ -185,5 +186,48 @@
     color: #6E7681;
     text-align: center;
     margin-top: calc(4px * var(--layout-scale, 1));
+  }
+
+  /* === Landscape layout === */
+  .rest-overlay.landscape {
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0;
+  }
+
+  .rest-overlay.landscape .rest-card {
+    /* Centered modal panel */
+    border: 2px solid #2ECC71;
+    border-radius: 12px;
+    border-top: 2px solid #2ECC71;
+    max-width: min(65vw, 800px);
+    padding: calc(32px * var(--layout-scale, 1)) calc(40px * var(--layout-scale, 1));
+    padding-top: calc(32px * var(--layout-scale, 1));
+  }
+
+  .rest-overlay.landscape .option-cards {
+    /* Horizontal row with more space */
+    gap: calc(20px * var(--layout-scale, 1));
+  }
+
+  .rest-overlay.landscape .option-card {
+    padding: calc(24px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+  }
+
+  .rest-overlay.landscape .option-icon {
+    font-size: calc(40px * var(--layout-scale, 1));
+  }
+
+  .rest-overlay.landscape .option-label {
+    font-size: calc(18px * var(--layout-scale, 1));
+  }
+
+  .rest-overlay.landscape .option-detail {
+    font-size: calc(14px * var(--layout-scale, 1));
+  }
+
+  .rest-overlay.landscape .option-preview {
+    font-size: calc(12px * var(--layout-scale, 1));
   }
 </style>

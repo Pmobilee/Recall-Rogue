@@ -19,6 +19,30 @@ const RELIC_TRAY_Y_PCT = 0.92
 const FLOOR_LINE_PCT = 0.73
 const ENEMY_Y_OFFSET_RATIO = 0.25
 
+/**
+ * Landscape layout constants — Option D layout.
+ * Enemy panel occupies the right 30% of the viewport.
+ * Center stage (left 70%) is reserved for quiz/VFX (AR-76).
+ * Card hand strip occupies the bottom 25-30%.
+ */
+const LANDSCAPE = {
+  ENEMY_PANEL_X_START: 0.70,  // Right 30% starts here
+  ENEMY_X_PCT: 0.85,          // Enemy centered in right panel
+  ENEMY_Y_PCT: 0.45,          // Vertically centered in right panel
+  ENEMY_HP_Y_PCT: 0.15,       // HP bar near top of right panel
+  PLAYER_HP_BAR_X_PCT: 0.68,  // Left edge of enemy panel (vertical bar)
+  PLAYER_HP_BAR_TOP: 0.20,
+  PLAYER_HP_BAR_BOTTOM: 0.80,
+  FLOOR_COUNTER_X: 0.72,
+  FLOOR_COUNTER_Y: 0.05,
+  RELIC_TRAY_X: 0.02,         // Top-left of center stage
+  RELIC_TRAY_Y: 0.05,
+  CHAIN_COUNTER_X: 0.35,
+  CHAIN_COUNTER_Y: 0.05,
+  COMBO_COUNTER_X: 0.65,
+  COMBO_COUNTER_Y: 0.05,
+} as const
+
 /** Enemy HP bar dimensions. */
 const ENEMY_HP_BAR_W = 160
 const ENEMY_HP_BAR_H = 12
@@ -182,11 +206,167 @@ export class CombatScene extends Phaser.Scene {
 
   /**
    * Called by CardGameManager when the layout mode changes (portrait ↔ landscape).
-   * Actual repositioning for landscape is implemented in AR-73.
-   * This stub stores the mode so AR-73 workers can branch on it.
+   * Stores the mode and repositions all scene objects accordingly.
    */
   handleLayoutChange(mode: LayoutMode): void {
     this.currentLayoutMode = mode
+    if (this.sceneReady) {
+      this.repositionAll()
+    }
+  }
+
+  /**
+   * Reposition all game objects based on the current layout mode.
+   * Portrait: uses original portrait constants (pixel-identical to pre-AR-73).
+   * Landscape: uses LANDSCAPE constants (Option D — enemy panel right 30%).
+   */
+  private repositionAll(): void {
+    const w = this.scale.width
+    const h = this.scale.height
+    const isLandscape = this.currentLayoutMode === 'landscape'
+
+    // ── Enemy position ──────────────────────────────────────
+    const size = Math.round(enemyDisplaySize(this.currentEnemyCategory) * this.scaleFactor)
+    let enemyX: number
+    let enemyY: number
+
+    if (isLandscape) {
+      enemyX = w * LANDSCAPE.ENEMY_X_PCT
+      enemyY = h * LANDSCAPE.ENEMY_Y_PCT
+    } else {
+      enemyX = w * ENEMY_X_PCT
+      const floorY = this.displayH * FLOOR_LINE_PCT
+      enemyY = floorY - size / 2 + size * ENEMY_Y_OFFSET_RATIO
+    }
+    this.currentEnemyY = enemyY
+
+    // Move enemy sprite container
+    const container = this.enemySpriteSystem.getContainer()
+    container.setPosition(enemyX, enemyY)
+
+    // Update enemy name text position
+    this.enemyNameText.setPosition(enemyX, enemyY + size / 2 + Math.round(12 * this.scaleFactor))
+
+    // ── Enemy HP bar ────────────────────────────────────────
+    const scaledEnemyHpBarW = Math.round(ENEMY_HP_BAR_W * this.scaleFactor)
+    const scaledEnemyHpBarH = Math.round(ENEMY_HP_BAR_H * this.scaleFactor)
+    let enemyHpBarCenterX: number
+    let enemyHpY: number
+
+    if (isLandscape) {
+      enemyHpBarCenterX = w * LANDSCAPE.ENEMY_X_PCT
+      enemyHpY = h * LANDSCAPE.ENEMY_HP_Y_PCT
+    } else {
+      enemyHpBarCenterX = w / 2
+      enemyHpY = this.displayH * ENEMY_HP_Y_PCT
+    }
+
+    this.enemyHpBarBg.clear()
+    this.enemyHpBarBg.fillStyle(COLOR_BAR_BG, 1)
+    this.enemyHpBarBg.fillRoundedRect(
+      enemyHpBarCenterX - scaledEnemyHpBarW / 2, enemyHpY - scaledEnemyHpBarH / 2,
+      scaledEnemyHpBarW, scaledEnemyHpBarH, 6
+    )
+    this.enemyHpText.setPosition(enemyHpBarCenterX, enemyHpY)
+    this.enemyBlockIcon.setPosition(
+      enemyHpBarCenterX - scaledEnemyHpBarW / 2 - Math.round(20 * this.scaleFactor), enemyHpY
+    )
+    this.enemyBlockText.setPosition(
+      enemyHpBarCenterX - scaledEnemyHpBarW / 2 - Math.round(20 * this.scaleFactor),
+      enemyHpY + Math.round(12 * this.scaleFactor)
+    )
+    this.intentText.setPosition(
+      enemyHpBarCenterX,
+      enemyHpY + Math.round(INTENT_ICON_OFFSET_Y * this.scaleFactor)
+    )
+
+    // Refresh HP bar fill to match new position
+    this.refreshEnemyHpBar(false)
+    this.refreshEnemyBlockBar(false)
+
+    // ── Player HP bar ───────────────────────────────────────
+    let barX: number
+    let barTop: number
+    let barBottom: number
+
+    if (isLandscape) {
+      barX = w * LANDSCAPE.PLAYER_HP_BAR_X_PCT
+      barTop = h * LANDSCAPE.PLAYER_HP_BAR_TOP
+      barBottom = h * LANDSCAPE.PLAYER_HP_BAR_BOTTOM
+    } else {
+      const scaledPlayerHpBarXOffset = Math.round(PLAYER_HP_BAR_X_OFFSET * this.scaleFactor)
+      barX = w - scaledPlayerHpBarXOffset
+      barTop = h * PLAYER_HP_BAR_TOP_PCT
+      barBottom = h * PLAYER_HP_BAR_BOTTOM_PCT
+    }
+    this.playerBarMaxH = barBottom - barTop
+
+    const scaledPlayerHpBarWidth = Math.round(PLAYER_HP_BAR_WIDTH * this.scaleFactor)
+    this.playerHpBarBg.clear()
+    this.playerHpBarBg.fillStyle(COLOR_BAR_BG, 1)
+    this.playerHpBarBg.fillRoundedRect(
+      barX - scaledPlayerHpBarWidth / 2, barTop,
+      scaledPlayerHpBarWidth, this.playerBarMaxH, 8
+    )
+    this.playerHpCurrentText.setPosition(barX, barTop - Math.round(22 * this.scaleFactor))
+    this.playerHpSlashText.setPosition(barX, barTop - Math.round(12 * this.scaleFactor))
+    this.playerHpMaxText.setPosition(barX, barTop - Math.round(2 * this.scaleFactor))
+    this.criticalPulseRect.setPosition(barX, (barTop + barBottom) / 2)
+    this.playerBlockIcon.setPosition(
+      barX - Math.round(52 * this.scaleFactor), barTop - Math.round(15 * this.scaleFactor)
+    )
+    this.playerBlockText.setPosition(
+      barX - Math.round(42 * this.scaleFactor), barTop - Math.round(15 * this.scaleFactor)
+    )
+    this.refreshPlayerHpBar(false)
+
+    // ── Floor counter ───────────────────────────────────────
+    if (isLandscape) {
+      this.floorCounterText.setPosition(
+        w * LANDSCAPE.FLOOR_COUNTER_X,
+        h * LANDSCAPE.FLOOR_COUNTER_Y
+      )
+    } else {
+      this.floorCounterText.setPosition(12, Math.round(FLOOR_COUNTER_Y * this.scaleFactor))
+    }
+
+    // ── Relic tray ──────────────────────────────────────────
+    if (isLandscape) {
+      this.relicContainer.setPosition(w * LANDSCAPE.RELIC_TRAY_X, h * LANDSCAPE.RELIC_TRAY_Y)
+    } else {
+      this.relicContainer.setPosition(w / 2, this.displayH * RELIC_TRAY_Y_PCT)
+    }
+
+    // ── Vignette graphics — redraw for new dimensions ───────
+    this.vignetteGfx.clear()
+    if (isLandscape) {
+      // In landscape, vignette covers full viewport — lighter on sides since enemy panel is right 30%
+      const sideVignetteW = Math.round(w * 0.15)
+      const topVignetteH = Math.round(h * 0.12)
+      this.vignetteGfx.fillGradientStyle(0x000000, 0x000000, 0x000000, 0x000000, 0.4, 0, 0.4, 0)
+      this.vignetteGfx.fillRect(0, 0, sideVignetteW, h)
+      this.vignetteGfx.fillGradientStyle(0x000000, 0x000000, 0x000000, 0x000000, 0.08, 0.08, 0, 0)
+      this.vignetteGfx.fillRect(0, 0, w, topVignetteH)
+    } else {
+      // Portrait vignette — original values
+      const sideVignetteW = Math.round(w * 0.24)
+      const topVignetteH = Math.round(h * 0.16)
+      this.vignetteGfx.fillGradientStyle(0x000000, 0x000000, 0x000000, 0x000000, 0.52, 0, 0.52, 0)
+      this.vignetteGfx.fillRect(0, 0, sideVignetteW, h)
+      this.vignetteGfx.fillGradientStyle(0x000000, 0x000000, 0x000000, 0x000000, 0, 0.52, 0, 0.52)
+      this.vignetteGfx.fillRect(w - sideVignetteW, 0, sideVignetteW, h)
+      this.vignetteGfx.fillGradientStyle(0x000000, 0x000000, 0x000000, 0x000000, 0.08, 0.08, 0, 0)
+      this.vignetteGfx.fillRect(0, 0, w, topVignetteH)
+    }
+
+    // ── Status effects — update enemy position ──────────────
+    this.statusEffectVisuals?.setEnemyPosition(enemyX, enemyY)
+
+    // ── Flash / fade rects — cover full viewport in both modes ──
+    this.flashRect.setPosition(w / 2, h / 2)
+    this.flashRect.setSize(w, h)
+    this.entryFadeRect.setPosition(w / 2, h / 2)
+    this.entryFadeRect.setSize(w, h)
   }
 
   // ═════════════════════════════════════════════════════════
@@ -491,6 +671,23 @@ export class CombatScene extends Phaser.Scene {
   // Public API — called by GameManager / bridge
   // ═════════════════════════════════════════════════════════
 
+  /** Get the current enemy X position based on layout mode. */
+  private getEnemyX(): number {
+    if (this.currentLayoutMode === 'landscape') {
+      return this.scale.width * LANDSCAPE.ENEMY_X_PCT
+    }
+    return this.scale.width * ENEMY_X_PCT
+  }
+
+  /** Get the current enemy Y position for a given display size based on layout mode. */
+  private getEnemyY(size: number): number {
+    if (this.currentLayoutMode === 'landscape') {
+      return this.scale.height * LANDSCAPE.ENEMY_Y_PCT
+    }
+    const floorY = this.displayH * FLOOR_LINE_PCT
+    return floorY - size / 2 + size * ENEMY_Y_OFFSET_RATIO
+  }
+
   /** Set the enemy display data. */
   setEnemy(
     name: string,
@@ -506,9 +703,8 @@ export class CombatScene extends Phaser.Scene {
     this.currentEnemyId = enemyId ?? this.currentEnemyId
     this.currentEnemyCategory = category
     const size = Math.round(enemyDisplaySize(category) * this.scaleFactor)
-    const enemyX = this.scale.width * ENEMY_X_PCT
-    const floorY = this.displayH * FLOOR_LINE_PCT
-    const enemyY = floorY - size / 2 + size * ENEMY_Y_OFFSET_RATIO
+    const enemyX = this.getEnemyX()
+    const enemyY = this.getEnemyY(size)
     this.currentEnemyY = enemyY
 
     // Clear status effects from previous encounter
@@ -584,7 +780,7 @@ export class CombatScene extends Phaser.Scene {
     this.isCharging = charging
 
     if (charging && !this.reduceMotion) {
-      const enemyX = this.scale.width * ENEMY_X_PCT
+      const enemyX = this.getEnemyX()
       const enemyY = this.currentEnemyY
 
       // Growing energy glow circle behind enemy
@@ -835,9 +1031,20 @@ export class CombatScene extends Phaser.Scene {
   /** Play heal effect (green particles rising near player HP bar). */
   playHealEffect(): void {
     if (this.reduceMotion) return
-    const barX = this.scale.width - Math.round(PLAYER_HP_BAR_X_OFFSET * this.scaleFactor)
-    const barTop = this.scale.height * PLAYER_HP_BAR_TOP_PCT
-    const barBottom = this.scale.height * PLAYER_HP_BAR_BOTTOM_PCT
+    const w = this.scale.width
+    const h = this.scale.height
+    let barX: number
+    let barTop: number
+    let barBottom: number
+    if (this.currentLayoutMode === 'landscape') {
+      barX = w * LANDSCAPE.PLAYER_HP_BAR_X_PCT
+      barTop = h * LANDSCAPE.PLAYER_HP_BAR_TOP
+      barBottom = h * LANDSCAPE.PLAYER_HP_BAR_BOTTOM
+    } else {
+      barX = w - Math.round(PLAYER_HP_BAR_X_OFFSET * this.scaleFactor)
+      barTop = h * PLAYER_HP_BAR_TOP_PCT
+      barBottom = h * PLAYER_HP_BAR_BOTTOM_PCT
+    }
     const barMidY = (barTop + barBottom) / 2
     this.burstParticles(12, barX, barMidY, COLOR_HP_GREEN)
     this.pulseEdgeGlow(COLOR_HP_GREEN, 0.25, 270)
@@ -974,7 +1181,7 @@ export class CombatScene extends Phaser.Scene {
   /** Play enemy defend animation — shimmering blue shield effect. */
   playEnemyDefendAnimation(): void {
     if (this.reduceMotion) return
-    const enemyX = this.scale.width * ENEMY_X_PCT
+    const enemyX = this.getEnemyX()
     const enemyY = this.currentEnemyY
     const size = enemyDisplaySize(this.currentEnemyCategory)
     const shieldRect = this.add.rectangle(enemyX, enemyY, size, size, 0x3498db, 0).setDepth(3)
@@ -995,7 +1202,7 @@ export class CombatScene extends Phaser.Scene {
   /** Play enemy heal animation — green healing energy rising upward. */
   playEnemyHealAnimation(): void {
     if (this.reduceMotion) return
-    const enemyX = this.scale.width * ENEMY_X_PCT
+    const enemyX = this.getEnemyX()
     const enemyY = this.currentEnemyY
     const sprite = this.enemySpriteSystem.getContainer()
     const origTintTop = sprite.list.length > 0
@@ -1032,7 +1239,7 @@ export class CombatScene extends Phaser.Scene {
   /** Play enemy buff animation — golden power surge. */
   playEnemyBuffAnimation(): void {
     if (this.reduceMotion) return
-    const enemyX = this.scale.width * ENEMY_X_PCT
+    const enemyX = this.getEnemyX()
     const enemyY = this.currentEnemyY
     const sprite = this.enemySpriteSystem.getContainer()
     this.tweens.add({
@@ -1118,8 +1325,14 @@ export class CombatScene extends Phaser.Scene {
     const currentW = Math.max(1, ratio * scaledW)
     const damageW = Math.min(currentW, damageRatio * scaledW)
     const w = this.scale.width
-    const enemyHpY = this.displayH * ENEMY_HP_Y_PCT
-    const startX = w / 2 - scaledW / 2 + currentW - damageW
+    const h = this.scale.height
+    const hpBarCenterX = this.currentLayoutMode === 'landscape'
+      ? w * LANDSCAPE.ENEMY_X_PCT
+      : w / 2
+    const enemyHpY = this.currentLayoutMode === 'landscape'
+      ? h * LANDSCAPE.ENEMY_HP_Y_PCT
+      : this.displayH * ENEMY_HP_Y_PCT
+    const startX = hpBarCenterX - scaledW / 2 + currentW - damageW
 
     this.damagePreviewGfx.clear()
     this.damagePreviewGfx.fillStyle(0xaa3333, 0.3)
@@ -1144,10 +1357,16 @@ export class CombatScene extends Phaser.Scene {
     if (overkillDamage <= 0) return
 
     const w = this.scale.width
-    const enemyHpY = this.displayH * ENEMY_HP_Y_PCT
+    const h = this.scale.height
+    const hpBarCenterX = this.currentLayoutMode === 'landscape'
+      ? w * LANDSCAPE.ENEMY_X_PCT
+      : w / 2
+    const enemyHpY = this.currentLayoutMode === 'landscape'
+      ? h * LANDSCAPE.ENEMY_HP_Y_PCT
+      : this.displayH * ENEMY_HP_Y_PCT
     const scaledW = Math.round(ENEMY_HP_BAR_W * this.scaleFactor)
     const scaledH = Math.round(ENEMY_HP_BAR_H * this.scaleFactor)
-    const barLeft = w / 2 - scaledW / 2
+    const barLeft = hpBarCenterX - scaledW / 2
     const color = attackColor ?? 0xe74c3c
 
     // Create 6 fragments
@@ -1332,6 +1551,16 @@ export class CombatScene extends Phaser.Scene {
     })
   }
 
+  /** Get the HP bar center X and Y based on current layout mode. */
+  private getEnemyHpBarCenter(): { x: number; y: number } {
+    const w = this.scale.width
+    const h = this.scale.height
+    if (this.currentLayoutMode === 'landscape') {
+      return { x: w * LANDSCAPE.ENEMY_X_PCT, y: h * LANDSCAPE.ENEMY_HP_Y_PCT }
+    }
+    return { x: w / 2, y: this.displayH * ENEMY_HP_Y_PCT }
+  }
+
   /** Refresh enemy HP bar fill width and text. */
   private refreshEnemyHpBar(animate: boolean): void {
     const ratio = this.currentEnemyMaxHP > 0
@@ -1341,14 +1570,13 @@ export class CombatScene extends Phaser.Scene {
     const scaledH = Math.round(ENEMY_HP_BAR_H * this.scaleFactor)
     const targetW = Math.max(1, ratio * scaledW)
     const color = this.currentEnemyBlock > 0 ? 0x3498db : COLOR_HP_RED
-    const w = this.scale.width
-    const enemyHpY = this.displayH * ENEMY_HP_Y_PCT
+    const { x: hpCenterX, y: enemyHpY } = this.getEnemyHpBarCenter()
 
     // Redraw the fill bar with the new width
     this.enemyHpBarFill.clear()
     this.enemyHpBarFill.fillStyle(color, 1)
     this.enemyHpBarFill.fillRoundedRect(
-      w / 2 - scaledW / 2, enemyHpY - scaledH / 2,
+      hpCenterX - scaledW / 2, enemyHpY - scaledH / 2,
       targetW, scaledH, 6
     )
 
@@ -1368,14 +1596,13 @@ export class CombatScene extends Phaser.Scene {
       const scaledW = Math.round(ENEMY_HP_BAR_W * this.scaleFactor)
       const scaledH = Math.round(ENEMY_HP_BAR_H * this.scaleFactor)
       const targetW = Math.max(1, blockRatio * scaledW)
-      const w = this.scale.width
-      const enemyHpY = this.displayH * ENEMY_HP_Y_PCT
+      const { x: hpCenterX, y: enemyHpY } = this.getEnemyHpBarCenter()
 
       // Redraw the block bar
       this.enemyBlockBarFill.clear()
       this.enemyBlockBarFill.fillStyle(0x3498db, 0.6)
       this.enemyBlockBarFill.fillRoundedRect(
-        w / 2 - scaledW / 2, enemyHpY - scaledH / 2,
+        hpCenterX - scaledW / 2, enemyHpY - scaledH / 2,
         targetW, scaledH, 6
       )
     } else {
@@ -1393,10 +1620,19 @@ export class CombatScene extends Phaser.Scene {
     const colorCss = colorToCssHex(color)
     const w = this.scale.width
     const h = this.scale.height
-    const barX = w - Math.round(PLAYER_HP_BAR_X_OFFSET * this.scaleFactor)
+    let barX: number
+    let barTop: number
+    let barBottom: number
+    if (this.currentLayoutMode === 'landscape') {
+      barX = w * LANDSCAPE.PLAYER_HP_BAR_X_PCT
+      barTop = h * LANDSCAPE.PLAYER_HP_BAR_TOP
+      barBottom = h * LANDSCAPE.PLAYER_HP_BAR_BOTTOM
+    } else {
+      barX = w - Math.round(PLAYER_HP_BAR_X_OFFSET * this.scaleFactor)
+      barTop = h * PLAYER_HP_BAR_TOP_PCT
+      barBottom = h * PLAYER_HP_BAR_BOTTOM_PCT
+    }
     const scaledBarW = Math.round(PLAYER_HP_BAR_WIDTH * this.scaleFactor)
-    const barTop = h * PLAYER_HP_BAR_TOP_PCT
-    const barBottom = h * PLAYER_HP_BAR_BOTTOM_PCT
 
     const previousRatio = this.previousPlayerHpRatio
     this.previousPlayerHpRatio = ratio
@@ -1496,7 +1732,7 @@ export class CombatScene extends Phaser.Scene {
   /** Update status effect visuals on enemy. */
   updateStatusEffects(effects: Array<{ type: string }>): void {
     if (!this.sceneReady) return
-    const enemyX = this.scale.width * ENEMY_X_PCT
+    const enemyX = this.getEnemyX()
     this.statusEffectVisuals.setEnemyPosition(enemyX, this.currentEnemyY)
     this.statusEffectVisuals.updateEffects(effects)
   }

@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { RelicDefinition } from '../../data/relics/types'
+  import { isLandscape } from '../../stores/layoutStore'
 
   interface Props {
     options: RelicDefinition[]
@@ -35,7 +36,7 @@
   }
 </script>
 
-<div class="relic-reward-overlay" role="dialog" aria-modal="true" aria-label="Choose a relic">
+<div class="relic-reward-overlay" class:landscape={$isLandscape} role="dialog" aria-modal="true" aria-label="Choose a relic">
   <div class="relic-reward-content">
     <h2 class="relic-reward-title">Choose a Relic</h2>
 
@@ -306,5 +307,31 @@
     text-align: center;
     margin: 0;
     opacity: 0.85;
+  }
+
+  /* === Landscape layout === */
+  .relic-reward-overlay.landscape {
+    /* Dimmed backdrop with centered panel */
+    background: rgba(0, 0, 0, 0.72);
+  }
+
+  .relic-reward-overlay.landscape .relic-reward-content {
+    width: min(65vw, 860px);
+    max-width: none;
+    background: linear-gradient(180deg, #0b1120 0%, #111827 100%);
+    border: 1px solid #2d3748;
+    border-radius: 16px;
+    padding: 24px 32px;
+  }
+
+  /* Side-by-side relic options in landscape when multiple */
+  .relic-reward-overlay.landscape .relic-options {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .relic-reward-overlay.landscape .relic-option-card {
+    flex: 1;
+    min-height: 160px;
   }
 </style>

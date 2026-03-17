@@ -12,6 +12,7 @@
   import { normalizeRewardSelection } from '../utils/rewardSelection'
   import { getChainTypeName, getChainTypeColor } from '../../data/chainTypes'
   import { factsDB } from '../../services/factsDB'
+  import { isLandscape } from '../../stores/layoutStore'
 
   interface Props {
     options: Card[]
@@ -257,9 +258,21 @@
   function isCollecting(option: Card): boolean {
     return collectingType !== null && option.cardType === collectingType
   }
+
+  function handleKeydown(e: KeyboardEvent): void {
+    if (rewardStep !== 'card') return
+    if (collectLocked) return
+    if (e.key === '1' && options[0]) { selectType(options[0].cardType); return }
+    if (e.key === '2' && options[1]) { selectType(options[1].cardType); return }
+    if (e.key === '3' && options[2]) { selectType(options[2].cardType); return }
+    if (e.key === 'Enter' && selectedCard()) { accept(); return }
+    if (e.key === 'Escape') { handleSkipClick(); return }
+  }
 </script>
 
-<div class="reward-screen" class:card-phase={rewardStep === 'card'}>
+<svelte:window onkeydown={handleKeydown} />
+
+<div class="reward-screen" class:card-phase={rewardStep === 'card'} class:landscape={$isLandscape}>
   <img class="overlay-bg" src={bgUrl} alt="" aria-hidden="true" />
 {#if rewardStep === 'gold' && bundle}
     <div class="step-container" class:step-visible={stepVisible}>
@@ -1176,6 +1189,52 @@
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+  }
+
+  /* === Landscape modal layout === */
+  .reward-screen.landscape {
+    /* Keep the bg image full-screen but dim overlay */
+    background:
+      radial-gradient(1200px 500px at 50% -90px, rgba(252, 230, 173, 0.12), transparent 68%),
+      linear-gradient(180deg, #080b13 0%, #0d1422 48%, #05080f 100%);
+    /* Centered panel content */
+    align-items: center;
+    justify-items: center;
+    padding: 0;
+  }
+
+  .reward-screen.landscape .altar-shell {
+    width: min(65vw, 900px);
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+
+  .reward-screen.landscape .actions {
+    width: min(65vw, 900px);
+  }
+
+  .reward-screen.landscape .altar-options {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: calc(16px * var(--layout-scale, 1));
+  }
+
+  .reward-screen.landscape .altar-option {
+    min-height: calc(200px * var(--layout-scale, 1));
+    padding: calc(36px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+  }
+
+  .reward-screen.landscape .mini-card-name {
+    font-size: calc(15px * var(--layout-scale, 1));
+  }
+
+  .reward-screen.landscape .mini-card-desc {
+    font-size: calc(12px * var(--layout-scale, 1));
+  }
+
+  .reward-screen.landscape .step-container {
+    /* Step containers remain full-screen centered */
+    position: fixed;
+    inset: 0;
   }
 
   @media (max-width: 700px) {

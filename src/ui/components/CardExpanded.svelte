@@ -1,6 +1,8 @@
 <script lang="ts">
-  import { onDestroy } from 'svelte'
+  import { onDestroy, onMount } from 'svelte'
   import type { Card, FactDomain, CardType } from '../../data/card-types'
+  import { isLandscape } from '../../stores/layoutStore'
+  import { inputService } from '../../services/inputService'
   import { getDomainMetadata } from '../../data/domainMetadata'
   import { getCardFramePath, getDomainIconPath } from '../utils/domainAssets'
   import { getTierDisplayName } from '../../services/tierDerivation'
@@ -102,6 +104,9 @@
   let firstLetterHint = $state<string | null>(null)
   let eliminatedIndices = $state<Set<number>>(new Set())
   let activeKeyword = $state<{ id: string; x: number; y: number } | null>(null)
+
+  /** Index of the answer button currently highlighted by keyboard input (150ms flash). */
+  let keyboardHighlightIndex = $state<number | null>(null)
 
   function handleKeywordTap(e: MouseEvent, keywordId: string): void {
     activeKeyword = { id: keywordId, x: e.clientX, y: e.clientY }
@@ -250,16 +255,45 @@
     onusehint()
   }
 
+  let kbdHighlightTimeoutId: ReturnType<typeof setTimeout> | undefined
+
+  /**
+   * Handle a QUIZ_ANSWER action from the input service (landscape keyboard shortcut).
+   * Briefly highlights the button (150 ms) before submitting, so the player can see
+   * which answer was selected before it is processed.
+   */
+  function handleKeyboardAnswer(index: number): void {
+    if (answersDisabled || eliminatedIndices.has(index)) return
+    if (index < 0 || index >= answers.length) return
+
+    keyboardHighlightIndex = index
+    kbdHighlightTimeoutId = setTimeout(() => {
+      keyboardHighlightIndex = null
+      handleAnswer(index)
+    }, 150)
+  }
+
+  onMount(() => {
+    const unsub = inputService.on('QUIZ_ANSWER', (action) => {
+      if (action.type !== 'QUIZ_ANSWER') return
+      if (!$isLandscape) return
+      handleKeyboardAnswer(action.index)
+    })
+    return unsub
+  })
+
   onDestroy(() => {
     if (rafId !== undefined) cancelAnimationFrame(rafId)
     if (feedbackTimeoutId !== undefined) clearTimeout(feedbackTimeoutId)
     if (correctRevealTimeoutId !== undefined) clearTimeout(correctRevealTimeoutId)
     if (speedBonusTimeoutId !== undefined) clearTimeout(speedBonusTimeoutId)
+    if (kbdHighlightTimeoutId !== undefined) clearTimeout(kbdHighlightTimeoutId)
   })
 </script>
 
 <div
   class="card-expanded"
+  class:card-expanded-landscape={$isLandscape}
   style={`--card-frame-image: url('${framePath}')`}
   ontouchstart={handleTouchStart}
   ontouchmove={handleTouchMove}
@@ -323,14 +357,18 @@
     <div class="first-letter-hint">Starts with: {firstLetterHint}</div>
   {/if}
 
-  <div class="card-answers">
+  <div class="card-answers" class:card-answers-landscape={$isLandscape && answers.length >= 3}>
     {#each answers as answer, i}
       <button
         class="answer-btn {getAnswerClass(i)}"
+        class:answer-kbd-highlight={keyboardHighlightIndex === i}
         data-testid="quiz-answer-{i}"
         disabled={answersDisabled || eliminatedIndices.has(i)}
         onclick={() => handleAnswer(i)}
       >
+        {#if $isLandscape}
+          <span class="kbd-hint" aria-hidden="true">{i + 1}</span>
+        {/if}
         {answer}
       </button>
     {/each}
@@ -404,6 +442,76 @@
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
     z-index: 30;
     animation: slide-up 200ms ease-out;
+  }
+
+  /* AR-76: Landscape quiz positioning — center stage (left 70%, above card hand) */
+  .card-expanded-landscape {
+    /* Override portrait centering */
+    top: auto;
+    left: 0;
+    right: 30%;
+    bottom: 26vh;
+    transform: none;
+    /* Center within the left-70%-above-hand region */
+    margin: auto;
+    /* Panel width constraints */
+    width: min(50vw, 640px);
+    max-width: min(50vw, 640px);
+    /* Vertically center in the available center-stage area */
+    position: fixed;
+    top: 50%;
+    left: calc((70vw - min(50vw, 640px)) / 2);
+    right: auto;
+    bottom: auto;
+    transform: translateY(calc(-50% - 13vh)); /* shift up from true center by half card-hand height */
+    max-height: calc(74vh - 26vh);
+    /* Animation override */
+    animation: slide-up-landscape 200ms ease-out;
+  }
+
+  @keyframes slide-up-landscape {
+    from {
+      opacity: 0;
+      transform: translateY(calc(-50% - 13vh + 30px));
+    }
+    to {
+      opacity: 1;
+      transform: translateY(calc(-50% - 13vh));
+    }
+  }
+
+  /* AR-76: Landscape answer grid — 2×2 for 3-4 options */
+  .card-answers-landscape {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(8px * var(--layout-scale, 1));
+  }
+
+  /* AR-76: Keyboard shortcut badge on answer buttons */
+  .kbd-hint {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 11px;
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.6);
+    margin-right: 8px;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  /* AR-76: Brief keyboard-triggered highlight on answer button */
+  .answer-kbd-highlight {
+    border-color: #60a5fa !important;
+    background: rgba(96, 165, 250, 0.15) !important;
+    box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.4);
   }
 
   .card-expanded::-webkit-scrollbar {
