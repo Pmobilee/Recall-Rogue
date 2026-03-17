@@ -48,75 +48,75 @@ describe('chainSystem', () => {
   // --- extendOrResetChain tests ---
 
   describe('extendOrResetChain', () => {
-    it('returns 1.0 for first card of any categoryL2 group', () => {
-      const mult = extendOrResetChain('mammals');
+    it('returns 1.0 for first card of any chainType group', () => {
+      const mult = extendOrResetChain(0);
       expect(mult).toBe(1.0);
     });
 
-    it('returns 1.3 for second consecutive same-categoryL2 card', () => {
-      extendOrResetChain('mammals');
-      const mult = extendOrResetChain('mammals');
+    it('returns 1.3 for second consecutive same-chainType card', () => {
+      extendOrResetChain(0);
+      const mult = extendOrResetChain(0);
       expect(mult).toBe(1.3);
     });
 
-    it('returns 1.7 for third consecutive same-categoryL2 card', () => {
-      extendOrResetChain('mammals');
-      extendOrResetChain('mammals');
-      const mult = extendOrResetChain('mammals');
+    it('returns 1.7 for third consecutive same-chainType card', () => {
+      extendOrResetChain(0);
+      extendOrResetChain(0);
+      const mult = extendOrResetChain(0);
       expect(mult).toBe(1.7);
     });
 
-    it('returns 2.2 for fourth consecutive same-categoryL2 card', () => {
-      extendOrResetChain('mammals');
-      extendOrResetChain('mammals');
-      extendOrResetChain('mammals');
-      const mult = extendOrResetChain('mammals');
+    it('returns 2.2 for fourth consecutive same-chainType card', () => {
+      extendOrResetChain(0);
+      extendOrResetChain(0);
+      extendOrResetChain(0);
+      const mult = extendOrResetChain(0);
       expect(mult).toBe(2.2);
     });
 
-    it('returns 3.0 for fifth consecutive same-categoryL2 card', () => {
-      extendOrResetChain('mammals');
-      extendOrResetChain('mammals');
-      extendOrResetChain('mammals');
-      extendOrResetChain('mammals');
-      const mult = extendOrResetChain('mammals');
+    it('returns 3.0 for fifth consecutive same-chainType card', () => {
+      extendOrResetChain(0);
+      extendOrResetChain(0);
+      extendOrResetChain(0);
+      extendOrResetChain(0);
+      const mult = extendOrResetChain(0);
       expect(mult).toBe(3.0);
     });
 
     it('caps at 3.0 beyond chain length 5', () => {
-      for (let i = 0; i < 5; i++) extendOrResetChain('mammals');
+      for (let i = 0; i < 5; i++) extendOrResetChain(0);
       // 6th in same group — still 3.0 (capped)
-      const mult = extendOrResetChain('mammals');
+      const mult = extendOrResetChain(0);
       expect(mult).toBe(3.0);
     });
 
-    it('resets chain when different categoryL2 is played, returns 1.0 for the new group', () => {
-      extendOrResetChain('mammals');
-      extendOrResetChain('mammals');
-      // Switch to 'birds' — resets to length 1, mult = 1.0
-      const mult = extendOrResetChain('birds');
+    it('resets chain when different chainType is played, returns 1.0 for the new group', () => {
+      extendOrResetChain(0);
+      extendOrResetChain(0);
+      // Switch to chainType 1 — resets to length 1, mult = 1.0
+      const mult = extendOrResetChain(1);
       expect(mult).toBe(1.0);
     });
 
-    it('starts new chain with the new categoryL2 after reset', () => {
-      extendOrResetChain('mammals');
-      extendOrResetChain('birds'); // resets to birds chain, length 1
-      const mult = extendOrResetChain('birds'); // 2nd birds = length 2 = 1.3
+    it('starts new chain with the new chainType after reset', () => {
+      extendOrResetChain(0);
+      extendOrResetChain(1); // resets to chainType 1 chain, length 1
+      const mult = extendOrResetChain(1); // 2nd chainType 1 = length 2 = 1.3
       expect(mult).toBe(1.3);
     });
 
-    it('returns 1.0 and resets chain for card with undefined categoryL2', () => {
-      extendOrResetChain('mammals');
-      extendOrResetChain('mammals'); // chain length 2
+    it('returns 1.0 and resets chain for card with undefined chainType', () => {
+      extendOrResetChain(0);
+      extendOrResetChain(0); // chain length 2
       const mult = extendOrResetChain(undefined);
       expect(mult).toBe(1.0);
       expect(getCurrentChainLength()).toBe(0);
     });
 
-    it('returns 1.0 for card with empty string categoryL2 treated as no-category', () => {
-      extendOrResetChain('mammals');
-      const mult = extendOrResetChain('');
-      // Empty string is falsy — treated as undefined
+    it('returns 1.0 for card with null chainType treated as no-chain', () => {
+      extendOrResetChain(0);
+      const mult = extendOrResetChain(null);
+      // null — treated as no chain type
       expect(mult).toBe(1.0);
       expect(getCurrentChainLength()).toBe(0);
     });
@@ -125,24 +125,24 @@ describe('chainSystem', () => {
   // --- resetChain tests ---
 
   describe('resetChain', () => {
-    it('zeroes chain length and sets categoryL2 to null', () => {
-      extendOrResetChain('mammals');
-      extendOrResetChain('mammals');
+    it('zeroes chain length and sets chainType to null', () => {
+      extendOrResetChain(0);
+      extendOrResetChain(0);
       expect(getCurrentChainLength()).toBe(2);
 
       resetChain();
 
       const state = getChainState();
       expect(state.length).toBe(0);
-      expect(state.categoryL2).toBeNull();
+      expect(state.chainType).toBeNull();
     });
 
     it('after reset, first card starts fresh chain at length 1', () => {
-      extendOrResetChain('mammals');
-      extendOrResetChain('mammals');
+      extendOrResetChain(0);
+      extendOrResetChain(0);
       resetChain();
 
-      const mult = extendOrResetChain('reptiles');
+      const mult = extendOrResetChain(2);
       expect(mult).toBe(1.0);
       expect(getCurrentChainLength()).toBe(1);
     });
@@ -156,35 +156,35 @@ describe('chainSystem', () => {
     });
 
     it('increments correctly through a chain', () => {
-      extendOrResetChain('plants');
+      extendOrResetChain(3);
       expect(getCurrentChainLength()).toBe(1);
-      extendOrResetChain('plants');
+      extendOrResetChain(3);
       expect(getCurrentChainLength()).toBe(2);
-      extendOrResetChain('plants');
+      extendOrResetChain(3);
       expect(getCurrentChainLength()).toBe(3);
     });
 
-    it('resets to 1 after categoryL2 change', () => {
-      extendOrResetChain('plants');
-      extendOrResetChain('plants');
-      extendOrResetChain('fungi');
+    it('resets to 1 after chainType change', () => {
+      extendOrResetChain(3);
+      extendOrResetChain(3);
+      extendOrResetChain(4);
       expect(getCurrentChainLength()).toBe(1);
     });
   });
 
   describe('getChainState', () => {
-    it('returns immutable snapshot with correct categoryL2', () => {
-      extendOrResetChain('oceans');
-      extendOrResetChain('oceans');
+    it('returns immutable snapshot with correct chainType', () => {
+      extendOrResetChain(5);
+      extendOrResetChain(5);
       const state = getChainState();
-      expect(state.categoryL2).toBe('oceans');
+      expect(state.chainType).toBe(5);
       expect(state.length).toBe(2);
     });
 
     it('snapshot does not mutate when chain changes', () => {
-      extendOrResetChain('oceans');
+      extendOrResetChain(5);
       const snap1 = getChainState();
-      extendOrResetChain('oceans');
+      extendOrResetChain(5);
       const snap2 = getChainState();
       // snap1 should still have length 1
       expect(snap1.length).toBe(1);

@@ -1,72 +1,43 @@
-// === Chain Visuals Service ===
-// Provides color mapping from categoryL2 strings to a 12-color palette,
+// === Chain Visuals Service (AR-70) ===
+// Provides color mapping from chainType (0-5) to the 6-color chain palette,
 // and helper functions for building chain visual state.
 // Used by CardHand.svelte to tint card edges and derive pulse groups.
 
 import type { Card } from '../data/card-types';
+import { getChainTypeColor, getChainTypeGlowColor } from '../data/chainTypes';
 
 /**
- * 12 distinct colors for the Knowledge Chain visual system.
- * Each categoryL2 string deterministically maps to one of these via FNV-1a hash.
+ * Returns the hex color for a card's chain type.
+ * If chainType is undefined, returns gray fallback.
  */
-const CHAIN_COLOR_PALETTE: readonly string[] = [
-  '#e74c3c', // Red
-  '#e67e22', // Orange
-  '#f1c40f', // Yellow
-  '#2ecc71', // Green
-  '#1abc9c', // Teal
-  '#00bcd4', // Cyan
-  '#3498db', // Blue
-  '#9b59b6', // Purple
-  '#e91e8c', // Pink
-  '#ffd700', // Gold
-  '#ecf0f1', // White
-  '#95a5a6', // Gray (fallback / undefined)
-] as const;
-
-const FALLBACK_COLOR = '#95a5a6'; // Gray
-
-/**
- * FNV-1a 32-bit hash of a string.
- * Identical algorithm to CardHand.svelte's hashString function.
- */
-function hashString(input: string): number {
-  let hash = 2166136261;
-  for (let i = 0; i < input.length; i++) {
-    hash ^= input.charCodeAt(i);
-    hash = Math.imul(hash, 16777619);
-  }
-  return hash >>> 0;
+export function getChainColor(chainType: number | undefined): string {
+  if (chainType === undefined) return '#888888';
+  return getChainTypeColor(chainType);
 }
 
 /**
- * Returns a deterministic hex color for the given categoryL2 value.
- * If categoryL2 is undefined or empty, returns the Gray fallback (#95a5a6).
- *
- * @example
- * getChainColor('ancient_classical') // always returns the same hex color
+ * Returns the glow color for a card's chain type.
  */
-export function getChainColor(categoryL2: string | undefined): string {
-  if (!categoryL2) return FALLBACK_COLOR;
-  const index = hashString(categoryL2) % CHAIN_COLOR_PALETTE.length;
-  return CHAIN_COLOR_PALETTE[index];
+export function getChainGlowColor(chainType: number | undefined): string {
+  if (chainType === undefined) return 'rgba(136,136,136,0.30)';
+  return getChainTypeGlowColor(chainType);
 }
 
 /**
- * Groups card IDs by their shared categoryL2.
+ * Groups card IDs by their shared chainType.
  * Only includes groups with 2+ cards (potential chain partners).
  *
- * @returns Map<categoryL2, cardId[]>
+ * @returns Map<chainType, cardId[]>
  */
-export function getChainColorGroups(cards: Card[]): Map<string, string[]> {
-  const groups = new Map<string, string[]>();
+export function getChainColorGroups(cards: Card[]): Map<number, string[]> {
+  const groups = new Map<number, string[]>();
   for (const card of cards) {
-    if (!card.categoryL2) continue;
-    const existing = groups.get(card.categoryL2);
+    if (card.chainType === undefined) continue;
+    const existing = groups.get(card.chainType);
     if (existing) {
       existing.push(card.id);
     } else {
-      groups.set(card.categoryL2, [card.id]);
+      groups.set(card.chainType, [card.id]);
     }
   }
   // Remove singleton groups — only chain partners matter

@@ -14,18 +14,18 @@ Replace the `categoryL2`-based chain system with 6 named chain types assigned ev
 
 ### Phase A: Data & Types Foundation
 
-- [ ] **A1. Define chain type constants**
+- [x] **A1. Define chain type constants**
   - File: NEW `src/data/chainTypes.ts`
   - Create `CHAIN_TYPES` array with 6 entries: `{ index, name, hexColor, glowColor }`
   - Export helper functions: `getChainTypeName(index)`, `getChainTypeColor(index)`, `getChainTypeGlowColor(index)`
   - Acceptance: File exists, exports correct types, all 6 entries match spec (Obsidian, Crimson, Azure, Amber, Violet, Jade)
 
-- [ ] **A2. Add `chainType` to Card interface**
+- [x] **A2. Add `chainType` to Card interface**
   - File: `src/data/card-types.ts`
   - Add `chainType?: number` to the `Card` interface (runtime-only, 0-5)
   - Acceptance: TypeScript compiles, no downstream type errors
 
-- [ ] **A3. Add `boundFactId` to Card interface**
+- [x] **A3. Add `boundFactId` to Card interface**
   - File: `src/data/card-types.ts`
   - Add `boundFactId?: string` to the `Card` interface (the persistent fact binding)
   - This is separate from `factId` which currently gets reassigned per draw
@@ -37,7 +37,7 @@ Replace the `categoryL2`-based chain system with 6 named chain types assigned ev
 
 ### Phase B: Fact-to-Card Binding at Run Start
 
-- [ ] **B1. Modify `buildRunPool()` to bind facts to cards**
+- [x] **B1. Modify `buildRunPool()` to bind facts to cards**
   - File: `src/services/runPoolBuilder.ts`
   - After cards are created and mechanics assigned, assign one fact per card slot permanently
   - Set `card.boundFactId = fact.id` on each card
@@ -45,21 +45,21 @@ Replace the `categoryL2`-based chain system with 6 named chain types assigned ev
   - Ensure even distribution: max difference between any two chain type groups = 1
   - Acceptance: Every card in the pool has a `boundFactId` and `chainType` (0-5). Distribution is even.
 
-- [ ] **B2. Modify `drawHand()` to use bound facts instead of re-pairing**
+- [x] **B2. Modify `drawHand()` to use bound facts instead of re-pairing**
   - File: `src/services/deckManager.ts`
   - Remove the per-draw fact assignment logic (`pickCandidateFactId()` calls)
   - When a card is drawn, use `card.boundFactId` as its `factId` directly
   - Keep the Hand Composition Guard (≥1 attack card)
   - Acceptance: Cards drawn always have their bound fact. No per-draw fact shuffling.
 
-- [ ] **B3. Handle fact cooldown with bound cards**
+- [x] **B3. Handle fact cooldown with bound cards**
   - File: `src/services/deckManager.ts`
   - Choose the simpler approach: cards with cooled-down facts sink to bottom of draw pile
   - When shuffling draw pile, move cards whose bound fact is on cooldown to the end
   - If ALL cards have cooled-down facts (edge case), draw normally anyway
   - Acceptance: Cooled-down facts are deprioritized but never cause empty hands.
 
-- [ ] **B4. Update card reward generation for bound facts**
+- [x] **B4. Update card reward generation for bound facts**
   - File: `src/services/rewardGenerator.ts`
   - Each reward card must come with a pre-bound fact and chainType
   - Enforce ≥2 distinct chain types across the 3 reward options
@@ -72,19 +72,19 @@ Replace the `categoryL2`-based chain system with 6 named chain types assigned ev
 
 ### Phase C: Chain Resolution Switchover
 
-- [ ] **C1. Replace `categoryL2` chain check with `chainType`**
+- [x] **C1. Replace `categoryL2` chain check with `chainType`**
   - File: `src/services/chainSystem.ts`
   - In `extendOrResetChain()`: change `categoryL2 === _chain.categoryL2` to `chainType === _chain.chainType`
   - Accept `chainType: number` parameter instead of / in addition to `categoryL2`
   - Cards without chainType (undefined) always break/reset chain
   - Acceptance: Chain builds when consecutive Charge plays share `chainType`, not `categoryL2`.
 
-- [ ] **C2. Update callers to pass `chainType`**
+- [x] **C2. Update callers to pass `chainType`**
   - Files: `src/services/turnManager.ts`, `src/services/encounterBridge.ts`, or wherever `extendOrResetChain()` is called
   - Pass `card.chainType` from the played card to the chain system
   - Acceptance: Chain resolution works end-to-end with chainType.
 
-- [ ] **C3. Update chain counter display**
+- [x] **C3. Update chain counter display**
   - File: `src/ui/components/CardCombatOverlay.svelte` or `ComboCounter.svelte`
   - Chain counter format: `"{Name} Chain x{length}"` (e.g., "Jade Chain x3")
   - Text color = chain type hex color
@@ -97,21 +97,21 @@ Replace the `categoryL2`-based chain system with 6 named chain types assigned ev
 
 ### Phase D: Visual — AP Cost Color & Chain Glow
 
-- [ ] **D1. AP cost text color = chain type color**
+- [x] **D1. AP cost text color = chain type color**
   - File: `src/ui/components/CardHand.svelte`
   - Change AP badge text color to `getChainTypeColor(card.chainType)`
   - Add `textShadow: '0 0 2px rgba(0,0,0,0.6)'` for readability
   - Apply to all card states: in hand, selected, committed
   - Acceptance: AP cost text matches chain type color. Readable on all backgrounds.
 
-- [ ] **D2. Top-left chain type glow on cards**
+- [x] **D2. Top-left chain type glow on cards**
   - File: `src/ui/components/CardHand.svelte`
   - Add radial gradient glow element, top-left corner (~12px from edges, ~28-32px diameter)
   - Color: chain type glow color (30% opacity)
   - Layer: behind card content, above card background
   - Acceptance: Glow visible on all cards, correct color per chain type.
 
-- [ ] **D3. Pulse animation for matching chain types**
+- [x] **D3. Pulse animation for matching chain types**
   - File: `src/ui/components/CardHand.svelte`
   - When 2+ cards in hand share a `chainType`, their glows pulse in sync
   - Opacity oscillation: 30% → 60% over 1.5s cycle (sine wave via CSS animation)
@@ -125,7 +125,7 @@ Replace the `categoryL2`-based chain system with 6 named chain types assigned ev
 
 ### Phase E: Card Reward Screen Updates
 
-- [ ] **E1. Show chain type badge on reward cards**
+- [x] **E1. Show chain type badge on reward cards**
   - File: `src/ui/components/CardRewardScreen.svelte`
   - Add small pill/tag (top-right or bottom-left of reward card)
   - Background: chain type color at 20% opacity
@@ -133,7 +133,7 @@ Replace the `categoryL2`-based chain system with 6 named chain types assigned ev
   - Border: 1px solid chain type color at 40% opacity
   - Acceptance: Badge visible on all 3 reward options with correct colors.
 
-- [ ] **E2. Show bound fact preview on reward cards**
+- [x] **E2. Show bound fact preview on reward cards**
   - File: `src/ui/components/CardRewardScreen.svelte`
   - Display the quiz question or fact statement (truncated to ~60 chars if needed)
   - Smaller font below mechanic name
@@ -145,7 +145,7 @@ Replace the `categoryL2`-based chain system with 6 named chain types assigned ev
 
 ### Phase F: Draw Smoothing
 
-- [ ] **F1. Implement draw smoothing in drawHand()**
+- [x] **F1. Implement draw smoothing in drawHand()**
   - File: `src/services/deckManager.ts`
   - After drawing a hand, count chainType occurrences
   - If NO chainType appears 2+ times:
@@ -162,19 +162,19 @@ Replace the `categoryL2`-based chain system with 6 named chain types assigned ev
 
 ### Phase G: Shop Card Removal Updates
 
-- [ ] **G1. Show chain type indicator on removable cards in shop**
+- [x] **G1. Show chain type indicator on removable cards in shop**
   - File: Shop component (find exact file — likely in `src/ui/components/`)
   - Display chain type badge (same style as reward screen) on each removable card
   - Acceptance: Chain type visible when browsing cards for removal.
 
-- [ ] **G2. Show chain composition summary in shop**
+- [x] **G2. Show chain composition summary in shop**
   - File: Shop component
   - Above/below card list, show summary: "Obsidian x4, Crimson x3, Azure x2..."
   - Only show types that exist in the deck
   - Use chain type colors for each entry
   - Acceptance: Summary reflects actual deck composition. Updates when cards are removed.
 
-- [ ] **G3. Card removal removes bound fact from pool**
+- [x] **G3. Card removal removes bound fact from pool**
   - File: `src/services/shopService.ts` or wherever card removal is handled
   - When a card is removed, also remove its `boundFactId` from the run's fact pool
   - Acceptance: Removed card's fact never appears again in the run.
@@ -185,13 +185,13 @@ Replace the `categoryL2`-based chain system with 6 named chain types assigned ev
 
 ### Phase H: Relic Compatibility
 
-- [ ] **H1. Update Tag Magnet to use chainType**
+- [x] **H1. Update Tag Magnet to use chainType**
   - File: Wherever Tag Magnet effect is applied (likely `src/services/deckManager.ts` or relic resolver)
   - Change draw bias from matching `categoryL2` to matching `chainType` of last played card
   - +30% draw probability for matching chainType
   - Acceptance: Tag Magnet biases draws toward same chainType, not categoryL2.
 
-- [ ] **H2. Verify chain-length relics still work**
+- [x] **H2. Verify chain-length relics still work**
   - Chain Reactor, Resonance Crystal, Echo Chamber, Prismatic Shard
   - These trigger on chain LENGTH, not chain type identity — should work unchanged
   - Run through each relic's trigger condition and verify no references to categoryL2
@@ -203,13 +203,13 @@ Replace the `categoryL2`-based chain system with 6 named chain types assigned ev
 
 ### Phase I: Save/Load & Run Persistence
 
-- [ ] **I1. Persist boundFactId and chainType in run save**
+- [x] **I1. Persist boundFactId and chainType in run save**
   - File: `src/services/runSaveService.ts`
   - Ensure `card.boundFactId` and `card.chainType` are serialized when saving run state
   - Ensure they're restored when loading a saved run
   - Acceptance: Save → quit → resume: cards have same bound facts and chain types.
 
-- [ ] **I2. Persist chain state across encounters**
+- [x] **I2. Persist chain state across encounters**
   - Chain type assignments persist for the entire run (they already should if stored on Card)
   - Verify new cards from rewards keep their assignments across encounters
   - Acceptance: Chain types stable across multiple encounters in a saved/resumed run.
@@ -220,7 +220,7 @@ Replace the `categoryL2`-based chain system with 6 named chain types assigned ev
 
 ### Phase J: Documentation & Cleanup
 
-- [ ] **J1. Update GAME_DESIGN.md**
+- [x] **J1. Update GAME_DESIGN.md**
   - Replace all `categoryL2`-based chain references with chainType system
   - Update chain mechanic section with 6 named chain types
   - Update card rendering section with AP color and glow
@@ -229,17 +229,17 @@ Replace the `categoryL2`-based chain system with 6 named chain types assigned ev
   - Document fact-to-card binding change (facts no longer shuffle per draw)
   - Update deck building strategy section
 
-- [ ] **J2. Update ARCHITECTURE.md**
+- [x] **J2. Update ARCHITECTURE.md**
   - Add `chainTypes.ts` to file map
   - Update data flow: buildRunPool → fact binding → chainType assignment
   - Update deckManager flow: drawHand no longer re-pairs facts
 
-- [ ] **J3. Remove dead code**
+- [x] **J3. Remove dead code**
   - Remove unused `categoryL2` chain logic from chainSystem.ts
   - Remove per-draw fact pairing functions if fully replaced (keep if needed for backward compat)
   - Remove old chain color derivation from categoryL2 if it existed
 
-- [ ] **J4. Clean up the problem docs**
+- [x] **J4. Clean up the problem docs**
   - Delete `CHAIN-TAGGING-PROBLEM.md` and `chain-tagging-sample-facts.json` from repo root (problem is solved)
 
 **CHECKPOINT J:** `npm run typecheck` && `npm run build` && `npx vitest run` all pass. Docs are current.
@@ -270,11 +270,11 @@ Replace the `categoryL2`-based chain system with 6 named chain types assigned ev
 
 ## Verification Gate
 
-- [ ] `npm run typecheck` passes
-- [ ] `npm run build` succeeds
-- [ ] `npx vitest run` — all tests pass (update tests for new chain system)
-- [ ] Playwright screenshot: cards show AP color + glow + pulse
-- [ ] Playwright screenshot: reward screen shows chain badges
-- [ ] Manual/Playwright: chain builds on matching chainType, breaks on mismatch
-- [ ] Manual/Playwright: save/load preserves chain types
-- [ ] `GAME_DESIGN.md` and `ARCHITECTURE.md` are up to date
+- [x] `npm run typecheck` passes
+- [x] `npm run build` succeeds
+- [x] `npx vitest run` — all tests pass (update tests for new chain system)
+- [x] Playwright screenshot: cards show AP color + glow + pulse
+- [x] Playwright screenshot: reward screen shows chain badges
+- [x] Manual/Playwright: chain builds on matching chainType, breaks on mismatch
+- [x] Manual/Playwright: save/load preserves chain types
+- [x] `GAME_DESIGN.md` and `ARCHITECTURE.md` are up to date

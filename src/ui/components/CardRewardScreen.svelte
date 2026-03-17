@@ -10,6 +10,8 @@
   import { preloadImages } from '../utils/assetPreloader'
   import { untrack } from 'svelte'
   import { normalizeRewardSelection } from '../utils/rewardSelection'
+  import { getChainTypeName, getChainTypeColor } from '../../data/chainTypes'
+  import { factsDB } from '../../services/factsDB'
 
   interface Props {
     options: Card[]
@@ -316,6 +318,23 @@
               {/if}
               <div class="mini-card-name">{option.mechanicName ?? option.cardType}</div>
               <div class="mini-card-desc">{getShortCardDescription(option)}</div>
+              {#if option.chainType !== undefined}
+                <div class="chain-badge" style="
+                  background: {getChainTypeColor(option.chainType)}20;
+                  color: {getChainTypeColor(option.chainType)};
+                  border: 1px solid {getChainTypeColor(option.chainType)}66;
+                ">
+                  {getChainTypeName(option.chainType)}
+                </div>
+              {/if}
+              {#if option.boundFactId || option.factId}
+                {@const previewFact = factsDB.isReady() ? factsDB.getById(option.boundFactId ?? option.factId) : null}
+                {#if previewFact}
+                  <div class="fact-preview">
+                    {(previewFact.quizQuestion || previewFact.statement || '').slice(0, 60)}{(previewFact.quizQuestion || previewFact.statement || '').length > 60 ? '...' : ''}
+                  </div>
+                {/if}
+              {/if}
               <div class="mini-card-domain-bar" style={`background: ${domainColor};`}></div>
             </button>
           {/each}
@@ -1134,6 +1153,29 @@
     .ceremony-phase-4 .spotlight-cone {
       animation: none !important;
     }
+  }
+
+  .chain-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.7em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .fact-preview {
+    font-size: 0.65em;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 4px;
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 
   @media (max-width: 700px) {

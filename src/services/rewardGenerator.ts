@@ -1,5 +1,6 @@
 import type { Card } from '../data/card-types';
 import type { CardType } from '../data/card-types';
+import { NUM_CHAIN_TYPES } from '../data/chainTypes';
 import type { RewardArchetype } from './runManager';
 import { UPGRADED_REWARD_CHANCE_BY_FLOOR } from '../data/balance';
 import { shuffled } from './randomUtils';
@@ -137,6 +138,24 @@ export function generateCardRewardOptionsByType(
       const roll = rng ? rng.next() : Math.random();
       if (roll < upgradeChance && canUpgradeCard(selected[i])) {
         selected[i] = upgradeCard({ ...selected[i] });
+      }
+    }
+  }
+
+  // === Chain Type Diversity (AR-70) ===
+  // Ensure at least 2 distinct chain types across reward options.
+  if (selected.length >= 3) {
+    const chainTypes = new Set(selected.map(c => c.chainType).filter(t => t !== undefined));
+    if (chainTypes.size <= 1 && selected[0]?.chainType !== undefined) {
+      // All same chainType — try to swap one card's fact for a different chainType
+      const targetType = selected[0].chainType;
+      const altCard = eligible.find(c =>
+        c.chainType !== undefined &&
+        c.chainType !== targetType &&
+        !usedFactIds.has(c.factId)
+      );
+      if (altCard) {
+        selected[selected.length - 1] = altCard;
       }
     }
   }

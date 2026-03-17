@@ -129,6 +129,36 @@ export function createDeck(pool: Card[]): CardRunState {
 }
 
 /**
+ * Moves cards with cooled-down bound facts to the front of the draw pile (bottom of stack).
+ * Since drawPile uses pop() (stack), front = last to be drawn.
+ * Cards without boundFactId or not on cooldown stay at the back (top of stack, drawn first).
+ */
+function deprioritizeCooledDownCards(deck: CardRunState): void {
+  if (deck.drawPile.length === 0) return;
+
+  const cooldownFactIds = new Set(deck.factCooldown.map(c => c.factId));
+  const cooldownRootIds = new Set(deck.factCooldown.map(c => getFactRootId(c.factId)));
+
+  const available: Card[] = [];
+  const cooledDown: Card[] = [];
+
+  for (const card of deck.drawPile) {
+    const boundId = card.boundFactId;
+    if (boundId && (cooldownFactIds.has(boundId) || cooldownRootIds.has(getFactRootId(boundId)))) {
+      cooledDown.push(card);
+    } else {
+      available.push(card);
+    }
+  }
+
+  // If ALL cards are on cooldown, don't reorder (avoid empty hands)
+  if (available.length === 0) return;
+
+  // Cooled-down cards at front (bottom of stack), available at back (top of stack = drawn first)
+  deck.drawPile = [...cooledDown, ...available];
+}
+
+/**
  * Draws cards from the draw pile into the hand.
  *
  * If the draw pile runs out mid-draw, the discard pile is shuffled into the
@@ -143,6 +173,10 @@ export function drawHand(deck: CardRunState, count?: number, options?: { firstDr
   const requested = count ?? HAND_SIZE;
   const availableSpace = Math.max(0, HAND_SIZE - deck.hand.length);
   const toDraw = Math.max(0, Math.min(requested, availableSpace));
+
+  // Deprioritize cards with cooled-down bound facts (AR-70)
+  deprioritizeCooledDownCards(deck);
+
   const drawn: Card[] = [];
 
   for (let i = 0; i < toDraw; i++) {
@@ -180,99 +214,108 @@ export function drawHand(deck: CardRunState, count?: number, options?: { firstDr
     }
   }
 
-  // === Fact-Card Shuffling ===
-  // Reassign facts to drawn card slots from the available fact pool
-  if (deck.factPool.length > 0 && drawn.length > 0) {
-    const cooldownRootIds = new Set(deck.factCooldown.map(c => getFactRootId(c.factId)));
-    const availableFacts = deck.factPool.filter(
-      fId => !deck.factCooldown.some(c => c.factId === fId)
-        && !cooldownRootIds.has(getFactRootId(fId))
-    );
+  // === Fact-Card Binding (AR-70) ===
+  // Cards with boundFactId use their bound fact directly.
+  // Cards without boundFactId fall back to legacy per-draw shuffling.
+  if (drawn.length > 0) {
+    const unboundCards: Card[] = [];
 
-    // Edge case: if cooldown removes too many facts, reduce cooldown
-    let factsToUse = availableFacts;
-    if (factsToUse.length < drawn.length) {
-      // If available facts < hand size, reduce cooldown to 1
-      const relaxedFacts = deck.factPool.filter(
-        fId => !deck.factCooldown.some(c => c.factId === fId && c.encountersRemaining > 1)
-      );
-      if (relaxedFacts.length >= drawn.length) {
-        factsToUse = relaxedFacts;
+    for (const card of drawn) {
+      if (card.boundFactId) {
+        // Use the permanently bound fact
+        card.factId = card.boundFactId;
+        const fact = factsDB.isReady() ? factsDB.getById(card.boundFactId) : null;
+        if (fact) {
+          card.domain = resolveDomain(fact);
+        }
+        if (!deck.currentEncounterSeenFacts) deck.currentEncounterSeenFacts = new Set();
+        deck.currentEncounterSeenFacts.add(card.factId);
       } else {
-        // If still not enough, disable cooldown entirely
-        factsToUse = [...deck.factPool];
-        if (factsToUse.length < 3) {
-          console.warn('[deckManager] fact pool exhaustion — cooldown disabled');
+        unboundCards.push(card);
+      }
+    }
+
+    // Legacy per-draw fact shuffling for unbound cards (backward compatibility)
+    if (unboundCards.length > 0 && deck.factPool.length > 0) {
+      const cooldownRootIds = new Set(deck.factCooldown.map(c => getFactRootId(c.factId)));
+      const availableFacts = deck.factPool.filter(
+        fId => !deck.factCooldown.some(c => c.factId === fId)
+          && !cooldownRootIds.has(getFactRootId(fId))
+      );
+
+      let factsToUse = availableFacts;
+      if (factsToUse.length < unboundCards.length) {
+        const relaxedFacts = deck.factPool.filter(
+          fId => !deck.factCooldown.some(c => c.factId === fId && c.encountersRemaining > 1)
+        );
+        if (relaxedFacts.length >= unboundCards.length) {
+          factsToUse = relaxedFacts;
+        } else {
+          factsToUse = [...deck.factPool];
         }
       }
-    }
 
-    // Shuffle available facts (with optional first-draw funScore bias)
-    let shuffledFacts: string[];
-    if (options?.firstDrawBias) {
-      // Weighted shuffle: facts with funScore >= 7 are 2x more likely to appear first
-      shuffledFacts = weightedFactShuffle(factsToUse);
-    } else {
-      shuffledFacts = isRunRngActive() ? seededShuffled(getRunRng('facts'), factsToUse) : shuffled(factsToUse);
-    }
-
-    const factKeyCache = new Map<string, string>();
-    const drawnCardIds = new Set(drawn.map((card) => card.id));
-    const usedFactIds = new Set(
-      deck.hand
-        .filter((card) => !drawnCardIds.has(card.id))
-        .map((card) => card.factId)
-    );
-    const usedBaseKeys = new Set(
-      deck.hand
-        .filter((card) => !drawnCardIds.has(card.id))
-        .map((card) => buildFactBaseKey(card.factId, factKeyCache))
-    );
-    const usedRootIds = new Set(
-      deck.hand
-        .filter((card) => !drawnCardIds.has(card.id))
-        .map((card) => getFactRootId(card.factId))
-    );
-    const candidateFacts = [...shuffledFacts];
-
-    const pickCandidateFactId = (): string | null => {
-      if (candidateFacts.length === 0) return null;
-
-      let candidateIndex = candidateFacts.findIndex((candidateFactId) => (
-        !usedFactIds.has(candidateFactId)
-          && !usedBaseKeys.has(buildFactBaseKey(candidateFactId, factKeyCache))
-          && !usedRootIds.has(getFactRootId(candidateFactId))
-      ));
-
-      if (candidateIndex < 0) {
-        candidateIndex = candidateFacts.findIndex((candidateFactId) => !usedFactIds.has(candidateFactId));
+      let shuffledFacts: string[];
+      if (options?.firstDrawBias) {
+        shuffledFacts = weightedFactShuffle(factsToUse);
+      } else {
+        shuffledFacts = isRunRngActive() ? seededShuffled(getRunRng('facts'), factsToUse) : shuffled(factsToUse);
       }
 
-      if (candidateIndex < 0) {
-        candidateIndex = candidateFacts.findIndex((candidateFactId) => (
-          !usedBaseKeys.has(buildFactBaseKey(candidateFactId, factKeyCache))
+      const factKeyCache = new Map<string, string>();
+      const drawnCardIds = new Set(drawn.map((card) => card.id));
+      const usedFactIds = new Set(
+        deck.hand
+          .filter((card) => !drawnCardIds.has(card.id))
+          .map((card) => card.factId)
+      );
+      const usedBaseKeys = new Set(
+        deck.hand
+          .filter((card) => !drawnCardIds.has(card.id))
+          .map((card) => buildFactBaseKey(card.factId, factKeyCache))
+      );
+      const usedRootIds = new Set(
+        deck.hand
+          .filter((card) => !drawnCardIds.has(card.id))
+          .map((card) => getFactRootId(card.factId))
+      );
+      const candidateFacts = [...shuffledFacts];
+
+      const pickCandidateFactId = (): string | null => {
+        if (candidateFacts.length === 0) return null;
+        let candidateIndex = candidateFacts.findIndex((candidateFactId) => (
+          !usedFactIds.has(candidateFactId)
+            && !usedBaseKeys.has(buildFactBaseKey(candidateFactId, factKeyCache))
+            && !usedRootIds.has(getFactRootId(candidateFactId))
         ));
-      }
+        if (candidateIndex < 0) {
+          candidateIndex = candidateFacts.findIndex((candidateFactId) => !usedFactIds.has(candidateFactId));
+        }
+        if (candidateIndex < 0) {
+          candidateIndex = candidateFacts.findIndex((candidateFactId) => (
+            !usedBaseKeys.has(buildFactBaseKey(candidateFactId, factKeyCache))
+          ));
+        }
+        if (candidateIndex < 0) candidateIndex = 0;
+        const [factId] = candidateFacts.splice(candidateIndex, 1);
+        return factId ?? null;
+      };
 
-      if (candidateIndex < 0) candidateIndex = 0;
-      const [factId] = candidateFacts.splice(candidateIndex, 1);
-      return factId ?? null;
-    };
-
-    // Pair each drawn card slot with a random fact, avoiding duplicate base facts when possible.
-    if (!deck.currentEncounterSeenFacts) deck.currentEncounterSeenFacts = new Set();
-    for (let i = 0; i < drawn.length; i++) {
-      const factId = pickCandidateFactId() ?? shuffledFacts[i % shuffledFacts.length];
-      drawn[i].factId = factId;
-      // Update domain to match the new fact (fact-card shuffling decouples factId from original card)
-      const newFact = factsDB.isReady() ? factsDB.getById(factId) : null;
-      if (newFact) {
-        drawn[i].domain = resolveDomain(newFact);
+      if (!deck.currentEncounterSeenFacts) deck.currentEncounterSeenFacts = new Set();
+      for (const card of unboundCards) {
+        const factId = pickCandidateFactId() ?? shuffledFacts[0];
+        if (factId) {
+          card.factId = factId;
+          const newFact = factsDB.isReady() ? factsDB.getById(factId) : null;
+          if (newFact) {
+            card.domain = resolveDomain(newFact);
+          }
+          usedFactIds.add(factId);
+          usedBaseKeys.add(buildFactBaseKey(factId, factKeyCache));
+          usedRootIds.add(getFactRootId(factId));
+          deck.currentEncounterSeenFacts.add(factId);
+        }
       }
-      usedFactIds.add(factId);
-      usedBaseKeys.add(buildFactBaseKey(factId, factKeyCache));
-      usedRootIds.add(getFactRootId(factId));
-      deck.currentEncounterSeenFacts.add(factId);
     }
   }
 
@@ -430,6 +473,53 @@ export function tickFactCooldowns(deck: CardRunState): void {
   deck.factCooldown = deck.factCooldown
     .map(c => ({ ...c, encountersRemaining: c.encountersRemaining - 1 }))
     .filter(c => c.encountersRemaining > 0);
+}
+
+/**
+ * Draw smoothing (AR-70): ensures at least one chain type pair in the hand.
+ * If no chainType appears 2+ times, swaps one card from the hand with a
+ * card from the draw pile that matches any existing hand chainType.
+ * Max 1 swap per draw. Called after drawHand().
+ */
+export function smoothDrawForChainPairs(deck: CardRunState): void {
+  if (deck.hand.length < 2) return;
+
+  // Count chainType occurrences in hand
+  const typeCounts = new Map<number, number>();
+  for (const card of deck.hand) {
+    if (card.chainType !== undefined) {
+      typeCounts.set(card.chainType, (typeCounts.get(card.chainType) ?? 0) + 1);
+    }
+  }
+
+  // If any chainType appears 2+ times, no smoothing needed
+  for (const count of typeCounts.values()) {
+    if (count >= 2) return;
+  }
+
+  // No pairs found — try to swap one hand card with a draw pile card that creates a pair
+  const handTypes = new Set(deck.hand.map(c => c.chainType).filter((t): t is number => t !== undefined));
+
+  // Find a draw pile card whose chainType matches any hand card
+  const matchIdx = deck.drawPile.findIndex(c =>
+    c.chainType !== undefined && handTypes.has(c.chainType)
+  );
+
+  if (matchIdx < 0) return; // No valid replacement exists
+
+  const replacement = deck.drawPile[matchIdx];
+
+  // Find a hand card to swap out — prefer one whose chainType is NOT shared by the replacement
+  // (to maximize the chance the replacement creates a new pair)
+  let swapIdx = deck.hand.findIndex(c => c.chainType !== replacement.chainType);
+  if (swapIdx < 0) swapIdx = deck.hand.length - 1; // fallback: swap last card
+
+  const swappedOut = deck.hand[swapIdx];
+
+  // Perform the swap
+  deck.hand[swapIdx] = replacement;
+  deck.drawPile.splice(matchIdx, 1);
+  deck.drawPile.push(swappedOut); // put swapped card at bottom of draw pile
 }
 
 // Exported for unit testing only — not part of the public API.

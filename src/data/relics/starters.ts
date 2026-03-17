@@ -215,7 +215,7 @@ export const STARTER_RELICS: RelicDefinition[] = [
   {
     id: 'tag_magnet',
     name: 'Tag Magnet',
-    description: 'When drawing cards, +30% chance to draw cards sharing a category with your last played card.',
+    description: 'When drawing cards, +30% chance to draw cards sharing a chain type with your last played card.',
     flavorText: 'A lodestone fragment tuned to the resonant frequencies of knowledge domains. Facts of the same stripe attract each other — chain them together and they pull the next link automatically.',
     visualDescription: 'A polished black lodestone with faint gold category symbols orbiting it, pulsing as they align with a central glyph. Chain links hover nearby. 32x32 pixel art.',
     rarity: 'uncommon',

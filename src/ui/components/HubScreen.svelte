@@ -29,6 +29,7 @@
     onOpenDeckBuilder?: () => void
     onOpenTopicInterests?: () => void
     onReplayBootAnim?: () => void
+    disableEffects?: boolean
   }
 
   let {
@@ -46,6 +47,7 @@
     onOpenDeckBuilder,
     onOpenTopicInterests,
     onReplayBootAnim,
+    disableEffects = false,
   }: Props = $props()
 
   let showUpgradeModal = $state(false)
@@ -180,7 +182,9 @@
   />
 
   <!-- Campfire VFX overlay -->
-  <CampfireCanvas {streak} />
+  {#if !disableEffects}
+    <CampfireCanvas {streak} />
+  {/if}
 
   <!-- Campfire sparkle bursts -->
   {#each sparkleBursts as burstId (burstId)}
@@ -284,7 +288,7 @@
     position: fixed;
     inset: 0;
     overflow: hidden;
-    background: #0a0e18;
+    background: #000000;
   }
 
   .camp-bg {

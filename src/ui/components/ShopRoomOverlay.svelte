@@ -11,6 +11,7 @@
   import { shuffled } from '../../services/randomUtils'
   import { recordHaggleAttempt } from '../../services/gameFlowController'
   import { SHOP_HAGGLE_DISCOUNT } from '../../data/balance'
+  import { getChainTypeName, getChainTypeColor } from '../../data/chainTypes'
 
   interface ShopRelicItem {
     relic: { id: string; name: string; description: string; rarity: string; icon: string }
@@ -88,6 +89,19 @@
   let nonEchoCards = $derived(cards.filter(c => !c.isEcho))
   /** Whether deck is large enough to remove a card (must keep > 5) */
   let canRemoveCard = $derived(nonEchoCards.length > 5)
+
+  /** Chain composition summary for the removal picker */
+  let chainComposition = $derived.by(() => {
+    const counts = new Map<number, number>()
+    for (const card of nonEchoCards) {
+      if (card.chainType !== undefined) {
+        counts.set(card.chainType, (counts.get(card.chainType) ?? 0) + 1)
+      }
+    }
+    return [...counts.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .map(([type, count]) => ({ type, name: getChainTypeName(type), color: getChainTypeColor(type), count }))
+  })
 
   function sellPrice(card: Card): number {
     if (card.tier === '3') return 3
@@ -427,6 +441,13 @@
   <div class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Choose card to remove">
     <div class="modal modal-removal">
       <div class="modal-title">Remove Which Card?</div>
+      {#if chainComposition.length > 0}
+        <div class="chain-composition">
+          {#each chainComposition as entry}
+            <span class="chain-comp-item" style="color: {entry.color};">{entry.name} ×{entry.count}</span>
+          {/each}
+        </div>
+      {/if}
       <div class="removal-list">
         {#each nonEchoCards as card (card.id)}
           <button
@@ -434,7 +455,14 @@
             class="removal-card-btn"
             onclick={() => pickCardForRemoval(card.id)}
           >
-            <span class="removal-card-name">{card.cardType.toUpperCase()} • {tierLabel(card)}</span>
+            <span class="removal-card-info">
+              <span class="removal-card-name">{card.cardType.toUpperCase()} • {tierLabel(card)}</span>
+              {#if card.chainType !== undefined}
+                <span class="removal-chain-badge" style="color: {getChainTypeColor(card.chainType)};">
+                  {getChainTypeName(card.chainType)}
+                </span>
+              {/if}
+            </span>
             <span class="removal-card-power">Power {Math.round(card.baseEffectValue * card.effectMultiplier)}</span>
           </button>
         {/each}
@@ -791,5 +819,31 @@
     font-size: calc(12px * var(--layout-scale, 1));
     color: #9ba4ad;
     white-space: nowrap;
+  }
+
+  .chain-composition {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    padding: 4px 8px 8px;
+    font-size: calc(11px * var(--layout-scale, 1));
+    opacity: 0.8;
+  }
+
+  .chain-comp-item {
+    font-weight: 600;
+  }
+
+  .removal-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .removal-chain-badge {
+    font-size: calc(10px * var(--layout-scale, 1));
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 </style>
