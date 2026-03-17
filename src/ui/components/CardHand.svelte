@@ -40,6 +40,8 @@
     isSurgeActive?: boolean
     /** AR-76: True when quiz is active in landscape — dims the card hand slightly. */
     quizVisible?: boolean
+    /** Focus AP discount: 1 when Focus is active with charges, 0 otherwise. Reduces displayed and effective AP cost. */
+    focusDiscount?: number
   }
 
   // Session-level preload guard: avoid creating duplicate Image objects for the same URL.
@@ -64,6 +66,7 @@
     onchargeplay,
     isSurgeActive = false,
     quizVisible = false,
+    focusDiscount = 0,
   }: Props = $props()
 
   interface TierUpVisualSignature {
@@ -154,7 +157,20 @@
   }
 
   function hasEnoughAp(card: Card): boolean {
-    return (card.apCost ?? 1) <= apCurrent
+    return Math.max(0, (card.apCost ?? 1) - focusDiscount) <= apCurrent
+  }
+
+  /** Returns the displayed AP cost accounting for Focus discount. */
+  function getDisplayedApCost(card: Card): number {
+    return Math.max(0, (card.apCost ?? 1) - focusDiscount)
+  }
+
+  /** Returns color for the AP gem based on cost change. Green if reduced, red if increased, off-white otherwise. */
+  function getApGemColor(card: Card): string {
+    const base = card.apCost ?? 1
+    const displayed = getDisplayedApCost(card)
+    if (displayed < base) return '#4ADE80'
+    return '#F0E6D2'
   }
 
   function getDomainColor(domain: FactDomain): string {
@@ -578,6 +594,8 @@
     {@const cardAnim = cardAnimations?.[card.id] ?? null}
     {@const tierBadge = getTierBadge(card)}
     {@const apCost = card.apCost ?? 1}
+    {@const displayedApCost = getDisplayedApCost(card)}
+    {@const apGemColor = getApGemColor(card)}
     {@const insufficientAp = !hasEnoughAp(card)}
     {@const cardbackUrl = cardbackUrls.get(card.factId) ?? null}
     {@const cardFrameUrl = cardFrameUrls.get(card.mechanicId ?? '') ?? null}
@@ -595,7 +613,7 @@
     {@const tierVisual = getTierUpVisualSignature(card.factId)}
     {@const runState = $activeRunState}
     {@const isMastered = card.tier === '3'}
-    {@const chargeApCostForDrag = (card.apCost ?? 1) + (isSurgeActive ? 0 : 1)}
+    {@const chargeApCostForDrag = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive ? 0 : 1)}
     {@const chargeAffordableForDrag = chargeApCostForDrag <= apCurrent}
     {@const showChargeZoneIndicator = isDraggingThis && isInChargeZone && !isMastered && !!onchargeplay}
     {@const isDragInChargeZone = isDraggingThis && isInChargeZone && !isMastered}
@@ -657,7 +675,7 @@
         <div class="card-front">
           {#if cardFrameUrl}
             <img class="card-frame-img" src={cardFrameUrl} alt={card.mechanicName ?? card.cardType} />
-            <div class="ap-gem" style="color: {getChainColor(card.chainType)}; text-shadow: 0 0 2px rgba(0,0,0,0.6);">{apCost}</div>
+            <div class="ap-gem" style="color: {apGemColor}; text-shadow: 0 0 2px rgba(0,0,0,0.6);">{displayedApCost}</div>
             {#if card.chainType !== undefined}
               <div
                 class="chain-glow"
@@ -687,7 +705,7 @@
             {#if cardbackUrl}
               <img class="card-front-bg" src={cardbackUrl} alt="" />
             {/if}
-            <div class="ap-badge" class:ap-free={apCost === 0} class:ap-heavy={apCost === 2} class:ap-full-turn={apCost >= 3}>{apCost}</div>
+            <div class="ap-badge" class:ap-free={displayedApCost === 0} class:ap-heavy={displayedApCost === 2} class:ap-full-turn={displayedApCost >= 3}>{displayedApCost}</div>
             <div class="card-domain-stripe" style="background: {domainColor};"></div>
             <div class="card-front-name">{card.mechanicName ?? card.cardType}</div>
             {#if showFrontValue}
@@ -745,7 +763,7 @@
     </button>
 
     {#if selectedIndex === i && card.tier !== '3' && onchargeplay && !disabled}
-      {@const chargeApCost = (card.apCost ?? 1) + (isSurgeActive ? 0 : 1)}
+      {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive ? 0 : 1)}
       {@const chargeAffordable = chargeApCost <= apCurrent}
       <button
         class="charge-play-btn charge-play-btn-landscape"
@@ -859,6 +877,8 @@
     {@const cardAnim = cardAnimations?.[card.id] ?? null}
     {@const tierBadge = getTierBadge(card)}
     {@const apCost = card.apCost ?? 1}
+    {@const displayedApCost = getDisplayedApCost(card)}
+    {@const apGemColor = getApGemColor(card)}
     {@const insufficientAp = !hasEnoughAp(card)}
     {@const cardbackUrl = cardbackUrls.get(card.factId) ?? null}
     {@const cardFrameUrl = cardFrameUrls.get(card.mechanicId ?? '') ?? null}
@@ -879,7 +899,7 @@
     {@const runState = $activeRunState}
     {@const isFreeCharge = card.factId ? isFirstChargeFree(card.factId, runState?.firstChargeFreeFactIds ?? new Set()) : false}
     {@const isMastered = card.tier === '3'}
-    {@const chargeApCostForDrag = (card.apCost ?? 1) + (isSurgeActive ? 0 : 1)}
+    {@const chargeApCostForDrag = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive ? 0 : 1)}
     {@const chargeAffordableForDrag = chargeApCostForDrag <= apCurrent}
     {@const showChargeZoneIndicator = isDraggingThis && isInChargeZone && !isMastered && !!onchargeplay}
     {@const isDragInChargeZone = isDraggingThis && isInChargeZone && !isMastered}
@@ -954,7 +974,7 @@
         <div class="card-front">
           {#if cardFrameUrl}
             <img class="card-frame-img" src={cardFrameUrl} alt={card.mechanicName ?? card.cardType} />
-            <div class="ap-gem" style="color: {getChainColor(card.chainType)}; text-shadow: 0 0 2px rgba(0,0,0,0.6);">{apCost}</div>
+            <div class="ap-gem" style="color: {apGemColor}; text-shadow: 0 0 2px rgba(0,0,0,0.6);">{displayedApCost}</div>
             {#if card.chainType !== undefined}
               <div
                 class="chain-glow"
@@ -984,7 +1004,7 @@
             {#if cardbackUrl}
               <img class="card-front-bg" src={cardbackUrl} alt="" />
             {/if}
-            <div class="ap-badge" class:ap-free={apCost === 0} class:ap-heavy={apCost === 2} class:ap-full-turn={apCost >= 3}>{apCost}</div>
+            <div class="ap-badge" class:ap-free={displayedApCost === 0} class:ap-heavy={displayedApCost === 2} class:ap-full-turn={displayedApCost >= 3}>{displayedApCost}</div>
             <div class="card-domain-stripe" style="background: {domainColor};"></div>
             <div class="card-front-name">{card.mechanicName ?? card.cardType}</div>
             {#if showFrontValue}
@@ -1045,7 +1065,7 @@
     </button>
 
     {#if selectedIndex === i && card.tier !== '3' && onchargeplay && !disabled}
-      {@const chargeApCost = (card.apCost ?? 1) + (isSurgeActive ? 0 : 1)}
+      {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive ? 0 : 1)}
       {@const chargeAffordable = chargeApCost <= apCurrent}
       <button
         class="charge-play-btn"

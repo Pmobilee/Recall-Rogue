@@ -20,9 +20,11 @@
     onselect: (card: Card) => void
     onskip: () => void
     onrewardstepchange?: (step: 'gold' | 'heal' | 'card') => void
+    /** Called when player rerolls the selected card type. Passes the current selected type. */
+    onreroll?: (type: CardType) => void
   }
 
-  let { options, onselect, onskip, onrewardstepchange }: Props = $props()
+  let { options, onselect, onskip, onrewardstepchange, onreroll }: Props = $props()
 
   const bgUrl = getRandomRoomBg('treasure')
   holdScreenTransition()
@@ -33,6 +35,8 @@
   let collectingType = $state<CardType | null>(null)
   let hasPlayedIntroCue = $state(false)
   let showSkipConfirm = $state(false)
+  /** Tracks rerolls used this reward screen. Max 1 per opening. */
+  let rerollsUsed = $state(0)
 
   // Reward reveal state
   let stepVisible = $state(false)
@@ -144,6 +148,14 @@
     showSkipConfirm = false
   }
 
+  function handleReroll(): void {
+    if (collectLocked || rerollsUsed >= 1 || !onreroll) return
+    const type = selectedType ?? options[0]?.cardType
+    if (!type) return
+    rerollsUsed++
+    onreroll(type)
+  }
+
   function startCeremony(): void {
     altarCeremonyPhase = 1
     setTimeout(() => {
@@ -216,6 +228,7 @@
         collectingType = null
         selectedType = null
         showSkipConfirm = false
+        rerollsUsed = 0
         altarBiome = pickBiome(opts)
       }
 
@@ -376,6 +389,18 @@
     </section>
 
     <div class="actions">
+      {#if onreroll !== undefined}
+        <button
+          class="reroll-btn"
+          class:reroll-used={rerollsUsed >= 1}
+          onclick={handleReroll}
+          disabled={collectLocked || rerollsUsed >= 1}
+          aria-label={rerollsUsed >= 1 ? 'Reroll already used' : 'Reroll card options'}
+          data-testid="reward-reroll"
+        >
+          {rerollsUsed >= 1 ? 'Rerolled' : 'Reroll'}
+        </button>
+      {/if}
       <button class="skip" onclick={handleSkipClick} disabled={collectLocked}>Skip</button>
       <button class="accept" onclick={accept} disabled={!selectedCard() || collectLocked} data-testid="reward-accept">
         {collectLocked ? 'Collecting...' : 'Accept'}
@@ -932,6 +957,35 @@
     grid-template-columns: 1fr 1fr;
     gap: calc(8px * var(--layout-scale, 1));
     align-self: end;
+  }
+
+  .reroll-btn {
+    grid-column: 1 / -1;
+    height: calc(40px * var(--layout-scale, 1));
+    border-radius: 10px;
+    border: 1px solid rgba(130, 160, 200, 0.35);
+    background: rgba(30, 50, 80, 0.7);
+    color: #9ec8ff;
+    font-size: calc(13px * var(--layout-scale, 1));
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    transition: background 120ms ease, opacity 120ms ease, color 120ms ease;
+  }
+
+  .reroll-btn:hover:not(:disabled):not(.reroll-used) {
+    background: rgba(45, 75, 120, 0.85);
+    color: #c8dff8;
+  }
+
+  .reroll-btn.reroll-used,
+  .reroll-btn:disabled {
+    opacity: 0.45;
+    color: #6b7a8d;
+    background: rgba(20, 28, 40, 0.6);
+    border-color: rgba(80, 90, 110, 0.3);
+    cursor: not-allowed;
+    pointer-events: none;
   }
 
   .accept,

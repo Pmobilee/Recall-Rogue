@@ -46,6 +46,7 @@
   import { synergyFlash } from '../stores/gameState'
   import { getNonCuratedQuestion, getQuestionVariantCount } from '../utils/combatQuestionPolicy'
   import StatusEffectBar from './StatusEffectBar.svelte'
+  import { getShortCardDescription } from '../../services/cardDescriptionService'
 
   interface Props {
     turnState: TurnState | null
@@ -478,6 +479,11 @@
   /** True on Surge turns — Charge Play costs +0 AP instead of +1. */
   let isSurgeActive = $derived(isSurgeTurn(turnState?.turnNumber ?? 1))
 
+  /** Focus AP discount: 1 when Focus is active with charges, 0 otherwise. */
+  let focusDiscount = $derived(
+    (turnState?.focusReady && (turnState?.focusCharges ?? 0) > 0) ? 1 : 0
+  )
+
   let playerHpCurrent = $derived(turnState?.playerState.hp ?? 0)
   let playerHpMax = $derived(turnState?.playerState.maxHP ?? 1)
   let playerShield = $derived(turnState?.playerState.shield ?? 0)
@@ -863,7 +869,7 @@
 
   let hasPlayableCards = $derived.by(() => {
     if (!turnState || turnState.phase !== 'player_action') return false
-    return handCards.some((c) => (c.apCost ?? 1) <= turnState!.apCurrent)
+    return handCards.some((c) => Math.max(0, (c.apCost ?? 1) - focusDiscount) <= turnState!.apCurrent)
   })
 
   /** V2 Echo: Show "Must Charge!" tooltip for ~1500ms, then auto-dismiss. */
@@ -960,7 +966,9 @@
       damage: Math.round(card.baseEffectValue * card.effectMultiplier),
       isCritical: false,
       comboCount: (turnState?.comboCount ?? 0) + 1,
-      effectLabel: `${card.cardType.toUpperCase()} ${Math.round(card.baseEffectValue * card.effectMultiplier)}`,
+      effectLabel: (card.cardType === 'wild' || card.cardType === 'utility' || card.cardType === 'buff' || card.cardType === 'debuff')
+        ? getShortCardDescription(card)
+        : `${card.cardType.toUpperCase()} ${Math.round(card.baseEffectValue * card.effectMultiplier)}`,
       isPerfectTurn: false,
       cardType: card.cardType,
     })
@@ -1008,7 +1016,9 @@
     const cardId = card.id
     const responseTimeMs = committedAtMs > 0 ? Math.max(50, Date.now() - committedAtMs) : undefined
     const effectVal = Math.round(card.baseEffectValue * card.effectMultiplier)
-    const effectLabel = `${card.cardType.toUpperCase()} ${effectVal}`
+    const effectLabel = (card.cardType === 'wild' || card.cardType === 'utility' || card.cardType === 'buff' || card.cardType === 'debuff')
+      ? getShortCardDescription(card)
+      : `${card.cardType.toUpperCase()} ${effectVal}`
     const nextCombo = isCorrect ? (turnState?.comboCount ?? 0) + 1 : 0
     const willBePerfect = isCorrect && (turnState?.cardsCorrectThisTurn === turnState?.cardsPlayedThisTurn)
     const hitCount = card.mechanicId === 'multi_hit' ? 3 : undefined
@@ -1437,6 +1447,7 @@
       oncastdirect={handleCastDirect}
       onchargeplay={handleChargeDirect}
       {isSurgeActive}
+      {focusDiscount}
       quizVisible={cardPlayStage === 'committed'}
     />
 
@@ -2387,10 +2398,10 @@
     bottom: auto;
   }
 
-  /* Status effect bars — player: above card hand strip */
+  /* Status effect bars — player: directly above HP bar strip */
   :global(.layout-landscape .status-effect-bar-player) {
     position: fixed;
-    bottom: 28vh;
+    bottom: calc(27vh + calc(32px * var(--layout-scale, 1)));
     left: 35%;
     right: 32%;
     top: auto;

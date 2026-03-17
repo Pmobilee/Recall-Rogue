@@ -31,6 +31,7 @@
     onArchetypeSelected,
     onCardRewardSelected,
     onCardRewardSkipped,
+    onCardRewardReroll,
     onDelve,
     onDomainsSelected,
     onMysteryResolved,
@@ -143,6 +144,12 @@
   import { rewardCardDetail, getCardDetailCallbacks } from './services/rewardRoomBridge'
   import { createDefaultCalibrationState, setGlobalKnowledgeLevel } from './services/difficultyCalibration'
   import type { KnowledgeLevel } from './services/difficultyCalibration'
+  import { updateRichPresence } from './services/steamService'
+
+  // Update Steam Rich Presence whenever the active screen changes.
+  $effect(() => {
+    updateRichPresence($currentScreen)
+  })
 
   function transitionScreen(target: Screen): void {
     const nextScreen = navigateToScreen(target, $currentScreen)
@@ -973,6 +980,7 @@
       onselect={handleRewardSelected}
       onskip={onCardRewardSkipped}
       onrewardstepchange={() => autoSaveRun('cardReward')}
+      onreroll={(type) => onCardRewardReroll(type)}
     />
   {/if}
 
@@ -1313,10 +1321,8 @@
   .phaser-container {
     position: fixed;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     width: 100%;
-    max-width: 500px;
     height: 100dvh;
     display: none;
   }

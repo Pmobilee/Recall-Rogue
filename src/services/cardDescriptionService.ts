@@ -124,7 +124,7 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
     case 'mirror':
       return `Copy the previous card's effect.` + apSuffix;
     case 'adapt':
-      return `Adapt to the most needed effect (attack, heal, or block).` + apSuffix;
+      return `Smart action: enemy attacking → Block, debuffing → Cleanse, else → Attack. Charged: 1.5× power. Wrong: 0.7×.` + apSuffix;
     case 'overclock':
       return `Next card effect is doubled.` + apSuffix;
 
@@ -197,7 +197,7 @@ export function getShortCardDescription(card: Card, powerOverride?: number): str
     case 'foresight': return `Draw ${power}`;
     case 'transmute': return 'Transform card';
     case 'mirror': return 'Copy last';
-    case 'adapt': return 'Adapt effect';
+    case 'adapt': return 'Smart: ATK/DEF/Cleanse';
     case 'overclock': return '2× effect';
     default: return mechanic.name;
   }
@@ -337,7 +337,7 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     case 'mirror':
       return [txt("Copy previous card's effect")];
     case 'adapt':
-      return [txt('Adapt to most needed effect')];
+      return [txt('Smart: '), kw('Block', 'block'), txt(' vs ATK, '), kw('Cleanse', 'cleanse'), txt(' vs debuff, else Attack')];
     case 'overclock':
       return [txt('Next card ×2 effect')];
 

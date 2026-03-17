@@ -131,3 +131,6 @@ data/balance-reports/runs/
 
 # Local multi-worker git worktrees (must never be committed)
 .claude/worktrees/
+
+# Tauri desktop build artifacts (Rust compilation output — large, auto-generated)
+src-tauri/target/

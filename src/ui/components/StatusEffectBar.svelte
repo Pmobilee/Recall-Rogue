@@ -107,7 +107,7 @@
   }
 
   .effect-bar-player {
-    bottom: calc(calc(100px * var(--layout-scale, 1)) + 10vh);
+    bottom: calc(calc(46px * var(--layout-scale, 1)) + var(--safe-bottom, 0px));
   }
 
   .effect-icon {
@@ -180,7 +180,7 @@
   }
 
   .popup-player {
-    bottom: calc(calc(140px * var(--layout-scale, 1)) + 10vh);
+    bottom: calc(calc(88px * var(--layout-scale, 1)) + var(--safe-bottom, 0px));
   }
 
   .popup-title {

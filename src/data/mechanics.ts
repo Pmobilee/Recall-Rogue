@@ -252,7 +252,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
   },
   {
     id: 'adapt', name: 'Adapt', type: 'wild',
-    description: 'Adaptive wild effect.',
+    description: 'Auto: ATK, DEF, or Cleanse vs enemy intent.',
     baseValue: 1, apCost: 1, maxPerPool: 0, tags: ['adapt'], launchPhase: 1,
     quickPlayValue: 1, chargeCorrectValue: 1, chargeWrongValue: 1,
   },

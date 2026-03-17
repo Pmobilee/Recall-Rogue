@@ -15,27 +15,67 @@
   }
 
   let { relics, triggeredRelicId = null, maxSlots = 5 }: Props = $props()
+
+  /** Index of the relic whose tooltip is currently open, or null if none. */
+  let openTooltipIndex: number | null = $state(null)
+
+  function toggleTooltip(index: number) {
+    openTooltipIndex = openTooltipIndex === index ? null : index
+  }
+
+  function closeTooltip() {
+    openTooltipIndex = null
+  }
+
+  function handleOutsideClick(e: MouseEvent) {
+    const target = e.target as HTMLElement
+    if (!target.closest('.relic-slot') && !target.closest('.relic-tooltip')) {
+      closeTooltip()
+    }
+  }
+
+  $effect(() => {
+    if (openTooltipIndex !== null) {
+      document.addEventListener('click', handleOutsideClick, true)
+      return () => {
+        document.removeEventListener('click', handleOutsideClick, true)
+      }
+    }
+  })
 </script>
 
 <div class="relic-tray">
-  {#each relics as relic (relic.definitionId)}
-    <div
-      class="relic-slot"
-      class:triggered={triggeredRelicId === relic.definitionId}
-      title={`${relic.name}: ${relic.description}`}
-    >
-      <img
-        class="relic-icon"
-        src={getRelicIconPath(relic.definitionId)}
-        alt={relic.name}
-        onerror={(e) => {
-          const target = e.currentTarget as HTMLImageElement
-          target.style.display = 'none'
-          const fallback = target.nextElementSibling as HTMLElement
-          if (fallback) fallback.style.display = 'grid'
-        }}
-      />
-      <span class="relic-emoji-fallback">{relic.icon}</span>
+  {#each relics as relic, i (relic.definitionId)}
+    <div class="relic-slot-wrapper">
+      <div
+        class="relic-slot"
+        class:triggered={triggeredRelicId === relic.definitionId}
+        role="button"
+        tabindex="0"
+        aria-label={relic.name}
+        onclick={() => toggleTooltip(i)}
+        onkeydown={(e) => e.key === 'Enter' || e.key === ' ' ? toggleTooltip(i) : null}
+      >
+        <img
+          class="relic-icon"
+          src={getRelicIconPath(relic.definitionId)}
+          alt={relic.name}
+          onerror={(e) => {
+            const target = e.currentTarget as HTMLImageElement
+            target.style.display = 'none'
+            const fallback = target.nextElementSibling as HTMLElement
+            if (fallback) fallback.style.display = 'grid'
+          }}
+        />
+        <span class="relic-emoji-fallback">{relic.icon}</span>
+      </div>
+      {#if openTooltipIndex === i}
+        <div class="relic-tooltip" role="tooltip">
+          <div class="tooltip-arrow"></div>
+          <div class="tooltip-name">{relic.name}</div>
+          <div class="tooltip-desc">{relic.description}</div>
+        </div>
+      {/if}
     </div>
   {/each}
   {#each { length: Math.max(0, maxSlots - relics.length) } as _, i (i)}
@@ -57,6 +97,12 @@
     gap: calc(4px * var(--layout-scale, 1));
     z-index: 7;
     pointer-events: auto;
+  }
+
+  .relic-slot-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
   }
 
   .relic-slot {
@@ -128,5 +174,52 @@
   .relic-slot.empty:hover {
     transform: none;
     box-shadow: none;
+  }
+
+  /* Tooltip */
+  .relic-tooltip {
+    position: absolute;
+    right: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(24, 33, 46, 0.95);
+    border: 1.5px solid #C9A227;
+    border-radius: 6px;
+    padding: 8px 10px;
+    max-width: 200px;
+    min-width: 120px;
+    z-index: 100;
+    pointer-events: none;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+    white-space: normal;
+  }
+
+  .tooltip-arrow {
+    position: absolute;
+    right: -7px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 6px solid #C9A227;
+  }
+
+  .tooltip-name {
+    font-family: var(--font-pixel, monospace);
+    font-size: 9px;
+    font-weight: bold;
+    color: #F4D35E;
+    margin-bottom: 4px;
+    line-height: 1.3;
+    letter-spacing: 0.03em;
+  }
+
+  .tooltip-desc {
+    font-size: 8px;
+    color: #D4C9A8;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
   }
 </style>

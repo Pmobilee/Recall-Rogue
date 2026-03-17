@@ -1133,14 +1133,27 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
   const justCompletedEncounter = run.floor.currentEncounter;
   const justCompletedFloor = run.floor.currentFloor;
   const wasMiniBoss = isMiniBossEncounter(justCompletedFloor, justCompletedEncounter);
-  const wasBoss = isBossFloor(justCompletedFloor) && justCompletedEncounter === run.floor.encountersPerFloor;
 
-  // Capture actMap node type BEFORE advancing (for elite detection)
+  // Capture actMap node type BEFORE advancing (for elite/boss detection)
   const justCompletedNodeId = run.floor.actMap?.currentNodeId ?? null;
   const justCompletedNode = justCompletedNodeId
     ? run.floor.actMap?.nodes[justCompletedNodeId] ?? null
     : null;
   const wasElite = justCompletedNode?.type === 'elite';
+
+  // actMap boss nodes have a single encounter; encountersPerFloor is always 3,
+  // so the old check (justCompletedEncounter === run.floor.encountersPerFloor)
+  // is always false for actMap bosses. Include the actMap node-type check as a fallback.
+  const wasBoss =
+    (isBossFloor(justCompletedFloor) && justCompletedEncounter === run.floor.encountersPerFloor)
+    || (justCompletedNode?.type === 'boss');
+
+  console.log('[GameFlow] onEncounterComplete:', result, 'wasBoss:', wasBoss, 'floor:', justCompletedFloor, 'encounter:', justCompletedEncounter);
+
+  // For actMap boss nodes, force floor completion since boss is a single encounter
+  if (run.floor.actMap && justCompletedNode?.type === 'boss') {
+    run.floor.encountersPerFloor = justCompletedEncounter;
+  }
 
   pendingFloorCompleted = advanceEncounter(run.floor);
   pendingClearedFloor = run.floor.currentFloor;

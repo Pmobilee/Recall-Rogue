@@ -66,7 +66,7 @@
     inset: 0;
     background: rgba(13, 17, 23, 0.65);
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     z-index: 200;
     padding: 0 calc(16px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
@@ -85,10 +85,8 @@
   .rest-card {
     background: #161B22;
     border: 2px solid #2ECC71;
-    border-top: none;
-    border-radius: 0 0 12px 12px;
+    border-radius: 12px;
     padding: calc(24px * var(--layout-scale, 1));
-    padding-top: calc(60px * var(--layout-scale, 1) + var(--safe-top, 0px));
     max-width: calc(340px * var(--layout-scale, 1));
     width: 100%;
     display: flex;

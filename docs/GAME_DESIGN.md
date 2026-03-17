@@ -588,7 +588,7 @@ All 26 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = tier multipl
 | Mechanic | AP | Quick Play | Charged Correct | Charged Wrong | Notes |
 |----------|----|------------|-----------------|---------------|-------|
 | **Mirror** | 1 | Copy last card effect (1.0×) | Copy at 1.3× power | Copy at 0.7× | Mirrors the chain too |
-| **Adapt** | 1 | Auto best effect | Auto at 1.5× power | Auto at 0.7× | Smart play |
+| **Adapt** | 1 | Auto best effect at 1.0× | Auto best effect at 1.5× | Auto best effect at 0.7× | Enemy attacking → Block; debuffing → Cleanse; else → Attack. Card text: "Smart: ATK/DEF/Cleanse" |
 
 ### Key Balance Principles (v2)
 
@@ -740,6 +740,8 @@ After each combat encounter, player chooses 1 of 3 card options. Each option is 
 - Golden "+" badge if the card is pre-upgraded
 
 Inspect panel below shows the full mechanic description when a card is selected.
+
+**Reroll:** A "Reroll" button is shown below the card options. Tapping it re-randomizes the currently selected card type with a different fact from the run pool. Maximum **1 reroll per reward screen** — the button greys out and shows "Rerolled" after use. Reroll count resets when a new reward screen opens.
 
 **Floor-based pre-upgrade probability:** Cards in rewards can arrive pre-upgraded based on floor depth:
 | Floor Range | Upgrade Chance |
@@ -1331,7 +1333,12 @@ Echo cards deal 1.0× regardless of quiz result (prevents wrong-Echo 0.5× penal
 - Tray at bottom of combat screen shows all equipped relics (up to 5)
 - Active relics pulse on trigger (e.g., Aegis Stone glows when block carries)
 - Dormant relics (condition not met) shown at 50% opacity
-- Hover/tap shows relic description and activation condition
+- Tap a relic slot to open an in-game tooltip popup showing the relic name and description
+  - Tooltip appears to the left of the tray with a golden arrow pointing toward the relic
+  - Dark semi-transparent background (`rgba(24, 33, 46, 0.95)`) with gold border (`#C9A227`)
+  - Relic name shown in pixel font (`var(--font-pixel)`); description in small body text
+  - Only one tooltip visible at a time; tapping outside or another relic closes/switches it
+  - Mobile-friendly: no hover required, works via tap/click
 
 ### Hidden Relic Synergies
 
@@ -1691,6 +1698,25 @@ The hub screen includes a **Study Mode dropdown** near the dungeon gate:
 - **Anki imports and community packs:** ALWAYS free on all platforms.
 - **Steam purchases are permanent.** Mobile subscription unlocks are active while subscribed.
 
+### Entitlement Architecture [IMPLEMENTED — AR-81]
+
+All content gating is centralised in `src/services/entitlementService.ts`. Components must call `hasDomainAccess(domain)` or `getAccessibleDomains()` rather than checking `platform` directly.
+
+**Free tier domains (mobile/web):** `general_knowledge`, `natural_sciences`, `geography`.
+
+**Steam language DLC map** (each DLC unlocks the `language` canonical domain):
+
+| DLC ID | Language Pack |
+|--------|--------------|
+| `dlc_japanese` | Japanese (JLPT N5–N3) |
+| `dlc_korean` | Korean (TOPIK A1–B1) |
+| `dlc_spanish` | Spanish (CEFR A1–B1) |
+| `dlc_french` | French (CEFR A1–B1) |
+| `dlc_mandarin` | Mandarin (HSK 1–3) |
+| `dlc_german` | German (Goethe A1–B1) |
+
+Purchase prompts are surfaced via `getUnlockAction(domain)` which returns the appropriate CTA (subscribe on mobile, DLC link on Steam) without interrupting gameplay flow.
+
 ---
 
 ## 26. Post-Run Summary (Adventurer's Journal)
@@ -1807,10 +1833,22 @@ All facts must pass through:
 
 - **Stack:** Vite 7, Svelte 5, TypeScript 5.9, Phaser 3
 - **Mobile:** Capacitor for Android/iOS
+- **Desktop:** Tauri v2 desktop wrapper (~10MB installer vs Electron's ~150MB). Rust backend for Steamworks SDK integration. See `src-tauri/` for scaffold.
 - **Backend:** Fastify + TypeScript (planned), containerized
 - **Data:** Quiz facts via API, cached locally for offline play
 - **FSRS:** `ts-fsrs` npm package
 - **Sprites:** ComfyUI with SDXL + pixel art LoRA, PNG format, power-of-2 dimensions
+
+### Platform Detection
+
+`src/services/platformService.ts` exposes `platform: 'mobile' | 'desktop' | 'web'` and boolean shortcuts `isDesktop`, `isMobile`, `isWeb`, and `hasSteam`.
+
+Detection order:
+1. `window.__TAURI__` present → `'desktop'` (Tauri native window)
+2. `window.Capacitor` present → `'mobile'` (iOS / Android via Capacitor)
+3. Fallback → `'web'` (plain browser)
+
+**Critical distinction:** Layout mode (portrait/landscape) is **separate** from platform. Layout is determined by viewport aspect ratio at runtime. Platform is determined by which native wrapper is active. A tablet in landscape gets landscape layout. A desktop with a vertical monitor gets portrait layout.
 
 ### Layout Scaling System
 
@@ -2033,6 +2071,65 @@ Phase 2: See answer (back of card) → [Wrong] [Hard] [Good] [Easy]
 - Re-import updates existing facts, no duplicates.
 
 See `docs/roadmap/phases/anki-import/AR-85-ANKI-DECK-IMPORT.md` for implementation details.
+
+---
+
+## 38. Steam Integration [PLANNED — Desktop Port]
+
+> **Implementation AR:** AR-80 (Steam Integration Service), AR-81 (Monetization & Entitlements)
+
+All Steam API calls are routed through `src/services/steamService.ts`, which guards every call behind `hasSteam` (= `isDesktop` from `platformService.ts`). On web and mobile, all Steam calls silently no-op. The Rust/Tauri side (`src-tauri/src/steam.rs`) is stubbed pending Steamworks SDK crate integration.
+
+### Achievements
+
+| Steamworks API Name | In-Game Trigger | Display Name |
+|---------------------|-----------------|--------------|
+| `FIRST_RUN` | First run completed | First Steps |
+| `REACH_ACT_2` | Act 2 reached | Into the Depths |
+| `REACH_ACT_3` | Act 3 reached | The Archive Awaits |
+| `DEFEAT_CURATOR` | Final boss defeated | Knowledge is Power |
+| `CHAIN_5` | 5-card chain built in one turn | Chain Master |
+| `MASTER_10` | 10 facts at Tier 3 | Scholar |
+| `MASTER_50` | 50 facts at Tier 3 | Professor |
+| `MASTER_100` | 100 facts at Tier 3 | Sage |
+| `PERFECT_ENCOUNTER` | Encounter won without taking damage | Untouchable |
+| `PERFECT_ACCURACY` | Run completed with 100% Charge accuracy | Flawless Mind |
+| `ASCENSION_1` | Ascension 1 run completed | Rising Challenge |
+| `ASCENSION_10` | Ascension 10 run completed | Ascended |
+| `RELIC_COLLECTOR` | All relics found at least once | Relic Hunter |
+| `ALL_DOMAINS` | Full run in every knowledge domain | Renaissance |
+
+Achievements are registered in `src/data/steamAchievements.ts`. Unlock calls go through `steamService.unlockAchievement(id)`.
+
+### Steam Cloud Save
+
+- `steamService.cloudSave(data)` — serialize run + player save to JSON, write via Steamworks Cloud
+- `steamService.cloudLoad()` — read cloud save on launch
+- Conflict resolution: compare timestamps; prompt player if cloud save is newer than local
+- Auto-save triggers: run end, encounter end
+
+### Rich Presence
+
+Updated on every screen change via `updateRichPresence()` wired into `CardApp.svelte` `$effect`:
+
+| Screen | Rich Presence string |
+|--------|----------------------|
+| `hub` / `mainMenu` | "In the Hub" |
+| `combat` | "Floor N — Fighting {enemy}" |
+| `cardReward` | "Choosing Rewards" |
+| `shopRoom` | "Browsing the Shop" |
+| `library` | "Studying — {domain}" |
+| `restRoom` | "Resting at the Campsite" |
+| `dungeonMap` / `roomSelection` | "Floor N — Choosing Path" |
+| `retreatOrDelve` | "Deciding — Retreat or Delve Deeper" |
+
+### Steam Deck Verification
+
+Target resolution: **1280×800** (landscape layout, same as desktop). All UI must be readable and all interactions reachable by mouse/trackpad (keyboard shortcuts are acceleration, not required). On-screen keyboard triggers for any text input field.
+
+### Steam Overlay Compatibility
+
+Phaser canvas must not capture `Shift+Tab` (Steam Overlay toggle). Verified by ensuring the keyboard shortcut service ignores `Shift+Tab` in its bindings.
 
 ---
 

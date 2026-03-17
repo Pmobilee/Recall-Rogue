@@ -5,7 +5,7 @@ Every card is a fact. Learning IS gameplay.
 ## 1. System Overview
 
 ```
-Tech Stack: Vite 7 + Svelte 5 + TypeScript 5.9 + Phaser 3 + Capacitor (Android/iOS)
+Tech Stack: Vite 7 + Svelte 5 + TypeScript 5.9 + Phaser 3 + Capacitor (Android/iOS) + Tauri v2 (Desktop/Steam)
 Three game systems: Card Combat, Deck Building, Run Progression
 Data: sql.js fact database (4,537 facts, expandable to 20,000+)
 Persistence: localStorage (profile-namespaced), optional cloud sync
@@ -142,8 +142,9 @@ Located in `src/services/`:
 | Analytics | `analyticsService.ts` | EXISTS — reuse |
 | API client | `apiClient.ts` | EXISTS — reuse |
 | Profile mgmt | `profileService.ts` | EXISTS — reuse |
-| Haptics | `hapticService.ts` | EXISTS — reuse |
-| Push notifications | `notificationService.ts` | Built — 4 types, local scheduling via Capacitor |
+| Platform detection | `platformService.ts` | Built (AR-72) — `platform: 'mobile' | 'desktop' | 'web'`; `isDesktop`, `isMobile`, `isWeb`, `hasSteam` exports |
+| Haptics | `hapticService.ts` | EXISTS — mobile-only; guarded by `isMobile` (no-op on desktop/web) |
+| Push notifications | `notificationService.ts` | Built — 4 types, local scheduling via Capacitor; guarded by `isMobile` |
 | Funness boost | `funnessBoost.ts` | Built — new player bias toward higher-funScore facts (runs 0–99, linear decay) |
 | Surge system | `surgeSystem.ts` | Built (v2) — Surge turn timing (turns 2, 5, 8, …), state flags, Surge multiplier application |
 | Chain system | `chainSystem.ts` | Built (AR-70) — Knowledge Chain tracking, chainType (0-5) sequence, chain multiplier calculation |
@@ -618,7 +619,16 @@ src/
     studyPresetService.ts  — Study preset CRUD (up to 10 named presets)
     presetPoolBuilder.ts   — Resolves study mode into domain + subcategory filters
     masteryScalingService.ts — Anti-cheat mastery scaling (reward multiplier + timer boost)
+    platformService.ts     — AR-72 platform detection: `platform: 'mobile'|'desktop'|'web'`; detects Tauri (`__TAURI__`), Capacitor, or bare browser at module load time.
+    hapticService.ts       — Capacitor haptic feedback; guarded by `isMobile` — no-op on desktop/web.
+    notificationService.ts — Capacitor push notifications; `requestNotificationPermission()` returns false immediately on non-mobile platforms.
     factsDB.ts, saveService.ts, sm2.ts, quizService.ts, audioService.ts, ...
+src-tauri/               — Tauri v2 desktop wrapper scaffold (Rust not yet compiled — requires Rust toolchain)
+  tauri.conf.json        — Window config: 1920×1080 default, 1280×720 min, resizable
+  Cargo.toml             — Rust deps: tauri v2, tauri-plugin-shell, serde
+  build.rs               — tauri-build entry point
+  src/main.rs            — Minimal Tauri app entry (Builder::default + shell plugin)
+  icons/                 — App icon placeholder directory
   ui/
     components/
       CardCombatOverlay.svelte  — Bottom 45% interaction zone, enemy intent panel, enemy name header (color-coded by category), floor info, bounty strip (bottom-right above End Turn), end turn button with gold pulse, discard pile counter, 5-phase card animation orchestration (reveal→swoosh→impact→discard) with per-archetype SFX via setTimeout chains and animatingCards buffer pattern.

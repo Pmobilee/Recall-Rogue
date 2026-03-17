@@ -2,8 +2,10 @@
  * Local push notification scheduling for Recall Rogue.
  * 4 notification types (streak risk, milestone, review due, win-back),
  * max 1/day, quiet hours enforced (10 PM – 8 AM).
- * Falls back to no-op on web or when Capacitor plugin unavailable.
+ * Falls back to no-op on web, Tauri desktop, or when Capacitor plugin unavailable.
  */
+
+import { isMobile } from './platformService';
 
 // ── Capacitor Plugin Interface ──────────────────────────────────
 // Typed locally so we don't need @capacitor/local-notifications installed.
@@ -169,6 +171,10 @@ export function setNotificationPreferences(prefs: Partial<NotificationPreference
  * @returns true if permission was granted.
  */
 export async function requestNotificationPermission(): Promise<boolean> {
+  // Push notifications are only available on mobile (Capacitor).
+  // On desktop (Tauri) and web, silently return false.
+  if (!isMobile) return false;
+
   const state = loadState();
   state.permissionRequested = true;
 

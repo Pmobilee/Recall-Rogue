@@ -315,18 +315,18 @@ export default class BootAnimScene extends Phaser.Scene {
     // Make camera transparent so blurred hub shows through ring holes
     this.cameras.main.setBackgroundColor('rgba(0,0,0,0)')
 
-    const big = s * 1.3
-    const mid = s * 0.55
-    const small = s * 0.45
+    // All rings at coverScale — they FILL the screen. You see deeper rings
+    // only through each ring's transparent center hole. Each ring has unique
+    // rock patterns so you get distinct layered depth through the holes.
+    const rs = s * 1.2 // slight overscan so edges never show
     const flyPastScale = s * 3.5
 
-    // Create rings — no masks, all 3 visible through each other's holes
     const ring1 = this.add.image(cx, cy + 200, 'boot_cave_ring_1')
-      .setScale(big).setDepth(12).setAlpha(0)
+      .setScale(rs).setDepth(12).setAlpha(0)
     const ring2 = this.add.image(cx, cy + 160, 'boot_cave_ring_2')
-      .setScale(mid).setDepth(11).setAlpha(1).setTint(0x667788)
+      .setScale(rs).setDepth(11).setAlpha(1).setTint(0x778899)
     const ring3 = this.add.image(cx, cy + 120, 'boot_cave_ring_3')
-      .setScale(small).setDepth(10).setAlpha(1).setTint(0x556677)
+      .setScale(rs).setDepth(10).setAlpha(1).setTint(0x556677)
     this.sceneSprites.push(ring1, ring2, ring3)
 
     // Ring 1 fades in gradually
