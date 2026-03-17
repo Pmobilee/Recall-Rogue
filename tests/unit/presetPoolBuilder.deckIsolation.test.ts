@@ -49,18 +49,27 @@ describe('presetPoolBuilder deck isolation', () => {
         category: ['language_vocab'],
         language: 'ja',
         difficulty: 3,
+        quizQuestion: 'What does this word mean?',
+        correctAnswer: 'Answer',
+        distractors: ['A', 'B', 'C'],
       },
       {
         id: 'ja-kanji-n1-1',
         category: ['language_kanji'],
         language: 'ja',
         difficulty: 3,
+        quizQuestion: 'What does this kanji mean?',
+        correctAnswer: 'Answer',
+        distractors: ['A', 'B', 'C'],
       },
       {
         id: 'ja-grammar-n2-1',
         category: ['language_grammar'],
         language: 'ja',
         difficulty: 3,
+        quizQuestion: 'What is the grammar pattern?',
+        correctAnswer: 'Answer',
+        distractors: ['A', 'B', 'C'],
       },
     ])
   })

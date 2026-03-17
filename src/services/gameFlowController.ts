@@ -96,6 +96,8 @@ import {
 import { getCardTier } from './tierDerivation'
 import { shuffled } from './randomUtils'
 import { getAscensionModifiers } from './ascension';
+import { openRewardRoom } from './rewardRoomBridge';
+import type { RewardItem } from '../game/scenes/RewardRoomScene';
 import type { RelicDefinition } from '../data/relics/types'
 import { STARTER_RELIC_IDS, RELIC_BY_ID } from '../data/relics/index'
 import {
@@ -772,6 +774,7 @@ export function onStarterRelicSelected(relicId: string): void {
       acquiredAtEncounter: 0,
       triggerCount: 0,
     });
+    if (!(run.offeredRelicIds instanceof Set)) run.offeredRelicIds = new Set(run.offeredRelicIds as any ?? []);
     run.offeredRelicIds.add(relicId);
   }
 
@@ -873,6 +876,8 @@ async function proceedAfterReward(): Promise<void> {
   currentScreen.set('dungeonMap');
 }
 
+const USE_REWARD_ROOM_SCENE = true;
+
 function openCardReward(): void {
   const run = get(activeRunState);
   if (!run) return;
@@ -882,6 +887,7 @@ function openCardReward(): void {
     getActiveDeckFactIds(),
     run.consumedRewardFactIds,
     run.selectedArchetype,
+    run.floor.currentFloor,
   );
 
   if (options.length === 0) {
@@ -889,6 +895,81 @@ function openCardReward(): void {
     return;
   }
 
+  if (USE_REWARD_ROOM_SCENE) {
+    const bundle = get(activeRewardBundle);
+    const totalGold = bundle ? (bundle.goldEarned + bundle.comboBonus) : 0;
+    const healAmount = bundle ? bundle.healAmount : 0;
+
+    const rewards: RewardItem[] = [];
+    // Always include gold (minimum 5 from encounter)
+    const displayGold = totalGold > 0 ? totalGold : 5;
+    rewards.push({ type: 'gold', amount: displayGold });
+    // Always include a health vial
+    const displayHeal = healAmount > 0 ? healAmount : 8;
+    rewards.push({ type: 'health_vial', size: displayHeal > 15 ? 'large' : 'small', healAmount: displayHeal });
+    for (const card of options) {
+      rewards.push({ type: 'card', card });
+    }
+
+    analyticsService.track({
+      name: 'card_reward',
+      properties: {
+        option_types: options.map((option) => option.cardType),
+        floor: run.floor.currentFloor,
+        encounter: run.floor.currentEncounter,
+      },
+    });
+
+    void openRewardRoom(
+      rewards,
+      // onGoldCollected
+      (amount) => {
+        const r = get(activeRunState);
+        if (!r) return;
+        r.currency += amount;
+        activeRunState.set(r);
+      },
+      // onVialCollected
+      (healAmt) => {
+        const r = get(activeRunState);
+        if (!r) return;
+        healPlayer(r, healAmt);
+        activeRunState.set(r);
+      },
+      // onCardAccepted
+      (card) => {
+        const r = get(activeRunState);
+        if (!r) return;
+        r.consumedRewardFactIds.add(card.factId);
+        activeRunState.set(r);
+        addRewardCardToActiveDeck(card);
+        analyticsService.track({
+          name: 'card_type_selected',
+          properties: {
+            card_type: card.cardType,
+            fact_id: card.factId,
+            floor: r.floor.currentFloor,
+            encounter: r.floor.currentEncounter,
+          },
+        });
+      },
+      // onRelicAccepted
+      (relic) => {
+        addRelicToRun(relic);
+      },
+      // onComplete
+      () => {
+        activeCardRewardOptions.set([]);
+        activeRewardBundle.set(null);
+        activeRewardRevealStep.set('gold');
+        autoSaveRun('dungeonMap');
+        void proceedAfterReward();
+      },
+    );
+    return;
+  }
+
+  // Existing Svelte card reward (fallback)
   const bundle = get(activeRewardBundle);
   const initialRevealStep = (!bundle || (bundle.goldEarned === 0 && bundle.healAmount === 0))
     ? 'card'
@@ -958,6 +1039,7 @@ function addRelicToRunDirect(relic: RelicDefinition): void {
     triggerCount: 0,
   })
   // Only acquired relics are added to offeredRelicIds (declined options are NOT tracked)
+  if (!(run.offeredRelicIds instanceof Set)) run.offeredRelicIds = new Set(run.offeredRelicIds as any ?? []);
   run.offeredRelicIds.add(relic.id)
   activeRunState.set(run)
   updateRelicPityCounter(relic)
@@ -1181,6 +1263,7 @@ function openShopRoom(): void {
     getActiveDeckFactIds(),
     run.consumedRewardFactIds,
     run.selectedArchetype,
+    run.floor.currentFloor,
   );
   const shopCards = priceShopCards(cardRewardOptions.slice(0, 3), run.floor.currentFloor);
 

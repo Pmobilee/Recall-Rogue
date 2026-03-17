@@ -282,9 +282,12 @@ export class EnemySpriteSystem {
    * Pause idle animations and reset container to neutral position.
    */
   private stopIdle(): void {
-    this.idleBobTween?.pause()
-    this.breatheTween?.pause()
-    this.wobbleTween?.pause()
+    this.idleBobTween?.destroy()
+    this.breatheTween?.destroy()
+    this.wobbleTween?.destroy()
+    this.idleBobTween = null
+    this.breatheTween = null
+    this.wobbleTween = null
     this.killCustomIdleTweens()
     this.container.setPosition(this.baseX, this.baseY)
     this.container.setScale(1)
@@ -296,15 +299,7 @@ export class EnemySpriteSystem {
    */
   private resumeIdle(): void {
     if (this.reduceMotion) return
-    this.idleBobTween?.resume()
-    this.breatheTween?.resume()
-    this.wobbleTween?.resume()
-    // Restart custom pattern if it was running
-    const behavior = this.animConfig.idleBehavior
-    if (behavior?.pattern && behavior.pattern.length > 0) {
-      this.customPatternRunning = true
-      this.runPatternStep(behavior.pattern, 0)
-    }
+    this.startIdle()
   }
 
   /**

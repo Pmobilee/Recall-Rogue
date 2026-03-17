@@ -15,6 +15,7 @@
   } from './ui/stores/gameState'
   import type { Screen } from './ui/stores/gameState'
   import { navigateToScreen } from './services/screenController'
+  import { openTestRewardRoom } from './services/rewardRoomBridge'
   import {
     activeCardRewardOptions,
     activeMysteryEvent,
@@ -137,6 +138,8 @@
   import TopicInterestsPage from './ui/components/TopicInterestsPage.svelte'
   import KnowledgeLevelPopup from './ui/components/KnowledgeLevelPopup.svelte'
   import { knowledgeLevelSelected } from './services/cardPreferences'
+  import RewardCardDetail from './ui/components/RewardCardDetail.svelte'
+  import { rewardCardDetail, getCardDetailCallbacks } from './services/rewardRoomBridge'
   import { createDefaultCalibrationState, setGlobalKnowledgeLevel } from './services/difficultyCalibration'
   import type { KnowledgeLevel } from './services/difficultyCalibration'
 
@@ -174,6 +177,32 @@
   }
 
   async function handleStartRun(): Promise<void> {
+    if (hasActiveRun()) {
+      const saved = loadActiveRun()
+      if (saved) {
+        guardRunStats = {
+          floor: saved.runState.floor.currentFloor,
+          gold: saved.runState.currency,
+          encounters: saved.runState.encountersWon,
+          factsCorrect: saved.runState.factsCorrect,
+        }
+      }
+      showRunGuardPopup = true
+      return
+    }
+    if (await maybePromptOutsideDueReviews()) return
+    startNewRun({ includeOutsideDueReviews: false })
+  }
+
+  function handleGuardContinue(): void {
+    showRunGuardPopup = false
+    guardRunStats = null
+    handleResumeActiveRun()
+  }
+
+  async function handleGuardAbandon(): Promise<void> {
+    showRunGuardPopup = false
+    guardRunStats = null
     if (await maybePromptOutsideDueReviews()) return
     startNewRun({ includeOutsideDueReviews: false })
   }
@@ -227,6 +256,66 @@
 
   function handleOpenTopicInterests(): void {
     transitionScreen('topicInterests')
+  }
+
+  function handleReplayBootAnim(): void {
+    console.log('[BootAnim] Replay triggered, phaserBooted:', phaserBooted)
+    showBootAnimation = true
+
+    if (phaserBooted) {
+      // Phaser already running — add scene if missing, then start it
+      Promise.all([
+        import('./game/CardGameManager'),
+        import('./game/scenes/BootAnimScene'),
+      ]).then(([{ CardGameManager }, { default: BootAnimScene }]) => {
+        const mgr = CardGameManager.getInstance()
+        const game = mgr.getGame()
+        console.log('[BootAnim] game:', !!game, 'transparent:', game?.config?.transparent)
+        if (!game) return
+
+        // Reset phaser container visibility
+        const container = document.getElementById('phaser-container')
+        console.log('[BootAnim] container visible class:', container?.classList.contains('visible'))
+        if (container) {
+          container.style.transition = ''
+          container.style.opacity = ''
+        }
+
+        // Add scene if it wasn't included in initial boot
+        const existing = game.scene.getScene('BootAnimScene')
+        console.log('[BootAnim] scene exists:', !!existing)
+        if (!existing) {
+          game.scene.add('BootAnimScene', BootAnimScene)
+          console.log('[BootAnim] added scene')
+        } else {
+          game.scene.stop('BootAnimScene')
+          console.log('[BootAnim] stopped existing scene')
+        }
+
+        // Start the boot animation scene
+        game.scene.start('BootAnimScene')
+        console.log('[BootAnim] started scene, active scenes:', game.scene.getScenes(true).map((s: Phaser.Scene) => s.scene.key))
+
+        // Listen for completion
+        game.events.once('boot-anim-complete', () => {
+          const el = document.getElementById('phaser-container')
+          if (el) {
+            el.style.transition = 'opacity 0.3s ease-out'
+            el.style.opacity = '0'
+          }
+          setTimeout(() => {
+            showBootAnimation = false
+            mgr.stopBootAnim()
+            if (el) {
+              el.style.transition = ''
+              el.style.opacity = ''
+            }
+          }, 350)
+        })
+      })
+    } else {
+      void ensurePhaserBooted(true)
+    }
   }
 
   let gainedFactText = $state<string | null>(null)
@@ -529,8 +618,13 @@
     hasRunSave = false
   }
 
+  let showBootAnimation = $state(false)
+
   let showAbandonConfirm = $state(false)
   let abandonRunInfo = $state<{ floor: number; gold: number; encounters: number; factsCorrect: number } | null>(null)
+
+  let showRunGuardPopup = $state(false)
+  let guardRunStats = $state<{ floor: number; gold: number; encounters: number; factsCorrect: number } | null>(null)
 
   function handleAbandonRun(): void {
     const saved = loadActiveRun()
@@ -559,7 +653,7 @@
 
   let activeRunFloor = $derived($activeRunState?.floor.currentFloor ?? 0)
   let hasRunSave = $state(hasActiveRun())
-  let showActiveRunBanner = $derived(!$activeRunState && hasRunSave)
+  let showActiveRunBanner = $derived(!$activeRunState && hasRunSave && !showRunGuardPopup)
 
   $effect(() => {
     if ($currentScreen === 'hub') {
@@ -595,15 +689,39 @@
   let phaserBooted = false
   let phaserBootPromise: Promise<void> | null = null
 
-  function ensurePhaserBooted(): Promise<void> {
+  function ensurePhaserBooted(startAnimation = false): Promise<void> {
     if (phaserBooted) return Promise.resolve()
     if (phaserBootPromise) return phaserBootPromise
 
     phaserBootPromise = import('./game/CardGameManager')
       .then(({ CardGameManager }) => {
         const mgr = CardGameManager.getInstance()
-        mgr.boot()
+        mgr.boot(startAnimation)
         phaserBooted = true
+
+        if (startAnimation) {
+          const game = mgr.getGame()
+          if (game) {
+            game.events.once('boot-anim-complete', () => {
+              // Fade Phaser container out via CSS transition, then hide it
+              const container = document.getElementById('phaser-container')
+              if (container) {
+                container.style.transition = 'opacity 0.3s ease-out'
+                container.style.opacity = '0'
+              }
+              setTimeout(() => {
+                showBootAnimation = false
+                mgr.stopBootAnim()
+                localStorage.setItem('recall-rogue-boot-anim-seen', 'true')
+                // Reset container styles for future combat use
+                if (container) {
+                  container.style.transition = ''
+                  container.style.opacity = ''
+                }
+              }, 350)
+            })
+          }
+        }
       })
       .catch((error) => {
         phaserBootPromise = null
@@ -615,7 +733,7 @@
   }
 
   $effect(() => {
-    if ($currentScreen === 'combat') {
+    if ($currentScreen === 'combat' || $currentScreen === 'rewardRoom') {
       void ensurePhaserBooted()
     }
   })
@@ -641,6 +759,20 @@
     updateLayoutScale()
     window.addEventListener('resize', updateLayoutScale)
 
+    // Boot animation — play once on first launch
+    const urlParams = new URLSearchParams(window.location.search)
+    const forceAnim = urlParams.has('forceBootAnim')
+    const skipAnim = !forceAnim && (
+      localStorage.getItem('recall-rogue-boot-anim-seen') === 'true'
+      || urlParams.has('skipOnboarding')
+      || urlParams.has('devpreset')
+    )
+
+    if (!skipAnim) {
+      showBootAnimation = true
+      void ensurePhaserBooted(true)
+    }
+
     return () => {
       window.removeEventListener('pointerdown', onInteraction)
       window.removeEventListener('keydown', onInteraction)
@@ -649,16 +781,21 @@
   })
 </script>
 
-<FireflyBackground />
+{#if !showBootAnimation}
+  <FireflyBackground />
+{/if}
 <div class="card-app" data-screen={$currentScreen}>
   <div
     id="phaser-container"
     class="phaser-container"
-    class:visible={$currentScreen === 'combat'}
+    class:visible={showBootAnimation || $currentScreen === 'combat' || $currentScreen === 'rewardRoom'}
+    class:boot-anim-active={showBootAnimation}
     bind:this={phaserContainer}
   ></div>
 
   {#if $currentScreen === 'hub' || $currentScreen === 'mainMenu' || $currentScreen === 'base'}
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <div class="hub-wrapper" class:no-interact={showBootAnimation} class:blurred={showBootAnimation && !hubDeblurring} class:deblurring={hubDeblurring}>
     <HubScreen
       streak={$playerSave?.stats.currentStreak ?? 0}
       lastRunSummary={$lastRunSummary}
@@ -673,6 +810,7 @@
       onOpenRelicSanctum={() => handleOpenRelicSanctum()}
       onOpenDeckBuilder={handleOpenDeckBuilder}
       onOpenTopicInterests={handleOpenTopicInterests}
+      onReplayBootAnim={handleReplayBootAnim}
     />
     {#if showActiveRunBanner}
       <div class="active-run-banner" data-testid="active-run-banner">
@@ -681,6 +819,11 @@
         <button type="button" class="banner-abandon-btn" data-testid="btn-abandon-run" onclick={handleAbandonRun}>Abandon</button>
       </div>
     {/if}
+    <button
+      type="button"
+      style="position: fixed; bottom: 60px; right: 10px; z-index: 999; background: #7c3aed; color: white; border: none; border-radius: 8px; padding: 8px 12px; font-size: 11px; font-weight: 700; opacity: 0.8;"
+      onclick={() => openTestRewardRoom()}
+    >Test Reward Room</button>
     {#if showOutsideDuePrompt}
       <div class="abandon-confirm-overlay" role="dialog" aria-modal="true" aria-label="Outside deck reviews prompt">
         <div class="abandon-confirm-modal">
@@ -714,6 +857,35 @@
         </div>
       </div>
     {/if}
+    {#if showRunGuardPopup}
+      <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
+      <div
+        class="abandon-confirm-overlay"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Run in progress"
+        tabindex="-1"
+        onclick={(e) => { if (e.target === e.currentTarget) { showRunGuardPopup = false; guardRunStats = null } }}
+      >
+        <div class="abandon-confirm-modal run-guard-modal">
+          <h3 class="run-guard-title">Run In Progress</h3>
+          {#if guardRunStats}
+            <div class="abandon-run-stats">
+              <div class="abandon-stat"><span class="stat-label">Floor</span><span class="stat-value">{guardRunStats.floor}</span></div>
+              <div class="abandon-stat"><span class="stat-label">Gold</span><span class="stat-value">{guardRunStats.gold}</span></div>
+              <div class="abandon-stat"><span class="stat-label">Encounters Won</span><span class="stat-value">{guardRunStats.encounters}</span></div>
+              <div class="abandon-stat"><span class="stat-label">Facts Correct</span><span class="stat-value">{guardRunStats.factsCorrect}</span></div>
+            </div>
+          {/if}
+          <p class="abandon-warning">Abandoning will lose all progress from this run.</p>
+          <div class="abandon-confirm-buttons">
+            <button class="run-guard-btn-continue" onclick={handleGuardContinue}>Continue Run</button>
+            <button class="run-guard-btn-abandon" onclick={handleGuardAbandon}>Abandon & Start New</button>
+          </div>
+        </div>
+      </div>
+    {/if}
+  </div>
   {/if}
 
   {#if $currentScreen === 'hub' && $onboardingState.hasCompletedOnboarding && !$knowledgeLevelSelected}
@@ -1027,6 +1199,17 @@
     </div>
   {/if}
 
+  {#if $rewardCardDetail}
+    {@const callbacks = getCardDetailCallbacks()}
+    {#if callbacks}
+      <RewardCardDetail
+        card={$rewardCardDetail}
+        onaccept={callbacks.onAccept}
+        onreject={callbacks.onReject}
+      />
+    {/if}
+  {/if}
+
   <!-- Screen transition overlay -->
   <div
     class="screen-transition"
@@ -1091,6 +1274,37 @@
 
   .phaser-container.visible {
     display: block;
+  }
+
+  .phaser-container.boot-anim-active {
+    z-index: 9999;
+    max-width: none;
+    width: 100vw;
+  }
+
+  /* Stretch canvas to fill viewport during boot animation (no letterboxing) */
+  .phaser-container.boot-anim-active :global(canvas) {
+    object-fit: cover !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+  }
+
+  .hub-wrapper {
+    display: contents;
+  }
+
+  .hub-wrapper.no-interact {
+    display: block;
+    pointer-events: none;
+  }
+
+  .hub-wrapper.blurred {
+    filter: blur(10px) brightness(0.4);
+    transition: filter 1s ease-out;
+  }
+
+  .hub-wrapper.deblurring {
+    filter: blur(0px) brightness(1);
   }
 
   .pause-btn {
@@ -1272,6 +1486,37 @@
     color: white;
     font-size: 14px;
     font-weight: bold;
+    cursor: pointer;
+  }
+
+  .run-guard-modal {
+    border-color: #3b82f6;
+  }
+
+  .run-guard-title {
+    color: #60a5fa;
+    margin: 0 0 16px;
+    font-size: 20px;
+  }
+
+  .run-guard-btn-continue {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    background: #16a34a;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .run-guard-btn-abandon {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid #e74c3c;
+    background: transparent;
+    color: #e74c3c;
+    font-size: 14px;
     cursor: pointer;
   }
 

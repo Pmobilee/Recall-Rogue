@@ -167,6 +167,7 @@ function buildFixedStarterDeck(runPool: Card[]): Card[] {
     for (const card of picked) {
       result.push({
         ...card,
+        cardType: m.type,
         mechanicId: m.id,
         mechanicName: m.name,
         baseEffectValue: m.baseValue,

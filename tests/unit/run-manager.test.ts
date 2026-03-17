@@ -14,7 +14,7 @@ describe('RunManager', () => {
     it('initializes with correct defaults', () => {
       const state = createRunState('science', 'history')
       expect(state.isActive).toBe(true)
-      expect(state.playerHp).toBe(PLAYER_START_HP)
+      expect(state.playerHp).toBe(PLAYER_MAX_HP)
       expect(state.playerMaxHp).toBe(PLAYER_MAX_HP)
       expect(state.currency).toBe(0)
       expect(state.cardsEarned).toBe(0)
@@ -30,9 +30,9 @@ describe('RunManager', () => {
       expect(state.secondaryDomain).toBe('geography')
     })
 
-    it('starts with PLAYER_START_HP', () => {
+    it('starts with PLAYER_MAX_HP', () => {
       const state = createRunState('science', 'history')
-      expect(state.playerHp).toBe(PLAYER_START_HP)
+      expect(state.playerHp).toBe(PLAYER_MAX_HP)
     })
 
     it('applies ascension level 14 max HP override', () => {
@@ -84,8 +84,8 @@ describe('RunManager', () => {
     it('reduces HP correctly', () => {
       const state = createRunState('science', 'history')
       const remaining = damagePlayer(state, 20)
-      expect(remaining).toBe(PLAYER_START_HP - 20)
-      expect(state.playerHp).toBe(PLAYER_START_HP - 20)
+      expect(remaining).toBe(PLAYER_MAX_HP - 20)
+      expect(state.playerHp).toBe(PLAYER_MAX_HP - 20)
     })
 
     it('does not go below 0', () => {
@@ -101,8 +101,8 @@ describe('RunManager', () => {
       const state = createRunState('science', 'history')
       damagePlayer(state, 30)
       const newHp = healPlayer(state, 15)
-      expect(newHp).toBe(PLAYER_START_HP - 30 + 15)
-      expect(state.playerHp).toBe(PLAYER_START_HP - 30 + 15)
+      expect(newHp).toBe(PLAYER_MAX_HP - 30 + 15)
+      expect(state.playerHp).toBe(PLAYER_MAX_HP - 30 + 15)
     })
 
     it('caps at maxHp', () => {

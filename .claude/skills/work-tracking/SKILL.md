@@ -19,6 +19,11 @@ description: Enforces AR-based work tracking for all implementation tasks. Ensur
 #
 # AGENTS: You are the #1 violator of this rule. DO NOT start coding without
 # checking if an AR doc exists. If it doesn't exist, CREATE ONE FIRST.
+#
+# ⚠️ AR DOCS MUST BE WRITTEN BY THE OPUS ORCHESTRATOR DIRECTLY ⚠️
+# NEVER delegate AR doc creation to Haiku or Sonnet sub-agents.
+# Sub-agents lose critical conversation context and produce shallow specs.
+# The orchestrator writes the AR doc, then delegates IMPLEMENTATION to workers.
 # 🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨
 
 # Work Tracking Enforcement
@@ -90,6 +95,7 @@ Total: N files created/modified, M verification steps
 
 ### Rules for Writing Phase Docs
 
+0. **AR docs are ALWAYS written by the Opus orchestrator** — NEVER delegated to sub-agents. Sub-agents lack the conversation context needed to write accurate specs.
 1. **Every task gets a checkbox** — `- [ ]` for pending, `- [x]` for done
 2. **Tasks are atomic** — one file, one operation, one verifiable outcome
 3. **Tasks have acceptance criteria** — what must be true when done

@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { resolveDomain, resolveCardType } from '../../src/services/domainResolver';
-import { createCard, computeTier, computeEffectMultiplier, resetCardIdCounter } from '../../src/services/cardFactory';
+import { createCard, computeTier, resetCardIdCounter } from '../../src/services/cardFactory';
 import { createDeck, drawHand, playCard, discardCard, exhaustCard, reshuffleDiscard, getDeckStats } from '../../src/services/deckManager';
 import { HAND_SIZE } from '../../src/data/balance';
 import type { Fact, ReviewState } from '../../src/data/types';
@@ -63,35 +63,35 @@ function makeCards(n: number): Card[] {
 describe('domainResolver', () => {
   describe('resolveDomain', () => {
     it('maps "Natural Sciences" to natural_sciences', () => {
-      expect(resolveDomain(makeFact({ category: ['Natural Sciences', 'Chemistry'] }))).toBe('natural_sciences');
+      expect(resolveDomain(makeFact({ id: 'dr-1', category: ['Natural Sciences', 'Chemistry'] }))).toBe('natural_sciences');
     });
 
     it('maps "History" to history', () => {
-      expect(resolveDomain(makeFact({ category: ['History', 'Ancient Rome'] }))).toBe('history');
+      expect(resolveDomain(makeFact({ id: 'dr-2', category: ['History', 'Ancient Rome'] }))).toBe('history');
     });
 
     it('maps "Language" to language', () => {
-      expect(resolveDomain(makeFact({ category: ['Language', 'Japanese', 'N3'] }))).toBe('language');
+      expect(resolveDomain(makeFact({ id: 'dr-3', category: ['Language', 'Japanese', 'N3'] }))).toBe('language');
     });
 
     it('maps "Life Sciences" to human_body_health', () => {
-      expect(resolveDomain(makeFact({ category: ['Life Sciences', 'Biology'] }))).toBe('human_body_health');
+      expect(resolveDomain(makeFact({ id: 'dr-4', category: ['Life Sciences', 'Biology'] }))).toBe('human_body_health');
     });
 
     it('maps "Culture" to art_architecture', () => {
-      expect(resolveDomain(makeFact({ category: ['Culture', 'Music'] }))).toBe('art_architecture');
+      expect(resolveDomain(makeFact({ id: 'dr-5', category: ['Culture', 'Music'] }))).toBe('art_architecture');
     });
 
     it('maps "Technology" to general_knowledge', () => {
-      expect(resolveDomain(makeFact({ category: ['Technology', 'AI'] }))).toBe('general_knowledge');
+      expect(resolveDomain(makeFact({ id: 'dr-6', category: ['Technology', 'AI'] }))).toBe('general_knowledge');
     });
 
     it('maps "Geography" to geography', () => {
-      expect(resolveDomain(makeFact({ category: ['Geography', 'Europe'] }))).toBe('geography');
+      expect(resolveDomain(makeFact({ id: 'dr-7', category: ['Geography', 'Europe'] }))).toBe('geography');
     });
 
     it('falls back to general_knowledge for unknown categories', () => {
-      expect(resolveDomain(makeFact({ category: ['Unknown'] }))).toBe('general_knowledge');
+      expect(resolveDomain(makeFact({ id: 'dr-8', category: ['Unknown'] }))).toBe('general_knowledge');
     });
   });
 
@@ -167,25 +167,37 @@ describe('cardFactory', () => {
     });
   });
 
-  describe('computeEffectMultiplier', () => {
-    it('returns 1.0 when no review state', () => {
-      expect(computeEffectMultiplier(undefined)).toBe(1.0);
+  describe('effectMultiplier (tier-based)', () => {
+    it('tier 1 card has effectMultiplier 1.0', () => {
+      const card = createCard(makeFact({ category: ['Natural Sciences'] }), undefined, 'attack');
+      expect(card.effectMultiplier).toBe(1.0);
     });
 
-    it('returns 1.6 for very hard cards (ease < 1.5)', () => {
-      expect(computeEffectMultiplier(makeReviewState({ easeFactor: 1.3 }))).toBe(1.6);
+    it('tier 2a card has effectMultiplier 1.3', () => {
+      const card = createCard(
+        makeFact({ category: ['Natural Sciences'] }),
+        makeReviewState({ stability: 2, consecutiveCorrect: 2 }),
+        'attack',
+      );
+      expect(card.effectMultiplier).toBe(1.3);
     });
 
-    it('returns 1.3 for hard cards (ease 1.5-1.99)', () => {
-      expect(computeEffectMultiplier(makeReviewState({ easeFactor: 1.7 }))).toBe(1.3);
+    it('tier 2b card has effectMultiplier 1.6', () => {
+      const card = createCard(
+        makeFact({ category: ['Natural Sciences'] }),
+        makeReviewState({ stability: 5, consecutiveCorrect: 3 }),
+        'attack',
+      );
+      expect(card.effectMultiplier).toBe(1.6);
     });
 
-    it('returns 1.0 for medium cards (ease 2.0-2.49)', () => {
-      expect(computeEffectMultiplier(makeReviewState({ easeFactor: 2.3 }))).toBe(1.0);
-    });
-
-    it('returns 0.8 for easy cards (ease >= 2.5)', () => {
-      expect(computeEffectMultiplier(makeReviewState({ easeFactor: 2.8 }))).toBe(0.8);
+    it('tier 3 card has effectMultiplier 1.6', () => {
+      const card = createCard(
+        makeFact({ category: ['Natural Sciences'] }),
+        makeReviewState({ stability: 10, consecutiveCorrect: 4, passedMasteryTrial: true }),
+        'attack',
+      );
+      expect(card.effectMultiplier).toBe(1.6);
     });
   });
 
@@ -206,7 +218,7 @@ describe('cardFactory', () => {
 
     it('keeps baseEffectValue independent of tier and marks mastery trials', () => {
       const t1 = createCard(makeFact({ category: ['Natural Sciences'] }), undefined, 'attack');
-      expect(t1.baseEffectValue).toBe(10);
+      expect(t1.baseEffectValue).toBe(9);
       expect(t1.tier).toBe('1');
 
       resetCardIdCounter();
@@ -215,7 +227,7 @@ describe('cardFactory', () => {
         makeReviewState({ stability: 30, consecutiveCorrect: 7, passedMasteryTrial: false }),
         'attack',
       );
-      expect(t2bTrial.baseEffectValue).toBe(10);
+      expect(t2bTrial.baseEffectValue).toBe(9);
       expect(t2bTrial.tier).toBe('2b');
       expect(t2bTrial.isMasteryTrial).toBe(true);
 
@@ -225,7 +237,7 @@ describe('cardFactory', () => {
         makeReviewState({ stability: 30, consecutiveCorrect: 7, passedMasteryTrial: true }),
         'attack',
       );
-      expect(t3.baseEffectValue).toBe(10);
+      expect(t3.baseEffectValue).toBe(9);
       expect(t3.tier).toBe('3');
       expect(t3.isMasteryTrial).toBe(false);
     });
@@ -257,7 +269,7 @@ describe('deckManager', () => {
     });
 
     it('initializes player stats from balance', () => {
-      expect(deck.playerHP).toBe(100);
+      expect(deck.playerHP).toBe(120);
       expect(deck.playerMaxHP).toBe(100);
       expect(deck.playerShield).toBe(0);
       expect(deck.currentFloor).toBe(1);

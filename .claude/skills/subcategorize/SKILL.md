@@ -6,6 +6,7 @@
 # 1. Check `docs/roadmap/phases/` and `docs/roadmap/completed/` for the next AR number
 # 2. CREATE an AR phase doc: `docs/roadmap/phases/AR-NN-SHORT-NAME.md`
 #    - Must contain: Overview, numbered TODO checklist, acceptance criteria, files affected
+#    - ⚠️ AR docs MUST be written by the OPUS ORCHESTRATOR DIRECTLY — NEVER by sub-agents
 # 3. Present the AR doc to the user for review
 # 4. ONLY THEN begin implementation, checking off TODOs as you go
 # 5. When done: move the doc to `docs/roadmap/completed/`
@@ -39,6 +40,8 @@ Database is being rebuilt. Check `docs/RESEARCH/SOURCES/content-pipeline-progres
 ---
 
 ## Workflow
+
+**Pipeline position:** This skill runs at Stage 2b of the 6-stage content pipeline — AFTER entity curation (Stage 2) and fact generation (Stage 3), but BEFORE production promotion (Stage 6). It must run after each batch of knowledge facts is generated, before facts enter the DB.
 
 ### 1. Extract Unclassified Facts
 
@@ -224,7 +227,7 @@ This normalizes and validates all facts, deriving `type`, `explanation`, and `ra
 
 2. **Checks**:
    - Every `categoryL2` value is a valid taxonomy ID (not "general", "other", empty)
-   - For each domain, the distribution is reasonable (no single category has >60% of facts)
+   - For each domain, no single subcategory exceeds 18% of facts (±5% tolerance from target distributions)
    - Total unclassified → 0 (or very small, for genuine ambiguous cases)
 
 3. **Print summary**:
@@ -303,6 +306,27 @@ Map `categoryL1` values from seed files to canonical domain keys in `subcategory
 
 ---
 
+## Subcategory Distribution Quotas — MANDATORY
+
+**No single subcategory may exceed 18% of its domain's total facts.** After subcategorization, validate the distribution and flag violations.
+
+Target distributions per domain (from AR-34, content-pipeline-spec):
+- **History 2,000:** Ancient 14%, Medieval 10%, Renaissance 10%, Colonial 10%, Industrial 8%, WWI 7%, WWII 10%, Cold War 8%, Social/Cultural 14%, Historical Figures 9%
+- **Animals 2,000:** Mammals 16%, Birds 12%, Marine 14%, Reptiles 10%, Insects 10%, Behaviors 15%, Endangered 10%, Records 13%
+- **Human Body 2,000:** Anatomy 14%, Neuro 14%, Immunity 12%, Cardiovascular 10%, Digestion 12%, Senses 10%, Genetics 12%, Medical Discoveries 8%, Human Records 8%
+- **Natural Sciences 2,000:** Physics 18%, Chemistry 16%, Biology 14%, Geology 12%, Ecology 10%, Materials 10%, Discoveries 10%, Math 10%
+- **General Knowledge 2,000:** Records 15%, Inventions 15%, Language 12%, Firsts 12%, Economics 10%, Symbols 10%, Calendar 8%, Transport 8%, Oddities 10%
+- **Space 2,000:** Planets/Moons 18%, Stars 15%, Missions 15%, Cosmology 12%, Astronauts 12%, Exoplanets 8%, Technology 10%, Records 10%
+- **Mythology 2,000:** Greek/Roman 20%, Norse/Celtic 15%, Eastern 15%, Creatures 15%, Creation 10%, Folk 15%, Gods 10%
+- **Food 2,000:** History 15%, Asian 15%, European 12%, Americas 10%, Ingredients 12%, Science 10%, Fermentation 10%, Baking 8%, Records 8%
+- **Art 2,000:** Painting 18%, Sculpture 12%, Styles 15%, Buildings 15%, Modern 12%, Museums 10%, Movements 10%, Engineering 8%
+
+**Tolerance:** ±5% from target. Flag any subcategory >18% of domain for manual review.
+
+**Validation step (add to step 8 — Verify & Report):** After distribution query, check that no subcategory exceeds 18%. Currently the skill checks >60% which is far too lenient — change to 18%.
+
+---
+
 ## Prerequisites
 
 Run these in order to set up and execute the full subcategorization pipeline:
@@ -378,7 +402,7 @@ node .claude/skills/subcategorize/index.mjs
 5. ✅ All classified facts written back to seed files with valid `categoryL2` values
 6. ✅ `npm run build-facts-db` succeeds with no errors
 7. ✅ SQLite database shows 0 "general"/"other" in `categoryL2` for approved facts
-8. ✅ Domain distribution is balanced (no category >65% of facts in a domain)
+8. ✅ Domain distribution is balanced (no single subcategory >18% of domain — see distribution quotas)
 9. ✅ Detailed report generated and logged
 
 ---
@@ -446,4 +470,12 @@ sqlite3 public/facts.db "SELECT id, statement, category_l1, category_l2 FROM fac
 ```
 
 Verify all `category_l2` values match the taxonomy.
+
+---
+
+## Canonical Reference
+
+- **Pipeline spec:** `docs/RESEARCH/SOURCES/content-pipeline-spec.md` — authoritative source for all pipeline rules
+- **Lessons learned:** AR-34 (spec alignment), AR-47 (vocab subcategories), AR-48 (domain normalization)
+- **Distribution quotas:** AR-34 section 2.6 — prevents clustering that was found in March 2026 audit (61% of History was battles)
 

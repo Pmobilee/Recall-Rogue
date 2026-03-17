@@ -1,9 +1,10 @@
 <script lang="ts">
   import type { Card, CardType } from '../../data/card-types'
   import { playCardAudio } from '../../services/cardAudioManager'
-  import { getDetailedCardDescription } from '../../services/cardDescriptionService'
-  import { getCardFramePath } from '../utils/domainAssets'
-  import { getCardTypeIconPath, getRewardIconPath } from '../utils/iconAssets'
+  import { getDetailedCardDescription, getShortCardDescription } from '../../services/cardDescriptionService'
+  import { getCardTypeIconPath } from '../utils/iconAssets'
+  import { getDomainMetadata } from '../../data/domainMetadata'
+  import { getCardFrameUrl } from '../utils/cardFrameManifest'
   import { activeRewardBundle, activeRewardRevealStep, holdScreenTransition, releaseScreenTransition } from '../../ui/stores/gameState'
   import { getRandomRoomBg } from '../../data/backgroundManifest'
   import { preloadImages } from '../utils/assetPreloader'
@@ -41,11 +42,13 @@
     ambience: string
   }
 
-  interface RewardIcon {
-    glyph: string
-    label: string
-    glow: string
-    imageKey: string
+  const TYPE_GLOW: Record<CardType, string> = {
+    attack: '#ff8a65',
+    shield: '#7ec8ff',
+    buff: '#c8a6ff',
+    debuff: '#ff9ec5',
+    utility: '#ffe082',
+    wild: '#ffd480',
   }
 
   const ALTAR_BIOMES: AltarBiome[] = [
@@ -55,54 +58,6 @@
     { id: 'temple-marble', title: 'Temple Pedestal', subtitle: 'Marble plate under sacred light.', ambience: 'Temple marble ambience' },
     { id: 'obsidian-vault', title: 'Obsidian Vault', subtitle: 'Dark glass stone under purple flame.', ambience: 'Obsidian vault ambience' },
   ]
-
-  const CARD_TYPE_ICON_POOL: Record<CardType, RewardIcon[]> = {
-    attack: [
-      { glyph: '🗡', label: 'Rust Dagger', glow: '#ff8a65', imageKey: 'rust_dagger' },
-      { glyph: '⚔', label: 'Twin Blades', glow: '#ff7043', imageKey: 'twin_blades' },
-      { glyph: '🪓', label: 'War Axe', glow: '#ff6f61', imageKey: 'war_axe' },
-      { glyph: '🏹', label: 'Hunter Bow', glow: '#ff9e80', imageKey: 'hunter_bow' },
-    ],
-    shield: [
-      { glyph: '🛡', label: 'Round Shield', glow: '#7ec8ff', imageKey: 'round_shield' },
-      { glyph: '🛡', label: 'Tower Shield', glow: '#81d4fa', imageKey: 'tower_shield' },
-      { glyph: '🛡', label: 'Buckler', glow: '#90caf9', imageKey: 'buckler' },
-      { glyph: '🛡', label: 'Mirror Guard', glow: '#64b5f6', imageKey: 'mirror_guard' },
-    ],
-    utility: [
-      { glyph: '📜', label: 'Arc Scroll', glow: '#ffe082', imageKey: 'arc_scroll' },
-      { glyph: '📘', label: 'Field Tome', glow: '#ffd54f', imageKey: 'field_tome' },
-      { glyph: '🧭', label: 'Path Compass', glow: '#ffcc80', imageKey: 'path_compass' },
-      { glyph: '🧰', label: 'Tool Kit', glow: '#ffca6f', imageKey: 'tool_kit' },
-    ],
-    buff: [
-      { glyph: '🔮', label: 'Focus Crystal', glow: '#c8a6ff', imageKey: 'focus_crystal' },
-      { glyph: '✨', label: 'Tempo Charm', glow: '#d1b3ff', imageKey: 'tempo_charm' },
-      { glyph: '🧿', label: 'Fortune Eye', glow: '#caa0ff', imageKey: 'fortune_eye' },
-      { glyph: '💠', label: 'Surge Sigil', glow: '#b88cff', imageKey: 'surge_sigil' },
-    ],
-    debuff: [
-      { glyph: '☠', label: 'Hex Totem', glow: '#ff9ec5', imageKey: 'hex_totem' },
-      { glyph: '🕸', label: 'Snare Thread', glow: '#f8a6d8', imageKey: 'snare_thread' },
-      { glyph: '🦂', label: 'Venom Fang', glow: '#ff8ab6', imageKey: 'venom_fang' },
-      { glyph: '🪤', label: 'Dread Trap', glow: '#f58bc0', imageKey: 'dread_trap' },
-    ],
-    wild: [
-      { glyph: '💎', label: 'Prism Core', glow: '#ffd480', imageKey: 'prism_core' },
-      { glyph: '🌠', label: 'Comet Shard', glow: '#ffd166', imageKey: 'comet_shard' },
-      { glyph: '🪙', label: 'Lucky Relic', glow: '#ffcf6e', imageKey: 'lucky_relic' },
-      { glyph: '🎲', label: 'Chaos Die', glow: '#ffe08a', imageKey: 'chaos_die' },
-    ],
-  }
-
-  const TYPE_DESCRIPTIONS: Record<CardType, string> = {
-    attack: 'Deal direct damage to enemies.',
-    shield: 'Gain block before enemy attacks.',
-    buff: 'Increase output and combo pressure.',
-    debuff: 'Reduce enemy tempo and threat.',
-    utility: 'Tech effects for flexible turns.',
-    wild: 'High-impact wildcard effect.',
-  }
 
   let altarBiome = $state<AltarBiome>(ALTAR_BIOMES[0])
   let lastOptionsRef = $state<Card[]>([])
@@ -116,19 +71,6 @@
     onrewardstepchange?.(step)
   }
 
-  function emptyIconMap(): Record<CardType, RewardIcon | null> {
-    return {
-      attack: null,
-      shield: null,
-      utility: null,
-      buff: null,
-      debuff: null,
-      wild: null,
-    }
-  }
-
-  let iconByType = $state<Record<CardType, RewardIcon | null>>(emptyIconMap())
-
   function hashString(value: string): number {
     let hash = 0
     for (let i = 0; i < value.length; i += 1) {
@@ -140,20 +82,6 @@
   function pickBiome(cards: Card[]): AltarBiome {
     const seed = cards.map((card) => card.factId).join('|')
     return ALTAR_BIOMES[hashString(seed) % ALTAR_BIOMES.length] ?? ALTAR_BIOMES[0]
-  }
-
-  function pickIcon(card: Card): RewardIcon {
-    const pool = CARD_TYPE_ICON_POOL[card.cardType]
-    const idx = hashString(`${card.factId}:${card.cardType}`) % pool.length
-    return pool[idx] ?? pool[0]
-  }
-
-  function buildIconMap(cards: Card[]): Record<CardType, RewardIcon | null> {
-    const map = emptyIconMap()
-    cards.forEach((card) => {
-      map[card.cardType] = pickIcon(card)
-    })
-    return map
   }
 
   function selectedCard(): Card | null {
@@ -172,10 +100,6 @@
     if (idx < 0) return '50%'
     const step = 100 / (options.length + 1)
     return `${Math.round(step * (idx + 1))}%`
-  }
-
-  function iconForOption(option: Card): RewardIcon {
-    return iconByType[option.cardType] ?? CARD_TYPE_ICON_POOL[option.cardType][0]
   }
 
   function hoverType(cardType: CardType): void {
@@ -289,7 +213,6 @@
         selectedType = null
         showSkipConfirm = false
         altarBiome = pickBiome(opts)
-        iconByType = buildIconMap(opts)
       }
 
       selectedType = normalizeRewardSelection(selectedType, opts)
@@ -371,23 +294,29 @@
 
         <div class="altar-options">
           {#each options as option (option.cardType)}
-            {@const icon = iconForOption(option)}
+            {@const frameUrl = getCardFrameUrl(option.mechanicId)}
+            {@const domainColor = getDomainMetadata(option.domain).colorTint}
+            {@const typeGlow = TYPE_GLOW[option.cardType] ?? '#ffffff'}
             <button
               class="altar-option"
               class:selected={isSelected(option)}
               class:shadowed={isShadowed(option)}
               class:collecting={isCollecting(option)}
-              style={`--frame-image: url('${option.isEcho ? '/assets/sprites/cards/frame_echo.webp' : getCardFramePath(option.cardType)}'); --icon-glow: ${icon.glow};`}
+              class:upgraded={option.isUpgraded}
+              style={`--frame-image: ${frameUrl ? `url('${frameUrl}')` : 'none'}; --icon-glow: ${typeGlow}; --domain-color: ${domainColor};`}
               onclick={() => selectType(option.cardType)}
               onpointerenter={() => hoverType(option.cardType)}
               disabled={collectLocked}
               data-testid={`reward-type-${option.cardType}`}
-              aria-label={`Inspect ${option.cardType} reward`}
+              aria-label={`Inspect ${option.mechanicName ?? option.cardType} reward`}
             >
-              <img class="reward-icon-img" src={getRewardIconPath(icon.imageKey)} alt={icon.label}
-                onerror={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; ((e.currentTarget as HTMLElement).nextElementSibling as HTMLElement).style.display = 'inline'; }} />
-              <span class="reward-icon-fallback" style="display:none">{icon.glyph}</span>
-              <span class="icon-label">{icon.label}</span>
+              <div class="mini-card-ap">{option.apCost ?? 1}</div>
+              {#if option.isUpgraded}
+                <div class="mini-card-upgrade">+</div>
+              {/if}
+              <div class="mini-card-name">{option.mechanicName ?? option.cardType}</div>
+              <div class="mini-card-desc">{getShortCardDescription(option)}</div>
+              <div class="mini-card-domain-bar" style={`background: ${domainColor};`}></div>
             </button>
           {/each}
         </div>
@@ -397,18 +326,17 @@
         <div class="inspect-kicker">Inspected Reward</div>
         {#if selectedCard()}
           {@const selected = selectedCard()!}
-          {@const selectedIcon = iconForOption(selected)}
-          <h2>{selectedIcon.label}</h2>
+          <h2>{selected.mechanicName ?? selected.cardType}</h2>
           {#if selected.mechanicName}
             <span class="inspect-mechanic-badge">{selected.mechanicName}</span>
           {/if}
+          {#if selected.isUpgraded}
+            <span class="inspect-upgrade-badge">Upgraded</span>
+          {/if}
           <p class="inspect-summary">{getDetailedCardDescription(selected)}</p>
-          <div class="inspect-meta">
-            <span>{altarBiome.ambience}</span>
-          </div>
         {:else}
-          <h2>Inspect a reward icon</h2>
-          <p class="inspect-summary">Tap an icon on the altar to reveal details.</p>
+          <h2>Inspect a card</h2>
+          <p class="inspect-summary">Tap a card on the altar to reveal details.</p>
         {/if}
       </section>
     </section>
@@ -741,19 +669,22 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
     min-height: calc(146px * var(--layout-scale, 1));
-    padding: calc(10px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
+    padding: calc(28px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
     color: #fff;
     background:
-      linear-gradient(rgba(17, 24, 34, 0.82), rgba(12, 19, 28, 0.92)),
-      var(--frame-image) center / cover no-repeat,
+      linear-gradient(rgba(17, 24, 34, 0.75), rgba(12, 19, 28, 0.88)),
+      var(--frame-image, none) center / cover no-repeat,
       rgba(28, 37, 53, 0.9);
-    display: grid;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
     text-align: center;
-    gap: calc(2px * var(--layout-scale, 1));
+    gap: calc(3px * var(--layout-scale, 1));
     transition: transform 140ms ease, opacity 140ms ease, filter 140ms ease, box-shadow 140ms ease;
     animation: iconBob 2.6s ease-in-out infinite;
     cursor: pointer;
+    overflow: hidden;
   }
 
   .altar-option:nth-child(2) {
@@ -792,24 +723,94 @@
     z-index: 2;
   }
 
-  .reward-icon-img {
-    width: 2.5em;
-    height: 2.5em;
-    object-fit: contain;
-    image-rendering: pixelated;
-    image-rendering: crisp-edges;
-    filter: drop-shadow(0 0 9px color-mix(in srgb, var(--icon-glow) 52%, transparent));
+  /* Mini-card inner elements */
+  .mini-card-ap {
+    position: absolute;
+    top: calc(5px * var(--layout-scale, 1));
+    left: calc(5px * var(--layout-scale, 1));
+    width: calc(20px * var(--layout-scale, 1));
+    height: calc(20px * var(--layout-scale, 1));
+    border-radius: 50%;
+    background: rgba(10, 16, 28, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(11px * var(--layout-scale, 1));
+    font-weight: 900;
+    color: #ffd700;
+    line-height: 1;
   }
 
-  .reward-icon-fallback {
-    font-size: 2em;
-    filter: drop-shadow(0 0 9px color-mix(in srgb, var(--icon-glow) 52%, transparent));
+  .mini-card-upgrade {
+    position: absolute;
+    top: calc(5px * var(--layout-scale, 1));
+    right: calc(5px * var(--layout-scale, 1));
+    width: calc(18px * var(--layout-scale, 1));
+    height: calc(18px * var(--layout-scale, 1));
+    border-radius: 50%;
+    background: rgba(180, 140, 0, 0.9);
+    border: 1px solid #ffd700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(13px * var(--layout-scale, 1));
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
   }
 
-  .icon-label {
+  .altar-option.upgraded {
+    border-color: rgba(255, 215, 0, 0.5);
+  }
+
+  .altar-option.upgraded.selected {
+    box-shadow: 0 0 0 2px #ffd700, 0 18px 28px rgba(0, 0, 0, 0.4), 0 0 28px rgba(255, 215, 0, 0.5);
+  }
+
+  .mini-card-name {
     font-weight: 800;
-    font-size: calc(15px * var(--layout-scale, 1));
-    letter-spacing: 0.25px;
+    font-size: calc(13px * var(--layout-scale, 1));
+    letter-spacing: 0.2px;
+    color: #f4f5f7;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+    line-height: 1.2;
+    margin-top: auto;
+    padding: 0 calc(2px * var(--layout-scale, 1));
+    text-align: center;
+  }
+
+  .mini-card-desc {
+    font-size: calc(10px * var(--layout-scale, 1));
+    color: #c8d2df;
+    line-height: 1.3;
+    text-align: center;
+    padding: 0 calc(2px * var(--layout-scale, 1));
+    margin-bottom: calc(14px * var(--layout-scale, 1));
+  }
+
+  .mini-card-domain-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(4px * var(--layout-scale, 1));
+    border-radius: 0 0 12px 12px;
+    opacity: 0.8;
+  }
+
+  .inspect-upgrade-badge {
+    display: inline-block;
+    background: rgba(120, 90, 0, 0.6);
+    border: 1px solid rgba(255, 215, 0, 0.5);
+    border-radius: 6px;
+    padding: calc(2px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
+    font-size: calc(12px * var(--layout-scale, 1));
+    color: #ffd700;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    margin-left: calc(4px * var(--layout-scale, 1));
   }
 
   .altar-trinkets {
@@ -1170,7 +1171,7 @@
 
     .altar-option {
       min-height: calc(85px * var(--layout-scale, 1));
-      padding: calc(6px * var(--layout-scale, 1)) calc(4px * var(--layout-scale, 1)) calc(4px * var(--layout-scale, 1));
+      padding: calc(22px * var(--layout-scale, 1)) calc(4px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1));
       border-radius: 10px;
       animation-duration: 2.3s;
     }
@@ -1179,19 +1180,29 @@
       transform: scale(1.02);
     }
 
-    .reward-icon-img {
-      width: 2em;
-      height: 2em;
+    .mini-card-ap {
+      width: calc(16px * var(--layout-scale, 1));
+      height: calc(16px * var(--layout-scale, 1));
+      font-size: calc(9px * var(--layout-scale, 1));
+      top: calc(3px * var(--layout-scale, 1));
+      left: calc(3px * var(--layout-scale, 1));
     }
 
-    .reward-icon-fallback {
-      font-size: 1.6em;
+    .mini-card-upgrade {
+      width: calc(14px * var(--layout-scale, 1));
+      height: calc(14px * var(--layout-scale, 1));
+      font-size: calc(10px * var(--layout-scale, 1));
+      top: calc(3px * var(--layout-scale, 1));
+      right: calc(3px * var(--layout-scale, 1));
     }
 
-    .icon-label {
-      font-size: calc(11px * var(--layout-scale, 1));
-      font-weight: 700;
-      letter-spacing: 0.2px;
+    .mini-card-name {
+      font-size: calc(10px * var(--layout-scale, 1));
+    }
+
+    .mini-card-desc {
+      font-size: calc(8px * var(--layout-scale, 1));
+      margin-bottom: calc(10px * var(--layout-scale, 1));
     }
 
     .inspect-panel {

@@ -199,6 +199,10 @@ Never skip to step 3 — guessing at fixes without evidence wastes cycles and cr
 
 **The workflow is: AR doc → user review → implement → check off TODOs → move to completed. NEVER skip steps 1-2.**
 
+### 🚨 AR DOCS MUST BE WRITTEN BY OPUS — NEVER DELEGATED 🚨
+
+**AR phase docs MUST ALWAYS be written directly by the active Opus orchestrator agent.** NEVER delegate AR doc creation to Haiku or Sonnet sub-agents. Sub-agents lose critical context, produce shallow specs, and miss important design nuances that only the orchestrator has from the conversation. The orchestrator has the full conversation context, understands the user's intent, and can write specs that workers can implement without ambiguity. This rule is absolute — no exceptions.
+
 ### Phase Documents = Source of Truth
 - **`docs/roadmap/phases/`** = active/pending work. If a doc is here, it's not done.
 - **`docs/roadmap/completed/`** = finished work. Moved here when all sub-steps pass.
@@ -231,7 +235,8 @@ Each phase doc MUST contain:
 - **Codebase exploration** (finding files, searching code, understanding patterns): use `subagent_type: "Explore"`
 - Always provide sub-agents with full context: file paths, expected behavior, verification commands
 - Parallelize independent sub-agent tasks whenever possible
-- The orchestrator must NEVER edit files directly — always delegate via Agent tool
+- The orchestrator must NEVER edit code files directly — always delegate via Agent tool
+- **EXCEPTION: AR phase docs** — the orchestrator MUST write AR docs directly (never delegate to sub-agents). AR docs require full conversation context that sub-agents don't have.
 - **EVERY worker task prompt MUST include**: "Update `docs/GAME_DESIGN.md` and `docs/ARCHITECTURE.md` if your changes affect gameplay, balance, systems, or file structure. Stale docs = bugs."
 - **EVERY worker that touches gameplay, UI, or balance MUST update docs IN THE SAME TASK** — not as a follow-up. If the worker adds a new screen, mechanic, relic, enemy, card type, or changes any player-facing behavior, the doc updates are PART of the task, not optional. The orchestrator MUST verify docs were updated before marking the task complete.
 

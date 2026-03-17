@@ -13,6 +13,7 @@ function toSerializedRunState(run: ReturnType<typeof createRunState>): Record<st
     consumedRewardFactIds: [...run.consumedRewardFactIds],
     factsAnsweredCorrectly: [...run.factsAnsweredCorrectly],
     factsAnsweredIncorrectly: [...run.factsAnsweredIncorrectly],
+    firstChargeFreeFactIds: [...run.firstChargeFreeFactIds],
   }
 }
 

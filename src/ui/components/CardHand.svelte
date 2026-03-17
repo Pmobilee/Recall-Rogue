@@ -11,6 +11,7 @@
   import { BASE_WIDTH, GAME_ASPECT_RATIO } from '../../data/layout'
   import { audioManager } from '../../services/audioService'
   import { isFirstChargeFree } from '../../services/discoverySystem'
+  import { getMechanicDefinition } from '../../data/mechanics'
   import { activeRunState } from '../../services/runStateStore'
 
   interface Props {
@@ -93,7 +94,7 @@
     if (total <= 1) return 0
     const mid = (total - 1) / 2
     const normalized = (index - mid) / mid
-    return (1 - Math.abs(normalized)) * 55
+    return (1 - normalized * normalized) * 45
   }
 
   let viewportWidth = $state(typeof window !== 'undefined' ? Math.min(window.innerWidth, window.innerHeight * GAME_ASPECT_RATIO) : BASE_WIDTH)
@@ -113,7 +114,12 @@
     return -totalWidth / 2 + cardSpacing * index
   }
 
-  function getEffectValue(card: Card): number {
+  function getEffectValue(card: Card, chargeMode: boolean = false): number {
+    const mechanic = getMechanicDefinition(card.mechanicId)
+    if (mechanic) {
+      const baseVal = chargeMode ? mechanic.chargeCorrectValue : mechanic.quickPlayValue
+      return Math.round(baseVal * card.effectMultiplier * comboMultiplier)
+    }
     return Math.round(card.baseEffectValue * card.effectMultiplier * comboMultiplier)
   }
 
@@ -155,14 +161,26 @@
     pointerId: number
   } | null>(null)
 
+  /** Screen-position ratio from top of viewport that divides Quick Play zone (below) from Charge zone (above). */
+  const CHARGE_ZONE_Y_RATIO = 0.4
+
   let dragDeltaX = $derived(dragState ? dragState.currentX - dragState.startX : 0)
   let dragDeltaY = $derived(dragState ? Math.max(0, dragState.startY - dragState.currentY) : 0)
   let dragRawDeltaY = $derived(dragState ? dragState.startY - dragState.currentY : 0)
   let dragScale = $derived(1 + Math.min(0.15, dragDeltaY / 500))
   let isDragPastThreshold = $derived(dragDeltaY > 60)
   let isDragPreview = $derived(dragDeltaY > 40)
-  /** True when drag has passed the 80px Charge threshold — release triggers Charge Play. */
-  let isDragChargeReady = $derived(dragDeltaY > 80)
+  /**
+   * True when the dragged card's current Y position is ABOVE the screen-position threshold.
+   * Uses 35% on small screens (viewport < 600px height), 40% otherwise.
+   * Replaces the old 80px drag-distance check for Charge vs Quick Play decision.
+   */
+  let isInChargeZone = $derived.by(() => {
+    if (!dragState) return false
+    const ratio = window.innerHeight < 600 ? 0.35 : CHARGE_ZONE_Y_RATIO
+    const chargeZoneY = window.innerHeight * ratio
+    return dragState.currentY < chargeZoneY
+  })
   let pendingDragPoint: { x: number; y: number } | null = null
   let dragFrameId: number | null = null
 
@@ -333,14 +351,31 @@
     const deltaX = Math.abs(e.clientX - dragState.startX)
     const wasDrag = Math.abs(deltaY) > 20 || deltaX > 20
     const index = dragState.cardIndex
+    // Capture zone state before clearing dragState (isInChargeZone is derived from dragState)
+    const wasInChargeZone = isInChargeZone
+    const wasPastThreshold = isDragPastThreshold
     dragState = null
 
-    if (deltaY > 80) {
-      // Upward fling past 80px Charge threshold — trigger Charge Play (quiz)
-      if (onchargeplay) {
+    if (wasInChargeZone) {
+      // Released in Charge zone (above screen-position threshold) — trigger Charge Play (quiz)
+      // Check affordability: if charge can't be paid, fall back to Quick Play
+      const card = cards[index]
+      const chargeApCost = (card?.apCost ?? 1) + (isSurgeActive ? 0 : 1)
+      const canAffordCharge = card && card.tier !== '3' && chargeApCost <= apCurrent
+      if (canAffordCharge && onchargeplay) {
         onchargeplay(index)
       } else if (oncastdirect) {
-        // Graceful fallback: Quick Play if onchargeplay not wired
+        // Charge not affordable or not available — fall back to Quick Play
+        oncastdirect(index)
+      } else if (onchargeplay && !canAffordCharge) {
+        // Can't afford but onchargeplay is the only handler — still try (let caller decide)
+        onchargeplay(index)
+      } else {
+        onselectcard(index)
+      }
+    } else if (wasPastThreshold && wasDrag) {
+      // Released below Charge zone but past minimum drag threshold (~60px) — Quick Play (no quiz)
+      if (oncastdirect) {
         oncastdirect(index)
       } else {
         onselectcard(index)
@@ -349,7 +384,7 @@
       // Tap (minimal movement) — normal select behavior
       onselectcard(index)
     }
-    // Drag released below 80px threshold: card returns to hand (no action)
+    // Otherwise: drag released below threshold, card returns to hand (no action)
   }
 
   function handlePointerCancel(e: PointerEvent): void {
@@ -489,7 +524,6 @@
     {@const arcOffset = getArcOffset(i, cards.length)}
     {@const xOffset = getXOffset(i, cards.length)}
     {@const domainColor = getDomainColor(card.domain)}
-    {@const effectVal = getEffectValue(card)}
     {@const showFrontValue = shouldShowFrontValue(card)}
     {@const cardAnim = cardAnimations?.[card.id] ?? null}
     {@const tierBadge = getTierBadge(card)}
@@ -514,6 +548,22 @@
     {@const runState = $activeRunState}
     {@const isFreeCharge = card.factId ? isFirstChargeFree(card.factId, runState?.firstChargeFreeFactIds ?? new Set()) : false}
     {@const isMastered = card.tier === '3'}
+    {@const chargeApCostForDrag = (card.apCost ?? 1) + (isSurgeActive ? 0 : 1)}
+    {@const chargeAffordableForDrag = chargeApCostForDrag <= apCurrent}
+    {@const showChargeZoneIndicator = isDraggingThis && isInChargeZone && !isMastered && !!onchargeplay}
+    {@const isDragInChargeZone = isDraggingThis && isInChargeZone && !isMastered}
+    {@const chargeProgress = isDraggingThis && dragState ? (() => {
+      const startY = dragState.startY
+      const ratio = window.innerHeight < 600 ? 0.35 : 0.4
+      const chargeZoneY = window.innerHeight * ratio
+      const totalDistance = startY - chargeZoneY
+      if (totalDistance <= 0) return 0
+      const currentDistance = startY - dragState.currentY
+      return Math.max(0, Math.min(1, currentDistance / totalDistance))
+    })() : 0}
+    {@const isChargePreview = chargeProgress > 0.3 && !isMastered}
+    {@const effectVal = getEffectValue(card, isChargePreview)}
+    {@const descPower = isChargePreview ? getEffectValue(card, true) : undefined}
 
     <button
       class="card-in-hand"
@@ -548,13 +598,16 @@
       class:card-impact-buff={isImpact && card.cardType === 'buff'}
       class:card-impact-debuff={isImpact && card.cardType === 'debuff'}
       class:card-impact-wild={isImpact && card.cardType === 'wild'}
-      class:drag-ready={isDragPastThreshold && isDraggingThis}
+      class:drag-ready={isDragPastThreshold && isDraggingThis && !isDragInChargeZone}
+      class:drag-charge-zone={isDragInChargeZone}
+      class:drag-charge-zone-disabled={isDragInChargeZone && !chargeAffordableForDrag}
       style="
         {isAnimating ? '' : isDraggingThis ? `transform: translate3d(${xOffset + cardDragX}px, ${(isSelected ? -80 : -arcOffset) - cardDragRawY}px, 0) rotate(0deg) scale(${cardDragScale});` : `transform: translate3d(${xOffset}px, ${isSelected ? -80 : isOther ? 15 : -(arcOffset + hoverLift)}px, 0) rotate(${isSelected ? 0 : rotation}deg) scale(${isSelected ? 1.2 : hoverScale});`}
         {cardFrameUrl ? '' : `border-color: ${domainColor};`}
         animation-delay: {i * 80}ms;
         opacity: {isOther ? 0.3 : 1};
         z-index: {isDraggingThis ? 20 : isHovered ? 10 : ''};
+        {isDraggingThis && chargeProgress > 0.05 ? `filter: drop-shadow(0 0 ${8 + chargeProgress * 8}px rgba(250, 204, 21, ${chargeProgress * 0.8})) drop-shadow(0 0 ${16 + chargeProgress * 16}px rgba(250, 204, 21, ${chargeProgress * 0.4}));` : ''}
       "
       data-testid="card-hand-{i}"
       disabled={disabled || isOther}
@@ -573,9 +626,9 @@
             <div class="ap-gem">{apCost}</div>
             <div class="card-parchment-text">
               <span class="parchment-inner">
-                {#each getCardDescriptionParts(card) as part}
+                {#each getCardDescriptionParts(card, undefined, descPower) as part}
                   {#if part.type === 'number'}
-                    <span class="desc-number">{part.value}</span>
+                    <span class="desc-number" class:charge-preview={isChargePreview}>{part.value}</span>
                   {:else if part.type === 'keyword'}
                     <span class="desc-keyword">{part.value}</span>
                   {:else if part.type === 'conditional-number'}
@@ -594,7 +647,7 @@
             <div class="card-domain-stripe" style="background: {domainColor};"></div>
             <div class="card-front-name">{card.mechanicName ?? card.cardType}</div>
             {#if showFrontValue}
-              <div class="card-effect-value" class:boosted={isBoosted() && effectVal > 0}>{effectVal}</div>
+              <div class="card-effect-value" class:boosted={isBoosted() && effectVal > 0} class:charge-preview={isChargePreview}>{effectVal}</div>
             {/if}
           {/if}
           {#if card.isMasteryTrial}
@@ -635,6 +688,19 @@
           "
         ></div>
       {/if}
+
+      {#if showChargeZoneIndicator}
+        <div
+          class="charge-zone-indicator"
+          class:charge-zone-indicator-disabled={!chargeAffordableForDrag}
+        >
+          {#if !chargeAffordableForDrag}
+            <span class="charge-zone-text charge-zone-text-disabled">NOT ENOUGH AP</span>
+          {:else}
+            <span class="charge-zone-text">⚡ CHARGE {isSurgeActive ? '+0' : '+1'} AP</span>
+          {/if}
+        </div>
+      {/if}
     </button>
 
     {#if selectedIndex === i && card.tier !== '3' && onchargeplay && !disabled}
@@ -646,7 +712,7 @@
         disabled={!chargeAffordable}
         title={!chargeAffordable ? 'Not enough AP' : 'Charge — answer a quiz for bonus power'}
         onclick={() => onchargeplay!(i)}
-        style="transform: translate3d(calc({xOffset}px + var(--card-w) / 2), calc(-80px - var(--card-h)), 0) translateX(-50%);"
+        style="transform: translate3d(calc({xOffset}px + var(--card-w) / 2), calc(-80px - var(--card-h) - 16px), 0) translateX(-50%);"
       >
         ⚡ CHARGE
         <span class="charge-ap-badge">{isSurgeActive ? '+0' : '+1'} AP</span>
@@ -918,6 +984,60 @@
 
   .drag-ready {
     filter: drop-shadow(0 0 12px rgba(34, 197, 94, 0.7)) drop-shadow(0 0 24px rgba(34, 197, 94, 0.3)) !important;
+  }
+
+  /* AR-62: Card in the Charge zone (above screen-position threshold) */
+  .drag-charge-zone {
+    filter: drop-shadow(0 0 16px rgba(250, 204, 21, 0.8)) drop-shadow(0 0 32px rgba(250, 204, 21, 0.4)) !important;
+    transform-origin: center center;
+    scale: 1.05;
+  }
+
+  .drag-charge-zone-disabled {
+    filter: drop-shadow(0 0 8px rgba(220, 38, 38, 0.6)) drop-shadow(0 0 16px rgba(220, 38, 38, 0.3)) !important;
+    scale: 1.0;
+  }
+
+  /* AR-62: Charge zone text indicator shown above card when in charge zone */
+  .charge-zone-indicator {
+    position: absolute;
+    top: calc(-36px * var(--layout-scale, 1));
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 30;
+    animation: chargeZoneEnter 120ms ease-out both;
+    white-space: nowrap;
+  }
+
+  @keyframes chargeZoneEnter {
+    from { opacity: 0; transform: translateX(-50%) scale(0.7); }
+    to   { opacity: 1; transform: translateX(-50%) scale(1); }
+  }
+
+  .charge-zone-text {
+    display: block;
+    font-size: calc(13px * var(--layout-scale, 1));
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #facc15;
+    text-shadow:
+      0 0 8px rgba(250, 204, 21, 0.9),
+      0 0 16px rgba(250, 204, 21, 0.5),
+      0 1px 2px rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.55);
+    border-radius: 4px;
+    padding: calc(2px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1));
+    border: 1px solid rgba(250, 204, 21, 0.4);
+  }
+
+  .charge-zone-text-disabled {
+    color: #f87171;
+    text-shadow:
+      0 0 8px rgba(248, 113, 113, 0.7),
+      0 1px 2px rgba(0, 0, 0, 0.9);
+    border-color: rgba(248, 113, 113, 0.4);
   }
 
   .card-selected {
@@ -1627,5 +1747,12 @@
   @keyframes chargeBtnPulse {
     0%, 100% { box-shadow: 0 4px 16px rgba(245, 158, 11, 0.55), 0 2px 6px rgba(0, 0, 0, 0.4); }
     50%       { box-shadow: 0 4px 28px rgba(245, 158, 11, 0.9), 0 2px 8px rgba(0, 0, 0, 0.5); }
+  }
+
+  /* === CHARGE PREVIEW — golden number tint when dragging toward charge zone === */
+  .charge-preview {
+    color: #facc15 !important;
+    text-shadow: 0 0 6px rgba(250, 204, 21, 0.6), -1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000;
+    transition: color 150ms ease;
   }
 </style>

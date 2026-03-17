@@ -92,6 +92,10 @@ export interface Card {
   secondaryValue?: number;
   /** Knowledge sub-category level 2 (e.g. 'ancient_classical'). Used by chain system and boss quiz phases. */
   categoryL2?: string;
+  /** Chain type index (0-5), assigned at run start. Runtime-only — not persisted to DB. */
+  chainType?: number;
+  /** Fact ID permanently bound to this card for the run duration. */
+  boundFactId?: string;
 }
 
 // === Card Run State ===

@@ -11,6 +11,7 @@ description: Live DB-first answer checking and fixing via directly spawned subsc
 # 1. Check `docs/roadmap/phases/` and `docs/roadmap/completed/` for the next AR number
 # 2. CREATE an AR phase doc: `docs/roadmap/phases/AR-NN-SHORT-NAME.md`
 #    - Must contain: Overview, numbered TODO checklist, acceptance criteria, files affected
+#    - ⚠️ AR docs MUST be written by the OPUS ORCHESTRATOR DIRECTLY — NEVER by sub-agents
 # 3. Present the AR doc to the user for review
 # 4. ONLY THEN begin implementation, checking off TODOs as you go
 # 5. When done: move the doc to `docs/roadmap/completed/`
@@ -127,6 +128,26 @@ The `check` command also validates question and answer quality:
 - **Invalid subcategory**: category_l2 is not a valid ID from the domain's taxonomy in `subcategory-taxonomy.mjs`
 - **Geography protection**: facts must NOT be moved in/out of the geography domain, and `capitals_countries` subcategory must not be changed (breaks geography_drill deck routing)
 
+## Validation Gates Reference (11 Automated Checks)
+
+These gates apply to ALL facts entering or being fixed in the database:
+
+| # | Gate | Rule | Action |
+|---|------|------|--------|
+| 1 | Answer length | `len(answer) ≤ 30 chars` | Hard reject |
+| 2 | Schema validation | JSON validates against full 28-field schema | Hard reject |
+| 3 | Source attribution | `sourceName` is not null/empty | Hard reject |
+| 4 | Variant count | `variants.length ≥ 4` | Hard reject |
+| 5 | Circular detection | Jaccard(question, answer) > 0.5 | Reject |
+| 6 | Duplicate detection | Embedding cosine sim > 0.92 vs existing | Reject |
+| 7 | Classification filter | Regex: `"What (type\|kind\|category) of.*is"` | Reject |
+| 8 | Entity validation | Entity name vs Wikidata label fuzzy ≥ 0.85 | Reject |
+| 9 | Distractor quality | All distractors ≠ answer, same type, similar length | Reject variant |
+| 10 | Fun score distribution | Per-batch std_dev < 1.5 OR >30% cluster | Flag batch |
+| 11 | Age rating consistency | Content keyword scan matches declared rating | Flag for review |
+
+**28 required schema fields:** `id`, `type`, `domain`, `subdomain`, `categoryL1`, `categoryL2`, `categoryL3`, `statement`, `quizQuestion`, `correctAnswer`, `distractors`, `acceptableAnswers`, `explanation`, `wowFactor`, `visualDescription`, `variants`, `difficulty`, `funScore`, `noveltyScore`, `ageRating`, `rarity`, `sourceName`, `sourceUrl`, `contentVolatility`, `sensitivityLevel`, `sensitivityNote`, `tags`, `_haikuProcessed`, `_haikuProcessedAt`.
+
 ## Tagged Fact Variants
 Use `--tags` and `--tag-mode` with `check` or `export-flagged`.
 
@@ -171,6 +192,25 @@ Facts failing these checks should be flagged with `answer_check_issue: "format_m
 
 Note: New vocabulary facts (post-rebuild) use runtime distractor selection and do NOT ship with pre-generated distractors. These format-matching rules apply only to legacy vocab facts or knowledge fact distractors.
 
+## Vocab Answer Length Normalization (AR-45)
+
+Vocabulary answers had wildly inconsistent lengths (4 chars vs. 127 chars), creating length-mismatch exploits where players could guess by character count alone. This was fixed in AR-45.
+
+**Rules enforced:**
+- All vocabulary answers should be in 6-18 character range (p99 <50 chars)
+- Answers >50 chars must be truncated to core meaning
+- Runtime distractor selection in `vocabDistractorService.ts` enforces length-matching
+- When fixing vocab facts, ensure answer length is normalized BEFORE generating/checking distractors
+
+## Domain Canonicalization (AR-48)
+
+All domain names must use canonical IDs from `src/data/domainMetadata.ts`. Non-canonical names found in the March 2026 audit:
+- "Physics" → `natural_sciences`
+- "Animals & Wildlife" display name used as ID → `animals_wildlife`
+- 189 facts had non-canonical domain names
+
+**When fixing facts:** Always verify `categoryL1` matches canonical domain IDs. Use `normalizeFactDomain()` from `src/data/card-types.ts` as reference.
+
 ## Notes
 - `check` updates DB flags immediately.
 - `export-flagged` reads DB flags and creates worker-fix payloads.
@@ -214,3 +254,14 @@ node scripts/content-pipeline/qa/quality-sweep-db.mjs verify \
 - **explanation**: broken or truncated
 - **category_l1**: verify correct domain assignment
 - **category_l2**: verify valid subcategory from domain taxonomy
+
+## Canonical References & Lessons Learned
+
+- **Pipeline spec:** `docs/RESEARCH/SOURCES/content-pipeline-spec.md`
+- **AR-45:** Vocab answer length normalization — prevents length-matching exploits
+- **AR-48:** Domain canonicalization — 189 facts had non-canonical domain names
+- **AR-51:** Pre-ingestion quality gate — 8.2% failure rate found in full DB scan
+- **AR-52:** Distractor backlog cleanup — 76 knowledge + 8,992 vocab facts fixed
+- **AR-53:** Fact repetition & FSRS audit — pool size 120→200, cooldown min 3→5
+- **March 12, 2026:** 58,359 garbage distractors stripped (database pool generation)
+- **March 15-16, 2026:** Quality gate + backlog cleanup completed

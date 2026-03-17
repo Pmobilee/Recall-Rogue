@@ -48,7 +48,7 @@ PLAYER TURN:
        - Costs card's base AP only
        - Does NOT trigger Chains (Chain counter resets)
 
-     CHARGE PLAY (drag/fling card upward past threshold, or tap CHARGE button):
+     CHARGE PLAY (drag card into upper screen zone above ~40% from top, or tap CHARGE button):
        - Costs card's base AP + 1 additional AP (the "Charge surcharge")
        - Quiz panel appears. Timer starts. No backing out.
        - CORRECT ANSWER → card plays at 2.5× / 3.0× / 3.5× (per tier). 500ms celebration.
@@ -83,14 +83,17 @@ ENEMY TURN:
 |--------|---------|--------|
 | Inspect card | Tap card in hand | Card pops up, shows full stats |
 | Quick Play | Tap popped card | Instant play at 1.0×, no quiz |
-| Charge Play | Drag/fling card upward OR tap CHARGE button | Progressive charge, quiz on release |
-| Cancel | Release below threshold | Card returns to hand |
+| Quick Play (drag) | Drag card upward into lower zone (below ~40% screen height), release past 60px | Quick Play, no quiz |
+| Charge Play | Drag card into upper zone (above ~40% screen height) OR tap CHARGE button | Quiz triggers on release |
+| Cancel | Release card barely moved (< ~20px) | Card returns to hand |
 
-**Fling-up drag progression:**
-- **0–40px drag:** Card follows finger. Info overlay appears.
-- **40–80px drag:** Golden charge glow begins building. "CHARGE" text fades in. Card scales to 1.15×.
-- **80px+ drag:** Green "ready to charge" glow pulses. Release here = quiz triggers.
-- **Release below 40px:** Card returns to hand. No action.
+**Screen-position zone system (AR-62):**
+- The screen is divided at **40% from the top** (35% on small screens < 600px height) into two play zones.
+- **Lower zone (below threshold):** Green glow. Drag past ~60px and release = Quick Play (no quiz, base effect at 1.0×).
+- **Upper zone (above threshold):** Golden glow + "⚡ CHARGE +1 AP" indicator above card. Release = Charge Play (quiz). Card scales to 1.05× in this zone.
+- Zone transition is **immediate and continuous** — visual feedback changes in real-time as card crosses the threshold.
+- **Not enough AP for charge:** indicator turns red with "NOT ENOUGH AP"; releasing falls back to Quick Play.
+- **Tier 3 cards:** Never show charge zone indicator (they auto-charge, no gesture needed).
 
 **Desktop (mouse):** Same drag-upward mechanic with pointer events.
 
@@ -191,6 +194,31 @@ Card frame categories: Attack (golden slash), Defence (blue shield), Buff (golde
 | Wrong answer | 300ms | Brief red dim (not punishing). Correct answer shown 1.5s in blue. Card resolves at 0.7× with muted effect. |
 
 The contrast between Quick Play speed and Charged Play drama makes Charging feel special and deliberate.
+
+### Combo Counter & Decay
+
+The **combo counter** tracks consecutive knowledge victories and applies a damage multiplier from `COMBO_MULTIPLIERS`. The counter floors at `baseComboCount` (normally 0) and never goes negative.
+
+| Event | Combo Change |
+|-------|-------------|
+| Charge — correct answer | +1 combo |
+| Charge — wrong answer | −2 combo (decays, floor at base) |
+| Quick Play | −1 combo (decays, floor at base) |
+
+**Design intent:** Quick Play is safe but bleeds momentum. Wrong answers hurt more than Quick Play. Only consecutive correct Charges build the combo multiplier.
+
+| Combo Count | Multiplier |
+|-------------|-----------|
+| 0 | 1.00× |
+| 1 | 1.15× |
+| 2 | 1.30× |
+| 3 | 1.50× |
+| 4 | 1.75× |
+| 5+ | 2.00× |
+
+**Combo heal:** At combo 6+, each correct Charge answer heals 1 HP (Quick Play does not trigger combo heal).
+
+Balance constants: `COMBO_DECAY_QUICK_PLAY = 1`, `COMBO_DECAY_WRONG_ANSWER = 2`, `COMBO_HEAL_THRESHOLD = 6`, `COMBO_HEAL_AMOUNT = 1`
 
 ---
 
@@ -612,7 +640,7 @@ Enemy pool: Cave Bat, Crystal Golem, Toxic Spore. Teaches basic Quick Play rhyth
 | Shop/Mystery | 0–1 | Deck refinement |
 | Boss | 1 | Act gate with Quiz Phase at 50% HP |
 
-Elite encounters force Charging via enemy special abilities (The Examiner gains Strength if you don't Charge). This is where quiz skill becomes non-optional.
+Elite encounters force Charging via enemy special abilities (Fossil Guardian gains Strength if you don't Charge). This is where quiz skill becomes non-optional.
 
 **Boss Quiz Phase (The Archivist at 50% HP):** Combat pauses. 5 rapid questions. Each correct = boss loses 10% remaining HP + player gains buff. Each wrong = boss gains +3 Strength. Then combat resumes.
 
@@ -705,7 +733,27 @@ Constants: `SHOP_HAGGLE_DISCOUNT = 0.30`, `SHOP_REMOVAL_BASE_PRICE = 50`, `SHOP_
 
 ### Card Reward System
 
-After each combat encounter, player chooses 1 of 3 card type options (Attack, Shield, Buff, Debuff, Utility, or Wild). A mechanic is then assigned from within that type. Facts pair randomly at hand draw — card reward is mechanic + type only.
+After each combat encounter, player chooses 1 of 3 card options. Each option is an actual card — showing the mechanic name, AP cost, short description, and domain color stripe. Cards are selected from the run pool weighted by the run archetype (aggressive, defensive, control, hybrid, balanced).
+
+**Reward screen (altar):** Displays 3 mini-cards on the altar surface. Each mini-card shows:
+- AP cost badge (top-left)
+- Mechanic name (center, bold)
+- Short effect description
+- Domain color bar (bottom)
+- Golden "+" badge if the card is pre-upgraded
+
+Inspect panel below shows the full mechanic description when a card is selected.
+
+**Floor-based pre-upgrade probability:** Cards in rewards can arrive pre-upgraded based on floor depth:
+| Floor Range | Upgrade Chance |
+|-------------|---------------|
+| 1–3 | 0% |
+| 4–6 | 10% |
+| 7–9 | 20% |
+| 10–12 | 30% |
+| 13+ | 40% |
+
+Constant: `UPGRADED_REWARD_CHANCE_BY_FLOOR` in `src/data/balance.ts`
 
 **Pity timer (STS-style):**
 - `rarePityCounter` starts at −5% per act
@@ -729,6 +777,8 @@ Target: ~400–800g per run (varies by risk-taking, node choices, and haggling).
 ### Save/Resume System
 
 Run state saved after each completed node. On resume, player returns to the map at their last completed position. `firstChargeFreeFactIds` is serialized as an array and restored to `Set<string>` on load.
+
+**Active Run Guard Popup:** If the player clicks "Enter Dungeon" while a saved run exists, a modal popup appears showing the run's current stats (floor, gold, encounters won, facts correct). Two options are presented: "Continue Run" (resumes the existing run) and "Abandon & Start New" (clears the save and begins a fresh run). Clicking the backdrop dismisses the popup without action. The active-run banner is hidden while the popup is visible to avoid double UI.
 
 ### Deck Building Strategy
 
@@ -761,7 +811,7 @@ HP: 15 | Damage: 8 + poison
 Low HP, applies DoT. Teaches "kill fast or suffer."
 *Charging for burst damage is the correct response.*
 
-**Timer Wyrm** — Mini-Boss (Act 1 gate)
+**Venomfang** — Mini-Boss (Act 1 gate)
 HP: 45 | Damage: 12, enrages after turn 4 (+5/turn)
 Must kill fast. Charging for burst is essential.
 *Teaches new players: Charging is necessary for tough enemies.*
@@ -773,7 +823,7 @@ HP: 30 | Damage: 8
 When you answer wrong on a Charged card, Mimic copies that card's effect against you.
 *Creates genuine tension: only Charge facts you're confident about.*
 
-**The Examiner** — Elite
+**Fossil Guardian** — Elite
 HP: 55 | Damage: 10
 Gains +3 Strength every turn you don't Charge at least 1 card.
 *Forces quiz engagement without feeling forced. You CHOOSE when to Charge.*
@@ -791,17 +841,17 @@ Phase 2: Resume with accumulated buffs/debuffs.
 
 ### Act 3 Enemies (The Archive)
 
-**The Scholar** — Common
+**Void Mite** — Common
 HP: 40 | Damage: 6
 Heals 5 HP when you answer correctly on a Charge. Very weak otherwise.
 *Dilemma: Charge for power (but heal the enemy) or Quick Play to chip?*
 
-**The Nullifier** — Elite
+**Mantle Dragon** — Elite
 HP: 70 | Damage: 14
 Negates all chain bonuses. Chains still form visually but give 1.0× multiplier.
 *Forces non-chain strategies. Tests build versatility.*
 
-**The Librarian** — Elite
+**Core Harbinger** — Elite
 HP: 65 | Damage: 12
 Immune to Quick Play damage. Only Charged attacks deal damage.
 *All-in quiz skill test. You must answer correctly to win.*
@@ -1316,7 +1366,8 @@ Card hand occupies the bottom ~45% of screen. Enemy arena occupies the top 55%. 
 | Popped (selected) | 80px rise, info overlay, CHARGE button |
 | Popped (insufficient AP) | Greyed out overlay |
 | Quick Playing | 200ms instant animation |
-| Charging | Golden glow building |
+| Dragging (lower zone) | Green glow — Quick Play on release |
+| Dragging (upper zone) | Golden glow + "⚡ CHARGE +1 AP" label — Charge Play on release |
 | Echo card | Dashed purple border, translucent |
 | Tier 3 auto-Charge | Gold shimmer, auto-resolves on play |
 
@@ -1667,6 +1718,19 @@ All facts must pass through:
 ### Layout Scaling System
 
 All UI uses `--layout-scale` CSS variable for responsive design across screen sizes.
+
+### Boot Animation
+
+An 8-second cinematic intro sequence plays on first launch only (controlled by the `recall-rogue-boot-anim-seen` localStorage flag). Skipped automatically when `skipOnboarding` or `devpreset` query params are present.
+
+**Three-act structure:**
+- **Part 1 (0–4.8s): Logo Reveal** — Logo deblurs from heavy blur → medium blur → sharp over 1.2s. Warm-gold glow burst at 1.0s with spark particles. "Recall Rogue" title text sweeps in from the left with a gold spark trail at 1.6s. "Bramblegate Games" studio tag fades in at 2.8s. Ambient firefly particles begin at 3.6s.
+- **Part 2 (4.8–8.0s): Cave Fly-Through** — Logo fades out. Three cave rings fly toward the camera in staggered sequence, simulating rushing into a dungeon entrance. Campsite background blurs in at 7.0s, crossfading heavy blur → sharp.
+- **Part 3 (8.0s+): Handoff** — `boot-anim-complete` event emitted. After 100 ms overlap (so Svelte hub renders behind), Phaser container is hidden and the hub appears seamlessly.
+
+**Tap to skip:** A single tap during the animation sets `tweens.timeScale = 3` and accelerates all particle emitters, completing the sequence ~3× faster.
+
+**Implementation:** `BootAnimScene` (Phaser) is prepended to the scene list only when `startAnimation = true` is passed to `CardGameManager.boot()`. The Svelte `FireflyBackground` and hub content are suppressed while `showBootAnimation` is true to avoid z-index conflicts.
 
 ---
 

@@ -3,8 +3,10 @@
  * Only boots BootScene + CombatScene — no dome, no mine.
  */
 import Phaser from 'phaser'
+import BootAnimScene from './scenes/BootAnimScene'
 import { BootScene } from './scenes/BootScene'
 import { CombatScene } from './scenes/CombatScene'
+import { RewardRoomScene } from './scenes/RewardRoomScene'
 
 export class CardGameManager {
   private static instance: CardGameManager | null = null
@@ -18,7 +20,7 @@ export class CardGameManager {
   }
 
   /** Boot Phaser engine with only CombatScene. */
-  boot(): void {
+  boot(startAnimation = false): void {
     if (this.game) return
 
     // Register on globalThis so encounterBridge can access without circular imports
@@ -30,12 +32,14 @@ export class CardGameManager {
       parent: 'phaser-container',
       width: 390,
       height: 844,
-      backgroundColor: '#0D1117',
+      backgroundColor: startAnimation ? 'rgba(0,0,0,0)' : '#0D1117',
       scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH,
       },
-      scene: [BootScene, CombatScene],
+      scene: startAnimation
+        ? [BootAnimScene, BootScene, CombatScene, RewardRoomScene]
+        : [BootScene, CombatScene, RewardRoomScene],
       render: {
         pixelArt: true,
         antialias: false,
@@ -43,9 +47,24 @@ export class CardGameManager {
       input: {
         activePointers: 1,
       },
-      // Transparent so Svelte overlays show through
-      transparent: false,
+      // Transparent during boot animation so HubScreen renders behind Phaser canvas
+      transparent: startAnimation,
     })
+  }
+
+  /** Get the Phaser Game instance for event listening. */
+  getGame(): Phaser.Game | null {
+    return this.game
+  }
+
+  /** Stop the boot animation scene if it is running. */
+  stopBootAnim(): void {
+    if (!this.game) return
+    const scene = this.game.scene.getScene('BootAnimScene')
+    if (scene) {
+      // Scene may be active, sleeping, or paused — stop it regardless
+      this.game.scene.stop('BootAnimScene')
+    }
   }
 
   /** Get the CombatScene instance. */
@@ -69,6 +88,31 @@ export class CardGameManager {
     const scene = this.game.scene.getScene('CombatScene')
     if (scene && scene.scene.isActive()) {
       this.game.scene.stop('CombatScene')
+    }
+  }
+
+  /** Get the RewardRoomScene instance. */
+  getRewardRoomScene(): RewardRoomScene | null {
+    if (!this.game) return null
+    return this.game.scene.getScene('RewardRoom') as RewardRoomScene | null
+  }
+
+  /** Start the reward room scene with data. */
+  startRewardRoom(data: import('./scenes/RewardRoomScene').RewardRoomData): void {
+    if (!this.game) return
+    const scene = this.game.scene.getScene('RewardRoom')
+    if (scene && scene.scene.isActive()) {
+      this.game.scene.stop('RewardRoom')
+    }
+    this.game.scene.start('RewardRoom', data)
+  }
+
+  /** Stop the reward room scene. */
+  stopRewardRoom(): void {
+    if (!this.game) return
+    const scene = this.game.scene.getScene('RewardRoom')
+    if (scene && scene.scene.isActive()) {
+      this.game.scene.stop('RewardRoom')
     }
   }
 

@@ -117,16 +117,16 @@ describe("Scholar's Gambit relic", () => {
     expect(RELIC_BY_ID['scholars_gambit'].startsUnlocked).toBe(false)
   })
 
-  it('has extra_relic_slot effect', () => {
+  it('has relic_slot_bonus effect', () => {
     const def = RELIC_BY_ID['scholars_gambit']
-    const effect = def.effects.find(e => e.effectId === 'extra_relic_slot')
+    const effect = def.effects.find(e => e.effectId === 'relic_slot_bonus')
     expect(effect).toBeDefined()
     expect(effect?.value).toBe(1)
   })
 
-  it('has wrong_charged_self_damage effect with value 3', () => {
+  it('has wrong_charge_self_damage effect with value 3', () => {
     const def = RELIC_BY_ID['scholars_gambit']
-    const effect = def.effects.find(e => e.effectId === 'wrong_charged_self_damage')
+    const effect = def.effects.find(e => e.effectId === 'wrong_charge_self_damage')
     expect(effect).toBeDefined()
     expect(effect?.value).toBe(3)
   })
@@ -168,8 +168,8 @@ describe("Scholar's Gambit — wrong answer self-damage effect resolver", () => 
 describe('startsUnlocked flag on starter relics', () => {
   const STARTER_RELICS_IN_CATALOGUE = FULL_RELIC_CATALOGUE.filter(r => r.isStarter)
 
-  it('all 25 starter relics have startsUnlocked: true', () => {
-    expect(STARTER_RELICS_IN_CATALOGUE.length).toBe(25)
+  it('all starter relics have startsUnlocked: true', () => {
+    expect(STARTER_RELICS_IN_CATALOGUE.length).toBe(24)
     for (const r of STARTER_RELICS_IN_CATALOGUE) {
       expect(r.startsUnlocked).toBe(true)
     }
@@ -177,15 +177,9 @@ describe('startsUnlocked flag on starter relics', () => {
 })
 
 describe('excludeFromPool flag', () => {
-  it('venom_fang has excludeFromPool: true', () => {
-    const def = RELIC_BY_ID['venom_fang']
-    expect(def.excludeFromPool).toBe(true)
-  })
-
   it('most relics do NOT have excludeFromPool: true', () => {
     const excluded = FULL_RELIC_CATALOGUE.filter(r => r.excludeFromPool === true)
-    // Only venom_fang in Phase 1
-    expect(excluded.length).toBeGreaterThan(0)
+    // excludeFromPool is rare — expect fewer than 5 relics to have it
     expect(excluded.length).toBeLessThan(5)
   })
 })

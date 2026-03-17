@@ -29,6 +29,8 @@ import {
   COMBO_MULTIPLIERS,
   COMBO_HEAL_THRESHOLD,
   COMBO_HEAL_AMOUNT,
+  COMBO_DECAY_QUICK_PLAY,
+  COMBO_DECAY_WRONG_ANSWER,
   PLAYER_START_HP,
   START_AP_PER_TURN,
   MAX_AP_PER_TURN,
@@ -440,7 +442,7 @@ export function playCardAction(
     if (mode === 'relaxed') {
       // AP is NOT refunded — wrong answers always cost AP regardless of mode
       const fizzledEffect = createNoEffect(card);
-      turnState.comboCount = turnState.baseComboCount;
+      turnState.comboCount = Math.max(turnState.baseComboCount, turnState.comboCount - COMBO_DECAY_WRONG_ANSWER);
       turnState.consecutiveCorrectThisEncounter = 0;
       turnState.cardsPlayedThisTurn += 1;
       turnState.isPerfectTurn = false;
@@ -488,7 +490,7 @@ export function playCardAction(
     }
 
 
-    turnState.comboCount = turnState.baseComboCount;
+    turnState.comboCount = Math.max(turnState.baseComboCount, turnState.comboCount - COMBO_DECAY_WRONG_ANSWER);
     turnState.consecutiveCorrectThisEncounter = 0;
     turnState.cardsPlayedThisTurn += 1;
     turnState.isPerfectTurn = false;
@@ -764,16 +766,24 @@ export function playCardAction(
   // Store last resolved effect for mirror
   turnState.lastCardEffect = { ...effect };
 
-  turnState.comboCount += 1;
+  if (playMode === 'quick') {
+    // Quick play: small combo decay — safe but costs momentum
+    turnState.comboCount = Math.max(turnState.baseComboCount, turnState.comboCount - COMBO_DECAY_QUICK_PLAY);
+  } else {
+    // Charge (correct answer): build combo
+    turnState.comboCount += 1;
+  }
 
-  // Combo heal: at threshold+ consecutive correct, heal per correct answer
-  if (turnState.comboCount >= COMBO_HEAL_THRESHOLD) {
-    turnState.playerState.hp = Math.min(turnState.playerState.maxHP, turnState.playerState.hp + COMBO_HEAL_AMOUNT);
-    turnState.turnLog.push({
-      type: 'heal',
-      message: 'Combo heal! +1 HP',
-      value: COMBO_HEAL_AMOUNT,
-    });
+  // Combo heal: at threshold+ consecutive correct, heal per correct answer (charge only)
+  if (playMode !== 'quick') {
+    if (turnState.comboCount >= COMBO_HEAL_THRESHOLD) {
+      turnState.playerState.hp = Math.min(turnState.playerState.maxHP, turnState.playerState.hp + COMBO_HEAL_AMOUNT);
+      turnState.turnLog.push({
+        type: 'heal',
+        message: 'Combo heal! +1 HP',
+        value: COMBO_HEAL_AMOUNT,
+      });
+    }
   }
 
   turnState.cardsPlayedThisTurn += 1;

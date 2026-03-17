@@ -1094,6 +1094,11 @@ export const COMBO_HEAL_AMOUNT = 1;
 /** Combo ring relic starting multiplier (applied at combo index 1 instead of default 1.15x) */
 export const COMBO_RING_START_MULTIPLIER = 1.10;
 
+/** Combo decay when playing a card via Quick Play (no question answered) */
+export const COMBO_DECAY_QUICK_PLAY = 1;
+/** Combo decay when answering a question wrong during Charge play */
+export const COMBO_DECAY_WRONG_ANSWER = 2;
+
 /** Segment-based enrage turn budgets. Enrage starts earlier in deeper floors. */
 export const ENRAGE_SEGMENTS: { maxFloor: number; startTurn: number }[] = [
   { maxFloor: 6, startTurn: 9 },        // Shallow Depths
@@ -1265,6 +1270,19 @@ export const RELIC_BOSS_RARITY_WEIGHTS = {
   rare: 0.30,      // AR-59.12: was 0.25
   legendary: 0.15,
 } as const;
+
+/** Floor-based probability of offering a pre-upgraded card in rewards. */
+export const UPGRADED_REWARD_CHANCE_BY_FLOOR: {
+  minFloor: number;
+  maxFloor: number;
+  chance: number;
+}[] = [
+  { minFloor: 1, maxFloor: 3, chance: 0 },
+  { minFloor: 4, maxFloor: 6, chance: 0.10 },
+  { minFloor: 7, maxFloor: 9, chance: 0.20 },
+  { minFloor: 10, maxFloor: 12, chance: 0.30 },
+  { minFloor: 13, maxFloor: Infinity, chance: 0.40 },
+];
 
 /** Consecutive Common-only acquisitions before pity guarantees Uncommon+. */
 export const RELIC_PITY_THRESHOLD = 4;
@@ -1496,6 +1514,9 @@ export function getBalanceOverrides(): BalanceOverrides | null {
 
 /** Total number of cards in the fixed starter deck (AR-59.6). */
 export const STARTER_DECK_SIZE = 10;
+
+/** Minimum deck size — Meditate (card removal at rest sites) is disabled when the player has this many or fewer non-Echo cards. */
+export const MIN_DECK_SIZE = 5;
 
 /**
  * Fixed starter deck composition (AR-59.6).

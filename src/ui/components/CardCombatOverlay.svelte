@@ -1331,12 +1331,12 @@
           <span class="player-block-value">{playerShield}</span>
         </div>
       {/if}
-      <div class="player-hp-text" style="color: {playerHpColor};">{playerHpCurrent}/{playerHpMax}</div>
       <div class="player-hp-track">
         <div
           class="player-hp-fill"
           style="width: {Math.round(playerHpRatio * 100)}%; background: {playerHpColor};"
         ></div>
+        <span class="player-hp-text">{playerHpCurrent}/{playerHpMax}</span>
       </div>
     </div>
 
@@ -1849,7 +1849,7 @@
 
   .player-status-strip {
     position: absolute;
-    left: calc(138px * var(--layout-scale, 1));
+    left: calc(140px * var(--layout-scale, 1));
     right: calc(10px * var(--layout-scale, 1));
     bottom: calc(calc(14px * var(--layout-scale, 1)) + var(--safe-bottom, 0px));
     z-index: 8;
@@ -1884,25 +1884,33 @@
   }
 
   .player-hp-text {
-    min-width: calc(68px * var(--layout-scale, 1));
-    font-family: '"Press Start 2P', monospace;
-    font-size: calc(10px * var(--layout-scale, 1));
-    letter-spacing: 0.2px;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Press Start 2P', monospace;
+    font-size: calc(9px * var(--layout-scale, 1));
+    color: #fff;
+    letter-spacing: 0.5px;
     text-shadow:
-      -2px 0 #000,
-      2px 0 #000,
-      0 -2px #000,
-      0 2px #000;
+      -1px 0 #000,
+      1px 0 #000,
+      0 -1px #000,
+      0 1px #000;
+    z-index: 1;
+    pointer-events: none;
   }
 
   .player-hp-track {
     flex: 1;
-    height: 14px;
+    height: 22px;
     border-radius: 999px;
     border: 1px solid rgba(100, 116, 139, 0.7);
     background: rgba(15, 23, 42, 0.82);
     overflow: hidden;
     box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35);
+    position: relative;
   }
 
   .player-hp-fill {

@@ -19,8 +19,8 @@ const GENERIC_TYPE_DESCRIPTIONS: Record<CardType, string> = {
  * Get a detailed, human-readable description of what a card does mechanically.
  * Uses the card's mechanic definition to generate specific numbers and effects.
  */
-export function getDetailedCardDescription(card: Card): string {
-  const power = Math.round(card.baseEffectValue * card.effectMultiplier);
+export function getDetailedCardDescription(card: Card, powerOverride?: number): string {
+  const power = powerOverride ?? Math.round(card.baseEffectValue * card.effectMultiplier);
   const mechanic = getMechanicDefinition(card.mechanicId);
 
   const apCost = Math.max(0, card.apCost ?? mechanic?.apCost ?? 1);
@@ -149,8 +149,8 @@ export function getMechanicTag(card: Card): string {
  * Returns compact text like "8 dmg", "6 block", "+30% next", etc.
  * Designed to fit in the card frame parchment area.
  */
-export function getShortCardDescription(card: Card): string {
-  const power = Math.round(card.baseEffectValue * card.effectMultiplier);
+export function getShortCardDescription(card: Card, powerOverride?: number): string {
+  const power = powerOverride ?? Math.round(card.baseEffectValue * card.effectMultiplier);
   const mechanic = getMechanicDefinition(card.mechanicId);
 
   if (!mechanic) {
@@ -233,8 +233,8 @@ function cond(v: number, active: boolean): CardDescPart {
  * Returns an array of typed segments for rendering with styled numbers,
  * bold keywords, and conditional values.
  */
-export function getCardDescriptionParts(card: Card, gameState?: CardGameState): CardDescPart[] {
-  const power = Math.round(card.baseEffectValue * card.effectMultiplier);
+export function getCardDescriptionParts(card: Card, gameState?: CardGameState, powerOverride?: number): CardDescPart[] {
+  const power = powerOverride ?? Math.round(card.baseEffectValue * card.effectMultiplier);
   const mechanic = getMechanicDefinition(card.mechanicId);
 
   if (!mechanic) {

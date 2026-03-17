@@ -98,7 +98,7 @@ describe('cardUpgradeService', () => {
       upgradeCard(card)
 
       expect(card.apCost).toBe(0) // 1 + (-1) = 0
-      expect(card.baseEffectValue).toBe(1) // unchanged
+      expect(card.baseEffectValue).toBe(2) // 1 + 1 (baseValueDelta: 1)
     })
 
     it('reduces AP cost for multi_hit', () => {
@@ -125,7 +125,7 @@ describe('cardUpgradeService', () => {
       upgradeCard(card)
 
       // Should derive secondaryValue from mechanic definition and add delta
-      expect(card.secondaryValue).toBe(3) // (2 from mechanic def) + 1
+      expect(card.secondaryValue).toBe(4) // (3 from mechanic def) + 1
       expect(card.apCost).toBe(1) // AP reduction applied
     })
 

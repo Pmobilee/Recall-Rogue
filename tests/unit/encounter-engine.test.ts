@@ -319,15 +319,15 @@ describe('Status Effects', () => {
 
 describe('Enemy Templates', () => {
   it('has 4 common enemies', () => {
-    // AR-59.13: v2 roster adds Act 2/3 commons and variants — 54 total
+    // v2 roster after enemy consolidation — 46 total
     const common = ENEMY_TEMPLATES.filter(t => t.category === 'common');
-    expect(common).toHaveLength(54);
+    expect(common).toHaveLength(46);
   });
 
   it('has 2 elite enemies', () => {
-    // AR-59.13: v2 roster adds the_examiner, the_nullifier, the_librarian — 13 total
+    // v2 roster after enemy consolidation — 10 total
     const elite = ENEMY_TEMPLATES.filter(t => t.category === 'elite');
-    expect(elite).toHaveLength(13);
+    expect(elite).toHaveLength(10);
   });
 
   it('has 8 boss enemies', () => {
@@ -337,7 +337,7 @@ describe('Enemy Templates', () => {
 
   it('has 6 mini-boss enemies', () => {
     const miniBoss = ENEMY_TEMPLATES.filter(t => t.category === 'mini_boss');
-    expect(miniBoss).toHaveLength(25);
+    expect(miniBoss).toHaveLength(24);
   });
 
   it('cave_bat has 19 baseHP (AR-59.13 v2 stats)', () => {
@@ -355,9 +355,9 @@ describe('Enemy Templates', () => {
     expect(archivist?.baseHP).toBe(80);
   });
 
-  it('fossil_guardian has history immuneDomain', () => {
+  it('fossil_guardian has no immuneDomain (removed in consolidation)', () => {
     const guardian = ENEMY_TEMPLATES.find(t => t.id === 'fossil_guardian');
-    expect(guardian?.immuneDomain).toBe('history');
+    expect(guardian?.immuneDomain).toBeUndefined();
   });
 
   it('ore_wyrm has phase transition at 50%', () => {
@@ -1053,14 +1053,15 @@ describe('Turn Manager', () => {
       expect(ts.comboCount).toBe(1);
     });
 
-    it('wrong answer fizzles and resets combo', () => {
+    it('wrong answer fizzles and decays combo', () => {
       const ts = startEncounter(deck, enemy);
       ts.comboCount = 3;
       const cardId = ts.deck.hand[0].id;
       const result = playCardAction(ts, cardId, false, false);
       expect(result.fizzled).toBe(true);
-      expect(result.comboCount).toBe(0);
-      expect(ts.comboCount).toBe(0);
+      // COMBO_DECAY_WRONG_ANSWER = 2, so 3 - 2 = 1
+      expect(result.comboCount).toBe(1);
+      expect(ts.comboCount).toBe(1);
     });
 
     it('applies ascension wrong-answer self damage', () => {

@@ -14,9 +14,13 @@ Persistence: localStorage (profile-namespaced), optional cloud sync
 Primary boot path:
 
 1. `src/main.ts` mounts Svelte app, initializes player save.
-2. `CardGameManager.boot()` creates Phaser game with `BootScene` and `CombatScene`.
-3. `encounterBridge.ts` wires game flow controller into deck/enemy/turn systems and CombatScene display. `startEncounterForRoom()` is async and calls `await factsDB.init()` if the DB is not yet ready (guards against race conditions).
-4. `factsDB.init()` loads `public/facts.db` in parallel for quiz/card content.
+2. `CardApp.svelte` `onMount` checks localStorage for `recall-rogue-boot-anim-seen`. On first-ever launch (and when `skipOnboarding`/`devpreset` query params are absent), sets `showBootAnimation = true` and calls `ensurePhaserBooted(true)`.
+3. `CardGameManager.boot(startAnimation)` creates the Phaser game. When `startAnimation = true`, `BootAnimScene` is prepended to the scene list and runs automatically as the first scene.
+4. `BootAnimScene` plays the 8-second cinematic intro. On completion, it emits `boot-anim-complete` on `game.events`.
+5. `CardApp` listens for `boot-anim-complete`, waits 100 ms (so the Svelte hub renders behind), then sets `showBootAnimation = false` and calls `mgr.stopBootAnim()`. The `recall-rogue-boot-anim-seen` flag is written to localStorage so the animation never plays again.
+6. Normal path (returning players): `CardGameManager.boot()` is called on-demand (first combat entry) without `BootAnimScene`.
+7. `encounterBridge.ts` wires game flow controller into deck/enemy/turn systems and CombatScene display. `startEncounterForRoom()` is async and calls `await factsDB.init()` if the DB is not yet ready (guards against race conditions).
+8. `factsDB.init()` loads `public/facts.db` in parallel for quiz/card content.
 
 ## 2. Layer Architecture
 
@@ -558,8 +562,9 @@ Two buses:
 src/
   CardApp.svelte           — Root component (replaces App.svelte)
   game/
-    CardGameManager.ts     — Minimal Phaser boot (~80 lines)
+    CardGameManager.ts     — Phaser singleton manager; `boot(startAnimation?)` creates game with optional BootAnimScene; `getGame()` returns Phaser.Game for event listening; `stopBootAnim()` stops BootAnimScene after completion
     scenes/
+      BootAnimScene.ts     — 8s cinematic intro (logo deblur, glow burst, text sweep, studio tag, cave fly-through, campsite reveal). Tap-to-skip accelerates via tweens.timeScale=3. Emits `boot-anim-complete` on game.events when done. First-launch only (localStorage flag).
       BootScene.ts         — Asset loading
       CombatScene.ts       — Phaser combat display zone (enemy sprite, HP bars, animations; sceneReady guard pattern)
     managers/              QuizManager, StudyManager, SaveManager, AudioManager,
@@ -583,7 +588,7 @@ src/
     deckManager.ts         — Draw/discard/shuffle/exhaust
     cardFactory.ts         — Creates Card from Fact + ReviewState
     runPoolBuilder.ts      — Builds 120-fact run pool (30/25/45 split) with subcategory balancing (max 35% per subcategory within a domain)
-    enemyManager.ts        — Creates enemies, floor scaling, intent rolling, block/damage resolution. Exports `getFloorDamageScaling(floor)` (+3%/floor above 6). Applies per-turn damage caps via `ENEMY_TURN_DAMAGE_CAP` and `getSegmentForFloor()`. Implements charge mechanic: `isCharging` flag, `chargedDamage` storage, `bypassDamageCap` intent flag for automatic deferred attacks. `dispatchEnemyTurnStart(enemy, turnNumber)` fires `onEnemyTurnStart` callbacks (Timer Wyrm enrage). `executeEnemyIntent` applies `enrageBonusDamage` to attack/multi_attack intents.
+    enemyManager.ts        — Creates enemies, floor scaling, intent rolling, block/damage resolution. Exports `getFloorDamageScaling(floor)` (+3%/floor above 6). Applies per-turn damage caps via `ENEMY_TURN_DAMAGE_CAP` and `getSegmentForFloor()`. Implements charge mechanic: `isCharging` flag, `chargedDamage` storage, `bypassDamageCap` intent flag for automatic deferred attacks. `dispatchEnemyTurnStart(enemy, turnNumber)` fires `onEnemyTurnStart` callbacks (Venomfang enrage). `executeEnemyIntent` applies `enrageBonusDamage` to attack/multi_attack intents.
     floorManager.ts        — Floor/room/boss/mini-boss generation
     mapGenerator.ts        — Act map generation: ActMap/MapNode types, generateActMap() (seed-deterministic, 15 rows, 3-5 nodes/row, non-crossing edges), selectMapNode(), reachability helpers
     runManager.ts          — Run stats recording
@@ -658,7 +663,7 @@ CardApp.svelte
   → services/encounterBridge (combat handlers)
 
 CardGameManager (globalThis symbol registry)
-  → scenes/BootScene, scenes/CombatScene
+  → scenes/BootAnimScene (first-launch only), scenes/BootScene, scenes/CombatScene
 
 encounterBridge
   → CardGameManager (via globalThis[Symbol.for('terra:cardGameManager')])

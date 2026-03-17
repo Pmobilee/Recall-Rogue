@@ -5,6 +5,7 @@ import { factsDB } from './factsDB';
 import { createCard, resetCardIdCounter } from './cardFactory';
 import { DEFAULT_POOL_SIZE, POOL_PRIMARY_PCT, POOL_SECONDARY_PCT, POOL_SUBCATEGORY_MAX_PCT } from '../data/balance';
 import { MECHANICS_BY_TYPE, type MechanicDefinition } from '../data/mechanics';
+import { NUM_CHAIN_TYPES } from '../data/chainTypes';
 import { assignTypesToCards } from './cardTypeAllocator';
 import { shuffled } from './randomUtils';
 import { getRunRng, isRunRngActive, seededShuffled } from './seededRng';
@@ -259,6 +260,22 @@ function applyMechanics(cards: Card[]): Card[] {
   });
 }
 
+/**
+ * Assigns a chainType (0-5) to each card via even distribution.
+ * Cards are shuffled first so chain types are randomly distributed.
+ */
+function assignChainTypes(cards: Card[]): void {
+  // Shuffle indices to randomize which cards get which chain type
+  const indices = cards.map((_, i) => i);
+  const shuffledIndices = isRunRngActive()
+    ? seededShuffled(getRunRng('chain'), indices)
+    : shuffled(indices);
+
+  for (let i = 0; i < shuffledIndices.length; i++) {
+    cards[shuffledIndices[i]].chainType = i % NUM_CHAIN_TYPES;
+  }
+}
+
 export function buildRunPool(
   primaryDomain: FactDomain,
   secondaryDomain: FactDomain,
@@ -445,6 +462,17 @@ export function buildRunPool(
   pool = pool.filter((card) => card.tier !== '3');
   pool = assignTypesToCards(pool);
   pool = applyMechanics(pool);
+
+  // === Fact-to-Card Binding (AR-70) ===
+  // Bind each card's fact permanently for the run duration.
+  // The card's factId is already set from createCard() — store it as boundFactId.
+  for (const card of pool) {
+    card.boundFactId = card.factId;
+  }
+
+  // === Chain Type Assignment (AR-70) ===
+  // Assign one of 6 chain types evenly across the pool.
+  assignChainTypes(pool);
 
   if (options?.probeRunNumber === 1) {
     const probeDomain = options.probeDomain ?? primaryDomain;

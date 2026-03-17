@@ -28,6 +28,7 @@
     onOpenRelicSanctum: () => { ok: true } | { ok: false; reason: string }
     onOpenDeckBuilder?: () => void
     onOpenTopicInterests?: () => void
+    onReplayBootAnim?: () => void
   }
 
   let {
@@ -44,6 +45,7 @@
     onOpenRelicSanctum,
     onOpenDeckBuilder,
     onOpenTopicInterests,
+    onReplayBootAnim,
   }: Props = $props()
 
   let showUpgradeModal = $state(false)
@@ -270,6 +272,11 @@
     <CampUpgradeModal onClose={() => { showUpgradeModal = false }} />
   {/if}
 
+  <!-- Replay boot animation (dev) -->
+  {#if onReplayBootAnim}
+    <button class="replay-boot-btn" onclick={onReplayBootAnim}>Intro</button>
+  {/if}
+
 </section>
 
 <style>
@@ -339,6 +346,23 @@
       ) scale(0);
       opacity: 0;
     }
+  }
+
+  .replay-boot-btn {
+    position: absolute;
+    bottom: calc(12px + var(--safe-bottom, 0px));
+    left: 12px;
+    padding: 4px 10px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px;
+    z-index: 50;
+    cursor: pointer;
+  }
+  .replay-boot-btn:active {
+    background: rgba(255,255,255,0.1);
   }
 
 </style>

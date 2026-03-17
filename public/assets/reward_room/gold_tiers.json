@@ -1,0 +1,52 @@
+{
+  "tiers": [
+    {
+      "tier": 0,
+      "file": "gold_tier_0.png",
+      "width": 48,
+      "height": 48,
+      "minGold": 1,
+      "maxGold": 10
+    },
+    {
+      "tier": 1,
+      "file": "gold_tier_1.png",
+      "width": 56,
+      "height": 56,
+      "minGold": 11,
+      "maxGold": 30
+    },
+    {
+      "tier": 2,
+      "file": "gold_tier_2.png",
+      "width": 64,
+      "height": 64,
+      "minGold": 31,
+      "maxGold": 60
+    },
+    {
+      "tier": 3,
+      "file": "gold_tier_3.png",
+      "width": 80,
+      "height": 80,
+      "minGold": 61,
+      "maxGold": 100
+    },
+    {
+      "tier": 4,
+      "file": "gold_tier_4.png",
+      "width": 96,
+      "height": 97,
+      "minGold": 101,
+      "maxGold": 200
+    },
+    {
+      "tier": 5,
+      "file": "gold_tier_5.png",
+      "width": 112,
+      "height": 113,
+      "minGold": 201,
+      "maxGold": null
+    }
+  ]
+}

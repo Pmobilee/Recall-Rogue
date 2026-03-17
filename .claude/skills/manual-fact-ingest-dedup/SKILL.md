@@ -11,6 +11,7 @@ description: Autonomous content pipeline for knowledge facts (10 domains via Son
 # 1. Check `docs/roadmap/phases/` and `docs/roadmap/completed/` for the next AR number
 # 2. CREATE an AR phase doc: `docs/roadmap/phases/AR-NN-SHORT-NAME.md`
 #    - Must contain: Overview, numbered TODO checklist, acceptance criteria, files affected
+#    - ⚠️ AR docs MUST be written by the OPUS ORCHESTRATOR DIRECTLY — NEVER by sub-agents
 # 3. Present the AR doc to the user for review
 # 4. ONLY THEN begin implementation, checking off TODOs as you go
 # 5. When done: move the doc to `docs/roadmap/completed/`
@@ -54,6 +55,10 @@ Run the full content pipeline autonomously: raw sources → curated entity lists
 - **Every fact must be schema-valid** before DB insertion.
 
 - **Distractor pools from the database are PERMANENTLY BANNED.** See "Distractor Quality Rules" section.
+
+- **Domain canonicalization is required.** All `categoryL1` values must use canonical IDs from `src/data/domainMetadata.ts` (e.g., `animals_wildlife`, NOT `"Animals & Wildlife"`). Use `normalizeFactDomain()` from `src/data/card-types.ts` as reference. AR-48 found 189 facts with non-canonical domain names. The universal normalizer must enforce this.
+
+- **Vocab answer length normalization is required (AR-45).** All vocabulary answers must be in the 6-18 character range (p99 <50 chars). Answers >50 chars must be truncated to core meaning. This prevents length-mismatch exploits where players guess by answer length. Runtime distractor selection in `vocabDistractorService.ts` also enforces length-matching.
 
 ---
 
@@ -99,17 +104,27 @@ Every knowledge fact entering the database MUST be processed by a **Sonnet** age
 6. On malformed output: retry once with simplified prompt, then flag for review
 7. Collect validated output, run universal normalizer to handle schema variants
 8. Write normalized facts to data/generated/{domain}/batch-NN.json
-9. **MANDATORY QA SPOT-CHECK** — Before merging, orchestrator reads 2-3 random facts per domain and verifies:
+9. **PRE-INGESTION QUALITY GATE (AR-51)** — Before QA spot-check, run automated validation:
+   - Schema completeness: all 28 fields present and non-null where required
+   - Answer length: ≤30 chars (Gate 1)
+   - Source attribution: `sourceName` not null (Gate 3)
+   - Variant count: ≥4 variants (Gate 4)
+   - Answer-in-question: no 5+ char overlap (Gate 5)
+   - Distractor quality: no placeholders, no answer duplicates, same type (Gate 9)
+   - Fun score: not all clustered at 5-6 (Gate 10)
+   - Domain canonicalization: `categoryL1` matches canonical IDs
+   Facts failing any hard-reject gate are excluded from the batch. Soft flags are logged for QA review.
+10. **MANDATORY QA SPOT-CHECK** — Before merging, orchestrator reads 2-3 random facts per domain and verifies:
    - Schema completeness (all 28 fields present)
    - Question/answer quality (no answer-in-question, no circular explanations)
    - Distractor quality (same type as answer, plausible, not garbage/generic)
    - Correct subcategory assignment
    - Fun score calibration (not all clustered at 5-6)
-   Only proceed to step 10 if quality passes. Flag and fix bad domains before merge.
-10. Mark processed entities in data/curated/{domain}/entities.json (processed: true)
-11. Update progress document (generated count, lastEntityIndex)
-12. Promote to src/data/seed/knowledge-{domain}.json
-13. Rebuild DB: node scripts/build-facts-db.mjs
+   Only proceed to step 11 if quality passes. Flag and fix bad domains before merge.
+11. Mark processed entities in data/curated/{domain}/entities.json (processed: true)
+12. Update progress document (generated count, lastEntityIndex)
+13. Promote to src/data/seed/knowledge-{domain}.json
+14. Rebuild DB: node scripts/build-facts-db.mjs
 ```
 
 ### Incremental Generation Support
@@ -584,3 +599,17 @@ STAGE 6 — PRODUCTION
 | `data/generated/{domain}/` | Stage 3: Sonnet-generated fact batches |
 | `data/generated/vocab/{language}/` | Stage 3: programmatic vocab batches |
 | `data/archived/` | Previous database content (archived) |
+
+---
+
+## Canonical References & Lessons Learned
+
+- **Pipeline spec:** `docs/RESEARCH/SOURCES/content-pipeline-spec.md` — authority over this skill
+- **AR-34:** Content pipeline spec alignment — established 6-stage pipeline and 11 validation gates
+- **AR-45:** Vocab answer length normalization — prevents length-matching exploits (4→127 char range → 6-18 range)
+- **AR-48:** Domain canonicalization — 189 facts with non-canonical domain names, variant field normalization
+- **AR-51:** Pre-ingestion quality gate — 8.2% failure rate on full DB scan, added automated gate before promotion
+- **AR-52:** Distractor backlog cleanup — 76 knowledge facts + 8,992 legacy vocab distractors stripped
+- **AR-53:** Fact repetition & FSRS audit — pool size 120→200, cooldown min 3→5, floor-based cooldown
+- **March 12, 2026:** 58,359 garbage distractors stripped from DB (generated via banned pool method)
+- **March 15-16, 2026:** Quality gate implementation and backlog cleanup completed

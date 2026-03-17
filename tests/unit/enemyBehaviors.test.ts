@@ -52,12 +52,10 @@ describe('shadow_mimic — onPlayerChargeWrong', () => {
     expect(enemy.template.onPlayerChargeCorrect).toBeUndefined();
   });
 
-  it('dark_shade variant also has onPlayerChargeWrong', () => {
-    const enemy = makeInstance('dark_shade');
-    const ctx = makeCtx(enemy, { cardBaseDamage: 8 });
-    expect(enemy.template.onPlayerChargeWrong).toBeDefined();
-    enemy.template.onPlayerChargeWrong!(ctx);
-    expect((ctx as any)._mirrorDamage).toBe(8);
+  it('shadow_mimic has no onPlayerChargeCorrect (correct plays are safe)', () => {
+    const enemy = makeInstance('shadow_mimic');
+    // shadow_mimic has no onPlayerChargeCorrect — correct plays trigger no mirror
+    expect(enemy.template.onPlayerChargeCorrect).toBeUndefined();
   });
 });
 
@@ -89,21 +87,17 @@ describe('bone_collector — onPlayerChargeWrong', () => {
     expect(enemy.currentHP).toBe(enemy.maxHP);
   });
 
-  it('grave_warden variant also heals on wrong Charge', () => {
-    const enemy = makeInstance('grave_warden');
-    enemy.currentHP = enemy.maxHP - 8;
-    const start = enemy.currentHP;
-    const ctx = makeCtx(enemy);
-    enemy.template.onPlayerChargeWrong!(ctx);
-    expect(enemy.currentHP).toBe(start + 5);
+  it('bone_collector does not have onPlayerChargeCorrect (healing is wrong-answer only)', () => {
+    const enemy = makeInstance('bone_collector');
+    expect(enemy.template.onPlayerChargeCorrect).toBeUndefined();
   });
 });
 
-// ── The Examiner: onPlayerNoCharge stacks +3 Strength ──
+// ── Fossil Guardian (was the_examiner): onPlayerNoCharge stacks +3 Strength ──
 
-describe('the_examiner — onPlayerNoCharge', () => {
+describe('fossil_guardian — onPlayerNoCharge', () => {
   it('adds +3 Strength on the first no-Charge turn', () => {
-    const enemy = makeInstance('the_examiner');
+    const enemy = makeInstance('fossil_guardian');
     const ctx: EnemyReactContext = {
       enemy,
       cardBaseDamage: 0,
@@ -118,7 +112,7 @@ describe('the_examiner — onPlayerNoCharge', () => {
   });
 
   it('stacks +3 Strength on each subsequent no-Charge turn', () => {
-    const enemy = makeInstance('the_examiner');
+    const enemy = makeInstance('fossil_guardian');
     const ctx: EnemyReactContext = {
       enemy,
       cardBaseDamage: 0,
@@ -132,7 +126,7 @@ describe('the_examiner — onPlayerNoCharge', () => {
   });
 
   it('strength stacks are encounter-permanent (turnsRemaining = 999)', () => {
-    const enemy = makeInstance('the_examiner');
+    const enemy = makeInstance('fossil_guardian');
     const ctx: EnemyReactContext = {
       enemy,
       cardBaseDamage: 0,
@@ -145,11 +139,11 @@ describe('the_examiner — onPlayerNoCharge', () => {
   });
 });
 
-// ── The Scholar: onPlayerChargeCorrect heals ──
+// ── Void Mite (was the_scholar): onPlayerChargeCorrect heals ──
 
-describe('the_scholar — onPlayerChargeCorrect', () => {
+describe('void_mite — onPlayerChargeCorrect', () => {
   it('heals 5 HP on correct Charge', () => {
-    const enemy = makeInstance('the_scholar');
+    const enemy = makeInstance('void_mite');
     enemy.currentHP = enemy.maxHP - 10;
     const start = enemy.currentHP;
     const ctx = makeCtx(enemy, { chargeCorrect: true });
@@ -159,7 +153,7 @@ describe('the_scholar — onPlayerChargeCorrect', () => {
   });
 
   it('does not overheal', () => {
-    const enemy = makeInstance('the_scholar');
+    const enemy = makeInstance('void_mite');
     enemy.currentHP = enemy.maxHP - 2;
     const ctx = makeCtx(enemy, { chargeCorrect: true });
     enemy.template.onPlayerChargeCorrect!(ctx);
@@ -167,55 +161,46 @@ describe('the_scholar — onPlayerChargeCorrect', () => {
   });
 
   it('does NOT have onPlayerChargeWrong (wrong answers do not heal)', () => {
-    const enemy = makeInstance('the_scholar');
+    const enemy = makeInstance('void_mite');
     expect(enemy.template.onPlayerChargeWrong).toBeUndefined();
-  });
-
-  it('lore_keeper variant also heals on correct Charge', () => {
-    const enemy = makeInstance('lore_keeper');
-    enemy.currentHP = enemy.maxHP - 10;
-    const start = enemy.currentHP;
-    const ctx = makeCtx(enemy, { chargeCorrect: true });
-    enemy.template.onPlayerChargeCorrect!(ctx);
-    expect(enemy.currentHP).toBe(start + 5);
   });
 });
 
-// ── The Nullifier: chainMultiplierOverride = 1.0 ──
+// ── Mantle Dragon (was the_nullifier): chainMultiplierOverride = 1.0 ──
 
-describe('the_nullifier — chainMultiplierOverride', () => {
+describe('mantle_dragon — chainMultiplierOverride', () => {
   it('has chainMultiplierOverride set to 1.0', () => {
-    const template = getTemplate('the_nullifier');
+    const template = getTemplate('mantle_dragon');
     expect(template.chainMultiplierOverride).toBe(1.0);
   });
 
   it('has no onPlayerChargeWrong/Correct callbacks (override is passive)', () => {
-    const template = getTemplate('the_nullifier');
+    const template = getTemplate('mantle_dragon');
     expect(template.onPlayerChargeWrong).toBeUndefined();
     expect(template.onPlayerChargeCorrect).toBeUndefined();
   });
 });
 
-// ── The Librarian: quickPlayImmune = true ──
+// ── Core Harbinger (was the_librarian): quickPlayImmune = true ──
 
-describe('the_librarian — quickPlayImmune', () => {
+describe('core_harbinger — quickPlayImmune', () => {
   it('has quickPlayImmune set to true', () => {
-    const template = getTemplate('the_librarian');
+    const template = getTemplate('core_harbinger');
     expect(template.quickPlayImmune).toBe(true);
   });
 
   it('has no chain or callback fields (immunity is passive)', () => {
-    const template = getTemplate('the_librarian');
+    const template = getTemplate('core_harbinger');
     expect(template.onPlayerChargeWrong).toBeUndefined();
     expect(template.chainMultiplierOverride).toBeUndefined();
   });
 });
 
-// ── Timer Wyrm: enrage via onEnemyTurnStart ──
+// ── Venomfang (was timer_wyrm): enrage via onEnemyTurnStart ──
 
-describe('timer_wyrm — onEnemyTurnStart enrage', () => {
+describe('venomfang — onEnemyTurnStart enrage', () => {
   it('does NOT enrage on turns 1-3', () => {
-    const enemy = makeInstance('timer_wyrm');
+    const enemy = makeInstance('venomfang');
     const startBonus = enemy.enrageBonusDamage;
     for (let t = 1; t <= 3; t++) {
       dispatchEnemyTurnStart(enemy, t);
@@ -224,13 +209,13 @@ describe('timer_wyrm — onEnemyTurnStart enrage', () => {
   });
 
   it('adds +5 enrageBonusDamage on turn 4', () => {
-    const enemy = makeInstance('timer_wyrm');
+    const enemy = makeInstance('venomfang');
     dispatchEnemyTurnStart(enemy, 4);
     expect(enemy.enrageBonusDamage).toBe(5);
   });
 
   it('stacks +5 per turn from turn 4 onwards', () => {
-    const enemy = makeInstance('timer_wyrm');
+    const enemy = makeInstance('venomfang');
     dispatchEnemyTurnStart(enemy, 4);
     dispatchEnemyTurnStart(enemy, 5);
     dispatchEnemyTurnStart(enemy, 6);
@@ -238,7 +223,7 @@ describe('timer_wyrm — onEnemyTurnStart enrage', () => {
   });
 
   it('createEnemy initializes enrageBonusDamage to 0', () => {
-    const enemy = makeInstance('timer_wyrm');
+    const enemy = makeInstance('venomfang');
     expect(enemy.enrageBonusDamage).toBe(0);
   });
 });
@@ -254,24 +239,26 @@ describe('getEnemiesForNode — act pool selection', () => {
     expect(ids).toContain('toxic_spore');
     // Must NOT contain Act 2 enemies
     expect(ids).not.toContain('shadow_mimic');
-    expect(ids).not.toContain('the_scholar');
+    expect(ids).not.toContain('void_mite');
   });
 
-  it('Act 1 has no elites', () => {
+  it('Act 1 has elites (ore_wyrm, cave_troll)', () => {
     const enemies = getEnemiesForNode(1, 'elite');
-    expect(enemies).toHaveLength(0);
+    const ids = enemies.map(e => e.id);
+    expect(ids).toContain('ore_wyrm');
+    expect(ids).toContain('cave_troll');
   });
 
-  it('Act 1 mini_boss returns timer_wyrm', () => {
+  it('Act 1 mini_boss returns venomfang', () => {
     const enemies = getEnemiesForNode(1, 'mini_boss');
     const ids = enemies.map(e => e.id);
-    expect(ids).toContain('timer_wyrm');
+    expect(ids).toContain('venomfang');
   });
 
-  it('Act 2 elite returns the_examiner', () => {
+  it('Act 2 elite returns fossil_guardian', () => {
     const enemies = getEnemiesForNode(2, 'elite');
     const ids = enemies.map(e => e.id);
-    expect(ids).toContain('the_examiner');
+    expect(ids).toContain('fossil_guardian');
   });
 
   it('Act 2 boss returns the_archivist', () => {
@@ -286,18 +273,17 @@ describe('getEnemiesForNode — act pool selection', () => {
     expect(ids).toContain('the_curator');
   });
 
-  it('Act 3 elites include the_nullifier and the_librarian', () => {
+  it('Act 3 elites include mantle_dragon and core_harbinger', () => {
     const enemies = getEnemiesForNode(3, 'elite');
     const ids = enemies.map(e => e.id);
-    expect(ids).toContain('the_nullifier');
-    expect(ids).toContain('the_librarian');
+    expect(ids).toContain('mantle_dragon');
+    expect(ids).toContain('core_harbinger');
   });
 
-  it('Act 3 combat includes the_scholar and lore_keeper', () => {
-    const enemies = getEnemiesForNode(3, 'combat');
+  it('Act 2 combat includes void_mite', () => {
+    const enemies = getEnemiesForNode(2, 'combat');
     const ids = enemies.map(e => e.id);
-    expect(ids).toContain('the_scholar');
-    expect(ids).toContain('lore_keeper');
+    expect(ids).toContain('void_mite');
   });
 
   it('invalid act returns empty array', () => {

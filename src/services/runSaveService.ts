@@ -46,13 +46,14 @@ export interface RunSaveState {
 /** RunState with Sets replaced by arrays for JSON serialization. */
 interface SerializedRunState extends Omit<
   RunState,
-  'echoFactIds' | 'consumedRewardFactIds' | 'factsAnsweredCorrectly' | 'factsAnsweredIncorrectly' | 'firstChargeFreeFactIds'
+  'echoFactIds' | 'consumedRewardFactIds' | 'factsAnsweredCorrectly' | 'factsAnsweredIncorrectly' | 'firstChargeFreeFactIds' | 'offeredRelicIds'
 > {
   echoFactIds: string[];
   consumedRewardFactIds: string[];
   factsAnsweredCorrectly: string[];
   factsAnsweredIncorrectly: string[];
   firstChargeFreeFactIds: string[];
+  offeredRelicIds: string[];
   /** Legacy field — present in old saves, ignored on load. */
   discoveredFactIds?: string[];
 }
@@ -71,6 +72,7 @@ function serializeRunState(run: RunState): SerializedRunState {
     factsAnsweredCorrectly: [...run.factsAnsweredCorrectly],
     factsAnsweredIncorrectly: [...run.factsAnsweredIncorrectly],
     firstChargeFreeFactIds: [...run.firstChargeFreeFactIds],
+    offeredRelicIds: [...run.offeredRelicIds],
   };
 }
 
@@ -91,6 +93,7 @@ function deserializeRunState(saved: SerializedRunState): RunState {
     factsAnsweredCorrectly: new Set(saved.factsAnsweredCorrectly),
     factsAnsweredIncorrectly: new Set(saved.factsAnsweredIncorrectly),
     firstChargeFreeFactIds: new Set(saved.firstChargeFreeFactIds ?? []),
+    offeredRelicIds: new Set(saved.offeredRelicIds ?? []),
     ascensionLevel,
     ascensionModifiers: savedModifiers ? { ...defaultModifiers, ...savedModifiers } : defaultModifiers,
     retreatRewardLocked: Boolean(savedAny['retreatRewardLocked']),

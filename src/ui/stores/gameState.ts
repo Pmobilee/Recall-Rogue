@@ -22,6 +22,7 @@ export type Screen =
   | 'restRoom'
   | 'runEnd'
   | 'cardReward'
+  | 'rewardRoom'
   | 'retreatOrDelve'
   | 'shopRoom'
   | 'specialEvent'
@@ -58,6 +59,7 @@ const VALID_SCREENS: Screen[] = [
   'restRoom',
   'runEnd',
   'cardReward',
+  'rewardRoom',
   'retreatOrDelve',
   'shopRoom',
   'specialEvent',

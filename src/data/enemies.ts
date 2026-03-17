@@ -260,31 +260,6 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     },
   },
 
-  // ── ACT 2 ELITE ──
-
-  {
-    id: 'the_examiner',
-    name: 'The Examiner',
-    category: 'elite',
-    region: 'deep_caverns',
-    baseHP: 55,
-    intentPool: [
-      { type: 'attack', value: 10, weight: 2, telegraph: 'Examiner\'s strike' },
-      { type: 'buff', value: 3, weight: 2, telegraph: 'Academic rigor', statusEffect: { type: 'strength', value: 1, turns: 2 } },
-      { type: 'attack', value: 8, weight: 1, telegraph: 'Pop quiz' },
-    ],
-    description: 'A stern examiner who rewards disciplined Charging. Gains +3 Strength every turn you don\'t Charge.',
-    animArchetype: 'caster',
-    onPlayerNoCharge: (ctx) => {
-      // Apply +3 Strength (encounter-permanent: 999 turns)
-      applyStatusEffect(ctx.enemy.statusEffects, {
-        type: 'strength',
-        value: 3,
-        turnsRemaining: 999,
-      });
-    },
-  },
-
   // ── DEPRECATED ELITES (pre-v2 roster) ──
   // @deprecated — kept for backwards compatibility, not in ACT_ENEMY_POOLS. Remove in AR-59.19.
 
@@ -315,16 +290,22 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Fossil Guardian',
     category: 'elite',
     region: 'deep_caverns',
-    baseHP: 45,
+    baseHP: 55,
     intentPool: [
-      { type: 'attack', value: 9, weight: 2, telegraph: 'Ancient strike' },
-      { type: 'defend', value: 10, weight: 2, telegraph: 'Petrified shield' },
-      { type: 'heal', value: 5, weight: 1, telegraph: 'Mineral absorption' },
-      { type: 'debuff', value: 2, weight: 1, telegraph: 'Calcifying gaze', statusEffect: { type: 'weakness', value: 1, turns: 3 } },
+      { type: 'attack', value: 10, weight: 3, telegraph: 'Examiner\'s strike' },
+      { type: 'buff', value: 3, weight: 2, telegraph: 'Academic rigor', statusEffect: { type: 'strength', value: 1, turns: 2 } },
+      { type: 'attack', value: 8, weight: 1, telegraph: 'Pop quiz' },
     ],
-    description: 'An ancient guardian immune to history-domain knowledge.',
-    immuneDomain: 'history',
+    description: 'An ancient fossil guardian that punishes lazy play. Gains +3 Strength every turn you don\'t Charge.',
     animArchetype: 'trembler',
+    onPlayerNoCharge: (ctx) => {
+      // Apply +3 Strength (encounter-permanent: 999 turns)
+      applyStatusEffect(ctx.enemy.statusEffects, {
+        type: 'strength',
+        value: 3,
+        turnsRemaining: 999,
+      });
+    },
   },
 
   // ── BOSS (3) ──
@@ -528,12 +509,17 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     region: 'shallow_depths',
     baseHP: 45,
     intentPool: [
-      { type: 'attack', value: 10, weight: 3, telegraph: 'Fang strike' },
-      { type: 'debuff', value: 2, weight: 3, telegraph: 'Venom bite', statusEffect: { type: 'poison', value: 3, turns: 3 } },
-      { type: 'multi_attack', value: 3, weight: 1, telegraph: 'Rapid fangs', hitCount: 3 },
+      { type: 'attack', value: 12, weight: 3, telegraph: 'Serpent lunge' },
+      { type: 'attack', value: 10, weight: 2, telegraph: 'Tail whip' },
+      { type: 'debuff', value: 1, weight: 1, telegraph: 'Venom bite', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
     ],
-    description: 'A venomous spider lurking in the shadows. Its bites leave a lingering poison.',
+    description: 'A temporal serpent that grows deadlier each turn. Survive until turn 4 and it enrages — +5 more damage permanently each subsequent turn.',
     animArchetype: 'crawler',
+    onEnemyTurnStart: (ctx) => {
+      if (ctx.turnNumber >= 4) {
+        ctx.enemy.enrageBonusDamage += 5;
+      }
+    },
   },
 
   {
@@ -1254,16 +1240,20 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Void Mite',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 28,
+    baseHP: 40,
     intentPool: [
-      { type: 'debuff', value: 1, weight: 3, telegraph: 'Dark infection', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
-      { type: 'attack', value: 10, weight: 2, telegraph: 'Void bite' },
-      { type: 'attack', value: 8, weight: 1, telegraph: 'Parasitic strike' },
+      { type: 'attack', value: 6, weight: 3, telegraph: 'Academic strike' },
+      { type: 'defend', value: 8, weight: 2, telegraph: 'Study shield' },
+      { type: 'heal', value: 5, weight: 1, telegraph: 'Knowledge recovery' },
     ],
-    description: 'A dark parasite that weakens its host. Primarily a debuffer.',
+    description: 'A parasitic void creature that feeds on correct knowledge. Heals 5 HP when you answer correctly — Quick Play to deny healing, or Charge for the multiplier.',
     rarity: 'standard',
     spawnWeight: 10,
     animArchetype: 'crawler',
+    onPlayerChargeCorrect: (ctx) => {
+      const healAmount = Math.min(5, ctx.enemy.maxHP - ctx.enemy.currentHP);
+      ctx.enemy.currentHP += healAmount;
+    },
   },
 
   {
@@ -1757,104 +1747,6 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Mantle Dragon',
     category: 'elite',
     region: 'the_archive',
-    baseHP: 76,
-    intentPool: [
-      { type: 'attack', value: 14, weight: 2, telegraph: 'Magma bite' },
-      { type: 'multi_attack', value: 5, weight: 2, telegraph: 'Fire barrage', hitCount: 3 },
-      { type: 'charge', value: 30, weight: 1, telegraph: 'Charging: Volcanic eruption!' },
-      { type: 'buff', value: 2, weight: 1, telegraph: 'Magma surge', statusEffect: { type: 'strength', value: 2, turns: 2 } },
-    ],
-    description: 'A geological dragon born from the mantle. Immune to geography knowledge. Becomes devastatingly powerful when wounded.',
-    immuneDomain: 'geography',
-    phaseTransitionAt: 0.4,
-    phase2IntentPool: [
-      { type: 'attack', value: 18, weight: 2, telegraph: 'Devastating bite' },
-      { type: 'multi_attack', value: 7, weight: 2, telegraph: 'Magma storm', hitCount: 4 },
-      { type: 'charge', value: 35, weight: 1, telegraph: 'Charging: Cataclysmic eruption!' },
-    ],
-    animArchetype: 'swooper',
-  },
-
-  {
-    id: 'core_harbinger',
-    name: 'Core Harbinger',
-    category: 'elite',
-    region: 'the_archive',
-    baseHP: 72,
-    intentPool: [
-      { type: 'attack', value: 13, weight: 2, telegraph: 'Core strike' },
-      { type: 'debuff', value: 2, weight: 2, telegraph: 'Vulnerability aura', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
-      { type: 'debuff', value: 2, weight: 2, telegraph: 'Weakness aura', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
-      { type: 'defend', value: 8, weight: 1, telegraph: 'Core armor' },
-      { type: 'charge', value: 29, weight: 1, telegraph: 'Charging: Core burst!' },
-    ],
-    description: 'An iron entity from the world\'s core. Applies multiple debuffs and becomes more aggressive when wounded.',
-    phaseTransitionAt: 0.5,
-    phase2IntentPool: [
-      { type: 'attack', value: 16, weight: 2, telegraph: 'Enraged strike' },
-      { type: 'charge', value: 33, weight: 2, telegraph: 'Charging: Ultimate core burst!' },
-      { type: 'multi_attack', value: 5, weight: 1, telegraph: 'Core explosion', hitCount: 3 },
-    ],
-    animArchetype: 'caster',
-  },
-
-  // ============================================================
-  // AR-59.13: NEW v2 ENEMIES
-  // ============================================================
-
-  // ── ACT 1 MINI-BOSS: Timer Wyrm ──
-  // Enrage handled via onEnemyTurnStart — gains +5 damage per turn starting turn 4.
-
-  {
-    id: 'timer_wyrm',
-    name: 'Timer Wyrm',
-    category: 'mini_boss',
-    region: 'shallow_depths',
-    baseHP: 45,
-    intentPool: [
-      { type: 'attack', value: 12, weight: 3, telegraph: 'Serpent lunge' },
-      { type: 'attack', value: 10, weight: 2, telegraph: 'Tail whip' },
-      { type: 'debuff', value: 1, weight: 1, telegraph: 'Venom bite', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
-    ],
-    description: 'A temporal serpent that grows faster with each passing turn. Survive until turn 4 and it enrages — dealing +5 more damage permanently each subsequent turn.',
-    animArchetype: 'lurcher',
-    onEnemyTurnStart: (ctx) => {
-      if (ctx.turnNumber >= 4) {
-        ctx.enemy.enrageBonusDamage += 5;
-      }
-    },
-  },
-
-  // ── ACT 3 COMMONS ──
-
-  {
-    id: 'the_scholar',
-    name: 'The Scholar',
-    category: 'common',
-    region: 'the_archive',
-    baseHP: 40,
-    intentPool: [
-      { type: 'attack', value: 6, weight: 3, telegraph: 'Academic strike' },
-      { type: 'defend', value: 8, weight: 2, telegraph: 'Study shield' },
-      { type: 'heal', value: 5, weight: 1, telegraph: 'Knowledge recovery' },
-    ],
-    description: 'A studious enemy that heals when you answer correctly. Forces a dilemma: Quick Play to deny healing, or Charge for the multiplier knowing it heals 5 HP.',
-    rarity: 'standard',
-    spawnWeight: 10,
-    animArchetype: 'caster',
-    onPlayerChargeCorrect: (ctx) => {
-      const healAmount = Math.min(5, ctx.enemy.maxHP - ctx.enemy.currentHP);
-      ctx.enemy.currentHP += healAmount;
-    },
-  },
-
-  // ── ACT 3 ELITES ──
-
-  {
-    id: 'the_nullifier',
-    name: 'The Nullifier',
-    category: 'elite',
-    region: 'the_archive',
     baseHP: 70,
     intentPool: [
       { type: 'attack', value: 14, weight: 3, telegraph: 'Nullification strike' },
@@ -1862,14 +1754,14 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 12, weight: 2, telegraph: 'Void impact' },
       { type: 'defend', value: 8, weight: 1, telegraph: 'Null barrier' },
     ],
-    description: 'An entity that negates Knowledge Chain multipliers. All chain stacking is nullified to 1.0x while it lives. Normal Charge multipliers are unaffected.',
-    animArchetype: 'caster',
+    description: 'A dragon that negates Knowledge Chain multipliers. All chain stacking is nullified to 1.0x while it lives.',
+    animArchetype: 'swooper',
     chainMultiplierOverride: 1.0,
   },
 
   {
-    id: 'the_librarian',
-    name: 'The Librarian',
+    id: 'core_harbinger',
+    name: 'Core Harbinger',
     category: 'elite',
     region: 'the_archive',
     baseHP: 65,
@@ -1879,158 +1771,11 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 10, weight: 2, telegraph: 'Shelf sweep' },
       { type: 'defend', value: 10, weight: 1, telegraph: 'Book barrier' },
     ],
-    description: 'A guardian of knowledge who is immune to Quick Play damage. Only Charged plays deal damage. Forces Charge discipline under duress.',
-    animArchetype: 'slammer',
+    description: 'A core entity immune to Quick Play damage. Only Charged plays deal damage. Forces Charge discipline under duress.',
+    animArchetype: 'caster',
     quickPlayImmune: true,
   },
 
-  // ── VARIANT TEMPLATES ──
-  // AR-59.13 variants: same behavior as base, ±10-15% HP/damage.
-  // variantOf is informational only.
-
-  // Cave Bat variants
-  {
-    id: 'cave_bat_alpha',
-    name: 'Cave Bat Alpha',
-    category: 'common',
-    region: 'shallow_depths',
-    baseHP: 22, // +15% of 19
-    intentPool: [
-      { type: 'attack', value: 9, weight: 3, telegraph: 'Alpha swooping strike' },
-      { type: 'attack', value: 12, weight: 2, telegraph: 'Alpha frenzied bite' },
-      { type: 'buff', value: 2, weight: 1, telegraph: 'Alpha screech', statusEffect: { type: 'strength', value: 1, turns: 2 } },
-    ],
-    description: 'A larger, fiercer cave bat. Faster and harder-hitting than its kin.',
-    rarity: 'uncommon',
-    spawnWeight: 5,
-    animArchetype: 'swooper',
-    variantOf: 'cave_bat',
-  },
-
-  {
-    id: 'dusk_bat',
-    name: 'Dusk Bat',
-    category: 'common',
-    region: 'shallow_depths',
-    baseHP: 19,
-    intentPool: [
-      { type: 'attack', value: 8, weight: 3, telegraph: 'Dusk swooping strike' },
-      { type: 'attack', value: 11, weight: 2, telegraph: 'Dusk frenzied bite' },
-      { type: 'buff', value: 2, weight: 1, telegraph: 'Dusk screech', statusEffect: { type: 'strength', value: 1, turns: 2 } },
-    ],
-    description: 'A shadow-colored cave bat that hunts at dusk. Same behavior, darker coloring.',
-    rarity: 'standard',
-    spawnWeight: 10,
-    animArchetype: 'swooper',
-    variantOf: 'cave_bat',
-  },
-
-  // Crystal Golem variants
-  {
-    id: 'iron_golem',
-    name: 'Iron Golem',
-    category: 'common',
-    region: 'shallow_depths',
-    baseHP: 42, // +10% of 38
-    intentPool: [
-      { type: 'attack', value: 12, weight: 2, telegraph: 'Iron slam' },
-      { type: 'defend', value: 8, weight: 2, telegraph: 'Iron hardening' },
-      { type: 'charge', value: 25, weight: 1, telegraph: 'Charging: Iron Crush!', bypassDamageCap: true },
-    ],
-    description: 'A brownish iron-alloy golem variant. Slightly tougher than the crystal type.',
-    rarity: 'uncommon',
-    spawnWeight: 5,
-    animArchetype: 'slammer',
-    variantOf: 'crystal_golem',
-  },
-
-  // Toxic Spore variants
-  {
-    id: 'poison_bloom',
-    name: 'Poison Bloom',
-    category: 'common',
-    region: 'shallow_depths',
-    baseHP: 15,
-    intentPool: [
-      { type: 'attack', value: 9, weight: 2, telegraph: 'Bloom burst' }, // +15% dmg
-      { type: 'debuff', value: 2, weight: 3, telegraph: 'Bloom cloud', statusEffect: { type: 'poison', value: 2, turns: 3 } },
-      { type: 'debuff', value: 1, weight: 1, telegraph: 'Weakening pollen', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
-    ],
-    description: 'A flowering fungal variant with more virulent spores. Deals slightly more damage.',
-    rarity: 'uncommon',
-    spawnWeight: 5,
-    animArchetype: 'caster',
-    variantOf: 'toxic_spore',
-  },
-
-  // Shadow Mimic variants
-  {
-    id: 'dark_shade',
-    name: 'Dark Shade',
-    category: 'common',
-    region: 'deep_caverns',
-    baseHP: 33, // +10% of 30
-    intentPool: [
-      { type: 'attack', value: 8, weight: 2, telegraph: 'Dark shadow strike' },
-      { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Dark flurry', hitCount: 3 },
-      { type: 'debuff', value: 1, weight: 1, telegraph: 'Dark expose', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
-    ],
-    description: 'A deeper shadow variant of the Mimic. Slightly more durable.',
-    rarity: 'uncommon',
-    spawnWeight: 5,
-    animArchetype: 'lurcher',
-    variantOf: 'shadow_mimic',
-    onPlayerChargeWrong: (ctx) => {
-      (ctx as any)._mirrorDamage = ctx.cardBaseDamage;
-    },
-  },
-
-  // Bone Collector variants
-  {
-    id: 'grave_warden',
-    name: 'Grave Warden',
-    category: 'common',
-    region: 'deep_caverns',
-    baseHP: 39, // +12% of 35
-    intentPool: [
-      { type: 'attack', value: 11, weight: 3, telegraph: 'Warden slash' }, // +10% dmg
-      { type: 'heal', value: 5, weight: 2, telegraph: 'Consume fallen' },
-      { type: 'defend', value: 6, weight: 1, telegraph: 'Bone ward' },
-      { type: 'debuff', value: 2, weight: 1, telegraph: 'Marrow curse', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
-    ],
-    description: 'An armored skeletal variant. Tougher than the Bone Collector, same wrong-answer healing.',
-    rarity: 'uncommon',
-    spawnWeight: 5,
-    animArchetype: 'lurcher',
-    variantOf: 'bone_collector',
-    onPlayerChargeWrong: (ctx) => {
-      const healAmount = Math.min(5, ctx.enemy.maxHP - ctx.enemy.currentHP);
-      ctx.enemy.currentHP += healAmount;
-    },
-  },
-
-  // The Scholar variants
-  {
-    id: 'lore_keeper',
-    name: 'Lore Keeper',
-    category: 'common',
-    region: 'the_archive',
-    baseHP: 46, // +15% of 40
-    intentPool: [
-      { type: 'attack', value: 6, weight: 3, telegraph: 'Lore strike' },
-      { type: 'defend', value: 8, weight: 2, telegraph: 'Lore shield' },
-      { type: 'heal', value: 5, weight: 1, telegraph: 'Ancient knowledge recovery' },
-    ],
-    description: 'A robed keeper of ancient lore. More durable than The Scholar, same correct-Charge healing.',
-    rarity: 'uncommon',
-    spawnWeight: 5,
-    animArchetype: 'caster',
-    variantOf: 'the_scholar',
-    onPlayerChargeCorrect: (ctx) => {
-      const healAmount = Math.min(5, ctx.enemy.maxHP - ctx.enemy.currentHP);
-      ctx.enemy.currentHP += healAmount;
-    },
-  },
 ];
 
 // ============================================================
@@ -2066,10 +1811,9 @@ export const ACT_ENEMY_POOLS: ActEnemyPool[] = [
       'cave_bat', 'crystal_golem', 'toxic_spore',
       'mud_crawler', 'root_strangler', 'iron_beetle', 'limestone_imp',
       'cave_spider', 'peat_shambler', 'fungal_sprout', 'blind_grub',
-      'cave_bat_alpha', 'dusk_bat', 'iron_golem', 'poison_bloom',
     ],
     elites: ['ore_wyrm', 'cave_troll'],
-    miniBosses: ['venomfang', 'root_mother', 'iron_matriarch', 'bog_witch', 'mushroom_sovereign', 'timer_wyrm'],
+    miniBosses: ['venomfang', 'root_mother', 'iron_matriarch', 'bog_witch', 'mushroom_sovereign'],
     bosses: ['the_excavator', 'magma_core'],
   },
   // ── ACT 2: Deep Caverns + The Abyss ──
@@ -2080,14 +1824,14 @@ export const ACT_ENEMY_POOLS: ActEnemyPool[] = [
       'shadow_mimic', 'bone_collector', 'basalt_crawler', 'salt_wraith',
       'coal_imp', 'granite_hound', 'sulfur_sprite', 'magma_tick',
       'deep_angler', 'rock_hermit', 'gas_phantom', 'stalactite_drake',
-      'ember_moth', 'dark_shade', 'grave_warden',
+      'ember_moth',
       // the_abyss commons
       'obsidian_shard', 'magma_slime', 'quartz_elemental', 'fossil_raptor',
       'geode_beetle', 'lava_crawler', 'crystal_bat', 'void_mite',
       'ash_wraith', 'prismatic_jelly', 'ember_skeleton',
     ],
     elites: [
-      'the_examiner', 'fossil_guardian', 'magma_serpent', 'basalt_titan',
+      'fossil_guardian', 'magma_serpent', 'basalt_titan',
       'geode_king', 'abyssal_leviathan', 'crystal_lich',
     ],
     miniBosses: [
@@ -2104,9 +1848,9 @@ export const ACT_ENEMY_POOLS: ActEnemyPool[] = [
     commons: [
       'pressure_djinn', 'core_worm', 'biolume_jellyfish', 'tectonic_scarab',
       'mantle_fiend', 'iron_core_golem', 'glyph_sentinel', 'archive_moth',
-      'rune_spider', 'void_tendril', 'tome_mimic', 'the_scholar', 'lore_keeper',
+      'rune_spider', 'void_tendril', 'tome_mimic',
     ],
-    elites: ['mantle_dragon', 'core_harbinger', 'the_nullifier', 'the_librarian'],
+    elites: ['mantle_dragon', 'core_harbinger'],
     miniBosses: [
       'primordial_wyrm', 'iron_archon', 'pressure_colossus', 'biolume_monarch',
       'tectonic_titan', 'glyph_warden', 'archive_specter',
