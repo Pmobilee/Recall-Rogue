@@ -3,7 +3,7 @@
   import type { RunSummary } from '../../services/hubState'
   import { playerSave } from '../stores/playerData'
   import { initCampArtManifest } from '../utils/campArtManifest'
-  import { getCampSpriteUrl, getCampBackgroundUrl } from '../utils/campArtManifest'
+  import { getCampSpriteUrl, getCampBackgroundUrl, getCampBackgroundWideUrl } from '../utils/campArtManifest'
   import { getAmbientClass } from '../effects/HubAmbientEffects'
   import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
   import { preloadImages } from '../utils/assetPreloader'
@@ -61,6 +61,7 @@
   // Preload all camp images before revealing screen
   const _campImagesToPreload = [
     getCampBackgroundUrl(),
+    getCampBackgroundWideUrl(),
     getCampSpriteUrl('dungeon-gate'),
     getCampSpriteUrl('bookshelf'),
     getCampSpriteUrl('signpost'),
@@ -109,26 +110,20 @@
 
 {#if $isLandscape}
   <!-- ═══ LANDSCAPE LAYOUT ═══════════════════════════════════════════════════ -->
-  <!-- PHASE 2 (Post-Launch): Replace side panels with full widescreen campsite -->
-  <!-- background (1920x1080). Redistribute interactive hotspots across wider   -->
-  <!-- scene. New interactive elements: bookshelf=deck viewer, map table=run    -->
-  <!-- selector, notice board=daily challenge. See GDD §35 Future Todo.         -->
   <div class="hub-landscape" aria-label="Camp hub">
-    <!-- Decorative side panels — atmospheric stone/cave texture -->
-    <div class="hub-side-panel hub-side-left" aria-hidden="true"></div>
+    <!-- Full 16:9 widescreen background — covers entire viewport -->
+    <img
+      class="camp-bg-wide"
+      src={getCampBackgroundWideUrl()}
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+      decoding="async"
+    />
 
-    <!-- Center column: portrait campsite at 9:16 aspect ratio -->
+    <!-- Center column: portrait 9:16 hotspot container (transparent — wide bg shows through) -->
     <div class="hub-center">
       <CampHudOverlay {streak} {dustBalance} {hasActiveRunBanner} />
-
-      <img
-        class="camp-bg"
-        src={getCampBackgroundUrl()}
-        alt=""
-        aria-hidden="true"
-        loading="lazy"
-        decoding="async"
-      />
 
       <!-- Study Mode Selector — above dungeon gate -->
       <div class="study-mode-container" class:banner-offset={hasActiveRunBanner}>

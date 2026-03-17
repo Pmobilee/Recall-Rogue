@@ -148,3 +148,8 @@ export function getCampSpriteUrl(id: CampSpriteId): string {
 export function getCampBackgroundUrl(): string {
   return '/assets/camp/sprites/background/camp-background.jpg'
 }
+
+/** Returns the URL for the wide (16:9) camp background image used in landscape mode. */
+export function getCampBackgroundWideUrl(): string {
+  return '/assets/camp/sprites/background/camp-background-wide.jpg'
+}

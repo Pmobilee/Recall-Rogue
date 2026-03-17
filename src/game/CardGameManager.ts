@@ -31,12 +31,17 @@ export class CardGameManager {
     const reg = globalThis as Record<symbol, unknown>
     reg[Symbol.for('terra:cardGameManager')] = this
 
-    // Boot always starts in portrait mode — landscape resize happens via subscription below
+    // Boot Phaser with the correct canvas dimensions for the current layout mode.
+    // Using the right dimensions at construction time avoids a post-boot resize race
+    // where the ScaleManager may not be fully initialized yet.
+    const bootMode = get(layoutMode)
+    const bootCanvas = getCanvasForMode(bootMode)
+
     this.game = new Phaser.Game({
       type: Phaser.AUTO,
       parent: 'phaser-container',
-      width: 390,
-      height: 844,
+      width: bootCanvas.width,
+      height: bootCanvas.height,
       backgroundColor: startAnimation ? 'rgba(0,0,0,0)' : '#0D1117',
       scale: {
         mode: Phaser.Scale.FIT,
@@ -56,21 +61,17 @@ export class CardGameManager {
       transparent: startAnimation,
     })
 
-    // Subscribe to layout mode changes — resize Phaser canvas and notify scenes
+    // Subscribe to layout mode changes for future orientation switches.
+    // Skip the immediate callback (bootMode already applied above) by checking
+    // whether the emitted value differs from what we booted with.
+    let firstEmit = true
     this.unsubLayoutMode = layoutMode.subscribe((mode) => {
+      if (firstEmit) {
+        firstEmit = false
+        return // Already handled by bootCanvas above
+      }
       this.handleLayoutChange(mode)
     })
-
-    // AR-91: If we're already in landscape when Phaser boots, the subscription
-    // fires immediately before `this.game` is set, so the resize is a no-op.
-    // Apply the current layout mode explicitly after game creation.
-    const currentMode = get(layoutMode)
-    if (currentMode !== 'portrait') {
-      // Use game.events.once('ready') so the ScaleManager is fully initialized
-      this.game.events.once('ready', () => {
-        this.handleLayoutChange(currentMode)
-      })
-    }
   }
 
   /**
@@ -80,7 +81,8 @@ export class CardGameManager {
   private handleLayoutChange(mode: LayoutMode): void {
     if (!this.game) return
     const canvas = getCanvasForMode(mode)
-    this.game.scale.resize(canvas.width, canvas.height)
+    this.game.scale.setGameSize(canvas.width, canvas.height)
+    this.game.scale.refresh()
 
     // Notify active scenes — each scene may implement handleLayoutChange(mode)
     const activeScenes = this.game.scene.getScenes(true) as Array<Phaser.Scene & { handleLayoutChange?: (m: LayoutMode) => void }>
