@@ -1517,6 +1517,36 @@ On first-ever correct answer for a Tier 1 fact, a "fun fact" summary pops up for
 - **High contrast mode (planned):** AP badge colors confirmed to pass WCAG AA
 - **Font size scaling:** UI scales with `--layout-scale` CSS variable for different screen sizes
 
+### Chain Type Icons (AR-82 — Colorblind Support)
+
+Each of the 6 chain types has a unique SVG icon rendered alongside its color, providing a redundant visual channel for colorblind players:
+
+| Chain Type | Index | Color | Icon Shape |
+|------------|-------|-------|-----------|
+| Obsidian | 0 | #546E7A | Diamond |
+| Crimson | 1 | #EF5350 | Flame |
+| Azure | 2 | #42A5F5 | Droplet |
+| Amber | 3 | #FFA726 | Star |
+| Violet | 4 | #AB47BC | Crescent |
+| Jade | 5 | #26A69A | Leaf |
+
+Icons appear at 10–12px in:
+- Card face (bottom-left corner, over chain glow area)
+- Card hover tooltips (alongside chain name)
+- Card reward screen chain-type badges
+- Shop removal picker (chain composition summary and per-card badge)
+
+Icon path data: `src/data/chainIcons.ts`. Component: `src/ui/components/ChainIcon.svelte`.
+
+### UI Scale Slider (AR-82 — Desktop Accessibility)
+
+Settings → Accessibility panel includes a UI Scale slider:
+- Range: 80% to 150%, step 5%, default 100%
+- Persisted to `localStorage` key `recall-rogue-ui-scale`
+- Applied as a multiplier on top of the computed `--layout-scale` CSS variable
+- Live preview — changes apply immediately as the slider moves
+- Available in both portrait and landscape settings layouts
+
 ---
 
 ## 21. Daily Expedition

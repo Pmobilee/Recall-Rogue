@@ -35,6 +35,18 @@
 
   let { onback }: Props = $props()
 
+  // ── UI Scale (AR-82) ──
+  const UI_SCALE_KEY = 'recall-rogue-ui-scale'
+  let uiScale = $state<number>(parseInt(localStorage.getItem(UI_SCALE_KEY) ?? '100', 10))
+
+  function applyUiScale(value: number): void {
+    uiScale = value
+    localStorage.setItem(UI_SCALE_KEY, String(value))
+    // Trigger CardApp.svelte's updateLayoutScale via a synthetic resize event
+    window.dispatchEvent(new Event('resize'))
+    trackSettingChange('uiScale', value)
+  }
+
   // Notification preferences — loaded once on mount, written back on toggle.
   let notifPrefs = $state<NotificationPreferences>(getNotificationPreferences())
 
@@ -180,6 +192,18 @@
               >{formatTextSize(size)}</button>
             {/each}
           </div>
+          <label class="slider-row">
+            <span>UI Scale</span>
+            <input
+              type="range"
+              min="80"
+              max="150"
+              step="5"
+              value={uiScale}
+              oninput={(event) => applyUiScale(Number((event.currentTarget as HTMLInputElement).value))}
+            />
+            <strong>{uiScale}%</strong>
+          </label>
           <label class="toggle-row">
             <span>High Contrast</span>
             <input
@@ -307,6 +331,19 @@
           </button>
         {/each}
       </div>
+
+      <label class="slider-row">
+        <span>UI Scale</span>
+        <input
+          type="range"
+          min="80"
+          max="150"
+          step="5"
+          value={uiScale}
+          oninput={(event) => applyUiScale(Number((event.currentTarget as HTMLInputElement).value))}
+        />
+        <strong>{uiScale}%</strong>
+      </label>
 
       <label class="toggle-row">
         <span>High Contrast</span>

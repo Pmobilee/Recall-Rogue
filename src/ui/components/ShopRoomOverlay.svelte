@@ -12,6 +12,7 @@
   import { recordHaggleAttempt } from '../../services/gameFlowController'
   import { SHOP_HAGGLE_DISCOUNT } from '../../data/balance'
   import { getChainTypeName, getChainTypeColor } from '../../data/chainTypes'
+  import ChainIcon from './ChainIcon.svelte'
   import { isLandscape } from '../../stores/layoutStore'
 
   interface ShopRelicItem {
@@ -445,7 +446,10 @@
       {#if chainComposition.length > 0}
         <div class="chain-composition">
           {#each chainComposition as entry}
-            <span class="chain-comp-item" style="color: {entry.color};">{entry.name} ×{entry.count}</span>
+            <span class="chain-comp-item" style="color: {entry.color};">
+              <ChainIcon chainType={entry.type} size={12} />
+              {entry.name} ×{entry.count}
+            </span>
           {/each}
         </div>
       {/if}
@@ -460,6 +464,7 @@
               <span class="removal-card-name">{card.cardType.toUpperCase()} • {tierLabel(card)}</span>
               {#if card.chainType !== undefined}
                 <span class="removal-chain-badge" style="color: {getChainTypeColor(card.chainType)};">
+                  <ChainIcon chainType={card.chainType} size={10} />
                   {getChainTypeName(card.chainType)}
                 </span>
               {/if}
@@ -833,6 +838,9 @@
 
   .chain-comp-item {
     font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
   }
 
   .removal-card-info {
@@ -846,6 +854,9 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
   }
 
   /* === Landscape layout === */

@@ -15,6 +15,7 @@
   import { activeRunState } from '../../services/runStateStore'
   import { getChainColor, getChainGlowColor, getChainColorGroups } from '../../services/chainVisuals'
   import { getChainTypeName } from '../../data/chainTypes'
+  import ChainIcon from './ChainIcon.svelte'
   import { isLandscape } from '../../stores/layoutStore'
   import { inputService } from '../../services/inputService'
   // AR-74: Importing keyboardInput activates the landscape-mode keyboard listener subscription.
@@ -663,6 +664,9 @@
                 class:chain-pulse={chainPulseCardIds.has(card.id)}
                 style="background: radial-gradient(circle, {getChainGlowColor(card.chainType)} 0%, transparent 70%);"
               ></div>
+              <div class="chain-type-icon-badge">
+                <ChainIcon chainType={card.chainType} size={12} />
+              </div>
             {/if}
             <div class="card-parchment-text">
               <span class="parchment-inner">
@@ -758,6 +762,7 @@
     <!-- Landscape hover tooltip -->
     {#if isHovered && selectedIndex === null}
       {@const chainName = card.chainType !== undefined ? getChainTypeName(card.chainType) : null}
+      {@const chainTypeVal = card.chainType ?? 0}
       <div
         class="card-hover-tooltip card-hover-tooltip-landscape"
         role="tooltip"
@@ -767,7 +772,10 @@
         {/if}
         <span class="tooltip-cost">{card.apCost ?? 1} AP</span>
         {#if chainName}
-          <span class="tooltip-chain" style="color: {getChainColor(card.chainType)}">{chainName}</span>
+          <span class="tooltip-chain" style="color: {getChainColor(card.chainType)}">
+            <ChainIcon chainType={chainTypeVal} size={12} />
+            {chainName}
+          </span>
         {/if}
       </div>
     {/if}
@@ -953,6 +961,9 @@
                 class:chain-pulse={chainPulseCardIds.has(card.id)}
                 style="background: radial-gradient(circle, {getChainGlowColor(card.chainType)} 0%, transparent 70%);"
               ></div>
+              <div class="chain-type-icon-badge">
+                <ChainIcon chainType={card.chainType} size={12} />
+              </div>
             {/if}
             <div class="card-parchment-text">
               <span class="parchment-inner">
@@ -1052,6 +1063,7 @@
     <!-- AR-74: Mouse hover tooltip for landscape mode -->
     {#if isHovered && $isLandscape && selectedIndex === null}
       {@const chainName = card.chainType !== undefined ? getChainTypeName(card.chainType) : null}
+      {@const chainTypeVal = card.chainType ?? 0}
       {@const mechanic = getMechanicDefinition(card.mechanicId ?? '')}
       <div
         class="card-hover-tooltip"
@@ -1063,7 +1075,10 @@
         {/if}
         <span class="tooltip-cost">{card.apCost ?? 1} AP</span>
         {#if chainName}
-          <span class="tooltip-chain" style="color: {getChainColor(card.chainType)}">{chainName}</span>
+          <span class="tooltip-chain" style="color: {getChainColor(card.chainType)}">
+            <ChainIcon chainType={chainTypeVal} size={12} />
+            {chainName}
+          </span>
         {/if}
       </div>
     {/if}
@@ -1121,6 +1136,9 @@
                 class:chain-pulse={chainPulseCardIds.has(card.id)}
                 style="background: radial-gradient(circle, {getChainGlowColor(card.chainType)} 0%, transparent 70%);"
               ></div>
+              <div class="chain-type-icon-badge">
+                <ChainIcon chainType={card.chainType} size={12} />
+              </div>
             {/if}
             <div class="card-parchment-text">
               {#if showFrontValue}
@@ -1319,6 +1337,17 @@
     pointer-events: none;
     z-index: 1;
     opacity: 0.3;
+  }
+
+  /* Small chain-type icon badge — bottom-left corner of card face */
+  .chain-type-icon-badge {
+    position: absolute;
+    bottom: 4px;
+    left: 4px;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.85;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.6));
   }
 
   .chain-glow.chain-pulse {
@@ -2238,6 +2267,9 @@
   }
 
   .tooltip-chain {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
     font-size: 0.6rem;
     opacity: 0.85;
     font-weight: 600;

@@ -774,10 +774,14 @@
       scaleY = scale
     }
 
+    // AR-82: Apply user UI Scale preference (80–150%, default 100%)
+    const userScalePct = parseInt(localStorage.getItem('recall-rogue-ui-scale') ?? '100', 10)
+    const userScale = (isNaN(userScalePct) ? 100 : Math.max(80, Math.min(150, userScalePct))) / 100
+
     const root = document.documentElement
-    root.style.setProperty('--layout-scale', String(scale))
-    root.style.setProperty('--layout-scale-x', String(scaleX))
-    root.style.setProperty('--layout-scale-y', String(scaleY))
+    root.style.setProperty('--layout-scale', String(scale * userScale))
+    root.style.setProperty('--layout-scale-x', String(scaleX * userScale))
+    root.style.setProperty('--layout-scale-y', String(scaleY * userScale))
     root.style.setProperty('--layout-mode', mode)
 
     // Attribute on root container for CSS selectors: [data-layout="landscape"]

@@ -11,6 +11,7 @@
   import { untrack } from 'svelte'
   import { normalizeRewardSelection } from '../utils/rewardSelection'
   import { getChainTypeName, getChainTypeColor } from '../../data/chainTypes'
+  import ChainIcon from './ChainIcon.svelte'
   import { factsDB } from '../../services/factsDB'
   import { isLandscape } from '../../stores/layoutStore'
 
@@ -337,6 +338,7 @@
                   color: {getChainTypeColor(option.chainType)};
                   border: 1px solid {getChainTypeColor(option.chainType)}66;
                 ">
+                  <ChainIcon chainType={option.chainType} size={11} />
                   {getChainTypeName(option.chainType)}
                 </div>
               {/if}
@@ -1169,7 +1171,9 @@
   }
 
   .chain-badge {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
     padding: 2px 8px;
     border-radius: 10px;
     font-size: 0.7em;
