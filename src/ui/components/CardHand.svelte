@@ -179,6 +179,9 @@
 
   let hoveredIndex = $state<number | null>(null)
 
+  /** True while the player hovers or presses the CHARGE button — triggers a green charge preview on the selected card. */
+  let chargePreviewActive = $state(false)
+
   let dragState = $state<{
     cardIndex: number
     startX: number
@@ -626,7 +629,8 @@
       const currentDistance = startY - dragState.currentY
       return Math.max(0, Math.min(1, currentDistance / totalDistance))
     })() : 0}
-    {@const isChargePreview = chargeProgress > 0.3 && !isMastered}
+    {@const isChargePreview = (chargeProgress > 0.3 || (chargePreviewActive && isSelected)) && !isMastered}
+    {@const isBtnChargePreview = chargePreviewActive && isSelected && !isMastered && chargeProgress <= 0.3}
     {@const effectVal = getEffectValue(card, isChargePreview)}
 
     <button
@@ -685,12 +689,19 @@
               <div class="chain-type-icon-badge">
                 <ChainIcon chainType={card.chainType} size={12} />
               </div>
+              <div class="chain-ember-container">
+                <span style="background-color: {getChainColor(card.chainType)};"></span>
+                <span style="background-color: {getChainColor(card.chainType)};"></span>
+                <span style="background-color: {getChainColor(card.chainType)};"></span>
+                <span style="background-color: {getChainColor(card.chainType)};"></span>
+                <span style="background-color: {getChainColor(card.chainType)};"></span>
+              </div>
             {/if}
             <div class="card-parchment-text">
               <span class="parchment-inner">
                 {#each getCardDescriptionParts(card, undefined, isChargePreview ? getEffectValue(card, true) : undefined) as part}
                   {#if part.type === 'number'}
-                    <span class="desc-number" class:charge-preview={isChargePreview}>{part.value}</span>
+                    <span class="desc-number" class:charge-preview={isChargePreview && !isBtnChargePreview} class:charge-preview-btn={isBtnChargePreview}>{part.value}</span>
                   {:else if part.type === 'keyword'}
                     <span class="desc-keyword">{part.value}</span>
                   {:else if part.type === 'conditional-number'}
@@ -771,6 +782,11 @@
         disabled={!chargeAffordable}
         title={!chargeAffordable ? 'Not enough AP' : 'Charge — answer a quiz for bonus power'}
         onclick={() => onchargeplay!(i)}
+        onmouseenter={() => { if (chargeAffordable) chargePreviewActive = true }}
+        onmouseleave={() => { chargePreviewActive = false }}
+        ontouchstart={() => { if (chargeAffordable) chargePreviewActive = true }}
+        ontouchend={() => { chargePreviewActive = false }}
+        ontouchcancel={() => { chargePreviewActive = false }}
       >
         ⚡ CHARGE
         <span class="charge-ap-badge">{isSurgeActive ? '+0' : '+1'} AP</span>
@@ -912,7 +928,8 @@
       const currentDistance = startY - dragState.currentY
       return Math.max(0, Math.min(1, currentDistance / totalDistance))
     })() : 0}
-    {@const isChargePreview = chargeProgress > 0.3 && !isMastered}
+    {@const isChargePreview = (chargeProgress > 0.3 || (chargePreviewActive && isSelected)) && !isMastered}
+    {@const isBtnChargePreview = chargePreviewActive && isSelected && !isMastered && chargeProgress <= 0.3}
     {@const effectVal = getEffectValue(card, isChargePreview)}
     {@const descPower = isChargePreview ? getEffectValue(card, true) : undefined}
 
@@ -983,6 +1000,13 @@
               ></div>
               <div class="chain-type-icon-badge">
                 <ChainIcon chainType={card.chainType} size={12} />
+              </div>
+              <div class="chain-ember-container">
+                <span style="background-color: {getChainColor(card.chainType)};"></span>
+                <span style="background-color: {getChainColor(card.chainType)};"></span>
+                <span style="background-color: {getChainColor(card.chainType)};"></span>
+                <span style="background-color: {getChainColor(card.chainType)};"></span>
+                <span style="background-color: {getChainColor(card.chainType)};"></span>
               </div>
             {/if}
             <div class="card-parchment-text">
@@ -1073,6 +1097,11 @@
         disabled={!chargeAffordable}
         title={!chargeAffordable ? 'Not enough AP' : 'Charge — answer a quiz for bonus power'}
         onclick={() => onchargeplay!(i)}
+        onmouseenter={() => { if (chargeAffordable) chargePreviewActive = true }}
+        onmouseleave={() => { chargePreviewActive = false }}
+        ontouchstart={() => { if (chargeAffordable) chargePreviewActive = true }}
+        ontouchend={() => { chargePreviewActive = false }}
+        ontouchcancel={() => { chargePreviewActive = false }}
         style="transform: translate3d(calc({xOffset}px + var(--card-w) / 2), calc(-80px - var(--card-h) - 16px), 0) translateX(-50%);"
       >
         ⚡ CHARGE
@@ -1158,6 +1187,13 @@
               ></div>
               <div class="chain-type-icon-badge">
                 <ChainIcon chainType={card.chainType} size={12} />
+              </div>
+              <div class="chain-ember-container">
+                <span style="background-color: {getChainColor(card.chainType)};"></span>
+                <span style="background-color: {getChainColor(card.chainType)};"></span>
+                <span style="background-color: {getChainColor(card.chainType)};"></span>
+                <span style="background-color: {getChainColor(card.chainType)};"></span>
+                <span style="background-color: {getChainColor(card.chainType)};"></span>
               </div>
             {/if}
             <div class="card-parchment-text">
@@ -1379,6 +1415,75 @@
     50% { opacity: 0.6; }
   }
 
+  /* AR-71.2: Chain ember particle container */
+  .chain-ember-container {
+    position: absolute;
+    top: -8%;
+    left: 0;
+    right: 0;
+    height: 20%;
+    pointer-events: none;
+    z-index: 3;
+    overflow: visible;
+  }
+
+  .chain-ember-container span {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    opacity: 0;
+    animation: ember-rise 2.4s ease-out infinite;
+  }
+
+  .chain-ember-container span:nth-child(1) {
+    left: 20%;
+    animation-delay: 0s;
+    animation-duration: 2.2s;
+  }
+
+  .chain-ember-container span:nth-child(2) {
+    left: 40%;
+    animation-delay: 0.5s;
+    animation-duration: 2.6s;
+  }
+
+  .chain-ember-container span:nth-child(3) {
+    left: 60%;
+    animation-delay: 1.0s;
+    animation-duration: 2.0s;
+  }
+
+  .chain-ember-container span:nth-child(4) {
+    left: 30%;
+    animation-delay: 1.5s;
+    animation-duration: 2.8s;
+  }
+
+  .chain-ember-container span:nth-child(5) {
+    left: 75%;
+    animation-delay: 0.8s;
+    animation-duration: 2.3s;
+  }
+
+  @keyframes ember-rise {
+    0% {
+      opacity: 0;
+      transform: translateY(0) translateX(0);
+    }
+    15% {
+      opacity: 0.9;
+    }
+    60% {
+      opacity: 0.5;
+      transform: translateY(-12px) translateX(2px);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-18px) translateX(-2px);
+    }
+  }
+
   .card-parchment-text {
     position: absolute;
     top: 66%;
@@ -1389,13 +1494,13 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-family: 'Georgia', serif;
-    font-size: calc(var(--card-w) * 0.095);
+    font-family: var(--font-pixel);
+    font-size: calc(var(--card-w) * 0.065);
     font-weight: 700;
-    line-height: 1.3;
-    color: #2a1f14;
-    -webkit-text-stroke: 0.3px rgba(0,0,0,0.4);
-    text-shadow: 0 1px 1px rgba(0,0,0,0.15);
+    line-height: 1.5;
+    color: #F0E6D2;
+    -webkit-text-stroke: 0.4px #000;
+    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
     z-index: 2;
     pointer-events: none;
     overflow: hidden;
@@ -1671,12 +1776,14 @@
     top: 28%;
     z-index: 1;
     text-align: center;
-    font-size: calc(var(--card-w) * 0.11);
+    font-family: var(--font-pixel);
+    font-size: calc(var(--card-w) * 0.075);
     font-weight: 700;
     letter-spacing: 0.3px;
-    color: #f8fafc;
-    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.85);
-    line-height: 1.2;
+    color: #F0E6D2;
+    -webkit-text-stroke: 0.4px #000;
+    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+    line-height: 1.4;
     display: -webkit-box;
     line-clamp: 2;
     -webkit-line-clamp: 2;

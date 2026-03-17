@@ -176,7 +176,9 @@ Cards use hand-crafted PNG card frames per mechanic category, with the following
 
 - **CHARGE button:** Displayed below the card in the popped state. Shows "FREE" (first Charge of fact) or "+1 AP" (subsequent Charges). Tap to initiate quiz.
 - **Chain color tint:** 2–3px colored tint on the left frame edge indicates `chainType` (0-5). Same color = can chain. Pulse in sync when 2+ cards in hand share a `chainType`.
+- **Chain ember particles (AR-71.2):** Cards with a `chainType` display 5 small CSS particle dots rising from their top edge, colored in the chain color. The smoldering effect signals chain affinity at a glance. Pure CSS `@keyframes`, `pointer-events: none`.
 - **AP cost badge:** Gemstone badge top-right, colored by AP cost.
+- **RPG pixel font (AR-71.3):** Card description text (`.card-parchment-text`) uses `var(--font-pixel)` (Press Start 2P) in off-white `#F0E6D2` with a 4-direction black outline for legibility over card art. Card name text (`.card-front-name`) uses the same treatment. Font size reduced to ~65–75% of previous Georgia size to compensate for the wider pixel glyph width.
 
 Card frame categories: Attack (golden slash), Defence (blue shield), Buff (golden radiate), Debuff (purple tendrils), Utility (prismatic), Wild (morphic).
 
@@ -254,6 +256,8 @@ The 122-damage Surge chain is the "holy shit" peak. Rare. Players will chase it.
 **Frame edge tint:** Each `chainType` (0-5) maps to one of 6 distinct colors (Obsidian, Crimson, Azure, Amber, Violet, Jade). Cards show a subtle 2–3px colored tint on their left frame edge (visible even when cards overlap in the fan).
 
 **In-hand pulse:** When 2+ cards in hand share a `chainType`, their tinted edges pulse in sync.
+
+**Chain ember particles (AR-71.2):** Any card with a `chainType` shows 5 small glowing dots rising from its top edge in the chain color — a "smoldering" effect that indicates chain affinity. Pure CSS animation, `pointer-events: none`.
 
 **During chain play:** A thin glowing line briefly connects played cards as they resolve (animation only, not persistent UI).
 
@@ -353,6 +357,8 @@ Surge creates RHYTHM. Players learn to:
 | AP discount | Focus | Next card costs 1 less AP |
 | Double strike | Double Strike | Next attack hits twice |
 | Cost reduction | Empower | Next card +50/75% effect |
+
+**Focus visual feedback (CardHand):** When Focus is active (`focusReady && focusCharges > 0`), the AP gem on each card shows the reduced cost and turns green (`#4ADE80`). The `focusDiscount` prop (1 or 0) is passed from `CardCombatOverlay` to `CardHand`. The gem color returns to off-white (`#F0E6D2`) when no discount is active. The `hasEnoughAp()` check and charge button affordability both account for the Focus discount, so cards costing 1 AP that become free (0 AP) are correctly highlighted as playable.
 
 ### Enemy-Specific Interactions (v2)
 
@@ -674,6 +680,8 @@ The dungeon map uses a Slay the Spire-style branching node map:
 - Resume at last completed node on save/load
 
 Map config constants: `MAP_CONFIG.ROWS_PER_ACT = 15`, `MAP_CONFIG.BOSS_ROW = 14`, `MAP_CONFIG.PRE_BOSS_ROW = 13`
+
+**actMap Boss Node Flow (implementation note):** Boss nodes on the actMap are single-encounter nodes (`encountersPerFloor` stays at the floor default of 3, but the boss node only has 1 encounter). After defeating a boss node, `gameFlowController` detects `justCompletedNode.type === 'boss'` and forces `encountersPerFloor = currentEncounter` so `advanceEncounter()` correctly marks the floor as complete. The relic reward and special-event/retreat-or-delve flow then trigger normally.
 
 Node distribution by act (approximate):
 | Node Type | Act 1 | Act 2 | Act 3 |

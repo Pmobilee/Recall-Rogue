@@ -62,6 +62,7 @@ export async function openRewardRoom(
   await new Promise(resolve => setTimeout(resolve, 100));
 
   const data: RewardRoomData = { rewards };
+  console.log('[RewardRoomBridge] Opening reward room with', rewards.length, 'rewards');
   mgr.startRewardRoom(data);
 
   // Get scene and attach event listeners
@@ -76,6 +77,7 @@ export async function openRewardRoom(
   await new Promise(resolve => setTimeout(resolve, 50));
 
   const cleanup = (): void => {
+    clearTimeout(safetyTimeout);
     scene.events.off('goldCollected', handleGold);
     scene.events.off('vialCollected', handleVial);
     scene.events.off('cardAccepted', handleCard);
@@ -89,10 +91,17 @@ export async function openRewardRoom(
   const handleCard = (card: Card): void => onCardAccepted(card);
   const handleRelic = (relic: RelicDefinition): void => onRelicAccepted(relic);
   const handleComplete = (): void => {
+    console.log('[RewardRoomBridge] Reward room complete, calling onComplete');
     cleanup();
     mgr.stopRewardRoom();
     onComplete();
   };
+
+  // Safety timeout: if sceneComplete never fires (e.g. scene crash), force-complete after 60s
+  const safetyTimeout = setTimeout(() => {
+    console.warn('[RewardRoomBridge] Safety timeout - forcing reward completion');
+    handleComplete();
+  }, 60000);
 
   const handleCardTapped = (card: Card, item: any): void => {
     rewardCardDetail.set(card);
