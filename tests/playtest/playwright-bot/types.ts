@@ -1,0 +1,125 @@
+/**
+ * Playwright Game Bot — Types
+ *
+ * Bot profiles and game state types for the live browser-based game bot.
+ * This replaces the headless combat simulator for balance testing by driving
+ * the real game through the browser DOM.
+ */
+
+/** Strategy level for the bot's decision making. */
+export type StrategyLevel = 'basic' | 'intermediate' | 'optimal';
+
+/** Bot player profile — same concept as mass-simulate profiles. */
+export interface BotProfile {
+  id: string;
+  name: string;
+  /** Quiz accuracy: probability of picking the correct answer (0-1). */
+  quizAccuracy: number;
+  /** Strategy level for card selection and room choice. */
+  strategy: StrategyLevel;
+  /** Probability of choosing to Charge a card vs Quick Play (0-1). */
+  chargeRate: number;
+  /** Probability of charging on Surge turns (0-1). */
+  surgeChargeRate: number;
+}
+
+/** Game state read from the browser via window.__terraDebug() and window.__terraPlay. */
+export interface GameState {
+  currentScreen: string;
+  playerHP: number;
+  playerMaxHP: number;
+  playerGold: number;
+  enemyHP: number;
+  enemyMaxHP: number;
+  enemyName: string;
+  handSize: number;
+  apCurrent: number;
+  apMax: number;
+  turnNumber: number;
+  comboCount: number;
+  relicCount: number;
+  floor: number;
+  isGameOver: boolean;
+  runResult: 'victory' | 'defeat' | null;
+}
+
+/** Quiz state read from window.__terraPlay.getQuiz(). */
+export interface QuizState {
+  question: string;
+  choices: string[];
+  correctIndex: number;
+  mode: string;
+}
+
+/** Stats collected from a single bot run. */
+export interface BotRunStats {
+  profile: string;
+  seed: number;
+  result: 'victory' | 'defeat' | 'error' | 'timeout';
+  finalFloor: number;
+  finalHP: number;
+  finalMaxHP: number;
+  totalTurns: number;
+  totalCardsPlayed: number;
+  totalCharges: number;
+  totalQuickPlays: number;
+  quizCorrect: number;
+  quizWrong: number;
+  relicsEarned: number;
+  goldEarned: number;
+  goldSpent: number;
+  durationMs: number;
+  errors: string[];
+}
+
+/** Predefined bot profiles matching the mass-simulate player personas. */
+export const BOT_PROFILES: Record<string, BotProfile> = {
+  first_timer: {
+    id: 'first_timer',
+    name: 'First Timer',
+    quizAccuracy: 0.45,
+    strategy: 'basic',
+    chargeRate: 0.15,
+    surgeChargeRate: 0.60,
+  },
+  casual_learner: {
+    id: 'casual_learner',
+    name: 'Casual Learner',
+    quizAccuracy: 0.65,
+    strategy: 'basic',
+    chargeRate: 0.30,
+    surgeChargeRate: 0.70,
+  },
+  regular: {
+    id: 'regular',
+    name: 'Regular',
+    quizAccuracy: 0.62,
+    strategy: 'intermediate',
+    chargeRate: 0.40,
+    surgeChargeRate: 0.90,
+  },
+  gamer: {
+    id: 'gamer',
+    name: 'Gamer',
+    quizAccuracy: 0.55,
+    strategy: 'optimal',
+    chargeRate: 0.80,
+    surgeChargeRate: 1.0,
+  },
+  dedicated: {
+    id: 'dedicated',
+    name: 'Dedicated',
+    quizAccuracy: 0.70,
+    strategy: 'optimal',
+    chargeRate: 0.85,
+    surgeChargeRate: 1.0,
+  },
+  scholar: {
+    id: 'scholar',
+    name: 'Scholar',
+    quizAccuracy: 0.82,
+    strategy: 'optimal',
+    chargeRate: 0.90,
+    surgeChargeRate: 1.0,
+  },
+};
