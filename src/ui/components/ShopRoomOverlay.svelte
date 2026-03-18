@@ -225,6 +225,7 @@
 </script>
 
 <section class="shop-overlay" class:landscape={$isLandscape} aria-label="Shop room">
+  <img class="shop-screen-bg" src={bgUrl} alt="" aria-hidden="true" loading="eager" decoding="async" />
   <h1>Shop Room</h1>
   <div class="gold">Gold: {currency}</div>
 
@@ -264,8 +265,7 @@
       <div class="card-list">
         {#each shopInventory.cards as item, idx (item.card.id)}
           {@const canAfford = currency >= item.price}
-          <article class="card-item" style="border-color: {getChainColor(item.card.chainType ?? 0)}; box-shadow: 0 0 6px {getChainGlowColor(item.card.chainType ?? 0)};">
-            <div class="card-chain-top-border" style="background: {getChainColor(item.card.chainType ?? 0)};"></div>
+          <article class="card-item" style="border-top: 6px solid {getChainColor(item.card.chainType ?? 0)}; border-color: {getChainColor(item.card.chainType ?? 0)}; box-shadow: 0 0 6px {getChainGlowColor(item.card.chainType ?? 0)};">
             <div class="meta">
               <span class="icon">
                 <img class="type-icon-img" src={getCardTypeIconPath(item.card.cardType)} alt=""
@@ -483,11 +483,22 @@
 {/if}
 
 <style>
+  .shop-screen-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    pointer-events: none;
+  }
+
   .shop-overlay {
     position: fixed;
     inset: 0;
     z-index: 220;
-    background: linear-gradient(180deg, #101214 0%, #1f2329 100%);
+    background: linear-gradient(180deg, rgba(16, 18, 20, 0.75) 0%, rgba(31, 35, 41, 0.75) 100%);
     color: #e6edf3;
     padding: calc((20px * var(--layout-scale, 1)) + var(--safe-top)) calc(16px * var(--layout-scale, 1)) calc(28px * var(--layout-scale, 1));
     display: grid;
@@ -541,24 +552,11 @@
     border-radius: 12px;
     background: rgba(13, 17, 23, 0.82);
     padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
-    padding-top: calc(15px * var(--layout-scale, 1)); /* extra space for top border strip */
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: calc(10px * var(--layout-scale, 1));
     overflow: hidden;
-  }
-
-  /* Thick colored top border strip indicating chain type */
-  .card-chain-top-border {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    border-radius: 4px 4px 0 0;
-    z-index: 1;
-    pointer-events: none;
   }
 
   .relic-item {

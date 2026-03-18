@@ -1078,14 +1078,23 @@ export class CombatScene extends Phaser.Scene {
     this.currentBgKey = bgKey
     const w = this.scale.width
     const h = this.scale.height
+
+    // Cover-scale: image fills entire viewport without gaps (may crop edges)
+    const tex = this.textures.get(bgKey).getSourceImage()
+    const imgW = (tex as HTMLImageElement).naturalWidth || (tex as HTMLCanvasElement).width || w
+    const imgH = (tex as HTMLImageElement).naturalHeight || (tex as HTMLCanvasElement).height || h
+    const scale = Math.max(w / imgW, h / imgH)
+    const dispW = imgW * scale
+    const dispH = imgH * scale
+
     if (this.combatBackground instanceof Phaser.GameObjects.Image) {
       this.combatBackground.setTexture(bgKey)
-      this.combatBackground.setDisplaySize(w, h)
+      this.combatBackground.setDisplaySize(dispW, dispH)
     } else {
       // Replace rectangle fallback with proper image
       this.combatBackground.destroy()
       this.combatBackground = this.add.image(w / 2, h / 2, bgKey)
-        .setDisplaySize(w, h)
+        .setDisplaySize(dispW, dispH)
         .setDepth(0)
     }
   }

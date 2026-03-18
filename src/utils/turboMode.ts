@@ -9,7 +9,7 @@ export function isTurboMode(): boolean {
   return (globalThis as Record<symbol, unknown>)[Symbol.for('terra:turboMode')] === true;
 }
 
-/** Returns 0 in turbo mode, otherwise the given duration. */
+/** Returns 5ms in turbo mode (minimum for async state flush), otherwise the given duration. */
 export function turboDelay(normalMs: number): number {
-  return isTurboMode() ? 0 : normalMs;
+  return isTurboMode() ? 5 : normalMs;
 }

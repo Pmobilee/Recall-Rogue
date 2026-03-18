@@ -9,7 +9,7 @@ import {
   getNotifications, validateScreen,
 } from './playtestDescriber'
 import { readStore } from './storeBridge'
-import { isTurboMode } from '../utils/turboMode'
+import { isTurboMode, turboDelay } from '../utils/turboMode'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -59,7 +59,7 @@ async function safeAction(fn: () => Promise<PlayResult>): Promise<PlayResult> {
 async function navigate(screen: string): Promise<PlayResult> {
   return safeAction(async () => {
     writeStore('terra:currentScreen', screen);
-    await wait(300);
+    await wait(turboDelay(300));
     const actual = readStore<string>('terra:currentScreen');
     if (actual === screen) {
       return { ok: true, message: `Navigated to ${screen}` };
@@ -97,7 +97,7 @@ async function startRun(): Promise<PlayResult> {
     const btn = document.querySelector('[data-testid="btn-start-run"]') as HTMLButtonElement | null;
     if (!btn) return { ok: false, message: 'Start Run button not found' };
     btn.click();
-    await wait(1500);
+    await wait(turboDelay(1500));
     return { ok: true, message: `Run started. Screen: ${getScreen()}` };
   });
 }
@@ -108,7 +108,7 @@ async function selectDomain(domain: string): Promise<PlayResult> {
     const btn = document.querySelector(`[data-testid="domain-card-${domain}"]`) as HTMLElement | null;
     if (!btn) return { ok: false, message: `Domain card '${domain}' not found` };
     btn.click();
-    await wait(1000);
+    await wait(turboDelay(1000));
     return { ok: true, message: `Selected domain: ${domain}. Screen: ${getScreen()}` };
   });
 }
@@ -119,7 +119,7 @@ async function selectArchetype(archetype: string): Promise<PlayResult> {
     const btn = document.querySelector(`[data-testid="archetype-${archetype}"]`) as HTMLElement | null;
     if (!btn) return { ok: false, message: `Archetype '${archetype}' not found` };
     btn.click();
-    await wait(2000);
+    await wait(turboDelay(2000));
     return { ok: true, message: `Selected archetype: ${archetype}. Screen: ${getScreen()}` };
   });
 }
@@ -159,7 +159,7 @@ async function playCard(index: number): Promise<PlayResult> {
     const btn = document.querySelector(`[data-testid="card-hand-${index}"]`) as HTMLElement | null;
     if (!btn) return { ok: false, message: `Card at index ${index} not found` };
     btn.click();
-    await wait(800);
+    await wait(turboDelay(800));
     return { ok: true, message: `Selected card ${index}. Screen: ${getScreen()}` };
   });
 }
@@ -185,7 +185,7 @@ async function quickPlayCard(index: number): Promise<PlayResult> {
     }
 
     handlePlayCard(card.id, true, false, undefined, undefined, 'quick');
-    await wait(600);
+    await wait(turboDelay(600));
     return {
       ok: true,
       message: `Quick-played card ${index} (${card.cardType}, "${(card as any).fact?.question ?? card.id}")`,
@@ -218,7 +218,7 @@ async function chargePlayCard(index: number, answerCorrectly: boolean): Promise<
     }
 
     handlePlayCard(card.id, answerCorrectly, false, 1500, undefined, 'charge');
-    await wait(800);
+    await wait(turboDelay(800));
     return {
       ok: true,
       message: `Charge-played card ${index} (${card.cardType}) — answered ${answerCorrectly ? 'correctly' : 'incorrectly'}`,
@@ -233,7 +233,7 @@ async function endTurn(): Promise<PlayResult> {
     const btn = document.querySelector('[data-testid="btn-end-turn"]') as HTMLButtonElement | null;
     if (!btn) return { ok: false, message: 'End Turn button not found' };
     btn.click();
-    await wait(2000);
+    await wait(turboDelay(2000));
     return { ok: true, message: 'Turn ended' };
   });
 }
@@ -248,7 +248,7 @@ async function selectRoom(index: number): Promise<PlayResult> {
     const btn = document.querySelector(`[data-testid="room-choice-${index}"]`) as HTMLElement | null;
     if (!btn) return { ok: false, message: `Room choice ${index} not found` };
     btn.click();
-    await wait(1500);
+    await wait(turboDelay(1500));
     return { ok: true, message: `Selected room ${index}. Screen: ${getScreen()}` };
   });
 }
@@ -272,7 +272,7 @@ async function acceptReward(): Promise<PlayResult> {
     const btn = document.querySelector('[data-testid="reward-accept"]') as HTMLButtonElement | null;
     if (!btn) return { ok: false, message: 'Reward accept button not found' };
     btn.click();
-    await wait(1000);
+    await wait(turboDelay(1000));
     return { ok: true, message: `Reward accepted. Screen: ${getScreen()}` };
   });
 }
@@ -283,7 +283,7 @@ async function selectRewardType(cardType: string): Promise<PlayResult> {
     const btn = document.querySelector(`[data-testid="reward-type-${cardType}"]`) as HTMLElement | null;
     if (!btn) return { ok: false, message: `Reward type '${cardType}' not found` };
     btn.click();
-    await wait(500);
+    await wait(turboDelay(500));
     return { ok: true, message: `Selected reward type: ${cardType}` };
   });
 }
@@ -294,7 +294,7 @@ async function retreat(): Promise<PlayResult> {
     const btn = document.querySelector('[data-testid="btn-retreat"]') as HTMLButtonElement | null;
     if (!btn) return { ok: false, message: 'Retreat button not found' };
     btn.click();
-    await wait(2000);
+    await wait(turboDelay(2000));
     return { ok: true, message: `Retreated. Screen: ${getScreen()}` };
   });
 }
@@ -305,7 +305,7 @@ async function delve(): Promise<PlayResult> {
     const btn = document.querySelector('[data-testid="btn-delve"]') as HTMLButtonElement | null;
     if (!btn) return { ok: false, message: 'Delve button not found' };
     btn.click();
-    await wait(2000);
+    await wait(turboDelay(2000));
     return { ok: true, message: `Delving deeper. Screen: ${getScreen()}` };
   });
 }
@@ -332,7 +332,7 @@ async function restHeal(): Promise<PlayResult> {
     const btn = document.querySelector('[data-testid="rest-heal"]') as HTMLButtonElement | null;
     if (!btn) return { ok: false, message: 'Rest heal button not found' };
     btn.click();
-    await wait(1000);
+    await wait(turboDelay(1000));
     return { ok: true, message: 'Healed at rest room' };
   });
 }
@@ -343,7 +343,7 @@ async function restUpgrade(): Promise<PlayResult> {
     const btn = document.querySelector('[data-testid="rest-upgrade"]') as HTMLButtonElement | null;
     if (!btn) return { ok: false, message: 'Rest upgrade button not found' };
     btn.click();
-    await wait(1000);
+    await wait(turboDelay(1000));
     return { ok: true, message: 'Upgrading at rest room' };
   });
 }
@@ -354,7 +354,7 @@ async function mysteryContinue(): Promise<PlayResult> {
     const btn = document.querySelector('[data-testid="mystery-continue"]') as HTMLButtonElement | null;
     if (!btn) return { ok: false, message: 'Mystery continue button not found' };
     btn.click();
-    await wait(1000);
+    await wait(turboDelay(1000));
     return { ok: true, message: `Mystery resolved. Screen: ${getScreen()}` };
   });
 }
@@ -382,7 +382,7 @@ async function answerQuiz(choiceIndex: number): Promise<PlayResult> {
     const btn = document.querySelector(`[data-testid="quiz-answer-${choiceIndex}"]`) as HTMLButtonElement | null;
     if (!btn) return { ok: false, message: `Quiz answer button ${choiceIndex} not found` };
     btn.click();
-    await wait(1200);
+    await wait(turboDelay(1200));
     return { ok: true, message: `Answered choice ${choiceIndex}` };
   });
 }
@@ -428,7 +428,7 @@ async function forceQuizForFact(factId: string): Promise<PlayResult> {
     };
 
     writeStore('terra:activeQuiz', quiz);
-    await wait(300);
+    await wait(turboDelay(300));
     return { ok: true, message: `Forced quiz for fact '${factId}': ${fact.question}`, state: { factId, question: fact.question } };
   });
 }
@@ -441,19 +441,19 @@ async function forceQuizForFact(factId: string): Promise<PlayResult> {
 async function startStudy(size?: number): Promise<PlayResult> {
   return safeAction(async () => {
     writeStore('terra:currentScreen', 'study');
-    await wait(500);
+    await wait(turboDelay(500));
 
     if (size) {
       const sizeBtn = document.querySelector(`[data-testid="study-size-${size}"]`) as HTMLButtonElement | null;
       if (sizeBtn) {
         sizeBtn.click();
-        await wait(500);
+        await wait(turboDelay(500));
       }
 
       const startBtn = document.querySelector('[data-testid="btn-start-study"]') as HTMLButtonElement | null;
       if (startBtn) {
         startBtn.click();
-        await wait(500);
+        await wait(turboDelay(500));
       }
     }
 
@@ -478,7 +478,7 @@ async function gradeCard(button: 'again' | 'hard' | 'good' | 'easy'): Promise<Pl
     const btn = document.querySelector(`.rating-btn--${button}`) as HTMLButtonElement | null;
     if (!btn) return { ok: false, message: `Rating button '${button}' not found` };
     btn.click();
-    await wait(800);
+    await wait(turboDelay(800));
     return { ok: true, message: `Graded card as '${button}'` };
   });
 }
@@ -492,10 +492,10 @@ async function endStudy(): Promise<PlayResult> {
       (document.querySelector('.back-link') as HTMLButtonElement | null);
     if (btn) {
       btn.click();
-      await wait(500);
+      await wait(turboDelay(500));
     } else {
       writeStore('terra:currentScreen', 'base');
-      await wait(300);
+      await wait(turboDelay(300));
     }
     return { ok: true, message: `Study ended. Screen: ${getScreen()}` };
   });
@@ -525,7 +525,7 @@ function getLeechInfo(): { suspended: any[]; nearLeech: any[]; totalLeeches: num
 async function enterRoom(roomId: string): Promise<PlayResult> {
   return safeAction(async () => {
     writeStore('terra:currentScreen', roomId);
-    await wait(300);
+    await wait(turboDelay(300));
     return { ok: true, message: `Entered room: ${roomId}`, state: { screen: getScreen() } };
   });
 }
@@ -534,7 +534,7 @@ async function enterRoom(roomId: string): Promise<PlayResult> {
 async function exitRoom(): Promise<PlayResult> {
   return safeAction(async () => {
     writeStore('terra:currentScreen', 'base');
-    await wait(300);
+    await wait(turboDelay(300));
     return { ok: true, message: 'Returned to base' };
   });
 }

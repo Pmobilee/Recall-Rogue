@@ -213,8 +213,9 @@
     pointerId: number
   } | null>(null)
 
-  /** Screen-position ratio from top of viewport that divides Quick Play zone (below) from Charge zone (above). */
-  const CHARGE_ZONE_Y_RATIO = 0.4
+  /** Screen-position ratio from top of viewport that divides Quick Play zone (below) from Charge zone (above).
+   * AR-101: Lowered from 0.40 → 0.55 so players don't need to drag as far up to trigger Charge. */
+  const CHARGE_ZONE_Y_RATIO = 0.55
 
   let dragDeltaX = $derived(dragState ? dragState.currentX - dragState.startX : 0)
   let dragDeltaY = $derived(dragState ? Math.max(0, dragState.startY - dragState.currentY) : 0)
@@ -224,12 +225,13 @@
   let isDragPreview = $derived(dragDeltaY > 40)
   /**
    * True when the dragged card's current Y position is ABOVE the screen-position threshold.
-   * Uses 35% on small screens (viewport < 600px height), 40% otherwise.
+   * Uses 45% on small screens (viewport < 600px height), 55% otherwise.
+   * AR-101: Raised from 35%/40% → 45%/55% so charge triggers lower on screen (easier to reach).
    * Replaces the old 80px drag-distance check for Charge vs Quick Play decision.
    */
   let isInChargeZone = $derived.by(() => {
     if (!dragState) return false
-    const ratio = window.innerHeight < 600 ? 0.35 : CHARGE_ZONE_Y_RATIO
+    const ratio = window.innerHeight < 600 ? 0.45 : CHARGE_ZONE_Y_RATIO
     const chargeZoneY = window.innerHeight * ratio
     return dragState.currentY < chargeZoneY
   })
@@ -649,7 +651,7 @@
     {@const isDragInChargeZone = isDraggingThis && isInChargeZone && !isMastered}
     {@const chargeProgress = isDraggingThis && dragState ? (() => {
       const startY = dragState.startY
-      const ratio = 0.4
+      const ratio = window.innerHeight < 600 ? 0.45 : CHARGE_ZONE_Y_RATIO
       const chargeZoneY = window.innerHeight * ratio
       const totalDistance = startY - chargeZoneY
       if (totalDistance <= 0) return 0
@@ -683,6 +685,7 @@
       class:drag-charge-zone={isDragInChargeZone}
       class:drag-charge-zone-disabled={isDragInChargeZone && !chargeAffordableForDrag}
       style="
+        border-top: 6px solid {getChainColor(card.chainType ?? 0)};
         {isAnimating ? '' : isDraggingThis
           ? `transform: translate3d(${cardDragX}px, ${isSelected ? 'calc(-27vh - 36px + 20px)' : `-${cardDragRawY}px`}, 0) scale(${cardDragScale});`
           : `transform: translate3d(0, ${isSelected ? 'calc(-27vh - 36px + 20px)' : '0px'}, 0) scale(${isSelected ? 1.1 : isHovered ? 1.05 : 1});`}
@@ -706,7 +709,6 @@
     >
       <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
         <div class="card-front">
-          <div class="card-chain-top-border" style="background: {getChainColor(card.chainType ?? 0)};"></div>
           {#if cardFrameUrl}
             <img class="card-frame-img" src={cardFrameUrl} alt={card.mechanicName ?? card.cardType} />
             <div class="ap-gem" style="color: {apGemColor}; text-shadow: 0 0 2px rgba(0,0,0,0.6);">{displayedApCost}</div>
@@ -873,11 +875,10 @@
       class:card-tier-up={isTierUp}
       class:card-swoosh={isSwoosh}
       class:card-impact={isImpact}
-      style="border-color: {getChainColor(card.chainType ?? 0)}; box-shadow: 0 0 8px {getChainGlowColor(card.chainType ?? 0)};"
+      style="border-top: 6px solid {getChainColor(card.chainType ?? 0)}; border-color: {getChainColor(card.chainType ?? 0)}; box-shadow: 0 0 8px {getChainGlowColor(card.chainType ?? 0)};"
     >
       <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
         <div class="card-front">
-          <div class="card-chain-top-border" style="background: {getChainColor(card.chainType ?? 0)};"></div>
           {#if cardFrameUrl}
             <img class="card-frame-img" src={cardFrameUrl} alt={card.mechanicName ?? card.cardType} />
             <div class="ap-gem">{card.apCost ?? 1}</div>
@@ -998,7 +999,7 @@
     {@const isDragInChargeZone = isDraggingThis && isInChargeZone && !isMastered}
     {@const chargeProgress = isDraggingThis && dragState ? (() => {
       const startY = dragState.startY
-      const ratio = window.innerHeight < 600 ? 0.35 : 0.4
+      const ratio = window.innerHeight < 600 ? 0.45 : CHARGE_ZONE_Y_RATIO
       const chargeZoneY = window.innerHeight * ratio
       const totalDistance = startY - chargeZoneY
       if (totalDistance <= 0) return 0
@@ -1047,6 +1048,7 @@
       class:drag-charge-zone={isDragInChargeZone}
       class:drag-charge-zone-disabled={isDragInChargeZone && !chargeAffordableForDrag}
       style="
+        border-top: 6px solid {getChainColor(card.chainType ?? 0)};
         {isAnimating ? '' : isDraggingThis ? `transform: translate3d(${xOffset + cardDragX}px, ${(isSelected ? -80 : -arcOffset) - cardDragRawY}px, 0) rotate(0deg) scale(${cardDragScale});` : `transform: translate3d(${xOffset}px, ${isSelected ? -80 : isOther ? 15 : -(arcOffset + hoverLift)}px, 0) rotate(${isSelected ? 0 : rotation}deg) scale(${isSelected ? 1.2 : hoverScale});`}
         border-color: {getChainColor(card.chainType ?? 0)};
         box-shadow: 0 0 8px {getChainGlowColor(card.chainType ?? 0)};
@@ -1067,7 +1069,6 @@
     >
       <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
         <div class="card-front">
-          <div class="card-chain-top-border" style="background: {getChainColor(card.chainType ?? 0)};"></div>
           {#if cardFrameUrl}
             <img class="card-frame-img" src={cardFrameUrl} alt={card.mechanicName ?? card.cardType} />
             <div class="ap-gem" style="color: {apGemColor}; text-shadow: 0 0 2px rgba(0,0,0,0.6);">{displayedApCost}</div>
@@ -1250,13 +1251,13 @@
       class:card-impact-debuff={isImpact && card.cardType === 'debuff'}
       class:card-impact-wild={isImpact && card.cardType === 'wild'}
       style="
+        border-top: 6px solid {getChainColor(card.chainType ?? 0)};
         border-color: {getChainColor(card.chainType ?? 0)};
         box-shadow: 0 0 8px {getChainGlowColor(card.chainType ?? 0)};
       "
     >
       <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
         <div class="card-front">
-          <div class="card-chain-top-border" style="background: {getChainColor(card.chainType ?? 0)};"></div>
           {#if cardFrameUrl}
             <img class="card-frame-img" src={cardFrameUrl} alt={card.mechanicName ?? card.cardType} />
             <div class="ap-gem" style="color: {getChainColor(card.chainType)}; text-shadow: 0 0 2px rgba(0,0,0,0.6);">{card.apCost ?? 1}</div>
@@ -1847,18 +1848,6 @@
     padding: 0;
     overflow: hidden;
     justify-content: flex-start;
-  }
-
-  /* Thick colored top border strip indicating chain type — always visible */
-  .card-chain-top-border {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    border-radius: 4px 4px 0 0;
-    z-index: 3;
-    pointer-events: none;
   }
 
   .card-front-bg {
