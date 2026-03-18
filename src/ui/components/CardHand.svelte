@@ -18,6 +18,7 @@
   import ChainIcon from './ChainIcon.svelte'
   import { isLandscape } from '../../stores/layoutStore'
   import { inputService } from '../../services/inputService'
+  import { factsDB } from '../../services/factsDB'
   // AR-74: Importing keyboardInput activates the landscape-mode keyboard listener subscription.
   import '../../services/keyboardInput'
 
@@ -179,6 +180,27 @@
 
   let hoveredIndex = $state<number | null>(null)
 
+  /** §9 Landscape-only: right-click card detail popup state. */
+  let cardDetailCard = $state<Card | null>(null)
+  let cardDetailVisible = $state(false)
+
+  function showCardDetail(card: Card): void {
+    cardDetailCard = card
+    cardDetailVisible = true
+  }
+
+  function hideCardDetail(): void {
+    cardDetailVisible = false
+    cardDetailCard = null
+  }
+
+  /** Auto-close card detail when hand is disabled (quiz starts) */
+  $effect(() => {
+    if (disabled && cardDetailVisible) {
+      hideCardDetail()
+    }
+  })
+
   /** True while the player hovers or presses the CHARGE button — triggers a green charge preview on the selected card. */
   let chargePreviewActive = $state(false)
 
@@ -267,7 +289,12 @@
     kbdUnsubscribers.push(
       inputService.on('DESELECT', () => {
         if (!$isLandscape) return
-        ondeselectcard()
+        // Dismiss card detail modal if open, otherwise deselect card
+        if (cardDetailVisible) {
+          hideCardDetail()
+        } else {
+          ondeselectcard()
+        }
       })
     )
   })
@@ -658,7 +685,7 @@
       style="
         {isAnimating ? '' : isDraggingThis
           ? `transform: translate3d(${cardDragX}px, ${isSelected ? 'calc(-27vh - 36px + 20px)' : `-${cardDragRawY}px`}, 0) scale(${cardDragScale});`
-          : `transform: translate3d(0, ${isSelected ? 'calc(-27vh - 36px + 20px)' : '0px'}, 0) scale(${isSelected ? 1.1 : isHovered ? 1.08 : 1});`}
+          : `transform: translate3d(0, ${isSelected ? 'calc(-27vh - 36px + 20px)' : '0px'}, 0) scale(${isSelected ? 1.1 : isHovered ? 1.05 : 1});`}
         border-color: {getChainColor(card.chainType ?? 0)};
         box-shadow: 0 0 8px {getChainGlowColor(card.chainType ?? 0)};
         animation-delay: {i * 60}ms;
@@ -675,6 +702,7 @@
       onpointercancel={(e) => handlePointerCancel(e)}
       onpointerenter={(e) => handlePointerEnter(e, i)}
       onpointerleave={handlePointerLeave}
+      oncontextmenu={(e) => { e.preventDefault(); showCardDetail(card); }}
     >
       <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
         <div class="card-front">
@@ -883,6 +911,48 @@
       {/if}
     </div>
   {/each}
+
+  <!-- §9 Landscape: right-click card detail modal -->
+  {#if cardDetailVisible && cardDetailCard}
+    {@const detailCard = cardDetailCard}
+    {@const chainName = detailCard.chainType !== undefined ? getChainTypeName(detailCard.chainType) : null}
+    {@const chainTypeVal = detailCard.chainType ?? 0}
+    {@const mechanic = getMechanicDefinition(detailCard.mechanicId ?? '')}
+    {@const tierLabel = detailCard.tier === '1' ? 'Learning' : detailCard.tier === '2a' || detailCard.tier === '2b' ? 'Proven' : 'Mastered'}
+    {@const fact = factsDB.isReady() ? factsDB.getById(detailCard.factId) : null}
+    <button
+      class="card-detail-backdrop"
+      onclick={hideCardDetail}
+      onkeydown={(e) => { if (e.key === 'Escape') hideCardDetail() }}
+      aria-label="Close card details"
+    ></button>
+    <div class="card-detail-modal" role="dialog" aria-label="Card details" aria-modal="true">
+      <div class="card-detail-header" style="border-color: {getChainColor(chainTypeVal)}">
+        <span class="card-detail-name">{detailCard.mechanicName ?? detailCard.cardType}</span>
+        {#if chainName}
+          <span class="card-detail-chain" style="color: {getChainColor(chainTypeVal)}">
+            <ChainIcon chainType={chainTypeVal} size={14} />
+            {chainName}
+          </span>
+        {/if}
+      </div>
+      <div class="card-detail-tier">
+        <span class="card-detail-tier-label">{tierLabel}</span>
+        <span class="card-detail-ap">{detailCard.apCost ?? 1} AP</span>
+      </div>
+      {#if mechanic?.description}
+        <div class="card-detail-mechanic">{mechanic.description}</div>
+      {/if}
+      {#if fact?.quizQuestion}
+        <div class="card-detail-question-label">Question</div>
+        <div class="card-detail-question">{fact.quizQuestion}</div>
+      {:else if fact?.statement}
+        <div class="card-detail-question-label">Fact</div>
+        <div class="card-detail-question">{fact.statement}</div>
+      {/if}
+      <button class="card-detail-close" onclick={hideCardDetail} aria-label="Close">✕</button>
+    </div>
+  {/if}
 </div>
 {:else}
 <!-- Portrait card hand — UNCHANGED from pre-AR-73 -->
@@ -1309,7 +1379,8 @@
     align-items: center;
     padding: 0;
     overflow: visible;
-    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+    /* §7 spec: deselected return = 120ms ease-in; hover = 100ms ease */
+    transition: transform 120ms ease-in, opacity 200ms ease;
     -webkit-tap-highlight-color: transparent;
     touch-action: none;
     font-family: inherit;
@@ -1318,6 +1389,16 @@
     perspective: 800px;
     will-change: transform, opacity;
     flex-shrink: 0;
+  }
+
+  /* §7 spec: card selected rise = 150ms ease-out */
+  .card-landscape.card-selected {
+    transition: transform 150ms ease-out, opacity 200ms ease;
+  }
+
+  /* §9 spec: hover enlarge — 1.05x scale, 100ms ease; only when no card is selected */
+  .card-hand-landscape:not(:has(.card-selected)) .card-landscape:hover:not(.card-dimmed) {
+    z-index: 10;
   }
 
   .charge-play-btn-landscape {
@@ -1329,6 +1410,13 @@
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
+    /* §7 spec: charge button appear = 100ms fade-in */
+    animation: chargeBtnAppear 100ms ease-out both, chargeBtnPulse 1.2s ease-in-out 100ms infinite;
+  }
+
+  @keyframes chargeBtnAppear {
+    from { opacity: 0; transform: translateX(-50%) translateY(6px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
   }
 
   .card-hover-tooltip-landscape {
@@ -2278,16 +2366,22 @@
     }
   }
 
+  /* §7 spec: cards un-dim after quiz = 200ms opacity (base transition for when class is removed) */
+  .card-hand-landscape {
+    transition: opacity 200ms ease;
+  }
+
   /* AR-76: Dim card hand when quiz is visible in landscape */
+  /* §7 spec: cards dim on quiz = 150ms opacity (transition used when class is added) */
   .card-hand-quiz-dimmed {
     opacity: 0.7;
-    transition: opacity 200ms ease;
+    transition: opacity 150ms ease;
   }
 
   /* AR-94: Ensure landscape quiz-dimmed applies with sufficient specificity */
   .card-hand-landscape.card-hand-quiz-dimmed {
     opacity: 0.7;
-    transition: opacity 200ms ease;
+    transition: opacity 150ms ease;
   }
 
   /* ═══ END-OF-TURN HAND DISCARD ANIMATION ═══ */
@@ -2451,5 +2545,126 @@
     font-size: 0.6rem;
     opacity: 0.85;
     font-weight: 600;
+  }
+
+  /* ── §9 Landscape: Right-click card detail modal ─────────── */
+
+  .card-detail-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 998;
+    background: rgba(0, 0, 0, 0.45);
+    border: none;
+    cursor: default;
+  }
+
+  .card-detail-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    background: rgba(8, 12, 26, 0.97);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 18px 20px;
+    min-width: 260px;
+    max-width: 380px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    animation: cardDetailAppear 150ms ease-out both;
+  }
+
+  @keyframes cardDetailAppear {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0.92); }
+    to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  }
+
+  .card-detail-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .card-detail-name {
+    font-size: 16px;
+    font-weight: 800;
+    color: #f8fafc;
+    letter-spacing: 0.02em;
+  }
+
+  .card-detail-chain {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .card-detail-tier {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-detail-tier-label {
+    font-size: 12px;
+    color: #94a3b8;
+    font-weight: 600;
+  }
+
+  .card-detail-ap {
+    font-size: 12px;
+    color: #fbbf24;
+    font-weight: 700;
+  }
+
+  .card-detail-mechanic {
+    font-size: 12px;
+    color: #94a3b8;
+    line-height: 1.4;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 8px;
+  }
+
+  .card-detail-question-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+  }
+
+  .card-detail-question {
+    font-size: 13px;
+    color: #e2e8f0;
+    line-height: 1.45;
+  }
+
+  .card-detail-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .card-detail-close:hover {
+    background: rgba(255, 255, 255, 0.16);
+    color: #fff;
   }
 </style>

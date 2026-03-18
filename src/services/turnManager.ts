@@ -691,6 +691,23 @@ export function playCardAction(
     effect.enemyDefeated = false;
   }
 
+  // AR-99 Phase 3: chargeResistant — Quick Play attacks deal 50% damage (half effectiveness).
+  // Encourages players to Charge against armored/resistant enemies.
+  if (effect.damageDealt > 0 && playMode === 'quick' && enemy.template.chargeResistant) {
+    effect.damageDealt = Math.round(effect.damageDealt * 0.5);
+    effect.finalValue = Math.round(effect.finalValue * 0.5);
+    effect.enemyDefeated = effect.damageDealt >= enemy.currentHP;
+  }
+
+  // AR-99 Phase 3: chainVulnerable — Chain attacks (2+ chain multiplier) deal +50% damage.
+  // Encourages players to build Knowledge Chains against soft/vulnerable enemies.
+  if (effect.damageDealt > 0 && currentChainMultiplier > 1.0 && enemy.template.chainVulnerable) {
+    const chainBonus = Math.round(effect.damageDealt * 0.5);
+    effect.damageDealt += chainBonus;
+    effect.finalValue += chainBonus;
+    effect.enemyDefeated = effect.damageDealt >= enemy.currentHP;
+  }
+
   if (effect.damageDealt > 0) {
     const damageResult = applyDamageToEnemy(enemy, effect.damageDealt);
     effect.enemyDefeated = damageResult.defeated;

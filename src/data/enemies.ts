@@ -134,6 +134,16 @@ export interface EnemyTemplate {
    * Full spec in AR-59.7. Handled by the quiz phase service (AR-59.7 scope).
    */
   quizPhases?: QuizPhaseConfig[];
+  /**
+   * Quick Play attacks deal 50% damage against this enemy. Charged attacks deal full damage.
+   * Incentivizes players to Charge rather than Quick Play against armored/resistant foes.
+   */
+  chargeResistant?: boolean;
+  /**
+   * Chain attacks (2+ chain multiplier) deal +50% damage against this enemy.
+   * Incentivizes players to build Knowledge Chains against vulnerable foes.
+   */
+  chainVulnerable?: boolean;
 }
 
 /** A live enemy instance in an encounter. */
@@ -206,7 +216,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Crystal Golem',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 38,
+    baseHP: 32,
     intentPool: [
       { type: 'attack', value: 12, weight: 2, telegraph: 'Crystal slam' },
       { type: 'defend', value: 8, weight: 2, telegraph: 'Hardening crystals' },
@@ -216,6 +226,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     rarity: 'standard',
     spawnWeight: 10,
     animArchetype: 'slammer',
+    chargeResistant: true,
   },
 
   {
@@ -243,7 +254,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Shadow Mimic',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 30,
+    baseHP: 28,
     intentPool: [
       { type: 'attack', value: 8, weight: 2, telegraph: 'Shadow strike' },
       { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Flurry of shadows', hitCount: 3 },
@@ -575,7 +586,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Bone Collector',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 35,
+    baseHP: 30,
     intentPool: [
       { type: 'attack', value: 10, weight: 3, telegraph: 'Bone slash' },
       { type: 'heal', value: 5, weight: 2, telegraph: 'Consume remains' },
@@ -599,7 +610,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Mud Crawler',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 28,
+    baseHP: 26,
     intentPool: [
       { type: 'attack', value: 9, weight: 2, telegraph: 'Mud slash' },
       { type: 'debuff', value: 2, weight: 3, telegraph: 'Bog grasp', statusEffect: { type: 'poison', value: 2, turns: 2 } },
@@ -616,7 +627,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Root Strangler',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 32,
+    baseHP: 28,
     intentPool: [
       { type: 'multi_attack', value: 3, weight: 3, telegraph: 'Vine lash', hitCount: 3 },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Poisoned thorns', statusEffect: { type: 'poison', value: 2, turns: 2 } },
@@ -626,6 +637,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     rarity: 'uncommon',
     spawnWeight: 5,
     animArchetype: 'crawler',
+    chainVulnerable: true,
   },
 
   {
@@ -633,7 +645,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Iron Beetle',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 35,
+    baseHP: 32,
     intentPool: [
       { type: 'defend', value: 9, weight: 3, telegraph: 'Harden shell' },
       { type: 'attack', value: 10, weight: 2, telegraph: 'Mandible snap' },
@@ -643,6 +655,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     rarity: 'standard',
     spawnWeight: 10,
     animArchetype: 'trembler',
+    chargeResistant: true,
   },
 
   {
@@ -667,7 +680,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Cave Spider',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 29,
+    baseHP: 27,
     intentPool: [
       { type: 'multi_attack', value: 4, weight: 3, telegraph: 'Fang barrage', hitCount: 3 },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Web poison', statusEffect: { type: 'poison', value: 2, turns: 3 } },
@@ -677,6 +690,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     rarity: 'standard',
     spawnWeight: 10,
     animArchetype: 'crawler',
+    chainVulnerable: true,
   },
 
   {
@@ -684,7 +698,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Peat Shambler',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 36,
+    baseHP: 30,
     intentPool: [
       { type: 'heal', value: 6, weight: 2, telegraph: 'Bog absorption' },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Peat decay', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
@@ -718,7 +732,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Blind Grub',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 33,
+    baseHP: 30,
     intentPool: [
       { type: 'multi_attack', value: 5, weight: 3, telegraph: 'Bite frenzy', hitCount: 4 },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Larval grasp', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
@@ -728,6 +742,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     rarity: 'rare',
     spawnWeight: 2,
     animArchetype: 'crawler',
+    chainVulnerable: true,
   },
 
   // ── SHALLOW DEPTHS — MINI-BOSS (4 new) ──
@@ -827,7 +842,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Basalt Crawler',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 38,
+    baseHP: 32,
     intentPool: [
       { type: 'defend', value: 6, weight: 2, telegraph: 'Stone shell' },
       { type: 'attack', value: 11, weight: 2, telegraph: 'Basalt bite' },
@@ -837,6 +852,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     rarity: 'standard',
     spawnWeight: 10,
     animArchetype: 'crawler',
+    chargeResistant: true,
   },
 
   {
@@ -844,7 +860,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Salt Wraith',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 34,
+    baseHP: 30,
     intentPool: [
       { type: 'debuff', value: 1, weight: 3, telegraph: 'Salt sting', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
       { type: 'attack', value: 10, weight: 2, telegraph: 'Crystalline strike' },
@@ -861,7 +877,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Coal Imp',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 31,
+    baseHP: 28,
     intentPool: [
       { type: 'attack', value: 12, weight: 2, telegraph: 'Fire jab' },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Burning touch', statusEffect: { type: 'poison', value: 2, turns: 2 } },
@@ -878,7 +894,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Granite Hound',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 37,
+    baseHP: 32,
     intentPool: [
       { type: 'multi_attack', value: 4, weight: 3, telegraph: 'Bite combo', hitCount: 3 },
       { type: 'attack', value: 10, weight: 1, telegraph: 'Pounce' },
@@ -888,6 +904,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     rarity: 'uncommon',
     spawnWeight: 5,
     animArchetype: 'striker',
+    chargeResistant: true,
   },
 
   {
@@ -895,7 +912,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Sulfur Sprite',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 29,
+    baseHP: 27,
     intentPool: [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Toxic cloud', statusEffect: { type: 'poison', value: 2, turns: 3 } },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Brittle aura', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
@@ -912,7 +929,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Magma Tick',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 36,
+    baseHP: 30,
     intentPool: [
       { type: 'attack', value: 10, weight: 2, telegraph: 'Lava bite' },
       { type: 'buff', value: 1, weight: 2, telegraph: 'Molten pulse', statusEffect: { type: 'strength', value: 1, turns: 2 } },
@@ -929,7 +946,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Deep Angler',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 33,
+    baseHP: 30,
     intentPool: [
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Lure bite', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
       { type: 'attack', value: 11, weight: 2, telegraph: 'Fin slash' },
@@ -946,7 +963,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Rock Hermit',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 42,
+    baseHP: 34,
     intentPool: [
       { type: 'defend', value: 8, weight: 3, telegraph: 'Shell retreat' },
       { type: 'attack', value: 10, weight: 2, telegraph: 'Claw strike' },
@@ -956,6 +973,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     rarity: 'standard',
     spawnWeight: 10,
     animArchetype: 'trembler',
+    chargeResistant: true,
   },
 
   {
@@ -980,7 +998,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Stalactite Drake',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 35,
+    baseHP: 30,
     intentPool: [
       { type: 'multi_attack', value: 3, weight: 3, telegraph: 'Fang barrage', hitCount: 3 },
       { type: 'attack', value: 11, weight: 2, telegraph: 'Stone bite' },
@@ -990,6 +1008,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     rarity: 'rare',
     spawnWeight: 2,
     animArchetype: 'swooper',
+    chainVulnerable: true,
   },
 
   {
@@ -997,7 +1016,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Ember Moth',
     category: 'common',
     region: 'deep_caverns',
-    baseHP: 32,
+    baseHP: 26,
     intentPool: [
       { type: 'attack', value: 10, weight: 2, telegraph: 'Ember touch' },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Burning embers', statusEffect: { type: 'poison', value: 2, turns: 2 } },
@@ -1121,7 +1140,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Obsidian Shard',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 37,
+    baseHP: 32,
     intentPool: [
       { type: 'multi_attack', value: 3, weight: 3, telegraph: 'Shard volley', hitCount: 4 },
       { type: 'attack', value: 11, weight: 2, telegraph: 'Obsidian slash' },
@@ -1131,6 +1150,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     rarity: 'standard',
     spawnWeight: 10,
     animArchetype: 'floater',
+    chainVulnerable: true,
   },
 
   {
@@ -1138,7 +1158,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Magma Slime',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 35,
+    baseHP: 30,
     intentPool: [
       { type: 'attack', value: 11, weight: 2, telegraph: 'Lava blob' },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Molten splash', statusEffect: { type: 'poison', value: 2, turns: 2 } },
@@ -1155,7 +1175,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Quartz Elemental',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 39,
+    baseHP: 34,
     intentPool: [
       { type: 'defend', value: 7, weight: 2, telegraph: 'Crystal shell' },
       { type: 'attack', value: 12, weight: 2, telegraph: 'Quartz spike' },
@@ -1165,6 +1185,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     rarity: 'standard',
     spawnWeight: 10,
     animArchetype: 'caster',
+    chargeResistant: true,
   },
 
   {
@@ -1172,7 +1193,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Fossil Raptor',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 38,
+    baseHP: 32,
     intentPool: [
       { type: 'multi_attack', value: 4, weight: 3, telegraph: 'Claw barrage', hitCount: 3 },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Expose wound', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
@@ -1182,6 +1203,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     rarity: 'uncommon',
     spawnWeight: 5,
     animArchetype: 'striker',
+    chainVulnerable: true,
   },
 
   {
@@ -1189,7 +1211,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Geode Beetle',
     category: 'common',
     region: 'the_abyss',
-    baseHP: 41,
+    baseHP: 34,
     intentPool: [
       { type: 'defend', value: 8, weight: 3, telegraph: 'Geode armor' },
       { type: 'attack', value: 10, weight: 2, telegraph: 'Crystal bite' },
@@ -1199,6 +1221,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     rarity: 'standard',
     spawnWeight: 10,
     animArchetype: 'trembler',
+    chargeResistant: true,
   },
 
   {
@@ -1216,6 +1239,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     rarity: 'standard',
     spawnWeight: 10,
     animArchetype: 'crawler',
+    chainVulnerable: true,
   },
 
   {
@@ -1254,6 +1278,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       const healAmount = Math.min(5, ctx.enemy.maxHP - ctx.enemy.currentHP);
       ctx.enemy.currentHP += healAmount;
     },
+    chargeResistant: true,
   },
 
   {
@@ -1305,6 +1330,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     rarity: 'rare',
     spawnWeight: 2,
     animArchetype: 'striker',
+    chainVulnerable: true,
   },
 
   // ── THE ABYSS — MINI-BOSS (4 new) ──
@@ -1451,6 +1477,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     rarity: 'standard',
     spawnWeight: 10,
     animArchetype: 'floater',
+    chargeResistant: true,
   },
 
   {
@@ -1502,6 +1529,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     rarity: 'standard',
     spawnWeight: 10,
     animArchetype: 'trembler',
+    chargeResistant: true,
   },
 
   {
@@ -1536,6 +1564,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     rarity: 'standard',
     spawnWeight: 10,
     animArchetype: 'slammer',
+    chargeResistant: true,
   },
 
   {
@@ -1621,6 +1650,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     rarity: 'standard',
     spawnWeight: 10,
     animArchetype: 'lurcher',
+    chargeResistant: true,
   },
 
   // ── THE ARCHIVE — MINI-BOSS (7 new) ──

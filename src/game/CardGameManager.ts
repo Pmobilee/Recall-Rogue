@@ -53,6 +53,7 @@ export class CardGameManager {
       render: {
         pixelArt: true,
         antialias: false,
+        preserveDrawingBuffer: true,  // Enable canvas screenshots via canvas.toDataURL()
       },
       input: {
         activePointers: 1,

@@ -261,6 +261,9 @@
 
   let intentPopupOpen = $state(false)
 
+  /** §9 Landscape-only: enemy area hover tooltip state */
+  let showEnemyTooltip = $state(false)
+
   function pileTooltip(label: string, cards: Card[], fromTop = true): string {
     if (cards.length === 0) return `${label}: empty`
     const ordered = fromTop ? [...cards].reverse() : cards
@@ -1396,26 +1399,32 @@
     {/if}
 
     {#if cardPlayStage === 'committed' && committedCard && committedQuizData && committedPresentation}
-      <CardExpanded
-        card={committedCard}
-        question={committedQuizData.question}
-        answers={committedQuizData.answers}
-        correctAnswer={committedQuizData.correctAnswer}
-        questionImageUrl={committedQuizData.questionImageUrl}
-        timerDuration={effectiveTimerSeconds}
-        timerEnabled={timerEnabled}
-        comboCount={turnState.comboCount}
-        hintsRemaining={turnState.deck.hintsRemaining}
-        speedBonusThreshold={speedBonusThreshold}
-        showMasteryTrialHeader={committedCard.isMasteryTrial === true}
-        timerColorVariant={timerColorVariant}
-        highlightHint={turnState.canaryQuestionBias < 0}
-        allowCancel={false}
-        onanswer={handleAnswer}
-        onskip={handleSkip}
-        oncancel={() => {}}
-        onusehint={onusehint}
-      />
+      <!-- §7 spec: quiz panel fade out = 200ms when dismissed -->
+      <div
+        class="quiz-wrapper"
+        out:fade={{ duration: 200 }}
+      >
+        <CardExpanded
+          card={committedCard}
+          question={committedQuizData.question}
+          answers={committedQuizData.answers}
+          correctAnswer={committedQuizData.correctAnswer}
+          questionImageUrl={committedQuizData.questionImageUrl}
+          timerDuration={effectiveTimerSeconds}
+          timerEnabled={timerEnabled}
+          comboCount={turnState.comboCount}
+          hintsRemaining={turnState.deck.hintsRemaining}
+          speedBonusThreshold={speedBonusThreshold}
+          showMasteryTrialHeader={committedCard.isMasteryTrial === true}
+          timerColorVariant={timerColorVariant}
+          highlightHint={turnState.canaryQuestionBias < 0}
+          allowCancel={false}
+          onanswer={handleAnswer}
+          onskip={handleSkip}
+          oncancel={() => {}}
+          onusehint={onusehint}
+        />
+      </div>
     {/if}
 
     {#if onboardingTip}
@@ -1562,6 +1571,43 @@
         </div>
       {/if}
     </div>
+
+    <!-- §9 Landscape: enemy hover zone — covers the right portion of the arena (enemy area).
+         When quiz is not active the enemy is centered; in quiz it slides right.
+         We place the hover zone over the enemy's default center position. -->
+    {#if cardPlayStage !== 'committed'}
+      <div
+        class="enemy-hover-zone"
+        role="button"
+        tabindex="-1"
+        aria-label="Enemy info"
+        onmouseenter={() => { showEnemyTooltip = true }}
+        onmouseleave={() => { showEnemyTooltip = false }}
+      >
+        {#if showEnemyTooltip && intentDisplay}
+          <div class="enemy-tooltip" transition:fade={{ duration: 100 }}>
+            <div class="enemy-tooltip-header" style="color: {categoryColor}">{enemyName}</div>
+            <div class="enemy-tooltip-intent">
+              <span class="enemy-tooltip-label">Next:</span>
+              <span class="enemy-tooltip-value">{intentDetailText}</span>
+            </div>
+            {#if enemyEffects.length > 0}
+              <div class="enemy-tooltip-effects">
+                <span class="enemy-tooltip-label">Effects:</span>
+                {#each enemyEffects as effect}
+                  <span class="enemy-tooltip-effect-badge">
+                    {effect.type} {effect.value > 0 ? `×${effect.value}` : ''} ({effect.turnsRemaining}t)
+                  </span>
+                {/each}
+              </div>
+            {/if}
+            {#if intentDisplay.telegraph}
+              <div class="enemy-tooltip-telegraph">{intentDisplay.telegraph}</div>
+            {/if}
+          </div>
+        {/if}
+      </div>
+    {/if}
   {/if}
 </div>
 
@@ -2650,6 +2696,105 @@
 
   .lsb-chain-count {
     font-size: 14px;
+  }
+
+  /* §7: Quiz wrapper — transparent passthrough; Svelte out:fade applies opacity on exit */
+  .quiz-wrapper {
+    display: contents;
+  }
+
+  /* ── §9 Landscape: Enemy hover zone + tooltip ─────────── */
+
+  /* Hover zone covers the center-right of the arena (enemy default position).
+     Positioned: starts at 40% from left, takes ~50% width, fills arena height. */
+  .enemy-hover-zone {
+    display: none; /* hidden in portrait */
+  }
+
+  .layout-landscape .enemy-hover-zone {
+    display: block;
+    position: fixed;
+    left: 40%;
+    right: 0;
+    top: 0;
+    bottom: calc(27vh + 36px);
+    z-index: 8;
+    pointer-events: auto;
+    cursor: default;
+  }
+
+  .enemy-tooltip {
+    position: absolute;
+    /* Position to the LEFT of the enemy zone (slide out to the left) */
+    right: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(8, 12, 24, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 12px 14px;
+    min-width: 200px;
+    max-width: 280px;
+    pointer-events: none;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .enemy-tooltip-header {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 6px;
+    margin-bottom: 2px;
+  }
+
+  .enemy-tooltip-intent {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .enemy-tooltip-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.45);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .enemy-tooltip-value {
+    font-size: 12px;
+    color: #e2e8f0;
+    line-height: 1.3;
+  }
+
+  .enemy-tooltip-effects {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .enemy-tooltip-effect-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 11px;
+    color: #a78bfa;
+    background: rgba(139, 92, 246, 0.12);
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    border-radius: 6px;
+    padding: 2px 8px;
+  }
+
+  .enemy-tooltip-telegraph {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    font-style: italic;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 6px;
+    margin-top: 2px;
   }
 
 </style>

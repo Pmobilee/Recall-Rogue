@@ -978,19 +978,19 @@ export const MAX_AP_PER_TURN = 5;
 
 // Post-encounter healing (AR-31: between-encounter recovery)
 /** Fraction of max HP healed after each non-defeat encounter. */
-export const POST_ENCOUNTER_HEAL_PCT = 0.12;
+export const POST_ENCOUNTER_HEAL_PCT = 0.03;
 /** Extra healing fraction for Relaxed mode (additive with POST_ENCOUNTER_HEAL_PCT). */
-export const RELAXED_POST_ENCOUNTER_HEAL_BONUS = 0.06;
+export const RELAXED_POST_ENCOUNTER_HEAL_BONUS = 0.03;
 /** Extra healing fraction after defeating a boss or mini-boss (AR-32, additive). */
-export const POST_BOSS_ENCOUNTER_HEAL_BONUS = 0.15;
+export const POST_BOSS_ENCOUNTER_HEAL_BONUS = 0.05;
 /** Maximum HP percentage players can heal TO via post-encounter healing, by segment.
  *  Players below this threshold heal normally; players above it gain nothing.
  *  This creates late-game attrition so winners don't cruise at 99% HP. */
 export const POST_ENCOUNTER_HEAL_CAP: Record<number, number> = {
-  1: 1.0,    // Segment 1 (floors 1-6): no cap
-  2: 0.90,   // Segment 2 (floors 7-12): cap at 90%
-  3: 0.80,   // Segment 3 (floors 13-18): cap at 80%
-  4: 0.65,   // Segment 4 (floors 19-24): cap at 65%
+  1: 0.90,   // Segment 1 (floors 1-6): cap at 90%
+  2: 0.80,   // Segment 2 (floors 7-12): cap at 80%
+  3: 0.70,   // Segment 3 (floors 13-18): cap at 70%
+  4: 0.55,   // Segment 4 (floors 19-24): cap at 55%
 };
 /** HP multiplier for mini-bosses on floors 1-3 (makes early mini-bosses less tanky). */
 export const EARLY_MINI_BOSS_HP_MULTIPLIER = 0.60;
@@ -1398,9 +1398,9 @@ export const SHOP_FOOD_COUNT = 3;
 
 /** Food item definitions: healing percentage and base price. */
 export const SHOP_FOOD_ITEMS = {
-  ration: { healPct: 0.25, basePrice: 12 },   // 25% max HP heal
-  feast:  { healPct: 0.45, basePrice: 28 },    // 45% max HP heal
-  elixir: { healPct: 1.00, basePrice: 55 },    // Full heal
+  ration: { healPct: 0.25, basePrice: 25 },   // 25% max HP heal
+  feast:  { healPct: 0.45, basePrice: 50 },    // 45% max HP heal
+  elixir: { healPct: 1.00, basePrice: 90 },    // Full heal
 } as const;
 
 // === RELIC SYNERGIES ===
