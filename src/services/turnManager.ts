@@ -5,6 +5,7 @@ import { get } from 'svelte/store';
 import type { Card, CardRunState, CardType, PassiveEffect } from '../data/card-types';
 import { isFirstChargeFree, markFirstChargeUsed, getFirstChargeWrongMultiplier } from './discoverySystem';
 import { getSurgeChargeSurcharge, isSurgeTurn } from './surgeSystem';
+import { resetChain, extendOrResetChain, getChainState } from './chainSystem';
 import { FIRST_CHARGE_FREE_AP_SURCHARGE } from '../data/balance';
 import { activeRunState } from './runStateStore';
 import type { EnemyInstance } from '../data/enemies';
@@ -154,6 +155,12 @@ export interface TurnState {
   lastCardEffect: CardEffectResult | null;
   /** True when the current turn is a Surge turn (Charge costs +0 AP). Updated at turn start/end. */
   isSurge: boolean;
+  /** Current Knowledge Chain multiplier (1.0 = no chain, up to 3.0 at 5-chain). */
+  chainMultiplier: number;
+  /** Current chain length (0 = no chain). Exposed for UI. */
+  chainLength: number;
+  /** Current chain type index (0-5), or null if no chain active. Exposed for UI. */
+  chainType: number | null;
 }
 
 export interface PlayCardResult {
@@ -306,7 +313,13 @@ export function startEncounter(
     thornsValue: 0,
     lastCardEffect: null,
     isSurge: isSurgeTurn(1),
+    chainMultiplier: 1.0,
+    chainLength: 0,
+    chainType: null,
   };
+
+  // Reset chain at encounter start (clean slate)
+  resetChain();
 
   const isFirstEncounter = deck.currentFloor === 1 && deck.currentEncounter <= 1;
   drawHand(deck, initialState.baseDrawCount, { firstDrawBias: isFirstEncounter });
@@ -438,6 +451,15 @@ export function playCardAction(
       enemy.playerChargedThisTurn = true;
     }
 
+    // Wrong Charge: break the chain
+    if (playMode === 'charge') {
+      extendOrResetChain(null); // null chainType resets chain
+      const chainState = getChainState();
+      turnState.chainMultiplier = 1.0;
+      turnState.chainLength = chainState.length;
+      turnState.chainType = chainState.chainType;
+    }
+
     const mode = get(difficultyMode);
     if (mode === 'relaxed') {
       // AP is NOT refunded — wrong answers always cost AP regardless of mode
@@ -566,6 +588,21 @@ export function playCardAction(
     };
   }
 
+  // Update Knowledge Chain state for this card play.
+  // Charge (correct): extend/reset chain based on chainType, get multiplier.
+  // Quick Play: break the chain (no chain bonus from Quick Play).
+  let currentChainMultiplier = 1.0;
+  if (playMode === 'charge') {
+    currentChainMultiplier = extendOrResetChain(card.chainType);
+  } else {
+    // Quick Play breaks the chain
+    extendOrResetChain(null);
+  }
+  const chainState = getChainState();
+  turnState.chainMultiplier = currentChainMultiplier;
+  turnState.chainLength = chainState.length;
+  turnState.chainType = chainState.chainType;
+
   const speedBonus = speedBonusEarned ? 1.5 : 1.0;
   const useDoubleStrike = turnState.doubleStrikeReady && card.cardType === 'attack';
   const useFocus = turnState.focusReady;
@@ -589,6 +626,7 @@ export function playCardAction(
       damageDealtThisTurn: turnState.damageDealtThisTurn,
       correct: answeredCorrectly,
       playMode,
+      chainMultiplier: currentChainMultiplier,
     },
   );
 
@@ -1117,6 +1155,12 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   turnState.firstAttackUsed = false;
   turnState.apCurrent = Math.min(turnState.apMax, START_AP_PER_TURN + turnState.bonusApNextTurn);
   turnState.bonusApNextTurn = 0;
+
+  // Reset Knowledge Chain at start of each new player turn
+  resetChain();
+  turnState.chainMultiplier = 1.0;
+  turnState.chainLength = 0;
+  turnState.chainType = null;
 
   if (turnState.foresightTurnsRemaining > 0) {
     turnState.foresightTurnsRemaining -= 1;

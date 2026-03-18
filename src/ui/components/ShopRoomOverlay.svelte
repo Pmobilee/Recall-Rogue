@@ -12,6 +12,7 @@
   import { recordHaggleAttempt } from '../../services/gameFlowController'
   import { SHOP_HAGGLE_DISCOUNT } from '../../data/balance'
   import { getChainTypeName, getChainTypeColor } from '../../data/chainTypes'
+  import { getChainColor, getChainGlowColor } from '../../services/chainVisuals'
   import ChainIcon from './ChainIcon.svelte'
   import { isLandscape } from '../../stores/layoutStore'
 
@@ -263,7 +264,7 @@
       <div class="card-list">
         {#each shopInventory.cards as item, idx (item.card.id)}
           {@const canAfford = currency >= item.price}
-          <article class="card-item">
+          <article class="card-item" style="border-color: {getChainColor(item.card.chainType ?? 0)}; box-shadow: 0 0 6px {getChainGlowColor(item.card.chainType ?? 0)};">
             <div class="meta">
               <span class="icon">
                 <img class="type-icon-img" src={getCardTypeIconPath(item.card.cardType)} alt=""
@@ -320,7 +321,7 @@
     <div class="section-header">Sell</div>
     <div class="card-list">
       {#each cards as card (card.id)}
-        <article class="card-item">
+        <article class="card-item" style="border-color: {getChainColor(card.chainType ?? 0)}; box-shadow: 0 0 6px {getChainGlowColor(card.chainType ?? 0)};">
           <div class="meta">
             <span class="icon">
               <img class="type-icon-img" src={getCardTypeIconPath(card.cardType)} alt=""

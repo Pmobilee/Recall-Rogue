@@ -11,6 +11,7 @@
   import { untrack } from 'svelte'
   import { normalizeRewardSelection } from '../utils/rewardSelection'
   import { getChainTypeName, getChainTypeColor } from '../../data/chainTypes'
+  import { getChainColor, getChainGlowColor } from '../../services/chainVisuals'
   import ChainIcon from './ChainIcon.svelte'
   import { factsDB } from '../../services/factsDB'
   import { isLandscape } from '../../stores/layoutStore'
@@ -332,7 +333,7 @@
               class:shadowed={isShadowed(option)}
               class:collecting={isCollecting(option)}
               class:upgraded={option.isUpgraded}
-              style={`--frame-image: ${frameUrl ? `url('${frameUrl}')` : 'none'}; --icon-glow: ${typeGlow}; --domain-color: ${domainColor};`}
+              style={`--frame-image: ${frameUrl ? `url('${frameUrl}')` : 'none'}; --icon-glow: ${typeGlow}; --domain-color: ${domainColor}; border-color: ${getChainColor(option.chainType ?? 0)}; box-shadow: 0 0 8px ${getChainGlowColor(option.chainType ?? 0)};`}
               onclick={() => selectType(option.cardType)}
               onpointerenter={() => hoverType(option.cardType)}
               disabled={collectLocked}
@@ -355,8 +356,8 @@
                   {getChainTypeName(option.chainType)}
                 </div>
               {/if}
-              {#if option.boundFactId || option.factId}
-                {@const previewFact = factsDB.isReady() ? factsDB.getById(option.boundFactId ?? option.factId) : null}
+              {#if option.factId}
+                {@const previewFact = factsDB.isReady() ? factsDB.getById(option.factId) : null}
                 {#if previewFact}
                   <div class="fact-preview">
                     {(previewFact.quizQuestion || previewFact.statement || '').slice(0, 60)}{(previewFact.quizQuestion || previewFact.statement || '').length > 60 ? '...' : ''}

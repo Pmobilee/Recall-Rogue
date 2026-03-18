@@ -74,6 +74,8 @@ export interface AdvancedResolveOptions {
   correct?: boolean;
   /** V2 Echo: how the card was played. Used by resolveEchoBase. Defaults to 'charge'. */
   playMode?: PlayMode;
+  /** Knowledge Chain multiplier (1.0 = no chain). Stacks multiplicatively with comboMultiplier. */
+  chainMultiplier?: number;
 }
 
 export function isCardBlocked(card: Card, enemy: EnemyInstance): boolean {
@@ -173,6 +175,7 @@ export function resolveCardEffect(
   }
 
   const comboMultiplier = getComboMultiplier(comboCount);
+  const chainMultiplier = advanced.chainMultiplier ?? 1.0;
   const buffMultiplier = 1 + buffNextCard / 100;
   const overclockMultiplier = advanced.isOverclockActive ? 2 : 1;
   const correct = advanced.correct ?? true;
@@ -225,7 +228,7 @@ export function resolveCardEffect(
 
   const rawValue = effectiveBase * focusAdjustedMultiplier;
   result.rawValue = rawValue;
-  const finalValue = Math.round(rawValue * comboMultiplier * speedBonus * buffMultiplier * attackRelicMultiplier * overclockMultiplier);
+  const finalValue = Math.round(rawValue * comboMultiplier * chainMultiplier * speedBonus * buffMultiplier * attackRelicMultiplier * overclockMultiplier);
   result.finalValue = finalValue;
 
   const applyAttackDamage = (baseDamage: number): void => {

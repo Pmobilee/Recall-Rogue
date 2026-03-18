@@ -1,13 +1,30 @@
 <script lang="ts">
   import { getComboDisplayText } from '../utils/comboDisplay'
+  import { getChainTypeName, getChainTypeColor } from '../../data/chainTypes'
 
   interface Props {
     count: number
     multiplier: number
     isPerfectTurn?: boolean
+    chainLength?: number
+    chainType?: number | null
+    chainMultiplier?: number
   }
 
-  let { count, multiplier, isPerfectTurn = false }: Props = $props()
+  let { count, multiplier, isPerfectTurn = false, chainLength = 0, chainType = null, chainMultiplier = 1.0 }: Props = $props()
+
+  let chainName = $derived(chainType !== null && chainType !== undefined ? getChainTypeName(chainType) : '')
+  let chainColor = $derived(chainType !== null && chainType !== undefined ? getChainTypeColor(chainType) : '#888888')
+  let showChain = $derived(chainLength >= 2 && chainType !== null && chainType !== undefined)
+  let chainAnimKey = $state(0)
+  let _prevChainLength = 0
+  $effect(() => {
+    const cl = chainLength
+    if (cl >= 2 && cl !== _prevChainLength) {
+      chainAnimKey = chainAnimKey + 1
+    }
+    _prevChainLength = cl
+  })
 
   let displayText = $derived(
     getComboDisplayText(count, multiplier, isPerfectTurn)
@@ -85,6 +102,21 @@
             ></div>
           {/each}
         </div>
+      {/if}
+    </div>
+  {/key}
+{/if}
+
+{#if showChain}
+  {#key chainAnimKey}
+    <div
+      class="chain-display"
+      style="color: {chainColor}; text-shadow: 0 0 8px {chainColor}80;"
+      data-testid="chain-display"
+    >
+      <span class="chain-text">{chainName} Chain ×{chainLength}</span>
+      {#if chainMultiplier > 1.0}
+        <span class="chain-mult" style="color: {chainColor};">{chainMultiplier.toFixed(1)}×</span>
       {/if}
     </div>
   {/key}
@@ -183,5 +215,32 @@
   @keyframes particlePulse {
     0% { opacity: 0.5; }
     100% { opacity: 1; }
+  }
+
+  /* Chain display — appears above combo counter when chain length >= 2 */
+  .chain-display {
+    position: absolute;
+    right: 12px;
+    bottom: calc(62px + var(--safe-bottom, 0px));
+    z-index: 18;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1px;
+    animation: comboSlamIn 220ms ease-out;
+  }
+  .chain-text {
+    font-size: 11px;
+    font-weight: 700;
+    opacity: 0.95;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  .chain-mult {
+    font-size: 12px;
+    font-weight: 700;
+    opacity: 0.9;
+    align-self: flex-end;
   }
 </style>

@@ -94,7 +94,7 @@ export interface Card {
   categoryL2?: string;
   /** Chain type index (0-5), assigned at run start. Runtime-only — not persisted to DB. */
   chainType?: number;
-  /** Fact ID permanently bound to this card for the run duration. */
+  /** @deprecated — facts shuffle per draw via FSRS, not permanently bound. Kept for save backward-compatibility only. */
   boundFactId?: string;
 }
 

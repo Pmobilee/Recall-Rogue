@@ -166,6 +166,9 @@
   let comboCount = $derived(turnState?.comboCount ?? 0)
   let comboMultiplier = $derived(getComboMultiplier(comboCount))
   let isPerfectTurn = $derived(turnState?.isPerfectTurn ?? false)
+  let chainLength = $derived(turnState?.chainLength ?? 0)
+  let chainType = $derived(turnState?.chainType ?? null)
+  let chainMultiplier = $derived(turnState?.chainMultiplier ?? 1.0)
   let displayRelics = $derived(
     [...(turnState?.activeRelicIds ?? [])].map((id) => {
       const def = RELIC_BY_ID[id];
@@ -1433,7 +1436,7 @@
       </div>
     </div>
 
-    <ComboCounter count={comboCount} multiplier={comboMultiplier} {isPerfectTurn} />
+    <ComboCounter count={comboCount} multiplier={comboMultiplier} {isPerfectTurn} {chainLength} {chainType} {chainMultiplier} />
 
     <CardHand
       cards={handCards}

@@ -123,18 +123,19 @@ AP badge colors:
 - Orange: 2 AP (heavy)
 - Red: 3 AP (full turn)
 
-### Fact-Card Binding (AR-70 — Implemented)
+### Fact-Card Pairing — Per-Draw FSRS Shuffling (AR-93)
 
-Card slots (type + mechanic + base effect) and facts (the questions to answer) are **bound persistently for the entire run**. At run start, `buildRunPool()` assigns each fact a `chainType` (0-5) via `index % 6` for even distribution, and binds facts to card slots.
+Card slots (type + mechanic + base effect) are created at run start, but facts (the questions to answer) are **assigned fresh each draw** from the run's FSRS fact pool. This lets spaced repetition surface the facts the player most needs to review on every draw.
 
-**Why binding:** Without binding, chain types would re-randomize every draw, making chain-building impossible to plan. With binding, players learn which cards share chain types and can make strategic deck decisions (card removal, reward selection) around chain composition.
+1. At run start, `buildRunPool()` creates card SLOTS (with `cardType`, `chainType`, `mechanic`, base effect) from the FSRS-weighted fact pool
+2. Each `drawHand()` call selects facts from the fact pool via seeded RNG (`'facts'` fork) and assigns them to the drawn cards
+3. Facts rotate each draw — the same card slot may show a different fact on the next encounter
+4. Cooldown deduplication prevents recently-seen facts from reappearing for 3–5 encounters
+5. Tier multiplier is derived from the FSRS mastery tier of the fact at the time it was initially selected into the pool
 
-1. At run start, `buildRunPool()` creates card SLOTS and binds facts to them
-2. Each `drawHand()` call draws N bound card-slots from the draw pile
-3. The fact stays with its slot for the entire run
-4. Tier multiplier is derived from the FSRS mastery tier of the bound fact
+**Chain type** is still assigned to card SLOTS permanently at run start (one of 6 types: Obsidian, Crimson, Azure, Amber, Violet, Jade). Chain composition is stable across draws because chain types belong to slots, not facts.
 
-**Chain color** is derived from the card's `chainType` (0-5) — same chainType = same chain color = can chain together. Colors are defined in `src/data/chainTypes.ts` (Obsidian, Crimson, Azure, Amber, Violet, Jade).
+**Chain color** is derived from the card's `chainType` (0-5) — same chainType = same chain color = can chain together. Colors are defined in `src/data/chainTypes.ts`.
 
 ### Encounter Cooldown & Anti-Repetition
 
@@ -221,15 +222,17 @@ Balance constants: `COMBO_DECAY_QUICK_PLAY = 1`, `COMBO_DECAY_WRONG_ANSWER = 2`,
 
 ---
 
-## 3. Knowledge Chain System (AR-59.3)
+## 3. Knowledge Chain System (AR-59.3 / AR-93)
 
 ### How It Works
 
 Cards have a `chainType` value (integer 0-5, corresponding to Obsidian, Crimson, Azure, Amber, Violet, Jade). When you Charge cards consecutively within the same turn that share a `chainType`, they form a chain. Each card in the chain gets a multiplier.
 
-**Chain is built exclusively by Charge plays.** Quick Play resets the chain counter. Wrong Charge answers also break the chain.
+**Chain is built exclusively by Charge plays.** Quick Play breaks the chain. Wrong Charge answers also break the chain.
 
 **Six distinct chain types** (0-5) map to the 6-color palette defined in `src/data/chainTypes.ts`. Cards without a `chainType` field contribute no chain.
+
+**Chain state is ACTIVE in combat** (AR-93 Section B): `chainSystem.ts` is wired into `turnManager.ts` and `cardEffectResolver.ts`. The chain multiplier stacks multiplicatively with the combo multiplier on every card play.
 
 ### Chain Multipliers
 
@@ -241,7 +244,9 @@ Cards have a `chainType` value (integer 0-5, corresponding to Obsidian, Crimson,
 | 4-chain | 2.2× | Screen edge pulse, chain lightning VFX |
 | 5-chain | 3.0× | Full celebration, screen shake, "KNOWLEDGE CHAIN!" text |
 
-**Chain multiplier stacks with Charge multiplier:**
+**Chain multiplier stacks multiplicatively with combo multiplier** (and all other multipliers):
+
+`finalValue = base × tierMult × comboMult × chainMult × speedBonus × buffMult × relicMult × overclockMult`
 
 | Scenario | Calculation | Total |
 |----------|-------------|-------|
@@ -251,17 +256,27 @@ Cards have a `chainType` value (integer 0-5, corresponding to Obsidian, Crimson,
 
 The 122-damage Surge chain is the "holy shit" peak. Rare. Players will chase it.
 
-### Chain Visual System (AR-59.17)
+### Chain Rules (Active in Combat)
 
-**Frame edge tint:** Each `chainType` (0-5) maps to one of 6 distinct colors (Obsidian, Crimson, Azure, Amber, Violet, Jade). Cards show a subtle 2–3px colored tint on their left frame edge (visible even when cards overlap in the fan).
+- `resetChain()` is called at encounter start and at the start of every new player turn (in `endPlayerTurn`)
+- Correct Charge: `extendOrResetChain(card.chainType)` is called; multiplier returned and passed to `resolveCardEffect`
+- Quick Play: `extendOrResetChain(null)` breaks the chain — no bonus
+- Wrong Charge: chain is reset before fizzle resolution — no bonus on the fizzled card
+- Chain state stored on `TurnState` as `chainMultiplier`, `chainLength`, `chainType` for UI consumption
 
-**In-hand pulse:** When 2+ cards in hand share a `chainType`, their tinted edges pulse in sync.
+### Chain Visual System (AR-59.17 / AR-93)
+
+**Card border + glow (primary identity):** Chain type color is the PRIMARY visual identity of every card. ALL card borders and outer glow use `getChainColor(card.chainType)` / `getChainGlowColor(card.chainType)` from `src/services/chainVisuals.ts`. This applies universally: in-hand cards (portrait and landscape), animating cards, reward screen altar options, shop buy/sell cards, and the expanded quiz card (CardExpanded). The chain border makes it immediately clear which cards can chain together across all game contexts.
+
+**In-hand pulse:** When 2+ cards in hand share a `chainType`, their chain-colored borders pulse in sync.
 
 **Chain ember particles (AR-71.2):** Any card with a `chainType` shows 5 small glowing dots rising from its top edge in the chain color — a "smoldering" effect that indicates chain affinity. Pure CSS animation, `pointer-events: none`.
 
 **During chain play:** A thin glowing line briefly connects played cards as they resolve (animation only, not persistent UI).
 
-**Chain counter:** Displayed above the hand, shows current chain length and chain type name.
+**Chain counter (AR-93):** When chain length ≥ 2, a `ChainDisplay` overlaid near the combo counter shows `"[ChainName] Chain ×N"` in the chain's color, plus the multiplier value (e.g. `1.7×`). Implemented inside `ComboCounter.svelte` as a separate `chain-display` div.
+
+**Domain color:** Still used for the domain stripe/header bar inside cards and category labels — it conveys what subject matter the card covers. The chain border conveys chaining compatibility.
 
 ### Chain Examples
 
@@ -488,8 +503,8 @@ See §8 for complete enemy roster with quiz integration behaviors.
 
 ### Chain Visual System (AR-59.17)
 
-- Card left-edge tint: 6 distinct colors mapped from `chainType` (0-5) via `chainTypes.ts`
-- In-hand pulse: tinted edges pulse in sync when 2+ cards share a `chainType`
+- **Card border + glow (primary identity):** Chain type color is the primary visual on ALL cards everywhere — in-hand, animating, reward screen, shop, expanded quiz view. Uses `getChainColor` / `getChainGlowColor` from `chainVisuals.ts`
+- In-hand pulse: chain-colored borders pulse in sync when 2+ cards share a `chainType`
 - Play animation: thin glowing line connects chained cards during resolution
 - Chain counter: displayed above hand with current chain length + milestone celebrations
 

@@ -463,13 +463,6 @@ export function buildRunPool(
   pool = assignTypesToCards(pool);
   pool = applyMechanics(pool);
 
-  // === Fact-to-Card Binding (AR-70) ===
-  // Bind each card's fact permanently for the run duration.
-  // The card's factId is already set from createCard() — store it as boundFactId.
-  for (const card of pool) {
-    card.boundFactId = card.factId;
-  }
-
   // === Chain Type Assignment (AR-70) ===
   // Assign one of 6 chain types evenly across the pool.
   assignChainTypes(pool);

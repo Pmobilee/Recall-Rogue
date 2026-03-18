@@ -4,6 +4,7 @@
   import { isLandscape } from '../../stores/layoutStore'
   import { inputService } from '../../services/inputService'
   import { getDomainMetadata } from '../../data/domainMetadata'
+  import { getChainColor, getChainGlowColor } from '../../services/chainVisuals'
   import { getCardFramePath, getDomainIconPath } from '../utils/domainAssets'
   import { getTierDisplayName } from '../../services/tierDerivation'
   import { getCardTypeEmoji, getCardTypeIconCandidates } from '../utils/iconAssets'
@@ -294,7 +295,7 @@
 <div
   class="card-expanded"
   class:card-expanded-landscape={$isLandscape}
-  style={`--card-frame-image: url('${framePath}')`}
+  style={`--card-frame-image: url('${framePath}'); border: 1px solid ${getChainColor(card.chainType ?? 0)}; box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5), 0 0 12px ${getChainGlowColor(card.chainType ?? 0)};`}
   ontouchstart={handleTouchStart}
   ontouchmove={handleTouchMove}
   ontouchend={handleTouchEnd}

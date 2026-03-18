@@ -659,7 +659,8 @@
         {isAnimating ? '' : isDraggingThis
           ? `transform: translate3d(${cardDragX}px, ${isSelected ? -70 : -cardDragRawY}px, 0) scale(${cardDragScale});`
           : `transform: translate3d(0, ${isSelected ? -70 : 0}px, 0) scale(${isSelected ? 1.15 : isHovered ? 1.08 : 1});`}
-        {cardFrameUrl ? '' : `border-color: ${domainColor};`}
+        border-color: {getChainColor(card.chainType ?? 0)};
+        box-shadow: 0 0 8px {getChainGlowColor(card.chainType ?? 0)};
         animation-delay: {i * 60}ms;
         opacity: {isOther ? 0.3 : 1};
         z-index: {isDraggingThis ? 20 : isHovered ? 10 : ''};
@@ -839,7 +840,7 @@
       class:card-tier-up={isTierUp}
       class:card-swoosh={isSwoosh}
       class:card-impact={isImpact}
-      style="border-color: {domainColor};"
+      style="border-color: {getChainColor(card.chainType ?? 0)}; box-shadow: 0 0 8px {getChainGlowColor(card.chainType ?? 0)};"
     >
       <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
         <div class="card-front">
@@ -971,7 +972,8 @@
       class:drag-charge-zone-disabled={isDragInChargeZone && !chargeAffordableForDrag}
       style="
         {isAnimating ? '' : isDraggingThis ? `transform: translate3d(${xOffset + cardDragX}px, ${(isSelected ? -80 : -arcOffset) - cardDragRawY}px, 0) rotate(0deg) scale(${cardDragScale});` : `transform: translate3d(${xOffset}px, ${isSelected ? -80 : isOther ? 15 : -(arcOffset + hoverLift)}px, 0) rotate(${isSelected ? 0 : rotation}deg) scale(${isSelected ? 1.2 : hoverScale});`}
-        {cardFrameUrl ? '' : `border-color: ${domainColor};`}
+        border-color: {getChainColor(card.chainType ?? 0)};
+        box-shadow: 0 0 8px {getChainGlowColor(card.chainType ?? 0)};
         animation-delay: {i * 80}ms;
         opacity: {isOther ? 0.3 : 1};
         z-index: {isDraggingThis ? 20 : isHovered ? 10 : ''};
@@ -1171,7 +1173,8 @@
       class:card-impact-debuff={isImpact && card.cardType === 'debuff'}
       class:card-impact-wild={isImpact && card.cardType === 'wild'}
       style="
-        border-color: {domainColor};
+        border-color: {getChainColor(card.chainType ?? 0)};
+        box-shadow: 0 0 8px {getChainGlowColor(card.chainType ?? 0)};
       "
     >
       <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
