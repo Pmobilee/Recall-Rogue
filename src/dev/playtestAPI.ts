@@ -685,7 +685,10 @@ async function resetToPreset(presetId: string): Promise<PlayResult> {
     }));
     localStorage.setItem('card:difficultyMode', JSON.stringify('standard'));
 
-    window.location.href = `${window.location.origin}?skipOnboarding=true`;
+    // Preserve existing URL params (turbo, devpreset, etc.) through reload
+    const params = new URLSearchParams(window.location.search);
+    params.set('skipOnboarding', 'true');
+    window.location.href = `${window.location.origin}?${params.toString()}`;
     return { ok: true, message: `Reset to preset '${presetId}'. Reloading...` };
   });
 }

@@ -1,19 +1,20 @@
 import type { CardType } from '../../data/card-types';
+import { turboDelay } from '../../utils/turboMode';
 
 /** Card flip to cardback duration (ms) */
-export const REVEAL_DURATION = 250;
+export const REVEAL_DURATION = turboDelay(250);
 
 /** Type-specific swoosh effect duration (ms) */
-export const SWOOSH_DURATION = 250;
+export const SWOOSH_DURATION = turboDelay(250);
 
 /** 3D impact / directional movement duration (ms) */
-export const IMPACT_DURATION = 300;
+export const IMPACT_DURATION = turboDelay(300);
 
 /** Minimize to discard pile duration (ms) */
-export const DISCARD_DURATION = 200;
+export const DISCARD_DURATION = turboDelay(200);
 
 /** Tier-up celebration duration (ms) */
-export const TIER_UP_DURATION = 600;
+export const TIER_UP_DURATION = turboDelay(600);
 
 /** Animation phase for card play sequence */
 export type CardAnimPhase = 'reveal' | 'swoosh' | 'impact' | 'discard' | 'tier-up' | 'fizzle' | null;

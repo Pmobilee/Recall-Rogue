@@ -36,6 +36,7 @@
   import { reshuffleEvent } from '../../services/deckManager'
   import { audioManager } from '../../services/audioService'
   import { REVEAL_DURATION, SWOOSH_DURATION, IMPACT_DURATION, DISCARD_DURATION, TIER_UP_DURATION, type CardAnimPhase } from '../utils/mechanicAnimations'
+  import { turboDelay } from '../../utils/turboMode'
   import { shuffled } from '../../services/randomUtils'
   import { getRunRng, isRunRngActive, seededShuffled } from '../../services/seededRng'
   import { isPlaceholderDistractor } from '../../services/distractorFilter'
@@ -151,9 +152,9 @@
       reshuffleCardCount = Math.min(event.cardCount, 12)
       showReshuffle = true
       reshuffleHoldingHand = true
-      const totalDuration = reshuffleCardCount * 40 + 300
+      const totalDuration = reshuffleCardCount * turboDelay(40) + turboDelay(300)
       for (let i = 0; i < reshuffleCardCount; i++) {
-        setTimeout(() => audioManager.playSound('card_shuffle'), i * 40)
+        setTimeout(() => audioManager.playSound('card_shuffle'), i * turboDelay(40))
       }
       setTimeout(() => {
         showReshuffle = false
@@ -558,10 +559,10 @@
     // fade in 200ms (CSS), hold 5s, fade out 300ms (CSS), cleanup
     setTimeout(() => {
       wowFactorVisible = false
-    }, 5200) // 200ms fade-in + 5000ms hold
+    }, turboDelay(5200)) // 200ms fade-in + 5000ms hold
     setTimeout(() => {
       wowFactorText = null
-    }, 5500) // + 300ms fade-out
+    }, turboDelay(5500)) // + 300ms fade-out
   }
 
   function removeDamageNumber(id: number): void {
@@ -1004,10 +1005,10 @@
             animatingCards = animatingCards.filter(c => c.id !== cardId)
             cardPlayStage = 'hand'
             selectedIndex = null
-          }, DISCARD_DURATION)
-        }, IMPACT_DURATION)
-      }, SWOOSH_DURATION)
-    }, REVEAL_DURATION)
+          }, turboDelay(DISCARD_DURATION))
+        }, turboDelay(IMPACT_DURATION))
+      }, turboDelay(SWOOSH_DURATION))
+    }, turboDelay(REVEAL_DURATION))
   }
 
   function handleCast(): void {
@@ -1071,7 +1072,7 @@
       setTimeout(() => {
         cardAnimations = { ...cardAnimations, [cardId]: null }
         animatingCards = animatingCards.filter(c => c.id !== cardId)
-      }, 400)
+      }, turboDelay(400))
     } else {
       showWowFactor(card)
 
@@ -1205,15 +1206,15 @@
           { transform: `translate(${offX * 0.7}px, ${offY * 0.7}px) scale(0.15)`, opacity: 0.5, offset: 0.65 },
           { transform: `translate(${offX}px, ${offY}px) scale(0.05)`, opacity: 0 },
         ], {
-          duration: 250,
-          delay: i * 40,
+          duration: turboDelay(250),
+          delay: i * turboDelay(40),
           easing: 'ease-in',
           fill: 'forwards',
         })
       })
 
       // Wait for animations to finish, then end the turn
-      setTimeout(() => onendturn(), 250 + handCardEls.length * 40)
+      setTimeout(() => onendturn(), turboDelay(250) + handCardEls.length * turboDelay(40))
     } else {
       onendturn()
     }

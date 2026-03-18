@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import { isTurboMode } from '../../utils/turboMode'
 import { getDeviceTier } from '../../services/deviceTierService'
 import { EnemySpriteSystem } from '../systems/EnemySpriteSystem'
 import { CombatAtmosphereSystem } from '../systems/CombatAtmosphereSystem'
@@ -1111,7 +1112,7 @@ export class CombatScene extends Phaser.Scene {
 
   /** Play kill confirmation punch — hard impact at the moment of the killing blow. */
   playKillConfirmation(): Promise<void> {
-    if (this.reduceMotion) return Promise.resolve()
+    if (this.reduceMotion || isTurboMode()) return Promise.resolve()
 
     return new Promise<void>((resolve) => {
       // Hard white flash (highest intensity)

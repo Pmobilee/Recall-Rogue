@@ -171,6 +171,12 @@ async function bootGame(): Promise<void> {
   // Navigate to main menu (skip when a dev preset is active)
   const urlParams = new URLSearchParams(window.location.search)
   const hasDevPreset = import.meta.env.DEV && urlParams.get('devpreset')
+
+  // Turbo mode: skip all animations for bot testing (game logic unchanged)
+  const turboMode = import.meta.env.DEV && urlParams.has('turbo');
+  if (turboMode) {
+    (globalThis as Record<symbol, unknown>)[Symbol.for('terra:turboMode')] = true;
+  }
   if (!hasDevPreset) {
     currentScreen.set('hub')
   }

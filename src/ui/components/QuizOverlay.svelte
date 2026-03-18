@@ -15,6 +15,7 @@
   import { deckOptions } from '../../services/deckOptionsService'
   import { isLandscape } from '../../stores/layoutStore'
   import { inputService } from '../../services/inputService'
+  import { turboDelay } from '../../utils/turboMode'
 
   // GAIA sprite imports for reaction bubble
   const gaiaNeutralImg = '/assets/sprites/dome/gaia_neutral.png'
@@ -206,9 +207,9 @@
     }
 
     if (isCorrect) {
-      // Correct answer: auto-dismiss after 1s
+      // Correct answer: auto-dismiss after 1s (0ms in turbo mode)
       await new Promise<void>((resolve) => {
-        setTimeout(resolve, 1000)
+        setTimeout(resolve, turboDelay(1000))
       })
       onAnswer(true)
       return

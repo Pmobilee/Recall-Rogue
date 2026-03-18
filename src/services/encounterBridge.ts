@@ -46,6 +46,7 @@ import {
 } from './relicEffectResolver';
 import { resolveDistributionForDomain, createDefaultCalibrationState } from './difficultyCalibration';
 import { buildPresetRunPool, buildGeneralRunPool, buildLanguageRunPool } from './presetPoolBuilder'
+import { turboDelay } from '../utils/turboMode'
 import { calculateFunnessBoostFactor } from './funnessBoost';
 import {
   calculateDeckMastery,
@@ -474,7 +475,7 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   // Encounter start sound + draw swooshes.
   playCardAudio('turn-chime');
   turnState.deck.hand.forEach((_, index) => {
-    setTimeout(() => playCardAudio('card-draw'), index * 90);
+    setTimeout(() => playCardAudio('card-draw'), index * turboDelay(90));
   });
 
   return true;
@@ -721,7 +722,7 @@ export function handlePlayCard(
     setTimeout(() => {
       activeTurnState.set(null);
       notifyEncounterComplete('victory');
-    }, 550);
+    }, turboDelay(550));
   }
 }
 
@@ -820,7 +821,7 @@ export function handleEndTurn(): void {
       activeTurnState.set(null);
       activeDeck = null;
       notifyEncounterComplete('defeat');
-    }, 550);
+    }, turboDelay(550));
   }
 }
 

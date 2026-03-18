@@ -70,12 +70,12 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
   };
 
   try {
-    // Navigate to game with dev flags
-    await page.goto('http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial', {
+    // Navigate to game with dev flags + turbo mode
+    await page.goto('http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial&turbo=true', {
       waitUntil: 'networkidle',
       timeout: 15_000,
     });
-    await page.waitForTimeout(3000);
+    await page.waitForTimeout(2000);
 
     // Apply preset — this triggers a page reload
     try {
@@ -84,12 +84,12 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
       // Expected: context destroyed due to navigation
     }
     // Wait for the reload to complete
-    await page.waitForTimeout(5000);
+    await page.waitForTimeout(3000);
 
     // Dismiss knowledge level popup if visible
     await clickTestId(page, 'knowledge-level-normal', 500)
       || await clickTestId(page, 'knowledge-level-casual', 500);
-    await page.waitForTimeout(200);
+    await page.waitForTimeout(20);
 
     // Start the run via API
     const startResult = await page.evaluate(() => (window as any).__terraPlay?.startRun?.());
@@ -103,13 +103,13 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
         return stats;
       }
     }
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(30);
 
     // Handle archetype selection
     let afterStart = await readGameState(page);
     if (afterStart.currentScreen === 'archetypeSelection' || afterStart.currentScreen === 'archetype_select') {
       await page.evaluate(() => (window as any).__terraPlay?.selectArchetype?.('balanced'));
-      await page.waitForTimeout(300);
+      await page.waitForTimeout(30);
       afterStart = await readGameState(page);
     }
 
@@ -118,13 +118,15 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
         afterStart.currentScreen === 'topicSelection' || afterStart.currentScreen === 'domainSelect') {
       const domain = DOMAINS[Math.floor(rng() * DOMAINS.length)];
       await selectDomain(page, domain);
-      await page.waitForTimeout(300);
+      await page.waitForTimeout(30);
     }
 
     // Main game loop
     let lastScreen = '';
     let stuckCount = 0;
     let iterations = 0;
+    let segmentsCompleted = 0;
+    const MAX_SEGMENTS = 4;
 
     while (iterations < MAX_ITERATIONS) {
       iterations++;
@@ -141,7 +143,7 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
         state = await readGameState(page);
       } catch {
         // Context destroyed (page navigation) — wait and retry
-        await page.waitForTimeout(500);
+        await page.waitForTimeout(50);
         continue;
       }
 
@@ -163,6 +165,12 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
         break;
       }
 
+      // Back at hub/base after playing cards = run ended (defeat or retreat)
+      if (['hub', 'base'].includes(state.currentScreen) && stats.totalCardsPlayed > 0) {
+        stats.result = state.playerHP > 0 ? 'victory' : 'defeat';
+        break;
+      }
+
       // Secondary run-end check via API (only every 50 iterations to avoid perf hit)
       if (iterations % 50 === 0) {
         const runEndCheck = await page.evaluate(() => {
@@ -178,7 +186,7 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
 
       // Combat-end transition: enemy is dead, wait for reward screen
       if (state.currentScreen === 'combat' && state.enemyHP <= 0 && state.enemyMaxHP > 0) {
-        await page.waitForTimeout(500);
+        await page.waitForTimeout(50);
         continue;
       }
 
@@ -192,7 +200,7 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
           if (!handled) {
             // Try navigate to dungeonMap as escape hatch
             await page.evaluate(() => (window as any).__terraPlay?.navigate?.('dungeonMap'));
-            await page.waitForTimeout(200);
+            await page.waitForTimeout(20);
             const afterEscape = await readGameState(page);
             if (afterEscape.currentScreen !== state.currentScreen) {
               stuckCount = 0;
@@ -222,11 +230,11 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
         await handleScreen(page, profile, state, stats, rng);
       } catch {
         // Context destroyed during action — wait and retry
-        await page.waitForTimeout(300);
+        await page.waitForTimeout(30);
       }
 
       // Small breathe to prevent hammering the browser
-      await page.waitForTimeout(30);
+      await page.waitForTimeout(5);
     }
 
     if (iterations >= MAX_ITERATIONS) {
@@ -302,7 +310,7 @@ async function handleScreen(
           if (endResult?.ok) stats.totalTurns++;
         }
       }
-      await page.waitForTimeout(50);
+      await page.waitForTimeout(5);
       break;
     }
 
@@ -315,7 +323,7 @@ async function handleScreen(
       } else {
         stats.quizWrong++;
       }
-      await page.waitForTimeout(100);
+      await page.waitForTimeout(10);
       break;
     }
 
@@ -354,7 +362,7 @@ async function handleScreen(
         try {
           await page.locator(`[data-testid="${pick}"]`).click({ force: true, timeout: 2000 });
         } catch { /* ignore */ }
-        await page.waitForTimeout(200);
+        await page.waitForTimeout(20);
       } else {
         // No available nodes — check for boss/current nodes or try clicking any node
         const allNodeStates = await page.evaluate(`
@@ -375,15 +383,21 @@ async function handleScreen(
         // Check if segment is complete (boss node visited/current, no available nodes)
         const bossVisited = allNodeStates.some(n => n.includes('type-boss') && (n.includes('state-current') || n.includes('state-visited')));
         if (bossVisited) {
-          // Segment complete — try to delve deeper
-          console.log('    [MAP] Segment complete (boss done) — delving');
+          segmentsCompleted++;
+          if (segmentsCompleted >= MAX_SEGMENTS) {
+            // Run complete — retreat (cash out)
+            stats.result = 'victory';
+            await page.evaluate(() => (window as any).__terraPlay?.retreat?.());
+            break;
+          }
+          // Segment complete — delve deeper
           const delveResult = await page.evaluate(() => (window as any).__terraPlay?.delve?.());
           if (!delveResult?.ok) {
             await page.evaluate(() => (window as any).__terraPlay?.navigate?.('retreatOrDelve'));
-            await page.waitForTimeout(500);
+            await page.waitForTimeout(20);
             await page.evaluate(() => (window as any).__terraPlay?.delve?.());
           }
-          await page.waitForTimeout(500);
+          await page.waitForTimeout(20);
           break;
         }
 
@@ -392,13 +406,13 @@ async function handleScreen(
         if (currentNode) {
           const id = currentNode.split(':')[0];
           try { await page.locator(`[data-testid="${id}"]`).click({ force: true, timeout: 1000 }); } catch {}
-          await page.waitForTimeout(500);
+          await page.waitForTimeout(50);
         }
         // Try enterRoom or generic fallbacks
         await page.evaluate(() => (window as any).__terraPlay?.enterRoom?.());
         await chooseRoom(page, profile, state, rng);
       }
-      await page.waitForTimeout(100);
+      await page.waitForTimeout(10);
       break;
     }
 
@@ -417,7 +431,7 @@ async function handleScreen(
         await handleCardReward(page, profile, rng);
       } else {
         // No reward UI yet — wait for animation, then skip to map
-        await page.waitForTimeout(2000);
+        await page.waitForTimeout(200);
         const retryIds = await getVisibleTestIds(page);
         const hasRetry = retryIds.some(id =>
           id.startsWith('card-reward-') || id.startsWith('reward-') ||
@@ -430,7 +444,7 @@ async function handleScreen(
           await page.evaluate(() => (window as any).__terraPlay?.navigate?.('dungeonMap'));
         }
       }
-      await page.waitForTimeout(200);
+      await page.waitForTimeout(20);
       break;
     }
 
@@ -444,7 +458,7 @@ async function handleScreen(
           || await clickTestId(page, 'btn-continue', 500)
           || await clickTestId(page, 'btn-skip', 500);
       }
-      await page.waitForTimeout(100);
+      await page.waitForTimeout(10);
       break;
     }
 
@@ -454,7 +468,7 @@ async function handleScreen(
         || await clickTestId(page, 'btn-continue', 500)
         || await clickTestId(page, 'btn-ok', 500)
         || await handleGenericAction(page);
-      await page.waitForTimeout(100);
+      await page.waitForTimeout(10);
       break;
     }
 
@@ -464,7 +478,7 @@ async function handleScreen(
     case 'floor_complete':
     case 'checkpoint': {
       await handleDelveRetreat(page, profile, state);
-      await page.waitForTimeout(200);
+      await page.waitForTimeout(20);
       break;
     }
 
@@ -479,7 +493,7 @@ async function handleScreen(
           || await clickTestId(page, 'rest-study', 1000)
           || await clickTestId(page, 'btn-rest-heal', 1000);
       }
-      await page.waitForTimeout(200);
+      await page.waitForTimeout(20);
       break;
     }
 
@@ -488,7 +502,7 @@ async function handleScreen(
     case 'event':
     case 'mysteryRoom': {
       await handleMystery(page);
-      await page.waitForTimeout(100);
+      await page.waitForTimeout(10);
       break;
     }
 
@@ -505,7 +519,7 @@ async function handleScreen(
           || await clickTestId(page, 'btn-continue', 500);
       }
       if (!exited?.ok) await handleGenericAction(page);
-      await page.waitForTimeout(100);
+      await page.waitForTimeout(10);
       break;
     }
 
@@ -516,7 +530,7 @@ async function handleScreen(
     case 'domainSelect': {
       const domain = DOMAINS[Math.floor(rng() * DOMAINS.length)];
       await selectDomain(page, domain);
-      await page.waitForTimeout(200);
+      await page.waitForTimeout(20);
       break;
     }
 
@@ -524,11 +538,11 @@ async function handleScreen(
     case 'hub':
     case 'main_menu':
     case 'base': {
-      // Try knowledge level popup
-      await clickTestId(page, 'knowledge-level-normal', 500);
+      // Quick-try knowledge level popup (no wait if not found)
+      await page.locator('[data-testid="knowledge-level-normal"]').click({ timeout: 100 }).catch(() => {});
       // Try start run
       await page.evaluate(() => (window as any).__terraPlay?.startRun?.());
-      await page.waitForTimeout(300);
+      await page.waitForTimeout(30);
       break;
     }
 
@@ -536,7 +550,7 @@ async function handleScreen(
     case 'archetypeSelection':
     case 'archetype_select': {
       await page.evaluate(() => (window as any).__terraPlay?.selectArchetype?.('balanced'));
-      await page.waitForTimeout(200);
+      await page.waitForTimeout(20);
       break;
     }
 
@@ -548,7 +562,7 @@ async function handleScreen(
         const store = (globalThis as Record<symbol, unknown>)[sym] as { set?: (v: string) => void } | undefined;
         if (store?.set) store.set('hub');
       });
-      await page.waitForTimeout(200);
+      await page.waitForTimeout(20);
       break;
     }
 
@@ -559,7 +573,7 @@ async function handleScreen(
         // Try exitRoom as generic escape
         await page.evaluate(() => (window as any).__terraPlay?.exitRoom?.());
       }
-      await page.waitForTimeout(200);
+      await page.waitForTimeout(20);
       break;
     }
   }

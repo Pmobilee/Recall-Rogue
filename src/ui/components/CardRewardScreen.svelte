@@ -14,6 +14,7 @@
   import { getChainColor, getChainGlowColor } from '../../services/chainVisuals'
   import ChainIcon from './ChainIcon.svelte'
   import { isLandscape } from '../../stores/layoutStore'
+  import { turboDelay } from '../../utils/turboMode'
 
   interface Props {
     options: Card[]
@@ -131,7 +132,7 @@
     playCardAudio('turn-chime')
     window.setTimeout(() => {
       onselect(selected)
-    }, 340)
+    }, turboDelay(340))
   }
 
   function handleSkipClick(): void {
@@ -160,16 +161,16 @@
     altarCeremonyPhase = 1
     setTimeout(() => {
       altarCeremonyPhase = 2
-    }, 300)
+    }, turboDelay(300))
     setTimeout(() => {
       altarCeremonyPhase = 3
-    }, 600)
+    }, turboDelay(600))
     setTimeout(() => {
       altarCeremonyPhase = 4
-    }, 900)
+    }, turboDelay(900))
     setTimeout(() => {
       altarCeremonyPhase = 0
-    }, 1200)
+    }, turboDelay(1200))
   }
 
   function advanceStep(): void {
@@ -191,7 +192,7 @@
         startCeremony()
       }
       stepVisible = true
-    }, 200)
+    }, turboDelay(200))
   }
 
   $effect(() => {
@@ -218,7 +219,7 @@
         stepVisible = false
         setTimeout(() => {
           stepVisible = true
-        }, 100)
+        }, turboDelay(100))
 
         if (!hasPlayedIntroCue) {
           playCardAudio('combo-3')
@@ -247,11 +248,11 @@
     if (step === 'gold' && b) {
       autoAdvanceTimer = setTimeout(() => {
         advanceStep()
-      }, 900)
+      }, turboDelay(900))
     } else if (step === 'heal' && b) {
       autoAdvanceTimer = setTimeout(() => {
         advanceStep()
-      }, 1000)
+      }, turboDelay(1000))
     }
     return () => {
       if (autoAdvanceTimer) {
