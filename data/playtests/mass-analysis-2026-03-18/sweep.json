@@ -1,0 +1,3397 @@
+{
+  "meta": {
+    "generatedAt": "2026-03-18T02:09:09.421Z",
+    "totalRuns": 601200,
+    "seedsPerConfig": 100,
+    "floors": 24,
+    "elapsedMs": 1604187,
+    "mode": "sweep"
+  },
+  "controlBaselines": {},
+  "soloRelicImpact": [],
+  "comboAnalysis": [],
+  "buildPerformance": [],
+  "skillFairness": [],
+  "progressionCurve": [],
+  "flags": {
+    "overpowered": [],
+    "underpowered": [],
+    "brokenSynergies": [],
+    "immortality": []
+  },
+  "sweepAnalysis": {
+    "totalConfigsTested": 500,
+    "strategy": "lhs",
+    "sweepParams": [
+      "baseEffectAttack",
+      "baseEffectShield",
+      "postEncounterHealPct",
+      "fizzleEffectRatio",
+      "floorDamageScalingPerFloor",
+      "comboMultipliers",
+      "playerStartHP",
+      "postEncounterHealCap"
+    ],
+    "recommendation": {
+      "baseEffectAttack": 12,
+      "baseEffectShield": 7,
+      "postEncounterHealPct": 0.14,
+      "fizzleEffectRatio": 0.15,
+      "floorDamageScalingPerFloor": 0.02,
+      "comboMultipliers": [
+        1,
+        1.15,
+        1.3,
+        1.5,
+        2
+      ],
+      "playerStartHP": 110,
+      "postEncounterHealCap": {
+        "1": 1,
+        "2": 0.9,
+        "3": 0.8,
+        "4": 0.65
+      }
+    },
+    "topConfigs": [
+      {
+        "rank": 1,
+        "overrides": {
+          "baseEffectAttack": 12,
+          "baseEffectShield": 7,
+          "postEncounterHealPct": 0.14,
+          "fizzleEffectRatio": 0.15,
+          "floorDamageScalingPerFloor": 0.02,
+          "comboMultipliers": [
+            1,
+            1.15,
+            1.3,
+            1.5,
+            2
+          ],
+          "playerStartHP": 110,
+          "postEncounterHealCap": {
+            "1": 1,
+            "2": 0.9,
+            "3": 0.8,
+            "4": 0.65
+          }
+        },
+        "compositeScore": 5.778,
+        "metricScores": {
+          "survivalFit": 0.307,
+          "pacingFit": 0,
+          "foodFit": 0,
+          "goldEfficiencyFit": 0,
+          "closeCallFit": 1.143,
+          "overkillFit": 1
+        },
+        "profileMetrics": {
+          "developing_newbie-relaxed-asc0": {
+            "survivalRate": 0.09,
+            "avgFinalFloor": 13.95,
+            "avgTurnsPerEncounter": 3.993228538637151,
+            "avgFoodPurchased": 0.09,
+            "avgGoldEarned": 2043.87,
+            "avgGoldSpent": 1248.6,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc0": {
+            "survivalRate": 0.05,
+            "avgFinalFloor": 8.32,
+            "avgTurnsPerEncounter": 4.258269826052083,
+            "avgFoodPurchased": 0.32,
+            "avgGoldEarned": 1007.18,
+            "avgGoldSpent": 629.08,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-relaxed-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 7.15,
+            "avgTurnsPerEncounter": 3.888769648662866,
+            "avgFoodPurchased": 0.17,
+            "avgGoldEarned": 721.96,
+            "avgGoldSpent": 476.31,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 4.4,
+            "avgTurnsPerEncounter": 4.160399999999999,
+            "avgFoodPurchased": 0.11,
+            "avgGoldEarned": 357.23,
+            "avgGoldSpent": 214.7,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc0": {
+            "survivalRate": 0.36,
+            "avgFinalFloor": 17.46,
+            "avgTurnsPerEncounter": 4.599958437077523,
+            "avgFoodPurchased": 1.55,
+            "avgGoldEarned": 3136.21,
+            "avgGoldSpent": 2077.83,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc0": {
+            "survivalRate": 0.21,
+            "avgFinalFloor": 12.82,
+            "avgTurnsPerEncounter": 4.877287654916762,
+            "avgFoodPurchased": 1.29,
+            "avgGoldEarned": 2048,
+            "avgGoldSpent": 1391.65,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc10": {
+            "survivalRate": 0.12,
+            "avgFinalFloor": 12.59,
+            "avgTurnsPerEncounter": 4.742951910613504,
+            "avgFoodPurchased": 0.99,
+            "avgGoldEarned": 1959.34,
+            "avgGoldSpent": 1410.48,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc10": {
+            "survivalRate": 0.07,
+            "avgFinalFloor": 7.19,
+            "avgTurnsPerEncounter": 5.37433044910994,
+            "avgFoodPurchased": 0.74,
+            "avgGoldEarned": 926.21,
+            "avgGoldSpent": 642.08,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc0": {
+            "survivalRate": 0.71,
+            "avgFinalFloor": 21.89,
+            "avgTurnsPerEncounter": 3.7543587087228394,
+            "avgFoodPurchased": 2.59,
+            "avgGoldEarned": 4424.71,
+            "avgGoldSpent": 3325.47,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc0": {
+            "survivalRate": 0.37,
+            "avgFinalFloor": 15.72,
+            "avgTurnsPerEncounter": 4.4134421444759155,
+            "avgFoodPurchased": 1.74,
+            "avgGoldEarned": 2830.11,
+            "avgGoldSpent": 2156.1,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc10": {
+            "survivalRate": 0.4,
+            "avgFinalFloor": 18.95,
+            "avgTurnsPerEncounter": 3.6004008349244225,
+            "avgFoodPurchased": 2.01,
+            "avgGoldEarned": 3607.15,
+            "avgGoldSpent": 2774.05,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc10": {
+            "survivalRate": 0.2,
+            "avgFinalFloor": 12.05,
+            "avgTurnsPerEncounter": 4.281411616501533,
+            "avgFoodPurchased": 1.58,
+            "avgGoldEarned": 2006.56,
+            "avgGoldSpent": 1534.97,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          }
+        }
+      },
+      {
+        "rank": 2,
+        "overrides": {
+          "baseEffectAttack": 12,
+          "baseEffectShield": 9,
+          "postEncounterHealPct": 0.14,
+          "fizzleEffectRatio": 0.15,
+          "floorDamageScalingPerFloor": 0.03,
+          "comboMultipliers": [
+            1,
+            1.1,
+            1.25,
+            1.4,
+            1.75
+          ],
+          "playerStartHP": 120,
+          "postEncounterHealCap": {
+            "1": 1,
+            "2": 0.9,
+            "3": 0.8,
+            "4": 0.65
+          }
+        },
+        "compositeScore": 5.799,
+        "metricScores": {
+          "survivalFit": 0.314,
+          "pacingFit": 0,
+          "foodFit": 0,
+          "goldEfficiencyFit": 0,
+          "closeCallFit": 1.143,
+          "overkillFit": 1
+        },
+        "profileMetrics": {
+          "developing_newbie-relaxed-asc0": {
+            "survivalRate": 0.03,
+            "avgFinalFloor": 11.35,
+            "avgTurnsPerEncounter": 3.9452706522971783,
+            "avgFoodPurchased": 0.11,
+            "avgGoldEarned": 1494.47,
+            "avgGoldSpent": 941.76,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc0": {
+            "survivalRate": 0.05,
+            "avgFinalFloor": 10.12,
+            "avgTurnsPerEncounter": 4.319123717618738,
+            "avgFoodPurchased": 0.28,
+            "avgGoldEarned": 1309.8,
+            "avgGoldSpent": 836.59,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-relaxed-asc10": {
+            "survivalRate": 0.02,
+            "avgFinalFloor": 8.32,
+            "avgTurnsPerEncounter": 3.790463062992929,
+            "avgFoodPurchased": 0.12,
+            "avgGoldEarned": 969.83,
+            "avgGoldSpent": 614.76,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc10": {
+            "survivalRate": 0.01,
+            "avgFinalFloor": 5.24,
+            "avgTurnsPerEncounter": 4.32084859476036,
+            "avgFoodPurchased": 0.17,
+            "avgGoldEarned": 465.97,
+            "avgGoldSpent": 299.68,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc0": {
+            "survivalRate": 0.3,
+            "avgFinalFloor": 18.21,
+            "avgTurnsPerEncounter": 4.595879287134198,
+            "avgFoodPurchased": 1.68,
+            "avgGoldEarned": 3303.02,
+            "avgGoldSpent": 2205.99,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc0": {
+            "survivalRate": 0.3,
+            "avgFinalFloor": 14.06,
+            "avgTurnsPerEncounter": 5.0025302542829415,
+            "avgFoodPurchased": 1.58,
+            "avgGoldEarned": 2397.35,
+            "avgGoldSpent": 1570.46,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc10": {
+            "survivalRate": 0.1,
+            "avgFinalFloor": 12.23,
+            "avgTurnsPerEncounter": 5.024703006074001,
+            "avgFoodPurchased": 0.89,
+            "avgGoldEarned": 1852.64,
+            "avgGoldSpent": 1333.93,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc10": {
+            "survivalRate": 0.04,
+            "avgFinalFloor": 7.57,
+            "avgTurnsPerEncounter": 5.401576789811926,
+            "avgFoodPurchased": 0.72,
+            "avgGoldEarned": 946.02,
+            "avgGoldSpent": 674.57,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc0": {
+            "survivalRate": 0.58,
+            "avgFinalFloor": 20.51,
+            "avgTurnsPerEncounter": 3.9082075655983886,
+            "avgFoodPurchased": 2.21,
+            "avgGoldEarned": 4067.82,
+            "avgGoldSpent": 3064.97,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc0": {
+            "survivalRate": 0.5,
+            "avgFinalFloor": 17.59,
+            "avgTurnsPerEncounter": 4.298046207665048,
+            "avgFoodPurchased": 2.07,
+            "avgGoldEarned": 3328.22,
+            "avgGoldSpent": 2491.35,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc10": {
+            "survivalRate": 0.26,
+            "avgFinalFloor": 17.34,
+            "avgTurnsPerEncounter": 4.034529960961957,
+            "avgFoodPurchased": 1.82,
+            "avgGoldEarned": 3091.67,
+            "avgGoldSpent": 2443.21,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc10": {
+            "survivalRate": 0.11,
+            "avgFinalFloor": 11.43,
+            "avgTurnsPerEncounter": 4.6155849936147435,
+            "avgFoodPurchased": 1.23,
+            "avgGoldEarned": 1735.43,
+            "avgGoldSpent": 1381.99,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          }
+        }
+      },
+      {
+        "rank": 3,
+        "overrides": {
+          "baseEffectAttack": 12,
+          "baseEffectShield": 9,
+          "postEncounterHealPct": 0.06,
+          "fizzleEffectRatio": 0.25,
+          "floorDamageScalingPerFloor": 0.02,
+          "comboMultipliers": [
+            1,
+            1.15,
+            1.3,
+            1.5,
+            2
+          ],
+          "playerStartHP": 110,
+          "postEncounterHealCap": {
+            "1": 1,
+            "2": 0.9,
+            "3": 0.8,
+            "4": 0.65
+          }
+        },
+        "compositeScore": 5.924,
+        "metricScores": {
+          "survivalFit": 0.356,
+          "pacingFit": 0,
+          "foodFit": 0,
+          "goldEfficiencyFit": 0,
+          "closeCallFit": 1.143,
+          "overkillFit": 1
+        },
+        "profileMetrics": {
+          "developing_newbie-relaxed-asc0": {
+            "survivalRate": 0.04,
+            "avgFinalFloor": 10.93,
+            "avgTurnsPerEncounter": 3.8244631178332713,
+            "avgFoodPurchased": 0.26,
+            "avgGoldEarned": 1388.2,
+            "avgGoldSpent": 899.75,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc0": {
+            "survivalRate": 0.02,
+            "avgFinalFloor": 8.08,
+            "avgTurnsPerEncounter": 4.008355811257986,
+            "avgFoodPurchased": 0.49,
+            "avgGoldEarned": 955.86,
+            "avgGoldSpent": 594.31,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-relaxed-asc10": {
+            "survivalRate": 0.01,
+            "avgFinalFloor": 6.41,
+            "avgTurnsPerEncounter": 3.769297676558545,
+            "avgFoodPurchased": 0.29,
+            "avgGoldEarned": 621.43,
+            "avgGoldSpent": 396.55,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 4.67,
+            "avgTurnsPerEncounter": 3.9232390109890116,
+            "avgFoodPurchased": 0.41,
+            "avgGoldEarned": 398.57,
+            "avgGoldSpent": 240.9,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc0": {
+            "survivalRate": 0.36,
+            "avgFinalFloor": 17.87,
+            "avgTurnsPerEncounter": 4.5172400901736705,
+            "avgFoodPurchased": 2.03,
+            "avgGoldEarned": 3222.97,
+            "avgGoldSpent": 2140.24,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc0": {
+            "survivalRate": 0.2,
+            "avgFinalFloor": 12.44,
+            "avgTurnsPerEncounter": 4.768573819407931,
+            "avgFoodPurchased": 1.77,
+            "avgGoldEarned": 1950,
+            "avgGoldSpent": 1341.2,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc10": {
+            "survivalRate": 0.15,
+            "avgFinalFloor": 12.37,
+            "avgTurnsPerEncounter": 4.6920109486414585,
+            "avgFoodPurchased": 1.46,
+            "avgGoldEarned": 1999.87,
+            "avgGoldSpent": 1377.17,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc10": {
+            "survivalRate": 0.02,
+            "avgFinalFloor": 6.59,
+            "avgTurnsPerEncounter": 4.988097949321634,
+            "avgFoodPurchased": 1.15,
+            "avgGoldEarned": 753.79,
+            "avgGoldSpent": 543.35,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc0": {
+            "survivalRate": 0.72,
+            "avgFinalFloor": 21.65,
+            "avgTurnsPerEncounter": 3.647542374121962,
+            "avgFoodPurchased": 2.65,
+            "avgGoldEarned": 4381.01,
+            "avgGoldSpent": 3268.23,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc0": {
+            "survivalRate": 0.43,
+            "avgFinalFloor": 15.83,
+            "avgTurnsPerEncounter": 4.309714971887168,
+            "avgFoodPurchased": 2.44,
+            "avgGoldEarned": 2882.54,
+            "avgGoldSpent": 2171.36,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc10": {
+            "survivalRate": 0.39,
+            "avgFinalFloor": 17.82,
+            "avgTurnsPerEncounter": 3.7191075564289404,
+            "avgFoodPurchased": 2.44,
+            "avgGoldEarned": 3323.94,
+            "avgGoldSpent": 2554.17,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc10": {
+            "survivalRate": 0.18,
+            "avgFinalFloor": 12.44,
+            "avgTurnsPerEncounter": 4.2537141716661155,
+            "avgFoodPurchased": 2.22,
+            "avgGoldEarned": 2003.3,
+            "avgGoldSpent": 1560.65,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          }
+        }
+      },
+      {
+        "rank": 4,
+        "overrides": {
+          "baseEffectAttack": 10,
+          "baseEffectShield": 9,
+          "postEncounterHealPct": 0.1,
+          "fizzleEffectRatio": 0.25,
+          "floorDamageScalingPerFloor": 0.02,
+          "comboMultipliers": [
+            1,
+            1.15,
+            1.3,
+            1.5,
+            2
+          ],
+          "playerStartHP": 110,
+          "postEncounterHealCap": {
+            "1": 1,
+            "2": 0.9,
+            "3": 0.8,
+            "4": 0.65
+          }
+        },
+        "compositeScore": 5.949,
+        "metricScores": {
+          "survivalFit": 0.364,
+          "pacingFit": 0,
+          "foodFit": 0,
+          "goldEfficiencyFit": 0,
+          "closeCallFit": 1.143,
+          "overkillFit": 1
+        },
+        "profileMetrics": {
+          "developing_newbie-relaxed-asc0": {
+            "survivalRate": 0.1,
+            "avgFinalFloor": 13.03,
+            "avgTurnsPerEncounter": 3.8848824357932714,
+            "avgFoodPurchased": 0.21,
+            "avgGoldEarned": 1877.29,
+            "avgGoldSpent": 1171.01,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc0": {
+            "survivalRate": 0.05,
+            "avgFinalFloor": 9.63,
+            "avgTurnsPerEncounter": 4.1768906225620235,
+            "avgFoodPurchased": 0.56,
+            "avgGoldEarned": 1226.12,
+            "avgGoldSpent": 803.85,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-relaxed-asc10": {
+            "survivalRate": 0.01,
+            "avgFinalFloor": 7.75,
+            "avgTurnsPerEncounter": 3.755849725685615,
+            "avgFoodPurchased": 0.22,
+            "avgGoldEarned": 866.3,
+            "avgGoldSpent": 537.37,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 4.57,
+            "avgTurnsPerEncounter": 4.2793997075908825,
+            "avgFoodPurchased": 0.41,
+            "avgGoldEarned": 365.66,
+            "avgGoldSpent": 217.66,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc0": {
+            "survivalRate": 0.54,
+            "avgFinalFloor": 19.25,
+            "avgTurnsPerEncounter": 4.339150676559145,
+            "avgFoodPurchased": 2.2,
+            "avgGoldEarned": 3645.26,
+            "avgGoldSpent": 2405.14,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc0": {
+            "survivalRate": 0.26,
+            "avgFinalFloor": 12.68,
+            "avgTurnsPerEncounter": 4.866533255911396,
+            "avgFoodPurchased": 1.56,
+            "avgGoldEarned": 2050.12,
+            "avgGoldSpent": 1375.6,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc10": {
+            "survivalRate": 0.13,
+            "avgFinalFloor": 13.47,
+            "avgTurnsPerEncounter": 4.6166633928027645,
+            "avgFoodPurchased": 1.17,
+            "avgGoldEarned": 2088.61,
+            "avgGoldSpent": 1501.87,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc10": {
+            "survivalRate": 0.1,
+            "avgFinalFloor": 8,
+            "avgTurnsPerEncounter": 5.1742985283063465,
+            "avgFoodPurchased": 1.13,
+            "avgGoldEarned": 1128.91,
+            "avgGoldSpent": 768.74,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc0": {
+            "survivalRate": 0.71,
+            "avgFinalFloor": 21.3,
+            "avgTurnsPerEncounter": 3.595380415880417,
+            "avgFoodPurchased": 2.5,
+            "avgGoldEarned": 4303.75,
+            "avgGoldSpent": 3197.7,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc0": {
+            "survivalRate": 0.54,
+            "avgFinalFloor": 17.71,
+            "avgTurnsPerEncounter": 4.231012498566679,
+            "avgFoodPurchased": 2.48,
+            "avgGoldEarned": 3399.76,
+            "avgGoldSpent": 2540.03,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc10": {
+            "survivalRate": 0.41,
+            "avgFinalFloor": 18.21,
+            "avgTurnsPerEncounter": 3.7280220191751194,
+            "avgFoodPurchased": 2.15,
+            "avgGoldEarned": 3430.24,
+            "avgGoldSpent": 2658.99,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc10": {
+            "survivalRate": 0.23,
+            "avgFinalFloor": 13.31,
+            "avgTurnsPerEncounter": 4.2232947961288225,
+            "avgFoodPurchased": 1.93,
+            "avgGoldEarned": 2255.61,
+            "avgGoldSpent": 1713.12,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          }
+        }
+      },
+      {
+        "rank": 5,
+        "overrides": {
+          "baseEffectAttack": 8,
+          "baseEffectShield": 7,
+          "postEncounterHealPct": 0.06,
+          "fizzleEffectRatio": 0.3,
+          "floorDamageScalingPerFloor": 0.03,
+          "comboMultipliers": [
+            1,
+            1.15,
+            1.3,
+            1.5,
+            2
+          ],
+          "playerStartHP": 120,
+          "postEncounterHealCap": {
+            "1": 1,
+            "2": 0.9,
+            "3": 0.8,
+            "4": 0.65
+          }
+        },
+        "compositeScore": 5.974,
+        "metricScores": {
+          "survivalFit": 0.372,
+          "pacingFit": 0,
+          "foodFit": 0,
+          "goldEfficiencyFit": 0,
+          "closeCallFit": 1.143,
+          "overkillFit": 1
+        },
+        "profileMetrics": {
+          "developing_newbie-relaxed-asc0": {
+            "survivalRate": 0.14,
+            "avgFinalFloor": 13.89,
+            "avgTurnsPerEncounter": 3.706724913205428,
+            "avgFoodPurchased": 0.36,
+            "avgGoldEarned": 2088.03,
+            "avgGoldSpent": 1267.65,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc0": {
+            "survivalRate": 0.04,
+            "avgFinalFloor": 8.99,
+            "avgTurnsPerEncounter": 3.9920805173785907,
+            "avgFoodPurchased": 0.91,
+            "avgGoldEarned": 1077.69,
+            "avgGoldSpent": 679.22,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-relaxed-asc10": {
+            "survivalRate": 0.02,
+            "avgFinalFloor": 8.26,
+            "avgTurnsPerEncounter": 3.658458237511257,
+            "avgFoodPurchased": 0.4,
+            "avgGoldEarned": 920.02,
+            "avgGoldSpent": 610.7,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 4.99,
+            "avgTurnsPerEncounter": 3.8718782673419785,
+            "avgFoodPurchased": 0.52,
+            "avgGoldEarned": 463.4,
+            "avgGoldSpent": 271.29,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc0": {
+            "survivalRate": 0.44,
+            "avgFinalFloor": 18.51,
+            "avgTurnsPerEncounter": 4.387403700848035,
+            "avgFoodPurchased": 1.99,
+            "avgGoldEarned": 3393.35,
+            "avgGoldSpent": 2303.24,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc0": {
+            "survivalRate": 0.26,
+            "avgFinalFloor": 12.87,
+            "avgTurnsPerEncounter": 4.895391966670404,
+            "avgFoodPurchased": 1.96,
+            "avgGoldEarned": 2091.07,
+            "avgGoldSpent": 1410.63,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc10": {
+            "survivalRate": 0.08,
+            "avgFinalFloor": 11.43,
+            "avgTurnsPerEncounter": 4.81090767377168,
+            "avgFoodPurchased": 1.03,
+            "avgGoldEarned": 1653.79,
+            "avgGoldSpent": 1182.25,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc10": {
+            "survivalRate": 0.08,
+            "avgFinalFloor": 8.83,
+            "avgTurnsPerEncounter": 4.879408215880386,
+            "avgFoodPurchased": 1.42,
+            "avgGoldEarned": 1211.5,
+            "avgGoldSpent": 834.74,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc0": {
+            "survivalRate": 0.7,
+            "avgFinalFloor": 21.66,
+            "avgTurnsPerEncounter": 3.5984932844932853,
+            "avgFoodPurchased": 2.64,
+            "avgGoldEarned": 4353.55,
+            "avgGoldSpent": 3213.23,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc0": {
+            "survivalRate": 0.5,
+            "avgFinalFloor": 17.05,
+            "avgTurnsPerEncounter": 4.198512232637297,
+            "avgFoodPurchased": 2.64,
+            "avgGoldEarned": 3205.18,
+            "avgGoldSpent": 2431.17,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc10": {
+            "survivalRate": 0.43,
+            "avgFinalFloor": 19,
+            "avgTurnsPerEncounter": 3.6868960416736356,
+            "avgFoodPurchased": 2.63,
+            "avgGoldEarned": 3618.74,
+            "avgGoldSpent": 2829.31,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc10": {
+            "survivalRate": 0.16,
+            "avgFinalFloor": 12.37,
+            "avgTurnsPerEncounter": 4.311888051401968,
+            "avgFoodPurchased": 2.35,
+            "avgGoldEarned": 2040.34,
+            "avgGoldSpent": 1587.47,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          }
+        }
+      },
+      {
+        "rank": 6,
+        "overrides": {
+          "baseEffectAttack": 12,
+          "baseEffectShield": 7,
+          "postEncounterHealPct": 0.12,
+          "fizzleEffectRatio": 0.15,
+          "floorDamageScalingPerFloor": 0.03,
+          "comboMultipliers": [
+            1,
+            1.15,
+            1.3,
+            1.5,
+            2
+          ],
+          "playerStartHP": 120,
+          "postEncounterHealCap": {
+            "1": 1,
+            "2": 0.9,
+            "3": 0.8,
+            "4": 0.65
+          }
+        },
+        "compositeScore": 5.982,
+        "metricScores": {
+          "survivalFit": 0.375,
+          "pacingFit": 0,
+          "foodFit": 0,
+          "goldEfficiencyFit": 0,
+          "closeCallFit": 1.143,
+          "overkillFit": 1
+        },
+        "profileMetrics": {
+          "developing_newbie-relaxed-asc0": {
+            "survivalRate": 0.06,
+            "avgFinalFloor": 13.1,
+            "avgTurnsPerEncounter": 3.9450678202445535,
+            "avgFoodPurchased": 0.11,
+            "avgGoldEarned": 1803.63,
+            "avgGoldSpent": 1162.81,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc0": {
+            "survivalRate": 0.07,
+            "avgFinalFloor": 9.27,
+            "avgTurnsPerEncounter": 4.275323175018996,
+            "avgFoodPurchased": 0.43,
+            "avgGoldEarned": 1170.97,
+            "avgGoldSpent": 747.3,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-relaxed-asc10": {
+            "survivalRate": 0.01,
+            "avgFinalFloor": 7.51,
+            "avgTurnsPerEncounter": 3.879041659816467,
+            "avgFoodPurchased": 0.19,
+            "avgGoldEarned": 823.34,
+            "avgGoldSpent": 547.96,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 5.23,
+            "avgTurnsPerEncounter": 4.23644747674316,
+            "avgFoodPurchased": 0.22,
+            "avgGoldEarned": 453.11,
+            "avgGoldSpent": 280.84,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc0": {
+            "survivalRate": 0.43,
+            "avgFinalFloor": 18.42,
+            "avgTurnsPerEncounter": 4.477412112603475,
+            "avgFoodPurchased": 1.83,
+            "avgGoldEarned": 3341.89,
+            "avgGoldSpent": 2234.72,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc0": {
+            "survivalRate": 0.16,
+            "avgFinalFloor": 12.45,
+            "avgTurnsPerEncounter": 5.008791743064371,
+            "avgFoodPurchased": 1.24,
+            "avgGoldEarned": 1939.52,
+            "avgGoldSpent": 1343.13,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc10": {
+            "survivalRate": 0.13,
+            "avgFinalFloor": 13.83,
+            "avgTurnsPerEncounter": 4.793081500709646,
+            "avgFoodPurchased": 1.27,
+            "avgGoldEarned": 2245.84,
+            "avgGoldSpent": 1543.61,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc10": {
+            "survivalRate": 0.03,
+            "avgFinalFloor": 9.02,
+            "avgTurnsPerEncounter": 5.101741195241876,
+            "avgFoodPurchased": 1.12,
+            "avgGoldEarned": 1201.53,
+            "avgGoldSpent": 867.8,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc0": {
+            "survivalRate": 0.73,
+            "avgFinalFloor": 21.7,
+            "avgTurnsPerEncounter": 3.6312208994709,
+            "avgFoodPurchased": 2.49,
+            "avgGoldEarned": 4395.35,
+            "avgGoldSpent": 3264.43,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc0": {
+            "survivalRate": 0.57,
+            "avgFinalFloor": 18.52,
+            "avgTurnsPerEncounter": 4.153059982902089,
+            "avgFoodPurchased": 2.4,
+            "avgGoldEarned": 3588.17,
+            "avgGoldSpent": 2678.21,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc10": {
+            "survivalRate": 0.32,
+            "avgFinalFloor": 18.25,
+            "avgTurnsPerEncounter": 3.791396222758069,
+            "avgFoodPurchased": 1.99,
+            "avgGoldEarned": 3387.4,
+            "avgGoldSpent": 2646.6,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc10": {
+            "survivalRate": 0.22,
+            "avgFinalFloor": 13.97,
+            "avgTurnsPerEncounter": 4.339819878130193,
+            "avgFoodPurchased": 1.91,
+            "avgGoldEarned": 2387.98,
+            "avgGoldSpent": 1891.31,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          }
+        }
+      },
+      {
+        "rank": 7,
+        "overrides": {
+          "baseEffectAttack": 8,
+          "baseEffectShield": 10,
+          "postEncounterHealPct": 0.14,
+          "fizzleEffectRatio": 0.25,
+          "floorDamageScalingPerFloor": 0.02,
+          "comboMultipliers": [
+            1,
+            1.15,
+            1.3,
+            1.5,
+            2
+          ],
+          "playerStartHP": 100,
+          "postEncounterHealCap": {
+            "1": 1,
+            "2": 0.9,
+            "3": 0.8,
+            "4": 0.65
+          }
+        },
+        "compositeScore": 5.986,
+        "metricScores": {
+          "survivalFit": 0.376,
+          "pacingFit": 0,
+          "foodFit": 0,
+          "goldEfficiencyFit": 0,
+          "closeCallFit": 1.143,
+          "overkillFit": 1
+        },
+        "profileMetrics": {
+          "developing_newbie-relaxed-asc0": {
+            "survivalRate": 0.09,
+            "avgFinalFloor": 11.44,
+            "avgTurnsPerEncounter": 3.826006440541621,
+            "avgFoodPurchased": 0.1,
+            "avgGoldEarned": 1541.54,
+            "avgGoldSpent": 984.97,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc0": {
+            "survivalRate": 0.03,
+            "avgFinalFloor": 8,
+            "avgTurnsPerEncounter": 4.0187210913080476,
+            "avgFoodPurchased": 0.18,
+            "avgGoldEarned": 911.49,
+            "avgGoldSpent": 591.3,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-relaxed-asc10": {
+            "survivalRate": 0.01,
+            "avgFinalFloor": 7.11,
+            "avgTurnsPerEncounter": 3.749273124536281,
+            "avgFoodPurchased": 0.26,
+            "avgGoldEarned": 741.04,
+            "avgGoldSpent": 473.1,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 5.01,
+            "avgTurnsPerEncounter": 3.914843811305653,
+            "avgFoodPurchased": 0.27,
+            "avgGoldEarned": 432.73,
+            "avgGoldSpent": 269.73,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc0": {
+            "survivalRate": 0.43,
+            "avgFinalFloor": 19.01,
+            "avgTurnsPerEncounter": 4.409509201894414,
+            "avgFoodPurchased": 1.9,
+            "avgGoldEarned": 3501.23,
+            "avgGoldSpent": 2295.98,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc0": {
+            "survivalRate": 0.25,
+            "avgFinalFloor": 13.29,
+            "avgTurnsPerEncounter": 4.789446517388381,
+            "avgFoodPurchased": 1.41,
+            "avgGoldEarned": 2162.35,
+            "avgGoldSpent": 1456.05,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc10": {
+            "survivalRate": 0.09,
+            "avgFinalFloor": 12.55,
+            "avgTurnsPerEncounter": 4.65130392246454,
+            "avgFoodPurchased": 1,
+            "avgGoldEarned": 1938.22,
+            "avgGoldSpent": 1374.22,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc10": {
+            "survivalRate": 0.06,
+            "avgFinalFloor": 7.55,
+            "avgTurnsPerEncounter": 4.976374599408458,
+            "avgFoodPurchased": 0.85,
+            "avgGoldEarned": 967.51,
+            "avgGoldSpent": 692.96,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc0": {
+            "survivalRate": 0.65,
+            "avgFinalFloor": 21.14,
+            "avgTurnsPerEncounter": 3.771959737999451,
+            "avgFoodPurchased": 2.42,
+            "avgGoldEarned": 4296.58,
+            "avgGoldSpent": 3189.82,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc0": {
+            "survivalRate": 0.51,
+            "avgFinalFloor": 16.8,
+            "avgTurnsPerEncounter": 4.264867724867725,
+            "avgFoodPurchased": 2.02,
+            "avgGoldEarned": 3179.5,
+            "avgGoldSpent": 2390.21,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc10": {
+            "survivalRate": 0.32,
+            "avgFinalFloor": 17.42,
+            "avgTurnsPerEncounter": 3.7679123177477067,
+            "avgFoodPurchased": 1.81,
+            "avgGoldEarned": 3178.84,
+            "avgGoldSpent": 2497.91,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc10": {
+            "survivalRate": 0.17,
+            "avgFinalFloor": 12.42,
+            "avgTurnsPerEncounter": 4.2902803852494245,
+            "avgFoodPurchased": 1.53,
+            "avgGoldEarned": 1979.42,
+            "avgGoldSpent": 1566.95,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          }
+        }
+      },
+      {
+        "rank": 8,
+        "overrides": {
+          "baseEffectAttack": 9,
+          "baseEffectShield": 10,
+          "postEncounterHealPct": 0.1,
+          "fizzleEffectRatio": 0.2,
+          "floorDamageScalingPerFloor": 0.02,
+          "comboMultipliers": [
+            1,
+            1.15,
+            1.3,
+            1.5,
+            2
+          ],
+          "playerStartHP": 110,
+          "postEncounterHealCap": {
+            "1": 1,
+            "2": 0.9,
+            "3": 0.8,
+            "4": 0.65
+          }
+        },
+        "compositeScore": 6.007,
+        "metricScores": {
+          "survivalFit": 0.383,
+          "pacingFit": 0,
+          "foodFit": 0,
+          "goldEfficiencyFit": 0,
+          "closeCallFit": 1.143,
+          "overkillFit": 1
+        },
+        "profileMetrics": {
+          "developing_newbie-relaxed-asc0": {
+            "survivalRate": 0.08,
+            "avgFinalFloor": 13.45,
+            "avgTurnsPerEncounter": 3.8712809764187632,
+            "avgFoodPurchased": 0.22,
+            "avgGoldEarned": 1904.34,
+            "avgGoldSpent": 1227.83,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc0": {
+            "survivalRate": 0.06,
+            "avgFinalFloor": 8.8,
+            "avgTurnsPerEncounter": 4.121357435391149,
+            "avgFoodPurchased": 0.33,
+            "avgGoldEarned": 1113.5,
+            "avgGoldSpent": 667.48,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-relaxed-asc10": {
+            "survivalRate": 0.02,
+            "avgFinalFloor": 7.02,
+            "avgTurnsPerEncounter": 3.7344835972134747,
+            "avgFoodPurchased": 0.32,
+            "avgGoldEarned": 729.38,
+            "avgGoldSpent": 474.05,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 4.52,
+            "avgTurnsPerEncounter": 4.039637959220001,
+            "avgFoodPurchased": 0.27,
+            "avgGoldEarned": 357.99,
+            "avgGoldSpent": 211.53,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc0": {
+            "survivalRate": 0.47,
+            "avgFinalFloor": 18.47,
+            "avgTurnsPerEncounter": 4.391316310745126,
+            "avgFoodPurchased": 2.14,
+            "avgGoldEarned": 3452.41,
+            "avgGoldSpent": 2293.33,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc0": {
+            "survivalRate": 0.25,
+            "avgFinalFloor": 12.41,
+            "avgTurnsPerEncounter": 4.889854430879438,
+            "avgFoodPurchased": 1.66,
+            "avgGoldEarned": 1992.54,
+            "avgGoldSpent": 1323.14,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc10": {
+            "survivalRate": 0.16,
+            "avgFinalFloor": 13.77,
+            "avgTurnsPerEncounter": 4.716842667774162,
+            "avgFoodPurchased": 1.42,
+            "avgGoldEarned": 2192.87,
+            "avgGoldSpent": 1538.76,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc10": {
+            "survivalRate": 0.02,
+            "avgFinalFloor": 7.52,
+            "avgTurnsPerEncounter": 4.936272469990738,
+            "avgFoodPurchased": 0.92,
+            "avgGoldEarned": 926.54,
+            "avgGoldSpent": 694.32,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc0": {
+            "survivalRate": 0.7,
+            "avgFinalFloor": 21.43,
+            "avgTurnsPerEncounter": 3.6778978428978433,
+            "avgFoodPurchased": 2.63,
+            "avgGoldEarned": 4348.25,
+            "avgGoldSpent": 3225.36,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc0": {
+            "survivalRate": 0.54,
+            "avgFinalFloor": 17.86,
+            "avgTurnsPerEncounter": 4.2646668411617785,
+            "avgFoodPurchased": 2.4,
+            "avgGoldEarned": 3424.99,
+            "avgGoldSpent": 2549.63,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc10": {
+            "survivalRate": 0.34,
+            "avgFinalFloor": 17.42,
+            "avgTurnsPerEncounter": 3.7678519487626323,
+            "avgFoodPurchased": 2.09,
+            "avgGoldEarned": 3245.76,
+            "avgGoldSpent": 2512.41,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc10": {
+            "survivalRate": 0.15,
+            "avgFinalFloor": 10.91,
+            "avgTurnsPerEncounter": 4.322999966181872,
+            "avgFoodPurchased": 1.51,
+            "avgGoldEarned": 1701.64,
+            "avgGoldSpent": 1350,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          }
+        }
+      },
+      {
+        "rank": 9,
+        "overrides": {
+          "baseEffectAttack": 9,
+          "baseEffectShield": 9,
+          "postEncounterHealPct": 0.1,
+          "fizzleEffectRatio": 0.25,
+          "floorDamageScalingPerFloor": 0.02,
+          "comboMultipliers": [
+            1,
+            1.1,
+            1.2,
+            1.3,
+            1.5
+          ],
+          "playerStartHP": 120,
+          "postEncounterHealCap": {
+            "1": 1,
+            "2": 0.9,
+            "3": 0.8,
+            "4": 0.65
+          }
+        },
+        "compositeScore": 6.015,
+        "metricScores": {
+          "survivalFit": 0.386,
+          "pacingFit": 0,
+          "foodFit": 0,
+          "goldEfficiencyFit": 0,
+          "closeCallFit": 1.143,
+          "overkillFit": 1
+        },
+        "profileMetrics": {
+          "developing_newbie-relaxed-asc0": {
+            "survivalRate": 0.12,
+            "avgFinalFloor": 13.07,
+            "avgTurnsPerEncounter": 4.0162955169084205,
+            "avgFoodPurchased": 0.26,
+            "avgGoldEarned": 1870.72,
+            "avgGoldSpent": 1186.1,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc0": {
+            "survivalRate": 0.09,
+            "avgFinalFloor": 10.34,
+            "avgTurnsPerEncounter": 4.14689670977171,
+            "avgFoodPurchased": 0.46,
+            "avgGoldEarned": 1368.44,
+            "avgGoldSpent": 818.03,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-relaxed-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 7.37,
+            "avgTurnsPerEncounter": 3.893039868184218,
+            "avgFoodPurchased": 0.18,
+            "avgGoldEarned": 762.4,
+            "avgGoldSpent": 488.65,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc10": {
+            "survivalRate": 0.01,
+            "avgFinalFloor": 4.85,
+            "avgTurnsPerEncounter": 4.047908547710273,
+            "avgFoodPurchased": 0.22,
+            "avgGoldEarned": 413.76,
+            "avgGoldSpent": 238.03,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc0": {
+            "survivalRate": 0.39,
+            "avgFinalFloor": 18.71,
+            "avgTurnsPerEncounter": 4.6716198611187,
+            "avgFoodPurchased": 1.87,
+            "avgGoldEarned": 3413.65,
+            "avgGoldSpent": 2281.42,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc0": {
+            "survivalRate": 0.28,
+            "avgFinalFloor": 14.34,
+            "avgTurnsPerEncounter": 4.936223544295313,
+            "avgFoodPurchased": 1.74,
+            "avgGoldEarned": 2422.16,
+            "avgGoldSpent": 1623.31,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc10": {
+            "survivalRate": 0.12,
+            "avgFinalFloor": 13.45,
+            "avgTurnsPerEncounter": 4.9134035501772075,
+            "avgFoodPurchased": 1.18,
+            "avgGoldEarned": 2106.23,
+            "avgGoldSpent": 1505.58,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc10": {
+            "survivalRate": 0.04,
+            "avgFinalFloor": 8.08,
+            "avgTurnsPerEncounter": 5.30955758621732,
+            "avgFoodPurchased": 1,
+            "avgGoldEarned": 1037.02,
+            "avgGoldSpent": 733.74,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc0": {
+            "survivalRate": 0.7,
+            "avgFinalFloor": 21.73,
+            "avgTurnsPerEncounter": 3.832834852832566,
+            "avgFoodPurchased": 2.55,
+            "avgGoldEarned": 4448.17,
+            "avgGoldSpent": 3279.47,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc0": {
+            "survivalRate": 0.5,
+            "avgFinalFloor": 17.43,
+            "avgTurnsPerEncounter": 4.46346942329701,
+            "avgFoodPurchased": 2.28,
+            "avgGoldEarned": 3291.51,
+            "avgGoldSpent": 2443.55,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc10": {
+            "survivalRate": 0.3,
+            "avgFinalFloor": 17.68,
+            "avgTurnsPerEncounter": 4.00126950218046,
+            "avgFoodPurchased": 2.02,
+            "avgGoldEarned": 3264.72,
+            "avgGoldSpent": 2552.3,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc10": {
+            "survivalRate": 0.11,
+            "avgFinalFloor": 10.72,
+            "avgTurnsPerEncounter": 4.743390475670126,
+            "avgFoodPurchased": 1.48,
+            "avgGoldEarned": 1605.88,
+            "avgGoldSpent": 1287.84,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          }
+        }
+      },
+      {
+        "rank": 10,
+        "overrides": {
+          "baseEffectAttack": 12,
+          "baseEffectShield": 9,
+          "postEncounterHealPct": 0.12,
+          "fizzleEffectRatio": 0.25,
+          "floorDamageScalingPerFloor": 0.03,
+          "comboMultipliers": [
+            1,
+            1.1,
+            1.25,
+            1.4,
+            1.75
+          ],
+          "playerStartHP": 120,
+          "postEncounterHealCap": {
+            "1": 1,
+            "2": 0.9,
+            "3": 0.8,
+            "4": 0.65
+          }
+        },
+        "compositeScore": 6.028,
+        "metricScores": {
+          "survivalFit": 0.39,
+          "pacingFit": 0,
+          "foodFit": 0,
+          "goldEfficiencyFit": 0,
+          "closeCallFit": 1.143,
+          "overkillFit": 1
+        },
+        "profileMetrics": {
+          "developing_newbie-relaxed-asc0": {
+            "survivalRate": 0.04,
+            "avgFinalFloor": 12.83,
+            "avgTurnsPerEncounter": 3.9296401442125144,
+            "avgFoodPurchased": 0.14,
+            "avgGoldEarned": 1782.99,
+            "avgGoldSpent": 1119.49,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc0": {
+            "survivalRate": 0.05,
+            "avgFinalFloor": 10.54,
+            "avgTurnsPerEncounter": 4.288181968902554,
+            "avgFoodPurchased": 0.4,
+            "avgGoldEarned": 1414.93,
+            "avgGoldSpent": 851.96,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-relaxed-asc10": {
+            "survivalRate": 0.01,
+            "avgFinalFloor": 7.88,
+            "avgTurnsPerEncounter": 3.8820498047902547,
+            "avgFoodPurchased": 0.25,
+            "avgGoldEarned": 870.56,
+            "avgGoldSpent": 532,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 5.75,
+            "avgTurnsPerEncounter": 4.068359728234729,
+            "avgFoodPurchased": 0.2,
+            "avgGoldEarned": 530.55,
+            "avgGoldSpent": 329.45,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc0": {
+            "survivalRate": 0.46,
+            "avgFinalFloor": 19.14,
+            "avgTurnsPerEncounter": 4.536399534038349,
+            "avgFoodPurchased": 1.95,
+            "avgGoldEarned": 3571.02,
+            "avgGoldSpent": 2323.55,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc0": {
+            "survivalRate": 0.24,
+            "avgFinalFloor": 14.11,
+            "avgTurnsPerEncounter": 4.934096390379864,
+            "avgFoodPurchased": 1.54,
+            "avgGoldEarned": 2316.74,
+            "avgGoldSpent": 1546.08,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc10": {
+            "survivalRate": 0.12,
+            "avgFinalFloor": 13.21,
+            "avgTurnsPerEncounter": 4.736426665585069,
+            "avgFoodPurchased": 1.24,
+            "avgGoldEarned": 2132.44,
+            "avgGoldSpent": 1509,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc10": {
+            "survivalRate": 0.08,
+            "avgFinalFloor": 8.9,
+            "avgTurnsPerEncounter": 5.318316657462381,
+            "avgFoodPurchased": 1.2,
+            "avgGoldEarned": 1204.65,
+            "avgGoldSpent": 845.32,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc0": {
+            "survivalRate": 0.71,
+            "avgFinalFloor": 21.58,
+            "avgTurnsPerEncounter": 3.746721830705526,
+            "avgFoodPurchased": 2.49,
+            "avgGoldEarned": 4376.11,
+            "avgGoldSpent": 3242.11,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc0": {
+            "survivalRate": 0.58,
+            "avgFinalFloor": 19.37,
+            "avgTurnsPerEncounter": 4.342383354123627,
+            "avgFoodPurchased": 2.63,
+            "avgGoldEarned": 3737.03,
+            "avgGoldSpent": 2812.19,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc10": {
+            "survivalRate": 0.34,
+            "avgFinalFloor": 18.11,
+            "avgTurnsPerEncounter": 3.8746706202014893,
+            "avgFoodPurchased": 2.12,
+            "avgGoldEarned": 3358.68,
+            "avgGoldSpent": 2604.65,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc10": {
+            "survivalRate": 0.16,
+            "avgFinalFloor": 12.63,
+            "avgTurnsPerEncounter": 4.506348936162773,
+            "avgFoodPurchased": 1.67,
+            "avgGoldEarned": 2042.83,
+            "avgGoldSpent": 1630.15,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          }
+        }
+      },
+      {
+        "rank": 11,
+        "overrides": {
+          "baseEffectAttack": 12,
+          "baseEffectShield": 6,
+          "postEncounterHealPct": 0.12,
+          "fizzleEffectRatio": 0.1,
+          "floorDamageScalingPerFloor": 0.03,
+          "comboMultipliers": [
+            1,
+            1.15,
+            1.3,
+            1.5,
+            2
+          ],
+          "playerStartHP": 120,
+          "postEncounterHealCap": {
+            "1": 1,
+            "2": 0.95,
+            "3": 0.85,
+            "4": 0.75
+          }
+        },
+        "compositeScore": 6.034,
+        "metricScores": {
+          "survivalFit": 0.31,
+          "pacingFit": 0,
+          "foodFit": 0.248,
+          "goldEfficiencyFit": 0,
+          "closeCallFit": 1.143,
+          "overkillFit": 1
+        },
+        "profileMetrics": {
+          "developing_newbie-relaxed-asc0": {
+            "survivalRate": 0.13,
+            "avgFinalFloor": 14.08,
+            "avgTurnsPerEncounter": 4.00036400089164,
+            "avgFoodPurchased": 0.21,
+            "avgGoldEarned": 2123.2,
+            "avgGoldSpent": 1271.04,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc0": {
+            "survivalRate": 0.08,
+            "avgFinalFloor": 9.71,
+            "avgTurnsPerEncounter": 4.147752584596579,
+            "avgFoodPurchased": 0.35,
+            "avgGoldEarned": 1293.83,
+            "avgGoldSpent": 770.51,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-relaxed-asc10": {
+            "survivalRate": 0.03,
+            "avgFinalFloor": 8.19,
+            "avgTurnsPerEncounter": 3.8703774183332995,
+            "avgFoodPurchased": 0.25,
+            "avgGoldEarned": 925.8,
+            "avgGoldSpent": 595.2,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc10": {
+            "survivalRate": 0.01,
+            "avgFinalFloor": 5.39,
+            "avgTurnsPerEncounter": 4.253176107105455,
+            "avgFoodPurchased": 0.24,
+            "avgGoldEarned": 495.59,
+            "avgGoldSpent": 288.96,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc0": {
+            "survivalRate": 0.47,
+            "avgFinalFloor": 18.82,
+            "avgTurnsPerEncounter": 4.439357314452959,
+            "avgFoodPurchased": 0.33,
+            "avgGoldEarned": 3490.28,
+            "avgGoldSpent": 2268.86,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc0": {
+            "survivalRate": 0.31,
+            "avgFinalFloor": 13.38,
+            "avgTurnsPerEncounter": 4.966478625710334,
+            "avgFoodPurchased": 0.66,
+            "avgGoldEarned": 2234.4,
+            "avgGoldSpent": 1438.77,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc10": {
+            "survivalRate": 0.14,
+            "avgFinalFloor": 12.7,
+            "avgTurnsPerEncounter": 4.751499909773893,
+            "avgFoodPurchased": 0.69,
+            "avgGoldEarned": 2018.84,
+            "avgGoldSpent": 1459.54,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc10": {
+            "survivalRate": 0.09,
+            "avgFinalFloor": 7.88,
+            "avgTurnsPerEncounter": 5.340686036747336,
+            "avgFoodPurchased": 0.77,
+            "avgGoldEarned": 1079.49,
+            "avgGoldSpent": 730.45,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc0": {
+            "survivalRate": 0.76,
+            "avgFinalFloor": 21.43,
+            "avgTurnsPerEncounter": 3.7792848524024993,
+            "avgFoodPurchased": 0.18,
+            "avgGoldEarned": 4398.33,
+            "avgGoldSpent": 3180.73,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc0": {
+            "survivalRate": 0.49,
+            "avgFinalFloor": 17.31,
+            "avgTurnsPerEncounter": 4.252951722254355,
+            "avgFoodPurchased": 0.7,
+            "avgGoldEarned": 3231.64,
+            "avgGoldSpent": 2383.63,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc10": {
+            "survivalRate": 0.39,
+            "avgFinalFloor": 18.41,
+            "avgTurnsPerEncounter": 3.792300702671243,
+            "avgFoodPurchased": 0.61,
+            "avgGoldEarned": 3378.42,
+            "avgGoldSpent": 2626.28,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc10": {
+            "survivalRate": 0.27,
+            "avgFinalFloor": 13.05,
+            "avgTurnsPerEncounter": 4.368743414335822,
+            "avgFoodPurchased": 1.06,
+            "avgGoldEarned": 2237.01,
+            "avgGoldSpent": 1724.74,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          }
+        }
+      },
+      {
+        "rank": 12,
+        "overrides": {
+          "baseEffectAttack": 9,
+          "baseEffectShield": 10,
+          "postEncounterHealPct": 0.14,
+          "fizzleEffectRatio": 0.3,
+          "floorDamageScalingPerFloor": 0.03,
+          "comboMultipliers": [
+            1,
+            1.1,
+            1.2,
+            1.3,
+            1.5
+          ],
+          "playerStartHP": 110,
+          "postEncounterHealCap": {
+            "1": 1,
+            "2": 0.9,
+            "3": 0.8,
+            "4": 0.65
+          }
+        },
+        "compositeScore": 6.045,
+        "metricScores": {
+          "survivalFit": 0.396,
+          "pacingFit": 0,
+          "foodFit": 0,
+          "goldEfficiencyFit": 0,
+          "closeCallFit": 1.143,
+          "overkillFit": 1
+        },
+        "profileMetrics": {
+          "developing_newbie-relaxed-asc0": {
+            "survivalRate": 0.03,
+            "avgFinalFloor": 11.08,
+            "avgTurnsPerEncounter": 4.021304796290718,
+            "avgFoodPurchased": 0.14,
+            "avgGoldEarned": 1445.36,
+            "avgGoldSpent": 935.48,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc0": {
+            "survivalRate": 0.03,
+            "avgFinalFloor": 8.16,
+            "avgTurnsPerEncounter": 4.256510647234835,
+            "avgFoodPurchased": 0.27,
+            "avgGoldEarned": 938.15,
+            "avgGoldSpent": 607.12,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-relaxed-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 7.09,
+            "avgTurnsPerEncounter": 3.7736130720844336,
+            "avgFoodPurchased": 0.15,
+            "avgGoldEarned": 730.52,
+            "avgGoldSpent": 471.48,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 5.13,
+            "avgTurnsPerEncounter": 4.206518789360045,
+            "avgFoodPurchased": 0.23,
+            "avgGoldEarned": 439.75,
+            "avgGoldSpent": 257.45,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc0": {
+            "survivalRate": 0.25,
+            "avgFinalFloor": 17.32,
+            "avgTurnsPerEncounter": 4.719936259189992,
+            "avgFoodPurchased": 1.61,
+            "avgGoldEarned": 3082.2,
+            "avgGoldSpent": 2106.36,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc0": {
+            "survivalRate": 0.17,
+            "avgFinalFloor": 12.88,
+            "avgTurnsPerEncounter": 4.992725315199695,
+            "avgFoodPurchased": 1.19,
+            "avgGoldEarned": 2047.56,
+            "avgGoldSpent": 1400.15,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc10": {
+            "survivalRate": 0.06,
+            "avgFinalFloor": 12.29,
+            "avgTurnsPerEncounter": 5.017958025405793,
+            "avgFoodPurchased": 0.97,
+            "avgGoldEarned": 1853.7,
+            "avgGoldSpent": 1316.55,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc10": {
+            "survivalRate": 0.03,
+            "avgFinalFloor": 7.29,
+            "avgTurnsPerEncounter": 5.104027808582374,
+            "avgFoodPurchased": 0.79,
+            "avgGoldEarned": 900.26,
+            "avgGoldSpent": 633.8,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc0": {
+            "survivalRate": 0.55,
+            "avgFinalFloor": 20.75,
+            "avgTurnsPerEncounter": 3.7678508526565655,
+            "avgFoodPurchased": 2.28,
+            "avgGoldEarned": 4141.53,
+            "avgGoldSpent": 3123.87,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc0": {
+            "survivalRate": 0.41,
+            "avgFinalFloor": 17.37,
+            "avgTurnsPerEncounter": 4.297990787964471,
+            "avgFoodPurchased": 1.95,
+            "avgGoldEarned": 3275.69,
+            "avgGoldSpent": 2452.07,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc10": {
+            "survivalRate": 0.23,
+            "avgFinalFloor": 15.92,
+            "avgTurnsPerEncounter": 4.07310123330962,
+            "avgFoodPurchased": 1.49,
+            "avgGoldEarned": 2719.65,
+            "avgGoldSpent": 2167.17,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc10": {
+            "survivalRate": 0.08,
+            "avgFinalFloor": 11.08,
+            "avgTurnsPerEncounter": 4.545318670122244,
+            "avgFoodPurchased": 1.25,
+            "avgGoldEarned": 1692.72,
+            "avgGoldSpent": 1336.11,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          }
+        }
+      },
+      {
+        "rank": 13,
+        "overrides": {
+          "baseEffectAttack": 11,
+          "baseEffectShield": 7,
+          "postEncounterHealPct": 0.08,
+          "fizzleEffectRatio": 0.15,
+          "floorDamageScalingPerFloor": 0.02,
+          "comboMultipliers": [
+            1,
+            1.15,
+            1.3,
+            1.5,
+            2
+          ],
+          "playerStartHP": 110,
+          "postEncounterHealCap": {
+            "1": 1,
+            "2": 0.9,
+            "3": 0.8,
+            "4": 0.65
+          }
+        },
+        "compositeScore": 6.045,
+        "metricScores": {
+          "survivalFit": 0.396,
+          "pacingFit": 0,
+          "foodFit": 0,
+          "goldEfficiencyFit": 0,
+          "closeCallFit": 1.143,
+          "overkillFit": 1
+        },
+        "profileMetrics": {
+          "developing_newbie-relaxed-asc0": {
+            "survivalRate": 0.04,
+            "avgFinalFloor": 11.46,
+            "avgTurnsPerEncounter": 3.924216137843877,
+            "avgFoodPurchased": 0.3,
+            "avgGoldEarned": 1526.89,
+            "avgGoldSpent": 963.36,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc0": {
+            "survivalRate": 0.01,
+            "avgFinalFloor": 7.55,
+            "avgTurnsPerEncounter": 4.130993330289788,
+            "avgFoodPurchased": 0.46,
+            "avgGoldEarned": 843.92,
+            "avgGoldSpent": 529.31,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-relaxed-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 8.13,
+            "avgTurnsPerEncounter": 3.7524513560949644,
+            "avgFoodPurchased": 0.28,
+            "avgGoldEarned": 912.77,
+            "avgGoldSpent": 613.83,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 4.35,
+            "avgTurnsPerEncounter": 4.232826166756373,
+            "avgFoodPurchased": 0.33,
+            "avgGoldEarned": 373.67,
+            "avgGoldSpent": 202.31,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc0": {
+            "survivalRate": 0.34,
+            "avgFinalFloor": 16.87,
+            "avgTurnsPerEncounter": 4.503749847140362,
+            "avgFoodPurchased": 1.87,
+            "avgGoldEarned": 2994.73,
+            "avgGoldSpent": 2016.91,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc0": {
+            "survivalRate": 0.23,
+            "avgFinalFloor": 11.99,
+            "avgTurnsPerEncounter": 5.029513720739807,
+            "avgFoodPurchased": 1.78,
+            "avgGoldEarned": 1922.61,
+            "avgGoldSpent": 1296.02,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc10": {
+            "survivalRate": 0.11,
+            "avgFinalFloor": 11.65,
+            "avgTurnsPerEncounter": 4.7777496786726825,
+            "avgFoodPurchased": 1.34,
+            "avgGoldEarned": 1793.52,
+            "avgGoldSpent": 1261.61,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc10": {
+            "survivalRate": 0.02,
+            "avgFinalFloor": 6.99,
+            "avgTurnsPerEncounter": 5.033550511035803,
+            "avgFoodPurchased": 1.04,
+            "avgGoldEarned": 828.08,
+            "avgGoldSpent": 581.14,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc0": {
+            "survivalRate": 0.71,
+            "avgFinalFloor": 21.42,
+            "avgTurnsPerEncounter": 3.807483313254681,
+            "avgFoodPurchased": 2.66,
+            "avgGoldEarned": 4342.66,
+            "avgGoldSpent": 3248.36,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc0": {
+            "survivalRate": 0.46,
+            "avgFinalFloor": 16.74,
+            "avgTurnsPerEncounter": 4.1816136869952665,
+            "avgFoodPurchased": 2.38,
+            "avgGoldEarned": 3108.78,
+            "avgGoldSpent": 2340.93,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc10": {
+            "survivalRate": 0.44,
+            "avgFinalFloor": 17.92,
+            "avgTurnsPerEncounter": 3.8184217503486066,
+            "avgFoodPurchased": 2.21,
+            "avgGoldEarned": 3376.38,
+            "avgGoldSpent": 2635.2,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc10": {
+            "survivalRate": 0.14,
+            "avgFinalFloor": 11.32,
+            "avgTurnsPerEncounter": 4.278463428828988,
+            "avgFoodPurchased": 1.86,
+            "avgGoldEarned": 1785.1,
+            "avgGoldSpent": 1373.01,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          }
+        }
+      },
+      {
+        "rank": 14,
+        "overrides": {
+          "baseEffectAttack": 9,
+          "baseEffectShield": 6,
+          "postEncounterHealPct": 0.12,
+          "fizzleEffectRatio": 0.25,
+          "floorDamageScalingPerFloor": 0.03,
+          "comboMultipliers": [
+            1,
+            1.15,
+            1.3,
+            1.5,
+            2
+          ],
+          "playerStartHP": 120,
+          "postEncounterHealCap": {
+            "1": 1,
+            "2": 0.9,
+            "3": 0.8,
+            "4": 0.65
+          }
+        },
+        "compositeScore": 6.061,
+        "metricScores": {
+          "survivalFit": 0.401,
+          "pacingFit": 0,
+          "foodFit": 0,
+          "goldEfficiencyFit": 0,
+          "closeCallFit": 1.143,
+          "overkillFit": 1
+        },
+        "profileMetrics": {
+          "developing_newbie-relaxed-asc0": {
+            "survivalRate": 0.06,
+            "avgFinalFloor": 13.1,
+            "avgTurnsPerEncounter": 3.86702091100881,
+            "avgFoodPurchased": 0.18,
+            "avgGoldEarned": 1879.57,
+            "avgGoldSpent": 1151.88,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc0": {
+            "survivalRate": 0.02,
+            "avgFinalFloor": 9.13,
+            "avgTurnsPerEncounter": 4.252298954413269,
+            "avgFoodPurchased": 0.33,
+            "avgGoldEarned": 1099.3,
+            "avgGoldSpent": 741.54,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-relaxed-asc10": {
+            "survivalRate": 0.01,
+            "avgFinalFloor": 8.5,
+            "avgTurnsPerEncounter": 3.8392804347063327,
+            "avgFoodPurchased": 0.27,
+            "avgGoldEarned": 955.02,
+            "avgGoldSpent": 612.91,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 5.42,
+            "avgTurnsPerEncounter": 4.0897627366920775,
+            "avgFoodPurchased": 0.26,
+            "avgGoldEarned": 454.89,
+            "avgGoldSpent": 307.1,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc0": {
+            "survivalRate": 0.43,
+            "avgFinalFloor": 19.34,
+            "avgTurnsPerEncounter": 4.521451171895631,
+            "avgFoodPurchased": 2.03,
+            "avgGoldEarned": 3613.04,
+            "avgGoldSpent": 2333.05,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc0": {
+            "survivalRate": 0.27,
+            "avgFinalFloor": 14.47,
+            "avgTurnsPerEncounter": 4.735686696736182,
+            "avgFoodPurchased": 1.62,
+            "avgGoldEarned": 2450.1,
+            "avgGoldSpent": 1645.58,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc10": {
+            "survivalRate": 0.12,
+            "avgFinalFloor": 14.15,
+            "avgTurnsPerEncounter": 4.661709285573163,
+            "avgFoodPurchased": 1.34,
+            "avgGoldEarned": 2310.24,
+            "avgGoldSpent": 1620.35,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc10": {
+            "survivalRate": 0.06,
+            "avgFinalFloor": 8.78,
+            "avgTurnsPerEncounter": 5.206408799805856,
+            "avgFoodPurchased": 1.02,
+            "avgGoldEarned": 1147.42,
+            "avgGoldSpent": 831.83,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc0": {
+            "survivalRate": 0.72,
+            "avgFinalFloor": 21.68,
+            "avgTurnsPerEncounter": 3.638720380009855,
+            "avgFoodPurchased": 2.57,
+            "avgGoldEarned": 4349.25,
+            "avgGoldSpent": 3226.58,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc0": {
+            "survivalRate": 0.55,
+            "avgFinalFloor": 18.41,
+            "avgTurnsPerEncounter": 4.078927401411379,
+            "avgFoodPurchased": 2.32,
+            "avgGoldEarned": 3537.45,
+            "avgGoldSpent": 2633.39,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc10": {
+            "survivalRate": 0.25,
+            "avgFinalFloor": 17.35,
+            "avgTurnsPerEncounter": 3.9398152711407186,
+            "avgFoodPurchased": 1.78,
+            "avgGoldEarned": 3090.43,
+            "avgGoldSpent": 2439.09,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc10": {
+            "survivalRate": 0.23,
+            "avgFinalFloor": 13.98,
+            "avgTurnsPerEncounter": 4.257695797693031,
+            "avgFoodPurchased": 1.9,
+            "avgGoldEarned": 2362.08,
+            "avgGoldSpent": 1837.44,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          }
+        }
+      },
+      {
+        "rank": 15,
+        "overrides": {
+          "baseEffectAttack": 12,
+          "baseEffectShield": 8,
+          "postEncounterHealPct": 0.08,
+          "fizzleEffectRatio": 0.1,
+          "floorDamageScalingPerFloor": 0.02,
+          "comboMultipliers": [
+            1,
+            1.1,
+            1.25,
+            1.4,
+            1.75
+          ],
+          "playerStartHP": 110,
+          "postEncounterHealCap": {
+            "1": 1,
+            "2": 0.95,
+            "3": 0.85,
+            "4": 0.75
+          }
+        },
+        "compositeScore": 6.063,
+        "metricScores": {
+          "survivalFit": 0.342,
+          "pacingFit": 0,
+          "foodFit": 0.18,
+          "goldEfficiencyFit": 0,
+          "closeCallFit": 1.143,
+          "overkillFit": 1
+        },
+        "profileMetrics": {
+          "developing_newbie-relaxed-asc0": {
+            "survivalRate": 0.08,
+            "avgFinalFloor": 11.86,
+            "avgTurnsPerEncounter": 3.988649051716268,
+            "avgFoodPurchased": 0.28,
+            "avgGoldEarned": 1649.99,
+            "avgGoldSpent": 1019.19,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc0": {
+            "survivalRate": 0,
+            "avgFinalFloor": 6.29,
+            "avgTurnsPerEncounter": 4.2869361743357715,
+            "avgFoodPurchased": 0.42,
+            "avgGoldEarned": 634.61,
+            "avgGoldSpent": 382.55,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-relaxed-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 5.67,
+            "avgTurnsPerEncounter": 3.7777209019194307,
+            "avgFoodPurchased": 0.11,
+            "avgGoldEarned": 508.22,
+            "avgGoldSpent": 304.54,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 4.02,
+            "avgTurnsPerEncounter": 4.018803365207779,
+            "avgFoodPurchased": 0.34,
+            "avgGoldEarned": 312,
+            "avgGoldSpent": 191.08,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc0": {
+            "survivalRate": 0.3,
+            "avgFinalFloor": 16.52,
+            "avgTurnsPerEncounter": 4.651306359405665,
+            "avgFoodPurchased": 0.45,
+            "avgGoldEarned": 2822.21,
+            "avgGoldSpent": 1915.89,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc0": {
+            "survivalRate": 0.19,
+            "avgFinalFloor": 11.15,
+            "avgTurnsPerEncounter": 4.893662158116806,
+            "avgFoodPurchased": 0.82,
+            "avgGoldEarned": 1729.98,
+            "avgGoldSpent": 1173.67,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc10": {
+            "survivalRate": 0.1,
+            "avgFinalFloor": 11.46,
+            "avgTurnsPerEncounter": 4.836249594649005,
+            "avgFoodPurchased": 0.82,
+            "avgGoldEarned": 1726.45,
+            "avgGoldSpent": 1203.62,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc10": {
+            "survivalRate": 0.02,
+            "avgFinalFloor": 5.99,
+            "avgTurnsPerEncounter": 5.182438508246317,
+            "avgFoodPurchased": 0.88,
+            "avgGoldEarned": 674.39,
+            "avgGoldSpent": 460.65,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc0": {
+            "survivalRate": 0.65,
+            "avgFinalFloor": 20.75,
+            "avgTurnsPerEncounter": 3.8521846803294157,
+            "avgFoodPurchased": 0.32,
+            "avgGoldEarned": 4113.24,
+            "avgGoldSpent": 3047.31,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc0": {
+            "survivalRate": 0.49,
+            "avgFinalFloor": 16.42,
+            "avgTurnsPerEncounter": 4.341927928351843,
+            "avgFoodPurchased": 0.96,
+            "avgGoldEarned": 3132.77,
+            "avgGoldSpent": 2303.06,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc10": {
+            "survivalRate": 0.38,
+            "avgFinalFloor": 16.52,
+            "avgTurnsPerEncounter": 3.9084048175163986,
+            "avgFoodPurchased": 0.88,
+            "avgGoldEarned": 3021.57,
+            "avgGoldSpent": 2322.83,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc10": {
+            "survivalRate": 0.17,
+            "avgFinalFloor": 11.38,
+            "avgTurnsPerEncounter": 4.554906930316095,
+            "avgFoodPurchased": 1.39,
+            "avgGoldEarned": 1794.27,
+            "avgGoldSpent": 1394.68,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          }
+        }
+      },
+      {
+        "rank": 16,
+        "overrides": {
+          "baseEffectAttack": 8,
+          "baseEffectShield": 10,
+          "postEncounterHealPct": 0.1,
+          "fizzleEffectRatio": 0.15,
+          "floorDamageScalingPerFloor": 0.03,
+          "comboMultipliers": [
+            1,
+            1.15,
+            1.3,
+            1.5,
+            2
+          ],
+          "playerStartHP": 120,
+          "postEncounterHealCap": {
+            "1": 1,
+            "2": 0.95,
+            "3": 0.85,
+            "4": 0.75
+          }
+        },
+        "compositeScore": 6.063,
+        "metricScores": {
+          "survivalFit": 0.343,
+          "pacingFit": 0,
+          "foodFit": 0.176,
+          "goldEfficiencyFit": 0,
+          "closeCallFit": 1.143,
+          "overkillFit": 1
+        },
+        "profileMetrics": {
+          "developing_newbie-relaxed-asc0": {
+            "survivalRate": 0.08,
+            "avgFinalFloor": 13.97,
+            "avgTurnsPerEncounter": 4.011131201978749,
+            "avgFoodPurchased": 0.26,
+            "avgGoldEarned": 2033.19,
+            "avgGoldSpent": 1231.3,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc0": {
+            "survivalRate": 0.09,
+            "avgFinalFloor": 10.34,
+            "avgTurnsPerEncounter": 4.191470351250177,
+            "avgFoodPurchased": 0.5,
+            "avgGoldEarned": 1403.19,
+            "avgGoldSpent": 842.4,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-relaxed-asc10": {
+            "survivalRate": 0.02,
+            "avgFinalFloor": 8.12,
+            "avgTurnsPerEncounter": 3.771530217706943,
+            "avgFoodPurchased": 0.24,
+            "avgGoldEarned": 937.8,
+            "avgGoldSpent": 604.15,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc10": {
+            "survivalRate": 0.02,
+            "avgFinalFloor": 5,
+            "avgTurnsPerEncounter": 4.2568044479886575,
+            "avgFoodPurchased": 0.29,
+            "avgGoldEarned": 451.95,
+            "avgGoldSpent": 261.56,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc0": {
+            "survivalRate": 0.54,
+            "avgFinalFloor": 19.96,
+            "avgTurnsPerEncounter": 4.535599483898444,
+            "avgFoodPurchased": 0.53,
+            "avgGoldEarned": 3817.21,
+            "avgGoldSpent": 2463.28,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc0": {
+            "survivalRate": 0.29,
+            "avgFinalFloor": 13.67,
+            "avgTurnsPerEncounter": 4.79851803642472,
+            "avgFoodPurchased": 0.8,
+            "avgGoldEarned": 2287.69,
+            "avgGoldSpent": 1522.99,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc10": {
+            "survivalRate": 0.14,
+            "avgFinalFloor": 12.44,
+            "avgTurnsPerEncounter": 4.854323709785079,
+            "avgFoodPurchased": 0.76,
+            "avgGoldEarned": 1952.24,
+            "avgGoldSpent": 1363.54,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc10": {
+            "survivalRate": 0.09,
+            "avgFinalFloor": 9.14,
+            "avgTurnsPerEncounter": 5.204404456711906,
+            "avgFoodPurchased": 1.16,
+            "avgGoldEarned": 1316.26,
+            "avgGoldSpent": 887.52,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc0": {
+            "survivalRate": 0.7,
+            "avgFinalFloor": 21.83,
+            "avgTurnsPerEncounter": 3.6910560367271557,
+            "avgFoodPurchased": 0.24,
+            "avgGoldEarned": 4444.74,
+            "avgGoldSpent": 3245.66,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc0": {
+            "survivalRate": 0.59,
+            "avgFinalFloor": 19.26,
+            "avgTurnsPerEncounter": 4.152619611703194,
+            "avgFoodPurchased": 0.61,
+            "avgGoldEarned": 3733.64,
+            "avgGoldSpent": 2749.55,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc10": {
+            "survivalRate": 0.42,
+            "avgFinalFloor": 18.1,
+            "avgTurnsPerEncounter": 3.7605043589169815,
+            "avgFoodPurchased": 0.89,
+            "avgGoldEarned": 3389.68,
+            "avgGoldSpent": 2653.65,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc10": {
+            "survivalRate": 0.25,
+            "avgFinalFloor": 13.45,
+            "avgTurnsPerEncounter": 4.508206683023045,
+            "avgFoodPurchased": 1.49,
+            "avgGoldEarned": 2287.9,
+            "avgGoldSpent": 1780.13,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          }
+        }
+      },
+      {
+        "rank": 17,
+        "overrides": {
+          "baseEffectAttack": 8,
+          "baseEffectShield": 10,
+          "postEncounterHealPct": 0.14,
+          "fizzleEffectRatio": 0.3,
+          "floorDamageScalingPerFloor": 0.03,
+          "comboMultipliers": [
+            1,
+            1.15,
+            1.3,
+            1.5,
+            2
+          ],
+          "playerStartHP": 110,
+          "postEncounterHealCap": {
+            "1": 1,
+            "2": 0.9,
+            "3": 0.8,
+            "4": 0.65
+          }
+        },
+        "compositeScore": 6.065,
+        "metricScores": {
+          "survivalFit": 0.403,
+          "pacingFit": 0,
+          "foodFit": 0,
+          "goldEfficiencyFit": 0,
+          "closeCallFit": 1.143,
+          "overkillFit": 1
+        },
+        "profileMetrics": {
+          "developing_newbie-relaxed-asc0": {
+            "survivalRate": 0.09,
+            "avgFinalFloor": 13.05,
+            "avgTurnsPerEncounter": 3.962943379699372,
+            "avgFoodPurchased": 0.12,
+            "avgGoldEarned": 1850.77,
+            "avgGoldSpent": 1162.13,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc0": {
+            "survivalRate": 0.04,
+            "avgFinalFloor": 9.8,
+            "avgTurnsPerEncounter": 4.125754026119319,
+            "avgFoodPurchased": 0.29,
+            "avgGoldEarned": 1195.35,
+            "avgGoldSpent": 761.85,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-relaxed-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 7.47,
+            "avgTurnsPerEncounter": 3.837644196933672,
+            "avgFoodPurchased": 0.15,
+            "avgGoldEarned": 781.31,
+            "avgGoldSpent": 517.25,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 5.96,
+            "avgTurnsPerEncounter": 4.224673232838438,
+            "avgFoodPurchased": 0.33,
+            "avgGoldEarned": 546.06,
+            "avgGoldSpent": 345.71,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc0": {
+            "survivalRate": 0.4,
+            "avgFinalFloor": 18.42,
+            "avgTurnsPerEncounter": 4.509537121083078,
+            "avgFoodPurchased": 1.78,
+            "avgGoldEarned": 3393.89,
+            "avgGoldSpent": 2254.41,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc0": {
+            "survivalRate": 0.22,
+            "avgFinalFloor": 14.04,
+            "avgTurnsPerEncounter": 4.838827831038545,
+            "avgFoodPurchased": 1.48,
+            "avgGoldEarned": 2304.43,
+            "avgGoldSpent": 1575.97,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc10": {
+            "survivalRate": 0.06,
+            "avgFinalFloor": 13.6,
+            "avgTurnsPerEncounter": 4.630999725950942,
+            "avgFoodPurchased": 0.95,
+            "avgGoldEarned": 2057.41,
+            "avgGoldSpent": 1497.57,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc10": {
+            "survivalRate": 0.05,
+            "avgFinalFloor": 9.73,
+            "avgTurnsPerEncounter": 4.883131201140706,
+            "avgFoodPurchased": 1.04,
+            "avgGoldEarned": 1349.15,
+            "avgGoldSpent": 940.6,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc0": {
+            "survivalRate": 0.7,
+            "avgFinalFloor": 21.77,
+            "avgTurnsPerEncounter": 3.649221045756584,
+            "avgFoodPurchased": 2.45,
+            "avgGoldEarned": 4395.96,
+            "avgGoldSpent": 3279.27,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc0": {
+            "survivalRate": 0.52,
+            "avgFinalFloor": 18.24,
+            "avgTurnsPerEncounter": 4.128900079605963,
+            "avgFoodPurchased": 2.12,
+            "avgGoldEarned": 3438.56,
+            "avgGoldSpent": 2567.34,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc10": {
+            "survivalRate": 0.28,
+            "avgFinalFloor": 18.21,
+            "avgTurnsPerEncounter": 3.796073153525082,
+            "avgFoodPurchased": 2.05,
+            "avgGoldEarned": 3406.07,
+            "avgGoldSpent": 2683.91,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc10": {
+            "survivalRate": 0.21,
+            "avgFinalFloor": 13.1,
+            "avgTurnsPerEncounter": 4.217352447777518,
+            "avgFoodPurchased": 1.56,
+            "avgGoldEarned": 2180.39,
+            "avgGoldSpent": 1709.4,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          }
+        }
+      },
+      {
+        "rank": 18,
+        "overrides": {
+          "baseEffectAttack": 10,
+          "baseEffectShield": 8,
+          "postEncounterHealPct": 0.06,
+          "fizzleEffectRatio": 0.1,
+          "floorDamageScalingPerFloor": 0.02,
+          "comboMultipliers": [
+            1,
+            1.1,
+            1.2,
+            1.3,
+            1.5
+          ],
+          "playerStartHP": 120,
+          "postEncounterHealCap": {
+            "1": 1,
+            "2": 1,
+            "3": 0.9,
+            "4": 0.8
+          }
+        },
+        "compositeScore": 6.068,
+        "metricScores": {
+          "survivalFit": 0.376,
+          "pacingFit": 0,
+          "foodFit": 0.082,
+          "goldEfficiencyFit": 0,
+          "closeCallFit": 1.143,
+          "overkillFit": 1
+        },
+        "profileMetrics": {
+          "developing_newbie-relaxed-asc0": {
+            "survivalRate": 0.07,
+            "avgFinalFloor": 11.28,
+            "avgTurnsPerEncounter": 4.053897517834036,
+            "avgFoodPurchased": 0.36,
+            "avgGoldEarned": 1474.81,
+            "avgGoldSpent": 913.67,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc0": {
+            "survivalRate": 0.05,
+            "avgFinalFloor": 7.43,
+            "avgTurnsPerEncounter": 4.300130900632448,
+            "avgFoodPurchased": 0.59,
+            "avgGoldEarned": 890.58,
+            "avgGoldSpent": 545.95,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-relaxed-asc10": {
+            "survivalRate": 0.01,
+            "avgFinalFloor": 6.72,
+            "avgTurnsPerEncounter": 3.9473236595276076,
+            "avgFoodPurchased": 0.29,
+            "avgGoldEarned": 674.72,
+            "avgGoldSpent": 415.89,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 4.58,
+            "avgTurnsPerEncounter": 4.218023630852579,
+            "avgFoodPurchased": 0.45,
+            "avgGoldEarned": 381.29,
+            "avgGoldSpent": 226.8,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc0": {
+            "survivalRate": 0.37,
+            "avgFinalFloor": 17.06,
+            "avgTurnsPerEncounter": 4.800743305638844,
+            "avgFoodPurchased": 0.55,
+            "avgGoldEarned": 3055.47,
+            "avgGoldSpent": 2011.49,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc0": {
+            "survivalRate": 0.15,
+            "avgFinalFloor": 10.98,
+            "avgTurnsPerEncounter": 5.257801747435941,
+            "avgFoodPurchased": 1.38,
+            "avgGoldEarned": 1676.08,
+            "avgGoldSpent": 1139.06,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc10": {
+            "survivalRate": 0.14,
+            "avgFinalFloor": 12.97,
+            "avgTurnsPerEncounter": 5.032137470411662,
+            "avgFoodPurchased": 0.93,
+            "avgGoldEarned": 2035.71,
+            "avgGoldSpent": 1430.34,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc10": {
+            "survivalRate": 0.01,
+            "avgFinalFloor": 5.83,
+            "avgTurnsPerEncounter": 5.18868552885007,
+            "avgFoodPurchased": 0.95,
+            "avgGoldEarned": 600.3,
+            "avgGoldSpent": 447.22,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc0": {
+            "survivalRate": 0.78,
+            "avgFinalFloor": 21.14,
+            "avgTurnsPerEncounter": 4.021071987995901,
+            "avgFoodPurchased": 0.51,
+            "avgGoldEarned": 4360.67,
+            "avgGoldSpent": 3166.07,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc0": {
+            "survivalRate": 0.47,
+            "avgFinalFloor": 15.41,
+            "avgTurnsPerEncounter": 4.520399729899729,
+            "avgFoodPurchased": 1.32,
+            "avgGoldEarned": 2800.03,
+            "avgGoldSpent": 2069.12,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc10": {
+            "survivalRate": 0.34,
+            "avgFinalFloor": 16.22,
+            "avgTurnsPerEncounter": 4.174790410977298,
+            "avgFoodPurchased": 1.13,
+            "avgGoldEarned": 2934.9,
+            "avgGoldSpent": 2267.81,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc10": {
+            "survivalRate": 0.16,
+            "avgFinalFloor": 10.93,
+            "avgTurnsPerEncounter": 4.6900077118251,
+            "avgFoodPurchased": 1.57,
+            "avgGoldEarned": 1749.78,
+            "avgGoldSpent": 1326.62,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          }
+        }
+      },
+      {
+        "rank": 19,
+        "overrides": {
+          "baseEffectAttack": 9,
+          "baseEffectShield": 6,
+          "postEncounterHealPct": 0.14,
+          "fizzleEffectRatio": 0.2,
+          "floorDamageScalingPerFloor": 0.03,
+          "comboMultipliers": [
+            1,
+            1.1,
+            1.25,
+            1.4,
+            1.75
+          ],
+          "playerStartHP": 120,
+          "postEncounterHealCap": {
+            "1": 1,
+            "2": 0.9,
+            "3": 0.8,
+            "4": 0.65
+          }
+        },
+        "compositeScore": 6.078,
+        "metricScores": {
+          "survivalFit": 0.407,
+          "pacingFit": 0,
+          "foodFit": 0,
+          "goldEfficiencyFit": 0,
+          "closeCallFit": 1.143,
+          "overkillFit": 1
+        },
+        "profileMetrics": {
+          "developing_newbie-relaxed-asc0": {
+            "survivalRate": 0.14,
+            "avgFinalFloor": 13.54,
+            "avgTurnsPerEncounter": 3.9454887979718207,
+            "avgFoodPurchased": 0.16,
+            "avgGoldEarned": 2013.66,
+            "avgGoldSpent": 1194.27,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc0": {
+            "survivalRate": 0.03,
+            "avgFinalFloor": 9.53,
+            "avgTurnsPerEncounter": 4.269321002266653,
+            "avgFoodPurchased": 0.16,
+            "avgGoldEarned": 1186.53,
+            "avgGoldSpent": 746.31,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-relaxed-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 7.85,
+            "avgTurnsPerEncounter": 3.9060435905759876,
+            "avgFoodPurchased": 0.2,
+            "avgGoldEarned": 829.95,
+            "avgGoldSpent": 566.45,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 5.51,
+            "avgTurnsPerEncounter": 4.274810055441635,
+            "avgFoodPurchased": 0.25,
+            "avgGoldEarned": 510.36,
+            "avgGoldSpent": 335.79,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc0": {
+            "survivalRate": 0.4,
+            "avgFinalFloor": 18.3,
+            "avgTurnsPerEncounter": 4.572467551614404,
+            "avgFoodPurchased": 1.55,
+            "avgGoldEarned": 3325.21,
+            "avgGoldSpent": 2262.17,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc0": {
+            "survivalRate": 0.22,
+            "avgFinalFloor": 12.78,
+            "avgTurnsPerEncounter": 4.868075273304965,
+            "avgFoodPurchased": 1.28,
+            "avgGoldEarned": 2038.09,
+            "avgGoldSpent": 1406.49,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc10": {
+            "survivalRate": 0.1,
+            "avgFinalFloor": 13.12,
+            "avgTurnsPerEncounter": 4.814924576614876,
+            "avgFoodPurchased": 0.91,
+            "avgGoldEarned": 2016.79,
+            "avgGoldSpent": 1446.47,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc10": {
+            "survivalRate": 0.04,
+            "avgFinalFloor": 8,
+            "avgTurnsPerEncounter": 5.31100908418692,
+            "avgFoodPurchased": 0.91,
+            "avgGoldEarned": 1005.13,
+            "avgGoldSpent": 708.87,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc0": {
+            "survivalRate": 0.69,
+            "avgFinalFloor": 21.78,
+            "avgTurnsPerEncounter": 3.8017930523495544,
+            "avgFoodPurchased": 2.55,
+            "avgGoldEarned": 4435.77,
+            "avgGoldSpent": 3296.04,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc0": {
+            "survivalRate": 0.5,
+            "avgFinalFloor": 18.07,
+            "avgTurnsPerEncounter": 4.3117475496393896,
+            "avgFoodPurchased": 1.98,
+            "avgGoldEarned": 3357.03,
+            "avgGoldSpent": 2542.57,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc10": {
+            "survivalRate": 0.35,
+            "avgFinalFloor": 18.4,
+            "avgTurnsPerEncounter": 3.7988146876934907,
+            "avgFoodPurchased": 2.07,
+            "avgGoldEarned": 3439.54,
+            "avgGoldSpent": 2713.28,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc10": {
+            "survivalRate": 0.1,
+            "avgFinalFloor": 12.3,
+            "avgTurnsPerEncounter": 4.475848378125106,
+            "avgFoodPurchased": 1.33,
+            "avgGoldEarned": 1919.76,
+            "avgGoldSpent": 1548.98,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          }
+        }
+      },
+      {
+        "rank": 20,
+        "overrides": {
+          "baseEffectAttack": 10,
+          "baseEffectShield": 9,
+          "postEncounterHealPct": 0.06,
+          "fizzleEffectRatio": 0.15,
+          "floorDamageScalingPerFloor": 0.02,
+          "comboMultipliers": [
+            1,
+            1.1,
+            1.2,
+            1.3,
+            1.5
+          ],
+          "playerStartHP": 110,
+          "postEncounterHealCap": {
+            "1": 1,
+            "2": 0.95,
+            "3": 0.85,
+            "4": 0.75
+          }
+        },
+        "compositeScore": 6.093,
+        "metricScores": {
+          "survivalFit": 0.381,
+          "pacingFit": 0,
+          "foodFit": 0.094,
+          "goldEfficiencyFit": 0,
+          "closeCallFit": 1.143,
+          "overkillFit": 1
+        },
+        "profileMetrics": {
+          "developing_newbie-relaxed-asc0": {
+            "survivalRate": 0.04,
+            "avgFinalFloor": 9.74,
+            "avgTurnsPerEncounter": 3.8906510869304998,
+            "avgFoodPurchased": 0.24,
+            "avgGoldEarned": 1194.41,
+            "avgGoldSpent": 785.33,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc0": {
+            "survivalRate": 0.01,
+            "avgFinalFloor": 6.99,
+            "avgTurnsPerEncounter": 4.19122076997077,
+            "avgFoodPurchased": 0.65,
+            "avgGoldEarned": 745.53,
+            "avgGoldSpent": 472.03,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-relaxed-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 5.82,
+            "avgTurnsPerEncounter": 3.9169065254777338,
+            "avgFoodPurchased": 0.24,
+            "avgGoldEarned": 534.92,
+            "avgGoldSpent": 346.95,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "developing_newbie-normal-asc10": {
+            "survivalRate": 0,
+            "avgFinalFloor": 4.29,
+            "avgTurnsPerEncounter": 4.238164489235781,
+            "avgFoodPurchased": 0.39,
+            "avgGoldEarned": 361.43,
+            "avgGoldSpent": 205.2,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc0": {
+            "survivalRate": 0.32,
+            "avgFinalFloor": 16.16,
+            "avgTurnsPerEncounter": 4.67307665224639,
+            "avgFoodPurchased": 0.45,
+            "avgGoldEarned": 2813.15,
+            "avgGoldSpent": 1886.25,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc0": {
+            "survivalRate": 0.18,
+            "avgFinalFloor": 10.9,
+            "avgTurnsPerEncounter": 4.854144142740896,
+            "avgFoodPurchased": 1.21,
+            "avgGoldEarned": 1687.8,
+            "avgGoldSpent": 1128.64,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-relaxed-asc10": {
+            "survivalRate": 0.09,
+            "avgFinalFloor": 10.45,
+            "avgTurnsPerEncounter": 4.9166144582867854,
+            "avgFoodPurchased": 0.76,
+            "avgGoldEarned": 1525.1,
+            "avgGoldSpent": 1068.37,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "regular-normal-asc10": {
+            "survivalRate": 0.04,
+            "avgFinalFloor": 6.07,
+            "avgTurnsPerEncounter": 5.0636992136518435,
+            "avgFoodPurchased": 1.08,
+            "avgGoldEarned": 709.55,
+            "avgGoldSpent": 490.93,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc0": {
+            "survivalRate": 0.58,
+            "avgFinalFloor": 20.21,
+            "avgTurnsPerEncounter": 3.9290733227059964,
+            "avgFoodPurchased": 0.64,
+            "avgGoldEarned": 4016.22,
+            "avgGoldSpent": 2976.19,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc0": {
+            "survivalRate": 0.35,
+            "avgFinalFloor": 14.32,
+            "avgTurnsPerEncounter": 4.640752523305154,
+            "avgFoodPurchased": 1.56,
+            "avgGoldEarned": 2609.86,
+            "avgGoldSpent": 1914.41,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-relaxed-asc10": {
+            "survivalRate": 0.27,
+            "avgFinalFloor": 15.62,
+            "avgTurnsPerEncounter": 4.07335421275908,
+            "avgFoodPurchased": 1.17,
+            "avgGoldEarned": 2854.72,
+            "avgGoldSpent": 2189.86,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          },
+          "dedicated-normal-asc10": {
+            "survivalRate": 0.1,
+            "avgFinalFloor": 8.63,
+            "avgTurnsPerEncounter": 4.683676451732715,
+            "avgFoodPurchased": 1.36,
+            "avgGoldEarned": 1181.66,
+            "avgGoldSpent": 912.1,
+            "closeCallRate": 0,
+            "overkillRate": 0
+          }
+        }
+      }
+    ],
+    "sensitivity": {
+      "baseEffectAttack": -0.043,
+      "baseEffectShield": -0.03,
+      "postEncounterHealPct": -0.098,
+      "fizzleEffectRatio": -0.105,
+      "floorDamageScalingPerFloor": 0.527,
+      "playerStartHP": -0.546
+    },
+    "controlBaseline": {
+      "sweep-control-developing_newbie-relaxed-asc0": {
+        "runs": 100,
+        "survivalRate": 0.03,
+        "avgFinalFloor": 12.76,
+        "avgAccuracy": 0.6507258613079254,
+        "avgMaxCombo": 7.17,
+        "avgDPS": 24.60869862525935,
+        "avgDamageTakenPerEnc": 17.56812084802299,
+        "avgTurnsPerEncounter": 3.936850416122164,
+        "avgGoldEarned": 1704.95,
+        "avgGoldSpent": 1123.18,
+        "avgUpgrades": 10.19,
+        "avgShopRelicsPurchased": 8.49,
+        "avgActiveSynergies": 0.08,
+        "avgFoodPurchased": 0.18,
+        "closeCallRate": 0,
+        "overkillRate": 0,
+        "avgMinHpReached": 0
+      },
+      "sweep-control-developing_newbie-normal-asc0": {
+        "runs": 100,
+        "survivalRate": 0,
+        "avgFinalFloor": 9.38,
+        "avgAccuracy": 0.5828214924070667,
+        "avgMaxCombo": 6.17,
+        "avgDPS": 20.001303525362268,
+        "avgDamageTakenPerEnc": 19.608618164989863,
+        "avgTurnsPerEncounter": 4.200112238835578,
+        "avgGoldEarned": 1138.68,
+        "avgGoldSpent": 753.17,
+        "avgUpgrades": 6.72,
+        "avgShopRelicsPurchased": 5.38,
+        "avgActiveSynergies": 0.07,
+        "avgFoodPurchased": 0.31,
+        "closeCallRate": 0,
+        "overkillRate": 0,
+        "avgMinHpReached": 0
+      },
+      "sweep-control-developing_newbie-relaxed-asc10": {
+        "runs": 100,
+        "survivalRate": 0,
+        "avgFinalFloor": 8.79,
+        "avgAccuracy": 0.6474602309212771,
+        "avgMaxCombo": 6.56,
+        "avgDPS": 23.5281036289147,
+        "avgDamageTakenPerEnc": 21.068166288619654,
+        "avgTurnsPerEncounter": 3.8319572727391162,
+        "avgGoldEarned": 995.98,
+        "avgGoldSpent": 623.48,
+        "avgUpgrades": 6.53,
+        "avgShopRelicsPurchased": 4.38,
+        "avgActiveSynergies": 0.04,
+        "avgFoodPurchased": 0.19,
+        "closeCallRate": 0,
+        "overkillRate": 0,
+        "avgMinHpReached": 0
+      },
+      "sweep-control-developing_newbie-normal-asc10": {
+        "runs": 100,
+        "survivalRate": 0,
+        "avgFinalFloor": 5.44,
+        "avgAccuracy": 0.5672061392755905,
+        "avgMaxCombo": 4.72,
+        "avgDPS": 18.654836720284333,
+        "avgDamageTakenPerEnc": 24.818595561981287,
+        "avgTurnsPerEncounter": 4.0007679859587935,
+        "avgGoldEarned": 480.66,
+        "avgGoldSpent": 311.07,
+        "avgUpgrades": 3.7,
+        "avgShopRelicsPurchased": 1.87,
+        "avgActiveSynergies": 0,
+        "avgFoodPurchased": 0.23,
+        "closeCallRate": 0,
+        "overkillRate": 0,
+        "avgMinHpReached": 0
+      },
+      "sweep-control-regular-relaxed-asc0": {
+        "runs": 100,
+        "survivalRate": 0.36,
+        "avgFinalFloor": 19.01,
+        "avgAccuracy": 0.6975664751804581,
+        "avgMaxCombo": 9.98,
+        "avgDPS": 26.825623584075444,
+        "avgDamageTakenPerEnc": 10.73807903577595,
+        "avgTurnsPerEncounter": 4.4392472150516475,
+        "avgGoldEarned": 3490.89,
+        "avgGoldSpent": 2329.79,
+        "avgUpgrades": 17.99,
+        "avgShopRelicsPurchased": 18.89,
+        "avgActiveSynergies": 0.34,
+        "avgFoodPurchased": 1.8,
+        "closeCallRate": 0,
+        "overkillRate": 0,
+        "avgMinHpReached": 0
+      },
+      "sweep-control-regular-normal-asc0": {
+        "runs": 100,
+        "survivalRate": 0.2,
+        "avgFinalFloor": 13.91,
+        "avgAccuracy": 0.6220174590638906,
+        "avgMaxCombo": 7.87,
+        "avgDPS": 21.18416213179603,
+        "avgDamageTakenPerEnc": 14.277082675611812,
+        "avgTurnsPerEncounter": 4.847756428039092,
+        "avgGoldEarned": 2242.2,
+        "avgGoldSpent": 1561.5,
+        "avgUpgrades": 12.49,
+        "avgShopRelicsPurchased": 12.15,
+        "avgActiveSynergies": 0.25,
+        "avgFoodPurchased": 1.41,
+        "closeCallRate": 0,
+        "overkillRate": 0,
+        "avgMinHpReached": 0
+      },
+      "sweep-control-regular-relaxed-asc10": {
+        "runs": 100,
+        "survivalRate": 0.09,
+        "avgFinalFloor": 13.29,
+        "avgAccuracy": 0.6952780886429075,
+        "avgMaxCombo": 8.65,
+        "avgDPS": 22.817123561741347,
+        "avgDamageTakenPerEnc": 15.838381895369984,
+        "avgTurnsPerEncounter": 4.715826224435228,
+        "avgGoldEarned": 2018.53,
+        "avgGoldSpent": 1468.08,
+        "avgUpgrades": 11.84,
+        "avgShopRelicsPurchased": 10.95,
+        "avgActiveSynergies": 0.17,
+        "avgFoodPurchased": 1.08,
+        "closeCallRate": 0,
+        "overkillRate": 0,
+        "avgMinHpReached": 0
+      },
+      "sweep-control-regular-normal-asc10": {
+        "runs": 100,
+        "survivalRate": 0.02,
+        "avgFinalFloor": 7.41,
+        "avgAccuracy": 0.6032406227514656,
+        "avgMaxCombo": 6.29,
+        "avgDPS": 16.369221187174382,
+        "avgDamageTakenPerEnc": 21.79750579866079,
+        "avgTurnsPerEncounter": 5.2685095220547895,
+        "avgGoldEarned": 886.35,
+        "avgGoldSpent": 639.78,
+        "avgUpgrades": 6.04,
+        "avgShopRelicsPurchased": 4.56,
+        "avgActiveSynergies": 0.09,
+        "avgFoodPurchased": 0.73,
+        "closeCallRate": 0,
+        "overkillRate": 0,
+        "avgMinHpReached": 0
+      },
+      "sweep-control-dedicated-relaxed-asc0": {
+        "runs": 100,
+        "survivalRate": 0.64,
+        "avgFinalFloor": 21.72,
+        "avgAccuracy": 0.7496871199383256,
+        "avgMaxCombo": 9.98,
+        "avgDPS": 36.59191762011133,
+        "avgDamageTakenPerEnc": 9.444035658785658,
+        "avgTurnsPerEncounter": 3.636856883856885,
+        "avgGoldEarned": 4355.65,
+        "avgGoldSpent": 3259.91,
+        "avgUpgrades": 20.95,
+        "avgShopRelicsPurchased": 27.32,
+        "avgActiveSynergies": 0.69,
+        "avgFoodPurchased": 2.67,
+        "closeCallRate": 0,
+        "overkillRate": 0,
+        "avgMinHpReached": 0
+      },
+      "sweep-control-dedicated-normal-asc0": {
+        "runs": 100,
+        "survivalRate": 0.44,
+        "avgFinalFloor": 18.01,
+        "avgAccuracy": 0.6812274022107171,
+        "avgMaxCombo": 8.94,
+        "avgDPS": 29.98091040731596,
+        "avgDamageTakenPerEnc": 12.508050833991554,
+        "avgTurnsPerEncounter": 4.116356350899494,
+        "avgGoldEarned": 3429.04,
+        "avgGoldSpent": 2588.66,
+        "avgUpgrades": 16.78,
+        "avgShopRelicsPurchased": 21.49,
+        "avgActiveSynergies": 0.55,
+        "avgFoodPurchased": 2.2,
+        "closeCallRate": 0,
+        "overkillRate": 0,
+        "avgMinHpReached": 0
+      },
+      "sweep-control-dedicated-relaxed-asc10": {
+        "runs": 100,
+        "survivalRate": 0.16,
+        "avgFinalFloor": 16.49,
+        "avgAccuracy": 0.7492428883648132,
+        "avgMaxCombo": 9.03,
+        "avgDPS": 33.13354416134616,
+        "avgDamageTakenPerEnc": 13.050247066624234,
+        "avgTurnsPerEncounter": 3.8396322889847,
+        "avgGoldEarned": 2831.67,
+        "avgGoldSpent": 2264.83,
+        "avgUpgrades": 15.06,
+        "avgShopRelicsPurchased": 18.2,
+        "avgActiveSynergies": 0.44,
+        "avgFoodPurchased": 1.46,
+        "closeCallRate": 0,
+        "overkillRate": 0,
+        "avgMinHpReached": 0
+      },
+      "sweep-control-dedicated-normal-asc10": {
+        "runs": 100,
+        "survivalRate": 0.1,
+        "avgFinalFloor": 12.95,
+        "avgAccuracy": 0.6737500168067652,
+        "avgMaxCombo": 7.62,
+        "avgDPS": 26.366171593778393,
+        "avgDamageTakenPerEnc": 16.536637951948215,
+        "avgTurnsPerEncounter": 4.304401084049465,
+        "avgGoldEarned": 2032.51,
+        "avgGoldSpent": 1651.89,
+        "avgUpgrades": 11.23,
+        "avgShopRelicsPurchased": 12.84,
+        "avgActiveSynergies": 0.27,
+        "avgFoodPurchased": 1.53,
+        "closeCallRate": 0,
+        "overkillRate": 0,
+        "avgMinHpReached": 0
+      }
+    }
+  }
+}

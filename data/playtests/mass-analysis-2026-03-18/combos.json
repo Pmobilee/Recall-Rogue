@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "generatedAt": "2026-03-18T02:30:55.021Z",
+    "totalRuns": 1267200,
+    "seedsPerConfig": 600,
+    "floors": 24,
+    "elapsedMs": 2910850,
+    "mode": "combos"
+  },
+  "controlBaselines": {
+    "control-regular-asc0": {
+      "runs": 600,
+      "survivalRate": 0.20166666666666666,
+      "avgFinalFloor": 14.041666666666666,
+      "avgAccuracy": 0.6238087958858471,
+      "avgMaxCombo": 8.118333333333334,
+      "avgDPS": 21.10694970795424,
+      "avgDamageTakenPerEnc": 14.40019915679063,
+      "avgTurnsPerEncounter": 4.88848724271096,
+      "avgGoldEarned": 2285.8933333333334,
+      "avgGoldSpent": 1559.9416666666666,
+      "avgUpgrades": 12.616666666666667,
+      "avgShopRelicsPurchased": 12.243333333333334,
+      "avgActiveSynergies": 0.21833333333333332,
+      "avgFoodPurchased": 1.4416666666666667,
+      "closeCallRate": 0,
+      "overkillRate": 0,
+      "avgMinHpReached": 0
+    },
+    "control-regular-asc10": {
+      "runs": 600,
+      "survivalRate": 0.018333333333333333,
+      "avgFinalFloor": 8.543333333333333,
+      "avgAccuracy": 0.6081352387010128,
+      "avgMaxCombo": 6.75,
+      "avgDPS": 17.5758798558026,
+      "avgDamageTakenPerEnc": 19.74109507520177,
+      "avgTurnsPerEncounter": 5.1188146147697795,
+      "avgGoldEarned": 1077.96,
+      "avgGoldSpent": 790.9416666666667,
+      "avgUpgrades": 6.996666666666667,
+      "avgShopRelicsPurchased": 5.628333333333333,
+      "avgActiveSynergies": 0.075,
+      "avgFoodPurchased": 0.905,
+      "closeCallRate": 0,
+      "overkillRate": 0,
+      "avgMinHpReached": 0
+    },
+    "control-regular-asc20": {
+      "runs": 600,
+      "survivalRate": 0,
+      "avgFinalFloor": 1,
+      "avgAccuracy": 0.5575312894613503,
+      "avgMaxCombo": 0.5766666666666667,
+      "avgDPS": 6.003333333333333,
+      "avgDamageTakenPerEnc": 0.013333333333333334,
+      "avgTurnsPerEncounter": 1.0125,
+      "avgGoldEarned": 0.16,
+      "avgGoldSpent": 0,
+      "avgUpgrades": 0,
+      "avgShopRelicsPurchased": 0,
+      "avgActiveSynergies": 0,
+      "avgFoodPurchased": 0,
+      "closeCallRate": 0,
+      "overkillRate": 0,
+      "avgMinHpReached": 0
+    }
+  },
+  "soloRelicImpact": [],
+  "comboAnalysis": [],
+  "buildPerformance": [],
+  "skillFairness": [],
+  "progressionCurve": [],
+  "flags": {
+    "overpowered": [],
+    "underpowered": [],
+    "brokenSynergies": [],
+    "immortality": []
+  }
+}

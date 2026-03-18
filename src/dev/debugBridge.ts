@@ -5,6 +5,7 @@
  */
 
 import { initPlaytestAPI } from './playtestAPI'
+import { initScenarioSimulator } from './scenarioSimulator'
 
 export interface TerraDebugSnapshot {
   currentScreen: string;
@@ -150,4 +151,7 @@ export function initDebugBridge(): void {
 
   // Initialize the playtest gameplay API (window.__terraPlay)
   initPlaytestAPI();
+
+  // Initialize the scenario simulator (window.__terraScenario)
+  initScenarioSimulator();
 }

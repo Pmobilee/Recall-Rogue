@@ -211,6 +211,31 @@ async function bootGame(): Promise<void> {
 
   // Reschedule local push notifications on every app open.
   rescheduleNotificationsFromPlayerState()
+
+  // Auto-load scenario from URL param — dev only.
+  // Usage: ?scenario=combat-boss  or  ?scenario=shop
+  if (import.meta.env.DEV) {
+    const scenarioParam = urlParams.get('scenario')
+    if (scenarioParam) {
+      // Wait for debug bridge (which registers __terraScenario) to be ready, then load.
+      // The bridge is initialized via a deferred import above, so we poll briefly.
+      const tryLoadScenario = async (attemptsLeft: number): Promise<void> => {
+        const scenarioApi = (window as any).__terraScenario
+        if (scenarioApi) {
+          console.log(`[dev] Auto-loading scenario from URL: "${scenarioParam}"`)
+          const result = await scenarioApi.load(scenarioParam)
+          if (!result.ok) {
+            console.warn(`[dev] Scenario "${scenarioParam}" failed:`, result.message)
+          }
+        } else if (attemptsLeft > 0) {
+          setTimeout(() => tryLoadScenario(attemptsLeft - 1), 200)
+        } else {
+          console.warn('[dev] __terraScenario not available — scenario URL param ignored')
+        }
+      }
+      setTimeout(() => tryLoadScenario(20), 500)
+    }
+  }
 }
 
 bootGame()
