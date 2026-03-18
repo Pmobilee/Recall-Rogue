@@ -7,7 +7,8 @@ import type { AnimArchetype } from '../../data/enemyAnimations'
 import { getRandomCombatBg } from '../../data/backgroundManifest'
 import { ENEMY_TEMPLATES } from '../../data/enemies'
 import { BASE_WIDTH } from '../../data/layout'
-import type { LayoutMode } from '../../stores/layoutStore'
+import { get } from 'svelte/store'
+import { layoutMode, type LayoutMode } from '../../stores/layoutStore'
 
 /** Layout constants for first-person combat display zone (top ~58% of viewport). */
 const DISPLAY_ZONE_HEIGHT_PCT = 0.58
@@ -54,10 +55,19 @@ const PLAYER_HP_BAR_TOP_PCT = 0.56
 const PLAYER_HP_BAR_BOTTOM_PCT = 0.88
 const USE_OVERLAY_PLAYER_HUD = true
 
-/** Enemy first-person sprite sizes by enemy tier. */
+/** Enemy first-person sprite sizes by enemy tier (portrait, scaled by scaleFactor). */
 const ENEMY_SIZE_COMMON = 300
 const ENEMY_SIZE_ELITE = 340
 const ENEMY_SIZE_BOSS = 400
+
+/**
+ * Enemy display sizes for LANDSCAPE mode, in absolute game units (NOT multiplied by scaleFactor).
+ * The right 30% panel is 384px at 1280 game width. Enemy must fit comfortably within it.
+ * These are raw pixel values used directly without scaleFactor multiplication.
+ */
+const LANDSCAPE_ENEMY_SIZE_COMMON = 200
+const LANDSCAPE_ENEMY_SIZE_ELITE = 240
+const LANDSCAPE_ENEMY_SIZE_BOSS = 280
 
 /** Color constants. */
 const COLOR_HP_RED = 0xe74c3c
@@ -78,7 +88,18 @@ function categoryColor(category: 'common' | 'elite' | 'mini_boss' | 'boss'): num
   }
 }
 
-function enemyDisplaySize(category: 'common' | 'elite' | 'mini_boss' | 'boss'): number {
+/**
+ * Get the enemy display size for the given category and layout mode.
+ * In portrait: returns pixel units that will be multiplied by scaleFactor (w/BASE_WIDTH).
+ * In landscape: returns absolute game units that must NOT be multiplied by scaleFactor,
+ * since the enemy panel is ~384px at 1280 game width and portrait sizes are design for 390px viewport.
+ */
+function enemyDisplaySize(category: 'common' | 'elite' | 'mini_boss' | 'boss', layoutMode: LayoutMode = 'portrait'): number {
+  if (layoutMode === 'landscape') {
+    if (category === 'boss') return LANDSCAPE_ENEMY_SIZE_BOSS
+    if (category === 'elite' || category === 'mini_boss') return LANDSCAPE_ENEMY_SIZE_ELITE
+    return LANDSCAPE_ENEMY_SIZE_COMMON
+  }
   if (category === 'boss') return ENEMY_SIZE_BOSS
   if (category === 'elite' || category === 'mini_boss') return ENEMY_SIZE_ELITE
   return ENEMY_SIZE_COMMON
@@ -226,7 +247,11 @@ export class CombatScene extends Phaser.Scene {
     const isLandscape = this.currentLayoutMode === 'landscape'
 
     // ── Enemy position ──────────────────────────────────────
-    const size = Math.round(enemyDisplaySize(this.currentEnemyCategory) * this.scaleFactor)
+    // Landscape: use absolute game units (not scaled by scaleFactor) since the right-30% panel
+    // is ~384px at 1280 game width, whereas portrait sizes were designed for a 390px viewport.
+    const size = isLandscape
+      ? enemyDisplaySize(this.currentEnemyCategory, 'landscape')
+      : Math.round(enemyDisplaySize(this.currentEnemyCategory) * this.scaleFactor)
     let enemyX: number
     let enemyY: number
 
@@ -664,6 +689,15 @@ export class CombatScene extends Phaser.Scene {
     this.events.on('sleep', this.onShutdown, this)
     this.events.on('wake', this.onWake, this)
 
+    // Fix 1 (AR-97): Sync layout mode on scene create — the scene may have been
+    // sleeping when the layout changed, so CardGameManager's handleLayoutChange
+    // broadcast was missed. Read the store directly to catch up.
+    const initialMode = get(layoutMode)
+    if (initialMode !== this.currentLayoutMode) {
+      this.currentLayoutMode = initialMode
+      this.repositionAll()
+    }
+
     this.sceneReady = true
   }
 
@@ -702,7 +736,10 @@ export class CombatScene extends Phaser.Scene {
     this.currentEnemyMaxHP = maxHP
     this.currentEnemyId = enemyId ?? this.currentEnemyId
     this.currentEnemyCategory = category
-    const size = Math.round(enemyDisplaySize(category) * this.scaleFactor)
+    // Landscape: use absolute game units (not scaled by scaleFactor)
+    const size = this.currentLayoutMode === 'landscape'
+      ? enemyDisplaySize(category, 'landscape')
+      : Math.round(enemyDisplaySize(category) * this.scaleFactor)
     const enemyX = this.getEnemyX()
     const enemyY = this.getEnemyY(size)
     this.currentEnemyY = enemyY
@@ -1183,7 +1220,9 @@ export class CombatScene extends Phaser.Scene {
     if (this.reduceMotion) return
     const enemyX = this.getEnemyX()
     const enemyY = this.currentEnemyY
-    const size = enemyDisplaySize(this.currentEnemyCategory)
+    const size = this.currentLayoutMode === 'landscape'
+      ? enemyDisplaySize(this.currentEnemyCategory, 'landscape')
+      : Math.round(enemyDisplaySize(this.currentEnemyCategory) * this.scaleFactor)
     const shieldRect = this.add.rectangle(enemyX, enemyY, size, size, 0x3498db, 0).setDepth(3)
     this.tweens.add({
       targets: shieldRect,
@@ -1777,6 +1816,15 @@ export class CombatScene extends Phaser.Scene {
   /** Re-sync display on wake/resume. */
   private onWake(): void {
     this.reduceMotion = isReduceMotionEnabled()
+
+    // Fix 1 (AR-97): Re-check layout mode on every wake — the scene may have
+    // been sleeping when CardGameManager broadcast a layout change.
+    const currentMode = get(layoutMode)
+    if (currentMode !== this.currentLayoutMode) {
+      this.currentLayoutMode = currentMode
+      this.repositionAll()
+    }
+
     this.previousPlayerHpRatio = this.currentPlayerMaxHP > 0
       ? this.currentPlayerHP / this.currentPlayerMaxHP
       : 1

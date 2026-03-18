@@ -2389,11 +2389,11 @@
     transform: none;
   }
 
-  /* End turn button: right side above card hand, left of enemy panel */
+  /* End turn button: bottom-right corner, just above the card hand strip */
   .layout-landscape .end-turn-btn {
     position: fixed;
-    bottom: 27vh;
-    right: 31%;
+    bottom: calc(26vh + 8px);
+    right: 24px;
     left: auto;
     transform: none;
   }
@@ -2428,5 +2428,18 @@
   /* Must-charge tooltip: above center of hand strip */
   .layout-landscape .must-charge-tooltip {
     bottom: 28vh;
+  }
+
+  /* AR-96: Subtle vertical divider between center stage (left 70%) and enemy panel (right 30%) */
+  .layout-landscape::after {
+    content: '';
+    position: fixed;
+    left: 70vw;
+    top: 0;
+    bottom: 25vh;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+    z-index: 5;
   }
 </style>

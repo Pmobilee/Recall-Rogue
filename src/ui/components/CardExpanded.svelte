@@ -445,27 +445,26 @@
     animation: slide-up 200ms ease-out;
   }
 
-  /* AR-76: Landscape quiz positioning — center stage (left 70%, above card hand) */
+  /* AR-96: Landscape quiz positioning — left 70% center stage, above card hand */
   .card-expanded-landscape {
-    /* Override portrait centering */
-    top: auto;
-    left: 0;
-    right: 30%;
-    bottom: 26vh;
-    transform: none;
-    /* Center within the left-70%-above-hand region */
-    margin: auto;
-    /* Panel width constraints */
-    width: min(50vw, 640px);
-    max-width: min(50vw, 640px);
-    /* Vertically center in the available center-stage area */
     position: fixed;
-    top: 50%;
-    left: calc((70vw - min(50vw, 640px)) / 2);
-    right: auto;
-    bottom: auto;
-    transform: translateY(calc(-50% - 13vh)); /* shift up from true center by half card-hand height */
-    max-height: calc(74vh - 26vh);
+    /* Horizontally: centered within left 70%, with small padding */
+    left: 5vw;
+    right: 32vw; /* leaves ~30% for enemy panel + 2% breathing room */
+    /* Vertically: from top with small padding, down to above card hand */
+    top: 3vh;
+    bottom: 27vh;
+    /* Layout */
+    width: auto;
+    max-width: none;
+    /* Scrollable if content overflows */
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* Override portrait transform/centering */
+    transform: none;
+    margin: 0;
+    /* Reduce max-height to fit between top and card hand */
+    max-height: calc(70vh);
     /* Animation override */
     animation: slide-up-landscape 200ms ease-out;
   }
