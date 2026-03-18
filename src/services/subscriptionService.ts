@@ -69,9 +69,7 @@ export async function purchaseAdRemoval(): Promise<{ success: boolean; error?: s
 export function openSubscriptionManagement(): void {
   // On native, this would open the platform's subscription management
   // In browser, open a help page
-  if (typeof window !== 'undefined') {
-    console.log('[Subscription] Opening subscription management')
-  }
+  // no-op: platform subscription UI handled natively by App Store / Play Store
 }
 
 /** Check content volume gate — subscriptions require 3,000 approved facts */

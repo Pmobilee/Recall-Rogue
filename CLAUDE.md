@@ -25,7 +25,7 @@ src/ui/            — Svelte components (card hand, combat UI, menus)
 src/services/      — Quiz engine, SM-2 scheduler, API client, caching
 src/data/          — TypeScript types, schemas, fact database, enemy definitions
 src/assets/        — Sprites, card art, audio, UI graphics
-src/_archived-mining/ — Archived mining-specific code (not compiled)
+src/_archived/       — Archived deprecated components (not compiled)
 docs/              — Project documentation (LLM-optimized)
 docs/RESEARCH/     — Design specs and research (source of truth for game design)
 ```
@@ -136,15 +136,14 @@ Two tools available — use the right one for the job:
 **Run all E2E checks:**
 ```bash
 node tests/e2e/01-app-loads.cjs
-node tests/e2e/02-mine-quiz-flow.cjs
 node tests/e2e/03-save-resume.cjs
 ```
 
 - **ALWAYS capture diagnostics** — screenshots alone miss silent JS failures
 - **ALWAYS verify before ending a session** — run at least `01-app-loads.cjs`
-- **ALWAYS run unit tests after logic changes** — `npx vitest run` (240+ tests); typecheck alone is not enough
-- **data-testid selectors**: `btn-start-run`, `btn-enter-mine`, `card-0`..`card-4`, `quiz-answer-0`..`quiz-answer-2`, `btn-age-adult`, `btn-cash-out`, `btn-descend`, `combo-counter`, `room-choice-0`..`room-choice-2`
-- **Screen flow**: Start Run (`btn-start-run`) → choose domain → combat encounters → cash out (`btn-cash-out`) or descend deeper (`btn-descend`)
+- **ALWAYS run unit tests after logic changes** — `npx vitest run` (1900+ tests); typecheck alone is not enough
+- **data-testid selectors**: `btn-start-run`, `card-hand-0`..`card-hand-4`, `quiz-answer-0`..`quiz-answer-2`, `btn-age-adult`, `btn-retreat`, `btn-delve`, `combo-counter`, `room-choice-0`..`room-choice-2`
+- **Screen flow**: Start Run (`btn-start-run`) → choose domain → combat encounters → retreat (`btn-retreat`) or delve deeper (`btn-delve`)
 - Full reference: see `memory/playwright-workflow.md` in the auto-memory directory
 
 ### 3. Playwright Test Agents (test creation and healing)
@@ -320,4 +319,4 @@ Scripts like `mine-distractors.mjs` or any `SELECT correct_answer FROM facts WHE
 - `npm run build` — Production build
 - `npm run typecheck` — Run TypeScript/Svelte type checking
 - `npm run check` — Full type check (app + node configs)
-- `npx vitest run` — Run 215+ unit tests (run after any logic/data changes)
+- `npx vitest run` — Run 1900+ unit tests (run after any logic/data changes)

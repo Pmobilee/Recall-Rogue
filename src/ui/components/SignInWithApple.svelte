@@ -48,7 +48,7 @@
       })
       // Send identityToken to server for JWT exchange
       // POST /api/auth/apple with { identityToken, authorizationCode }
-      console.log('[AppleSignIn] Success, sending token to server')
+      if (import.meta.env.DEV) console.log('[AppleSignIn] Success, sending token to server')
     } catch (err) {
       console.warn('[AppleSignIn] Failed or cancelled', err)
     }

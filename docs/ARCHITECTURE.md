@@ -997,3 +997,28 @@ Semantic bins (~50 broad, ~200 narrow sub-bins) are assigned at build time by So
 - `scripts/content-pipeline/vocab/import-hsk-complete.mjs` — Chinese vocab import
 - `scripts/content-pipeline/vocab/vocab-to-facts-v2.mjs` — Vocab→fact conversion (all languages)
 - `scripts/build-facts-db.mjs` — Database builder
+
+---
+
+## Service Status
+
+Audit conducted 2026-03-18. Covers 15 suspect services plus core SM-2 service. Status key: **IMPLEMENTED** = real logic present; **PARTIAL STUB** = partial implementation with some no-op/TODO functions; **NOT FOUND** = file does not exist.
+
+| Service | File Path | Status | Consumers | Notes |
+|---------|-----------|--------|-----------|-------|
+| sm2.ts | `src/services/sm2.ts` | IMPLEMENTED | 9 files | Core spaced-repetition scheduler — active on every quiz answer |
+| analyticsService.ts | `src/services/analyticsService.ts` | IMPLEMENTED | 10+ files | Batched event tracking, COPPA compliance, A/B experiment assignment |
+| syncService.ts | `src/services/syncService.ts` | IMPLEMENTED | 4 files | Debounced cloud save with conflict resolution and field-level merge |
+| masteryChallengeService.ts | `src/services/masteryChallengeService.ts` | IMPLEMENTED | 2 files | Mastery challenge roll logic, integrates with factsDB and tier derivation |
+| dailyExpeditionService.ts | `src/services/dailyExpeditionService.ts` | IMPLEMENTED | 2 files | Daily run with localStorage persistence, bot leaderboard, API integration |
+| endlessDepthsService.ts | `src/services/endlessDepthsService.ts` | IMPLEMENTED | 2 files | Endless mode personal records + bot baseline leaderboard + API |
+| scholarChallengeService.ts | `src/services/scholarChallengeService.ts` | IMPLEMENTED | 2 files | Weekly domain-pair challenge with bot leaderboard and API integration |
+| challengeService.ts | `src/services/challengeService.ts` | IMPLEMENTED | 1 file | Session-scoped streak tracker; awards prestige points at milestones |
+| errorReporting.ts | `src/services/errorReporting.ts` | IMPLEMENTED | 1 file | Global uncaught exception + rejection handlers, fire-and-forget to backend |
+| duelService.ts | `src/services/duelService.ts` | IMPLEMENTED | 1 file | REST API wrapper for async player duels (challenge/accept/submit/history) |
+| guildService.ts | `src/services/guildService.ts` | IMPLEMENTED | 2 files | REST API wrapper for guild CRUD and member management |
+| coopService.ts | `src/services/coopService.ts` | IMPLEMENTED | 2 files | REST + WebSocket facade for co-op dives; includes client-side prediction |
+| steamService.ts | `src/services/steamService.ts` | PARTIAL STUB | 2 files | Achievements and rich presence wired to Tauri IPC; cloudSave/cloudLoad/DLC/leaderboards are commented-out TODOs pending Rust backend |
+| leaderboardService.ts | `src/services/leaderboardService.ts` | NOT FOUND | — | File never created; leaderboard fetch logic lives in `leaderboardFetch.ts` |
+| seasonService.ts | `src/services/seasonService.ts` | NOT FOUND | — | File never created; no season service logic exists |
+| seasonPass.ts (service) | `src/services/seasonPass.ts` | NOT FOUND | — | File never created as a service; season pass data lives in `src/data/seasonPass.ts` (imported by SeasonPassView.svelte) |

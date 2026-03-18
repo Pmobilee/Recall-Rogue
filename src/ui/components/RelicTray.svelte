@@ -1,30 +1,38 @@
 <script lang="ts">
   import { getRelicIconPath } from '../utils/iconAssets'
+  import { SHOP_RELIC_PRICE, RELIC_SELL_REFUND_PCT } from '../../data/balance'
 
   interface DisplayRelic {
     definitionId: string
     name: string
     description: string
     icon: string
+    rarity?: string
   }
 
   interface Props {
     relics: DisplayRelic[]
     triggeredRelicId?: string | null
     maxSlots?: number
+    /** Optional callback: called with definitionId when player confirms a sell. */
+    onsell?: (definitionId: string) => void
   }
 
-  let { relics, triggeredRelicId = null, maxSlots = 5 }: Props = $props()
+  let { relics, triggeredRelicId = null, maxSlots = 5, onsell }: Props = $props()
 
   /** Index of the relic whose tooltip is currently open, or null if none. */
   let openTooltipIndex: number | null = $state(null)
+  /** DefinitionId of the relic pending sell confirmation, or null if none. */
+  let pendingSellId: string | null = $state(null)
 
   function toggleTooltip(index: number) {
     openTooltipIndex = openTooltipIndex === index ? null : index
+    pendingSellId = null
   }
 
   function closeTooltip() {
     openTooltipIndex = null
+    pendingSellId = null
   }
 
   function handleOutsideClick(e: MouseEvent) {
@@ -42,6 +50,26 @@
       }
     }
   })
+
+  function getSellValue(relic: DisplayRelic): number {
+    const basePrice = SHOP_RELIC_PRICE[relic.rarity ?? 'common'] ?? 0
+    return Math.floor(basePrice * RELIC_SELL_REFUND_PCT)
+  }
+
+  function handleSellClick(relic: DisplayRelic) {
+    pendingSellId = relic.definitionId
+  }
+
+  function confirmSell(relic: DisplayRelic) {
+    if (onsell) {
+      onsell(relic.definitionId)
+    }
+    closeTooltip()
+  }
+
+  function cancelSell() {
+    pendingSellId = null
+  }
 </script>
 
 <div class="relic-tray">
@@ -74,6 +102,31 @@
           <div class="tooltip-arrow"></div>
           <div class="tooltip-name">{relic.name}</div>
           <div class="tooltip-desc">{relic.description}</div>
+          {#if onsell}
+            {#if pendingSellId === relic.definitionId}
+              <div class="tooltip-sell-confirm">
+                <span class="sell-confirm-label">Sell for {getSellValue(relic)}g?</span>
+                <div class="sell-confirm-btns">
+                  <button
+                    type="button"
+                    class="sell-confirm-yes"
+                    onclick={(e) => { e.stopPropagation(); confirmSell(relic) }}
+                  >Yes</button>
+                  <button
+                    type="button"
+                    class="sell-confirm-no"
+                    onclick={(e) => { e.stopPropagation(); cancelSell() }}
+                  >No</button>
+                </div>
+              </div>
+            {:else}
+              <button
+                type="button"
+                class="tooltip-sell-btn"
+                onclick={(e) => { e.stopPropagation(); handleSellClick(relic) }}
+              >Sell ({getSellValue(relic)}g)</button>
+            {/if}
+          {/if}
         </div>
       {/if}
     </div>
@@ -189,7 +242,7 @@
     max-width: 200px;
     min-width: 120px;
     z-index: 100;
-    pointer-events: none;
+    pointer-events: auto;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
     white-space: normal;
   }
@@ -221,5 +274,76 @@
     color: #D4C9A8;
     line-height: 1.5;
     letter-spacing: 0.02em;
+  }
+
+  .tooltip-sell-btn {
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+    padding: 4px 6px;
+    background: rgba(220, 38, 38, 0.18);
+    border: 1px solid rgba(220, 38, 38, 0.5);
+    border-radius: 4px;
+    color: #fca5a5;
+    font-size: 8px;
+    font-family: var(--font-pixel, monospace);
+    cursor: pointer;
+    text-align: center;
+    pointer-events: auto;
+    transition: background 120ms ease;
+  }
+
+  .tooltip-sell-btn:hover {
+    background: rgba(220, 38, 38, 0.35);
+  }
+
+  .tooltip-sell-confirm {
+    margin-top: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .sell-confirm-label {
+    font-size: 8px;
+    color: #fcd34d;
+    font-family: var(--font-pixel, monospace);
+    text-align: center;
+  }
+
+  .sell-confirm-btns {
+    display: flex;
+    gap: 4px;
+  }
+
+  .sell-confirm-yes,
+  .sell-confirm-no {
+    flex: 1;
+    padding: 3px 4px;
+    border-radius: 3px;
+    font-size: 8px;
+    font-family: var(--font-pixel, monospace);
+    cursor: pointer;
+    pointer-events: auto;
+    border: none;
+    text-align: center;
+  }
+
+  .sell-confirm-yes {
+    background: rgba(220, 38, 38, 0.7);
+    color: #fff;
+  }
+
+  .sell-confirm-yes:hover {
+    background: rgba(220, 38, 38, 0.9);
+  }
+
+  .sell-confirm-no {
+    background: rgba(55, 65, 81, 0.8);
+    color: #9ca3af;
+  }
+
+  .sell-confirm-no:hover {
+    background: rgba(75, 85, 99, 0.9);
   }
 </style>

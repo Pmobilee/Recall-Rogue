@@ -118,7 +118,7 @@ export async function triggerReviewPrompt(): Promise<void> {
     await StoreReview.requestReview();
   } catch {
     // Web or plugin not installed — no-op
-    console.log('[ReviewPrompt] Native review not available');
+    if (import.meta.env.DEV) console.log('[ReviewPrompt] Native review not available');
   }
 }
 

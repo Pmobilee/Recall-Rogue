@@ -67,19 +67,6 @@ export type AgeRating = 'kid' | 'teen' | 'adult'
 export { CATEGORIES, isFactDomain }
 export type { FactDomain }
 
-/** Metadata used by category-first UIs and domain configuration screens. */
-export interface DomainMetadata {
-  id: FactDomain
-  displayName: string
-  shortName: string
-  colorTint: string
-  icon: string
-  description: string
-  ageDefault: AgeRating
-}
-
-export type DomainMetadataMap = Record<FactDomain, DomainMetadata>
-
 /** Artifact rarity tier */
 export type Rarity = 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary' | 'mythic'
 

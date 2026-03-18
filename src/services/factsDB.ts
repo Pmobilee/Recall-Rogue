@@ -123,7 +123,7 @@ class FactsDB {
     this.initialized = true
     this.invalidateIndexes()
     this.ensureIndexes()
-    console.info(`[FactsDB] Initialized: ${this.allFactsCache?.length ?? 0} facts loaded`)
+    if (import.meta.env.DEV) console.info(`[FactsDB] Initialized: ${this.allFactsCache?.length ?? 0} facts loaded`)
   }
 
   /**

@@ -1125,7 +1125,7 @@ Wrong Charge resolves at **0.7× multiplier** (Tier 2a/2b) or **0.6×** (Tier 1)
 
 ---
 
-## 16. Relic System (AR-59.10 — 5-Slot System)
+## 16. Relic System (AR-59.10 — 5-Slot System, updated AR-92)
 
 ### Core Rules
 
@@ -1138,7 +1138,7 @@ Wrong Charge resolves at **0.7× multiplier** (Tier 2a/2b) or **0.6×** (Tier 1)
 | Source | Type | Notes |
 |--------|------|-------|
 | Act 1 Mini-Boss | Choice of 1 from 3 | First relic of the run |
-| Elite kill | Guaranteed drop | Random rarity |
+| Elite kill | Choice of 1 from 3 | Regular rarity weights |
 | Boss kill | Choice of 1 from 3 | Better rarity weights |
 | Regular combat | 10% chance | Random drop |
 
@@ -1150,6 +1150,19 @@ Wrong Charge resolves at **0.7× multiplier** (Tier 2a/2b) or **0.6×** (Tier 1)
 
 Constants: `MAX_RELIC_SLOTS = 5`, `RELIC_DROP_CHANCE_REGULAR = 0.10`, `RELIC_BOSS_CHOICES = 3`, `RELIC_PITY_THRESHOLD = 4`
 
+### Relic Choose-1-of-3 Reward Display (AR-92)
+
+Boss, elite, and first mini-boss relic rewards now use the **RewardRoomScene cloth display** instead of the flat `RelicRewardScreen.svelte` modal. The flow:
+
+1. Boss/elite/mini-boss defeated → `openRelicChoiceRewardRoom()` is called with 3 relic choices
+2. `RewardRoomScene` opens with 3 relic items hovering on the cloth background (bobbing, shimmer effects)
+3. Player taps a relic → in-Phaser detail panel slides in (icon, name, rarity label in rarity color, description, Accept/Leave buttons)
+4. **Accept** → relic collected with particle burst, other 2 relics disintegrate to the right
+5. **Leave** → detail panel dismisses, relics remain on cloth (player can pick a different one)
+6. **Continue/Skip** → confirmation dialog → player can leave without taking any relic
+7. After collection or skip → `openCardReward()` is called to proceed to card reward
+8. If relic slots are full when accepting → slot enforcement triggers `relicSwapOverlay`
+
 ### Sell-to-Make-Room
 
 When at 5/5 slots and a new relic is offered:
@@ -1157,7 +1170,19 @@ When at 5/5 slots and a new relic is offered:
 - Player must sell one to make room (or pass on the new relic)
 - Selling refunds partial gold based on rarity
 
-Sell values: `RELIC_SELL_VALUE_COMMON = 15g`, `RELIC_SELL_VALUE_UNCOMMON = 25g`, `RELIC_SELL_VALUE_RARE = 35g`, `RELIC_SELL_VALUE_LEGENDARY = 50g`
+Sell values (40% of base shop price): Common = 40g, Uncommon = 64g, Rare = 100g, Legendary = 160g
+
+### Anytime Relic Selling from Tray (AR-92)
+
+Players can sell equipped relics **at any time** from the in-combat relic tray tooltip:
+
+1. Tap any equipped relic slot in combat → tooltip appears showing name and description
+2. Tooltip includes a **"Sell (Xg)"** button at the bottom (X = 40% of rarity base price)
+3. Tapping the sell button shows an inline confirmation: "Sell for Xg? [Yes] [No]"
+4. Confirming → `sellEquippedRelic(id)` is called → relic removed, gold added, slot freed
+5. This enables proactive relic management at any point during a run, not only when a new relic is offered
+
+Sell formula: `Math.floor(SHOP_RELIC_PRICE[rarity] * RELIC_SELL_REFUND_PCT)` where `RELIC_SELL_REFUND_PCT = 0.40`.
 
 ### Reroll
 
@@ -1988,7 +2013,7 @@ One codebase, two layout modes. The app detects viewport aspect ratio at runtime
 - Right 30% = enemy panel (always visible, even during quiz)
 - Left 70% = center stage (background, VFX, quiz panel when active)
 - Bottom 25-30% = card hand strip (full width)
-- Hub: portrait campsite centered with decorative side panels (Phase 1)
+- Hub: full 16:9 widescreen campsite background (`camp-background-wide.jpg`, 1920×1080) fills the entire viewport; the 9:16 interactive hotspot column is centered transparently over it
 
 ### Input System (Landscape) [IMPLEMENTED — AR-74]
 

@@ -282,7 +282,7 @@
   }
 
   function handleReplayBootAnim(): void {
-    console.log('[BootAnim] Replay triggered, phaserBooted:', phaserBooted)
+    if (import.meta.env.DEV) console.log('[BootAnim] Replay triggered, phaserBooted:', phaserBooted)
     showBootAnimation = true
 
     if (phaserBooted) {
@@ -293,12 +293,12 @@
       ]).then(([{ CardGameManager }, { default: BootAnimScene }]) => {
         const mgr = CardGameManager.getInstance()
         const game = mgr.getGame()
-        console.log('[BootAnim] game:', !!game, 'transparent:', game?.config?.transparent)
+        if (import.meta.env.DEV) console.log('[BootAnim] game:', !!game, 'transparent:', game?.config?.transparent)
         if (!game) return
 
         // Reset phaser container visibility
         const container = document.getElementById('phaser-container')
-        console.log('[BootAnim] container visible class:', container?.classList.contains('visible'))
+        if (import.meta.env.DEV) console.log('[BootAnim] container visible class:', container?.classList.contains('visible'))
         if (container) {
           container.style.transition = ''
           container.style.opacity = ''
@@ -306,18 +306,18 @@
 
         // Add scene if it wasn't included in initial boot
         const existing = game.scene.getScene('BootAnimScene')
-        console.log('[BootAnim] scene exists:', !!existing)
+        if (import.meta.env.DEV) console.log('[BootAnim] scene exists:', !!existing)
         if (!existing) {
           game.scene.add('BootAnimScene', BootAnimScene)
-          console.log('[BootAnim] added scene')
+          if (import.meta.env.DEV) console.log('[BootAnim] added scene')
         } else {
           game.scene.stop('BootAnimScene')
-          console.log('[BootAnim] stopped existing scene')
+          if (import.meta.env.DEV) console.log('[BootAnim] stopped existing scene')
         }
 
         // Start the boot animation scene
         game.scene.start('BootAnimScene')
-        console.log('[BootAnim] started scene, active scenes:', game.scene.getScenes(true).map((s: Phaser.Scene) => s.scene.key))
+        if (import.meta.env.DEV) console.log('[BootAnim] started scene, active scenes:', game.scene.getScenes(true).map((s: Phaser.Scene) => s.scene.key))
 
         // Listen for show-blurred, deblur, completion
         game.events.once('boot-anim-show-blurred', () => { hubShowBlurred = true })
@@ -1273,16 +1273,8 @@
     <RelicCollectionScreen onBack={handleCloseRelicSanctum} />
   {/if}
 
-  {#if $currentScreen === 'relicReward'}
-    <RelicRewardScreen
-      options={$activeRelicRewardOptions}
-      onselect={handleRelicRewardSelect}
-      canReroll={canRerollRelicSelection()}
-      rerollCost={RELIC_REROLL_COST}
-      onreroll={handleRelicReroll}
-      pityActive={isRelicPityActive()}
-    />
-  {/if}
+  <!-- relicReward screen now uses RewardRoomScene (Phaser cloth display) — AR-92 -->
+  <!-- RelicRewardScreen is kept as a file but no longer rendered in the main flow -->
 
   {#if $currentScreen === 'relicSwapOverlay' && swapOfferedRelic}
     <RelicSwapOverlay

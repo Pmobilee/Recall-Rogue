@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { RelicDefinition } from '../../data/relics'
+  import type { RelicDefinition } from '../../data/relics/types'
   import { isLandscape } from '../../stores/layoutStore'
 
   interface Props {
@@ -10,16 +10,17 @@
 
   let { relic, onAccept, onDecline }: Props = $props()
 
-  const tierColors: Record<string, string> = {
+  const rarityColors: Record<string, string> = {
     common: '#aaaaaa',
+    uncommon: '#44cc44',
     rare: '#4488ff',
     legendary: '#ffcc00',
   }
 </script>
 
 <div class="relic-overlay" class:landscape={$isLandscape} role="dialog" aria-modal="true">
-  <div class="relic-card" style="border-color: {tierColors[relic.tier] ?? '#aaa'}">
-    <div class="tier-label" style="color: {tierColors[relic.tier] ?? '#aaa'}">{relic.tier.toUpperCase()}</div>
+  <div class="relic-card" style="border-color: {rarityColors[relic.rarity] ?? '#aaa'}">
+    <div class="tier-label" style="color: {rarityColors[relic.rarity] ?? '#aaa'}">{relic.rarity.toUpperCase()}</div>
     <div class="relic-icon">{relic.icon}</div>
     <h2 class="relic-name">{relic.name}</h2>
     <p class="relic-desc">{relic.description}</p>
@@ -28,7 +29,7 @@
         <div class="effect-line">{effect.description}</div>
       {/each}
     </div>
-    <p class="relic-lore">"{relic.lore}"</p>
+    <p class="relic-lore">"{relic.flavorText}"</p>
     <div class="relic-actions">
       <button onclick={onAccept} class="btn-accept">Equip Relic</button>
       <button onclick={onDecline} class="btn-decline">Leave It</button>

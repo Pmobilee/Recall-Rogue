@@ -1167,7 +1167,7 @@
     const lines = layout.objects.map(
       (obj) => `  { id: '${obj.id}', gridX: ${obj.gridX}, gridY: ${obj.gridY}, gridW: ${obj.gridW}, gridH: ${obj.gridH} },`,
     )
-    console.log('// Dome object positions — paste into domeLayout.ts\n' + lines.join('\n'))
+    if (import.meta.env.DEV) console.log('// Dome object positions — paste into domeLayout.ts\n' + lines.join('\n'))
   }
 
   /**

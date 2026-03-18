@@ -117,7 +117,7 @@
       src={getCampBackgroundWideUrl()}
       alt=""
       aria-hidden="true"
-      loading="lazy"
+      loading="eager"
       decoding="async"
     />
 
@@ -288,9 +288,6 @@
         <button class="replay-boot-btn" onclick={onReplayBootAnim}>Intro</button>
       {/if}
     </div>
-
-    <!-- Decorative side panel — mirrored -->
-    <div class="hub-side-panel hub-side-right" aria-hidden="true"></div>
   </div>
 {:else}
   <!-- ═══ PORTRAIT LAYOUT — PIXEL-IDENTICAL TO PRE-PORT ════════════════════ -->
@@ -478,45 +475,27 @@
   .hub-landscape {
     position: fixed;
     inset: 0;
-    display: flex;
     background: #0f0f23;
     overflow: hidden;
   }
 
-  .hub-side-panel {
-    flex: 1;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(to right, #0a0a1a, #1a1a2e);
-  }
-
-  .hub-side-right {
-    background: linear-gradient(to left, #0a0a1a, #1a1a2e);
-  }
-
-  /* Subtle torch glow at inner edge of side panels */
-  .hub-side-left::after {
-    content: '';
+  .camp-bg-wide {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at right center, rgba(255, 160, 50, 0.05) 0%, transparent 60%);
-  }
-
-  .hub-side-right::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at left center, rgba(255, 160, 50, 0.05) 0%, transparent 60%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
   }
 
   .hub-center {
-    /* Portrait 9:16 aspect ratio, fills full viewport height */
+    /* Portrait 9:16 aspect ratio, fills full viewport height — transparent over wide bg */
     aspect-ratio: 9 / 16;
     height: 100%;
-    flex-shrink: 0;
     position: relative;
-    overflow: hidden;
-    background: #000000;
+    margin: 0 auto;
+    z-index: 1;
   }
 
   /* ═══ PORTRAIT LAYOUT ═══════════════════════════════════════════════════════ */

@@ -17,8 +17,8 @@ export interface RelicStatEffect {
   magnitude: number
 }
 
-/** Full V2 relic definition. */
-export interface RelicDefinition {
+/** Full V2 relic definition (mining system — used only within this file). */
+interface RelicDefinition {
   id: string
   name: string
   description: string

@@ -2,17 +2,8 @@
 description: "Run full playtest pipeline: simulate games across multiple profiles, analyze logs, triage issues, and display ranked results"
 ---
 
-# ⛔ AR PHASE DOC RULE — READ THIS ⛔
-#
-# This skill is READ-ONLY (analysis/viewing). It does NOT require an AR doc itself.
-# HOWEVER: If the results of this analysis lead to implementation work (bug fixes,
-# balance changes, new features), that work REQUIRES an AR phase doc BEFORE any
-# code is touched. See `.claude/skills/work-tracking/SKILL.md` for the full rule.
-#
-# The rule: ANY non-trivial implementation (more than a 2-minute single-line fix)
-# MUST have an AR doc in `docs/roadmap/phases/AR-NN-SHORT-NAME.md` with all TODOs
-# listed BEFORE coding begins. No exceptions.
-# ⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔
+# ⚠️ AR Phase Doc Required — see `.claude/skills/work-tracking/SKILL.md` for rules.
+# ℹ️ This skill is READ-ONLY. Implementation work from findings requires an AR doc — see `.claude/skills/work-tracking/SKILL.md`.
 
 # Playtest Suite — Full Pipeline
 

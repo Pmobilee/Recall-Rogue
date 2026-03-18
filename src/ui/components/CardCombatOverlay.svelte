@@ -41,6 +41,7 @@
   import { isPlaceholderDistractor } from '../../services/distractorFilter'
   import { getVocabDistractors } from '../../services/vocabDistractorService'
   import { activeRunState } from '../../services/runStateStore'
+  import { sellEquippedRelic } from '../../services/gameFlowController'
   import { getIntentIconPath } from '../utils/iconAssets'
   import { getMasteryScalingTier, getRewardMultiplier, getDifficultyBoostFloors } from '../../services/masteryScalingService'
   import { synergyFlash } from '../stores/gameState'
@@ -173,6 +174,7 @@
         name: def?.name ?? id,
         description: def?.description ?? '',
         icon: def?.icon ?? '?',
+        rarity: def?.rarity ?? 'common',
       };
     })
   )
@@ -1283,7 +1285,7 @@
       {/if}
     </div>
   {:else}
-    <RelicTray relics={displayRelics} triggeredRelicId={turnState.triggeredRelicId} maxSlots={maxRelicSlots} />
+    <RelicTray relics={displayRelics} triggeredRelicId={turnState.triggeredRelicId} maxSlots={maxRelicSlots} onsell={sellEquippedRelic} />
 
     {#if expertModeActive}
       <div class="expert-badge" data-testid="expert-mode-badge">

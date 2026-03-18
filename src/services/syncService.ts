@@ -381,7 +381,7 @@ export class SyncService {
    * queued while the device was offline.
    */
   private async onConnectivityRestored(): Promise<void> {
-    console.info('[SyncService] Connectivity restored — flushing offline queue')
+    if (import.meta.env.DEV) console.info('[SyncService] Connectivity restored — flushing offline queue')
     await offlineQueue.flush(async (op) => {
       if (op.type === 'save') {
         // Re-push the current local save (the queued payload may be stale).

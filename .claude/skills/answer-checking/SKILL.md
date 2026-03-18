@@ -3,26 +3,7 @@ name: answer-checking
 description: Live DB-first answer checking and fixing via directly spawned subscription workers (no API scripts). Writes/checks flags in the database and supports tagged-fact fix loops that clear flags when fixed.
 ---
 
-# ⛔⛔⛔ MANDATORY: AR PHASE DOC REQUIRED ⛔⛔⛔
-#
-# STOP. DO NOT WRITE CODE. DO NOT DELEGATE TO SUB-AGENTS. DO NOT EDIT FILES.
-#
-# Before doing ANY work that is not a trivial 2-minute single-line fix:
-# 1. Check `docs/roadmap/phases/` and `docs/roadmap/completed/` for the next AR number
-# 2. CREATE an AR phase doc: `docs/roadmap/phases/AR-NN-SHORT-NAME.md`
-#    - Must contain: Overview, numbered TODO checklist, acceptance criteria, files affected
-#    - ⚠️ AR docs MUST be written by the OPUS ORCHESTRATOR DIRECTLY — NEVER by sub-agents
-# 3. Present the AR doc to the user for review
-# 4. ONLY THEN begin implementation, checking off TODOs as you go
-# 5. When done: move the doc to `docs/roadmap/completed/`
-#
-# NO EXCEPTIONS. "Let me just quickly..." is NOT an exception.
-# "It's a small change" with more than 3 steps is NOT an exception.
-# Content pipeline batches are NOT an exception.
-# Multi-file refactors are NOT an exception.
-#
-# If you skip this step, the user WILL make you redo the work.
-# ⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔
+# ⚠️ AR Phase Doc Required — see `.claude/skills/work-tracking/SKILL.md` for rules.
 
 # answer-checking
 

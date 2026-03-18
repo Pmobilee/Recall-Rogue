@@ -62,7 +62,7 @@ export async function openRewardRoom(
   await new Promise(resolve => setTimeout(resolve, 100));
 
   const data: RewardRoomData = { rewards };
-  console.log('[RewardRoomBridge] Opening reward room with', rewards.length, 'rewards');
+  if (import.meta.env.DEV) console.log('[RewardRoomBridge] Opening reward room with', rewards.length, 'rewards');
   mgr.startRewardRoom(data);
 
   // Get scene and attach event listeners
@@ -91,7 +91,7 @@ export async function openRewardRoom(
   const handleCard = (card: Card): void => onCardAccepted(card);
   const handleRelic = (relic: RelicDefinition): void => onRelicAccepted(relic);
   const handleComplete = (): void => {
-    console.log('[RewardRoomBridge] Reward room complete, calling onComplete');
+    if (import.meta.env.DEV) console.log('[RewardRoomBridge] Reward room complete, calling onComplete');
     cleanup();
     mgr.stopRewardRoom();
     onComplete();
@@ -228,12 +228,12 @@ export async function openTestRewardRoom(): Promise<void> {
 
   await openRewardRoom(
     testRewards,
-    (amount) => console.log('[TestRewardRoom] Gold collected:', amount),
-    (heal) => console.log('[TestRewardRoom] Vial collected:', heal),
-    (card) => console.log('[TestRewardRoom] Card accepted:', card.mechanicName),
-    (relic) => console.log('[TestRewardRoom] Relic accepted:', relic.name),
+    (amount) => { if (import.meta.env.DEV) console.log('[TestRewardRoom] Gold collected:', amount); },
+    (heal) => { if (import.meta.env.DEV) console.log('[TestRewardRoom] Vial collected:', heal); },
+    (card) => { if (import.meta.env.DEV) console.log('[TestRewardRoom] Card accepted:', card.mechanicName); },
+    (relic) => { if (import.meta.env.DEV) console.log('[TestRewardRoom] Relic accepted:', relic.name); },
     () => {
-      console.log('[TestRewardRoom] Scene complete');
+      if (import.meta.env.DEV) console.log('[TestRewardRoom] Scene complete');
       currentScreen.set('hub');
     },
   );

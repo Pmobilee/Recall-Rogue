@@ -74,7 +74,7 @@ export async function setRichPresence(key: string, value: string): Promise<void>
 export async function cloudSave(data: string): Promise<void> {
   if (!hasSteam) return;
   // TODO: await tauriInvoke('steam_cloud_save', { data });
-  console.log('[Steam] Cloud save (stub — Rust backend not yet implemented)', data.length, 'bytes');
+  // no-op stub — Rust backend not yet implemented (AR-80 follow-up)
 }
 
 /**
@@ -88,7 +88,7 @@ export async function cloudSave(data: string): Promise<void> {
 export async function cloudLoad(): Promise<string | null> {
   if (!hasSteam) return null;
   // TODO: return await tauriInvoke<string>('steam_cloud_load');
-  console.log('[Steam] Cloud load (stub — Rust backend not yet implemented)');
+  // no-op stub — Rust backend not yet implemented (AR-80 follow-up)
   return null;
 }
 
@@ -133,7 +133,7 @@ export interface SteamLeaderboardEntry {
 export async function getLeaderboardEntries(board: string): Promise<SteamLeaderboardEntry[]> {
   if (!hasSteam) return [];
   // TODO: return await tauriInvoke<SteamLeaderboardEntry[]>('steam_get_leaderboard_entries', { board }) ?? [];
-  console.log(`[Steam] Leaderboard fetch (stub — Rust backend not yet implemented): ${board}`);
+  // no-op stub — Rust backend not yet implemented (AR-80 follow-up)
   return [];
 }
 
@@ -146,7 +146,7 @@ export async function getLeaderboardEntries(board: string): Promise<SteamLeaderb
 export async function submitScore(board: string, score: number): Promise<void> {
   if (!hasSteam) return;
   // TODO: await tauriInvoke('steam_submit_score', { board, score });
-  console.log(`[Steam] Score submitted (stub — Rust backend not yet implemented) ${board}: ${score}`);
+  // no-op stub — Rust backend not yet implemented (AR-80 follow-up)
 }
 
 // ── Rich Presence Helper ──────────────────────────────────────────────────────

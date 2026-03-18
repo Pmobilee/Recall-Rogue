@@ -1050,6 +1050,34 @@ function addRelicToRunDirect(relic: RelicDefinition): void {
 }
 
 /**
+ * Opens the RewardRoomScene with relic-only items for a choose-1-of-3 relic reward.
+ * After the player accepts or skips, proceeds to openCardReward().
+ * Used for boss, elite, and first mini-boss relic rewards.
+ */
+function openRelicChoiceRewardRoom(choices: RelicDefinition[], _postMiniBoss: boolean): void {
+  gameFlowState.set('relicReward');
+  const relicRewards: RewardItem[] = choices.map((relic) => ({ type: 'relic' as const, relic }));
+  void openRewardRoom(
+    relicRewards,
+    // onGoldCollected — no gold in relic-only reward
+    (_amount) => {},
+    // onVialCollected — no vial in relic-only reward
+    (_healAmt) => {},
+    // onCardAccepted — no cards in relic-only reward
+    (_card) => {},
+    // onRelicAccepted — player chose a relic; apply slot enforcement
+    (relic) => {
+      addRelicToRun(relic);
+    },
+    // onComplete — regardless of accept/skip, proceed to card reward
+    () => {
+      activeRelicRewardOptions.set([]);
+      openCardReward();
+    },
+  );
+}
+
+/**
  * Adds a relic to the run with slot-cap enforcement.
  * If at capacity, stores the relic as pending and routes to relicSwapOverlay.
  * Used for choose-1-of-3 events where the selection screen is clearing.
@@ -1152,7 +1180,7 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
     (isBossFloor(justCompletedFloor) && justCompletedEncounter === run.floor.encountersPerFloor)
     || (justCompletedNode?.type === 'boss');
 
-  console.log('[GameFlow] onEncounterComplete:', result, 'wasBoss:', wasBoss, 'floor:', justCompletedFloor, 'encounter:', justCompletedEncounter);
+  if (import.meta.env.DEV) console.log('[GameFlow] onEncounterComplete:', result, 'wasBoss:', wasBoss, 'floor:', justCompletedFloor, 'encounter:', justCompletedEncounter);
 
   // For actMap boss nodes, force floor completion since boss is a single encounter
   if (run.floor.actMap && justCompletedNode?.type === 'boss') {
@@ -1170,9 +1198,7 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
     const choices = generateBossRelicChoices(relicPool);
     if (choices.length > 0) {
       resetRelicSelectionRerolls();
-      activeRelicRewardOptions.set(choices);
-      gameFlowState.set('relicReward');
-      currentScreen.set('relicReward');
+      openRelicChoiceRewardRoom(choices, false);
       return;
     }
   } else if (wasElite && relicPool.length > 0) {
@@ -1180,9 +1206,7 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
     const choices = generateMiniBossRelicChoices(relicPool);
     if (choices.length > 0) {
       resetRelicSelectionRerolls();
-      activeRelicRewardOptions.set(choices);
-      gameFlowState.set('relicReward');
-      currentScreen.set('relicReward');
+      openRelicChoiceRewardRoom(choices, false);
       return;
     }
   } else if (wasMiniBoss && !run.firstMiniBossRelicAwarded && relicPool.length > 0) {
@@ -1192,9 +1216,7 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
     const choices = generateMiniBossRelicChoices(relicPool);
     if (choices.length > 0) {
       resetRelicSelectionRerolls();
-      activeRelicRewardOptions.set(choices);
-      gameFlowState.set('relicReward');
-      currentScreen.set('relicReward');
+      openRelicChoiceRewardRoom(choices, false);
       return;
     }
   } else if (wasMiniBoss && run.firstMiniBossRelicAwarded && relicPool.length > 0) {
