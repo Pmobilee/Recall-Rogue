@@ -319,9 +319,9 @@ describe('Status Effects', () => {
 
 describe('Enemy Templates', () => {
   it('has 4 common enemies', () => {
-    // v2 roster after enemy consolidation — 46 total
+    // v2 roster after enemy consolidation — 46 total, +4 new Act 1 commons added in AR-98 = 50
     const common = ENEMY_TEMPLATES.filter(t => t.category === 'common');
-    expect(common).toHaveLength(46);
+    expect(common).toHaveLength(50);
   });
 
   it('has 2 elite enemies', () => {

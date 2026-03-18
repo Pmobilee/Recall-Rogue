@@ -195,12 +195,17 @@ export function getEnemiesForFloorNode(
   return getEnemiesForNode(act, nodeType)
 }
 
-/** Maps a floor number to its dungeon region for enemy selection. */
+/**
+ * Maps a floor number to its dungeon region for enemy selection.
+ * Updated in AR-98 to match V2 act boundaries (4 floors per act).
+ * Act 1 (floors 1-4) = shallow_depths, Act 2 (5-8) = deep_caverns,
+ * Act 3 (9-12) = the_archive, endless (13+) = the_abyss.
+ */
 export function getRegionForFloor(floor: number): EnemyRegion {
-  if (floor <= 6) return 'shallow_depths'
-  if (floor <= 12) return 'deep_caverns'
-  if (floor <= 18) return 'the_abyss'
-  return 'the_archive'
+  if (floor <= 4) return 'shallow_depths'
+  if (floor <= 8) return 'deep_caverns'
+  if (floor <= 12) return 'the_archive'
+  return 'the_abyss' // endless mode
 }
 
 /**

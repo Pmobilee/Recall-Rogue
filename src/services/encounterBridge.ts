@@ -10,7 +10,7 @@ import { addCardToDeck, createDeck, insertCardWithDelay, addFactsToCooldown, tic
 import { createEnemy } from './enemyManager';
 import { ENEMY_TEMPLATES } from '../data/enemies';
 import { activeRunState } from './runStateStore';
-import { getBossForFloor, pickCombatEnemy, isBossFloor, isMiniBossEncounter, getMiniBossForFloor, getRegionForFloor, getEnemiesForFloorNode } from './floorManager';
+import { getBossForFloor, pickCombatEnemy, isBossFloor, isMiniBossEncounter, getMiniBossForFloor, getRegionForFloor, getEnemiesForFloorNode, getActForFloor } from './floorManager';
 import type { Card, CardRunState } from '../data/card-types';
 import { recordCardPlay } from './runManager';
 import {
@@ -97,6 +97,30 @@ function ensureCombatStarted(): void {
 }
 
 export const activeTurnState = writable<TurnState | null>(null);
+
+// ── Boss rotation helpers (AR-98) ──
+const LAST_BOSS_KEY = 'recall-rogue-last-boss';
+
+/** Returns the last boss ID fought for a given act number, or null. */
+function getLastBossForAct(act: number): string | null {
+  try {
+    const data = JSON.parse(localStorage.getItem(LAST_BOSS_KEY) ?? '{}') as Record<number, string>;
+    return data[act] ?? null;
+  } catch {
+    return null;
+  }
+}
+
+/** Persists the last boss fought for a given act number. */
+function setLastBossForAct(act: number, bossId: string): void {
+  try {
+    const data = JSON.parse(localStorage.getItem(LAST_BOSS_KEY) ?? '{}') as Record<number, string>;
+    data[act] = bossId;
+    localStorage.setItem(LAST_BOSS_KEY, JSON.stringify(data));
+  } catch {
+    // ignore storage errors
+  }
+}
 
 type EncounterCompletionResult = 'victory' | 'defeat';
 let encounterCompleteHandler: ((result: EncounterCompletionResult) => void) | null = null;
@@ -338,11 +362,18 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   let templateId = enemyId;
   if (!templateId) {
     if (isBossFloor(run.floor.currentFloor) && run.floor.currentEncounter === run.floor.encountersPerFloor) {
-      // V2: use act-based boss pool
+      // V2: use act-based boss pool with rotation (AR-98 — no same boss twice in a row per act)
       const bossCandidates = getEnemiesForFloorNode(run.floor.currentFloor, 'boss');
-      templateId = bossCandidates.length > 0
-        ? bossCandidates[Math.floor(Math.random() * bossCandidates.length)].id
-        : (getBossForFloor(run.floor.currentFloor) ?? pickCombatEnemy(run.floor.currentFloor));
+      if (bossCandidates.length > 0) {
+        const act = getActForFloor(run.floor.currentFloor);
+        const lastBoss = getLastBossForAct(act);
+        const filtered = lastBoss ? bossCandidates.filter(b => b.id !== lastBoss) : bossCandidates;
+        const pool = filtered.length > 0 ? filtered : bossCandidates;
+        templateId = pool[Math.floor(Math.random() * pool.length)].id;
+        setLastBossForAct(act, templateId);
+      } else {
+        templateId = getBossForFloor(run.floor.currentFloor) ?? pickCombatEnemy(run.floor.currentFloor);
+      }
     } else if (isMiniBossEncounter(run.floor.currentFloor, run.floor.currentEncounter)) {
       // V2: use act-based mini-boss pool, fall back to legacy
       const miniBossCandidates = getEnemiesForFloorNode(run.floor.currentFloor, 'mini_boss');
@@ -350,7 +381,7 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
         ? miniBossCandidates[Math.floor(Math.random() * miniBossCandidates.length)].id
         : getMiniBossForFloor(run.floor.currentFloor);
     } else {
-      if (run.canary.mode === 'challenge' && Math.random() < 0.35) {
+      if (run.canary.mode === 'challenge' && Math.random() < 0.50) {
         // V2: use act-based elite pool, fall back to region-based
         const eliteCandidates = getEnemiesForFloorNode(run.floor.currentFloor, 'elite');
         if (eliteCandidates.length > 0) {

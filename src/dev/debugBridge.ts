@@ -134,6 +134,9 @@ export function initDebugBridge(): void {
   (window as unknown as Record<string, unknown>).__terraDebug = buildSnapshot;
   (window as unknown as Record<string, unknown>).__terraLog = logBuffer;
 
+  // Register combat/run stores to globalThis so dev tools can read them
+  registerStoresLazy();
+
   window.addEventListener('error', (e) => {
     errorBuffer.push(`${e.message} (${e.filename}:${e.lineno})`);
     if (errorBuffer.length > MAX_ERRORS) errorBuffer.shift();
@@ -154,4 +157,21 @@ export function initDebugBridge(): void {
 
   // Initialize the scenario simulator (window.__terraScenario)
   initScenarioSimulator();
+}
+
+/**
+ * Lazily registers key Svelte stores to globalThis[Symbol.for(...)] so that
+ * readStore() in playtestAPI/scenarioSimulator can access them.
+ * Uses dynamic import to avoid circular dependency issues.
+ */
+async function registerStoresLazy(): Promise<void> {
+  try {
+    const { activeTurnState } = await import('../services/encounterBridge');
+    const { activeRunState } = await import('../services/runStateStore');
+    const g = globalThis as Record<symbol, unknown>;
+    g[Symbol.for('terra:activeTurnState')] = activeTurnState;
+    g[Symbol.for('terra:activeRunState')] = activeRunState;
+  } catch {
+    // Silently ignore — stores may not be available yet
+  }
 }
