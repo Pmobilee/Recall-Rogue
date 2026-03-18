@@ -20,25 +20,25 @@ export const SPECIAL_EVENTS: SpecialEvent[] = [
   {
     id: 'relic_forge',
     name: 'Relic Forge',
-    description: 'The forge glows with ancient power. Choose 1 of 3 relic upgrades.',
+    description: 'A forge still hot in the dark. Choose 1 of 3 relic upgrades.',
     type: 'relic_forge',
   },
   {
     id: 'card_transform',
     name: 'Card Transform',
-    description: 'Arcane energy swirls around your deck. Upgrade one card mechanic to its next tier.',
+    description: 'Something in the air warps cards near your hands. Upgrade one card mechanic.',
     type: 'card_transform',
   },
   {
     id: 'deck_thin',
     name: 'Deck Thin',
-    description: 'The Archive offers to lighten your burden. Remove up to 2 cards from your deck.',
+    description: 'A slot in the wall. Drop up to 2 cards. They won\'t come back.',
     type: 'deck_thin',
   },
   {
     id: 'knowledge_spring',
     name: 'Knowledge Spring',
-    description: 'A crystalline spring pulses with wisdom. All facts answered correctly this run gain +1 day of memory stability.',
+    description: 'Water trickles through cracked stone. Facts you got right this run hold a day longer.',
     type: 'knowledge_spring',
   },
   {
@@ -59,9 +59,9 @@ export interface MysteryEventEffect {
 
 /** Pool of possible mystery effects. */
 export const MYSTERY_EFFECTS: MysteryEventEffect[] = [
-  { id: 'heal_20', label: 'A warm light restores 20 HP.', type: 'heal', value: 20 },
-  { id: 'gold_50', label: 'You find 50 gold hidden in the rubble.', type: 'currency', value: 50 },
-  { id: 'draw_bonus', label: 'Draw +1 card in the next encounter.', type: 'draw_bonus', value: 1 },
+  { id: 'heal_20', label: 'A faint warmth seeps up through the floor. Restored 20 HP.', type: 'heal', value: 20 },
+  { id: 'gold_50', label: '50 gold, wedged into a crack in the rock.', type: 'currency', value: 50 },
+  { id: 'draw_bonus', label: 'Your mind feels sharp. Draw +1 card next encounter.', type: 'draw_bonus', value: 1 },
 ];
 
 /** Roll a random special event from the pool. */

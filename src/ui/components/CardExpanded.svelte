@@ -358,7 +358,13 @@
     <div class="first-letter-hint">Starts with: {firstLetterHint}</div>
   {/if}
 
-  <div class="card-answers" class:card-answers-landscape={$isLandscape && answers.length >= 3}>
+  <div
+    class="card-answers"
+    class:card-answers-landscape={$isLandscape}
+    class:card-answers-landscape-2={$isLandscape && answers.length === 2}
+    class:card-answers-landscape-3={$isLandscape && answers.length === 3}
+    class:card-answers-landscape-4={$isLandscape && answers.length >= 4}
+  >
     {#each answers as answer, i}
       <button
         class="answer-btn {getAnswerClass(i)}"
@@ -445,53 +451,62 @@
     animation: slide-up 200ms ease-out;
   }
 
-  /* AR-96: Landscape quiz positioning — left 70% center stage, above card hand */
+  /* Landscape quiz panel — slides in from left edge (spec §1 + §5) */
   .card-expanded-landscape {
     position: fixed;
-    /* Horizontally: centered within left 70%, with small padding */
-    left: 5vw;
-    right: 32vw; /* leaves ~30% for enemy panel + 2% breathing room */
-    /* Vertically: from top with small padding, down to above card hand */
-    top: 3vh;
-    bottom: 27vh;
-    /* Layout */
-    width: auto;
-    max-width: none;
-    /* Scrollable if content overflows */
+    /* LEFT-aligned: takes ~58% of viewport width */
+    left: 0;
+    right: auto;
+    width: 58vw;
+    max-width: 58vw;
+    /* Vertically: fill arena above stats bar + card hand */
+    top: 0;
+    bottom: calc(27vh + 36px);
+    /* Center content vertically within the panel */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    padding: 16px;
+    /* Layout overrides */
     overflow-y: auto;
     overflow-x: hidden;
     /* Override portrait transform/centering */
     transform: none;
     margin: 0;
-    /* Reduce max-height to fit between top and card hand */
-    max-height: calc(70vh);
-    /* Animation override */
-    animation: slide-up-landscape 200ms ease-out;
+    max-height: none;
+    /* Animation: slide from left */
+    animation: slide-from-left 200ms ease-out;
   }
 
-  @keyframes slide-up-landscape {
-    from {
-      opacity: 0;
-      transform: translateY(calc(-50% - 13vh + 30px));
-    }
-    to {
-      opacity: 1;
-      transform: translateY(calc(-50% - 13vh));
-    }
+  @keyframes slide-from-left {
+    from { transform: translateX(-100%); }
+    to   { transform: translateX(0); }
   }
 
-  /* AR-76: Landscape answer grid — 2×2 for 3-4 options */
+  /* Landscape answer layout — flexible columns based on answer count (spec §5) */
   .card-answers-landscape {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: calc(8px * var(--layout-scale, 1));
   }
 
-  /* AR-94: When an odd-numbered last answer sits alone in a row, center it */
-  .card-answers-landscape .answer-btn:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
-    max-width: 50%;
-    justify-self: center;
+  /* 2 answers: two wide buttons side by side */
+  .card-answers-landscape-2 .answer-btn {
+    flex: 1 1 calc(50% - 4px);
+    min-width: 0;
+  }
+
+  /* 3 answers: three equal columns */
+  .card-answers-landscape-3 .answer-btn {
+    flex: 1 1 calc(33% - 6px);
+    min-width: 0;
+  }
+
+  /* 4+ answers: 2×2 grid (flex wrap, two per row) */
+  .card-answers-landscape-4 .answer-btn {
+    flex: 1 1 calc(50% - 4px);
+    min-width: 0;
   }
 
   /* AR-76: Keyboard shortcut badge on answer buttons */

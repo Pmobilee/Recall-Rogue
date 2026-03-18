@@ -847,6 +847,10 @@
     committedCardSnapshot = null
     committedQuizData = null
     committedAtMs = 0
+    // Slide enemy back to center if quiz was active in landscape
+    if ($isLandscape) {
+      getCombatScene()?.slideEnemyForQuiz(false)
+    }
   }
 
   let _lastTurnNumber = 0
@@ -1012,6 +1016,10 @@
     committedQuizData = getQuizForCard(selectedCard, selectedPresentation.optionCount)
     committedAtMs = Date.now()
     selectedIndex = null
+    // Slide enemy right in landscape when quiz activates
+    if ($isLandscape) {
+      getCombatScene()?.slideEnemyForQuiz(true)
+    }
 
     const state = get(onboardingState)
     if (!state.hasCompletedOnboarding && !state.hasSeenCastTooltip) {

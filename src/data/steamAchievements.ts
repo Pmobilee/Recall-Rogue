@@ -25,88 +25,88 @@ export const STEAM_ACHIEVEMENTS: SteamAchievement[] = [
 
   {
     id: 'FIRST_RUN',
-    name: 'First Steps',
+    name: 'Down You Go',
     description: 'Complete your first run.',
   },
   {
     id: 'REACH_ACT_2',
     name: 'Into the Depths',
-    description: 'Reach Act 2 — The Depths.',
+    description: 'Reach Act 2.',
   },
   {
     id: 'REACH_ACT_3',
-    name: 'The Archive Awaits',
-    description: 'Reach Act 3 — The Archive.',
+    name: 'The Archive',
+    description: 'Reach Act 3.',
   },
   {
     id: 'DEFEAT_CURATOR',
-    name: 'Knowledge is Power',
-    description: 'Defeat The Curator, guardian of the Archive.',
+    name: 'Overdue',
+    description: 'Defeat The Curator.',
   },
 
   // ── Chain Mastery ──────────────────────────────────────────────────────────
 
   {
     id: 'CHAIN_5',
-    name: 'Chain Master',
-    description: 'Build a 5-card Knowledge Chain in a single turn.',
+    name: 'Linked',
+    description: 'Build a 5-card Chain in a single turn.',
   },
 
   // ── Fact Mastery ───────────────────────────────────────────────────────────
 
   {
     id: 'MASTER_10',
-    name: 'Scholar',
-    description: 'Reach Tier 3 (Mastered) on 10 facts.',
+    name: 'It Sticks',
+    description: 'Master 10 facts.',
   },
   {
     id: 'MASTER_50',
-    name: 'Professor',
-    description: 'Reach Tier 3 (Mastered) on 50 facts.',
+    name: 'Long Memory',
+    description: 'Master 50 facts.',
   },
   {
     id: 'MASTER_100',
-    name: 'Sage',
-    description: 'Reach Tier 3 (Mastered) on 100 facts.',
+    name: 'Cannot Forget',
+    description: 'Master 100 facts.',
   },
 
   // ── Combat Performance ─────────────────────────────────────────────────────
 
   {
     id: 'PERFECT_ENCOUNTER',
-    name: 'Untouchable',
-    description: 'Win an encounter without taking any damage.',
+    name: 'Not a Scratch',
+    description: 'Win an encounter without taking damage.',
   },
   {
     id: 'PERFECT_ACCURACY',
-    name: 'Flawless Mind',
-    description: 'Complete a full run with 100% Charge accuracy.',
+    name: 'Clean Run',
+    description: 'Finish a run with 100% Charge accuracy.',
   },
 
   // ── Ascension ─────────────────────────────────────────────────────────────
 
   {
     id: 'ASCENSION_1',
-    name: 'Rising Challenge',
-    description: 'Complete a run at Ascension Level 1.',
+    name: 'Harder Way Down',
+    description: 'Complete a run at Ascension 1.',
   },
   {
     id: 'ASCENSION_10',
-    name: 'Ascended',
-    description: 'Complete a run at Ascension Level 10.',
+    name: 'The Pit',
+    description: 'Complete a run at Ascension 10.',
   },
 
   // ── Collection ────────────────────────────────────────────────────────────
 
   {
     id: 'RELIC_COLLECTOR',
-    name: 'Relic Hunter',
-    description: 'Find every relic at least once across all your runs.',
+    name: 'Nothing Left Behind',
+    description: 'Find every relic at least once.',
   },
   {
     id: 'ALL_DOMAINS',
-    name: 'Renaissance',
-    description: 'Complete a run in each knowledge domain at least once.',
+    name: 'Broad Education',
+    description: 'Win a run in every knowledge domain.',
   },
 ];
 

@@ -657,12 +657,12 @@
       class:drag-charge-zone-disabled={isDragInChargeZone && !chargeAffordableForDrag}
       style="
         {isAnimating ? '' : isDraggingThis
-          ? `transform: translate3d(${cardDragX}px, ${isSelected ? -70 : -cardDragRawY}px, 0) scale(${cardDragScale});`
-          : `transform: translate3d(0, ${isSelected ? -70 : 0}px, 0) scale(${isSelected ? 1.15 : isHovered ? 1.08 : 1});`}
+          ? `transform: translate3d(${cardDragX}px, ${isSelected ? 'calc(-27vh - 36px + 20px)' : `-${cardDragRawY}px`}, 0) scale(${cardDragScale});`
+          : `transform: translate3d(0, ${isSelected ? 'calc(-27vh - 36px + 20px)' : '0px'}, 0) scale(${isSelected ? 1.1 : isHovered ? 1.08 : 1});`}
         border-color: {getChainColor(card.chainType ?? 0)};
         box-shadow: 0 0 8px {getChainGlowColor(card.chainType ?? 0)};
         animation-delay: {i * 60}ms;
-        opacity: {isOther ? 0.3 : 1};
+        opacity: {isOther ? 0.35 : 1};
         z-index: {isDraggingThis ? 20 : isHovered ? 10 : ''};
         {isDraggingThis && chargeProgress > 0.05 ? `filter: drop-shadow(0 0 ${8 + chargeProgress * 8}px rgba(250, 204, 21, ${chargeProgress * 0.8})) drop-shadow(0 0 ${16 + chargeProgress * 16}px rgba(250, 204, 21, ${chargeProgress * 0.4}));` : ''}
       "
@@ -758,6 +758,10 @@
             --spark-intensity: {tierVisual.intensity};
           "
         ></div>
+      {/if}
+
+      {#if isSelected && $isLandscape}
+        <div class="card-quickplay-hint" aria-hidden="true">Tap again = quick play</div>
       {/if}
 
       {#if showChargeZoneIndicator}
@@ -1276,6 +1280,19 @@
     filter: drop-shadow(0 -4px 12px rgba(255, 255, 255, 0.25));
   }
 
+  /* Landscape: subtle hint text on risen selected card */
+  .card-quickplay-hint {
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.45);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.03em;
+  }
+
   .card-landscape {
     position: relative;
     width: var(--card-w);
@@ -1303,7 +1320,10 @@
 
   .charge-play-btn-landscape {
     position: absolute;
-    bottom: calc(var(--card-h) + 8px);
+    /* Position above the risen card: card rises calc(-27vh - 36px + 20px) from hand strip.
+       Place button bottom at calc(27vh + var(--card-h) + 34px) from the container bottom,
+       which puts it ~8px above the risen card's top edge. */
+    bottom: calc(27vh + var(--card-h) + 34px);
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;

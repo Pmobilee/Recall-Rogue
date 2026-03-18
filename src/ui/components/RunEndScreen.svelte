@@ -54,7 +54,7 @@
   preloadImages([bgUrl]).then(releaseScreenTransition)
 
   let isVictory = $derived(result === 'victory' || result === 'retreat')
-  let headerText = $derived(result === 'retreat' ? 'SAFE RETREAT' : isVictory ? 'EXPEDITION COMPLETE' : 'EXPEDITION FAILED')
+  let headerText = $derived(result === 'retreat' ? 'PULLED OUT' : isVictory ? 'DIVE COMPLETE' : 'LOST IN THE DARK')
   let headerColor = $derived(isVictory ? '#F1C40F' : '#E74C3C')
   let shareStatus = $state<'idle' | 'sharing' | 'done' | 'error'>('idle')
   let showStats = $state(false)
@@ -204,8 +204,8 @@
       {#if isPracticeRun}
         <div class="practice-run-notice">
           <p class="practice-title">Practice Run</p>
-          <p class="practice-desc">Camp rewards disabled.</p>
-          <p class="practice-tip">Try a less familiar domain to earn rewards!</p>
+          <p class="practice-desc">No camp rewards — you already know this material.</p>
+          <p class="practice-tip">Dive a domain you struggle with to earn rewards.</p>
         </div>
       {/if}
     </div>
@@ -307,8 +307,8 @@
   {#if isPracticeRun}
     <div class="practice-run-notice">
       <p class="practice-title">Practice Run</p>
-      <p class="practice-desc">You already know this material well — camp rewards disabled.</p>
-      <p class="practice-tip">Try a less familiar domain to earn rewards!</p>
+      <p class="practice-desc">No camp rewards — you already know this material.</p>
+      <p class="practice-tip">Dive a domain you struggle with to earn rewards.</p>
     </div>
   {/if}
 

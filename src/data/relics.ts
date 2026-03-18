@@ -48,7 +48,7 @@ export const RELIC_CATALOGUE: RelicDefinition[] = [
   // --- Common ---
   { id: 'rc_pathfinder_boots', name: "Pathfinder's Boots", description: 'Movement costs 10% less O2.', lore: 'Worn smooth by a thousand forgotten expeditions.', tier: 'common', archetype: 'explorer', effects: [{ effectId: 'o2CostMove', description: '-10% O2 per move', magnitude: -0.10 }], icon: '👢', dropWeight: 30 },
   { id: 'rc_arcane_shard', name: 'Arcane Shard', description: 'Block damage +15%.', lore: 'A shard from a legendary drill, still humming faintly.', tier: 'common', archetype: 'delver', effects: [{ effectId: 'blockDamage', description: '+15% block damage', magnitude: 0.15 }], icon: '⛏️', dropWeight: 30 },
-  { id: 'rc_focus_crystal', name: 'Focus Crystal', description: 'Nailing a field scan restores +5 O2.', lore: 'Resonates with concentrated knowledge.', tier: 'common', archetype: 'scholar', effects: [{ effectId: 'quizO2Reward', description: '+5 O2 on correct answer', magnitude: 5 }], icon: '🔮', dropWeight: 30 },
+  { id: 'rc_focus_crystal', name: 'Focus Crystal', description: 'Nailing a field scan restores +5 O2.', lore: 'Glows faintly when you get it right.', tier: 'common', archetype: 'scholar', effects: [{ effectId: 'quizO2Reward', description: '+5 O2 on correct answer', magnitude: 5 }], icon: '🔮', dropWeight: 30 },
   { id: 'rc_carbon_weave', name: 'Carbon Weave Patch', description: 'Damage taken reduced by 10%.', lore: 'Harvested from a pre-collapse pressure suit.', tier: 'common', archetype: 'survivor', effects: [{ effectId: 'damageReduction', description: '-10% damage taken', magnitude: 0.10 }], icon: '🧥', dropWeight: 30 },
   { id: 'rc_sonar_lens', name: 'Sonar Lens', description: 'Reveal radius +1 cell.', lore: 'Pings the darkness before you even ask it to.', tier: 'common', archetype: 'explorer', effects: [{ effectId: 'revealRadius', description: '+1 reveal radius', magnitude: 1 }], icon: '🔍', dropWeight: 25 },
   { id: 'rc_delvers_cadence', name: "Delver's Cadence", description: 'Mining speed +10%.', lore: 'A cadence carved into muscle memory.', tier: 'common', archetype: 'delver', effects: [{ effectId: 'miningSpeed', description: '+10% mining speed', magnitude: 0.10 }], icon: '🎵', dropWeight: 25 },
@@ -64,7 +64,7 @@ export const RELIC_CATALOGUE: RelicDefinition[] = [
   { id: 'rl_arcane_crusher', name: 'Arcane Crusher', description: 'Block damage +100%. Hard rock in 1 hit.', lore: 'Built for a planet that no longer needs to be mined.', tier: 'legendary', archetype: 'delver', effects: [{ effectId: 'blockDamage', description: '+100% block damage', magnitude: 1.0 }, { effectId: 'hardRockOneHit', description: 'Hard rock 1-hit', magnitude: 1 }], icon: '💎', dropWeight: 3 },
   { id: 'rl_akashic_record', name: 'Akashic Record', description: 'Nailed scan +20 O2. All O2 costs -40%.', lore: 'Contains everything known. Reading it is the hard part.', tier: 'legendary', archetype: 'scholar', effects: [{ effectId: 'quizO2Reward', description: '+20 O2 on correct', magnitude: 20 }, { effectId: 'o2CostAll', description: '-40% all O2', magnitude: -0.40 }], icon: '📜', dropWeight: 3 },
   { id: 'rl_phoenix_core', name: 'Phoenix Core', description: 'Resurrect once at 30% O2. Damage -40%.', lore: 'The last backup of something that refused to end.', tier: 'legendary', archetype: 'survivor', effects: [{ effectId: 'resurrection', description: 'Resurrect once/run', magnitude: 1 }, { effectId: 'damageReduction', description: '-40% damage', magnitude: 0.40 }], icon: '🔥', dropWeight: 3 },
-  { id: 'rl_gravity_lens', name: 'Gravity Lens', description: 'Free movement. Shaft moves toward you.', lore: 'Space bends around certainty of purpose.', tier: 'legendary', archetype: 'explorer', effects: [{ effectId: 'o2CostMove', description: '0 O2 per move', magnitude: -1.0 }, { effectId: 'shaftAttraction', description: 'Shaft approach/10 ticks', magnitude: 10 }], icon: '🌀', dropWeight: 2 },
+  { id: 'rl_gravity_lens', name: 'Gravity Lens', description: 'Free movement. Shaft moves toward you.', lore: 'The shaft finds you.', tier: 'legendary', archetype: 'explorer', effects: [{ effectId: 'o2CostMove', description: '0 O2 per move', magnitude: -1.0 }, { effectId: 'shaftAttraction', description: 'Shaft approach/10 ticks', magnitude: 10 }], icon: '🌀', dropWeight: 2 },
   { id: 'rl_epoch_hammer', name: 'Epoch Hammer', description: '3×3 AoE every 5 blocks. +80% damage.', lore: 'Five million years of geology. Five swings.', tier: 'legendary', archetype: 'delver', effects: [{ effectId: 'aoeMinePeriod', description: '3×3 AoE/5 blocks', magnitude: 5 }, { effectId: 'blockDamage', description: '+80% damage', magnitude: 0.80 }], icon: '🔨', dropWeight: 2 },
 ]
 
@@ -102,7 +102,7 @@ export const SYNERGIES: RelicSynergy[] = [
   {
     id: 'survivors_kit',
     name: "Survivor's Kit",
-    description: 'O2 heart + Tough Skin = Regenerate 2x faster',
+    description: 'O2 Heart + Tough Skin: regen 2x faster.',
     icon: '💪',
     requiredRelics: ['oxygen_heart', 'tough_skin'],
     effect: { type: 'oxygen_regen_boost', amount: 3 }, // +3 extra O2 per 10 blocks
@@ -110,7 +110,7 @@ export const SYNERGIES: RelicSynergy[] = [
   {
     id: 'treasure_hunter',
     name: 'Treasure Hunter',
-    description: 'Lucky Strike + Loot Magnet = 1.5x loot drops',
+    description: 'Lucky Strike + Loot Magnet: 1.5x loot drops.',
     icon: '💰',
     requiredRelics: ['lucky_strike', 'loot_magnet'],
     effect: { type: 'loot_multiplier', multiplier: 1.5 },
@@ -118,7 +118,7 @@ export const SYNERGIES: RelicSynergy[] = [
   {
     id: 'deep_diver',
     name: 'Deep Diver',
-    description: 'Deep Breath + Tough Skin = Immune to hazards',
+    description: 'Deep Breath + Tough Skin: immune to hazards.',
     icon: '🌊',
     requiredRelics: ['deep_breath', 'tough_skin'],
     effect: { type: 'hazard_immunity' },
@@ -126,7 +126,7 @@ export const SYNERGIES: RelicSynergy[] = [
   {
     id: 'scholars_blessing',
     name: "Scholar's Blessing",
-    description: 'Scan Expert + Lucky Strike = Double artifact chances',
+    description: 'Scan Expert + Lucky Strike: double artifact chances.',
     icon: '📚',
     requiredRelics: ['quiz_master', 'lucky_strike'],
     effect: { type: 'double_artifact_chance' },

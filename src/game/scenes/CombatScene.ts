@@ -221,6 +221,10 @@ export class CombatScene extends Phaser.Scene {
   private scaleFactor: number = 1
   private currentLayoutMode: LayoutMode = 'portrait'
 
+  // ── Quiz slide state ──────────────────────────────────────
+  /** When non-null, overrides LANDSCAPE.ENEMY_X_PCT for HP bar rendering during quiz slide. */
+  private quizEnemyXOverride: number | null = null
+
   // ═════════════════════════════════════════════════════════
   // Layout change handler (AR-71)
   // ═════════════════════════════════════════════════════════
@@ -234,6 +238,84 @@ export class CombatScene extends Phaser.Scene {
     if (this.sceneReady) {
       this.repositionAll()
     }
+  }
+
+  /**
+   * Slide enemy group right when quiz activates, back to center when done.
+   * Only runs in landscape mode. Called by CardCombatOverlay via getCombatScene().
+   * @param active - true = quiz opened (slide right), false = quiz closed (slide back)
+   */
+  slideEnemyForQuiz(active: boolean): void {
+    if (this.currentLayoutMode !== 'landscape') return
+    if (!this.sceneReady) return
+    const gameW = this.scale.width
+    const gameH = this.scale.height
+    const defaultX = gameW * LANDSCAPE.ENEMY_X_PCT
+    const targetX = active ? gameW * 0.80 : defaultX
+
+    // Initialize the override to the current X if not already set
+    if (this.quizEnemyXOverride === null) {
+      this.quizEnemyXOverride = defaultX
+    }
+
+    // Use a proxy object to drive all positions via a single onUpdate callback
+    const proxy = { x: this.quizEnemyXOverride }
+    const scaledW = Math.round(ENEMY_HP_BAR_W * this.scaleFactor)
+    const scaledH = Math.round(ENEMY_HP_BAR_H * this.scaleFactor)
+    const hpY = gameH * LANDSCAPE.ENEMY_HP_Y_PCT
+    const scaledEnemySize = this.enemySpriteSystem?.getContainer()?.displayHeight ?? 0
+    const nameOffsetY = gameH * LANDSCAPE.ENEMY_Y_PCT + scaledEnemySize / 2 + Math.round(12 * this.scaleFactor)
+    const blockIconOffsetX = scaledW / 2 + Math.round(20 * this.scaleFactor)
+    const intentY = hpY + Math.round(INTENT_ICON_OFFSET_Y * this.scaleFactor)
+
+    this.tweens.killTweensOf(proxy)
+    this.tweens.add({
+      targets: proxy,
+      x: targetX,
+      duration: 200,
+      ease: 'Power2',
+      onUpdate: () => {
+        const x = proxy.x
+        this.quizEnemyXOverride = x
+
+        // Move enemy sprite container
+        const container = this.enemySpriteSystem?.getContainer()
+        if (container) container.setPosition(x, gameH * LANDSCAPE.ENEMY_Y_PCT)
+
+        // Move name text
+        this.enemyNameText.setPosition(x, nameOffsetY)
+
+        // Move intent text
+        this.intentText.setPosition(x, intentY)
+
+        // Move HP text
+        this.enemyHpText.setPosition(x, hpY)
+
+        // Redraw HP bar background at new position
+        this.enemyHpBarBg.clear()
+        this.enemyHpBarBg.fillStyle(0x1a1a2e, 1)
+        this.enemyHpBarBg.fillRoundedRect(
+          x - scaledW / 2, hpY - scaledH / 2,
+          scaledW, scaledH, 6
+        )
+
+        // Redraw HP bar fill at new position
+        this.refreshEnemyHpBar(false)
+
+        // Move block indicators
+        this.enemyBlockIcon.setPosition(x - blockIconOffsetX, hpY)
+        this.enemyBlockText.setPosition(x - blockIconOffsetX + Math.round(10 * this.scaleFactor), hpY + Math.round(12 * this.scaleFactor))
+      },
+      onComplete: () => {
+        if (!active) {
+          // Reset override so normal repositionAll works correctly
+          this.quizEnemyXOverride = null
+        }
+        // Final refresh to settle everything
+        this.refreshEnemyHpBar(false)
+        this.refreshEnemyBlockBar(false)
+      },
+    })
   }
 
   /**
@@ -1595,7 +1677,8 @@ export class CombatScene extends Phaser.Scene {
     const w = this.scale.width
     const h = this.scale.height
     if (this.currentLayoutMode === 'landscape') {
-      return { x: w * LANDSCAPE.ENEMY_X_PCT, y: h * LANDSCAPE.ENEMY_HP_Y_PCT }
+      const x = this.quizEnemyXOverride ?? w * LANDSCAPE.ENEMY_X_PCT
+      return { x, y: h * LANDSCAPE.ENEMY_HP_Y_PCT }
     }
     return { x: w / 2, y: this.displayH * ENEMY_HP_Y_PCT }
   }

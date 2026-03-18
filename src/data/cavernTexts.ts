@@ -28,7 +28,7 @@ export const CAVERN_TEXTS: CavernText[] = [
     biome: 'any',
     title: 'Field Notes — Dr. Vasquez',
     textType: 'journal',
-    content: 'The sediment layers tell a story clearer than any history book. Fire. Flood. Ice. Fire again. Each catastrophe left its signature. The planet survived all of them. We did not.',
+    content: 'The sediment layers read like a ledger. Fire. Flood. Ice. Fire again. The planet survived all of it. We did not.',
   },
   {
     id: 'ct_journal_04',
@@ -65,7 +65,7 @@ export const CAVERN_TEXTS: CavernText[] = [
     biome: 'crystal_geode',
     title: 'Crystal-Etched Runes',
     textType: 'inscription',
-    content: 'The symbols are carved into the crystal face with impossible precision. They predate any known alphabet by millennia. The crystals grew around the inscriptions, preserving them like amber preserves insects.',
+    content: 'Carved with impossible precision into the crystal face. They predate any known alphabet by millennia. The crystals grew around them — sealed, like insects in amber.',
   },
   {
     id: 'ct_inscription_02',
@@ -79,7 +79,7 @@ export const CAVERN_TEXTS: CavernText[] = [
     biome: 'fossil_layer',
     title: 'Bone-Ink Pictograph',
     textType: 'inscription',
-    content: 'Painted with pigments derived from ancient bone. The images show creatures that no living person has ever seen, depicted with an accuracy that suggests direct observation across impossible timescales.',
+    content: 'Painted in pigments ground from ancient bone. The creatures shown have been extinct for millions of years. The accuracy suggests someone watched them.',
   },
   {
     id: 'ct_inscription_04',
@@ -93,7 +93,7 @@ export const CAVERN_TEXTS: CavernText[] = [
     biome: 'limestone_caves',
     title: 'Smooth Wall Engraving',
     textType: 'inscription',
-    content: 'Water carved this cave over ten thousand years. Someone carved these words in an afternoon. Both acts created something permanent. Both artists are gone. Only the limestone remains.',
+    content: 'Water carved this cave over ten thousand years. Someone carved these words in an afternoon. Both are gone now. The limestone remains.',
   },
   {
     id: 'ct_inscription_06',
@@ -109,7 +109,7 @@ export const CAVERN_TEXTS: CavernText[] = [
     biome: 'fossil_layer',
     title: 'Geological Survey Record',
     textType: 'record',
-    content: 'Survey Site 7-G. Fossil density: exceptional. Species present: Cretaceous marine fauna, approximately 66 million years old. Evidence of rapid burial event consistent with bolide impact theory. Three specimens show signs of healing prior to death.',
+    content: 'Survey Site 7-G. Fossil density: exceptional. Cretaceous marine fauna, ~66 million years old. Rapid burial consistent with bolide impact. Three specimens show healed injuries. They survived the first hit.',
   },
   {
     id: 'ct_record_02',
@@ -130,7 +130,7 @@ export const CAVERN_TEXTS: CavernText[] = [
     biome: 'granite_canyon',
     title: 'Structural Integrity Report',
     textType: 'record',
-    content: 'Load-bearing analysis of Canyon Section B-4: stable for an estimated 2.3 million additional years under current tectonic stress. Human mining operations reduce this estimate to approximately six months.',
+    content: 'Canyon Section B-4. Stable for an estimated 2.3 million years under current tectonic stress. Human mining operations reduce that to six months.',
   },
   {
     id: 'ct_record_05',
@@ -144,7 +144,7 @@ export const CAVERN_TEXTS: CavernText[] = [
     biome: 'sulfur_springs',
     title: 'Chemical Analysis — Spring Water',
     textType: 'record',
-    content: 'pH: 2.1. Sulfuric acid concentration: 0.05 mol/L. Temperature: 62°C. Bacterial colonies detected: extremophiles of unknown taxonomy. Life persists here in conditions that would dissolve steel. Remarkable.',
+    content: 'pH: 2.1. Sulfuric acid: 0.05 mol/L. Temperature: 62°C. Bacterial colonies — extremophiles, unknown taxonomy. These conditions would dissolve steel. Something lives here anyway.',
   },
 
   // === STORY FRAGMENTS ===
@@ -153,7 +153,7 @@ export const CAVERN_TEXTS: CavernText[] = [
     biome: 'any',
     title: 'Torn Page',
     textType: 'fragment',
-    content: 'They said the surface would recover in a century. Then they said a millennium. Then they stopped making predictions entirely. The last generation to see blue sky died arguing about whose fault it was.',
+    content: 'They said the surface would recover in a century. Then a millennium. Then they stopped saying anything. The last generation to see blue sky died arguing about whose fault it was.',
   },
   {
     id: 'ct_fragment_02',

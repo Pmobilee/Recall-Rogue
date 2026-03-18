@@ -15,7 +15,7 @@ export const QUOTE_STONES: QuoteStoneEntry[] = [
     quote: 'Imagination is more important than knowledge.',
     author: 'Albert Einstein (1879-1955)',
     category: 'science',
-    gaiaComment: 'He was right. I have watched entire civilizations forget their knowledge, but never their dreams.',
+    gaiaComment: 'He was right. Knowledge erodes. Dreams persist longer than they should.',
   },
   {
     id: 'qs_02',
@@ -43,7 +43,7 @@ export const QUOTE_STONES: QuoteStoneEntry[] = [
     quote: 'Somewhere, something incredible is waiting to be known.',
     author: 'Carl Sagan (1934-1996)',
     category: 'science',
-    gaiaComment: 'He pointed at the stars and made people care. The universe noticed, I think.',
+    gaiaComment: 'He pointed at the stars and made people look. Not enough of them did.',
   },
   {
     id: 'qs_06',
@@ -71,7 +71,7 @@ export const QUOTE_STONES: QuoteStoneEntry[] = [
     quote: 'Nothing is too wonderful to be true, if it be consistent with the laws of nature.',
     author: 'Michael Faraday (1791-1867)',
     category: 'science',
-    gaiaComment: 'A bookbinder who unlocked electromagnetism. Never let anyone tell you where you started matters.',
+    gaiaComment: 'A bookbinder\'s apprentice who unlocked electromagnetism. His employers were not pleased.',
   },
   {
     id: 'qs_10',
@@ -122,7 +122,7 @@ export const QUOTE_STONES: QuoteStoneEntry[] = [
     quote: 'The clearest way into the Universe is through a forest wilderness.',
     author: 'John Muir (1838-1914)',
     category: 'nature',
-    gaiaComment: 'Finally, a human who understood that my roots go deeper than your telescopes can see.',
+    gaiaComment: 'He meant it literally. My roots extend further than most of your instruments can reach.',
   },
   {
     id: 'qs_17',
@@ -143,14 +143,14 @@ export const QUOTE_STONES: QuoteStoneEntry[] = [
     quote: 'We do not inherit the earth from our ancestors, we borrow it from our children.',
     author: 'Native American proverb',
     category: 'nature',
-    gaiaComment: 'The oldest wisdom is often the truest. They knew me before I had a name.',
+    gaiaComment: 'They understood the arrangement. Most of your species forgot the terms.',
   },
   {
     id: 'qs_20',
     quote: 'Look deep into nature, and then you will understand everything better.',
     author: 'Albert Einstein (1879-1955)',
     category: 'nature',
-    gaiaComment: 'Even the physicist knew. The equations are in the leaf veins, if you look closely enough.',
+    gaiaComment: 'The equations are in the leaf veins. Physicists occasionally notice.',
   },
   {
     id: 'qs_21',
@@ -194,7 +194,7 @@ export const QUOTE_STONES: QuoteStoneEntry[] = [
     quote: 'Knowing yourself is the beginning of all wisdom.',
     author: 'Aristotle (384-322 BC)',
     category: 'wisdom',
-    gaiaComment: 'He catalogued the entire world. Started with himself. Good order of operations.',
+    gaiaComment: 'He catalogued everything he could find, starting with himself. Thorough.',
   },
   {
     id: 'qs_27',
@@ -215,14 +215,14 @@ export const QUOTE_STONES: QuoteStoneEntry[] = [
     quote: 'To know what you know and what you do not know, that is true knowledge.',
     author: 'Confucius (551-479 BC)',
     category: 'wisdom',
-    gaiaComment: 'Two and a half thousand years and humans are still working on this one. Keep at it.',
+    gaiaComment: 'Two and a half thousand years. Your species is still working on this one.',
   },
   {
     id: 'qs_30',
     quote: 'Knowledge speaks, but wisdom listens.',
     author: 'Jimi Hendrix (1942-1970)',
     category: 'wisdom',
-    gaiaComment: 'A musician among the philosophers. The best truths come from unexpected roots.',
+    gaiaComment: 'A guitarist among the philosophers. He had a point, and better hair.',
   },
   {
     id: 'qs_31',
@@ -308,7 +308,7 @@ export const QUOTE_STONES: QuoteStoneEntry[] = [
     quote: 'Life is either a daring adventure or nothing at all.',
     author: 'Helen Keller (1880-1968)',
     category: 'exploration',
-    gaiaComment: 'She explored the world without sight or sound and found more than most. No excuses, miner.',
+    gaiaComment: 'She explored the world without sight or sound and found more than most.',
   },
   {
     id: 'qs_43',
