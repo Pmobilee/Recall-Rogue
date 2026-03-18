@@ -184,8 +184,16 @@ async function quickPlayCard(index: number): Promise<PlayResult> {
       return { ok: false, message: `Not enough AP to play card ${index} (needs ${card.apCost ?? 1}, have ${turnState.apCurrent ?? 0})` };
     }
 
+    const prevHandSize = hand.length;
     handlePlayCard(card.id, true, false, undefined, undefined, 'quick');
-    await wait(turboDelay(600));
+    // Poll until the turn state actually updates (hand shrinks or AP changes)
+    for (let i = 0; i < 50; i++) {
+      await wait(10);
+      const updated = get(activeTurnState);
+      if (!updated) break; // Turn ended (encounter resolved)
+      const newHand = updated.deck?.hand;
+      if (!newHand || newHand.length < prevHandSize || updated.apCurrent < turnState.apCurrent) break;
+    }
     return {
       ok: true,
       message: `Quick-played card ${index} (${card.cardType}, "${(card as any).fact?.question ?? card.id}")`,
@@ -217,8 +225,16 @@ async function chargePlayCard(index: number, answerCorrectly: boolean): Promise<
       return { ok: false, message: `Not enough AP to charge-play card ${index} (needs ${chargeCost}, have ${turnState.apCurrent ?? 0})` };
     }
 
+    const prevHandSize = hand.length;
     handlePlayCard(card.id, answerCorrectly, false, 1500, undefined, 'charge');
-    await wait(turboDelay(800));
+    // Poll until the turn state actually updates (hand shrinks or AP changes)
+    for (let i = 0; i < 50; i++) {
+      await wait(10);
+      const updated = get(activeTurnState);
+      if (!updated) break; // Turn ended (encounter resolved)
+      const newHand = updated.deck?.hand;
+      if (!newHand || newHand.length < prevHandSize || updated.apCurrent < turnState.apCurrent) break;
+    }
     return {
       ok: true,
       message: `Charge-played card ${index} (${card.cardType}) — answered ${answerCorrectly ? 'correctly' : 'incorrectly'}`,
