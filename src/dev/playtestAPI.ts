@@ -304,6 +304,44 @@ async function selectRewardType(cardType: string): Promise<PlayResult> {
   });
 }
 
+/** Select a relic from the relic reward choices. Returns the picked relic's definitionId. */
+async function selectRelic(index: number): Promise<PlayResult> {
+  return safeAction(async () => {
+    const btn = document.querySelector(`[data-testid="relic-option-${index}"]`) as HTMLElement | null;
+    if (!btn) {
+      // Try alternate selectors
+      const alt = document.querySelector(`[data-testid="relic-choice-${index}"]`) as HTMLElement | null;
+      if (!alt) return { ok: false, message: `Relic option ${index} not found` };
+      alt.click();
+    } else {
+      btn.click();
+    }
+    await wait(turboDelay(1000));
+
+    // Read the run state to get the latest relic
+    const runState = readStore<any>('terra:activeRunState');
+    const relics = runState?.runRelics ?? [];
+    const lastRelic = relics[relics.length - 1];
+
+    return {
+      ok: true,
+      message: `Selected relic ${index}`,
+      state: { relicId: lastRelic?.definitionId ?? '' },
+    };
+  });
+}
+
+/** Get detailed relic information from the active run. */
+function getRelicDetails(): Array<{ definitionId: string; acquiredAtFloor: number; triggerCount: number }> {
+  const runState = readStore<any>('terra:activeRunState');
+  if (!runState?.runRelics) return [];
+  return runState.runRelics.map((r: any) => ({
+    definitionId: r.definitionId ?? '',
+    acquiredAtFloor: r.acquiredAtFloor ?? 0,
+    triggerCount: r.triggerCount ?? 0,
+  }));
+}
+
 /** Retreat at a checkpoint (cash out). */
 async function retreat(): Promise<PlayResult> {
   return safeAction(async () => {
@@ -784,6 +822,8 @@ export function initPlaytestAPI(): void {
     selectMapNode,
     acceptReward,
     selectRewardType,
+    selectRelic,
+    getRelicDetails,
     retreat,
     delve,
     getRunState,

@@ -54,12 +54,14 @@ export async function readGameState(page: Page): Promise<GameState> {
       apMax: (turnState && turnState.apMax) || 3,
       turnNumber: (turnState && turnState.turnNumber) || 0,
       comboCount: (turnState && turnState.comboCount) || 0,
-      relicCount: (runState && runState.relics && runState.relics.length) || 0,
+      relicCount: (runState && runState.runRelics && runState.runRelics.length) || (runState && runState.relics && runState.relics.length) || 0,
       floor: Number((runState && (runState.currentFloor || runState.floor)) || 0) || 0,
       isGameOver: terminals.indexOf(currentScreen) >= 0,
       runResult: currentScreen === 'victory' ? 'victory' :
                  (currentScreen === 'defeat' || currentScreen === 'game_over' || currentScreen === 'run_end' || currentScreen === 'runEnd') ? 'defeat' :
                  null,
+      chainLength: (turnState && turnState.chainLength) || 0,
+      chainMultiplier: (turnState && turnState.chainMultiplier) || 1.0,
     };
   })()`) as Promise<GameState>;
 }
@@ -136,6 +138,17 @@ export async function readDetailedState(page: Page): Promise<{
   maxHp: number;
   enemyName: string;
   enemyHp: number;
+  relicDetails: Array<{ definitionId: string; acquiredAtFloor: number; triggerCount: number }>;
+  domainAccuracy: Record<string, { answered: number; correct: number }>;
+  cardsUpgraded: number;
+  cardsRemovedAtShop: number;
+  haggleAttempts: number;
+  haggleSuccesses: number;
+  questionsAnswered: number;
+  questionsCorrect: number;
+  novelQuestionsAnswered: number;
+  novelQuestionsCorrect: number;
+  bountiesCompleted: string[];
 }> {
   return page.evaluate(`(() => {
     var readStore = function(key) {
@@ -151,7 +164,7 @@ export async function readDetailedState(page: Page): Promise<{
     var turn = readStore('terra:activeTurnState');
     var enemy = turn && turn.enemy;
     return {
-      relics: (run && run.relics) ? run.relics.map(function(r) { return typeof r === 'string' ? r : (r.id || r); }) : [],
+      relics: (run && run.runRelics) ? run.runRelics.map(function(r) { return r.definitionId || ''; }) : [],
       gold: (run && (run.currency || run.gold)) || 0,
       deckSize: (run && run.deck && run.deck.length) || (turn && turn.deck && turn.deck.pool && turn.deck.pool.length) || 0,
       floor: Number((run && (run.currentFloor || run.floor)) || 0) || 0,
@@ -159,8 +172,41 @@ export async function readDetailedState(page: Page): Promise<{
       maxHp: (turn && turn.playerState && turn.playerState.maxHp) || (run && run.playerMaxHp) || 0,
       enemyName: (enemy && (enemy.name || (enemy.template && enemy.template.name) || (enemy.template && enemy.template.id))) || '',
       enemyHp: (enemy && enemy.currentHP) || 0,
+      relicDetails: (run && run.runRelics) ? run.runRelics.map(function(r) {
+        return { definitionId: r.definitionId || '', acquiredAtFloor: r.acquiredAtFloor || 0, triggerCount: r.triggerCount || 0 };
+      }) : [],
+      domainAccuracy: (run && run.domainAccuracy) || {},
+      cardsUpgraded: (run && run.cardsUpgraded) || 0,
+      cardsRemovedAtShop: (run && run.cardsRemovedAtShop) || 0,
+      haggleAttempts: (run && run.haggleAttempts) || 0,
+      haggleSuccesses: (run && run.haggleSuccesses) || 0,
+      questionsAnswered: (run && run.questionsAnswered) || 0,
+      questionsCorrect: (run && run.questionsCorrect) || 0,
+      novelQuestionsAnswered: (run && run.novelQuestionsAnswered) || 0,
+      novelQuestionsCorrect: (run && run.novelQuestionsCorrect) || 0,
+      bountiesCompleted: (run && run.bounties) ? run.bounties.filter(function(b) { return b.completed; }).map(function(b) { return b.id || b.bountyId || ''; }) : [],
     };
-  })()`) as Promise<{ relics: string[]; gold: number; deckSize: number; floor: number; hp: number; maxHp: number; enemyName: string; enemyHp: number; }>;
+  })()`) as Promise<{
+    relics: string[];
+    gold: number;
+    deckSize: number;
+    floor: number;
+    hp: number;
+    maxHp: number;
+    enemyName: string;
+    enemyHp: number;
+    relicDetails: Array<{ definitionId: string; acquiredAtFloor: number; triggerCount: number }>;
+    domainAccuracy: Record<string, { answered: number; correct: number }>;
+    cardsUpgraded: number;
+    cardsRemovedAtShop: number;
+    haggleAttempts: number;
+    haggleSuccesses: number;
+    questionsAnswered: number;
+    questionsCorrect: number;
+    novelQuestionsAnswered: number;
+    novelQuestionsCorrect: number;
+    bountiesCompleted: string[];
+  }>;
 }
 
 /**

@@ -41,6 +41,8 @@ export interface GameState {
   floor: number;
   isGameOver: boolean;
   runResult: 'victory' | 'defeat' | null;
+  chainLength: number;
+  chainMultiplier: number;
 }
 
 /** Quiz state read from window.__terraPlay.getQuiz(). */
@@ -77,7 +79,7 @@ export interface BotRunStats {
   finalGold: number;
 
   // Relics
-  relicsEarned: string[];   // IDs of relics picked up during run
+  relicsEarned: string[];   // IDs of relics picked up during run (backwards compat)
   finalRelicCount: number;
 
   // Rooms visited
@@ -108,6 +110,54 @@ export interface BotRunStats {
 
   // Screen transition log (last 50)
   screenLog: Array<{ time: number; screen: string }>;
+
+  // Per-encounter log (enriched — encountersWon/Lost kept for backwards compat)
+  encounters: Array<{
+    enemyName: string;
+    floor: number;
+    result: 'won' | 'lost';
+    turns: number;
+    damageDealt: number;
+    damageTaken: number;
+    cardsPlayed: number;
+    chargesUsed: number;
+    quickPlays: number;
+    maxChain: number;
+    playerHpStart: number;
+    playerHpEnd: number;
+  }>;
+
+  // Per-card-type stats
+  cardTypeStats: Record<string, { played: number; charged: number; quickPlayed: number }>;
+
+  // Chain performance (enriched)
+  totalChains: number;        // number of chains started (length >= 2)
+  avgChainLength: number;
+
+  // Domain accuracy (from RunState.domainAccuracy)
+  domainAccuracy: Record<string, { answered: number; correct: number }>;
+
+  // Shop/upgrade tracking
+  cardsUpgraded: number;
+  cardsRemovedAtShop: number;
+  haggleAttempts: number;
+  haggleSuccesses: number;
+
+  // Relic details (enriched - replaces the broken relicsEarned string[])
+  relicDetails: Array<{
+    definitionId: string;
+    acquiredAtFloor: number;
+    triggerCount: number;
+  }>;
+
+  // Question tier breakdown
+  questionsAnswered: number;
+  questionsCorrect: number;
+  novelQuestionsAnswered: number;
+  novelQuestionsCorrect: number;
+
+  // Bounties
+  bountiesCompleted: string[];
 }
 
 /** Predefined bot profiles matching the mass-simulate player personas. */

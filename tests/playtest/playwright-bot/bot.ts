@@ -73,6 +73,21 @@ function initStats(profile: BotProfile, seed: number): BotRunStats {
     deathEnemy: '',
     deathHP: 0,
     screenLog: [],
+    encounters: [],
+    cardTypeStats: {},
+    totalChains: 0,
+    avgChainLength: 0,
+    domainAccuracy: {},
+    cardsUpgraded: 0,
+    cardsRemovedAtShop: 0,
+    haggleAttempts: 0,
+    haggleSuccesses: 0,
+    relicDetails: [],
+    questionsAnswered: 0,
+    questionsCorrect: 0,
+    novelQuestionsAnswered: 0,
+    novelQuestionsCorrect: 0,
+    bountiesCompleted: [],
   };
 }
 
@@ -122,6 +137,16 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
   let currentEncounterStartTurn = 0;
   let currentEnemyName = '';
   let inCombat = false;
+
+  // Per-encounter tracking variables
+  let encounterDamageDealt = 0;
+  let encounterDamageTaken = 0;
+  let encounterCardsPlayed = 0;
+  let encounterCharges = 0;
+  let encounterQuickPlays = 0;
+  let encounterMaxChain = 0;
+  let encounterPlayerHpStart = 0;
+  let encounterFloor = 0;
 
   try {
     // Step 1: Quick navigate to set localStorage (marks onboarding complete)
@@ -227,6 +252,24 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
           stats.deathFloor = stats.finalFloor;
           stats.deathEnemy = currentEnemyName;
           stats.deathHP = state.playerHP;
+          if (inCombat) {
+            const encounterTurns = stats.totalTurns - currentEncounterStartTurn;
+            stats.encounters.push({
+              enemyName: currentEnemyName,
+              floor: encounterFloor,
+              result: 'lost',
+              turns: encounterTurns,
+              damageDealt: encounterDamageDealt,
+              damageTaken: encounterDamageTaken,
+              cardsPlayed: encounterCardsPlayed,
+              chargesUsed: encounterCharges,
+              quickPlays: encounterQuickPlays,
+              maxChain: encounterMaxChain,
+              playerHpStart: encounterPlayerHpStart,
+              playerHpEnd: state.playerHP,
+            });
+            inCombat = false;
+          }
         }
         break;
       }
@@ -238,6 +281,24 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
           stats.deathFloor = stats.finalFloor;
           stats.deathEnemy = currentEnemyName;
           stats.deathHP = state.playerHP;
+          if (inCombat) {
+            const encounterTurns = stats.totalTurns - currentEncounterStartTurn;
+            stats.encounters.push({
+              enemyName: currentEnemyName,
+              floor: encounterFloor,
+              result: 'lost',
+              turns: encounterTurns,
+              damageDealt: encounterDamageDealt,
+              damageTaken: encounterDamageTaken,
+              cardsPlayed: encounterCardsPlayed,
+              chargesUsed: encounterCharges,
+              quickPlays: encounterQuickPlays,
+              maxChain: encounterMaxChain,
+              playerHpStart: encounterPlayerHpStart,
+              playerHpEnd: state.playerHP,
+            });
+            inCombat = false;
+          }
         }
         break;
       }
@@ -272,6 +333,23 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
           stats.avgTurnsPerEncounter = total > 1
             ? (stats.avgTurnsPerEncounter * (total - 1) + encounterTurns) / total
             : encounterTurns;
+
+          // Push per-encounter record
+          stats.encounters.push({
+            enemyName: currentEnemyName,
+            floor: encounterFloor,
+            result: 'won',
+            turns: encounterTurns,
+            damageDealt: encounterDamageDealt,
+            damageTaken: encounterDamageTaken,
+            cardsPlayed: encounterCardsPlayed,
+            chargesUsed: encounterCharges,
+            quickPlays: encounterQuickPlays,
+            maxChain: encounterMaxChain,
+            playerHpStart: encounterPlayerHpStart,
+            playerHpEnd: state.playerHP,
+          });
+
           inCombat = false;
         }
         await page.waitForTimeout(50);
@@ -284,12 +362,22 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
         currentEncounterStartTurn = stats.totalTurns;
         currentEnemyName = state.enemyName;
         prevEnemyHp = state.enemyHP;
+        encounterDamageDealt = 0;
+        encounterDamageTaken = 0;
+        encounterCardsPlayed = 0;
+        encounterCharges = 0;
+        encounterQuickPlays = 0;
+        encounterMaxChain = 0;
+        encounterPlayerHpStart = state.playerHP;
+        encounterFloor = state.floor ?? stats.finalFloor;
         recordRoom(stats, 'combat');
       }
 
       // Track damage dealt (enemy HP reduction)
       if (state.currentScreen === 'combat' && prevEnemyHp > 0 && state.enemyHP < prevEnemyHp) {
-        stats.totalDamageDealt += prevEnemyHp - state.enemyHP;
+        const dmg = prevEnemyHp - state.enemyHP;
+        stats.totalDamageDealt += dmg;
+        encounterDamageDealt += dmg;
       }
       if (state.currentScreen === 'combat') {
         prevEnemyHp = state.enemyHP;
@@ -297,13 +385,26 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
 
       // Track damage taken (player HP reduction)
       if (state.playerHP > 0 && prevHp > 0 && state.playerHP < prevHp) {
-        stats.totalDamageTaken += prevHp - state.playerHP;
+        const dmg = prevHp - state.playerHP;
+        stats.totalDamageTaken += dmg;
+        encounterDamageTaken += dmg;
       }
       prevHp = state.playerHP;
 
       // Track combo / chain
       if (state.comboCount > stats.maxCombo) {
         stats.maxCombo = state.comboCount;
+      }
+      // Chain tracking per encounter
+      if (state.chainLength > encounterMaxChain) {
+        encounterMaxChain = state.chainLength;
+      }
+      if (state.chainLength > stats.maxChainLength) {
+        stats.maxChainLength = state.chainLength;
+      }
+      // Count chains (length >= 2 = a chain was formed)
+      if (state.chainLength === 2) {
+        stats.totalChains++;
       }
 
       // Stuck detection
@@ -334,6 +435,13 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
         lastScreen = state.currentScreen;
       }
 
+      // Mutable counters updated by handleScreen during combat
+      const encounterCounters: EncounterCounters = {
+        cardsPlayed: encounterCardsPlayed,
+        charges: encounterCharges,
+        quickPlays: encounterQuickPlays,
+      };
+
       // Dispatch on current screen
       try {
         await handleScreen(page, profile, state, stats, rng, {
@@ -343,10 +451,31 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
           onEncounterLost: () => {
             if (inCombat) {
               stats.encountersLost++;
+              const encounterTurns = stats.totalTurns - currentEncounterStartTurn;
+              stats.encounters.push({
+                enemyName: currentEnemyName,
+                floor: encounterFloor,
+                result: 'lost',
+                turns: encounterTurns,
+                damageDealt: encounterDamageDealt,
+                damageTaken: encounterDamageTaken,
+                cardsPlayed: encounterCardsPlayed,
+                chargesUsed: encounterCharges,
+                quickPlays: encounterQuickPlays,
+                maxChain: encounterMaxChain,
+                playerHpStart: encounterPlayerHpStart,
+                playerHpEnd: 0,
+              });
               inCombat = false;
             }
           },
+          encounterCounters,
         });
+
+        // Sync counters back from handleScreen
+        encounterCardsPlayed = encounterCounters.cardsPlayed;
+        encounterCharges = encounterCounters.charges;
+        encounterQuickPlays = encounterCounters.quickPlays;
       } catch {
         // Context destroyed during action — wait and retry
         await page.waitForTimeout(30);
@@ -366,21 +495,44 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
       const final = await readDetailedState(page);
       stats.finalGold = final.gold;
       stats.finalDeckSize = final.deckSize;
-      stats.finalRelicCount = final.relics.length;
+      stats.finalRelicCount = final.relicDetails?.length ?? final.relics.length;
 
-      // Gold earned = any gold we saw above baseline
-      if (final.gold > prevGold) {
-        stats.goldEarned = final.gold - prevGold + stats.goldSpent;
+      // Gold earned = final gold + amount spent - starting gold
+      stats.goldEarned = (final.gold - prevGold) + stats.goldSpent;
+      if (stats.goldEarned < 0) stats.goldEarned = 0;
+
+      // Relics — use detailed data from RunState.runRelics
+      if (final.relicDetails?.length > 0) {
+        stats.relicDetails = final.relicDetails;
+        stats.relicsEarned = final.relicDetails.map((r: any) => r.definitionId);
+      } else {
+        // Fallback to simple IDs
+        stats.relicsEarned = final.relics.filter((id: string) => typeof id === 'string' && id.length > 0);
       }
-
-      // Relics — track IDs earned
-      stats.relicsEarned = final.relics.filter(id => typeof id === 'string' && id.length > 0);
 
       // Deck growth
       if (final.deckSize > prevDeckSize) {
         stats.cardsAdded = final.deckSize - prevDeckSize;
       } else if (final.deckSize < prevDeckSize) {
         stats.cardsRemoved = prevDeckSize - final.deckSize;
+      }
+
+      // Rich RunState data
+      if (final.domainAccuracy) stats.domainAccuracy = final.domainAccuracy;
+      stats.cardsUpgraded = final.cardsUpgraded ?? 0;
+      stats.cardsRemovedAtShop = final.cardsRemovedAtShop ?? 0;
+      stats.haggleAttempts = final.haggleAttempts ?? 0;
+      stats.haggleSuccesses = final.haggleSuccesses ?? 0;
+      stats.questionsAnswered = final.questionsAnswered ?? 0;
+      stats.questionsCorrect = final.questionsCorrect ?? 0;
+      stats.novelQuestionsAnswered = final.novelQuestionsAnswered ?? 0;
+      stats.novelQuestionsCorrect = final.novelQuestionsCorrect ?? 0;
+      stats.bountiesCompleted = final.bountiesCompleted ?? [];
+
+      // Compute avg chain length
+      if (stats.totalChains > 0 && stats.encounters.length > 0) {
+        const totalChainLen = stats.encounters.reduce((sum, e) => sum + e.maxChain, 0);
+        stats.avgChainLength = totalChainLen / stats.encounters.length;
       }
     } catch {
       // Non-critical
@@ -399,11 +551,19 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
 // Screen dispatcher
 // ---------------------------------------------------------------------------
 
+interface EncounterCounters {
+  cardsPlayed: number;
+  charges: number;
+  quickPlays: number;
+}
+
 interface ScreenContext {
   segmentsCompleted: number;
   MAX_SEGMENTS: number;
   onSegmentComplete: (n: number) => void;
   onEncounterLost: () => void;
+  /** Mutable per-encounter counters updated by handleScreen during combat */
+  encounterCounters: EncounterCounters;
 }
 
 async function handleScreen(
@@ -435,6 +595,14 @@ async function handleScreen(
         if (result?.ok) {
           stats.totalCardsPlayed++;
           stats.totalCharges++;
+          ctx.encounterCounters.cardsPlayed++;
+          ctx.encounterCounters.charges++;
+          if (result?.state?.cardType) {
+            const ct = String(result.state.cardType);
+            if (!stats.cardTypeStats[ct]) stats.cardTypeStats[ct] = { played: 0, charged: 0, quickPlayed: 0 };
+            stats.cardTypeStats[ct].played++;
+            stats.cardTypeStats[ct].charged++;
+          }
           if (answerCorrectly) stats.quizCorrect++;
           else stats.quizWrong++;
           played = true;
@@ -449,6 +617,14 @@ async function handleScreen(
             if (r?.ok) {
               stats.totalCardsPlayed++;
               stats.totalCharges++;
+              ctx.encounterCounters.cardsPlayed++;
+              ctx.encounterCounters.charges++;
+              if (r?.state?.cardType) {
+                const ct = String(r.state.cardType);
+                if (!stats.cardTypeStats[ct]) stats.cardTypeStats[ct] = { played: 0, charged: 0, quickPlayed: 0 };
+                stats.cardTypeStats[ct].played++;
+                stats.cardTypeStats[ct].charged++;
+              }
               if (answerCorrectly) stats.quizCorrect++;
               else stats.quizWrong++;
               played = true;
@@ -464,6 +640,14 @@ async function handleScreen(
         if (result?.ok) {
           stats.totalCardsPlayed++;
           stats.totalQuickPlays++;
+          ctx.encounterCounters.cardsPlayed++;
+          ctx.encounterCounters.quickPlays++;
+          if (result?.state?.cardType) {
+            const ct = String(result.state.cardType);
+            if (!stats.cardTypeStats[ct]) stats.cardTypeStats[ct] = { played: 0, charged: 0, quickPlayed: 0 };
+            stats.cardTypeStats[ct].played++;
+            stats.cardTypeStats[ct].quickPlayed++;
+          }
           played = true;
         } else {
           // Try other card indices
@@ -476,6 +660,14 @@ async function handleScreen(
             if (r?.ok) {
               stats.totalCardsPlayed++;
               stats.totalQuickPlays++;
+              ctx.encounterCounters.cardsPlayed++;
+              ctx.encounterCounters.quickPlays++;
+              if (r?.state?.cardType) {
+                const ct = String(r.state.cardType);
+                if (!stats.cardTypeStats[ct]) stats.cardTypeStats[ct] = { played: 0, charged: 0, quickPlayed: 0 };
+                stats.cardTypeStats[ct].played++;
+                stats.cardTypeStats[ct].quickPlayed++;
+              }
               played = true;
             }
           }
@@ -537,7 +729,7 @@ async function handleScreen(
       `) as string[];
 
       if (mapNodes.length > 0) {
-        console.log(`    [MAP] ${mapNodes.length} available: ${mapNodes.slice(0,3).join(', ')}`);
+        // Map nodes found
         // Find the lowest available row
         const rows = new Map<string, string[]>();
         for (const n of mapNodes) {
@@ -556,7 +748,7 @@ async function handleScreen(
           nodeId,
         );
         if (!selectResult?.ok) {
-          console.log(`    [MAP] selectMapNode(${nodeId}) failed: ${selectResult?.message}`);
+          // selectMapNode fallback
           // Fallback: direct DOM click from inside browser
           await page.evaluate(`(function() {
             var el = document.querySelector('[data-testid="${pick}"]');
