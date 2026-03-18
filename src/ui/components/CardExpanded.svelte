@@ -97,6 +97,8 @@
   let selectedAnswerIndex = $state<number | null>(null)
   let answerRevealed = $state(false)
   let answersDisabled = $state(false)
+  /** Landscape-only: shows CORRECT/WRONG flash overlay for 500ms after answering. */
+  let quizResultState = $state<'correct' | 'wrong' | null>(null)
   let showSpeedBonus = $state(false)
   let timerExpired = $state(false)
   let touchStartY = $state<number | null>(null)
@@ -121,6 +123,7 @@
   let feedbackTimeoutId: ReturnType<typeof setTimeout> | undefined
   let correctRevealTimeoutId: ReturnType<typeof setTimeout> | undefined
   let speedBonusTimeoutId: ReturnType<typeof setTimeout> | undefined
+  let quizResultTimeoutId: ReturnType<typeof setTimeout> | undefined
 
   function timerTick(now: number): void {
     if (!timerEnabled || answersDisabled || timerExpired) return
@@ -157,6 +160,7 @@
       if (feedbackTimeoutId !== undefined) clearTimeout(feedbackTimeoutId)
       if (correctRevealTimeoutId !== undefined) clearTimeout(correctRevealTimeoutId)
       if (speedBonusTimeoutId !== undefined) clearTimeout(speedBonusTimeoutId)
+      if (quizResultTimeoutId !== undefined) clearTimeout(quizResultTimeoutId)
     }
   })
 
@@ -191,6 +195,14 @@
       }, 800)
     } else {
       answerRevealed = true
+    }
+
+    // Landscape quiz result overlay — flash for 500ms then clear
+    if ($isLandscape) {
+      quizResultState = isCorrect ? 'correct' : 'wrong'
+      quizResultTimeoutId = setTimeout(() => {
+        quizResultState = null
+      }, 500)
     }
 
     feedbackTimeoutId = setTimeout(() => {
@@ -289,6 +301,7 @@
     if (correctRevealTimeoutId !== undefined) clearTimeout(correctRevealTimeoutId)
     if (speedBonusTimeoutId !== undefined) clearTimeout(speedBonusTimeoutId)
     if (kbdHighlightTimeoutId !== undefined) clearTimeout(kbdHighlightTimeoutId)
+    if (quizResultTimeoutId !== undefined) clearTimeout(quizResultTimeoutId)
   })
 </script>
 
@@ -425,6 +438,21 @@
       y={activeKeyword.y}
       ondismiss={dismissKeyword}
     />
+  {/if}
+
+  {#if $isLandscape && quizResultState}
+    <div
+      class="quiz-result-overlay"
+      class:quiz-result-correct={quizResultState === 'correct'}
+      class:quiz-result-wrong={quizResultState === 'wrong'}
+    >
+      <span class="quiz-result-text">
+        {quizResultState === 'correct' ? 'CORRECT' : 'WRONG'}
+      </span>
+      {#if quizResultState === 'wrong' && answerRevealed}
+        <span class="quiz-result-correct-answer">{correctAnswer}</span>
+      {/if}
+    </div>
   {/if}
 </div>
 
@@ -813,5 +841,61 @@
   .exp-desc-conditional.active {
     color: #22c55e;
     font-weight: 900;
+  }
+
+  /* §1 Quiz Result overlay — landscape only, flashes over the quiz panel */
+  .quiz-result-overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    pointer-events: none;
+    z-index: 10;
+    animation: quiz-result-flash 300ms ease-out forwards;
+  }
+
+  .quiz-result-correct {
+    background: rgba(34, 197, 94, 0.14);
+    border: 2px solid rgba(34, 197, 94, 0.4);
+  }
+
+  .quiz-result-wrong {
+    background: rgba(239, 68, 68, 0.13);
+    border: 2px solid rgba(239, 68, 68, 0.4);
+  }
+
+  .quiz-result-text {
+    font-size: 2.8rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+  }
+
+  .quiz-result-correct .quiz-result-text {
+    color: #4ade80;
+  }
+
+  .quiz-result-wrong .quiz-result-text {
+    color: #f87171;
+  }
+
+  .quiz-result-correct-answer {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    background: rgba(0, 0, 0, 0.45);
+    padding: 4px 12px;
+    border-radius: 6px;
+    text-align: center;
+    max-width: 80%;
+  }
+
+  @keyframes quiz-result-flash {
+    from { opacity: 0; }
+    to   { opacity: 1; }
   }
 </style>

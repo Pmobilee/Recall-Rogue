@@ -1,0 +1,1039 @@
+{
+  "meta": {
+    "generatedAt": "2026-03-18T06:40:32.681Z",
+    "totalRuns": 252000,
+    "seedsPerConfig": 1000,
+    "floors": 24,
+    "elapsedMs": 891896,
+    "mode": "deep"
+  },
+  "controlBaselines": {},
+  "soloRelicImpact": [],
+  "comboAnalysis": [],
+  "buildPerformance": [],
+  "skillFairness": [],
+  "progressionCurve": [],
+  "flags": {
+    "overpowered": [],
+    "underpowered": [],
+    "brokenSynergies": [],
+    "immortality": []
+  },
+  "deepAnalysis": {
+    "perFloorStats": [
+      {
+        "floor": 1,
+        "survivalToFloorN": 99.99,
+        "avgDamageDealt": 156.22,
+        "avgDamageTaken": 11.55,
+        "avgHpRemaining": 122.48,
+        "dropoffPct": 0.01
+      },
+      {
+        "floor": 2,
+        "survivalToFloorN": 99.98,
+        "avgDamageDealt": 169.1,
+        "avgDamageTaken": 12.75,
+        "avgHpRemaining": 122.36,
+        "dropoffPct": 0.01
+      },
+      {
+        "floor": 3,
+        "survivalToFloorN": 98.31,
+        "avgDamageDealt": 270.06,
+        "avgDamageTaken": 29.77,
+        "avgHpRemaining": 115.35,
+        "dropoffPct": 1.67
+      },
+      {
+        "floor": 4,
+        "survivalToFloorN": 99.55,
+        "avgDamageDealt": 229.63,
+        "avgDamageTaken": 18.78,
+        "avgHpRemaining": 119.69,
+        "dropoffPct": -1.26
+      },
+      {
+        "floor": 5,
+        "survivalToFloorN": 99.58,
+        "avgDamageDealt": 245.86,
+        "avgDamageTaken": 20.34,
+        "avgHpRemaining": 120.05,
+        "dropoffPct": -0.03
+      },
+      {
+        "floor": 6,
+        "survivalToFloorN": 96.34,
+        "avgDamageDealt": 334.98,
+        "avgDamageTaken": 35.7,
+        "avgHpRemaining": 111.4,
+        "dropoffPct": 3.25
+      },
+      {
+        "floor": 7,
+        "survivalToFloorN": 99.06,
+        "avgDamageDealt": 278.48,
+        "avgDamageTaken": 20.87,
+        "avgHpRemaining": 106.85,
+        "dropoffPct": -2.82
+      },
+      {
+        "floor": 8,
+        "survivalToFloorN": 98.97,
+        "avgDamageDealt": 294.81,
+        "avgDamageTaken": 21.84,
+        "avgHpRemaining": 106.78,
+        "dropoffPct": 0.09
+      },
+      {
+        "floor": 9,
+        "survivalToFloorN": 93.01,
+        "avgDamageDealt": 398.83,
+        "avgDamageTaken": 40.14,
+        "avgHpRemaining": 95.32,
+        "dropoffPct": 6.02
+      },
+      {
+        "floor": 10,
+        "survivalToFloorN": 98.58,
+        "avgDamageDealt": 328.02,
+        "avgDamageTaken": 22.72,
+        "avgHpRemaining": 105.16,
+        "dropoffPct": -5.99
+      },
+      {
+        "floor": 11,
+        "survivalToFloorN": 98.64,
+        "avgDamageDealt": 344.76,
+        "avgDamageTaken": 24.03,
+        "avgHpRemaining": 105.58,
+        "dropoffPct": -0.06
+      },
+      {
+        "floor": 12,
+        "survivalToFloorN": 91.37,
+        "avgDamageDealt": 463.54,
+        "avgDamageTaken": 43.7,
+        "avgHpRemaining": 91.72,
+        "dropoffPct": 7.36
+      },
+      {
+        "floor": 13,
+        "survivalToFloorN": 97.79,
+        "avgDamageDealt": 377.69,
+        "avgDamageTaken": 24.82,
+        "avgHpRemaining": 92.42,
+        "dropoffPct": -7.02
+      },
+      {
+        "floor": 14,
+        "survivalToFloorN": 97.79,
+        "avgDamageDealt": 394.24,
+        "avgDamageTaken": 26.19,
+        "avgHpRemaining": 92.5,
+        "dropoffPct": 0
+      },
+      {
+        "floor": 15,
+        "survivalToFloorN": 87.49,
+        "avgDamageDealt": 525.8,
+        "avgDamageTaken": 47.75,
+        "avgHpRemaining": 76.35,
+        "dropoffPct": 10.53
+      },
+      {
+        "floor": 16,
+        "survivalToFloorN": 97.21,
+        "avgDamageDealt": 426.76,
+        "avgDamageTaken": 27.11,
+        "avgHpRemaining": 90.54,
+        "dropoffPct": -11.11
+      },
+      {
+        "floor": 17,
+        "survivalToFloorN": 97.69,
+        "avgDamageDealt": 443.3,
+        "avgDamageTaken": 28.35,
+        "avgHpRemaining": 91.76,
+        "dropoffPct": -0.5
+      },
+      {
+        "floor": 18,
+        "survivalToFloorN": 85.6,
+        "avgDamageDealt": 588.93,
+        "avgDamageTaken": 50.97,
+        "avgHpRemaining": 73.11,
+        "dropoffPct": 12.38
+      },
+      {
+        "floor": 19,
+        "survivalToFloorN": 94.87,
+        "avgDamageDealt": 473.72,
+        "avgDamageTaken": 29.35,
+        "avgHpRemaining": 72.26,
+        "dropoffPct": -10.84
+      },
+      {
+        "floor": 20,
+        "survivalToFloorN": 95.29,
+        "avgDamageDealt": 489.79,
+        "avgDamageTaken": 29.99,
+        "avgHpRemaining": 72.71,
+        "dropoffPct": -0.44
+      },
+      {
+        "floor": 21,
+        "survivalToFloorN": 75.15,
+        "avgDamageDealt": 637.92,
+        "avgDamageTaken": 51.66,
+        "avgHpRemaining": 52.99,
+        "dropoffPct": 21.14
+      },
+      {
+        "floor": 22,
+        "survivalToFloorN": 94.32,
+        "avgDamageDealt": 520.71,
+        "avgDamageTaken": 30.04,
+        "avgHpRemaining": 71.2,
+        "dropoffPct": -25.5
+      },
+      {
+        "floor": 23,
+        "survivalToFloorN": 95.35,
+        "avgDamageDealt": 537.61,
+        "avgDamageTaken": 30.07,
+        "avgHpRemaining": 72.56,
+        "dropoffPct": -1.09
+      },
+      {
+        "floor": 24,
+        "survivalToFloorN": 76.19,
+        "avgDamageDealt": 699.67,
+        "avgDamageTaken": 49.53,
+        "avgHpRemaining": 54.05,
+        "dropoffPct": 20.09
+      }
+    ],
+    "perEnemyStats": [
+      {
+        "enemyId": "knowledge_golem",
+        "category": "boss",
+        "encounters": 183884,
+        "defeatRate": 80.03,
+        "avgTurnsToKill": 8.59,
+        "avgDamageDealt": 292.2,
+        "avgDamageTaken": 49.77
+      },
+      {
+        "enemyId": "the_curator",
+        "category": "boss",
+        "encounters": 184209,
+        "defeatRate": 80.75,
+        "avgTurnsToKill": 8.4,
+        "avgDamageDealt": 289.58,
+        "avgDamageTaken": 49.08
+      },
+      {
+        "enemyId": "shadow_hydra",
+        "category": "boss",
+        "encounters": 183594,
+        "defeatRate": 83.29,
+        "avgTurnsToKill": 7.98,
+        "avgDamageDealt": 262.2,
+        "avgDamageTaken": 40.28
+      },
+      {
+        "enemyId": "primordial_wyrm",
+        "category": "mini_boss",
+        "encounters": 124959,
+        "defeatRate": 89.14,
+        "avgTurnsToKill": 4.73,
+        "avgDamageDealt": 141.92,
+        "avgDamageTaken": 39.7
+      },
+      {
+        "enemyId": "magma_core",
+        "category": "boss",
+        "encounters": 184126,
+        "defeatRate": 90.43,
+        "avgTurnsToKill": 5.66,
+        "avgDamageDealt": 186.75,
+        "avgDamageTaken": 34.96
+      },
+      {
+        "enemyId": "tectonic_titan",
+        "category": "mini_boss",
+        "encounters": 125798,
+        "defeatRate": 92.11,
+        "avgTurnsToKill": 5.01,
+        "avgDamageDealt": 153.76,
+        "avgDamageTaken": 34.8
+      },
+      {
+        "enemyId": "the_excavator",
+        "category": "boss",
+        "encounters": 184100,
+        "defeatRate": 94.91,
+        "avgTurnsToKill": 5.62,
+        "avgDamageDealt": 182.73,
+        "avgDamageTaken": 31.27
+      },
+      {
+        "enemyId": "pressure_colossus",
+        "category": "mini_boss",
+        "encounters": 125074,
+        "defeatRate": 96.48,
+        "avgTurnsToKill": 5.49,
+        "avgDamageDealt": 180.45,
+        "avgDamageTaken": 23.36
+      },
+      {
+        "enemyId": "crystal_warden",
+        "category": "boss",
+        "encounters": 184029,
+        "defeatRate": 97.16,
+        "avgTurnsToKill": 7.32,
+        "avgDamageDealt": 247.63,
+        "avgDamageTaken": 20.21
+      },
+      {
+        "enemyId": "quartz_hydra",
+        "category": "mini_boss",
+        "encounters": 125181,
+        "defeatRate": 97.24,
+        "avgTurnsToKill": 4.48,
+        "avgDamageDealt": 142.32,
+        "avgDamageTaken": 19.9
+      },
+      {
+        "enemyId": "magma_broodmother",
+        "category": "mini_boss",
+        "encounters": 125059,
+        "defeatRate": 97.79,
+        "avgTurnsToKill": 4.48,
+        "avgDamageDealt": 146.01,
+        "avgDamageTaken": 14.54
+      },
+      {
+        "enemyId": "deep_lurker",
+        "category": "mini_boss",
+        "encounters": 126345,
+        "defeatRate": 97.95,
+        "avgTurnsToKill": 4.28,
+        "avgDamageDealt": 135.44,
+        "avgDamageTaken": 18.51
+      },
+      {
+        "enemyId": "granite_colossus",
+        "category": "mini_boss",
+        "encounters": 124777,
+        "defeatRate": 98.19,
+        "avgTurnsToKill": 5.05,
+        "avgDamageDealt": 168.41,
+        "avgDamageTaken": 17.36
+      },
+      {
+        "enemyId": "fossil_wyvern",
+        "category": "mini_boss",
+        "encounters": 125516,
+        "defeatRate": 98.33,
+        "avgTurnsToKill": 4.1,
+        "avgDamageDealt": 128.95,
+        "avgDamageTaken": 16.12
+      },
+      {
+        "enemyId": "the_archivist",
+        "category": "boss",
+        "encounters": 184786,
+        "defeatRate": 98.4,
+        "avgTurnsToKill": 6.37,
+        "avgDamageDealt": 217.38,
+        "avgDamageTaken": 17.88
+      },
+      {
+        "enemyId": "venomfang",
+        "category": "mini_boss",
+        "encounters": 127150,
+        "defeatRate": 98.49,
+        "avgTurnsToKill": 3.56,
+        "avgDamageDealt": 107.7,
+        "avgDamageTaken": 14.06
+      },
+      {
+        "enemyId": "void_weaver",
+        "category": "boss",
+        "encounters": 182799,
+        "defeatRate": 98.73,
+        "avgTurnsToKill": 8.37,
+        "avgDamageDealt": 313.1,
+        "avgDamageTaken": 12.35
+      },
+      {
+        "enemyId": "root_mother",
+        "category": "mini_boss",
+        "encounters": 125266,
+        "defeatRate": 98.79,
+        "avgTurnsToKill": 3.8,
+        "avgDamageDealt": 121.68,
+        "avgDamageTaken": 13.17
+      },
+      {
+        "enemyId": "shade_stalker",
+        "category": "mini_boss",
+        "encounters": 125274,
+        "defeatRate": 99.01,
+        "avgTurnsToKill": 3.4,
+        "avgDamageDealt": 102.28,
+        "avgDamageTaken": 13.08
+      },
+      {
+        "enemyId": "obsidian_knight",
+        "category": "mini_boss",
+        "encounters": 125332,
+        "defeatRate": 99.07,
+        "avgTurnsToKill": 4.61,
+        "avgDamageDealt": 150.51,
+        "avgDamageTaken": 14.91
+      },
+      {
+        "enemyId": "sulfur_queen",
+        "category": "mini_boss",
+        "encounters": 126358,
+        "defeatRate": 99.41,
+        "avgTurnsToKill": 3.75,
+        "avgDamageDealt": 123.15,
+        "avgDamageTaken": 8.34
+      },
+      {
+        "enemyId": "stone_sentinel",
+        "category": "mini_boss",
+        "encounters": 126106,
+        "defeatRate": 99.52,
+        "avgTurnsToKill": 4.56,
+        "avgDamageDealt": 152.36,
+        "avgDamageTaken": 10.38
+      },
+      {
+        "enemyId": "iron_matriarch",
+        "category": "mini_boss",
+        "encounters": 126078,
+        "defeatRate": 99.75,
+        "avgTurnsToKill": 4.21,
+        "avgDamageDealt": 142.78,
+        "avgDamageTaken": 8.07
+      },
+      {
+        "enemyId": "ember_drake",
+        "category": "mini_boss",
+        "encounters": 124919,
+        "defeatRate": 99.79,
+        "avgTurnsToKill": 3.77,
+        "avgDamageDealt": 115.22,
+        "avgDamageTaken": 10.08
+      },
+      {
+        "enemyId": "iron_archon",
+        "category": "mini_boss",
+        "encounters": 125782,
+        "defeatRate": 99.81,
+        "avgTurnsToKill": 4.6,
+        "avgDamageDealt": 155.88,
+        "avgDamageTaken": 7.71
+      },
+      {
+        "enemyId": "lava_salamander",
+        "category": "mini_boss",
+        "encounters": 126218,
+        "defeatRate": 99.83,
+        "avgTurnsToKill": 4.15,
+        "avgDamageDealt": 135.62,
+        "avgDamageTaken": 7.3
+      },
+      {
+        "enemyId": "crystal_guardian",
+        "category": "mini_boss",
+        "encounters": 126294,
+        "defeatRate": 99.86,
+        "avgTurnsToKill": 4.03,
+        "avgDamageDealt": 129.87,
+        "avgDamageTaken": 8.18
+      },
+      {
+        "enemyId": "blind_grub",
+        "category": "common",
+        "encounters": 195874,
+        "defeatRate": 99.87,
+        "avgTurnsToKill": 2.9,
+        "avgDamageDealt": 88.03,
+        "avgDamageTaken": 11.9
+      },
+      {
+        "enemyId": "shadow_mimic",
+        "category": "common",
+        "encounters": 196400,
+        "defeatRate": 99.87,
+        "avgTurnsToKill": 2.78,
+        "avgDamageDealt": 81.11,
+        "avgDamageTaken": 5.11
+      },
+      {
+        "enemyId": "glyph_warden",
+        "category": "mini_boss",
+        "encounters": 126654,
+        "defeatRate": 99.9,
+        "avgTurnsToKill": 4.66,
+        "avgDamageDealt": 160.48,
+        "avgDamageTaken": 4.81
+      },
+      {
+        "enemyId": "iron_core_golem",
+        "category": "common",
+        "encounters": 196115,
+        "defeatRate": 99.93,
+        "avgTurnsToKill": 3.98,
+        "avgDamageDealt": 131.76,
+        "avgDamageTaken": 8.04
+      },
+      {
+        "enemyId": "archive_specter",
+        "category": "mini_boss",
+        "encounters": 125635,
+        "defeatRate": 99.94,
+        "avgTurnsToKill": 4.12,
+        "avgDamageDealt": 138.71,
+        "avgDamageTaken": 5.37
+      },
+      {
+        "enemyId": "mushroom_sovereign",
+        "category": "mini_boss",
+        "encounters": 124706,
+        "defeatRate": 99.94,
+        "avgTurnsToKill": 3.62,
+        "avgDamageDealt": 123.08,
+        "avgDamageTaken": 3.08
+      },
+      {
+        "enemyId": "core_worm",
+        "category": "common",
+        "encounters": 194857,
+        "defeatRate": 99.96,
+        "avgTurnsToKill": 3.51,
+        "avgDamageDealt": 103.75,
+        "avgDamageTaken": 10.15
+      },
+      {
+        "enemyId": "crystal_golem",
+        "category": "common",
+        "encounters": 197392,
+        "defeatRate": 99.97,
+        "avgTurnsToKill": 3.25,
+        "avgDamageDealt": 104.39,
+        "avgDamageTaken": 7.07
+      },
+      {
+        "enemyId": "granite_hound",
+        "category": "common",
+        "encounters": 195805,
+        "defeatRate": 99.97,
+        "avgTurnsToKill": 3.31,
+        "avgDamageDealt": 96.92,
+        "avgDamageTaken": 9.17
+      },
+      {
+        "enemyId": "obsidian_shard",
+        "category": "common",
+        "encounters": 195870,
+        "defeatRate": 99.98,
+        "avgTurnsToKill": 3.3,
+        "avgDamageDealt": 96.75,
+        "avgDamageTaken": 9.35
+      },
+      {
+        "enemyId": "bone_collector",
+        "category": "common",
+        "encounters": 196537,
+        "defeatRate": 99.99,
+        "avgTurnsToKill": 3.21,
+        "avgDamageDealt": 102.11,
+        "avgDamageTaken": 3.53
+      },
+      {
+        "enemyId": "rune_spider",
+        "category": "common",
+        "encounters": 195474,
+        "defeatRate": 99.99,
+        "avgTurnsToKill": 3.09,
+        "avgDamageDealt": 96.96,
+        "avgDamageTaken": 5.57
+      },
+      {
+        "enemyId": "pressure_djinn",
+        "category": "common",
+        "encounters": 195961,
+        "defeatRate": 99.99,
+        "avgTurnsToKill": 3.4,
+        "avgDamageDealt": 108.06,
+        "avgDamageTaken": 6.25
+      },
+      {
+        "enemyId": "fossil_raptor",
+        "category": "common",
+        "encounters": 195158,
+        "defeatRate": 99.99,
+        "avgTurnsToKill": 3.19,
+        "avgDamageDealt": 99.28,
+        "avgDamageTaken": 6.38
+      },
+      {
+        "enemyId": "tome_mimic",
+        "category": "common",
+        "encounters": 194732,
+        "defeatRate": 99.99,
+        "avgTurnsToKill": 3.46,
+        "avgDamageDealt": 106.43,
+        "avgDamageTaken": 6.43
+      },
+      {
+        "enemyId": "stalactite_drake",
+        "category": "common",
+        "encounters": 196226,
+        "defeatRate": 99.99,
+        "avgTurnsToKill": 3.17,
+        "avgDamageDealt": 92.23,
+        "avgDamageTaken": 7.05
+      },
+      {
+        "enemyId": "rock_hermit",
+        "category": "common",
+        "encounters": 193364,
+        "defeatRate": 99.99,
+        "avgTurnsToKill": 3.62,
+        "avgDamageDealt": 117.7,
+        "avgDamageTaken": 4.1
+      },
+      {
+        "enemyId": "tectonic_scarab",
+        "category": "common",
+        "encounters": 194445,
+        "defeatRate": 99.99,
+        "avgTurnsToKill": 3.83,
+        "avgDamageDealt": 122.92,
+        "avgDamageTaken": 6.49
+      },
+      {
+        "enemyId": "crystal_bat",
+        "category": "common",
+        "encounters": 194112,
+        "defeatRate": 99.99,
+        "avgTurnsToKill": 2.98,
+        "avgDamageDealt": 85.77,
+        "avgDamageTaken": 7.54
+      },
+      {
+        "enemyId": "biolume_monarch",
+        "category": "mini_boss",
+        "encounters": 126469,
+        "defeatRate": 99.99,
+        "avgTurnsToKill": 4.11,
+        "avgDamageDealt": 142.59,
+        "avgDamageTaken": 2.69
+      },
+      {
+        "enemyId": "void_mite",
+        "category": "common",
+        "encounters": 194356,
+        "defeatRate": 99.99,
+        "avgTurnsToKill": 3.91,
+        "avgDamageDealt": 128.57,
+        "avgDamageTaken": 2.5
+      },
+      {
+        "enemyId": "ember_skeleton",
+        "category": "common",
+        "encounters": 193710,
+        "defeatRate": 99.99,
+        "avgTurnsToKill": 3.26,
+        "avgDamageDealt": 99.41,
+        "avgDamageTaken": 6.81
+      },
+      {
+        "enemyId": "biolume_jellyfish",
+        "category": "common",
+        "encounters": 192550,
+        "defeatRate": 100,
+        "avgTurnsToKill": 3.1,
+        "avgDamageDealt": 99.32,
+        "avgDamageTaken": 3.54
+      },
+      {
+        "enemyId": "mantle_fiend",
+        "category": "common",
+        "encounters": 194530,
+        "defeatRate": 100,
+        "avgTurnsToKill": 3.24,
+        "avgDamageDealt": 106.5,
+        "avgDamageTaken": 4.53
+      },
+      {
+        "enemyId": "iron_beetle",
+        "category": "common",
+        "encounters": 196264,
+        "defeatRate": 100,
+        "avgTurnsToKill": 3.16,
+        "avgDamageDealt": 100.67,
+        "avgDamageTaken": 2.92
+      },
+      {
+        "enemyId": "cave_bat",
+        "category": "common",
+        "encounters": 196797,
+        "defeatRate": 100,
+        "avgTurnsToKill": 2.16,
+        "avgDamageDealt": 55.98,
+        "avgDamageTaken": 3.2
+      },
+      {
+        "enemyId": "toxic_spore",
+        "category": "common",
+        "encounters": 194526,
+        "defeatRate": 100,
+        "avgTurnsToKill": 1.76,
+        "avgDamageDealt": 45.54,
+        "avgDamageTaken": 0.81
+      },
+      {
+        "enemyId": "coal_imp",
+        "category": "common",
+        "encounters": 193335,
+        "defeatRate": 100,
+        "avgTurnsToKill": 2.75,
+        "avgDamageDealt": 84.02,
+        "avgDamageTaken": 4.55
+      },
+      {
+        "enemyId": "cave_spider",
+        "category": "common",
+        "encounters": 194305,
+        "defeatRate": 100,
+        "avgTurnsToKill": 2.65,
+        "avgDamageDealt": 79.12,
+        "avgDamageTaken": 4.67
+      },
+      {
+        "enemyId": "ember_moth",
+        "category": "common",
+        "encounters": 196049,
+        "defeatRate": 100,
+        "avgTurnsToKill": 2.79,
+        "avgDamageDealt": 85.57,
+        "avgDamageTaken": 3.67
+      },
+      {
+        "enemyId": "basalt_crawler",
+        "category": "common",
+        "encounters": 193447,
+        "defeatRate": 100,
+        "avgTurnsToKill": 3.29,
+        "avgDamageDealt": 104.25,
+        "avgDamageTaken": 5.04
+      },
+      {
+        "enemyId": "glyph_sentinel",
+        "category": "common",
+        "encounters": 196589,
+        "defeatRate": 100,
+        "avgTurnsToKill": 3.18,
+        "avgDamageDealt": 106.57,
+        "avgDamageTaken": 1.71
+      },
+      {
+        "enemyId": "bog_witch",
+        "category": "mini_boss",
+        "encounters": 126240,
+        "defeatRate": 100,
+        "avgTurnsToKill": 3.23,
+        "avgDamageDealt": 109.09,
+        "avgDamageTaken": 1.7
+      },
+      {
+        "enemyId": "gas_phantom",
+        "category": "common",
+        "encounters": 195213,
+        "defeatRate": 100,
+        "avgTurnsToKill": 2.55,
+        "avgDamageDealt": 81.59,
+        "avgDamageTaken": 0.84
+      },
+      {
+        "enemyId": "fungal_sprout",
+        "category": "common",
+        "encounters": 193610,
+        "defeatRate": 100,
+        "avgTurnsToKill": 2.23,
+        "avgDamageDealt": 67.47,
+        "avgDamageTaken": 0.58
+      },
+      {
+        "enemyId": "deep_angler",
+        "category": "common",
+        "encounters": 195347,
+        "defeatRate": 100,
+        "avgTurnsToKill": 2.86,
+        "avgDamageDealt": 88.02,
+        "avgDamageTaken": 4.13
+      },
+      {
+        "enemyId": "root_strangler",
+        "category": "common",
+        "encounters": 194744,
+        "defeatRate": 100,
+        "avgTurnsToKill": 2.83,
+        "avgDamageDealt": 85.81,
+        "avgDamageTaken": 3.6
+      },
+      {
+        "enemyId": "magma_tick",
+        "category": "common",
+        "encounters": 195174,
+        "defeatRate": 100,
+        "avgTurnsToKill": 2.99,
+        "avgDamageDealt": 96.49,
+        "avgDamageTaken": 3.2
+      },
+      {
+        "enemyId": "peat_shambler",
+        "category": "common",
+        "encounters": 197397,
+        "defeatRate": 100,
+        "avgTurnsToKill": 2.97,
+        "avgDamageDealt": 98.77,
+        "avgDamageTaken": 1.04
+      },
+      {
+        "enemyId": "archive_moth",
+        "category": "common",
+        "encounters": 195316,
+        "defeatRate": 100,
+        "avgTurnsToKill": 3.03,
+        "avgDamageDealt": 94.87,
+        "avgDamageTaken": 4.71
+      },
+      {
+        "enemyId": "quartz_elemental",
+        "category": "common",
+        "encounters": 196602,
+        "defeatRate": 100,
+        "avgTurnsToKill": 3.27,
+        "avgDamageDealt": 106.69,
+        "avgDamageTaken": 4.73
+      },
+      {
+        "enemyId": "mud_crawler",
+        "category": "common",
+        "encounters": 195909,
+        "defeatRate": 100,
+        "avgTurnsToKill": 2.5,
+        "avgDamageDealt": 77.43,
+        "avgDamageTaken": 1.68
+      },
+      {
+        "enemyId": "limestone_imp",
+        "category": "common",
+        "encounters": 194975,
+        "defeatRate": 100,
+        "avgTurnsToKill": 2.49,
+        "avgDamageDealt": 72.44,
+        "avgDamageTaken": 4.64
+      },
+      {
+        "enemyId": "magma_slime",
+        "category": "common",
+        "encounters": 197152,
+        "defeatRate": 100,
+        "avgTurnsToKill": 2.96,
+        "avgDamageDealt": 92,
+        "avgDamageTaken": 4.43
+      },
+      {
+        "enemyId": "sulfur_sprite",
+        "category": "common",
+        "encounters": 194104,
+        "defeatRate": 100,
+        "avgTurnsToKill": 2.5,
+        "avgDamageDealt": 79.29,
+        "avgDamageTaken": 0.8
+      },
+      {
+        "enemyId": "prismatic_jelly",
+        "category": "common",
+        "encounters": 194418,
+        "defeatRate": 100,
+        "avgTurnsToKill": 2.86,
+        "avgDamageDealt": 95.02,
+        "avgDamageTaken": 1.17
+      },
+      {
+        "enemyId": "ash_wraith",
+        "category": "common",
+        "encounters": 195206,
+        "defeatRate": 100,
+        "avgTurnsToKill": 2.85,
+        "avgDamageDealt": 87.89,
+        "avgDamageTaken": 4.16
+      },
+      {
+        "enemyId": "void_tendril",
+        "category": "common",
+        "encounters": 195458,
+        "defeatRate": 100,
+        "avgTurnsToKill": 3.08,
+        "avgDamageDealt": 101.71,
+        "avgDamageTaken": 2.94
+      },
+      {
+        "enemyId": "salt_wraith",
+        "category": "common",
+        "encounters": 195220,
+        "defeatRate": 100,
+        "avgTurnsToKill": 2.86,
+        "avgDamageDealt": 90.61,
+        "avgDamageTaken": 2.95
+      },
+      {
+        "enemyId": "geode_beetle",
+        "category": "common",
+        "encounters": 195624,
+        "defeatRate": 100,
+        "avgTurnsToKill": 3.54,
+        "avgDamageDealt": 114.16,
+        "avgDamageTaken": 4.28
+      },
+      {
+        "enemyId": "lava_crawler",
+        "category": "common",
+        "encounters": 193258,
+        "defeatRate": 100,
+        "avgTurnsToKill": 3.03,
+        "avgDamageDealt": 94.68,
+        "avgDamageTaken": 3.8
+      }
+    ],
+    "cardTypeEffectiveness": [
+      {
+        "cardType": "attack",
+        "totalPlayed": 86650721,
+        "accuracy": 86.05,
+        "avgDamage": 17.04,
+        "avgShield": 0,
+        "avgHeal": 0,
+        "fizzleRate": 13.95
+      },
+      {
+        "cardType": "shield",
+        "totalPlayed": 30775763,
+        "accuracy": 84.52,
+        "avgDamage": 0,
+        "avgShield": 13.07,
+        "avgHeal": 0,
+        "fizzleRate": 15.48
+      },
+      {
+        "cardType": "utility",
+        "totalPlayed": 11145398,
+        "accuracy": 85.87,
+        "avgDamage": 0,
+        "avgShield": 0,
+        "avgHeal": 0,
+        "fizzleRate": 14.13
+      },
+      {
+        "cardType": "buff",
+        "totalPlayed": 3566486,
+        "accuracy": 82.98,
+        "avgDamage": 0,
+        "avgShield": 0,
+        "avgHeal": 0,
+        "fizzleRate": 17.02
+      },
+      {
+        "cardType": "debuff",
+        "totalPlayed": 1050800,
+        "accuracy": 86.85,
+        "avgDamage": 0,
+        "avgShield": 0,
+        "avgHeal": 0,
+        "fizzleRate": 13.15
+      },
+      {
+        "cardType": "wild",
+        "totalPlayed": 226197,
+        "accuracy": 87.35,
+        "avgDamage": 7,
+        "avgShield": 1.56,
+        "avgHeal": 0,
+        "fizzleRate": 12.65
+      }
+    ],
+    "funFactorMetrics": {
+      "closeCallRate": 28.04,
+      "comebackRate": 41.36,
+      "overkillRate": 0,
+      "avgMinHpReached": 8.28
+    },
+    "relicCountScaling": [
+      {
+        "relicCount": 0,
+        "survivalRate": 12.33,
+        "avgFloor": 15.04,
+        "avgDPS": 28.12
+      },
+      {
+        "relicCount": 1,
+        "survivalRate": 13.77,
+        "avgFloor": 15.91,
+        "avgDPS": 29.3
+      },
+      {
+        "relicCount": 3,
+        "survivalRate": 15.57,
+        "avgFloor": 18.33,
+        "avgDPS": 31.75
+      },
+      {
+        "relicCount": 5,
+        "survivalRate": 27.9,
+        "avgFloor": 20.59,
+        "avgDPS": 35.04
+      },
+      {
+        "relicCount": 8,
+        "survivalRate": 71.4,
+        "avgFloor": 23.03,
+        "avgDPS": 38.01
+      }
+    ],
+    "economyStats": {
+      "avgGoldEarned": 2939.2,
+      "avgGoldSpent": 1261.88,
+      "avgGoldEfficiency": 42.93,
+      "avgFoodPurchased": 1.42
+    },
+    "upgradeStats": {
+      "avgUpgradesPerRun": 4.74,
+      "upgradesByMechanic": {
+        "strike": 704797,
+        "block": 281622,
+        "empower": 89422,
+        "weaken": 51340,
+        "mirror": 8941,
+        "scout": 58152
+      }
+    },
+    "synergyStats": {
+      "avgSynergiesPerRun": 0,
+      "synergyFrequency": {
+        "echo_master": 895
+      }
+    }
+  }
+}

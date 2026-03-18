@@ -501,6 +501,26 @@ See §8 for complete enemy roster with quiz integration behaviors.
 - Background: ambient particles tinted gold
 - Transition back: 0.3s fade to normal colors
 
+### Surge Border Overlay (§6 — Both Portrait + Landscape)
+
+`SurgeBorderOverlay.svelte` — viewport-level fixed overlay rendered above all content during Surge turns. Works in both portrait and landscape.
+
+- **Canvas 2D particle system** — ~24 particles (2–4px) flowing clockwise around all four viewport edges
+- **Colors:** alternating `#FFCA28` (Gilded) and `#FFA726` (Amber) with soft glow
+- **Border glow:** 2–3px golden stroke at `rgba(255, 202, 40, 0.35)` with `shadowBlur: 6`
+- **Speed:** full perimeter traversal in ~8–12 seconds at 60fps
+- **Fade:** 300ms opacity transition on enter/exit via Svelte `fade` transition
+- **Performance:** `pointer-events: none`, `will-change: opacity/transform`, low particle count
+- Integrated in `CardCombatOverlay.svelte` via `<SurgeBorderOverlay active={isSurgeActive} />`
+
+### Quiz Result Flash (§1 — Landscape Only)
+
+When a quiz answer is submitted in landscape mode, a brief result overlay appears over the quiz panel for 500ms:
+- **Correct:** Green tinted overlay (`rgba(34, 197, 94, 0.14)`) + large "CORRECT" text in green
+- **Wrong:** Red tinted overlay (`rgba(239, 68, 68, 0.13)`) + large "WRONG" text in red + correct answer revealed
+- Fades in over 300ms, auto-dismisses after 500ms
+- Implemented in `CardExpanded.svelte` via `quizResultState` local state
+
 ### Chain Visual System (AR-59.17)
 
 - **Card border + glow (primary identity):** Chain type color is the primary visual on ALL cards everywhere — in-hand, animating, reward screen, shop, expanded quiz view. Uses `getChainColor` / `getChainGlowColor` from `chainVisuals.ts`

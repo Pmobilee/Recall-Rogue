@@ -48,6 +48,7 @@
   import { getNonCuratedQuestion, getQuestionVariantCount } from '../utils/combatQuestionPolicy'
   import StatusEffectBar from './StatusEffectBar.svelte'
   import { getShortCardDescription } from '../../services/cardDescriptionService'
+  import SurgeBorderOverlay from './SurgeBorderOverlay.svelte'
 
   interface Props {
     turnState: TurnState | null
@@ -1566,6 +1567,9 @@
 
 <!-- AR-74: Keyboard shortcut help overlay -->
 <KeyboardShortcutHelp />
+
+<!-- §6 Surge golden border overlay — both portrait and landscape, pointer-events: none -->
+<SurgeBorderOverlay active={isSurgeActive} />
 
 <style>
   /* AR-74: Keyboard help trigger button (landscape only) */
