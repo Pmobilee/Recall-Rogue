@@ -55,7 +55,7 @@ export async function readGameState(page: Page): Promise<GameState> {
       turnNumber: (turnState && turnState.turnNumber) || 0,
       comboCount: (turnState && turnState.comboCount) || 0,
       relicCount: (runState && runState.runRelics && runState.runRelics.length) || (runState && runState.relics && runState.relics.length) || 0,
-      floor: Number((runState && (runState.currentFloor || runState.floor)) || 0) || 0,
+      floor: Number((runState && runState.floor && (typeof runState.floor === 'object' ? runState.floor.currentFloor : runState.floor)) || 0) || 0,
       isGameOver: terminals.indexOf(currentScreen) >= 0,
       runResult: currentScreen === 'victory' ? 'victory' :
                  (currentScreen === 'defeat' || currentScreen === 'game_over' || currentScreen === 'run_end' || currentScreen === 'runEnd') ? 'defeat' :
@@ -167,7 +167,7 @@ export async function readDetailedState(page: Page): Promise<{
       relics: (run && run.runRelics) ? run.runRelics.map(function(r) { return r.definitionId || ''; }) : [],
       gold: (run && (run.currency || run.gold)) || 0,
       deckSize: (run && run.deck && run.deck.length) || (turn && turn.deck && turn.deck.pool && turn.deck.pool.length) || 0,
-      floor: Number((run && (run.currentFloor || run.floor)) || 0) || 0,
+      floor: Number((run && run.floor && (typeof run.floor === 'object' ? run.floor.currentFloor : run.floor)) || 0) || 0,
       hp: (turn && turn.playerState && turn.playerState.hp) || (run && run.playerHp) || 0,
       maxHp: (turn && turn.playerState && turn.playerState.maxHp) || (run && run.playerMaxHp) || 0,
       enemyName: (enemy && (enemy.name || (enemy.template && enemy.template.name) || (enemy.template && enemy.template.id))) || '',

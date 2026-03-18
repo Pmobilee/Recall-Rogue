@@ -15,8 +15,8 @@ import { createRng, startRun, selectDomain, playCard, endTurn, answerQuiz, choos
 // Constants
 // ---------------------------------------------------------------------------
 
-/** Maximum duration for a single run (90s — successful runs take 15-30s). */
-const RUN_TIMEOUT_MS = 90_000;
+/** Maximum duration for a single run (120s — includes up to 3s for first-room retries). */
+const RUN_TIMEOUT_MS = 120_000;
 
 /** Max loop iterations to prevent infinite loops. */
 const MAX_ITERATIONS = 5_000;
@@ -166,6 +166,51 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
     });
     await page.waitForTimeout(2000);
 
+    // Unlock ALL relics by injecting into the player save store
+    await page.evaluate(() => {
+      const UNLOCKABLE_RELIC_IDS = [
+        'chain_reactor', 'echo_chamber', 'quicksilver_quill', 'time_warp',
+        'crit_lens', 'thorn_crown', 'bastions_will', 'festering_wound',
+        'capacitor', 'double_down', 'scholars_crown', 'domain_mastery_sigil',
+        'phoenix_feather', 'scholars_gambit', 'prismatic_shard', 'mirror_of_knowledge',
+        'toxic_bloom', 'echo_lens',
+      ];
+
+      // Read the playerSave Svelte store
+      const sym = Symbol.for('terra:playerSave');
+      const store = (globalThis as any)[sym];
+      if (!store?.subscribe || !store?.set) return;
+
+      let save: any = null;
+      store.subscribe((v: any) => { save = v; })();
+      if (!save) return;
+
+      // Merge unlockable relics into the save's unlockedRelicIds
+      const existing = new Set(save.unlockedRelicIds ?? []);
+      for (const id of UNLOCKABLE_RELIC_IDS) existing.add(id);
+      save.unlockedRelicIds = [...existing];
+
+      // Also give mastery coins so the game doesn't complain
+      save.masteryCoins = 99999;
+      save.masteryCoinsAvailable = 99999;
+
+      // Write back to store
+      store.set({ ...save });
+
+      // Persist to localStorage (profile key)
+      // Find the active save key
+      const profileSym = Symbol.for('terra:profileStore');
+      const profileStore = (globalThis as any)[profileSym];
+      let profileData: any = null;
+      if (profileStore?.subscribe) {
+        profileStore.subscribe((v: any) => { profileData = v; })();
+      }
+      const saveKey = profileData?.activeProfileId
+        ? 'rr-profile-' + profileData.activeProfileId
+        : 'terra_save';
+      localStorage.setItem(saveKey, JSON.stringify(save));
+    });
+
     // Start the run via API
     const startResult = await page.evaluate(() => (window as any).__terraPlay?.startRun?.());
     if (!startResult?.ok) {
@@ -194,6 +239,50 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
       const domain = DOMAINS[Math.floor(rng() * DOMAINS.length)];
       await selectDomain(page, domain);
       await page.waitForTimeout(30);
+    }
+
+    // ── Enter first room with retry (map needs a tick to mount) ──────────
+    let enteredFirstRoom = false;
+    for (let attempt = 0; attempt < 6 && !enteredFirstRoom; attempt++) {
+      await page.waitForTimeout(500); // Give map time to render
+
+      // Find available map nodes
+      const mapNodes = await page.evaluate(`
+        (function() {
+          var nodes = document.querySelectorAll('[data-testid^="map-node-"]');
+          var available = [];
+          for (var i = 0; i < nodes.length; i++) {
+            var el = nodes[i];
+            if (el.classList.contains('state-available') && el.offsetParent !== null) {
+              available.push(el.getAttribute('data-testid'));
+            }
+          }
+          return available.sort();
+        })()
+      `) as string[];
+
+      if (mapNodes.length > 0) {
+        const nodeId = mapNodes[0].replace('map-node-', '');
+        const selectResult = await page.evaluate(
+          (id) => (window as any).__terraPlay?.selectMapNode?.(id),
+          nodeId,
+        );
+        if (selectResult?.ok) {
+          // Wait and check if we actually entered combat
+          await page.waitForTimeout(500);
+          const afterSelect = await readGameState(page);
+          if (afterSelect.currentScreen !== 'dungeonMap' && afterSelect.currentScreen !== 'map') {
+            enteredFirstRoom = true;
+          }
+        }
+      }
+    }
+
+    if (!enteredFirstRoom) {
+      stats.errors.push('Could not enter first room after 6 attempts');
+      stats.result = 'timeout';
+      stats.durationMs = Date.now() - startTime;
+      return stats;
     }
 
     // Read initial detailed state for baseline tracking
@@ -470,6 +559,7 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
             }
           },
           encounterCounters,
+          encountersAtLastDelve: 0,
         });
 
         // Sync counters back from handleScreen
@@ -564,6 +654,7 @@ interface ScreenContext {
   onEncounterLost: () => void;
   /** Mutable per-encounter counters updated by handleScreen during combat */
   encounterCounters: EncounterCounters;
+  encountersAtLastDelve: number;
 }
 
 async function handleScreen(
@@ -774,7 +865,7 @@ async function handleScreen(
 
         // Check if segment is complete (boss node visited/current, no available nodes)
         const bossVisited = allNodeStates.some(n => n.includes('type-boss') && (n.includes('state-current') || n.includes('state-visited')));
-        if (bossVisited) {
+        if (bossVisited && stats.encountersWon > ctx.encountersAtLastDelve) {
           const newSegCount = ctx.segmentsCompleted + 1;
           ctx.onSegmentComplete(newSegCount);
           if (newSegCount >= ctx.MAX_SEGMENTS) {
@@ -790,6 +881,7 @@ async function handleScreen(
             await page.waitForTimeout(20);
             await page.evaluate(() => (window as any).__terraPlay?.delve?.());
           }
+          ctx.encountersAtLastDelve = stats.encountersWon;
           await page.waitForTimeout(20);
           break;
         }
@@ -809,42 +901,111 @@ async function handleScreen(
       break;
     }
 
-    // ── Rewards ──────────────────────────────────────────────────────────────
+    // ── Rewards (Phaser RewardRoomScene — NOT DOM-based) ─────────────────────
     case 'card_reward':
     case 'cardReward':
     case 'reward':
     case 'rewardRoom': {
-      // Wait for reward UI to appear (turbo mode resolves quickly)
-      await page.waitForTimeout(500);
+      // The reward room is a Phaser canvas scene.
+      // Programmatically collect rewards via the scene API.
+      await page.waitForTimeout(800); // Let scene spawn items
 
-      const rewarded = await page.evaluate(() => {
-        const play = (window as any).__terraPlay;
-        const r = play && play.acceptReward && play.acceptReward();
-        return r;
-      });
+      const rewardResult = await page.evaluate(`(function() {
+        var mgr = globalThis[Symbol.for('terra:cardGameManager')];
+        if (!mgr) return { ok: false, reason: 'no-manager' };
+        var scene = mgr.getRewardRoomScene ? mgr.getRewardRoomScene() : null;
+        if (!scene) return { ok: false, reason: 'no-scene' };
 
-      if (rewarded?.ok) {
-        stats.cardsAdded++;
-        // Track relic if this was a relic reward
-        if (rewarded.relicId) {
-          stats.relicsEarned.push(String(rewarded.relicId));
+        var items = scene.getItems ? scene.getItems() : (scene.items || []);
+        if (!items || items.length === 0) return { ok: false, reason: 'no-items' };
+
+        var collected = [];
+        var relicId = '';
+
+        // Step 1: Collect all gold and vials (these don't conflict)
+        for (var i = 0; i < items.length; i++) {
+          var item = items[i];
+          if (item.collected) continue;
+          if (item.reward.type === 'gold') {
+            item.collected = true;
+            scene.events.emit('goldCollected', item.reward.amount || 0);
+            collected.push('gold:' + (item.reward.amount || 0));
+          } else if (item.reward.type === 'health_vial') {
+            item.collected = true;
+            scene.events.emit('vialCollected', item.reward.healAmount || 0);
+            collected.push('vial:' + (item.reward.healAmount || 0));
+          }
+        }
+
+        // Step 2: Accept first relic (if any) — relics are highest priority
+        for (var i = 0; i < items.length; i++) {
+          var item = items[i];
+          if (item.collected) continue;
+          if (item.reward.type === 'relic' && item.reward.relic) {
+            item.collected = true;
+            scene.events.emit('relicAccepted', item.reward.relic);
+            relicId = item.reward.relic.id || '';
+            collected.push('relic:' + relicId);
+            // Mark remaining cards/relics as collected (disintegrated)
+            for (var j = 0; j < items.length; j++) {
+              if (items[j] === item || items[j].collected) continue;
+              if (items[j].reward.type === 'card' || items[j].reward.type === 'relic') {
+                items[j].collected = true;
+              }
+            }
+            break;
+          }
+        }
+
+        // Step 3: If no relic, accept first card
+        if (!relicId) {
+          for (var i = 0; i < items.length; i++) {
+            var item = items[i];
+            if (item.collected) continue;
+            if (item.reward.type === 'card') {
+              if (typeof scene.acceptCard === 'function') {
+                scene.acceptCard(item);
+              } else {
+                item.collected = true;
+                if (item.reward.card) scene.events.emit('cardAccepted', item.reward.card);
+              }
+              collected.push('card');
+              break;
+            }
+          }
+        }
+
+        // Step 4: Mark ALL remaining items as collected
+        for (var i = 0; i < items.length; i++) {
+          if (!items[i].collected) items[i].collected = true;
+        }
+
+        // Step 5: Emit sceneComplete to advance the game
+        scene.events.emit('sceneComplete');
+
+        return { ok: true, collected: collected, relicId: relicId };
+      })()`) as { ok: boolean; collected?: string[]; relicId?: string; reason?: string } | null;
+
+      if (rewardResult?.ok) {
+        if (rewardResult.relicId) {
+          stats.relicsEarned.push(String(rewardResult.relicId));
+        }
+        if (rewardResult.collected?.some((c: string) => c.startsWith('card'))) {
+          stats.cardsAdded++;
+        }
+        // Track gold collected
+        const goldEntries = rewardResult.collected?.filter((c: string) => c.startsWith('gold:')) ?? [];
+        for (const ge of goldEntries) {
+          const amount = parseInt(ge.split(':')[1] ?? '0', 10);
+          stats.goldEarned += amount;
         }
       } else {
-        // Check for visible reward UI and handle
-        const rewardIds = await getVisibleTestIds(page);
-        const hasRewardUI = rewardIds.some(id =>
-          id.startsWith('card-reward-') || id.startsWith('reward-') || id.startsWith('relic-option-') ||
-          id === 'btn-skip-reward' || id === 'btn-continue' || id === 'btn-collect'
-        );
-
-        if (hasRewardUI) {
-          await handleCardReward(page, profile, rng);
-        } else {
-          // No reward UI — navigate back to map
-          await page.evaluate(() => (window as any).__terraPlay?.navigate?.('dungeonMap'));
-        }
+        // Fallback: try navigating away
+        await page.evaluate(() => (window as any).__terraPlay?.exitRoom?.());
+        await page.waitForTimeout(200);
+        await handleGenericAction(page);
       }
-      await page.waitForTimeout(20);
+      await page.waitForTimeout(100);
       break;
     }
 
