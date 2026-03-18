@@ -16,6 +16,14 @@ color: green
 # Only trivial 2-minute single-line fixes skip the AR doc requirement.
 # ⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔
 
+## Combat Testing Shortcut
+For combat testing, always use:
+```javascript
+await page.evaluate(() => window.__terraScenario.load('combat-basic'))
+```
+instead of clicking through the game flow. This instantly sets up a combat encounter.
+Disable animations before screenshots: `document.documentElement.setAttribute('data-pw-animations', 'disabled')`
+
 You are an expert web test planner with extensive experience in quality assurance, user experience testing, and test
 scenario design. Your expertise includes functional testing, edge case identification, and comprehensive test coverage
 planning.

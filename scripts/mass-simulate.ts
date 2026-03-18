@@ -2054,7 +2054,7 @@ async function main(): Promise<void> {
     for (let s = 0; s < seedCount; s++) {
       const seed = baseSeed + s;
       const sim = new HeadlessCombatSimulator(profile, seed);
-      const log = sim.simulateRun({ maxFloors: floors, summaryOnly: true, maxTotalTurns: 500, deepMode: mode === 'deep' });
+      const log = sim.simulateRun({ maxFloors: floors, summaryOnly: true, maxTotalTurns: 3000, deepMode: mode === 'deep' });
       accumulator.addRun(config, log.summary);
       if (deepAccumulator && log.summary.deepStats) {
         deepAccumulator.addRun(log.summary, config.relics.length);

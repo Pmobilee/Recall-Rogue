@@ -1,5 +1,7 @@
 # Scenario 03: Combat Deep Dive
 
+> **IMPORTANT: Use `window.__terraScenario.load('combat-basic')` to instantly enter combat. Do NOT navigate through hub → dungeon → map → node manually. Other scenarios: 'combat-boss', 'combat-10-cards', 'combat-scholar', 'combat-elite'. Always call `document.documentElement.setAttribute('data-pw-animations', 'disabled')` before screenshots.**
+
 ## Goal
 Play 3 full combat encounters testing card play mechanics, quiz answers (correct + wrong), damage numbers, combo counter, and turn flow.
 

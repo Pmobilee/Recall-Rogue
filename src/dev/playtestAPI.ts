@@ -163,6 +163,69 @@ async function playCard(index: number): Promise<PlayResult> {
   });
 }
 
+/** Quick Play a card at the given hand index (base damage, no quiz, 1 AP cost).
+ *  Calls handlePlayCard with playMode='quick' — the same code path as a real quick play tap. */
+async function quickPlayCard(index: number): Promise<PlayResult> {
+  return safeAction(async () => {
+    const { handlePlayCard, activeTurnState } = await import('../services/encounterBridge');
+    const { get } = await import('svelte/store');
+    const turnState = get(activeTurnState);
+    if (!turnState) return { ok: false, message: 'No active turn state — are you in combat?' };
+
+    const hand = turnState.deck?.hand;
+    if (!Array.isArray(hand) || index < 0 || index >= hand.length) {
+      return { ok: false, message: `Card index ${index} is out of range (hand size: ${hand?.length ?? 0})` };
+    }
+
+    const card = hand[index];
+    if (!card) return { ok: false, message: `No card at index ${index}` };
+    if ((card.apCost ?? 1) > (turnState.apCurrent ?? 0)) {
+      return { ok: false, message: `Not enough AP to play card ${index} (needs ${card.apCost ?? 1}, have ${turnState.apCurrent ?? 0})` };
+    }
+
+    handlePlayCard(card.id, true, false, undefined, undefined, 'quick');
+    await wait(600);
+    return {
+      ok: true,
+      message: `Quick-played card ${index} (${card.cardType}, "${(card as any).fact?.question ?? card.id}")`,
+      state: { cardId: card.id, cardType: card.cardType, playMode: 'quick' },
+    };
+  });
+}
+
+/** Charge a card and auto-answer the quiz (correct or incorrect based on parameter).
+ *  Calls handlePlayCard with playMode='charge' — the same code path as a real charge play. */
+async function chargePlayCard(index: number, answerCorrectly: boolean): Promise<PlayResult> {
+  return safeAction(async () => {
+    const { handlePlayCard, activeTurnState } = await import('../services/encounterBridge');
+    const { get } = await import('svelte/store');
+    const turnState = get(activeTurnState);
+    if (!turnState) return { ok: false, message: 'No active turn state — are you in combat?' };
+
+    const hand = turnState.deck?.hand;
+    if (!Array.isArray(hand) || index < 0 || index >= hand.length) {
+      return { ok: false, message: `Card index ${index} is out of range (hand size: ${hand?.length ?? 0})` };
+    }
+
+    const card = hand[index];
+    if (!card) return { ok: false, message: `No card at index ${index}` };
+
+    // Charge play costs +1 AP compared to quick play
+    const chargeCost = (card.apCost ?? 1) + 1;
+    if (chargeCost > (turnState.apCurrent ?? 0)) {
+      return { ok: false, message: `Not enough AP to charge-play card ${index} (needs ${chargeCost}, have ${turnState.apCurrent ?? 0})` };
+    }
+
+    handlePlayCard(card.id, answerCorrectly, false, 1500, undefined, 'charge');
+    await wait(800);
+    return {
+      ok: true,
+      message: `Charge-played card ${index} (${card.cardType}) — answered ${answerCorrectly ? 'correctly' : 'incorrectly'}`,
+      state: { cardId: card.id, cardType: card.cardType, playMode: 'charge', answerCorrectly },
+    };
+  });
+}
+
 /** End the current combat turn. */
 async function endTurn(): Promise<PlayResult> {
   return safeAction(async () => {
@@ -680,6 +743,8 @@ export function initPlaytestAPI(): void {
     // Card Roguelite — Combat
     getCombatState,
     playCard,
+    quickPlayCard,
+    chargePlayCard,
     endTurn,
     // Card Roguelite — Room & Reward
     selectRoom,

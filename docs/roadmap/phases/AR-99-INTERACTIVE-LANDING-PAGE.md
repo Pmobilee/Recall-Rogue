@@ -122,7 +122,7 @@ IDLE → INTRO_ANIM → HAND_DEALT → AWAITING_CARD_TAP → QUIZ_SHOWN →
 const ENCOUNTER = {
   enemy: {
     name: 'Cave Bat',
-    maxHP: 38,
+    maxHP: 45,
     sprite: 'assets/enemies/cave_bat_idle.webp',
     attacks: [
       { damage: 4, telegraph: 'Swooping strike' },
@@ -511,7 +511,7 @@ Add two new feature cards to the existing grid:
 
 ## Decisions (confirmed by user)
 
-1. **Enemy**: Cave Bat with **38 HP** (doubled from in-game 19) so the fight lasts the full hand of 5 cards.
+1. **Enemy**: Cave Bat with **45 HP** — guaranteed killable in exactly 3 correct Charge answers (min 3×15=45). Uses actual `chargeDmg` values (15-30) instead of `quickDmg`.
 2. **Player HP**: YES — shown with 60 HP, enemy attacks between cards for 4-6 damage. Adds tension.
 3. **Play Again**: YES — pool of 20 facts, deal random 5 each round. "Fight Again" button on victory modal. Different facts each time encourages replaying.
 4. **Sound**: Skip for v1. No audio.

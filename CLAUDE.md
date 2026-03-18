@@ -116,6 +116,35 @@ Every code change that touches gameplay MUST have corresponding documentation up
 
 Two tools available — use the right one for the job:
 
+### Quick Combat Setup (use instead of clicking through menus)
+
+**ALWAYS use `__terraScenario` to instantly enter any game state. Do NOT navigate through hub → dungeon → map → node manually.**
+
+```javascript
+// In browser_evaluate:
+await page.evaluate(() => window.__terraScenario.load('combat-basic'));  // instant combat
+await page.evaluate(() => window.__terraScenario.load('combat-boss'));   // boss with relics
+await page.evaluate(() => window.__terraScenario.load('combat-10-cards')); // 10-card hand
+await page.evaluate(() => window.__terraScenario.load('shop'));          // shop with 500g
+await page.evaluate(() => window.__terraScenario.load('reward-room'));   // reward room
+```
+
+**Before taking screenshots, ALWAYS disable animations:**
+```javascript
+await page.evaluate(() => document.documentElement.setAttribute('data-pw-animations', 'disabled'));
+```
+
+**Full scenario list:** `window.__terraScenario.list()` or see `src/dev/scenarioSimulator.ts`
+
+**Screenshot method (Playwright screenshots timeout due to Phaser RAF):**
+Use `browser_run_code` with extended timeout OR the canvas download approach:
+```javascript
+// Via browser_run_code:
+async (page) => { await page.screenshot({ path: '.playwright-mcp/screenshot.png', timeout: 60000, animations: 'disabled' }); return 'saved'; }
+
+// Then read the file to view it
+```
+
 ### 1. MCP Playwright (interactive — use during development)
 - Use `mcp__playwright__browser_navigate`, `mcp__playwright__browser_snapshot`, `mcp__playwright__browser_take_screenshot` etc.
 - Persistent browser session, no scripts needed — call tools directly

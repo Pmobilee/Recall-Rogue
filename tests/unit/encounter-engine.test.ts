@@ -345,9 +345,9 @@ describe('Enemy Templates', () => {
     expect(bat?.baseHP).toBe(19);
   });
 
-  it('crystal_golem has 38 baseHP (AR-59.13 v2 stats)', () => {
+  it('crystal_golem has 32 baseHP (AR-99 balance tuning)', () => {
     const golem = ENEMY_TEMPLATES.find(t => t.id === 'crystal_golem');
-    expect(golem?.baseHP).toBe(38);
+    expect(golem?.baseHP).toBe(32);
   });
 
   it('the_archivist has 80 baseHP (AR-59.13 v2 stats)', () => {

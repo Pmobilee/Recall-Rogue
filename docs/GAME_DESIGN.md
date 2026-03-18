@@ -383,6 +383,23 @@ Surge creates RHYTHM. Players learn to:
 - **Bone Collector:** Heals 5 HP when you answer a Charged quiz incorrectly
 - **Librarian:** Immune to Quick Play damage — only Charged attacks deal damage
 
+### Enemy Combat Traits (AR-99 Phase 3)
+
+Enemies can have passive traits that modify how specific play styles interact with them. These traits appear alongside enemy descriptions in the combat UI.
+
+#### chargeResistant
+Quick Play attacks deal **50% damage** to this enemy. Charged attacks (correct or wrong) deal full damage. Rewards players who invest AP to Charge their cards.
+
+Enemies with chargeResistant: iron_beetle, geode_beetle, crystal_golem, basalt_crawler, quartz_elemental, iron_core_golem, rock_hermit, tectonic_scarab, granite_hound, void_mite, tome_mimic, pressure_djinn
+
+#### chainVulnerable
+Chain attacks (Knowledge Chain multiplier > 1.0×) deal **+50% bonus damage** to this enemy. Rewards players who build and sustain chains by answering varied card types correctly.
+
+Enemies with chainVulnerable: cave_spider, root_strangler, stalactite_drake, ember_skeleton, fossil_raptor, lava_crawler, obsidian_shard, blind_grub
+
+#### quickPlayPunish (mini-boss trait, implemented via onPlayerNoCharge)
+If the player makes no Charge plays during their turn, the enemy gains **+1 Strength** (permanent for the encounter). Applied to: crystal_guardian, stone_sentinel, iron_archon, obsidian_knight, glyph_warden.
+
 ### Stacking Rules
 
 - Multiple Weakness applications extend duration, don't stack intensity

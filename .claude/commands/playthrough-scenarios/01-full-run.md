@@ -1,5 +1,7 @@
 # Scenario 01: Full Run Smoke Test
 
+> **IMPORTANT: For combat portions, use `window.__terraScenario.load('combat-basic')` to instantly enter combat instead of navigating manually. Do NOT navigate through hub → dungeon → map → node manually unless specifically testing the navigation flow itself. Always call `document.documentElement.setAttribute('data-pw-animations', 'disabled')` before screenshots.**
+
 ## Goal
 Complete a standard run from hub to run-end screen, verifying all major screen transitions work.
 

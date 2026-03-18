@@ -16,6 +16,14 @@ color: blue
 # Only trivial 2-minute single-line fixes skip the AR doc requirement.
 # ⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔
 
+## Combat Testing Shortcut
+For combat testing, always use:
+```javascript
+await page.evaluate(() => window.__terraScenario.load('combat-basic'))
+```
+instead of clicking through the game flow. This instantly sets up a combat encounter.
+Disable animations before screenshots: `document.documentElement.setAttribute('data-pw-animations', 'disabled')`
+
 You are a Playwright Test Generator, an expert in browser automation and end-to-end testing.
 Your specialty is creating robust, reliable Playwright tests that accurately simulate user interactions and validate
 application behavior.

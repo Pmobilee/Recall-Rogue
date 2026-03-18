@@ -1,5 +1,7 @@
 # Scenario 07: Sprite & Visual Audit
 
+> **IMPORTANT: Use `window.__terraScenario.load('combat-basic')` to instantly enter combat. Do NOT navigate through hub → dungeon → map → node manually. Other scenarios: 'combat-boss', 'combat-10-cards', 'combat-scholar', 'combat-elite'. Always call `document.documentElement.setAttribute('data-pw-animations', 'disabled')` before screenshots.**
+
 ## Goal
 Verify enemy sprites load correctly, card art renders, backgrounds display, and no visual placeholders appear.
 

@@ -511,6 +511,14 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     ],
     description: 'Crystal-armored golem. Blocks accumulate each turn.',
     animArchetype: 'trembler',
+    onPlayerNoCharge: (ctx) => {
+      // AR-99 Phase 3: quickPlayPunish — gains +1 Strength if player makes no Charge plays.
+      applyStatusEffect(ctx.enemy.statusEffects, {
+        type: 'strength',
+        value: 1,
+        turnsRemaining: 999,
+      });
+    },
   },
 
   {
@@ -547,6 +555,14 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     ],
     description: 'Old stone warrior. Very slow, very durable. A war of attrition.',
     animArchetype: 'slammer',
+    onPlayerNoCharge: (ctx) => {
+      // AR-99 Phase 3: quickPlayPunish — gains +1 Strength if player makes no Charge plays.
+      applyStatusEffect(ctx.enemy.statusEffects, {
+        type: 'strength',
+        value: 1,
+        turnsRemaining: 999,
+      });
+    },
   },
 
   {
@@ -1051,7 +1067,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Granite Colossus',
     category: 'mini_boss',
     region: 'deep_caverns',
-    baseHP: 65,
+    baseHP: 55,
     intentPool: [
       { type: 'defend', value: 12, weight: 2, telegraph: 'Stone fortification' },
       { type: 'charge', value: 30, weight: 1, telegraph: 'Charging: Granite slam!' },
@@ -1066,7 +1082,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Deep Lurker',
     category: 'mini_boss',
     region: 'deep_caverns',
-    baseHP: 58,
+    baseHP: 50,
     intentPool: [
       { type: 'multi_attack', value: 5, weight: 2, telegraph: 'Lurking assault', hitCount: 3 },
       { type: 'debuff', value: 1, weight: 2, telegraph: 'Vulnerable strike', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
@@ -1082,7 +1098,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Lava Salamander',
     category: 'mini_boss',
     region: 'deep_caverns',
-    baseHP: 56,
+    baseHP: 48,
     intentPool: [
       { type: 'attack', value: 11, weight: 2, telegraph: 'Magma bite' },
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Scalding heat', statusEffect: { type: 'poison', value: 3, turns: 2 } },
@@ -1348,6 +1364,14 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     ],
     description: 'Obsidian glass forged into armor. Blocks well, then cuts.',
     animArchetype: 'slammer',
+    onPlayerNoCharge: (ctx) => {
+      // AR-99 Phase 3: quickPlayPunish — gains +1 Strength if player makes no Charge plays.
+      applyStatusEffect(ctx.enemy.statusEffects, {
+        type: 'strength',
+        value: 1,
+        turnsRemaining: 999,
+      });
+    },
   },
 
   {
@@ -1690,6 +1714,14 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     ],
     description: 'Iron-forged and magnetic. Fights without favoring offense or defense.',
     animArchetype: 'caster',
+    onPlayerNoCharge: (ctx) => {
+      // AR-99 Phase 3: quickPlayPunish — gains +1 Strength if player makes no Charge plays.
+      applyStatusEffect(ctx.enemy.statusEffects, {
+        type: 'strength',
+        value: 1,
+        turnsRemaining: 999,
+      });
+    },
   },
 
   {
@@ -1752,6 +1784,14 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     ],
     description: 'Built from protective runes. Hard to chip down, keeps healing.',
     animArchetype: 'trembler',
+    onPlayerNoCharge: (ctx) => {
+      // AR-99 Phase 3: quickPlayPunish — gains +1 Strength if player makes no Charge plays.
+      applyStatusEffect(ctx.enemy.statusEffects, {
+        type: 'strength',
+        value: 1,
+        turnsRemaining: 999,
+      });
+    },
   },
 
   {
@@ -1759,7 +1799,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Archive Specter',
     category: 'mini_boss',
     region: 'the_archive',
-    baseHP: 56,
+    baseHP: 48,
     intentPool: [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Forgotten curse', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
       { type: 'attack', value: 11, weight: 2, telegraph: 'Spectral strike' },
