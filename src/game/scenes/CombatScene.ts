@@ -27,16 +27,16 @@ const ENEMY_Y_OFFSET_RATIO = 0.25
  * Card hand strip occupies the bottom 25-30%.
  */
 const LANDSCAPE = {
-  ENEMY_PANEL_X_START: 0.70,  // Right 30% starts here
-  ENEMY_X_PCT: 0.85,          // Enemy centered in right panel
-  ENEMY_Y_PCT: 0.45,          // Vertically centered in right panel
-  ENEMY_HP_Y_PCT: 0.15,       // HP bar near top of right panel
-  PLAYER_HP_BAR_X_PCT: 0.68,  // Left edge of enemy panel (vertical bar)
+  ENEMY_PANEL_X_START: 0.70,  // Kept for reference; enemy now centers by default
+  ENEMY_X_PCT: 0.50,          // Enemy CENTERED in arena by default (spec: center, slides right on quiz)
+  ENEMY_Y_PCT: 0.45,          // Vertically centered in arena
+  ENEMY_HP_Y_PCT: 0.15,       // HP bar near top of arena
+  PLAYER_HP_BAR_X_PCT: 0.68,  // Left edge (unused — player HP now in Svelte stats bar)
   PLAYER_HP_BAR_TOP: 0.20,
   PLAYER_HP_BAR_BOTTOM: 0.80,
   FLOOR_COUNTER_X: 0.72,
   FLOOR_COUNTER_Y: 0.05,
-  RELIC_TRAY_X: 0.02,         // Top-left of center stage
+  RELIC_TRAY_X: 0.02,         // Top-left of arena
   RELIC_TRAY_Y: 0.05,
   CHAIN_COUNTER_X: 0.35,
   CHAIN_COUNTER_Y: 0.05,

@@ -1220,7 +1220,7 @@ At boss/mini-boss relic selection events, player may pay `RELIC_REROLL_COST = 50
 #### Chain Relics (Build-Around)
 
 **Chain Reactor** — Rare
-Knowledge Chains of 3+ deal 4 splash damage per chain link.
+Knowledge Chains of 2+ deal 6 splash damage per chain link.
 *Synergy: Tag Magnet + Swift Boots + any multi-hit cards*
 
 **Resonance Crystal** — Uncommon
@@ -1232,7 +1232,7 @@ When drawing cards, +30% chance to draw cards sharing a `chainType` with your la
 *Makes chains more consistent.*
 
 **Echo Chamber** — Rare
-Completing a 3+ chain replays the first card in the chain at 50% power (no quiz, no AP cost).
+Completing a 2+ chain replays the first card in the chain at 60% power (no quiz, no AP cost).
 *Free bonus action from chaining.*
 
 #### Speed Relics (Build-Around)
@@ -1246,13 +1246,13 @@ Correct Charged answers in under 3 seconds refund 1 AP (once per turn).
 *Fast answerers effectively get 4 AP per turn.*
 
 **Time Warp** — Rare
-On Knowledge Surge turns, quiz timer is halved but Charge multiplier increases to 4.0×.
+On Knowledge Surge turns, quiz timer is halved but Charge multiplier increases to 5.0× and gain +1 AP.
 *High-risk, high-reward Surge turns.*
 
 #### Glass Cannon Relics (Build-Around)
 
 **Volatile Core** — Uncommon (Cursed)
-All attacks deal +40% damage. Wrong Charged answers deal 5 damage to you AND the enemy.
+All attacks deal +50% damage. Wrong Charged answers deal 3 damage to you AND the enemy.
 *Even failures deal enemy damage. Pure aggression.*
 
 **Reckless Resolve** — Uncommon
@@ -1266,9 +1266,9 @@ Charged correct answers have 25% chance to DOUBLE the final damage (after all mu
 #### Defense Relics (Build-Around)
 
 **Aegis Stone** — Uncommon
-Block from shield cards carries between turns (max 25). At 25 block, gain Thorns 3.
+Block from shield cards carries between turns (max 15). At 15 block, gain Thorns 2.
 *Completely changes shield card evaluation.*
-Constant: `RELIC_AEGIS_STONE_MAX_CARRY = 25`
+Constant: `RELIC_AEGIS_STONE_MAX_CARRY = 15`
 
 **Regeneration Orb** — Uncommon
 Heal 3 HP at end of each turn where you played 2+ shield cards.
@@ -1277,7 +1277,7 @@ Heal 3 HP at end of each turn where you played 2+ shield cards.
 When you have 15+ block at start of turn, reflect 5 damage per enemy attack.
 
 **Bastion's Will** — Rare
-Charged shield cards gain an additional +50% block value.
+Charged shield cards gain +75% block. Quick Play shield cards gain +25% block.
 *Makes Charging defensive cards worthwhile.*
 
 #### Poison Relics (Build-Around)
@@ -1287,7 +1287,7 @@ All poison ticks deal +2 extra damage. Poison lasts 1 extra turn.
 *Hex goes from 9 total to 20 total damage.*
 
 **Festering Wound** — Rare
-When enemy has 5+ poison stacks, all attacks deal +30% damage.
+When enemy has 3+ poison stacks, all attacks deal +40% damage.
 
 **Toxic Bloom** — Uncommon
 When enemy dies from poison, spread 3 poison to all other enemies (reserved for future multi-enemy encounters).
@@ -1309,7 +1309,7 @@ Once per encounter: Charge same card twice. Answer 2 questions. Both correct: 5�
 #### Knowledge Relics (Build-Around)
 
 **Scholar's Crown** — Rare
-Tier 2+ facts Charged get +30% power. Tier 3 auto-Charged cards get +50%.
+Tier 1 Charged facts get +10% power. Tier 2+ get +40%. Tier 3 auto-Charged get +75%.
 
 **Memory Nexus** — Uncommon
 When you correctly Charge 3 cards in one encounter (cumulative), draw 2 extra next turn.
@@ -1319,7 +1319,7 @@ Wrong Charged answers reveal correct answer AND next appearance of that fact aut
 *Turns failures into future guaranteed wins.*
 
 **Domain Mastery Sigil** — Rare
-If deck has 6+ facts from same domain, all same-domain cards get +20% base (even Quick Play).
+If deck has 4+ facts from same domain, all same-domain cards get +30% base damage (even Quick Play).
 
 #### Economy Relics (Utility)
 
@@ -1335,17 +1335,17 @@ If deck has 6+ facts from same domain, all same-domain cards get +20% base (even
 
 **Whetstone** — Common | All attack cards +2 base damage.
 
-**Iron Shield** — Common | Start each turn with 3 block.
+**Iron Shield** — Common | Start each turn with 2 block.
 
-**Vitality Ring** — Common | +12 max HP.
+**Vitality Ring** — Common | +20 max HP.
 
-**Herbal Pouch** — Common | Heal 4 HP after each combat encounter.
+**Herbal Pouch** — Common | Heal 8 HP after each combat encounter.
 
 **Swift Boots** — Common | Draw 6 cards per turn instead of 5.
 
-**Combo Ring** — Common | First Charged correct answer each turn grants +2 damage to all attacks that turn.
+**Combo Ring** — Common | First Charged correct answer each turn grants +1 damage to all attacks that turn.
 
-**Steel Skin** — Common | Take 1 less damage from all sources (min 1).
+**Steel Skin** — Common | Take 3 less damage from all sources (min 1).
 
 **Last Breath** — Uncommon | Once per encounter: survive lethal at 1 HP, gain 8 block.
 
@@ -1356,7 +1356,7 @@ If deck has 6+ facts from same domain, all same-domain cards get +20% base (even
 *4 AP is transformative. HP drain creates urgency.*
 
 **Phoenix Feather** — Rare
-Once per run: on death, resurrect at 30% HP. All cards auto-Charge free for 2 turns.
+Once per run: on death, resurrect at 15% HP. All cards auto-Charge free for 1 turn.
 
 **Scholar's Gambit** — Rare (Cursed)
 5 relic slots → 6. Wrong Charged answers deal 3 damage to you.

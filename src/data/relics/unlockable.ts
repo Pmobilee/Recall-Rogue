@@ -15,14 +15,14 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
   {
     id: 'chain_reactor',
     name: 'Chain Reactor',
-    description: 'Knowledge Chains of 3+ deal 4 splash damage per chain link.',
+    description: 'Knowledge Chains of 2+ deal 6 splash damage per chain link.',
     flavorText: 'Recovered from the wreckage of an archivist\'s experimental resonance array. When knowledge chains exceed critical length, the energy discharge is... considerable.',
     visualDescription: 'A glowing reactor coil with chain-link symbols orbiting it, erupting with energy sparks on each activation. Nuclear knowledge aesthetic. 32x32 pixel art.',
     rarity: 'rare',
     category: 'chain',
     trigger: 'on_chain_complete',
     effects: [
-      { effectId: 'chain_splash_damage', description: '4 splash damage per chain link (chains 3+)', value: 4, secondaryValue: 3 },
+      { effectId: 'chain_splash_damage', description: '6 splash damage per chain link (chains 2+)', value: 6, secondaryValue: 2 },
     ],
     icon: '⚛️',
     unlockCost: 55,
@@ -33,14 +33,14 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
   {
     id: 'echo_chamber',
     name: 'Echo Chamber',
-    description: 'Completing a 3+ chain replays the first card in the chain at 50% power (no quiz, no AP cost).',
+    description: 'Completing a 2+ chain replays the first card in the chain at 60% power (no quiz, no AP cost).',
     flavorText: 'A resonance chamber where echoes of played cards linger. Link enough facts together and the chamber reaches harmonic saturation — the opening card echoes again at half strength.',
     visualDescription: 'A round purple resonance chamber with ghostly card silhouettes orbiting the interior walls. Echo ripples bounce between the curved surfaces. 32x32 pixel art.',
     rarity: 'rare',
     category: 'chain',
     trigger: 'on_chain_complete',
     effects: [
-      { effectId: 'chain_echo_replay', description: 'First chain card replays at 50% power on 3+ chain', value: 50, secondaryValue: 3 },
+      { effectId: 'chain_echo_replay', description: 'First chain card replays at 60% power on 2+ chain', value: 60, secondaryValue: 2 },
     ],
     icon: '🔊',
     unlockCost: 55,
@@ -71,7 +71,7 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
   {
     id: 'time_warp',
     name: 'Time Warp',
-    description: 'On Knowledge Surge turns, quiz timer is halved but Charge multiplier increases to 4.0×.',
+    description: 'On Knowledge Surge turns, quiz timer is halved but Charge multiplier increases to 5.0× and gain +1 AP.',
     flavorText: 'A cracked hourglass from the Temporal Archivist\'s workshop. When surge energy peaks, it compresses time itself — the window is small, but the power is enormous.',
     visualDescription: 'An ornate brass hourglass with purple sand falling at double speed, surrounded by compressed clock hands. Time distortion warps the air around it. 32x32 pixel art.',
     rarity: 'rare',
@@ -79,7 +79,8 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
     trigger: 'on_surge_start',
     effects: [
       { effectId: 'surge_timer_halved', description: 'Surge turns: quiz timer halved', value: 0.5 },
-      { effectId: 'surge_charge_multiplier_override', description: 'Surge turns: Charge multiplier 4.0×', value: 4.0 },
+      { effectId: 'surge_charge_multiplier_override', description: 'Surge turns: Charge multiplier 5.0×', value: 5.0 },
+      { effectId: 'surge_ap_bonus', description: '+1 AP on surge turns', value: 1 },
     ],
     icon: '⏳',
     unlockCost: 55,
@@ -130,14 +131,15 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
   {
     id: 'bastions_will',
     name: "Bastion's Will",
-    description: 'Charged shield cards gain an additional +50% block value.',
+    description: 'Charged shield cards gain +75% block. Quick Play shield cards gain +25% block.',
     flavorText: 'The iron will of Bastion, last defender of the First Archive. He answered every challenge — and his shields never broke. The relic carries that absolute refusal to yield.',
     visualDescription: 'A shield-shaped iron relic with a glowing fist embossed on the face, radiating steadfast blue energy. Block values float visibly around it. 32x32 pixel art.',
     rarity: 'rare',
     category: 'defensive',
     trigger: 'on_charge_correct',
     effects: [
-      { effectId: 'charged_shield_bonus', description: '+50% block when Charging a shield card', value: 50 },
+      { effectId: 'charged_shield_bonus', description: '+75% block when Charging a shield card', value: 75 },
+      { effectId: 'quick_shield_bonus', description: '+25% block on Quick Play shield cards', value: 25 },
     ],
     icon: '🛡️',
     unlockCost: 55,
@@ -150,14 +152,14 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
   {
     id: 'festering_wound',
     name: 'Festering Wound',
-    description: 'When enemy has 5+ poison stacks, all attacks deal +30% damage.',
+    description: 'When enemy has 3+ poison stacks, all attacks deal +40% damage.',
     flavorText: 'A cursed bandage from the dungeon\'s plague ward. It doesn\'t heal — it catalogues. When poison reaches critical mass, this wound knows the moment to strike.',
     visualDescription: 'A dark green bandage wrapped around a glowing wound icon, toxic energy seeping from the edges. Poison stacks visualized as bubbles around it. 32x32 pixel art.',
     rarity: 'rare',
     category: 'poison',
     trigger: 'permanent',
     effects: [
-      { effectId: 'high_poison_attack_bonus', description: '+30% attack when enemy has 5+ poison', value: 30, secondaryValue: 5 },
+      { effectId: 'high_poison_attack_bonus', description: '+40% attack when enemy has 3+ poison', value: 40, secondaryValue: 3 },
     ],
     icon: '☠️',
     unlockCost: 55,
@@ -181,7 +183,7 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
       // on_turn_end: store min(apRemaining, 3) into capacitorStoredAP
       // on_turn_start: release capacitorStoredAP as bonus AP, then reset to 0
       { effectId: 'unused_ap_store', description: 'Store unused AP (max 3)', value: 3 },
-      { effectId: 'stored_ap_release', description: 'Release stored AP next turn', value: 1 },
+      { effectId: 'stored_ap_release', description: 'Release stored AP next turn at 1.5× rate', value: 1.5 },
     ],
     icon: '🔋',
     unlockCost: 55,
@@ -215,15 +217,16 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
   {
     id: 'scholars_crown',
     name: "Scholar's Crown",
-    description: 'Tier 2+ facts that are Charged get +30% power. Tier 3 auto-Charged cards get +50%.',
+    description: 'Tier 1 Charged facts get +10% power. Tier 2+ get +40%. Tier 3 auto-Charged get +75%.',
     flavorText: 'The laurel of a master archivist who climbed every floor and remembered every fact. Knowledge mastered is knowledge weaponized.',
     visualDescription: 'A golden scholar\'s crown with scrolls worked into the band and glowing runes across each point. Tier symbols orbit the crown. 32x32 pixel art.',
     rarity: 'rare',
     category: 'knowledge',
     trigger: 'on_charge_correct',
     effects: [
-      { effectId: 'tier2_charge_bonus', description: '+30% power for Tier 2+ Charged facts', value: 30 },
-      { effectId: 'tier3_charge_bonus', description: '+50% power for Tier 3 auto-Charged facts', value: 50 },
+      { effectId: 'tier1_charge_bonus', description: '+10% power for Tier 1 Charged facts', value: 10 },
+      { effectId: 'tier2_charge_bonus', description: '+40% power for Tier 2+ Charged facts', value: 40 },
+      { effectId: 'tier3_charge_bonus', description: '+75% power for Tier 3 auto-Charged facts', value: 75 },
     ],
     icon: '👑',
     unlockCost: 55,
@@ -234,14 +237,14 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
   {
     id: 'domain_mastery_sigil',
     name: 'Domain Mastery Sigil',
-    description: 'If deck has 6+ facts from same domain, all same-domain cards get +20% base damage (even Quick Play).',
+    description: 'If deck has 4+ facts from same domain, all same-domain cards get +30% base damage (even Quick Play).',
     flavorText: 'A specialist\'s sigil that awakens when the bearer demonstrates deep expertise. Concentrate your knowledge and every card in that domain strikes with mastery\'s edge.',
     visualDescription: 'A golden pentagon seal with a different domain symbol on each face, the dominant face blazing with white-hot energy. Mastery crown hovering above. 32x32 pixel art.',
     rarity: 'rare',
     category: 'knowledge',
     trigger: 'permanent',
     effects: [
-      { effectId: 'domain_concentration_bonus', description: '+20% base damage for concentrated domain (6+ facts)', value: 20, secondaryValue: 6 },
+      { effectId: 'domain_concentration_bonus', description: '+30% base damage for concentrated domain (4+ facts)', value: 30, secondaryValue: 4 },
     ],
     icon: '🏆',
     unlockCost: 55,
@@ -254,7 +257,7 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
   {
     id: 'phoenix_feather',
     name: 'Phoenix Feather',
-    description: 'Once per run: on death, resurrect at 30% HP. All cards auto-Charge free for 2 turns.',
+    description: 'Once per run: on death, resurrect at 15% HP. All cards auto-Charge free for 1 turn.',
     flavorText: 'From the last phoenix that nested in the volcanic vents beneath Floor 15. It carries one final resurrection — a single defiant rebirth from the ashes of defeat. Once per run.',
     visualDescription: 'A magnificent orange-gold feather with flames dancing along its edges, radiating warmth and brilliant light. Sacred rebirth energy. 32x32 pixel art.',
     rarity: 'rare',
@@ -262,8 +265,8 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
     trigger: 'on_lethal',
     effects: [
       // TODO(AR-59.11): once/run semantics — requires phoenixFeather_usedThisRun run flag.
-      { effectId: 'lethal_save_run', description: 'Resurrect at 30% HP (once/run)', value: 30 },
-      { effectId: 'phoenix_autocharge_turns', description: 'Auto-Charge all cards free for 2 turns on resurrect', value: 2 },
+      { effectId: 'lethal_save_run', description: 'Resurrect at 15% HP (once/run)', value: 15 },
+      { effectId: 'phoenix_autocharge_turns', description: 'Auto-Charge all cards free for 1 turn on resurrect', value: 1 },
     ],
     icon: '🪶',
     unlockCost: 60,

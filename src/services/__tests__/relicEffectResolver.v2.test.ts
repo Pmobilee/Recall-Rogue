@@ -206,10 +206,10 @@ describe('resolveChargeCorrectEffects', () => {
 describe('resolveChargeWrongEffects', () => {
   const ctx = { factId: 'test_fact_001' };
 
-  it('volatile_core: 5 self-damage, 5 enemy damage', () => {
+  it('volatile_core: 3 self-damage, 3 enemy damage', () => {
     const result = resolveChargeWrongEffects(new Set(['volatile_core']), ctx);
-    expect(result.selfDamage).toBe(5);
-    expect(result.enemyDamage).toBe(5);
+    expect(result.selfDamage).toBe(3);
+    expect(result.enemyDamage).toBe(3);
   });
 
   it('scholars_gambit: 3 self-damage', () => {
@@ -224,13 +224,13 @@ describe('resolveChargeWrongEffects', () => {
     expect(result.selfDamage).toBe(0);
   });
 
-  it('volatile_core + scholars_gambit stacks: 8 self-damage total', () => {
+  it('volatile_core + scholars_gambit stacks: 6 self-damage total', () => {
     const result = resolveChargeWrongEffects(
       new Set(['volatile_core', 'scholars_gambit']),
       ctx,
     );
-    expect(result.selfDamage).toBe(8); // 5 + 3
-    expect(result.enemyDamage).toBe(5);
+    expect(result.selfDamage).toBe(6); // 3 + 3
+    expect(result.enemyDamage).toBe(3);
   });
 
   it('no relics: no damage, no autopass', () => {
@@ -250,30 +250,39 @@ describe('resolveChainCompleteEffects', () => {
   });
 
   describe('chain_reactor', () => {
-    it('chainLength 3 → totalSplashDamage = 12 (3 links × 4)', () => {
+    it('chainLength 3 → totalSplashDamage = 18 (3 links × 6)', () => {
       const result = resolveChainCompleteEffects(
         new Set(['chain_reactor']),
         ctx(3),
       );
-      expect(result.splashPerLink).toBe(4);
-      expect(result.totalSplashDamage).toBe(12);
+      expect(result.splashPerLink).toBe(6);
+      expect(result.totalSplashDamage).toBe(18);
     });
 
-    it('chainLength 2 → no splash (below minimum)', () => {
+    it('chainLength 2 → totalSplashDamage = 12 (2 links × 6, threshold now 2+)', () => {
       const result = resolveChainCompleteEffects(
         new Set(['chain_reactor']),
         ctx(2),
+      );
+      expect(result.splashPerLink).toBe(6);
+      expect(result.totalSplashDamage).toBe(12);
+    });
+
+    it('chainLength 1 → no splash (below minimum)', () => {
+      const result = resolveChainCompleteEffects(
+        new Set(['chain_reactor']),
+        ctx(1),
       );
       expect(result.splashPerLink).toBe(0);
       expect(result.totalSplashDamage).toBe(0);
     });
 
-    it('chainLength 5 → totalSplashDamage = 20', () => {
+    it('chainLength 5 → totalSplashDamage = 30', () => {
       const result = resolveChainCompleteEffects(
         new Set(['chain_reactor']),
         ctx(5),
       );
-      expect(result.totalSplashDamage).toBe(20);
+      expect(result.totalSplashDamage).toBe(30);
     });
   });
 
@@ -304,19 +313,28 @@ describe('resolveChainCompleteEffects', () => {
   });
 
   describe('echo_chamber', () => {
-    it('chainLength 3 → echoReplay = true, echoCardPower = 0.5', () => {
+    it('chainLength 3 → echoReplay = true, echoCardPower = 0.6', () => {
       const result = resolveChainCompleteEffects(
         new Set(['echo_chamber']),
         ctx(3),
       );
       expect(result.echoReplay).toBe(true);
-      expect(result.echoCardPower).toBe(0.5);
+      expect(result.echoCardPower).toBe(0.6);
     });
 
-    it('chainLength 2 → echoReplay = false', () => {
+    it('chainLength 2 → echoReplay = true (threshold now 2+), echoCardPower = 0.6', () => {
       const result = resolveChainCompleteEffects(
         new Set(['echo_chamber']),
         ctx(2),
+      );
+      expect(result.echoReplay).toBe(true);
+      expect(result.echoCardPower).toBe(0.6);
+    });
+
+    it('chainLength 1 → echoReplay = false', () => {
+      const result = resolveChainCompleteEffects(
+        new Set(['echo_chamber']),
+        ctx(1),
       );
       expect(result.echoReplay).toBe(false);
       expect(result.echoCardPower).toBe(0);
@@ -327,16 +345,18 @@ describe('resolveChainCompleteEffects', () => {
 // ─── resolveSurgeStartEffects ────────────────────────────────────────
 
 describe('resolveSurgeStartEffects', () => {
-  it('time_warp: halves timer and sets 4.0× charge multiplier', () => {
+  it('time_warp: halves timer, sets 5.0× charge multiplier, and grants +1 AP', () => {
     const result = resolveSurgeStartEffects(new Set(['time_warp']));
     expect(result.timerMultiplier).toBe(0.5);
-    expect(result.chargeMultiplierOverride).toBe(4.0);
+    expect(result.chargeMultiplierOverride).toBe(5.0);
+    expect(result.bonusAP).toBe(1);
   });
 
-  it('no time_warp: timer unchanged, no override', () => {
+  it('no time_warp: timer unchanged, no override, no bonus AP', () => {
     const result = resolveSurgeStartEffects(new Set());
     expect(result.timerMultiplier).toBe(1.0);
     expect(result.chargeMultiplierOverride).toBeNull();
+    expect(result.bonusAP).toBe(0);
   });
 });
 

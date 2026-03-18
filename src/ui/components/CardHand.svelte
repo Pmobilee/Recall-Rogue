@@ -1245,14 +1245,14 @@
 <style>
   /* ── AR-73: Landscape card hand ──────────────────────────── */
   .card-hand-landscape {
-    --card-w: calc(25vh * 0.65);
+    --card-w: calc(27vh * 0.65);
     --card-h: calc(var(--card-w) * 1.42);
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    /* AR-95: Reduced from 26vh to 25vh to give more bottom margin and prevent clipping */
-    height: 25vh;
+    /* Spec: card hand strip = 27% of viewport height */
+    height: 27vh;
     z-index: 20;
     display: flex;
     flex-direction: row;

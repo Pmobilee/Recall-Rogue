@@ -1514,6 +1514,46 @@
       title="Keyboard shortcuts"
     >?</button>
   {/if}
+
+  <!-- Landscape three-strip layout: Stats bar sits between arena (top 65%) and card hand (bottom 27%) -->
+  {#if $isLandscape && turnState}
+    <div class="landscape-stats-bar" aria-label="Player status">
+      <!-- AP counter: left-most element -->
+      <div class="lsb-ap">
+        <div class="lsb-ap-circle" class:lsb-ap-active={apCurrent > 0} class:lsb-ap-empty={apCurrent === 0}>
+          <span class="lsb-ap-number">{apCurrent}</span>
+        </div>
+        <span class="lsb-ap-label">AP</span>
+      </div>
+
+      <!-- Block badge: to the left of HP bar -->
+      <div class="lsb-block" class:lsb-block-zero={playerShield === 0}>
+        <span class="lsb-block-icon">🛡</span>
+        <span class="lsb-block-value">Block: {playerShield}</span>
+      </div>
+
+      <!-- HP bar: center, takes remaining space -->
+      <div class="lsb-hp">
+        <div class="lsb-hp-track">
+          <div
+            class="lsb-hp-fill"
+            style="width: {Math.round(playerHpRatio * 100)}%; background: {playerHpColor};"
+          ></div>
+          <span class="lsb-hp-text">{playerHpCurrent}/{playerHpMax}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right-side column in the arena: Chain counter → Combo counter → End Turn -->
+    <div class="landscape-arena-right-col">
+      {#if chainLength > 0 && chainType}
+        <div class="lsb-chain-indicator" style="color: var(--chain-color, #e2e8f0)">
+          <span class="lsb-chain-label">{chainType}</span>
+          <span class="lsb-chain-count">×{chainLength}</span>
+        </div>
+      {/if}
+    </div>
+  {/if}
 </div>
 
 <!-- AR-74: Keyboard shortcut help overlay -->
@@ -2306,17 +2346,26 @@
   }
 
   /* ══════════════════════════════════════════════════════════
-     AR-73: Landscape (Option D) overlay repositioning
-     Enemy panel = right 30%  |  Center stage = left 70%
-     Card hand = bottom 26vh strip (rendered by CardHand)
+     Landscape three-strip layout:
+       Arena (top ~65%)   — Phaser canvas + enemy (CENTERED) + overlay UI
+       Stats bar (36px)   — AP | Block | HP bar
+       Card hand (~27vh)  — 5 cards flat row (rendered by CardHand)
+     Portrait mode UNCHANGED.
      ══════════════════════════════════════════════════════════ */
 
-  /* In landscape, reduce the bottom-gradient so center stage is visible */
+  /* In landscape, reduce the bottom gradient so arena is more visible */
   .layout-landscape {
-    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 12%, transparent 35%);
+    background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 10%, transparent 30%);
   }
 
-  /* Relics: top-left of center stage area — compact vertical column */
+  /* Hide portrait-mode AP orb, block badge, and HP strip in landscape
+     (replaced by the .landscape-stats-bar below) */
+  .layout-landscape .ap-orb,
+  .layout-landscape .player-status-strip {
+    display: none;
+  }
+
+  /* Relics: top-left of arena — HORIZONTAL row */
   :global(.layout-landscape .relic-tray) {
     position: fixed;
     top: 4%;
@@ -2324,58 +2373,36 @@
     bottom: auto;
     transform: none;
     width: auto;
-    max-width: 60px;
-    flex-direction: column;
-    gap: 4px;
+    max-width: none;
+    flex-direction: row;
+    gap: 6px;
   }
 
-  /* AP orb: left edge, stacked above draw/discard piles to avoid overlap */
-  .layout-landscape :global(.ap-orb),
-  .layout-landscape .ap-orb {
-    position: fixed;
-    bottom: calc(27vh + 110px);
-    left: 1.5%;
-    right: auto;
-    transform: none;
-  }
-
-  /* Enemy name: top of enemy panel (right 30%) */
+  /* Enemy name: top-center of arena */
   .layout-landscape .enemy-name-header {
     position: fixed;
     top: 2%;
-    left: 70%;
+    left: 0;
     right: 0;
     text-align: center;
     bottom: auto;
     transform: none;
   }
 
-  /* Intent bubble: below enemy name in right panel */
+  /* Intent bubble: top-left, below relics */
   .layout-landscape .enemy-intent-bubble {
     position: fixed;
-    top: 8%;
-    left: 72%;
-    right: 2%;
+    top: 10%;
+    left: 2%;
+    right: auto;
     bottom: auto;
     transform: none;
   }
 
-  /* Player status strip (HP bar): bottom-left above card hand */
-  /* AR-91: constrain max-width so HP bar doesn't span the full viewport */
-  .layout-landscape .player-status-strip {
-    position: fixed;
-    bottom: 27vh;
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    width: 40%;
-    max-width: 480px;
-  }
-
-  /* Pile indicators: left edge area for draw/discard */
+  /* Pile indicators: bottom-left, just above stats bar */
   .layout-landscape .draw-pile-indicator {
     position: fixed;
-    bottom: 26vh;
+    bottom: calc(27vh + 36px + 8px);
     left: 2%;
     right: auto;
     transform: none;
@@ -2383,63 +2410,221 @@
 
   .layout-landscape .discard-pile-indicator {
     position: fixed;
-    bottom: 26vh;
+    bottom: calc(27vh + 36px + 8px);
     left: 8%;
     right: auto;
     transform: none;
   }
 
-  /* End turn button: bottom-right corner, just above the card hand strip */
+  /* End turn button: bottom-right of arena, sits INSIDE right-side column (see .landscape-arena-right-col) */
   .layout-landscape .end-turn-btn {
     position: fixed;
-    bottom: calc(26vh + 8px);
-    right: 24px;
+    bottom: calc(27vh + 36px + 8px);
+    right: 16px;
     left: auto;
+    transform: none;
+    height: 40px;
+    font-size: 13px;
+    min-width: 96px;
+  }
+
+  /* Combo counter: stacked above End Turn on the right side of arena */
+  :global(.layout-landscape .combo-counter) {
+    position: fixed;
+    bottom: calc(27vh + 36px + 60px);
+    right: 16px;
+    left: auto;
+    top: auto;
     transform: none;
   }
 
-  /* Combo counter: top of center stage */
-  :global(.layout-landscape .combo-counter) {
-    position: fixed;
-    top: 3%;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: auto;
-  }
-
-  /* Status effect bars — enemy: top of center stage */
+  /* Status effect bars — enemy: centered top of arena */
   :global(.layout-landscape .status-effect-bar-enemy) {
     position: fixed;
     top: 2%;
-    left: 70%;
-    right: 1%;
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
     bottom: auto;
   }
 
-  /* Status effect bars — player: directly above HP bar strip */
+  /* Status effect bars — player: just above stats bar */
   :global(.layout-landscape .status-effect-bar-player) {
     position: fixed;
-    bottom: calc(27vh + calc(32px * var(--layout-scale, 1)));
+    bottom: calc(27vh + 36px + 2px);
     left: 35%;
-    right: 32%;
+    right: 30%;
     top: auto;
+    transform: none;
   }
 
   /* Must-charge tooltip: above center of hand strip */
   .layout-landscape .must-charge-tooltip {
-    bottom: 28vh;
+    bottom: calc(27vh + 36px + 16px);
   }
 
-  /* AR-96: Subtle vertical divider between center stage (left 70%) and enemy panel (right 30%) */
-  .layout-landscape::after {
-    content: '';
+  /* ── Landscape stats bar ────────────────────────────────── */
+  .landscape-stats-bar {
+    display: none; /* hidden in portrait */
+  }
+
+  .layout-landscape .landscape-stats-bar {
+    display: flex;
+    align-items: center;
     position: fixed;
-    left: 70vw;
-    top: 0;
-    bottom: 25vh;
-    width: 1px;
-    background: rgba(255, 255, 255, 0.08);
+    bottom: 27vh;
+    left: 0;
+    right: 0;
+    height: 36px;
+    padding: 0 16px;
+    background: rgba(10, 10, 26, 0.88);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 15;
+    gap: 0;
+  }
+
+  .lsb-ap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .lsb-ap-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+
+  .lsb-ap-circle.lsb-ap-active {
+    background: radial-gradient(circle at 40% 35%, #ff6633, #cc2200);
+    box-shadow: 0 0 8px 2px rgba(255, 100, 0, 0.5);
+  }
+
+  .lsb-ap-circle.lsb-ap-empty {
+    background: radial-gradient(circle at 40% 35%, #555, #333);
+    box-shadow: none;
+  }
+
+  .lsb-ap-number {
+    font-size: 14px;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.9);
+    line-height: 1;
+  }
+
+  .lsb-ap-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.5px;
+  }
+
+  .lsb-block {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 20px;
+    flex-shrink: 0;
+    transition: opacity 0.2s;
+  }
+
+  .lsb-block.lsb-block-zero {
+    opacity: 0.35;
+  }
+
+  .lsb-block-icon {
+    font-size: 13px;
+    line-height: 1;
+  }
+
+  .lsb-block-value {
+    font-size: 12px;
+    font-weight: 700;
+    color: #7dd3fc;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+    white-space: nowrap;
+  }
+
+  .lsb-hp {
+    flex: 1;
+    max-width: 55%;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .lsb-hp-track {
+    height: 20px;
+    border-radius: 999px;
+    border: 1px solid rgba(100, 116, 139, 0.7);
+    background: rgba(15, 23, 42, 0.82);
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35);
+  }
+
+  .lsb-hp-fill {
+    height: 100%;
+    min-width: 2px;
+    border-radius: 999px;
+    transition: width 160ms ease, background 160ms ease;
+  }
+
+  .lsb-hp-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: #fff;
+    text-shadow: -1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000;
     pointer-events: none;
-    z-index: 5;
+  }
+
+  /* ── Landscape arena right column (chain indicator) ──── */
+  .landscape-arena-right-col {
+    display: none; /* hidden in portrait */
+  }
+
+  .layout-landscape .landscape-arena-right-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: fixed;
+    right: 16px;
+    bottom: calc(27vh + 36px + 108px);
+    gap: 6px;
+    z-index: 12;
+    pointer-events: none;
+  }
+
+  .lsb-chain-indicator {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(10, 10, 26, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .lsb-chain-label {
+    text-transform: capitalize;
+    opacity: 0.85;
+  }
+
+  .lsb-chain-count {
+    font-size: 14px;
   }
 </style>

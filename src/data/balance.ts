@@ -1021,8 +1021,8 @@ export const CANARY_CHALLENGE_ENEMY_DMG_MULT = 1.1;
 /** Correct answer streak threshold to trigger challenge mode. */
 export const CANARY_CHALLENGE_STREAK_THRESHOLD = 5;
 
-/** Per-floor enemy damage scaling increment above floor 6. */
-export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.05;
+/** Per-floor enemy damage scaling increment above floor 6. (AR-97b: 0.05→0.02, sweep r=+0.668) */
+export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.02;
 
 /** Enemy damage multiplier for floors 4-6 (base). */
 export const FLOOR_DAMAGE_SCALE_MID = 1.0;
@@ -1300,7 +1300,7 @@ export const RELIC_SELL_VALUE_RARE = 35;
 export const RELIC_SELL_VALUE_LEGENDARY = 50;
 
 /** Maximum block that Aegis Stone can carry between turns. */
-export const RELIC_AEGIS_STONE_MAX_CARRY = 25;
+export const RELIC_AEGIS_STONE_MAX_CARRY = 15;
 
 /** Maximum unused AP that Capacitor can store per turn. */
 export const RELIC_CAPACITOR_MAX_STORED_AP = 3;
