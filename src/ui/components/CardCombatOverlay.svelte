@@ -2381,9 +2381,21 @@
     bottom: auto;
     transform: none;
     width: auto;
-    max-width: none;
+    max-width: 350px;  /* 5 slots × ~60px + gaps */
     flex-direction: row;
     gap: 6px;
+  }
+
+  /* Landscape: constrain each relic slot to compact size */
+  :global(.layout-landscape .relic-slot) {
+    width: 44px !important;
+    height: 44px !important;
+    flex-shrink: 0;
+  }
+
+  :global(.layout-landscape .relic-icon) {
+    width: 34px !important;
+    height: 34px !important;
   }
 
   /* Enemy name: top-center of arena */
@@ -2489,7 +2501,7 @@
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     z-index: 15;
-    gap: 0;
+    gap: 8px;
   }
 
   .lsb-ap {
@@ -2635,4 +2647,5 @@
   .lsb-chain-count {
     font-size: 14px;
   }
+
 </style>

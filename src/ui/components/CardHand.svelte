@@ -1249,8 +1249,10 @@
 <style>
   /* ── AR-73: Landscape card hand ──────────────────────────── */
   .card-hand-landscape {
-    --card-w: calc(27vh * 0.65);
-    --card-h: calc(var(--card-w) * 1.42);
+    /* Card height = 80% of 27vh strip (~233px at 1080p) to avoid bottom clipping.
+       Width derived from height via aspect ratio (1.42 tall : 1 wide → invert). */
+    --card-h: calc(27vh * 0.80);
+    --card-w: calc(var(--card-h) / 1.42);
     position: fixed;
     bottom: 0;
     left: 0;

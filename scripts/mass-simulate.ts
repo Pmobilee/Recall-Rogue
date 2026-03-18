@@ -18,66 +18,62 @@ import { setBalanceOverrides, type BalanceOverrides } from '../src/data/balance'
 // ─── Profile Presets ─────────────────────────────────────────────────────────
 
 const PROFILES: Record<string, PlayerProfile> = {
-  // ── Knowledge × Mechanics Cross-Profiles ──
-  // Knowledge axis: fresh (47%), developing (57%), practiced (65%), studied (75%)
-  // Mechanics axis: newbie (basic), competent (intermediate), veteran (optimal)
-
-  // First-time player: new to facts AND game mechanics
+  // Day 1 player, never played a roguelite before. Guessing at facts, doesn't understand mechanics.
   first_timer: {
-    id: 'first_timer', name: 'First Timer (47%/newbie)', description: 'Brand new player, first run on a fresh domain',
-    learningAbility: { baseAccuracy: 0.47, accuracyCurve: 'improving', accuracyPerFloorDelta: 0.005, minAccuracy: 0.35, maxAccuracy: 0.55 },
+    id: 'first_timer', name: 'First Timer (45%/newbie)', description: 'Day 1 player, never played a roguelite',
+    learningAbility: { baseAccuracy: 0.45, accuracyCurve: 'improving', accuracyPerFloorDelta: 0.005, minAccuracy: 0.30, maxAccuracy: 0.55 },
     readingSpeed: { category: 'slow', speedBonusProbability: 0.05 },
-    strategicSkill: { level: 'basic', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: false },
-    engagement: { skipProbability: 0.03, aggression: 'passive' },
+    strategicSkill: { level: 'basic', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: false, chargeRate: 0.15, surgeChargeRate: 0.60 },
+    engagement: { skipProbability: 0.05, aggression: 'passive' },
     sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
   },
 
-  // Experienced roguelite player trying a brand new domain — knows mechanics, bad at facts
-  new_domain: {
-    id: 'new_domain', name: 'New Domain (48%/veteran)', description: 'Experienced player, fresh domain with unknown facts',
-    learningAbility: { baseAccuracy: 0.48, accuracyCurve: 'improving', accuracyPerFloorDelta: 0.005, minAccuracy: 0.35, maxAccuracy: 0.58 },
+  // Largest real-world segment: plays a few runs/week, good general knowledge, doesn't optimize strategy.
+  casual_learner: {
+    id: 'casual_learner', name: 'Casual Learner (65%/basic)', description: 'Decent knowledge, lazy strategy — the biggest segment',
+    learningAbility: { baseAccuracy: 0.65, accuracyCurve: 'flat', accuracyPerFloorDelta: 0, minAccuracy: 0.55, maxAccuracy: 0.75 },
     readingSpeed: { category: 'normal', speedBonusProbability: 0.15 },
-    strategicSkill: { level: 'optimal', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: true },
-    engagement: { skipProbability: 0.01, aggression: 'aggressive' },
-    sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
-  },
-
-  // Regular player, few runs in — starting to learn both facts and mechanics
-  developing_newbie: {
-    id: 'developing_newbie', name: 'Developing/Newbie (55%/basic)', description: 'A few runs in, still learning both',
-    learningAbility: { baseAccuracy: 0.55, accuracyCurve: 'improving', accuracyPerFloorDelta: 0.008, minAccuracy: 0.40, maxAccuracy: 0.65 },
-    readingSpeed: { category: 'slow', speedBonusProbability: 0.08 },
-    strategicSkill: { level: 'basic', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: false },
-    engagement: { skipProbability: 0.04, aggression: 'passive' },
-    sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
-  },
-
-  // Regular player with some experience in both
-  regular: {
-    id: 'regular', name: 'Regular (58%/competent)', description: 'Typical player 10+ runs in, learning the ropes',
-    learningAbility: { baseAccuracy: 0.58, accuracyCurve: 'improving', accuracyPerFloorDelta: 0.008, minAccuracy: 0.45, maxAccuracy: 0.70 },
-    readingSpeed: { category: 'normal', speedBonusProbability: 0.12 },
-    strategicSkill: { level: 'intermediate', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: false },
+    strategicSkill: { level: 'basic', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: false, chargeRate: 0.30, surgeChargeRate: 0.70 },
     engagement: { skipProbability: 0.03, aggression: 'balanced' },
     sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
   },
 
-  // Practiced player with veteran game knowledge
+  // 10+ runs, learning the ropes. SM-2 has started working. Reads enemy intents sometimes.
+  regular: {
+    id: 'regular', name: 'Regular (62%/intermediate)', description: '10+ runs, learning the ropes, SM-2 kicking in',
+    learningAbility: { baseAccuracy: 0.62, accuracyCurve: 'improving', accuracyPerFloorDelta: 0.008, minAccuracy: 0.50, maxAccuracy: 0.75 },
+    readingSpeed: { category: 'normal', speedBonusProbability: 0.12 },
+    strategicSkill: { level: 'intermediate', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: false, chargeRate: 0.40, surgeChargeRate: 0.90 },
+    engagement: { skipProbability: 0.03, aggression: 'balanced' },
+    sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
+  },
+
+  // Expert roguelite player who just picked up Recall Rogue. Perfect strategy, bad at facts.
+  gamer: {
+    id: 'gamer', name: 'Gamer (55%/optimal)', description: 'STS veteran, new to facts — great strategy, bad accuracy',
+    learningAbility: { baseAccuracy: 0.55, accuracyCurve: 'improving', accuracyPerFloorDelta: 0.010, minAccuracy: 0.40, maxAccuracy: 0.68 },
+    readingSpeed: { category: 'normal', speedBonusProbability: 0.15 },
+    strategicSkill: { level: 'optimal', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: true, chargeRate: 0.80, surgeChargeRate: 1.0 },
+    engagement: { skipProbability: 0.01, aggression: 'aggressive' },
+    sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
+  },
+
+  // 20+ runs, good at both mechanics and facts. SM-2 working for weeks.
   dedicated: {
-    id: 'dedicated', name: 'Dedicated (65%/veteran)', description: '20+ runs, knows mechanics well, decent recall',
-    learningAbility: { baseAccuracy: 0.65, accuracyCurve: 'improving', accuracyPerFloorDelta: 0.005, minAccuracy: 0.50, maxAccuracy: 0.75 },
+    id: 'dedicated', name: 'Dedicated (70%/optimal)', description: '20+ runs, good at both — the committed player',
+    learningAbility: { baseAccuracy: 0.70, accuracyCurve: 'improving', accuracyPerFloorDelta: 0.005, minAccuracy: 0.58, maxAccuracy: 0.80 },
     readingSpeed: { category: 'normal', speedBonusProbability: 0.20 },
-    strategicSkill: { level: 'optimal', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: true },
+    strategicSkill: { level: 'optimal', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: true, chargeRate: 0.85, surgeChargeRate: 1.0 },
     engagement: { skipProbability: 0.02, aggression: 'balanced' },
     sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
   },
 
-  // Well-studied player — best realistic outcome
+  // 50+ runs, the realistic ceiling. Wilson et al. optimal 85% accuracy zone.
   scholar: {
-    id: 'scholar', name: 'Scholar (75%/veteran)', description: '50+ runs, strong knowledge, optimal play — realistic ceiling',
-    learningAbility: { baseAccuracy: 0.75, accuracyCurve: 'flat', accuracyPerFloorDelta: 0.0, minAccuracy: 0.65, maxAccuracy: 0.82 },
+    id: 'scholar', name: 'Scholar (82%/optimal)', description: '50+ runs, mastery — the realistic ceiling',
+    learningAbility: { baseAccuracy: 0.82, accuracyCurve: 'flat', accuracyPerFloorDelta: 0.0, minAccuracy: 0.72, maxAccuracy: 0.90 },
     readingSpeed: { category: 'fast', speedBonusProbability: 0.40 },
-    strategicSkill: { level: 'optimal', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: true },
+    strategicSkill: { level: 'optimal', prioritizeShieldsBeforeAttacks: true, useBuffsBeforeDamage: true, chargeRate: 0.90, surgeChargeRate: 1.0 },
     engagement: { skipProbability: 0.01, aggression: 'aggressive' },
     sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
   },
@@ -716,7 +712,7 @@ function generateFairnessConfigs(ascensionLevels: number[]): SimConfig[] {
     { name: 'Cursed', relics: ['glass_cannon', 'blood_price'] },
   ];
 
-  const fairnessProfiles = ['first_timer', 'new_domain', 'developing_newbie', 'regular', 'dedicated', 'scholar'];
+  const fairnessProfiles = ['first_timer', 'casual_learner', 'regular', 'gamer', 'dedicated', 'scholar'];
   const fairnessModes: Array<'relaxed' | 'normal'> = ['relaxed', 'normal'];
   const configs: SimConfig[] = [];
 
@@ -1262,19 +1258,19 @@ function runAnalysis(accumulator: RunAccumulator, mode: string): Omit<AnalysisOu
       profiles[pid] = m;
     }
 
-    // Fairness ratio: dedicated benefit / developing_newbie benefit
+    // Fairness ratio: dedicated benefit / casual_learner benefit
     const dedicatedM = profiles['dedicated'];
-    const developing_newbieM = profiles['developing_newbie'];
+    const casual_learnerM = profiles['casual_learner'];
     let fairnessRatio = 1.0;
     let flag: string | null = null;
 
-    if (dedicatedM && developing_newbieM) {
+    if (dedicatedM && casual_learnerM) {
       // Compare survival rates as the main benefit metric
       const dedicatedBenefit = dedicatedM.survivalRate;
-      const developing_newbieBenefit = developing_newbieM.survivalRate;
-      fairnessRatio = developing_newbieBenefit > 0 ? dedicatedBenefit / developing_newbieBenefit : 9999;
+      const casual_learnerBenefit = casual_learnerM.survivalRate;
+      fairnessRatio = casual_learnerBenefit > 0 ? dedicatedBenefit / casual_learnerBenefit : 9999;
       if (fairnessRatio > 3.0) flag = 'dedicated_favored';
-      else if (fairnessRatio < 0.33) flag = 'developing_newbie_favored';
+      else if (fairnessRatio < 0.33) flag = 'casual_learner_favored';
     }
 
     skillFairness.push({
@@ -1710,7 +1706,7 @@ interface SweepTargets {
 
 const SWEEP_TARGETS: SweepTargets = {
   survivalTargets: {
-    developing_newbie: [0.05, 0.15],
+    casual_learner: [0.05, 0.15],
     regular: [0.15, 0.30],
     dedicated: [0.35, 0.55],
   },
@@ -1997,7 +1993,7 @@ async function main(): Promise<void> {
     case 'sweep': {
       const maxConfigs = args.sweepMaxConfigs ?? 500;
       const strategy = args.sweepStrategy ?? 'lhs';
-      const sweepProfiles = ['developing_newbie', 'regular', 'dedicated'];
+      const sweepProfiles = ['casual_learner', 'regular', 'dedicated'];
       const DIFFICULTY_MODES: Array<'relaxed' | 'normal'> = ['relaxed', 'normal'];
       const sweepResult = generateSweepConfigs(maxConfigs, strategy, sweepProfiles, ascensionLevels, DIFFICULTY_MODES);
       configs = sweepResult.configs;

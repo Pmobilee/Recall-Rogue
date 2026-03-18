@@ -67,3 +67,10 @@
   line-height: 1.4;
   letter-spacing: 0.5px;
 }
+
+/* ── Playwright / E2E testing: pause all infinite CSS animations ────────────
+   Set data-pw-animations="disabled" on <html> before taking screenshots to
+   prevent infinite @keyframes from blocking Playwright's screenshot capture. */
+[data-pw-animations="disabled"] * {
+  animation-play-state: paused !important;
+}
