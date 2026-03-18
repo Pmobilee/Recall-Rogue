@@ -8,7 +8,7 @@
 
 import type { Page } from 'playwright';
 import type { BotProfile, BotRunStats } from './types.js';
-import { readGameState, readQuizState, getVisibleTestIds } from './state-reader.js';
+import { readGameState, readDetailedState, readQuizState, getVisibleTestIds } from './state-reader.js';
 import { createRng, startRun, selectDomain, playCard, endTurn, answerQuiz, chooseRoom, handleCardReward, handleDelveRetreat, handleRest, handleMystery, handleGenericAction, clickTestId } from './actions.js';
 
 // ---------------------------------------------------------------------------
@@ -32,6 +32,69 @@ const STUCK_THRESHOLD = 50;
 const DOMAINS = ['science', 'history', 'geography', 'literature', 'arts', 'nature'];
 
 // ---------------------------------------------------------------------------
+// Stat helpers
+// ---------------------------------------------------------------------------
+
+function initStats(profile: BotProfile, seed: number): BotRunStats {
+  return {
+    profile: profile.id,
+    seed,
+    result: 'error',
+    finalFloor: 0,
+    finalHP: 0,
+    finalMaxHP: 0,
+    totalTurns: 0,
+    totalCardsPlayed: 0,
+    totalCharges: 0,
+    totalQuickPlays: 0,
+    quizCorrect: 0,
+    quizWrong: 0,
+    durationMs: 0,
+    errors: [],
+    goldEarned: 0,
+    goldSpent: 0,
+    finalGold: 0,
+    relicsEarned: [],
+    finalRelicCount: 0,
+    roomsVisited: [],
+    totalRoomsVisited: 0,
+    segmentsCompleted: 0,
+    encountersWon: 0,
+    encountersLost: 0,
+    totalDamageDealt: 0,
+    totalDamageTaken: 0,
+    avgTurnsPerEncounter: 0,
+    finalDeckSize: 0,
+    cardsAdded: 0,
+    cardsRemoved: 0,
+    maxChainLength: 0,
+    maxCombo: 0,
+    deathFloor: 0,
+    deathEnemy: '',
+    deathHP: 0,
+    screenLog: [],
+  };
+}
+
+function recordRoom(stats: BotRunStats, type: string): void {
+  const existing = stats.roomsVisited.find(r => r.type === type);
+  if (existing) {
+    existing.count++;
+  } else {
+    stats.roomsVisited.push({ type, count: 1 });
+  }
+  stats.totalRoomsVisited++;
+}
+
+function logScreen(stats: BotRunStats, screen: string, startTime: number): void {
+  const entry = { time: Date.now() - startTime, screen };
+  stats.screenLog.push(entry);
+  if (stats.screenLog.length > 50) {
+    stats.screenLog.shift();
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Main bot entry point
 // ---------------------------------------------------------------------------
 
@@ -48,26 +111,17 @@ const DOMAINS = ['science', 'history', 'geography', 'literature', 'arts', 'natur
 export async function runBot(page: Page, profile: BotProfile, seed: number): Promise<BotRunStats> {
   const startTime = Date.now();
   const rng = createRng(seed);
+  const stats = initStats(profile, seed);
 
-  const stats: BotRunStats = {
-    profile: profile.id,
-    seed,
-    result: 'error',
-    finalFloor: 0,
-    finalHP: 0,
-    finalMaxHP: 0,
-    totalTurns: 0,
-    totalCardsPlayed: 0,
-    totalCharges: 0,
-    totalQuickPlays: 0,
-    quizCorrect: 0,
-    quizWrong: 0,
-    relicsEarned: 0,
-    goldEarned: 0,
-    goldSpent: 0,
-    durationMs: 0,
-    errors: [],
-  };
+  // Track state for rich stat collection
+  let prevGold = 0;
+  let prevRelicCount = 0;
+  let prevDeckSize = 0;
+  let prevHp = 0;
+  let prevEnemyHp = 0;
+  let currentEncounterStartTurn = 0;
+  let currentEnemyName = '';
+  let inCombat = false;
 
   try {
     // Navigate to game with dev flags + turbo mode
@@ -83,8 +137,17 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
     } catch {
       // Expected: context destroyed due to navigation
     }
-    // Wait for the reload to complete
+    // Wait for the reload to complete, with retry
     await page.waitForTimeout(3000);
+    let ready = false;
+    for (let retry = 0; retry < 3 && !ready; retry++) {
+      try {
+        const screen = await page.evaluate(() => (window as any).__terraDebug?.()?.currentScreen);
+        if (screen) ready = true;
+      } catch {
+        await page.waitForTimeout(2000);
+      }
+    }
 
     // Dismiss knowledge level popup if visible
     await clickTestId(page, 'knowledge-level-normal', 500)
@@ -121,6 +184,17 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
       await page.waitForTimeout(30);
     }
 
+    // Read initial detailed state for baseline tracking
+    try {
+      const initial = await readDetailedState(page);
+      prevGold = initial.gold;
+      prevHp = initial.hp;
+      prevDeckSize = initial.deckSize;
+      prevRelicCount = initial.relics.length;
+    } catch {
+      // Non-critical
+    }
+
     // Main game loop
     let lastScreen = '';
     let stuckCount = 0;
@@ -147,6 +221,11 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
         continue;
       }
 
+      // Screen transition logging
+      if (state.currentScreen !== lastScreen) {
+        logScreen(stats, state.currentScreen, startTime);
+      }
+
       // Track stats
       const floor = Number.isFinite(state.floor) ? state.floor : 0;
       stats.finalFloor = Math.max(stats.finalFloor, floor);
@@ -156,12 +235,23 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
       // Check for run end
       if (state.isGameOver || state.runResult) {
         stats.result = state.runResult === 'victory' ? 'victory' : 'defeat';
+        // Record death info on defeat
+        if (stats.result === 'defeat') {
+          stats.deathFloor = stats.finalFloor;
+          stats.deathEnemy = currentEnemyName;
+          stats.deathHP = state.playerHP;
+        }
         break;
       }
 
       // Explicit terminal screens
       if (['runEnd', 'runSummary', 'runComplete', 'run_end', 'game_over', 'victory', 'defeat'].includes(state.currentScreen)) {
         stats.result = state.currentScreen === 'victory' ? 'victory' : 'defeat';
+        if (stats.result === 'defeat') {
+          stats.deathFloor = stats.finalFloor;
+          stats.deathEnemy = currentEnemyName;
+          stats.deathHP = state.playerHP;
+        }
         break;
       }
 
@@ -186,8 +276,47 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
 
       // Combat-end transition: enemy is dead, wait for reward screen
       if (state.currentScreen === 'combat' && state.enemyHP <= 0 && state.enemyMaxHP > 0) {
+        // Combat won — record encounter stats
+        if (inCombat) {
+          stats.encountersWon++;
+          const encounterTurns = stats.totalTurns - currentEncounterStartTurn;
+          // Running average: update avgTurnsPerEncounter
+          const total = stats.encountersWon + stats.encountersLost;
+          stats.avgTurnsPerEncounter = total > 1
+            ? (stats.avgTurnsPerEncounter * (total - 1) + encounterTurns) / total
+            : encounterTurns;
+          inCombat = false;
+        }
         await page.waitForTimeout(50);
         continue;
+      }
+
+      // Track combat entry
+      if (state.currentScreen === 'combat' && !inCombat) {
+        inCombat = true;
+        currentEncounterStartTurn = stats.totalTurns;
+        currentEnemyName = state.enemyName;
+        prevEnemyHp = state.enemyHP;
+        recordRoom(stats, 'combat');
+      }
+
+      // Track damage dealt (enemy HP reduction)
+      if (state.currentScreen === 'combat' && prevEnemyHp > 0 && state.enemyHP < prevEnemyHp) {
+        stats.totalDamageDealt += prevEnemyHp - state.enemyHP;
+      }
+      if (state.currentScreen === 'combat') {
+        prevEnemyHp = state.enemyHP;
+      }
+
+      // Track damage taken (player HP reduction)
+      if (state.playerHP > 0 && prevHp > 0 && state.playerHP < prevHp) {
+        stats.totalDamageTaken += prevHp - state.playerHP;
+      }
+      prevHp = state.playerHP;
+
+      // Track combo / chain
+      if (state.comboCount > stats.maxCombo) {
+        stats.maxCombo = state.comboCount;
       }
 
       // Stuck detection
@@ -195,10 +324,8 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
         stuckCount++;
         if (stuckCount >= STUCK_THRESHOLD) {
           const visibleIds = await getVisibleTestIds(page);
-          // Try clicking any visible data-testid button
           const handled = await handleGenericAction(page);
           if (!handled) {
-            // Try navigate to dungeonMap as escape hatch
             await page.evaluate(() => (window as any).__terraPlay?.navigate?.('dungeonMap'));
             await page.waitForTimeout(20);
             const afterEscape = await readGameState(page);
@@ -220,14 +347,19 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
         lastScreen = state.currentScreen;
       }
 
-      // Log every 100 iterations for debugging
-      if (iterations % 100 === 0) {
-        console.log(`    [iter ${iterations}] screen="${state.currentScreen}" hp=${state.playerHP}/${state.playerMaxHP} enemy=${state.enemyHP}/${state.enemyMaxHP} floor=${state.floor} cards=${stats.totalCardsPlayed}`);
-      }
-
       // Dispatch on current screen
       try {
-        await handleScreen(page, profile, state, stats, rng);
+        await handleScreen(page, profile, state, stats, rng, {
+          segmentsCompleted,
+          MAX_SEGMENTS,
+          onSegmentComplete: (n: number) => { segmentsCompleted = n; stats.segmentsCompleted = n; },
+          onEncounterLost: () => {
+            if (inCombat) {
+              stats.encountersLost++;
+              inCombat = false;
+            }
+          },
+        });
       } catch {
         // Context destroyed during action — wait and retry
         await page.waitForTimeout(30);
@@ -242,12 +374,29 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
       stats.errors.push(`Reached max iteration limit (${MAX_ITERATIONS})`);
     }
 
-    // Final relic count
+    // Read final detailed state for economy / deck / relic counts
     try {
-      const finalState = await readGameState(page);
-      stats.relicsEarned = finalState.relicCount;
+      const final = await readDetailedState(page);
+      stats.finalGold = final.gold;
+      stats.finalDeckSize = final.deckSize;
+      stats.finalRelicCount = final.relics.length;
+
+      // Gold earned = any gold we saw above baseline
+      if (final.gold > prevGold) {
+        stats.goldEarned = final.gold - prevGold + stats.goldSpent;
+      }
+
+      // Relics — track IDs earned
+      stats.relicsEarned = final.relics.filter(id => typeof id === 'string' && id.length > 0);
+
+      // Deck growth
+      if (final.deckSize > prevDeckSize) {
+        stats.cardsAdded = final.deckSize - prevDeckSize;
+      } else if (final.deckSize < prevDeckSize) {
+        stats.cardsRemoved = prevDeckSize - final.deckSize;
+      }
     } catch {
-      // Non-critical — ignore
+      // Non-critical
     }
 
   } catch (err: unknown) {
@@ -263,12 +412,20 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
 // Screen dispatcher
 // ---------------------------------------------------------------------------
 
+interface ScreenContext {
+  segmentsCompleted: number;
+  MAX_SEGMENTS: number;
+  onSegmentComplete: (n: number) => void;
+  onEncounterLost: () => void;
+}
+
 async function handleScreen(
   page: Page,
   profile: BotProfile,
   state: ReturnType<typeof readGameState> extends Promise<infer T> ? T : never,
   stats: BotRunStats,
-  rng: () => number
+  rng: () => number,
+  ctx: ScreenContext,
 ): Promise<void> {
   switch (state.currentScreen) {
 
@@ -277,6 +434,9 @@ async function handleScreen(
       // Decide: Quick Play or Charge?
       const shouldCharge = rng() < profile.chargeRate;
       const cardIdx = Math.floor(rng() * 5); // Pick random card slot
+
+      let played = false;
+      let ended = false;
 
       if (shouldCharge) {
         // Charge: answer correctly based on quiz accuracy
@@ -290,10 +450,23 @@ async function handleScreen(
           stats.totalCharges++;
           if (answerCorrectly) stats.quizCorrect++;
           else stats.quizWrong++;
+          played = true;
         } else {
-          // Charge failed (no AP, no card at index) — try end turn
-          const endResult = await page.evaluate(() => (window as any).__terraPlay?.endTurn?.());
-          if (endResult?.ok) stats.totalTurns++;
+          // Try other card indices before giving up
+          for (let i = 0; i < 5 && !played; i++) {
+            if (i === cardIdx) continue;
+            const r = await page.evaluate(
+              ([idx, correct]) => (window as any).__terraPlay?.chargePlayCard?.(idx, correct),
+              [i, answerCorrectly] as [number, boolean],
+            );
+            if (r?.ok) {
+              stats.totalCardsPlayed++;
+              stats.totalCharges++;
+              if (answerCorrectly) stats.quizCorrect++;
+              else stats.quizWrong++;
+              played = true;
+            }
+          }
         }
       } else {
         // Quick Play
@@ -304,12 +477,42 @@ async function handleScreen(
         if (result?.ok) {
           stats.totalCardsPlayed++;
           stats.totalQuickPlays++;
+          played = true;
         } else {
-          // Quick play failed — try end turn
-          const endResult = await page.evaluate(() => (window as any).__terraPlay?.endTurn?.());
-          if (endResult?.ok) stats.totalTurns++;
+          // Try other card indices
+          for (let i = 0; i < 5 && !played; i++) {
+            if (i === cardIdx) continue;
+            const r = await page.evaluate(
+              (idx) => (window as any).__terraPlay?.quickPlayCard?.(idx),
+              i,
+            );
+            if (r?.ok) {
+              stats.totalCardsPlayed++;
+              stats.totalQuickPlays++;
+              played = true;
+            }
+          }
         }
       }
+
+      // If no card played, end turn
+      if (!played) {
+        const endResult = await page.evaluate(() => (window as any).__terraPlay?.endTurn?.());
+        if (endResult?.ok) {
+          stats.totalTurns++;
+          ended = true;
+        }
+      }
+
+      // If still nothing worked, wait for state transition and retry endTurn
+      if (!played && !ended) {
+        await page.waitForTimeout(200);
+        const retryEnd = await page.evaluate(() => (window as any).__terraPlay?.endTurn?.());
+        if (retryEnd?.ok) {
+          stats.totalTurns++;
+        }
+      }
+
       await page.waitForTimeout(5);
       break;
     }
@@ -347,7 +550,6 @@ async function handleScreen(
       `) as string[];
 
       if (mapNodes.length > 0) {
-        // Map nodes found
         // Find the lowest available row
         const rows = new Map<string, string[]>();
         for (const n of mapNodes) {
@@ -366,10 +568,10 @@ async function handleScreen(
           nodeId,
         );
         if (!selectResult?.ok) {
-          // Fallback: direct DOM click
+          // Fallback: direct DOM click from inside browser
           await page.evaluate(`(function() {
             var el = document.querySelector('[data-testid="${pick}"]');
-            if (el && !el.disabled) el.click();
+            if (el) el.click();
           })()`);
         }
         await page.waitForTimeout(50);
@@ -388,13 +590,13 @@ async function handleScreen(
             return result;
           })()
         `) as string[];
-        // All visible nodes checked
 
         // Check if segment is complete (boss node visited/current, no available nodes)
         const bossVisited = allNodeStates.some(n => n.includes('type-boss') && (n.includes('state-current') || n.includes('state-visited')));
         if (bossVisited) {
-          segmentsCompleted++;
-          if (segmentsCompleted >= MAX_SEGMENTS) {
+          const newSegCount = ctx.segmentsCompleted + 1;
+          ctx.onSegmentComplete(newSegCount);
+          if (newSegCount >= ctx.MAX_SEGMENTS) {
             // Run complete — retreat (cash out)
             stats.result = 'victory';
             await page.evaluate(() => (window as any).__terraPlay?.retreat?.());
@@ -431,26 +633,33 @@ async function handleScreen(
     case 'cardReward':
     case 'reward':
     case 'rewardRoom': {
-      // Reward rooms may take time for victory animation — wait for reward UI
-      const rewardIds = await getVisibleTestIds(page);
-      const hasRewardUI = rewardIds.some(id =>
-        id.startsWith('card-reward-') || id.startsWith('reward-') || id.startsWith('relic-option-') ||
-        id === 'btn-skip-reward' || id === 'btn-continue' || id === 'btn-collect'
-      );
-      if (hasRewardUI) {
-        await handleCardReward(page, profile, rng);
+      // Wait for reward UI to appear (turbo mode resolves quickly)
+      await page.waitForTimeout(500);
+
+      const rewarded = await page.evaluate(() => {
+        const play = (window as any).__terraPlay;
+        const r = play && play.acceptReward && play.acceptReward();
+        return r;
+      });
+
+      if (rewarded?.ok) {
+        stats.cardsAdded++;
+        // Track relic if this was a relic reward
+        if (rewarded.relicId) {
+          stats.relicsEarned.push(String(rewarded.relicId));
+        }
       } else {
-        // No reward UI yet — wait for animation, then skip to map
-        await page.waitForTimeout(200);
-        const retryIds = await getVisibleTestIds(page);
-        const hasRetry = retryIds.some(id =>
-          id.startsWith('card-reward-') || id.startsWith('reward-') ||
+        // Check for visible reward UI and handle
+        const rewardIds = await getVisibleTestIds(page);
+        const hasRewardUI = rewardIds.some(id =>
+          id.startsWith('card-reward-') || id.startsWith('reward-') || id.startsWith('relic-option-') ||
           id === 'btn-skip-reward' || id === 'btn-continue' || id === 'btn-collect'
         );
-        if (hasRetry) {
+
+        if (hasRewardUI) {
           await handleCardReward(page, profile, rng);
         } else {
-          // Skip reward and return to map
+          // No reward UI — navigate back to map
           await page.evaluate(() => (window as any).__terraPlay?.navigate?.('dungeonMap'));
         }
       }
@@ -460,9 +669,10 @@ async function handleScreen(
 
     // ── Relic reward ─────────────────────────────────────────────────────────
     case 'relicReward': {
-      // Pick first relic option or skip
       const relicPicked = await page.evaluate(() => (window as any).__terraPlay?.selectRelic?.(0));
-      if (!relicPicked?.ok) {
+      if (relicPicked?.ok) {
+        if (relicPicked.relicId) stats.relicsEarned.push(String(relicPicked.relicId));
+      } else {
         await clickTestId(page, 'relic-option-0', 500)
           || await clickTestId(page, 'btn-collect', 500)
           || await clickTestId(page, 'btn-continue', 500)
@@ -474,6 +684,7 @@ async function handleScreen(
 
     // ── Treasure room ─────────────────────────────────────────────────────────
     case 'treasureRoom': {
+      recordRoom(stats, 'treasure');
       await clickTestId(page, 'btn-collect', 500)
         || await clickTestId(page, 'btn-continue', 500)
         || await clickTestId(page, 'btn-ok', 500)
@@ -496,7 +707,7 @@ async function handleScreen(
     case 'rest':
     case 'rest_site':
     case 'restRoom': {
-      // Try the real rest API first, fallback to clicking buttons
+      recordRoom(stats, 'rest');
       const healed = await page.evaluate(() => (window as any).__terraPlay?.restHeal?.());
       if (!healed?.ok) {
         await clickTestId(page, 'rest-heal', 1000)
@@ -511,6 +722,7 @@ async function handleScreen(
     case 'mystery':
     case 'event':
     case 'mysteryRoom': {
+      recordRoom(stats, 'mystery');
       await handleMystery(page);
       await page.waitForTimeout(10);
       break;
@@ -519,7 +731,7 @@ async function handleScreen(
     // ── Shop ──────────────────────────────────────────────────────────────────
     case 'shop':
     case 'shopRoom': {
-      // Bot does not buy anything for now — just leave
+      recordRoom(stats, 'shop');
       const exited = await page.evaluate(() => (window as any).__terraPlay?.exitRoom?.());
       if (!exited?.ok) {
         await clickTestId(page, 'btn-leave-shop', 500)
@@ -550,7 +762,6 @@ async function handleScreen(
     case 'base': {
       // Quick-try knowledge level popup (no wait if not found)
       await page.locator('[data-testid="knowledge-level-normal"]').click({ timeout: 100 }).catch(() => {});
-      // Try start run
       await page.evaluate(() => (window as any).__terraPlay?.startRun?.());
       await page.waitForTimeout(30);
       break;
@@ -580,7 +791,6 @@ async function handleScreen(
     default: {
       const handled = await handleGenericAction(page);
       if (!handled) {
-        // Try exitRoom as generic escape
         await page.evaluate(() => (window as any).__terraPlay?.exitRoom?.());
       }
       await page.waitForTimeout(20);

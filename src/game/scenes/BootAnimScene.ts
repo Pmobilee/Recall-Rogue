@@ -364,14 +364,14 @@ export default class BootAnimScene extends Phaser.Scene {
 
     // ── Ring configs: decelerating descent with 3D stretch ──
     const ringConfigs = [
-      { delay: 0,    duration: 1400,  yDrift: -100, startScale: 0.08,  angle: 0,    yStretch: 1.50 },
-      { delay: 300,  duration: 1800,  yDrift: -75,  startScale: 0.06,  angle: 1.2,  yStretch: 1.45 },
-      { delay: 700,  duration: 2200,  yDrift: -55,  startScale: 0.05,  angle: -0.8, yStretch: 1.38 },
-      { delay: 1200, duration: 2600,  yDrift: -40,  startScale: 0.04,  angle: 0.6,  yStretch: 1.30 },
-      { delay: 1800, duration: 3000,  yDrift: -28,  startScale: 0.035, angle: -0.4, yStretch: 1.22 },
-      { delay: 2500, duration: 3400,  yDrift: -16,  startScale: 0.03,  angle: 0.3,  yStretch: 1.15 },
-      { delay: 3300, duration: 3800,  yDrift: -8,   startScale: 0.025, angle: -0.2, yStretch: 1.08 },
-      { delay: 4200, duration: 4200,  yDrift: -3,   startScale: 0.02,  angle: 0,    yStretch: 1.03 },
+      { delay: 0,    duration: 1400,  yDrift: -100, startScale: 0.08,  angle: 0,    yStretch: 3.5 },
+      { delay: 150,  duration: 1800,  yDrift: -75,  startScale: 0.06,  angle: 1.2,  yStretch: 3.0 },
+      { delay: 350,  duration: 2200,  yDrift: -55,  startScale: 0.05,  angle: -0.8, yStretch: 2.5 },
+      { delay: 600,  duration: 2600,  yDrift: -40,  startScale: 0.04,  angle: 0.6,  yStretch: 2.1 },
+      { delay: 900,  duration: 3000,  yDrift: -28,  startScale: 0.035, angle: -0.4, yStretch: 1.8 },
+      { delay: 1250, duration: 3400,  yDrift: -16,  startScale: 0.03,  angle: 0.3,  yStretch: 1.5 },
+      { delay: 1650, duration: 3800,  yDrift: -8,   startScale: 0.025, angle: -0.2, yStretch: 1.3 },
+      { delay: 2100, duration: 4200,  yDrift: -3,   startScale: 0.02,  angle: 0,    yStretch: 1.12 },
     ]
 
     const endScaleX = ringCover * 4
@@ -399,16 +399,17 @@ export default class BootAnimScene extends Phaser.Scene {
           duration: 400, ease: 'Sine.easeOut',
         })
 
-        // 3D perspective: Y scales more than X as ring approaches
-        const endScaleY = endScaleX * cfg.yStretch
+        // 3D zoom: ring stretches outward in ALL directions as it passes.
+        // Early rings stretch massively (high-speed flyby), later rings barely.
+        const endScale = endScaleX * cfg.yStretch
         const ease = i < 2 ? 'Expo.easeIn'
           : i < 5 ? 'Cubic.easeIn'
             : 'Quad.easeIn'
 
         this.tweens.add({
           targets: ring,
-          scaleX: endScaleX,
-          scaleY: endScaleY,
+          scaleX: endScale,
+          scaleY: endScale,
           y: offsetY + cfg.yDrift,
           x: offsetX + Phaser.Math.Between(-8, 8),
           angle: cfg.angle,
@@ -418,7 +419,7 @@ export default class BootAnimScene extends Phaser.Scene {
             const img = target as Phaser.GameObjects.Image
             const s = img.scaleX
             if (s > fadeThreshold) {
-              const progress = (s - fadeThreshold) / (endScaleX - fadeThreshold)
+              const progress = (s - fadeThreshold) / (endScale - fadeThreshold)
               img.setAlpha(Math.max(0, 1 - progress * progress))
             }
           },

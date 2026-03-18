@@ -123,6 +123,47 @@ export async function isElementVisible(page: Page, testId: string): Promise<bool
 }
 
 /**
+ * Reads comprehensive game state — relics, gold, deck size, enemy info, floor, HP.
+ * Used for post-action stat collection (combat end, room entry, reward pick, run end).
+ * Uses string-based evaluate to avoid tsx __name decorator injection issues.
+ */
+export async function readDetailedState(page: Page): Promise<{
+  relics: string[];
+  gold: number;
+  deckSize: number;
+  floor: number;
+  hp: number;
+  maxHp: number;
+  enemyName: string;
+  enemyHp: number;
+}> {
+  return page.evaluate(`(() => {
+    var readStore = function(key) {
+      var sym = Symbol.for(key);
+      var store = globalThis[sym];
+      if (!store || typeof store !== 'object') return null;
+      if (typeof store.subscribe !== 'function') return null;
+      var value = null;
+      store.subscribe(function(v) { value = v; })();
+      return value;
+    };
+    var run = readStore('terra:activeRunState');
+    var turn = readStore('terra:activeTurnState');
+    var enemy = turn && turn.enemy;
+    return {
+      relics: (run && run.relics) ? run.relics.map(function(r) { return typeof r === 'string' ? r : (r.id || r); }) : [],
+      gold: (run && (run.currency || run.gold)) || 0,
+      deckSize: (run && run.deck && run.deck.length) || (turn && turn.deck && turn.deck.pool && turn.deck.pool.length) || 0,
+      floor: Number((run && (run.currentFloor || run.floor)) || 0) || 0,
+      hp: (turn && turn.playerState && turn.playerState.hp) || (run && run.playerHp) || 0,
+      maxHp: (turn && turn.playerState && turn.playerState.maxHp) || (run && run.playerMaxHp) || 0,
+      enemyName: (enemy && (enemy.name || (enemy.template && enemy.template.name) || (enemy.template && enemy.template.id))) || '',
+      enemyHp: (enemy && enemy.currentHP) || 0,
+    };
+  })()`) as Promise<{ relics: string[]; gold: number; deckSize: number; floor: number; hp: number; maxHp: number; enemyName: string; enemyHp: number; }>;
+}
+
+/**
  * Returns all currently visible data-testid values from the debug snapshot.
  * Useful for diagnosing stuck states.
  */

@@ -53,9 +53,12 @@ export interface QuizState {
 
 /** Stats collected from a single bot run. */
 export interface BotRunStats {
+  // Run identification
   profile: string;
   seed: number;
   result: 'victory' | 'defeat' | 'error' | 'timeout';
+
+  // Core metrics
   finalFloor: number;
   finalHP: number;
   finalMaxHP: number;
@@ -65,11 +68,46 @@ export interface BotRunStats {
   totalQuickPlays: number;
   quizCorrect: number;
   quizWrong: number;
-  relicsEarned: number;
-  goldEarned: number;
-  goldSpent: number;
   durationMs: number;
   errors: string[];
+
+  // Economy
+  goldEarned: number;
+  goldSpent: number;
+  finalGold: number;
+
+  // Relics
+  relicsEarned: string[];   // IDs of relics picked up during run
+  finalRelicCount: number;
+
+  // Rooms visited
+  roomsVisited: { type: string; count: number }[];
+  totalRoomsVisited: number;
+  segmentsCompleted: number;
+
+  // Combat details
+  encountersWon: number;
+  encountersLost: number;
+  totalDamageDealt: number;
+  totalDamageTaken: number;
+  avgTurnsPerEncounter: number;
+
+  // Deck
+  finalDeckSize: number;
+  cardsAdded: number;
+  cardsRemoved: number;
+
+  // Chain/combo performance
+  maxChainLength: number;
+  maxCombo: number;
+
+  // Death info (if defeat)
+  deathFloor: number;
+  deathEnemy: string;
+  deathHP: number;
+
+  // Screen transition log (last 50)
+  screenLog: Array<{ time: number; screen: string }>;
 }
 
 /** Predefined bot profiles matching the mass-simulate player personas. */

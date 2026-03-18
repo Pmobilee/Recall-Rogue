@@ -73,18 +73,69 @@ const ICONS: Record<BotRunStats['result'], string> = {
   timeout: 'T',
 };
 
+function fmtQuizPct(s: BotRunStats): string {
+  const total = s.quizCorrect + s.quizWrong;
+  if (total === 0) return 'N/A';
+  return `${Math.round((s.quizCorrect / total) * 100)}%`;
+}
+
+function fmtCards(s: BotRunStats): string {
+  return `${s.totalCardsPlayed} (${s.totalCharges}C/${s.totalQuickPlays}Q)`;
+}
+
+function printRunLine(run: number, s: BotRunStats): void {
+  const icon = ICONS[s.result];
+  const hpStr = s.finalMaxHP > 0 ? `${s.finalHP}/${s.finalMaxHP}` : 'N/A';
+  const relics = s.finalRelicCount > 0 ? s.finalRelicCount : s.relicsEarned.length;
+  const gold = s.finalGold > 0 ? s.finalGold : (s.goldEarned - s.goldSpent);
+  const time = `${(s.durationMs / 1000).toFixed(1)}s`;
+  const errSuffix = s.errors.length > 0 ? ` | ERR: ${s.errors[0].slice(0, 70)}` : '';
+
+  let deathInfo = '';
+  if (s.result === 'defeat' && s.deathEnemy) {
+    deathInfo = ` | Died to ${s.deathEnemy}`;
+  }
+
+  console.log(
+    `  [${icon}] Seed ${String(s.seed).padStart(6)}: ${s.result.padEnd(7)}` +
+    ` | Floor ${String(s.finalFloor).padStart(2)}` +
+    ` | HP ${hpStr.padStart(7)}` +
+    ` | ${fmtCards(s).padEnd(14)}` +
+    ` | Quiz ${fmtQuizPct(s).padStart(4)}` +
+    ` | ${relics} relics` +
+    ` | ${gold} gold` +
+    ` | ${time}` +
+    deathInfo +
+    errSuffix
+  );
+}
+
 function summarizeProfile(id: string, pStats: BotRunStats[]): void {
+  const profile = BOT_PROFILES[id];
+  const acc = profile ? `${Math.round(profile.quizAccuracy * 100)}% acc` : '';
+  const charge = profile ? `${Math.round(profile.chargeRate * 100)}% charge` : '';
+
   const wins = pStats.filter((s) => s.result === 'victory').length;
   const errors = pStats.filter((s) => s.result === 'error' || s.result === 'timeout').length;
   const avgFloor = pStats.reduce((acc, s) => acc + s.finalFloor, 0) / pStats.length;
   const avgDuration = pStats.reduce((acc, s) => acc + s.durationMs, 0) / pStats.length;
   const winPct = Math.round((wins / pStats.length) * 100);
+  const totalQuiz = pStats.reduce((acc, s) => acc + s.quizCorrect + s.quizWrong, 0);
+  const totalCorrect = pStats.reduce((acc, s) => acc + s.quizCorrect, 0);
+  const quizPct = totalQuiz > 0 ? Math.round((totalCorrect / totalQuiz) * 100) : 0;
+  const avgRelics = pStats.reduce((acc, s) => acc + (s.finalRelicCount || s.relicsEarned.length), 0) / pStats.length;
+  const avgGold = pStats.reduce((acc, s) => acc + s.finalGold, 0) / pStats.length;
+  const avgCards = pStats.reduce((acc, s) => acc + s.totalCardsPlayed, 0) / pStats.length;
 
   console.log(
-    `  Summary: ${wins}/${pStats.length} wins (${winPct}%) ` +
-    `| Avg floor: ${avgFloor.toFixed(1)} ` +
-    `| Avg time: ${(avgDuration / 1000).toFixed(1)}s ` +
-    `| Errors: ${errors}`
+    `  Summary [${acc}, ${charge}]: ${wins}/${pStats.length} wins (${winPct}%)` +
+    ` | Avg floor: ${avgFloor.toFixed(1)}` +
+    ` | Quiz: ${quizPct}%` +
+    ` | Cards: ${avgCards.toFixed(0)}` +
+    ` | Relics: ${avgRelics.toFixed(1)}` +
+    ` | Gold: ${avgGold.toFixed(0)}` +
+    ` | Time: ${(avgDuration / 1000).toFixed(1)}s` +
+    ` | Errors: ${errors}`
   );
 }
 
@@ -95,14 +146,14 @@ function summarizeProfile(id: string, pStats: BotRunStats[]): void {
 async function main(): Promise<void> {
   const { profiles, runsPerProfile, headless, outputPath } = parseArgs();
 
-  console.log(`\n${'='.repeat(62)}`);
+  console.log(`\n${'='.repeat(72)}`);
   console.log(`  RECALL ROGUE — LIVE GAME BOT`);
-  console.log(`${'='.repeat(62)}`);
+  console.log(`${'='.repeat(72)}`);
   console.log(`  Profiles  : ${profiles.join(', ')}`);
   console.log(`  Runs each : ${runsPerProfile}`);
   console.log(`  Headless  : ${headless}`);
   console.log(`  Total runs: ${profiles.length * runsPerProfile}`);
-  console.log(`${'='.repeat(62)}\n`);
+  console.log(`${'='.repeat(72)}\n`);
 
   // Verify dev server is reachable before launching browsers
   try {
@@ -133,7 +184,7 @@ async function main(): Promise<void> {
         continue;
       }
 
-      console.log(`\n--- ${profile.name} [${profile.id}] (accuracy: ${Math.round(profile.quizAccuracy * 100)}%, strategy: ${profile.strategy}) ---`);
+      console.log(`\n--- ${profile.name} [${profile.id}] (${Math.round(profile.quizAccuracy * 100)}% acc, ${Math.round(profile.chargeRate * 100)}% charge) ---`);
       const profileStats: BotRunStats[] = [];
 
       for (let run = 0; run < runsPerProfile; run++) {
@@ -165,11 +216,30 @@ async function main(): Promise<void> {
             totalQuickPlays: 0,
             quizCorrect: 0,
             quizWrong: 0,
-            relicsEarned: 0,
-            goldEarned: 0,
-            goldSpent: 0,
             durationMs: 0,
             errors: [err instanceof Error ? err.message : String(err)],
+            goldEarned: 0,
+            goldSpent: 0,
+            finalGold: 0,
+            relicsEarned: [],
+            finalRelicCount: 0,
+            roomsVisited: [],
+            totalRoomsVisited: 0,
+            segmentsCompleted: 0,
+            encountersWon: 0,
+            encountersLost: 0,
+            totalDamageDealt: 0,
+            totalDamageTaken: 0,
+            avgTurnsPerEncounter: 0,
+            finalDeckSize: 0,
+            cardsAdded: 0,
+            cardsRemoved: 0,
+            maxChainLength: 0,
+            maxCombo: 0,
+            deathFloor: 0,
+            deathEnemy: '',
+            deathHP: 0,
+            screenLog: [],
           };
         }
 
@@ -177,18 +247,7 @@ async function main(): Promise<void> {
         profileStats.push(botStats);
         allStats.push(botStats);
 
-        const icon = ICONS[botStats.result];
-        const errSuffix = botStats.errors.length > 0 ? ` | ERR: ${botStats.errors[0].slice(0, 80)}` : '';
-        const hpStr = botStats.finalMaxHP > 0 ? `${botStats.finalHP}/${botStats.finalMaxHP}` : 'N/A';
-        console.log(
-          `  [${icon}] Run ${String(run + 1).padStart(2)}: ${botStats.result.padEnd(7)} ` +
-          `| Floor ${String(botStats.finalFloor).padStart(2)} ` +
-          `| HP ${hpStr.padStart(7)} ` +
-          `| Cards ${String(botStats.totalCardsPlayed).padStart(3)} ` +
-          `| Quiz ${botStats.quizCorrect}/${botStats.quizCorrect + botStats.quizWrong} ` +
-          `| ${(botStats.durationMs / 1000).toFixed(1)}s` +
-          errSuffix
-        );
+        printRunLine(run + 1, botStats);
       }
 
       summarizeProfile(profileId, profileStats);
@@ -198,11 +257,14 @@ async function main(): Promise<void> {
   }
 
   // Grand summary table
-  console.log(`\n${'='.repeat(62)}`);
+  console.log(`\n${'='.repeat(72)}`);
   console.log(`  GRAND SUMMARY`);
-  console.log(`${'='.repeat(62)}`);
-  console.log(`  ${'Profile'.padEnd(18)} ${'Win%'.padStart(5)} ${'Floor'.padStart(6)} ${'Cards'.padStart(6)} ${'Quiz%'.padStart(6)} ${'Errs'.padStart(5)}`);
-  console.log(`  ${'-'.repeat(50)}`);
+  console.log(`${'='.repeat(72)}`);
+  console.log(
+    `  ${'Profile'.padEnd(18)} ${'Win%'.padStart(5)} ${'Floor'.padStart(6)} ${'HP'.padStart(6)} ` +
+    `${'Cards'.padStart(6)} ${'Quiz%'.padStart(6)} ${'Chrg%'.padStart(6)} ${'Relics'.padStart(7)} ${'Gold'.padStart(5)} ${'Errs'.padStart(5)} ${'Time'.padStart(6)}`
+  );
+  console.log(`  ${'-'.repeat(70)}`);
 
   for (const profileId of profiles) {
     const pStats = allStats.filter((s) => s.profile === profileId);
@@ -211,18 +273,27 @@ async function main(): Promise<void> {
     const wins = pStats.filter((s) => s.result === 'victory').length;
     const errors = pStats.filter((s) => s.result === 'error' || s.result === 'timeout').length;
     const avgFloor = pStats.reduce((acc, s) => acc + s.finalFloor, 0) / pStats.length;
+    const avgHp = pStats.reduce((acc, s) => acc + s.finalHP, 0) / pStats.length;
     const avgCards = pStats.reduce((acc, s) => acc + s.totalCardsPlayed, 0) / pStats.length;
     const totalQuiz = pStats.reduce((acc, s) => acc + s.quizCorrect + s.quizWrong, 0);
     const totalCorrect = pStats.reduce((acc, s) => acc + s.quizCorrect, 0);
     const quizPct = totalQuiz > 0 ? Math.round((totalCorrect / totalQuiz) * 100) : 0;
+    const totalCards = pStats.reduce((acc, s) => acc + s.totalCardsPlayed, 0);
+    const totalCharges = pStats.reduce((acc, s) => acc + s.totalCharges, 0);
+    const chargePct = totalCards > 0 ? Math.round((totalCharges / totalCards) * 100) : 0;
+    const avgRelics = pStats.reduce((acc, s) => acc + (s.finalRelicCount || s.relicsEarned.length), 0) / pStats.length;
+    const avgGold = pStats.reduce((acc, s) => acc + s.finalGold, 0) / pStats.length;
+    const avgDuration = pStats.reduce((acc, s) => acc + s.durationMs, 0) / pStats.length;
     const winPct = Math.round((wins / pStats.length) * 100);
 
     console.log(
       `  ${profileId.padEnd(18)} ${`${winPct}%`.padStart(5)} ${avgFloor.toFixed(1).padStart(6)} ` +
-      `${avgCards.toFixed(0).padStart(6)} ${`${quizPct}%`.padStart(6)} ${String(errors).padStart(5)}`
+      `${avgHp.toFixed(0).padStart(6)} ${avgCards.toFixed(0).padStart(6)} ${`${quizPct}%`.padStart(6)} ` +
+      `${`${chargePct}%`.padStart(6)} ${avgRelics.toFixed(1).padStart(7)} ${avgGold.toFixed(0).padStart(5)} ` +
+      `${String(errors).padStart(5)} ${`${(avgDuration / 1000).toFixed(1)}s`.padStart(6)}`
     );
   }
-  console.log(`${'='.repeat(62)}\n`);
+  console.log(`${'='.repeat(72)}\n`);
 
   // Write results to file if requested
   if (outputPath) {

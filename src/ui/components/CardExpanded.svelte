@@ -131,8 +131,6 @@
     if (nextElapsed >= timerTotalMs) {
       elapsed = timerTotalMs
       timerExpired = true
-      answersDisabled = true
-      onskip()
       return
     }
     if ((nextElapsed - lastTimerUpdateMs) >= TIMER_UPDATE_INTERVAL_MS) {
@@ -320,7 +318,7 @@
     <div class="mastery-trial-header">MASTERY TRIAL</div>
   {/if}
 
-  <div class="card-header" style="background: {domainColor};">
+  <div class="card-header">
     <span class="header-domain">
       <img class="header-domain-icon" src={domainIconPath} alt={`${domainName} icon`} />
       {domainName}
@@ -342,7 +340,10 @@
     </span>
   </div>
 
-  <div class="card-effect-desc">{effectDescription}</div>
+  <div class="card-effect-desc">
+    <span class="effect-value">{effectValue}</span>
+    <span class="effect-label">{EFFECT_DESCRIPTIONS[card.cardType].replace('N', '').trim()}</span>
+  </div>
   <div class="expanded-desc-parts">
     {#each getCardDescriptionParts(card) as part}
       {#if part.type === 'number'}
@@ -495,7 +496,7 @@
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-    padding: 16px;
+    padding: 12px 16px;
     /* Layout overrides */
     overflow-y: auto;
     overflow-x: hidden;
@@ -505,6 +506,13 @@
     max-height: none;
     /* Animation: slide from left */
     animation: slide-from-left 200ms ease-out;
+    /* Enhanced dark background for landscape quiz panel */
+    background:
+      linear-gradient(180deg, rgba(12, 16, 28, 0.98) 0%, rgba(8, 11, 20, 0.99) 100%),
+      var(--card-frame-image) center / cover no-repeat,
+      #0a0e1a;
+    border-right: 1px solid rgba(100, 110, 130, 0.2);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.02);
   }
 
   @keyframes slide-from-left {
@@ -537,7 +545,7 @@
     min-width: 0;
   }
 
-  /* AR-76: Keyboard shortcut badge on answer buttons */
+  /* AR-76: Keyboard shortcut badge on answer buttons — gold-toned game style */
   .kbd-hint {
     display: inline-flex;
     align-items: center;
@@ -546,13 +554,12 @@
     height: 20px;
     min-width: 20px;
     border-radius: 4px;
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 11px;
-    font-family: 'Courier New', monospace;
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.6);
-    margin-right: 8px;
+    background: rgba(200, 180, 120, 0.2);
+    border: 1px solid rgba(200, 180, 120, 0.4);
+    font-size: 10px;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    color: #c8b478;
+    margin-right: 10px;
     flex-shrink: 0;
     line-height: 1;
   }
@@ -591,38 +598,42 @@
     text-align: center;
   }
 
+  /* ── Domain header: subtle gold text, no colored background bar ── */
   .card-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: calc(6px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
-    min-height: calc(32px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1)) calc(4px * var(--layout-scale, 1));
+    min-height: calc(24px * var(--layout-scale, 1));
     box-sizing: border-box;
   }
 
   .header-domain {
-    font-size: calc(14px * var(--layout-scale, 1));
-    font-weight: 600;
-    color: white;
+    font-size: calc(9px * var(--layout-scale, 1));
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    color: #c8b478;
     display: inline-flex;
     align-items: center;
     gap: calc(6px * var(--layout-scale, 1));
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
   }
 
   .header-domain-icon {
-    width: calc(16px * var(--layout-scale, 1));
-    height: calc(16px * var(--layout-scale, 1));
+    width: calc(14px * var(--layout-scale, 1));
+    height: calc(14px * var(--layout-scale, 1));
     object-fit: contain;
     image-rendering: pixelated;
   }
 
   .header-icon {
-    font-size: calc(16px * var(--layout-scale, 1));
+    font-size: calc(14px * var(--layout-scale, 1));
     display: inline-flex;
-    width: calc(18px * var(--layout-scale, 1));
-    height: calc(18px * var(--layout-scale, 1));
+    width: calc(16px * var(--layout-scale, 1));
+    height: calc(16px * var(--layout-scale, 1));
     align-items: center;
     justify-content: center;
+    opacity: 0.7;
   }
 
   .header-type-icon {
@@ -634,27 +645,45 @@
   }
 
   .tier-stars {
-    font-size: calc(11px * var(--layout-scale, 1));
-    margin-left: calc(6px * var(--layout-scale, 1));
-    color: #f8f8f8;
+    font-size: calc(9px * var(--layout-scale, 1));
+    margin-left: calc(4px * var(--layout-scale, 1));
+    color: #d4af37;
   }
 
+  /* ── Card effect: number in amber, label lighter ── */
   .card-effect-desc {
-    font-size: calc(12px * var(--text-scale, 1));
-    color: #94a3b8;
-    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1)) 0;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-size: calc(9px * var(--text-scale, 1));
+    padding: 0 calc(12px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1));
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
   }
 
+  .effect-value {
+    color: #f59e0b;
+    font-weight: 900;
+    font-size: calc(11px * var(--text-scale, 1));
+  }
+
+  .effect-label {
+    color: #7c8fa8;
+    font-size: calc(8px * var(--text-scale, 1));
+  }
+
+  /* ── Question text: pixel font, readable size ── */
   .card-question {
-    font-size: calc(16px * var(--text-scale, 1));
-    color: #f8fafc;
-    line-height: 1.35;
-    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #e8edf5;
+    line-height: 1.6;
+    padding: calc(6px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
   }
 
   .first-letter-hint {
     margin: 0 calc(12px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
-    font-size: calc(12px * var(--text-scale, 1));
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-size: calc(10px * var(--text-scale, 1));
     color: #facc15;
   }
 
@@ -664,30 +693,45 @@
     padding: 0 calc(12px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
   }
 
+  /* ── Answer buttons: dark gradient with gold hover ── */
   .answer-btn {
     min-height: calc(52px * var(--layout-scale, 1));
-    border: 1px solid #334155;
-    border-radius: 10px;
-    background: #0f172a;
+    background: linear-gradient(180deg, rgba(30, 40, 60, 0.95) 0%, rgba(20, 28, 45, 0.98) 100%);
+    border: 1.5px solid rgba(150, 160, 180, 0.3);
+    border-radius: 6px;
     color: #e2e8f0;
-    font-size: calc(14px * var(--text-scale, 1));
-    padding: calc(10px * var(--layout-scale, 1));
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-size: calc(9px * var(--text-scale, 1));
+    line-height: 1.5;
+    padding: calc(12px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
     text-align: left;
+    transition: all 150ms ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  .answer-btn:hover:not(:disabled) {
+    background: linear-gradient(180deg, rgba(40, 55, 80, 0.95) 0%, rgba(30, 42, 65, 0.98) 100%);
+    border-color: rgba(200, 180, 120, 0.5);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   }
 
   .answer-btn.answer-correct {
-    border-color: #16a34a;
-    background: #052e16;
+    border-color: rgba(34, 197, 94, 0.7);
+    background: linear-gradient(180deg, rgba(5, 46, 22, 0.97) 0%, rgba(3, 32, 14, 0.99) 100%);
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.2);
   }
 
   .answer-btn.answer-wrong {
-    border-color: #dc2626;
-    background: #3f1217;
+    border-color: rgba(220, 38, 38, 0.7);
+    background: linear-gradient(180deg, rgba(63, 18, 23, 0.97) 0%, rgba(45, 12, 16, 0.99) 100%);
   }
 
   .answer-btn.answer-reveal-correct {
-    border-color: #eab308;
-    box-shadow: inset 0 0 0 1px rgba(234, 179, 8, 0.8);
+    border-color: rgba(234, 179, 8, 0.8);
+    box-shadow: 0 0 10px rgba(234, 179, 8, 0.2), inset 0 0 0 1px rgba(234, 179, 8, 0.4);
   }
 
   .answer-btn.answer-eliminated {
@@ -701,18 +745,20 @@
     top: calc(40px * var(--layout-scale, 1));
     background: #2563eb;
     color: #fff;
-    font-size: calc(10px * var(--text-scale, 1));
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-size: calc(9px * var(--text-scale, 1));
     font-weight: 700;
     border-radius: 8px;
     padding: calc(4px * var(--layout-scale, 1)) calc(7px * var(--layout-scale, 1));
   }
 
+  /* ── Timer bar: blue gradient ── */
   .timer-bar-container {
     position: relative;
     width: 100%;
-    height: calc(8px * var(--layout-scale, 1));
-    background: #374151;
-    border-radius: 4px;
+    height: 4px;
+    background: rgba(30, 40, 60, 0.6);
+    border-radius: 2px;
     overflow: hidden;
     margin-top: calc(8px * var(--layout-scale, 1));
   }
@@ -721,7 +767,7 @@
     height: 100%;
     transform-origin: left;
     transform: scaleX(var(--fraction));
-    border-radius: 4px;
+    border-radius: 2px;
     will-change: transform;
     transition: transform 100ms linear, background 500ms ease;
   }
@@ -730,9 +776,9 @@
     position: absolute;
     right: calc(8px * var(--layout-scale, 1));
     top: calc(-18px * var(--layout-scale, 1));
-    font-size: calc(11px * var(--text-scale, 1));
-    font-weight: 600;
-    color: #e2e8f0;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-size: calc(10px * var(--text-scale, 1));
+    color: #94a3b8;
   }
 
   .action-row {
@@ -743,16 +789,25 @@
   }
 
   .action-btn {
-    min-height: 48px;
-    border: none;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: calc(14px * var(--text-scale, 1));
+    min-height: 40px;
+    border-radius: 6px;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-size: calc(9px * var(--text-scale, 1));
+    cursor: pointer;
+    transition: all 150ms ease;
   }
 
+  /* ── Hint button: dark blue-toned game style ── */
   .hint-btn {
-    background: #1d4ed8;
-    color: #fff;
+    background: linear-gradient(180deg, rgba(40, 50, 70, 0.9), rgba(30, 38, 55, 0.95));
+    border: 1px solid rgba(100, 130, 200, 0.3);
+    color: #8ba4d0;
+    padding: 10px 20px;
+  }
+
+  .hint-btn:hover:not(:disabled) {
+    border-color: rgba(100, 130, 200, 0.6);
+    background: linear-gradient(180deg, rgba(50, 60, 85, 0.9), rgba(38, 48, 68, 0.95));
   }
 
   .hint-btn.hint-highlight {
@@ -766,7 +821,8 @@
   .combo-indicator {
     text-align: center;
     color: #facc15;
-    font-size: calc(12px * var(--layout-scale, 1));
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-size: calc(10px * var(--layout-scale, 1));
     padding: 0 0 calc(10px * var(--layout-scale, 1));
   }
 
@@ -779,11 +835,19 @@
 
   .hint-item {
     min-height: calc(40px * var(--layout-scale, 1));
-    border: 1px solid #4b5563;
-    border-radius: 8px;
-    background: #111827;
-    color: #f8fafc;
-    font-size: calc(11px * var(--layout-scale, 1));
+    border: 1px solid rgba(100, 130, 200, 0.25);
+    border-radius: 6px;
+    background: linear-gradient(180deg, rgba(30, 38, 55, 0.9), rgba(20, 28, 45, 0.95));
+    color: #8ba4d0;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-size: calc(8px * var(--layout-scale, 1));
+    cursor: pointer;
+    transition: all 150ms ease;
+  }
+
+  .hint-item:hover {
+    border-color: rgba(100, 130, 200, 0.5);
+    background: linear-gradient(180deg, rgba(40, 50, 72, 0.9), rgba(28, 38, 60, 0.95));
   }
 
   .question-image-container {
