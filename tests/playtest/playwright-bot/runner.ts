@@ -40,6 +40,7 @@ import type { BotRunStats } from './types.js';
 function parseArgs(): {
   profiles: string[];
   runsPerProfile: number;
+  parallel: number;
   headless: boolean;
   outputPath: string | null;
 } {
@@ -56,10 +57,11 @@ function parseArgs(): {
   const runAll = has('--all');
   const profiles = runAll ? Object.keys(BOT_PROFILES) : [profileId];
   const runsPerProfile = parseInt(get('--runs') ?? '5', 10);
+  const parallel = parseInt(get('--parallel') ?? '5', 10);
   const headless = !has('--headed');
   const outputPath = get('--output');
 
-  return { profiles, runsPerProfile, headless, outputPath };
+  return { profiles, runsPerProfile, parallel, headless, outputPath };
 }
 
 // ---------------------------------------------------------------------------
@@ -144,13 +146,14 @@ function summarizeProfile(id: string, pStats: BotRunStats[]): void {
 // ---------------------------------------------------------------------------
 
 async function main(): Promise<void> {
-  const { profiles, runsPerProfile, headless, outputPath } = parseArgs();
+  const { profiles, runsPerProfile, parallel, headless, outputPath } = parseArgs();
 
   console.log(`\n${'='.repeat(72)}`);
   console.log(`  RECALL ROGUE — LIVE GAME BOT`);
   console.log(`${'='.repeat(72)}`);
   console.log(`  Profiles  : ${profiles.join(', ')}`);
   console.log(`  Runs each : ${runsPerProfile}`);
+  console.log(`  Parallel  : ${parallel}`);
   console.log(`  Headless  : ${headless}`);
   console.log(`  Total runs: ${profiles.length * runsPerProfile}`);
   console.log(`${'='.repeat(72)}\n`);
@@ -187,16 +190,13 @@ async function main(): Promise<void> {
       console.log(`\n--- ${profile.name} [${profile.id}] (${Math.round(profile.quizAccuracy * 100)}% acc, ${Math.round(profile.chargeRate * 100)}% charge) ---`);
       const profileStats: BotRunStats[] = [];
 
-      for (let run = 0; run < runsPerProfile; run++) {
-        // Give each run a unique seed derived from profile + run index
-        const seed = (run + 1) * 7919 + profileId.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
-
+      // Helper to run a single game in its own context
+      async function runOne(run: number): Promise<BotRunStats> {
+        const seed = (run + 1) * 7919 + profileId.split('').reduce((acc: number, c: string) => acc + c.charCodeAt(0), 0);
         const context = await browser.newContext({
-          viewport: { width: 390, height: 844 }, // iPhone 14 — matches target device
+          viewport: { width: 390, height: 844 },
         });
         const page = await context.newPage();
-
-        // Suppress noisy console output from the game during bot runs
         page.on('console', () => { /* suppress */ });
 
         let botStats: BotRunStats;
@@ -204,50 +204,37 @@ async function main(): Promise<void> {
           botStats = await runBot(page, profile, seed);
         } catch (err: unknown) {
           botStats = {
-            profile: profile.id,
-            seed,
-            result: 'error',
-            finalFloor: 0,
-            finalHP: 0,
-            finalMaxHP: 0,
-            totalTurns: 0,
-            totalCardsPlayed: 0,
-            totalCharges: 0,
-            totalQuickPlays: 0,
-            quizCorrect: 0,
-            quizWrong: 0,
-            durationMs: 0,
+            profile: profile.id, seed, result: 'error',
+            finalFloor: 0, finalHP: 0, finalMaxHP: 0,
+            totalTurns: 0, totalCardsPlayed: 0, totalCharges: 0, totalQuickPlays: 0,
+            quizCorrect: 0, quizWrong: 0, durationMs: 0,
             errors: [err instanceof Error ? err.message : String(err)],
-            goldEarned: 0,
-            goldSpent: 0,
-            finalGold: 0,
-            relicsEarned: [],
-            finalRelicCount: 0,
-            roomsVisited: [],
-            totalRoomsVisited: 0,
-            segmentsCompleted: 0,
-            encountersWon: 0,
-            encountersLost: 0,
-            totalDamageDealt: 0,
-            totalDamageTaken: 0,
-            avgTurnsPerEncounter: 0,
-            finalDeckSize: 0,
-            cardsAdded: 0,
-            cardsRemoved: 0,
-            maxChainLength: 0,
-            maxCombo: 0,
-            deathFloor: 0,
-            deathEnemy: '',
-            deathHP: 0,
-            screenLog: [],
+            goldEarned: 0, goldSpent: 0, finalGold: 0,
+            relicsEarned: [], finalRelicCount: 0,
+            roomsVisited: [], totalRoomsVisited: 0, segmentsCompleted: 0,
+            encountersWon: 0, encountersLost: 0,
+            totalDamageDealt: 0, totalDamageTaken: 0, avgTurnsPerEncounter: 0,
+            finalDeckSize: 0, cardsAdded: 0, cardsRemoved: 0,
+            maxChainLength: 0, maxCombo: 0,
+            deathFloor: 0, deathEnemy: '', deathHP: 0, screenLog: [],
           };
         }
-
         await context.close();
-        profileStats.push(botStats);
-        allStats.push(botStats);
+        return botStats;
+      }
 
-        printRunLine(run + 1, botStats);
+      // Run in parallel batches
+      for (let batch = 0; batch < runsPerProfile; batch += parallel) {
+        const batchSize = Math.min(parallel, runsPerProfile - batch);
+        const promises = Array.from({ length: batchSize }, (_, i) => runOne(batch + i));
+        const batchResults = await Promise.all(promises);
+
+        for (let i = 0; i < batchResults.length; i++) {
+          const botStats = batchResults[i];
+          profileStats.push(botStats);
+          allStats.push(botStats);
+          printRunLine(batch + i + 1, botStats);
+        }
       }
 
       summarizeProfile(profileId, profileStats);

@@ -15,8 +15,8 @@ import { createRng, startRun, selectDomain, playCard, endTurn, answerQuiz, choos
 // Constants
 // ---------------------------------------------------------------------------
 
-/** Maximum duration for a single run (10 minutes). */
-const RUN_TIMEOUT_MS = 600_000;
+/** Maximum duration for a single run (90s — successful runs take 15-30s). */
+const RUN_TIMEOUT_MS = 90_000;
 
 /** Max loop iterations to prevent infinite loops. */
 const MAX_ITERATIONS = 5_000;
@@ -124,35 +124,22 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
   let inCombat = false;
 
   try {
-    // Navigate to game with dev flags + turbo mode
-    await page.goto('http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial&turbo=true', {
+    // Step 1: Quick navigate to set localStorage (marks onboarding complete)
+    await page.goto('http://localhost:5173', { waitUntil: 'domcontentloaded', timeout: 10_000 });
+    await page.evaluate(() => {
+      localStorage.setItem('card:onboardingState', JSON.stringify({
+        hasCompletedOnboarding: true, hasSeenCardTapTooltip: true,
+        hasSeenCastTooltip: true, hasSeenSurgeTooltip: true, hasSeenChargeTooltip: true,
+      }));
+      localStorage.setItem('card:knowledgeLevelSelected', 'true');
+    });
+
+    // Step 2: Fresh navigate with turbo mode — no reload needed!
+    await page.goto('http://localhost:5173?skipOnboarding=true&turbo=true', {
       waitUntil: 'networkidle',
       timeout: 15_000,
     });
     await page.waitForTimeout(2000);
-
-    // Apply preset — this triggers a page reload
-    try {
-      await page.evaluate(() => (window as any).__terraPlay?.resetToPreset?.('post_tutorial'));
-    } catch {
-      // Expected: context destroyed due to navigation
-    }
-    // Wait for the reload to complete, with retry
-    await page.waitForTimeout(3000);
-    let ready = false;
-    for (let retry = 0; retry < 3 && !ready; retry++) {
-      try {
-        const screen = await page.evaluate(() => (window as any).__terraDebug?.()?.currentScreen);
-        if (screen) ready = true;
-      } catch {
-        await page.waitForTimeout(2000);
-      }
-    }
-
-    // Dismiss knowledge level popup if visible
-    await clickTestId(page, 'knowledge-level-normal', 500)
-      || await clickTestId(page, 'knowledge-level-casual', 500);
-    await page.waitForTimeout(20);
 
     // Start the run via API
     const startResult = await page.evaluate(() => (window as any).__terraPlay?.startRun?.());
@@ -208,7 +195,7 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
       // Timeout guard
       if (Date.now() - startTime > RUN_TIMEOUT_MS) {
         stats.result = 'timeout';
-        stats.errors.push('Run exceeded 5-minute timeout');
+        stats.errors.push('Run exceeded 90s timeout');
         break;
       }
 
@@ -550,6 +537,7 @@ async function handleScreen(
       `) as string[];
 
       if (mapNodes.length > 0) {
+        console.log(`    [MAP] ${mapNodes.length} available: ${mapNodes.slice(0,3).join(', ')}`);
         // Find the lowest available row
         const rows = new Map<string, string[]>();
         for (const n of mapNodes) {
@@ -568,6 +556,7 @@ async function handleScreen(
           nodeId,
         );
         if (!selectResult?.ok) {
+          console.log(`    [MAP] selectMapNode(${nodeId}) failed: ${selectResult?.message}`);
           // Fallback: direct DOM click from inside browser
           await page.evaluate(`(function() {
             var el = document.querySelector('[data-testid="${pick}"]');
