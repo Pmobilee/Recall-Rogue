@@ -121,6 +121,9 @@
       decoding="async"
     />
 
+    <!-- AR-95: Left decorative side panel (flanks center campsite column) -->
+    <div class="hub-side-panel hub-side-left" aria-hidden="true"></div>
+
     <!-- Center column: portrait 9:16 hotspot container (transparent — wide bg shows through) -->
     <div class="hub-center">
       <CampHudOverlay {streak} {dustBalance} {hasActiveRunBanner} />
@@ -288,6 +291,9 @@
         <button class="replay-boot-btn" onclick={onReplayBootAnim}>Intro</button>
       {/if}
     </div>
+
+    <!-- AR-95: Right decorative side panel (flanks center campsite column) -->
+    <div class="hub-side-panel hub-side-right" aria-hidden="true"></div>
   </div>
 {:else}
   <!-- ═══ PORTRAIT LAYOUT — PIXEL-IDENTICAL TO PRE-PORT ════════════════════ -->
@@ -472,11 +478,15 @@
 <style>
   /* ═══ LANDSCAPE LAYOUT ══════════════════════════════════════════════════════ */
 
+  /* AR-95: Landscape hub — fixed fullscreen with flex row layout for side panels */
   .hub-landscape {
     position: fixed;
     inset: 0;
     background: #0f0f23;
     overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
   }
 
   .camp-bg-wide {
@@ -489,12 +499,28 @@
     pointer-events: none;
   }
 
+  /* AR-95: Decorative side panels — dark gradient flanking the center campsite */
+  .hub-side-panel {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .hub-side-left {
+    background: linear-gradient(to right, rgba(10, 10, 26, 0.6), transparent);
+  }
+
+  .hub-side-right {
+    background: linear-gradient(to left, rgba(10, 10, 26, 0.6), transparent);
+  }
+
   .hub-center {
     /* Portrait 9:16 aspect ratio, fills full viewport height — transparent over wide bg */
     aspect-ratio: 9 / 16;
     height: 100%;
     position: relative;
-    margin: 0 auto;
+    flex-shrink: 0;
     z-index: 1;
   }
 

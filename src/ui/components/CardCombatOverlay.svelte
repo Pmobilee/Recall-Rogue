@@ -417,6 +417,13 @@
       : null,
   )
 
+  /** AR-95: True only when the quiz panel is actually showing (Charge play with quiz data).
+   *  Distinct from cardPlayStage === 'committed' which is also briefly true during Quick Play
+   *  animations (no quiz shown). Used to dim the card hand correctly. */
+  let isQuizPanelVisible = $derived(
+    cardPlayStage === 'committed' && committedQuizData !== null && committedCard !== null,
+  )
+
   let committedPresentation = $derived(
     committedCard
       ? applyAscensionQuestionPresentation(
@@ -1453,7 +1460,7 @@
       onchargeplay={handleChargeDirect}
       {isSurgeActive}
       {focusDiscount}
-      quizVisible={cardPlayStage === 'committed'}
+      quizVisible={isQuizPanelVisible}
     />
 
     {#if showEndTurn}
@@ -2322,11 +2329,11 @@
     gap: 4px;
   }
 
-  /* AP orb: left edge of hand strip, above hand area */
+  /* AP orb: left edge, stacked above draw/discard piles to avoid overlap */
   .layout-landscape :global(.ap-orb),
   .layout-landscape .ap-orb {
     position: fixed;
-    bottom: 28vh;
+    bottom: calc(27vh + 110px);
     left: 1.5%;
     right: auto;
     transform: none;
@@ -2368,7 +2375,7 @@
   /* Pile indicators: left edge area for draw/discard */
   .layout-landscape .draw-pile-indicator {
     position: fixed;
-    bottom: 27vh;
+    bottom: 26vh;
     left: 2%;
     right: auto;
     transform: none;
@@ -2376,7 +2383,7 @@
 
   .layout-landscape .discard-pile-indicator {
     position: fixed;
-    bottom: 27vh;
+    bottom: 26vh;
     left: 8%;
     right: auto;
     transform: none;

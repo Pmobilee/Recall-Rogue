@@ -1251,14 +1251,15 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 26vh;
+    /* AR-95: Reduced from 26vh to 25vh to give more bottom margin and prevent clipping */
+    height: 25vh;
     z-index: 20;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     justify-content: center;
     gap: 8px;
-    padding: 0 12px 8px;
+    padding: 0 12px 10px;
     background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
     pointer-events: none;
   }

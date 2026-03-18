@@ -332,7 +332,7 @@
               class:shadowed={isShadowed(option)}
               class:collecting={isCollecting(option)}
               class:upgraded={option.isUpgraded}
-              style={`--frame-image: ${frameUrl ? `url('${frameUrl}')` : 'none'}; --icon-glow: ${typeGlow}; --domain-color: ${domainColor}; border-color: ${getChainColor(option.chainType ?? 0)}; box-shadow: 0 0 8px ${getChainGlowColor(option.chainType ?? 0)};`}
+              style={`--frame-image: ${frameUrl ? `url('${frameUrl}')` : 'none'}; --icon-glow: ${typeGlow}; --domain-color: ${domainColor}; --chain-color: ${getChainColor(option.chainType ?? 0)}; --chain-glow: ${getChainGlowColor(option.chainType ?? 0)};`}
               onclick={() => selectType(option.cardType)}
               onpointerenter={() => hoverType(option.cardType)}
               disabled={collectLocked}
@@ -717,7 +717,7 @@
 
   .altar-option {
     position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 3px solid var(--chain-color, #000);
     border-radius: 12px;
     min-height: calc(146px * var(--layout-scale, 1));
     padding: calc(28px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
@@ -732,6 +732,7 @@
     justify-content: flex-end;
     text-align: center;
     gap: calc(3px * var(--layout-scale, 1));
+    box-shadow: 0 10px 0 rgba(0,0,0,0.5), 0 18px 26px rgba(0,0,0,0.5), 0 0 12px var(--chain-glow, transparent), inset 0 0 0 2px rgba(255,255,255,0.06);
     transition: transform 140ms ease, opacity 140ms ease, filter 140ms ease, box-shadow 140ms ease;
     animation: iconBob 2.6s ease-in-out infinite;
     cursor: pointer;
@@ -761,7 +762,7 @@
 
   .altar-option.selected {
     transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 0 0 2px #f6d57d, 0 18px 28px rgba(0, 0, 0, 0.4), 0 0 28px color-mix(in srgb, var(--icon-glow) 44%, transparent);
+    box-shadow: 0 0 0 2px var(--chain-color, #f6d57d), 0 18px 28px rgba(0, 0, 0, 0.4), 0 0 28px var(--chain-glow, transparent);
   }
 
   .altar-option.shadowed {
@@ -813,11 +814,12 @@
   }
 
   .altar-option.upgraded {
-    border-color: rgba(255, 215, 0, 0.5);
+    border-width: 4px;
+    box-shadow: 0 10px 0 rgba(0,0,0,0.5), 0 18px 26px rgba(0,0,0,0.5), 0 0 14px var(--chain-glow, transparent), inset 0 0 0 2px rgba(255, 215, 0, 0.25);
   }
 
   .altar-option.upgraded.selected {
-    box-shadow: 0 0 0 2px #ffd700, 0 18px 28px rgba(0, 0, 0, 0.4), 0 0 28px rgba(255, 215, 0, 0.5);
+    box-shadow: 0 0 0 2px var(--chain-color, #ffd700), 0 18px 28px rgba(0, 0, 0, 0.4), 0 0 28px var(--chain-glow, transparent), inset 0 0 0 2px rgba(255, 215, 0, 0.3);
   }
 
   .mini-card-name {
@@ -1161,7 +1163,7 @@
 
   /* Ceremony Phase 3: Selected option glows brighter */
   .ceremony-phase-3 .altar-option.selected {
-    box-shadow: 0 0 0 2px #f6d57d, 0 18px 28px rgba(0, 0, 0, 0.4), 0 0 40px color-mix(in srgb, var(--icon-glow) 60%, transparent);
+    box-shadow: 0 0 0 2px var(--chain-color, #f6d57d), 0 18px 28px rgba(0, 0, 0, 0.4), 0 0 40px var(--chain-glow, transparent);
     transform: translateY(-12px) scale(1.06);
     transition: all 300ms ease;
   }

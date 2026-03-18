@@ -125,6 +125,8 @@ interface SimConfig {
   group: string;
   difficultyMode?: 'relaxed' | 'normal';
   balanceOverrides?: BalanceOverrides;
+  /** Override play mode strategy: 'force_quick' | 'force_charge' | 'mixed' (default profile) */
+  playModeStrategy?: 'force_quick' | 'force_charge' | 'mixed';
 }
 
 // ─── Aggregated Metrics ──────────────────────────────────────────────────────
@@ -846,6 +848,34 @@ function generateDeepConfigs(ascensionLevels: number[]): SimConfig[] {
   return configs;
 }
 
+function generateMixedConfigs(ascensionLevels: number[]): SimConfig[] {
+  const configs: SimConfig[] = [];
+  const DIFFICULTY_MODES: Array<'relaxed' | 'normal'> = ['relaxed', 'normal'];
+
+  // Three strategy overrides: force-quick, force-charge, mixed (profile default)
+  const strategies = ['force_quick', 'force_charge', 'mixed'] as const;
+
+  for (const profileId of Object.keys(PROFILES)) {
+    for (const mode of DIFFICULTY_MODES) {
+      for (const asc of ascensionLevels) {
+        for (const strategy of strategies) {
+          configs.push({
+            label: `mixed-${strategy}-${profileId}-${mode}-asc${asc}`,
+            profileId,
+            relics: [],
+            ascensionLevel: asc,
+            group: strategy,
+            difficultyMode: mode,
+            playModeStrategy: strategy,
+          });
+        }
+      }
+    }
+  }
+
+  return configs;
+}
+
 // ─── Deduplication ───────────────────────────────────────────────────────────
 
 function deduplicateConfigs(configs: SimConfig[]): SimConfig[] {
@@ -954,7 +984,7 @@ function parseArgs(argv: string[]): CliArgs {
     process.exit(1);
   }
 
-  const validModes = ['solo', 'combos', 'builds', 'fairness', 'progression', 'sweep', 'custom', 'deep'];
+  const validModes = ['solo', 'combos', 'builds', 'fairness', 'progression', 'sweep', 'custom', 'deep', 'mixed'];
   if (!validModes.includes(args.mode)) {
     process.stderr.write(`Error: invalid mode "${args.mode}". Valid modes: ${validModes.join(', ')}\n`);
     process.exit(1);
@@ -978,6 +1008,7 @@ Modes:
   sweep        Parameter sweep: test balance configurations and rank them
   custom       Custom relics and profiles
   deep         Deep analytics: per-floor stats, enemy stats, card effectiveness, fun factor
+  mixed        Compare all-quick, all-charge, and mixed play-mode strategies
 
 Options:
   --seeds N              Seeds per config (default: 50)
@@ -1981,6 +2012,9 @@ async function main(): Promise<void> {
     case 'deep':
       configs = generateDeepConfigs(ascensionLevels);
       break;
+    case 'mixed':
+      configs = generateMixedConfigs(ascensionLevels);
+      break;
   }
 
   configs = deduplicateConfigs(configs);
@@ -2014,6 +2048,10 @@ async function main(): Promise<void> {
       sessionBehavior: { maxFloors: 24, cashOutFloor: 0 },
     };
     profile.id = `mass-${config.group}-${config.label}`;
+
+    if (config.playModeStrategy) {
+      (profile as any).playModeOverride = config.playModeStrategy;
+    }
 
     setBalanceOverrides(config.balanceOverrides ?? null);
 
@@ -2097,6 +2135,35 @@ async function main(): Promise<void> {
       sensitivity: sweepAnalysis.sensitivity,
       controlBaseline: sweepAnalysis.controlBaseline,
     };
+  }
+
+  if (mode === 'mixed') {
+    process.stderr.write('\n  MIXED STRATEGY COMPARISON:\n');
+
+    // For each profile × difficulty × ascension, compare force_quick vs force_charge vs mixed
+    const seen = new Set<string>();
+    for (const label of accumulator.getLabels()) {
+      const config = accumulator.getConfig(label);
+      if (!config) continue;
+      const baseKey = `${config.profileId}-${config.difficultyMode}-asc${config.ascensionLevel}`;
+      if (seen.has(baseKey)) continue;
+      seen.add(baseKey);
+
+      const quickLabel = `mixed-force_quick-${baseKey}`;
+      const chargeLabel = `mixed-force_charge-${baseKey}`;
+      const mixedLabel = `mixed-mixed-${baseKey}`;
+
+      const quickM = accumulator.getMetrics(quickLabel);
+      const chargeM = accumulator.getMetrics(chargeLabel);
+      const mixedM = accumulator.getMetrics(mixedLabel);
+
+      if (quickM && chargeM && mixedM) {
+        process.stderr.write(`\n  ${baseKey}:\n`);
+        process.stderr.write(`    Force Quick:  surv=${(quickM.survivalRate*100).toFixed(1)}%  floor=${quickM.avgFinalFloor.toFixed(1)}  dps=${quickM.avgDPS.toFixed(1)}  combo=${quickM.avgMaxCombo.toFixed(1)}\n`);
+        process.stderr.write(`    Force Charge: surv=${(chargeM.survivalRate*100).toFixed(1)}%  floor=${chargeM.avgFinalFloor.toFixed(1)}  dps=${chargeM.avgDPS.toFixed(1)}  combo=${chargeM.avgMaxCombo.toFixed(1)}\n`);
+        process.stderr.write(`    Mixed:        surv=${(mixedM.survivalRate*100).toFixed(1)}%  floor=${mixedM.avgFinalFloor.toFixed(1)}  dps=${mixedM.avgDPS.toFixed(1)}  combo=${mixedM.avgMaxCombo.toFixed(1)}\n`);
+      }
+    }
   }
 
   const meta: AnalysisOutput['meta'] = {
