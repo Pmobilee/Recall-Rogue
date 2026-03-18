@@ -340,6 +340,7 @@
               data-testid={`reward-type-${option.cardType}`}
               aria-label={`Inspect ${option.mechanicName ?? option.cardType} reward`}
             >
+              <div class="card-chain-top-border" style="background: {getChainColor(option.chainType ?? 0)};"></div>
               <div class="mini-card-ap">{option.apCost ?? 1}</div>
               {#if option.isUpgraded}
                 <div class="mini-card-upgrade">+</div>
@@ -774,6 +775,18 @@
   .altar-option.collecting {
     animation: collectFly 340ms ease-in forwards;
     z-index: 2;
+  }
+
+  /* Thick colored top border strip indicating chain type */
+  .card-chain-top-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    border-radius: 4px 4px 0 0;
+    z-index: 3;
+    pointer-events: none;
   }
 
   /* Mini-card inner elements */

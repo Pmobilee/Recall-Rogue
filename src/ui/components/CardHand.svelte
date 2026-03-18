@@ -706,6 +706,7 @@
     >
       <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
         <div class="card-front">
+          <div class="card-chain-top-border" style="background: {getChainColor(card.chainType ?? 0)};"></div>
           {#if cardFrameUrl}
             <img class="card-frame-img" src={cardFrameUrl} alt={card.mechanicName ?? card.cardType} />
             <div class="ap-gem" style="color: {apGemColor}; text-shadow: 0 0 2px rgba(0,0,0,0.6);">{displayedApCost}</div>
@@ -876,6 +877,7 @@
     >
       <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
         <div class="card-front">
+          <div class="card-chain-top-border" style="background: {getChainColor(card.chainType ?? 0)};"></div>
           {#if cardFrameUrl}
             <img class="card-frame-img" src={cardFrameUrl} alt={card.mechanicName ?? card.cardType} />
             <div class="ap-gem">{card.apCost ?? 1}</div>
@@ -1065,6 +1067,7 @@
     >
       <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
         <div class="card-front">
+          <div class="card-chain-top-border" style="background: {getChainColor(card.chainType ?? 0)};"></div>
           {#if cardFrameUrl}
             <img class="card-frame-img" src={cardFrameUrl} alt={card.mechanicName ?? card.cardType} />
             <div class="ap-gem" style="color: {apGemColor}; text-shadow: 0 0 2px rgba(0,0,0,0.6);">{displayedApCost}</div>
@@ -1253,6 +1256,7 @@
     >
       <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
         <div class="card-front">
+          <div class="card-chain-top-border" style="background: {getChainColor(card.chainType ?? 0)};"></div>
           {#if cardFrameUrl}
             <img class="card-frame-img" src={cardFrameUrl} alt={card.mechanicName ?? card.cardType} />
             <div class="ap-gem" style="color: {getChainColor(card.chainType)}; text-shadow: 0 0 2px rgba(0,0,0,0.6);">{card.apCost ?? 1}</div>
@@ -1843,6 +1847,18 @@
     padding: 0;
     overflow: hidden;
     justify-content: flex-start;
+  }
+
+  /* Thick colored top border strip indicating chain type — always visible */
+  .card-chain-top-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    border-radius: 4px 4px 0 0;
+    z-index: 3;
+    pointer-events: none;
   }
 
   .card-front-bg {

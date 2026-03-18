@@ -265,6 +265,7 @@
         {#each shopInventory.cards as item, idx (item.card.id)}
           {@const canAfford = currency >= item.price}
           <article class="card-item" style="border-color: {getChainColor(item.card.chainType ?? 0)}; box-shadow: 0 0 6px {getChainGlowColor(item.card.chainType ?? 0)};">
+            <div class="card-chain-top-border" style="background: {getChainColor(item.card.chainType ?? 0)};"></div>
             <div class="meta">
               <span class="icon">
                 <img class="type-icon-img" src={getCardTypeIconPath(item.card.cardType)} alt=""
@@ -535,14 +536,29 @@
   }
 
   .card-item {
+    position: relative;
     border: 1px solid #3b434f;
     border-radius: 12px;
     background: rgba(13, 17, 23, 0.82);
     padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    padding-top: calc(15px * var(--layout-scale, 1)); /* extra space for top border strip */
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: calc(10px * var(--layout-scale, 1));
+    overflow: hidden;
+  }
+
+  /* Thick colored top border strip indicating chain type */
+  .card-chain-top-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    border-radius: 4px 4px 0 0;
+    z-index: 1;
+    pointer-events: none;
   }
 
   .relic-item {

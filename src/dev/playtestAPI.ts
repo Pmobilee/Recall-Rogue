@@ -9,6 +9,7 @@ import {
   getNotifications, validateScreen,
 } from './playtestDescriber'
 import { readStore } from './storeBridge'
+import { isTurboMode } from '../utils/turboMode'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -249,6 +250,19 @@ async function selectRoom(index: number): Promise<PlayResult> {
     btn.click();
     await wait(1500);
     return { ok: true, message: `Selected room ${index}. Screen: ${getScreen()}` };
+  });
+}
+
+/** Select a map node by ID (e.g. 'r0-n0'). Triggers the full node selection + room entry flow. */
+async function selectMapNode(nodeId: string): Promise<PlayResult> {
+  return safeAction(async () => {
+    // Click the DOM button directly — this fires the Svelte onclick handler
+    const btn = document.querySelector(`[data-testid="map-node-${nodeId}"]`) as HTMLButtonElement | null;
+    if (!btn) return { ok: false, message: `Map node ${nodeId} not found` };
+    if (btn.disabled) return { ok: false, message: `Map node ${nodeId} is disabled (state: ${btn.className})` };
+    btn.click();
+    await wait(isTurboMode() ? 100 : 500);
+    return { ok: true, message: `Selected map node ${nodeId}. Screen: ${getScreen()}` };
   });
 }
 
@@ -751,6 +765,7 @@ export function initPlaytestAPI(): void {
     endTurn,
     // Card Roguelite — Room & Reward
     selectRoom,
+    selectMapNode,
     acceptReward,
     selectRewardType,
     retreat,

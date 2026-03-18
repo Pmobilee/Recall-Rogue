@@ -347,7 +347,7 @@ async function handleScreen(
       `) as string[];
 
       if (mapNodes.length > 0) {
-        console.log(`    [MAP] Found ${mapNodes.length} available nodes: ${mapNodes.slice(0, 5).join(', ')}`);
+        // Map nodes found
         // Find the lowest available row
         const rows = new Map<string, string[]>();
         for (const n of mapNodes) {
@@ -359,10 +359,20 @@ async function handleScreen(
         const firstRowNodes = rows.get(sortedRows[0]) || [];
         const pick = firstRowNodes[Math.floor(rng() * firstRowNodes.length)];
 
-        try {
-          await page.locator(`[data-testid="${pick}"]`).click({ force: true, timeout: 2000 });
-        } catch { /* ignore */ }
-        await page.waitForTimeout(20);
+        // Use __terraPlay.selectMapNode API for reliable node selection
+        const nodeId = pick.replace('map-node-', '');
+        const selectResult = await page.evaluate(
+          (id) => (window as any).__terraPlay?.selectMapNode?.(id),
+          nodeId,
+        );
+        if (!selectResult?.ok) {
+          // Fallback: direct DOM click
+          await page.evaluate(`(function() {
+            var el = document.querySelector('[data-testid="${pick}"]');
+            if (el && !el.disabled) el.click();
+          })()`);
+        }
+        await page.waitForTimeout(50);
       } else {
         // No available nodes — check for boss/current nodes or try clicking any node
         const allNodeStates = await page.evaluate(`
@@ -378,7 +388,7 @@ async function handleScreen(
             return result;
           })()
         `) as string[];
-        console.log('    [MAP] All visible nodes:', allNodeStates.slice(-5).join(', '));
+        // All visible nodes checked
 
         // Check if segment is complete (boss node visited/current, no available nodes)
         const bossVisited = allNodeStates.some(n => n.includes('type-boss') && (n.includes('state-current') || n.includes('state-visited')));

@@ -2497,6 +2497,7 @@
     height: 40px;
     font-size: 13px;
     min-width: 96px;
+    z-index: 20; /* must be above enemy-hover-zone (z-index: 8) */
   }
 
   /* Combo counter: stacked above End Turn on the right side of arena */
