@@ -761,78 +761,6 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     chainVulnerable: true,
   },
 
-  // ── ACT 1 ADDITIONAL COMMONS (AR-98) ──
-
-  {
-    id: 'dust_mite',
-    name: 'Dust Mite',
-    category: 'common',
-    region: 'shallow_depths',
-    baseHP: 12,
-    intentPool: [
-      { type: 'attack', value: 6, weight: 7, telegraph: 'Quick bite' },
-      { type: 'attack', value: 8, weight: 2, telegraph: 'Frenetic strike' },
-      { type: 'defend', value: 4, weight: 1, telegraph: 'Skittering evasion' },
-    ],
-    description: 'Fragile but relentless. Chip damage adds up if you let it.',
-    rarity: 'standard',
-    spawnWeight: 10,
-    animArchetype: 'striker',
-  },
-
-  {
-    id: 'stalactite_bat',
-    name: 'Stalactite Bat',
-    category: 'common',
-    region: 'shallow_depths',
-    baseHP: 18,
-    intentPool: [
-      { type: 'attack', value: 7, weight: 5, telegraph: 'Diving strike' },
-      { type: 'defend', value: 6, weight: 4, telegraph: 'Roosting' },
-      { type: 'buff', value: 2, weight: 1, telegraph: 'Enrage screech', statusEffect: { type: 'strength', value: 2, turns: 2 } },
-    ],
-    description: 'Alternates between striking and retreating. Read its intents — time your blocks.',
-    rarity: 'standard',
-    spawnWeight: 10,
-    animArchetype: 'swooper',
-  },
-
-  {
-    id: 'glow_worm',
-    name: 'Glow Worm',
-    category: 'common',
-    region: 'shallow_depths',
-    baseHP: 22,
-    intentPool: [
-      { type: 'attack', value: 5, weight: 4, telegraph: 'Mucus lash' },
-      { type: 'heal', value: 5, weight: 3, telegraph: 'Regenerating glow' },
-      { type: 'defend', value: 4, weight: 2, telegraph: 'Coiling' },
-      { type: 'attack', value: 8, weight: 1, telegraph: 'Blinding flash' },
-    ],
-    description: 'Heals itself every few turns. Burst it down before it heals back up.',
-    rarity: 'standard',
-    spawnWeight: 10,
-    animArchetype: 'caster',
-  },
-
-  {
-    id: 'rock_crab',
-    name: 'Rock Crab',
-    category: 'common',
-    region: 'shallow_depths',
-    baseHP: 28,
-    intentPool: [
-      { type: 'defend', value: 8, weight: 4, telegraph: 'Shell hardening' },
-      { type: 'attack', value: 4, weight: 3, telegraph: 'Claw pinch' },
-      { type: 'defend', value: 12, weight: 2, telegraph: 'Fortified shell' },
-      { type: 'attack', value: 6, weight: 1, telegraph: 'Crushing claw' },
-    ],
-    description: 'Stacks block every other turn. Use debuffs to break through the shell.',
-    rarity: 'standard',
-    spawnWeight: 10,
-    animArchetype: 'slammer',
-  },
-
   // ── SHALLOW DEPTHS — MINI-BOSS (4 new) ──
 
   {
@@ -1953,8 +1881,6 @@ export const ACT_ENEMY_POOLS: ActEnemyPool[] = [
       'cave_bat', 'crystal_golem', 'toxic_spore',
       'mud_crawler', 'root_strangler', 'iron_beetle', 'limestone_imp',
       'cave_spider', 'peat_shambler', 'fungal_sprout', 'blind_grub',
-      // AR-98: 4 new commons for early-game variety
-      'dust_mite', 'stalactite_bat', 'glow_worm', 'rock_crab',
     ],
     elites: ['ore_wyrm', 'cave_troll'],
     miniBosses: ['venomfang', 'root_mother', 'iron_matriarch', 'bog_witch', 'mushroom_sovereign'],
