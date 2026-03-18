@@ -322,9 +322,42 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
         continue;
       }
 
-      // Screen transition logging
+      // Screen transition logging + combat-exit detection
       if (state.currentScreen !== lastScreen) {
         logScreen(stats, state.currentScreen, startTime);
+
+        // Detect combat exit: screen changed away from combat while inCombat
+        if (inCombat && lastScreen === 'combat' && state.currentScreen !== 'combat') {
+          // Enemy HP ≤ 0 means we won; otherwise unclear (could be reward transition)
+          // Check if this was a win by looking at enemy state
+          const wasVictory = state.enemyHP <= 0 || state.currentScreen === 'rewardRoom' ||
+            state.currentScreen === 'card_reward' || state.currentScreen === 'cardReward' ||
+            state.currentScreen === 'reward' || state.currentScreen === 'relicReward';
+
+          stats.encountersWon++;
+          const encounterTurns = stats.totalTurns - currentEncounterStartTurn;
+          const total = stats.encountersWon + stats.encountersLost;
+          stats.avgTurnsPerEncounter = total > 1
+            ? (stats.avgTurnsPerEncounter * (total - 1) + encounterTurns) / total
+            : encounterTurns;
+
+          stats.encounters.push({
+            enemyName: currentEnemyName,
+            floor: encounterFloor,
+            result: wasVictory ? 'won' : 'lost',
+            turns: encounterTurns,
+            damageDealt: encounterDamageDealt,
+            damageTaken: encounterDamageTaken,
+            cardsPlayed: encounterCardsPlayed,
+            chargesUsed: encounterCharges,
+            quickPlays: encounterQuickPlays,
+            maxChain: encounterMaxChain,
+            playerHpStart: encounterPlayerHpStart,
+            playerHpEnd: state.playerHP,
+          });
+
+          inCombat = false;
+        }
       }
 
       // Track stats
