@@ -1269,6 +1269,12 @@
     position: relative !important;
   }
 
+  /* AR-94: Selected card rises visually above others in landscape */
+  .card-hand-landscape .card-landscape.card-selected {
+    z-index: 25;
+    filter: drop-shadow(0 -4px 12px rgba(255, 255, 255, 0.25));
+  }
+
   .card-landscape {
     position: relative;
     width: var(--card-w);
@@ -2251,6 +2257,12 @@
 
   /* AR-76: Dim card hand when quiz is visible in landscape */
   .card-hand-quiz-dimmed {
+    opacity: 0.7;
+    transition: opacity 200ms ease;
+  }
+
+  /* AR-94: Ensure landscape quiz-dimmed applies with sufficient specificity */
+  .card-hand-landscape.card-hand-quiz-dimmed {
     opacity: 0.7;
     transition: opacity 200ms ease;
   }

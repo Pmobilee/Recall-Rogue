@@ -2309,13 +2309,17 @@
     background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 12%, transparent 35%);
   }
 
-  /* Relics: top-left of center stage area */
+  /* Relics: top-left of center stage area — compact vertical column */
   :global(.layout-landscape .relic-tray) {
     position: fixed;
     top: 4%;
     left: 2%;
     bottom: auto;
     transform: none;
+    width: auto;
+    max-width: 60px;
+    flex-direction: column;
+    gap: 4px;
   }
 
   /* AP orb: left edge of hand strip, above hand area */

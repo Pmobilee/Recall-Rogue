@@ -488,6 +488,13 @@
     gap: calc(8px * var(--layout-scale, 1));
   }
 
+  /* AR-94: When an odd-numbered last answer sits alone in a row, center it */
+  .card-answers-landscape .answer-btn:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    justify-self: center;
+  }
+
   /* AR-76: Keyboard shortcut badge on answer buttons */
   .kbd-hint {
     display: inline-flex;

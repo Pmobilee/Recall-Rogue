@@ -278,6 +278,10 @@ export function drawHand(deck: CardRunState, count?: number, options?: { firstDr
     }
   }
 
+  // === Draw Smoothing (AR-93 Section D) ===
+  // Ensures at least one chain type pair in the hand to enable chain combos.
+  smoothDrawForChainPairs(deck);
+
   return drawn;
 }
 

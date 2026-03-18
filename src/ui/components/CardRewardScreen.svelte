@@ -13,7 +13,6 @@
   import { getChainTypeName, getChainTypeColor } from '../../data/chainTypes'
   import { getChainColor, getChainGlowColor } from '../../services/chainVisuals'
   import ChainIcon from './ChainIcon.svelte'
-  import { factsDB } from '../../services/factsDB'
   import { isLandscape } from '../../stores/layoutStore'
 
   interface Props {
@@ -355,14 +354,6 @@
                   <ChainIcon chainType={option.chainType} size={11} />
                   {getChainTypeName(option.chainType)}
                 </div>
-              {/if}
-              {#if option.factId}
-                {@const previewFact = factsDB.isReady() ? factsDB.getById(option.factId) : null}
-                {#if previewFact}
-                  <div class="fact-preview">
-                    {(previewFact.quizQuestion || previewFact.statement || '').slice(0, 60)}{(previewFact.quizQuestion || previewFact.statement || '').length > 60 ? '...' : ''}
-                  </div>
-                {/if}
               {/if}
               <div class="mini-card-domain-bar" style={`background: ${domainColor};`}></div>
             </button>
@@ -1238,17 +1229,7 @@
     margin-top: 4px;
   }
 
-  .fact-preview {
-    font-size: 0.65em;
-    color: rgba(255, 255, 255, 0.6);
-    margin-top: 4px;
-    line-height: 1.3;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-  }
+
 
   /* === Landscape modal layout === */
   .reward-screen.landscape {
