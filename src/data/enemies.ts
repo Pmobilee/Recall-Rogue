@@ -196,7 +196,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'cave_bat',
-    name: 'Cave Bat',
+    name: 'Page Flutter',
     category: 'common',
     region: 'shallow_depths',
     baseHP: 19,
@@ -213,7 +213,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'crystal_golem',
-    name: 'Crystal Golem',
+    name: 'Thesis Construct',
     category: 'common',
     region: 'shallow_depths',
     baseHP: 32,
@@ -231,7 +231,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'toxic_spore',
-    name: 'Toxic Spore',
+    name: 'Mold Puff',
     category: 'common',
     region: 'shallow_depths',
     baseHP: 15,
@@ -251,7 +251,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'shadow_mimic',
-    name: 'Shadow Mimic',
+    name: 'The Crib Sheet',
     category: 'common',
     region: 'deep_caverns',
     baseHP: 28,
@@ -276,7 +276,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'ore_wyrm',
-    name: 'Ore Wyrm',
+    name: 'The Bookwyrm',
     category: 'elite',
     region: 'shallow_depths',
     baseHP: 58,
@@ -298,7 +298,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'fossil_guardian',
-    name: 'Fossil Guardian',
+    name: 'The Peer Reviewer',
     category: 'elite',
     region: 'deep_caverns',
     baseHP: 55,
@@ -323,7 +323,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'the_excavator',
-    name: 'The Excavator',
+    name: 'The Final Exam',
     category: 'boss',
     region: 'shallow_depths',
     baseHP: 70,
@@ -346,7 +346,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'magma_core',
-    name: 'Magma Core',
+    name: 'The Burning Deadline',
     category: 'boss',
     region: 'shallow_depths',
     baseHP: 75,
@@ -369,7 +369,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
   // AR-59.13: The Archivist is the Act 2 boss. Stats updated; quizPhases added for AR-59.7.
   {
     id: 'the_archivist',
-    name: 'The Archivist',
+    name: 'The Algorithm',
     category: 'boss',
     region: 'deep_caverns',
     baseHP: 80,
@@ -395,7 +395,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'crystal_warden',
-    name: 'Crystal Warden',
+    name: 'The Curriculum',
     category: 'boss',
     region: 'deep_caverns',
     baseHP: 90,
@@ -411,7 +411,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'shadow_hydra',
-    name: 'Shadow Hydra',
+    name: 'The Group Project',
     category: 'boss',
     region: 'the_abyss',
     baseHP: 110,
@@ -434,7 +434,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'void_weaver',
-    name: 'Void Weaver',
+    name: 'The Rabbit Hole',
     category: 'boss',
     region: 'the_abyss',
     baseHP: 125,
@@ -451,7 +451,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'knowledge_golem',
-    name: 'Knowledge Golem',
+    name: 'The Omnibus',
     category: 'boss',
     region: 'the_archive',
     baseHP: 120,
@@ -469,7 +469,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
   // AR-59.13: The Curator is the Act 3 final boss with 2 quiz phases at 66% and 33% HP.
   {
     id: 'the_curator',
-    name: 'The Curator',
+    name: 'The Final Lesson',
     category: 'boss',
     region: 'the_archive',
     baseHP: 120,
@@ -500,7 +500,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'crystal_guardian',
-    name: 'Crystal Guardian',
+    name: 'The Tenure Guardian',
     category: 'mini_boss',
     region: 'deep_caverns',
     baseHP: 52,
@@ -523,7 +523,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'venomfang',
-    name: 'Venomfang',
+    name: 'The Plagiarist',
     category: 'mini_boss',
     region: 'shallow_depths',
     baseHP: 45,
@@ -543,7 +543,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'stone_sentinel',
-    name: 'Stone Sentinel',
+    name: 'The Proctor',
     category: 'mini_boss',
     region: 'deep_caverns',
     baseHP: 60,
@@ -567,7 +567,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'ember_drake',
-    name: 'Ember Drake',
+    name: 'The Grade Dragon',
     category: 'mini_boss',
     region: 'the_abyss',
     baseHP: 48,
@@ -582,7 +582,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'shade_stalker',
-    name: 'Shade Stalker',
+    name: 'The Comparison Trap',
     category: 'mini_boss',
     region: 'the_abyss',
     baseHP: 42,
@@ -599,7 +599,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
   // The old mini_boss variant is kept as 'bone_collector_old' for backwards compat (deprecated).
   {
     id: 'bone_collector',
-    name: 'Bone Collector',
+    name: 'The Citation Needed',
     category: 'common',
     region: 'deep_caverns',
     baseHP: 30,
@@ -623,7 +623,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'mud_crawler',
-    name: 'Mud Crawler',
+    name: 'Ink Slug',
     category: 'common',
     region: 'shallow_depths',
     baseHP: 26,
@@ -640,7 +640,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'root_strangler',
-    name: 'Root Strangler',
+    name: 'Bookmark Vine',
     category: 'common',
     region: 'shallow_depths',
     baseHP: 28,
@@ -658,7 +658,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'iron_beetle',
-    name: 'Iron Beetle',
+    name: 'Staple Bug',
     category: 'common',
     region: 'shallow_depths',
     baseHP: 32,
@@ -676,7 +676,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'limestone_imp',
-    name: 'Limestone Imp',
+    name: 'Margin Gremlin',
     category: 'common',
     region: 'shallow_depths',
     baseHP: 26,
@@ -693,7 +693,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'cave_spider',
-    name: 'Cave Spider',
+    name: 'Index Weaver',
     category: 'common',
     region: 'shallow_depths',
     baseHP: 27,
@@ -711,7 +711,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'peat_shambler',
-    name: 'Peat Shambler',
+    name: 'Overdue Golem',
     category: 'common',
     region: 'shallow_depths',
     baseHP: 30,
@@ -728,7 +728,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'fungal_sprout',
-    name: 'Fungal Sprout',
+    name: 'Pop Quiz',
     category: 'common',
     region: 'shallow_depths',
     baseHP: 24,
@@ -745,7 +745,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'blind_grub',
-    name: 'Blind Grub',
+    name: 'Eraser Worm',
     category: 'common',
     region: 'shallow_depths',
     baseHP: 30,
@@ -765,7 +765,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'root_mother',
-    name: 'Root Mother',
+    name: 'The Card Catalogue',
     category: 'mini_boss',
     region: 'shallow_depths',
     baseHP: 48,
@@ -781,7 +781,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'iron_matriarch',
-    name: 'Iron Matriarch',
+    name: 'The Headmistress',
     category: 'mini_boss',
     region: 'shallow_depths',
     baseHP: 55,
@@ -797,7 +797,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'bog_witch',
-    name: 'Bog Witch',
+    name: 'The Tutor',
     category: 'mini_boss',
     region: 'shallow_depths',
     baseHP: 44,
@@ -813,7 +813,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'mushroom_sovereign',
-    name: 'Mushroom Sovereign',
+    name: 'The Study Group',
     category: 'mini_boss',
     region: 'shallow_depths',
     baseHP: 50,
@@ -831,7 +831,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'cave_troll',
-    name: 'Cave Troll',
+    name: 'The Librarian',
     category: 'elite',
     region: 'shallow_depths',
     baseHP: 68,
@@ -855,7 +855,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'basalt_crawler',
-    name: 'Basalt Crawler',
+    name: 'The Crambot',
     category: 'common',
     region: 'deep_caverns',
     baseHP: 32,
@@ -873,7 +873,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'salt_wraith',
-    name: 'Salt Wraith',
+    name: 'The All-Nighter',
     category: 'common',
     region: 'deep_caverns',
     baseHP: 30,
@@ -890,7 +890,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'coal_imp',
-    name: 'Coal Imp',
+    name: 'The Spark Note',
     category: 'common',
     region: 'deep_caverns',
     baseHP: 28,
@@ -907,7 +907,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'granite_hound',
-    name: 'Granite Hound',
+    name: 'The Watchdog',
     category: 'common',
     region: 'deep_caverns',
     baseHP: 32,
@@ -925,7 +925,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'sulfur_sprite',
-    name: 'Sulfur Sprite',
+    name: 'The Red Herring',
     category: 'common',
     region: 'deep_caverns',
     baseHP: 27,
@@ -942,7 +942,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'magma_tick',
-    name: 'Magma Tick',
+    name: 'The Anxiety Tick',
     category: 'common',
     region: 'deep_caverns',
     baseHP: 30,
@@ -959,7 +959,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'deep_angler',
-    name: 'Deep Angler',
+    name: 'The Trick Question',
     category: 'common',
     region: 'deep_caverns',
     baseHP: 30,
@@ -976,7 +976,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'rock_hermit',
-    name: 'Rock Hermit',
+    name: 'The Dropout',
     category: 'common',
     region: 'deep_caverns',
     baseHP: 34,
@@ -994,7 +994,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'gas_phantom',
-    name: 'Gas Phantom',
+    name: 'The Brain Fog',
     category: 'common',
     region: 'deep_caverns',
     baseHP: 30,
@@ -1011,7 +1011,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'stalactite_drake',
-    name: 'Stalactite Drake',
+    name: 'The Thesis Dragon',
     category: 'common',
     region: 'deep_caverns',
     baseHP: 30,
@@ -1029,7 +1029,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'ember_moth',
-    name: 'Ember Moth',
+    name: 'The Burnout',
     category: 'common',
     region: 'deep_caverns',
     baseHP: 26,
@@ -1048,7 +1048,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'sulfur_queen',
-    name: 'Sulfur Queen',
+    name: 'The Harsh Grader',
     category: 'mini_boss',
     region: 'deep_caverns',
     baseHP: 52,
@@ -1064,7 +1064,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'granite_colossus',
-    name: 'Granite Colossus',
+    name: 'The Textbook',
     category: 'mini_boss',
     region: 'deep_caverns',
     baseHP: 55,
@@ -1079,7 +1079,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'deep_lurker',
-    name: 'Deep Lurker',
+    name: 'The Imposter Syndrome',
     category: 'mini_boss',
     region: 'deep_caverns',
     baseHP: 50,
@@ -1095,7 +1095,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'lava_salamander',
-    name: 'Lava Salamander',
+    name: 'The Pressure Cooker',
     category: 'mini_boss',
     region: 'deep_caverns',
     baseHP: 48,
@@ -1113,7 +1113,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'magma_serpent',
-    name: 'Magma Serpent',
+    name: 'The Deadline Serpent',
     category: 'elite',
     region: 'deep_caverns',
     baseHP: 62,
@@ -1135,7 +1135,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'basalt_titan',
-    name: 'Basalt Titan',
+    name: 'The Standardized Test',
     category: 'elite',
     region: 'deep_caverns',
     baseHP: 70,
@@ -1153,7 +1153,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'obsidian_shard',
-    name: 'Obsidian Shard',
+    name: "The Writer's Block",
     category: 'common',
     region: 'the_abyss',
     baseHP: 32,
@@ -1171,7 +1171,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'magma_slime',
-    name: 'Magma Slime',
+    name: 'The Information Overload',
     category: 'common',
     region: 'the_abyss',
     baseHP: 30,
@@ -1188,7 +1188,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'quartz_elemental',
-    name: 'Quartz Elemental',
+    name: 'The Rote Memory',
     category: 'common',
     region: 'the_abyss',
     baseHP: 34,
@@ -1206,7 +1206,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'fossil_raptor',
-    name: 'Fossil Raptor',
+    name: 'The Outdated Fact',
     category: 'common',
     region: 'the_abyss',
     baseHP: 32,
@@ -1224,7 +1224,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'geode_beetle',
-    name: 'Geode Beetle',
+    name: 'The Hidden Gem',
     category: 'common',
     region: 'the_abyss',
     baseHP: 34,
@@ -1242,7 +1242,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'lava_crawler',
-    name: 'Lava Crawler',
+    name: 'The Rushing Student',
     category: 'common',
     region: 'the_abyss',
     baseHP: 36,
@@ -1260,7 +1260,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'crystal_bat',
-    name: 'Crystal Bat',
+    name: 'The Echo Chamber',
     category: 'common',
     region: 'the_abyss',
     baseHP: 32,
@@ -1277,7 +1277,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'void_mite',
-    name: 'Void Mite',
+    name: 'The Blank Spot',
     category: 'common',
     region: 'the_abyss',
     baseHP: 40,
@@ -1299,7 +1299,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'ash_wraith',
-    name: 'Ash Wraith',
+    name: 'The Burnout Phantom',
     category: 'common',
     region: 'the_abyss',
     baseHP: 33,
@@ -1353,7 +1353,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'obsidian_knight',
-    name: 'Obsidian Knight',
+    name: 'The Perfectionist',
     category: 'mini_boss',
     region: 'the_abyss',
     baseHP: 59,
@@ -1376,7 +1376,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'quartz_hydra',
-    name: 'Quartz Hydra',
+    name: 'The Hydra Problem',
     category: 'mini_boss',
     region: 'the_abyss',
     baseHP: 57,
@@ -1392,7 +1392,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'fossil_wyvern',
-    name: 'Fossil Wyvern',
+    name: 'The Ivory Tower',
     category: 'mini_boss',
     region: 'the_abyss',
     baseHP: 55,
@@ -1407,7 +1407,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'magma_broodmother',
-    name: 'Magma Broodmother',
+    name: 'The Helicopter Parent',
     category: 'mini_boss',
     region: 'the_abyss',
     baseHP: 61,
@@ -1425,7 +1425,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'geode_king',
-    name: 'Geode King',
+    name: 'The Emeritus',
     category: 'elite',
     region: 'the_abyss',
     baseHP: 68,
@@ -1447,7 +1447,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'abyssal_leviathan',
-    name: 'Abyssal Leviathan',
+    name: 'The Student Debt',
     category: 'elite',
     region: 'the_abyss',
     baseHP: 75,
@@ -1469,7 +1469,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'crystal_lich',
-    name: 'Crystal Lich',
+    name: 'The Publish-or-Perish',
     category: 'elite',
     region: 'the_abyss',
     baseHP: 65,
@@ -1488,7 +1488,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'pressure_djinn',
-    name: 'Pressure Djinn',
+    name: 'The Thesis Djinn',
     category: 'common',
     region: 'the_archive',
     baseHP: 42,
@@ -1506,7 +1506,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'core_worm',
-    name: 'Core Worm',
+    name: 'The Gut Feeling',
     category: 'common',
     region: 'the_archive',
     baseHP: 40,
@@ -1523,7 +1523,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'biolume_jellyfish',
-    name: 'Biolume Jellyfish',
+    name: 'The Bright Idea',
     category: 'common',
     region: 'the_archive',
     baseHP: 38,
@@ -1540,7 +1540,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'tectonic_scarab',
-    name: 'Tectonic Scarab',
+    name: 'The Sacred Text',
     category: 'common',
     region: 'the_archive',
     baseHP: 45,
@@ -1558,7 +1558,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'mantle_fiend',
-    name: 'Mantle Fiend',
+    name: "The Devil's Advocate",
     category: 'common',
     region: 'the_archive',
     baseHP: 41,
@@ -1575,7 +1575,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'iron_core_golem',
-    name: 'Iron Core Golem',
+    name: 'The Institution',
     category: 'common',
     region: 'the_archive',
     baseHP: 48,
@@ -1593,7 +1593,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'glyph_sentinel',
-    name: 'Glyph Sentinel',
+    name: 'The Rosetta Slab',
     category: 'common',
     region: 'the_archive',
     baseHP: 39,
@@ -1610,7 +1610,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'archive_moth',
-    name: 'Archive Moth',
+    name: 'The Moth of Enlightenment',
     category: 'common',
     region: 'the_archive',
     baseHP: 36,
@@ -1627,7 +1627,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'rune_spider',
-    name: 'Rune Spider',
+    name: 'The Hyperlink',
     category: 'common',
     region: 'the_archive',
     baseHP: 37,
@@ -1644,7 +1644,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'void_tendril',
-    name: 'Void Tendril',
+    name: 'The Unknown Unknown',
     category: 'common',
     region: 'the_archive',
     baseHP: 39,
@@ -1661,7 +1661,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'tome_mimic',
-    name: 'Tome Mimic',
+    name: 'The Fake News',
     category: 'common',
     region: 'the_archive',
     baseHP: 40,
@@ -1681,7 +1681,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'primordial_wyrm',
-    name: 'Primordial Wyrm',
+    name: 'The First Question',
     category: 'mini_boss',
     region: 'the_archive',
     baseHP: 63,
@@ -1702,7 +1702,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'iron_archon',
-    name: 'Iron Archon',
+    name: 'The Dean',
     category: 'mini_boss',
     region: 'the_archive',
     baseHP: 62,
@@ -1726,7 +1726,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'pressure_colossus',
-    name: 'Pressure Colossus',
+    name: 'The Dissertation',
     category: 'mini_boss',
     region: 'the_archive',
     baseHP: 72,
@@ -1741,7 +1741,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'biolume_monarch',
-    name: 'Biolume Monarch',
+    name: 'The Eureka',
     category: 'mini_boss',
     region: 'the_archive',
     baseHP: 59,
@@ -1757,7 +1757,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'tectonic_titan',
-    name: 'Tectonic Titan',
+    name: 'The Paradigm Shift',
     category: 'mini_boss',
     region: 'the_archive',
     baseHP: 68,
@@ -1772,7 +1772,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'glyph_warden',
-    name: 'Glyph Warden',
+    name: 'The Ancient Tongue',
     category: 'mini_boss',
     region: 'the_archive',
     baseHP: 61,
@@ -1796,7 +1796,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'archive_specter',
-    name: 'Archive Specter',
+    name: 'The Lost Thesis',
     category: 'mini_boss',
     region: 'the_archive',
     baseHP: 48,
@@ -1814,7 +1814,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'mantle_dragon',
-    name: 'Mantle Dragon',
+    name: 'The Dunning-Kruger',
     category: 'elite',
     region: 'the_archive',
     baseHP: 70,
@@ -1831,7 +1831,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
 
   {
     id: 'core_harbinger',
-    name: 'Core Harbinger',
+    name: 'The Singularity',
     category: 'elite',
     region: 'the_archive',
     baseHP: 65,

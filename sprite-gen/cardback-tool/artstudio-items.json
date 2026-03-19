@@ -90,10 +90,35 @@
       "id": "page_flutter",
       "name": "Page Flutter",
       "concept": "Torn pages that learned to fly - bat-shaped cluster of yellowed book pages",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, bat-shaped creature made of torn yellowed book pages, text and formulas visible on papery wings, red bookmark ribbon trailing like a tail, ink-drop eyes glowing faintly, pages slightly curled and aged, dusty browns and faded yellows and aged parchment tones, candlelight orange highlights on wing edges, flying library pest, front-facing idle pose wings spread, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, bat-shaped creature made of torn yellowed book pages, text and formulas visible on papery wings, red bookmark ribbon trailing like a tail, ink-drop eyes glowing faintly, pages slightly curled and aged, dusty browns and faded yellows and aged parchment tones, candlelight orange highlights on wing edges, flying library pest, front-facing idle pose wings spread, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 678839298,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 2956253895,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 1338832815,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 3,
+          "seed": 1280393063,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "common",
       "act": 1,
       "replaces": "cave_bat"
@@ -102,10 +127,17 @@
       "id": "thesis_construct",
       "name": "Thesis Construct",
       "concept": "A half-finished thesis that hardened into stone - humanoid golem of stacked thesis papers",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, hulking humanoid golem made of stacked hardened thesis papers and book spines, crystallized ink formations as armor, page fragments jutting like armor plates, dusty browns and faded yellows and aged parchment tones, tarnished gold accents, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, hulking humanoid golem made of stacked hardened thesis papers and book spines, crystallized ink formations as armor, page fragments jutting like armor plates, dusty browns and faded yellows and aged parchment tones, tarnished gold accents, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2338939665,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "common",
       "act": 1,
       "replaces": "crystal_golem"
@@ -114,10 +146,23 @@
       "id": "mold_puff",
       "name": "Mold Puff",
       "concept": "Library mold that feeds on neglected books - mushroom with a book cover cap",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, mushroom creature with a deteriorating book cover as its cap, spores shaped like floating letters and numbers, stem wrapped in soggy yellowed pages, dusty browns and faded yellows and mold green, aged parchment tones, candlelight orange glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, mushroom creature with a deteriorating book cover as its cap, spores shaped like floating letters and numbers, stem wrapped in soggy yellowed pages, dusty browns and faded yellows and mold green, aged parchment tones, candlelight orange glow, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 4021724753,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 3647837563,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "common",
       "act": 1,
       "replaces": "toxic_spore"
@@ -126,10 +171,23 @@
       "id": "ink_slug",
       "name": "Ink Slug",
       "concept": "Spilled ink that gained sentience - semi-translucent slug with swirling text inside",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, slug-like creature made of dark blue-black ink, semi-translucent body showing swirling text and letters inside, two antennae made of quill nibs, leaves ink trail behind, dried ink blue-black and deep indigo tones, aged parchment accent, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, slug-like creature made of dark blue-black ink, semi-translucent body showing swirling text and letters inside, two antennae made of quill nibs, leaves ink trail behind, dried ink blue-black and deep indigo tones, aged parchment accent, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2484190533,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 3629442858,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "common",
       "act": 1,
       "replaces": "mud_crawler"
@@ -138,10 +196,23 @@
       "id": "bookmark_vine",
       "name": "Bookmark Vine",
       "concept": "Bookmarks left in books so long they took root - ribbon bookmark vine creature",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, vine creature made of intertwined faded ribbon bookmarks in muted colors, leaves are paper scraps, thorns are pencil points, grabs with braided bookmark tendrils, dusty browns and faded yellows and aged parchment tones, tarnished gold accents, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, vine creature made of intertwined faded ribbon bookmarks in muted colors, leaves are paper scraps, thorns are pencil points, grabs with braided bookmark tendrils, dusty browns and faded yellows and aged parchment tones, tarnished gold accents, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 862470910,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 3053280957,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "common",
       "act": 1,
       "replaces": "root_strangler"
@@ -150,10 +221,23 @@
       "id": "staple_bug",
       "name": "Staple Bug",
       "concept": "Office supplies fused into an insect form - beetle made of bent staples and paper clips",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, beetle made of bent staples for legs, paper clip mandibles, binder clip shell, pushpin horns, metallic sheen, small but aggressive pose, dusty browns and tarnished gold tones, aged parchment accent, candlelight orange eye glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, beetle made of bent staples for legs, paper clip mandibles, binder clip shell, pushpin horns, metallic sheen, small but aggressive pose, dusty browns and tarnished gold tones, aged parchment accent, candlelight orange eye glow, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1098550671,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 3576254732,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "common",
       "act": 1,
       "replaces": "iron_beetle"
@@ -162,10 +246,23 @@
       "id": "margin_gremlin",
       "name": "Margin Gremlin",
       "concept": "The creature that writes nonsense in textbook margins - small gremlin with an oversized pencil",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, small mischievous gremlin holding an oversized pencil like a spear, body made of eraser shavings, askew graduation cap, cracked glasses, mischievous grin, sitting on a defaced textbook, dusty browns and faded yellows and aged parchment tones, candlelight orange accent, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, small mischievous gremlin holding an oversized pencil like a spear, body made of eraser shavings, askew graduation cap, cracked glasses, mischievous grin, sitting on a defaced textbook, dusty browns and faded yellows and aged parchment tones, candlelight orange accent, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2188382500,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 853521099,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "common",
       "act": 1,
       "replaces": "limestone_imp"
@@ -174,10 +271,23 @@
       "id": "index_weaver",
       "name": "Index Weaver",
       "concept": "Spiders that spin webs from cross-references - card catalogue spider",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, spider with body marked like a library card catalogue card, legs are thin ruler-lines, spins web from reference numbers and see-also text strings, web has tiny page numbers at intersections, dusty browns and faded yellows, dried ink blue-black, aged parchment tones, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, spider with body marked like a library card catalogue card, legs are thin ruler-lines, spins web from reference numbers and see-also text strings, web has tiny page numbers at intersections, dusty browns and faded yellows, dried ink blue-black, aged parchment tones, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1947517321,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 2967627244,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "common",
       "act": 1,
       "replaces": "cave_spider"
@@ -186,10 +296,24 @@
       "id": "overdue_golem",
       "name": "Overdue Golem",
       "concept": "Animated pile of overdue library books - shambling humanoid of stacked library books",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, shambling humanoid made of stacked library books, overdue stamps visible on covers, library card pockets for eyes, spine text partially readable, drips binding glue, dusty browns and faded yellows and aged parchment tones, tarnished gold accents, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, shambling humanoid made of stacked library books, overdue stamps visible on covers, library card pockets for eyes, spine text partially readable, drips binding glue, dusty browns and faded yellows and aged parchment tones, tarnished gold accents, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 962857467,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 865412468,
+          "status": "error",
+          "accepted": false,
+          "error": "Response was text only: \"`\""
+        }
+      ],
       "category": "common",
       "act": 1,
       "replaces": "peat_shambler"
@@ -198,10 +322,23 @@
       "id": "pop_quiz",
       "name": "Pop Quiz",
       "concept": "A trick question that takes plant form - question mark mushroom with urgent glow",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, small mushroom creature with a question mark shape, cap has QUIZ written on it, glowing with urgent red-yellow light, small arms holding a quiz paper, ticking clock motif on stem, dusty browns and faded yellows with urgent candlelight orange, aged parchment tones, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, small mushroom creature with a question mark shape, cap has QUIZ written on it, glowing with urgent red-yellow light, small arms holding a quiz paper, ticking clock motif on stem, dusty browns and faded yellows with urgent candlelight orange, aged parchment tones, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 4260311534,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 3390678536,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "common",
       "act": 1,
       "replaces": "fungal_sprout"
@@ -210,10 +347,23 @@
       "id": "eraser_worm",
       "name": "Eraser Worm",
       "concept": "A creature that eats written knowledge - pale eyeless grub shaped like an eraser",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, pale eyeless grub caterpillar shape, body segmented like an eraser, pink-white color, no eyes, mouth full of eraser dust, surrounded by blank pages it has cleaned, dusty browns and faded pinks and aged parchment tones, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, pale eyeless grub caterpillar shape, body segmented like an eraser, pink-white color, no eyes, mouth full of eraser dust, surrounded by blank pages it has cleaned, dusty browns and faded pinks and aged parchment tones, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1702067877,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 1919174586,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "common",
       "act": 1,
       "replaces": "blind_grub"
@@ -222,10 +372,23 @@
       "id": "the_plagiarist",
       "name": "The Plagiarist",
       "concept": "A creature that steals and corrupts others' work - patchwork body of stolen features",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, patchwork humanoid creature stitched together from mismatched body parts of other creatures, none quite fitting, holds stolen scrolls and books, dusty browns and faded yellows and aged parchment tones, candlelight orange accents, unsettling mismatched appearance, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, patchwork humanoid creature stitched together from mismatched body parts of other creatures, none quite fitting, holds stolen scrolls and books, dusty browns and faded yellows and aged parchment tones, candlelight orange accents, unsettling mismatched appearance, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 847553099,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 569912002,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "mini_boss",
       "act": 1,
       "replaces": "venomfang"
@@ -234,10 +397,23 @@
       "id": "the_card_catalogue",
       "name": "The Card Catalogue",
       "concept": "The sentient filing system of the Forgotten Stacks - massive rolling cabinet creature",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, enormous card catalogue cabinet grown to monstrous size with many drawers for eyes and arms, filing card tendrils extending outward, dusty browns and faded yellows and tarnished brass hardware, aged parchment tones, filing drawers open revealing cross-reference snares, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, enormous card catalogue cabinet grown to monstrous size with many drawers for eyes and arms, filing card tendrils extending outward, dusty browns and faded yellows and tarnished brass hardware, aged parchment tones, filing drawers open revealing cross-reference snares, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 62534689,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 3816678274,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "mini_boss",
       "act": 1,
       "replaces": "root_mother"
@@ -246,10 +422,23 @@
       "id": "the_headmistress",
       "name": "The Headmistress",
       "concept": "A stern administrator who never left her post - office supply weapon wielder",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, stern elderly woman sitting at her desk with a ruler extended like a blade, rubber stamp raised as weapon, red pen glowing ominously, DENIED stamp visible on papers around her, dusty browns and tarnished gold and aged parchment tones, severe and imposing, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, stern elderly woman sitting at her desk with a ruler extended like a blade, rubber stamp raised as weapon, red pen glowing ominously, DENIED stamp visible on papers around her, dusty browns and tarnished gold and aged parchment tones, severe and imposing, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2485009641,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 2314480637,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "mini_boss",
       "act": 1,
       "replaces": "iron_matriarch"
@@ -258,10 +447,24 @@
       "id": "the_tutor",
       "name": "The Tutor",
       "concept": "A well-meaning teacher corrupted by the stacks - blackboard-wielding twisted teacher",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, corrupted teacher figure wielding a pointer stick like a wand, magical blackboard hovering behind her like a shield covered in twisted equations, dusty browns and faded yellows and aged parchment tones, candlelight orange glow from the blackboard chalk, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, corrupted teacher figure wielding a pointer stick like a wand, magical blackboard hovering behind her like a shield covered in twisted equations, dusty browns and faded yellows and aged parchment tones, candlelight orange glow from the blackboard chalk, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 936114260,
+          "status": "error",
+          "accepted": false,
+          "error": "Response was text only: \"```\n\""
+        },
+        {
+          "variant": 1,
+          "seed": 1192506354,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "mini_boss",
       "act": 1,
       "replaces": "bog_witch"
@@ -270,10 +473,23 @@
       "id": "the_study_group",
       "name": "The Study Group",
       "concept": "Multiple students fused into one organism - five-faced multi-armed knowledge amalgam",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, five faces merged onto one body with ten arms each holding different study materials, books and notebooks and pencils all active simultaneously, mold-covered merged student blob, dusty browns and mold green and faded yellows, aged parchment tones, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, five faces merged onto one body with ten arms each holding different study materials, books and notebooks and pencils all active simultaneously, mold-covered merged student blob, dusty browns and mold green and faded yellows, aged parchment tones, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3384122738,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 440316713,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "mini_boss",
       "act": 1,
       "replaces": "mushroom_sovereign"
@@ -281,11 +497,30 @@
     {
       "id": "the_bookwyrm",
       "name": "The Bookwyrm",
-      "concept": "A dragon made of compacted encyclopedias - serpentine dragon of gilded book covers",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, serpentine dragon form made of compacted encyclopedia volumes, scales are gilded book covers with readable spine text, breathes clouds of loose pages, enormous and imposing, dusty browns and tarnished gold and aged parchment tones, candlelight orange breath, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A massive serpentine dragon made entirely of gilded book spines and leather covers",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a massive serpentine dragon coiled upward made entirely of gilded book spines and leather book covers as scales, golden pages fanning out as wings, glowing amber eyes, dusty brown and tarnished gold palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3852270172,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 3984355727,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 3208557423,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "elite",
       "act": 1,
       "replaces": "ore_wyrm"
@@ -294,10 +529,23 @@
       "id": "the_librarian",
       "name": "The Librarian",
       "concept": "The stacks' silent enforcer - massive creature with QUIET sign weapon and name tag",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, massive imposing creature wearing a name tag, carrying an enormous QUIET sign as a weapon, finger raised to lips in shushing gesture, dusty browns and tarnished gold and aged parchment tones, ironically loud presence, library decor, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, massive imposing creature wearing a name tag, carrying an enormous QUIET sign as a weapon, finger raised to lips in shushing gesture, dusty browns and tarnished gold and aged parchment tones, ironically loud presence, library decor, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1639223102,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 3356171428,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "elite",
       "act": 1,
       "replaces": "cave_troll"
@@ -306,10 +554,23 @@
       "id": "the_final_exam",
       "name": "The Final Exam",
       "concept": "A mechanical construct built from exam anxiety - machine of desk chairs and scantron sheets",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, towering machine made of fused desk chairs and scantron sheets and number 2 pencils, giant clock face counting down as its head, multiple choice bubbles visible on body panels, dusty browns and faded yellows and aged parchment tones, tarnished gold mechanical parts, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, towering machine made of fused desk chairs and scantron sheets and number 2 pencils, giant clock face counting down as its head, multiple choice bubbles visible on body panels, dusty browns and faded yellows and aged parchment tones, tarnished gold mechanical parts, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2619528299,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 3721262867,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "boss",
       "act": 1,
       "replaces": "the_excavator"
@@ -317,11 +578,24 @@
     {
       "id": "the_burning_deadline",
       "name": "The Burning Deadline",
-      "concept": "Pure academic pressure given form - white-hot sphere of compressed late assignments",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, white-hot glowing sphere of compressed deadlines and late notices and academic probation papers, heat distortion surrounding it, deadline dates and overdue stamps visible on surface, dusty browns and intense candlelight orange and tarnished gold tones, urgent and terrifying, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A white-hot sphere of compressed clocks and calendars with a screaming face",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a terrifying white-hot sphere made of compressed melting clocks and burning calendar pages with a screaming agonized face emerging from the center, cracks of orange fire, pure academic panic made physical, red and orange and black palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2594192785,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 1088730314,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "boss",
       "act": 1,
       "replaces": "magma_core"
@@ -330,10 +604,23 @@
       "id": "the_crib_sheet",
       "name": "The Crib Sheet",
       "concept": "A hidden cheat sheet that bites back - dangerous note that snaps shut on the unwary",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, folded hidden cheat sheet creature with serrated paper edges like teeth, written notes visible on its surface, snapping open and shut like a trap, charcoal and ember orange and smoke gray tones, flame red accent, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, folded hidden cheat sheet creature with serrated paper edges like teeth, written notes visible on its surface, snapping open and shut like a trap, charcoal and ember orange and smoke gray tones, flame red accent, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2957887881,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 1660273766,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "common",
       "act": 2,
       "replaces": "shadow_mimic"
@@ -342,10 +629,23 @@
       "id": "the_citation_needed",
       "name": "The Citation Needed",
       "concept": "A skeletal scholar demanding sources - bony creature hurling citation brackets",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, skeletal scholar figure pointing accusatorially, throwing glowing citation needed brackets as weapons, bones wrapped in tattered academic papers, charcoal and ember orange and smoke gray tones, ash white bone accents, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, skeletal scholar figure pointing accusatorially, throwing glowing citation needed brackets as weapons, bones wrapped in tattered academic papers, charcoal and ember orange and smoke gray tones, ash white bone accents, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 326677891,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 3841268010,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "common",
       "act": 2,
       "replaces": "bone_collector"
@@ -353,11 +653,37 @@
     {
       "id": "the_crambot",
       "name": "The Crambot",
-      "concept": "A student who crammed so hard they calcified - rigid brittle creature of memorized formulas",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, rigid calcified humanoid student, body covered in rote-memorized formulas and equations etched into stone-like skin, brittle and inflexible posture, charcoal and ember orange and smoke gray tones, flame red accents, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A rigid humanoid made of stacked flashcards fused together like bricks",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a stiff robotic humanoid made entirely of stacked flashcards fused together like bricks, cracks showing it is brittle and hollow inside, mechanical rigid posture, charcoal and smoke gray palette with orange stress cracks, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3697333772,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 2415788070,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 201095426,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 3,
+          "seed": 2031215376,
+          "status": "error",
+          "accepted": false,
+          "error": "Response was text only: \"`\""
+        }
+      ],
       "category": "common",
       "act": 2,
       "replaces": "basalt_crawler"
@@ -366,10 +692,35 @@
       "id": "the_all_nighter",
       "name": "The All-Nighter",
       "concept": "The ghost of a student who studied until dawn - translucent exhausted caffeine-ghost",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, translucent exhausted ghost student with dark circles under hollow eyes, clutching empty coffee cups, surrounded by crumpled paper, charcoal and smoke gray and ash white tones, ember orange caffeine-ghost glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, translucent exhausted ghost student with dark circles under hollow eyes, clutching empty coffee cups, surrounded by crumpled paper, charcoal and smoke gray and ash white tones, ember orange caffeine-ghost glow, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3017033379,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 481136522,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 735839372,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 3,
+          "seed": 3458159396,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "common",
       "act": 2,
       "replaces": "salt_wraith"
@@ -377,11 +728,24 @@
     {
       "id": "the_spark_note",
       "name": "The Spark Note",
-      "concept": "Cliff notes that caught fire from oversimplification - small devil leaving scorch marks",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, small impish devil made of burning cliff notes and summary sheets, leaving scorch marks on everything, flame red and ember orange and charcoal tones, smoke gray accents, fast and destructive pose, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A tiny mischievous fire imp made of burning cliff notes pages",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a tiny mischievous imp made of burning yellow cliff notes pages with flames for hair, holding a comically oversized highlighter like a sword, grinning wickedly, charcoal and bright yellow and orange palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 224268477,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 2606506547,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "common",
       "act": 2,
       "replaces": "coal_imp"
@@ -389,11 +753,24 @@
     {
       "id": "the_watchdog",
       "name": "The Watchdog",
-      "concept": "An academic integrity enforcer - canine construct of compressed honor code documents",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, guard dog construct made of compressed honor code and academic integrity documents, nose sniffing for plagiarism, badge visible on chest, charcoal and smoke gray and ash white tones, ember orange glowing nose, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A floating enchanted suit of armor with a giant eye in its visor, patrolling for cheaters",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a floating enchanted suit of medieval armor with no body inside, a single giant glowing blue eye visible through the helmet visor, holding a massive RULES book like a weapon, honor code enforcer, charcoal and ember orange palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 328190731,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 2230304792,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "common",
       "act": 2,
       "replaces": "granite_hound"
@@ -402,10 +779,23 @@
       "id": "the_red_herring",
       "name": "The Red Herring",
       "concept": "A misleading clue given mischievous form - glowing sprite that leads you astray",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, mischievous glowing sprite shaped like a red herring fish with false information written on its scales, luring aura of wrong answers, flame red and ember orange and charcoal tones, smoke gray miasma, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, mischievous glowing sprite shaped like a red herring fish with false information written on its scales, luring aura of wrong answers, flame red and ember orange and charcoal tones, smoke gray miasma, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3540381884,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 1824752590,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "common",
       "act": 2,
       "replaces": "sulfur_sprite"
@@ -414,10 +804,36 @@
       "id": "the_anxiety_tick",
       "name": "The Anxiety Tick",
       "concept": "Test anxiety in parasitic form - small hot tick that feeds on stress and grows",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, small insectoid tick creature glowing hot with test anxiety energy, barbed legs for gripping, stress energy visible as heat distortion, grows larger with agitation, charcoal and ember orange and flame red tones, smoke gray accents, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, small insectoid tick creature glowing hot with test anxiety energy, barbed legs for gripping, stress energy visible as heat distortion, grows larger with agitation, charcoal and ember orange and flame red tones, smoke gray accents, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2638597701,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 1656275238,
+          "status": "error",
+          "accepted": false,
+          "error": "Response was text only: \"`\""
+        },
+        {
+          "variant": 2,
+          "seed": 2373425062,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 3,
+          "seed": 2562315750,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "common",
       "act": 2,
       "replaces": "magma_tick"
@@ -426,10 +842,35 @@
       "id": "the_trick_question",
       "name": "The Trick Question",
       "concept": "A question designed to deceive - deep archive angler with false correct-answer lure",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, deep-sea angler fish creature lurking in archive darkness, glowing lure shaped like the letter A and check mark dangling above, question marks on body, charcoal and smoke gray and deep ember orange tones, flame red lure glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, deep-sea angler fish creature lurking in archive darkness, glowing lure shaped like the letter A and check mark dangling above, question marks on body, charcoal and smoke gray and deep ember orange tones, flame red lure glow, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1104142204,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 3388003285,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 4208381918,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 3,
+          "seed": 3308175694,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "common",
       "act": 2,
       "replaces": "deep_angler"
@@ -438,10 +879,23 @@
       "id": "the_dropout",
       "name": "The Dropout",
       "concept": "A student who built walls of textbooks around themselves - fortress of unread books",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, hunched student figure barricaded inside a small fortress of stacked unread textbooks, peeking defensively from behind walls, charcoal and smoke gray and ember orange tones, ash white book pages, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, hunched student figure barricaded inside a small fortress of stacked unread textbooks, peeking defensively from behind walls, charcoal and smoke gray and ember orange tones, ash white book pages, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2408693775,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 1347579436,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "common",
       "act": 2,
       "replaces": "rock_hermit"
@@ -450,10 +904,35 @@
       "id": "the_brain_fog",
       "name": "The Brain Fog",
       "concept": "The mental haze of information overload - amorphous cloud of scrambled text and numbers",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, amorphous foggy creature made of scrambled text and jumbled numbers floating in a confused mass, words and equations visible but nonsensical, charcoal and smoke gray and ash white tones, ember orange confused glow within, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, amorphous foggy creature made of scrambled text and jumbled numbers floating in a confused mass, words and equations visible but nonsensical, charcoal and smoke gray and ash white tones, ember orange confused glow within, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 952774606,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 891988155,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 2877485864,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 3,
+          "seed": 2256557520,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "common",
       "act": 2,
       "replaces": "gas_phantom"
@@ -462,10 +941,23 @@
       "id": "the_thesis_dragon",
       "name": "The Thesis Dragon",
       "concept": "A drake that guards uncompleted theses - hangs from ceiling among dangling thesis drafts",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, sleek drake covered in unfinished thesis draft scales, dangling draft papers hang from its wings like stalactites, drops paper projectiles, charcoal and ember orange and smoke gray tones, flame red accent, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, sleek drake covered in unfinished thesis draft scales, dangling draft papers hang from its wings like stalactites, drops paper projectiles, charcoal and ember orange and smoke gray tones, flame red accent, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3423307139,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 2281332477,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "common",
       "act": 2,
       "replaces": "stalactite_drake"
@@ -473,11 +965,24 @@
     {
       "id": "the_burnout",
       "name": "The Burnout",
-      "concept": "A creature drawn to ambition's flame until consumed - charred moth of wasted potential",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, once-beautiful moth now charred and darkened, wings scattering ember-sparks of wasted potential, still drawn toward any light source, charcoal and ash white and ember orange tones, flame red wing ember accents, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A beautiful moth with charred wings still faintly glowing with embers of lost passion",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a large moth with gorgeous wings that are half charred and half still beautiful, the intact half shows brilliant patterns while the burned half crumbles to ash, fading ember glow, tragic beauty, charcoal and fading orange palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1867106288,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 2199333073,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "common",
       "act": 2,
       "replaces": "ember_moth"
@@ -485,11 +990,24 @@
     {
       "id": "the_writers_block",
       "name": "The Writer's Block",
-      "concept": "A jagged chunk of creative paralysis - angular black crystal that blocks card effects",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, angular jagged black impenetrable crystal creature, blank surface with no expression, physically blocks pathways, charcoal and smoke gray and deep black tones, ember orange inner glow barely visible, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A massive angular obsidian monolith shaped like a cursor blinking on an empty page",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a massive angular obsidian black monolith shaped like a text cursor on a blank white page, impenetrable and featureless, radiating an aura of creative paralysis, pure black and dark grey palette with one thin white line, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2779573125,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 849376646,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "common",
       "act": 2,
       "replaces": "obsidian_shard"
@@ -497,11 +1015,24 @@
     {
       "id": "the_information_overload",
       "name": "The Information Overload",
-      "concept": "Too much knowledge melted into an amorphous mass - bubbling trivia blob",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, bubbling amorphous blob creature with random trivia facts and data points visible inside its mass, chaotic and overflowing in all directions, charcoal and ember orange and molten gold tones, smoke gray steam rising, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "An amorphous blob of melted books numbers and formulas oozing in all directions",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a large amorphous blob made of melted books with numbers formulas and text visible swirling inside its translucent body, oozing and bubbling chaotically, too much knowledge melted together, charcoal and orange and yellow chaotic palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1515874714,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 3965860105,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "common",
       "act": 2,
       "replaces": "magma_slime"
@@ -509,11 +1040,24 @@
     {
       "id": "the_rote_memory",
       "name": "The Rote Memory",
-      "concept": "Pure memorization without understanding - beautiful hollow crystal construct",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, beautiful but hollow crystal humanoid construct, perfectly formed but empty inside, reciting information with mouth open but no soul behind the eyes, charcoal and ember orange and molten gold tones, crystalline ash white surface, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A hollow crystal mannequin with text scrolling endlessly behind its empty eyes",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a hollow translucent crystal humanoid mannequin with scrolling text visible endlessly repeating inside its body, beautiful but completely empty eyes, perfect memorization without understanding, charcoal and ice blue palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3659467992,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 3012275979,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "common",
       "act": 2,
       "replaces": "quartz_elemental"
@@ -521,11 +1065,24 @@
     {
       "id": "the_outdated_fact",
       "name": "The Outdated Fact",
-      "concept": "Knowledge that was once true but isn't anymore - fast aggressive confidently wrong creature",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, swift raptor-like creature covered in obsolete textbook pages and debunked medical diagrams, charging forward confidently with wrong information on its body, charcoal and ember orange and smoke gray tones, flame red energy, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A confident dinosaur-skeleton professor still teaching wrong things from a crumbling podium",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a dinosaur skeleton wearing a professors tweed jacket and spectacles standing confidently at a crumbling podium, holding up a scroll of wrong outdated facts, confidently incorrect, charcoal and faded yellow and brown palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 4257622312,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 4211610986,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "common",
       "act": 2,
       "replaces": "fossil_raptor"
@@ -533,11 +1090,24 @@
     {
       "id": "the_hidden_gem",
       "name": "The Hidden Gem",
-      "concept": "A valuable fact hiding inside a dull exterior - tough shell revealing crystal knowledge inside",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, round beetle with a dull boring outer shell of mundane textbook pages, cracked slightly to reveal brilliant crystalline knowledge glowing inside, charcoal and smoke gray outer shell, molten gold inner gem glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A dull ugly rock with one crack revealing brilliant crystals inside",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a large dull boring grey rock with one dramatic crack revealing brilliant glowing rainbow crystals and gems hidden inside, valuable knowledge in an ugly exterior, grey and brown exterior with vivid crystal interior, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2232054023,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 1129970810,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "common",
       "act": 2,
       "replaces": "geode_beetle"
@@ -546,10 +1116,23 @@
       "id": "the_rushing_student",
       "name": "The Rushing Student",
       "concept": "A student moving too fast to learn properly - speed-blurred student leaving scorch marks",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, student figure moving at extreme speed leaving scorch marks and dropped papers behind, books falling out of overstuffed backpack, speed lines, charcoal and ember orange and flame red tones, smoke gray trail, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, student figure moving at extreme speed leaving scorch marks and dropped papers behind, books falling out of overstuffed backpack, speed lines, charcoal and ember orange and flame red tones, smoke gray trail, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1482941521,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 3054321501,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "common",
       "act": 2,
       "replaces": "lava_crawler"
@@ -558,10 +1141,23 @@
       "id": "the_echo_chamber",
       "name": "The Echo Chamber",
       "concept": "Beliefs that bounce around reinforcing themselves - reflective crystal bat",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, bat made of reflective crystal surfaces, creating distorted echoes of whatever it encounters, reflecting twisted versions of the player back, charcoal and ember orange and molten gold tones, ash white reflective surfaces, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, bat made of reflective crystal surfaces, creating distorted echoes of whatever it encounters, reflecting twisted versions of the player back, charcoal and ember orange and molten gold tones, ash white reflective surfaces, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2968557245,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 888875620,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "common",
       "act": 2,
       "replaces": "crystal_bat"
@@ -569,11 +1165,24 @@
     {
       "id": "the_blank_spot",
       "name": "The Blank Spot",
-      "concept": "The gap where a forgotten fact used to be - tiny nearly invisible fact-erasing creature",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, nearly invisible tiny mite creature with an erasure effect around it, leaving blank white gaps in any text it touches, barely perceptible form, charcoal and smoke gray and ash white tones, slightly visible ember orange core, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A nearly invisible void-shaped hole in reality where a fact used to be",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a humanoid shaped hole in reality showing static and void where a creature should be, the edges of the hole crumble and distort, a forgotten gap in knowledge, mostly black and dark purple with white static edges, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 905341415,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 736129722,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "common",
       "act": 2,
       "replaces": "void_mite"
@@ -581,11 +1190,24 @@
     {
       "id": "the_burnout_phantom",
       "name": "The Burnout Phantom",
-      "concept": "The ghost of motivation past - ash and memory draining your energy",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, ghost of a brilliant student now made of ash and fading memories, once-bright spark reduced to embers, reaching out to drain energy from others, charcoal and ash white and smoke gray tones, fading ember orange remnant glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A ghostly translucent figure of a once-brilliant student now just ash and memory",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a ghostly translucent figure of a student in academic robes made entirely of grey ash and fading memory, their graduation cap dissolving, exhausted hollow eyes, once brilliant now empty, charcoal and fading grey palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1882347228,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 4207327554,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "common",
       "act": 2,
       "replaces": "ash_wraith"
@@ -594,10 +1216,23 @@
       "id": "the_tenure_guardian",
       "name": "The Tenure Guardian",
       "concept": "Protects the path to deeper knowledge with bureaucratic shields",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, imposing academic bureaucrat in tenure robes wielding a massive shield made of stacked approval forms and committee reports, blocks passage with mountains of paperwork, charcoal and ember orange and molten gold tones, smoke gray bureaucratic haze, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, imposing academic bureaucrat in tenure robes wielding a massive shield made of stacked approval forms and committee reports, blocks passage with mountains of paperwork, charcoal and ember orange and molten gold tones, smoke gray bureaucratic haze, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1177644494,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 3860835597,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "mini_boss",
       "act": 2,
       "replaces": "crystal_guardian"
@@ -606,10 +1241,23 @@
       "id": "the_proctor",
       "name": "The Proctor",
       "concept": "An exam monitor made of stone tablets that ensures no cheating",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, stern stone tablet golem wearing exam monitor badge, multiple eyes watching in all directions, stone hands ready to confiscate any cheat sheet, rules written on stone body, charcoal and ember orange and smoke gray tones, molten gold authority glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, stern stone tablet golem wearing exam monitor badge, multiple eyes watching in all directions, stone hands ready to confiscate any cheat sheet, rules written on stone body, charcoal and ember orange and smoke gray tones, molten gold authority glow, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1475756015,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 2448540736,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "mini_boss",
       "act": 2,
       "replaces": "stone_sentinel"
@@ -618,10 +1266,23 @@
       "id": "the_harsh_grader",
       "name": "The Harsh Grader",
       "concept": "Every answer is wrong in her eyes - merciless red pen wielder",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, severe academic figure with enormous red pen marking everything wrong, red X marks covering everything around her, grade book open showing all failing scores, charcoal and flame red and smoke gray tones, ember orange harsh light, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, severe academic figure with enormous red pen marking everything wrong, red X marks covering everything around her, grade book open showing all failing scores, charcoal and flame red and smoke gray tones, ember orange harsh light, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1620534093,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 517255135,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "mini_boss",
       "act": 2,
       "replaces": "sulfur_queen"
@@ -630,10 +1291,23 @@
       "id": "the_textbook",
       "name": "The Textbook",
       "concept": "A massive walking textbook - incredibly tough but predictable",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, enormous animated textbook walking upright with arms and legs, table of contents visible on cover, chapters and index tabs sticking out, predictable rectangular form, charcoal and ember orange and smoke gray tones, molten gold cover letters, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, enormous animated textbook walking upright with arms and legs, table of contents visible on cover, chapters and index tabs sticking out, predictable rectangular form, charcoal and ember orange and smoke gray tones, molten gold cover letters, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 110772465,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 218442282,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "mini_boss",
       "act": 2,
       "replaces": "granite_colossus"
@@ -642,10 +1316,23 @@
       "id": "the_imposter_syndrome",
       "name": "The Imposter Syndrome",
       "concept": "Lurks in shadows whispering you don't belong here",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, shadowy humanoid creature lurking in archive darkness, whispering visible as dark text bubbles you don't belong here, blending into shadows, academic credentials visible on body that it hides, charcoal and smoke gray and deep black tones, ember orange fearful inner glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, shadowy humanoid creature lurking in archive darkness, whispering visible as dark text bubbles you don't belong here, blending into shadows, academic credentials visible on body that it hides, charcoal and smoke gray and deep black tones, ember orange fearful inner glow, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3943658945,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 2790892672,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "mini_boss",
       "act": 2,
       "replaces": "deep_lurker"
@@ -653,8 +1340,8 @@
     {
       "id": "the_pressure_cooker",
       "name": "The Pressure Cooker",
-      "concept": "Academic pressure in amphibian form - heats up each turn",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, salamander creature made of academic pressure and stress, body temperature visibly rising each moment, steam venting from head, exam papers and deadlines fusing into its skin, charcoal and flame red and ember orange tones, molten gold heat shimmer, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A red-hot pressure cooker with a face about to explode from academic stress",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a massive anthropomorphic pressure cooker with a stressed screaming face, lid rattling and steam shooting from rivets, glowing red hot from internal pressure about to explode, academic stress personified, red and orange and steel palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -666,10 +1353,23 @@
       "id": "the_grade_dragon",
       "name": "The Grade Dragon",
       "concept": "Hoards grades like gold - breathes fire made of failed papers",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, dragon sitting on a hoard of grade reports and transcripts, breathing fire made of failed exam papers, grade point averages visible on scales, charcoal and flame red and ember orange tones, molten gold hoard accent, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, dragon sitting on a hoard of grade reports and transcripts, breathing fire made of failed exam papers, grade point averages visible on scales, charcoal and flame red and ember orange tones, molten gold hoard accent, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 225944248,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 2632228880,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "mini_boss",
       "act": 2,
       "replaces": "ember_drake"
@@ -677,8 +1377,8 @@
     {
       "id": "the_comparison_trap",
       "name": "The Comparison Trap",
-      "concept": "Shows you visions of students doing better than you",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, shadowy figure projecting mirror images of superior students excelling around it, envy visible as dark tendrils, academic achievement charts floating around showing others ranking higher, charcoal and smoke gray and deep black tones, flame red envy glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A creature made of mirrors showing you distorted better versions of yourself",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a tall thin creature whose body is made of cracked mirrors, each mirror shard reflecting a distorted more successful version of the viewer, jealousy and inadequacy incarnate, dark purple and reflective silver palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -689,8 +1389,8 @@
     {
       "id": "the_perfectionist",
       "name": "The Perfectionist",
-      "concept": "An armored knight who won't act until everything is perfect",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, fully armored obsidian knight standing immobile with every detail meticulously polished, holding weapon but not yet swinging, checklist visible through visor, charcoal and smoke gray and deep black tones, ember orange perfectionist glow within armor, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "An obsidian knight frozen mid-action because nothing is perfect enough to act",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, an obsidian knight in perfect flawless black armor frozen completely still mid-sword-swing, unable to complete the action because it is not perfect enough, paralyzed by perfectionism, black and dark purple palette with one glowing anxious eye, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -702,10 +1402,23 @@
       "id": "the_hydra_problem",
       "name": "The Hydra Problem",
       "concept": "For every question answered, two more appear",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, multi-headed hydra where each head is a different academic question, two new heads growing to replace each severed one, question marks on each head, charcoal and ember orange and flame red tones, smoke gray body, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, multi-headed hydra where each head is a different academic question, two new heads growing to replace each severed one, question marks on each head, charcoal and ember orange and flame red tones, smoke gray body, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3117377430,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 551269627,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "mini_boss",
       "act": 2,
       "replaces": "quartz_hydra"
@@ -714,10 +1427,23 @@
       "id": "the_ivory_tower",
       "name": "The Ivory Tower",
       "concept": "Looks down from above, immune to common knowledge",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, wyvern perched atop an ivory academic tower looking imperiously downward, too elevated for common concerns, academic robes and mortarboard, charcoal and ash white and smoke gray tones, ember orange condescending glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, wyvern perched atop an ivory academic tower looking imperiously downward, too elevated for common concerns, academic robes and mortarboard, charcoal and ash white and smoke gray tones, ember orange condescending glow, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1657997815,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 1617541700,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "mini_boss",
       "act": 2,
       "replaces": "fossil_wyvern"
@@ -725,8 +1451,8 @@
     {
       "id": "the_helicopter_parent",
       "name": "The Helicopter Parent",
-      "concept": "Overprotective entity that spawns small anxiety creatures",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, large protective broodmother creature hovering over small anxiety offspring, overbearing arms extended in all directions, scheduling books and permission slips visible, charcoal and ember orange and smoke gray tones, flame red protective aura, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "An enormous overprotective hen made of textbooks sitting on a nest of anxious eggs",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, an enormous overprotective mother hen made of stacked textbooks sitting aggressively on a nest of small anxious egg-creatures, wings spread defensively, overprotective to a fault, warm brown and orange and cream palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -738,10 +1464,23 @@
       "id": "the_peer_reviewer",
       "name": "The Peer Reviewer",
       "concept": "Demands rigorous evidence for every card played",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, stern academic scholar holding a thick review manuscript with demands for citations, magnifying glass examining everything skeptically, charcoal and smoke gray and ember orange tones, flame red critique marks, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, stern academic scholar holding a thick review manuscript with demands for citations, magnifying glass examining everything skeptically, charcoal and smoke gray and ember orange tones, flame red critique marks, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 79983940,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 2873447526,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "elite",
       "act": 2,
       "replaces": "fossil_guardian"
@@ -750,10 +1489,23 @@
       "id": "the_deadline_serpent",
       "name": "The Deadline Serpent",
       "concept": "Wraps around you as the turn counter increases",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, massive coiling serpent made of approaching deadline dates and countdown timers, wrapping and constricting tighter each turn, clock faces along body, charcoal and flame red and ember orange tones, smoke gray coils, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, massive coiling serpent made of approaching deadline dates and countdown timers, wrapping and constricting tighter each turn, clock faces along body, charcoal and flame red and ember orange tones, smoke gray coils, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 947072303,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 105723690,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "elite",
       "act": 2,
       "replaces": "magma_serpent"
@@ -762,10 +1514,23 @@
       "id": "the_standardized_test",
       "name": "The Standardized Test",
       "concept": "Massive impersonal one-size-fits-all damage dealer",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, titanic stone golem with scantron bubble sheet body, massive impersonal and uniform, multiple choice answers on its surface, fill-in bubbles as eyes, charcoal and smoke gray and ember orange tones, ash white scantron surface, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, titanic stone golem with scantron bubble sheet body, massive impersonal and uniform, multiple choice answers on its surface, fill-in bubbles as eyes, charcoal and smoke gray and ember orange tones, ash white scantron surface, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3120412943,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 1534241225,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "elite",
       "act": 2,
       "replaces": "basalt_titan"
@@ -774,10 +1539,23 @@
       "id": "the_emeritus",
       "name": "The Emeritus",
       "concept": "Ancient powerful full of valuable knowledge if you can survive",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, ancient crystal scholar of immense age and power, body encrusted with crystallized wisdom and gemstone knowledge, emeritus title visible on robes, charcoal and molten gold and ember orange tones, deep crystalline shimmer, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, ancient crystal scholar of immense age and power, body encrusted with crystallized wisdom and gemstone knowledge, emeritus title visible on robes, charcoal and molten gold and ember orange tones, deep crystalline shimmer, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1596904827,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 192645662,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "elite",
       "act": 2,
       "replaces": "geode_king"
@@ -785,8 +1563,8 @@
     {
       "id": "the_student_debt",
       "name": "The Student Debt",
-      "concept": "Enormous inescapable creature that grows every turn",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, enormous leviathan made of loan documents and debt notices, growing larger each moment, dollar signs and interest rates visible across its vast body, inescapable and overwhelming, charcoal and smoke gray and deep black tones, ember orange financial doom glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A colossal chain-wrapped money monster that grows bigger every turn",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a colossal grotesque creature made of twisted gold coins and chain links wrapped around a massive IOU scroll for a body, growing larger and more terrifying, compound interest horror, dark gold and rusty red and black palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -797,8 +1575,8 @@
     {
       "id": "the_publish_or_perish",
       "name": "The Publish-or-Perish",
-      "concept": "An undead scholar who sacrificed everything for academic output",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, skeletal lich in academic robes surrounded by stacks of published papers, sacrificed all humanity for output numbers, impact factor and citation count visible as unholy power, charcoal and smoke gray and ash white tones, ember orange undead glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "An undead skeletal professor still furiously writing papers at a desk fused to their body",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, an undead skeletal professor with a desk fused to their ribcage still furiously writing papers with both hands, stacks of rejected papers piled around them, academic obsession beyond death, charcoal and sickly green and bone white palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -809,8 +1587,8 @@
     {
       "id": "the_algorithm",
       "name": "The Algorithm",
-      "concept": "A digital entity that decides what knowledge you see and what's hidden",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, ethereal digital entity made of flowing data streams and filter bubbles, decides which knowledge is shown and which is hidden, information cascading through its form, charcoal and ember orange and smoke gray tones, flame red filtered knowledge glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A towering digital entity made of flowing code and search results with an all-seeing eye",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a towering digital entity made of flowing green code streams and search result fragments, a massive all-seeing eye at the center that decides what knowledge you are allowed to see, digital god, dark green and black and cyan palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -821,8 +1599,8 @@
     {
       "id": "the_curriculum",
       "name": "The Curriculum",
-      "concept": "Rigid structured impossible to deviate from",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, massive rigid warden creature made of locked lesson plans and mandatory syllabi, cannot deviate from structured attack patterns, charcoal and smoke gray and ember orange tones, molten gold rigid framework, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A rigid iron cage in humanoid form with lesson plans as bars that cannot be bent",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a rigid humanoid figure made entirely of iron cage bars shaped like a syllabus grid, lesson plan text visible on each bar, inflexible and impossible to deviate from, cold iron blue and grey palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -833,8 +1611,8 @@
     {
       "id": "the_group_project",
       "name": "The Group Project",
-      "concept": "Multiple heads none cooperating one does all the work",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, hydra with multiple non-cooperating heads, one head working frantically while others are distracted or fighting each other, group project grade paper visible as banner, charcoal and ember orange and flame red tones, smoke gray chaos, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A multi-headed creature where each head argues with the others and none cooperate",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a five-headed creature where each head is a different student type arguing with each other, one sleeping one panicking one texting one working one blaming, chaotic dysfunctional teamwork, mixed colorful chaotic palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -845,8 +1623,8 @@
     {
       "id": "the_rabbit_hole",
       "name": "The Rabbit Hole",
-      "concept": "Starts as one interesting fact spirals into infinite tangents",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, weaver entity spinning an infinite spiraling web of interconnected facts and tangents, each thread leading to more threads, rabbit hole spiral visible in its web structure, charcoal and smoke gray and deep black tones, ember orange fascinating glow at center, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A swirling vortex of interconnected Wikipedia-like pages pulling everything inward",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a massive swirling vortex made of interconnected pages and hyperlinks spiraling inward into infinite depth, one interesting fact leading to a thousand tangents, hypnotic and inescapable, deep purple and blue and black spiral palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -857,8 +1635,8 @@
     {
       "id": "the_thesis_djinn",
       "name": "The Thesis Djinn",
-      "concept": "Grants knowledge wishes but twists them",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, swirling djinn made of thesis smoke and academic vapor, grants wishes made of knowledge but always with a twist, lamp shaped like an inkwell, deep indigo and cosmic purple and void black tones, bioluminescent teal glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A smoke genie emerging from a PhD thesis scroll granting twisted knowledge wishes",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a muscular smoke genie emerging from a rolled PhD thesis scroll, arms crossed with a devious grin, grants knowledge wishes but always twists them, deep indigo and cosmic purple palette with gold smoke, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -869,8 +1647,8 @@
     {
       "id": "the_gut_feeling",
       "name": "The Gut Feeling",
-      "concept": "Intuition without evidence - surprisingly powerful worm",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, large glowing worm creature representing pure intuition, no eyes but unerringly accurate, gut instinct energy radiating from its core, deep indigo and cosmic purple and void black tones, bioluminescent teal pulse, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A glowing stomach-brain hybrid creature that knows things without evidence",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a strange glowing creature that is half brain half stomach with neural connections between them, intuition without evidence, surprisingly powerful instinct, deep indigo and bioluminescent teal palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -882,10 +1660,23 @@
       "id": "the_bright_idea",
       "name": "The Bright Idea",
       "concept": "Beautiful illuminating but stings when you grab it wrong",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, luminescent jellyfish creature beautiful and illuminating, trailing ancient manuscript tentacles that sting on contact, bright idea lightbulb shape at crown, deep indigo and cosmic purple tones, bioluminescent teal and eldritch green glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, luminescent jellyfish creature beautiful and illuminating, trailing ancient manuscript tentacles that sting on contact, bright idea lightbulb shape at crown, deep indigo and cosmic purple tones, bioluminescent teal and eldritch green glow, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2616455543,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 212202929,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "common",
       "act": 3,
       "replaces": "biolume_jellyfish"
@@ -893,8 +1684,8 @@
     {
       "id": "the_sacred_text",
       "name": "The Sacred Text",
-      "concept": "Ancient knowledge beetle worshipped by other archive creatures",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, massive ancient scarab beetle with sacred text inscriptions covering its carapace, worshipped by smaller archive creatures, carrying ancient tablets, deep indigo and cosmic purple and void black tones, eldritch green sacred glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "An ancient golden scarab beetle with sacred hieroglyphic text carved into its shell",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a large ancient golden scarab beetle with glowing sacred hieroglyphic text carved deep into its armored shell, worshipped by smaller creatures, ancient protected knowledge, deep indigo and gold palette with teal glow, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -905,8 +1696,8 @@
     {
       "id": "the_devils_advocate",
       "name": "The Devil's Advocate",
-      "concept": "Arguments against everything even truth",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, scholarly devil figure with debate podium and counterargument scrolls, arguing against every position including obviously correct ones, deep indigo and cosmic purple and void black tones, eldritch green argument energy, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A charming demon in a suit who argues against everything including truth",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a charming demon in a business suit and tie with small horns, wagging one finger in disagreement while holding a scroll of counterarguments, argues against everything, deep indigo and red and black palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -917,8 +1708,8 @@
     {
       "id": "the_institution",
       "name": "The Institution",
-      "concept": "Massive bureaucratic construct impervious to individual effort",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, colossal iron bureaucratic golem made of accumulated institutional rules and regulations, impervious to individual action, organizational chart for a face, deep indigo and void black and cosmic purple tones, eldritch green institutional authority, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A massive stone building golem with windows for eyes and red tape for veins",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a massive humanoid golem made of grey institutional stone building blocks with small windows for eyes and red tape wrapped around it like veins, slow bureaucratic and immovable, grey and deep indigo palette with red tape accents, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -929,8 +1720,8 @@
     {
       "id": "the_rosetta_slab",
       "name": "The Rosetta Slab",
-      "concept": "A stone tablet guardian with runes in all languages",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, animated stone tablet guardian with ancient runes and scripts from all languages covering its surface, translating between realities, deep indigo and cosmic purple and void black tones, bioluminescent teal rune glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A floating stone tablet covered in every language glowing with translation energy",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a large floating stone tablet covered in carved text from dozens of different languages all glowing with different colored translation energy, ancient multilingual guardian, deep indigo and teal with multicolored text glow, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -941,8 +1732,8 @@
     {
       "id": "the_moth_of_enlightenment",
       "name": "The Moth of Enlightenment",
-      "concept": "Drawn to the brightest knowledge, wings are ancient manuscripts",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, magnificent ancient moth with wings made of illuminated manuscript pages, drawn to the brightest knowledge sources, ancient text and illustrations visible on wing-pages, deep indigo and cosmic purple tones, bioluminescent teal and starlight white manuscript glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A massive beautiful moth with wings made of ancient illuminated manuscript pages",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a massive beautiful moth with wings made entirely of glowing illuminated manuscript pages, gold leaf and intricate calligraphy visible on the wings, drawn to the brightest knowledge, deep indigo and gold and warm parchment palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -953,8 +1744,8 @@
     {
       "id": "the_hyperlink",
       "name": "The Hyperlink",
-      "concept": "Connects everything to everything, gets you lost in its web",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, spider made of glowing hyperlink connections and cross-references, web connects seemingly unrelated concepts in confusing chains, underline markings on body like hypertext, deep indigo and cosmic purple tones, bioluminescent teal link glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A spider made of glowing blue underlined text that spins webs of infinite connections",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a spider whose body and legs are made of glowing blue underlined hyperlink text, spinning a web of interconnected references that traps anyone who clicks, gets you lost in connections, deep indigo and bright blue palette with teal web, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -966,10 +1757,23 @@
       "id": "the_unknown_unknown",
       "name": "The Unknown Unknown",
       "concept": "Knowledge you don't even know you're missing",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, void tendril creature representing knowledge gaps the player doesn't know exist, leaving absence in its wake, difficult to perceive clearly, deep indigo and void black tones, barely visible eldritch green outline, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, void tendril creature representing knowledge gaps the player doesn't know exist, leaving absence in its wake, difficult to perceive clearly, deep indigo and void black tones, barely visible eldritch green outline, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3883048374,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 1084239143,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "common",
       "act": 3,
       "replaces": "void_tendril"
@@ -977,8 +1781,8 @@
     {
       "id": "the_fake_news",
       "name": "The Fake News",
-      "concept": "Looks like a legitimate source but consumes the unwary",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, mimic creature disguised as a legitimate academic tome, opening to reveal teeth and hungry interior, credible-looking cover hiding dangerous false information, deep indigo and cosmic purple and void black tones, eldritch green deceptive glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A treasure chest mimic but instead of teeth it has BREAKING NEWS headlines as jaws",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a treasure chest mimic monster but its teeth are made of sensationalist BREAKING NEWS headlines, a long red tongue made of clickbait, looks like a legitimate source but devours the unwary, deep indigo and red and gold palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -989,8 +1793,8 @@
     {
       "id": "the_first_question",
       "name": "The First Question",
-      "concept": "The oldest question ever asked, still unanswered",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, primordial ancient wyrm with the oldest unanswered question etched into its scales, primeval and unknowable, the question mark as its head crest, deep indigo and cosmic purple and void black tones, eldritch green ancient glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A massive ancient question mark carved from primordial stone still unanswered",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a massive ancient question mark carved from primordial stone floating in the void, the oldest question ever asked still without an answer, cracks glowing with cosmic energy, deep indigo and cosmic purple and starlight white palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -1002,10 +1806,23 @@
       "id": "the_dean",
       "name": "The Dean",
       "concept": "Absolute authority, controls access to all knowledge",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, imposing iron archon dean figure in full academic regalia, master key to all knowledge archives on belt, ultimate authority and gatekeeping presence, deep indigo and cosmic purple and void black tones, eldritch green authority glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, imposing iron archon dean figure in full academic regalia, master key to all knowledge archives on belt, ultimate authority and gatekeeping presence, deep indigo and cosmic purple and void black tones, eldritch green authority glow, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 4083487760,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 2203187994,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "mini_boss",
       "act": 3,
       "replaces": "iron_archon"
@@ -1013,8 +1830,8 @@
     {
       "id": "the_dissertation",
       "name": "The Dissertation",
-      "concept": "Massive years in the making your greatest challenge",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, colossal pressure-formed colossus made of years of dissertation work, every page of research compressed into its enormous frame, advisor comments visible as battle scars, deep indigo and cosmic purple and void black tones, bioluminescent teal knowledge glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A towering monster made of thousands of pages stacked into a humanoid colossus",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a towering humanoid colossus made of thousands of dissertation pages stacked and bound together, years of work given terrifying form, footnotes trailing like tentacles, deep indigo and parchment and dark purple palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -1025,8 +1842,8 @@
     {
       "id": "the_eureka",
       "name": "The Eureka",
-      "concept": "Blinding flash of insight that can illuminate or blind",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, radiant bioluminescent monarch creature emitting blinding flashes of insight, lightbulb crown, can illuminate or overwhelm with pure epiphany energy, deep indigo and cosmic purple tones, bioluminescent teal and starlight white eureka flash, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A blinding flash of pure light in humanoid form with a lightbulb for a head",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a humanoid figure made of pure blinding golden light with an enormous lightbulb for a head, radiating discovery energy so bright it can illuminate or blind, the eureka moment personified, bright gold and white and teal palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -1037,8 +1854,8 @@
     {
       "id": "the_paradigm_shift",
       "name": "The Paradigm Shift",
-      "concept": "When it moves everything you knew changes",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, tectonic titan whose movement reshapes reality and knowledge structures, old paradigm crumbling to reveal new one on its surface, earth-shaking presence, deep indigo and cosmic purple and void black tones, eldritch green paradigm-change energy, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A massive creature that is half one thing and half another splitting down the middle",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a massive creature split perfectly down the middle with the left half being an old crumbling stone golem and the right half being a sleek futuristic crystal entity, paradigm shift between old and new knowledge, mixed stone-brown and crystal-teal palette split down center, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -1049,8 +1866,8 @@
     {
       "id": "the_ancient_tongue",
       "name": "The Ancient Tongue",
-      "concept": "Guards knowledge behind dead languages",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, ancient language glyph warden covered in dead language runes, knowledge locked behind untranslatable scripts, mouth open showing unknown syllables as weapons, deep indigo and cosmic purple and void black tones, bioluminescent teal dead language glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A stone face with a massive carved tongue that speaks in dead languages",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a massive ancient stone face emerging from a wall with an enormous carved tongue extending outward covered in dead language inscriptions, guards knowledge behind linguistic barriers, deep indigo and ancient stone grey palette with teal glowing runes, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -1062,10 +1879,23 @@
       "id": "the_lost_thesis",
       "name": "The Lost Thesis",
       "concept": "A brilliant work that was never published, haunting the archives",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, spectral ghost of a brilliant unpublished thesis, its pages drifting in ethereal form, brilliant ideas visible through translucent pages never shared with the world, deep indigo and cosmic purple and void black tones, bioluminescent teal haunting glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, spectral ghost of a brilliant unpublished thesis, its pages drifting in ethereal form, brilliant ideas visible through translucent pages never shared with the world, deep indigo and cosmic purple and void black tones, bioluminescent teal haunting glow, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2349593832,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 1780374113,
+          "status": "done",
+          "accepted": false
+        }
+      ],
       "category": "mini_boss",
       "act": 3,
       "replaces": "archive_specter"
@@ -1074,10 +1904,23 @@
       "id": "the_dunning_kruger",
       "name": "The Dunning-Kruger",
       "concept": "Thinks it knows everything, dangerously confident, actually formidable",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, overconfident dragon strutting with inflated chest and diplomas all over body, simultaneously ignorant and powerful, dunce cap worn as crown of pride, deep indigo and cosmic purple and void black tones, eldritch green overconfidence aura, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, overconfident dragon strutting with inflated chest and diplomas all over body, simultaneously ignorant and powerful, dunce cap worn as crown of pride, deep indigo and cosmic purple and void black tones, eldritch green overconfidence aura, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1333769722,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 1646887535,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "elite",
       "act": 3,
       "replaces": "mantle_dragon"
@@ -1086,10 +1929,23 @@
       "id": "the_singularity",
       "name": "The Singularity",
       "concept": "The point where all knowledge converges, overwhelming",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, gravitational singularity creature where all knowledge converges into one point, pulling everything toward its center, infinite density of information visible at core, deep indigo and void black tones, bioluminescent teal and eldritch green convergence glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, gravitational singularity creature where all knowledge converges into one point, pulling everything toward its center, infinite density of information visible at core, deep indigo and void black tones, bioluminescent teal and eldritch green convergence glow, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2833561245,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 444716464,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "elite",
       "act": 3,
       "replaces": "core_harbinger"
@@ -1097,8 +1953,8 @@
     {
       "id": "the_omnibus",
       "name": "The Omnibus",
-      "concept": "Every book ever written compressed into one being",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, colossal golem made of every book ever written, each visible on its surface, impossible density of compressed knowledge, title text visible across its vast body, deep indigo and cosmic purple and void black tones, bioluminescent teal and eldritch green omniscient glow, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "concept": "A god-like being made of every book ever written compressed into one towering form",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a towering god-like humanoid being made of every book ever written compressed into one form, thousands of tiny book spines visible in its body, a crown of open books floating above its head, all knowledge in one terrifying entity, deep indigo and gold and cosmic purple palette, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
       "variants": [],
@@ -1110,10 +1966,23 @@
       "id": "the_final_lesson",
       "name": "The Final Lesson",
       "concept": "The dungeon itself personified - it was teaching you all along",
-      "prompt": "pixel art, 16-bit RPG enemy sprite, the dungeon itself taking humanoid form, walls and shelves and all its knowledge becoming one towering being, the curator revealed as the teacher all along, every enemy and lesson visible in its form, deep indigo and cosmic purple and void black tones, bioluminescent teal and eldritch green and starlight white ultimate knowledge aura, front-facing idle pose, 2px black outline, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, the dungeon itself taking humanoid form, walls and shelves and all its knowledge becoming one towering being, the curator revealed as the teacher all along, every enemy and lesson visible in its form, deep indigo and cosmic purple and void black tones, bioluminescent teal and eldritch green and starlight white ultimate knowledge aura, front-facing idle pose, 3px thick black outline, clean silhouette, absolutely no floating specks sparks particles or detached elements around the creature, solid plain white background, creature centered, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": [],
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 77764085,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 3479050736,
+          "status": "done",
+          "accepted": true
+        }
+      ],
       "category": "boss",
       "act": 3,
       "replaces": "the_curator"
