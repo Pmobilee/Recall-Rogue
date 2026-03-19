@@ -127,22 +127,20 @@
     background: transparent;
     border: none;
     border-radius: 0;
-    box-shadow:
-      0 4px 12px rgba(0, 0, 0, 0.5),
-      0 0 20px color-mix(in srgb, var(--type-color) 30%, transparent);
+    box-shadow: none;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0;
-    overflow: hidden;
+    overflow: visible;
     font-family: inherit;
     color: white;
     perspective: 800px;
   }
 
   .card-upgraded {
-    border: 2px solid #fbbf24 !important;
-    filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.6)) drop-shadow(0 0 20px rgba(251, 191, 36, 0.3));
+    border: none !important;
+    filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.6));
   }
 
   .upgraded-label {

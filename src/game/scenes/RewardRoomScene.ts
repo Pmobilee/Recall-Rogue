@@ -136,6 +136,15 @@ export class RewardRoomScene extends Phaser.Scene {
     for (const id of MECHANIC_IDS) {
       this.load.image(`cardart_${id}`, `/assets/cardart/${id}.png${cb}`)
     }
+
+    // V2 card frame layers for cloth mini-card compositing
+    this.load.image('v2_frame_base', `/assets/cardframes/v2/card-frame-base.webp${cb}`)
+    this.load.image('v2_border_attack', `/assets/cardframes/v2/card-border-attack.webp${cb}`)
+    this.load.image('v2_border_shield', `/assets/cardframes/v2/card-border-shield.webp${cb}`)
+    this.load.image('v2_border_buff', `/assets/cardframes/v2/card-border-buff.webp${cb}`)
+    this.load.image('v2_border_debuff', `/assets/cardframes/v2/card-border-debuff.webp${cb}`)
+    this.load.image('v2_border_utility', `/assets/cardframes/v2/card-border-utility.webp${cb}`)
+    this.load.image('v2_border_wild', `/assets/cardframes/v2/card-border-wild.webp${cb}`)
   }
 
   // ─── Create ─────────────────────────────────────────────────────────────────
@@ -468,51 +477,54 @@ export class RewardRoomScene extends Phaser.Scene {
 
       case 'card': {
         const mechanicId = reward.card.mechanicId ?? ''
-        const frameKey = `cardart_${mechanicId}`
-        const hasFrame = this.textures.exists(frameKey)
+        const cardType = reward.card.cardType ?? 'attack'
+        const borderKey = `v2_border_${cardType}`
+        const artKey = `cardart_${mechanicId}`
+        const baseKey = 'v2_frame_base'
 
-        if (hasFrame) {
-          const img = this.add.image(x, y, frameKey)
-          img.setDepth(3)
-          // Scale card frame to fit ~40x57 on screen (small collectible icon on cloth)
-          const targetW = 48 * this.sf
-          const imgScale = targetW / img.width
-          img.setScale(imgScale)
-          // Use linear filtering for smooth scaling (not pixelated)
-          if (img.texture) {
-            img.texture.setFilter(Phaser.Textures.FilterMode.LINEAR)
-          }
-          if ((img as any).preFX) {
-            (img as any).preFX.addGlow(0x000000, 2, 0, false, 0.8, 12)
-            // Card type color glow
-            const typeGlow = CARD_TYPE_COLORS[reward.card.cardType] ?? 0xaaaaaa
-            ;(img as any).preFX.addGlow(typeGlow, 3, 0, false, 0.3, 16)
-            // Golden glow for upgraded cards
-            if (reward.card.isUpgraded) {
-              (img as any).preFX.addGlow(0xfbbf24, 6, 0, false, 0.5, 20)
-            }
-          }
-          return img
-        } else {
-          // Fallback: colored rectangle
-          const color = CARD_TYPE_COLORS[reward.card.cardType] ?? 0xaaaaaa
-          const container = this.add.container(x, y)
-          const rect = this.add.graphics()
-          rect.fillStyle(0x1a1a2e, 1)
-          rect.fillRoundedRect(-CARD_W/2*this.sf, -CARD_H/2*this.sf, CARD_W*this.sf, CARD_H*this.sf, 6*this.sf)
-          rect.lineStyle(2*this.sf, color, 1)
-          rect.strokeRoundedRect(-CARD_W/2*this.sf, -CARD_H/2*this.sf, CARD_W*this.sf, CARD_H*this.sf, 6*this.sf)
-          const label = this.add.text(0, 0, reward.card.mechanicName ?? reward.card.cardType, {
-            fontFamily: 'monospace', fontSize: `${Math.round(9*this.sf)}px`, color: '#ffffff',
-            align: 'center', wordWrap: { width: (CARD_W-6)*this.sf },
-          })
-          label.setOrigin(0.5, 0.5)
-          container.add([rect, label])
-          container.setDepth(3)
-          container.setSize(CARD_W*this.sf, CARD_H*this.sf)
-          container.setInteractive()
-          return container
+        // Target size for mini card on cloth
+        const targetW = 48 * this.sf
+        const targetH = targetW * (1142 / 886) // maintain card aspect ratio
+
+        // Create a container for the layered card
+        const container = this.add.container(x, y)
+        container.setDepth(3)
+
+        // Layer 1: Border (colored by type)
+        if (this.textures.exists(borderKey)) {
+          const border = this.add.image(0, 0, borderKey)
+          border.setDisplaySize(targetW, targetH)
+          border.texture?.setFilter(Phaser.Textures.FilterMode.LINEAR)
+          container.add(border)
         }
+
+        // Layer 2: Card art (in pentagon area)
+        if (this.textures.exists(artKey)) {
+          const art = this.add.image(0, -targetH * 0.08, artKey)
+          art.setDisplaySize(targetW * 0.72, targetH * 0.48)
+          art.texture?.setFilter(Phaser.Textures.FilterMode.LINEAR)
+          container.add(art)
+        }
+
+        // Layer 3: Base frame (transparent pentagon shows art through)
+        if (this.textures.exists(baseKey)) {
+          const base = this.add.image(0, 0, baseKey)
+          base.setDisplaySize(targetW, targetH)
+          base.texture?.setFilter(Phaser.Textures.FilterMode.LINEAR)
+          container.add(base)
+        }
+
+        // Glow effects on the container
+        if ((container as any).preFX) {
+          (container as any).preFX.addGlow(0x000000, 2, 0, false, 0.8, 12)
+          const typeGlow = CARD_TYPE_COLORS[cardType] ?? 0xaaaaaa
+          ;(container as any).preFX.addGlow(typeGlow, 3, 0, false, 0.3, 16)
+          if (reward.card.isUpgraded) {
+            (container as any).preFX.addGlow(0xfbbf24, 6, 0, false, 0.5, 20)
+          }
+        }
+
+        return container as unknown as Phaser.GameObjects.Image
       }
 
       case 'relic': {
