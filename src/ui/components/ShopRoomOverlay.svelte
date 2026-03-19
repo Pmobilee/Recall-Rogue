@@ -344,7 +344,7 @@
     <div class="empty">Nothing available.</div>
   {/if}
 
-  <button type="button" class="done" onclick={ondone}>Leave Shop</button>
+  <button type="button" class="done" data-testid="btn-leave-shop" onclick={ondone}>Leave Shop</button>
 </section>
 
 <!-- Purchase Modal -->

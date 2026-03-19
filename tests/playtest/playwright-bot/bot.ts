@@ -15,8 +15,8 @@ import { createRng, startRun, selectDomain, playCard, endTurn, answerQuiz, choos
 // Constants
 // ---------------------------------------------------------------------------
 
-/** Maximum duration for a single run (120s — includes up to 3s for first-room retries). */
-const RUN_TIMEOUT_MS = 120_000;
+/** Maximum duration for a single run (180s — includes shop visits, rest room studies, and first-room retries). */
+const RUN_TIMEOUT_MS = 180_000;
 
 /** Max loop iterations to prevent infinite loops. */
 const MAX_ITERATIONS = 5_000;
@@ -309,7 +309,7 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
       // Timeout guard
       if (Date.now() - startTime > RUN_TIMEOUT_MS) {
         stats.result = 'timeout';
-        stats.errors.push('Run exceeded 90s timeout');
+        stats.errors.push(`Run exceeded ${RUN_TIMEOUT_MS / 1000}s timeout`);
         break;
       }
 
@@ -396,38 +396,15 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
         break;
       }
 
-      // Explicit terminal screens
-      if (['runEnd', 'runSummary', 'runComplete', 'run_end', 'game_over', 'victory', 'defeat'].includes(state.currentScreen)) {
-        stats.result = state.currentScreen === 'victory' ? 'victory' : 'defeat';
-        if (stats.result === 'defeat') {
-          stats.deathFloor = stats.finalFloor;
-          stats.deathEnemy = currentEnemyName;
-          stats.deathHP = state.playerHP;
-          if (inCombat) {
-            const encounterTurns = stats.totalTurns - currentEncounterStartTurn;
-            stats.encounters.push({
-              enemyName: currentEnemyName,
-              floor: encounterFloor,
-              result: 'lost',
-              turns: encounterTurns,
-              damageDealt: encounterDamageDealt,
-              damageTaken: encounterDamageTaken,
-              cardsPlayed: encounterCardsPlayed,
-              chargesUsed: encounterCharges,
-              quickPlays: encounterQuickPlays,
-              maxChain: encounterMaxChain,
-              playerHpStart: encounterPlayerHpStart,
-              playerHpEnd: state.playerHP,
-            });
-            inCombat = false;
-          }
-        }
-        break;
-      }
+      // Terminal screens (runEnd/runSummary/runComplete/game_over) are handled by the
+      // switch case below — isGameOver / runResult check above catches API-level endings.
 
-      // Back at hub/base after playing cards = run ended (defeat or retreat)
-      if (['hub', 'base'].includes(state.currentScreen) && stats.totalCardsPlayed > 0) {
-        stats.result = state.playerHP > 0 ? 'victory' : 'defeat';
+      // Back at hub/base — the run has ended
+      if (['hub', 'base', 'main_menu'].includes(state.currentScreen) && stats.totalCardsPlayed > 0) {
+        // Determine result from what we know
+        if (stats.result === 'error') {
+          stats.result = state.playerHP > 0 ? 'victory' : 'defeat';
+        }
         break;
       }
 
@@ -1033,8 +1010,7 @@ async function handleScreen(
           stats.goldEarned += amount;
         }
       } else {
-        // Fallback: try navigating away
-        await page.evaluate(() => (window as any).__terraPlay?.exitRoom?.());
+        // Fallback: try generic buttons to advance
         await page.waitForTimeout(200);
         await handleGenericAction(page);
       }
@@ -1083,6 +1059,62 @@ async function handleScreen(
     case 'rest_site':
     case 'restRoom': {
       recordRoom(stats, 'rest');
+      const hpPct = state.playerMaxHP > 0 ? state.playerHP / state.playerMaxHP : 1;
+
+      if (hpPct > 0.8 && profile.strategy === 'optimal') {
+        // Healthy + optimal: try Study (upgrade cards)
+        const studyClicked = await clickTestId(page, 'rest-study', 1000);
+        if (studyClicked) {
+          // Study triggers a quiz session — answer 3 questions
+          for (let q = 0; q < 3; q++) {
+            await page.waitForTimeout(500);
+            const quizState = await readQuizState(page);
+            if (quizState) {
+              await answerQuiz(page, profile, quizState, rng);
+              await page.waitForTimeout(300);
+            } else {
+              // No quiz appeared, might have transitioned
+              break;
+            }
+          }
+          // After study, upgradeSelection screen may appear
+          await page.waitForTimeout(500);
+          stats.cardsUpgraded++;
+          break;
+        }
+        // Study not available — try meditate (remove card) if deck > 7
+        if (state.handSize > 0) {
+          const deckCheck = await page.evaluate(`(function() {
+            var readStore = function(key) {
+              var sym = Symbol.for(key);
+              var store = globalThis[sym];
+              if (!store || typeof store !== 'object') return null;
+              if (typeof store.subscribe !== 'function') return null;
+              var value = null;
+              store.subscribe(function(v) { value = v; })();
+              return value;
+            };
+            var run = readStore('terra:activeRunState');
+            return (run && run.deck && run.deck.length) || 0;
+          })()`) as number;
+          if (deckCheck > 7) {
+            const medClicked = await clickTestId(page, 'rest-meditate', 1000);
+            if (medClicked) {
+              await page.waitForTimeout(500);
+              // Click first card to remove
+              await page.evaluate(`(function() {
+                var cards = document.querySelectorAll('.meditate-card, [data-testid^="meditate-card-"]');
+                if (cards.length > 0) cards[0].click();
+              })()`);
+              await page.waitForTimeout(300);
+              stats.cardsRemoved++;
+              break;
+            }
+          }
+        }
+      }
+
+      // Default: Heal
       const healed = await page.evaluate(() => (window as any).__terraPlay?.restHeal?.());
       if (!healed?.ok) {
         await clickTestId(page, 'rest-heal', 1000)
@@ -1107,16 +1139,158 @@ async function handleScreen(
     case 'shop':
     case 'shopRoom': {
       recordRoom(stats, 'shop');
-      const exited = await page.evaluate(() => (window as any).__terraPlay?.exitRoom?.());
-      if (!exited?.ok) {
-        await clickTestId(page, 'btn-leave-shop', 500)
-          || await clickTestId(page, 'btn-close-shop', 500)
-          || await clickTestId(page, 'shop-exit', 500)
-          || await clickTestId(page, 'btn-close', 500)
-          || await clickTestId(page, 'btn-continue', 500);
+      await page.waitForTimeout(500); // Let shop UI render
+
+      // Read shop state: gold, available relics, food, HP
+      const shopInfo = await page.evaluate(`(function() {
+        var readStore = function(key) {
+          var sym = Symbol.for(key);
+          var store = globalThis[sym];
+          if (!store || typeof store !== 'object') return null;
+          if (typeof store.subscribe !== 'function') return null;
+          var value = null;
+          store.subscribe(function(v) { value = v; })();
+          return value;
+        };
+        var run = readStore('terra:activeRunState');
+        var gold = (run && (run.currency || run.gold)) || 0;
+        var hp = (run && run.playerHp) || 0;
+        var maxHp = (run && run.playerMaxHp) || 100;
+
+        // Find relic buy buttons
+        var relicBtns = document.querySelectorAll('[data-testid^="shop-buy-relic-"]');
+        var relics = [];
+        for (var i = 0; i < relicBtns.length; i++) {
+          var btn = relicBtns[i];
+          if (btn.disabled) continue;
+          var price = parseInt(btn.textContent) || 0;
+          var testId = btn.getAttribute('data-testid') || '';
+          var id = testId.replace('shop-buy-relic-', '');
+          if (id && price > 0) relics.push({ id: id, price: price, testId: testId });
+        }
+
+        // Find card buy buttons
+        var cardBtns = document.querySelectorAll('[data-testid^="shop-buy-card-"]');
+        var cards = [];
+        for (var i = 0; i < cardBtns.length; i++) {
+          var btn = cardBtns[i];
+          if (btn.disabled) continue;
+          var price = parseInt(btn.textContent) || 0;
+          var testId = btn.getAttribute('data-testid') || '';
+          if (price > 0) cards.push({ price: price, testId: testId });
+        }
+
+        // Check for removal button
+        var removalBtn = document.querySelector('[data-testid="shop-buy-removal"]');
+        var removalPrice = 0;
+        if (removalBtn && !removalBtn.disabled) {
+          removalPrice = parseInt(removalBtn.textContent) || 0;
+        }
+
+        // Sort relics by price (cheapest first for basic profiles, but we want them all)
+        relics.sort(function(a, b) { return a.price - b.price; });
+
+        return {
+          gold: gold,
+          hp: hp,
+          maxHp: maxHp,
+          relics: relics,
+          cards: cards,
+          removalPrice: removalPrice,
+          deckSize: (run && run.deck && run.deck.length) || 0,
+        };
+      })()`) as {
+        gold: number; hp: number; maxHp: number;
+        relics: Array<{ id: string; price: number; testId: string }>;
+        cards: Array<{ price: number; testId: string }>;
+        removalPrice: number; deckSize: number;
+      } | null;
+
+      if (shopInfo) {
+        let remainingGold = shopInfo.gold;
+        const hpPct = shopInfo.maxHp > 0 ? shopInfo.hp / shopInfo.maxHp : 1;
+
+        // Priority 1: Buy relics (most valuable purchase)
+        for (const relic of shopInfo.relics) {
+          if (relic.price <= remainingGold) {
+            // Click buy button
+            const clicked = await clickTestId(page, relic.testId, 1000);
+            if (clicked) {
+              await page.waitForTimeout(300);
+              // Confirm purchase in modal
+              const confirmed = await clickTestId(page, 'shop-btn-buy', 1000);
+              if (confirmed) {
+                remainingGold -= relic.price;
+                stats.goldSpent += relic.price;
+                stats.relicsEarned.push(relic.id);
+                await page.waitForTimeout(300);
+              } else {
+                // Modal didn't appear, try cancel
+                await clickTestId(page, 'shop-btn-cancel', 500);
+              }
+            }
+            // Only buy one relic per shop visit (can revisit strategy later)
+            break;
+          }
+        }
+
+        // Priority 2: Buy food if HP < 60%
+        if (hpPct < 0.6) {
+          // Look for food/ration buttons (shop-buy-food-* or similar)
+          const foodBought = await page.evaluate(`(function() {
+            var btns = document.querySelectorAll('button');
+            for (var i = 0; i < btns.length; i++) {
+              var btn = btns[i];
+              var text = (btn.textContent || '').toLowerCase();
+              if ((text.includes('ration') || text.includes('food') || text.includes('heal'))
+                  && !btn.disabled && btn.offsetParent !== null) {
+                btn.click();
+                return true;
+              }
+            }
+            return false;
+          })()`) as boolean;
+          if (foodBought) {
+            await page.waitForTimeout(300);
+            await clickTestId(page, 'shop-btn-buy', 500);
+            await page.waitForTimeout(200);
+          }
+        }
+
+        // Priority 3: Card removal if deck > 8 and affordable (optimal profiles only)
+        if (profile.strategy === 'optimal' && shopInfo.deckSize > 8 &&
+            shopInfo.removalPrice > 0 && shopInfo.removalPrice <= remainingGold) {
+          const clicked = await clickTestId(page, 'shop-buy-removal', 1000);
+          if (clicked) {
+            await page.waitForTimeout(300);
+            await clickTestId(page, 'shop-btn-buy', 500);
+            await page.waitForTimeout(300);
+            // The removal picker might appear — click first card
+            const removed = await page.evaluate(`(function() {
+              var cards = document.querySelectorAll('[data-testid^="removal-card-"]');
+              if (cards.length > 0) { cards[0].click(); return true; }
+              // Try generic card buttons
+              var btns = document.querySelectorAll('.removal-card, .card-remove-option');
+              if (btns.length > 0) { btns[0].click(); return true; }
+              return false;
+            })()`) as boolean;
+            if (removed) {
+              stats.cardsRemovedAtShop++;
+              stats.goldSpent += shopInfo.removalPrice;
+              await page.waitForTimeout(300);
+            }
+          }
+        }
       }
-      if (!exited?.ok) await handleGenericAction(page);
-      await page.waitForTimeout(10);
+
+      // Leave shop — click the leave button (do NOT call exitRoom, it bypasses game flow)
+      await clickTestId(page, 'btn-leave-shop', 1000)
+        || await clickTestId(page, 'btn-close-shop', 500)
+        || await clickTestId(page, 'shop-exit', 500)
+        || await clickTestId(page, 'btn-close', 500)
+        || await clickTestId(page, 'btn-continue', 500)
+        || await handleGenericAction(page);
+      await page.waitForTimeout(50);
       break;
     }
 
@@ -1162,12 +1336,101 @@ async function handleScreen(
       break;
     }
 
-    // ── Default: try generic buttons, then exitRoom escape hatch ─────────────
-    default: {
-      const handled = await handleGenericAction(page);
-      if (!handled) {
-        await page.evaluate(() => (window as any).__terraPlay?.exitRoom?.());
+    // ── Upgrade Selection (after Study at rest) ──────────────────────────────
+    case 'upgradeSelection': {
+      await page.waitForTimeout(300);
+      // Click first upgrade candidate
+      const upgraded = await page.evaluate(`(function() {
+        var candidates = document.querySelectorAll('[data-testid^="upgrade-candidate-"]');
+        if (candidates.length > 0) {
+          candidates[0].click();
+          return true;
+        }
+        return false;
+      })()`) as boolean;
+      if (upgraded) {
+        await page.waitForTimeout(300);
+        await clickTestId(page, 'upgrade-confirm', 1000);
+      } else {
+        await clickTestId(page, 'upgrade-skip', 500)
+          || await clickTestId(page, 'btn-skip', 500)
+          || await clickTestId(page, 'btn-continue', 500);
       }
+      await page.waitForTimeout(20);
+      break;
+    }
+
+    // ── Relic Swap Overlay (slots full) ──────────────────────────────────────
+    case 'relicSwapOverlay': {
+      // For now, pass on the new relic (keep current loadout)
+      await clickTestId(page, 'btn-pass', 1000)
+        || await clickTestId(page, 'btn-decline', 500)
+        || await clickTestId(page, 'btn-skip', 500)
+        || await clickTestId(page, 'btn-close', 500);
+      await page.waitForTimeout(20);
+      break;
+    }
+
+    // ── Special Events ───────────────────────────────────────────────────────
+    case 'specialEvent': {
+      recordRoom(stats, 'special');
+      await clickTestId(page, 'special-event-skip', 500)
+        || await clickTestId(page, 'btn-continue', 500)
+        || await clickTestId(page, 'mystery-continue', 500)
+        || await handleGenericAction(page);
+      await page.waitForTimeout(20);
+      break;
+    }
+
+    // ── Post Mini-Boss Rest ──────────────────────────────────────────────────
+    case 'postMiniBossRest': {
+      recordRoom(stats, 'post_miniboss');
+      const healed2 = await page.evaluate(() => (window as any).__terraPlay?.restHeal?.());
+      if (!healed2?.ok) {
+        await clickTestId(page, 'rest-heal', 1000)
+          || await clickTestId(page, 'post-miniboss-continue', 1000)
+          || await clickTestId(page, 'btn-continue', 500);
+      }
+      await page.waitForTimeout(20);
+      break;
+    }
+
+    // ── Mystery Event (alternate screen name) ────────────────────────────────
+    case 'mysteryEvent': {
+      recordRoom(stats, 'mystery');
+      await handleMystery(page);
+      await page.waitForTimeout(10);
+      break;
+    }
+
+    // ── Segment Complete ─────────────────────────────────────────────────────
+    case 'segmentComplete': {
+      await handleDelveRetreat(page, profile, state);
+      await page.waitForTimeout(20);
+      break;
+    }
+
+    // ── Run End ──────────────────────────────────────────────────────────────
+    case 'runEnd':
+    case 'runSummary':
+    case 'runComplete': {
+      // Record result from run state
+      const endResult = await page.evaluate(() => {
+        const play = (window as any).__terraPlay;
+        const rs = play?.getRunState?.();
+        return rs?.result ?? null;
+      });
+      if (endResult === 'victory') stats.result = 'victory';
+      else if (endResult === 'defeat') stats.result = 'defeat';
+      else if (endResult === 'retreat') stats.result = 'victory'; // retreat = survived
+      else stats.result = state.playerHP > 0 ? 'victory' : 'defeat';
+      break;
+    }
+
+    // ── Default: try generic buttons ───────────────────────────────────────
+    default: {
+      // Do NOT call exitRoom() — it bypasses game flow and teleports to hub
+      await handleGenericAction(page);
       await page.waitForTimeout(20);
       break;
     }
