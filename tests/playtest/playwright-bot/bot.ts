@@ -285,8 +285,18 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
       return stats;
     }
 
-    // Wait for combat scene to fully initialize after first room entry
-    await page.waitForTimeout(1500);
+    // Wait for combat to be fully ready (hand populated, AP available)
+    for (let waitAttempt = 0; waitAttempt < 30; waitAttempt++) {
+      await page.waitForTimeout(500);
+      const ready = await page.evaluate(`(function() {
+        var play = window.__terraPlay;
+        if (!play || !play.getCombatState) return false;
+        var cs = play.getCombatState();
+        if (!cs) return false;
+        return cs.handSize > 0;
+      })()`);
+      if (ready) break;
+    }
 
     // Read initial detailed state for baseline tracking
     try {
@@ -809,6 +819,12 @@ async function handleScreen(
 
     // ── Combat ──────────────────────────────────────────────────────────────
     case 'combat': {
+      // Wait for hand to be ready if empty (combat scene still loading)
+      if (state.handSize === 0) {
+        await page.waitForTimeout(500);
+        break; // Re-read state next iteration
+      }
+
       // Decide: Quick Play or Charge?
       const shouldCharge = rng() < profile.chargeRate;
       const cardIdx = await selectCardIndex(page, profile, state, rng);
