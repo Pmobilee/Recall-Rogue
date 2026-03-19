@@ -28,6 +28,8 @@ src/assets/        — Sprites, card art, audio, UI graphics
 src/_archived/       — Archived deprecated components (not compiled)
 docs/              — Project documentation (LLM-optimized)
 docs/RESEARCH/     — Design specs and research (source of truth for game design)
+public/assets/cardframes/v2/ — V2 layered card frame assets (14 WebP files: 1 base + 6 borders + 6 banners + 1 upgrade icon, plus lowres variants)
+scripts/extract-card-frame.py — PSD extraction + black-preserving hue-shift pipeline for V2 card frames
 ```
 
 ## Key Conventions
@@ -349,3 +351,4 @@ Scripts like `mine-distractors.mjs` or any `SELECT correct_answer FROM facts WHE
 - `npm run typecheck` — Run TypeScript/Svelte type checking
 - `npm run check` — Full type check (app + node configs)
 - `npx vitest run` — Run 1900+ unit tests (run after any logic/data changes)
+- `python3 scripts/extract-card-frame.py` — Re-extract card frame layers from master PSD and regenerate all 14 color variant WebP files in `public/assets/cardframes/v2/`

@@ -173,15 +173,21 @@ Research: Roediger & Karpicke (2006) — retrieval practice = 87% retention vs 4
 
 ### Card Anatomy & Frame System
 
-Cards use hand-crafted PNG card frames per mechanic category, with the following additions in v2:
+Cards use a **PSD-based layered V2 frame system** (AR-107). Each card composites 3 layers extracted from a master PSD (`data/generated/camp-art/NEW_CARD.psd`, 886×1142px) with text overlaid via CSS at PSD guide positions:
 
+- **Border layer** (hue-shifted by card type): Indicates the card's mechanical category at a glance.
+  - Attack: Red | Shield: Blue | Buff: Purple | Debuff: Green | Utility: Teal | Wild: Gold
+- **Base frame layer** (constant): The shared structural frame — book icon area, pentagon art window, text area background. Identical across all cards.
+- **Banner layer** (hue-shifted by chain type): The banner across the mechanic name area signals chain affinity.
+  - ChainType 0: Obsidian (gray) | 1: Crimson | 2: Azure | 3: Amber | 4: Violet | 5: Jade
+- **Pentagon art window:** Empty window ready for per-fact generated card art.
+- **AP cost:** Yellow (`#fbbf24`) Cinzel bold with black outline, rendered as a CSS text overlay in the book icon area. Turns red when current cost exceeds base cost, green when below base cost.
+- **Mechanic name:** Black text with white outline, Cinzel font, centered over the banner as a CSS overlay. Not baked into art.
+- **Card type label:** Small sans-serif label positioned between the art window and text area.
+- **Effect text:** White sans-serif text over the dark lower text area. Clean readability on dark background.
+- **Upgrade icon:** Green cross icon with float animation displayed on upgraded cards.
 - **CHARGE button:** Displayed below the card in the popped state. Shows "FREE" (first Charge of fact) or "+1 AP" (subsequent Charges). Tap to initiate quiz. **Hover/press preview:** Hovering or touch-pressing the CHARGE button triggers a real-time charge value preview on the selected card — numeric values in the card's description update to show their charged equivalents in green (`#4ADE80`). Leaving the button reverts to normal display. Only active when the charge is affordable.
-- **Chain color tint:** 2–3px colored tint on the left frame edge indicates `chainType` (0-5). Same color = can chain. Pulse in sync when 2+ cards in hand share a `chainType`.
-- **Chain ember particles (AR-71.2):** Cards with a `chainType` display 5 small CSS particle dots rising from their top edge, colored in the chain color. The smoldering effect signals chain affinity at a glance. Pure CSS `@keyframes`, `pointer-events: none`.
-- **AP cost badge:** Gemstone badge top-right, colored by AP cost.
-- **RPG pixel font (AR-71.3):** Card description text (`.card-parchment-text`) uses `var(--font-pixel)` (Press Start 2P) in off-white `#F0E6D2` with a 4-direction black outline for legibility over card art. Card name text (`.card-front-name`) uses the same treatment. Font size reduced to ~65–75% of previous Georgia size to compensate for the wider pixel glyph width.
-
-Card frame categories: Attack (golden slash), Defence (blue shield), Buff (golden radiate), Debuff (purple tendrils), Utility (prismatic), Wild (morphic).
+- **RPG pixel font (AR-71.3):** Card description text uses off-white `#F0E6D2` with a 4-direction black outline for legibility over card art.
 
 ### Charge Animation System (AR-59.16)
 

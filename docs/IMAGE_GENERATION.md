@@ -350,3 +350,87 @@ All estimates use NB1 at $0.04/image.
 - **Re-use prompts** with minor modifications for variant sprites (e.g., biome soil tiles across different biomes).
 - **Cache originals** in `sprite-gen/output/` so you can re-process without re-generating.
 - **Use 5x5 sprite sheets** for overlay variants — 25 sprites for the cost of 1 API call ($0.04).
+
+---
+
+## Card Frame V2 Pipeline
+
+### Overview
+
+Card frames use a **PSD-based layered system** (AR-107). A single master PSD (`data/generated/camp-art/NEW_CARD.psd`, 886×1142px) contains all frame elements as separate layers. A Python extraction script generates all color variants automatically.
+
+### Art Iteration Tool
+
+The **Art Studio** tool at `http://localhost:5175/artstudio.html` (served from the cardback-tool dev server) provides an interactive interface for iterating on card art, enemy sprites, and card frames. Use it to preview frame compositing and tune hue-shift values before running full extraction.
+
+### NanoBanana / OpenRouter Workflow
+
+Card art and sprite generation uses the `google/gemini-2.5-flash-image` model via OpenRouter (referred to internally as NanoBanana / NB1). This is the same model used for all game sprite generation. API key stored in `.env` as `OPENROUTER_API_KEY` — never commit this file.
+
+Use the green screen pipeline (see above) when generating card art to be composited into the pentagon art window.
+
+### PSD Layer Structure
+
+The master PSD contains three layer groups:
+
+| Layer | Purpose | Variation |
+|---|---|---|
+| `border` | Outer frame ring | Hue-shifted per card type (6 variants) |
+| `base` | Structural frame: book icon, pentagon art window, text area | Static — identical for all cards |
+| `banner` | Banner across mechanic name area | Hue-shifted per chain type (6 variants) |
+| `upgrade_icon` | Green cross badge for upgraded cards | Static |
+
+### Extraction Pipeline
+
+Run the Python script to re-extract layers and regenerate all WebP color variants:
+
+```bash
+python3 scripts/extract-card-frame.py
+```
+
+This script:
+1. Opens `data/generated/camp-art/NEW_CARD.psd`
+2. Crops each layer group to its bounding box
+3. Applies a **black-preserving hue-shift** to generate the 6 border and 6 banner color variants
+4. Exports all 14 WebP files to `public/assets/cardframes/v2/` (hires + lowres variants)
+
+### Color Mapping
+
+**Card type → border color:**
+
+| Card Type | Color | Hue Shift |
+|---|---|---|
+| Attack | Red | 0° |
+| Shield | Blue | 240° |
+| Buff | Purple | 270° |
+| Debuff | Green | 120° |
+| Utility | Teal | 180° |
+| Wild | Gold | 45° |
+
+**Chain type → banner color:**
+
+| Chain Type | Color | Description |
+|---|---|---|
+| 0 | Obsidian | Gray — no chain affinity |
+| 1 | Crimson | Red chain |
+| 2 | Azure | Blue chain |
+| 3 | Amber | Orange/gold chain |
+| 4 | Violet | Purple chain |
+| 5 | Jade | Green chain |
+
+### Output Assets
+
+All V2 card frame assets live in `public/assets/cardframes/v2/`:
+
+```
+base.webp, base_lowres.webp
+border_attack.webp, border_shield.webp, border_buff.webp,
+border_debuff.webp, border_utility.webp, border_wild.webp
+banner_0.webp ... banner_5.webp
+upgrade_icon.webp
+(+ _lowres variants for each)
+```
+
+### Guide Positions
+
+`src/ui/utils/cardFrameV2.ts` exports guide positions derived from PSD layer coordinates. These positions are used to place CSS text overlays (AP cost, mechanic name, card type label, effect text) at exact PSD-specified coordinates, ensuring consistent alignment across all card types.

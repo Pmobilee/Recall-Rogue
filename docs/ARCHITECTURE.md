@@ -71,7 +71,7 @@ Primary boot path:
 
 #### Card Animation State Machine
 
-After answering a quiz (Charge play) or resolving at base power (Quick Play), cards go through an animation sequence using hand-crafted PNG card frames. State: `CardAnimPhase = 'reveal' | 'swoosh' | 'impact' | 'discard' | 'fizzle' | null`.
+After answering a quiz (Charge play) or resolving at base power (Quick Play), cards go through an animation sequence using the layered V2 card frame system. State: `CardAnimPhase = 'reveal' | 'swoosh' | 'impact' | 'discard' | 'fizzle' | null`.
 
 **Quick Play (no quiz):**
 - Card resolves immediately at base power, no reveal phase.
@@ -95,11 +95,13 @@ After answering a quiz (Charge play) or resolving at base power (Quick Play), ca
 - **End-of-turn**: `handleEndTurn()` queries `.card-in-hand:not(.card-animating)`, triggers staggered WAAPI (250ms + 40ms stagger), calls `onendturn()` after `Promise.all` on animation finish events.
 - **Reshuffle hold**: `reshuffleHoldingHand` state in `CardCombatOverlay` keeps `handCards` empty during the reshuffle animation. When shuffle completes, cards mount and `initCardAnimOffsets` swooshes them from the refilled draw pile.
 
-**Card frame system:**
-- 30 hand-crafted PNG frames (hires + lowres WebP variants) grouped by 6 mechanic categories (Attack, Defence, Buff, Debuff, Utility, Wild)
-- Frame structure: title area, pixel art scene, gemstone AP cost badge, parchment text area (grey=base, green=buffed, red=debuffed)
-- Card rendering in `CardHand.svelte` uses frame images instead of programmatic CSS styling
-- Dynamic card description text (`getShortCardDescription()`) displays in parchment area
+**Card frame system (V2 — AR-107):**
+- 3 composited layers extracted from master PSD (`data/generated/camp-art/NEW_CARD.psd`, 886×1142px): border (hue-shifted by card type), base frame (constant), banner (hue-shifted by chain type)
+- 14 WebP files in `public/assets/cardframes/v2/`: 1 base + 6 borders (one per card type) + 6 banners (one per chain type) + 1 upgrade icon; plus lowres variants
+- `cardFrameV2.ts` utility module provides URL getters and PSD-derived guide positions for CSS text overlays
+- Text overlays rendered via CSS at guide positions: AP cost (yellow Cinzel bold in book icon area, red/green for cost changes), mechanic name (Cinzel on banner), card type label, and effect description
+- Upgrade icon (green cross) with float animation for upgraded cards
+- Python extraction script `scripts/extract-card-frame.py` — crops PSD layers and applies black-preserving hue-shift to generate all color variants
 
 **Ghost card (animation buffer) pattern**: Cards are copied to an `animatingCards` array before logical removal from the hand. A separate `{#each animatingCards}` loop renders non-interactive ghost copies. The `ghostCardAnim` Svelte action on each ghost uses a `MutationObserver` to detect CSS class changes (`card-discard`, `card-fizzle`) and triggers the appropriate WAAPI exit animation. Ghosts are cleaned from the buffer after animation completes. This prevents cards from disappearing mid-animation when hand state updates.
 
@@ -212,16 +214,16 @@ These systems transfer from the mining codebase with minimal changes:
 | Run manager | `src/services/runManager.ts` | Built |
 | Juice manager | `src/services/juiceManager.ts` | Built |
 | Cardback manifest | `src/ui/utils/cardbackManifest.ts` | Built |
-| Card frame manifest | `src/ui/utils/cardFrameManifest.ts` | Built — runtime manifest for 30 card frame image URLs grouped by mechanic category |
+| Card frame V2 utility | `src/ui/utils/cardFrameV2.ts` | Built — URL getters for V2 layered card frame WebP assets and PSD-derived guide positions for CSS text overlays |
 | Card description service | `src/services/cardDescriptionService.ts` | Built — `getShortCardDescription()` for parchment text rendering |
-| Card frame processor | `scripts/process-cardframes.mjs` | Built — asset pipeline script to crop/resize/convert card frame PNGs to WebP (hires + lowres variants) |
+| Card frame extractor | `scripts/extract-card-frame.py` | Built — PSD extraction + black-preserving hue-shift pipeline; crops layers from master PSD and regenerates all 14 color variant WebP files for V2 card frames |
 | Flag manifest | `src/data/flagManifest.ts` | Built — maps 218 country names to flag SVG URLs in `/public/assets/flags/` |
 | Mechanic animations | `src/ui/utils/mechanicAnimations.ts` | Built — 5-phase animation system with archetype-specific effects and synthesized audio |
 | CombatScene | `src/game/scenes/CombatScene.ts` | Built — Delegates enemy sprite rendering and animation to EnemySpriteSystem |
 | Enemy sprite system | `src/game/systems/EnemySpriteSystem.ts` | Built — Encapsulates all 88 enemy rendering with sharp-processed PNG assets. 3D paper cutout effect (shadow + outline layers), config-driven idle/attack/hit/death animations via `setAnimConfig(archetype)` method (8 animation archetypes from `src/data/enemyAnimations.ts`). Aspect-ratio-preserving scaling, device-tier texture selection (.webp vs _1x.webp), placeholder display for missing sprites. |
 | CardGameManager | `src/game/CardGameManager.ts` | Built |
 | CardApp (root) | `src/CardApp.svelte` | Built |
-| Card hand UI | `src/ui/components/CardHand.svelte` | Built — card rendering now uses hand-crafted PNG card frame images instead of programmatic UI; supports hires/lowres variants based on device capabilities |
+| Card hand UI | `src/ui/components/CardHand.svelte` | Built — card rendering uses V2 layered card frame system (composited border + base + banner WebP layers with CSS text overlays); supports hires/lowres variants based on device capabilities |
 | Card expanded UI | `src/ui/components/CardExpanded.svelte` | Built — AR-76: landscape branch centers quiz in left-70% center stage (above 26vh card hand), 2×2 answer grid, `kbd-hint` badges, inputService QUIZ_ANSWER wiring with 150ms highlight flash, card hand dimming via `quizVisible` prop on CardHand |
 | Card combat overlay | `src/ui/components/CardCombatOverlay.svelte` | Built — added synergy flash UI element; v2: boss quiz phase overlay rendered inline |
 | Combo counter | `src/ui/components/ComboCounter.svelte` | **ARCHIVED** — Knowledge Combo system removed in v2; replaced by Knowledge Chain (chainSystem.ts + ChainCounter HUD element). File retained as dead code. |
@@ -655,7 +657,7 @@ src-tauri/               — Tauri v2 desktop wrapper scaffold (Rust not yet com
       HubAmbientEffects.ts   — Camp sprite CSS micro-animations (breathe, sway, spark)
     utils/
       cardbackManifest.ts    — Build-time manifest (import.meta.glob) for cardback WebP images; exports hasCardback(factId), getCardbackUrl(factId)
-      cardFrameManifest.ts   — Runtime manifest for 30 card frame image URLs grouped by mechanic category; device-tier variant selection (hires WebP vs lowres); exports getCardFrameUrl(mechanic, index)
+      cardFrameV2.ts         — V2 layered card frame utility; exports URL getters for border/base/banner/upgrade-icon WebP assets and PSD-derived guide positions for CSS text overlays; device-tier variant selection (hires vs lowres)
       mechanicAnimations.ts  — 5-phase animation system: reveal (250ms) → swoosh (250ms with archetype SFX) → impact (300ms) → discard (200ms). Archetype mappings (attack=slash, shield=pulse, buff=radiate, debuff=tendrils, utility=shimmer, wild=morph); exports PHASE_DURATIONS, CardAnimPhase type, getMechanicAnimClass(), getTypeFallbackAnimClass()
     stores/                gameState, playerData, settings
   data/
