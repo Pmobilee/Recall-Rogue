@@ -204,8 +204,8 @@ async function main(): Promise<void> {
   const browser = await chromium.launch({
     headless,
     args: [
-      '--use-gl=angle',           // Enable WebGL in headless mode
-      '--use-angle=swiftshader',  // Software WebGL renderer
+      '--use-gl=angle',
+      '--use-angle=swiftshader',
       '--enable-webgl',
       '--ignore-gpu-blocklist',
     ],
