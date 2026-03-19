@@ -134,7 +134,7 @@ export class RewardRoomScene extends Phaser.Scene {
     ]
 
     for (const id of MECHANIC_IDS) {
-      this.load.image(`cardframe_${id}`, `/assets/cardframes/lowres/${id}.webp${cb}`)
+      this.load.image(`cardart_${id}`, `/assets/cardart/${id}.png${cb}`)
     }
   }
 
@@ -468,7 +468,7 @@ export class RewardRoomScene extends Phaser.Scene {
 
       case 'card': {
         const mechanicId = reward.card.mechanicId ?? ''
-        const frameKey = `cardframe_${mechanicId}`
+        const frameKey = `cardart_${mechanicId}`
         const hasFrame = this.textures.exists(frameKey)
 
         if (hasFrame) {
