@@ -16,7 +16,7 @@ import { createRng, startRun, selectDomain, playCard, endTurn, answerQuiz, choos
 // ---------------------------------------------------------------------------
 
 /** Maximum duration for a single run (180s — includes shop visits, rest room studies, and first-room retries). */
-const RUN_TIMEOUT_MS = 180_000;
+const RUN_TIMEOUT_MS = 300_000;
 
 /** Max loop iterations to prevent infinite loops. */
 const MAX_ITERATIONS = 5_000;
@@ -1049,7 +1049,18 @@ async function handleScreen(
     case 'retreatOrDelve':
     case 'floor_complete':
     case 'checkpoint': {
-      await handleDelveRetreat(page, profile, state);
+      // Track segment completion
+      const newSeg = ctx.segmentsCompleted + 1;
+      ctx.onSegmentComplete(newSeg);
+      ctx.encountersAtLastDelve = stats.encountersWon;
+
+      if (newSeg >= ctx.MAX_SEGMENTS) {
+        // Reached max segments — retreat for victory
+        stats.result = 'victory';
+        await page.evaluate(() => (window as any).__terraPlay?.retreat?.());
+      } else {
+        await handleDelveRetreat(page, profile, state);
+      }
       await page.waitForTimeout(20);
       break;
     }
