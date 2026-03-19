@@ -657,6 +657,127 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
 }
 
 // ---------------------------------------------------------------------------
+// Card selection strategy
+// ---------------------------------------------------------------------------
+
+/**
+ * Selects the best card index to play based on profile strategy and combat state.
+ * Returns the index (0-4) of the card to play.
+ */
+async function selectCardIndex(
+  page: Page,
+  profile: BotProfile,
+  state: Awaited<ReturnType<typeof readGameState>>,
+  rng: () => number,
+): Promise<number> {
+  // Basic strategy: random
+  if (profile.strategy === 'basic') {
+    return Math.floor(rng() * 5);
+  }
+
+  // Read detailed combat state for smart selection
+  const combat = await page.evaluate(`(function() {
+    var play = window.__terraPlay;
+    if (!play || !play.getCombatState) return null;
+    var cs = play.getCombatState();
+    if (!cs) return null;
+
+    // Also read nextIntent directly from turn state for more accuracy
+    var readStore = function(key) {
+      var sym = Symbol.for(key);
+      var store = globalThis[sym];
+      if (!store || typeof store !== 'object') return null;
+      if (typeof store.subscribe !== 'function') return null;
+      var value = null;
+      store.subscribe(function(v) { value = v; })();
+      return value;
+    };
+    var turn = readStore('terra:activeTurnState');
+    var nextIntent = turn && turn.enemy && turn.enemy.nextIntent;
+
+    return {
+      hand: cs.hand || [],
+      enemyAction: cs.enemyAction || null,
+      enemyIntent: nextIntent ? { type: nextIntent.type || '', value: nextIntent.value || 0, telegraph: nextIntent.telegraph || '' } : null,
+      comboMultiplier: cs.comboMultiplier || 1,
+      playerHp: cs.playerHp || 0,
+      enemyHp: cs.enemyHp || 0,
+      enemyMaxHp: cs.enemyMaxHp || 0,
+    };
+  })()`) as {
+    hand: Array<{ type: string; tier?: number }>;
+    enemyAction: { type?: string; value?: number } | null;
+    enemyIntent: { type: string; value: number; telegraph: string } | null;
+    comboMultiplier: number;
+    playerHp: number;
+    enemyHp: number;
+    enemyMaxHp: number;
+  } | null;
+
+  if (!combat || combat.hand.length === 0) {
+    return Math.floor(rng() * 5);
+  }
+
+  const hand = combat.hand;
+  const enemyAttacking = (combat.enemyIntent?.type === 'attack') || (combat.enemyAction?.type === 'attack');
+  const enemyDamage = combat.enemyIntent?.value ?? combat.enemyAction?.value ?? 0;
+  const hpPct = state.playerMaxHP > 0 ? state.playerHP / state.playerMaxHP : 1;
+  const enemyHpPct = combat.enemyMaxHp > 0 ? combat.enemyHp / combat.enemyMaxHp : 1;
+
+  // Build indices by type
+  const typeIndices: Record<string, number[]> = {};
+  for (let i = 0; i < hand.length; i++) {
+    const t = hand[i].type || 'unknown';
+    if (!typeIndices[t]) typeIndices[t] = [];
+    typeIndices[t].push(i);
+  }
+
+  const pickFrom = (types: string[]): number => {
+    for (const t of types) {
+      if (typeIndices[t] && typeIndices[t].length > 0) {
+        return typeIndices[t][Math.floor(rng() * typeIndices[t].length)];
+      }
+    }
+    // Fallback: any card
+    return Math.floor(rng() * hand.length);
+  };
+
+  // --- Intermediate strategy ---
+  if (profile.strategy === 'intermediate') {
+    if (enemyAttacking && enemyDamage >= 8 && hpPct < 0.6) {
+      return pickFrom(['shield', 'utility', 'buff', 'attack']);
+    }
+    return pickFrom(['attack', 'shield', 'utility', 'buff']);
+  }
+
+  // --- Optimal strategy ---
+  // Priority 1: Shield if enemy is about to deal heavy damage
+  if (enemyAttacking && enemyDamage >= 10 && hpPct < 0.7) {
+    return pickFrom(['shield', 'utility', 'buff', 'attack']);
+  }
+
+  // Priority 2: Shield if critically low HP
+  if (hpPct < 0.3) {
+    return pickFrom(['shield', 'utility', 'attack', 'buff']);
+  }
+
+  // Priority 3: If enemy is low HP, go for the kill with attacks
+  if (enemyHpPct < 0.25) {
+    return pickFrom(['attack', 'debuff', 'wild', 'utility']);
+  }
+
+  // Priority 4: Chain extension — if we have a chain going, try same type
+  if (state.chainLength > 0) {
+    // Try to find a card of the same type as what was last played
+    // Since we don't track last card type here, just prefer attacks (most common chain type)
+    return pickFrom(['attack', 'debuff', 'wild', 'shield', 'utility', 'buff']);
+  }
+
+  // Priority 5: Default — lead with attacks
+  return pickFrom(['attack', 'debuff', 'wild', 'shield', 'utility', 'buff']);
+}
+
+// ---------------------------------------------------------------------------
 // Screen dispatcher
 // ---------------------------------------------------------------------------
 
@@ -690,7 +811,7 @@ async function handleScreen(
     case 'combat': {
       // Decide: Quick Play or Charge?
       const shouldCharge = rng() < profile.chargeRate;
-      const cardIdx = Math.floor(rng() * 5); // Pick random card slot
+      const cardIdx = await selectCardIndex(page, profile, state, rng);
 
       let played = false;
       let ended = false;
