@@ -324,6 +324,63 @@
     cursor: pointer;
   }
 
+  /* Card frame preview for cardart variants */
+  .variant-frame-preview {
+    position: relative;
+    width: 180px;
+    aspect-ratio: 886 / 1142;
+    overflow: hidden;
+    border-radius: 0;
+    background: transparent;
+    border: none;
+    cursor: zoom-in;
+    transition: filter 0.15s;
+  }
+  .variant-frame-preview:hover { filter: brightness(1.1); }
+  .variant-frame-preview.accepted { outline: 2px solid #4ecca3; outline-offset: 2px; }
+  .variant-frame-preview .frame-layer {
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    pointer-events: none;
+    image-rendering: pixelated;
+  }
+  .variant-frame-preview .art-in-frame {
+    position: absolute;
+    /* Stretch beyond pentagon bounds so it fully covers the window */
+    left: 14%;
+    top: 12%;
+    width: 72%;
+    height: 48%;
+    object-fit: cover;
+    image-rendering: pixelated;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .variant-frame-preview .variant-status-badge {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    font-size: 0.6rem;
+    padding: 1px 4px;
+    border-radius: 3px;
+    z-index: 20;
+  }
+  .variant-frame-preview .accepted-badge {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    font-size: 0.6rem;
+    background: rgba(78,204,163,0.9);
+    color: #000;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-weight: 700;
+    z-index: 20;
+  }
+
   .variant-img-wrap {
     position: relative;
     width: 140px;
@@ -706,7 +763,40 @@
 
   function buildVariantHTML(item, v) {
     const imgUrl = `/api/artstudio/image/${currentTab}/${item.id}/${v.variant}?t=${Date.now()}`;
-    const hasImage = v.status === 'done' || v.status === 'error';
+    const isCardArt = currentTab === 'cardart';
+
+    // For cardart: show art inside the card frame preview
+    if (isCardArt) {
+      const borderFile = {attack:'attack',shield:'shield',buff:'buff',debuff:'debuff',utility:'utility',wild:'wild'}[item.cardType || 'attack'] || 'attack';
+      return `
+        <div class="variant-card" id="vc-${item.id}-${v.variant}">
+          <div class="variant-frame-preview ${v.accepted ? 'accepted' : ''}"
+               onclick="${v.status === 'done' ? `openLightbox('${imgUrl}', '${esc(item.name)} — Variant ${v.variant}')` : ''}">
+            <!-- Layer 1: Border (back) -->
+            <img class="frame-layer" src="/card-frame-assets/card-border-${borderFile}.webp" alt="" style="z-index:1;">
+            <!-- Layer 2: Art (in pentagon window) -->
+            ${v.status === 'generating' || v.status === 'pending'
+              ? '<div class="variant-spinner" style="z-index:2;position:absolute;left:30%;top:25%;"></div>'
+              : v.status === 'error'
+                ? `<span style="color:#ff6666;font-size:0.7rem;padding:8px;text-align:center;z-index:2;position:absolute;top:30%;left:20%;">Error</span>`
+                : `<img class="art-in-frame" src="${imgUrl}" alt="Art" loading="lazy" style="z-index:2;">`}
+            <!-- Layer 3: Base frame (on top, transparent window shows art+border) -->
+            <img class="frame-layer" src="/card-frame-assets/card-frame-base.webp" alt="" style="z-index:3;">
+            <!-- Layer 4: Banner (topmost) -->
+            <img class="frame-layer" src="/card-frame-assets/card-banner-chain0.webp" alt="" style="z-index:4;">
+            <span class="variant-status-badge badge-${v.status}" style="z-index:10;">${v.status}</span>
+            ${v.accepted ? '<span class="accepted-badge">Accepted</span>' : ''}
+          </div>
+          <div class="variant-label">Variant ${v.variant}</div>
+          <div class="variant-btn-row">
+            ${v.status === 'done' ? `<button class="btn-accept ${v.accepted ? 'accepted' : ''}"
+              onclick="acceptVariant('${item.id}', ${v.variant})">${v.accepted ? 'Accepted' : 'Accept'}</button>` : ''}
+          </div>
+        </div>
+      `;
+    }
+
+    // Default: plain image preview for cardframes/enemies
     return `
       <div class="variant-card" id="vc-${item.id}-${v.variant}">
         <div class="variant-img-wrap ${v.accepted ? 'accepted' : ''}"

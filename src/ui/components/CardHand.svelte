@@ -6,6 +6,7 @@
   import { type CardAnimPhase } from '../utils/mechanicAnimations'
   import { getTierDisplayName } from '../../services/tierDerivation'
   import { getBorderUrl, getBaseFrameUrl, getBannerUrl, getUpgradeIconUrl, GUIDE_STYLES } from '../utils/cardFrameV2'
+  import { getCardArtUrl } from '../utils/cardArtManifest'
   import { getShortCardDescription } from '../../services/cardDescriptionService'
   import { getCardDescriptionParts, type CardDescPart } from '../../services/cardDescriptionService'
   import { BASE_WIDTH, GAME_ASPECT_RATIO } from '../../data/layout'
@@ -674,6 +675,13 @@
           <div class="card-v2-frame">
             <!-- Layer 1: Border (by card type) -->
             <img class="frame-layer" src={getBorderUrl(card.cardType)} alt="" />
+            <!-- Layer 1.5: Card art in pentagon window (behind base frame mask) -->
+            {#if card.mechanicId}
+              {@const artUrl = getCardArtUrl(card.mechanicId)}
+              {#if artUrl}
+                <img class="frame-card-art" src={artUrl} alt="" />
+              {/if}
+            {/if}
             <!-- Layer 2: Base frame (constant) -->
             <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
             <!-- Layer 3: Banner (by chain type) -->
@@ -824,6 +832,12 @@
           <!-- V2 layered frame system -->
           <div class="card-v2-frame">
             <img class="frame-layer" src={getBorderUrl(card.cardType)} alt="" />
+            {#if card.mechanicId}
+              {@const artUrl = getCardArtUrl(card.mechanicId)}
+              {#if artUrl}
+                <img class="frame-card-art" src={artUrl} alt="" />
+              {/if}
+            {/if}
             <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
             <img class="frame-layer" src={getBannerUrl(card.chainType ?? 0)} alt="" />
             {#if card.isUpgraded}
@@ -1009,6 +1023,13 @@
           <div class="card-v2-frame">
             <!-- Layer 1: Border (by card type) -->
             <img class="frame-layer" src={getBorderUrl(card.cardType)} alt="" />
+            <!-- Layer 1.5: Card art in pentagon window (behind base frame mask) -->
+            {#if card.mechanicId}
+              {@const artUrl = getCardArtUrl(card.mechanicId)}
+              {#if artUrl}
+                <img class="frame-card-art" src={artUrl} alt="" />
+              {/if}
+            {/if}
             <!-- Layer 2: Base frame (constant) -->
             <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
             <!-- Layer 3: Banner (by chain type) -->
@@ -1174,6 +1195,12 @@
           <!-- V2 layered frame system -->
           <div class="card-v2-frame">
             <img class="frame-layer" src={getBorderUrl(card.cardType)} alt="" />
+            {#if card.mechanicId}
+              {@const artUrl = getCardArtUrl(card.mechanicId)}
+              {#if artUrl}
+                <img class="frame-card-art" src={artUrl} alt="" />
+              {/if}
+            {/if}
             <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
             <img class="frame-layer" src={getBannerUrl(card.chainType ?? 0)} alt="" />
             {#if card.isUpgraded}
@@ -1395,6 +1422,18 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+    pointer-events: none;
+  }
+
+  .frame-card-art {
+    position: absolute;
+    /* Cover the pentagon art window area — base frame masks edges naturally */
+    left: 14%;
+    top: 12%;
+    width: 72%;
+    height: 48%;
+    object-fit: cover;
+    image-rendering: auto; /* smooth for photo-like art */
     pointer-events: none;
   }
 
