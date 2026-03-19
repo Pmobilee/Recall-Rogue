@@ -1,0 +1,15 @@
+{
+  "extends": "../../../tsconfig.app.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "svelte/store": ["./svelte-shim"],
+      "svelte": ["./svelte-shim"]
+    },
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "target": "ES2022",
+    "noEmit": true
+  },
+  "include": ["./**/*.ts", "../../../src/**/*.ts"]
+}
