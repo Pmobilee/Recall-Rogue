@@ -19,7 +19,7 @@ import { createRng, startRun, selectDomain, playCard, endTurn, answerQuiz, choos
 const RUN_TIMEOUT_MS = 300_000;
 
 /** Max loop iterations to prevent infinite loops. */
-const MAX_ITERATIONS = 5_000;
+const MAX_ITERATIONS = 15_000;
 
 /** How many same-screen iterations before declaring the bot stuck. */
 const STUCK_THRESHOLD = 50;
@@ -271,7 +271,7 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
           // Wait and check if we actually entered combat
           await page.waitForTimeout(500);
           const afterSelect = await readGameState(page);
-          if (afterSelect.currentScreen !== 'dungeonMap' && afterSelect.currentScreen !== 'map') {
+          if (afterSelect.currentScreen !== 'dungeonMap' && afterSelect.currentScreen !== 'map' && afterSelect.currentScreen !== 'unknown') {
             enteredFirstRoom = true;
           }
         }
@@ -284,6 +284,9 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
       stats.durationMs = Date.now() - startTime;
       return stats;
     }
+
+    // Wait for combat scene to fully initialize after first room entry
+    await page.waitForTimeout(1500);
 
     // Read initial detailed state for baseline tracking
     try {
@@ -319,6 +322,12 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
       } catch {
         // Context destroyed (page navigation) — wait and retry
         await page.waitForTimeout(50);
+        continue;
+      }
+
+      // Skip unknown screens — Phaser scene loading, wait and retry
+      if (state.currentScreen === 'unknown') {
+        await page.waitForTimeout(100);
         continue;
       }
 
@@ -784,12 +793,16 @@ async function handleScreen(
         }
       }
 
-      // If still nothing worked, wait for state transition and retry endTurn
+      // If still nothing worked, wait longer for combat to initialize
       if (!played && !ended) {
-        await page.waitForTimeout(200);
+        await page.waitForTimeout(500);
+        // Retry endTurn
         const retryEnd = await page.evaluate(() => (window as any).__terraPlay?.endTurn?.());
         if (retryEnd?.ok) {
           stats.totalTurns++;
+        } else {
+          // Combat might not be ready — wait more
+          await page.waitForTimeout(1000);
         }
       }
 
@@ -1054,8 +1067,10 @@ async function handleScreen(
       ctx.onSegmentComplete(newSeg);
       ctx.encountersAtLastDelve = stats.encountersWon;
 
-      if (newSeg >= ctx.MAX_SEGMENTS) {
-        // Reached max segments — retreat for victory
+      // Retreat if reached max segments OR deep enough floor (backup)
+      const shouldRetreatVictory = newSeg >= ctx.MAX_SEGMENTS || stats.finalFloor >= 18;
+      if (shouldRetreatVictory) {
+        // Reached deep enough — retreat for victory
         stats.result = 'victory';
         await page.evaluate(() => (window as any).__terraPlay?.retreat?.());
       } else {
