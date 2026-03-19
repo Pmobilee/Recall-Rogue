@@ -265,22 +265,13 @@ export async function handleCardReward(page: Page, profile: BotProfile, rng: () 
 // ---------------------------------------------------------------------------
 
 /**
- * Handles the delve/retreat decision. Always delves unless the bot is at very low HP
- * and the strategy is 'basic' (casual players quit when nearly dead).
+ * Handles the delve/retreat decision. ALWAYS delves — never retreats.
+ * Bots push until death or game-declared victory for maximum balance data.
  */
-export async function handleDelveRetreat(page: Page, profile: BotProfile, state: GameState): Promise<boolean> {
-  const hpFrac = state.playerMaxHP > 0 ? state.playerHP / state.playerMaxHP : 1;
-  const shouldRetreat = profile.strategy === 'basic' && hpFrac < 0.25;
-
-  if (shouldRetreat) {
-    const result = await callPlayAPI(page, 'retreat') as { ok: boolean } | null;
-    if (result?.ok) return true;
-    return clickTestId(page, 'btn-retreat');
-  }
-
+export async function handleDelveRetreat(page: Page, _profile: BotProfile, _state: GameState): Promise<boolean> {
   const result = await callPlayAPI(page, 'delve') as { ok: boolean } | null;
   if (result?.ok) return true;
-  return clickTestId(page, 'btn-delve') || clickTestId(page, 'btn-retreat');
+  return clickTestId(page, 'btn-delve');
 }
 
 /**

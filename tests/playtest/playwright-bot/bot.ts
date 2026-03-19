@@ -1012,13 +1012,7 @@ async function handleScreen(
         if (bossVisited && stats.encountersWon > ctx.encountersAtLastDelve) {
           const newSegCount = ctx.segmentsCompleted + 1;
           ctx.onSegmentComplete(newSegCount);
-          if (newSegCount >= ctx.MAX_SEGMENTS) {
-            // Run complete — retreat (cash out)
-            stats.result = 'victory';
-            await page.evaluate(() => (window as any).__terraPlay?.retreat?.());
-            break;
-          }
-          // Segment complete — delve deeper
+          // Always delve deeper — never retreat. Push until death or game victory.
           const delveResult = await page.evaluate(() => (window as any).__terraPlay?.delve?.());
           if (!delveResult?.ok) {
             await page.evaluate(() => (window as any).__terraPlay?.navigate?.('retreatOrDelve'));
@@ -1188,14 +1182,11 @@ async function handleScreen(
       ctx.onSegmentComplete(newSeg);
       ctx.encountersAtLastDelve = stats.encountersWon;
 
-      // Retreat if reached max segments OR deep enough floor (backup)
-      const shouldRetreatVictory = newSeg >= ctx.MAX_SEGMENTS || stats.finalFloor >= 18;
-      if (shouldRetreatVictory) {
-        // Reached deep enough — retreat for victory
-        stats.result = 'victory';
-        await page.evaluate(() => (window as any).__terraPlay?.retreat?.());
-      } else {
-        await handleDelveRetreat(page, profile, state);
+      // Always delve — never retreat. Push until death or game-declared victory.
+      const delveResult = await page.evaluate(() => (window as any).__terraPlay?.delve?.());
+      if (!delveResult?.ok) {
+        // Fallback: click the delve button directly
+        await clickTestId(page, 'btn-delve', 1000);
       }
       await page.waitForTimeout(20);
       break;
