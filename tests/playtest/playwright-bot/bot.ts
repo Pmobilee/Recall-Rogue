@@ -892,69 +892,64 @@ async function handleScreen(
     case 'combat': {
       // Wait for hand to be ready if empty (combat scene still loading)
       if (state.handSize === 0) {
-        // Track how many times we've seen empty hand in combat
-        if (!stats._emptyHandCount) (stats as any)._emptyHandCount = 0;
+        if (!(stats as any)._emptyHandCount) (stats as any)._emptyHandCount = 0;
         (stats as any)._emptyHandCount++;
-
-        // After 10 empty-hand iterations (~5s), try to force encounter start
         if ((stats as any)._emptyHandCount === 10) {
           await page.evaluate(`(function() {
-            // Try dynamic import of encounterBridge to force-start
             import('/src/services/encounterBridge.ts').then(function(mod) {
               if (mod.startEncounterForRoom) mod.startEncounterForRoom();
             }).catch(function() {});
           })()`);
         }
-
-        // After 20 empty-hand iterations (~10s), try re-clicking current map node
         if ((stats as any)._emptyHandCount === 20) {
           await page.evaluate(`(function() {
             var nodes = document.querySelectorAll('[data-testid^="map-node-"].state-current');
             if (nodes.length > 0) nodes[0].click();
           })()`);
         }
-
         await page.waitForTimeout(500);
-        break; // Re-read state next iteration
+        break;
       }
-      // Reset empty hand counter when hand appears
       (stats as any)._emptyHandCount = 0;
 
-      // Decide: Quick Play or Charge?
-      const shouldCharge = rng() < profile.chargeRate;
-      const cardIdx = await selectCardIndex(page, profile, state, rng);
+      // Play ALL cards this turn in a tight loop until AP runs out or hand is empty
+      let cardsPlayedThisTurn = 0;
+      const MAX_CARDS_PER_TURN = 5; // Safety limit
 
-      let played = false;
-      let ended = false;
-
-      if (shouldCharge) {
-        // Charge: answer correctly based on quiz accuracy
-        const answerCorrectly = rng() < profile.quizAccuracy;
-        const result = await page.evaluate(
-          ([idx, correct]) => (window as any).__terraPlay?.chargePlayCard?.(idx, correct),
-          [cardIdx, answerCorrectly] as [number, boolean],
-        );
-        if (result?.ok) {
-          stats.totalCardsPlayed++;
-          stats.totalCharges++;
-          ctx.encounterCounters.cardsPlayed++;
-          ctx.encounterCounters.charges++;
-          if (result?.state?.cardType) {
-            const ct = String(result.state.cardType);
-            if (!stats.cardTypeStats[ct]) stats.cardTypeStats[ct] = { played: 0, charged: 0, quickPlayed: 0 };
-            stats.cardTypeStats[ct].played++;
-            stats.cardTypeStats[ct].charged++;
-          }
-          if (answerCorrectly) stats.quizCorrect++;
-          else stats.quizWrong++;
-          played = true;
+      for (let cardAttempt = 0; cardAttempt < MAX_CARDS_PER_TURN; cardAttempt++) {
+        // Re-read state to get current hand/AP after each card play
+        let currentState: Awaited<ReturnType<typeof readGameState>>;
+        if (cardAttempt === 0) {
+          currentState = state; // Use the already-read state for first card
         } else {
-          // Try other card indices before giving up
-          for (let i = 0; i < 5 && !played; i++) {
-            if (i === cardIdx) continue;
+          try {
+            currentState = await readGameState(page);
+          } catch {
+            break; // Context destroyed
+          }
+          // Check if we're still in combat (enemy might have died, or turn ended)
+          if (currentState.currentScreen !== 'combat') break;
+          if (currentState.handSize === 0) break;
+          // Check if enemy is dead
+          if (currentState.enemyHP <= 0 && currentState.enemyMaxHP > 0) break;
+        }
+
+        // Select card using smart strategy
+        const cardIdx = await selectCardIndex(page, profile, currentState, rng);
+        const shouldCharge = rng() < profile.chargeRate;
+
+        let played = false;
+
+        // Try preferred index first, then all others as fallback
+        const tryOrder = [cardIdx, ...Array.from({ length: 5 }, (_, i) => i).filter(i => i !== cardIdx)];
+
+        if (shouldCharge) {
+          const answerCorrectly = rng() < profile.quizAccuracy;
+          for (const idx of tryOrder) {
+            if (played) break;
             const r = await page.evaluate(
-              ([idx, correct]) => (window as any).__terraPlay?.chargePlayCard?.(idx, correct),
-              [i, answerCorrectly] as [number, boolean],
+              ([ii, correct]) => (window as any).__terraPlay?.chargePlayCard?.(ii, correct),
+              [idx, answerCorrectly] as [number, boolean],
             );
             if (r?.ok) {
               stats.totalCardsPlayed++;
@@ -970,34 +965,16 @@ async function handleScreen(
               if (answerCorrectly) stats.quizCorrect++;
               else stats.quizWrong++;
               played = true;
+              cardsPlayedThisTurn++;
             }
           }
-        }
-      } else {
-        // Quick Play
-        const result = await page.evaluate(
-          (idx) => (window as any).__terraPlay?.quickPlayCard?.(idx),
-          cardIdx,
-        );
-        if (result?.ok) {
-          stats.totalCardsPlayed++;
-          stats.totalQuickPlays++;
-          ctx.encounterCounters.cardsPlayed++;
-          ctx.encounterCounters.quickPlays++;
-          if (result?.state?.cardType) {
-            const ct = String(result.state.cardType);
-            if (!stats.cardTypeStats[ct]) stats.cardTypeStats[ct] = { played: 0, charged: 0, quickPlayed: 0 };
-            stats.cardTypeStats[ct].played++;
-            stats.cardTypeStats[ct].quickPlayed++;
-          }
-          played = true;
         } else {
-          // Try other card indices
-          for (let i = 0; i < 5 && !played; i++) {
-            if (i === cardIdx) continue;
+          // Quick Play
+          for (const idx of tryOrder) {
+            if (played) break;
             const r = await page.evaluate(
-              (idx) => (window as any).__terraPlay?.quickPlayCard?.(idx),
-              i,
+              (ii) => (window as any).__terraPlay?.quickPlayCard?.(ii),
+              idx,
             );
             if (r?.ok) {
               stats.totalCardsPlayed++;
@@ -1011,30 +988,31 @@ async function handleScreen(
                 stats.cardTypeStats[ct].quickPlayed++;
               }
               played = true;
+              cardsPlayedThisTurn++;
             }
           }
         }
+
+        // If no card could be played, AP is probably 0 — stop
+        if (!played) break;
+
+        // Small pause between cards to let state settle
+        await page.waitForTimeout(5);
       }
 
-      // If no card played, end turn
-      if (!played) {
+      // After playing all cards, end the turn
+      if (cardsPlayedThisTurn > 0) {
         const endResult = await page.evaluate(() => (window as any).__terraPlay?.endTurn?.());
         if (endResult?.ok) {
           stats.totalTurns++;
-          ended = true;
         }
-      }
-
-      // If still nothing worked, wait longer for combat to initialize
-      if (!played && !ended) {
-        await page.waitForTimeout(500);
-        // Retry endTurn
-        const retryEnd = await page.evaluate(() => (window as any).__terraPlay?.endTurn?.());
-        if (retryEnd?.ok) {
+      } else {
+        // No cards played at all — try endTurn anyway
+        const endResult = await page.evaluate(() => (window as any).__terraPlay?.endTurn?.());
+        if (endResult?.ok) {
           stats.totalTurns++;
         } else {
-          // Combat might not be ready — wait more
-          await page.waitForTimeout(1000);
+          await page.waitForTimeout(500);
         }
       }
 
