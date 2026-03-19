@@ -165,7 +165,7 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
     });
 
     // Step 2: Fresh navigate with turbo mode — no reload needed!
-    await page.goto('http://localhost:5173?skipOnboarding=true&turbo=true', {
+    await page.goto('http://localhost:5173?skipOnboarding=true&turbo=true&botMode=true', {
       waitUntil: 'networkidle',
       timeout: 15_000,
     });

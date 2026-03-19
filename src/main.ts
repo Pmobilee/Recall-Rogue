@@ -177,6 +177,11 @@ async function bootGame(): Promise<void> {
   if (turboMode) {
     (globalThis as Record<symbol, unknown>)[Symbol.for('terra:turboMode')] = true;
   }
+
+  // Bot mode: disable Phaser rendering for headless simulation (massive CPU savings)
+  if (import.meta.env.DEV && urlParams.has('botMode')) {
+    (globalThis as Record<symbol, unknown>)[Symbol.for('terra:botMode')] = true;
+  }
   if (!hasDevPreset) {
     currentScreen.set('hub')
   }

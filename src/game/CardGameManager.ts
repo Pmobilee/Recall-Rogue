@@ -37,8 +37,10 @@ export class CardGameManager {
     const bootMode = get(layoutMode)
     const bootCanvas = getCanvasForMode(bootMode)
 
+    const isBotMode = (globalThis as Record<symbol, unknown>)[Symbol.for('terra:botMode')] === true;
+
     this.game = new Phaser.Game({
-      type: Phaser.AUTO,
+      type: isBotMode ? Phaser.HEADLESS : Phaser.AUTO,
       parent: 'phaser-container',
       width: bootCanvas.width,
       height: bootCanvas.height,
