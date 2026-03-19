@@ -15,9 +15,10 @@ import type { CardType } from '../../data/card-types'
 export const FRAME_WIDTH = 886
 export const FRAME_HEIGHT = 1142
 
-// Asset base paths
+// Asset base paths — cache bust v2 to force reload after banner color updates
 const V2_BASE = '/assets/cardframes/v2'
 const V2_LOWRES = '/assets/cardframes/v2/lowres'
+const CB = `?v=${Date.now()}`
 
 // Border filename by card type
 const BORDER_MAP: Record<CardType, string> = {
@@ -41,24 +42,24 @@ const BANNER_MAP: Record<number, string> = {
 
 /** Get URL for the base frame layer (constant, sits over the border). */
 export function getBaseFrameUrl(lowres = false): string {
-  return `${lowres ? V2_LOWRES : V2_BASE}/card-frame-base.webp`
+  return `${lowres ? V2_LOWRES : V2_BASE}/card-frame-base.webp${CB}`
 }
 
 /** Get URL for the border layer, selected by card type. */
 export function getBorderUrl(cardType: CardType, lowres = false): string {
   const file = BORDER_MAP[cardType] ?? BORDER_MAP.attack
-  return `${lowres ? V2_LOWRES : V2_BASE}/${file}`
+  return `${lowres ? V2_LOWRES : V2_BASE}/${file}${CB}`
 }
 
 /** Get URL for the banner layer, selected by chain type (0–5). */
 export function getBannerUrl(chainType: number, lowres = false): string {
   const file = BANNER_MAP[chainType] ?? BANNER_MAP[0]
-  return `${lowres ? V2_LOWRES : V2_BASE}/${file}`
+  return `${lowres ? V2_LOWRES : V2_BASE}/${file}${CB}`
 }
 
 /** Get URL for the upgrade icon layer (shown only when card.isUpgraded). */
 export function getUpgradeIconUrl(lowres = false): string {
-  return `${lowres ? V2_LOWRES : V2_BASE}/card-upgrade-icon.webp`
+  return `${lowres ? V2_LOWRES : V2_BASE}/card-upgrade-icon.webp${CB}`
 }
 
 /**

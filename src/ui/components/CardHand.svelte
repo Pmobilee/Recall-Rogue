@@ -579,12 +579,20 @@
     }) })
   }
 
+  // DEBUG: log chain types
+  $effect(() => {
+    if (cards.length > 0) {
+      console.log('[CardHand DEBUG] Chain types:', cards.map((c, i) => `${i}:${c.mechanicName}=chain${c.chainType}`).join(', '))
+    }
+  })
+
 </script>
 
 {#if $isLandscape}
 <!-- AR-73: Landscape card hand — full viewport width bottom strip -->
 <div class="card-hand-landscape" class:card-hand-discard={discarding} class:card-hand-quiz-dimmed={quizVisible && $isLandscape} role="group" aria-label="Card hand">
   {#each cards as card, i (card.id)}
+    <!-- debug removed -->
     {@const isSelected = selectedIndex === i}
     {@const isOther = selectedIndex !== null && !isSelected}
     {@const domainColor = getDomainColor(card.domain)}
