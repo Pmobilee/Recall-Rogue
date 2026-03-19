@@ -148,6 +148,11 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
   let encounterPlayerHpStart = 0;
   let encounterFloor = 0;
 
+  // Rolling state snapshot — updated on every screen transition while state is available
+  let lastKnownGold = 0;
+  let lastKnownRelics: Array<{ definitionId: string; acquiredAtFloor: number; triggerCount: number }> = [];
+  let lastKnownDeckSize = 0;
+
   try {
     // Step 1: Quick navigate to set localStorage (marks onboarding complete)
     await page.goto('http://localhost:5173', { waitUntil: 'domcontentloaded', timeout: 10_000 });
@@ -286,7 +291,8 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
     }
 
     // Wait for combat to be fully ready (hand populated, AP available)
-    for (let waitAttempt = 0; waitAttempt < 30; waitAttempt++) {
+    let combatReady = false;
+    for (let waitAttempt = 0; waitAttempt < 20; waitAttempt++) {
       await page.waitForTimeout(500);
       const ready = await page.evaluate(`(function() {
         var play = window.__terraPlay;
@@ -295,7 +301,43 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
         if (!cs) return false;
         return cs.handSize > 0;
       })()`);
-      if (ready) break;
+      if (ready) { combatReady = true; break; }
+
+      // After 5s, force-start the encounter if turn state is missing
+      if (waitAttempt === 10) {
+        await page.evaluate(`(function() {
+          var m = typeof require !== 'undefined' ? null : null;
+          // Force encounter start via encounterBridge import
+          import('/src/services/encounterBridge.ts').then(function(mod) {
+            if (mod.startEncounterForRoom) mod.startEncounterForRoom();
+          }).catch(function() {});
+        })()`);
+      }
+    }
+
+    // If still not ready, try re-clicking the map node
+    if (!combatReady) {
+      const retryNodes = await page.evaluate(`
+        (function() {
+          var nodes = document.querySelectorAll('[data-testid^="map-node-"]');
+          var current = [];
+          for (var i = 0; i < nodes.length; i++) {
+            var el = nodes[i];
+            if (el.classList.contains('state-current') && el.offsetParent !== null) {
+              current.push(el.getAttribute('data-testid'));
+            }
+          }
+          return current;
+        })()
+      `) as string[];
+      if (retryNodes.length > 0) {
+        const nodeId = retryNodes[0].replace('map-node-', '');
+        await page.evaluate(
+          (id) => (window as any).__terraPlay?.selectMapNode?.(id),
+          nodeId,
+        );
+        await page.waitForTimeout(2000);
+      }
     }
 
     // Read initial detailed state for baseline tracking
@@ -344,6 +386,16 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
       // Screen transition logging + combat-exit detection
       if (state.currentScreen !== lastScreen) {
         logScreen(stats, state.currentScreen, startTime);
+
+        // Snapshot run state while it's available (before death clears it)
+        try {
+          const snap = await readDetailedState(page);
+          if (snap.gold > 0 || snap.relicDetails?.length > 0) {
+            lastKnownGold = snap.gold;
+            lastKnownRelics = snap.relicDetails ?? [];
+            lastKnownDeckSize = snap.deckSize;
+          }
+        } catch { /* non-critical */ }
 
         // Detect combat exit: screen changed away from combat while inCombat
         if (inCombat && lastScreen === 'combat' && state.currentScreen !== 'combat') {
@@ -657,6 +709,20 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
       // Non-critical
     }
 
+    // Fallback: use rolling snapshots if final read returned empty
+    if (stats.finalGold === 0 && lastKnownGold > 0) {
+      stats.finalGold = lastKnownGold;
+      stats.goldEarned = Math.max(stats.goldEarned, lastKnownGold + stats.goldSpent);
+    }
+    if (stats.relicDetails.length === 0 && lastKnownRelics.length > 0) {
+      stats.relicDetails = lastKnownRelics;
+      stats.relicsEarned = lastKnownRelics.map(r => r.definitionId);
+      stats.finalRelicCount = lastKnownRelics.length;
+    }
+    if (stats.finalDeckSize === 0 && lastKnownDeckSize > 0) {
+      stats.finalDeckSize = lastKnownDeckSize;
+    }
+
   } catch (err: unknown) {
     stats.result = 'error';
     stats.errors.push(err instanceof Error ? err.message : String(err));
@@ -821,9 +887,33 @@ async function handleScreen(
     case 'combat': {
       // Wait for hand to be ready if empty (combat scene still loading)
       if (state.handSize === 0) {
+        // Track how many times we've seen empty hand in combat
+        if (!stats._emptyHandCount) (stats as any)._emptyHandCount = 0;
+        (stats as any)._emptyHandCount++;
+
+        // After 10 empty-hand iterations (~5s), try to force encounter start
+        if ((stats as any)._emptyHandCount === 10) {
+          await page.evaluate(`(function() {
+            // Try dynamic import of encounterBridge to force-start
+            import('/src/services/encounterBridge.ts').then(function(mod) {
+              if (mod.startEncounterForRoom) mod.startEncounterForRoom();
+            }).catch(function() {});
+          })()`);
+        }
+
+        // After 20 empty-hand iterations (~10s), try re-clicking current map node
+        if ((stats as any)._emptyHandCount === 20) {
+          await page.evaluate(`(function() {
+            var nodes = document.querySelectorAll('[data-testid^="map-node-"].state-current');
+            if (nodes.length > 0) nodes[0].click();
+          })()`);
+        }
+
         await page.waitForTimeout(500);
         break; // Re-read state next iteration
       }
+      // Reset empty hand counter when hand appears
+      (stats as any)._emptyHandCount = 0;
 
       // Decide: Quick Play or Charge?
       const shouldCharge = rng() < profile.chargeRate;

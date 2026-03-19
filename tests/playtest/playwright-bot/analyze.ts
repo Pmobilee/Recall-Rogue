@@ -79,7 +79,10 @@ const raw = JSON.parse(fs.readFileSync(inputPath, 'utf-8')) as {
   runs: BotRunStats[];
 };
 
-const runs = raw.runs;
+// Filter out errors and timeouts — only analyze completed runs
+const allRuns: BotRunStats[] = raw.runs;
+const runs = allRuns.filter(r => r.result === 'victory' || r.result === 'defeat');
+const excluded = allRuns.length - runs.length;
 const totalRuns = runs.length;
 
 // ---------------------------------------------------------------------------
@@ -98,25 +101,18 @@ push(divider('1. OVERVIEW'));
 
 const victories = runs.filter((r) => r.result === 'victory').length;
 const defeats = runs.filter((r) => r.result === 'defeat').length;
-const errors = runs.filter((r) => r.result === 'error').length;
-const timeouts = runs.filter((r) => r.result === 'timeout').length;
-const successfulRuns = victories + defeats;
-const successRate = pct(successfulRuns, totalRuns);
 const totalDurationMs = runs.reduce((sum, r) => sum + (r.durationMs ?? 0), 0);
 const totalPlayTimeSec = (totalDurationMs / 1000).toFixed(0);
 const totalPlayTimeMin = (totalDurationMs / 60000).toFixed(1);
 
 push(
   ``,
-  `  Total runs        : ${totalRuns}`,
-  `  Success rate      : ${successRate}  (${successfulRuns} completed without error/timeout)`,
+  `  Total runs        : ${totalRuns}  (${excluded} errors/timeouts excluded)`,
+  `  Victories         : ${pad(victories, 5)}  (${pct(victories, totalRuns)})`,
+  `  Defeats           : ${pad(defeats, 5)}  (${pct(defeats, totalRuns)})`,
   `  Total play time   : ${totalPlayTimeSec}s  (${totalPlayTimeMin} min)`,
   `  Data timestamp    : ${raw.timestamp ?? 'unknown'}`,
   ``,
-  `  Victories  : ${pad(victories, 5)}  (${pct(victories, totalRuns)})`,
-  `  Defeats    : ${pad(defeats, 5)}  (${pct(defeats, totalRuns)})`,
-  `  Errors     : ${pad(errors, 5)}  (${pct(errors, totalRuns)})`,
-  `  Timeouts   : ${pad(timeouts, 5)}  (${pct(timeouts, totalRuns)})`,
 );
 
 // -----------------------------------------------------------------------
@@ -534,8 +530,10 @@ relicStats.forEach((r) => {
   }
 });
 
-// Error rate
-const overallErrorRate = (errors + timeouts) / Math.max(totalRuns, 1);
+// Error rate (from all runs before filtering)
+const errorCount = allRuns.filter((r) => r.result === 'error').length;
+const timeoutCount = allRuns.filter((r) => r.result === 'timeout').length;
+const overallErrorRate = (errorCount + timeoutCount) / Math.max(allRuns.length, 1);
 if (overallErrorRate > 0.2) {
   recommendations.push(
     `  [BOT]     High error rate (${Math.round(overallErrorRate * 100)}%) — bot reliability needs improvement`,
