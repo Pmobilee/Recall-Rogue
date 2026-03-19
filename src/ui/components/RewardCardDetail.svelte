@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Card } from '../../data/card-types'
-  import { getCardFrameUrl } from '../utils/cardFrameManifest'
+  import { getBorderUrl, getBaseFrameUrl, getBannerUrl, getUpgradeIconUrl } from '../utils/cardFrameV2'
+  import { getCardArtUrl } from '../utils/cardArtManifest'
   import { getCardDescriptionParts } from '../../services/cardDescriptionService'
 
   interface Props {
@@ -11,7 +12,6 @@
 
   let { card, onaccept, onreject }: Props = $props()
 
-  let cardFrameUrl = $derived(getCardFrameUrl(card.mechanicId))
   let apCost = $derived(card.apCost ?? 1)
 
   const CARD_TYPE_COLORS: Record<string, string> = {
@@ -32,33 +32,43 @@
   <div class="detail-container">
     <!-- Card rendered IDENTICALLY to CardHand.svelte -->
     <div
-      class="card-in-hand card-has-frame"
+      class="card-in-hand"
       class:card-upgraded={card.isUpgraded}
       style="--type-color: {typeColor};"
     >
       <div class="card-inner">
         <div class="card-front">
-          {#if cardFrameUrl}
-            <img class="card-frame-img" src={cardFrameUrl} alt={card.mechanicName ?? card.cardType} />
-            <div class="ap-gem">{apCost}</div>
-            <div class="card-parchment-text">
-              <span class="parchment-inner">
-                {#each getCardDescriptionParts(card) as part}
-                  {#if part.type === 'number'}
-                    <span class="desc-number">{part.value}</span>
-                  {:else if part.type === 'keyword'}
-                    <span class="desc-keyword">{part.value}</span>
-                  {:else if part.type === 'conditional-number'}
-                    <span class="desc-conditional" class:active={part.active}>{part.active ? part.value : '0'}</span>
-                  {:else}
-                    {part.value}
-                  {/if}
-                {/each}
-              </span>
-            </div>
-          {:else}
-            <div class="card-front-name">{card.mechanicName ?? card.cardType}</div>
-          {/if}
+          <!-- V2 layered frame -->
+          <div class="card-v2-frame">
+            <img class="frame-layer" src={getBorderUrl(card.cardType)} alt="" style="z-index:0;" />
+            {#if card.mechanicId}
+              {@const artUrl = getCardArtUrl(card.mechanicId)}
+              {#if artUrl}
+                <img class="frame-card-art" src={artUrl} alt="" style="z-index:1;" />
+              {/if}
+            {/if}
+            <img class="frame-layer" src={getBaseFrameUrl()} alt="" style="z-index:2;" />
+            <img class="frame-layer" src={getBannerUrl(card.chainType ?? 0)} alt="" style="z-index:3;" />
+            {#if card.isUpgraded}
+              <img class="frame-layer upgrade-icon" src={getUpgradeIconUrl()} alt="" style="z-index:4;" />
+            {/if}
+          </div>
+          <div class="ap-gem">{apCost}</div>
+          <div class="card-parchment-text">
+            <span class="parchment-inner">
+              {#each getCardDescriptionParts(card) as part}
+                {#if part.type === 'number'}
+                  <span class="desc-number">{part.value}</span>
+                {:else if part.type === 'keyword'}
+                  <span class="desc-keyword">{part.value}</span>
+                {:else if part.type === 'conditional-number'}
+                  <span class="desc-conditional" class:active={part.active}>{part.active ? part.value : '0'}</span>
+                {:else}
+                  {part.value}
+                {/if}
+              {/each}
+            </span>
+          </div>
           {#if card.isUpgraded}
             <div class="card-tier-badge">+</div>
           {/if}
@@ -114,9 +124,12 @@
     position: relative;
     width: var(--card-w);
     height: var(--card-h);
-    background-color: #1e2d3d;
-    border: 2px solid;
-    border-radius: 8px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.5),
+      0 0 20px color-mix(in srgb, var(--type-color) 30%, transparent);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -124,16 +137,7 @@
     overflow: hidden;
     font-family: inherit;
     color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     perspective: 800px;
-  }
-
-  .card-has-frame {
-    background-color: transparent;
-    border: none;
-    box-shadow:
-      0 4px 12px rgba(0, 0, 0, 0.5),
-      0 0 20px color-mix(in srgb, var(--type-color) 30%, transparent);
   }
 
   .card-upgraded {
@@ -164,15 +168,44 @@
     overflow: hidden;
   }
 
-  .card-frame-img {
+  /* === V2 card frame layers === */
+  .card-v2-frame {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 6px;
-    z-index: 0;
     pointer-events: none;
+  }
+
+  .frame-layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+    image-rendering: pixelated;
+  }
+
+  .frame-card-art {
+    position: absolute;
+    left: 14%;
+    top: 12%;
+    width: 72%;
+    height: 48%;
+    object-fit: cover;
+    image-rendering: auto;
+    pointer-events: none;
+  }
+
+  .upgrade-icon {
+    animation: upgradeFloat 1.5s ease-in-out infinite;
+  }
+
+  @keyframes upgradeFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
   }
 
   .ap-gem {
@@ -236,16 +269,6 @@
   .desc-conditional.active {
     color: #22c55e;
     font-weight: 900;
-  }
-
-  .card-front-name {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: calc(var(--card-w) * 0.12);
-    font-weight: 800;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.6);
   }
 
   .card-tier-badge {

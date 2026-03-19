@@ -4,7 +4,8 @@
   import { getDetailedCardDescription, getShortCardDescription } from '../../services/cardDescriptionService'
   import { getCardTypeIconPath } from '../utils/iconAssets'
   import { getDomainMetadata } from '../../data/domainMetadata'
-  import { getCardFrameUrl } from '../utils/cardFrameManifest'
+  import { getBorderUrl, getBaseFrameUrl, getBannerUrl, getUpgradeIconUrl } from '../utils/cardFrameV2'
+  import { getCardArtUrl } from '../utils/cardArtManifest'
   import { activeRewardBundle, activeRewardRevealStep, holdScreenTransition, releaseScreenTransition } from '../../ui/stores/gameState'
   import { getRandomRoomBg } from '../../data/backgroundManifest'
   import { preloadImages } from '../utils/assetPreloader'
@@ -324,7 +325,6 @@
 
         <div class="altar-options">
           {#each options as option (option.cardType)}
-            {@const frameUrl = getCardFrameUrl(option.mechanicId)}
             {@const domainColor = getDomainMetadata(option.domain).colorTint}
             {@const typeGlow = TYPE_GLOW[option.cardType] ?? '#ffffff'}
             <button
@@ -333,13 +333,28 @@
               class:shadowed={isShadowed(option)}
               class:collecting={isCollecting(option)}
               class:upgraded={option.isUpgraded}
-              style={`border-top: 6px solid ${getChainColor(option.chainType ?? 0)}; --frame-image: ${frameUrl ? `url('${frameUrl}')` : 'none'}; --icon-glow: ${typeGlow}; --domain-color: ${domainColor}; --chain-color: ${getChainColor(option.chainType ?? 0)}; --chain-glow: ${getChainGlowColor(option.chainType ?? 0)};`}
+              style={`border-top: 6px solid ${getChainColor(option.chainType ?? 0)}; --icon-glow: ${typeGlow}; --domain-color: ${domainColor}; --chain-color: ${getChainColor(option.chainType ?? 0)}; --chain-glow: ${getChainGlowColor(option.chainType ?? 0)};`}
               onclick={() => selectType(option.cardType)}
               onpointerenter={() => hoverType(option.cardType)}
               disabled={collectLocked}
               data-testid={`reward-type-${option.cardType}`}
               aria-label={`Inspect ${option.mechanicName ?? option.cardType} reward`}
             >
+              <!-- V2 layered card frame -->
+              <div class="card-v2-frame">
+                <img class="frame-layer" src={getBorderUrl(option.cardType)} alt="" style="z-index:0;" />
+                {#if option.mechanicId}
+                  {@const artUrl = getCardArtUrl(option.mechanicId)}
+                  {#if artUrl}
+                    <img class="frame-card-art" src={artUrl} alt="" style="z-index:1;" />
+                  {/if}
+                {/if}
+                <img class="frame-layer" src={getBaseFrameUrl()} alt="" style="z-index:2;" />
+                <img class="frame-layer" src={getBannerUrl(option.chainType ?? 0)} alt="" style="z-index:3;" />
+                {#if option.isUpgraded}
+                  <img class="frame-layer upgrade-icon" src={getUpgradeIconUrl()} alt="" style="z-index:4;" />
+                {/if}
+              </div>
               <div class="mini-card-ap">{option.apCost ?? 1}</div>
               {#if option.isUpgraded}
                 <div class="mini-card-upgrade">+</div>
@@ -718,22 +733,19 @@
 
   .altar-option {
     position: relative;
-    border: 3px solid var(--chain-color, #000);
-    border-radius: 12px;
+    border: none;
+    border-radius: 0;
     min-height: calc(146px * var(--layout-scale, 1));
     padding: calc(28px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
     color: #fff;
-    background:
-      linear-gradient(rgba(17, 24, 34, 0.75), rgba(12, 19, 28, 0.88)),
-      var(--frame-image, none) center / cover no-repeat,
-      rgba(28, 37, 53, 0.9);
+    background: transparent;
+    box-shadow: none;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
     text-align: center;
     gap: calc(3px * var(--layout-scale, 1));
-    box-shadow: 0 10px 0 rgba(0,0,0,0.5), 0 18px 26px rgba(0,0,0,0.5), 0 0 12px var(--chain-glow, transparent), inset 0 0 0 2px rgba(255,255,255,0.06);
     transition: transform 140ms ease, opacity 140ms ease, filter 140ms ease, box-shadow 140ms ease;
     animation: iconBob 2.6s ease-in-out infinite;
     cursor: pointer;
@@ -1395,6 +1407,46 @@
       font-size: calc(14px * var(--layout-scale, 1));
       border-radius: 8px;
     }
+  }
+
+  /* === V2 card frame layers === */
+  .card-v2-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .frame-layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+    image-rendering: pixelated;
+  }
+
+  .frame-card-art {
+    position: absolute;
+    left: 14%;
+    top: 12%;
+    width: 72%;
+    height: 48%;
+    object-fit: cover;
+    image-rendering: auto;
+    pointer-events: none;
+  }
+
+  .upgrade-icon {
+    animation: upgradeFloat 1.5s ease-in-out infinite;
+  }
+
+  @keyframes upgradeFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
   }
 
 </style>
