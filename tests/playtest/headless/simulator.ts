@@ -26,7 +26,7 @@ import {
 } from '../../../src/services/turnManager.js';
 import type { Card, CardType, FactDomain, CardTier } from '../../../src/data/card-types.js';
 import type { EnemyTemplate } from '../../../src/data/enemies.js';
-import { PLAYER_START_HP, PLAYER_MAX_HP } from '../../../src/data/balance.js';
+import { PLAYER_START_HP, PLAYER_MAX_HP, POST_ENCOUNTER_HEAL_PCT } from '../../../src/data/balance.js';
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Types
@@ -359,7 +359,7 @@ export function runSimulation(opts: SimOptions = {}): SimRunResult {
     seed: opts.seed ?? Math.floor(Math.random() * 1_000_000),
     maxTurnsPerEncounter: opts.maxTurnsPerEncounter ?? 40,
     verbose: opts.verbose ?? false,
-    healBetweenEncounters: opts.healBetweenEncounters ?? 0.2,
+    healBetweenEncounters: opts.healBetweenEncounters ?? POST_ENCOUNTER_HEAL_PCT,
   };
 
   const runId = `sim_${options.seed}_${Date.now()}`;
@@ -544,7 +544,7 @@ if (process.argv[1] && process.argv[1].includes('simulator')) {
     nodeType: getArg('node-type', 'combat') as 'combat' | 'elite',
     maxTurnsPerEncounter: parseInt(getArg('max-turns', '40')),
     verbose: args.includes('--verbose') || args.includes('-v'),
-    healBetweenEncounters: parseFloat(getArg('heal-rate', '0.2')),
+    healBetweenEncounters: parseFloat(getArg('heal-rate', String(POST_ENCOUNTER_HEAL_PCT))),
   };
 
   console.log('Options:', opts);

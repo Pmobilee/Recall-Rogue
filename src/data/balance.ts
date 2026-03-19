@@ -978,7 +978,7 @@ export const MAX_AP_PER_TURN = 5;
 
 // Post-encounter healing (AR-31: between-encounter recovery)
 /** Fraction of max HP healed after each non-defeat encounter. */
-export const POST_ENCOUNTER_HEAL_PCT = 0.03;
+export const POST_ENCOUNTER_HEAL_PCT = 0.25;
 /** Extra healing fraction for Relaxed mode (additive with POST_ENCOUNTER_HEAL_PCT). */
 export const RELAXED_POST_ENCOUNTER_HEAL_BONUS = 0.03;
 /** Extra healing fraction after defeating a boss or mini-boss (AR-32, additive). */
@@ -987,10 +987,10 @@ export const POST_BOSS_ENCOUNTER_HEAL_BONUS = 0.05;
  *  Players below this threshold heal normally; players above it gain nothing.
  *  This creates late-game attrition so winners don't cruise at 99% HP. */
 export const POST_ENCOUNTER_HEAL_CAP: Record<number, number> = {
-  1: 0.90,   // Segment 1 (floors 1-6): cap at 90%
-  2: 0.80,   // Segment 2 (floors 7-12): cap at 80%
-  3: 0.70,   // Segment 3 (floors 13-18): cap at 70%
-  4: 0.55,   // Segment 4 (floors 19-24): cap at 55%
+  1: 1.00,   // Segment 1 (floors 1-6): full heal allowed
+  2: 0.90,   // Segment 2 (floors 7-12): cap at 90%
+  3: 0.80,   // Segment 3 (floors 13-18): cap at 80%
+  4: 0.65,   // Segment 4 (floors 19-24): cap at 65%
 };
 /** HP multiplier for mini-bosses on floors 1-3 (makes early mini-bosses less tanky). */
 export const EARLY_MINI_BOSS_HP_MULTIPLIER = 0.60;
@@ -1029,10 +1029,10 @@ export const FLOOR_DAMAGE_SCALE_MID = 1.0;
 
 /** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent(). */
 export const ENEMY_TURN_DAMAGE_CAP: Record<1 | 2 | 3 | 4 | 'endless', number | null> = {
-  1: 30,
-  2: 35,
-  3: 45,
-  4: 55,
+  1: 20,
+  2: 25,
+  3: 30,
+  4: 40,
   endless: null,
 };
 
