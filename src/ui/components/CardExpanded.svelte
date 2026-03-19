@@ -5,7 +5,8 @@
   import { inputService } from '../../services/inputService'
   import { getDomainMetadata } from '../../data/domainMetadata'
   import { getChainColor, getChainGlowColor } from '../../services/chainVisuals'
-  import { getCardFramePath, getDomainIconPath } from '../utils/domainAssets'
+  import { getDomainIconPath } from '../utils/domainAssets'
+  import { getBorderUrl, getBannerUrl, getBaseFrameUrl, getUpgradeIconUrl } from '../utils/cardFrameV2'
   import { getTierDisplayName } from '../../services/tierDerivation'
   import { getCardTypeEmoji, getCardTypeIconCandidates } from '../utils/iconAssets'
   import { getCardDescriptionParts, type CardDescPart } from '../../services/cardDescriptionService'
@@ -73,7 +74,7 @@
   let typeIconAttempt = $state(0)
   let typeIconPath = $derived(typeIconCandidates[typeIconAttempt] ?? null)
   let tierLabel = $derived(card.tier === '1' ? '' : getTierDisplayName(card.tier))
-  let framePath = $derived(card.isEcho ? '/assets/sprites/cards/frame_echo.webp' : getCardFramePath(card.cardType))
+  // V2: frame is now rendered as layered images, not a CSS background variable
   let domainIconPath = $derived(getDomainIconPath(card.domain))
 
   const TIMER_UPDATE_INTERVAL_MS = 33
@@ -306,7 +307,7 @@
 <div
   class="card-expanded"
   class:card-expanded-landscape={$isLandscape}
-  style={`--card-frame-image: url('${framePath}'); border: 1px solid ${getChainColor(card.chainType ?? 0)}; box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5), 0 0 12px ${getChainGlowColor(card.chainType ?? 0)};`}
+  style={`border: 1px solid ${getChainColor(card.chainType ?? 0)}; box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5), 0 0 12px ${getChainGlowColor(card.chainType ?? 0)};`}
   ontouchstart={handleTouchStart}
   ontouchmove={handleTouchMove}
   ontouchend={handleTouchEnd}
@@ -314,6 +315,8 @@
   aria-label="Card question"
   tabindex="-1"
 >
+  <!-- V2 frame removed from expanded quiz view — quiz has its own UI -->
+
   {#if showMasteryTrialHeader}
     <div class="mastery-trial-header">MASTERY TRIAL</div>
   {/if}
@@ -472,7 +475,6 @@
     -ms-overflow-style: none;
     background:
       linear-gradient(rgba(14, 20, 30, 0.95), rgba(14, 20, 30, 0.97)),
-      var(--card-frame-image) center / cover no-repeat,
       #1a2332;
     border-radius: 12px;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
@@ -509,7 +511,6 @@
     /* Enhanced dark background for landscape quiz panel */
     background:
       linear-gradient(180deg, rgba(12, 16, 28, 0.98) 0%, rgba(8, 11, 20, 0.99) 100%),
-      var(--card-frame-image) center / cover no-repeat,
       #0a0e1a;
     border-right: 1px solid rgba(100, 110, 130, 0.2);
     box-shadow: 4px 0 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.02);
@@ -586,6 +587,44 @@
       opacity: 1;
       transform: translate(-50%, -50%);
     }
+  }
+
+  /* ── Card Frame V2 decorative accent in expanded view ── */
+  .expanded-v2-frame {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    /* Render at very low opacity — purely decorative accent */
+    opacity: 0.12;
+  }
+
+  .expanded-banner,
+  .expanded-border-accent,
+  .expanded-base {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  .expanded-upgrade-icon {
+    position: absolute;
+    bottom: 8%;
+    left: 4%;
+    width: 10%;
+    height: auto;
+    object-fit: contain;
+    animation: upgradeFloat 1.5s ease-in-out infinite;
+  }
+
+  @keyframes upgradeFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
   }
 
   .mastery-trial-header {

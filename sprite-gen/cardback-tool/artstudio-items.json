@@ -1,0 +1,90 @@
+{
+  "cardframes": [
+    {
+      "id": "universal-frame-stone",
+      "name": "Stone & Bronze Scholar Frame",
+      "concept": "A card frame with aged stone border, bronze metal fittings, hexagonal gem socket top-left, circular medallion socket top-right, blank title scroll banner, clean rectangular art window cutout, parchment text area bottom, runic scholarly engravings.",
+      "prompt": "A card frame with aged stone border, bronze metal fittings, hexagonal gem socket top-left, circular medallion socket top-right, blank title scroll banner, clean rectangular art window cutout, parchment text area bottom, runic scholarly engravings. White background. Full card frame border only, no interior art, no text. 512x729 pixels. Pixel art style, 16-bit, clean edges, professional card game quality.",
+      "targetWidth": 512,
+      "targetHeight": 729,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3177214162,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 1365287605,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 3139648174,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "universal-frame-wood",
+      "name": "Dark Wood & Iron Frame",
+      "concept": "A card frame with dark polished wood border, iron corner brackets and rivets, hexagonal gem socket top-left, circular coin slot top-right, blank name plate banner, clean art window, weathered parchment text area, carved book and quill motifs.",
+      "prompt": "A card frame with dark polished wood border, iron corner brackets and rivets, hexagonal gem socket top-left, circular coin slot top-right, blank name plate banner, clean art window, weathered parchment text area, carved book and quill motifs. White background. Full card frame border only, no art inside. 512x729 pixels. Pixel art style, 16-bit, clean edges, professional card game quality.",
+      "targetWidth": 512,
+      "targetHeight": 729,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2734075025,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 2851352416,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 2659803435,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    },
+    {
+      "id": "universal-frame-arcane",
+      "name": "Arcane Tome Frame",
+      "concept": "A card frame styled like an open magical tome, leather binding as the border, metal clasps at corners, crystal gem setting top-left, AP circle top-right, illuminated manuscript banner, clean art window, aged vellum text area, glowing rune accents along edges.",
+      "prompt": "A card frame styled like an open magical tome, leather binding as the border, metal clasps at corners, crystal gem setting top-left, AP circle top-right, illuminated manuscript banner, clean art window, aged vellum text area, glowing rune accents along edges. White background. Frame border only. 512x729 pixels. Pixel art style, 16-bit, clean edges, professional card game quality.",
+      "targetWidth": 512,
+      "targetHeight": 729,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 4050624396,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 3040857525,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 1553336369,
+          "status": "done",
+          "accepted": false
+        }
+      ]
+    }
+  ],
+  "enemies": [],
+  "cardart": []
+}

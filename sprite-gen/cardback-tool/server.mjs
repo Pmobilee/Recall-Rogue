@@ -4,6 +4,23 @@ import { resolve, dirname, join, extname } from 'path';
 import { fileURLToPath } from 'url';
 import { existsSync, readdirSync, mkdirSync, writeFileSync, readFileSync } from 'fs';
 
+// Load .env from project root (two levels up from this file)
+{
+  const envPath = resolve(dirname(fileURLToPath(import.meta.url)), '../../.env');
+  if (existsSync(envPath)) {
+    const lines = readFileSync(envPath, 'utf-8').split('\n');
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith('#')) continue;
+      const eq = trimmed.indexOf('=');
+      if (eq < 0) continue;
+      const key = trimmed.slice(0, eq).trim();
+      const val = trimmed.slice(eq + 1).trim().replace(/^['"]|['"]$/g, '');
+      if (key && !(key in process.env)) process.env[key] = val;
+    }
+  }
+}
+
 import { submitCardback, waitForCompletion, readComfyUIOutput } from './comfyui-queue.mjs';
 import { submitStyledCardback, waitForStyledCompletion, readStyledOutput } from './stylelab-queue.mjs';
 import { processCardback } from './image-pipeline.mjs';
@@ -788,7 +805,14 @@ function broadcastToGame(event) {
   }
 }
 
-// Static files
+// Static files — no caching for HTML to prevent stale page hangs
+app.use((req, res, next) => {
+  if (req.path.endsWith('.html') || req.path === '/') {
+    res.set('Cache-Control', 'no-store, no-cache, must-revalidate');
+    res.set('Pragma', 'no-cache');
+  }
+  next();
+});
 app.use(express.static(resolve(__dirname, 'public')));
 
 // Route aliases for dashboard pages
@@ -1861,6 +1885,222 @@ app.get('/api/relics/batch-status', (req, res) => {
   const pending = db.prepare(`SELECT COUNT(*) as c FROM relic_sprites WHERE status IN ('pending', 'rejected', 'error') AND visual_description != ''`).get().c;
   const generating = db.prepare(`SELECT COUNT(*) as c FROM relic_sprites WHERE status = 'generating'`).get().c;
   res.json({ running: relicBatchRunning, total, generated, pending, generating });
+});
+
+// ── Art Studio Controller ──────────────────────────────────────────────
+
+const ARTSTUDIO_ITEMS_PATH = resolve(__dirname, 'artstudio-items.json');
+const ARTSTUDIO_OUTPUT_DIR = resolve(__dirname, 'artstudio-output');
+const ARTSTUDIO_CATEGORIES = ['cardframes', 'enemies', 'cardart'];
+
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || 'google/gemini-2.5-flash-image';
+const OPENROUTER_BASE_URL = process.env.OPENROUTER_BASE_URL || 'https://openrouter.ai/api/v1';
+
+if (!OPENROUTER_API_KEY) {
+  console.warn('[artstudio] WARNING: OPENROUTER_API_KEY not set. Generation will fail. Set it in your .env file.');
+}
+
+// Ensure artstudio output dirs exist
+for (const cat of ARTSTUDIO_CATEGORIES) {
+  mkdirSync(resolve(ARTSTUDIO_OUTPUT_DIR, cat), { recursive: true });
+}
+
+function readArtStudioItems() {
+  try {
+    return JSON.parse(readFileSync(ARTSTUDIO_ITEMS_PATH, 'utf-8'));
+  } catch {
+    return { cardframes: [], enemies: [], cardart: [] };
+  }
+}
+
+function writeArtStudioItems(data) {
+  writeFileSync(ARTSTUDIO_ITEMS_PATH, JSON.stringify(data, null, 2));
+}
+
+function artStudioExtractImageBase64(data) {
+  const message = data?.choices?.[0]?.message;
+  if (!message) throw new Error('No message in response');
+  const sources = [];
+  if (Array.isArray(message.content)) sources.push(...message.content);
+  if (Array.isArray(message.images)) sources.push(...message.images);
+  if (message.content && typeof message.content === 'string') {
+    throw new Error(`Response was text only: "${message.content.slice(0, 100)}"`);
+  }
+  for (const part of sources) {
+    if (part.image_url?.url) {
+      const match = part.image_url.url.match(/^data:image\/[^;]+;base64,(.+)$/s);
+      if (match) return match[1];
+      return part.image_url.url;
+    }
+    if (part.type === 'image' && part.data) return part.data;
+    if (part.inline_data?.data) return part.inline_data.data;
+  }
+  throw new Error('No image data found in response');
+}
+
+async function artStudioCallOpenRouter(prompt) {
+  const response = await fetch(`${OPENROUTER_BASE_URL}/chat/completions`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: OPENROUTER_MODEL,
+      modalities: ['image', 'text'],
+      stream: false,
+      messages: [
+        { role: 'system', content: 'You are an image generator. Always respond with a generated image. Never respond with only text.' },
+        { role: 'user', content: prompt },
+      ],
+    }),
+  });
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`HTTP ${response.status}: ${text.slice(0, 300)}`);
+  }
+  return await response.json();
+}
+
+// GET /api/artstudio/items?category=cardframes|enemies|cardart
+app.get('/api/artstudio/items', (req, res) => {
+  const { category } = req.query;
+  if (!category || !ARTSTUDIO_CATEGORIES.includes(category)) {
+    return res.status(400).json({ error: `category must be one of: ${ARTSTUDIO_CATEGORIES.join(', ')}` });
+  }
+  const data = readArtStudioItems();
+  res.json(data[category] || []);
+});
+
+// POST /api/artstudio/items — upsert an item
+app.post('/api/artstudio/items', express.json(), (req, res) => {
+  const { id, category, name, concept, prompt, targetWidth, targetHeight } = req.body;
+  if (!id || !category || !name) return res.status(400).json({ error: 'id, category, name required' });
+  if (!ARTSTUDIO_CATEGORIES.includes(category)) return res.status(400).json({ error: 'invalid category' });
+  const data = readArtStudioItems();
+  const list = data[category];
+  const idx = list.findIndex(i => i.id === id);
+  if (idx >= 0) {
+    list[idx] = { ...list[idx], name, concept, prompt, targetWidth, targetHeight };
+  } else {
+    list.push({ id, name, concept: concept || '', prompt: prompt || '', targetWidth: targetWidth || 512, targetHeight: targetHeight || 512, variants: [] });
+  }
+  writeArtStudioItems(data);
+  res.json({ ok: true });
+});
+
+// POST /api/artstudio/generate — generate variants for an item
+app.post('/api/artstudio/generate', express.json(), async (req, res) => {
+  const { id, category, count = 3 } = req.body;
+  if (!id || !category) return res.status(400).json({ error: 'id and category required' });
+  if (!ARTSTUDIO_CATEGORIES.includes(category)) return res.status(400).json({ error: 'invalid category' });
+  if (!OPENROUTER_API_KEY) return res.status(503).json({ error: 'OPENROUTER_API_KEY not configured' });
+
+  const data = readArtStudioItems();
+  const item = data[category].find(i => i.id === id);
+  if (!item) return res.status(404).json({ error: 'item not found' });
+
+  const numVariants = Math.max(1, Math.min(5, parseInt(count) || 3));
+  const startIdx = item.variants.length;
+  const newVariants = [];
+  for (let i = 0; i < numVariants; i++) {
+    const seed = Math.floor(Math.random() * 2 ** 32);
+    newVariants.push({ variant: startIdx + i, seed, status: 'pending', accepted: false });
+  }
+  item.variants.push(...newVariants);
+  writeArtStudioItems(data);
+
+  res.json({ ok: true, queued: numVariants, startIdx });
+
+  // Generate in background
+  (async () => {
+    const { writeFile } = await import('fs/promises');
+    const sharp = (await import('sharp')).default;
+    const itemDir = resolve(ARTSTUDIO_OUTPUT_DIR, category, id);
+    mkdirSync(itemDir, { recursive: true });
+
+    for (const v of newVariants) {
+      // Mark as generating
+      const d = readArtStudioItems();
+      const it = d[category].find(i => i.id === id);
+      if (!it) continue;
+      const vRef = it.variants.find(x => x.variant === v.variant);
+      if (vRef) vRef.status = 'generating';
+      writeArtStudioItems(d);
+
+      try {
+        console.log(`[artstudio] Generating ${category}/${id} variant ${v.variant} (seed ${v.seed})`);
+        const apiData = await artStudioCallOpenRouter(item.prompt);
+        const base64 = artStudioExtractImageBase64(apiData);
+        const imgBuffer = Buffer.from(base64, 'base64');
+
+        // Save raw output
+        const outPath = resolve(itemDir, `variant-${v.variant}.png`);
+        const processed = await sharp(imgBuffer).png({ compressionLevel: 9 }).toBuffer();
+        await writeFile(outPath, processed);
+
+        // Mark as done
+        const d2 = readArtStudioItems();
+        const it2 = d2[category].find(i => i.id === id);
+        if (it2) {
+          const vRef2 = it2.variants.find(x => x.variant === v.variant);
+          if (vRef2) vRef2.status = 'done';
+          writeArtStudioItems(d2);
+        }
+        console.log(`[artstudio] Done: ${category}/${id} variant ${v.variant}`);
+      } catch (err) {
+        console.error(`[artstudio] Error generating ${category}/${id} variant ${v.variant}:`, err.message);
+        const d3 = readArtStudioItems();
+        const it3 = d3[category].find(i => i.id === id);
+        if (it3) {
+          const vRef3 = it3.variants.find(x => x.variant === v.variant);
+          if (vRef3) { vRef3.status = 'error'; vRef3.error = err.message; }
+          writeArtStudioItems(d3);
+        }
+      }
+    }
+  })();
+});
+
+// GET /api/artstudio/image/:category/:id/:variant — serve variant image
+app.get('/api/artstudio/image/:category/:id/:variant', (req, res) => {
+  const { category, id, variant } = req.params;
+  if (!ARTSTUDIO_CATEGORIES.includes(category)) return res.status(400).json({ error: 'invalid category' });
+  const imgPath = resolve(ARTSTUDIO_OUTPUT_DIR, category, id, `variant-${variant}.png`);
+  if (!existsSync(imgPath)) return res.status(404).json({ error: 'Image not found' });
+  res.setHeader('Content-Type', 'image/png');
+  res.setHeader('Cache-Control', 'no-store');
+  res.sendFile(imgPath);
+});
+
+// POST /api/artstudio/accept — mark a variant as accepted
+app.post('/api/artstudio/accept', express.json(), (req, res) => {
+  const { id, category, variant } = req.body;
+  if (!id || !category || variant === undefined) return res.status(400).json({ error: 'id, category, variant required' });
+  if (!ARTSTUDIO_CATEGORIES.includes(category)) return res.status(400).json({ error: 'invalid category' });
+  const data = readArtStudioItems();
+  const item = data[category].find(i => i.id === id);
+  if (!item) return res.status(404).json({ error: 'item not found' });
+  const v = item.variants.find(x => x.variant === parseInt(variant));
+  if (!v) return res.status(404).json({ error: 'variant not found' });
+  // Toggle accepted; deselect others
+  const wasAccepted = v.accepted;
+  for (const vv of item.variants) vv.accepted = false;
+  v.accepted = !wasAccepted;
+  writeArtStudioItems(data);
+  res.json({ ok: true, accepted: v.accepted });
+});
+
+// DELETE /api/artstudio/item/:category/:id — remove an item
+app.delete('/api/artstudio/item/:category/:id', (req, res) => {
+  const { category, id } = req.params;
+  if (!ARTSTUDIO_CATEGORIES.includes(category)) return res.status(400).json({ error: 'invalid category' });
+  const data = readArtStudioItems();
+  const before = data[category].length;
+  data[category] = data[category].filter(i => i.id !== id);
+  writeArtStudioItems(data);
+  res.json({ ok: true, removed: before - data[category].length });
 });
 
 // --- Start Server ---

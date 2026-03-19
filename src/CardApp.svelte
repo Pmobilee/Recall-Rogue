@@ -1421,8 +1421,8 @@
     width: 100vw;
   }
 
-  /* Stretch canvas to fill viewport during boot animation (no letterboxing) */
-  .phaser-container.boot-anim-active :global(canvas) {
+  /* Stretch Phaser canvas to fill viewport (no letterbox bars) */
+  .phaser-container.visible :global(canvas) {
     object-fit: cover !important;
     width: 100vw !important;
     height: 100dvh !important;

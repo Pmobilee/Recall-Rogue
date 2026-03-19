@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Card Frame Preview — Color Variants</title>
+<style>
+  body { background: #1a1a2e; color: #e0e0e0; font-family: system-ui, sans-serif; padding: 20px; }
+  h1 { color: #4ecca3; margin-bottom: 8px; }
+  h2 { color: #88aadd; margin: 30px 0 12px; border-bottom: 1px solid #333; padding-bottom: 6px; }
+  .row { display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end; }
+  .card-preview { text-align: center; }
+  .card-preview img { height: 300px; image-rendering: pixelated; border: 1px solid #333; border-radius: 4px; }
+  .card-preview .label { margin-top: 6px; font-size: 0.85rem; font-weight: 600; }
+  .card-preview .sub { font-size: 0.7rem; color: #888; }
+  a { color: #88aadd; }
+</style>
+</head>
+<body>
+<h1>New Card Frame — Color Variants</h1>
+<p><a href="/artstudio.html">← Back to Art Studio</a></p>
+
+<h2>Card Type → Border Color (with default gray banner)</h2>
+<div class="row">
+  <div class="card-preview">
+    <img src="card_attack_red.png">
+    <div class="label" style="color:#EF4444">Attack</div>
+    <div class="sub">Red</div>
+  </div>
+  <div class="card-preview">
+    <img src="card_shield_blue.png">
+    <div class="label" style="color:#3B82F6">Shield</div>
+    <div class="sub">Blue</div>
+  </div>
+  <div class="card-preview">
+    <img src="card_buff_purple.png">
+    <div class="label" style="color:#A855F7">Buff</div>
+    <div class="sub">Purple</div>
+  </div>
+  <div class="card-preview">
+    <img src="card_debuff_green.png">
+    <div class="label" style="color:#22C55E">Debuff</div>
+    <div class="sub">Green</div>
+  </div>
+  <div class="card-preview">
+    <img src="card_utility_teal.png">
+    <div class="label" style="color:#06B6D4">Utility</div>
+    <div class="sub">Teal</div>
+  </div>
+  <div class="card-preview">
+    <img src="card_wild_gold.png">
+    <div class="label" style="color:#F59E0B">Wild</div>
+    <div class="sub">Gold</div>
+  </div>
+</div>
+
+<h2>Chain Type → Banner Color (all on Attack/Red border)</h2>
+<div class="row">
+  <div class="card-preview">
+    <img src="card_attack_chain0_obsidian.png">
+    <div class="label" style="color:#546E7A">Chain 0</div>
+    <div class="sub">Obsidian (gray)</div>
+  </div>
+  <div class="card-preview">
+    <img src="card_attack_chain1_crimson.png">
+    <div class="label" style="color:#EF5350">Chain 1</div>
+    <div class="sub">Crimson</div>
+  </div>
+  <div class="card-preview">
+    <img src="card_attack_chain2_azure.png">
+    <div class="label" style="color:#42A5F5">Chain 2</div>
+    <div class="sub">Azure</div>
+  </div>
+  <div class="card-preview">
+    <img src="card_attack_chain3_amber.png">
+    <div class="label" style="color:#FFA726">Chain 3</div>
+    <div class="sub">Amber</div>
+  </div>
+  <div class="card-preview">
+    <img src="card_attack_chain4_violet.png">
+    <div class="label" style="color:#AB47BC">Chain 4</div>
+    <div class="sub">Violet</div>
+  </div>
+  <div class="card-preview">
+    <img src="card_attack_chain5_jade.png">
+    <div class="label" style="color:#26A69A">Chain 5</div>
+    <div class="sub">Jade</div>
+  </div>
+</div>
+
+<h2>Individual Layers</h2>
+<div class="row">
+  <div class="card-preview">
+    <img src="border_original.png">
+    <div class="label">Border (source)</div>
+    <div class="sub">Layer 1 — hue-shifted per card type</div>
+  </div>
+  <div class="card-preview">
+    <img src="banner_original.png">
+    <div class="label">Banner (source)</div>
+    <div class="sub">Layer 2 — colorized per chain type</div>
+  </div>
+</div>
+</body>
+</html>

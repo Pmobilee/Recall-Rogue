@@ -5,7 +5,7 @@
   import { getCardbackUrl, onCardbackReady } from '../utils/cardbackManifest'
   import { type CardAnimPhase } from '../utils/mechanicAnimations'
   import { getTierDisplayName } from '../../services/tierDerivation'
-  import { getCardFrameUrl, onCardFrameReady } from '../utils/cardFrameManifest'
+  import { getBorderUrl, getBaseFrameUrl, getBannerUrl, getUpgradeIconUrl, GUIDE_STYLES } from '../utils/cardFrameV2'
   import { getShortCardDescription } from '../../services/cardDescriptionService'
   import { getCardDescriptionParts, type CardDescPart } from '../../services/cardDescriptionService'
   import { BASE_WIDTH, GAME_ASPECT_RATIO } from '../../data/layout'
@@ -13,7 +13,7 @@
   import { isFirstChargeFree } from '../../services/discoverySystem'
   import { getMechanicDefinition } from '../../data/mechanics'
   import { activeRunState } from '../../services/runStateStore'
-  import { getChainColor, getChainGlowColor, getChainColorGroups } from '../../services/chainVisuals'
+  import { getChainColor, getChainColorGroups } from '../../services/chainVisuals'
   import { getChainTypeName } from '../../data/chainTypes'
   import ChainIcon from './ChainIcon.svelte'
   import { isLandscape } from '../../stores/layoutStore'
@@ -47,7 +47,6 @@
 
   // Session-level preload guard: avoid creating duplicate Image objects for the same URL.
   const preloadedCardbackUrls = new Set<string>()
-  const preloadedFrameUrls = new Set<string>()
 
   type TierUpTransition = 'tier1_to_2a' | 'tier2a_to_2b' | 'tier2b_to_3'
 
@@ -170,8 +169,9 @@
   function getApGemColor(card: Card): string {
     const base = card.apCost ?? 1
     const displayed = getDisplayedApCost(card)
-    if (displayed < base) return '#4ADE80'
-    return '#F0E6D2'
+    if (displayed < base) return '#22c55e'
+    if (displayed > base) return '#ef4444'
+    return '#fbbf24'
   }
 
   function getDomainColor(domain: FactDomain): string {
@@ -244,16 +244,6 @@
   $effect(() => {
     const unsub = onCardbackReady(() => {
       cardbackVersion++
-    })
-    return unsub
-  })
-
-  // Reactive version counter — incremented when card frame manifest finishes loading
-  let cardFrameVersion = $state(0)
-
-  $effect(() => {
-    const unsub = onCardFrameReady(() => {
-      cardFrameVersion++
     })
     return unsub
   })
@@ -359,31 +349,6 @@
     for (const [, url] of cardbackUrls) {
       if (!url || preloadedCardbackUrls.has(url)) continue
       preloadedCardbackUrls.add(url)
-      const img = new Image()
-      img.decoding = 'async'
-      img.src = url
-    }
-  })
-
-  // Reactive card frame URL map — re-computed when cards change or frame manifest loads
-  let cardFrameUrls = $derived(
-    (() => {
-      void cardFrameVersion
-      const map = new Map<string, string | null>()
-      for (const card of [...cards, ...animatingCards]) {
-        if (card.mechanicId && !map.has(card.mechanicId)) {
-          map.set(card.mechanicId, getCardFrameUrl(card.mechanicId))
-        }
-      }
-      return map
-    })()
-  )
-
-  // Preload card frame images
-  $effect(() => {
-    for (const [, url] of cardFrameUrls) {
-      if (!url || preloadedFrameUrls.has(url)) continue
-      preloadedFrameUrls.add(url)
       const img = new Image()
       img.decoding = 'async'
       img.src = url
@@ -630,7 +595,6 @@
     {@const apGemColor = getApGemColor(card)}
     {@const insufficientAp = !hasEnoughAp(card)}
     {@const cardbackUrl = cardbackUrls.get(card.factId) ?? null}
-    {@const cardFrameUrl = cardFrameUrls.get(card.mechanicId ?? '') ?? null}
     {@const isRevealing = cardAnim === 'reveal'}
     {@const isTierUp = cardAnim === 'tier-up'}
     {@const isSwoosh = cardAnim === 'swoosh'}
@@ -685,12 +649,9 @@
       class:drag-charge-zone={isDragInChargeZone}
       class:drag-charge-zone-disabled={isDragInChargeZone && !chargeAffordableForDrag}
       style="
-        border-top: 6px solid {getChainColor(card.chainType ?? 0)};
         {isAnimating ? '' : isDraggingThis
           ? `transform: translate3d(${cardDragX}px, ${isSelected ? 'calc(-27vh - 36px + 20px)' : `-${cardDragRawY}px`}, 0) scale(${cardDragScale});`
           : `transform: translate3d(0, ${isSelected ? 'calc(-27vh - 36px + 20px)' : '0px'}, 0) scale(${isSelected ? 1.1 : isHovered ? 1.05 : 1});`}
-        border-color: {getChainColor(card.chainType ?? 0)};
-        box-shadow: 0 0 8px {getChainGlowColor(card.chainType ?? 0)};
         animation-delay: {i * 60}ms;
         opacity: {isOther ? 0.35 : 1};
         z-index: {isDraggingThis ? 20 : isHovered ? 10 : ''};
@@ -709,27 +670,26 @@
     >
       <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
         <div class="card-front">
-          {#if cardFrameUrl}
-            <img class="card-frame-img" src={cardFrameUrl} alt={card.mechanicName ?? card.cardType} />
-            <div class="ap-gem" style="color: {apGemColor}; text-shadow: 0 0 2px rgba(0,0,0,0.6);">{displayedApCost}</div>
-            {#if card.chainType !== undefined}
-              <div
-                class="chain-glow"
-                class:chain-pulse={chainPulseCardIds.has(card.id)}
-                style="background: radial-gradient(circle, {getChainGlowColor(card.chainType)} 0%, transparent 70%);"
-              ></div>
-              <div class="chain-type-icon-badge">
-                <ChainIcon chainType={card.chainType} size={12} />
-              </div>
-              <div class="chain-ember-container">
-                <span style="background-color: {getChainColor(card.chainType)};"></span>
-                <span style="background-color: {getChainColor(card.chainType)};"></span>
-                <span style="background-color: {getChainColor(card.chainType)};"></span>
-                <span style="background-color: {getChainColor(card.chainType)};"></span>
-                <span style="background-color: {getChainColor(card.chainType)};"></span>
-              </div>
+          <!-- V2 layered frame system -->
+          <div class="card-v2-frame">
+            <!-- Layer 1: Border (by card type) -->
+            <img class="frame-layer" src={getBorderUrl(card.cardType)} alt="" />
+            <!-- Layer 2: Base frame (constant) -->
+            <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
+            <!-- Layer 3: Banner (by chain type) -->
+            <img class="frame-layer" src={getBannerUrl(card.chainType ?? 0)} alt="" />
+            <!-- Layer 4: Upgrade icon (conditional, float animation) -->
+            {#if card.isUpgraded}
+              <img class="frame-layer upgrade-icon" src={getUpgradeIconUrl()} alt="" />
             {/if}
-            <div class="card-parchment-text">
+            <!-- AP cost overlay -->
+            <div class="frame-text v2-ap-cost" style={GUIDE_STYLES.apCost} style:color={apGemColor}>{displayedApCost}</div>
+            <!-- Mechanic name overlay -->
+            <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName}>{card.mechanicName ?? ''}</div>
+            <!-- Card type label overlay -->
+            <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}>{card.cardType?.toUpperCase() ?? ''}</div>
+            <!-- Effect description text -->
+            <div class="frame-text v2-effect-text" style={GUIDE_STYLES.effectText}>
               <span class="parchment-inner">
                 {#each getCardDescriptionParts(card, undefined, isChargePreview ? getEffectValue(card, true) : undefined) as part}
                   {#if part.type === 'number'}
@@ -744,17 +704,7 @@
                 {/each}
               </span>
             </div>
-          {:else}
-            {#if cardbackUrl}
-              <img class="card-front-bg" src={cardbackUrl} alt="" />
-            {/if}
-            <div class="ap-badge" class:ap-free={displayedApCost === 0} class:ap-heavy={displayedApCost === 2} class:ap-full-turn={displayedApCost >= 3}>{displayedApCost}</div>
-            <div class="card-domain-stripe" style="background: {domainColor};"></div>
-            <div class="card-front-name">{card.mechanicName ?? card.cardType}</div>
-            {#if showFrontValue}
-              <div class="card-effect-value">{effectVal}</div>
-            {/if}
-          {/if}
+          </div>
           {#if card.isMasteryTrial}
             <div class="trial-badge">TRIAL</div>
           {/if}
@@ -763,9 +713,6 @@
               <span>ECHO</span>
               <span class="echo-charge-label">⚡ CHARGE</span>
             </div>
-          {/if}
-          {#if tierBadge}
-            <div class="card-tier-badge">{tierBadge}</div>
           {/if}
           {#if isMastered}
             <div class="card-tier-label card-tier-label--mastered">MASTERED</div>
@@ -860,14 +807,10 @@
     {@const isImpact = cardAnim === 'impact'}
     {@const isAnimating = isRevealing || isTierUp || isSwoosh || isImpact}
     {@const tierUpTransition = tierUpTransitions[card.id] ?? null}
-    {@const domainColor = getDomainColor(card.domain)}
-    {@const effectVal = getEffectValue(card)}
-    {@const showFrontValue = shouldShowFrontValue(card)}
-    {@const cardFrameUrl = cardFrameUrls.get(card.mechanicId ?? '') ?? null}
     {@const tierVisual = getTierUpVisualSignature(card.factId)}
 
     <div
-      class="card-in-hand card-landscape card-animating"
+      class="card-in-hand card-has-frame card-landscape card-animating"
       class:card-reveal={isAnimating}
       class:card-fizzle={cardAnim === 'fizzle'}
       class:card-discard={cardAnim === 'discard'}
@@ -875,23 +818,21 @@
       class:card-tier-up={isTierUp}
       class:card-swoosh={isSwoosh}
       class:card-impact={isImpact}
-      style="border-top: 6px solid {getChainColor(card.chainType ?? 0)}; border-color: {getChainColor(card.chainType ?? 0)}; box-shadow: 0 0 8px {getChainGlowColor(card.chainType ?? 0)};"
     >
       <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
         <div class="card-front">
-          {#if cardFrameUrl}
-            <img class="card-frame-img" src={cardFrameUrl} alt={card.mechanicName ?? card.cardType} />
-            <div class="ap-gem">{card.apCost ?? 1}</div>
-          {:else}
-            {#if cardbackUrl}
-              <img class="card-front-bg" src={cardbackUrl} alt="" />
+          <!-- V2 layered frame system -->
+          <div class="card-v2-frame">
+            <img class="frame-layer" src={getBorderUrl(card.cardType)} alt="" />
+            <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
+            <img class="frame-layer" src={getBannerUrl(card.chainType ?? 0)} alt="" />
+            {#if card.isUpgraded}
+              <img class="frame-layer upgrade-icon" src={getUpgradeIconUrl()} alt="" />
             {/if}
-            <div class="card-domain-stripe" style="background: {domainColor};"></div>
-            <div class="card-front-name">{card.mechanicName ?? card.cardType}</div>
-            {#if showFrontValue}
-              <div class="card-effect-value">{effectVal}</div>
-            {/if}
-          {/if}
+            <div class="frame-text v2-ap-cost" style={GUIDE_STYLES.apCost}>{card.apCost ?? 1}</div>
+            <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName}>{card.mechanicName ?? ''}</div>
+            <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}>{card.cardType?.toUpperCase() ?? ''}</div>
+          </div>
         </div>
         {#if cardbackUrl}
           <div class="card-back">
@@ -975,7 +916,6 @@
     {@const apGemColor = getApGemColor(card)}
     {@const insufficientAp = !hasEnoughAp(card)}
     {@const cardbackUrl = cardbackUrls.get(card.factId) ?? null}
-    {@const cardFrameUrl = cardFrameUrls.get(card.mechanicId ?? '') ?? null}
     {@const isRevealing = cardAnim === 'reveal'}
     {@const isTierUp = cardAnim === 'tier-up'}
     {@const isSwoosh = cardAnim === 'swoosh'}
@@ -1012,8 +952,7 @@
     {@const descPower = isChargePreview ? getEffectValue(card, true) : undefined}
 
     <button
-      class="card-in-hand"
-      class:card-has-frame={!!cardFrameUrl}
+      class="card-in-hand card-has-frame"
       class:card-selected={isSelected}
       class:card-dimmed={isOther}
       class:tier-2a={card.tier === '2a'}
@@ -1048,10 +987,7 @@
       class:drag-charge-zone={isDragInChargeZone}
       class:drag-charge-zone-disabled={isDragInChargeZone && !chargeAffordableForDrag}
       style="
-        border-top: 6px solid {getChainColor(card.chainType ?? 0)};
         {isAnimating ? '' : isDraggingThis ? `transform: translate3d(${xOffset + cardDragX}px, ${(isSelected ? -80 : -arcOffset) - cardDragRawY}px, 0) rotate(0deg) scale(${cardDragScale});` : `transform: translate3d(${xOffset}px, ${isSelected ? -80 : isOther ? 15 : -(arcOffset + hoverLift)}px, 0) rotate(${isSelected ? 0 : rotation}deg) scale(${isSelected ? 1.2 : hoverScale});`}
-        border-color: {getChainColor(card.chainType ?? 0)};
-        box-shadow: 0 0 8px {getChainGlowColor(card.chainType ?? 0)};
         animation-delay: {i * 80}ms;
         opacity: {isOther ? 0.3 : 1};
         z-index: {isDraggingThis ? 20 : isHovered ? 10 : ''};
@@ -1069,27 +1005,26 @@
     >
       <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
         <div class="card-front">
-          {#if cardFrameUrl}
-            <img class="card-frame-img" src={cardFrameUrl} alt={card.mechanicName ?? card.cardType} />
-            <div class="ap-gem" style="color: {apGemColor}; text-shadow: 0 0 2px rgba(0,0,0,0.6);">{displayedApCost}</div>
-            {#if card.chainType !== undefined}
-              <div
-                class="chain-glow"
-                class:chain-pulse={chainPulseCardIds.has(card.id)}
-                style="background: radial-gradient(circle, {getChainGlowColor(card.chainType)} 0%, transparent 70%);"
-              ></div>
-              <div class="chain-type-icon-badge">
-                <ChainIcon chainType={card.chainType} size={12} />
-              </div>
-              <div class="chain-ember-container">
-                <span style="background-color: {getChainColor(card.chainType)};"></span>
-                <span style="background-color: {getChainColor(card.chainType)};"></span>
-                <span style="background-color: {getChainColor(card.chainType)};"></span>
-                <span style="background-color: {getChainColor(card.chainType)};"></span>
-                <span style="background-color: {getChainColor(card.chainType)};"></span>
-              </div>
+          <!-- V2 layered frame system -->
+          <div class="card-v2-frame">
+            <!-- Layer 1: Border (by card type) -->
+            <img class="frame-layer" src={getBorderUrl(card.cardType)} alt="" />
+            <!-- Layer 2: Base frame (constant) -->
+            <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
+            <!-- Layer 3: Banner (by chain type) -->
+            <img class="frame-layer" src={getBannerUrl(card.chainType ?? 0)} alt="" />
+            <!-- Layer 4: Upgrade icon (conditional, float animation) -->
+            {#if card.isUpgraded}
+              <img class="frame-layer upgrade-icon" src={getUpgradeIconUrl()} alt="" />
             {/if}
-            <div class="card-parchment-text">
+            <!-- AP cost overlay -->
+            <div class="frame-text v2-ap-cost" style={GUIDE_STYLES.apCost} style:color={apGemColor}>{displayedApCost}</div>
+            <!-- Mechanic name overlay -->
+            <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName}>{card.mechanicName ?? ''}</div>
+            <!-- Card type label overlay -->
+            <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}>{card.cardType?.toUpperCase() ?? ''}</div>
+            <!-- Effect description text -->
+            <div class="frame-text v2-effect-text" style={GUIDE_STYLES.effectText}>
               <span class="parchment-inner">
                 {#each getCardDescriptionParts(card, undefined, descPower) as part}
                   {#if part.type === 'number'}
@@ -1104,17 +1039,7 @@
                 {/each}
               </span>
             </div>
-          {:else}
-            {#if cardbackUrl}
-              <img class="card-front-bg" src={cardbackUrl} alt="" />
-            {/if}
-            <div class="ap-badge" class:ap-free={displayedApCost === 0} class:ap-heavy={displayedApCost === 2} class:ap-full-turn={displayedApCost >= 3}>{displayedApCost}</div>
-            <div class="card-domain-stripe" style="background: {domainColor};"></div>
-            <div class="card-front-name">{card.mechanicName ?? card.cardType}</div>
-            {#if showFrontValue}
-              <div class="card-effect-value" class:boosted={isBoosted() && effectVal > 0} class:charge-preview={isChargePreview && !isBtnChargePreview} class:charge-preview-btn={isBtnChargePreview}>{effectVal}</div>
-            {/if}
-          {/if}
+          </div>
           {#if card.isMasteryTrial}
             <div class="trial-badge">TRIAL</div>
           {/if}
@@ -1123,9 +1048,6 @@
               <span>ECHO</span>
               <span class="echo-charge-label">⚡ CHARGE</span>
             </div>
-          {/if}
-          {#if tierBadge}
-            <div class="card-tier-badge">{tierBadge}</div>
           {/if}
           {#if isMastered}
             <div class="card-tier-label card-tier-label--mastered">MASTERED</div>
@@ -1222,14 +1144,10 @@
     {@const isImpact = cardAnim === 'impact'}
     {@const isAnimating = isRevealing || isTierUp || isSwoosh || isImpact}
     {@const tierUpTransition = tierUpTransitions[card.id] ?? null}
-    {@const domainColor = getDomainColor(card.domain)}
-    {@const effectVal = getEffectValue(card)}
-    {@const showFrontValue = shouldShowFrontValue(card)}
-    {@const cardFrameUrl = cardFrameUrls.get(card.mechanicId ?? '') ?? null}
     {@const tierVisual = getTierUpVisualSignature(card.factId)}
 
     <div
-      class="card-in-hand card-animating"
+      class="card-in-hand card-has-frame card-animating"
       class:card-reveal={isAnimating}
       class:card-fizzle={cardAnim === 'fizzle'}
       class:card-discard={cardAnim === 'discard'}
@@ -1250,49 +1168,21 @@
       class:card-impact-buff={isImpact && card.cardType === 'buff'}
       class:card-impact-debuff={isImpact && card.cardType === 'debuff'}
       class:card-impact-wild={isImpact && card.cardType === 'wild'}
-      style="
-        border-top: 6px solid {getChainColor(card.chainType ?? 0)};
-        border-color: {getChainColor(card.chainType ?? 0)};
-        box-shadow: 0 0 8px {getChainGlowColor(card.chainType ?? 0)};
-      "
     >
       <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
         <div class="card-front">
-          {#if cardFrameUrl}
-            <img class="card-frame-img" src={cardFrameUrl} alt={card.mechanicName ?? card.cardType} />
-            <div class="ap-gem" style="color: {getChainColor(card.chainType)}; text-shadow: 0 0 2px rgba(0,0,0,0.6);">{card.apCost ?? 1}</div>
-            {#if card.chainType !== undefined}
-              <div
-                class="chain-glow"
-                class:chain-pulse={chainPulseCardIds.has(card.id)}
-                style="background: radial-gradient(circle, {getChainGlowColor(card.chainType)} 0%, transparent 70%);"
-              ></div>
-              <div class="chain-type-icon-badge">
-                <ChainIcon chainType={card.chainType} size={12} />
-              </div>
-              <div class="chain-ember-container">
-                <span style="background-color: {getChainColor(card.chainType)};"></span>
-                <span style="background-color: {getChainColor(card.chainType)};"></span>
-                <span style="background-color: {getChainColor(card.chainType)};"></span>
-                <span style="background-color: {getChainColor(card.chainType)};"></span>
-                <span style="background-color: {getChainColor(card.chainType)};"></span>
-              </div>
+          <!-- V2 layered frame system -->
+          <div class="card-v2-frame">
+            <img class="frame-layer" src={getBorderUrl(card.cardType)} alt="" />
+            <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
+            <img class="frame-layer" src={getBannerUrl(card.chainType ?? 0)} alt="" />
+            {#if card.isUpgraded}
+              <img class="frame-layer upgrade-icon" src={getUpgradeIconUrl()} alt="" />
             {/if}
-            <div class="card-parchment-text">
-              {#if showFrontValue}
-                <span class="effect-value">{effectVal}</span>
-              {/if}
-            </div>
-          {:else}
-            {#if cardbackUrl}
-              <img class="card-front-bg" src={cardbackUrl} alt="" />
-            {/if}
-            <div class="card-domain-stripe" style="background: {domainColor};"></div>
-            <div class="card-front-name">{card.mechanicName ?? card.cardType}</div>
-            {#if showFrontValue}
-              <div class="card-effect-value">{effectVal}</div>
-            {/if}
-          {/if}
+            <div class="frame-text v2-ap-cost" style={GUIDE_STYLES.apCost}>{card.apCost ?? 1}</div>
+            <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName}>{card.mechanicName ?? ''}</div>
+            <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}>{card.cardType?.toUpperCase() ?? ''}</div>
+          </div>
         </div>
         {#if cardbackUrl}
           <div class="card-back">
@@ -1475,175 +1365,127 @@
   .card-has-frame {
     background-color: transparent;
     border: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .card-has-frame.card-selected {
+    box-shadow: none;
   }
 
   .card-has-frame.card-playable {
-    filter: drop-shadow(0 0 4px rgba(34, 197, 94, 0.9)) drop-shadow(0 0 10px rgba(34, 197, 94, 0.4));
+    filter: drop-shadow(0 0 2px rgba(22, 163, 74, 0.9));
   }
 
   .card-combo {
     filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.9)) drop-shadow(0 0 10px rgba(251, 191, 36, 0.4));
   }
 
-  .card-frame-img {
+  /* ── Card Frame V2 — layered system ──────────────────────── */
+  .card-v2-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .frame-layer {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: contain;
-    border-radius: 6px;
-    z-index: 0;
     pointer-events: none;
   }
 
-  .ap-gem {
+  .upgrade-icon {
+    animation: upgradeFloat 1.5s ease-in-out infinite;
+  }
+
+  @keyframes upgradeFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+
+  .frame-text {
     position: absolute;
-    top: 1%;
-    left: 2.5%;
-    width: calc(var(--card-w) * 0.18);
-    height: calc(var(--card-w) * 0.18);
     display: flex;
     align-items: center;
     justify-content: center;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+  }
+
+  .v2-ap-cost {
     font-family: 'Cinzel', 'Georgia', serif;
-    font-size: calc(var(--card-w) * 0.13);
     font-weight: 900;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.95), 0 0 8px rgba(0,0,0,0.6);
-    z-index: 2;
-    pointer-events: none;
+    font-size: calc(var(--card-w) * 0.22);
+    color: #fbbf24;
+    -webkit-text-stroke: 1.5px #000;
+    text-shadow:
+      1px 1px 0 #000, -1px -1px 0 #000,
+      1px -1px 0 #000, -1px 1px 0 #000,
+      2px 2px 0 #000, -2px -2px 0 #000,
+      0 2px 4px rgba(0,0,0,0.6);
+    line-height: 1;
   }
 
-  .chain-glow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 1;
-    opacity: 0.3;
-  }
-
-  /* Small chain-type icon badge — bottom-left corner of card face */
-  .chain-type-icon-badge {
-    position: absolute;
-    bottom: 4px;
-    left: 4px;
-    z-index: 2;
-    pointer-events: none;
-    opacity: 0.85;
-    filter: drop-shadow(0 0 2px rgba(0,0,0,0.6));
-  }
-
-  .chain-glow.chain-pulse {
-    animation: chain-pulse-anim 1.5s ease-in-out infinite;
-  }
-
-  @keyframes chain-pulse-anim {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.6; }
-  }
-
-  /* AR-71.2: Chain ember particle container */
-  .chain-ember-container {
-    position: absolute;
-    top: -8%;
-    left: 0;
-    right: 0;
-    height: 20%;
-    pointer-events: none;
-    z-index: 3;
-    overflow: visible;
-  }
-
-  .chain-ember-container span {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    border-radius: 50%;
-    opacity: 0;
-    animation: ember-rise 2.4s ease-out infinite;
-  }
-
-  .chain-ember-container span:nth-child(1) {
-    left: 20%;
-    animation-delay: 0s;
-    animation-duration: 2.2s;
-  }
-
-  .chain-ember-container span:nth-child(2) {
-    left: 40%;
-    animation-delay: 0.5s;
-    animation-duration: 2.6s;
-  }
-
-  .chain-ember-container span:nth-child(3) {
-    left: 60%;
-    animation-delay: 1.0s;
-    animation-duration: 2.0s;
-  }
-
-  .chain-ember-container span:nth-child(4) {
-    left: 30%;
-    animation-delay: 1.5s;
-    animation-duration: 2.8s;
-  }
-
-  .chain-ember-container span:nth-child(5) {
-    left: 75%;
-    animation-delay: 0.8s;
-    animation-duration: 2.3s;
-  }
-
-  @keyframes ember-rise {
-    0% {
-      opacity: 0;
-      transform: translateY(0) translateX(0);
-    }
-    15% {
-      opacity: 0.9;
-    }
-    60% {
-      opacity: 0.5;
-      transform: translateY(-12px) translateX(2px);
-    }
-    100% {
-      opacity: 0;
-      transform: translateY(-18px) translateX(-2px);
-    }
-  }
-
-  .card-parchment-text {
-    position: absolute;
-    top: 66%;
-    bottom: 7%;
-    left: 8%;
-    right: 8%;
-    display: flex;
+  .v2-mechanic-name {
+    font-family: 'Cinzel', 'Georgia', serif;
+    font-weight: 700;
+    font-size: calc(var(--card-w) * 0.085);
+    color: #000000;
+    text-transform: capitalize;
+    -webkit-text-stroke: 0.5px #fff;
+    text-shadow:
+      1px 1px 0 #fff, -1px -1px 0 #fff,
+      1px -1px 0 #fff, -1px 1px 0 #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-family: var(--font-pixel);
-    font-size: calc(var(--card-w) * 0.065);
+  }
+
+  .v2-card-type {
+    font-family: system-ui, -apple-system, sans-serif;
     font-weight: 700;
-    line-height: 1.5;
-    color: #F0E6D2;
-    -webkit-text-stroke: 0.4px #000;
-    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
-    z-index: 2;
-    pointer-events: none;
+    font-size: calc(var(--card-w) * 0.032);
+    color: #e0e0e0;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .v2-effect-text {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: calc(var(--card-w) * 0.07);
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.3;
     overflow: hidden;
   }
 
   .desc-number {
+    font-family: 'Cinzel', 'Georgia', serif;
     font-weight: 900;
-    color: #1a1208;
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   }
 
   .desc-keyword {
-    font-weight: 900;
+    font-weight: 700;
   }
 
   .parchment-inner {
@@ -1658,30 +1500,6 @@
   .desc-conditional.active {
     color: #22c55e;
     font-weight: 900;
-  }
-
-  .effect-value {
-    font-family: 'Cinzel', 'Georgia', serif;
-    font-size: calc(var(--card-w) * 0.22);
-    font-weight: 900;
-    color: #3d3428;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.3);
-    line-height: 1;
-  }
-
-  .effect-value.boosted {
-    color: #16a34a;
-    text-shadow: 0 0 4px rgba(22, 163, 74, 0.4);
-  }
-
-  .effect-desc {
-    font-size: calc(var(--card-w) * 0.085);
-    color: #5c4f3c;
-    text-align: center;
-    line-height: 1.25;
-    max-height: 3em;
-    overflow: hidden;
-    font-family: 'Cinzel', 'Georgia', serif;
   }
 
   .card-animating {
@@ -1702,11 +1520,11 @@
   }
 
   .card-playable {
-    filter: drop-shadow(0 0 4px rgba(34, 197, 94, 0.9)) drop-shadow(0 0 10px rgba(34, 197, 94, 0.4));
+    filter: drop-shadow(0 0 2px rgba(22, 163, 74, 0.9));
   }
 
   .drag-ready {
-    filter: drop-shadow(0 0 12px rgba(34, 197, 94, 0.7)) drop-shadow(0 0 24px rgba(34, 197, 94, 0.3)) !important;
+    filter: drop-shadow(0 0 3px rgba(34, 197, 94, 0.9)) !important;
   }
 
   /* AR-62: Card in the Charge zone (above screen-position threshold) */
@@ -1850,20 +1668,6 @@
     justify-content: flex-start;
   }
 
-  .card-front-bg {
-    position: absolute;
-    inset: 4px;
-    width: calc(100% - 8px);
-    height: calc(100% - 8px);
-    object-fit: contain;
-    object-position: center center;
-    border-radius: 6px;
-    opacity: 0.42;
-    z-index: 0;
-    pointer-events: none;
-    filter: brightness(0.82) saturate(0.95);
-  }
-
   .card-back {
     transform: rotateY(180deg);
     z-index: 2;
@@ -1889,105 +1693,6 @@
     z-index: 100 !important;
     transition: all 400ms ease-in-out;
     pointer-events: none;
-  }
-
-  .card-domain-stripe {
-    width: 100%;
-    height: 4px;
-    flex-shrink: 0;
-    position: relative;
-    z-index: 1;
-  }
-
-
-  .card-front-name {
-    position: absolute;
-    left: 6px;
-    right: 6px;
-    top: 28%;
-    z-index: 1;
-    text-align: center;
-    font-family: var(--font-pixel);
-    font-size: calc(var(--card-w) * 0.075);
-    font-weight: 700;
-    letter-spacing: 0.3px;
-    color: #F0E6D2;
-    -webkit-text-stroke: 0.4px #000;
-    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
-    line-height: 1.4;
-    display: -webkit-box;
-    line-clamp: 2;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .card-effect-value {
-    position: absolute;
-    left: 50%;
-    bottom: 10px;
-    transform: translateX(-50%);
-    font-size: calc(var(--card-w) * 0.30);
-    font-weight: 700;
-    line-height: 1;
-    z-index: 1;
-    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8);
-  }
-
-  .card-effect-value.boosted {
-    color: #4ade80;
-    text-shadow: 0 0 6px rgba(74, 222, 128, 0.5);
-  }
-
-  .ap-badge {
-    position: absolute;
-    top: calc(-4px * var(--layout-scale, 1));
-    right: calc(-4px * var(--layout-scale, 1));
-    width: calc(20px * var(--layout-scale, 1));
-    height: calc(20px * var(--layout-scale, 1));
-    border-radius: 50%;
-    background: #1e40af;
-    color: white;
-    font-size: calc(11px * var(--layout-scale, 1));
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1.5px solid #3b82f6;
-    z-index: 2;
-  }
-
-  .ap-badge.ap-free {
-    background: #059669;
-    border-color: #10b981;
-  }
-
-  .ap-badge.ap-heavy {
-    background: #d97706;
-    border-color: #f59e0b;
-  }
-
-  .ap-badge.ap-full-turn {
-    background: #dc2626;
-    border-color: #ef4444;
-  }
-
-  .card-tier-badge {
-    font-size: calc(10px * var(--layout-scale, 1));
-    font-weight: 700;
-    margin-top: auto;
-    margin-bottom: calc(3px * var(--layout-scale, 1));
-    color: #c0c0c0;
-    position: relative;
-    z-index: 1;
-  }
-
-  .tier-2b .card-tier-badge {
-    color: #e4e4e4;
-  }
-
-  .tier-3 .card-tier-badge {
-    color: #ffd700;
   }
 
   .trial-badge {

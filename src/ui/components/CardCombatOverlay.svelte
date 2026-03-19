@@ -1702,8 +1702,8 @@
     left: calc(16px * var(--layout-scale, 1));
     bottom: 45vh;
     z-index: 8;
-    width: calc(44px * var(--layout-scale, 1));
-    height: calc(44px * var(--layout-scale, 1));
+    width: calc(56px * var(--layout-scale, 1));
+    height: calc(56px * var(--layout-scale, 1));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1753,14 +1753,14 @@
     position: relative;
     z-index: 2;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: calc(22px * var(--layout-scale, 1));
+    font-size: calc(28px * var(--layout-scale, 1));
     font-weight: 800;
     color: #ffffff;
     text-shadow: 0 0 4px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, 0.9);
     background: rgba(0, 0, 0, 0.4);
     border-radius: 50%;
-    width: calc(32px * var(--layout-scale, 1));
-    height: calc(32px * var(--layout-scale, 1));
+    width: calc(42px * var(--layout-scale, 1));
+    height: calc(42px * var(--layout-scale, 1));
     display: flex;
     align-items: center;
     justify-content: center;

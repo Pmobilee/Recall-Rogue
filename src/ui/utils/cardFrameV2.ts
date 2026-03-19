@@ -1,0 +1,98 @@
+/**
+ * Card Frame V2 — layered rendering system.
+ * Uses pre-generated hue-shifted border and banner layers.
+ *
+ * Layer order (bottom → top):
+ *   1. Border  — colored by card type (attack/shield/buff/debuff/utility/wild)
+ *   2. Base    — constant transparent-windowed frame sits on top
+ *   3. Banner  — colored by chain type (0–5)
+ *   4. Upgrade — green cross icon, float-animated, shown only on upgraded cards
+ */
+
+import type { CardType } from '../../data/card-types'
+
+/** Canvas dimensions of the PSD source (used for percentage calculations). */
+export const FRAME_WIDTH = 886
+export const FRAME_HEIGHT = 1142
+
+// Asset base paths
+const V2_BASE = '/assets/cardframes/v2'
+const V2_LOWRES = '/assets/cardframes/v2/lowres'
+
+// Border filename by card type
+const BORDER_MAP: Record<CardType, string> = {
+  attack: 'card-border-attack.webp',
+  shield: 'card-border-shield.webp',
+  buff: 'card-border-buff.webp',
+  debuff: 'card-border-debuff.webp',
+  utility: 'card-border-utility.webp',
+  wild: 'card-border-wild.webp',
+}
+
+// Banner filename by chain type (0–5)
+const BANNER_MAP: Record<number, string> = {
+  0: 'card-banner-chain0.webp',
+  1: 'card-banner-chain1.webp',
+  2: 'card-banner-chain2.webp',
+  3: 'card-banner-chain3.webp',
+  4: 'card-banner-chain4.webp',
+  5: 'card-banner-chain5.webp',
+}
+
+/** Get URL for the base frame layer (constant, sits over the border). */
+export function getBaseFrameUrl(lowres = false): string {
+  return `${lowres ? V2_LOWRES : V2_BASE}/card-frame-base.webp`
+}
+
+/** Get URL for the border layer, selected by card type. */
+export function getBorderUrl(cardType: CardType, lowres = false): string {
+  const file = BORDER_MAP[cardType] ?? BORDER_MAP.attack
+  return `${lowres ? V2_LOWRES : V2_BASE}/${file}`
+}
+
+/** Get URL for the banner layer, selected by chain type (0–5). */
+export function getBannerUrl(chainType: number, lowres = false): string {
+  const file = BANNER_MAP[chainType] ?? BANNER_MAP[0]
+  return `${lowres ? V2_LOWRES : V2_BASE}/${file}`
+}
+
+/** Get URL for the upgrade icon layer (shown only when card.isUpgraded). */
+export function getUpgradeIconUrl(lowres = false): string {
+  return `${lowres ? V2_LOWRES : V2_BASE}/card-upgrade-icon.webp`
+}
+
+/**
+ * Compute an `inline style` string that absolutely-positions a text overlay
+ * using the guide coordinates from manifest.json as percentages of the canvas.
+ *
+ * @param x      Guide left edge in PSD pixels
+ * @param y      Guide top edge in PSD pixels
+ * @param w      Guide width in PSD pixels
+ * @param h      Guide height in PSD pixels
+ */
+export function guideStyle(x: number, y: number, w: number, h: number): string {
+  const left = ((x / FRAME_WIDTH) * 100).toFixed(3)
+  const top = ((y / FRAME_HEIGHT) * 100).toFixed(3)
+  const width = ((w / FRAME_WIDTH) * 100).toFixed(3)
+  const height = ((h / FRAME_HEIGHT) * 100).toFixed(3)
+  return `left:${left}%;top:${top}%;width:${width}%;height:${height}%;`
+}
+
+/**
+ * Pre-computed guide positions as inline style strings derived from manifest.json.
+ * All coordinates are percentages of the 886×1142 canvas.
+ *
+ * Manifest pixel values:
+ *   apCost       { x:18,  y:7,   w:164, h:130 }  — top shifted +10% for visual centering in book icon
+ *   mechanicName { x:205, y:86,  w:478, h:86  }
+ *   artWindow    { x:194, y:186, w:498, h:412 }
+ *   cardType     { x:352, y:615, w:182, h:54  }
+ *   effectText   { x:134, y:667, w:640, h:376 }
+ */
+export const GUIDE_STYLES = {
+  apCost: guideStyle(18, 32, 164, 120),
+  mechanicName: guideStyle(205, 145, 478, 50),
+  artWindow: guideStyle(194, 186, 498, 412),
+  cardType: guideStyle(352, 615, 182, 54),
+  effectText: guideStyle(134, 667, 640, 376),
+} as const

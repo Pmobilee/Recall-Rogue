@@ -69,14 +69,21 @@ export default class BootAnimScene extends Phaser.Scene {
   create(): void {
     // Part 1 needs a black background for the starfield.
     // We use a full-screen black rectangle instead of camera bg color,
-    // so we can fade it out independently during Part 2.
-    this.cameras.main.setBackgroundColor(0x000000)
+    // so the canvas stays transparent (WebGL clear = alpha 0) the entire time.
+    // This lets the campsite show through in Part 2 without any camera color reset.
 
     const cx = this.cameras.main.centerX
     const cy = this.cameras.main.centerY
     const viewW = this.scale.width
     const viewH = this.scale.height
     this.coverScale = this.calcLogoScale(viewW, viewH)
+
+    // Part 1 background — black rect instead of camera bg, so canvas stays transparent
+    const part1Bg = this.add.rectangle(
+      this.cameras.main.centerX, this.cameras.main.centerY,
+      this.scale.width * 2, this.scale.height * 2, 0x000000,
+    ).setDepth(0).setAlpha(1)
+    this.sceneSprites.push(part1Bg)
 
     // Particle texture
     const gfx = this.make.graphics({ x: 0, y: 0 })
@@ -262,6 +269,13 @@ export default class BootAnimScene extends Phaser.Scene {
     }
     this.starSprites = []
 
+    // 2b) Destroy Part 1 background rectangle (depth 0)
+    const part1Bgs = this.sceneSprites.filter(obj => {
+      const d = (obj as Phaser.GameObjects.Rectangle).depth
+      return d === 0 && obj.active
+    })
+    for (const bg of part1Bgs) { if (bg.active) bg.destroy() }
+
     // 3) Logo/title/studio disintegrate
     const logoTargets = this.sceneSprites.filter(obj => {
       const d = (obj as Phaser.GameObjects.Image).depth
@@ -319,11 +333,11 @@ export default class BootAnimScene extends Phaser.Scene {
   // How transparency works:
   // - Phaser game was created with `transparent: true` (see CardGameManager)
   // - Camera background is set to alpha 0 → WebGL clears to (0,0,0,0)
-  // - Rings use NORMAL blend mode but have black (#000000) backgrounds
-  // - A fading black rectangle at depth 5 covers the WHOLE screen,
-  //   gradually revealing the campsite behind the canvas
-  // - Ring center holes show the campsite THROUGH both the fading rect
-  //   and the transparent canvas
+  // - Rings use NORMAL blend mode: black outer areas = opaque tunnel walls,
+  //   transparent centers = holes you see THROUGH to the Svelte campsite behind
+  // - No black screen — the campsite is visible through ring holes the entire descent
+  // - Campsite appears blurred (from boot-anim-show-blurred emit in transition()),
+  //   then sharpens at ring 7 (boot-anim-deblur emit)
   //
   // 3D effect: rings scale Y 30-50% more than X as they approach,
   // creating a tunnel-mouth perspective distortion.
@@ -333,45 +347,16 @@ export default class BootAnimScene extends Phaser.Scene {
     const viewH = this.scale.height
     const ringCover = Math.max(viewW / 1024, viewH / 1024)
 
-    // ── Make camera transparent ──
-    // Phaser camera.setBackgroundColor with alpha 0:
-    // The camera internally uses a Phaser.Display.Color object.
-    // Setting alpha to 0 makes the WebGL clear color transparent.
-    const cam = this.cameras.main
-    cam.setBackgroundColor({ r: 0, g: 0, b: 0, a: 0 } as unknown as number)
-    // Also try the transparent property directly
-    cam.transparent = true
-
-    // ── Fading black screen ──
-    // This rectangle covers the entire viewport at a LOW depth (below rings).
-    // It starts fully opaque (black) and fades out over the descent,
-    // gradually revealing the Svelte HubScreen (campsite) behind the canvas.
-    // The ring holes let you see THROUGH to this rect → through to campsite.
-    const blackScreen = this.add.rectangle(cx, cy, viewW * 2, viewH * 2, 0x000000)
-      .setDepth(5).setAlpha(1)
-    this.sceneSprites.push(blackScreen)
-
-    // Fade the black screen: starts at ring 2 (~300ms), reaches 0 around ring 7
-    this.time.delayedCall(300, () => {
-      this.tweens.add({
-        targets: blackScreen,
-        alpha: 0,
-        duration: 5500,
-        ease: 'Cubic.easeIn', // slow start → accelerating reveal
-        onComplete: () => { if (blackScreen.active) blackScreen.destroy() },
-      })
-    })
-
     // ── Ring configs: decelerating descent with 3D stretch ──
     const ringConfigs = [
       { delay: 0,    duration: 1400,  yDrift: -100, startScale: 0.08,  angle: 0,    yStretch: 3.5 },
-      { delay: 150,  duration: 1800,  yDrift: -75,  startScale: 0.06,  angle: 1.2,  yStretch: 3.0 },
-      { delay: 350,  duration: 2200,  yDrift: -55,  startScale: 0.05,  angle: -0.8, yStretch: 2.5 },
-      { delay: 600,  duration: 2600,  yDrift: -40,  startScale: 0.04,  angle: 0.6,  yStretch: 2.1 },
-      { delay: 900,  duration: 3000,  yDrift: -28,  startScale: 0.035, angle: -0.4, yStretch: 1.8 },
-      { delay: 1250, duration: 3400,  yDrift: -16,  startScale: 0.03,  angle: 0.3,  yStretch: 1.5 },
-      { delay: 1650, duration: 3800,  yDrift: -8,   startScale: 0.025, angle: -0.2, yStretch: 1.3 },
-      { delay: 2100, duration: 4200,  yDrift: -3,   startScale: 0.02,  angle: 0,    yStretch: 1.12 },
+      { delay: 80,   duration: 1800,  yDrift: -75,  startScale: 0.06,  angle: 1.2,  yStretch: 3.0 },
+      { delay: 180,  duration: 2200,  yDrift: -55,  startScale: 0.05,  angle: -0.8, yStretch: 2.5 },
+      { delay: 300,  duration: 2600,  yDrift: -40,  startScale: 0.04,  angle: 0.6,  yStretch: 2.1 },
+      { delay: 450,  duration: 3000,  yDrift: -28,  startScale: 0.035, angle: -0.4, yStretch: 1.8 },
+      { delay: 650,  duration: 3400,  yDrift: -16,  startScale: 0.03,  angle: 0.3,  yStretch: 1.5 },
+      { delay: 1050, duration: 3800,  yDrift: -8,   startScale: 0.025, angle: -0.2, yStretch: 1.3 },
+      { delay: 1500, duration: 4200,  yDrift: -3,   startScale: 0.02,  angle: 0,    yStretch: 1.12 },
     ]
 
     const endScaleX = ringCover * 4
