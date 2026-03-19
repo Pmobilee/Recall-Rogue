@@ -29,6 +29,9 @@
 // Run `npx playwright install chromium` if browsers are not yet installed.
 
 import { chromium } from '@playwright/test';
+import * as fs from 'fs';
+import * as path from 'path';
+import { execSync } from 'child_process';
 import { runBot } from './bot.js';
 import { BOT_PROFILES } from './types.js';
 import type { BotRunStats } from './types.js';
@@ -43,6 +46,8 @@ function parseArgs(): {
   parallel: number;
   headless: boolean;
   outputPath: string | null;
+  description: string;
+  originalArgs: string[];
 } {
   const args = process.argv.slice(2);
 
@@ -60,8 +65,9 @@ function parseArgs(): {
   const parallel = parseInt(get('--parallel') ?? '5', 10);
   const headless = !has('--headed');
   const outputPath = get('--output');
+  const description = get('--description') ?? 'General playtest run';
 
-  return { profiles, runsPerProfile, parallel, headless, outputPath };
+  return { profiles, runsPerProfile, parallel, headless, outputPath, description, originalArgs: args };
 }
 
 // ---------------------------------------------------------------------------
@@ -146,7 +152,30 @@ function summarizeProfile(id: string, pStats: BotRunStats[]): void {
 // ---------------------------------------------------------------------------
 
 async function main(): Promise<void> {
-  const { profiles, runsPerProfile, parallel, headless, outputPath } = parseArgs();
+  const { profiles, runsPerProfile, parallel, headless, outputPath, description, originalArgs } = parseArgs();
+  const startTime = Date.now();
+
+  // Determine output directory
+  const timestamp = new Date().toISOString()
+    .replace(/T/, '_')
+    .replace(/:/g, '-')
+    .slice(0, 19);
+
+  let outputDir: string;
+  let combinedJsonPath: string;
+
+  if (outputPath) {
+    // Legacy behavior: use the specified path directly
+    outputDir = path.dirname(path.resolve(outputPath));
+    combinedJsonPath = path.resolve(outputPath);
+  } else {
+    // Default: timestamped folder under data/playtests/runs/
+    const runsBase = path.resolve('data/playtests/runs');
+    fs.mkdirSync(runsBase, { recursive: true });
+    outputDir = path.join(runsBase, timestamp);
+    fs.mkdirSync(outputDir, { recursive: true });
+    combinedJsonPath = path.join(outputDir, 'combined.json');
+  }
 
   console.log(`\n${'='.repeat(72)}`);
   console.log(`  RECALL ROGUE — LIVE GAME BOT`);
@@ -156,6 +185,10 @@ async function main(): Promise<void> {
   console.log(`  Parallel  : ${parallel}`);
   console.log(`  Headless  : ${headless}`);
   console.log(`  Total runs: ${profiles.length * runsPerProfile}`);
+  console.log(`  Description: ${description}`);
+  if (!outputPath) {
+    console.log(`  Output dir: ${outputDir}`);
+  }
   console.log(`${'='.repeat(72)}\n`);
 
   // Verify dev server is reachable before launching browsers
@@ -282,18 +315,125 @@ async function main(): Promise<void> {
   }
   console.log(`${'='.repeat(72)}\n`);
 
-  // Write results to file if requested
-  if (outputPath) {
-    const fs = await import('fs');
-    const output = {
-      timestamp: new Date().toISOString(),
-      profiles: profiles.map((id) => BOT_PROFILES[id]?.name ?? id),
-      runsPerProfile,
-      runs: allStats,
-    };
-    fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
-    console.log(`Results written to: ${outputPath}\n`);
+  const totalDurationSeconds = Math.round((Date.now() - startTime) / 1000);
+
+  // Always save combined.json
+  const output = {
+    timestamp: new Date().toISOString(),
+    description,
+    profiles: profiles.map((id) => BOT_PROFILES[id]?.name ?? id),
+    runsPerProfile,
+    totalRuns: allStats.length,
+    durationSeconds: totalDurationSeconds,
+    runs: allStats,
+  };
+  fs.mkdirSync(path.dirname(combinedJsonPath), { recursive: true });
+  fs.writeFileSync(combinedJsonPath, JSON.stringify(output, null, 2));
+  console.log(`Results written to: ${combinedJsonPath}`);
+
+  // Save per-profile JSONs (only for timestamped folder mode)
+  if (!outputPath) {
+    for (const profileId of profiles) {
+      const pStats = allStats.filter((s) => s.profile === profileId);
+      if (pStats.length === 0) continue;
+      const profileOutput = { ...output, runs: pStats };
+      const profilePath = path.join(outputDir, `${profileId}.json`);
+      fs.writeFileSync(profilePath, JSON.stringify(profileOutput, null, 2));
+    }
+
+    // Update latest symlink
+    const runsBase = path.resolve('data/playtests/runs');
+    const latestPath = path.join(runsBase, 'latest');
+    try {
+      if (fs.existsSync(latestPath)) fs.unlinkSync(latestPath);
+      fs.symlinkSync(timestamp, latestPath);
+    } catch {
+      // Symlink creation may fail on some systems — non-fatal
+    }
+
+    // Generate README.md
+    const readmePath = path.join(outputDir, 'README.md');
+    const readmeLines: string[] = [
+      `# Playtest Batch: ${timestamp}`,
+      '',
+      `**Date:** ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`,
+      `**Duration:** ${totalDurationSeconds}s`,
+      `**Description:** ${description}`,
+      `**Profiles:** ${profiles.join(', ')}`,
+      `**Runs per profile:** ${runsPerProfile}`,
+      `**Total runs:** ${allStats.length}`,
+      '',
+      '## Results Summary',
+      '',
+      '| Profile | Runs | Wins | Defeats | Errors | Win% | Avg Floor | Avg Cards | Avg Relics | Avg Gold |',
+      '|---------|------|------|---------|--------|------|-----------|-----------|------------|----------|',
+    ];
+
+    let overallWins = 0;
+    let overallFloorTotal = 0;
+    let overallEncounterTotal = 0;
+    let overallRelicTotal = 0;
+    let overallErrorTotal = 0;
+    const uniqueEnemies = new Set<string>();
+
+    for (const profileId of profiles) {
+      const pStats = allStats.filter((s) => s.profile === profileId);
+      if (pStats.length === 0) continue;
+
+      const wins = pStats.filter((s) => s.result === 'victory').length;
+      const defeats = pStats.filter((s) => s.result === 'defeat').length;
+      const errors = pStats.filter((s) => s.result === 'error' || s.result === 'timeout').length;
+      const winPct = Math.round((wins / pStats.length) * 100);
+      const avgFloor = (pStats.reduce((a, s) => a + s.finalFloor, 0) / pStats.length).toFixed(1);
+      const avgCards = (pStats.reduce((a, s) => a + s.totalCardsPlayed, 0) / pStats.length).toFixed(0);
+      const avgRelics = (pStats.reduce((a, s) => a + (s.finalRelicCount || s.relicsEarned.length), 0) / pStats.length).toFixed(1);
+      const avgGold = (pStats.reduce((a, s) => a + s.finalGold, 0) / pStats.length).toFixed(0);
+
+      readmeLines.push(`| ${profileId} | ${pStats.length} | ${wins} | ${defeats} | ${errors} | ${winPct}% | ${avgFloor} | ${avgCards} | ${avgRelics} | ${avgGold} |`);
+
+      overallWins += wins;
+      overallFloorTotal += pStats.reduce((a, s) => a + s.finalFloor, 0);
+      overallEncounterTotal += pStats.reduce((a, s) => a + s.encountersWon + s.encountersLost, 0);
+      overallRelicTotal += pStats.reduce((a, s) => a + (s.finalRelicCount || s.relicsEarned.length), 0);
+      overallErrorTotal += errors;
+      pStats.forEach((s) => { if (s.deathEnemy) uniqueEnemies.add(s.deathEnemy); });
+    }
+
+    const overallWinPct = allStats.length > 0 ? Math.round((overallWins / allStats.length) * 100) : 0;
+    const overallAvgFloor = allStats.length > 0 ? (overallFloorTotal / allStats.length).toFixed(1) : '0';
+    const overallAvgRelics = allStats.length > 0 ? (overallRelicTotal / allStats.length).toFixed(1) : '0';
+    const errorPct = allStats.length > 0 ? Math.round((overallErrorTotal / allStats.length) * 100) : 0;
+
+    readmeLines.push(
+      '',
+      '## Key Findings',
+      '',
+      `- Overall win rate: ${overallWinPct}%`,
+      `- Average floor reached: ${overallAvgFloor}`,
+      `- Total encounters: ${overallEncounterTotal} across ${uniqueEnemies.size} unique enemies`,
+      `- Total relics earned: ${overallRelicTotal} (avg ${overallAvgRelics} per run)`,
+      `- Error/timeout rate: ${errorPct}%`,
+      '',
+      '## Run Command',
+      '',
+      '```bash',
+      `npx tsx tests/playtest/playwright-bot/runner.ts ${originalArgs.join(' ')}`,
+      '```',
+      '',
+    );
+
+    fs.writeFileSync(readmePath, readmeLines.join('\n'));
+    console.log(`README written to: ${readmePath}`);
   }
+
+  // Run analyzer automatically
+  try {
+    execSync(`npx tsx tests/playtest/playwright-bot/analyze.ts --input ${combinedJsonPath}`, { stdio: 'inherit' });
+  } catch {
+    console.log('Note: analyzer had issues, check balance-report.txt');
+  }
+
+  console.log('');
 }
 
 main().catch((err) => {
