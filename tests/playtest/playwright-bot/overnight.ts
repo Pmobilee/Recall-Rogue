@@ -35,7 +35,8 @@ import * as path from 'path';
 const PROFILES = ['first_timer', 'casual_learner', 'regular', 'gamer', 'dedicated', 'scholar'];
 const BATCH_SIZE = 10;
 const MAX_RETRIES = 2;
-const OUTPUT_DIR = 'data/playtests/overnight-2026-03-19';
+const OVERNIGHT_TIMESTAMP = new Date().toISOString().replace(/T/, '_').replace(/:/g, '-').slice(0, 19);
+const OUTPUT_DIR = `data/playtests/runs/${OVERNIGHT_TIMESTAMP}`;
 const LOG_FILE = path.join(OUTPUT_DIR, 'progress.log');
 const BROWSER_ARGS = [
   '--use-gl=angle',
@@ -492,6 +493,17 @@ process.on('SIGINT', () => {
 
 async function main(): Promise<void> {
   ensureOutputDir();
+
+  // Update latest symlink
+  const runsBase = path.resolve('data/playtests/runs');
+  const latestPath = path.join(runsBase, 'latest');
+  try {
+    if (fs.existsSync(latestPath)) fs.unlinkSync(latestPath);
+    fs.symlinkSync(OVERNIGHT_TIMESTAMP, latestPath);
+  } catch {
+    /* non-fatal */
+  }
+
   log('Starting overnight collection — cycling indefinitely through 6 profiles');
   log(`Output: ${OUTPUT_DIR}`);
   log('Press Ctrl+C to stop gracefully');
