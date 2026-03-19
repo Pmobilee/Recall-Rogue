@@ -306,17 +306,16 @@ enemyStats.forEach((e) => {
 push(divider('5. PER-FLOOR DEATH RATE'));
 
 // Count runs that reached each floor and died there
-const maxFloor = 8;
+const maxFloor = Math.max(...runs.map(r => r.finalFloor), 0);
 const floorReached: number[] = Array(maxFloor + 1).fill(0);
 const floorDeaths: number[] = Array(maxFloor + 1).fill(0);
 
 runs.forEach((run) => {
-  // A run "reached" floor N if finalFloor >= N
-  for (let f = 0; f <= Math.min(run.finalFloor, maxFloor); f++) {
+  for (let f = 0; f <= run.finalFloor; f++) {
     floorReached[f]++;
   }
-  if (run.result === 'defeat' && run.deathFloor >= 0 && run.deathFloor <= maxFloor) {
-    floorDeaths[run.deathFloor]++;
+  if (run.result === 'defeat' && run.deathFloor > 0) {
+    floorDeaths[Math.min(run.deathFloor, maxFloor)]++;
   }
 });
 
@@ -538,6 +537,24 @@ if (overallErrorRate > 0.2) {
   recommendations.push(
     `  [BOT]     High error rate (${Math.round(overallErrorRate * 100)}%) — bot reliability needs improvement`,
   );
+}
+
+// Killer enemies (which enemy was the last encounter before defeat?)
+const killerEnemies: Record<string, number> = {};
+runs.filter(r => r.result === 'defeat').forEach(r => {
+  const lastEnc = r.encounters?.[r.encounters.length - 1];
+  if (lastEnc?.enemyName) {
+    killerEnemies[lastEnc.enemyName] = (killerEnemies[lastEnc.enemyName] || 0) + 1;
+  }
+});
+const killerSorted = Object.entries(killerEnemies).sort((a, b) => b[1] - a[1]);
+if (killerSorted.length > 0) {
+  const totalDefeats = runs.filter(r => r.result === 'defeat').length;
+  killerSorted.slice(0, 5).forEach(([name, count]) => {
+    recommendations.push(
+      `  [KILLER]  "${name}" ended ${count}/${totalDefeats} runs (${Math.round(count / totalDefeats * 100)}% of all deaths)`,
+    );
+  });
 }
 
 // Floor death traps

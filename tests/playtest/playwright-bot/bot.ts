@@ -728,6 +728,11 @@ export async function runBot(page: Page, profile: BotProfile, seed: number): Pro
     stats.errors.push(err instanceof Error ? err.message : String(err));
   }
 
+  // Ensure deathFloor is set for all defeats
+  if (stats.result === 'defeat' && stats.deathFloor === 0) {
+    stats.deathFloor = stats.finalFloor;
+  }
+
   stats.durationMs = Date.now() - startTime;
   return stats;
 }
