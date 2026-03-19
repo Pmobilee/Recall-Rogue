@@ -15,8 +15,8 @@ import { createRng, startRun, selectDomain, playCard, endTurn, answerQuiz, choos
 // Constants
 // ---------------------------------------------------------------------------
 
-/** Maximum duration for a single run (180s — includes shop visits, rest room studies, and first-room retries). */
-const RUN_TIMEOUT_MS = 300_000;
+/** Maximum duration for a single run (10 min — deep runs with 400+ cards need time). */
+const RUN_TIMEOUT_MS = 600_000;
 
 /** Max loop iterations to prevent infinite loops. */
 const MAX_ITERATIONS = 15_000;
