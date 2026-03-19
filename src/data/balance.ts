@@ -906,10 +906,10 @@ export const CHARGE_CORRECT_MULTIPLIERS: Record<string, number> = {
 
 /** Charge play multipliers for wrong answers, by tier. */
 export const CHARGE_WRONG_MULTIPLIERS: Record<string, number> = {
-  '1': 0.6,
-  '2a': 0.7,
-  '2b': 0.7,
-  '3': 0.6,
+  '1': 0.8,
+  '2a': 0.85,
+  '2b': 0.85,
+  '3': 0.75,
 };
 
 /** Passive bonus values for Tier 3 mastered cards by card type. */
