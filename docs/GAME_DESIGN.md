@@ -1479,6 +1479,17 @@ Enemy intent icon and damage preview shown above enemy sprite at all times. Thre
 - **Defend:** Shield icon + block value
 - **Buff:** Star icon + effect description
 
+### Health Management Design Rules
+
+**Healing must be scarce and strategic — never automatic or generous.**
+
+- **Post-encounter healing vials** appear on the reward screen as small health potions (2-6% of max HP). They do NOT always appear — probability-based, not guaranteed.
+- **POST_ENCOUNTER_HEAL_PCT stays at 3%** — this is the tiny passive recovery (bandaging wounds). NOT a full heal.
+- **Rest rooms are the primary healing source** — 30% HP heal, but costs a room choice (opportunity cost vs shop/mystery).
+- **Shop food** — buyable healing at gold cost (rations, elixirs). Strategic resource decision.
+- **If healing is too generous, HP management becomes trivial** and the game loses tension. The player should feel pressure to play well (shields, correct answers) to AVOID damage, not rely on healing it away.
+- **STS reference:** STS Ironclad heals 6 HP after combat (7.5% of 80 HP). Other characters get 0. Rest sites heal 30%. This creates real attrition pressure.
+
 ### HP Bar
 
 - Player HP: prominent bar bottom-left of combat HUD
@@ -1826,6 +1837,25 @@ Shown after each run ends (victory, defeat, or retreat):
 - New facts discovered (first time seen)
 - Facts that leveled up (tier advances)
 - New Mastery Trials passed
+
+### Grade Badge
+
+Displayed prominently on the Run End screen for `defeat` and `victory` results (hidden for `retreat`). A circular badge with a glowing border pops in 400ms after the screen loads, followed by a flavor text line.
+
+| Grade | Condition | Color | Flavor |
+|-------|-----------|-------|--------|
+| S | Victory (defeated The Curator) | Gold `#FFD700` | "Knowledge is power!" |
+| A+ | Floor ≥ 22 | Purple `#7C4DFF` | "Scholar material!" |
+| A | Floor ≥ 19 | Cyan `#00BCD4` | "Scholar material!" |
+| B+ | Floor ≥ 16 | Green `#4CAF50` | "Impressive run!" |
+| B | Floor ≥ 13 | Light green `#8BC34A` | "Impressive run!" |
+| C+ | Floor ≥ 10 | Yellow-green `#CDDC39` | "Getting there." |
+| C | Floor ≥ 7 | Amber `#FFC107` | "Getting there." |
+| D+ | Floor ≥ 5 | Orange `#FF9800` | "Room for improvement." |
+| D | Floor ≥ 3 | Deep orange `#FF5722` | "Room for improvement." |
+| F | Floor < 3 | Red `#FF1744` | "Back to the books..." |
+
+The badge uses a spring-bounce entry animation and a continuous shimmer glow effect. Both are suppressed under `prefers-reduced-motion`.
 
 ---
 

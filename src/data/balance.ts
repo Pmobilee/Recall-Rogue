@@ -978,7 +978,7 @@ export const MAX_AP_PER_TURN = 5;
 
 // Post-encounter healing (AR-31: between-encounter recovery)
 /** Fraction of max HP healed after each non-defeat encounter. */
-export const POST_ENCOUNTER_HEAL_PCT = 0.25;
+export const POST_ENCOUNTER_HEAL_PCT = 0.03;
 /** Extra healing fraction for Relaxed mode (additive with POST_ENCOUNTER_HEAL_PCT). */
 export const RELAXED_POST_ENCOUNTER_HEAL_BONUS = 0.03;
 /** Extra healing fraction after defeating a boss or mini-boss (AR-32, additive). */
