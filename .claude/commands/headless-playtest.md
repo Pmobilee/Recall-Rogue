@@ -56,6 +56,19 @@ From addictiveness research:
 - Shop visits per run: 2-3
 - Cards added per run: 6-10
 
+### Current Actual Results (2026-03-20, post relic fix, 30,000 runs)
+
+| Profile | A0 | A5 | A10 | A15 | A20 |
+|---------|----|----|-----|-----|-----|
+| first_timer | 22% | 15% | 7% | 4% | 1% |
+| gamer | 38% | 31% | 15% | 8% | 2% |
+| regular | 52% | 39% | 24% | 14% | 3% |
+| casual | 58% | 41% | 24% | 17% | 4% |
+| dedicated | 65% | 51% | 34% | 22% | 5% |
+| scholar | 86% | 76% | 63% | 40% | 8% |
+
+**Key finding:** Scholar is overpowered at A0 (86% vs 55% target). Knowledge advantage is intentionally strong in a knowledge game. Ascension progression is smooth with no dead zones.
+
 ### Card Balance (from STS reference)
 - Attack base damage: 6 (STS Strike = 6, upgraded = 9)
 - Shield base value: 5 (STS Defend = 5, upgraded = 8)
@@ -66,12 +79,12 @@ From addictiveness research:
 
 | Profile | Quiz Acc | Charge Rate | Strategy | Simulates |
 |---------|----------|-------------|----------|-----------|
-| first_timer | 45% | 15% | basic | New player, guesses most answers |
-| casual_learner | 65% | 30% | basic | Casual, knows some facts |
-| regular | 62% | 40% | intermediate | Average player |
-| gamer | 55% | 80% | optimal | Plays well but doesn't know facts |
-| dedicated | 70% | 85% | optimal | Good knowledge + good play |
-| scholar | 82% | 90% | optimal | Best player archetype |
+| first_timer | 45% | 10% | basic | New player, guesses most answers |
+| casual_learner | 65% | 35% | basic | Casual, knows some facts |
+| regular | 62% | 30% | intermediate | Average player |
+| gamer | 55% | 20% | optimal | Plays well but doesn't know facts |
+| dedicated | 70% | 55% | optimal | Good knowledge + good play |
+| scholar | 82% | 75% | optimal | Best player archetype |
 
 ## CLI Flags
 
@@ -80,7 +93,8 @@ From addictiveness research:
 | --runs N | 100 | Runs per profile |
 | --profile ID | all | Single profile to test |
 | --encounters N | 30 | Max encounters per run |
-| --heal-rate F | 0.2 | HP healed between encounters (0-1) |
+| --ascension N | 0 | Ascension level (0-20) |
+| --heal-rate F | from balance.ts | Post-encounter heal (default: POST_ENCOUNTER_HEAL_PCT from balance.ts) |
 | --description TEXT | "Headless balance run" | Label for this batch |
 
 ## Speed
@@ -100,3 +114,5 @@ From addictiveness research:
 | `tests/playtest/headless/browser-shim.ts` | Browser API mocks |
 | `src/data/balance.ts` | ALL balance constants (change these to tune) |
 | `src/data/enemies.ts` | Enemy templates and stats |
+| `tests/playtest/headless/relic-audit.ts` | Automated relic effect verification |
+| `src/services/ascension.ts` | Ascension level definitions (challenge + buff) |
