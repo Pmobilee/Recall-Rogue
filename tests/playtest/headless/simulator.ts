@@ -27,6 +27,7 @@ import {
 import type { Card, CardType, FactDomain, CardTier } from '../../../src/data/card-types.js';
 import type { EnemyTemplate } from '../../../src/data/enemies.js';
 import { PLAYER_START_HP, PLAYER_MAX_HP, POST_ENCOUNTER_HEAL_PCT } from '../../../src/data/balance.js';
+import { getAscensionModifiers } from '../../../src/services/ascension.js';
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Types
@@ -53,6 +54,8 @@ export interface SimOptions {
   verbose?: boolean;
   /** Amount to heal between encounters (as fraction of maxHP). Default: 0.2 */
   healBetweenEncounters?: number;
+  /** Ascension level (0-20). Default: 0 */
+  ascensionLevel?: number;
 }
 
 export interface EncounterSummary {
@@ -86,6 +89,7 @@ export interface SimRunResult {
   floorsReached: number;
   finalHP: number;
   survived: boolean;
+  ascensionLevel: number;
   durationMs: number;
 }
 
@@ -360,17 +364,22 @@ export function runSimulation(opts: SimOptions = {}): SimRunResult {
     maxTurnsPerEncounter: opts.maxTurnsPerEncounter ?? 40,
     verbose: opts.verbose ?? false,
     healBetweenEncounters: opts.healBetweenEncounters ?? POST_ENCOUNTER_HEAL_PCT,
+    ascensionLevel: opts.ascensionLevel ?? 0,
   };
+
+  // Compute ascension modifiers once for the entire run
+  const ascMods = getAscensionModifiers(options.ascensionLevel);
 
   const runId = `sim_${options.seed}_${Date.now()}`;
 
   // Build deck once; it persists across encounters (roguelite model)
-  const cardPool = buildSimDeck(options.deckSize);
+  const effectiveDeckSize = ascMods.starterDeckSizeOverride ?? options.deckSize;
+  const cardPool = buildSimDeck(effectiveDeckSize);
   const deck = createDeck(cardPool);
 
   // Track cross-encounter state
   let currentPlayerHP = PLAYER_START_HP;
-  const playerMaxHP = PLAYER_MAX_HP;
+  const playerMaxHP = ascMods.playerMaxHpOverride ?? PLAYER_MAX_HP;
 
   const encounterSummaries: EncounterSummary[] = [];
   let totalTurns = 0;
@@ -398,7 +407,10 @@ export function runSimulation(opts: SimOptions = {}): SimRunResult {
       break;
     }
 
-    const enemy = createEnemy(enemyTemplate, floor);
+    const isBossLike = options.nodeType === 'boss' || options.nodeType === 'elite';
+    const enemy = createEnemy(enemyTemplate, floor, {
+      hpMultiplier: ascMods.enemyHpMultiplier * (isBossLike ? ascMods.bossHpMultiplier : 1),
+    });
 
     if (options.verbose) {
       console.log(`\n=== Encounter ${i + 1}/${options.encounterCount}: ${enemyTemplate.name} (floor ${floor}) ===`);
@@ -407,6 +419,19 @@ export function runSimulation(opts: SimOptions = {}): SimRunResult {
 
     // Start encounter — draws initial hand
     const initialTurnState = startEncounter(deck, enemy, currentPlayerHP);
+
+    // Apply ascension modifiers to turn state
+    initialTurnState.ascensionLevel = ascMods.level;
+    initialTurnState.ascensionEnemyDamageMultiplier = ascMods.enemyDamageMultiplier;
+    initialTurnState.ascensionShieldCardMultiplier = ascMods.shieldCardMultiplier;
+    initialTurnState.ascensionWrongAnswerSelfDamage = ascMods.wrongAnswerSelfDamage;
+    initialTurnState.ascensionComboResetsOnTurnEnd = ascMods.comboResetsOnTurnEnd;
+    initialTurnState.ascensionBaseTimerPenaltySeconds = ascMods.timerBasePenaltySeconds;
+    initialTurnState.ascensionEncounterTimerPenaltySeconds = ascMods.encounterTwoTimerPenaltySeconds;
+    initialTurnState.ascensionPreferCloseDistractors = ascMods.preferCloseDistractors;
+    initialTurnState.ascensionTier1OptionCount = ascMods.tier1OptionCount;
+    initialTurnState.ascensionForceHardQuestionFormats = ascMods.forceHardQuestionFormats;
+    initialTurnState.ascensionPreventFlee = ascMods.preventFlee;
 
     const encounterResult = simulateSingleEncounter(initialTurnState, {
       correctRate: options.correctRate,
@@ -487,6 +512,7 @@ export function runSimulation(opts: SimOptions = {}): SimRunResult {
     floorsReached: encounterSummaries.length,
     finalHP: currentPlayerHP,
     survived,
+    ascensionLevel: options.ascensionLevel,
     durationMs: Date.now() - startTime,
   };
 }
@@ -545,6 +571,7 @@ if (process.argv[1] && process.argv[1].includes('simulator')) {
     maxTurnsPerEncounter: parseInt(getArg('max-turns', '40')),
     verbose: args.includes('--verbose') || args.includes('-v'),
     healBetweenEncounters: parseFloat(getArg('heal-rate', String(POST_ENCOUNTER_HEAL_PCT))),
+    ascensionLevel: parseInt(getArg('ascension', '0')),
   };
 
   console.log('Options:', opts);

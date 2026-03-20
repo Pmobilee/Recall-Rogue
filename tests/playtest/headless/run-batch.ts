@@ -43,11 +43,12 @@ function getArg(flag: string): string | null {
   return i >= 0 && i + 1 < args.length ? args[i + 1] : null;
 }
 
-const runsPerProfile = parseInt(getArg('--runs') ?? '100', 10);
-const description    = getArg('--description') ?? 'Headless balance run';
-const profileFilter  = getArg('--profile') as ProfileId | null;
-const maxEncounters  = parseInt(getArg('--encounters') ?? '30', 10);
-const healRate       = parseFloat(getArg('--heal-rate') ?? '0.2');
+const runsPerProfile  = parseInt(getArg('--runs') ?? '100', 10);
+const description     = getArg('--description') ?? 'Headless balance run';
+const profileFilter   = getArg('--profile') as ProfileId | null;
+const maxEncounters   = parseInt(getArg('--encounters') ?? '30', 10);
+const healRate        = parseFloat(getArg('--heal-rate') ?? '0.2');
+const ascensionLevel  = parseInt(getArg('--ascension') ?? '0', 10);
 
 const profilesToRun = profileFilter
   ? PROFILES.filter(p => p.id === profileFilter)
@@ -78,6 +79,7 @@ console.log(`  Runs each  : ${runsPerProfile}`);
 console.log(`  Total runs : ${profilesToRun.length * runsPerProfile}`);
 console.log(`  Max floors : ${maxEncounters}`);
 console.log(`  Heal rate  : ${(healRate * 100).toFixed(0)}%`);
+console.log(`  Ascension  : ${ascensionLevel}`);
 console.log(`  Description: ${description}`);
 console.log(`  Output     : ${outputDir}`);
 console.log(`${'='.repeat(60)}\n`);
@@ -104,6 +106,7 @@ for (const profile of profilesToRun) {
       maxTurnsPerEncounter:  50,
       verbose:               false,
       healBetweenEncounters: healRate,
+      ascensionLevel:        ascensionLevel,
     } satisfies SimOptions);
     results.push(r);
     allResults.push({ ...r, profile: profile.id });
@@ -146,7 +149,7 @@ const combined = {
   runsPerProfile,
   durationSeconds: parseFloat(totalElapsed),
   profiles:        profilesToRun.map(p => p.id),
-  config:          { maxEncounters, healRate },
+  config:          { maxEncounters, healRate, ascensionLevel },
   results:         allResults,
 };
 fs.writeFileSync(path.join(outputDir, 'combined.json'), JSON.stringify(combined, null, 2));
@@ -165,6 +168,7 @@ const readmeLines: string[] = [
   `**Total runs:** ${allResults.length}`,
   `**Max encounters per run:** ${maxEncounters}`,
   `**Heal between encounters:** ${(healRate * 100).toFixed(0)}%`,
+  `**Ascension level:** ${ascensionLevel}`,
   '',
   '## Results by Profile',
   '',
