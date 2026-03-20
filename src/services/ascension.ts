@@ -18,7 +18,7 @@ export const ASCENSION_LEVEL_RULES: AscensionLevelRule[] = [
   { level: 7, name: 'Harsh Grading', effect: 'Close distractors more common. BUFF: Charged correct +15% damage.' },
   { level: 8, name: 'Elite Surge', effect: 'Mini-bosses gain boss-tier attacks. BUFF: Mini-boss victories always drop a relic.' },
   { level: 9, name: 'Undying Foes', effect: 'Enemies regenerate 2 HP/turn. BUFF: Start encounters with 3 shield.' },
-  { level: 10, name: 'Cursed Start', effect: 'Start with a Curse card in deck. BUFF: 1 free relic reroll per boss.' },
+  { level: 10, name: 'Cursed Start', effect: 'Start with a Curse card in deck. BUFF: Choose a 2nd starter relic + 1 free relic reroll per boss.' },
   { level: 11, name: 'Slim Pickings', effect: 'Boss relics reduced to 2 choices. BUFF: Relics trigger +50% more.' },
   { level: 12, name: 'Deep Knowledge', effect: 'Tier 1 cards use 4-option MCQ. BUFF: Tier 1 charged correct +20% damage.' },
   { level: 13, name: 'Fragile', effect: 'Player max HP reduced to 80. BUFF: Start with Vitality Ring (+20 HP, takes slot).' },
@@ -28,7 +28,7 @@ export const ASCENSION_LEVEL_RULES: AscensionLevelRule[] = [
   { level: 17, name: "Scholar's Burden", effect: 'Wrong answers deal 3 self-damage. BUFF: Correct answers heal 1 HP.' },
   { level: 18, name: 'Minimalist', effect: 'Start with 10 cards. BUFF: Choose starting hand each encounter.' },
   { level: 19, name: 'True Test', effect: 'All questions use hard formats. BUFF: Charge plays cost 0 extra AP.' },
-  { level: 20, name: 'Heart of the Archive', effect: 'Final boss gains second phase. BUFF: Start with 2 relics (choose from 5).' },
+  { level: 20, name: 'Heart of the Archive', effect: 'Final boss gains second phase. BUFF: Start with 3 relics (choose from 7).' },
 ];
 
 export interface AscensionModifiers {
@@ -130,7 +130,7 @@ export function getAscensionModifiers(level: number): AscensionModifiers {
     correctAnswerHeal: l >= 17 ? 1 : 0,
     chooseStartingHand: l >= 18,
     freeCharging: l >= 19,
-    startingRelicCount: l >= 20 ? 2 : l >= 1 ? 1 : 0,
+    startingRelicCount: l >= 20 ? 3 : l >= 10 ? 2 : l >= 1 ? 1 : 0,
   };
 }
 
