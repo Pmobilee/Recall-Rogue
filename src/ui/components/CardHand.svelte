@@ -5,7 +5,7 @@
   import { getCardbackUrl, onCardbackReady } from '../utils/cardbackManifest'
   import { type CardAnimPhase } from '../utils/mechanicAnimations'
   import { getTierDisplayName } from '../../services/tierDerivation'
-  import { getBorderUrl, getBaseFrameUrl, getBannerUrl, getUpgradeIconUrl, GUIDE_STYLES } from '../utils/cardFrameV2'
+  import { getBorderUrl, getBaseFrameUrl, getBannerUrl, getUpgradeIconUrl, getMasteryIconFilter, hasMasteryGlow, GUIDE_STYLES } from '../utils/cardFrameV2'
   import { getCardArtUrl } from '../utils/cardArtManifest'
   import { getShortCardDescription } from '../../services/cardDescriptionService'
   import { getCardDescriptionParts, type CardDescPart } from '../../services/cardDescriptionService'
@@ -44,6 +44,8 @@
     quizVisible?: boolean
     /** Focus AP discount: 1 when Focus is active with charges, 0 otherwise. Reduces displayed and effective AP cost. */
     focusDiscount?: number
+    /** AR-113: mastery flash state — cardId -> 'up' | 'down'. Applied to stat numbers and AP cost. */
+    masteryFlashes?: Record<string, 'up' | 'down'>
   }
 
   // Session-level preload guard: avoid creating duplicate Image objects for the same URL.
@@ -68,6 +70,7 @@
     isSurgeActive = false,
     quizVisible = false,
     focusDiscount = 0,
+    masteryFlashes = {},
   }: Props = $props()
 
   interface TierUpVisualSignature {
@@ -631,7 +634,7 @@
       const currentDistance = startY - dragState.currentY
       return Math.max(0, Math.min(1, currentDistance / totalDistance))
     })() : 0}
-    {@const isChargePreview = (chargeProgress > 0.3 || (chargePreviewActive && isSelected)) && !isMastered}
+    {@const isChargePreview = (chargeProgress >= 1.0 || (chargePreviewActive && isSelected)) && !isMastered}
     {@const isBtnChargePreview = chargePreviewActive && isSelected && !isMastered && chargeProgress <= 0.3}
     {@const effectVal = getEffectValue(card, isChargePreview)}
 
@@ -695,11 +698,17 @@
             <!-- Layer 3: Banner (by chain type) -->
             <img class="frame-layer" src={getBannerUrl(card.chainType ?? 0)} alt="" />
             <!-- Layer 4: Upgrade icon (conditional, float animation) -->
-            {#if card.isUpgraded}
-              <img class="frame-layer upgrade-icon" src={getUpgradeIconUrl()} alt="" />
+            {#if (card.masteryLevel ?? 0) > 0}
+              <img
+                class="frame-layer upgrade-icon mastery-bob"
+                class:mastery-glow={hasMasteryGlow(card.masteryLevel ?? 0)}
+                src={getUpgradeIconUrl()}
+                alt=""
+                style="filter: {getMasteryIconFilter(card.masteryLevel ?? 0)};"
+              />
             {/if}
             <!-- AP cost overlay -->
-            <div class="frame-text v2-ap-cost" style={GUIDE_STYLES.apCost} style:color={apGemColor}>{displayedApCost}</div>
+            <div class="frame-text v2-ap-cost" class:mastery-flash-up={masteryFlashes[card.id] === 'up'} class:mastery-flash-down={masteryFlashes[card.id] === 'down'} style={GUIDE_STYLES.apCost} style:color={apGemColor}>{displayedApCost}</div>
             <!-- Mechanic name overlay -->
             <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName}>{card.mechanicName ?? ''}</div>
             <!-- Card type label overlay -->
@@ -709,11 +718,13 @@
               <span class="parchment-inner">
                 {#each getCardDescriptionParts(card, undefined, isChargePreview ? getEffectValue(card, true) : undefined) as part}
                   {#if part.type === 'number'}
-                    <span class="desc-number" class:charge-preview={isChargePreview && !isBtnChargePreview} class:charge-preview-btn={isBtnChargePreview}>{part.value}</span>
+                    <span class="desc-number" class:charge-preview={isChargePreview && !isBtnChargePreview} class:charge-preview-btn={isBtnChargePreview} class:mastery-flash-up={masteryFlashes[card.id] === 'up'} class:mastery-flash-down={masteryFlashes[card.id] === 'down'}>{part.value}</span>
                   {:else if part.type === 'keyword'}
                     <span class="desc-keyword">{part.value}</span>
                   {:else if part.type === 'conditional-number'}
                     <span class="desc-conditional" class:active={part.active}>{part.active ? part.value : '0'}</span>
+                  {:else if part.type === 'mastery-bonus'}
+                    <span class="desc-mastery-bonus">{part.value}</span>
                   {:else}
                     {part.value}
                   {/if}
@@ -772,7 +783,7 @@
       {/if}
     </button>
 
-    {#if selectedIndex === i && card.tier !== '3' && onchargeplay && !disabled}
+    {#if selectedIndex === i && card.tier !== '3' && (card.masteryLevel ?? 0) < 5 && onchargeplay && !disabled}
       {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive ? 0 : 1)}
       {@const chargeAffordable = chargeApCost <= apCurrent}
       <button
@@ -848,8 +859,14 @@
             {/if}
             <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
             <img class="frame-layer" src={getBannerUrl(card.chainType ?? 0)} alt="" />
-            {#if card.isUpgraded}
-              <img class="frame-layer upgrade-icon" src={getUpgradeIconUrl()} alt="" />
+            {#if (card.masteryLevel ?? 0) > 0}
+              <img
+                class="frame-layer upgrade-icon mastery-bob"
+                class:mastery-glow={hasMasteryGlow(card.masteryLevel ?? 0)}
+                src={getUpgradeIconUrl()}
+                alt=""
+                style="filter: {getMasteryIconFilter(card.masteryLevel ?? 0)};"
+              />
             {/if}
             <div class="frame-text v2-ap-cost" style={GUIDE_STYLES.apCost}>{card.apCost ?? 1}</div>
             <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName}>{card.mechanicName ?? ''}</div>
@@ -968,7 +985,7 @@
       const currentDistance = startY - dragState.currentY
       return Math.max(0, Math.min(1, currentDistance / totalDistance))
     })() : 0}
-    {@const isChargePreview = (chargeProgress > 0.3 || (chargePreviewActive && isSelected)) && !isMastered}
+    {@const isChargePreview = (chargeProgress >= 1.0 || (chargePreviewActive && isSelected)) && !isMastered}
     {@const isBtnChargePreview = chargePreviewActive && isSelected && !isMastered && chargeProgress <= 0.3}
     {@const effectVal = getEffectValue(card, isChargePreview)}
     {@const descPower = isChargePreview ? getEffectValue(card, true) : undefined}
@@ -1043,11 +1060,17 @@
             <!-- Layer 3: Banner (by chain type) -->
             <img class="frame-layer" src={getBannerUrl(card.chainType ?? 0)} alt="" />
             <!-- Layer 4: Upgrade icon (conditional, float animation) -->
-            {#if card.isUpgraded}
-              <img class="frame-layer upgrade-icon" src={getUpgradeIconUrl()} alt="" />
+            {#if (card.masteryLevel ?? 0) > 0}
+              <img
+                class="frame-layer upgrade-icon mastery-bob"
+                class:mastery-glow={hasMasteryGlow(card.masteryLevel ?? 0)}
+                src={getUpgradeIconUrl()}
+                alt=""
+                style="filter: {getMasteryIconFilter(card.masteryLevel ?? 0)};"
+              />
             {/if}
             <!-- AP cost overlay -->
-            <div class="frame-text v2-ap-cost" style={GUIDE_STYLES.apCost} style:color={apGemColor}>{displayedApCost}</div>
+            <div class="frame-text v2-ap-cost" class:mastery-flash-up={masteryFlashes[card.id] === 'up'} class:mastery-flash-down={masteryFlashes[card.id] === 'down'} style={GUIDE_STYLES.apCost} style:color={apGemColor}>{displayedApCost}</div>
             <!-- Mechanic name overlay -->
             <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName}>{card.mechanicName ?? ''}</div>
             <!-- Card type label overlay -->
@@ -1057,11 +1080,13 @@
               <span class="parchment-inner">
                 {#each getCardDescriptionParts(card, undefined, descPower) as part}
                   {#if part.type === 'number'}
-                    <span class="desc-number" class:charge-preview={isChargePreview && !isBtnChargePreview} class:charge-preview-btn={isBtnChargePreview}>{part.value}</span>
+                    <span class="desc-number" class:charge-preview={isChargePreview && !isBtnChargePreview} class:charge-preview-btn={isBtnChargePreview} class:mastery-flash-up={masteryFlashes[card.id] === 'up'} class:mastery-flash-down={masteryFlashes[card.id] === 'down'}>{part.value}</span>
                   {:else if part.type === 'keyword'}
                     <span class="desc-keyword">{part.value}</span>
                   {:else if part.type === 'conditional-number'}
                     <span class="desc-conditional" class:active={part.active}>{part.active ? part.value : '0'}</span>
+                  {:else if part.type === 'mastery-bonus'}
+                    <span class="desc-mastery-bonus">{part.value}</span>
                   {:else}
                     {part.value}
                   {/if}
@@ -1119,7 +1144,7 @@
       {/if}
     </button>
 
-    {#if selectedIndex === i && card.tier !== '3' && onchargeplay && !disabled}
+    {#if selectedIndex === i && card.tier !== '3' && (card.masteryLevel ?? 0) < 5 && onchargeplay && !disabled}
       {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive ? 0 : 1)}
       {@const chargeAffordable = chargeApCost <= apCurrent}
       <button
@@ -1133,9 +1158,9 @@
         ontouchstart={() => { if (chargeAffordable) chargePreviewActive = true }}
         ontouchend={() => { chargePreviewActive = false }}
         ontouchcancel={() => { chargePreviewActive = false }}
-        style="transform: translate3d(calc({xOffset}px + var(--card-w) / 2), calc(-80px - var(--card-h) - 16px), 0) translateX(-50%);"
+        style="transform: translate3d({xOffset}px, calc(-80px - var(--card-h) - 8px), 0); width: calc(var(--card-w) * 1.2);"
       >
-        ⚡ CHARGE
+        CHARGE
         <span class="charge-ap-badge">{isSurgeActive ? '+0' : '+1'} AP</span>
       </button>
     {/if}
@@ -1211,8 +1236,14 @@
             {/if}
             <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
             <img class="frame-layer" src={getBannerUrl(card.chainType ?? 0)} alt="" />
-            {#if card.isUpgraded}
-              <img class="frame-layer upgrade-icon" src={getUpgradeIconUrl()} alt="" />
+            {#if (card.masteryLevel ?? 0) > 0}
+              <img
+                class="frame-layer upgrade-icon mastery-bob"
+                class:mastery-glow={hasMasteryGlow(card.masteryLevel ?? 0)}
+                src={getUpgradeIconUrl()}
+                alt=""
+                style="filter: {getMasteryIconFilter(card.masteryLevel ?? 0)};"
+              />
             {/if}
             <div class="frame-text v2-ap-cost" style={GUIDE_STYLES.apCost}>{card.apCost ?? 1}</div>
             <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName}>{card.mechanicName ?? ''}</div>
@@ -1361,7 +1392,7 @@
     --card-w: calc(var(--gw, 390px) * 0.30);
     --card-h: calc(var(--card-w) * 1.42);
     position: absolute;
-    bottom: calc(calc(56px * var(--layout-scale, 1)) + 10vh);
+    bottom: calc(calc(56px * var(--layout-scale, 1)) + 2vh);
     left: 50%;
     z-index: 20;
     transform: translateX(-50%);
@@ -1454,6 +1485,51 @@
     50% { transform: translateY(-3px); }
   }
 
+  /* Mastery float bob — gentle hover animation for upgraded cards */
+  .mastery-bob {
+    animation: masteryBob 2.2s ease-in-out infinite !important;
+  }
+
+  @keyframes masteryBob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+
+  /* Gold glow for fully mastered (level 5) cards */
+  .mastery-glow {
+    filter: hue-rotate(60deg) saturate(2) brightness(1.3) drop-shadow(0 0 6px rgba(234, 179, 8, 0.8)) drop-shadow(0 0 12px rgba(234, 179, 8, 0.4)) !important;
+  }
+
+  /* Mastery upgrade flash — green pulse on numbers that went up */
+  .desc-number.mastery-flash-up {
+    animation: masteryFlashUp 800ms ease-out;
+  }
+
+  @keyframes masteryFlashUp {
+    0% { color: #22c55e; text-shadow: 0 0 12px rgba(34, 197, 94, 0.9), 0 0 24px rgba(34, 197, 94, 0.5); transform: scale(1.3); }
+    50% { color: #4ade80; text-shadow: 0 0 8px rgba(74, 222, 128, 0.6); transform: scale(1.1); }
+    100% { color: inherit; text-shadow: inherit; transform: scale(1); }
+  }
+
+  /* Mastery downgrade flash — red pulse on numbers that went down */
+  .desc-number.mastery-flash-down {
+    animation: masteryFlashDown 800ms ease-out;
+  }
+
+  @keyframes masteryFlashDown {
+    0% { color: #ef4444; text-shadow: 0 0 12px rgba(239, 68, 68, 0.9), 0 0 24px rgba(239, 68, 68, 0.5); transform: scale(1.3); }
+    50% { color: #f87171; text-shadow: 0 0 8px rgba(248, 113, 113, 0.6); transform: scale(1.1); }
+    100% { color: inherit; text-shadow: inherit; transform: scale(1); }
+  }
+
+  /* AP cost flash */
+  .v2-ap-cost.mastery-flash-up {
+    animation: masteryFlashUp 800ms ease-out;
+  }
+  .v2-ap-cost.mastery-flash-down {
+    animation: masteryFlashDown 800ms ease-out;
+  }
+
   .frame-text {
     position: absolute;
     display: flex;
@@ -1544,6 +1620,13 @@
   .desc-conditional.active {
     color: #22c55e;
     font-weight: 900;
+  }
+
+  .desc-mastery-bonus {
+    font-family: 'Cinzel', 'Georgia', serif;
+    font-weight: 900;
+    color: #4ade80;
+    text-shadow: 0 0 4px rgba(74, 222, 128, 0.4), 0 1px 2px rgba(0,0,0,0.6);
   }
 
   .card-animating {
@@ -2211,8 +2294,10 @@
     font-weight: 800;
     letter-spacing: 0.04em;
     box-shadow: 0 4px 16px rgba(245, 158, 11, 0.55), 0 2px 6px rgba(0, 0, 0, 0.4);
+    width: var(--card-w);
+    box-sizing: border-box;
+    text-align: center;
     cursor: pointer;
-    white-space: nowrap;
     animation: chargeBtnPulse 1.2s ease-in-out infinite;
     pointer-events: all;
   }

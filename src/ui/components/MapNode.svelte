@@ -19,13 +19,13 @@
   }
 
   const TYPE_ICON: Record<MapNodeData['type'], string> = {
-    combat:   '⚔️',
-    elite:    '💀',
-    boss:     '👑',
-    mystery:  '❓',
-    rest:     '❤️',
-    treasure: '🎁',
-    shop:     '🛒',
+    combat:   'assets/sprites/map-icons/combat.webp',
+    elite:    'assets/sprites/map-icons/elite.webp',
+    boss:     'assets/sprites/map-icons/boss.webp',
+    mystery:  'assets/sprites/map-icons/mystery.webp',
+    rest:     'assets/sprites/map-icons/rest.webp',
+    treasure: 'assets/sprites/map-icons/treasure.webp',
+    shop:     'assets/sprites/map-icons/shop.webp',
   }
 
   const TYPE_LABEL: Record<MapNodeData['type'], string> = {
@@ -39,7 +39,7 @@
   }
 
   let borderColor = $derived(TYPE_BORDER[node.type])
-  let icon        = $derived(TYPE_ICON[node.type])
+  let iconUrl     = $derived(TYPE_ICON[node.type])
   let label       = $derived(TYPE_LABEL[node.type])
   let isClickable = $derived(node.state === 'available')
 
@@ -68,7 +68,7 @@
   {#if spriteUrl}
     <img class="node-sprite" src={spriteUrl} alt={label} />
   {:else}
-    <span class="node-icon" aria-hidden="true">{icon}</span>
+    <img class="node-icon" src={iconUrl} alt={label} />
   {/if}
   {#if node.state === 'visited'}
     <span class="visited-check" aria-hidden="true">✓</span>
@@ -154,9 +154,11 @@
   }
 
   .node-icon {
-    font-size: calc(20px * var(--layout-scale, 1));
-    line-height: 1;
-    /* Prevent emoji colour bleed on some Android renderers */
+    width: calc(28px * var(--layout-scale, 1));
+    height: calc(28px * var(--layout-scale, 1));
+    object-fit: contain;
+    image-rendering: pixelated;
+    pointer-events: none;
     display: block;
   }
 

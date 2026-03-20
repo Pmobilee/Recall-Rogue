@@ -896,11 +896,14 @@ export const LEGACY_TIER_MULTIPLIER: Record<1 | 2 | 3, number> = {
   3: TIER_MULTIPLIER['3'],
 };
 
-/** Charge play multipliers for correct answers, by tier. */
+/** Charge play multiplier for correct answers — flat for all tiers (nerfed from 2.5-3.5x for mastery system). */
+export const CHARGE_CORRECT_MULTIPLIER = 1.5;
+
+/** @deprecated Use CHARGE_CORRECT_MULTIPLIER instead. Kept for backward compat. */
 export const CHARGE_CORRECT_MULTIPLIERS: Record<string, number> = {
-  '1': 2.5,
-  '2a': 3.0,
-  '2b': 3.5,
+  '1': 1.5,
+  '2a': 1.5,
+  '2b': 1.5,
   '3': 1.2,
 };
 
@@ -910,6 +913,27 @@ export const CHARGE_WRONG_MULTIPLIERS: Record<string, number> = {
   '2a': 0.85,
   '2b': 0.85,
   '3': 0.75,
+};
+
+// ─── Mastery Upgrade System (AR-113) ───────────────────────────────────────
+
+/** Maximum mastery level a card can reach in a run. */
+export const MASTERY_MAX_LEVEL = 5;
+
+/** Number of distractors for cards at mastery level 0. */
+export const MASTERY_BASE_DISTRACTORS = 2;
+
+/** Number of distractors for cards at mastery level 1+. */
+export const MASTERY_UPGRADED_DISTRACTORS = 3;
+
+/** Mastery level colors for the upgrade icon. */
+export const MASTERY_LEVEL_COLORS: Record<number, string> = {
+  0: 'none',
+  1: '#22c55e', // green
+  2: '#3b82f6', // blue
+  3: '#a855f7', // purple
+  4: '#f97316', // orange
+  5: '#eab308', // gold
 };
 
 /** Passive bonus values for Tier 3 mastered cards by card type. */

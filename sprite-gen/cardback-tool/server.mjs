@@ -1891,7 +1891,7 @@ app.get('/api/relics/batch-status', (req, res) => {
 
 const ARTSTUDIO_ITEMS_PATH = resolve(__dirname, 'artstudio-items.json');
 const ARTSTUDIO_OUTPUT_DIR = resolve(__dirname, 'artstudio-output');
-const ARTSTUDIO_CATEGORIES = ['cardframes', 'enemies', 'cardart'];
+const ARTSTUDIO_CATEGORIES = ['cardframes', 'enemies', 'cardart', 'backgrounds'];
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || 'google/gemini-2.5-flash-image';
@@ -1910,7 +1910,7 @@ function readArtStudioItems() {
   try {
     return JSON.parse(readFileSync(ARTSTUDIO_ITEMS_PATH, 'utf-8'));
   } catch {
-    return { cardframes: [], enemies: [], cardart: [] };
+    return { cardframes: [], enemies: [], cardart: [], backgrounds: [] };
   }
 }
 
@@ -1939,28 +1939,48 @@ function artStudioExtractImageBase64(data) {
   throw new Error('No image data found in response');
 }
 
-async function artStudioCallOpenRouter(prompt) {
-  const response = await fetch(`${OPENROUTER_BASE_URL}/chat/completions`, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: OPENROUTER_MODEL,
-      modalities: ['image', 'text'],
-      stream: false,
-      messages: [
-        { role: 'system', content: 'You are an image generator. Always respond with a generated image. Never respond with only text.' },
-        { role: 'user', content: prompt },
-      ],
-    }),
-  });
-  if (!response.ok) {
-    const text = await response.text();
-    throw new Error(`HTTP ${response.status}: ${text.slice(0, 300)}`);
+async function artStudioCallOpenRouter(prompt, targetWidth, targetHeight) {
+  const MAX_RETRIES = 3;
+  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+    const response = await fetch(`${OPENROUTER_BASE_URL}/chat/completions`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: OPENROUTER_MODEL,
+        modalities: ['image', 'text'],
+        stream: false,
+        messages: [
+          { role: 'system', content: 'You are an image generator. Always respond with a generated image. Never respond with only text.' },
+          { role: 'user', content: `${prompt}\n\nIMPORTANT: Generate this image at exactly ${targetWidth}x${targetHeight} pixels resolution. Aspect ratio must be ${targetWidth}:${targetHeight}.` },
+        ],
+      }),
+    });
+    if (!response.ok) {
+      const text = await response.text();
+      if (attempt < MAX_RETRIES) {
+        console.warn(`[artstudio] HTTP ${response.status} on attempt ${attempt}/${MAX_RETRIES}, retrying...`);
+        await new Promise(r => setTimeout(r, 2000));
+        continue;
+      }
+      throw new Error(`HTTP ${response.status}: ${text.slice(0, 300)}`);
+    }
+    const data = await response.json();
+    // Check if we got an actual image — Gemini sometimes returns text-only
+    try {
+      artStudioExtractImageBase64(data);
+      return data; // Has image, success
+    } catch (e) {
+      if (attempt < MAX_RETRIES) {
+        console.warn(`[artstudio] Text-only response on attempt ${attempt}/${MAX_RETRIES}: "${e.message.slice(0, 80)}", retrying...`);
+        await new Promise(r => setTimeout(r, 1000));
+        continue;
+      }
+      throw e; // Out of retries
+    }
   }
-  return await response.json();
 }
 
 // GET /api/artstudio/items?category=cardframes|enemies|cardart
@@ -2031,13 +2051,18 @@ app.post('/api/artstudio/generate', express.json(), async (req, res) => {
 
       try {
         console.log(`[artstudio] Generating ${category}/${id} variant ${v.variant} (seed ${v.seed})`);
-        const apiData = await artStudioCallOpenRouter(item.prompt);
+        const apiData = await artStudioCallOpenRouter(item.prompt, item.targetWidth || 1024, item.targetHeight || 1024);
         const base64 = artStudioExtractImageBase64(apiData);
         const imgBuffer = Buffer.from(base64, 'base64');
 
-        // Save raw output
+        // Save resized output at target dimensions
         const outPath = resolve(itemDir, `variant-${v.variant}.png`);
-        const processed = await sharp(imgBuffer).png({ compressionLevel: 9 }).toBuffer();
+        const tw = item.targetWidth || 1024;
+        const th = item.targetHeight || 1024;
+        const processed = await sharp(imgBuffer)
+          .resize(tw, th, { fit: 'cover' })
+          .png({ compressionLevel: 9 })
+          .toBuffer();
         await writeFile(outPath, processed);
 
         // Mark as done

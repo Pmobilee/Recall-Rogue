@@ -60,7 +60,25 @@
   let showStats = $state(false)
   let showButtons = $state(false)
 
+  function computeGrade(floor: number, runResult: string): { letter: string; color: string; flavor: string } {
+    if (runResult === 'victory') return { letter: 'S', color: '#FFD700', flavor: 'Knowledge is power!' }
+    if (floor >= 22) return { letter: 'A+', color: '#7C4DFF', flavor: 'Scholar material!' }
+    if (floor >= 19) return { letter: 'A', color: '#00BCD4', flavor: 'Scholar material!' }
+    if (floor >= 16) return { letter: 'B+', color: '#4CAF50', flavor: 'Impressive run!' }
+    if (floor >= 13) return { letter: 'B', color: '#8BC34A', flavor: 'Impressive run!' }
+    if (floor >= 10) return { letter: 'C+', color: '#CDDC39', flavor: 'Getting there.' }
+    if (floor >= 7) return { letter: 'C', color: '#FFC107', flavor: 'Getting there.' }
+    if (floor >= 5) return { letter: 'D+', color: '#FF9800', flavor: 'Room for improvement.' }
+    if (floor >= 3) return { letter: 'D', color: '#FF5722', flavor: 'Room for improvement.' }
+    return { letter: 'F', color: '#FF1744', flavor: 'Back to the books...' }
+  }
+
+  let grade = $derived(computeGrade(floorReached, result))
+  let showGrade = $state(false)
+
   onMount(() => {
+    // Grade badge pops in first
+    setTimeout(() => { showGrade = true }, 400)
     // Stagger stat reveal
     setTimeout(() => { showStats = true }, 200)
     // Delay buttons by 300ms after stats are fully visible
@@ -133,6 +151,13 @@
   <img class="overlay-bg" src={bgUrl} alt="" aria-hidden="true" />
 
   <h1 class="header" style="color: {headerColor}">{headerText}</h1>
+
+  {#if result !== 'retreat'}
+    <div class="grade-badge" class:grade-visible={showGrade} style="--grade-color: {grade.color}">
+      <span class="grade-letter">{grade.letter}</span>
+    </div>
+    <p class="grade-flavor" class:grade-visible={showGrade}>{grade.flavor}</p>
+  {/if}
 
   <div class="landscape-body">
     <!-- Left: run stats -->
@@ -242,6 +267,13 @@
 <div class="run-end-overlay" class:victory-result={isVictory} class:defeat-result={!isVictory}>
   <img class="overlay-bg" src={bgUrl} alt="" aria-hidden="true" />
   <h1 class="header" style="color: {headerColor}">{headerText}</h1>
+
+  {#if result !== 'retreat'}
+    <div class="grade-badge" class:grade-visible={showGrade} style="--grade-color: {grade.color}">
+      <span class="grade-letter">{grade.letter}</span>
+    </div>
+    <p class="grade-flavor" class:grade-visible={showGrade}>{grade.flavor}</p>
+  {/if}
 
   <div class="stats-list" class:stats-revealed={showStats}>
     <div class="stat-row" style="--stagger: 0">
@@ -621,6 +653,68 @@
     padding-right: 0;
   }
 
+  /* Grade badge */
+  .grade-badge {
+    width: calc(80px * var(--layout-scale, 1));
+    height: calc(80px * var(--layout-scale, 1));
+    border-radius: 50%;
+    border: 4px solid var(--grade-color);
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: calc(8px * var(--layout-scale, 1));
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 300ms ease;
+    box-shadow: 0 0 20px color-mix(in srgb, var(--grade-color) 40%, transparent),
+                inset 0 0 12px color-mix(in srgb, var(--grade-color) 20%, transparent);
+    animation: none;
+  }
+
+  .grade-badge.grade-visible {
+    transform: scale(1);
+    opacity: 1;
+    animation: gradeShimmer 3s ease-in-out infinite 0.8s;
+  }
+
+  .grade-letter {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: calc(40px * var(--layout-scale, 1));
+    font-weight: 700;
+    color: var(--grade-color);
+    text-shadow: 0 0 12px var(--grade-color), 0 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1;
+  }
+
+  .grade-flavor {
+    font-size: calc(13px * var(--layout-scale, 1));
+    color: #8B949E;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: calc(16px * var(--layout-scale, 1));
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 400ms ease 0.6s, transform 400ms ease 0.6s;
+  }
+
+  .grade-flavor.grade-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes gradeShimmer {
+    0%, 100% {
+      box-shadow: 0 0 20px color-mix(in srgb, var(--grade-color) 40%, transparent),
+                  inset 0 0 12px color-mix(in srgb, var(--grade-color) 20%, transparent);
+    }
+    50% {
+      box-shadow: 0 0 30px color-mix(in srgb, var(--grade-color) 60%, transparent),
+                  inset 0 0 16px color-mix(in srgb, var(--grade-color) 30%, transparent),
+                  0 0 40px color-mix(in srgb, var(--grade-color) 20%, transparent);
+    }
+  }
+
   /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
     .stat-row {
@@ -647,6 +741,20 @@
     }
     .run-end-overlay.defeat-result .header {
       animation: none;
+    }
+    .grade-badge,
+    .grade-flavor {
+      transition: none;
+      animation: none;
+    }
+    .grade-badge.grade-visible {
+      transform: scale(1);
+      opacity: 1;
+      animation: none;
+    }
+    .grade-flavor.grade-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 </style>

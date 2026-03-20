@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-15T18:39:31.579Z",
+  "generatedAt": "2026-03-19T14:09:03.520Z",
   "mode": "write",
   "options": {
     "force": true,
@@ -12,216 +12,216 @@
     "includeSeed": true
   },
   "totals": {
-    "rows": 6650,
-    "updated": 2495,
+    "rows": 7268,
+    "updated": 614,
     "kept": 0,
-    "legacy": 1107,
-    "scored": 5309,
+    "legacy": 1087,
+    "scored": 5877,
     "fallback": 0
   },
   "perDomain": {
     "general_knowledge": {
-      "total": 554,
-      "updated": 170,
+      "total": 628,
+      "updated": 69,
       "kept": 0,
-      "legacy": 9,
-      "scored": 488,
+      "legacy": 8,
+      "scored": 548,
       "fallback": 0,
       "unresolvedDomain": 0,
       "skippedByLimit": 0,
-      "skippedLowConfidence": 57,
+      "skippedLowConfidence": 72,
       "bySubcategory": {
-        "records_firsts": 38,
-        "inventions_tech": 83,
-        "landmarks_wonders": 190,
-        "pop_culture": 31,
-        "words_language": 39,
-        "everyday_science": 108,
-        "oddities": 8
+        "records_firsts": 52,
+        "inventions_tech": 105,
+        "landmarks_wonders": 195,
+        "pop_culture": 33,
+        "words_language": 50,
+        "everyday_science": 112,
+        "oddities": 9
       }
     },
     "natural_sciences": {
-      "total": 550,
-      "updated": 177,
+      "total": 660,
+      "updated": 75,
       "kept": 0,
-      "legacy": 30,
-      "scored": 492,
+      "legacy": 0,
+      "scored": 591,
       "fallback": 0,
       "unresolvedDomain": 0,
       "skippedByLimit": 0,
-      "skippedLowConfidence": 28,
+      "skippedLowConfidence": 69,
       "bySubcategory": {
-        "chemistry_elements": 117,
-        "materials_engineering": 49,
-        "biology_organisms": 116,
-        "physics_mechanics": 123,
-        "geology_earth": 60,
+        "chemistry_elements": 125,
+        "materials_engineering": 52,
+        "biology_organisms": 129,
+        "physics_mechanics": 168,
+        "geology_earth": 56,
         "botany_plants": 36,
-        "ecology_environment": 21
+        "ecology_environment": 25
       }
     },
     "space_astronomy": {
-      "total": 497,
-      "updated": 157,
+      "total": 614,
+      "updated": 116,
       "kept": 0,
-      "legacy": 7,
-      "scored": 462,
+      "legacy": 0,
+      "scored": 584,
       "fallback": 0,
       "unresolvedDomain": 0,
       "skippedByLimit": 0,
-      "skippedLowConfidence": 28,
+      "skippedLowConfidence": 30,
       "bySubcategory": {
-        "missions_spacecraft": 129,
-        "planets_moons": 104,
+        "missions_spacecraft": 152,
+        "planets_moons": 174,
         "stars_galaxies": 74,
-        "cosmology_universe": 75,
-        "satellites_tech": 64,
-        "exoplanets_astrobio": 23
+        "cosmology_universe": 84,
+        "satellites_tech": 75,
+        "exoplanets_astrobio": 25
       }
     },
     "geography": {
-      "total": 1143,
-      "updated": 383,
+      "total": 1183,
+      "updated": 55,
       "kept": 0,
-      "legacy": 412,
-      "scored": 728,
+      "legacy": 389,
+      "scored": 789,
       "fallback": 0,
       "unresolvedDomain": 0,
       "skippedByLimit": 0,
-      "skippedLowConfidence": 3,
+      "skippedLowConfidence": 5,
       "bySubcategory": {
-        "capitals_countries": 520,
-        "africa": 198,
-        "asia_oceania": 107,
+        "capitals_countries": 537,
+        "africa": 206,
+        "asia_oceania": 117,
         "europe": 49,
-        "americas": 120,
-        "landforms_water": 92,
-        "extreme_records": 35,
-        "climate_biomes": 19
+        "americas": 119,
+        "landforms_water": 87,
+        "extreme_records": 40,
+        "climate_biomes": 23
       }
     },
     "history": {
-      "total": 663,
-      "updated": 332,
+      "total": 693,
+      "updated": 48,
       "kept": 0,
-      "legacy": 121,
-      "scored": 540,
+      "legacy": 129,
+      "scored": 564,
       "fallback": 0,
       "unresolvedDomain": 0,
       "skippedByLimit": 0,
-      "skippedLowConfidence": 2,
+      "skippedLowConfidence": 0,
       "bySubcategory": {
-        "ancient_classical": 252,
-        "medieval": 54,
-        "early_modern": 76,
-        "modern_contemporary": 87,
-        "world_wars": 53,
-        "battles_military": 126,
+        "ancient_classical": 271,
+        "medieval": 63,
+        "early_modern": 78,
+        "modern_contemporary": 81,
+        "world_wars": 56,
+        "battles_military": 131,
         "people_leaders": 5,
         "social_cultural": 8
       }
     },
     "mythology_folklore": {
-      "total": 598,
-      "updated": 205,
+      "total": 735,
+      "updated": 138,
       "kept": 0,
       "legacy": 0,
-      "scored": 598,
+      "scored": 735,
       "fallback": 0,
       "unresolvedDomain": 0,
       "skippedByLimit": 0,
       "skippedLowConfidence": 0,
       "bySubcategory": {
-        "greek_roman": 187,
-        "norse_celtic": 47,
-        "eastern_myths": 46,
-        "creatures_monsters": 82,
-        "creation_cosmology": 65,
-        "folk_legends": 131,
-        "gods_deities": 40
+        "greek_roman": 201,
+        "norse_celtic": 73,
+        "eastern_myths": 52,
+        "creatures_monsters": 93,
+        "creation_cosmology": 76,
+        "folk_legends": 191,
+        "gods_deities": 49
       }
     },
     "animals_wildlife": {
-      "total": 678,
-      "updated": 291,
+      "total": 706,
+      "updated": 24,
       "kept": 0,
-      "legacy": 417,
-      "scored": 252,
+      "legacy": 483,
+      "scored": 210,
       "fallback": 0,
       "unresolvedDomain": 0,
       "skippedByLimit": 0,
-      "skippedLowConfidence": 9,
+      "skippedLowConfidence": 13,
       "bySubcategory": {
-        "mammals": 216,
+        "mammals": 230,
         "birds": 148,
-        "marine_life": 85,
+        "marine_life": 90,
         "insects_arachnids": 37,
         "reptiles_amphibians": 39,
-        "behavior_intelligence": 39,
+        "behavior_intelligence": 41,
         "conservation": 60,
-        "adaptations": 45
+        "adaptations": 48
       }
     },
     "human_body_health": {
-      "total": 609,
-      "updated": 271,
+      "total": 631,
+      "updated": 24,
       "kept": 0,
-      "legacy": 73,
-      "scored": 536,
+      "legacy": 78,
+      "scored": 553,
       "fallback": 0,
       "unresolvedDomain": 0,
       "skippedByLimit": 0,
       "skippedLowConfidence": 0,
       "bySubcategory": {
-        "anatomy_organs": 183,
-        "brain_neuro": 104,
+        "anatomy_organs": 195,
+        "brain_neuro": 108,
         "genetics_dna": 50,
         "cardiovascular": 78,
-        "digestion_metabolism": 64,
+        "digestion_metabolism": 65,
         "senses_perception": 43,
-        "immunity_disease": 49,
-        "medical_science": 38
+        "immunity_disease": 53,
+        "medical_science": 39
       }
     },
     "food_cuisine": {
-      "total": 712,
-      "updated": 307,
+      "total": 744,
+      "updated": 42,
       "kept": 0,
-      "legacy": 10,
-      "scored": 685,
+      "legacy": 0,
+      "scored": 726,
       "fallback": 0,
       "unresolvedDomain": 0,
       "skippedByLimit": 0,
-      "skippedLowConfidence": 17,
+      "skippedLowConfidence": 18,
       "bySubcategory": {
-        "european_cuisine": 118,
+        "european_cuisine": 123,
         "asian_cuisine": 112,
         "world_cuisine": 9,
-        "baking_desserts": 63,
-        "fermentation_beverages": 80,
-        "food_history": 130,
-        "food_science": 97,
-        "ingredients_spices": 86
+        "baking_desserts": 65,
+        "fermentation_beverages": 71,
+        "food_history": 136,
+        "food_science": 105,
+        "ingredients_spices": 105
       }
     },
     "art_architecture": {
-      "total": 646,
-      "updated": 202,
+      "total": 674,
+      "updated": 23,
       "kept": 0,
-      "legacy": 28,
-      "scored": 528,
+      "legacy": 0,
+      "scored": 577,
       "fallback": 0,
       "unresolvedDomain": 0,
       "skippedByLimit": 0,
-      "skippedLowConfidence": 90,
+      "skippedLowConfidence": 97,
       "bySubcategory": {
         "museums_institutions": 98,
-        "historic_buildings": 139,
-        "painting_visual": 131,
-        "sculpture_decorative": 45,
-        "modern_contemporary": 58,
-        "architectural_styles": 36,
-        "engineering_design": 49
+        "historic_buildings": 142,
+        "painting_visual": 135,
+        "sculpture_decorative": 46,
+        "modern_contemporary": 62,
+        "architectural_styles": 43,
+        "engineering_design": 51
       }
     }
   },
@@ -305,64 +305,88 @@
       "changedRows": 0
     },
     {
+      "path": "src/data/seed/grammar-ja.json",
+      "type": "json",
+      "totalRows": 2701,
+      "changedRows": 0
+    },
+    {
+      "path": "src/data/seed/grammar-ko.json",
+      "type": "json",
+      "totalRows": 1643,
+      "changedRows": 0
+    },
+    {
+      "path": "src/data/seed/grammar-zh.json",
+      "type": "json",
+      "totalRows": 2002,
+      "changedRows": 0
+    },
+    {
+      "path": "src/data/seed/kanji-ja.json",
+      "type": "json",
+      "totalRows": 2230,
+      "changedRows": 0
+    },
+    {
       "path": "src/data/seed/knowledge-animals_wildlife.json",
       "type": "json",
-      "totalRows": 300,
-      "changedRows": 291
+      "totalRows": 328,
+      "changedRows": 24
     },
     {
       "path": "src/data/seed/knowledge-art_architecture.json",
       "type": "json",
-      "totalRows": 289,
-      "changedRows": 202
+      "totalRows": 317,
+      "changedRows": 23
     },
     {
       "path": "src/data/seed/knowledge-food_cuisine.json",
       "type": "json",
-      "totalRows": 316,
-      "changedRows": 307
+      "totalRows": 348,
+      "changedRows": 42
     },
     {
       "path": "src/data/seed/knowledge-general_knowledge.json",
       "type": "json",
-      "totalRows": 258,
-      "changedRows": 180
+      "totalRows": 288,
+      "changedRows": 79
     },
     {
       "path": "src/data/seed/knowledge-geography.json",
       "type": "json",
-      "totalRows": 384,
-      "changedRows": 383
+      "totalRows": 424,
+      "changedRows": 55
     },
     {
       "path": "src/data/seed/knowledge-history.json",
       "type": "json",
-      "totalRows": 322,
-      "changedRows": 322
+      "totalRows": 354,
+      "changedRows": 38
     },
     {
       "path": "src/data/seed/knowledge-human_body_health.json",
       "type": "json",
-      "totalRows": 271,
-      "changedRows": 271
+      "totalRows": 293,
+      "changedRows": 24
     },
     {
       "path": "src/data/seed/knowledge-mythology_folklore.json",
       "type": "json",
-      "totalRows": 301,
-      "changedRows": 205
+      "totalRows": 342,
+      "changedRows": 138
     },
     {
       "path": "src/data/seed/knowledge-natural_sciences.json",
       "type": "json",
-      "totalRows": 270,
-      "changedRows": 177
+      "totalRows": 306,
+      "changedRows": 75
     },
     {
       "path": "src/data/seed/knowledge-space_astronomy.json",
       "type": "json",
-      "totalRows": 262,
-      "changedRows": 157
+      "totalRows": 293,
+      "changedRows": 116
     },
     {
       "path": "src/data/seed/tutorial.json",
@@ -395,6 +419,18 @@
       "changedRows": 0
     },
     {
+      "path": "src/data/seed/vocab-ja-hiragana.json",
+      "type": "json",
+      "totalRows": 208,
+      "changedRows": 0
+    },
+    {
+      "path": "src/data/seed/vocab-ja-katakana.json",
+      "type": "json",
+      "totalRows": 208,
+      "changedRows": 0
+    },
+    {
       "path": "src/data/seed/vocab-ja.json",
       "type": "json",
       "totalRows": 7726,
@@ -422,1003 +458,1003 @@
   "samples": [
     {
       "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-horse-gestation",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "mammals",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "mammals",
-      "statement": "Horses carry their young for approximately 11 months before giving birth."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-horse-speed",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "mammals",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "mammals",
-      "statement": "The fastest recorded speed for a horse in a quarter-mile race was 55 mph (88 km/h)."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-lion-pride",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "mammals",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "mammals",
-      "statement": "Lions are the only cats that live in social groups called prides, which typically contain 10 to 15 members."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-lion-roar",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "mammals",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "mammals",
-      "statement": "A lion's roar can be heard from up to 8 kilometers (5 miles) away."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-lion-sleep",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "mammals",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "mammals",
-      "statement": "Lions sleep up to 20 hours a day to conserve energy in the hot African savanna."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-chicken-eggs",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "birds",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "birds",
-      "statement": "A hen can lay up to 300 eggs per year, but only if a rooster is absent — no rooster needed for unfertilized eggs."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-chicken-color-vision",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "birds",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "birds",
-      "statement": "Chickens have tetrachromatic vision, allowing them to see ultraviolet light that is invisible to humans."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-chicken-dinosaur",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "birds",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "birds",
-      "statement": "The chicken is the closest living relative to the T. rex, confirmed by collagen proteins extracted from 68-million-year-old fossils."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-ant-strength",
+      "id": "animals-annelida-segments",
       "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "insects arachnids",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "insects_arachnids",
-      "statement": "Ants can carry objects up to 50 times their own body weight, making them pound-for-pound among the strongest animals on Earth."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-ant-supercolony",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "insects arachnids",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "insects_arachnids",
-      "statement": "The Argentine ant has formed a single global supercolony spanning Europe, North America, and Japan, with billions of cooperative individuals."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-ant-queen-lifespan",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "insects arachnids",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "insects_arachnids",
-      "statement": "Queen ants can live for up to 30 years, making them among the longest-lived insects on the planet."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-tiger-swimming",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "mammals",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "mammals",
-      "statement": "Tigers are powerful swimmers and will readily cross rivers up to 6 km wide to hunt or patrol territory."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-pig-intelligence",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "mammals",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "mammals",
-      "statement": "Pigs are considered among the five smartest animals on Earth, outperforming dogs and three-year-old children on some cognitive tests."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-wolf-howl",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "mammals",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "mammals",
-      "statement": "Wolves howl to communicate across distances — a wolf's howl can be heard up to 10 km away in open terrain."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-wolf-pack",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "mammals",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "mammals",
-      "statement": "Wolf packs are typically led by a breeding pair (alpha pair), not by a single dominant alpha wolf as once believed."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-wolf-dogs",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "mammals",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "mammals",
-      "statement": "All domestic dogs are descendants of grey wolves, with domestication beginning approximately 15,000 to 40,000 years ago."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-bear-hibernation",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "mammals",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "mammals",
-      "statement": "Bears do not truly hibernate — they enter a lighter sleep called torpor, during which females can wake to give birth."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-bear-strength",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "mammals",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "mammals",
-      "statement": "A grizzly bear can lift boulders weighing over 300 kg (660 lbs) and run at speeds up to 56 km/h (35 mph)."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-bear-smell",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "mammals",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "mammals",
-      "statement": "Bears have the best sense of smell of any land mammal, detecting odors up to 20 miles away — 7 times better than a bloodhound."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-goat-pupils",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "mammals",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "mammals",
-      "statement": "Goats have rectangular pupils that give them a 320-degree field of vision, helping them spot predators without turning their heads."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-goat-climbing",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "mammals",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "mammals",
-      "statement": "Mountain goats can scale nearly vertical cliff faces thanks to hooves with hard outer edges and soft inner pads that grip rock like suction cups."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-goat-memory",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "mammals",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "mammals",
-      "statement": "Goats have excellent long-term memory and can recall how to solve complex puzzles for up to 10 months after learning."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-camel-hump",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "adaptations",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "adaptations",
-      "statement": "Camel humps store fat, not water — camels draw on this fat reserve for energy during long desert journeys without food."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-camel-drinking",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "adaptations",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "adaptations",
-      "statement": "A dehydrated camel can drink up to 200 liters (53 gallons) of water in a single session — about a bathtub's worth."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-camel-eyelashes",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "adaptations",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "adaptations",
-      "statement": "Camels have three eyelids and two rows of eyelashes to protect their eyes from blowing desert sand."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-wolverine-strength",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "adaptations",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "adaptations",
-      "statement": "The wolverine is the largest land-dwelling member of the weasel family, capable of driving bears and wolves off kills."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-wolverine-territory",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "adaptations",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "adaptations",
-      "statement": "Male wolverines patrol territories up to 620 square miles — one of the largest home ranges of any land mammal relative to body size."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-wolverine-claws",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "adaptations",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "adaptations",
-      "statement": "Wolverines have semi-retractable claws that act like crampons, allowing them to climb sheer ice faces and vertical rock cliffs."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-bird-feathers",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "birds",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "birds",
-      "statement": "Birds are the only living animals with feathers, a trait that distinguishes class Aves from all other vertebrates."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-bird-hollow-bones",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "birds",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "birds",
-      "statement": "Most birds have hollow bones with internal struts, making their skeletons lighter than their feathers."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-bird-species-count",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "birds",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "birds",
-      "statement": "There are approximately 10,000 living bird species on Earth, ranging from 2-inch hummingbirds to 9-foot ostriches."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-dodo-extinction",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "conservation",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "conservation",
-      "statement": "The dodo went extinct by 1681, less than 90 years after Europeans first arrived on Mauritius in 1598."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-dodo-weight",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "conservation",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "conservation",
-      "statement": "The dodo weighed approximately 23–47 lbs and stood about 3 feet tall, making it one of the largest birds of its era."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-lion-mane",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "mammals",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "mammals",
-      "statement": "Only male lions have manes, and darker, fuller manes signal higher testosterone and better genetic fitness to females."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-animalia-oldest",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "biology",
+      "fromCategoryL2": "animal records",
       "fromCategorySecondary": null,
       "toCategoryL2": "marine_life",
-      "statement": "Sponges are considered the earliest-branching animals, with fossils dating back over 600 million years to the Ediacaran period."
+      "statement": "Annelids (segmented worms) have bodies divided into repeating ring-like segments, each containing their own organs."
     },
     {
       "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-animalia-symmetry",
+      "id": "animals-bonobo-matriarchy",
       "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "biology",
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
       "fromCategorySecondary": null,
-      "toCategoryL2": "marine_life",
-      "statement": "Most animals have bilateral symmetry, meaning their left and right sides are mirror images — a trait linked to the evolution of directed movement."
+      "toCategoryL2": "mammals",
+      "statement": "Bonobo society is matriarchal — females lead the social group and often outrank males despite being smaller in size."
     },
     {
       "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-fish-gills",
+      "id": "animals-bonobo-dna-similarity",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Bonobos share approximately 98.7% of their DNA with humans, making them one of our two closest living relatives."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-squid-giant-axon",
       "domain": "animals_wildlife",
       "reason": "scored",
       "fromCategoryL2": "marine life",
       "fromCategorySecondary": null,
       "toCategoryL2": "marine_life",
-      "statement": "Fish extract oxygen from water using gills, which force water over thin membranes where oxygen diffuses into the blood and CO2 diffuses out."
+      "statement": "The giant squid axon — a single nerve fiber up to 1mm wide — was crucial to discovering how nerve impulses work in all animals."
     },
     {
       "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-fish-diversity",
+      "id": "animals-squid-chromatophores",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "marine life",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "adaptations",
+      "statement": "Squid can change color in milliseconds using chromatophores — elastic sacs of pigment controlled directly by muscles."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-squid-three-hearts",
       "domain": "animals_wildlife",
       "reason": "scored",
       "fromCategoryL2": "marine life",
       "fromCategorySecondary": null,
       "toCategoryL2": "marine_life",
-      "statement": "Fish are the most diverse group of vertebrates with over 34,000 species — more than all other vertebrates combined."
+      "statement": "Squid have three hearts — two branchial hearts pump blood through the gills, while one systemic heart pumps it to the body."
     },
     {
       "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-fish-lateral-line",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "marine life",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "marine_life",
-      "statement": "Fish have a lateral line system — a row of sensory organs along their sides that detects water pressure changes and vibrations."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-dinosaur-extinction",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "reptiles amphibians",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "birds",
-      "statement": "Non-avian dinosaurs went extinct approximately 66 million years ago when an asteroid impact triggered a global winter by filling the atmosphere with debris."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-dinosaur-warm-blooded",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "reptiles amphibians",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "reptiles_amphibians",
-      "statement": "Many dinosaurs were warm-blooded (endothermic), able to regulate their own body temperature like modern birds and mammals."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-dinosaur-feathers",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "reptiles amphibians",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "reptiles_amphibians",
-      "statement": "Over 150 dinosaur species have been found with evidence of feathers, including large theropods related to T. rex."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-dromedary-hump",
+      "id": "animals-chimpanzee-tool-use",
       "domain": "animals_wildlife",
       "reason": "legacy",
-      "fromCategoryL2": "adaptations",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "adaptations",
-      "statement": "A dromedary camel's hump stores fat, not water — the fat can be metabolized into energy and water when food is scarce."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-dromedary-temperature",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "adaptations",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "adaptations",
-      "statement": "Dromedary camels can tolerate a body temperature swing of 11°F (6°C) between night and day, reducing the need to sweat."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-dromedary-nostrils",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "adaptations",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "adaptations",
-      "statement": "Dromedary camels can close their nostrils tightly to block sand, and their nasal passages recapture moisture from exhaled air."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-chicken-population",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "birds",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "birds",
-      "statement": "With over 33 billion individuals, the chicken is the most numerous bird on Earth — outnumbering all wild birds combined."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-chicken-junglefowl",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "birds",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "birds",
-      "statement": "The domestic chicken descended from the red junglefowl of Southeast Asia and was domesticated approximately 8,000 years ago."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-passenger-pigeon-numbers",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "conservation",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "conservation",
-      "statement": "The Passenger Pigeon was once North America's most abundant bird with 3–5 billion individuals — roughly 25–40% of all birds on the continent."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-passenger-pigeon-extinction",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "conservation",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "conservation",
-      "statement": "The Passenger Pigeon went extinct in 1914 due to commercial hunting — hunters used railroads to follow migrating flocks and shoot millions per day."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-owls-silent-flight",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "adaptations",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "adaptations",
-      "statement": "Owls fly nearly silently because comb-like serrations on their leading wing feathers break up turbulence, eliminating the sound of air rushing over the wing."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-owls-rotating-head",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "adaptations",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "adaptations",
-      "statement": "Owls can rotate their heads up to 270 degrees because they have 14 cervical vertebrae — twice as many as humans — and blood-pooling reservoirs that keep brain blood supply intact during rotation."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-owls-nocturnal-hearing",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "senses",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "birds",
-      "statement": "Many owls have asymmetrically positioned ears — one higher than the other — allowing them to pinpoint prey in three dimensions using sound alone, even in total darkness."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-ants-supercolony",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "social behavior",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "behavior_intelligence",
-      "statement": "The Argentine ant has formed a single supercolony stretching 3,700 miles along Europe's Mediterranean coast — the largest cooperative society ever recorded on Earth."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-ants-strength",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "physiology",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "insects_arachnids",
-      "statement": "Leafcutter ants can carry objects up to 50 times their own body weight — equivalent to a human carrying a car — using their saw-like mandibles."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-ants-zombie-fungus",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "parasites",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "behavior_intelligence",
-      "statement": "Ophiocordyceps fungi infect ants, hijack their nervous systems, force them to climb to an optimal height, then kill them — sprouting spores from the dead ant's head."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-horse-domestication",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "domestication",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "adaptations",
-      "statement": "Horses were first domesticated around 3500 BCE on the Eurasian steppes, transforming warfare, trade, and human migration across the ancient world."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-horse-hooves",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "anatomy",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "adaptations",
-      "statement": "A horse's hoof is actually a single highly modified toe — horses walk on the tip of their third finger, their other toes having been lost over 55 million years of evolution."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-frogs-glass-frog",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "adaptations",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "adaptations",
-      "statement": "Glass frogs have transparent undersides through which their beating hearts, digestive organs, and developing eggs are fully visible to the naked eye."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-pigeon-homing",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "navigation",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "marine_life",
-      "statement": "Homing pigeons can navigate back to their loft from over 1,000 miles away using Earth's magnetic field, the sun's position, and even infrasound landmarks."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-pigeon-eyesight",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "senses",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "birds",
-      "statement": "Pigeons can see ultraviolet light and are among the few animals that can recognize themselves in a mirror, passing the mirror self-recognition test."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-shark-cartilage",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "anatomy",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "marine_life",
-      "statement": "Sharks have no bones — their skeletons are made entirely of cartilage, which is lighter and more flexible than bone, allowing them to make sharper turns and swim more efficiently."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-shark-electroreception",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "senses",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "marine_life",
-      "statement": "Sharks detect prey using the ampullae of Lorenzini — gel-filled pores on their snouts that sense the faint electrical fields generated by the muscle contractions of living animals."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-shark-teeth",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "anatomy",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "marine_life",
-      "statement": "Sharks grow multiple rows of replacement teeth and shed and replace them throughout their lives — producing up to 30,000 teeth in a single shark's lifetime."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-amphibians-double-life",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "classification",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "reptiles_amphibians",
-      "statement": "The word 'amphibian' comes from the Greek 'amphi' (both) and 'bios' (life) — reflecting their life split between water and land across developmental stages."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-amphibians-skin-threat",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "conservation",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "conservation",
-      "statement": "Amphibians are the most threatened vertebrate class on Earth — over 40% of species face extinction, largely due to a chytrid fungus that infects and destroys their permeable skin."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-amphibians-poison-dart",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "defense",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "reptiles_amphibians",
-      "statement": "Poison dart frogs are not born poisonous — they acquire their toxins from eating mites and other arthropods in the wild; captive-bred frogs fed different diets are completely non-toxic."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-mammals-warm-blood",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "classification",
+      "fromCategoryL2": "mammals",
       "fromCategorySecondary": null,
       "toCategoryL2": "mammals",
-      "statement": "Mammals maintain a constant internal body temperature using metabolic heat — a process called endothermy that allows them to remain active in cold environments where reptiles become sluggish."
+      "statement": "Chimpanzees use tools — they strip leaves from twigs to fish termites from mounds and use rocks to crack open nuts."
     },
     {
       "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-mammals-monotremes",
+      "id": "animals-chimpanzee-culture",
       "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "classification",
+      "fromCategoryL2": "animal behaviors",
       "fromCategorySecondary": null,
-      "toCategoryL2": "mammals",
-      "statement": "Monotremes — platypus and echidnas — are the only mammals that lay eggs, yet they still nurse their young with milk secreted through patches of skin rather than nipples."
+      "toCategoryL2": "behavior_intelligence",
+      "statement": "Different chimpanzee communities have distinct cultural traditions — some crack nuts with rocks while others in the same region never do."
     },
     {
       "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-mammals-blue-whale",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "superlatives",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "mammals",
-      "statement": "The blue whale is the largest animal ever known to have existed — reaching 100 feet long and 200 tons — heavier than the largest dinosaur."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-insects-biomass",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "ecology",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "conservation",
-      "statement": "There are an estimated 10 quintillion (10,000,000,000,000,000,000) individual insects alive on Earth at any moment — about 1.4 billion insects for every human."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-insects-pollination",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "ecology",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "insects_arachnids",
-      "statement": "Insects pollinate about 75% of all flowering plant species and roughly one-third of all food crops globally — including most fruits, vegetables, nuts, and coffee."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-maize-habitat",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "agriculture ecology",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "conservation",
-      "statement": "Maize (corn) farming has replaced over 350,000 square miles of North American habitat — more than any other single crop — transforming grassland ecosystems that once supported bison, prairie dogs, and hundreds of bird sp"
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-maize-monarch-butterfly",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "agriculture ecology",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "insects_arachnids",
-      "statement": "The expansion of herbicide-tolerant corn and soy has nearly eliminated milkweed from Midwest farmlands, causing a 90% collapse in the monarch butterfly population since the 1990s."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-maize-corn-earworm",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "agriculture ecology",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "insects_arachnids",
-      "statement": "The corn earworm (Helicoverpa zea) is the costliest insect pest in North America, causing over $2 billion in crop losses annually by feeding on corn, cotton, tomatoes, and soy."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-swan-lifelong-mates",
+      "id": "animals-chimpanzee-memory",
       "domain": "animals_wildlife",
       "reason": "legacy",
-      "fromCategoryL2": "behavior",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "behavior_intelligence",
-      "statement": "Swans form lifelong pair bonds and typically mate for life, with pairs reuniting each breeding season for decades."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-swan-cygnus-genus",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "taxonomy",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "birds",
-      "statement": "Swans belong to the genus Cygnus within the family Anatidae, making them close relatives of ducks and geese."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-swan-neck-length",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "anatomy",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "birds",
-      "statement": "Swans have 25 cervical (neck) vertebrae, more than any other bird, which allows them to reach submerged aquatic plants while swimming."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-wolf-pack-alpha",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "behavior",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "behavior_intelligence",
-      "statement": "Gray wolf packs are led by a breeding pair, often called alpha wolves, whose offspring from multiple years form most of the pack's members."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-wolf-howl-communication",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "communication",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "behavior_intelligence",
-      "statement": "Gray wolves howl to communicate across distances up to 10 km, coordinating pack movements, asserting territory, and reuniting separated members."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-wolf-canis-lupus",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "taxonomy",
+      "fromCategoryL2": "mammals",
       "fromCategorySecondary": null,
       "toCategoryL2": "mammals",
-      "statement": "The gray wolf's scientific name is Canis lupus, and domestic dogs (Canis lupus familiaris) are a subspecies that were domesticated at least 15,000 years ago."
+      "statement": "In memory tests, young chimpanzees outperform adult humans at recalling sequences of numbers displayed for just 0.2 seconds."
     },
     {
       "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-orca-apex-predator",
+      "id": "animals-giraffe-blood-pressure",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Giraffes have the highest blood pressure of any mammal — about twice that of humans — to pump blood up their 2-meter necks."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-giraffe-ossicones",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Giraffe 'horns' are called ossicones — they are made of ossified cartilage covered in skin, not true bone like deer antlers."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-giraffe-tongue",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "A giraffe's tongue is about 45 cm long and bluish-black in color — possibly to protect against sunburn while feeding."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-marmot-hibernation",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Marmots hibernate for up to 8 months a year, during which their heartbeat drops from 200 to just 3 beats per minute."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-marmot-alarm-calls",
       "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "ecology",
+      "fromCategoryL2": "animal behaviors",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "behavior_intelligence",
+      "statement": "Marmots have distinct alarm calls for different predators — a unique whistle for aerial threats like hawks versus ground threats like foxes."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-otter-tool-use",
+      "domain": "animals_wildlife",
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "mammals",
+      "statement": "Sea otters use rocks as tools to crack open shellfish, and some keep a favorite rock stored in a skin pouch under their armpit."
+    },
+    {
+      "path": "src/data/seed/knowledge-animals_wildlife.json",
+      "id": "animals-otter-holding-hands",
+      "domain": "animals_wildlife",
+      "reason": "scored",
+      "fromCategoryL2": "animal behaviors",
       "fromCategorySecondary": null,
       "toCategoryL2": "marine_life",
-      "statement": "Orcas are apex predators with no natural predators, and they hunt great white sharks, eating their livers — one of the most energy-rich organs in a shark's body."
+      "statement": "Sea otters hold hands while sleeping to avoid drifting apart — a group of floating otters is called a raft."
     },
     {
       "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-orca-not-a-whale",
+      "id": "animals-otter-fur-density",
       "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "taxonomy",
+      "fromCategoryL2": "animal records",
       "fromCategorySecondary": null,
       "toCategoryL2": "marine_life",
-      "statement": "Despite being called 'killer whales,' orcas are actually the largest members of the dolphin family (Delphinidae), not true whales."
+      "statement": "Sea otters have the densest fur of any animal — up to 1 million hairs per square inch, with no blubber to keep them warm."
     },
     {
       "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-chameleon-color-change",
+      "id": "animals-odd-toed-ungulate-rhinoceros-horns",
       "domain": "animals_wildlife",
       "reason": "legacy",
-      "fromCategoryL2": "adaptations",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "adaptations",
-      "statement": "Chameleons change color primarily for communication and thermoregulation — not camouflage — by adjusting layers of nanocrystals in their skin cells called iridophores."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-chameleon-tongue",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "anatomy",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "adaptations",
-      "statement": "A chameleon's tongue can extend up to twice its body length and accelerates faster than a fighter jet — reaching full extension in under 0.07 seconds."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-chameleon-eyes",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "anatomy",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "adaptations",
-      "statement": "Chameleons have independently moving eyes that can rotate 360 degrees combined, giving them a near-total field of view without turning their head."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-penguin-flightless",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "adaptations",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "adaptations",
-      "statement": "Penguins are flightless birds whose wings evolved into flippers; they are the fastest swimming birds, reaching up to 36 km/h underwater."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-penguin-emperor-colony",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "behavior",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "behavior_intelligence",
-      "statement": "Emperor penguin fathers incubate their single egg through the Antarctic winter — temperatures reaching -60°C — balancing it on their feet under a brood pouch for up to 65 days without eating."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-penguin-tuxedo",
-      "domain": "animals_wildlife",
-      "reason": "legacy",
-      "fromCategoryL2": "adaptations",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "adaptations",
-      "statement": "Penguins' black-and-white coloring is countershading camouflage: dark backs are hard to see from above against dark ocean depths; white fronts blend with sunlit surface water from below."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-bear-ursidae",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "taxonomy",
+      "fromCategoryL2": "mammals",
       "fromCategorySecondary": null,
       "toCategoryL2": "mammals",
-      "statement": "The family Ursidae contains eight living bear species, including the polar bear — the largest land carnivore — and the sun bear, the smallest."
+      "statement": "Rhinoceros horns are made entirely of keratin — the same protein as human fingernails — not bone or ivory."
     },
     {
       "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-blue-whale-largest",
+      "id": "animals-odd-toed-ungulate-horse-sleep",
       "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "records",
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
       "fromCategorySecondary": null,
       "toCategoryL2": "mammals",
-      "statement": "The blue whale is the largest animal known to have ever existed — reaching 33 meters long and 190 tonnes — larger than any dinosaur."
+      "statement": "Horses can sleep standing up thanks to a 'stay apparatus' — a system of tendons and ligaments that locks their legs without muscle effort."
     },
     {
       "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-blue-whale-krill",
+      "id": "animals-tardigrade-extremophile",
       "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "ecology",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "mammals",
-      "statement": "Blue whales eat almost exclusively krill, consuming up to 3,600 kg (8,000 lbs) of the tiny crustaceans per day during feeding season."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-blue-whale-sound",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "communication",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "behavior_intelligence",
-      "statement": "Blue whale calls can reach 188 decibels — louder than a jet engine — and travel thousands of kilometers through ocean sound channels."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-crocodilian-ancient",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "evolution",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "conservation",
-      "statement": "Crocodilians have remained virtually unchanged for 200 million years — surviving the mass extinction that killed the dinosaurs — making them among Earth's most successful animals."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-crocodilian-cold-blooded",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "physiology",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "birds",
-      "statement": "Crocodilians are ectotherms (cold-blooded), but they have a four-chambered heart — rare among reptiles — which is more efficient and shared with mammals and birds."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-crocodilian-bite-force",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "anatomy",
-      "fromCategorySecondary": null,
-      "toCategoryL2": "reptiles_amphibians",
-      "statement": "Saltwater crocodiles have the strongest bite force ever measured in a living animal — up to 16,460 Newtons (3,700 lbs of force), stronger than any shark."
-    },
-    {
-      "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-parrot-speech-mimicry",
-      "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "cognition",
+      "fromCategoryL2": "animal records",
       "fromCategorySecondary": null,
       "toCategoryL2": "adaptations",
-      "statement": "African grey parrots can mimic human speech with such accuracy they can fool people on the phone — and research shows they may actually understand words contextually, not just mimic them."
+      "statement": "Tardigrades can survive temperatures from -272°C to 150°C, radiation 1,000× lethal to humans, and exposure to the vacuum of space."
     },
     {
       "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-parrot-psittaciformes",
+      "id": "animals-tardigrade-tun-state",
       "domain": "animals_wildlife",
       "reason": "scored",
-      "fromCategoryL2": "taxonomy",
+      "fromCategoryL2": "animal records",
       "fromCategorySecondary": null,
-      "toCategoryL2": "behavior_intelligence",
-      "statement": "Parrots belong to the order Psittaciformes and are characterized by curved beaks, zygodactyl feet (two toes forward, two back), and being some of the most intelligent birds."
+      "toCategoryL2": "adaptations",
+      "statement": "When threatened, tardigrades shrink into a dried barrel called a 'tun,' reducing their water content to 3% and pausing their metabolism."
     },
     {
       "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-parrot-longevity",
+      "id": "animals-monotreme-electroreception",
       "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "physiology",
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
       "fromCategorySecondary": null,
-      "toCategoryL2": "birds",
-      "statement": "Large parrots like macaws and cockatoos can live 50–80 years — some species outliving their owners — making them among the longest-lived birds."
+      "toCategoryL2": "mammals",
+      "statement": "The platypus hunts underwater with its eyes closed, detecting prey using 40,000 electroreceptors in its bill that sense electric fields from muscle movement."
     },
     {
       "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-leopard-range",
+      "id": "animals-monotreme-egg-laying",
       "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "ecology",
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
       "fromCategorySecondary": null,
-      "toCategoryL2": "conservation",
-      "statement": "The leopard has the widest geographic range of any wild cat, living across sub-Saharan Africa, North Africa, the Middle East, Central Asia, and the Russian Far East."
+      "toCategoryL2": "mammals",
+      "statement": "Monotremes are the only mammals that lay eggs — the platypus and four echidna species — yet they still produce milk like all other mammals."
     },
     {
       "path": "src/data/seed/knowledge-animals_wildlife.json",
-      "id": "animals-goldfish-memory",
+      "id": "animals-monotreme-platypus-venom",
       "domain": "animals_wildlife",
-      "reason": "scored",
-      "fromCategoryL2": "cognition",
+      "reason": "legacy",
+      "fromCategoryL2": "mammals",
       "fromCategorySecondary": null,
-      "toCategoryL2": "behavior_intelligence",
-      "statement": "The claim that goldfish have a 3-second memory is a myth — goldfish can remember learned behaviors for at least five months and can be trained to perform tasks."
+      "toCategoryL2": "mammals",
+      "statement": "Male platypuses have venomous spurs on their hind legs that deliver excruciating pain — the venom causes swelling that can last for months."
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "id": "art-abex-drip-painting",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "Jackson Pollock's drip painting technique involved laying a canvas flat on the floor and pouring, dripping, and throwing paint from above to create complex layered webs."
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "id": "art-abex-movement-origin",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual",
+      "fromCategorySecondary": "painting visual",
+      "toCategoryL2": "modern_contemporary",
+      "statement": "Abstract Expressionism emerged in New York City in the 1940s, making America — not Europe — the dominant center of the international art world for the first time."
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "id": "art-chopin-heart-burial",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "art history movements",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "historic_buildings",
+      "statement": "Chopin's heart was removed after his death and secretly smuggled to Warsaw, where it remains enshrined in a church column."
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "id": "art-lecorbusier-modulor",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "architectural styles",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "architectural_styles",
+      "statement": "Le Corbusier created the Modulor, a proportional system based on human body measurements and the golden ratio."
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "id": "art-lecorbusier-five-points",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "architectural styles",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "architectural_styles",
+      "statement": "Le Corbusier's Five Points of Architecture include pilotis, roof gardens, free facades, ribbon windows, and open floor plans."
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "id": "art-lecorbusier-unite-habitation",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "famous buildings",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "architectural_styles",
+      "statement": "Le Corbusier's Unité d'Habitation in Marseille (1952) was a self-contained residential city block with shops, a school, and a rooftop track."
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "id": "art-lecorbusier-chandigarh",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "famous buildings",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "architectural_styles",
+      "statement": "Le Corbusier designed the entire city of Chandigarh in India, including its Capitol Complex, for newly independent India in the 1950s."
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "id": "art-kahlo-selfportraits",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual art",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "painting_visual",
+      "statement": "Frida Kahlo painted 55 self-portraits, many created while she recovered from a near-fatal bus accident at age 18."
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "id": "art-kahlo-two-fridas",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual art",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "painting_visual",
+      "statement": "Kahlo's 'The Two Fridas' (1939) depicts two versions of herself with connected hearts, painted after her divorce from Diego Rivera."
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "id": "art-kahlo-surrealism-rejection",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual art",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "painting_visual",
+      "statement": "Frida Kahlo rejected being labeled a Surrealist, saying she painted her own reality, not dreams."
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "id": "art-kahlo-broken-column",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual art",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "painting_visual",
+      "statement": "Kahlo's 'The Broken Column' (1944) depicts her spine as a crumbling Ionic column, reflecting chronic pain from her spinal surgery."
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "id": "art-batman-bob-kane",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "modern contemporary",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "modern_contemporary",
+      "statement": "Batman was co-created by artist Bob Kane and writer Bill Finger in 1939, first appearing in Detective Comics #27."
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "id": "art-batman-visual-design",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "modern contemporary",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "engineering_design",
+      "statement": "Batman's iconic bat-symbol costume was inspired by Leonardo da Vinci's ornithopter sketches and a 1930s pulp novel character called 'The Bat.'"
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "id": "art-batman-gotham-expressionism",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "modern contemporary",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "architectural_styles",
+      "statement": "Gotham City's visual style was heavily influenced by German Expressionist cinema and the Fritz Lang film 'Metropolis' (1927)."
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "id": "art-bernhardt-poster-art",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "art history movements",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "architectural_styles",
+      "statement": "Sarah Bernhardt's collaboration with Alphonse Mucha from 1895 produced iconic Art Nouveau posters that defined the movement's visual style."
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "id": "art-bernhardt-sculpture",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "art history movements",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "sculpture_decorative",
+      "statement": "Sarah Bernhardt was a trained sculptor who exhibited at the Paris Salon and produced busts that were well-received by critics."
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "id": "art-raphael-school-of-athens",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual art",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "painting_visual",
+      "statement": "Raphael's fresco 'The School of Athens' (1509–1511) depicts ancient Greek philosophers gathered in a grand architectural hall."
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "id": "art-raphael-died-young",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual art",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "painting_visual",
+      "statement": "Raphael died on his 37th birthday in 1520, having completed a prolific body of work including the Vatican Stanze frescoes."
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "id": "art-raphael-sistine-madonna",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual art",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "historic_buildings",
+      "statement": "Raphael's Sistine Madonna (1512) features two bored-looking cherubs at the bottom that became the most reproduced detail in art history."
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "id": "art-raphael-architecture",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "painting visual art",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "engineering_design",
+      "statement": "Raphael succeeded Bramante as chief architect of St. Peter's Basilica in 1514, contributing to its early Renaissance design."
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "id": "art-dracula-gothic-architecture",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "modern contemporary",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "architectural_styles",
+      "statement": "Bram Stoker's Dracula (1897) inspired a century of Gothic visual art, from Nosferatu's angular shadows to vampire castle design in games and film."
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "id": "art-dracula-nosferatu-expressionism",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "modern contemporary",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "modern_contemporary",
+      "statement": "The 1922 film Nosferatu, an unauthorized Dracula adaptation, introduced German Expressionist shadow art to vampire cinema."
+    },
+    {
+      "path": "src/data/seed/knowledge-art_architecture.json",
+      "id": "art-dracula-castle-bran",
+      "domain": "art_architecture",
+      "reason": "scored",
+      "fromCategoryL2": "historical landmarks",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "historic_buildings",
+      "statement": "Bran Castle in Romania is marketed as 'Dracula's Castle,' though Stoker likely never visited Romania and modeled it on Scottish castles he read about."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-falafel-herb",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "world cuisine",
+      "fromCategorySecondary": "world cuisine",
+      "toCategoryL2": "food_science",
+      "statement": "Falafel's bright green interior comes from fresh parsley, cilantro, and sometimes spinach blended into the batter, which also adds flavor and nutrition."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-cheese-blue-mold",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "fermentation beverages",
+      "fromCategorySecondary": "fermentation beverages",
+      "toCategoryL2": "european_cuisine",
+      "statement": "Blue cheeses like Roquefort, Gorgonzola, and Stilton get their distinctive blue-green veins from Penicillium mold cultures intentionally introduced during production."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-yogurt-001",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "fermentation beverages",
+      "fromCategorySecondary": "fermentation beverages",
+      "toCategoryL2": "food_science",
+      "statement": "Yogurt is made by fermenting milk with live bacterial cultures, primarily Lactobacillus bulgaricus and Streptococcus thermophilus."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-yogurt-002",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "fermentation beverages",
+      "fromCategorySecondary": "fermentation beverages",
+      "toCategoryL2": "food_science",
+      "statement": "Greek yogurt is made by straining regular yogurt to remove whey, resulting in a product with roughly twice the protein of regular yogurt."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-yogurt-003",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "fermentation beverages",
+      "fromCategorySecondary": "fermentation beverages",
+      "toCategoryL2": "food_science",
+      "statement": "Yogurt's lactic acid makes milk proteins coagulate and thicken, while also making it digestible for people with lactose intolerance."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-sourdough-002",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "fermentation beverages",
+      "fromCategorySecondary": "fermentation beverages",
+      "toCategoryL2": "food_history",
+      "statement": "The oldest known sourdough bread was found in Switzerland, dating back approximately 4,000 years to the Bronze Age."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-yogurt-001",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "fermentation beverages",
+      "fromCategorySecondary": "fermentation beverages",
+      "toCategoryL2": "food_science",
+      "statement": "Yogurt is made by fermenting milk with live bacterial cultures, primarily Lactobacillus bulgaricus and Streptococcus thermophilus."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-yogurt-002",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "fermentation beverages",
+      "fromCategorySecondary": "fermentation beverages",
+      "toCategoryL2": "food_science",
+      "statement": "Greek yogurt is made by straining regular yogurt to remove whey, resulting in a product with roughly twice the protein of regular yogurt."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-yogurt-003",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "fermentation beverages",
+      "fromCategorySecondary": "fermentation beverages",
+      "toCategoryL2": "food_science",
+      "statement": "Yogurt's lactic acid makes milk proteins coagulate and thicken, while also making it digestible for people with lactose intolerance."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-sourdough-002",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "fermentation beverages",
+      "fromCategorySecondary": "fermentation beverages",
+      "toCategoryL2": "food_history",
+      "statement": "The oldest known sourdough bread was found in Switzerland, dating back approximately 4,000 years to the Bronze Age."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-gyros-origin",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "european cuisine",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "world_cuisine",
+      "statement": "Gyros gets its name from the Greek word for 'turn,' referring to the rotating vertical spit it cooks on."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-gyros-meat",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "european cuisine",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "european_cuisine",
+      "statement": "Traditional Greek gyros is most commonly made from pork, though chicken and lamb versions also exist."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-gyros-tzatziki",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "european cuisine",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "world_cuisine",
+      "statement": "Tzatziki, the yogurt-cucumber sauce served with gyros, is made from strained Greek yogurt, cucumber, garlic, and dill."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-gyros-doner-relation",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "european cuisine",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "food_history",
+      "statement": "Greek gyros evolved from the Turkish döner kebab, which was itself introduced to Greece in the early 20th century."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-moussaka-layers",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "european cuisine",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "european_cuisine",
+      "statement": "Classic Greek moussaka consists of three layers: sautéed eggplant, spiced ground meat, and a thick béchamel sauce topping."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-moussaka-cinnamon",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "european cuisine",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "ingredients_spices",
+      "statement": "Cinnamon is a key spice in moussaka's meat layer, giving it a warm, aromatic flavor unique among savory dishes."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-moussaka-arab-origin",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "european cuisine",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "food_history",
+      "statement": "Moussaka's origins trace to the Arab world; the word comes from Arabic 'musaqqa'a,' meaning 'chilled.'"
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-moussaka-bechamel-addition",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "european cuisine",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "european_cuisine",
+      "statement": "The béchamel topping on Greek moussaka was added by chef Nikolaos Tselementes in the 1920s, inspired by French cuisine."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-empanada-name-origin",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "americas cuisine",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "baking_desserts",
+      "statement": "The word 'empanada' comes from Spanish 'empanar,' meaning 'to bread' or 'to coat in bread/pastry.'"
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-empanada-galicia-origin",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "european cuisine",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "european_cuisine",
+      "statement": "Empanadas originated in Galicia, Spain, and were brought to Latin America by Spanish colonizers in the 16th century."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-empanada-regional-variety",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "americas cuisine",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "food_history",
+      "statement": "Argentina is the country most famous for empanadas, with each province having its own distinct filling and dough tradition."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-mole-chocolate",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "americas cuisine",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "ingredients_spices",
+      "statement": "Mexico's mole negro sauce can contain over 30 ingredients, including chocolate, dried chilies, and ground nuts."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-mole-varieties",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "americas cuisine",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "baking_desserts",
+      "statement": "Mexico has at least seven distinct mole sauces, including negro, rojo, verde, amarillo, coloradito, manchamanteles, and chichilo."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-mole-preparation-time",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "americas cuisine",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "ingredients_spices",
+      "statement": "Traditional mole negro can take up to three days to prepare, involving toasting, grinding, and layering dozens of ingredients."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-garlic-allicin",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "ingredients spices",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "food_science",
+      "statement": "Garlic's pungent smell is caused by allicin, a sulfur compound that forms only when a garlic clove is crushed or chopped."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-garlic-history",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "ingredients spices",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "food_history",
+      "statement": "Garlic has been cultivated for at least 5,000 years and was found in Tutankhamun's Egyptian tomb."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-garlic-largest-producer",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "ingredients spices",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "ingredients_spices",
+      "statement": "China produces approximately 80% of the world's garlic supply, making it by far the largest garlic producer on Earth."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-cumin-ancient-trade",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "ingredients spices",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "ingredients_spices",
+      "statement": "Cumin seeds were found in ancient Egyptian tombs, and the spice was used as currency to pay rent in medieval Europe."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-cumin-second-spice",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "ingredients spices",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "ingredients_spices",
+      "statement": "Cumin is the world's second most popular spice by consumption, surpassed only by black pepper."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-cumin-digestive",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "ingredients spices",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "ingredients_spices",
+      "statement": "Cumin has been used medicinally for thousands of years and is scientifically shown to improve digestion and reduce bloating."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-ginger-motion-sickness",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "ingredients spices",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "ingredients_spices",
+      "statement": "Ginger is clinically proven to reduce nausea and motion sickness, as effective as some pharmaceutical antiemetics."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-ginger-not-a-root",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "ingredients spices",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "ingredients_spices",
+      "statement": "Ginger is not actually a root — it is a rhizome, a modified underground stem that stores nutrients for the plant."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-ginger-global-cuisine",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "ingredients spices",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "ingredients_spices",
+      "statement": "India produces about 50% of the world's ginger and is also the largest consumer, using it in cooking, tea, and Ayurvedic medicine."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-clove-anesthetic",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "ingredients spices",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "ingredients_spices",
+      "statement": "Clove oil contains eugenol, a natural anesthetic used by dentists for thousands of years to numb toothache pain."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-clove-spice-islands",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "ingredients spices",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "ingredients_spices",
+      "statement": "Cloves once grew only on the Maluku Islands (Indonesia) and were so valuable that European nations went to war to control their trade."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-clove-flower-bud",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "ingredients spices",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "ingredients_spices",
+      "statement": "Cloves are the dried flower buds of the Syzygium aromaticum tree, harvested before they bloom to preserve maximum flavor."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-cardamom-price",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "ingredients spices",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "ingredients_spices",
+      "statement": "Cardamom is the world's third most expensive spice by weight, after saffron and vanilla."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-cardamom-two-types",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "ingredients spices",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "ingredients_spices",
+      "statement": "There are two main types of cardamom: green cardamom (sweet and floral) used in desserts, and black cardamom (smoky) used in savory dishes."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-cardamom-coffee",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "ingredients spices",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "ingredients_spices",
+      "statement": "In the Middle East, especially Saudi Arabia and Qatar, coffee is traditionally brewed with cardamom and served as a sign of hospitality."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-nutmeg-hallucinogen",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "ingredients spices",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "ingredients_spices",
+      "statement": "In very large quantities, nutmeg acts as a psychoactive substance due to its compound myristicin, which the body converts to a compound similar to MDMA."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-nutmeg-mace-relationship",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "ingredients spices",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "ingredients_spices",
+      "statement": "Mace and nutmeg come from the same tree: mace is the red lacy covering (aril) surrounding the nutmeg seed inside the fruit."
+    },
+    {
+      "path": "src/data/seed/knowledge-food_cuisine.json",
+      "id": "food-nutmeg-banda-islands-war",
+      "domain": "food_cuisine",
+      "reason": "scored",
+      "fromCategoryL2": "ingredients spices",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "ingredients_spices",
+      "statement": "The Dutch traded Manhattan Island to England in 1667 partly to secure sole control of Run Island, a tiny nutmeg-producing island in Indonesia."
+    },
+    {
+      "path": "src/data/seed/knowledge-general_knowledge.json",
+      "id": "general-soccer-world-cup-history",
+      "domain": "general_knowledge",
+      "reason": "scored",
+      "fromCategoryL2": "pop culture",
+      "fromCategorySecondary": "pop culture",
+      "toCategoryL2": "records_firsts",
+      "statement": "The first FIFA World Cup was held in Uruguay in 1930, with Uruguay winning the inaugural tournament as hosts."
+    },
+    {
+      "path": "src/data/seed/knowledge-general_knowledge.json",
+      "id": "general-tesla-300-patents",
+      "domain": "general_knowledge",
+      "reason": "scored",
+      "fromCategoryL2": "inventions tech",
+      "fromCategorySecondary": "inventions tech",
+      "toCategoryL2": "everyday_science",
+      "statement": "Nikola Tesla held approximately 300 patents across multiple countries for inventions spanning electrical systems, radio, and motors."
+    },
+    {
+      "path": "src/data/seed/knowledge-general_knowledge.json",
+      "id": "general-book-longest-novel",
+      "domain": "general_knowledge",
+      "reason": "scored",
+      "fromCategoryL2": "pop culture",
+      "fromCategorySecondary": "pop culture",
+      "toCategoryL2": "records_firsts",
+      "statement": "Proust's 'In Search of Lost Time' is often cited as the world's longest novel at approximately 1.5 million words across 7 volumes."
+    },
+    {
+      "path": "src/data/seed/knowledge-general_knowledge.json",
+      "id": "general-language-families",
+      "domain": "general_knowledge",
+      "reason": "scored",
+      "fromCategoryL2": "words language",
+      "fromCategorySecondary": "words language",
+      "toCategoryL2": "records_firsts",
+      "statement": "There are approximately 7,000 languages spoken in the world today, grouped into about 142 language families. Half of all human languages are spoken by fewer than 10,000 people each."
+    },
+    {
+      "path": "src/data/seed/knowledge-general_knowledge.json",
+      "id": "general-clocks-sundials",
+      "domain": "general_knowledge",
+      "reason": "scored",
+      "fromCategoryL2": "inventions tech",
+      "fromCategorySecondary": "inventions tech",
+      "toCategoryL2": "records_firsts",
+      "statement": "Sundials are among humanity's oldest timekeeping devices, with the earliest known examples dating to ancient Egypt around 1500 BCE. They measure time by tracking the shadow cast by the sun."
+    },
+    {
+      "path": "src/data/seed/knowledge-general_knowledge.json",
+      "id": "general-airport-oldest",
+      "domain": "general_knowledge",
+      "reason": "scored",
+      "fromCategoryL2": "inventions tech",
+      "fromCategorySecondary": "inventions tech",
+      "toCategoryL2": "records_firsts",
+      "statement": "College Park Airport in Maryland, opened in 1909, is the world's oldest continuously operating airport."
+    },
+    {
+      "path": "src/data/seed/knowledge-general_knowledge.json",
+      "id": "general-airport-highest-altitude",
+      "domain": "general_knowledge",
+      "reason": "scored",
+      "fromCategoryL2": "inventions tech",
+      "fromCategorySecondary": "inventions tech",
+      "toCategoryL2": "records_firsts",
+      "statement": "Daocheng Yading Airport in China is the world's highest commercial airport at 4,411 meters (14,472 feet) above sea level."
+    },
+    {
+      "path": "src/data/seed/knowledge-general_knowledge.json",
+      "id": "general-messiah-001",
+      "domain": "general_knowledge",
+      "reason": "scored",
+      "fromCategoryL2": "abrahamic traditions",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "words_language",
+      "statement": "The word 'Messiah' comes from Hebrew 'mashiach', meaning 'anointed one'."
+    },
+    {
+      "path": "src/data/seed/knowledge-general_knowledge.json",
+      "id": "general-chinesenewyear-002",
+      "domain": "general_knowledge",
+      "reason": "scored",
+      "fromCategoryL2": "festivals",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "everyday_science",
+      "statement": "The Chinese zodiac cycles through 12 animals, each representing a year in a repeating pattern."
+    },
+    {
+      "path": "src/data/seed/knowledge-general_knowledge.json",
+      "id": "general-stadium-001",
+      "domain": "general_knowledge",
+      "reason": "scored",
+      "fromCategoryL2": "sports venues",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "pop_culture",
+      "statement": "The word 'stadium' comes from a Greek unit of length — the distance of the original Olympic footrace."
+    },
+    {
+      "path": "src/data/seed/knowledge-general_knowledge.json",
+      "id": "general-stadium-002",
+      "domain": "general_knowledge",
+      "reason": "scored",
+      "fromCategoryL2": "sports venues",
+      "fromCategorySecondary": null,
+      "toCategoryL2": "pop_culture",
+      "statement": "India's Narendra Modi Stadium is the world's largest cricket stadium, holding over 132,000 spectators."
     }
   ]
 }

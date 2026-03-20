@@ -5,7 +5,7 @@
   import type { Card } from '../../data/card-types'
   import type { TurnState } from '../../services/turnManager'
   import { getComboMultiplier } from '../../services/turnManager'
-  import { FLOOR_TIMER } from '../../data/balance'
+  import { FLOOR_TIMER, MASTERY_MAX_LEVEL, MASTERY_BASE_DISTRACTORS, MASTERY_UPGRADED_DISTRACTORS } from '../../data/balance'
   import { isSurgeTurn } from '../../services/surgeSystem'
   import { getQuestionPresentation } from '../../services/questionFormatter'
   import {
@@ -50,6 +50,7 @@
   import StatusEffectBar from './StatusEffectBar.svelte'
   import { getShortCardDescription } from '../../services/cardDescriptionService'
   import SurgeBorderOverlay from './SurgeBorderOverlay.svelte'
+  import { ENEMY_DIALOGUE } from '../../data/enemyDialogue'
 
   interface Props {
     turnState: TurnState | null
@@ -111,6 +112,10 @@
   type TierUpTransition = 'tier1_to_2a' | 'tier2a_to_2b' | 'tier2b_to_3'
   let tierUpTransitions = $state<Record<string, TierUpTransition>>({})
   let animatingCards = $state<Card[]>([])
+  /** AR-113: Active mastery change popups: cardId -> 'upgrade' | 'downgrade' */
+  let masteryPopups = $state<Record<string, 'upgrade' | 'downgrade'>>({})
+  /** AR-113: Active mastery flash on card stat numbers: cardId -> 'up' | 'down' */
+  let masteryFlashes = $state<Record<string, 'up' | 'down'>>({})
   let damageIdCounter = $state(0)
   let slowReaderEnabled = $state(false)
   let currentDifficulty = $state<DifficultyMode>('normal')
@@ -1014,11 +1019,27 @@
   function handleCast(): void {
     if (!selectedCard || !selectedPresentation || castDisabled) return
 
+    // Mastery level 5 (mastered) cards auto quick-play — no quiz needed
+    // Exception: final boss encounters still require quiz
+    const isFinalBoss = turnState?.enemy?.template?.category === 'boss'
+    if ((selectedCard.masteryLevel ?? 0) >= MASTERY_MAX_LEVEL && !isFinalBoss) {
+      handleCastDirect(selectedIndex!)
+      return
+    }
+
     playCardAudio('card-cast')
     cardPlayStage = 'committed'
     committedCardIndex = selectedIndex
     committedCardSnapshot = { ...selectedCard }
-    committedQuizData = getQuizForCard(selectedCard, selectedPresentation.optionCount)
+    // Mastery-based distractor count (AR-113): level 0 cards get fewer options (easier first quiz)
+    const masteryLevel = selectedCard.masteryLevel ?? 0;
+    let effectiveOptionCount = selectedPresentation.optionCount;
+    if (masteryLevel === 0) {
+      effectiveOptionCount = Math.min(effectiveOptionCount, MASTERY_BASE_DISTRACTORS + 1); // 3 options max
+    } else {
+      effectiveOptionCount = Math.max(effectiveOptionCount, MASTERY_UPGRADED_DISTRACTORS + 1); // 4 options min
+    }
+    committedQuizData = getQuizForCard(selectedCard, effectiveOptionCount)
     committedAtMs = Date.now()
     selectedIndex = null
     // Slide enemy right in landscape when quiz activates
@@ -1033,6 +1054,28 @@
     if (!state.hasCompletedOnboarding && !state.hasSeenAnswerTooltip) {
       markOnboardingTooltipSeen('hasSeenAnswerTooltip')
     }
+  }
+
+  /** AR-113: Trigger mastery visual feedback (popup + stat flash) for a card. */
+  function triggerMasteryFeedback(cardId: string, change: 'upgrade' | 'downgrade'): void {
+    // Show popup
+    masteryPopups = { ...masteryPopups, [cardId]: change }
+    // Show stat flash
+    masteryFlashes = { ...masteryFlashes, [cardId]: change === 'upgrade' ? 'up' : 'down' }
+
+    // Clear popup after 1.2s
+    setTimeout(() => {
+      masteryPopups = Object.fromEntries(
+        Object.entries(masteryPopups).filter(([id]) => id !== cardId)
+      ) as Record<string, 'upgrade' | 'downgrade'>
+    }, 1200)
+
+    // Clear flash after 800ms
+    setTimeout(() => {
+      masteryFlashes = Object.fromEntries(
+        Object.entries(masteryFlashes).filter(([id]) => id !== cardId)
+      ) as Record<string, 'up' | 'down'>
+    }, 800)
   }
 
   function handleAnswer(answerIndex: number, isCorrect: boolean, speedBonus: boolean): void {
@@ -1059,6 +1102,12 @@
       cardAnimations = { ...cardAnimations, [cardId]: 'fizzle' }
       onplaycard(cardId, false, false, responseTimeMs, quizVariantIndex, 'charge')
 
+      // AR-113: Check for mastery downgrade after wrong answer
+      const discardedWrong = turnState?.deck.discardPile.find(c => c.id === cardId)
+      if (discardedWrong && discardedWrong.masteryChangedThisEncounter) {
+        triggerMasteryFeedback(cardId, 'downgrade')
+      }
+
       juiceManager.fire({
         type: 'wrong',
         damage: 0,
@@ -1079,6 +1128,12 @@
       // Correct answer: new 5-phase animation sequence
       animatingCards = [...animatingCards, card]
       onplaycard(cardId, true, speedBonus, responseTimeMs, quizVariantIndex, 'charge')
+
+      // AR-113: Check for mastery upgrade after correct answer
+      const discardedCorrect = turnState?.deck.discardPile.find(c => c.id === cardId)
+      if (discardedCorrect && discardedCorrect.masteryChangedThisEncounter && (discardedCorrect.masteryLevel ?? 0) > 0) {
+        triggerMasteryFeedback(cardId, 'upgrade')
+      }
 
       // Determine tier-up
       const nextReviewState = getReviewStateByFactId(card.factId)
@@ -1290,11 +1345,60 @@
     )
   })
 
+  // --- Enemy Dialogue ---
+  let dialogueLine = $state<string | null>(null)
+  let dialogueVisible = $state(false)
+  let dialogueTimer: ReturnType<typeof setTimeout> | null = null
+
+  let enemyDialogue = $derived(
+    turnState?.enemy.template.id ? ENEMY_DIALOGUE[turnState.enemy.template.id] ?? null : null
+  )
+
+  function showDialogue(line: string) {
+    dialogueLine = line
+    dialogueVisible = true
+    if (dialogueTimer) clearTimeout(dialogueTimer)
+    dialogueTimer = setTimeout(() => {
+      dialogueVisible = false
+      dialogueTimer = setTimeout(() => { dialogueLine = null }, 400)
+    }, 2500)
+  }
+
+  let hasShownOpening = $state(false)
+
+  $effect(() => {
+    if (turnState && enemyDialogue && !hasShownOpening) {
+      hasShownOpening = true
+      const lines = enemyDialogue.opening
+      const line = lines[Math.floor(Math.random() * lines.length)]
+      setTimeout(() => showDialogue(line), 600)
+    }
+    if (!turnState) {
+      hasShownOpening = false
+    }
+  })
+
+  let hasShownEnding = $state(false)
+
+  $effect(() => {
+    if (turnState && turnState.enemy.currentHP <= 0 && enemyDialogue && !hasShownEnding) {
+      hasShownEnding = true
+      const lines = enemyDialogue.ending
+      const line = lines[Math.floor(Math.random() * lines.length)]
+      showDialogue(line)
+    }
+    if (!turnState) {
+      hasShownEnding = false
+    }
+  })
+  // --- End Enemy Dialogue ---
+
   onDestroy(() => {
     for (const unsub of kbdUnsubscribers) unsub()
     kbdUnsubscribers = []
     // Clear quiz visibility flag
     setQuizVisible(false)
+    if (dialogueTimer) clearTimeout(dialogueTimer)
   })
 
 </script>
@@ -1331,6 +1435,12 @@
       </div>
     {/if}
 
+    {#if dialogueLine}
+      <div class="enemy-dialogue" class:dialogue-visible={dialogueVisible}>
+        <span class="dialogue-text">{dialogueLine}</span>
+      </div>
+    {/if}
+
     <StatusEffectBar effects={enemyEffects} position="enemy" />
 
     <div class="ap-orb" class:ap-active={apCurrent > 0} class:ap-empty={apCurrent === 0} aria-label="Action points: {apCurrent}">
@@ -1354,6 +1464,17 @@
       </div>
       <span class="pile-count-label">{discardPileCount}</span>
     </div>
+
+    <!-- AR-113: Mastery upgrade/downgrade popups -->
+    {#each Object.entries(masteryPopups) as [popupCardId, popupType]}
+      <div
+        class="mastery-popup"
+        class:mastery-popup-upgrade={popupType === 'upgrade'}
+        class:mastery-popup-downgrade={popupType === 'downgrade'}
+      >
+        {popupType === 'upgrade' ? 'Upgraded!' : 'Downgraded!'}
+      </div>
+    {/each}
 
     {#if intentDisplay && cardPlayStage !== 'committed'}
       <button
@@ -1480,6 +1601,7 @@
       {isSurgeActive}
       {focusDiscount}
       quizVisible={isQuizPanelVisible}
+      {masteryFlashes}
     />
 
     {#if showEndTurn}
@@ -1938,6 +2060,35 @@
     pointer-events: none;
   }
 
+  .enemy-dialogue {
+    position: absolute;
+    top: calc(68px * var(--layout-scale, 1));
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: calc(280px * var(--layout-scale, 1));
+    padding: calc(6px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    background: rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    z-index: 15;
+    opacity: 0;
+    transition: opacity 300ms ease;
+    pointer-events: none;
+  }
+
+  .enemy-dialogue.dialogue-visible {
+    opacity: 1;
+  }
+
+  .dialogue-text {
+    font-size: calc(12px * var(--layout-scale, 1));
+    color: #C9D1D9;
+    font-style: italic;
+    line-height: 1.3;
+    text-align: center;
+    display: block;
+  }
+
   @keyframes intent-fade-in {
     from { opacity: 0; transform: translateX(-50%) translateY(-8px); }
     to { opacity: 1; transform: translateX(-50%) translateY(0); }
@@ -2280,12 +2431,12 @@
 
   .draw-pile-indicator {
     right: calc(12px * var(--layout-scale, 1));
-    bottom: calc(68px * var(--layout-scale, 1));
+    bottom: calc(calc(200px * var(--layout-scale, 1)) + 2vh);
   }
 
   .discard-pile-indicator {
     left: calc(12px * var(--layout-scale, 1));
-    bottom: calc(68px * var(--layout-scale, 1));
+    bottom: calc(calc(200px * var(--layout-scale, 1)) + 2vh);
   }
 
   .pile-icon {
@@ -2326,7 +2477,7 @@
 
   .reshuffle-fly-zone {
     position: absolute;
-    bottom: calc(68px * var(--layout-scale, 1));
+    bottom: calc(calc(200px * var(--layout-scale, 1)) + 2vh);
     left: 0;
     right: 0;
     height: calc(50px * var(--layout-scale, 1));
@@ -2458,6 +2609,11 @@
     text-align: center;
     bottom: auto;
     transform: none;
+  }
+
+  .layout-landscape .enemy-dialogue {
+    top: calc(48px * var(--layout-scale, 1));
+    max-width: calc(240px * var(--layout-scale, 1));
   }
 
   /* Intent bubble: top-left, below relics */
@@ -2797,6 +2953,39 @@
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     padding-top: 6px;
     margin-top: 2px;
+  }
+
+  /* AR-113: Mastery upgrade/downgrade popups */
+  .mastery-popup {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    font-family: 'Cinzel', 'Georgia', serif;
+    font-size: calc(22px * var(--layout-scale, 1));
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    pointer-events: none;
+    animation: masteryPopupAnim 1.2s ease-out forwards;
+  }
+
+  .mastery-popup-upgrade {
+    color: #4ade80;
+    text-shadow: 0 0 12px rgba(74, 222, 128, 0.8), 0 0 24px rgba(34, 197, 94, 0.4), 0 2px 4px rgba(0,0,0,0.8);
+  }
+
+  .mastery-popup-downgrade {
+    color: #f87171;
+    text-shadow: 0 0 12px rgba(248, 113, 113, 0.8), 0 0 24px rgba(239, 68, 68, 0.4), 0 2px 4px rgba(0,0,0,0.8);
+  }
+
+  @keyframes masteryPopupAnim {
+    0% { opacity: 0; transform: translateX(-50%) translateY(10px) scale(0.8); }
+    15% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1.15); }
+    30% { transform: translateX(-50%) translateY(0) scale(1); }
+    70% { opacity: 1; }
+    100% { opacity: 0; transform: translateX(-50%) translateY(-20px) scale(0.95); }
   }
 
 </style>

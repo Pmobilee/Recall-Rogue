@@ -524,6 +524,7 @@ export class RewardRoomScene extends Phaser.Scene {
           }
         }
 
+        container.setSize(targetW, targetH)
         return container as unknown as Phaser.GameObjects.Image
       }
 

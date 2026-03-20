@@ -585,6 +585,7 @@
     <button class="tab-btn active" onclick="switchTab('cardframes')">Card Frames</button>
     <button class="tab-btn" onclick="switchTab('enemies')">Enemies</button>
     <button class="tab-btn" onclick="switchTab('cardart')">Card Art</button>
+    <button class="tab-btn" onclick="switchTab('backgrounds')">Backgrounds</button>
   </div>
 </header>
 
@@ -592,9 +593,9 @@
   <input class="search-input" id="searchInput" type="text" placeholder="Search items..." oninput="renderItems()">
   <label style="font-size:0.82rem;color:#888">Variants per gen:</label>
   <select class="count-select" id="variantCount">
-    <option value="1">1</option>
+    <option value="1" selected>1</option>
     <option value="2">2</option>
-    <option value="3" selected>3</option>
+    <option value="3">3</option>
     <option value="4">4</option>
     <option value="5">5</option>
   </select>
@@ -608,6 +609,7 @@
   <div class="tab-panel active" id="panel-cardframes"></div>
   <div class="tab-panel" id="panel-enemies"></div>
   <div class="tab-panel" id="panel-cardart"></div>
+  <div class="tab-panel" id="panel-backgrounds"></div>
 </div>
 
 <!-- Lightbox -->
@@ -656,14 +658,14 @@
 
 <script>
   let currentTab = 'cardframes';
-  let allItems = { cardframes: [], enemies: [], cardart: [] };
+  let allItems = { cardframes: [], enemies: [], cardart: [], backgrounds: [] };
   let pollTimers = {};
 
   // ── Tab switching ──────────────────────────────────────────
   function switchTab(tab) {
     currentTab = tab;
     document.querySelectorAll('.tab-btn').forEach((b, i) => {
-      const tabs = ['cardframes', 'enemies', 'cardart'];
+      const tabs = ['cardframes', 'enemies', 'cardart', 'backgrounds'];
       b.classList.toggle('active', tabs[i] === tab);
     });
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
@@ -675,7 +677,7 @@
   async function loadItems() {
     document.getElementById('statusText').textContent = 'Loading...';
     try {
-      const results = await Promise.all(['cardframes', 'enemies', 'cardart'].map(async cat => {
+      const results = await Promise.all(['cardframes', 'enemies', 'cardart', 'backgrounds'].map(async cat => {
         const controller = new AbortController();
         const timeout = setTimeout(() => controller.abort(), 5000);
         try {
@@ -688,6 +690,7 @@
       allItems.cardframes = results[0];
       allItems.enemies = results[1];
       allItems.cardart = results[2];
+      allItems.backgrounds = results[3];
       renderItems();
       document.getElementById('statusText').textContent = `Loaded`;
     } catch (e) {

@@ -63,6 +63,26 @@ export function getUpgradeIconUrl(lowres = false): string {
 }
 
 /**
+ * CSS filter to colorize the upgrade icon for each mastery level.
+ * Base icon is green. Returns empty string for level 0 (no icon shown).
+ */
+export function getMasteryIconFilter(level: number): string {
+  switch (level) {
+    case 1: return '' // green (base color, no filter)
+    case 2: return 'hue-rotate(100deg) saturate(1.2)' // blue
+    case 3: return 'hue-rotate(200deg) saturate(1.3)' // purple
+    case 4: return 'hue-rotate(-40deg) saturate(1.5) brightness(1.1)' // orange
+    case 5: return 'hue-rotate(60deg) saturate(2) brightness(1.3)' // gold
+    default: return ''
+  }
+}
+
+/** Whether a mastery level should show the gold glow effect. */
+export function hasMasteryGlow(level: number): boolean {
+  return level >= 5
+}
+
+/**
  * Compute an `inline style` string that absolutely-positions a text overlay
  * using the guide coordinates from manifest.json as percentages of the canvas.
  *

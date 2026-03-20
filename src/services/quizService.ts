@@ -1,6 +1,7 @@
 import { BALANCE } from '../data/balance'
 import type { Fact, ReviewState } from '../data/types'
 import { getVocabDistractors } from './vocabDistractorService'
+import { isNumericalAnswer, getNumericalDistractors, displayAnswer } from './numericalDistractorService'
 
 /**
  * Selects the next quiz fact from review-due cards only.
@@ -164,8 +165,14 @@ export function getQuizChoices(fact: Fact): string[] {
     distractorSource = getVocabDistractors(fact)
   }
 
+  // Runtime numerical distractor generation for brace-marked answers
+  if (distractorSource.length === 0 && isNumericalAnswer(fact.correctAnswer)) {
+    distractorSource = getNumericalDistractors(fact)
+  }
+
   const distractors = shuffleArray([...distractorSource]).slice(0, BALANCE.QUIZ_DISTRACTORS_SHOWN)
-  const choices = [...distractors, fact.correctAnswer]
+  const correctDisplay = displayAnswer(fact.correctAnswer)
+  const choices = [...distractors, correctDisplay]
 
   return shuffleArray(choices)
 }
@@ -178,7 +185,7 @@ export function getQuizChoices(fact: Fact): string[] {
  * @returns True when the answer exactly matches the correct answer.
  */
 export function gradeAnswer(fact: Fact, answer: string): boolean {
-  return answer === fact.correctAnswer
+  return answer === displayAnswer(fact.correctAnswer)
 }
 
 /**

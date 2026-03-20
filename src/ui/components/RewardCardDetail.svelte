@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Card } from '../../data/card-types'
-  import { getBorderUrl, getBaseFrameUrl, getBannerUrl, getUpgradeIconUrl } from '../utils/cardFrameV2'
+  import { getBorderUrl, getBaseFrameUrl, getBannerUrl, getUpgradeIconUrl, getMasteryIconFilter, hasMasteryGlow, GUIDE_STYLES } from '../utils/cardFrameV2'
   import { getCardArtUrl } from '../utils/cardArtManifest'
   import { getCardDescriptionParts } from '../../services/cardDescriptionService'
 
@@ -13,17 +13,6 @@
   let { card, onaccept, onreject }: Props = $props()
 
   let apCost = $derived(card.apCost ?? 1)
-
-  const CARD_TYPE_COLORS: Record<string, string> = {
-    attack: '#ff6b6b',
-    shield: '#4dabf7',
-    buff: '#cc5de8',
-    debuff: '#ff8787',
-    utility: '#ffd43b',
-    wild: '#ff922b',
-  }
-
-  let typeColor = $derived(CARD_TYPE_COLORS[card.cardType] ?? '#aaaaaa')
 </script>
 
 <div class="reward-card-overlay" role="dialog" aria-modal="true">
@@ -34,7 +23,6 @@
     <div
       class="card-in-hand"
       class:card-upgraded={card.isUpgraded}
-      style="--type-color: {typeColor};"
     >
       <div class="card-inner">
         <div class="card-front">
@@ -49,29 +37,40 @@
             {/if}
             <img class="frame-layer" src={getBaseFrameUrl()} alt="" style="z-index:2;" />
             <img class="frame-layer" src={getBannerUrl(card.chainType ?? 0)} alt="" style="z-index:3;" />
-            {#if card.isUpgraded}
-              <img class="frame-layer upgrade-icon" src={getUpgradeIconUrl()} alt="" style="z-index:4;" />
+            {#if (card.masteryLevel ?? 0) > 0}
+              <img
+                class="frame-layer upgrade-icon mastery-bob"
+                class:mastery-glow={hasMasteryGlow(card.masteryLevel ?? 0)}
+                src={getUpgradeIconUrl()}
+                alt=""
+                style="z-index:4; filter: {getMasteryIconFilter(card.masteryLevel ?? 0)};"
+              />
             {/if}
+            <!-- AP cost overlay -->
+            <div class="frame-text v2-ap-cost" style={GUIDE_STYLES.apCost}>{apCost}</div>
+            <!-- Mechanic name overlay (on the banner) -->
+            <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName}>{card.mechanicName ?? ''}</div>
+            <!-- Card type label overlay -->
+            <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}>{card.cardType?.toUpperCase() ?? ''}</div>
+            <!-- Effect description text -->
+            <div class="frame-text v2-effect-text" style={GUIDE_STYLES.effectText}>
+              <span class="parchment-inner">
+                {#each getCardDescriptionParts(card) as part}
+                  {#if part.type === 'number'}
+                    <span class="desc-number">{part.value}</span>
+                  {:else if part.type === 'keyword'}
+                    <span class="desc-keyword">{part.value}</span>
+                  {:else if part.type === 'conditional-number'}
+                    <span class="desc-conditional" class:active={part.active}>{part.active ? part.value : '0'}</span>
+                  {:else if part.type === 'mastery-bonus'}
+                    <span class="desc-mastery-bonus">{part.value}</span>
+                  {:else}
+                    {part.value}
+                  {/if}
+                {/each}
+              </span>
+            </div>
           </div>
-          <div class="ap-gem">{apCost}</div>
-          <div class="card-parchment-text">
-            <span class="parchment-inner">
-              {#each getCardDescriptionParts(card) as part}
-                {#if part.type === 'number'}
-                  <span class="desc-number">{part.value}</span>
-                {:else if part.type === 'keyword'}
-                  <span class="desc-keyword">{part.value}</span>
-                {:else if part.type === 'conditional-number'}
-                  <span class="desc-conditional" class:active={part.active}>{part.active ? part.value : '0'}</span>
-                {:else}
-                  {part.value}
-                {/if}
-              {/each}
-            </span>
-          </div>
-          {#if card.isUpgraded}
-            <div class="card-tier-badge">+</div>
-          {/if}
         </div>
       </div>
     </div>
@@ -206,43 +205,85 @@
     50% { transform: translateY(-3px); }
   }
 
-  .ap-gem {
+  /* AR-113: Mastery float bob */
+  .mastery-bob {
+    animation: masteryBob 2.2s ease-in-out infinite !important;
+  }
+
+  @keyframes masteryBob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+
+  /* AR-113: Gold glow for fully mastered (level 5) cards */
+  .mastery-glow {
+    filter: hue-rotate(60deg) saturate(2) brightness(1.3) drop-shadow(0 0 6px rgba(234, 179, 8, 0.8)) drop-shadow(0 0 12px rgba(234, 179, 8, 0.4)) !important;
+  }
+
+  .frame-text {
     position: absolute;
-    top: 1%;
-    left: 1%;
-    width: calc(var(--card-w) * 0.18);
-    height: calc(var(--card-w) * 0.18);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Cinzel', 'Georgia', serif;
-    font-size: calc(var(--card-w) * 0.13);
-    font-weight: 900;
-    color: #fff;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.95), 0 0 8px rgba(0,0,0,0.6);
-    z-index: 2;
     pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
   }
 
-  .card-parchment-text {
-    position: absolute;
-    top: 66%;
-    bottom: 7%;
-    left: 8%;
-    right: 8%;
-    display: flex;
+  .v2-ap-cost {
+    font-family: 'Cinzel', 'Georgia', serif;
+    font-weight: 900;
+    font-size: calc(var(--card-w) * 0.22);
+    color: #fbbf24;
+    -webkit-text-stroke: 1.5px #000;
+    text-shadow:
+      1px 1px 0 #000, -1px -1px 0 #000,
+      1px -1px 0 #000, -1px 1px 0 #000,
+      2px 2px 0 #000, -2px -2px 0 #000,
+      0 2px 4px rgba(0,0,0,0.6);
+    line-height: 1;
+  }
+
+  .v2-mechanic-name {
+    font-family: 'Cinzel', 'Georgia', serif;
+    font-weight: 700;
+    font-size: calc(var(--card-w) * 0.1);
+    color: #ffffff;
+    text-transform: capitalize;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-family: 'Cinzel', 'Georgia', serif;
-    font-size: calc(var(--card-w) * 0.09);
+  }
+
+  .v2-card-type {
+    font-family: system-ui, -apple-system, sans-serif;
     font-weight: 700;
-    line-height: 1.35;
-    color: #2a1f14;
-    -webkit-text-stroke: 0.3px rgba(0,0,0,0.4);
-    text-shadow: 0 1px 1px rgba(0,0,0,0.15);
-    z-index: 2;
-    pointer-events: none;
+    font-size: calc(var(--card-w) * 0.032);
+    color: #e0e0e0;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .v2-effect-text {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: calc(var(--card-w) * 0.07);
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.3;
     overflow: hidden;
   }
 
@@ -251,12 +292,14 @@
   }
 
   .desc-number {
+    font-family: 'Cinzel', 'Georgia', serif;
     font-weight: 900;
-    color: #1a1208;
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   }
 
   .desc-keyword {
-    font-weight: 900;
+    font-weight: 700;
   }
 
   .desc-conditional {
@@ -269,15 +312,11 @@
     font-weight: 900;
   }
 
-  .card-tier-badge {
-    position: absolute;
-    top: 2%;
-    right: 4%;
-    font-size: calc(var(--card-w) * 0.16);
+  .desc-mastery-bonus {
+    font-family: 'Cinzel', 'Georgia', serif;
     font-weight: 900;
-    color: #fbbf24;
-    text-shadow: 0 0 8px rgba(251, 191, 36, 0.6), 0 2px 4px rgba(0,0,0,0.8);
-    z-index: 3;
+    color: #4ade80;
+    text-shadow: 0 0 4px rgba(74, 222, 128, 0.4), 0 1px 2px rgba(0,0,0,0.6);
   }
 
   /* ─── Buttons ─── */

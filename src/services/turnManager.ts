@@ -4,6 +4,7 @@
 import { get } from 'svelte/store';
 import type { Card, CardRunState, CardType, PassiveEffect } from '../data/card-types';
 import { isFirstChargeFree, markFirstChargeUsed, getFirstChargeWrongMultiplier } from './discoverySystem';
+import { canMasteryUpgrade, canMasteryDowngrade, masteryUpgrade, masteryDowngrade, resetEncounterMasteryFlags } from './cardUpgradeService';
 import { getSurgeChargeSurcharge, isSurgeTurn } from './surgeSystem';
 import { resetChain, extendOrResetChain, getChainState } from './chainSystem';
 import { FIRST_CHARGE_FREE_AP_SURCHARGE } from '../data/balance';
@@ -173,6 +174,10 @@ export interface PlayCardResult {
   turnState: TurnState;
   /** Whether the free first Charge was used on this play. */
   usedFreeCharge: boolean;
+  /** Whether this card play triggered a mastery level change. */
+  masteryChange: 'upgrade' | 'downgrade' | null;
+  /** The card ID that was mastery-changed (for animation targeting). */
+  masteryChangedCardId: string | null;
 }
 
 export interface EnemyTurnResult {
@@ -321,6 +326,10 @@ export function startEncounter(
   // Reset chain at encounter start (clean slate)
   resetChain();
 
+  // Reset mastery encounter flags for all cards in all piles
+  const allCards = [...deck.drawPile, ...deck.discardPile, ...deck.hand, ...deck.exhaustPile];
+  resetEncounterMasteryFlags(allCards);
+
   const isFirstEncounter = deck.currentFloor === 1 && deck.currentEncounter <= 1;
   drawHand(deck, initialState.baseDrawCount, { firstDrawBias: isFirstEncounter });
   return initialState;
@@ -358,6 +367,8 @@ export function playCardAction(
       isPerfectTurn: turnState.isPerfectTurn,
       turnState,
       usedFreeCharge: false,
+      masteryChange: null,
+      masteryChangedCardId: null,
     };
   }
 
@@ -408,6 +419,8 @@ export function playCardAction(
       isPerfectTurn: turnState.isPerfectTurn,
       turnState,
       usedFreeCharge: false,
+      masteryChange: null,
+      masteryChangedCardId: null,
     };
   }
 
@@ -438,6 +451,8 @@ export function playCardAction(
       isPerfectTurn: false,
       turnState,
       usedFreeCharge: false,
+      masteryChange: null,
+      masteryChangedCardId: null,
     };
   }
 
@@ -468,6 +483,18 @@ export function playCardAction(
       turnState.consecutiveCorrectThisEncounter = 0;
       turnState.cardsPlayedThisTurn += 1;
       turnState.isPerfectTurn = false;
+
+      // Mastery downgrade: wrong charge answer downgrades the played card
+      let masteryChangeRelaxed: 'upgrade' | 'downgrade' | null = null;
+      let masteryChangedCardIdRelaxed: string | null = null;
+      if (playMode !== 'quick') {
+        const discardedCard = turnState.deck.discardPile.find(c => c.id === cardId);
+        if (discardedCard && canMasteryDowngrade(discardedCard)) {
+          masteryDowngrade(discardedCard);
+          masteryChangeRelaxed = 'downgrade';
+          masteryChangedCardIdRelaxed = cardId;
+        }
+      }
 
       // Step 5a (AR-59.13): onPlayerChargeWrong callback — relaxed mode, Charge plays only
       if (playMode === 'charge' && enemy.template.onPlayerChargeWrong) {
@@ -508,6 +535,8 @@ export function playCardAction(
         isPerfectTurn: false,
         turnState,
         usedFreeCharge,
+        masteryChange: masteryChangeRelaxed,
+        masteryChangedCardId: masteryChangedCardIdRelaxed,
       };
     }
 
@@ -516,6 +545,18 @@ export function playCardAction(
     turnState.consecutiveCorrectThisEncounter = 0;
     turnState.cardsPlayedThisTurn += 1;
     turnState.isPerfectTurn = false;
+
+    // Mastery downgrade: wrong charge answer downgrades the played card
+    let masteryChangeWrong: 'upgrade' | 'downgrade' | null = null;
+    let masteryChangedCardIdWrong: string | null = null;
+    if (playMode !== 'quick') {
+      const discardedCard = turnState.deck.discardPile.find(c => c.id === cardId);
+      if (discardedCard && canMasteryDowngrade(discardedCard)) {
+        masteryDowngrade(discardedCard);
+        masteryChangeWrong = 'downgrade';
+        masteryChangedCardIdWrong = cardId;
+      }
+    }
 
     // Partial fizzle: wrong answers still apply a fraction of the base effect.
     // Exception: Free First Charge on wrong answer uses 1.0× (FIRST_CHARGE_FREE_WRONG_MULTIPLIER),
@@ -585,6 +626,8 @@ export function playCardAction(
       isPerfectTurn: false,
       turnState,
       usedFreeCharge,
+      masteryChange: masteryChangeWrong,
+      masteryChangedCardId: masteryChangedCardIdWrong,
     };
   }
 
@@ -842,13 +885,28 @@ export function playCardAction(
   }
 
   turnState.cardsPlayedThisTurn += 1;
-  turnState.cardsCorrectThisTurn += 1;
-  turnState.consecutiveCorrectThisEncounter += 1;
+  if (playMode !== 'quick') {
+    turnState.cardsCorrectThisTurn += 1;
+    turnState.consecutiveCorrectThisEncounter += 1;
+  }
   turnState.isPerfectTurn = (
-    turnState.cardsPlayedThisTurn > 0 &&
+    turnState.cardsCorrectThisTurn > 0 &&
     turnState.cardsCorrectThisTurn === turnState.cardsPlayedThisTurn
   );
   turnState.lastCardType = effect.effectType;
+
+  // Mastery upgrade: correct charge answer upgrades the played card
+  let masteryChange: 'upgrade' | 'downgrade' | null = null;
+  let masteryChangedCardId: string | null = null;
+  if (playMode !== 'quick') {
+    // Find the card in the discard pile (it was moved there by deckPlayCard)
+    const discardedCard = turnState.deck.discardPile.find(c => c.id === cardId);
+    if (discardedCard && canMasteryUpgrade(discardedCard)) {
+      masteryUpgrade(discardedCard);
+      masteryChange = 'upgrade';
+      masteryChangedCardId = cardId;
+    }
+  }
 
   if (effect.enemyDefeated) {
     turnState.result = 'victory';
@@ -882,6 +940,8 @@ export function playCardAction(
     isPerfectTurn: turnState.isPerfectTurn,
     turnState,
     usedFreeCharge,
+    masteryChange,
+    masteryChangedCardId,
   };
 }
 

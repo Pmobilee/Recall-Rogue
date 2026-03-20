@@ -5,6 +5,7 @@
 
 import type { Card, CardType } from '../data/card-types';
 import { getMechanicDefinition } from '../data/mechanics';
+import { getMasteryBaseBonus, getMasterySecondaryBonus } from './cardUpgradeService';
 
 const GENERIC_TYPE_DESCRIPTIONS: Record<CardType, string> = {
   attack: 'Deal direct damage to enemies.',
@@ -208,7 +209,8 @@ export type CardDescPart =
   | { type: 'text'; value: string }
   | { type: 'number'; value: string }
   | { type: 'keyword'; value: string; keywordId: string }
-  | { type: 'conditional-number'; value: string; active: boolean };
+  | { type: 'conditional-number'; value: string; active: boolean }
+  | { type: 'mastery-bonus'; value: string };
 
 interface CardGameState {
   playerHpPercent?: number;
@@ -217,6 +219,21 @@ interface CardGameState {
 
 function num(v: number | string): CardDescPart {
   return { type: 'number', value: String(v) };
+}
+function masteryNum(v: number | string): CardDescPart {
+  return { type: 'mastery-bonus', value: String(v) };
+}
+/** Returns [num(base)] or [num(base), masteryNum('+bonus')] depending on mastery level. */
+function numWithMastery(base: number, mechanicId: string, masteryLevel: number): CardDescPart[] {
+  const bonus = getMasteryBaseBonus(mechanicId, masteryLevel);
+  if (bonus <= 0 || masteryLevel <= 0) return [num(base)];
+  return [num(base), masteryNum('+' + Math.round(bonus))];
+}
+/** Returns [num(base)] or [num(base), masteryNum('+bonus')] using secondary mastery bonus. */
+function numWithSecondaryMastery(base: number, mechanicId: string, masteryLevel: number): CardDescPart[] {
+  const bonus = getMasterySecondaryBonus(mechanicId, masteryLevel);
+  if (bonus <= 0 || masteryLevel <= 0) return [num(base)];
+  return [num(base), masteryNum('+' + Math.round(bonus))];
 }
 function txt(v: string): CardDescPart {
   return { type: 'text', value: v };
@@ -236,11 +253,12 @@ function cond(v: number, active: boolean): CardDescPart {
 export function getCardDescriptionParts(card: Card, gameState?: CardGameState, powerOverride?: number): CardDescPart[] {
   const power = powerOverride ?? Math.round(card.baseEffectValue * card.effectMultiplier);
   const mechanic = getMechanicDefinition(card.mechanicId);
+  const masteryLevel = card.masteryLevel ?? 0;
 
   if (!mechanic) {
     switch (card.cardType) {
-      case 'attack': return [txt('Deal '), num(power), txt(' damage')];
-      case 'shield': return [txt('Gain '), num(power), txt(' '), kw('Block', 'block')];
+      case 'attack': return [txt('Deal '), ...numWithMastery(power, card.mechanicId ?? '', masteryLevel), txt(' damage')];
+      case 'shield': return [txt('Gain '), ...numWithMastery(power, card.mechanicId ?? '', masteryLevel), txt(' '), kw('Block', 'block')];
       case 'buff': return [txt('Buff +'), num(power), txt('%')];
       case 'debuff': return [txt('Debuff '), num(power), txt(' turns')];
       case 'utility': return [txt('Draw '), num(power)];
@@ -256,50 +274,54 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
   switch (mechanic.id) {
     // Attacks
     case 'strike':
-      return [txt('Deal '), num(power), txt(' damage')];
+      return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage')];
     case 'multi_hit': {
       const hits = secondary ?? 3;
-      return [txt('Hit '), num(hits), txt(' times for '), num(power), txt(' each')];
+      return [txt('Hit '), num(hits), txt(' times for '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' each')];
     }
     case 'heavy_strike':
-      return [txt('Deal '), num(power), txt(' damage')];
+      return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage')];
     case 'piercing':
-      return [txt('Deal '), num(power), txt(' damage. Ignores '), kw('Block', 'block')];
+      return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage. Ignores '), kw('Block', 'block')];
     case 'reckless':
-      return [txt('Deal '), num(power), txt(' damage. Take '), num(secondary ?? 3), txt(' self-damage')];
+      return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage. Take '), num(secondary ?? 3), txt(' self-damage')];
     case 'execute': {
       const bonus = secondary ?? 8;
       const active = eHp < 0.3;
-      return [txt('Deal '), num(power), txt(' damage. +'), cond(active ? bonus : 0, active), txt(' below 30%')];
+      const secMasteryBonus = getMasterySecondaryBonus(mechanic.id, masteryLevel);
+      const bonusParts: CardDescPart[] = secMasteryBonus > 0 && masteryLevel > 0
+        ? [cond(active ? bonus : 0, active), masteryNum('+' + Math.round(secMasteryBonus))]
+        : [cond(active ? bonus : 0, active)];
+      return [txt('Deal '), num(power), txt(' damage. +'), ...bonusParts, txt(' below 30%')];
     }
     case 'lifetap':
-      return [txt('Deal '), num(power), txt(' damage. Heal 20% dealt')];
+      return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage. Heal 20% dealt')];
 
     // Shields
     case 'block':
-      return [txt('Gain '), num(power), txt(' '), kw('Block', 'block')];
+      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block')];
     case 'thorns':
-      return [txt('Gain '), num(power), txt(' '), kw('Block', 'block'), txt('. Reflect '), num(secondary ?? 3), txt(' damage')];
+      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('. Reflect '), ...numWithSecondaryMastery(secondary ?? 3, mechanic.id, masteryLevel), txt(' damage')];
     case 'fortify':
-      return [txt('Gain '), num(power), txt(' '), kw('Block', 'block'), txt('. Persists next turn')];
+      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('. Persists next turn')];
     case 'parry':
-      return [txt('Gain '), num(power), txt(' '), kw('Block', 'block'), txt('. Draw 1 if attacked')];
+      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('. Draw 1 if attacked')];
     case 'brace':
       return [txt('Gain '), kw('Block', 'block'), txt(' equal to enemy attack')];
     case 'overheal': {
       const bonus = Math.round(power * 1.0); // doubled power when below 50%
       const active = pHp < 0.5;
-      return [txt('Gain '), num(power), txt(' '), kw('Block', 'block'), txt('. ×2 ('), cond(active ? bonus * 2 : power, active), txt(') below 50% HP')];
+      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('. ×2 ('), cond(active ? bonus * 2 : power, active), txt(') below 50% HP')];
     }
     case 'emergency': {
       const active = pHp < 0.3;
       const val = active ? power * 2 : power;
-      return [txt('Gain '), num(val), txt(' '), kw('Block', 'block'), txt('. ×2 below 30% HP')];
+      return [txt('Gain '), ...numWithMastery(val, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('. ×2 below 30% HP')];
     }
 
     // Buffs
     case 'empower':
-      return [txt('Next card +'), num(power), txt('% damage')];
+      return [txt('Next card +'), ...numWithMastery(power, mechanic.id, masteryLevel), txt('% damage')];
     case 'quicken':
       return [txt('Gain +'), num(1), txt(' AP this turn')];
     case 'focus':
@@ -316,7 +338,7 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
       return [txt("Skip enemy's next action")];
     case 'hex': {
       const turns = secondary ?? 3;
-      return [txt('Apply '), num(power), txt(' '), kw('Poison', 'poison'), txt(' for '), num(turns), txt(' turns')];
+      return [txt('Apply '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Poison', 'poison'), txt(' for '), num(turns), txt(' turns')];
     }
 
     // Utility

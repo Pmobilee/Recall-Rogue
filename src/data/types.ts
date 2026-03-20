@@ -860,6 +860,14 @@ export interface PlayerSave {
   lastRunDeckMode?: DeckMode
   /** Per-domain category filters for the deck builder. */
   categoryFilters?: Record<string, string[]>
+
+  // Character progression (XP / levelling)
+  /** Cumulative XP earned across all runs. */
+  totalXP: number
+  /** Current character level derived from totalXP. */
+  characterLevel: number
+  /** ISO date string (YYYY-MM-DD) of the last run that claimed the daily-first bonus, or null. */
+  lastDailyBonusDate: string | null
 }
 
 /** Player statistics */

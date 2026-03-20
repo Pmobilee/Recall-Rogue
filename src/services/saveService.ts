@@ -485,6 +485,16 @@ export function load(): PlayerSave | null {
     if (!parsedAny['categoryFilters'] || typeof parsedAny['categoryFilters'] !== 'object') {
       parsedAny['categoryFilters'] = parsedAny['subscriberCategoryFilters'] ?? {}
     }
+    // Character progression migration
+    if (typeof parsedAny['totalXP'] !== 'number') {
+      parsedAny['totalXP'] = 0
+    }
+    if (typeof parsedAny['characterLevel'] !== 'number') {
+      parsedAny['characterLevel'] = 0
+    }
+    if (!('lastDailyBonusDate' in parsedAny) || (parsedAny['lastDailyBonusDate'] !== null && typeof parsedAny['lastDailyBonusDate'] !== 'string')) {
+      parsedAny['lastDailyBonusDate'] = null
+    }
     return parsed as PlayerSave
   } catch {
     return null
@@ -587,6 +597,10 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
     masteryCoinsAvailable: 0,
     unlockedRelicIds: [],
     excludedRelicIds: [],
+    // Character progression
+    totalXP: 0,
+    characterLevel: 0,
+    lastDailyBonusDate: null,
   }
 }
 

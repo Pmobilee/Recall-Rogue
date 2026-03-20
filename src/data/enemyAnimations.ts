@@ -2,6 +2,8 @@
 // Defines per-archetype animation configs for idle, attack, and hit tweens.
 // NO Phaser, Svelte, or DOM imports — pure data.
 
+import { ENEMY_ANIM_OVERRIDES } from './enemyAnimationOverrides'
+
 /** Available animation archetype identifiers. */
 export type AnimArchetype =
   | 'swooper'
@@ -70,7 +72,7 @@ export interface HitAnimConfig {
 /** A single step in a custom idle movement pattern. */
 export interface IdlePatternStep {
   /** Type of movement for this step. */
-  type: 'move' | 'pause' | 'flip' | 'squash' | 'pulse' | 'jitter' | 'drift'
+  type: 'move' | 'pause' | 'flip' | 'squash' | 'pulse' | 'jitter' | 'drift' | 'rotate' | 'fade'
   /** Duration of this step in ms. */
   duration: number
   /** Target X offset from base position (for move/drift). */
@@ -91,6 +93,10 @@ export interface IdlePatternStep {
   interval?: number
   /** Target scaleX direction for flip (-1 = mirror horizontally). */
   flipX?: number
+  /** Target angle for 'rotate' step type. */
+  angle?: number
+  /** Target alpha for 'fade' step type. */
+  alpha?: number
 }
 
 /** Full idle behavior: base layer + optional custom pattern. */
@@ -468,7 +474,10 @@ const ARCHETYPE_CONFIGS: Record<AnimArchetype, AnimConfig> = {
  * @param archetype - Optional animation archetype identifier.
  * @returns The resolved AnimConfig.
  */
-export function getAnimConfig(archetype?: AnimArchetype): AnimConfig {
+export function getAnimConfig(archetype?: AnimArchetype, enemyId?: string): AnimConfig {
+  if (enemyId && ENEMY_ANIM_OVERRIDES[enemyId]) {
+    return ENEMY_ANIM_OVERRIDES[enemyId]
+  }
   if (!archetype) return DEFAULT_ANIM_CONFIG;
   return ARCHETYPE_CONFIGS[archetype] ?? DEFAULT_ANIM_CONFIG;
 }

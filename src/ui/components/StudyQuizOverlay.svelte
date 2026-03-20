@@ -4,13 +4,13 @@
 
   interface Props {
     questions: QuizQuestion[]
-    oncomplete: (correctCount: number) => void
+    oncomplete: (correctFactIds: string[]) => void
   }
 
   let { questions, oncomplete }: Props = $props()
 
   let currentIndex = $state(0)
-  let correctCount = $state(0)
+  let correctFactIds = $state<string[]>([])
   let selectedAnswer = $state<string | null>(null)
   let showFeedback = $state(false)
   let done = $state(false)
@@ -22,8 +22,8 @@
     selectedAnswer = answer
     showFeedback = true
 
-    if (answer === currentQuestion?.correctAnswer) {
-      correctCount++
+    if (answer === currentQuestion?.correctAnswer && currentQuestion?.factId) {
+      correctFactIds = [...correctFactIds, currentQuestion.factId]
     }
 
     setTimeout(() => {
@@ -38,7 +38,7 @@
   }
 
   function handleContinue(): void {
-    oncomplete(correctCount)
+    oncomplete(correctFactIds)
   }
 
   function getAnswerClass(answer: string): string {
@@ -84,17 +84,17 @@
       {/if}
     {:else}
       <div class="summary">
-        <span class="summary-icon">{correctCount === questions.length ? '🎓' : correctCount > 0 ? '📖' : '😔'}</span>
+        <span class="summary-icon">{correctFactIds.length === questions.length ? '🎓' : correctFactIds.length > 0 ? '📖' : '😔'}</span>
         <h2 class="summary-title">Study Complete!</h2>
         <p class="summary-result">
-          Upgraded <span class="highlight">{correctCount}</span> / {questions.length} cards
+          Upgraded <span class="highlight">{correctFactIds.length}</span> / {questions.length} cards
         </p>
-        {#if correctCount === 0}
+        {#if correctFactIds.length === 0}
           <p class="summary-tip">Review these cards and try again next rest!</p>
-        {:else if correctCount === questions.length}
+        {:else if correctFactIds.length === questions.length}
           <p class="summary-tip">Perfect score — all cards upgraded!</p>
         {:else}
-          <p class="summary-tip">{correctCount} card{correctCount !== 1 ? 's' : ''} upgraded.</p>
+          <p class="summary-tip">{correctFactIds.length} card{correctFactIds.length !== 1 ? 's' : ''} upgraded.</p>
         {/if}
         <button class="continue-btn" onclick={handleContinue}>Continue</button>
       </div>

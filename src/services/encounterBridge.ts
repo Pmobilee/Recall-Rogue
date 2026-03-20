@@ -233,7 +233,8 @@ function syncCombatScene(turnState: TurnState): void {
     );
     scene.setBackground(
       turnState.deck.currentFloor,
-      isBossFloor(turnState.deck.currentFloor)
+      isBossFloor(turnState.deck.currentFloor),
+      turnState.enemy.template.id,
     ).then(() => {
       releaseScreenTransition();
     });
@@ -657,7 +658,7 @@ export function handlePlayCard(
     if (correct) {
       if (playedCard?.cardType === 'attack') scene.playPlayerAttackAnimation();
       else if (playedCard?.cardType === 'shield') scene.playPlayerBlockAnimation();
-      else scene.playPlayerCastAnimation();
+      else scene.playPlayerCastAnimation(playedCard?.cardType);
     }
 
     scene.updateEnemyHP(result.turnState.enemy.currentHP, true);

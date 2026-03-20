@@ -220,8 +220,8 @@ export class EnemySpriteSystem {
    * Call this after setSprite/setPlaceholder and before startIdle.
    * @param archetype Optional animation archetype identifier
    */
-  public setAnimConfig(archetype?: AnimArchetype): void {
-    this.animConfig = getAnimConfig(archetype)
+  public setAnimConfig(archetype?: AnimArchetype, enemyId?: string): void {
+    this.animConfig = getAnimConfig(archetype, enemyId)
   }
 
   /**
@@ -406,6 +406,32 @@ export class EnemySpriteSystem {
           x: this.baseX + (step.dx ?? 0),
           duration: step.duration,
           ease: step.ease ?? 'Sine.easeInOut',
+          onComplete: () => this.runPatternStep(pattern, nextIndex),
+        })
+        this.customIdleTweens.push(tween)
+        break
+      }
+
+      case 'rotate': {
+        const tween = this.scene.tweens.add({
+          targets: this.container,
+          angle: step.angle ?? 0,
+          duration: step.duration,
+          ease: step.ease ?? 'Sine.easeInOut',
+          yoyo: step.yoyo ?? false,
+          onComplete: () => this.runPatternStep(pattern, nextIndex),
+        })
+        this.customIdleTweens.push(tween)
+        break
+      }
+
+      case 'fade': {
+        const tween = this.scene.tweens.add({
+          targets: this.container,
+          alpha: step.alpha ?? 1,
+          duration: step.duration,
+          ease: step.ease ?? 'Sine.easeInOut',
+          yoyo: step.yoyo ?? false,
           onComplete: () => this.runPatternStep(pattern, nextIndex),
         })
         this.customIdleTweens.push(tween)

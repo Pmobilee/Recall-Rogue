@@ -70,42 +70,149 @@ Every knowledge fact entering the database MUST be processed by a **Sonnet** age
 
 ---
 
-## Knowledge Fact Generation Workflow
+## Knowledge Fact Generation Workflow (Grounded Pipeline — AR-108)
 
-### Pipeline
+### Quick Start (for "ingest N entities per domain")
+
+1. **Enrich entities** (fetches Wikipedia + Wikidata data):
+   ```bash
+   node scripts/content-pipeline/ingest-batch.mjs --limit 10
+   ```
+   Wait for completion. If Wikidata is throttled, the script retries automatically.
+
+2. **Generate facts** — For each domain that has newly enriched entities, spawn a Sonnet worker:
+   - Read the master prompt VERBATIM from `docs/RESEARCH/SOURCES/master-worker-prompt.md`
+   - Read entity data from `data/curated/{domain}/entities-enriched.json`
+   - Filter to entities that don't already have facts in `src/data/seed/knowledge-{domain}.json`
+   - Spawn worker with: full master prompt + entity data
+   - Worker writes output to `/tmp/generated-{domain}.json`
+   - **Max 5 workers at a time** — do NOT launch more
+
+3. **Validate** each generated file:
+   ```bash
+   node -e "
+   const facts = JSON.parse(require('fs').readFileSync('/tmp/generated-{DOMAIN}.json'));
+   const required = ['id','type','domain','subdomain','categoryL1','categoryL2','categoryL3','statement','quizQuestion','correctAnswer','distractors','acceptableAnswers','explanation','wowFactor','variants','difficulty','funScore','noveltyScore','ageRating','rarity','sourceName','sourceUrl','sourceVerified','contentVolatility','sensitivityLevel','sensitivityNote','visualDescription','tags','_haikuProcessed','_haikuProcessedAt'];
+   let issues = 0;
+   facts.forEach(f => {
+     const missing = required.filter(k => !(k in f));
+     const hasBraces = f.correctAnswer.includes('{');
+     const dLen = f.distractors.length;
+     if (missing.length || (hasBraces && dLen > 0) || (!hasBraces && dLen !== 8)) issues++;
+     if (missing.length) console.log(f.id + ': MISSING ' + missing.join(','));
+   });
+   console.log(facts.length + ' facts, ' + issues + ' issues');
+   "
+   ```
+
+4. **Merge into seed files**:
+   ```javascript
+   // For each domain with a generated file:
+   const existing = JSON.parse(fs.readFileSync(`src/data/seed/knowledge-${domain}.json`));
+   const generated = JSON.parse(fs.readFileSync(`/tmp/generated-${domain}.json`));
+   const merged = [...existing, ...generated];
+   fs.writeFileSync(`src/data/seed/knowledge-${domain}.json`, JSON.stringify(merged, null, 2));
+   ```
+
+5. **Mark entities processed** in `data/curated/{domain}/entities.json`
+
+6. **Rebuild DB**: `node scripts/build-facts-db.mjs`
+
+7. **Update progress**: `docs/RESEARCH/SOURCES/content-pipeline-progress.md`
+
+### Architecture
+```
+Wikipedia extract (human-curated interesting content)
++ Wikidata structured claims (machine-verified numbers)
+→ Sonnet transforms real data into quiz questions (INVENTS NOTHING)
+→ Every number/date/claim traceable to source
+```
+
+### Master Worker Prompt
+The single source of truth for all Sonnet workers: `docs/RESEARCH/SOURCES/master-worker-prompt.md`
+**NEVER summarize or paraphrase this prompt.** Always pass it verbatim to workers.
+
+### Pipeline Steps
 
 ```
-1. Read curated entity list from data/curated/{domain}/entities.json
-   (Check progress doc — skip entities marked processed: true)
-2. Chunk unprocessed entities into sub-batches of 20-30 per Sonnet agent
-3. Write input chunks to /tmp/<session>/<domain>-input-bNN.json
-4. Spawn parallel Sonnet agents (5-7 at a time) via Claude Code Agent tool (model: "sonnet")
-   Each agent receives: system prompt (quality rules) + entity batch + target subcategory + full output schema
-5. Parse returned JSON, run 11 validation gates (see Validation Gates section)
-6. On malformed output: retry once with simplified prompt, then flag for review
-7. Collect validated output, run universal normalizer to handle schema variants
-8. Write normalized facts to data/generated/{domain}/batch-NN.json
-9. **PRE-INGESTION QUALITY GATE (AR-51)** — Before QA spot-check, run automated validation:
-   - Schema completeness: all 28 fields present and non-null where required
-   - Answer length: ≤30 chars (Gate 1)
-   - Source attribution: `sourceName` not null (Gate 3)
-   - Variant count: ≥4 variants (Gate 4)
-   - Answer-in-question: no 5+ char overlap (Gate 5)
-   - Distractor quality: no placeholders, no answer duplicates, same type (Gate 9)
-   - Fun score: not all clustered at 5-6 (Gate 10)
-   - Domain canonicalization: `categoryL1` matches canonical IDs
-   Facts failing any hard-reject gate are excluded from the batch. Soft flags are logged for QA review.
-10. **MANDATORY QA SPOT-CHECK** — Before merging, orchestrator reads 2-3 random facts per domain and verifies:
-   - Schema completeness (all 28 fields present)
-   - Question/answer quality (no answer-in-question, no circular explanations)
-   - Distractor quality (same type as answer, plausible, not garbage/generic)
-   - Correct subcategory assignment
-   - Fun score calibration (not all clustered at 5-6)
-   Only proceed to step 11 if quality passes. Flag and fix bad domains before merge.
-11. Mark processed entities in data/curated/{domain}/entities.json (processed: true)
-12. Update progress document (generated count, lastEntityIndex)
-13. Promote to src/data/seed/knowledge-{domain}.json
-14. Rebuild DB: node scripts/build-facts-db.mjs
+1. ENRICH ENTITIES
+   node scripts/content-pipeline/enrich-entities.mjs --domain {domain}
+   - Fetches Wikipedia extract + Wikidata claims for each entity
+   - Saves to data/curated/{domain}/entities-enriched.json
+   - Skips already-enriched entities on re-run
+   - For testing individual entities: --qids Q726,Q339
+
+2. GENERATE FACTS (Sonnet workers, 5-8 at a time)
+   For each batch of 5-10 enriched entities:
+   a. Read the master prompt from docs/RESEARCH/SOURCES/master-worker-prompt.md
+   b. Prepare entity data: Wikipedia extract + filtered Wikidata claims
+   c. Spawn Sonnet worker (model: "sonnet") with:
+      - The FULL master prompt (verbatim, never summarized)
+      - Entity data (extract + claims)
+      - Instruction to write output to /tmp/{domain}-batch-{N}.json
+   d. Worker returns JSON array of facts
+
+   CRITICAL RULES:
+   - Numerical answers use brace markers: "{107} days", "At least {93}%"
+   - Numerical answers have distractors: [] (runtime generation)
+   - Non-numerical answers have 8 pre-generated distractors
+   - Variant type for true/false is "true_false" (WITH underscore)
+   - Variant answer field is "correctAnswer" (NOT "answer")
+   - categoryL2 must be a valid ID from the taxonomy in the master prompt
+   - 4+ variants per fact, each with tailored distractors
+
+3. VALIDATE OUTPUT
+   Run automated validation on each batch:
+   - All required fields present (30 fields)
+   - Numerical answers (has braces) → distractors must be empty []
+   - Non-numerical answers → exactly 8 distractors
+   - 4+ variants per fact
+   - Variant types are valid: forward, reverse, negative, true_false, context, fill_blank
+   - Variant answer field is "correctAnswer" not "answer"
+   - categoryL2 is a valid subcategory ID
+   - No answer-in-question (5+ char overlap)
+   - correctAnswer is not the longest option (for non-numerical)
+
+4. MERGE INTO SEED FILES
+   Append validated facts to src/data/seed/knowledge-{domain}.json
+
+5. MARK ENTITIES PROCESSED
+   Update data/curated/{domain}/entities.json: set processed: true on completed entities
+   Update docs/RESEARCH/SOURCES/content-pipeline-progress.md with new counts
+
+6. REBUILD DB
+   node scripts/build-facts-db.mjs
+   node scripts/content-pipeline/count-invalid-l2.mjs  (must return 0)
+```
+
+### Critical Rules (discovered during pilot — DO NOT SKIP)
+
+- **Variant type for true/false is `"true_false"` (WITH underscore)** — NOT `"truefalse"`. The game code will break with the wrong format.
+- **Variant answer field is `"correctAnswer"`** — NOT `"answer"`. The game code reads `variant?.correctAnswer`.
+- **categoryL2 must be a valid ID** from the subcategory taxonomy listed in the master prompt. Invalid IDs like "invertebrates" will fail the L2 validation gate.
+- **Numerical answers use brace markers**: `"{107} days"`, `"At least {93}%"`. These get `distractors: []`. The game generates distractors at runtime.
+- **Non-numerical answers get 8 pre-generated distractors**. No braces.
+- **Never summarize or paraphrase the master prompt** — pass it VERBATIM to workers.
+- **food_cuisine and mythology_folklore have known Q-ID issues** — run `node scripts/content-pipeline/fix-entity-qids.mjs --domain {domain}` before enriching these domains.
+
+### Entity Tracking
+
+Entities are tracked in two places:
+- `data/curated/{domain}/entities.json` — `processed: true/false` per entity
+- `docs/RESEARCH/SOURCES/content-pipeline-progress.md` — per-domain counts
+
+To find unprocessed entities for a domain:
+```javascript
+const entities = JSON.parse(fs.readFileSync(`data/curated/${domain}/entities.json`))
+const unprocessed = entities.filter(e => !e.processed)
+```
+
+### Batch Size Guidelines (from AR-108 research)
+
+- **5-10 entities per Sonnet worker** (smaller = higher quality, per LLM research)
+- **5-8 workers at a time** (not 38 — learned the hard way)
+- **3-5 facts per entity** (quality degrades beyond 5)
+- Save results to /tmp/ files so nothing is lost if conversation runs out of tokens
 ```
 
 ### Incremental Generation Support

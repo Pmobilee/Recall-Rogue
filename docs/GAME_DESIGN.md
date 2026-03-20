@@ -1079,8 +1079,51 @@ Research: Karpicke & Roediger (2008) — immediate re-testing after failure is o
 | Lore Discovery | At 10/25/50/100 mastered facts: narrative connecting learned facts |
 | Bounty Quests | 1–2 bonus objectives per run |
 | Ascension | 10 levels of permanent modifiers unlocked after first successful run |
+| Character Level | XP-based account level (1–25) with relic unlocks, dust bonuses, titles, and cosmetics per level |
 
 No overworld, no farming/crafting, no prestige, no stamina.
+
+### 13c. Character Leveling System
+
+**Service:** `src/services/characterLevel.ts` (pure logic, no framework imports)
+
+Players accumulate XP across all runs. XP feeds a permanent account level (0–25) that unlocks relics, dust, titles, and cosmetics.
+
+**XP Curve:** `XP_BASE=80`, `XP_MULTIPLIER=1.14` — level 1 costs 80 XP; each subsequent level costs ~14% more.
+
+**XP Sources per run:**
+
+| Source | XP |
+|--------|----|
+| Correct answer | +3 each |
+| Speed bonus (top 25% of timer) | +1 each |
+| Streak bonus (beyond 2nd consecutive correct) | +2 per answer |
+| Floor cleared | +8 each |
+| Combat won | +5 each |
+| Elite defeated | +15 each |
+| Mini-boss defeated | +10 each |
+| Boss defeated | +15 each |
+| New fact encountered | +2 each |
+| Retreat bonus | +10 flat |
+| Full run completion | +25 flat |
+| Ascension multiplier | ×(1 + ascension×0.1) |
+| Daily first-run bonus | +30% of post-ascension total |
+
+**Level Rewards (selected highlights):**
+
+| Level | Reward |
+|-------|--------|
+| 1 | Relic: chain_reactor |
+| 2 | 200 dust |
+| 5 | Relic: quicksilver_quill, Title: Novice |
+| 10 | Relic: thorn_crown, Cosmetic: cardback-bronze |
+| 15 | Relic: double_down, Title: Adept |
+| 20 | Relics: scholars_gambit + prismatic_shard, Title: Master |
+| 21 | Cosmetic: cardframe-gold |
+| 23 | Title: Sage |
+| 25 | Title: Grand Scholar, Cosmetic: legendary-frame |
+
+18 relics are distributed across levels 1–24. Levels without relics award dust (200–1000).
 
 ### Mastery Coins (Simplified v2)
 

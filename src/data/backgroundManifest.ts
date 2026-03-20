@@ -140,7 +140,29 @@ const SCREEN_VICTORY = [
 // ============================================================
 
 /**
- * Pick a random combat background path based on floor and boss status.
+ * Return the current viewport orientation.
+ * Portrait = width/height < 1 (taller than wide).
+ * Landscape = width/height >= 1 (wider than tall).
+ */
+function getOrientation(): 'portrait' | 'landscape' {
+  return window.innerWidth / window.innerHeight < 1 ? 'portrait' : 'landscape'
+}
+
+/**
+ * Get the combat background path for a specific enemy.
+ * Selects portrait or landscape variant based on the current viewport orientation.
+ * Returns a path under `/assets/backgrounds/combat/enemies/{enemyId}/{orientation}.webp`.
+ *
+ * @param enemyId The template ID of the enemy (e.g. 'slime', 'cave-troll')
+ * @returns A WebP background path sized for the current orientation
+ */
+export function getCombatBgForEnemy(enemyId: string): string {
+  const orientation = getOrientation()
+  return `/assets/backgrounds/combat/enemies/${enemyId}/${orientation}.webp`
+}
+
+/**
+ * Pick a combat background path based on floor and boss status.
  * For boss encounters, always uses the boss arena pool.
  * For regular encounters, uses the segment-appropriate pool:
  * - Floors 1-6: Segment 1 (Shallow Depths)
@@ -149,6 +171,8 @@ const SCREEN_VICTORY = [
  * - Floors 19-24: Segment 4 (The Archive)
  * - Floors 25+: Segment 5 (Endless Void)
  *
+ * @deprecated Legacy fallback — use getCombatBgForEnemy() for per-enemy backgrounds.
+ *   This function remains for encounters that do not yet have enemy-specific art.
  * @param floor The current floor number
  * @param isBoss Whether this is a boss encounter
  * @returns A random WebP background path
@@ -176,47 +200,31 @@ export function getRandomCombatBg(floor: number, isBoss: boolean): string {
 }
 
 /**
- * Pick a random room background path by room type.
- * Each room type has a dedicated set of background variations.
+ * Get a room background path by room type.
+ * Selects portrait or landscape variant based on the current viewport orientation.
+ * Returns a path under `/assets/backgrounds/rooms/{roomType}/{orientation}.webp`.
  *
  * @param roomType The type of room ('hallway', 'rest', 'shop', 'mystery', 'treasure', 'crossroads', or 'descent')
- * @returns A random WebP background path
+ * @returns A WebP background path sized for the current orientation
  */
 export function getRandomRoomBg(
   roomType: 'hallway' | 'rest' | 'shop' | 'mystery' | 'treasure' | 'crossroads' | 'descent'
 ): string {
-  switch (roomType) {
-    case 'hallway':
-      return pickRandom(ROOM_HALLWAY)
-    case 'rest':
-      return pickRandom(ROOM_REST)
-    case 'shop':
-      return pickRandom(ROOM_SHOP)
-    case 'mystery':
-      return pickRandom(ROOM_MYSTERY)
-    case 'treasure':
-      return pickRandom(ROOM_TREASURE)
-    case 'crossroads':
-      return pickRandom(ROOM_CROSSROADS)
-    case 'descent':
-      return pickRandom(ROOM_DESCENT)
-  }
+  const orientation = getOrientation()
+  return `/assets/backgrounds/rooms/${roomType}/${orientation}.webp`
 }
 
 /**
- * Pick a random screen background path by screen type.
- * Used for defeat and victory splash screens.
+ * Get a screen background path by screen type.
+ * Selects portrait or landscape variant based on the current viewport orientation.
+ * Returns a path under `/assets/backgrounds/screens/{screenType}/{orientation}.webp`.
  *
  * @param screenType The type of screen ('defeat' or 'victory')
- * @returns A random WebP background path
+ * @returns A WebP background path sized for the current orientation
  */
 export function getRandomScreenBg(screenType: 'defeat' | 'victory'): string {
-  switch (screenType) {
-    case 'defeat':
-      return pickRandom(SCREEN_DEFEAT)
-    case 'victory':
-      return pickRandom(SCREEN_VICTORY)
-  }
+  const orientation = getOrientation()
+  return `/assets/backgrounds/screens/${screenType}/${orientation}.webp`
 }
 
 // ============================================================

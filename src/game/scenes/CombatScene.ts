@@ -4,8 +4,9 @@ import { getDeviceTier } from '../../services/deviceTierService'
 import { EnemySpriteSystem } from '../systems/EnemySpriteSystem'
 import { CombatAtmosphereSystem } from '../systems/CombatAtmosphereSystem'
 import { StatusEffectVisualSystem } from '../systems/StatusEffectVisualSystem'
+import { WeaponAnimationSystem } from '../systems/WeaponAnimationSystem'
 import type { AnimArchetype } from '../../data/enemyAnimations'
-import { getRandomCombatBg } from '../../data/backgroundManifest'
+import { getRandomCombatBg, getCombatBgForEnemy } from '../../data/backgroundManifest'
 import { ENEMY_TEMPLATES } from '../../data/enemies'
 import { BASE_WIDTH } from '../../data/layout'
 import { get } from 'svelte/store'
@@ -216,6 +217,7 @@ export class CombatScene extends Phaser.Scene {
   // ── VFX systems ────────────────────────────────────
   private atmosphereSystem!: CombatAtmosphereSystem
   private statusEffectVisuals!: StatusEffectVisualSystem
+  private weaponAnimations!: WeaponAnimationSystem
 
   // ── Stored layout values ─────────────────────────────────
   private displayH = 0
@@ -500,8 +502,12 @@ export class CombatScene extends Phaser.Scene {
       loadText.destroy()
     })
     // Suppress file-not-found errors for missing enemy sprites — game shows colored placeholder instead.
-    this.load.on('loaderror', (_file: Phaser.Loader.File) => {
-      // intentionally silent — missing sprites fall back to colored rectangle placeholder
+    // BUT log weapon texture failures so we can debug them.
+    this.load.on('loaderror', (file: Phaser.Loader.File) => {
+      if (file.key.startsWith('weapon-')) {
+        console.error('[CombatScene] WEAPON TEXTURE LOAD FAILED:', file.key, file.url)
+      }
+      // intentionally silent for enemy sprites — they fall back to colored rectangle placeholder
     })
 
     const suffix = getDeviceTier() === 'low-end' ? '_1x.webp' : '.webp'
@@ -513,6 +519,10 @@ export class CombatScene extends Phaser.Scene {
         this.load.image(key, `assets/sprites/enemies/${enemy.id}_idle${suffix}`)
       }
     }
+
+    // ── Weapon animation system ──────────────────────────
+    this.weaponAnimations = new WeaponAnimationSystem(this)
+    this.weaponAnimations.preloadAssets()
   }
 
   /** Create all game objects for the combat display zone. */
@@ -767,6 +777,9 @@ export class CombatScene extends Phaser.Scene {
     // ── Status effect visual system ─────────────────
     this.statusEffectVisuals = new StatusEffectVisualSystem(this)
 
+    // ── Weapon animation system ──────────────────────────────
+    this.weaponAnimations.createSprites(this.displayH)
+
     // ── Scene lifecycle events ────────────────────────────
     this.events.on('shutdown', this.onShutdown, this)
     this.events.on('sleep', this.onShutdown, this)
@@ -841,7 +854,7 @@ export class CombatScene extends Phaser.Scene {
     }
 
     // Apply animation archetype config
-    this.enemySpriteSystem.setAnimConfig(animArchetype)
+    this.enemySpriteSystem.setAnimConfig(animArchetype, this.currentEnemyId)
 
     this.enemyNameText.setText(name)
     this.enemyNameText.setPosition(enemyX, enemyY + size / 2 + Math.round(12 * this.scaleFactor))
@@ -1034,11 +1047,21 @@ export class CombatScene extends Phaser.Scene {
     return bgKey
   }
 
-  /** Dynamically load and display a random combat background for the given floor. */
-  setBackground(floor: number, isBoss: boolean): Promise<void> {
+  /**
+   * Dynamically load and display a combat background.
+   * When `enemyId` is provided, attempts to load the per-enemy background
+   * (`/assets/backgrounds/combat/enemies/{enemyId}/{orientation}.webp`).
+   * Falls back to the legacy segment-based pool if the enemy-specific texture
+   * fails to load (404 or missing file).
+   *
+   * @param floor The current floor number
+   * @param isBoss Whether this is a boss encounter
+   * @param enemyId Optional enemy template ID for per-enemy background art
+   */
+  setBackground(floor: number, isBoss: boolean, enemyId?: string): Promise<void> {
     if (!this.sceneReady) return Promise.resolve()
 
-    const bgPath = getRandomCombatBg(floor, isBoss)
+    const bgPath = enemyId ? getCombatBgForEnemy(enemyId) : getRandomCombatBg(floor, isBoss)
     // Strip leading slash for Phaser's asset loader
     const cleanPath = bgPath.startsWith('/') ? bgPath.slice(1) : bgPath
     const bgKey = `bg-combat-${cleanPath.split('/').pop()?.replace('.webp', '') ?? 'default'}`
@@ -1061,14 +1084,35 @@ export class CombatScene extends Phaser.Scene {
     // Load new texture dynamically.
     // In landscape mode, also attempt to load the _landscape variant — if it 404s,
     // Phaser silently skips it and getBackgroundKey() will fall back to portrait.
+    // For enemy-specific backgrounds: if the texture didn't actually load (404),
+    // fall back to the legacy segment-based pool.
     return new Promise<void>((resolve) => {
       this.load.image(bgKey, cleanPath)
       if (this.currentLayoutMode === 'landscape') {
         this.load.image(landscapeKey, landscapePath)
       }
       this.load.once('complete', () => {
-        this._swapBackground(this.getBackgroundKey(bgKey))
-        resolve()
+        const resolvedAfterLoad = this.getBackgroundKey(bgKey)
+        if (!hasTexture(this, resolvedAfterLoad) && enemyId) {
+          // Enemy-specific asset not found — fall back to segment background
+          const fallbackPath = getRandomCombatBg(floor, isBoss)
+          const fallbackClean = fallbackPath.startsWith('/') ? fallbackPath.slice(1) : fallbackPath
+          const fallbackKey = `bg-combat-${fallbackClean.split('/').pop()?.replace('.webp', '') ?? 'fallback'}`
+          if (hasTexture(this, fallbackKey)) {
+            this._swapBackground(this.getBackgroundKey(fallbackKey))
+            resolve()
+          } else {
+            this.load.image(fallbackKey, fallbackClean)
+            this.load.once('complete', () => {
+              this._swapBackground(this.getBackgroundKey(fallbackKey))
+              resolve()
+            })
+            this.load.start()
+          }
+        } else {
+          this._swapBackground(resolvedAfterLoad)
+          resolve()
+        }
       })
       this.load.start()
     })
@@ -1259,6 +1303,9 @@ export class CombatScene extends Phaser.Scene {
   playPlayerAttackAnimation(): void {
     if (this.reduceMotion) return
     const container = this.enemySpriteSystem.getContainer()
+    // Sword slash aimed at the enemy
+    this.weaponAnimations.playSwordSlash(this.getEnemyX(), this.currentEnemyY)
+    // Existing bob animation on the enemy
     this.tweens.add({
       targets: container,
       y: container.y - 8,
@@ -1268,11 +1315,19 @@ export class CombatScene extends Phaser.Scene {
     })
   }
 
-  playPlayerCastAnimation(): void {
+  playPlayerCastAnimation(cardType?: string): void {
     if (this.reduceMotion) return
+    // Determine glow color from card type
+    let glowColor = 0x3498db // default blue
+    if (cardType === 'buff') glowColor = 0xf39c12
+    else if (cardType === 'debuff') glowColor = 0x9b59b6
+    else if (cardType === 'utility') glowColor = 0x2ecc71
+    // Screen flash and particles
     this.playScreenFlash(0.12)
-    this.pulseEdgeGlow(COLOR_HP_GREEN, 0.25, 270)
-    this.burstParticles(14, this.scale.width / 2, this.displayH * 0.44, 0x8be4ff)
+    this.pulseEdgeGlow(glowColor, 0.25, 270)
+    this.burstParticles(14, this.scale.width / 2, this.displayH * 0.44, glowColor)
+    // Tome animation
+    this.weaponAnimations.playTomeCast(glowColor)
   }
 
   playPlayerBlockAnimation(): void {
@@ -1280,6 +1335,8 @@ export class CombatScene extends Phaser.Scene {
     this.playScreenFlash(0.1)
     this.pulseEdgeGlow(0x3498db, 0.3, 270)
     this.burstParticles(10, this.scale.width / 2, this.displayH * 0.47, 0x8fbfff)
+    // Shield raise from bottom-left
+    this.weaponAnimations.playShieldRaise()
   }
 
   /** Play blue flash when player block absorbs all incoming damage. */
@@ -1904,6 +1961,7 @@ export class CombatScene extends Phaser.Scene {
     this.enemySpriteSystem?.destroy()
     this.atmosphereSystem?.stop()
     this.statusEffectVisuals?.destroy()
+    this.weaponAnimations?.destroy()
   }
 
   /** Re-sync display on wake/resume. */

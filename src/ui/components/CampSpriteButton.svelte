@@ -84,10 +84,14 @@
 
   .sprite-img.rpg-outline {
     filter:
-      drop-shadow(2px 0 0 rgba(0, 0, 0, 0.8))
-      drop-shadow(-2px 0 0 rgba(0, 0, 0, 0.8))
-      drop-shadow(0 2px 0 rgba(0, 0, 0, 0.8))
-      drop-shadow(0 -2px 0 rgba(0, 0, 0, 0.8));
+      drop-shadow(2px 0 0 #000)
+      drop-shadow(-2px 0 0 #000)
+      drop-shadow(0 2px 0 #000)
+      drop-shadow(0 -2px 0 #000)
+      drop-shadow(1px 1px 0 #000)
+      drop-shadow(-1px 1px 0 #000)
+      drop-shadow(1px -1px 0 #000)
+      drop-shadow(-1px -1px 0 #000);
   }
 
   .sprite-hitbox {
@@ -112,10 +116,14 @@
     filter:
       brightness(1.4)
       drop-shadow(0 0 6px rgba(255, 200, 100, 0.7))
-      drop-shadow(2px 0 0 rgba(0, 0, 0, 0.8))
-      drop-shadow(-2px 0 0 rgba(0, 0, 0, 0.8))
-      drop-shadow(0 2px 0 rgba(0, 0, 0, 0.8))
-      drop-shadow(0 -2px 0 rgba(0, 0, 0, 0.8));
+      drop-shadow(2px 0 0 #000)
+      drop-shadow(-2px 0 0 #000)
+      drop-shadow(0 2px 0 #000)
+      drop-shadow(0 -2px 0 #000)
+      drop-shadow(1px 1px 0 #000)
+      drop-shadow(-1px 1px 0 #000)
+      drop-shadow(1px -1px 0 #000)
+      drop-shadow(-1px -1px 0 #000);
     transition: filter 80ms ease;
   }
 

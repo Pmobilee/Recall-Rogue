@@ -16,7 +16,6 @@
   import type { Screen } from './ui/stores/gameState'
   import { navigateToScreen, normalizeHomeScreen } from './services/screenController'
   import type { HubScreenName } from './services/screenController'
-  import { openTestRewardRoom } from './services/rewardRoomBridge'
   import {
     activeCardRewardOptions,
     activeMysteryEvent,
@@ -594,9 +593,9 @@
     currentScreen.set('restMeditate')
   }
 
-  function handleStudyComplete(correctCount: number): void {
+  function handleStudyComplete(correctFactIds: string[]): void {
     studyQuestions = []
-    onStudyComplete(correctCount)
+    onStudyComplete(correctFactIds)
   }
 
   function handleMeditateRemove(cardId: string): void {
@@ -927,13 +926,6 @@
         <button type="button" class="banner-resume-btn" data-testid="btn-resume-run" onclick={handleResumeActiveRun}>Resume</button>
         <button type="button" class="banner-abandon-btn" data-testid="btn-abandon-run" onclick={handleAbandonRun}>Abandon</button>
       </div>
-    {/if}
-    {#if !showBootAnimation}
-    <button
-      type="button"
-      style="position: fixed; bottom: 60px; right: 10px; z-index: 999; background: #7c3aed; color: white; border: none; border-radius: 8px; padding: 8px 12px; font-size: 11px; font-weight: 700; opacity: 0.8;"
-      onclick={() => openTestRewardRoom()}
-    >Test Reward Room</button>
     {/if}
     {#if showOutsideDuePrompt}
       <div class="abandon-confirm-overlay" role="dialog" aria-modal="true" aria-label="Outside deck reviews prompt">

@@ -1,0 +1,2062 @@
+{
+  "type": "visual_campaign_run",
+  "playthroughId": "visual-playthrough-550000-1774009448487",
+  "seed": 550000,
+  "campaignId": "anim-balance-check",
+  "startedAt": "2026-03-20T12:24:08.487Z",
+  "completedAt": "2026-03-20T12:24:46.049Z",
+  "devUrl": "http://127.0.0.1:5173",
+  "result": "completed_with_issues",
+  "steps": [
+    {
+      "turn": 0,
+      "action": "boot",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized"
+    },
+    {
+      "turn": 1,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 2,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 3,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 4,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 5,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 6,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 7,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 8,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 9,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 10,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 11,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 12,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 13,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 14,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 15,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 16,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 17,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 18,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 19,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 20,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 21,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 22,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 23,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 24,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 25,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 26,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 27,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 28,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 29,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 30,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 31,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 32,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 33,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 34,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 35,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 36,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 37,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 38,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 39,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 40,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 41,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 42,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 43,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 44,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 45,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 46,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 47,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 48,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 49,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 50,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 51,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 52,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 53,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 54,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 55,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 56,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 57,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 58,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 59,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 60,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 61,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 62,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 63,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 64,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 65,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 66,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 67,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 68,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 69,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 70,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 71,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 72,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 73,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 74,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 75,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 76,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 77,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 78,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 79,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 80,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 81,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 82,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 83,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 84,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 85,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 86,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 87,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 88,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 89,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 90,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 91,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 92,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 93,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 94,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 95,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 96,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 97,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 98,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 99,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 100,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 101,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 102,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 103,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 104,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 105,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 106,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 107,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 108,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 109,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 110,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 111,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 112,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 113,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 114,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 115,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 116,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 117,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 118,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 119,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 120,
+      "action": "startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    }
+  ],
+  "errors": [
+    {
+      "type": "action_error",
+      "turn": 1,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 2,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 3,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 4,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 5,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 6,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 7,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 8,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 9,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 10,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 11,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 12,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 13,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 14,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 15,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 16,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 17,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 18,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 19,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 20,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 21,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 22,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 23,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 24,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 25,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 26,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 27,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 28,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 29,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 30,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 31,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 32,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 33,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 34,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 35,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 36,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 37,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 38,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 39,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 40,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 41,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 42,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 43,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 44,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 45,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 46,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 47,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 48,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 49,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 50,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 51,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 52,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 53,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 54,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 55,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 56,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 57,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 58,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 59,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 60,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 61,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 62,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 63,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 64,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 65,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 66,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 67,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 68,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 69,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 70,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 71,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 72,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 73,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 74,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 75,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 76,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 77,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 78,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 79,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 80,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 81,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 82,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 83,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 84,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 85,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 86,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 87,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 88,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 89,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 90,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 91,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 92,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 93,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 94,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 95,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 96,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 97,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 98,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 99,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 100,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 101,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 102,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 103,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 104,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 105,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 106,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 107,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 108,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 109,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 110,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 111,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 112,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 113,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 114,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 115,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 116,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 117,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 118,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 119,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    },
+    {
+      "type": "action_error",
+      "turn": 120,
+      "action": "startRun",
+      "screen": "hub",
+      "message": "Start Run button not found"
+    }
+  ],
+  "screenshots": [],
+  "consoleErrors": []
+}

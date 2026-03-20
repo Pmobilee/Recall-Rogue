@@ -1,6 +1,8 @@
 import { writable } from 'svelte/store'
 
-export type CampElement = 'tent' | 'seating' | 'campfire' | 'decor'
+export type CampElement =
+  | 'tent' | 'character' | 'pet' | 'campfire'
+  | 'library' | 'questboard' | 'shop' | 'journal' | 'doorway'
 export type CampOutfit = 'scout' | 'warden' | 'scholar' | 'vanguard'
 export type CampPet = 'cat' | 'owl' | 'fox' | 'dragon_whelp'
 
@@ -12,21 +14,49 @@ export interface CampState {
 }
 
 const STORAGE_KEY = 'recall-rogue-camp-state'
-export const CAMP_MAX_TIER = 3
+
+/** Per-element maximum upgrade tiers (tier 0 is base, these are the number of upgrade levels). */
+export const CAMP_MAX_TIERS: Record<CampElement, number> = {
+  tent: 6,
+  character: 6,
+  pet: 5,
+  campfire: 5,
+  library: 5,
+  questboard: 6,
+  shop: 6,
+  journal: 6,
+  doorway: 6,
+}
 
 const DEFAULT_CAMP_STATE: CampState = {
   tiers: {
     tent: 0,
-    seating: 0,
+    character: 0,
+    pet: 0,
     campfire: 0,
-    decor: 0,
+    library: 0,
+    questboard: 0,
+    shop: 0,
+    journal: 0,
+    doorway: 0,
   },
   outfit: 'scout',
   activePet: 'cat',
   unlockedPets: ['cat'],
 }
 
-const UPGRADE_COSTS_BY_TIER = [120, 240, 420] as const
+/** Per-element upgrade costs. Index = tier being purchased (0 = first upgrade from base). */
+const UPGRADE_COSTS: Record<CampElement, readonly number[]> = {
+  tent:       [60, 120, 200, 320, 500, 750],
+  campfire:   [60, 120, 200, 320, 500],
+  character:  [80, 160, 280, 450, 700, 1000],
+  pet:        [150, 300, 500, 800, 1200],
+  library:    [80, 150, 250, 400, 600],
+  questboard: [40, 80, 150, 250, 400, 600],
+  shop:       [60, 120, 200, 320, 500, 750],
+  journal:    [40, 80, 150, 250, 400, 600],
+  doorway:    [100, 200, 350, 550, 800, 1100],
+}
 
 export const PET_UNLOCK_COSTS: Record<CampPet, number> = {
   cat: 0,
@@ -38,18 +68,27 @@ export const PET_UNLOCK_COSTS: Record<CampPet, number> = {
 function sanitizeState(raw: unknown): CampState {
   if (!raw || typeof raw !== 'object') return DEFAULT_CAMP_STATE
   const candidate = raw as Partial<CampState>
-  const tiers = (candidate.tiers ?? {}) as Partial<Record<CampElement, number>>
+  // Cast loosely — old saves may have 'seating'/'decor' keys; those are ignored (default to 0).
+  const tiers = (candidate.tiers ?? {}) as Record<string, unknown>
   const unlocked: CampPet[] = Array.isArray(candidate.unlockedPets)
     ? candidate.unlockedPets.filter((pet): pet is CampPet =>
       pet === 'cat' || pet === 'owl' || pet === 'fox' || pet === 'dragon_whelp')
     : ['cat']
 
+  const clampTier = (el: CampElement, raw: unknown): number =>
+    Math.max(0, Math.min(CAMP_MAX_TIERS[el], Number(raw ?? 0)))
+
   const next: CampState = {
     tiers: {
-      tent: Math.max(0, Math.min(CAMP_MAX_TIER, Number(tiers.tent ?? 0))),
-      seating: Math.max(0, Math.min(CAMP_MAX_TIER, Number(tiers.seating ?? 0))),
-      campfire: Math.max(0, Math.min(CAMP_MAX_TIER, Number(tiers.campfire ?? 0))),
-      decor: Math.max(0, Math.min(CAMP_MAX_TIER, Number(tiers.decor ?? 0))),
+      tent: clampTier('tent', tiers.tent),
+      character: clampTier('character', tiers.character),
+      pet: clampTier('pet', tiers.pet),
+      campfire: clampTier('campfire', tiers.campfire),
+      library: clampTier('library', tiers.library),
+      questboard: clampTier('questboard', tiers.questboard),
+      shop: clampTier('shop', tiers.shop),
+      journal: clampTier('journal', tiers.journal),
+      doorway: clampTier('doorway', tiers.doorway),
     },
     outfit: candidate.outfit === 'warden' || candidate.outfit === 'scholar' || candidate.outfit === 'vanguard'
       ? candidate.outfit
@@ -90,8 +129,9 @@ if (typeof window !== 'undefined') {
   })
 }
 
-export function getCampUpgradeCost(currentTier: number): number | null {
-  return UPGRADE_COSTS_BY_TIER[currentTier] ?? null
+export function getCampUpgradeCost(element: CampElement, currentTier: number): number | null {
+  if (currentTier >= CAMP_MAX_TIERS[element]) return null
+  return UPGRADE_COSTS[element][currentTier] ?? null
 }
 
 export function setCampTier(element: CampElement, tier: number): void {
@@ -99,7 +139,7 @@ export function setCampTier(element: CampElement, tier: number): void {
     ...state,
     tiers: {
       ...state.tiers,
-      [element]: Math.max(0, Math.min(CAMP_MAX_TIER, tier)),
+      [element]: Math.max(0, Math.min(CAMP_MAX_TIERS[element], tier)),
     },
   }))
 }

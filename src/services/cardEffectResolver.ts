@@ -11,9 +11,11 @@ import {
   ECHO,
   LEGACY_TIER_MULTIPLIER,
   TIER_MULTIPLIER,
+  CHARGE_CORRECT_MULTIPLIER,
   getBalanceValue,
   getBalanceOverrides,
 } from '../data/balance';
+import { getMasteryBaseBonus, getMasterySecondaryBonus } from './cardUpgradeService';
 import { isVulnerable } from '../data/statusEffects';
 import { getMechanicDefinition, type PlayMode } from '../data/mechanics';
 import { resolveAttackModifiers, resolveShieldModifiers } from './relicEffectResolver';
@@ -196,7 +198,7 @@ export function resolveCardEffect(
   let mechanicBaseValue: number;
   if (mechanic) {
     if (isChargeCorrect) {
-      mechanicBaseValue = mechanic.chargeCorrectValue;
+      mechanicBaseValue = Math.round(mechanic.quickPlayValue * CHARGE_CORRECT_MULTIPLIER);
     } else if (isChargeWrong) {
       mechanicBaseValue = mechanic.chargeWrongValue;
     } else {
@@ -211,6 +213,17 @@ export function resolveCardEffect(
     // No mechanic definition (wild fallback, unknown mechanic).
     // Apply tier multiplier to preserve pre-v2 behavior for these cards.
     mechanicBaseValue = baseEffectValue * tierMultiplier;
+  }
+
+  // Apply mastery bonus (AR-113)
+  const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0);
+  mechanicBaseValue += masteryBonus;
+
+  const masterySecondaryBonus = getMasterySecondaryBonus(card.mechanicId ?? '', card.masteryLevel ?? 0);
+  // Apply mastery secondary bonus to a copy of the card so switch cases can read it uniformly
+  if (masterySecondaryBonus > 0 && mechanic) {
+    const currentSecondary = card.secondaryValue ?? mechanic.secondaryValue ?? 0;
+    card = { ...card, secondaryValue: currentSecondary + masterySecondaryBonus };
   }
 
   const strikeTag = mechanic?.tags.includes('strike') ?? false;

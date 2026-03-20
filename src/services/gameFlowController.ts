@@ -109,7 +109,7 @@ import {
 } from './relicAcquisitionService'
 import { isRelicSlotsFull, getMaxRelicSlots } from './relicEffectResolver'
 import type { UpgradePreview } from './cardUpgradeService';
-import { getUpgradeCandidates, getUpgradePreview, upgradeCard } from './cardUpgradeService'
+import { getUpgradeCandidates, getUpgradePreview, upgradeCard, canMasteryUpgrade, masteryUpgrade } from './cardUpgradeService'
 import type { QuizQuestion } from './bossQuizPhase';
 import { factsDB } from './factsDB';
 import type { ShopInventory } from './shopService';
@@ -1821,7 +1821,8 @@ export function openUpgradeSelection(): boolean {
 }
 
 export function hasRestUpgradeCandidates(): boolean {
-  return prepareUpgradeCandidates().length > 0;
+  const allCards = getActiveDeckCards();
+  return allCards.some(c => canMasteryUpgrade(c));
 }
 
 /** Prepare upgrade candidates from the active deck. */
@@ -1889,7 +1890,14 @@ export function generateStudyQuestions(): QuizQuestion[] {
     candidateIds = [...new Set([...validPoolIds, ...allValidIds])];
   }
 
-  const selected = shuffled(candidateIds).slice(0, 3);
+  // Prefer cards that can still be mastery-upgraded
+  const upgradableCards = poolCards.filter(c => canMasteryUpgrade(c));
+  const priorityFactIds = upgradableCards.length >= 3
+    ? [...new Set(upgradableCards.map(c => c.factId))].filter(id => candidateIds.includes(id))
+    : candidateIds;
+
+  const finalCandidates = priorityFactIds.length >= 3 ? priorityFactIds : candidateIds;
+  const selected = shuffled(finalCandidates).slice(0, 3);
 
   const questions: QuizQuestion[] = [];
   for (const factId of selected) {
@@ -1911,19 +1919,19 @@ export function generateStudyQuestions(): QuizQuestion[] {
 
 /**
  * Called when Study quiz completes.
- * Upgrades one random eligible card per correct answer.
+ * Upgrades the specific card whose fact was answered correctly, via the mastery system.
  */
-export function onStudyComplete(correctCount: number): void {
+export function onStudyComplete(correctFactIds: string[]): void {
   const run = get(activeRunState);
   if (!run) return;
 
   const allCards = getActiveDeckCards();
-  for (let i = 0; i < correctCount; i++) {
-    const candidates = getUpgradeCandidates(allCards, Infinity).filter(c => !c.isUpgraded);
-    if (candidates.length === 0) break;
-    const pick = candidates[Math.floor(Math.random() * candidates.length)];
-    upgradeCard(pick);
-    run.cardsUpgraded = (run.cardsUpgraded ?? 0) + 1;
+  for (const factId of correctFactIds) {
+    const card = allCards.find(c => c.factId === factId);
+    if (card && canMasteryUpgrade(card)) {
+      masteryUpgrade(card);
+      run.cardsUpgraded = (run.cardsUpgraded ?? 0) + 1;
+    }
   }
 
   activeRunState.set(run);

@@ -1,9 +1,9 @@
 # Content Pipeline — Progress Tracker
 
 **Canonical Spec:** [content-pipeline-spec.md](content-pipeline-spec.md) (same directory)
-**Last Updated:** 2026-03-16
-**Current Phase:** Knowledge pipeline — entity curation DONE, generation + validation infrastructure DONE (AR-34 B+C+D). AR-46 batch complete: +538 facts (20 entities per domain).
-**Active AR Phase:** AR-46 Complete. Next: Continue scaling with AR-47 (20 more per domain)
+**Last Updated:** 2026-03-20
+**Current Phase:** Grounded pipeline (AR-108) — old 3,293 hallucinated facts REMOVED. New pipeline uses Wikipedia + Wikidata source data. 183 grounded facts generated across 8 domains. food_cuisine and mythology_folklore blocked on Q-ID fixes.
+**Active AR Phase:** AR-108 — Grounded Fact Pipeline. See `docs/roadmap/phases/AR-108-GROUNDED-FACT-PIPELINE.md`
 
 ---
 
@@ -11,15 +11,15 @@
 
 Any agent continuing this work MUST:
 
-1. Read `content-pipeline-spec.md` first — it is the canonical source of truth
-2. Read this document to understand current state
-3. Check the skill at `.claude/skills/manual-fact-ingest-dedup/SKILL.md` for pipeline execution details
-4. Use **Sonnet only** for ALL quality work touching the database — no Haiku for any DB content
-5. Vocabulary distractors are RUNTIME (not LLM-generated) — see spec section 1.8
-6. Knowledge fact distractors ARE Sonnet-generated — see spec section 4.4
-7. European vocab uses English Wiktionary extracts (`en-{lang}-wikt.jsonl.gz`), NOT native Wiktionary. The native Wiktionary files (`{lang}-extract.jsonl.gz`) have glosses in the source language and are unusable for L2→L1 quiz cards.
-8. **CRITICAL**: Knowledge facts require CURATED ENTITY INPUT — follow spec Stage 2 pipeline (Vital Articles L4 + Wikidata enrichment + pageview scoring + subcategory quotas). NEVER tell Sonnet workers to "pick entities" themselves.
-9. The active AR phase is **AR-34** — read `docs/roadmap/phases/AR-34-CONTENT-PIPELINE-SPEC-ALIGNMENT.md` for full sub-step details
+1. Read this document to understand current state
+2. Read the skill at `.claude/skills/manual-fact-ingest-dedup/SKILL.md` — it has a Quick Start section
+3. Read `docs/RESEARCH/SOURCES/master-worker-prompt.md` — the master prompt for Sonnet workers (pass VERBATIM)
+4. Use **Sonnet only** for ALL fact generation — no Haiku for any DB content
+5. **CRITICAL**: The grounded pipeline requires Wikipedia + Wikidata source data. NEVER generate facts from LLM memory.
+6. Run `node scripts/content-pipeline/ingest-batch.mjs --limit 10` to enrich entities before generating
+7. food_cuisine and mythology_folklore need Q-ID fixes first: `node scripts/content-pipeline/fix-entity-qids.mjs --domain {domain}`
+8. Numerical answers use brace markers `"{107} days"` with empty distractors (runtime generation)
+9. Max 5 Sonnet workers at a time. Wikidata has aggressive rate limits — the enrichment script handles retries.
 
 ---
 
@@ -42,22 +42,43 @@ Any agent continuing this work MUST:
 
 ---
 
+## Knowledge Facts Progress (Grounded Pipeline — AR-108)
+
+| Domain | Grounded Facts | Entities Enriched | Total Entities | Q-ID Status | Notes |
+|--------|---------------|-------------------|----------------|-------------|-------|
+| animals_wildlife | 398 | 50+ | 605 | ✅ Clean | 5 batches processed |
+| art_architecture | 270 | 50+ | 527 | ✅ Clean | Many entities are literature/music — low yield per batch |
+| food_cuisine | 160 | 50+ | 343 | ❌ ~80% Bad Q-IDs | Severe QID corruption — only ~20% of entities have valid Wikipedia data |
+| general_knowledge | 394 | 50+ | 657 | ✅ Clean | 5 batches processed |
+| geography | 492 | 50+ | 616 | ✅ Clean | 5 batches processed |
+| history | 460 | 50+ | 625 | ✅ Clean | 5 batches processed |
+| human_body_health | 307 | 50+ | 560 | ⚠️ Some bad | Some entities wrong domain |
+| mythology_folklore | 197 | 50+ | 210 | ⚠️ ~60% Bad Q-IDs | Heavy QID corruption in creature entities |
+| natural_sciences | 433 | 50+ | 607 | ✅ Clean | 5 batches processed |
+| space_astronomy | 74 | 20 | 97 | ✅ Clean | Exhausted enriched entities after batch 2 |
+
+**Total grounded knowledge facts: ~3,111 (across 5 batches of 10 entities/domain)**
+**Target: 2,000 per domain (20,000 total)**
+**Old hallucinated facts: REMOVED (3,293 deleted on 2026-03-20)**
+
+---
+
 ## Knowledge Domain Progress
 
 | Domain | Status | Fact Count | Target | Seed File | Entities Curated | Notes |
 |--------|--------|------------|--------|-----------|-----------------|-------|
-| Animals & Wildlife | 🟡 In Progress | 300 | 2,000 | `knowledge-animals_wildlife.json` | ✅ 600 | AR-46: +43 from 20 entities (6 skipped: non-wildlife) |
-| Art & Architecture | 🟡 In Progress | 289 | 2,000 | `knowledge-art_architecture.json` | ✅ 600 | AR-46: +54 from 20 entities (1 skipped: film concept) |
-| Food & World Cuisine | 🟡 In Progress | 316 | 2,000 | `knowledge-food_cuisine.json` | ✅ 332 | AR-46: +60 from 20 entities (0 skipped) |
-| General Knowledge | 🟡 In Progress | 258 | 2,000 | `knowledge-general_knowledge.json` | ✅ 600 | AR-46: +27 from 20 entities (0 skipped) |
-| Geography | 🟡 In Progress | 384 | 2,000 | `knowledge-geography.json` | ✅ 600 | AR-46: +103 from 20 entities (0 skipped) |
-| History | 🟡 In Progress | 322 | 2,000 | `knowledge-history.json` | ✅ 600 | AR-46: +60 from 20 entities (0 skipped) |
-| Human Body & Health | 🟡 In Progress | 271 | 2,000 | `knowledge-human_body_health.json` | ✅ 600 | AR-46: +39 from 20 entities (11 skipped: non-health) |
-| Mythology & Folklore | 🟡 In Progress | 301 | 2,000 | `knowledge-mythology_folklore.json` | ⚠️ 232 | AR-46: +48 from 20 entities (1 skipped: Freya duplicate) |
-| Natural Sciences | 🟡 In Progress | 270 | 2,000 | `knowledge-natural_sciences.json` | ✅ 600 | AR-46: +61 from 20 entities (4 skipped: wrong domain) |
-| Space & Astronomy | 🟡 In Progress | 262 | 2,000 | `knowledge-space_astronomy.json` | ⚠️ 83 | AR-46: +43 from 20 entities (0 skipped) |
+| Animals & Wildlife | 🟡 In Progress | 398 | 2,000 | `knowledge-animals_wildlife.json` | ✅ 600 | 5 batches, ~50 entities |
+| Art & Architecture | 🟡 In Progress | 270 | 2,000 | `knowledge-art_architecture.json` | ✅ 600 | Low yield — many entities are literature/music |
+| Food & World Cuisine | 🟡 In Progress | 160 | 2,000 | `knowledge-food_cuisine.json` | ✅ 332 | ~80% QID corruption limits output |
+| General Knowledge | 🟡 In Progress | 394 | 2,000 | `knowledge-general_knowledge.json` | ✅ 600 | 5 batches, ~50 entities |
+| Geography | 🟡 In Progress | 492 | 2,000 | `knowledge-geography.json` | ✅ 600 | 5 batches, ~50 entities |
+| History | 🟡 In Progress | 460 | 2,000 | `knowledge-history.json` | ✅ 600 | 5 batches, ~50 entities |
+| Human Body & Health | 🟡 In Progress | 307 | 2,000 | `knowledge-human_body_health.json` | ✅ 600 | Some wrong-domain entities |
+| Mythology & Folklore | 🟡 In Progress | 197 | 2,000 | `knowledge-mythology_folklore.json` | ⚠️ 232 | Heavy QID corruption in creature entities |
+| Natural Sciences | 🟡 In Progress | 433 | 2,000 | `knowledge-natural_sciences.json` | ✅ 600 | 5 batches, ~50 entities |
+| Space & Astronomy | 🟡 In Progress | 74 | 2,000 | `knowledge-space_astronomy.json` | ⚠️ 83 | Enriched entities exhausted |
 
-**Total knowledge facts: 2,973 / 20,000 target** (AR-43: +255, AR-46: +538 from 20-entity parallel batch across all domains)
+**Total knowledge facts: 3,185 / 20,000 target** (2026-03-20: +932 from 5 batches of 10 entities/domain)
 
 ---
 

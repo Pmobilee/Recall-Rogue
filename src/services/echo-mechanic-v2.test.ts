@@ -120,7 +120,7 @@ describe('resolveCardEffect — Echo V2 power resolution', () => {
   it('non-Echo card: resolves at per-mechanic chargeCorrectValue regardless of correct flag', () => {
     // Non-Echo cards use per-mechanic values; the `correct` flag does not affect them
     // (wrong answers for non-echo are handled in turnManager before resolveCardEffect is called).
-    // strike.chargeCorrectValue = 24, effectMultiplier = 1.0 → rawValue = 24
+    // strike charge_correct = Math.round(8 * 1.5) = 12, effectMultiplier = 1.0 → rawValue = 12
     const card = makeCard({ baseEffectValue: 8, mechanicId: 'strike' });
     const resultCorrect = resolveCardEffect(card, player, enemy, 0, 1.0, 0, undefined, undefined, {
       correct: true,
@@ -131,8 +131,8 @@ describe('resolveCardEffect — Echo V2 power resolution', () => {
       playMode: 'charge',
     });
     // Both use chargeCorrectValue since non-echo ignores the `correct` parameter
-    expect(resultCorrect.rawValue).toBe(24);
-    expect(resultWrong.rawValue).toBe(24);
+    expect(resultCorrect.rawValue).toBe(12);
+    expect(resultWrong.rawValue).toBe(12);
   });
 
   it('Echo + correct Charge: resolves at full base power (1.0×)', () => {

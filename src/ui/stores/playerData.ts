@@ -1227,6 +1227,32 @@ export function purchaseStreakFreeze(): boolean {
 }
 
 /**
+ * Deducts dust from the player's mineral balance.
+ *
+ * @param amount - Amount of dust to spend (must be > 0).
+ * @returns `true` if the spend succeeded, `false` if insufficient funds.
+ */
+export function spendDust(amount: number): boolean {
+  const current = get(playerSave)
+  if (!current) return false
+  if ((current.minerals?.dust ?? 0) < amount) return false
+
+  playerSave.update(save => {
+    if (!save) return save
+    return {
+      ...save,
+      minerals: {
+        ...save.minerals,
+        dust: (save.minerals?.dust ?? 0) - amount,
+      },
+    }
+  })
+
+  persistPlayer()
+  return true
+}
+
+/**
  * Sets or clears the active cosmetic title displayed under the pilot name.
  *
  * @param title - The title string to activate, or `null` to clear.
@@ -1913,4 +1939,56 @@ export function toggleRelicExclusion(relicId: string): void {
     }
   })
   persistPlayer()
+}
+
+/**
+ * Award XP at end of run. Calculates XP, processes level ups, awards dust.
+ * Returns the breakdown for display on RunEndScreen.
+ *
+ * @param stats - Run statistics used to calculate XP earned.
+ * @returns XP breakdown, levels gained, new level, unlocked relics, and dust awarded.
+ */
+export async function awardRunXP(stats: import('../../services/characterLevel').RunXPStats): Promise<{
+  breakdown: import('../../services/characterLevel').RunXPBreakdown;
+  levelsGained: number;
+  newLevel: number;
+  relicsUnlocked: string[];
+  dustAwarded: number;
+}> {
+  const { calculateRunXP, processXPGain } = await import('../../services/characterLevel')
+
+  // Check if this is the first run today
+  const today = new Date().toISOString().slice(0, 10)
+  const save = get(playerSave)
+  const isDailyFirst = save?.lastDailyBonusDate !== today
+
+  const breakdown = calculateRunXP(stats, isDailyFirst)
+
+  // Process the XP gain
+  const currentXP = save?.totalXP ?? 0
+  const result = processXPGain(currentXP, breakdown.total)
+
+  // Update save state
+  playerSave.update(s => {
+    if (!s) return s
+    return {
+      ...s,
+      totalXP: result.newTotalXP,
+      characterLevel: result.newLevel,
+      lastDailyBonusDate: today,
+      minerals: {
+        ...s.minerals,
+        dust: (s.minerals?.dust ?? 0) + result.totalDustAwarded,
+      },
+    }
+  })
+  persistPlayer()
+
+  return {
+    breakdown,
+    levelsGained: result.levelsGained,
+    newLevel: result.newLevel,
+    relicsUnlocked: result.relicsUnlocked,
+    dustAwarded: result.totalDustAwarded,
+  }
 }

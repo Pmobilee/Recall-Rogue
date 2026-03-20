@@ -88,6 +88,10 @@ export interface Card {
   originalBaseEffectValue?: number;
   /** True if this card has been upgraded at a rest site or post-mini-boss. */
   isUpgraded?: boolean;
+  /** In-run mastery level (0-5). Cards upgrade on correct charge answers, downgrade on wrong. Resets each run. */
+  masteryLevel?: number;
+  /** True if this card has already upgraded or downgraded this encounter (max once per encounter). */
+  masteryChangedThisEncounter?: boolean;
   /** Per-card secondary value override (set on upgrade for mechanics like multi_hit). */
   secondaryValue?: number;
   /** Knowledge sub-category level 2 (e.g. 'ancient_classical'). Used by chain system and boss quiz phases. */

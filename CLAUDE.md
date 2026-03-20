@@ -15,8 +15,21 @@ A 2D card roguelite knowledge game built with Vite + Svelte + TypeScript + Phase
 - Backing data: `data/playtests/leaderboard.json`, `data/playtests/logs/`, `data/playtests/reports/`
 - API: `/api/playtest/leaderboard`, `/api/playtest/logs`, `/api/playtest/reports`
 - Details: `docs/PLAYTEST-DASHBOARD.md`
-- Campaign runner: `npm run playtest:campaign -- --runs 200 --parallel 5 --campaign-id <id> --seed-base <n>`
 - Investigation flow: leaderboard entry -> `runBreakdown` context -> `/api/playtest/report/:id` -> `/api/playtest/log/:id`
+
+## Headless Balance Simulation — DEFAULT
+
+**For ALL balance testing, use the headless simulator.** It imports real game code (turnManager, cardEffectResolver, relicEffectResolver, enemies, balance.ts) directly into Node.js. Zero reimplementation, zero drift. 6,000 runs in 5 seconds.
+
+**Quick commands:**
+- All profiles, 1000 runs each: `npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000`
+- Single profile: `npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 500 --profile scholar`
+- With ascension: add `--ascension 10`
+- Relic audit: `npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/relic-audit.ts`
+
+**Key files:** `tests/playtest/headless/simulator.ts` (engine), `tests/playtest/headless/run-batch.ts` (batch runner), `tests/playtest/headless/browser-shim.ts` (Node.js shim)
+
+**Browser bots (`tests/playtest/playwright-bot/`) are for VISUAL TESTING ONLY** — verifying UI flows, Phaser rendering, screen transitions. They are 1000x slower and must NOT be used for balance data.
 
 ## Directory Structure
 ```
@@ -352,3 +365,4 @@ Scripts like `mine-distractors.mjs` or any `SELECT correct_answer FROM facts WHE
 - `npm run check` — Full type check (app + node configs)
 - `npx vitest run` — Run 1900+ unit tests (run after any logic/data changes)
 - `python3 scripts/extract-card-frame.py` — Re-extract card frame layers from master PSD and regenerate all 14 color variant WebP files in `public/assets/cardframes/v2/`
+- `npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000` — Headless balance sim (6 profiles x 1000 runs)

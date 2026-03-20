@@ -2,6 +2,7 @@ import type { Fact, QuestionVariant, ReviewState } from '../data/types'
 import { factsDB } from './factsDB'
 import { getCardTier } from './tierDerivation'
 import { getRunRng, isRunRngActive } from './seededRng'
+import { isNumericalAnswer, getNumericalDistractors, displayAnswer } from './numericalDistractorService'
 
 export interface MasteryChallengeQuestion {
   factId: string
@@ -64,8 +65,13 @@ function buildDistractorPool(fact: Fact, variant: QuestionVariant | null, correc
   for (const distractor of variant?.distractors ?? []) push(distractor)
   for (const distractor of fact.distractors ?? []) push(distractor)
 
-  // No fallback — only use LLM-curated distractors from the variant/fact itself.
-  // Cross-domain random answers would produce nonsensical options.
+  // Runtime numerical distractor generation for brace-marked variant answers
+  // that have no pre-generated distractors.
+  const variantAnswer = variant?.correctAnswer ?? fact.correctAnswer
+  if (pool.length === 0 && isNumericalAnswer(variantAnswer)) {
+    const numerical = getNumericalDistractors(fact, DISTRACTOR_COUNT)
+    for (const d of numerical) push(d)
+  }
 
   return pool
 }
@@ -73,7 +79,8 @@ function buildDistractorPool(fact: Fact, variant: QuestionVariant | null, correc
 function buildQuestionFromFact(fact: Fact): MasteryChallengeQuestion | null {
   const variant = pickHardestVariant(fact)
   const question = variant?.question ?? fact.quizQuestion
-  const correctAnswer = variant?.correctAnswer ?? fact.correctAnswer
+  const rawCorrectAnswer = variant?.correctAnswer ?? fact.correctAnswer
+  const correctAnswer = displayAnswer(rawCorrectAnswer)
   const pool = buildDistractorPool(fact, variant, correctAnswer)
   if (pool.length < 2) return null
 
