@@ -19,13 +19,15 @@ import * as path from 'path';
 // Bot profiles matching the browser bot
 // ──────────────────────────────────────────────────────────────────────────────
 
+// Charge rates calibrated to accuracy: charging costs +1 AP, breaks even at ~56% accuracy.
+// Smart players charge more when accuracy is high, less when low.
 const PROFILES = [
-  { id: 'first_timer',     name: 'First Timer',     correctRate: 0.45, chargeRate: 0.15, strategy: 'basic' as const },
-  { id: 'casual_learner',  name: 'Casual Learner',  correctRate: 0.65, chargeRate: 0.30, strategy: 'basic' as const },
-  { id: 'regular',         name: 'Regular',         correctRate: 0.62, chargeRate: 0.40, strategy: 'intermediate' as const },
-  { id: 'gamer',           name: 'Gamer',           correctRate: 0.55, chargeRate: 0.80, strategy: 'optimal' as const },
-  { id: 'dedicated',       name: 'Dedicated',       correctRate: 0.70, chargeRate: 0.85, strategy: 'optimal' as const },
-  { id: 'scholar',         name: 'Scholar',         correctRate: 0.82, chargeRate: 0.90, strategy: 'optimal' as const },
+  { id: 'first_timer',     name: 'First Timer',     correctRate: 0.45, chargeRate: 0.10, strategy: 'basic' as const },
+  { id: 'casual_learner',  name: 'Casual Learner',  correctRate: 0.65, chargeRate: 0.35, strategy: 'basic' as const },
+  { id: 'regular',         name: 'Regular',         correctRate: 0.62, chargeRate: 0.30, strategy: 'intermediate' as const },
+  { id: 'gamer',           name: 'Gamer',           correctRate: 0.55, chargeRate: 0.20, strategy: 'optimal' as const },
+  { id: 'dedicated',       name: 'Dedicated',       correctRate: 0.70, chargeRate: 0.55, strategy: 'optimal' as const },
+  { id: 'scholar',         name: 'Scholar',         correctRate: 0.82, chargeRate: 0.75, strategy: 'optimal' as const },
 ] as const;
 
 type ProfileId = (typeof PROFILES)[number]['id'];

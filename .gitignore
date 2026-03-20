@@ -140,3 +140,9 @@ src-tauri/target/
 # Steam App ID file — committed with test ID 480 (Spacewar) for development.
 # Replace contents with your real App ID before shipping. Do NOT gitignore this file.
 # src-tauri/steam_appid.txt  # intentionally tracked
+
+# Playtest data, runs, balance reports
+data/playtests/runs/
+data/playtests/overnight*/
+data/playtests/logs/
+data/playtests/reports/

@@ -160,54 +160,61 @@ export interface BotRunStats {
   bountiesCompleted: string[];
 }
 
-/** Predefined bot profiles matching the mass-simulate player personas. */
+/**
+ * Predefined bot profiles.
+ *
+ * Charge rates are calibrated to each profile's quiz accuracy.
+ * Charging costs +1 AP and breaks even at ~56% accuracy.
+ * Smart players charge MORE when accuracy is high, LESS when low.
+ * Surge turns (every 3rd) remove the +1 AP surcharge, so surgeChargeRate is always higher.
+ */
 export const BOT_PROFILES: Record<string, BotProfile> = {
   first_timer: {
     id: 'first_timer',
     name: 'First Timer',
     quizAccuracy: 0.45,
     strategy: 'basic',
-    chargeRate: 0.15,
-    surgeChargeRate: 0.60,
+    chargeRate: 0.10,       // Below breakeven — barely charges (wastes AP)
+    surgeChargeRate: 0.50,  // Surge = free charge, so worth trying
   },
   casual_learner: {
     id: 'casual_learner',
     name: 'Casual Learner',
     quizAccuracy: 0.65,
     strategy: 'basic',
-    chargeRate: 0.30,
-    surgeChargeRate: 0.70,
+    chargeRate: 0.35,       // Above breakeven — moderate charging is +EV
+    surgeChargeRate: 0.75,
   },
   regular: {
     id: 'regular',
     name: 'Regular',
     quizAccuracy: 0.62,
     strategy: 'intermediate',
-    chargeRate: 0.40,
-    surgeChargeRate: 0.90,
+    chargeRate: 0.30,       // Just above breakeven — cautious charging
+    surgeChargeRate: 0.80,
   },
   gamer: {
     id: 'gamer',
     name: 'Gamer',
     quizAccuracy: 0.55,
     strategy: 'optimal',
-    chargeRate: 0.80,
-    surgeChargeRate: 1.0,
+    chargeRate: 0.20,       // Near breakeven — smart gamer barely charges outside surge
+    surgeChargeRate: 0.90,  // But always charges on free surge turns
   },
   dedicated: {
     id: 'dedicated',
     name: 'Dedicated',
     quizAccuracy: 0.70,
     strategy: 'optimal',
-    chargeRate: 0.85,
-    surgeChargeRate: 1.0,
+    chargeRate: 0.55,       // Solidly above breakeven — charging is profitable
+    surgeChargeRate: 0.95,
   },
   scholar: {
     id: 'scholar',
     name: 'Scholar',
     quizAccuracy: 0.82,
     strategy: 'optimal',
-    chargeRate: 0.90,
+    chargeRate: 0.75,       // Well above breakeven — charge most of the time
     surgeChargeRate: 1.0,
   },
 };
