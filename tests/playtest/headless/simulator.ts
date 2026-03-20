@@ -181,6 +181,7 @@ function simulateSingleEncounter(
     maxTurns: number;
     verbose: boolean;
   },
+  ascMods: ReturnType<typeof getAscensionModifiers> = getAscensionModifiers(0),
 ): {
   result: 'victory' | 'defeat' | 'timeout';
   turnsUsed: number;
@@ -222,7 +223,9 @@ function simulateSingleEncounter(
       const cardMinCost = card.apCost ?? 1;
 
       // Decide play mode based on available AP
-      const chargeApCost = cardMinCost + 1;
+      // A19 buff: free charging (no +1 AP surcharge)
+      const chargeSurcharge = ascMods.freeCharging ? 0 : 1;
+      const chargeApCost = cardMinCost + chargeSurcharge;
       const canCharge = turnState.apCurrent >= chargeApCost;
       const isCharge = canCharge && Math.random() < chargeRate;
 
@@ -257,8 +260,23 @@ function simulateSingleEncounter(
 
       if (answeredCorrectly) {
         correctAnswers++;
+        // A17 buff: correct answers heal 1 HP
+        if (ascMods.correctAnswerHeal > 0) {
+          turnState.playerState.hp = Math.min(
+            turnState.playerState.hp + ascMods.correctAnswerHeal,
+            turnState.playerState.maxHp,
+          );
+        }
       } else {
         wrongAnswers++;
+      }
+
+      // A6 buff: heal on combo threshold
+      if (ascMods.comboHealThreshold > 0 && res.comboCount >= ascMods.comboHealThreshold && res.comboCount === ascMods.comboHealThreshold) {
+        turnState.playerState.hp = Math.min(
+          turnState.playerState.hp + ascMods.comboHealAmount,
+          turnState.playerState.maxHp,
+        );
       }
 
       if (res.effect.damageDealt > 0) {
@@ -303,6 +321,14 @@ function simulateSingleEncounter(
     turnsUsed++;
 
     damageTaken += enemyResult.damageDealt;
+
+    // A9 challenge: enemy regenerates HP each turn
+    if (ascMods.enemyRegenPerTurn > 0 && turnState.enemy.currentHP > 0) {
+      turnState.enemy.currentHP = Math.min(
+        turnState.enemy.currentHP + ascMods.enemyRegenPerTurn,
+        turnState.enemy.maxHP,
+      );
+    }
 
     if (verbose) {
       console.log(
@@ -420,7 +446,7 @@ export function runSimulation(opts: SimOptions = {}): SimRunResult {
     // Start encounter — draws initial hand
     const initialTurnState = startEncounter(deck, enemy, currentPlayerHP);
 
-    // Apply ascension modifiers to turn state
+    // Apply ascension challenge modifiers to turn state
     initialTurnState.ascensionLevel = ascMods.level;
     initialTurnState.ascensionEnemyDamageMultiplier = ascMods.enemyDamageMultiplier;
     initialTurnState.ascensionShieldCardMultiplier = ascMods.shieldCardMultiplier;
@@ -433,12 +459,22 @@ export function runSimulation(opts: SimOptions = {}): SimRunResult {
     initialTurnState.ascensionForceHardQuestionFormats = ascMods.forceHardQuestionFormats;
     initialTurnState.ascensionPreventFlee = ascMods.preventFlee;
 
+    // Apply ascension BUFF modifiers
+    // A2: +1 AP on first turn
+    if (ascMods.firstTurnBonusAp > 0) {
+      initialTurnState.apCurrent += ascMods.firstTurnBonusAp;
+    }
+    // A9: Start encounter with shield
+    if (ascMods.encounterStartShield > 0) {
+      initialTurnState.playerState.shield += ascMods.encounterStartShield;
+    }
+
     const encounterResult = simulateSingleEncounter(initialTurnState, {
       correctRate: options.correctRate,
       chargeRate: options.chargeRate,
       maxTurns: options.maxTurnsPerEncounter,
       verbose: options.verbose,
-    });
+    }, ascMods);
 
     // Update persistent HP from the last known turn state (approximation)
     // The turnState's playerState.hp is the authoritative source after the encounter
