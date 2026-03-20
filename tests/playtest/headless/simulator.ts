@@ -28,6 +28,7 @@ import type { Card, CardType, FactDomain, CardTier } from '../../../src/data/car
 import type { EnemyTemplate } from '../../../src/data/enemies.js';
 import { PLAYER_START_HP, PLAYER_MAX_HP, POST_ENCOUNTER_HEAL_PCT } from '../../../src/data/balance.js';
 import { getAscensionModifiers } from '../../../src/services/ascension.js';
+import { STARTER_RELIC_IDS } from '../../../src/data/relics/index.js';
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Types
@@ -407,6 +408,19 @@ export function runSimulation(opts: SimOptions = {}): SimRunResult {
   let currentPlayerHP = PLAYER_START_HP;
   const playerMaxHP = ascMods.playerMaxHpOverride ?? PLAYER_MAX_HP;
 
+  // Build relic set — starter relics from ascension + relics earned during run
+  // In a real game, players pick relics at bosses/shops. We simulate by:
+  // 1. Giving starter relics based on ascension level
+  // 2. Adding a random relic every ~4 encounters (simulating boss/shop drops)
+  const runRelicIds = new Set<string>();
+  const availableRelics = [...STARTER_RELIC_IDS];
+  // Pick starter relics
+  for (let r = 0; r < ascMods.startingRelicCount && availableRelics.length > 0; r++) {
+    const idx = Math.floor(Math.random() * availableRelics.length);
+    runRelicIds.add(availableRelics[idx]);
+    availableRelics.splice(idx, 1);
+  }
+
   const encounterSummaries: EncounterSummary[] = [];
   let totalTurns = 0;
   let totalDamageDealt = 0;
@@ -458,6 +472,16 @@ export function runSimulation(opts: SimOptions = {}): SimRunResult {
     initialTurnState.ascensionTier1OptionCount = ascMods.tier1OptionCount;
     initialTurnState.ascensionForceHardQuestionFormats = ascMods.forceHardQuestionFormats;
     initialTurnState.ascensionPreventFlee = ascMods.preventFlee;
+
+    // Set active relics on the turn state (relicEffectResolver reads these)
+    initialTurnState.activeRelicIds = new Set(runRelicIds);
+
+    // Simulate relic drops: add a random relic every 4 encounters (boss/shop simulation)
+    if (i > 0 && i % 4 === 0 && availableRelics.length > 0) {
+      const dropIdx = Math.floor(Math.random() * availableRelics.length);
+      runRelicIds.add(availableRelics[dropIdx]);
+      availableRelics.splice(dropIdx, 1);
+    }
 
     // Apply ascension BUFF modifiers
     // A2: +1 AP on first turn
