@@ -16,6 +16,7 @@ import {
 } from '../data/balance';
 import { isVulnerable } from '../data/statusEffects';
 import { getMechanicDefinition, type PlayMode } from '../data/mechanics';
+import { resolveAttackModifiers, resolveShieldModifiers } from './relicEffectResolver';
 
 export interface CardEffectResult {
   effectType: CardType;
@@ -216,20 +217,48 @@ export function resolveCardEffect(
   const sharpenedEdgeBonus = strikeTag && activeRelicIds.has('barbed_edge') ? 3 : 0;
   const effectiveBase = mechanicBaseValue + sharpenedEdgeBonus;
 
-  let attackRelicMultiplier = 1;
-  if (effectiveType === 'attack') {
-    if (advanced.isFirstAttackThisEncounter && activeRelicIds.has('flame_brand')) {
-      attackRelicMultiplier *= 1.4;
-    }
-    if (activeRelicIds.has('glass_cannon')) {
-      attackRelicMultiplier *= 1.35;
-    }
-  }
+  // ── Relic attack modifiers ──────────────────────────────────────────────────
+  // resolveAttackModifiers handles all attack-boosting relics (whetstone, flame_brand,
+  // glass_cannon, berserker_band, etc.). We read playerState for HP context.
+  const relicAttackMods = effectiveType === 'attack'
+    ? resolveAttackModifiers(activeRelicIds, {
+        isFirstAttack: advanced.isFirstAttackThisEncounter ?? false,
+        isStrikeTagged: strikeTag,
+        comboCount,
+        playerHpPercent: playerState.hp / playerState.maxHP,
+        consecutiveCorrectAttacks: 0, // crescendo_blade context not tracked in card resolver; zero is safe
+        cardTier: typeof card.tier === 'string' ? card.tier : 'learning',
+        correctStreakThisEncounter: 0, // memory_palace context not tracked here; handled upstream
+        enemyHpPercent: enemy.currentHP / enemy.maxHP,
+        enemyPoisonStacks: (enemy.statusEffects ?? []).filter(s => s.type === 'poison').reduce((sum, s) => sum + (s.value ?? 0), 0),
+        comboRingActive: false, // combo_ring context resolved in turnManager; not available here
+      })
+    : null;
+
+  // ── Relic shield modifiers ──────────────────────────────────────────────────
+  const relicShieldMods = (effectiveType === 'shield' || effectiveType === 'wild')
+    ? resolveShieldModifiers(activeRelicIds)
+    : null;
+
+  // Build the attack relic multiplier from the resolver results.
+  // Flat bonus is applied after scaling (added to finalValue below).
+  // Percent bonus is applied as a multiplier here.
+  const attackRelicMultiplier = relicAttackMods
+    ? 1 + relicAttackMods.percentDamageBonus
+    : 1;
 
   const rawValue = effectiveBase * focusAdjustedMultiplier;
   result.rawValue = rawValue;
-  const finalValue = Math.round(rawValue * comboMultiplier * chainMultiplier * speedBonus * buffMultiplier * attackRelicMultiplier * overclockMultiplier);
+  const scaledValue = Math.round(rawValue * comboMultiplier * chainMultiplier * speedBonus * buffMultiplier * attackRelicMultiplier * overclockMultiplier);
+  // Apply flat relic attack bonus after all multipliers (so it isn't multiplied by combo/chain).
+  const relicFlatAttackBonus = relicAttackMods?.flatDamageBonus ?? 0;
+  const finalValue = effectiveType === 'attack'
+    ? scaledValue + relicFlatAttackBonus
+    : scaledValue;
   result.finalValue = finalValue;
+
+  // Flat shield bonus from relics (stone_wall: +3). Added to every shield result.
+  const shieldRelicBonus = relicShieldMods?.flatBlockBonus ?? 0;
 
   const applyAttackDamage = (baseDamage: number): void => {
     let damage = Math.max(0, Math.round(baseDamage + (passiveBonuses?.attack ?? 0)));
@@ -237,6 +266,9 @@ export function resolveCardEffect(
     result.damageDealt = damage;
     result.enemyDefeated = damage >= enemy.currentHP;
   };
+
+  /** Returns flat relic shield bonus applied to all shield effects. */
+  const passiveShield = (): number => shieldRelicBonus;
 
   // Double Strike buff consumes on next attack card — full power per hit.
   if (advanced.isDoubleStrikeActive && effectiveType === 'attack') {
@@ -272,13 +304,13 @@ export function resolveCardEffect(
       return result;
     }
     case 'fortify': {
-      const shield = finalValue + (passiveBonuses?.shield ?? 0);
+      const shield = finalValue + passiveShield();
       result.shieldApplied = shield;
       result.persistentShield = shield;
       return result;
     }
     case 'parry': {
-      result.shieldApplied = finalValue + (passiveBonuses?.shield ?? 0);
+      result.shieldApplied = finalValue + passiveShield();
       const enemyIsAttacking = enemy.nextIntent.type === 'attack' || enemy.nextIntent.type === 'multi_attack';
       if (enemyIsAttacking) result.parryDrawBonus = 1;
       return result;
@@ -291,11 +323,11 @@ export function resolveCardEffect(
       }
       // Brace scales enemy intent by play-mode multiplier
       const braceMultiplier = isChargeCorrect ? 3.0 : (isChargeWrong ? 0.7 : 1.0);
-      result.shieldApplied = Math.round(enemy.nextIntent.value * braceMultiplier) + (passiveBonuses?.shield ?? 0);
+      result.shieldApplied = Math.round(enemy.nextIntent.value * braceMultiplier) + passiveShield();
       return result;
     }
     case 'overheal': {
-      const targetShield = finalValue + (passiveBonuses?.shield ?? 0);
+      const targetShield = finalValue + passiveShield();
       const healthPercentage = playerState.hp / playerState.maxHP;
       const bonusMultiplier = healthPercentage < 0.5 ? 2.0 : 1.0;
       result.shieldApplied = Math.round(targetShield * bonusMultiplier);
@@ -362,7 +394,7 @@ export function resolveCardEffect(
     }
     case 'thorns': {
       // Both block and reflect scale with play mode
-      result.shieldApplied = finalValue + (passiveBonuses?.shield ?? 0);
+      result.shieldApplied = finalValue + passiveShield();
       // thornsValue scales proportionally: quick=3, charge_correct=9, charge_wrong=2
       const thornsBaseReflect = isChargeCorrect ? 9 : (isChargeWrong ? 2 : 3);
       result.thornsValue = Math.round(thornsBaseReflect * focusAdjustedMultiplier);
@@ -394,7 +426,7 @@ export function resolveCardEffect(
     case 'emergency': {
       const hpPercent = playerState.hp / playerState.maxHP;
       const block = hpPercent < 0.3 ? finalValue * 2 : finalValue;
-      result.shieldApplied = Math.round(block) + (passiveBonuses?.shield ?? 0);
+      result.shieldApplied = Math.round(block) + passiveShield();
       return result;
     }
     case 'mirror': {
@@ -405,7 +437,7 @@ export function resolveCardEffect(
     case 'adapt': {
       const intentType = enemy.nextIntent.type;
       if (intentType === 'attack' || intentType === 'multi_attack') {
-        result.shieldApplied = finalValue + (passiveBonuses?.shield ?? 0);
+        result.shieldApplied = finalValue + passiveShield();
       } else if (intentType === 'debuff') {
         result.adaptCleanse = true;
       } else {
@@ -425,7 +457,7 @@ export function resolveCardEffect(
       break;
     }
     case 'shield': {
-      result.shieldApplied = finalValue + (passiveBonuses?.shield ?? 0);
+      result.shieldApplied = finalValue + passiveShield();
       break;
     }
     case 'buff': {
