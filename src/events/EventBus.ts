@@ -9,8 +9,8 @@ type EventName = keyof GameEventMap
  * Typed singleton event bus for cross-boundary communication.
  *
  * Usage:
- *   eventBus.emit('block-mined', { x: 3, y: 5, blockType: BlockType.Stone, loot: [] })
- *   eventBus.on('block-mined', (data) => { console.log(data.blockType) })
+ *   eventBus.emit('quiz-answer-submitted', { factId: 'fact_001', selectedDistractorIndex: 'correct', isCorrect: true })
+ *   eventBus.on('quiz-answer-submitted', (data) => { console.log(data.isCorrect) })
  */
 export class EventBus {
   private handlers = new Map<EventName, Set<Function>>()

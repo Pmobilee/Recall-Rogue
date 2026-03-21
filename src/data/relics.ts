@@ -1,8 +1,24 @@
-import type { Relic } from './types'
-
 // =========================================================
 // V2 Relic Types
 // =========================================================
+
+/** Legacy mining-era relic type — kept for RELICS catalogue only. Not used by the card roguelite. */
+type RelicEffect =
+  | { type: 'oxygen_regen'; amount: number }
+  | { type: 'loot_magnet'; radius: number }
+  | { type: 'tough_skin'; reduction: number }
+  | { type: 'lucky_strike'; chance: number }
+  | { type: 'deep_breath'; bonus: number }
+  | { type: 'quiz_master'; bonus: number }
+
+/** Legacy mining-era relic — kept for RELICS catalogue only. Not used by the card roguelite. */
+type Relic = {
+  id: string
+  name: string
+  description: string
+  icon: string
+  effect: RelicEffect
+}
 
 /** Relic tier controls power level. (DD-V2-062, DD-V2-068) */
 export type RelicTier = 'common' | 'rare' | 'legendary'

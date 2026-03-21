@@ -129,10 +129,10 @@ Every code change that touches gameplay MUST have corresponding documentation up
 
 ## Inspection Registry — MANDATORY
 
-The game element inspection registry at `data/inspection-registry.json` tracks **334 elements** across 15 tables. It is the single source of truth for what exists in the game and when each element was last verified.
+The game element inspection registry at `data/inspection-registry.json` tracks **449 elements** across 24 tables. It is the single source of truth for what exists in the game and when each element was last verified.
 
 ### Tables
-cards (31), relics (42), enemies (89), rooms (7), screens (28), systems (26), mysteryEvents (27), specialEvents (5), statusEffects (6), rewardTypes (4), chainTypes (6), domains (12), quizSystems (21), domainTestMatrix (20), testingRecommendations (10)
+cards (31), relics (42), enemies (89), rooms (7), screens (28), systems (26), mysteryEvents (27), specialEvents (5), statusEffects (6), rewardTypes (4), chainTypes (6), domains (12), quizSystems (21), domainTestMatrix (20), testingRecommendations (10), ascensionLevels (20), animationArchetypes (8), cardSynergies (27), questionFormats (4), relicTriggers (27), enemyIntents (7), masteryLevels (6), cardKeywords (10), cardTypes (6)
 
 ### When to Update
 - **Any code change** touching a game element (card, relic, enemy, room, screen, system, quiz, domain): update `lastChangedDate` to today
