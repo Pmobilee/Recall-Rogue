@@ -814,60 +814,60 @@
         "name": "Bastions Will",
         "category": "rare",
         "description": "Charged shield +75%, Quick Play +25%",
-        "status": "partial",
-        "lastChangedDate": "not_checked",
+        "status": "working",
+        "lastChangedDate": "2026-03-21",
         "visualInspectionDate": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": "Quick Play +25% block path not in resolver"
+        "notes": "Fixed: Quick Play +25% block now in resolver"
       },
       {
         "id": "double_down",
         "name": "Double Down",
         "category": "rare",
         "description": "Double Charge: 5x/1.5x/0.3x outcomes",
-        "status": "partial",
-        "lastChangedDate": "not_checked",
+        "status": "working",
+        "lastChangedDate": "2026-03-21",
         "visualInspectionDate": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": "Full 3-outcome flow TODO; only 2x on first correct"
+        "notes": "Fixed: correct=5x, wrong=0.3x multipliers implemented"
       },
       {
         "id": "domain_mastery_sigil",
         "name": "Domain Mastery Sigil",
         "category": "rare",
         "description": "4+ same-domain cards: +30% base damage",
-        "status": "partial",
-        "lastChangedDate": "not_checked",
+        "status": "working",
+        "lastChangedDate": "2026-03-21",
         "visualInspectionDate": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": "Uses streak logic not deck-composition as described"
+        "notes": "Fixed: now uses deck-composition check (4+ same-domain cards = +30%)"
       },
       {
         "id": "phoenix_feather",
         "name": "Phoenix Feather",
         "category": "rare",
         "description": "Resurrect at 15% HP once per run",
-        "status": "partial",
-        "lastChangedDate": "not_checked",
+        "status": "working",
+        "lastChangedDate": "2026-03-21",
         "visualInspectionDate": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": "Auto-Charge-free post-resurrect not wired"
+        "notes": "Fixed: auto-Charge-free for 1 turn after resurrection wired via phoenixAutoChargeTurns"
       },
       {
         "id": "mirror_of_knowledge",
         "name": "Mirror of Knowledge",
         "category": "legendary",
         "description": "Replay card at 1.5x after correct Charge",
-        "status": "partial",
-        "lastChangedDate": "not_checked",
+        "status": "working",
+        "lastChangedDate": "2026-03-21",
         "visualInspectionDate": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": "Flag returned but replay execution unconfirmed"
+        "notes": "Fixed: replay at 1.5x wired in turnManager, once per encounter"
       },
       {
         "id": "toxic_bloom",
@@ -1021,11 +1021,11 @@
         "category": "act1_elite",
         "description": "act1 elite",
         "status": "deprecated",
-        "lastChangedDate": "not_checked",
+        "lastChangedDate": "2026-03-21",
         "visualInspectionDate": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": "Not in active pools"
+        "notes": "Removed from ACT_ENEMY_POOLS, kept in ENEMY_TEMPLATES for save compat"
       },
       {
         "id": "cave_troll",
@@ -1152,12 +1152,12 @@
         "name": "The Grade Curve",
         "category": "act2_deep_common",
         "description": "act2 deep common",
-        "status": "broken",
-        "lastChangedDate": "not_checked",
+        "status": "working",
+        "lastChangedDate": "2026-03-21",
         "visualInspectionDate": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": "Missing sprite"
+        "notes": "Placeholder sprite from shadow_mimic — needs unique art"
       },
       {
         "id": "basalt_crawler",
@@ -1429,11 +1429,11 @@
         "category": "act2_elite",
         "description": "act2 elite",
         "status": "deprecated",
-        "lastChangedDate": "not_checked",
+        "lastChangedDate": "2026-03-21",
         "visualInspectionDate": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": "Not in active pools"
+        "notes": "Removed from ACT_ENEMY_POOLS, kept in ENEMY_TEMPLATES for save compat"
       },
       {
         "id": "magma_serpent",

@@ -179,12 +179,20 @@ export interface TurnState {
   chainType: number | null;
   /** Whether double_down has already been consumed this encounter. */
   doubleDownUsedThisEncounter: boolean;
+  /** Whether mirror_of_knowledge has already been used this encounter (once per encounter). */
+  mirrorUsedThisEncounter: boolean;
   /**
    * Chain Momentum (AR-122): when true, the next Charge play this turn costs +0 AP surcharge
    * instead of +1. Set after a correct Charge answer; consumed on the next Charge play.
    * Resets on wrong Charge, Quick Play, or turn end.
    */
   nextChargeFree: boolean;
+  /**
+   * Phoenix Feather post-resurrection auto-Charge turns remaining.
+   * When > 0, all Charge plays are automatically treated as correct (no quiz required).
+   * Set to 1 when phoenix_feather resurrection fires; decremented at end of turn.
+   */
+  phoenixAutoChargeTurns: number;
 }
 
 export interface PlayCardResult {
@@ -347,7 +355,9 @@ export function startEncounter(
     chainLength: 0,
     chainType: null,
     doubleDownUsedThisEncounter: false,
+    mirrorUsedThisEncounter: false,
     nextChargeFree: false,
+    phoenixAutoChargeTurns: 0,
   };
 
   // Reset chain at encounter start (clean slate)
@@ -405,6 +415,12 @@ export function playCardAction(
   const { deck, playerState, enemy } = turnState;
   const cardInHand = deck.hand.find((card) => card.id === cardId);
   if (!cardInHand) throw new Error(`Card ${cardId} not found in hand`);
+
+  // Phoenix Feather post-resurrection: auto-Charge free for this turn.
+  // Override answeredCorrectly and playMode so the card resolves as a correct Charge.
+  if (turnState.phoenixAutoChargeTurns > 0 && playMode === 'charge') {
+    answeredCorrectly = true;
+  }
 
   let apCost = Math.max(0, cardInHand.apCost ?? 1);
 
@@ -624,6 +640,18 @@ export function playCardAction(
       healApplied: 0,
     };
 
+    // double_down — wrong Charge penalty: override fizzle damage with 0.3× base (once per encounter)
+    if (playMode === 'charge' && fizzledEffect.damageDealt > 0) {
+      const ddPenalty = resolveDoubleDownBonus(turnState.activeRelicIds, turnState.doubleDownUsedThisEncounter, false);
+      if (ddPenalty.active) {
+        const ddBase = Math.round(card.baseEffectValue * ddPenalty.damageMultiplier);
+        fizzledEffect.damageDealt = ddBase;
+        fizzledEffect.rawValue = ddBase;
+        fizzledEffect.finalValue = ddBase;
+        turnState.doubleDownUsedThisEncounter = true;
+      }
+    }
+
     // Apply partial fizzle effects to game state
     if (fizzledEffect.damageDealt > 0) {
       const damageResult = applyDamageToEnemy(enemy, fizzledEffect.damageDealt);
@@ -714,6 +742,20 @@ export function playCardAction(
   const useOverclock = turnState.overclockReady;
   const isChargeCorrect = playMode === 'charge' || playMode === 'charge_correct';
 
+  // Compute deck domain counts for domain_mastery_sigil: count cards across draw + discard + hand.
+  // Exhaust pile is excluded — those cards are permanently removed from the run.
+  const deckDomainCounts: Record<string, number> = {};
+  const deckCards = [
+    ...turnState.deck.drawPile,
+    ...turnState.deck.discardPile,
+    ...turnState.deck.hand,
+  ];
+  for (const c of deckCards) {
+    if (c.domain) {
+      deckDomainCounts[c.domain] = (deckDomainCounts[c.domain] ?? 0) + 1;
+    }
+  }
+
   const effect = resolveCardEffect(
     card,
     playerState,
@@ -733,6 +775,7 @@ export function playCardAction(
       correct: answeredCorrectly,
       playMode,
       chainMultiplier: currentChainMultiplier,
+      deckDomainCounts,
     },
   );
 
@@ -802,7 +845,7 @@ export function playCardAction(
       cardType: cardTypeForRelic,
       isFirstChargeThisTurn: turnState.cardsCorrectThisTurn === 0,
       chargeCountThisEncounter: turnState.consecutiveCorrectThisEncounter + 1,
-      mirrorUsedThisEncounter: false, // mirror handled separately
+      mirrorUsedThisEncounter: turnState.mirrorUsedThisEncounter,
       adrenalineShard_usedThisTurn: false, // adrenaline_shard handled upstream
     });
 
@@ -828,11 +871,52 @@ export function playCardAction(
       effect.finalValue = Math.round(effect.finalValue * 2);
       effect.enemyDefeated = effect.damageDealt >= enemy.currentHP;
     }
+
+    // bastions_will — +75% block for Charged shield cards
+    if (chargeFx.shieldBonus > 0 && effect.shieldApplied > 0) {
+      const bastionsMult = 1 + chargeFx.shieldBonus / 100;
+      effect.shieldApplied = Math.round(effect.shieldApplied * bastionsMult);
+      if (effect.persistentShield != null && effect.persistentShield > 0) {
+        effect.persistentShield = Math.round(effect.persistentShield * bastionsMult);
+      }
+      effect.finalValue = effect.shieldApplied;
+    }
+
+    // mirror_of_knowledge — once per encounter: after correct Charge, replay the card effect at 1.5×
+    // The replay has no AP cost and requires no quiz answer.
+    if (chargeFx.mirrorAvailable) {
+      const MIRROR_MULT = 1.5;
+      if (effect.damageDealt > 0) {
+        const mirrorDamage = Math.round(effect.damageDealt * MIRROR_MULT);
+        const mirrorResult = applyDamageToEnemy(enemy, mirrorDamage);
+        effect.damageDealt += mirrorDamage;
+        effect.finalValue = effect.damageDealt;
+        effect.enemyDefeated = mirrorResult.defeated;
+        turnState.damageDealtThisTurn += mirrorDamage;
+      } else if (effect.shieldApplied > 0) {
+        const mirrorShield = Math.round(effect.shieldApplied * MIRROR_MULT);
+        applyShield(playerState, mirrorShield);
+        effect.shieldApplied += mirrorShield;
+        effect.finalValue = effect.shieldApplied;
+      } else if (effect.healApplied > 0) {
+        const mirrorHeal = Math.round(effect.healApplied * MIRROR_MULT);
+        healPlayer(playerState, mirrorHeal);
+        effect.healApplied += mirrorHeal;
+        effect.finalValue = effect.healApplied;
+      }
+      turnState.mirrorUsedThisEncounter = true;
+      turnState.turnLog.push({
+        type: 'play',
+        message: 'Mirror of Knowledge: replayed at 1.5×',
+        value: effect.finalValue,
+        cardId,
+      });
+    }
   }
 
-  // double_down — first successful Charge this encounter deals 2× damage (once per encounter)
+  // double_down — once per encounter: correct Charge → 5× damage, wrong Charge → 0.3× damage
   if (isChargeCorrect && effect.damageDealt > 0) {
-    const ddBonus = resolveDoubleDownBonus(turnState.activeRelicIds, turnState.doubleDownUsedThisEncounter);
+    const ddBonus = resolveDoubleDownBonus(turnState.activeRelicIds, turnState.doubleDownUsedThisEncounter, true);
     if (ddBonus.active) {
       effect.damageDealt = Math.round(effect.damageDealt * ddBonus.damageMultiplier);
       effect.finalValue = Math.round(effect.finalValue * ddBonus.damageMultiplier);
@@ -1234,6 +1318,8 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       if (lethalFx.phoenixBlock > 0) {
         applyShield(playerState, lethalFx.phoenixBlock);
       }
+      // Phoenix Feather: all cards auto-Charge free for 1 turn after resurrection
+      turnState.phoenixAutoChargeTurns = 1;
       // Tier 3: Phoenix Rage — activate bonus damage + remove glass penalty
       if ((lethalFx as any).phoenixRageActive) {
         turnState.phoenixRageTurnsRemaining = 5;
@@ -1385,6 +1471,11 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
 
   if (turnState.foresightTurnsRemaining > 0) {
     turnState.foresightTurnsRemaining -= 1;
+  }
+
+  // Phoenix Feather: decrement auto-Charge turns
+  if (turnState.phoenixAutoChargeTurns > 0) {
+    turnState.phoenixAutoChargeTurns -= 1;
   }
 
   // Tier 3: Decrement Phoenix Rage counters

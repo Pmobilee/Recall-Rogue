@@ -1920,7 +1920,7 @@ export const ACT_ENEMY_POOLS: ActEnemyPool[] = [
       'mud_crawler', 'root_strangler', 'iron_beetle', 'limestone_imp',
       'cave_spider', 'peat_shambler', 'fungal_sprout', 'blind_grub',
     ],
-    elites: ['ore_wyrm', 'cave_troll'],
+    elites: ['cave_troll'], // ore_wyrm removed — deprecated, kept in ENEMY_TEMPLATES for save compatibility
     miniBosses: ['venomfang', 'root_mother', 'iron_matriarch', 'bog_witch', 'mushroom_sovereign'],
     bosses: ['the_excavator', 'magma_core'],
   },
@@ -1939,7 +1939,8 @@ export const ACT_ENEMY_POOLS: ActEnemyPool[] = [
       'ash_wraith', 'prismatic_jelly', 'ember_skeleton',
     ],
     elites: [
-      'fossil_guardian', 'magma_serpent', 'basalt_titan',
+      // fossil_guardian removed — deprecated, kept in ENEMY_TEMPLATES for save compatibility
+      'magma_serpent', 'basalt_titan',
       'geode_king', 'abyssal_leviathan', 'crystal_lich',
     ],
     miniBosses: [

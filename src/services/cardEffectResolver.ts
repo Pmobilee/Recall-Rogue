@@ -79,6 +79,11 @@ export interface AdvancedResolveOptions {
   playMode?: PlayMode;
   /** Knowledge Chain multiplier (1.0 = no chain). Stacks multiplicatively with comboMultiplier. */
   chainMultiplier?: number;
+  /**
+   * Count of cards per domain in the active deck (draw + discard + hand, not exhaust).
+   * Keyed by FactDomain string. Required for domain_mastery_sigil v2.
+   */
+  deckDomainCounts?: Record<string, number>;
 }
 
 export function isCardBlocked(card: Card, enemy: EnemyInstance): boolean {
@@ -245,6 +250,8 @@ export function resolveCardEffect(
         enemyHpPercent: enemy.currentHP / enemy.maxHP,
         enemyPoisonStacks: (enemy.statusEffects ?? []).filter(s => s.type === 'poison').reduce((sum, s) => sum + (s.value ?? 0), 0),
         comboRingActive: false, // combo_ring context resolved in turnManager; not available here
+        cardDomain: card.domain,
+        deckDomainCounts: advanced.deckDomainCounts,
       })
     : null;
 
@@ -273,6 +280,13 @@ export function resolveCardEffect(
   // Flat shield bonus from relics (stone_wall: +3). Added to every shield result.
   const shieldRelicBonus = relicShieldMods?.flatBlockBonus ?? 0;
 
+  // bastions_will Quick Play +25% block multiplier — only on Quick Play (not Charged).
+  // The Charged +75% path is handled in turnManager via resolveChargeCorrectEffects.
+  const isQuickPlay = playMode === 'quick' || playMode === 'quick_play';
+  const quickPlayShieldMult = (isQuickPlay && (relicShieldMods?.quickPlayShieldBonus ?? 0) > 0)
+    ? 1 + (relicShieldMods!.quickPlayShieldBonus / 100)
+    : 1;
+
   const applyAttackDamage = (baseDamage: number): void => {
     let damage = Math.max(0, Math.round(baseDamage + (passiveBonuses?.attack ?? 0)));
     if (isVulnerable(enemy.statusEffects)) damage = Math.round(damage * 1.5);
@@ -280,8 +294,14 @@ export function resolveCardEffect(
     result.enemyDefeated = damage >= enemy.currentHP;
   };
 
-  /** Returns flat relic shield bonus applied to all shield effects. */
-  const passiveShield = (): number => shieldRelicBonus;
+  /**
+   * Applies relic shield modifiers to a base shield value:
+   *   result = Math.round((base + stone_wall_flat) * bastions_will_quick_play_mult)
+   * - stone_wall +3 flat applies always.
+   * - bastions_will +25% applies on Quick Play only; the Charged +75% path is in turnManager.
+   * All callers pass their full pre-relic shield amount as `base`.
+   */
+  const applyShieldRelics = (base: number): number => Math.round((base + shieldRelicBonus) * quickPlayShieldMult);
 
   // Double Strike buff consumes on next attack card — full power per hit.
   if (advanced.isDoubleStrikeActive && effectiveType === 'attack') {
@@ -317,13 +337,13 @@ export function resolveCardEffect(
       return result;
     }
     case 'fortify': {
-      const shield = finalValue + passiveShield();
+      const shield = applyShieldRelics(finalValue);
       result.shieldApplied = shield;
       result.persistentShield = shield;
       return result;
     }
     case 'parry': {
-      result.shieldApplied = finalValue + passiveShield();
+      result.shieldApplied = applyShieldRelics(finalValue);
       const enemyIsAttacking = enemy.nextIntent.type === 'attack' || enemy.nextIntent.type === 'multi_attack';
       if (enemyIsAttacking) result.parryDrawBonus = 1;
       return result;
@@ -336,14 +356,13 @@ export function resolveCardEffect(
       }
       // Brace scales enemy intent by play-mode multiplier
       const braceMultiplier = isChargeCorrect ? 3.0 : (isChargeWrong ? 0.7 : 1.0);
-      result.shieldApplied = Math.round(enemy.nextIntent.value * braceMultiplier) + passiveShield();
+      result.shieldApplied = applyShieldRelics(Math.round(enemy.nextIntent.value * braceMultiplier));
       return result;
     }
     case 'overheal': {
-      const targetShield = finalValue + passiveShield();
       const healthPercentage = playerState.hp / playerState.maxHP;
       const bonusMultiplier = healthPercentage < 0.5 ? 2.0 : 1.0;
-      result.shieldApplied = Math.round(targetShield * bonusMultiplier);
+      result.shieldApplied = applyShieldRelics(Math.round(finalValue * bonusMultiplier));
       return result;
     }
     case 'lifetap': {
@@ -409,7 +428,7 @@ export function resolveCardEffect(
     }
     case 'thorns': {
       // Both block and reflect scale with play mode
-      result.shieldApplied = finalValue + passiveShield();
+      result.shieldApplied = applyShieldRelics(finalValue);
       // thornsValue scales proportionally: quick=3, charge_correct=9, charge_wrong=2
       const thornsBaseReflect = isChargeCorrect ? 9 : (isChargeWrong ? 2 : 3);
       result.thornsValue = Math.round(thornsBaseReflect * focusAdjustedMultiplier);
@@ -441,7 +460,7 @@ export function resolveCardEffect(
     case 'emergency': {
       const hpPercent = playerState.hp / playerState.maxHP;
       const block = hpPercent < 0.3 ? finalValue * 2 : finalValue;
-      result.shieldApplied = Math.round(block) + passiveShield();
+      result.shieldApplied = applyShieldRelics(Math.round(block));
       return result;
     }
     case 'mirror': {
@@ -452,7 +471,7 @@ export function resolveCardEffect(
     case 'adapt': {
       const intentType = enemy.nextIntent.type;
       if (intentType === 'attack' || intentType === 'multi_attack') {
-        result.shieldApplied = finalValue + passiveShield();
+        result.shieldApplied = applyShieldRelics(finalValue);
       } else if (intentType === 'debuff') {
         result.adaptCleanse = true;
       } else {
@@ -472,7 +491,7 @@ export function resolveCardEffect(
       break;
     }
     case 'shield': {
-      result.shieldApplied = finalValue + passiveShield();
+      result.shieldApplied = applyShieldRelics(finalValue);
       break;
     }
     case 'buff': {

@@ -194,6 +194,16 @@ export interface AttackContext {
    * Caller sets this based on resolveChargeCorrectEffects returning comboRingActive.
    */
   comboRingActive?: boolean;
+  /**
+   * The domain of the card being played (domain_mastery_sigil v2).
+   * Used to check whether the card's domain has 4+ cards in the active deck.
+   */
+  cardDomain?: string;
+  /**
+   * Count of cards per domain in the active deck (draw + discard + hand, not exhaust).
+   * Keyed by FactDomain string. Used by domain_mastery_sigil v2.
+   */
+  deckDomainCounts?: Record<string, number>;
 }
 
 /**
@@ -302,9 +312,13 @@ export function resolveAttackModifiers(
     percentDamageBonus += 0.40;
   }
 
-  // domain_mastery_sigil (v2) — domain concentration bonus applied via permanent effect (no per-attack context needed here)
-  // NOTE: domain_concentration_bonus is computed upstream and passed in via comboRingActive or similar context field.
-  // The +20% bonus is applied at the card-play level, not here.
+  // domain_mastery_sigil (v2) — deck has 4+ cards of same domain: all same-domain cards +30% damage
+  if (relicIds.has('domain_mastery_sigil') && context.cardDomain && context.deckDomainCounts) {
+    const domainCount = context.deckDomainCounts[context.cardDomain] ?? 0;
+    if (domainCount >= 4) {
+      percentDamageBonus += 0.30;
+    }
+  }
 
   // combo_ring (v2) — First Charged correct answer each turn grants +1 flat damage to all attacks
   if (relicIds.has('combo_ring') && context.comboRingActive) {
@@ -328,6 +342,11 @@ export interface ShieldModifiers {
   flatBlockBonus: number;
   /** Damage dealt back to attacker when blocking (thorned_vest). */
   reflectDamage: number;
+  /**
+   * Percentage block bonus for Quick Play shield cards (bastions_will: +25%).
+   * 0 if relic not held. Applied as a multiplier: shieldApplied *= 1 + quickPlayShieldBonus / 100.
+   */
+  quickPlayShieldBonus: number;
 }
 
 /**
@@ -340,6 +359,8 @@ export function resolveShieldModifiers(relicIds: Set<string>): ShieldModifiers {
   return {
     flatBlockBonus: relicIds.has('stone_wall') ? 3 : 0,
     reflectDamage: relicIds.has('thorned_vest') ? 2 : 0,
+    // bastions_will — +25% block on Quick Play shield cards
+    quickPlayShieldBonus: relicIds.has('bastions_will') ? 25 : 0,
   };
 }
 
@@ -737,18 +758,28 @@ export function resolveWrongAnswerEffects(
 // ─── Domain Mastery ─────────────────────────────────────────────────
 
 /**
- * Resolve the domain_mastery bonus: 4 consecutive same-domain correct answers
- * grants +75% to the next card.
+ * Check whether the domain_mastery_sigil relic is active for a given card.
  *
- * @param relicIds              - Set of relic IDs the player currently holds.
- * @param sameDomainCorrectStreak - Consecutive correct answers in the same domain.
- * @returns Percentage bonus multiplier (0.75 = +75%, 0 = no bonus).
+ * Returns +0.30 (+30%) if the player holds domain_mastery_sigil AND the card's
+ * domain has 4 or more cards in the active deck (draw + discard + hand).
+ * Returns 0 otherwise.
+ *
+ * The primary application path is via resolveAttackModifiers (AttackContext.cardDomain
+ * + AttackContext.deckDomainCounts). This helper is retained for callers that need
+ * a standalone check outside of the attack modifier pipeline.
+ *
+ * @param relicIds        - Set of relic IDs the player currently holds.
+ * @param cardDomain      - The domain of the card being played.
+ * @param deckDomainCounts - Count of cards per domain in the active deck.
+ * @returns Percentage bonus multiplier (0.30 = +30%, 0 = no bonus).
  */
 export function resolveDomainMasteryBonus(
   relicIds: Set<string>,
-  sameDomainCorrectStreak: number,
+  cardDomain: string,
+  deckDomainCounts: Record<string, number>,
 ): number {
-  return relicIds.has('domain_mastery_sigil') && sameDomainCorrectStreak >= 4 ? 0.75 : 0;
+  if (!relicIds.has('domain_mastery_sigil')) return 0;
+  return (deckDomainCounts[cardDomain] ?? 0) >= 4 ? 0.30 : 0;
 }
 
 // ─── Card Skip ──────────────────────────────────────────────────────
@@ -1293,35 +1324,43 @@ export function resolvePoisonDurationBonus(relicIds: Set<string>): number {
   return relicIds.has('plague_flask') ? 1 : 0;
 }
 
-// ─── Double Down — Charge Double Damage ─────────────────────────────
+// ─── Double Down — High-Stakes Charge Multiplier ────────────────────
 
 /** Result of resolveDoubleDownBonus. */
 export interface DoubleDownEffect {
   /** Whether the double_down bonus is active for this charge. */
   active: boolean;
-  /** Damage multiplier to apply after all other charge modifiers. 2.0 if active, 1.0 otherwise. */
+  /**
+   * Damage multiplier to apply after all other charge modifiers.
+   * Correct answer → 5.0×. Wrong answer → 0.3×. Inactive → 1.0×.
+   */
   damageMultiplier: number;
 }
 
 /**
- * Resolves the double_down relic bonus for a successful Charge.
+ * Resolves the double_down relic bonus for a Charge attempt (correct OR wrong).
  *
- * When double_down is held and hasn't been used this encounter, the first successful
- * Charge deals 2× damage instead of the normal charge multiplier. The caller must
- * set doubleDownUsedThisEncounter = true after consuming this bonus.
+ * Once per encounter, double_down raises the stakes on a Charge:
+ *   - Correct answer: 5.0× damage (high reward)
+ *   - Wrong answer:   0.3× damage (heavy penalty)
  *
- * @param relicIds                 - Set of relic IDs the player currently holds.
- * @param usedThisEncounter        - Whether double_down was already consumed this encounter.
+ * The caller must set doubleDownUsedThisEncounter = true after consuming this bonus
+ * regardless of whether the answer was correct or wrong.
+ *
+ * @param relicIds            - Set of relic IDs the player currently holds.
+ * @param usedThisEncounter   - Whether double_down was already consumed this encounter.
+ * @param correct             - Whether the player answered correctly.
  * @returns Active flag and damage multiplier.
  */
 export function resolveDoubleDownBonus(
   relicIds: Set<string>,
   usedThisEncounter: boolean,
+  correct: boolean,
 ): DoubleDownEffect {
   if (!relicIds.has('double_down') || usedThisEncounter) {
     return { active: false, damageMultiplier: 1 };
   }
-  return { active: true, damageMultiplier: 2.0 };
+  return { active: true, damageMultiplier: correct ? 5.0 : 0.3 };
 }
 
 // ─── V2 Surge Start Effects ─────────────────────────────────────────
