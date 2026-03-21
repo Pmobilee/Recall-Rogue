@@ -154,7 +154,7 @@
   }
 
   .back {
-    min-height: 44px;
+    min-height: calc(44px * var(--layout-scale, 1));
     border-radius: 10px;
     border: 1px solid #475569;
     background: #1e293b;
@@ -301,7 +301,7 @@
   :global([data-layout="landscape"]) .profile-screen {
     margin-left: 100px;
     max-width: 1200px;
-    padding: 32px 48px;
+    padding: calc(32px * var(--layout-scale, 1)) calc(48px * var(--layout-scale, 1));
   }
 
   :global([data-layout="landscape"]) .back {
@@ -310,51 +310,63 @@
 
   /* Stat values */
   :global([data-layout="landscape"]) .stat strong {
-    font-size: 28px;
+    font-size: calc(28px * var(--text-scale, 1));
   }
 
   /* Small labels */
   :global([data-layout="landscape"]) .stat span {
-    font-size: 13px;
+    font-size: calc(13px * var(--text-scale, 1));
   }
 
   /* Body text */
   :global([data-layout="landscape"]) .hero p {
-    font-size: 15px;
+    font-size: calc(15px * var(--text-scale, 1));
   }
 
   :global([data-layout="landscape"]) .domain-item {
-    font-size: 15px;
+    font-size: calc(15px * var(--text-scale, 1));
   }
 
   :global([data-layout="landscape"]) .domain-item strong {
-    font-size: 22px;
+    font-size: calc(22px * var(--text-scale, 1));
   }
 
   /* Stat grid: 3-column with 16px gap */
   :global([data-layout="landscape"]) .stats-grid-landscape {
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    gap: calc(16px * var(--layout-scale, 1));
   }
 
   /* Avatar: larger in landscape */
   :global([data-layout="landscape"]) .avatar {
-    width: 96px;
-    height: 96px;
-    font-size: 48px;
+    width: calc(96px * var(--layout-scale, 1));
+    height: calc(96px * var(--layout-scale, 1));
+    font-size: calc(48px * var(--text-scale, 1));
   }
 
   /* Hero title: larger in landscape */
   :global([data-layout="landscape"]) .hero h3 {
-    font-size: 20px;
+    font-size: calc(20px * var(--text-scale, 1));
   }
 
   /* Empty domains state: styled and centered */
   :global([data-layout="landscape"]) .empty-domains {
-    font-size: 18px;
+    font-size: calc(18px * var(--text-scale, 1));
     font-style: italic;
     color: rgba(255, 255, 255, 0.5);
-    margin-top: 64px;
+    margin-top: calc(64px * var(--layout-scale, 1));
     text-align: center;
+  }
+
+  :global([data-layout="landscape"]) .stat:hover {
+    border-color: rgba(255, 215, 0, 0.3);
+    box-shadow: 0 0 calc(8px * var(--layout-scale, 1)) rgba(255, 215, 0, 0.1);
+    transition: all 150ms ease;
+  }
+
+  :global([data-layout="landscape"]) .domain-item:hover {
+    background: rgba(15, 23, 42, 0.6);
+    border-color: rgba(148, 163, 184, 0.4);
+    transition: all 150ms ease;
   }
 </style>

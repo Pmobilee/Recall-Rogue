@@ -539,7 +539,7 @@
     background: #1f2c42;
     color: #cbd5e1;
     padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
-    min-height: 48px;
+    min-height: calc(48px * var(--layout-scale, 1));
     border-radius: 10px;
     font-size: calc(12px * var(--text-scale, 1));
   }
@@ -567,7 +567,7 @@
     border: 1px solid #4b5563;
     background: #1f2937;
     color: #e5e7eb;
-    min-height: 48px;
+    min-height: calc(48px * var(--layout-scale, 1));
     border-radius: 10px;
     padding: 0 calc(14px * var(--layout-scale, 1));
     font-size: calc(12px * var(--text-scale, 1));
@@ -607,7 +607,7 @@
 
   .settings-card-landscape {
     display: grid;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: calc(200px * var(--layout-scale, 1)) 1fr;
     grid-template-rows: 1fr;
     gap: 0;
     padding: 0;
@@ -679,13 +679,13 @@
   }
 
   .settings-panel-content .settings-section {
-    max-width: 560px;
+    max-width: calc(560px * var(--layout-scale, 1));
   }
 
   /* ═══ LANDSCAPE DESKTOP OVERRIDES ═══════════════════════════════════════════ */
 
   :global([data-layout="landscape"]) .settings-overlay {
-    margin-left: 100px;
+    margin-left: calc(100px * var(--layout-scale, 1));
   }
 
   :global([data-layout="landscape"]) .back-btn {
@@ -694,44 +694,60 @@
 
   /* Widen the content panel so it uses available horizontal space */
   :global([data-layout="landscape"]) .settings-panel-content .settings-section {
-    max-width: 800px;
+    max-width: calc(800px * var(--layout-scale, 1));
   }
 
   /* Body text / labels — larger font and taller click targets */
   :global([data-layout="landscape"]) .toggle-row,
   :global([data-layout="landscape"]) .slider-row {
-    font-size: 15px;
-    min-height: 56px;
+    font-size: calc(15px * var(--text-scale, 1));
+    min-height: calc(56px * var(--layout-scale, 1));
   }
 
   /* Volume sliders: ensure track is at least 280px wide */
   :global([data-layout="landscape"]) .slider-row {
-    grid-template-columns: calc(140px * var(--layout-scale, 1)) minmax(280px, 1fr) auto;
+    grid-template-columns: calc(140px * var(--layout-scale, 1)) minmax(calc(280px * var(--layout-scale, 1)), 1fr) auto;
   }
 
   /* Section headings */
   :global([data-layout="landscape"]) .settings-section h3 {
-    font-size: 20px;
-    margin-bottom: 12px;
+    font-size: calc(20px * var(--text-scale, 1));
+    margin-bottom: calc(12px * var(--layout-scale, 1));
   }
 
   /* More breathing room between sections */
   :global([data-layout="landscape"]) .settings-panel-content {
-    gap: 32px;
+    gap: calc(32px * var(--layout-scale, 1));
   }
 
   /* Toggle checkboxes: larger, easier to tap */
   :global([data-layout="landscape"]) input[type='checkbox'] {
-    width: 44px;
-    height: 44px;
+    width: calc(44px * var(--layout-scale, 1));
+    height: calc(44px * var(--layout-scale, 1));
   }
 
   /* Small labels */
   :global([data-layout="landscape"]) .category-btn {
-    font-size: 13px;
+    font-size: calc(13px * var(--text-scale, 1));
   }
 
   :global([data-layout="landscape"]) .chip {
-    font-size: 13px;
+    font-size: calc(13px * var(--text-scale, 1));
+  }
+
+  :global([data-layout="landscape"]) .category-btn:hover:not(.active) {
+    background: rgba(30, 41, 59, 0.8);
+    color: #93c5fd;
+  }
+
+  :global([data-layout="landscape"]) .chip:hover:not(.selected):not(:disabled) {
+    border-color: rgba(56, 189, 248, 0.3);
+    background: rgba(15, 33, 53, 0.5);
+  }
+
+  :global([data-layout="landscape"]) .toggle-row:hover,
+  :global([data-layout="landscape"]) .slider-row:hover {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: calc(8px * var(--layout-scale, 1));
   }
 </style>

@@ -270,15 +270,15 @@
   /* Tooltip */
   .relic-tooltip {
     position: absolute;
-    right: calc(100% + 10px);
+    right: calc(100% + calc(10px * var(--layout-scale, 1)));
     top: 50%;
     transform: translateY(-50%);
     background: rgba(24, 33, 46, 0.95);
     border: 1.5px solid #C9A227;
     border-radius: 6px;
-    padding: 8px 10px;
-    max-width: 200px;
-    min-width: 120px;
+    padding: calc(8px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    max-width: calc(200px * var(--layout-scale, 1));
+    min-width: calc(120px * var(--layout-scale, 1));
     z-index: 100;
     pointer-events: auto;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
@@ -299,16 +299,16 @@
 
   .tooltip-name {
     font-family: var(--font-pixel, monospace);
-    font-size: 9px;
+    font-size: calc(9px * var(--text-scale, 1));
     font-weight: bold;
     color: #F4D35E;
-    margin-bottom: 4px;
+    margin-bottom: calc(4px * var(--layout-scale, 1));
     line-height: 1.3;
     letter-spacing: 0.03em;
   }
 
   .tooltip-desc {
-    font-size: 8px;
+    font-size: calc(8px * var(--text-scale, 1));
     color: #D4C9A8;
     line-height: 1.5;
     letter-spacing: 0.02em;
@@ -317,13 +317,13 @@
   .tooltip-sell-btn {
     display: block;
     width: 100%;
-    margin-top: 6px;
-    padding: 4px 6px;
+    margin-top: calc(6px * var(--layout-scale, 1));
+    padding: calc(4px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1));
     background: rgba(220, 38, 38, 0.18);
     border: 1px solid rgba(220, 38, 38, 0.5);
     border-radius: 4px;
     color: #fca5a5;
-    font-size: 8px;
+    font-size: calc(8px * var(--text-scale, 1));
     font-family: var(--font-pixel, monospace);
     cursor: pointer;
     text-align: center;
@@ -336,14 +336,14 @@
   }
 
   .tooltip-sell-confirm {
-    margin-top: 6px;
+    margin-top: calc(6px * var(--layout-scale, 1));
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: calc(4px * var(--layout-scale, 1));
   }
 
   .sell-confirm-label {
-    font-size: 8px;
+    font-size: calc(8px * var(--text-scale, 1));
     color: #fcd34d;
     font-family: var(--font-pixel, monospace);
     text-align: center;
@@ -351,15 +351,15 @@
 
   .sell-confirm-btns {
     display: flex;
-    gap: 4px;
+    gap: calc(4px * var(--layout-scale, 1));
   }
 
   .sell-confirm-yes,
   .sell-confirm-no {
     flex: 1;
-    padding: 3px 4px;
+    padding: calc(3px * var(--layout-scale, 1)) calc(4px * var(--layout-scale, 1));
     border-radius: 3px;
-    font-size: 8px;
+    font-size: calc(8px * var(--text-scale, 1));
     font-family: var(--font-pixel, monospace);
     cursor: pointer;
     pointer-events: auto;

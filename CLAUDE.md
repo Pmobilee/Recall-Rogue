@@ -65,6 +65,35 @@ scripts/extract-card-frame.py — PSD extraction + black-preserving hue-shift pi
 - All public functions must have JSDoc comments
 - Pixel art assets: PNG format, transparent backgrounds, power-of-2 dimensions
 
+## Dynamic Scaling Rule — MANDATORY
+
+**ZERO hardcoded px values for layout, sizing, spacing, or fonts.** This is non-negotiable. The game must scale seamlessly from 720p to 1440p+ without any element appearing too small or too large.
+
+### CSS Variable System
+- **Layout values** (padding, margin, gap, width, height, border-width): Use `calc(Npx * var(--layout-scale, 1))`
+- **Font sizes**: Use `calc(Npx * var(--text-scale, 1))`
+- **Both variables** default to 1 and are set dynamically by `CardApp.svelte` based on viewport size
+
+### What This Means in Practice
+- `padding: 12px` is WRONG — use `padding: calc(12px * var(--layout-scale, 1))`
+- `font-size: 14px` is WRONG — use `font-size: calc(14px * var(--text-scale, 1))`
+- `width: 100px` is WRONG — use `width: calc(100px * var(--layout-scale, 1))`
+- `min-height: 48px` is WRONG — use `min-height: calc(48px * var(--layout-scale, 1))`
+- Values already using `%`, `vw`, `vh`, `rem`, `clamp()`, or `var()` are fine
+
+### Exceptions (OK to hardcode)
+- `border-radius: 50%` (percentages are fine)
+- `opacity`, `z-index`, `flex` values (unitless)
+- `0` values (`margin: 0`, `padding: 0`)
+- `1px` borders (too thin to scale meaningfully)
+- `inset: 0` (shorthand for position)
+- Phaser/canvas pixel coordinates (handled by Phaser's own scaling)
+
+### Enforcement
+- Every sub-agent working on UI/CSS MUST be told this rule
+- The orchestrator MUST verify no hardcoded px values in any PR touching UI
+- Violations are treated as bugs with the same priority as broken tests
+
 ## Security Rules — MANDATORY
 - NEVER use `eval()`, `Function()`, or `innerHTML` with dynamic content
 - NEVER commit `.env` files, API keys, tokens, or credentials

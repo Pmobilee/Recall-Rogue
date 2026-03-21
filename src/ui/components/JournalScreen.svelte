@@ -204,11 +204,11 @@
     position: fixed;
     inset: 0;
     overflow-y: auto;
-    padding: 16px 16px 96px;
+    padding: calc(16px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1)) calc(96px * var(--layout-scale, 1));
     background: linear-gradient(180deg, #0a1528, #101d33);
     color: #e2e8f0;
     display: grid;
-    gap: 12px;
+    gap: calc(12px * var(--layout-scale, 1));
   }
 
   .header {
@@ -223,12 +223,12 @@
   }
 
   .back-btn {
-    min-height: 44px;
+    min-height: calc(44px * var(--layout-scale, 1));
     border-radius: 10px;
     border: 1px solid #475569;
     background: #1e293b;
     color: #dbeafe;
-    padding: 0 12px;
+    padding: 0 calc(12px * var(--layout-scale, 1));
   }
 
   .summary-card,
@@ -236,9 +236,9 @@
     border-radius: 14px;
     border: 1px solid rgba(148, 163, 184, 0.35);
     background: rgba(15, 23, 42, 0.82);
-    padding: 14px;
+    padding: calc(14px * var(--layout-scale, 1));
     display: grid;
-    gap: 10px;
+    gap: calc(10px * var(--layout-scale, 1));
   }
 
   h3 {
@@ -255,7 +255,7 @@
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
   }
 
   .stats-grid div {

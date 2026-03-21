@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "lastUpdated": "2026-03-21",
+  "lastUpdated": "2026-03-22",
   "tables": {
     "cards": [
       {
@@ -90,7 +90,7 @@
         "visualInspectionDate_landscapePC": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": "Shows +0 when condition not met — confusing"
+        "notes": "Shows +0 when condition not met \u2014 confusing"
       },
       {
         "id": "lifetap",
@@ -188,7 +188,7 @@
         "visualInspectionDate_landscapePC": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": "Shows ×2 (0) when condition not met — confusing"
+        "notes": "Shows \u00d72 (0) when condition not met \u2014 confusing"
       },
       {
         "id": "parry",
@@ -258,7 +258,7 @@
         "visualInspectionDate_landscapePC": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": "Purple border despite BUFF type — should be gold"
+        "notes": "Purple border despite BUFF type \u2014 should be gold"
       },
       {
         "id": "weaken",
@@ -286,7 +286,7 @@
         "visualInspectionDate_landscapePC": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": "Grammar: 'for 1 turns' → 'for 1 turn'"
+        "notes": "Grammar: 'for 1 turns' \u2192 'for 1 turn'"
       },
       {
         "id": "hex",
@@ -314,7 +314,7 @@
         "visualInspectionDate_landscapePC": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": "Card text broader than mechanic — says 'next action' but only skips defend/buff"
+        "notes": "Card text broader than mechanic \u2014 says 'next action' but only skips defend/buff"
       },
       {
         "id": "cleanse",
@@ -370,7 +370,7 @@
         "visualInspectionDate_landscapePC": "not_checked",
         "mechanicInspectionDate": "2026-03-21",
         "uxReviewDate": "not_checked",
-        "notes": "Same effect text as scout — no differentiation"
+        "notes": "Same effect text as scout \u2014 no differentiation"
       },
       {
         "id": "transmute",
@@ -1031,6 +1031,524 @@
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": "excludeFromPhase1, no implementation"
+      },
+      {
+        "id": "quick_study",
+        "name": "Quick Study",
+        "category": "common",
+        "description": "Expansion relic \u2014 on_encounter_end",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "thick_skin",
+        "name": "Thick Skin",
+        "category": "common",
+        "description": "Expansion relic \u2014 permanent",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "tattered_notebook",
+        "name": "Tattered Notebook",
+        "category": "common",
+        "description": "Expansion relic \u2014 on_charge_correct",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "battle_scars",
+        "name": "Battle Scars",
+        "category": "common",
+        "description": "Expansion relic \u2014 on_damage_taken",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "brass_knuckles",
+        "name": "Brass Knuckles",
+        "category": "common",
+        "description": "Expansion relic \u2014 on_attack",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "pocket_watch",
+        "name": "Pocket Watch",
+        "category": "uncommon",
+        "description": "Expansion relic \u2014 on_turn_start",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "chain_link_charm",
+        "name": "Chain Link Charm",
+        "category": "uncommon",
+        "description": "Expansion relic \u2014 on_chain_complete",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "worn_shield",
+        "name": "Worn Shield",
+        "category": "uncommon",
+        "description": "Expansion relic \u2014 on_block",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "bleedstone",
+        "name": "Bleedstone",
+        "category": "uncommon",
+        "description": "Expansion relic \u2014 permanent",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "ember_core",
+        "name": "Ember Core",
+        "category": "uncommon",
+        "description": "Expansion relic \u2014 permanent",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "gambler_s_token",
+        "name": "Gambler's Token",
+        "category": "uncommon",
+        "description": "Expansion relic \u2014 on_charge_wrong",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "thoughtform",
+        "name": "Thoughtform",
+        "category": "uncommon",
+        "description": "Expansion relic \u2014 on_perfect_turn",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "scar_tissue",
+        "name": "Scar Tissue",
+        "category": "uncommon",
+        "description": "Expansion relic \u2014 permanent",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "surge_capacitor",
+        "name": "Surge Capacitor",
+        "category": "uncommon",
+        "description": "Expansion relic \u2014 on_surge_start",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "obsidian_dice",
+        "name": "Obsidian Dice",
+        "category": "uncommon",
+        "description": "Expansion relic \u2014 on_charge_correct",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "living_grimoire",
+        "name": "Living Grimoire",
+        "category": "uncommon",
+        "description": "Expansion relic \u2014 on_encounter_end",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "gladiator_s_mark",
+        "name": "Gladiator's Mark",
+        "category": "uncommon",
+        "description": "Expansion relic \u2014 on_encounter_start",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "red_fang",
+        "name": "Red Fang",
+        "category": "rare",
+        "description": "Expansion relic \u2014 on_encounter_start",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "chronometer",
+        "name": "Chronometer",
+        "category": "rare",
+        "description": "Expansion relic \u2014 permanent",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "soul_jar",
+        "name": "Soul Jar",
+        "category": "rare",
+        "description": "Expansion relic \u2014 on_charge_correct",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "null_shard",
+        "name": "Null Shard",
+        "category": "rare",
+        "description": "Expansion relic \u2014 permanent",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "hemorrhage_lens",
+        "name": "Hemorrhage Lens",
+        "category": "rare",
+        "description": "Expansion relic \u2014 on_multi_hit",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "archive_codex",
+        "name": "Archive Codex",
+        "category": "rare",
+        "description": "Expansion relic \u2014 on_encounter_end",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "berserker_s_oath",
+        "name": "Berserker's Oath",
+        "category": "rare",
+        "description": "Expansion relic \u2014 on_run_start",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "chain_forge",
+        "name": "Chain Forge",
+        "category": "rare",
+        "description": "Expansion relic \u2014 on_chain_complete",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "deja_vu",
+        "name": "Deja Vu",
+        "category": "rare",
+        "description": "Expansion relic \u2014 on_turn_start",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "inferno_crown",
+        "name": "Inferno Crown",
+        "category": "rare",
+        "description": "Expansion relic \u2014 permanent",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "mind_palace",
+        "name": "Mind Palace",
+        "category": "rare",
+        "description": "Expansion relic \u2014 permanent",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "entropy_engine",
+        "name": "Entropy Engine",
+        "category": "rare",
+        "description": "Expansion relic \u2014 on_turn_end",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "bloodstone_pendant",
+        "name": "Bloodstone Pendant",
+        "category": "rare",
+        "description": "Expansion relic \u2014 on_damage_taken",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "chromatic_chain",
+        "name": "Chromatic Chain",
+        "category": "rare",
+        "description": "Expansion relic \u2014 on_chain_complete",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "dragon_s_heart",
+        "name": "Dragon's Heart",
+        "category": "rare",
+        "description": "Expansion relic \u2014 on_elite_kill",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "omniscience",
+        "name": "Omniscience",
+        "category": "legendary",
+        "description": "Expansion relic \u2014 on_charge_correct",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "paradox_engine",
+        "name": "Paradox Engine",
+        "category": "legendary",
+        "description": "Expansion relic \u2014 on_charge_wrong",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "akashic_record",
+        "name": "Akashic Record",
+        "category": "legendary",
+        "description": "Expansion relic \u2014 on_charge_correct",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "singularity",
+        "name": "Singularity",
+        "category": "legendary",
+        "description": "Expansion relic \u2014 on_chain_complete",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
+      },
+      {
+        "id": "volatile_manuscript",
+        "name": "Volatile Manuscript",
+        "category": "rare",
+        "description": "Expansion relic \u2014 on_charge_correct",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "not_checked",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": ""
       }
     ],
     "enemies": [
@@ -1046,7 +1564,7 @@
         "visualInspectionDate_landscapePC": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": "Verified in combat-basic scenario — sprite and intent render correctly"
+        "notes": "Verified in combat-basic scenario \u2014 sprite and intent render correctly"
       },
       {
         "id": "crystal_golem",
@@ -1354,7 +1872,7 @@
         "visualInspectionDate_landscapePC": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": "Unique art generated and deployed — sprite + portrait/landscape backgrounds"
+        "notes": "Unique art generated and deployed \u2014 sprite + portrait/landscape backgrounds"
       },
       {
         "id": "basalt_crawler",
@@ -2788,7 +3306,7 @@
         "visualInspectionDate_landscapePC": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": "Infrastructure only — card definitions ship in AR-206/AR-208"
+        "notes": "Infrastructure only \u2014 card definitions ship in AR-206/AR-208"
       },
       {
         "id": "card_browser_ui",
@@ -2802,7 +3320,7 @@
         "visualInspectionDate_landscapePC": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": "CardBrowser.svelte — portrait full-screen / landscape right-panel"
+        "notes": "CardBrowser.svelte \u2014 portrait full-screen / landscape right-panel"
       },
       {
         "id": "multi_choice_popup",
@@ -2816,7 +3334,7 @@
         "visualInspectionDate_landscapePC": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": "MultiChoicePopup.svelte — min 48px tap targets, forcePick support"
+        "notes": "MultiChoicePopup.svelte \u2014 min 48px tap targets, forcePick support"
       },
       {
         "id": "exhaust_pile_viewer",
@@ -2830,7 +3348,7 @@
         "visualInspectionDate_landscapePC": "not_checked",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": "ExhaustPileViewer.svelte — thin wrapper over CardBrowser"
+        "notes": "ExhaustPileViewer.svelte \u2014 thin wrapper over CardBrowser"
       },
       {
         "id": "combat_engine",
@@ -5574,7 +6092,7 @@
         "id": "tier_3",
         "name": "Tier 3",
         "category": "quiz",
-        "description": "Mastered — no quiz required",
+        "description": "Mastered \u2014 no quiz required",
         "status": "working",
         "lastChangedDate": "not_checked",
         "visualInspectionDate_portraitMobile": "not_checked",
@@ -6254,7 +6772,7 @@
         "id": "ap",
         "name": "AP",
         "category": "ui",
-        "description": "Action Points — the resource spent to play cards each turn.",
+        "description": "Action Points \u2014 the resource spent to play cards each turn.",
         "status": "working",
         "lastChangedDate": "not_checked",
         "visualInspectionDate_portraitMobile": "not_checked",
@@ -6296,7 +6814,7 @@
         "id": "inscription",
         "name": "Inscription",
         "category": "mechanic",
-        "description": "Played once and persists for the rest of combat. Exhausts on play and is permanently removed from game (cannot be Recollected). Pool = 1 per type — no stacking same-type inscriptions.",
+        "description": "Played once and persists for the rest of combat. Exhausts on play and is permanently removed from game (cannot be Recollected). Pool = 1 per type \u2014 no stacking same-type inscriptions.",
         "status": "active",
         "lastChangedDate": "2026-03-22",
         "visualInspectionDate_portraitMobile": "not_checked",

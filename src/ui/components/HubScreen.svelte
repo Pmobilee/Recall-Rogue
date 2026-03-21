@@ -579,10 +579,10 @@
 
   .replay-boot-btn {
     position: absolute;
-    bottom: calc(12px + var(--safe-bottom, 0px));
-    left: 12px;
-    padding: 4px 10px;
-    font-size: 11px;
+    bottom: calc(calc(12px * var(--layout-scale, 1)) + var(--safe-bottom, 0px));
+    left: calc(12px * var(--layout-scale, 1));
+    padding: calc(4px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    font-size: calc(11px * var(--text-scale, 1));
     color: rgba(255,255,255,0.5);
     background: rgba(0,0,0,0.3);
     border: 1px solid rgba(255,255,255,0.15);
@@ -642,21 +642,21 @@
 
   .hub-landscape .camp-level-badge {
     position: fixed;
-    right: 20px;
-    bottom: 24px;
+    right: calc(20px * var(--layout-scale, 1));
+    bottom: calc(24px * var(--layout-scale, 1));
   }
 
   .hub-landscape .level-number {
-    font-size: 28px;
+    font-size: calc(28px * var(--text-scale, 1));
   }
 
   .hub-landscape .level-xp-bar {
-    width: 90px;
-    height: 6px;
+    width: calc(90px * var(--layout-scale, 1));
+    height: calc(6px * var(--layout-scale, 1));
   }
 
   .hub-landscape .level-xp-text {
-    font-size: 13px;
+    font-size: calc(13px * var(--text-scale, 1));
   }
 
 </style>

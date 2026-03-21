@@ -2360,9 +2360,9 @@
     min-width: calc(110px * var(--layout-scale, 1));
     padding: 0 calc(20px * var(--layout-scale, 1));
     height: calc(48px * var(--layout-scale, 1));
-    background: #1f2937;
-    color: #f8fafc;
-    border: none;
+    background: #854d0e;
+    color: #fbbf24;
+    border: calc(2px * var(--layout-scale, 1)) solid rgba(251, 191, 36, 0.4);
     border-radius: 10px;
     font-size: calc(14px * var(--layout-scale, 1));
     font-weight: 700;
@@ -2370,7 +2370,8 @@
     z-index: 5;
     -webkit-tap-highlight-color: transparent;
     font-family: inherit;
-    letter-spacing: 0.8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
   }
 
   .end-turn-btn.disabled,
@@ -2877,21 +2878,21 @@
     bottom: auto;
     transform: none;
     width: auto;
-    max-width: 350px;  /* 5 slots × ~60px + gaps */
+    max-width: calc(400px * var(--layout-scale, 1));  /* 5 slots × ~72px + gaps */
     flex-direction: row;
-    gap: 6px;
+    gap: calc(6px * var(--layout-scale, 1));
   }
 
   /* Landscape: constrain each relic slot to compact size */
   :global(.layout-landscape .relic-slot) {
-    width: 44px !important;
-    height: 44px !important;
+    width: calc(52px * var(--layout-scale, 1)) !important;
+    height: calc(52px * var(--layout-scale, 1)) !important;
     flex-shrink: 0;
   }
 
   :global(.layout-landscape .relic-icon) {
-    width: 34px !important;
-    height: 34px !important;
+    width: calc(40px * var(--layout-scale, 1)) !important;
+    height: calc(40px * var(--layout-scale, 1)) !important;
   }
 
   /* Enemy name: top-center of arena */
@@ -2944,9 +2945,9 @@
     right: calc(16px * var(--layout-scale, 1));
     left: auto;
     transform: none;
-    height: calc(40px * var(--layout-scale, 1));
-    font-size: calc(13px * var(--layout-scale, 1));
-    min-width: calc(96px * var(--layout-scale, 1));
+    height: calc(46px * var(--layout-scale, 1));
+    font-size: calc(15px * var(--layout-scale, 1));
+    min-width: calc(120px * var(--layout-scale, 1));
     z-index: 20; /* must be above enemy-hover-zone (z-index: 8) */
   }
 
@@ -2954,7 +2955,7 @@
   :global(.layout-landscape .combo-counter) {
     position: fixed;
     bottom: calc(27vh + 36px + 60px);
-    right: 16px;
+    right: calc(16px * var(--layout-scale, 1));
     left: auto;
     top: auto;
     transform: none;
@@ -3135,7 +3136,7 @@
   }
 
   .lsb-block-value {
-    font-size: calc(12px * var(--layout-scale, 1));
+    font-size: calc(14px * var(--layout-scale, 1));
     font-weight: 700;
     color: #7dd3fc;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
@@ -3173,7 +3174,7 @@
     align-items: center;
     justify-content: center;
     font-family: 'Press Start 2P', monospace;
-    font-size: calc(8px * var(--layout-scale, 1));
+    font-size: calc(10px * var(--layout-scale, 1));
     color: #fff;
     text-shadow: -1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000;
     pointer-events: none;

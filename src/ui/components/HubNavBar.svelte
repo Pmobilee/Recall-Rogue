@@ -115,21 +115,21 @@
     top: 0;
     left: 0;
     bottom: 0;
-    width: 100px;
+    width: calc(100px * var(--layout-scale, 1));
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 4px;
+    gap: calc(4px * var(--layout-scale, 1));
     background: rgba(9, 14, 24, 0.94);
     border-right: 1px solid rgba(148, 163, 184, 0.35);
-    padding: 8px 4px;
+    padding: calc(8px * var(--layout-scale, 1)) calc(4px * var(--layout-scale, 1));
     z-index: 280;
     backdrop-filter: blur(6px);
   }
 
   .sidebar-btn {
     width: 100%;
-    min-height: 52px;
+    min-height: calc(52px * var(--layout-scale, 1));
     border: 1px solid transparent;
     border-radius: 10px;
     background: transparent;
@@ -138,12 +138,18 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    gap: calc(4px * var(--layout-scale, 1));
     font-size: calc(10px * var(--text-scale, 1));
     cursor: pointer;
     /* Active indicator on left edge */
-    border-left: 3px solid transparent;
-    padding: 6px 4px;
+    border-left: calc(3px * var(--layout-scale, 1)) solid transparent;
+    padding: calc(6px * var(--layout-scale, 1)) calc(4px * var(--layout-scale, 1));
+  }
+
+  .sidebar-btn:hover {
+    background: rgba(255, 200, 100, 0.08);
+    color: #dbeafe;
+    transition: background 150ms ease, color 150ms ease;
   }
 
   .sidebar-btn.active {
@@ -154,7 +160,7 @@
   }
 
   .sidebar-label {
-    font-size: 11px;
+    font-size: calc(11px * var(--text-scale, 1));
     line-height: 1;
     text-align: center;
     white-space: nowrap;
@@ -180,7 +186,7 @@
   }
 
   .nav-btn {
-    min-height: 48px;
+    min-height: calc(48px * var(--layout-scale, 1));
     border: 1px solid transparent;
     border-radius: 10px;
     background: transparent;
@@ -198,15 +204,15 @@
   }
 
   .nav-icon-img {
-    width: 24px;
-    height: 24px;
+    width: calc(24px * var(--layout-scale, 1));
+    height: calc(24px * var(--layout-scale, 1));
     object-fit: contain;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
   }
 
   .nav-icon-fallback {
-    font-size: 20px;
+    font-size: calc(20px * var(--text-scale, 1));
     line-height: 1;
   }
 

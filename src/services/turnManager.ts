@@ -250,6 +250,12 @@ export interface TurnState {
    * Null if no chain card was played yet, or if the last card had no chain type.
    */
   lastPlayedChainType: number | null;
+  /**
+   * AR-211: Total correct Charge plays this run (persists across encounters).
+   * Used by Volatile Manuscript (every 3rd Charge applies self-Burn) and Omniscience.
+   * Must be carried through TurnState from RunState at encounter start.
+   */
+  totalChargesThisRun: number;
 }
 
 export interface PlayCardResult {
@@ -449,6 +455,7 @@ export function startEncounter(
     chainAnchorStartLength: 2,
     lastPlayedMechanicId: null,
     lastPlayedChainType: null,
+    totalChargesThisRun: 0,
   };
 
   // Reset chain at encounter start (clean slate)
@@ -1000,6 +1007,9 @@ export function playCardAction(
       cardType: cardTypeForRelic,
       isFirstChargeThisTurn: turnState.cardsCorrectThisTurn === 0,
       chargeCountThisEncounter: turnState.consecutiveCorrectThisEncounter + 1,
+      isFirstChargeCorrectThisEncounter: turnState.consecutiveCorrectThisEncounter === 0,
+      correctChargesThisTurn: turnState.cardsCorrectThisTurn,
+      totalChargesThisRun: (turnState.totalChargesThisRun ?? 0) + 1,
       mirrorUsedThisEncounter: turnState.mirrorUsedThisEncounter,
       adrenalineShard_usedThisTurn: false, // adrenaline_shard handled upstream
     });

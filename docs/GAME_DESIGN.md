@@ -2432,7 +2432,12 @@ Detection order:
 
 ### Layout Scaling System
 
-All UI uses `--layout-scale` CSS variable for responsive design across screen sizes.
+All UI uses two CSS custom properties for responsive design across screen sizes:
+
+- **`--layout-scale`**: Applied to all layout dimensions (padding, margin, gap, width, height, border-width). Set dynamically by `CardApp.svelte` based on viewport size. Pattern: `calc(Npx * var(--layout-scale, 1))`
+- **`--text-scale`**: Applied to all font sizes. Pattern: `calc(Npx * var(--text-scale, 1))`
+
+**ZERO hardcoded px values** are permitted for layout, sizing, spacing, or fonts. The game must scale seamlessly from 720p to 1440p+ without any element appearing too small or too large. Exceptions: `1px` borders, `0` values, percentages, unitless values (opacity, z-index, flex), and Phaser canvas coordinates.
 
 ### Boot Animation
 

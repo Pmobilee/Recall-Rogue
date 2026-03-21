@@ -36,11 +36,11 @@
 
   .hud-pill {
     position: absolute;
-    top: calc(12px + var(--safe-top));
+    top: calc(calc(12px * var(--layout-scale, 1)) + var(--safe-top));
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    padding: 6px 12px;
+    gap: calc(5px * var(--layout-scale, 1));
+    padding: calc(6px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
     background: rgba(10, 15, 25, 0.75);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -49,20 +49,20 @@
   }
 
   .hud-left {
-    left: 12px;
+    left: calc(12px * var(--layout-scale, 1));
   }
 
   .hud-right {
-    right: 12px;
+    right: calc(12px * var(--layout-scale, 1));
   }
 
   .hud-icon {
-    font-size: 14px;
+    font-size: calc(14px * var(--text-scale, 1));
     line-height: 1;
   }
 
   .hud-value {
-    font-size: 13px;
+    font-size: calc(13px * var(--text-scale, 1));
     color: #fff;
     font-weight: 700;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
@@ -70,28 +70,28 @@
   }
 
   .hud-overlay.banner-offset .hud-pill {
-    top: calc(76px + var(--safe-top));
+    top: calc(calc(76px * var(--layout-scale, 1)) + var(--safe-top));
     transition: top 200ms ease;
   }
 
   /* Landscape: HUD is inside .hub-center so left/right: 0 is already correct.
      Tighten top padding slightly since no mobile safe area needed. */
   .hud-overlay.landscape .hud-pill {
-    top: 14px;
-    padding: 8px 16px;
-    gap: 8px;
+    top: calc(14px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    gap: calc(8px * var(--layout-scale, 1));
   }
 
   .hud-overlay.landscape .hud-icon {
-    font-size: 20px;
+    font-size: calc(20px * var(--text-scale, 1));
   }
 
   .hud-overlay.landscape .hud-value {
-    font-size: 18px;
+    font-size: calc(18px * var(--text-scale, 1));
   }
 
   .hud-overlay.landscape.banner-offset .hud-pill {
-    top: calc(76px);
+    top: calc(76px * var(--layout-scale, 1));
     transition: top 200ms ease;
   }
 </style>

@@ -64,7 +64,7 @@
   }
 
   .back-btn {
-    min-height: 44px;
+    min-height: calc(44px * var(--layout-scale, 1));
     border-radius: 10px;
     border: 1px solid #4b5563;
     background: #1f2937;
@@ -125,9 +125,9 @@
   /* ═══ LANDSCAPE DESKTOP OVERRIDES ═══════════════════════════════════════════ */
 
   :global([data-layout="landscape"]) .leaderboards-screen {
-    margin-left: 100px;
-    max-width: 1000px;
-    padding: 32px 48px;
+    margin-left: calc(100px * var(--layout-scale, 1));
+    max-width: calc(1000px * var(--layout-scale, 1));
+    padding: calc(32px * var(--layout-scale, 1)) calc(48px * var(--layout-scale, 1));
   }
 
   :global([data-layout="landscape"]) .back-btn {
@@ -136,31 +136,31 @@
 
   /* Stat values / rank numbers */
   :global([data-layout="landscape"]) .rank {
-    font-size: 22px;
+    font-size: calc(22px * var(--text-scale, 1));
   }
 
   :global([data-layout="landscape"]) .name {
-    font-size: 22px;
+    font-size: calc(22px * var(--text-scale, 1));
   }
 
   /* Body text / metrics */
   :global([data-layout="landscape"]) .metric {
-    font-size: 15px;
+    font-size: calc(15px * var(--text-scale, 1));
   }
 
   /* Small labels */
   :global([data-layout="landscape"]) .helper {
-    font-size: 14px;
+    font-size: calc(14px * var(--text-scale, 1));
     color: #64748b;
   }
 
   /* Table rows: taller min-height and larger value text */
   :global([data-layout="landscape"]) .row {
-    min-height: 56px;
+    min-height: calc(56px * var(--layout-scale, 1));
   }
 
   :global([data-layout="landscape"]) .metric {
-    font-size: 16px;
+    font-size: calc(16px * var(--text-scale, 1));
   }
 
   /* Alternate row tinting */
@@ -183,6 +183,12 @@
 
   /* Top 3 rank numbers: 22px bold (already 22px for all, keep bold; rest back to 16px) */
   :global([data-layout="landscape"]) .row:nth-child(n+4) .rank {
-    font-size: 16px;
+    font-size: calc(16px * var(--text-scale, 1));
+  }
+
+  :global([data-layout="landscape"]) .row:hover {
+    background: rgba(30, 50, 80, 0.5);
+    border-color: rgba(255, 215, 0, 0.3);
+    transition: all 150ms ease;
   }
 </style>

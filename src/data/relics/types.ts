@@ -44,7 +44,8 @@ export type RelicTrigger =
   | 'on_charge_correct'
   | 'on_charge_wrong'
   | 'on_chain_complete'
-  | 'on_surge_start';
+  | 'on_surge_start'
+  | 'on_elite_kill';
 
 /** A single mechanical effect within a relic. */
 export interface RelicEffect {

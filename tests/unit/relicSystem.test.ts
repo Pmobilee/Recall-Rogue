@@ -169,7 +169,8 @@ describe('startsUnlocked flag on starter relics', () => {
   const STARTER_RELICS_IN_CATALOGUE = FULL_RELIC_CATALOGUE.filter(r => r.isStarter)
 
   it('all starter relics have startsUnlocked: true', () => {
-    expect(STARTER_RELICS_IN_CATALOGUE.length).toBe(23)
+    // AR-211: 23 original starters + 5 new Common + 12 new Uncommon = 40
+    expect(STARTER_RELICS_IN_CATALOGUE.length).toBe(40)
     for (const r of STARTER_RELICS_IN_CATALOGUE) {
       expect(r.startsUnlocked).toBe(true)
     }
