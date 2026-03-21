@@ -127,6 +127,35 @@ Every code change that touches gameplay MUST have corresponding documentation up
 - If a worker's PR/task does not update docs where required, the orchestrator MUST spawn a follow-up worker to fix it before the task is considered done
 - Stale docs are treated as bugs — they have the same priority as broken tests
 
+## Inspection Registry — MANDATORY
+
+The game element inspection registry at `data/inspection-registry.json` tracks **334 elements** across 15 tables. It is the single source of truth for what exists in the game and when each element was last verified.
+
+### Tables
+cards (31), relics (42), enemies (89), rooms (7), screens (28), systems (26), mysteryEvents (27), specialEvents (5), statusEffects (6), rewardTypes (4), chainTypes (6), domains (12), quizSystems (21), domainTestMatrix (20), testingRecommendations (10)
+
+### When to Update
+- **Any code change** touching a game element (card, relic, enemy, room, screen, system, quiz, domain): update `lastChangedDate` to today
+- **Adding new elements**: add entry to the registry in the same task
+- **Removing elements**: set status to `"deprecated"` (don't delete)
+- **Visual inspection**: update `visualInspectionDate`
+- **Mechanic verification**: update `mechanicInspectionDate`
+- **UX review**: update `uxReviewDate`
+
+### Testing Recommendations
+The `testingRecommendations` table maps each element type to the correct skill:
+- Cards/Relics → `/balance-sim`, `/strategy-analysis`, `/rogue-brain watchdog`
+- Screens → `/ux-review {screen}`, `/visual-inspect`
+- Quiz systems → `npx vitest run`, manual multi-domain runs
+- Enemies → `/balance-sim`, `/strategy-analysis`
+- Domains → `domainTestMatrix` test combinations
+
+### Quick Commands
+```bash
+# Check what needs inspection (elements never checked):
+node -e "const r=JSON.parse(require('fs').readFileSync('data/inspection-registry.json'));Object.entries(r.tables).forEach(([t,items])=>{if(!Array.isArray(items))return;const nc=items.filter(i=>i.mechanicInspectionDate==='not_checked').length;if(nc)console.log(t+': '+nc+'/'+items.length+' unchecked')})"
+```
+
 ## Visual Testing with Playwright — MANDATORY
 
 Two tools available — use the right one for the job:
