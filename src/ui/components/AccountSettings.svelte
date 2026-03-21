@@ -219,16 +219,16 @@
       <button type="button" class:selected={mode === 'login'} onclick={() => (mode = 'login')}>Login</button>
       <button type="button" class:selected={mode === 'register'} onclick={() => (mode = 'register')}>Create Account</button>
     </div>
-    <div class="form">
+    <form class="form" onsubmit={(e) => { e.preventDefault(); handleAuthSubmit(); }}>
       <input type="email" bind:value={email} placeholder="Email" autocomplete="email" />
       <input type="password" bind:value={password} placeholder="Password" autocomplete="current-password" />
       {#if mode === 'register'}
         <input type="text" bind:value={displayName} placeholder="Display Name (optional)" autocomplete="nickname" />
       {/if}
-      <button type="button" class="primary" onclick={handleAuthSubmit} disabled={loading || !cloudEnabled}>
-        {loading ? 'Working...' : mode === 'register' ? 'Create Account' : 'Login'}
+      <button type="submit" class="primary" disabled={loading || !cloudEnabled}>
+        {loading ? 'Working...' : mode === 'register' ? 'Create Account' : 'Sign In'}
       </button>
-    </div>
+    </form>
   {/if}
 
   {#if message}

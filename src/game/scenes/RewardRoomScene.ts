@@ -161,13 +161,21 @@ export class RewardRoomScene extends Phaser.Scene {
     const H = this.scale.height
     this.sf = W / BASE_WIDTH
 
+    const data = (this.scene.settings.data as RewardRoomData) ?? { rewards: [] }
+    if (import.meta.env.DEV) {
+      console.log('[RewardRoom] create() — rewards count:', data.rewards?.length ?? 0, 'W:', W, 'H:', H)
+    }
+
     this.goldTiers = this.parseGoldTiers()
     this.createBackground(W, H)
     this.createFireflies(W, H)
 
-    const data = (this.scene.settings.data as RewardRoomData) ?? { rewards: [] }
     this.spawnRewardItems(data.rewards, W, H)
     this.createContinueButton(W, H)
+
+    if (import.meta.env.DEV) {
+      console.log('[RewardRoom] create() complete — items spawned:', this.items.length)
+    }
   }
 
   // ─── Background ─────────────────────────────────────────────────────────────

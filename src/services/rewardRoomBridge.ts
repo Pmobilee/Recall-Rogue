@@ -27,6 +27,35 @@ function getManager(): any {
   return reg[Symbol.for('terra:cardGameManager')] ?? null;
 }
 
+/**
+ * Wait for the RewardRoomScene to become active, polling up to maxWaitMs.
+ * Returns the active scene, or null on timeout.
+ */
+async function waitForRewardRoomScene(mgr: any, maxWaitMs = 3000): Promise<any | null> {
+  const pollIntervalMs = 50;
+  const maxAttempts = Math.ceil(maxWaitMs / pollIntervalMs);
+
+  for (let i = 0; i < maxAttempts; i++) {
+    const scene = mgr.getRewardRoomScene();
+    if (scene && scene.scene.isActive()) {
+      if (import.meta.env.DEV) console.log(`[RewardRoomBridge] Scene active after ${(i + 1) * pollIntervalMs}ms`);
+      return scene;
+    }
+    await new Promise(resolve => setTimeout(resolve, pollIntervalMs));
+  }
+
+  // Log final state for debugging
+  const scene = mgr.getRewardRoomScene();
+  console.error(
+    '[RewardRoomBridge] Scene did not become active within',
+    maxWaitMs,
+    'ms. scene:', scene ? 'exists' : 'null',
+    'isActive:', scene?.scene?.isActive(),
+    'isPaused:', scene?.scene?.isPaused(),
+  );
+  return null;
+}
+
 /** Open the reward room scene with the given rewards. */
 export async function openRewardRoom(
   rewards: RewardItem[],
@@ -48,6 +77,7 @@ export async function openRewardRoom(
     // Wait for Phaser to initialize
     await new Promise(resolve => setTimeout(resolve, 500));
     mgr = getManager();
+    if (import.meta.env.DEV) console.log('[RewardRoomBridge] After boot, mgr:', mgr ? 'found' : 'null');
     if (!mgr) {
       console.error('[RewardRoomBridge] Failed to boot CardGameManager');
       onComplete();
@@ -64,17 +94,18 @@ export async function openRewardRoom(
   const data: RewardRoomData = { rewards };
   if (import.meta.env.DEV) console.log('[RewardRoomBridge] Opening reward room with', rewards.length, 'rewards');
   mgr.startRewardRoom(data);
+  if (import.meta.env.DEV) console.log('[RewardRoomBridge] startRewardRoom called');
 
-  // Get scene and attach event listeners
-  const scene = mgr.getRewardRoomScene();
+  // Wait for the scene to become fully active before attaching listeners.
+  // Phaser queues scene.start() asynchronously; the scene isn't active until
+  // create() has run, which requires at least one game loop iteration.
+  const scene = await waitForRewardRoomScene(mgr, 3000);
   if (!scene) {
-    console.error('[RewardRoomBridge] RewardRoomScene not found');
+    console.error('[RewardRoomBridge] RewardRoomScene not found or never became active');
     onComplete();
     return;
   }
-
-  // Wait for scene to actually start (it may take a frame)
-  await new Promise(resolve => setTimeout(resolve, 50));
+  if (import.meta.env.DEV) console.log('[RewardRoomBridge] Scene is active, attaching listeners');
 
   const cleanup = (): void => {
     clearTimeout(safetyTimeout);

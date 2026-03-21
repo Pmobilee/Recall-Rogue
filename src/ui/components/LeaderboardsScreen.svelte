@@ -25,7 +25,7 @@
     <button type="button" class="back-btn" onclick={onBack}>Back</button>
   </header>
 
-  <p class="helper">Mocked local rankings for AR-08. Cloud leaderboards land in AR-12.</p>
+  <p class="helper">Local rankings</p>
 
   <div class="rows">
     {#each entries as entry}

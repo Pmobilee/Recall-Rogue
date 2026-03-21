@@ -347,6 +347,34 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
     mysteryEventId: 'final_wager',
     floor: 10,
   },
+
+  // === Special event (post-boss) ===
+  'special-event': {
+    screen: 'specialEvent',
+    floor: 10,
+  },
+
+  // === Relic swap overlay ===
+  // Run has 5 relics (at max capacity). Buying from the shop triggers pendingSwapRelicId.
+  'relic-swap': {
+    screen: 'relicSwapOverlay',
+    relics: ['whetstone', 'iron_shield', 'swift_boots', 'combo_ring', 'vitality_ring'],
+    gold: 500,
+  },
+
+  // === Upgrade selection (standalone) ===
+  // Bootstraps a run with upgradeable cards, then opens the upgrade selection overlay.
+  'upgrade-selection': {
+    screen: 'upgradeSelection',
+    hand: ['strike', 'block', 'heavy_strike', 'multi_hit', 'lifetap'],
+  },
+
+  // === Post-mini-boss rest with upgrade candidates ===
+  // Like post-mini-boss-rest but with upgradeable cards so "Upgrade a Card" button is active.
+  'post-mini-boss-rest-full': {
+    screen: 'postMiniBossRest',
+    hand: ['strike', 'block', 'heavy_strike', 'multi_hit', 'lifetap'],
+  },
 };
 
 // ---------------------------------------------------------------------------
@@ -791,6 +819,85 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
   }
 
   // -----------------------------------------------------------------------
+  // specialEvent
+  // -----------------------------------------------------------------------
+  if (screen === 'specialEvent') {
+    await bootstrapRun(config);
+    const { activeSpecialEvent } = await import('../services/gameFlowController');
+    const { rollSpecialEvent } = await import('../data/specialEvents');
+    const event = rollSpecialEvent();
+    activeSpecialEvent.set(event);
+    writeStore('terra:currentScreen', 'specialEvent');
+    await wait(300);
+    return { ok: true, message: `Special event: ${event.name} (${event.id})` };
+  }
+
+  // -----------------------------------------------------------------------
+  // relicSwapOverlay
+  // -----------------------------------------------------------------------
+  if (screen === 'relicSwapOverlay') {
+    // Bootstrap run with relics already at max capacity (5 slots filled).
+    // Then set up a shop inventory with one extra relic and buy it — this triggers
+    // addRelicToRun's slot-cap branch, which sets pendingSwapRelicId and navigates
+    // to relicSwapOverlay automatically.
+    await bootstrapRun(config);
+    const { activeShopInventory, onShopBuyRelic } = await import('../services/gameFlowController');
+    const offeredRelicId = 'insight_prism';
+    const def = RELIC_BY_ID[offeredRelicId];
+    if (!def) return { ok: false, message: `Unknown offered relic: ${offeredRelicId}` };
+    // Inject a minimal shop inventory so onShopBuyRelic can find the item.
+    activeShopInventory.set({ relics: [{ relic: def, price: 1 }], cards: [], removalCost: 75 } as any);
+    onShopBuyRelic(offeredRelicId);
+    // onShopBuyRelic → addRelicToRun → slot full → sets pendingSwapRelicId + navigates screen.
+    await wait(300);
+    return { ok: true, message: `Relic swap overlay: offering ${def.name} against 5 equipped relics` };
+  }
+
+  // -----------------------------------------------------------------------
+  // upgradeSelection
+  // -----------------------------------------------------------------------
+  if (screen === 'upgradeSelection') {
+    await bootstrapRun(config);
+    // Build synthetic upgrade candidates from mechanic IDs in config.hand.
+    // canMasteryUpgrade requires card.mechanicId to be in MASTERY_UPGRADE_DEFS.
+    const mechanicIds = config.hand ?? ['strike', 'block', 'heavy_strike', 'multi_hit', 'lifetap'];
+    const { activeUpgradeCandidates } = await import('../services/gameFlowController');
+    const { getUpgradePreview, canMasteryUpgrade } = await import('../services/cardUpgradeService');
+    const candidates = mechanicIds.map((mId, i) => {
+      const mechanic = MECHANIC_BY_ID[mId];
+      if (!mechanic) return null;
+      const card: any = {
+        id: `scenario_upgrade_${i}_${Math.random().toString(36).slice(2, 6)}`,
+        factId: `fact_scenario_${i}`,
+        cardType: mechanic.type,
+        domain: (config.domain ?? 'general_knowledge') as any,
+        tier: '1' as const,
+        baseEffectValue: mechanic.baseValue,
+        effectMultiplier: 1,
+        mechanicId: mechanic.id,
+        mechanicName: mechanic.name,
+        apCost: mechanic.apCost,
+        masteryLevel: 0,
+        masteryChangedThisEncounter: false,
+        isEcho: false,
+      };
+      if (!canMasteryUpgrade(card)) return null;
+      const preview = getUpgradePreview(card);
+      if (!preview) return null;
+      return { card, preview };
+    }).filter(Boolean) as Array<{ card: any; preview: any }>;
+
+    if (candidates.length === 0) {
+      return { ok: false, message: 'No upgradeable candidates built — check mechanic IDs are in MASTERY_UPGRADE_DEFS' };
+    }
+
+    activeUpgradeCandidates.set(candidates);
+    writeStore('terra:currentScreen', 'upgradeSelection');
+    await wait(300);
+    return { ok: true, message: `Upgrade selection opened with ${candidates.length} candidate(s)` };
+  }
+
+  // -----------------------------------------------------------------------
   // cardReward
   // -----------------------------------------------------------------------
   if (screen === 'cardReward') {
@@ -874,6 +981,38 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
   // -----------------------------------------------------------------------
   if (screen === 'restRoom' || screen === 'postMiniBossRest') {
     await bootstrapRun(config);
+
+    // For postMiniBossRest, populate upgrade candidates when hand mechanics are specified.
+    // This makes the "Upgrade a Card" button active (e.g. 'post-mini-boss-rest-full').
+    if (screen === 'postMiniBossRest' && config.hand && config.hand.length > 0) {
+      const { activeUpgradeCandidates } = await import('../services/gameFlowController');
+      const { getUpgradePreview, canMasteryUpgrade } = await import('../services/cardUpgradeService');
+      const candidates = config.hand.map((mId, i) => {
+        const mechanic = MECHANIC_BY_ID[mId];
+        if (!mechanic) return null;
+        const card: any = {
+          id: `scenario_rest_${i}_${Math.random().toString(36).slice(2, 6)}`,
+          factId: `fact_scenario_${i}`,
+          cardType: mechanic.type,
+          domain: (config.domain ?? 'general_knowledge') as any,
+          tier: '1' as const,
+          baseEffectValue: mechanic.baseValue,
+          effectMultiplier: 1,
+          mechanicId: mechanic.id,
+          mechanicName: mechanic.name,
+          apCost: mechanic.apCost,
+          masteryLevel: 0,
+          masteryChangedThisEncounter: false,
+          isEcho: false,
+        };
+        if (!canMasteryUpgrade(card)) return null;
+        const preview = getUpgradePreview(card);
+        if (!preview) return null;
+        return { card, preview };
+      }).filter(Boolean) as Array<{ card: any; preview: any }>;
+      activeUpgradeCandidates.set(candidates);
+    }
+
     writeStore('terra:currentScreen', screen);
     await wait(300);
     return { ok: true, message: `Rest room opened on floor ${config.floor ?? 1}` };
