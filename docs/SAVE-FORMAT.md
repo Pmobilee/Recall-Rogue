@@ -2,8 +2,8 @@
 
 This project persists two save domains:
 
-1. full player profile save (`PlayerSave`)
-2. mid-dive checkpoint save (`DiveSaveState`)
+1. Full player profile save (`PlayerSave`)
+2. In-run checkpoint save (`RunSaveState`) — saved after every encounter
 
 Source files:
 
@@ -11,7 +11,7 @@ Source files:
 - `src/services/saveService.ts`
 - `src/services/profileService.ts`
 - `src/data/saveState.ts`
-- `src/game/managers/SaveManager.ts`
+- `src/services/runSaveService.ts`
 
 ## Storage keys
 
@@ -24,20 +24,11 @@ Resolved by `profileService.getSaveKey()` in `src/services/profileService.ts`:
 
 Note: `src/services/saveService.ts` still exports `SAVE_KEY = 'recall-rogue-save'` as a legacy constant, but active save/read path uses `getActiveSaveKey()` -> `profileService.getSaveKey()`.
 
-### Mid-dive save key
-
-Defined in `src/data/saveState.ts`:
-
-- `DIVE_SAVE_KEY = 'terra_miner_dive_save'`
-
 ## Version fields
 
 | Domain | Version field | Current constant |
 | --- | --- | --- |
 | Full player save | `PlayerSave.version` | `SAVE_VERSION = 1` (`saveService.ts`) |
-| Mid-dive save | `DiveSaveState.version` | `DIVE_SAVE_VERSION = 1` (`saveState.ts`) |
-
-`SaveManager.load()` rejects mid-dive saves with mismatched `DIVE_SAVE_VERSION` and clears them.
 
 ## Full save schema (`PlayerSave`)
 
@@ -57,44 +48,27 @@ Gameplay economy and learning core:
 
 | Field group | Type | Purpose |
 | --- | --- | --- |
-| `oxygen` | `number` | Stored oxygen tanks |
-| `minerals` | `Record<MineralTier, number>` | Dust -> essence currencies |
+| `minerals` | `Record<MineralTier, number>` | In-game currency tiers (dust → essence) |
 | `learnedFacts` | `string[]` | Learned fact IDs |
 | `reviewStates` | `ReviewState[]` | SM-2 schedule state |
 | `soldFacts` | `string[]` | Removed/sold fact IDs |
 | `stats` | `PlayerStats` | Lifetime gameplay counters |
 
+`PlayerStats` key fields: `totalDivesCompleted` (maps to run count), `bestFloor`, `totalFactsLearned`, `totalQuizCorrect`, `totalQuizWrong`, `currentStreak`, `bestStreak`.
+
 Progression/feature state (persisted by default path):
 
 | Area | Key fields |
 | --- | --- |
-| Crafting | `craftedItems`, `craftCounts`, `activeConsumables`, `insuredDive` |
 | Cosmetics/deals | `ownedCosmetics`, `equippedCosmetic`, `purchasedDeals`, `lastDealDate` |
-| Fossils/farm/hub | `fossils`, `activeCompanion`, `farm`, `unlockedRooms`, `hubState` |
+| Hub state | `hubState` (unlocked floor IDs, active wallpapers, floor tiers) |
 | Knowledge economy | `knowledgePoints`, `purchasedKnowledgeItems` |
-| Streak system | `lastDiveDate`, `streakFreezes`, `claimedMilestones`, `activeTitle` |
+| Streak system | `lastPlayDate`, `streakFreezes`, `claimedMilestones`, `activeTitle` |
 | Personalization | `interestConfig`, `behavioralSignals`, `archetypeData`, `engagementData` |
-| Onboarding | `tutorialComplete`, `selectedInterests`, `interestWeights`, `diveCount`, `tutorialStep` |
+| Onboarding | `tutorialComplete`, `selectedInterests`, `interestWeights`, `runCount`, `tutorialStep` |
 | Artifact Analyzer | `pendingArtifacts`, `lastStudySessionTimestamps`, `upgradeTokens`, `hasSeenStudyNudge` |
 
-Optional/late-phase extension fields are also part of `PlayerSave` (social, monetization, prestige, companion advanced systems, referral, sparks, etc.) and are represented as optional (`?`) keys in `src/data/types.ts`.
-
-## Mid-dive schema (`DiveSaveState`)
-
-Type source: `src/data/saveState.ts`.
-
-| Field | Type | Purpose |
-| --- | --- | --- |
-| `version`, `savedAt` | `number`, `string` | Checkpoint schema/version and timestamp |
-| `mineGrid` | `string[][]` | Serialized mine grid snapshot |
-| `playerPos` | `{ x, y }` | Grid position |
-| `inventorySnapshot` | `Array<{ type, count }>` | In-run inventory compact view |
-| `ticks`, `layer`, `biomeId` | scalar | Run progression cursor |
-| `o2`, `diveSeed` | scalar | Oxygen and deterministic seed |
-| `relicIds`, `consumables` | arrays | Active run modifiers |
-| `bankedMinerals` | `Record<string, number>` | Send-up secured minerals |
-| `sameLayerDeathCount`, `lastDeathLayer` | `number` | Auto-balance state |
-| `layerChecksums?` | `number[]` | Determinism verification per layer |
+Optional/late-phase extension fields are also part of `PlayerSave` (social, monetization, prestige, referral, sparks, etc.) and are represented as optional (`?`) keys in `src/data/types.ts`.
 
 ## Save and load behavior
 
@@ -105,12 +79,11 @@ Type source: `src/data/saveState.ts`.
 - `createNewPlayer(ageRating)` constructs a full default `PlayerSave`.
 - `deleteSave()` removes only active full-save key.
 
-### Mid-dive path (`SaveManager`)
+### In-run checkpoint (`runSaveService`)
 
-- `SaveManager.save(state)` writes checkpoint JSON (injects `version` and `savedAt`).
-- `SaveManager.load()` validates version and parses.
-- `SaveManager.clear()` removes mid-dive key.
-- `SaveManager.hasSave()` checks checkpoint existence.
+- Checkpoint written after every combat encounter.
+- Stores current run state: deck, hand, enemy, floor, relic IDs, act map position.
+- On resume, `runManager.ts` loads this checkpoint and restores the run.
 
 ## Migration behavior in `saveService.load()`
 
@@ -120,7 +93,6 @@ Current migrations/defaulting include:
 
 | Area | Behavior |
 | --- | --- |
-| Mineral rename | Migrates legacy `coreFragment` -> `geode`, `primordialEssence` -> `essence` |
 | Missing core collections | Initializes arrays/maps like `craftedItems`, `activeConsumables`, `unlockedDiscs`, `premiumMaterials` |
 | Missing daily/streak fields | Initializes `purchasedDeals`, `lastDealDate`, `streak*`, `titles`, `activeTitle` |
 | Date rollovers | Clears stale `purchasedDeals` if `lastDealDate` is not today |
@@ -128,7 +100,6 @@ Current migrations/defaulting include:
 | Room/floor migration | Converts legacy room unlocks to `hubState.unlockedFloorIds`; renames floor IDs (`museum`->`collection`, `archive`->`research`) |
 | Personalization fields | Adds `interestConfig`, `behavioralSignals`, `archetypeData`, `engagementData` defaults |
 | Tutorial/addictiveness fields | Adds onboarding counters, login calendar, grace/streak support fields |
-| Owned pickaxes | Defaults `ownedPickaxes` to `['standard_pick']` |
 | Monetization/prestige/gallery/analyzer | Adds newly introduced optional arrays/numbers (`unlockedPaintings`, `prestigeLevel`, `pendingArtifacts`, etc.) |
 
 There is no external migration framework; compatibility is code-based inside `load()`.

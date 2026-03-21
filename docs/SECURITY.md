@@ -1,4 +1,4 @@
-# Security Policies — Terra Miner
+# Security Policies — Recall Rogue
 
 Security-first development practices for a mobile game handling user data and quiz content.
 

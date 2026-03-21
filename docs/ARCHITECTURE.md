@@ -163,31 +163,31 @@ Located in `src/data/`:
 - `types.ts` — PlayerSave, fact types (extend with card types)
 - `vocabulary.ts` — Language deck types: `LanguageConfig` (extended with `subdecks` and `options`), `LanguageDeckOption` interface, VocabularyFact schema extensions for targetLanguage, jlptLevel, reading, audioUrl
 - `balance.ts` — tuning constants (retune for card effect values). Includes `BASE_EFFECT` (per-type base effect values: attack, shield, buff, debuff, utility, wild), `POST_ENCOUNTER_HEAL_PCT` (8%), `RELAXED_POST_ENCOUNTER_HEAL_BONUS` (additional healing in Relaxed Mode), `POST_BOSS_ENCOUNTER_HEAL_BONUS` (boss encounter bonus), `EARLY_MINI_BOSS_HP_MULTIPLIER` (0.60x for floors 1-3), `FLOOR_DAMAGE_SCALING_PER_FLOOR` (0.03), `ENEMY_TURN_DAMAGE_CAP` (per-segment damage caps). In-combat healing only from lifetap (attack card) and relic effects
-- `saveState.ts` — run state shape (replace DiveSaveState with RunSaveState); includes ActMap in run save state
+- `saveState.ts` — run state shape (RunSaveState); includes ActMap in run save state
 - Map types (`src/services/mapGenerator.ts`) — `ActMap` (rows, edges, completed nodes, current node), `MapNode` (id, row, col, type: combat|elite|boss|mystery|rest|treasure|shop, connections)
 - Enemy definitions — `src/data/enemies.ts`. `EnemyInstance` interface includes `floor: number`, `difficultyVariance` (0.8–1.2x HP/damage variance), `enrageBonusDamage` (cumulative bonus added to attack damage), and `playerChargedThisTurn` (reset each enemy turn for `onPlayerNoCharge` detection). `EnemyTemplate` includes `rarity`, `spawnWeight`, `animArchetype` (8 animation types), and v2 quiz-reactive callbacks: `onPlayerChargeWrong`, `onPlayerChargeCorrect`, `onPlayerNoCharge`, `onEnemyTurnStart`. Passive flags: `quickPlayImmune` (Quick Play deals 0 damage), `chainMultiplierOverride` (caps chain multiplier). Boss templates include `quizPhases: QuizPhaseConfig[]` (hpThreshold, questionCount, timerSeconds, rapidFire). Exports `ACT_ENEMY_POOLS` (3-act pool structure) and `getEnemiesForNode(act, nodeType)` for map node enemy selection.
 - Enemy animations — `src/data/enemyAnimations.ts` — Animation archetype configs (8 types). Defines `AnimConfig` interface with tween parameters and `getAnimConfig(archetype)` resolver. Pure data, no Phaser/Svelte imports.
 - Card type mappings — `src/data/card-types.ts`
 - Chain type definitions — `src/data/chainTypes.ts` — AR-70: `CHAIN_TYPES` array with 6 entries (Obsidian, Crimson, Azure, Amber, Violet, Jade), each with `index`, `name`, `hexColor`, `glowColor`. Exports `getChainTypeName(index)`, `getChainTypeColor(index)`, `getChainTypeGlowColor(index)`.
 
-## 3. Retained Systems
+## 3. Active Systems
 
-These systems transfer from the mining codebase with minimal changes:
+Core systems powering the card roguelite:
 
-| System | Key Files | Reuse % |
-|--------|-----------|---------|
-| Quiz engine (3-pool) | `QuizManager.ts`, `quizService.ts` | 100% |
-| SM-2 algorithm | `sm2.ts`, `StudyManager.ts` | 100% |
-| Facts database | `factsDB.ts`, `public/facts.db` | 100% |
+| System | Key Files | Notes |
+|--------|-----------|-------|
+| Quiz engine (3-pool) | `QuizManager.ts`, `quizService.ts` | Fully integrated |
+| SM-2 algorithm | `sm2.ts`, `StudyManager.ts` | Spaced repetition scheduler |
+| Facts database | `factsDB.ts`, `public/facts.db` | Domain fact store |
 | Relic system | `relicEffectResolver.ts`, `relicAcquisitionService.ts`, `src/data/relics/`, `saveMigration.ts` | Complete — 42 v2 relics (25 free + 17 paid), 5-slot system (6 with Scholar's Gambit), mastery coins, in-run collection, V1→V2 migration. V2 hooks: `resolveChargeCorrectEffects`, `resolveChargeWrongEffects`, `resolveChainCompleteEffects`, `resolveSurgeStartEffects`. AR-116 wired: `vitality_ring` (+20 max HP at run start), `merchants_favor` (+1 card +1 relic in shops via optional count param in `generateShopRelics`), `blood_price` (+1 AP/turn in addition to -2 HP/turn), `crit_lens` (25% crit x2 on Charge correct), `scholars_crown` (tier-based +10/40/75% charge bonus), `aegis_stone` (15-block cap → Thorns 2), `domain_mastery_sigil` (ID fixed from `domain_mastery`), `herbal_pouch` (8 HP fixed from 5). |
-| Audio manager | `AudioManager.ts`, `audioService.ts` | 100% |
-| Save/load | `SaveManager.ts`, `saveService.ts` | 100% |
-| Event bus | `src/events/EventBus.ts`, `src/events/types.ts` | 100% |
-| Achievement tracking | `AchievementManager.ts` | 100% |
-| Keeper NPC | `GaiaManager.ts` | 100% |
-| Session tracking | `SessionTracker.ts`, `sessionTimer.ts` | 100% |
-| Particle system | `ParticleSystem.ts` | 80% — adapt for card effects |
-| Screen shake | `ScreenShakeSystem.ts` | 100% |
+| Audio manager | `AudioManager.ts`, `audioService.ts` | |
+| Save/load | `saveService.ts` | Full player save via `runManager.ts` for in-run state |
+| Event bus | `src/events/EventBus.ts`, `src/events/types.ts` | |
+| Achievement tracking | `AchievementManager.ts` | |
+| Keeper NPC | `GaiaManager.ts` | |
+| Session tracking | `SessionTracker.ts`, `sessionTimer.ts` | |
+| Particle system | `ParticleSystem.ts` | Card effect visuals |
+| Screen shake | `ScreenShakeSystem.ts` | |
 
 ## 4. Systems Architecture
 
@@ -463,10 +463,6 @@ The relic system uses an STS-inspired economy replacing the old FSRS-tied passiv
 
 ## 5. Archived Systems
 
-Mining-specific code moved to `src/_archived-mining/`. Stub files remain at original paths for import compatibility.
-
-Archived systems include: mining grid, block breaking, fog of war, O2 system, mine generation, biome rendering, hazard system, mine block interactor, dome scene (hub world), creature spawner, instability system.
-
 ### v2-Archived UI Components
 
 These components exist in the codebase as dead code, removed from all active screen flows in v2:
@@ -593,7 +589,7 @@ Two buses:
 
 - Full save: `PlayerSave` in `src/data/types.ts`
 - Save key: `terra_save_<profileId>` (fallback: `terra_save`)
-- Mid-run checkpoint: saved after every encounter (replaces mid-dive snapshot)
+- Mid-run checkpoint: saved after every encounter via `runSaveService.ts`
 - Save version migrations: in-code, field-by-field in `saveService.ts`
 - Optional sub-document split: `saveSubDocs.ts` (core, knowledge, inventory, analytics)
 - Optional cloud sync: `syncService`/`apiClient`
@@ -611,7 +607,7 @@ src/
       BootAnimScene.ts     — 8s cinematic intro (logo deblur, glow burst, text sweep, studio tag, cave fly-through, campsite reveal). Tap-to-skip accelerates via tweens.timeScale=3. Emits `boot-anim-complete` on game.events when done. First-launch only (localStorage flag).
       BootScene.ts         — Asset loading
       CombatScene.ts       — Phaser combat display zone (enemy sprite, HP bars, animations; sceneReady guard pattern)
-    managers/              QuizManager, StudyManager, SaveManager, AudioManager,
+    managers/              QuizManager, StudyManager, AudioManager,
                            relicEffectResolver, CelebrationManager, GaiaManager,
                            AchievementManager, InventoryManager, CombatManager,
                            CompanionManager, EncounterManager
@@ -690,7 +686,6 @@ src-tauri/               — Tauri v2 desktop wrapper scaffold (Rust not yet com
     types.ts, biomes.ts, relics/ (types, starters, unlockable, index), saveState.ts, ...
   events/                  EventBus, types
   dev/                     presets, debug bridge
-  _archived-mining/        ~38 mining-specific files (stubs at original paths)
 ```
 
 ### Planned (P1+)

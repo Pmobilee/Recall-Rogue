@@ -17,7 +17,6 @@ This guide maps the current test layers and the exact commands used in this repo
 | `npx vitest run` | Run all unit tests once |
 | `npm run test:coverage` | Coverage output (text/lcov/html) |
 | `node tests/e2e/01-app-loads.cjs` | Baseline app-load verification with diagnostics |
-| `node tests/e2e/02-mine-quiz-flow.cjs` | Mine to quiz flow check |
 | `node tests/e2e/03-save-resume.cjs` | Save/resume flow check |
 | `npx playwright test` | Playwright runner suite |
 
@@ -28,7 +27,7 @@ Recommended after gameplay or state-management changes:
 1. `npm run typecheck`
 2. `npx vitest run`
 3. `node tests/e2e/01-app-loads.cjs`
-4. Run targeted E2E scripts affected by your change (`02`, `03`)
+4. Run targeted E2E scripts affected by your change (`03`)
 
 ## E2E diagnostics details
 
@@ -56,12 +55,14 @@ From `playwright.config.ts`:
 
 Frequently used `data-testid` selectors in E2E flows:
 
-- `btn-dive`
-- `btn-enter-mine`
-- `btn-surface`
-- `quiz-answer-0` .. `quiz-answer-3`
+- `btn-start-run`
+- `btn-retreat`
+- `btn-delve`
+- `card-hand-0` .. `card-hand-4`
+- `quiz-answer-0` .. `quiz-answer-2`
 - `btn-age-adult`
-- `hud-o2-bar`
+- `combo-counter`
+- `room-choice-0` .. `room-choice-2`
 
 ## Runtime debug hooks (dev)
 

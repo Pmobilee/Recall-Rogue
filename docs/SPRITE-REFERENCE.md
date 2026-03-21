@@ -32,9 +32,6 @@ Core functions:
 | Function | Purpose |
 | --- | --- |
 | `getSpriteUrls(resolution)` | Full key -> URL map for selected resolution |
-| `getSpriteUrlsForBiome(resolution, biomeId, secondaryBiomeId?)` | Shared sprites + biome-filtered tiles |
-| `getBiomeAtlasUrl(biomeId)` | Atlas JSON/WebP URL pair |
-| `getBiomeAtlasKey(biomeId)` | Phaser texture key (`mine_atlas_<biomeId>`) |
 | `supportsWebP()` | Browser WebP feature check |
 
 Resolution source:
@@ -45,12 +42,11 @@ Base URL:
 
 - URLs are prefixed with `import.meta.env.VITE_ASSET_BASE_URL` when present.
 
-## Biome atlas loading and eviction
+## Texture atlas LRU
 
 Source files:
 
 - `src/game/systems/TextureAtlasLRU.ts`
-- `src/game/spriteManifest.ts`
 
 Behavior:
 
@@ -83,11 +79,11 @@ FactSpriteLoader flow:
 
 ## Rendering touchpoints
 
-Primary render code: `src/game/scenes/MineTileRenderer.ts`
+Primary render code: `src/game/systems/EnemySpriteSystem.ts`
 
-- Uses sprite keys for block visuals, overlays, and crack stages.
+- Uses sprite keys for enemy visuals and animation frames.
 - Falls back to graphics primitives when texture key is missing.
-- Overlay key families include `overlay_*` (for artifacts, hazards, interactables).
+- Fact sprites loaded on-demand via `FactSpriteLoader.ts`.
 
 Boot behavior:
 

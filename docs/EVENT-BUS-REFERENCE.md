@@ -26,15 +26,10 @@ Event map (`GameEventMap`):
 
 | Event | Payload |
 | --- | --- |
-| `block-mined` | `{ x, y, blockType, loot[] }` |
 | `player-moved` | `{ gridX, gridY, direction }` |
-| `oxygen-changed` | `{ current, max, delta, cause }` |
 | `quiz-answer-submitted` | `{ factId, selectedDistractorIndex, isCorrect }` |
-| `layer-transition` | `{ fromLayer, toLayer, biome }` |
 | `score-updated` | `{ dust, shards, crystals, geodes, essence }` |
 | `gaia-toast-requested` | `{ message, mood, duration? }` |
-| `dive-start-requested` | `void` |
-| `dive-end-requested` | `void` |
 | `save-requested` | `void` |
 
 Note: this typed bus is defined and ready, but no production call sites currently use `eventBus` outside its own module example comments.
@@ -67,50 +62,10 @@ File: `src/game/GameEventBridge.ts`
 
 | Event name | Payload hint |
 | --- | --- |
-| `mine-started` | `{ seed, oxygen, inventorySlots, layer? }` |
-| `oxygen-changed` | `OxygenState` |
-| `depth-changed` | `number` |
-| `mineral-collected` | `{ mineralType?, mineralAmount?, addedToInventory }` |
-| `cave-in` | `{ affectedCount }` |
-| `earthquake` | `{ collapsed, revealed }` |
-| `artifact-found` | `{ factId?, rarity?, addedToInventory, rarityBoosted? }` |
-| `oxygen-restored` | no payload used |
-| `oxygen-tank-found` | no payload used |
-| `upgrade-found` | `{ upgrade }` |
-| `pickaxe-upgraded` | `{ tierIndex, tierName }` |
-| `backpack-expanded` | `{ slotsAdded, totalSlots, expansionCount }` |
-| `bomb-used` | `{ remaining }` |
-| `scanner-upgraded` | `{ tierIndex, tierName }` |
 | `relic-found` | `{ relic }` |
-| `blocks-mined-update` | `number` |
-| `quiz-gate` | `{ factId?, gateX?, gateY?, gateRemaining?, gateTotal? }` |
-| `oxygen-quiz` | `{ factId?, oxygenAmount }` |
-| `exit-reached` | no payload used |
-| `artifact-quiz` | `{ factId?, artifactRarity?, questionsRemaining?, questionsTotal?, boostedSoFar? }` |
-| `random-quiz` | no payload used |
-| `oxygen-depleted` | no payload used |
-| `open-backpack` | no payload used |
 | `run-complete` | no payload used |
-| `layer-entrance-quiz` | `{ layer }` |
-| `descent-shaft-entered` | `{ layer, inventory, blocksMinedThisRun, artifactsFound, oxygenState }` |
-| `quote-found` | `{ quote }` |
-| `send-up-station` | `{ inventory }` |
-| `data-disc-found` | no payload used |
-| `fossil-found` | `{ x, y }` |
-| `companion-triggered` | `{ effect }` |
-| `hazard-lava-contact` | no payload used |
-| `hazard-gas-contact` | no payload used |
-| `gaia-toast` | `string` |
-| `descent-animation-start` | `{ fromLayer, toLayer, biomeName }` |
-| `chest-opened` | `{ layer }` |
-| `altar-adjacent` | `{ x, y }` |
-| `locked-block-denied` | `{ requiredTier }` |
-| `fragment-collected` | `{ fragmentId }` |
-| `mine-event` | `{ type }` |
 | `boss-encounter` | `Boss` |
-| `creature-encounter` | `Creature` |
-| `the-deep-unlocked` | no payload used |
+| `gaia-toast` | `string` |
+| `artifact-found` | `{ factId?, rarity?, addedToInventory, rarityBoosted? }` |
 
-Related browser-side event:
-
-- `window` listener in `GameEventBridge` handles `layer-challenge-answer` custom events (`detail: { correct: boolean }`).
+Note: `GameEventBridge.ts` may retain legacy mining event subscriptions as dead code. These are safe to ignore — no producers emit them in the current card roguelite codebase.
