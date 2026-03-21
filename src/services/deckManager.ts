@@ -292,7 +292,9 @@ export function drawHand(
       return factId ?? null;
     };
 
-    if (!deck.currentEncounterSeenFacts) deck.currentEncounterSeenFacts = new Set();
+    if (!deck.currentEncounterSeenFacts || !(deck.currentEncounterSeenFacts instanceof Set)) {
+      deck.currentEncounterSeenFacts = new Set(Array.isArray(deck.currentEncounterSeenFacts) ? deck.currentEncounterSeenFacts : []);
+    }
     for (const card of drawn) {
       const factId = pickCandidateFactId() ?? shuffledFacts[0];
       if (factId) {
