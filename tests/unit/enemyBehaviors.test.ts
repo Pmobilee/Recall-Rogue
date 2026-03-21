@@ -146,29 +146,29 @@ describe('fossil_guardian — onPlayerNoCharge', () => {
   });
 });
 
-// ── Void Mite (was the_scholar): onPlayerChargeCorrect drains block ──
+// ── Void Mite: enemy gains block on player wrong Charge ──
 
-describe('void_mite — onPlayerChargeCorrect', () => {
-  it('drains 3 block from player on correct Charge', () => {
+describe('void_mite — onPlayerChargeWrong', () => {
+  it('gains 8 block when player answers wrong on Charge', () => {
     const enemy = makeInstance('void_mite');
-    const drainPlayerBlock = vi.fn();
-    const ctx = makeCtx(enemy, { chargeCorrect: true, playerBlock: 10, drainPlayerBlock });
-    expect(enemy.template.onPlayerChargeCorrect).toBeDefined();
-    enemy.template.onPlayerChargeCorrect!(ctx);
-    expect(drainPlayerBlock).toHaveBeenCalledWith(3);
+    enemy.block = 0;
+    const ctx = makeCtx(enemy, { chargeCorrect: false });
+    expect(enemy.template.onPlayerChargeWrong).toBeDefined();
+    enemy.template.onPlayerChargeWrong!(ctx);
+    expect(enemy.block).toBe(8);
   });
 
-  it('does not drain more block than player has', () => {
+  it('stacks block on multiple wrong answers', () => {
     const enemy = makeInstance('void_mite');
-    const drainPlayerBlock = vi.fn();
-    const ctx = makeCtx(enemy, { chargeCorrect: true, playerBlock: 2, drainPlayerBlock });
-    enemy.template.onPlayerChargeCorrect!(ctx);
-    expect(drainPlayerBlock).toHaveBeenCalledWith(2);
+    enemy.block = 5;
+    const ctx = makeCtx(enemy, { chargeCorrect: false });
+    enemy.template.onPlayerChargeWrong!(ctx);
+    expect(enemy.block).toBe(13);
   });
 
-  it('does NOT have onPlayerChargeWrong (correct plays only drain block)', () => {
+  it('does NOT have onPlayerChargeCorrect (no punishment for correct answers)', () => {
     const enemy = makeInstance('void_mite');
-    expect(enemy.template.onPlayerChargeWrong).toBeUndefined();
+    expect(enemy.template.onPlayerChargeCorrect).toBeUndefined();
   });
 });
 

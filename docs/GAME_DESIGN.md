@@ -422,7 +422,7 @@ Because the counter persists across encounters, Surge timing becomes unpredictab
 - **Scholar:** Heals 5 HP when you answer correctly on a Charge
 - **Shadow Mimic:** Copies card effect against you when you answer wrong on a Charged card
 - **Bone Collector (AR-123):** Steals up to 5 block from the player when they miss a Charge. Enemy gains that stolen block as HP.
-- **Void Mite (AR-123):** Drains 3 block from the player when they Charge correctly. Build block before Charging, or Quick Play to deny it.
+- **Void Mite (AR-123):** Gains 8 block when the player answers wrong on a Charge. Only Charge facts you know — guessing makes it tankier.
 - **Core Harbinger (AR-123):** Quick Play deals only 30% damage. Charge for full effect. No longer immune — now resistant.
 - **Knowledge Siphon (AR-123):** Gains +2 base damage every time the player Charges correctly. Kill it fast or play defensively.
 
@@ -433,7 +433,7 @@ Enemies can have passive traits that modify how specific play styles interact wi
 #### chargeResistant
 Quick Play attacks deal **50% damage** to this enemy. Charged attacks (correct or wrong) deal full damage. Rewards players who invest AP to Charge their cards.
 
-Enemies with chargeResistant: iron_beetle, geode_beetle, crystal_golem, basalt_crawler, quartz_elemental, iron_core_golem, rock_hermit, tectonic_scarab, granite_hound, void_mite, tome_mimic, pressure_djinn
+Enemies with chargeResistant: iron_beetle, geode_beetle, crystal_golem, basalt_crawler, quartz_elemental, iron_core_golem, rock_hermit, tectonic_scarab, granite_hound, tome_mimic, pressure_djinn
 
 #### quickPlayDamageMultiplier (AR-123)
 Quick Play attacks deal only **X% damage** (e.g., 30%) to this enemy instead of zero. A softer version of `quickPlayImmune` — players can still chip with Quick Play, but Charging is dramatically more efficient.
@@ -1140,10 +1140,10 @@ Phase 2: Resume with accumulated buffs/debuffs.
 
 ### Act 3 Enemies (The Archive)
 
-**Void Mite** — Common (AR-123 redesign)
+**Void Mite** — Common (AR-123 redesign v2)
 HP: 40 | Damage: 6
-Drains 3 block from the player when they Charge correctly. Quick Play denies the drain.
-*No longer anti-learning. Block drain creates a resource trade-off instead of punishing correct answers.*
+Gains 8 block when the player answers wrong on a Charge. Only Charge facts you know — guessing makes it tankier.
+*Rewards confident knowledge. Wrong answers make the fight harder without punishing correct ones.*
 
 **The Grade Curve (knowledge_siphon)** — Common (AR-123 new)
 HP: 45 | Damage: 8–10

@@ -1303,18 +1303,14 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'defend', value: 8, weight: 2, telegraph: 'Study shield' },
       { type: 'heal', value: 5, weight: 1, telegraph: 'Knowledge recovery' },
     ],
-    description: 'Drains 3 block when you Charge correctly. Build block before Charging or Quick Play to deny it.',
+    description: 'Gains 8 block when you answer wrong on a Charge. Only Charge facts you know.',
     rarity: 'standard',
     spawnWeight: 10,
     animArchetype: 'crawler',
-    onPlayerChargeCorrect: (ctx) => {
-      // Drains 3 block from player when they answer correctly
-      const drainAmount = Math.min(3, ctx.playerBlock ?? 0);
-      if (drainAmount > 0 && ctx.drainPlayerBlock) {
-        ctx.drainPlayerBlock(drainAmount);
-      }
+    onPlayerChargeWrong: (ctx) => {
+      // Enemy gains 8 block when player answers wrong on Charge
+      ctx.enemy.block = (ctx.enemy.block ?? 0) + 8;
     },
-    chargeResistant: true,
   },
 
   // AR-123: Knowledge Siphon — grows stronger the more you answer correctly.
