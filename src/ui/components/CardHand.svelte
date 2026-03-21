@@ -1468,6 +1468,7 @@
     inset: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden; /* clips art to frame boundaries */
   }
 
   .frame-layer {
@@ -1477,18 +1478,20 @@
     height: 100%;
     object-fit: contain;
     pointer-events: none;
+    image-rendering: pixelated; /* crisp pixel art rendering */
   }
 
   .frame-card-art {
     position: absolute;
     /* Cover the pentagon art window area — base frame masks edges naturally */
-    left: 14%;
-    top: 12%;
-    width: 72%;
-    height: 48%;
+    left: 16%;
+    top: 14%;
+    width: 68%;
+    height: 42%; /* reduced from 48% to stay inside pentagon */
     object-fit: cover;
     image-rendering: auto; /* smooth for photo-like art */
     pointer-events: none;
+    border-radius: 4px; /* subtle rounding to match pentagon corners */
   }
 
   .upgrade-icon {
@@ -1564,7 +1567,8 @@
     text-shadow:
       2px 2px 0 #000, -2px -2px 0 #000,
       2px -2px 0 #000, -2px 2px 0 #000,
-      0 3px 6px rgba(0,0,0,0.8);
+      0 3px 6px rgba(0,0,0,0.8),
+      0 0 4px rgba(0,0,0,0.9), 0 1px 2px rgba(0,0,0,0.8), 0 0 8px rgba(0,0,0,0.5);
     line-height: 1;
   }
 
@@ -1574,7 +1578,7 @@
     font-size: calc(var(--card-w) * 0.09);
     color: #ffffff;
     text-transform: capitalize;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.9), 0 0 6px rgba(0,0,0,0.7);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1609,6 +1613,7 @@
     font-weight: 600;
     color: #ffffff;
     text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;

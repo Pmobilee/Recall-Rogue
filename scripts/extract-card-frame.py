@@ -141,7 +141,7 @@ def main() -> None:
     base_arr = np.array(base_canvas)
     # Art window rectangle from PSD guide: x=194, y=186, w=498, h=412
     ART_X, ART_Y, ART_W, ART_H = 194, 186, 498, 412
-    inset = 4  # small inset so the pentagon border isn't clipped
+    inset = 12  # tighter inset so art doesn't bleed outside the pentagon border
     base_arr[ART_Y + inset : ART_Y + ART_H - inset, ART_X + inset : ART_X + ART_W - inset, 3] = 0
     base_canvas = Image.fromarray(base_arr)
     out_path = OUT_DIR / "card-frame-base.webp"
