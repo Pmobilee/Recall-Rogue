@@ -87,6 +87,46 @@ function excludeHiresCardbacks(): Plugin {
 }
 
 /**
+ * Dev-only Vite plugin that exposes a POST /__dev/screenshot endpoint.
+ * Accepts a base64 data URL in the request body and writes it to /tmp as a file.
+ * Used by captureScreenshotToFile() in screenshotHelper.ts so Playwright tests
+ * can retrieve screenshots as server-side files instead of triggering browser downloads.
+ */
+function devScreenshotEndpoint(): Plugin {
+  return {
+    name: 'dev-screenshot-endpoint',
+    configureServer(server) {
+      server.middlewares.use(async (req, res, next) => {
+        if (req.method !== 'POST' || req.url !== '/__dev/screenshot') {
+          return next()
+        }
+        try {
+          const chunks: Buffer[] = []
+          for await (const chunk of req) {
+            chunks.push(chunk as Buffer)
+          }
+          const body = JSON.parse(Buffer.concat(chunks).toString('utf8')) as { data: string }
+          const dataUrl: string = body.data
+          // Detect mime type from the data URL header (e.g. "data:image/jpeg;base64,...")
+          const mimeMatch = dataUrl.match(/^data:(image\/[a-z]+);base64,/)
+          const mime = mimeMatch?.[1] ?? 'image/png'
+          const ext = mime === 'image/jpeg' ? 'jpg' : 'png'
+          const base64 = dataUrl.replace(/^data:image\/[a-z]+;base64,/, '')
+          const filePath = `/tmp/terra-screenshot.${ext}`
+          const { writeFile } = await import('fs/promises')
+          await writeFile(filePath, Buffer.from(base64, 'base64'))
+          res.setHeader('Content-Type', 'application/json')
+          res.end(JSON.stringify({ path: filePath }))
+        } catch (err) {
+          res.statusCode = 500
+          res.end(JSON.stringify({ error: String(err) }))
+        }
+      })
+    },
+  }
+}
+
+/**
  * Adds Cache-Control headers for static assets during development.
  * Prevents the Android webview from re-fetching every image on every app launch.
  * Applies Cache-Control: public, max-age=86400 (1 day) to all /assets/ requests.
@@ -126,6 +166,7 @@ if (process.env.ANALYZE === 'true') {
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
+    devScreenshotEndpoint(),
     staticAssetCachePlugin(),
     svelte(),
     cspInjectPlugin(),

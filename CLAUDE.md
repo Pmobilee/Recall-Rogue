@@ -174,12 +174,13 @@ node -e "const r=JSON.parse(require('fs').readFileSync('data/inspection-registry
 
 **After EVERY sub-agent returns from a visual/UI/CSS task, the orchestrator MUST visually inspect the result BEFORE committing.** This is non-negotiable. On 2026-03-21, skipping this step caused 10+ visual regressions to ship (duplicate HP text, moved buttons, bloated bars, clutter labels). The user caught it, not the agent.
 
-- ALWAYS use `browser_evaluate(() => window.__terraScreenshot())` to take screenshots — this captures both the Phaser canvas AND DOM overlays as a composited base64 PNG, bypassing Playwright's animation-wait entirely
-- **NEVER use `mcp__playwright__browser_take_screenshot`** — Phaser's continuous `requestAnimationFrame` loop blocks Playwright's animation-wait logic, causing a permanent 30s timeout
-- **NEVER use `page.screenshot()` via `browser_run_code`** — same RAF blocking issue
-- **NEVER use `page.context().newCDPSession()`** — it HANGS permanently and blocks the session
+- **ALWAYS** use `browser_evaluate(() => window.__terraScreenshotFile())` to take screenshots — saves to `/tmp/terra-screenshot.jpg` server-side, returns the path — then `Read()` the file to view
+- **NEVER** use `mcp__playwright__browser_take_screenshot` — Phaser's continuous `requestAnimationFrame` loop blocks Playwright's animation-wait logic, causing a permanent 30s timeout
+- **NEVER** use `page.screenshot()` via `browser_run_code` — same RAF blocking issue
+- **NEVER** use `page.context().newCDPSession()` — it HANGS permanently and blocks the session
+- **NEVER** use raw `__terraScreenshot()` via browser_evaluate — the base64 exceeds tool output character limits
 - `mcp__playwright__browser_snapshot` (DOM snapshot) is still valid as a supplementary tool for DOM state
-- If `__terraScreenshot()` fails or is unavailable, TELL THE USER you couldn't verify and ask them to check
+- If `__terraScreenshotFile()` fails or is unavailable, TELL THE USER you couldn't verify and ask them to check
 - Sub-agents making CSS/layout changes are the HIGHEST RISK — always verify their output
 - **Never batch-commit multiple visual agent results without inspecting each one**
 
@@ -206,13 +207,14 @@ await page.evaluate(() => document.documentElement.setAttribute('data-pw-animati
 **Full scenario list:** `window.__terraScenario.list()` or see `src/dev/scenarioSimulator.ts`
 
 **Screenshot method — CRITICAL:**
-- **ALWAYS** use `browser_evaluate(() => window.__terraScreenshot())` to take screenshots — this captures both the Phaser canvas AND DOM overlays as a composited base64 PNG, bypassing Playwright's animation-wait entirely
+- **ALWAYS** use `browser_evaluate(() => window.__terraScreenshotFile())` to take screenshots — saves to `/tmp/terra-screenshot.jpg` server-side, returns the path
+- Then use `Read("/tmp/terra-screenshot.jpg")` to view the image
 - **NEVER** use `mcp__playwright__browser_take_screenshot` — Phaser's continuous `requestAnimationFrame` loop blocks Playwright's animation-wait logic, causing a permanent 30s timeout
 - **NEVER** use `page.screenshot()` via `browser_run_code` — same RAF blocking issue
 - **NEVER** use `page.context().newCDPSession()` — it hangs permanently and blocks the entire session
+- **NEVER** use raw `__terraScreenshot()` via browser_evaluate — the base64 exceeds tool output character limits
 - `mcp__playwright__browser_snapshot` (DOM snapshot) is still valid as a supplementary tool for DOM state
-- The `__terraScreenshot()` function (defined in `src/dev/screenshotHelper.ts`) composites the Phaser WebGL canvas + Svelte DOM overlays via SVG foreignObject, returning a full-page data URL
-- To save to file: `const dataUrl = await page.evaluate(() => window.__terraScreenshot()); fs.writeFileSync('shot.png', Buffer.from(dataUrl.split(',')[1], 'base64'));`
+- The `__terraScreenshotFile()` function (defined in `src/dev/screenshotHelper.ts`) composites the Phaser WebGL canvas + Svelte DOM overlays via SVG foreignObject, saves via a Vite dev server endpoint (`POST /__dev/screenshot`), and returns the file path
 
 ### 1. MCP Playwright (interactive — use during development)
 - Use `mcp__playwright__browser_navigate`, `mcp__playwright__browser_snapshot`, `mcp__playwright__browser_evaluate` etc.
@@ -223,7 +225,7 @@ await page.evaluate(() => document.documentElement.setAttribute('data-pw-animati
 **Standard debug sequence:**
 1. `mcp__playwright__browser_navigate` → `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 2. `mcp__playwright__browser_snapshot` → inspect DOM / find errors
-3. `mcp__playwright__browser_evaluate(() => window.__terraScreenshot())` → visual check (composited Phaser + DOM screenshot)
+3. `browser_evaluate(() => window.__terraScreenshotFile())` → visual check (saves to `/tmp/terra-screenshot.jpg`), then `Read("/tmp/terra-screenshot.jpg")` to view
 4. `mcp__playwright__browser_console_messages` → check JS errors
 
 ### 2. E2E Scripts (automated — use for CI and end-of-session verification)
@@ -254,7 +256,7 @@ node tests/e2e/03-save-resume.cjs
 **Visual inspection workflow:**
 1. Ensure dev server is running (`npm run dev`)
 2. Navigate with Playwright MCP: `mcp__playwright__browser_navigate` → `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
-3. Take screenshot: `mcp__playwright__browser_evaluate(() => window.__terraScreenshot())` — returns composited Phaser canvas + DOM as base64 PNG
+3. Take screenshot: `browser_evaluate(() => window.__terraScreenshotFile())` — saves to `/tmp/terra-screenshot.jpg`, then `Read("/tmp/terra-screenshot.jpg")` to view
 4. Take DOM snapshot: `mcp__playwright__browser_snapshot`
 5. Check console: `mcp__playwright__browser_console_messages`
 6. **If the visual result doesn't match expectations: FIX IT before reporting done.** Update the AR, spawn another worker, iterate. Do NOT tell the user "it should work" — CONFIRM it works.
@@ -266,7 +268,7 @@ node tests/e2e/03-save-resume.cjs
 - Test with different screen sizes, empty data, edge-case inputs
 - If an AR touches multiple screens/flows, inspect ALL of them
 
-**This rule applies to workers too:** Every sub-agent task prompt MUST include: "After implementation, verify visually with Playwright (`browser_evaluate(() => window.__terraScreenshot())` for screenshot + `browser_snapshot` for DOM + console check). If anything looks wrong, fix it before returning."
+**This rule applies to workers too:** Every sub-agent task prompt MUST include: "After implementation, verify visually with Playwright (`browser_evaluate(() => window.__terraScreenshotFile())` to save screenshot, then `Read()` to view + `browser_snapshot` for DOM + console check). If anything looks wrong, fix it before returning."
 
 ### Standard verification checklist
 - After ANY bug fix, VERIFY it works before reporting done (Playwright screenshot+snapshot, console logs, or tests)
@@ -339,7 +341,7 @@ Each phase doc MUST contain:
 2. Orchestrator reads the phase doc — it is the implementation spec
 3. Orchestrator spawns coding workers with the phase doc content as their spec
 4. Workers implement, orchestrator verifies (typecheck, build, Playwright, acceptance criteria)
-5. **Orchestrator VISUALLY INSPECTS the result** using Playwright (`browser_evaluate(() => window.__terraScreenshot())` for composited screenshot + `browser_snapshot` + console). If it doesn't look right, iterate — spawn another worker, fix it, re-inspect. Never skip this step.
+5. **Orchestrator VISUALLY INSPECTS the result** using Playwright (`browser_evaluate(() => window.__terraScreenshotFile())` to save, `Read()` to view + `browser_snapshot` + console). If it doesn't look right, iterate — spawn another worker, fix it, re-inspect. Never skip this step.
 6. Orchestrator verifies doc files (`GAME_DESIGN.md`, `ARCHITECTURE.md`) reflect changes
 7. On completion: check off all sub-steps, move the phase doc to `docs/roadmap/completed/`
 
@@ -353,8 +355,8 @@ Each phase doc MUST contain:
 - The orchestrator must NEVER edit code files directly — always delegate via Agent tool
 - **EXCEPTION: AR phase docs** — the orchestrator MUST write AR docs directly (never delegate to sub-agents). AR docs require full conversation context that sub-agents don't have.
 - **EVERY worker task prompt MUST include**: "Update `docs/GAME_DESIGN.md` and `docs/ARCHITECTURE.md` if your changes affect gameplay, balance, systems, or file structure. Stale docs = bugs."
-- **EVERY worker task prompt MUST include**: "After implementation, run `npm run typecheck` and `npm run build`. Then verify visually with Playwright if the change is UI/visual: use `browser_evaluate(() => window.__terraScreenshot())` for screenshots (NEVER `mcp__playwright__browser_take_screenshot` — it times out) — the orchestrator will inspect too."
-- **After EVERY worker completes**: The Opus orchestrator MUST visually inspect the result using Playwright MCP (`browser_evaluate(() => window.__terraScreenshot())` for composited screenshot + `browser_snapshot` + console). If the result doesn't match expectations, iterate immediately. NEVER report done without visual confirmation.
+- **EVERY worker task prompt MUST include**: "After implementation, run `npm run typecheck` and `npm run build`. Then verify visually with Playwright if the change is UI/visual: use `browser_evaluate(() => window.__terraScreenshotFile())` to save, then `Read()` to view (NEVER `mcp__playwright__browser_take_screenshot` — it times out) — the orchestrator will inspect too."
+- **After EVERY worker completes**: The Opus orchestrator MUST visually inspect the result using Playwright MCP (`browser_evaluate(() => window.__terraScreenshotFile())` to save, `Read()` to view + `browser_snapshot` + console). If the result doesn't match expectations, iterate immediately. NEVER report done without visual confirmation.
 - **EVERY worker that touches gameplay, UI, or balance MUST update docs IN THE SAME TASK** — not as a follow-up. If the worker adds a new screen, mechanic, relic, enemy, card type, or changes any player-facing behavior, the doc updates are PART of the task, not optional. The orchestrator MUST verify docs were updated before marking the task complete.
 
 ## Specialized Task Patterns

@@ -11,7 +11,8 @@
  * 5. Optionally downscale and/or encode as JPEG for smaller output
  *
  * window.__terraScreenshot()          → small JPEG (scale 0.5, quality 0.7) for tool consumption
- * window.__terraScreenshotFile()      → full PNG saved to downloads folder
+ * window.__terraScreenshotFile()      → POSTs image to /__dev/screenshot, returns server file path
+ *                                       Falls back to the data URL if the endpoint is unavailable.
  */
 
 /** Options for captureScreenshot */
@@ -84,33 +85,31 @@ export async function captureScreenshot(options: ScreenshotOptions = {}): Promis
 }
 
 /**
- * Capture a full-resolution PNG and trigger a browser download.
- * Returns the filename that was downloaded.
+ * Capture a screenshot and save it to disk via the Vite dev server endpoint.
+ * POSTs the image as a base64 data URL to /__dev/screenshot, which writes it to
+ * /tmp/terra-screenshot.jpg (or .png). Returns the server-side file path.
+ *
+ * If the endpoint is unavailable (e.g. production build or endpoint not running),
+ * falls back to returning the data URL directly.
+ *
  * Exposed as window.__terraScreenshotFile() in dev mode.
  */
 export async function captureScreenshotToFile(): Promise<string> {
-  const dataUrl = await captureScreenshot({ scale: 1, format: 'png' });
+  const dataUrl = await captureScreenshot({ scale: 0.5, quality: 0.7, format: 'jpeg' });
 
-  // Convert data URL to Blob
-  const [header, base64] = dataUrl.split(',');
-  const mime = header.match(/:(.*?);/)?.[1] ?? 'image/png';
-  const binary = atob(base64);
-  const bytes = new Uint8Array(binary.length);
-  for (let i = 0; i < binary.length; i++) {
-    bytes[i] = binary.charCodeAt(i);
+  try {
+    const response = await fetch('/__dev/screenshot', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ data: dataUrl }),
+    });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const json = await response.json() as { path: string };
+    return json.path;
+  } catch {
+    // Not in dev mode or endpoint unavailable — return data URL as fallback
+    return dataUrl;
   }
-  const blob = new Blob([bytes], { type: mime });
-
-  const timestamp = Date.now();
-  const filename = `terra-screenshot-${timestamp}.png`;
-
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = filename;
-  link.click();
-  URL.revokeObjectURL(link.href);
-
-  return filename;
 }
 
 /** Render the DOM (excluding canvas) as an image via SVG foreignObject */

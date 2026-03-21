@@ -92,6 +92,65 @@ export interface CardEffectResult {
   overkillHeal?: number;
   /** AR-206: Extra block granted to same-chain cards in hand (aegis_pulse CC). */
   chainBlockBonus?: number;
+  /** AR-207: Gambit self-damage amount (QP: 2, CW: 5; reduced by 1 at L3+). */
+  gambitselfDamage?: number;
+  /** AR-207: Gambit CC heal amount. */
+  gambitHeal?: number;
+  /** AR-207: If true, the card should be exhausted after resolution (volatile_slash CC, burnout_shield CC). */
+  exhaustOnResolve?: boolean;
+  /** AR-207: Knowledge Ward — block is per-domain (value = block per unique domain, resolver sets finalValue). */
+  knowledgeWardBlock?: number;
+  /**
+   * AR-207: Warcry — apply strength status to player.
+   * value = stacks, turnsRemaining = 99 for permanent (rest of combat), 1 for this-turn only.
+   */
+  applyStrengthToPlayer?: { value: number; permanent: boolean };
+  /** AR-207: Warcry CC — next Charge this turn costs +0 AP surcharge. */
+  warcryFreeCharge?: boolean;
+  /** AR-207: Battle Trance lockout — set battleTranceRestriction on turn state. */
+  applyBattleTranceRestriction?: boolean;
+  /** AR-207: Number of cards to draw immediately (battle_trance). */
+  battleTranceDraw?: number;
+  /** AR-207: Curse of Doubt — apply charge_damage_amp_percent status to enemy. */
+  applyChargeDamageAmpPercent?: { value: number; turns: number };
+  /** AR-207: Mark of Ignorance — apply charge_damage_amp_flat status to enemy. */
+  applyChargeDamageAmpFlat?: { value: number; turns: number };
+  /**
+   * AR-207: Phase Shift — pending choice for QP/CW (player must choose dmg or block).
+   * 'damage' | 'block'. Resolved by turnManager when choice returns.
+   * For now auto-selects damage when no popup is wired.
+   */
+  phaseShiftChoice?: 'damage' | 'block' | 'pending';
+  /** AR-207: Phase Shift CC — both damage AND block simultaneously. */
+  phaseShiftBothDmgAndBlock?: { damage: number; block: number };
+  /**
+   * AR-207: Chameleon — copy last card's base mechanic at the given multiplier.
+   * turnManager resolves the actual copy using lastPlayedMechanicId.
+   */
+  chameleonMultiplier?: number;
+  /** AR-207: Chameleon CC — inherit the last played card's chain type. */
+  chameleonInheritChain?: boolean;
+  /**
+   * AR-207: Dark Knowledge — damage per cursed fact (already multiplied in damageDealt).
+   * Stored for UI display.
+   */
+  darkKnowledgeDmgPerCurse?: number;
+  /**
+   * AR-207: Chain Anchor CC — set chainAnchorActive flag on turn state.
+   * Chain Anchor is NOT a chain link itself.
+   */
+  applyChainAnchor?: boolean;
+  /**
+   * AR-207: Unstable Flux — random/choice result.
+   * 'damage' | 'block' | 'draw' | 'debuff'
+   */
+  unstableFluxEffect?: 'damage' | 'block' | 'draw' | 'debuff';
+  /**
+   * AR-207: Chain Lightning CC damage multiplied by chain length.
+   * This value is set in turnManager after extending the chain.
+   * The resolver sets a sentinel (8 base) and turnManager overrides.
+   */
+  chainLightningChainLength?: number;
 }
 
 export interface AdvancedResolveOptions {
@@ -117,6 +176,16 @@ export interface AdvancedResolveOptions {
    * after mastery bonus and before relic flat bonuses. Only applies to attack cards.
    */
   inscriptionFuryBonus?: number;
+  /**
+   * AR-207: Unique domain strings from the current hand (for knowledge_ward).
+   * Populated by turnManager at resolve time. Deduplicated before passing.
+   */
+  handDomains?: string[];
+  /**
+   * AR-207: Count of cursed facts in runState.cursedFactIds at the time this card was played.
+   * Snapshotted by turnManager before resolving dark_knowledge.
+   */
+  cursedFactCount?: number;
 }
 
 export function isCardBlocked(card: Card, enemy: EnemyInstance): boolean {
@@ -713,6 +782,264 @@ export function resolveCardEffect(
       result.finalValue = finalValue;
       return result;
     }
+
+    // ── AR-207: Phase 2 Identity / Flagship Cards ───────────────────────────
+
+    // Gambit — HP swing attack
+    case 'gambit': {
+      applyAttackDamage(finalValue);
+      const masteryL3 = (card.masteryLevel ?? 0) >= 3;
+      if (isChargeCorrect) {
+        result.gambitHeal = 5;
+        result.healApplied = 5;
+      } else if (isChargeWrong) {
+        const selfDmg = masteryL3 ? 4 : 5;
+        result.gambitselfDamage = selfDmg;
+        result.selfDamage = selfDmg;
+      } else {
+        // QP
+        const selfDmg = masteryL3 ? 1 : 2;
+        result.gambitselfDamage = selfDmg;
+        result.selfDamage = selfDmg;
+      }
+      return result;
+    }
+
+    // Chain Lightning — chain-scaling attack (turnManager overrides CC damage)
+    case 'chain_lightning': {
+      // QP: always 8 base (+ mastery bonus already in finalValue); CW: 5 (+ mastery).
+      // CC: turnManager reads chainLightningChainLength and overrides damageDealt.
+      //     Resolver sets a sentinel (8 * 1 = base) — turnManager replaces it.
+      if (isChargeCorrect) {
+        // Sentinel: will be overridden by turnManager after chain is extended
+        applyAttackDamage(finalValue);
+        result.chainLightningChainLength = 1; // sentinel; turnManager sets real value
+      } else {
+        applyAttackDamage(finalValue);
+      }
+      return result;
+    }
+
+    // Volatile Slash — exhaust on CC
+    case 'volatile_slash': {
+      applyAttackDamage(finalValue);
+      if (isChargeCorrect) {
+        result.exhaustOnResolve = true;
+      }
+      return result;
+    }
+
+    // Burnout Shield — exhaust on CC
+    case 'burnout_shield': {
+      result.shieldApplied = applyShieldRelics(finalValue);
+      if (isChargeCorrect) {
+        result.exhaustOnResolve = true;
+      }
+      return result;
+    }
+
+    // Knowledge Ward — block per unique domain in hand
+    case 'knowledge_ward': {
+      // handDomains is populated by turnManager; fallback to 1 domain if absent.
+      const domains = advanced.handDomains ?? [];
+      const uniqueDomainCount = new Set(domains.filter(Boolean)).size || 1;
+      // finalValue = per-domain block value (QP/CC/CW base + mastery bonus already applied).
+      const blockTotal = Math.round(finalValue * uniqueDomainCount);
+      result.shieldApplied = applyShieldRelics(blockTotal);
+      result.knowledgeWardBlock = finalValue; // per-domain value for UI
+      return result;
+    }
+
+    // Warcry — Strength buff + optional free Charge
+    case 'warcry': {
+      const masteryL3Warcry = (card.masteryLevel ?? 0) >= 3;
+      if (isChargeCorrect) {
+        // +2 Str permanent + free Charge flag
+        result.applyStrengthToPlayer = { value: 2, permanent: true };
+        result.warcryFreeCharge = true;
+      } else if (isChargeWrong) {
+        // +1 Str this turn only
+        result.applyStrengthToPlayer = { value: 1, permanent: false };
+      } else {
+        // QP: +2 Str this turn; L3+: also +1 Str permanent
+        result.applyStrengthToPlayer = { value: 2, permanent: false };
+        if (masteryL3Warcry) {
+          // Handled in turnManager: check for warcry_perm_str tag at L3+
+          result.warcryFreeCharge = false; // no free charge on QP
+        }
+      }
+      result.finalValue = isChargeCorrect ? 2 : (isChargeWrong ? 1 : 2);
+      return result;
+    }
+
+    // Battle Trance — draw + optional lockout
+    case 'battle_trance': {
+      const masteryL3BT = (card.masteryLevel ?? 0) >= 3;
+      if (isChargeCorrect) {
+        // Draw 3, no restriction
+        result.battleTranceDraw = 3;
+        result.extraCardsDrawn = 3;
+      } else if (isChargeWrong) {
+        // Draw 2, locked out
+        result.battleTranceDraw = 2;
+        result.extraCardsDrawn = 2;
+        result.applyBattleTranceRestriction = true;
+      } else {
+        // QP: draw 3 (or 4 at L3+), locked out
+        const drawCount = masteryL3BT ? 4 : 3;
+        result.battleTranceDraw = drawCount;
+        result.extraCardsDrawn = drawCount;
+        result.applyBattleTranceRestriction = true;
+      }
+      return result;
+    }
+
+    // Curse of Doubt — charge damage percent amplifier on enemy
+    case 'curse_of_doubt': {
+      // finalValue = percent bonus (30/50/20 base + mastery bonus via perLevelDelta=5)
+      const doubTurns = isChargeCorrect ? 3 : (isChargeWrong ? 1 : 2);
+      result.applyChargeDamageAmpPercent = { value: finalValue, turns: doubTurns };
+      return result;
+    }
+
+    // Mark of Ignorance — charge damage flat amplifier on enemy
+    case 'mark_of_ignorance': {
+      // finalValue = flat bonus (3/5/2 base + mastery bonus via perLevelDelta=1)
+      const markTurns = isChargeCorrect ? 3 : (isChargeWrong ? 1 : 2);
+      result.applyChargeDamageAmpFlat = { value: finalValue, turns: markTurns };
+      return result;
+    }
+
+    // Corroding Touch — 0 AP, Weakness + optional Vulnerable
+    case 'corroding_touch': {
+      const masteryBonusDuration = getMasteryBaseBonus(mechanicId, card.masteryLevel ?? 0);
+      if (isChargeCorrect) {
+        // 3 Weakness (2t) + 2 Vulnerable (1t)
+        result.statusesApplied.push({
+          type: 'weakness',
+          value: 3,
+          turnsRemaining: 2 + Math.round(masteryBonusDuration),
+        });
+        result.statusesApplied.push({
+          type: 'vulnerable',
+          value: 2,
+          turnsRemaining: 1,
+        });
+      } else if (isChargeWrong) {
+        // 1 Weakness (1t)
+        result.statusesApplied.push({
+          type: 'weakness',
+          value: 1,
+          turnsRemaining: 1 + Math.round(masteryBonusDuration),
+        });
+      } else {
+        // QP: 2 Weakness (1t + mastery duration)
+        result.statusesApplied.push({
+          type: 'weakness',
+          value: 2,
+          turnsRemaining: 1 + Math.round(masteryBonusDuration),
+        });
+      }
+      return result;
+    }
+
+    // Phase Shift — choice: damage or block (QP/CW); both (CC)
+    case 'phase_shift': {
+      if (isChargeCorrect) {
+        // 12 dmg AND 12 block simultaneously
+        const psValue = finalValue;
+        applyAttackDamage(psValue);
+        result.shieldApplied = applyShieldRelics(psValue);
+        result.phaseShiftBothDmgAndBlock = { damage: psValue, block: psValue };
+      } else {
+        // QP/CW: choose damage or block — auto-select damage (popup wired in encounterBridge later)
+        // For now: default to damage. turnManager will handle pendingChoice when popup is wired.
+        applyAttackDamage(finalValue);
+        result.phaseShiftChoice = 'damage'; // placeholder until popup wired
+      }
+      return result;
+    }
+
+    // Chameleon — copy last card at multiplier
+    case 'chameleon': {
+      // turnManager resolves the actual copy using lastPlayedMechanicId.
+      // We emit the multiplier; turnManager handles copy resolution.
+      const chameleonMult = isChargeCorrect ? 1.3 : (isChargeWrong ? 0.7 : 1.0);
+      result.chameleonMultiplier = chameleonMult;
+      if (isChargeCorrect) {
+        result.chameleonInheritChain = true;
+      }
+      // Check L3+ QP chain inherit
+      if (!isChargeCorrect && !isChargeWrong && (card.masteryLevel ?? 0) >= 3) {
+        result.chameleonInheritChain = true;
+      }
+      // Damage/shield/draw is resolved by turnManager after reading lastPlayedMechanicId.
+      // This card itself does 0 effect without a previous card.
+      return result;
+    }
+
+    // Dark Knowledge — damage per cursed fact
+    case 'dark_knowledge': {
+      const cursedCount = advanced.cursedFactCount ?? 0;
+      const dmgPerCurse = isChargeCorrect ? 5 : (isChargeWrong ? 1 : 3);
+      // Apply mastery bonus (+1 per level to dmg per curse base)
+      const masteryDmgBonus = getMasteryBaseBonus(mechanicId, card.masteryLevel ?? 0);
+      const effectiveDmgPerCurse = dmgPerCurse + masteryDmgBonus;
+      const totalDamage = effectiveDmgPerCurse * cursedCount;
+      if (totalDamage > 0) {
+        applyAttackDamage(totalDamage);
+      }
+      result.darkKnowledgeDmgPerCurse = effectiveDmgPerCurse;
+      return result;
+    }
+
+    // Chain Anchor — draw + optional chain anchor flag
+    case 'chain_anchor': {
+      // Draws 1 in all modes. CC also sets chainAnchorActive.
+      // Chain Anchor is NOT a chain link itself.
+      result.extraCardsDrawn = 1;
+      if (isChargeCorrect) {
+        result.applyChainAnchor = true;
+      }
+      return result;
+    }
+
+    // Unstable Flux — random (QP/CW) or chosen (CC) effect
+    case 'unstable_flux': {
+      const fluxMult = isChargeCorrect ? 1.5 : (isChargeWrong ? 0.7 : 1.0);
+      const baseDmg = Math.round(10 * fluxMult);
+      const baseBlock = Math.round(10 * fluxMult);
+      const baseDraw = Math.max(1, Math.round(2 * fluxMult));
+      const baseWeakTurns = isChargeCorrect ? 3 : 2;
+
+      if (isChargeCorrect) {
+        // CC: player CHOOSES — auto-select damage for now (popup wired later).
+        // In real integration, turnManager will present MultiChoicePopup and resolve chosen effect.
+        // For headless sim: default to damage.
+        applyAttackDamage(baseDmg);
+        result.unstableFluxEffect = 'damage';
+      } else {
+        // QP/CW: random selection
+        const masteryL3Flux = (card.masteryLevel ?? 0) >= 3;
+        // At L3+ QP, player chooses 1 of 2 pre-selected options (simulated as random for now).
+        const roll = Math.floor(Math.random() * 4);
+        if (roll === 0) {
+          applyAttackDamage(baseDmg);
+          result.unstableFluxEffect = 'damage';
+        } else if (roll === 1) {
+          result.shieldApplied = applyShieldRelics(baseBlock);
+          result.unstableFluxEffect = 'block';
+        } else if (roll === 2) {
+          result.extraCardsDrawn = baseDraw;
+          result.unstableFluxEffect = 'draw';
+        } else {
+          result.statusesApplied.push({ type: 'weakness', value: 2, turnsRemaining: baseWeakTurns });
+          result.unstableFluxEffect = 'debuff';
+        }
+      }
+      return result;
+    }
+
     default:
       break;
   }

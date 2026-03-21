@@ -3,7 +3,19 @@
 // NO Phaser, Svelte, or DOM imports.
 
 /** The types of status effects that can be applied to players or enemies. */
-export type StatusEffectType = 'poison' | 'regen' | 'strength' | 'weakness' | 'vulnerable' | 'immunity' | 'burn' | 'bleed';
+export type StatusEffectType =
+  | 'poison'
+  | 'regen'
+  | 'strength'
+  | 'weakness'
+  | 'vulnerable'
+  | 'immunity'
+  | 'burn'
+  | 'bleed'
+  /** AR-207: Curse of Doubt — percentage amplifier on Charge damage. value = percent bonus (e.g. 30 = +30%). */
+  | 'charge_damage_amp_percent'
+  /** AR-207: Mark of Ignorance — flat amplifier on Charge damage. value = flat bonus (e.g. 3 = +3 dmg). */
+  | 'charge_damage_amp_flat';
 
 /** A single active status effect instance. */
 export interface StatusEffect {

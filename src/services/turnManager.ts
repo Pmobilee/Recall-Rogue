@@ -4,7 +4,7 @@
 import { get } from 'svelte/store';
 import type { Card, CardRunState, CardType, PassiveEffect } from '../data/card-types';
 import { isFirstChargeFree, markFirstChargeUsed, getFirstChargeWrongMultiplier } from './discoverySystem';
-import { canMasteryUpgrade, canMasteryDowngrade, masteryUpgrade, masteryDowngrade, resetEncounterMasteryFlags } from './cardUpgradeService';
+import { canMasteryUpgrade, canMasteryDowngrade, masteryUpgrade, masteryDowngrade, resetEncounterMasteryFlags, getMasteryBaseBonus } from './cardUpgradeService';
 import { getSurgeChargeSurcharge, isSurgeTurn } from './surgeSystem';
 import { resetChain, extendOrResetChain, getChainState } from './chainSystem';
 import { CHAIN_MOMENTUM_ENABLED, FIRST_CHARGE_FREE_AP_SURCHARGE, RELIC_AEGIS_STONE_MAX_CARRY } from '../data/balance';
@@ -42,7 +42,7 @@ import {
   BLEED_BONUS_PER_STACK,
   BLEED_DECAY_PER_TURN,
 } from '../data/balance';
-import { MECHANICS_BY_TYPE, type PlayMode } from '../data/mechanics';
+import { MECHANICS_BY_TYPE, getMechanicDefinition, type PlayMode } from '../data/mechanics';
 import { difficultyMode } from './cardPreferences';
 import {
   resolveDamageTakenEffects,
@@ -220,6 +220,36 @@ export interface TurnState {
    * Used by Overcharge CC scaling: CC = base + (2 per charge played).
    */
   encounterChargesTotal: number;
+  /**
+   * AR-207: Battle Trance restriction — when true, no more card plays or Charges allowed this turn.
+   * Set by Battle Trance QP/CW. Cleared at turn start (endPlayerTurn).
+   */
+  battleTranceRestriction: boolean;
+  /**
+   * AR-207: Warcry free Charge — when true, the next Charge surcharge (+1 AP) this turn is waived.
+   * Set by Warcry CC. Cleared at turn end even if unused.
+   */
+  warcryFreeChargeActive: boolean;
+  /**
+   * AR-207: Chain Anchor active — when true, the next chain card that would start chain at 1
+   * will start at 2 instead (or 3 at mastery L3+). Cleared when a chain card fires.
+   */
+  chainAnchorActive: boolean;
+  /**
+   * AR-207: Chain Anchor chain start override (2 or 3 depending on mastery level).
+   * Used together with chainAnchorActive.
+   */
+  chainAnchorStartLength: number;
+  /**
+   * AR-207: Last mechanic ID played this turn (for Chameleon copy logic).
+   * Null if no card has been played yet this turn.
+   */
+  lastPlayedMechanicId: string | null;
+  /**
+   * AR-207: Last chain type of the card played (for Chameleon chain inheritance).
+   * Null if no chain card was played yet, or if the last card had no chain type.
+   */
+  lastPlayedChainType: number | null;
 }
 
 export interface PlayCardResult {
@@ -413,6 +443,12 @@ export function startEncounter(
     staggeredEnemyNextTurn: false,
     ignitePendingBurn: 0,
     encounterChargesTotal: 0,
+    battleTranceRestriction: false,
+    warcryFreeChargeActive: false,
+    chainAnchorActive: false,
+    chainAnchorStartLength: 2,
+    lastPlayedMechanicId: null,
+    lastPlayedChainType: null,
   };
 
   // Reset chain at encounter start (clean slate)
@@ -434,6 +470,28 @@ export function playCardAction(
   speedBonusEarned: boolean,
   playMode: PlayMode = 'charge',
 ): PlayCardResult {
+  // AR-207: Battle Trance restriction — block all card plays and Charges after QP/CW
+  if (turnState.battleTranceRestriction) {
+    const fallbackCardBT = turnState.deck.hand.find((card) => card.id === cardId);
+    const effectBT = fallbackCardBT ? createNoEffect(fallbackCardBT) : {
+      effectType: 'attack' as CardType,
+      rawValue: 0, finalValue: 0, targetHit: false, damageDealt: 0,
+      shieldApplied: 0, healApplied: 0, statusesApplied: [], extraCardsDrawn: 0,
+      enemyDefeated: false, mechanicId: undefined, mechanicName: undefined,
+    };
+    return {
+      effect: effectBT,
+      enemyDefeated: false,
+      fizzled: false,
+      blocked: true,
+      isPerfectTurn: turnState.isPerfectTurn,
+      turnState,
+      usedFreeCharge: false,
+      masteryChange: null,
+      masteryChangedCardId: null,
+    };
+  }
+
   if (turnState.phase !== 'player_action' || turnState.result !== null) {
     const fallbackCard = turnState.deck.hand.find((card) => card.id === cardId);
     const effect = fallbackCard ? createNoEffect(fallbackCard) : {
@@ -490,6 +548,10 @@ export function playCardAction(
     } else if (CHAIN_MOMENTUM_ENABLED && turnState.nextChargeFree) {
       // Chain Momentum: previous correct Charge waived this surcharge
       turnState.nextChargeFree = false; // consume the flag
+      // surcharge is 0 — no apCost increase
+    } else if (turnState.warcryFreeChargeActive) {
+      // AR-207: Warcry CC — next Charge this turn costs +0 AP surcharge
+      turnState.warcryFreeChargeActive = false; // consume the flag
       // surcharge is 0 — no apCost increase
     } else if (cardInHand.factId && runStateForCharge && isFirstChargeFree(cardInHand.factId, runStateForCharge.firstChargeFreeFactIds)) {
       // Free first Charge: AP surcharge is 0
@@ -797,6 +859,20 @@ export function playCardAction(
   turnState.chainLength = chainState.length;
   turnState.chainType = chainState.chainType;
 
+  // AR-207: Chain Anchor — if chainAnchorActive and chain just started (length = 1),
+  // retroactively set chain to the anchor's starting length (2 or 3).
+  // Chain Anchor is NOT a chain link itself, so it only fires on the NEXT card that starts a chain.
+  if (turnState.chainAnchorActive && playMode === 'charge' && chainState.length === 1 && card.mechanicId !== 'chain_anchor') {
+    // Override chain length to the anchored start
+    turnState.chainLength = turnState.chainAnchorStartLength;
+    turnState.chainAnchorActive = false; // consume the anchor
+    turnState.turnLog.push({
+      type: 'play',
+      message: `Chain Anchor: chain started at ${turnState.chainAnchorStartLength}`,
+      value: turnState.chainAnchorStartLength,
+    });
+  }
+
   // prismatic_shard — +1 AP on 5-chain completion
   const prismaticApBonus = resolvePrismaticShardApBonus(turnState.activeRelicIds, chainState.length);
   if (prismaticApBonus > 0) {
@@ -827,6 +903,12 @@ export function playCardAction(
   const furyInscription = getActiveInscription(turnState, 'inscription_fury');
   const inscriptionFuryBonus = furyInscription?.effectValue ?? 0;
 
+  // AR-207: knowledge_ward — collect unique domains from the current hand at resolve time.
+  const handDomains = turnState.deck.hand.map(c => c.domain).filter(Boolean) as string[];
+
+  // AR-207: dark_knowledge — snapshot cursed fact count from run state.
+  const cursedFactCount = get(activeRunState)?.cursedFactIds?.size ?? 0;
+
   const effect = resolveCardEffect(
     card,
     playerState,
@@ -847,6 +929,8 @@ export function playCardAction(
       chainMultiplier: currentChainMultiplier,
       deckDomainCounts,
       inscriptionFuryBonus,
+      handDomains,
+      cursedFactCount,
     },
   );
 
@@ -1322,6 +1406,190 @@ export function playCardAction(
     }
   }
 
+  // ── AR-207 effect application ───────────────────────────────────────────────
+
+  // Chain Lightning CC — override damage with 8 × (new chain length after extend)
+  if (card.mechanicId === 'chain_lightning' && isChargeCorrect) {
+    // Chain was already extended above via extendOrResetChain. chainLength is the new length.
+    const clChainLen = Math.max(1, turnState.chainLength);
+    const clBaseDmgPerLen = (effect.mechanicName !== undefined ? 1 : 1); // always 1 factor
+    // base value from mechanic quick play + mastery bonus — recompute raw per-chain base
+    const mechCL = getMechanicDefinition('chain_lightning');
+    const clBasePerLen = (mechCL?.quickPlayValue ?? 8) + getMasteryBaseBonus('chain_lightning', card.masteryLevel ?? 0);
+    const clTotalDmg = Math.round(clBasePerLen * clChainLen * currentChainMultiplier * speedBonus * (1 + turnState.buffNextCard / 100));
+    // Null Shard: if chain is disabled (chainLength floors at 1 and multiplier = 1.0)
+    // The above calculation already handles it since clChainLen >= 1 and multiplier = 1.0
+    if (clTotalDmg !== effect.damageDealt) {
+      const prevDmg = effect.damageDealt;
+      const delta = clTotalDmg - prevDmg;
+      effect.damageDealt = clTotalDmg;
+      effect.finalValue = clTotalDmg;
+      effect.enemyDefeated = clTotalDmg >= enemy.currentHP;
+      // Apply the delta to the enemy (applyDamageToEnemy was already called in the damage block below)
+      // We set the override here — the damage block below will use effect.damageDealt.
+      // But the damage block already ran! We need to re-apply.
+      // Solution: apply the delta (additional damage or subtract over-counted)
+      if (delta > 0) {
+        const clResult = applyDamageToEnemy(enemy, delta);
+        effect.enemyDefeated = clResult.defeated;
+      } else if (delta < 0) {
+        // Over-counted: restore HP
+        enemy.currentHP = Math.min(enemy.maxHP, enemy.currentHP + Math.abs(delta));
+        effect.enemyDefeated = enemy.currentHP <= 0;
+      }
+      turnState.damageDealtThisTurn += delta;
+    }
+    effect.chainLightningChainLength = clChainLen;
+  }
+
+  // Volatile Slash / Burnout Shield — exhaust after resolve
+  if (effect.exhaustOnResolve) {
+    // Move card from discard pile to exhaust pile
+    const discIdx = turnState.deck.discardPile.findIndex(c => c.id === cardId);
+    if (discIdx !== -1) {
+      const [exhaustedCard] = turnState.deck.discardPile.splice(discIdx, 1);
+      turnState.deck.exhaustPile.push(exhaustedCard);
+      turnState.turnLog.push({
+        type: 'play',
+        message: `${card.mechanicName ?? card.mechanicId}: exhausted after Charge`,
+        cardId,
+      });
+    }
+  }
+
+  // Warcry — apply Strength to player
+  if (effect.applyStrengthToPlayer) {
+    const { value, permanent } = effect.applyStrengthToPlayer;
+    // Apply to playerState statusEffects
+    const existingStr = playerState.statusEffects.find(s => s.type === 'strength');
+    if (existingStr) {
+      existingStr.value += value;
+      if (permanent) {
+        existingStr.turnsRemaining = 9999; // permanent = rest of combat
+      }
+    } else {
+      playerState.statusEffects.push({
+        type: 'strength',
+        value,
+        turnsRemaining: permanent ? 9999 : 1,
+      });
+    }
+    // L3 QP bonus: also +1 permanent Str (via warcry_perm_str tag)
+    if (!isChargeCorrect && playMode !== 'charge_wrong' && (card.masteryLevel ?? 0) >= 3) {
+      const strEffect = playerState.statusEffects.find(s => s.type === 'strength');
+      if (strEffect) {
+        strEffect.value += 1;
+        strEffect.turnsRemaining = 9999;
+      } else {
+        playerState.statusEffects.push({ type: 'strength', value: 1, turnsRemaining: 9999 });
+      }
+    }
+  }
+
+  // Warcry CC — set free Charge flag
+  if (effect.warcryFreeCharge) {
+    turnState.warcryFreeChargeActive = true;
+  }
+
+  // Battle Trance — set restriction flag (draw already handled via extraCardsDrawn)
+  if (effect.applyBattleTranceRestriction) {
+    turnState.battleTranceRestriction = true;
+  }
+
+  // Curse of Doubt — apply charge_damage_amp_percent status to enemy
+  if (effect.applyChargeDamageAmpPercent) {
+    const { value, turns } = effect.applyChargeDamageAmpPercent;
+    const existing = enemy.statusEffects.find(s => s.type === 'charge_damage_amp_percent');
+    if (existing) {
+      existing.value = Math.max(existing.value, value);
+      existing.turnsRemaining = Math.max(existing.turnsRemaining, turns);
+    } else {
+      enemy.statusEffects.push({ type: 'charge_damage_amp_percent', value, turnsRemaining: turns });
+    }
+  }
+
+  // Mark of Ignorance — apply charge_damage_amp_flat status to enemy
+  if (effect.applyChargeDamageAmpFlat) {
+    const { value, turns } = effect.applyChargeDamageAmpFlat;
+    const existing = enemy.statusEffects.find(s => s.type === 'charge_damage_amp_flat');
+    if (existing) {
+      existing.value = Math.max(existing.value, value);
+      existing.turnsRemaining = Math.max(existing.turnsRemaining, turns);
+    } else {
+      enemy.statusEffects.push({ type: 'charge_damage_amp_flat', value, turnsRemaining: turns });
+    }
+  }
+
+  // Phase Shift CC — shield already applied by resolver; damage applied in main block.
+  // No additional turn-manager handling needed for phase_shift.
+
+  // Chameleon — resolve copy of last played mechanic
+  if (effect.chameleonMultiplier !== undefined) {
+    const lastMechId = turnState.lastPlayedMechanicId;
+    if (lastMechId) {
+      const lastMechDef = getMechanicDefinition(lastMechId);
+      if (lastMechDef) {
+        const chameleonMult = effect.chameleonMultiplier;
+        const baseQPValue = lastMechDef.quickPlayValue;
+        const copiedDamage = Math.round(baseQPValue * chameleonMult * currentChainMultiplier * speedBonus);
+        const copiedShield = Math.round(baseQPValue * chameleonMult);
+        // Apply based on last card's type
+        if (lastMechDef.type === 'attack') {
+          const chamResult = applyDamageToEnemy(enemy, copiedDamage);
+          effect.damageDealt = copiedDamage;
+          effect.finalValue = copiedDamage;
+          effect.enemyDefeated = chamResult.defeated;
+          turnState.damageDealtThisTurn += copiedDamage;
+        } else if (lastMechDef.type === 'shield') {
+          applyShield(playerState, copiedShield);
+          effect.shieldApplied = copiedShield;
+          effect.finalValue = copiedShield;
+        }
+        // Chain inheritance: set chain type to match last played card's chain type
+        if (effect.chameleonInheritChain && turnState.lastPlayedChainType !== null) {
+          // Set encounter chain type to match; next same-type card will continue the chain.
+          turnState.chainType = turnState.lastPlayedChainType;
+        }
+      }
+      // If no last mechanic found (first card), resolve as 0 — no crash.
+    }
+  }
+
+  // Chain Anchor CC — set chainAnchorActive flag
+  if (effect.applyChainAnchor) {
+    const anchorLen = (card.masteryLevel ?? 0) >= 3 ? 3 : 2;
+    turnState.chainAnchorActive = true;
+    turnState.chainAnchorStartLength = anchorLen;
+  }
+
+  // Track last played mechanic ID for Chameleon
+  if (card.mechanicId) {
+    turnState.lastPlayedMechanicId = card.mechanicId;
+    turnState.lastPlayedChainType = card.chainType ?? null;
+  }
+
+  // AR-207: Apply Charge damage amplifiers to this card's damage if it was a Charge play.
+  // Applies AFTER all multipliers (post-chain, post-speed, post-relic) but BEFORE block.
+  // Since damageDealt has already been applied to enemy above, we apply the delta here.
+  if (isChargeCorrect || playMode === 'charge_wrong') {
+    const ampPercent = enemy.statusEffects.find(s => s.type === 'charge_damage_amp_percent');
+    const ampFlat = enemy.statusEffects.find(s => s.type === 'charge_damage_amp_flat');
+    let ampDelta = 0;
+    if ((ampPercent?.turnsRemaining ?? 0) > 0 && effect.damageDealt > 0) {
+      ampDelta += Math.round(effect.damageDealt * (ampPercent!.value / 100));
+    }
+    if ((ampFlat?.turnsRemaining ?? 0) > 0 && effect.damageDealt > 0) {
+      ampDelta += ampFlat!.value;
+    }
+    if (ampDelta > 0) {
+      const ampResult = applyDamageToEnemy(enemy, ampDelta);
+      effect.damageDealt += ampDelta;
+      effect.finalValue += ampDelta;
+      effect.enemyDefeated = ampResult.defeated;
+      turnState.damageDealtThisTurn += ampDelta;
+    }
+  }
+
   // AR-206: Ignite — apply pending Burn to the target on attack card plays
   if ((turnState.ignitePendingBurn ?? 0) > 0 && effect.effectType === 'attack' && card.mechanicId !== 'ignite') {
     applyStatusEffect(enemy.statusEffects, {
@@ -1759,6 +2027,14 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
 
   // Chain Momentum: reset on turn end
   turnState.nextChargeFree = false;
+
+  // AR-207: Clear per-turn restriction/buff flags
+  turnState.battleTranceRestriction = false;
+  turnState.warcryFreeChargeActive = false;
+  // Chain Anchor persists across turns until consumed — do NOT clear here.
+  // lastPlayedMechanicId resets at turn start so Chameleon can't copy across turns.
+  turnState.lastPlayedMechanicId = null;
+  turnState.lastPlayedChainType = null;
 
   if (turnState.foresightTurnsRemaining > 0) {
     turnState.foresightTurnsRemaining -= 1;

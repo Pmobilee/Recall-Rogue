@@ -432,6 +432,128 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     baseValue: 3, apCost: 2, maxPerPool: 1, tags: ['inscription'], launchPhase: 1, unlockLevel: 0,
     quickPlayValue: 3, chargeCorrectValue: 6, chargeWrongValue: 1,
   },
+
+  // ── AR-207: Phase 2 Identity / Flagship Cards ─────────────────────────────
+
+  // Attack — flagship quiz-reward
+  {
+    id: 'gambit', name: 'Gambit', type: 'attack',
+    description: 'HP swing. QP: deal damage, lose HP. CC: deal damage, heal HP. CW: deal damage, lose more HP.',
+    baseValue: 10, apCost: 1, maxPerPool: 1, tags: ['strike', 'risk'], launchPhase: 2, unlockLevel: 6,
+    quickPlayValue: 10, chargeCorrectValue: 30, chargeWrongValue: 7,
+  },
+
+  // Attack — chain scaling
+  {
+    id: 'chain_lightning', name: 'Chain Lightning', type: 'attack',
+    description: 'CC: deal 8 × chain length (counts itself). Requires answering correctly.',
+    baseValue: 8, apCost: 2, maxPerPool: 1, tags: ['strike'], launchPhase: 2, unlockLevel: 8,
+    quickPlayValue: 8, chargeCorrectValue: 8, chargeWrongValue: 5,
+  },
+
+  // Attack — exhaust-on-charge burst
+  {
+    id: 'volatile_slash', name: 'Volatile Slash', type: 'attack',
+    description: 'CC: 30 dmg then EXHAUST this card. QP/CW: standard damage.',
+    baseValue: 10, apCost: 1, maxPerPool: 2, tags: ['strike'], launchPhase: 2, unlockLevel: 7,
+    quickPlayValue: 10, chargeCorrectValue: 30, chargeWrongValue: 7,
+  },
+
+  // Shield — exhaust-on-charge burst (mirror of Volatile Slash)
+  {
+    id: 'burnout_shield', name: 'Burnout Shield', type: 'shield',
+    description: 'CC: 24 block then EXHAUST this card. QP/CW: standard block.',
+    baseValue: 8, apCost: 1, maxPerPool: 2, tags: ['block'], launchPhase: 2, unlockLevel: 7,
+    quickPlayValue: 8, chargeCorrectValue: 24, chargeWrongValue: 6,
+  },
+
+  // Shield — domain diversity
+  {
+    id: 'knowledge_ward', name: 'Knowledge Ward', type: 'shield',
+    description: 'Gain 4 block per unique domain in hand. CC: ×1.5. CW: ×0.7.',
+    baseValue: 4, apCost: 1, maxPerPool: 1, tags: ['block'], launchPhase: 2, unlockLevel: 6,
+    quickPlayValue: 4, chargeCorrectValue: 6, chargeWrongValue: 3,
+  },
+
+  // Buff — Strength + free Charge
+  {
+    id: 'warcry', name: 'Warcry', type: 'buff',
+    description: 'QP: +2 Str (this turn). CC: +2 Str (permanent) + next Charge free. CW: +1 Str (this turn).',
+    baseValue: 2, apCost: 1, maxPerPool: 1, tags: ['buff', 'strength'], launchPhase: 2, unlockLevel: 6,
+    quickPlayValue: 2, chargeCorrectValue: 2, chargeWrongValue: 1,
+  },
+
+  // Buff — draw + lockout
+  {
+    id: 'battle_trance', name: 'Battle Trance', type: 'buff',
+    description: 'Draw 3. CC: no restriction. QP/CW: cannot play or Charge more cards this turn.',
+    baseValue: 3, apCost: 1, maxPerPool: 1, tags: ['draw', 'buff'], launchPhase: 2, unlockLevel: 7,
+    quickPlayValue: 3, chargeCorrectValue: 3, chargeWrongValue: 2,
+  },
+
+  // Debuff — charge damage percent amplifier
+  {
+    id: 'curse_of_doubt', name: 'Curse of Doubt', type: 'debuff',
+    description: 'Enemy takes +30% damage from Charged attacks (2t). CC: +50% (3t). CW: +20% (1t).',
+    baseValue: 30, apCost: 1, maxPerPool: 1, tags: ['debuff'], launchPhase: 2, unlockLevel: 6,
+    quickPlayValue: 30, chargeCorrectValue: 50, chargeWrongValue: 20,
+  },
+
+  // Debuff — charge damage flat amplifier
+  {
+    id: 'mark_of_ignorance', name: 'Mark of Ignorance', type: 'debuff',
+    description: 'Enemy takes +3 flat damage from Charged attacks (2t). CC: +5 (3t). CW: +2 (1t).',
+    baseValue: 3, apCost: 1, maxPerPool: 1, tags: ['debuff'], launchPhase: 2, unlockLevel: 8,
+    quickPlayValue: 3, chargeCorrectValue: 5, chargeWrongValue: 2,
+  },
+
+  // Debuff — 0-AP weakness
+  {
+    id: 'corroding_touch', name: 'Corroding Touch', type: 'debuff',
+    description: '0 AP. Apply Weakness. CC: more stacks + Vulnerable. Charge costs standard +1 AP surcharge.',
+    baseValue: 2, apCost: 0, maxPerPool: 2, tags: ['weakness'], launchPhase: 2, unlockLevel: 7,
+    quickPlayValue: 2, chargeCorrectValue: 3, chargeWrongValue: 1,
+  },
+
+  // Wild — choice: damage or block
+  {
+    id: 'phase_shift', name: 'Phase Shift', type: 'wild',
+    description: 'QP/CW: CHOOSE 8 dmg OR 8 block. CC: 12 dmg AND 12 block.',
+    baseValue: 8, apCost: 1, maxPerPool: 1, tags: ['choice'], launchPhase: 2, unlockLevel: 7,
+    quickPlayValue: 8, chargeCorrectValue: 12, chargeWrongValue: 4,
+  },
+
+  // Wild — copy last card
+  {
+    id: 'chameleon', name: 'Chameleon', type: 'wild',
+    description: 'Copy last card at 1.0×. CC: 1.3× + inherit chain type. CW: 0.7×.',
+    baseValue: 1, apCost: 1, maxPerPool: 1, tags: ['copy'], launchPhase: 2, unlockLevel: 6,
+    quickPlayValue: 1, chargeCorrectValue: 1, chargeWrongValue: 1,
+  },
+
+  // Wild — cursed fact damage
+  {
+    id: 'dark_knowledge', name: 'Dark Knowledge', type: 'wild',
+    description: 'Deal 3 dmg per cursed fact. CC: 5/curse. CW: 1/curse.',
+    baseValue: 3, apCost: 1, maxPerPool: 1, tags: ['strike'], launchPhase: 2, unlockLevel: 8,
+    quickPlayValue: 3, chargeCorrectValue: 5, chargeWrongValue: 1,
+  },
+
+  // Wild — chain anchor (sets next chain start to 2)
+  {
+    id: 'chain_anchor', name: 'Chain Anchor', type: 'wild',
+    description: 'Draw 1. CC: set chain to 2 for the next chain card + draw 1. Not a chain link itself.',
+    baseValue: 1, apCost: 1, maxPerPool: 1, tags: ['chain'], launchPhase: 2, unlockLevel: 9,
+    quickPlayValue: 1, chargeCorrectValue: 1, chargeWrongValue: 1,
+  },
+
+  // Wild — flagship random/choice
+  {
+    id: 'unstable_flux', name: 'Unstable Flux', type: 'wild',
+    description: 'QP/CW: random effect (dmg/block/draw/debuff) at 1.0×/0.7×. CC: CHOOSE at 1.5×.',
+    baseValue: 10, apCost: 1, maxPerPool: 1, tags: ['random', 'choice'], launchPhase: 2, unlockLevel: 6,
+    quickPlayValue: 10, chargeCorrectValue: 10, chargeWrongValue: 10,
+  },
 ];
 
 /** Returns mechanics filtered by launch phase gate. */

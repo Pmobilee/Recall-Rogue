@@ -103,6 +103,33 @@ export const MASTERY_UPGRADE_DEFS: Record<string, MasteryUpgradeDef> = {
   // Inscription cards
   inscription_fury:  { perLevelDelta: 0.5 },                        // +2 -> +4 atk (rounded)
   inscription_iron:  { perLevelDelta: 0.5 },                        // +3 -> +5 block/turn (rounded)
+
+  // ── AR-207: Phase 2 Identity / Flagship Cards ─────────────────────────────
+
+  // Attacks
+  gambit:            { perLevelDelta: 2, addTagAtLevel: [3, 'self_dmg_minus1'] }, // 10 -> 20 dmg; L3: self-dmg -1
+  chain_lightning:   { perLevelDelta: 1 },                           // base 8 -> 13 (multiplied by chain length on CC)
+  volatile_slash:    { perLevelDelta: 2 },                           // 10 -> 20; CC still exhausts
+
+  // Shields
+  burnout_shield:    { perLevelDelta: 2 },                           // 8 -> 18; CC still exhausts
+  knowledge_ward:    { perLevelDelta: 1 },                           // 4/domain -> 9/domain
+
+  // Buffs
+  warcry:            { perLevelDelta: 0, addTagAtLevel: [3, 'warcry_perm_str'], maxLevel: 3 }, // L3 QP: +1 permanent Str
+  battle_trance:     { perLevelDelta: 0, addTagAtLevel: [3, 'battle_trance_draw4'], maxLevel: 3 }, // L3 QP: draw 4
+
+  // Debuffs
+  curse_of_doubt:    { perLevelDelta: 5 },                           // +30% -> +55% charge amp (QP base)
+  mark_of_ignorance: { perLevelDelta: 1 },                           // +3 -> +8 flat charge amp (QP base)
+  corroding_touch:   { perLevelDelta: 1, maxLevel: 3 },              // +1 Weakness duration/level (QP: 1t -> 4t)
+
+  // Wilds
+  phase_shift:       { perLevelDelta: 2 },                           // 8 -> 18 dmg/block; CC: 12 -> 22
+  chameleon:         { perLevelDelta: 0, addTagAtLevel: [3, 'chameleon_qp_chain'], maxLevel: 3 }, // L3 QP: also inherits chain type
+  dark_knowledge:    { perLevelDelta: 1 },                           // 3/curse -> 8/curse (QP base)
+  chain_anchor:      { perLevelDelta: 0, addTagAtLevel: [3, 'chain_anchor_3'], maxLevel: 3 }, // L3 CC: sets chain to 3
+  unstable_flux:     { perLevelDelta: 0, addTagAtLevel: [3, 'unstable_flux_qp_choice'], maxLevel: 3 }, // L3 QP: choose 1 of 2 options
 };
 
 /**
