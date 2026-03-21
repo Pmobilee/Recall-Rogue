@@ -154,8 +154,13 @@ export function drawHand(
   options?: { firstDrawBias?: boolean; tagMagnetBias?: { chainType: number; chance: number } },
 ): Card[] {
   const requested = count ?? HAND_SIZE;
-  const availableSpace = Math.max(0, HAND_SIZE - deck.hand.length);
-  const toDraw = Math.max(0, Math.min(requested, availableSpace));
+  // When count is explicitly provided (mid-turn draws like scout/recycle, or
+  // relic-boosted draws like swift_boots), honor the full request — the caller
+  // already knows how many cards to draw. Only enforce the HAND_SIZE cap for
+  // default start-of-turn draws (no explicit count passed).
+  const toDraw = count !== undefined
+    ? Math.max(0, requested)
+    : Math.max(0, Math.min(requested, HAND_SIZE - deck.hand.length));
 
   // Deprioritize cards with cooled-down bound facts (AR-70)
   deprioritizeCooledDownCards(deck);

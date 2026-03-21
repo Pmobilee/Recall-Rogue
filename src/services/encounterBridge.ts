@@ -6,7 +6,7 @@ import { writable, get } from 'svelte/store';
 import type { TurnState } from './turnManager';
 import { startEncounter, playCardAction, skipCard, endPlayerTurn } from './turnManager';
 import { buildRunPool, recordRunFacts } from './runPoolBuilder';
-import { addCardToDeck, createDeck, insertCardWithDelay, addFactsToCooldown, tickFactCooldowns, getEncounterSeenFacts, resetEncounterSeenFacts, exhaustCard } from './deckManager';
+import { addCardToDeck, createDeck, drawHand, insertCardWithDelay, addFactsToCooldown, tickFactCooldowns, getEncounterSeenFacts, resetEncounterSeenFacts, exhaustCard } from './deckManager';
 import { createEnemy } from './enemyManager';
 import { ENEMY_TEMPLATES } from '../data/enemies';
 import { activeRunState } from './runStateStore';
@@ -440,6 +440,13 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   turnState.baseComboCount = resolveComboStartValue(runRelicIds);
   turnState.comboCount = turnState.baseComboCount;
   turnState.baseDrawCount = resolveBaseDrawCount(runRelicIds);
+  // If a relic (e.g. swift_boots) boosts the draw count above the default 5,
+  // startEncounter already drew 5 cards. Draw the extra cards now so the first
+  // hand reflects the full boosted count.
+  if (turnState.baseDrawCount > 5 && activeDeck) {
+    const extraCards = turnState.baseDrawCount - 5;
+    drawHand(activeDeck, extraCards);
+  }
   turnState.canaryEnemyDamageMultiplier = run.canary.enemyDamageMultiplier * (run.endlessEnemyDamageMultiplier ?? 1);
   turnState.canaryQuestionBias = run.canary.questionBias;
   turnState.ascensionLevel = run.ascensionLevel ?? 0;

@@ -285,11 +285,11 @@
         "category": "utility",
         "description": "Draw 2 cards",
         "status": "working",
-        "lastChangedDate": "not_checked",
+        "lastChangedDate": "2026-03-21",
         "visualInspectionDate": "not_checked",
-        "mechanicInspectionDate": "not_checked",
+        "mechanicInspectionDate": "2026-03-21",
         "uxReviewDate": "not_checked",
-        "notes": ""
+        "notes": "Fixed: HAND_SIZE cap removed for mid-turn draws"
       },
       {
         "id": "recycle",
@@ -297,11 +297,11 @@
         "category": "utility",
         "description": "Draw 3 cards",
         "status": "working",
-        "lastChangedDate": "not_checked",
+        "lastChangedDate": "2026-03-21",
         "visualInspectionDate": "not_checked",
-        "mechanicInspectionDate": "not_checked",
+        "mechanicInspectionDate": "2026-03-21",
         "uxReviewDate": "not_checked",
-        "notes": ""
+        "notes": "Fixed: HAND_SIZE cap removed for mid-turn draws"
       },
       {
         "id": "foresight",
@@ -431,11 +431,11 @@
         "category": "common",
         "description": "Draw 6 cards per turn instead of 5",
         "status": "working",
-        "lastChangedDate": "not_checked",
+        "lastChangedDate": "2026-03-21",
         "visualInspectionDate": "not_checked",
-        "mechanicInspectionDate": "not_checked",
+        "mechanicInspectionDate": "2026-03-21",
         "uxReviewDate": "not_checked",
-        "notes": ""
+        "notes": "Fixed: now draws 6 on first turn + all subsequent turns"
       },
       {
         "id": "combo_ring",
@@ -817,7 +817,7 @@
         "status": "working",
         "lastChangedDate": "2026-03-21",
         "visualInspectionDate": "not_checked",
-        "mechanicInspectionDate": "not_checked",
+        "mechanicInspectionDate": "2026-03-21",
         "uxReviewDate": "not_checked",
         "notes": "Fixed: Quick Play +25% block now in resolver"
       },
@@ -841,7 +841,7 @@
         "status": "working",
         "lastChangedDate": "2026-03-21",
         "visualInspectionDate": "not_checked",
-        "mechanicInspectionDate": "not_checked",
+        "mechanicInspectionDate": "2026-03-21",
         "uxReviewDate": "not_checked",
         "notes": "Fixed: now uses deck-composition check (4+ same-domain cards = +30%)"
       },
@@ -853,7 +853,7 @@
         "status": "working",
         "lastChangedDate": "2026-03-21",
         "visualInspectionDate": "not_checked",
-        "mechanicInspectionDate": "not_checked",
+        "mechanicInspectionDate": "2026-03-21",
         "uxReviewDate": "not_checked",
         "notes": "Fixed: auto-Charge-free for 1 turn after resurrection wired via phoenixAutoChargeTurns"
       },
@@ -865,7 +865,7 @@
         "status": "working",
         "lastChangedDate": "2026-03-21",
         "visualInspectionDate": "not_checked",
-        "mechanicInspectionDate": "not_checked",
+        "mechanicInspectionDate": "2026-03-21",
         "uxReviewDate": "not_checked",
         "notes": "Fixed: replay at 1.5x wired in turnManager, once per encounter"
       },
