@@ -110,7 +110,7 @@ Cards have 5 in-run mastery levels (0–5). Mastery resets each run. It is the *
 - "Upgraded!" / "Downgraded!" popup appears on mastery change
 - Stat values flash green (upgrade) or red (downgrade) when mastery changes
 
-**Echo cards:** Cannot upgrade or downgrade mastery, but inherit the source card's mastery-boosted stat values at spawn time.
+**Cursed cards:** Cards carrying cursed facts are effectively locked at mastery 0 until the curse is cured. Mastery Surge has no effect on cursed cards. Cure (correct Charge on a cursed fact) restores normal mastery tracking.
 
 ### Charge Gesture (Touch UX)
 
@@ -238,7 +238,7 @@ The contrast between Quick Play speed and Charged Play drama makes Charging feel
 
 ### Chain Display (AR-116)
 
-The combo multiplier system has been **removed**. No combo counter, no PERFECT! display, no combo-based damage scaling. Only the **Knowledge Chain** display remains.
+The combo system has been **fully removed** (see §15 Wrong Answer Design for removal note). Only the **Knowledge Chain** display remains.
 
 The chain display sits at the **bottom-left** of the combat screen, colored by chain type, and shows the current chain length and multiplier in the format `"Chain: X.x"` (e.g. `"Chain: 1.7"`). It is only visible when chain length ≥ 2.
 
@@ -266,7 +266,7 @@ Cards have a `chainType` value (integer 0-5, corresponding to Obsidian, Crimson,
 | 4-chain | 2.2× | Screen edge pulse, chain lightning VFX |
 | 5-chain | 3.0× | Full celebration, screen shake, "KNOWLEDGE CHAIN!" text |
 
-**Chain multiplier stacks multiplicatively with all other multipliers** (combo multiplier removed):
+**Chain multiplier stacks multiplicatively with all other multipliers:**
 
 `finalValue = base × tierMult × chainMult × speedBonus × buffMult × relicMult × overclockMult`
 
@@ -296,7 +296,7 @@ The 122-damage Surge chain is the "holy shit" peak. Rare. Players will chase it.
 
 **During chain play:** A thin glowing line briefly connects played cards as they resolve (animation only, not persistent UI).
 
-**Chain display (AR-93 / AR-116):** When chain length ≥ 2, a `ChainDisplay` at the **bottom-left** shows the chain length and multiplier in the format `"Chain: X.x"` (e.g. `"Chain: 1.7"`) colored by chain type. Implemented inside `ComboCounter.svelte` (chain-only display; combo counter removed).
+**Chain display (AR-93 / AR-116):** When chain length ≥ 2, a `ChainDisplay` at the **bottom-left** shows the chain length and multiplier in the format `"Chain: X.x"` (e.g. `"Chain: 1.7"`) colored by chain type. Implemented inside `ChainCounter.svelte` (chain-only display; combo counter fully removed in expansion).
 
 **Domain color:** Still used for the domain stripe/header bar inside cards and category labels — it conveys what subject matter the card covers. The chain border conveys chaining compatibility.
 
@@ -769,19 +769,23 @@ When an enemy is about to deal high damage, their sprite builds a visible "charg
 
 ---
 
-## 5.7. Echo Card Visuals
+## 5.7. Cursed Card Visuals
 
-Echo cards have a distinctive visual signature to separate them from normal cards:
+Cursed cards have a distinctive visual signature to separate them from normal cards:
 
-- Translucent / ghostly appearance
-- Dashed purple border
-- `echo-shimmer` CSS animation
-- Badge shows "ECHO ⚡ CHARGE" (signals Charge-only requirement)
-- Golden flash on correct resolution
+- Semi-transparent purple tint over the card frame
+- Cracked border (CSS overlay layer)
+- `cursed-shimmer` CSS animation — faint purple shimmer
+- Cure animation: purple cracks shatter, card glows gold briefly (300ms)
+- Clearly distinct from normal cards — no tooltip needed
+
+**Note:** The old Echo system (ghost cards with dashed purple borders that spawned on wrong Charge and exhausted on second fail) was removed. It was replaced by the Cursed Card system — see §1C above for full mechanical specification.
 
 ---
 
-## 6. Card Mechanics (26 Active Mechanics)
+## 6. Card Mechanics (91 Active Mechanics)
+
+Cards unlock as character level increases. New players start at level 0 with 36 mechanics (all 31 original + 5 new basics). Exotic mechanics unlock gradually through level 13.
 
 ### Starting Deck (10 Cards)
 
@@ -795,9 +799,30 @@ Echo cards have a distinctive visual signature to separate them from normal card
 
 **One Surge (0 AP, draw 2):** The single interesting starter card. Charging Surge costs 1 AP (the +1 surcharge) for draw 3 — introduces the Charge value proposition naturally.
 
+### Card Unlock Progression (Level 0–13)
+
+| Level | New Cards Unlocked | Total Available | Design Intent |
+|-------|-------------------|-----------------|---------------|
+| 0 | 31 existing + Power Strike, Iron Wave, Reinforce, Inscription of Fury, Inscription of Iron | 36 | Core game. All existing mechanics + basic upgrades + build-defining Inscriptions from day 1. |
+| 1 | Bash, Guard, Sap, Inscription of Wisdom | 40 | First upgrades + final Inscription. |
+| 2 | Twin Strike, Shrug It Off, Swap | 43 | Cycling and multi-hit. |
+| 3 | Stagger, Sift, Riposte | 46 | Tempo and scry tools. |
+| 4 | Rupture, Lacerate, Scavenge, Absorb, Precision Strike | 51 | Bleed archetype introduced. |
+| 5 | Kindle, Ignite, Corrode, Overcharge, Archive | 56 | Burn archetype + combat persistence. |
+| 6 | Gambit, Curse of Doubt, Knowledge Ward, Aegis Pulse, Reflex, Unstable Flux, Chameleon | 63 | Quiz-reward cards + wild cards. Knowledge-is-power identity solidifies. |
+| 7 | Burnout Shield, Battle Trance, Volatile Slash, Corroding Touch, Phase Shift | 68 | Exhaust archetype + advanced utility. |
+| 8 | Ironhide, War Drum, Chain Lightning, Dark Knowledge, Mark of Ignorance, Sacrifice | 74 | Chain archetype + curse-as-weapon emerge. |
+| 9 | Smite, Entropy, Bulwark, Conversion, Chain Anchor | 79 | Build-defining specialists. |
+| 10 | Feedback Loop, Frenzy, Aftershock, Synapse, Catalyst | 84 | High-skill ceiling cards. |
+| 11 | Recall, Mastery Surge, Tutor, Mimic, Siphon Strike | 89 | Discard/mastery scaling + toolbox cards. |
+| 12 | Eruption (X-cost) | 90 | X-cost introduced. |
+| 13 | Knowledge Bomb, Siphon Knowledge | 92 | Final quiz cards. Encounter-scaling spectacular + study-during-combat. |
+
+**Note on total:** 91 unique mechanic IDs total. The table shows 92 unlock slots because Inscription of Fury and Inscription of Iron appear in both the Buff and Inscription categories — they are the same cards, not duplicates.
+
 ### Complete Mechanics Reference (v2 — QP / Charge Correct / Charge Wrong)
 
-All 26 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = 1.5× base + mastery bonus (see Mastery Upgrade System). Charged Wrong = 0.6×/0.7×. Values shown at mastery 0, Tier 2a (1.5×/0.7×) for standard reference.
+All 91 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = 1.5× base + mastery bonus (see Mastery Upgrade System). Charged Wrong = 0.6×/0.7×. Values shown at mastery 0, Tier 2a (1.5×/0.7×) for standard reference.
 
 #### Attack Mechanics
 
@@ -860,13 +885,121 @@ All 26 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = 1.5× base +
 
 1. **Every card has a reason to Charge AND a reason to Quick Play.** Quick Play is AP-efficient. Charging is power-efficient. Different situations favor each.
 2. **Buff/debuff Charging is about bonus effects, not just numbers.** Charged Focus gives 2 discounts. Charged Double Strike adds Piercing. Qualitatively different, not just "bigger number."
-3. **Wrong answers always give SOMETHING (0.7×).** Never a total waste. But always worse than Quick Play (1.0×). Clear punishment without run-ending frustration.
-4. **0-AP cards cost 1 AP to Charge.** Quicken and Foresight become "free quiz cards" — the quiz IS the AP cost.
+3. **Wrong answers always give SOMETHING (0.7×).** Never a total waste. But always worse than Quick Play (1.0×). Clear punishment without run-ending frustration. Exception: Feedback Loop CW = 0 dmg. Inscription of Wisdom CW = complete fizzle.
+4. **0-AP cards cost 1 AP to Charge.** Quicken, Foresight, Swap, Corroding Touch, and Sacrifice become "free quiz cards" — the quiz IS the AP cost.
 5. **Chain multipliers stack with Charge multipliers.** Planning chains + Charging = exponential payoff.
+6. **Unlock gating creates a progression curve.** Levels 0–3 (first ~5 runs) = basics. Levels 4–6 (runs 6–15) = the game's unique mechanics. Levels 7–10 (runs 15–30) = advanced archetypes. Levels 11–13 (runs 30–60) = chase unlocks.
 
-### Phase Gating (Removed in v2)
+### New Mechanic Summary by Type
 
-All 26 mechanics are available from run start. The `ENABLE_PHASE2_MECHANICS = true` flag enables the full mechanic pool. The phase 1/phase 2 distinction is maintained in the data for gradual content rollout but is not player-facing.
+#### New Attack Mechanics (14)
+
+| # | Name | AP | QP | CC | Unlock | Notes |
+|---|------|----|----|-----|--------|-------|
+| A1 | Siphon Strike | 1 | 6 dmg + heal min(2, overkill capped 10) | 18 dmg + heal | 11 | Always heals at least 2 |
+| A2 | Rupture | 1 | 5 dmg + 3 Bleed | 15 dmg + 8 Bleed | 4 | Primary Bleed applicator |
+| A3 | Hemorrhage | 2 | 4 + (4 per Bleed stack), consume all | 4 + (6 per Bleed), consume all | 7 | Bleed finisher |
+| A4 | Kindle | 1 | 4 dmg + 4 Burn (triggers immediately) | 8 dmg + 8 Burn | 5 | Burst + lingering |
+| A5 | Gambit | 1 | 10 dmg, lose 2 HP | 30 dmg, heal 5 HP | 6 | FLAGSHIP. HP swing by knowledge |
+| A6 | Chain Lightning | 2 | 8 dmg | 8 × chain length | 8 | THE chain payoff card |
+| A7 | Smite | 2 | 10 dmg | 10 + (3 × avg hand mastery) | 9 | Rewards broad mastery |
+| A8 | Overcharge | 1 | 6 dmg | 6 + (2 per Charge this encounter) | 5 | Scales over encounter |
+| A9 | Volatile Slash | 1 | 10 dmg | 30 dmg, EXHAUST | 7 | One-shot burst |
+| A10 | Riposte | 1 | 5 dmg + 4 block | 15 dmg + 12 block | 3 | Hybrid attack/shield |
+| A11 | Feedback Loop | 1 | 5 dmg | 20 dmg | 10 | CW = complete fizzle (0 dmg) |
+| A12 | Precision Strike | 1 | 8 dmg | 24 dmg | 4 | Passive: +50% longer timer |
+| A13 | Eruption (X) | X | 8 dmg per AP | 12 dmg per AP | 12 | X = all remaining AP |
+| A14 | Recall | 1 | 1 dmg per discard card | 2 per discard | 11 | Late-fight nuke |
+
+#### New Shield Mechanics (8)
+
+| # | Name | AP | QP | CC | Unlock | Notes |
+|---|------|----|----|-----|--------|-------|
+| S1 | Absorb | 1 | 5 block | 5 block + draw 1 | 4 | Defensive cantrip |
+| S2 | Reactive Shield | 1 | 4 block + 2 Thorns (1t) | 12 block + 5 Thorns (2t) | 5 | Thorns-based |
+| S3 | Bulwark | 3 | 18 block | 36 block, EXHAUST | 9 | Emergency mega-block |
+| S4 | Knowledge Ward | 1 | 4 block per unique domain in hand | Same × 1.5 | 6 | Domain diversity reward |
+| S5 | Burnout Shield | 1 | 8 block | 24 block, EXHAUST | 7 | Mirror of Volatile Slash |
+| S6 | Conversion | 1 | Convert up to 10 block → damage | Convert up to 15 block | 10 | Lose converted block |
+| S7 | Ironhide | 2 | 6 block + 1 Strength (this turn) | 6 block + 1 Strength (permanent) | 8 | Strength snowball |
+| S8 | Aegis Pulse | 1 | 5 block | 5 block + chain allies +2 block | 6 | Chain synergy defense |
+
+#### New Buff Mechanics (8, including 2 Inscriptions)
+
+| # | Name | AP | QP | CC | Unlock | Notes |
+|---|------|----|----|-----|--------|-------|
+| B1 | Ignite | 1 | Next attack applies 4 Burn | Next attack applies 8 Burn | 5 | Burn setup buff |
+| B2 | Warcry | 1 | +2 Strength (this turn) | +2 Strength (permanent) + free Charge | 6 | Absorbs Concentration's niche |
+| B3 | Frenzy | 2 | Next 2 cards cost 0 AP (incl. surcharge) | Next 3 cards cost 0 AP | 10 | Surcharge waived on free plays |
+| B4 | Battle Trance | 1 | Draw 3, can't play more cards | Draw 3, no restriction | 7 | STS adaptation |
+| B5 | Mastery Surge | 1 | +1 mastery to 1 random hand card | +1 mastery to 2 cards | 11 | Wasted on cursed cards |
+| B6 | War Drum | 1 | All hand cards +2 base effect this turn | All +4 base | 8 | Universal hand buff |
+| B7/I1 | Inscription of Fury | 2 | All attacks +2 dmg rest of combat | All attacks +4 dmg | 0 | INSCRIPTION — persistent |
+| B8/I2 | Inscription of Iron | 2 | Start each turn with 3 block rest of combat | Start with 6 block | 0 | INSCRIPTION — persistent |
+
+#### New Debuff Mechanics (7)
+
+| # | Name | AP | QP | CC | Unlock | Notes |
+|---|------|----|----|-----|--------|-------|
+| D1 | Lacerate | 1 | 4 dmg + 4 Bleed | 12 dmg + 8 Bleed | 4 | Primary Bleed + damage |
+| D2 | Corrode | 1 | Remove 5 enemy block + 1t Weakness | Remove all block + 2t Weakness | 5 | Anti-tank |
+| D3 | Curse of Doubt | 1 | Enemy takes +30% from Charges (2t) | +50% from Charges (3t) | 6 | FLAGSHIP. Quiz-specific debuff |
+| D4 | Mark of Ignorance | 1 | Enemy takes +3 flat from Charges (2t) | +5 flat from Charges (3t) | 8 | Companion to Curse of Doubt |
+| D5 | Entropy | 2 | Apply 3 Burn + 2 Poison (2t) | Apply 6 Burn + 4 Poison (3t) | 9 | Dual DoT |
+| D6 | Stagger | 1 | Skip enemy's next action | Skip + 1t Vulnerable | 3 | Tempo card |
+| D7 | Corroding Touch | 0 | Apply 2 Weakness (1t) | Apply 3 Weakness (2t) + 2 Vulnerable | 7 | 0-cost debuff |
+
+#### New Utility Mechanics (9)
+
+| # | Name | AP | QP | CC | Unlock | Notes |
+|---|------|----|----|-----|--------|-------|
+| U1 | Scavenge | 1 | Put 1 discard card on top of draw | Put 2 on top | 4 | STS Headbutt style |
+| U2 | Sift | 1 | Look at top 3 draw, discard 1 | Look at top 5, discard 2 | 3 | Scry mechanic |
+| U3 | Siphon Knowledge | 2 | Draw 2 + see quiz answers 3s | Draw 3 + see answers 5s | 9 | FLAGSHIP. Study in combat |
+| U4 | Swap | 0 | Discard 1, draw 1 | Discard 1, draw 2 | 2 | 0-cost cycling |
+| U5 | Tutor | 1 | Search deck, add any card to hand | +0 AP cost this turn | 11 | Always powerful |
+| U6 | Recollect | 1 | Return 1 exhausted card to discard | Return 2 exhausted | 8 | Exhaust recovery |
+| U7 | Synapse | 1 | Draw 2 | Draw 2 + wildcard chain link | 10 | Chain wildcard |
+| U9 | Archive | 1 | Retain 1 hand card (doesn't discard) | Retain 2 cards | 5 | Combo setup |
+| U10 | Reflex | 1 | Draw 2 | Draw 3 | 6 | Passive: +3 block when discarded from hand |
+
+#### New Wild Mechanics (10)
+
+| # | Name | AP | QP | CC | Unlock | Notes |
+|---|------|----|----|-----|--------|-------|
+| W1 | Chameleon | 1 | Copy last card at 1.0× | Copy at 1.3× + inherit chain type | 6 | Chain-aware copy |
+| W2 | Phase Shift | 1 | Choose: 8 dmg OR 8 block | 12 dmg AND 12 block | 7 | Per-play modal |
+| W3 | Knowledge Bomb | 2 | 4 dmg | 4 dmg per correct Charge this encounter | 13 | Scales with quiz performance |
+| W4 | Dark Knowledge | 1 | 3 dmg per cursed fact | 5 dmg per cursed fact | 8 | Turns failures into a weapon |
+| W5 | Catalyst | 1 | Double all Poison on enemy | Double Poison + double Burn | 10 | STS classic |
+| W6 | Chain Anchor | 1 | Draw 1 | Set chain to 2 + draw 1 | 9 | Chain starter |
+| W7 | Sacrifice | 0 | Lose 5 HP, draw 2, gain 1 AP | Lose 5 HP, draw 3, gain 2 AP | 8 | STS Offering |
+| W8 | Mimic | 1 | Random discard card at 0.8× | Choose discard card at 1.0× | 11 | Discard pile toolbox |
+| W9 | Unstable Flux | 1 | Random effect at 1.0× | CHOOSE effect at 1.5× | 6 | FLAGSHIP. Knowledge = control |
+| W10 | Aftershock | 1 | Repeat last QP card at 0.5× | Repeat last Charged card at 0.7× | 10 | Mode-aware copy |
+
+#### Inscription Mechanics (3 — New Keyword)
+
+| # | Name | AP | QP Effect (rest of combat) | CC Effect | Unlock |
+|---|------|----|----|-----|--------|
+| I1 | Inscription of Fury | 2 | All attacks +2 dmg | All attacks +4 dmg | 0 |
+| I2 | Inscription of Iron | 2 | Start each turn with 3 block | Start with 6 block | 0 |
+| I3 | Inscription of Wisdom | 2 | Charged correct → draw 1 extra | CC draws 1 extra + heal 1 HP | 1 |
+
+#### Filler Mechanics (8 — New Basics)
+
+| # | Name | Type | AP | QP | CC | Unlock |
+|---|------|------|----|----|----|--------|
+| F1 | Power Strike | Attack | 1 | 10 dmg | 30 dmg | 0 |
+| F2 | Twin Strike | Attack | 1 | 5×2 (10 total) | 15×2 (30 total) | 2 |
+| F3 | Iron Wave | Attack | 1 | 5 dmg + 5 block | 15 dmg + 15 block | 0 |
+| F4 | Reinforce | Shield | 1 | 8 block | 24 block | 0 |
+| F5 | Shrug It Off | Shield | 1 | 6 block + draw 1 | 18 block + draw 1 | 2 |
+| F6 | Bash | Attack | 2 | 10 dmg + 1t Vulnerable | 30 dmg + 2t Vulnerable | 1 |
+| F7 | Guard | Shield | 2 | 14 block | 42 block | 1 |
+| F8 | Sap | Debuff | 1 | 3 dmg + 1t Weakness | 9 dmg + 2t Weakness | 1 |
+
+### Key Balance Principles (v2)
 
 ---
 
@@ -1304,28 +1437,26 @@ When using a custom deck with heavily mastered content, reward scaling prevents 
 
 ---
 
-## 11. Echo Mechanic (v2 — AR-59.20)
+## 11. Cursed Card System (Replaces Old Echo Mechanic)
 
-When a fact is answered wrong on a **Charge play**, 85% chance it reappears later as an "Echo" card. Quick Play wrong answers never spawn Echoes.
+The Echo system has been **fully removed** and replaced by the Cursed Card system. Full specification is in §4.5 Status Effects section (§1C of the expansion spec). Summary:
 
-**Visual:** Translucent/ghostly appearance, dashed purple border, `echo-shimmer` animation. Badge shows "ECHO ⚡ CHARGE". Clearly distinct from normal cards.
+**Why Echoes were removed:**
+1. **Exploit:** Players could intentionally fail cards they didn't want, using wrong answers as free deck thinning.
+2. **Anti-learning:** The cards a player most needed to practice were removed — wrong behavior for an educational game.
 
-**Play restriction:** Echo cards can ONLY be played via Charge (quiz). Tapping a popped Echo card to Quick Play is blocked — "Must Charge!" tooltip appears.
+**How Cursed Cards work:**
+- Wrong Charge on a mastery-0 card → the **fact** (not card slot) is added to `cursedFactIds: Set<string>` on RunState
+- Any card drawn that gets assigned a cursed fact shows the Cursed visual (purple tint, cracked border, shimmer)
+- Cursed QP: 0.7×. Cursed Charge Correct: 1.0× (cure reward). Cursed Charge Wrong: 0.5×
+- Cure: correct Charge on a cursed-fact card → fact removed from `cursedFactIds`, double FSRS credit
+- **Free First Charge is EXEMPT** — guessing wrong on an unknown fact does NOT curse it (fizzle is enough punishment)
+- Auto-cure safety valve: if 60%+ of hand is cursed across 2 consecutive draws → oldest fact auto-cures at encounter end
+- Card removal (Meditate/shop) does NOT remove the cursed fact — it follows the fact, not the slot
 
-| Event | Power | FSRS | Other |
-|-------|-------|------|-------|
-| Correct Echo Charge | 1.0× full power | Double credit (6.0× bonus, `FSRS_STABILITY_BONUS_CORRECT_V2`) | Golden flash; fact removed from echo set |
-| Wrong Echo Charge | 0.5× (`POWER_MULTIPLIER_WRONG`) | Standard miss | Card exhausted — cannot be re-drawn this run |
+**Constants:** `CURSED_QP_MULTIPLIER = 0.7`, `CURSED_CHARGE_CORRECT_MULTIPLIER = 1.0`, `CURSED_CHARGE_WRONG_MULTIPLIER = 0.5`, `CURSED_FSRS_CURE_BONUS = 6.0`, `CURSED_AUTO_CURE_THRESHOLD = 0.6`, `FREE_FIRST_CHARGE_EXEMPT_FROM_CURSE = true`
 
-Echo constants: `ECHO.REAPPEARANCE_CHANCE = 0.85`, `ECHO.POWER_MULTIPLIER = 1.0`, `ECHO.POWER_MULTIPLIER_WRONG = 0.5`, `ECHO.FSRS_STABILITY_BONUS_CORRECT_V2 = 6.0`, `ECHO.MAX_ECHOES_PER_RUN = 20`, `ECHO.INSERT_DELAY_CARDS = 3`
-
-**`echo_lens` relic (v2):** Prevents the 0.5× wrong-Charge penalty on Echo cards. Echo cards deal 1.0× regardless of quiz result.
-
-**Insight Prism synergy:** When `insight_prism` relic is held AND a fact is in `insightPrismAutosucceedIds`, the Echo quiz auto-succeeds: correct answer pre-highlighted for 300ms, then resolves as correct. One-time use per fact per run.
-
-**Design effect:** Poor performance = more Echoes in hand. Each Echo is a meaningful high-stakes retry — correct for full power redemption, or fail and lose the card permanently.
-
-Research: Karpicke & Roediger (2008) — immediate re-testing after failure is one of the most effective spaced repetition micro-patterns.
+Research: Karpicke & Roediger (2008) — immediate re-testing after failure is one of the most effective spaced repetition micro-patterns. The Cursed system forces continued exposure to failed facts rather than removing them.
 
 ---
 
@@ -1343,7 +1474,7 @@ Research: Karpicke & Roediger (2008) — immediate re-testing after failure is o
 | Mastery Trial | Tier 3 requires 4s timer + 5 close distractors |
 | Per-run mechanic randomization | Same fact, different combat behavior each run |
 | FSRS decay | Mastered facts return if not maintained |
-| Echo mechanic (v2) | Wrong Charge facts reappear as Charge-only ghost cards |
+| Cursed Card system | Wrong Charge on mastery-0 facts weakens any card carrying that fact until correct Charge cures it |
 | Free First Charge | First Charge of any fact is free, preventing uninformed commitment |
 
 ---
@@ -1353,7 +1484,7 @@ Research: Karpicke & Roediger (2008) — immediate re-testing after failure is o
 | System | Description |
 |--------|-------------|
 | Knowledge Library | All facts cataloged by domain + mastery; lore entries expand on mastery |
-| Relic Archive | 42 relics: 24 always available (starter pool), 18 unlock via character level |
+| Relic Archive | 77 relics total: 24 always available (starter pool), rest unlock via character level |
 | Camp Upgrade System | 9 camp elements each with 5–6 upgrade tiers, purchased with Dust |
 | Card Cosmetics | Milestone rewards; monetizable |
 | Domain Unlocking | Master 25 facts → new domain |
@@ -1416,19 +1547,19 @@ Players accumulate XP across all runs. XP feeds a permanent account level (1–2
 
 18 relics are distributed across levels 1–24. Levels without relics award dust (200–1000).
 
-### 13c-ii. Card Mechanic Unlock Gating (AR-205)
+### 13c-ii. Card Mechanic Unlock Gating (AR-205 / AR-209)
 
 **Service:** `src/services/characterLevel.ts` — `MECHANIC_UNLOCK_SCHEDULE`, `getUnlockedMechanics(level)`, `getMechanicUnlockLevel(id)`
 **Filter applied in:** `src/services/runPoolBuilder.ts` (`applyMechanics`), `src/services/presetPoolBuilder.ts` (`applyMechanics`)
 
-Card mechanics are gated by character level. New mechanics added in AR-206/207/208 do not appear in the run pool, reward pool, or shop until the player reaches the required character level. This creates a meaningful progression curve: new players learn the game's basic mechanics first; advanced archetypes unlock after sustained play.
+Card mechanics are gated by character level. 91 total mechanics unlock across levels 0–13. This creates a meaningful progression curve: new players learn the game's basic mechanics first; advanced archetypes unlock after sustained play.
 
-**Unlock schedule:**
+**Unlock schedule (91 unique mechanic IDs, levels 0–13):**
 
-| Level | Count at Level | Cumulative | Notes |
-|-------|---------------|------------|-------|
-| 0 | 36 | 36 | All 31 existing mechanics + 5 new basics from AR-206 (power_strike, iron_wave, reinforce, inscription_of_fury, inscription_of_iron) |
-| 1 | 4 | 40 | bash, guard, sap, inscription_of_wisdom |
+| Level | Count at Level | Cumulative | Mechanic IDs |
+|-------|---------------|------------|--------------|
+| 0 | 36 | 36 | All 31 existing + power_strike, iron_wave, reinforce, inscription_fury, inscription_iron |
+| 1 | 4 | 40 | bash, guard, sap, inscription_wisdom |
 | 2 | 3 | 43 | twin_strike, shrug_it_off, swap |
 | 3 | 3 | 46 | stagger, sift, riposte |
 | 4 | 5 | 51 | rupture, lacerate, scavenge, absorb, precision_strike |
@@ -1442,6 +1573,8 @@ Card mechanics are gated by character level. New mechanics added in AR-206/207/2
 | 12 | 1 | 90 | eruption |
 | 13 | 2 | 92 | knowledge_bomb, siphon_knowledge |
 | 14–25 | 0 | 92 | No new mechanics above level 13 |
+
+**Note on total 92 vs 91:** Inscription of Fury/Iron appear in both Buff and Inscription categories in this table — 91 unique mechanic IDs total.
 
 **Backward compatibility:** All 31 existing mechanics have `unlockLevel: 0` in `MechanicDefinition`. The filter is a no-op for existing content at any level.
 
@@ -1475,18 +1608,48 @@ The **Camp** is the persistent home base shown between runs. Players spend **Dus
 
 **Camp Shop:** Two-tab interface accessible from the hub:
 - **Camp Upgrades tab:** Shows all 9 elements with current tier, next upgrade cost, and preview art.
-- **Relics tab:** Shows all 42 relics with unlock status (24 always available, 18 require character level). Previously relics required Mastery Coins for purchase; they are now level-gated with no per-relic cost.
+- **Relics tab:** Shows all 77 relics with unlock status. Level-gated with no per-relic cost (Mastery Coin model removed as of AR-112).
 
 **Dust currency:** Awarded from run results (via `currencyEarned`), level-up rewards, and Mastery Trial completions.
 
 ### 13e. Relic Unlock Model (Updated)
 
-As of AR-112, the relic unlock model changed from Mastery Coin purchase-based to **character level gating**:
+As of AR-112 (extended by expansion), the relic unlock model is **character level gating**:
 
 - **24 starter relics** are always available in every run's drop pool from account creation.
-- **18 relics unlock progressively** as the player gains character levels (see Level Rewards table above).
+- Remaining relics unlock progressively as the player gains character levels.
 - No Mastery Coins are required to unlock relics. Mastery Coins section is legacy documentation.
-- The Camp Shop Relics tab displays all 42 relics with their unlock status and the level required.
+- The Camp Shop Relics tab displays all 77 relics with their unlock status and the level required.
+
+### 13e-ii. Relic Unlock Schedule (Character Level)
+
+| Level | New Relics Unlocked | Total Available |
+|-------|-------------------|-----------------|
+| 0 | 24 existing starters + Quick Study, Thick Skin, Tattered Notebook, Battle Scars, Brass Knuckles | 29 |
+| 1 | Chain Reactor (existing), Pocket Watch, Chain Link Charm | 32 |
+| 2 | Worn Shield, Bleedstone, Gladiator's Mark | 35 |
+| 3 | Ember Core, Gambler's Token | 37 |
+| 4 | Thoughtform, Scar Tissue, Living Grimoire | 40 |
+| 5 | Quicksilver Quill (existing), Surge Capacitor, Obsidian Dice | 43 |
+| 6 | Time Warp (existing), Red Fang, Chronometer | 46 |
+| 7 | Soul Jar, Null Shard, Hemorrhage Lens | 49 |
+| 8 | Crit Lens (existing), Archive Codex, Chain Forge | 52 |
+| 9 | Berserker's Oath, Deja Vu, Entropy Engine | 55 |
+| 10 | Thorn Crown (existing), Inferno Crown, Mind Palace | 58 |
+| 11 | Bastion's Will (existing), Bloodstone Pendant, Chromatic Chain | 61 |
+| 12 | Volatile Manuscript, Dragon's Heart | 63 |
+| 13 | Festering Wound (existing), Capacitor (existing) | 65 |
+| 14 | Double Down (existing) | 66 |
+| 15 | Scholar's Crown (existing) | 67 |
+| 16 | Domain Mastery Sigil (existing) | 68 |
+| 18 | Phoenix Feather (existing) | 69 |
+| 20 | Scholar's Gambit (existing), Prismatic Shard (existing), Omniscience | 72 |
+| 21 | Paradox Engine | 73 |
+| 22 | Mirror of Knowledge (existing), Akashic Record | 75 |
+| 23 | Singularity | 76 |
+| 24 | Toxic Bloom (existing) | 77 |
+
+**Note:** Echo Chamber has been removed from the game entirely. Final count: 77 relics (41 existing relics minus Echo Chamber + 36 new expansion relics).
 
 ### Mastery Coins (Legacy — No Longer Used for Relic Unlocks)
 
@@ -1618,12 +1781,44 @@ Wrong Charge resolves at **0.7× multiplier** (Tier 2a/2b) or **0.6×** (Tier 1)
 - Cost the full Charge AP surcharge (+1 AP spent, no refund)
 - Apply partial effect (0.7×)
 - Break the Knowledge Chain counter
-- Spawn an Echo card (85% chance) for that fact
+- If card is mastery 0: add the fact to `cursedFactIds` (Cursed Card system)
+- If card is mastery 1+: downgrade mastery by 1 level (once per encounter)
 
 **Wrong answer does NOT:**
 - Destroy the card
-- Deal self-damage (unless relic effect, e.g., Volatile Core)
+- Deal self-damage (unless relic effect, e.g., Volatile Core, Scholar's Gambit)
 - End the turn
+
+**Combo system removal note:** The combo multiplier system (`COMBO_MULTIPLIERS`, `COMBO_HEAL_*`, `COMBO_DECAY_*`, `comboCount`) has been fully removed from the game. Chains are the only streak mechanic. The `ComboCounter.svelte` component has been replaced by `ChainCounter.svelte` (chain-only display).
+
+---
+
+## 15.5. Damage Pipeline (Appendix E — Authoritative)
+
+The exact order of damage calculation for all attack cards. **The combo multiplier is NOT in this pipeline** — the combo system has been fully removed.
+
+1. `mechanicBaseValue` (from QP/CC/CW lookup)
+2. + mastery bonus (`perLevelDelta × masteryLevel`)
+3. + Inscription of Fury flat bonus (if active — applied here as flat addition, attack cards only)
+4. + relic flat bonuses (`barbed_edge`, etc.)
+5. × `card.effectMultiplier` (tier-derived: 1.0× QP, 1.5–3.5× CC, 0.6–0.7× CW)
+6. × `chainMultiplier` (1.0–3.0, based on chain length)
+7. × `speedBonus` (from quiz timer — only applies on CC)
+8. × `buffMultiplier` (from Empower/buff cards active this turn)
+9. × relic percent bonuses (Volatile Core, Reckless Resolve, Berserker's Oath, etc.)
+10. × `overclockMultiplier` (if Overclock active)
+11. + Burn bonus (= current Burn stacks, then halve stacks round down — triggered ONCE per hit)
+12. + Bleed bonus (= Bleed stacks per card-play hit; does NOT decay on hit — only at end of enemy turn)
+13. + relic flat attack bonus applied post-multiply (Bloodstone Pendant Fury stacks, etc.)
+14. If enemy has Vulnerable: × 1.5
+15. Block absorbs final total
+16. Remaining damage after block hits HP
+
+**Notes:**
+- Burn and Bleed bonuses (steps 11–12) are added BEFORE block is applied. Block absorbs the combined total, not separately.
+- Chain Anchor sets next chain's starting length to 2; Chain Anchor itself is not a chain link and does not contribute to step 6.
+- AP gain from Sacrifice/Blood Price can push past `MAX_AP_PER_TURN` — there is no hard AP cap.
+- Multi-hit cards trigger Burn once per hit. Bleed triggers once per card-play hit.
 
 ---
 
@@ -1632,7 +1827,7 @@ Wrong Charge resolves at **0.7× multiplier** (Tier 2a/2b) or **0.6×** (Tier 1)
 ### Core Rules
 
 - **5 active relic slots** per run. Expandable to 6 via Scholar's Gambit (rare, cursed).
-- **42 total relics.** ~60% build-around, ~40% stat-stick.
+- **77 total relics** (41 original + 36 new expansion relics). ~60% build-around, ~40% stat-stick. Echo Chamber relic removed; not counted.
 - **No starter relic selection** — all players start the run with no relics. First relic earned at Act 1 mini-boss.
 
 ### Acquisition
@@ -1719,10 +1914,6 @@ Each chain link beyond 2 draws +1 card at end of turn.
 **Tag Magnet** — Uncommon
 When drawing cards, +30% chance to draw cards sharing a `chainType` with your last played card.
 *Makes chains more consistent.*
-
-**Echo Chamber** — Rare
-Completing a 2+ chain replays the first card in the chain at 60% power (no quiz, no AP cost).
-*Free bonus action from chaining.*
 
 #### Speed Relics (Build-Around)
 
@@ -1858,12 +2049,73 @@ All chain multipliers +0.5×. 5-chains grant +1 AP.
 **Mirror of Knowledge** — Legendary
 Once per encounter: after correct Charge, replay card at 1.5× (no quiz, no AP).
 
-**Echo Lens** — Uncommon
-Echo cards deal 1.0× regardless of quiz result (prevents wrong-Echo 0.5× penalty).
+**Volatile Manuscript** — Rare (Cursed)
+All Charge multipliers +0.5×. Every 3rd Charge applies 4 Burn to yourself. Self-Burn triggers when hit by enemy attacks.
+
+> **Removed relics (historical note):** Echo Lens, Echo Chamber, Phantom Limb were removed when the Echo system was replaced by the Cursed Card system. Combo Ring was removed with the combo system.
+
+### New Expansion Relics (36 Added)
+
+#### New Common Relics (5)
+
+| ID | Name | Trigger | Effect |
+|----|------|---------|--------|
+| `quick_study` | Quick Study | on_encounter_end | After combat, if 3+ Charges correct, see quiz answer for 1 random deck fact (3s) |
+| `thick_skin` | Thick Skin | permanent | First debuff each encounter has duration −1 turn |
+| `tattered_notebook` | Tattered Notebook | on_charge_correct | +5 gold on first correct Charge per encounter |
+| `battle_scars` | Battle Scars | on_damage_taken | Next attack deals +3 damage after taking a hit (once/turn) |
+| `brass_knuckles` | Brass Knuckles | on_attack | Every 3rd attack card played deals +6 bonus damage |
+
+#### New Uncommon Relics (12)
+
+| ID | Name | Trigger | Effect |
+|----|------|---------|--------|
+| `pocket_watch` | Pocket Watch | on_turn_start | +1 draw on turns 1 and 5 of each encounter |
+| `chain_link_charm` | Chain Link Charm | on_chain_complete | +5 gold per chain link in completed chains |
+| `worn_shield` | Worn Shield | on_block | Every 2nd shield card played gains +3 block |
+| `bleedstone` | Bleedstone | permanent | Bleed stacks applied by you are +2 higher; Bleed decays 1 slower |
+| `ember_core` | Ember Core | permanent | Burn applied by you starts +2 extra stacks. Enemy at 5+ Burn: attacks +20% |
+| `gambler_s_token` | Gambler's Token | on_charge_wrong | Wrong Charge = +3 gold |
+| `thoughtform` | Thoughtform | on_perfect_turn | +1 permanent Strength when ALL cards in a turn were Charged correctly |
+| `scar_tissue` | Scar Tissue | permanent | Cursed cards deal 0.85× QP instead of 0.7×. Does NOT cure — softens penalty |
+| `surge_capacitor` | Surge Capacitor | on_surge_start | Surge turns: +1 AP and draw 2 extra cards |
+| `obsidian_dice` | Obsidian Dice | on_charge_correct | 60% chance: +50% Charge mult. 40% chance: −25% Charge mult |
+| `living_grimoire` | Living Grimoire | on_encounter_end | If 3+ Charges correct in encounter, heal 3 HP |
+| `gladiator_s_mark` | Gladiator's Mark | on_encounter_start | Start each encounter with +1 Strength for 3 turns |
+
+#### New Rare Relics (15)
+
+| ID | Name | Trigger | Effect |
+|----|------|---------|--------|
+| `red_fang` | Red Fang | on_encounter_start | First attack each encounter +30% damage |
+| `chronometer` | Chronometer | permanent | All quiz timers +3s. All Charge multipliers −15% |
+| `soul_jar` | Soul Jar | on_charge_correct | 1 charge per 5 correct Charges. CHARGE button shows "GUARANTEED" — tap to auto-succeed |
+| `null_shard` | Null Shard | permanent | All chain multipliers = 1.0× (chains disabled). All attack cards +25% base damage |
+| `hemorrhage_lens` | Hemorrhage Lens | on_multi_hit | Multi-Hit attacks apply 1 Bleed per hit |
+| `archive_codex` | Archive Codex | on_encounter_end | +1 damage per 10 total mastery levels across deck |
+| `berserker_s_oath` | Berserker's Oath | on_run_start | −30 max HP. All attacks +40% damage |
+| `chain_forge` | Chain Forge | on_chain_complete | Once per encounter: a card that would break a chain continues instead |
+| `deja_vu` | Deja Vu | on_turn_start | Turn 1: add 1 random discard card to hand at −1 AP. Card gets a previously-correct fact |
+| `inferno_crown` | Inferno Crown | permanent | Enemy has BOTH Burn and Poison: all damage +30% |
+| `mind_palace` | Mind Palace | permanent | Track consecutive correct Charges. Forgiveness: 1 wrong per 10 freezes progress. At 10/20/30 streak: +3/+6/+10 all effects |
+| `entropy_engine` | Entropy Engine | on_turn_end | If 3+ different card types played this turn: deal 5 dmg + gain 5 block |
+| `bloodstone_pendant` | Bloodstone Pendant | on_damage_taken | Each hit received → +1 Fury stack. Each Fury = +1 damage to next attack (consumed) |
+| `chromatic_chain` | Chromatic Chain | on_chain_complete | Once per encounter: completing 3+ chain makes next chain start at length 2 |
+| `dragon_s_heart` | Dragon's Heart | on_elite_kill / on_boss_kill | Elite kill: +5 max HP + heal 30%. Boss kill: +15 max HP + full heal + random Legendary. Passive: +2 attack damage always |
+| `volatile_manuscript` | Volatile Manuscript | permanent | All Charge multipliers +0.5×. Every 3rd Charge applies 4 Burn to yourself |
+
+#### New Legendary Relics (4)
+
+| ID | Name | Trigger | Effect |
+|----|------|---------|--------|
+| `omniscience` | Omniscience | on_charge_correct | 3 correct Charges in one turn → 4th Charge auto-succeeds |
+| `paradox_engine` | Paradox Engine | on_charge_wrong | Wrong Charges resolve at 0.3× AND deal 5 piercing damage. +1 AP per turn |
+| `akashic_record` | Akashic Record | on_charge_correct | Tier 2b+ facts: one wrong answer subtly highlighted. Tier 3 auto-Charge = 1.5× (up from 1.2×) |
+| `singularity` | Singularity | on_chain_complete | Completing a 5-chain deals BONUS damage equal to total chain damage (doubles 5-chain output) |
 
 ### Relic Archive (Hub — Meta-Progression)
 
-24 relics are available from account creation (starter pool). 18 relics unlock progressively via character level (see §13c Level Rewards table). No Mastery Coins are required to unlock any relic — the unlock model is purely level-gated as of AR-112.
+24 existing starter relics are available from account creation. New relics unlock progressively via character level — see the full Relic Unlock Schedule in §13e-ii below. No Mastery Coins are required to unlock any relic — the unlock model is purely level-gated.
 
 ### Relic Display
 
@@ -1913,7 +2165,7 @@ Card hand occupies the bottom ~45% of screen. Enemy arena occupies the top 55%. 
 | Quick Playing | 200ms instant animation |
 | Dragging (lower zone) | Green glow — Quick Play on release |
 | Dragging (upper zone) | Golden glow + "⚡ CHARGE +1 AP" label — Charge Play on release |
-| Echo card | Dashed purple border, translucent |
+| Cursed card | Purple tint, cracked border, `cursed-shimmer` CSS animation |
 | Tier 3 auto-Charge | Gold shimmer, auto-resolves on play |
 
 ### Enemy Intent Display
@@ -2503,7 +2755,7 @@ AI-driven playtesting system using headless combat simulation:
 | `average` | 70% improving | normal | basic | Typical player experience |
 | `expert` | 90% flat | fast | optimal | Tests high-Chain balance |
 | `speed-runner` | 90% + fast | fast | optimal | Tests Quicksilver Quill snowball |
-| `struggling` | 40% declining | slow | random | Stress-tests Canary + Echo mechanics |
+| `struggling` | 40% declining | slow | random | Stress-tests Canary + Cursed Card accumulation |
 | `impatient` | 70% volatile | normal | random, 25% skip | Tests skip/engagement patterns |
 
 ### Playtest Dashboard

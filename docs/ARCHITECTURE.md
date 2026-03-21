@@ -162,8 +162,9 @@ Located in `src/data/`:
 
 - `types.ts` — PlayerSave, fact types (extend with card types)
 - `vocabulary.ts` — Language deck types: `LanguageConfig` (extended with `subdecks` and `options`), `LanguageDeckOption` interface, VocabularyFact schema extensions for targetLanguage, jlptLevel, reading, audioUrl
-- `balance.ts` — tuning constants (retune for card effect values). Includes `BASE_EFFECT` (per-type base effect values: attack, shield, buff, debuff, utility, wild), `POST_ENCOUNTER_HEAL_PCT` (8%), `RELAXED_POST_ENCOUNTER_HEAL_BONUS` (additional healing in Relaxed Mode), `POST_BOSS_ENCOUNTER_HEAL_BONUS` (boss encounter bonus), `EARLY_MINI_BOSS_HP_MULTIPLIER` (0.60x for floors 1-3), `FLOOR_DAMAGE_SCALING_PER_FLOOR` (0.03), `ENEMY_TURN_DAMAGE_CAP` (per-segment damage caps). In-combat healing only from lifetap (attack card) and relic effects
-- `saveState.ts` — run state shape (RunSaveState); includes ActMap in run save state
+- `balance.ts` — tuning constants. Includes `BASE_EFFECT`, `POST_ENCOUNTER_HEAL_PCT` (8%), `RELAXED_POST_ENCOUNTER_HEAL_BONUS`, `POST_BOSS_ENCOUNTER_HEAL_BONUS`, `EARLY_MINI_BOSS_HP_MULTIPLIER` (0.60x for floors 1-3), `FLOOR_DAMAGE_SCALING_PER_FLOOR` (0.03), `ENEMY_TURN_DAMAGE_CAP`. **Expansion additions:** `CURSED_QP_MULTIPLIER = 0.7`, `CURSED_CHARGE_CORRECT_MULTIPLIER = 1.0`, `CURSED_CHARGE_WRONG_MULTIPLIER = 0.5`, `CURSED_FSRS_CURE_BONUS = 6.0`, `CURSED_AUTO_CURE_THRESHOLD = 0.6`, `FREE_FIRST_CHARGE_EXEMPT_FROM_CURSE = true`, `BURN_HALVE_ON_HIT = true`, `BLEED_BONUS_PER_STACK = 1`, `BLEED_DECAY_PER_TURN = 1`, `INSCRIPTION_EXHAUST_ON_PLAY = true`, `SIPHON_STRIKE_MAX_HEAL = 10`. **Removed:** `COMBO_MULTIPLIERS`, `COMBO_HEAL_*`, `COMBO_DECAY_*` (combo system removed). **Removed relics:** `echo_lens`, `phantom_limb`, `echo_chamber` data entries.
+- `saveState.ts` — run state shape (RunSaveState); includes ActMap in run save state. Expansion: `cursedFactIds: string[]` serialized field (deserialized to `Set<string>` on load).
+- `card-types.ts` — Expansion: `isInscription?: boolean` and `isRemovedFromGame?: boolean` added to Card interface for Inscription keyword support.
 - Map types (`src/services/mapGenerator.ts`) — `ActMap` (rows, edges, completed nodes, current node), `MapNode` (id, row, col, type: combat|elite|boss|mystery|rest|treasure|shop, connections)
 - Enemy definitions — `src/data/enemies.ts`. `EnemyInstance` interface includes `floor: number`, `difficultyVariance` (0.8–1.2x HP/damage variance), `enrageBonusDamage` (cumulative bonus added to attack damage), and `playerChargedThisTurn` (reset each enemy turn for `onPlayerNoCharge` detection). `EnemyTemplate` includes `rarity`, `spawnWeight`, `animArchetype` (8 animation types), and v2 quiz-reactive callbacks: `onPlayerChargeWrong`, `onPlayerChargeCorrect`, `onPlayerNoCharge`, `onEnemyTurnStart`. Passive flags: `quickPlayImmune` (Quick Play deals 0 damage), `chainMultiplierOverride` (caps chain multiplier). Boss templates include `quizPhases: QuizPhaseConfig[]` (hpThreshold, questionCount, timerSeconds, rapidFire). Exports `ACT_ENEMY_POOLS` (3-act pool structure) and `getEnemiesForNode(act, nodeType)` for map node enemy selection.
 - Enemy animations — `src/data/enemyAnimations.ts` — Animation archetype configs (8 types). Defines `AnimConfig` interface with tween parameters and `getAnimConfig(archetype)` resolver. Pure data, no Phaser/Svelte imports.
@@ -179,7 +180,7 @@ Core systems powering the card roguelite:
 | Quiz engine (3-pool) | `QuizManager.ts`, `quizService.ts` | Fully integrated |
 | SM-2 algorithm | `sm2.ts`, `StudyManager.ts` | Spaced repetition scheduler |
 | Facts database | `factsDB.ts`, `public/facts.db` | Domain fact store |
-| Relic system | `relicEffectResolver.ts`, `relicAcquisitionService.ts`, `src/data/relics/`, `saveMigration.ts` | Complete — 42 v2 relics (25 free + 17 paid), 5-slot system (6 with Scholar's Gambit), mastery coins, in-run collection, V1→V2 migration. V2 hooks: `resolveChargeCorrectEffects`, `resolveChargeWrongEffects`, `resolveChainCompleteEffects`, `resolveSurgeStartEffects`. AR-116 wired: `vitality_ring` (+20 max HP at run start), `merchants_favor` (+1 card +1 relic in shops via optional count param in `generateShopRelics`), `blood_price` (+1 AP/turn in addition to -2 HP/turn), `crit_lens` (25% crit x2 on Charge correct), `scholars_crown` (tier-based +10/40/75% charge bonus), `aegis_stone` (15-block cap → Thorns 2), `domain_mastery_sigil` (ID fixed from `domain_mastery`), `herbal_pouch` (8 HP fixed from 5). |
+| Relic system | `relicEffectResolver.ts`, `relicAcquisitionService.ts`, `src/data/relics/`, `saveMigration.ts` | Complete — 77 relics total (41 existing + 36 expansion), 5-slot system (6 with Scholar's Gambit), level-gated unlock, in-run collection, V1→V2 migration. Echo Chamber removed. V2 hooks: `resolveChargeCorrectEffects`, `resolveChargeWrongEffects`, `resolveChainCompleteEffects`, `resolveSurgeStartEffects`. New expansion hooks: cursed card multipliers, Burn/Bleed resolution, Inscription persistence, Dragon's Heart elite/boss kills, Soul Jar guaranteed-charge accumulation. AR-116 wired: `vitality_ring`, `merchants_favor`, `blood_price`, `crit_lens`, `scholars_crown`, `aegis_stone`, `domain_mastery_sigil`, `herbal_pouch`. |
 | Audio manager | `AudioManager.ts`, `audioService.ts` | |
 | Save/load | `saveService.ts` | Full player save via `runManager.ts` for in-run state |
 | Event bus | `src/events/EventBus.ts`, `src/events/types.ts` | |
@@ -201,11 +202,11 @@ Core systems powering the card roguelite:
 | Deck manager | `src/services/deckManager.ts` | Built |
 | Run pool builder | `src/services/runPoolBuilder.ts` | Built |
 | Funness boost | `src/services/funnessBoost.ts` | Built — new player bias toward higher-funScore facts (runs 0–99) |
-| Turn manager | `src/services/turnManager.ts` | Built (v2) — Quick Play / Charge branching; Surge integration (surgeSystem); chain tracking per turn (chainSystem); free first Charge via discoverySystem; removed combo/speed/fizzle paths. AR-113: upgrades card mastery on correct Charge, downgrades on wrong Charge (once per card per encounter via `masteryChangedThisEncounter` flag, cleared between encounters) |
+| Turn manager | `src/services/turnManager.ts` | Built (v2) — Quick Play / Charge branching; Surge integration (surgeSystem); chain tracking per turn (chainSystem); free first Charge via discoverySystem; combo system fully removed (no comboCount, no COMBO_MULTIPLIERS). AR-113: upgrades card mastery on correct Charge, downgrades on wrong Charge (once per card per encounter via `masteryChangedThisEncounter` flag). Expansion: Cursed card detection on wrong Charge (mastery-0 → add to `cursedFactIds`); Inscription persistence (`activeInscriptions: ActiveInscription[]` on TurnState, `resolveInscription()` helper); Iron inscription block on `endPlayerTurn` turn-start; Stagger enrage-tick handling; Soul Jar guaranteed-charge button state. |
 | Enemy manager | `src/services/enemyManager.ts` | Built — includes `getFloorDamageScaling(floor)` (+3%/floor above 6), `getSegmentForFloor(floor)`, and per-turn damage caps via `ENEMY_TURN_DAMAGE_CAP` |
 | Floor manager | `src/services/floorManager.ts` | Built |
 | Game flow controller | `src/services/gameFlowController.ts` | Built (v2) — 3-act run flow; no retreat-or-delve branch; no archetype selection; no starter relic selection; routes directly to dungeonMap at run start |
-| Encounter bridge | `src/services/encounterBridge.ts` | Built (v2) — Fixed 10-card starter deck; categoryL2 concentration (5–8 categories); removed archetype-based pool building; v2 Echo handling; post-encounter healing |
+| Encounter bridge | `src/services/encounterBridge.ts` | Built (v2) — Fixed 10-card starter deck; categoryL2 concentration (5–8 categories); removed archetype-based pool building; Echo system fully removed; post-encounter healing. Expansion: Inscription detection on card play (moves card from discard to exhaust, marks `isRemovedFromGame`; Wisdom CW skips registration), Fury bonus passed into `AdvancedResolveOptions`, Wisdom CC trigger (draw 1 + optional heal 1 HP), `activeInscriptions` preserved in `freshTurnState`. |
 | Surge system | `src/services/surgeSystem.ts` | Built (v2) — Surge turn timing (turns 2, 5, 8, …); `isSurgeTurn(turnNumber)`, `getSurgeMultiplier()`. Surge doubles all Charge multipliers; visually signaled one turn in advance |
 | Chain system | `src/services/chainSystem.ts` | Built (AR-70) — Per-turn chainType tracking; `extendOrResetChain(chainType, override?)`, `getChainMultiplier(length)`, `getChainState()`. Chain resets on chainType change |
 | Chain visuals | `src/services/chainVisuals.ts` | Built (AR-70) — `getChainColor(chainType)` and `getChainGlowColor(chainType)` map chainType 0-5 to 6-color palette from `chainTypes.ts`; `getChainColorGroups(cards)` groups cards by shared chainType |
@@ -226,8 +227,11 @@ Core systems powering the card roguelite:
 | CardApp (root) | `src/CardApp.svelte` | Built |
 | Card hand UI | `src/ui/components/CardHand.svelte` | Built — card rendering uses V2 layered card frame system (composited border + base + banner WebP layers with CSS text overlays); supports hires/lowres variants based on device capabilities. AR-116: charge preview uses 1.5× + mastery bonus; old upgrade border removed; AP cost font uses thicker 2px stroke + stronger shadows. |
 | Card expanded UI | `src/ui/components/CardExpanded.svelte` | Built — AR-76: landscape branch centers quiz in left-70% center stage (above 26vh card hand), 2×2 answer grid, `kbd-hint` badges, inputService QUIZ_ANSWER wiring with 150ms highlight flash, card hand dimming via `quizVisible` prop on CardHand |
-| Card combat overlay | `src/ui/components/CardCombatOverlay.svelte` | Built — synergy flash UI element; v2: boss quiz phase overlay rendered inline; AR-116: relic sell removed during combat (info-only tooltip), AP orb lowered to `bottom: 35vh`, enemy intent padding increased, damage popup uses mastery + charge values |
-| Combo counter | `src/ui/components/ComboCounter.svelte` | Chain-only display (AR-116) — combo multiplier removed; renders chain length + multiplier at bottom-left in chain color, format "Chain: X.x". Combo counter UI and logic fully removed. |
+| Card combat overlay | `src/ui/components/CardCombatOverlay.svelte` | Built — synergy flash UI element; v2: boss quiz phase overlay rendered inline; AR-116: relic sell removed during combat (info-only tooltip), AP orb lowered to `bottom: 35vh`, enemy intent padding increased, damage popup uses mastery + charge values. Expansion: exhaust pile count tap target (purple ✕ indicator) + ExhaustPileViewer overlay integration. |
+| Card browser | `src/ui/components/CardBrowser.svelte` | NEW (AR-204) — shared mid-combat card list overlay used by Tutor, Mimic CC, Scavenge, and Siphon Knowledge. Portrait: full-screen. Landscape: right-panel. Supports select/view modes, showAnswers, timer, data-testid. |
+| Multi-choice popup | `src/ui/components/MultiChoicePopup.svelte` | NEW (AR-204) — generic 2–4 option choice modal. Used by Unstable Flux CC and Phase Shift QP. Min 48px tap targets, forcePick, keyboard Escape support. |
+| Exhaust pile viewer | `src/ui/components/ExhaustPileViewer.svelte` | NEW (AR-204) — thin CardBrowser wrapper showing all exhausted cards including Inscriptions (which are "remove from game" on exhaust). |
+| Chain counter | `src/ui/components/ChainCounter.svelte` | Chain-only display (AR-116 / expansion) — combo counter fully removed. Renders chain length + multiplier at bottom-left in chain type color, format "Chain: X.x". `ComboCounter.svelte` has been removed; `comboDisplay.ts` has been deleted. |
 | Damage numbers | `src/ui/components/DamageNumber.svelte` | Built |
 | Domain selection | `src/ui/components/DomainSelection.svelte` | **ARCHIVED** — Deprecated; no longer used in run flow; removed from gameFlowController.playAgain() |
 | Deck builder | `src/ui/components/DeckBuilder.svelte` | Built — study preset creation/editing within Library screen |
@@ -303,7 +307,7 @@ Core systems powering the card roguelite:
 | PassiveEffect type | `src/data/card-types.ts` | Built |
 | Tier 3 passive constants | `src/data/balance.ts` (`TIER3_PASSIVE_VALUE`) | Built |
 | Passive tracking in TurnState | `src/services/turnManager.ts` (`activePassives`) | Built |
-| Passive bonus injection | `src/services/cardEffectResolver.ts` (`passiveBonuses` param) | Built — wild card branch now copies target type's `BASE_EFFECT` value |
+| Passive bonus injection | `src/services/cardEffectResolver.ts` (`passiveBonuses` param) | Built — wild card branch now copies target type's `BASE_EFFECT` value. Expansion: Burn damage hook (step 11 of damage pipeline — add stacks then halve), Bleed damage hook (step 12 — add stacks per card-play hit, no decay on hit), Cursed multiplier (0.7× QP, 0.5× CW, 1.0× CC on cursed-fact cards), Inscription of Fury flat bonus at damage pipeline step 3 (attack cards only). |
 | Tier 3 extraction & SM-2 wiring | `src/services/encounterBridge.ts` | Built |
 
 ### Implemented (P0.6 — Card Upgrades & Shop Enhancement)
@@ -373,7 +377,7 @@ Cards now cost 0, 1, 2, or 3 AP instead of all costing 1 AP. This creates meanin
 | Mastery visual — frame | `src/ui/utils/cardFrameV2.ts` | `getMasteryIconFilter(level)` CSS filter per level (L1=green, L2=blue, L3=purple, L4=orange, L5=gold); `hasMasteryGlow(level)` true at L5 |
 | Mastery visual — card UI | `src/ui/components/CardHand.svelte` | Icon bobs at L1+; stat values flash green/red on mastery change; "Upgraded!"/"Downgraded!" popup |
 | Distractor count scaling | `src/services/quizService.ts` | 2 distractors shown at mastery 0; 3 distractors at mastery 1+ |
-| Echo card mastery | `src/services/encounterBridge.ts` | Echo cards cannot change mastery but inherit source card's mastery-boosted stat at spawn |
+| Cursed card mastery | `src/services/encounterBridge.ts` / `turnManager.ts` | Cursed facts lock card at effective mastery 0. Cure (correct Charge on cursed-fact card) restores normal mastery tracking. |
 | Level 5 auto-play | `src/services/turnManager.ts` | Mastered cards (L5) auto quick-play with no quiz, except at final boss |
 | Rest site Study | `src/services/masteryChallengeService.ts` | Study session upgrades specific cards via mastery (max 3, no downgrades) |
 
@@ -394,7 +398,7 @@ The relic system uses an STS-inspired economy replacing the old FSRS-tied passiv
 - `index.ts` — barrel exports, `FULL_RELIC_CATALOGUE`, `RELIC_BY_ID`, `STARTER_RELIC_IDS`
 
 **Services**:
-- `relicEffectResolver.ts` — Pure functions resolving relic effects from `Set<string>` of held IDs. Hooks (v1): encounter start, attack, shield, heal, damage taken, lethal, turn end, perfect turn, correct answer, card skip, draw count, combo start, speed bonus, echo, timer. **V2 hooks added (AR-59.11)**: `resolveChargeCorrectEffects`, `resolveChargeWrongEffects`, `resolveChainCompleteEffects`, `resolveSurgeStartEffects`, `resolveTurnEndEffectsV2`, `resolveEncounterEndEffects`, `resolveCurrencyBonusV2`, `resolveCardRewardOptionCountV2`, `resolveMaxHpBonusV2`. Also exports `getMaxRelicSlots(runRelics)` (returns 5, or 6 with Scholar's Gambit) and `isRelicSlotsFull(runRelics)` (true at cap).
+- `relicEffectResolver.ts` — Pure functions resolving relic effects from `Set<string>` of held IDs. Hooks (v1): encounter start, attack, shield, heal, damage taken, lethal, turn end, perfect turn, correct answer, card skip, draw count, speed bonus, timer. **V2 hooks added (AR-59.11)**: `resolveChargeCorrectEffects`, `resolveChargeWrongEffects`, `resolveChainCompleteEffects`, `resolveSurgeStartEffects`, `resolveTurnEndEffectsV2`, `resolveEncounterEndEffects`, `resolveCurrencyBonusV2`, `resolveCardRewardOptionCountV2`, `resolveMaxHpBonusV2`. **Expansion hooks**: cursed-card multiplier application, Burn/Bleed damage resolution, Dragon's Heart elite/boss kill trigger, Soul Jar charge accumulation, Mind Palace streak tracking. Also exports `getMaxRelicSlots(runRelics)` (returns 5, or 6 with Scholar's Gambit) and `isRelicSlotsFull(runRelics)` (true at cap). Echo hooks (`echo`, `combo start`) removed.
 - `relicAcquisitionService.ts` — In-run pool filtering (respects `excludeFromPool` and `excludeFromPhase1` flags), weighted random selection, boss/mini-boss choice generation, random drop logic.
 - `saveMigration.ts` — **NEW (AR-59.11)**: V1→V2 relic migration. `migrateRelicsV1toV2(save)` walks all 50 v1 relic IDs and applies: preserve / rename / auto_unlock / refund / drop actions. `V1_TO_V2_RELIC_MAP` is the authoritative migration table.
 
@@ -417,7 +421,16 @@ The relic system uses an STS-inspired economy replacing the old FSRS-tied passiv
 - `offeredRelicIds` scope change: now tracks ONLY acquired relics (not all offered). Declined relics from choose-1-of-3 screens can reappear in later events.
 
 **`RunState` additions** (AR-59.23 — Free First Charge):
-- `firstChargeFreeFactIds: Set<string>` — Fact IDs for which the player has used their free first Charge this run. Once a factId is in this set, that fact costs the normal +1 AP surcharge. Cleared on new run. Serialized to/from array by `runSaveService.ts`.
+- `firstChargeFreeFactIds: Set<string>` — Fact IDs for which the player has used their free first Charge this run. Cleared on new run. Serialized to/from array by `runSaveService.ts`.
+
+**`RunState` additions** (Expansion — Cursed Card System):
+- `cursedFactIds: Set<string>` — Fact IDs that are cursed this run. Wrong Charge on mastery-0 card → fact ID added. Correct Charge on cursed fact → ID removed. Facts rotate per draw (same slot, different fact each draw), so curses follow facts not slots. Serialized to/from array. Free First Charge wrongs are EXEMPT (not added to this set).
+
+**`TurnState` additions** (AR-204 — Inscription System):
+- `activeInscriptions: ActiveInscription[]` — persists for entire encounter; initialized to `[]` in `startEncounter`. `ActiveInscription` has `mechanicId: string` and `power: number`. Iron hook fires in `endPlayerTurn` turn-start block.
+
+**`EncounterState` additions** (Expansion):
+- `encounterChargesTotal: number` — total correct Charges made this encounter (used by Knowledge Bomb CC scaling and Archive Codex relic).
 
 **`RunState` additions** (AR-59.12):
 - `relicPityCounter: number` — Consecutive Common-only acquisitions since last Uncommon+. Initialized 0. Resets to 0 on Uncommon+ acquisition. Pity activates at `>= RELIC_PITY_THRESHOLD (4)` in `balance.ts`.
@@ -457,7 +470,7 @@ activeInscriptions: ActiveInscription[]  // persists for entire encounter; initi
 **Integration points** (all combat-loop relic checks now delegate to `relicEffectResolver.ts` as the centralized source of truth):
 - `encounterBridge.ts` — Builds `activeRelicIds` from `runRelics` at encounter start; delegates encounter-start effects (herbal_pouch, quicksilver), draw count (swift_boots, blood_price) to resolver (combo_ring relic removed in v2)
 - `turnManager.ts` — Delegates turn-start effects (iron_buckler: +3 block/turn), damage-taken effects (steel_skin, thorned_vest, glass_cannon, iron_resolve), lethal saves (last_breath, phoenix_feather), turn-end effects (fortress_wall, afterimage, blood_pact, blood_price), and perfect-turn bonuses (momentum_gem) to resolver
-- `cardEffectResolver.ts` — Per-card relic modifiers (attack bonus, strike bonus, echo power V2, chain lightning). V2 Echo: `resolveEchoBase(card, activeRelicIds, correct, playMode)` applies `ECHO.POWER_MULTIPLIER_WRONG` (0.5×) for wrong Echo Charge; `echo_lens` overrides to full power. `AdvancedResolveOptions` now accepts `correct?: boolean` and `playMode?: PlayMode` for Echo resolution.
+- `cardEffectResolver.ts` — Per-card relic modifiers (attack bonus, strike bonus, chain lightning). Echo resolution functions removed. `AdvancedResolveOptions` accepts `correct?: boolean`, `playMode?: PlayMode`, and `inscriptionFuryBonus?: number` (Inscription of Fury flat damage at step 3 of damage pipeline). Cursed multipliers applied here: 0.7× QP, 0.5× CW, 1.0× CC on cards with cursed facts.
 - `gameFlowController.ts` — Relic acquisition flow after encounters, relic reward routing, slot cap enforcement, swap flow trigger
 - `playerData.ts` — `awardMasteryCoin()`, `spendMasteryCoins()`, `unlockRelic()`, `toggleRelicExclusion()`
 - `saveService.ts` — Backward-compatible migration: retroactive mastery coins from Tier 3 facts
@@ -484,10 +497,19 @@ These components exist in the codebase as dead code, removed from all active scr
 
 | Component | File | Reason Archived |
 |-----------|------|----------------|
-| Combo Counter | `src/ui/components/ComboCounter.svelte` | File retained and repurposed (AR-116) — renders chain-only display at bottom-left. Combo multiplier logic fully removed; only chain length + multiplier display remains. |
+| Combo Counter | `src/ui/components/ComboCounter.svelte` | Removed in expansion. Replaced by `ChainCounter.svelte`. Combo multiplier, combo counter, combo heal all deleted. |
 | Archetype Selection | `src/ui/components/ArchetypeSelection.svelte` | Archetype selection removed from run start flow; all players start equal |
 | Starter Relic Selection | `src/ui/components/StarterRelicSelection.svelte` | Starter relic selection removed; no `starterRelicSelection` screen state in v2 |
 | Retreat Or Delve | `src/ui/components/RetreatOrDelve.svelte` | Retreat-or-delve decision node removed; 3-act linear run with no exit ramps |
+
+### Expansion-Archived Systems (Removed in Expansion)
+
+| System | What Was Removed | Reason |
+|--------|-----------------|--------|
+| Echo system | `ECHO.*` constants, echo card spawning, echo visual state (`echo-shimmer`), Charge-only restriction on echo cards, `echo_lens` relic, `phantom_limb` relic | Exploitable as free deck thinning; anti-learning (removed cards needing practice). Replaced by Cursed Card system. |
+| Combo system | `COMBO_MULTIPLIERS`, `COMBO_HEAL_*`, `COMBO_DECAY_*`, `comboCount` tracking in `cardEffectResolver.ts`, `turnManager.ts`, `deckManager.ts`, `balance.ts`, `ComboCounter.svelte`, `comboDisplay.ts` | Chains are the only streak mechanic. Combo system added complexity without meaningful player expression. |
+| `echo-mechanic-v2.test.ts` | Test file for old Echo system | Echo system removed |
+| `Combo Ring` relic | `combo_ring` relic | Combo system removed |
 
 ### v2-Archived Services
 
@@ -631,7 +653,7 @@ src/
                            CombatParticleSystem.ts, CombatAtmosphereSystem.ts, StatusEffectVisualSystem.ts, ...
     entities/              Player, Boss, Creature
   services/
-    encounterBridge.ts     — Wires flow → deck → enemy → turns → display (async startEncounterForRoom with factsDB init guard). V2: fixed 10-card starter deck; categoryL2 concentration (5–8 categories); removed archetype-based pool building. Applies post-encounter healing (with boss/mini-boss bonus) and early mini-boss HP reduction. V2 Echo: `handlePlayCard` accepts `playMode: PlayMode = 'charge'`; `maybeGenerateEcho(card, wasCorrect, playMode)` spawns Echo only on wrong Charge; `createEchoCardFrom` stores full base power at spawn (no pre-bake); correct Echo Charge calls `applyEchoStabilityBonus` with `ECHO.FSRS_STABILITY_BONUS_CORRECT_V2 (6.0)` and removes fact from `echoFactIds`; wrong Echo Charge calls `exhaustCard`.
+    encounterBridge.ts     — Wires flow → deck → enemy → turns → display (async startEncounterForRoom with factsDB init guard). V2: fixed 10-card starter deck; categoryL2 concentration (5–8 categories); removed archetype-based pool building. Applies post-encounter healing (with boss/mini-boss bonus) and early mini-boss HP reduction. Echo system fully removed. Expansion: Inscription detection on card play (moves card from discard to exhaust, marks `isRemovedFromGame`; Wisdom CW skips registration); Fury bonus passed into `AdvancedResolveOptions`; Wisdom CC trigger (draw 1 + optional heal 1 HP); `activeInscriptions` preserved in `freshTurnState`; cursed-card detection on wrong Charge (mastery-0 → add factId to `runState.cursedFactIds`).
     discoverySystem.ts     — V2 Free First Charge: `isFirstChargeFree(factId, freeChargeIds)`, `markFirstChargeUsed(factId, freeChargeIds)`, `getFirstChargeWrongMultiplier()`. Pure functions with no side effects. First Charge of any fact in a run is free (0 AP surcharge, 1.0× wrong multiplier).
     gameFlowController.ts  — Screen routing + run lifecycle. V2: 3-act flow; no retreat-or-delve; no archetype selection; no starter relic selection; routes directly to 'dungeonMap' at run start.
     surgeSystem.ts         — V2 Surge turn timing: turns 2, 5, 8, … (every 3rd starting from turn 2). `isSurgeTurn(n)`, `getSurgeMultiplier()`. Surge doubles all Charge multipliers. Visually signaled one turn in advance.
@@ -668,7 +690,10 @@ src-tauri/               — Tauri v2 desktop wrapper scaffold (Rust not yet com
       CardCombatOverlay.svelte  — Bottom 45% interaction zone, enemy intent panel, enemy name header (color-coded by category), floor info, bounty strip (bottom-right above End Turn), end turn button with gold pulse, discard pile counter, 5-phase card animation orchestration (reveal→swoosh→impact→discard) with per-archetype SFX via setTimeout chains and animatingCards buffer pattern. AR-113: card hand at bottom: 2vh; draw/discard piles repositioned alongside card tops (200px offset); Charge button matches selected card width with no lightning icon ("CHARGE +1 AP" text); camp background stretches to 100vw with translateX centering; reward room cards clickable via container.setSize fix; RewardCardDetail uses V2 frame rendering. AR-116: relic sell disabled during combat (info-only tooltip); AP orb at bottom: 35vh; enemy intent padding increased; damage popup uses mastery + charge values; discard pile dashed 3px border when empty.
       CardHand.svelte           — Fanned arc hand (30° spread, 20px arc offset), hand-crafted PNG card frame images (mechanic-themed), card description text overlay (grey=base, green=buffed, red=debuffed), AP cost gemstone badge, green glow on playable cards, tap-to-select + tap/swipe-to-cast, touch drag with scale transform, animatingCards buffer rendering for smooth animation decoupling, cardback preloading, reduced-motion support. AR-59.23: CHARGE button shows "FREE" for facts not yet Charged this run (checks `isFirstChargeFree()` per card); golden styling for the "FREE" state; "MASTERED" label in parchment area for Tier 3 cards. AR-113: mastery icon bobs at L1+; stat values flash green/red on mastery change; "Upgraded!"/"Downgraded!" popup; card descriptions render base+bonus format with green bonus text. AR-116: charge preview uses 1.5× + mastery bonus; old upgrade border removed; AP cost font uses 2px stroke + stronger shadows.
       CardExpanded.svelte       — Quiz panel positioned above card hand (fixed, bottom: calc(45vh - 20px)), no overlap with hand
-      ComboCounter.svelte       — Chain-only display (AR-116): combo multiplier removed; shows chain length + multiplier at bottom-left in chain color, format "Chain: X.x"
+      ChainCounter.svelte       — Chain-only display (expansion): replaced ComboCounter.svelte. Shows chain length + multiplier at bottom-left in chain type color, format "Chain: X.x". Combo multiplier, combo counter, and combo heal fully removed.
+      CardBrowser.svelte        — NEW (AR-204): shared mid-combat card list overlay for Tutor, Mimic, Scavenge, Siphon Knowledge
+      MultiChoicePopup.svelte   — NEW (AR-204): generic 2–4 option choice modal for Unstable Flux CC and Phase Shift QP
+      ExhaustPileViewer.svelte  — NEW (AR-204): thin CardBrowser wrapper showing exhausted cards including Inscriptions
       DamageNumber.svelte       — Floating damage numbers
       DomainSelection.svelte    — Run-start domain picker (legacy, replaced by StudyModeSelector for run setup)
       StarterRelicSelection.svelte — ARCHIVED (AR-59.12 removed starter relic selection; file retained as dead code)
