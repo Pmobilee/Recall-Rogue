@@ -2,7 +2,7 @@
 description: "Triage playtest reports: deduplicate, score, and rank issues on a leaderboard"
 ---
 
-# Playtest Triage
+# Issue Triage
 
 This is a read-only analysis skill. It produces findings; implementation work from those findings requires a separate AR doc — see `.claude/skills/work-tracking/SKILL.md`.
 
@@ -10,7 +10,7 @@ Review all analysis reports, deduplicate issues, score them, and maintain a rank
 
 ## Data Sources
 
-Reports come from `/playtest-analyze`, which reads headless sim output from `data/playtests/runs/` and writes structured reports to `data/playtests/reports/report-*.json`.
+Reports come from `/sim-report`, which reads headless sim output from `data/playtests/runs/` and writes structured reports to `data/playtests/reports/report-*.json`.
 
 The triage skill reads from `data/playtests/reports/report-*.json` and writes to `data/playtests/leaderboard.json`.
 

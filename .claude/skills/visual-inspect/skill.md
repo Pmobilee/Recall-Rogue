@@ -2,6 +2,7 @@
 name: visual-inspect
 description: Instantly jump to any game state for visual inspection using Playwright + __terraScenario. Use for ALL visual testing, UI verification, screenshot capture, and playtest scenarios. Replaces manual navigation entirely.
 user_invocable: true
+model: sonnet
 ---
 
 # Visual Inspect -- Instant Game State Viewer

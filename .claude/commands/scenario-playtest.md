@@ -1,8 +1,8 @@
-# Visual Playthrough — Recall Rogue
+# Scenario Playtest — Recall Rogue
 
 Conduct visual playtesting of Recall Rogue using AI agents as alpha testers. Agents navigate the real game UI via Playwright MCP tools, play combat, answer quizzes, and report all issues found.
 
-This skill is for **visual, browser-based** testing. For headless mathematical simulations, use `/playtest` and `/playtest-suite` instead.
+This skill is for **visual, browser-based** testing. For headless mathematical simulations, use `/bot-playtest` instead.
 
 ---
 
@@ -10,15 +10,15 @@ This skill is for **visual, browser-based** testing. For headless mathematical s
 
 | Command | Scenarios | Workers | Description |
 |---------|-----------|---------|-------------|
-| `/playthrough smoke` | 01 | 1 | Quick full-run smoke test |
-| `/playthrough combat` | 03 | 1 | Deep combat mechanics test |
-| `/playthrough audit` | 02 + 07 | 2 | Hub menus + visual sprite audit |
-| `/playthrough quiz` | 08 | 1 | Quiz data quality check |
-| `/playthrough full` | 01-08 | 4 | Comprehensive test (parallel batches) |
-| `/playthrough onboarding` | 11 | 1 | First-time user experience |
-| `/playthrough edge` | 12 | 1 | Stress & edge case testing |
-| `/playthrough all` | 01-12 | 6 | Everything (parallel batches) |
-| `/playthrough {N}` | Scenario N | 1 | Run a specific scenario by number |
+| `/scenario-playtest smoke` | 01 | 1 | Quick full-run smoke test |
+| `/scenario-playtest combat` | 03 | 1 | Deep combat mechanics test |
+| `/scenario-playtest audit` | 02 + 07 | 2 | Hub menus + visual sprite audit |
+| `/scenario-playtest quiz` | 08 | 1 | Quiz data quality check |
+| `/scenario-playtest full` | 01-08 | 4 | Comprehensive test (parallel batches) |
+| `/scenario-playtest onboarding` | 11 | 1 | First-time user experience |
+| `/scenario-playtest edge` | 12 | 1 | Stress & edge case testing |
+| `/scenario-playtest all` | 01-12 | 6 | Everything (parallel batches) |
+| `/scenario-playtest {N}` | Scenario N | 1 | Run a specific scenario by number |
 
 ---
 
@@ -53,8 +53,8 @@ This skill is for **visual, browser-based** testing. For headless mathematical s
    If not running: `cd /root/terra-miner && npm run dev &` and wait 8s.
 
 3. **For each scenario**, spawn a Haiku worker (`model: "haiku"`) with:
-   - The shared protocol (read from `.claude/commands/playthrough-scenarios/00-SHARED-PROTOCOL.md`)
-   - The specific scenario (read from `.claude/commands/playthrough-scenarios/{NN}-{name}.md`)
+   - The shared protocol (read from `.claude/commands/scenario-playtest-scenarios/00-SHARED-PROTOCOL.md`)
+   - The specific scenario (read from `.claude/commands/scenario-playtest-scenarios/{NN}-{name}.md`)
    - Worker prompt template (see below)
 
 4. **Run independent scenarios in parallel** (max 4 concurrent):
@@ -227,7 +227,7 @@ Available in dev mode. Workers can use these via `browser_evaluate`:
 
 To create a new scenario:
 
-1. Create a file in `.claude/commands/playthrough-scenarios/{NN}-{name}.md`
+1. Create a file in `.claude/commands/scenario-playtest-scenarios/{NN}-{name}.md`
 2. Follow the template:
    ```
    # Scenario NN: Title
@@ -239,7 +239,7 @@ To create a new scenario:
    ## Report (output file paths)
    ```
 3. Add it to the Scenario Index in this file
-4. Test by running: `/playthrough {NN}`
+4. Test by running: `/scenario-playtest {NN}`
 
 ### Good Scenario Design Principles
 - **One focus per scenario** — don't test everything at once

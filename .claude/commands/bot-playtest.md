@@ -1,4 +1,4 @@
-# Playtest Session
+# Bot Playtest Session
 
 Run automated playtests using the Playwright bot against the REAL game in the browser. The bot plays complete runs — combat, shops, rest rooms, delve/retreat — just like a real player.
 

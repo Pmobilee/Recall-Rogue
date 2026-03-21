@@ -1,4 +1,4 @@
-# Headless Playtest — Fast Balance Simulation
+# Balance Sim — Fast Balance Simulation
 
 Run thousands of combat simulations in seconds using the headless simulator. This imports the REAL game code (turnManager, cardEffectResolver, relicEffectResolver) — zero reimplementation, zero drift.
 
