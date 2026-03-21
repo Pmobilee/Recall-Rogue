@@ -13,6 +13,7 @@ import { factsDB } from './factsDB';
 import { createCard, resetCardIdCounter } from './cardFactory';
 import { DEFAULT_POOL_SIZE } from '../data/balance';
 import { MECHANICS_BY_TYPE, type MechanicDefinition } from '../data/mechanics';
+import { getUnlockedMechanics } from './characterLevel';
 import { selectRunChainTypes } from '../data/chainTypes';
 import { assignTypesToCards } from './cardTypeAllocator';
 import { shuffled } from './randomUtils';
@@ -152,18 +153,27 @@ function weightedShuffle<T extends { _weight: number }>(items: T[], count: numbe
 
 // ── Mechanic assignment ──────────────────────────────────────────
 
-/** Pick a mechanic for the given card type, respecting maxPerPool limits. */
+/** Pick a mechanic for the given card type, respecting maxPerPool limits and unlock gating. */
 function pickMechanic(
   cardType: CardType,
   mechanicCounts: Map<string, number>,
+  unlockedMechanicIds?: Set<string>,
 ): MechanicDefinition {
-  const pool = MECHANICS_BY_TYPE[cardType];
-  const eligible = pool.filter((mechanic) => {
+  const rawPool = MECHANICS_BY_TYPE[cardType];
+  // Apply unlock filter — if no unlocked set provided, use full pool (backward compat)
+  const pool = unlockedMechanicIds
+    ? rawPool.filter(m => unlockedMechanicIds.has(m.id))
+    : rawPool;
+  // Fall back to full type pool if the filtered pool is empty (guards against
+  // misconfigured unlock tables leaving a card type with zero eligible mechanics)
+  const effectivePool = pool.length > 0 ? pool : rawPool;
+
+  const eligible = effectivePool.filter((mechanic) => {
     if (mechanic.maxPerPool <= 0) return true;
     return (mechanicCounts.get(mechanic.id) ?? 0) < mechanic.maxPerPool;
   });
 
-  const source = eligible.length > 0 ? eligible : pool;
+  const source = eligible.length > 0 ? eligible : effectivePool;
   const rng = isRunRngActive() ? getRunRng('cardtype') : null;
   const selected = source[Math.floor((rng ? rng.next() : Math.random()) * source.length)];
   mechanicCounts.set(selected.id, (mechanicCounts.get(selected.id) ?? 0) + 1);
@@ -171,10 +181,10 @@ function pickMechanic(
 }
 
 /** Assign mechanics to all cards in the pool. */
-function applyMechanics(cards: Card[]): Card[] {
+function applyMechanics(cards: Card[], unlockedMechanicIds?: Set<string>): Card[] {
   const mechanicCounts = new Map<string, number>();
   return cards.map((card) => {
-    const mechanic = pickMechanic(card.cardType, mechanicCounts);
+    const mechanic = pickMechanic(card.cardType, mechanicCounts, unlockedMechanicIds);
     return {
       ...card,
       mechanicId: mechanic.id,
@@ -273,6 +283,8 @@ export function buildPresetRunPool(
     categoryFilters?: Record<string, string[]>;
     funnessBoostFactor?: number;
     includeOutsideDueReviews?: boolean;
+    /** Character level for mechanic unlock gating. Defaults to 0 (all existing mechanics). */
+    characterLevel?: number;
   },
 ): Card[] {
   const poolSize = options?.poolSize ?? DEFAULT_POOL_SIZE;
@@ -410,7 +422,8 @@ export function buildPresetRunPool(
   // ── Step 6: Assign types and mechanics ──
 
   pool = assignTypesToCards(pool);
-  pool = applyMechanics(pool);
+  const unlockedMechanicIds = getUnlockedMechanics(options?.characterLevel ?? 0);
+  pool = applyMechanics(pool, unlockedMechanicIds);
 
   // Assign chain types evenly across the pool using 3 run-specific types
   // Using 3 types instead of 6 increases chain frequency from ~15% to ~50% of hands

@@ -136,6 +136,10 @@ function cardTierToRarity(tier: string): string {
  * Prices shop cards based on their tier (mapped to rarity) and floor.
  * Uses v2 rarity-based pricing (AR-59.15): Common 50g, Uncommon 80g, Rare 140g.
  *
+ * Note: mechanic unlock filtering is applied upstream in buildRunPool() / buildPresetRunPool().
+ * Shop cards are drawn from the run pool via generateCardRewardOptionsByType(), so they already
+ * contain only level-appropriate mechanics. No independent filter is needed here.
+ *
  * @param cards - Card options to price.
  * @param floor - Current floor number (affects pricing).
  * @returns Array of purchasable card items with prices.

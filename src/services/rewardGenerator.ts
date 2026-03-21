@@ -59,6 +59,9 @@ function pickWeightedType(availableTypes: CardType[], archetype: RewardArchetype
 /**
  * Generate card reward options from the run pool.
  * Excludes cards already in the active deck, Tier 3 facts, and Echo cards.
+ *
+ * Note: mechanic unlock filtering is applied upstream in buildRunPool() / buildPresetRunPool().
+ * Cards in runPool already have only level-appropriate mechanics assigned.
  */
 export function generateCardRewardOptions(
   runPool: Card[],

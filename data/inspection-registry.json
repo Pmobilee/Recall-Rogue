@@ -3195,6 +3195,20 @@
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": ""
+      },
+      {
+        "id": "card-unlock-gating",
+        "name": "Card Unlock Gating",
+        "category": "system",
+        "description": "Character-level-based mechanic unlock schedule. Cards are gated by level, unlocking in cohorts from level 0 (36 mechanics) to level 13 (92 mechanics). All 31 existing mechanics are at level 0 for backward compatibility. Filter applied in buildRunPool/buildPresetRunPool.",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "mechanicInspectionDate": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": "No UI in AR-205. Locked card display UI belongs to AR-209."
       }
     ],
     "mysteryEvents": [

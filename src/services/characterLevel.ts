@@ -1,3 +1,67 @@
+// === Card Mechanic Unlock Schedule ===
+// Maps character level -> mechanic IDs first unlocked at that level.
+// Level 0 = all 31 existing mechanics (backward compatible) plus 5 new basics from AR-206 Phase 1.
+// Each subsequent level adds a cohort of new mechanics.
+// The mechanic IDs here are the canonical IDs used in MechanicDefinition.id — they MUST match exactly.
+
+const MECHANIC_UNLOCK_SCHEDULE: Map<number, string[]> = new Map([
+  [0, [
+    // All 31 existing mechanics (backward compatible — unlockLevel: 0 in mechanics.ts)
+    'strike', 'multi_hit', 'heavy_strike', 'piercing', 'reckless', 'execute', 'lifetap',
+    'block', 'thorns', 'emergency', 'fortify', 'brace', 'overheal', 'parry',
+    'empower', 'quicken', 'focus', 'double_strike',
+    'weaken', 'expose', 'hex', 'slow',
+    'cleanse', 'scout', 'recycle', 'foresight', 'transmute', 'immunity',
+    'mirror', 'adapt', 'overclock',
+    // 5 new basics from AR-206 Phase 1 (available from first run)
+    'power_strike', 'iron_wave', 'reinforce', 'inscription_of_fury', 'inscription_of_iron',
+  ]],
+  [1,  ['bash', 'guard', 'sap', 'inscription_of_wisdom']],
+  [2,  ['twin_strike', 'shrug_it_off', 'swap']],
+  [3,  ['stagger', 'sift', 'riposte']],
+  [4,  ['rupture', 'lacerate', 'scavenge', 'absorb', 'precision_strike']],
+  [5,  ['kindle', 'ignite', 'corrode', 'overcharge', 'archive']],
+  [6,  ['gambit', 'curse_of_doubt', 'knowledge_ward', 'aegis_pulse', 'reflex', 'unstable_flux', 'chameleon']],
+  [7,  ['burnout_shield', 'battle_trance', 'volatile_slash', 'corroding_touch', 'phase_shift']],
+  [8,  ['ironhide', 'war_drum', 'chain_lightning', 'dark_knowledge', 'mark_of_ignorance', 'sacrifice']],
+  [9,  ['smite', 'entropy', 'bulwark', 'conversion', 'chain_anchor']],
+  [10, ['feedback_loop', 'frenzy', 'aftershock', 'synapse', 'catalyst']],
+  [11, ['recall', 'mastery_surge', 'tutor', 'mimic', 'siphon_strike']],
+  [12, ['eruption']],
+  [13, ['knowledge_bomb', 'siphon_knowledge']],
+]);
+
+/**
+ * Returns all mechanic IDs available at the given character level.
+ * Includes all mechanics unlocked at levels 0 through `level` (inclusive).
+ *
+ * @param level - The player's current character level (0-25).
+ * @returns Set of mechanic IDs available for pool/reward/shop use.
+ */
+export function getUnlockedMechanics(level: number): Set<string> {
+  const unlocked = new Set<string>();
+  for (const [unlockLevel, ids] of MECHANIC_UNLOCK_SCHEDULE) {
+    if (unlockLevel <= level) {
+      for (const id of ids) unlocked.add(id);
+    }
+  }
+  return unlocked;
+}
+
+/**
+ * Returns the character level at which a specific mechanic first unlocks.
+ * Returns 0 for all existing mechanics. Returns null if the mechanic ID is not in the schedule.
+ *
+ * @param mechanicId - The mechanic ID to look up.
+ * @returns The unlock level (0-13), or null if not found.
+ */
+export function getMechanicUnlockLevel(mechanicId: string): number | null {
+  for (const [level, ids] of MECHANIC_UNLOCK_SCHEDULE) {
+    if (ids.includes(mechanicId)) return level;
+  }
+  return null;
+}
+
 // === Character Leveling System ===
 // XP-based progression with 25 levels. Relics unlock at specific levels.
 // NO Phaser, Svelte, or DOM imports.

@@ -1416,6 +1416,41 @@ Players accumulate XP across all runs. XP feeds a permanent account level (1–2
 
 18 relics are distributed across levels 1–24. Levels without relics award dust (200–1000).
 
+### 13c-ii. Card Mechanic Unlock Gating (AR-205)
+
+**Service:** `src/services/characterLevel.ts` — `MECHANIC_UNLOCK_SCHEDULE`, `getUnlockedMechanics(level)`, `getMechanicUnlockLevel(id)`
+**Filter applied in:** `src/services/runPoolBuilder.ts` (`applyMechanics`), `src/services/presetPoolBuilder.ts` (`applyMechanics`)
+
+Card mechanics are gated by character level. New mechanics added in AR-206/207/208 do not appear in the run pool, reward pool, or shop until the player reaches the required character level. This creates a meaningful progression curve: new players learn the game's basic mechanics first; advanced archetypes unlock after sustained play.
+
+**Unlock schedule:**
+
+| Level | Count at Level | Cumulative | Notes |
+|-------|---------------|------------|-------|
+| 0 | 36 | 36 | All 31 existing mechanics + 5 new basics from AR-206 (power_strike, iron_wave, reinforce, inscription_of_fury, inscription_of_iron) |
+| 1 | 4 | 40 | bash, guard, sap, inscription_of_wisdom |
+| 2 | 3 | 43 | twin_strike, shrug_it_off, swap |
+| 3 | 3 | 46 | stagger, sift, riposte |
+| 4 | 5 | 51 | rupture, lacerate, scavenge, absorb, precision_strike |
+| 5 | 5 | 56 | kindle, ignite, corrode, overcharge, archive |
+| 6 | 7 | 63 | gambit, curse_of_doubt, knowledge_ward, aegis_pulse, reflex, unstable_flux, chameleon |
+| 7 | 5 | 68 | burnout_shield, battle_trance, volatile_slash, corroding_touch, phase_shift |
+| 8 | 6 | 74 | ironhide, war_drum, chain_lightning, dark_knowledge, mark_of_ignorance, sacrifice |
+| 9 | 5 | 79 | smite, entropy, bulwark, conversion, chain_anchor |
+| 10 | 5 | 84 | feedback_loop, frenzy, aftershock, synapse, catalyst |
+| 11 | 5 | 89 | recall, mastery_surge, tutor, mimic, siphon_strike |
+| 12 | 1 | 90 | eruption |
+| 13 | 2 | 92 | knowledge_bomb, siphon_knowledge |
+| 14–25 | 0 | 92 | No new mechanics above level 13 |
+
+**Backward compatibility:** All 31 existing mechanics have `unlockLevel: 0` in `MechanicDefinition`. The filter is a no-op for existing content at any level.
+
+**Filter contract:** Unlock filtering is applied once per run at pool build time in `buildRunPool()` / `buildPresetRunPool()`. Cards in the run pool always have level-appropriate mechanics. Reward and shop screens use the same run pool so no independent filter is required there.
+
+**Empty-pool fallback:** If a card type has zero unlocked mechanics at the player's level (possible with misconfigured tables), `pickMechanic()` falls back to the full type pool rather than crashing.
+
+**No UI in AR-205:** The "locked card" UI (greyed-out cards in selection screens) belongs to AR-209. AR-205 is pure data + filter logic.
+
 ### 13d. Camp Upgrade System (AR-111)
 
 The **Camp** is the persistent home base shown between runs. Players spend **Dust** (the meta-progression currency) to upgrade camp elements, which visually evolve the camp and may provide passive bonuses.

@@ -5,6 +5,7 @@ import { factsDB } from './factsDB';
 import { createCard, resetCardIdCounter } from './cardFactory';
 import { DEFAULT_POOL_SIZE, POOL_PRIMARY_PCT, POOL_SECONDARY_PCT, POOL_SUBCATEGORY_MAX_PCT } from '../data/balance';
 import { MECHANICS_BY_TYPE, type MechanicDefinition } from '../data/mechanics';
+import { getUnlockedMechanics } from './characterLevel';
 import { selectRunChainTypes } from '../data/chainTypes';
 import { assignTypesToCards } from './cardTypeAllocator';
 import { shuffled } from './randomUtils';
@@ -212,14 +213,23 @@ function buildProbeOrdering(cards: Card[], domain: FactDomain): Card[] {
 function pickMechanic(
   cardType: CardType,
   mechanicCounts: Map<string, number>,
+  unlockedMechanicIds?: Set<string>,
 ): MechanicDefinition {
-  const pool = MECHANICS_BY_TYPE[cardType];
-  const eligible = pool.filter((mechanic) => {
+  const rawPool = MECHANICS_BY_TYPE[cardType];
+  // Apply unlock filter — if no unlocked set provided, use full pool (backward compat)
+  const pool = unlockedMechanicIds
+    ? rawPool.filter(m => unlockedMechanicIds.has(m.id))
+    : rawPool;
+  // Fall back to full type pool if the filtered pool is empty (guards against
+  // misconfigured unlock tables leaving a card type with zero eligible mechanics)
+  const effectivePool = pool.length > 0 ? pool : rawPool;
+
+  const eligible = effectivePool.filter((mechanic) => {
     if (mechanic.maxPerPool <= 0) return true;
     return (mechanicCounts.get(mechanic.id) ?? 0) < mechanic.maxPerPool;
   });
 
-  const source = eligible.length > 0 ? eligible : pool;
+  const source = eligible.length > 0 ? eligible : effectivePool;
 
   // Weight basic mechanics (strike, block) at 60% of their type pool
   const BASIC_MECHANICS: Record<string, string> = {
@@ -245,10 +255,10 @@ function pickMechanic(
   return selected;
 }
 
-function applyMechanics(cards: Card[]): Card[] {
+function applyMechanics(cards: Card[], unlockedMechanicIds?: Set<string>): Card[] {
   const mechanicCounts = new Map<string, number>();
   return cards.map((card) => {
-    const mechanic = pickMechanic(card.cardType, mechanicCounts);
+    const mechanic = pickMechanic(card.cardType, mechanicCounts, unlockedMechanicIds);
     return {
       ...card,
       mechanicId: mechanic.id,
@@ -294,6 +304,8 @@ export function buildRunPool(
     primaryDistribution?: DifficultyDistribution
     secondaryDistribution?: DifficultyDistribution
     funnessBoostFactor?: number
+    /** Character level for mechanic unlock gating. Defaults to 0 (all existing mechanics). */
+    characterLevel?: number
   },
 ): Card[] {
   const poolSize = options?.poolSize ?? DEFAULT_POOL_SIZE;
@@ -467,7 +479,8 @@ export function buildRunPool(
   pool = pool.slice(0, poolSize);
   pool = pool.filter((card) => card.tier !== '3');
   pool = assignTypesToCards(pool);
-  pool = applyMechanics(pool);
+  const unlockedMechanicIds = getUnlockedMechanics(options?.characterLevel ?? 0);
+  pool = applyMechanics(pool, unlockedMechanicIds);
 
   // === Chain Type Assignment (AR-70) ===
   // Assign one of 6 chain types evenly across the pool.

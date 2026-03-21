@@ -174,10 +174,12 @@ node -e "const r=JSON.parse(require('fs').readFileSync('data/inspection-registry
 
 **After EVERY sub-agent returns from a visual/UI/CSS task, the orchestrator MUST visually inspect the result BEFORE committing.** This is non-negotiable. On 2026-03-21, skipping this step caused 10+ visual regressions to ship (duplicate HP text, moved buttons, bloated bars, clutter labels). The user caught it, not the agent.
 
-- ALWAYS use `mcp__playwright__browser_take_screenshot` (the MCP tool). NEVER use `page.screenshot()` via `browser_run_code` — Phaser's RAF loop blocks it permanently
+- ALWAYS use `browser_evaluate(() => window.__terraScreenshot())` to take screenshots — this captures both the Phaser canvas AND DOM overlays as a composited base64 PNG, bypassing Playwright's animation-wait entirely
+- **NEVER use `mcp__playwright__browser_take_screenshot`** — Phaser's continuous `requestAnimationFrame` loop blocks Playwright's animation-wait logic, causing a permanent 30s timeout
+- **NEVER use `page.screenshot()` via `browser_run_code`** — same RAF blocking issue
 - **NEVER use `page.context().newCDPSession()`** — it HANGS permanently and blocks the session
-- If `browser_take_screenshot` times out: use `browser_snapshot` instead — it ALWAYS works
-- If neither screenshot nor snapshot works, TELL THE USER you couldn't verify and ask them to check
+- `mcp__playwright__browser_snapshot` (DOM snapshot) is still valid as a supplementary tool for DOM state
+- If `__terraScreenshot()` fails or is unavailable, TELL THE USER you couldn't verify and ask them to check
 - Sub-agents making CSS/layout changes are the HIGHEST RISK — always verify their output
 - **Never batch-commit multiple visual agent results without inspecting each one**
 
@@ -204,10 +206,13 @@ await page.evaluate(() => document.documentElement.setAttribute('data-pw-animati
 **Full scenario list:** `window.__terraScenario.list()` or see `src/dev/scenarioSimulator.ts`
 
 **Screenshot method — CRITICAL:**
-- **ALWAYS** use the MCP tool `mcp__playwright__browser_take_screenshot` — it handles Phaser's RAF loop correctly
-- **NEVER** use `page.screenshot()` via `browser_run_code` — Phaser's continuous `requestAnimationFrame` loop blocks Playwright's animation-wait logic, causing permanent timeout regardless of timeout value
+- **ALWAYS** use `browser_evaluate(() => window.__terraScreenshot())` to take screenshots — this captures both the Phaser canvas AND DOM overlays as a composited base64 PNG, bypassing Playwright's animation-wait entirely
+- **NEVER** use `mcp__playwright__browser_take_screenshot` — Phaser's continuous `requestAnimationFrame` loop blocks Playwright's animation-wait logic, causing a permanent 30s timeout
+- **NEVER** use `page.screenshot()` via `browser_run_code` — same RAF blocking issue
 - **NEVER** use `page.context().newCDPSession()` — it hangs permanently and blocks the entire session
-- If `browser_take_screenshot` fails, fall back to `browser_snapshot` (DOM snapshot) — it ALWAYS works
+- `mcp__playwright__browser_snapshot` (DOM snapshot) is still valid as a supplementary tool for DOM state
+- The `__terraScreenshot()` function (defined in `src/dev/screenshotHelper.ts`) composites the Phaser WebGL canvas + Svelte DOM overlays via SVG foreignObject, returning a full-page data URL
+- To save to file: `const dataUrl = await page.evaluate(() => window.__terraScreenshot()); fs.writeFileSync('shot.png', Buffer.from(dataUrl.split(',')[1], 'base64'));`
 
 ### 1. MCP Playwright (interactive — use during development)
 - Use `mcp__playwright__browser_navigate`, `mcp__playwright__browser_snapshot`, `mcp__playwright__browser_take_screenshot` etc.
