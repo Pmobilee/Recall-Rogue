@@ -1,7 +1,7 @@
 <script lang="ts">
   import { playerSave } from '../stores/playerData'
   import { daysSinceLastLogin } from '../../data/loginRewards'
-  import { BALANCE } from '../../data/balance'
+
 
   interface Props {
     onDismiss: () => void
@@ -11,7 +11,7 @@
 
   const save = $derived($playerSave)
   const daysAway = $derived(save ? daysSinceLastLogin(save) : 0)
-  const qualifies = $derived(daysAway >= BALANCE.COMEBACK_BONUS_THRESHOLD_DAYS)
+  const qualifies = $derived(daysAway >= 3)
 
   const gaiaMessage = $derived.by(() => {
     if (daysAway >= 30) return "You returned. That's what matters. Everything is here, waiting. Let's go."
@@ -29,7 +29,7 @@
       <div class="comeback-rewards">
         <div class="reward-item">
           <span class="reward-icon">[O2]</span>
-          <span class="reward-text">+{BALANCE.COMEBACK_OXYGEN_BONUS} bonus oxygen tank</span>
+          <span class="reward-text">Bonus rewards on your first run back!</span>
         </div>
         <div class="reward-item">
           <span class="reward-icon">[*]</span>

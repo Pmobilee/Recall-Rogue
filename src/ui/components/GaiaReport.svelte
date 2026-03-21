@@ -61,7 +61,7 @@
     return total > 0 ? Math.round(100 * save.stats.totalQuizCorrect / total) : 0
   })
   const totalDives = $derived(save?.stats.totalDivesCompleted ?? 0)
-  const deepestLayer = $derived(save?.stats.deepestLayerReached ?? 0)
+  const deepestLayer = $derived(save?.stats.bestFloor ?? 0)
   const streak = $derived(save?.stats.currentStreak ?? 0)
 
   const createdDate = $derived((): string => {
@@ -130,9 +130,9 @@
     const thisWeekMastered = save.reviewStates.filter(rs => {
       return getMasteryLevel(rs) === 'mastered' && rs.lastReviewAt > weekAgo
     }).length
-    const depthMsg = save.stats.deepestLayerReached >= 10
-      ? `You've reached the mid-depths — the rarest minerals await below.`
-      : `Keep diving to unlock deeper biomes and rarer relics.`
+    const depthMsg = save.stats.bestFloor >= 10
+      ? `You've reached the mid-depths — tougher enemies and rarer relics await.`
+      : `Keep delving to unlock deeper floors and rarer relics.`
     return `This week you learned ${thisWeekLearned} new fact${thisWeekLearned !== 1 ? 's' : ''} and mastered ${thisWeekMastered}. ${depthMsg}`
   })
 

@@ -25,11 +25,10 @@ export const DEFAULT_ARCHETYPE_DATA: ArchetypeData = {
 interface SaveForArchetype {
   stats: {
     totalDivesCompleted: number
-    deepestLayerReached: number
+    bestFloor: number
     totalFactsLearned: number
     currentStreak: number
   }
-  fossils: Record<string, unknown>
 }
 
 interface ArchetypeMetrics {
@@ -46,10 +45,9 @@ function computeMetrics(save: SaveForArchetype): ArchetypeMetrics {
     return { avgDepthScore: 0, studyRatioScore: 0, collectionRateScore: 0, divesPerWeekScore: 0, activeDays: 0 }
   }
 
-  const avgDepthScore = Math.min(save.stats.deepestLayerReached / 20, 1.0)
+  const avgDepthScore = Math.min(save.stats.bestFloor / 20, 1.0)
   const studyRatioScore = Math.min(save.stats.totalFactsLearned / (totalDives * 3), 1.0)
-  const totalArtifacts = save.stats.totalFactsLearned + Object.keys(save.fossils).length
-  const collectionRateScore = Math.min(totalArtifacts / (totalDives * 3), 1.0)
+  const collectionRateScore = Math.min(save.stats.totalFactsLearned / (totalDives * 3), 1.0)
   const weeklyRate = totalDives / Math.max(save.stats.currentStreak, 1) * 7
   const divesPerWeekScore = Math.min(weeklyRate / 14, 1.0)
   const activeDays = Math.min(save.stats.currentStreak, 7)

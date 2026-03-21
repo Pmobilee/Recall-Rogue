@@ -1,6 +1,5 @@
 import type { PlayerSave, PendingArtifact, ReviewState, HubSaveState, FloorUpgradeTier } from '../data/types'
 import type { Screen } from '../ui/stores/gameState'
-import { BALANCE } from '../data/balance'
 import { createReviewState } from '../services/sm2'
 import { SAVE_VERSION } from '../services/saveService'
 import { createDefaultInterestConfig } from '../data/interestConfig'
@@ -17,20 +16,6 @@ function defaultHubSaveState(): HubSaveState {
     lastBriefingDate: null,
   }
 }
-
-/** Minimal fossil species data inlined from archived fossils.ts (preset use only) */
-const FOSSIL_SPECIES = [
-  { id: 'trilobite', name: 'Trilobite', fragmentsNeeded: 3 },
-  { id: 'ammonite', name: 'Ammonite', fragmentsNeeded: 3 },
-  { id: 'raptor', name: 'Velociraptor', fragmentsNeeded: 5 },
-  { id: 'mammoth', name: 'Woolly Mammoth', fragmentsNeeded: 5 },
-  { id: 'megalodon', name: 'Megalodon', fragmentsNeeded: 6 },
-  { id: 'pteranodon', name: 'Pteranodon', fragmentsNeeded: 6 },
-  { id: 'trex', name: 'Tyrannosaurus Rex', fragmentsNeeded: 8 },
-  { id: 'dodo', name: 'Dodo', fragmentsNeeded: 4 },
-  { id: 'sabertooth', name: 'Saber-toothed Cat', fragmentsNeeded: 5 },
-  { id: 'archaeopteryx', name: 'Archaeopteryx', fragmentsNeeded: 7 },
-]
 
 // ============================================================
 // SCENARIO PRESET TYPES
@@ -77,7 +62,7 @@ export function BASE_SAVE(now: number): PlayerSave {
     domainRunCounts: {},
 
     // Resources
-    oxygen: BALANCE.STARTING_OXYGEN_TANKS,
+    oxygen: 3, // legacy mining field
     minerals: {
       dust: 0,
       shard: 0,
@@ -94,9 +79,8 @@ export function BASE_SAVE(now: number): PlayerSave {
 
     // Stats
     stats: {
-      totalBlocksMined: 0,
       totalDivesCompleted: 0,
-      deepestLayerReached: 0,
+      bestFloor: 0,
       totalFactsLearned: 0,
       totalFactsSold: 0,
       totalQuizCorrect: 0,
@@ -108,7 +92,7 @@ export function BASE_SAVE(now: number): PlayerSave {
     },
 
     // Streak tracking
-    lastDiveDate: undefined,
+    lastPlayDate: undefined,
 
     // Data Discs
     unlockedDiscs: [],
@@ -129,12 +113,6 @@ export function BASE_SAVE(now: number): PlayerSave {
     purchasedDeals: [],
     lastDealDate: undefined,
 
-    // Fossil collection
-    fossils: {},
-
-    // Companion
-    activeCompanion: null,
-
     // Review Rituals
     lastMorningReview: undefined,
     lastEveningReview: undefined,
@@ -145,12 +123,6 @@ export function BASE_SAVE(now: number): PlayerSave {
 
     // Dome Expansion
     unlockedRooms: ['command'],
-
-    // Farm
-    farm: {
-      slots: [null, null, null],
-      maxSlots: 3,
-    },
 
     // Premium Materials
     premiumMaterials: {},
@@ -175,9 +147,8 @@ export function BASE_SAVE(now: number): PlayerSave {
     hasCompletedInitialStudy: false,
     selectedInterests: [],
     interestWeights: {},
-    diveCount: 0,
+    runCount: 0,
     tutorialStep: 0,
-    activeFossil: null,
     studySessionsCompleted: 0,
     newCardsStudiedToday: 0,
 
@@ -267,9 +238,8 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         minerals: { dust: 180, shard: 2, crystal: 0, geode: 0, essence: 0 },
         unlockedRooms: ['command', 'lab'],
         stats: {
-          totalBlocksMined: 120,
           totalDivesCompleted: 1,
-          deepestLayerReached: 3,
+          bestFloor: 3,
           totalFactsLearned: 5,
           totalFactsSold: 0,
           totalQuizCorrect: 8,
@@ -284,15 +254,14 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
   },
 
   // ----------------------------------------------------------
-  // 3. FIRST PET — trilobite revived as first companion
+  // 3. EARLY GAME — early run progress
   // ----------------------------------------------------------
   {
     id: 'first_pet',
-    label: 'First Pet',
-    description: 'First fossil species (trilobite) revived. 10 facts, 600 dust, 15 shards, companion active.',
+    label: 'Early Game',
+    description: '10 facts learned, 600 dust, 15 shards, workshop unlocked.',
     buildSave(now) {
       const { learnedFacts, reviewStates } = makeLearnedFacts(10)
-      const trilobiteSpecies = FOSSIL_SPECIES.find(s => s.id === 'trilobite')!
       return {
         ...BASE_SAVE(now),
         learnedFacts,
@@ -300,20 +269,9 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         minerals: { dust: 600, shard: 15, crystal: 0, geode: 0, essence: 0 },
         unlockedRooms: ['command', 'lab', 'workshop'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
-        fossils: {
-          trilobite: {
-            speciesId: 'trilobite',
-            fragmentsFound: trilobiteSpecies.fragmentsNeeded,
-            fragmentsNeeded: trilobiteSpecies.fragmentsNeeded,
-            revived: true,
-            revivedAt: now - 3600_000,
-          },
-        },
-        activeCompanion: 'trilobite',
         stats: {
-          totalBlocksMined: 450,
           totalDivesCompleted: 5,
-          deepestLayerReached: 6,
+          bestFloor: 6,
           totalFactsLearned: 10,
           totalFactsSold: 0,
           totalQuizCorrect: 22,
@@ -349,9 +307,8 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         unlockedRooms: ['command', 'lab', 'workshop', 'museum'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'study', 'workshop', 'collection'], floorTiers: { starter: 1, study: 0, workshop: 0, collection: 0 } },
         stats: {
-          totalBlocksMined: 1800,
           totalDivesCompleted: 18,
-          deepestLayerReached: 10,
+          bestFloor: 10,
           totalFactsLearned: 25,
           totalFactsSold: 2,
           totalQuizCorrect: 85,
@@ -374,7 +331,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
     description: '80 facts, 18 000 dust, all rooms unlocked, 2800 KP, titles, premium materials.',
     buildSave(now) {
       const { learnedFacts, reviewStates } = makeLearnedFacts(80, true)
-      const allRoomIds = BALANCE.DOME_ROOMS.map(r => r.id)
+      const allRoomIds = ["command", "lab", "workshop", "museum", "market", "archive"]
       return {
         ...BASE_SAVE(now),
         learnedFacts,
@@ -394,9 +351,8 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         lastStreakMilestone: 60,
         claimedMilestones: [3, 7, 14, 30, 60],
         stats: {
-          totalBlocksMined: 12_000,
           totalDivesCompleted: 95,
-          deepestLayerReached: 20,
+          bestFloor: 20,
           totalFactsLearned: 80,
           totalFactsSold: 8,
           totalQuizCorrect: 520,
@@ -411,26 +367,15 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
   },
 
   // ----------------------------------------------------------
-  // 6. FULL COLLECTION — every fossil revived, all discs, max resources
+  // 6. FULL COLLECTION — all discs collected, max resources
   // ----------------------------------------------------------
   {
     id: 'full_collection',
     label: 'Full Collection',
-    description: 'All fossils revived, 120 facts, all discs collected, max resources, cosmetics.',
+    description: '120 facts, all discs collected, max resources, cosmetics.',
     buildSave(now) {
       const { learnedFacts, reviewStates } = makeLearnedFacts(120)
-      const allRoomIds = BALANCE.DOME_ROOMS.map(r => r.id)
-
-      const fossils: PlayerSave['fossils'] = {}
-      for (const species of FOSSIL_SPECIES) {
-        fossils[species.id] = {
-          speciesId: species.id,
-          fragmentsFound: species.fragmentsNeeded,
-          fragmentsNeeded: species.fragmentsNeeded,
-          revived: true,
-          revivedAt: now - 7 * 24 * 3600_000,
-        }
-      }
+      const allRoomIds = ["command", "lab", "workshop", "museum", "market", "archive"]
 
       const discs = Array.from({ length: 12 }, (_, i) => `disc-${String(i + 1).padStart(3, '0')}`)
 
@@ -443,8 +388,6 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         unlockedRooms: allRoomIds as string[],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: [...ALL_FLOOR_IDS], floorTiers: Object.fromEntries(ALL_FLOOR_IDS.map(id => [id, 1])) },
         unlockedDiscs: discs,
-        fossils,
-        activeCompanion: 'trex',
         ownedCosmetics: ['skin_neon', 'skin_forest', 'helmet_chrome'],
         equippedCosmetic: 'skin_neon',
         premiumMaterials: {
@@ -452,15 +395,14 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
           void_crystal: 15,
           ancient_essence: 8,
         },
-        titles: ['Centurion', 'Deep Scholar', 'Fossil Hunter', 'Completionist'],
+        titles: ['Centurion', 'Deep Scholar', 'Completionist'],
         activeTitle: 'Completionist',
         streakFreezes: 3,
         lastStreakMilestone: 100,
         claimedMilestones: [3, 7, 14, 30, 60, 100],
         stats: {
-          totalBlocksMined: 40_000,
           totalDivesCompleted: 300,
-          deepestLayerReached: 20,
+          bestFloor: 20,
           totalFactsLearned: 120,
           totalFactsSold: 15,
           totalQuizCorrect: 1800,
@@ -493,9 +435,8 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         unlockedRooms: ['command', 'lab', 'workshop'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
         stats: {
-          totalBlocksMined: 3000,
           totalDivesCompleted: 32,
-          deepestLayerReached: 12,
+          bestFloor: 12,
           totalFactsLearned: 40,
           totalFactsSold: 5,
           totalQuizCorrect: 200,
@@ -518,7 +459,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
     description: '100-day streak, all milestones claimed, all rooms unlocked.',
     buildSave(now) {
       const { learnedFacts, reviewStates } = makeLearnedFacts(90)
-      const allRoomIds = BALANCE.DOME_ROOMS.map(r => r.id)
+      const allRoomIds = ["command", "lab", "workshop", "museum", "market", "archive"]
       // ISO date string for yesterday so streak is "active" but not yet completed today
       const yesterday = new Date(now - 86_400_000).toISOString().split('T')[0]
       return {
@@ -529,7 +470,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         knowledgePoints: 3200,
         unlockedRooms: allRoomIds as string[],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: [...ALL_FLOOR_IDS], floorTiers: Object.fromEntries(ALL_FLOOR_IDS.map(id => [id, 1])) },
-        lastDiveDate: yesterday,
+        lastPlayDate: yesterday,
         titles: ['Centurion', 'Deep Scholar'],
         activeTitle: 'Centurion',
         streakFreezes: 3,
@@ -537,9 +478,8 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         claimedMilestones: [3, 7, 14, 30, 60, 100],
         streakProtected: false,
         stats: {
-          totalBlocksMined: 15_000,
           totalDivesCompleted: 100,
-          deepestLayerReached: 20,
+          bestFloor: 20,
           totalFactsLearned: 90,
           totalFactsSold: 10,
           totalQuizCorrect: 700,
@@ -554,34 +494,23 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
   },
 
   // ----------------------------------------------------------
-  // 9. FIRST FOSSIL FOUND — 1 fragment found, not yet revived
+  // 9. EARLY RUN — 4 runs completed, 8 facts, small reserves
   // ----------------------------------------------------------
   {
     id: 'first_fossil_found',
-    label: 'First Fossil Found',
-    description: '1 trilobite fragment found (not yet revived), 8 facts, 350 dust.',
+    label: 'Early Run',
+    description: '4 runs completed, 8 facts, 350 dust.',
     buildSave(now) {
       const { learnedFacts, reviewStates } = makeLearnedFacts(8)
-      const trilobiteSpecies = FOSSIL_SPECIES.find(s => s.id === 'trilobite')!
       return {
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
         minerals: { dust: 350, shard: 8, crystal: 0, geode: 0, essence: 0 },
         unlockedRooms: ['command', 'lab'],
-        fossils: {
-          trilobite: {
-            speciesId: 'trilobite',
-            fragmentsFound: 1,
-            fragmentsNeeded: trilobiteSpecies.fragmentsNeeded,
-            revived: false,
-          },
-        },
-        activeCompanion: null,
         stats: {
-          totalBlocksMined: 300,
           totalDivesCompleted: 4,
-          deepestLayerReached: 5,
+          bestFloor: 5,
           totalFactsLearned: 8,
           totalFactsSold: 0,
           totalQuizCorrect: 18,
@@ -603,7 +532,6 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
     description: 'Mid-game player with active companion, 15 facts, good mineral reserves.',
     buildSave(now) {
       const { learnedFacts, reviewStates } = makeLearnedFacts(15)
-      const trilobiteSpecies = FOSSIL_SPECIES.find(s => s.id === 'trilobite')!
       return {
         ...BASE_SAVE(now),
         learnedFacts,
@@ -611,22 +539,11 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         minerals: { dust: 800, shard: 25, crystal: 3, geode: 0, essence: 0 },
         unlockedRooms: ['command', 'lab', 'workshop'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
-        fossils: {
-          trilobite: {
-            speciesId: 'trilobite',
-            fragmentsFound: trilobiteSpecies.fragmentsNeeded,
-            fragmentsNeeded: trilobiteSpecies.fragmentsNeeded,
-            revived: true,
-            revivedAt: now - 7 * 24 * 3600_000,
-          },
-        },
-        activeCompanion: 'trilobite',
         tutorialComplete: true,
-        diveCount: 8,
+        runCount: 8,
         stats: {
-          totalBlocksMined: 600,
           totalDivesCompleted: 8,
-          deepestLayerReached: 8,
+          bestFloor: 8,
           totalFactsLearned: 15,
           totalFactsSold: 0,
           totalQuizCorrect: 35,
@@ -663,11 +580,10 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         unlockedRooms: ['command', 'lab', 'workshop'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
         tutorialComplete: true,
-        diveCount: 15,
+        runCount: 15,
         stats: {
-          totalBlocksMined: 1200,
           totalDivesCompleted: 15,
-          deepestLayerReached: 10,
+          bestFloor: 10,
           totalFactsLearned: 30,
           totalFactsSold: 0,
           totalQuizCorrect: 80,
@@ -690,7 +606,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
     description: 'Max resources for testing crafting, purchases, and store UI.',
     buildSave(now) {
       const { learnedFacts, reviewStates } = makeLearnedFacts(50)
-      const allRoomIds = BALANCE.DOME_ROOMS.map(r => r.id)
+      const allRoomIds = ["command", "lab", "workshop", "museum", "market", "archive"]
       return {
         ...BASE_SAVE(now),
         learnedFacts,
@@ -705,11 +621,10 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
           ancient_essence: 15,
         },
         tutorialComplete: true,
-        diveCount: 50,
+        runCount: 50,
         stats: {
-          totalBlocksMined: 20_000,
           totalDivesCompleted: 50,
-          deepestLayerReached: 20,
+          bestFloor: 20,
           totalFactsLearned: 50,
           totalFactsSold: 5,
           totalQuizCorrect: 350,
@@ -734,7 +649,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
       return {
         ...BASE_SAVE(now),
         tutorialComplete: false,
-        diveCount: 0,
+        runCount: 0,
         oxygen: 0,
         minerals: { dust: 0, shard: 0, crystal: 0, geode: 0, essence: 0 },
       }
@@ -759,14 +674,13 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         unlockedRooms: ['command', 'lab', 'workshop'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
         tutorialComplete: true,
-        diveCount: 3,
+        runCount: 3,
         selectedInterests: ['Generalist'],
         ownedPickaxes: ['standard_pick'],
-        lastDiveDate: yesterday,
+        lastPlayDate: yesterday,
         stats: {
-          totalBlocksMined: 200,
           totalDivesCompleted: 3,
-          deepestLayerReached: 5,
+          bestFloor: 5,
           totalFactsLearned: 8,
           totalFactsSold: 0,
           totalQuizCorrect: 16,
@@ -790,7 +704,6 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
     targetScreen: 'divePrepScreen' as Screen,
     buildSave(now) {
       const { learnedFacts, reviewStates } = makeLearnedFacts(15)
-      const trilobiteSpecies = FOSSIL_SPECIES.find(s => s.id === 'trilobite')!
       return {
         ...BASE_SAVE(now),
         learnedFacts,
@@ -798,24 +711,13 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         minerals: { dust: 800, shard: 25, crystal: 3, geode: 0, essence: 0 },
         unlockedRooms: ['command', 'lab', 'workshop'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
-        fossils: {
-          trilobite: {
-            speciesId: 'trilobite',
-            fragmentsFound: trilobiteSpecies.fragmentsNeeded,
-            fragmentsNeeded: trilobiteSpecies.fragmentsNeeded,
-            revived: true,
-            revivedAt: now - 7 * 24 * 3600_000,
-          },
-        },
-        activeCompanion: 'trilobite',
         tutorialComplete: true,
-        diveCount: 8,
+        runCount: 8,
         selectedInterests: ['Generalist'],
         ownedPickaxes: ['standard_pick'],
         stats: {
-          totalBlocksMined: 600,
           totalDivesCompleted: 8,
-          deepestLayerReached: 8,
+          bestFloor: 8,
           totalFactsLearned: 15,
           totalFactsSold: 0,
           totalQuizCorrect: 35,
@@ -830,57 +732,30 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
   },
 
   // ----------------------------------------------------------
-  // 16. FIVE ROOMS — 5 rooms unlocked, active farm
+  // 16. FIVE ROOMS — 5 rooms unlocked, mid-game
   // ----------------------------------------------------------
   {
     id: 'five_rooms',
-    label: '5 Rooms + Active Farm',
-    description: '20 dives, 40 facts, 6 rooms, trilobite on farm, ammonite partial, streak 12.',
+    label: '5 Rooms',
+    description: '20 runs, 40 facts, 5 rooms unlocked, streak 12.',
     buildSave(now) {
       const { learnedFacts, reviewStates } = makeLearnedFacts(40)
-      const trilobiteSpecies = FOSSIL_SPECIES.find(s => s.id === 'trilobite')!
-      const ammoniteSpecies = FOSSIL_SPECIES.find(s => s.id === 'ammonite')!
       return {
         ...BASE_SAVE(now),
         learnedFacts,
         reviewStates,
         minerals: { dust: 5000, shard: 150, crystal: 30, geode: 5, essence: 0 },
         knowledgePoints: 800,
-        unlockedRooms: ['command', 'lab', 'workshop', 'museum', 'farm', 'zoo'],
-        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'study', 'farm', 'workshop', 'zoo', 'collection'], floorTiers: { starter: 1, study: 0, farm: 1, workshop: 1, zoo: 0, collection: 0 } },
-        fossils: {
-          trilobite: {
-            speciesId: 'trilobite',
-            fragmentsFound: trilobiteSpecies.fragmentsNeeded,
-            fragmentsNeeded: trilobiteSpecies.fragmentsNeeded,
-            revived: true,
-            revivedAt: now - 14 * 24 * 3600_000,
-          },
-          ammonite: {
-            speciesId: 'ammonite',
-            fragmentsFound: Math.min(2, ammoniteSpecies.fragmentsNeeded),
-            fragmentsNeeded: ammoniteSpecies.fragmentsNeeded,
-            revived: false,
-          },
-        },
-        activeCompanion: 'trilobite',
-        farm: {
-          slots: [
-            { speciesId: 'trilobite', placedAt: now - 3 * 24 * 3600_000, lastCollectedAt: now - 2 * 3600_000 },
-            null,
-            null,
-          ],
-          maxSlots: 3,
-        },
+        unlockedRooms: ['command', 'lab', 'workshop', 'museum', 'zoo'],
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'study', 'workshop', 'zoo', 'collection'], floorTiers: { starter: 1, study: 0, workshop: 1, zoo: 0, collection: 0 } },
         streakFreezes: 1,
         tutorialComplete: true,
-        diveCount: 20,
+        runCount: 20,
         selectedInterests: ['Natural Sciences', 'History'],
         ownedPickaxes: ['standard_pick'],
         stats: {
-          totalBlocksMined: 3500,
           totalDivesCompleted: 20,
-          deepestLayerReached: 12,
+          bestFloor: 12,
           totalFactsLearned: 40,
           totalFactsSold: 3,
           totalQuizCorrect: 140,
@@ -911,16 +786,15 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         minerals: { dust: 1200, shard: 40, crystal: 5, geode: 0, essence: 0 },
         unlockedRooms: ['command', 'lab', 'workshop'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
-        lastDiveDate: twoDaysAgo,
+        lastPlayDate: twoDaysAgo,
         streakFreezes: 0,
         tutorialComplete: true,
-        diveCount: 12,
+        runCount: 12,
         selectedInterests: ['Generalist'],
         ownedPickaxes: ['standard_pick'],
         stats: {
-          totalBlocksMined: 1000,
           totalDivesCompleted: 12,
-          deepestLayerReached: 8,
+          bestFloor: 8,
           totalFactsLearned: 25,
           totalFactsSold: 1,
           totalQuizCorrect: 60,
@@ -951,16 +825,15 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         reviewStates,
         minerals: { dust: 320, shard: 8, crystal: 1, geode: 0, essence: 0 },
         unlockedRooms: ['command', 'lab'],
-        lastDiveDate: today,
+        lastPlayDate: today,
         lastDiveBiome: 'limestone_caves',
         tutorialComplete: true,
-        diveCount: 3,
+        runCount: 3,
         selectedInterests: ['Generalist'],
         ownedPickaxes: ['standard_pick'],
         stats: {
-          totalBlocksMined: 250,
           totalDivesCompleted: 3,
-          deepestLayerReached: 4,
+          bestFloor: 4,
           totalFactsLearned: 5,
           totalFactsSold: 0,
           totalQuizCorrect: 10,
@@ -998,13 +871,12 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         unlockedRooms: ['command', 'lab', 'workshop', 'museum'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'study', 'workshop', 'collection'], floorTiers: { starter: 1, study: 0, workshop: 0, collection: 0 } },
         tutorialComplete: true,
-        diveCount: 25,
+        runCount: 25,
         selectedInterests: ['Generalist'],
         ownedPickaxes: ['standard_pick'],
         stats: {
-          totalBlocksMined: 4000,
           totalDivesCompleted: 25,
-          deepestLayerReached: 12,
+          bestFloor: 12,
           totalFactsLearned: 50,
           totalFactsSold: 2,
           totalQuizCorrect: 200,
@@ -1038,13 +910,12 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         craftCounts: { reinforced_tank: 1 },
         activeConsumables: ['bomb_kit'],
         tutorialComplete: true,
-        diveCount: 15,
+        runCount: 15,
         selectedInterests: ['Generalist'],
         ownedPickaxes: ['standard_pick'],
         stats: {
-          totalBlocksMined: 1500,
           totalDivesCompleted: 15,
-          deepestLayerReached: 10,
+          bestFloor: 10,
           totalFactsLearned: 20,
           totalFactsSold: 1,
           totalQuizCorrect: 55,
@@ -1069,9 +940,9 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
     buildSave(now) {
       const { learnedFacts, reviewStates } = makeLearnedFacts(15)
       const pendingArtifacts: PendingArtifact[] = [
-        { factId: 'cult-001', rarity: 'common', minedAt: now - 600_000 },
-        { factId: 'geo-002', rarity: 'uncommon', minedAt: now - 400_000 },
-        { factId: 'hist-003', rarity: 'rare', minedAt: now - 200_000 },
+        { factId: 'cult-001', rarity: 'common', discoveredAt: now - 600_000 },
+        { factId: 'geo-002', rarity: 'uncommon', discoveredAt: now - 400_000 },
+        { factId: 'hist-003', rarity: 'rare', discoveredAt: now - 200_000 },
       ]
       return {
         ...BASE_SAVE(now),
@@ -1081,12 +952,11 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         unlockedRooms: ['command', 'lab', 'workshop'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
         tutorialComplete: true,
-        diveCount: 10,
+        runCount: 10,
         pendingArtifacts,
         stats: {
-          totalBlocksMined: 800,
           totalDivesCompleted: 10,
-          deepestLayerReached: 8,
+          bestFloor: 8,
           totalFactsLearned: 15,
           totalFactsSold: 0,
           totalQuizCorrect: 40,
@@ -1110,7 +980,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
     targetScreen: 'base' as const,
     buildSave(now) {
       const { learnedFacts, reviewStates } = makeLearnedFacts(30, true)
-      const allRoomIds = BALANCE.DOME_ROOMS.map(r => r.id)
+      const allRoomIds = ["command", "lab", "workshop", "museum", "market", "archive"]
       return {
         ...BASE_SAVE(now),
         learnedFacts,
@@ -1120,13 +990,12 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         unlockedRooms: allRoomIds as string[],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: [...ALL_FLOOR_IDS], floorTiers: Object.fromEntries(ALL_FLOOR_IDS.map(id => [id, 1])) },
         tutorialComplete: true,
-        diveCount: 70,
-        titles: ['Explorer', 'Miner'],
+        runCount: 70,
+        titles: ['Explorer', 'Scholar'],
         activeTitle: 'Explorer',
         stats: {
-          totalBlocksMined: 9000,
           totalDivesCompleted: 70,
-          deepestLayerReached: 18,
+          bestFloor: 18,
           totalFactsLearned: 60,
           totalFactsSold: 5,
           totalQuizCorrect: 400,
@@ -1159,16 +1028,15 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         unlockedRooms: ['command', 'lab', 'workshop'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop'], floorTiers: { starter: 0, workshop: 0 } },
         tutorialComplete: true,
-        diveCount: 14,
-        lastDiveDate: yesterday,
+        runCount: 14,
+        lastPlayDate: yesterday,
         claimedMilestones: [3, 7],
         titles: ['Explorer'],
         activeTitle: 'Explorer',
         streakFreezes: 1,
         stats: {
-          totalBlocksMined: 1400,
           totalDivesCompleted: 14,
-          deepestLayerReached: 9,
+          bestFloor: 9,
           totalFactsLearned: 20,
           totalFactsSold: 1,
           totalQuizCorrect: 70,
@@ -1215,11 +1083,10 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         unlockedRooms: ['command', 'lab', 'workshop', 'museum', 'market'],
         hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'study', 'farm', 'workshop', 'collection', 'market'], floorTiers: { starter: 1, study: 0, farm: 0, workshop: 0, collection: 0, market: 0 } },
         tutorialComplete: true,
-        diveCount: 45,
+        runCount: 45,
         stats: {
-          totalBlocksMined: 7000,
           totalDivesCompleted: 45,
-          deepestLayerReached: 15,
+          bestFloor: 15,
           totalFactsLearned: 100,
           totalFactsSold: 5,
           totalQuizCorrect: 350,
@@ -1245,7 +1112,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
       const { learnedFacts, reviewStates } = makeLearnedFacts(2)
       const today = new Date(now).toISOString().split('T')[0]
       const pendingArtifacts: PendingArtifact[] = [
-        { factId: 'cult-003', rarity: 'common', minedAt: now - 300_000 },
+        { factId: 'cult-003', rarity: 'common', discoveredAt: now - 300_000 },
       ]
       return {
         ...BASE_SAVE(now),
@@ -1254,13 +1121,12 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         minerals: { dust: 120, shard: 3, crystal: 0, geode: 0, essence: 0 },
         unlockedRooms: ['command', 'lab'],
         tutorialComplete: true,
-        diveCount: 1,
-        lastDiveDate: today,
+        runCount: 1,
+        lastPlayDate: today,
         pendingArtifacts,
         stats: {
-          totalBlocksMined: 80,
           totalDivesCompleted: 1,
-          deepestLayerReached: 3,
+          bestFloor: 3,
           totalFactsLearned: 2,
           totalFactsSold: 0,
           totalQuizCorrect: 4,

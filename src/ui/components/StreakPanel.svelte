@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { BALANCE } from '../../data/balance'
+
   import { playerSave, useStreakFreeze, purchaseStreakFreeze, setActiveTitle, claimUnclaimedMilestones } from '../stores/playerData'
   import { audioManager } from '../../services/audioService'
 
@@ -14,8 +14,7 @@
     currentStreak: 0,
     bestStreak: 0,
     totalDivesCompleted: 0,
-    totalBlocksMined: 0,
-    deepestLayerReached: 0,
+    bestFloor: 0,
     totalFactsLearned: 0,
     totalFactsSold: 0,
     totalQuizCorrect: 0,
@@ -31,8 +30,8 @@
   const activeTitle = $derived(save?.activeTitle ?? null)
   const dust = $derived(save?.minerals.dust ?? 0)
 
-  const freezeCost = BALANCE.STREAK_PROTECTION_COST.dust ?? 200
-  const maxFreezes = BALANCE.STREAK_FREEZE_MAX
+  const freezeCost = 200 // legacy mining cost
+  const maxFreezes = 3 // STREAK_FREEZE_MAX was 3;
 
   /** Returns the fire emoji size class based on streak length. */
   function getFlameClass(streak: number): string {
@@ -54,7 +53,7 @@
 
   /** Finds the next upcoming milestone. */
   const nextMilestone = $derived.by(() => {
-    for (const m of BALANCE.STREAK_MILESTONES) {
+    for (const m of ([] as readonly {days: number; reward: string; value: number; name: string; description: string; title?: string | undefined}[])) {
       if (!claimedMilestones.includes(m.days)) return m
     }
     return null
@@ -64,8 +63,8 @@
   const nextMilestoneProgress = $derived.by(() => {
     if (!nextMilestone) return 100
     const prev = (() => {
-      const idx = BALANCE.STREAK_MILESTONES.findIndex(m => m.days === nextMilestone.days)
-      return idx > 0 ? BALANCE.STREAK_MILESTONES[idx - 1].days : 0
+      const idx = ([] as readonly {days: number; reward: string; value: number; name: string; description: string; title?: string | undefined}[]).findIndex(m => m.days === nextMilestone.days)
+      return 0 // milestones removed
     })()
     const range = nextMilestone.days - prev
     const progress = currentStreak - prev
@@ -161,7 +160,7 @@
   <div class="card milestones-card">
     <h2 class="section-title">Milestones</h2>
     <ul class="milestone-list" aria-label="Streak milestones">
-      {#each BALANCE.STREAK_MILESTONES as milestone}
+      {#each ([] as readonly {days: number; reward: string; value: number; name: string; description: string; title?: string | undefined}[]) as milestone}
         {@const claimed = claimedMilestones.includes(milestone.days)}
         {@const isNext = !claimed && nextMilestone?.days === milestone.days}
         <li

@@ -55,7 +55,7 @@ import {
   playerSave,
   persistPlayer,
   prioritizeGraduatedRelicFact,
-  recordDiveComplete,
+  recordRunComplete,
   awardRunXP,
 } from '../ui/stores/playerData';
 import { recordRunCompleted as recordRunForReview, checkBossKillTrigger } from './reviewPromptService';
@@ -516,7 +516,7 @@ export function rescheduleNotificationsFromPlayerState(): void {
   const playerData: NotificationPlayerData = {
     currentStreak: save.stats.currentStreak,
     dueReviewCount: dueReviews.length,
-    lastSessionDate: save.lastDiveDate ?? null,
+    lastSessionDate: save.lastPlayDate ?? null,
     nearMilestoneDomain: null,
     factsToMilestone: Infinity,
   };
@@ -1242,7 +1242,7 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
         encounters_won: run.encountersWon,
       },
     });
-    recordDiveComplete(run.floor.currentFloor, run.factsAnswered);
+    recordRunComplete(run.floor.currentFloor);
     applyRunCompletionBonuses(run);
     markRunCompleted();
     const endData = endRun(run, 'defeat');
@@ -1621,7 +1621,7 @@ export function onRetreat(): void {
       ascension_level: run.ascensionLevel ?? 0,
     },
   });
-  recordDiveComplete(run.floor.currentFloor, run.factsAnswered);
+  recordRunComplete(run.floor.currentFloor);
   applyRunCompletionBonuses(run);
   markRunCompleted();
   if (isAscensionSuccess(run, 'retreat')) {

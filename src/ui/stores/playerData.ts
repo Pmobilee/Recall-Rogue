@@ -28,27 +28,14 @@ const defaultHubSaveState = (): HubSaveState => ({
   lastBriefingDate: null,
 })
 
-/** Maps legacy BALANCE.DOME_ROOMS IDs to hubFloors.ts floor IDs. */
-export const ROOM_TO_FLOOR_MAP: Record<string, string> = {
+/** Maps legacy BALANCE.DOME_ROOMS IDs to hubFloors.ts floor IDs (retained for hub migration). */
+const ROOM_TO_FLOOR_MAP: Record<string, string> = {
   command: 'starter',
   lab: 'starter',      // lab actions live on starter floor
   workshop: 'workshop',
   museum: 'collection',
   market: 'market',
   archive: 'research',
-}
-
-/**
- * Converts an array of legacy room IDs to their corresponding floor IDs.
- * Always includes 'starter'. Deduplicates.
- */
-export function roomIdsToFloorIds(roomIds: string[]): string[] {
-  const floorSet = new Set<string>(['starter'])
-  for (const roomId of roomIds) {
-    const floorId = ROOM_TO_FLOOR_MAP[roomId]
-    if (floorId) floorSet.add(floorId)
-  }
-  return [...floorSet]
 }
 // gaiaMessage removed from gameState — inline no-op writable
 const gaiaMessage = singletonWritable<string | null>('gaiaMessage', null)
@@ -924,7 +911,7 @@ export function unlockRoom(roomId: string): void {
  */
 export function updateDailyStreak(save: PlayerSave): PlayerSave {
   const today = new Date().toISOString().split('T')[0]
-  const lastDate = save.lastDiveDate
+  const lastDate = save.lastPlayDate
   let newStreak = save.stats.currentStreak
   let streakProtected = save.streakProtected ?? false
 
@@ -954,7 +941,7 @@ export function updateDailyStreak(save: PlayerSave): PlayerSave {
 
   return {
     ...save,
-    lastDiveDate: today,
+    lastPlayDate: today,
     streakProtected,
     longestStreak,
     stats: {
@@ -966,14 +953,13 @@ export function updateDailyStreak(save: PlayerSave): PlayerSave {
 }
 
 /**
- * Records a completed dive in player statistics and updates the daily streak.
- * Also checks if any new dome rooms should be unlocked based on total dives,
+ * Records a completed run in player statistics and updates the daily streak.
+ * Also checks if any new dome rooms should be unlocked based on total runs,
  * and auto-claims any newly reached streak milestones.
  *
- * @param deepestLayer - Deepest layer reached in the dive.
- * @param blocksMined - Number of blocks mined during the dive.
+ * @param bestFloor - Deepest floor reached in the run.
  */
-export function recordDiveComplete(deepestLayer: number, blocksMined: number): void {
+export function recordRunComplete(bestFloor: number): void {
   let capturedStreak = 0
 
   playerSave.update((save) => {
@@ -985,18 +971,14 @@ export function recordDiveComplete(deepestLayer: number, blocksMined: number): v
     const newStreak = streakUpdated.stats.currentStreak
     capturedStreak = newStreak
     const streakProtected = streakUpdated.streakProtected ?? false
-    const today = streakUpdated.lastDiveDate!
+    const today = streakUpdated.lastPlayDate!
 
     const newDiveCount = save.stats.totalDivesCompleted + 1
 
-    // Check if any dome rooms should be unlocked based on new dive count
+    // Hub floor unlocking is handled by hubFloors.ts — no mining dome rooms in card roguelite
     const currentRooms = save.unlockedRooms ?? ['command']
-    const newlyUnlocked = BALANCE.DOME_ROOMS
-      .filter(room => room.unlockDives > 0 && newDiveCount >= room.unlockDives && !currentRooms.includes(room.id))
-      .map(room => room.id)
-    const updatedRooms = newlyUnlocked.length > 0
-      ? [...currentRooms, ...newlyUnlocked]
-      : currentRooms
+    const newlyUnlocked: string[] = []
+    const updatedRooms = currentRooms
 
     // Phase 61: Also update hubState.unlockedFloorIds when rooms are unlocked
     let updatedHubState = { ...(save.hubState ?? defaultHubSaveState()) }
@@ -1019,7 +1001,8 @@ export function recordDiveComplete(deepestLayer: number, blocksMined: number): v
     let updatedOxygen = save.oxygen
     const updatedTitles = [...(save.titles ?? [])]
 
-    for (const milestone of BALANCE.STREAK_MILESTONES) {
+    // STREAK_MILESTONES removed (mining era) — no-op loop preserved for structure
+    for (const milestone of ([] as {days: number; reward: string; value: number; name: string; title?: string | undefined}[])) {
       if (newStreak >= milestone.days && !claimedMilestones.includes(milestone.days)) {
         claimedMilestones.push(milestone.days)
         // Apply the milestone reward
@@ -1046,11 +1029,10 @@ export function recordDiveComplete(deepestLayer: number, blocksMined: number): v
     const updatedStats = {
       ...save.stats,
       totalDivesCompleted: newDiveCount,
-      totalBlocksMined: save.stats.totalBlocksMined + blocksMined,
-      deepestLayerReached:
-        deepestLayer > save.stats.deepestLayerReached
-          ? deepestLayer
-          : save.stats.deepestLayerReached,
+      bestFloor:
+        bestFloor > save.stats.bestFloor
+          ? bestFloor
+          : save.stats.bestFloor,
       currentStreak: newStreak,
       bestStreak: streakUpdated.stats.bestStreak,
     }
@@ -1058,7 +1040,7 @@ export function recordDiveComplete(deepestLayer: number, blocksMined: number): v
     // Phase 12: Evaluate archetype (weekly re-eval)
     const todayStr = today
     const updatedArchetype = evaluateArchetype(
-      { stats: updatedStats, fossils: save.fossils ?? {} },
+      { stats: updatedStats },
       save.archetypeData ?? { detected: 'undetected', manualOverride: null, lastEvaluatedDate: null, detectedOnDay: null },
       todayStr,
     )
@@ -1070,7 +1052,7 @@ export function recordDiveComplete(deepestLayer: number, blocksMined: number): v
       save.engagementData ?? { dailySnapshots: [], currentScore: 50, mode: 'normal' },
       todayStr,
       diveAccuracy,
-      deepestLayer,
+      bestFloor,
     )
     const gaiaComment = getEngagementGaiaComment(previousMode, updatedEngagement.mode)
     if (gaiaComment) {
@@ -1079,7 +1061,7 @@ export function recordDiveComplete(deepestLayer: number, blocksMined: number): v
 
     return {
       ...save,
-      lastDiveDate: today,
+      lastPlayDate: today,
       streakProtected,
       longestStreak: streakUpdated.longestStreak,
       claimedMilestones,
@@ -1115,7 +1097,7 @@ export function claimUnclaimedMilestones(): number {
 
   const currentStreak = current.stats.currentStreak
   const alreadyClaimed = current.claimedMilestones ?? []
-  const unclaimed = BALANCE.STREAK_MILESTONES.filter(
+  const unclaimed = ([] as {days: number; reward: string; value: number; name: string; title?: string | undefined}[]).filter(
     m => currentStreak >= m.days && !alreadyClaimed.includes(m.days)
   )
 
@@ -1208,7 +1190,7 @@ export function purchaseStreakFreeze(): boolean {
   const freezes = current.streakFreezes ?? 0
   if (freezes >= BALANCE.STREAK_FREEZE_MAX) return false
 
-  const cost = BALANCE.STREAK_PROTECTION_COST.dust ?? 200
+  const cost = 200 // mining-era cost (STREAK_PROTECTION_COST removed)
   if (current.minerals.dust < cost) return false
 
   playerSave.update(save => {
@@ -1356,23 +1338,6 @@ export function syncKnowledgePoints(): void {
   persistPlayer()
 }
 
-/**
- * Sets or clears the active companion fossil species.
- *
- * @param speciesId - The species ID to set as companion, or `null` to remove.
- */
-export function setActiveCompanion(speciesId: string | null): void {
-  playerSave.update(save => {
-    if (!save) return save
-    return {
-      ...save,
-      activeCompanion: speciesId,
-      lastPlayedAt: Date.now(),
-    }
-  })
-
-  persistPlayer()
-}
 
 /**
  * Attempts to purchase a Knowledge Store item. Checks KP balance, deducts KP,
@@ -1614,12 +1579,12 @@ export function mixArtifacts(instanceIds: string[]): string | null {
   if (!current) return null
 
   const cards = current.inventoryArtifacts ?? []
-  if (instanceIds.length < BALANCE.MIX_MIN_CARDS) return null
-  if (current.minerals.dust < BALANCE.MIX_FEE_DUST) return null
+  if (instanceIds.length < 3) return null
+  if (current.minerals.dust < 100) return null
 
   // Validate all instanceIds exist
   const selectedCards = instanceIds.map(id => cards.find(c => c.instanceId === id)).filter(Boolean) as ArtifactCard[]
-  if (selectedCards.length < BALANCE.MIX_MIN_CARDS) return null
+  if (selectedCards.length < 3) return null
 
   // Determine base rarity: most common rarity among selected cards
   const rarityCounts: Record<string, number> = {}
@@ -1639,10 +1604,10 @@ export function mixArtifacts(instanceIds: string[]): string | null {
   const roll = Math.random()
   const baseIdx = RARITY_ORDER_MIX.indexOf(baseRarity)
   let outputRarity: string
-  if (roll < BALANCE.MIX_RARITY_TWO_UP) {
+  if (roll < 0.10) {
     // Two tiers up (capped at mythic)
     outputRarity = RARITY_ORDER_MIX[Math.min(baseIdx + 2, RARITY_ORDER_MIX.length - 1)]
-  } else if (roll < BALANCE.MIX_RARITY_TWO_UP + BALANCE.MIX_RARITY_ONE_UP) {
+  } else if (roll < 0.10 + 0.30) {
     // One tier up (capped at mythic)
     outputRarity = RARITY_ORDER_MIX[Math.min(baseIdx + 1, RARITY_ORDER_MIX.length - 1)]
   } else {
@@ -1668,7 +1633,7 @@ export function mixArtifacts(instanceIds: string[]): string | null {
       ...save,
       minerals: {
         ...save.minerals,
-        dust: save.minerals.dust - BALANCE.MIX_FEE_DUST,
+        dust: save.minerals.dust - 100,
       },
       inventoryArtifacts: [
         ...(save.inventoryArtifacts ?? []).filter(c => !removeSet.has(c.instanceId)),
@@ -1743,7 +1708,7 @@ export function claimMorningReviewBonus(save: PlayerSave): PlayerSave {
   return {
     ...save,
     lastMorningReview: todayIso,
-    oxygen: save.oxygen + BALANCE.MORNING_REVIEW_O2_BONUS,
+    // oxygen bonus removed (mining era)
   }
 }
 
@@ -1753,7 +1718,7 @@ export function claimEveningReviewBonus(save: PlayerSave): PlayerSave {
   return {
     ...save,
     lastEveningReview: todayIso,
-    oxygen: save.oxygen + BALANCE.EVENING_REVIEW_O2_BONUS,
+    // oxygen bonus removed (mining era)
   }
 }
 

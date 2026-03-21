@@ -97,8 +97,8 @@ export class ChallengeTracker {
   recordArtifactFound(): void { this.increment('artifactsFoundThisWeek') }
   /** Record a study session completion. */
   recordStudySession(): void { this.increment('studySessionsThisWeek') }
-  /** Record a dive completion. */
-  recordDiveComplete(): void { this.increment('diveCompletionsThisWeek') }
+  /** Record a run completion. */
+  recordRunComplete(): void { this.increment('diveCompletionsThisWeek') }
   /** Record a correct quiz answer. */
   recordQuizCorrect(): void { this.increment('quizCorrectThisWeek') }
   /** Record minerals collected. */

@@ -1,7 +1,6 @@
 <script lang="ts">
   import { playerSave } from '../stores/playerData'
   import { mixArtifacts } from '../stores/playerData'
-  import { BALANCE } from '../../data/balance'
   import type { ArtifactCard } from '../../data/types'
 
   interface DuplicateGroup {
@@ -40,7 +39,7 @@
     }
     const groups: DuplicateGroup[] = []
     for (const [key, groupCards] of groupMap) {
-      if (groupCards.length >= BALANCE.MIX_MIN_CARDS) {
+      if (groupCards.length >= 3) {
         const [factId, rarity] = key.split(':')
         groups.push({
           factId,
@@ -64,7 +63,7 @@
   let errorMessage = $state('')
 
   const dustBalance = $derived($playerSave?.minerals.dust ?? 0)
-  const canAffordFee = $derived(dustBalance >= BALANCE.MIX_FEE_DUST)
+  const canAffordFee = $derived(dustBalance >= 100)
 
   function selectDuplicate(group: DuplicateGroup): void {
     selectedGroup = group
@@ -81,7 +80,7 @@
   function performMix(): void {
     if (!selectedGroup) return
     if (!canAffordFee) {
-      errorMessage = `Not enough dust. Need ${BALANCE.MIX_FEE_DUST}.`
+      errorMessage = `Not enough dust. Need ${100}.`
       return
     }
 
@@ -91,7 +90,7 @@
     mixResult = null
 
     // Pick the first MIX_MIN_CARDS instanceIds from the group
-    const idsToMix = selectedGroup.cards.slice(0, BALANCE.MIX_MIN_CARDS).map(c => c.instanceId)
+    const idsToMix = selectedGroup.cards.slice(0, 3).map(c => c.instanceId)
     const baseRarity = selectedGroup.rarity
     const outputRarity = mixArtifacts(idsToMix)
 
@@ -141,8 +140,8 @@
 
     <div class="modal-body">
       <p class="description">
-        Combine <strong>{BALANCE.MIX_MIN_CARDS} duplicate cards</strong> of the same type to potentially upgrade their rarity.
-        Fee: <strong>{BALANCE.MIX_FEE_DUST} dust</strong> per mix.
+        Combine <strong>{3} duplicate cards</strong> of the same type to potentially upgrade their rarity.
+        Fee: <strong>{100} dust</strong> per mix.
       </p>
 
       {#if errorMessage}
@@ -151,16 +150,16 @@
 
       <!-- Odds info -->
       <div class="odds-banner" aria-label="Mix odds">
-        <span class="odds-item odds-success">{Math.round(BALANCE.MIX_RARITY_ONE_UP * 100)}% one tier up</span>
+        <span class="odds-item odds-success">{Math.round(30)}% one tier up</span>
         <span class="odds-divider" aria-hidden="true">|</span>
-        <span class="odds-item odds-rare">{Math.round(BALANCE.MIX_RARITY_TWO_UP * 100)}% two tiers up</span>
+        <span class="odds-item odds-rare">{Math.round(10)}% two tiers up</span>
         <span class="odds-divider" aria-hidden="true">|</span>
-        <span class="odds-item odds-fail">{Math.round(BALANCE.MIX_RARITY_SAME * 100)}% same</span>
+        <span class="odds-item odds-fail">{60}% same</span>
       </div>
 
       <!-- Dust balance -->
       <div class="dust-balance" class:dust-low={!canAffordFee}>
-        Dust: {dustBalance} (fee: {BALANCE.MIX_FEE_DUST})
+        Dust: {dustBalance} (fee: {100})
       </div>
 
       <!-- 3 slots -->
@@ -273,7 +272,7 @@
         <button class="close-btn" type="button" onclick={() => { showPicker = false }} aria-label="Close picker">X</button>
       </div>
       {#if duplicateGroups.length === 0}
-        <div class="state-msg">No duplicates available. You need {BALANCE.MIX_MIN_CARDS}+ copies of the same card and rarity.</div>
+        <div class="state-msg">No duplicates available. You need {3}+ copies of the same card and rarity.</div>
       {:else}
         <div class="picker-list">
           {#each duplicateGroups as group}

@@ -2,7 +2,6 @@ import { BALANCE } from '../data/balance'
 import { generateUUID } from '../utils/uuid'
 import type {
   AgeRating,
-  FarmState,
   MineralTier,
   PlayerSave,
   PlayerStats,
@@ -31,11 +30,6 @@ function getActiveSaveKey(): string {
   return profileService.getSaveKey()
 }
 
-const DEFAULT_FARM_STATE: FarmState = {
-  slots: [null, null, null],
-  maxSlots: 3,
-}
-
 const EMPTY_MINERALS: Record<MineralTier, number> = {
   dust: 0,
   shard: 0,
@@ -45,9 +39,8 @@ const EMPTY_MINERALS: Record<MineralTier, number> = {
 }
 
 const EMPTY_STATS: PlayerStats = {
-  totalBlocksMined: 0,
   totalDivesCompleted: 0,
-  deepestLayerReached: 0,
+  bestFloor: 0,
   totalFactsLearned: 0,
   totalFactsSold: 0,
   totalQuizCorrect: 0,
@@ -135,10 +128,7 @@ export function load(): PlayerSave | null {
     if (!('lastEveningReview' in parsedAny)) {
       parsedAny['lastEveningReview'] = undefined
     }
-    // Backward compatibility: ensure fossil/knowledge fields exist
-    if (!parsedAny['fossils'] || typeof parsedAny['fossils'] !== 'object') {
-      parsedAny['fossils'] = {}
-    }
+    // Backward compatibility: knowledge fields
     if (typeof parsedAny['knowledgePoints'] !== 'number') {
       parsedAny['knowledgePoints'] = 0
     }
@@ -149,25 +139,9 @@ export function load(): PlayerSave | null {
     if (!Array.isArray(parsedAny['unlockedRooms'])) {
       parsedAny['unlockedRooms'] = ['command']
     }
-    // Backward compatibility: ensure activeCompanion exists
-    if (!('activeCompanion' in parsedAny)) {
-      parsedAny['activeCompanion'] = null
-    }
     // Backward compatibility: ensure premiumMaterials exists
     if (!parsedAny['premiumMaterials'] || typeof parsedAny['premiumMaterials'] !== 'object') {
       parsedAny['premiumMaterials'] = {}
-    }
-    // Backward compatibility: ensure farm state exists
-    if (!parsedAny['farm'] || typeof parsedAny['farm'] !== 'object') {
-      parsedAny['farm'] = { slots: [null, null, null], maxSlots: 3 }
-    } else {
-      const farm = parsedAny['farm'] as Record<string, unknown>
-      if (!Array.isArray(farm['slots'])) {
-        farm['slots'] = [null, null, null]
-      }
-      if (typeof farm['maxSlots'] !== 'number') {
-        farm['maxSlots'] = 3
-      }
     }
     // Backward compatibility: ensure streak system fields exist
     if (typeof parsedAny['streakFreezes'] !== 'number') {
@@ -216,6 +190,15 @@ export function load(): PlayerSave | null {
     // Backward compatibility: ensure session tracking stats fields exist
     if (parsed.stats.totalSessions === undefined) parsed.stats.totalSessions = 0
     if (parsed.stats.zeroDiveSessions === undefined) parsed.stats.zeroDiveSessions = 0
+    // Backward compat: migrate deepestLayerReached → bestFloor, drop totalBlocksMined
+    const statsAny = parsed.stats as unknown as Record<string, unknown>
+    if (typeof statsAny['bestFloor'] !== 'number') {
+      statsAny['bestFloor'] = statsAny['deepestLayerReached'] ?? 0
+    }
+    // Backward compat: migrate lastDiveDate → lastPlayDate
+    if (!('lastPlayDate' in parsedAny) && 'lastDiveDate' in parsedAny) {
+      parsedAny['lastPlayDate'] = parsedAny['lastDiveDate']
+    }
     // Backward compatibility: ensure hubState exists (Phase 10)
     if (!parsedAny['hubState'] || typeof parsedAny['hubState'] !== 'object') {
       parsedAny['hubState'] = {
@@ -287,14 +270,12 @@ export function load(): PlayerSave | null {
     if (!parsedAny['interestWeights'] || typeof parsedAny['interestWeights'] !== 'object') {
       parsedAny['interestWeights'] = {}
     }
-    if (typeof parsedAny['diveCount'] !== 'number') {
-      parsedAny['diveCount'] = parsed.stats.totalDivesCompleted ?? 0
+    // Backward compat: migrate diveCount → runCount
+    if (typeof parsedAny['runCount'] !== 'number') {
+      parsedAny['runCount'] = parsedAny['diveCount'] ?? parsed.stats.totalDivesCompleted ?? 0
     }
     if (typeof parsedAny['tutorialStep'] !== 'number') {
       parsedAny['tutorialStep'] = 0
-    }
-    if (!('activeFossil' in parsedAny)) {
-      parsedAny['activeFossil'] = null
     }
     if (typeof parsedAny['studySessionsCompleted'] !== 'number') {
       parsedAny['studySessionsCompleted'] = 0
@@ -329,12 +310,8 @@ export function load(): PlayerSave | null {
     if (!Array.isArray(parsedAny['ownedPickaxes'])) {
       parsedAny['ownedPickaxes'] = ['standard_pick']
     }
-    // Phase 21: Oxygen regen migration
     if (parsedAny['lastRegenAt'] === undefined) {
       parsedAny['lastRegenAt'] = Date.now()
-    }
-    if (parsedAny['tankBank'] === undefined) {
-      parsedAny['tankBank'] = BALANCE.OXYGEN_MAX_BANK_FREE
     }
     if (!Array.isArray(parsedAny['purchasedProducts'])) {
       parsedAny['purchasedProducts'] = []
@@ -521,7 +498,7 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
     createdAt: now,
     lastPlayedAt: now,
     domainRunCounts: {},
-    oxygen: BALANCE.STARTING_OXYGEN_TANKS,
+    oxygen: 3, // legacy mining field (3 tanks default)
     minerals: { ...EMPTY_MINERALS },
     learnedFacts: [],
     reviewStates,
@@ -538,12 +515,9 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
     lastDealDate: undefined,
     lastMorningReview: undefined,
     lastEveningReview: undefined,
-    fossils: {},
-    activeCompanion: null,
     knowledgePoints: 0,
     purchasedKnowledgeItems: [],
     unlockedRooms: ['command'],
-    farm: { ...DEFAULT_FARM_STATE, slots: [null, null, null] },
     premiumMaterials: {},
     streakFreezes: 0,
     lastStreakMilestone: 0,
@@ -567,9 +541,8 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
     hasCompletedInitialStudy: false,
     selectedInterests: [],
     interestWeights: {},
-    diveCount: 0,
+    runCount: 0,
     tutorialStep: 0,
-    activeFossil: null,
     studySessionsCompleted: 0,
     newCardsStudiedToday: 0,
     // Phase 17: Addictiveness Pass

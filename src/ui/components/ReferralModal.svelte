@@ -1,6 +1,12 @@
 <script lang="ts">
   import type { ReferralRecord } from '../../data/types'
-  import { REFERRAL_REWARD_TIERS, REFERRAL_MAX_PER_YEAR } from '../../data/balance'
+  // REFERRAL_REWARD_TIERS and REFERRAL_MAX_PER_YEAR removed from balance.ts (mining era)
+  const REFERRAL_REWARD_TIERS: { threshold: number; rewardType: string; rewardKey: string; label: string }[] = [
+    { threshold: 1,  rewardType: 'cosmetic_frame',   rewardKey: 'frame_explorer_invite', label: 'Explorer Frame' },
+    { threshold: 3,  rewardType: 'companion_skin',   rewardKey: 'skin_miner_envoy',      label: 'Envoy Miner Skin' },
+    { threshold: 5,  rewardType: 'nameplate',        rewardKey: 'nameplate_connector',   label: 'Connector Nameplate' },
+    { threshold: 10, rewardType: 'nameplate',        rewardKey: 'nameplate_legend',      label: 'Legend Nameplate' },
+  ]
   import { analyticsService } from '../../services/analyticsService'
   import { referralService } from '../../services/referralService'
 
@@ -11,7 +17,7 @@
   let { onClose }: Props = $props()
 
   /** Use the balance constant so the cap stays in sync automatically. */
-  const MAX_REFERRALS_PER_YEAR = REFERRAL_MAX_PER_YEAR
+  const MAX_REFERRALS_PER_YEAR = 10 // was REFERRAL_MAX_PER_YEAR
 
   let referralCode = $state<string | null>(null)
   let referralHistory = $state<ReferralRecord[]>([])

@@ -1,5 +1,16 @@
-import { BALANCE } from './balance'
 import type { PlayerSave } from './types'
+
+
+/** Login calendar reward definitions. */
+export const LOGIN_CALENDAR_REWARDS = [
+  { day: 1, type: 'gold', amount: 50,  icon: 'icon_gold',    label: '50 Gold',            description: 'A small stash to get you going.' },
+  { day: 2, type: 'card', amount: 1,   icon: 'icon_card',    label: 'Random Card',        description: 'A card for your deck.' },
+  { day: 3, type: 'gold', amount: 100, icon: 'icon_gold',    label: '100 Gold',           description: 'Double the haul.' },
+  { day: 4, type: 'streak_freeze', amount: 1, icon: 'icon_freeze', label: 'Streak Freeze', description: 'Protect your streak from one missed day.' },
+  { day: 5, type: 'relic', amount: 1,  icon: 'icon_relic',   label: 'Random Relic',       description: 'A relic for your run.' },
+  { day: 6, type: 'card', amount: 1,   icon: 'icon_card',    label: 'Bonus Card',         description: 'Adds to your card pool.' },
+  { day: 7, type: 'gold', amount: 200, icon: 'icon_gold',    label: '200 Gold',           description: "The week's prize." },
+] as const
 
 /** Returns the current login calendar day (1-7) for a player save. */
 export function getLoginCalendarDay(s: PlayerSave): number {
@@ -23,9 +34,9 @@ export function isTodayClaimed(s: PlayerSave): boolean {
  * Returns the reward that was claimed.
  * Caller is responsible for applying the reward to the PlayerSave and calling save().
  */
-export function claimLoginReward(s: PlayerSave): (typeof BALANCE.LOGIN_CALENDAR_REWARDS)[number] {
+export function claimLoginReward(s: PlayerSave): (typeof LOGIN_CALENDAR_REWARDS)[number] {
   const day = getLoginCalendarDay(s)
-  const reward = BALANCE.LOGIN_CALENDAR_REWARDS.find(r => r.day === day)!
+  const reward = LOGIN_CALENDAR_REWARDS.find(r => r.day === day)!
 
   // Advance to next day; wrap from 7 back to 1
   const nextDay = day >= 7 ? 1 : day + 1

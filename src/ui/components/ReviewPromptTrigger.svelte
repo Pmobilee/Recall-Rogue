@@ -26,7 +26,7 @@
       ? (s.reviewStates as ReviewState[]).filter(r => r.interval >= 60).length
       : 0
 
-    const totalDives = s.stats?.totalDivesCompleted ?? s.diveCount ?? 0
+    const totalDives = s.stats?.totalDivesCompleted ?? s.runCount ?? 0
 
     if (shouldShowReviewPrompt({ totalDives, masteredFacts, wasPositiveMoment: true })) {
       void fireReviewPrompt()

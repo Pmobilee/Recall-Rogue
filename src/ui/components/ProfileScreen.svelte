@@ -16,7 +16,7 @@
 
   const milestones = $derived((save?.claimedMilestones ?? []).length)
   const totalRuns = $derived(stats?.totalDivesCompleted ?? 0)
-  const bestFloor = $derived(stats?.deepestLayerReached ?? 0)
+  const bestFloor = $derived(stats?.bestFloor ?? 0)
   const factsLearned = $derived(stats?.totalFactsLearned ?? 0)
   const masteredFacts = $derived((save?.reviewStates ?? []).filter((state) => (state.stability ?? state.interval ?? 0) >= 25).length)
   const domainRuns = $derived(

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { BALANCE, REVEAL_TIMING } from '../../data/balance'
+  import { BALANCE } from '../../data/balance'
   import type { Rarity } from '../../data/types'
 
   interface Props {
@@ -13,7 +13,9 @@
 
   const tier = $derived((BALANCE.GACHA_TIERS as Record<string, { durationMs: number; particleCount: number; screenFlash: boolean; screenShake: boolean; soundKey: string; bgColor: string; glowColor: string; labelText: string }>)[rarity] ?? BALANCE.GACHA_TIERS.common)
 
-  const timing = $derived(REVEAL_TIMING[rarity] ?? REVEAL_TIMING['common'])
+  // Reveal timing constants (local fallback — REVEAL_TIMING removed from balance.ts)
+  const REVEAL_TIMING_DEFAULT = { anticipationMs: 400, suspenseMs: 600, flashMs: 0, payoffMs: 600, collectMs: 2000, suspensePulseHz: 1.2, particleWaveCount: 1 }
+  const timing = (REVEAL_TIMING_DEFAULT)
 
   // Animation state: 'anticipation' -> 'suspense' -> 'flash' -> 'reveal' -> 'payoff' -> 'done'
   type AnimPhase = 'anticipation' | 'suspense' | 'flash' | 'reveal' | 'payoff' | 'done'

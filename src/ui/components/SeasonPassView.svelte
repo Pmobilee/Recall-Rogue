@@ -22,7 +22,7 @@
     $playerSave
       ? computeSeasonPoints(
           $playerSave.stats.totalFactsLearned,
-          Object.keys($playerSave.fossils ?? {}).length,
+          0, // fossil system removed
           $playerSave.stats.totalDivesCompleted,
         )
       : 0

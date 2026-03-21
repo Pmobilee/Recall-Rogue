@@ -8,7 +8,7 @@
  *   must never interrupt gameplay.
  * - Debounced uploads: no more than one upload per `SYNC_DEBOUNCE_MS` window.
  * - Conflict resolution: the save with the higher `lastPlayedAt` timestamp wins;
- *   ties within 60 s are broken by `totalBlocksMined` (more progress preferred).
+ *   ties within 60 s are broken by `totalFactsLearned` (more progress preferred).
  * - Leaderboard submissions: derived automatically from a PlayerSave on every
  *   successful push to the cloud, using category names that match the server.
  * - Offline queue: operations attempted while offline are persisted and replayed
@@ -33,7 +33,7 @@ const LAST_SYNC_KEY = 'terra_last_sync_time'
 
 /**
  * Within this window (ms) two competing saves are considered "tied" on time
- * and the tiebreaker (`totalBlocksMined`) is applied instead.
+ * and the tiebreaker (`totalFactsLearned`) is applied instead.
  */
 const CONFLICT_TIE_WINDOW_MS = 60_000
 
@@ -49,7 +49,7 @@ const CONFLICT_TIE_WINDOW_MS = 60_000
  * `server/src/routes/leaderboards.ts`.
  */
 const LEADERBOARD_EXTRACTORS: Record<string, (s: PlayerSave) => number> = {
-  deepest_dive: (s) => s.stats.deepestLayerReached,
+  deepest_dive: (s) => s.stats.bestFloor,
   facts_mastered: (s) => s.stats.totalFactsLearned,
   longest_streak: (s) => s.stats.bestStreak,
   total_dust: (s) => s.minerals?.dust ?? 0,
@@ -222,7 +222,7 @@ export class SyncService {
    *
    * **Primary rule**: whichever save has the higher `lastPlayedAt` value wins.
    * **Tiebreaker**: if the two timestamps are within 60 seconds of each other,
-   * the save with more `totalBlocksMined` is preferred — it reflects more
+   * the save with more `totalFactsLearned` is preferred — it reflects more
    * in-session progress that may not yet have updated `lastPlayedAt`. In a
    * true tie on both dimensions the local save is returned to avoid
    * unnecessary writes.
@@ -237,8 +237,8 @@ export class SyncService {
     if (timeDiff <= CONFLICT_TIE_WINDOW_MS) {
       // Timestamps are close enough to be considered a tie; use progress as
       // tiebreaker so we don't discard a session that was active very recently.
-      const remoteBlocks = remote.stats.totalBlocksMined
-      const localBlocks = local.stats.totalBlocksMined
+      const remoteBlocks = remote.stats.totalFactsLearned
+      const localBlocks = local.stats.totalFactsLearned
       if (remoteBlocks > localBlocks) {
         return remote
       }

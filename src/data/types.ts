@@ -74,7 +74,7 @@ export type Rarity = 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary' | 'my
 export interface PendingArtifact {
   factId: string
   rarity: Rarity
-  minedAt: number
+  discoveredAt: number
 }
 
 /** A question variant for knowledge facts (vocab cards use their own system) */
@@ -175,7 +175,7 @@ export interface ReviewState {
   lapseCount: number            // Total times card has lapsed
   isLeech: boolean              // Flagged after SM2_LEECH_THRESHOLD lapses
   /** Context in which the fact was last reviewed. */
-  lastReviewContext?: 'study' | 'mine' | 'ritual'
+  lastReviewContext?: 'study' | 'ritual'
   /** Cumulative number of times this fact has been answered incorrectly (never resets). */
   wrongCount?: number
   /** FSRS-style stability (days) used by card tier derivation. */
@@ -217,36 +217,6 @@ export type PlayerFactState = ReviewState
 
 /** Mineral currency tiers — ordered from common (surface) to rare (extreme depth) */
 export type MineralTier = 'dust' | 'shard' | 'crystal' | 'geode' | 'essence'
-
-// ============================================================
-// FOSSIL SYSTEM
-// ============================================================
-
-/** Per-species fossil collection state stored in the player save */
-export interface FossilState {
-  speciesId: string
-  fragmentsFound: number
-  fragmentsNeeded: number
-  revived: boolean
-  revivedAt?: number
-}
-
-// ============================================================
-// FARM SYSTEM
-// ============================================================
-
-/** A single occupied slot in The Farm */
-export interface FarmSlot {
-  speciesId: string
-  placedAt: number        // Unix timestamp (ms) when placed
-  lastCollectedAt: number // Unix timestamp (ms) of last resource collection
-}
-
-/** Persistent state of the player's farm */
-export interface FarmState {
-  slots: (FarmSlot | null)[] // null = empty slot
-  maxSlots: number            // starts at 3, expandable up to FARM_MAX_SLOTS
-}
 
 // ============================================================
 // SOCIAL TYPES — Phase 22
@@ -438,7 +408,7 @@ export interface PlayerSave {
   stats: PlayerStats
 
   // Streak tracking
-  lastDiveDate?: string       // ISO date string (YYYY-MM-DD) of last completed dive
+  lastPlayDate?: string       // ISO date string (YYYY-MM-DD) of last completed run
 
   // Data Discs
   unlockedDiscs: string[]     // Disc IDs the player has found
@@ -459,12 +429,6 @@ export interface PlayerSave {
   purchasedDeals: string[]              // deal IDs purchased today
   lastDealDate?: string                 // ISO date (YYYY-MM-DD) of last deal purchase batch; resets daily
 
-  // Fossil collection
-  fossils: Record<string, FossilState> // speciesId → fossil state
-
-  // Companion (active revived fossil)
-  activeCompanion: string | null        // species ID of active companion, or null if none
-
   // Review Rituals
   lastMorningReview?: string            // ISO date of last morning ritual (YYYY-MM-DD)
   lastEveningReview?: string            // ISO date of last evening ritual (YYYY-MM-DD)
@@ -474,10 +438,7 @@ export interface PlayerSave {
   purchasedKnowledgeItems: string[]     // Knowledge Store item IDs the player has purchased
 
   // Dome Expansion
-  unlockedRooms: string[]               // Room IDs the player has unlocked
-
-  // Farm
-  farm: FarmState
+  unlockedRooms: string[]               // Room IDs the player has unlocked (legacy, retained for hub migration)
 
   // Premium Materials (earned from rare in-game drops, never purchasable with real money)
   premiumMaterials: Record<string, number>  // premium material id → count
@@ -518,12 +479,10 @@ export interface PlayerSave {
   selectedInterests: string[]
   /** Category weighting from interest selection (category → multiplier). */
   interestWeights: Record<string, number>
-  /** Total dives completed (includes tutorial dive). Used for progressive unlock gates. */
-  diveCount: number
+  /** Total runs completed (includes tutorial run). Used for progressive unlock gates. */
+  runCount: number
   /** Current tutorial step (0 = not started). */
   tutorialStep: number
-  /** Active fossil creature name from first fossil identification. */
-  activeFossil: string | null
   /** Number of study sessions completed (for first-session bonus oxygen). */
   studySessionsCompleted: number
   /** Number of new cards introduced today (resets daily). */
@@ -753,9 +712,8 @@ export interface PlayerSave {
 
 /** Player statistics */
 export interface PlayerStats {
-  totalBlocksMined: number
   totalDivesCompleted: number
-  deepestLayerReached: number
+  bestFloor: number
   totalFactsLearned: number
   totalFactsSold: number
   totalQuizCorrect: number
@@ -763,6 +721,6 @@ export interface PlayerStats {
   currentStreak: number       // Daily review streak
   bestStreak: number
   totalSessions: number         // incremented on app open
-  zeroDiveSessions: number      // incremented when session ends with 0 dives completed
+  zeroDiveSessions: number      // incremented when session ends with 0 runs completed
 }
 

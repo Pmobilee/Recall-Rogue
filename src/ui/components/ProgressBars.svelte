@@ -1,6 +1,6 @@
 <script lang="ts">
   import { playerSave, getDueReviews } from '../stores/playerData'
-  import { BALANCE } from '../../data/balance'
+
 
   const save = $derived($playerSave)
   const dueCount = $derived(getDueReviews().length)
@@ -8,7 +8,7 @@
   // Streak progress toward next milestone
   const streakInfo = $derived.by(() => {
     const streak = save?.stats?.currentStreak ?? 0
-    const milestones = BALANCE.STREAK_MILESTONES as readonly { days: number; name: string }[]
+    const milestones: readonly { days: number; name: string }[] = []
     const claimed = save?.claimedMilestones ?? []
     const next = milestones.find(m => m.days > streak && !claimed.includes(m.days))
     if (!next) return null

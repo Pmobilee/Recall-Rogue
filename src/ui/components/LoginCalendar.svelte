@@ -1,7 +1,7 @@
 <script lang="ts">
   import { BALANCE } from '../../data/balance'
   import { playerSave, persistPlayer } from '../stores/playerData'
-  import { getLoginCalendarDay, isTodayClaimed, claimLoginReward } from '../../data/loginRewards'
+  import { getLoginCalendarDay, isTodayClaimed, claimLoginReward, LOGIN_CALENDAR_REWARDS } from '../../data/loginRewards'
 
   interface Props {
     onClose: () => void
@@ -13,23 +13,19 @@
   const calendarDay = $derived(currentSave ? getLoginCalendarDay(currentSave) : 1)
   const todayClaimed = $derived(currentSave ? isTodayClaimed(currentSave) : false)
 
-  const rewards = BALANCE.LOGIN_CALENDAR_REWARDS as readonly { day: number; type: string; amount: number; icon: string; label: string; description: string }[]
+  const rewards = LOGIN_CALENDAR_REWARDS as readonly { day: number; type: string; amount: number; icon: string; label: string; description: string }[]
 
   function handleClaim(): void {
     if (!currentSave || todayClaimed) return
     const reward = claimLoginReward(currentSave)
     // Apply reward based on type
-    if (reward.type === 'dust') {
-      currentSave.minerals.dust = (currentSave.minerals.dust ?? 0) + reward.amount
-    } else if (reward.type === 'bomb') {
-      currentSave.consumables = currentSave.consumables ?? {}
-      currentSave.consumables.bomb = (currentSave.consumables.bomb ?? 0) + reward.amount
-    } else if (reward.type === 'streak_freeze') {
+    if (reward.type === 'streak_freeze') {
       currentSave.streakFreezes = Math.min(
         (currentSave.streakFreezes ?? 0) + reward.amount,
         BALANCE.STREAK_FREEZE_MAX
       )
     }
+    // card/relic rewards: applied at run start via run manager
     // Save and update store
     playerSave.set({ ...currentSave })
     persistPlayer()

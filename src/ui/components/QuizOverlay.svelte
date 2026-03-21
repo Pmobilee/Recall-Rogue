@@ -97,7 +97,7 @@
   const resultText = $derived.by(() => {
     if (!showResult || isCorrect === null) return ''
     if (isCorrect) return CORRECT_PHRASES[Math.floor(Math.random() * CORRECT_PHRASES.length)]
-    if (mode === 'layer') return `Not quite! -${BALANCE.LAYER_ENTRANCE_WRONG_O2_COST} O2`
+    if (mode === 'layer') return `Not quite!`
     return WRONG_PHRASES[Math.floor(Math.random() * WRONG_PHRASES.length)]
   })
 
@@ -310,7 +310,7 @@
       {#if mode === 'random'}
         <p class="pop-quiz-header">Scanner ping!</p>
         <p class="pop-quiz-sub">Residual data detected...</p>
-        <p class="pop-quiz-reward">Nailed it: +{BALANCE.RANDOM_QUIZ_REWARD_DUST} dust &nbsp;|&nbsp; Not quite: -{BALANCE.RANDOM_QUIZ_WRONG_O2_COST} O2</p>
+        <p class="pop-quiz-reward">Answer to earn bonus resources!</p>
       {/if}
 
       {#if mode === 'gate' && gateProgress}
@@ -427,7 +427,7 @@
     {#if mode === 'random'}
       <p class="pop-quiz-header">Scanner ping!</p>
       <p class="pop-quiz-sub">Residual data detected...</p>
-      <p class="pop-quiz-reward">Nailed it: +{BALANCE.RANDOM_QUIZ_REWARD_DUST} dust &nbsp;|&nbsp; Not quite: -{BALANCE.RANDOM_QUIZ_WRONG_O2_COST} O2</p>
+      <p class="pop-quiz-reward">Answer to earn bonus resources!</p>
     {/if}
 
     {#if mode === 'gate' && gateProgress}
@@ -532,7 +532,7 @@
     {/if}
 
     {#if showResult && isCorrect === false && isConsistencyPenalty}
-      <p class="consistency-penalty-warning" data-testid="quiz-consistency-warning">Consistency penalty! You knew this one. -{BALANCE.CONSISTENCY_PENALTY_O2} O2</p>
+      <p class="consistency-penalty-warning" data-testid="quiz-consistency-warning">Consistency check — you knew this one!</p>
     {/if}
 
     {#if showMemoryTip}
