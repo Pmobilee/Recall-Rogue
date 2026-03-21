@@ -37,6 +37,7 @@ export class EnemySpriteSystem {
   private hasRealTexture = false
   private jitterTimer: Phaser.Time.TimerEvent | null = null
   private animConfig: AnimConfig = getAnimConfig()
+  private animSpeed = 0.5
 
   private isEnraged = false
   private enrageParticleTimer: Phaser.Time.TimerEvent | null = null
@@ -245,6 +246,7 @@ export class EnemySpriteSystem {
         yoyo: true,
         repeat: -1,
         ease: 'Sine.easeInOut',
+        timeScale: this.animSpeed,
       })
 
       // Breathe tween: slight scale pulse
@@ -257,6 +259,7 @@ export class EnemySpriteSystem {
         repeat: -1,
         ease: 'Sine.easeInOut',
         delay: 400,
+        timeScale: this.animSpeed,
       })
 
       // Wobble tween: subtle rotation
@@ -268,6 +271,7 @@ export class EnemySpriteSystem {
         repeat: -1,
         ease: 'Sine.easeInOut',
         delay: 800,
+        timeScale: this.animSpeed,
       })
     }
 
@@ -331,6 +335,7 @@ export class EnemySpriteSystem {
           y: this.baseY + (step.dy ?? 0),
           duration: step.duration,
           ease: step.ease ?? 'Sine.easeInOut',
+          timeScale: this.animSpeed,
           onComplete: () => this.runPatternStep(pattern, nextIndex),
         })
         this.customIdleTweens.push(tween)
@@ -352,6 +357,7 @@ export class EnemySpriteSystem {
           scaleX: targetScaleX,
           duration: step.duration,
           ease: step.ease ?? 'Sine.easeInOut',
+          timeScale: this.animSpeed,
           onComplete: () => this.runPatternStep(pattern, nextIndex),
         })
         this.customIdleTweens.push(tween)
@@ -367,6 +373,7 @@ export class EnemySpriteSystem {
           duration: step.duration,
           ease: step.ease ?? 'Power2',
           yoyo: step.yoyo ?? true,
+          timeScale: this.animSpeed,
           onComplete: () => this.runPatternStep(pattern, nextIndex),
         })
         this.customIdleTweens.push(tween)
@@ -375,14 +382,14 @@ export class EnemySpriteSystem {
 
       case 'jitter': {
         const intensity = (step.intensity ?? 2) * this.effectScale
-        const interval = step.interval ?? 100
+        const interval = (step.interval ?? 100) * (1 / this.animSpeed)
         const elapsed = { value: 0 }
         const timer = this.scene.time.addEvent({
           delay: interval,
           loop: true,
           callback: () => {
             elapsed.value += interval
-            if (elapsed.value >= step.duration) {
+            if (elapsed.value >= step.duration * (1 / this.animSpeed)) {
               timer.destroy()
               // Reset position to base
               this.container.x = this.baseX
@@ -406,6 +413,7 @@ export class EnemySpriteSystem {
           x: this.baseX + (step.dx ?? 0),
           duration: step.duration,
           ease: step.ease ?? 'Sine.easeInOut',
+          timeScale: this.animSpeed,
           onComplete: () => this.runPatternStep(pattern, nextIndex),
         })
         this.customIdleTweens.push(tween)
@@ -419,6 +427,7 @@ export class EnemySpriteSystem {
           duration: step.duration,
           ease: step.ease ?? 'Sine.easeInOut',
           yoyo: step.yoyo ?? false,
+          timeScale: this.animSpeed,
           onComplete: () => this.runPatternStep(pattern, nextIndex),
         })
         this.customIdleTweens.push(tween)
@@ -432,6 +441,7 @@ export class EnemySpriteSystem {
           duration: step.duration,
           ease: step.ease ?? 'Sine.easeInOut',
           yoyo: step.yoyo ?? false,
+          timeScale: this.animSpeed,
           onComplete: () => this.runPatternStep(pattern, nextIndex),
         })
         this.customIdleTweens.push(tween)
@@ -470,10 +480,10 @@ export class EnemySpriteSystem {
       // Intensify idle: increase bob amplitude and speed
       if (this.idleBobTween) {
         this.idleBobTween.updateTo('y', this.baseY - this.animConfig.idle.bobAmplitude * 1.5)
-        this.idleBobTween.timeScale = 1.3
+        this.idleBobTween.timeScale = 1.3 * this.animSpeed
       }
       if (this.breatheTween) {
-        this.breatheTween.timeScale = 1.3
+        this.breatheTween.timeScale = 1.3 * this.animSpeed
       }
       // If base is suppressed, add a fast bob tween as enrage override
       if (!this.idleBobTween && this.animConfig.idleBehavior?.suppressBase) {
@@ -484,8 +494,9 @@ export class EnemySpriteSystem {
           yoyo: true,
           repeat: -1,
           ease: 'Sine.easeInOut',
+          timeScale: this.animSpeed,
         })
-        this.idleBobTween.timeScale = 1.3
+        this.idleBobTween.timeScale = 1.3 * this.animSpeed
       }
 
       // Red/orange glow rectangle around enemy
@@ -509,6 +520,7 @@ export class EnemySpriteSystem {
         yoyo: true,
         repeat: -1,
         ease: 'Sine.easeInOut',
+        timeScale: this.animSpeed,
       })
 
       // Ensure enrage particle texture
@@ -522,7 +534,7 @@ export class EnemySpriteSystem {
 
       // Continuous particle border
       this.enrageParticleTimer = this.scene.time.addEvent({
-        delay: 300,
+        delay: 300 / this.animSpeed,
         loop: true,
         callback: () => {
           if (!this.isEnraged) return
@@ -555,10 +567,10 @@ export class EnemySpriteSystem {
       // Deactivate enrage
       if (this.idleBobTween) {
         this.idleBobTween.updateTo('y', this.baseY - this.animConfig.idle.bobAmplitude)
-        this.idleBobTween.timeScale = 1
+        this.idleBobTween.timeScale = this.animSpeed
       }
       if (this.breatheTween) {
-        this.breatheTween.timeScale = 1
+        this.breatheTween.timeScale = this.animSpeed
       }
       // If base was suppressed, remove the enrage override bob
       if (this.animConfig.idleBehavior?.suppressBase && this.idleBobTween) {
@@ -603,6 +615,7 @@ export class EnemySpriteSystem {
         scaleY: attack.scale,
         duration: attack.lungeDuration,
         ease: 'Power2',
+        timeScale: this.animSpeed,
         onComplete: () => {
           // Phase 2: spring back
           this.scene.tweens.add({
@@ -614,6 +627,7 @@ export class EnemySpriteSystem {
             scaleY: 1,
             duration: attack.returnDuration,
             ease: attack.returnEase,
+            timeScale: this.animSpeed,
             onComplete: () => {
               this.isAnimating = false
               this.resumeIdle()
@@ -676,6 +690,7 @@ export class EnemySpriteSystem {
       scaleY: hit.scale,
       duration: hit.knockbackDuration,
       ease: 'Sine.easeOut',
+      timeScale: this.animSpeed,
       onComplete: () => {
         // Phase 2: spring back with elastic overshoot
         this.scene.tweens.add({
@@ -687,6 +702,7 @@ export class EnemySpriteSystem {
           scaleY: 1,
           duration: hit.returnDuration,
           ease: hit.returnEase,
+          timeScale: this.animSpeed,
           onComplete: () => {
             this.isAnimating = false
             this.resumeIdle()
@@ -731,15 +747,15 @@ export class EnemySpriteSystem {
 
       // Rapid jitter
       this.jitterTimer = this.scene.time.addEvent({
-        delay: 30,
-        repeat: 4, // 5 iterations × 30ms = 150ms
+        delay: 30 / this.animSpeed,
+        repeat: 4, // 5 iterations × 30ms = 150ms (scaled by animSpeed)
         callback: () => {
           this.container.x = baseX + (Math.random() - 0.5) * 6
         },
       })
 
-      // Phase 2 starts at 150ms
-      this.scene.time.delayedCall(150, () => {
+      // Phase 2 starts at 150ms (scaled by animSpeed)
+      this.scene.time.delayedCall(150 / this.animSpeed, () => {
         this.container.x = baseX // Reset jitter
         if (this.jitterTimer) {
           this.jitterTimer.destroy()
@@ -787,6 +803,7 @@ export class EnemySpriteSystem {
           alpha: 0.3,
           duration: 350,
           ease: 'Power2',
+          timeScale: this.animSpeed,
           onComplete: () => {
             // Phase 3 (500-800ms): second particle burst + final fade
 
@@ -809,6 +826,7 @@ export class EnemySpriteSystem {
               alpha: 0,
               duration: 300,
               ease: 'Power2',
+              timeScale: this.animSpeed,
               onComplete: () => {
                 // Clean up emitters after particles fade
                 this.scene.time.delayedCall(700, () => {
@@ -850,6 +868,7 @@ export class EnemySpriteSystem {
       scaleY: overshootScale,
       duration: popDuration,
       ease: 'Back.Out',
+      timeScale: this.animSpeed,
       onComplete: () => {
         // Camera shake on landing
         this.scene.cameras.main.shake(
@@ -865,6 +884,7 @@ export class EnemySpriteSystem {
           scaleY: 1,
           duration: settleDuration,
           ease: 'Sine.easeInOut',
+          timeScale: this.animSpeed,
           onComplete: () => {
             this.startIdle()
           },
