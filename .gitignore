@@ -146,3 +146,7 @@ data/playtests/runs/
 data/playtests/overnight*/
 data/playtests/logs/
 data/playtests/reports/
+
+# RL training artifacts
+tests/playtest/rl/logs/
+tests/playtest/rl/models/
