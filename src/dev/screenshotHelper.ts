@@ -1,6 +1,6 @@
 /**
  * Dev-mode screenshot helper — manual canvas compositing.
- * Captures the full game view (Phaser WebGL canvas + Svelte DOM overlay) as a base64 PNG.
+ * Captures the full game view (Phaser WebGL canvas + Svelte DOM overlay) as a composited image.
  * Called via window.__terraScreenshot() from Playwright tests.
  *
  * html2canvas can't handle WebGL canvases, so we:
@@ -8,18 +8,38 @@
  * 2. Create an offscreen canvas at viewport size
  * 3. Draw the Phaser canvas scaled to viewport
  * 4. Render DOM overlay elements on top (text, buttons, cards, HP bars)
+ * 5. Optionally downscale and/or encode as JPEG for smaller output
+ *
+ * window.__terraScreenshot()          → small JPEG (scale 0.5, quality 0.7) for tool consumption
+ * window.__terraScreenshotFile()      → full PNG saved to downloads folder
  */
 
-/** Capture full page as base64 PNG data URL string */
-export async function captureScreenshot(): Promise<string> {
+/** Options for captureScreenshot */
+export interface ScreenshotOptions {
+  /** Scale factor applied to the output canvas (default: 0.5) */
+  scale?: number;
+  /** JPEG quality 0–1, only used when format is 'jpeg' (default: 0.7) */
+  quality?: number;
+  /** Output format (default: 'jpeg') */
+  format?: 'png' | 'jpeg';
+}
+
+/**
+ * Capture full page as a base64 data URL string.
+ * Defaults to a downscaled JPEG (~50KB) suitable for tool consumption.
+ * Pass `{ scale: 1, format: 'png' }` for full-resolution PNG.
+ */
+export async function captureScreenshot(options: ScreenshotOptions = {}): Promise<string> {
+  const { scale = 0.5, quality = 0.7, format = 'jpeg' } = options;
+
   const vw = window.innerWidth;
   const vh = window.innerHeight;
 
-  // Create composite canvas
-  const comp = document.createElement('canvas');
-  comp.width = vw;
-  comp.height = vh;
-  const ctx = comp.getContext('2d')!;
+  // Create full-size composite canvas
+  const full = document.createElement('canvas');
+  full.width = vw;
+  full.height = vh;
+  const ctx = full.getContext('2d')!;
 
   // Fill background
   ctx.fillStyle = '#0D1117';
@@ -44,7 +64,53 @@ export async function captureScreenshot(): Promise<string> {
     ctx.drawImage(overlay, 0, 0);
   }
 
-  return comp.toDataURL('image/png');
+  // 3. If scale != 1, draw the full canvas onto a smaller output canvas
+  let output: HTMLCanvasElement;
+  if (scale !== 1) {
+    output = document.createElement('canvas');
+    output.width = Math.round(vw * scale);
+    output.height = Math.round(vh * scale);
+    const outCtx = output.getContext('2d')!;
+    outCtx.drawImage(full, 0, 0, output.width, output.height);
+  } else {
+    output = full;
+  }
+
+  // 4. Encode to requested format
+  if (format === 'jpeg') {
+    return output.toDataURL('image/jpeg', quality);
+  }
+  return output.toDataURL('image/png');
+}
+
+/**
+ * Capture a full-resolution PNG and trigger a browser download.
+ * Returns the filename that was downloaded.
+ * Exposed as window.__terraScreenshotFile() in dev mode.
+ */
+export async function captureScreenshotToFile(): Promise<string> {
+  const dataUrl = await captureScreenshot({ scale: 1, format: 'png' });
+
+  // Convert data URL to Blob
+  const [header, base64] = dataUrl.split(',');
+  const mime = header.match(/:(.*?);/)?.[1] ?? 'image/png';
+  const binary = atob(base64);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) {
+    bytes[i] = binary.charCodeAt(i);
+  }
+  const blob = new Blob([bytes], { type: mime });
+
+  const timestamp = Date.now();
+  const filename = `terra-screenshot-${timestamp}.png`;
+
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = filename;
+  link.click();
+  URL.revokeObjectURL(link.href);
+
+  return filename;
 }
 
 /** Render the DOM (excluding canvas) as an image via SVG foreignObject */
@@ -125,5 +191,9 @@ function inlineStyles(source: Element, clone: Element): void {
 
 /** Initialize the screenshot helper on window */
 export function initScreenshotHelper(): void {
-  (window as unknown as Record<string, unknown>).__terraScreenshot = captureScreenshot;
+  const win = window as unknown as Record<string, unknown>;
+  /** Small JPEG (scale 0.5, quality 0.7) for tool consumption — default args unchanged */
+  win.__terraScreenshot = captureScreenshot;
+  /** Full-resolution PNG saved to the downloads folder */
+  win.__terraScreenshotFile = captureScreenshotToFile;
 }

@@ -65,6 +65,44 @@ export const MASTERY_UPGRADE_DEFS: Record<string, MasteryUpgradeDef> = {
   immunity:      { perLevelDelta: 0, maxLevel: 2 },              // binary
   overclock:     { perLevelDelta: 0, apCostReductionAtLevels: [3], maxLevel: 3 }, // AP-1 at L3
   transmute:     { perLevelDelta: 0.2, maxLevel: 3 },            // floor'd: 1 -> 2 at L3
+
+  // ── AR-206: Phase 1 Expansion Cards ─────────────────────────────────────────
+
+  // Filler cards
+  power_strike:      { perLevelDelta: 2 },                           // 10 -> 20
+  twin_strike:       { perLevelDelta: 1 },                           // 5x2 -> 10x2 per hit
+  iron_wave:         { perLevelDelta: 1, secondaryPerLevelDelta: 1 }, // 5+5 -> 10+10
+  reinforce:         { perLevelDelta: 2 },                           // 8 -> 18
+  shrug_it_off:      { perLevelDelta: 1, addTagAtLevel: [3, 'draw2'] }, // 6 -> 11; L3: draws 2
+  bash:              { perLevelDelta: 2, addTagAtLevel: [3, 'vuln_ext'] }, // 10 -> 20; L3: +1t Vuln
+  guard:             { perLevelDelta: 2 },                           // 14 -> 24
+  sap:               { perLevelDelta: 1, addTagAtLevel: [3, 'weak_ext'] }, // 3 -> 8; L3: +1t Weakness
+
+  // Bleed cards
+  rupture:           { perLevelDelta: 1, secondaryPerLevelDelta: 1 }, // 5+3 -> 10+8
+  lacerate:          { perLevelDelta: 1, secondaryPerLevelDelta: 1 }, // 4+4 -> 9+9
+
+  // Burn cards
+  kindle:            { perLevelDelta: 1, secondaryPerLevelDelta: 1 }, // 4+4 -> 9+9
+  ignite:            { perLevelDelta: 1 },                           // 4 -> 9 burn on next atk
+
+  // Basic new cards
+  overcharge:        { perLevelDelta: 1 },                           // 6 -> 11 base (+ per-Charge scaling unchanged)
+  riposte:           { perLevelDelta: 1, secondaryPerLevelDelta: 1 }, // 5+4 -> 10+9
+  absorb:            { perLevelDelta: 1, addTagAtLevel: [3, 'draw2'] }, // 5 -> 10; L3 CC: draws 2
+  reactive_shield:   { perLevelDelta: 1, addTagAtLevel: [3, 'thorns_ext'] }, // 4 -> 9; L3: +1 Thorns
+  sift:              { perLevelDelta: 1 },                           // look 3 -> look 8 cards
+  scavenge:          { perLevelDelta: 0, addTagAtLevel: [3, 'scavenge2'], maxLevel: 3 }, // L3: QP puts 2 on top
+  precision_strike:  { perLevelDelta: 2, addTagAtLevel: [3, 'timer_ext75'] }, // 8 -> 18; L3: timer +75%
+  stagger:           { perLevelDelta: 0, addTagAtLevel: [3, 'weak_apply'], maxLevel: 3 }, // L3: QP applies 1t Weakness
+  corrode:           { perLevelDelta: 1, addTagAtLevel: [3, 'weak_ext'] }, // 5 -> 10 block removed; L3: +1t Weakness
+  swap:              { perLevelDelta: 0, addTagAtLevel: [3, 'draw3cc'], maxLevel: 3 }, // L3: CC draws 3
+  siphon_strike:     { perLevelDelta: 1, addTagAtLevel: [3, 'min_heal3'] }, // 6 -> 11; L3: min heal = 3
+  aegis_pulse:       { perLevelDelta: 1, addTagAtLevel: [3, 'chain_buff3'] }, // 5 -> 10; L3: chain buff +3
+
+  // Inscription cards
+  inscription_fury:  { perLevelDelta: 0.5 },                        // +2 -> +4 atk (rounded)
+  inscription_iron:  { perLevelDelta: 0.5 },                        // +3 -> +5 block/turn (rounded)
 };
 
 /**

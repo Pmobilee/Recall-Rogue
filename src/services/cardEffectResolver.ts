@@ -74,6 +74,24 @@ export interface CardEffectResult {
    * When hitCount > 1, damageDealt in this result is the PER-HIT base value (not total).
    */
   hitCount?: number;
+  /** AR-206: If set, enemy's next action should be skipped (stagger mechanic). */
+  applyStagger?: boolean;
+  /** AR-206: If true, also apply Vulnerable (for Bash CC stagger CC bonus). */
+  staggerAppliesVulnerable?: boolean;
+  /** AR-206: Number of enemy block points to remove (corrode mechanic). Negative = remove all. */
+  removeEnemyBlock?: number;
+  /** AR-206: Pending Burn stacks that will be added to the next attack played (ignite buff). */
+  applyIgniteBuff?: number;
+  /** AR-206: Cards to discard and then draw (swap mechanic). */
+  swapDiscardDraw?: { discardCount: number; drawCount: number };
+  /** AR-206: Number of cards to retrieve from discard pile to top of draw (scavenge). */
+  scavengeCount?: number;
+  /** AR-206: Number of cards to look at and discard count (sift mechanic). */
+  siftParams?: { lookAt: number; discardCount: number };
+  /** AR-206: Heal from overkill (siphon_strike). Value is already computed. */
+  overkillHeal?: number;
+  /** AR-206: Extra block granted to same-chain cards in hand (aegis_pulse CC). */
+  chainBlockBonus?: number;
 }
 
 export interface AdvancedResolveOptions {
@@ -485,18 +503,214 @@ export function resolveCardEffect(
       }
       return result;
     }
-    // AR-203: Ignite — applies Burn stacks to enemy. Damage bonus fires on next hit via Burn trigger.
-    // Mechanic definition lands in a separate AR; this stub handles when the mechanic is present.
+    // AR-203: Ignite — sets a buff so the NEXT attack card played adds Burn stacks.
     case 'ignite': {
-      const burnStacks = isChargeCorrect ? 8 : (isChargeWrong ? 1 : 3);
-      result.applyBurnStacks = burnStacks;
+      // finalValue encodes the Burn stacks to apply on the next attack.
+      // QP = 4, CC = 8, CW = 2 (from mechanic definition + mastery bonus).
+      result.applyIgniteBuff = finalValue;
       return result;
     }
-    // AR-203: Lacerate — applies Bleed stacks to enemy. Bonus applies on next card-play damage.
-    // Mechanic definition lands in a separate AR; this stub handles when the mechanic is present.
+    // AR-203/AR-206: Lacerate — applies Bleed stacks AND deals damage.
     case 'lacerate': {
-      const bleedStacks = isChargeCorrect ? 6 : (isChargeWrong ? 1 : 2);
-      result.applyBleedStacks = bleedStacks;
+      // QP: 4 dmg + 4 Bleed; CC: 12 dmg + 8 Bleed; CW: 3 dmg + 2 Bleed
+      const lacerateBleed = isChargeCorrect ? 8 : (isChargeWrong ? 2 : (card.secondaryValue ?? mechanic?.secondaryValue ?? 4));
+      applyAttackDamage(finalValue);
+      result.applyBleedStacks = lacerateBleed;
+      return result;
+    }
+
+    // ── AR-206: New card resolver cases ────────────────────────────────────────
+
+    // Filler: Twin Strike — 2 hits, each triggers Burn/Bleed separately
+    case 'twin_strike': {
+      const hits = 2;
+      applyAttackDamage(finalValue); // per-hit damage (Vulnerable already applied)
+      result.hitCount = hits;
+      return result;
+    }
+    // Filler: Iron Wave — hybrid damage + block
+    case 'iron_wave': {
+      applyAttackDamage(finalValue);
+      const ironWaveBlock = isChargeCorrect
+        ? Math.round((mechanic?.quickPlayValue ?? 5) * CHARGE_CORRECT_MULTIPLIER + getMasterySecondaryBonus(mechanicId, card.masteryLevel ?? 0))
+        : (isChargeWrong ? Math.round((card.secondaryValue ?? mechanic?.secondaryValue ?? 5) * 0.7) : applyShieldRelics(card.secondaryValue ?? mechanic?.secondaryValue ?? 5));
+      result.shieldApplied = applyShieldRelics(ironWaveBlock);
+      return result;
+    }
+    // Filler: Shrug It Off — block + draw on QP/CC (no draw on CW)
+    case 'shrug_it_off': {
+      result.shieldApplied = applyShieldRelics(finalValue);
+      if (!isChargeWrong) {
+        // L3+ draws 2 instead of 1 (addTagAtLevel: [3, 'draw2'])
+        const draws = (card.masteryLevel ?? 0) >= 3 ? 2 : 1;
+        result.extraCardsDrawn = draws;
+      }
+      return result;
+    }
+    // Filler: Bash — damage + apply Vulnerable
+    case 'bash': {
+      applyAttackDamage(finalValue);
+      const bashVulnDuration = isChargeCorrect ? 2 : 1;
+      // L3+ bonus: +1 Vuln duration (addTagAtLevel: [3, 'vuln_ext'])
+      const masteryVulnBonus = (card.masteryLevel ?? 0) >= 3 ? 1 : 0;
+      result.statusesApplied.push({
+        type: 'vulnerable',
+        value: 1,
+        turnsRemaining: bashVulnDuration + masteryVulnBonus,
+      });
+      return result;
+    }
+    // Filler: Sap — small damage + apply Weakness
+    case 'sap': {
+      applyAttackDamage(finalValue);
+      const sapWeakDuration = isChargeCorrect ? 2 : 1;
+      // L3+ bonus: +1 Weakness duration
+      const masteryWeakBonus = (card.masteryLevel ?? 0) >= 3 ? 1 : 0;
+      result.statusesApplied.push({
+        type: 'weakness',
+        value: 1,
+        turnsRemaining: sapWeakDuration + masteryWeakBonus,
+      });
+      return result;
+    }
+    // Bleed: Rupture — damage + Bleed stacks
+    case 'rupture': {
+      applyAttackDamage(finalValue);
+      const ruptureBleed = isChargeCorrect ? 8 : (isChargeWrong ? 2 : (card.secondaryValue ?? mechanic?.secondaryValue ?? 3));
+      result.applyBleedStacks = ruptureBleed;
+      return result;
+    }
+    // Burn: Kindle — damage + Burn, and the hit itself triggers the Burn immediately
+    case 'kindle': {
+      applyAttackDamage(finalValue);
+      const kindleBurn = isChargeCorrect ? 8 : (isChargeWrong ? 2 : (card.secondaryValue ?? mechanic?.secondaryValue ?? 4));
+      result.applyBurnStacks = kindleBurn;
+      // hitCount = 1 so turnManager triggers Burn once on this hit
+      result.hitCount = 1;
+      return result;
+    }
+    // New: Overcharge — QP/CW fixed damage; CC scales with encounter charge count
+    case 'overcharge': {
+      // The turnManager will read encounterChargeCount to compute CC bonus.
+      // We set a flag via mechanicId being 'overcharge' — turnManager handles scaling.
+      applyAttackDamage(finalValue);
+      return result;
+    }
+    // New: Riposte — hybrid damage + block
+    case 'riposte': {
+      applyAttackDamage(finalValue);
+      const riposteBlock = isChargeCorrect
+        ? Math.round(12 * focusAdjustedMultiplier * chainMultiplier * speedBonus * buffMultiplier * overclockMultiplier)
+        : (isChargeWrong ? applyShieldRelics(Math.round((card.secondaryValue ?? mechanic?.secondaryValue ?? 4) * 0.75))
+          : applyShieldRelics(card.secondaryValue ?? mechanic?.secondaryValue ?? 4));
+      result.shieldApplied = applyShieldRelics(riposteBlock);
+      return result;
+    }
+    // New: Absorb — block, CC also draws a card
+    case 'absorb': {
+      result.shieldApplied = applyShieldRelics(finalValue);
+      if (isChargeCorrect) {
+        // L3+ draws 2 instead of 1
+        const draws = (card.masteryLevel ?? 0) >= 3 ? 2 : 1;
+        result.extraCardsDrawn = draws;
+      }
+      return result;
+    }
+    // New: Reactive Shield — block + Thorns for turns
+    case 'reactive_shield': {
+      result.shieldApplied = applyShieldRelics(finalValue);
+      const rsThornValue = isChargeCorrect ? 5 : (isChargeWrong ? 1 : (card.secondaryValue ?? mechanic?.secondaryValue ?? 2));
+      const rsThornDuration = isChargeCorrect ? 2 : 1;
+      // L3+ bonus: +1 Thorns base
+      const masteryThornsBonus = (card.masteryLevel ?? 0) >= 3 ? 1 : 0;
+      result.thornsValue = rsThornValue + masteryThornsBonus;
+      return result;
+    }
+    // New: Sift — scry (look at top N, discard some)
+    case 'sift': {
+      const siftLookAt = isChargeCorrect ? 5 : (isChargeWrong ? 2 : (card.baseEffectValue ?? 3));
+      const siftDiscard = isChargeCorrect ? 2 : 1;
+      result.siftParams = { lookAt: siftLookAt, discardCount: siftDiscard };
+      return result;
+    }
+    // New: Scavenge — retrieve card(s) from discard to top of draw
+    case 'scavenge': {
+      const scavengeCount = isChargeCorrect ? 2 : 1;
+      // L3+ on QP: also retrieves 2 (same as CC)
+      const masteryScavengeBonus = (!isChargeCorrect && !isChargeWrong && (card.masteryLevel ?? 0) >= 3) ? 1 : 0;
+      result.scavengeCount = scavengeCount + masteryScavengeBonus;
+      return result;
+    }
+    // New: Precision Strike — damage; timer extension handled by quiz system reading mechanic tag
+    case 'precision_strike': {
+      applyAttackDamage(finalValue);
+      // Timer extension (+50%, or +75% at L3+) is handled by the quiz timer system via mechanic ID.
+      return result;
+    }
+    // New: Stagger — skip enemy next action
+    case 'stagger': {
+      result.applyStagger = true;
+      if (isChargeCorrect) {
+        result.statusesApplied.push({ type: 'vulnerable', value: 1, turnsRemaining: 1 });
+      }
+      // L3+ bonus on QP: also apply Weakness
+      if (!isChargeCorrect && !isChargeWrong && (card.masteryLevel ?? 0) >= 3) {
+        result.statusesApplied.push({ type: 'weakness', value: 1, turnsRemaining: 1 });
+      }
+      return result;
+    }
+    // New: Corrode — remove enemy block + apply Weakness
+    case 'corrode': {
+      // QP: remove 5 block + 1t Weakness; CC: remove ALL block + 2t Weakness; CW: remove 3 + 1t
+      const corrodeRemove = isChargeCorrect ? -1 : (isChargeWrong ? 3 : finalValue); // -1 = remove all
+      const corrodeWeakDuration = isChargeCorrect ? 2 : 1;
+      // L3+ bonus: +1 Weakness duration
+      const masteryWeakBonusC = (card.masteryLevel ?? 0) >= 3 ? 1 : 0;
+      result.removeEnemyBlock = corrodeRemove;
+      result.statusesApplied.push({ type: 'weakness', value: 1, turnsRemaining: corrodeWeakDuration + masteryWeakBonusC });
+      return result;
+    }
+    // New: Swap — discard 1, draw 1 (QP/CW) or draw 2 (CC)
+    case 'swap': {
+      const swapDrawCount = isChargeCorrect ? 2 : 1;
+      // L3+ CC: draws 3
+      const masterySwapBonus = (isChargeCorrect && (card.masteryLevel ?? 0) >= 3) ? 1 : 0;
+      result.swapDiscardDraw = { discardCount: 1, drawCount: swapDrawCount + masterySwapBonus };
+      return result;
+    }
+    // New: Siphon Strike — damage + overkill heal (min 2, max 10)
+    case 'siphon_strike': {
+      applyAttackDamage(finalValue);
+      if (!isChargeWrong) {
+        // Overkill heal computed here; turnManager adjusts based on actual HP remaining.
+        // We store the min heal; turnManager computes overkill and clamps.
+        const minHeal = (card.masteryLevel ?? 0) >= 3 ? 3 : 2;
+        result.overkillHeal = minHeal; // sentinel: turnManager computes actual overkill
+      }
+      return result;
+    }
+    // New: Aegis Pulse — block; CC also grants chain block bonus to same-chain cards
+    case 'aegis_pulse': {
+      result.shieldApplied = applyShieldRelics(finalValue);
+      if (isChargeCorrect) {
+        // L3+: chain buff = +3 instead of +2
+        const chainBuff = (card.masteryLevel ?? 0) >= 3 ? 3 : 2;
+        result.chainBlockBonus = chainBuff;
+      }
+      return result;
+    }
+    // New: Inscription of Fury — persistent attack bonus for rest of combat
+    case 'inscription_fury': {
+      // resolveInscription() in turnManager handles registration + exhaust.
+      // finalValue encodes the per-attack bonus (QP=2, CC=4, CW=1 + mastery).
+      result.finalValue = finalValue;
+      return result;
+    }
+    // New: Inscription of Iron — persistent block per turn for rest of combat
+    case 'inscription_iron': {
+      // resolveInscription() in turnManager handles registration + exhaust.
+      // finalValue encodes the per-turn block bonus (QP=3, CC=6, CW=1 + mastery).
+      result.finalValue = finalValue;
       return result;
     }
     default:

@@ -58,10 +58,9 @@ await new Promise(r => setTimeout(r, 500));
 ```
 
 Then:
-- `mcp__playwright__browser_take_screenshot` -- visual check (ALWAYS use this MCP tool, NEVER `page.screenshot()` via `browser_run_code` — Phaser's RAF loop blocks it permanently)
-- `mcp__playwright__browser_snapshot` -- DOM state (fallback if screenshot fails)
-- `mcp__playwright__browser_console_messages` -- errors
-- **NEVER** use `page.context().newCDPSession()` — it hangs permanently
+- `browser_evaluate(() => window.__terraScreenshot())` — captures full page (Phaser canvas + DOM overlays) as base64 PNG. This is the ONLY screenshot method that works with Phaser. NEVER use `mcp__playwright__browser_take_screenshot` (Phaser RAF blocks it, 30s timeout) or `page.screenshot()` (same issue) or `newCDPSession()` (hangs permanently).
+- `mcp__playwright__browser_snapshot` — DOM state (supplementary, always works)
+- `mcp__playwright__browser_console_messages` — errors
 
 ## Available Presets
 
@@ -248,8 +247,8 @@ await page.evaluate(() => {
 2. browser_evaluate -> disable animations
 3. browser_evaluate -> __terraScenario.loadCustom({ screen: 'combat', enemy: 'the_archivist', playerHp: 30, hand: ['heavy_strike', 'block', 'lifetap'], relics: ['whetstone'] })
 4. wait 500ms
-5. mcp__playwright__browser_take_screenshot -> inspect visual (NEVER use page.screenshot() via browser_run_code — Phaser RAF blocks it)
-6. browser_snapshot -> check DOM (fallback if screenshot times out)
+5. browser_evaluate(() => window.__terraScreenshot()) -> full page screenshot (Phaser + DOM composite)
+6. browser_snapshot -> check DOM state (supplementary)
 7. browser_console_messages -> check errors
 8. If issues found -> fix code -> repeat from step 3
 ```

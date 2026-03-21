@@ -227,7 +227,7 @@ Run the sim BEFORE making changes to get a baseline, then AFTER to compare. Docu
 ### Visual inspection commands:
 ```
 1. mcp__playwright__browser_navigate → http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial
-2. mcp__playwright__browser_take_screenshot
+2. browser_evaluate(() => window.__terraScreenshot()) — full page screenshot (Phaser + DOM)
 3. mcp__playwright__browser_snapshot
 4. mcp__playwright__browser_console_messages
 5. For Phaser canvas: browser_evaluate(() => window.__terraDebug())

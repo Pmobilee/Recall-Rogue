@@ -205,6 +205,21 @@ export interface TurnState {
    * Pool = 1 per mechanicId (no stacking same-type inscriptions).
    */
   activeInscriptions: ActiveInscription[];
+  /**
+   * AR-206: Stagger — when true, the enemy's next action is skipped.
+   * The turn counter still advances (enrage still ticks). Resets after firing.
+   */
+  staggeredEnemyNextTurn: boolean;
+  /**
+   * AR-206: Ignite buff — Burn stacks to add to the next attack card played.
+   * Set by Ignite card; consumed on the first subsequent attack play. 0 = inactive.
+   */
+  ignitePendingBurn: number;
+  /**
+   * AR-206: Total Charge plays (correct + wrong) this encounter.
+   * Used by Overcharge CC scaling: CC = base + (2 per charge played).
+   */
+  encounterChargesTotal: number;
 }
 
 export interface PlayCardResult {
@@ -395,6 +410,9 @@ export function startEncounter(
     nextChargeFree: false,
     phoenixAutoChargeTurns: 0,
     activeInscriptions: [],
+    staggeredEnemyNextTurn: false,
+    ignitePendingBurn: 0,
+    encounterChargesTotal: 0,
   };
 
   // Reset chain at encounter start (clean slate)
@@ -1083,6 +1101,8 @@ export function playCardAction(
   // Step 5e (AR-59.13): Mark Charge was used this turn on correct answer
   if (playMode === 'charge') {
     enemy.playerChargedThisTurn = true;
+    // AR-206: Track total Charges played this encounter for Overcharge scaling
+    turnState.encounterChargesTotal += 1;
   }
 
   // Step 5b (AR-59.13): onPlayerChargeCorrect callback — Charge play, correct answer only
@@ -1198,13 +1218,131 @@ export function playCardAction(
     turnState.thornsValue = effect.thornsValue ?? 0;
   }
 
+  // AR-206: Stagger — skip enemy's next action (turn counter still advances)
+  if (effect.applyStagger) {
+    turnState.staggeredEnemyNextTurn = true;
+  }
+
+  // AR-206: Ignite buff — store pending Burn to apply on next attack
+  if ((effect.applyIgniteBuff ?? 0) > 0) {
+    turnState.ignitePendingBurn = effect.applyIgniteBuff!;
+  }
+
+  // AR-206: Corrode — remove enemy block
+  if (effect.removeEnemyBlock !== undefined) {
+    if (effect.removeEnemyBlock < 0) {
+      // Remove ALL enemy block
+      enemy.block = 0;
+    } else {
+      enemy.block = Math.max(0, enemy.block - effect.removeEnemyBlock);
+    }
+    turnState.turnLog.push({
+      type: 'play',
+      message: `Corrode: removed enemy block`,
+      value: effect.removeEnemyBlock,
+    });
+  }
+
+  // AR-206: Swap — discard 1 card (auto-select lowest value), draw replacements
+  if (effect.swapDiscardDraw) {
+    const { discardCount, drawCount } = effect.swapDiscardDraw;
+    // Auto-select lowest-value card(s) from hand to discard (excluding the card just played)
+    const handCopy = [...deck.hand];
+    for (let i = 0; i < discardCount && handCopy.length > 0; i++) {
+      let lowestIdx = 0;
+      let lowestVal = Infinity;
+      for (let j = 0; j < handCopy.length; j++) {
+        if ((handCopy[j].baseEffectValue ?? 0) < lowestVal) {
+          lowestVal = handCopy[j].baseEffectValue ?? 0;
+          lowestIdx = j;
+        }
+      }
+      const discarded = handCopy.splice(lowestIdx, 1)[0];
+      deck.discardPile.push(discarded);
+      deck.hand = deck.hand.filter(c => c.id !== discarded.id);
+    }
+    drawHand(deck, drawCount);
+  }
+
+  // AR-206: Scavenge — retrieve card(s) from discard to top of draw pile
+  if ((effect.scavengeCount ?? 0) > 0) {
+    const count = effect.scavengeCount!;
+    // Auto-select the highest-value card(s) from discard pile
+    const discardSorted = [...deck.discardPile].sort((a, b) => (b.baseEffectValue ?? 0) - (a.baseEffectValue ?? 0));
+    const toRetrieve = discardSorted.slice(0, count);
+    for (const retrieved of toRetrieve) {
+      deck.discardPile = deck.discardPile.filter(c => c.id !== retrieved.id);
+      deck.drawPile.unshift(retrieved); // put on top
+    }
+  }
+
+  // AR-206: Sift — scry (look at top N, auto-discard lowest-value ones)
+  // Full CardBrowser UI integration is deferred; for now auto-select lowest-value cards.
+  if (effect.siftParams) {
+    const { lookAt, discardCount } = effect.siftParams;
+    const topCards = deck.drawPile.slice(0, lookAt);
+    const sorted = [...topCards].sort((a, b) => (a.baseEffectValue ?? 0) - (b.baseEffectValue ?? 0));
+    const toDiscard = sorted.slice(0, discardCount);
+    for (const c of toDiscard) {
+      deck.drawPile = deck.drawPile.filter(d => d.id !== c.id);
+      deck.discardPile.push(c);
+    }
+  }
+
+  // AR-206: Siphon Strike — overkill heal (min 2 or 3 at L3+, max 10)
+  if ((effect.overkillHeal ?? 0) > 0) {
+    const minHeal = effect.overkillHeal!;
+    const overkill = effect.enemyDefeated
+      ? Math.max(0, effect.damageDealt - enemy.currentHP)
+      : 0;
+    const healAmount = Math.min(10, Math.max(minHeal, overkill));
+    healPlayer(playerState, healAmount);
+    turnState.turnLog.push({
+      type: 'heal',
+      message: `Siphon Strike heal: ${healAmount} HP`,
+      value: healAmount,
+    });
+  }
+
+  // AR-206: Overcharge — on Charge Correct, add bonus damage per encounter charges
+  if (card.mechanicId === 'overcharge' && isChargeCorrect) {
+    const bonusDamage = turnState.encounterChargesTotal * 2;
+    if (bonusDamage > 0) {
+      effect.damageDealt = Math.max(0, Math.round(
+        (effect.damageDealt ?? 0) + bonusDamage
+      ));
+      effect.enemyDefeated = effect.damageDealt >= enemy.currentHP;
+      if (effect.damageDealt > 0) {
+        applyDamageToEnemy(enemy, bonusDamage);
+        if (enemy.currentHP <= 0) {
+          turnState.result = 'victory';
+          turnState.phase = 'encounter_end';
+        }
+      }
+    }
+  }
+
+  // AR-206: Ignite — apply pending Burn to the target on attack card plays
+  if ((turnState.ignitePendingBurn ?? 0) > 0 && effect.effectType === 'attack' && card.mechanicId !== 'ignite') {
+    applyStatusEffect(enemy.statusEffects, {
+      type: 'burn',
+      value: turnState.ignitePendingBurn,
+      turnsRemaining: 99,
+    });
+    turnState.ignitePendingBurn = 0;
+  }
+
+  // AR-206: Aegis Pulse CC — grant chain block bonus to same-chain cards in hand
+  // This sets a per-turn buff on matching cards; simplified as a turn-scoped flag for now.
+  // TODO: wire to card display when chain type matching UI is available.
+
   if ((effect.grantsAp ?? 0) > 0) {
     turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + (effect.grantsAp ?? 0));
   }
 
-  if (card.cardType === 'buff' && !effect.applyDoubleStrikeBuff && !effect.applyFocusBuff && !effect.applyOverclock) {
+  if (card.cardType === 'buff' && !effect.applyDoubleStrikeBuff && !effect.applyFocusBuff && !effect.applyOverclock && !(effect.applyIgniteBuff ?? 0)) {
     turnState.buffNextCard = effect.finalValue;
-  } else {
+  } else if (!effect.applyIgniteBuff) {
     turnState.buffNextCard = 0;
   }
 
@@ -1339,7 +1477,11 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
 
   let intentResult = { damage: 0, playerEffects: [] as StatusEffect[], enemyHealed: 0 };
   let intentSkipped = false;
-  if (
+  if (turnState.staggeredEnemyNextTurn) {
+    // AR-206: Stagger — skip enemy action entirely. Turn counter advances, enrage still ticks.
+    intentSkipped = true;
+    turnState.staggeredEnemyNextTurn = false;
+  } else if (
     turnState.slowEnemyIntent &&
     (enemy.nextIntent.type === 'defend' || enemy.nextIntent.type === 'buff')
   ) {

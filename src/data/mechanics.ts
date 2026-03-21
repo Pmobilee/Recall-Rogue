@@ -266,6 +266,172 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     baseValue: 2, apCost: 2, maxPerPool: 0, tags: ['overclock'], launchPhase: 2, unlockLevel: 0,
     quickPlayValue: 2, chargeCorrectValue: 2, chargeWrongValue: 2,
   },
+
+  // ── AR-206: Phase 1 Expansion Cards ─────────────────────────────────────────
+
+  // Filler cards (8)
+  {
+    id: 'power_strike', name: 'Power Strike', type: 'attack',
+    description: 'A heavier strike that deals more damage.',
+    baseValue: 10, apCost: 1, maxPerPool: 3, tags: ['strike'], launchPhase: 1, unlockLevel: 0,
+    quickPlayValue: 10, chargeCorrectValue: 30, chargeWrongValue: 7,
+  },
+  {
+    id: 'twin_strike', name: 'Twin Strike', type: 'attack',
+    description: 'Hit twice. Each hit triggers Burn and Bleed separately.',
+    baseValue: 5, apCost: 1, maxPerPool: 2, secondaryValue: 2, tags: ['strike', 'multi'], launchPhase: 1, unlockLevel: 2,
+    quickPlayValue: 5, chargeCorrectValue: 15, chargeWrongValue: 3,
+  },
+  {
+    id: 'iron_wave', name: 'Iron Wave', type: 'attack',
+    description: 'Deal damage and gain block.',
+    baseValue: 5, apCost: 1, maxPerPool: 2, secondaryValue: 5, tags: ['strike'], launchPhase: 1, unlockLevel: 0,
+    quickPlayValue: 5, chargeCorrectValue: 15, chargeWrongValue: 3,
+  },
+  {
+    id: 'reinforce', name: 'Reinforce', type: 'shield',
+    description: 'Gain more block than a basic shield.',
+    baseValue: 8, apCost: 1, maxPerPool: 3, tags: ['block'], launchPhase: 1, unlockLevel: 0,
+    quickPlayValue: 8, chargeCorrectValue: 24, chargeWrongValue: 6,
+  },
+  {
+    id: 'shrug_it_off', name: 'Shrug It Off', type: 'shield',
+    description: 'Gain block and draw a card on Quick Play or Charge.',
+    baseValue: 6, apCost: 1, maxPerPool: 2, tags: ['block', 'draw'], launchPhase: 1, unlockLevel: 2,
+    quickPlayValue: 6, chargeCorrectValue: 18, chargeWrongValue: 4,
+  },
+  {
+    id: 'bash', name: 'Bash', type: 'attack',
+    description: 'Deal damage and apply Vulnerable.',
+    baseValue: 10, apCost: 2, maxPerPool: 2, tags: ['strike'], launchPhase: 1, unlockLevel: 1,
+    quickPlayValue: 10, chargeCorrectValue: 30, chargeWrongValue: 7,
+  },
+  {
+    id: 'guard', name: 'Guard', type: 'shield',
+    description: 'Gain a large amount of block.',
+    baseValue: 14, apCost: 2, maxPerPool: 2, tags: ['block'], launchPhase: 1, unlockLevel: 1,
+    quickPlayValue: 14, chargeCorrectValue: 42, chargeWrongValue: 10,
+  },
+  {
+    id: 'sap', name: 'Sap', type: 'debuff',
+    description: 'Deal damage and apply Weakness.',
+    baseValue: 3, apCost: 1, maxPerPool: 2, tags: ['weakness'], launchPhase: 1, unlockLevel: 1,
+    quickPlayValue: 3, chargeCorrectValue: 9, chargeWrongValue: 2,
+  },
+
+  // Bleed cards (2)
+  {
+    id: 'rupture', name: 'Rupture', type: 'attack',
+    description: 'Deal damage and apply Bleed.',
+    baseValue: 5, apCost: 1, maxPerPool: 2, secondaryValue: 3, tags: ['strike', 'bleed'], launchPhase: 1, unlockLevel: 4,
+    quickPlayValue: 5, chargeCorrectValue: 15, chargeWrongValue: 3,
+  },
+  {
+    id: 'lacerate', name: 'Lacerate', type: 'debuff',
+    description: 'Deal damage and apply Bleed.',
+    baseValue: 4, apCost: 1, maxPerPool: 2, secondaryValue: 4, tags: ['bleed'], launchPhase: 1, unlockLevel: 4,
+    quickPlayValue: 4, chargeCorrectValue: 12, chargeWrongValue: 3,
+  },
+
+  // Burn cards (2)
+  {
+    id: 'kindle', name: 'Kindle', type: 'attack',
+    description: 'Deal damage, apply Burn, and immediately trigger it.',
+    baseValue: 4, apCost: 1, maxPerPool: 2, secondaryValue: 4, tags: ['strike', 'burn'], launchPhase: 1, unlockLevel: 5,
+    quickPlayValue: 4, chargeCorrectValue: 8, chargeWrongValue: 3,
+  },
+  {
+    id: 'ignite', name: 'Ignite', type: 'buff',
+    description: 'Your next attack applies Burn.',
+    baseValue: 4, apCost: 1, maxPerPool: 2, tags: ['burn', 'buff'], launchPhase: 1, unlockLevel: 5,
+    quickPlayValue: 4, chargeCorrectValue: 8, chargeWrongValue: 2,
+  },
+
+  // Basic new cards (14)
+  {
+    id: 'overcharge', name: 'Overcharge', type: 'attack',
+    description: 'Deal damage. On Charge: scales with Charges played this encounter.',
+    baseValue: 6, apCost: 1, maxPerPool: 2, tags: ['strike'], launchPhase: 1, unlockLevel: 5,
+    quickPlayValue: 6, chargeCorrectValue: 6, chargeWrongValue: 4,
+  },
+  {
+    id: 'riposte', name: 'Riposte', type: 'attack',
+    description: 'Deal damage and gain block.',
+    baseValue: 5, apCost: 1, maxPerPool: 2, secondaryValue: 4, tags: ['strike'], launchPhase: 1, unlockLevel: 3,
+    quickPlayValue: 5, chargeCorrectValue: 15, chargeWrongValue: 3,
+  },
+  {
+    id: 'absorb', name: 'Absorb', type: 'shield',
+    description: 'Gain block. On Charge Correct: also draw a card.',
+    baseValue: 5, apCost: 1, maxPerPool: 2, tags: ['block'], launchPhase: 1, unlockLevel: 4,
+    quickPlayValue: 5, chargeCorrectValue: 5, chargeWrongValue: 3,
+  },
+  {
+    id: 'reactive_shield', name: 'Reactive Shield', type: 'shield',
+    description: 'Gain block and apply Thorns for 1 turn.',
+    baseValue: 4, apCost: 1, maxPerPool: 2, secondaryValue: 2, tags: ['block', 'retaliate'], launchPhase: 1, unlockLevel: 5,
+    quickPlayValue: 4, chargeCorrectValue: 12, chargeWrongValue: 3,
+  },
+  {
+    id: 'sift', name: 'Sift', type: 'utility',
+    description: 'Look at top cards of your draw pile and discard some.',
+    baseValue: 3, apCost: 1, maxPerPool: 2, tags: ['scry'], launchPhase: 1, unlockLevel: 3,
+    quickPlayValue: 3, chargeCorrectValue: 5, chargeWrongValue: 2,
+  },
+  {
+    id: 'scavenge', name: 'Scavenge', type: 'utility',
+    description: 'Put a card from your discard pile on top of your draw pile.',
+    baseValue: 1, apCost: 1, maxPerPool: 2, tags: ['recover'], launchPhase: 1, unlockLevel: 4,
+    quickPlayValue: 1, chargeCorrectValue: 2, chargeWrongValue: 1,
+  },
+  {
+    id: 'precision_strike', name: 'Precision Strike', type: 'attack',
+    description: 'Deal damage. Charge timer is 50% longer.',
+    baseValue: 8, apCost: 1, maxPerPool: 2, tags: ['strike'], launchPhase: 1, unlockLevel: 4,
+    quickPlayValue: 8, chargeCorrectValue: 24, chargeWrongValue: 5,
+  },
+  {
+    id: 'stagger', name: 'Stagger', type: 'debuff',
+    description: "Skip the enemy's next action. Turn counter still advances.",
+    baseValue: 1, apCost: 1, maxPerPool: 1, tags: ['stagger'], launchPhase: 1, unlockLevel: 3,
+    quickPlayValue: 1, chargeCorrectValue: 1, chargeWrongValue: 1,
+  },
+  {
+    id: 'corrode', name: 'Corrode', type: 'debuff',
+    description: "Remove enemy block and apply Weakness.",
+    baseValue: 5, apCost: 1, maxPerPool: 1, tags: ['weakness'], launchPhase: 1, unlockLevel: 5,
+    quickPlayValue: 5, chargeCorrectValue: 0, chargeWrongValue: 3,
+  },
+  {
+    id: 'swap', name: 'Swap', type: 'utility',
+    description: 'Discard a card and draw a replacement.',
+    baseValue: 1, apCost: 0, maxPerPool: 2, tags: ['cycle'], launchPhase: 1, unlockLevel: 2,
+    quickPlayValue: 1, chargeCorrectValue: 2, chargeWrongValue: 1,
+  },
+  {
+    id: 'siphon_strike', name: 'Siphon Strike', type: 'attack',
+    description: 'Deal damage and heal based on overkill damage (min 2, max 10).',
+    baseValue: 6, apCost: 1, maxPerPool: 2, tags: ['strike', 'lifetap'], launchPhase: 1, unlockLevel: 3,
+    quickPlayValue: 6, chargeCorrectValue: 18, chargeWrongValue: 4,
+  },
+  {
+    id: 'aegis_pulse', name: 'Aegis Pulse', type: 'shield',
+    description: 'Gain block. On Charge Correct: same-chain cards in hand gain +2 block.',
+    baseValue: 5, apCost: 1, maxPerPool: 2, tags: ['block'], launchPhase: 1, unlockLevel: 6,
+    quickPlayValue: 5, chargeCorrectValue: 5, chargeWrongValue: 3,
+  },
+  {
+    id: 'inscription_fury', name: 'Inscription of Fury', type: 'buff',
+    description: 'All attacks deal bonus damage for the rest of combat.',
+    baseValue: 2, apCost: 2, maxPerPool: 1, tags: ['inscription'], launchPhase: 1, unlockLevel: 0,
+    quickPlayValue: 2, chargeCorrectValue: 4, chargeWrongValue: 1,
+  },
+  {
+    id: 'inscription_iron', name: 'Inscription of Iron', type: 'buff',
+    description: 'Gain block at the start of each turn for the rest of combat.',
+    baseValue: 3, apCost: 2, maxPerPool: 1, tags: ['inscription'], launchPhase: 1, unlockLevel: 0,
+    quickPlayValue: 3, chargeCorrectValue: 6, chargeWrongValue: 1,
+  },
 ];
 
 /** Returns mechanics filtered by launch phase gate. */

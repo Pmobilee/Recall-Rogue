@@ -162,10 +162,11 @@ Use this instead of raw console messages — filters out environment noise:
 
 ## Screenshot Rules
 
-- **Max 8 screenshots per scenario** — ALWAYS use `mcp__playwright__browser_take_screenshot` (the MCP tool)
-- **NEVER** use `page.screenshot()` via `browser_run_code` — Phaser's RAF loop blocks it permanently
+- **Max 8 screenshots per scenario** — ALWAYS use `browser_evaluate(() => window.__terraScreenshot())` which captures the full page (Phaser canvas + DOM overlays) as base64 PNG
+- **NEVER** use `mcp__playwright__browser_take_screenshot` — Phaser's continuous RAF loop causes a permanent 30s timeout
+- **NEVER** use `page.screenshot()` via `browser_run_code` — same RAF blocking issue
 - **NEVER** use `page.context().newCDPSession()` — it hangs permanently
-- If screenshot times out, fall back to `browser_snapshot` (DOM snapshot) — it ALWAYS works
+- Use `browser_snapshot` (DOM snapshot) for supplementary DOM state checks — it always works
 - **Naming**: `/tmp/playtest-{scenario}-{checkpoint}.png`
 - **Prefer browser_snapshot** (DOM text, cheap) over screenshots for state checks
 - Take screenshots ONLY at designated checkpoints listed in each scenario

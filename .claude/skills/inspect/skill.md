@@ -272,7 +272,7 @@ function checkOcclusion(element) {
 }
 ```
 
-**When Playwright screenshots timeout** (Phaser RAF issue), this `elementFromPoint()` check is the FALLBACK. It runs via `browser_evaluate` and catches occlusion without needing a screenshot.
+**For screenshots**, ALWAYS use `browser_evaluate(() => window.__terraScreenshot())` — it captures both the Phaser canvas and DOM overlays as a composited base64 PNG. NEVER use `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout). The `elementFromPoint()` occlusion check above runs via `browser_evaluate` and catches occlusion as a complementary check.
 
 **This check is NON-NEGOTIABLE. If a visual inspection worker skips it, the inspection is INCOMPLETE and MUST be flagged as such.**
 
