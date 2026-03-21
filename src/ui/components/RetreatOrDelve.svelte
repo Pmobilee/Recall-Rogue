@@ -88,9 +88,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 24px 16px;
+    padding: calc(24px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
     z-index: 220;
-    gap: 12px;
+    gap: calc(12px * var(--layout-scale, 1));
   }
 
   .overlay-bg {
@@ -109,48 +109,55 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: calc(12px * var(--layout-scale, 1));
   }
 
   h1 {
     margin: 0;
     color: #F1C40F;
     letter-spacing: 2px;
-    font-size: 24px;
+    font-size: calc(24px * var(--text-scale, 1));
   }
 
   p {
     margin: 0;
     color: #8B949E;
+    font-size: calc(15px * var(--text-scale, 1));
   }
 
   .stats {
-    margin: 6px 0 10px;
+    margin: calc(6px * var(--layout-scale, 1)) 0 calc(10px * var(--layout-scale, 1));
     display: grid;
-    gap: 4px;
+    gap: calc(6px * var(--layout-scale, 1));
     text-align: center;
+    font-size: calc(17px * var(--text-scale, 1));
+    color: #e6edf3;
+  }
+
+  .stats strong {
+    color: #f1c40f;
   }
 
   .btn-row {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    width: min(420px, 100%);
+    gap: calc(12px * var(--layout-scale, 1));
+    width: min(calc(420px * var(--layout-scale, 1)), 100%);
   }
 
   .retreat,
   .delve {
     width: 100%;
     border: none;
-    border-radius: 12px;
-    min-height: 56px;
-    padding: 12px 14px;
+    border-radius: calc(12px * var(--layout-scale, 1));
+    min-height: calc(56px * var(--layout-scale, 1));
+    padding: calc(12px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
     color: #fff;
-    font-size: 17px;
+    font-size: calc(17px * var(--text-scale, 1));
     font-weight: 800;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: calc(4px * var(--layout-scale, 1));
   }
 
   .retreat {
@@ -163,15 +170,16 @@
 
   .retreat span,
   .delve span {
-    font-size: 13px;
+    font-size: calc(14px * var(--text-scale, 1));
     font-weight: 600;
     opacity: 0.95;
   }
 
   .risk {
-    margin-top: 10px;
-    font-size: 13px;
+    margin-top: calc(10px * var(--layout-scale, 1));
+    font-size: calc(14px * var(--text-scale, 1));
     color: #C9D1D9;
+    text-align: center;
   }
 
   /* === Landscape layout === */
@@ -182,8 +190,8 @@
   .decision.landscape .decision-content {
     background: #161b22;
     border: 1px solid #3b434f;
-    border-radius: 16px;
-    padding: 32px 40px;
+    border-radius: calc(16px * var(--layout-scale, 1));
+    padding: calc(32px * var(--layout-scale, 1)) calc(40px * var(--layout-scale, 1));
     width: min(65vw, 860px);
     max-height: 85vh;
     overflow-y: auto;
@@ -192,14 +200,14 @@
   /* Wrap the two buttons in a row when landscape */
   .decision.landscape .btn-row {
     flex-direction: row;
-    gap: 16px;
+    gap: calc(16px * var(--layout-scale, 1));
     width: 100%;
   }
 
   .decision.landscape .btn-row .retreat,
   .decision.landscape .btn-row .delve {
     flex: 1;
-    min-height: 72px;
-    font-size: 19px;
+    min-height: calc(72px * var(--layout-scale, 1));
+    font-size: calc(19px * var(--text-scale, 1));
   }
 </style>

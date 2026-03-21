@@ -109,29 +109,29 @@
   .special-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(7, 10, 15, 0.96);
+    background: radial-gradient(ellipse at center, rgba(30, 40, 60, 0.95) 0%, rgba(10, 14, 20, 0.98) 70%);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 200;
-    padding: 16px;
+    padding: calc(16px * var(--layout-scale, 1));
   }
 
   .special-card {
     background: linear-gradient(180deg, #1a1d24, #0f1318);
     border: 2px solid #f59e0b;
-    border-radius: 14px;
-    padding: 28px 24px;
-    max-width: 360px;
+    border-radius: calc(14px * var(--layout-scale, 1));
+    padding: calc(28px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1));
+    max-width: min(calc(420px * var(--layout-scale, 1)), 90vw);
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 14px;
+    gap: calc(14px * var(--layout-scale, 1));
   }
 
   .event-icon {
-    font-size: 56px;
+    font-size: calc(56px * var(--text-scale, 1));
   }
 
   .event-name {
@@ -156,24 +156,24 @@
     text-align: center;
     font-style: italic;
     margin: 0;
-    padding: 8px 12px;
+    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
     background: rgba(34, 197, 94, 0.1);
-    border-radius: 8px;
+    border-radius: calc(8px * var(--layout-scale, 1));
     border: 1px solid rgba(34, 197, 94, 0.2);
   }
 
   .event-actions {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
     width: 100%;
-    margin-top: 8px;
+    margin-top: calc(8px * var(--layout-scale, 1));
   }
 
   .action-btn {
     width: 100%;
-    min-height: 48px;
-    border-radius: 10px;
+    min-height: calc(48px * var(--layout-scale, 1));
+    border-radius: calc(10px * var(--layout-scale, 1));
     font-size: calc(16px * var(--text-scale, 1));
     font-weight: 700;
     cursor: pointer;
@@ -196,6 +196,6 @@
     color: #94a3b8;
     font-weight: 500;
     font-size: calc(13px * var(--text-scale, 1));
-    min-height: 40px;
+    min-height: calc(40px * var(--layout-scale, 1));
   }
 </style>

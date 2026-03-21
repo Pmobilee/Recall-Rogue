@@ -366,7 +366,7 @@
     border: 1px solid #475569;
     background: #1e293b;
     color: #e2e8f0;
-    min-height: 48px;
+    min-height: calc(48px * var(--layout-scale, 1));
     border-radius: 10px;
     padding: 0 calc(14px * var(--layout-scale, 1));
   }
@@ -408,7 +408,7 @@
     background: rgba(15, 23, 42, 0.8);
     color: #e2e8f0;
     text-align: left;
-    min-height: 48px;
+    min-height: calc(48px * var(--layout-scale, 1));
     padding: calc(12px * var(--layout-scale, 1));
   }
 
@@ -556,10 +556,10 @@
     border: none;
     border-bottom: 2px solid transparent;
     color: #8b949e;
-    font-size: calc(14px * var(--layout-scale, 1));
+    font-size: calc(14px * var(--text-scale, 1));
     font-weight: 600;
     cursor: pointer;
-    min-height: 44px;
+    min-height: calc(44px * var(--layout-scale, 1));
     white-space: nowrap;
   }
 
@@ -582,7 +582,7 @@
     border: 1px solid rgba(148, 163, 184, 0.3);
     background: rgba(30, 41, 59, 0.6);
     color: #94a3b8;
-    font-size: calc(11px * var(--layout-scale, 1));
+    font-size: calc(11px * var(--text-scale, 1));
     cursor: pointer;
     white-space: nowrap;
     -webkit-tap-highlight-color: transparent;
@@ -597,7 +597,7 @@
 
   .sub-count {
     opacity: 0.6;
-    font-size: calc(10px * var(--layout-scale, 1));
+    font-size: calc(10px * var(--text-scale, 1));
   }
 
   /* Hidden in portrait, shown in landscape via :global override */
@@ -638,7 +638,7 @@
   .library-overlay.landscape .domain-section,
   .library-overlay.landscape .detail-card {
     overflow-y: auto;
-    max-height: calc(100vh - 140px);
+    max-height: calc(100vh - calc(140px * var(--layout-scale, 1)));
   }
 
   /* Filters inline in landscape */
@@ -755,34 +755,34 @@
 
   /* Domain name: 16px */
   :global([data-layout="landscape"]) .library-overlay .domain-row strong {
-    font-size: 16px;
+    font-size: calc(16px * var(--text-scale, 1));
   }
 
   /* Fact count next to domain name: 14px */
   :global([data-layout="landscape"]) .library-overlay .domain-row span {
-    font-size: 14px;
+    font-size: calc(14px * var(--text-scale, 1));
   }
 
   /* Completion/mastery meta text: 13px */
   :global([data-layout="landscape"]) .library-overlay .domain-meta,
   :global([data-layout="landscape"]) .library-overlay .fact-meta {
-    font-size: 13px;
+    font-size: calc(13px * var(--text-scale, 1));
   }
 
   /* "Mastered Facts" strip text: 15px */
   :global([data-layout="landscape"]) .library-overlay .mastery-strip {
-    font-size: 15px;
+    font-size: calc(15px * var(--text-scale, 1));
   }
 
   :global([data-layout="landscape"]) .library-overlay .lore-unlock {
-    font-size: 15px;
+    font-size: calc(15px * var(--text-scale, 1));
   }
 
   :global([data-layout="landscape"]) .library-overlay .fact-title {
-    font-size: 16px;
+    font-size: calc(16px * var(--text-scale, 1));
   }
 
   :global([data-layout="landscape"]) .library-overlay label {
-    font-size: 13px;
+    font-size: calc(13px * var(--text-scale, 1));
   }
 </style>

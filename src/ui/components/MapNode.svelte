@@ -78,8 +78,8 @@
 <style>
   .map-node {
     position: relative;
-    width: calc(44px * var(--layout-scale, 1));
-    height: calc(44px * var(--layout-scale, 1));
+    width: calc(52px * var(--layout-scale, 1));
+    height: calc(52px * var(--layout-scale, 1));
     border-radius: 50%;
     border: 2.5px solid var(--node-color);
     background: linear-gradient(135deg, #0f1520, #1a2235);
@@ -154,8 +154,8 @@
   }
 
   .node-icon {
-    width: calc(28px * var(--layout-scale, 1));
-    height: calc(28px * var(--layout-scale, 1));
+    width: calc(34px * var(--layout-scale, 1));
+    height: calc(34px * var(--layout-scale, 1));
     object-fit: contain;
     image-rendering: pixelated;
     pointer-events: none;
@@ -163,8 +163,8 @@
   }
 
   .node-sprite {
-    width: calc(38px * var(--layout-scale, 1));
-    height: calc(38px * var(--layout-scale, 1));
+    width: calc(46px * var(--layout-scale, 1));
+    height: calc(46px * var(--layout-scale, 1));
     object-fit: contain;
     image-rendering: auto; /* bilinear — good for downscaling */
     border-radius: 50%;
@@ -249,8 +249,8 @@
 
   /* --- boss node: dramatic slow pulse with large glow, always active, larger --- */
   .map-node.type-boss {
-    width: calc(54px * var(--layout-scale, 1));
-    height: calc(54px * var(--layout-scale, 1));
+    width: calc(64px * var(--layout-scale, 1));
+    height: calc(64px * var(--layout-scale, 1));
     animation: bossPulse 3s ease-in-out infinite;
     border-width: 3px;
   }

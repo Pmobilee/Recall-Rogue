@@ -300,6 +300,7 @@
 
   :global([data-layout="landscape"]) .profile-screen {
     max-width: calc(1600px * var(--layout-scale, 1));
+    margin-left: calc(100px * var(--layout-scale, 1));
     padding: calc(32px * var(--layout-scale, 1)) calc(48px * var(--layout-scale, 1));
   }
 

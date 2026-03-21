@@ -579,7 +579,7 @@
     grid-template-columns: 1fr auto;
     align-items: center;
     gap: calc(12px * var(--layout-scale, 1));
-    min-height: 48px;
+    min-height: calc(48px * var(--layout-scale, 1));
     font-size: calc(12px * var(--text-scale, 1));
     color: #dbeafe;
   }

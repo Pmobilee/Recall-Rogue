@@ -424,7 +424,7 @@
           <p class="inspect-summary">{getDetailedCardDescription(selected)}</p>
         {:else}
           <h2>Inspect a card</h2>
-          <p class="inspect-summary">Tap a card on the altar to reveal details.</p>
+          <p class="inspect-summary">Click a card on the altar to reveal details.</p>
         {/if}
       </section>
     </section>

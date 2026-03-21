@@ -555,11 +555,11 @@
     if (state.hasCompletedOnboarding) return null
 
     if (cardPlayStage === 'hand' && !state.hasSeenCardTapTooltip) {
-      return 'Tap a card to examine it'
+      return 'Click a card to examine it'
     }
 
     if (cardPlayStage === 'selected' && !state.hasSeenCastTooltip) {
-      return 'Tap the card again to cast it'
+      return 'Click the card again to cast it'
     }
 
     if (cardPlayStage === 'committed') {
