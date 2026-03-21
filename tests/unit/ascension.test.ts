@@ -9,9 +9,11 @@ import { ENEMY_TEMPLATES } from '../../src/data/enemies'
 describe('ascension modifiers', () => {
   it('stacks early stat modifiers by level', () => {
     const level4 = getAscensionModifiers(4)
-    expect(level4.enemyHpMultiplier).toBe(1.1)
+    // enemyHpMultiplier is always 1.0 (global HP mult removed — elites handle difficulty)
+    expect(level4.enemyHpMultiplier).toBe(1.0)
     expect(level4.enemyDamageMultiplier).toBe(1.1)
-    expect(level4.shieldCardMultiplier).toBe(0.80)
+    // shieldCardMultiplier is always 1.0 (removed — wasn't fun)
+    expect(level4.shieldCardMultiplier).toBe(1.0)
     expect(level4.timerBasePenaltySeconds).toBe(1)
   })
 
@@ -53,15 +55,15 @@ describe('ascension modifiers', () => {
 
   it('returns level metadata', () => {
     const rule = getAscensionRule(9)
-    expect(rule?.name).toContain('Endurance')
+    expect(rule?.name).toContain('Undying Foes')
   })
 
   it('maps reordered ascension levels 9-14 correctly', () => {
-    expect(getAscensionRule(9)?.name).toBe('Endurance')
-    expect(getAscensionRule(10)?.name).toBe('Fading Light')
-    expect(getAscensionRule(11)?.name).toBe('Relic Tax')
+    expect(getAscensionRule(9)?.name).toBe('Undying Foes')
+    expect(getAscensionRule(10)?.name).toBe('Cursed Start')
+    expect(getAscensionRule(11)?.name).toBe('Slim Pickings')
     expect(getAscensionRule(12)?.name).toBe('Deep Knowledge')
-    expect(getAscensionRule(13)?.name).toBe('Glass Cannon')
+    expect(getAscensionRule(13)?.name).toBe('Fragile')
     expect(getAscensionRule(14)?.name).toBe('Combo Breaker')
   })
 

@@ -2,7 +2,7 @@
 
 > **One-line summary:** Card roguelite where knowledge IS power — Quick Play cards for base effect, Charge them with quiz answers for massive multipliers, chain related facts for exponential damage. The more you know, the stronger you become.
 >
-> **Version:** v2 (overhaul complete). For legacy v1 design, see `docs/GAME_DESIGN_V1_ARCHIVE.md`.
+> **Version:** v2 (overhaul complete). The v1 mining-era design doc has been deleted — it is fully superseded by this document.
 
 ---
 

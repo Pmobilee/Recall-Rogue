@@ -1,4 +1,4 @@
-# Terra Miner — Design Addendum: Portrait UX, Room Selection, and Non-Obvious Improvements
+# Recall Rogue — Design Addendum: Portrait UX, Room Selection, and Non-Obvious Improvements
 
 ## For: Coding Agent Implementation (companion to main spec)
 ## Version: 1.0 — March 2026
@@ -84,7 +84,7 @@ After each encounter (not each floor — this is the key difference from STS), t
 
 ## 3. Game Juice — The Correct Answer Should Feel INCREDIBLE
 
-This is where most educational games fail catastrophically. Getting an answer right in Duolingo feels like... nothing. A green checkmark. Getting an answer right in Terra Miner should feel like landing a critical hit in your favorite action game.
+This is where most educational games fail catastrophically. Getting an answer right in Duolingo feels like... nothing. A green checkmark. Getting an answer right in Recall Rogue should feel like landing a critical hit in your favorite action game.
 
 **Correct Answer Juice Stack (all fire within 200ms of correct tap):**
 1. **Haptic pulse** — short, crisp vibration (iOS: UIImpactFeedbackGenerator.style.heavy, Android: VibrationEffect.createOneShot(50, 200)). NOT a buzz — a single sharp thud.
@@ -131,17 +131,17 @@ This is a mechanic I haven't seen in any educational game, and it maps directly 
 
 ---
 
-## 5. "Mineral Veins" — Bonus Objectives Per Run
+## 5. "Knowledge Quests" — Bonus Objectives Per Run
 
 Each run should have 1-2 randomly selected bonus objectives visible at the start, offering bonus rewards if completed. These add variety without adding complexity — they're optional goals that modify play behavior.
 
 **Examples:**
-- "Iron Vein: Answer 5 Science facts correctly" → Bonus: +1 card reward at next shop
+- "Science Sprint: Answer 5 Science facts correctly" → Bonus: +1 card reward at next shop
 - "Gold Rush: Complete 3 encounters without wrong answers" → Bonus: Rare artifact
-- "Deep Core: Reach Floor 6" → Bonus: 50% extra currency
-- "Speed Miner: Answer 10 facts in under 3 seconds each" → Bonus: Card upgrade token
+- "Deep Scholar: Reach Floor 6" → Bonus: 50% extra currency
+- "Speed Run: Answer 10 facts in under 3 seconds each" → Bonus: Card upgrade token
 - "Scholar's Path: Play cards from 4 different domains in one run" → Bonus: Unlock new domain preview
-- "Flawless Vein: Perfect turn (5/5 correct) at least once" → Bonus: Cosmetic card frame
+- "Perfect Round: Perfect turn (5/5 correct) at least once" → Bonus: Cosmetic card frame
 
 **Why this works:** Duolingo's quest system (complete X lessons this week) is one of their highest-engagement features. Bonus objectives give the same "I have a goal beyond just surviving" motivation. They also naturally push players to engage with different domains and difficulty levels they might otherwise avoid.
 
@@ -163,7 +163,7 @@ Fossils should be beautifully presented — full-screen, with pixel art illustra
 
 ---
 
-## 7. Daily "Excavation" Challenge — One Special Run Per Day
+## 7. Daily "Delve" Challenge — One Special Run Per Day
 
 One curated run per day with special rules and a global leaderboard. This is the "Daily Challenge" pattern used by Slay the Spire, Wordle, and many others. It's the single highest-retention feature across all puzzle/strategy mobile games.
 
@@ -179,7 +179,7 @@ One curated run per day with special rules and a global leaderboard. This is the
 - Slay the Spire's daily climb is one of its most-played modes
 - Creates social comparison without direct PvP (players compete against the same challenge)
 - Generates daily content without developer effort (procedurally generated from existing fact pool)
-- The "did you beat today's Excavation?" conversation is organic marketing
+- The "did you beat today's Delve?" conversation is organic marketing
 
 ---
 
@@ -231,7 +231,7 @@ Sound is disproportionately important for game feel on mobile. Players often pla
 - Turn start chime
 
 **Priority 2 (soft launch):**
-- Ambient mine/underground atmosphere loop (low, unobtrusive)
+- Ambient dungeon atmosphere loop (low, unobtrusive)
 - Boss encounter music (tension-building)
 - Combo counter escalating sounds (3-combo, 5-combo, perfect turn)
 - UI navigation taps
@@ -239,7 +239,7 @@ Sound is disproportionately important for game feel on mobile. Players often pla
 
 **Priority 3 (post-launch):**
 - Unique sounds per card type (attack swoosh vs shield clank vs heal shimmer)
-- Environmental floor themes (ice mine, magma mine, crystal cave)
+- Environmental floor themes (ice cavern, magma depths, crystal archive)
 - Mastery tier-up celebration sound
 - Fossil discovery reveal
 
@@ -273,7 +273,7 @@ These should be in the prototype, not added post-launch:
 
 ---
 
-## 12. The "Miner's Log" — Post-Run Summary Screen
+## 12. The "Run Report" — Post-Run Summary Screen
 
 After every run, show a summary that serves both as gameplay satisfaction and invisible learning analytics:
 
@@ -288,7 +288,7 @@ After every run, show a summary that serves both as gameplay satisfaction and in
 │  New Facts Learned: 7    │
 │  Facts Mastered: 2 ↑     │
 │                          │
-│  ★ Bonus: Iron Vein ✓    │
+│  ★ Bonus: Science Sprint ✓│
 │                          │
 │  [Cards Earned] [Share]  │
 │  [Play Again]  [Home]    │
@@ -296,7 +296,7 @@ After every run, show a summary that serves both as gameplay satisfaction and in
 ```
 
 **The "Share" button generates a card-style image:**
-"I just explored Floor 6 of Terra Miner, answered 42 facts with 81% accuracy, and mastered 2 new concepts. How deep can you go?"
+"I just reached Floor 6 in Recall Rogue, answered 42 facts with 81% accuracy, and mastered 2 new concepts. How deep can you go?"
 
 This is the organic viral loop. It's the same pattern as Wordle's colored grid shares — it communicates achievement without spoiling content, and it makes people curious.
 
@@ -382,7 +382,7 @@ These are things that might seem like good ideas but should be actively avoided:
 
 **No premium currency.** Single currency earned through gameplay, spent at in-run shops. Premium purchases are direct (buy domain pack, buy cosmetic) not currency-mediated. Intermediary currencies obscure value and create negative app store reviews.
 
-**No loot boxes / gacha.** The artifact opening ceremony from the original mining design was gacha-adjacent. In the card roguelite, rewards are transparent: see 3 cards, pick 1. This is cleaner, more respectful, and avoids regulatory concerns (Belgium, Netherlands, and increasingly other jurisdictions regulate loot boxes).
+**No loot boxes / gacha.** Rewards are transparent: see 3 cards, pick 1. This is cleaner, more respectful, and avoids regulatory concerns (Belgium, Netherlands, and increasingly other jurisdictions regulate loot boxes).
 
 ---
 

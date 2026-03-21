@@ -248,10 +248,11 @@ describe('getEnemiesForNode — act pool selection', () => {
     expect(ids).not.toContain('void_mite');
   });
 
-  it('Act 1 has elites (ore_wyrm, cave_troll)', () => {
+  it('Act 1 has elites (cave_troll)', () => {
     const enemies = getEnemiesForNode(1, 'elite');
     const ids = enemies.map(e => e.id);
-    expect(ids).toContain('ore_wyrm');
+    // ore_wyrm was deprecated from ACT_ENEMY_POOLS (kept in ENEMY_TEMPLATES for save compatibility)
+    expect(ids).not.toContain('ore_wyrm');
     expect(ids).toContain('cave_troll');
   });
 
@@ -261,10 +262,13 @@ describe('getEnemiesForNode — act pool selection', () => {
     expect(ids).toContain('venomfang');
   });
 
-  it('Act 2 elite returns fossil_guardian', () => {
+  it('Act 2 elite returns current elites (magma_serpent, basalt_titan)', () => {
     const enemies = getEnemiesForNode(2, 'elite');
     const ids = enemies.map(e => e.id);
-    expect(ids).toContain('fossil_guardian');
+    // fossil_guardian was deprecated from ACT_ENEMY_POOLS (kept in ENEMY_TEMPLATES for save compatibility)
+    expect(ids).not.toContain('fossil_guardian');
+    expect(ids).toContain('magma_serpent');
+    expect(ids).toContain('basalt_titan');
   });
 
   it('Act 2 boss returns the_archivist', () => {
