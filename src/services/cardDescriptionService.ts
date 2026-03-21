@@ -365,7 +365,7 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     case 'mirror':
       return [txt("Copy previous card's effect")];
     case 'adapt':
-      return [txt('Smart: '), kw('Block', 'block'), txt(' vs ATK, '), kw('Cleanse', 'cleanse'), txt(' vs debuff, else Attack')];
+      return [txt('Auto: '), kw('Block', 'block'), txt('/ATK/'), kw('Cleanse', 'cleanse'), txt(' vs intent')];
     case 'overclock':
       return [txt('Next card ×2 effect')];
 

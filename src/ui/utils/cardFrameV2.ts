@@ -112,8 +112,8 @@ export function guideStyle(x: number, y: number, w: number, h: number): string {
  */
 export const GUIDE_STYLES = {
   apCost: guideStyle(18, 32, 164, 120),
-  mechanicName: guideStyle(205, 145, 478, 50),
+  mechanicName: guideStyle(205, 120, 478, 110),
   artWindow: guideStyle(194, 186, 498, 412),
-  cardType: guideStyle(352, 615, 182, 54),
-  effectText: guideStyle(134, 667, 640, 376),
+  cardType: guideStyle(243, 608, 400, 70),
+  effectText: guideStyle(134, 667, 640, 410),
 } as const

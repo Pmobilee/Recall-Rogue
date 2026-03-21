@@ -1571,7 +1571,7 @@
   .v2-mechanic-name {
     font-family: 'Cinzel', 'Georgia', serif;
     font-weight: 700;
-    font-size: calc(var(--card-w) * 0.11);
+    font-size: calc(var(--card-w) * 0.09);
     color: #ffffff;
     text-transform: capitalize;
     text-shadow: 0 1px 3px rgba(0,0,0,0.6);
