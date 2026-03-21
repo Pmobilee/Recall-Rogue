@@ -189,7 +189,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
   },
   {
     id: 'slow', name: 'Slow', type: 'debuff',
-    description: 'Skip enemy next defend/buff action.',
+    description: "Skip enemy's next defend or buff.",
     baseValue: 1, apCost: 2, maxPerPool: 0, tags: ['slow'], launchPhase: 1,
     quickPlayValue: 1, chargeCorrectValue: 1, chargeWrongValue: 1,
     chargeBonusEffect: 'slow_weaken',
@@ -252,7 +252,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
   },
   {
     id: 'adapt', name: 'Adapt', type: 'wild',
-    description: 'Auto: ATK, DEF, or Cleanse vs enemy intent.',
+    description: 'Smart: Block vs ATK, Cleanse vs debuff, else Attack.',
     baseValue: 1, apCost: 1, maxPerPool: 0, tags: ['adapt'], launchPhase: 1,
     quickPlayValue: 1, chargeCorrectValue: 1, chargeWrongValue: 1,
   },

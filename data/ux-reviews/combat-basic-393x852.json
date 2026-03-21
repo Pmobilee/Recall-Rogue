@@ -1,0 +1,376 @@
+{
+  "meta": {
+    "screen": "combat",
+    "scenario": "combat-basic",
+    "viewport": { "w": 393, "h": 852, "dpr": 1 },
+    "device": "iPhone 15 Pro portrait",
+    "audited": "2026-03-21",
+    "auditor": "Claude Opus 4.6 — UX Auditor",
+    "screenshot": ".playwright-mcp/combat-basic.png",
+    "interactiveElements": 8,
+    "totalFindings": 22,
+    "grade": "C+"
+  },
+
+  "summary": {
+    "grade": "C+",
+    "gradeRationale": "The screen communicates the core game loop visually and the card fan layout is functional, but three critical accessibility failures (sub-4px type, 9px HP label, illegible card type badges) plus aggressive card overlap limiting tap accuracy push the score below B. The combat zone and AP orb are strong. Fixing typography alone would move this to B+.",
+    "topPriorities": [
+      "CRIT-1: Card type label font (3.77px) is completely illegible — must be at least 10px",
+      "CRIT-2: Card effect body text (8.25px) is below WCAG AA minimum — must be at least 11px",
+      "CRIT-3: Player HP value (9.07px) is tiny and positioned at screen bottom edge — critical stat must be prominent"
+    ],
+    "strengths": [
+      "AP orb is prominent (56×56, 28px font, white on dark) — core resource always visible",
+      "Enemy intent badge communicates threat clearly with semantic red and accessible aria-label",
+      "End Turn button meets minimum 44px height (48px) with readable 14px label",
+      "Card cost numerals (21px amber) are large and visually distinct within the card",
+      "Cards in thumb zone — entire hand sits in lower 60% of screen, reachable one-handed",
+      "Pause button is correctly positioned top-right with high z-index",
+      "Pile counts (13px bold) are readable at a glance",
+      "Card fan layout conveys hand size at a glance without a number",
+      "Enemy name is bold (800 weight) and centered above sprite",
+      "Semantic aria-label on enemy intent button provides accessibility fallback"
+    ]
+  },
+
+  "findings": [
+    {
+      "id": "CRIT-1",
+      "severity": "critical",
+      "category": "typography",
+      "title": "Card type label is 3.77px — completely illegible",
+      "element": "card-hand-0..4 type label (ATTACK / SHIELD)",
+      "detail": "The card type badge ('ATTACK', 'SHIELD') renders at fontSize=3.77px. This is not a rounding artefact — at 393px CSS width with DPR 1 this is genuinely sub-4px. Text this small cannot be read by any human under any lighting condition. On a physical phone screen at ~460 PPI (iPhone 15 Pro), sub-4px CSS text is 1–2 physical millimetres tall.",
+      "evidence": "DOM: fontSize=3.77 on card type label",
+      "wcagRef": "WCAG 1.4.4 Resize Text — practical minimum for mobile is 10px; iOS HIG minimum is 11px",
+      "impact": "Players cannot distinguish ATTACK from SHIELD cards at a glance. Differentiating card types is a core strategic decision in every turn.",
+      "recommendation": "Increase type badge to minimum 10px. At card widths of 118–167px there is adequate room. Consider using colour + icon as the primary differentiator (red sword icon = ATTACK, blue shield icon = SHIELD) with text secondary.",
+      "effort": "low"
+    },
+    {
+      "id": "CRIT-2",
+      "severity": "critical",
+      "category": "typography",
+      "title": "Card effect body text is 8.25px — below minimum legibility threshold",
+      "element": "card-hand-0..4 effect text ('Deal 8 damage' / 'Gain 6 Block')",
+      "detail": "Card effect text is 8.25px. WCAG AA requires 4.5:1 contrast ratio AND a minimum practical size. iOS HIG specifies 11pt (≈11px CSS) as the absolute minimum. At 8.25px on a 393px-wide screen this text is borderline visible in ideal conditions and invisible under glare, fatigue, or for any player with mild myopia. The effect text is the most strategically critical information on the card — it tells the player what the card does.",
+      "evidence": "DOM: fontSize=8.25 on card effect text",
+      "wcagRef": "WCAG 1.4.4; iOS HIG minimum text size 11pt",
+      "impact": "Players cannot read what cards do without squinting or zooming. This undermines the knowledge-game premise — if you can't read the card, you can't make informed decisions.",
+      "recommendation": "Increase to minimum 11px. Consider showing abbreviated effect text in hand and full text in a tooltip/selected state. Cards should prioritise legibility over fitting more artwork — the art can be smaller.",
+      "effort": "medium"
+    },
+    {
+      "id": "CRIT-3",
+      "severity": "critical",
+      "category": "typography",
+      "title": "Player HP value is 9.07px in a 20px-tall container at screen bottom edge",
+      "element": "Player HP label '100/100'",
+      "detail": "The player's health value renders at fontSize=9.07px inside a 20px-tall container at y=815, which is 37px from the bottom of the 852px screen. HP is a survival-critical stat. At 9.07px it is unreadable under play conditions. The green HP bar provides visual sense of health percentage, but the numeric value (needed for exact math — 'do I survive 8 damage?') is inaccessible.",
+      "evidence": "DOM: fontSize=9.07, color=rgb(255,255,255), x=192 y=815, w=190 h=20",
+      "wcagRef": "WCAG 1.4.4; combat games require quick numeric reading under stress",
+      "impact": "Players cannot compute survivability (enemy intends 8 damage; do I have 9+ HP?). This forces reliance solely on the health bar gradient, which is imprecise.",
+      "recommendation": "Increase HP label to minimum 13px. Redesign the player HUD bar to be taller (at least 36px) with the HP number prominently centred. Separate the block value display so both stats are readable without overlap.",
+      "effort": "medium"
+    },
+    {
+      "id": "HIGH-1",
+      "severity": "high",
+      "category": "touch-targets",
+      "title": "Card overlap creates high mis-tap probability for interior cards",
+      "element": "card-hand-1, card-hand-2, card-hand-3",
+      "detail": "Cards overlap aggressively. card-hand-2 (the centre card) is only 118px wide and is visually overlapped on both sides. While the bounding boxes are in the thumb zone, the VISIBLE (non-occluded) interactive area of cards 1–3 is substantially smaller than their DOM rectangle. card-hand-2's visible non-occluded strip may be as narrow as 30–40px. The nn=-20 overlapping flag on all five cards confirms the system has already detected this issue. On a physical touchscreen, sausage-finger taps on the visible card art will frequently hit the wrong card's hotspot.",
+      "evidence": "card-hand-1: x=76 w=145, card-hand-2: x=138 w=118 (overlapped left by 62px), nn=-20 on all cards",
+      "wcagRef": "WCAG 2.5.5 Target Size (AAA) 44×44px; Apple HIG 44pt minimum; the occluded area problem is not captured by bounding box alone",
+      "impact": "Accidental card plays. Player intends to play Block but plays Strike instead. In a knowledge game where each play triggers a quiz, mis-taps create frustration spikes and false quiz failures.",
+      "recommendation": "Implement a 'lift to select' interaction: first tap selects/highlights a card with an expanded view or upward lift animation, second tap confirms play. This is the Slay the Spire model and eliminates accidental plays from fan overlap. Alternatively, reduce fan overlap (max 40% card width overlap) and widen the viewport usage.",
+      "effort": "high"
+    },
+    {
+      "id": "HIGH-2",
+      "severity": "high",
+      "category": "touch-targets",
+      "title": "Enemy intent button (73×49px) is in top-left corner — not in thumb zone and small",
+      "element": "Enemy intent button",
+      "detail": "The enemy intent button sits at x=8, y=12 — top-left corner, 73px wide by 49px tall. While 49px meets the minimum height, width is acceptable, and it has an aria-label, the top-left corner is the hardest reach zone for right-handed one-handed use on a 852px-tall phone. More critically, this is a button but it's unclear what tapping it DOES — does it show intent details? If it's purely informational (no action on tap), it shouldn't be a button at all, which misleads accessibility tools. The nn=286 (far from thumb zone centre) confirms the ergonomic problem.",
+      "evidence": "x=8 y=12 w=73 h=49, thumbZone=false, nn=286",
+      "wcagRef": "WCAG 2.5.5; ergonomic thumb zone research: top-left corner requires full hand grip shift on 6+ inch phones",
+      "impact": "Players reaching for enemy intent info must shift grip, risking accidental hits on other elements or dropping the phone. In fast-paced combat this interrupts flow.",
+      "recommendation": "If the intent button is purely informational, convert it to a non-interactive display element to avoid misleading semantics. If it opens a detail panel, move it to a more accessible location — perhaps near the enemy health bar. Consider making the entire enemy area tappable for intent details.",
+      "effort": "medium"
+    },
+    {
+      "id": "HIGH-3",
+      "severity": "high",
+      "category": "information-hierarchy",
+      "title": "Enemy HP display location and style is unclear from DOM data",
+      "element": "Enemy HP bar ('18 / 18')",
+      "detail": "The DOM data notes 'Enemy HP bar: 18 / 18 shown in top area' but no explicit DOM element was captured with position/size/font data for the enemy HP numeric label. From the screenshot, enemy HP appears to be displayed near the top but is visually de-emphasised compared to the enemy sprite. The enemy name 'Page Flutter' renders at 16px (reasonable) in gray (rgb(156,163,175)) which is a low-contrast colour on a dark background.",
+      "evidence": "Enemy name color=rgb(156,163,175) — contrast ratio against dark background ~2.5:1, below WCAG AA 4.5:1 for small text",
+      "wcagRef": "WCAG 1.4.3 Contrast (Minimum) — 4.5:1 for text under 18pt",
+      "impact": "Players may miss the enemy name at a glance. At 16px the name is borderline but the gray colour reduces legibility significantly. The HP fraction is critical for planning multi-turn lethal.",
+      "recommendation": "Increase enemy name contrast to white or near-white (rgb(220,220,220)+). Ensure enemy HP number is at least 13px and clearly positioned. Consider a dedicated HUD strip for enemy stats above the combat area.",
+      "effort": "low"
+    },
+    {
+      "id": "HIGH-4",
+      "severity": "high",
+      "category": "visual-feedback",
+      "title": "No visual distinction between ATTACK and SHIELD cards in the fan view",
+      "element": "card-hand-0..4 (all appear similar in the fan at small size)",
+      "detail": "From the screenshot, the card fan shows 5 cards in a fan layout. Strike cards have red borders and Block cards have blue borders — this is positive differentiation. However, when cards are overlapping and at reduced visual size (cards 1–3 are 118–145px wide), the border colour difference may be the only distinguishing cue. The type label at 3.77px is useless. The card name ('Strike'/'Block') at 11.79px is barely readable when occluded. Players relying on peripheral vision or glancing at the hand need a larger, bolder type indicator.",
+      "evidence": "Card name fontSize=11.79 (marginal at overlap), type label fontSize=3.77 (illegible), card widths 118–145px for inner cards",
+      "wcagRef": "WCAG 1.4.1 Use of Color — colour alone must not be the only differentiator",
+      "impact": "Players who are colour-blind (8% of males) cannot distinguish attack vs block cards by border colour alone. Text labels are too small to serve as fallback.",
+      "recommendation": "Add an icon to each card type badge: sword icon for ATTACK, shield icon for SHIELD, at minimum 16×16px. Make the badge background larger and the icon the primary differentiator. This helps colour-blind players and improves glanceability for all players.",
+      "effort": "medium"
+    },
+    {
+      "id": "HIGH-5",
+      "severity": "high",
+      "category": "layout",
+      "title": "Player block value (0) overlaps with HP bar container at y=819",
+      "element": "Player block '0' at x=166 y=819",
+      "detail": "The block display (x=166, y=819) and HP label (x=192, y=815) are in nearly the same vertical band, within a 20px-tall container. With block at x=166 and HP at x=192, they are only 26px apart horizontally, both inside the bottom bar. This creates a dense, unreadable cluster of small numbers at the bottom edge of the screen. The block shield icon and HP bar + number compete for the same limited space.",
+      "evidence": "Block: x=166 y=819 fontSize=12.09; HP: x=192 y=815 w=190 h=20 fontSize=9.07",
+      "wcagRef": "Spacing and visual parsing — WCAG 1.4.12 Text Spacing",
+      "impact": "Players cannot parse their defensive state (HP + block) at a glance during combat. This is the most time-pressured reading task in the game.",
+      "recommendation": "Give the player HUD more vertical space. Move it to a dedicated zone 60–80px tall at the bottom. Show HP numerically large (16px+) on the left, block icon + number (16px+) on the right, with clear visual separation.",
+      "effort": "medium"
+    },
+    {
+      "id": "MED-1",
+      "severity": "medium",
+      "category": "touch-targets",
+      "title": "Pause button is not in thumb zone (top-right corner)",
+      "element": "btn-pause",
+      "detail": "The pause button sits at x=337, y=8, w=48, h=48. Top-right corner on a 852px phone. This is ergonomically difficult to reach without a grip shift. However, pause is a low-frequency action (pressed once per session at most) so this is lower severity than the combat-critical buttons. The 48×48 size meets minimum target size.",
+      "evidence": "x=337 y=8, thumbZone=false, nn=286",
+      "wcagRef": "WCAG 2.5.5 — 44×44px minimum met (48×48). Ergonomic concern only.",
+      "impact": "Minor ergonomic friction for a low-frequency action.",
+      "recommendation": "Acceptable given pause frequency. If a settings/menu overlay is implemented, consider a bottom-sheet trigger instead.",
+      "effort": "low"
+    },
+    {
+      "id": "MED-2",
+      "severity": "medium",
+      "category": "touch-targets",
+      "title": "End Turn button is left-aligned only — large right-side thumb zone wasted",
+      "element": "btn-end-turn",
+      "detail": "End Turn sits at x=12, y=792, w=114, h=48. It spans the left portion of the bottom bar. The right side of the screen (x=270–393) at the same y-position appears to have no interactive element. End Turn is a primary combat action pressed every turn — it should be the largest, most ergonomically placed button. At 114px wide x 48px tall in the bottom-left, it's smaller than optimal and placed in the non-dominant thumb zone for right-handed players.",
+      "evidence": "x=12 y=792 w=114 h=48 — only 114/393 = 29% of screen width used",
+      "wcagRef": "WCAG 2.5.5; iOS HIG recommends primary actions be prominently sized",
+      "impact": "End Turn is the most frequent tap in the game. Suboptimal placement accumulates friction across every combat. Right-handed players must reach left.",
+      "recommendation": "Move End Turn to the bottom-right corner OR expand it to fill more of the bottom bar. Consider a larger button (160px+) anchored to the right side. Or center it with 80% screen width so both thumbs can reach it.",
+      "effort": "medium"
+    },
+    {
+      "id": "MED-3",
+      "severity": "medium",
+      "category": "information-hierarchy",
+      "title": "AP orb label '3' has no context label — new players won't know what it means",
+      "element": "AP orb at x=23 y=504",
+      "detail": "The Action Points orb shows the number '3' at 28px in a 56×56 circle. While visually prominent, there is no label or tooltip indicating this is Action Points (AP). For a new player or returning player, an isolated number in a circle on the left side of the screen during combat has no obvious meaning. The aria-label (if any) was not captured. The card cost labels (cost '1' in amber) provide partial context — players can infer the number means resources — but the connection requires inference.",
+      "evidence": "AP orb: fontSize=28.2, no visible label beyond the number, no testId captured",
+      "wcagRef": "WCAG 2.4.6 Headings and Labels; WCAG 1.3.1 Info and Relationships",
+      "impact": "New player confusion. The AP system is core to every turn decision. A player who doesn't understand AP will not optimise play and may not realise they have unused AP at end of turn.",
+      "recommendation": "Add a small 'AP' or 'Energy' label below or inside the orb. Alternatively, add a subtle tooltip on first interaction. At minimum, ensure the element has aria-label='3 Action Points remaining'.",
+      "effort": "low"
+    },
+    {
+      "id": "MED-4",
+      "severity": "medium",
+      "category": "visual-feedback",
+      "title": "No affordance for card playability state (can afford vs cannot afford)",
+      "element": "card-hand-0..4",
+      "detail": "All 5 cards cost 1 AP and the player has 3 AP, so all cards are currently playable. However, there is no captured evidence of a 'greyed out' or 'unaffordable' state for cards. If the player had 0 AP remaining, how would unaffordable cards visually differ from affordable ones? From the screenshot, cards look identical regardless of affordability. This state needs to be verified — if not implemented, it's a significant clarity gap.",
+      "evidence": "No 'unaffordable' card state visible in DOM data. Screenshot shows uniform card appearance.",
+      "wcagRef": "WCAG 1.4.1 Use of Color; WCAG 4.1.3 Status Messages",
+      "impact": "Players with 0 AP may attempt to play cards, expecting a quiz, and get confused when nothing happens. The game should proactively communicate which cards can and cannot be played.",
+      "recommendation": "Implement a distinct unaffordable state: desaturate card art, reduce opacity to ~50%, and grey out the cost gem. Add a subtle 'not enough AP' shake animation on tap attempt.",
+      "effort": "medium"
+    },
+    {
+      "id": "MED-5",
+      "severity": "medium",
+      "category": "layout",
+      "title": "Card hand occupies 286px of 852px height (34%) — combat zone squeezed to 66%",
+      "element": "Card hand area (y=566 to y=793 = 227px visible card area)",
+      "detail": "Cards start at y=566 (card-hand-2 top) and the tallest cards extend to ~y=793 (card-hand-0 bottom at y=596+197=793). The hand area consumes 227px of screen height. The End Turn button adds another ~48px at y=792. Combined, the player interaction zone uses ~280px (33%) of the 852px screen. This leaves 566px (66%) for the combat display, which must show: enemy sprite, enemy name, enemy HP, enemy intent, AP orb, and environmental art. This is workable but tight, and the AP orb at y=504 is only 62px above the hand.",
+      "evidence": "Card y positions: 566–793. AP orb y=504. Screen height 852.",
+      "wcagRef": "Layout density concern — not a WCAG issue but affects cognitive load and visual parsing",
+      "impact": "The combat scene feels crowded. The enemy sprite competes with the card hand for visual attention. Players may not notice the enemy AP orb in the upper area.",
+      "recommendation": "Consider a scroll-to-hand gesture or a compact hand mode that shows only card tops (40px strip) until the player explicitly expands the hand. This would give the enemy area 70%+ of screen height.",
+      "effort": "high"
+    },
+    {
+      "id": "MED-6",
+      "severity": "medium",
+      "category": "accessibility",
+      "title": "Card elements lack descriptive aria-labels — screen reader experience is broken",
+      "element": "card-hand-0..4",
+      "detail": "Cards have testId attributes but their aria information is only their inner text content: '1 Strike ATTACK Deal 8 damage'. While this text technically describes the card, it does not communicate: (a) which position in hand (1 of 5), (b) whether it's currently selected, (c) whether it's affordable, (d) what happens when activated (triggers a quiz). A screen reader user would hear 'one strike attack deal eight damage' with no positional or state context.",
+      "evidence": "DOM text: '1 Strike ATTACK Deal 8 damage' — no additional aria-label or aria-describedby",
+      "wcagRef": "WCAG 4.1.2 Name, Role, Value; WCAG 1.3.1 Info and Relationships",
+      "impact": "Screen reader users cannot use the game. While this is a game with pixel art and visual combat, WCAG compliance requires at minimum that interactive elements have meaningful labels.",
+      "recommendation": "Add aria-label='Strike card: costs 1 AP, deals 8 damage. Card 1 of 5.' Add aria-pressed for selected state. Add aria-disabled for unaffordable state.",
+      "effort": "low"
+    },
+    {
+      "id": "MED-7",
+      "severity": "medium",
+      "category": "visual-feedback",
+      "title": "No turn phase indicator — player doesn't know if it's their turn or enemy turn",
+      "element": "Screen-level state indicator",
+      "detail": "The DOM snapshot shows no element that clearly indicates the current turn phase ('Your Turn' / 'Enemy Turn'). The End Turn button being visible implies it's the player's turn, but during the enemy's action phase (if the UI persists), players need a clear state label. If the game freezes input during the enemy phase without a visual indicator, players may tap frantically thinking the game has hung.",
+      "evidence": "No turn phase element found in DOM data. End Turn button present (implies player turn), but no explicit phase label.",
+      "wcagRef": "WCAG 4.1.3 Status Messages — state changes must be communicated",
+      "impact": "Player confusion during enemy action animations. High-latency perception of state transitions.",
+      "recommendation": "Add a turn phase banner or status text ('YOUR TURN' / 'ENEMY ACTING...') near the top of the player area or near the End Turn button. Should auto-dismiss after 1.5 seconds during player's turn.",
+      "effort": "medium"
+    },
+    {
+      "id": "LOW-1",
+      "severity": "low",
+      "category": "typography",
+      "title": "Card name font (11.79px) is marginally small for occluded cards",
+      "element": "card-hand-1, card-hand-2, card-hand-3 name labels",
+      "detail": "Card names render at 11.79px bold. For the leftmost and rightmost cards (167px wide) this is adequate. For the centre card (118px wide, heavily occluded), the name may be clipped or unreadable. 11.79px is above the iOS HIG minimum of 11pt but is the lower bound — any additional occlusion pushes it below useful legibility.",
+      "evidence": "fontSize=11.79, fontWeight=700. card-hand-2 width=118px with heavy overlap.",
+      "wcagRef": "iOS HIG 11pt minimum met, but marginal",
+      "impact": "Minor. Card name is secondary to card type icon and effect text for decision-making.",
+      "recommendation": "Increase to 13px for card names. This also helps distinguish cards of the same type (future scenario when there are Strike I vs Strike II variants).",
+      "effort": "low"
+    },
+    {
+      "id": "LOW-2",
+      "severity": "low",
+      "category": "touch-targets",
+      "title": "Enemy intent button has no clear visual affordance that it is tappable",
+      "element": "Enemy intent button",
+      "detail": "The enemy intent area (rgba(231,76,60,0.25) background, 73×49px) looks like an informational badge rather than a tappable button. There is no button border, no press state cue (shadow, inset), no chevron or 'tap for details' indicator. Users accustomed to mobile conventions may not realise it's interactive.",
+      "evidence": "bgColor=rgba(231,76,60,0.25) — semi-transparent badge appearance, no border or strong affordance cues",
+      "wcagRef": "WCAG 3.2.4 Consistent Identification",
+      "impact": "Players may miss the ability to get detailed intent information, especially new players who want to understand what 'Attacks for 8 damage' means mechanically.",
+      "recommendation": "Add a subtle rounded border or bottom-right arrow/chevron indicator. Consider a pulse animation on the first time this button appears to draw attention.",
+      "effort": "low"
+    },
+    {
+      "id": "LOW-3",
+      "severity": "low",
+      "category": "visual-feedback",
+      "title": "Player block display (0) uses same visual weight as HP — both values look equal priority",
+      "element": "Player block '0' and HP '100/100'",
+      "detail": "Block renders at fontSize=12.09, fontWeight=800 in sky-blue (rgb(125,211,252)). HP renders at fontSize=9.07, fontWeight=400 in white. This is inverted: HP (survival-critical, always relevant) is smaller and lighter-weight than Block (situationally relevant, often 0). Block's 12px bold makes it look more important than HP's 9px regular.",
+      "evidence": "Block: fontSize=12.09 fontWeight=800; HP: fontSize=9.07 fontWeight=400",
+      "wcagRef": "Information hierarchy principle — visual weight must match information importance",
+      "impact": "Players may over-fixate on block (bolder, sky-blue) and under-attend to HP (lighter, white). When block is 0, the bold '0' draws the eye to a currently irrelevant number.",
+      "recommendation": "Increase HP to 14px bold white. Decrease or match-weight block. HP should clearly dominate visually.",
+      "effort": "low"
+    },
+    {
+      "id": "LOW-4",
+      "severity": "low",
+      "category": "accessibility",
+      "title": "Pause button has no visible label — icon-only button",
+      "element": "btn-pause",
+      "detail": "Pause button has text='' (empty) and aria-label='Pause'. The aria-label exists which is correct. However, there is no visible text fallback if the icon fails to load or for users with images disabled. The icon itself is not described in the DOM data (likely a CSS background or SVG).",
+      "evidence": "text='', ariaLabel='Pause', w=48 h=48",
+      "wcagRef": "WCAG 2.4.6 Headings and Labels — aria-label present, satisfies SC 4.1.2",
+      "impact": "Minimal — aria-label is present. Low priority.",
+      "recommendation": "Acceptable as-is given aria-label. Optionally add a visible 'MENU' text label below the icon for maximum clarity.",
+      "effort": "low"
+    },
+    {
+      "id": "LOW-5",
+      "severity": "low",
+      "category": "layout",
+      "title": "Pile counts (draw/discard) lack visual context — numbers without icon labels",
+      "element": "Pile counts '5' and '0'",
+      "detail": "Pile counts render at 13.1px bold and are readable. However, from the DOM data there is no captured label indicating which pile is which (draw vs discard). If the pile count is just a '5' and a '0' in small areas at the sides of the screen, new players won't know what they mean. The screenshot shows them at the bottom sides of the card area.",
+      "evidence": "Pile counts fontSize=13.1 fontWeight=800 — readable, but context label not captured in DOM data",
+      "wcagRef": "WCAG 2.4.6 Headings and Labels",
+      "impact": "Minor confusion for new players. Veterans understand draw/discard pile convention from other card games.",
+      "recommendation": "Add 'DRAW' / 'DISC' micro-labels (10px) above the pile count numbers, or use a visual deck icon vs discard pile icon.",
+      "effort": "low"
+    },
+    {
+      "id": "LOW-6",
+      "severity": "low",
+      "category": "visual-feedback",
+      "title": "No visual confirmation of successful card selection before quiz launch",
+      "element": "Card interaction flow",
+      "detail": "When a player taps a card, the expected flow is: tap card → quiz appears → answer correctly → card effect resolves. There is no captured evidence of an intermediate 'card selected' highlight state before the quiz launches. Without this, the interaction feels instantaneous (quiz pops) with no visual confirmation that the right card was chosen. With fan overlap, this confirmation step is especially important.",
+      "evidence": "No selected/highlighted card state in DOM data. Flow must be inferred.",
+      "wcagRef": "WCAG 4.1.3 Status Messages — user actions should have perceivable feedback",
+      "impact": "Players with accidental taps on wrong card will not know they tapped the wrong card before the quiz launches for that wrong card.",
+      "recommendation": "Add a 100ms 'card lifts up and is highlighted' state between tap and quiz launch. This gives the player a chance to see which card was activated and abort if wrong (if cancellation is desired behavior).",
+      "effort": "medium"
+    },
+    {
+      "id": "LOW-7",
+      "severity": "low",
+      "category": "layout",
+      "title": "Combat area background (cave scene) may reduce contrast of UI elements",
+      "element": "Background art behind UI elements",
+      "detail": "The screenshot shows a detailed cave background with pixel art rocks and stone textures. UI elements like the AP orb, enemy intent badge, and pile counts all sit directly over this background without a consistent backing card or overlay. While the AP orb has bgColor=rgba(0,0,0,0.4), other elements may lack sufficient contrast against highly textured backgrounds.",
+      "evidence": "Background pixel art visible in screenshot behind all UI elements. AP orb bgColor=rgba(0,0,0,0.4) — 40% opacity black backing present for AP orb.",
+      "wcagRef": "WCAG 1.4.3 Contrast — contrast must be measured against actual rendered background, not assumed",
+      "impact": "Minor legibility risk for UI elements near textured rock areas. Most elements appear to have adequate contrast in the current screenshot but should be verified against all background art variants.",
+      "recommendation": "Ensure all text-bearing UI elements have a consistent dark backing (rgba(0,0,0,0.6)+) or a frosted glass panel. The AP orb approach (dark circle backing) is the right model — extend it to enemy intent, pile counts, and HP bar.",
+      "effort": "low"
+    }
+  ],
+
+  "checklist": {
+    "thumbZone": {
+      "result": "partial",
+      "notes": "All 5 cards are in the thumb zone. End Turn is accessible but left-biased for right-handed players. Enemy intent and Pause are outside thumb zone — acceptable given their frequency."
+    },
+    "minimumTargetSize_44px": {
+      "result": "partial",
+      "notes": "Cards pass (min 118×167). End Turn passes (114×48). Pause passes (48×48). Enemy intent passes (73×49). All interactive elements meet 44px minimum on at least one axis."
+    },
+    "minimumFontSize_11px": {
+      "result": "fail",
+      "notes": "3 violations: card type label (3.77px), card effect text (8.25px), player HP (9.07px). Card name (11.79px) passes marginally."
+    },
+    "colorContrastAA": {
+      "result": "partial",
+      "notes": "AP orb (white on dark) passes. Card cost (amber on dark card) likely passes. Enemy name (rgb(156,163,175) on dark background) fails — estimated contrast ~2.5:1. Player HP (white on green bar) needs measurement."
+    },
+    "colorNotSolelyDifferentiator": {
+      "result": "fail",
+      "notes": "Card type uses colour (red border = attack, blue = block) as primary differentiator with only 3.77px text backup. Fails for colour-blind users."
+    },
+    "ariaLabels": {
+      "result": "partial",
+      "notes": "Enemy intent has aria-label. Pause has aria-label. Cards have text content but no structured aria-labels with state information."
+    },
+    "stateComm": {
+      "result": "partial",
+      "notes": "Turn phase not explicitly communicated. Affordable vs unaffordable card state not verified. Block/HP state readable but cramped."
+    },
+    "visualHierarchy": {
+      "result": "partial",
+      "notes": "AP orb is correctly prominent. Enemy intent is visible. But HP (most critical survival stat) is the smallest text on screen."
+    },
+    "overlapAndOcclusion": {
+      "result": "fail",
+      "notes": "All 5 cards flagged nn=-20 (overlapping). Centre cards have substantially reduced visible tap area due to fan overlap."
+    },
+    "feedbackOnAction": {
+      "result": "unknown",
+      "notes": "Card selection feedback state not captured in DOM. Pile count confirmation visible. HP/block updates on combat events — not observable in static snapshot."
+    }
+  },
+
+  "severityCounts": {
+    "critical": 3,
+    "high": 5,
+    "medium": 7,
+    "low": 7,
+    "total": 22
+  }
+}

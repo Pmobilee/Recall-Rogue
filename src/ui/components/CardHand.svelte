@@ -684,6 +684,7 @@
         {isDraggingThis && chargeProgress > 0.05 ? `filter: drop-shadow(0 0 ${8 + chargeProgress * 8}px rgba(250, 204, 21, ${chargeProgress * 0.8})) drop-shadow(0 0 ${16 + chargeProgress * 16}px rgba(250, 204, 21, ${chargeProgress * 0.4}));` : ''}
       "
       data-testid="card-hand-{i}"
+      aria-label="{card.mechanicName}: costs {card.apCost ?? 1} AP, {getShortCardDescription(card)}. Card {i + 1} of {cards.length}."
       disabled={disabled || isOther}
       use:initCardAnimOffsets
       onpointerdown={(e) => handlePointerDown(e, i)}
@@ -726,7 +727,7 @@
             <!-- Mechanic name overlay -->
             <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName}>{card.mechanicName ?? ''}</div>
             <!-- Card type label overlay -->
-            <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}>{card.cardType?.toUpperCase() ?? ''}</div>
+            <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}><span class="card-type-icon">{card.cardType === 'attack' ? '⚔' : card.cardType === 'shield' ? '🛡' : '✦'}</span> {card.cardType?.toUpperCase() ?? ''}</div>
             <!-- Effect description text -->
             <div class="frame-text v2-effect-text" style={GUIDE_STYLES.effectText}>
               <span class="parchment-inner">
@@ -884,7 +885,7 @@
             {/if}
             <div class="frame-text v2-ap-cost" style={GUIDE_STYLES.apCost}>{card.apCost ?? 1}</div>
             <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName}>{card.mechanicName ?? ''}</div>
-            <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}>{card.cardType?.toUpperCase() ?? ''}</div>
+            <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}><span class="card-type-icon">{card.cardType === 'attack' ? '⚔' : card.cardType === 'shield' ? '🛡' : '✦'}</span> {card.cardType?.toUpperCase() ?? ''}</div>
           </div>
         </div>
         {#if cardbackUrl}
@@ -1046,6 +1047,7 @@
         {isDraggingThis && chargeProgress > 0.05 ? `filter: drop-shadow(0 0 ${8 + chargeProgress * 8}px rgba(250, 204, 21, ${chargeProgress * 0.8})) drop-shadow(0 0 ${16 + chargeProgress * 16}px rgba(250, 204, 21, ${chargeProgress * 0.4}));` : ''}
       "
       data-testid="card-hand-{i}"
+      aria-label="{card.mechanicName}: costs {card.apCost ?? 1} AP, {getShortCardDescription(card)}. Card {i + 1} of {cards.length}."
       disabled={disabled || isOther}
       use:initCardAnimOffsets
       onpointerdown={(e) => handlePointerDown(e, i)}
@@ -1087,7 +1089,7 @@
             <!-- Mechanic name overlay -->
             <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName}>{card.mechanicName ?? ''}</div>
             <!-- Card type label overlay -->
-            <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}>{card.cardType?.toUpperCase() ?? ''}</div>
+            <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}><span class="card-type-icon">{card.cardType === 'attack' ? '⚔' : card.cardType === 'shield' ? '🛡' : '✦'}</span> {card.cardType?.toUpperCase() ?? ''}</div>
             <!-- Effect description text -->
             <div class="frame-text v2-effect-text" style={GUIDE_STYLES.effectText}>
               <span class="parchment-inner">
@@ -1260,7 +1262,7 @@
             {/if}
             <div class="frame-text v2-ap-cost" style={GUIDE_STYLES.apCost}>{card.apCost ?? 1}</div>
             <div class="frame-text v2-mechanic-name" style={GUIDE_STYLES.mechanicName}>{card.mechanicName ?? ''}</div>
-            <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}>{card.cardType?.toUpperCase() ?? ''}</div>
+            <div class="frame-text v2-card-type" style={GUIDE_STYLES.cardType}><span class="card-type-icon">{card.cardType === 'attack' ? '⚔' : card.cardType === 'shield' ? '🛡' : '✦'}</span> {card.cardType?.toUpperCase() ?? ''}</div>
           </div>
         </div>
         {#if cardbackUrl}
@@ -1569,7 +1571,7 @@
   .v2-mechanic-name {
     font-family: 'Cinzel', 'Georgia', serif;
     font-weight: 700;
-    font-size: calc(var(--card-w) * 0.1);
+    font-size: calc(var(--card-w) * 0.11);
     color: #ffffff;
     text-transform: capitalize;
     text-shadow: 0 1px 3px rgba(0,0,0,0.6);
@@ -1584,7 +1586,7 @@
   .v2-card-type {
     font-family: system-ui, -apple-system, sans-serif;
     font-weight: 700;
-    font-size: calc(var(--card-w) * 0.032);
+    font-size: calc(var(--card-w) * 0.085);
     color: #e0e0e0;
     text-transform: uppercase;
     letter-spacing: 0.02em;
@@ -1596,9 +1598,14 @@
     justify-content: center;
   }
 
+  .card-type-icon {
+    font-size: 1.1em;
+    margin-right: 2px;
+  }
+
   .v2-effect-text {
     font-family: system-ui, -apple-system, sans-serif;
-    font-size: calc(var(--card-w) * 0.07);
+    font-size: calc(var(--card-w) * 0.095);
     font-weight: 600;
     color: #ffffff;
     text-shadow: 0 1px 2px rgba(0,0,0,0.5);

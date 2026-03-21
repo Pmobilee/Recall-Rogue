@@ -328,16 +328,16 @@
         "notes": "Behind ENABLE_PHASE2_MECHANICS"
       },
       {
-        "id": "immunity_card",
+        "id": "immunity",
         "name": "Immunity",
         "category": "utility",
         "description": "Absorb next hit up to 8",
         "status": "phase2",
-        "lastChangedDate": "not_checked",
+        "lastChangedDate": "2026-03-21",
         "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": "ID mismatch — correct mechanic ID is 'immunity'. Fix registry ID."
+        "notes": ""
       },
       {
         "id": "mirror",

@@ -290,8 +290,8 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
       const active = eHp < 0.3;
       const secMasteryBonus = getMasterySecondaryBonus(mechanic.id, masteryLevel);
       const bonusParts: CardDescPart[] = secMasteryBonus > 0 && masteryLevel > 0
-        ? [cond(active ? bonus : 0, active), masteryNum('+' + Math.round(secMasteryBonus))]
-        : [cond(active ? bonus : 0, active)];
+        ? [cond(bonus, active), masteryNum('+' + Math.round(secMasteryBonus))]
+        : [cond(bonus, active)];
       return [txt('Deal '), num(power), txt(' damage. +'), ...bonusParts, txt(' below 30%')];
     }
     case 'lifetap':
@@ -309,9 +309,9 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     case 'brace':
       return [txt('Gain '), kw('Block', 'block'), txt(' equal to enemy attack')];
     case 'overheal': {
-      const bonus = Math.round(power * 1.0); // doubled power when below 50%
+      const doubled = power * 2;
       const active = pHp < 0.5;
-      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('. ×2 ('), cond(active ? bonus * 2 : power, active), txt(') below 50% HP')];
+      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('. ×2 ('), cond(doubled, active), txt(') below 50% HP')];
     }
     case 'emergency': {
       const active = pHp < 0.3;
@@ -335,14 +335,14 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
 
     // Debuffs
     case 'weaken':
-      return [txt('Apply '), kw('Weakness', 'weakness'), txt(' for '), num(power), txt(' turns')];
+      return [txt('Apply '), kw('Weakness', 'weakness'), txt(' for '), num(power), txt(power !== 1 ? ' turns' : ' turn')];
     case 'expose':
-      return [txt('Apply '), kw('Vulnerable', 'vulnerable'), txt(' for '), num(power), txt(' turns')];
+      return [txt('Apply '), kw('Vulnerable', 'vulnerable'), txt(' for '), num(power), txt(power !== 1 ? ' turns' : ' turn')];
     case 'slow':
-      return [txt("Skip enemy's next action")];
+      return [txt("Skip enemy's next defend or buff")];
     case 'hex': {
       const turns = secondary ?? 3;
-      return [txt('Apply '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Poison', 'poison'), txt(' for '), num(turns), txt(' turns')];
+      return [txt('Apply '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Poison', 'poison'), txt(' for '), num(turns), txt(turns !== 1 ? ' turns' : ' turn')];
     }
 
     // Utility
@@ -353,7 +353,7 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     case 'recycle':
       return [txt('Draw '), num(3), txt(' cards')];
     case 'foresight':
-      return [txt('Draw '), num(power), txt(' cards')];
+      return [txt('Draw '), num(power), txt(power !== 1 ? ' cards' : ' card'), txt('. Peek at next intent')];
     case 'transmute':
       return [txt('Transform your weakest hand card')];
     case 'cleanse':
