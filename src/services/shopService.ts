@@ -96,15 +96,17 @@ function selectRelicByRarity(pool: RelicDefinition[]): RelicDefinition | null {
  *
  * @param floor - Current floor number (affects pricing).
  * @param eligibleRelics - Relics available for purchase (not already held).
+ * @param count - Number of relics to offer (default: SHOP_RELIC_COUNT). merchants_favor adds +1.
  * @returns Array of purchasable relic items.
  */
 export function generateShopRelics(
   floor: number,
   eligibleRelics: RelicDefinition[],
+  count: number = SHOP_RELIC_COUNT,
 ): ShopRelicItem[] {
   const relics: ShopRelicItem[] = [];
   const remainingRelics = [...eligibleRelics];
-  for (let i = 0; i < SHOP_RELIC_COUNT && remainingRelics.length > 0; i++) {
+  for (let i = 0; i < count && remainingRelics.length > 0; i++) {
     const selected = selectRelicByRarity(remainingRelics);
     if (!selected) break;
     const idx = remainingRelics.findIndex(r => r.id === selected.id);

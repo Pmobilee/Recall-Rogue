@@ -183,6 +183,11 @@ export function BASE_SAVE(now: number): PlayerSave {
 
     // Phase 59: Artifact Analyzer persistence
     pendingArtifacts: [],
+
+    // Character progression
+    totalXP: 0,
+    characterLevel: 0,
+    lastDailyBonusDate: null,
   }
 }
 

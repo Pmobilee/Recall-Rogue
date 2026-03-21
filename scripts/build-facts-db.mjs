@@ -81,6 +81,7 @@ CREATE TABLE IF NOT EXISTS facts (
   has_pixel_art     INTEGER DEFAULT 0,
   pixel_art_status  TEXT    DEFAULT 'none',
   variants          TEXT,
+  source_verified   INTEGER DEFAULT 0,
   db_version        INTEGER DEFAULT 0
 );
 CREATE INDEX IF NOT EXISTS idx_facts_type       ON facts(type);
@@ -149,6 +150,7 @@ function factToRow(fact) {
     fact.contentVolatility     ?? 'timeless',
     fact.sourceUrl             ?? null,
     fact.verifiedAt            ?? null,
+    fact.sourceVerified ? 1 : 0,
     fact.inGameReports         ?? 0,
     fact.relatedFacts          ? JSON.stringify(fact.relatedFacts)          : null,
     fact.tags                  ? JSON.stringify(fact.tags)                  : null,
@@ -220,7 +222,7 @@ async function main() {
       acceptable_answers, distractor_count,
       category_l1, category_l2, category_l3,
       novelty_score, sensitivity_level, sensitivity_note,
-      content_volatility, source_url, verified_at, in_game_reports,
+      content_volatility, source_url, verified_at, source_verified, in_game_reports,
       related_facts, tags, image_prompt, visual_description,
       has_pixel_art, pixel_art_status, variants, db_version
     ) VALUES (
@@ -233,7 +235,7 @@ async function main() {
       ?, ?,
       ?, ?, ?,
       ?, ?, ?,
-      ?, ?, ?, ?,
+      ?, ?, ?, ?, ?,
       ?, ?, ?, ?,
       ?, ?, ?, ?
     )

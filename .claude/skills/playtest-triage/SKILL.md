@@ -2,12 +2,28 @@
 description: "Triage playtest reports: deduplicate, score, and rank issues on a leaderboard"
 ---
 
-# ⚠️ AR Phase Doc Required — see `.claude/skills/work-tracking/SKILL.md` for rules.
-# ℹ️ This skill is READ-ONLY. Implementation work from findings requires an AR doc — see `.claude/skills/work-tracking/SKILL.md`.
-
 # Playtest Triage
 
+This is a read-only analysis skill. It produces findings; implementation work from those findings requires a separate AR doc — see `.claude/skills/work-tracking/SKILL.md`.
+
 Review all analysis reports, deduplicate issues, score them, and maintain a ranked leaderboard.
+
+## Data Sources
+
+Reports come from `/playtest-analyze`, which reads headless sim output from `data/playtests/runs/` and writes structured reports to `data/playtests/reports/report-*.json`.
+
+The triage skill reads from `data/playtests/reports/report-*.json` and writes to `data/playtests/leaderboard.json`.
+
+## Player Profiles
+
+The six headless sim profiles are:
+
+- `first_timer` — new player, minimal game knowledge
+- `casual_learner` — plays occasionally, moderate accuracy
+- `regular` — consistent player, average performance
+- `gamer` — optimizes play, high win rate target
+- `dedicated` — committed learner, strong accuracy
+- `scholar` — top-tier accuracy and deck building
 
 ## Steps
 
@@ -39,18 +55,18 @@ Review all analysis reports, deduplicate issues, score them, and maintain a rank
       "canonicalId": "balance_damage_spike_mid",
       "category": "balance_damage_spike",
       "severity": "high",
-      "title": "Floor 7 boss damage spike kills beginners in 2 turns",
+      "title": "Floor 7 boss damage spike kills first_timers in 2 turns",
       "description": "...",
       "frequency": 4,
-      "affectedProfiles": ["beginner", "struggling", "average", "impatient"],
+      "affectedProfiles": ["first_timer", "casual_learner", "regular", "gamer"],
       "firstSeen": "2026-03-10T...",
       "lastSeen": "2026-03-10T...",
       "rank": 1,
       "score": 30.0,
       "status": "open",
-      "sourceReports": ["report-playthrough-beginner-42-...", "..."],
-      "bestEvidence": { "metric": "Enemy dealt 53 damage in one turn", "floor": 7, "profileId": "beginner" },
-      "reproductionSteps": ["Use profile: beginner, seed: 42", "Reach floor 7"]
+      "sourceReports": ["report-playthrough-first_timer-42-...", "..."],
+      "bestEvidence": { "metric": "Enemy dealt 53 damage in one turn", "floor": 7, "profileId": "first_timer" },
+      "reproductionSteps": ["Use profile: first_timer, seed: 42", "Reach floor 7"]
     }
   ]
 }
@@ -60,8 +76,8 @@ Review all analysis reports, deduplicate issues, score them, and maintain a rank
 Print a ranked table of the top 10 issues:
 ```
 # | Sev    | Title                              | Freq | Score | Profiles
-1 | HIGH   | Floor 7 boss damage spike...       |    4 |  30.0 | beginner, struggling, average, impatient
-2 | MEDIUM | Shield cards never played...        |    3 |  13.5 | beginner, struggling, impatient
+1 | HIGH   | Floor 7 boss damage spike...       |    4 |  30.0 | first_timer, casual_learner, regular, gamer
+2 | MEDIUM | Shield cards never played...        |    3 |  13.5 | first_timer, casual_learner, gamer
 ```
 
 Also run: `node tests/playtest/view-leaderboard.mjs` to display the formatted table.

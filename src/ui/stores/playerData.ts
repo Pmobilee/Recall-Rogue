@@ -11,6 +11,8 @@ import { migrateReviewState as migrateToFsrsState, reviewFact as reviewFactFsrs 
 import { getCardTier } from '../../services/tierDerivation'
 import { checkTierUpTrigger, checkStreakTrigger } from '../../services/reviewPromptService'
 import { applyStabilityBonusToFacts } from '../../services/runEarlyBoostController'
+import { calculateRunXP, processXPGain } from '../../services/characterLevel'
+import type { RunXPStats, RunXPBreakdown } from '../../services/characterLevel'
 // cosmetics.ts and knowledgeStore.ts archived — inline stubs
 type Cosmetic = { id: string; name: string; price: number; category: string; cost: Partial<Record<string, number>> }
 function calculateKnowledgePoints(_stats: unknown, _mastered: number): number { return 0 }
@@ -1948,14 +1950,13 @@ export function toggleRelicExclusion(relicId: string): void {
  * @param stats - Run statistics used to calculate XP earned.
  * @returns XP breakdown, levels gained, new level, unlocked relics, and dust awarded.
  */
-export async function awardRunXP(stats: import('../../services/characterLevel').RunXPStats): Promise<{
-  breakdown: import('../../services/characterLevel').RunXPBreakdown;
+export function awardRunXP(stats: RunXPStats): {
+  breakdown: RunXPBreakdown;
   levelsGained: number;
   newLevel: number;
   relicsUnlocked: string[];
   dustAwarded: number;
-}> {
-  const { calculateRunXP, processXPGain } = await import('../../services/characterLevel')
+} {
 
   // Check if this is the first run today
   const today = new Date().toISOString().slice(0, 10)

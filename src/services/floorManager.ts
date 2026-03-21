@@ -21,6 +21,7 @@ export interface FloorState {
   bossDefeated: boolean
   segment: 1 | 2 | 3 | 4
   lastSlotWasEvent: boolean  // Track if last room was non-combat event
+  bonusRelicOfferedThisFloor?: boolean  // True once a bonus relic has been offered on post-combat rewards this floor
   actMap?: import('./mapGenerator').ActMap  // Slay the Spire-style map for this act
 }
 
@@ -46,6 +47,14 @@ export type MysteryEffect =
   | { type: 'freeCard' }
   | { type: 'nothing'; message: string }
   | { type: 'choice'; options: Array<{ label: string; effect: MysteryEffect }> }
+  | { type: 'currency'; amount: number }
+  | { type: 'maxHpChange'; amount: number }
+  | { type: 'upgradeRandomCard' }
+  | { type: 'removeRandomCard' }
+  | { type: 'combat' }
+  | { type: 'cardReward' }
+  | { type: 'healPercent'; percent: number }
+  | { type: 'transformCard' }
 
 // ============================================================
 // Room type weights by segment
@@ -102,42 +111,260 @@ const EVENT_CHANCE_BY_SEGMENT: Record<1 | 2 | 3 | 4, number> = {
 // Mystery event templates
 // ============================================================
 
-const MYSTERY_EVENTS: MysteryEvent[] = [
+const TIER_1_EVENTS: MysteryEvent[] = [
   {
-    id: 'healing_spring',
-    name: 'Healing Spring',
-    description: 'You discover a pool of glowing water. Its warmth restores your strength.',
-    effect: { type: 'heal', amount: 20 },
+    id: 'reading_nook',
+    name: 'The Reading Nook',
+    description: 'A quiet corner with a well-worn book. Reading it sharpens one of your cards.',
+    effect: { type: 'upgradeRandomCard' },
   },
   {
-    id: 'unstable_ground',
-    name: 'Unstable Ground',
-    description: 'The floor gives way beneath you! Rocks and debris shower down.',
-    effect: { type: 'damage', amount: 10 },
+    id: 'scattered_coins',
+    name: 'Scattered Coins',
+    description: 'Someone left in a hurry. Their loss is your gain.',
+    effect: { type: 'currency', amount: 25 },
   },
   {
-    id: 'forgotten_cache',
-    name: 'Forgotten Cache',
-    description: 'A hidden compartment reveals a forgotten data crystal.',
+    id: 'healing_fountain',
+    name: 'The Healing Fountain',
+    description: 'Crystal-clear water flows from a crack in the wall. It tastes like remembering something you forgot.',
+    effect: { type: 'healPercent', percent: 15 },
+  },
+  {
+    id: 'whispering_shelf',
+    name: 'The Whispering Shelf',
+    description: 'A book slides off the shelf and into your bag. It seems to want to come with you.',
     effect: { type: 'freeCard' },
   },
   {
-    id: 'empty_chamber',
-    name: 'Empty Chamber',
-    description: 'An eerily quiet chamber. Nothing here but silence and dust.',
-    effect: { type: 'nothing', message: 'The silence is unsettling, but harmless.' },
+    id: 'dust_and_silence',
+    name: 'Dust and Silence',
+    description: 'An abandoned study. Papers scattered, ink still wet. But whoever was here is long gone.',
+    effect: { type: 'nothing', message: 'The desk is still warm. Whoever was here left no clues.' },
   },
   {
-    id: 'traders_gambit',
-    name: "Trader's Gambit",
-    description: 'A wandering merchant offers you a deal: knowledge for vitality.',
+    id: 'lost_notebook',
+    name: 'The Lost Notebook',
+    description: 'A leather notebook lies open. The handwriting is frantic but brilliant.',
     effect: {
       type: 'choice',
       options: [
-        { label: 'Trade 20% HP for a free card', effect: { type: 'damage', amount: 20 } },
-        { label: 'Leave safely', effect: { type: 'nothing', message: 'You decline and move on.' } },
+        { label: 'Read it carefully (upgrade a card)', effect: { type: 'upgradeRandomCard' } },
+        { label: 'Stuff it in your bag (gain a card)', effect: { type: 'freeCard' } },
       ],
     },
+  },
+  {
+    id: 'lost_and_found',
+    name: 'Lost and Found',
+    description: 'A basket of lost things — some coins, a bandage, half a sandwich. Better than nothing.',
+    effect: { type: 'currency', amount: 15 },
+  },
+]
+
+const TIER_2_EVENTS: MysteryEvent[] = [
+  {
+    id: 'strict_librarian',
+    name: 'The Strict Librarian',
+    description: "A ghostly librarian blocks your path. 'Return what you\u2019ve borrowed,' she hisses, 'or pay the fine.'",
+    effect: {
+      type: 'choice',
+      options: [
+        { label: 'Return a card (remove + heal 15)', effect: { type: 'removeRandomCard' } },
+        { label: 'Refuse (take 12 damage)', effect: { type: 'damage', amount: 12 } },
+      ],
+    },
+  },
+  {
+    id: 'knowledge_tax',
+    name: 'Knowledge Tax',
+    description: "A toll booth carved into the stone. 'Knowledge has a price,' reads the sign.",
+    effect: {
+      type: 'choice',
+      options: [
+        { label: 'Pay 30 gold (heal 20% HP)', effect: { type: 'currency', amount: -30 } },
+        { label: 'Pay with blood (take 12 dmg, gain 40 gold)', effect: { type: 'damage', amount: 12 } },
+        { label: 'Refuse', effect: { type: 'nothing', message: 'You walk past. The toll booth watches.' } },
+      ],
+    },
+  },
+  {
+    id: 'copyists_workshop',
+    name: "The Copyist's Workshop",
+    description: "Rows of desks, each with a scribe frantically copying. One of your cards catches their eye and they 'improve' it.",
+    effect: { type: 'transformCard' },
+  },
+  {
+    id: 'strange_mushrooms',
+    name: 'Strange Mushrooms',
+    description: 'Bioluminescent mushrooms pulse with an inviting glow. They smell like answers.',
+    effect: {
+      type: 'choice',
+      options: [
+        { label: 'Eat one (risky)', effect: { type: 'healPercent', percent: 15 } },
+        { label: 'Ignore them', effect: { type: 'nothing', message: 'Probably wise.' } },
+      ],
+    },
+  },
+  {
+    id: 'ambush',
+    name: 'Ambush!',
+    description: 'The room seemed empty until the books started moving. Something is very much alive in here.',
+    effect: { type: 'combat' },
+  },
+  {
+    id: 'donation_box',
+    name: 'The Donation Box',
+    description: "A box labeled 'For the Preservation of Knowledge.' It jingles when shaken.",
+    effect: {
+      type: 'choice',
+      options: [
+        { label: 'Donate 20 gold (+3 max HP)', effect: { type: 'maxHpChange', amount: 3 } },
+        { label: 'Shake it (gain 10 gold)', effect: { type: 'currency', amount: 10 } },
+        { label: 'Leave it', effect: { type: 'nothing', message: 'You move on.' } },
+      ],
+    },
+  },
+  {
+    id: 'gamblers_tome',
+    name: "The Gambler's Tome",
+    description: 'A tome bound in shuffled cards. Opening it could be enlightening — or painful.',
+    effect: {
+      type: 'choice',
+      options: [
+        { label: 'Open it (risk 15 HP for a card upgrade)', effect: { type: 'upgradeRandomCard' } },
+        { label: 'Walk away', effect: { type: 'nothing', message: 'Discretion is the better part of valor.' } },
+      ],
+    },
+  },
+]
+
+const TIER_3_EVENTS: MysteryEvent[] = [
+  {
+    id: 'burning_library',
+    name: 'The Burning Library',
+    description: 'Fire crawls across the shelves. You could save something if you\u2019re fast enough.',
+    effect: {
+      type: 'choice',
+      options: [
+        { label: 'Rush in! (lose 15 HP, upgrade a card + gain a card)', effect: { type: 'damage', amount: 15 } },
+        { label: 'Watch it burn', effect: { type: 'nothing', message: 'You watch centuries of knowledge turn to ash.' } },
+      ],
+    },
+  },
+  {
+    id: 'mirror_scholar',
+    name: 'The Mirror Scholar',
+    description: "A full-length mirror in an otherwise empty room. Your reflection smiles. You didn't.",
+    effect: { type: 'combat' },
+  },
+  {
+    id: 'merchant_of_memories',
+    name: 'The Merchant of Memories',
+    description: "An ancient merchant sits cross-legged. 'I don\u2019t deal in gold,' they say. 'Only vitality.'",
+    effect: {
+      type: 'choice',
+      options: [
+        { label: 'Trade 8 max HP for a card upgrade', effect: { type: 'maxHpChange', amount: -8 } },
+        { label: 'Trade 15 HP for a free card', effect: { type: 'damage', amount: 15 } },
+        { label: 'Decline', effect: { type: 'nothing', message: "The merchant nods. 'Perhaps next time.'" } },
+      ],
+    },
+  },
+  {
+    id: 'cache_of_contraband',
+    name: 'Cache of Contraband',
+    description: "Books with red 'BANNED' stamps. They vibrate with forbidden knowledge.",
+    effect: {
+      type: 'choice',
+      options: [
+        { label: 'Read them (gain card, take 10 dmg)', effect: { type: 'damage', amount: 10 } },
+        { label: 'Take one safely', effect: { type: 'freeCard' } },
+        { label: 'Report them (gain 30 gold)', effect: { type: 'currency', amount: 30 } },
+      ],
+    },
+  },
+  {
+    id: 'wishing_well',
+    name: 'The Wishing Well',
+    description: "A deep shaft in the floor, coins glittering at the bottom. 'Toss a coin to your scholar.'",
+    effect: {
+      type: 'choice',
+      options: [
+        { label: 'Toss 10 gold (random reward)', effect: { type: 'currency', amount: -10 } },
+        { label: 'Save your gold', effect: { type: 'nothing', message: 'You keep your coins.' } },
+      ],
+    },
+  },
+  {
+    id: 'study_group',
+    name: 'The Study Group',
+    description: "Four ghostly students huddle around a desk. 'Sit down,' one says. The study session is surprisingly productive.",
+    effect: { type: 'upgradeRandomCard' },
+  },
+]
+
+const TIER_4_EVENTS: MysteryEvent[] = [
+  {
+    id: 'final_wager',
+    name: 'The Final Wager',
+    description: "A figure shuffles a single card. 'Your health against my prize. Fifty-fifty. Interested?'",
+    effect: {
+      type: 'choice',
+      options: [
+        { label: 'Accept the wager (50/50: heal 20% + 30g, or lose half HP)', effect: { type: 'healPercent', percent: 20 } },
+        { label: 'No deal', effect: { type: 'nothing', message: "The figure shrugs and fades." } },
+      ],
+    },
+  },
+  {
+    id: 'the_purge',
+    name: 'The Purge',
+    description: 'A stone altar with a sacrificial flame. The fire burns away your weakest knowledge — and something stronger fills the gap.',
+    effect: { type: 'removeRandomCard' },
+  },
+  {
+    id: 'the_recursion',
+    name: 'The Recursion',
+    description: "A figure in familiar armor sits exhausted against the wall. It\u2019s you — from a run that didn\u2019t make it this far.",
+    effect: {
+      type: 'choice',
+      options: [
+        { label: 'Share knowledge (upgrade a card)', effect: { type: 'upgradeRandomCard' } },
+        { label: 'Take their supplies (heal 15% + 20 gold)', effect: { type: 'healPercent', percent: 15 } },
+        { label: 'Walk away', effect: { type: 'nothing', message: 'You leave yourself behind.' } },
+      ],
+    },
+  },
+  {
+    id: 'eraser_storm',
+    name: 'The Eraser Storm',
+    description: 'A white mist rolls in, dissolving everything it touches. Two of your cards dissolve — but the mist is strangely restorative.',
+    effect: { type: 'removeRandomCard' },
+  },
+  {
+    id: 'elite_ambush',
+    name: 'Ambush!',
+    description: 'You should have known this room was too quiet.',
+    effect: { type: 'combat' },
+  },
+  {
+    id: 'desperate_bargain',
+    name: 'The Desperate Bargain',
+    description: 'An altar hums with energy. It promises clarity — at a permanent cost.',
+    effect: {
+      type: 'choice',
+      options: [
+        { label: 'Sacrifice 10 max HP (remove 2 cards, heal 20%)', effect: { type: 'maxHpChange', amount: -10 } },
+        { label: 'Keep your strength', effect: { type: 'nothing', message: 'You back away from the altar.' } },
+      ],
+    },
+  },
+  {
+    id: 'the_breakthrough',
+    name: 'The Breakthrough',
+    description: 'Everything clicks. A connection forms between ideas you never linked before.',
+    effect: { type: 'upgradeRandomCard' },
   },
 ]
 
@@ -406,12 +633,59 @@ function weightedEnemyPick(pool: typeof ENEMY_TEMPLATES): string {
   return pool[pool.length - 1]?.id ?? 'cave_bat'
 }
 
-/** Generate a random mystery event. */
-export function generateMysteryEvent(): MysteryEvent {
+/**
+ * Generate a mystery event scaled to the current floor.
+ * - 20% chance: combat encounter (no post-combat reward)
+ * - 10% chance: card reward room
+ * - 70% chance: narrative event from tiered pools
+ */
+export function generateMysteryEvent(floor?: number): MysteryEvent {
+  const f = floor ?? 1
   const rng = isRunRngActive() ? getRunRng('map') : null
-  const idx = Math.floor((rng ? rng.next() : Math.random()) * MYSTERY_EVENTS.length)
-  // Return a deep-ish copy to avoid mutation
-  return { ...MYSTERY_EVENTS[idx] }
+
+  // 20% chance: combat
+  if ((rng ? rng.next() : Math.random()) < 0.20) {
+    // Floors 1-5: regular, 6-8: 50/50 regular/elite, 9+: elite
+    const isElite = f >= 9 || (f >= 6 && (rng ? rng.next() : Math.random()) < 0.5)
+    return {
+      id: isElite ? 'mystery_elite_combat' : 'mystery_combat',
+      name: 'Ambush!',
+      description: isElite
+        ? 'You should have known this room was too quiet.'
+        : 'The room seemed empty until the books started moving. Something is very much alive in here.',
+      effect: { type: 'combat' },
+    }
+  }
+
+  // 10% chance: card reward (0.125 of remaining 80%)
+  if ((rng ? rng.next() : Math.random()) < 0.125) {
+    return {
+      id: 'mystery_reward',
+      name: 'Hidden Cache',
+      description: 'A stash of cards, hidden behind loose bricks.',
+      effect: { type: 'cardReward' },
+    }
+  }
+
+  // 70%: narrative event from tiered pool
+  const pool: MysteryEvent[] = [...TIER_1_EVENTS]
+  if (f >= 3) pool.push(...TIER_2_EVENTS)
+  if (f >= 6) pool.push(...TIER_3_EVENTS)
+  if (f >= 9) pool.push(...TIER_4_EVENTS)
+
+  const idx = Math.floor((rng ? rng.next() : Math.random()) * pool.length)
+  return { ...pool[idx] }
+}
+
+/** Find a mystery event by its ID from all tiers. Dev use only. */
+export function getMysteryEventById(id: string): MysteryEvent | null {
+  const allEvents = [...TIER_1_EVENTS, ...TIER_2_EVENTS, ...TIER_3_EVENTS, ...TIER_4_EVENTS];
+  return allEvents.find(e => e.id === id) ?? null;
+}
+
+/** Get all mystery event IDs across all tiers. Dev use only. */
+export function getAllMysteryEventIds(): string[] {
+  return [...TIER_1_EVENTS, ...TIER_2_EVENTS, ...TIER_3_EVENTS, ...TIER_4_EVENTS].map(e => e.id);
 }
 
 /**
@@ -436,6 +710,7 @@ export function advanceFloor(state: FloorState): void {
   state.isBossFloor = isBossFloor(state.currentFloor)
   state.bossDefeated = false
   state.lastSlotWasEvent = false
+  state.bonusRelicOfferedThisFloor = false
 }
 
 // ============================================================

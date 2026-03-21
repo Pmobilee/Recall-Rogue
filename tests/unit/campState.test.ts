@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import {
-  CAMP_MAX_TIER,
+  CAMP_MAX_TIERS,
   campState,
   getCampUpgradeCost,
   setActiveCampPet,
@@ -15,9 +15,14 @@ const STORAGE_KEY = 'recall-rogue-camp-state'
 const DEFAULT_STATE: CampState = {
   tiers: {
     tent: 0,
-    seating: 0,
+    character: 0,
+    pet: 0,
     campfire: 0,
-    decor: 0,
+    library: 0,
+    questboard: 0,
+    shop: 0,
+    journal: 0,
+    doorway: 0,
   },
   outfit: 'scout',
   activePet: 'cat',
@@ -40,15 +45,15 @@ describe('campState store', () => {
   })
 
   it('returns expected upgrade costs and null after max tier', () => {
-    expect(getCampUpgradeCost(0)).toBe(120)
-    expect(getCampUpgradeCost(1)).toBe(240)
-    expect(getCampUpgradeCost(2)).toBe(420)
-    expect(getCampUpgradeCost(3)).toBeNull()
+    expect(getCampUpgradeCost('tent', 0)).toBe(60)
+    expect(getCampUpgradeCost('tent', 1)).toBe(120)
+    expect(getCampUpgradeCost('tent', 2)).toBe(200)
+    expect(getCampUpgradeCost('tent', CAMP_MAX_TIERS.tent)).toBeNull()
   })
 
-  it('clamps tier writes to [0, CAMP_MAX_TIER]', () => {
+  it('clamps tier writes to [0, CAMP_MAX_TIERS.tent]', () => {
     setCampTier('tent', 999)
-    expect(readStore().tiers.tent).toBe(CAMP_MAX_TIER)
+    expect(readStore().tiers.tent).toBe(CAMP_MAX_TIERS.tent)
 
     setCampTier('tent', -2)
     expect(readStore().tiers.tent).toBe(0)

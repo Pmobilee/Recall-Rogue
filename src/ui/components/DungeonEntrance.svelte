@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { getMenuBg } from '../../data/backgroundManifest'
+
   interface Props {
     onbegin: (slowReader: boolean, languageCode: string | null) => void
     onback?: () => void
@@ -6,12 +8,14 @@
 
   let { onbegin, onback }: Props = $props()
 
+  const menuBg = $derived(getMenuBg())
+
   function handleEnter(): void {
     onbegin(false, null)
   }
 </script>
 
-<div class="onboarding-screen">
+<div class="onboarding-screen" style="background-image: linear-gradient(rgba(6, 8, 13, 0.65), rgba(6, 8, 13, 0.85)), url('{menuBg}')">
   <div class="onboarding-panel">
     {#if onback}
       <button class="back-btn" type="button" onclick={onback}>&larr; Back</button>
@@ -26,10 +30,10 @@
   .onboarding-screen {
     position: fixed;
     inset: 0;
-    background:
-      linear-gradient(rgba(6, 8, 13, 0.65), rgba(6, 8, 13, 0.85)),
-      url('/assets/backgrounds/menu/bg_menu_title.png') center / cover no-repeat,
-      #0d1117;
+    background-color: #0d1117;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: grid;
     place-items: center;
     z-index: 120;

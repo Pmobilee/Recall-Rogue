@@ -8,7 +8,7 @@ import type { RunState, RunEndData } from './runManager';
 import { createRunState, endRun } from './runManager';
 import type { RewardArchetype } from './runManager';
 import { healPlayer } from './runManager';
-import type { RoomOption, MysteryEvent } from './floorManager';
+import type { RoomOption, MysteryEvent, MysteryEffect } from './floorManager';
 import {
   generateRoomOptions,
   generateMysteryEvent,
@@ -56,6 +56,7 @@ import {
   persistPlayer,
   prioritizeGraduatedRelicFact,
   recordDiveComplete,
+  awardRunXP,
 } from '../ui/stores/playerData';
 import { recordRunCompleted as recordRunForReview, checkBossKillTrigger } from './reviewPromptService';
 import { captureRunSummary, lastRunSummary } from './hubState';
@@ -107,7 +108,7 @@ import {
   generateRandomRelicDrop,
   shouldDropRandomRelic,
 } from './relicAcquisitionService'
-import { isRelicSlotsFull, getMaxRelicSlots } from './relicEffectResolver'
+import { isRelicSlotsFull, getMaxRelicSlots, resolveMaxHpBonusV2 } from './relicEffectResolver'
 import type { UpgradePreview } from './cardUpgradeService';
 import { getUpgradeCandidates, getUpgradePreview, upgradeCard, canMasteryUpgrade, masteryUpgrade } from './cardUpgradeService'
 import type { QuizQuestion } from './bossQuizPhase';
@@ -610,6 +611,28 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
   destroyRunRng()
   resetEncounterBridge()
   clearActiveRun();
+
+  // Award XP (skip for practice runs)
+  if (!endData.isPracticeRun) {
+    const xpResult = awardRunXP({
+      floorsCleared: endData.floorReached - 1, // floor 1 is starting floor
+      combatsWon: endData.encountersWon,
+      elitesDefeated: endData.elitesDefeated,
+      miniBossesDefeated: endData.miniBossesDefeated,
+      bossesDefeated: endData.bossesDefeated,
+      questionsCorrect: endData.correctAnswers,
+      questionsTotal: endData.factsAnswered,
+      speedBonuses: 0, // TODO: track speed bonuses in future
+      maxStreak: endData.bestCombo,
+      newFactsEncountered: endData.newFactsLearned,
+      completedRun: endData.result === 'victory',
+      retreated: endData.result === 'retreat',
+      ascensionLevel: run.ascensionLevel ?? 0,
+    });
+    // Attach XP result to endData for RunEndScreen display
+    (endData as any).xpResult = xpResult;
+  }
+
   lastRunSummary.set(captureRunSummary(run, endData));
   activeRunEndData.set(endData);
   activeRunState.set(null);
@@ -780,6 +803,14 @@ export function onStarterRelicSelected(relicId: string): void {
     });
     if (!(run.offeredRelicIds instanceof Set)) run.offeredRelicIds = new Set(run.offeredRelicIds as any ?? []);
     run.offeredRelicIds.add(relicId);
+
+    // vitality_ring: apply +20 max HP at run start
+    const relicIds = new Set(run.runRelics.map(r => r.definitionId));
+    const hpBonus = resolveMaxHpBonusV2(relicIds);
+    if (hpBonus > 0) {
+      run.playerMaxHp += hpBonus;
+      run.playerHp += hpBonus;
+    }
   }
 
   activeRunState.set(run);
@@ -915,6 +946,17 @@ function openCardReward(): void {
       rewards.push({ type: 'card', card });
     }
 
+    // 50% chance per floor to include a bonus relic alongside card choices
+    if (!run.floor.bonusRelicOfferedThisFloor && Math.random() < 0.5) {
+      const relicPool = buildRelicPool();
+      if (relicPool.length > 0) {
+        const bonusRelic = relicPool[Math.floor(Math.random() * relicPool.length)];
+        rewards.push({ type: 'relic', relic: bonusRelic });
+        run.floor.bonusRelicOfferedThisFloor = true;
+        activeRunState.set(run);
+      }
+    }
+
     analyticsService.track({
       name: 'card_reward',
       properties: {
@@ -1024,7 +1066,8 @@ function buildRelicPool(): RelicDefinition[] {
   // Merge persistent exclusions with current reroll-session seen IDs
   const excludedIds = [...(save.excludedRelicIds ?? []), ...rerollSeenIds]
   const heldIds = run.runRelics.map((r) => r.definitionId)
-  return getEligibleRelicPool(unlockedIds, excludedIds, heldIds)
+  const playerLevel = save.characterLevel ?? 0
+  return getEligibleRelicPool(unlockedIds, excludedIds, heldIds, playerLevel)
 }
 
 /**
@@ -1047,6 +1090,38 @@ function addRelicToRunDirect(relic: RelicDefinition): void {
   run.offeredRelicIds.add(relic.id)
   activeRunState.set(run)
   updateRelicPityCounter(relic)
+}
+
+/**
+ * Opens a treasure room with 3 relic choices from the player's unlocked pool.
+ * Uses the RewardRoomScene with relic-only items.
+ * Falls back to +25 gold and the standard card reward if no eligible relics remain.
+ */
+function openTreasureRoom(): void {
+  const run = get(activeRunState);
+  if (!run) return;
+
+  // Mark as event room for flow tracking
+  run.floor.lastSlotWasEvent = true;
+  activeRunState.set(run);
+
+  // Build relic pool from character-unlocked relics, excluding already-held
+  const pool = buildRelicPool();
+
+  if (pool.length === 0) {
+    // Fallback: no relics available, give gold instead
+    run.currency += 25;
+    activeRunState.set(run);
+    openCardReward();
+    return;
+  }
+
+  // Pick up to 3 random relics from the pool
+  const shuffledPool = [...pool].sort(() => Math.random() - 0.5);
+  const choices = shuffledPool.slice(0, Math.min(3, shuffledPool.length));
+
+  // Use the existing relic choice reward room flow
+  openRelicChoiceRewardRoom(choices, false);
 }
 
 /**
@@ -1125,6 +1200,20 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
       flawless: run.currentEncounterWrongAnswers === 0,
     });
     run.currentEncounterWrongAnswers = 0;
+
+    // Track enemy type for XP calculation (read node/floor before advancing)
+    const victoryNodeId = run.floor.actMap?.currentNodeId ?? null;
+    const victoryNode = victoryNodeId ? run.floor.actMap?.nodes[victoryNodeId] ?? null : null;
+    const victoryFloor = run.floor.currentFloor;
+    const victoryEncounter = run.floor.currentEncounter;
+    const victoryWasMiniBoss = isMiniBossEncounter(victoryFloor, victoryEncounter);
+    if (victoryNode?.type === 'elite') {
+      run.elitesDefeated += 1;
+    } else if (victoryNode?.type === 'boss' || (isBossFloor(victoryFloor) && victoryEncounter === run.floor.encountersPerFloor)) {
+      run.bossesDefeated += 1;
+    } else if (victoryWasMiniBoss) {
+      run.miniBossesDefeated += 1;
+    }
   }
 
   if (result === 'defeat') {
@@ -1239,6 +1328,20 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
     return;
   }
 
+  // Mystery-room combat: skip card reward and return to map
+  if (isMysteryRoomCombat) {
+    isMysteryRoomCombat = false;
+    const freshRun = get(activeRunState);
+    if (freshRun) {
+      freshRun.floor.lastSlotWasEvent = true;
+      activeRunState.set(freshRun);
+      activeRoomOptions.set(generateCombatRoomOptions(freshRun.floor.currentFloor));
+    }
+    gameFlowState.set('dungeonMap');
+    currentScreen.set('dungeonMap');
+    return;
+  }
+
   openCardReward();
 }
 
@@ -1294,7 +1397,9 @@ function openShopRoom(): void {
 
   // Generate buy inventory
   const relicPool = buildRelicPool();
-  const shopRelics = generateShopRelics(run.floor.currentFloor, relicPool);
+  const hasMerchantsFavor = run.runRelics.some(r => r.definitionId === 'merchants_favor');
+  const shopRelicCount = hasMerchantsFavor ? 4 : 3; // merchants_favor: +1 relic option
+  const shopRelics = generateShopRelics(run.floor.currentFloor, relicPool, shopRelicCount);
 
   // Generate card reward options for buying
   const cardRewardOptions = generateCardRewardOptionsByType(
@@ -1304,7 +1409,8 @@ function openShopRoom(): void {
     run.selectedArchetype,
     run.floor.currentFloor,
   );
-  const shopCards = priceShopCards(cardRewardOptions.slice(0, 3), run.floor.currentFloor);
+  const shopCardCount = hasMerchantsFavor ? 4 : 3; // merchants_favor: +1 card option
+  const shopCards = priceShopCards(cardRewardOptions.slice(0, shopCardCount), run.floor.currentFloor);
 
   const inventory: ShopInventory = {
     relics: shopRelics,
@@ -1654,7 +1760,7 @@ export async function onRoomSelected(room: RoomOption): Promise<void> {
           break
         }
       }
-      activeMysteryEvent.set(generateMysteryEvent());
+      activeMysteryEvent.set(generateMysteryEvent(run?.floor.currentFloor ?? 1));
       gameFlowState.set('mysteryEvent');
       currentScreen.set('mysteryEvent');
       break;
@@ -1663,15 +1769,7 @@ export async function onRoomSelected(room: RoomOption): Promise<void> {
       currentScreen.set('restRoom');
       break;
     case 'treasure':
-      {
-        const treasureRun = get(activeRunState);
-        if (treasureRun) {
-          treasureRun.currency += 15;
-          treasureRun.floor.lastSlotWasEvent = true;
-          activeRunState.set(treasureRun);
-        }
-      }
-      openCardReward();
+      openTreasureRoom();
       return;
     case 'shop':
       openShopRoom();
@@ -2015,6 +2113,149 @@ export function onMysteryResolved(): void {
   activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
   gameFlowState.set('dungeonMap');
   currentScreen.set('dungeonMap');
+}
+
+/** Flag: true when we're in a mystery-room combat so post-combat skips the card reward. */
+let isMysteryRoomCombat = false;
+
+/**
+ * Handle a mystery event effect and route to the appropriate next screen.
+ * Replaces the old CardApp.handleMysteryResolve + onMysteryResolved pattern.
+ */
+export function onMysteryEffectResolved(effect: MysteryEffect): void {
+  const run = get(activeRunState);
+  if (!run) return;
+
+  // Apply all single-step effects directly
+  applyMysteryEffect(effect, run);
+
+  // Route based on effect type
+  switch (effect.type) {
+    case 'combat': {
+      // Trigger a mystery-room combat. No card reward after.
+      isMysteryRoomCombat = true;
+      activeMysteryEvent.set(null);
+      activeMasteryChallenge.set(null);
+      activeRunState.set(run);
+      // Transition to combat screen — CombatScene will pick up the encounter
+      gameFlowState.set('combat');
+      holdScreenTransition();
+      currentScreen.set('combat');
+      break;
+    }
+    case 'cardReward': {
+      activeMysteryEvent.set(null);
+      activeMasteryChallenge.set(null);
+      run.floor.lastSlotWasEvent = true;
+      activeRunState.set(run);
+      openCardReward();
+      break;
+    }
+    default: {
+      // All other effects (heal, damage, currency, maxHpChange, upgradeRandomCard,
+      // removeRandomCard, healPercent, transformCard, freeCard, nothing, choice)
+      // already applied above — return to map.
+      activeMysteryEvent.set(null);
+      activeMasteryChallenge.set(null);
+      run.floor.lastSlotWasEvent = true;
+      activeRunState.set(run);
+      activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
+      gameFlowState.set('dungeonMap');
+      currentScreen.set('dungeonMap');
+      break;
+    }
+  }
+}
+
+/**
+ * Apply a single mystery effect to the run state (mutates run in-place).
+ * Does NOT persist run state or route screens.
+ */
+function applyMysteryEffect(effect: MysteryEffect, run: RunState): void {
+  switch (effect.type) {
+    case 'heal':
+      run.playerHp = Math.min(run.playerHp + effect.amount, run.playerMaxHp);
+      break;
+    case 'damage':
+      run.playerHp = Math.max(0, run.playerHp - effect.amount);
+      break;
+    case 'healPercent': {
+      const healAmount = Math.round((effect.percent / 100) * run.playerMaxHp);
+      run.playerHp = Math.min(run.playerHp + healAmount, run.playerMaxHp);
+      break;
+    }
+    case 'currency':
+      run.currency = Math.max(0, run.currency + effect.amount);
+      break;
+    case 'maxHpChange':
+      run.playerMaxHp = Math.max(1, run.playerMaxHp + effect.amount);
+      run.playerHp = Math.min(run.playerHp, run.playerMaxHp);
+      break;
+    case 'upgradeRandomCard': {
+      const allCards = getActiveDeckCards();
+      const eligible = allCards.filter(c => !c.isEcho && canMasteryUpgrade(c));
+      if (eligible.length > 0) {
+        const card = eligible[Math.floor(Math.random() * eligible.length)];
+        masteryUpgrade(card);
+      }
+      break;
+    }
+    case 'removeRandomCard': {
+      const allCards = getActiveDeckCards();
+      const removable = allCards.filter(c => !c.isEcho);
+      if (removable.length > 5) {
+        const card = removable[Math.floor(Math.random() * removable.length)];
+        sellCardFromActiveDeck(card.id); // removes from deck (gold returned is discarded)
+      }
+      break;
+    }
+    case 'transformCard': {
+      const allCards = getActiveDeckCards();
+      const transformable = allCards.filter(c => !c.isEcho);
+      if (transformable.length > 0) {
+        const card = transformable[Math.floor(Math.random() * transformable.length)];
+        const TRANSFORM_TYPES: Array<'attack' | 'shield' | 'heal' | 'buff'> = ['attack', 'shield', 'heal', 'buff'];
+        const others = TRANSFORM_TYPES.filter(t => t !== card.cardType);
+        card.cardType = others[Math.floor(Math.random() * others.length)] as typeof card.cardType;
+      }
+      break;
+    }
+    case 'choice':
+      // Choice effects are pre-resolved by the overlay before calling this function.
+      // When a choice is picked, the overlay calls onresolve with the chosen sub-effect.
+      // So we recurse on the chosen effect if it arrives here directly.
+      // (normally the overlay picks a sub-effect and calls onresolve with it)
+      break;
+    case 'freeCard':
+    case 'nothing':
+    case 'combat':
+    case 'cardReward':
+      // Handled by routing logic in onMysteryEffectResolved
+      break;
+  }
+}
+
+/**
+ * Called after a mystery-room combat completes (win or lose path).
+ * Skips the card reward and returns straight to the map.
+ */
+export function onMysteryRoomCombatComplete(): void {
+  if (!isMysteryRoomCombat) return;
+  isMysteryRoomCombat = false;
+  const run = get(activeRunState);
+  if (!run) return;
+  run.floor.lastSlotWasEvent = true;
+  activeRunState.set(run);
+  activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
+  gameFlowState.set('dungeonMap');
+  currentScreen.set('dungeonMap');
+}
+
+/**
+ * Whether the current combat is a mystery-room encounter (no post-combat card reward).
+ */
+export function getIsMysteryRoomCombat(): boolean {
+  return isMysteryRoomCombat;
 }
 
 export function onRestResolved(): void {

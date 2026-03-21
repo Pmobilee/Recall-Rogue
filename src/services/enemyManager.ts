@@ -6,6 +6,7 @@ import type { EnemyTemplate, EnemyInstance, EnemyIntent, EnemyTurnStartContext }
 import type { StatusEffect } from '../data/statusEffects';
 import { applyStatusEffect, tickStatusEffects, getStrengthModifier } from '../data/statusEffects';
 import { ENEMY_TURN_DAMAGE_CAP, FLOOR_DAMAGE_SCALING_PER_FLOOR, FLOOR_DAMAGE_SCALE_MID, getBalanceValue } from '../data/balance';
+import { resolvePoisonTickBonus } from './relicEffectResolver';
 
 /**
  * Computes HP scaling factor for a given floor.
@@ -285,18 +286,24 @@ export function executeEnemyIntent(enemy: EnemyInstance): {
 /**
  * Ticks status effects on an enemy (poison damage, regen heal, expiry).
  *
- * @param enemy - The enemy instance (mutated in place).
+ * @param enemy    - The enemy instance (mutated in place).
+ * @param relicIds - Set of relic IDs the player holds (for plague_flask bonus).
  * @returns The tick results (poison damage dealt, regen applied).
  */
-export function tickEnemyStatusEffects(enemy: EnemyInstance): {
+export function tickEnemyStatusEffects(enemy: EnemyInstance, relicIds?: Set<string>): {
   poisonDamage: number;
   regenHeal: number;
 } {
   const result = tickStatusEffects(enemy.statusEffects);
 
   // Apply poison damage to enemy
+  // plague_flask — each active poison stack deals +2 bonus damage per tick
   if (result.poisonDamage > 0) {
-    enemy.currentHP = Math.max(0, enemy.currentHP - result.poisonDamage);
+    const poisonStackCount = enemy.statusEffects.filter(s => s.type === 'poison').length;
+    const plagueBonus = resolvePoisonTickBonus(relicIds ?? new Set()) * poisonStackCount;
+    const totalPoisonDamage = result.poisonDamage + plagueBonus;
+    enemy.currentHP = Math.max(0, enemy.currentHP - totalPoisonDamage);
+    result.poisonDamage = totalPoisonDamage;
   }
 
   // Apply regen heal to enemy

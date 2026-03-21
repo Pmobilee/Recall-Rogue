@@ -14,6 +14,7 @@ function toSerializedRunState(run: ReturnType<typeof createRunState>): Record<st
     factsAnsweredCorrectly: [...run.factsAnsweredCorrectly],
     factsAnsweredIncorrectly: [...run.factsAnsweredIncorrectly],
     firstChargeFreeFactIds: [...run.firstChargeFreeFactIds],
+    offeredRelicIds: [...run.offeredRelicIds],
   }
 }
 
@@ -98,7 +99,7 @@ describe('runSaveService', () => {
     expect(loaded.encounterSnapshot?.activeRunPool).toHaveLength(1)
     expect(loaded.runState.ascensionLevel).toBe(10)
     expect(loaded.runState.ascensionModifiers.level).toBe(10)
-    expect(loaded.runState.ascensionModifiers.minRetreatFloorForRewards).toBe(12)
+    expect(loaded.runState.ascensionModifiers.minRetreatFloorForRewards).toBeNull()
     expect(loaded.runState.echoFactIds.has('echo-1')).toBe(true)
     expect(loaded.runState.factsAnsweredCorrectly.has('fact-1')).toBe(true)
     expect(loaded.runState.factsAnsweredIncorrectly.has('fact-2')).toBe(true)

@@ -5598,7 +5598,7 @@
       "id": "bg-coal_imp-landscape",
       "name": "The Spark Note Lair (Landscape)",
       "concept": "Deep cavern coal seam chamber with exposed coal seams in the walls glowing with inner heat, imp-sized handprints burned into surfaces, scattered ember debris and ash, everything blackened and scorched.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a SparkNotes speed-reading den where the walls are covered in condensed summaries of great works — entire novels reduced to single sentences scrawled in charcoal, small coal fires burn in alcoves each illuminating a different cheat sheet, the back wall has a massive abridged version of something important with most of the nuance literally burned away leaving only bullet points, scattered ashes of fully-read books smolder on the floor next to pristine untouched summary pamphlets, a speed-reading chart on the wall shows increasingly ridiculous words-per-minute targets, the room is warm and fast-paced with everything designed for quick consumption and quicker forgetting, charcoal sketches replace detailed illustrations, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements NO TEXT ANYWHERE",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a SparkNotes speed-reading den where the walls are covered in condensed summaries of great works — entire novels reduced to single sentences scrawled in charcoal, small coal fires burn in alcoves each illuminating a different cheat sheet, the back wall has a massive abridged version of something important with most of the nuance literally burned away leaving only bullet points, scattered ashes of fully-read books smolder on the floor next to pristine untouched summary pamphlets, a speed-reading chart on the wall shows increasingly ridiculous words-per-minute targets, the room is warm and fast-paced with everything designed for quick consumption and quicker forgetting, charcoal sketches replace detailed illustrations, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements NO TEXT ANYWHERE, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 1024,
       "targetHeight": 576,
       "variants": [
@@ -5625,6 +5625,12 @@
           "seed": 1001482034,
           "status": "done",
           "accepted": false
+        },
+        {
+          "variant": 4,
+          "seed": 2843271583,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -5854,7 +5860,7 @@
       "id": "bg-stalactite_drake-portrait",
       "name": "The Thesis Dragon Lair (Portrait)",
       "concept": "Deep cavern ceiling-hunt chamber with exceptionally long stalactites forming a forest of stone teeth hanging down, claw marks on the ceiling itself, guano and scale debris below the stalactite clusters.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a thesis defense amphitheater carved into a massive stalactite cavern where the ceiling is covered in enormous hanging stone formations like inverted towers of academia, each stalactite is carved to resemble a rolled thesis bound with a stone ribbon, the floor below is cratered with impact marks where these massive documents have dropped on the unprepared, a podium stands at the back with scratch marks from frantic presentations, chairs for the defense committee are carved from stalagmites in a semicircle facing the center, the acoustics amplify every sound into booming echoes, broken pointer sticks and shattered laser presenters litter the ground, one particularly massive stalactite directly overhead looks ready to fall, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a thesis defense amphitheater carved into a massive stalactite cavern where the ceiling is covered in enormous hanging stone formations like inverted towers of academia, each stalactite is carved to resemble a rolled thesis bound with a stone ribbon, the floor below is cratered with impact marks where these massive documents have dropped on the unprepared, a podium stands at the back with scratch marks from frantic presentations, chairs for the defense committee are carved from stalagmites in a semicircle facing the center, the acoustics amplify every sound into booming echoes, broken pointer sticks and shattered laser presenters litter the ground, one particularly massive stalactite directly overhead looks ready to fall, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 576,
       "targetHeight": 1024,
       "variants": [
@@ -5864,6 +5870,12 @@
           "status": "error",
           "accepted": false,
           "error": "HTTP 403: {\"error\":{\"message\":\"Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+        },
+        {
+          "variant": 1,
+          "seed": 2590178922,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -5871,7 +5883,7 @@
       "id": "bg-stalactite_drake-landscape",
       "name": "The Thesis Dragon Lair (Landscape)",
       "concept": "Deep cavern ceiling-hunt chamber with exceptionally long stalactites forming a forest of stone teeth hanging down, claw marks on the ceiling itself, guano and scale debris below the stalactite clusters.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a thesis defense amphitheater carved into a massive stalactite cavern where the ceiling is covered in enormous hanging stone formations like inverted towers of academia, each stalactite is carved to resemble a rolled thesis bound with a stone ribbon, the floor below is cratered with impact marks where these massive documents have dropped on the unprepared, a podium stands at the back with scratch marks from frantic presentations, chairs for the defense committee are carved from stalagmites in a semicircle facing the center, the acoustics amplify every sound into booming echoes, broken pointer sticks and shattered laser presenters litter the ground, one particularly massive stalactite directly overhead looks ready to fall, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a thesis defense amphitheater carved into a massive stalactite cavern where the ceiling is covered in enormous hanging stone formations like inverted towers of academia, each stalactite is carved to resemble a rolled thesis bound with a stone ribbon, the floor below is cratered with impact marks where these massive documents have dropped on the unprepared, a podium stands at the back with scratch marks from frantic presentations, chairs for the defense committee are carved from stalagmites in a semicircle facing the center, the acoustics amplify every sound into booming echoes, broken pointer sticks and shattered laser presenters litter the ground, one particularly massive stalactite directly overhead looks ready to fall, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 1024,
       "targetHeight": 576,
       "variants": [
@@ -5881,6 +5893,12 @@
           "status": "error",
           "accepted": false,
           "error": "HTTP 403: {\"error\":{\"message\":\"Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+        },
+        {
+          "variant": 1,
+          "seed": 1922216579,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -5888,7 +5906,7 @@
       "id": "bg-ember_moth-portrait",
       "name": "The Burnout Lair (Portrait)",
       "concept": "Deep cavern fire-scarred chamber with moth-wing scorch patterns burned into the walls, scattered wing-dust of ember and ash, fire-blackened stone columns, lingering heat in the stone itself.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a scorched alcove where everything was once beautiful — charred remains of an ornate mahogany desk still smolder with glowing edges, melted candles everywhere have dripped into frozen wax waterfalls, the ghostly outline of a motivational poster is burned into the back wall like a nuclear shadow, a single desk lamp still flickers its bulb about to die, ash drifts downward like grey snow covering everything in a soft melancholy blanket, the ceiling is scorched black with soot, a half-melted trophy sits on a shelf reading MOST PROMISING, scattered burned-out lightbulbs cover the floor like fallen stars, the walls show a gradient from pristine at the bottom to utterly charred at the top — it burned brightest at the peak, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a scorched alcove where everything was once beautiful — charred remains of an ornate mahogany desk still smolder with glowing edges, melted candles everywhere have dripped into frozen wax waterfalls, the ghostly outline of a motivational poster is burned into the back wall like a nuclear shadow, a single desk lamp still flickers its bulb about to die, ash drifts downward like grey snow covering everything in a soft melancholy blanket, the ceiling is scorched black with soot, a half-melted trophy sits on a shelf reading MOST PROMISING, scattered burned-out lightbulbs cover the floor like fallen stars, the walls show a gradient from pristine at the bottom to utterly charred at the top — it burned brightest at the peak, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 576,
       "targetHeight": 1024,
       "variants": [
@@ -5898,6 +5916,12 @@
           "status": "error",
           "accepted": false,
           "error": "HTTP 403: {\"error\":{\"message\":\"Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+        },
+        {
+          "variant": 1,
+          "seed": 2386903757,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -5905,7 +5929,7 @@
       "id": "bg-ember_moth-landscape",
       "name": "The Burnout Lair (Landscape)",
       "concept": "Deep cavern fire-scarred chamber with moth-wing scorch patterns burned into the walls, scattered wing-dust of ember and ash, fire-blackened stone columns, lingering heat in the stone itself.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a scorched alcove where everything was once beautiful — charred remains of an ornate mahogany desk still smolder with glowing edges, melted candles everywhere have dripped into frozen wax waterfalls, the ghostly outline of a motivational poster is burned into the back wall like a nuclear shadow, a single desk lamp still flickers its bulb about to die, ash drifts downward like grey snow covering everything in a soft melancholy blanket, the ceiling is scorched black with soot, a half-melted trophy sits on a shelf reading MOST PROMISING, scattered burned-out lightbulbs cover the floor like fallen stars, the walls show a gradient from pristine at the bottom to utterly charred at the top — it burned brightest at the peak, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a scorched alcove where everything was once beautiful — charred remains of an ornate mahogany desk still smolder with glowing edges, melted candles everywhere have dripped into frozen wax waterfalls, the ghostly outline of a motivational poster is burned into the back wall like a nuclear shadow, a single desk lamp still flickers its bulb about to die, ash drifts downward like grey snow covering everything in a soft melancholy blanket, the ceiling is scorched black with soot, a half-melted trophy sits on a shelf reading MOST PROMISING, scattered burned-out lightbulbs cover the floor like fallen stars, the walls show a gradient from pristine at the bottom to utterly charred at the top — it burned brightest at the peak, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 1024,
       "targetHeight": 576,
       "variants": [
@@ -5915,6 +5939,18 @@
           "status": "error",
           "accepted": false,
           "error": "HTTP 403: {\"error\":{\"message\":\"Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+        },
+        {
+          "variant": 1,
+          "seed": 1483483465,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 4290384719,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -5992,7 +6028,7 @@
       "id": "bg-deep_lurker-portrait",
       "name": "The Imposter Syndrome Lair (Portrait)",
       "concept": "Deep cavern ambush chamber with perfectly ordinary appearance that conceals danger, an unnervingly clean floor with only faint drag marks suggesting what hides here, the walls without any distinguishing features.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, an imposter syndrome lair where the room looks prestigious — a mahogany office with diplomas on the walls and awards on shelves — but every single credential is slightly wrong upon close inspection with names misspelled and institutions that don't exist, the shadows in the room are darker than they should be and seem to move independently, a mirror on the back wall shows a reflection that is slightly less accomplished looking than what's in front of it, name plates on the desk have been changed multiple times with scratched-out identities visible beneath, a mask collection hangs on one wall — each mask is a different confident face, a locked drawer labeled REAL QUALIFICATIONS is rusted shut, the whole room feels like a facade about to collapse, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, an imposter syndrome lair where the room looks prestigious — a mahogany office with diplomas on the walls and awards on shelves — but every single credential is slightly wrong upon close inspection with names misspelled and institutions that don't exist, the shadows in the room are darker than they should be and seem to move independently, a mirror on the back wall shows a reflection that is slightly less accomplished looking than what's in front of it, name plates on the desk have been changed multiple times with scratched-out identities visible beneath, a mask collection hangs on one wall — each mask is a different confident face, a locked drawer labeled REAL QUALIFICATIONS is rusted shut, the whole room feels like a facade about to collapse, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 576,
       "targetHeight": 1024,
       "variants": [
@@ -6007,6 +6043,12 @@
           "seed": 2188967196,
           "status": "done",
           "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 1455175937,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -6014,7 +6056,7 @@
       "id": "bg-deep_lurker-landscape",
       "name": "The Imposter Syndrome Lair (Landscape)",
       "concept": "Deep cavern ambush chamber with perfectly ordinary appearance that conceals danger, an unnervingly clean floor with only faint drag marks suggesting what hides here, the walls without any distinguishing features.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, an imposter syndrome lair where the room looks prestigious — a mahogany office with diplomas on the walls and awards on shelves — but every single credential is slightly wrong upon close inspection with names misspelled and institutions that don't exist, the shadows in the room are darker than they should be and seem to move independently, a mirror on the back wall shows a reflection that is slightly less accomplished looking than what's in front of it, name plates on the desk have been changed multiple times with scratched-out identities visible beneath, a mask collection hangs on one wall — each mask is a different confident face, a locked drawer labeled REAL QUALIFICATIONS is rusted shut, the whole room feels like a facade about to collapse, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, an imposter syndrome lair where the room looks prestigious — a mahogany office with diplomas on the walls and awards on shelves — but every single credential is slightly wrong upon close inspection with names misspelled and institutions that don't exist, the shadows in the room are darker than they should be and seem to move independently, a mirror on the back wall shows a reflection that is slightly less accomplished looking than what's in front of it, name plates on the desk have been changed multiple times with scratched-out identities visible beneath, a mask collection hangs on one wall — each mask is a different confident face, a locked drawer labeled REAL QUALIFICATIONS is rusted shut, the whole room feels like a facade about to collapse, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 1024,
       "targetHeight": 576,
       "variants": [
@@ -6023,6 +6065,12 @@
           "seed": 64604656,
           "status": "done",
           "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 3748676515,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -6190,7 +6238,7 @@
       "id": "bg-quartz_elemental-portrait",
       "name": "The Rote Memory Lair (Portrait)",
       "concept": "Abyss crystal memory chamber with quartz formations arranged in repeating patterns that encode something, the same shapes endlessly replicated, a space built entirely from repetition.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a rote memorization prison where the same flash card is carved into every wall tile repeated hundreds of times in perfect identical rows, the floor is a treadmill-like conveyor belt of identical quiz questions cycling endlessly, a massive stack of the exact same flash card reaches from floor to ceiling in the corner, the back wall has a progress bar that never seems to fill despite the repetition, quartz crystals grow in identical formations like copy-pasted structures, a metronome ticks with mechanical precision keeping the rhythm of forced memorization, the room has no variation no surprise no creativity — just the same thing over and over carved deeper each time, wear marks show where the same path has been walked thousands of times, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a rote memorization prison where the same flash card is carved into every wall tile repeated hundreds of times in perfect identical rows, the floor is a treadmill-like conveyor belt of identical quiz questions cycling endlessly, a massive stack of the exact same flash card reaches from floor to ceiling in the corner, the back wall has a progress bar that never seems to fill despite the repetition, quartz crystals grow in identical formations like copy-pasted structures, a metronome ticks with mechanical precision keeping the rhythm of forced memorization, the room has no variation no surprise no creativity — just the same thing over and over carved deeper each time, wear marks show where the same path has been walked thousands of times, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 576,
       "targetHeight": 1024,
       "variants": [
@@ -6199,6 +6247,12 @@
           "seed": 780051557,
           "status": "done",
           "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 2006468604,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -6206,7 +6260,7 @@
       "id": "bg-quartz_elemental-landscape",
       "name": "The Rote Memory Lair (Landscape)",
       "concept": "Abyss crystal memory chamber with quartz formations arranged in repeating patterns that encode something, the same shapes endlessly replicated, a space built entirely from repetition.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a rote memorization prison where the same flash card is carved into every wall tile repeated hundreds of times in perfect identical rows, the floor is a treadmill-like conveyor belt of identical quiz questions cycling endlessly, a massive stack of the exact same flash card reaches from floor to ceiling in the corner, the back wall has a progress bar that never seems to fill despite the repetition, quartz crystals grow in identical formations like copy-pasted structures, a metronome ticks with mechanical precision keeping the rhythm of forced memorization, the room has no variation no surprise no creativity — just the same thing over and over carved deeper each time, wear marks show where the same path has been walked thousands of times, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a rote memorization prison where the same flash card is carved into every wall tile repeated hundreds of times in perfect identical rows, the floor is a treadmill-like conveyor belt of identical quiz questions cycling endlessly, a massive stack of the exact same flash card reaches from floor to ceiling in the corner, the back wall has a progress bar that never seems to fill despite the repetition, quartz crystals grow in identical formations like copy-pasted structures, a metronome ticks with mechanical precision keeping the rhythm of forced memorization, the room has no variation no surprise no creativity — just the same thing over and over carved deeper each time, wear marks show where the same path has been walked thousands of times, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 1024,
       "targetHeight": 576,
       "variants": [
@@ -6215,6 +6269,12 @@
           "seed": 603352301,
           "status": "done",
           "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 2217211993,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -6238,7 +6298,7 @@
       "id": "bg-fossil_raptor-landscape",
       "name": "The Outdated Fact Lair (Landscape)",
       "concept": "Abyss fossil layer chamber with dinosaur fossils embedded in the walls in cross-section, bones protruding from the rock, the sedimentary layer record visible in the wall striations, a museum of things no longer relevant.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, an outdated textbook museum where the exhibits are proudly displayed but comically wrong — a solar system model with the wrong number of planets, a map with countries that no longer exist, medical charts showing debunked treatments, the back wall has a massive LAST UPDATED plaque showing a date decades in the past, fossils of old teaching methods are mounted in glass cases alongside actual dinosaur bones drawing a deliberate parallel, outdated encyclopedias are displayed on pedestals like sacred relics, cobwebs connect the exhibits suggesting nothing has been touched in ages, a suggestion box for corrections is welded shut, speed lines are scratched into the floor from something fast that still lives among the old wrong things, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, an outdated textbook museum where the exhibits are proudly displayed but comically wrong — a solar system model with the wrong number of planets, a map with countries that no longer exist, medical charts showing debunked treatments, the back wall has a massive LAST UPDATED plaque showing a date decades in the past, fossils of old teaching methods are mounted in glass cases alongside actual dinosaur bones drawing a deliberate parallel, outdated encyclopedias are displayed on pedestals like sacred relics, cobwebs connect the exhibits suggesting nothing has been touched in ages, a suggestion box for corrections is welded shut, speed lines are scratched into the floor from something fast that still lives among the old wrong things, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 1024,
       "targetHeight": 576,
       "variants": [
@@ -6247,6 +6307,18 @@
           "seed": 3690428194,
           "status": "done",
           "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 3493510727,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 426955207,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -6254,7 +6326,7 @@
       "id": "bg-geode_beetle-portrait",
       "name": "The Hidden Gem Lair (Portrait)",
       "concept": "Abyss geode cave with geode cross-sections exposed in the walls showing crystal interiors, the contrast of rough exteriors and brilliant interiors repeated throughout the space, crack lines where geodes have split.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a hidden gem grotto where the outer walls are ugly rough grey stone that looks completely unremarkable but wherever the stone has cracked open it reveals breathtaking crystal interiors of amethyst sapphire and emerald, a collection of geodes lines the back wall — all closed and ugly on the outside but one is cracked showing its dazzling interior, plain-looking books on a shelf have gorgeous illuminated pages visible where the covers have fallen open, a rough stone chest is cracked slightly revealing golden light from within, the floor is plain rock except where footsteps have cracked it revealing crystal underneath, the message is clear — beauty hides beneath every unremarkable surface, a magnifying glass sits on a rock highlighting the hidden value beneath, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a hidden gem grotto where the outer walls are ugly rough grey stone that looks completely unremarkable but wherever the stone has cracked open it reveals breathtaking crystal interiors of amethyst sapphire and emerald, a collection of geodes lines the back wall — all closed and ugly on the outside but one is cracked showing its dazzling interior, plain-looking books on a shelf have gorgeous illuminated pages visible where the covers have fallen open, a rough stone chest is cracked slightly revealing golden light from within, the floor is plain rock except where footsteps have cracked it revealing crystal underneath, the message is clear — beauty hides beneath every unremarkable surface, a magnifying glass sits on a rock highlighting the hidden value beneath, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 576,
       "targetHeight": 1024,
       "variants": [
@@ -6263,6 +6335,12 @@
           "seed": 2935074360,
           "status": "done",
           "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 510632596,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -6270,7 +6348,7 @@
       "id": "bg-geode_beetle-landscape",
       "name": "The Hidden Gem Lair (Landscape)",
       "concept": "Abyss geode cave with geode cross-sections exposed in the walls showing crystal interiors, the contrast of rough exteriors and brilliant interiors repeated throughout the space, crack lines where geodes have split.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a hidden gem grotto where the outer walls are ugly rough grey stone that looks completely unremarkable but wherever the stone has cracked open it reveals breathtaking crystal interiors of amethyst sapphire and emerald, a collection of geodes lines the back wall — all closed and ugly on the outside but one is cracked showing its dazzling interior, plain-looking books on a shelf have gorgeous illuminated pages visible where the covers have fallen open, a rough stone chest is cracked slightly revealing golden light from within, the floor is plain rock except where footsteps have cracked it revealing crystal underneath, the message is clear — beauty hides beneath every unremarkable surface, a magnifying glass sits on a rock highlighting the hidden value beneath, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a hidden gem grotto where the outer walls are ugly rough grey stone that looks completely unremarkable but wherever the stone has cracked open it reveals breathtaking crystal interiors of amethyst sapphire and emerald, a collection of geodes lines the back wall — all closed and ugly on the outside but one is cracked showing its dazzling interior, plain-looking books on a shelf have gorgeous illuminated pages visible where the covers have fallen open, a rough stone chest is cracked slightly revealing golden light from within, the floor is plain rock except where footsteps have cracked it revealing crystal underneath, the message is clear — beauty hides beneath every unremarkable surface, a magnifying glass sits on a rock highlighting the hidden value beneath, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 1024,
       "targetHeight": 576,
       "variants": [
@@ -6279,6 +6357,12 @@
           "seed": 1798669372,
           "status": "done",
           "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 2539603634,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -6334,7 +6418,7 @@
       "id": "bg-crystal_bat-landscape",
       "name": "The Echo Chamber Lair (Landscape)",
       "concept": "Abyss crystal resonance chamber with crystal formations arranged to amplify and reflect sound, acoustic patterns visible in the crystal arrangements, countless small crystal-wing impact marks on the walls.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, an echo chamber cavern where the walls are lined with identical crystal formations that amplify and repeat any sound, the same opinion is carved into the walls in increasingly large letters getting bigger with each repetition, mirrors face mirrors creating infinite reflections that each show a slightly more distorted version, crystal megaphones point inward from every direction, the back wall is a massive resonance chamber that vibrates sympathetically with its own frequency, there are no windows and no outside perspectives visible, the floor has circular grooves worn by something flying in tight loops, every crystal hums the same note creating a drone of self-reinforcement, blocked tunnel exits suggest other viewpoints were deliberately sealed off, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, an echo chamber cavern where the walls are lined with identical crystal formations that amplify and repeat any sound, the same opinion is carved into the walls in increasingly large letters getting bigger with each repetition, mirrors face mirrors creating infinite reflections that each show a slightly more distorted version, crystal megaphones point inward from every direction, the back wall is a massive resonance chamber that vibrates sympathetically with its own frequency, there are no windows and no outside perspectives visible, the floor has circular grooves worn by something flying in tight loops, every crystal hums the same note creating a drone of self-reinforcement, blocked tunnel exits suggest other viewpoints were deliberately sealed off, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 1024,
       "targetHeight": 576,
       "variants": [
@@ -6343,6 +6427,12 @@
           "seed": 3300748355,
           "status": "done",
           "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 1064263020,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -6350,7 +6440,7 @@
       "id": "bg-void_mite-portrait",
       "name": "The Blank Spot Lair (Portrait)",
       "concept": "Abyss void chamber where details seem to drain away, walls that are featureless despite being close, a space that absorbs information rather than conveying it, negative space as threat.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a blank spot void room where patches of the environment have been erased leaving perfect rectangles of absolute nothingness — not darkness but NOTHING, a bookshelf has gaps where books used to be with not even dust remaining, the floor has missing tiles replaced by void patches you can't see the bottom of, a chalkboard has words with letters missing creating nonsensical gaps, the walls have rectangular holes where paintings or posters once hung now showing only void, a desk has items partially erased — half a pencil half a book half a cup, the erased areas are spreading slowly with fresh void patches smaller than old ones near the edges, the room is being consumed one tiny bite at a time by forgetting itself, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a blank spot void room where patches of the environment have been erased leaving perfect rectangles of absolute nothingness — not darkness but NOTHING, a bookshelf has gaps where books used to be with not even dust remaining, the floor has missing tiles replaced by void patches you can't see the bottom of, a chalkboard has words with letters missing creating nonsensical gaps, the walls have rectangular holes where paintings or posters once hung now showing only void, a desk has items partially erased — half a pencil half a book half a cup, the erased areas are spreading slowly with fresh void patches smaller than old ones near the edges, the room is being consumed one tiny bite at a time by forgetting itself, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 576,
       "targetHeight": 1024,
       "variants": [
@@ -6359,6 +6449,12 @@
           "seed": 81889879,
           "status": "done",
           "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 3979105930,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -6366,13 +6462,19 @@
       "id": "bg-void_mite-landscape",
       "name": "The Blank Spot Lair (Landscape)",
       "concept": "Abyss void chamber where details seem to drain away, walls that are featureless despite being close, a space that absorbs information rather than conveying it, negative space as threat.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a blank spot void room where patches of the environment have been erased leaving perfect rectangles of absolute nothingness — not darkness but NOTHING, a bookshelf has gaps where books used to be with not even dust remaining, the floor has missing tiles replaced by void patches you can't see the bottom of, a chalkboard has words with letters missing creating nonsensical gaps, the walls have rectangular holes where paintings or posters once hung now showing only void, a desk has items partially erased — half a pencil half a book half a cup, the erased areas are spreading slowly with fresh void patches smaller than old ones near the edges, the room is being consumed one tiny bite at a time by forgetting itself, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a blank spot void room where patches of the environment have been erased leaving perfect rectangles of absolute nothingness — not darkness but NOTHING, a bookshelf has gaps where books used to be with not even dust remaining, the floor has missing tiles replaced by void patches you can't see the bottom of, a chalkboard has words with letters missing creating nonsensical gaps, the walls have rectangular holes where paintings or posters once hung now showing only void, a desk has items partially erased — half a pencil half a book half a cup, the erased areas are spreading slowly with fresh void patches smaller than old ones near the edges, the room is being consumed one tiny bite at a time by forgetting itself, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 1024,
       "targetHeight": 576,
       "variants": [
         {
           "variant": 0,
           "seed": 723610070,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 288977798,
           "status": "done",
           "accepted": false
         }
@@ -6446,7 +6548,7 @@
       "id": "bg-ember_skeleton-portrait",
       "name": "Ember Skeleton Lair (Portrait)",
       "concept": "Abyss skeleton cremation chamber with bone-ash residue coating the floor, partial skeletal remains still standing in ember-lit alcoves, the walls heat-cracked and fire-stained, an ancient battlefield preserved in ash.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a bare-bones study hall stripped to its skeletal essentials where the walls are raw exposed stone with only the structural framework of bookshelves remaining — the wood burned away leaving iron bracket skeletons, a desk reduced to its metal frame still glows with ember-orange heat at the joints, the floor is bare stone scattered with the charred bones of old furniture, wall sconces hold eternal embers that provide just enough light to study by, a skeleton key hangs on the wall next to a skeleton of a coat rack, the room is persistently warm from the embers that refuse to go out, simple and stripped of all pretense this room is pure function — nothing decorative survives only the fundamentals remain glowing stubbornly, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a bare-bones study hall stripped to its skeletal essentials where the walls are raw exposed stone with only the structural framework of bookshelves remaining — the wood burned away leaving iron bracket skeletons, a desk reduced to its metal frame still glows with ember-orange heat at the joints, the floor is bare stone scattered with the charred bones of old furniture, wall sconces hold eternal embers that provide just enough light to study by, a skeleton key hangs on the wall next to a skeleton of a coat rack, the room is persistently warm from the embers that refuse to go out, simple and stripped of all pretense this room is pure function — nothing decorative survives only the fundamentals remain glowing stubbornly, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 576,
       "targetHeight": 1024,
       "variants": [
@@ -6455,6 +6557,12 @@
           "seed": 1342980348,
           "status": "done",
           "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 476544448,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -6462,7 +6570,7 @@
       "id": "bg-ember_skeleton-landscape",
       "name": "Ember Skeleton Lair (Landscape)",
       "concept": "Abyss skeleton cremation chamber with bone-ash residue coating the floor, partial skeletal remains still standing in ember-lit alcoves, the walls heat-cracked and fire-stained, an ancient battlefield preserved in ash.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a bare-bones study hall stripped to its skeletal essentials where the walls are raw exposed stone with only the structural framework of bookshelves remaining — the wood burned away leaving iron bracket skeletons, a desk reduced to its metal frame still glows with ember-orange heat at the joints, the floor is bare stone scattered with the charred bones of old furniture, wall sconces hold eternal embers that provide just enough light to study by, a skeleton key hangs on the wall next to a skeleton of a coat rack, the room is persistently warm from the embers that refuse to go out, simple and stripped of all pretense this room is pure function — nothing decorative survives only the fundamentals remain glowing stubbornly, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a bare-bones study hall stripped to its skeletal essentials where the walls are raw exposed stone with only the structural framework of bookshelves remaining — the wood burned away leaving iron bracket skeletons, a desk reduced to its metal frame still glows with ember-orange heat at the joints, the floor is bare stone scattered with the charred bones of old furniture, wall sconces hold eternal embers that provide just enough light to study by, a skeleton key hangs on the wall next to a skeleton of a coat rack, the room is persistently warm from the embers that refuse to go out, simple and stripped of all pretense this room is pure function — nothing decorative survives only the fundamentals remain glowing stubbornly, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 1024,
       "targetHeight": 576,
       "variants": [
@@ -6471,6 +6579,12 @@
           "seed": 2904948923,
           "status": "done",
           "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 3150932845,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -6478,7 +6592,7 @@
       "id": "bg-obsidian_knight-portrait",
       "name": "The Perfectionist Lair (Portrait)",
       "concept": "Abyss obsidian armory with obsidian blade arrangements on the walls in perfect symmetrical order, a central dueling floor marked with precise geometric lines, nothing out of place — the environment itself aspires to perfection.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a perfectionist's obsidian study where everything is arranged with surgical precision — books are shelved by exact height creating a perfect gradient, a desk has items placed at mathematically exact intervals, the obsidian walls are polished to an absolute mirror finish with not a single imperfection visible, the floor tiles are cut to micron precision with no gaps between them, a single speck of dust on the otherwise immaculate desk stands out dramatically, rulers and protractors are mounted on the walls as decorative art, a drafting table shows a project redrawn dozens of times each iteration barely different from the last, crumpled papers in the wastebin are each crumpled into a perfect sphere, the room is beautiful but suffocating in its refusal to accept anything less than flawless, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a perfectionist's obsidian study where everything is arranged with surgical precision — books are shelved by exact height creating a perfect gradient, a desk has items placed at mathematically exact intervals, the obsidian walls are polished to an absolute mirror finish with not a single imperfection visible, the floor tiles are cut to micron precision with no gaps between them, a single speck of dust on the otherwise immaculate desk stands out dramatically, rulers and protractors are mounted on the walls as decorative art, a drafting table shows a project redrawn dozens of times each iteration barely different from the last, crumpled papers in the wastebin are each crumpled into a perfect sphere, the room is beautiful but suffocating in its refusal to accept anything less than flawless, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 576,
       "targetHeight": 1024,
       "variants": [
@@ -6487,6 +6601,12 @@
           "seed": 3346594420,
           "status": "done",
           "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 4177311934,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -6494,7 +6614,7 @@
       "id": "bg-obsidian_knight-landscape",
       "name": "The Perfectionist Lair (Landscape)",
       "concept": "Abyss obsidian armory with obsidian blade arrangements on the walls in perfect symmetrical order, a central dueling floor marked with precise geometric lines, nothing out of place — the environment itself aspires to perfection.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a perfectionist's obsidian study where everything is arranged with surgical precision — books are shelved by exact height creating a perfect gradient, a desk has items placed at mathematically exact intervals, the obsidian walls are polished to an absolute mirror finish with not a single imperfection visible, the floor tiles are cut to micron precision with no gaps between them, a single speck of dust on the otherwise immaculate desk stands out dramatically, rulers and protractors are mounted on the walls as decorative art, a drafting table shows a project redrawn dozens of times each iteration barely different from the last, crumpled papers in the wastebin are each crumpled into a perfect sphere, the room is beautiful but suffocating in its refusal to accept anything less than flawless, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a perfectionist's obsidian study where everything is arranged with surgical precision — books are shelved by exact height creating a perfect gradient, a desk has items placed at mathematically exact intervals, the obsidian walls are polished to an absolute mirror finish with not a single imperfection visible, the floor tiles are cut to micron precision with no gaps between them, a single speck of dust on the otherwise immaculate desk stands out dramatically, rulers and protractors are mounted on the walls as decorative art, a drafting table shows a project redrawn dozens of times each iteration barely different from the last, crumpled papers in the wastebin are each crumpled into a perfect sphere, the room is beautiful but suffocating in its refusal to accept anything less than flawless, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 1024,
       "targetHeight": 576,
       "variants": [
@@ -6503,6 +6623,12 @@
           "seed": 3115555239,
           "status": "done",
           "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 1309828634,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -6510,7 +6636,7 @@
       "id": "bg-quartz_hydra-portrait",
       "name": "The Hydra Problem Lair (Portrait)",
       "concept": "Abyss hydra den with multiple overlapping territories marked by different scratch patterns as if several inhabitants competed for the same space, multiple sleeping hollows, a persistent three-way tension in the layout.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a problem multiplication chamber where a single simple math problem is carved into the back wall but it branches into two harder problems which each branch into two more creating an exponential tree of increasingly complex equations covering the entire wall surface, the quartz crystal formations mirror this pattern — one thick crystal at the base splits into two which split into four which split into eight filling the ceiling with a fractal canopy, the floor is littered with broken solutions that only solved one branch while three more grew back, an axe is embedded in one crystal stump with two new crystals already growing from the cut, a chalkboard shows the hopeless math of exponential growth, the room gets more complex the longer you look at it, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a problem multiplication chamber where a single simple math problem is carved into the back wall but it branches into two harder problems which each branch into two more creating an exponential tree of increasingly complex equations covering the entire wall surface, the quartz crystal formations mirror this pattern — one thick crystal at the base splits into two which split into four which split into eight filling the ceiling with a fractal canopy, the floor is littered with broken solutions that only solved one branch while three more grew back, an axe is embedded in one crystal stump with two new crystals already growing from the cut, a chalkboard shows the hopeless math of exponential growth, the room gets more complex the longer you look at it, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 576,
       "targetHeight": 1024,
       "variants": [
@@ -6519,6 +6645,12 @@
           "seed": 3266288504,
           "status": "done",
           "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 4044460175,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -6526,7 +6658,7 @@
       "id": "bg-quartz_hydra-landscape",
       "name": "The Hydra Problem Lair (Landscape)",
       "concept": "Abyss hydra den with multiple overlapping territories marked by different scratch patterns as if several inhabitants competed for the same space, multiple sleeping hollows, a persistent three-way tension in the layout.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a problem multiplication chamber where a single simple math problem is carved into the back wall but it branches into two harder problems which each branch into two more creating an exponential tree of increasingly complex equations covering the entire wall surface, the quartz crystal formations mirror this pattern — one thick crystal at the base splits into two which split into four which split into eight filling the ceiling with a fractal canopy, the floor is littered with broken solutions that only solved one branch while three more grew back, an axe is embedded in one crystal stump with two new crystals already growing from the cut, a chalkboard shows the hopeless math of exponential growth, the room gets more complex the longer you look at it, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a problem multiplication chamber where a single simple math problem is carved into the back wall but it branches into two harder problems which each branch into two more creating an exponential tree of increasingly complex equations covering the entire wall surface, the quartz crystal formations mirror this pattern — one thick crystal at the base splits into two which split into four which split into eight filling the ceiling with a fractal canopy, the floor is littered with broken solutions that only solved one branch while three more grew back, an axe is embedded in one crystal stump with two new crystals already growing from the cut, a chalkboard shows the hopeless math of exponential growth, the room gets more complex the longer you look at it, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 1024,
       "targetHeight": 576,
       "variants": [
@@ -6536,6 +6668,12 @@
           "status": "error",
           "accepted": false,
           "error": "HTTP 403: {\"error\":{\"message\":\"Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+        },
+        {
+          "variant": 1,
+          "seed": 3065679891,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -6575,7 +6713,7 @@
       "id": "bg-magma_broodmother-portrait",
       "name": "The Helicopter Parent Lair (Portrait)",
       "concept": "Abyss brood chamber with hundreds of lava-egg casings embedded in the floor in concentric protective rings, narrow patrol paths worn between the egg clusters, the whole space oriented around protecting the center.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a helicopter parent's lair obsessively organized around protecting something where the room is wrapped in layers of padding and safety equipment, every sharp corner is covered in foam, the walls are lined with emergency supplies first aid kits fire extinguishers and safety manuals, a massive nest of shredded permission slips and safety waivers fills the back of the room, the floor has rubber padding with non-slip surfaces and warning tape marking safe zones, lava flows through channels but each one has safety rails and warning signs, temperature monitors cover every wall showing readings from throughout the dungeon, a tracking board displays the location of every nearby entity with worried annotations, the room radiates smothering protective energy, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a helicopter parent's lair obsessively organized around protecting something where the room is wrapped in layers of padding and safety equipment, every sharp corner is covered in foam, the walls are lined with emergency supplies first aid kits fire extinguishers and safety manuals, a massive nest of shredded permission slips and safety waivers fills the back of the room, the floor has rubber padding with non-slip surfaces and warning tape marking safe zones, lava flows through channels but each one has safety rails and warning signs, temperature monitors cover every wall showing readings from throughout the dungeon, a tracking board displays the location of every nearby entity with worried annotations, the room radiates smothering protective energy, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 576,
       "targetHeight": 1024,
       "variants": [
@@ -6584,6 +6722,12 @@
           "seed": 3332925995,
           "status": "done",
           "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 1491780670,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -6591,7 +6735,7 @@
       "id": "bg-magma_broodmother-landscape",
       "name": "The Helicopter Parent Lair (Landscape)",
       "concept": "Abyss brood chamber with hundreds of lava-egg casings embedded in the floor in concentric protective rings, narrow patrol paths worn between the egg clusters, the whole space oriented around protecting the center.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a helicopter parent's lair obsessively organized around protecting something where the room is wrapped in layers of padding and safety equipment, every sharp corner is covered in foam, the walls are lined with emergency supplies first aid kits fire extinguishers and safety manuals, a massive nest of shredded permission slips and safety waivers fills the back of the room, the floor has rubber padding with non-slip surfaces and warning tape marking safe zones, lava flows through channels but each one has safety rails and warning signs, temperature monitors cover every wall showing readings from throughout the dungeon, a tracking board displays the location of every nearby entity with worried annotations, the room radiates smothering protective energy, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a helicopter parent's lair obsessively organized around protecting something where the room is wrapped in layers of padding and safety equipment, every sharp corner is covered in foam, the walls are lined with emergency supplies first aid kits fire extinguishers and safety manuals, a massive nest of shredded permission slips and safety waivers fills the back of the room, the floor has rubber padding with non-slip surfaces and warning tape marking safe zones, lava flows through channels but each one has safety rails and warning signs, temperature monitors cover every wall showing readings from throughout the dungeon, a tracking board displays the location of every nearby entity with worried annotations, the room radiates smothering protective energy, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 1024,
       "targetHeight": 576,
       "variants": [
@@ -6600,6 +6744,12 @@
           "seed": 622478053,
           "status": "done",
           "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 1873961219,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -6607,13 +6757,19 @@
       "id": "bg-geode_king-portrait",
       "name": "The Emeritus Lair (Portrait)",
       "concept": "Abyss crystal throne chamber with an enormous geode split open and hollowed to form a natural throne, gem fragments arranged as regalia, a space built around the display of accumulated crystal wealth.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, an emeritus professor's grotto that has been accumulated over decades where layers of geological time show different eras of academic fashion — 70s wood paneling gives way to 80s motivational posters buried under 90s computer equipment all encrusted with crystal growth, a massive chair carved from a geode sits behind a desk so covered in crystallized papers and awards they have become geological features, honorary degrees in ornate frames have crystals growing over them, the walls are stratified layers of career accomplishments slowly being consumed by mineral deposits, a nameplate so encrusted with crystal you can barely read the title EMERITUS beneath, the room smells of old books pipe tobacco and mineral deposits, more dangerous than it looks because the crystals are razor sharp beneath the dust, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, an emeritus professor's grotto that has been accumulated over decades where layers of geological time show different eras of academic fashion — 70s wood paneling gives way to 80s motivational posters buried under 90s computer equipment all encrusted with crystal growth, a massive chair carved from a geode sits behind a desk so covered in crystallized papers and awards they have become geological features, honorary degrees in ornate frames have crystals growing over them, the walls are stratified layers of career accomplishments slowly being consumed by mineral deposits, a nameplate so encrusted with crystal you can barely read the title EMERITUS beneath, the room smells of old books pipe tobacco and mineral deposits, more dangerous than it looks because the crystals are razor sharp beneath the dust, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 576,
       "targetHeight": 1024,
       "variants": [
         {
           "variant": 0,
           "seed": 3628388471,
+          "status": "done",
+          "accepted": true
+        },
+        {
+          "variant": 1,
+          "seed": 2577085789,
           "status": "done",
           "accepted": false
         }
@@ -6639,7 +6795,7 @@
       "id": "bg-abyssal_leviathan-portrait",
       "name": "The Student Debt Lair (Portrait)",
       "concept": "Abyss leviathan passage with marks of something enormous that fills the entire passage wall to wall, gouged scales on every surface at maximum reach, a space that feels oppressively too small for what lives here.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a vast flooded debt chamber where the water level is visibly RISING with a waterline stain on the walls showing it has been rising for years, massive chains drape from the ceiling into the murky water each link engraved with interest rates and payment schedules, documents float on the surface — loan agreements promissory notes payment demands, the walls bear thousands of tally marks counting upward with no end in sight, an enormous set of scales hangs from the ceiling permanently tipped to one side showing the balance will never be equal, compound interest formulas are carved into the walls growing exponentially as they spiral upward, a graduation cap floats on the water next to a ball and chain, the room is so vast the far wall is barely visible suggesting the debt extends beyond comprehension, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a vast flooded debt chamber where the water level is visibly RISING with a waterline stain on the walls showing it has been rising for years, massive chains drape from the ceiling into the murky water each link engraved with interest rates and payment schedules, documents float on the surface — loan agreements promissory notes payment demands, the walls bear thousands of tally marks counting upward with no end in sight, an enormous set of scales hangs from the ceiling permanently tipped to one side showing the balance will never be equal, compound interest formulas are carved into the walls growing exponentially as they spiral upward, a graduation cap floats on the water next to a ball and chain, the room is so vast the far wall is barely visible suggesting the debt extends beyond comprehension, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 576,
       "targetHeight": 1024,
       "variants": [
@@ -6648,6 +6804,12 @@
           "seed": 2859629315,
           "status": "done",
           "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 1615059756,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -6687,7 +6849,7 @@
       "id": "bg-crystal_lich-landscape",
       "name": "The Publish-or-Perish Lair (Landscape)",
       "concept": "Abyss lich sanctum with crystal phylactery housing at the center, publication-records carved into the walls as a mausoleum of achievement, the desperate geometry of a space where the occupant refused to accept ending.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a publish-or-perish necropolis where crystal phylacteries line the walls each one containing a glowing published paper that sustains the room's existence, a massive printing press made of bone and crystal dominates the back wall churning out papers endlessly, the floor is knee-deep in discarded manuscripts that weren't good enough, citation counts are carved into crystal obelisks like tombstones with numbers determining their height, a peer review altar sits in the corner where papers are sacrificed for journal acceptance, the room pulses with desperate creative energy — produce or die is carved above the door, impact factor scores glow on crystal displays competing for attention, half-finished drafts are pinned to every surface in various stages of completion, the phylacteries flicker — if they go dark the room dies, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a publish-or-perish necropolis where crystal phylacteries line the walls each one containing a glowing published paper that sustains the room's existence, a massive printing press made of bone and crystal dominates the back wall churning out papers endlessly, the floor is knee-deep in discarded manuscripts that weren't good enough, citation counts are carved into crystal obelisks like tombstones with numbers determining their height, a peer review altar sits in the corner where papers are sacrificed for journal acceptance, the room pulses with desperate creative energy — produce or die is carved above the door, impact factor scores glow on crystal displays competing for attention, half-finished drafts are pinned to every surface in various stages of completion, the phylacteries flicker — if they go dark the room dies, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 1024,
       "targetHeight": 576,
       "variants": [
@@ -6696,6 +6858,12 @@
           "seed": 2144318036,
           "status": "done",
           "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 1668511541,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -6703,7 +6871,7 @@
       "id": "bg-pressure_djinn-portrait",
       "name": "The Thesis Djinn Lair (Portrait)",
       "concept": "Archive air pressure chamber with stone walls bowing inward from immense air pressure, dust suspended at every height in visible pressure gradients, wind-carved channels in the stone, a space under permanent invisible siege.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a thesis djinn's binding chamber where a massive ornate lamp sits on a pedestal at the back but instead of oil it burns with the blue fire of academic ambition, binding circles are drawn on the floor in chalk and ink — contracts and agreements radiate outward in concentric rings, chains of obligation hang from the ceiling attached to nothing visible but clearly constraining something, a contract written on the wall outlines the terms of engagement — three wishes but each comes with publication requirements, incense burners shaped like mortarboard hats emit scholarly smoke, prayer beads made of thesis committee approval stamps hang from hooks, the room feels constrained by ritual obligation and academic protocol, the lamp flickers with contained pressure, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a thesis djinn's binding chamber where a massive ornate lamp sits on a pedestal at the back but instead of oil it burns with the blue fire of academic ambition, binding circles are drawn on the floor in chalk and ink — contracts and agreements radiate outward in concentric rings, chains of obligation hang from the ceiling attached to nothing visible but clearly constraining something, a contract written on the wall outlines the terms of engagement — three wishes but each comes with publication requirements, incense burners shaped like mortarboard hats emit scholarly smoke, prayer beads made of thesis committee approval stamps hang from hooks, the room feels constrained by ritual obligation and academic protocol, the lamp flickers with contained pressure, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 576,
       "targetHeight": 1024,
       "variants": [
@@ -6712,6 +6880,12 @@
           "seed": 1172774785,
           "status": "done",
           "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 1710912717,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -6735,7 +6909,7 @@
       "id": "bg-core_worm-portrait",
       "name": "The Gut Feeling Lair (Portrait)",
       "concept": "Archive iron-core tunnel with machine-smooth cylindrical bore-marks in pure iron strata, metallic filings on the floor, the tunnel following the purest iron veins through the archive bedrock.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a gut feeling tunnel where the walls are organic and pulsing like intestinal walls lined with bioluminescent nerve endings, the path twists based on intuition rather than logic with arrows on the wall pointing in feelings rather than directions — THIS WAY FEELS RIGHT, scattered throughout are abandoned logical proofs crumpled up and discarded in favor of instinct, a dowsing rod hangs on the wall next to a discarded compass, the floor has two paths — one paved with evidence leading to a dead end and one dirt path worn by footsteps leading forward, a bulletin board of hunches and gut reactions is pinned to the wall, fortune cookie papers and horoscope clippings serve as navigation aids, the tunnel burrows deeper following something felt rather than known, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a gut feeling tunnel where the walls are organic and pulsing like intestinal walls lined with bioluminescent nerve endings, the path twists based on intuition rather than logic with arrows on the wall pointing in feelings rather than directions — THIS WAY FEELS RIGHT, scattered throughout are abandoned logical proofs crumpled up and discarded in favor of instinct, a dowsing rod hangs on the wall next to a discarded compass, the floor has two paths — one paved with evidence leading to a dead end and one dirt path worn by footsteps leading forward, a bulletin board of hunches and gut reactions is pinned to the wall, fortune cookie papers and horoscope clippings serve as navigation aids, the tunnel burrows deeper following something felt rather than known, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 576,
       "targetHeight": 1024,
       "variants": [
@@ -6745,6 +6919,12 @@
           "status": "error",
           "accepted": false,
           "error": "HTTP 403: {\"error\":{\"message\":\"Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+        },
+        {
+          "variant": 1,
+          "seed": 3443022743,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -6928,7 +7108,7 @@
       "id": "bg-archive_moth-portrait",
       "name": "The Moth of Enlightenment Lair (Portrait)",
       "concept": "Archive ancient library chamber with bookshelves partially consumed by moth damage, wing-scale dust covering every horizontal surface, illuminated manuscript pages half-eaten, the sad beauty of enlightenment consuming itself.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, an enlightenment reading room being consumed from within where a beautiful chandelier of crystal and candlelight hangs from the ceiling casting warm inviting light over mahogany bookshelves, but something is eating the books — pages have holes chewed through them in patterns that look like moth-eaten fabric, the most illuminated books are the most consumed as if the light attracted what destroyed them, a reading lamp on a desk has burn marks around it from wings that flew too close, scattered wing-dust covers the pages of open books like pollen, the leather bindings have been nibbled into lace, a trail of consumed knowledge leads from the brightest lamp to the darkest corner, the room is simultaneously the most beautiful and most damaged archive you've ever seen, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, an enlightenment reading room being consumed from within where a beautiful chandelier of crystal and candlelight hangs from the ceiling casting warm inviting light over mahogany bookshelves, but something is eating the books — pages have holes chewed through them in patterns that look like moth-eaten fabric, the most illuminated books are the most consumed as if the light attracted what destroyed them, a reading lamp on a desk has burn marks around it from wings that flew too close, scattered wing-dust covers the pages of open books like pollen, the leather bindings have been nibbled into lace, a trail of consumed knowledge leads from the brightest lamp to the darkest corner, the room is simultaneously the most beautiful and most damaged archive you've ever seen, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 576,
       "targetHeight": 1024,
       "variants": [
@@ -6938,6 +7118,12 @@
           "status": "error",
           "accepted": false,
           "error": "HTTP 403: {\"error\":{\"message\":\"Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+        },
+        {
+          "variant": 1,
+          "seed": 3053793341,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -6961,7 +7147,7 @@
       "id": "bg-rune_spider-portrait",
       "name": "The Hyperlink Lair (Portrait)",
       "concept": "Archive rune web chamber with glowing runic web strands connecting every surface and inscription to every other in a dense reference network, the architecture of cross-referencing made physical.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a hyperlink web network where glowing blue threads connect every object in the room to every other object creating a three-dimensional web of references, each thread pulses when touched sending information along connected paths, the walls are covered in interconnected notes with arrows pointing to other notes which point to more notes in an infinite reference loop, a central node on the ceiling connects to everything like a homepage, broken links dangle as dead threads with 404 carved into the wall where they used to connect, the floor is a tangle of crossed threads that make navigation treacherous, somewhere in the web a search bar is carved into stone, the threads get denser toward the center creating an almost solid mass of pure interconnection, every surface has at least one thread attached to it, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a hyperlink web network where glowing blue threads connect every object in the room to every other object creating a three-dimensional web of references, each thread pulses when touched sending information along connected paths, the walls are covered in interconnected notes with arrows pointing to other notes which point to more notes in an infinite reference loop, a central node on the ceiling connects to everything like a homepage, broken links dangle as dead threads with 404 carved into the wall where they used to connect, the floor is a tangle of crossed threads that make navigation treacherous, somewhere in the web a search bar is carved into stone, the threads get denser toward the center creating an almost solid mass of pure interconnection, every surface has at least one thread attached to it, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 576,
       "targetHeight": 1024,
       "variants": [
@@ -6970,6 +7156,12 @@
           "seed": 1732664595,
           "status": "done",
           "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 1331734120,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -6993,7 +7185,7 @@
       "id": "bg-void_tendril-portrait",
       "name": "The Unknown Unknown Lair (Portrait)",
       "concept": "Archive void margin chamber where the walls of the archive meet something that is not the archive, unknown script writing itself on the boundary stones, the edge of documented knowledge.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, an unknown unknowns void where the room fades into absolute darkness at its edges — not shadow but the absence of information itself, the visible center contains a desk with a map that has enormous blank areas marked HERE BE IGNORANCE, bookshelves exist but beyond a certain point they dissolve into the void where you cannot see what you don't know is there, the floor is solid only where you can see it with darkness claiming everything peripheral, a lantern on the desk illuminates a tiny circle of known knowledge surrounded by infinite dark, question marks float at the boundary between light and void, the darkness occasionally ripples as if something you didn't know existed just moved, a sign near the desk reads YOU DON'T KNOW WHAT YOU DON'T KNOW which is profoundly unsettling in this context, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, an unknown unknowns void where the room fades into absolute darkness at its edges — not shadow but the absence of information itself, the visible center contains a desk with a map that has enormous blank areas marked HERE BE IGNORANCE, bookshelves exist but beyond a certain point they dissolve into the void where you cannot see what you don't know is there, the floor is solid only where you can see it with darkness claiming everything peripheral, a lantern on the desk illuminates a tiny circle of known knowledge surrounded by infinite dark, question marks float at the boundary between light and void, the darkness occasionally ripples as if something you didn't know existed just moved, a sign near the desk reads YOU DON'T KNOW WHAT YOU DON'T KNOW which is profoundly unsettling in this context, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 576,
       "targetHeight": 1024,
       "variants": [
@@ -7003,6 +7195,12 @@
           "status": "error",
           "accepted": false,
           "error": "HTTP 403: {\"error\":{\"message\":\"Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+        },
+        {
+          "variant": 1,
+          "seed": 3302832251,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -7090,7 +7288,7 @@
       "id": "bg-iron_archon-portrait",
       "name": "The Dean Lair (Portrait)",
       "concept": "Archive administrative sanctum with iron filing cabinets embedded in every wall, authority seals on every surface, a perfectly maintained space of absolute administrative control.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a dean's administrative fortress where an enormous iron desk sits on a raised platform behind layers of bureaucratic defenses — a reception desk a waiting area a secretary's desk and finally the inner sanctum, the walls are covered in organizational charts and committee structures mapped out in iron wire, rubber stamps of various sizes hang from the ceiling like weapons in an armory, a diploma mill literally — a water wheel that stamps diplomas — sits in one corner, filing cabinets form a protective wall around the inner desk, intercom systems and brass speaking tubes connect to every room in the dungeon, a nameplate reads THE DEAN in iron letters, budget spreadsheets are carved into iron tablets, the room radiates administrative authority and the power to make or break academic careers, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a dean's administrative fortress where an enormous iron desk sits on a raised platform behind layers of bureaucratic defenses — a reception desk a waiting area a secretary's desk and finally the inner sanctum, the walls are covered in organizational charts and committee structures mapped out in iron wire, rubber stamps of various sizes hang from the ceiling like weapons in an armory, a diploma mill literally — a water wheel that stamps diplomas — sits in one corner, filing cabinets form a protective wall around the inner desk, intercom systems and brass speaking tubes connect to every room in the dungeon, a nameplate reads THE DEAN in iron letters, budget spreadsheets are carved into iron tablets, the room radiates administrative authority and the power to make or break academic careers, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 576,
       "targetHeight": 1024,
       "variants": [
@@ -7100,6 +7298,12 @@
           "status": "error",
           "accepted": false,
           "error": "HTTP 403: {\"error\":{\"message\":\"Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+        },
+        {
+          "variant": 1,
+          "seed": 253108489,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -7171,7 +7375,7 @@
       "id": "bg-biolume_monarch-landscape",
       "name": "The Eureka Lair (Landscape)",
       "concept": "Archive discovery chamber with a central space bathed in sudden overwhelming light from a bioluminescent source, the architectural equivalent of revelation, everything in the room oriented toward the illuminated center.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a eureka moment chamber that captures the instant of breakthrough discovery where the entire room is frozen in a flash of brilliant bioluminescent light radiating outward from a central point like a knowledge explosion, papers and books are suspended mid-air blown outward by the force of insight, a bathtub sits in one corner referencing Archimedes with water frozen mid-splash, an apple hovers near a tree branch referencing Newton, scattered throughout are symbols of great discoveries all captured at the moment of revelation, the light is blinding at the center and fades to darkness at the edges, the walls bear the scorch marks of previous eureka moments, a chalkboard has the final line of a proof just being completed, the room crackles with the electric potential of discovery, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a eureka moment chamber that captures the instant of breakthrough discovery where the entire room is frozen in a flash of brilliant bioluminescent light radiating outward from a central point like a knowledge explosion, papers and books are suspended mid-air blown outward by the force of insight, a bathtub sits in one corner referencing Archimedes with water frozen mid-splash, an apple hovers near a tree branch referencing Newton, scattered throughout are symbols of great discoveries all captured at the moment of revelation, the light is blinding at the center and fades to darkness at the edges, the walls bear the scorch marks of previous eureka moments, a chalkboard has the final line of a proof just being completed, the room crackles with the electric potential of discovery, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 1024,
       "targetHeight": 576,
       "variants": [
@@ -7181,6 +7385,12 @@
           "status": "error",
           "accepted": false,
           "error": "HTTP 403: {\"error\":{\"message\":\"Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+        },
+        {
+          "variant": 1,
+          "seed": 668333528,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -7204,7 +7414,7 @@
       "id": "bg-tectonic_titan-landscape",
       "name": "The Paradigm Shift Lair (Landscape)",
       "concept": "Archive earthquake chamber with dramatic fault lines crossing the floor where the paradigm shifted, old orderly shelving on one side and chaotic rubble on the other, the clean break of a before and after.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a paradigm shift fault line where the room is literally split down the middle — the left half is an old-fashioned Victorian lecture hall with gas lamps and wooden benches while the right half is a modern digital laboratory with holographic displays and sleek surfaces, a massive crack runs through the floor ceiling and walls where the two eras collide, rubble from the old side has fallen into the new side and vice versa, tectonic plates of stone carved with different worldviews grind against each other at the seam, textbooks from both eras lie scattered at the fault line some fused together by the collision, the transition is violent and ongoing with small tremors visible in the dust, a clock on each side shows a different time, the room is the moment when everything changes, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a paradigm shift fault line where the room is literally split down the middle — the left half is an old-fashioned Victorian lecture hall with gas lamps and wooden benches while the right half is a modern digital laboratory with holographic displays and sleek surfaces, a massive crack runs through the floor ceiling and walls where the two eras collide, rubble from the old side has fallen into the new side and vice versa, tectonic plates of stone carved with different worldviews grind against each other at the seam, textbooks from both eras lie scattered at the fault line some fused together by the collision, the transition is violent and ongoing with small tremors visible in the dust, a clock on each side shows a different time, the room is the moment when everything changes, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 1024,
       "targetHeight": 576,
       "variants": [
@@ -7214,6 +7424,12 @@
           "status": "error",
           "accepted": false,
           "error": "Response was text only: \"`\""
+        },
+        {
+          "variant": 1,
+          "seed": 3667190756,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -7285,7 +7501,7 @@
       "id": "bg-mantle_dragon-portrait",
       "name": "The Dunning-Kruger Lair (Portrait)",
       "concept": "Archive nullification vault where the knowledge chain architecture of the archive has been systematically interrupted, broken chain-link inscriptions on the walls, a space built to prevent the accumulation of compounding understanding.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a Dunning-Kruger peak overlook where the room is built on a cliff inside the cavern — a massive confidence graph is carved into the back wall showing the classic peak of MT STUPID at the left with a valley of despair and a slope of enlightenment, the room is decorated as if by someone at the peak of Mount Stupid — overconfident decorations include self-awarded trophies participation ribbons reframed as championships and a mirror with GENIUS carved into the frame, a bookshelf contains only the first chapters of advanced books, a diploma is displayed prominently but it's only a certificate of attendance, the room is lavishly decorated beyond what the occupant's knowledge warrants, a pedestal holds a crown made of fool's gold, the view from the cliff looks down on the valley where actual expertise lives far below, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a Dunning-Kruger peak overlook where the room is built on a cliff inside the cavern — a massive confidence graph is carved into the back wall showing the classic peak of MT STUPID at the left with a valley of despair and a slope of enlightenment, the room is decorated as if by someone at the peak of Mount Stupid — overconfident decorations include self-awarded trophies participation ribbons reframed as championships and a mirror with GENIUS carved into the frame, a bookshelf contains only the first chapters of advanced books, a diploma is displayed prominently but it's only a certificate of attendance, the room is lavishly decorated beyond what the occupant's knowledge warrants, a pedestal holds a crown made of fool's gold, the view from the cliff looks down on the valley where actual expertise lives far below, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 576,
       "targetHeight": 1024,
       "variants": [
@@ -7295,6 +7511,12 @@
           "status": "error",
           "accepted": false,
           "error": "HTTP 403: {\"error\":{\"message\":\"Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+        },
+        {
+          "variant": 1,
+          "seed": 3470079079,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -7318,7 +7540,7 @@
       "id": "bg-core_harbinger-portrait",
       "name": "The Singularity Lair (Portrait)",
       "concept": "Archive convergence point where all archive corridors ultimately terminate, the walls dense with every domain of knowledge simultaneously, the overwhelming final accumulation of everything the archive contains, a space that cannot be navigated by quick reference alone.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a singularity convergence point where every type of knowledge from the entire dungeon converges into a single point at the center of the room — streams of light representing different domains science history art language mathematics spiral inward from the walls into a brilliant concentrated point hovering in the air, the walls are a mosaic of every subject combined showing how all knowledge connects, bookshelves spiral inward like a whirlpool of literature, the floor tiles show a mandala pattern where different disciplines merge at the center, the convergence point is simultaneously beautiful and terrifying — all knowledge compressed into one overwhelming instant, cracks in reality spread from the convergence point suggesting something this concentrated shouldn't exist, the room hums with the vibration of everything known resonating at once, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a singularity convergence point where every type of knowledge from the entire dungeon converges into a single point at the center of the room — streams of light representing different domains science history art language mathematics spiral inward from the walls into a brilliant concentrated point hovering in the air, the walls are a mosaic of every subject combined showing how all knowledge connects, bookshelves spiral inward like a whirlpool of literature, the floor tiles show a mandala pattern where different disciplines merge at the center, the convergence point is simultaneously beautiful and terrifying — all knowledge compressed into one overwhelming instant, cracks in reality spread from the convergence point suggesting something this concentrated shouldn't exist, the room hums with the vibration of everything known resonating at once, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 576,
       "targetHeight": 1024,
       "variants": [
@@ -7327,6 +7549,12 @@
           "seed": 2169684908,
           "status": "done",
           "accepted": false
+        },
+        {
+          "variant": 1,
+          "seed": 1238311099,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -7334,7 +7562,7 @@
       "id": "bg-core_harbinger-landscape",
       "name": "The Singularity Lair (Landscape)",
       "concept": "Archive convergence point where all archive corridors ultimately terminate, the walls dense with every domain of knowledge simultaneously, the overwhelming final accumulation of everything the archive contains, a space that cannot be navigated by quick reference alone.",
-      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a singularity convergence point where every type of knowledge from the entire dungeon converges into a single point at the center of the room — streams of light representing different domains science history art language mathematics spiral inward from the walls into a brilliant concentrated point hovering in the air, the walls are a mosaic of every subject combined showing how all knowledge connects, bookshelves spiral inward like a whirlpool of literature, the floor tiles show a mandala pattern where different disciplines merge at the center, the convergence point is simultaneously beautiful and terrifying — all knowledge compressed into one overwhelming instant, cracks in reality spread from the convergence point suggesting something this concentrated shouldn't exist, the room hums with the vibration of everything known resonating at once, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a singularity convergence point where every type of knowledge from the entire dungeon converges into a single point at the center of the room — streams of light representing different domains science history art language mathematics spiral inward from the walls into a brilliant concentrated point hovering in the air, the walls are a mosaic of every subject combined showing how all knowledge connects, bookshelves spiral inward like a whirlpool of literature, the floor tiles show a mandala pattern where different disciplines merge at the center, the convergence point is simultaneously beautiful and terrifying — all knowledge compressed into one overwhelming instant, cracks in reality spread from the convergence point suggesting something this concentrated shouldn't exist, the room hums with the vibration of everything known resonating at once, clear open center area on the ground for combat, dark atmospheric pixel art, 16-bit JRPG battle background style, rich detail that rewards close inspection, 16:9 wide horizontal composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 1024,
       "targetHeight": 576,
       "variants": [
@@ -7344,6 +7572,12 @@
           "status": "error",
           "accepted": false,
           "error": "HTTP 403: {\"error\":{\"message\":\"Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+        },
+        {
+          "variant": 1,
+          "seed": 3012379241,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -7453,7 +7687,7 @@
       "id": "bg-mystery-portrait",
       "name": "Mystery Chamber (Portrait)",
       "concept": "A strange cavern with unusual features that defy easy categorization, shifting light patterns, mysterious inscriptions, a space where anything could happen.",
-      "prompt": "pixel art dungeon room, front-facing perspective looking straight into the chamber, NOT isometric, NOT top-down, NOT 3/4 angle view, strange cavern chamber with unusual features that resist categorization, shifting light patterns that change color without apparent source, mysterious inscriptions that do not match any known archive script, objects from different eras arranged without obvious logic, clear open center area for combat on the ground level, strange intersection of multiple dungeon realities, shifting colors, impossible inscriptions, dark atmospheric lighting with shifting sourceless color-changing light, rich environmental details and memorable props, consistent dark fantasy pixel art style, 16-bit JRPG battle background aesthetic, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective looking straight into the chamber, NOT isometric, NOT top-down, NOT 3/4 angle view, strange cavern chamber with unusual features that resist categorization, shifting light patterns that change color without apparent source, mysterious inscriptions that do not match any known archive script, objects from different eras arranged without obvious logic, clear open center area for combat on the ground level, strange intersection of multiple dungeon realities, shifting colors, impossible inscriptions, dark atmospheric lighting with shifting sourceless color-changing light, rich environmental details and memorable props, consistent dark fantasy pixel art style, 16-bit JRPG battle background aesthetic, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 576,
       "targetHeight": 1024,
       "variants": [
@@ -7463,6 +7697,12 @@
           "status": "error",
           "accepted": false,
           "error": "HTTP 403: {\"error\":{\"message\":\"Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+        },
+        {
+          "variant": 1,
+          "seed": 3356715108,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -7518,7 +7758,7 @@
       "id": "bg-crossroads-portrait",
       "name": "Crossroads Chamber (Portrait)",
       "concept": "A junction chamber where multiple dungeon paths converge, signpost-like stone markers pointing in different directions, worn paths in the floor from different directions, the anxiety of choice.",
-      "prompt": "pixel art dungeon room, front-facing perspective looking straight into the chamber, NOT isometric, NOT top-down, NOT 3/4 angle view, junction chamber where multiple dungeon passages converge from different directions, old carved stone directional markers leaning at various angles some pointing to named destinations some worn illegible, the floor showing distinct worn paths from different directions converging on the center, clear open center area for combat on the ground level, junction point of multiple dungeon paths, worn stone from many travelers, carved markers, dark atmospheric lighting with multiple torch sconces at each passage entrance, rich environmental details and memorable props, consistent dark fantasy pixel art style, 16-bit JRPG battle background aesthetic, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective looking straight into the chamber, NOT isometric, NOT top-down, NOT 3/4 angle view, junction chamber where multiple dungeon passages converge from different directions, old carved stone directional markers leaning at various angles some pointing to named destinations some worn illegible, the floor showing distinct worn paths from different directions converging on the center, clear open center area for combat on the ground level, junction point of multiple dungeon paths, worn stone from many travelers, carved markers, dark atmospheric lighting with multiple torch sconces at each passage entrance, rich environmental details and memorable props, consistent dark fantasy pixel art style, 16-bit JRPG battle background aesthetic, 9:16 vertical composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 576,
       "targetHeight": 1024,
       "variants": [
@@ -7528,6 +7768,18 @@
           "status": "error",
           "accepted": false,
           "error": "HTTP 403: {\"error\":{\"message\":\"Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+        },
+        {
+          "variant": 1,
+          "seed": 1568040013,
+          "status": "done",
+          "accepted": false
+        },
+        {
+          "variant": 2,
+          "seed": 655095171,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -7567,6 +7819,12 @@
           "status": "error",
           "accepted": false,
           "error": "HTTP 403: {\"error\":{\"message\":\"Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+        },
+        {
+          "variant": 1,
+          "seed": 2788921136,
+          "status": "done",
+          "accepted": true
         }
       ]
     },
@@ -7638,7 +7896,7 @@
       "id": "bg-victory-landscape",
       "name": "Victory Screen (Landscape)",
       "concept": "The triumphant emergence from the archive into light, a grand staircase ascending toward brightness, the archive descending behind, knowledge cards floating in the air, the weight lifted.",
-      "prompt": "pixel art dungeon room, front-facing perspective looking straight into the chamber, NOT isometric, NOT top-down, NOT 3/4 angle view, grand stone staircase ascending from the archive depths toward brilliant light above, the archive descending into shadow behind and below, knowledge card fragments floating upward in the rising light like leaves, the accumulated weight of the run visible in worn stone and scarred surfaces, clear open center area for combat on the ground level, triumphant ascent from the depths, brilliant light from above, knowledge made tangible, dark atmospheric lighting with brilliant white light descending from above, rich environmental details and memorable props, consistent dark fantasy pixel art style, 16-bit JRPG battle background aesthetic, 16:9 horizontal wide composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements",
+      "prompt": "pixel art dungeon room, front-facing perspective looking straight into the chamber, NOT isometric, NOT top-down, NOT 3/4 angle view, grand stone staircase ascending from the archive depths toward brilliant light above, the archive descending into shadow behind and below, knowledge card fragments floating upward in the rising light like leaves, the accumulated weight of the run visible in worn stone and scarred surfaces, clear open center area for combat on the ground level, triumphant ascent from the depths, brilliant light from above, knowledge made tangible, dark atmospheric lighting with brilliant white light descending from above, rich environmental details and memorable props, consistent dark fantasy pixel art style, 16-bit JRPG battle background aesthetic, 16:9 horizontal wide composition, absolutely no characters no figures no creatures no people no monsters, no text, no UI elements, CRITICAL: absolutely NO readable text NO letters NO numbers NO words NO symbols NO writing NO inscriptions NO signs NO runes NO glyphs anywhere in the image, all surfaces must be purely visual with zero legible characters",
       "targetWidth": 1024,
       "targetHeight": 576,
       "variants": [
@@ -7648,6 +7906,12 @@
           "status": "error",
           "accepted": false,
           "error": "HTTP 403: {\"error\":{\"message\":\"Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+        },
+        {
+          "variant": 1,
+          "seed": 91467040,
+          "status": "done",
+          "accepted": true
         }
       ]
     },

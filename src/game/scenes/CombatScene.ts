@@ -612,7 +612,7 @@ export class CombatScene extends Phaser.Scene {
       stroke: '#000000',
       strokeThickness: 3,
       align: 'center',
-    }).setOrigin(0.5, 0.5)
+    }).setOrigin(0.5, 0.5).setDepth(13)
 
     // ── Damage preview ghost bar (enemy HP) ────────────────
     this.damagePreviewGfx = this.add.graphics().setDepth(11)
@@ -1061,8 +1061,43 @@ export class CombatScene extends Phaser.Scene {
   setBackground(floor: number, isBoss: boolean, enemyId?: string): Promise<void> {
     if (!this.sceneReady) return Promise.resolve()
 
-    const bgPath = enemyId ? getCombatBgForEnemy(enemyId) : getRandomCombatBg(floor, isBoss)
-    // Strip leading slash for Phaser's asset loader
+    if (enemyId) {
+      // Per-enemy background — orientation already baked into the path returned by
+      // getCombatBgForEnemy, so skip the _landscape variant gymnastics entirely.
+      const bgPath = getCombatBgForEnemy(enemyId)
+      const cleanPath = bgPath.startsWith('/') ? bgPath.slice(1) : bgPath
+      // Include enemy ID in the key so textures from different enemies never collide.
+      const orientation = cleanPath.includes('/portrait.') ? 'portrait' : 'landscape'
+      const bgKey = `bg-enemy-${enemyId}-${orientation}`
+
+      if (bgKey === this.currentBgKey) return Promise.resolve()
+      if (hasTexture(this, bgKey)) {
+        this._swapBackground(bgKey)
+        return Promise.resolve()
+      }
+
+      return new Promise<void>((resolve) => {
+        this.load.image(bgKey, cleanPath)
+        this.load.once('complete', () => {
+          if (hasTexture(this, bgKey)) {
+            this._swapBackground(bgKey)
+            resolve()
+          } else {
+            // Enemy-specific asset not found — fall back to legacy segment pool
+            this._loadLegacyBackground(floor, isBoss).then(resolve)
+          }
+        })
+        this.load.start()
+      })
+    } else {
+      // No enemy ID — use the legacy segment-based background pool
+      return this._loadLegacyBackground(floor, isBoss)
+    }
+  }
+
+  /** Load a background from the legacy segment pools (non-enemy-specific). */
+  private _loadLegacyBackground(floor: number, isBoss: boolean): Promise<void> {
+    const bgPath = getRandomCombatBg(floor, isBoss)
     const cleanPath = bgPath.startsWith('/') ? bgPath.slice(1) : bgPath
     const bgKey = `bg-combat-${cleanPath.split('/').pop()?.replace('.webp', '') ?? 'default'}`
 
@@ -1071,48 +1106,22 @@ export class CombatScene extends Phaser.Scene {
     const landscapeKey = `${bgKey}_landscape`
     const landscapePath = cleanPath.replace('.webp', '_landscape.webp')
 
-    // If same texture (resolved for current mode) already loaded, skip
     const resolvedKey = this.getBackgroundKey(bgKey)
     if (resolvedKey === this.currentBgKey) return Promise.resolve()
 
-    // If texture already exists in cache, just swap using the resolved key
     if (hasTexture(this, resolvedKey)) {
       this._swapBackground(resolvedKey)
       return Promise.resolve()
     }
 
-    // Load new texture dynamically.
-    // In landscape mode, also attempt to load the _landscape variant — if it 404s,
-    // Phaser silently skips it and getBackgroundKey() will fall back to portrait.
-    // For enemy-specific backgrounds: if the texture didn't actually load (404),
-    // fall back to the legacy segment-based pool.
     return new Promise<void>((resolve) => {
       this.load.image(bgKey, cleanPath)
       if (this.currentLayoutMode === 'landscape') {
         this.load.image(landscapeKey, landscapePath)
       }
       this.load.once('complete', () => {
-        const resolvedAfterLoad = this.getBackgroundKey(bgKey)
-        if (!hasTexture(this, resolvedAfterLoad) && enemyId) {
-          // Enemy-specific asset not found — fall back to segment background
-          const fallbackPath = getRandomCombatBg(floor, isBoss)
-          const fallbackClean = fallbackPath.startsWith('/') ? fallbackPath.slice(1) : fallbackPath
-          const fallbackKey = `bg-combat-${fallbackClean.split('/').pop()?.replace('.webp', '') ?? 'fallback'}`
-          if (hasTexture(this, fallbackKey)) {
-            this._swapBackground(this.getBackgroundKey(fallbackKey))
-            resolve()
-          } else {
-            this.load.image(fallbackKey, fallbackClean)
-            this.load.once('complete', () => {
-              this._swapBackground(this.getBackgroundKey(fallbackKey))
-              resolve()
-            })
-            this.load.start()
-          }
-        } else {
-          this._swapBackground(resolvedAfterLoad)
-          resolve()
-        }
+        this._swapBackground(this.getBackgroundKey(bgKey))
+        resolve()
       })
       this.load.start()
     })

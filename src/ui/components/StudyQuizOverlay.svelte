@@ -28,9 +28,9 @@
 
     setTimeout(() => {
       if (currentIndex < questions.length - 1) {
-        currentIndex++
         selectedAnswer = null
         showFeedback = false
+        currentIndex++
       } else {
         done = true
       }
@@ -64,6 +64,7 @@
       {#if currentQuestion}
         <p class="question-text">{currentQuestion.question}</p>
 
+        {#key currentIndex}
         <div class="answers-grid">
           {#each currentQuestion.answers as answer}
             <button
@@ -75,6 +76,7 @@
             </button>
           {/each}
         </div>
+        {/key}
 
         {#if showFeedback}
           <p class="feedback-text" class:feedback-correct={selectedAnswer === currentQuestion.correctAnswer} class:feedback-wrong={selectedAnswer !== currentQuestion.correctAnswer}>
@@ -87,14 +89,14 @@
         <span class="summary-icon">{correctFactIds.length === questions.length ? '🎓' : correctFactIds.length > 0 ? '📖' : '😔'}</span>
         <h2 class="summary-title">Study Complete!</h2>
         <p class="summary-result">
-          Upgraded <span class="highlight">{correctFactIds.length}</span> / {questions.length} cards
+          <span class="highlight">{correctFactIds.length}</span> of {questions.length} cards mastered up!
         </p>
         {#if correctFactIds.length === 0}
-          <p class="summary-tip">Review these cards and try again next rest!</p>
+          <p class="summary-tip">Keep practicing — no cards upgraded this time.</p>
         {:else if correctFactIds.length === questions.length}
-          <p class="summary-tip">Perfect score — all cards upgraded!</p>
+          <p class="summary-tip">Perfect score!</p>
         {:else}
-          <p class="summary-tip">{correctFactIds.length} card{correctFactIds.length !== 1 ? 's' : ''} upgraded.</p>
+          <p class="summary-tip">{correctFactIds.length} card{correctFactIds.length !== 1 ? 's' : ''} mastered up.</p>
         {/if}
         <button class="continue-btn" onclick={handleContinue}>Continue</button>
       </div>

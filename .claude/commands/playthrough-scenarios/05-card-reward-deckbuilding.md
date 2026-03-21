@@ -8,9 +8,10 @@ URL: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 
 ## Steps
 
-1. Navigate to URL, wait 4s
-2. Start a run, play through first combat encounter (answer correctly, end turns)
-3. When screen = `cardReward`, take **Screenshot #1 (reward-options)**
+1. Navigate to `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`, wait 4s
+2. Disable animations: `document.documentElement.setAttribute('data-pw-animations', 'disabled')`
+3. Load card reward: `window.__terraScenario.load('card-reward-attacks')`
+4. Wait 500ms, take **Screenshot #1 (reward-options)**
 
 ### Reward Selection
 4. Read DOM: find all `[data-testid^="reward-type-"]` buttons
@@ -23,8 +24,8 @@ URL: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 11. Verify screen transitioned (roomSelection or combat)
 
 ### Second Reward (if reachable)
-12. Play through next encounter
-13. If cardReward screen appears again, test selecting a DIFFERENT reward type
+12. Load alternate reward: `window.__terraScenario.load('card-reward-mixed')`
+13. Wait 500ms, test selecting a DIFFERENT reward type
 14. Accept it
 
 ### Verify Deck Growth

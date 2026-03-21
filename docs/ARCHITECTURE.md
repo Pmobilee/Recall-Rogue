@@ -100,7 +100,8 @@ After answering a quiz (Charge play) or resolving at base power (Quick Play), ca
 - 14 WebP files in `public/assets/cardframes/v2/`: 1 base + 6 borders (one per card type) + 6 banners (one per chain type) + 1 upgrade icon; plus lowres variants
 - `cardFrameV2.ts` utility module provides URL getters and PSD-derived guide positions for CSS text overlays
 - Text overlays rendered via CSS at guide positions: AP cost (yellow Cinzel bold in book icon area, red/green for cost changes), mechanic name (Cinzel on banner), card type label, and effect description
-- Upgrade icon (green cross) with float animation for upgraded cards
+- Upgrade icon bobs gently on L1+ mastery cards; gold glow aura at L5
+- `cardFrameV2.ts` exports `getMasteryIconFilter(level)` (CSS filter for color-coded icon tint) and `hasMasteryGlow(level)` (true at L5)
 - Python extraction script `scripts/extract-card-frame.py` — crops PSD layers and applies black-preserving hue-shift to generate all color variants
 
 **Ghost card (animation buffer) pattern**: Cards are copied to an `animatingCards` array before logical removal from the hand. A separate `{#each animatingCards}` loop renders non-interactive ghost copies. The `ghostCardAnim` Svelte action on each ghost uses a `MutationObserver` to detect CSS class changes (`card-discard`, `card-fizzle`) and triggers the appropriate WAAPI exit animation. Ghosts are cleaned from the buffer after animation completes. This prevents cards from disappearing mid-animation when hand state updates.
@@ -178,7 +179,7 @@ These systems transfer from the mining codebase with minimal changes:
 | Quiz engine (3-pool) | `QuizManager.ts`, `quizService.ts` | 100% |
 | SM-2 algorithm | `sm2.ts`, `StudyManager.ts` | 100% |
 | Facts database | `factsDB.ts`, `public/facts.db` | 100% |
-| Relic system | `relicEffectResolver.ts`, `relicAcquisitionService.ts`, `src/data/relics/`, `saveMigration.ts` | Complete — 42 v2 relics (25 free + 17 paid), 5-slot system (6 with Scholar's Gambit), mastery coins, in-run collection, V1→V2 migration. V2 hooks: `resolveChargeCorrectEffects`, `resolveChargeWrongEffects`, `resolveChainCompleteEffects`, `resolveSurgeStartEffects` |
+| Relic system | `relicEffectResolver.ts`, `relicAcquisitionService.ts`, `src/data/relics/`, `saveMigration.ts` | Complete — 42 v2 relics (25 free + 17 paid), 5-slot system (6 with Scholar's Gambit), mastery coins, in-run collection, V1→V2 migration. V2 hooks: `resolveChargeCorrectEffects`, `resolveChargeWrongEffects`, `resolveChainCompleteEffects`, `resolveSurgeStartEffects`. AR-116 wired: `vitality_ring` (+20 max HP at run start), `merchants_favor` (+1 card +1 relic in shops via optional count param in `generateShopRelics`), `blood_price` (+1 AP/turn in addition to -2 HP/turn), `crit_lens` (25% crit x2 on Charge correct), `scholars_crown` (tier-based +10/40/75% charge bonus), `aegis_stone` (15-block cap → Thorns 2), `domain_mastery_sigil` (ID fixed from `domain_mastery`), `herbal_pouch` (8 HP fixed from 5). |
 | Audio manager | `AudioManager.ts`, `audioService.ts` | 100% |
 | Save/load | `SaveManager.ts`, `saveService.ts` | 100% |
 | Event bus | `src/events/EventBus.ts`, `src/events/types.ts` | 100% |
@@ -200,7 +201,7 @@ These systems transfer from the mining codebase with minimal changes:
 | Deck manager | `src/services/deckManager.ts` | Built |
 | Run pool builder | `src/services/runPoolBuilder.ts` | Built |
 | Funness boost | `src/services/funnessBoost.ts` | Built — new player bias toward higher-funScore facts (runs 0–99) |
-| Turn manager | `src/services/turnManager.ts` | Built (v2) — Quick Play / Charge branching; Surge integration (surgeSystem); chain tracking per turn (chainSystem); free first Charge via discoverySystem; removed combo/speed/fizzle paths |
+| Turn manager | `src/services/turnManager.ts` | Built (v2) — Quick Play / Charge branching; Surge integration (surgeSystem); chain tracking per turn (chainSystem); free first Charge via discoverySystem; removed combo/speed/fizzle paths. AR-113: upgrades card mastery on correct Charge, downgrades on wrong Charge (once per card per encounter via `masteryChangedThisEncounter` flag, cleared between encounters) |
 | Enemy manager | `src/services/enemyManager.ts` | Built — includes `getFloorDamageScaling(floor)` (+3%/floor above 6), `getSegmentForFloor(floor)`, and per-turn damage caps via `ENEMY_TURN_DAMAGE_CAP` |
 | Floor manager | `src/services/floorManager.ts` | Built |
 | Game flow controller | `src/services/gameFlowController.ts` | Built (v2) — 3-act run flow; no retreat-or-delve branch; no archetype selection; no starter relic selection; routes directly to dungeonMap at run start |
@@ -214,8 +215,8 @@ These systems transfer from the mining codebase with minimal changes:
 | Run manager | `src/services/runManager.ts` | Built |
 | Juice manager | `src/services/juiceManager.ts` | Built |
 | Cardback manifest | `src/ui/utils/cardbackManifest.ts` | Built |
-| Card frame V2 utility | `src/ui/utils/cardFrameV2.ts` | Built — URL getters for V2 layered card frame WebP assets and PSD-derived guide positions for CSS text overlays |
-| Card description service | `src/services/cardDescriptionService.ts` | Built — `getShortCardDescription()` for parchment text rendering |
+| Card frame V2 utility | `src/ui/utils/cardFrameV2.ts` | Built — URL getters for V2 layered card frame WebP assets and PSD-derived guide positions for CSS text overlays; `getMasteryIconFilter(level)`, `hasMasteryGlow(level)` for AR-113 mastery visuals |
+| Card description service | `src/services/cardDescriptionService.ts` | Built — `getShortCardDescription()` for parchment text rendering; AR-113: supports `mastery-bonus` CardDescPart type — renders base+bonus format ("Deal 8+2 damage") with bonus in green |
 | Card frame extractor | `scripts/extract-card-frame.py` | Built — PSD extraction + black-preserving hue-shift pipeline; crops layers from master PSD and regenerates all 14 color variant WebP files for V2 card frames |
 | Flag manifest | `src/data/flagManifest.ts` | Built — maps 218 country names to flag SVG URLs in `/public/assets/flags/` |
 | Mechanic animations | `src/ui/utils/mechanicAnimations.ts` | Built — 5-phase animation system with archetype-specific effects and synthesized audio |
@@ -223,10 +224,10 @@ These systems transfer from the mining codebase with minimal changes:
 | Enemy sprite system | `src/game/systems/EnemySpriteSystem.ts` | Built — Encapsulates all 88 enemy rendering with sharp-processed PNG assets. 3D paper cutout effect (shadow + outline layers), config-driven idle/attack/hit/death animations via `setAnimConfig(archetype)` method (8 animation archetypes from `src/data/enemyAnimations.ts`). Aspect-ratio-preserving scaling, device-tier texture selection (.webp vs _1x.webp), placeholder display for missing sprites. |
 | CardGameManager | `src/game/CardGameManager.ts` | Built |
 | CardApp (root) | `src/CardApp.svelte` | Built |
-| Card hand UI | `src/ui/components/CardHand.svelte` | Built — card rendering uses V2 layered card frame system (composited border + base + banner WebP layers with CSS text overlays); supports hires/lowres variants based on device capabilities |
+| Card hand UI | `src/ui/components/CardHand.svelte` | Built — card rendering uses V2 layered card frame system (composited border + base + banner WebP layers with CSS text overlays); supports hires/lowres variants based on device capabilities. AR-116: charge preview uses 1.5× + mastery bonus; old upgrade border removed; AP cost font uses thicker 2px stroke + stronger shadows. |
 | Card expanded UI | `src/ui/components/CardExpanded.svelte` | Built — AR-76: landscape branch centers quiz in left-70% center stage (above 26vh card hand), 2×2 answer grid, `kbd-hint` badges, inputService QUIZ_ANSWER wiring with 150ms highlight flash, card hand dimming via `quizVisible` prop on CardHand |
-| Card combat overlay | `src/ui/components/CardCombatOverlay.svelte` | Built — added synergy flash UI element; v2: boss quiz phase overlay rendered inline |
-| Combo counter | `src/ui/components/ComboCounter.svelte` | **ARCHIVED** — Knowledge Combo system removed in v2; replaced by Knowledge Chain (chainSystem.ts + ChainCounter HUD element). File retained as dead code. |
+| Card combat overlay | `src/ui/components/CardCombatOverlay.svelte` | Built — synergy flash UI element; v2: boss quiz phase overlay rendered inline; AR-116: relic sell removed during combat (info-only tooltip), AP orb lowered to `bottom: 35vh`, enemy intent padding increased, damage popup uses mastery + charge values |
+| Combo counter | `src/ui/components/ComboCounter.svelte` | Chain-only display (AR-116) — combo multiplier removed; renders chain length + multiplier at bottom-left in chain color, format "Chain: X.x". Combo counter UI and logic fully removed. |
 | Damage numbers | `src/ui/components/DamageNumber.svelte` | Built |
 | Domain selection | `src/ui/components/DomainSelection.svelte` | **ARCHIVED** — Deprecated; no longer used in run flow; removed from gameFlowController.playAgain() |
 | Deck builder | `src/ui/components/DeckBuilder.svelte` | Built — study preset creation/editing within Library screen |
@@ -234,7 +235,7 @@ These systems transfer from the mining codebase with minimal changes:
 | Room selection overlay | `src/ui/components/RoomSelectionOverlay.svelte` | Built — preserved as fallback for pre-map saves |
 | Dungeon map | `src/ui/components/DungeonMap.svelte` | Built — scrollable vertical act map with SVG paths and HTML nodes |
 | Map node | `src/ui/components/MapNode.svelte` | Built — 44px circle node button, type-coded by icon/color |
-| Map generator | `src/services/mapGenerator.ts` | Built — ActMap/MapNode types, generateActMap(), selectMapNode(), navigation helpers. Boss selection uses seeded RNG to pick randomly from a 2-boss pool per region (Shallow Depths, Deep Caverns, The Abyss, The Archive). |
+| Map generator | `src/services/mapGenerator.ts` | Built — ActMap/MapNode types, generateActMap(), selectMapNode(), navigation helpers. Boss selection uses seeded RNG to pick randomly from a 2-boss pool per region (Shallow Depths, Deep Caverns, The Abyss, The Archive). AR-116: post-processing step enforces exact room counts per floor: row 0 = combat, 1 rest in rows 1–5, 2 shops (2+ rows apart), 2 mystery rooms (not on shop rows), row 6 = rest (pre-boss), row 7 = boss. |
 | Map cinematic | `src/ui/components/DungeonMap.svelte` | Built — Floor-entry cinematic: 1.5× zoom on boss node (~1s), zoom-out to full map, camera sweep to starting nodes. Boss node renders actual boss sprite (3D float animation). Elite nodes show purple menacing pulse. Tracked by map seed — plays once per floor. |
 | Rest room overlay | `src/ui/components/RestRoomOverlay.svelte` | Built — wired upgrade button (removed "Coming soon" stub) |
 | Shop room overlay | `src/ui/components/ShopRoomOverlay.svelte` | Complete redesign — buy relics + buy cards + sell sections |
@@ -289,7 +290,7 @@ These systems transfer from the mining codebase with minimal changes:
 
 **AR-71 HTML attribute**: `.card-app[data-layout="portrait|landscape"]` — set on root container for CSS selector branching.
 
-**AR-71 Phaser integration**: `CardGameManager` subscribes to `layoutMode` store and calls `game.scale.resize()` + notifies scenes via `handleLayoutChange(mode)` on change. `CombatScene` has a full landscape implementation (AR-73). `BootAnimScene` and `RewardRoomScene` still have stub handlers.
+**AR-71 Phaser integration**: `CardGameManager` subscribes to `layoutMode` store and calls `game.scale.resize()` + notifies scenes via `handleLayoutChange(mode)` on change. `CombatScene` has a full landscape implementation (AR-73). `BootAnimScene` and `RewardRoomScene` still have stub handlers. `RewardRoomScene` has a double-init guard (AR-116) to prevent duplicate initialization on scene restart.
 
 **AR-73 CombatScene landscape layout**: `handleLayoutChange(mode)` calls `repositionAll()` which branches on `currentLayoutMode`. All positioning uses helper methods `getEnemyX()`, `getEnemyY()`, `getEnemyHpBarCenter()` that return portrait or landscape coordinates respectively. The `LANDSCAPE` const object defines all landscape position percentages. Portrait code paths are never touched when in portrait mode — pure additive branching. The `CardHand` component renders a separate `.card-hand-landscape` container (fixed bottom strip, flex-row, no arc/rotation) when `$isLandscape` is true, and the original `.card-hand-container` (portrait fan) when false. `CardCombatOverlay` applies `.layout-landscape` class which repositions HUD elements via CSS.
 
@@ -309,9 +310,9 @@ These systems transfer from the mining codebase with minimal changes:
 
 | System | File(s) | Status |
 |--------|---------|--------|
-| Card upgrade definitions | `src/services/cardUpgradeService.ts` | Built — UPGRADE_DEFS mapping mechanics → bonus values |
-| Card upgrade logic | `src/services/cardUpgradeService.ts` (upgradeCard, canUpgradeCard, getUpgradeCandidates, getUpgradePreview) | Built |
-| Shop inventory generation | `src/services/shopService.ts` | Built — `generateShopRelics`, `calculateShopPrice`, `priceShopCards` (v2 rarity-based), `removalPrice()` (AR-59.15) |
+| Card upgrade definitions | `src/services/cardUpgradeService.ts` | Built — UPGRADE_DEFS mapping mechanics → bonus values (legacy static upgrades, now supplemented by AR-113 mastery system) |
+| Card upgrade logic | `src/services/cardUpgradeService.ts` (upgradeCard, canUpgradeCard, getUpgradeCandidates, getUpgradePreview) | Built — legacy functions now deprecated for in-run use; AR-113 adds `masteryUpgrade(card)`, `masteryDowngrade(card)`, `getMasteryBaseBonus(card)` for continuous mastery scaling |
+| Shop inventory generation | `src/services/shopService.ts` | Built — `generateShopRelics(count?)` (optional count param for `merchants_favor`), `calculateShopPrice`, `priceShopCards` (v2 rarity-based), `removalPrice()` (AR-59.15) |
 | Hidden relic synergies | `src/services/relicSynergyResolver.ts` | Built — RELIC_SYNERGIES definitions, detectActiveSynergies, hasSynergy, Tier 3 bonus calculation |
 | Upgrade picker UI | `src/ui/components/UpgradeSelectionOverlay.svelte` | Built — 3 candidates with before/after preview, sorted by tier |
 | Post-mini-boss rest screen | `src/ui/components/PostMiniBossRestOverlay.svelte` | Built — auto-heal 15% + upgrade selection |
@@ -359,6 +360,26 @@ Cards now cost 0, 1, 2, or 3 AP instead of all costing 1 AP. This creates meanin
 - **Upgrade flow**: Rest Room → `openUpgradeSelection()` → UpgradeSelectionOverlay → `onUpgradeSelected(cardId)` → mutates card in deck → proceeds
 - **Shop buy flow**: Shop Room → `onShopBuyRelic(relicId)` / `onShopBuyCard(index)` → deducts gold, adds item → updates display
 - **Synergy detection**: `relicSynergyResolver.detectActiveSynergies()` called at encounter start → bonuses applied in `relicEffectResolver` (Tier 2) and `turnManager` (Tier 3)
+
+### Implemented (AR-113 — In-Run Mastery Upgrade System)
+
+| System | File(s) | Status |
+|--------|---------|--------|
+| Mastery fields on Card | `src/data/card-types.ts` | `masteryLevel: number` (0–5), `masteryChangedThisEncounter: boolean` |
+| Mastery upgrade/downgrade logic | `src/services/cardUpgradeService.ts` | `masteryUpgrade(card)`, `masteryDowngrade(card)`, `getMasteryBaseBonus(card)` — bonus scales with level |
+| Mastery wiring in turn loop | `src/services/turnManager.ts` | Calls upgrade/downgrade on Charge resolution; enforces once-per-encounter cap; clears flag at encounter start; flat 1.5× Charge multiplier (replaces old 2.5/3.0/3.5× tier system) |
+| Mastery bonus application | `src/services/cardEffectResolver.ts` | `getMasteryBaseBonus(card)` added to base effect value before chain/surge multipliers |
+| Mastery-aware description | `src/services/cardDescriptionService.ts` | `mastery-bonus` CardDescPart type renders "8+2" format with green bonus text |
+| Mastery visual — frame | `src/ui/utils/cardFrameV2.ts` | `getMasteryIconFilter(level)` CSS filter per level (L1=green, L2=blue, L3=purple, L4=orange, L5=gold); `hasMasteryGlow(level)` true at L5 |
+| Mastery visual — card UI | `src/ui/components/CardHand.svelte` | Icon bobs at L1+; stat values flash green/red on mastery change; "Upgraded!"/"Downgraded!" popup |
+| Distractor count scaling | `src/services/quizService.ts` | 2 distractors shown at mastery 0; 3 distractors at mastery 1+ |
+| Echo card mastery | `src/services/encounterBridge.ts` | Echo cards cannot change mastery but inherit source card's mastery-boosted stat at spawn |
+| Level 5 auto-play | `src/services/turnManager.ts` | Mastered cards (L5) auto quick-play with no quiz, except at final boss |
+| Rest site Study | `src/services/masteryChallengeService.ts` | Study session upgrades specific cards via mastery (max 3, no downgrades) |
+
+**Mastery bonus values (per level above 0):** Defined in `src/data/balance.ts` (`MASTERY_BONUS_PER_LEVEL`). Bonus is flat additive to base effect before multipliers.
+
+**Mastery reset:** `masteryLevel` resets to 0 at run start (not persisted across runs). FSRS tiers remain the long-term retention axis; mastery is the in-run power axis.
 
 ### Relic System
 
@@ -452,7 +473,7 @@ These components exist in the codebase as dead code, removed from all active scr
 
 | Component | File | Reason Archived |
 |-----------|------|----------------|
-| Combo Counter | `src/ui/components/ComboCounter.svelte` | Knowledge Combo system removed; replaced by Knowledge Chain (chainSystem + chain HUD counter) |
+| Combo Counter | `src/ui/components/ComboCounter.svelte` | File retained and repurposed (AR-116) — renders chain-only display at bottom-left. Combo multiplier logic fully removed; only chain length + multiplier display remains. |
 | Archetype Selection | `src/ui/components/ArchetypeSelection.svelte` | Archetype selection removed from run start flow; all players start equal |
 | Starter Relic Selection | `src/ui/components/StarterRelicSelection.svelte` | Starter relic selection removed; no `starterRelicSelection` screen state in v2 |
 | Retreat Or Delve | `src/ui/components/RetreatOrDelve.svelte` | Retreat-or-delve decision node removed; 3-act linear run with no exit ramps |
@@ -607,7 +628,7 @@ src/
     chainVisuals.ts        — AR-70 chain color mapping: `getChainColor(chainType)` / `getChainGlowColor(chainType)` → 6-color palette from `chainTypes.ts`. `getChainColorGroups(cards)` → Map<chainType, cardId[]> for in-hand pulse grouping.
     bossQuizPhase.ts       — V2 boss quiz phase: sequential questions during boss HP threshold events. `startBossQuizPhase(config, callbacks)`. Configures question count, timer, pass/fail thresholds from `QuizPhaseConfig` on enemy template.
     saveMigration.ts       — V2 relic migration: `migrateRelicsV1toV2(save)` maps all 50 v1 relic IDs via `V1_TO_V2_RELIC_MAP` (preserve/rename/auto_unlock/refund/drop actions).
-    turnManager.ts         — V2 turn-based encounter logic. Quick Play / Charge branching; Surge integration via surgeSystem; per-turn chain tracking via chainSystem; free first Charge via discoverySystem (0 AP surcharge, 1.0× wrong multiplier on first Charge per fact per run). Removed combo accumulator, speed bonus, full fizzle paths. `PlayCardResult.usedFreeCharge: boolean` reports free Charge consumption.
+    turnManager.ts         — V2 turn-based encounter logic. Quick Play / Charge branching; Surge integration via surgeSystem; per-turn chain tracking via chainSystem; free first Charge via discoverySystem (0 AP surcharge, 1.0× wrong multiplier on first Charge per fact per run). Removed combo accumulator, speed bonus, full fizzle paths. `PlayCardResult.usedFreeCharge: boolean` reports free Charge consumption. AR-113: on correct Charge → calls `masteryUpgrade(card)` if `!masteryChangedThisEncounter`; on wrong Charge → calls `masteryDowngrade(card)` if `!masteryChangedThisEncounter`; clears `masteryChangedThisEncounter` at encounter start. Charge multiplier: flat 1.5× + mastery bonus (no longer tier-based 2.5/3.0/3.5×).
     deckManager.ts         — Draw/discard/shuffle/exhaust. AR-70: facts are bound to card slots at run start (not re-randomized per draw). `buildRunPool()` assigns each fact a `chainType` (0-5) via `index % 6` for even distribution; the same fact stays with its card slot for the entire run, enabling strategic chain planning.
     cardFactory.ts         — Creates Card from Fact + ReviewState
     runPoolBuilder.ts      — Builds 120-fact run pool (30/25/45 split) with subcategory balancing (max 35% per subcategory within a domain). Fact-to-slot binding happens here (AR-70).
@@ -633,10 +654,10 @@ src-tauri/               — Tauri v2 desktop wrapper scaffold (Rust not yet com
   icons/                 — App icon placeholder directory
   ui/
     components/
-      CardCombatOverlay.svelte  — Bottom 45% interaction zone, enemy intent panel, enemy name header (color-coded by category), floor info, bounty strip (bottom-right above End Turn), end turn button with gold pulse, discard pile counter, 5-phase card animation orchestration (reveal→swoosh→impact→discard) with per-archetype SFX via setTimeout chains and animatingCards buffer pattern.
-      CardHand.svelte           — Fanned arc hand (30° spread, 20px arc offset), hand-crafted PNG card frame images (mechanic-themed), card description text overlay (grey=base, green=buffed, red=debuffed), AP cost gemstone badge, green glow on playable cards, tap-to-select + tap/swipe-to-cast, touch drag with scale transform, animatingCards buffer rendering for smooth animation decoupling, cardback preloading, reduced-motion support. AR-59.23: CHARGE button shows "FREE" for facts not yet Charged this run (checks `isFirstChargeFree()` per card); golden styling for the "FREE" state; "MASTERED" label in parchment area for Tier 3 cards.
+      CardCombatOverlay.svelte  — Bottom 45% interaction zone, enemy intent panel, enemy name header (color-coded by category), floor info, bounty strip (bottom-right above End Turn), end turn button with gold pulse, discard pile counter, 5-phase card animation orchestration (reveal→swoosh→impact→discard) with per-archetype SFX via setTimeout chains and animatingCards buffer pattern. AR-113: card hand at bottom: 2vh; draw/discard piles repositioned alongside card tops (200px offset); Charge button matches selected card width with no lightning icon ("CHARGE +1 AP" text); camp background stretches to 100vw with translateX centering; reward room cards clickable via container.setSize fix; RewardCardDetail uses V2 frame rendering. AR-116: relic sell disabled during combat (info-only tooltip); AP orb at bottom: 35vh; enemy intent padding increased; damage popup uses mastery + charge values; discard pile dashed 3px border when empty.
+      CardHand.svelte           — Fanned arc hand (30° spread, 20px arc offset), hand-crafted PNG card frame images (mechanic-themed), card description text overlay (grey=base, green=buffed, red=debuffed), AP cost gemstone badge, green glow on playable cards, tap-to-select + tap/swipe-to-cast, touch drag with scale transform, animatingCards buffer rendering for smooth animation decoupling, cardback preloading, reduced-motion support. AR-59.23: CHARGE button shows "FREE" for facts not yet Charged this run (checks `isFirstChargeFree()` per card); golden styling for the "FREE" state; "MASTERED" label in parchment area for Tier 3 cards. AR-113: mastery icon bobs at L1+; stat values flash green/red on mastery change; "Upgraded!"/"Downgraded!" popup; card descriptions render base+bonus format with green bonus text. AR-116: charge preview uses 1.5× + mastery bonus; old upgrade border removed; AP cost font uses 2px stroke + stronger shadows.
       CardExpanded.svelte       — Quiz panel positioned above card hand (fixed, bottom: calc(45vh - 20px)), no overlap with hand
-      ComboCounter.svelte       — ARCHIVED: Knowledge combo display (Knowledge Combo system removed in v2)
+      ComboCounter.svelte       — Chain-only display (AR-116): combo multiplier removed; shows chain length + multiplier at bottom-left in chain color, format "Chain: X.x"
       DamageNumber.svelte       — Floating damage numbers
       DomainSelection.svelte    — Run-start domain picker (legacy, replaced by StudyModeSelector for run setup)
       StarterRelicSelection.svelte — ARCHIVED (AR-59.12 removed starter relic selection; file retained as dead code)
@@ -661,7 +682,7 @@ src-tauri/               — Tauri v2 desktop wrapper scaffold (Rust not yet com
       mechanicAnimations.ts  — 5-phase animation system: reveal (250ms) → swoosh (250ms with archetype SFX) → impact (300ms) → discard (200ms). Archetype mappings (attack=slash, shield=pulse, buff=radiate, debuff=tendrils, utility=shimmer, wild=morph); exports PHASE_DURATIONS, CardAnimPhase type, getMechanicAnimClass(), getTypeFallbackAnimClass()
     stores/                gameState, playerData, settings
   data/
-    card-types.ts          — Card, CardRunState, CardType, FactDomain types
+    card-types.ts          — Card, CardRunState, CardType, FactDomain types; AR-113 adds `masteryLevel: number` (0–5) and `masteryChangedThisEncounter: boolean` fields to Card
     flagManifest.ts        — Maps 218 country names to flag SVG URLs; exports getFlagUrl(countryName), getFlagUrlBySlug(slug)
     studyPreset.ts         — StudyPreset, DeckMode types (preset selection + mastery scaling)
     enemies.ts             — Enemy template definitions
@@ -722,6 +743,7 @@ turnManager (v2)
 cardEffectResolver (v2)
   → playMode: PlayMode param ('quick' | 'charge') — determines base vs Charge multiplier
   → chain multiplier applied at resolution (from chainSystem)
+  → AR-113: mastery bonus applied at resolution via `getMasteryBaseBonus(card)` — added to base effect before chain/surge multipliers
   → no combo accumulator, no speed bonus, no full fizzle path
 
 CardCombatOverlay.svelte

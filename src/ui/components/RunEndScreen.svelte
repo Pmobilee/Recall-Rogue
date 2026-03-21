@@ -7,6 +7,29 @@
   import { preloadImages } from '../utils/assetPreloader'
   import { isLandscape } from '../../stores/layoutStore'
 
+  interface XPResult {
+    breakdown: {
+      total: number
+      correctAnswers: number
+      speedBonuses: number
+      streakBonuses: number
+      floorsCleared: number
+      combatsWon: number
+      elitesDefeated: number
+      miniBossesDefeated: number
+      bossesDefeated: number
+      newFacts: number
+      completionBonus: number
+      subtotal: number
+      ascensionMultiplier: number
+      dailyBonus: number
+    }
+    levelsGained: number
+    newLevel: number
+    relicsUnlocked: string[]
+    dustAwarded: number
+  }
+
   interface Props {
     result: 'victory' | 'defeat' | 'retreat'
     floorReached: number
@@ -24,6 +47,7 @@
     rewardMultiplier: number
     currencyEarned: number
     isPracticeRun?: boolean
+    xpResult?: XPResult
     onplayagain: () => void
     onhome: () => void
   }
@@ -45,6 +69,7 @@
     rewardMultiplier,
     currencyEarned,
     isPracticeRun = false,
+    xpResult = undefined,
     onplayagain,
     onhome,
   }: Props = $props()
@@ -111,6 +136,9 @@
         factsMastered,
         encountersWon,
         encountersTotal,
+        elitesDefeated: 0,
+        miniBossesDefeated: 0,
+        bossesDefeated: 0,
         completedBounties,
         duration: runDurationMs,
         runDurationMs,
@@ -226,6 +254,26 @@
         </div>
       {/if}
 
+      {#if xpResult}
+        <div class="xp-section">
+          <div class="xp-earned">
+            <span class="xp-label">XP Earned</span>
+            <span class="xp-value">+{xpResult.breakdown.total}</span>
+          </div>
+          {#if xpResult.levelsGained > 0}
+            <div class="level-up-banner">
+              Level Up! &#x2192; Lv.{xpResult.newLevel}
+              {#if xpResult.relicsUnlocked.length > 0}
+                <div class="unlock-text">{xpResult.relicsUnlocked.length} relic{xpResult.relicsUnlocked.length > 1 ? 's' : ''} unlocked!</div>
+              {/if}
+              {#if xpResult.dustAwarded > 0}
+                <div class="dust-award">+{xpResult.dustAwarded} Dust</div>
+              {/if}
+            </div>
+          {/if}
+        </div>
+      {/if}
+
       {#if isPracticeRun}
         <div class="practice-run-notice">
           <p class="practice-title">Practice Run</p>
@@ -335,6 +383,26 @@
       </div>
     {/if}
   </div>
+
+  {#if xpResult}
+    <div class="xp-section" class:stats-revealed={showStats}>
+      <div class="xp-earned">
+        <span class="xp-label">XP Earned</span>
+        <span class="xp-value">+{xpResult.breakdown.total}</span>
+      </div>
+      {#if xpResult.levelsGained > 0}
+        <div class="level-up-banner">
+          Level Up! &#x2192; Lv.{xpResult.newLevel}
+          {#if xpResult.relicsUnlocked.length > 0}
+            <div class="unlock-text">{xpResult.relicsUnlocked.length} relic{xpResult.relicsUnlocked.length > 1 ? 's' : ''} unlocked!</div>
+          {/if}
+          {#if xpResult.dustAwarded > 0}
+            <div class="dust-award">+{xpResult.dustAwarded} Dust</div>
+          {/if}
+        </div>
+      {/if}
+    </div>
+  {/if}
 
   {#if isPracticeRun}
     <div class="practice-run-notice">
@@ -713,6 +781,62 @@
                   inset 0 0 16px color-mix(in srgb, var(--grade-color) 30%, transparent),
                   0 0 40px color-mix(in srgb, var(--grade-color) 20%, transparent);
     }
+  }
+
+  .xp-section {
+    margin-top: calc(12px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1));
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    border-radius: 10px;
+    width: 100%;
+    max-width: calc(300px * var(--layout-scale, 1));
+  }
+
+  .xp-earned {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .xp-label {
+    font-size: calc(13px * var(--layout-scale, 1));
+    color: #fbbf24;
+    font-weight: 700;
+  }
+
+  .xp-value {
+    font-size: calc(16px * var(--layout-scale, 1));
+    color: #fbbf24;
+    font-weight: 700;
+  }
+
+  .level-up-banner {
+    margin-top: calc(8px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1));
+    background: rgba(251, 191, 36, 0.15);
+    border-radius: 8px;
+    text-align: center;
+    font-size: calc(15px * var(--layout-scale, 1));
+    font-weight: 700;
+    color: #fbbf24;
+  }
+
+  .unlock-text {
+    font-size: calc(12px * var(--layout-scale, 1));
+    color: #4ecca3;
+    margin-top: calc(4px * var(--layout-scale, 1));
+  }
+
+  .dust-award {
+    font-size: calc(12px * var(--layout-scale, 1));
+    color: #ffd89d;
+    margin-top: calc(2px * var(--layout-scale, 1));
+  }
+
+  /* Landscape xp-section: full width, no max-width constraint */
+  .landscape-earned .xp-section {
+    max-width: none;
   }
 
   /* Reduced motion */

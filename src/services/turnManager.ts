@@ -7,7 +7,7 @@ import { isFirstChargeFree, markFirstChargeUsed, getFirstChargeWrongMultiplier }
 import { canMasteryUpgrade, canMasteryDowngrade, masteryUpgrade, masteryDowngrade, resetEncounterMasteryFlags } from './cardUpgradeService';
 import { getSurgeChargeSurcharge, isSurgeTurn } from './surgeSystem';
 import { resetChain, extendOrResetChain, getChainState } from './chainSystem';
-import { FIRST_CHARGE_FREE_AP_SURCHARGE } from '../data/balance';
+import { FIRST_CHARGE_FREE_AP_SURCHARGE, RELIC_AEGIS_STONE_MAX_CARRY } from '../data/balance';
 import { activeRunState } from './runStateStore';
 import type { EnemyInstance } from '../data/enemies';
 import type { StatusEffect } from '../data/statusEffects';
@@ -54,6 +54,11 @@ import {
   resolveTurnEndEffects,
   resolveTurnStartEffects,
   resolveComboStartValue,
+  resolveChargeCorrectEffects,
+  resolveChainMultiplierBonus,
+  resolvePrismaticShardApBonus,
+  resolveDoubleDownBonus,
+  resolveDrawBias,
 } from './relicEffectResolver';
 
 /**
@@ -162,6 +167,8 @@ export interface TurnState {
   chainLength: number;
   /** Current chain type index (0-5), or null if no chain active. Exposed for UI. */
   chainType: number | null;
+  /** Whether double_down has already been consumed this encounter. */
+  doubleDownUsedThisEncounter: boolean;
 }
 
 export interface PlayCardResult {
@@ -321,6 +328,7 @@ export function startEncounter(
     chainMultiplier: 1.0,
     chainLength: 0,
     chainType: null,
+    doubleDownUsedThisEncounter: false,
   };
 
   // Reset chain at encounter start (clean slate)
@@ -637,6 +645,8 @@ export function playCardAction(
   let currentChainMultiplier = 1.0;
   if (playMode === 'charge') {
     currentChainMultiplier = extendOrResetChain(card.chainType);
+    // prismatic_shard — all chain multipliers +0.5x
+    currentChainMultiplier += resolveChainMultiplierBonus(turnState.activeRelicIds);
   } else {
     // Quick Play breaks the chain
     extendOrResetChain(null);
@@ -646,10 +656,17 @@ export function playCardAction(
   turnState.chainLength = chainState.length;
   turnState.chainType = chainState.chainType;
 
+  // prismatic_shard — +1 AP on 5-chain completion
+  const prismaticApBonus = resolvePrismaticShardApBonus(turnState.activeRelicIds, chainState.length);
+  if (prismaticApBonus > 0) {
+    turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + prismaticApBonus);
+  }
+
   const speedBonus = speedBonusEarned ? 1.5 : 1.0;
   const useDoubleStrike = turnState.doubleStrikeReady && card.cardType === 'attack';
   const useFocus = turnState.focusReady;
   const useOverclock = turnState.overclockReady;
+  const isChargeCorrect = playMode === 'charge' || playMode === 'charge_correct';
 
   const effect = resolveCardEffect(
     card,
@@ -724,6 +741,58 @@ export function playCardAction(
     const stormBonus = Math.floor(effect.damageDealt * 0.5);
     effect.damageDealt += stormBonus;
     effect.finalValue += stormBonus;
+  }
+
+  // crit_lens + scholars_crown: fire resolveChargeCorrectEffects on charge-correct plays.
+  // scholars_crown applies a tier-based % bonus to final damage/shield/heal values.
+  // crit_lens doubles final damage (25% chance) after all other multipliers.
+  if (isChargeCorrect) {
+    const tierStr = card.tier ?? '1';
+    const cardTierNum = tierStr === '3' ? 3 : (tierStr === '2a' || tierStr === '2b') ? 2 : 1;
+    const cardTypeForRelic = card.cardType === 'shield' ? 'shield' : card.cardType === 'attack' ? 'attack' : 'utility';
+    const chargeFx = resolveChargeCorrectEffects(turnState.activeRelicIds, {
+      answerTimeMs: 9999, // timing not available here; speed relics handled upstream
+      cardTier: cardTierNum,
+      cardType: cardTypeForRelic,
+      isFirstChargeThisTurn: turnState.cardsCorrectThisTurn === 0,
+      chargeCountThisEncounter: turnState.consecutiveCorrectThisEncounter + 1,
+      mirrorUsedThisEncounter: false, // mirror handled separately
+      adrenalineShard_usedThisTurn: false, // adrenaline_shard handled upstream
+    });
+
+    // scholars_crown: apply tier-based % bonus to the primary effect value
+    if (chargeFx.scholarsCrownBonus > 0) {
+      const crownMult = 1 + chargeFx.scholarsCrownBonus / 100;
+      if (effect.damageDealt > 0) {
+        effect.damageDealt = Math.round(effect.damageDealt * crownMult);
+        effect.finalValue = Math.round(effect.finalValue * crownMult);
+        effect.enemyDefeated = effect.damageDealt >= enemy.currentHP;
+      } else if (effect.shieldApplied > 0) {
+        effect.shieldApplied = Math.round(effect.shieldApplied * crownMult);
+        effect.finalValue = Math.round(effect.finalValue * crownMult);
+      } else if (effect.healApplied > 0) {
+        effect.healApplied = Math.round(effect.healApplied * crownMult);
+        effect.finalValue = Math.round(effect.finalValue * crownMult);
+      }
+    }
+
+    // crit_lens: 25% chance to double final damage on charge correct
+    if (chargeFx.isCrit && effect.damageDealt > 0) {
+      effect.damageDealt = Math.round(effect.damageDealt * 2);
+      effect.finalValue = Math.round(effect.finalValue * 2);
+      effect.enemyDefeated = effect.damageDealt >= enemy.currentHP;
+    }
+  }
+
+  // double_down — first successful Charge this encounter deals 2× damage (once per encounter)
+  if (isChargeCorrect && effect.damageDealt > 0) {
+    const ddBonus = resolveDoubleDownBonus(turnState.activeRelicIds, turnState.doubleDownUsedThisEncounter);
+    if (ddBonus.active) {
+      effect.damageDealt = Math.round(effect.damageDealt * ddBonus.damageMultiplier);
+      effect.finalValue = Math.round(effect.finalValue * ddBonus.damageMultiplier);
+      effect.enemyDefeated = effect.damageDealt >= enemy.currentHP;
+      turnState.doubleDownUsedThisEncounter = true;
+    }
   }
 
   // Step 7 (AR-59.13): Quick Play immunity — The Librarian absorbs Quick Play damage entirely.
@@ -1159,7 +1228,7 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     });
   }
 
-  const enemyTick = tickEnemyStatusEffects(enemy);
+  const enemyTick = tickEnemyStatusEffects(enemy, turnState.activeRelicIds);
   if (enemy.currentHP <= 0) {
     turnState.result = 'victory';
     turnState.phase = 'encounter_end';
@@ -1217,6 +1286,12 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   playerState.shield = Math.max(0, carryShield);
   turnState.persistentShield = 0;
 
+  // aegis_stone: if carrying 15+ block into next turn, grant Thorns 2 for the next enemy attack
+  if (turnEndFx.blockCarries && turnState.activeRelicIds.has('aegis_stone') && playerState.shield >= RELIC_AEGIS_STONE_MAX_CARRY) {
+    turnState.thornsActive = true;
+    turnState.thornsValue = 2;
+  }
+
   // Combo persists across turns, resets on wrong answer or explorer fizzle.
   // Ascension 14+ (Combo Breaker): combo also resets on turn end.
   if (turnState.ascensionComboResetsOnTurnEnd) {
@@ -1232,6 +1307,9 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   turnState.firstAttackUsed = false;
   turnState.apCurrent = Math.min(turnState.apMax, START_AP_PER_TURN + turnState.bonusApNextTurn);
   turnState.bonusApNextTurn = 0;
+
+  // Capture chainType BEFORE reset — used by tag_magnet to bias the next draw
+  const chainTypeBeforeReset = turnState.chainType;
 
   // Reset Knowledge Chain at start of each new player turn
   resetChain();
@@ -1266,17 +1344,27 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
 
   const drawCount = turnState.pendingDrawCountOverride ?? turnState.baseDrawCount;
   turnState.pendingDrawCountOverride = null;
-  drawHand(deck, drawCount + turnState.bonusDrawNextTurn);
+
+  // tag_magnet relic: bias draw toward last turn's chain type
+  const drawBias = resolveDrawBias(turnState.activeRelicIds, chainTypeBeforeReset ?? undefined);
+  const tagMagnetBias = drawBias.biasChainType !== null
+    ? { chainType: drawBias.biasChainType, chance: drawBias.biasChance }
+    : undefined;
+  drawHand(deck, drawCount + turnState.bonusDrawNextTurn, { tagMagnetBias });
   turnState.bonusDrawNextTurn = 0;
 
   turnState.phase = 'player_action';
   turnState.turnLog = [];
 
-  // Turn-start relic effects (iron_buckler: +3 block per turn)
+  // Turn-start relic effects (iron_buckler: +3 block per turn; blood_price: +1 AP)
   const turnStartFx = resolveTurnStartEffects(turnState.activeRelicIds);
   if (turnStartFx.bonusBlock > 0) {
     applyShield(playerState, turnStartFx.bonusBlock);
     turnState.triggeredRelicId = 'iron_buckler';
+  }
+  if (turnStartFx.bonusAP > 0) {
+    turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + turnStartFx.bonusAP);
+    turnState.triggeredRelicId = 'blood_price';
   }
 
   return {

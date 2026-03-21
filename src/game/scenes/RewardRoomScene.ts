@@ -93,6 +93,7 @@ export class RewardRoomScene extends Phaser.Scene {
   private continueButton!: Phaser.GameObjects.Container
   private sf = 1
   private currentLayoutMode: LayoutMode = 'portrait'
+  private initialized = false
 
   constructor() {
     super({ key: 'RewardRoom' })
@@ -150,6 +151,12 @@ export class RewardRoomScene extends Phaser.Scene {
   // ─── Create ─────────────────────────────────────────────────────────────────
 
   create(): void {
+    if (this.initialized) {
+      console.warn('[RewardRoom] Scene already initialized, skipping')
+      return
+    }
+    this.initialized = true
+
     const W = this.scale.width
     const H = this.scale.height
     this.sf = W / BASE_WIDTH
@@ -1133,6 +1140,7 @@ export class RewardRoomScene extends Phaser.Scene {
    * Clean up all tweens, timers, and game objects when the scene stops.
    */
   shutdown(): void {
+    this.initialized = false
     this.tweens.killAll()
     this.time.removeAllEvents()
     this.clearOverlay()

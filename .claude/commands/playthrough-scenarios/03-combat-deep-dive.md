@@ -10,9 +10,19 @@ URL: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 
 ## Steps
 
-1. Navigate to URL, wait 4s
-2. Start a run: click `btn-start-run` → first domain card → first archetype button
-3. Wait for screen = `combat`, take **Screenshot #1 (combat-start)**
+1. Navigate to `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`, wait 4s
+2. Disable animations: `document.documentElement.setAttribute('data-pw-animations', 'disabled')`
+3. Load combat scenario: `window.__terraScenario.load('combat-basic')`
+4. Wait 500ms, take **Screenshot #1 (combat-start)**
+
+### Encounter 1: Basic combat
+(use combat-basic — already loaded)
+
+### Encounter 2: Elite combat
+After encounter 1, reload: `window.__terraScenario.load('combat-elite')`
+
+### Encounter 3: Boss combat
+`window.__terraScenario.load('combat-boss')`
 
 ### For Each Encounter (repeat 3 times):
 

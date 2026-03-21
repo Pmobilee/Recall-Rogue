@@ -702,9 +702,15 @@
   function renderItems() {
     const q = document.getElementById('searchInput').value.toLowerCase();
     const panel = document.getElementById(`panel-${currentTab}`);
-    const items = allItems[currentTab].filter(i =>
+    let items = allItems[currentTab].filter(i =>
       !q || i.name.toLowerCase().includes(q) || i.id.toLowerCase().includes(q) || (i.concept || '').toLowerCase().includes(q)
     );
+    // Sort: items without an accepted variant float to the top
+    items.sort((a, b) => {
+      const aAccepted = a.variants?.some(v => v.accepted) ? 1 : 0;
+      const bAccepted = b.variants?.some(v => v.accepted) ? 1 : 0;
+      return aAccepted - bAccepted;
+    });
 
     if (!items.length) {
       panel.innerHTML = `<div class="empty-state"><h2>No items yet</h2><p>Click "+ Add Item" to get started.</p></div>`;

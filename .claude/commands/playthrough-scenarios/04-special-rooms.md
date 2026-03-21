@@ -8,38 +8,29 @@ URL: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 
 ## Steps
 
-1. Navigate to URL, wait 4s
-2. Start a run (btn-start-run → domain → archetype), wait for combat
-3. Play through encounters quickly (answer all correctly, end turn) until a special room appears in room selection, or until retreatOrDelve
-4. If room selection shows special rooms, pick one. Otherwise, proceed through combat rooms.
+1. Navigate to `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`, wait 4s
+2. Disable animations: `document.documentElement.setAttribute('data-pw-animations', 'disabled')`
 
-### Testing via Direct Navigation (fallback)
-If no special rooms appear naturally within 3 encounters:
-5. Use `browser_evaluate` to set screen directly:
-```javascript
-globalThis[Symbol.for('terra:currentScreen')].set('shopRoom')
-```
-6. Wait 2s, take **Screenshot #1 (shop-room)**
-7. Check shop UI: are relic items displayed? Are prices shown? Is buy button visible?
-8. If buy buttons exist, click one: `[data-testid^="shop-buy-relic-"]`
-9. Read state — did currency change?
+### Shop Room
+3. Load shop: `window.__terraScenario.load('shop-loaded')`
+4. Wait 500ms, take **Screenshot #1 (shop-room)**
+5. Check shop UI: relic items displayed with prices? Buy buttons visible?
+6. Click a buy button if affordable
 
-10. Set screen to `restRoom`
-11. Wait 2s, take **Screenshot #2 (rest-room)**
-12. Check: heal button visible? Upgrade button visible?
-13. Click `[data-testid="rest-heal"]` — note HP change
-14. OR click `[data-testid="rest-upgrade"]` — note card upgrade
+### Rest Room
+7. Load rest: `window.__terraScenario.load('rest-site')`
+8. Wait 500ms, take **Screenshot #2 (rest-room)**
+9. Check: heal button visible? Study button visible?
 
-15. Set screen to `mysteryEvent`
-16. Wait 2s, take **Screenshot #3 (mystery-event)**
-17. Check: event text displayed? Continue button visible?
-18. Click `[data-testid="mystery-continue"]`, wait 1s
-19. Verify screen transitioned
+### Mystery Event
+10. Load mystery: `window.__terraScenario.load('mystery-healing-fountain')`
+11. Wait 500ms, take **Screenshot #3 (mystery-event)**
+12. Check: event name "The Healing Fountain"? Continue button visible?
+13. Click continue, verify screen transitions
 
 ### End
-20. Navigate back to hub
-21. Run filtered console check
-22. Take **Screenshot #4 (final)**
+14. Run filtered console check
+15. Take **Screenshot #4 (final)**
 
 ## Checks
 - Shop displays items with prices

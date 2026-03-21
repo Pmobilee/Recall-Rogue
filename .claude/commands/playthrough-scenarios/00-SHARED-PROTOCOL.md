@@ -32,6 +32,41 @@ This document is included in every playtest worker's prompt. It contains the uni
 
 ---
 
+## Instant Scene Loading (PREFERRED)
+
+Instead of clicking through hub -> domain -> archetype -> combat, use `__terraScenario` to instantly jump to any game state:
+
+```javascript
+// In browser_evaluate:
+await window.__terraScenario.load('combat-basic');     // instant combat
+await window.__terraScenario.load('combat-boss');      // boss encounter
+await window.__terraScenario.load('shop-loaded');      // shop with 1000g
+await window.__terraScenario.load('mystery-healing-fountain'); // specific mystery event
+await window.__terraScenario.load('run-end-victory');  // victory screen
+await window.__terraScenario.load('card-reward-attacks'); // card reward
+
+// Custom config:
+await window.__terraScenario.loadCustom({
+  screen: 'combat',
+  enemy: 'the_archivist',
+  playerHp: 30,
+  hand: ['heavy_strike', 'strike', 'block'],
+  relics: ['whetstone', 'combo_ring'],
+  floor: 8,
+});
+```
+
+**ALWAYS disable animations before screenshots:**
+```javascript
+document.documentElement.setAttribute('data-pw-animations', 'disabled');
+```
+
+**Full preset list:** Call `window.__terraScenario.list()` or see `/visual-inspect` skill.
+
+**Rule:** ALWAYS prefer `__terraScenario` over manual navigation. Manual clicks through menus are fragile and slow. Use manual navigation ONLY when testing the navigation flow itself (e.g., onboarding scenario).
+
+---
+
 ## Screen Detection
 
 Read the current screen via `browser_evaluate`:

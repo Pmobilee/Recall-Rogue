@@ -324,8 +324,12 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
       return [txt('Next card +'), ...numWithMastery(power, mechanic.id, masteryLevel), txt('% damage')];
     case 'quicken':
       return [txt('Gain +'), num(1), txt(' AP this turn')];
-    case 'focus':
-      return [txt('Next card costs '), num(1), txt(' less AP')];
+    case 'focus': {
+      const count = Math.max(1, Math.floor((secondary as number | undefined) ?? 1));
+      return count > 1
+        ? [txt('Next '), num(count), txt(' cards cost 1 less AP')]
+        : [txt('Next card costs 1 less AP')];
+    }
     case 'double_strike':
       return [txt('Next ATTACK card hits twice at full power')];
 
@@ -342,8 +346,10 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     }
 
     // Utility
-    case 'scout':
-      return [txt('Draw '), num(power), txt(' card'), power !== 1 ? txt('s') : txt('')];
+    case 'scout': {
+      const drawCount = Math.max(1, Math.floor((secondary as number | undefined) ?? power ?? 2));
+      return [txt('Draw '), num(drawCount), txt(drawCount !== 1 ? ' cards' : ' card')];
+    }
     case 'recycle':
       return [txt('Draw '), num(3), txt(' cards')];
     case 'foresight':

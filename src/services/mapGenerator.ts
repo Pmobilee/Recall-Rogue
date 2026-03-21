@@ -321,26 +321,58 @@ function assignRoomTypes(
   // The last regular row (before pre-boss) for guarantee checks
   const lastRegularRow = PRE_BOSS_ROW - 1
 
-  // Guarantee at least 1 rest in rows 1–lastRegularRow
-  const hasRest = Object.values(nodes).some(n => n.type === 'rest' && n.row >= 1 && n.row <= lastRegularRow)
-  if (!hasRest) {
-    const candidates = Object.values(nodes).filter(
-      n => n.type === 'combat' && n.row >= REST_MIN_ROW && n.row <= lastRegularRow,
-    )
-    if (candidates.length > 0) {
-      candidates[Math.floor(rng() * candidates.length)].type = 'rest'
+  // ── AR-116.6: Enforce exact room counts ──────────────────────
+  const regularNodes = Object.values(nodes).filter(
+    n => n.row >= 1 && n.row <= lastRegularRow && n.type !== 'boss',
+  )
+
+  const countType = (t: string) => regularNodes.filter(n => n.type === t).length
+
+  // 1. Ensure exactly 1 rest in rows 1–lastRegularRow (PRE_BOSS_ROW already has rest)
+  const restCount = countType('rest')
+  if (restCount < 1) {
+    const combatNodes = regularNodes.filter(n => n.type === 'combat' && n.row >= REST_MIN_ROW)
+    if (combatNodes.length > 0) {
+      combatNodes[Math.floor(rng() * combatNodes.length)].type = 'rest'
+    }
+  } else if (restCount > 1) {
+    const rests = regularNodes.filter(n => n.type === 'rest')
+    const keepIdx = Math.floor(rng() * rests.length)
+    rests.forEach((n, i) => { if (i !== keepIdx) n.type = 'combat' })
+  }
+
+  // 2. Ensure exactly 2 shops, spaced apart (at least 2 rows between them)
+  const shopNodesList = regularNodes.filter(n => n.type === 'shop')
+  shopNodesList.forEach(n => { n.type = 'combat' })
+  const shopCandidates = regularNodes.filter(n => n.type === 'combat' && n.row >= SHOP_MIN_ROW)
+  if (shopCandidates.length >= 2) {
+    const first = shopCandidates[Math.floor(rng() * shopCandidates.length)]
+    first.type = 'shop'
+    const secondCandidates = shopCandidates.filter(n => n.type === 'combat' && Math.abs(n.row - first.row) >= 2)
+    if (secondCandidates.length > 0) {
+      secondCandidates[Math.floor(rng() * secondCandidates.length)].type = 'shop'
+    } else {
+      const fallback = shopCandidates.filter(n => n.type === 'combat')
+      if (fallback.length > 0) fallback[Math.floor(rng() * fallback.length)].type = 'shop'
     }
   }
 
-  // Guarantee at least 1 shop in rows 1–lastRegularRow
-  const hasShop = Object.values(nodes).some(n => n.type === 'shop' && n.row >= 1 && n.row <= lastRegularRow)
-  if (!hasShop) {
-    const candidates = Object.values(nodes).filter(
-      n => n.type === 'combat' && n.row >= SHOP_MIN_ROW && n.row <= lastRegularRow,
-    )
-    if (candidates.length > 0) {
-      candidates[Math.floor(rng() * candidates.length)].type = 'shop'
+  // 3. Ensure exactly 2 mystery rooms, not in same row as shops
+  const mysteryNodesList = regularNodes.filter(n => n.type === 'mystery')
+  mysteryNodesList.forEach(n => { n.type = 'combat' })
+  const shopRows = new Set(regularNodes.filter(n => n.type === 'shop').map(n => n.row))
+  const mysteryCandidates = regularNodes.filter(n => n.type === 'combat' && !shopRows.has(n.row))
+  if (mysteryCandidates.length >= 2) {
+    const first = mysteryCandidates[Math.floor(rng() * mysteryCandidates.length)]
+    first.type = 'mystery'
+    const secondCandidates = mysteryCandidates.filter(n => n.type === 'combat')
+    if (secondCandidates.length > 0) {
+      secondCandidates[Math.floor(rng() * secondCandidates.length)].type = 'mystery'
     }
+  } else if (mysteryCandidates.length === 1) {
+    mysteryCandidates[0].type = 'mystery'
+    const fallback = regularNodes.filter(n => n.type === 'combat')
+    if (fallback.length > 0) fallback[Math.floor(rng() * fallback.length)].type = 'mystery'
   }
 
   // Guarantee ELITE_MIN_COUNT–ELITE_MAX_COUNT elites in eligible rows

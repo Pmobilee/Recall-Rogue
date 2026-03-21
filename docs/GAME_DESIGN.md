@@ -51,10 +51,11 @@ PLAYER TURN:
      CHARGE PLAY (drag card into upper screen zone above ~40% from top, or tap CHARGE button):
        - Costs card's base AP + 1 additional AP (the "Charge surcharge")
        - Quiz panel appears. Timer starts. No backing out.
-       - CORRECT ANSWER → card plays at 2.5× / 3.0× / 3.5× (per tier). 500ms celebration.
-       - WRONG ANSWER → card plays at 0.6× / 0.7× / 0.7× (per tier). 300ms muted resolve.
+       - CORRECT ANSWER → card plays at 1.5× base + mastery bonus. 500ms celebration.
+       - WRONG ANSWER → card plays at 0.6× / 0.7× / 0.7× (per FSRS tier). 300ms muted resolve.
        - Card is never wasted — wrong answers still resolve (at 0.7× or lower).
        - Contributes to Knowledge Chain if same chainType (0-5) as previous Charge.
+       - MASTERED cards (level 5): auto quick-play with no quiz (except final boss).
 
   4. End Turn when AP is spent or player chooses to stop.
      Remaining unplayed cards discarded.
@@ -71,11 +72,45 @@ ENEMY TURN:
 | Scenario | AP Spent | Damage Dealt | Efficiency |
 |----------|----------|--------------|------------|
 | 3 Quick Strike plays | 3 AP | 8 + 8 + 8 = 24 | 8 dmg/AP |
-| 1 Charged Strike (correct, Tier 2a) | 2 AP | 24 | 12 dmg/AP |
+| 1 Charged Strike (correct, mastery 0) | 2 AP | 12 | 6 dmg/AP |
+| 1 Charged Strike (correct, mastery 3) | 2 AP | 18 | 9 dmg/AP |
 | 1 Charged Strike (wrong, Tier 2a) | 2 AP | 5.6 | 2.8 dmg/AP |
-| 1 Charged Strike (correct) + 1 Quick Strike | 3 AP | 24 + 8 = 32 | 10.7 dmg/AP |
+| 1 Charged Strike (correct) + 1 Quick Strike | 3 AP | 12 + 8 = 20 | 6.7 dmg/AP |
 
 **Quick Play is AP-efficient. Charge is power-efficient but expensive.** The +1 AP surcharge prevents "always Charge everything" — with 3 AP, you can Quick Play 3 cards OR Charge 1 + Quick 1. Meaningful tradeoff every turn.
+
+### Mastery Upgrade System (AR-113)
+
+Cards have 5 in-run mastery levels (0–5). Mastery resets each run. It is the **primary power scaling axis** — the more correctly you answer a card's question, the more powerful the card becomes mid-run.
+
+**Level colors:** L0 = base (no icon), L1 = green, L2 = blue, L3 = purple, L4 = orange, L5 = gold + glow aura.
+
+| Rule | Detail |
+|------|--------|
+| Correct Charge answer | Card upgrades one mastery level (once per encounter) |
+| Wrong Charge answer | Card downgrades one mastery level (once per encounter) |
+| Quick Play | No mastery change |
+| Per-encounter cap | Each card can only upgrade or downgrade once per encounter (flag resets on next encounter) |
+| Level 5 (Mastered) | Card auto quick-plays with no quiz — except at the final boss |
+| Rest Site Study | Correct answer → +1 mastery to a specific card (max 3 cards; no downgrades possible) |
+
+**Stat display:** Card descriptions show base+bonus format: "Deal 8+2 damage" where the +2 bonus is rendered in green. Bonus scales with mastery level.
+
+**Mechanic-level caps (AR-116):** Some mechanics cap their mastery below level 5:
+- `immunity`: max level 2
+- `cleanse`: max level 2
+- `overclock`: max level 3
+- `quicken`: max level 3
+- `transmute`: max level 3
+
+**Distractor count:** 2 distractors at mastery 0; 3 distractors at mastery 1+.
+
+**Visuals:**
+- Upgrade icon bobs gently on L1+ cards
+- "Upgraded!" / "Downgraded!" popup appears on mastery change
+- Stat values flash green (upgrade) or red (downgrade) when mastery changes
+
+**Echo cards:** Cannot upgrade or downgrade mastery, but inherit the source card's mastery-boosted stat values at spawn time.
 
 ### Charge Gesture (Touch UX)
 
@@ -201,30 +236,11 @@ Cards use a **PSD-based layered V2 frame system** (AR-107). Each card composites
 
 The contrast between Quick Play speed and Charged Play drama makes Charging feel special and deliberate.
 
-### Combo Counter & Decay
+### Chain Display (AR-116)
 
-The **combo counter** tracks consecutive knowledge victories and applies a damage multiplier from `COMBO_MULTIPLIERS`. The counter floors at `baseComboCount` (normally 0) and never goes negative.
+The combo multiplier system has been **removed**. No combo counter, no PERFECT! display, no combo-based damage scaling. Only the **Knowledge Chain** display remains.
 
-| Event | Combo Change |
-|-------|-------------|
-| Charge — correct answer | +1 combo |
-| Charge — wrong answer | −2 combo (decays, floor at base) |
-| Quick Play | −1 combo (decays, floor at base) |
-
-**Design intent:** Quick Play is safe but bleeds momentum. Wrong answers hurt more than Quick Play. Only consecutive correct Charges build the combo multiplier.
-
-| Combo Count | Multiplier |
-|-------------|-----------|
-| 0 | 1.00× |
-| 1 | 1.15× |
-| 2 | 1.30× |
-| 3 | 1.50× |
-| 4 | 1.75× |
-| 5+ | 2.00× |
-
-**Combo heal:** At combo 6+, each correct Charge answer heals 1 HP (Quick Play does not trigger combo heal).
-
-Balance constants: `COMBO_DECAY_QUICK_PLAY = 1`, `COMBO_DECAY_WRONG_ANSWER = 2`, `COMBO_HEAL_THRESHOLD = 6`, `COMBO_HEAL_AMOUNT = 1`
+The chain display sits at the **bottom-left** of the combat screen, colored by chain type, and shows the current chain length and multiplier in the format `"Chain: X.x"` (e.g. `"Chain: 1.7"`). It is only visible when chain length ≥ 2.
 
 ---
 
@@ -238,7 +254,7 @@ Cards have a `chainType` value (integer 0-5, corresponding to Obsidian, Crimson,
 
 **Six distinct chain types** (0-5) map to the 6-color palette defined in `src/data/chainTypes.ts`. Cards without a `chainType` field contribute no chain.
 
-**Chain state is ACTIVE in combat** (AR-93 Section B): `chainSystem.ts` is wired into `turnManager.ts` and `cardEffectResolver.ts`. The chain multiplier stacks multiplicatively with the combo multiplier on every card play.
+**Chain state is ACTIVE in combat** (AR-93 Section B): `chainSystem.ts` is wired into `turnManager.ts` and `cardEffectResolver.ts`. The chain multiplier stacks multiplicatively on every card play.
 
 ### Chain Multipliers
 
@@ -250,9 +266,9 @@ Cards have a `chainType` value (integer 0-5, corresponding to Obsidian, Crimson,
 | 4-chain | 2.2× | Screen edge pulse, chain lightning VFX |
 | 5-chain | 3.0× | Full celebration, screen shake, "KNOWLEDGE CHAIN!" text |
 
-**Chain multiplier stacks multiplicatively with combo multiplier** (and all other multipliers):
+**Chain multiplier stacks multiplicatively with all other multipliers** (combo multiplier removed):
 
-`finalValue = base × tierMult × comboMult × chainMult × speedBonus × buffMult × relicMult × overclockMult`
+`finalValue = base × tierMult × chainMult × speedBonus × buffMult × relicMult × overclockMult`
 
 | Scenario | Calculation | Total |
 |----------|-------------|-------|
@@ -280,7 +296,7 @@ The 122-damage Surge chain is the "holy shit" peak. Rare. Players will chase it.
 
 **During chain play:** A thin glowing line briefly connects played cards as they resolve (animation only, not persistent UI).
 
-**Chain counter (AR-93):** When chain length ≥ 2, a `ChainDisplay` overlaid near the combo counter shows `"[ChainName] Chain ×N"` in the chain's color, plus the multiplier value (e.g. `1.7×`). Implemented inside `ComboCounter.svelte` as a separate `chain-display` div.
+**Chain display (AR-93 / AR-116):** When chain length ≥ 2, a `ChainDisplay` at the **bottom-left** shows the chain length and multiplier in the format `"Chain: X.x"` (e.g. `"Chain: 1.7"`) colored by chain type. Implemented inside `ComboCounter.svelte` (chain-only display; combo counter removed).
 
 **Domain color:** Still used for the domain stripe/header bar inside cards and category labels — it conveys what subject matter the card covers. The chain border conveys chaining compatibility.
 
@@ -448,6 +464,8 @@ function getCardTier(state: PlayerFactState): '1' | '2a' | '2b' | '3' {
 | 2b | 5 | Yes | Yes | Yes |
 | 3 | 0 (no quiz) | — | — | — |
 
+For **vocabulary facts** (all languages), card tier controls which question variant types are available — not just option count. See §5 Vocabulary Question Variants below for the full variant system.
+
 ### Mastery Trial
 
 When a Tier 2b fact qualifies for Mastery Trial (stability ≥ 30, consecutiveCorrect ≥ 7):
@@ -472,6 +490,92 @@ Constants: `MASTERY_TRIAL.TIMER_SECONDS = 4`, `MASTERY_TRIAL.ANSWER_OPTIONS = 5`
 
 If cooldown would exhaust the fact pool (available facts < hand size), cooldown relaxes to 1 encounter. If still insufficient, cooldown is disabled for that draw.
 
+### Vocabulary Question Variants
+
+All vocabulary facts (across all languages) support multiple question formats that test different cognitive skills. Variants are selected based on card tier to progressively challenge the player as they demonstrate mastery.
+
+#### Active Variant Types
+
+| Variant | Question Format | Answer Format | Cognitive Skill | Available From |
+|---------|----------------|---------------|----------------|----------------|
+| **Forward** | "What does [L2 word] mean?" | English answer choices | L2 recognition → L1 meaning | Tier 1 (default) |
+| **Reverse** | "How do you say '[English]' in [language]?" | L2 word choices | L1 meaning → L2 recall (production) | Tier 2a |
+| **Synonym Pick** | "Which word is closest in meaning to [L2 word]?" | English synonym choices | Semantic depth, meaning nuance | Tier 2b |
+| **Definition Match** | "[English definition/explanation]" | English answer choices (no L2 word shown!) | Meaning from description without L2 cue | Tier 2b |
+
+#### Future Variant (Requires LLM Generation)
+
+| Variant | Question Format | Answer Format | Cognitive Skill |
+|---------|----------------|---------------|----------------|
+| **English Context Fill** | "He sat on a park ___" | English answer choices | Deep meaning comprehension, usage in context |
+
+English context fill sentences will be generated by LLM (Haiku sub-agent) and stored in the `variants` field of each fact. This is deferred until the content pipeline supports it.
+
+#### Tier → Variant Mapping
+
+Cards upgrade through tiers as players answer correctly via spaced repetition. Each tier introduces harder question formats:
+
+| Card Tier | Available Variants | Selection Logic |
+|-----------|-------------------|----------------|
+| **Tier 1** (Learning) | Forward only | Always forward — establish basic recognition |
+| **Tier 2a** (Active) | Forward (60%), Reverse (40%) | Random weighted selection. Reverse tests production — harder than recognition |
+| **Tier 2b** (Proficient) | Forward (30%), Reverse (30%), Synonym Pick (20%), Definition Match (20%) | All four variants in play. Wider variety prevents rote memorization |
+| **Tier 3** (Mastered) | Free recall (type answer) | No multiple choice — existing system |
+
+The variant is selected when the quiz question is generated, not at card creation time. The same card can be asked different ways on different encounters.
+
+#### Distractor Selection — Smart Pool
+
+Distractors for vocabulary questions are selected with these priorities (in order):
+
+1. **Seen-but-not-mastered words first:** Pull from facts the player has encountered in previous runs but hasn't fully mastered (FSRS review state: due or overdue). These are the hardest distractors because the player has partial knowledge — they might confuse similar words they're still learning.
+
+2. **Same difficulty band (±1):** Within the seen pool, prefer words at similar difficulty level to the target fact.
+
+3. **Length matching:** Filter to answers with similar character length (±60%) to prevent length-based guessing.
+
+4. **Unseen pool fallback:** If insufficient seen-but-not-mastered words exist (e.g., early in the game), fall back to the general language pool sorted by difficulty proximity.
+
+5. **Deduplication:** No duplicate answer strings. No distractor matching the correct answer or its acceptable alternatives.
+
+This applies to all languages uniformly — the system is language-agnostic, operating on the English `correctAnswer` values (for Forward, Synonym, Definition) or on the L2 words (for Reverse).
+
+#### Reverse Variant — L2 Word Distractors
+
+For Reverse questions ("How do you say 'bench' in Japanese?"), distractors must be other L2 words (e.g., other Japanese words), not English words. Selection:
+
+1. Prefer L2 words from facts the player has seen but not mastered (same FSRS logic).
+2. Prefer words at similar difficulty and similar length (in the target language script).
+3. Avoid words that are translations of the same English word (e.g., two words both meaning "bench").
+
+#### Synonym Pick — WordNet Integration
+
+Synonym Pick uses the WordNet lexical database (pre-computed at build time):
+
+- **Correct answers:** Members of the same WordNet synset as the fact's `correctAnswer`. E.g., for "bench" → "seat" is a valid synonym.
+- **Distractors:** Other English words NOT in the same synset, preferably from the same hypernym category (e.g., other furniture words like "table", "desk") to make them plausible but wrong.
+- **Fallback:** If WordNet has no synset for the answer (multi-word phrases, rare words), this variant is skipped and another variant is selected instead.
+- **Coverage:** ~82.9% of single-word English answers have WordNet synsets (pre-computed into `synonymMap.json` at build time). The system gracefully degrades for the rest.
+
+#### Definition Match — Using Existing Data
+
+Definition Match uses the fact's `explanation` field, which contains dictionary-style definitions:
+
+- The question shows the explanation text (stripped of the L2 word if present).
+- The answer choices are English words (same as Forward variant).
+- The key difference from Forward: the player never sees the foreign word — they must know the meaning deeply enough to match it from a description alone.
+- **Fallback:** If the `explanation` field is empty or too short (<10 chars), skip this variant.
+
+#### Language Agnostic Design
+
+This system works identically for all supported languages (Japanese, Korean, Chinese, German, French, Spanish, Dutch, Czech). The variant logic operates on:
+- `fact.correctAnswer` (always English) for Forward, Synonym, Definition
+- `fact.quizQuestion` / L2 word extracted from the question for Reverse
+- `fact.language` for pool selection
+- `fact.explanation` for Definition Match
+
+No language-specific code is required. Adding a new language automatically gets all variant types.
+
 ---
 
 ## 5.5. Combat Visuals & Enemy Sprites
@@ -479,6 +583,41 @@ If cooldown would exhaust the fact pool (available facts < hand size), cooldown 
 ### Enemy Sprite Rendering
 
 Enemies are rendered in the Phaser canvas with pixel-art sprites. First-person dungeon perspective — enemy centered in viewport, player hand at bottom. Enemies animate their intent telegraphs every turn.
+
+### Per-Enemy Combat Backgrounds (AR-110)
+
+Each of the 86+ enemies has a unique combat background image that reflects their lore and environment. The system provides:
+
+- **Two orientations per enemy:** Portrait and Landscape versions, auto-selected at runtime based on viewport aspect ratio
+- **Runtime orientation selection:** `getCombatBgForEnemy(enemyId)` in `src/data/backgroundManifest.ts` checks `window.innerWidth / window.innerHeight` and returns the correct path
+- **Fallback system:** `getRandomCombatBg()` falls back to segment-based pools when enemy-specific art is missing (Shallow Depths / Deep Caverns / The Abyss / The Archive / Endless Void)
+- **Asset location:** `public/assets/backgrounds/combat/enemies/<enemyId>/portrait.webp` and `.../landscape.webp`
+
+This gives each enemy a distinct visual identity and reinforces the dungeon atmosphere with environment-appropriate art.
+
+#### Per-Enemy Lore-Driven Animations (AR-111)
+
+Each of the 84 enemies has a unique idle behavior, attack style, and hit reaction tailored to its visual form and lore identity. Replaces the old 8 generic animation archetypes with per-enemy overrides.
+
+**Animation system:**
+- Per-enemy configs in `src/data/enemyAnimationOverrides.ts` (keyed by enemy ID)
+- Falls back to archetype-based config if no override exists
+- Two custom step types: `rotate` (angle tweening) and `fade` (alpha tweening)
+- `getAnimConfig(archetype?, enemyId?)` checks overrides first
+
+**Animation highlights by creature type:**
+| Visual Form | Animation Technique | Examples |
+|-------------|-------------------|----------|
+| Moths/bats | scaleX compression (wing folding) | Page Flutter, Burnout, Moth of Enlightenment, Echo Chamber |
+| Worms/slugs | Peristaltic undulation (alternating squash) | Eraser Worm, Gut Feeling, Ink Slug |
+| Ghosts | Alpha fading + drift | All-Nighter, Burnout Phantom, Lost Thesis, Blank Spot |
+| Heavy golems | Near-still + rare ground-pound squash | Thesis Construct, Textbook, Dissertation, Sacred Text |
+| Cursors/blocks | Cursor blink (alpha toggle at rhythm) | Writer's Block |
+| Multi-headed | Chaotic angle swings + jitter | Group Project, Hydra Problem, Study Group |
+| Pressure vessels | Constant jitter + building scale + squash release | Pressure Cooker, Burning Deadline |
+| Jellyfish | Float-up/drop-down bob + scaleY trailing | Bright Idea, Hyperlink |
+
+Config data: `src/data/enemyAnimationOverrides.ts`. System: `src/game/systems/EnemySpriteSystem.ts`.
 
 ### Enemy Rarity System
 
@@ -595,7 +734,7 @@ Echo cards have a distinctive visual signature to separate them from normal card
 
 ### Complete Mechanics Reference (v2 — QP / Charge Correct / Charge Wrong)
 
-All 26 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = tier multiplier (2.5×/3.0×/3.5×). Charged Wrong = 0.6×/0.7×. Values shown at Tier 2a (3.0×/0.7×) for standard reference.
+All 26 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = 1.5× base + mastery bonus (see Mastery Upgrade System). Charged Wrong = 0.6×/0.7×. Values shown at mastery 0, Tier 2a (1.5×/0.7×) for standard reference.
 
 #### Attack Mechanics
 
@@ -626,7 +765,7 @@ All 26 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = tier multipl
 |----------|----|------------|-----------------|---------------|-------|
 | **Quicken** | 0 | +1 AP this turn | +1 AP + draw 1 card | +1 AP (no draw) | Charge costs 1 AP total |
 | **Empower** | 1 | Next card +50% | Next card +75% | Next card +35% | Setup for burst |
-| **Focus** | 1 | Next card −1 AP | Next 2 cards −1 AP | Next card −1 AP | Charged = 2 discounts |
+| **Focus** | 1 | Next card −1 AP | Next 2 cards −1 AP | Next card −1 AP | Charged = 2 discounts. Card description reads "Next N cards" where N includes mastery bonus. |
 | **Double Strike** | 2 | Next attack hits 2× | Next attack 2× + Pierce | Next attack hits 1× | Charged adds Piercing |
 
 #### Debuff Mechanics
@@ -642,7 +781,7 @@ All 26 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = tier multipl
 
 | Mechanic | AP | Quick Play | Charged Correct | Charged Wrong | Notes |
 |----------|----|------------|-----------------|---------------|-------|
-| **Scout** | 1 | Draw 2 cards | Draw 3 cards | Draw 1 card | Hand cycling |
+| **Scout** | 1 | Draw 2 cards | Draw 3 cards | Draw 1 card | Hand cycling. Card description shows actual draw count (not a placeholder). |
 | **Foresight** | 0 | Draw 2 cards | Draw 3 + see next intent | Draw 1 card | Free info. Charge costs 1 AP. |
 | **Recycle** | 1 | Draw 3 cards | Draw 4 + 1 from discard | Draw 2 cards | Premium cycling |
 | **Cleanse** | 1 | Remove all debuffs + draw 1 | Remove debuffs + draw 2 | Remove debuffs only | Situational lifesaver |
@@ -741,7 +880,21 @@ Map config constants: `MAP_CONFIG.ROWS_PER_ACT = 15`, `MAP_CONFIG.BOSS_ROW = 14`
 
 **actMap Boss Node Flow (implementation note):** Boss nodes on the actMap are single-encounter nodes (`encountersPerFloor` stays at the floor default of 3, but the boss node only has 1 encounter). After defeating a boss node, `gameFlowController` detects `justCompletedNode.type === 'boss'` and forces `encountersPerFloor = currentEncounter` so `advanceEncounter()` correctly marks the floor as complete. The relic reward and special-event/retreat-or-delve flow then trigger normally.
 
-Node distribution by act (approximate):
+**Map room distribution (AR-116 — per-floor exact counts):**
+
+`mapGenerator.ts` enforces exact room counts via a post-processing step after initial generation:
+
+| Row | Type |
+|-----|------|
+| Row 0 | Combat (always) |
+| Rows 1–5 | 1 Rest (random position) |
+| Rows 1–5 | 2 Shops (spaced 2+ rows apart) |
+| Rows 1–5 | 2 Mystery rooms (not on shop rows) |
+| Remaining rows | Combat or Elite |
+| Row 6 | Rest (pre-boss rest, always) |
+| Row 7 | Boss (always) |
+
+Node distribution by act (approximate, legacy reference — actual counts enforced above):
 | Node Type | Act 1 | Act 2 | Act 3 |
 |-----------|-------|-------|-------|
 | Combat | 42% | 38% | 34% |
@@ -751,6 +904,18 @@ Node distribution by act (approximate):
 | Shop | 8% | 10% | 10% |
 | Treasure | 10% | 10% | 10% |
 
+**Treasure rooms** present 3 relic choices (choose 1) from the player's character-unlocked relic pool, displayed on the RewardRoomScene (rock/cloth display). If no eligible relics remain, falls back to +25 gold and a card reward.
+
+**Room backgrounds:** Each non-combat room type has its own background pool (5 variants each, randomly selected):
+- Rest: `rooms/rest/rest-campfire-*.webp`
+- Shop: `rooms/shop/shop-merchant-*.webp`
+- Mystery: `rooms/mystery/mystery-arcane-*.webp`
+- Treasure: `rooms/treasure/treasure-cache-*.webp`
+- Descent: `rooms/descent/descent-*.webp`
+- Defeat/Victory: `screens/defeat/` and `screens/victory/`
+
+The retreat-or-delve screen uses the **descent** background pool (`/assets/backgrounds/rooms/descent/`).
+
 ### Rest Site — Three Choices
 
 At each Rest Site, player chooses exactly one:
@@ -758,14 +923,14 @@ At each Rest Site, player chooses exactly one:
 | Choice | Effect | Quiz Count |
 |--------|--------|------------|
 | **Rest** | Heal 30% max HP | 0 |
-| **Study** | Answer 3 quiz questions — each correct answer upgrades a random eligible card | 3 |
+| **Study** | Answer up to 3 quiz questions — each correct answer raises one specific card's mastery level (max 3 cards, no downgrades) | 3 |
 | **Meditate** | Remove 1 card from your deck (deck thinning) | 0 |
 
-**Study flow:** A standalone 3-question quiz is shown (`StudyQuizOverlay`). Questions are drawn from the run's current fact pool. For each correct answer, one random upgrade-eligible (non-upgraded) card in the deck is upgraded in-place (gains "+" suffix and boosted values). Perfect score = 3 upgrades. Disabled if no upgrade-eligible cards remain.
+**Study flow:** A standalone 3-question quiz is shown (`StudyQuizOverlay`). Questions are drawn from the run's current fact pool. For each correct answer, one specific card in the deck gains one mastery level (see Mastery Upgrade System). Maximum 3 cards upgraded; no downgrades are possible during Study. Perfect score = 3 mastery upgrades. Disabled if all cards are already at max mastery.
 
 **Meditate flow:** A scrollable list of all deck cards is shown (`MeditateOverlay`). Player taps a card to select it, then confirms via a red "Remove" button. A confirm dialog prevents accidental removal. Disabled if the deck has 5 or fewer cards.
 
-This design makes Study on-brand with the knowledge/learning theme — upgrades must be earned through correct answers, not handed out for free.
+This design makes Study on-brand with the knowledge/learning theme — mastery gains must be earned through correct answers, not handed out for free.
 
 ### Shop System
 
@@ -827,6 +992,38 @@ Constant: `UPGRADED_REWARD_CHANCE_BY_FLOOR` in `src/data/balance.ts`
 - Each Common card in a reward: +1% to counter
 - Counter modifies Rare card appearance chance
 - Resets each act
+
+**Bonus relic on card reward:** 50% chance per floor (once per floor max), a bonus relic from the unlocked pool appears alongside the card choices on the reward screen. Tracked via `bonusRelicOfferedThisFloor` flag on floor state, reset on floor advance.
+
+### Mystery Rooms — Floor-Scaled Events
+
+Mystery rooms are narrative encounters that add unpredictability without breaking progression balance. They are **side dishes, not the main course** — never outclassing combat rewards, shops, or rest sites.
+
+**Event distribution per mystery node:**
+| Outcome | Chance | Details |
+|---------|--------|---------|
+| Narrative event | 70% | Drawn from tiered pools based on current floor |
+| Combat ambush | 20% | Floors 1-5: regular enemy. Floors 6-8: 50/50 regular/elite. Floors 9+: elite. NO post-combat card reward. |
+| Card reward | 10% | Standard 3-card choice screen |
+
+**Event tiers:**
+| Tier | Unlocks At | Examples |
+|------|-----------|----------|
+| Tier 1 | Floor 1+ | Healing Fountain (15% HP), Scattered Coins (25g), Reading Nook (upgrade card), Whispering Shelf (free card) |
+| Tier 2 | Floor 3+ | Strict Librarian (return card or take damage), Knowledge Tax (pay gold/HP), Ambush!, Gambler's Tome |
+| Tier 3 | Floor 6+ | Burning Library (15 HP for upgrade+card), Mirror Scholar (elite combat), Merchant of Memories (trade max HP) |
+| Tier 4 | Floor 9+ | Final Wager (50/50 gamble), The Recursion (meet past self), Eraser Storm (lose 2 cards, heal), Elite Ambush |
+
+**Balance ceilings (hard limits):**
+- No free relics from mystery events
+- Max 1 card upgrade per event
+- Heals capped at 20% max HP (rest site heals 30%)
+- Currency gains capped at 25-40 gold
+- Combat ambush events give NO post-combat reward
+
+**Effect types:** heal, damage, currency, maxHpChange, upgradeRandomCard, removeRandomCard, combat, cardReward, healPercent, transformCard, freeCard, nothing, choice (multi-option)
+
+27 unique events across 4 tiers. Event data in `src/services/floorManager.ts`. Effect resolution in `src/services/gameFlowController.ts`. UI in `src/ui/components/MysteryEventOverlay.svelte`.
 
 ### Gold Economy
 
@@ -959,7 +1156,7 @@ See §3 for full detail. Summary for quick reference:
 - **Chain break:** Quick Play, wrong Charge answer, different `chainType`
 - **Multipliers:** 1.0× (no chain), 1.3× (2-chain), 1.7× (3-chain), 2.2× (4-chain), 3.0× (5-chain)
 - **Stacks with:** Charge multiplier (multiplicative), Surge (free Charge, enabling more chains per turn)
-- **Visuals:** `chainType`-colored card edge tint (6-color palette), in-hand pulse, connection line animation, chain counter
+- **Visuals:** `chainType`-colored card edge tint (6-color palette), in-hand pulse, connection line animation, chain display (bottom-left, format "Chain: X.x")
 
 ---
 
@@ -1072,7 +1269,8 @@ Research: Karpicke & Roediger (2008) — immediate re-testing after failure is o
 | System | Description |
 |--------|-------------|
 | Knowledge Library | All facts cataloged by domain + mastery; lore entries expand on mastery |
-| Relic Archive | 42 relics (25 free, 17 require Mastery Coins), earned in runs |
+| Relic Archive | 42 relics: 24 always available (starter pool), 18 unlock via character level |
+| Camp Upgrade System | 9 camp elements each with 5–6 upgrade tiers, purchased with Dust |
 | Card Cosmetics | Milestone rewards; monetizable |
 | Domain Unlocking | Master 25 facts → new domain |
 | Streaks | Daily completion; 7d→card frame, 30d→mastery coins, 100d→exclusive cosmetic, 365d→legendary. 1 freeze/week. |
@@ -1083,13 +1281,16 @@ Research: Karpicke & Roediger (2008) — immediate re-testing after failure is o
 
 No overworld, no farming/crafting, no prestige, no stamina.
 
-### 13c. Character Leveling System
+### 13c. Character Leveling System (AR-112)
 
 **Service:** `src/services/characterLevel.ts` (pure logic, no framework imports)
+**Store integration:** `awardRunXP()` in `src/ui/stores/playerData.ts` — called at run end, attaches result to `RunEndData.xpResult` for RunEndScreen display.
 
-Players accumulate XP across all runs. XP feeds a permanent account level (0–25) that unlocks relics, dust, titles, and cosmetics.
+Players accumulate XP across all runs. XP feeds a permanent account level (1–25) that unlocks relics, dust, titles, and cosmetics. XP is awarded at the end of every non-practice run.
 
 **XP Curve:** `XP_BASE=80`, `XP_MULTIPLIER=1.14` — level 1 costs 80 XP; each subsequent level costs ~14% more.
+
+**Pacing:** Level 1 after first run (~30 XP minimum), Level 10 at ~24 runs, Level 25 at ~224 runs.
 
 **XP Sources per run:**
 
@@ -1097,7 +1298,7 @@ Players accumulate XP across all runs. XP feeds a permanent account level (0–2
 |--------|----|
 | Correct answer | +3 each |
 | Speed bonus (top 25% of timer) | +1 each |
-| Streak bonus (beyond 2nd consecutive correct) | +2 per answer |
+| Streak bonus (beyond 2nd consecutive correct) | +2 per answer in streak |
 | Floor cleared | +8 each |
 | Combat won | +5 each |
 | Elite defeated | +15 each |
@@ -1106,8 +1307,14 @@ Players accumulate XP across all runs. XP feeds a permanent account level (0–2
 | New fact encountered | +2 each |
 | Retreat bonus | +10 flat |
 | Full run completion | +25 flat |
-| Ascension multiplier | ×(1 + ascension×0.1) |
+| Ascension multiplier | ×(1 + ascension×0.1) applied to subtotal |
 | Daily first-run bonus | +30% of post-ascension total |
+
+**Practice runs earn no XP** (pool already mastered — `isPracticeRun` flag suppresses `awardRunXP` call).
+
+**Enemy type tracking:** `RunState` tracks `elitesDefeated`, `miniBossesDefeated`, and `bossesDefeated` separately from `encountersWon`. These are populated in `onEncounterComplete()` by checking `actMap` node type and floor/encounter position. They are passed through `RunEndData` to `awardRunXP` for precise XP calculation.
+
+**RunEndScreen XP display:** After a non-practice run, the `xpResult` object is attached to `RunEndData` and passed to `RunEndScreen.svelte` as the `xpResult` prop. The screen shows total XP earned, and if one or more levels were gained, displays a "Level Up! → Lv.N" banner with any relics unlocked and dust awarded.
 
 **Level Rewards (selected highlights):**
 
@@ -1125,12 +1332,49 @@ Players accumulate XP across all runs. XP feeds a permanent account level (0–2
 
 18 relics are distributed across levels 1–24. Levels without relics award dust (200–1000).
 
-### Mastery Coins (Simplified v2)
+### 13d. Camp Upgrade System (AR-111)
+
+The **Camp** is the persistent home base shown between runs. Players spend **Dust** (the meta-progression currency) to upgrade camp elements, which visually evolve the camp and may provide passive bonuses.
+
+**9 camp elements**, each with **5–6 upgrade tiers:**
+
+| Element | Tiers | First Upgrade Cost | Notes |
+|---------|-------|--------------------|-------|
+| Tent | 6 | 60 dust | Sleeping quarters; upgrades improve aesthetics |
+| Campfire | 5 | 60 dust | Central visual; higher tiers add warmth effects |
+| Character | 6 | 80 dust | Player avatar; visual progression |
+| Pet | 5 | 150 dust | Companion; pets unlocked separately (cat free, owl 180, fox 260, dragon_whelp 520) |
+| Library | 5 | 80 dust | Knowledge storage; cosmetic |
+| Questboard | 6 | 40 dust | Bounty board; cosmetic |
+| Shop | 6 | 60 dust | Merchant stall; cosmetic |
+| Journal | 6 | 40 dust | Field notes; cosmetic |
+| Doorway | 6 | 100 dust | Camp entrance; cosmetic |
+
+**Upgrade costs:** Each element has a per-tier cost schedule defined in `campState.ts`. Dust is the sole upgrade currency. No real-money purchases for camp upgrades.
+
+**Sprite system:** Camp is rendered using a PSD-based full-canvas overlay stacking approach. Each upgrade tier corresponds to a separate overlay sprite. The runtime composites all active tier overlays at startup and on upgrade.
+
+**Camp Shop:** Two-tab interface accessible from the hub:
+- **Camp Upgrades tab:** Shows all 9 elements with current tier, next upgrade cost, and preview art.
+- **Relics tab:** Shows all 42 relics with unlock status (24 always available, 18 require character level). Previously relics required Mastery Coins for purchase; they are now level-gated with no per-relic cost.
+
+**Dust currency:** Awarded from run results (via `currencyEarned`), level-up rewards, and Mastery Trial completions.
+
+### 13e. Relic Unlock Model (Updated)
+
+As of AR-112, the relic unlock model changed from Mastery Coin purchase-based to **character level gating**:
+
+- **24 starter relics** are always available in every run's drop pool from account creation.
+- **18 relics unlock progressively** as the player gains character levels (see Level Rewards table above).
+- No Mastery Coins are required to unlock relics. Mastery Coins section is legacy documentation.
+- The Camp Shop Relics tab displays all 42 relics with their unlock status and the level required.
+
+### Mastery Coins (Legacy — No Longer Used for Relic Unlocks)
 
 - Earned by mastering facts (reaching Tier 3 via Mastery Trial)
-- Spent in the Relic Archive hub screen to permanently unlock relics for future runs
-- 25 relics are free (unlocked from run start); 17 require Mastery Coins
-- No per-run purchases with Mastery Coins — they are a meta-unlock currency only
+- Previously spent to unlock relics in the Relic Archive hub screen
+- As of AR-112, relics are level-gated, not Mastery Coin gated
+- Mastery Coins may be repurposed in a future cosmetics or consumables system
 
 ### 13a. Lore Discovery System
 
@@ -1273,15 +1517,17 @@ When at 5/5 slots and a new relic is offered:
 
 Sell values (40% of base shop price): Common = 40g, Uncommon = 64g, Rare = 100g, Legendary = 160g
 
-### Anytime Relic Selling from Tray (AR-92)
+### Anytime Relic Selling from Tray (AR-92 / AR-116 update)
 
-Players can sell equipped relics **at any time** from the in-combat relic tray tooltip:
+Players can sell equipped relics from the relic tray tooltip, **but only outside of combat** (shop or hub):
 
-1. Tap any equipped relic slot in combat → tooltip appears showing name and description
-2. Tooltip includes a **"Sell (Xg)"** button at the bottom (X = 40% of rarity base price)
-3. Tapping the sell button shows an inline confirmation: "Sell for Xg? [Yes] [No]"
-4. Confirming → `sellEquippedRelic(id)` is called → relic removed, gold added, slot freed
-5. This enables proactive relic management at any point during a run, not only when a new relic is offered
+- **During combat:** Tapping a relic slot shows an info-only tooltip (name + description). No sell button.
+- **In shop/hub:** Tapping a relic slot shows the tooltip with a **"Sell (Xg)"** button.
+
+Sell flow:
+1. Tap relic slot → tooltip shows name, description, and "Sell (Xg)" button
+2. Tapping sell → inline confirmation: "Sell for Xg? [Yes] [No]"
+3. Confirming → `sellEquippedRelic(id)` → relic removed, gold added, slot freed
 
 Sell formula: `Math.floor(SHOP_RELIC_PRICE[rarity] * RELIC_SELL_REFUND_PCT)` where `RELIC_SELL_REFUND_PCT = 0.40`.
 
@@ -1404,7 +1650,7 @@ When you correctly Charge 3 cards in one encounter (cumulative), draw 2 extra ne
 Wrong Charged answers reveal correct answer AND next appearance of that fact auto-succeeds.
 *Turns failures into future guaranteed wins.*
 
-**Domain Mastery Sigil** — Rare
+**Domain Mastery Sigil** — Rare (ID: `domain_mastery_sigil`, fixed from old ID `domain_mastery`)
 If deck has 4+ facts from same domain, all same-domain cards get +30% base damage (even Quick Play).
 
 #### Economy Relics (Utility)
@@ -1423,7 +1669,7 @@ If deck has 4+ facts from same domain, all same-domain cards get +30% base damag
 
 **Iron Shield** — Common | Start each turn with 2 block.
 
-**Vitality Ring** — Common | +20 max HP.
+**Vitality Ring** — Common | +20 max HP. Applied at run start (max HP increased immediately on pickup).
 
 **Herbal Pouch** — Common | Heal 8 HP after each combat encounter.
 
@@ -1460,9 +1706,7 @@ Echo cards deal 1.0× regardless of quiz result (prevents wrong-Echo 0.5× penal
 
 ### Relic Archive (Hub — Meta-Progression)
 
-25 relics are free (available from the start). 17 relics require Mastery Coins to unlock permanently:
-
-**Requires Mastery Coins (17):** Chain Reactor, Resonance Crystal, Quicksilver Quill, Time Warp, Volatile Core, Crit Lens, Thorn Crown, Bastion's Will, Plague Flask, Double Down, Scholar's Crown, Domain Mastery Sigil, Blood Price, Phoenix Feather, Scholar's Gambit, Prismatic Shard, Mirror of Knowledge.
+24 relics are available from account creation (starter pool). 18 relics unlock progressively via character level (see §13c Level Rewards table). No Mastery Coins are required to unlock any relic — the unlock model is purely level-gated as of AR-112.
 
 ### Relic Display
 
@@ -1546,25 +1790,38 @@ Option D split-stage layout for desktop/landscape viewports:
 
 **Three-zone split:**
 - **Right 30% — Enemy Panel:** Enemy sprite, HP bar, block bar, intent telegraph. Always visible including during quiz. Enemy centered at `(85%, 45%)` of viewport.
-- **Left 70% — Center Stage:** Reserved for quiz panel (AR-76), VFX, and floating HUD elements (relics top-left, combo counter top-center, chain counter top-right).
+- **Left 70% — Center Stage:** Reserved for quiz panel (AR-76), VFX, and floating HUD elements (relics top-left, chain display bottom-left).
 - **Bottom 26vh — Card Hand Strip:** Full-viewport-width horizontal card row. Cards in `flex-row`, no arc/rotation fan. Selected card rises vertically by 70px. Charge/Quick Play buttons appear above selected card.
 
 **Player HP bar:** Vertical bar at left edge of enemy panel (`x=68%` of viewport), spanning top 20%–80% of viewport height.
 
 **HUD element repositioning (landscape):**
 - Relics: top-left of center stage (`2%, 5%`)
-- AP orb: left of hand strip, above card hand at `bottom: 28vh`
+- AP orb: left of hand strip, above card hand at `bottom: 35vh` (was 45vh; 10% lower on mobile)
 - Enemy name: top of right panel (`70%–100%`, `2%` from top)
 - Intent bubble: below enemy name in right panel
 - Pile indicators: left edge above card hand
 - End Turn button: right side above hand strip, left of enemy panel
-- Combo counter: top-center of viewport
+- Chain display: bottom-left of combat screen (chain-only; combo counter removed)
 
 **Background:** Cover-scales to fill full viewport in both modes. Landscape variant loaded first (`_landscape` suffix) with portrait fallback.
 
 **Toggle:** Ctrl+Shift+L (dev only) toggles layout mid-combat without crash. `repositionAll()` in CombatScene recalculates all object positions on layout change.
 
 **Vignette (landscape):** Lighter side vignette (40% vs 52% portrait) on left side only — no right-side vignette to keep enemy panel clean.
+
+**Combat UI layout adjustments (AR-113 / AR-116):**
+- Card hand strip lowered to `bottom: 2vh` (was 10vh) for more enemy viewing space
+- Draw/discard pile indicators repositioned alongside card tops at 200px offset from baseline
+- Discard pile shows dashed 3px border when empty
+- Charge button matches the selected card's width; no lightning icon; text "CHARGE +1 AP"
+- Combo counter removed; chain display replaces it (bottom-left, format "Chain: X.x")
+- AP orb positioned at `bottom: 35vh` (was 45vh; lowered 10% on mobile)
+- Card AP cost font: thicker 2px stroke + stronger shadows for readability
+- Enemy intent padding increased
+- Camp/rest-site background stretches to full viewport edges (100vw + translateX centering)
+- Reward room card rewards are clickable via `container.setSize()` fix
+- `RewardCardDetail` uses V2 frame rendering (card name on banner, type badge, white text)
 
 ### Quiz Panel — Landscape Mode (AR-76) [IMPLEMENTED]
 
@@ -1988,7 +2245,7 @@ All facts must pass through:
 
 ### Quality Requirements Per Fact
 
-- Minimum 8 distractors per fact (top-level pool)
+- Minimum 8 distractors per fact (top-level pool); **2 shown at card mastery 0, 3 shown at mastery 1+**
 - 4–5 question variants
 - `funScore` assigned (1–10 scale; facts scoring ≥7 get funness bias in early runs)
 - `visualization_description` for card back art generation
@@ -2126,7 +2383,7 @@ One codebase, two layout modes. The app detects viewport aspect ratio at runtime
 **Landscape (new — "Option D"):**
 ```
 +----------------------------------------------------+
-| [Relics] [Chain Counter] [Combo]  |   ENEMY        |
+| [Relics]                          |   ENEMY        |
 |                                   |   Sprite       |
 |                                   |   HP Bar       |
 |        CENTER STAGE               |   Intent       |
@@ -2307,7 +2564,7 @@ Phaser canvas must not capture `Shift+Tab` (Steam Overlay toggle). Verified by e
 | Cards drawn per turn | 5 (base), 6 with Swift Boots |
 | Starter deck size | 10 |
 | Quick Play multiplier | 1.0× |
-| Charge correct multiplier | 2.5× (Tier 1), 3.0× (Tier 2a), 3.5× (Tier 2b) |
+| Charge correct multiplier | 1.5× flat + mastery bonus (mastery is now the primary power scaling) |
 | Charge wrong multiplier | 0.6× (Tier 1), 0.7× (Tier 2a/2b) |
 | Charge AP surcharge | +1 AP (0 during Surge, 0 for Tier 3, 0 for Free First Charge) |
 | Tier 3 auto-Charge | 1.2× base, no quiz, no AP surcharge |
@@ -2324,7 +2581,7 @@ Phaser canvas must not capture `Shift+Tab` (Steam Overlay toggle). Verified by e
 | Strike base damage | 8 |
 | Block base value | 6 |
 | Boss quiz phase questions | 5–8 per phase |
-| Rest site Study | Choose 1 eligible card to upgrade (no quiz) |
+| Rest site Study | 3 quiz questions; each correct answer raises one card's mastery level (max 3 upgrades, no downgrades) |
 | Shop haggle | 1 question per purchase, 30% discount |
 | FSRS Tier 2a threshold | stability ≥ 2d, consecutiveCorrect ≥ 2 |
 | FSRS Tier 2b threshold | stability ≥ 5d, consecutiveCorrect ≥ 3 |
@@ -2333,3 +2590,61 @@ Phaser canvas must not capture `Shift+Tab` (Steam Overlay toggle). Verified by e
 | Mastery Trial options | 5 (close distractors) |
 | Player start HP | 120 |
 | Enemy pity timer (relics) | 4 consecutive Common drops → guaranteed Uncommon+ |
+
+---
+
+## Appendix: Agent Skills Catalog
+
+> Complete list of Claude agent capabilities. For detailed descriptions, see `CLAUDE_CAPABILITIES.md` in project root.
+
+### Always Active (auto-triggered)
+| Skill | Purpose |
+|-------|---------|
+| `feature-pipeline` | 7-phase workflow for all non-trivial tasks |
+| `work-tracking` | AR-based phase documents and task tracking |
+| `game-design-sync` | Keeps this document in sync with code changes |
+
+### Development & Quality
+| Skill | Invoke | Purpose |
+|-------|--------|---------|
+| `quick-verify` | `/quick-verify` | Typecheck + build + tests + visual check |
+| `code-review` | `/code-review` | Staged change review for quality and security |
+| `simplify` | `/simplify` | Review code for reuse, quality, efficiency |
+| `visual-inspect` | `/visual-inspect` | Instant game state jump via Playwright |
+| `playthrough` | `/playthrough` | Full visual playthrough with screenshots |
+
+### Balance & Playtesting
+| Skill | Invoke | Purpose |
+|-------|--------|---------|
+| `headless-playtest` | `/headless-playtest` | 6,000 runs/5 sec statistical balance data |
+| `llm-playtest` | `/llm-playtest` | LLM agents play strategically with reasoning |
+| `advanced-balance` | `/advanced-balance` | Per-card metrics, tension scores, predictability |
+| `balance-check` | `/balance-check` | Narrative report from headless sim JSON |
+| `playtest-analyze` | `/playtest-analyze` | Log analysis for balance/UX/bugs |
+| `playtest-triage` | `/playtest-triage` | Deduplicate, score, rank issues |
+| `playtest-results` | `/playtest-results` | View latest reports and leaderboard |
+
+### Content Pipeline
+| Skill | Invoke | Purpose |
+|-------|--------|---------|
+| `manual-fact-ingest-dedup` | `/manual-fact-ingest-dedup` | 10-domain fact pipeline with validation |
+| `subcategorize` | `/subcategorize` | Assign subcategories to unclassified facts |
+| `answer-checking` | `/answer-checking` | Live DB-first answer verification |
+
+### Art & Audio
+| Skill | Invoke | Purpose |
+|-------|--------|---------|
+| `artstudio` | `/artstudio` | Sprite/enemy/card art generation pipeline |
+| `audio-manager` | `/audio-manager` | Howler.js integration guide (planned) |
+
+### Performance & Debugging
+| Skill | Invoke | Purpose |
+|-------|--------|---------|
+| `phaser-perf` | `/phaser-perf` | Phaser optimization, Canvas vs WebGL, FPS |
+| `mobile-debug` | `/mobile-debug` | Capacitor debugging, remote inspection |
+
+### Deployment & Infrastructure
+| Skill | Invoke | Purpose |
+|-------|--------|---------|
+| `android-deploy` | `/android-deploy` | Build and deploy debug APK |
+| `site-manage` | `/site-manage` | Manage recallrogue.com website |

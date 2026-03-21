@@ -9,26 +9,44 @@ import {
 
 /**
  * Returns the pool of relics eligible for acquisition during a run.
- * A relic is eligible if it is a starter or explicitly unlocked,
- * and is not in the excluded or currently-held sets.
+ *
+ * Eligibility rules:
+ * - Starter relics (isStarter: true or startsUnlocked: true): always eligible regardless of level.
+ * - Unlockable relics: eligible only when `playerLevel >= relic.unlockLevel`.
+ *   Relics with no `unlockLevel` set are excluded from the pool (not yet configured).
+ * - Additionally excluded: relics in `excludedIds`, relics in `heldIds`,
+ *   and relics with `excludeFromPool: true`.
+ *
+ * @param unlockedIds - Legacy parameter kept for compatibility; no longer used for filtering.
+ * @param excludedIds - Relic IDs permanently excluded from this run's pool.
+ * @param heldIds - Relic IDs the player already holds (prevents duplicates).
+ * @param playerLevel - The player's current character level (defaults to 0).
  */
 export function getEligibleRelicPool(
   unlockedIds: string[],
   excludedIds: string[],
   heldIds: string[],
+  playerLevel: number = 0,
 ): RelicDefinition[] {
   const starterSet = new Set(STARTER_RELIC_IDS);
-  const unlockedSet = new Set(unlockedIds);
   const excludedSet = new Set(excludedIds);
   const heldSet = new Set(heldIds);
 
-  return FULL_RELIC_CATALOGUE.filter(
-    (r) =>
-      (starterSet.has(r.id) || unlockedSet.has(r.id)) &&
-      !excludedSet.has(r.id) &&
-      !heldSet.has(r.id) &&
-      r.excludeFromPool !== true, // Exclude relics requiring unbuilt mechanics (Phase 1)
-  );
+  return FULL_RELIC_CATALOGUE.filter((r) => {
+    // Always exclude held and explicitly-excluded relics
+    if (excludedSet.has(r.id) || heldSet.has(r.id)) return false;
+    // Always exclude relics requiring unbuilt mechanics (Phase 1)
+    if (r.excludeFromPool === true) return false;
+
+    // Starter relics are always available
+    if (starterSet.has(r.id) || r.isStarter === true || r.startsUnlocked === true) return true;
+
+    // Unlockable relics: player must have reached the required level
+    if (r.unlockLevel !== undefined) return playerLevel >= r.unlockLevel;
+
+    // Unlockable relics with no unlockLevel configured are not yet available
+    return false;
+  });
 }
 
 /**

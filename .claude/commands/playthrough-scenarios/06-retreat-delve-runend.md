@@ -9,18 +9,23 @@ URL: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 ## Steps
 
 ### Path A: Test Retreat
-1. Navigate to URL, wait 4s
-2. Start a run, play through encounters until `retreatOrDelve` screen appears
-3. If not reached after 5 encounters, use evaluate to set screen:
-```javascript
-globalThis[Symbol.for('terra:currentScreen')].set('retreatOrDelve')
-```
-4. Take **Screenshot #1 (checkpoint)**
+1. Navigate to `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`, wait 4s
+2. Disable animations: `document.documentElement.setAttribute('data-pw-animations', 'disabled')`
+3. Load retreat/delve checkpoint: `window.__terraScenario.load('retreat-or-delve')`
+4. Wait 500ms, take **Screenshot #1 (checkpoint)**
 5. CHECK: retreat button visible, delve button visible
 6. CHECK: currency amount displayed, HP displayed, death penalty shown
 7. Click `[data-testid="btn-retreat"]`, wait 2s
 8. Verify screen = `runEnd`
 9. Take **Screenshot #2 (run-end)**
+
+### Run End Screen (Victory — direct load)
+To also test the victory run end screen directly:
+`window.__terraScenario.load('run-end-victory')`
+Wait 500ms, take **Screenshot #2b (run-end-victory)**.
+
+Or to test defeat:
+`window.__terraScenario.load('run-end-defeat')`
 
 ### Run End Screen
 10. CHECK: currency earned displayed
@@ -30,8 +35,8 @@ globalThis[Symbol.for('terra:currentScreen')].set('retreatOrDelve')
 14. Verify screen = `hub`
 
 ### Path B: Test Delve (separate run)
-15. Start another run, play to checkpoint
-16. Click `[data-testid="btn-delve"]`, wait 2s
+15. Load retreat/delve checkpoint again: `window.__terraScenario.load('retreat-or-delve')`
+16. Wait 500ms, click `[data-testid="btn-delve"]`, wait 2s
 17. Verify screen = `combat` or `roomSelection` (next segment started)
 18. Take **Screenshot #3 (post-delve)**
 

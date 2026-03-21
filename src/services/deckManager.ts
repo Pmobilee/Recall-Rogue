@@ -148,7 +148,11 @@ function deprioritizeCooledDownCards(_deck: CardRunState): void {
  * @param count - Number of cards to draw (default HAND_SIZE = 5).
  * @returns The array of cards drawn (same references as in deck.hand).
  */
-export function drawHand(deck: CardRunState, count?: number, options?: { firstDrawBias?: boolean }): Card[] {
+export function drawHand(
+  deck: CardRunState,
+  count?: number,
+  options?: { firstDrawBias?: boolean; tagMagnetBias?: { chainType: number; chance: number } },
+): Card[] {
   const requested = count ?? HAND_SIZE;
   const availableSpace = Math.max(0, HAND_SIZE - deck.hand.length);
   const toDraw = Math.max(0, Math.min(requested, availableSpace));
@@ -170,6 +174,28 @@ export function drawHand(deck: CardRunState, count?: number, options?: { firstDr
 
     deck.hand.push(card);
     drawn.push(card);
+  }
+
+  // === Tag Magnet Bias (tag_magnet relic) ===
+  // For each drawn card that doesn't match the target chainType, roll for swap
+  // with a matching card from the draw pile.
+  if (options?.tagMagnetBias && drawn.length > 0) {
+    const { chainType: targetChainType, chance } = options.tagMagnetBias;
+    for (let i = 0; i < drawn.length; i++) {
+      const card = drawn[i];
+      if (card.chainType !== targetChainType && Math.random() < chance) {
+        const matchIdx = deck.drawPile.findIndex(c => c.chainType === targetChainType);
+        if (matchIdx >= 0) {
+          const [matchCard] = deck.drawPile.splice(matchIdx, 1);
+          // Put the non-matching card back into the draw pile
+          deck.drawPile.push(card);
+          // Replace in hand and drawn array
+          const handIdx = deck.hand.indexOf(card);
+          if (handIdx >= 0) deck.hand[handIdx] = matchCard;
+          drawn[i] = matchCard;
+        }
+      }
+    }
   }
 
   // === Hand Composition Guard ===

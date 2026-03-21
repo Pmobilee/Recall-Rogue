@@ -3,6 +3,9 @@
   import type { CampElement } from '../stores/campState'
   import { playerSave, spendDust } from '../stores/playerData'
   import { getCampUpgradeUrl } from '../utils/campArtManifest'
+  import { getLevelProgress, getUnlockedRelicIds, getRelicUnlockLevel, MAX_LEVEL, getLevelReward } from '../../services/characterLevel'
+  import type { LevelReward } from '../../services/characterLevel'
+  import { UNLOCKABLE_RELICS } from '../../data/relics/unlockable'
 
   interface Props {
     onClose: () => void
@@ -13,6 +16,9 @@
   let activeTab = $state<'upgrades' | 'relics'>('upgrades')
 
   let dustBalance = $derived($playerSave?.minerals?.dust ?? 0)
+  let totalXP = $derived($playerSave?.totalXP ?? 0)
+  let levelInfo = $derived(getLevelProgress(totalXP))
+  let unlockedRelicIds = $derived(new Set(getUnlockedRelicIds(levelInfo.level)))
 
   const ELEMENT_CONFIG: { element: CampElement; name: string }[] = [
     { element: 'tent', name: 'Tent' },
@@ -131,11 +137,43 @@
         {/each}
       </div>
     {:else}
-      <div class="relics-placeholder">
-        <div class="relic-icon">⚒️</div>
-        <p class="relic-title">Relic Forge</p>
-        <p class="relic-desc">Manage your collected relics, view relic effects, and forge new combinations.</p>
-        <p class="relic-coming">Coming soon — relics collected during runs will appear here.</p>
+      <div class="relics-content">
+        <!-- Level + XP Progress Bar -->
+        <div class="level-header">
+          <span class="level-badge">Lv. {levelInfo.level}</span>
+          <div class="xp-bar-container">
+            <div class="xp-bar-fill" style="width: {levelInfo.isMaxLevel ? 100 : levelInfo.progress * 100}%"></div>
+          </div>
+          <span class="xp-text">
+            {#if levelInfo.isMaxLevel}
+              MAX
+            {:else}
+              {levelInfo.xpIntoCurrentLevel} / {levelInfo.xpForNextLevel} XP
+            {/if}
+          </span>
+        </div>
+
+        <!-- Relic Grid -->
+        <div class="relic-grid">
+          {#each UNLOCKABLE_RELICS as relic}
+            {@const unlockLevel = getRelicUnlockLevel(relic.id) ?? 99}
+            {@const isUnlocked = unlockedRelicIds.has(relic.id)}
+
+            <div class="relic-card" class:locked={!isUnlocked}>
+              <div class="relic-icon-box">
+                <span class="relic-emoji" class:greyed={!isUnlocked}>{relic.icon}</span>
+              </div>
+              <div class="relic-info">
+                <span class="relic-name">{isUnlocked ? relic.name : '???'}</span>
+                {#if isUnlocked}
+                  <span class="relic-desc-text">{relic.description}</span>
+                {:else}
+                  <span class="relic-lock-text">Unlocks at Level {unlockLevel}</span>
+                {/if}
+              </div>
+            </div>
+          {/each}
+        </div>
       </div>
     {/if}
 
@@ -264,33 +302,115 @@
     50% { color: #c4a87a; }
   }
 
-  /* ── Relics placeholder ── */
-  .relics-placeholder {
-    text-align: center;
-    padding: 32px 16px;
+  /* ── Relics tab ── */
+  .relics-content {
+    overflow-y: auto;
+    padding: 12px;
   }
 
-  .relic-icon {
-    font-size: 48px;
-    margin-bottom: 12px;
+  .level-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding: 10px;
+    background: rgba(30, 41, 59, 0.8);
+    border-radius: 10px;
+    border: 1px solid rgba(148, 163, 184, 0.2);
   }
 
-  .relic-title {
-    font-size: 16px;
-    color: #ffe0a6;
-    font-weight: 700;
-    margin-bottom: 8px;
+  .level-badge {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    color: #fbbf24;
+    white-space: nowrap;
+    min-width: 60px;
   }
 
-  .relic-desc {
-    font-size: 13px;
+  .xp-bar-container {
+    flex: 1;
+    height: 12px;
+    background: #1e293b;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+  }
+
+  .xp-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #f59e0b, #fbbf24);
+    border-radius: 6px;
+    transition: width 0.5s ease;
+  }
+
+  .xp-text {
+    font-size: 11px;
     color: #94a3b8;
-    line-height: 1.5;
-    margin-bottom: 12px;
+    white-space: nowrap;
+    min-width: 80px;
+    text-align: right;
   }
 
-  .relic-coming {
-    font-size: 12px;
+  .relic-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .relic-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: #1e293b;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 10px;
+  }
+
+  .relic-card.locked {
+    opacity: 0.6;
+    background: rgba(15, 23, 42, 0.6);
+  }
+
+  .relic-icon-box {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+
+  .relic-emoji.greyed {
+    filter: grayscale(1);
+    opacity: 0.4;
+  }
+
+  .relic-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .relic-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #e2e8f0;
+  }
+
+  .relic-desc-text {
+    font-size: 11px;
+    color: #94a3b8;
+    line-height: 1.3;
+  }
+
+  .relic-lock-text {
+    font-size: 11px;
     color: #64748b;
     font-style: italic;
   }

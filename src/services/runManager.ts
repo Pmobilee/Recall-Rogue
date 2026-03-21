@@ -41,6 +41,9 @@ export interface RunState {
   factsMastered: number;
   encountersWon: number;
   encountersTotal: number;
+  elitesDefeated: number;
+  miniBossesDefeated: number;
+  bossesDefeated: number;
   currentEncounterWrongAnswers: number;
   bounties: ActiveBounty[];
   canary: CanaryState;
@@ -125,6 +128,9 @@ export interface RunEndData {
   factsMastered: number;
   encountersWon: number;
   encountersTotal: number;
+  elitesDefeated: number;
+  miniBossesDefeated: number;
+  bossesDefeated: number;
   completedBounties: string[];
   duration: number;
   runDurationMs: number;
@@ -183,6 +189,9 @@ export function createRunState(
     factsMastered: 0,
     encountersWon: 0,
     encountersTotal: 0,
+    elitesDefeated: 0,
+    miniBossesDefeated: 0,
+    bossesDefeated: 0,
     currentEncounterWrongAnswers: 0,
     bounties: selectRunBounties(primary, secondary, bountyCount),
     canary: createCanaryState(),
@@ -314,6 +323,9 @@ export function endRun(state: RunState, reason: 'victory' | 'defeat' | 'retreat'
     factsMastered: state.factsMastered,
     encountersWon: state.encountersWon,
     encountersTotal: state.encountersTotal,
+    elitesDefeated: state.elitesDefeated,
+    miniBossesDefeated: state.miniBossesDefeated,
+    bossesDefeated: state.bossesDefeated,
     completedBounties,
     duration,
     runDurationMs: duration,

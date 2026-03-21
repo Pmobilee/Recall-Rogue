@@ -13,6 +13,7 @@ import {
 } from './relicAcquisitionService';
 import { RELIC_BOSS_RARITY_WEIGHTS, RELIC_RARITY_WEIGHTS, RELIC_PITY_THRESHOLD } from '../data/balance';
 import type { RelicDefinition, RelicRarity } from '../data/relics/types';
+import { STARTER_RELIC_IDS } from '../data/relics/index';
 
 // ---------------------------------------------------------------------------
 // Helpers — minimal mock relic definitions
@@ -172,6 +173,58 @@ describe('getEligibleRelicPool — excludeFromPool', () => {
     const firstId = all[0].id;
     const withExcluded = getEligibleRelicPool([], [firstId], []);
     expect(withExcluded.map(r => r.id)).not.toContain(firstId);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// getEligibleRelicPool — level-gated unlock filtering
+// ---------------------------------------------------------------------------
+
+describe('getEligibleRelicPool — level-gated unlocks', () => {
+  it('excludes unlockable relics when player level is below their unlockLevel', () => {
+    // chain_reactor requires level 1 — at level 0 it should be excluded
+    const result = getEligibleRelicPool([], [], [], 0);
+    expect(result.map(r => r.id)).not.toContain('chain_reactor');
+  });
+
+  it('includes unlockable relics when player level meets their unlockLevel', () => {
+    // chain_reactor requires level 1 — at level 1 it should be included
+    const result = getEligibleRelicPool([], [], [], 1);
+    expect(result.map(r => r.id)).toContain('chain_reactor');
+  });
+
+  it('excludes higher-level relics while including lower-level ones', () => {
+    // At level 5: chain_reactor(1), echo_chamber(3), quicksilver_quill(5) in; time_warp(6)+ out
+    const result = getEligibleRelicPool([], [], [], 5);
+    const ids = result.map(r => r.id);
+    expect(ids).toContain('chain_reactor');
+    expect(ids).toContain('echo_chamber');
+    expect(ids).toContain('quicksilver_quill');
+    expect(ids).not.toContain('time_warp');
+    expect(ids).not.toContain('mirror_of_knowledge');
+  });
+
+  it('includes all unlockable relics at max level (25)', () => {
+    // All 18 unlockable relics should be present at level 25 (excluding phase1-excluded ones)
+    const result = getEligibleRelicPool([], [], [], 25);
+    const ids = result.map(r => r.id);
+    expect(ids).toContain('mirror_of_knowledge');
+    expect(ids).toContain('prismatic_shard');
+    expect(ids).toContain('scholars_gambit');
+  });
+
+  it('starter relics are always included regardless of player level', () => {
+    // Starters should appear even at level 0
+    const atZero = getEligibleRelicPool([], [], [], 0);
+    const atMax = getEligibleRelicPool([], [], [], 25);
+    // Both should include only starters (or more) — starters must be present at 0
+    expect(atZero.length).toBeGreaterThan(0);
+    // All level-0 results must be starters
+    const starterSet = new Set(STARTER_RELIC_IDS);
+    for (const r of atZero) {
+      expect(starterSet.has(r.id) || r.isStarter || r.startsUnlocked).toBe(true);
+    }
+    expect(atMax.length).toBeGreaterThan(atZero.length);
   });
 });
 

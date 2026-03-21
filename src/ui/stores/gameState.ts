@@ -138,7 +138,7 @@ if (typeof window !== 'undefined') {
 // =========================================================
 
 /** Direction metadata for screen transitions. */
-export type TransitionDirection = 'down' | 'up' | 'left' | 'right' | 'fade'
+export type TransitionDirection = 'down' | 'up' | 'left' | 'right' | 'fade' | 'zoom'
 
 /** Current transition direction — consumed by the transition overlay. */
 export const screenTransitionDirection = singletonWritable<TransitionDirection>('screenTransitionDirection', 'fade')
@@ -193,9 +193,12 @@ export function releaseScreenTransition(): void {
 }
 
 function inferTransitionDirection(from: Screen, to: Screen): TransitionDirection {
-  if (to === 'combat' || to === 'roomSelection') return 'down'
-  if (to === 'hub' || to === 'runEnd') return 'up'
-  if (to === 'cardReward' || to === 'retreatOrDelve' || to === 'shopRoom') return 'left'
+  // Room entries get 3D zoom effect
+  if (to === 'combat' || to === 'roomSelection' || to === 'shopRoom' || to === 'restRoom' || to === 'mysteryEvent' || to === 'cardReward') return 'zoom'
+  // Return to hub/map gets zoom too (zoom out feel)
+  if (to === 'dungeonMap' && (from === 'combat' || from === 'shopRoom' || from === 'restRoom' || from === 'mysteryEvent' || from === 'cardReward' || from === 'retreatOrDelve')) return 'zoom'
+  if (to === 'hub' || to === 'runEnd') return 'zoom'
+  if (to === 'retreatOrDelve') return 'zoom'
   return 'fade'
 }
 

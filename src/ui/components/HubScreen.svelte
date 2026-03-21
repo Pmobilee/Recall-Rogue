@@ -13,6 +13,7 @@
   import CampHudOverlay from './CampHudOverlay.svelte'
   import CampUpgradeModal from './CampUpgradeModal.svelte'
   import StudyModeSelector from './StudyModeSelector.svelte'
+  import { getLevelProgress } from '../../services/characterLevel'
 
   interface Props {
     streak: number
@@ -79,6 +80,7 @@
   preloadImages(_campImagesToPreload).then(releaseScreenTransition)
 
   let dustBalance = $derived($playerSave?.minerals.dust ?? 0)
+  let levelProgress = $derived(getLevelProgress($playerSave?.totalXP ?? 0))
 
   function openUpgradeModal(): void {
     showUpgradeModal = true
@@ -190,14 +192,13 @@
         showBorder
       />
 
-      <!-- 8. Tent - Profile -->
+      <!-- 8. Tent - Social -->
       <CampSpriteButton
         spriteUrl={getCampUpgradeUrl('tent', tiers.tent)}
         label=""
         zIndex={20}
-        onclick={onOpenProfile}
+        onclick={onOpenSocial}
         hitTop="44%" hitLeft="64%" hitWidth="36%" hitHeight="22%"
-        ambientClass={getAmbientClass('Profile')}
         showBorder
       />
 
@@ -225,13 +226,14 @@
         </div>
       {/each}
 
-      <!-- 10. Character - Social -->
+      <!-- 10. Character - Profile -->
       <CampSpriteButton
         spriteUrl={getCampUpgradeUrl('character', tiers.character)}
         label=""
         zIndex={30}
-        onclick={onOpenSocial}
+        onclick={onOpenProfile}
         hitTop="58%" hitLeft="57%" hitWidth="21%" hitHeight="11%"
+        ambientClass={getAmbientClass('Profile')}
         showBorder
       />
 
@@ -252,6 +254,19 @@
         top="74%"
         left="66%"
       />
+
+      <!-- Player level badge -->
+      <div class="camp-level-badge">
+        <div class="level-number">Lv.{levelProgress.level}</div>
+        {#if !levelProgress.isMaxLevel}
+          <div class="level-xp-bar">
+            <div class="level-xp-fill" style="width: {levelProgress.progress * 100}%"></div>
+          </div>
+          <div class="level-xp-text">{levelProgress.xpIntoCurrentLevel}/{levelProgress.xpForNextLevel} XP</div>
+        {:else}
+          <div class="level-xp-text">MAX</div>
+        {/if}
+      </div>
 
       <!-- Upgrade modal -->
       {#if showUpgradeModal}
@@ -350,14 +365,13 @@
       showBorder
     />
 
-    <!-- 8. Tent - Profile -->
+    <!-- 8. Tent - Social -->
     <CampSpriteButton
       spriteUrl={getCampUpgradeUrl('tent', tiers.tent)}
       label=""
       zIndex={20}
-      onclick={onOpenProfile}
+      onclick={onOpenSocial}
       hitTop="44%" hitLeft="64%" hitWidth="36%" hitHeight="22%"
-      ambientClass={getAmbientClass('Profile')}
       showBorder
     />
 
@@ -385,13 +399,14 @@
       </div>
     {/each}
 
-    <!-- 10. Character - Social -->
+    <!-- 10. Character - Profile -->
     <CampSpriteButton
       spriteUrl={getCampUpgradeUrl('character', tiers.character)}
       label=""
       zIndex={30}
-      onclick={onOpenSocial}
+      onclick={onOpenProfile}
       hitTop="58%" hitLeft="57%" hitWidth="21%" hitHeight="11%"
+      ambientClass={getAmbientClass('Profile')}
       showBorder
     />
 
@@ -412,6 +427,19 @@
       top="74%"
       left="66%"
     />
+
+    <!-- Player level badge -->
+    <div class="camp-level-badge">
+      <div class="level-number">Lv.{levelProgress.level}</div>
+      {#if !levelProgress.isMaxLevel}
+        <div class="level-xp-bar">
+          <div class="level-xp-fill" style="width: {levelProgress.progress * 100}%"></div>
+        </div>
+        <div class="level-xp-text">{levelProgress.xpIntoCurrentLevel}/{levelProgress.xpForNextLevel} XP</div>
+      {:else}
+        <div class="level-xp-text">MAX</div>
+      {/if}
+    </div>
 
     <!-- Upgrade modal -->
     {#if showUpgradeModal}
@@ -490,7 +518,7 @@
     transform: translateX(-50%);
     width: 100vw;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
     object-position: center;
     z-index: 0;
     image-rendering: pixelated;
@@ -563,6 +591,50 @@
   }
   .replay-boot-btn:active {
     background: rgba(255,255,255,0.1);
+  }
+
+  .camp-level-badge {
+    position: absolute;
+    bottom: calc(16px + var(--safe-bottom, 0px));
+    right: calc(12px * var(--layout-scale, 1));
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    pointer-events: none;
+  }
+
+  .level-number {
+    font-family: 'Cinzel', 'Georgia', serif;
+    font-size: calc(16px * var(--layout-scale, 1));
+    font-weight: 900;
+    color: #ffd700;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8), 0 0 8px rgba(255,215,0,0.3);
+    letter-spacing: 0.05em;
+  }
+
+  .level-xp-bar {
+    width: calc(60px * var(--layout-scale, 1));
+    height: calc(4px * var(--layout-scale, 1));
+    background: rgba(0,0,0,0.5);
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid rgba(255,215,0,0.3);
+  }
+
+  .level-xp-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #d97706, #fbbf24);
+    border-radius: 2px;
+    transition: width 300ms ease;
+  }
+
+  .level-xp-text {
+    font-size: calc(9px * var(--layout-scale, 1));
+    font-weight: 700;
+    color: rgba(255,255,255,0.7);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
   }
 
 </style>

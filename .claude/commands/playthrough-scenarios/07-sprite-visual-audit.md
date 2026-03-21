@@ -10,44 +10,47 @@ URL: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 
 ## Steps
 
-1. Navigate to URL, wait 4s
-2. Take **Screenshot #1 (hub)** — check hub background, camp buttons have sprites
+1. Navigate to `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`, wait 4s
+2. Disable animations: `document.documentElement.setAttribute('data-pw-animations', 'disabled')`
+3. Take **Screenshot #1 (hub)** — check hub background, camp buttons have sprites
 
 ### Combat Visual Check
-3. Start a run (any domain, any archetype)
-4. Wait for combat screen
-5. Take **Screenshot #2 (combat-enemy-1)**
+4. Load combat: `window.__terraScenario.load('combat-basic')`
+5. Wait 500ms, take **Screenshot #2 (combat-enemy-1)**
 6. Visual check: enemy sprite visible? Not a placeholder rectangle? Background loaded?
-7. Play through encounter (answer correctly)
 
-### Second Enemy
-8. After room selection, enter next combat
-9. Take **Screenshot #3 (combat-enemy-2)**
-10. Visual check: different enemy sprite? Still renders correctly?
+### Second Enemy (different preset)
+7. Load elite encounter: `window.__terraScenario.load('combat-elite')`
+8. Wait 500ms, take **Screenshot #3 (combat-enemy-2)**
+9. Visual check: different enemy sprite? Still renders correctly?
+
+### Boss Enemy
+10. Load boss: `window.__terraScenario.load('combat-boss')`
+11. Wait 500ms, verify boss sprite is distinct and renders at correct scale
 
 ### Card Hand Visual Check
-11. During combat, before playing cards, take **Screenshot #4 (card-hand)**
-12. CHECK: 5 card slots visible in hand area
-13. CHECK: cards have type icons/text
-14. CHECK: no blank/empty card slots that should have content
+12. (Using any of the above loaded combat scenarios) take **Screenshot #4 (card-hand)**
+13. CHECK: 5 card slots visible in hand area
+14. CHECK: cards have type icons/text
+15. CHECK: no blank/empty card slots that should have content
 
 ### Quiz Overlay Visual Check
-15. Click a card to open quiz
-16. Take **Screenshot #5 (quiz-overlay)**
-17. CHECK: question text visible and readable
-18. CHECK: 3 answer buttons visible and styled
-19. CHECK: overlay doesn't overflow viewport
+16. Click a card to open quiz
+17. Disable animations: `document.documentElement.setAttribute('data-pw-animations', 'disabled')`
+18. Take **Screenshot #5 (quiz-overlay)**
+19. CHECK: question text visible and readable
+20. CHECK: 3 answer buttons visible and styled
+21. CHECK: overlay doesn't overflow viewport
 
-### Room Selection Visual Check
-20. Navigate to room selection
-21. Take **Screenshot #6 (room-selection)**
-22. CHECK: 3 door options visible
-23. CHECK: door type icons/labels present
+### Shop Room Visual Check
+22. Load shop: `window.__terraScenario.load('shop-loaded')`
+23. Wait 500ms, take **Screenshot #6 (special-room-shop)**
+24. CHECK: room background loaded, shop items displayed, prices visible
 
-### Special Room Visuals
-24. If a rest/shop room is encountered:
-25. Take **Screenshot #7 (special-room)**
-26. CHECK: room background loaded, UI elements properly styled
+### Rest Room Visual Check
+25. Load rest: `window.__terraScenario.load('rest-site')`
+26. Wait 500ms, take **Screenshot #7 (special-room-rest)**
+27. CHECK: rest room background loaded, heal/study buttons visible and styled
 
 ## Checks
 - Enemy sprites load (not placeholder rectangles)

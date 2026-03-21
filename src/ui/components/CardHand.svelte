@@ -13,6 +13,8 @@
   import { audioManager } from '../../services/audioService'
   import { isFirstChargeFree } from '../../services/discoverySystem'
   import { getMechanicDefinition } from '../../data/mechanics'
+  import { CHARGE_CORRECT_MULTIPLIER } from '../../data/balance'
+  import { getMasteryBaseBonus } from '../../services/cardUpgradeService'
   import { activeRunState } from '../../services/runStateStore'
   import { getChainColor, getChainColorGroups } from '../../services/chainVisuals'
   import { getChainTypeName } from '../../data/chainTypes'
@@ -135,10 +137,11 @@
   function getEffectValue(card: Card, chargeMode: boolean = false): number {
     const mechanic = getMechanicDefinition(card.mechanicId)
     if (mechanic) {
-      const baseVal = chargeMode ? mechanic.chargeCorrectValue : mechanic.quickPlayValue
-      return Math.round(baseVal * card.effectMultiplier * comboMultiplier)
+      const baseVal = chargeMode ? Math.round(mechanic.quickPlayValue * CHARGE_CORRECT_MULTIPLIER) : mechanic.quickPlayValue
+      const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0)
+      return baseVal + masteryBonus
     }
-    return Math.round(card.baseEffectValue * card.effectMultiplier * comboMultiplier)
+    return Math.round(card.baseEffectValue * card.effectMultiplier)
   }
 
   function shouldShowFrontValue(card: Card): boolean {
@@ -647,7 +650,6 @@
       class:tier-3={card.tier === '3'}
       class:echo-card={card.isEcho}
       class:trial-card={card.isMasteryTrial}
-      class:card-upgraded={card.isUpgraded}
       class:insufficient-ap={insufficientAp}
       class:card-playable={!insufficientAp && !isSelected && !isOther && selectedIndex === null}
       class:card-combo={comboMultiplier > 1 && !insufficientAp && !isSelected && !isOther && selectedIndex === null}
@@ -999,7 +1001,6 @@
       class:tier-3={card.tier === '3'}
       class:echo-card={card.isEcho}
       class:trial-card={card.isMasteryTrial}
-      class:card-upgraded={card.isUpgraded}
       class:insufficient-ap={insufficientAp}
       class:card-playable={!insufficientAp && !isSelected && !isOther && selectedIndex === null}
       class:card-combo={comboMultiplier > 1 && !insufficientAp && !isSelected && !isOther && selectedIndex === null}
@@ -1543,14 +1544,13 @@
   .v2-ap-cost {
     font-family: 'Cinzel', 'Georgia', serif;
     font-weight: 900;
-    font-size: calc(var(--card-w) * 0.22);
+    font-size: calc(var(--card-w) * 0.18);
     color: #fbbf24;
-    -webkit-text-stroke: 1.5px #000;
+    -webkit-text-stroke: 2px #000;
     text-shadow:
-      1px 1px 0 #000, -1px -1px 0 #000,
-      1px -1px 0 #000, -1px 1px 0 #000,
       2px 2px 0 #000, -2px -2px 0 #000,
-      0 2px 4px rgba(0,0,0,0.6);
+      2px -2px 0 #000, -2px 2px 0 #000,
+      0 3px 6px rgba(0,0,0,0.8);
     line-height: 1;
   }
 
@@ -2240,12 +2240,6 @@
     }
   }
 
-  /* ═══ UPGRADED CARD GLOW ═══ */
-
-  .card-upgraded {
-    box-shadow: 0 0 8px 2px rgba(52, 152, 219, 0.5), inset 0 0 4px rgba(52, 152, 219, 0.2);
-    border-color: #3498db !important;
-  }
 
   /* ═══ REDUCED MOTION ═══ */
 

@@ -54,6 +54,8 @@ export interface TurnStartEffects {
   bonusBlock: number;
   /** Bonus AP released from Capacitor stored charge this turn. */
   capacitorReleasedAP: number;
+  /** Bonus AP added to base AP each turn (blood_price v2: +1). */
+  bonusAP: number;
 }
 
 /**
@@ -77,7 +79,10 @@ export function resolveTurnStartEffects(
   const capacitorReleasedAP =
     relicIds.has('capacitor') ? Math.min(capacitorStored, RELIC_CAPACITOR_MAX_STORED_AP) : 0;
 
-  return { bonusBlock, capacitorReleasedAP };
+  // blood_price (v2) — grants +1 AP per turn in exchange for 2 HP/turn loss
+  const bonusAP = relicIds.has('blood_price') ? 1 : 0;
+
+  return { bonusBlock, capacitorReleasedAP, bonusAP };
 }
 
 // ─── Encounter Start ────────────────────────────────────────────────
@@ -126,7 +131,7 @@ export function resolveEncounterStartEffects(
     if ((playerHpPercent ?? 0) > 0.8) {
       bonusBlock = 3;
     } else {
-      bonusHeal = 5;
+      bonusHeal = 8;
     }
   }
 
@@ -743,7 +748,7 @@ export function resolveDomainMasteryBonus(
   relicIds: Set<string>,
   sameDomainCorrectStreak: number,
 ): number {
-  return relicIds.has('domain_mastery') && sameDomainCorrectStreak >= 4 ? 0.75 : 0;
+  return relicIds.has('domain_mastery_sigil') && sameDomainCorrectStreak >= 4 ? 0.75 : 0;
 }
 
 // ─── Card Skip ──────────────────────────────────────────────────────
@@ -1201,6 +1206,122 @@ export function resolveChainCompleteEffects(
   const echoCardPower = echoReplay ? 0.60 : 0;
 
   return { splashPerLink, totalSplashDamage, drawBonus, echoReplay, echoCardPower };
+}
+
+// ─── Prismatic Shard — Chain Multiplier Bonus ───────────────────────
+
+/**
+ * Returns the flat bonus to add to the chain multiplier when prismatic_shard is held.
+ *
+ * Usage: `const finalChainMultiplier = baseChainMultiplier + resolveChainMultiplierBonus(relicIds)`
+ *
+ * @param relicIds - Set of relic IDs the player currently holds.
+ * @returns 0.5 if prismatic_shard is held, 0 otherwise.
+ */
+export function resolveChainMultiplierBonus(relicIds: Set<string>): number {
+  return relicIds.has('prismatic_shard') ? 0.5 : 0;
+}
+
+/**
+ * Returns the AP bonus granted by prismatic_shard on a 5+ chain completion.
+ *
+ * @param relicIds   - Set of relic IDs the player currently holds.
+ * @param chainLength - The current chain length after extending.
+ * @returns 1 if prismatic_shard is held AND chainLength >= 5, else 0.
+ */
+export function resolvePrismaticShardApBonus(relicIds: Set<string>, chainLength: number): number {
+  return relicIds.has('prismatic_shard') && chainLength >= 5 ? 1 : 0;
+}
+
+// ─── Tag Magnet — Draw Bias ──────────────────────────────────────────
+
+/** Result of resolveDrawBias for tag_magnet. */
+export interface DrawBiasEffect {
+  /** The chainType index to bias toward, or null if no bias should be applied. */
+  biasChainType: number | null;
+  /** The probability (0–1) of swapping a drawn card toward biasChainType. */
+  biasChance: number;
+}
+
+/**
+ * Resolves draw bias effects for tag_magnet.
+ *
+ * When tag_magnet is held, each drawn card has a 30% chance of being swapped
+ * with a same-chainType card from the draw pile (if one exists).
+ * Call after a card is played to get the bias parameters for the next draw.
+ *
+ * TODO: Wire this into drawHand() in deckManager.ts — pass biasChainType and biasChance
+ * as draw options so the draw loop can apply the swap logic.
+ *
+ * @param relicIds          - Set of relic IDs the player currently holds.
+ * @param lastPlayedChainType - The chainType of the last card played (undefined = no bias).
+ * @returns Draw bias parameters for the next hand draw.
+ */
+export function resolveDrawBias(
+  relicIds: Set<string>,
+  lastPlayedChainType?: number,
+): DrawBiasEffect {
+  if (!relicIds.has('tag_magnet') || lastPlayedChainType === undefined) {
+    return { biasChainType: null, biasChance: 0 };
+  }
+  return { biasChainType: lastPlayedChainType, biasChance: 0.30 };
+}
+
+// ─── Plague Flask — Poison Tick Bonus ───────────────────────────────
+
+/**
+ * Returns the bonus flat damage added to each poison tick when plague_flask is held.
+ *
+ * Usage: `const tickDamage = poisonStackValue + resolvePoisonTickBonus(relicIds)`
+ *
+ * @param relicIds - Set of relic IDs the player currently holds.
+ * @returns 2 if plague_flask is held, 0 otherwise.
+ */
+export function resolvePoisonTickBonus(relicIds: Set<string>): number {
+  return relicIds.has('plague_flask') ? 2 : 0;
+}
+
+/**
+ * Returns the extra turns added to poison duration on application when plague_flask is held.
+ *
+ * Usage: `const turns = baseTurns + resolvePoisonDurationBonus(relicIds)`
+ *
+ * @param relicIds - Set of relic IDs the player currently holds.
+ * @returns 1 if plague_flask is held, 0 otherwise.
+ */
+export function resolvePoisonDurationBonus(relicIds: Set<string>): number {
+  return relicIds.has('plague_flask') ? 1 : 0;
+}
+
+// ─── Double Down — Charge Double Damage ─────────────────────────────
+
+/** Result of resolveDoubleDownBonus. */
+export interface DoubleDownEffect {
+  /** Whether the double_down bonus is active for this charge. */
+  active: boolean;
+  /** Damage multiplier to apply after all other charge modifiers. 2.0 if active, 1.0 otherwise. */
+  damageMultiplier: number;
+}
+
+/**
+ * Resolves the double_down relic bonus for a successful Charge.
+ *
+ * When double_down is held and hasn't been used this encounter, the first successful
+ * Charge deals 2× damage instead of the normal charge multiplier. The caller must
+ * set doubleDownUsedThisEncounter = true after consuming this bonus.
+ *
+ * @param relicIds                 - Set of relic IDs the player currently holds.
+ * @param usedThisEncounter        - Whether double_down was already consumed this encounter.
+ * @returns Active flag and damage multiplier.
+ */
+export function resolveDoubleDownBonus(
+  relicIds: Set<string>,
+  usedThisEncounter: boolean,
+): DoubleDownEffect {
+  if (!relicIds.has('double_down') || usedThisEncounter) {
+    return { active: false, damageMultiplier: 1 };
+  }
+  return { active: true, damageMultiplier: 2.0 };
 }
 
 // ─── V2 Surge Start Effects ─────────────────────────────────────────

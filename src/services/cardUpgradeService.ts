@@ -23,6 +23,8 @@ export interface MasteryUpgradeDef {
   apCostReductionAtLevels?: number[];
   /** Tag added at a specific level. [level, tagName] */
   addTagAtLevel?: [number, string];
+  /** Maximum mastery level this mechanic can reach (default: MASTERY_MAX_LEVEL). */
+  maxLevel?: number;
 }
 
 /** Mastery scaling definitions for each mechanic. */
@@ -57,12 +59,12 @@ export const MASTERY_UPGRADE_DEFS: Record<string, MasteryUpgradeDef> = {
   scout:         { perLevelDelta: 0, addTagAtLevel: [3, 'draw'] }, // +1 draw at L3 (via tag)
   recycle:       { perLevelDelta: 0.2 },                         // floor'd: 3,3,3,3,4,4
   foresight:     { perLevelDelta: 0, secondaryPerLevelDelta: 0.2 }, // floor'd at L3+
-  quicken:       { perLevelDelta: 0, addTagAtLevel: [3, 'draw'] },
-  cleanse:       { perLevelDelta: 0 },                           // binary — no scaling
+  quicken:       { perLevelDelta: 0, addTagAtLevel: [3, 'draw'], maxLevel: 3 },
+  cleanse:       { perLevelDelta: 0, maxLevel: 2 },              // binary — no scaling
   focus:         { perLevelDelta: 0, secondaryPerLevelDelta: 0.2 }, // +1 at L3
-  immunity:      { perLevelDelta: 0 },                           // binary
-  overclock:     { perLevelDelta: 0, apCostReductionAtLevels: [3] }, // AP-1 at L3
-  transmute:     { perLevelDelta: 0.2 },                         // floor'd: 1 -> 2 at L3
+  immunity:      { perLevelDelta: 0, maxLevel: 2 },              // binary
+  overclock:     { perLevelDelta: 0, apCostReductionAtLevels: [3], maxLevel: 3 }, // AP-1 at L3
+  transmute:     { perLevelDelta: 0.2, maxLevel: 3 },            // floor'd: 1 -> 2 at L3
 };
 
 /**
@@ -109,7 +111,9 @@ export function getMasteryApReduction(mechanicId: string, level: number): number
  */
 export function canMasteryUpgrade(card: Card): boolean {
   if (card.isEcho) return false;
-  if ((card.masteryLevel ?? 0) >= MASTERY_MAX_LEVEL) return false;
+  const def = MASTERY_UPGRADE_DEFS[card.mechanicId ?? ''];
+  const maxLevel = def?.maxLevel ?? MASTERY_MAX_LEVEL;
+  if ((card.masteryLevel ?? 0) >= maxLevel) return false;
   if (card.masteryChangedThisEncounter) return false;
   if (!card.mechanicId) return false;
   return card.mechanicId in MASTERY_UPGRADE_DEFS;

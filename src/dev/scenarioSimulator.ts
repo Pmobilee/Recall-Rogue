@@ -11,6 +11,9 @@
  * Mid-combat state overrides (callable any time during combat):
  *   __terraScenario.setPlayerHp(50)
  *   __terraScenario.setEnemyHp(1)
+ *   __terraScenario.setPlayerBlock(10)
+ *   __terraScenario.setEnemyBlock(5)
+ *   __terraScenario.setCombo(5)
  *   __terraScenario.setGold(999)
  *   __terraScenario.forceHand(['heavy_strike', 'strike', 'block'])
  *   __terraScenario.addRelic('whetstone')
@@ -55,6 +58,59 @@ export interface ScenarioConfig {
   domain?: string;
   /** Chain type indices for hand cards (0-5). Applies in order to hand cards. */
   chainTypes?: number[];
+  /** Reward room: explicit reward items. If not provided, generates random rewards. */
+  rewards?: Array<
+    | { type: 'gold'; amount: number }
+    | { type: 'health_vial'; size?: 'small' | 'large'; healAmount?: number }
+    | { type: 'card'; mechanicId: string; upgraded?: boolean }
+    | { type: 'relic'; relicId: string }
+  >;
+  /** Shop: explicit relic IDs to stock. */
+  shopRelics?: string[];
+  /** Shop: explicit card mechanic IDs to stock. */
+  shopCards?: string[];
+  /** Mystery event: specific event ID to show. */
+  mysteryEventId?: string;
+  /** Card reward: specific mechanic IDs for the 3 card choices. */
+  cardRewardMechanics?: string[];
+  /** Run end: result type. */
+  runEndResult?: 'victory' | 'defeat' | 'retreat';
+  /** Run end: override stats. */
+  runEndStats?: Partial<{
+    floorReached: number;
+    factsAnswered: number;
+    correctAnswers: number;
+    accuracy: number;
+    bestCombo: number;
+    cardsEarned: number;
+    encountersWon: number;
+    elitesDefeated: number;
+    bossesDefeated: number;
+    currencyEarned: number;
+    relicsCollected: number;
+  }>;
+  /** Ascension level for the run. */
+  ascension?: number;
+  /** Study quiz: number of questions to generate (default 3). */
+  quizQuestionCount?: number;
+  /** Mastery challenge: question text. */
+  masteryChallengeQuestion?: string;
+  /** Mastery challenge: correct answer. */
+  masteryChallengeAnswer?: string;
+  /** Mastery challenge: wrong answers. */
+  masteryChallengeDistractors?: string[];
+  /** Mastery challenge: timer seconds (default 10). */
+  masteryChallengeTimer?: number;
+  /** Player block amount (combat). */
+  playerBlock?: number;
+  /** Enemy block amount (combat). */
+  enemyBlock?: number;
+  /** Status effects on enemy (combat). */
+  enemyStatusEffects?: Array<{ id: string; stacks: number }>;
+  /** Combo multiplier override (combat). */
+  comboMultiplier?: number;
+  /** Turn number override (combat). */
+  turn?: number;
 }
 
 interface ScenarioResult {
@@ -84,7 +140,7 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
     enemy: 'the_archivist',
     playerHp: 50,
     hand: ['heavy_strike', 'strike', 'block', 'lifetap', 'expose'],
-    relics: ['whetstone', 'iron_buckler', 'swift_boots'],
+    relics: ['whetstone', 'iron_shield', 'swift_boots'],
   },
   'combat-scholar': {
     screen: 'combat',
@@ -116,7 +172,7 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
     screen: 'combat',
     enemy: 'cave_guardian',
     playerHp: 60,
-    hand: ['heavy_strike', 'strike', 'block', 'expose', 'surge'],
+    hand: ['heavy_strike', 'strike', 'block', 'expose', 'reckless'],
     relics: ['whetstone'],
   },
   'combat-relic-heavy': {
@@ -155,15 +211,139 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
     floor: 3,
   },
 
+  // === Reward room scenarios ===
+  'reward-gold-and-cards': {
+    screen: 'rewardRoom',
+    rewards: [
+      { type: 'gold', amount: 50 },
+      { type: 'card', mechanicId: 'heavy_strike', upgraded: true },
+      { type: 'card', mechanicId: 'block' },
+      { type: 'health_vial', size: 'large', healAmount: 30 },
+    ],
+  },
+  'reward-relic': {
+    screen: 'rewardRoom',
+    rewards: [
+      { type: 'gold', amount: 30 },
+      { type: 'relic', relicId: 'whetstone' },
+      { type: 'card', mechanicId: 'reckless' },
+    ],
+  },
+
+  // === Shop scenarios ===
+  'shop-loaded': {
+    screen: 'shopRoom',
+    gold: 1000,
+    shopRelics: ['whetstone', 'iron_shield', 'combo_ring'],
+    shopCards: ['heavy_strike', 'lifetap', 'reckless', 'multi_hit'],
+  },
+
+  // === Mystery event ===
+  'mystery-event': {
+    screen: 'mysteryEvent',
+    floor: 3,
+  },
+
+  // === Card reward scenarios ===
+  'card-reward-attacks': {
+    screen: 'cardReward',
+    cardRewardMechanics: ['heavy_strike', 'multi_hit', 'lifetap'],
+  },
+  'card-reward-mixed': {
+    screen: 'cardReward',
+    cardRewardMechanics: ['strike', 'block', 'expose'],
+  },
+
+  // === Run end scenarios ===
+  'run-end-victory': {
+    screen: 'runEnd',
+    runEndResult: 'victory',
+    floor: 10,
+    runEndStats: { floorReached: 10, accuracy: 92, bestCombo: 12, encountersWon: 15, bossesDefeated: 2, currencyEarned: 500, relicsCollected: 5 },
+  },
+  'run-end-defeat': {
+    screen: 'runEnd',
+    runEndResult: 'defeat',
+    floor: 4,
+    runEndStats: { floorReached: 4, accuracy: 65, bestCombo: 3, encountersWon: 5, currencyEarned: 80 },
+  },
+  'run-end-retreat': {
+    screen: 'runEnd',
+    runEndResult: 'retreat',
+    floor: 6,
+    runEndStats: { floorReached: 6, accuracy: 78, bestCombo: 8, encountersWon: 9, currencyEarned: 200 },
+  },
+
+  // === More combat presets ===
+  'combat-near-death': {
+    screen: 'combat',
+    enemy: 'cave_bat',
+    playerHp: 3,
+    playerMaxHp: 100,
+    hand: ['lifetap', 'block', 'strike', 'heavy_strike', 'block'],
+  },
+  'combat-high-combo': {
+    screen: 'combat',
+    enemy: 'cave_bat',
+    hand: ['strike', 'strike', 'strike', 'strike', 'strike'],
+    comboMultiplier: 5,
+    relics: ['combo_ring'],
+  },
+
   // === Hub scenarios ===
   'hub-endgame': {
     screen: 'hub',
-    relics: ['whetstone', 'iron_buckler', 'swift_boots', 'combo_ring', 'scholars_hat'],
+    relics: ['whetstone', 'iron_shield', 'swift_boots', 'combo_ring', 'scholars_hat'],
     gold: 5000,
   },
   'hub-fresh': {
     screen: 'hub',
     gold: 0,
+  },
+
+  // === Screen navigation scenarios ===
+  'onboarding': {
+    screen: 'onboarding',
+  },
+'archetype-selection': {
+    screen: 'archetypeSelection',
+  },
+  'relic-sanctum': {
+    screen: 'relicSanctum',
+  },
+  'library': {
+    screen: 'library',
+  },
+  'profile': {
+    screen: 'profile',
+  },
+  'journal': {
+    screen: 'journal',
+  },
+  'settings': {
+    screen: 'settings',
+  },
+  'study-quiz': {
+    screen: 'restStudy',
+  },
+  'mastery-challenge': {
+    screen: 'masteryChallenge',
+  },
+
+  // Mystery event by ID examples
+  'mystery-healing-fountain': {
+    screen: 'mysteryEvent',
+    mysteryEventId: 'healing_fountain',
+  },
+  'mystery-gamblers-tome': {
+    screen: 'mysteryEvent',
+    mysteryEventId: 'gamblers_tome',
+    floor: 4,
+  },
+  'mystery-final-wager': {
+    screen: 'mysteryEvent',
+    mysteryEventId: 'final_wager',
+    floor: 10,
   },
 };
 
@@ -369,6 +549,30 @@ async function startCombatScenario(config: ScenarioConfig): Promise<ScenarioResu
       mutated = true;
     }
 
+    // Player block
+    if (config.playerBlock !== undefined) {
+      ts.playerState = { ...ts.playerState, block: config.playerBlock };
+      mutated = true;
+    }
+
+    // Enemy block
+    if (config.enemyBlock !== undefined && ts.enemy) {
+      ts.enemy = { ...ts.enemy, block: config.enemyBlock };
+      mutated = true;
+    }
+
+    // Combo multiplier
+    if (config.comboMultiplier !== undefined) {
+      ts.comboMultiplier = config.comboMultiplier;
+      mutated = true;
+    }
+
+    // Turn number
+    if (config.turn !== undefined) {
+      ts.turn = config.turn;
+      mutated = true;
+    }
+
     if (mutated) {
       activeTurnState.set({ ...ts });
     }
@@ -451,17 +655,350 @@ function buildHandFromMechanicIds(
 // ---------------------------------------------------------------------------
 
 async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioResult> {
-  if (config.screen === 'hub' && (config.relics || config.gold !== undefined)) {
-    // Bootstrap a run stub just to set the data, then go to hub
+  const screen = config.screen;
+
+  // -----------------------------------------------------------------------
+  // rewardRoom
+  // -----------------------------------------------------------------------
+  if (screen === 'rewardRoom') {
+    await bootstrapRun(config);
+    const { openRewardRoom, openTestRewardRoom } = await import('../services/rewardRoomBridge');
+
+    if (!config.rewards || config.rewards.length === 0) {
+      await openTestRewardRoom();
+      return { ok: true, message: 'Reward room opened with random test rewards' };
+    }
+
+    const rewards: any[] = config.rewards.map(r => {
+      if (r.type === 'gold') return { type: 'gold', amount: r.amount };
+      if (r.type === 'health_vial') return { type: 'health_vial', size: r.size ?? 'small', healAmount: r.healAmount ?? 15 };
+      if (r.type === 'card') {
+        const mechanic = MECHANIC_BY_ID[r.mechanicId];
+        if (!mechanic) { console.warn(`[__terraScenario] Unknown mechanic: ${r.mechanicId}`); return null; }
+        return {
+          type: 'card',
+          card: {
+            id: `scenario_${r.mechanicId}_${Math.random().toString(36).slice(2, 6)}`,
+            factId: `fact_${Math.random().toString(36).slice(2, 8)}`,
+            cardType: mechanic.type,
+            domain: (config.domain ?? 'general_knowledge') as any,
+            tier: '1' as const,
+            baseEffectValue: mechanic.baseValue + (r.upgraded ? 3 : 0),
+            effectMultiplier: 1,
+            mechanicId: mechanic.id,
+            mechanicName: r.upgraded ? mechanic.name + '+' : mechanic.name,
+            apCost: mechanic.apCost,
+            isUpgraded: r.upgraded ?? false,
+          },
+        };
+      }
+      if (r.type === 'relic') {
+        const def = RELIC_BY_ID[r.relicId];
+        if (!def) { console.warn(`[__terraScenario] Unknown relic: ${r.relicId}`); return null; }
+        return { type: 'relic', relic: def };
+      }
+      return null;
+    }).filter(Boolean);
+
+    await openRewardRoom(
+      rewards,
+      (amount: number) => console.log('[Scenario] Gold collected:', amount),
+      (heal: number) => console.log('[Scenario] Vial collected:', heal),
+      (card: any) => console.log('[Scenario] Card accepted:', card.mechanicName),
+      (relic: any) => console.log('[Scenario] Relic accepted:', relic.name),
+      () => { console.log('[Scenario] Reward room complete'); writeStore('terra:currentScreen', 'hub'); },
+    );
+    return { ok: true, message: `Reward room with ${rewards.length} items`, state: { rewards } };
+  }
+
+  // -----------------------------------------------------------------------
+  // shopRoom
+  // -----------------------------------------------------------------------
+  if (screen === 'shopRoom') {
+    await bootstrapRun(config);
+    const { activeShopInventory } = await import('../services/gameFlowController');
+    const { calculateShopPrice } = await import('../services/shopService');
+
+    const floor = config.floor ?? 1;
+    const inventory: any = { relics: [], cards: [], removalCost: 75 };
+
+    if (config.shopRelics) {
+      for (const relicId of config.shopRelics) {
+        const def = RELIC_BY_ID[relicId];
+        if (!def) { console.warn(`[__terraScenario] Unknown relic: ${relicId}`); continue; }
+        const basePrice = def.rarity === 'common' ? 100 : def.rarity === 'uncommon' ? 150 : def.rarity === 'rare' ? 250 : 400;
+        inventory.relics.push({ relic: def, price: calculateShopPrice(basePrice, floor) });
+      }
+    }
+
+    if (config.shopCards) {
+      for (const mId of config.shopCards) {
+        const mechanic = MECHANIC_BY_ID[mId];
+        if (!mechanic) { console.warn(`[__terraScenario] Unknown mechanic: ${mId}`); continue; }
+        const card = {
+          id: `shop_${mId}_${Math.random().toString(36).slice(2, 6)}`,
+          factId: `fact_${Math.random().toString(36).slice(2, 8)}`,
+          cardType: mechanic.type,
+          domain: (config.domain ?? 'general_knowledge') as any,
+          tier: '1' as const,
+          baseEffectValue: mechanic.baseValue,
+          effectMultiplier: 1,
+          mechanicId: mechanic.id,
+          mechanicName: mechanic.name,
+          apCost: mechanic.apCost,
+        };
+        inventory.cards.push({ card, price: 50 + Math.floor(Math.random() * 30) });
+      }
+    }
+
+    // Default fallback: show first 3 relics if nothing specified
+    if (!config.shopRelics && !config.shopCards) {
+      const allRelics = Object.values(RELIC_BY_ID);
+      inventory.relics = allRelics.slice(0, 3).map((def: any) => ({ relic: def, price: 150 }));
+    }
+
+    activeShopInventory.set(inventory);
+    writeStore('terra:currentScreen', 'shopRoom');
+    await wait(300);
+    return { ok: true, message: `Shop opened with ${inventory.relics.length} relics, ${inventory.cards.length} cards` };
+  }
+
+  // -----------------------------------------------------------------------
+  // mysteryEvent
+  // -----------------------------------------------------------------------
+  if (screen === 'mysteryEvent') {
+    await bootstrapRun(config);
+    const { activeMysteryEvent } = await import('../services/gameFlowController');
+
+    let event;
+    if (config.mysteryEventId) {
+      const { getMysteryEventById } = await import('../services/floorManager');
+      event = getMysteryEventById(config.mysteryEventId);
+      if (!event) {
+        return { ok: false, message: `Unknown mystery event ID: '${config.mysteryEventId}'` };
+      }
+    } else {
+      const { generateMysteryEvent } = await import('../services/floorManager');
+      event = generateMysteryEvent(config.floor ?? 1);
+    }
+
+    activeMysteryEvent.set(event);
+    writeStore('terra:currentScreen', 'mysteryEvent');
+    await wait(300);
+    return { ok: true, message: `Mystery event: ${event.name} (${event.id})` };
+  }
+
+  // -----------------------------------------------------------------------
+  // cardReward
+  // -----------------------------------------------------------------------
+  if (screen === 'cardReward') {
+    await bootstrapRun(config);
+    const { activeCardRewardOptions } = await import('../services/gameFlowController');
+
+    if (config.cardRewardMechanics && config.cardRewardMechanics.length > 0) {
+      const cards = config.cardRewardMechanics.map((mId, i) => {
+        const mechanic = MECHANIC_BY_ID[mId];
+        if (!mechanic) { console.warn(`[__terraScenario] Unknown mechanic: ${mId}`); return null; }
+        return {
+          id: `reward_${mId}_${i}_${Math.random().toString(36).slice(2, 6)}`,
+          factId: `fact_${Math.random().toString(36).slice(2, 8)}`,
+          cardType: mechanic.type,
+          domain: (config.domain ?? 'general_knowledge') as any,
+          tier: '1' as const,
+          baseEffectValue: mechanic.baseValue,
+          effectMultiplier: 1,
+          mechanicId: mechanic.id,
+          mechanicName: mechanic.name,
+          apCost: mechanic.apCost,
+        };
+      }).filter(Boolean);
+      activeCardRewardOptions.set(cards as any);
+    }
+
+    writeStore('terra:currentScreen', 'cardReward');
+    await wait(300);
+    return { ok: true, message: 'Card reward screen opened' };
+  }
+
+  // -----------------------------------------------------------------------
+  // runEnd
+  // -----------------------------------------------------------------------
+  if (screen === 'runEnd') {
+    const { activeRunEndData } = await import('../services/gameFlowController');
+
+    const defaults = {
+      result: config.runEndResult ?? 'victory',
+      floorReached: config.floor ?? 5,
+      factsAnswered: 42,
+      correctAnswers: 35,
+      accuracy: 83,
+      bestCombo: 7,
+      cardsEarned: 12,
+      newFactsLearned: 8,
+      factsMastered: 3,
+      encountersWon: 8,
+      encountersTotal: 10,
+      elitesDefeated: 2,
+      miniBossesDefeated: 1,
+      bossesDefeated: config.runEndResult === 'victory' ? 1 : 0,
+      completedBounties: [],
+      duration: 900,
+      runDurationMs: 900000,
+      rewardMultiplier: 1.5,
+      currencyEarned: 250,
+      relicsCollected: 3,
+      isPracticeRun: false,
+    };
+
+    const endData = { ...defaults, ...(config.runEndStats ?? {}) };
+    activeRunEndData.set(endData as any);
+    writeStore('terra:currentScreen', 'runEnd');
+    await wait(300);
+    return { ok: true, message: `Run end screen: ${endData.result}` };
+  }
+
+  // -----------------------------------------------------------------------
+  // retreatOrDelve
+  // -----------------------------------------------------------------------
+  if (screen === 'retreatOrDelve') {
+    await bootstrapRun(config);
+    writeStore('terra:currentScreen', 'retreatOrDelve');
+    await wait(300);
+    return { ok: true, message: `Retreat/Delve on floor ${config.floor ?? 1}` };
+  }
+
+  // -----------------------------------------------------------------------
+  // restRoom / postMiniBossRest
+  // -----------------------------------------------------------------------
+  if (screen === 'restRoom' || screen === 'postMiniBossRest') {
+    await bootstrapRun(config);
+    writeStore('terra:currentScreen', screen);
+    await wait(300);
+    return { ok: true, message: `Rest room opened on floor ${config.floor ?? 1}` };
+  }
+
+  // -----------------------------------------------------------------------
+  // dungeonMap
+  // -----------------------------------------------------------------------
+  if (screen === 'dungeonMap') {
+    await bootstrapRun(config);
+    writeStore('terra:currentScreen', 'dungeonMap');
+    await wait(300);
+    return { ok: true, message: `Dungeon map on floor ${config.floor ?? 1}` };
+  }
+
+  // -----------------------------------------------------------------------
+  // onboarding
+  // -----------------------------------------------------------------------
+  if (screen === 'onboarding') {
+    writeStore('terra:currentScreen', 'onboarding');
+    await wait(300);
+    return { ok: true, message: 'Onboarding cutscene opened' };
+  }
+
+  // -----------------------------------------------------------------------
+  // domainSelection
+  // -----------------------------------------------------------------------
+  if (screen === 'domainSelection') {
+    writeStore('terra:currentScreen', 'domainSelection');
+    await wait(300);
+    return { ok: true, message: 'Domain selection screen opened' };
+  }
+
+  // -----------------------------------------------------------------------
+  // archetypeSelection
+  // -----------------------------------------------------------------------
+  if (screen === 'archetypeSelection') {
+    writeStore('terra:currentScreen', 'archetypeSelection');
+    await wait(300);
+    return { ok: true, message: 'Archetype selection screen opened' };
+  }
+
+  // -----------------------------------------------------------------------
+  // relicSanctum
+  // -----------------------------------------------------------------------
+  if (screen === 'relicSanctum') {
+    writeStore('terra:currentScreen', 'relicSanctum');
+    await wait(300);
+    return { ok: true, message: 'Relic sanctum opened' };
+  }
+
+  // -----------------------------------------------------------------------
+  // library, profile, journal, settings
+  // -----------------------------------------------------------------------
+  if (['library', 'profile', 'journal', 'settings'].includes(screen)) {
+    writeStore('terra:currentScreen', screen);
+    await wait(300);
+    return { ok: true, message: `${screen} screen opened` };
+  }
+
+  // -----------------------------------------------------------------------
+  // masteryChallenge
+  // -----------------------------------------------------------------------
+  if (screen === 'masteryChallenge') {
+    await bootstrapRun(config);
+    const { activeMasteryChallenge, gameFlowState } = await import('../services/gameFlowController');
+
+    // Use provided question or fall back to a hardcoded example so the screen is never blank
+    const questionText = config.masteryChallengeQuestion ?? 'What is the approximate speed of light in a vacuum?';
+    const correctAnswer = config.masteryChallengeAnswer ?? '299,792 km/s';
+    const distractors = config.masteryChallengeDistractors ?? ['150,000 km/s', '1,000,000 km/s', '3,000 km/s'];
+    const allAnswers = [correctAnswer, ...distractors].sort(() => Math.random() - 0.5);
+
+    const challenge = {
+      factId: 'scenario_mastery',
+      factStatement: questionText,
+      question: questionText,
+      correctAnswer,
+      answers: allAnswers,
+      timerSeconds: config.masteryChallengeTimer ?? 10,
+    };
+    activeMasteryChallenge.set(challenge as any);
+    gameFlowState.set('masteryChallenge' as any);
+    writeStore('terra:currentScreen', 'masteryChallenge');
+    await wait(300);
+    return { ok: true, message: 'Mastery challenge screen opened' };
+  }
+
+  // -----------------------------------------------------------------------
+  // restStudy
+  // -----------------------------------------------------------------------
+  if (screen === 'restStudy') {
+    // Ensure factsDB is ready — study questions need it
+    if (!factsDB.isReady()) {
+      try { await factsDB.init(); } catch { /* ignore */ }
+    }
+
+    await bootstrapRun(config);
+
+    // Generate study questions and inject via global bridge so CardApp can pick them up
+    const { generateStudyQuestions, gameFlowState } = await import('../services/gameFlowController');
+    const questions = generateStudyQuestions();
+
+    // Store on a well-known symbol so CardApp's $effect can read them
+    const sym = Symbol.for('terra:scenarioStudyQuestions');
+    (globalThis as any)[sym] = questions;
+
+    gameFlowState.set('restStudy' as any);
+    writeStore('terra:currentScreen', 'restStudy');
+    await wait(300);
+
+    return { ok: true, message: `Study quiz opened with ${questions.length} questions` };
+  }
+
+  // -----------------------------------------------------------------------
+  // hub (with optional run state for relics/gold display)
+  // -----------------------------------------------------------------------
+  if (screen === 'hub' && (config.relics || config.gold !== undefined)) {
     await bootstrapRun(config);
   }
 
-  writeStore('terra:currentScreen', config.screen);
+  writeStore('terra:currentScreen', screen);
   await wait(300);
 
   return {
     ok: true,
-    message: `Navigated to: ${config.screen}`,
+    message: `Navigated to: ${screen}`,
     state: { screen: getScreen() },
   };
 }
@@ -615,6 +1152,40 @@ function removeRelic(relicId: string): ScenarioResult {
   return { ok: true, message: `Relic '${relicId}' removed` };
 }
 
+/** Set player block in active combat. */
+function setPlayerBlock(block: number): ScenarioResult {
+  const ts = readStore<any>('terra:activeTurnState');
+  if (!ts) return { ok: false, message: 'No active turn state — start combat first' };
+  updateStore<any>('terra:activeTurnState', (s) => {
+    if (!s) return s;
+    return { ...s, playerState: { ...s.playerState, block } };
+  });
+  return { ok: true, message: `Player block set to ${block}` };
+}
+
+/** Set enemy block in active combat. */
+function setEnemyBlock(block: number): ScenarioResult {
+  const ts = readStore<any>('terra:activeTurnState');
+  if (!ts) return { ok: false, message: 'No active turn state — start combat first' };
+  if (!ts.enemy) return { ok: false, message: 'No enemy in current turn state' };
+  updateStore<any>('terra:activeTurnState', (s) => {
+    if (!s?.enemy) return s;
+    return { ...s, enemy: { ...s.enemy, block } };
+  });
+  return { ok: true, message: `Enemy block set to ${block}` };
+}
+
+/** Set combo multiplier in active combat. */
+function setCombo(multiplier: number): ScenarioResult {
+  const ts = readStore<any>('terra:activeTurnState');
+  if (!ts) return { ok: false, message: 'No active turn state — start combat first' };
+  updateStore<any>('terra:activeTurnState', (s) => {
+    if (!s) return s;
+    return { ...s, comboMultiplier: multiplier };
+  });
+  return { ok: true, message: `Combo multiplier set to ${multiplier}` };
+}
+
 // ---------------------------------------------------------------------------
 // Core load function
 // ---------------------------------------------------------------------------
@@ -634,6 +1205,18 @@ async function loadCustom(config: ScenarioConfig): Promise<ScenarioResult> {
     return startCombatScenario(config);
   }
   return loadNonCombatScenario(config);
+}
+
+// ---------------------------------------------------------------------------
+// Mystery event helpers
+// ---------------------------------------------------------------------------
+
+/** List all available mystery event IDs. Logs a table in the console and returns the IDs. */
+async function listMysteryEvents(): Promise<string[]> {
+  const { getAllMysteryEventIds } = await import('../services/floorManager');
+  const ids = getAllMysteryEventIds();
+  console.table(ids.map(id => ({ id })));
+  return ids;
 }
 
 // ---------------------------------------------------------------------------
@@ -659,30 +1242,60 @@ function printHelp(): void {
     'MID-COMBAT OVERRIDES  (usable any time during combat)',
     '  __terraScenario.setPlayerHp(hp, maxHp?)  Set player HP',
     '  __terraScenario.setEnemyHp(hp)           Set enemy HP',
+    '  __terraScenario.setPlayerBlock(block)    Set player block',
+    '  __terraScenario.setEnemyBlock(block)     Set enemy block',
+    '  __terraScenario.setCombo(multiplier)     Set combo multiplier',
     '  __terraScenario.setGold(amount)          Set gold',
     '  __terraScenario.setFloor(floor)          Set floor number',
     '  __terraScenario.forceHand(mechanicIds)   Replace hand cards',
     '  __terraScenario.addRelic(relicId)        Add a relic',
     '  __terraScenario.removeRelic(relicId)     Remove a relic',
     '',
+    'MYSTERY EVENT HELPERS',
+    '  __terraScenario.listMysteryEvents()      List all event IDs (logs table)',
+    '  load("mystery-healing-fountain")         Load event by ID preset',
+    '  loadCustom({ screen:"mysteryEvent", mysteryEventId:"healing_fountain" })',
+    '',
+    'SCREEN NAVIGATION SCENARIOS',
+    '  onboarding, domain-selection, archetype-selection, relic-sanctum',
+    '  library, profile, journal, settings',
+    '  study-quiz  (restStudy screen)',
+    '  mastery-challenge  (masteryChallenge screen)',
+    '',
     'SCENARIO CONFIG SHAPE',
     '  {',
-    '    screen: string          // "combat" | "hub" | "shopRoom" | etc.',
-    '    enemy?: string          // Enemy template ID (see ENEMY_TEMPLATES)',
-    '    enemyHp?: number        // Override spawned enemy HP',
-    '    playerHp?: number       // Override player HP',
-    '    playerMaxHp?: number    // Override player max HP',
-    '    hand?: string[]         // Mechanic IDs for the hand',
-    '    handSize?: number       // Target hand size (pads/trims hand[])',
-    '    relics?: string[]       // Relic IDs to equip',
-    '    gold?: number           // Starting gold',
-    '    floor?: number          // Floor number',
-    '    domain?: string         // Knowledge domain for pool',
-    '    chainTypes?: number[]   // Chain type per hand card (0-5)',
+    '    screen: string              // "combat" | "hub" | "shopRoom" | "rewardRoom" | etc.',
+    '    enemy?: string              // Enemy template ID (combat)',
+    '    enemyHp?: number            // Override spawned enemy HP (combat)',
+    '    playerHp?: number           // Override player HP',
+    '    playerMaxHp?: number        // Override player max HP',
+    '    playerBlock?: number        // Override player block (combat)',
+    '    enemyBlock?: number         // Override enemy block (combat)',
+    '    comboMultiplier?: number    // Override combo multiplier (combat)',
+    '    turn?: number               // Override turn counter (combat)',
+    '    hand?: string[]             // Mechanic IDs for the hand',
+    '    handSize?: number           // Target hand size (pads/trims hand[])',
+    '    relics?: string[]           // Relic IDs to equip',
+    '    gold?: number               // Starting gold',
+    '    floor?: number              // Floor number',
+    '    domain?: string             // Knowledge domain for pool',
+    '    chainTypes?: number[]       // Chain type per hand card (0-5)',
+    '    rewards?: RewardItem[]      // rewardRoom: explicit reward items',
+    '    shopRelics?: string[]       // shopRoom: explicit relic IDs',
+    '    shopCards?: string[]        // shopRoom: explicit card mechanic IDs',
+    '    mysteryEventId?: string     // mysteryEvent: specific event ID (use listMysteryEvents())',
+    '    cardRewardMechanics?: string[] // cardReward: 3 mechanic IDs',
+    '    runEndResult?: string       // runEnd: "victory"|"defeat"|"retreat"',
+    '    runEndStats?: object        // runEnd: stat overrides',
+    '    quizQuestionCount?: number  // restStudy: number of questions (default 3)',
+    '    masteryChallengeQuestion?: string  // masteryChallenge: question text',
+    '    masteryChallengeAnswer?: string    // masteryChallenge: correct answer',
+    '    masteryChallengeDistractors?: string[] // masteryChallenge: wrong answers',
+    '    masteryChallengeTimer?: number     // masteryChallenge: timer seconds (default 10)',
     '  }',
     '',
     'VALID MECHANIC IDs (sample)',
-    '  strike, block, heavy_strike, multi_hit, lifetap, expose, surge',
+    '  strike, block, heavy_strike, multi_hit, lifetap, expose, reckless',
     '',
     'VALID ENEMY IDs (sample)',
     '  ' + ENEMY_TEMPLATES.slice(0, 8).map(t => t.id).join(', '),
@@ -718,6 +1331,7 @@ export function initScenarioSimulator(): void {
 
     load: (name: string) => loadScenario(name),
     loadCustom: (config: ScenarioConfig) => loadCustom(config),
+    listMysteryEvents,
 
     // Mid-combat helpers
     setPlayerHp,
@@ -727,6 +1341,9 @@ export function initScenarioSimulator(): void {
     forceHand,
     addRelic,
     removeRelic,
+    setPlayerBlock,
+    setEnemyBlock,
+    setCombo,
 
     help: printHelp,
 

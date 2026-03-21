@@ -35,6 +35,7 @@
     onDelve,
     onDomainsSelected,
     onMysteryResolved,
+    onMysteryEffectResolved,
     onMasteryChallengeResolved,
     onRestResolved,
     onRetreat,
@@ -116,7 +117,6 @@
 
   import ArchetypeSelection from './ui/components/ArchetypeSelection.svelte'
   import CardCombatOverlay from './ui/components/CardCombatOverlay.svelte'
-  import RoomSelection from './ui/components/RoomSelection.svelte'
   import MysteryEventOverlay from './ui/components/MysteryEventOverlay.svelte'
   import MasteryChallengeOverlay from './ui/components/MasteryChallengeOverlay.svelte'
   import RestRoomOverlay from './ui/components/RestRoomOverlay.svelte'
@@ -551,16 +551,7 @@
   }
 
   function handleMysteryResolve(effect: MysteryEffect): void {
-    const run = get(activeRunState)
-    if (run) {
-      if (effect.type === 'heal') {
-        healPlayer(run, effect.amount)
-      } else if (effect.type === 'damage') {
-        run.playerHp = Math.max(0, run.playerHp - effect.amount)
-      }
-      activeRunState.set(run)
-    }
-    onMysteryResolved()
+    onMysteryEffectResolved(effect)
   }
 
   function handleRestHeal(): void {
@@ -580,6 +571,19 @@
 
   let studyQuestions = $state<QuizQuestion[]>([])
   let meditateCandidates = $state<import('./data/card-types').Card[]>([])
+
+  // Pick up scenario-injected study questions when the screen switches to restStudy
+  // and the normal flow hasn't already populated studyQuestions.
+  $effect(() => {
+    if ($currentScreen === 'restStudy' && studyQuestions.length === 0) {
+      const sym = Symbol.for('terra:scenarioStudyQuestions')
+      const injected = (globalThis as any)[sym]
+      if (Array.isArray(injected) && injected.length > 0) {
+        studyQuestions = injected
+        delete (globalThis as any)[sym]
+      }
+    }
+  })
 
   function handleRestStudy(): void {
     studyQuestions = generateStudyQuestions()
@@ -1090,26 +1094,6 @@
     {/if}
   {/if}
 
-  {#if $currentScreen === 'roomSelection'}
-    {@const run = $activeRunState}
-    {#if run}
-      <RoomSelection
-        options={$activeRoomOptions}
-        playerHp={run.playerHp}
-        playerMaxHp={run.playerMaxHp}
-        currentFloor={run.floor.currentFloor}
-        encounterNumber={run.floor.currentEncounter}
-        onselect={handleRoomPick}
-      />
-      <button
-        type="button"
-        class="pause-btn"
-        data-testid="btn-pause-room"
-        onclick={handlePause}
-        aria-label="Pause"
-      ><span class="pause-icon" aria-hidden="true"></span></button>
-    {/if}
-  {/if}
 
   {#if $currentScreen === 'dungeonMap'}
     {@const run = $activeRunState}
@@ -1219,6 +1203,7 @@
         rewardMultiplier={end.rewardMultiplier}
         currencyEarned={end.currencyEarned}
         isPracticeRun={end.isPracticeRun}
+        xpResult={(end as any).xpResult}
         onplayagain={playAgain}
         onhome={returnToMenu}
       />
@@ -1336,6 +1321,7 @@
     class:wipe-up={$screenTransitionDirection === 'up'}
     class:wipe-left={$screenTransitionDirection === 'left'}
     class:wipe-right={$screenTransitionDirection === 'right'}
+    class:wipe-zoom={$screenTransitionDirection === 'zoom'}
   >
     <div class="loading-dots" aria-label="Loading">
       <span></span><span></span><span></span>
@@ -1754,7 +1740,7 @@
     40% { opacity: 1; transform: scale(1.2); }
   }
 
-  .screen-transition.active:not(.wipe-down):not(.wipe-up):not(.wipe-left):not(.wipe-right) {
+  .screen-transition.active:not(.wipe-down):not(.wipe-up):not(.wipe-left):not(.wipe-right):not(.wipe-zoom) {
     animation: revealFade 400ms ease-out forwards;
   }
 
@@ -1772,6 +1758,10 @@
 
   .screen-transition.active.wipe-right {
     animation: revealRight 400ms ease-in-out forwards;
+  }
+
+  .screen-transition.active.wipe-zoom {
+    animation: revealZoomIn 500ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   @keyframes revealFade {
@@ -1804,12 +1794,36 @@
     100% { clip-path: inset(0 0 0 100%); opacity: 0; }
   }
 
+  @keyframes revealZoomIn {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+      filter: blur(0px);
+    }
+    30% {
+      opacity: 0.9;
+      transform: scale(1.3);
+      filter: blur(1px);
+    }
+    60% {
+      opacity: 0.5;
+      transform: scale(2.0);
+      filter: blur(3px);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(3.0);
+      filter: blur(6px);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .screen-transition.active,
     .screen-transition.active.wipe-down,
     .screen-transition.active.wipe-up,
     .screen-transition.active.wipe-left,
-    .screen-transition.active.wipe-right {
+    .screen-transition.active.wipe-right,
+    .screen-transition.active.wipe-zoom {
       animation: revealFade 400ms ease-out forwards;
     }
   }

@@ -18,7 +18,7 @@ import {
 import { getMasteryBaseBonus, getMasterySecondaryBonus } from './cardUpgradeService';
 import { isVulnerable } from '../data/statusEffects';
 import { getMechanicDefinition, type PlayMode } from '../data/mechanics';
-import { resolveAttackModifiers, resolveShieldModifiers } from './relicEffectResolver';
+import { resolveAttackModifiers, resolveShieldModifiers, resolvePoisonDurationBonus } from './relicEffectResolver';
 
 export interface CardEffectResult {
   effectType: CardType;
@@ -383,7 +383,9 @@ export function resolveCardEffect(
     case 'hex': {
       // hex poison value scales with play mode
       const poisonValue = isChargeCorrect ? 8 : (isChargeWrong ? 2 : 3);
-      result.statusesApplied.push({ type: 'poison', value: poisonValue, turnsRemaining: 3 });
+      // plague_flask — poison lasts 1 extra turn
+      const poisonTurns = 3 + resolvePoisonDurationBonus(activeRelicIds);
+      result.statusesApplied.push({ type: 'poison', value: poisonValue, turnsRemaining: poisonTurns });
       return result;
     }
     case 'foresight': {

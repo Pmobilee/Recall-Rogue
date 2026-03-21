@@ -35,10 +35,10 @@ describe('RunManager', () => {
       expect(state.playerHp).toBe(PLAYER_MAX_HP)
     })
 
-    it('applies ascension level 14 max HP override', () => {
+    it('applies ascension level 13+ max HP override', () => {
       const state = createRunState('science', 'history', { ascensionLevel: 14 })
-      expect(state.playerHp).toBe(70)
-      expect(state.playerMaxHp).toBe(70)
+      expect(state.playerHp).toBe(80)
+      expect(state.playerMaxHp).toBe(80)
     })
   })
 

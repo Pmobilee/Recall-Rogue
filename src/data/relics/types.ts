@@ -80,8 +80,14 @@ export interface RelicDefinition {
   icon: string;
   /** RPG pixel-art visual description for sprite generation. */
   visualDescription: string;
-  /** Mastery Coins required to unlock (0 = free starter). */
+  /** Mastery Coins required to unlock (0 = free starter). Legacy field — level-gated unlocks now take precedence. */
   unlockCost: number;
+  /**
+   * Character level required to unlock this relic for drop-pool eligibility.
+   * Unlockable relics (isStarter: false, startsUnlocked: false) are only offered
+   * during runs once the player has reached this level. Starter relics ignore this field.
+   */
+  unlockLevel?: number;
   /** True for the 25 relics available to all players from the start. */
   isStarter: boolean;
   /**

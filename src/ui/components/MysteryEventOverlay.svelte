@@ -25,10 +25,18 @@
     if (!effect) return 'choice' // fallback
     switch (effect.type) {
       case 'heal': return 'heal'
+      case 'healPercent': return 'heal'
       case 'damage': return 'damage'
       case 'freeCard': return 'free_card'
+      case 'cardReward': return 'free_card'
+      case 'upgradeRandomCard': return 'free_card'
+      case 'transformCard': return 'free_card'
       case 'nothing': return 'nothing'
       case 'choice': return 'choice'
+      case 'currency': return 'heal'
+      case 'maxHpChange': return 'heal'
+      case 'removeRandomCard': return 'damage'
+      case 'combat': return 'damage'
       default: return 'choice'
     }
   }

@@ -29,7 +29,7 @@
   import { juiceManager } from '../../services/juiceManager'
   import { getCombatScene } from '../../services/encounterBridge'
   import { factsDB } from '../../services/factsDB'
-  import { getReviewStateByFactId } from '../stores/playerData'
+  import { getReviewStateByFactId, playerSave } from '../stores/playerData'
   import type { CombatScene } from '../../game/scenes/CombatScene'
   import { getCardTier } from '../../services/tierDerivation'
   import { playCardAudio } from '../../services/cardAudioManager'
@@ -41,6 +41,7 @@
   import { getRunRng, isRunRngActive, seededShuffled } from '../../services/seededRng'
   import { isPlaceholderDistractor } from '../../services/distractorFilter'
   import { getVocabDistractors } from '../../services/vocabDistractorService'
+  import { selectVariant, buildVariantQuestion } from '../../services/vocabVariantService'
   import { activeRunState } from '../../services/runStateStore'
   import { sellEquippedRelic } from '../../services/gameFlowController'
   import { getIntentIconPath } from '../utils/iconAssets'
@@ -51,6 +52,8 @@
   import { getShortCardDescription } from '../../services/cardDescriptionService'
   import SurgeBorderOverlay from './SurgeBorderOverlay.svelte'
   import { ENEMY_DIALOGUE } from '../../data/enemyDialogue'
+  import { getMasteryBaseBonus } from '../../services/cardUpgradeService'
+  import { getMechanicDefinition } from '../../data/mechanics'
 
   interface Props {
     turnState: TurnState | null
@@ -76,6 +79,8 @@
     correctAnswer: string
     variantIndex: number
     questionImageUrl?: string
+    /** For synonym variant: additional correct answers accepted from the player. */
+    acceptableAnswers?: string[]
   }
 
   let { turnState, onplaycard, onskipcard, onendturn, onusehint, onreturnhub }: Props = $props()
@@ -754,6 +759,7 @@
     let question: string
     let correctAnswer: string
     let distractorSource: string[]
+    let acceptableAnswers: string[] | undefined
 
     if (hasVariantsArray) {
       // Use the fact's variants array — handle both string[] and object[] formats
@@ -780,13 +786,35 @@
       correctAnswer = fact.correctAnswer
       distractorSource = fact.distractors
 
-      // Runtime vocab distractor generation (spec 1.8 Option E)
-      // Vocab facts ship with distractors=[] — pick from same-language pool at runtime
-      if (distractorSource.length === 0 && fact.type === 'vocabulary') {
-        distractorSource = getVocabDistractors(fact, Math.max(2, optionCount - 1))
-      }
+      if (fact.type === 'vocabulary') {
+        // Vocab variant system: select question format based on card tier, then build question
+        const cardTier = getCardTier(getReviewStateByFactId(card.factId))
+        const variant = selectVariant(cardTier, fact)
+        const variantQ = buildVariantQuestion(fact, variant)
 
-      question = getNonCuratedQuestion(fact.quizQuestion)
+        question = variantQ.questionText
+        correctAnswer = variantQ.correctAnswer
+
+        // Runtime vocab distractor generation (spec 1.8 Option E)
+        // Vocab facts ship with distractors=[] — pick from same-language pool at runtime.
+        // Pass seenFactIds (FSRS-aware) so the service prioritises familiar distractors.
+        if (distractorSource.length === 0) {
+          const save = get(playerSave)
+          const seenFactIds = save ? new Set(save.learnedFacts) : undefined
+          distractorSource = getVocabDistractors(
+            fact,
+            Math.max(2, optionCount - 1),
+            { seenFactIds, answerPool: variantQ.answerPool },
+          )
+        }
+
+        // Store acceptable answers for synonym variant so grading can accept any of them
+        if (variantQ.acceptableAnswers && variantQ.acceptableAnswers.length > 0) {
+          acceptableAnswers = variantQ.acceptableAnswers
+        }
+      } else {
+        question = getNonCuratedQuestion(fact.quizQuestion)
+      }
     }
 
     const distractorCount = Math.max(2, optionCount - 1)
@@ -836,6 +864,7 @@
       correctAnswer,
       variantIndex,
       questionImageUrl: fact.imageUrl ?? undefined,
+      acceptableAnswers,
     }
   }
 
@@ -987,14 +1016,16 @@
     // Fire the play immediately with playMode: 'quick'
     onplaycard(cardId, true, false, undefined, undefined, 'quick')
 
+    const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0)
+    const quickEffectVal = Math.round(card.baseEffectValue * card.effectMultiplier) + masteryBonus
     juiceManager.fire({
       type: 'correct',
-      damage: Math.round(card.baseEffectValue * card.effectMultiplier),
+      damage: quickEffectVal,
       isCritical: false,
       comboCount: (turnState?.comboCount ?? 0) + 1,
       effectLabel: (card.cardType === 'wild' || card.cardType === 'utility' || card.cardType === 'buff' || card.cardType === 'debuff')
         ? getShortCardDescription(card)
-        : `${card.cardType.toUpperCase()} ${Math.round(card.baseEffectValue * card.effectMultiplier)}`,
+        : `${card.cardType.toUpperCase()} ${quickEffectVal}`,
       isPerfectTurn: false,
       cardType: card.cardType,
     })
@@ -1083,7 +1114,10 @@
     const card = committedCard
     const cardId = card.id
     const responseTimeMs = committedAtMs > 0 ? Math.max(50, Date.now() - committedAtMs) : undefined
-    const effectVal = Math.round(card.baseEffectValue * card.effectMultiplier)
+    const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0)
+    const mechanic = getMechanicDefinition(card.mechanicId)
+    const baseForCharge = mechanic ? Math.round(mechanic.quickPlayValue * 1.5) : Math.round(card.baseEffectValue * card.effectMultiplier)
+    const effectVal = baseForCharge + masteryBonus
     const effectLabel = (card.cardType === 'wild' || card.cardType === 'utility' || card.cardType === 'buff' || card.cardType === 'debuff')
       ? getShortCardDescription(card)
       : `${card.cardType.toUpperCase()} ${effectVal}`
@@ -1412,7 +1446,7 @@
       {/if}
     </div>
   {:else}
-    <RelicTray relics={displayRelics} triggeredRelicId={turnState.triggeredRelicId} maxSlots={maxRelicSlots} onsell={sellEquippedRelic} />
+    <RelicTray relics={displayRelics} triggeredRelicId={turnState.triggeredRelicId} maxSlots={maxRelicSlots} />
 
     {#if expertModeActive}
       <div class="expert-badge" data-testid="expert-mode-badge">
@@ -1459,7 +1493,7 @@
     <div class="pile-indicator discard-pile-indicator" bind:this={discardPileEl} aria-label="Discard pile: {discardPileCount}">
       <div class="pile-icon" style="--stack-count: {discardStackCount}">
         {#each Array(Math.max(1, discardStackCount)) as _, idx}
-          <div class="pile-card-stack" style="top: calc({idx * 2}px * var(--layout-scale, 1)); left: calc({idx * 2}px * var(--layout-scale, 1)); {discardStackCount === 0 ? 'opacity: 0.3;' : ''}"></div>
+          <div class="pile-card-stack" class:pile-empty={discardStackCount === 0} style="top: calc({idx * 2}px * var(--layout-scale, 1)); left: calc({idx * 2}px * var(--layout-scale, 1)); {discardStackCount === 0 ? 'opacity: 0.3;' : ''}"></div>
         {/each}
       </div>
       <span class="pile-count-label">{discardPileCount}</span>
@@ -1822,7 +1856,7 @@
   .ap-orb {
     position: absolute;
     left: calc(16px * var(--layout-scale, 1));
-    bottom: 45vh;
+    bottom: 35vh;
     z-index: 8;
     width: calc(56px * var(--layout-scale, 1));
     height: calc(56px * var(--layout-scale, 1));
@@ -1906,7 +1940,7 @@
     border: 2px solid;
     border-radius: 14px;
     width: calc(72px * var(--layout-scale, 1));
-    padding: calc(10px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
     backdrop-filter: blur(8px);
     cursor: pointer;
     display: flex;
@@ -2466,6 +2500,12 @@
   /* Discard pile = orange */
   .discard-pile-indicator .pile-card-stack {
     border: 2px solid rgba(230, 126, 34, 0.7);
+  }
+
+  /* Empty discard pile placeholder — thicker dashed border */
+  .pile-card-stack.pile-empty {
+    border-width: 3px !important;
+    border-style: dashed !important;
   }
 
   .pile-count-label {

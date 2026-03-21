@@ -73,6 +73,19 @@ function filterByLength(candidates: Fact[], targetLen: number): Fact[] {
 }
 
 /**
+ * Extracts the L2 (target language) word from a vocab fact's quizQuestion.
+ * Used when building distractors for reverse-mode questions where the answer
+ * pool should be L2 words rather than English translations.
+ *
+ * @param quizQuestion - The quiz question string to extract from
+ * @returns The L2 word if found, or null
+ */
+function extractL2WordFromQuestion(quizQuestion: string): string | null {
+  const quoted = quizQuestion.match(/["「]([^"」]+)["」]/)
+  return quoted ? quoted[1] : null
+}
+
+/**
  * Returns runtime-generated distractors for a vocabulary fact.
  * Picks correctAnswer values from other vocab facts in the same language,
  * preferring facts at similar difficulty levels (±1 first, then ±2+).
@@ -81,20 +94,34 @@ function filterByLength(candidates: Fact[], targetLen: number): Fact[] {
  * Candidates whose correctAnswer length falls outside
  * [max(2, floor(targetLen * 0.4)), ceil(targetLen * 2.5)] are deprioritised.
  * The selection order is:
- *   1. Length-matched candidates from the close (difficulty ±1) pool
- *   2. Length-matched candidates from the far (difficulty ±2+) pool
- *   3. Unfiltered close pool (length relaxed, fallback)
- *   4. Unfiltered far pool (length relaxed, fallback)
+ *   1. Length-matched candidates from the seen pool (FSRS priority — player has reviewed these)
+ *   2. Length-matched candidates from the unseen pool
+ *   3. Unfiltered seen pool (length relaxed, fallback)
+ *   4. Unfiltered unseen pool (length relaxed, fallback)
+ *
+ * Within each priority tier the pool is further split into close (difficulty ±1)
+ * and far (difficulty ±2+) sub-pools, with close preferred first.
+ *
+ * When `options.answerPool === 'l2'`, the L2 word is extracted from each
+ * candidate's quizQuestion instead of using correctAnswer (reverse-mode distractors).
  *
  * Designed so that POS-tag or semantic-bin filtering can be layered on top
  * in a future pass without changing this function's signature.
  *
- * @param fact  - The vocabulary fact needing distractors
- * @param count - Number of distractors to return (default: BALANCE.QUIZ_DISTRACTORS_SHOWN)
+ * @param fact    - The vocabulary fact needing distractors
+ * @param count   - Number of distractors to return (default: BALANCE.QUIZ_DISTRACTORS_SHOWN)
+ * @param options - Optional FSRS and answer-pool configuration
  * @returns Array of distractor strings (may be shorter than count if the
  *          language pool is too small)
  */
-export function getVocabDistractors(fact: Fact, count: number = BALANCE.QUIZ_DISTRACTORS_SHOWN): string[] {
+export function getVocabDistractors(
+  fact: Fact,
+  count: number = BALANCE.QUIZ_DISTRACTORS_SHOWN,
+  options?: {
+    seenFactIds?: Set<string>
+    answerPool?: 'english' | 'l2'
+  },
+): string[] {
   const lang = fact.language
   if (!lang) return []
 
@@ -104,36 +131,78 @@ export function getVocabDistractors(fact: Fact, count: number = BALANCE.QUIZ_DIS
 
   const targetDifficulty = fact.difficulty ?? 1
   const targetAnswer = fact.correctAnswer
-  const targetLen = targetAnswer.length
+  const isL2Mode = options?.answerPool === 'l2'
 
-  const close: Fact[] = []
-  const far: Fact[] = []
+  // In L2 mode, the correct answer is the L2 word extracted from the question.
+  // We need to know it upfront to avoid including it as a distractor.
+  const targetL2Word = isL2Mode ? extractL2WordFromQuestion(fact.quizQuestion) : null
+
+  // In L2 mode, length is measured against the L2 word (correctAnswer in reverse mode).
+  const targetLen = isL2Mode && targetL2Word ? targetL2Word.length : targetAnswer.length
+
+  const seenFactIds = options?.seenFactIds
+
+  // Partition candidates into seen (priority) and unseen buckets,
+  // then each bucket into close/far by difficulty.
+  const seenClose: Fact[] = []
+  const seenFar: Fact[] = []
+  const unseenClose: Fact[] = []
+  const unseenFar: Fact[] = []
 
   for (const candidate of pool) {
+    // Skip the target fact itself (both by English answer and, in L2 mode, by L2 word)
     if (candidate.correctAnswer === targetAnswer) continue
+    if (isL2Mode) {
+      // In L2 mode skip candidates with no extractable L2 word
+      const l2 = extractL2WordFromQuestion(candidate.quizQuestion)
+      if (l2 === null) continue
+      // Avoid synonyms: skip if the candidate's English answer matches the target's English answer
+      if (candidate.correctAnswer === targetAnswer) continue
+    }
+
     const diff = Math.abs((candidate.difficulty ?? 1) - targetDifficulty)
-    if (diff <= 1) {
-      close.push(candidate)
+    const isClose = diff <= 1
+
+    if (seenFactIds && seenFactIds.has(candidate.id)) {
+      if (isClose) seenClose.push(candidate)
+      else seenFar.push(candidate)
     } else {
-      far.push(candidate)
+      if (isClose) unseenClose.push(candidate)
+      else unseenFar.push(candidate)
     }
   }
 
-  const shuffledClose = shuffled(close)
-  const shuffledFar = shuffled(far)
+  const shuffledSeenClose = shuffled(seenClose)
+  const shuffledSeenFar = shuffled(seenFar)
+  const shuffledUnseenClose = shuffled(unseenClose)
+  const shuffledUnseenFar = shuffled(unseenFar)
 
   // Build length-filtered variants for preferred selection
-  const lengthClose = filterByLength(shuffledClose, targetLen)
-  const lengthFar = filterByLength(shuffledFar, targetLen)
+  const lengthSeenClose = filterByLength(shuffledSeenClose, targetLen)
+  const lengthSeenFar = filterByLength(shuffledSeenFar, targetLen)
+  const lengthUnseenClose = filterByLength(shuffledUnseenClose, targetLen)
+  const lengthUnseenFar = filterByLength(shuffledUnseenFar, targetLen)
 
   const results: string[] = []
   const seen = new Set<string>()
 
-  // Helper to drain candidates into results up to count
+  /**
+   * Extract the display string from a candidate for the current answer pool mode.
+   * In L2 mode returns the L2 word from the question; in English mode returns correctAnswer.
+   */
+  function getDisplayAnswer(candidate: Fact): string | null {
+    if (isL2Mode) {
+      return extractL2WordFromQuestion(candidate.quizQuestion)
+    }
+    return candidate.correctAnswer
+  }
+
+  /** Drain candidates into results up to count, skipping duplicates and nulls. */
   function drain(candidates: Fact[]): void {
     for (const candidate of candidates) {
       if (results.length >= count) break
-      const answer = candidate.correctAnswer
+      const answer = getDisplayAnswer(candidate)
+      if (answer === null) continue
       if (!seen.has(answer)) {
         seen.add(answer)
         results.push(answer)
@@ -141,17 +210,19 @@ export function getVocabDistractors(fact: Fact, count: number = BALANCE.QUIZ_DIS
     }
   }
 
-  // Pass 1: length-matched close pool
-  drain(lengthClose)
+  // Priority 1: seen facts (FSRS-aware — player has reviewed these, harder distractors)
+  if (seenFactIds) {
+    drain(lengthSeenClose)
+    if (results.length < count) drain(lengthSeenFar)
+    if (results.length < count) drain(shuffledSeenClose)
+    if (results.length < count) drain(shuffledSeenFar)
+  }
 
-  // Pass 2: length-matched far pool
-  if (results.length < count) drain(lengthFar)
-
-  // Pass 3: fallback — unfiltered close pool (relaxes length constraint)
-  if (results.length < count) drain(shuffledClose)
-
-  // Pass 4: fallback — unfiltered far pool (relaxes length constraint)
-  if (results.length < count) drain(shuffledFar)
+  // Priority 2: unseen facts (fallback)
+  if (results.length < count) drain(lengthUnseenClose)
+  if (results.length < count) drain(lengthUnseenFar)
+  if (results.length < count) drain(shuffledUnseenClose)
+  if (results.length < count) drain(shuffledUnseenFar)
 
   return results
 }

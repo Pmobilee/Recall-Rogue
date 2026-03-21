@@ -32,7 +32,7 @@
     ondelve,
   }: Props = $props()
 
-  const bgUrl = getRandomRoomBg('crossroads')
+  const bgUrl = getRandomRoomBg('descent')
   holdScreenTransition()
   preloadImages([bgUrl]).then(releaseScreenTransition)
 
