@@ -98,6 +98,11 @@ export interface Card {
   chainType?: number;
   /** @deprecated — facts shuffle per draw via FSRS, not permanently bound. Kept for save backward-compatibility only. */
   boundFactId?: string;
+  /**
+   * True when the fact assigned to this card is currently in the run's cursedFactIds set.
+   * Set per-draw in drawHand(). Cleared when the fact is cured.
+   */
+  isCursed?: boolean;
 }
 
 // === Card Run State ===
@@ -133,6 +138,16 @@ export interface CardRunState {
   factCooldown: { factId: string; encountersRemaining: number }[];
   /** All fact IDs that appeared in any hand during the current encounter (for cooldown on encounter end) */
   currentEncounterSeenFacts?: Set<string>;
+  /**
+   * Consecutive draw count where cursed-card ratio >= CURSED_AUTO_CURE_THRESHOLD.
+   * When this reaches 2, auto-cure is scheduled at encounter end.
+   */
+  consecutiveCursedDraws: number;
+  /**
+   * When true, the oldest cursed fact will be auto-cured at encounter end.
+   * Set when consecutiveCursedDraws >= 2. Reset after cure fires.
+   */
+  pendingAutoCure?: boolean;
 }
 
 // === Deck Stats ===

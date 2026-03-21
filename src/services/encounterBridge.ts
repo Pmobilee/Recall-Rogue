@@ -624,6 +624,20 @@ export function handlePlayCard(
     if (activeDeck) {
       const seenFacts = getEncounterSeenFacts(activeDeck);
       if (seenFacts.length > 0) addFactsToCooldown(activeDeck, seenFacts);
+
+      // AR-202: Auto-cure safety valve — if pendingAutoCure is set, remove oldest cursed fact.
+      if (activeDeck.pendingAutoCure) {
+        const runForCure = get(activeRunState);
+        if (runForCure && runForCure.cursedFactIds.size > 0) {
+          // Sets preserve insertion order — the first entry is the oldest.
+          const oldest = runForCure.cursedFactIds.values().next().value as string;
+          runForCure.cursedFactIds.delete(oldest);
+          console.log('[cursed] auto-cure safety valve: removed oldest cursed fact', oldest);
+          activeRunState.set(runForCure);
+        }
+        activeDeck.pendingAutoCure = false;
+        activeDeck.consecutiveCursedDraws = 0;
+      }
     }
     // Post-encounter healing: restore a percentage of max HP
     // Boss/mini-boss encounters grant bonus healing (AR-32)
@@ -760,6 +774,19 @@ export function handleEndTurn(): void {
     if (activeDeck) {
       const seenFacts = getEncounterSeenFacts(activeDeck);
       if (seenFacts.length > 0) addFactsToCooldown(activeDeck, seenFacts);
+
+      // AR-202: Auto-cure safety valve — fires on defeat too (don't punish player twice).
+      if (activeDeck.pendingAutoCure) {
+        const runForCure = get(activeRunState);
+        if (runForCure && runForCure.cursedFactIds.size > 0) {
+          const oldest = runForCure.cursedFactIds.values().next().value as string;
+          runForCure.cursedFactIds.delete(oldest);
+          console.log('[cursed] auto-cure safety valve (defeat): removed oldest cursed fact', oldest);
+          activeRunState.set(runForCure);
+        }
+        activeDeck.pendingAutoCure = false;
+        activeDeck.consecutiveCursedDraws = 0;
+      }
     }
     setTimeout(() => {
       activeTurnState.set(null);

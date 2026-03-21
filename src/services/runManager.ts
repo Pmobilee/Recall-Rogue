@@ -54,6 +54,12 @@ export interface RunState {
    * Per-run, not per-encounter. Cleared on new run.
    */
   firstChargeFreeFactIds: Set<string>;
+  /**
+   * Fact IDs for which the player gave a wrong Charge on a mastery 0 card.
+   * Any card assigned one of these facts is treated as Cursed.
+   * Cured by correct Charge on the fact in combat.
+   */
+  cursedFactIds: Set<string>;
   consumedRewardFactIds: Set<string>;
   factsAnsweredCorrectly: Set<string>;
   factsAnsweredIncorrectly: Set<string>;
@@ -202,6 +208,7 @@ export function createRunState(
     canary: createCanaryState(),
     startedAt: Date.now(),
     firstChargeFreeFactIds: new Set<string>(),
+    cursedFactIds: new Set<string>(),
     consumedRewardFactIds: new Set<string>(),
     factsAnsweredCorrectly: new Set<string>(),
     factsAnsweredIncorrectly: new Set<string>(),

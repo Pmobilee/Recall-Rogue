@@ -1,10 +1,12 @@
 import type { Card, CardRunState, DeckStats } from '../data/card-types';
-import { HAND_SIZE, PLAYER_START_HP, PLAYER_MAX_HP, HINTS_PER_ENCOUNTER, FACT_COOLDOWN_MIN, FACT_COOLDOWN_MAX } from '../data/balance';
+import { HAND_SIZE, PLAYER_START_HP, PLAYER_MAX_HP, HINTS_PER_ENCOUNTER, FACT_COOLDOWN_MIN, FACT_COOLDOWN_MAX, CURSED_AUTO_CURE_THRESHOLD } from '../data/balance';
 import { factsDB } from './factsDB';
 import { resolveDomain } from './domainResolver';
 import { shuffled } from './randomUtils';
 import { getRunRng, isRunRngActive, seededShuffled } from './seededRng';
 import { writable } from 'svelte/store';
+import { get } from 'svelte/store';
+import { activeRunState } from './runStateStore';
 
 /** Emitted whenever the discard pile is reshuffled into the draw pile. */
 export const reshuffleEvent = writable<{ cardCount: number; timestamp: number } | null>(null);
@@ -124,6 +126,8 @@ export function createDeck(pool: Card[]): CardRunState {
     factPool: pool.map(c => c.factId),
     factCooldown: [],
     currentEncounterSeenFacts: new Set(),
+    consecutiveCursedDraws: 0,
+    pendingAutoCure: false,
   };
 }
 
@@ -227,10 +231,14 @@ export function drawHand(
   // Facts are assigned per draw from the FSRS pool — no permanent binding.
   // The seeded RNG fork 'facts' ensures identical card-fact pairings for identical seeds.
   if (drawn.length > 0 && deck.factPool.length > 0) {
+    // AR-202: Read cursedFactIds from run state for priority weighting and isCursed flag.
+    const cursedFactIds: Set<string> = get(activeRunState)?.cursedFactIds ?? new Set();
+
     const cooldownRootIds = new Set(deck.factCooldown.map(c => getFactRootId(c.factId)));
+    // AR-202: Cursed facts bypass the cooldown filter so they resurface faster for cure opportunities.
     const availableFacts = deck.factPool.filter(
-      fId => !deck.factCooldown.some(c => c.factId === fId)
-        && !cooldownRootIds.has(getFactRootId(fId))
+      fId => cursedFactIds.has(fId)
+        || (!deck.factCooldown.some(c => c.factId === fId) && !cooldownRootIds.has(getFactRootId(fId)))
     );
 
     let factsToUse = availableFacts;
@@ -245,11 +253,20 @@ export function drawHand(
       }
     }
 
+    // AR-202: Weighted priority — prepend cursed available facts to front of candidate list.
+    // This gives them priority without breaking the existing duplicate-avoidance logic.
+    const cursedAvailable = factsToUse.filter(fId => cursedFactIds.has(fId));
+    const nonCursedAvailable = factsToUse.filter(fId => !cursedFactIds.has(fId));
+
     let shuffledFacts: string[];
     if (options?.firstDrawBias) {
-      shuffledFacts = weightedFactShuffle(factsToUse);
+      // Weighted shuffle but keep cursed facts at front
+      const shuffledNonCursed = weightedFactShuffle(nonCursedAvailable);
+      shuffledFacts = [...cursedAvailable, ...shuffledNonCursed];
     } else {
-      shuffledFacts = isRunRngActive() ? seededShuffled(getRunRng('facts'), factsToUse) : shuffled(factsToUse);
+      // Shuffle non-cursed portion, cursed facts stay at front for priority
+      const shuffledNonCursed = isRunRngActive() ? seededShuffled(getRunRng('facts'), nonCursedAvailable) : shuffled(nonCursedAvailable);
+      shuffledFacts = [...cursedAvailable, ...shuffledNonCursed];
     }
 
     const factKeyCache = new Map<string, string>();
@@ -298,6 +315,8 @@ export function drawHand(
       const factId = pickCandidateFactId() ?? shuffledFacts[0];
       if (factId) {
         card.factId = factId;
+        // AR-202: Mark card as cursed if its assigned fact is in the cursedFactIds set.
+        card.isCursed = cursedFactIds.has(factId);
         const newFact = factsDB.isReady() ? factsDB.getById(factId) : null;
         if (newFact) {
           card.domain = resolveDomain(newFact);
@@ -308,6 +327,19 @@ export function drawHand(
         deck.currentEncounterSeenFacts.add(factId);
       }
     }
+
+    // AR-202: Auto-cure safety valve — track consecutive draws with high cursed ratio.
+    const cursedCount = deck.hand.filter(c => c.isCursed).length;
+    const ratio = deck.hand.length > 0 ? cursedCount / deck.hand.length : 0;
+    if (ratio >= CURSED_AUTO_CURE_THRESHOLD) {
+      deck.consecutiveCursedDraws = (deck.consecutiveCursedDraws ?? 0) + 1;
+    } else {
+      deck.consecutiveCursedDraws = 0;
+    }
+    if ((deck.consecutiveCursedDraws ?? 0) >= 2) {
+      deck.pendingAutoCure = true;
+    }
+    // CURSED_AUTO_CURE_COUNT (= 1) governs how many facts to cure — applied in encounterBridge.ts.
   }
 
   // === Draw Smoothing (AR-93 Section D) ===
@@ -377,7 +409,12 @@ export function discardHand(deck: CardRunState): Card[] {
  * Exhausts a card — permanently removes it from the run.
  *
  * The card is moved from the hand to the exhaust pile. Exhausted cards are
- * never reshuffled back into the draw pile. Used for Echo resolution, etc.
+ * never reshuffled back into the draw pile.
+ *
+ * AR-202 invariant: Cursed cards cannot be exhausted via player choice (Recollect doesn't apply).
+ * The curse persists on the fact ID regardless of card slot removal — deck thinning does NOT
+ * remove curses. Inscriptions bypass this invariant and always exhaust on play regardless of cursed state.
+ * If "choose to exhaust" mechanics are implemented, they must filter out cursed cards from the picker UI.
  *
  * @param deck - The current deck state (mutated in place).
  * @param cardId - The id of the card to exhaust.

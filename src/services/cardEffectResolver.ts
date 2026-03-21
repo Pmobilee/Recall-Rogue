@@ -11,6 +11,9 @@ import {
   TIER_MULTIPLIER,
   CHARGE_CORRECT_MULTIPLIER,
   getBalanceOverrides,
+  CURSED_QP_MULTIPLIER,
+  CURSED_CHARGE_CORRECT_MULTIPLIER,
+  CURSED_CHARGE_WRONG_MULTIPLIER,
 } from '../data/balance';
 import { getMasteryBaseBonus, getMasterySecondaryBonus } from './cardUpgradeService';
 import { isVulnerable } from '../data/statusEffects';
@@ -187,6 +190,26 @@ export function resolveCardEffect(
     card = { ...card, secondaryValue: currentSecondary + masterySecondaryBonus };
   }
 
+  // AR-202: Apply cursed multipliers if the card carries a cursed fact.
+  // Applied after mastery bonus but before tier/combo/chain/relic multipliers.
+  if (card.isCursed) {
+    const isQuickPlay2 = playMode === 'quick' || playMode === 'quick_play';
+    const isChargeCorrect2 = playMode === 'charge' || playMode === 'charge_correct';
+    const isChargeWrong2 = playMode === 'charge_wrong';
+    // Scar Tissue relic stub (AR-203): overrides QP multiplier to 0.85 on QP plays.
+    let cursedQpMult = CURSED_QP_MULTIPLIER; // 0.7
+    if (isQuickPlay2 && activeRelicIds.has('scar_tissue')) {
+      cursedQpMult = 0.85;
+    }
+    if (isQuickPlay2) {
+      mechanicBaseValue = Math.round(mechanicBaseValue * cursedQpMult);
+    } else if (isChargeCorrect2) {
+      mechanicBaseValue = Math.round(mechanicBaseValue * CURSED_CHARGE_CORRECT_MULTIPLIER); // 1.0 — no change
+    } else if (isChargeWrong2) {
+      mechanicBaseValue = Math.round(mechanicBaseValue * CURSED_CHARGE_WRONG_MULTIPLIER); // 0.5
+    }
+  }
+
   const strikeTag = mechanic?.tags.includes('strike') ?? false;
   const sharpenedEdgeBonus = strikeTag && activeRelicIds.has('barbed_edge') ? 3 : 0;
   const effectiveBase = mechanicBaseValue + sharpenedEdgeBonus;
@@ -263,6 +286,9 @@ export function resolveCardEffect(
     applyAttackDamage(perHit * 2);
     return result;
   }
+
+  // TODO(AR-203): mastery_surge must skip cards where isCursed === true — per Appendix F.
+  // When mastery_surge is implemented, add: if (candidate.isCursed) continue; in its hand iteration.
 
   const mechanicId = card.mechanicId ?? '';
   switch (mechanicId) {

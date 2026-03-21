@@ -342,6 +342,24 @@ export const FIRST_CHARGE_FREE_AP_SURCHARGE = 0;
  */
 export const FIRST_CHARGE_FREE_WRONG_MULTIPLIER = 0.0;
 
+// === CURSED CARD SYSTEM (AR-202) ===
+/** QP multiplier when a card carries a cursed fact. */
+export const CURSED_QP_MULTIPLIER = 0.7;
+/** Charge Correct multiplier when a card carries a cursed fact (1.0 = normal — the reward IS the cure). */
+export const CURSED_CHARGE_CORRECT_MULTIPLIER = 1.0;
+/** Charge Wrong multiplier when a card carries a cursed fact. */
+export const CURSED_CHARGE_WRONG_MULTIPLIER = 0.5;
+/** FSRS repetition bonus applied on cure (correct Charge on a cursed fact). */
+export const CURSED_FSRS_CURE_BONUS = 6.0;
+/**
+ * Auto-cure safety valve threshold. If the ratio of cursed cards in the drawn
+ * hand meets or exceeds this value across 2 consecutive draws, auto-cure the
+ * oldest cursed fact at encounter end (1 fact per trigger).
+ */
+export const CURSED_AUTO_CURE_THRESHOLD = 0.6;
+/** Number of cursed facts auto-cured when the threshold is triggered. */
+export const CURSED_AUTO_CURE_COUNT = 1;
+
 // Player defaults
 export const PLAYER_START_HP = 120;
 export const PLAYER_MAX_HP = 100;

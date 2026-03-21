@@ -108,8 +108,11 @@ export function getMasteryApReduction(mechanicId: string, level: number): number
 /**
  * Whether a card can be mastery-upgraded.
  * Cards at max level, already-changed-this-encounter, and unknown mechanics cannot upgrade.
+ * AR-202: Cursed cards cannot gain mastery until cured.
  */
 export function canMasteryUpgrade(card: Card): boolean {
+  // AR-202: Cursed cards are locked at effective mastery 0 until cured.
+  if (card.isCursed) return false;
   const def = MASTERY_UPGRADE_DEFS[card.mechanicId ?? ''];
   const maxLevel = def?.maxLevel ?? MASTERY_MAX_LEVEL;
   if ((card.masteryLevel ?? 0) >= maxLevel) return false;

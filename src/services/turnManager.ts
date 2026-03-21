@@ -199,6 +199,8 @@ export interface PlayCardResult {
   masteryChange: 'upgrade' | 'downgrade' | null;
   /** The card ID that was mastery-changed (for animation targeting). */
   masteryChangedCardId: string | null;
+  /** AR-202: True when a correct Charge cured a cursed fact on this play. */
+  curedCursedFact?: boolean;
 }
 
 export interface EnemyTurnResult {
@@ -463,6 +465,8 @@ export function playCardAction(
   }
 
   const card: Card = { ...cardInHand };
+  // AR-202: Capture mastery level BEFORE any downgrade so curse condition uses pre-play value.
+  const preMasteryLevel = cardInHand.masteryLevel ?? 0;
   deckPlayCard(deck, cardId);
   turnState.apCurrent = Math.max(0, turnState.apCurrent - apCost);
 
@@ -561,6 +565,16 @@ export function playCardAction(
         const runState = get(activeRunState);
         if (runState) {
           markFirstChargeUsed(card.factId, runState.firstChargeFreeFactIds);
+          activeRunState.set(runState);
+        }
+      }
+
+      // AR-202: Curse logic — relaxed mode wrong Charge on mastery 0 card.
+      // Free First Charge wrongs are EXEMPT. Mastery 1+ wrongs only downgrade.
+      if (playMode === 'charge' && !usedFreeCharge && preMasteryLevel === 0 && card.factId) {
+        const runState = get(activeRunState);
+        if (runState) {
+          runState.cursedFactIds.add(card.factId);
           activeRunState.set(runState);
         }
       }
@@ -664,6 +678,16 @@ export function playCardAction(
       const runState = get(activeRunState);
       if (runState) {
         markFirstChargeUsed(card.factId, runState.firstChargeFreeFactIds);
+        activeRunState.set(runState);
+      }
+    }
+
+    // AR-202: Curse logic — normal mode wrong Charge on mastery 0 card.
+    // Free First Charge wrongs are EXEMPT. Mastery 1+ wrongs only downgrade (curse on next wrong at 0).
+    if (playMode === 'charge' && !usedFreeCharge && preMasteryLevel === 0 && card.factId) {
+      const runState = get(activeRunState);
+      if (runState) {
+        runState.cursedFactIds.add(card.factId);
         activeRunState.set(runState);
       }
     }
@@ -1067,6 +1091,20 @@ export function playCardAction(
   );
   turnState.lastCardType = effect.effectType;
 
+  // AR-202: Cure cursed fact on correct Charge.
+  // If the card's fact is in cursedFactIds, remove it (cure). Mark on result for UI animation.
+  let curedCursedFact = false;
+  if (playMode === 'charge' && card.factId) {
+    const runStateForCure = get(activeRunState);
+    if (runStateForCure && runStateForCure.cursedFactIds.has(card.factId)) {
+      runStateForCure.cursedFactIds.delete(card.factId);
+      activeRunState.set(runStateForCure);
+      curedCursedFact = true;
+      // TODO(AR-212): apply CURSED_FSRS_CURE_BONUS (= 6.0) to FSRS scheduler on cure.
+      // The cure grants double repetition credit to accelerate learning recovery.
+    }
+  }
+
   // Mastery upgrade: correct charge answer upgrades the played card
   let masteryChange: 'upgrade' | 'downgrade' | null = null;
   let masteryChangedCardId: string | null = null;
@@ -1113,6 +1151,7 @@ export function playCardAction(
     usedFreeCharge,
     masteryChange,
     masteryChangedCardId,
+    curedCursedFact,
   };
 }
 

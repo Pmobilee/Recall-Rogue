@@ -14,6 +14,7 @@ function toSerializedRunState(run: ReturnType<typeof createRunState>): Record<st
     factsAnsweredIncorrectly: [...run.factsAnsweredIncorrectly],
     firstChargeFreeFactIds: [...run.firstChargeFreeFactIds],
     offeredRelicIds: [...run.offeredRelicIds],
+    cursedFactIds: [...run.cursedFactIds],
   }
 }
 

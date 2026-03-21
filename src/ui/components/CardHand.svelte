@@ -49,6 +49,8 @@
     focusDiscount?: number
     /** AR-113: mastery flash state — cardId -> 'up' | 'down'. Applied to stat numbers and AP cost. */
     masteryFlashes?: Record<string, 'up' | 'down'>
+    /** AR-202: Cure flash state — cardId -> true when a cursed fact was just cured. Triggers gold glow animation. */
+    cureFlashes?: Record<string, boolean>
   }
 
   // Session-level preload guard: avoid creating duplicate Image objects for the same URL.
@@ -74,6 +76,7 @@
     quizVisible = false,
     focusDiscount = 0,
     masteryFlashes = {},
+    cureFlashes = {},
   }: Props = $props()
 
   interface TierUpVisualSignature {
@@ -709,6 +712,8 @@
       class:drag-ready={isDragPastThreshold && isDraggingThis && !isDragInChargeZone}
       class:drag-charge-zone={isDragInChargeZone}
       class:drag-charge-zone-disabled={isDragInChargeZone && !chargeAffordableForDrag}
+      class:card--cursed={card.isCursed && !cureFlashes[card.id]}
+      class:card--curing={cureFlashes[card.id]}
       style="
         {isAnimating ? '' : isDraggingThis
           ? `transform: translate3d(${cardDragX}px, ${isSelected ? 'calc(-27vh - 36px + 20px)' : `-${cardDragRawY}px`}, 0) scale(${cardDragScale});`
@@ -1067,6 +1072,8 @@
       class:drag-ready={isDragPastThreshold && isDraggingThis && !isDragInChargeZone}
       class:drag-charge-zone={isDragInChargeZone}
       class:drag-charge-zone-disabled={isDragInChargeZone && !chargeAffordableForDrag}
+      class:card--cursed={card.isCursed && !cureFlashes[card.id]}
+      class:card--curing={cureFlashes[card.id]}
       style="
         {isAnimating ? '' : isDraggingThis ? `transform: translate3d(${xOffset + cardDragX}px, ${(isSelected ? -80 : -arcOffset) - cardDragRawY}px, 0) rotate(0deg) scale(${cardDragScale});` : `transform: translate3d(${xOffset}px, ${isSelected ? -80 : isOther ? 15 : -(arcOffset + hoverLift)}px, 0) rotate(${isSelected ? 0 : rotation}deg) scale(${isSelected ? 1.2 : hoverScale});`}
         animation-delay: {i * 80}ms;
@@ -1810,6 +1817,68 @@
   .trial-card {
     border-color: #f1c40f !important;
     box-shadow: 0 0 10px rgba(241, 196, 15, 0.65);
+  }
+
+  /* AR-202: Cursed card visual treatment */
+  .card--cursed {
+    filter: sepia(0.3) hue-rotate(240deg) saturate(1.4) brightness(0.85);
+    /* Purple tint */
+  }
+
+  .card--cursed::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid rgba(160, 60, 220, 0.85);
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .card--cursed::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 40%, rgba(140, 0, 220, 0.08) 50%, transparent 60%);
+    pointer-events: none;
+    z-index: 11;
+    border-radius: inherit;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .card--cursed::after {
+      animation: cursed-shimmer 2.5s ease-in-out infinite;
+    }
+  }
+
+  [data-pw-animations="disabled"] .card--cursed::after {
+    animation: none;
+  }
+
+  @keyframes cursed-shimmer {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+
+  /* AR-202: Cure animation — cursed card cured by correct Charge */
+  .card--curing {
+    animation: cursed-cure 0.8s ease-out forwards;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .card--curing {
+      animation: cursed-cure 0.8s ease-out forwards;
+    }
+  }
+
+  [data-pw-animations="disabled"] .card--curing {
+    animation: none;
+  }
+
+  @keyframes cursed-cure {
+    0%   { filter: sepia(0.3) hue-rotate(240deg) saturate(1.4) brightness(0.85); box-shadow: 0 0 0px rgba(255, 200, 0, 0); }
+    30%  { filter: brightness(1.6) saturate(1.8); box-shadow: 0 0 20px rgba(255, 200, 0, 0.9); }
+    100% { filter: none; box-shadow: none; }
   }
 
   /* AR-59.23: Mastered tier label */
