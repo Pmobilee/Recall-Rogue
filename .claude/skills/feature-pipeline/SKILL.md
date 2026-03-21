@@ -203,7 +203,7 @@ If Phase 5 or 6 reveals the approach was fundamentally wrong — not just a bug,
    Compare results against the pre-change baseline. If win rates, clear rates, or economy metrics shift significantly, investigate before declaring done.
 3. **Visual inspection** of EVERY affected screen — MANDATORY, NO EXCEPTIONS:
    - Navigate to each affected screen using `__terraScenario.load()`
-   - Take screenshot (`browser_take_screenshot`). If it times out (Phaser RAF), use `browser_snapshot` (DOM snapshot) — it ALWAYS works
+   - Take screenshot using `mcp__playwright__browser_take_screenshot` ONLY. NEVER use `page.screenshot()` via `browser_run_code` — Phaser's RAF loop blocks it permanently. If it times out, use `browser_snapshot` (DOM snapshot) — it ALWAYS works
    - NEVER use `page.context().newCDPSession()` — it HANGS and blocks the session permanently
    - Check console for errors via `browser_console_messages`
    - Verify the feature works as a user would experience it

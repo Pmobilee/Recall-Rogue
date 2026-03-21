@@ -458,20 +458,6 @@ export const QA_LIMITS = {
   },
 } as const;
 
-// Knowledge combo multipliers
-// Index = consecutive correct answers this encounter (0 = no combo, 4+ = max 2.00x)
-export const COMBO_MULTIPLIERS = [1.0, 1.15, 1.30, 1.50, 1.75, 2.00];
-export const COMBO_HEAL_THRESHOLD = 6;
-export const COMBO_HEAL_AMOUNT = 1;
-
-/** Combo ring relic starting multiplier (applied at combo index 1 instead of default 1.15x) */
-export const COMBO_RING_START_MULTIPLIER = 1.10;
-
-/** Combo decay when playing a card via Quick Play (no question answered) */
-export const COMBO_DECAY_QUICK_PLAY = 1;
-/** Combo decay when answering a question wrong during Charge play */
-export const COMBO_DECAY_WRONG_ANSWER = 2;
-
 /** Segment-based enrage turn budgets. Enrage starts earlier in deeper floors. */
 export const ENRAGE_SEGMENTS: { maxFloor: number; startTurn: number }[] = [
   { maxFloor: 6, startTurn: 9 },        // Shallow Depths
@@ -504,20 +490,6 @@ export const SOFT_ENRAGE_PHASE2_BONUS = 5;
 // Speed bonus
 export const SPEED_BONUS_THRESHOLD = 0.25;    // answer in first 25% of timer
 export const SPEED_BONUS_MULTIPLIER = 1.5;
-
-export const ECHO = {
-  REAPPEARANCE_CHANCE: 0.85,
-  /** V2: Echo cards store full base power at spawn; multiplier applied at resolve time. */
-  POWER_MULTIPLIER: 1.0,
-  /** V2: Wrong Charge on an Echo card applies this penalty at resolve time (0.5× base). */
-  POWER_MULTIPLIER_WRONG: 0.5,
-  /** Standard FSRS stability bonus — kept for legacy/wrong-echo path. */
-  FSRS_STABILITY_BONUS: 3.0,
-  /** V2: Correct Echo Charge receives double FSRS credit (6.0× multiplier). */
-  FSRS_STABILITY_BONUS_CORRECT_V2: 6.0,
-  MAX_ECHOES_PER_RUN: 20,
-  INSERT_DELAY_CARDS: 3,
-} as const;
 
 /** Wrong answer still applies this fraction of card effect (0 = full fizzle, 1 = no penalty). */
 export const FIZZLE_EFFECT_RATIO = 0.25;
@@ -849,7 +821,6 @@ export interface BalanceOverrides {
 
   // Combat
   fizzleEffectRatio?: number;
-  comboMultipliers?: number[];
 
   // Healing
   postEncounterHealPct?: number;

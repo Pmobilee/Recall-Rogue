@@ -17,6 +17,9 @@
       : (numericValue <= 5 ? 24 : numericValue >= 20 ? 36 : 24 + Math.round(((numericValue - 5) / 15) * 12))
   )
 
+  // Random X offset to prevent damage numbers from stacking at the same position
+  const jitterX = (Math.random() - 0.5) * 50
+
   // Auto-remove after animation
   $effect(() => {
     const timer = setTimeout(() => onComplete?.(), 600)
@@ -28,7 +31,7 @@
   class="damage-number"
   class:critical={isCritical}
   data-testid="damage-number"
-  style="font-size: {fontSize}px;"
+  style="font-size: {fontSize}px; left: calc(50% + {jitterX}px);"
 >
   {value}
 </div>

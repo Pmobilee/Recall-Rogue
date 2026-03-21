@@ -63,6 +63,36 @@ After encounter 1, reload: `window.__terraScenario.load('combat-elite')`
 24. Run filtered console check
 25. Compile combat log with all quiz data
 
+## Element Discovery & Evaluation — MANDATORY
+
+At EVERY screenshot checkpoint, run the Runtime Element Discovery protocol from the Shared Protocol. Combat is the most element-dense screen — be thorough.
+
+### Scenario-Specific Evaluation Questions
+
+**Combat Start (#1) — Run for EACH of the 3 encounters:**
+- Run element discovery. Record total element counts per encounter type (basic vs elite vs boss).
+- Enemy sprite: does the elite look more threatening than the basic? Does the boss look distinct from both?
+- Enemy HP: does the boss have visibly more HP? Is the HP bar scaling appropriate?
+- Cards in hand: are all cards readable? Do card types (attack/shield/special) look visually distinct?
+- AP orb: is current AP clearly visible? Does it update instantly when you play a card?
+- Intent bubble: what does the enemy intend? Is the intent icon + number readable?
+- Relic tray (boss fight): are relics visible? Are their icons distinguishable at display size?
+
+**Mid-Combat (#2):**
+- After playing cards and taking damage: do damage numbers float up visually?
+- Is the combo counter visible? Does it escalate visually as combo grows?
+- After a wrong answer: does the combo reset feel clear?
+- Is the card hand updated after playing cards (fewer cards showing)?
+- Are status effects (if any) showing with stack counts and turns remaining?
+- Does mid-combat feel tense and strategic, or chaotic and confusing?
+
+**Final State (#3):**
+- Run discovery on whatever screen is active (reward, map, run end).
+- If reward screen: are options clearly presented? Can you evaluate choices?
+- If combat continues: is the HP bar accurately reflecting damage taken?
+- Overall across 3 encounters: did anything feel broken, unfair, or unclear?
+- Which encounter was most fun? Why? Which was least fun? Why?
+
 ## Checks
 - Cards can be selected and quiz appears
 - Correct answers deal damage (enemy HP decreases)

@@ -40,6 +40,37 @@ Or to test defeat:
 17. Verify screen = `combat` or `roomSelection` (next segment started)
 18. Take **Screenshot #3 (post-delve)**
 
+## Element Discovery & Evaluation — MANDATORY
+
+At EVERY screenshot checkpoint, run the Runtime Element Discovery protocol from the Shared Protocol.
+
+### Scenario-Specific Evaluation Questions
+
+**Checkpoint (#1):**
+- Run element discovery. What elements are on the retreat/delve screen?
+- Is the retreat button visually distinct from the delve button?
+- Does retreat feel like a valid strategic choice, not a "give up" button?
+- Does delve feel exciting and risky?
+- Is the risk/reward info clear: what do you keep if you retreat? What might you gain by delving?
+- Is current gold displayed? Current HP? Floor number?
+- Does this screen create genuine tension about the decision?
+
+**Run End (#2 / #2b):**
+- Run discovery. List ALL stats shown on the run end screen.
+- Are all stat values valid numbers (not NaN/undefined)?
+- Is the result title correct (Victory/Defeat/Retreat)?
+- Does victory feel celebratory? Does defeat feel like a learning moment, not punishment?
+- Is "Play Again" the most prominent button (encouraging replay)?
+- Is the Share button discoverable but not pushy?
+- Is the Home button available but secondary?
+- Does the overall presentation make you want to screenshot and share your results?
+- Are bounties (if cleared) displayed with appropriate fanfare?
+
+**Post-Delve (#3):**
+- After delving: did the next segment start correctly?
+- Is it clear you're now on a deeper floor?
+- Does the transition feel like entering unknown territory?
+
 ## Checks
 - Checkpoint shows retreat and delve buttons
 - Currency and HP values are numbers

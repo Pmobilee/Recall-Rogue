@@ -1,0 +1,78 @@
+- generic [ref=e3]:
+  - generic [ref=e19]:
+    - generic [ref=e76]:
+      - button "Whetstone" [ref=e78] [cursor=pointer]:
+        - img "Whetstone" [ref=e79]
+      - button "Iron Shield" [ref=e81] [cursor=pointer]:
+        - generic [ref=e82]: 🛡️
+      - button "Swift Boots" [ref=e84] [cursor=pointer]:
+        - img "Swift Boots" [ref=e85]
+      - generic "Empty relic slot" [ref=e86]
+      - generic "Empty relic slot" [ref=e87]
+      - generic [ref=e88]: 3/5
+    - heading "The Algorithm" [level=2]
+    - 'generic "Draw pile: 4" [ref=e89]':
+      - generic [ref=e93]: "4"
+    - 'generic "Discard pile: 0" [ref=e94]':
+      - generic [ref=e97]: "0"
+    - button "Heals 8 HP" [ref=e98] [cursor=pointer]:
+      - generic [ref=e100]: "8"
+    - group "Card hand":
+      - 'button "Heavy Strike: costs 3 AP, 20 damage. Card 1 of 5." [ref=e102] [cursor=pointer]':
+        - generic [ref=e105]:
+          - generic: "3"
+          - generic: Heavy Strike
+          - generic:
+            - generic: ⚔
+            - text: ATTACK
+          - generic:
+            - generic: Deal 20 damage
+      - 'button "Strike: costs 1 AP, 8 damage. Card 2 of 5." [ref=e106] [cursor=pointer]':
+        - generic [ref=e109]:
+          - generic: "1"
+          - generic: Strike
+          - generic:
+            - generic: ⚔
+            - text: ATTACK
+          - generic:
+            - generic: Deal 8 damage
+      - 'button "Block: costs 1 AP, 6 block. Card 3 of 5." [ref=e110] [cursor=pointer]':
+        - generic [ref=e113]:
+          - generic: "1"
+          - generic: Block
+          - generic:
+            - generic: 🛡
+            - text: SHIELD
+          - generic:
+            - generic: Gain 6 Block
+      - 'button "Lifetap: costs 2 AP, 8 drain. Card 4 of 5." [ref=e114] [cursor=pointer]':
+        - generic [ref=e117]:
+          - generic: "2"
+          - generic: Lifetap
+          - generic:
+            - generic: ⚔
+            - text: ATTACK
+          - generic:
+            - generic: Deal 8 damage. Heal 20% dealt
+      - 'button "Expose: costs 1 AP, Vuln 1t. Card 5 of 5." [ref=e118] [cursor=pointer]':
+        - generic [ref=e121]:
+          - generic: "1"
+          - generic: Expose
+          - generic:
+            - generic: ✦
+            - text: DEBUFF
+          - generic:
+            - generic: Apply Vulnerable for 1 turn
+    - button "End turn" [ref=e122] [cursor=pointer]: END TURN
+    - button "Show keyboard shortcuts (?)" [ref=e61] [cursor=pointer]: "?"
+    - generic "Player status" [ref=e123]:
+      - generic [ref=e124]:
+        - generic [ref=e126]: "3"
+        - generic [ref=e127]: AP
+      - generic [ref=e128]:
+        - generic [ref=e129]: 🛡
+        - generic [ref=e130]: "Block: 0"
+      - generic [ref=e132]:
+        - generic: 50/100
+    - button "Enemy info" [ref=e134]
+  - button "Pause" [ref=e74] [cursor=pointer]

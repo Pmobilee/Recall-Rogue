@@ -58,9 +58,10 @@ await new Promise(r => setTimeout(r, 500));
 ```
 
 Then:
-- `mcp__playwright__browser_take_screenshot` -- visual check
-- `mcp__playwright__browser_snapshot` -- DOM state
+- `mcp__playwright__browser_take_screenshot` -- visual check (ALWAYS use this MCP tool, NEVER `page.screenshot()` via `browser_run_code` — Phaser's RAF loop blocks it permanently)
+- `mcp__playwright__browser_snapshot` -- DOM state (fallback if screenshot fails)
 - `mcp__playwright__browser_console_messages` -- errors
+- **NEVER** use `page.context().newCDPSession()` — it hangs permanently
 
 ## Available Presets
 
@@ -247,11 +248,140 @@ await page.evaluate(() => {
 2. browser_evaluate -> disable animations
 3. browser_evaluate -> __terraScenario.loadCustom({ screen: 'combat', enemy: 'the_archivist', playerHp: 30, hand: ['heavy_strike', 'block', 'lifetap'], relics: ['whetstone'] })
 4. wait 500ms
-5. browser_take_screenshot -> inspect visual
-6. browser_snapshot -> check DOM
+5. mcp__playwright__browser_take_screenshot -> inspect visual (NEVER use page.screenshot() via browser_run_code — Phaser RAF blocks it)
+6. browser_snapshot -> check DOM (fallback if screenshot times out)
 7. browser_console_messages -> check errors
 8. If issues found -> fix code -> repeat from step 3
 ```
+
+## Exhaustive Element Evaluation Protocol — MANDATORY
+
+After loading any scenario and taking a screenshot, you MUST perform a full element discovery and evaluation. Do NOT just glance at the screenshot — systematically discover and question every element.
+
+### Discovery Phase (browser_evaluate)
+
+Run this after every scenario load:
+
+```javascript
+(() => {
+  const els = { buttons: [], texts: [], images: [], bars: [], cards: [], overlays: [] };
+
+  document.querySelectorAll('button, [role="button"], [data-testid], .clickable').forEach(el => {
+    if (!el.offsetParent && el.offsetWidth === 0) return;
+    const r = el.getBoundingClientRect();
+    els.buttons.push({
+      id: el.dataset?.testid || el.className?.split(' ')[0] || el.tagName,
+      text: el.textContent?.trim().slice(0, 60),
+      w: Math.round(r.width), h: Math.round(r.height),
+      y: Math.round(r.y), visible: getComputedStyle(el).display !== 'none',
+      disabled: el.disabled,
+    });
+  });
+
+  document.querySelectorAll('p, span, h1, h2, h3, h4, h5, h6, label, [class*="text"], [class*="label"], [class*="title"], [class*="stat"], [class*="value"]').forEach(el => {
+    const t = el.textContent?.trim();
+    if (!t || !el.offsetParent) return;
+    els.texts.push({
+      content: t.slice(0, 100),
+      fontSize: parseFloat(getComputedStyle(el).fontSize),
+      hasArtifacts: /undefined|null|NaN|\[object/.test(t),
+    });
+  });
+
+  document.querySelectorAll('img, [style*="background-image"]').forEach(el => {
+    if (!el.offsetParent && el.offsetWidth === 0) return;
+    els.images.push({
+      src: (el.src || el.style?.backgroundImage || '').slice(0, 80),
+      broken: el.tagName === 'IMG' && !el.complete,
+      w: Math.round(el.getBoundingClientRect().width),
+    });
+  });
+
+  document.querySelectorAll('[class*="bar"], [class*="progress"], [role="progressbar"]').forEach(el => {
+    if (!el.offsetParent) return;
+    els.bars.push({
+      class: el.className?.split(' ')[0],
+      w: Math.round(el.getBoundingClientRect().width),
+    });
+  });
+
+  document.querySelectorAll('[data-testid^="card-"], [class*="card-hand"]').forEach(el => {
+    if (!el.offsetParent) return;
+    const r = el.getBoundingClientRect();
+    els.cards.push({
+      id: el.dataset?.testid,
+      w: Math.round(r.width), h: Math.round(r.height),
+      hasContent: el.textContent?.trim().length > 0,
+    });
+  });
+
+  return {
+    screen: (() => { const s = globalThis[Symbol.for('terra:currentScreen')]; if (!s) return 'unknown'; let v; s.subscribe(x => v = x)(); return v; })(),
+    viewport: { w: window.innerWidth, h: window.innerHeight },
+    counts: Object.fromEntries(Object.entries(els).map(([k, v]) => [k, v.length])),
+    elements: els,
+  };
+})()
+```
+
+### Evaluation Phase — Question Every Element
+
+For EVERY discovered element, you must ask and answer:
+
+**Buttons/Interactives:**
+- Is it visible and not hidden behind anything?
+- Is the text readable and meaningful (not empty, not "undefined")?
+- Is it large enough to tap (>= 44x44px)?
+- Is it disabled when it should be enabled, or vice versa?
+- Does the label clearly communicate what happens when you tap it?
+- Is it positioned where a player would expect it?
+
+**Text Elements:**
+- Is the font size readable (>= 11px)?
+- Does the text contain data artifacts ("undefined", "null", "NaN")?
+- Is the text truncated or overflowing?
+- Is the content correct and meaningful?
+- Is the contrast sufficient against its background?
+- Is this text useful to the player in this context?
+
+**Images/Sprites:**
+- Did the image load (not broken)?
+- Is it the right size (not stretched/squished)?
+- Is it a real asset or a placeholder?
+- Does it look correct for what it represents?
+- Is the art quality consistent with the game's style?
+
+**Progress Bars:**
+- Does the fill match the displayed number?
+- Is the bar clearly visible?
+- Does the color communicate the right state?
+
+**Cards:**
+- Does the card have content (not blank)?
+- Are AP cost, type, name, and effect all visible?
+- Can you read the card at this size?
+- Is the card visually distinguishable from adjacent cards?
+
+**Overall Screen:**
+- Any horizontal scroll or content overflow?
+- Any elements outside the viewport?
+- Any console errors?
+- What is the first thing your eye is drawn to?
+- Does the screen feel complete and polished?
+- What would you improve first?
+- Does this screen make a new player feel welcome or confused?
+- Rate visual polish 1-10 and explain the score.
+
+### Report Format
+
+After evaluation, your report must include:
+1. Total elements discovered (by type)
+2. Total elements evaluated (MUST match discovered)
+3. Per-element pass/fail for objective questions
+4. Per-element subjective assessments
+5. Holistic screen impressions
+6. List of issues found (with severity: critical/high/medium/low/cosmetic)
+7. Top 3 improvements ranked by impact
 
 ## Rules
 

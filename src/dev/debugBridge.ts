@@ -6,6 +6,7 @@
 
 import { initPlaytestAPI } from './playtestAPI'
 import { initScenarioSimulator } from './scenarioSimulator'
+import { initScreenshotHelper } from './screenshotHelper'
 
 export interface TerraDebugSnapshot {
   currentScreen: string;
@@ -157,6 +158,10 @@ export function initDebugBridge(): void {
 
   // Initialize the scenario simulator (window.__terraScenario)
   initScenarioSimulator();
+
+  // Initialize the screenshot helper (window.__terraScreenshot)
+  initScreenshotHelper();
+  terraLog('state-change', 'Screenshot helper initialized');
 }
 
 /**

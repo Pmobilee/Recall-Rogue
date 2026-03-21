@@ -12,15 +12,15 @@
 
   let { effects, position }: Props = $props()
 
-  let showPopup = $state(false)
+  let activeEffectType = $state<string | null>(null)
 
   const EFFECT_INFO: Record<string, { name: string; icon: string; color: string; desc: (v: number, t: number) => string }> = {
     poison: { name: 'Poison', icon: '☠️', color: '#22c55e', desc: (v, t) => `${v} poison damage at end of turn (${t} turn${t !== 1 ? 's' : ''} left)` },
-    weakness: { name: 'Weakness', icon: '💧', color: '#a78bfa', desc: (v, t) => `Attacks deal 25% less damage (${t} turn${t !== 1 ? 's' : ''} left)` },
+    weakness: { name: 'Weakness', icon: '⬇', color: '#a78bfa', desc: (v, t) => `Attacks deal 25% less damage (${t} turn${t !== 1 ? 's' : ''} left)` },
     vulnerable: { name: 'Vulnerable', icon: '🎯', color: '#f87171', desc: (v, t) => `Takes 50% more damage (${t} turn${t !== 1 ? 's' : ''} left)` },
     strength: { name: 'Strength', icon: '💪', color: '#fbbf24', desc: (v, t) => `Attacks deal +25% damage per stack (${v} stack${v !== 1 ? 's' : ''})` },
     regen: { name: 'Regen', icon: '💚', color: '#4ade80', desc: (v, t) => `Heals ${v} HP at end of turn (${t} turn${t !== 1 ? 's' : ''} left)` },
-    immunity: { name: 'Immunity', icon: '🛡️', color: '#60a5fa', desc: () => `Absorbs next poison instance` },
+    immunity: { name: 'Immunity', icon: '✨', color: '#60a5fa', desc: () => `Absorbs next poison instance` },
     thorns: { name: 'Thorns', icon: '🌿', color: '#86efac', desc: (v) => `Deals ${v} damage back when hit this turn` },
     empower: { name: 'Empower', icon: '⚡', color: '#fcd34d', desc: (v) => `Next card gets +${v}% effect` },
     double_strike: { name: 'Double Strike', icon: '⚔️', color: '#fb923c', desc: (v) => `Next attack hits twice at ${v}%` },
@@ -38,12 +38,12 @@
     return EFFECT_INFO[type] ?? { name: type, icon: '❓', color: '#94a3b8', desc: (v: number, t: number) => `${type}: value ${v}, ${t} turns.` }
   }
 
-  function togglePopup() {
-    showPopup = !showPopup
+  function showEffect(type: string) {
+    activeEffectType = activeEffectType === type ? null : type
   }
 
   function dismissPopup() {
-    showPopup = false
+    activeEffectType = null
   }
 
   // Only show effects with turns remaining
@@ -57,7 +57,7 @@
       <button
         class="effect-icon"
         style="border-color: {info.color};"
-        onclick={togglePopup}
+        onclick={() => showEffect(effect.type)}
         aria-label="{info.name}: {effect.value} stacks, {effect.turnsRemaining} turns"
       >
         <span class="effect-emoji">{info.icon}</span>
@@ -69,25 +69,23 @@
     {/each}
   </div>
 
-  {#if showPopup}
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <div class="effect-popup-backdrop" onclick={dismissPopup} onkeydown={() => {}}>
-      <div class="effect-popup" class:popup-enemy={position === 'enemy'} class:popup-player={position === 'player'}>
-        <div class="popup-title">
-          {position === 'enemy' ? 'Enemy Effects' : 'Your Effects'}
-        </div>
-        {#each grouped as effect}
-          {@const info = getInfo(effect.type)}
+  {#if activeEffectType !== null}
+    {@const activeEffect = grouped.find(e => e.type === activeEffectType)}
+    {#if activeEffect}
+      {@const info = getInfo(activeEffect.type)}
+      <!-- svelte-ignore a11y_no_static_element_interactions -->
+      <div class="effect-popup-backdrop" onclick={dismissPopup} onkeydown={() => {}}>
+        <div class="effect-popup" class:popup-enemy={position === 'enemy'} class:popup-player={position === 'player'}>
           <div class="popup-row">
             <span class="popup-icon" style="color: {info.color};">{info.icon}</span>
             <div class="popup-text">
               <span class="popup-name" style="color: {info.color};">{info.name}</span>
-              <span class="popup-desc">{info.desc(effect.value, effect.turnsRemaining)}</span>
+              <span class="popup-desc">{info.desc(activeEffect.value, activeEffect.turnsRemaining)}</span>
             </div>
           </div>
-        {/each}
+        </div>
       </div>
-    </div>
+    {/if}
   {/if}
 {/if}
 

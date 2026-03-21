@@ -35,7 +35,7 @@
   import { playCardAudio } from '../../services/cardAudioManager'
   import { reshuffleEvent } from '../../services/deckManager'
   import { audioManager } from '../../services/audioService'
-  import { REVEAL_DURATION, SWOOSH_DURATION, IMPACT_DURATION, DISCARD_DURATION, TIER_UP_DURATION, type CardAnimPhase } from '../utils/mechanicAnimations'
+  import { REVEAL_DURATION, SWOOSH_DURATION, IMPACT_DURATION, DISCARD_DURATION, TIER_UP_DURATION, FIZZLE_DURATION, type CardAnimPhase } from '../utils/mechanicAnimations'
   import { turboDelay } from '../../utils/turboMode'
   import { shuffled } from '../../services/randomUtils'
   import { getRunRng, isRunRngActive, seededShuffled } from '../../services/seededRng'
@@ -95,10 +95,17 @@
   let showMustChargeTooltip = $state(false)
   let mustChargeTimer = $state<ReturnType<typeof setTimeout> | null>(null)
 
+  // M-19: "Not enough AP" tooltip — shown briefly when player taps an unaffordable card
+  let showNotEnoughAp = $state(false)
+  let notEnoughApTimer = $state<ReturnType<typeof setTimeout> | null>(null)
+
   // AR-124: Tutorial tooltip state
   let showApTutorial = $state(false)
   let showChargeTutorial = $state(false)
   let showComparisonBanner = $state(false)
+  let activeTutorial = $derived(
+    showApTutorial ? 'ap' : showChargeTutorial ? 'charge' : showComparisonBanner ? 'comparison' : null
+  )
   /** Whether the player has done a Quick Play this run (for comparison banner). */
   let hasQuickPlayed = $state(false)
   /** Whether the player has done a Charge this run (for comparison banner). */
@@ -141,6 +148,12 @@
   let isNearDeath = $derived(
     turnState != null && turnState.playerState.hp > 0 && turnState.playerState.hp < turnState.playerState.maxHP * 0.25
   )
+
+  // C-5: Sync near-death state with Phaser CombatScene for visual coordination
+  $effect(() => {
+    const scene = getCombatScene()
+    scene?.setNearDeath?.(isNearDeath)
+  })
 
   // wowFactor overlay state
   let wowFactorText = $state<string | null>(null)
@@ -333,7 +346,7 @@
     defend: 'rgba(52, 152, 219, 0.25)',
     buff: 'rgba(241, 196, 15, 0.25)',
     debuff: 'rgba(155, 89, 182, 0.25)',
-    heal: 'rgba(46, 204, 113, 0.25)',
+    heal: 'rgba(56, 189, 248, 0.25)',
   }
 
   const INTENT_BORDER_COLORS: Record<string, string> = {
@@ -342,7 +355,7 @@
     defend: 'rgba(52, 152, 219, 0.6)',
     buff: 'rgba(241, 196, 15, 0.6)',
     debuff: 'rgba(155, 89, 182, 0.6)',
-    heal: 'rgba(46, 204, 113, 0.6)',
+    heal: 'rgba(56, 189, 248, 0.6)',
   }
 
   const INTENT_LABELS: Record<string, string> = {
@@ -531,7 +544,7 @@
   let playerShield = $derived(turnState?.playerState.shield ?? 0)
   let playerHpRatio = $derived(playerHpMax > 0 ? Math.max(0, Math.min(1, playerHpCurrent / playerHpMax)) : 0)
   let playerHpColor = $derived(
-    playerHpRatio > 0.5 ? '#2ecc71' : playerHpRatio > 0.25 ? '#f59e0b' : '#ef4444'
+    playerHpRatio > 0.5 ? '#38bdf8' : playerHpRatio > 0.25 ? '#f59e0b' : '#ef4444'
   )
   let isHpCritical = $derived(playerHpRatio <= 0.15 && playerHpRatio > 0)
 
@@ -1022,12 +1035,18 @@
     const card = handCards[index]
     if (!card) return
 
+    // M-19: Show "Not enough AP" tooltip when tapping an unaffordable card
+    if ((card.apCost ?? 1) > (turnState?.apCurrent ?? 0)) {
+      showNotEnoughAp = true
+      if (notEnoughApTimer !== null) clearTimeout(notEnoughApTimer)
+      notEnoughApTimer = setTimeout(() => {
+        showNotEnoughAp = false
+        notEnoughApTimer = null
+      }, 1500)
+      return
+    }
+
     if (selectedIndex === index && cardPlayStage === 'selected') {
-      // V2 Echo: block Quick Play on Echo cards — show "Must Charge!" tooltip
-      if (card.isEcho) {
-        triggerMustChargeTooltip()
-        return
-      }
       // Second tap on selected card = Quick Play (no quiz). Delegate to handleCastDirect.
       handleCastDirect(index)
       return
@@ -1054,14 +1073,6 @@
     const card = handCards[index]
     if (!card) return
     if ((card.apCost ?? 1) > (turnState?.apCurrent ?? 0)) return
-
-    // V2 Echo: block Quick Play on Echo cards — select but show "Must Charge!" tooltip
-    if (card.isEcho) {
-      selectedIndex = index
-      cardPlayStage = 'selected'
-      triggerMustChargeTooltip()
-      return
-    }
 
     // Quick Play: bypass quiz entirely — play card immediately as correct (no quiz shown)
     const cardId = card.id
@@ -1093,6 +1104,12 @@
       cardType: card.cardType,
     })
 
+    // Quick Play uses compressed animation timings for snappier feel
+    const QP_REVEAL = 100
+    const QP_SWOOSH = 150
+    const QP_IMPACT = 150
+    const QP_DISCARD = 100
+
     setTimeout(() => {
       cardAnimations = { ...cardAnimations, [cardId]: 'swoosh' }
       setTimeout(() => {
@@ -1104,10 +1121,10 @@
             animatingCards = animatingCards.filter(c => c.id !== cardId)
             cardPlayStage = 'hand'
             selectedIndex = null
-          }, turboDelay(DISCARD_DURATION))
-        }, turboDelay(IMPACT_DURATION))
-      }, turboDelay(SWOOSH_DURATION))
-    }, turboDelay(REVEAL_DURATION))
+          }, turboDelay(QP_DISCARD))
+        }, turboDelay(QP_IMPACT))
+      }, turboDelay(QP_SWOOSH))
+    }, turboDelay(QP_REVEAL))
   }
 
   function handleCast(): void {
@@ -1224,7 +1241,7 @@
       setTimeout(() => {
         cardAnimations = { ...cardAnimations, [cardId]: null }
         animatingCards = animatingCards.filter(c => c.id !== cardId)
-      }, turboDelay(400))
+      }, turboDelay(FIZZLE_DURATION))
     } else {
       showWowFactor(card)
 
@@ -1337,7 +1354,7 @@
       markOnboardingTooltipSeen('hasSeenEndTurnTooltip')
     }
 
-    if (apCurrent > 0 && hasPlayableCards && !showEndTurnConfirm) {
+    if (apCurrent >= 2 && hasPlayableCards && !showEndTurnConfirm) {
       showEndTurnConfirm = true
       return
     }
@@ -1535,6 +1552,7 @@
     {#if turnState && enemyName}
       <div class="enemy-name-header" style="color: {categoryColor}" role="heading" aria-level="2" aria-label="{enemyName}">
         {enemyName}
+        <span class="turn-counter-label">Turn {turnState.turnNumber}</span>
       </div>
     {/if}
 
@@ -1546,20 +1564,28 @@
 
     <StatusEffectBar effects={enemyEffects} position="enemy" />
 
+    {#if turnState}
+      <div class="sr-only" aria-live="polite" role="status">
+        {enemyName}: {turnState.enemy.currentHP} of {turnState.enemy.maxHP} HP
+      </div>
+    {/if}
+
     <div class="ap-orb" class:ap-active={apCurrent > 0} class:ap-empty={apCurrent === 0} aria-label="Action points: {apCurrent}">
       <span class="ap-number">{apCurrent}</span>
+      <span class="ap-label" aria-hidden="true">AP</span>
     </div>
 
-    <div class="pile-indicator draw-pile-indicator" bind:this={drawPileEl} aria-label="Draw pile: {drawPileCount}">
+    <div class="pile-indicator draw-pile-indicator" bind:this={drawPileEl} aria-label="Draw pile: {drawPileCount}" title={pileTooltip('Draw', turnState.deck.drawPile)}>
       <div class="pile-icon" style="--stack-count: {drawStackCount}">
         {#each Array(drawStackCount) as _, idx}
           <div class="pile-card-stack" style="top: calc({idx * 2}px * var(--layout-scale, 1)); left: calc({idx * 2}px * var(--layout-scale, 1));"></div>
         {/each}
       </div>
       <span class="pile-count-label">{drawPileCount}</span>
+      <span class="deck-total-label">Deck: {drawPileCount + discardPileCount + handCards.length}</span>
     </div>
 
-    <div class="pile-indicator discard-pile-indicator" bind:this={discardPileEl} aria-label="Discard pile: {discardPileCount}">
+    <div class="pile-indicator discard-pile-indicator" bind:this={discardPileEl} aria-label="Discard pile: {discardPileCount}" title={pileTooltip('Discard', turnState.deck.discardPile, false)}>
       <div class="pile-icon" style="--stack-count: {discardStackCount}">
         {#each Array(Math.max(1, discardStackCount)) as _, idx}
           <div class="pile-card-stack" class:pile-empty={discardStackCount === 0} style="top: calc({idx * 2}px * var(--layout-scale, 1)); left: calc({idx * 2}px * var(--layout-scale, 1)); {discardStackCount === 0 ? 'opacity: 0.3;' : ''}"></div>
@@ -1580,32 +1606,33 @@
     {/each}
 
     {#if intentDisplay && cardPlayStage !== 'committed'}
-      <button
-        class="enemy-intent-bubble"
-        class:intent-expanded={intentPopupOpen}
-        style="background: {intentDisplay.color}; border-color: {intentDisplay.borderColor};"
-        aria-label={intentDetailText}
-        onclick={() => { intentPopupOpen = !intentPopupOpen }}
-      >
-        <div class="intent-bubble-summary">
-          <img class="intent-icon-img" src={enemyIntent ? getIntentIconPath(enemyIntent.type) : ''} alt=""
-            onerror={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; (e.currentTarget.nextElementSibling as HTMLElement)?.style.setProperty('display', 'inline'); }} />
-          <span class="intent-icon-fallback" style="display:none">{enemyIntent ? INTENT_EMOJI[enemyIntent.type] ?? '❓' : '❓'}</span>
-          {#if intentDisplay.text}
-            <span class="intent-value" class:intent-value-attack={intentDisplay.type === 'attack' || intentDisplay.type === 'multi_attack'}
-              class:intent-value-defend={intentDisplay.type === 'defend'}
-              class:intent-value-heal={intentDisplay.type === 'heal'}
-              class:intent-value-buff={intentDisplay.type === 'buff'}
-              class:intent-value-debuff={intentDisplay.type === 'debuff'}>{intentDisplay.text}</span>
-          {/if}
-        </div>
-        {#if intentPopupOpen}
-          <div class="intent-bubble-detail">
-            <p>{intentDetailText}</p>
+      {#key intentDetailText}
+        <button
+          class="enemy-intent-bubble"
+          class:intent-expanded={intentPopupOpen}
+          style="background: {intentDisplay.color}; border-color: {intentDisplay.borderColor};"
+          aria-label={intentDetailText}
+          onclick={() => { intentPopupOpen = !intentPopupOpen }}
+        >
+          <div class="intent-bubble-summary">
+            <img class="intent-icon-img" src={enemyIntent ? getIntentIconPath(enemyIntent.type) : ''} alt=""
+              onerror={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; (e.currentTarget.nextElementSibling as HTMLElement)?.style.setProperty('display', 'inline'); }} />
+            <span class="intent-icon-fallback" style="display:none">{enemyIntent ? INTENT_EMOJI[enemyIntent.type] ?? '❓' : '❓'}</span>
+            {#if intentDisplay.text}
+              <span class="intent-value" class:intent-value-attack={intentDisplay.type === 'attack' || intentDisplay.type === 'multi_attack'}
+                class:intent-value-defend={intentDisplay.type === 'defend'}
+                class:intent-value-heal={intentDisplay.type === 'heal'}
+                class:intent-value-buff={intentDisplay.type === 'buff'}
+                class:intent-value-debuff={intentDisplay.type === 'debuff'}>{intentDisplay.text}</span>
+            {/if}
           </div>
-        {/if}
-        <div class="intent-bubble-tail"></div>
-      </button>
+          {#if intentPopupOpen}
+            <div class="intent-bubble-detail">
+              <p>{intentDetailText}</p>
+            </div>
+          {/if}
+        </button>
+      {/key}
     {/if}
 
 
@@ -1614,7 +1641,9 @@
         class="card-backdrop"
         onclick={handleDeselect}
         aria-label="Cancel card selection"
-      ></button>
+      >
+        <span class="backdrop-cancel-hint">Tap to cancel</span>
+      </button>
     {/if}
 
     {#if showMustChargeTooltip}
@@ -1623,22 +1652,26 @@
       </div>
     {/if}
 
-    <!-- AR-124: Tutorial tooltips -->
-    {#if showApTutorial}
+    {#if showNotEnoughAp}
+      <div class="not-enough-ap-tooltip" transition:fade={{ duration: 150 }}>Not enough AP</div>
+    {/if}
+
+    <!-- AR-124: Tutorial tooltips (mutually exclusive — only the highest-priority one shows) -->
+    {#if activeTutorial === 'ap'}
       <div class="tutorial-tooltip tutorial-ap-tooltip" transition:fade={{ duration: 200 }}>
         You have {apMax} AP per turn. Each card costs AP to play.
       </div>
     {/if}
 
-    {#if showChargeTutorial}
+    {#if activeTutorial === 'charge'}
       <div class="tutorial-tooltip tutorial-charge-tooltip" transition:fade={{ duration: 200 }}>
         Charging costs +1 extra AP for the quiz power boost.
       </div>
     {/if}
 
-    {#if showComparisonBanner}
+    {#if activeTutorial === 'comparison'}
       <div class="tutorial-comparison-banner" transition:fade={{ duration: 200 }}>
-        Quick Play = safe at 1.0x. Charge = quiz for up to 3x power!
+        Quick Play = safe at 1.0x. Charge = quiz for up to 1.5x power + Speed Bonus!
       </div>
     {/if}
 
@@ -1683,24 +1716,30 @@
       <div class="wow-factor-overlay" class:wow-visible={wowFactorVisible}>{wowFactorText}</div>
     {/if}
 
-    {#if comboCount >= 4}
+    {#if comboCount >= 4 && cardPlayStage !== 'committed'}
       <div class="screen-edge-pulse" style="pointer-events: none;"></div>
     {/if}
 
     <StatusEffectBar effects={playerEffects} position="player" />
 
     <div class="player-status-strip" aria-label="Player health and block">
-      <div class="player-block-badge" class:dimmed={playerShield === 0}>
+      <div class="player-ap-inline" class:ap-active={apCurrent > 0}>
+        <span class="ap-num">{apCurrent}</span>
+        <span class="ap-label">AP</span>
+      </div>
+      {#if playerShield > 0}
+      <div class="player-block-badge">
         <span class="player-block-icon">🛡️</span>
         <span class="player-block-value">{playerShield}</span>
       </div>
+      {/if}
       <div class="player-hp-track">
         <div
           class="player-hp-fill"
           class:hp-critical={isHpCritical}
           style="width: {Math.round(playerHpRatio * 100)}%; background: {playerHpColor};"
         ></div>
-        <span class="player-hp-text">{playerHpCurrent}/{playerHpMax}</span>
+        <span class="player-hp-text" class:hp-critical-text={isHpCritical}>{playerHpCurrent}/{playerHpMax}</span>
       </div>
     </div>
 
@@ -1730,7 +1769,8 @@
       <button
         class="end-turn-btn"
         class:disabled={endTurnDisabled}
-        class:end-turn-pulse={!endTurnDisabled && (apCurrent === 0 || !hasPlayableCards)}
+        class:end-turn-pulse={!endTurnDisabled && cardPlayStage !== 'committed' && (apCurrent === 0 || !hasPlayableCards)}
+        class:has-ap-remaining={apCurrent > 0 && hasPlayableCards && !endTurnDisabled}
         data-testid="btn-end-turn"
         aria-label="End turn"
         onclick={handleEndTurn}
@@ -1754,7 +1794,7 @@
 
   {/if}
 
-  {#if synergyFlashText}
+  {#if synergyFlashText && cardPlayStage !== 'committed'}
     <div class="synergy-flash" transition:fade={{ duration: 300 }}>
       <span class="synergy-flash-icon">✦</span>
     </div>
@@ -1762,6 +1802,7 @@
 
   {#if showReshuffle}
     <div class="reshuffle-fly-zone">
+      <div class="reshuffle-label">Reshuffling...</div>
       {#each Array(reshuffleCardCount) as _, i}
         <div class="reshuffle-fly-card" style="animation-delay: {i * 40}ms"></div>
       {/each}
@@ -1944,6 +1985,7 @@
   }
 
   .ap-orb {
+    display: none; /* Hidden in portrait — AP shown inline in player-status-strip */
     position: absolute;
     left: calc(16px * var(--layout-scale, 1));
     bottom: 35vh;
@@ -2012,6 +2054,28 @@
     justify-content: center;
   }
 
+  .ap-label {
+    position: absolute;
+    bottom: calc(-14px * var(--layout-scale, 1));
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: calc(9px * var(--layout-scale, 1));
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: 0.05em;
+    pointer-events: none;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
   @keyframes ap-fire-rotate {
     from { transform: rotate(0deg) scale(0.97); }
     25% { transform: rotate(90deg) scale(1.03); }
@@ -2024,8 +2088,9 @@
   .enemy-intent-bubble {
     --intent-expanded-width: calc(200px * var(--layout-scale, 1));
     position: fixed;
-    top: calc(calc(12px * var(--layout-scale, 1)) + var(--safe-top));
-    left: calc(8px * var(--layout-scale, 1));
+    top: calc(calc(32px * var(--layout-scale, 1)) + var(--safe-top));
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 12;
     border: 2px solid;
     border-radius: 14px;
@@ -2046,7 +2111,8 @@
   }
 
   .enemy-intent-bubble:active {
-    filter: brightness(0.92);
+    transform: translateX(-50%) scale(0.95);
+    filter: brightness(0.85);
   }
 
   .enemy-intent-bubble.intent-expanded {
@@ -2124,7 +2190,7 @@
   }
 
   .intent-value-heal {
-    color: #22c55e;
+    color: #38bdf8;
   }
 
   .intent-value-buff {
@@ -2277,7 +2343,8 @@
 
   .end-turn-btn {
     position: absolute;
-    left: calc(12px * var(--layout-scale, 1));
+    right: calc(12px * var(--layout-scale, 1));
+    left: auto;
     bottom: calc(calc(12px * var(--layout-scale, 1)) + var(--safe-bottom, 0px));
     width: auto;
     min-width: calc(110px * var(--layout-scale, 1));
@@ -2369,14 +2436,48 @@
 
   .player-status-strip {
     position: absolute;
-    left: calc(140px * var(--layout-scale, 1));
-    right: calc(10px * var(--layout-scale, 1));
+    left: calc(12px * var(--layout-scale, 1));
+    right: calc(140px * var(--layout-scale, 1));
     bottom: calc(calc(14px * var(--layout-scale, 1)) + var(--safe-bottom, 0px));
     z-index: 8;
     display: flex;
     align-items: center;
     gap: calc(8px * var(--layout-scale, 1));
     pointer-events: none;
+  }
+
+  .player-ap-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(3px * var(--layout-scale, 1));
+    padding: calc(2px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
+    border-radius: 8px;
+    border: 1px solid rgba(255, 100, 0, 0.4);
+    background: rgba(60, 20, 10, 0.6);
+    min-height: calc(26px * var(--layout-scale, 1));
+    font-size: calc(13px * var(--layout-scale, 1));
+    font-weight: 700;
+    color: #f8fafc;
+    flex-shrink: 0;
+  }
+
+  .player-ap-inline.ap-active {
+    border-color: rgba(255, 100, 0, 0.8);
+    background: rgba(100, 30, 10, 0.75);
+    box-shadow: 0 0 6px 1px rgba(255, 120, 0, 0.3);
+  }
+
+  .ap-num {
+    font-size: calc(15px * var(--layout-scale, 1));
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .ap-label {
+    font-size: calc(10px * var(--layout-scale, 1));
+    opacity: 0.8;
+    letter-spacing: 0.5px;
+    line-height: 1;
   }
 
   .player-block-badge {
@@ -2569,12 +2670,14 @@
   }
 
   .draw-pile-indicator {
-    right: calc(12px * var(--layout-scale, 1));
+    left: calc(12px * var(--layout-scale, 1));
+    right: auto;
     bottom: calc(calc(200px * var(--layout-scale, 1)) + 2vh);
   }
 
   .discard-pile-indicator {
-    left: calc(12px * var(--layout-scale, 1));
+    right: calc(12px * var(--layout-scale, 1));
+    left: auto;
     bottom: calc(calc(200px * var(--layout-scale, 1)) + 2vh);
   }
 
@@ -2761,14 +2864,14 @@
     max-width: calc(240px * var(--layout-scale, 1));
   }
 
-  /* Intent bubble: top-left, below relics */
+  /* Intent bubble: center-top, below enemy name */
   .layout-landscape .enemy-intent-bubble {
     position: fixed;
-    top: 10%;
-    left: 2%;
+    top: calc(10% + env(safe-area-inset-top, 0px));
+    left: 50%;
     right: auto;
     bottom: auto;
-    transform: none;
+    transform: translateX(-50%);
   }
 
   /* Pile indicators: bottom-left, just above stats bar */
@@ -2783,8 +2886,8 @@
   .layout-landscape .discard-pile-indicator {
     position: fixed;
     bottom: calc(27vh + 36px + 8px);
-    left: 8%;
-    right: auto;
+    right: 2%;
+    left: auto;
     transform: none;
   }
 
@@ -2914,7 +3017,10 @@
     left: 0;
     right: 0;
     height: 36px;
-    padding: 0 16px;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
     background: rgba(10, 10, 26, 0.88);
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -3163,6 +3269,95 @@
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     padding-top: 6px;
     margin-top: 2px;
+  }
+
+  /* M-3: Backdrop cancel hint — visible cue that tapping the backdrop cancels selection */
+  .backdrop-cancel-hint {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.75);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: calc(12px * var(--layout-scale, 1));
+    font-weight: 600;
+    padding: calc(4px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    border-radius: 20px;
+    pointer-events: none;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+
+  /* M-19: Not enough AP tooltip */
+  .not-enough-ap-tooltip {
+    position: fixed;
+    bottom: calc(220px * var(--layout-scale, 1));
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 15, 5, 0.92);
+    color: #fca5a5;
+    font-size: calc(13px * var(--layout-scale, 1));
+    font-weight: 700;
+    padding: calc(6px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    border-radius: calc(8px * var(--layout-scale, 1));
+    border: 1px solid rgba(239, 68, 68, 0.5);
+    box-shadow: 0 0 calc(10px * var(--layout-scale, 1)) rgba(239, 68, 68, 0.3);
+    pointer-events: none;
+    z-index: 200;
+    white-space: nowrap;
+  }
+
+  /* M-20: HP critical text pulse */
+  .hp-critical-text {
+    color: #ef4444;
+    animation: hpCriticalPulse 1.2s infinite ease-in-out;
+  }
+
+  /* L-13: End Turn dim when AP remains */
+  .end-turn-btn.has-ap-remaining {
+    opacity: 0.6;
+  }
+
+  /* M-16: Deck total count label near draw pile */
+  .deck-total-label {
+    font-size: calc(9px * var(--layout-scale, 1));
+    color: rgba(255, 255, 255, 0.45);
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* L-1: Turn counter label inside enemy name header */
+  .turn-counter-label {
+    display: block;
+    font-size: calc(10px * var(--layout-scale, 1));
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.45);
+    text-transform: none;
+    letter-spacing: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    margin-top: 1px;
+  }
+
+  /* L-1: Intent pulse on content change (triggered by {#key} remount) */
+  @keyframes intentPulse {
+    0% { opacity: 0; transform: translateX(-50%) scale(0.92); }
+    100% { opacity: 1; transform: translateX(-50%) scale(1); }
+  }
+
+  .enemy-intent-bubble {
+    animation: intentPulse 300ms ease-out;
+  }
+
+  /* Reshuffle label */
+  .reshuffle-label {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: calc(11px * var(--layout-scale, 1));
+    color: rgba(255, 255, 255, 0.55);
+    white-space: nowrap;
+    pointer-events: none;
   }
 
   /* AR-113: Mastery upgrade/downgrade popups */

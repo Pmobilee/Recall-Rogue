@@ -1,0 +1,120 @@
+- generic [ref=e3]:
+  - generic [ref=e19]:
+    - generic [ref=e188]:
+      - generic "Empty relic slot" [ref=e189]
+      - generic "Empty relic slot" [ref=e190]
+      - generic "Empty relic slot" [ref=e191]
+      - generic "Empty relic slot" [ref=e192]
+      - generic "Empty relic slot" [ref=e193]
+      - generic [ref=e194]: 0/5
+    - heading "Thesis Construct" [level=2]
+    - 'generic "Draw pile: 5" [ref=e195]':
+      - generic [ref=e199]: "5"
+    - 'generic "Discard pile: 0" [ref=e200]':
+      - generic [ref=e203]: "0"
+    - button "Attacks 2 times for 6 each" [ref=e204] [cursor=pointer]:
+      - generic [ref=e206]: 6×2
+    - group "Card hand":
+      - 'button "Strike: costs 1 AP, 8 damage. Card 1 of 10." [ref=e208] [cursor=pointer]':
+        - generic [ref=e211]:
+          - generic: "1"
+          - generic: Strike
+          - generic:
+            - generic: ⚔
+            - text: ATTACK
+          - generic:
+            - generic: Deal 8 damage
+      - 'button "Strike: costs 1 AP, 8 damage. Card 2 of 10." [ref=e212] [cursor=pointer]':
+        - generic [ref=e215]:
+          - generic: "1"
+          - generic: Strike
+          - generic:
+            - generic: ⚔
+            - text: ATTACK
+          - generic:
+            - generic: Deal 8 damage
+      - 'button "Strike: costs 1 AP, 8 damage. Card 3 of 10." [ref=e216] [cursor=pointer]':
+        - generic [ref=e219]:
+          - generic: "1"
+          - generic: Strike
+          - generic:
+            - generic: ⚔
+            - text: ATTACK
+          - generic:
+            - generic: Deal 8 damage
+      - 'button "Foresight: costs 0 AP, Draw 2. Card 4 of 10." [ref=e220] [cursor=pointer]':
+        - generic [ref=e223]:
+          - generic: "0"
+          - generic: Foresight
+          - generic:
+            - generic: ✦
+            - text: UTILITY
+          - generic:
+            - generic: Draw 2 cards. Peek at next intent
+      - 'button "Block: costs 1 AP, 6 block. Card 5 of 10." [ref=e224] [cursor=pointer]':
+        - generic [ref=e227]:
+          - generic: "1"
+          - generic: Block
+          - generic:
+            - generic: 🛡
+            - text: SHIELD
+          - generic:
+            - generic: Gain 6 Block
+      - 'button "Strike: costs 1 AP, 8 damage. Card 6 of 10." [ref=e228] [cursor=pointer]':
+        - generic [ref=e231]:
+          - generic: "1"
+          - generic: Strike
+          - generic:
+            - generic: ⚔
+            - text: ATTACK
+          - generic:
+            - generic: Deal 8 damage
+      - 'button "Strike: costs 1 AP, 8 damage. Card 7 of 10." [ref=e232] [cursor=pointer]':
+        - generic [ref=e235]:
+          - generic: "1"
+          - generic: Strike
+          - generic:
+            - generic: ⚔
+            - text: ATTACK
+          - generic:
+            - generic: Deal 8 damage
+      - 'button "Strike: costs 1 AP, 8 damage. Card 8 of 10." [ref=e236] [cursor=pointer]':
+        - generic [ref=e239]:
+          - generic: "1"
+          - generic: Strike
+          - generic:
+            - generic: ⚔
+            - text: ATTACK
+          - generic:
+            - generic: Deal 8 damage
+      - 'button "Strike: costs 1 AP, 8 damage. Card 9 of 10." [ref=e240] [cursor=pointer]':
+        - generic [ref=e243]:
+          - generic: "1"
+          - generic: Strike
+          - generic:
+            - generic: ⚔
+            - text: ATTACK
+          - generic:
+            - generic: Deal 8 damage
+      - 'button "Strike: costs 1 AP, 8 damage. Card 10 of 10." [ref=e244] [cursor=pointer]':
+        - generic [ref=e247]:
+          - generic: "1"
+          - generic: Strike
+          - generic:
+            - generic: ⚔
+            - text: ATTACK
+          - generic:
+            - generic: Deal 8 damage
+    - button "End turn" [ref=e248] [cursor=pointer]: END TURN
+    - button "Show keyboard shortcuts (?)" [ref=e61] [cursor=pointer]: "?"
+    - generic "Player status" [ref=e249]:
+      - generic [ref=e250]:
+        - generic [ref=e252]: "3"
+        - generic [ref=e253]: AP
+      - generic [ref=e254]:
+        - generic [ref=e255]: 🛡
+        - generic [ref=e256]: "Block: 0"
+      - generic [ref=e258]:
+        - generic: 100/100
+    - button "Enemy info" [ref=e260]
+  - button "Pause" [ref=e74] [cursor=pointer]

@@ -40,6 +40,42 @@ After testing navigation targets:
 14. Run `window.__terraDebug()` — check interactiveElements for occluded buttons
 15. Check all camp buttons are visible and not disabled
 
+## Element Discovery & Evaluation — MANDATORY
+
+At EVERY screenshot checkpoint and after navigating to each screen, run the Runtime Element Discovery protocol from the Shared Protocol. You MUST discover all elements and evaluate each one.
+
+### Scenario-Specific Evaluation Questions
+
+**Hub Overview (#1):**
+- Run element discovery. List ALL interactive elements found with their labels, positions, and sizes.
+- For every camp button: is the sprite/icon appropriate for its function? Is the label readable against the background?
+- Is the campfire animated? Does clicking it produce sparkles?
+- Does the pet have personality (speech bubble on click)?
+- Are streak/dust pills showing valid data?
+- Would a new player know what each button does without instruction?
+- Is the layout balanced or does one area feel empty/crowded?
+
+**Library (#2):**
+- Run discovery. What tabs exist? What content is shown in each?
+- Are domain cards color-coded consistently with the rest of the game?
+- Do progress bars show meaningful progress or feel discouraging?
+- Is the mastery count motivating?
+- Are fact lists scannable (not walls of text)?
+- If no facts learned yet: does the empty state guide the player?
+
+**Settings (#3):**
+- Run discovery. What settings sections exist? What controls are in each?
+- Is every toggle/slider large enough to tap (>= 44px)?
+- Does each setting label clearly explain what it changes?
+- Are current values shown for sliders (percentage)?
+- Is the Accessibility section comprehensive and useful?
+- Would a player find the setting they're looking for quickly?
+
+**Hub Final (#4):**
+- After visiting all screens and returning: is anything different from screenshot #1?
+- Are all camp buttons still visible and not occluded?
+- Has any state changed unexpectedly from navigating?
+
 ## Checks
 - Every nav target loads the correct screen
 - No screens show "undefined", "null", "NaN" text

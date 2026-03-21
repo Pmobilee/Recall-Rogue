@@ -620,4 +620,78 @@
     font-size: calc(11px * var(--text-scale, 1));
     color: #fca5a5;
   }
+
+  /* ═══ LANDSCAPE DESKTOP OVERRIDES ═══════════════════════════════════════════ */
+
+  :global([data-layout="landscape"]) .social-screen {
+    margin-left: 100px;
+    max-width: 960px;
+    padding: 32px 48px 96px;
+  }
+
+  :global([data-layout="landscape"]) .back-btn {
+    display: none;
+  }
+
+  /* Cards grid: 2 columns in landscape */
+  :global([data-layout="landscape"]) .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Body text / card descriptions */
+  :global([data-layout="landscape"]) .card p,
+  :global([data-layout="landscape"]) .blocked-card p {
+    font-size: 15px;
+  }
+
+  /* Small labels */
+  :global([data-layout="landscape"]) .meta {
+    font-size: 13px;
+  }
+
+  :global([data-layout="landscape"]) .helper {
+    font-size: 13px;
+  }
+
+  :global([data-layout="landscape"]) .inline-message {
+    font-size: 13px;
+  }
+
+  /* Leaderboard text */
+  :global([data-layout="landscape"]) .leaderboard-row {
+    font-size: 13px;
+  }
+
+  /* Disabled state: atmospheric heading */
+  :global([data-layout="landscape"]) .blocked-card h3 {
+    font-size: 24px;
+    font-family: 'Cinzel', serif;
+  }
+
+  :global([data-layout="landscape"]) .blocked-card p {
+    font-size: 16px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* "Open Settings" button: prominent gold-bordered style */
+  :global([data-layout="landscape"]) .settings-btn {
+    min-width: 200px;
+    height: 48px;
+    border: 1px solid #f59e0b;
+    background: rgba(15, 23, 42, 0.9);
+    color: #fde68a;
+    font-size: 15px;
+  }
+
+  /* Vertically center the disabled state content */
+  :global([data-layout="landscape"]) .blocked-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 64px);
+    text-align: center;
+  }
 </style>

@@ -73,7 +73,7 @@ const LANDSCAPE_ENEMY_SIZE_BOSS = 280
 
 /** Color constants. */
 const COLOR_HP_RED = 0xe74c3c
-const COLOR_HP_GREEN = 0x2ecc71
+const COLOR_HP_BLUE = 0x38bdf8
 const COLOR_HP_YELLOW = 0xf1c40f
 const COLOR_BAR_BG = 0x333333
 const COLOR_COMMON = 0x6b7280
@@ -109,7 +109,7 @@ function enemyDisplaySize(category: 'common' | 'elite' | 'mini_boss' | 'boss', l
 
 /** Get player HP bar fill color based on ratio. */
 function playerHpColor(ratio: number): number {
-  if (ratio > 0.5) return COLOR_HP_GREEN
+  if (ratio > 0.5) return COLOR_HP_BLUE
   if (ratio > 0.25) return COLOR_HP_YELLOW
   return COLOR_HP_RED
 }
@@ -661,7 +661,7 @@ export class CombatScene extends Phaser.Scene {
     )
 
     this.playerHpBarFill = this.add.graphics().setDepth(8)
-    this.playerHpBarFill.fillStyle(COLOR_HP_GREEN, 1)
+    this.playerHpBarFill.fillStyle(COLOR_HP_BLUE, 1)
     this.playerHpBarFill.fillRoundedRect(
       barX - scaledPlayerHpBarWidth / 2, barTop,
       scaledPlayerHpBarWidth, this.playerBarMaxH, 8
@@ -1228,8 +1228,8 @@ export class CombatScene extends Phaser.Scene {
       barBottom = h * PLAYER_HP_BAR_BOTTOM_PCT
     }
     const barMidY = (barTop + barBottom) / 2
-    this.burstParticles(12, barX, barMidY, COLOR_HP_GREEN)
-    this.pulseEdgeGlow(COLOR_HP_GREEN, 0.25, 270)
+    this.burstParticles(12, barX, barMidY, COLOR_HP_BLUE)
+    this.pulseEdgeGlow(COLOR_HP_BLUE, 0.25, 270)
   }
 
   /** Flash the display zone white. */
@@ -1600,6 +1600,34 @@ export class CombatScene extends Phaser.Scene {
   }
 
   // ═════════════════════════════════════════════════════════
+  // Public near-death overlay
+  // ═════════════════════════════════════════════════════════
+
+  /** Toggle near-death red vignette overlay on the Phaser canvas. */
+  setNearDeath(active: boolean): void {
+    if (!this.vignetteGfx) return
+    if (active) {
+      this.vignetteGfx.clear()
+      const w = this.scale.width
+      const h = this.scale.height
+      // Draw a radial vignette: red semi-transparent edges
+      this.vignetteGfx.fillStyle(0xaa0000, 0.0)
+      this.vignetteGfx.fillRect(0, 0, w, h)
+      // Edge strips for vignette effect
+      this.vignetteGfx.fillStyle(0x880000, 0.15)
+      this.vignetteGfx.fillRect(0, 0, w, 30)      // top
+      this.vignetteGfx.fillRect(0, h - 30, w, 30)  // bottom
+      this.vignetteGfx.fillRect(0, 0, 30, h)       // left
+      this.vignetteGfx.fillRect(w - 30, 0, 30, h)  // right
+      this.vignetteGfx.setVisible(true)
+      this.vignetteGfx.setDepth(999)
+      this.vignetteGfx.setAlpha(1)
+    } else {
+      this.vignetteGfx.setVisible(false)
+    }
+  }
+
+  // ═════════════════════════════════════════════════════════
   // Private helpers
   // ═════════════════════════════════════════════════════════
 
@@ -1847,14 +1875,14 @@ export class CombatScene extends Phaser.Scene {
 
       // Draw overshoot first
       this.playerHpBarFill.clear()
-      this.playerHpBarFill.fillStyle(COLOR_HP_GREEN, 1)
+      this.playerHpBarFill.fillStyle(COLOR_HP_BLUE, 1)
       this.playerHpBarFill.fillRoundedRect(
         barX - scaledBarW / 2, barBottom - overshootH,
         scaledBarW, overshootH, 8
       )
 
       // Brief green flash at edges
-      this.pulseEdgeGlow(COLOR_HP_GREEN, 0.15, 200)
+      this.pulseEdgeGlow(COLOR_HP_BLUE, 0.15, 200)
 
       // After 100ms, redraw at correct height
       this.time.delayedCall(100, () => {

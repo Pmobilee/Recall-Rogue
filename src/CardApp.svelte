@@ -154,6 +154,13 @@
   import type { KnowledgeLevel } from './services/difficultyCalibration'
   import { updateRichPresence } from './services/steamService'
 
+  /** Screens that are active gameplay — HubNavBar should NOT appear on these. */
+  const GAMEPLAY_SCREENS = new Set<Screen>([
+    'combat', 'rewardRoom', 'archetypeSelection', 'retreatOrDelve',
+    'shopRoom', 'mysteryEvent', 'restRoom', 'cardReward', 'runEnd',
+    'specialEvent', 'campfire', 'masteryChallenge', 'relicReward', 'onboarding',
+  ])
+
   // Update Steam Rich Presence whenever the active screen changes.
   $effect(() => {
     updateRichPresence($currentScreen)
@@ -899,13 +906,19 @@
     bind:this={phaserContainer}
   ></div>
 
+  <!-- AR-91: Landscape sidebar navigation — shown on all non-gameplay screens (portrait renders its own bottom tab bar) -->
+  {#if $isLandscape && !showBootAnimation && !GAMEPLAY_SCREENS.has($currentScreen)}
+    <HubNavBar
+      current={normalizeHomeScreen($currentScreen)}
+      onNavigate={handleHubNavigate}
+      onOpenRelicSanctum={() => handleOpenRelicSanctum()}
+      onOpenDeckBuilder={handleOpenDeckBuilder}
+    />
+  {/if}
+
   {#if $currentScreen === 'hub' || $currentScreen === 'mainMenu' || $currentScreen === 'base'}
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div class="hub-wrapper" class:no-interact={showBootAnimation} class:boot-hidden={showBootAnimation && !hubShowBlurred} class:blurred={hubShowBlurred && !hubDeblurring} class:deblurring={hubDeblurring}>
-    <!-- AR-91: Landscape sidebar navigation (portrait renders its own bottom tab bar) -->
-    {#if $isLandscape}
-      <HubNavBar current={normalizeHomeScreen($currentScreen)} onNavigate={handleHubNavigate} />
-    {/if}
     <HubScreen
       streak={$playerSave?.stats.currentStreak ?? 0}
       lastRunSummary={$lastRunSummary}
@@ -1472,6 +1485,11 @@
     border-radius: 1px;
   }
 
+  [data-layout="landscape"] .active-run-banner {
+    margin-top: 0;
+    left: 100px;
+  }
+
   .active-run-banner {
     position: fixed;
     top: 0;
@@ -1824,6 +1842,19 @@
     .screen-transition.active.wipe-zoom {
       animation: revealFade 400ms ease-out forwards;
     }
+  }
+
+  /* ═══ LANDSCAPE DESKTOP OVERRIDES ═══════════════════════════════════════════ */
+
+  /* Global hover states for desktop */
+  [data-layout="landscape"] button:not(.sprite-hitbox):hover {
+    filter: brightness(1.15);
+    transition: filter 120ms ease, transform 120ms ease;
+  }
+
+  [data-layout="landscape"] .back-btn {
+    font-size: 14px;
+    padding: 8px 16px;
   }
 
 </style>

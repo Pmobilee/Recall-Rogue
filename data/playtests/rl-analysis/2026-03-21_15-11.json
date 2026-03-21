@@ -1,0 +1,1998 @@
+{
+  "config": {
+    "model_path": "tests/playtest/rl/models/rogue_brain_v2_masked_2M",
+    "n_episodes": 200,
+    "correct_rate": 0.75,
+    "ascension": 0
+  },
+  "episodes": [
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 166,
+      "reward": 58.52
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 128,
+      "reward": 59.71
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 134,
+      "reward": 71.27
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 167,
+      "reward": 51.36
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 188,
+      "reward": 60.24
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 166,
+      "reward": 56.19
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 201,
+      "reward": 86.14
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 148,
+      "reward": 56.03
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 121,
+      "reward": 56.5
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 144,
+      "reward": 57.04
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 151,
+      "reward": 54.74
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 137,
+      "reward": 58.29
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 161,
+      "reward": 61.41
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 141,
+      "reward": 56.15
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 102,
+      "reward": 58.02
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 127,
+      "reward": 51.37
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 121,
+      "reward": 51.41
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 146,
+      "reward": 58.05
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 116,
+      "reward": 53.26
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 144,
+      "reward": 43.03
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 158,
+      "reward": 73.74
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 170,
+      "reward": 66.35
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 122,
+      "reward": 50.8
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 144,
+      "reward": 58.72
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 109,
+      "reward": 56.8
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 143,
+      "reward": 60.17
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 136,
+      "reward": 64.12
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 116,
+      "reward": 60.01
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 153,
+      "reward": 63.68
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 130,
+      "reward": 59.8
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 114,
+      "reward": 59.56
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 127,
+      "reward": 63.79
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 153,
+      "reward": 45.86
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "defeat",
+      "steps": 154,
+      "reward": 43.88
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 95,
+      "reward": 54.82
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 181,
+      "reward": 69.2
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 157,
+      "reward": 67.78
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 118,
+      "reward": 61.44
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 173,
+      "reward": 70.08
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 163,
+      "reward": 64.9
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 141,
+      "reward": 56.42
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 168,
+      "reward": 50.98
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 158,
+      "reward": 75.95
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 121,
+      "reward": 57.21
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 148,
+      "reward": 55.91
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 127,
+      "reward": 43.22
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 145,
+      "reward": 67.24
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 141,
+      "reward": 61.87
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 117,
+      "reward": 41.45
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 115,
+      "reward": 68.4
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 146,
+      "reward": 61.38
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 157,
+      "reward": 60.76
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 109,
+      "reward": 56.02
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 180,
+      "reward": 78.71
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 137,
+      "reward": 60.56
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 153,
+      "reward": 45.52
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 134,
+      "reward": 67.55
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 117,
+      "reward": 67.33
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 159,
+      "reward": 63.12
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 115,
+      "reward": 55.74
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 170,
+      "reward": 60.3
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 158,
+      "reward": 61.31
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 191,
+      "reward": 78.72
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 143,
+      "reward": 66.51
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 155,
+      "reward": 66.57
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 126,
+      "reward": 50.76
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 110,
+      "reward": 59.98
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 126,
+      "reward": 50.27
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 136,
+      "reward": 59.15
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 122,
+      "reward": 66.61
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "defeat",
+      "steps": 146,
+      "reward": 50.57
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 133,
+      "reward": 52.61
+    },
+    {
+      "enemy": "Margin Gremlin",
+      "result": "defeat",
+      "steps": 114,
+      "reward": 22.06
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 130,
+      "reward": 52.32
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 191,
+      "reward": 62.68
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 161,
+      "reward": 61.09
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 117,
+      "reward": 54.83
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "defeat",
+      "steps": 186,
+      "reward": 58.29
+    },
+    {
+      "enemy": "Margin Gremlin",
+      "result": "defeat",
+      "steps": 125,
+      "reward": 28.08
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 144,
+      "reward": 67.82
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 115,
+      "reward": 57.75
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 174,
+      "reward": 70.89
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 146,
+      "reward": 42.76
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 150,
+      "reward": 49.2
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 119,
+      "reward": 57.12
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 128,
+      "reward": 62.58
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 141,
+      "reward": 52.0
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 164,
+      "reward": 73.97
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 106,
+      "reward": 52.09
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 168,
+      "reward": 72.84
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 165,
+      "reward": 47.91
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 127,
+      "reward": 54.87
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 165,
+      "reward": 71.65
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 134,
+      "reward": 52.52
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 126,
+      "reward": 64.67
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 122,
+      "reward": 60.09
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 132,
+      "reward": 52.26
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 144,
+      "reward": 63.78
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 153,
+      "reward": 69.96
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 135,
+      "reward": 66.27
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 164,
+      "reward": 94.3
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 130,
+      "reward": 55.96
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 111,
+      "reward": 62.74
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "defeat",
+      "steps": 167,
+      "reward": 71.66
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 120,
+      "reward": 60.34
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 164,
+      "reward": 79.05
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 124,
+      "reward": 63.27
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 158,
+      "reward": 77.91
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 148,
+      "reward": 57.78
+    },
+    {
+      "enemy": "Eraser Worm",
+      "result": "defeat",
+      "steps": 112,
+      "reward": 39.69
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 182,
+      "reward": 65.15
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 155,
+      "reward": 63.87
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 126,
+      "reward": 50.18
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 103,
+      "reward": 62.48
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 126,
+      "reward": 50.97
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 139,
+      "reward": 59.62
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 133,
+      "reward": 62.45
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 124,
+      "reward": 58.56
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 128,
+      "reward": 68.65
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 144,
+      "reward": 53.26
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 126,
+      "reward": 50.76
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 150,
+      "reward": 58.07
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 123,
+      "reward": 39.27
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 158,
+      "reward": 72.77
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 134,
+      "reward": 61.23
+    },
+    {
+      "enemy": "The Plagiarist",
+      "result": "defeat",
+      "steps": 103,
+      "reward": 33.13
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 126,
+      "reward": 53.12
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 145,
+      "reward": 56.33
+    },
+    {
+      "enemy": "Index Weaver",
+      "result": "defeat",
+      "steps": 127,
+      "reward": 32.78
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 168,
+      "reward": 73.49
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 153,
+      "reward": 59.12
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 136,
+      "reward": 60.36
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 186,
+      "reward": 68.5
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 147,
+      "reward": 41.01
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 154,
+      "reward": 60.08
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 140,
+      "reward": 43.49
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 141,
+      "reward": 72.41
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 161,
+      "reward": 49.98
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 110,
+      "reward": 57.26
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 127,
+      "reward": 53.16
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 143,
+      "reward": 64.01
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 143,
+      "reward": 60.59
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "defeat",
+      "steps": 138,
+      "reward": 43.38
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 117,
+      "reward": 53.24
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "defeat",
+      "steps": 132,
+      "reward": 45.46
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 109,
+      "reward": 63.15
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 147,
+      "reward": 61.68
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 183,
+      "reward": 47.39
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 119,
+      "reward": 58.1
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 156,
+      "reward": 46.59
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 159,
+      "reward": 61.92
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 147,
+      "reward": 61.74
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 172,
+      "reward": 65.83
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 137,
+      "reward": 56.88
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "defeat",
+      "steps": 149,
+      "reward": 55.71
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 139,
+      "reward": 62.26
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "defeat",
+      "steps": 146,
+      "reward": 33.89
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "defeat",
+      "steps": 154,
+      "reward": 39.45
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 179,
+      "reward": 61.96
+    },
+    {
+      "enemy": "The Card Catalogue",
+      "result": "defeat",
+      "steps": 116,
+      "reward": 35.33
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 182,
+      "reward": 58.7
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 158,
+      "reward": 65.69
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 151,
+      "reward": 58.28
+    },
+    {
+      "enemy": "Thesis Construct",
+      "result": "defeat",
+      "steps": 104,
+      "reward": 31.27
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 161,
+      "reward": 63.12
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 138,
+      "reward": 57.5
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 124,
+      "reward": 65.01
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "defeat",
+      "steps": 134,
+      "reward": 37.04
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 151,
+      "reward": 47.12
+    },
+    {
+      "enemy": "Staple Bug",
+      "result": "defeat",
+      "steps": 141,
+      "reward": 36.74
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 188,
+      "reward": 81.78
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 106,
+      "reward": 61.05
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 170,
+      "reward": 71.37
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 177,
+      "reward": 72.46
+    },
+    {
+      "enemy": "Staple Bug",
+      "result": "defeat",
+      "steps": 131,
+      "reward": 35.99
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 127,
+      "reward": 52.73
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 145,
+      "reward": 67.87
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 151,
+      "reward": 61.91
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 145,
+      "reward": 65.37
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 141,
+      "reward": 65.04
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 144,
+      "reward": 53.49
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 153,
+      "reward": 39.31
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 161,
+      "reward": 66.07
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 135,
+      "reward": 57.01
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "defeat",
+      "steps": 153,
+      "reward": 48.67
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 138,
+      "reward": 53.58
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 136,
+      "reward": 51.38
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 128,
+      "reward": 53.15
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 157,
+      "reward": 35.08
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 139,
+      "reward": 55.81
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 145,
+      "reward": 66.79
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 126,
+      "reward": 60.62
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 156,
+      "reward": 66.54
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 138,
+      "reward": 52.39
+    },
+    {
+      "enemy": "The Bookwyrm",
+      "result": "victory",
+      "steps": 126,
+      "reward": 65.21
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 129,
+      "reward": 37.05
+    },
+    {
+      "enemy": "Margin Gremlin",
+      "result": "defeat",
+      "steps": 128,
+      "reward": 40.66
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 154,
+      "reward": 71.9
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 163,
+      "reward": 64.52
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 130,
+      "reward": 42.39
+    }
+  ],
+  "action_counts": {
+    "19": 2589,
+    "2": 2537,
+    "16": 6269,
+    "1": 1612,
+    "0": 5815,
+    "3": 1958,
+    "20": 1397,
+    "18": 2403,
+    "9": 526,
+    "4": 1170,
+    "11": 650,
+    "10": 587,
+    "8": 474,
+    "12": 183,
+    "21": 128,
+    "28": 61,
+    "25": 38,
+    "24": 17,
+    "29": 13,
+    "23": 6
+  },
+  "card_type_plays": {},
+  "per_enemy": {
+    "Index Weaver": {
+      "wins": 139,
+      "losses": 1,
+      "total_steps": 127,
+      "total_reward": 32.77817609398673
+    },
+    "Thesis Construct": {
+      "wins": 141,
+      "losses": 1,
+      "total_steps": 104,
+      "total_reward": 31.27262882573182
+    },
+    "The Study Group": {
+      "wins": 122,
+      "losses": 0,
+      "total_steps": 0,
+      "total_reward": 0
+    },
+    "The Headmistress": {
+      "wins": 115,
+      "losses": 0,
+      "total_steps": 0,
+      "total_reward": 0
+    },
+    "Page Flutter": {
+      "wins": 164,
+      "losses": 0,
+      "total_steps": 0,
+      "total_reward": 0
+    },
+    "Eraser Worm": {
+      "wins": 149,
+      "losses": 1,
+      "total_steps": 112,
+      "total_reward": 39.68546282625254
+    },
+    "Margin Gremlin": {
+      "wins": 134,
+      "losses": 3,
+      "total_steps": 367,
+      "total_reward": 90.80521829016726
+    },
+    "Bookmark Vine": {
+      "wins": 136,
+      "losses": 0,
+      "total_steps": 0,
+      "total_reward": 0
+    },
+    "The Librarian": {
+      "wins": 71,
+      "losses": 22,
+      "total_steps": 13301,
+      "total_reward": 5463.131517621871
+    },
+    "Mold Puff": {
+      "wins": 151,
+      "losses": 0,
+      "total_steps": 0,
+      "total_reward": 0
+    },
+    "The Bookwyrm": {
+      "wins": 86,
+      "losses": 11,
+      "total_steps": 13931,
+      "total_reward": 5766.847709088936
+    },
+    "Pop Quiz": {
+      "wins": 127,
+      "losses": 0,
+      "total_steps": 0,
+      "total_reward": 0
+    },
+    "The Tutor": {
+      "wins": 132,
+      "losses": 0,
+      "total_steps": 0,
+      "total_reward": 0
+    },
+    "Staple Bug": {
+      "wins": 125,
+      "losses": 2,
+      "total_steps": 272,
+      "total_reward": 72.73384948342476
+    },
+    "The Card Catalogue": {
+      "wins": 109,
+      "losses": 1,
+      "total_steps": 116,
+      "total_reward": 35.327602623424234
+    },
+    "Overdue Golem": {
+      "wins": 154,
+      "losses": 0,
+      "total_steps": 0,
+      "total_reward": 0
+    },
+    "The Plagiarist": {
+      "wins": 119,
+      "losses": 1,
+      "total_steps": 103,
+      "total_reward": 33.1304874606575
+    },
+    "Ink Slug": {
+      "wins": 160,
+      "losses": 0,
+      "total_steps": 0,
+      "total_reward": 0
+    }
+  },
+  "encounters_won": 2334,
+  "encounters_lost": 43,
+  "encounters_total": 2377,
+  "charge_vs_quick": {
+    "charge": 13092,
+    "quick": 2420,
+    "skip": 6269
+  },
+  "chain_stats": {
+    "extended": 7742,
+    "broken": 850,
+    "total_plays": 15512
+  },
+  "correct_stats": {
+    "correct_charges": 9839,
+    "wrong_charges": 3253
+  },
+  "hp_at_victory": [
+    47,
+    53,
+    24,
+    25,
+    11,
+    74,
+    41,
+    22,
+    5,
+    63,
+    16,
+    35,
+    34,
+    51,
+    33,
+    69,
+    34,
+    43,
+    16,
+    74,
+    50,
+    25,
+    37,
+    27,
+    66,
+    33,
+    82,
+    45,
+    40,
+    6,
+    80,
+    50,
+    56,
+    38,
+    27,
+    10,
+    15,
+    40,
+    6,
+    37,
+    32,
+    33,
+    27,
+    96,
+    33,
+    23,
+    44,
+    26,
+    39,
+    71,
+    49,
+    64,
+    88,
+    40,
+    45,
+    4,
+    95,
+    74,
+    41,
+    39,
+    16,
+    42,
+    12,
+    50,
+    14,
+    30,
+    35,
+    12,
+    28,
+    15,
+    13,
+    44,
+    23,
+    29,
+    16,
+    30,
+    70,
+    61,
+    36,
+    27,
+    36,
+    66,
+    38,
+    43,
+    43,
+    73,
+    69,
+    49,
+    65,
+    57,
+    32,
+    16,
+    38,
+    16,
+    82,
+    26,
+    22,
+    52,
+    47,
+    4,
+    24,
+    12,
+    40,
+    47,
+    6,
+    19,
+    14,
+    57,
+    24,
+    59,
+    49,
+    50,
+    57,
+    19,
+    10,
+    74,
+    4,
+    25,
+    57,
+    5,
+    16,
+    12,
+    33,
+    63,
+    30,
+    23,
+    44,
+    21,
+    11,
+    20,
+    57,
+    41,
+    49,
+    33,
+    88,
+    89,
+    46,
+    6,
+    22,
+    37,
+    68,
+    28,
+    14,
+    17,
+    11,
+    42,
+    28,
+    5,
+    29,
+    29,
+    22,
+    36,
+    28,
+    25,
+    52,
+    44,
+    54
+  ],
+  "hp_at_defeat": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "turns_to_win": [
+    128,
+    134,
+    167,
+    188,
+    166,
+    201,
+    148,
+    121,
+    151,
+    137,
+    161,
+    141,
+    102,
+    121,
+    146,
+    116,
+    158,
+    170,
+    122,
+    144,
+    109,
+    143,
+    136,
+    116,
+    153,
+    130,
+    114,
+    127,
+    95,
+    181,
+    157,
+    118,
+    173,
+    163,
+    141,
+    158,
+    121,
+    148,
+    145,
+    141,
+    115,
+    146,
+    157,
+    109,
+    180,
+    137,
+    134,
+    117,
+    159,
+    115,
+    170,
+    158,
+    191,
+    143,
+    155,
+    126,
+    110,
+    126,
+    136,
+    122,
+    133,
+    130,
+    191,
+    161,
+    117,
+    144,
+    115,
+    174,
+    119,
+    128,
+    141,
+    164,
+    106,
+    168,
+    127,
+    165,
+    134,
+    126,
+    122,
+    132,
+    144,
+    153,
+    135,
+    164,
+    130,
+    111,
+    120,
+    164,
+    124,
+    158,
+    148,
+    182,
+    155,
+    126,
+    103,
+    126,
+    139,
+    133,
+    124,
+    128,
+    144,
+    126,
+    150,
+    158,
+    134,
+    126,
+    145,
+    168,
+    153,
+    136,
+    186,
+    154,
+    141,
+    110,
+    127,
+    143,
+    143,
+    117,
+    109,
+    147,
+    119,
+    156,
+    159,
+    147,
+    172,
+    137,
+    139,
+    179,
+    182,
+    158,
+    151,
+    161,
+    138,
+    124,
+    188,
+    106,
+    170,
+    177,
+    127,
+    145,
+    151,
+    145,
+    141,
+    144,
+    161,
+    135,
+    138,
+    136,
+    128,
+    139,
+    145,
+    126,
+    156,
+    138,
+    126,
+    154,
+    163
+  ],
+  "turns_to_lose": [
+    166,
+    144,
+    127,
+    144,
+    153,
+    154,
+    168,
+    127,
+    117,
+    153,
+    146,
+    114,
+    186,
+    125,
+    146,
+    150,
+    165,
+    167,
+    112,
+    123,
+    103,
+    127,
+    147,
+    140,
+    161,
+    138,
+    132,
+    183,
+    149,
+    146,
+    154,
+    116,
+    104,
+    134,
+    151,
+    141,
+    131,
+    153,
+    153,
+    157,
+    129,
+    128,
+    130
+  ],
+  "phase_counts": {
+    "room_select": 2380,
+    "combat": 21781,
+    "card_reward": 2334,
+    "relic_reward": 1059,
+    "retreat_or_delve": 754,
+    "relic_swap": 116,
+    "shop": 9
+  },
+  "room_choices": {
+    "combat": 2377,
+    "shop": 3
+  },
+  "card_rewards_picked": 2209,
+  "card_rewards_skipped": 125,
+  "relic_picks": 930,
+  "relic_skips": 13,
+  "shop_purchases": {
+    "removal": 6
+  },
+  "rest_choices": {
+    "heal": 0,
+    "upgrade": 0
+  },
+  "retreat_vs_delve": {
+    "retreat": 0,
+    "delve": 754
+  },
+  "floors_reached": [
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    3,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    3,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    3,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4
+  ]
+}

@@ -367,4 +367,76 @@
   .stats-grid-landscape {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+
+  /* ═══ LANDSCAPE DESKTOP OVERRIDES ═══════════════════════════════════════════ */
+
+  :global([data-layout="landscape"]) .journal-screen {
+    margin-left: 100px;
+    max-width: 1100px;
+    padding: 32px 48px 20px;
+  }
+
+  :global([data-layout="landscape"]) .back-btn {
+    display: none;
+  }
+
+  /* Stat values */
+  :global([data-layout="landscape"]) .stats-grid strong {
+    font-size: 28px;
+  }
+
+  /* Small labels */
+  :global([data-layout="landscape"]) .stats-grid span {
+    font-size: 13px;
+  }
+
+  /* Body text */
+  :global([data-layout="landscape"]) .meta-line {
+    font-size: 15px;
+  }
+
+  :global([data-layout="landscape"]) .bounties span {
+    font-size: 13px;
+  }
+
+  :global([data-layout="landscape"]) .meta {
+    font-size: 13px;
+  }
+
+  /* Empty state: centered with larger, styled text */
+  :global([data-layout="landscape"]) .empty-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 240px;
+    margin-top: 40px;
+  }
+
+  :global([data-layout="landscape"]) .empty-card h3 {
+    font-size: 24px;
+    font-family: 'Cinzel', serif;
+    margin: 0 0 8px;
+  }
+
+  :global([data-layout="landscape"]) .empty-card p {
+    font-size: 16px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* Dim search input when no entries exist */
+  :global([data-layout="landscape"]) .journal-screen-landscape:has(.empty-card) .search-input {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  /* Entry stat rows: min 64px tall, 15px text */
+  :global([data-layout="landscape"]) .stats-grid-landscape div {
+    min-height: 64px;
+  }
+
+  :global([data-layout="landscape"]) .stats-grid-landscape span {
+    font-size: 15px;
+  }
 </style>

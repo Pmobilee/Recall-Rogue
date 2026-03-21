@@ -1,0 +1,1096 @@
+{
+  "config": {
+    "model_path": "tests/playtest/rl/models/rogue_brain_v2_masked_2M",
+    "n_episodes": 100,
+    "correct_rate": 0.5,
+    "ascension": 0,
+    "explore_rate": 0.35
+  },
+  "episodes": [
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 186,
+      "reward": 45.5
+    },
+    {
+      "enemy": "Thesis Construct",
+      "result": "defeat",
+      "steps": 119,
+      "reward": 21.26
+    },
+    {
+      "enemy": "The Plagiarist",
+      "result": "defeat",
+      "steps": 51,
+      "reward": 0.08
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 126,
+      "reward": 20.19
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 202,
+      "reward": 47.91
+    },
+    {
+      "enemy": "The Headmistress",
+      "result": "defeat",
+      "steps": 153,
+      "reward": 22.95
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 180,
+      "reward": 25.56
+    },
+    {
+      "enemy": "The Plagiarist",
+      "result": "retreat",
+      "steps": 44,
+      "reward": 7.32
+    },
+    {
+      "enemy": "Eraser Worm",
+      "result": "defeat",
+      "steps": 103,
+      "reward": 13.86
+    },
+    {
+      "enemy": "The Card Catalogue",
+      "result": "retreat",
+      "steps": 45,
+      "reward": 7.15
+    },
+    {
+      "enemy": "The Tutor",
+      "result": "retreat",
+      "steps": 90,
+      "reward": 17.82
+    },
+    {
+      "enemy": "The Plagiarist",
+      "result": "retreat",
+      "steps": 44,
+      "reward": 8.63
+    },
+    {
+      "enemy": "Eraser Worm",
+      "result": "defeat",
+      "steps": 94,
+      "reward": 12.74
+    },
+    {
+      "enemy": "Index Weaver",
+      "result": "defeat",
+      "steps": 113,
+      "reward": 15.16
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 175,
+      "reward": 17.54
+    },
+    {
+      "enemy": "The Card Catalogue",
+      "result": "defeat",
+      "steps": 126,
+      "reward": 12.17
+    },
+    {
+      "enemy": "The Card Catalogue",
+      "result": "defeat",
+      "steps": 91,
+      "reward": 16.38
+    },
+    {
+      "enemy": "The Card Catalogue",
+      "result": "retreat",
+      "steps": 46,
+      "reward": 18.76
+    },
+    {
+      "enemy": "The Plagiarist",
+      "result": "retreat",
+      "steps": 34,
+      "reward": 10.27
+    },
+    {
+      "enemy": "The Card Catalogue",
+      "result": "defeat",
+      "steps": 99,
+      "reward": 8.63
+    },
+    {
+      "enemy": "Page Flutter",
+      "result": "defeat",
+      "steps": 136,
+      "reward": 10.2
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 191,
+      "reward": 33.55
+    },
+    {
+      "enemy": "Thesis Construct",
+      "result": "defeat",
+      "steps": 62,
+      "reward": 3.34
+    },
+    {
+      "enemy": "The Plagiarist",
+      "result": "retreat",
+      "steps": 36,
+      "reward": 4.79
+    },
+    {
+      "enemy": "The Headmistress",
+      "result": "defeat",
+      "steps": 120,
+      "reward": 19.85
+    },
+    {
+      "enemy": "The Card Catalogue",
+      "result": "defeat",
+      "steps": 55,
+      "reward": 1.75
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 123,
+      "reward": 30.29
+    },
+    {
+      "enemy": "The Card Catalogue",
+      "result": "defeat",
+      "steps": 133,
+      "reward": 11.75
+    },
+    {
+      "enemy": "The Tutor",
+      "result": "retreat",
+      "steps": 30,
+      "reward": 10.21
+    },
+    {
+      "enemy": "The Headmistress",
+      "result": "defeat",
+      "steps": 151,
+      "reward": 21.04
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 153,
+      "reward": 39.11
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 144,
+      "reward": 39.21
+    },
+    {
+      "enemy": "The Card Catalogue",
+      "result": "retreat",
+      "steps": 28,
+      "reward": 9.91
+    },
+    {
+      "enemy": "Thesis Construct",
+      "result": "defeat",
+      "steps": 113,
+      "reward": 13.45
+    },
+    {
+      "enemy": "The Study Group",
+      "result": "retreat",
+      "steps": 76,
+      "reward": 15.41
+    },
+    {
+      "enemy": "The Plagiarist",
+      "result": "defeat",
+      "steps": 70,
+      "reward": 2.21
+    },
+    {
+      "enemy": "The Headmistress",
+      "result": "retreat",
+      "steps": 51,
+      "reward": 11.1
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 135,
+      "reward": 42.18
+    },
+    {
+      "enemy": "The Card Catalogue",
+      "result": "retreat",
+      "steps": 30,
+      "reward": 10.4
+    },
+    {
+      "enemy": "The Study Group",
+      "result": "defeat",
+      "steps": 107,
+      "reward": 16.54
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 152,
+      "reward": 29.77
+    },
+    {
+      "enemy": "The Plagiarist",
+      "result": "retreat",
+      "steps": 36,
+      "reward": 7.68
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 131,
+      "reward": 29.67
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 222,
+      "reward": 36.18
+    },
+    {
+      "enemy": "Index Weaver",
+      "result": "defeat",
+      "steps": 141,
+      "reward": 21.85
+    },
+    {
+      "enemy": "Index Weaver",
+      "result": "defeat",
+      "steps": 103,
+      "reward": 9.74
+    },
+    {
+      "enemy": "The Card Catalogue",
+      "result": "defeat",
+      "steps": 78,
+      "reward": 6.22
+    },
+    {
+      "enemy": "The Card Catalogue",
+      "result": "retreat",
+      "steps": 51,
+      "reward": 10.59
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "victory",
+      "steps": 115,
+      "reward": 30.9
+    },
+    {
+      "enemy": "The Plagiarist",
+      "result": "retreat",
+      "steps": 56,
+      "reward": 17.65
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 163,
+      "reward": 31.17
+    },
+    {
+      "enemy": "The Card Catalogue",
+      "result": "defeat",
+      "steps": 150,
+      "reward": 20.0
+    },
+    {
+      "enemy": "The Plagiarist",
+      "result": "retreat",
+      "steps": 103,
+      "reward": 21.4
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 172,
+      "reward": 28.26
+    },
+    {
+      "enemy": "The Plagiarist",
+      "result": "retreat",
+      "steps": 34,
+      "reward": 10.91
+    },
+    {
+      "enemy": "The Plagiarist",
+      "result": "retreat",
+      "steps": 114,
+      "reward": 30.56
+    },
+    {
+      "enemy": "The Headmistress",
+      "result": "retreat",
+      "steps": 107,
+      "reward": 26.61
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 190,
+      "reward": 27.22
+    },
+    {
+      "enemy": "Margin Gremlin",
+      "result": "defeat",
+      "steps": 141,
+      "reward": 22.74
+    },
+    {
+      "enemy": "The Plagiarist",
+      "result": "defeat",
+      "steps": 119,
+      "reward": 14.6
+    },
+    {
+      "enemy": "Margin Gremlin",
+      "result": "defeat",
+      "steps": 129,
+      "reward": 15.46
+    },
+    {
+      "enemy": "Page Flutter",
+      "result": "defeat",
+      "steps": 91,
+      "reward": 5.32
+    },
+    {
+      "enemy": "The Card Catalogue",
+      "result": "retreat",
+      "steps": 144,
+      "reward": 38.02
+    },
+    {
+      "enemy": "The Tutor",
+      "result": "retreat",
+      "steps": 131,
+      "reward": 36.86
+    },
+    {
+      "enemy": "The Tutor",
+      "result": "retreat",
+      "steps": 38,
+      "reward": 7.82
+    },
+    {
+      "enemy": "The Card Catalogue",
+      "result": "retreat",
+      "steps": 66,
+      "reward": 25.0
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 139,
+      "reward": 20.63
+    },
+    {
+      "enemy": "The Plagiarist",
+      "result": "defeat",
+      "steps": 104,
+      "reward": 13.13
+    },
+    {
+      "enemy": "The Card Catalogue",
+      "result": "retreat",
+      "steps": 52,
+      "reward": 6.25
+    },
+    {
+      "enemy": "The Card Catalogue",
+      "result": "defeat",
+      "steps": 173,
+      "reward": 19.86
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 170,
+      "reward": 21.33
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 109,
+      "reward": 23.85
+    },
+    {
+      "enemy": "The Study Group",
+      "result": "retreat",
+      "steps": 147,
+      "reward": 29.23
+    },
+    {
+      "enemy": "Thesis Construct",
+      "result": "defeat",
+      "steps": 67,
+      "reward": 8.21
+    },
+    {
+      "enemy": "Staple Bug",
+      "result": "defeat",
+      "steps": 85,
+      "reward": 10.45
+    },
+    {
+      "enemy": "The Card Catalogue",
+      "result": "defeat",
+      "steps": 67,
+      "reward": -2.0
+    },
+    {
+      "enemy": "The Tutor",
+      "result": "retreat",
+      "steps": 34,
+      "reward": 7.74
+    },
+    {
+      "enemy": "The Tutor",
+      "result": "retreat",
+      "steps": 103,
+      "reward": 18.0
+    },
+    {
+      "enemy": "Bookmark Vine",
+      "result": "defeat",
+      "steps": 122,
+      "reward": 12.46
+    },
+    {
+      "enemy": "The Card Catalogue",
+      "result": "retreat",
+      "steps": 41,
+      "reward": 8.3
+    },
+    {
+      "enemy": "The Study Group",
+      "result": "defeat",
+      "steps": 118,
+      "reward": 14.67
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 110,
+      "reward": 13.76
+    },
+    {
+      "enemy": "Margin Gremlin",
+      "result": "defeat",
+      "steps": 111,
+      "reward": 9.73
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 135,
+      "reward": 21.9
+    },
+    {
+      "enemy": "The Plagiarist",
+      "result": "retreat",
+      "steps": 33,
+      "reward": 7.17
+    },
+    {
+      "enemy": "The Card Catalogue",
+      "result": "retreat",
+      "steps": 41,
+      "reward": 9.78
+    },
+    {
+      "enemy": "Thesis Construct",
+      "result": "defeat",
+      "steps": 105,
+      "reward": 14.95
+    },
+    {
+      "enemy": "The Card Catalogue",
+      "result": "retreat",
+      "steps": 48,
+      "reward": 9.61
+    },
+    {
+      "enemy": "The Study Group",
+      "result": "retreat",
+      "steps": 34,
+      "reward": 8.14
+    },
+    {
+      "enemy": "The Study Group",
+      "result": "retreat",
+      "steps": 52,
+      "reward": 8.24
+    },
+    {
+      "enemy": "The Headmistress",
+      "result": "retreat",
+      "steps": 56,
+      "reward": 10.1
+    },
+    {
+      "enemy": "The Librarian",
+      "result": "defeat",
+      "steps": 178,
+      "reward": 24.52
+    },
+    {
+      "enemy": "The Headmistress",
+      "result": "defeat",
+      "steps": 93,
+      "reward": 11.47
+    },
+    {
+      "enemy": "The Plagiarist",
+      "result": "retreat",
+      "steps": 75,
+      "reward": 19.13
+    },
+    {
+      "enemy": "The Study Group",
+      "result": "defeat",
+      "steps": 147,
+      "reward": 15.47
+    },
+    {
+      "enemy": "The Study Group",
+      "result": "retreat",
+      "steps": 27,
+      "reward": 9.68
+    },
+    {
+      "enemy": "Bookmark Vine",
+      "result": "defeat",
+      "steps": 118,
+      "reward": 22.0
+    },
+    {
+      "enemy": "Bookmark Vine",
+      "result": "defeat",
+      "steps": 115,
+      "reward": 16.75
+    },
+    {
+      "enemy": "The Headmistress",
+      "result": "defeat",
+      "steps": 145,
+      "reward": 31.96
+    },
+    {
+      "enemy": "Eraser Worm",
+      "result": "defeat",
+      "steps": 139,
+      "reward": 32.11
+    }
+  ],
+  "action_counts": {
+    "18": 734,
+    "2": 883,
+    "0": 1571,
+    "16": 2341,
+    "4": 642,
+    "20": 391,
+    "19": 669,
+    "1": 750,
+    "3": 602,
+    "9": 345,
+    "8": 334,
+    "21": 128,
+    "11": 342,
+    "10": 466,
+    "12": 116,
+    "28": 6,
+    "24": 3,
+    "29": 10,
+    "23": 2
+  },
+  "card_type_plays": {},
+  "per_enemy": {
+    "Staple Bug": {
+      "wins": 44,
+      "losses": 1,
+      "total_steps": 85,
+      "total_reward": 10.450871799452148
+    },
+    "Ink Slug": {
+      "wins": 47,
+      "losses": 0,
+      "total_steps": 0,
+      "total_reward": 0
+    },
+    "The Headmistress": {
+      "wins": 31,
+      "losses": 5,
+      "total_steps": 876,
+      "total_reward": 155.07925214680392
+    },
+    "Margin Gremlin": {
+      "wins": 46,
+      "losses": 3,
+      "total_steps": 381,
+      "total_reward": 47.931382829047585
+    },
+    "Page Flutter": {
+      "wins": 40,
+      "losses": 2,
+      "total_steps": 227,
+      "total_reward": 15.517415905069846
+    },
+    "Mold Puff": {
+      "wins": 38,
+      "losses": 0,
+      "total_steps": 0,
+      "total_reward": 0
+    },
+    "Thesis Construct": {
+      "wins": 32,
+      "losses": 5,
+      "total_steps": 466,
+      "total_reward": 61.214160255455184
+    },
+    "The Tutor": {
+      "wins": 42,
+      "losses": 0,
+      "total_steps": 426,
+      "total_reward": 98.4454679587502
+    },
+    "Bookmark Vine": {
+      "wins": 38,
+      "losses": 3,
+      "total_steps": 355,
+      "total_reward": 51.21050655781467
+    },
+    "The Librarian": {
+      "wins": 6,
+      "losses": 17,
+      "total_steps": 3601,
+      "total_reward": 680.2018121779955
+    },
+    "The Card Catalogue": {
+      "wins": 48,
+      "losses": 9,
+      "total_steps": 1564,
+      "total_reward": 248.52182160559988
+    },
+    "Eraser Worm": {
+      "wins": 32,
+      "losses": 3,
+      "total_steps": 336,
+      "total_reward": 58.71509396886641
+    },
+    "The Study Group": {
+      "wins": 39,
+      "losses": 3,
+      "total_steps": 708,
+      "total_reward": 117.38471492749967
+    },
+    "Overdue Golem": {
+      "wins": 31,
+      "losses": 0,
+      "total_steps": 0,
+      "total_reward": 0
+    },
+    "The Plagiarist": {
+      "wins": 40,
+      "losses": 4,
+      "total_steps": 953,
+      "total_reward": 175.53046259181357
+    },
+    "Index Weaver": {
+      "wins": 46,
+      "losses": 3,
+      "total_steps": 357,
+      "total_reward": 46.75357359510062
+    },
+    "Pop Quiz": {
+      "wins": 29,
+      "losses": 0,
+      "total_steps": 0,
+      "total_reward": 0
+    }
+  },
+  "encounters_won": 629,
+  "encounters_lost": 58,
+  "encounters_total": 687,
+  "charge_vs_quick": {
+    "charge": 4448,
+    "quick": 1603,
+    "skip": 2341
+  },
+  "chain_stats": {
+    "extended": 1607,
+    "broken": 248,
+    "total_plays": 6051
+  },
+  "correct_stats": {
+    "correct_charges": 2147,
+    "wrong_charges": 2141
+  },
+  "hp_at_victory": [
+    6,
+    17,
+    5,
+    39,
+    14,
+    27
+  ],
+  "hp_at_defeat": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    53,
+    0,
+    63,
+    84,
+    65,
+    0,
+    0,
+    0,
+    0,
+    0,
+    94,
+    91,
+    0,
+    0,
+    0,
+    0,
+    75,
+    0,
+    0,
+    0,
+    0,
+    100,
+    0,
+    0,
+    91,
+    0,
+    31,
+    0,
+    87,
+    85,
+    0,
+    0,
+    96,
+    0,
+    0,
+    0,
+    0,
+    47,
+    55,
+    0,
+    0,
+    26,
+    0,
+    79,
+    49,
+    5,
+    0,
+    0,
+    0,
+    0,
+    0,
+    19,
+    15,
+    100,
+    74,
+    0,
+    0,
+    35,
+    0,
+    0,
+    0,
+    6,
+    0,
+    0,
+    0,
+    67,
+    11,
+    0,
+    47,
+    0,
+    0,
+    0,
+    0,
+    61,
+    45,
+    0,
+    31,
+    70,
+    56,
+    70,
+    0,
+    0,
+    88,
+    0,
+    100,
+    0,
+    0,
+    0,
+    0
+  ],
+  "turns_to_win": [
+    186,
+    202,
+    153,
+    135,
+    222,
+    115
+  ],
+  "turns_to_lose": [
+    119,
+    51,
+    126,
+    153,
+    180,
+    44,
+    103,
+    45,
+    90,
+    44,
+    94,
+    113,
+    175,
+    126,
+    91,
+    46,
+    34,
+    99,
+    136,
+    191,
+    62,
+    36,
+    120,
+    55,
+    123,
+    133,
+    30,
+    151,
+    144,
+    28,
+    113,
+    76,
+    70,
+    51,
+    30,
+    107,
+    152,
+    36,
+    131,
+    141,
+    103,
+    78,
+    51,
+    56,
+    163,
+    150,
+    103,
+    172,
+    34,
+    114,
+    107,
+    190,
+    141,
+    119,
+    129,
+    91,
+    144,
+    131,
+    38,
+    66,
+    139,
+    104,
+    52,
+    173,
+    170,
+    109,
+    147,
+    67,
+    85,
+    67,
+    34,
+    103,
+    122,
+    41,
+    118,
+    110,
+    111,
+    135,
+    33,
+    41,
+    105,
+    48,
+    34,
+    52,
+    56,
+    178,
+    93,
+    75,
+    147,
+    27,
+    118,
+    115,
+    145,
+    139
+  ],
+  "phase_counts": {
+    "room_select": 762,
+    "combat": 8392,
+    "card_reward": 629,
+    "relic_reward": 299,
+    "retreat_or_delve": 206,
+    "relic_swap": 9,
+    "rest": 23,
+    "shop": 15
+  },
+  "room_choices": {
+    "combat": 687,
+    "mystery": 34,
+    "rest": 23,
+    "shop": 13,
+    "treasure": 5
+  },
+  "card_rewards_picked": 456,
+  "card_rewards_skipped": 173,
+  "relic_picks": 249,
+  "relic_skips": 41,
+  "shop_purchases": {
+    "removal": 2
+  },
+  "rest_choices": {
+    "heal": 10,
+    "upgrade": 13
+  },
+  "retreat_vs_delve": {
+    "retreat": 36,
+    "delve": 170
+  },
+  "floors_reached": [
+    4,
+    4,
+    1,
+    4,
+    4,
+    3,
+    4,
+    1,
+    3,
+    1,
+    2,
+    1,
+    3,
+    3,
+    4,
+    3,
+    3,
+    2,
+    1,
+    2,
+    4,
+    4,
+    2,
+    1,
+    3,
+    1,
+    4,
+    3,
+    1,
+    3,
+    4,
+    4,
+    1,
+    3,
+    2,
+    2,
+    1,
+    4,
+    1,
+    3,
+    4,
+    1,
+    4,
+    4,
+    4,
+    3,
+    2,
+    1,
+    4,
+    2,
+    4,
+    3,
+    3,
+    4,
+    1,
+    3,
+    3,
+    4,
+    4,
+    2,
+    4,
+    3,
+    3,
+    3,
+    1,
+    2,
+    4,
+    3,
+    1,
+    3,
+    4,
+    4,
+    3,
+    2,
+    3,
+    2,
+    1,
+    2,
+    3,
+    1,
+    2,
+    4,
+    3,
+    4,
+    1,
+    1,
+    3,
+    1,
+    1,
+    1,
+    1,
+    4,
+    2,
+    2,
+    3,
+    1,
+    4,
+    3,
+    3,
+    4
+  ]
+}

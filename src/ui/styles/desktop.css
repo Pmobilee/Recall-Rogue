@@ -144,3 +144,130 @@
     min-height: 100dvh;
   }
 }
+
+/* ═══ LANDSCAPE UX FIXES ═══════════════════════════════════════════════════ */
+@media (min-width: 1280px) {
+  /* F-01: Atmospheric background for all landscape screens */
+  [data-layout="landscape"] .card-app {
+    background: radial-gradient(ellipse at center, #151020 0%, #0d0b15 60%, #050408 100%) !important;
+  }
+
+  [data-layout="landscape"] .library-overlay,
+  [data-layout="landscape"] .settings-overlay,
+  [data-layout="landscape"] .profile-screen,
+  [data-layout="landscape"] .journal-screen,
+  [data-layout="landscape"] .leaderboards-screen,
+  [data-layout="landscape"] .social-screen {
+    background: transparent !important;
+  }
+
+  /* F-02: Global heading typography using Cinzel — bypasses Svelte scope */
+  [data-layout="landscape"] h2 {
+    font-size: 32px !important;
+    font-family: 'Cinzel', Georgia, serif !important;
+    letter-spacing: 0.03em;
+  }
+
+  [data-layout="landscape"] h3 {
+    font-size: 20px !important;
+    font-family: 'Cinzel', Georgia, serif !important;
+  }
+
+  /* F-03: Sidebar labels — swap pixel font for readable body font */
+  [data-layout="landscape"] .nav-sidebar .sidebar-label {
+    font-family: var(--font-body, system-ui, sans-serif);
+    font-size: 13px;
+  }
+
+  [data-layout="landscape"] .nav-sidebar .sidebar-btn {
+    font-family: var(--font-body, system-ui, sans-serif);
+    font-size: 13px;
+  }
+
+  /* F-04: All buttons in landscape use readable body font */
+  [data-layout="landscape"] button {
+    font-family: var(--font-body, system-ui, sans-serif);
+    font-size: 14px;
+  }
+
+  /* F-05: Tab buttons use Cinzel for a polished desktop look */
+  [data-layout="landscape"] .tab-btn {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 16px;
+  }
+
+  /* F-17: h3 override — already handled above (lines 171-174), verified present */
+
+  /* F-18: Profile stat cards — swap Courier New for body font */
+  [data-layout="landscape"] .profile-screen {
+    font-family: var(--font-body, system-ui, sans-serif);
+  }
+
+  /* F-20: Domain card hover — brighten existing domain color instead of amber border */
+  [data-layout="landscape"] .domain-card:hover {
+    filter: brightness(1.15);
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.2);
+  }
+
+  /* F-21: Body font-family landscape override — remove Courier New */
+  [data-layout="landscape"] body {
+    font-family: var(--font-body, system-ui, sans-serif);
+  }
+
+  /* F-24: Lore grid font size and family */
+  [data-layout="landscape"] .lore-grid,
+  [data-layout="landscape"] .lore-card {
+    font-family: var(--font-body, system-ui, sans-serif);
+    font-size: 14px;
+  }
+
+  /* F-25: Detail grid font size and family */
+  [data-layout="landscape"] .detail-grid,
+  [data-layout="landscape"] .detail-card,
+  [data-layout="landscape"] .fact-detail {
+    font-size: 14px;
+    font-family: var(--font-body, system-ui, sans-serif);
+  }
+
+  /* F-26: Variant list font size and family */
+  [data-layout="landscape"] .variant-list,
+  [data-layout="landscape"] .variant-item {
+    font-size: 14px;
+    font-family: var(--font-body, system-ui, sans-serif);
+  }
+
+  /* F-27: Profile h4 landscape override */
+  [data-layout="landscape"] h4 {
+    font-size: 16px;
+    font-family: 'Cinzel', Georgia, serif;
+  }
+
+  /* F-28: Checkboxes — reduce to mouse-friendly size on desktop */
+  [data-layout="landscape"] input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* F-30: Library detail card h3 — prevent long words overflowing */
+  [data-layout="landscape"] .detail-card h3 {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  /* F-32: Sidebar emoji fallback — use body font for consistent rendering */
+  [data-layout="landscape"] .nav-icon-fallback {
+    font-family: var(--font-body, system-ui, sans-serif);
+  }
+
+  /* F-34: Sidebar active state — higher contrast border and background */
+  [data-layout="landscape"] .sidebar-btn.active {
+    border-left-color: rgba(245, 158, 11, 0.9);
+    background: rgba(30, 50, 80, 0.6);
+  }
+
+  /* F-35: Settings toggle/slider rows — wider label column to prevent clipping */
+  [data-layout="landscape"] .toggle-row,
+  [data-layout="landscape"] .slider-row {
+    grid-template-columns: 200px 1fr auto;
+  }
+}

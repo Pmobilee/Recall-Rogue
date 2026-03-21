@@ -674,4 +674,57 @@
   .settings-panel-content .settings-section {
     max-width: 560px;
   }
+
+  /* ═══ LANDSCAPE DESKTOP OVERRIDES ═══════════════════════════════════════════ */
+
+  :global([data-layout="landscape"]) .settings-overlay {
+    margin-left: 100px;
+  }
+
+  :global([data-layout="landscape"]) .back-btn {
+    display: none;
+  }
+
+  /* Widen the content panel so it uses available horizontal space */
+  :global([data-layout="landscape"]) .settings-panel-content .settings-section {
+    max-width: 800px;
+  }
+
+  /* Body text / labels — larger font and taller click targets */
+  :global([data-layout="landscape"]) .toggle-row,
+  :global([data-layout="landscape"]) .slider-row {
+    font-size: 15px;
+    min-height: 56px;
+  }
+
+  /* Volume sliders: ensure track is at least 280px wide */
+  :global([data-layout="landscape"]) .slider-row {
+    grid-template-columns: calc(140px * var(--layout-scale, 1)) minmax(280px, 1fr) auto;
+  }
+
+  /* Section headings */
+  :global([data-layout="landscape"]) .settings-section h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  /* More breathing room between sections */
+  :global([data-layout="landscape"]) .settings-panel-content {
+    gap: 32px;
+  }
+
+  /* Toggle checkboxes: larger, easier to tap */
+  :global([data-layout="landscape"]) input[type='checkbox'] {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Small labels */
+  :global([data-layout="landscape"]) .category-btn {
+    font-size: 13px;
+  }
+
+  :global([data-layout="landscape"]) .chip {
+    font-size: 13px;
+  }
 </style>

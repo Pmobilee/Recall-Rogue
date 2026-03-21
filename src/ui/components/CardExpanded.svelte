@@ -102,6 +102,8 @@
   let quizResultState = $state<'correct' | 'wrong' | null>(null)
   let showSpeedBonus = $state(false)
   let timerExpired = $state(false)
+  let waitingForGotIt = $state(false)
+  let showTimerExpiredLabel = $state(false)
   let touchStartY = $state<number | null>(null)
   let showHintMenu = $state(false)
   let hintUsed = $state(false)
@@ -125,6 +127,7 @@
   let correctRevealTimeoutId: ReturnType<typeof setTimeout> | undefined
   let speedBonusTimeoutId: ReturnType<typeof setTimeout> | undefined
   let quizResultTimeoutId: ReturnType<typeof setTimeout> | undefined
+  let timerExpiredLabelTimeoutId: ReturnType<typeof setTimeout> | undefined
 
   function timerTick(now: number): void {
     if (!timerEnabled || answersDisabled || timerExpired) return
@@ -147,6 +150,8 @@
     lastTimerUpdateMs = 0
     elapsed = 0
     timerExpired = false
+    waitingForGotIt = false
+    showTimerExpiredLabel = false
     showHintMenu = false
     hintUsed = false
     firstLetterHint = null
@@ -160,6 +165,16 @@
       if (correctRevealTimeoutId !== undefined) clearTimeout(correctRevealTimeoutId)
       if (speedBonusTimeoutId !== undefined) clearTimeout(speedBonusTimeoutId)
       if (quizResultTimeoutId !== undefined) clearTimeout(quizResultTimeoutId)
+      if (timerExpiredLabelTimeoutId !== undefined) clearTimeout(timerExpiredLabelTimeoutId)
+    }
+  })
+
+  $effect(() => {
+    if (timerExpired) {
+      showTimerExpiredLabel = true
+      timerExpiredLabelTimeoutId = setTimeout(() => {
+        showTimerExpiredLabel = false
+      }, 2000)
     }
   })
 
@@ -191,6 +206,7 @@
     if (!isCorrect) {
       correctRevealTimeoutId = setTimeout(() => {
         answerRevealed = true
+        waitingForGotIt = true
       }, 800)
     } else {
       answerRevealed = true
@@ -204,9 +220,12 @@
       }, 500)
     }
 
-    feedbackTimeoutId = setTimeout(() => {
-      onanswer(index, isCorrect, speedBonus)
-    }, 1600)
+    if (isCorrect) {
+      feedbackTimeoutId = setTimeout(() => {
+        onanswer(index, isCorrect, speedBonus)
+      }, 1600)
+    }
+    // Wrong answers wait for "Got it" button tap — no auto-dismiss
   }
 
   function getAnswerClass(index: number): string {
@@ -301,6 +320,7 @@
     if (speedBonusTimeoutId !== undefined) clearTimeout(speedBonusTimeoutId)
     if (kbdHighlightTimeoutId !== undefined) clearTimeout(kbdHighlightTimeoutId)
     if (quizResultTimeoutId !== undefined) clearTimeout(quizResultTimeoutId)
+    if (timerExpiredLabelTimeoutId !== undefined) clearTimeout(timerExpiredLabelTimeoutId)
   })
 </script>
 
@@ -375,6 +395,23 @@
     <div class="first-letter-hint">Starts with: {firstLetterHint}</div>
   {/if}
 
+  {#if timerEnabled}
+    <div class="timer-bar-container">
+      <div
+        class="timer-bar-fill"
+        style="--fraction: {timerFraction}; background: {timerExpired ? '#64748b' : timerColor};"
+      ></div>
+      <div
+        class="speed-bonus-marker"
+        style="left: {(1 - speedBonusThreshold) * 100}%"
+      ></div>
+      <span class="timer-seconds">{secondsRemaining}s</span>
+    </div>
+    {#if showTimerExpiredLabel}
+      <div class="timer-expired-label" aria-live="polite" role="status">Speed Bonus lost!</div>
+    {/if}
+  {/if}
+
   <div
     class="card-answers"
     class:card-answers-landscape={$isLandscape}
@@ -388,6 +425,7 @@
         class:answer-kbd-highlight={keyboardHighlightIndex === i}
         data-testid="quiz-answer-{i}"
         disabled={answersDisabled || eliminatedIndices.has(i)}
+        aria-label={eliminatedIndices.has(i) ? `${answer} — eliminated by hint` : answer}
         onclick={() => handleAnswer(i)}
       >
         {#if $isLandscape}
@@ -398,18 +436,17 @@
     {/each}
   </div>
 
-  {#if showSpeedBonus}
-    <div class="speed-bonus-badge">SPEED BONUS</div>
+  {#if waitingForGotIt}
+    <button
+      class="got-it-btn"
+      onclick={() => onanswer(selectedAnswerIndex!, false, false)}
+    >
+      Got it
+    </button>
   {/if}
 
-  {#if timerEnabled}
-    <div class="timer-bar-container">
-      <div
-        class="timer-bar-fill"
-        style="--fraction: {timerFraction}; background: {timerColor};"
-      ></div>
-      <span class="timer-seconds">{secondsRemaining}s</span>
-    </div>
+  {#if showSpeedBonus}
+    <div class="speed-bonus-badge" aria-live="polite" role="status">SPEED BONUS</div>
   {/if}
 
   <div class="action-row">
@@ -449,6 +486,8 @@
       class="quiz-result-overlay"
       class:quiz-result-correct={quizResultState === 'correct'}
       class:quiz-result-wrong={quizResultState === 'wrong'}
+      role="status"
+      aria-live="assertive"
     >
       <span class="quiz-result-text">
         {quizResultState === 'correct' ? 'CORRECT' : 'WRONG'}
@@ -798,7 +837,8 @@
     height: 4px;
     background: rgba(30, 40, 60, 0.6);
     border-radius: 2px;
-    overflow: hidden;
+    /* overflow: hidden removed so speed-bonus-marker is not clipped */
+    overflow: visible;
     margin-top: calc(8px * var(--layout-scale, 1));
   }
 
@@ -1000,5 +1040,63 @@
   @keyframes quiz-result-flash {
     from { opacity: 0; }
     to   { opacity: 1; }
+  }
+
+  /* Sub-step 1: "Got it" confirmation button after wrong answer */
+  .got-it-btn {
+    display: block;
+    width: calc(100% - 24px * var(--layout-scale, 1));
+    min-height: 48px;
+    margin: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    background: linear-gradient(180deg, rgba(30, 50, 80, 0.95) 0%, rgba(20, 35, 60, 0.98) 100%);
+    border: 1.5px solid rgba(100, 140, 220, 0.5);
+    border-radius: 8px;
+    color: #93c5fd;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-size: calc(10px * var(--text-scale, 1));
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    transition: all 150ms ease;
+    box-shadow: 0 0 10px rgba(96, 165, 250, 0.15);
+  }
+
+  .got-it-btn:hover {
+    background: linear-gradient(180deg, rgba(40, 65, 100, 0.95) 0%, rgba(28, 48, 80, 0.98) 100%);
+    border-color: rgba(100, 140, 220, 0.8);
+    box-shadow: 0 0 14px rgba(96, 165, 250, 0.3);
+  }
+
+  .got-it-btn:active {
+    transform: scale(0.98);
+  }
+
+  /* Sub-step 7: "Speed Bonus lost!" label shown when timer expires */
+  .timer-expired-label {
+    text-align: center;
+    color: #94a3b8;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-size: calc(8px * var(--text-scale, 1));
+    padding: calc(4px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    animation: fade-in-out 2s ease forwards;
+  }
+
+  @keyframes fade-in-out {
+    0%   { opacity: 0; }
+    15%  { opacity: 1; }
+    75%  { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  /* Sub-step 8: gold speed bonus threshold marker on timer bar */
+  .speed-bonus-marker {
+    position: absolute;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: #D4AF37;
+    border-radius: 1px;
+    pointer-events: none;
+    z-index: 1;
   }
 </style>

@@ -32,6 +32,43 @@ URL: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 14. Run filtered console check
 15. Take **Screenshot #4 (final)**
 
+## Element Discovery & Evaluation — MANDATORY
+
+At EVERY screenshot checkpoint, run the Runtime Element Discovery protocol from the Shared Protocol.
+
+### Scenario-Specific Evaluation Questions
+
+**Shop Room (#1):**
+- Run element discovery. List ALL shop items found (relics and cards) with names and prices.
+- For each shop item: is the name readable? Is the price visible and correctly formatted (number + gold icon)?
+- Can you tell which items you can afford vs which are too expensive?
+- Is the "Leave Shop" button clearly visible and not easy to accidentally press?
+- Are relic descriptions useful enough to make an informed purchase decision?
+- Does the shop feel like a meaningful strategic stop or a boring detour?
+- Is card removal option discoverable?
+
+**Rest Room (#2):**
+- Run discovery. What options are available (heal, study/upgrade)?
+- Does the heal option clearly show how much HP you'll recover?
+- Does the upgrade/study option clearly explain what you gain?
+- Is the trade-off between healing and upgrading clear?
+- Does the rest room feel like a welcome respite from combat?
+- Is the room background loaded and atmospheric?
+
+**Mystery Event (#3):**
+- Run discovery. What is the event title? What choices are presented?
+- Is the narrative text readable and atmospheric?
+- Do the choices present a genuine decision (not one obvious best option)?
+- Is the outcome text clear about what you gained or lost?
+- Does the event image load and match the narrative?
+- Does the mystery event feel exciting and unpredictable?
+
+**Final (#4):**
+- Run discovery on whatever screen is showing.
+- Across all 3 room types: did the visual style feel consistent?
+- Were transitions between rooms smooth?
+- Did any room type feel more polished than the others?
+
 ## Checks
 - Shop displays items with prices
 - Rest room shows heal and upgrade options

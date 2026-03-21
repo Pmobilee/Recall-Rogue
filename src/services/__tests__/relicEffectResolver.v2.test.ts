@@ -166,39 +166,6 @@ describe('resolveChargeCorrectEffects', () => {
     });
   });
 
-  describe('combo_ring', () => {
-    it('sets comboRingActive on the first Charge correct of the turn', () => {
-      const result = resolveChargeCorrectEffects(
-        new Set(['combo_ring']),
-        {
-          answerTimeMs: 5000,
-          cardTier: 1,
-          cardType: 'attack',
-          isFirstChargeThisTurn: true,
-          chargeCountThisEncounter: 1,
-          mirrorUsedThisEncounter: false,
-          adrenalineShard_usedThisTurn: false,
-        },
-      );
-      expect(result.comboRingActive).toBe(true);
-    });
-
-    it('does NOT set comboRingActive on subsequent Charges this turn', () => {
-      const result = resolveChargeCorrectEffects(
-        new Set(['combo_ring']),
-        {
-          answerTimeMs: 5000,
-          cardTier: 1,
-          cardType: 'attack',
-          isFirstChargeThisTurn: false,
-          chargeCountThisEncounter: 2,
-          mirrorUsedThisEncounter: false,
-          adrenalineShard_usedThisTurn: false,
-        },
-      );
-      expect(result.comboRingActive).toBe(false);
-    });
-  });
 });
 
 // ─── resolveChargeWrongEffects ──────────────────────────────────────
@@ -312,34 +279,6 @@ describe('resolveChainCompleteEffects', () => {
     });
   });
 
-  describe('echo_chamber', () => {
-    it('chainLength 3 → echoReplay = true, echoCardPower = 0.6', () => {
-      const result = resolveChainCompleteEffects(
-        new Set(['echo_chamber']),
-        ctx(3),
-      );
-      expect(result.echoReplay).toBe(true);
-      expect(result.echoCardPower).toBe(0.6);
-    });
-
-    it('chainLength 2 → echoReplay = true (threshold now 2+), echoCardPower = 0.6', () => {
-      const result = resolveChainCompleteEffects(
-        new Set(['echo_chamber']),
-        ctx(2),
-      );
-      expect(result.echoReplay).toBe(true);
-      expect(result.echoCardPower).toBe(0.6);
-    });
-
-    it('chainLength 1 → echoReplay = false', () => {
-      const result = resolveChainCompleteEffects(
-        new Set(['echo_chamber']),
-        ctx(1),
-      );
-      expect(result.echoReplay).toBe(false);
-      expect(result.echoCardPower).toBe(0);
-    });
-  });
 });
 
 // ─── resolveSurgeStartEffects ────────────────────────────────────────

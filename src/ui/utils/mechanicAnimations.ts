@@ -16,6 +16,9 @@ export const DISCARD_DURATION = turboDelay(200);
 /** Tier-up celebration duration (ms) */
 export const TIER_UP_DURATION = turboDelay(600);
 
+/** Card fizzle (wrong answer / cancelled) duration (ms) */
+export const FIZZLE_DURATION = 400;
+
 /** Animation phase for card play sequence */
 export type CardAnimPhase = 'reveal' | 'swoosh' | 'impact' | 'discard' | 'tier-up' | 'fizzle' | null;
 

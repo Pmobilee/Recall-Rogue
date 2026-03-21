@@ -14,19 +14,18 @@
       "mcp__playwright__browser_run_code",
       "mcp__svelte__*",
       "mcp__context7__*",
-      "mcp__playwright-test__*",
       "mcp__playwright__browser_click",
       "mcp__playwright__browser_evaluate",
       "mcp__playwright__browser_close",
       "WebSearch",
       "mcp__playwright__browser_take_screenshot",
-      "mcp__playwright__browser_console_messages"
+      "mcp__playwright__browser_console_messages",
+      "mcp__playwright__browser_resize"
     ]
   },
   "enabledMcpjsonServers": [
     "svelte",
     "playwright",
-    "playwright-test",
     "context7"
   ]
 }

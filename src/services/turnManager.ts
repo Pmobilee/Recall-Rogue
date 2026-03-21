@@ -28,11 +28,6 @@ import { applyStatusEffect } from '../data/statusEffects';
 import type { EnemyReactContext } from '../data/enemies';
 import { hasSynergy, getMasteryAscensionBonus } from './relicSynergyResolver';
 import {
-  COMBO_MULTIPLIERS,
-  COMBO_HEAL_THRESHOLD,
-  COMBO_HEAL_AMOUNT,
-  COMBO_DECAY_QUICK_PLAY,
-  COMBO_DECAY_WRONG_ANSWER,
   PLAYER_START_HP,
   START_AP_PER_TURN,
   MAX_AP_PER_TURN,
@@ -53,7 +48,6 @@ import {
   resolvePerfectTurnBonus,
   resolveTurnEndEffects,
   resolveTurnStartEffects,
-  resolveComboStartValue,
   resolveChargeCorrectEffects,
   resolveChainMultiplierBonus,
   resolvePrismaticShardApBonus,
@@ -110,8 +104,6 @@ export interface TurnState {
   playerState: PlayerCombatState;
   enemy: EnemyInstance;
   deck: CardRunState;
-  comboCount: number;
-  baseComboCount: number;
   cardsPlayedThisTurn: number;
   cardsCorrectThisTurn: number;
   isPerfectTurn: boolean;
@@ -150,13 +142,17 @@ export interface TurnState {
   ascensionTier1OptionCount: number;
   ascensionForceHardQuestionFormats: boolean;
   ascensionPreventFlee: boolean;
-  ascensionComboResetsOnTurnEnd: boolean;
   result: EncounterResult;
   turnLog: TurnLogEntry[];
   /** Facts answered (correct or incorrect) during this encounter */
   encounterAnsweredFacts: string[];
   /** Consecutive correct answers this entire encounter (for Perfect Storm synergy). */
   consecutiveCorrectThisEncounter: number;
+  /**
+   * UI display counter — mirrors consecutiveCorrectThisEncounter.
+   * Kept as a separate field for CardCombatOverlay display compatibility.
+   */
+  comboCount: number;
   /** Number of Tier 3 (mastered) cards in deck at encounter start (for Mastery Ascension). */
   tier3CardCount: number;
   /** Turns remaining for Phoenix Rage damage bonus (+50%). 0 = inactive. */
@@ -197,7 +193,6 @@ export interface TurnState {
 
 export interface PlayCardResult {
   effect: CardEffectResult;
-  comboCount: number;
   enemyDefeated: boolean;
   fizzled: boolean;
   blocked: boolean;
@@ -300,8 +295,6 @@ export function startEncounter(
     playerState,
     enemy,
     deck,
-    comboCount: 0,
-    baseComboCount: 0,
     cardsPlayedThisTurn: 0,
     cardsCorrectThisTurn: 0,
     isPerfectTurn: false,
@@ -339,11 +332,11 @@ export function startEncounter(
     ascensionTier1OptionCount: 3,
     ascensionForceHardQuestionFormats: false,
     ascensionPreventFlee: false,
-    ascensionComboResetsOnTurnEnd: false,
     result: null,
     turnLog: [],
     encounterAnsweredFacts: [],
     consecutiveCorrectThisEncounter: 0,
+    comboCount: 0, // mirrors consecutiveCorrectThisEncounter for UI display
     tier3CardCount: 0,
     phoenixRageTurnsRemaining: 0,
     glassPenaltyRemovedTurnsRemaining: 0,
@@ -397,7 +390,6 @@ export function playCardAction(
     };
     return {
       effect,
-      comboCount: turnState.comboCount,
       enemyDefeated: false,
       fizzled: false,
       blocked: true,
@@ -408,9 +400,6 @@ export function playCardAction(
       masteryChangedCardId: null,
     };
   }
-
-  turnState.baseComboCount = resolveComboStartValue(turnState.activeRelicIds);
-  if (turnState.comboCount < turnState.baseComboCount) turnState.comboCount = turnState.baseComboCount;
 
   const { deck, playerState, enemy } = turnState;
   const cardInHand = deck.hand.find((card) => card.id === cardId);
@@ -468,7 +457,6 @@ export function playCardAction(
     });
     return {
       effect: blockedEffect,
-      comboCount: turnState.comboCount,
       enemyDefeated: false,
       fizzled: false,
       blocked: true,
@@ -500,7 +488,6 @@ export function playCardAction(
     });
     return {
       effect: blockedEffect,
-      comboCount: turnState.comboCount,
       enemyDefeated: false,
       fizzled: false,
       blocked: true,
@@ -539,8 +526,8 @@ export function playCardAction(
     if (mode === 'relaxed') {
       // AP is NOT refunded — wrong answers always cost AP regardless of mode
       const fizzledEffect = createNoEffect(card);
-      turnState.comboCount = Math.max(turnState.baseComboCount, turnState.comboCount - COMBO_DECAY_WRONG_ANSWER);
       turnState.consecutiveCorrectThisEncounter = 0;
+      turnState.comboCount = 0;
       turnState.cardsPlayedThisTurn += 1;
       turnState.isPerfectTurn = false;
 
@@ -593,7 +580,6 @@ export function playCardAction(
 
       return {
         effect: fizzledEffect,
-        comboCount: turnState.comboCount,
         enemyDefeated: false,
         fizzled: true,
         blocked: false,
@@ -606,8 +592,8 @@ export function playCardAction(
     }
 
 
-    turnState.comboCount = Math.max(turnState.baseComboCount, turnState.comboCount - COMBO_DECAY_WRONG_ANSWER);
     turnState.consecutiveCorrectThisEncounter = 0;
+    turnState.comboCount = 0;
     turnState.cardsPlayedThisTurn += 1;
     turnState.isPerfectTurn = false;
 
@@ -701,7 +687,6 @@ export function playCardAction(
 
     return {
       effect: fizzledEffect,
-      comboCount: turnState.comboCount,
       enemyDefeated: fizzledEffect.enemyDefeated,
       fizzled: true,
       blocked: false,
@@ -760,7 +745,6 @@ export function playCardAction(
     card,
     playerState,
     enemy,
-    turnState.comboCount,
     speedBonus,
     turnState.buffNextCard,
     turnState.lastCardType,
@@ -1076,30 +1060,11 @@ export function playCardAction(
   // Store last resolved effect for mirror
   turnState.lastCardEffect = { ...effect };
 
-  if (playMode === 'quick') {
-    // Quick play: small combo decay — safe but costs momentum
-    turnState.comboCount = Math.max(turnState.baseComboCount, turnState.comboCount - COMBO_DECAY_QUICK_PLAY);
-  } else {
-    // Charge (correct answer): build combo
-    turnState.comboCount += 1;
-  }
-
-  // Combo heal: at threshold+ consecutive correct, heal per correct answer (charge only)
-  if (playMode !== 'quick') {
-    if (turnState.comboCount >= COMBO_HEAL_THRESHOLD) {
-      turnState.playerState.hp = Math.min(turnState.playerState.maxHP, turnState.playerState.hp + COMBO_HEAL_AMOUNT);
-      turnState.turnLog.push({
-        type: 'heal',
-        message: 'Combo heal! +1 HP',
-        value: COMBO_HEAL_AMOUNT,
-      });
-    }
-  }
-
   turnState.cardsPlayedThisTurn += 1;
   if (playMode !== 'quick') {
     turnState.cardsCorrectThisTurn += 1;
     turnState.consecutiveCorrectThisEncounter += 1;
+    turnState.comboCount = turnState.consecutiveCorrectThisEncounter;
     // Chain Momentum (AR-122): correct Charge earns a free surcharge on the NEXT Charge this turn
     if (playMode === 'charge' && CHAIN_MOMENTUM_ENABLED) {
       turnState.nextChargeFree = true;
@@ -1149,7 +1114,6 @@ export function playCardAction(
 
   return {
     effect,
-    comboCount: turnState.comboCount,
     enemyDefeated: effect.enemyDefeated,
     fizzled: false,
     blocked: false,
@@ -1441,11 +1405,6 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     turnState.thornsValue = 2;
   }
 
-  // Combo persists across turns, resets on wrong answer or explorer fizzle.
-  // Ascension 14+ (Combo Breaker): combo also resets on turn end.
-  if (turnState.ascensionComboResetsOnTurnEnd) {
-    turnState.comboCount = turnState.baseComboCount;
-  }
   turnState.cardsPlayedThisTurn = 0;
   turnState.cardsCorrectThisTurn = 0;
   turnState.isPerfectTurn = false;
@@ -1550,8 +1509,10 @@ export function getHandSize(turnState: TurnState): number {
   return turnState.deck.hand.length;
 }
 
-export function getComboMultiplier(comboCount: number): number {
-  const multipliers = getBalanceValue('comboMultipliers', COMBO_MULTIPLIERS);
-  const index = Math.min(comboCount, multipliers.length - 1);
-  return multipliers[index];
+/**
+ * @deprecated Combo multiplier system has been removed.
+ * Always returns 1.0. Kept for UI backward compatibility.
+ */
+export function getComboMultiplier(_comboCount: number): number {
+  return 1.0;
 }

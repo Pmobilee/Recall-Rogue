@@ -91,6 +91,25 @@
     return new Date(value).toLocaleDateString()
   }
 
+  const DOMAIN_ACCENT_COLORS: Record<string, string> = {
+    general: '#94a3b8',
+    natural_sciences: '#4a9eff',
+    space: '#8b5cf6',
+    geography: '#22c55e',
+    capitals: '#f59e0b',
+    history: '#a16207',
+    mythology: '#7c3aed',
+    animals: '#ea580c',
+    health: '#e11d48',
+    cuisine: '#d97706',
+    art: '#9333ea',
+    language: '#0d9488',
+  }
+
+  function domainAccentColor(domain: FactDomain): string {
+    return DOMAIN_ACCENT_COLORS[domain] ?? '#94a3b8'
+  }
+
   $effect(() => {
     if (loading) return
     if (syncAnchor === masteredCount) return
@@ -153,6 +172,9 @@
       <button class="back-btn" onclick={onback}>Back</button>
     {/if}
     <h2>Library</h2>
+    {#if activeTab === 'knowledge' && !selectedDomain && !selectedEntry && !loading}
+      <span class="mastery-inline">{masteredCount} mastered</span>
+    {/if}
   </div>
 
   <div class="library-tabs">
@@ -280,7 +302,7 @@
 
       <div class="domain-grid">
         {#each domainSummaries as summary}
-          <button class="domain-card" onclick={() => { selectedDomain = summary.domain; selectedSubcategory = null; }}>
+          <button class="domain-card" data-domain={summary.domain} style="--domain-accent: {domainAccentColor(summary.domain)}" onclick={() => { selectedDomain = summary.domain; selectedSubcategory = null; }}>
             <div class="domain-row">
               <strong>{getDomainMetadata(summary.domain).shortName}</strong>
               <span>{summary.tier3Count}/{summary.totalFacts}</span>
@@ -578,6 +600,11 @@
     font-size: calc(10px * var(--layout-scale, 1));
   }
 
+  /* Hidden in portrait, shown in landscape via :global override */
+  .mastery-inline {
+    display: none;
+  }
+
   /* ── Landscape Styles ── */
 
   .library-overlay.landscape {
@@ -655,5 +682,107 @@
   /* Tabs max-width removed in landscape */
   .library-overlay.landscape .library-tabs {
     max-width: none;
+  }
+
+  /* ═══ LANDSCAPE DESKTOP OVERRIDES ═══════════════════════════════════════════ */
+
+  :global([data-layout="landscape"]) .library-overlay {
+    margin-left: 100px;
+    max-width: 1400px;
+    padding: 32px 48px;
+  }
+
+  :global([data-layout="landscape"]) .back-btn {
+    display: none;
+  }
+
+  /* Fix header: heading left-aligned, not pushed to far right */
+  :global([data-layout="landscape"]) .library-overlay .library-topbar {
+    justify-content: flex-start;
+    gap: 16px;
+  }
+
+  :global([data-layout="landscape"]) .library-overlay .library-topbar h2 {
+    font-size: 22px;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.04em;
+  }
+
+  /* Mastery count inline next to heading in the topbar */
+  :global([data-layout="landscape"]) .library-overlay .library-topbar .mastery-inline {
+    font-size: 14px;
+    color: #94a3b8;
+    align-self: center;
+    margin-left: 4px;
+  }
+
+  /* Eliminate gap between tabs and content — tighten tabs bottom margin */
+  :global([data-layout="landscape"]) .library-overlay .library-tabs {
+    max-width: none;
+    margin-bottom: 0;
+    flex: none;
+  }
+
+  /* Content section starts immediately after tabs with only ~24px gap */
+  :global([data-layout="landscape"]) .library-overlay .summary-section,
+  :global([data-layout="landscape"]) .library-overlay .domain-section,
+  :global([data-layout="landscape"]) .library-overlay .detail-card {
+    margin-top: 24px;
+  }
+
+  /* Tab labels: 16px Cinzel */
+  :global([data-layout="landscape"]) .library-overlay .tab-btn {
+    font-size: 16px;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.03em;
+    flex: none;
+    padding: 10px 24px;
+  }
+
+  /* Domain card: left accent border via CSS variable */
+  :global([data-layout="landscape"]) .library-overlay .domain-card {
+    border-left: 4px solid var(--domain-accent, #94a3b8);
+    border-top: 1px solid #334155;
+    border-right: 1px solid #334155;
+    border-bottom: 1px solid #334155;
+    transition: border-color 0.15s ease, filter 0.15s ease;
+  }
+
+  :global([data-layout="landscape"]) .library-overlay .domain-card:hover {
+    border-left-color: #f59e0b;
+    filter: brightness(1.1);
+  }
+
+  /* Domain name: 16px */
+  :global([data-layout="landscape"]) .library-overlay .domain-row strong {
+    font-size: 16px;
+  }
+
+  /* Fact count next to domain name: 14px */
+  :global([data-layout="landscape"]) .library-overlay .domain-row span {
+    font-size: 14px;
+  }
+
+  /* Completion/mastery meta text: 13px */
+  :global([data-layout="landscape"]) .library-overlay .domain-meta,
+  :global([data-layout="landscape"]) .library-overlay .fact-meta {
+    font-size: 13px;
+  }
+
+  /* "Mastered Facts" strip text: 15px */
+  :global([data-layout="landscape"]) .library-overlay .mastery-strip {
+    font-size: 15px;
+  }
+
+  :global([data-layout="landscape"]) .library-overlay .lore-unlock {
+    font-size: 15px;
+  }
+
+  :global([data-layout="landscape"]) .library-overlay .fact-title {
+    font-size: 16px;
+  }
+
+  :global([data-layout="landscape"]) .library-overlay label {
+    font-size: 13px;
   }
 </style>

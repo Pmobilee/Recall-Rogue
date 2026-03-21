@@ -2344,6 +2344,22 @@
       "category": "boss",
       "act": 3,
       "replaces": "the_curator"
+    },
+    {
+      "id": "knowledge_siphon",
+      "name": "The Grade Curve",
+      "concept": "A spectral entity that siphons knowledge from students, punishing correct answers by growing stronger",
+      "prompt": "pixel art, 16-bit RPG enemy sprite, a ghostly translucent bell curve graph come to life as a floating spectral entity, its body shaped like a glowing purple-blue statistical distribution curve with jagged edges, arcane runes and letter grades (A B C D F) swirling around it like orbiting debris, tentacle-like data lines extending downward draining glowing knowledge orbs from below, eyes formed from two glowing scatter-plot dots, the whole creature radiating an eerie purple aura of stolen intelligence, dark background, fantasy RPG monster",
+      "targetWidth": 512,
+      "targetHeight": 512,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2499984268,
+          "status": "done",
+          "accepted": true
+        }
+      ]
     }
   ],
   "cardart": [
@@ -7942,6 +7958,38 @@
         {
           "variant": 0,
           "seed": 1546810098,
+          "status": "done",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "id": "bg-knowledge_siphon-portrait",
+      "name": "The Grade Curve Lair (Portrait)",
+      "concept": "A chamber where grades and knowledge are siphoned away",
+      "prompt": "pixel art dungeon room, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a dark crystalline cavern classroom where floating purple-blue statistical charts and grade curves glow on the walls like spectral graffiti, scattered crumpled exam papers and broken pencils litter the stone floor, purple crystal formations pulse with stolen knowledge energy, the ceiling drips with luminescent data streams like digital stalactites, eerie purple-blue ambient glow, no characters, atmospheric moody lighting, 16-bit fantasy RPG battle background",
+      "targetWidth": 576,
+      "targetHeight": 1024,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3841812303,
+          "status": "done",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "id": "bg-knowledge_siphon-landscape",
+      "name": "The Grade Curve Lair (Landscape)",
+      "concept": "A chamber where grades and knowledge are siphoned away",
+      "prompt": "pixel art dungeon room wide landscape format, front-facing perspective at eye level looking straight into the chamber, NOT isometric NOT top-down NOT angled, a dark crystalline cavern classroom where floating purple-blue statistical charts and grade curves glow on the walls like spectral graffiti, scattered crumpled exam papers and broken pencils litter the stone floor, purple crystal formations pulse with stolen knowledge energy, the ceiling drips with luminescent data streams like digital stalactites, eerie purple-blue ambient glow, no characters, atmospheric moody lighting, 16-bit fantasy RPG battle background",
+      "targetWidth": 1024,
+      "targetHeight": 576,
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2370459641,
           "status": "done",
           "accepted": true
         }

@@ -7,12 +7,9 @@ import type { PlayerCombatState } from './playerCombatState';
 import type { EnemyInstance } from '../data/enemies';
 import {
   BASE_EFFECT,
-  COMBO_MULTIPLIERS,
-  ECHO,
   LEGACY_TIER_MULTIPLIER,
   TIER_MULTIPLIER,
   CHARGE_CORRECT_MULTIPLIER,
-  getBalanceValue,
   getBalanceOverrides,
 } from '../data/balance';
 import { getMasteryBaseBonus, getMasterySecondaryBonus } from './cardUpgradeService';
@@ -73,11 +70,11 @@ export interface AdvancedResolveOptions {
   isFocusActive?: boolean;
   isOverclockActive?: boolean;
   damageDealtThisTurn?: number;
-  /** V2 Echo: whether the card was answered correctly. Used by resolveEchoBase. Defaults to true. */
+  /** Whether the card was answered correctly. Defaults to true. */
   correct?: boolean;
-  /** V2 Echo: how the card was played. Used by resolveEchoBase. Defaults to 'charge'. */
+  /** How the card was played (quick/charge/charge_correct/charge_wrong). */
   playMode?: PlayMode;
-  /** Knowledge Chain multiplier (1.0 = no chain). Stacks multiplicatively with comboMultiplier. */
+  /** Knowledge Chain multiplier (1.0 = no chain). */
   chainMultiplier?: number;
   /**
    * Count of cards per domain in the active deck (draw + discard + hand, not exhaust).
@@ -105,46 +102,10 @@ function getBaseEffect(cardType: string): number {
   return BASE_EFFECT[cardType as keyof typeof BASE_EFFECT] ?? 0;
 }
 
-function getComboMultiplier(comboCount: number): number {
-  const multipliers = getBalanceValue('comboMultipliers', COMBO_MULTIPLIERS);
-  const comboIndex = Math.min(comboCount, multipliers.length - 1);
-  return multipliers[comboIndex] ?? 1;
-}
-
-/**
- * V2: Resolves the effective base value for an Echo card.
- *
- * - Not an Echo: returns `card.baseEffectValue` unchanged.
- * - Echo + `echo_lens` held: returns full `baseEffectValue` regardless of correct/wrong
- *   (echo_lens v2 prevents the wrong-answer penalty entirely).
- * - Echo + correct Charge: returns full `baseEffectValue` (1.0×).
- * - Echo + wrong Charge (no echo_lens): applies `ECHO.POWER_MULTIPLIER_WRONG` (0.5×).
- * - Echo + Quick Play: Quick Play is blocked on Echo cards upstream; this path should
- *   not be reached, but returns full value as a safe fallback.
- */
-function resolveEchoBase(
-  card: Card,
-  activeRelicIds: Set<string>,
-  playMode: PlayMode,
-  correct: boolean,
-): number {
-  if (!card.isEcho) return card.baseEffectValue;
-  // echo_lens v2: full power regardless of quiz result
-  if (activeRelicIds.has('echo_lens')) return card.baseEffectValue;
-  // Wrong Charge: apply 0.5× penalty.
-  // Supports both explicit 'charge_wrong' and legacy 'charge' with correct=false.
-  if (playMode === 'charge_wrong' || (!correct && (playMode === 'charge' || playMode === 'charge_correct'))) {
-    return Math.max(1, Math.round(card.baseEffectValue * ECHO.POWER_MULTIPLIER_WRONG));
-  }
-  // Correct Charge (or unexpected Quick Play fallback): full power
-  return card.baseEffectValue;
-}
-
 export function resolveCardEffect(
   card: Card,
   playerState: PlayerCombatState,
   enemy: EnemyInstance,
-  comboCount: number,
   speedBonus: number,
   buffNextCard: number,
   lastCardType?: CardType,
@@ -182,13 +143,12 @@ export function resolveCardEffect(
     card = { ...card, baseEffectValue: baseValue > 0 ? baseValue : card.baseEffectValue };
   }
 
-  const comboMultiplier = getComboMultiplier(comboCount);
   const chainMultiplier = advanced.chainMultiplier ?? 1.0;
   const buffMultiplier = 1 + buffNextCard / 100;
   const overclockMultiplier = advanced.isOverclockActive ? 2 : 1;
   const correct = advanced.correct ?? true;
   const playMode: PlayMode = advanced.playMode ?? 'quick';
-  const baseEffectValue = resolveEchoBase(card, activeRelicIds, playMode, correct);
+  const baseEffectValue = card.baseEffectValue;
 
   // Tier multiplier — used for no-mechanic (legacy) cards and execute bonus.
   const tierMultiplier = getTierMultiplier(card.tier);
@@ -209,10 +169,6 @@ export function resolveCardEffect(
     } else {
       // quick / quick_play
       mechanicBaseValue = mechanic.quickPlayValue;
-    }
-    // For Echo cards, override with echo-resolved base (already accounts for correct/wrong penalty)
-    if (card.isEcho) {
-      mechanicBaseValue = baseEffectValue;
     }
   } else {
     // No mechanic definition (wild fallback, unknown mechanic).
@@ -242,14 +198,13 @@ export function resolveCardEffect(
     ? resolveAttackModifiers(activeRelicIds, {
         isFirstAttack: advanced.isFirstAttackThisEncounter ?? false,
         isStrikeTagged: strikeTag,
-        comboCount,
+        comboCount: 0,
         playerHpPercent: playerState.hp / playerState.maxHP,
         consecutiveCorrectAttacks: 0, // crescendo_blade context not tracked in card resolver; zero is safe
         cardTier: typeof card.tier === 'string' ? card.tier : 'learning',
         correctStreakThisEncounter: 0, // memory_palace context not tracked here; handled upstream
         enemyHpPercent: enemy.currentHP / enemy.maxHP,
         enemyPoisonStacks: (enemy.statusEffects ?? []).filter(s => s.type === 'poison').reduce((sum, s) => sum + (s.value ?? 0), 0),
-        comboRingActive: false, // combo_ring context resolved in turnManager; not available here
         cardDomain: card.domain,
         deckDomainCounts: advanced.deckDomainCounts,
       })
@@ -269,7 +224,7 @@ export function resolveCardEffect(
 
   const rawValue = effectiveBase * focusAdjustedMultiplier;
   result.rawValue = rawValue;
-  const scaledValue = Math.round(rawValue * comboMultiplier * chainMultiplier * speedBonus * buffMultiplier * attackRelicMultiplier * overclockMultiplier);
+  const scaledValue = Math.round(rawValue * chainMultiplier * speedBonus * buffMultiplier * attackRelicMultiplier * overclockMultiplier);
   // Apply flat relic attack bonus after all multipliers (so it isn't multiplied by combo/chain).
   const relicFlatAttackBonus = relicAttackMods?.flatDamageBonus ?? 0;
   const finalValue = effectiveType === 'attack'
@@ -331,7 +286,7 @@ export function resolveCardEffect(
       const threshold = mechanic?.secondaryThreshold ?? 0.3;
       // execute bonus scales with the same per-mechanic charge value (chargeCorrectValue = 8 bonus at base)
       const bonusBaseValue = isChargeCorrect ? 24 : (isChargeWrong ? 4 : 8);
-      const scaledBonus = Math.round(bonusBaseValue * focusAdjustedMultiplier * comboMultiplier * speedBonus * buffMultiplier * attackRelicMultiplier * overclockMultiplier);
+      const scaledBonus = Math.round(bonusBaseValue * focusAdjustedMultiplier * chainMultiplier * speedBonus * buffMultiplier * attackRelicMultiplier * overclockMultiplier);
       const executeBonus = enemy.currentHP / enemy.maxHP < threshold ? scaledBonus : 0;
       applyAttackDamage(finalValue + executeBonus);
       return result;

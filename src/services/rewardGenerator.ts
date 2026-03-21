@@ -32,8 +32,7 @@ function filterEligible(
   return runPool.filter((card) =>
     !activeDeckFactIds.has(card.factId) &&
     !consumedRewardFactIds.has(card.factId) &&
-    card.tier !== '3' &&
-    !card.isEcho
+    card.tier !== '3'
   );
 }
 

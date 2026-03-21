@@ -162,29 +162,184 @@ Use this instead of raw console messages — filters out environment noise:
 
 ## Screenshot Rules
 
-- **Max 8 screenshots per scenario** (use browser_take_screenshot)
+- **Max 8 screenshots per scenario** — ALWAYS use `mcp__playwright__browser_take_screenshot` (the MCP tool)
+- **NEVER** use `page.screenshot()` via `browser_run_code` — Phaser's RAF loop blocks it permanently
+- **NEVER** use `page.context().newCDPSession()` — it hangs permanently
+- If screenshot times out, fall back to `browser_snapshot` (DOM snapshot) — it ALWAYS works
 - **Naming**: `/tmp/playtest-{scenario}-{checkpoint}.png`
 - **Prefer browser_snapshot** (DOM text, cheap) over screenshots for state checks
 - Take screenshots ONLY at designated checkpoints listed in each scenario
 
 ---
 
-## Visual Check Checklist
+## Runtime Element Discovery & Evaluation Protocol — MANDATORY
 
-**NOTE**: Screenshots are supplementary. Programmatic layout assertions (section below) are the PRIMARY layout check. Screenshots are for subjective quality (art, polish, readability).
+**NOTE**: The old 8-row static checklist is replaced by the Runtime Element Discovery protocol below. Screenshots are supplementary — programmatic element discovery is the PRIMARY method, supplemented by subjective visual evaluation of screenshots.
 
-After EVERY screenshot, evaluate ALL of these:
+**Every screenshot checkpoint and every screen transition MUST trigger a full element discovery and evaluation.** Do not rely on pre-written element lists — the game changes constantly. YOU must discover what's on screen and evaluate it exhaustively.
 
-| # | Check | What to look for |
-|---|-------|------------------|
-| 1 | Sprites | Enemy sprite visible? Placeholder rectangles? Missing images? |
-| 2 | Layout | Overflow, clipping, elements outside viewport? |
-| 3 | Text | Readable? Truncated? Overlapping? "undefined"/"null"/"NaN"? |
-| 4 | Colors | Readable contrast? Missing backgrounds? |
-| 5 | Z-Order | Buttons hidden behind other elements? |
-| 6 | Empty States | Expected content present? Unexpected "empty" messages? |
-| 7 | Alignment | Proper alignment? Even spacing? |
-| 8 | Mobile Fit | Everything fits 412x915 viewport? No horizontal scroll? |
+### Step 1: Discover All Elements (via browser_evaluate)
+
+Run this BEFORE every screenshot to capture what's actually on screen:
+
+```javascript
+(() => {
+  const inventory = { buttons: [], texts: [], images: [], bars: [], cards: [], icons: [], panels: [], inputs: [] };
+
+  // Buttons and interactive elements
+  document.querySelectorAll('button, [role="button"], a, [data-testid], .clickable, [onclick]').forEach(el => {
+    if (!el.offsetParent && el.offsetWidth === 0) return; // skip hidden
+    const r = el.getBoundingClientRect();
+    const s = getComputedStyle(el);
+    inventory.buttons.push({
+      testId: el.dataset?.testid || null,
+      text: el.textContent?.trim().slice(0, 80),
+      ariaLabel: el.getAttribute('aria-label'),
+      tag: el.tagName,
+      x: Math.round(r.x), y: Math.round(r.y),
+      w: Math.round(r.width), h: Math.round(r.height),
+      fontSize: parseFloat(s.fontSize),
+      disabled: el.disabled || el.getAttribute('aria-disabled') === 'true',
+      opacity: parseFloat(s.opacity),
+      pointerEvents: s.pointerEvents,
+      visible: s.display !== 'none' && s.visibility !== 'hidden' && parseFloat(s.opacity) > 0,
+      inThumbZone: r.top > window.innerHeight * 0.55,
+    });
+  });
+
+  // All visible text
+  document.querySelectorAll('p, span, h1, h2, h3, h4, h5, h6, label, [class*="text"], [class*="label"], [class*="title"], [class*="stat"], [class*="value"], [class*="name"], [class*="desc"]').forEach(el => {
+    if (!el.offsetParent && el.offsetWidth === 0) return;
+    const t = el.textContent?.trim();
+    if (!t || t.length === 0) return;
+    const r = el.getBoundingClientRect();
+    const s = getComputedStyle(el);
+    inventory.texts.push({
+      content: t.slice(0, 120),
+      fontSize: parseFloat(s.fontSize),
+      fontWeight: s.fontWeight,
+      color: s.color,
+      bgColor: s.backgroundColor,
+      x: Math.round(r.x), y: Math.round(r.y),
+      w: Math.round(r.width), h: Math.round(r.height),
+      selector: el.className ? '.' + el.className.split(' ')[0] : el.tagName.toLowerCase(),
+    });
+  });
+
+  // Images (sprites, backgrounds, icons)
+  document.querySelectorAll('img, [style*="background-image"], canvas, svg').forEach(el => {
+    if (!el.offsetParent && el.offsetWidth === 0) return;
+    const r = el.getBoundingClientRect();
+    inventory.images.push({
+      tag: el.tagName,
+      src: el.src || el.style?.backgroundImage?.slice(0, 80) || null,
+      alt: el.alt || null,
+      w: Math.round(r.width), h: Math.round(r.height),
+      broken: el.tagName === 'IMG' && !el.complete,
+    });
+  });
+
+  // Progress bars
+  document.querySelectorAll('[class*="bar"], [class*="progress"], [class*="fill"], [role="progressbar"]').forEach(el => {
+    if (!el.offsetParent && el.offsetWidth === 0) return;
+    const r = el.getBoundingClientRect();
+    inventory.bars.push({
+      selector: el.className ? '.' + el.className.split(' ')[0] : el.tagName,
+      w: Math.round(r.width), h: Math.round(r.height),
+      fillPercent: el.style?.width || el.getAttribute('aria-valuenow') || null,
+    });
+  });
+
+  // Cards
+  document.querySelectorAll('[data-testid^="card-"], [class*="card"]').forEach(el => {
+    if (!el.offsetParent && el.offsetWidth === 0) return;
+    const r = el.getBoundingClientRect();
+    inventory.cards.push({
+      testId: el.dataset?.testid || null,
+      text: el.textContent?.trim().slice(0, 60),
+      w: Math.round(r.width), h: Math.round(r.height),
+    });
+  });
+
+  // Inputs (toggles, sliders, selects)
+  document.querySelectorAll('input, select, [class*="toggle"], [class*="slider"], [class*="checkbox"]').forEach(el => {
+    if (!el.offsetParent && el.offsetWidth === 0) return;
+    inventory.inputs.push({
+      type: el.type || el.tagName,
+      name: el.name || el.className?.split(' ')[0],
+      value: el.value || el.checked,
+    });
+  });
+
+  return {
+    screen: (() => { const s = globalThis[Symbol.for('terra:currentScreen')]; if (!s) return 'unknown'; let v; s.subscribe(x => { v = x })(); return v; })(),
+    viewport: { w: window.innerWidth, h: window.innerHeight },
+    totalElements: Object.values(inventory).reduce((s, a) => s + a.length, 0),
+    inventory,
+  };
+})()
+```
+
+### Step 2: Generate Element-by-Element Checklist
+
+After running discovery, you MUST generate a checklist that asks BOTH objective AND subjective questions about EVERY discovered element. Use these question templates by element type:
+
+#### For EVERY Button/Interactive Element:
+**Objective:** Is it visible and not occluded? Size >= 44x44px? Text readable (not empty, not "undefined"/"null")? Clickable (pointer-events not none, opacity > 0, not disabled when it shouldn't be)? In viewport? In thumb zone for primary actions?
+**Subjective:** Does the button clearly communicate what it does? Does it feel pressable/tappable? Is the label unambiguous? Would a first-time player know what happens when they tap it? Is it positioned where you'd naturally reach?
+
+#### For EVERY Text Element:
+**Objective:** Font size >= 11px? Not truncated? No data artifacts ("undefined", "null", "NaN", "[object")? Readable contrast against background? Not overlapping other text?
+**Subjective:** Is the text clearly worded? Is it useful information? Is the font weight appropriate for its importance? Could you read it at arm's length on a phone? Is it too verbose or too cryptic?
+
+#### For EVERY Image/Sprite:
+**Objective:** Image loaded (not broken)? Correct size (not stretched or squished)? Not a placeholder rectangle? Positioned correctly (not overlapping unintended areas)?
+**Subjective:** Does the art quality match the rest of the game? Does the image communicate its purpose (enemy looks threatening, item looks collectible, etc.)? Is it visually appealing?
+
+#### For EVERY Progress Bar:
+**Objective:** Bar visible? Fill percentage matches displayed number? Correct color for what it represents? Not overflowing its container?
+**Subjective:** Is the bar instantly readable? Does the color effectively communicate the state (danger at low HP, etc.)? Does it feel like meaningful feedback?
+
+#### For EVERY Card Element:
+**Objective:** Card renders with content (not blank)? AP cost visible? Type identifiable by color/border? Effect text readable (>= 11px)? All text fits within card bounds?
+**Subjective:** Can you evaluate the card's value at a glance? Is the card visually appealing? Does it feel like a real card game card? Can you tell card types apart without reading text?
+
+#### For EVERY Input/Toggle/Slider:
+**Objective:** Control is interactive? Shows current state (on/off, value)? Touch target >= 44px? Label associated with the control?
+**Subjective:** Is the control intuitive? Does the label clearly explain what it changes? Is the current value/state obvious?
+
+#### For THE SCREEN AS A WHOLE:
+**Objective:** No horizontal scroll? Everything within viewport? No console errors? Safe areas respected (top 62px for notch, bottom 34px for home bar)? No z-order issues (buttons behind other elements)?
+**Subjective:** Does this screen feel polished and finished? What's the FIRST thing your eye is drawn to — is that the right thing? Does the layout feel balanced? Would a new player feel overwhelmed or confident? What is the #1 thing you would improve? How FUN does this screen feel? Does it make you want to keep playing?
+
+### Step 3: Evaluate and Report
+
+For EVERY element in your generated checklist:
+1. Answer each objective question with PASS/FAIL + measured value
+2. Answer each subjective question with a brief honest assessment
+3. If anything fails or feels wrong, create an issue entry
+
+**CRITICAL RULES:**
+- Do NOT skip elements. Every discovered element gets evaluated.
+- Do NOT give generic assessments like "looks fine." Be specific: "The End Turn button at 38x36px is undersized (needs 44x44), positioned at Y=780 which IS in the thumb zone"
+- Do NOT invent elements that aren't there. Only evaluate what discovery found.
+- ALWAYS note the total element count discovered vs elements evaluated — they must match.
+- For Phaser canvas content, also run `window.__terraDebug()` and evaluate canvas-rendered sprites, HP bars, etc.
+
+### Step 4: Subjective Gameplay Assessment
+
+After completing the element checklist, record holistic impressions:
+
+| Question | Your Assessment |
+|----------|----------------|
+| What emotion does this screen evoke? | (answer) |
+| What's the most visually dominant element? Is it the right one? | (answer) |
+| If you were a 12-year-old seeing this for the first time, would you understand what to do? | (answer) |
+| What would you tap first? Is that what the designer intended? | (answer) |
+| Does this screen have too much, too little, or just right amount of information? | (answer) |
+| Rate the visual polish 1-10. What costs the most points? | (answer) |
+| Does this screen make you want to keep playing? Why or why not? | (answer) |
+| Name ONE thing that would make this screen significantly better. | (answer) |
 
 ---
 

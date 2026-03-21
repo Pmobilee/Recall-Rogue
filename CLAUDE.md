@@ -2,6 +2,18 @@
 
 A 2D card roguelite knowledge game built with Vite + Svelte + TypeScript + Phaser 3, targeting mobile via Capacitor.
 
+## Task Management Rule — MANDATORY
+
+**USE CLAUDE CLI TASKS (TaskCreate, TaskUpdate, TaskList) FOR EVERYTHING.**
+
+Unless the request is a simple couple-line fix or a quick question, you MUST:
+1. Break work into tasks with TaskCreate BEFORE starting
+2. Set tasks to `in_progress` when you begin each one
+3. Set tasks to `completed` when done
+4. Use TaskList to track progress throughout
+
+This is non-negotiable. Tasks keep work organized, prevent drift, and make it possible to recover if context is lost. Be obsessive about it.
+
 ## Project Summary
 - **Concept**: Card roguelite where every card is a fact. Players answer questions to activate cards in turn-based combat, build knowledge-powered decks, and delve deeper into procedurally generated dungeon floors. Learning IS the core mechanic — powered by SM-2 spaced repetition.
 - **Tech Stack**: Vite 7, Svelte 5, TypeScript 5.9, Phaser 3, Capacitor (Android/iOS)
@@ -162,8 +174,9 @@ node -e "const r=JSON.parse(require('fs').readFileSync('data/inspection-registry
 
 **After EVERY sub-agent returns from a visual/UI/CSS task, the orchestrator MUST visually inspect the result BEFORE committing.** This is non-negotiable. On 2026-03-21, skipping this step caused 10+ visual regressions to ship (duplicate HP text, moved buttons, bloated bars, clutter labels). The user caught it, not the agent.
 
-- If `browser_take_screenshot` times out (common with Phaser RAF): use `browser_snapshot` instead — it ALWAYS works
+- ALWAYS use `mcp__playwright__browser_take_screenshot` (the MCP tool). NEVER use `page.screenshot()` via `browser_run_code` — Phaser's RAF loop blocks it permanently
 - **NEVER use `page.context().newCDPSession()`** — it HANGS permanently and blocks the session
+- If `browser_take_screenshot` times out: use `browser_snapshot` instead — it ALWAYS works
 - If neither screenshot nor snapshot works, TELL THE USER you couldn't verify and ask them to check
 - Sub-agents making CSS/layout changes are the HIGHEST RISK — always verify their output
 - **Never batch-commit multiple visual agent results without inspecting each one**
@@ -190,14 +203,11 @@ await page.evaluate(() => document.documentElement.setAttribute('data-pw-animati
 
 **Full scenario list:** `window.__terraScenario.list()` or see `src/dev/scenarioSimulator.ts`
 
-**Screenshot method (Playwright screenshots timeout due to Phaser RAF):**
-Use `browser_run_code` with extended timeout OR the canvas download approach:
-```javascript
-// Via browser_run_code:
-async (page) => { await page.screenshot({ path: '.playwright-mcp/screenshot.png', timeout: 60000, animations: 'disabled' }); return 'saved'; }
-
-// Then read the file to view it
-```
+**Screenshot method — CRITICAL:**
+- **ALWAYS** use the MCP tool `mcp__playwright__browser_take_screenshot` — it handles Phaser's RAF loop correctly
+- **NEVER** use `page.screenshot()` via `browser_run_code` — Phaser's continuous `requestAnimationFrame` loop blocks Playwright's animation-wait logic, causing permanent timeout regardless of timeout value
+- **NEVER** use `page.context().newCDPSession()` — it hangs permanently and blocks the entire session
+- If `browser_take_screenshot` fails, fall back to `browser_snapshot` (DOM snapshot) — it ALWAYS works
 
 ### 1. MCP Playwright (interactive — use during development)
 - Use `mcp__playwright__browser_navigate`, `mcp__playwright__browser_snapshot`, `mcp__playwright__browser_take_screenshot` etc.
@@ -229,12 +239,6 @@ node tests/e2e/03-save-resume.cjs
 - **Screen flow**: Start Run (`btn-start-run`) → choose domain → combat encounters → retreat (`btn-retreat`) or delve deeper (`btn-delve`)
 - Full reference: see `memory/playwright-workflow.md` in the auto-memory directory
 
-### 3. Playwright Test Agents (test creation and healing)
-- Three agents in `.claude/agents/`: **planner** (explores app, writes test plans), **generator** (converts plans to tests), **healer** (debugs and fixes failing tests)
-- Config: `playwright.config.ts`, tests in `tests/e2e/playwright/`, seed test: `seed.spec.ts`
-- Use the **Healer agent** after any fix to automatically verify tests still pass
-- Agents use `mcp__playwright-test__*` tools (separate MCP server from the interactive one)
-- Run tests directly: `npx playwright test` (uses the config file)
 
 ## Fix Verification — MANDATORY
 

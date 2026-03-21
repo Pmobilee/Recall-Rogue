@@ -1391,7 +1391,7 @@ function openShopRoom(): void {
 
   // Existing sell cards
   const sellCards = shuffled(
-    [...getActiveDeckCards()].filter((card) => !card.isEcho),
+    [...getActiveDeckCards()].filter((card) => card.cardType !== 'wild'),
   ).slice(0, 3);
   activeShopCards.set(sellCards);
 
@@ -2196,7 +2196,7 @@ function applyMysteryEffect(effect: MysteryEffect, run: RunState): void {
       break;
     case 'upgradeRandomCard': {
       const allCards = getActiveDeckCards();
-      const eligible = allCards.filter(c => !c.isEcho && canMasteryUpgrade(c));
+      const eligible = allCards.filter(c => canMasteryUpgrade(c));
       if (eligible.length > 0) {
         const card = eligible[Math.floor(Math.random() * eligible.length)];
         masteryUpgrade(card);
@@ -2205,7 +2205,7 @@ function applyMysteryEffect(effect: MysteryEffect, run: RunState): void {
     }
     case 'removeRandomCard': {
       const allCards = getActiveDeckCards();
-      const removable = allCards.filter(c => !c.isEcho);
+      const removable = allCards;
       if (removable.length > 5) {
         const card = removable[Math.floor(Math.random() * removable.length)];
         sellCardFromActiveDeck(card.id); // removes from deck (gold returned is discarded)
@@ -2214,7 +2214,7 @@ function applyMysteryEffect(effect: MysteryEffect, run: RunState): void {
     }
     case 'transformCard': {
       const allCards = getActiveDeckCards();
-      const transformable = allCards.filter(c => !c.isEcho);
+      const transformable = allCards;
       if (transformable.length > 0) {
         const card = transformable[Math.floor(Math.random() * transformable.length)];
         const TRANSFORM_TYPES: Array<'attack' | 'shield' | 'heal' | 'buff'> = ['attack', 'shield', 'heal', 'buff'];

@@ -1,0 +1,1891 @@
+{
+  "config": {
+    "model_path": "tests/playtest/rl/models/rogue_brain_v2_masked_2M",
+    "n_episodes": 200,
+    "correct_rate": 0.75,
+    "ascension": 0
+  },
+  "episodes": [
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 149,
+      "reward": 51.97
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 127,
+      "reward": 48.32
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 159,
+      "reward": 67.38
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 148,
+      "reward": 66.96
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 188,
+      "reward": 69.37
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 194,
+      "reward": 69.39
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 174,
+      "reward": 57.88
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 138,
+      "reward": 62.16
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 147,
+      "reward": 60.74
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 126,
+      "reward": 54.82
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 99,
+      "reward": 21.9
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 165,
+      "reward": 73.58
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 137,
+      "reward": 68.31
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 130,
+      "reward": 53.31
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 160,
+      "reward": 49.66
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 116,
+      "reward": 51.14
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 139,
+      "reward": 51.24
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 88,
+      "reward": 45.02
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 115,
+      "reward": 29.09
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 129,
+      "reward": 41.73
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 158,
+      "reward": 64.31
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 137,
+      "reward": 53.61
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 129,
+      "reward": 51.28
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 147,
+      "reward": 70.49
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 134,
+      "reward": 59.26
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 126,
+      "reward": 58.28
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 131,
+      "reward": 48.62
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 155,
+      "reward": 59.6
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 140,
+      "reward": 57.6
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 135,
+      "reward": 56.47
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 155,
+      "reward": 42.31
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 122,
+      "reward": 63.4
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 170,
+      "reward": 43.9
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 139,
+      "reward": 56.28
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 144,
+      "reward": 51.77
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 165,
+      "reward": 63.06
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 152,
+      "reward": 57.04
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 120,
+      "reward": 58.63
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 124,
+      "reward": 52.95
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 160,
+      "reward": 57.52
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 165,
+      "reward": 48.94
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 116,
+      "reward": 55.44
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 114,
+      "reward": 29.28
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 141,
+      "reward": 61.96
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 124,
+      "reward": 55.2
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 127,
+      "reward": 58.26
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 164,
+      "reward": 61.03
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 205,
+      "reward": 69.25
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 69,
+      "reward": 9.51
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 130,
+      "reward": 49.61
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 163,
+      "reward": 60.76
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 162,
+      "reward": 49.9
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 130,
+      "reward": 48.34
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 160,
+      "reward": 83.5
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 173,
+      "reward": 47.08
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 160,
+      "reward": 65.06
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 137,
+      "reward": 56.39
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 180,
+      "reward": 68.54
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 131,
+      "reward": 55.68
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 176,
+      "reward": 61.58
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 153,
+      "reward": 49.94
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 149,
+      "reward": 52.0
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 121,
+      "reward": 34.18
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 141,
+      "reward": 62.75
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 132,
+      "reward": 50.6
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 136,
+      "reward": 58.41
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 127,
+      "reward": 61.25
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 146,
+      "reward": 67.21
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 126,
+      "reward": 65.34
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 119,
+      "reward": 47.81
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 172,
+      "reward": 69.09
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 171,
+      "reward": 70.69
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 149,
+      "reward": 38.72
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 123,
+      "reward": 62.81
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 122,
+      "reward": 53.83
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 99,
+      "reward": 50.49
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 132,
+      "reward": 32.27
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 98,
+      "reward": 55.57
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 163,
+      "reward": 45.34
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 172,
+      "reward": 56.82
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 132,
+      "reward": 46.8
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 132,
+      "reward": 58.98
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 111,
+      "reward": 49.73
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 114,
+      "reward": 48.62
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 136,
+      "reward": 68.63
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 154,
+      "reward": 56.69
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 144,
+      "reward": 55.74
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 147,
+      "reward": 50.28
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 150,
+      "reward": 57.04
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 135,
+      "reward": 40.2
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 117,
+      "reward": 42.07
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 151,
+      "reward": 49.95
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 162,
+      "reward": 55.16
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 123,
+      "reward": 52.16
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 153,
+      "reward": 26.82
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 145,
+      "reward": 60.35
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 145,
+      "reward": 59.22
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 178,
+      "reward": 56.35
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 148,
+      "reward": 59.36
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 111,
+      "reward": 31.31
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 155,
+      "reward": 59.98
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 144,
+      "reward": 40.11
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 164,
+      "reward": 57.78
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 161,
+      "reward": 77.36
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 140,
+      "reward": 61.43
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 163,
+      "reward": 61.71
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 123,
+      "reward": 52.98
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 136,
+      "reward": 46.76
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 130,
+      "reward": 63.27
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 125,
+      "reward": 59.52
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 153,
+      "reward": 59.9
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 168,
+      "reward": 75.97
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 145,
+      "reward": 59.5
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 132,
+      "reward": 38.3
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 146,
+      "reward": 64.84
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 170,
+      "reward": 56.34
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 164,
+      "reward": 56.17
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 127,
+      "reward": 54.54
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 142,
+      "reward": 41.4
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 156,
+      "reward": 66.85
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 136,
+      "reward": 58.36
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 145,
+      "reward": 36.23
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 155,
+      "reward": 74.0
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 119,
+      "reward": 55.21
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 150,
+      "reward": 62.29
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 122,
+      "reward": 51.46
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 138,
+      "reward": 38.13
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 126,
+      "reward": 63.29
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 156,
+      "reward": 44.87
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 152,
+      "reward": 64.44
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 129,
+      "reward": 56.0
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 154,
+      "reward": 63.82
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 137,
+      "reward": 64.63
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 146,
+      "reward": 39.79
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 136,
+      "reward": 56.18
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 163,
+      "reward": 59.82
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 109,
+      "reward": 28.48
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 161,
+      "reward": 44.42
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 128,
+      "reward": 43.01
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 172,
+      "reward": 43.61
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 158,
+      "reward": 57.39
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 171,
+      "reward": 53.84
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 136,
+      "reward": 46.22
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 148,
+      "reward": 58.65
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 159,
+      "reward": 51.09
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 153,
+      "reward": 53.74
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 142,
+      "reward": 48.44
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 147,
+      "reward": 56.0
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 132,
+      "reward": 55.63
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 115,
+      "reward": 53.22
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 105,
+      "reward": 50.23
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 110,
+      "reward": 54.81
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 146,
+      "reward": 67.53
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 134,
+      "reward": 60.57
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 118,
+      "reward": 49.87
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 139,
+      "reward": 51.29
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 136,
+      "reward": 47.67
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 129,
+      "reward": 35.07
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 143,
+      "reward": 62.8
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 114,
+      "reward": 52.82
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 113,
+      "reward": 50.06
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 139,
+      "reward": 80.9
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 155,
+      "reward": 45.16
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 118,
+      "reward": 42.08
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 174,
+      "reward": 66.23
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 135,
+      "reward": 66.38
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 143,
+      "reward": 64.82
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 153,
+      "reward": 48.58
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 125,
+      "reward": 62.0
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 173,
+      "reward": 73.02
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 115,
+      "reward": 53.86
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 158,
+      "reward": 61.75
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 176,
+      "reward": 64.3
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 159,
+      "reward": 59.96
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 164,
+      "reward": 43.8
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 112,
+      "reward": 54.84
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 145,
+      "reward": 65.1
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 165,
+      "reward": 86.98
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 110,
+      "reward": 34.98
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 143,
+      "reward": 52.74
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 158,
+      "reward": 50.03
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 147,
+      "reward": 42.35
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 128,
+      "reward": 55.05
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 154,
+      "reward": 52.93
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 151,
+      "reward": 54.57
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 169,
+      "reward": 47.08
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 181,
+      "reward": 60.42
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 175,
+      "reward": 66.37
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 159,
+      "reward": 51.08
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 137,
+      "reward": 71.93
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 152,
+      "reward": 59.78
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 128,
+      "reward": 57.61
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 138,
+      "reward": 49.43
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 118,
+      "reward": 46.63
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 159,
+      "reward": 40.21
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 135,
+      "reward": 56.07
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 171,
+      "reward": 60.58
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 154,
+      "reward": 52.66
+    },
+    {
+      "enemy": "unknown",
+      "result": "defeat",
+      "steps": 128,
+      "reward": 41.33
+    },
+    {
+      "enemy": "unknown",
+      "result": "unknown",
+      "steps": 136,
+      "reward": 50.48
+    }
+  ],
+  "action_counts": {
+    "18": 2617,
+    "0": 5880,
+    "16": 6339,
+    "3": 1963,
+    "2": 2487,
+    "4": 1176,
+    "20": 1326,
+    "19": 2392,
+    "11": 637,
+    "21": 119,
+    "10": 607,
+    "1": 1604,
+    "9": 573,
+    "8": 467,
+    "12": 183,
+    "23": 1,
+    "28": 67,
+    "25": 36,
+    "24": 14,
+    "29": 15
+  },
+  "card_type_plays": {},
+  "per_enemy": {
+    "unknown": {
+      "wins": 0,
+      "losses": 200,
+      "total_steps": 28503,
+      "total_reward": 10940.006507076958
+    }
+  },
+  "charge_vs_quick": {
+    "charge": 13110,
+    "quick": 2467,
+    "skip": 6339
+  },
+  "chain_stats": {
+    "extended": 7729,
+    "broken": 864,
+    "total_plays": 15577
+  },
+  "correct_stats": {
+    "correct_charges": 9789,
+    "wrong_charges": 3321
+  },
+  "hp_at_victory": [],
+  "hp_at_defeat": [
+    18,
+    43,
+    0,
+    8,
+    8,
+    28,
+    0,
+    5,
+    12,
+    48,
+    0,
+    41,
+    42,
+    41,
+    0,
+    78,
+    26,
+    44,
+    0,
+    0,
+    41,
+    37,
+    18,
+    32,
+    32,
+    27,
+    43,
+    47,
+    4,
+    48,
+    0,
+    45,
+    0,
+    37,
+    7,
+    4,
+    45,
+    88,
+    14,
+    18,
+    0,
+    36,
+    0,
+    20,
+    72,
+    34,
+    47,
+    58,
+    0,
+    0,
+    37,
+    0,
+    0,
+    6,
+    0,
+    92,
+    86,
+    22,
+    49,
+    49,
+    17,
+    37,
+    0,
+    74,
+    27,
+    62,
+    64,
+    28,
+    33,
+    38,
+    64,
+    41,
+    0,
+    84,
+    43,
+    57,
+    0,
+    36,
+    0,
+    9,
+    14,
+    33,
+    64,
+    51,
+    38,
+    50,
+    31,
+    21,
+    18,
+    0,
+    0,
+    31,
+    0,
+    14,
+    0,
+    56,
+    19,
+    7,
+    13,
+    0,
+    51,
+    0,
+    7,
+    33,
+    33,
+    20,
+    8,
+    9,
+    63,
+    65,
+    69,
+    52,
+    9,
+    0,
+    42,
+    0,
+    35,
+    18,
+    0,
+    35,
+    23,
+    0,
+    67,
+    61,
+    15,
+    51,
+    0,
+    77,
+    0,
+    7,
+    69,
+    31,
+    60,
+    0,
+    39,
+    47,
+    0,
+    0,
+    0,
+    0,
+    32,
+    0,
+    0,
+    16,
+    0,
+    25,
+    7,
+    7,
+    29,
+    71,
+    71,
+    19,
+    34,
+    28,
+    6,
+    15,
+    0,
+    0,
+    77,
+    28,
+    36,
+    62,
+    0,
+    0,
+    63,
+    71,
+    34,
+    0,
+    58,
+    11,
+    56,
+    4,
+    16,
+    13,
+    0,
+    76,
+    95,
+    46,
+    0,
+    28,
+    0,
+    0,
+    41,
+    47,
+    0,
+    0,
+    34,
+    18,
+    11,
+    35,
+    62,
+    57,
+    34,
+    27,
+    0,
+    38,
+    35,
+    7,
+    0,
+    16
+  ],
+  "turns_to_win": [],
+  "turns_to_lose": [
+    149,
+    127,
+    159,
+    148,
+    188,
+    194,
+    174,
+    138,
+    147,
+    126,
+    99,
+    165,
+    137,
+    130,
+    160,
+    116,
+    139,
+    88,
+    115,
+    129,
+    158,
+    137,
+    129,
+    147,
+    134,
+    126,
+    131,
+    155,
+    140,
+    135,
+    155,
+    122,
+    170,
+    139,
+    144,
+    165,
+    152,
+    120,
+    124,
+    160,
+    165,
+    116,
+    114,
+    141,
+    124,
+    127,
+    164,
+    205,
+    69,
+    130,
+    163,
+    162,
+    130,
+    160,
+    173,
+    160,
+    137,
+    180,
+    131,
+    176,
+    153,
+    149,
+    121,
+    141,
+    132,
+    136,
+    127,
+    146,
+    126,
+    119,
+    172,
+    171,
+    149,
+    123,
+    122,
+    99,
+    132,
+    98,
+    163,
+    172,
+    132,
+    132,
+    111,
+    114,
+    136,
+    154,
+    144,
+    147,
+    150,
+    135,
+    117,
+    151,
+    162,
+    123,
+    153,
+    145,
+    145,
+    178,
+    148,
+    111,
+    155,
+    144,
+    164,
+    161,
+    140,
+    163,
+    123,
+    136,
+    130,
+    125,
+    153,
+    168,
+    145,
+    132,
+    146,
+    170,
+    164,
+    127,
+    142,
+    156,
+    136,
+    145,
+    155,
+    119,
+    150,
+    122,
+    138,
+    126,
+    156,
+    152,
+    129,
+    154,
+    137,
+    146,
+    136,
+    163,
+    109,
+    161,
+    128,
+    172,
+    158,
+    171,
+    136,
+    148,
+    159,
+    153,
+    142,
+    147,
+    132,
+    115,
+    105,
+    110,
+    146,
+    134,
+    118,
+    139,
+    136,
+    129,
+    143,
+    114,
+    113,
+    139,
+    155,
+    118,
+    174,
+    135,
+    143,
+    153,
+    125,
+    173,
+    115,
+    158,
+    176,
+    159,
+    164,
+    112,
+    145,
+    165,
+    110,
+    143,
+    158,
+    147,
+    128,
+    154,
+    151,
+    169,
+    181,
+    175,
+    159,
+    137,
+    152,
+    128,
+    138,
+    118,
+    159,
+    135,
+    171,
+    154,
+    128,
+    136
+  ],
+  "phase_counts": {
+    "combat": 21968,
+    "card_reward": 2308,
+    "room_select": 2163,
+    "relic_reward": 1054,
+    "retreat_or_delve": 889,
+    "shop": 4,
+    "relic_swap": 117
+  },
+  "room_choices": {
+    "unknown": 2066
+  },
+  "card_rewards_picked": 0,
+  "card_rewards_skipped": 0,
+  "relic_picks": 998,
+  "relic_skips": 0,
+  "shop_purchases": {
+    "relic": 3,
+    "removal": 1
+  },
+  "rest_choices": {
+    "heal": 0,
+    "upgrade": 0
+  },
+  "retreat_vs_delve": {
+    "retreat": 381,
+    "delve": 279
+  },
+  "floors_reached": [
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    3,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    3,
+    4,
+    4,
+    4,
+    4,
+    4,
+    2,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    3,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    3,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    3,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4
+  ]
+}

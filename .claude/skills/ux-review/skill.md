@@ -187,23 +187,65 @@ This generated checklist — not a static hardcoded list — is what gets evalua
 - Checks are screen-specific: shop checks only appear when shop elements exist
 - Every finding references a real, measured element — no hypothetical checks
 
+### Phase 1.6: Per-Element Subjective Evaluation Checklist
+
+The Phase 1.5 checklist covers TECHNICAL metrics. This phase adds SUBJECTIVE quality questions for every discovered element. Both phases together form the complete evaluation.
+
+For EVERY button/interactive discovered in Phase 1:
+- Does the label clearly communicate what happens when tapped?
+- Would a first-time player understand this button's purpose without instruction?
+- Is this button positioned where a player would naturally look for it?
+- Does the button feel "pressable" (has visual affordance: shadow, border, distinct bg)?
+- If this is a destructive action (retreat, sell, discard), is it visually distinct from positive actions?
+- If this is the PRIMARY action on screen, is it the most prominent interactive element?
+
+For EVERY text element discovered in Phase 1:
+- Is this text useful to the player RIGHT NOW, or is it clutter?
+- Could the text be shorter while conveying the same meaning?
+- Is the text tone appropriate (game-themed, not developer-speak)?
+- If this is a number/stat, does the player know what it means without a label?
+- If this is instructional text, would a 12-year-old understand it?
+
+For EVERY card element discovered in Phase 1:
+- Can you evaluate this card's strategic value at a glance (without expanding)?
+- Are the most important card properties (cost, type, effect) visible at rest size?
+- Can you distinguish this card from adjacent cards without reading the full text?
+- Does the card art/frame communicate the card type visually?
+- Would you want to collect this card? Does it look valuable/interesting?
+
+For THE SCREEN AS A WHOLE (generate these questions dynamically based on screen type):
+- What emotion does this screen evoke? Is that the intended emotion?
+- What is the most visually dominant element? Is it the most important element?
+- If a player glanced at this for 2 seconds, what would they understand?
+- Does the information density feel right (not overwhelming, not empty)?
+- Does this screen make you want to continue playing? Why or why not?
+- What would a player's FIRST tap be? Is that what the designer wants?
+- Rate the visual polish 1-10. What loses the most points?
+- Name the ONE change that would most improve this screen.
+- Does this screen compare favorably to the same screen in Marvel Snap / Slay the Spire / Balatro?
+- If this screen has empty states (no relics, no facts learned, etc.), does the empty state guide the player toward filling it?
+
+**CRITICAL: These subjective evaluations are NOT optional.** Every UX review must include subjective findings alongside technical metrics. A screen can pass all technical checks and still be a poor user experience.
+
 ### Phase 2: Screenshot
 
 Disable animations, then capture:
 ```javascript
 document.documentElement.setAttribute('data-pw-animations', 'disabled');
 ```
-Take screenshot via `mcp__playwright__browser_take_screenshot` or `browser_run_code`.
+Take screenshot via `mcp__playwright__browser_take_screenshot` ONLY. NEVER use `page.screenshot()` via `browser_run_code` — Phaser's RAF loop blocks it permanently. NEVER use `page.context().newCDPSession()` — it hangs. If screenshot times out, fall back to `browser_snapshot`.
 
 ### Phase 3: Evaluate
 
-Work through the generated checklist from Phase 1.5 systematically:
+Work through BOTH the generated technical checklist (Phase 1.5) AND the subjective evaluation (Phase 1.6) systematically:
 
 1. **DOM-measurable checks** (touch targets, typography sizes, contrast ratios): evaluate using Phase 1 measurements. Mark pass/fail with exact values.
-2. **Screenshot-only checks** (visual hierarchy, feedback affordance, zone clarity, color semantics, cognitive density): evaluate by examining the screenshot holistically against the principles.
-3. **Phaser canvas checks**: for screens with canvas content, run `window.__terraDebug()` to check sprite positions and canvas-rendered elements DOM analysis can't reach.
+2. **Subjective per-element checks**: For every button, text, card, and image discovered, answer the Phase 1.6 subjective questions. Be specific — "End Turn button label is clear" not "buttons look fine."
+3. **Screenshot-only checks** (visual hierarchy, feedback affordance, zone clarity, color semantics, cognitive density): evaluate by examining the screenshot holistically against the principles.
+4. **Holistic subjective assessment**: Answer all "screen as a whole" questions from Phase 1.6. Include emotional assessment, first-impression analysis, and comparison to reference games.
+5. **Phaser canvas checks**: for screens with canvas content, run `window.__terraDebug()` to check sprite positions and canvas-rendered elements DOM analysis can't reach.
 
-**CRITICAL: Only produce findings for elements that actually exist. Do not invent checks for elements not discovered in Phase 1. Do not skip discovered elements.**
+**CRITICAL: Only produce findings for elements that actually exist. Do not invent checks for elements not discovered in Phase 1. Do not skip discovered elements. Every element gets both technical AND subjective evaluation.**
 
 ### Phase 4: Phaser Canvas Check
 

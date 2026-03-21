@@ -91,22 +91,6 @@ export const STARTER_RELICS: RelicDefinition[] = [
   },
 
   {
-    id: 'combo_ring',
-    name: 'Combo Ring',
-    description: 'First Charged correct answer each turn grants +1 damage to all attacks that turn.',
-    flavorText: 'A musician\'s signet ring inscribed with the opening bars of an acceleration hymn. Every action builds on the last, the tempo rising, the power swelling, until the crescendo breaks.',
-    visualDescription: 'A silver signet ring with a musical note engraved on the face, surrounded by concentric golden ripple rings. Melodic energy. 32x32 pixel art.',
-    rarity: 'common',
-    category: 'offensive',
-    trigger: 'on_charge_correct',
-    effects: [{ effectId: 'first_charge_turn_damage_bonus', description: '+1 damage for rest of turn (first Charge/turn)', value: 1 }],
-    icon: '💫',
-    unlockCost: 0,
-    isStarter: true,
-    startsUnlocked: true,
-  },
-
-  {
     id: 'steel_skin',
     name: 'Steel Skin',
     description: 'Take 3 less damage from all sources (min 1).',

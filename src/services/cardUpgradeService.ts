@@ -107,10 +107,9 @@ export function getMasteryApReduction(mechanicId: string, level: number): number
 
 /**
  * Whether a card can be mastery-upgraded.
- * Echo cards, cards at max level, already-changed-this-encounter, and unknown mechanics cannot upgrade.
+ * Cards at max level, already-changed-this-encounter, and unknown mechanics cannot upgrade.
  */
 export function canMasteryUpgrade(card: Card): boolean {
-  if (card.isEcho) return false;
   const def = MASTERY_UPGRADE_DEFS[card.mechanicId ?? ''];
   const maxLevel = def?.maxLevel ?? MASTERY_MAX_LEVEL;
   if ((card.masteryLevel ?? 0) >= maxLevel) return false;
@@ -121,10 +120,9 @@ export function canMasteryUpgrade(card: Card): boolean {
 
 /**
  * Whether a card can be mastery-downgraded.
- * Echo cards, cards at level 0, and already-changed-this-encounter cards cannot downgrade.
+ * Cards at level 0 and already-changed-this-encounter cards cannot downgrade.
  */
 export function canMasteryDowngrade(card: Card): boolean {
-  if (card.isEcho) return false;
   if ((card.masteryLevel ?? 0) <= 0) return false;
   if (card.masteryChangedThisEncounter) return false;
   return true;
@@ -244,7 +242,6 @@ export const UPGRADE_DEFS: Record<string, MechanicUpgrade> = {
  */
 export function canUpgradeCard(card: Card): boolean {
   if (card.isUpgraded) return false;
-  if (card.isEcho) return false;
   if (!card.mechanicId) return false;
   return card.mechanicId in UPGRADE_DEFS;
 }

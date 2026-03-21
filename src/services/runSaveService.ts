@@ -46,9 +46,10 @@ export interface RunSaveState {
 /** RunState with Sets replaced by arrays for JSON serialization. */
 interface SerializedRunState extends Omit<
   RunState,
-  'echoFactIds' | 'consumedRewardFactIds' | 'factsAnsweredCorrectly' | 'factsAnsweredIncorrectly' | 'firstChargeFreeFactIds' | 'offeredRelicIds'
+  'consumedRewardFactIds' | 'factsAnsweredCorrectly' | 'factsAnsweredIncorrectly' | 'firstChargeFreeFactIds' | 'offeredRelicIds'
 > {
-  echoFactIds: string[];
+  /** Legacy field — present in old saves, ignored on load. */
+  echoFactIds?: string[];
   consumedRewardFactIds: string[];
   factsAnsweredCorrectly: string[];
   factsAnsweredIncorrectly: string[];
@@ -67,7 +68,6 @@ interface SerializedEncounterSnapshot {
 function serializeRunState(run: RunState): SerializedRunState {
   return {
     ...run,
-    echoFactIds: [...run.echoFactIds],
     consumedRewardFactIds: [...run.consumedRewardFactIds],
     factsAnsweredCorrectly: [...run.factsAnsweredCorrectly],
     factsAnsweredIncorrectly: [...run.factsAnsweredIncorrectly],
@@ -88,7 +88,6 @@ function deserializeRunState(saved: SerializedRunState): RunState {
 
   return {
     ...saved,
-    echoFactIds: new Set(saved.echoFactIds),
     consumedRewardFactIds: new Set(saved.consumedRewardFactIds),
     factsAnsweredCorrectly: new Set(saved.factsAnsweredCorrectly),
     factsAnsweredIncorrectly: new Set(saved.factsAnsweredIncorrectly),

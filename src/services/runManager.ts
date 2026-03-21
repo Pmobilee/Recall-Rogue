@@ -48,8 +48,6 @@ export interface RunState {
   bounties: ActiveBounty[];
   canary: CanaryState;
   startedAt: number;
-  echoFactIds: Set<string>;
-  echoCount: number;
   /**
    * Fact IDs for which the player has already used their one free first Charge this run.
    * Once a factId is in this set, that fact costs the normal +1 AP Charge surcharge.
@@ -203,8 +201,6 @@ export function createRunState(
     bounties: selectRunBounties(primary, secondary, bountyCount),
     canary: createCanaryState(),
     startedAt: Date.now(),
-    echoFactIds: new Set<string>(),
-    echoCount: 0,
     firstChargeFreeFactIds: new Set<string>(),
     consumedRewardFactIds: new Set<string>(),
     factsAnsweredCorrectly: new Set<string>(),

@@ -73,70 +73,77 @@
 </script>
 
 <div class="relic-tray">
-  {#each relics as relic, i (relic.definitionId)}
-    <div class="relic-slot-wrapper">
-      <div
-        class="relic-slot"
-        class:triggered={triggeredRelicId === relic.definitionId}
-        role="button"
-        tabindex="0"
-        aria-label={relic.name}
-        onclick={() => toggleTooltip(i)}
-        onkeydown={(e) => e.key === 'Enter' || e.key === ' ' ? toggleTooltip(i) : null}
-      >
-        <img
-          class="relic-icon"
-          src={getRelicIconPath(relic.definitionId)}
-          alt={relic.name}
-          onerror={(e) => {
-            const target = e.currentTarget as HTMLImageElement
-            target.style.display = 'none'
-            const fallback = target.nextElementSibling as HTMLElement
-            if (fallback) fallback.style.display = 'grid'
-          }}
-        />
-        <span class="relic-emoji-fallback">{relic.icon}</span>
-      </div>
-      {#if openTooltipIndex === i}
-        <div class="relic-tooltip" role="tooltip">
-          <div class="tooltip-arrow"></div>
-          <div class="tooltip-name">{relic.name}</div>
-          <div class="tooltip-desc">{relic.description}</div>
-          {#if onsell}
-            {#if pendingSellId === relic.definitionId}
-              <div class="tooltip-sell-confirm">
-                <span class="sell-confirm-label">Sell for {getSellValue(relic)}g?</span>
-                <div class="sell-confirm-btns">
-                  <button
-                    type="button"
-                    class="sell-confirm-yes"
-                    onclick={(e) => { e.stopPropagation(); confirmSell(relic) }}
-                  >Yes</button>
-                  <button
-                    type="button"
-                    class="sell-confirm-no"
-                    onclick={(e) => { e.stopPropagation(); cancelSell() }}
-                  >No</button>
-                </div>
-              </div>
-            {:else}
-              <button
-                type="button"
-                class="tooltip-sell-btn"
-                onclick={(e) => { e.stopPropagation(); handleSellClick(relic) }}
-              >Sell ({getSellValue(relic)}g)</button>
-            {/if}
-          {/if}
-        </div>
-      {/if}
+  {#if relics.length === 0}
+    <div class="relic-empty-state" aria-label="No relics">
+      <span class="relic-empty-icon">◇</span>
+      <span class="relic-empty-label">No relics</span>
     </div>
-  {/each}
-  {#each { length: Math.max(0, maxSlots - relics.length) } as _, i (i)}
-    <div class="relic-slot empty" aria-label="Empty relic slot"></div>
-  {/each}
-  <div class="slot-count" class:full={relics.length >= maxSlots}>
-    {relics.length}/{maxSlots}
-  </div>
+  {:else}
+    {#each relics as relic, i (relic.definitionId)}
+      <div class="relic-slot-wrapper">
+        <div
+          class="relic-slot"
+          class:triggered={triggeredRelicId === relic.definitionId}
+          role="button"
+          tabindex="0"
+          aria-label={relic.name}
+          onclick={() => toggleTooltip(i)}
+          onkeydown={(e) => e.key === 'Enter' || e.key === ' ' ? toggleTooltip(i) : null}
+        >
+          <img
+            class="relic-icon"
+            src={getRelicIconPath(relic.definitionId)}
+            alt={relic.name}
+            onerror={(e) => {
+              const target = e.currentTarget as HTMLImageElement
+              target.style.display = 'none'
+              const fallback = target.nextElementSibling as HTMLElement
+              if (fallback) fallback.style.display = 'grid'
+            }}
+          />
+          <span class="relic-emoji-fallback">{relic.icon}</span>
+        </div>
+        {#if openTooltipIndex === i}
+          <div class="relic-tooltip" role="tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-name">{relic.name}</div>
+            <div class="tooltip-desc">{relic.description}</div>
+            {#if onsell}
+              {#if pendingSellId === relic.definitionId}
+                <div class="tooltip-sell-confirm">
+                  <span class="sell-confirm-label">Sell for {getSellValue(relic)}g?</span>
+                  <div class="sell-confirm-btns">
+                    <button
+                      type="button"
+                      class="sell-confirm-yes"
+                      onclick={(e) => { e.stopPropagation(); confirmSell(relic) }}
+                    >Yes</button>
+                    <button
+                      type="button"
+                      class="sell-confirm-no"
+                      onclick={(e) => { e.stopPropagation(); cancelSell() }}
+                    >No</button>
+                  </div>
+                </div>
+              {:else}
+                <button
+                  type="button"
+                  class="tooltip-sell-btn"
+                  onclick={(e) => { e.stopPropagation(); handleSellClick(relic) }}
+                >Sell ({getSellValue(relic)}g)</button>
+              {/if}
+            {/if}
+          </div>
+        {/if}
+      </div>
+    {/each}
+    {#each { length: Math.max(0, maxSlots - relics.length) } as _, i (i)}
+      <div class="relic-slot empty" aria-label="Empty relic slot"></div>
+    {/each}
+    <div class="slot-count" class:full={relics.length >= maxSlots}>
+      {relics.length}/{maxSlots}
+    </div>
+  {/if}
 </div>
 
 <style>
@@ -219,14 +226,45 @@
   }
 
   .relic-slot.empty {
-    background: rgba(24, 33, 46, 0.4);
-    border-color: rgba(201, 162, 39, 0.25);
+    background: rgba(24, 33, 46, 0.25);
+    border: 1.5px dashed rgba(201, 162, 39, 0.2);
     cursor: default;
   }
 
   .relic-slot.empty:hover {
     transform: none;
     box-shadow: none;
+  }
+
+  .relic-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(3px * var(--layout-scale, 1));
+    padding: calc(4px * var(--layout-scale, 1)) calc(2px * var(--layout-scale, 1));
+    opacity: 0.35;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .relic-empty-icon {
+    font-size: calc(16px * var(--layout-scale, 1));
+    line-height: 1;
+    color: rgba(201, 162, 39, 0.8);
+    border: 1.5px dashed rgba(201, 162, 39, 0.5);
+    border-radius: calc(5px * var(--layout-scale, 1));
+    width: calc(24px * var(--layout-scale, 1));
+    height: calc(24px * var(--layout-scale, 1));
+    display: grid;
+    place-items: center;
+  }
+
+  .relic-empty-label {
+    font-size: calc(8px * var(--layout-scale, 1));
+    color: rgba(255, 255, 255, 0.7);
+    font-family: var(--font-pixel, monospace);
+    line-height: 1;
+    white-space: nowrap;
   }
 
   /* Tooltip */

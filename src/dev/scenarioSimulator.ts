@@ -1386,6 +1386,8 @@ function printHelp(): void {
     '  __terraScenario.setEnemyBlock(block)     Set enemy block',
     '  __terraScenario.setCombo(multiplier)     Set combo multiplier',
     '  __terraScenario.setGold(amount)          Set gold',
+    '  __terraScenario.pause()                  Pause Phaser + CSS for screenshots',
+    '  __terraScenario.resume()                 Resume after screenshot',
     '  __terraScenario.setFloor(floor)          Set floor number',
     '  __terraScenario.forceHand(mechanicIds)   Replace hand cards',
     '  __terraScenario.addRelic(relicId)        Add a relic',
@@ -1484,6 +1486,57 @@ export function initScenarioSimulator(): void {
     setPlayerBlock,
     setEnemyBlock,
     setCombo,
+
+    /** Pause ALL animation sources for stable Playwright screenshots. */
+    pause: () => {
+      // 1. Pause CSS animations via attribute
+      document.documentElement.setAttribute('data-pw-animations', 'disabled');
+
+      // 2. Pause all Web Animations API animations
+      const webAnims = document.getAnimations();
+      webAnims.forEach(a => a.pause());
+
+      // 3. Pause Phaser game loop if running
+      const reg = globalThis as Record<symbol, unknown>;
+      const mgr = reg[Symbol.for('terra:cardGameManager')] as { getGame(): { loop: { sleep(): void; wake(): void } } | null } | undefined;
+      const game = mgr?.getGame();
+      if (game) {
+        game.loop.sleep();
+      }
+
+      // 4. Override requestAnimationFrame to suppress any remaining RAF loops
+      if (!(window as any).__origRAF) {
+        (window as any).__origRAF = window.requestAnimationFrame;
+        window.requestAnimationFrame = () => 0 as any;
+      }
+
+      return { ok: true, phaserPaused: !!game, webAnimsPaused: webAnims.length };
+    },
+
+    /** Resume ALL animation sources after screenshot. */
+    resume: () => {
+      // 1. Resume CSS animations
+      document.documentElement.removeAttribute('data-pw-animations');
+
+      // 2. Resume Web Animations
+      document.getAnimations().forEach(a => a.play());
+
+      // 3. Resume Phaser
+      const reg = globalThis as Record<symbol, unknown>;
+      const mgr = reg[Symbol.for('terra:cardGameManager')] as { getGame(): { loop: { sleep(): void; wake(): void } } | null } | undefined;
+      const game = mgr?.getGame();
+      if (game) {
+        game.loop.wake();
+      }
+
+      // 4. Restore requestAnimationFrame
+      if ((window as any).__origRAF) {
+        window.requestAnimationFrame = (window as any).__origRAF;
+        delete (window as any).__origRAF;
+      }
+
+      return { ok: true };
+    },
 
     help: printHelp,
 

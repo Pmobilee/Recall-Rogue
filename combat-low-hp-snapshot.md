@@ -1,0 +1,75 @@
+- generic [ref=e3]:
+  - generic [ref=e19]:
+    - generic [ref=e135]:
+      - generic "Empty relic slot" [ref=e136]
+      - generic "Empty relic slot" [ref=e137]
+      - generic "Empty relic slot" [ref=e138]
+      - generic "Empty relic slot" [ref=e139]
+      - generic "Empty relic slot" [ref=e140]
+      - generic [ref=e141]: 0/5
+    - heading "Page Flutter" [level=2]
+    - 'generic "Draw pile: 5" [ref=e142]':
+      - generic [ref=e146]: "5"
+    - 'generic "Discard pile: 0" [ref=e147]':
+      - generic [ref=e150]: "0"
+    - button "Attacks for 11 damage" [ref=e151] [cursor=pointer]:
+      - generic [ref=e153]: "11"
+    - group "Card hand":
+      - 'button "Strike: costs 1 AP, 8 damage. Card 1 of 5." [ref=e155] [cursor=pointer]':
+        - generic [ref=e158]:
+          - generic: "1"
+          - generic: Strike
+          - generic:
+            - generic: ⚔
+            - text: ATTACK
+          - generic:
+            - generic: Deal 8 damage
+      - 'button "Block: costs 1 AP, 6 block. Card 2 of 5." [ref=e159] [cursor=pointer]':
+        - generic [ref=e162]:
+          - generic: "1"
+          - generic: Block
+          - generic:
+            - generic: 🛡
+            - text: SHIELD
+          - generic:
+            - generic: Gain 6 Block
+      - 'button "Heavy Strike: costs 3 AP, 20 damage. Card 3 of 5." [ref=e163] [cursor=pointer]':
+        - generic [ref=e166]:
+          - generic: "3"
+          - generic: Heavy Strike
+          - generic:
+            - generic: ⚔
+            - text: ATTACK
+          - generic:
+            - generic: Deal 20 damage
+      - 'button "Strike: costs 1 AP, 8 damage. Card 4 of 5." [ref=e167] [cursor=pointer]':
+        - generic [ref=e170]:
+          - generic: "1"
+          - generic: Strike
+          - generic:
+            - generic: ⚔
+            - text: ATTACK
+          - generic:
+            - generic: Deal 8 damage
+      - 'button "Block: costs 1 AP, 6 block. Card 5 of 5." [ref=e171] [cursor=pointer]':
+        - generic [ref=e174]:
+          - generic: "1"
+          - generic: Block
+          - generic:
+            - generic: 🛡
+            - text: SHIELD
+          - generic:
+            - generic: Gain 6 Block
+    - button "End turn" [ref=e175] [cursor=pointer]: END TURN
+    - button "Show keyboard shortcuts (?)" [ref=e61] [cursor=pointer]: "?"
+    - generic "Player status" [ref=e176]:
+      - generic [ref=e177]:
+        - generic [ref=e179]: "3"
+        - generic [ref=e180]: AP
+      - generic [ref=e181]:
+        - generic [ref=e182]: 🛡
+        - generic [ref=e183]: "Block: 0"
+      - generic [ref=e185]:
+        - generic: 10/100
+    - button "Enemy info" [ref=e187]
+  - button "Pause" [ref=e74] [cursor=pointer]

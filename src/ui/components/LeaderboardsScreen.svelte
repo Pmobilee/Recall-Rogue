@@ -121,4 +121,68 @@
   .metric-streak { grid-area: streak; }
   .metric-gold { grid-area: gold; }
   .metric-floor { grid-area: floor; }
+
+  /* ═══ LANDSCAPE DESKTOP OVERRIDES ═══════════════════════════════════════════ */
+
+  :global([data-layout="landscape"]) .leaderboards-screen {
+    margin-left: 100px;
+    max-width: 1000px;
+    padding: 32px 48px;
+  }
+
+  :global([data-layout="landscape"]) .back-btn {
+    display: none;
+  }
+
+  /* Stat values / rank numbers */
+  :global([data-layout="landscape"]) .rank {
+    font-size: 22px;
+  }
+
+  :global([data-layout="landscape"]) .name {
+    font-size: 22px;
+  }
+
+  /* Body text / metrics */
+  :global([data-layout="landscape"]) .metric {
+    font-size: 15px;
+  }
+
+  /* Small labels */
+  :global([data-layout="landscape"]) .helper {
+    font-size: 14px;
+    color: #64748b;
+  }
+
+  /* Table rows: taller min-height and larger value text */
+  :global([data-layout="landscape"]) .row {
+    min-height: 56px;
+  }
+
+  :global([data-layout="landscape"]) .metric {
+    font-size: 16px;
+  }
+
+  /* Alternate row tinting */
+  :global([data-layout="landscape"]) .row:nth-child(even) {
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  /* Top 3 medal borders */
+  :global([data-layout="landscape"]) .row:nth-child(1) {
+    border-left: 4px solid #ffd700;
+  }
+
+  :global([data-layout="landscape"]) .row:nth-child(2) {
+    border-left: 4px solid #c0c0c0;
+  }
+
+  :global([data-layout="landscape"]) .row:nth-child(3) {
+    border-left: 4px solid #cd7f32;
+  }
+
+  /* Top 3 rank numbers: 22px bold (already 22px for all, keep bold; rest back to 16px) */
+  :global([data-layout="landscape"]) .row:nth-child(n+4) .rank {
+    font-size: 16px;
+  }
 </style>

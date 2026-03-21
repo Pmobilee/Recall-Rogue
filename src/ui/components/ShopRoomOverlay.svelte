@@ -90,10 +90,10 @@
   let showRemovalPicker = $state(false)
   let pendingRemovalHaggled = $state(false)
 
-  /** Cards that can be removed (non-echo) */
-  let nonEchoCards = $derived(cards.filter(c => !c.isEcho))
+  /** Cards that can be removed */
+  let removableCards = $derived(cards)
   /** Whether deck is large enough to remove a card (must keep > 5) */
-  let canRemoveCard = $derived(nonEchoCards.length > 5)
+  let canRemoveCard = $derived(removableCards.length > 5)
 
   /** Mechanic IDs present in the full active deck, for synergy detection. */
   let deckMechanics = $derived(
@@ -105,7 +105,7 @@
   /** Chain composition summary for the removal picker */
   let chainComposition = $derived.by(() => {
     const counts = new Map<number, number>()
-    for (const card of nonEchoCards) {
+    for (const card of removableCards) {
       if (card.chainType !== undefined) {
         counts.set(card.chainType, (counts.get(card.chainType) ?? 0) + 1)
       }
@@ -479,7 +479,7 @@
         </div>
       {/if}
       <div class="removal-list">
-        {#each nonEchoCards as card (card.id)}
+        {#each removableCards as card (card.id)}
           <button
             type="button"
             class="removal-card-btn"

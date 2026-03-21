@@ -74,8 +74,6 @@ export interface Card {
   baseEffectValue: number;
   /** Multiplier from difficulty-proportional power (easy cards hit softer) */
   effectMultiplier: number;
-  /** True if this is an Echo (ghost card injected from wrong answer) */
-  isEcho?: boolean;
   /** True when this card is a Mastery Trial candidate. */
   isMasteryTrial?: boolean;
   /** Mechanic ID from the mechanics pool. */
@@ -84,7 +82,7 @@ export interface Card {
   mechanicName?: string;
   /** AP cost to play this card. */
   apCost?: number;
-  /** Pre-echo base effect value used by Echo Chamber. */
+  /** Pre-upgrade base effect value (preserved for reference). */
   originalBaseEffectValue?: number;
   /** True if this card has been upgraded at a rest site or post-mini-boss. */
   isUpgraded?: boolean;

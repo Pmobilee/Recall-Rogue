@@ -108,7 +108,7 @@
 
   function getRotation(index: number, total: number): number {
     if (total <= 1) return 0
-    const spread = total > 6 ? 25 : 39
+    const spread = total > 6 ? 18 : 24
     const step = spread / (total - 1)
     return -spread / 2 + step * index
   }
@@ -131,14 +131,15 @@
     const cardW = viewportWidth * 0.30 * handScaleFactor
     const cardH = cardW * 1.42
     // Outer cards are rotated ±(spread/2)° which widens their bounding box
-    const spread = total > 6 ? 25 : 39
+    const spread = total > 6 ? 18 : 24
     const maxRotationRad = (spread / 2) * (Math.PI / 180)
     const rotatedW = cardW * Math.cos(maxRotationRad) + cardH * Math.sin(maxRotationRad)
     const rotationOverhang = rotatedW - cardW
     const maxHandWidth = viewportWidth * 0.92 - rotationOverhang
-    // 60% of card width overlap
+    // 60% of card width overlap — minimum 44px tap target
     const overlapSpacing = cardW * 0.58
-    return Math.min(overlapSpacing, Math.floor((maxHandWidth - cardW) / (total - 1)))
+    const minSpacing = 44
+    return Math.max(minSpacing, Math.min(overlapSpacing, Math.floor((maxHandWidth - cardW) / (total - 1))))
   })
 
   function getXOffset(index: number, total: number): number {
@@ -220,8 +221,46 @@
     }
   })
 
+  /** H-9: Dismiss charge hint when card is deselected. */
+  $effect(() => {
+    if (selectedIndex === null && showChargeHint) {
+      dismissChargeHint()
+    }
+  })
+
   /** True while the player hovers or presses the CHARGE button — triggers a green charge preview on the selected card. */
   let chargePreviewActive = $state(false)
+
+  /** H-9: Show drag-to-charge hint in portrait on first card selection. */
+  let showChargeHint = $state(false)
+  let chargeHintTimer: ReturnType<typeof setTimeout> | null = null
+
+  function maybeShowChargeHint(): void {
+    if ($isLandscape) return
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('hint:chargeDragSeen')) return
+    showChargeHint = true
+    if (chargeHintTimer !== null) clearTimeout(chargeHintTimer)
+    chargeHintTimer = setTimeout(() => {
+      showChargeHint = false
+      chargeHintTimer = null
+    }, 3000)
+  }
+
+  function dismissChargeHint(): void {
+    showChargeHint = false
+    if (chargeHintTimer !== null) {
+      clearTimeout(chargeHintTimer)
+      chargeHintTimer = null
+    }
+  }
+
+  /** Called after a successful charge play — marks hint as seen. */
+  function markChargeDragSeen(): void {
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('hint:chargeDragSeen', '1')
+    }
+    dismissChargeHint()
+  }
 
   let dragState = $state<{
     cardIndex: number
@@ -318,6 +357,10 @@
       dragFrameId = null
     }
     pendingDragPoint = null
+    if (chargeHintTimer !== null) {
+      clearTimeout(chargeHintTimer)
+      chargeHintTimer = null
+    }
   })
 
   function flushDragFrame(): void {
@@ -441,18 +484,16 @@
 
     if (wasInChargeZone) {
       // Released in Charge zone (above screen-position threshold) — trigger Charge Play (quiz)
-      // Check affordability: if charge can't be paid, fall back to Quick Play
+      // Check affordability: if charge can't be paid, return card to hand (no silent Quick Play)
       const card = cards[index]
       const chargeApCost = (card?.apCost ?? 1) + (isSurgeActive || nextChargeFree ? 0 : 1)
       const canAffordCharge = card && card.tier !== '3' && chargeApCost <= apCurrent
       if (canAffordCharge && onchargeplay) {
+        markChargeDragSeen()
         onchargeplay(index)
-      } else if (oncastdirect) {
-        // Charge not affordable or not available — fall back to Quick Play
-        oncastdirect(index)
       } else if (onchargeplay && !canAffordCharge) {
-        // Can't afford but onchargeplay is the only handler — still try (let caller decide)
-        onchargeplay(index)
+        // Can't afford charge — return card to hand (no silent Quick Play)
+        onselectcard(index)
       } else {
         onselectcard(index)
       }
@@ -464,7 +505,8 @@
         onselectcard(index)
       }
     } else if (!wasDrag) {
-      // Tap (minimal movement) — normal select behavior
+      // Tap (minimal movement) — normal select behavior; show charge hint in portrait
+      maybeShowChargeHint()
       onselectcard(index)
     }
     // Otherwise: drag released below threshold, card returns to hand (no action)
@@ -660,7 +702,7 @@
       class:tier-2a={card.tier === '2a'}
       class:tier-2b={card.tier === '2b'}
       class:tier-3={card.tier === '3'}
-      class:echo-card={card.isEcho}
+      class:echo-card={false}
       class:trial-card={card.isMasteryTrial}
       class:insufficient-ap={insufficientAp}
       class:card-playable={!insufficientAp && !isSelected && !isOther && selectedIndex === null}
@@ -749,12 +791,6 @@
           </div>
           {#if card.isMasteryTrial}
             <div class="trial-badge">TRIAL</div>
-          {/if}
-          {#if card.isEcho}
-            <div class="echo-badge">
-              <span>ECHO</span>
-              <span class="echo-charge-label">⚡ CHARGE</span>
-            </div>
           {/if}
           {#if isMastered}
             <div class="card-tier-label card-tier-label--mastered">MASTERED</div>
@@ -1012,7 +1048,7 @@
       class:tier-2a={card.tier === '2a'}
       class:tier-2b={card.tier === '2b'}
       class:tier-3={card.tier === '3'}
-      class:echo-card={card.isEcho}
+      class:echo-card={false}
       class:trial-card={card.isMasteryTrial}
       class:insufficient-ap={insufficientAp}
       class:card-playable={!insufficientAp && !isSelected && !isOther && selectedIndex === null}
@@ -1112,12 +1148,6 @@
           {#if card.isMasteryTrial}
             <div class="trial-badge">TRIAL</div>
           {/if}
-          {#if card.isEcho}
-            <div class="echo-badge">
-              <span>ECHO</span>
-              <span class="echo-charge-label">⚡ CHARGE</span>
-            </div>
-          {/if}
           {#if isMastered}
             <div class="card-tier-label card-tier-label--mastered">MASTERED</div>
           {/if}
@@ -1156,6 +1186,11 @@
             <span class="charge-zone-text" class:momentum-active={nextChargeFree && !isSurgeActive}>⚡ CHARGE {isSurgeActive || nextChargeFree ? '+0' : '+1'} AP{nextChargeFree && !isSurgeActive ? ' ⚡' : ''}</span>
           {/if}
         </div>
+      {/if}
+
+      <!-- H-9: Drag-to-charge hint — portrait only, first selection, auto-dismisses after 3s -->
+      {#if isSelected && showChargeHint && !$isLandscape}
+        <div class="charge-drag-hint" aria-hidden="true">Drag up to Charge (1.5x)</div>
       {/if}
     </button>
 
@@ -1203,6 +1238,13 @@
       </div>
     {/if}
   {/each}
+
+  <!-- H-10: Charge zone threshold line — visible during active drag in portrait -->
+  {#if dragState && isDragPreview}
+    <div class="charge-threshold-line" style="top: {typeof window !== 'undefined' && window.innerHeight < 600 ? 45 : 55}%;">
+      <span class="threshold-label">CHARGE</span>
+    </div>
+  {/if}
 
   {#each animatingCards as card (card.id)}
     {@const cardAnim = cardAnimations?.[card.id] ?? null}
@@ -1895,6 +1937,81 @@
     color: #c39bd3;
     letter-spacing: 0.03em;
     margin-top: calc(1px * var(--layout-scale, 1));
+  }
+
+  /* H-13: CHARGE ONLY badge — bottom of echo cards */
+  .echo-charge-only-badge {
+    position: absolute;
+    bottom: calc(4px * var(--layout-scale, 1));
+    left: calc(2px * var(--layout-scale, 1));
+    right: calc(2px * var(--layout-scale, 1));
+    font-size: calc(7px * var(--layout-scale, 1));
+    font-weight: 800;
+    color: #facc15;
+    background: rgba(0, 0, 0, 0.65);
+    border-radius: 3px;
+    padding: calc(1px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1));
+    text-align: center;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    pointer-events: none;
+    z-index: 3;
+    border: 1px solid rgba(250, 204, 21, 0.35);
+  }
+
+  /* H-9: Drag-to-charge hint — portrait, first selection */
+  .charge-drag-hint {
+    position: absolute;
+    bottom: calc(-22px * var(--layout-scale, 1));
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: calc(10px * var(--layout-scale, 1));
+    font-weight: 700;
+    color: #facc15;
+    background: rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(250, 204, 21, 0.4);
+    border-radius: 4px;
+    padding: calc(2px * var(--layout-scale, 1)) calc(7px * var(--layout-scale, 1));
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 30;
+    animation: chargeHintFadeIn 200ms ease-out both;
+    letter-spacing: 0.03em;
+  }
+
+  @keyframes chargeHintFadeIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+
+  /* H-10: Charge zone threshold line — fixed, full-width dashed line during drag */
+  .charge-threshold-line {
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-top: 2px dashed rgba(250, 204, 21, 0.55);
+    pointer-events: none;
+    z-index: 25;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .threshold-label {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: #facc15;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1px 8px;
+    border-radius: 3px;
+    border: 1px solid rgba(250, 204, 21, 0.4);
+    pointer-events: none;
+    white-space: nowrap;
   }
 
   /* V2 Echo: golden flash on correct Charge resolve */

@@ -26,7 +26,7 @@ browser_navigate → http://localhost:5173?skipOnboarding=true&devpreset=<approp
 Choose the devpreset that best matches the state needed to test the fix. See the playtest skill for the full preset list.
 
 ### Step 3: Capture Before State
-- `browser_take_screenshot` — visual baseline
+- `mcp__playwright__browser_take_screenshot` — visual baseline (NEVER use `page.screenshot()` via `browser_run_code` — Phaser RAF blocks it. NEVER use `newCDPSession()` — hangs.)
 - `browser_evaluate` → `window.__terraDebug()` — runtime state snapshot
 - `browser_console_messages` — check for pre-existing errors
 
@@ -37,7 +37,7 @@ Perform the exact interaction that was broken:
 - For state changes: use `browser_evaluate` to trigger the action
 
 ### Step 5: Capture After State
-- `browser_take_screenshot` — visual confirmation
+- `mcp__playwright__browser_take_screenshot` — visual confirmation
 - `browser_evaluate` → `window.__terraDebug()` — verify state changed as expected
 - `browser_evaluate` → `window.__terraLog.slice(-10)` — check event trail
 - `browser_console_messages` — check for new errors

@@ -83,13 +83,6 @@ export const RELIC_SYNERGIES: SynergyDefinition[] = [
     requireAnyN: 2,
     tier: 2,
   },
-  {
-    id: 'echo_master',
-    name: 'Echo Master',
-    requiredRelicIds: ['echo_lens', 'combo_ring'],
-    tier: 2,
-  },
-
   // === TIER 3: Mastery secrets (deep hidden mechanics) ===
   {
     id: 'phoenix_rage',

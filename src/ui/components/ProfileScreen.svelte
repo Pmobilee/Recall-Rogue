@@ -295,4 +295,66 @@
     text-align: center;
     padding: calc(20px * var(--layout-scale, 1));
   }
+
+  /* ═══ LANDSCAPE DESKTOP OVERRIDES ═══════════════════════════════════════════ */
+
+  :global([data-layout="landscape"]) .profile-screen {
+    margin-left: 100px;
+    max-width: 1200px;
+    padding: 32px 48px;
+  }
+
+  :global([data-layout="landscape"]) .back {
+    display: none;
+  }
+
+  /* Stat values */
+  :global([data-layout="landscape"]) .stat strong {
+    font-size: 28px;
+  }
+
+  /* Small labels */
+  :global([data-layout="landscape"]) .stat span {
+    font-size: 13px;
+  }
+
+  /* Body text */
+  :global([data-layout="landscape"]) .hero p {
+    font-size: 15px;
+  }
+
+  :global([data-layout="landscape"]) .domain-item {
+    font-size: 15px;
+  }
+
+  :global([data-layout="landscape"]) .domain-item strong {
+    font-size: 22px;
+  }
+
+  /* Stat grid: 3-column with 16px gap */
+  :global([data-layout="landscape"]) .stats-grid-landscape {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  /* Avatar: larger in landscape */
+  :global([data-layout="landscape"]) .avatar {
+    width: 96px;
+    height: 96px;
+    font-size: 48px;
+  }
+
+  /* Hero title: larger in landscape */
+  :global([data-layout="landscape"]) .hero h3 {
+    font-size: 20px;
+  }
+
+  /* Empty domains state: styled and centered */
+  :global([data-layout="landscape"]) .empty-domains {
+    font-size: 18px;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 64px;
+    text-align: center;
+  }
 </style>

@@ -52,6 +52,47 @@ If stuck on any screen for >10s, take a screenshot, log the issue, and attempt t
 4. card-reward — Card reward selection (if reached)
 5. run-end — Run results screen
 
+## Element Discovery & Evaluation — MANDATORY
+
+At EVERY screenshot checkpoint, run the Runtime Element Discovery protocol from the Shared Protocol (Step 1: discover, Step 2: generate checklist, Step 3: evaluate). You MUST do this — do not skip it.
+
+### Scenario-Specific Evaluation Questions
+
+At each checkpoint, also answer these scenario-specific questions:
+
+**Hub (#1):**
+- Run the element discovery scan. How many buttons, text elements, and images were found?
+- For every button discovered: what does its label say? Is it clear what it does? Is it reachable with a thumb?
+- Is Start Run the most prominent interactive element? Does the hub make you want to start a run?
+- Are streak counter and dust balance showing valid numbers?
+- Does the camp feel like a cozy home base or a cluttered menu?
+
+**Combat Start (#2):**
+- Run discovery. List every element found: enemy name, HP bars, AP orb, cards in hand, buttons.
+- For each card in hand: can you read the AP cost, type, and name at this size?
+- Is the enemy sprite loaded (not a placeholder)? Does it look threatening?
+- Is enemy intent visible BEFORE you make any decision?
+- Does the combat screen feel exciting or overwhelming for a first encounter?
+
+**Quiz Answered (#3):**
+- Run discovery on the quiz overlay. How many answer buttons? What does each say?
+- Is the question text readable? Is it educational and interesting?
+- Are all 3 answer choices unique and plausible?
+- Does correct/wrong feedback feel proportionate? Does wrong feel like learning, not punishment?
+- Is the quiz overlay blocking any critical combat information?
+
+**Card Reward (#4):**
+- Run discovery. What reward options are shown? How many?
+- Can you evaluate each card option without tapping to expand?
+- Is the accept button clearly the primary action?
+- Does choosing a reward feel exciting or tedious?
+
+**Run End (#5):**
+- Run discovery. What stats are shown? Are all numbers valid (not NaN)?
+- Does the run end screen make you feel accomplished (even in defeat)?
+- Is Play Again the most prominent button? Does it make you want to replay?
+- Is the Share button discoverable but not intrusive?
+
 ## Checks
 - All screen transitions happen within 5s
 - Quiz has exactly 3 non-empty, unique answer choices

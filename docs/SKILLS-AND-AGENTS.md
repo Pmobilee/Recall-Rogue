@@ -33,8 +33,4 @@ Quick reference for all Claude Code automation available in this project.
 
 ## Agents (`.claude/agents/`)
 
-| Agent | Description |
-|-------|-------------|
-| `playwright-test-planner` | Explores app, writes comprehensive test plans |
-| `playwright-test-generator` | Converts test plans into Playwright test files |
-| `playwright-test-healer` | Debugs and fixes failing Playwright tests |
+No custom agents currently active. All Playwright testing uses the official `@playwright/mcp` server via `mcp__playwright__*` tools.

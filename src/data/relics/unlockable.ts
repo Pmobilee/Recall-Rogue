@@ -31,25 +31,6 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
     startsUnlocked: false,
   },
 
-  {
-    id: 'echo_chamber',
-    name: 'Echo Chamber',
-    description: 'Completing a 2+ chain replays the first card in the chain at 60% power (no quiz, no AP cost).',
-    flavorText: 'A resonance chamber where echoes of played cards linger. Link enough facts together and the chamber reaches harmonic saturation — the opening card echoes again at half strength.',
-    visualDescription: 'A round purple resonance chamber with ghostly card silhouettes orbiting the interior walls. Echo ripples bounce between the curved surfaces. 32x32 pixel art.',
-    rarity: 'rare',
-    category: 'chain',
-    trigger: 'on_chain_complete',
-    effects: [
-      { effectId: 'chain_echo_replay', description: 'First chain card replays at 60% power on 2+ chain', value: 60, secondaryValue: 2 },
-    ],
-    icon: '🔊',
-    unlockCost: 55,
-    unlockLevel: 3,
-    isStarter: false,
-    startsUnlocked: false,
-  },
-
   // === SPEED (2 unlockable) ===
 
   {
@@ -373,21 +354,4 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
     excludeFromPhase1: true, // Requires multi-enemy encounter system — Phase 2 only
   },
 
-  // === ECHO RELICS ===
-
-  {
-    id: 'echo_lens',
-    name: 'Echo Lens',
-    description: 'Echo cards deal full power even on wrong Charge answers (1.0× regardless of quiz result).',
-    flavorText: 'Ground from crystals that grow in the Echo Chamber on Floor 11. Normal echoes fade. Through this lens, ghost cards remember their full strength and strike with undiminished force.',
-    visualDescription: 'A round purple crystal lens with concentric ripple rings inside, ghostly card silhouettes visible through it at full opacity. Resonance waves. 32x32 pixel art.',
-    rarity: 'uncommon',
-    category: 'tactical',
-    trigger: 'on_echo_play',
-    effects: [{ effectId: 'echo_full_power', description: 'Echo at 1.0x regardless of quiz result', value: 1 }],
-    icon: '🔮',
-    unlockCost: 35,
-    unlockLevel: 24,
-    isStarter: false,
-  },
 ];

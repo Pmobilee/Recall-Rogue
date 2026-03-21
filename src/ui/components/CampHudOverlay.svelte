@@ -77,7 +77,17 @@
   /* Landscape: HUD is inside .hub-center so left/right: 0 is already correct.
      Tighten top padding slightly since no mobile safe area needed. */
   .hud-overlay.landscape .hud-pill {
-    top: 10px;
+    top: 14px;
+    padding: 8px 16px;
+    gap: 8px;
+  }
+
+  .hud-overlay.landscape .hud-icon {
+    font-size: 20px;
+  }
+
+  .hud-overlay.landscape .hud-value {
+    font-size: 18px;
   }
 
   .hud-overlay.landscape.banner-offset .hud-pill {

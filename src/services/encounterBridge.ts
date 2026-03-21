@@ -14,14 +14,13 @@ import { getBossForFloor, pickCombatEnemy, isBossFloor, isMiniBossEncounter, get
 import type { Card, CardRunState } from '../data/card-types';
 import { recordCardPlay } from './runManager';
 import {
-  applyEchoStabilityBonus,
   applyMasteryTrialOutcome,
   awardMasteryCoin,
   getReviewStateByFactId,
   playerSave,
   updateReviewStateByButton,
 } from '../ui/stores/playerData';
-import { ECHO, HINTS_PER_ENCOUNTER, POST_ENCOUNTER_HEAL_PCT, RELAXED_POST_ENCOUNTER_HEAL_BONUS, POST_BOSS_ENCOUNTER_HEAL_BONUS, EARLY_MINI_BOSS_HP_MULTIPLIER, POST_ENCOUNTER_HEAL_CAP, getBalanceValue, STARTER_DECK_COMPOSITION } from '../data/balance';
+import { HINTS_PER_ENCOUNTER, POST_ENCOUNTER_HEAL_PCT, RELAXED_POST_ENCOUNTER_HEAL_BONUS, POST_BOSS_ENCOUNTER_HEAL_BONUS, EARLY_MINI_BOSS_HP_MULTIPLIER, POST_ENCOUNTER_HEAL_CAP, getBalanceValue, STARTER_DECK_COMPOSITION } from '../data/balance';
 import { generateCurrencyReward, generateComboBonus } from './encounterRewards';
 import type { CombatScene } from '../game/scenes/CombatScene';
 import { factsDB } from './factsDB';
@@ -42,7 +41,6 @@ import { activeRewardBundle, releaseScreenTransition } from '../ui/stores/gameSt
 import {
   resolveEncounterStartEffects,
   resolveBaseDrawCount,
-  resolveComboStartValue,
 } from './relicEffectResolver';
 import { resolveDistributionForDomain, createDefaultCalibrationState } from './difficultyCalibration';
 import { buildPresetRunPool, buildGeneralRunPool, buildLanguageRunPool } from './presetPoolBuilder'
@@ -437,8 +435,6 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   turnState.apMax = Math.max(2, run.startingAp);
   turnState.apCurrent = Math.min(turnState.apCurrent, turnState.apMax);
   turnState.activeRelicIds = runRelicIds;
-  turnState.baseComboCount = resolveComboStartValue(runRelicIds);
-  turnState.comboCount = turnState.baseComboCount;
   turnState.baseDrawCount = resolveBaseDrawCount(runRelicIds);
   // If a relic (e.g. swift_boots) boosts the draw count above the default 5,
   // startEncounter already drew 5 cards. Draw the extra cards now so the first
@@ -461,7 +457,6 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   turnState.ascensionTier1OptionCount = ascensionModifiers.tier1OptionCount;
   turnState.ascensionForceHardQuestionFormats = ascensionModifiers.forceHardQuestionFormats;
   turnState.ascensionPreventFlee = ascensionModifiers.preventFlee;
-  turnState.ascensionComboResetsOnTurnEnd = ascensionModifiers.comboResetsOnTurnEnd;
 
   // Encounter-start relic hooks (resolved by relicEffectResolver).
   const encounterStartFx = resolveEncounterStartEffects(runRelicIds);
@@ -487,40 +482,6 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   });
 
   return true;
-}
-
-function createEchoCardFrom(card: Card): Card {
-  // V2: Store full base power at spawn. Multiplier (if any) is applied at resolve time in
-  // resolveEchoBase(), not here. originalBaseEffectValue is kept for echo_lens compatibility.
-  return {
-    ...card,
-    id: `echo_${Math.random().toString(36).slice(2, 10)}`,
-    isEcho: true,
-    originalBaseEffectValue: card.originalBaseEffectValue ?? card.baseEffectValue,
-    baseEffectValue: card.originalBaseEffectValue ?? card.baseEffectValue,
-  };
-}
-
-/**
- * V2: Spawns an Echo card only when a Charge play is answered incorrectly.
- * Quick Play answers never spawn Echoes.
- */
-function maybeGenerateEcho(card: Card, wasCorrect: boolean, playMode: PlayMode): void {
-  // V2: only wrong Charge answers spawn Echoes; Quick Play never creates Echoes
-  if (playMode !== 'charge') return;
-  const run = get(activeRunState);
-  if (!run || !activeDeck) return;
-  if (run.ascensionModifiers?.disableEcho) return;
-  if (wasCorrect || card.isEcho || card.isMasteryTrial) return;
-  if (run.echoCount >= ECHO.MAX_ECHOES_PER_RUN) return;
-  if (run.echoFactIds.has(card.factId)) return;
-  if (Math.random() >= ECHO.REAPPEARANCE_CHANCE) return;
-
-  const echoCard = createEchoCardFrom(card);
-  insertCardWithDelay(activeDeck, echoCard, ECHO.INSERT_DELAY_CARDS);
-  run.echoFactIds.add(card.factId);
-  run.echoCount += 1;
-  activeRunState.set(run);
 }
 
 function maybeApplyMasteryOutcome(card: Card, wasCorrect: boolean): void {
@@ -550,7 +511,7 @@ export function handlePlayCard(
   const run = get(activeRunState);
 
   if (run && playedCard) {
-    recordCardPlay(run, correct, result.comboCount, playedCard.factId, playedCard.domain, playedCard.tier === '1');
+    recordCardPlay(run, correct, 0, playedCard.factId, playedCard.domain, playedCard.tier === '1');
     analyticsService.track({
       name: 'card_play',
       properties: {
@@ -558,7 +519,7 @@ export function handlePlayCard(
         card_type: playedCard.cardType,
         tier: playedCard.tier,
         correct,
-        combo: result.comboCount,
+        combo: 0,
         response_time_ms: responseTimeMs ?? null,
         floor: run.floor.currentFloor,
         encounter: run.floor.currentEncounter,
@@ -579,14 +540,7 @@ export function handlePlayCard(
         type: 'card_correct',
         domain: playedCard.domain,
         responseTimeMs,
-        comboCount: result.comboCount,
-      });
-    }
-
-    if (result.comboCount >= 4) {
-      run.bounties = updateBounties(run.bounties, {
-        type: 'combo_reached',
-        combo: result.comboCount,
+        comboCount: 0,
       });
     }
 
@@ -609,22 +563,6 @@ export function handlePlayCard(
       speedBonus,
       runNumber: run?.primaryDomainRunNumber,
     });
-
-    // V2: Correct Echo Charge — double FSRS credit + redeem fact (cannot spawn another Echo)
-    if (playedCard.isEcho && correct && playMode === 'charge' && run) {
-      applyEchoStabilityBonus(playedCard.factId, ECHO.FSRS_STABILITY_BONUS_CORRECT_V2);
-      run.echoFactIds.delete(playedCard.factId);
-      activeRunState.set(run);
-    }
-
-    // V2: Wrong Echo Charge — exhaust the card (cannot be re-drawn this run)
-    if (playedCard.isEcho && !correct && playMode === 'charge' && activeDeck) {
-      try {
-        exhaustCard(activeDeck, playedCard.id);
-      } catch {
-        // Card may already have been removed from hand by playCardAction — safe to ignore
-      }
-    }
 
     const updatedReviewState = getReviewStateByFactId(playedCard.factId);
     if (run && updatedReviewState) {
@@ -651,7 +589,6 @@ export function handlePlayCard(
     }
 
     maybeApplyMasteryOutcome(playedCard, correct);
-    maybeGenerateEcho(playedCard, correct, playMode);
   }
 
   activeTurnState.set(freshTurnState(result.turnState));
@@ -715,7 +652,7 @@ export function handlePlayCard(
         run.floor.currentFloor,
         result.turnState.enemy.template.category,
       );
-      const comboBonus = generateComboBonus(result.turnState.baseComboCount);
+      const comboBonus = generateComboBonus(0);
       run.currency += currencyReward + comboBonus;
 
       // Capture reward data for step-by-step reveal

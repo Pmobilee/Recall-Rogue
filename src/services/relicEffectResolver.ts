@@ -175,7 +175,7 @@ export interface AttackContext {
   isFirstAttack: boolean;
   /** Whether the card's mechanic has the 'strike' tag (barbed_edge v1). */
   isStrikeTagged: boolean;
-  /** Current combo count this turn (war_drum v1). */
+  /** @deprecated Kept for caller compatibility; no longer used (combo system removed). */
   comboCount: number;
   /** Player's current HP as a fraction of max HP, 0..1 (reckless_resolve v2, berserker_band v1). */
   playerHpPercent: number;
@@ -189,11 +189,6 @@ export interface AttackContext {
   enemyHpPercent: number;
   /** Number of poison stacks on the enemy (festering_wound v2). */
   enemyPoisonStacks?: number;
-  /**
-   * Whether there is a first_charge_turn_damage_bonus active this turn (combo_ring v2).
-   * Caller sets this based on resolveChargeCorrectEffects returning comboRingActive.
-   */
-  comboRingActive?: boolean;
   /**
    * The domain of the card being played (domain_mastery_sigil v2).
    * Used to check whether the card's domain has 4+ cards in the active deck.
@@ -228,11 +223,6 @@ export function resolveAttackModifiers(
   // barbed_edge — Strike-tagged mechanics +2 base damage
   if (relicIds.has('barbed_edge') && context.isStrikeTagged) {
     flatDamageBonus += 2;
-  }
-
-  // war_drum — +1 damage per combo level this turn (capped at +3)
-  if (relicIds.has('war_drum')) {
-    flatDamageBonus += Math.min(context.comboCount, 3);
   }
 
   // memory_palace — 2 correct in a row: +4 damage to next attack
@@ -318,11 +308,6 @@ export function resolveAttackModifiers(
     if (domainCount >= 4) {
       percentDamageBonus += 0.30;
     }
-  }
-
-  // combo_ring (v2) — First Charged correct answer each turn grants +1 flat damage to all attacks
-  if (relicIds.has('combo_ring') && context.comboRingActive) {
-    flatDamageBonus += 1;
   }
 
   return {
@@ -853,21 +838,6 @@ export function resolveBaseDrawCount(relicIds: Set<string>): number {
   return count;
 }
 
-// ─── Combo Start ────────────────────────────────────────────────────
-
-/**
- * Resolve the starting combo multiplier index.
- * Default combo starts at index 0 (1.0x); combo_ring starts at index 2 (1.25x);
- * echo_master synergy (echo_lens + combo_ring) starts even higher at index 3 (1.5x).
- *
- * @param relicIds - Set of relic IDs the player currently holds.
- * @returns Starting combo index (0, 2, or 3).
- */
-export function resolveComboStartValue(relicIds: Set<string>): number {
-  if (hasSynergy(relicIds, 'echo_master')) return 3; // start even higher
-  return relicIds.has('combo_ring') ? 1 : 0;
-}
-
 // ─── Speed Bonus ────────────────────────────────────────────────────
 
 /**
@@ -910,19 +880,6 @@ export function resolveSpeedBonusThreshold(relicIds: Set<string>): number {
  */
 export function resolveTimerBonus(relicIds: Set<string>): number {
   return relicIds.has('time_dilation') ? 3 : 0;
-}
-
-// ─── Echo ───────────────────────────────────────────────────────────
-
-/**
- * Determine whether echo cards should play at full power (1.0x) instead of the
- * default reduced multiplier (0.7x).
- *
- * @param relicIds - Set of relic IDs the player currently holds.
- * @returns True if echo_lens is held and echoes should deal full damage.
- */
-export function shouldEchoPlayFullPower(relicIds: Set<string>): boolean {
-  return relicIds.has('echo_lens');
 }
 
 // ─── Max HP Bonus (Run Start) ───────────────────────────────────────
@@ -1013,11 +970,6 @@ export interface ChargeCorrectEffects {
    */
   isCrit: boolean;
   /**
-   * Whether this is the first Charged correct this turn (combo_ring).
-   * If true, caller marks comboRingActive for this turn's attack resolves.
-   */
-  comboRingActive: boolean;
-  /**
    * Extra block percentage for a shield card Charge (bastions_will: +75%).
    * 0 if not a shield card or relic not held.
    */
@@ -1042,7 +994,7 @@ export interface ChargeCorrectContext {
   cardTier: number;
   /** Whether the charged card is a shield type (bastions_will). */
   cardType: 'attack' | 'shield' | 'utility';
-  /** Whether this is the first Charged correct answer this turn (combo_ring). */
+  /** Whether this is the first Charged correct answer this turn. */
   isFirstChargeThisTurn: boolean;
   /** Cumulative count of correctly Charged cards in this encounter (memory_nexus). */
   chargeCountThisEncounter: number;
@@ -1095,9 +1047,6 @@ export function resolveChargeCorrectEffects(
   // crit_lens — 25% crit chance doubles final damage
   const isCrit = relicIds.has('crit_lens') && Math.random() < 0.25;
 
-  // combo_ring — first Charged correct per turn activates +2 damage for all attacks this turn
-  const comboRingActive = relicIds.has('combo_ring') && context.isFirstChargeThisTurn;
-
   // bastions_will — +75% block for Charged shield cards
   if (relicIds.has('bastions_will') && context.cardType === 'shield') {
     shieldBonus = 75;
@@ -1122,7 +1071,6 @@ export function resolveChargeCorrectEffects(
     apRefund,
     drawBonus,
     isCrit,
-    comboRingActive,
     shieldBonus,
     scholarsCrownBonus,
     mirrorAvailable,
@@ -1196,17 +1144,13 @@ export interface ChainCompleteEffects {
   totalSplashDamage: number;
   /** Bonus cards to draw at end of turn (resonance_crystal: chainLength - 2, when chainLength >= 3). */
   drawBonus: number;
-  /** Whether echo_chamber should replay the first chain card at 60% power. */
-  echoReplay: boolean;
-  /** Power fraction for echo replay (0.60 = 60% power). 0 if no echo. */
-  echoCardPower: number;
 }
 
 /** Context for resolveChainCompleteEffects. */
 export interface ChainCompleteContext {
   /** Number of links in the completed chain. */
   chainLength: number;
-  /** ID of the first card in the chain (echo_chamber). */
+  /** ID of the first card in the chain. */
   firstCardId: string;
 }
 
@@ -1232,11 +1176,7 @@ export function resolveChainCompleteEffects(
   const drawBonus =
     relicIds.has('resonance_crystal') && chainLength > 2 ? chainLength - 2 : 0;
 
-  // echo_chamber — replay first card at 60% power on 2+ chain
-  const echoReplay = relicIds.has('echo_chamber') && chainLength >= 2;
-  const echoCardPower = echoReplay ? 0.60 : 0;
-
-  return { splashPerLink, totalSplashDamage, drawBonus, echoReplay, echoCardPower };
+  return { splashPerLink, totalSplashDamage, drawBonus };
 }
 
 // ─── Prismatic Shard — Chain Multiplier Bonus ───────────────────────

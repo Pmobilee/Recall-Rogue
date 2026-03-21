@@ -27,6 +27,11 @@ export default class BootAnimScene extends Phaser.Scene {
   private coverScale = 1
   private currentLayoutMode: LayoutMode = 'portrait'
 
+  // The visible content (logo+title+studio) spans Y=631..1326 in the 1024×1835 image.
+  // Group center = (631+1326)/2 = 978.5, image center = 917.5.
+  // In landscape, shift all images down by this delta so the group is screen-centered.
+  private static readonly LANDSCAPE_GROUP_OFFSET = 978.5 - 917.5  // 61
+
   // Ring display order: surface → deep → void then library (swapped 7↔8)
   // File names stay as generated, but display order is swapped.
   private static readonly RING_FILES = [
@@ -76,6 +81,9 @@ export default class BootAnimScene extends Phaser.Scene {
     const cy = this.cameras.main.centerY
     const viewW = this.scale.width
     const viewH = this.scale.height
+    // Detect layout mode from Phaser canvas dimensions since the
+    // layoutMode store subscription skips its first emit
+    this.currentLayoutMode = viewW > viewH ? 'landscape' : 'portrait'
     this.coverScale = this.calcLogoScale(viewW, viewH)
 
     // Part 1 background — black rect instead of camera bg, so canvas stays transparent
@@ -152,9 +160,10 @@ export default class BootAnimScene extends Phaser.Scene {
 
   private logoDeblur(cx: number, cy: number): void {
     const s = this.coverScale
-    const heavy = this.add.image(cx, cy, 'boot_logo_blur_heavy').setScale(s).setDepth(100).setAlpha(0)
-    const medium = this.add.image(cx, cy, 'boot_logo_blur_medium').setScale(s).setDepth(100).setAlpha(0)
-    const sharp = this.add.image(cx, cy, 'boot_logo').setScale(s).setDepth(100).setAlpha(0)
+    const logoY = this.getLogoY(cy)
+    const heavy = this.add.image(cx, logoY, 'boot_logo_blur_heavy').setScale(s).setDepth(100).setAlpha(0)
+    const medium = this.add.image(cx, logoY, 'boot_logo_blur_medium').setScale(s).setDepth(100).setAlpha(0)
+    const sharp = this.add.image(cx, logoY, 'boot_logo').setScale(s).setDepth(100).setAlpha(0)
     this.sceneSprites.push(heavy, medium, sharp)
     this.tweens.add({ targets: heavy, alpha: 1, duration: 800 })
     this.time.delayedCall(400, () => {
@@ -168,7 +177,8 @@ export default class BootAnimScene extends Phaser.Scene {
   }
 
   private logoGlow(cx: number, cy: number): void {
-    const glow = this.add.image(cx, cy, 'boot_logo')
+    const logoY = this.getLogoY(cy)
+    const glow = this.add.image(cx, logoY, 'boot_logo')
       .setScale(this.coverScale).setDepth(101).setAlpha(0)
       .setBlendMode(Phaser.BlendModes.ADD).setTint(0xFFE4A0)
     this.sceneSprites.push(glow)
@@ -178,14 +188,15 @@ export default class BootAnimScene extends Phaser.Scene {
         this.tweens.add({ targets: glow, alpha: 0, duration: 400, onComplete: () => glow.destroy() })
       },
     })
-    this.time.delayedCall(200, () => this.sparkBurst(cx, cy, 4, 0xFFE4A0))
+    this.time.delayedCall(200, () => this.sparkBurst(cx, logoY, 4, 0xFFE4A0))
   }
 
   private titleSweep(cx: number, cy: number): void {
     const s = this.coverScale
+    const titleY = this.getLogoY(cy)
     const startX = cx - 150
-    const medium = this.add.image(startX, cy, 'boot_recallrogue_blur_medium').setScale(s).setDepth(101).setAlpha(0)
-    const sharp = this.add.image(startX, cy, 'boot_recallrogue').setScale(s).setDepth(101).setAlpha(0)
+    const medium = this.add.image(startX, titleY, 'boot_recallrogue_blur_medium').setScale(s).setDepth(101).setAlpha(0)
+    const sharp = this.add.image(startX, titleY, 'boot_recallrogue').setScale(s).setDepth(101).setAlpha(0)
     this.sceneSprites.push(medium, sharp)
     this.tweens.add({ targets: medium, x: cx, alpha: 1, duration: 400, ease: 'Cubic.easeOut' })
     this.time.delayedCall(200, () => {
@@ -201,12 +212,12 @@ export default class BootAnimScene extends Phaser.Scene {
         const textHalfW = (1024 * s) / 2
         const progress = Math.min(elapsed / dur, 1)
         const px = startX + (cx - startX) * progress + textHalfW * 0.6
-        const emitter = this.add.particles(px, cy, 'boot_particle', {
+        const emitter = this.add.particles(px, titleY, 'boot_particle', {
           speed: { min: 50, max: 120 }, angle: { min: -30, max: 30 },
           gravityY: 80, scale: { start: 0.3, end: 0 }, lifespan: 400,
           tint: 0xFFD700, quantity: 1, frequency: -1,
         }).setDepth(102)
-        emitter.explode(1, px, cy)
+        emitter.explode(1, px, titleY)
         this.activeEmitters.push(emitter)
         this.sceneSprites.push(emitter)
         this.time.delayedCall(500, () => { if (emitter?.active) emitter.destroy() })
@@ -215,15 +226,16 @@ export default class BootAnimScene extends Phaser.Scene {
     this.time.delayedCall(dur, () => {
       trail.remove(false)
       for (let i = 0; i < 4; i++) {
-        this.time.delayedCall(i * 50, () => this.sparkBurst(cx + Phaser.Math.Between(-40, 40), cy, 2, 0xFFD700))
+        this.time.delayedCall(i * 50, () => this.sparkBurst(cx + Phaser.Math.Between(-40, 40), titleY, 2, 0xFFD700))
       }
     })
   }
 
   private studioReveal(cx: number, cy: number): void {
     const s = this.coverScale
-    const heavy = this.add.image(cx, cy, 'boot_bramblegategames_blur_heavy').setScale(s).setDepth(102).setAlpha(0)
-    const sharp = this.add.image(cx, cy, 'boot_bramblegategames').setScale(s).setDepth(102).setAlpha(0)
+    const studioY = this.getLogoY(cy)
+    const heavy = this.add.image(cx, studioY, 'boot_bramblegategames_blur_heavy').setScale(s).setDepth(102).setAlpha(0)
+    const sharp = this.add.image(cx, studioY, 'boot_bramblegategames').setScale(s).setDepth(102).setAlpha(0)
     this.sceneSprites.push(heavy, sharp)
     this.tweens.add({ targets: heavy, alpha: 1, duration: 400 })
     this.time.delayedCall(400, () => {
@@ -291,10 +303,11 @@ export default class BootAnimScene extends Phaser.Scene {
         onComplete: () => { if (img.active) img.destroy() },
       })
     }
+    const logoY = this.getLogoY(cy)
     for (let i = 0; i < 25; i++) {
       this.time.delayedCall(i * 20, () => {
         const px = cx + Phaser.Math.Between(-180, 180)
-        const py = cy + Phaser.Math.Between(-100, 60)
+        const py = logoY + Phaser.Math.Between(-100, 60)
         const emitter = this.add.particles(px, py, 'boot_particle', {
           speed: { min: 30, max: 90 },
           angle: { min: 220, max: 320 },
@@ -440,6 +453,19 @@ export default class BootAnimScene extends Phaser.Scene {
   }
 
   // ═══ Helpers ════════════════════════════════════════════════════════════════
+
+  /**
+   * Returns the corrected Y position for a boot image in landscape mode.
+   * All three boot images share the same 1024×1835 canvas, so applying the same
+   * uniform offset to every image preserves their relative positions while
+   * shifting the group center to screen center.
+   *
+   * @param cy - Screen centre Y
+   */
+  private getLogoY(cy: number): number {
+    if (this.currentLayoutMode !== 'landscape') return cy
+    return cy + BootAnimScene.LANDSCAPE_GROUP_OFFSET * this.coverScale
+  }
 
   private sparkBurst(x: number, y: number, count: number, tint: number): void {
     const emitter = this.add.particles(x, y, 'boot_particle', {

@@ -42,7 +42,7 @@ export const V1_TO_V2_RELIC_MAP: Record<string, V1RelicMigrationAction> = {
   chain_lightning_rod: { action: 'auto_unlock', v2Id: 'chain_reactor' },
   renewal_spring:     { action: 'auto_unlock', v2Id: 'regeneration_orb' },
   quicksilver:        { action: 'auto_unlock', v2Id: 'adrenaline_shard' },
-  echo_lens:          { action: 'preserve' }, // kept in v2 catalogue
+  echo_lens:          { action: 'drop' }, // echo system removed
   double_vision:      { action: 'auto_unlock', v2Id: 'double_down' },
   polyglot_pendant:   { action: 'auto_unlock', v2Id: 'domain_mastery_sigil' },
   eidetic_memory:     { action: 'auto_unlock', v2Id: 'scholars_crown' },
@@ -57,7 +57,8 @@ export const V1_TO_V2_RELIC_MAP: Record<string, V1RelicMigrationAction> = {
   gold_magnet:        { action: 'preserve' }, // v2 changes value (+25%→+30%), kept same ID
   lucky_coin:         { action: 'preserve' }, // v2 reworked effect, kept same ID
   last_breath:        { action: 'preserve' }, // v2 drops +5 dmg effect, kept same ID
-  combo_ring:         { action: 'preserve' }, // v2 reworks to charge system, kept same ID
+  combo_ring:         { action: 'drop' }, // combo system removed
+  echo_chamber:       { action: 'drop' }, // echo system removed
   blood_price:        { action: 'preserve' }, // v2 changes to -2 HP/turn, kept same ID
   phoenix_feather:    { action: 'preserve' }, // v2 reworks to once/run, kept same ID
 

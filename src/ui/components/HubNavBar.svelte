@@ -3,14 +3,27 @@
   import { getNavIconPath } from '../utils/iconAssets'
   import { isLandscape } from '../../stores/layoutStore'
 
-  interface Props {
-    current: Screen
-    onNavigate: (screen: Extract<Screen, 'hub' | 'library' | 'settings' | 'profile' | 'journal' | 'social'>) => void
+  type NavScreen = Extract<Screen, 'hub' | 'library' | 'settings' | 'profile' | 'journal' | 'social' | 'leaderboards'>
+
+  type SidebarItem = {
+    label: string
+    icon: string
+    iconKey?: NavScreen
+    key?: NavScreen
+    action?: 'relicSanctum' | 'deckBuilder'
+    activeScreen?: Screen
   }
 
-  let { current, onNavigate }: Props = $props()
+  interface Props {
+    current: Screen
+    onNavigate: (screen: NavScreen) => void
+    onOpenRelicSanctum?: () => void
+    onOpenDeckBuilder?: () => void
+  }
 
-  const NAV_ITEMS: Array<{ key: Extract<Screen, 'hub' | 'library' | 'settings' | 'profile' | 'journal' | 'social'>; label: string; icon: string }> = [
+  let { current, onNavigate, onOpenRelicSanctum, onOpenDeckBuilder }: Props = $props()
+
+  const NAV_ITEMS: Array<{ key: NavScreen; label: string; icon: string }> = [
     { key: 'hub', label: 'Start', icon: '🏃' },
     { key: 'library', label: 'Library', icon: '📖' },
     { key: 'social', label: 'Social', icon: '🤝' },
@@ -18,22 +31,58 @@
     { key: 'profile', label: 'Profile', icon: '👤' },
     { key: 'journal', label: 'Journal', icon: '📜' },
   ]
+
+  const SIDEBAR_ITEMS: SidebarItem[] = [
+    { key: 'hub', label: 'Start', icon: '🏃', iconKey: 'hub' },
+    { key: 'library', label: 'Library', icon: '📖', iconKey: 'library' },
+    { key: 'social', label: 'Social', icon: '🤝', iconKey: 'social' },
+    { key: 'settings', label: 'Settings', icon: '⚙️', iconKey: 'settings' },
+    { key: 'profile', label: 'Profile', icon: '👤', iconKey: 'profile' },
+    { key: 'journal', label: 'Journal', icon: '📜', iconKey: 'journal' },
+    { key: 'leaderboards', label: 'Boards', icon: '🏆', iconKey: 'leaderboards' },
+    { action: 'relicSanctum', label: 'Relics', icon: '🏺', activeScreen: 'relicSanctum' as Screen },
+    { action: 'deckBuilder', label: 'Decks', icon: '🃏' },
+  ]
+
+  function handleSidebarClick(item: SidebarItem): void {
+    if (item.key) {
+      onNavigate(item.key)
+    } else if (item.action === 'relicSanctum') {
+      onOpenRelicSanctum?.()
+    } else if (item.action === 'deckBuilder') {
+      onOpenDeckBuilder?.()
+    }
+  }
+
+  function isSidebarActive(item: SidebarItem): boolean {
+    if (item.key) {
+      return current === item.key || (item.key === 'hub' && current === 'mainMenu')
+    }
+    if (item.activeScreen) {
+      return current === item.activeScreen
+    }
+    return false
+  }
 </script>
 
 {#if $isLandscape}
   <!-- ═══ LANDSCAPE: Left sidebar navigation ═══════════════════════════════ -->
   <nav class="nav-sidebar" aria-label="Primary navigation">
-    {#each NAV_ITEMS as item}
+    {#each SIDEBAR_ITEMS as item}
       <button
         type="button"
         class="sidebar-btn"
-        class:active={current === item.key || (item.key === 'hub' && current === 'mainMenu')}
-        onclick={() => onNavigate(item.key)}
+        class:active={isSidebarActive(item)}
+        onclick={() => handleSidebarClick(item)}
         aria-label={item.label}
       >
-        <img class="nav-icon-img" src={getNavIconPath(item.key)} alt=""
-          onerror={(e) => { const img = e.currentTarget as HTMLImageElement; img.style.display = 'none'; (img.nextElementSibling as HTMLElement | null)?.style.setProperty('display', 'inline'); }} />
-        <span class="nav-icon-fallback" style="display:none" aria-hidden="true">{item.icon}</span>
+        {#if item.iconKey}
+          <img class="nav-icon-img" src={getNavIconPath(item.iconKey)} alt=""
+            onerror={(e) => { const img = e.currentTarget as HTMLImageElement; img.style.display = 'none'; (img.nextElementSibling as HTMLElement | null)?.style.setProperty('display', 'inline'); }} />
+          <span class="nav-icon-fallback" style="display:none" aria-hidden="true">{item.icon}</span>
+        {:else}
+          <span class="nav-icon-fallback" aria-hidden="true">{item.icon}</span>
+        {/if}
         <span class="sidebar-label">{item.label}</span>
       </button>
     {/each}
@@ -66,7 +115,7 @@
     top: 0;
     left: 0;
     bottom: 0;
-    width: 80px;
+    width: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -80,7 +129,7 @@
 
   .sidebar-btn {
     width: 100%;
-    min-height: 56px;
+    min-height: 52px;
     border: 1px solid transparent;
     border-radius: 10px;
     background: transparent;
@@ -105,9 +154,13 @@
   }
 
   .sidebar-label {
-    font-size: 9px;
+    font-size: 11px;
     line-height: 1;
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
   }
 
   /* ═══ PORTRAIT BOTTOM BAR ═══════════════════════════════════════════════════ */
@@ -145,15 +198,15 @@
   }
 
   .nav-icon-img {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     object-fit: contain;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
   }
 
   .nav-icon-fallback {
-    font-size: 16px;
+    font-size: 20px;
     line-height: 1;
   }
 

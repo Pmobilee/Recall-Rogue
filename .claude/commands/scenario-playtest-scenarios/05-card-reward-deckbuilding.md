@@ -31,6 +31,31 @@ URL: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 ### Verify Deck Growth
 15. Read run state — check deck size increased by number of rewards accepted
 
+## Element Discovery & Evaluation — MANDATORY
+
+At EVERY screenshot checkpoint, run the Runtime Element Discovery protocol from the Shared Protocol.
+
+### Scenario-Specific Evaluation Questions
+
+**Reward Options (#1):**
+- Run element discovery. How many reward type buttons exist? What are their labels?
+- For each card option: can you see the card name, AP cost, type, and effect WITHOUT expanding?
+- Are card frames/borders rendering correctly for each card type?
+- Is the reroll button visible (if rerolls available)?
+- Does the reward screen make choosing feel exciting (not overwhelming)?
+- Can you compare the options at a glance to make a strategic decision?
+- Are the options meaningfully different from each other?
+
+**Reward Accepted (#2):**
+- What feedback was shown when you accepted the reward?
+- Did the screen transition smoothly to the next screen?
+- Was there visual/audio acknowledgment of the new card being added?
+
+**Across Both Rewards:**
+- Did the second reward offer different cards than the first?
+- Does deck growth feel like meaningful progression?
+- Would a new player understand what they're choosing between?
+
 ## Checks
 - Reward screen shows 2+ card type options
 - Each option has readable text

@@ -134,12 +134,11 @@
       <!-- 1. Dungeon Gate - Start Run -->
       <CampSpriteButton
         spriteUrl={getCampUpgradeUrl('doorway', tiers.doorway)}
-        label="Start Run"
+        label=""
         testId="btn-start-run"
         zIndex={5}
         onclick={onStartRun}
         hitTop="11%" hitLeft="28%" hitWidth="44%" hitHeight="27%"
-        labelTop="10%" labelLeft="50%"
         showBorder
       />
 
@@ -637,6 +636,27 @@
     font-weight: 700;
     color: rgba(255,255,255,0.7);
     text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+  }
+
+  /* ═══ LANDSCAPE LEVEL BADGE OVERRIDES ═══════════════════════════════════ */
+
+  .hub-landscape .camp-level-badge {
+    position: fixed;
+    right: 20px;
+    bottom: 24px;
+  }
+
+  .hub-landscape .level-number {
+    font-size: 28px;
+  }
+
+  .hub-landscape .level-xp-bar {
+    width: 90px;
+    height: 6px;
+  }
+
+  .hub-landscape .level-xp-text {
+    font-size: 13px;
   }
 
 </style>
