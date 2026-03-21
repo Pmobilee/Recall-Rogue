@@ -158,6 +158,16 @@ node -e "const r=JSON.parse(require('fs').readFileSync('data/inspection-registry
 
 ## Visual Testing with Playwright — MANDATORY
 
+### ABSOLUTE RULE: Visual Inspection After Every Sub-Agent Batch
+
+**After EVERY sub-agent returns from a visual/UI/CSS task, the orchestrator MUST visually inspect the result BEFORE committing.** This is non-negotiable. On 2026-03-21, skipping this step caused 10+ visual regressions to ship (duplicate HP text, moved buttons, bloated bars, clutter labels). The user caught it, not the agent.
+
+- If `browser_take_screenshot` times out (common with Phaser RAF): use `browser_snapshot` instead — it ALWAYS works
+- **NEVER use `page.context().newCDPSession()`** — it HANGS permanently and blocks the session
+- If neither screenshot nor snapshot works, TELL THE USER you couldn't verify and ask them to check
+- Sub-agents making CSS/layout changes are the HIGHEST RISK — always verify their output
+- **Never batch-commit multiple visual agent results without inspecting each one**
+
 Two tools available — use the right one for the job:
 
 ### Quick Combat Setup (use instead of clicking through menus)

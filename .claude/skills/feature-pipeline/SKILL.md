@@ -201,11 +201,15 @@ If Phase 5 or 6 reveals the approach was fundamentally wrong — not just a bug,
    npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000
    ```
    Compare results against the pre-change baseline. If win rates, clear rates, or economy metrics shift significantly, investigate before declaring done.
-3. **Visual inspection** of EVERY affected screen using Playwright:
-   - Navigate to each affected screen
-   - Take screenshots
-   - Check console for errors
+3. **Visual inspection** of EVERY affected screen — MANDATORY, NO EXCEPTIONS:
+   - Navigate to each affected screen using `__terraScenario.load()`
+   - Take screenshot (`browser_take_screenshot`). If it times out (Phaser RAF), use `browser_snapshot` (DOM snapshot) — it ALWAYS works
+   - NEVER use `page.context().newCDPSession()` — it HANGS and blocks the session permanently
+   - Check console for errors via `browser_console_messages`
    - Verify the feature works as a user would experience it
+   - **THIS MUST HAPPEN AFTER EVERY SUB-AGENT BATCH** — not just at the end. If 3 agents run in parallel and return, inspect ALL 3 results before committing ANY of them
+   - **NEVER commit visual/UI changes without seeing them first** — sub-agents making CSS/layout changes are the HIGHEST RISK for regressions
+   - If you cannot take a screenshot or snapshot, TELL THE USER you couldn't verify and ask them to check
 4. **Run or create specific tests** from the AR's Testing Plan:
    - If unit tests were specified, run them and confirm they pass
    - If visual tests were specified, perform them with Playwright
