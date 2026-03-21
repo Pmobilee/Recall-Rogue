@@ -73,7 +73,6 @@ function makeCard(tier: string): Card {
     tier,
     baseEffectValue: 10,
     effectMultiplier: 1,
-    isEcho: false,
   } as unknown as Card;
 }
 

@@ -15,22 +15,21 @@ function card(partial: Partial<Card>): Card {
     tier: partial.tier ?? '1',
     baseEffectValue: partial.baseEffectValue ?? 8,
     effectMultiplier: partial.effectMultiplier ?? 1,
-    isEcho: partial.isEcho,
   }
 }
 
 describe('rewardGenerator', () => {
-  it('filters active deck, consumed, tier3, and echo cards', () => {
+  it('filters active deck, consumed, and tier3 cards', () => {
     const pool: Card[] = [
       card({ id: 'a', factId: 'a', tier: '1' }),
       card({ id: 'b', factId: 'b', tier: '3' }),
-      card({ id: 'c', factId: 'c', tier: '2a', isEcho: true }),
+      card({ id: 'c', factId: 'c', tier: '2a' }),
       card({ id: 'd', factId: 'd', tier: '2b' }),
     ]
 
     const options = generateCardRewardOptions(
       pool,
-      new Set(['a']),
+      new Set(['a', 'c']),
       new Set(['d']),
       3,
     )

@@ -114,7 +114,7 @@
         <div class="meta-line">
           Domains: <strong>{summary.primaryDomain}</strong> + <strong>{summary.secondaryDomain}</strong>
         </div>
-        <div class="meta-line">Run time: {formatDuration(summary.runDurationMs)} • Best combo: x{summary.bestCombo}</div>
+        <div class="meta-line">Run time: {formatDuration(summary.runDurationMs)} • Best chain: x{summary.bestCombo}</div>
 
         {#if summary.completedBounties.length > 0}
           <div class="bounties">
@@ -169,7 +169,7 @@
       <div class="meta-line">
         Domains: <strong>{summary.primaryDomain}</strong> + <strong>{summary.secondaryDomain}</strong>
       </div>
-      <div class="meta-line">Run time: {formatDuration(summary.runDurationMs)} • Best combo: x{summary.bestCombo}</div>
+      <div class="meta-line">Run time: {formatDuration(summary.runDurationMs)} • Best chain: x{summary.bestCombo}</div>
 
       {#if summary.completedBounties.length > 0}
         <div class="bounties">

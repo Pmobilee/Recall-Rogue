@@ -198,7 +198,6 @@ export function resolveCardEffect(
     ? resolveAttackModifiers(activeRelicIds, {
         isFirstAttack: advanced.isFirstAttackThisEncounter ?? false,
         isStrikeTagged: strikeTag,
-        comboCount: 0,
         playerHpPercent: playerState.hp / playerState.maxHP,
         consecutiveCorrectAttacks: 0, // crescendo_blade context not tracked in card resolver; zero is safe
         cardTier: typeof card.tier === 'string' ? card.tier : 'learning',

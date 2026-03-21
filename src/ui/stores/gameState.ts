@@ -239,7 +239,6 @@ export const synergyFlash = singletonWritable<string | null>('synergyFlash', nul
 /** Data bundle for step-by-step reward reveal sequence. */
 export interface RewardBundle {
   goldEarned: number
-  comboBonus: number
   healAmount: number
 }
 

@@ -31,7 +31,7 @@
   class="damage-number"
   class:critical={isCritical}
   data-testid="damage-number"
-  style="font-size: {fontSize}px; left: calc(50% + {jitterX}px);"
+  style="font-size: calc({fontSize}px * var(--layout-scale, 1)); left: calc(50% + {jitterX}px);"
 >
   {value}
 </div>
@@ -67,8 +67,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 60px;
-    height: 60px;
+    width: calc(60px * var(--layout-scale, 1));
+    height: calc(60px * var(--layout-scale, 1));
     transform: translate(-50%, -50%) scale(0);
     border-radius: 50%;
     background: radial-gradient(circle, rgba(231, 76, 60, 0.4) 0%, transparent 70%);

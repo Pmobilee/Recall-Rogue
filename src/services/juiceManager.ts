@@ -23,7 +23,6 @@ export interface JuiceEvent {
   type: 'correct' | 'wrong'
   damage?: number
   isCritical?: boolean  // Speed bonus achieved
-  comboCount: number
   effectLabel?: string  // e.g. "HEAL 8", "SHIELD 15"
   isPerfectTurn?: boolean
   cardType?: string
@@ -36,8 +35,6 @@ export interface JuiceCallbacks {
   onDamageNumber?: (value: string, isCritical: boolean) => void
   onEnemyHit?: () => void
   onParticleBurst?: (count: number, tint: number) => void
-  onComboMilestone?: (count: number) => void
-  onComboScreenEdge?: () => void
   onSpeedBonusPop?: () => void
   onKillConfirmation?: () => void
 }
@@ -121,28 +118,9 @@ class JuiceManager {
       }, hitDelay)
     }
 
-    // Combo milestones fire after all hits complete
+    // Perfect turn celebration fires after all hits complete
     const totalDelay = (hitCount - 1) * baseDelay + 50
     setTimeout(() => {
-      if (event.comboCount >= 3) {
-        emitSound(event.comboCount >= 5 ? 'combo-5' : 'combo-3')
-        tapMedium()
-        this.callbacks.onComboMilestone?.(event.comboCount)
-      }
-
-      // Combo 4+: screen edge gold bleed
-      if (event.comboCount >= 4) {
-        this.callbacks.onComboScreenEdge?.()
-      }
-
-      // Perfect turn (5 combo)
-      if (event.comboCount >= 5) {
-        tapHeavy()
-        setTimeout(() => tapHeavy(), 80)
-        setTimeout(() => tapHeavy(), 160)
-      }
-
-      // Perfect turn celebration (all cards correct this turn)
       if (event.isPerfectTurn) {
         setTimeout(() => {
           this.callbacks.onScreenFlash?.(0.2)
@@ -187,25 +165,6 @@ class JuiceManager {
         const tint = event.isCritical ? 0xFF4444 : 0xFFD700
         this.callbacks.onParticleBurst?.(particleCount, tint)
       }, 150)
-    }
-
-    // Combo milestones
-    if (event.comboCount >= 3) {
-      emitSound(event.comboCount >= 5 ? 'combo-5' : 'combo-3')
-      tapMedium()
-      this.callbacks.onComboMilestone?.(event.comboCount)
-    }
-
-    // Combo 4+: screen edge gold bleed
-    if (event.comboCount >= 4) {
-      this.callbacks.onComboScreenEdge?.()
-    }
-
-    // Perfect turn (5 combo)
-    if (event.comboCount >= 5) {
-      tapHeavy()
-      setTimeout(() => tapHeavy(), 80)
-      setTimeout(() => tapHeavy(), 160)
     }
 
     // Perfect turn celebration (all cards correct this turn)

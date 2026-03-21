@@ -45,6 +45,48 @@ URL: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 26. Run filtered console check across all screen visits
 27. Return to hub
 
+## Element Discovery & Evaluation — MANDATORY
+
+At EVERY screenshot checkpoint, run the Runtime Element Discovery protocol from the Shared Protocol. These screens are information-dense — be thorough with text evaluation.
+
+### Scenario-Specific Evaluation Questions
+
+**Settings (#1):**
+- Run element discovery. List ALL settings controls found (toggles, sliders, chips, buttons).
+- For every toggle: is it large enough to tap (>= 44px)? Is on/off state visually clear?
+- For every slider: does it show its current value? Is the slider track wide enough to drag precisely on mobile?
+- For text size chips: can you tell which size is currently selected?
+- Is the category navigation clear (Audio, Accessibility, Notifications, Account)?
+- Are all labels descriptive enough that a player knows what each setting does?
+- Is the Accessibility section comprehensive? Does "High Contrast" toggle make a visible difference?
+- Does "Reduce Motion" clearly communicate what animations it affects?
+- Is "Slow Reader (+3s)" helpful or confusing as a label?
+- Would a player find their desired setting within 3 seconds?
+
+**Library (#2):**
+- Run discovery. How many domains shown? How many facts listed (if any)?
+- Are domain cards showing valid mastery counts (X/Y format, numbers not NaN)?
+- Do progress bars visually match their percentage numbers?
+- Are subcategory filters functional and not cluttered?
+- Is the tier filter dropdown understandable (Learning, Proven, Mastered, etc.)?
+- If fact detail view is accessible: does it show useful SM-2 data (stability, difficulty, next review)?
+- Does the library make a player feel proud of their knowledge or overwhelmed?
+- Is the deck builder tab discoverable?
+
+**Profile (#3):**
+- Run discovery. List ALL stat items found with their labels and values.
+- Are all values valid numbers (>= 0, not NaN, not undefined)?
+- Does the avatar look personalized?
+- Is the stats grid layout clean (2 columns portrait, 3 landscape)?
+- Does the "Runs Per Domain" section show interesting distribution data?
+- Does the profile make a player feel accomplished or underwhelmed?
+- Is there enough content here to make visiting the profile rewarding?
+
+**Deck Builder (#4, if accessible):**
+- Run discovery. Are cards listed? Is deck size shown?
+- Can you identify card types visually in the builder?
+- Is the deck builder useful for strategic planning, or just a list?
+
 ## Checks
 - Settings renders without errors
 - Library shows card collection

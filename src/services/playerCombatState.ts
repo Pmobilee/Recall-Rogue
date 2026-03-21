@@ -16,8 +16,6 @@ export interface PlayerCombatState {
   shield: number;
   /** Active status effects on the player. */
   statusEffects: StatusEffect[];
-  /** Current combo count within this encounter. */
-  comboCount: number;
   /** Remaining hint uses for this encounter. */
   hintsRemaining: number;
   /** Number of cards played this turn. */
@@ -37,7 +35,6 @@ export function createPlayerCombatState(maxHP?: number): PlayerCombatState {
     maxHP: hp,
     shield: 0,
     statusEffects: [],
-    comboCount: 0,
     hintsRemaining: 1,
     cardsPlayedThisTurn: 0,
   };
@@ -145,12 +142,11 @@ export function tickPlayerStatusEffects(state: PlayerCombatState): {
 }
 
 /**
- * Resets per-turn state: clears shield, combo count, and cards played counter.
+ * Resets per-turn state: clears shield and cards played counter.
  *
  * @param state - The player combat state (mutated in place).
  */
 export function resetTurnState(state: PlayerCombatState): void {
   state.shield = 0;
-  state.comboCount = 0;
   state.cardsPlayedThisTurn = 0;
 }

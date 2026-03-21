@@ -634,28 +634,6 @@ export function applyMasteryTrialOutcome(factId: string, passed: boolean): void 
   persistPlayer()
 }
 
-/** Adds an echo-redemption stability bonus after a correct echo answer. */
-export function applyEchoStabilityBonus(factId: string, multiplier: number = 2): void {
-  playerSave.update((save) => {
-    if (!save) return save
-    return {
-      ...save,
-      reviewStates: save.reviewStates.map((state) => {
-        if (state.factId !== factId) return state
-        const baseStability = state.stability ?? state.interval ?? 0
-        const bonus = Math.max(1, Math.round(baseStability * Math.max(0, multiplier - 1) * 0.15))
-        return {
-          ...state,
-          stability: baseStability + bonus,
-          interval: Math.max(state.interval, state.interval + Math.ceil(bonus / 2)),
-          retrievability: Math.min(1, (state.retrievability ?? 1) + 0.05),
-        }
-      }),
-    }
-  })
-  persistPlayer()
-}
-
 /** Persists the relic assigned when a fact graduates into Tier 3 mastery. */
 export function setGraduatedRelicId(factId: string, relicId: string | null): void {
   playerSave.update((save) => {

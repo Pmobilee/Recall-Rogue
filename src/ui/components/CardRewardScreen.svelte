@@ -319,9 +319,6 @@
       </div>
       <h1 class="step-title">Gold Earned</h1>
       <div class="step-value gold-value">+{bundle.goldEarned}</div>
-      {#if bundle.comboBonus > 0}
-        <div class="step-bonus">+{bundle.comboBonus} combo bonus</div>
-      {/if}
     </div>
   {:else if rewardStep === 'heal' && bundle}
     <div class="step-container" class:step-visible={stepVisible}>

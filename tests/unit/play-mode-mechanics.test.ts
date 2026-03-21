@@ -80,7 +80,7 @@ function resolve(
   const card = makeCard({ mechanicId, ...cardOverrides });
   const player = makePlayer(playerOverrides);
   const enemy = makeEnemy(enemyOverrides);
-  return resolveCardEffect(card, player, enemy, 0, 1.0, 0, undefined, undefined, { playMode });
+  return resolveCardEffect(card, player, enemy, 1.0, 0, undefined, undefined, { playMode });
 }
 
 // ── MechanicDefinition presence tests ──

@@ -140,12 +140,7 @@ export default defineConfig({
     port: 5173,
     strictPort: true,
     allowedHosts: true,
-    hmr: {
-      // No host override — client auto-detects from page URL.
-      // Works for both Tailscale browser (100.74.153.81) and phone (localhost via adb reverse).
-      port: 5173,
-      overlay: false,
-    },
+    hmr: false,
     watch: {
       ignored: [
         // Sprites & assets — absolute paths so chokidar reliably ignores public/

@@ -14,8 +14,6 @@ export interface EncounterRewardOptions {
   cardChoices: Card[];
   /** Currency (dust) reward amount. */
   currencyReward: number;
-  /** Bonus currency from combo performance. */
-  comboBonus: number;
 }
 
 /**
@@ -66,35 +64,20 @@ export function generateCurrencyReward(floor: number, enemyCategory: EnemyCatego
 }
 
 /**
- * Generates a combo bonus from the maximum combo achieved during the encounter.
- *
- * Bonus = maxCombo * 2.
- *
- * @param maxComboAchieved - The highest combo count reached in the encounter.
- * @returns The combo bonus currency amount.
- */
-export function generateComboBonus(maxComboAchieved: number): number {
-  return maxComboAchieved * 2;
-}
-
-/**
  * Builds the complete reward package for a completed encounter.
  *
  * @param floor - Current floor number.
  * @param enemyCategory - The defeated enemy's category.
  * @param availableFacts - Pool of facts for card reward generation.
- * @param maxComboAchieved - The highest combo achieved during the encounter.
  * @returns The full encounter reward options.
  */
 export function buildEncounterRewards(
   floor: number,
   enemyCategory: EnemyCategory,
   availableFacts: Fact[],
-  maxComboAchieved: number,
 ): EncounterRewardOptions {
   return {
     cardChoices: generateCardRewards(floor, availableFacts),
     currencyReward: generateCurrencyReward(floor, enemyCategory),
-    comboBonus: generateComboBonus(maxComboAchieved),
   };
 }

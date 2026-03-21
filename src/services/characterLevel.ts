@@ -163,7 +163,7 @@ export interface LevelReward {
 const LEVEL_REWARDS: Record<number, LevelReward> = {
   1:  { relicIds: ['chain_reactor'], dustBonus: 0 },
   2:  { relicIds: [], dustBonus: 200 },
-  3:  { relicIds: ['echo_chamber'], dustBonus: 0 },
+  3:  { relicIds: [], dustBonus: 300 },
   4:  { relicIds: [], dustBonus: 300 },
   5:  { relicIds: ['quicksilver_quill'], dustBonus: 0, title: 'Novice' },
   6:  { relicIds: ['time_warp'], dustBonus: 0 },
@@ -184,7 +184,7 @@ const LEVEL_REWARDS: Record<number, LevelReward> = {
   21: { relicIds: [], dustBonus: 0, cosmetic: 'cardframe-gold' },
   22: { relicIds: ['mirror_of_knowledge'], dustBonus: 0 },
   23: { relicIds: [], dustBonus: 0, title: 'Sage' },
-  24: { relicIds: ['toxic_bloom', 'echo_lens'], dustBonus: 0 },
+  24: { relicIds: ['toxic_bloom'], dustBonus: 0 },
   25: { relicIds: [], dustBonus: 0, title: 'Grand Scholar', cosmetic: 'legendary-frame' },
 };
 

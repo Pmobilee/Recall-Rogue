@@ -45,11 +45,6 @@ describe('cardUpgradeService', () => {
       expect(canUpgradeCard(card)).toBe(false)
     })
 
-    it('returns false for echo cards', () => {
-      const card = makeCard({ mechanicId: 'strike', isEcho: true })
-      expect(canUpgradeCard(card)).toBe(false)
-    })
-
     it('returns false for cards with unknown mechanic', () => {
       const card = makeCard({ mechanicId: 'unknown_mechanic' })
       expect(canUpgradeCard(card)).toBe(false)
@@ -246,17 +241,6 @@ describe('cardUpgradeService', () => {
       expect(candidates.every(c => !c.isUpgraded)).toBe(true)
     })
 
-    it('excludes echo cards', () => {
-      const deck: Card[] = [
-        makeCard({ id: '1', mechanicId: 'strike', isEcho: true }),
-        makeCard({ id: '2', mechanicId: 'block', isEcho: false }),
-      ]
-      const candidates = getUpgradeCandidates(deck, 10)
-
-      expect(candidates).toHaveLength(1)
-      expect(candidates[0].id).toBe('2')
-    })
-
     it('excludes cards without known mechanic', () => {
       const deck: Card[] = [
         makeCard({ id: '1', mechanicId: 'unknown' }),
@@ -299,8 +283,7 @@ describe('cardUpgradeService', () => {
     it('returns empty array if no eligible candidates', () => {
       const deck: Card[] = [
         makeCard({ id: '1', isUpgraded: true }),
-        makeCard({ id: '2', isEcho: true }),
-        makeCard({ id: '3', mechanicId: 'unknown' }),
+        makeCard({ id: '2', mechanicId: 'unknown' }),
       ]
       const candidates = getUpgradeCandidates(deck, 10)
 

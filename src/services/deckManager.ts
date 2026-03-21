@@ -114,7 +114,6 @@ export function createDeck(pool: Card[]): CardRunState {
     discardPile: [],
     hand: [],
     exhaustPile: [],
-    comboCount: 0,
     currentFloor: 1,
     currentEncounter: 0,
     playerHP: PLAYER_START_HP,

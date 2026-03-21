@@ -67,9 +67,8 @@ describe('ascension modifiers', () => {
     expect(getAscensionRule(14)?.name).toBe('Combo Breaker')
   })
 
-  it('comboResetsOnTurnEnd activates at level 14 (not 9)', () => {
-    expect(getAscensionModifiers(9).comboResetsOnTurnEnd).toBe(false)
-    expect(getAscensionModifiers(13).comboResetsOnTurnEnd).toBe(false)
-    expect(getAscensionModifiers(14).comboResetsOnTurnEnd).toBe(true)
+  it('perfectTurnBonusAp activates at level 14', () => {
+    expect(getAscensionModifiers(13).perfectTurnBonusAp).toBe(0)
+    expect(getAscensionModifiers(14).perfectTurnBonusAp).toBe(1)
   })
 })

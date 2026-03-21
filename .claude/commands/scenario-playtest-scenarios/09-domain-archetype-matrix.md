@@ -37,6 +37,39 @@ Test these pairs (or first available if exact IDs don't match):
     - Archetype selected → card types in hand weighted toward archetype?
     - Enemy generated is valid (has name, HP)
 
+## Element Discovery & Evaluation — MANDATORY
+
+At the screenshot checkpoint and after each domain/archetype selection, run the Runtime Element Discovery protocol from the Shared Protocol.
+
+### Scenario-Specific Evaluation Questions
+
+**Domain Selection Screen (for each combo):**
+- Run element discovery. How many domain cards are visible? How many archetypes?
+- For each domain card: is the icon appropriate for the domain topic? Is the name readable?
+- Can you tell which domains are locked vs unlocked?
+- Is the ascension control discoverable and clear?
+- Does the primary/secondary domain selection UI make sense?
+- Would a new player understand why they're choosing two domains?
+
+**Archetype Selection Screen (for each combo):**
+- Run discovery. What archetype options exist?
+- For each archetype: does the icon convey the playstyle? Is the description helpful?
+- Would a new player understand the strategic difference between archetypes?
+- Is the "Skip (Balanced)" option clear as a default?
+
+**Combat Entry (#1 — for combo 3):**
+- Run discovery on the combat screen.
+- Does the enemy match expectations for the domain?
+- Does the hand composition reflect the chosen archetype (more attacks for aggressive, more shields for defensive)?
+- Are quiz questions relevant to the selected domain?
+- Does the first quiz question match the primary domain topic?
+
+**Cross-Combo Assessment:**
+- Across all 3 combinations: did each feel meaningfully different?
+- Did different domains produce different quiz topics?
+- Did different archetypes produce different starting hands?
+- Which combination felt most fun? Which felt weakest? Why?
+
 ## Checks
 - All 3 domain selections work
 - All 3 archetype selections work

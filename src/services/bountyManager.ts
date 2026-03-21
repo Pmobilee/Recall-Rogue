@@ -29,7 +29,7 @@ export interface ActiveBounty {
 }
 
 export type BountyEvent =
-  | { type: 'card_correct'; domain: FactDomain; responseTimeMs?: number; comboCount?: number }
+  | { type: 'card_correct'; domain: FactDomain; responseTimeMs?: number }
   | { type: 'encounter_won'; flawless: boolean }
   | { type: 'floor_reached'; floor: number }
   | { type: 'perfect_turn' }
@@ -178,9 +178,6 @@ function nextProgress(bounty: ActiveBounty, event: BountyEvent): number {
 
   if (condition.type === 'combo_reach') {
     if (event.type === 'combo_reached') return Math.max(bounty.progress, event.combo)
-    if (event.type === 'card_correct' && typeof event.comboCount === 'number') {
-      return Math.max(bounty.progress, event.comboCount)
-    }
     return bounty.progress
   }
 

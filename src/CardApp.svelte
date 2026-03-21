@@ -1713,7 +1713,7 @@
   }
 
   .screen-transition.active {
-    pointer-events: all;
+    pointer-events: none;
   }
 
   .screen-transition.loading {
@@ -1846,11 +1846,7 @@
 
   /* ═══ LANDSCAPE DESKTOP OVERRIDES ═══════════════════════════════════════════ */
 
-  /* Global hover states for desktop */
-  [data-layout="landscape"] button:not(.sprite-hitbox):hover {
-    filter: brightness(1.15);
-    transition: filter 120ms ease, transform 120ms ease;
-  }
+  /* F-16: hover states moved to desktop.css (unscoped) */
 
   [data-layout="landscape"] .back-btn {
     font-size: 14px;

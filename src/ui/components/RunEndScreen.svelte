@@ -207,7 +207,7 @@
         <span class="stat-value">{correctAnswers}</span>
       </div>
       <div class="stat-row" style="--stagger: 4">
-        <span class="stat-label">Best Combo</span>
+        <span class="stat-label">Best Chain</span>
         <span class="stat-value">{bestCombo}x</span>
       </div>
       <div class="stat-row" style="--stagger: 5">

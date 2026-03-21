@@ -13,7 +13,6 @@
  *   __terraScenario.setEnemyHp(1)
  *   __terraScenario.setPlayerBlock(10)
  *   __terraScenario.setEnemyBlock(5)
- *   __terraScenario.setCombo(5)
  *   __terraScenario.setGold(999)
  *   __terraScenario.forceHand(['heavy_strike', 'strike', 'block'])
  *   __terraScenario.addRelic('whetstone')
@@ -108,8 +107,6 @@ export interface ScenarioConfig {
   enemyBlock?: number;
   /** Status effects on enemy (combat). */
   enemyStatusEffects?: Array<{ id: string; stacks: number }>;
-  /** Combo multiplier override (combat). */
-  comboMultiplier?: number;
   /** Turn number override (combat). */
   turn?: number;
 }
@@ -147,7 +144,7 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
     screen: 'combat',
     enemy: 'knowledge_golem',
     handSize: 10,
-    relics: ['combo_ring', 'resonance_crystal'],
+    relics: ['resonance_crystal'],
   },
   'combat-all-chains': {
     screen: 'combat',
@@ -179,7 +176,7 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
   'combat-relic-heavy': {
     screen: 'combat',
     enemy: 'cave_bat',
-    relics: ['whetstone', 'iron_shield', 'vitality_ring', 'combo_ring', 'resonance_crystal'],
+    relics: ['whetstone', 'iron_shield', 'vitality_ring', 'resonance_crystal'],
     hand: ['strike', 'strike', 'block', 'heavy_strike', 'multi_hit'],
   },
   'combat-big-hand': {
@@ -236,7 +233,7 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
   'shop-loaded': {
     screen: 'shopRoom',
     gold: 1000,
-    shopRelics: ['whetstone', 'iron_shield', 'combo_ring'],
+    shopRelics: ['whetstone', 'iron_shield'],
     shopCards: ['heavy_strike', 'lifetap', 'reckless', 'multi_hit'],
   },
 
@@ -284,18 +281,10 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
     playerMaxHp: 100,
     hand: ['lifetap', 'block', 'strike', 'heavy_strike', 'block'],
   },
-  'combat-high-combo': {
-    screen: 'combat',
-    enemy: 'cave_bat',
-    hand: ['strike', 'strike', 'strike', 'strike', 'strike'],
-    comboMultiplier: 5,
-    relics: ['combo_ring'],
-  },
-
   // === Hub scenarios ===
   'hub-endgame': {
     screen: 'hub',
-    relics: ['whetstone', 'iron_shield', 'swift_boots', 'combo_ring', 'insight_prism'],
+    relics: ['whetstone', 'iron_shield', 'swift_boots', 'insight_prism'],
     gold: 5000,
   },
   'hub-fresh': {
@@ -358,7 +347,7 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
   // Run has 5 relics (at max capacity). Buying from the shop triggers pendingSwapRelicId.
   'relic-swap': {
     screen: 'relicSwapOverlay',
-    relics: ['whetstone', 'iron_shield', 'swift_boots', 'combo_ring', 'vitality_ring'],
+    relics: ['whetstone', 'iron_shield', 'swift_boots', 'vitality_ring'],
     gold: 500,
   },
 
@@ -588,12 +577,6 @@ async function startCombatScenario(config: ScenarioConfig): Promise<ScenarioResu
     // Enemy block
     if (config.enemyBlock !== undefined && ts.enemy) {
       ts.enemy = { ...ts.enemy, block: config.enemyBlock };
-      mutated = true;
-    }
-
-    // Combo multiplier
-    if (config.comboMultiplier !== undefined) {
-      ts.comboMultiplier = config.comboMultiplier;
       mutated = true;
     }
 
@@ -879,7 +862,6 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
         apCost: mechanic.apCost,
         masteryLevel: 0,
         masteryChangedThisEncounter: false,
-        isEcho: false,
       };
       if (!canMasteryUpgrade(card)) return null;
       const preview = getUpgradePreview(card);
@@ -1003,8 +985,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
           apCost: mechanic.apCost,
           masteryLevel: 0,
           masteryChangedThisEncounter: false,
-          isEcho: false,
-        };
+          };
         if (!canMasteryUpgrade(card)) return null;
         const preview = getUpgradePreview(card);
         if (!preview) return null;
@@ -1307,17 +1288,6 @@ function setEnemyBlock(block: number): ScenarioResult {
   return { ok: true, message: `Enemy block set to ${block}` };
 }
 
-/** Set combo multiplier in active combat. */
-function setCombo(multiplier: number): ScenarioResult {
-  const ts = readStore<any>('terra:activeTurnState');
-  if (!ts) return { ok: false, message: 'No active turn state — start combat first' };
-  updateStore<any>('terra:activeTurnState', (s) => {
-    if (!s) return s;
-    return { ...s, comboMultiplier: multiplier };
-  });
-  return { ok: true, message: `Combo multiplier set to ${multiplier}` };
-}
-
 // ---------------------------------------------------------------------------
 // Core load function
 // ---------------------------------------------------------------------------
@@ -1384,7 +1354,6 @@ function printHelp(): void {
     '  __terraScenario.setEnemyHp(hp)           Set enemy HP',
     '  __terraScenario.setPlayerBlock(block)    Set player block',
     '  __terraScenario.setEnemyBlock(block)     Set enemy block',
-    '  __terraScenario.setCombo(multiplier)     Set combo multiplier',
     '  __terraScenario.setGold(amount)          Set gold',
     '  __terraScenario.pause()                  Pause Phaser + CSS for screenshots',
     '  __terraScenario.resume()                 Resume after screenshot',
@@ -1485,7 +1454,6 @@ export function initScenarioSimulator(): void {
     removeRelic,
     setPlayerBlock,
     setEnemyBlock,
-    setCombo,
 
     /** Pause ALL animation sources for stable Playwright screenshots. */
     pause: () => {

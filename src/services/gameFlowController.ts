@@ -932,7 +932,7 @@ function openCardReward(): void {
 
   if (USE_REWARD_ROOM_SCENE) {
     const bundle = get(activeRewardBundle);
-    const totalGold = bundle ? (bundle.goldEarned + bundle.comboBonus) : 0;
+    const totalGold = bundle ? bundle.goldEarned : 0;
     const healAmount = bundle ? bundle.healAmount : 0;
 
     const rewards: RewardItem[] = [];

@@ -4,7 +4,6 @@
   import { fade } from 'svelte/transition'
   import type { Card } from '../../data/card-types'
   import type { TurnState } from '../../services/turnManager'
-  import { getComboMultiplier } from '../../services/turnManager'
   import { FLOOR_TIMER, MASTERY_MAX_LEVEL, MASTERY_BASE_DISTRACTORS, MASTERY_UPGRADED_DISTRACTORS } from '../../data/balance'
   import { isSurgeTurn } from '../../services/surgeSystem'
   import { getQuestionPresentation } from '../../services/questionFormatter'
@@ -22,7 +21,7 @@
   import CardHand from './CardHand.svelte'
   import CardExpanded from './CardExpanded.svelte'
   import DamageNumber from './DamageNumber.svelte'
-  import ComboCounter from './ComboCounter.svelte'
+  import ChainCounter from './ChainCounter.svelte'
   import RelicTray from './RelicTray.svelte'
   import { RELIC_BY_ID } from '../../data/relics/index'
   import { getMaxRelicSlots } from '../../services/relicEffectResolver'
@@ -200,8 +199,6 @@
 
   let handCards = $derived<Card[]>(reshuffleHoldingHand ? [] : (turnState?.deck.hand ?? []))
 
-  let comboCount = $derived(turnState?.comboCount ?? 0)
-  let comboMultiplier = $derived(getComboMultiplier(comboCount))
   let isPerfectTurn = $derived(turnState?.isPerfectTurn ?? false)
   let chainLength = $derived(turnState?.chainLength ?? 0)
   let chainType = $derived(turnState?.chainType ?? null)
@@ -639,10 +636,6 @@
         if (scene) {
           scene.burstParticles(count, scene.scale.width / 2, scene.scale.height * 0.4, tint)
         }
-      },
-      onComboScreenEdge: () => {
-        const scene = getCombatScene()
-        scene?.playGoldFlash()
       },
       onSpeedBonusPop: () => {
         const scene = getCombatScene()
@@ -1096,7 +1089,6 @@
       type: 'correct',
       damage: quickEffectVal,
       isCritical: false,
-      comboCount: (turnState?.comboCount ?? 0) + 1,
       effectLabel: (card.cardType === 'wild' || card.cardType === 'utility' || card.cardType === 'buff' || card.cardType === 'debuff')
         ? getShortCardDescription(card)
         : `${card.cardType.toUpperCase()} ${quickEffectVal}`,
@@ -1207,7 +1199,6 @@
     const effectLabel = (card.cardType === 'wild' || card.cardType === 'utility' || card.cardType === 'buff' || card.cardType === 'debuff')
       ? getShortCardDescription(card)
       : `${card.cardType.toUpperCase()} ${effectVal}`
-    const nextCombo = isCorrect ? (turnState?.comboCount ?? 0) + 1 : 0
     const willBePerfect = isCorrect && (turnState?.cardsCorrectThisTurn === turnState?.cardsPlayedThisTurn)
     const hitCount = card.mechanicId === 'multi_hit' ? 3 : undefined
     const quizVariantIndex = committedQuizData?.variantIndex
@@ -1232,7 +1223,6 @@
         type: 'wrong',
         damage: 0,
         isCritical: false,
-        comboCount: 0,
         effectLabel: undefined,
         isPerfectTurn: false,
         cardType: card.cardType,
@@ -1294,7 +1284,6 @@
           type: 'correct',
           damage: effectVal,
           isCritical: speedBonus,
-          comboCount: nextCombo,
           effectLabel: effectLabel,
           isPerfectTurn: willBePerfect,
           cardType: card.cardType,
@@ -1689,7 +1678,6 @@
           questionImageUrl={committedQuizData.questionImageUrl}
           timerDuration={effectiveTimerSeconds}
           timerEnabled={timerEnabled}
-          comboCount={turnState.comboCount}
           hintsRemaining={turnState.deck.hintsRemaining}
           speedBonusThreshold={speedBonusThreshold}
           showMasteryTrialHeader={committedCard.isMasteryTrial === true}
@@ -1716,10 +1704,6 @@
       <div class="wow-factor-overlay" class:wow-visible={wowFactorVisible}>{wowFactorText}</div>
     {/if}
 
-    {#if comboCount >= 4 && cardPlayStage !== 'committed'}
-      <div class="screen-edge-pulse" style="pointer-events: none;"></div>
-    {/if}
-
     <StatusEffectBar effects={playerEffects} position="player" />
 
     <div class="player-status-strip" aria-label="Player health and block">
@@ -1743,7 +1727,7 @@
       </div>
     </div>
 
-    <ComboCounter count={comboCount} multiplier={comboMultiplier} {isPerfectTurn} {chainLength} {chainType} {chainMultiplier} />
+    <ChainCounter {isPerfectTurn} {chainLength} {chainType} {chainMultiplier} />
 
     <CardHand
       cards={handCards}
@@ -1752,7 +1736,6 @@
       {cardAnimations}
       {tierUpTransitions}
       apCurrent={apCurrent}
-      {comboMultiplier}
       disabled={turnState.phase !== 'player_action' || cardPlayStage === 'committed'}
       onselectcard={handleSelect}
       ondeselectcard={handleDeselect}
@@ -1911,14 +1894,14 @@
     position: fixed;
     bottom: 1rem;
     right: 1rem;
-    width: 28px;
-    height: 28px;
+    width: calc(28px * var(--layout-scale, 1));
+    height: calc(28px * var(--layout-scale, 1));
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: rgba(255, 255, 255, 0.5);
     font-family: 'Courier New', monospace;
-    font-size: 0.85rem;
+    font-size: calc(14px * var(--layout-scale, 1));
     font-weight: 700;
     cursor: pointer;
     z-index: 20;
@@ -1960,10 +1943,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 16px;
+    gap: calc(16px * var(--layout-scale, 1));
     height: 100%;
     color: #7f8c8d;
-    font-size: 14px;
+    font-size: calc(14px * var(--layout-scale, 1));
   }
 
   .empty-state p {
@@ -1971,13 +1954,13 @@
   }
 
   .return-hub-btn {
-    min-height: 44px;
-    padding: 0 24px;
+    min-height: calc(44px * var(--layout-scale, 1));
+    padding: 0 calc(24px * var(--layout-scale, 1));
     border-radius: 10px;
     border: 1px solid #475569;
     background: #1f2937;
     color: #f8fafc;
-    font-size: 14px;
+    font-size: calc(14px * var(--layout-scale, 1));
     font-weight: 700;
     font-family: inherit;
     cursor: pointer;
@@ -2169,7 +2152,7 @@
   }
 
   .intent-value {
-    font-size: 22px;
+    font-size: calc(22px * var(--layout-scale, 1));
     font-weight: 900;
     font-family: 'Georgia', serif;
     color: #e2e8f0;
@@ -2222,7 +2205,7 @@
   }
 
   .intent-enemy-name {
-    font-size: 10px;
+    font-size: calc(10px * var(--layout-scale, 1));
     color: #94a3b8;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -2349,7 +2332,7 @@
     width: auto;
     min-width: calc(110px * var(--layout-scale, 1));
     padding: 0 calc(20px * var(--layout-scale, 1));
-    height: 48px;
+    height: calc(48px * var(--layout-scale, 1));
     background: #1f2937;
     color: #f8fafc;
     border: none;
@@ -2396,30 +2379,30 @@
     background: #1f2937;
     border: 1px solid #475569;
     border-radius: 12px;
-    padding: 16px 20px;
-    max-width: 260px;
+    padding: calc(16px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+    max-width: calc(260px * var(--layout-scale, 1));
     text-align: center;
   }
 
   .end-turn-confirm-box p {
     color: #f8fafc;
-    font-size: 14px;
-    margin: 0 0 14px;
+    font-size: calc(14px * var(--layout-scale, 1));
+    margin: 0 0 calc(14px * var(--layout-scale, 1));
     line-height: 1.4;
   }
 
   .confirm-buttons {
     display: flex;
-    gap: 10px;
+    gap: calc(10px * var(--layout-scale, 1));
   }
 
   .confirm-btn {
     flex: 1;
-    height: 42px;
+    height: calc(42px * var(--layout-scale, 1));
     border: none;
     border-radius: 8px;
     font-weight: 700;
-    font-size: 13px;
+    font-size: calc(13px * var(--layout-scale, 1));
     cursor: pointer;
     font-family: inherit;
   }
@@ -2529,7 +2512,7 @@
 
   .player-hp-track {
     flex: 1;
-    height: 22px;
+    height: calc(22px * var(--layout-scale, 1));
     border-radius: 999px;
     border: 1px solid rgba(100, 116, 139, 0.7);
     background: rgba(15, 23, 42, 0.82);
@@ -2895,12 +2878,12 @@
   .layout-landscape .end-turn-btn {
     position: fixed;
     bottom: calc(27vh + 36px + 8px);
-    right: 16px;
+    right: calc(16px * var(--layout-scale, 1));
     left: auto;
     transform: none;
-    height: 40px;
-    font-size: 13px;
-    min-width: 96px;
+    height: calc(40px * var(--layout-scale, 1));
+    font-size: calc(13px * var(--layout-scale, 1));
+    min-width: calc(96px * var(--layout-scale, 1));
     z-index: 20; /* must be above enemy-hover-zone (z-index: 8) */
   }
 
@@ -3016,28 +2999,28 @@
     bottom: 27vh;
     left: 0;
     right: 0;
-    height: 36px;
+    height: calc(36px * var(--layout-scale, 1));
     padding-top: 0;
     padding-bottom: 0;
-    padding-left: max(16px, env(safe-area-inset-left));
-    padding-right: max(16px, env(safe-area-inset-right));
+    padding-left: max(calc(16px * var(--layout-scale, 1)), env(safe-area-inset-left));
+    padding-right: max(calc(16px * var(--layout-scale, 1)), env(safe-area-inset-right));
     background: rgba(10, 10, 26, 0.88);
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     z-index: 15;
-    gap: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
   }
 
   .lsb-ap {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: calc(6px * var(--layout-scale, 1));
     flex-shrink: 0;
   }
 
   .lsb-ap-circle {
-    width: 28px;
-    height: 28px;
+    width: calc(28px * var(--layout-scale, 1));
+    height: calc(28px * var(--layout-scale, 1));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -3056,7 +3039,7 @@
   }
 
   .lsb-ap-number {
-    font-size: 14px;
+    font-size: calc(14px * var(--layout-scale, 1));
     font-weight: 800;
     color: #fff;
     text-shadow: 0 0 4px rgba(0, 0, 0, 0.9);
@@ -3064,7 +3047,7 @@
   }
 
   .lsb-ap-label {
-    font-size: 11px;
+    font-size: calc(11px * var(--layout-scale, 1));
     font-weight: 700;
     color: rgba(255, 255, 255, 0.6);
     letter-spacing: 0.5px;
@@ -3073,8 +3056,8 @@
   .lsb-block {
     display: flex;
     align-items: center;
-    gap: 4px;
-    margin-left: 20px;
+    gap: calc(4px * var(--layout-scale, 1));
+    margin-left: calc(20px * var(--layout-scale, 1));
     flex-shrink: 0;
     transition: opacity 0.2s;
   }
@@ -3084,12 +3067,12 @@
   }
 
   .lsb-block-icon {
-    font-size: 13px;
+    font-size: calc(13px * var(--layout-scale, 1));
     line-height: 1;
   }
 
   .lsb-block-value {
-    font-size: 12px;
+    font-size: calc(12px * var(--layout-scale, 1));
     font-weight: 700;
     color: #7dd3fc;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
@@ -3100,11 +3083,11 @@
     flex: 1;
     max-width: 55%;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 calc(20px * var(--layout-scale, 1));
   }
 
   .lsb-hp-track {
-    height: 20px;
+    height: calc(20px * var(--layout-scale, 1));
     border-radius: 999px;
     border: 1px solid rgba(100, 116, 139, 0.7);
     background: rgba(15, 23, 42, 0.82);
@@ -3127,7 +3110,7 @@
     align-items: center;
     justify-content: center;
     font-family: 'Press Start 2P', monospace;
-    font-size: 8px;
+    font-size: calc(8px * var(--layout-scale, 1));
     color: #fff;
     text-shadow: -1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000;
     pointer-events: none;
@@ -3143,9 +3126,9 @@
     flex-direction: column;
     align-items: flex-end;
     position: fixed;
-    right: 16px;
+    right: calc(16px * var(--layout-scale, 1));
     bottom: calc(27vh + 36px + 108px);
-    gap: 6px;
+    gap: calc(6px * var(--layout-scale, 1));
     z-index: 12;
     pointer-events: none;
   }
@@ -3153,12 +3136,12 @@
   .lsb-chain-indicator {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: calc(4px * var(--layout-scale, 1));
     background: rgba(10, 10, 26, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 8px;
-    padding: 4px 10px;
-    font-size: 12px;
+    padding: calc(4px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    font-size: calc(12px * var(--layout-scale, 1));
     font-weight: 700;
     white-space: nowrap;
   }
@@ -3169,7 +3152,7 @@
   }
 
   .lsb-chain-count {
-    font-size: 14px;
+    font-size: calc(14px * var(--layout-scale, 1));
   }
 
   /* §7: Quiz wrapper — transparent passthrough; Svelte out:fade applies opacity on exit */
@@ -3206,33 +3189,33 @@
     background: rgba(8, 12, 24, 0.94);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 10px;
-    padding: 12px 14px;
-    min-width: 200px;
-    max-width: 280px;
+    padding: calc(12px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    min-width: calc(200px * var(--layout-scale, 1));
+    max-width: calc(280px * var(--layout-scale, 1));
     pointer-events: none;
     z-index: 50;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
   }
 
   .enemy-tooltip-header {
-    font-size: 14px;
+    font-size: calc(14px * var(--layout-scale, 1));
     font-weight: 800;
     letter-spacing: 0.03em;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 6px;
-    margin-bottom: 2px;
+    padding-bottom: calc(6px * var(--layout-scale, 1));
+    margin-bottom: calc(2px * var(--layout-scale, 1));
   }
 
   .enemy-tooltip-intent {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: calc(2px * var(--layout-scale, 1));
   }
 
   .enemy-tooltip-label {
-    font-size: 10px;
+    font-size: calc(10px * var(--layout-scale, 1));
     font-weight: 600;
     color: rgba(255, 255, 255, 0.45);
     text-transform: uppercase;
@@ -3240,7 +3223,7 @@
   }
 
   .enemy-tooltip-value {
-    font-size: 12px;
+    font-size: calc(12px * var(--layout-scale, 1));
     color: #e2e8f0;
     line-height: 1.3;
   }
@@ -3248,27 +3231,27 @@
   .enemy-tooltip-effects {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: calc(4px * var(--layout-scale, 1));
   }
 
   .enemy-tooltip-effect-badge {
     display: inline-flex;
     align-items: center;
-    font-size: 11px;
+    font-size: calc(11px * var(--layout-scale, 1));
     color: #a78bfa;
     background: rgba(139, 92, 246, 0.12);
     border: 1px solid rgba(139, 92, 246, 0.25);
     border-radius: 6px;
-    padding: 2px 8px;
+    padding: calc(2px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
   }
 
   .enemy-tooltip-telegraph {
-    font-size: 11px;
+    font-size: calc(11px * var(--layout-scale, 1));
     color: rgba(255, 255, 255, 0.5);
     font-style: italic;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding-top: 6px;
-    margin-top: 2px;
+    padding-top: calc(6px * var(--layout-scale, 1));
+    margin-top: calc(2px * var(--layout-scale, 1));
   }
 
   /* M-3: Backdrop cancel hint — visible cue that tapping the backdrop cancels selection */

@@ -194,11 +194,10 @@ describe('getEligibleRelicPool — level-gated unlocks', () => {
   });
 
   it('excludes higher-level relics while including lower-level ones', () => {
-    // At level 5: chain_reactor(1), echo_chamber(3), quicksilver_quill(5) in; time_warp(6)+ out
+    // At level 5: chain_reactor(1), quicksilver_quill(5) in; time_warp(6)+ out
     const result = getEligibleRelicPool([], [], [], 5);
     const ids = result.map(r => r.id);
     expect(ids).toContain('chain_reactor');
-    expect(ids).toContain('echo_chamber');
     expect(ids).toContain('quicksilver_quill');
     expect(ids).not.toContain('time_warp');
     expect(ids).not.toContain('mirror_of_knowledge');

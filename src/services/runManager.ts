@@ -239,7 +239,7 @@ export function createRunState(
 export function recordCardPlay(
   state: RunState,
   correct: boolean,
-  comboCount: number,
+  streakCount: number,
   factId?: string,
   domain?: string,
   isNovel?: boolean,
@@ -267,7 +267,7 @@ export function recordCardPlay(
   }
   state.correctAnswers = state.factsCorrect;
   state.canary = recordCanaryAnswer(state.canary, correct);
-  if (comboCount > state.bestCombo) state.bestCombo = comboCount;
+  if (streakCount > state.bestCombo) state.bestCombo = streakCount;
   if (domain) {
     if (!state.domainAccuracy[domain]) {
       state.domainAccuracy[domain] = { answered: 0, correct: 0 };

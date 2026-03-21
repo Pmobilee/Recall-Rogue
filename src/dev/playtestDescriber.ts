@@ -143,14 +143,13 @@ export function look(): string {
       const enemyHp = turnState?.enemy?.health ?? '?';
       const enemyMaxHp = turnState?.enemy?.maxHealth ?? '?';
       const enemyName = turnState?.enemy?.name ?? 'Unknown';
-      const combo = turnState?.comboMultiplier ?? 1;
       const turn = turnState?.turn ?? '?';
       const floor = runState?.currentFloor ?? '?';
       const handSize = turnState?.deck?.hand?.length ?? 0;
 
       lines.push(`SCREEN: combat (Floor ${floor}, Turn ${turn})`);
       lines.push(`PLAYER HP: ${playerHp}  ENEMY: ${enemyName} (${enemyHp}/${enemyMaxHp})`);
-      lines.push(`COMBO: ${combo}x  HAND: ${handSize} cards`);
+      lines.push(`HAND: ${handSize} cards`);
       lines.push('');
 
       if (turnState?.deck?.hand) {

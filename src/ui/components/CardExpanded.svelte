@@ -19,7 +19,6 @@
     correctAnswer: string
     timerDuration: number
     timerEnabled?: boolean
-    comboCount: number
     hintsRemaining: number
     speedBonusThreshold?: number
     timerColorVariant?: 'default' | 'gold' | 'slowReader'
@@ -40,7 +39,6 @@
     correctAnswer,
     timerDuration,
     timerEnabled = true,
-    comboCount,
     hintsRemaining,
     speedBonusThreshold = 0.25,
     timerColorVariant = 'default',
@@ -468,10 +466,6 @@
     </div>
   {/if}
 
-  {#if comboCount > 0}
-    <div class="combo-indicator">Combo x{comboCount}</div>
-  {/if}
-
   {#if activeKeyword}
     <KeywordPopup
       keywordId={activeKeyword.id}
@@ -537,7 +531,7 @@
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-    padding: 12px 16px;
+    padding: calc(12px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
     /* Layout overrides */
     overflow-y: auto;
     overflow-x: hidden;
@@ -590,16 +584,16 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 20px;
-    height: 20px;
-    min-width: 20px;
+    width: calc(20px * var(--layout-scale, 1));
+    height: calc(20px * var(--layout-scale, 1));
+    min-width: calc(20px * var(--layout-scale, 1));
     border-radius: 4px;
     background: rgba(200, 180, 120, 0.2);
     border: 1px solid rgba(200, 180, 120, 0.4);
-    font-size: 10px;
+    font-size: calc(10px * var(--layout-scale, 1));
     font-family: 'Press Start 2P', 'Courier New', monospace;
     color: #c8b478;
-    margin-right: 10px;
+    margin-right: calc(10px * var(--layout-scale, 1));
     flex-shrink: 0;
     line-height: 1;
   }
@@ -735,7 +729,7 @@
     padding: 0 calc(12px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1));
     display: flex;
     align-items: baseline;
-    gap: 5px;
+    gap: calc(5px * var(--layout-scale, 1));
   }
 
   .effect-value {
@@ -834,7 +828,7 @@
   .timer-bar-container {
     position: relative;
     width: 100%;
-    height: 4px;
+    height: calc(4px * var(--layout-scale, 1));
     background: rgba(30, 40, 60, 0.6);
     border-radius: 2px;
     /* overflow: hidden removed so speed-bonus-marker is not clipped */
@@ -868,7 +862,7 @@
   }
 
   .action-btn {
-    min-height: 40px;
+    min-height: calc(40px * var(--layout-scale, 1));
     border-radius: 6px;
     font-family: 'Press Start 2P', 'Courier New', monospace;
     font-size: calc(9px * var(--text-scale, 1));
@@ -881,7 +875,7 @@
     background: linear-gradient(180deg, rgba(40, 50, 70, 0.9), rgba(30, 38, 55, 0.95));
     border: 1px solid rgba(100, 130, 200, 0.3);
     color: #8ba4d0;
-    padding: 10px 20px;
+    padding: calc(10px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
   }
 
   .hint-btn:hover:not(:disabled) {
@@ -895,14 +889,6 @@
 
   .hint-btn:disabled {
     opacity: 0.45;
-  }
-
-  .combo-indicator {
-    text-align: center;
-    color: #facc15;
-    font-family: 'Press Start 2P', 'Courier New', monospace;
-    font-size: calc(10px * var(--layout-scale, 1));
-    padding: 0 0 calc(10px * var(--layout-scale, 1));
   }
 
   .hint-menu {
@@ -995,7 +981,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
     pointer-events: none;
     z-index: 10;
     animation: quiz-result-flash 300ms ease-out forwards;
@@ -1046,7 +1032,7 @@
   .got-it-btn {
     display: block;
     width: calc(100% - 24px * var(--layout-scale, 1));
-    min-height: 48px;
+    min-height: calc(48px * var(--layout-scale, 1));
     margin: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
     background: linear-gradient(180deg, rgba(30, 50, 80, 0.95) 0%, rgba(20, 35, 60, 0.98) 100%);
     border: 1.5px solid rgba(100, 140, 220, 0.5);

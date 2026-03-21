@@ -270,4 +270,122 @@
   [data-layout="landscape"] .slider-row {
     grid-template-columns: 200px 1fr auto;
   }
+
+  /* ── F-07: Settings — hide internal 200px sidebar, use global nav instead ── */
+  [data-layout="landscape"] .settings-sidebar {
+    display: none;
+  }
+
+  [data-layout="landscape"] .settings-card-landscape {
+    grid-template-columns: 1fr;
+  }
+
+  [data-layout="landscape"] .settings-panel-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  /* Category nav becomes horizontal tabs at top of content area */
+  [data-layout="landscape"] .category-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    background: rgba(13, 26, 43, 0.6);
+  }
+
+  [data-layout="landscape"] .category-btn {
+    text-align: center;
+    border-radius: 6px;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    padding: 8px 20px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  [data-layout="landscape"] .category-btn.active {
+    background: rgba(30, 64, 175, 0.3);
+    border-color: rgba(59, 130, 246, 0.5);
+    color: #93c5fd;
+  }
+
+  /* ── F-08: Library — hide mastery/lore gap sections between tabs and grid ── */
+  [data-layout="landscape"] .mastery-strip,
+  [data-layout="landscape"] .lore-section,
+  [data-layout="landscape"] .lore-grid,
+  [data-layout="landscape"] .lore-unlock {
+    display: none;
+  }
+
+  [data-layout="landscape"] .summary-section {
+    padding-top: 8px;
+  }
+
+  [data-layout="landscape"] .domain-grid {
+    margin-top: 16px;
+  }
+
+  /* ── F-09: Domain card text — body font, not pixel font ── */
+  [data-layout="landscape"] .domain-card {
+    font-family: var(--font-body, system-ui, sans-serif);
+  }
+
+  [data-layout="landscape"] .domain-card strong {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 16px;
+  }
+
+  [data-layout="landscape"] .domain-row span,
+  [data-layout="landscape"] .domain-meta {
+    font-family: var(--font-body, system-ui, sans-serif);
+    font-size: 13px;
+  }
+
+  /* ── F-11: Styled scrollbars on dark UI ── */
+  [data-layout="landscape"] ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  [data-layout="landscape"] ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  [data-layout="landscape"] ::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.3);
+    border-radius: 4px;
+  }
+
+  [data-layout="landscape"] ::-webkit-scrollbar-thumb:hover {
+    background: rgba(148, 163, 184, 0.5);
+  }
+
+  /* Firefox scrollbar */
+  [data-layout="landscape"] * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(148, 163, 184, 0.3) rgba(0, 0, 0, 0.2);
+  }
+
+  /* ── F-13: Profile stat labels — body font, not pixel font ── */
+  [data-layout="landscape"] .profile-screen .stat span,
+  [data-layout="landscape"] .profile-screen .stat strong,
+  [data-layout="landscape"] .stats-grid-landscape {
+    font-family: var(--font-body, system-ui, sans-serif);
+  }
+
+  /* ── F-16: Hover states — unscoped so they reach all Svelte components ── */
+  [data-layout="landscape"] button:not(.sprite-hitbox):hover {
+    filter: brightness(1.15);
+    transition: filter 120ms ease, transform 120ms ease;
+  }
+
+  [data-layout="landscape"] .domain-card:hover {
+    filter: brightness(1.1);
+    border-left-color: #f59e0b !important;
+  }
+
+  [data-layout="landscape"] .sidebar-btn:hover {
+    background: rgba(255, 200, 100, 0.08);
+  }
 }

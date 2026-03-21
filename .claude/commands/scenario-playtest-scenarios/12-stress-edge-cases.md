@@ -43,6 +43,46 @@ URL: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 22. CHECK: defeat is handled gracefully (not a crash)
 23. CHECK: can return to hub after defeat
 
+## Element Discovery & Evaluation — MANDATORY
+
+At EVERY screenshot checkpoint, run the Runtime Element Discovery protocol from the Shared Protocol. Edge cases reveal bugs — be extra thorough with objective checks.
+
+### Scenario-Specific Evaluation Questions
+
+**Max Combo (#1):**
+- Run element discovery. Is the combo counter visible?
+- Does the combo counter display escalate visually as the multiplier grows (bigger, brighter, more intense)?
+- At 5+ correct answers in a row: does the combo feel rewarding and exciting?
+- Is the combo multiplier number formatted correctly (not too many decimals)?
+- Does the visual intensity match the gameplay impact?
+
+**Low HP (#2):**
+- Run discovery. Does the HP bar show correct low value?
+- Is there a visual danger indicator (color change, pulsing, vignette)?
+- Does low HP create tension and urgency?
+- Are all UI elements still functional at low HP (no elements hidden or broken)?
+- Is the HP text still readable when the bar is nearly empty?
+- Does the game feel fair at low HP, or does it feel like inevitable death?
+
+**Defeat (#3):**
+- Run discovery on the run end screen.
+- Is the defeat handled gracefully (clear messaging, no crash)?
+- Does the defeat screen acknowledge what you accomplished (facts learned, floors reached)?
+- Is "Play Again" prominent and encouraging?
+- Does the defeat feel like "you'll do better next time" or "you lost, game over"?
+- Are all navigation buttons working (Play Again, Home)?
+- Is the transition from 0 HP to defeat screen smooth (not abrupt)?
+
+**Rapid Actions (no screenshot — programmatic checks):**
+- After rapid card clicks: run discovery. Are there duplicate quiz overlays?
+- Is the game in a valid state (not frozen, not showing multiple overlays)?
+- Is the card hand state correct (cards removed that were played)?
+
+**All Cards Played (no screenshot — programmatic):**
+- After playing all 5 cards: run discovery. Is the End Turn button the only available action?
+- Are played card positions empty or showing played state?
+- After ending turn: does a new hand draw correctly?
+
 ## Checks
 - Combo progression: 1.0 → 1.15 → 1.3 → 1.5 → 2.0
 - Combo resets on wrong answer

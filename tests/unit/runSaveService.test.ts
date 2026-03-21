@@ -9,7 +9,6 @@ const SAVE_KEY = 'recall-rogue-active-run'
 function toSerializedRunState(run: ReturnType<typeof createRunState>): Record<string, unknown> {
   return {
     ...run,
-    echoFactIds: [...run.echoFactIds],
     consumedRewardFactIds: [...run.consumedRewardFactIds],
     factsAnsweredCorrectly: [...run.factsAnsweredCorrectly],
     factsAnsweredIncorrectly: [...run.factsAnsweredIncorrectly],
@@ -34,7 +33,6 @@ function makeCard(overrides: Partial<Card> = {}): Card {
 describe('runSaveService', () => {
   it('round-trips ascension fields, reward metadata, and run mode metadata', () => {
     const run = createRunState('history', 'geography', { ascensionLevel: 10 })
-    run.echoFactIds.add('echo-1')
     run.factsAnsweredCorrectly.add('fact-1')
     run.factsAnsweredIncorrectly.add('fact-2')
 
@@ -100,7 +98,6 @@ describe('runSaveService', () => {
     expect(loaded.runState.ascensionLevel).toBe(10)
     expect(loaded.runState.ascensionModifiers.level).toBe(10)
     expect(loaded.runState.ascensionModifiers.minRetreatFloorForRewards).toBeNull()
-    expect(loaded.runState.echoFactIds.has('echo-1')).toBe(true)
     expect(loaded.runState.factsAnsweredCorrectly.has('fact-1')).toBe(true)
     expect(loaded.runState.factsAnsweredIncorrectly.has('fact-2')).toBe(true)
   })

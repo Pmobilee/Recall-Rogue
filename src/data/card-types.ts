@@ -113,8 +113,6 @@ export interface CardRunState {
   hand: Card[];
   /** Cards permanently removed from this run */
   exhaustPile: Card[];
-  /** Current consecutive correct-answer combo count (resets on wrong) */
-  comboCount: number;
   /** Current floor number (1-indexed) */
   currentFloor: number;
   /** Current encounter index within the floor (0-indexed) */

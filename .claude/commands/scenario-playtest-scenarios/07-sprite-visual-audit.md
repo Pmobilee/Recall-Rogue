@@ -52,6 +52,58 @@ URL: `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
 26. Wait 500ms, take **Screenshot #7 (special-room-rest)**
 27. CHECK: rest room background loaded, heal/study buttons visible and styled
 
+## Element Discovery & Evaluation — MANDATORY
+
+At EVERY screenshot checkpoint, run the Runtime Element Discovery protocol from the Shared Protocol. This scenario is PRIMARILY visual — the subjective evaluation is especially important.
+
+### Scenario-Specific Evaluation Questions
+
+**Hub (#1):**
+- Run discovery for images specifically. List every image found with dimensions and load status.
+- Is the camp background loaded and the correct orientation?
+- Do all camp button sprites load (not broken images)?
+- Is the art style consistent across all hub elements?
+- Does the hub feel like a cohesive scene or a collection of mismatched assets?
+
+**Combat Enemy 1 (#2):**
+- Run discovery. Is the enemy sprite visible and loaded?
+- What are the sprite dimensions? Is it appropriately sized for the enemy type?
+- Is the sprite a real pixel art asset or a colored rectangle placeholder?
+- Does the sprite have transparent background (no white/black box around it)?
+- Does the enemy look threatening/appropriate for a cave_bat?
+- Is the combat background loaded and atmospheric?
+
+**Combat Enemy 2 (#3):**
+- Same sprite checks as enemy 1, but for the elite enemy.
+- Does the elite look more dangerous than the basic enemy?
+- Is the art quality consistent between enemy types?
+- Are there any visual artifacts (stretched pixels, wrong colors, aliasing)?
+
+**Card Hand (#4):**
+- For each card in hand: does the card frame render correctly?
+- Are card borders color-coded by type? Are the colors correct?
+- Does card art (if any) load within the frame?
+- Are AP cost numbers rendered clearly?
+- Do the cards look like they belong in the same game?
+
+**Quiz Overlay (#5):**
+- Is the quiz overlay properly styled (not raw unstyled HTML)?
+- Are answer buttons consistently sized and spaced?
+- Is the question text formatted correctly (no HTML tags showing)?
+- Does the overlay fit within the viewport without scrolling?
+
+**Shop Room (#6):**
+- Is the shop background distinct from combat backgrounds?
+- Do shop item icons/images load?
+- Are prices formatted with a gold icon?
+- Does the shop feel like a physical merchant's space?
+
+**Rest Room (#7):**
+- Is the rest room background loaded?
+- Are heal/study button icons rendered?
+- Does the room feel peaceful and restorative?
+- Is the atmosphere distinctly different from combat?
+
 ## Checks
 - Enemy sprites load (not placeholder rectangles)
 - Card hand renders with 5 visible card slots

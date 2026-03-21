@@ -42,8 +42,6 @@ const LANDSCAPE = {
   RELIC_TRAY_Y: 0.05,
   CHAIN_COUNTER_X: 0.35,
   CHAIN_COUNTER_Y: 0.05,
-  COMBO_COUNTER_X: 0.65,
-  COMBO_COUNTER_Y: 0.05,
 } as const
 
 /** Enemy HP bar dimensions. */

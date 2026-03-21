@@ -29,12 +29,12 @@
   }
 
   const TYPE_LABEL: Record<MapNodeData['type'], string> = {
-    combat:   'Combat',
-    elite:    'Elite',
-    boss:     'Boss',
-    mystery:  'Mystery',
-    rest:     'Rest',
-    treasure: 'Treasure',
+    combat:   'Combat encounter',
+    elite:    'Elite encounter',
+    boss:     'Boss encounter',
+    mystery:  'Mystery event',
+    rest:     'Rest site',
+    treasure: 'Treasure room',
     shop:     'Shop',
   }
 

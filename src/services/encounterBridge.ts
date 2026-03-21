@@ -21,7 +21,7 @@ import {
   updateReviewStateByButton,
 } from '../ui/stores/playerData';
 import { HINTS_PER_ENCOUNTER, POST_ENCOUNTER_HEAL_PCT, RELAXED_POST_ENCOUNTER_HEAL_BONUS, POST_BOSS_ENCOUNTER_HEAL_BONUS, EARLY_MINI_BOSS_HP_MULTIPLIER, POST_ENCOUNTER_HEAL_CAP, getBalanceValue, STARTER_DECK_COMPOSITION } from '../data/balance';
-import { generateCurrencyReward, generateComboBonus } from './encounterRewards';
+import { generateCurrencyReward } from './encounterRewards';
 import type { CombatScene } from '../game/scenes/CombatScene';
 import { factsDB } from './factsDB';
 import { RELIC_BY_ID } from '../data/relics/index';
@@ -540,7 +540,6 @@ export function handlePlayCard(
         type: 'card_correct',
         domain: playedCard.domain,
         responseTimeMs,
-        comboCount: 0,
       });
     }
 
@@ -652,13 +651,11 @@ export function handlePlayCard(
         run.floor.currentFloor,
         result.turnState.enemy.template.category,
       );
-      const comboBonus = generateComboBonus(0);
-      run.currency += currencyReward + comboBonus;
+      run.currency += currencyReward;
 
       // Capture reward data for step-by-step reveal
       activeRewardBundle.set({
         goldEarned: currencyReward,
-        comboBonus,
         healAmount: actualHeal,
       });
 

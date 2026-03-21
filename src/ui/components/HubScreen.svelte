@@ -134,7 +134,7 @@
       <!-- 1. Dungeon Gate - Start Run -->
       <CampSpriteButton
         spriteUrl={getCampUpgradeUrl('doorway', tiers.doorway)}
-        label=""
+        label="Start Run"
         testId="btn-start-run"
         zIndex={5}
         onclick={onStartRun}

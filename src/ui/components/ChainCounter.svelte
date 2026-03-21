@@ -2,15 +2,13 @@
   import { getChainTypeColor } from '../../data/chainTypes'
 
   interface Props {
-    count: number
-    multiplier: number
     isPerfectTurn?: boolean
     chainLength?: number
     chainType?: number | null
     chainMultiplier?: number
   }
 
-  let { count, multiplier, isPerfectTurn = false, chainLength = 0, chainType = null, chainMultiplier = 1.0 }: Props = $props()
+  let { isPerfectTurn = false, chainLength = 0, chainType = null, chainMultiplier = 1.0 }: Props = $props()
 
   let chainColor = $derived(chainType !== null && chainType !== undefined ? getChainTypeColor(chainType) : '#888888')
   let showChain = $derived(chainLength >= 2 && chainType !== null && chainType !== undefined)
@@ -41,13 +39,13 @@
 <style>
   .chain-display {
     position: absolute;
-    left: 12px;
+    left: calc(12px * var(--layout-scale, 1));
     bottom: calc(42px + var(--safe-bottom, 0px));
     z-index: 18;
     pointer-events: none;
     display: flex;
     align-items: baseline;
-    gap: 4px;
+    gap: calc(4px * var(--layout-scale, 1));
     animation: chainSlam 220ms ease-out;
   }
 

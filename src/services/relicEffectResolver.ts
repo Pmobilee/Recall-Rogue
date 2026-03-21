@@ -175,8 +175,6 @@ export interface AttackContext {
   isFirstAttack: boolean;
   /** Whether the card's mechanic has the 'strike' tag (barbed_edge v1). */
   isStrikeTagged: boolean;
-  /** @deprecated Kept for caller compatibility; no longer used (combo system removed). */
-  comboCount: number;
   /** Player's current HP as a fraction of max HP, 0..1 (reckless_resolve v2, berserker_band v1). */
   playerHpPercent: number;
   /** Number of consecutive correct attacks this encounter (crescendo_blade v1). */

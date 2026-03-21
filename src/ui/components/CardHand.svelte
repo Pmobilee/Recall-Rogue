@@ -31,7 +31,6 @@
     selectedIndex: number | null
     disabled: boolean
     apCurrent: number
-    comboMultiplier?: number
     cardAnimations?: Record<string, CardAnimPhase>
     tierUpTransitions?: Record<string, TierUpTransition>
     discarding?: boolean
@@ -63,7 +62,6 @@
     selectedIndex,
     disabled,
     apCurrent,
-    comboMultiplier = 1,
     cardAnimations,
     tierUpTransitions = {},
     discarding = false,
@@ -165,10 +163,6 @@
       || mechanicId.includes('regen')
       || mechanicName.includes('heal')
       || mechanicName.includes('regen')
-  }
-
-  function isBoosted(): boolean {
-    return comboMultiplier > 1
   }
 
   function getTierBadge(card: Card): string {
@@ -650,7 +644,7 @@
 
 {#if $isLandscape}
 <!-- AR-73: Landscape card hand — full viewport width bottom strip -->
-<div class="card-hand-landscape" class:card-hand-discard={discarding} class:card-hand-quiz-dimmed={quizVisible && $isLandscape} role="group" aria-label="Card hand">
+<div class="card-hand-landscape" class:card-hand-discard={discarding} class:card-hand-quiz-dimmed={quizVisible && $isLandscape} role="group" aria-label="Card hand" style="--hand-scale: {handScaleFactor}">
   {#each cards as card, i (card.id)}
     <!-- debug removed -->
     {@const isSelected = selectedIndex === i}
@@ -706,7 +700,6 @@
       class:trial-card={card.isMasteryTrial}
       class:insufficient-ap={insufficientAp}
       class:card-playable={!insufficientAp && !isSelected && !isOther && selectedIndex === null}
-      class:card-combo={comboMultiplier > 1 && !insufficientAp && !isSelected && !isOther && selectedIndex === null}
       class:card-fizzle={cardAnim === 'fizzle'}
       class:card-discard={cardAnim === 'discard'}
       class:card-reveal={isAnimating}
@@ -1052,7 +1045,6 @@
       class:trial-card={card.isMasteryTrial}
       class:insufficient-ap={insufficientAp}
       class:card-playable={!insufficientAp && !isSelected && !isOther && selectedIndex === null}
-      class:card-combo={comboMultiplier > 1 && !insufficientAp && !isSelected && !isOther && selectedIndex === null}
       class:card-fizzle={cardAnim === 'fizzle'}
       class:card-discard={cardAnim === 'discard'}
       class:card-reveal={isAnimating}
@@ -1337,9 +1329,11 @@
 <style>
   /* ── AR-73: Landscape card hand ──────────────────────────── */
   .card-hand-landscape {
-    /* Card height = 80% of 27vh strip (~233px at 1080p) to avoid bottom clipping.
-       Width derived from height via aspect ratio (1.42 tall : 1 wide → invert). */
-    --card-h: calc(27vh * 0.80);
+    /* Card height = 80% of 27vh strip, scaled down for large hands via --hand-scale (set by JS handScaleFactor).
+       Width derived from height via aspect ratio (1.42 tall : 1 wide → invert).
+       --hand-scale defaults to 1 (≤6 cards) and shrinks toward 0.65 for 10+ cards. */
+    --hand-scale: 1;
+    --card-h: calc(27vh * 0.80 * var(--hand-scale));
     --card-w: calc(var(--card-h) / 1.42);
     position: fixed;
     bottom: 0;
@@ -1352,7 +1346,7 @@
     flex-direction: row;
     align-items: flex-end;
     justify-content: center;
-    gap: 8px;
+    gap: calc(8px * var(--hand-scale));
     padding: 0 12px 10px;
     background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
     pointer-events: none;
@@ -1498,10 +1492,6 @@
 
   .card-has-frame.card-playable {
     filter: drop-shadow(0 0 2px rgba(22, 163, 74, 0.9));
-  }
-
-  .card-combo {
-    filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.9)) drop-shadow(0 0 10px rgba(251, 191, 36, 0.4));
   }
 
   /* ── Card Frame V2 — layered system ──────────────────────── */
@@ -1817,13 +1807,6 @@
     filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.8));
   }
 
-  .echo-card {
-    opacity: 0.65;
-    border-style: dashed;
-    filter: brightness(1.2) contrast(0.85);
-    animation: echo-shimmer 2s ease-in-out infinite;
-  }
-
   .trial-card {
     border-color: #f1c40f !important;
     box-shadow: 0 0 10px rgba(241, 196, 15, 0.65);
@@ -1915,50 +1898,6 @@
     padding: calc(1px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1));
   }
 
-  .echo-badge {
-    position: absolute;
-    top: calc(5px * var(--layout-scale, 1));
-    left: calc(3px * var(--layout-scale, 1));
-    font-size: calc(7px * var(--layout-scale, 1));
-    font-weight: 800;
-    color: #d1d5db;
-    background: rgba(31, 41, 55, 0.8);
-    border-radius: 3px;
-    padding: calc(1px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1));
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    line-height: 1.1;
-  }
-
-  .echo-charge-label {
-    display: block;
-    font-size: calc(7px * var(--layout-scale, 1));
-    color: #c39bd3;
-    letter-spacing: 0.03em;
-    margin-top: calc(1px * var(--layout-scale, 1));
-  }
-
-  /* H-13: CHARGE ONLY badge — bottom of echo cards */
-  .echo-charge-only-badge {
-    position: absolute;
-    bottom: calc(4px * var(--layout-scale, 1));
-    left: calc(2px * var(--layout-scale, 1));
-    right: calc(2px * var(--layout-scale, 1));
-    font-size: calc(7px * var(--layout-scale, 1));
-    font-weight: 800;
-    color: #facc15;
-    background: rgba(0, 0, 0, 0.65);
-    border-radius: 3px;
-    padding: calc(1px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1));
-    text-align: center;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    pointer-events: none;
-    z-index: 3;
-    border: 1px solid rgba(250, 204, 21, 0.35);
-  }
-
   /* H-9: Drag-to-charge hint — portrait, first selection */
   .charge-drag-hint {
     position: absolute;
@@ -2019,12 +1958,6 @@
     0%   { box-shadow: 0 0 0px rgba(255, 215, 0, 0); }
     40%  { box-shadow: 0 0 calc(18px * var(--layout-scale, 1)) rgba(255, 215, 0, 0.9); }
     100% { box-shadow: 0 0 0px rgba(255, 215, 0, 0); }
-  }
-
-  @keyframes echo-shimmer {
-    0% { opacity: 0.55; }
-    50% { opacity: 0.75; }
-    100% { opacity: 0.55; }
   }
 
   .card-fizzle {

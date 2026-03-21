@@ -97,6 +97,14 @@ IMPORTANT:
 - Write markdown summary to /tmp/playtest-{scenario-id}-summary.md
 - If stuck on any screen for >10s, take screenshot, log issue, try to continue
 - A partial report with clear data beats a run that exhausted context
+
+CRITICAL — ELEMENT DISCOVERY & EVALUATION:
+- At EVERY screenshot checkpoint, you MUST run the Runtime Element Discovery protocol (Step 1 in the Shared Protocol) via browser_evaluate BEFORE taking the screenshot
+- After discovery, generate a per-element checklist asking BOTH objective questions (size, visibility, data artifacts, broken images) AND subjective questions (clarity, feel, fun, polish, would a new player understand this?)
+- Evaluate EVERY discovered element — do not skip any. Total evaluated must equal total discovered.
+- Answer the scenario-specific evaluation questions listed in the scenario file
+- End your report with holistic subjective impressions: emotion evoked, visual polish rating 1-10, #1 improvement suggestion, and whether this screen makes you want to keep playing
+- Your report quality is measured by HOW MANY elements you evaluated and HOW SPECIFIC your assessments are. Generic "looks fine" is a FAILURE.
 ```
 
 ### Execution Paths

@@ -148,11 +148,6 @@ export interface TurnState {
   encounterAnsweredFacts: string[];
   /** Consecutive correct answers this entire encounter (for Perfect Storm synergy). */
   consecutiveCorrectThisEncounter: number;
-  /**
-   * UI display counter — mirrors consecutiveCorrectThisEncounter.
-   * Kept as a separate field for CardCombatOverlay display compatibility.
-   */
-  comboCount: number;
   /** Number of Tier 3 (mastered) cards in deck at encounter start (for Mastery Ascension). */
   tier3CardCount: number;
   /** Turns remaining for Phoenix Rage damage bonus (+50%). 0 = inactive. */
@@ -336,7 +331,6 @@ export function startEncounter(
     turnLog: [],
     encounterAnsweredFacts: [],
     consecutiveCorrectThisEncounter: 0,
-    comboCount: 0, // mirrors consecutiveCorrectThisEncounter for UI display
     tier3CardCount: 0,
     phoenixRageTurnsRemaining: 0,
     glassPenaltyRemovedTurnsRemaining: 0,
@@ -527,7 +521,6 @@ export function playCardAction(
       // AP is NOT refunded — wrong answers always cost AP regardless of mode
       const fizzledEffect = createNoEffect(card);
       turnState.consecutiveCorrectThisEncounter = 0;
-      turnState.comboCount = 0;
       turnState.cardsPlayedThisTurn += 1;
       turnState.isPerfectTurn = false;
 
@@ -593,7 +586,6 @@ export function playCardAction(
 
 
     turnState.consecutiveCorrectThisEncounter = 0;
-    turnState.comboCount = 0;
     turnState.cardsPlayedThisTurn += 1;
     turnState.isPerfectTurn = false;
 
@@ -1064,7 +1056,6 @@ export function playCardAction(
   if (playMode !== 'quick') {
     turnState.cardsCorrectThisTurn += 1;
     turnState.consecutiveCorrectThisEncounter += 1;
-    turnState.comboCount = turnState.consecutiveCorrectThisEncounter;
     // Chain Momentum (AR-122): correct Charge earns a free surcharge on the NEXT Charge this turn
     if (playMode === 'charge' && CHAIN_MOMENTUM_ENABLED) {
       turnState.nextChargeFree = true;
@@ -1509,10 +1500,3 @@ export function getHandSize(turnState: TurnState): number {
   return turnState.deck.hand.length;
 }
 
-/**
- * @deprecated Combo multiplier system has been removed.
- * Always returns 1.0. Kept for UI backward compatibility.
- */
-export function getComboMultiplier(_comboCount: number): number {
-  return 1.0;
-}

@@ -114,7 +114,7 @@
 </script>
 
 {#if $isLandscape}
-<!-- LANDSCAPE: sidebar + panel two-column layout -->
+<!-- LANDSCAPE: header sidebar (hidden on desktop) + horizontal category nav + content -->
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 <div class="settings-overlay" role="presentation" onkeydown={handleKeydown}>
   <div class="settings-card settings-card-landscape">
@@ -123,16 +123,17 @@
         <h2>Settings</h2>
         <button class="back-btn" onclick={onback}>Back</button>
       </div>
-      <nav class="category-nav">
-        {#each categories as cat}
-          <button
-            class="category-btn"
-            class:active={activeCategory === cat.id}
-            onclick={() => { activeCategory = cat.id }}
-          >{cat.label}</button>
-        {/each}
-      </nav>
     </aside>
+
+    <nav class="category-nav">
+      {#each categories as cat}
+        <button
+          class="category-btn"
+          class:active={activeCategory === cat.id}
+          onclick={() => { activeCategory = cat.id }}
+        >{cat.label}</button>
+      {/each}
+    </nav>
 
     <div class="settings-panel-content">
       {#if activeCategory === 'audio'}
@@ -613,6 +614,12 @@
     height: 100vh;
     max-height: 100vh;
     overflow: hidden;
+  }
+
+  /* When sidebar is hidden (desktop landscape), switch to vertical stack */
+  :global([data-layout="landscape"]) .settings-card-landscape {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
   }
 
   .settings-sidebar {

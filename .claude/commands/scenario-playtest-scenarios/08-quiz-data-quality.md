@@ -49,6 +49,40 @@ window.__terraPlay.getQuiz()
 22. Take **Screenshot #1 (quiz-sample)** during one quiz
 23. Compile quiz quality report
 
+## Element Discovery & Evaluation — MANDATORY
+
+At the quiz screenshot checkpoint, run the Runtime Element Discovery protocol from the Shared Protocol. For this scenario, also evaluate quiz CONTENT quality deeply.
+
+### Scenario-Specific Evaluation Questions
+
+**Per-Quiz Content Evaluation (for EACH of the 10+ quizzes):**
+- Is the question grammatically correct and well-formed?
+- Is the question testing genuine knowledge (not trivial or trick questions)?
+- Are the 3 answer choices semantically coherent with the question being asked?
+  - e.g., if the question asks about a behavior, are distractors also behaviors (not names or dates)?
+- Are wrong answers plausible enough that guessing isn't trivially easy?
+- Are wrong answers wrong enough that a knowledgeable person wouldn't be confused?
+- Is the correct answer unambiguously correct?
+- Is the question too long (more than ~30 words)? Would it fit on a phone screen?
+- Are answer choices roughly similar length (no outlier that reveals the answer)?
+- Does the question feel educational — would you learn something from seeing it?
+- Is the memory tip (if shown) actually helpful for remembering the fact?
+
+**Quiz Visual (#1):**
+- Run element discovery on the quiz overlay.
+- Is the question text large enough to read comfortably (>= 14px)?
+- Are answer buttons large enough to tap without mis-tapping (>= 44px tall)?
+- Is there enough spacing between answer buttons to prevent accidental taps?
+- Is the timer (if visible) clearly a speed bonus indicator, not a hard deadline?
+- Does correct feedback feel rewarding? Does wrong feedback feel educational?
+
+**Overall Quiz Quality:**
+- Across all 10+ quizzes: what percentage felt high-quality vs mediocre?
+- Were any questions duplicated?
+- Were any distractors obviously nonsensical (semantic mismatch with question type)?
+- Did the domain of questions match what was selected?
+- Rate overall quiz content quality 1-10 and explain the score.
+
 ## Checks
 - All quizzes have 3 unique, non-empty choices
 - No data artifacts (undefined, null, NaN) in question or choice text

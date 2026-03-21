@@ -145,7 +145,6 @@ function getCombatState(): Record<string, unknown> | null {
       factQuestion: c.fact?.question,
       tier: c.tier,
     })),
-    comboMultiplier: turnState.comboMultiplier,
     turn: turnState.turn,
     floor: runState?.currentFloor,
     segment: runState?.currentSegment,

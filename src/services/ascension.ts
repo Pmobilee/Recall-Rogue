@@ -43,13 +43,11 @@ export interface AscensionModifiers {
   preventFlee: boolean;
   preferCloseDistractors: boolean;
   miniBossBossTierAttacks: boolean;
-  comboResetsOnTurnEnd: boolean;
   minRetreatFloorForRewards: number | null;
   relicCap: number;
   tier1OptionCount: number;
   playerMaxHpOverride: number | null;
   bossHpMultiplier: number;
-  disableEcho: boolean;
   wrongAnswerSelfDamage: number;
   forceHardQuestionFormats: boolean;
   curatorSecretSecondPhase: boolean;
@@ -62,8 +60,6 @@ export interface AscensionModifiers {
   firstTurnBonusAp: number;
   freeRestCardRemoval: boolean;
   freeShopCardRemoval: boolean;
-  comboHealThreshold: number;
-  comboHealAmount: number;
   chargeCorrectDamageBonus: number;
   miniBossGuaranteedRelic: boolean;
   encounterStartShield: number;
@@ -98,13 +94,11 @@ export function getAscensionModifiers(level: number): AscensionModifiers {
     preventFlee: l >= 6,
     preferCloseDistractors: l >= 7,
     miniBossBossTierAttacks: l >= 8,
-    comboResetsOnTurnEnd: l >= 14,
     minRetreatFloorForRewards: null,  // Removed — boring
     relicCap: l >= 11 ? 2 : 3,
     tier1OptionCount: l >= 12 ? 4 : 3,
     playerMaxHpOverride: l >= 13 ? 80 : null,
     bossHpMultiplier: l >= 15 ? 1.25 : 1.00,
-    disableEcho: l >= 16,
     wrongAnswerSelfDamage: l >= 17 ? 3 : 0,
     forceHardQuestionFormats: l >= 19,
     curatorSecretSecondPhase: l >= 20,
@@ -116,8 +110,6 @@ export function getAscensionModifiers(level: number): AscensionModifiers {
     firstTurnBonusAp: l >= 2 ? 1 : 0,
     freeRestCardRemoval: l >= 3,
     freeShopCardRemoval: l >= 5,
-    comboHealThreshold: l >= 6 ? 3 : 0,
-    comboHealAmount: l >= 6 ? 5 : 0,
     chargeCorrectDamageBonus: l >= 7 ? 0.15 : 0,
     miniBossGuaranteedRelic: l >= 8,
     encounterStartShield: l >= 9 ? 3 : 0,
