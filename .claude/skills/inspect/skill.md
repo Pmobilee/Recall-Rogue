@@ -222,6 +222,62 @@ Output a single report that merges all findings:
 
 ---
 
+## MANDATORY: Visual Occlusion Check
+
+**THIS CHECK EXISTS BECAUSE WE MISSED EVERY CARD HAVING NO ART VISIBLE.**
+
+On 2026-03-21, the visual inspection reported all 31 cards had art "PASS" because DOM showed `naturalWidth=1024, complete=true, display=block`. But an opaque base frame layer covered all card art. Every card in the game was artless. The inspection missed it because it trusted DOM attributes.
+
+**RULE: DOM loaded != visually visible. NEVER trust DOM alone for visual checks.**
+
+For EVERY visual element (card art, sprites, icons, backgrounds), the visual inspection worker MUST run this occlusion check:
+
+```javascript
+// MANDATORY occlusion check — runs for every image/visual element
+function checkOcclusion(element) {
+  const rect = element.getBoundingClientRect();
+  const centerX = rect.x + rect.width / 2;
+  const centerY = rect.y + rect.height / 2;
+  const topElement = document.elementFromPoint(centerX, centerY);
+  const isOccluded = topElement !== element && !element.contains(topElement);
+
+  if (isOccluded) {
+    return {
+      pass: false,
+      occludedBy: topElement?.className || topElement?.tagName,
+      severity: 'CRITICAL',
+      note: `Element loaded but HIDDEN — occluded by ${topElement?.className}`
+    };
+  }
+
+  // Also check: does the image have actual content (not just transparent/white)?
+  if (element.tagName === 'IMG' && element.naturalWidth > 0) {
+    const canvas = document.createElement('canvas');
+    canvas.width = 1; canvas.height = 1;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(element, rect.width/2, rect.height/2, 1, 1, 0, 0, 1, 1);
+    const pixel = ctx.getImageData(0, 0, 1, 1).data;
+    const isBlankWhite = pixel[0] > 250 && pixel[1] > 250 && pixel[2] > 250;
+    const isTransparent = pixel[3] < 10;
+    if (isBlankWhite || isTransparent) {
+      return {
+        pass: false,
+        severity: 'HIGH',
+        note: `Image loads but center pixel is ${isTransparent ? 'transparent' : 'blank white'} — art may be missing or placeholder`
+      };
+    }
+  }
+
+  return { pass: true };
+}
+```
+
+**When Playwright screenshots timeout** (Phaser RAF issue), this `elementFromPoint()` check is the FALLBACK. It runs via `browser_evaluate` and catches occlusion without needing a screenshot.
+
+**This check is NON-NEGOTIABLE. If a visual inspection worker skips it, the inspection is INCOMPLETE and MUST be flagged as such.**
+
+---
+
 ## Self-Healing: Detecting Missing Coverage
 
 **After every `/inspect` run, check for blind spots:**
