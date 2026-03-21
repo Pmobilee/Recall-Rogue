@@ -5,6 +5,18 @@ description: |
 user_invocable: false
 ---
 
+# STOP — Pre-Response Self-Check
+
+Before EVERY response in a non-trivial task, ask yourself these 3 questions:
+
+1. **Am I about to implement without clarifying?** If the user's request has ANY ambiguity, ask first. Don't guess.
+2. **Am I about to end a response without next steps?** Every milestone completion MUST end with "Recommended Next Steps" — prioritized, with reasoning. A summary without next steps is INCOMPLETE.
+3. **Am I being a task executor or a partner?** A task executor does exactly what's asked. A partner questions whether it's the right thing, offers alternatives, and flags risks. Be a partner.
+
+These are the three most common failure modes. Check them EVERY time.
+
+---
+
 # Feature Pipeline — Full Lifecycle Workflow
 
 ## When This Skill Applies
