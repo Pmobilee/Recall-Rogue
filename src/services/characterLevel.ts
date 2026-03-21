@@ -14,16 +14,16 @@ const MECHANIC_UNLOCK_SCHEDULE: Map<number, string[]> = new Map([
     'cleanse', 'scout', 'recycle', 'foresight', 'transmute', 'immunity',
     'mirror', 'adapt', 'overclock',
     // 5 new basics from AR-206 Phase 1 (available from first run)
-    'power_strike', 'iron_wave', 'reinforce', 'inscription_of_fury', 'inscription_of_iron',
+    'power_strike', 'iron_wave', 'reinforce', 'inscription_fury', 'inscription_iron',
   ]],
-  [1,  ['bash', 'guard', 'sap', 'inscription_of_wisdom']],
+  [1,  ['bash', 'guard', 'sap', 'inscription_wisdom']],
   [2,  ['twin_strike', 'shrug_it_off', 'swap']],
   [3,  ['stagger', 'sift', 'riposte']],
   [4,  ['rupture', 'lacerate', 'scavenge', 'absorb', 'precision_strike']],
-  [5,  ['kindle', 'ignite', 'corrode', 'overcharge', 'archive']],
-  [6,  ['gambit', 'curse_of_doubt', 'knowledge_ward', 'aegis_pulse', 'reflex', 'unstable_flux', 'chameleon']],
-  [7,  ['burnout_shield', 'battle_trance', 'volatile_slash', 'corroding_touch', 'phase_shift']],
-  [8,  ['ironhide', 'war_drum', 'chain_lightning', 'dark_knowledge', 'mark_of_ignorance', 'sacrifice']],
+  [5,  ['kindle', 'ignite', 'corrode', 'overcharge', 'archive', 'reactive_shield']],
+  [6,  ['gambit', 'curse_of_doubt', 'knowledge_ward', 'aegis_pulse', 'reflex', 'unstable_flux', 'chameleon', 'warcry']],
+  [7,  ['burnout_shield', 'battle_trance', 'volatile_slash', 'corroding_touch', 'phase_shift', 'hemorrhage']],
+  [8,  ['ironhide', 'war_drum', 'chain_lightning', 'dark_knowledge', 'mark_of_ignorance', 'sacrifice', 'recollect']],
   [9,  ['smite', 'entropy', 'bulwark', 'conversion', 'chain_anchor']],
   [10, ['feedback_loop', 'frenzy', 'aftershock', 'synapse', 'catalyst']],
   [11, ['recall', 'mastery_surge', 'tutor', 'mimic', 'siphon_strike']],
@@ -58,6 +58,89 @@ export function getUnlockedMechanics(level: number): Set<string> {
 export function getMechanicUnlockLevel(mechanicId: string): number | null {
   for (const [level, ids] of MECHANIC_UNLOCK_SCHEDULE) {
     if (ids.includes(mechanicId)) return level;
+  }
+  return null;
+}
+
+// === Relic Unlock Schedule ===
+// Maps character level -> relic IDs first available at that level.
+// This mirrors the mechanic unlock pattern and gives a single query point for
+// "what relics can a level-N player see in rewards / shop?".
+// The underlying filtering is also applied directly via `r.unlockLevel` on each
+// RelicDefinition in relicAcquisitionService — this map provides the same data
+// for unit-testing and any future pool-builder queries.
+//
+// Level 0  — 5 expansion Commons (starter pool grows from 24 to 29)
+// Level 1  — pocket_watch, chain_link_charm
+// Level 2  — worn_shield, bleedstone, gladiator_s_mark
+// Level 3  — ember_core, gambler_s_token
+// Level 4  — thoughtform, scar_tissue, living_grimoire
+// Level 5  — surge_capacitor, obsidian_dice
+// Level 6  — red_fang, chronometer
+// Level 7  — soul_jar, null_shard, hemorrhage_lens
+// Level 8  — archive_codex, chain_forge
+// Level 9  — berserker_s_oath, deja_vu, entropy_engine
+// Level 10 — inferno_crown, mind_palace
+// Level 11 — bloodstone_pendant, chromatic_chain
+// Level 12 — volatile_manuscript, dragon_s_heart
+// Level 20 — omniscience
+// Level 21 — paradox_engine
+// Level 22 — akashic_record
+// Level 23 — singularity
+
+const RELIC_UNLOCK_SCHEDULE: Map<number, string[]> = new Map([
+  [0,  ['quick_study', 'thick_skin', 'tattered_notebook', 'battle_scars', 'brass_knuckles']],
+  [1,  ['pocket_watch', 'chain_link_charm']],
+  [2,  ['worn_shield', 'bleedstone', 'gladiator_s_mark']],
+  [3,  ['ember_core', 'gambler_s_token']],
+  [4,  ['thoughtform', 'scar_tissue', 'living_grimoire']],
+  [5,  ['surge_capacitor', 'obsidian_dice']],
+  [6,  ['red_fang', 'chronometer']],
+  [7,  ['soul_jar', 'null_shard', 'hemorrhage_lens']],
+  [8,  ['archive_codex', 'chain_forge']],
+  [9,  ['berserker_s_oath', 'deja_vu', 'entropy_engine']],
+  [10, ['inferno_crown', 'mind_palace']],
+  [11, ['bloodstone_pendant', 'chromatic_chain']],
+  [12, ['volatile_manuscript', 'dragon_s_heart']],
+  [20, ['omniscience']],
+  [21, ['paradox_engine']],
+  [22, ['akashic_record']],
+  [23, ['singularity']],
+]);
+
+/**
+ * Returns all expansion relic IDs available at the given character level via
+ * the expansion unlock schedule (pool relics, not level-reward relics).
+ * Includes all relics unlocked at levels 0 through `level` (inclusive).
+ *
+ * Note: the 24 original starter relics (isStarter: true, no unlockLevel) are
+ * always available and are NOT included in this set — they bypass level gating.
+ * This function only covers the 36 expansion relics gated by level.
+ *
+ * @param level - The player's current character level (0-25).
+ * @returns Set of expansion relic IDs eligible for pool/reward/shop use.
+ */
+export function getUnlockedRelics(level: number): Set<string> {
+  const unlocked = new Set<string>();
+  for (const [unlockLevel, ids] of RELIC_UNLOCK_SCHEDULE) {
+    if (unlockLevel <= level) {
+      for (const id of ids) unlocked.add(id);
+    }
+  }
+  return unlocked;
+}
+
+/**
+ * Returns the expansion unlock level for a given relic ID.
+ * Returns null if the relic is not in the expansion unlock schedule
+ * (i.e., it is a starter relic or a level-reward relic).
+ *
+ * @param relicId - The relic ID to look up.
+ * @returns The unlock level (0-23), or null if not in the schedule.
+ */
+export function getRelicUnlockScheduleLevel(relicId: string): number | null {
+  for (const [level, ids] of RELIC_UNLOCK_SCHEDULE) {
+    if (ids.includes(relicId)) return level;
   }
   return null;
 }

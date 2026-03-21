@@ -462,14 +462,14 @@
     position: fixed;
     inset: 0;
     overflow-y: auto;
-    padding: 16px 16px 96px;
+    padding: calc(16px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1)) calc(96px * var(--layout-scale, 1));
     background:
       radial-gradient(circle at 8% 0%, rgba(100, 200, 255, 0.16), transparent 30%),
       radial-gradient(circle at 90% 5%, rgba(255, 190, 100, 0.16), transparent 28%),
       linear-gradient(180deg, #0f172a, #111827);
     color: #e2e8f0;
     display: grid;
-    gap: 12px;
+    gap: calc(12px * var(--layout-scale, 1));
   }
 
   .header {
@@ -487,12 +487,12 @@
   .back-btn,
   .settings-btn,
   .actions button {
-    min-height: 44px;
+    min-height: calc(44px * var(--layout-scale, 1));
     border-radius: 10px;
     border: 1px solid rgba(148, 163, 184, 0.45);
     background: rgba(30, 41, 59, 0.85);
     color: #e2e8f0;
-    padding: 0 12px;
+    padding: 0 calc(12px * var(--layout-scale, 1));
     font-size: calc(12px * var(--text-scale, 1));
     font-weight: 600;
   }
@@ -515,9 +515,9 @@
     border-radius: 14px;
     border: 1px solid rgba(148, 163, 184, 0.35);
     background: rgba(15, 23, 42, 0.72);
-    padding: 12px;
+    padding: calc(12px * var(--layout-scale, 1));
     display: grid;
-    gap: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
   }
 
   .blocked-card h3,
@@ -537,7 +537,7 @@
 
   .cards {
     display: grid;
-    gap: 10px;
+    gap: calc(10px * var(--layout-scale, 1));
   }
 
   .meta {
@@ -547,7 +547,7 @@
 
   .reward-preview {
     display: grid;
-    gap: 2px;
+    gap: calc(2px * var(--layout-scale, 1));
   }
 
   .inline-message {
@@ -558,17 +558,17 @@
 
   .leaderboard-mini {
     display: grid;
-    gap: 5px;
+    gap: calc(5px * var(--layout-scale, 1));
     border-radius: 10px;
     border: 1px solid rgba(148, 163, 184, 0.25);
     background: rgba(2, 6, 23, 0.45);
-    padding: 8px;
+    padding: calc(8px * var(--layout-scale, 1));
   }
 
   .leaderboard-row {
     display: grid;
-    grid-template-columns: 40px minmax(0, 1fr) auto;
-    gap: 8px;
+    grid-template-columns: calc(40px * var(--layout-scale, 1)) minmax(0, 1fr) auto;
+    gap: calc(8px * var(--layout-scale, 1));
     font-size: calc(11px * var(--text-scale, 1));
     color: #dbeafe;
   }
@@ -593,7 +593,7 @@
   .actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
   }
 
   .score-sync-card {
@@ -606,7 +606,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    gap: calc(10px * var(--layout-scale, 1));
     font-size: calc(12px * var(--text-scale, 1));
     color: #cbd5e1;
   }
@@ -624,9 +624,9 @@
   /* ═══ LANDSCAPE DESKTOP OVERRIDES ═══════════════════════════════════════════ */
 
   :global([data-layout="landscape"]) .social-screen {
-    margin-left: 100px;
-    max-width: 960px;
-    padding: 32px 48px 96px;
+    margin-left: calc(100px * var(--layout-scale, 1));
+    max-width: calc(1400px * var(--layout-scale, 1));
+    padding: calc(32px * var(--layout-scale, 1)) calc(48px * var(--layout-scale, 1)) calc(96px * var(--layout-scale, 1));
   }
 
   :global([data-layout="landscape"]) .back-btn {
@@ -641,48 +641,48 @@
   /* Body text / card descriptions */
   :global([data-layout="landscape"]) .card p,
   :global([data-layout="landscape"]) .blocked-card p {
-    font-size: 15px;
+    font-size: calc(15px * var(--text-scale, 1));
   }
 
   /* Small labels */
   :global([data-layout="landscape"]) .meta {
-    font-size: 13px;
+    font-size: calc(13px * var(--text-scale, 1));
   }
 
   :global([data-layout="landscape"]) .helper {
-    font-size: 13px;
+    font-size: calc(13px * var(--text-scale, 1));
   }
 
   :global([data-layout="landscape"]) .inline-message {
-    font-size: 13px;
+    font-size: calc(13px * var(--text-scale, 1));
   }
 
   /* Leaderboard text */
   :global([data-layout="landscape"]) .leaderboard-row {
-    font-size: 13px;
+    font-size: calc(13px * var(--text-scale, 1));
   }
 
   /* Disabled state: atmospheric heading */
   :global([data-layout="landscape"]) .blocked-card h3 {
-    font-size: 24px;
+    font-size: calc(24px * var(--text-scale, 1));
     font-family: 'Cinzel', serif;
   }
 
   :global([data-layout="landscape"]) .blocked-card p {
-    font-size: 16px;
-    max-width: 600px;
+    font-size: calc(16px * var(--text-scale, 1));
+    max-width: calc(600px * var(--layout-scale, 1));
     margin-left: auto;
     margin-right: auto;
   }
 
   /* "Open Settings" button: prominent gold-bordered style */
   :global([data-layout="landscape"]) .settings-btn {
-    min-width: 200px;
-    height: 48px;
+    min-width: calc(200px * var(--layout-scale, 1));
+    height: calc(48px * var(--layout-scale, 1));
     border: 1px solid #f59e0b;
     background: rgba(15, 23, 42, 0.9);
     color: #fde68a;
-    font-size: 15px;
+    font-size: calc(15px * var(--text-scale, 1));
   }
 
   /* Vertically center the disabled state content */
@@ -691,7 +691,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: calc(100vh - 64px);
+    min-height: calc(100vh - calc(64px * var(--layout-scale, 1)));
     text-align: center;
   }
 </style>

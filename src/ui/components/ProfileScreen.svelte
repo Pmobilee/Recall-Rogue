@@ -299,8 +299,7 @@
   /* ═══ LANDSCAPE DESKTOP OVERRIDES ═══════════════════════════════════════════ */
 
   :global([data-layout="landscape"]) .profile-screen {
-    margin-left: 100px;
-    max-width: 1200px;
+    max-width: calc(1600px * var(--layout-scale, 1));
     padding: calc(32px * var(--layout-scale, 1)) calc(48px * var(--layout-scale, 1));
   }
 

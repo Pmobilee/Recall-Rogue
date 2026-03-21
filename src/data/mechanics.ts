@@ -411,7 +411,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
   {
     id: 'siphon_strike', name: 'Siphon Strike', type: 'attack',
     description: 'Deal damage and heal based on overkill damage (min 2, max 10).',
-    baseValue: 6, apCost: 1, maxPerPool: 2, tags: ['strike', 'lifetap'], launchPhase: 1, unlockLevel: 3,
+    baseValue: 6, apCost: 1, maxPerPool: 2, tags: ['strike', 'lifetap'], launchPhase: 1, unlockLevel: 11,
     quickPlayValue: 6, chargeCorrectValue: 18, chargeWrongValue: 4,
   },
   {
@@ -699,7 +699,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
   {
     id: 'siphon_knowledge', name: 'Siphon Knowledge', type: 'utility',
     description: 'QP: draw 2, see answers 3s. CC: draw 3, 5s. CW: draw 1, 2s.',
-    baseValue: 2, apCost: 2, maxPerPool: 1, tags: ['draw'], launchPhase: 2, unlockLevel: 9,
+    baseValue: 2, apCost: 2, maxPerPool: 1, tags: ['draw'], launchPhase: 2, unlockLevel: 13,
     quickPlayValue: 2, chargeCorrectValue: 3, chargeWrongValue: 1,
   },
 

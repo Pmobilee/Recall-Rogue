@@ -92,20 +92,20 @@
     align-items: center;
     justify-content: center;
     z-index: 300;
-    padding: 16px;
+    padding: calc(16px * var(--layout-scale, 1));
   }
 
   .campfire-card {
     background: linear-gradient(180deg, #1a1d24, #12151b);
     border: 1px solid rgba(255, 160, 60, 0.25);
     border-radius: 16px;
-    padding: 28px 24px;
-    max-width: 360px;
+    padding: calc(28px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1));
+    max-width: calc(480px * var(--layout-scale, 1));
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: calc(20px * var(--layout-scale, 1));
   }
 
   .campfire-title {
@@ -119,7 +119,7 @@
   .stats-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: calc(10px * var(--layout-scale, 1));
     width: 100%;
   }
 
@@ -127,11 +127,11 @@
     background: rgba(30, 41, 59, 0.7);
     border: 1px solid rgba(148, 163, 184, 0.2);
     border-radius: 10px;
-    padding: 10px 12px;
+    padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: calc(4px * var(--layout-scale, 1));
   }
 
   .stat-wide {
@@ -160,7 +160,7 @@
 
   .resume-btn {
     width: 100%;
-    min-height: 52px;
+    min-height: calc(52px * var(--layout-scale, 1));
     border: 2px solid #f59e0b;
     border-radius: 12px;
     background: linear-gradient(180deg, #2f7a35, #1f5c28);
@@ -178,7 +178,7 @@
 
   .hub-btn {
     width: 100%;
-    min-height: 44px;
+    min-height: calc(44px * var(--layout-scale, 1));
     border: 1px solid rgba(148, 163, 184, 0.4);
     border-radius: 10px;
     background: rgba(30, 41, 59, 0.75);

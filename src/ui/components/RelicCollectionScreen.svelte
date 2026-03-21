@@ -307,7 +307,7 @@
     position: fixed;
     inset: 0;
     overflow-y: auto;
-    padding: calc(16px + var(--safe-top)) 12px 32px;
+    padding: calc(calc(16px * var(--layout-scale, 1)) + var(--safe-top)) calc(12px * var(--layout-scale, 1)) calc(32px * var(--layout-scale, 1));
     background:
       radial-gradient(circle at 15% 0%, rgba(250, 204, 21, 0.10), transparent 36%),
       radial-gradient(circle at 85% 5%, rgba(139, 92, 246, 0.10), transparent 32%),
@@ -315,7 +315,7 @@
     color: #e2e8f0;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: calc(12px * var(--layout-scale, 1));
     z-index: 50;
   }
 
@@ -324,7 +324,7 @@
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    gap: 8px;
+    gap: calc(8px * var(--layout-scale, 1));
   }
 
   .header-title {
@@ -338,8 +338,8 @@
   }
 
   .back-btn {
-    min-height: 44px;
-    padding: 0 14px;
+    min-height: calc(44px * var(--layout-scale, 1));
+    padding: 0 calc(14px * var(--layout-scale, 1));
     border-radius: 10px;
     border: 1px solid rgba(74, 222, 128, 0.50);
     background: rgba(21, 128, 61, 0.35);
@@ -349,14 +349,14 @@
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: calc(6px * var(--layout-scale, 1));
   }
 
   .coin-display {
     display: flex;
     align-items: center;
-    gap: 4px;
-    padding: 6px 10px;
+    gap: calc(4px * var(--layout-scale, 1));
+    padding: calc(6px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
     border-radius: 999px;
     background: rgba(120, 53, 15, 0.50);
     border: 1px solid rgba(250, 204, 21, 0.45);
@@ -378,14 +378,14 @@
   .filter-section {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: calc(6px * var(--layout-scale, 1));
   }
 
   .filter-row {
     display: flex;
-    gap: 6px;
+    gap: calc(6px * var(--layout-scale, 1));
     overflow-x: auto;
-    padding-bottom: 4px;
+    padding-bottom: calc(4px * var(--layout-scale, 1));
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
@@ -396,8 +396,8 @@
 
   .pill {
     flex-shrink: 0;
-    min-height: 34px;
-    padding: 4px 12px;
+    min-height: calc(34px * var(--layout-scale, 1));
+    padding: calc(4px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
     border-radius: 999px;
     border: 1px solid rgba(148, 163, 184, 0.30);
     background: rgba(15, 23, 42, 0.60);
@@ -421,28 +421,28 @@
     justify-content: space-between;
     font-size: calc(12px * var(--text-scale, 1));
     color: #94a3b8;
-    padding: 0 2px;
+    padding: 0 calc(2px * var(--layout-scale, 1));
   }
 
   /* ── relic grid ── */
   .relic-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: calc(10px * var(--layout-scale, 1));
   }
 
   .relic-card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
-    padding: 12px 6px 10px;
+    gap: calc(4px * var(--layout-scale, 1));
+    padding: calc(12px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
     border-radius: 12px;
     border: 2px solid;
     background: rgba(15, 23, 42, 0.80);
     cursor: pointer;
     transition: transform 0.12s, box-shadow 0.12s;
-    min-height: 90px;
+    min-height: calc(90px * var(--layout-scale, 1));
   }
 
   .relic-card:active {
@@ -502,7 +502,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.4px;
-    padding: 1px 6px;
+    padding: 1px calc(6px * var(--layout-scale, 1));
     border-radius: 999px;
     line-height: 1.4;
   }
@@ -519,7 +519,7 @@
     border: 1px solid rgba(245, 158, 11, 0.45);
     display: flex;
     align-items: center;
-    gap: 2px;
+    gap: calc(2px * var(--layout-scale, 1));
   }
 
   .badge-coin {
@@ -537,7 +537,7 @@
     text-align: center;
     color: #64748b;
     font-size: calc(13px * var(--text-scale, 1));
-    padding: 24px 0;
+    padding: calc(24px * var(--layout-scale, 1)) 0;
   }
 
   /* ── modal ── */
@@ -549,13 +549,13 @@
     align-items: center;
     justify-content: center;
     z-index: 100;
-    padding: 16px;
+    padding: calc(16px * var(--layout-scale, 1));
   }
 
   .modal-content {
     position: relative;
     width: 100%;
-    max-width: 340px;
+    max-width: calc(340px * var(--layout-scale, 1));
     max-height: 85vh;
     overflow-y: auto;
     border-radius: 16px;
@@ -563,20 +563,20 @@
     background:
       radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.08), transparent 50%),
       linear-gradient(180deg, #111827, #0f172a);
-    padding: 24px 20px 20px;
+    padding: calc(24px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: calc(10px * var(--layout-scale, 1));
     color: #e2e8f0;
   }
 
   .modal-close {
     position: absolute;
-    top: 8px;
-    right: 8px;
-    min-width: 44px;
-    min-height: 44px;
+    top: calc(8px * var(--layout-scale, 1));
+    right: calc(8px * var(--layout-scale, 1));
+    min-width: calc(44px * var(--layout-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -596,7 +596,7 @@
   .modal-icon {
     font-size: calc(48px * var(--text-scale, 1));
     line-height: 1;
-    margin-top: 4px;
+    margin-top: calc(4px * var(--layout-scale, 1));
     width: calc(48px * var(--text-scale, 1));
     height: calc(48px * var(--text-scale, 1));
   }
@@ -623,7 +623,7 @@
 
   .modal-badges {
     display: flex;
-    gap: 6px;
+    gap: calc(6px * var(--layout-scale, 1));
     flex-wrap: wrap;
     justify-content: center;
   }
@@ -632,7 +632,7 @@
   .category-pill {
     font-size: calc(10px * var(--text-scale, 1));
     font-weight: 700;
-    padding: 2px 10px;
+    padding: calc(2px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
     border-radius: 999px;
     border: 1px solid;
     text-transform: uppercase;
@@ -667,7 +667,7 @@
   }
 
   .modal-effects h4 {
-    margin: 0 0 4px;
+    margin: 0 0 calc(4px * var(--layout-scale, 1));
     font-size: calc(12px * var(--text-scale, 1));
     color: #94a3b8;
     text-transform: uppercase;
@@ -676,10 +676,10 @@
 
   .modal-effects ul {
     margin: 0;
-    padding: 0 0 0 16px;
+    padding: 0 0 0 calc(16px * var(--layout-scale, 1));
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: calc(3px * var(--layout-scale, 1));
   }
 
   .modal-effects li {
@@ -691,9 +691,9 @@
   .curse-warning {
     display: flex;
     align-items: flex-start;
-    gap: 6px;
+    gap: calc(6px * var(--layout-scale, 1));
     width: 100%;
-    padding: 8px 10px;
+    padding: calc(8px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
     border-radius: 8px;
     background: rgba(127, 29, 29, 0.30);
     border: 1px solid rgba(248, 113, 113, 0.40);
@@ -731,7 +731,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 4px;
+    margin-top: calc(4px * var(--layout-scale, 1));
   }
 
   .starter-label {
@@ -740,13 +740,13 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    padding: 8px 0;
+    padding: calc(8px * var(--layout-scale, 1)) 0;
   }
 
   .action-btn {
-    min-height: 44px;
-    min-width: 160px;
-    padding: 8px 16px;
+    min-height: calc(44px * var(--layout-scale, 1));
+    min-width: calc(160px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
     border-radius: 10px;
     font-size: calc(13px * var(--text-scale, 1));
     font-weight: 700;

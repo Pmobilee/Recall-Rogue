@@ -262,9 +262,9 @@
     border-radius: 10px;
     border: 1px solid rgba(148, 163, 184, 0.25);
     background: rgba(15, 23, 42, 0.75);
-    padding: 10px;
+    padding: calc(10px * var(--layout-scale, 1));
     display: grid;
-    gap: 4px;
+    gap: calc(4px * var(--layout-scale, 1));
   }
 
   .stats-grid span {
@@ -286,9 +286,9 @@
     border-radius: 10px;
     border: 1px solid rgba(250, 204, 21, 0.32);
     background: rgba(113, 63, 18, 0.28);
-    padding: 10px;
+    padding: calc(10px * var(--layout-scale, 1));
     display: grid;
-    gap: 4px;
+    gap: calc(4px * var(--layout-scale, 1));
   }
 
   .bounties strong {
@@ -301,7 +301,7 @@
   }
 
   .share-btn {
-    min-height: 46px;
+    min-height: calc(46px * var(--layout-scale, 1));
     border-radius: 10px;
     border: 1px solid rgba(125, 211, 252, 0.6);
     background: linear-gradient(180deg, #0f4c81, #1d4ed8);
@@ -315,14 +315,14 @@
     display: grid;
     grid-template-rows: auto 1fr;
     overflow: hidden;
-    padding: 16px 24px 20px;
+    padding: calc(16px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
   }
 
   .header-landscape {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 16px;
+    gap: calc(16px * var(--layout-scale, 1));
   }
 
   .header-landscape h2 {
@@ -335,13 +335,13 @@
 
   .search-input {
     width: 100%;
-    max-width: 360px;
-    height: 40px;
+    max-width: calc(360px * var(--layout-scale, 1));
+    height: calc(40px * var(--layout-scale, 1));
     border-radius: 8px;
     border: 1px solid #334155;
     background: #0f172a;
     color: #e2e8f0;
-    padding: 0 12px;
+    padding: 0 calc(12px * var(--layout-scale, 1));
     font-size: calc(13px * var(--text-scale, 1));
   }
 
@@ -352,7 +352,7 @@
   .summary-card-landscape {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: calc(20px * var(--layout-scale, 1));
     overflow-y: auto;
     align-self: start;
   }
@@ -360,7 +360,7 @@
   .summary-left,
   .summary-right {
     display: grid;
-    gap: 10px;
+    gap: calc(10px * var(--layout-scale, 1));
     align-content: start;
   }
 
@@ -371,9 +371,9 @@
   /* ═══ LANDSCAPE DESKTOP OVERRIDES ═══════════════════════════════════════════ */
 
   :global([data-layout="landscape"]) .journal-screen {
-    margin-left: 100px;
-    max-width: 1100px;
-    padding: 32px 48px 20px;
+    margin-left: calc(100px * var(--layout-scale, 1));
+    max-width: calc(1100px * var(--layout-scale, 1));
+    padding: calc(32px * var(--layout-scale, 1)) calc(48px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
   }
 
   :global([data-layout="landscape"]) .back-btn {
@@ -382,25 +382,25 @@
 
   /* Stat values */
   :global([data-layout="landscape"]) .stats-grid strong {
-    font-size: 28px;
+    font-size: calc(28px * var(--text-scale, 1));
   }
 
   /* Small labels */
   :global([data-layout="landscape"]) .stats-grid span {
-    font-size: 13px;
+    font-size: calc(13px * var(--text-scale, 1));
   }
 
   /* Body text */
   :global([data-layout="landscape"]) .meta-line {
-    font-size: 15px;
+    font-size: calc(15px * var(--text-scale, 1));
   }
 
   :global([data-layout="landscape"]) .bounties span {
-    font-size: 13px;
+    font-size: calc(13px * var(--text-scale, 1));
   }
 
   :global([data-layout="landscape"]) .meta {
-    font-size: 13px;
+    font-size: calc(13px * var(--text-scale, 1));
   }
 
   /* Empty state: centered with larger, styled text */
@@ -409,18 +409,18 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 240px;
-    margin-top: 40px;
+    min-height: calc(240px * var(--layout-scale, 1));
+    margin-top: calc(40px * var(--layout-scale, 1));
   }
 
   :global([data-layout="landscape"]) .empty-card h3 {
-    font-size: 24px;
+    font-size: calc(24px * var(--text-scale, 1));
     font-family: 'Cinzel', serif;
-    margin: 0 0 8px;
+    margin: 0 0 calc(8px * var(--layout-scale, 1));
   }
 
   :global([data-layout="landscape"]) .empty-card p {
-    font-size: 16px;
+    font-size: calc(16px * var(--text-scale, 1));
     margin: 0;
     color: rgba(255, 255, 255, 0.6);
   }
@@ -433,10 +433,10 @@
 
   /* Entry stat rows: min 64px tall, 15px text */
   :global([data-layout="landscape"]) .stats-grid-landscape div {
-    min-height: 64px;
+    min-height: calc(64px * var(--layout-scale, 1));
   }
 
   :global([data-layout="landscape"]) .stats-grid-landscape span {
-    font-size: 15px;
+    font-size: calc(15px * var(--text-scale, 1));
   }
 </style>

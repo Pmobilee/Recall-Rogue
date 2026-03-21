@@ -50,36 +50,36 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
-    padding: calc(20px + var(--safe-top)) 16px 32px;
+    gap: calc(12px * var(--layout-scale, 1));
+    padding: calc(20px + var(--safe-top)) calc(16px * var(--layout-scale, 1)) calc(32px * var(--layout-scale, 1));
     overflow-y: auto;
     z-index: 210;
   }
 
   h1 {
-    margin: 6px 0 0;
-    font-size: 24px;
+    margin: calc(6px * var(--layout-scale, 1)) 0 0;
+    font-size: calc(24px * var(--text-scale, 1));
     color: #f1c40f;
     letter-spacing: 0.6px;
   }
 
   p {
-    margin: 0 0 4px;
+    margin: 0 0 calc(4px * var(--layout-scale, 1));
     color: #a6b4c2;
     text-align: center;
-    max-width: 520px;
+    max-width: calc(520px * var(--layout-scale, 1));
   }
 
   .option-list {
     width: 100%;
-    max-width: 640px;
+    max-width: calc(800px * var(--layout-scale, 1));
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: calc(10px * var(--layout-scale, 1));
   }
 
   .option {
-    min-height: 72px;
+    min-height: calc(72px * var(--layout-scale, 1));
     border-radius: 12px;
     border: 1px solid #314357;
     background: rgba(16, 26, 38, 0.84);
@@ -89,10 +89,10 @@
     grid-template-areas:
       "icon title"
       "icon desc";
-    gap: 2px 10px;
+    gap: calc(2px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
     align-items: center;
     text-align: left;
-    padding: 10px 12px;
+    padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
   }
 
   .arch-icon-img {
@@ -113,38 +113,38 @@
   .title {
     grid-area: title;
     font-weight: 800;
-    font-size: 15px;
+    font-size: calc(15px * var(--text-scale, 1));
   }
 
   .desc {
     grid-area: desc;
     color: #bac7d3;
-    font-size: 12px;
+    font-size: calc(12px * var(--text-scale, 1));
     line-height: 1.3;
   }
 
   .back-btn {
     position: absolute;
-    top: 16px;
-    left: 16px;
+    top: calc(16px * var(--layout-scale, 1));
+    left: calc(16px * var(--layout-scale, 1));
     background: none;
     border: none;
     color: #8b949e;
-    font-size: 16px;
+    font-size: calc(16px * var(--text-scale, 1));
     cursor: pointer;
-    padding: 8px;
-    min-height: 44px;
+    padding: calc(8px * var(--layout-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
   }
 
   .skip {
-    margin-top: 8px;
-    min-width: 220px;
-    min-height: 48px;
+    margin-top: calc(8px * var(--layout-scale, 1));
+    min-width: calc(220px * var(--layout-scale, 1));
+    min-height: calc(48px * var(--layout-scale, 1));
     border-radius: 10px;
     border: 1px solid #4b5563;
     background: #1f2937;
     color: #e5e7eb;
-    padding: 0 12px;
+    padding: 0 calc(12px * var(--layout-scale, 1));
     font-weight: 700;
   }
 </style>

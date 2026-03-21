@@ -535,7 +535,7 @@
     top: 0;
     z-index: 5;
     background: rgba(13, 17, 23, 0.95);
-    padding-bottom: 8px;
+    padding-bottom: calc(8px * var(--layout-scale, 1));
   }
 
   h1 {
@@ -546,7 +546,7 @@
   }
 
   .gold {
-    font-size: calc(22px * var(--layout-scale, 1));
+    font-size: calc(26px * var(--layout-scale, 1));
     font-weight: 800;
     color: #f9d56e;
     margin-top: calc(2px * var(--layout-scale, 1));
@@ -573,7 +573,7 @@
     letter-spacing: 0.5px;
     margin-top: calc(4px * var(--layout-scale, 1));
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 4px;
+    padding-bottom: calc(4px * var(--layout-scale, 1));
   }
 
   .card-list {
@@ -634,7 +634,7 @@
 
   .name {
     font-weight: 700;
-    font-size: calc(13px * var(--layout-scale, 1));
+    font-size: calc(14px * var(--layout-scale, 1));
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -645,7 +645,7 @@
     font-size: calc(12px * var(--layout-scale, 1));
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     white-space: normal;
   }
@@ -653,7 +653,7 @@
   .synergy-badge {
     display: inline-block;
     margin-top: calc(3px * var(--layout-scale, 1));
-    padding: 1px 6px;
+    padding: 1px calc(6px * var(--layout-scale, 1));
     border-radius: 8px;
     font-size: calc(10px * var(--layout-scale, 1));
     font-weight: 700;
@@ -671,19 +671,19 @@
     flex-direction: column;
     align-items: center;
     flex-shrink: 0;
-    gap: 2px;
+    gap: calc(2px * var(--layout-scale, 1));
   }
 
   .disable-reason {
-    font-size: 10px;
+    font-size: calc(10px * var(--text-scale, 1));
     color: #94a3b8;
-    margin-top: 2px;
+    margin-top: calc(2px * var(--layout-scale, 1));
     text-align: center;
     white-space: nowrap;
   }
 
   .buy {
-    min-height: 44px;
+    min-height: calc(44px * var(--layout-scale, 1));
     border-radius: 10px;
     border: 1px solid #f1c40f;
     background: #6b4f00;
@@ -709,7 +709,7 @@
   }
 
   .sell {
-    min-height: 44px;
+    min-height: calc(44px * var(--layout-scale, 1));
     border-radius: 10px;
     border: 1px solid #2f914f;
     background: #1f6d39;
@@ -724,12 +724,13 @@
     position: sticky;
     bottom: 0;
     margin-top: calc(8px * var(--layout-scale, 1));
-    min-height: 50px;
+    min-height: calc(54px * var(--layout-scale, 1));
     border-radius: 10px;
     border: 1px solid #4b5563;
     background: #1f2937;
     color: #e5e7eb;
     font-weight: 700;
+    font-size: calc(16px * var(--text-scale, 1));
     z-index: 10;
     box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.6);
   }
@@ -761,7 +762,7 @@
     border-radius: 16px;
     padding: calc(20px * var(--layout-scale, 1));
     width: 100%;
-    max-width: 380px;
+    max-width: calc(380px * var(--layout-scale, 1));
     display: grid;
     gap: calc(10px * var(--layout-scale, 1));
   }
@@ -792,7 +793,7 @@
   }
 
   .modal-btn {
-    min-height: 48px;
+    min-height: calc(48px * var(--layout-scale, 1));
     border-radius: 10px;
     font-weight: 700;
     font-size: calc(13px * var(--layout-scale, 1));
@@ -850,7 +851,7 @@
   }
 
   .quiz-answer-btn {
-    min-height: 44px;
+    min-height: calc(44px * var(--layout-scale, 1));
     border-radius: 10px;
     background: #1a2a4a;
     border: 1px solid #3b82f6;
@@ -919,8 +920,8 @@
   .chain-composition {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px 10px;
-    padding: 4px 8px 8px;
+    gap: calc(6px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    padding: calc(4px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
     font-size: calc(11px * var(--layout-scale, 1));
     opacity: 0.8;
   }
@@ -929,13 +930,13 @@
     font-weight: 600;
     display: inline-flex;
     align-items: center;
-    gap: 3px;
+    gap: calc(3px * var(--layout-scale, 1));
   }
 
   .removal-card-info {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: calc(2px * var(--layout-scale, 1));
   }
 
   .removal-chain-badge {
@@ -945,7 +946,7 @@
     letter-spacing: 0.5px;
     display: inline-flex;
     align-items: center;
-    gap: 3px;
+    gap: calc(3px * var(--layout-scale, 1));
   }
 
   /* === Landscape layout === */
@@ -959,7 +960,7 @@
 
   .shop-overlay.landscape > * {
     /* All direct children constrained to panel width */
-    width: min(70vw, 960px);
+    width: min(90vw, calc(1200px * var(--layout-scale, 1)));
     box-sizing: border-box;
   }
 
@@ -977,11 +978,11 @@
 
   .shop-overlay.landscape .card-item {
     flex: 1 1 calc(30% - 10px);
-    min-width: 220px;
+    min-width: calc(240px * var(--layout-scale, 1));
   }
 
   .shop-overlay.landscape .done {
-    width: min(70vw, 960px);
+    width: min(90vw, calc(1200px * var(--layout-scale, 1)));
     margin-bottom: calc(20px * var(--layout-scale, 1));
   }
 </style>

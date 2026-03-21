@@ -591,10 +591,12 @@
   input[type='checkbox'] {
     width: calc(20px * var(--layout-scale, 1));
     height: calc(20px * var(--layout-scale, 1));
+    accent-color: #d4a017;
   }
 
   input[type='range'] {
     width: 100%;
+    accent-color: #d4a017;
   }
 
   strong {
@@ -694,7 +696,7 @@
 
   /* Widen the content panel so it uses available horizontal space */
   :global([data-layout="landscape"]) .settings-panel-content .settings-section {
-    max-width: calc(800px * var(--layout-scale, 1));
+    max-width: calc(1000px * var(--layout-scale, 1));
   }
 
   /* Body text / labels — larger font and taller click targets */
@@ -724,6 +726,7 @@
   :global([data-layout="landscape"]) input[type='checkbox'] {
     width: calc(44px * var(--layout-scale, 1));
     height: calc(44px * var(--layout-scale, 1));
+    accent-color: #d4a017;
   }
 
   /* Small labels */
