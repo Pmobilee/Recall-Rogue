@@ -1919,8 +1919,11 @@ export function openUpgradeSelection(): boolean {
 }
 
 export function hasRestUpgradeCandidates(): boolean {
+  // getActiveDeckCards() returns [] when activeDeck is null (between encounters).
+  // Fall back to the run pool, which always contains the player's cards.
   const allCards = getActiveDeckCards();
-  return allCards.some(c => canMasteryUpgrade(c));
+  const cards = allCards.length > 0 ? allCards : getRunPoolCards();
+  return cards.some(c => canMasteryUpgrade(c));
 }
 
 /** Prepare upgrade candidates from the active deck. */

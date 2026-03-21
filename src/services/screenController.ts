@@ -6,7 +6,6 @@ const RUN_LOCKED_SCREENS = new Set<Screen>([
   'combat',
   'cardReward',
   'shopRoom',
-  'roomSelection',
   'mysteryEvent',
   'masteryChallenge',
   'restRoom',

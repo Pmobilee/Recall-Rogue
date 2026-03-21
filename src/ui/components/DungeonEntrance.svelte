@@ -15,7 +15,7 @@
   }
 </script>
 
-<div class="onboarding-screen" style="background-image: linear-gradient(rgba(6, 8, 13, 0.65), rgba(6, 8, 13, 0.85)), url('{menuBg}')">
+<div class="onboarding-screen" style="background-image: linear-gradient(rgba(6, 8, 13, 0.4), rgba(6, 8, 13, 0.6)), url('{menuBg}')">
   <div class="onboarding-panel">
     {#if onback}
       <button class="back-btn" type="button" onclick={onback}>&larr; Back</button>
@@ -70,7 +70,8 @@
     color: #8b949e;
     font-size: 16px;
     cursor: pointer;
-    padding: 8px;
+    padding: 8px 12px;
+    min-width: 44px;
     min-height: 44px;
   }
 

@@ -28,6 +28,13 @@ const CATEGORY_TO_DOMAIN: Record<string, FactDomain> = {
   'Human Body & Health': 'human_body_health',
   'Food & World Cuisine': 'food_cuisine',
   'Art & Architecture': 'art_architecture',
+  // Geography drill subcategory used as top-level category in some facts
+  'geography_drill': 'geography_drill',
+  // Language subcategories used as top-level category in some facts
+  'language_vocab': 'language',
+  'language_kanji': 'language',
+  'language_grammar': 'language',
+  'language_kana': 'language',
   // Legacy compatibility
   'Life Sciences': 'human_body_health',
   'Technology': 'general_knowledge',
@@ -45,12 +52,22 @@ const FACT_DOMAIN_CACHE = new Map<string, FactDomain>();
 
 /** Geography subcategories that belong to the dedicated drill domain. */
 const GEOGRAPHY_DRILL_SUBS = new Set([
+  // Capitals variants
   'capitals_countries',
   'countries_capitals',
   'major_capitals',
   'south_american_capitals',
   'central_american_capitals',
   'african_capitals',
+  'capitals',
+  'world_capitals',
+  'european_capitals',
+  'asian_capitals',
+  // Flags variants
+  'flags',
+  'national_flags',
+  'country_flags',
+  'flag_identification',
 ])
 
 /**

@@ -449,6 +449,8 @@
     align-items: center;
     justify-content: center;
     padding: calc(24px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    padding-top: max(calc(24px * var(--layout-scale, 1)), calc(24px * var(--layout-scale, 1) + var(--safe-top, 0px)));
+    padding-bottom: max(calc(24px * var(--layout-scale, 1)), calc(24px * var(--layout-scale, 1) + var(--safe-bottom, 0px)));
     z-index: 200;
     position: relative;
   }
@@ -503,6 +505,7 @@
     font-size: calc(16px * var(--layout-scale, 1));
     color: #E6EDF3;
     font-weight: 700;
+    text-align: right;
   }
 
   .btn-row {
@@ -686,6 +689,8 @@
     grid-template-rows: auto 1fr auto;
     align-items: start;
     padding: calc(16px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1));
+    padding-top: max(calc(16px * var(--layout-scale, 1)), calc(16px * var(--layout-scale, 1) + var(--safe-top, 0px)));
+    padding-bottom: max(calc(16px * var(--layout-scale, 1)), calc(16px * var(--layout-scale, 1) + var(--safe-bottom, 0px)));
     overflow: hidden;
     position: fixed;
   }
@@ -880,5 +885,16 @@
       opacity: 1;
       transform: translateY(0);
     }
+  }
+
+  /* Playwright / disabled animations */
+  :global([data-pw-animations='disabled']) .stat-row {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  :global([data-pw-animations='disabled']) .stats-revealed .stat-value {
+    animation: none;
+    opacity: 1;
   }
 </style>

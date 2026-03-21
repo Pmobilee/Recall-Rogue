@@ -139,7 +139,6 @@
   import LeaderboardsScreen from './ui/components/LeaderboardsScreen.svelte'
   import SocialScreen from './ui/components/SocialScreen.svelte'
   import RelicCollectionScreen from './ui/components/RelicCollectionScreen.svelte'
-  import RelicRewardScreen from './ui/components/RelicRewardScreen.svelte'
   import RelicSwapOverlay from './ui/components/RelicSwapOverlay.svelte'
   import RelicPickupToast from './ui/components/RelicPickupToast.svelte'
   import UpgradeSelectionOverlay from './ui/components/UpgradeSelectionOverlay.svelte'
@@ -1252,9 +1251,6 @@
     <RelicCollectionScreen onBack={handleCloseRelicSanctum} />
   {/if}
 
-  <!-- relicReward screen now uses RewardRoomScene (Phaser cloth display) — AR-92 -->
-  <!-- RelicRewardScreen is kept as a file but no longer rendered in the main flow -->
-
   {#if $currentScreen === 'relicSwapOverlay' && swapOfferedRelic}
     <RelicSwapOverlay
       offeredRelic={swapOfferedRelic}
@@ -1443,7 +1439,7 @@
   .pause-btn {
     position: fixed;
     top: calc(8px * var(--layout-scale, 1) + var(--safe-top));
-    right: calc(8px * var(--layout-scale, 1));
+    right: max(calc(8px * var(--layout-scale, 1)), calc(8px + var(--safe-right, 0px)));
     width: calc(36px * var(--layout-scale, 1));
     height: calc(36px * var(--layout-scale, 1));
     border-radius: 8px;
@@ -1486,10 +1482,12 @@
     align-items: center;
     justify-content: center;
     gap: calc(10px * var(--layout-scale, 1));
-    padding-top: calc(calc(10px * var(--layout-scale, 1)) + var(--safe-top));
+    margin-top: max(4px, var(--safe-top, 0px));
+    padding-top: calc(10px * var(--layout-scale, 1));
     padding-bottom: calc(10px * var(--layout-scale, 1));
     padding-left: calc(16px * var(--layout-scale, 1));
     padding-right: calc(16px * var(--layout-scale, 1));
+    margin-bottom: calc(8px * var(--layout-scale, 1));
     background: linear-gradient(180deg, rgba(245, 158, 11, 0.18), rgba(245, 158, 11, 0.08));
     border-bottom: 1px solid rgba(245, 158, 11, 0.3);
     color: #fbbf24;

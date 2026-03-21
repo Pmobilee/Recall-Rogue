@@ -28,6 +28,7 @@ import { ENEMY_TEMPLATES } from '../data/enemies';
 import { RELIC_BY_ID } from '../data/relics/index';
 import { MECHANIC_BY_ID } from '../data/mechanics';
 import { factsDB } from '../services/factsDB';
+import { markOnboardingComplete, markOnboardingTooltipSeen } from '../services/cardPreferences';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -144,9 +145,9 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
   },
   'combat-scholar': {
     screen: 'combat',
-    enemy: 'scholar',
+    enemy: 'knowledge_golem',
     handSize: 10,
-    relics: ['combo_ring', 'momentum_gem'],
+    relics: ['combo_ring', 'resonance_crystal'],
   },
   'combat-all-chains': {
     screen: 'combat',
@@ -163,14 +164,14 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
   },
   'combat-elite': {
     screen: 'combat',
-    enemy: 'the_librarian',
+    enemy: 'the_curator',
     playerHp: 80,
     relics: ['whetstone', 'iron_shield'],
     hand: ['heavy_strike', 'strike', 'multi_hit', 'block', 'lifetap'],
   },
   'combat-mini-boss': {
     screen: 'combat',
-    enemy: 'cave_guardian',
+    enemy: 'fossil_guardian',
     playerHp: 60,
     hand: ['heavy_strike', 'strike', 'block', 'expose', 'reckless'],
     relics: ['whetstone'],
@@ -178,14 +179,14 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
   'combat-relic-heavy': {
     screen: 'combat',
     enemy: 'cave_bat',
-    relics: ['whetstone', 'iron_shield', 'vitality_ring', 'combo_ring', 'momentum_gem'],
+    relics: ['whetstone', 'iron_shield', 'vitality_ring', 'combo_ring', 'resonance_crystal'],
     hand: ['strike', 'strike', 'block', 'heavy_strike', 'multi_hit'],
   },
   'combat-big-hand': {
     screen: 'combat',
     enemy: 'cave_bat',
     handSize: 8,
-    relics: ['expanded_satchel'],
+    relics: ['scavengers_eye'],
   },
 
   // === Room / navigation scenarios ===
@@ -201,6 +202,7 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
   },
   'card-reward': {
     screen: 'cardReward',
+    cardRewardMechanics: ['strike', 'block', 'heavy_strike'],
   },
   'dungeon-map': {
     screen: 'dungeonMap',
@@ -293,7 +295,7 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
   // === Hub scenarios ===
   'hub-endgame': {
     screen: 'hub',
-    relics: ['whetstone', 'iron_shield', 'swift_boots', 'combo_ring', 'scholars_hat'],
+    relics: ['whetstone', 'iron_shield', 'swift_boots', 'combo_ring', 'insight_prism'],
     gold: 5000,
   },
   'hub-fresh': {
@@ -897,15 +899,6 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
   }
 
   // -----------------------------------------------------------------------
-  // domainSelection
-  // -----------------------------------------------------------------------
-  if (screen === 'domainSelection') {
-    writeStore('terra:currentScreen', 'domainSelection');
-    await wait(300);
-    return { ok: true, message: 'Domain selection screen opened' };
-  }
-
-  // -----------------------------------------------------------------------
   // archetypeSelection
   // -----------------------------------------------------------------------
   if (screen === 'archetypeSelection') {
@@ -1200,6 +1193,14 @@ async function loadScenario(name: string): Promise<ScenarioResult> {
 }
 
 async function loadCustom(config: ScenarioConfig): Promise<ScenarioResult> {
+  // Mark onboarding complete so dev tooltips (e.g. "Tap a card to examine it") never show
+  markOnboardingComplete()
+  markOnboardingTooltipSeen('hasSeenCardTapTooltip')
+  markOnboardingTooltipSeen('hasSeenCastTooltip')
+  markOnboardingTooltipSeen('hasSeenAnswerTooltip')
+  markOnboardingTooltipSeen('hasSeenEndTurnTooltip')
+  markOnboardingTooltipSeen('hasSeenAPTooltip')
+
   const isCombat = config.screen === 'combat';
   if (isCombat) {
     return startCombatScenario(config);

@@ -108,7 +108,7 @@
 
   function getRotation(index: number, total: number): number {
     if (total <= 1) return 0
-    const spread = 39
+    const spread = total > 6 ? 25 : 39
     const step = spread / (total - 1)
     return -spread / 2 + step * index
   }
@@ -122,12 +122,21 @@
 
   let viewportWidth = $state(typeof window !== 'undefined' ? Math.min(window.innerWidth, window.innerHeight * GAME_ASPECT_RATIO) : BASE_WIDTH)
 
+  /** Scale cards down for large hands so each card remains readable. Kicks in above 6 cards. */
+  const handScaleFactor = $derived(cards.length > 6 ? Math.max(0.65, 1 - (cards.length - 6) * 0.07) : 1)
+
   const cardSpacing = $derived.by(() => {
     const total = cards.length
     if (total <= 1) return 0
-    const maxHandWidth = viewportWidth * 0.92
+    const cardW = viewportWidth * 0.30 * handScaleFactor
+    const cardH = cardW * 1.42
+    // Outer cards are rotated ±(spread/2)° which widens their bounding box
+    const spread = total > 6 ? 25 : 39
+    const maxRotationRad = (spread / 2) * (Math.PI / 180)
+    const rotatedW = cardW * Math.cos(maxRotationRad) + cardH * Math.sin(maxRotationRad)
+    const rotationOverhang = rotatedW - cardW
+    const maxHandWidth = viewportWidth * 0.92 - rotationOverhang
     // 60% of card width overlap
-    const cardW = viewportWidth * 0.30
     const overlapSpacing = cardW * 0.58
     return Math.min(overlapSpacing, Math.floor((maxHandWidth - cardW) / (total - 1)))
   })
@@ -944,7 +953,7 @@
 </div>
 {:else}
 <!-- Portrait card hand — UNCHANGED from pre-AR-73 -->
-<div class="card-hand-container" class:card-hand-discard={discarding} role="group" aria-label="Card hand">
+<div class="card-hand-container" class:card-hand-discard={discarding} role="group" aria-label="Card hand" style="--card-w: calc(var(--gw, 390px) * {0.30 * handScaleFactor})">
   {#each cards as card, i (card.id)}
     {@const isSelected = selectedIndex === i}
     {@const isOther = selectedIndex !== null && !isSelected}

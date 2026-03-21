@@ -215,8 +215,8 @@
   }
 
   .mystery-icon-img {
-    width: calc(3rem * var(--layout-scale, 1));
-    height: calc(3rem * var(--layout-scale, 1));
+    width: calc(4rem * var(--layout-scale, 1));
+    height: calc(4rem * var(--layout-scale, 1));
     image-rendering: pixelated;
     display: inline-block;
   }

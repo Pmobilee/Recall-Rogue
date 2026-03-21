@@ -283,7 +283,7 @@
                 <span style="display:none">{TYPE_EMOJI[item.card.cardType] ?? '🃏'}</span>
               </span>
               <div class="text">
-                <div class="name">{item.card.cardType.toUpperCase()} • {tierLabel(item.card)}</div>
+                <div class="name">{item.card.mechanicName ?? item.card.cardType.toUpperCase()} • {tierLabel(item.card)}</div>
                 <div class="sub">Power {Math.round(item.card.baseEffectValue * item.card.effectMultiplier)}</div>
                 {#if shopCardSynergy}
                   <div class="synergy-badge">Synergy: {shopCardSynergy}</div>
@@ -296,7 +296,7 @@
               class:disabled={!canAfford}
               disabled={!canAfford}
               data-testid="shop-buy-card-{idx}"
-              onclick={() => openPurchaseModal({ type: 'card', cardIndex: idx, price: item.price, name: `${item.card.cardType.toUpperCase()} (${tierLabel(item.card)})` })}
+              onclick={() => openPurchaseModal({ type: 'card', cardIndex: idx, price: item.price, name: `${item.card.mechanicName ?? item.card.cardType.toUpperCase()} (${tierLabel(item.card)})` })}
             >
               {item.price}g
             </button>
@@ -343,7 +343,7 @@
               <span style="display:none">{TYPE_EMOJI[card.cardType] ?? '🃏'}</span>
             </span>
             <div class="text">
-              <div class="name">{card.cardType.toUpperCase()} • {tierLabel(card)}</div>
+              <div class="name">{card.mechanicName ?? card.cardType.toUpperCase()} • {tierLabel(card)}</div>
               <div class="sub">Power {Math.round(card.baseEffectValue * card.effectMultiplier)}</div>
             </div>
           </div>
@@ -476,7 +476,7 @@
             onclick={() => pickCardForRemoval(card.id)}
           >
             <span class="removal-card-info">
-              <span class="removal-card-name">{card.cardType.toUpperCase()} • {tierLabel(card)}</span>
+              <span class="removal-card-name">{card.mechanicName ?? card.cardType.toUpperCase()} • {tierLabel(card)}</span>
               {#if card.chainType !== undefined}
                 <span class="removal-chain-badge" style="color: {getChainTypeColor(card.chainType)};">
                   <ChainIcon chainType={card.chainType} size={10} />
@@ -513,7 +513,7 @@
     z-index: 220;
     background: linear-gradient(180deg, rgba(16, 18, 20, 0.75) 0%, rgba(31, 35, 41, 0.75) 100%);
     color: #e6edf3;
-    padding: calc((20px * var(--layout-scale, 1)) + var(--safe-top)) calc(16px * var(--layout-scale, 1)) calc(28px * var(--layout-scale, 1));
+    padding: calc((20px * var(--layout-scale, 1)) + var(--safe-top)) calc(16px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
     display: grid;
     align-content: start;
     gap: calc(8px * var(--layout-scale, 1));
@@ -528,10 +528,12 @@
   }
 
   .gold {
-    font-size: calc(18px * var(--layout-scale, 1));
+    font-size: calc(22px * var(--layout-scale, 1));
     font-weight: 800;
     color: #f9d56e;
     margin-top: calc(2px * var(--layout-scale, 1));
+    text-shadow: 0 0 8px rgba(249, 213, 110, 0.5);
+    letter-spacing: 0.5px;
   }
 
   .section-header {
@@ -622,8 +624,10 @@
     color: #9ba4ad;
     font-size: calc(12px * var(--layout-scale, 1));
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
   }
 
   .synergy-badge {
@@ -680,6 +684,8 @@
   }
 
   .done {
+    position: sticky;
+    bottom: 0;
     margin-top: calc(8px * var(--layout-scale, 1));
     min-height: 50px;
     border-radius: 10px;
@@ -687,6 +693,8 @@
     background: #1f2937;
     color: #e5e7eb;
     font-weight: 700;
+    z-index: 10;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.6);
   }
 
   .empty {

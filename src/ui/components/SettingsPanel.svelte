@@ -482,7 +482,8 @@
     inset: 0;
     background: rgba(5, 9, 16, 0.88);
     display: grid;
-    place-items: center;
+    align-items: center;
+    justify-items: stretch;
     padding: 0;
     z-index: 260;
   }
@@ -543,9 +544,10 @@
   }
 
   .chip.selected {
-    border-color: #38bdf8;
+    border: 2px solid #38bdf8;
     background: #0f2942;
     color: #f8fafc;
+    box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.25);
   }
 
   .chip:disabled {

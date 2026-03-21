@@ -152,8 +152,8 @@ export class RewardRoomScene extends Phaser.Scene {
 
   create(): void {
     if (this.initialized) {
-      console.warn('[RewardRoom] Scene already initialized, skipping')
-      return
+      console.warn('[RewardRoom] Scene already initialized, re-initializing')
+      this.shutdown()
     }
     this.initialized = true
 

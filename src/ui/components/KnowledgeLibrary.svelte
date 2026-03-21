@@ -415,6 +415,7 @@
   .progress-fill {
     height: 100%;
     border-radius: 6px;
+    min-width: 2px;
   }
 
   .domain-meta,
@@ -537,6 +538,7 @@
     font-weight: 600;
     cursor: pointer;
     min-height: 44px;
+    white-space: nowrap;
   }
 
   .tab-btn.active {

@@ -148,6 +148,7 @@
 
   .option-card {
     flex: 1;
+    min-width: 0;
     background: #1E2D3D;
     border: 2px solid #484F58;
     border-radius: 8px;
@@ -206,9 +207,11 @@
   }
 
   .option-detail {
-    font-size: calc(10px * var(--layout-scale, 1));
+    font-size: calc(9.5px * var(--layout-scale, 1));
     color: #8B949E;
     text-align: center;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .option-preview {
@@ -216,6 +219,8 @@
     color: #6E7681;
     text-align: center;
     margin-top: calc(4px * var(--layout-scale, 1));
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   /* === Landscape layout === */

@@ -206,8 +206,8 @@
   }
 
   .slot-count {
-    font-size: calc(9px * var(--layout-scale, 1));
-    color: #C9A227;
+    font-size: calc(11px * var(--layout-scale, 1));
+    color: rgba(255, 255, 255, 0.7);
     text-align: center;
     font-weight: 600;
     line-height: 1;

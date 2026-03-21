@@ -803,7 +803,7 @@
   }
 
   .choice-button {
-    min-height: 48px;
+    min-height: 52px;
     border: 2px solid var(--color-primary);
     border-radius: 999px;
     padding: calc(0.75rem * var(--layout-scale, 1)) calc(1rem * var(--layout-scale, 1));

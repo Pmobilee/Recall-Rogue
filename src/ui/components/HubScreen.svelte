@@ -595,7 +595,7 @@
 
   .camp-level-badge {
     position: absolute;
-    bottom: calc(16px + var(--safe-bottom, 0px));
+    bottom: calc(max(20px, 16px + var(--safe-bottom, 0px)));
     right: calc(12px * var(--layout-scale, 1));
     z-index: 40;
     display: flex;
