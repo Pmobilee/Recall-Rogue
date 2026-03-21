@@ -2777,6 +2777,62 @@
     ],
     "systems": [
       {
+        "id": "inscription_system",
+        "name": "Inscription System",
+        "category": "system",
+        "description": "Inscription cards played once, persist for rest of combat, exhausted on play (removed from game). Fury/Iron/Wisdom hook points. AR-204.",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "mechanicInspectionDate": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": "Infrastructure only — card definitions ship in AR-206/AR-208"
+      },
+      {
+        "id": "card_browser_ui",
+        "name": "Card Browser UI",
+        "category": "system",
+        "description": "Shared mid-combat overlay for browsing card piles (draw/discard/exhaust). Used by Tutor, Mimic CC, Scavenge, Siphon Knowledge. AR-204.",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "mechanicInspectionDate": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": "CardBrowser.svelte — portrait full-screen / landscape right-panel"
+      },
+      {
+        "id": "multi_choice_popup",
+        "name": "Multi-Choice Popup",
+        "category": "system",
+        "description": "Generic 2-4 option choice modal. Used by Unstable Flux CC and Phase Shift QP. AR-204.",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "mechanicInspectionDate": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": "MultiChoicePopup.svelte — min 48px tap targets, forcePick support"
+      },
+      {
+        "id": "exhaust_pile_viewer",
+        "name": "Exhaust Pile Viewer",
+        "category": "system",
+        "description": "CardBrowser wrapper showing all exhausted cards (including Inscriptions). Accessible from CombatHud exhaust count. AR-204.",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "mechanicInspectionDate": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": "ExhaustPileViewer.svelte — thin wrapper over CardBrowser"
+      },
+      {
         "id": "combat_engine",
         "name": "Combat Engine",
         "category": "system",
@@ -6221,6 +6277,20 @@
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": ""
+      },
+      {
+        "id": "inscription",
+        "name": "Inscription",
+        "category": "mechanic",
+        "description": "Played once and persists for the rest of combat. Exhausts on play and is permanently removed from game (cannot be Recollected). Pool = 1 per type — no stacking same-type inscriptions.",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "mechanicInspectionDate": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": "Three types: Fury (damage step 3), Iron (turn start block), Wisdom (CC draw+heal). Card definitions in AR-206/AR-208."
       }
     ],
     "cardTypes": [

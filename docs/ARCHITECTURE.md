@@ -428,6 +428,21 @@ The relic system uses an STS-inspired economy replacing the old FSRS-tied passiv
 
 **Elite node wiring** (AR-59.12): `onEncounterComplete` captures `actMap.nodes[currentNodeId].type` BEFORE calling `advanceEncounter()`. Elite nodes trigger `RelicRewardScreen` with 3 choices (regular rarity weights). Trigger priority: boss > elite > first-mini-boss > subsequent-mini-boss > regular.
 
+**AR-204 — Inscription System + Card Browser UI**:
+- `src/data/card-types.ts` — Added `isInscription?: boolean` and `isRemovedFromGame?: boolean` to `Card` interface
+- `src/services/turnManager.ts` — Added `ActiveInscription` interface, `activeInscriptions: ActiveInscription[]` field to `TurnState` (initializes to `[]` in `startEncounter`), `resolveInscription()` helper (registers inscription, enforces Pool=1), `getActiveInscription()` helper (used by hooks), Iron hook in `endPlayerTurn` turn-start block
+- `src/services/cardEffectResolver.ts` — Added `inscriptionFuryBonus?: number` to `AdvancedResolveOptions`; applied at damage pipeline step 3 (after mastery, before relic flat bonuses; attack cards only)
+- `src/services/encounterBridge.ts` — Inscription detection on card play (moves card from discard to exhaust, marks `isRemovedFromGame`; Wisdom CW skips registration), Fury bonus passed into `AdvancedResolveOptions`, Wisdom CC trigger (draw 1 + optional heal 1 HP), `activeInscriptions` preserved in `freshTurnState`
+- `src/ui/components/CardBrowser.svelte` — NEW: shared mid-combat card list overlay (portrait full-screen / landscape right-panel, select/view modes, showAnswers, timer, data-testid)
+- `src/ui/components/MultiChoicePopup.svelte` — NEW: generic 2–4 option choice modal (min 48px tap targets, forcePick, keyboard Escape support)
+- `src/ui/components/ExhaustPileViewer.svelte` — NEW: thin CardBrowser wrapper showing all exhausted cards including Inscriptions
+- `src/ui/components/CardCombatOverlay.svelte` — Added exhaust pile count tap target (purple ✕ indicator, hidden when empty) + ExhaustPileViewer overlay integration
+
+**TurnState fields added (AR-204)**:
+```typescript
+activeInscriptions: ActiveInscription[]  // persists for entire encounter; initialized []
+```
+
 **UI components**:
 - `RelicCollectionScreen.svelte` — Hub screen (via Anvil) for browsing, unlocking, and excluding relics
 - `RelicRewardScreen.svelte` — Full-screen 1-of-3 relic choice (boss/first mini-boss)

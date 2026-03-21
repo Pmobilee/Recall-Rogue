@@ -53,6 +53,7 @@
   import { ENEMY_DIALOGUE } from '../../data/enemyDialogue'
   import { getMasteryBaseBonus } from '../../services/cardUpgradeService'
   import { getMechanicDefinition } from '../../data/mechanics'
+  import ExhaustPileViewer from './ExhaustPileViewer.svelte'
 
   interface Props {
     turnState: TurnState | null
@@ -219,9 +220,13 @@
   let apMax = $derived(turnState?.apMax ?? 0)
   let drawPileCount = $derived(turnState?.deck.drawPile.length ?? 0)
   let discardPileCount = $derived(turnState?.deck.discardPile.length ?? 0)
+  let exhaustPileCount = $derived(turnState?.deck.exhaustPile.length ?? 0)
   /** Number of visual card stacks to show (1-5 based on pile size). */
   let drawStackCount = $derived(Math.max(1, Math.min(5, Math.ceil(drawPileCount / 3))))
   let discardStackCount = $derived(Math.max(0, Math.min(5, Math.ceil(discardPileCount / 3))))
+
+  // AR-204: Exhaust pile viewer state
+  let showExhaustViewer = $state(false)
 
   const run = $derived($activeRunState)
   const maxRelicSlots = $derived(run ? getMaxRelicSlots(run.runRelics) : 5)
@@ -1583,6 +1588,20 @@
       <span class="pile-count-label">{discardPileCount}</span>
     </div>
 
+    <!-- AR-204: Exhaust pile indicator — tap to open ExhaustPileViewer -->
+    {#if exhaustPileCount > 0}
+      <button
+        class="exhaust-pile-indicator"
+        onclick={() => { showExhaustViewer = true }}
+        aria-label="Exhaust pile: {exhaustPileCount} cards"
+        title="Exhausted cards"
+        data-testid="exhaust-pile-indicator"
+      >
+        <span class="exhaust-icon">✕</span>
+        <span class="exhaust-count">{exhaustPileCount}</span>
+      </button>
+    {/if}
+
     <!-- AR-113: Mastery upgrade/downgrade popups -->
     {#each Object.entries(masteryPopups) as [popupCardId, popupType]}
       <div
@@ -1887,6 +1906,14 @@
 
 <!-- §6 Surge golden border overlay — both portrait and landscape, pointer-events: none -->
 <SurgeBorderOverlay active={isSurgeActive} />
+
+<!-- AR-204: Exhaust pile viewer overlay -->
+{#if showExhaustViewer && turnState}
+  <ExhaustPileViewer
+    exhaustedCards={turnState.deck.exhaustPile}
+    onDismiss={() => { showExhaustViewer = false }}
+  />
+{/if}
 
 <style>
   /* AR-74: Keyboard help trigger button (landscape only) */
@@ -2662,6 +2689,42 @@
     right: calc(12px * var(--layout-scale, 1));
     left: auto;
     bottom: calc(calc(200px * var(--layout-scale, 1)) + 2vh);
+  }
+
+  /* AR-204: Exhaust pile indicator */
+  .exhaust-pile-indicator {
+    position: fixed;
+    right: calc(12px * var(--layout-scale, 1));
+    bottom: calc(calc(270px * var(--layout-scale, 1)) + 2vh);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    background: rgba(10, 18, 30, 0.7);
+    border: 2px solid rgba(150, 80, 200, 0.7);
+    border-radius: 6px;
+    padding: calc(4px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1));
+    cursor: pointer;
+    z-index: 40;
+    transition: border-color 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .exhaust-pile-indicator:hover {
+    border-color: rgba(150, 80, 200, 1);
+  }
+
+  .exhaust-icon {
+    font-size: calc(12px * var(--layout-scale, 1));
+    color: rgba(150, 80, 200, 0.9);
+    line-height: 1;
+  }
+
+  .exhaust-count {
+    font-family: 'Press Start 2P', monospace;
+    font-size: calc(8px * var(--layout-scale, 1));
+    color: #aaa;
+    line-height: 1;
   }
 
   .pile-icon {

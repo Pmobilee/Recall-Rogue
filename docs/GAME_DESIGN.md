@@ -461,6 +461,39 @@ If the player makes no Charge plays during their turn, the enemy gains **+1 Stre
 
 ---
 
+## 4.6. Inscription Keyword (AR-204)
+
+Inscriptions are a special card keyword. Playing an Inscription card is a one-time, permanent combat commitment.
+
+### Behavior
+
+- **Played once:** An Inscription card is played from hand like any other card.
+- **Persists for rest of combat:** Its effect is applied continuously until the encounter ends.
+- **Removed from game on play:** The card is moved to the exhaust pile with `isRemovedFromGame: true`. It cannot be recovered by Recollect (AR-208).
+- **Pool = 1 per type:** Only one inscription of each mechanicId can be active at a time. Playing a second inscription of the same type is a no-op (card still exhausts, effect does not double-register).
+
+### Three Inscription Types (card definitions ship in AR-206/AR-208)
+
+| Card | Hook Point | QP Effect | CC Effect | CW Effect |
+|------|-----------|-----------|-----------|-----------|
+| Inscription of Fury | Damage pipeline step 3 (after mastery, before relic flat bonuses) | +N flat attack damage | +N flat attack damage | 0.7× N flat attack damage (Cursed QP rule) |
+| Inscription of Iron | Player turn start (before draw) | +N block per turn | +N block per turn | 0.7× N block per turn |
+| Inscription of Wisdom | Charge Correct resolution | Draw 1 extra card | Draw 1 extra card + heal 1 HP | Complete fizzle — card exhausted, no inscription registered |
+
+### Damage Pipeline Integration
+
+Inscription of Fury applies at **step 3** of the damage pipeline:
+```
+effectiveBase = mechanicBaseValue + sharpenedEdgeBonus + inscriptionFuryBonus
+```
+Only applies to `attack`-type cards. Shield, buff, debuff, utility, and wild cards are unaffected.
+
+### Cursed Inscription
+
+A Cursed Inscription played via Quick Play applies its effect at **0.7×** the base value (standard `CURSED_QP_MULTIPLIER`). Inscription of Wisdom played as Charge Wrong results in a complete fizzle — the card exhausts and is removed from game, but no inscription is registered.
+
+---
+
 ## 5. Card Tiers and Mastery (FSRS-Powered)
 
 ### Tier Derivation

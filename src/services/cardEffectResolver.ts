@@ -94,6 +94,11 @@ export interface AdvancedResolveOptions {
    * Keyed by FactDomain string. Required for domain_mastery_sigil v2.
    */
   deckDomainCounts?: Record<string, number>;
+  /**
+   * AR-204: Flat damage bonus from active Inscription of Fury. Added at damage pipeline step 3,
+   * after mastery bonus and before relic flat bonuses. Only applies to attack cards.
+   */
+  inscriptionFuryBonus?: number;
 }
 
 export function isCardBlocked(card: Card, enemy: EnemyInstance): boolean {
@@ -222,7 +227,10 @@ export function resolveCardEffect(
 
   const strikeTag = mechanic?.tags.includes('strike') ?? false;
   const sharpenedEdgeBonus = strikeTag && activeRelicIds.has('barbed_edge') ? 3 : 0;
-  const effectiveBase = mechanicBaseValue + sharpenedEdgeBonus;
+  // AR-204: Inscription of Fury bonus — flat damage at pipeline step 3 (after mastery, before relic flat bonuses).
+  // Only applies to attack cards; non-attack types are unaffected.
+  const furyBonus = effectiveType === 'attack' ? (advanced.inscriptionFuryBonus ?? 0) : 0;
+  const effectiveBase = mechanicBaseValue + sharpenedEdgeBonus + furyBonus;
 
   // ── Relic attack modifiers ──────────────────────────────────────────────────
   // resolveAttackModifiers handles all attack-boosting relics (whetstone, flame_brand,

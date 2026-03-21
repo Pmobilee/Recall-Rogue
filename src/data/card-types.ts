@@ -103,6 +103,17 @@ export interface Card {
    * Set per-draw in drawHand(). Cleared when the fact is cured.
    */
   isCursed?: boolean;
+  /**
+   * True if this card is an Inscription — played once, persists for rest of combat,
+   * exhausts on play and is permanently removed from game (cannot be Recollected).
+   * Set at card creation time for inscription mechanic definitions.
+   */
+  isInscription?: boolean;
+  /**
+   * If true, this card was permanently removed from game (Inscription exhaust).
+   * Cannot be Recollected by the Recollect mechanic (AR-208).
+   */
+  isRemovedFromGame?: boolean;
 }
 
 // === Card Run State ===

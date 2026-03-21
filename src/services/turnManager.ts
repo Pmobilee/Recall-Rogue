@@ -81,6 +81,19 @@ export function getEnrageBonus(turnNumber: number, floor: number, enemyHpPercent
 
 export type TurnPhase = 'draw' | 'player_action' | 'enemy_turn' | 'turn_end' | 'encounter_end';
 
+/**
+ * A single active Inscription registered during combat.
+ * Inscriptions persist for the rest of combat from the turn they are played.
+ */
+export interface ActiveInscription {
+  /** The mechanic ID that created this inscription (e.g. 'inscription_fury'). */
+  mechanicId: string;
+  /** The numeric effect value locked in at play time (QP/CC/CW resolved value). */
+  effectValue: number;
+  /** The play mode used when the inscription was played. Stored for Cursed QP 0.7x. */
+  playMode: PlayMode;
+}
+
 export interface TurnLogEntry {
   type: 'play' | 'skip' | 'fizzle' | 'blocked' | 'enemy_action' | 'status_tick' | 'draw' | 'victory' | 'defeat' | 'heal';
   message: string;
@@ -186,6 +199,12 @@ export interface TurnState {
    * Set to 1 when phoenix_feather resurrection fires; decremented at end of turn.
    */
   phoenixAutoChargeTurns: number;
+  /**
+   * AR-204: Active Inscriptions for this combat encounter.
+   * Inscription cards are played once and persist — their effects are tracked here.
+   * Pool = 1 per mechanicId (no stacking same-type inscriptions).
+   */
+  activeInscriptions: ActiveInscription[];
 }
 
 export interface PlayCardResult {
@@ -279,6 +298,32 @@ function createNoEffect(card: Card): CardEffectResult {
 }
 
 
+/**
+ * AR-204: Register an Inscription card effect in the active combat state.
+ * Enforces Pool=1: if an inscription with the same mechanicId is already active,
+ * the call is a no-op (card is still exhausted by the caller).
+ * Does NOT exhaust the card — encounterBridge calls exhaustCard() separately.
+ */
+export function resolveInscription(turnState: TurnState, card: Card, playMode: PlayMode): void {
+  const mechanicId = card.mechanicId ?? '';
+  if (!mechanicId) return;
+  // Pool=1: no stacking same-type inscriptions
+  const alreadyActive = turnState.activeInscriptions.some(i => i.mechanicId === mechanicId);
+  if (alreadyActive) return;
+  turnState.activeInscriptions.push({
+    mechanicId,
+    effectValue: card.baseEffectValue,
+    playMode,
+  });
+}
+
+/**
+ * AR-204: Return the active inscription for the given mechanicId, or undefined if not active.
+ */
+export function getActiveInscription(turnState: TurnState, mechanicId: string): ActiveInscription | undefined {
+  return turnState.activeInscriptions.find(i => i.mechanicId === mechanicId);
+}
+
 export function startEncounter(
   deck: CardRunState,
   enemy: EnemyInstance,
@@ -349,6 +394,7 @@ export function startEncounter(
     mirrorUsedThisEncounter: false,
     nextChargeFree: false,
     phoenixAutoChargeTurns: 0,
+    activeInscriptions: [],
   };
 
   // Reset chain at encounter start (clean slate)
@@ -759,6 +805,10 @@ export function playCardAction(
     }
   }
 
+  // AR-204: Inscription of Fury — pass flat bonus into AdvancedResolveOptions at damage pipeline step 3.
+  const furyInscription = getActiveInscription(turnState, 'inscription_fury');
+  const inscriptionFuryBonus = furyInscription?.effectValue ?? 0;
+
   const effect = resolveCardEffect(
     card,
     playerState,
@@ -778,6 +828,7 @@ export function playCardAction(
       playMode,
       chainMultiplier: currentChainMultiplier,
       deckDomainCounts,
+      inscriptionFuryBonus,
     },
   );
 
@@ -1621,6 +1672,12 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   if (turnStartFx.bonusAP > 0) {
     turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + turnStartFx.bonusAP);
     turnState.triggeredRelicId = 'blood_price';
+  }
+
+  // AR-204: Inscription of Iron — apply block at start of each player turn, before draw.
+  const ironInscription = getActiveInscription(turnState, 'inscription_iron');
+  if (ironInscription) {
+    applyShield(playerState, ironInscription.effectValue);
   }
 
   return {

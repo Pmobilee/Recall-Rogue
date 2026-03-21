@@ -2,7 +2,10 @@
   "mcpServers": {
     "playwright": {
       "command": "/Users/damion/.local/share/fnm/node-versions/v22.22.0/installation/bin/npx",
-      "args": ["-y", "@playwright/mcp@latest", "--timeout-action", "30000", "--timeout-navigation", "30000"]
+      "args": ["-y", "@playwright/mcp@latest", "--timeout-action", "30000", "--timeout-navigation", "30000"],
+      "env": {
+        "PW_TEST_SCREENSHOT_NO_FONTS_READY": "1"
+      }
     },
     "svelte": {
       "type": "http",

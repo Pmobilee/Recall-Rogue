@@ -4,7 +4,7 @@
 
 import { writable, get } from 'svelte/store';
 import type { TurnState } from './turnManager';
-import { startEncounter, playCardAction, skipCard, endPlayerTurn } from './turnManager';
+import { startEncounter, playCardAction, skipCard, endPlayerTurn, resolveInscription, getActiveInscription } from './turnManager';
 import { buildRunPool, recordRunFacts } from './runPoolBuilder';
 import { addCardToDeck, createDeck, drawHand, insertCardWithDelay, addFactsToCooldown, tickFactCooldowns, getEncounterSeenFacts, resetEncounterSeenFacts, exhaustCard } from './deckManager';
 import { createEnemy } from './enemyManager';
@@ -70,6 +70,8 @@ function freshTurnState(ts: TurnState): TurnState {
       factCooldown: [...ts.deck.factCooldown],
     },
     encounterAnsweredFacts: [...ts.encounterAnsweredFacts],
+    // AR-204: preserve active inscriptions across turn state refreshes
+    activeInscriptions: [...(ts.activeInscriptions ?? [])],
   };
 }
 
@@ -509,6 +511,45 @@ export function handlePlayCard(
   const previousTier = previousReviewState ? getCardTier(previousReviewState) : null;
   const result = playCardAction(turnState, cardId, correct, speedBonus, playMode);
   const run = get(activeRunState);
+
+  // AR-204: Inscription detection — if the played card is an Inscription, register it,
+  // move it from discard to exhaust pile, and mark it as permanently removed from game.
+  // Note: playCardAction already moved the card from hand to discard via deckPlayCard().
+  // Skip if blocked (AP insufficient) — card never left hand and inscription was never played.
+  if (!result.blocked && playedCard && (playedCard.isInscription || playedCard.mechanicId?.startsWith('inscription_'))) {
+    const isWisdomCW = playedCard.mechanicId === 'inscription_wisdom' && playMode === 'charge_wrong';
+    // Wisdom CW = fizzle: do not register the inscription, but still exhaust and mark removed.
+    if (!isWisdomCW) {
+      resolveInscription(result.turnState, playedCard, playMode);
+    }
+    // Move card from discard pile to exhaust pile (card was placed in discard by playCard()).
+    const deck = result.turnState.deck;
+    const discardIdx = deck.discardPile.findIndex(c => c.id === playedCard.id);
+    if (discardIdx !== -1) {
+      const [inscriptionCard] = deck.discardPile.splice(discardIdx, 1);
+      inscriptionCard.isRemovedFromGame = true;
+      deck.exhaustPile.push(inscriptionCard);
+    }
+  }
+
+  // AR-204: Inscription of Wisdom — CC resolution trigger. Draws 1 extra card on correct Charge.
+  // If the inscription was itself played CC, also heals 1 HP.
+  // Wisdom CW = fizzle (no inscription entry registered), so this block never runs for CW plays.
+  const isChargeCorrectPlay = playMode === 'charge' || playMode === 'charge_correct';
+  if (correct && isChargeCorrectPlay) {
+    const wisdomInscription = getActiveInscription(result.turnState, 'inscription_wisdom');
+    if (wisdomInscription) {
+      // Draw 1 extra card
+      drawHand(result.turnState.deck, 1);
+      // CC inscription effect: also heal 1 HP
+      if (wisdomInscription.playMode === 'charge_correct' || wisdomInscription.playMode === 'charge') {
+        result.turnState.playerState.hp = Math.min(
+          result.turnState.playerState.maxHP,
+          result.turnState.playerState.hp + 1,
+        );
+      }
+    }
+  }
 
   if (run && playedCard) {
     recordCardPlay(run, correct, 0, playedCard.factId, playedCard.domain, playedCard.tier === '1');
