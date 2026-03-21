@@ -687,9 +687,9 @@
   /* ═══ LANDSCAPE DESKTOP OVERRIDES ═══════════════════════════════════════════ */
 
   :global([data-layout="landscape"]) .library-overlay {
-    margin-left: 100px;
-    max-width: 1400px;
-    padding: 32px 48px;
+    margin-left: calc(100px * var(--layout-scale, 1));
+    max-width: calc(1400px * var(--layout-scale, 1));
+    padding: calc(32px * var(--layout-scale, 1)) calc(48px * var(--layout-scale, 1));
   }
 
   :global([data-layout="landscape"]) .back-btn {
@@ -699,21 +699,21 @@
   /* Fix header: heading left-aligned, not pushed to far right */
   :global([data-layout="landscape"]) .library-overlay .library-topbar {
     justify-content: flex-start;
-    gap: 16px;
+    gap: calc(16px * var(--layout-scale, 1));
   }
 
   :global([data-layout="landscape"]) .library-overlay .library-topbar h2 {
-    font-size: 22px;
+    font-size: calc(22px * var(--text-scale, 1));
     font-family: 'Cinzel', serif;
     letter-spacing: 0.04em;
   }
 
   /* Mastery count inline next to heading in the topbar */
   :global([data-layout="landscape"]) .library-overlay .library-topbar .mastery-inline {
-    font-size: 14px;
+    font-size: calc(14px * var(--text-scale, 1));
     color: #94a3b8;
     align-self: center;
-    margin-left: 4px;
+    margin-left: calc(4px * var(--layout-scale, 1));
   }
 
   /* Eliminate gap between tabs and content — tighten tabs bottom margin */
@@ -727,16 +727,16 @@
   :global([data-layout="landscape"]) .library-overlay .summary-section,
   :global([data-layout="landscape"]) .library-overlay .domain-section,
   :global([data-layout="landscape"]) .library-overlay .detail-card {
-    margin-top: 24px;
+    margin-top: calc(24px * var(--layout-scale, 1));
   }
 
   /* Tab labels: 16px Cinzel */
   :global([data-layout="landscape"]) .library-overlay .tab-btn {
-    font-size: 16px;
+    font-size: calc(16px * var(--text-scale, 1));
     font-family: 'Cinzel', serif;
     letter-spacing: 0.03em;
     flex: none;
-    padding: 10px 24px;
+    padding: calc(10px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1));
   }
 
   /* Domain card: left accent border via CSS variable */

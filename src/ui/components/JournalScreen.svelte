@@ -335,7 +335,7 @@
 
   .search-input {
     width: 100%;
-    max-width: calc(360px * var(--layout-scale, 1));
+    max-width: calc(500px * var(--layout-scale, 1));
     height: calc(40px * var(--layout-scale, 1));
     border-radius: 8px;
     border: 1px solid #334155;
@@ -372,7 +372,7 @@
 
   :global([data-layout="landscape"]) .journal-screen {
     margin-left: calc(100px * var(--layout-scale, 1));
-    max-width: calc(1100px * var(--layout-scale, 1));
+    max-width: calc(1600px * var(--layout-scale, 1));
     padding: calc(32px * var(--layout-scale, 1)) calc(48px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
   }
 
