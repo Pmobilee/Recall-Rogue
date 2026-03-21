@@ -27,8 +27,8 @@ LOWRES_W, LOWRES_H = 443, 571
 BORDER_COLORS = {
     "attack":  (None, None),          # red — keep as-is (source is already red)
     "shield":  (0.58, 0.75),          # blue
-    "buff":    (0.78, 0.70),          # purple
-    "debuff":  (0.35, 0.70),          # green
+    "buff":    (0.08, 0.80),          # amber/orange
+    "debuff":  (0.78, 0.70),          # purple
     "utility": (0.48, 0.65),          # teal
     "wild":    (0.12, 0.85),          # gold
 }
