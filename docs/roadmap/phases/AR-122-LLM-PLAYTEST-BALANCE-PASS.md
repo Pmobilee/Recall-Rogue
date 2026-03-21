@@ -1,6 +1,6 @@
 # AR-122: LLM Playtest Balance Pass
 
-**Status:** ACTIVE
+**Status:** IMPLEMENTED (pending visual inspection)
 **Priority:** HIGH
 **Complexity:** Medium (5 sub-tasks, mostly constant/formula changes + 1 UI feature)
 **Dependencies:** None
@@ -182,3 +182,114 @@ Brace → [Scout, Foresight (see intent)]
 - [ ] Headless sim runs with all changes: `npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000`
 - [ ] Playwright visual inspection: combat with Free First Charge fizzle, chain momentum indicator, Surge timing variation
 - [ ] GAME_DESIGN.md and ARCHITECTURE.md updated for all changes
+
+---
+
+## Playtest Methodology & Full Findings
+
+### LLM Playtest Setup (2026-03-21)
+
+Six Haiku sub-agents were spawned, each analyzing a different qualitative dimension:
+
+1. **Strategic Depth** — 8 combat states analyzing QP vs Charge decision quality
+2. **Chain Puzzle Quality** — 8 hands analyzing chain formation viability and fun
+3. **Enemy Pressure** — 6 enemy encounters (3 turns each) analyzing quiz-mechanic pressure
+4. **Deck Building Coherence** — 6 scenarios analyzing reward/shop/rest decisions
+5. **New Player Onboarding** — 10 situations from a casual mobile gamer's perspective
+6. **Surge Rhythm & Pacing** — 9-turn full combat analyzing emotional arc
+
+### Pre-Change Findings (all 23 issues)
+
+| # | Issue | Severity | Category |
+|---|---|---|---|
+| 1 | Free First Charge strictly dominant (wrong=1.0x, no downside) | HIGH | Balance |
+| 2 | Void Mite heals on correct answers (anti-learning) | HIGH | Enemy |
+| 3 | Chains cost 6 AP but player has 3 AP (unplayable) | HIGH | Balance |
+| 4 | AP economy is #1 onboarding blocker | HIGH | UX |
+| 5 | QP vs Charge distinction unclear to new players | HIGH | UX |
+| 6 | Surge turns eliminate decision space (always Charge) | MED | Balance |
+| 7 | Surge-hand mismatch feels wasteful (~30-40% of Surges) | MED | Pacing |
+| 8 | Surge too frequent (every 3 turns, routine by turn 8) | MED | Pacing |
+| 9 | Combat tension flat after turn 5 (no escalation) | MED | Pacing |
+| 10 | Enemy patterns too predictable (fixed cycles) | MED | Pacing |
+| 11 | Core Harbinger removes all flexibility (immune to QP) | MED | Enemy |
+| 12 | Deck building synergies undercommunicated | MED | UX |
+| 13 | Bone Collector is punishment not strategy | LOW | Enemy |
+| 14 | ChainVulnerable trait misleading (chains impossible) | LOW | Enemy |
+| 15 | Mastery L5 removes quiz engagement | LOW | Balance |
+| 16 | Block/utility cards lack Charge incentive | LOW | Balance |
+| 17 | QP better than Charge on weak enemies | LOW | Balance |
+| 18 | Deck thinning unintuitive to new players | LOW | UX |
+| 19 | "Chain: 1.3" display cryptic to casuals | LOW | UX |
+| 20 | No habit-forming hooks vs Duolingo | LOW | Retention |
+| 21 | Hex is trap pick in Act 1 (poison too slow) | LOW | Balance |
+| 22 | Setup ordering vs chain ordering confusing | LOW | UX |
+| 23 | Missing "Knowledge Accumulator" enemy archetype | LOW | Enemy |
+
+### Issues Addressed by AR-122 (this AR)
+
+Issues 1, 3, 6, 7, 8, 12 were addressed by sub-steps 1-5.
+Issue 14 (ChainVulnerable misleading) is indirectly fixed by making chains achievable.
+
+### Issues Deferred to AR-123 (Enemy Redesign Pass)
+
+Issues 2, 11, 13, 10, 23 are addressed in AR-123.
+
+### Issues Remaining (Future ARs)
+
+| # | Issue | Suggested AR |
+|---|---|---|
+| 4 | AP economy tutorial | AR-124 (Onboarding) |
+| 5 | QP vs Charge tutorial | AR-124 (Onboarding) |
+| 9 | Combat tension flat after turn 5 | AR-123 (enemy intent variation partially helps) |
+| 15 | Mastery L5 removes quiz engagement | Deferred — user declined Power Charge option |
+| 16 | Block/utility Charge incentives | Future balance pass |
+| 17 | QP better on weak enemies | Mitigated by fizzle (mastery incentive to Charge) |
+| 18 | Deck thinning UX (cycle-speed indicator) | Future UX pass |
+| 19 | Chain display clarity | Future UX pass |
+| 20 | Habit-forming hooks | Future feature (streaks, daily challenges) |
+| 21 | Hex Act 1 trap pick | Future balance pass |
+| 22 | Setup vs chain ordering | Future UX pass |
+
+### Post-Change Validation
+
+**Headless Sim (6000 runs, 2026-03-21):**
+
+| Profile | Win Rate | Avg Floor | Notes |
+|---|---|---|---|
+| first_timer (15% correct) | 1% | 14.6 | Fizzle punishes guessing — intended |
+| casual_learner (45% correct) | 6% | 19.6 | Reasonable for partial knowledge |
+| regular (60% correct) | 6% | 18.6 | Solid mid-tier |
+| gamer (70% correct, fast) | 3% | 17.1 | Fast play, less accuracy |
+| dedicated (75% correct) | 11% | 20.6 | Knowledge pays off |
+| scholar (82% correct) | 27% | 24.1 | Best knowledge = best results |
+
+Knowledge-to-win-rate correlation is strong. Scholar wins 27x more than first_timer.
+
+**LLM Re-Playtest (4 states, post-change):**
+
+Decision quality improved from **6.4/10 → 8.5/10** (+2.1 points):
+- Free First Charge fizzle: "always Charge" → genuine risk/reward (+6 points for that decision type)
+- 3 chain types: chains from 15% → 80% of hands (realistic strategy now)
+- Chain momentum: 2-chains achievable on non-Surge turns via skill
+- Persistent Surge: unpredictable timing prevents rhythm-gaming
+
+### TODO: Per-Card Win Contribution Tracking
+
+The headless sim currently tracks `cardsPlayed` count per encounter but NOT which card mechanic was played or its contribution to wins/losses. To get per-card win contribution data:
+
+**Enhancement needed in `tests/playtest/headless/simulator.ts`:**
+- Track each card play: `{ mechanic, wasCharged, answeredCorrectly, damageDealt, chainLength }`
+- Aggregate per-mechanic stats across runs: pick rate, win-rate-when-picked, avg damage contribution
+- Output as part of the JSON results
+
+This is a sim enhancement, not a separate tool — the data flows through the existing `playCardAction` calls.
+
+### TODO: Visual Inspection (blocked)
+
+Playwright MCP cannot launch while Chrome is open (another agent may be using it).
+Must verify:
+- Fizzle animation on wrong Free First Charge
+- Chain momentum "+0 AP" green badge on CHARGE buttons
+- Synergy badges on card reward and shop screens
+- Surge timing variation across encounters
