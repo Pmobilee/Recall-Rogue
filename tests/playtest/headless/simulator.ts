@@ -26,7 +26,8 @@ import {
 } from '../../../src/services/turnManager.js';
 import type { Card, CardType, FactDomain, CardTier } from '../../../src/data/card-types.js';
 import type { EnemyTemplate } from '../../../src/data/enemies.js';
-import { PLAYER_START_HP, PLAYER_MAX_HP, POST_ENCOUNTER_HEAL_PCT } from '../../../src/data/balance.js';
+import { PLAYER_START_HP, PLAYER_MAX_HP, POST_ENCOUNTER_HEAL_PCT, ENABLE_PHASE2_MECHANICS, STARTER_DECK_COMPOSITION } from '../../../src/data/balance.js';
+import { MECHANIC_DEFINITIONS, type MechanicDefinition } from '../../../src/data/mechanics.js';
 import { getAscensionModifiers } from '../../../src/services/ascension.js';
 import { STARTER_RELIC_IDS } from '../../../src/data/relics/index.js';
 
@@ -61,7 +62,7 @@ export interface SimOptions {
 
 /** Tracks a single card play event for per-mechanic win contribution analysis. */
 export interface CardPlayRecord {
-  mechanic: string;        // card.cardType e.g., 'attack', 'shield', 'buff'
+  mechanic: string;        // card.mechanicId e.g., 'strike', 'block', 'hex', 'empower'
   wasCharged: boolean;
   answeredCorrectly: boolean;
   damageDealt: number;
@@ -105,64 +106,112 @@ export interface SimRunResult {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Card Factory — builds synthetic cards without factsDB
+// Card Factory — builds cards using real mechanic definitions
 // ──────────────────────────────────────────────────────────────────────────────
 
 let _cardIdCounter = 0;
 
+/** Returns all mechanics filtered by the current phase gate. */
+function getActiveMechanics(): MechanicDefinition[] {
+  if (ENABLE_PHASE2_MECHANICS) return MECHANIC_DEFINITIONS;
+  return MECHANIC_DEFINITIONS.filter(m => m.launchPhase === 1);
+}
+
 /**
- * Creates a synthetic Card for simulation purposes.
+ * Creates a Card for simulation using a real MechanicDefinition.
  * No factsDB lookup needed — the simulator uses placeholder fact IDs.
  */
-function makeSyntheticCard(
-  cardType: CardType,
+function makeMechanicCard(
+  mechanic: MechanicDefinition,
   domain: FactDomain = 'general_knowledge',
   tier: CardTier = '1',
 ): Card {
   const id = `sim_card_${++_cardIdCounter}`;
   const factId = `sim_fact_${_cardIdCounter}`;
 
-  // Base effect values that match rough game balance
-  const baseValues: Record<CardType, number> = {
-    attack: 12,
-    shield: 10,
-    utility: 8,
-    buff: 6,
-    debuff: 8,
-    wild: 10,
-  };
-
   return {
     id,
     factId,
-    cardType,
+    cardType: mechanic.type,
     domain,
     tier,
-    baseEffectValue: baseValues[cardType] ?? 10,
+    baseEffectValue: mechanic.baseValue,
     effectMultiplier: 1.0,
-    apCost: 1,
+    apCost: mechanic.apCost,
+    mechanicId: mechanic.id,
+    mechanicName: mechanic.name,
+    originalBaseEffectValue: mechanic.baseValue,
   };
 }
 
 /**
- * Builds a starting deck pool for simulation.
- * Distribution: ~40% attack, 25% shield, 15% utility, 10% buff, 10% debuff.
+ * Finds a mechanic by ID. Throws if not found (indicates a bug in starter composition).
+ */
+function findMechanic(id: string): MechanicDefinition {
+  const m = MECHANIC_DEFINITIONS.find(m => m.id === id);
+  if (!m) throw new Error(`[Simulator] Mechanic '${id}' not found in MECHANIC_DEFINITIONS`);
+  return m;
+}
+
+/**
+ * Picks a random mechanic weighted similarly to runPoolBuilder:
+ * 60% chance of the basic mechanic (strike/block) for attack/shield types,
+ * otherwise random from the active phase pool for that type.
+ */
+function pickRandomMechanic(): MechanicDefinition {
+  // Type distribution: ~40% attack, 25% shield, 15% utility, 10% buff, 10% debuff
+  const typePool: CardType[] = [
+    'attack', 'attack', 'attack', 'attack',
+    'shield', 'shield', 'shield',
+    'utility', 'utility',
+    'buff',
+  ];
+  const type = typePool[Math.floor(Math.random() * typePool.length)];
+
+  const activeMechanics = getActiveMechanics();
+  const pool = activeMechanics.filter(m => m.type === type);
+  if (pool.length === 0) return findMechanic('strike'); // fallback
+
+  // Mirror runPoolBuilder: 60% chance of basic mechanic for attack/shield
+  const BASIC_MECHANICS: Partial<Record<CardType, string>> = {
+    attack: 'strike',
+    shield: 'block',
+  };
+  const basicId = BASIC_MECHANICS[type];
+  if (basicId && Math.random() < 0.6) {
+    const basic = pool.find(m => m.id === basicId);
+    if (basic) return basic;
+  }
+
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
+/**
+ * Builds a starting deck pool for simulation using real mechanic definitions.
+ * Starter deck matches the real game: 5 Strike, 4 Block, 1 Foresight (from STARTER_DECK_COMPOSITION).
+ * Additional cards beyond the starter use weighted random mechanics (simulating card rewards).
  */
 function buildSimDeck(deckSize: number): Card[] {
-  const distribution: CardType[] = [
-    'attack', 'attack', 'attack', 'attack',  // 4/10
-    'shield', 'shield', 'shield',              // 3/10
-    'utility', 'utility',                       // 2/10
-    'buff',                                     // 1/10
-  ];
-
-  const cards: Card[] = [];
-  for (let i = 0; i < deckSize; i++) {
-    const cardType = distribution[i % distribution.length];
-    cards.push(makeSyntheticCard(cardType));
+  // Build the real starter deck from STARTER_DECK_COMPOSITION
+  const starterCards: Card[] = [];
+  for (const entry of STARTER_DECK_COMPOSITION) {
+    const mechanic = findMechanic(entry.mechanicId);
+    for (let i = 0; i < entry.count; i++) {
+      starterCards.push(makeMechanicCard(mechanic));
+    }
   }
+
+  const cards = starterCards.slice(0, Math.min(starterCards.length, deckSize));
+
+  // Extra cards beyond the starter size use weighted random mechanics (card rewards simulation)
+  for (let i = cards.length; i < deckSize; i++) {
+    const mechanic = pickRandomMechanic();
+    cards.push(makeMechanicCard(mechanic));
+  }
+
   return cards;
 }
+
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Enemy Picker
@@ -273,7 +322,7 @@ function simulateSingleEncounter(
 
       // Record this card play for per-mechanic analysis
       cardPlays.push({
-        mechanic: card.cardType,
+        mechanic: card.mechanicId ?? card.cardType,
         wasCharged: isCharge,
         answeredCorrectly,
         damageDealt: res.effect.damageDealt ?? 0,
@@ -313,7 +362,7 @@ function simulateSingleEncounter(
         const hp = turnState.playerState.hp;
         const eHP = turnState.enemy.currentHP;
         console.log(
-          `  [T${turnsUsed + 1}] card=${card.cardType} correct=${answeredCorrectly} ` +
+          `  [T${turnsUsed + 1}] card=${card.mechanicId ?? card.cardType} correct=${answeredCorrectly} ` +
           `mode=${isCharge ? 'charge' : 'quick'} ` +
           `dmg=${res.effect.damageDealt} ap=${turnState.apCurrent} combo=${res.comboCount} ` +
           `playerHP=${hp} enemyHP=${eHP}`
