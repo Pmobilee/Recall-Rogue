@@ -30,7 +30,7 @@ import type { Card, CardType, FactDomain, CardTier, CardRunState } from '../../.
 import type { EnemyTemplate } from '../../../src/data/enemies.js';
 import { PLAYER_START_HP, PLAYER_MAX_HP, POST_ENCOUNTER_HEAL_PCT } from '../../../src/data/balance.js';
 import { getAscensionModifiers } from '../../../src/services/ascension.js';
-import { STARTER_RELIC_IDS } from '../../../src/data/relics/index.js';
+import { FULL_RELIC_CATALOGUE, RELIC_BY_ID, STARTER_RELIC_IDS } from '../../../src/data/relics/index.js';
 import type { RoomOption } from '../../../src/services/floorManager.js';
 import {
   resolveEncounterEndCurrency,
@@ -228,14 +228,23 @@ function generateCardRewards(_deckCards: Card[]): Card[] {
   return rewards;
 }
 
+/** All relic IDs from the full catalogue (starters + unlockables). */
+const ALL_RELIC_IDS: string[] = FULL_RELIC_CATALOGUE.map(r => r.id);
+
 function generateShop(_floor: number): { relics: string[]; cards: Card[] } {
-  const relics = [...STARTER_RELIC_IDS].sort(() => Math.random() - 0.5).slice(0, 2);
+  const relics = [...ALL_RELIC_IDS].sort(() => Math.random() - 0.5).slice(0, 2);
   const cards = generateCardRewards([]);
   return { relics, cards };
 }
 
-/** Real game relic price (common tier). */
-const RELIC_PRICE = 100;
+/** Relic price by rarity (matches real game balance.ts SHOP_RELIC_PRICE). */
+const RELIC_PRICES: Record<string, number> = { common: 100, uncommon: 160, rare: 250, legendary: 400 };
+
+/** Get shop price for a relic by its ID. */
+function getRelicPrice(relicId: string): number {
+  const def = RELIC_BY_ID[relicId];
+  return def ? (RELIC_PRICES[def.rarity] ?? 100) : 100;
+}
 
 /** Real game card price (tier 1). */
 const CARD_PRICE = 50;
@@ -567,8 +576,8 @@ function getActionMask(run: RunState): boolean[] {
 
   } else if (run.phase === 'shop') {
     // Buy relic 0/1 (common price = 100g)
-    if (run.shopRelics.length >= 1 && run.shopRelics[0] && run.gold >= RELIC_PRICE) mask[18] = true;
-    if (run.shopRelics.length >= 2 && run.shopRelics[1] && run.gold >= RELIC_PRICE) mask[19] = true;
+    if (run.shopRelics.length >= 1 && run.shopRelics[0] && run.gold >= getRelicPrice(run.shopRelics[0] || '')) mask[18] = true;
+    if (run.shopRelics.length >= 2 && run.shopRelics[1] && run.gold >= getRelicPrice(run.shopRelics[1] || '')) mask[19] = true;
     // Buy card 0/1 (tier 1 price = 50g)
     if (run.shopCards.length >= 1 && run.shopCards[0] && run.gold >= CARD_PRICE) mask[20] = true;
     if (run.shopCards.length >= 2 && run.shopCards[1] && run.gold >= CARD_PRICE) mask[22] = true;
@@ -724,7 +733,7 @@ function afterCardReward(run: RunState): void {
   if (relicDrop) {
     // Pick 1-3 random relic IDs to offer
     const count = isEncounter3 ? 3 : 1;
-    run.pendingRelicRewards = [...STARTER_RELIC_IDS]
+    run.pendingRelicRewards = [...ALL_RELIC_IDS]
       .filter(id => !run.relics.includes(id))
       .sort(() => Math.random() - 0.5)
       .slice(0, count);
@@ -1162,7 +1171,7 @@ function handleStep(actionId: number): object {
         info['treasure'] = 'gold';
         const relicRoll = Math.random();
         if (relicRoll < 0.30) {
-          const available = STARTER_RELIC_IDS.filter(id => !run!.relics.includes(id));
+          const available = ALL_RELIC_IDS.filter(id => !run!.relics.includes(id));
           if (available.length > 0) {
             const relicId = available[Math.floor(Math.random() * available.length)];
             if (run.relics.length < 5) {
@@ -1218,10 +1227,11 @@ function handleStep(actionId: number): object {
     switch (actionId) {
       case 18: {
         const relicId = run.shopRelics[0];
-        if (relicId && run.gold >= RELIC_PRICE) {
+        const price0 = getRelicPrice(relicId || '');
+        if (relicId && run.gold >= price0) {
           if (run.relics.length < 5) {
             run.relics.push(relicId);
-            run.gold -= RELIC_PRICE;
+            run.gold -= price0;
             run.shopRelics[0] = '';
             reward = 0.3;
             info['shopBought'] = `relic:${relicId}`;
@@ -1237,10 +1247,11 @@ function handleStep(actionId: number): object {
       }
       case 19: {
         const relicId = run.shopRelics[1];
-        if (relicId && run.gold >= RELIC_PRICE) {
+        const price1 = getRelicPrice(relicId || '');
+        if (relicId && run.gold >= price1) {
           if (run.relics.length < 5) {
             run.relics.push(relicId);
-            run.gold -= RELIC_PRICE;
+            run.gold -= price1;
             run.shopRelics[1] = '';
             reward = 0.3;
             info['shopBought'] = `relic:${relicId}`;
