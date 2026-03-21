@@ -10,7 +10,7 @@
         "description": "Deal 8 damage",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": ""
@@ -22,7 +22,7 @@
         "description": "Hit 3 times for 4 each",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": ""
@@ -34,7 +34,7 @@
         "description": "Deal 20 damage, costs 3 AP",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": ""
@@ -46,7 +46,7 @@
         "description": "Deal 6 damage, ignores block",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": ""
@@ -58,7 +58,7 @@
         "description": "Deal 12 damage, self-damage",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": ""
@@ -70,10 +70,10 @@
         "description": "Deal 6 damage, bonus below 30% HP",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": ""
+        "notes": "Shows +0 when condition not met — confusing"
       },
       {
         "id": "lifetap",
@@ -82,7 +82,7 @@
         "description": "Deal 8 damage, heal 20% dealt",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": ""
@@ -94,7 +94,7 @@
         "description": "Gain 6 block",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": ""
@@ -106,7 +106,7 @@
         "description": "Gain 6 block, reflect 3 damage",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": ""
@@ -118,7 +118,7 @@
         "description": "Gain 4 block, double if HP<30%",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": ""
@@ -130,7 +130,7 @@
         "description": "Gain 7 persistent block",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": ""
@@ -142,7 +142,7 @@
         "description": "Block equal to enemy telegraph",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": ""
@@ -154,10 +154,10 @@
         "description": "Gain 10 block, double if HP<50%",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": ""
+        "notes": "Shows ×2 (0) when condition not met — confusing"
       },
       {
         "id": "parry",
@@ -166,7 +166,7 @@
         "description": "Block + draw if enemy attacks",
         "status": "phase2",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": "Behind ENABLE_PHASE2_MECHANICS"
@@ -178,7 +178,7 @@
         "description": "Next card +50% damage",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": ""
@@ -190,7 +190,7 @@
         "description": "+1 AP this turn",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": ""
@@ -202,7 +202,7 @@
         "description": "Next card costs 1 less AP",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": ""
@@ -214,10 +214,10 @@
         "description": "Next attack hits twice",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": ""
+        "notes": "Purple border despite BUFF type — should be gold"
       },
       {
         "id": "weaken",
@@ -226,7 +226,7 @@
         "description": "Apply weakness 2 turns",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": ""
@@ -238,10 +238,10 @@
         "description": "Apply vulnerable",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": ""
+        "notes": "Grammar: 'for 1 turns' → 'for 1 turn'"
       },
       {
         "id": "hex",
@@ -250,7 +250,7 @@
         "description": "Apply poison 3 for 3 turns",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": ""
@@ -262,10 +262,10 @@
         "description": "Skip enemy defend/buff action",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": ""
+        "notes": "Card text broader than mechanic — says 'next action' but only skips defend/buff"
       },
       {
         "id": "cleanse",
@@ -274,7 +274,7 @@
         "description": "Remove debuffs, draw 1 card",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": ""
@@ -286,7 +286,7 @@
         "description": "Draw 2 cards",
         "status": "working",
         "lastChangedDate": "2026-03-21",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "2026-03-21",
         "uxReviewDate": "not_checked",
         "notes": "Fixed: HAND_SIZE cap removed for mid-turn draws"
@@ -298,7 +298,7 @@
         "description": "Draw 3 cards",
         "status": "working",
         "lastChangedDate": "2026-03-21",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "2026-03-21",
         "uxReviewDate": "not_checked",
         "notes": "Fixed: HAND_SIZE cap removed for mid-turn draws"
@@ -310,10 +310,10 @@
         "description": "Draw 2 cards",
         "status": "working",
         "lastChangedDate": "2026-03-21",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "2026-03-21",
         "uxReviewDate": "not_checked",
-        "notes": ""
+        "notes": "Same effect text as scout — no differentiation"
       },
       {
         "id": "transmute",
@@ -322,7 +322,7 @@
         "description": "Transform weakest hand card",
         "status": "phase2",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": "Behind ENABLE_PHASE2_MECHANICS"
@@ -334,10 +334,10 @@
         "description": "Absorb next hit up to 8",
         "status": "phase2",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": "Behind ENABLE_PHASE2_MECHANICS"
+        "notes": "ID mismatch — correct mechanic ID is 'immunity'. Fix registry ID."
       },
       {
         "id": "mirror",
@@ -346,7 +346,7 @@
         "description": "Copy previous card effect",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": ""
@@ -358,10 +358,10 @@
         "description": "Auto ATK/DEF/Cleanse vs intent",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": ""
+        "notes": "Effect text diverges from mechanics.ts description"
       },
       {
         "id": "overclock",
@@ -370,7 +370,7 @@
         "description": "Next card 2x effect",
         "status": "phase2",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": "Behind ENABLE_PHASE2_MECHANICS"
@@ -890,10 +890,10 @@
         "description": "act1 common",
         "status": "working",
         "lastChangedDate": "not_checked",
-        "visualInspectionDate": "not_checked",
+        "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
-        "notes": ""
+        "notes": "Verified in combat-basic scenario — sprite and intent render correctly"
       },
       {
         "id": "crystal_golem",
@@ -2045,11 +2045,11 @@
         "category": "screen",
         "description": "Game screen",
         "status": "working",
-        "lastChangedDate": "not_checked",
+        "lastChangedDate": "2026-03-21",
         "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "2026-03-21",
-        "notes": ""
+        "notes": "UX issues fixed: accessibility, text sizes, contrast, touch targets"
       },
       {
         "id": "onboarding",
@@ -2093,11 +2093,11 @@
         "category": "screen",
         "description": "Game screen",
         "status": "working",
-        "lastChangedDate": "not_checked",
+        "lastChangedDate": "2026-03-21",
         "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "2026-03-21",
-        "notes": ""
+        "notes": "UX issues fixed: accessibility, text sizes, contrast, touch targets"
       },
       {
         "id": "rewardRoom",
@@ -2141,11 +2141,11 @@
         "category": "screen",
         "description": "Game screen",
         "status": "working",
-        "lastChangedDate": "not_checked",
+        "lastChangedDate": "2026-03-21",
         "visualInspectionDate": "2026-03-21",
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "2026-03-21",
-        "notes": ""
+        "notes": "UX issues fixed: accessibility, text sizes, contrast, touch targets"
       },
       {
         "id": "restStudy",

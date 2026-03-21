@@ -229,6 +229,8 @@
   let enemyIntent = $derived(turnState?.enemy.nextIntent ?? null)
   let enemyName = $derived(turnState?.enemy.template.name ?? '')
   let enemyCategory = $derived(turnState?.enemy.template.category ?? 'common')
+  let enemyHpCurrent = $derived(turnState?.enemy.currentHP ?? 0)
+  let enemyHpMax = $derived(turnState?.enemy.maxHP ?? 1)
   let currentFloor = $derived(turnState?.deck.currentFloor ?? 0)
   let currentEncounter = $derived(turnState?.deck.currentEncounter ?? 0)
 
@@ -298,7 +300,7 @@
   }
 
   const CATEGORY_COLORS: Record<string, string> = {
-    common: '#9ca3af',
+    common: '#e2e8f0',
     elite: '#60a5fa',
     mini_boss: '#a78bfa',
     boss: '#fbbf24',
@@ -462,6 +464,11 @@
 
   let speedBonusThreshold = $derived(
     turnState?.activeRelicIds.has('scholars_focus') ? 0.30 : 0.25,
+  )
+
+  let isPlayerTurn = $derived(turnState?.phase === 'player_action')
+  let turnPhaseLabel = $derived(
+    turnState ? (isPlayerTurn ? 'YOUR TURN' : 'ENEMY TURN') : null
   )
 
   let showEndTurn = $derived(
@@ -1533,8 +1540,17 @@
     {/if}
 
     {#if turnState && enemyName}
-      <div class="enemy-name-header" style="color: {categoryColor}">
+      <div class="enemy-name-header" style="color: {categoryColor}" role="heading" aria-level="2" aria-label="{enemyName}">
         {enemyName}
+      </div>
+      <div class="enemy-hp-text" aria-label="Enemy health: {enemyHpCurrent} of {enemyHpMax}">
+        {enemyHpCurrent}/{enemyHpMax}
+      </div>
+    {/if}
+
+    {#if turnPhaseLabel && cardPlayStage !== 'committed'}
+      <div class="turn-phase-badge" class:enemy-phase={!isPlayerTurn}>
+        {turnPhaseLabel}
       </div>
     {/if}
 
@@ -1548,9 +1564,11 @@
 
     <div class="ap-orb" class:ap-active={apCurrent > 0} class:ap-empty={apCurrent === 0} aria-label="Action points: {apCurrent}">
       <span class="ap-number">{apCurrent}</span>
+      <span class="ap-label">AP</span>
     </div>
 
     <div class="pile-indicator draw-pile-indicator" bind:this={drawPileEl} aria-label="Draw pile: {drawPileCount}">
+      <span class="pile-label">DRAW</span>
       <div class="pile-icon" style="--stack-count: {drawStackCount}">
         {#each Array(drawStackCount) as _, idx}
           <div class="pile-card-stack" style="top: calc({idx * 2}px * var(--layout-scale, 1)); left: calc({idx * 2}px * var(--layout-scale, 1));"></div>
@@ -1560,6 +1578,7 @@
     </div>
 
     <div class="pile-indicator discard-pile-indicator" bind:this={discardPileEl} aria-label="Discard pile: {discardPileCount}">
+      <span class="pile-label">DISCARD</span>
       <div class="pile-icon" style="--stack-count: {discardStackCount}">
         {#each Array(Math.max(1, discardStackCount)) as _, idx}
           <div class="pile-card-stack" class:pile-empty={discardStackCount === 0} style="top: calc({idx * 2}px * var(--layout-scale, 1)); left: calc({idx * 2}px * var(--layout-scale, 1)); {discardStackCount === 0 ? 'opacity: 0.3;' : ''}"></div>
@@ -1580,12 +1599,15 @@
     {/each}
 
     {#if intentDisplay && cardPlayStage !== 'committed'}
-      <button
+      <div
         class="enemy-intent-bubble"
         class:intent-expanded={intentPopupOpen}
         style="background: {intentDisplay.color}; border-color: {intentDisplay.borderColor};"
-        onclick={() => { intentPopupOpen = !intentPopupOpen }}
+        role="status"
         aria-label={intentDetailText}
+        onclick={() => { intentPopupOpen = !intentPopupOpen }}
+        onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); intentPopupOpen = !intentPopupOpen } }}
+        tabindex="-1"
       >
         <div class="intent-bubble-summary">
           <img class="intent-icon-img" src={enemyIntent ? getIntentIconPath(enemyIntent.type) : ''} alt=""
@@ -1605,7 +1627,7 @@
           </div>
         {/if}
         <div class="intent-bubble-tail"></div>
-      </button>
+      </div>
     {/if}
 
 
@@ -1732,6 +1754,7 @@
         class:disabled={endTurnDisabled}
         class:end-turn-pulse={!endTurnDisabled && (apCurrent === 0 || !hasPlayableCards)}
         data-testid="btn-end-turn"
+        aria-label="End turn"
         onclick={handleEndTurn}
         disabled={endTurnDisabled}
       >
@@ -2011,6 +2034,20 @@
     justify-content: center;
   }
 
+  .ap-label {
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: calc(10px * var(--layout-scale, 1));
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    pointer-events: none;
+    z-index: 3;
+  }
+
   @keyframes ap-fire-rotate {
     from { transform: rotate(0deg) scale(0.97); }
     25% { transform: rotate(90deg) scale(1.03); }
@@ -2031,21 +2068,15 @@
     width: calc(72px * var(--layout-scale, 1));
     padding: calc(10px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
     backdrop-filter: blur(8px);
-    cursor: pointer;
+    cursor: default;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: calc(4px * var(--layout-scale, 1));
-    font: inherit;
     color: inherit;
-    outline: none;
     overflow: hidden;
     -webkit-tap-highlight-color: transparent;
     transition: width 220ms cubic-bezier(0.22, 1, 0.36, 1), padding 160ms ease;
-  }
-
-  .enemy-intent-bubble:active {
-    filter: brightness(0.92);
   }
 
   .enemy-intent-bubble.intent-expanded {
@@ -2183,6 +2214,51 @@
     pointer-events: none;
   }
 
+  .enemy-hp-text {
+    position: fixed;
+    top: calc(4vh + var(--safe-top) + calc(22px * var(--layout-scale, 1)));
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 11;
+    font-size: calc(11px * var(--layout-scale, 1));
+    font-weight: 600;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.55);
+    padding: 1px 6px;
+    border-radius: 3px;
+    white-space: nowrap;
+    pointer-events: none;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+  }
+
+  .turn-phase-badge {
+    position: fixed;
+    top: calc(12vh + var(--safe-top));
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: calc(11px * var(--layout-scale, 1));
+    font-weight: 700;
+    color: #fbbf24;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 10;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .turn-phase-badge.enemy-phase {
+    color: #ef4444;
+  }
+
+  /* Hide turn phase badge in landscape — the stats bar provides context */
+  .layout-landscape .turn-phase-badge {
+    display: none;
+  }
+
   .enemy-dialogue {
     position: absolute;
     top: calc(68px * var(--layout-scale, 1));
@@ -2276,7 +2352,8 @@
 
   .end-turn-btn {
     position: absolute;
-    left: calc(12px * var(--layout-scale, 1));
+    right: calc(12px * var(--layout-scale, 1));
+    left: auto;
     bottom: calc(calc(12px * var(--layout-scale, 1)) + var(--safe-bottom, 0px));
     width: auto;
     min-width: calc(110px * var(--layout-scale, 1));
@@ -2298,7 +2375,7 @@
   .end-turn-btn.disabled,
   .end-turn-btn:disabled {
     background: #334155;
-    color: #94a3b8;
+    color: #cbd5e1;
   }
 
   .end-turn-pulse {
@@ -2391,6 +2468,7 @@
     font-weight: 800;
     font-size: calc(12px * var(--layout-scale, 1));
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+    flex-shrink: 0;
   }
 
   .player-block-badge.dimmed {
@@ -2404,6 +2482,8 @@
 
   .player-block-value {
     line-height: 1;
+    font-size: calc(14px * var(--layout-scale, 1));
+    font-weight: 800;
   }
 
   .player-hp-text {
@@ -2413,7 +2493,8 @@
     align-items: center;
     justify-content: center;
     font-family: 'Press Start 2P', monospace;
-    font-size: calc(9px * var(--layout-scale, 1));
+    font-size: calc(13px * var(--layout-scale, 1));
+    font-weight: 700;
     color: #fff;
     letter-spacing: 0.5px;
     text-shadow:
@@ -2427,7 +2508,7 @@
 
   .player-hp-track {
     flex: 1;
-    height: 22px;
+    height: 36px;
     border-radius: 999px;
     border: 1px solid rgba(100, 116, 139, 0.7);
     background: rgba(15, 23, 42, 0.82);
@@ -2616,7 +2697,17 @@
     font-size: calc(13px * var(--layout-scale, 1));
     font-weight: 800;
     color: #f8fafc;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 0 4px rgba(0, 0, 0, 0.8);
+  }
+
+  .pile-label {
+    font-size: calc(9px * var(--layout-scale, 1));
+    font-weight: 600;
+    color: rgba(248, 250, 252, 0.7);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    display: block;
+    text-align: center;
   }
 
   .reshuffle-fly-zone {

@@ -45,7 +45,7 @@
       HP: {playerHp} / {playerMaxHp}
     </div>
 
-    <div class="option-cards">
+    <div class="option-cards" role="radiogroup" aria-label="Rest site options">
       <button
         class="option-card heal-card"
         data-testid="rest-heal"
@@ -136,8 +136,9 @@
   }
 
   .hp-info {
-    font-size: calc(14px * var(--layout-scale, 1));
-    color: #8B949E;
+    font-size: calc(16px * var(--layout-scale, 1));
+    color: #e7f0ff;
+    font-weight: 700;
   }
 
   .option-cards {
@@ -188,11 +189,19 @@
     filter: grayscale(0.35);
     opacity: 0.72;
     transform: none;
+    box-shadow: none;
+  }
+
+  .study-card.disabled .option-preview,
+  .meditate-card.disabled .option-preview {
+    opacity: 0.5;
+    color: #9BA3AB;
   }
 
   .study-card.disabled:hover,
   .meditate-card.disabled:hover {
     border-color: #5b6471;
+    box-shadow: none;
     transform: none;
   }
 
@@ -207,7 +216,7 @@
   }
 
   .option-detail {
-    font-size: calc(9.5px * var(--layout-scale, 1));
+    font-size: calc(11px * var(--layout-scale, 1));
     color: #8B949E;
     text-align: center;
     word-break: break-word;
@@ -215,12 +224,17 @@
   }
 
   .option-preview {
-    font-size: calc(9px * var(--layout-scale, 1));
+    font-size: calc(11px * var(--layout-scale, 1));
     color: #6E7681;
     text-align: center;
     margin-top: calc(4px * var(--layout-scale, 1));
     word-break: break-word;
     overflow-wrap: break-word;
+  }
+
+  .option-card:not(:disabled):not(.option-disabled) {
+    border-color: #2ECC71;
+    box-shadow: 0 0 8px rgba(46, 204, 113, 0.3);
   }
 
   /* === Landscape layout === */
