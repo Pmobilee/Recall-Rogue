@@ -210,12 +210,13 @@ If Phase 5 or 6 reveals the approach was fundamentally wrong — not just a bug,
    - If unit tests were specified, run them and confirm they pass
    - If visual tests were specified, perform them with Playwright
    - If behavioral tests were specified, use browser_evaluate to check state
-5. **Edge case verification**: Test boundary conditions, empty states, error states
-6. **Intent re-check**: Look at the result and ask — "Does this actually solve what the user asked for in Phase 1?" If there's ANY gap, fix it now.
-7. **Activation verification**: Is this feature actually reachable by the user through normal gameplay? Can they trigger it? Is it wired into the game flow, not just working on a test screen? Navigate to it the way a real user would — from the hub, through menus, into gameplay.
-8. **Existence verification**: Before building on top of any existing system, verify it actually exists and works as expected. Don't assume a service, endpoint, data source, or pipeline step is functional — check it first.
-9. **End-to-end wiring audit**: For every new function, resolver, service method, or data structure created during implementation, ask: "Who calls this? Is the call actually there?" Grep for each new export. If it's not called by a consumer, it's dead code and the feature is NOT done.
-10. **Self-review pass**: After all tests pass, re-read the original user request from Phase 1. Walk through the implementation mentally as if you were the user. Ask: "If I play the game right now, will this feature actually fire? Can I trigger every path?"
+5. **Registry freshness check**: Verify all elements touched by this change have `lastChangedDate` set to today in `data/inspection-registry.json`. If not, update them before declaring verification complete.
+6. **Edge case verification**: Test boundary conditions, empty states, error states
+7. **Intent re-check**: Look at the result and ask — "Does this actually solve what the user asked for in Phase 1?" If there's ANY gap, fix it now.
+8. **Activation verification**: Is this feature actually reachable by the user through normal gameplay? Can they trigger it? Is it wired into the game flow, not just working on a test screen? Navigate to it the way a real user would — from the hub, through menus, into gameplay.
+9. **Existence verification**: Before building on top of any existing system, verify it actually exists and works as expected. Don't assume a service, endpoint, data source, or pipeline step is functional — check it first.
+10. **End-to-end wiring audit**: For every new function, resolver, service method, or data structure created during implementation, ask: "Who calls this? Is the call actually there?" Grep for each new export. If it's not called by a consumer, it's dead code and the feature is NOT done.
+11. **Self-review pass**: After all tests pass, re-read the original user request from Phase 1. Walk through the implementation mentally as if you were the user. Ask: "If I play the game right now, will this feature actually fire? Can I trigger every path?"
 
 **If Phase 6 reveals a fundamental flaw**: Don't patch — see Rollback Plan in Phase 5.
 
@@ -231,9 +232,15 @@ If Phase 5 or 6 reveals the approach was fundamentally wrong — not just a bug,
    - `docs/GAME_DESIGN.md` — if any player-facing behavior changed
    - `docs/ARCHITECTURE.md` — if any systems or file structure changed
    - Any other referenced docs
-2. **Move AR to completed**: `docs/roadmap/phases/` → `docs/roadmap/completed/`
-3. **Confirm with user**: Brief summary of what was done, with screenshot if visual
-4. **Recommend next steps** (MANDATORY — never skip this):
+2. **Update inspection registry** (`data/inspection-registry.json`):
+   - If any game element was added, modified, or removed (card, relic, enemy, room, screen, system, quiz system, domain, mystery event, status effect): update `lastChangedDate` to today's date
+   - If a new element was created: add it to the appropriate table
+   - If an element was removed: set status to `"deprecated"`
+   - Consult `testingRecommendations` table to identify what testing is now needed
+   - This is NON-NEGOTIABLE — a change without a registry update is incomplete
+3. **Move AR to completed**: `docs/roadmap/phases/` → `docs/roadmap/completed/`
+4. **Confirm with user**: Brief summary of what was done, with screenshot if visual
+5. **Recommend next steps** (MANDATORY — never skip this):
    After every completed AR, present **carefully considered next steps**. These are not throwaway suggestions — think deeply about what the user should do next based on:
    - What you learned during implementation (new risks, opportunities, rough edges discovered)
    - What adjacent systems were affected or exposed as fragile
@@ -251,8 +258,8 @@ If Phase 5 or 6 reveals the approach was fundamentally wrong — not just a bug,
    Bad example: "You could also improve the UI." (vague, no reasoning)
    Good example: "The new relic tooltip system exposed that 3 relics have empty `description` fields — these will render as blank tooltips. I'd recommend fixing those before the next playtest."
 
-5. **Save learnings to memory**: If this work revealed a non-obvious pattern, anti-pattern, or surprise — save it to auto-memory. Ask: "What would have saved me time if I knew it at the start? Would a future session benefit from knowing this?" Only save things that are genuinely non-obvious. Skip routine implementation notes.
-6. **Post-ship check flag**: Note this AR as needing a spot-check at the start of the next session. At the beginning of the next conversation, if there are recently completed ARs (last 1-2 sessions), do a quick smoke test: load the affected screen, check the console, confirm the feature still works. This catches silent regressions from unrelated changes.
+6. **Save learnings to memory**: If this work revealed a non-obvious pattern, anti-pattern, or surprise — save it to auto-memory. Ask: "What would have saved me time if I knew it at the start? Would a future session benefit from knowing this?" Only save things that are genuinely non-obvious. Skip routine implementation notes.
+7. **Post-ship check flag**: Note this AR as needing a spot-check at the start of the next session. At the beginning of the next conversation, if there are recently completed ARs (last 1-2 sessions), do a quick smoke test: load the affected screen, check the console, confirm the feature still works. This catches silent regressions from unrelated changes.
 
 ---
 
