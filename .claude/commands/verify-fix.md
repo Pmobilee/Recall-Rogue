@@ -26,7 +26,7 @@ browser_navigate → http://localhost:5173?skipOnboarding=true&devpreset=<approp
 Choose the devpreset that best matches the state needed to test the fix. See the playtest skill for the full preset list.
 
 ### Step 3: Capture Before State
-- `browser_evaluate(() => window.__terraScreenshot())` — visual baseline (captures Phaser canvas + DOM overlays as base64 PNG. NEVER use `mcp__playwright__browser_take_screenshot` — Phaser RAF causes 30s timeout. NEVER use `newCDPSession()` — hangs.)
+- `browser_evaluate(() => window.__terraScreenshotFile())` — saves to `/tmp/terra-screenshot.jpg`, returns path. Use `Read("/tmp/terra-screenshot.jpg")` to view visual baseline (captures Phaser canvas + DOM overlays). NEVER use raw `__terraScreenshot()` (base64 exceeds limits), `mcp__playwright__browser_take_screenshot` — Phaser RAF causes 30s timeout, or `newCDPSession()` — hangs.
 - `browser_evaluate` → `window.__terraDebug()` — runtime state snapshot
 - `browser_console_messages` — check for pre-existing errors
 
@@ -37,7 +37,7 @@ Perform the exact interaction that was broken:
 - For state changes: use `browser_evaluate` to trigger the action
 
 ### Step 5: Capture After State
-- `browser_evaluate(() => window.__terraScreenshot())` — visual confirmation (base64 PNG, captures Phaser canvas + DOM overlays)
+- `browser_evaluate(() => window.__terraScreenshotFile())` — saves to `/tmp/terra-screenshot.jpg`, returns path. Use `Read("/tmp/terra-screenshot.jpg")` to view visual confirmation (captures Phaser canvas + DOM overlays)
 - `browser_evaluate` → `window.__terraDebug()` — verify state changed as expected
 - `browser_evaluate` → `window.__terraLog.slice(-10)` — check event trail
 - `browser_console_messages` — check for new errors

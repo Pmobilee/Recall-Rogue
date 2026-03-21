@@ -78,7 +78,7 @@ Use MCP Playwright tools to interact with the game:
 - browser_navigate: go to URLs
 - browser_click: click elements by CSS selector (always use force: true)
 - browser_evaluate: run JavaScript in the page
-- browser_evaluate(() => window.__terraScreenshot()): capture visual state as base64 PNG (max 8 per scenario). This is the ONLY screenshot method — NEVER use `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout), `page.screenshot()` (same), or `newCDPSession()` (hangs permanently).
+- browser_evaluate(() => window.__terraScreenshotFile()): save screenshot to `/tmp/terra-screenshot.jpg`, returns path. Then use `Read("/tmp/terra-screenshot.jpg")` to view (max 8 per scenario). NEVER use raw `__terraScreenshot()` (base64 exceeds limits). NEVER use `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout), `page.screenshot()` (same), or `newCDPSession()` (hangs permanently).
 - browser_snapshot: read DOM text (cheap, use liberally)
 - browser_console_messages: check for JS errors
 

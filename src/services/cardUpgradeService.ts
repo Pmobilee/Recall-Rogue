@@ -130,6 +130,46 @@ export const MASTERY_UPGRADE_DEFS: Record<string, MasteryUpgradeDef> = {
   dark_knowledge:    { perLevelDelta: 1 },                           // 3/curse -> 8/curse (QP base)
   chain_anchor:      { perLevelDelta: 0, addTagAtLevel: [3, 'chain_anchor_3'], maxLevel: 3 }, // L3 CC: sets chain to 3
   unstable_flux:     { perLevelDelta: 0, addTagAtLevel: [3, 'unstable_flux_qp_choice'], maxLevel: 3 }, // L3 QP: choose 1 of 2 options
+
+  // ── AR-208: Phase 3 Advanced / Chase Cards ────────────────────────────────
+
+  // Attacks
+  smite:             { perLevelDelta: 2, maxLevel: 5 },                              // QP base 10→20; CC avg-mastery bonus unchanged
+  feedback_loop:     { perLevelDelta: 2, addTagAtLevel: [3, 'feedback_weakness'], maxLevel: 3 }, // QP 5→11; CC 20→32; L3 QP applies 1 Weakness
+  recall:            { perLevelDelta: 0.2, addTagAtLevel: [3, 'recall_draw'], maxLevel: 5 },    // per-card 1.0→2.0; L3: draw 1 after resolving
+  hemorrhage:        { perLevelDelta: 1, maxLevel: 5 },                              // base 4→9 (+ per-Bleed multiplier unchanged)
+  eruption:          { perLevelDelta: 1, maxLevel: 3 },                              // QP per-AP 8→11; CC per-AP 12→15
+
+  // Shields
+  bulwark:           { perLevelDelta: 3, maxLevel: 3 },                              // QP 18→27; CC 36→45 (still exhausts)
+  conversion:        { perLevelDelta: 2, maxLevel: 3 },                              // QP cap 10→16; CC cap 15→21
+  ironhide:          { perLevelDelta: 1, addTagAtLevel: [3, 'ironhide_perm_qp'], maxLevel: 3 }, // QP 6→9; L3 QP: +1 permanent Str
+
+  // Buffs
+  frenzy:            { perLevelDelta: 0, addTagAtLevel: [3, 'frenzy_qp3'], maxLevel: 3 },       // L3 QP: frees 3 cards
+  mastery_surge:     { perLevelDelta: 0, addTagAtLevel: [3, 'mastery_surge_qp2'], maxLevel: 3 },// L3 QP: upgrades 2 cards
+  war_drum:          { perLevelDelta: 1, maxLevel: 5 },                              // QP buff +2→+7 to all hand cards
+
+  // Debuffs
+  entropy:           { perLevelDelta: 1, addTagAtLevel: [3, 'entropy_poison_qp'], maxLevel: 3 }, // QP Burn 3→6; L3 QP: +1 Poison
+
+  // Utility
+  archive:           { perLevelDelta: 0, addTagAtLevel: [3, 'archive_retain2_qp'], maxLevel: 3 }, // L3 QP: retains 2 cards
+  reflex:            { perLevelDelta: 0, addTagAtLevel: [3, 'reflex_enhanced'], maxLevel: 3 },    // L3: QP draws 3; passive = 4 block
+  recollect:         { perLevelDelta: 0, addTagAtLevel: [3, 'recollect_qp2'], maxLevel: 3 },      // L3 QP: returns 2 exhausted
+  synapse:           { perLevelDelta: 0, addTagAtLevel: [3, 'synapse_draw3_qp'], maxLevel: 3 },   // L3 QP: draws 3
+  siphon_knowledge:  { perLevelDelta: 0, addTagAtLevel: [3, 'siphon_qp3_time4s'], maxLevel: 3 },  // L3 QP: draws 3 + 4s preview
+  tutor:             { perLevelDelta: 0, addTagAtLevel: [3, 'tutor_free_qp'], maxLevel: 3 },      // L3 QP: tutored card costs 0
+
+  // Wild
+  sacrifice:         { perLevelDelta: 0, addTagAtLevel: [3, 'sacrifice_draw3_qp'], maxLevel: 3 }, // L3 QP: draws 3
+  catalyst:          { perLevelDelta: 0, addTagAtLevel: [3, 'catalyst_bleed_qp'], maxLevel: 3 },  // L3 QP: also doubles Bleed
+  mimic:             { perLevelDelta: 0, addTagAtLevel: [3, 'mimic_choose_qp'], maxLevel: 3 },    // L3 QP: player chooses from discard
+  aftershock:        { perLevelDelta: 0.1, maxLevel: 3 },                            // QP mult 0.5→0.8; CC mult 0.7→1.0 at L3
+  knowledge_bomb:    { perLevelDelta: 1, maxLevel: 5 },                              // CC per-correct 4→9 damage
+
+  // Inscription
+  inscription_wisdom: { perLevelDelta: 0, addTagAtLevel: [3, 'inscription_wisdom_heal2'], maxLevel: 3 }, // L3 CC: heals 2 HP per correct
 };
 
 /**

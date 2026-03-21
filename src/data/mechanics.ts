@@ -554,6 +554,214 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
     baseValue: 10, apCost: 1, maxPerPool: 1, tags: ['random', 'choice'], launchPhase: 2, unlockLevel: 6,
     quickPlayValue: 10, chargeCorrectValue: 10, chargeWrongValue: 10,
   },
+
+  // ── AR-208: Phase 3 Advanced / Chase Cards ────────────────────────────────
+
+  // ── Attacks (5) ──────────────────────────────────────────────────────────
+
+  // Smite — mastery-weighted bonus damage on CC
+  {
+    id: 'smite', name: 'Smite', type: 'attack',
+    description: 'CC: 10 + (3 × avg hand mastery) damage. QP: 10 dmg. CW: 7 dmg.',
+    baseValue: 10, apCost: 2, maxPerPool: 1, tags: ['strike'], launchPhase: 2, unlockLevel: 9,
+    quickPlayValue: 10, chargeCorrectValue: 10, chargeWrongValue: 7,
+  },
+
+  // Feedback Loop — high CC / total fizzle on CW
+  {
+    id: 'feedback_loop', name: 'Feedback Loop', type: 'attack',
+    description: 'QP: 5 dmg. CC: 20 dmg. CW: 0 (complete fizzle — no damage at all).',
+    baseValue: 5, apCost: 1, maxPerPool: 1, tags: ['strike'], launchPhase: 2, unlockLevel: 10,
+    quickPlayValue: 5, chargeCorrectValue: 20, chargeWrongValue: 0,
+  },
+
+  // Recall — scales with discard pile size
+  {
+    id: 'recall', name: 'Recall', type: 'attack',
+    description: 'Deal 1 dmg per card in discard pile. CC: 2/card. CW: 0.5/card (round down).',
+    baseValue: 1, apCost: 1, maxPerPool: 1, tags: ['strike'], launchPhase: 2, unlockLevel: 11,
+    quickPlayValue: 1, chargeCorrectValue: 2, chargeWrongValue: 1,
+  },
+
+  // Hemorrhage — Bleed finisher
+  {
+    id: 'hemorrhage', name: 'Hemorrhage', type: 'attack',
+    description: 'QP: 4+(4×Bleed) dmg, consume all Bleed. CC: 4+(6×Bleed). CW: 4+(2×Bleed).',
+    baseValue: 4, apCost: 2, maxPerPool: 1, tags: ['strike', 'bleed'], launchPhase: 2, unlockLevel: 7,
+    quickPlayValue: 4, chargeCorrectValue: 4, chargeWrongValue: 4,
+  },
+
+  // Eruption — X-cost attack (consumes all remaining AP)
+  {
+    id: 'eruption', name: 'Eruption', type: 'attack',
+    description: 'X-cost: consumes all remaining AP. QP: 8 dmg/AP. CC: 12 dmg/AP (surcharge first). CW: 5 dmg/AP.',
+    baseValue: 8, apCost: 0, maxPerPool: 1, tags: ['strike', 'x_cost'], launchPhase: 2, unlockLevel: 12,
+    quickPlayValue: 8, chargeCorrectValue: 12, chargeWrongValue: 5,
+  },
+
+  // ── Shields (3) ──────────────────────────────────────────────────────────
+
+  // Bulwark — mega block, exhausts on CC
+  {
+    id: 'bulwark', name: 'Bulwark', type: 'shield',
+    description: 'QP: 18 block. CC: 36 block then EXHAUST. CW: 10 block.',
+    baseValue: 18, apCost: 3, maxPerPool: 1, tags: ['block'], launchPhase: 2, unlockLevel: 9,
+    quickPlayValue: 18, chargeCorrectValue: 36, chargeWrongValue: 10,
+  },
+
+  // Conversion — convert block to damage (1:1)
+  {
+    id: 'conversion', name: 'Conversion', type: 'shield',
+    description: 'Convert up to 10 block into damage (1:1). CC: up to 15. CW: up to 5. Block is lost.',
+    baseValue: 10, apCost: 1, maxPerPool: 1, tags: ['block'], launchPhase: 2, unlockLevel: 10,
+    quickPlayValue: 10, chargeCorrectValue: 15, chargeWrongValue: 5,
+  },
+
+  // Ironhide — block + Strength (temp QP, permanent CC)
+  {
+    id: 'ironhide', name: 'Ironhide', type: 'shield',
+    description: 'QP: 6 block + 1 Str (this turn). CC: 6 block + 1 Str (permanent). CW: 4 block.',
+    baseValue: 6, apCost: 2, maxPerPool: 1, tags: ['block', 'strength'], launchPhase: 2, unlockLevel: 8,
+    quickPlayValue: 6, chargeCorrectValue: 6, chargeWrongValue: 4,
+  },
+
+  // ── Buffs (3) ────────────────────────────────────────────────────────────
+
+  // Frenzy — next N cards cost 0 AP
+  {
+    id: 'frenzy', name: 'Frenzy', type: 'buff',
+    description: 'QP: next 2 cards cost 0 AP. CC: next 3. CW: next 1. Eruption X drain still fires.',
+    baseValue: 2, apCost: 2, maxPerPool: 1, tags: ['buff', 'ap_free'], launchPhase: 2, unlockLevel: 10,
+    quickPlayValue: 2, chargeCorrectValue: 3, chargeWrongValue: 1,
+  },
+
+  // Mastery Surge — instant mastery level bump to 1 or 2 random hand cards
+  {
+    id: 'mastery_surge', name: 'Mastery Surge', type: 'buff',
+    description: 'QP: +1 mastery to 1 random hand card. CC: 2 cards. CW: fizzle.',
+    baseValue: 1, apCost: 1, maxPerPool: 1, tags: ['buff', 'mastery'], launchPhase: 2, unlockLevel: 11,
+    quickPlayValue: 1, chargeCorrectValue: 2, chargeWrongValue: 0,
+  },
+
+  // War Drum — universal hand buff
+  {
+    id: 'war_drum', name: 'War Drum', type: 'buff',
+    description: 'QP: all hand cards gain +2 base effect this turn. CC: +4. CW: +1.',
+    baseValue: 2, apCost: 1, maxPerPool: 1, tags: ['buff'], launchPhase: 2, unlockLevel: 8,
+    quickPlayValue: 2, chargeCorrectValue: 4, chargeWrongValue: 1,
+  },
+
+  // ── Debuffs (1) ──────────────────────────────────────────────────────────
+
+  // Entropy — dual DoT applicator
+  {
+    id: 'entropy', name: 'Entropy', type: 'debuff',
+    description: 'QP: 3 Burn + 2 Poison(2t). CC: 6 Burn + 4 Poison(3t). CW: 2 Burn + 1 Poison(1t).',
+    baseValue: 3, apCost: 2, maxPerPool: 1, tags: ['burn', 'poison'], launchPhase: 2, unlockLevel: 9,
+    quickPlayValue: 3, chargeCorrectValue: 6, chargeWrongValue: 2,
+  },
+
+  // ── Utility (6) ──────────────────────────────────────────────────────────
+
+  // Archive — retain cards in hand past turn end
+  {
+    id: 'archive', name: 'Archive', type: 'utility',
+    description: 'QP/CW: retain 1 card in hand at turn end. CC: retain 2 cards.',
+    baseValue: 1, apCost: 1, maxPerPool: 2, tags: ['retain'], launchPhase: 2, unlockLevel: 5,
+    quickPlayValue: 1, chargeCorrectValue: 2, chargeWrongValue: 1,
+  },
+
+  // Reflex — draw card; PASSIVE: discard-from-hand gains 3 block
+  {
+    id: 'reflex', name: 'Reflex', type: 'utility',
+    description: 'QP: draw 2. CC: draw 3. CW: draw 1. PASSIVE: when discarded from hand, gain 3 block.',
+    baseValue: 2, apCost: 1, maxPerPool: 2, tags: ['draw', 'passive'], launchPhase: 2, unlockLevel: 6,
+    quickPlayValue: 2, chargeCorrectValue: 3, chargeWrongValue: 1,
+  },
+
+  // Recollect — return exhausted card(s) to discard
+  {
+    id: 'recollect', name: 'Recollect', type: 'utility',
+    description: 'Return 1 exhausted card to discard pile. CC: return 2. Cannot target Inscriptions.',
+    baseValue: 1, apCost: 1, maxPerPool: 1, tags: ['recover'], launchPhase: 2, unlockLevel: 8,
+    quickPlayValue: 1, chargeCorrectValue: 2, chargeWrongValue: 1,
+  },
+
+  // Synapse — draw + wildcard chain link on CC
+  {
+    id: 'synapse', name: 'Synapse', type: 'utility',
+    description: 'QP/CW: draw 2/1. CC: draw 2 + wildcard chain link (extends active chain by 1).',
+    baseValue: 2, apCost: 1, maxPerPool: 1, tags: ['draw', 'chain'], launchPhase: 2, unlockLevel: 10,
+    quickPlayValue: 2, chargeCorrectValue: 2, chargeWrongValue: 1,
+  },
+
+  // Siphon Knowledge — draw + brief answer preview overlay (FLAGSHIP)
+  {
+    id: 'siphon_knowledge', name: 'Siphon Knowledge', type: 'utility',
+    description: 'QP: draw 2, see answers 3s. CC: draw 3, 5s. CW: draw 1, 2s.',
+    baseValue: 2, apCost: 2, maxPerPool: 1, tags: ['draw'], launchPhase: 2, unlockLevel: 9,
+    quickPlayValue: 2, chargeCorrectValue: 3, chargeWrongValue: 1,
+  },
+
+  // Tutor — search draw pile for any card and add to hand
+  {
+    id: 'tutor', name: 'Tutor', type: 'utility',
+    description: 'Search draw pile; choose a card, add to hand. CC: that card costs 0 AP this turn.',
+    baseValue: 1, apCost: 1, maxPerPool: 1, tags: ['search'], launchPhase: 2, unlockLevel: 11,
+    quickPlayValue: 1, chargeCorrectValue: 1, chargeWrongValue: 1,
+  },
+
+  // ── Wild (4+1) ────────────────────────────────────────────────────────────
+
+  // Sacrifice — lose HP for resources
+  {
+    id: 'sacrifice', name: 'Sacrifice', type: 'wild',
+    description: 'Lose 5 HP. QP: draw 2 + gain 1 AP. CC: draw 3 + gain 2 AP. CW: draw 1 + gain 1 AP.',
+    baseValue: 5, apCost: 0, maxPerPool: 1, tags: ['risk', 'ap_gain'], launchPhase: 2, unlockLevel: 8,
+    quickPlayValue: 5, chargeCorrectValue: 5, chargeWrongValue: 5,
+  },
+
+  // Catalyst — double Poison (and on CC also Burn)
+  {
+    id: 'catalyst', name: 'Catalyst', type: 'wild',
+    description: 'QP/CW: double enemy Poison. CC: double Poison AND Burn. L3 QP: also double Bleed.',
+    baseValue: 1, apCost: 1, maxPerPool: 1, tags: ['poison', 'burn'], launchPhase: 2, unlockLevel: 10,
+    quickPlayValue: 1, chargeCorrectValue: 1, chargeWrongValue: 1,
+  },
+
+  // Mimic — replay card from discard pile
+  {
+    id: 'mimic', name: 'Mimic', type: 'wild',
+    description: 'QP: random discard at 0.8×. CC: choose discard at 1.0×. CW: random at 0.5×. Copies BASE values.',
+    baseValue: 1, apCost: 1, maxPerPool: 1, tags: ['copy'], launchPhase: 2, unlockLevel: 11,
+    quickPlayValue: 1, chargeCorrectValue: 1, chargeWrongValue: 1,
+  },
+
+  // Aftershock — repeat last played card at reduced power (current turn only)
+  {
+    id: 'aftershock', name: 'Aftershock', type: 'wild',
+    description: 'QP: repeat last QP card at 0.5×. CC: repeat last CC card at 0.7× (no quiz). CW: last any at 0.3×.',
+    baseValue: 1, apCost: 1, maxPerPool: 1, tags: ['copy'], launchPhase: 2, unlockLevel: 10,
+    quickPlayValue: 1, chargeCorrectValue: 1, chargeWrongValue: 1,
+  },
+
+  // Knowledge Bomb — scales with correct Charges this encounter
+  {
+    id: 'knowledge_bomb', name: 'Knowledge Bomb', type: 'wild',
+    description: 'QP/CW: 4 dmg flat. CC: 4 × correctChargesThisEncounter dmg (own CC counts).',
+    baseValue: 4, apCost: 2, maxPerPool: 1, tags: ['strike'], launchPhase: 2, unlockLevel: 13,
+    quickPlayValue: 4, chargeCorrectValue: 4, chargeWrongValue: 4,
+  },
+
+  // ── Inscription (1) ───────────────────────────────────────────────────────
+
+  // Inscription of Wisdom — persistent draw/heal bonus per CC (CW = complete fizzle)
+  {
+    id: 'inscription_wisdom', name: 'Inscription of Wisdom', type: 'buff',
+    description: 'Exhausts on play. QP: each future CC draws 1 extra. CC: draw 1 extra + heal 1 HP. CW: FIZZLE.',
+    baseValue: 1, apCost: 2, maxPerPool: 1, tags: ['inscription'], launchPhase: 2, unlockLevel: 1,
+    quickPlayValue: 1, chargeCorrectValue: 1, chargeWrongValue: 0,
+  },
 ];
 
 /** Returns mechanics filtered by launch phase gate. */

@@ -58,7 +58,7 @@ await new Promise(r => setTimeout(r, 500));
 ```
 
 Then:
-- `browser_evaluate(() => window.__terraScreenshot())` — captures full page (Phaser canvas + DOM overlays) as base64 PNG. This is the ONLY screenshot method that works with Phaser. NEVER use `mcp__playwright__browser_take_screenshot` (Phaser RAF blocks it, 30s timeout) or `page.screenshot()` (same issue) or `newCDPSession()` (hangs permanently).
+- `browser_evaluate(() => window.__terraScreenshotFile())` — saves to `/tmp/terra-screenshot.jpg`, returns path. Use `Read("/tmp/terra-screenshot.jpg")` to view. Captures full page (Phaser canvas + DOM overlays). This is the ONLY screenshot method that works with Phaser. NEVER use raw `__terraScreenshot()` (base64 exceeds limits), `mcp__playwright__browser_take_screenshot` (Phaser RAF blocks it, 30s timeout), `page.screenshot()` (same issue), or `newCDPSession()` (hangs permanently).
 - `mcp__playwright__browser_snapshot` — DOM state (supplementary, always works)
 - `mcp__playwright__browser_console_messages` — errors
 
@@ -247,7 +247,7 @@ await page.evaluate(() => {
 2. browser_evaluate -> disable animations
 3. browser_evaluate -> __terraScenario.loadCustom({ screen: 'combat', enemy: 'the_archivist', playerHp: 30, hand: ['heavy_strike', 'block', 'lifetap'], relics: ['whetstone'] })
 4. wait 500ms
-5. browser_evaluate(() => window.__terraScreenshot()) -> full page screenshot (Phaser + DOM composite)
+5. browser_evaluate(() => window.__terraScreenshotFile()) -> saves to /tmp/terra-screenshot.jpg (Phaser + DOM composite). Use Read("/tmp/terra-screenshot.jpg") to view.
 6. browser_snapshot -> check DOM state (supplementary)
 7. browser_console_messages -> check errors
 8. If issues found -> fix code -> repeat from step 3

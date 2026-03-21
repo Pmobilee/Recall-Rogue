@@ -272,7 +272,7 @@ function checkOcclusion(element) {
 }
 ```
 
-**For screenshots**, ALWAYS use `browser_evaluate(() => window.__terraScreenshot())` — it captures both the Phaser canvas and DOM overlays as a composited base64 PNG. NEVER use `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout). The `elementFromPoint()` occlusion check above runs via `browser_evaluate` and catches occlusion as a complementary check.
+**For screenshots**, ALWAYS use `browser_evaluate(() => window.__terraScreenshotFile())` — saves to `/tmp/terra-screenshot.jpg`, returns path. Use `Read("/tmp/terra-screenshot.jpg")` to view. Captures both Phaser canvas and DOM overlays. NEVER use raw `__terraScreenshot()` (base64 exceeds limits) or `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout). The `elementFromPoint()` occlusion check above runs via `browser_evaluate` and catches occlusion as a complementary check.
 
 **This check is NON-NEGOTIABLE. If a visual inspection worker skips it, the inspection is INCOMPLETE and MUST be flagged as such.**
 

@@ -151,6 +151,51 @@ export interface CardEffectResult {
    * The resolver sets a sentinel (8 base) and turnManager overrides.
    */
   chainLightningChainLength?: number;
+
+  // ── AR-208: Phase 3 Advanced / Chase Card result fields ──────────────────
+
+  /** Catalyst: double enemy Poison stacks (QP/CW/CC). */
+  poisonDoubled?: boolean;
+  /** Catalyst CC: also double enemy Burn stacks. */
+  burnDoubled?: boolean;
+  /** Catalyst L3 QP: also double enemy Bleed stacks. */
+  bleedDoubled?: boolean;
+  /** Conversion: block consumed from player (1:1 to damage). */
+  blockConsumed?: number;
+  /** Eruption X-cost: total AP consumed by X drain. */
+  xCostApConsumed?: number;
+  /** Synapse CC: wildcard chain link — extend active chain by 1. */
+  applyWildcardChainLink?: boolean;
+  /** Hemorrhage: consume all Bleed stacks after damage is calculated. */
+  consumeAllBleed?: boolean;
+  /** Frenzy: number of free-play charges granted this turn. */
+  frenzyChargesGranted?: number;
+  /** War Drum: base effect bonus to apply to all current hand cards. */
+  warDrumBonus?: number;
+  /** Mastery Surge: number of random hand cards to bump by +1 mastery. */
+  masteryBumpsCount?: number;
+  /** Inscription of Wisdom: inscription fizzled on CW. */
+  inscriptionFizzled?: boolean;
+  /** Inscription of Wisdom: inscription activated; payload for EncounterState. */
+  inscriptionWisdomActivated?: { extraDrawPerCC: number; healPerCC: number };
+  /** Siphon Knowledge: duration in seconds to show answer preview overlay. */
+  siphonAnswerPreviewDuration?: number;
+  /** Tutor: tutored card should get free-this-turn flag on CC. */
+  tutoredCardFree?: boolean;
+  /** Aftershock: mechanic ID to repeat and its power multiplier. */
+  aftershockRepeat?: { mechanicId: string; multiplier: number };
+  /** Mimic: mechanic ID to replay and its power multiplier. */
+  mimicReplay?: { mechanicId: string; multiplier: number; fromDiscard: boolean };
+  /** Recollect: number of exhausted cards to return to discard pile. */
+  exhaustedCardsToReturn?: number;
+  /** Sacrifice: AP gained (can exceed MAX_AP_PER_TURN). */
+  sacrificeApGain?: number;
+  /** Ironhide: Strength granted and whether it is permanent. */
+  ironhideStrength?: { amount: number; permanent: boolean };
+  /** Bulwark / Volatile Slash / Burnout Shield: exhaust this card after resolving. */
+  exhaustAfterPlay?: boolean;
+  /** Archive: number of cards to retain in hand at turn end. */
+  archiveRetainCount?: number;
 }
 
 export interface AdvancedResolveOptions {
@@ -186,6 +231,47 @@ export interface AdvancedResolveOptions {
    * Snapshotted by turnManager before resolving dark_knowledge.
    */
   cursedFactCount?: number;
+
+  // ── AR-208: Phase 3 Advanced / Chase Card input fields ───────────────────
+
+  /**
+   * AR-208 Smite: mastery levels of all cards currently in hand (including Smite itself).
+   * Cursed cards are treated as effective mastery 0.
+   * Populated by turnManager at resolve time.
+   */
+  handMasteryValues?: number[];
+
+  /**
+   * AR-208 Recall: current size of the discard pile at resolve time (snapshot before Recall itself is added).
+   * Populated by turnManager.
+   */
+  discardPileSize?: number;
+
+  /**
+   * AR-208 Hemorrhage: current Bleed stacks on the enemy at resolve time.
+   * Consumed (set to 0) after damage calculation; passed from EncounterState by turnManager.
+   */
+  enemyBleedStacks?: number;
+
+  /**
+   * AR-208 Knowledge Bomb: total correct Charges in this encounter INCLUDING the current CC play.
+   * Increment happens before damage calculation in turnManager.
+   */
+  correctChargesThisEncounter?: number;
+
+  /**
+   * AR-208 Eruption: remaining AP AFTER surcharge deduction, before X drain.
+   * Computed and passed by turnManager so the resolver is pure.
+   */
+  eruptionXAp?: number;
+
+  /**
+   * AR-208 Aftershock: mechanic ID of the last card played in each mode this turn.
+   * Reset at turn start by turnManager.
+   */
+  lastQPMechanicThisTurn?: string | null;
+  lastCCMechanicThisTurn?: string | null;
+  lastAnyMechanicThisTurn?: string | null;
 }
 
 export function isCardBlocked(card: Card, enemy: EnemyInstance): boolean {
@@ -1020,7 +1106,6 @@ export function resolveCardEffect(
         result.unstableFluxEffect = 'damage';
       } else {
         // QP/CW: random selection
-        const masteryL3Flux = (card.masteryLevel ?? 0) >= 3;
         // At L3+ QP, player chooses 1 of 2 pre-selected options (simulated as random for now).
         const roll = Math.floor(Math.random() * 4);
         if (roll === 0) {
@@ -1037,6 +1122,448 @@ export function resolveCardEffect(
           result.unstableFluxEffect = 'debuff';
         }
       }
+      return result;
+    }
+
+    // ── AR-208: Phase 3 Advanced / Chase Cards ────────────────────────────
+
+    // Smite — QP: flat damage + mastery bonus; CC: 10 + (3 × avgHandMastery); CW: 7
+    case 'smite': {
+      if (isChargeCorrect) {
+        // avgHandMastery: floor of average mastery of all hand cards (cursed = 0)
+        const masteryValues = advanced.handMasteryValues ?? [];
+        const avgMastery = masteryValues.length > 0
+          ? Math.floor(masteryValues.reduce((a, b) => a + b, 0) / masteryValues.length)
+          : 0;
+        const smiteCCBase = 10 + (3 * avgMastery);
+        // Apply mastery bonus to CC path (perLevelDelta=2 applies to QP base; CC shares it)
+        const smiteMasteryBonus = getMasteryBaseBonus(mechanicId, card.masteryLevel ?? 0);
+        applyAttackDamage(smiteCCBase + smiteMasteryBonus);
+      } else if (isChargeWrong) {
+        applyAttackDamage(7); // CW fixed; mastery does not apply
+      } else {
+        applyAttackDamage(finalValue); // QP: 10 + mastery bonus already in finalValue
+      }
+      return result;
+    }
+
+    // Feedback Loop — QP/CC heavy damage; CW = complete fizzle (0 damage)
+    case 'feedback_loop': {
+      if (isChargeWrong) {
+        // Complete fizzle — 0 damage, no effect. Distinct from any other CW.
+        result.damageDealt = 0;
+        result.rawValue = 0;
+        result.finalValue = 0;
+        return result;
+      }
+      // QP: 5 + mastery bonus (already in finalValue). CC: 20 + mastery bonus.
+      if (isChargeCorrect) {
+        // CC base is 20; apply mastery bonus (+2/level for CC path uses secondaryPerLevelDelta analog)
+        // Per spec: perLevelDelta +2 QP / +4 CC per level. CC base at L0 = 20.
+        const flMasteryLevel = card.masteryLevel ?? 0;
+        const flCCValue = 20 + (flMasteryLevel * 4);
+        applyAttackDamage(flCCValue);
+        // L3: QP also applies 1 Weakness — checked by tag 'feedback_weakness'
+        // (L3 check is on QP not CC; no additional effect on CC)
+      } else {
+        // QP: finalValue already has mastery bonus applied
+        applyAttackDamage(finalValue);
+        // L3 bonus: apply 1 Weakness on QP
+        if ((card.masteryLevel ?? 0) >= 3) {
+          result.statusesApplied.push({ type: 'weakness', value: 1, turnsRemaining: 1 });
+        }
+      }
+      return result;
+    }
+
+    // Recall — damage per card in discard pile
+    case 'recall': {
+      const discardSize = advanced.discardPileSize ?? 0;
+      const masteryLevelRecall = card.masteryLevel ?? 0;
+      // perLevelDelta = +0.2 per level on QP per-card; QP base = 1.0
+      const qpPerCard = 1.0 + (0.2 * masteryLevelRecall);
+      const ccPerCard = 2.0; // CC per-card is fixed at 2.0 (spec); mastery applies to QP
+      const cwPerCard = 0.5; // CW fixed
+      let recallDmg: number;
+      if (isChargeCorrect) {
+        recallDmg = Math.floor(ccPerCard * discardSize);
+      } else if (isChargeWrong) {
+        recallDmg = Math.floor(cwPerCard * discardSize);
+      } else {
+        recallDmg = Math.floor(qpPerCard * discardSize);
+      }
+      if (recallDmg > 0) applyAttackDamage(recallDmg);
+      // L3: draw 1 card after resolving
+      if (masteryLevelRecall >= 3) {
+        result.extraCardsDrawn = (result.extraCardsDrawn ?? 0) + 1;
+      }
+      return result;
+    }
+
+    // Hemorrhage — Bleed finisher: consumes all Bleed stacks on enemy
+    case 'hemorrhage': {
+      const bleedStacks = advanced.enemyBleedStacks ?? 0;
+      const hemoBase = (mechanic?.baseValue ?? 4) + getMasteryBaseBonus(mechanicId, card.masteryLevel ?? 0);
+      const bleedMult = isChargeCorrect ? 6 : (isChargeWrong ? 2 : 4);
+      const hemoDmg = hemoBase + (bleedMult * bleedStacks);
+      applyAttackDamage(hemoDmg);
+      // Signal turnManager to consume all Bleed stacks after damage calculation
+      result.consumeAllBleed = true;
+      return result;
+    }
+
+    // Eruption — X-cost: consumes all remaining AP (surcharge deducted first on CC)
+    case 'eruption': {
+      // eruptionXAp is pre-computed by turnManager (after surcharge deduction).
+      // Fallback: 0 AP if not provided.
+      const xAp = advanced.eruptionXAp ?? 0;
+      const masteryLevelEruption = card.masteryLevel ?? 0;
+      // perLevelDelta = +1 per-AP damage per level
+      const qpPerAp = 8 + masteryLevelEruption;
+      const ccPerAp = 12 + masteryLevelEruption;
+      const cwPerAp = 5 + masteryLevelEruption;
+      const perAp = isChargeCorrect ? ccPerAp : (isChargeWrong ? cwPerAp : qpPerAp);
+      const eruptionDmg = perAp * xAp;
+      if (eruptionDmg > 0) applyAttackDamage(eruptionDmg);
+      result.xCostApConsumed = xAp;
+      return result;
+    }
+
+    // Bulwark — mega block; CC exhausts the card
+    case 'bulwark': {
+      const bulwarkBlock = applyShieldRelics(finalValue);
+      result.shieldApplied = bulwarkBlock;
+      if (isChargeCorrect) {
+        result.exhaustAfterPlay = true;
+      }
+      return result;
+    }
+
+    // Conversion — convert block to damage (1:1), consume the block
+    case 'conversion': {
+      // finalValue = cap (10/15/5 + mastery bonus per level)
+      const convCap = finalValue;
+      // Adjust cap for cursed card (0.7×, floor)
+      const effectiveCap = card.isCursed ? Math.floor(convCap * 0.7) : convCap;
+      const playerBlock = playerState.shield ?? 0;
+      const converted = Math.min(effectiveCap, playerBlock);
+      result.blockConsumed = converted;
+      if (converted > 0) {
+        applyAttackDamage(converted);
+      }
+      return result;
+    }
+
+    // Ironhide — block + Strength (temp on QP, permanent on CC)
+    case 'ironhide': {
+      result.shieldApplied = applyShieldRelics(finalValue);
+      if (isChargeCorrect) {
+        result.ironhideStrength = { amount: 1, permanent: true };
+      } else if (isChargeWrong) {
+        // CW: block only (finalValue=4 at base + mastery), no Strength
+        result.ironhideStrength = undefined;
+      } else {
+        // QP: temp Strength this turn
+        result.ironhideStrength = { amount: 1, permanent: false };
+        // L3: QP also gives permanent Str
+        if ((card.masteryLevel ?? 0) >= 3) {
+          result.ironhideStrength = { amount: 1, permanent: true };
+        }
+      }
+      return result;
+    }
+
+    // Frenzy — grant N free-play charges
+    case 'frenzy': {
+      // finalValue encodes the count (2/3/1 QP/CC/CW + mastery tag at L3)
+      const masteryL3Frenzy = (card.masteryLevel ?? 0) >= 3;
+      let frenzyCount: number;
+      if (isChargeCorrect) {
+        frenzyCount = 3;
+      } else if (isChargeWrong) {
+        frenzyCount = 1;
+      } else {
+        // QP: 2 normally; L3: 3 (via frenzy_qp3 tag)
+        frenzyCount = masteryL3Frenzy ? 3 : 2;
+      }
+      result.frenzyChargesGranted = frenzyCount;
+      return result;
+    }
+
+    // Mastery Surge — instant mastery bump to 1 or 2 random hand cards (CW = fizzle)
+    case 'mastery_surge': {
+      if (isChargeWrong) {
+        // Intentional fizzle — 1 AP spent, nothing changes
+        result.masteryBumpsCount = 0;
+        return result;
+      }
+      const masteryL3Surge = (card.masteryLevel ?? 0) >= 3;
+      let bumpCount: number;
+      if (isChargeCorrect) {
+        bumpCount = 2;
+      } else {
+        // QP: 1; L3: 2 (via mastery_surge_qp2 tag)
+        bumpCount = masteryL3Surge ? 2 : 1;
+      }
+      // NOTE: cursed-card wasted-on-cursed ruling: bump is applied but has no visible effect.
+      // Random card selection (excluding self) is performed by turnManager using masteryBumpsCount.
+      result.masteryBumpsCount = bumpCount;
+      return result;
+    }
+
+    // War Drum — universal hand buff this turn
+    case 'war_drum': {
+      // finalValue encodes the per-card bonus (+2/+4/+1 QP/CC/CW + mastery via perLevelDelta=1)
+      result.warDrumBonus = finalValue;
+      return result;
+    }
+
+    // Entropy — dual DoT: Burn + Poison
+    case 'entropy': {
+      const masteryLevelEntropy = card.masteryLevel ?? 0;
+      // perLevelDelta = +1 Burn per level (QP base 3, so at L3 = 6)
+      // finalValue already has mastery bonus applied (encodes Burn stacks)
+      const burnStacks = finalValue; // includes mastery delta
+      let poisonStacks: number;
+      let poisonDuration: number;
+      if (isChargeCorrect) {
+        poisonStacks = 4;
+        poisonDuration = 3;
+      } else if (isChargeWrong) {
+        poisonStacks = 1;
+        poisonDuration = 1;
+      } else {
+        poisonStacks = 2;
+        poisonDuration = 2;
+        // L3: QP also gets +1 Poison (entropy_poison_qp tag)
+        if (masteryLevelEntropy >= 3) poisonStacks += 1;
+      }
+      result.applyBurnStacks = burnStacks;
+      result.statusesApplied.push({ type: 'poison', value: poisonStacks, turnsRemaining: poisonDuration });
+      return result;
+    }
+
+    // Archive — mark cards to be retained past turn end
+    case 'archive': {
+      const masteryL3Archive = (card.masteryLevel ?? 0) >= 3;
+      let retainCount: number;
+      if (isChargeCorrect) {
+        retainCount = 2;
+      } else if (isChargeWrong) {
+        retainCount = 1;
+      } else {
+        // QP: 1 normally; L3: 2 (via archive_retain2_qp tag)
+        retainCount = masteryL3Archive ? 2 : 1;
+      }
+      result.archiveRetainCount = retainCount;
+      return result;
+    }
+
+    // Reflex — draw cards; passive (discard-from-hand → block) handled in turnManager
+    case 'reflex': {
+      const masteryL3Reflex = (card.masteryLevel ?? 0) >= 3;
+      let reflexDraw: number;
+      if (isChargeCorrect) {
+        reflexDraw = 3;
+      } else if (isChargeWrong) {
+        reflexDraw = 1;
+      } else {
+        // QP: 2; L3: 3 (via reflex_enhanced tag)
+        reflexDraw = masteryL3Reflex ? 3 : 2;
+      }
+      result.extraCardsDrawn = reflexDraw;
+      // Passive block on discard is handled entirely in turnManager.discardFromHand().
+      return result;
+    }
+
+    // Recollect — return exhausted card(s) to discard pile
+    case 'recollect': {
+      const masteryL3Recollect = (card.masteryLevel ?? 0) >= 3;
+      let recollectCount: number;
+      if (isChargeCorrect) {
+        recollectCount = 2;
+      } else if (isChargeWrong) {
+        recollectCount = 1;
+      } else {
+        // QP: 1; L3: 2 (via recollect_qp2 tag)
+        recollectCount = masteryL3Recollect ? 2 : 1;
+      }
+      // Inscriptions (isRemovedFromGame) cannot be Recollected — enforced by turnManager UI filter.
+      result.exhaustedCardsToReturn = recollectCount;
+      return result;
+    }
+
+    // Synapse — draw + wildcard chain link on CC
+    case 'synapse': {
+      const masteryL3Synapse = (card.masteryLevel ?? 0) >= 3;
+      let synapseDraw: number;
+      if (isChargeCorrect) {
+        synapseDraw = 2;
+        result.applyWildcardChainLink = true; // extends active chain by 1
+      } else if (isChargeWrong) {
+        synapseDraw = 1;
+      } else {
+        // QP: 2; L3: 3 (via synapse_draw3_qp tag)
+        synapseDraw = masteryL3Synapse ? 3 : 2;
+      }
+      result.extraCardsDrawn = synapseDraw;
+      return result;
+    }
+
+    // Siphon Knowledge — draw + brief answer preview overlay (FLAGSHIP)
+    case 'siphon_knowledge': {
+      const masteryL3Siphon = (card.masteryLevel ?? 0) >= 3;
+      let siphonDraw: number;
+      let previewSeconds: number;
+      if (isChargeCorrect) {
+        siphonDraw = 3;
+        previewSeconds = 5;
+      } else if (isChargeWrong) {
+        siphonDraw = 1;
+        previewSeconds = 2;
+      } else {
+        // QP: 2 (3 at L3 via siphon_qp3_time4s tag); 3s preview (4s at L3)
+        siphonDraw = masteryL3Siphon ? 3 : 2;
+        previewSeconds = masteryL3Siphon ? 4 : 3;
+      }
+      result.extraCardsDrawn = siphonDraw;
+      result.siphonAnswerPreviewDuration = previewSeconds;
+      return result;
+    }
+
+    // Tutor — search draw pile for any card and add to hand; CC: card costs 0 AP this turn
+    case 'tutor': {
+      const masteryL3Tutor = (card.masteryLevel ?? 0) >= 3;
+      // Tutored card gets free-this-turn on CC; also on QP at L3 (tutor_free_qp tag)
+      const tutorFree = isChargeCorrect || (masteryL3Tutor && !isChargeWrong);
+      result.tutoredCardFree = tutorFree;
+      // CardBrowser.svelte is opened by turnManager reading the mechanicId.
+      // If draw pile is empty, fallback to discard is handled by turnManager.
+      return result;
+    }
+
+    // Sacrifice — lose 5 HP, draw cards, gain AP
+    case 'sacrifice': {
+      const masteryL3Sacrifice = (card.masteryLevel ?? 0) >= 3;
+      let sacrificeDraw: number;
+      let sacrificeAp: number;
+      if (isChargeCorrect) {
+        sacrificeDraw = 3;
+        sacrificeAp = 2;
+      } else if (isChargeWrong) {
+        sacrificeDraw = 1;
+        sacrificeAp = 1;
+      } else {
+        // QP: 2 (3 at L3 via sacrifice_draw3_qp tag); gain 1 AP always on QP
+        sacrificeDraw = masteryL3Sacrifice ? 3 : 2;
+        sacrificeAp = 1;
+      }
+      result.selfDamage = 5; // fixed 5 HP loss, not affected by cursed/mastery/buffs
+      result.extraCardsDrawn = sacrificeDraw;
+      result.sacrificeApGain = sacrificeAp;
+      // AP gain can exceed MAX_AP_PER_TURN (no hard cap per spec Appendix F).
+      result.grantsAp = sacrificeAp;
+      return result;
+    }
+
+    // Catalyst — double Poison (and on CC: also Burn; on L3 QP: also Bleed)
+    case 'catalyst': {
+      result.poisonDoubled = true;
+      if (isChargeCorrect) {
+        result.burnDoubled = true;
+      }
+      // L3 QP: also double Bleed (catalyst_bleed_qp tag)
+      if (!isChargeCorrect && !isChargeWrong && (card.masteryLevel ?? 0) >= 3) {
+        result.bleedDoubled = true;
+      }
+      // turnManager reads these flags and mutates enemy statusEffects accordingly.
+      return result;
+    }
+
+    // Mimic — replay card from discard pile at reduced power (copies BASE mechanic values)
+    case 'mimic': {
+      const masteryL3Mimic = (card.masteryLevel ?? 0) >= 3;
+      const mimicMult = isChargeCorrect ? 1.0 : (isChargeWrong ? 0.5 : 0.8);
+      // For QP: random card; for CC: CardBrowser lets player choose; for CW: random.
+      // L3 QP: also lets player choose (mimic_choose_qp tag) — turnManager opens CardBrowser.
+      // If discard pile is empty, no effect (no crash).
+      // turnManager selects the mechanic ID and passes it back here is not needed;
+      // we emit mimicReplay as a sentinel — turnManager resolves actual replay.
+      // mechanicId will be set by turnManager after discard selection.
+      result.mimicReplay = { mechanicId: '__pending__', multiplier: mimicMult, fromDiscard: true };
+      return result;
+    }
+
+    // Aftershock — repeat last played card at reduced power (current turn only)
+    case 'aftershock': {
+      const masteryLevelAftershock = card.masteryLevel ?? 0;
+      // perLevelDelta = +0.1× per level: QP 0.5→0.8, CC 0.7→1.0 at L3
+      const qpMult = Math.min(1.0, 0.5 + (masteryLevelAftershock * 0.1));
+      const ccMult = Math.min(1.0, 0.7 + (masteryLevelAftershock * 0.1));
+      const cwMult = 0.3; // CW mult is fixed
+
+      let targetMechanic: string | null = null;
+      let repeatMult: number;
+      if (isChargeCorrect) {
+        targetMechanic = advanced.lastCCMechanicThisTurn ?? null;
+        repeatMult = ccMult;
+      } else if (isChargeWrong) {
+        targetMechanic = advanced.lastAnyMechanicThisTurn ?? null;
+        repeatMult = cwMult;
+      } else {
+        targetMechanic = advanced.lastQPMechanicThisTurn ?? null;
+        repeatMult = qpMult;
+      }
+      // Cannot target itself (prevents infinite recursion)
+      if (targetMechanic === 'aftershock') targetMechanic = null;
+      if (targetMechanic) {
+        result.aftershockRepeat = { mechanicId: targetMechanic, multiplier: repeatMult };
+      }
+      // No-op if no valid target (AP still spent per spec)
+      return result;
+    }
+
+    // Knowledge Bomb — flat QP/CW; CC scales with total correct Charges this encounter
+    case 'knowledge_bomb': {
+      if (isChargeCorrect) {
+        const masteryLevelKB = card.masteryLevel ?? 0;
+        // perLevelDelta = +1 per-correct dmg per level; base 4/correct at L0
+        const perCorrect = 4 + masteryLevelKB;
+        // correctChargesThisEncounter is already incremented to include this CC play
+        const correctCount = advanced.correctChargesThisEncounter ?? 1;
+        const kbDmg = perCorrect * correctCount;
+        applyAttackDamage(kbDmg);
+      } else {
+        // QP and CW: flat 4 damage (no mastery bonus per spec — mastery only applies to CC path)
+        applyAttackDamage(4);
+      }
+      return result;
+    }
+
+    // Inscription of Wisdom — persistent per-CC draw/heal effect; CW = complete fizzle
+    case 'inscription_wisdom': {
+      if (isChargeWrong) {
+        // Intentional complete fizzle: 3 AP wasted, removed from game, zero effect.
+        result.inscriptionFizzled = true;
+        // Card is removed from game (not just exhaust) — signaled by exhaustOnResolve.
+        // turnManager sets isRemovedFromGame on seeing inscriptionFizzled=true for inscriptions.
+        result.exhaustOnResolve = true;
+        return result;
+      }
+      // Cursed + QP: 0.7× of "draw 1 extra" rounds to 0 → treat as fizzle
+      if (card.isCursed && !isChargeCorrect) {
+        result.inscriptionFizzled = true;
+        result.exhaustOnResolve = true;
+        return result;
+      }
+      const masteryL3Wisdom = (card.masteryLevel ?? 0) >= 3;
+      const extraDraw = 1;
+      const healPerCC = isChargeCorrect
+        ? (masteryL3Wisdom ? 2 : 1) // CC: heal 1 (or 2 at L3 via inscription_wisdom_heal2 tag)
+        : 0;                        // QP: no heal
+      result.inscriptionWisdomActivated = { extraDrawPerCC: extraDraw, healPerCC };
+      // Inscription exhausts on play and is removed from game (not recyclable via Recollect).
+      result.exhaustOnResolve = true;
       return result;
     }
 

@@ -33,6 +33,6 @@ Run the standard verification gate for any code change.
 If the user adds `--visual` or if the change was UI-related:
 1. Ensure dev server is running (`npm run dev`)
 2. Navigate: `mcp__playwright__browser_navigate` → `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
-3. Take screenshot: `browser_evaluate(() => window.__terraScreenshot())` — captures Phaser canvas + DOM overlays as base64 PNG. NEVER use `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout), `page.screenshot()` (same), or `newCDPSession()` (hangs).
+3. Take screenshot: `browser_evaluate(() => window.__terraScreenshotFile())` — saves to `/tmp/terra-screenshot.jpg`, returns path. Use `Read("/tmp/terra-screenshot.jpg")` to view. NEVER use raw `__terraScreenshot()` (base64 exceeds limits), `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout), `page.screenshot()` (same), or `newCDPSession()` (hangs).
 4. Check console: `mcp__playwright__browser_console_messages`
 5. Report any visual issues or console errors.

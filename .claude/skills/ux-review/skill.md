@@ -233,7 +233,7 @@ Disable animations, then capture:
 ```javascript
 document.documentElement.setAttribute('data-pw-animations', 'disabled');
 ```
-Take screenshot via `browser_evaluate(() => window.__terraScreenshot())` — captures both Phaser canvas + DOM overlays as base64 PNG. NEVER use `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout), `page.screenshot()` (same issue), or `newCDPSession()` (hangs permanently). Use `browser_snapshot` for supplementary DOM state.
+Take screenshot via `browser_evaluate(() => window.__terraScreenshotFile())` — saves to `/tmp/terra-screenshot.jpg`, returns path. Use `Read("/tmp/terra-screenshot.jpg")` to view. Captures both Phaser canvas + DOM overlays. NEVER use raw `__terraScreenshot()` (base64 exceeds limits), `mcp__playwright__browser_take_screenshot` (Phaser RAF causes 30s timeout), `page.screenshot()` (same issue), or `newCDPSession()` (hangs permanently). Use `browser_snapshot` for supplementary DOM state.
 
 ### Phase 3: Evaluate
 
