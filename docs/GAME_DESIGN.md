@@ -396,6 +396,8 @@ Because the counter persists across encounters, Surge timing becomes unpredictab
 | **Vulnerable** | Increases incoming damage by 50% (1 turn base) |
 | **Poison** | Deals flat damage per turn (stacks additively) |
 | **Slow** | Skips enemy's next defend/buff action |
+| **Burn** | On-hit amplifier: next hit deals +N bonus damage (N = current stacks), then stacks halve (round down). Expires at 0. Does NOT trigger on Thorns/reflect damage. Stacks additively. Multi-hit cards trigger Burn once per hit. Self-Burn variant: player's own Burn triggers when hit by enemy attack (infrastructure for AR-211 Volatile Manuscript relic). |
+| **Bleed** | Persistent amplifier: each card-play attack against the target deals +N bonus damage (N = stacks). Does NOT trigger on Poison ticks, Thorns, or Burn. Stacks additively. Decays by 1 at end of each enemy turn. Does not deal independent damage. |
 
 ### Buffs (applied to player)
 
@@ -454,6 +456,8 @@ If the player makes no Charge plays during their turn, the enemy gains **+1 Stre
 - Poison stacks additively (3 poison + 3 poison = 6 poison per turn, each instance decays independently)
 - Block stacks additively within a turn
 - Empower consumes on first card played (not on Charge activation)
+- Burn stacks additively (6 Burn + 4 Burn = 10 Burn). Expires by halving to 0 on each hit, not by turn countdown.
+- Bleed stacks additively. Decays by 1 at end of each enemy turn. Does not trigger on passive damage sources.
 
 ---
 

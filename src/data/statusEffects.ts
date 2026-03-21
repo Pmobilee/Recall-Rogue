@@ -3,7 +3,7 @@
 // NO Phaser, Svelte, or DOM imports.
 
 /** The types of status effects that can be applied to players or enemies. */
-export type StatusEffectType = 'poison' | 'regen' | 'strength' | 'weakness' | 'vulnerable' | 'immunity';
+export type StatusEffectType = 'poison' | 'regen' | 'strength' | 'weakness' | 'vulnerable' | 'immunity' | 'burn' | 'bleed';
 
 /** A single active status effect instance. */
 export interface StatusEffect {
@@ -23,6 +23,10 @@ export interface TickResult {
   poisonDamage: number;
   /** Total regen healing applied this tick. */
   regenHeal: number;
+  /** Burn bonus dealt this tick (always 0 — Burn fires on-hit, not per tick). */
+  burnBonusDealt: number;
+  /** Bleed bonus dealt this tick (always 0 — Bleed fires on card-play damage, not per tick). */
+  bleedBonusDealt: number;
 }
 
 /**
@@ -80,7 +84,43 @@ export function tickStatusEffects(effects: StatusEffect[]): TickResult {
   effects.length = 0;
   effects.push(...remaining);
 
-  return { effects, poisonDamage, regenHeal };
+  return { effects, poisonDamage, regenHeal, burnBonusDealt: 0, bleedBonusDealt: 0 };
+}
+
+/**
+ * Triggers Burn on a hit. Returns the bonus damage dealt and the updated Burn stack count.
+ * Burn deals damage equal to current stacks, then halves (round down). Expires at 0.
+ * Does NOT trigger on Thorns/reflect damage — call only from card-play attack paths.
+ *
+ * @param effects - The target's status effects array (mutated in place).
+ * @returns { bonusDamage, stacksAfter }
+ */
+export function triggerBurn(effects: StatusEffect[]): { bonusDamage: number; stacksAfter: number } {
+  const burn = effects.find(e => e.type === 'burn' && e.turnsRemaining > 0);
+  if (!burn) return { bonusDamage: 0, stacksAfter: 0 };
+  const bonusDamage = burn.value;
+  burn.value = Math.floor(burn.value / 2);
+  if (burn.value <= 0) {
+    const idx = effects.indexOf(burn);
+    if (idx !== -1) effects.splice(idx, 1);
+    return { bonusDamage, stacksAfter: 0 };
+  }
+  return { bonusDamage, stacksAfter: burn.value };
+}
+
+/**
+ * Returns the Bleed bonus damage for the given damage source.
+ * Bleed adds +BLEED_BONUS_PER_STACK per stack to incoming card-play damage.
+ * Does NOT mutate stacks — decay is handled separately at end of enemy turn.
+ * Import BLEED_BONUS_PER_STACK from balance.ts at the call site.
+ *
+ * @param effects - The target's status effects array.
+ * @param bleedBonusPerStack - Flat bonus per stack (from BLEED_BONUS_PER_STACK constant).
+ * @returns The flat bonus damage from Bleed (0 if no Bleed stacks).
+ */
+export function getBleedBonus(effects: StatusEffect[], bleedBonusPerStack: number): number {
+  const bleed = effects.find(e => e.type === 'bleed' && e.turnsRemaining > 0);
+  return bleed ? bleed.value * bleedBonusPerStack : 0;
 }
 
 /**

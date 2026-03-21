@@ -874,6 +874,18 @@ export function getBalanceOverrides(): BalanceOverrides | null {
 // REMOVED AR-59.12: Starter relic selection screen removed. Relics are earned through encounters.
 // export const STARTER_RELIC_CHOICES = ['scholars_hat', 'iron_buckler', 'war_drum'] as const
 
+// === BURN STATUS EFFECT (AR-203) ===
+/** When true, Burn triggers on every hit and halves after triggering. */
+export const BURN_HALVE_ON_HIT = true;
+/** When true, Burn halving rounds down (floor). */
+export const BURN_ROUND_DOWN = true;
+
+// === BLEED STATUS EFFECT (AR-203) ===
+/** Flat bonus damage Bleed adds to incoming card-play damage, per stack. */
+export const BLEED_BONUS_PER_STACK = 1;
+/** How many Bleed stacks decay at the end of each enemy turn. */
+export const BLEED_DECAY_PER_TURN = 1;
+
 /** Total number of cards in the fixed starter deck (AR-59.6). */
 export const STARTER_DECK_SIZE = 10;
 

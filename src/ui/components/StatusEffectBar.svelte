@@ -29,8 +29,8 @@
     fortify: { name: 'Fortify', icon: '🏰', color: '#94a3b8', desc: (v) => `${v} block persists into next turn` },
     overclock: { name: 'Overclock', icon: '⚙️', color: '#e879f9', desc: () => `Next card effect doubled, draw -1 next turn` },
     slow: { name: 'Slow', icon: '🐌', color: '#a1a1aa', desc: (v, t) => `Skips next defend/buff action (${t} turn${t !== 1 ? 's' : ''} left)` },
-    burn: { name: 'Burn', icon: '🔥', color: '#f97316', desc: (v, t) => `${v} fire damage at end of turn (${t} turn${t !== 1 ? 's' : ''} left)` },
-    bleed: { name: 'Bleed', icon: '🩸', color: '#ef4444', desc: (v, t) => `${v} bleed damage at end of turn (${t} turn${t !== 1 ? 's' : ''} left)` },
+    burn: { name: 'Burn', icon: '🔥', color: '#f97316', desc: (v) => `Burn [${v}]: Next hit deals +${v} bonus damage, then halves.` },
+    bleed: { name: 'Bleed', icon: '🩸', color: '#ef4444', desc: (v) => `Bleed [${v}]: Incoming card attacks deal +${v} damage. Decays 1/turn.` },
     freeze: { name: 'Freeze', icon: '❄️', color: '#38bdf8', desc: (v, t) => `Frozen — skips action (${t} turn${t !== 1 ? 's' : ''} left)` },
   }
 

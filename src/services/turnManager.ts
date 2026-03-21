@@ -24,7 +24,7 @@ import {
 } from './playerCombatState';
 import { resolveCardEffect, isCardBlocked } from './cardEffectResolver';
 import { applyDamageToEnemy, executeEnemyIntent, rollNextIntent, tickEnemyStatusEffects, dispatchEnemyTurnStart } from './enemyManager';
-import { applyStatusEffect } from '../data/statusEffects';
+import { applyStatusEffect, triggerBurn, getBleedBonus } from '../data/statusEffects';
 import type { EnemyReactContext } from '../data/enemies';
 import { hasSynergy, getMasteryAscensionBonus } from './relicSynergyResolver';
 import {
@@ -39,6 +39,8 @@ import {
   ENRAGE_LOW_HP_BONUS,
   FIZZLE_EFFECT_RATIO,
   getBalanceValue,
+  BLEED_BONUS_PER_STACK,
+  BLEED_DECAY_PER_TURN,
 } from '../data/balance';
 import { MECHANICS_BY_TYPE, type PlayMode } from '../data/mechanics';
 import { difficultyMode } from './cardPreferences';
@@ -958,7 +960,70 @@ export function playCardAction(
     effect.enemyDefeated = effect.damageDealt >= enemy.currentHP;
   }
 
+  // AR-203 Step 11-12: Burn and Bleed bonuses — card-play attacks only (not Thorns/reflect).
+  // For multi-hit cards (hitCount > 1), resolve Burn per-hit in a loop.
+  // For single-hit cards, apply once before block.
   if (effect.damageDealt > 0) {
+    const hitCount = effect.hitCount ?? 1;
+    if (hitCount > 1) {
+      // Multi-hit: Burn halves after each hit; Bleed applies per hit.
+      const perHitBase = effect.damageDealt; // resolver set this to per-hit value
+      // Bleed stacks are constant for all hits (decay happens at end of enemy turn, not mid-card).
+      const bleedBonusPerHit = getBleedBonus(enemy.statusEffects, BLEED_BONUS_PER_STACK);
+      let totalDamage = 0;
+      let totalBleedBonus = 0;
+      for (let i = 0; i < hitCount; i++) {
+        let hitDamage = perHitBase;
+        const burnResult = triggerBurn(enemy.statusEffects);
+        if (burnResult.bonusDamage > 0) {
+          hitDamage += burnResult.bonusDamage;
+          turnState.turnLog.push({
+            type: 'status_tick',
+            message: `Burn (hit ${i + 1}): +${burnResult.bonusDamage} damage (${burnResult.stacksAfter} stacks remaining)`,
+            value: burnResult.bonusDamage,
+          });
+        }
+        if (bleedBonusPerHit > 0) {
+          hitDamage += bleedBonusPerHit;
+          totalBleedBonus += bleedBonusPerHit;
+        }
+        totalDamage += hitDamage;
+      }
+      if (totalBleedBonus > 0) {
+        turnState.turnLog.push({
+          type: 'status_tick',
+          message: `Bleed: +${totalBleedBonus} damage (${hitCount} hits × ${bleedBonusPerHit})`,
+          value: totalBleedBonus,
+        });
+      }
+      effect.damageDealt = totalDamage;
+      effect.finalValue = totalDamage;
+      effect.enemyDefeated = totalDamage >= enemy.currentHP;
+    } else {
+      // Single-hit: Burn triggers once, Bleed adds flat bonus.
+      const burnResult = triggerBurn(enemy.statusEffects);
+      if (burnResult.bonusDamage > 0) {
+        effect.damageDealt += burnResult.bonusDamage;
+        effect.finalValue += burnResult.bonusDamage;
+        effect.enemyDefeated = effect.damageDealt >= enemy.currentHP;
+        turnState.turnLog.push({
+          type: 'status_tick',
+          message: `Burn triggered: +${burnResult.bonusDamage} damage (${burnResult.stacksAfter} stacks remaining)`,
+          value: burnResult.bonusDamage,
+        });
+      }
+      const bleedBonus = getBleedBonus(enemy.statusEffects, BLEED_BONUS_PER_STACK);
+      if (bleedBonus > 0) {
+        effect.damageDealt += bleedBonus;
+        effect.finalValue += bleedBonus;
+        effect.enemyDefeated = effect.damageDealt >= enemy.currentHP;
+        turnState.turnLog.push({
+          type: 'status_tick',
+          message: `Bleed: +${bleedBonus} damage`,
+          value: bleedBonus,
+        });
+      }
+    }
     const damageResult = applyDamageToEnemy(enemy, effect.damageDealt);
     effect.enemyDefeated = damageResult.defeated;
     turnState.damageDealtThisTurn += effect.damageDealt;
@@ -1011,6 +1076,25 @@ export function playCardAction(
 
   for (const status of effect.statusesApplied) {
     applyStatusEffect(enemy.statusEffects, status);
+  }
+
+  // AR-203: Apply Burn stacks to enemy from card effects (e.g. ignite mechanic).
+  // turnsRemaining: 99 = sentinel (Burn expires by halving to 0, not by turn countdown).
+  if ((effect.applyBurnStacks ?? 0) > 0) {
+    applyStatusEffect(enemy.statusEffects, {
+      type: 'burn',
+      value: effect.applyBurnStacks!,
+      turnsRemaining: 99,
+    });
+  }
+  // AR-203: Apply Bleed stacks to enemy from card effects (e.g. lacerate mechanic).
+  // turnsRemaining: 99 = sentinel (Bleed expires by decay at end of enemy turn, not countdown).
+  if ((effect.applyBleedStacks ?? 0) > 0) {
+    applyStatusEffect(enemy.statusEffects, {
+      type: 'bleed',
+      value: effect.applyBleedStacks!,
+      turnsRemaining: 99,
+    });
   }
 
   if (effect.applyImmunity) {
@@ -1252,6 +1336,19 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       turnState.triggeredRelicId = 'glass_cannon';
     }
 
+    // AR-203: Self-Burn — player's own Burn stacks trigger when hit by enemy attack.
+    // Bonus = current stacks, then halves. Applied before block (consistent with enemy-targeting Burn).
+    // Infrastructure for Volatile Manuscript relic (AR-211).
+    const selfBurnResult = triggerBurn(playerState.statusEffects);
+    if (selfBurnResult.bonusDamage > 0) {
+      incomingDamage += selfBurnResult.bonusDamage;
+      turnState.turnLog.push({
+        type: 'status_tick',
+        message: `Self-Burn triggered: +${selfBurnResult.bonusDamage} incoming damage`,
+        value: selfBurnResult.bonusDamage,
+      });
+    }
+
     const shieldBefore = playerState.shield;
     const damageResult = takeDamage(playerState, incomingDamage);
     damageDealt = damageResult.actualDamage;
@@ -1394,6 +1491,18 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       message: `Enemy took ${enemyTick.poisonDamage} poison damage`,
       value: enemyTick.poisonDamage,
     });
+  }
+
+  // AR-203: Bleed decays by BLEED_DECAY_PER_TURN at end of each enemy turn.
+  // Happens AFTER the Poison tick so Bleed does not amplify Poison damage.
+  // Bleed only triggers on card-play damage (effect.damageDealt path), not passive damage.
+  const bleedEffect = enemy.statusEffects.find(e => e.type === 'bleed');
+  if (bleedEffect) {
+    bleedEffect.value = Math.max(0, bleedEffect.value - BLEED_DECAY_PER_TURN);
+    if (bleedEffect.value <= 0) {
+      const idx = enemy.statusEffects.indexOf(bleedEffect);
+      if (idx !== -1) enemy.statusEffects.splice(idx, 1);
+    }
   }
 
   for (const passive of turnState.activePassives) {

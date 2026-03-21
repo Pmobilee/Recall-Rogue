@@ -3600,7 +3600,7 @@
         "category": "debuff",
         "description": "Damage per turn equal to value",
         "status": "working",
-        "lastChangedDate": "not_checked",
+        "lastChangedDate": "2026-03-22",
         "visualInspectionDate_portraitMobile": "not_checked",
         "visualInspectionDate_landscapeMobile": "not_checked",
         "visualInspectionDate_landscapePC": "not_checked",
@@ -3677,6 +3677,34 @@
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": ""
+      },
+      {
+        "id": "burn",
+        "name": "Burn",
+        "category": "debuff",
+        "description": "On-hit amplifier: bonus = stacks, then halves. Self-Burn variant for player.",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "mechanicInspectionDate": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": "AR-203. On-hit: bonus = stacks, then halves. Self-Burn variant for player."
+      },
+      {
+        "id": "bleed",
+        "name": "Bleed",
+        "category": "debuff",
+        "description": "+1/stack to card-play damage. Decays 1/turn at end of enemy turn.",
+        "status": "active",
+        "lastChangedDate": "2026-03-22",
+        "visualInspectionDate_portraitMobile": "not_checked",
+        "visualInspectionDate_landscapeMobile": "not_checked",
+        "visualInspectionDate_landscapePC": "not_checked",
+        "mechanicInspectionDate": "not_checked",
+        "uxReviewDate": "not_checked",
+        "notes": "AR-203. +1/stack to card-play damage. Decays 1/turn at end of enemy turn."
       }
     ],
     "rewardTypes": [

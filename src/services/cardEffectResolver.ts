@@ -64,6 +64,16 @@ export interface CardEffectResult {
   revealNextIntent?: boolean;
   /** recycle charge_correct bonus: number of cards to draw from discard pile */
   drawFromDiscard?: number;
+  /** AR-203: Burn stacks to apply to the target on this card play. */
+  applyBurnStacks?: number;
+  /** AR-203: Bleed stacks to apply to the target on this card play. */
+  applyBleedStacks?: number;
+  /**
+   * AR-203: If set, this card's damage was resolved as N separate hits.
+   * Burn triggers once per hit (halving after each). turnManager resolves per-hit loop.
+   * When hitCount > 1, damageDealt in this result is the PER-HIT base value (not total).
+   */
+  hitCount?: number;
 }
 
 export interface AdvancedResolveOptions {
@@ -294,6 +304,13 @@ export function resolveCardEffect(
   switch (mechanicId) {
     case 'multi_hit': {
       const hits = (card.secondaryValue ?? mechanic?.secondaryValue ?? 3) + (activeRelicIds.has('chain_lightning_rod') ? 1 : 0);
+      // AR-203: Set hitCount so turnManager resolves Burn per-hit instead of combined.
+      // damageDealt is set to the per-hit base value; turnManager accumulates the total.
+      if (hits > 1) {
+        applyAttackDamage(finalValue); // per-hit base (Vulnerable already applied)
+        result.hitCount = hits;
+        return result;
+      }
       applyAttackDamage(finalValue * hits);
       return result;
     }
@@ -458,6 +475,20 @@ export function resolveCardEffect(
         // defend, buff, heal, or unknown — go offensive
         applyAttackDamage(finalValue);
       }
+      return result;
+    }
+    // AR-203: Ignite — applies Burn stacks to enemy. Damage bonus fires on next hit via Burn trigger.
+    // Mechanic definition lands in a separate AR; this stub handles when the mechanic is present.
+    case 'ignite': {
+      const burnStacks = isChargeCorrect ? 8 : (isChargeWrong ? 1 : 3);
+      result.applyBurnStacks = burnStacks;
+      return result;
+    }
+    // AR-203: Lacerate — applies Bleed stacks to enemy. Bonus applies on next card-play damage.
+    // Mechanic definition lands in a separate AR; this stub handles when the mechanic is present.
+    case 'lacerate': {
+      const bleedStacks = isChargeCorrect ? 6 : (isChargeWrong ? 1 : 2);
+      result.applyBleedStacks = bleedStacks;
       return result;
     }
     default:
