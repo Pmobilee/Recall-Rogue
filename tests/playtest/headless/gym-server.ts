@@ -72,6 +72,10 @@ interface RunState {
   shopCards: Card[];
   shopRemovalCost: number;
   restUpgradeCandidates: number[];
+
+  // Economy tracking
+  removalCount: number;
+  pendingPostShopPhase: GamePhase | null;
 }
 
 interface PrevState {
@@ -130,6 +134,7 @@ function makeSyntheticCard(
     baseEffectValue: baseValues[cardType] ?? 10,
     effectMultiplier: 1.0,
     apCost: 1,
+    masteryLevel: 0,
   };
 }
 
@@ -217,19 +222,21 @@ function generateCardRewards(_deckCards: Card[]): Card[] {
   return rewards;
 }
 
-function generateShop(floor: number): { relics: string[]; cards: Card[]; removalCost: number } {
+function generateShop(_floor: number): { relics: string[]; cards: Card[] } {
   const relics = [...STARTER_RELIC_IDS].sort(() => Math.random() - 0.5).slice(0, 2);
   const cards = generateCardRewards([]);
-  const removalCost = 75;
-  return { relics, cards, removalCost };
+  return { relics, cards };
 }
 
-function relicPrice(floor: number): number {
-  return 80 + floor * 10;
-}
+/** Real game relic price (common tier). */
+const RELIC_PRICE = 100;
 
-function cardPrice(floor: number): number {
-  return 40 + floor * 5;
+/** Real game card price (tier 1). */
+const CARD_PRICE = 50;
+
+/** Compute removal cost: 50 base + 25 per prior removal in this run. */
+function removalCost(removalCount: number): number {
+  return 50 + removalCount * 25;
 }
 
 /** Simple deterministic hash of a relic ID string to [0, 1]. */
@@ -237,6 +244,41 @@ function hashRelicId(id: string): number {
   let sum = 0;
   for (let i = 0; i < id.length; i++) sum += id.charCodeAt(i);
   return (sum % 997) / 997;
+}
+
+/**
+ * Applies per-relic effects at appropriate trigger points.
+ * Called after combat victory for post-combat relics (herbal_pouch, lucky_coin).
+ * iron_shield is applied at turn start via TurnState; vitality_ring is applied at reset.
+ */
+function applyRelicEffects(run: RunState): void {
+  for (const relicId of run.relics) {
+    switch (relicId) {
+      case 'whetstone':
+        // +2 attack damage — applied during card play via TurnState (skip here)
+        break;
+      case 'iron_shield':
+        // +2 block each turn — applied at turn start via TurnState
+        if (run.turnState) {
+          run.turnState.playerState.shield += 2;
+        }
+        break;
+      case 'vitality_ring':
+        // +20 max HP — applied at run start in handleReset
+        break;
+      case 'herbal_pouch':
+        // Heal 8 HP post-combat
+        run.playerHP = Math.min(run.playerMaxHP, run.playerHP + 8);
+        break;
+      case 'swift_boots':
+        // Draw 6 cards instead of 5 — handled via TurnState baseDrawCount
+        break;
+      case 'lucky_coin':
+        // +2 gold per encounter
+        run.gold += 2;
+        break;
+    }
+  }
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -552,15 +594,15 @@ function getActionMask(run: RunState): boolean[] {
     mask[29] = true; // skip (don't acquire)
 
   } else if (run.phase === 'shop') {
-    // Buy relic 0/1 (if affordable)
-    if (run.shopRelics.length >= 1 && run.gold >= 80) mask[18] = true;
-    if (run.shopRelics.length >= 2 && run.gold >= 80) mask[19] = true;
-    // Buy card 0/1/2
-    if (run.shopCards.length >= 1 && run.gold >= 40) mask[20] = true;
-    if (run.shopCards.length >= 2 && run.gold >= 40) mask[22] = true;
+    // Buy relic 0/1 (common price = 100g)
+    if (run.shopRelics.length >= 1 && run.shopRelics[0] && run.gold >= RELIC_PRICE) mask[18] = true;
+    if (run.shopRelics.length >= 2 && run.shopRelics[1] && run.gold >= RELIC_PRICE) mask[19] = true;
+    // Buy card 0/1 (tier 1 price = 50g)
+    if (run.shopCards.length >= 1 && run.shopCards[0] && run.gold >= CARD_PRICE) mask[20] = true;
+    if (run.shopCards.length >= 2 && run.shopCards[1] && run.gold >= CARD_PRICE) mask[22] = true;
     // Leaving is the action mapped to 21
     mask[21] = true; // leave shop
-    // Remove card
+    // Remove card (dynamic removal cost)
     if (run.deckCards.length > 5 && run.gold >= run.shopRemovalCost) mask[23] = true;
 
   } else if (run.phase === 'rest') {
@@ -634,12 +676,19 @@ const ENCOUNTERS_PER_FLOOR = 3;
 const RELIC_DROP_CHANCE_REGULAR = 0.20;
 
 /**
- * Advances to the next encounter or transitions to retreat_or_delve when the floor is done.
+ * Advances to the next encounter, or on floor completion offers an end-of-floor shop
+ * before transitioning to retreat_or_delve.
  */
 function advanceEncounter(run: RunState): void {
   run.encounterInFloor++;
   if (run.encounterInFloor > ENCOUNTERS_PER_FLOOR) {
-    run.phase = 'retreat_or_delve';
+    // End-of-floor: offer a shop before the retreat/delve decision
+    const shopData = generateShop(run.floor);
+    run.shopRelics = shopData.relics;
+    run.shopCards = shopData.cards;
+    run.shopRemovalCost = removalCost(run.removalCount);
+    run.phase = 'shop';
+    run.pendingPostShopPhase = 'retreat_or_delve';
   } else {
     run.roomOptions = generateRoomOptionsSimple(run.floor);
     // For encounter 3 always force combat (boss/mini-boss)
@@ -655,21 +704,30 @@ function advanceEncounter(run: RunState): void {
   run.pendingCardRewards = [];
   run.pendingRelicRewards = [];
   run.pendingRelicToAcquire = null;
-  run.shopCards = [];
-  run.shopRelics = [];
   run.restUpgradeCandidates = [];
   run.turnState = null;
 }
 
 /**
- * After a combat victory, heals the player, adds gold, generates card rewards.
+ * After a combat victory, heals the player, adds gold, applies relic effects,
+ * generates card rewards.
+ *
+ * Gold formula mirrors real game: base 10 (regular) or 30 (encounter 3 mini-boss/boss),
+ * scaled by floor: round(base * (1 + (floor-1) * 0.15)).
+ * Combo bonus: maxCombo * 2 (simplified to 0 here since we don't track maxCombo).
  */
 function onCombatVictory(run: RunState): void {
   const healAmount = Math.floor(run.playerMaxHP * POST_ENCOUNTER_HEAL_PCT);
   run.playerHP = Math.min(run.playerMaxHP, run.playerHP + healAmount);
 
-  // Gold reward: 10 + floor * 3 per encounter
-  run.gold += 10 + run.floor * 3;
+  // Gold reward based on encounter type and floor (matches real game balance.ts)
+  const isEncounter3 = run.encounterInFloor === ENCOUNTERS_PER_FLOOR;
+  const baseGold = isEncounter3 ? 30 : 10;
+  const goldEarned = Math.round(baseGold * (1 + (run.floor - 1) * 0.15));
+  run.gold += goldEarned;
+
+  // Apply post-combat relic effects (herbal_pouch heals, lucky_coin adds gold)
+  applyRelicEffects(run);
 
   // Generate 3 card reward options
   run.pendingCardRewards = generateCardRewards(run.deckCards);
@@ -749,9 +807,17 @@ function handleReset(opts: ResetOpts): object {
     roomOptions: generateRoomOptionsSimple(1),
     shopRelics: [],
     shopCards: [],
-    shopRemovalCost: 75,
+    shopRemovalCost: 50,
     restUpgradeCandidates: [],
+    removalCount: 0,
+    pendingPostShopPhase: null,
   };
+
+  // Apply vitality_ring bonus at run start
+  if (run.relics.includes('vitality_ring')) {
+    run.playerMaxHP += 20;
+    run.playerHP = Math.min(run.playerHP + 20, run.playerMaxHP);
+  }
 
   prevState = { playerHp: playerHP, enemyHp: 0, comboCount: 0, chainLength: 0 };
 
@@ -861,13 +927,28 @@ function handleStep(actionId: number): object {
         return { obs, reward: -0.1, done: false, truncated: false, info: { invalid: 'insufficient_ap', actionMask }, actionMask };
       }
 
-      const wasCorrect = Math.random() < run.correctRate;
+      // Mastery-aware correctness: higher mastery = higher correct rate.
+      // At base correctRate=0.65: mastery 0→65%, 1→69%, 2→73%, 3→77%, 4→81%, 5→100%.
+      const cardMastery = (card as any).masteryLevel ?? 0;
+      const masteryBonus = (cardMastery / 5) * (1.0 - run.correctRate) * 0.6;
+      const effectiveCorrectRate = Math.min(1.0, run.correctRate + masteryBonus);
+      const wasCorrect = cardMastery >= 5 ? true : Math.random() < effectiveCorrectRate;
       const speedBonus = wasCorrect && Math.random() < 0.5;
       const chainLengthBefore = ts.chainLength;
       const shieldBefore = ts.playerState.shield;
 
       const playResult = playCardAction(ts, card.id, wasCorrect, speedBonus, mode as 'charge' | 'quick');
       run.turnState = playResult.turnState;
+
+      // Update card mastery based on charge play outcome
+      if (mode === 'charge') {
+        const masteryBefore = (card as any).masteryLevel ?? 0;
+        if (wasCorrect && masteryBefore < 5) {
+          (card as any).masteryLevel = masteryBefore + 1;
+        } else if (!wasCorrect && masteryBefore > 0) {
+          (card as any).masteryLevel = masteryBefore - 1;
+        }
+      }
 
       const damageDealt = playResult.effect.damageDealt;
       const shieldGained = Math.max(0, run.turnState.playerState.shield - shieldBefore);
@@ -1039,7 +1120,8 @@ function handleStep(actionId: number): object {
         const shopData = generateShop(run.floor);
         run.shopRelics = shopData.relics;
         run.shopCards = shopData.cards;
-        run.shopRemovalCost = shopData.removalCost;
+        run.shopRemovalCost = removalCost(run.removalCount);
+        run.pendingPostShopPhase = null;
         run.phase = 'shop';
         reward = 0;
         break;
@@ -1122,16 +1204,14 @@ function handleStep(actionId: number): object {
   // ── SHOP PHASE ────────────────────────────────────────────────────────────
   else if (run.phase === 'shop') {
     // 18=buy relic 0, 19=buy relic 1, 20=buy card 0, 21=leave, 22=buy card 1, 23=remove card
-    const rPrice = relicPrice(run.floor);
-    const cPrice = cardPrice(run.floor);
 
     switch (actionId) {
       case 18: {
         const relicId = run.shopRelics[0];
-        if (relicId && run.gold >= rPrice) {
+        if (relicId && run.gold >= RELIC_PRICE) {
           if (run.relics.length < 5) {
             run.relics.push(relicId);
-            run.gold -= rPrice;
+            run.gold -= RELIC_PRICE;
             run.shopRelics[0] = '';
             reward = 0.3;
             info['shopBought'] = `relic:${relicId}`;
@@ -1147,10 +1227,10 @@ function handleStep(actionId: number): object {
       }
       case 19: {
         const relicId = run.shopRelics[1];
-        if (relicId && run.gold >= rPrice) {
+        if (relicId && run.gold >= RELIC_PRICE) {
           if (run.relics.length < 5) {
             run.relics.push(relicId);
-            run.gold -= rPrice;
+            run.gold -= RELIC_PRICE;
             run.shopRelics[1] = '';
             reward = 0.3;
             info['shopBought'] = `relic:${relicId}`;
@@ -1166,9 +1246,9 @@ function handleStep(actionId: number): object {
       }
       case 20: {
         const card = run.shopCards[0];
-        if (card && run.gold >= cPrice) {
+        if (card && run.gold >= CARD_PRICE) {
           run.deckCards.push(card);
-          run.gold -= cPrice;
+          run.gold -= CARD_PRICE;
           run.shopCards[0] = null as any;
           reward = 0.1;
           info['shopBought'] = `card:${card.cardType}`;
@@ -1179,17 +1259,24 @@ function handleStep(actionId: number): object {
         break;
       }
       case 21: {
-        // Leave shop
+        // Leave shop — check if we have a pending post-shop phase (e.g. end-of-floor retreat/delve)
         reward = 0;
         info['shop'] = 'left';
-        advanceEncounter(run);
+        if (run.pendingPostShopPhase !== null) {
+          run.phase = run.pendingPostShopPhase;
+          run.pendingPostShopPhase = null;
+          run.shopCards = [];
+          run.shopRelics = [];
+        } else {
+          advanceEncounter(run);
+        }
         break;
       }
       case 22: {
         const card = run.shopCards[1];
-        if (card && run.gold >= cPrice) {
+        if (card && run.gold >= CARD_PRICE) {
           run.deckCards.push(card);
-          run.gold -= cPrice;
+          run.gold -= CARD_PRICE;
           run.shopCards[1] = null as any;
           reward = 0.1;
           info['shopBought'] = `card:${card.cardType}`;
@@ -1200,13 +1287,15 @@ function handleStep(actionId: number): object {
         break;
       }
       case 23: {
-        // Remove worst card (highest index, simplified heuristic)
+        // Remove worst card (first 'debuff' found, or last card — simplified heuristic)
         if (run.gold >= run.shopRemovalCost && run.deckCards.length > 5) {
-          // Remove last card (or the first 'debuff' if possible — simplified)
-          const removeIdx = run.deckCards.findIndex(c => c.cardType === 'debuff') ?? run.deckCards.length - 1;
+          const removeIdx = run.deckCards.findIndex(c => c.cardType === 'debuff');
           const idx = removeIdx >= 0 ? removeIdx : run.deckCards.length - 1;
           run.deckCards.splice(idx, 1);
           run.gold -= run.shopRemovalCost;
+          run.removalCount++;
+          // Update removal cost for next potential removal this shop visit
+          run.shopRemovalCost = removalCost(run.removalCount);
           reward = 0.1;
           info['shopRemoved'] = true;
         } else {
