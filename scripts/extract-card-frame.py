@@ -135,6 +135,15 @@ def main() -> None:
     # ── 1. Base frame ──────────────────────────────────────────────────────────
     print("\n── Base frame ──")
     base_canvas = layer_to_full_canvas(layer_base)
+    # Cut out the art window area to make it transparent (card art shows through).
+    # The pentagon art window is defined by the 'Artwork Area Top center' guide layer.
+    # A rectangular cutout is used — the pentagon border on the base frame masks the corners.
+    base_arr = np.array(base_canvas)
+    # Art window rectangle from PSD guide: x=194, y=186, w=498, h=412
+    ART_X, ART_Y, ART_W, ART_H = 194, 186, 498, 412
+    inset = 4  # small inset so the pentagon border isn't clipped
+    base_arr[ART_Y + inset : ART_Y + ART_H - inset, ART_X + inset : ART_X + ART_W - inset, 3] = 0
+    base_canvas = Image.fromarray(base_arr)
     out_path = OUT_DIR / "card-frame-base.webp"
     save_webp(base_canvas, out_path, quality=WEBP_QUALITY_HIRES, lossless=True)
     save_webp(make_lowres(base_canvas), LOWRES_DIR / "card-frame-base.webp",
