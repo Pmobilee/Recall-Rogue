@@ -97,6 +97,8 @@ function deserializeRunState(saved: SerializedRunState): RunState {
     ascensionLevel,
     ascensionModifiers: savedModifiers ? { ...defaultModifiers, ...savedModifiers } : defaultModifiers,
     retreatRewardLocked: Boolean(savedAny['retreatRewardLocked']),
+    // Default to 1 for saves created before AR-122 (globalTurnCounter didn't exist).
+    globalTurnCounter: typeof savedAny['globalTurnCounter'] === 'number' ? savedAny['globalTurnCounter'] : 1,
   };
 }
 

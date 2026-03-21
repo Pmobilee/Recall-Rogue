@@ -42,6 +42,8 @@
     onchargeplay?: (index: number) => void
     /** True during Surge turns — CHARGE! button shows "+0 AP" instead of "+1 AP". */
     isSurgeActive?: boolean
+    /** AR-122: True when Chain Momentum is active — next Charge costs +0 AP (surcharge waived). */
+    nextChargeFree?: boolean
     /** AR-76: True when quiz is active in landscape — dims the card hand slightly. */
     quizVisible?: boolean
     /** Focus AP discount: 1 when Focus is active with charges, 0 otherwise. Reduces displayed and effective AP cost. */
@@ -70,6 +72,7 @@
     oncastdirect,
     onchargeplay,
     isSurgeActive = false,
+    nextChargeFree = false,
     quizVisible = false,
     focusDiscount = 0,
     masteryFlashes = {},
@@ -431,7 +434,7 @@
       // Released in Charge zone (above screen-position threshold) — trigger Charge Play (quiz)
       // Check affordability: if charge can't be paid, fall back to Quick Play
       const card = cards[index]
-      const chargeApCost = (card?.apCost ?? 1) + (isSurgeActive ? 0 : 1)
+      const chargeApCost = (card?.apCost ?? 1) + (isSurgeActive || nextChargeFree ? 0 : 1)
       const canAffordCharge = card && card.tier !== '3' && chargeApCost <= apCurrent
       if (canAffordCharge && onchargeplay) {
         onchargeplay(index)
@@ -624,7 +627,7 @@
     {@const tierVisual = getTierUpVisualSignature(card.factId)}
     {@const runState = $activeRunState}
     {@const isMastered = card.tier === '3'}
-    {@const chargeApCostForDrag = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive ? 0 : 1)}
+    {@const chargeApCostForDrag = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || nextChargeFree ? 0 : 1)}
     {@const chargeAffordableForDrag = chargeApCostForDrag <= apCurrent}
     {@const showChargeZoneIndicator = isDraggingThis && isInChargeZone && !isMastered && !!onchargeplay}
     {@const isDragInChargeZone = isDraggingThis && isInChargeZone && !isMastered}
@@ -779,14 +782,14 @@
           {#if !chargeAffordableForDrag}
             <span class="charge-zone-text charge-zone-text-disabled">NOT ENOUGH AP</span>
           {:else}
-            <span class="charge-zone-text">⚡ CHARGE {isSurgeActive ? '+0' : '+1'} AP</span>
+            <span class="charge-zone-text" class:momentum-active={nextChargeFree && !isSurgeActive}>⚡ CHARGE {isSurgeActive || nextChargeFree ? '+0' : '+1'} AP{nextChargeFree && !isSurgeActive ? ' ⚡' : ''}</span>
           {/if}
         </div>
       {/if}
     </button>
 
     {#if selectedIndex === i && card.tier !== '3' && (card.masteryLevel ?? 0) < 5 && onchargeplay && !disabled}
-      {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive ? 0 : 1)}
+      {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || nextChargeFree ? 0 : 1)}
       {@const chargeAffordable = chargeApCost <= apCurrent}
       <button
         class="charge-play-btn charge-play-btn-landscape"
@@ -801,7 +804,7 @@
         ontouchcancel={() => { chargePreviewActive = false }}
       >
         ⚡ CHARGE
-        <span class="charge-ap-badge">{isSurgeActive ? '+0' : '+1'} AP</span>
+        <span class="charge-ap-badge" class:momentum-active={nextChargeFree && !isSurgeActive}>{isSurgeActive || nextChargeFree ? '+0' : '+1'} AP</span>
       </button>
     {/if}
 
@@ -974,7 +977,7 @@
     {@const runState = $activeRunState}
     {@const isFreeCharge = card.factId ? isFirstChargeFree(card.factId, runState?.firstChargeFreeFactIds ?? new Set()) : false}
     {@const isMastered = card.tier === '3'}
-    {@const chargeApCostForDrag = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive ? 0 : 1)}
+    {@const chargeApCostForDrag = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || nextChargeFree ? 0 : 1)}
     {@const chargeAffordableForDrag = chargeApCostForDrag <= apCurrent}
     {@const showChargeZoneIndicator = isDraggingThis && isInChargeZone && !isMastered && !!onchargeplay}
     {@const isDragInChargeZone = isDraggingThis && isInChargeZone && !isMastered}
@@ -1139,14 +1142,14 @@
           {#if !chargeAffordableForDrag}
             <span class="charge-zone-text charge-zone-text-disabled">NOT ENOUGH AP</span>
           {:else}
-            <span class="charge-zone-text">⚡ CHARGE {isSurgeActive ? '+0' : '+1'} AP</span>
+            <span class="charge-zone-text" class:momentum-active={nextChargeFree && !isSurgeActive}>⚡ CHARGE {isSurgeActive || nextChargeFree ? '+0' : '+1'} AP{nextChargeFree && !isSurgeActive ? ' ⚡' : ''}</span>
           {/if}
         </div>
       {/if}
     </button>
 
     {#if selectedIndex === i && card.tier !== '3' && (card.masteryLevel ?? 0) < 5 && onchargeplay && !disabled}
-      {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive ? 0 : 1)}
+      {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || nextChargeFree ? 0 : 1)}
       {@const chargeAffordable = chargeApCost <= apCurrent}
       <button
         class="charge-play-btn"
@@ -1162,7 +1165,7 @@
         style="transform: translate3d({xOffset}px, calc(-80px - var(--card-h) - 8px), 0); width: calc(var(--card-w) * 1.2);"
       >
         CHARGE
-        <span class="charge-ap-badge">{isSurgeActive ? '+0' : '+1'} AP</span>
+        <span class="charge-ap-badge" class:momentum-active={nextChargeFree && !isSurgeActive}>{isSurgeActive || nextChargeFree ? '+0' : '+1'} AP</span>
       </button>
     {/if}
 
@@ -1706,6 +1709,21 @@
       0 0 8px rgba(248, 113, 113, 0.7),
       0 1px 2px rgba(0, 0, 0, 0.9);
     border-color: rgba(248, 113, 113, 0.4);
+  }
+
+  /* AR-122: Chain Momentum — green flash when nextChargeFree waives the surcharge */
+  .charge-zone-text.momentum-active {
+    color: #4ade80;
+    text-shadow:
+      0 0 8px rgba(74, 222, 128, 0.9),
+      0 0 16px rgba(74, 222, 128, 0.5),
+      0 1px 2px rgba(0, 0, 0, 0.9);
+    border-color: rgba(74, 222, 128, 0.5);
+  }
+
+  .charge-ap-badge.momentum-active {
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.2);
   }
 
   .card-selected {

@@ -7,7 +7,7 @@ import { isFirstChargeFree, markFirstChargeUsed, getFirstChargeWrongMultiplier }
 import { canMasteryUpgrade, canMasteryDowngrade, masteryUpgrade, masteryDowngrade, resetEncounterMasteryFlags } from './cardUpgradeService';
 import { getSurgeChargeSurcharge, isSurgeTurn } from './surgeSystem';
 import { resetChain, extendOrResetChain, getChainState } from './chainSystem';
-import { FIRST_CHARGE_FREE_AP_SURCHARGE, RELIC_AEGIS_STONE_MAX_CARRY } from '../data/balance';
+import { CHAIN_MOMENTUM_ENABLED, FIRST_CHARGE_FREE_AP_SURCHARGE, RELIC_AEGIS_STONE_MAX_CARRY } from '../data/balance';
 import { activeRunState } from './runStateStore';
 import type { EnemyInstance } from '../data/enemies';
 import type { StatusEffect } from '../data/statusEffects';
@@ -96,7 +96,17 @@ export type EncounterResult = 'victory' | 'defeat' | null;
 
 export interface TurnState {
   phase: TurnPhase;
+  /**
+   * Global turn counter for this run — persists across encounters.
+   * Used by the Surge system (isSurgeTurn). Set from RunState.globalTurnCounter
+   * at encounter start. Incremented on endPlayerTurn alongside encounterTurnNumber.
+   */
   turnNumber: number;
+  /**
+   * Per-encounter turn counter — resets to 1 at the start of each fight.
+   * Used by the enrage system (getEnrageBonus). Incremented on endPlayerTurn.
+   */
+  encounterTurnNumber: number;
   playerState: PlayerCombatState;
   enemy: EnemyInstance;
   deck: CardRunState;
@@ -169,6 +179,12 @@ export interface TurnState {
   chainType: number | null;
   /** Whether double_down has already been consumed this encounter. */
   doubleDownUsedThisEncounter: boolean;
+  /**
+   * Chain Momentum (AR-122): when true, the next Charge play this turn costs +0 AP surcharge
+   * instead of +1. Set after a correct Charge answer; consumed on the next Charge play.
+   * Resets on wrong Charge, Quick Play, or turn end.
+   */
+  nextChargeFree: boolean;
 }
 
 export interface PlayCardResult {
@@ -265,12 +281,14 @@ export function startEncounter(
   deck: CardRunState,
   enemy: EnemyInstance,
   playerMaxHP?: number,
+  globalTurnCounter: number = 1,
 ): TurnState {
   const playerState = createPlayerCombatState(playerMaxHP ?? getBalanceValue('playerStartHP', PLAYER_START_HP));
 
   const initialState: TurnState = {
     phase: 'player_action',
-    turnNumber: 1,
+    turnNumber: globalTurnCounter,
+    encounterTurnNumber: 1,
     playerState,
     enemy,
     deck,
@@ -324,11 +342,12 @@ export function startEncounter(
     thornsActive: false,
     thornsValue: 0,
     lastCardEffect: null,
-    isSurge: isSurgeTurn(1),
+    isSurge: isSurgeTurn(globalTurnCounter),
     chainMultiplier: 1.0,
     chainLength: 0,
     chainType: null,
     doubleDownUsedThisEncounter: false,
+    nextChargeFree: false,
   };
 
   // Reset chain at encounter start (clean slate)
@@ -390,13 +409,21 @@ export function playCardAction(
   let apCost = Math.max(0, cardInHand.apCost ?? 1);
 
   // Charge AP surcharge: +1 AP for Charge plays.
-  // Waived during Surge turns (every 3rd turn) or for Free First Charge.
+  // Waived during Surge turns (every 3rd turn), for Free First Charge, or by Chain Momentum.
   let usedFreeCharge = false;
   if (playMode === 'charge') {
     const runStateForCharge = get(activeRunState);
     const isSurge = getSurgeChargeSurcharge(turnState.turnNumber) === 0;
     if (isSurge) {
       // Surge turns: no surcharge (already 0)
+      // Chain Momentum flag still applies (consumed below) but has no additional AP effect
+      if (CHAIN_MOMENTUM_ENABLED && turnState.nextChargeFree) {
+        turnState.nextChargeFree = false; // consume the flag even on Surge
+      }
+    } else if (CHAIN_MOMENTUM_ENABLED && turnState.nextChargeFree) {
+      // Chain Momentum: previous correct Charge waived this surcharge
+      turnState.nextChargeFree = false; // consume the flag
+      // surcharge is 0 — no apCost increase
     } else if (cardInHand.factId && runStateForCharge && isFirstChargeFree(cardInHand.factId, runStateForCharge.firstChargeFreeFactIds)) {
       // Free first Charge: AP surcharge is 0
       apCost += FIRST_CHARGE_FREE_AP_SURCHARGE;
@@ -404,6 +431,11 @@ export function playCardAction(
     } else {
       // Normal Charge: +1 AP surcharge
       apCost += 1;
+    }
+  } else if (playMode === 'quick') {
+    // Quick Play: momentum lost
+    if (CHAIN_MOMENTUM_ENABLED) {
+      turnState.nextChargeFree = false;
     }
   }
 
@@ -474,13 +506,17 @@ export function playCardAction(
       enemy.playerChargedThisTurn = true;
     }
 
-    // Wrong Charge: break the chain
+    // Wrong Charge: break the chain and lose momentum
     if (playMode === 'charge') {
       extendOrResetChain(null); // null chainType resets chain
       const chainState = getChainState();
       turnState.chainMultiplier = 1.0;
       turnState.chainLength = chainState.length;
       turnState.chainType = chainState.chainType;
+      // Chain Momentum: wrong Charge answer loses momentum
+      if (CHAIN_MOMENTUM_ENABLED) {
+        turnState.nextChargeFree = false;
+      }
     }
 
     const mode = get(difficultyMode);
@@ -567,10 +603,10 @@ export function playCardAction(
     }
 
     // Partial fizzle: wrong answers still apply a fraction of the base effect.
-    // Exception: Free First Charge on wrong answer uses 1.0× (FIRST_CHARGE_FREE_WRONG_MULTIPLIER),
-    // same as Quick Play — no penalty for exploring a new fact.
+    // Exception: Free First Charge on wrong answer uses 0.0× (FIRST_CHARGE_FREE_WRONG_MULTIPLIER),
+    // card fizzles entirely — the cost of guessing wrong on an unknown fact.
     const wrongMultiplier = (usedFreeCharge && playMode === 'charge')
-      ? getFirstChargeWrongMultiplier()  // 1.0× — same as Quick Play
+      ? getFirstChargeWrongMultiplier()  // 0.0× — total fizzle
       : getBalanceValue('fizzleEffectRatio', FIZZLE_EFFECT_RATIO);  // 0.25× normally
     const fizzleBase = Math.round(card.baseEffectValue * wrongMultiplier);
     const fizzledEffect: CardEffectResult = {
@@ -957,6 +993,10 @@ export function playCardAction(
   if (playMode !== 'quick') {
     turnState.cardsCorrectThisTurn += 1;
     turnState.consecutiveCorrectThisEncounter += 1;
+    // Chain Momentum (AR-122): correct Charge earns a free surcharge on the NEXT Charge this turn
+    if (playMode === 'charge' && CHAIN_MOMENTUM_ENABLED) {
+      turnState.nextChargeFree = true;
+    }
   }
   turnState.isPerfectTurn = (
     turnState.cardsCorrectThisTurn > 0 &&
@@ -1083,7 +1123,7 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     let incomingDamage = intentResult.damage;
     const currentFloor = turnState.deck?.currentFloor ?? 1;
     const enemyHpPercent = enemy.maxHP > 0 ? enemy.currentHP / enemy.maxHP : 1;
-    const enrageBonus = getEnrageBonus(turnState.turnNumber, currentFloor, enemyHpPercent);
+    const enrageBonus = getEnrageBonus(turnState.encounterTurnNumber, currentFloor, enemyHpPercent);
     if (enrageBonus > 0) {
       incomingDamage += enrageBonus;
     }
@@ -1317,6 +1357,9 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   turnState.chainLength = 0;
   turnState.chainType = null;
 
+  // Chain Momentum: reset on turn end
+  turnState.nextChargeFree = false;
+
   if (turnState.foresightTurnsRemaining > 0) {
     turnState.foresightTurnsRemaining -= 1;
   }
@@ -1331,6 +1374,7 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
 
   rollNextIntent(enemy);
   turnState.turnNumber += 1;
+  turnState.encounterTurnNumber += 1;
   turnState.isSurge = isSurgeTurn(turnState.turnNumber);
 
   const discardedAtTurnEnd = discardHand(deck);

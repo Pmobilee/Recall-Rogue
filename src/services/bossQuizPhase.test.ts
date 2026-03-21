@@ -170,6 +170,7 @@ function makeRunState(categoryL2Accuracy?: Map<string, { correct: number; total:
     novelQuestionsAnswered: 3,
     novelQuestionsCorrect: 2,
     runSeed: 12345,
+    globalTurnCounter: 1,
     categoryL2Accuracy: categoryL2Accuracy ?? new Map(),
   } as RunState;
 }

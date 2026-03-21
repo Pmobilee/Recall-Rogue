@@ -427,7 +427,7 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
     ? 0.8 + Math.random() * 0.4
     : 1.0;
   const enemy = createEnemy(ascensionTemplate, run.floor.currentFloor, { hpMultiplier: enemyHpMultiplier, difficultyVariance });
-  const turnState = startEncounter(activeDeck, enemy, run.playerMaxHp);
+  const turnState = startEncounter(activeDeck, enemy, run.playerMaxHp, run.globalTurnCounter ?? 1);
   activeDeck.hintsRemaining = HINTS_PER_ENCOUNTER;
   // Tick encounter cooldowns at the start of each new encounter
   tickFactCooldowns(activeDeck);
@@ -757,6 +757,8 @@ export function handleEndTurn(): void {
   const run = get(activeRunState);
   if (run) {
     run.playerHp = result.turnState.playerState.hp;
+    // Sync the global turn counter back to run state so it persists across encounters.
+    run.globalTurnCounter = result.turnState.turnNumber;
     activeRunState.set(run);
   }
 

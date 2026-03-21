@@ -982,16 +982,20 @@ export const MAX_CHAIN_LENGTH = 5;
 /** Turn number of the first Surge turn per encounter. */
 export const SURGE_FIRST_TURN = 2;
 /** Number of turns between Surge turns. */
-export const SURGE_INTERVAL = 3;
+export const SURGE_INTERVAL = 4;
+
+// Chain Momentum system (AR-122)
+/** When true, a correct Charge answer waives the +1 AP surcharge on the NEXT Charge that turn. */
+export const CHAIN_MOMENTUM_ENABLED = true;
 
 // Free First Charge system (AR-59.23)
 /** AP surcharge for the first Charge of a fact in a run. 0 = free. */
 export const FIRST_CHARGE_FREE_AP_SURCHARGE = 0;
 /**
  * Damage multiplier for a wrong answer on the first free Charge.
- * Same as Quick Play (1.0×) — no penalty for trying a new fact.
+ * 0.0× — card fizzles completely. The cost of guessing wrong on an unknown fact.
  */
-export const FIRST_CHARGE_FREE_WRONG_MULTIPLIER = 1.0;
+export const FIRST_CHARGE_FREE_WRONG_MULTIPLIER = 0.0;
 
 // Player defaults
 export const PLAYER_START_HP = 120;

@@ -63,7 +63,7 @@ function mockEnemyInstance(): EnemyInstance {
 
 // ── Tests ──
 
-describe('Knowledge Surge System (AR-59.4)', () => {
+describe('Knowledge Surge System (AR-59.4, updated AR-122 — interval 4, run-persistent)', () => {
   describe('isSurgeTurn formula', () => {
     it('turn 1 is NOT a Surge turn', () => {
       expect(isSurgeTurn(1)).toBe(false);
@@ -73,23 +73,24 @@ describe('Knowledge Surge System (AR-59.4)', () => {
       expect(isSurgeTurn(2)).toBe(true);
     });
 
-    it('turns 3 and 4 are NOT Surge turns', () => {
+    it('turns 3, 4, 5 are NOT Surge turns', () => {
       expect(isSurgeTurn(3)).toBe(false);
       expect(isSurgeTurn(4)).toBe(false);
+      expect(isSurgeTurn(5)).toBe(false);
     });
 
-    it('turn 5 IS a Surge turn (second Surge)', () => {
-      expect(isSurgeTurn(5)).toBe(true);
+    it('turn 6 IS a Surge turn (second Surge, interval=4)', () => {
+      expect(isSurgeTurn(6)).toBe(true);
     });
 
-    it('turns 6 and 7 are NOT Surge turns', () => {
-      expect(isSurgeTurn(6)).toBe(false);
+    it('turns 7, 8, 9 are NOT Surge turns', () => {
       expect(isSurgeTurn(7)).toBe(false);
+      expect(isSurgeTurn(8)).toBe(false);
+      expect(isSurgeTurn(9)).toBe(false);
     });
 
-    it('turns 8, 11, 14 ARE Surge turns', () => {
-      expect(isSurgeTurn(8)).toBe(true);
-      expect(isSurgeTurn(11)).toBe(true);
+    it('turns 10, 14 ARE Surge turns (every 4th after first)', () => {
+      expect(isSurgeTurn(10)).toBe(true);
       expect(isSurgeTurn(14)).toBe(true);
     });
 
@@ -97,30 +98,30 @@ describe('Knowledge Surge System (AR-59.4)', () => {
       expect(isSurgeTurn(0)).toBe(false);
     });
 
-    it('turn 17 IS a Surge turn', () => {
-      expect(isSurgeTurn(17)).toBe(true);
+    it('turn 18 IS a Surge turn (2 + 4*4)', () => {
+      expect(isSurgeTurn(18)).toBe(true);
     });
   });
 
   describe('getSurgeChargeSurcharge', () => {
     it('returns 0 during Surge turns (free Charging)', () => {
       expect(getSurgeChargeSurcharge(2)).toBe(0);
-      expect(getSurgeChargeSurcharge(5)).toBe(0);
-      expect(getSurgeChargeSurcharge(8)).toBe(0);
-      expect(getSurgeChargeSurcharge(11)).toBe(0);
+      expect(getSurgeChargeSurcharge(6)).toBe(0);
+      expect(getSurgeChargeSurcharge(10)).toBe(0);
+      expect(getSurgeChargeSurcharge(14)).toBe(0);
     });
 
     it('returns 1 during normal turns (standard surcharge)', () => {
       expect(getSurgeChargeSurcharge(1)).toBe(1);
       expect(getSurgeChargeSurcharge(3)).toBe(1);
       expect(getSurgeChargeSurcharge(4)).toBe(1);
-      expect(getSurgeChargeSurcharge(6)).toBe(1);
+      expect(getSurgeChargeSurcharge(5)).toBe(1);
       expect(getSurgeChargeSurcharge(7)).toBe(1);
     });
   });
 
   describe('TurnState.isSurge', () => {
-    it('starts false at encounter start (turn 1)', () => {
+    it('starts false at encounter start (turn 1, no globalTurnCounter passed)', () => {
       const deck = makeDeckWithHand();
       const enemy = mockEnemyInstance();
       const ts = startEncounter(deck, enemy);
@@ -137,7 +138,7 @@ describe('Knowledge Surge System (AR-59.4)', () => {
       expect(result.turnState.turnNumber).toBe(2);
     });
 
-    it('is false on turn 3', () => {
+    it('is false on turns 3, 4, 5', () => {
       const deck = makeDeckWithHand();
       const enemy = mockEnemyInstance();
       const ts = startEncounter(deck, enemy);
@@ -145,43 +146,52 @@ describe('Knowledge Surge System (AR-59.4)', () => {
       endPlayerTurn(ts); // turn 2 → 3 (normal)
       expect(ts.isSurge).toBe(false);
       expect(ts.turnNumber).toBe(3);
-    });
-
-    it('is false on turn 4', () => {
-      const deck = makeDeckWithHand();
-      const enemy = mockEnemyInstance();
-      const ts = startEncounter(deck, enemy);
-      endPlayerTurn(ts); // → 2
-      endPlayerTurn(ts); // → 3
       endPlayerTurn(ts); // → 4
       expect(ts.isSurge).toBe(false);
       expect(ts.turnNumber).toBe(4);
-    });
-
-    it('is true at turn 5 (second Surge)', () => {
-      const deck = makeDeckWithHand();
-      const enemy = mockEnemyInstance();
-      const ts = startEncounter(deck, enemy);
-      for (let i = 0; i < 4; i++) endPlayerTurn(ts); // advance to turn 5
-      expect(ts.isSurge).toBe(true);
+      endPlayerTurn(ts); // → 5
+      expect(ts.isSurge).toBe(false);
       expect(ts.turnNumber).toBe(5);
     });
 
-    it('is true at turn 8 (third Surge)', () => {
+    it('is true at turn 6 (second Surge, interval=4)', () => {
       const deck = makeDeckWithHand();
       const enemy = mockEnemyInstance();
       const ts = startEncounter(deck, enemy);
-      for (let i = 0; i < 7; i++) endPlayerTurn(ts); // advance to turn 8
+      for (let i = 0; i < 5; i++) endPlayerTurn(ts); // advance to turn 6
       expect(ts.isSurge).toBe(true);
-      expect(ts.turnNumber).toBe(8);
+      expect(ts.turnNumber).toBe(6);
     });
 
-    it('resets on new encounter (new startEncounter → isSurge=false, turn 1)', () => {
+    it('is true at turn 10 (third Surge)', () => {
       const deck = makeDeckWithHand();
       const enemy = mockEnemyInstance();
       const ts = startEncounter(deck, enemy);
-      expect(ts.isSurge).toBe(false); // turn 1 = no Surge
-      expect(ts.turnNumber).toBe(1);
+      for (let i = 0; i < 9; i++) endPlayerTurn(ts); // advance to turn 10
+      expect(ts.isSurge).toBe(true);
+      expect(ts.turnNumber).toBe(10);
+    });
+
+    it('starts on correct global turn when globalTurnCounter is passed (persistence)', () => {
+      const deck = makeDeckWithHand();
+      const enemy = mockEnemyInstance();
+      // Simulate: previous encounter ended on global turn 5, so this encounter starts on turn 5
+      const ts = startEncounter(deck, enemy, undefined, 5);
+      expect(ts.turnNumber).toBe(5);
+      expect(ts.encounterTurnNumber).toBe(1);
+      expect(ts.isSurge).toBe(false); // turn 5 is not a Surge turn
+      // Advance one turn → global turn 6 → Surge!
+      endPlayerTurn(ts);
+      expect(ts.turnNumber).toBe(6);
+      expect(ts.encounterTurnNumber).toBe(2);
+      expect(ts.isSurge).toBe(true);
+    });
+
+    it('new encounter resets encounterTurnNumber to 1 regardless of globalTurnCounter', () => {
+      const deck = makeDeckWithHand();
+      const enemy = mockEnemyInstance();
+      const ts = startEncounter(deck, enemy, undefined, 10);
+      expect(ts.encounterTurnNumber).toBe(1);
     });
   });
 

@@ -114,6 +114,13 @@ export interface RunState {
   novelQuestionsCorrect: number;
   /** Deterministic seed for this run (used in all modes for fair multiplayer/daily comparisons). */
   runSeed: number;
+  /**
+   * Global turn counter that persists across encounters within a run.
+   * Used by the Surge system so Surge timing varies per encounter rather than
+   * always hitting on turn 2 of every fight. Initialized to 1 on new run.
+   * Incremented each time the player ends their turn.
+   */
+  globalTurnCounter: number;
 }
 
 export interface RunEndData {
@@ -222,6 +229,7 @@ export function createRunState(
     novelQuestionsAnswered: 0,
     novelQuestionsCorrect: 0,
     runSeed,
+    globalTurnCounter: 1,
     deckMode: options?.deckMode,
     deckMasteryPct: options?.deckMasteryPct,
     rewardsDisabled: options?.rewardsDisabled,

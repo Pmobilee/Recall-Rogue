@@ -18,6 +18,29 @@ export interface ChainTypeDef {
 /** Total number of chain types in the game. */
 export const NUM_CHAIN_TYPES = 6;
 
+/** Number of chain types selected per run (subset of all 6). */
+export const CHAIN_TYPES_PER_RUN = 3;
+
+/**
+ * Deterministically selects N chain types for a run based on a seed.
+ * @param seed - Numeric seed for deterministic selection
+ * @param count - Number of chain types to select (default: CHAIN_TYPES_PER_RUN)
+ * @returns Array of chain type indices (e.g., [0, 2, 4])
+ */
+export function selectRunChainTypes(seed: number, count: number = CHAIN_TYPES_PER_RUN): number[] {
+  // Use seeded shuffle to pick `count` indices from [0, 1, 2, 3, 4, 5]
+  // Use a simple seeded RNG (multiply-with-carry / LCG variant)
+  const indices = [0, 1, 2, 3, 4, 5];
+  // Fisher-Yates shuffle with seeded random
+  let s = seed;
+  for (let i = indices.length - 1; i > 0; i--) {
+    s = (s * 1664525 + 1013904223) & 0xFFFFFFFF;
+    const j = ((s >>> 0) % (i + 1));
+    [indices[i], indices[j]] = [indices[j], indices[i]];
+  }
+  return indices.slice(0, count).sort((a, b) => a - b);
+}
+
 /** All chain type definitions, indexed 0–5. */
 export const CHAIN_TYPES: readonly ChainTypeDef[] = [
   { index: 0, name: 'Obsidian', hexColor: '#546E7A', glowColor: 'rgba(84, 110, 122, 0.30)' },

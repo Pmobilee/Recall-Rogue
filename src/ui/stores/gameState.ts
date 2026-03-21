@@ -10,14 +10,12 @@ export type Screen =
   | 'mainMenu'
   | 'base'
   | 'combat'
-  | 'domainSelection'
   | 'archetypeSelection'
   | 'library'
   | 'profile'
   | 'journal'
   | 'leaderboards'
   | 'social'
-  | 'roomSelection'
   | 'mysteryEvent'
   | 'restRoom'
   | 'runEnd'
@@ -29,9 +27,8 @@ export type Screen =
   | 'campfire'
   | 'masteryChallenge'
   | 'relicSanctum'
-  | 'relicReward'
+  | 'relicReward' // deprecated: now handled by rewardRoom Phaser scene
   | 'onboarding'
-  | 'ageSelection'
   | 'settings'
   | 'topicInterests'
   | 'upgradeSelection'
@@ -49,14 +46,12 @@ const VALID_SCREENS: Screen[] = [
   'mainMenu',
   'base',
   'combat',
-  'domainSelection',
   'archetypeSelection',
   'library',
   'profile',
   'journal',
   'leaderboards',
   'social',
-  'roomSelection',
   'mysteryEvent',
   'restRoom',
   'runEnd',
@@ -70,7 +65,6 @@ const VALID_SCREENS: Screen[] = [
   'relicSanctum',
   'relicReward',
   'onboarding',
-  'ageSelection',
   'settings',
   'topicInterests',
   'upgradeSelection',
@@ -194,7 +188,7 @@ export function releaseScreenTransition(): void {
 
 function inferTransitionDirection(from: Screen, to: Screen): TransitionDirection {
   // Room entries get 3D zoom effect
-  if (to === 'combat' || to === 'roomSelection' || to === 'shopRoom' || to === 'restRoom' || to === 'mysteryEvent' || to === 'cardReward') return 'zoom'
+  if (to === 'combat' || to === 'shopRoom' || to === 'restRoom' || to === 'mysteryEvent' || to === 'cardReward') return 'zoom'
   // Return to hub/map gets zoom too (zoom out feel)
   if (to === 'dungeonMap' && (from === 'combat' || from === 'shopRoom' || from === 'restRoom' || from === 'mysteryEvent' || from === 'cardReward' || from === 'retreatOrDelve')) return 'zoom'
   if (to === 'hub' || to === 'runEnd') return 'zoom'

@@ -506,6 +506,9 @@
   /** True on Surge turns — Charge Play costs +0 AP instead of +1. */
   let isSurgeActive = $derived(isSurgeTurn(turnState?.turnNumber ?? 1))
 
+  /** AR-122: Chain Momentum — next Charge costs +0 AP (surcharge waived by previous correct Charge). */
+  let nextChargeFree = $derived(turnState?.nextChargeFree ?? false)
+
   /** Focus AP discount: 1 when Focus is active with charges, 0 otherwise. */
   let focusDiscount = $derived(
     (turnState?.focusReady && (turnState?.focusCharges ?? 0) > 0) ? 1 : 0
@@ -945,8 +948,8 @@
     const card = handCards[index]
     if (!card) return
 
-    // Check AP: Charge costs +1 (or +0 on Surge)
-    const chargeCost = (card.apCost ?? 1) + (isSurgeActive ? 0 : 1)
+    // Check AP: Charge costs +1 (or +0 on Surge / Chain Momentum)
+    const chargeCost = (card.apCost ?? 1) + (isSurgeActive || nextChargeFree ? 0 : 1)
     if (chargeCost > (turnState?.apCurrent ?? 0)) return
 
     selectedIndex = index
@@ -1633,6 +1636,7 @@
       oncastdirect={handleCastDirect}
       onchargeplay={handleChargeDirect}
       {isSurgeActive}
+      {nextChargeFree}
       {focusDiscount}
       quizVisible={isQuizPanelVisible}
       {masteryFlashes}

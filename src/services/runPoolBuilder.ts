@@ -5,7 +5,7 @@ import { factsDB } from './factsDB';
 import { createCard, resetCardIdCounter } from './cardFactory';
 import { DEFAULT_POOL_SIZE, POOL_PRIMARY_PCT, POOL_SECONDARY_PCT, POOL_SUBCATEGORY_MAX_PCT } from '../data/balance';
 import { MECHANICS_BY_TYPE, type MechanicDefinition } from '../data/mechanics';
-import { NUM_CHAIN_TYPES } from '../data/chainTypes';
+import { selectRunChainTypes } from '../data/chainTypes';
 import { assignTypesToCards } from './cardTypeAllocator';
 import { shuffled } from './randomUtils';
 import { getRunRng, isRunRngActive, seededShuffled } from './seededRng';
@@ -261,10 +261,16 @@ function applyMechanics(cards: Card[]): Card[] {
 }
 
 /**
- * Assigns a chainType (0-5) to each card via even distribution.
+ * Assigns a chainType to each card using a run-specific subset of 3 chain types.
  * Cards are shuffled first so chain types are randomly distributed.
+ * Using 3 types instead of 6 increases chain frequency from ~15% to ~50% of hands.
  */
 function assignChainTypes(cards: Card[]): void {
+  // Select 3 chain types for this run using the seeded RNG state as seed
+  const chainRng = isRunRngActive() ? getRunRng('chainSelect') : null;
+  const seed = chainRng ? chainRng.getState() : Math.floor(Math.random() * 0xFFFFFFFF);
+  const runChainTypes = selectRunChainTypes(seed);
+
   // Shuffle indices to randomize which cards get which chain type
   const indices = cards.map((_, i) => i);
   const shuffledIndices = isRunRngActive()
@@ -272,7 +278,7 @@ function assignChainTypes(cards: Card[]): void {
     : shuffled(indices);
 
   for (let i = 0; i < shuffledIndices.length; i++) {
-    cards[shuffledIndices[i]].chainType = i % NUM_CHAIN_TYPES;
+    cards[shuffledIndices[i]].chainType = runChainTypes[i % runChainTypes.length];
   }
 }
 

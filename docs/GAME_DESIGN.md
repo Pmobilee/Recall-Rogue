@@ -136,17 +136,17 @@ Cards have 5 in-run mastery levels (0–5). Mastery resets each run. It is the *
 
 Paying +1 AP to Charge a fact you've never seen before is a blind guess. The **Free First Charge** solves this:
 
-- **First Charge of any fact in a run:** AP surcharge = 0. Wrong answer = 1.0× (same as Quick Play — no penalty for trying a new fact).
+- **First Charge of any fact in a run:** AP surcharge = 0. Wrong answer = 0.0× (card fizzles — no damage/effect dealt. The cost of guessing wrong on an unknown fact.)
 - **Subsequent Charges of the same fact:** Normal +1 AP surcharge applies.
 - **Visual indicator:** CHARGE button shows **"FREE"** (instead of "+1 AP") for not-yet-Charged facts.
 - **Tier 3 auto-Charge does NOT consume the free Charge** — the player didn't consciously choose to Charge.
 
 **Natural run arc:**
-- Act 1: Most facts are new → CHARGE buttons show "FREE" → players explore freely.
+- Act 1: Most facts are new → CHARGE buttons show "FREE" → players must decide: risk a fizzle to learn, or Quick Play for guaranteed 1.0×.
 - Act 2: Mix of "FREE" and "+1 AP" → selective Charging of known facts.
 - Act 3: Mostly "+1 AP" → veteran players Charge with confidence.
 
-Balance constants: `FIRST_CHARGE_FREE_AP_SURCHARGE = 0`, `FIRST_CHARGE_FREE_WRONG_MULTIPLIER = 1.0`
+Balance constants: `FIRST_CHARGE_FREE_AP_SURCHARGE = 0`, `FIRST_CHARGE_FREE_WRONG_MULTIPLIER = 0.0`
 
 ### Action Points (Turn Economy)
 
@@ -168,7 +168,7 @@ Card slots (type + mechanic + base effect) are created at run start, but facts (
 4. Cooldown deduplication prevents recently-seen facts from reappearing for 3–5 encounters
 5. Tier multiplier is derived from the FSRS mastery tier of the fact at the time it was initially selected into the pool
 
-**Chain type** is still assigned to card SLOTS permanently at run start (one of 6 types: Obsidian, Crimson, Azure, Amber, Violet, Jade). Chain composition is stable across draws because chain types belong to slots, not facts.
+**Chain type** is assigned to card SLOTS permanently at run start. Each run selects 3 of the 6 chain types (Obsidian, Crimson, Azure, Amber, Violet, Jade) deterministically using the run seed (`selectRunChainTypes()` in `src/data/chainTypes.ts`). All cards in the run are assigned one of these 3 types. This increases chain frequency from ~15% (6 types, 5 cards) to ~50% of hands, making chains a realistic, buildable strategy rather than a rare coincidence. Chain composition is stable across draws because chain types belong to slots, not facts.
 
 **Chain color** is derived from the card's `chainType` (0-5) — same chainType = same chain color = can chain together. Colors are defined in `src/data/chainTypes.ts`.
 
@@ -252,7 +252,7 @@ Cards have a `chainType` value (integer 0-5, corresponding to Obsidian, Crimson,
 
 **Chain is built exclusively by Charge plays.** Quick Play breaks the chain. Wrong Charge answers also break the chain.
 
-**Six distinct chain types** (0-5) map to the 6-color palette defined in `src/data/chainTypes.ts`. Cards without a `chainType` field contribute no chain.
+**Six distinct chain types** (0-5) map to the 6-color palette defined in `src/data/chainTypes.ts`, but each run only uses 3 of the 6 — selected deterministically by the run seed. This concentrates chain opportunities so that 2-3 matching cards appear per 5-card hand on average. Cards without a `chainType` field contribute no chain.
 
 **Chain state is ACTIVE in combat** (AR-93 Section B): `chainSystem.ts` is wired into `turnManager.ts` and `cardEffectResolver.ts`. The chain multiplier stacks multiplicatively on every card play.
 
@@ -324,15 +324,19 @@ Card mechanics pair with random facts each hand draw. A Strike might be `asian_c
 
 ---
 
-## 4. Knowledge Surge (AR-59.4)
+## 4. Knowledge Surge (AR-59.4, updated AR-122)
 
-### Rhythm: Normal → Normal → SURGE → Normal → Normal → SURGE
+### Rhythm: Normal → Normal → Normal → SURGE (4-turn cycle)
 
-Surge turns occur every 3rd turn, starting on turn 2 (turns 2, 5, 8, 11...).
+Surge turns occur every 4th turn, starting on global turn 2 of the run (global turns 2, 6, 10, 14...).
+
+**The Surge counter persists across encounters within a run.** It does NOT reset between fights. If fight 1 ends on global turn 3, fight 2 starts on global turn 4 — Surge may not arrive until global turn 6 (turn 3 of that fight). Short fights may have no Surge at all. This creates unpredictability and makes Surge feel like a meaningful event rather than a reliable clockwork mechanic.
 
 **On Surge turns:** Charging costs **+0 AP** instead of +1. This is the burst window where Charging everything is viable and encouraged. Chain multipliers and Charge multipliers both apply at full strength.
 
-Constants: `SURGE_FIRST_TURN = 2`, `SURGE_INTERVAL = 3`
+Constants: `SURGE_FIRST_TURN = 2`, `SURGE_INTERVAL = 4`
+
+Implementation: `RunState.globalTurnCounter` (persisted in save state) is passed to `startEncounter()` as the initial `turnNumber`. `TurnState.encounterTurnNumber` tracks per-fight turns for the enrage system separately.
 
 ### Surge Announcement (0.5s, non-interruptive)
 
@@ -357,13 +361,28 @@ Constants: `SURGE_FIRST_TURN = 2`, `SURGE_INTERVAL = 3`
 - Normal card colors return
 - Brief dim pulse signals return to normal
 
+### Chain Momentum (AR-122)
+
+When a Charge play results in a correct answer, the NEXT Charge play in the same turn
+has its AP surcharge waived (+0 AP instead of +1 AP). This rewards quiz accuracy with
+AP savings, enabling longer chains through skill.
+
+- Correct Charge → next Charge is free (surcharge waived, `nextChargeFree = true`)
+- Wrong Charge, Quick Play, or turn end → momentum lost (`nextChargeFree = false`)
+- Stacks with Surge (no additional effect during Surge since charges are already free, but flag is still consumed)
+- UI: CHARGE button displays green "+0 AP" badge with green glow when momentum is active
+
+Constants: `CHAIN_MOMENTUM_ENABLED = true`
+
 ### Design Intent
 
 Surge creates RHYTHM. Players learn to:
-1. **Normal turns:** Quick Play efficiently, build block, manage AP
+1. **Normal turns (3 of them):** Quick Play efficiently, build block, manage AP
 2. **Pre-Surge turn:** Set up buffs (Empower, Expose) in preparation
 3. **Surge turn:** BURST — Charge 2–3 cards, build chains, deal massive damage
 4. **Post-Surge:** Recover, defend, prepare for next Surge
+
+Because the counter persists across encounters, Surge timing becomes unpredictable between fights — a short fight might leave the player starting the next encounter mid-cycle, with Surge arriving on turn 2 or turn 4. This adds strategic interest and prevents trivial Surge-gaming.
 
 ---
 
@@ -974,6 +993,15 @@ After each combat encounter, player chooses 1 of 3 card options. Each option is 
 
 Inspect panel below shows the full mechanic description when a card is selected.
 
+### Synergy Tooltips (AR-122)
+
+Card rewards and shop cards display synergy indicators when they synergize with mechanics already in the player's deck. A small green "Synergy: [mechanic names]" badge appears below cards that combo with existing deck composition, helping new players discover build paths.
+
+- **Card Reward screen:** Each altar card option shows a synergy badge if its mechanic matches deck mechanics in the synergy map.
+- **Shop:** Buy-section cards show a synergy badge if they synergize with anything already in the deck.
+- Badges are subtle (small green text, low-opacity background) and only appear for acquisition contexts — not on cards already in hand or deck.
+- Synergy data is defined in `src/data/synergies.ts` (`MECHANIC_SYNERGIES` map).
+
 **Reroll:** A "Reroll" button is shown below the card options. Tapping it re-randomizes the currently selected card type with a different fact from the run pool. Maximum **1 reroll per reward screen** — the button greys out and shows "Rerolled" after use. Reroll count resets when a new reward screen opens.
 
 **Floor-based pre-upgrade probability:** Cards in rewards can arrive pre-upgraded based on floor depth:
@@ -1154,9 +1182,10 @@ See §3 for full detail. Summary for quick reference:
 
 - **Chain trigger:** Consecutive Charge plays of same `chainType` (0-5) in one turn
 - **Chain break:** Quick Play, wrong Charge answer, different `chainType`
+- **Run chain selection:** Each run uses 3 of the 6 chain types (selected deterministically by run seed). Cards are assigned only these 3 types, yielding ~50% chain frequency vs. ~15% with 6 types.
 - **Multipliers:** 1.0× (no chain), 1.3× (2-chain), 1.7× (3-chain), 2.2× (4-chain), 3.0× (5-chain)
 - **Stacks with:** Charge multiplier (multiplicative), Surge (free Charge, enabling more chains per turn)
-- **Visuals:** `chainType`-colored card edge tint (6-color palette), in-hand pulse, connection line animation, chain display (bottom-left, format "Chain: X.x")
+- **Visuals:** `chainType`-colored card edge tint (6-color palette, 3 active per run), in-hand pulse, connection line animation, chain display (bottom-left, format "Chain: X.x")
 
 ---
 
@@ -2315,7 +2344,7 @@ What makes Recall Rogue hard to clone:
 
 1. **Fact database with 20,000+ quality facts** — takes years to build, not months
 2. **FSRS integration powering the tier system** — facts get stronger as players learn them
-3. **Chains tied to named chain types (chainType 0-5)** — Obsidian, Crimson, Azure, Amber, Violet, Jade; assigned evenly at run start via `chainTypes.ts`
+3. **Chains tied to named chain types (chainType 0-5)** — Obsidian, Crimson, Azure, Amber, Violet, Jade; each run selects 3 of the 6 deterministically (by seed), then assigns evenly across all cards via `chainTypes.ts`
 4. **Knowledge Surge rhythm** — turns spaced repetition into gameplay rhythm
 5. **Quiz as amplifier, not gate** — requires a fundamental rethink vs. "chocolate-covered broccoli" designs
 
@@ -2568,8 +2597,8 @@ Phaser canvas must not capture `Shift+Tab` (Steam Overlay toggle). Verified by e
 | Charge wrong multiplier | 0.6× (Tier 1), 0.7× (Tier 2a/2b) |
 | Charge AP surcharge | +1 AP (0 during Surge, 0 for Tier 3, 0 for Free First Charge) |
 | Tier 3 auto-Charge | 1.2× base, no quiz, no AP surcharge |
-| Surge frequency | Every 3rd turn (turns 2, 5, 8, 11...) |
-| Free First Charge wrong multiplier | 1.0× (no penalty) |
+| Surge frequency | Every 4th turn, run-persistent counter (global turns 2, 6, 10, 14...) |
+| Free First Charge wrong multiplier | 0.0× (card fizzles — no effect) |
 | Chain 2/3/4/5 multipliers | 1.3× / 1.7× / 2.2× / 3.0× |
 | Relic slots | 5 (6 with Scholar's Gambit) |
 | Run length | ~25–30 minutes |

@@ -16,6 +16,8 @@
   import ChainIcon from './ChainIcon.svelte'
   import { isLandscape } from '../../stores/layoutStore'
   import { turboDelay } from '../../utils/turboMode'
+  import { getSynergyLabel } from '../../data/synergies'
+  import { getActiveDeckCards } from '../../services/encounterBridge'
 
   interface Props {
     options: Card[]
@@ -39,6 +41,15 @@
   let showSkipConfirm = $state(false)
   /** Tracks rerolls used this reward screen. Max 1 per opening. */
   let rerollsUsed = $state(0)
+
+  /** Mechanic IDs present in the player's current deck, for synergy detection. */
+  let deckMechanics = $derived.by(() => {
+    // Re-evaluate whenever options change so we capture fresh deck state
+    void options
+    return getActiveDeckCards()
+      .map(c => c.mechanicId)
+      .filter((id): id is string => id !== undefined)
+  })
 
   // Reward reveal state
   let stepVisible = $state(false)
@@ -370,6 +381,14 @@
                   <ChainIcon chainType={option.chainType} size={11} />
                   {getChainTypeName(option.chainType)}
                 </div>
+              {/if}
+              {#if option.mechanicId}
+                {@const synergyLabel = getSynergyLabel(option.mechanicId, deckMechanics)}
+                {#if synergyLabel}
+                  <div class="synergy-badge" title="Synergizes with cards in your deck">
+                    Synergy: {synergyLabel}
+                  </div>
+                {/if}
               {/if}
               <div class="mini-card-domain-bar" style={`background: ${domainColor};`}></div>
             </button>
@@ -1244,7 +1263,22 @@
     margin-top: 4px;
   }
 
-
+  .synergy-badge {
+    display: block;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-size: 0.65em;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.12);
+    border: 1px solid rgba(74, 222, 128, 0.35);
+    margin-top: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
 
   /* === Landscape modal layout === */
   .reward-screen.landscape {

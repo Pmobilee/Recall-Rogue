@@ -15,6 +15,8 @@
   import { getChainColor, getChainGlowColor } from '../../services/chainVisuals'
   import ChainIcon from './ChainIcon.svelte'
   import { isLandscape } from '../../stores/layoutStore'
+  import { getSynergyLabel } from '../../data/synergies'
+  import { getActiveDeckCards } from '../../services/encounterBridge'
 
   interface ShopRelicItem {
     relic: { id: string; name: string; description: string; rarity: string; icon: string }
@@ -92,6 +94,13 @@
   let nonEchoCards = $derived(cards.filter(c => !c.isEcho))
   /** Whether deck is large enough to remove a card (must keep > 5) */
   let canRemoveCard = $derived(nonEchoCards.length > 5)
+
+  /** Mechanic IDs present in the full active deck, for synergy detection. */
+  let deckMechanics = $derived(
+    getActiveDeckCards()
+      .map(c => c.mechanicId)
+      .filter((id): id is string => id !== undefined)
+  )
 
   /** Chain composition summary for the removal picker */
   let chainComposition = $derived.by(() => {
@@ -265,6 +274,7 @@
       <div class="card-list">
         {#each shopInventory.cards as item, idx (item.card.id)}
           {@const canAfford = currency >= item.price}
+          {@const shopCardSynergy = item.card.mechanicId ? getSynergyLabel(item.card.mechanicId, deckMechanics) : null}
           <article class="card-item" style="border-top: 6px solid {getChainColor(item.card.chainType ?? 0)}; border-color: {getChainColor(item.card.chainType ?? 0)}; box-shadow: 0 0 6px {getChainGlowColor(item.card.chainType ?? 0)};">
             <div class="meta">
               <span class="icon">
@@ -275,6 +285,9 @@
               <div class="text">
                 <div class="name">{item.card.cardType.toUpperCase()} • {tierLabel(item.card)}</div>
                 <div class="sub">Power {Math.round(item.card.baseEffectValue * item.card.effectMultiplier)}</div>
+                {#if shopCardSynergy}
+                  <div class="synergy-badge">Synergy: {shopCardSynergy}</div>
+                {/if}
               </div>
             </div>
             <button
@@ -611,6 +624,22 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  .synergy-badge {
+    display: inline-block;
+    margin-top: calc(3px * var(--layout-scale, 1));
+    padding: 1px 6px;
+    border-radius: 8px;
+    font-size: calc(10px * var(--layout-scale, 1));
+    font-weight: 700;
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.12);
+    border: 1px solid rgba(74, 222, 128, 0.35);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
   }
 
   .buy {
