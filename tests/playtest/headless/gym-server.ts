@@ -32,6 +32,12 @@ import { PLAYER_START_HP, PLAYER_MAX_HP, POST_ENCOUNTER_HEAL_PCT } from '../../.
 import { getAscensionModifiers } from '../../../src/services/ascension.js';
 import { STARTER_RELIC_IDS } from '../../../src/data/relics/index.js';
 import type { RoomOption } from '../../../src/services/floorManager.js';
+import {
+  resolveEncounterEndCurrency,
+  resolveBaseDrawCount,
+  resolveComboStartValue,
+  resolveFloorAdvanceHeal,
+} from '../../../src/services/relicEffectResolver.js';
 import readline from 'readline';
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -246,40 +252,6 @@ function hashRelicId(id: string): number {
   return (sum % 997) / 997;
 }
 
-/**
- * Applies per-relic effects at appropriate trigger points.
- * Called after combat victory for post-combat relics (herbal_pouch, lucky_coin).
- * iron_shield is applied at turn start via TurnState; vitality_ring is applied at reset.
- */
-function applyRelicEffects(run: RunState): void {
-  for (const relicId of run.relics) {
-    switch (relicId) {
-      case 'whetstone':
-        // +2 attack damage — applied during card play via TurnState (skip here)
-        break;
-      case 'iron_shield':
-        // +2 block each turn — applied at turn start via TurnState
-        if (run.turnState) {
-          run.turnState.playerState.shield += 2;
-        }
-        break;
-      case 'vitality_ring':
-        // +20 max HP — applied at run start in handleReset
-        break;
-      case 'herbal_pouch':
-        // Heal 8 HP post-combat
-        run.playerHP = Math.min(run.playerMaxHP, run.playerHP + 8);
-        break;
-      case 'swift_boots':
-        // Draw 6 cards instead of 5 — handled via TurnState baseDrawCount
-        break;
-      case 'lucky_coin':
-        // +2 gold per encounter
-        run.gold += 2;
-        break;
-    }
-  }
-}
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Encounter Initializer
@@ -726,8 +698,16 @@ function onCombatVictory(run: RunState): void {
   const goldEarned = Math.round(baseGold * (1 + (run.floor - 1) * 0.15));
   run.gold += goldEarned;
 
-  // Apply post-combat relic effects (herbal_pouch heals, lucky_coin adds gold)
-  applyRelicEffects(run);
+  // Apply between-combat relic effects using the real resolver
+  const relicIdSet = new Set(run.relics);
+
+  // Encounter-end currency bonus (lucky_coin: +2 gold)
+  run.gold += resolveEncounterEndCurrency(relicIdSet);
+
+  // herbal_pouch: heal 8 HP after combat (not exported from resolver — handle manually)
+  if (relicIdSet.has('herbal_pouch')) {
+    run.playerHP = Math.min(run.playerMaxHP, run.playerHP + 8);
+  }
 
   // Generate 3 card reward options
   run.pendingCardRewards = generateCardRewards(run.deckCards);
@@ -1109,6 +1089,21 @@ function handleStep(actionId: number): object {
       case 'combat': {
         run.turnState = initEncounterFromRun(run);
         run.phase = 'combat';
+
+        // Apply draw count from relics (swift_boots/blood_price)
+        const relicIdSetCombat = new Set(run.relics);
+        const drawCount = resolveBaseDrawCount(relicIdSetCombat);
+        if (drawCount !== 5 && run.turnState) {
+          run.turnState.baseDrawCount = drawCount;
+        }
+
+        // Apply starting combo from relics (combo_ring)
+        const comboStart = resolveComboStartValue(relicIdSetCombat);
+        if (comboStart > 0 && run.turnState) {
+          run.turnState.comboCount = comboStart;
+          run.turnState.baseComboCount = comboStart;
+        }
+
         info['enemy'] = run.turnState.enemy.template.id;
         info['enemyName'] = run.turnState.enemy.template.name;
         info['enemyHp'] = run.turnState.enemy.currentHP;
@@ -1195,6 +1190,21 @@ function handleStep(actionId: number): object {
         // Unknown room type — treat as combat
         run.turnState = initEncounterFromRun(run);
         run.phase = 'combat';
+
+        // Apply draw count from relics (swift_boots/blood_price)
+        const relicIdSetDefault = new Set(run.relics);
+        const drawCountDefault = resolveBaseDrawCount(relicIdSetDefault);
+        if (drawCountDefault !== 5 && run.turnState) {
+          run.turnState.baseDrawCount = drawCountDefault;
+        }
+
+        // Apply starting combo from relics (combo_ring)
+        const comboStartDefault = resolveComboStartValue(relicIdSetDefault);
+        if (comboStartDefault > 0 && run.turnState) {
+          run.turnState.comboCount = comboStartDefault;
+          run.turnState.baseComboCount = comboStartDefault;
+        }
+
         reward = 0;
         break;
       }
@@ -1381,6 +1391,14 @@ function handleStep(actionId: number): object {
         run.phase = 'room_select';
         reward = 0.1;
         info['delve'] = run.floor;
+
+        // Apply floor advance heal from relics (renewal_spring)
+        const relicIdSetDelve = new Set(run.relics);
+        const floorHeal = resolveFloorAdvanceHeal(relicIdSetDelve, run.playerMaxHP, run.playerHP / run.playerMaxHP);
+        if (floorHeal.healHp > 0) {
+          run.playerHP = Math.min(run.playerMaxHP, run.playerHP + floorHeal.healHp);
+          info['floorAdvanceHeal'] = floorHeal.healHp;
+        }
       }
     } else {
       const obs = buildFullObservation(run);
