@@ -1,17 +1,23 @@
 /**
  * Headless Batch Runner
  *
- * Runs thousands of headless combat simulations in a single process (no tsx
- * restart overhead) and outputs results to a timestamped folder.
+ * Runs thousands of headless simulations in a single process (no tsx restart overhead)
+ * and outputs results to a timestamped folder.
+ *
+ * Modes:
+ *   --mode full   (default) Full run simulation: map, relics, shop, rest, mystery, gold economy
+ *   --mode combat Legacy combat-only simulation (N encounters, fixed enemies)
  *
  * Usage:
  *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000
  *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 500 --description "Post healing buff"
- *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 200 --profile scholar --encounters 30
+ *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 200 --profile scholar
+ *   npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 200 --mode combat --encounters 30
  */
 
 import './browser-shim.js';
 import { runSimulation, type SimOptions, type SimRunResult } from './simulator.js';
+import { simulateFullRun, type FullRunOptions, type FullRunResult } from './full-run-simulator.js';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -128,6 +134,7 @@ const profileFilter   = getArg('--profile') as ProfileId | null;
 const maxEncounters   = parseInt(getArg('--encounters') ?? '30', 10);
 const healRate        = parseFloat(getArg('--heal-rate') ?? '0.2');
 const ascensionLevel  = parseInt(getArg('--ascension') ?? '0', 10);
+const simMode         = (getArg('--mode') ?? 'full') as 'full' | 'combat';
 
 const profilesToRun = profileFilter
   ? PROFILES.filter(p => p.id === profileFilter)
@@ -151,13 +158,14 @@ fs.mkdirSync(outputDir, { recursive: true });
 // ──────────────────────────────────────────────────────────────────────────────
 
 console.log(`\n${'='.repeat(60)}`);
-console.log(`  HEADLESS COMBAT SIMULATOR — BATCH RUN`);
+console.log(`  HEADLESS SIMULATOR — BATCH RUN`);
 console.log(`${'='.repeat(60)}`);
+console.log(`  Mode       : ${simMode === 'full' ? 'FULL RUN (map + economy + rooms)' : 'COMBAT ONLY (legacy)'}`);
 console.log(`  Profiles   : ${profilesToRun.map(p => p.id).join(', ')}`);
 console.log(`  Runs each  : ${runsPerProfile}`);
 console.log(`  Total runs : ${profilesToRun.length * runsPerProfile}`);
-console.log(`  Max floors : ${maxEncounters}`);
-console.log(`  Heal rate  : ${(healRate * 100).toFixed(0)}%`);
+if (simMode === 'combat') console.log(`  Max floors : ${maxEncounters}`);
+if (simMode === 'combat') console.log(`  Heal rate  : ${(healRate * 100).toFixed(0)}%`);
 console.log(`  Ascension  : ${ascensionLevel}`);
 console.log(`  Description: ${description}`);
 console.log(`  Output     : ${outputDir}`);
@@ -169,68 +177,131 @@ console.log(`${'='.repeat(60)}\n`);
 
 const startTime = Date.now();
 const allResults: Array<SimRunResult & { profile: ProfileId }> = [];
+const allFullResults: Array<FullRunResult & { profile: ProfileId }> = [];
 const profileMechanicStats: Record<string, MechanicStats[]> = {};
 
 for (const profile of profilesToRun) {
   const profileStart = Date.now();
-  const results: SimRunResult[] = [];
+  const elapsed = () => ((Date.now() - profileStart) / 1000).toFixed(1);
 
-  for (let i = 0; i < runsPerProfile; i++) {
-    const r = runSimulation({
-      encounterCount:        maxEncounters,
-      correctRate:           profile.correctRate,
-      chargeRate:            profile.chargeRate,
-      deckSize:              15,
-      act:                   1,
-      nodeType:              'combat',
-      maxTurnsPerEncounter:  50,
-      verbose:               false,
-      healBetweenEncounters: healRate,
-      ascensionLevel:        ascensionLevel,
-    } satisfies SimOptions);
-    results.push(r);
-    allResults.push({ ...r, profile: profile.id });
-  }
+  if (simMode === 'full') {
+    // ── Full Run Mode ──────────────────────────────────────────────────────────
+    const results: FullRunResult[] = [];
 
-  // Per-profile console summary
-  const survived  = results.filter(r => r.survived).length;
-  const avgFloor  = results.reduce((s, r) => s + r.floorsReached,     0) / results.length;
-  const avgCards  = results.reduce((s, r) => s + r.totalCardsPlayed,  0) / results.length;
-  const avgHP     = results.filter(r => r.survived).reduce((s, r) => s + r.finalHP, 0) / Math.max(survived, 1);
-  const elapsed   = ((Date.now() - profileStart) / 1000).toFixed(1);
+    for (let i = 0; i < runsPerProfile; i++) {
+      const r = simulateFullRun({
+        correctRate:          profile.correctRate,
+        chargeRate:           profile.chargeRate,
+        maxTurnsPerEncounter: 50,
+        verbose:              false,
+        ascensionLevel:       ascensionLevel,
+        acts:                 3,
+      } satisfies FullRunOptions);
+      results.push(r);
+      allFullResults.push({ ...r, profile: profile.id });
+    }
 
-  console.log(
-    `  ${profile.id.padEnd(16)} ` +
-    `${runsPerProfile} runs | ` +
-    `Survived: ${String(survived).padStart(4)}/${runsPerProfile} (${Math.round(survived / runsPerProfile * 100)}%) | ` +
-    `Avg floor: ${avgFloor.toFixed(1).padStart(5)} | ` +
-    `Avg cards: ${avgCards.toFixed(0).padStart(4)} | ` +
-    `Avg HP (survivors): ${avgHP.toFixed(0).padStart(4)} | ` +
-    `${elapsed}s`,
-  );
+    const survived    = results.filter(r => r.survived).length;
+    const avgActs     = results.reduce((s, r) => s + r.actsCompleted, 0) / results.length;
+    const avgHP       = results.filter(r => r.survived).reduce((s, r) => s + r.finalHP, 0) / Math.max(survived, 1);
+    const avgGoldEarned = results.reduce((s, r) => s + r.goldEarned, 0) / results.length;
+    const avgDeckSize = results.reduce((s, r) => s + r.finalDeckSize, 0) / results.length;
+    const avgRelics   = results.reduce((s, r) => s + r.relicsAcquired.length, 0) / results.length;
+    const avgEncWon   = results.reduce((s, r) => s + r.encountersWon, 0) / results.length;
 
-  // Compute and print per-mechanic stats
-  const mechStats = aggregateMechanicStats(results);
-  profileMechanicStats[profile.id] = mechStats;
-
-  console.log(`    Top mechanics by win contribution (${profile.name}):`);
-  const top5 = mechStats.slice(0, 5);
-  for (const ms of top5) {
-    const winPct = Math.round(ms.winRateWhenPresent * 100);
-    const avgDmg = ms.avgDamagePerPlay.toFixed(1);
     console.log(
-      `      ${ms.mechanic.padEnd(10)} ` +
-      `${String(winPct).padStart(3)}% win rate when present | ` +
-      `${avgDmg.padStart(5)} avg dmg/play | ` +
-      `${ms.totalPlays} plays (${ms.chargedPlays} charged, ${ms.quickPlays} quick)`,
+      `  ${profile.id.padEnd(16)} ` +
+      `${runsPerProfile} runs | ` +
+      `Survived: ${String(survived).padStart(4)}/${runsPerProfile} (${Math.round(survived / runsPerProfile * 100)}%) | ` +
+      `Avg acts: ${avgActs.toFixed(2)} | ` +
+      `Avg enc won: ${avgEncWon.toFixed(1)} | ` +
+      `Avg deck: ${avgDeckSize.toFixed(1)} | ` +
+      `Avg relics: ${avgRelics.toFixed(1)} | ` +
+      `Avg gold: ${avgGoldEarned.toFixed(0)} | ` +
+      `Avg HP (surv): ${avgHP.toFixed(0)} | ` +
+      `${elapsed()}s`,
+    );
+
+    // Room distribution summary
+    const roomTotals: Record<string, number> = {};
+    for (const r of results) {
+      for (const [type, count] of Object.entries(r.roomsVisited)) {
+        roomTotals[type] = (roomTotals[type] ?? 0) + count;
+      }
+    }
+    const totalRooms = Object.values(roomTotals).reduce((s, n) => s + n, 0);
+    const roomSummary = Object.entries(roomTotals)
+      .filter(([, n]) => n > 0)
+      .sort((a, b) => b[1] - a[1])
+      .map(([type, n]) => `${type}=${(n / results.length).toFixed(1)}`)
+      .join(' ');
+    console.log(`    Avg rooms/run: ${(totalRooms / results.length).toFixed(1)} — ${roomSummary}`);
+
+    // Save per-profile JSON
+    fs.writeFileSync(
+      path.join(outputDir, `${profile.id}.json`),
+      JSON.stringify({ results }, null, 2),
+    );
+
+  } else {
+    // ── Legacy Combat-Only Mode ───────────────────────────────────────────────
+    const results: SimRunResult[] = [];
+
+    for (let i = 0; i < runsPerProfile; i++) {
+      const r = runSimulation({
+        encounterCount:        maxEncounters,
+        correctRate:           profile.correctRate,
+        chargeRate:            profile.chargeRate,
+        deckSize:              15,
+        act:                   1,
+        nodeType:              'combat',
+        maxTurnsPerEncounter:  50,
+        verbose:               false,
+        healBetweenEncounters: healRate,
+        ascensionLevel:        ascensionLevel,
+      } satisfies SimOptions);
+      results.push(r);
+      allResults.push({ ...r, profile: profile.id });
+    }
+
+    const survived  = results.filter(r => r.survived).length;
+    const avgFloor  = results.reduce((s, r) => s + r.floorsReached,     0) / results.length;
+    const avgCards  = results.reduce((s, r) => s + r.totalCardsPlayed,  0) / results.length;
+    const avgHP     = results.filter(r => r.survived).reduce((s, r) => s + r.finalHP, 0) / Math.max(survived, 1);
+
+    console.log(
+      `  ${profile.id.padEnd(16)} ` +
+      `${runsPerProfile} runs | ` +
+      `Survived: ${String(survived).padStart(4)}/${runsPerProfile} (${Math.round(survived / runsPerProfile * 100)}%) | ` +
+      `Avg floor: ${avgFloor.toFixed(1).padStart(5)} | ` +
+      `Avg cards: ${avgCards.toFixed(0).padStart(4)} | ` +
+      `Avg HP (survivors): ${avgHP.toFixed(0).padStart(4)} | ` +
+      `${elapsed()}s`,
+    );
+
+    // Compute and print per-mechanic stats
+    const mechStats = aggregateMechanicStats(results);
+    profileMechanicStats[profile.id] = mechStats;
+
+    console.log(`    Top mechanics by win contribution (${profile.name}):`);
+    const top5 = mechStats.slice(0, 5);
+    for (const ms of top5) {
+      const winPct = Math.round(ms.winRateWhenPresent * 100);
+      const avgDmg = ms.avgDamagePerPlay.toFixed(1);
+      console.log(
+        `      ${ms.mechanic.padEnd(10)} ` +
+        `${String(winPct).padStart(3)}% win rate when present | ` +
+        `${avgDmg.padStart(5)} avg dmg/play | ` +
+        `${ms.totalPlays} plays (${ms.chargedPlays} charged, ${ms.quickPlays} quick)`,
+      );
+    }
+
+    // Save per-profile JSON
+    fs.writeFileSync(
+      path.join(outputDir, `${profile.id}.json`),
+      JSON.stringify({ results, mechanicStats: mechStats }, null, 2),
     );
   }
-
-  // Save per-profile JSON
-  fs.writeFileSync(
-    path.join(outputDir, `${profile.id}.json`),
-    JSON.stringify({ results, mechanicStats: mechStats }, null, 2),
-  );
 }
 
 const totalElapsed = ((Date.now() - startTime) / 1000).toFixed(1);
@@ -242,13 +313,14 @@ const totalElapsed = ((Date.now() - startTime) / 1000).toFixed(1);
 const combined = {
   timestamp:       new Date().toISOString(),
   description,
-  totalRuns:       allResults.length,
+  mode:            simMode,
+  totalRuns:       simMode === 'full' ? allFullResults.length : allResults.length,
   runsPerProfile,
   durationSeconds: parseFloat(totalElapsed),
   profiles:        profilesToRun.map(p => p.id),
-  config:          { maxEncounters, healRate, ascensionLevel },
-  mechanicStats:   profileMechanicStats,
-  results:         allResults,
+  config:          { maxEncounters, healRate, ascensionLevel, simMode },
+  mechanicStats:   simMode === 'combat' ? profileMechanicStats : {},
+  results:         simMode === 'full' ? allFullResults : allResults,
 };
 fs.writeFileSync(path.join(outputDir, 'combined.json'), JSON.stringify(combined, null, 2));
 
@@ -256,93 +328,169 @@ fs.writeFileSync(path.join(outputDir, 'combined.json'), JSON.stringify(combined,
 // Generate README.md
 // ──────────────────────────────────────────────────────────────────────────────
 
+const totalRunCount = simMode === 'full' ? allFullResults.length : allResults.length;
+
 const readmeLines: string[] = [
   `# Headless Playtest: ${timestamp}`,
   '',
-  `**Type:** Headless Combat Simulation (no browser)`,
+  `**Type:** Headless ${simMode === 'full' ? 'Full Run' : 'Combat'} Simulation (no browser)`,
   `**Date:** ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`,
   `**Duration:** ${totalElapsed}s`,
   `**Description:** ${description}`,
-  `**Total runs:** ${allResults.length}`,
-  `**Max encounters per run:** ${maxEncounters}`,
-  `**Heal between encounters:** ${(healRate * 100).toFixed(0)}%`,
+  `**Total runs:** ${totalRunCount}`,
   `**Ascension level:** ${ascensionLevel}`,
-  '',
-  '## Results by Profile',
-  '',
-  '| Profile | Runs | Survived | Survive% | Avg Floor | Avg Cards | Avg Dmg Dealt | Avg Dmg Taken |',
-  '|---------|------|----------|----------|-----------|-----------|---------------|---------------|',
+  ...(simMode === 'combat' ? [
+    `**Max encounters per run:** ${maxEncounters}`,
+    `**Heal between encounters:** ${(healRate * 100).toFixed(0)}%`,
+  ] : []),
 ];
 
-for (const profile of profilesToRun) {
-  const pResults  = allResults.filter(r => r.profile === profile.id);
-  const survived  = pResults.filter(r => r.survived).length;
-  const avgFloor  = (pResults.reduce((s, r) => s + r.floorsReached,     0) / pResults.length).toFixed(1);
-  const avgCards  = (pResults.reduce((s, r) => s + r.totalCardsPlayed,  0) / pResults.length).toFixed(0);
-  const avgDmg    = (pResults.reduce((s, r) => s + r.totalDamageDealt,  0) / pResults.length).toFixed(0);
-  const avgTaken  = (pResults.reduce((s, r) => s + r.totalDamageTaken,  0) / pResults.length).toFixed(0);
-  const survPct   = Math.round(survived / pResults.length * 100);
-  readmeLines.push(`| ${profile.id} | ${pResults.length} | ${survived} | ${survPct}% | ${avgFloor} | ${avgCards} | ${avgDmg} | ${avgTaken} |`);
-}
+if (simMode === 'full') {
+  // ── Full Run README ─────────────────────────────────────────────────────────
+  readmeLines.push(
+    '',
+    '## Results by Profile',
+    '',
+    '| Profile | Runs | Survived | Survive% | Avg Acts | Avg Enc Won | Avg Deck | Avg Relics | Avg Gold Earned | Avg HP (surv) |',
+    '|---------|------|----------|----------|----------|-------------|----------|------------|-----------------|---------------|',
+  );
 
-// Enemy difficulty section — note: EncounterSummary uses turnsUsed / damageDealtTotal / damageTakenTotal
-type EnemyStats = { fights: number; wins: number; totalTurns: number; totalDmg: number; totalTaken: number };
-const enemyStats: Record<string, EnemyStats> = {};
-
-for (const r of allResults) {
-  for (const e of r.encounters) {
-    if (!enemyStats[e.enemyName]) {
-      enemyStats[e.enemyName] = { fights: 0, wins: 0, totalTurns: 0, totalDmg: 0, totalTaken: 0 };
-    }
-    const s = enemyStats[e.enemyName];
-    s.fights++;
-    if (e.result === 'victory') s.wins++;
-    s.totalTurns += e.turnsUsed;
-    s.totalDmg   += e.damageDealtTotal;
-    s.totalTaken += e.damageTakenTotal;
+  for (const profile of profilesToRun) {
+    const pResults = allFullResults.filter(r => r.profile === profile.id);
+    const survived = pResults.filter(r => r.survived).length;
+    const survPct  = Math.round(survived / pResults.length * 100);
+    const avgActs  = (pResults.reduce((s, r) => s + r.actsCompleted, 0) / pResults.length).toFixed(2);
+    const avgEnc   = (pResults.reduce((s, r) => s + r.encountersWon, 0) / pResults.length).toFixed(1);
+    const avgDeck  = (pResults.reduce((s, r) => s + r.finalDeckSize, 0) / pResults.length).toFixed(1);
+    const avgRelic = (pResults.reduce((s, r) => s + r.relicsAcquired.length, 0) / pResults.length).toFixed(1);
+    const avgGold  = (pResults.reduce((s, r) => s + r.goldEarned, 0) / pResults.length).toFixed(0);
+    const avgHP    = (pResults.filter(r => r.survived).reduce((s, r) => s + r.finalHP, 0) / Math.max(survived, 1)).toFixed(0);
+    readmeLines.push(`| ${profile.id} | ${pResults.length} | ${survived} | ${survPct}% | ${avgActs} | ${avgEnc} | ${avgDeck} | ${avgRelic} | ${avgGold} | ${avgHP} |`);
   }
-}
 
-readmeLines.push(
-  '',
-  '## Enemy Difficulty (sorted by avg damage taken)',
-  '',
-  '| Enemy | Fights | Win% | Avg Turns | Avg Dmg Dealt | Avg Dmg Taken |',
-  '|-------|--------|------|-----------|---------------|---------------|',
-);
+  // Room distribution
+  readmeLines.push('', '## Room Type Distribution (avg per run)', '', '| Room Type | Avg Visits | % of Total |', '|-----------|-----------|-----------|');
+  const roomTotals: Record<string, number> = {};
+  for (const r of allFullResults) {
+    for (const [type, count] of Object.entries(r.roomsVisited)) {
+      roomTotals[type] = (roomTotals[type] ?? 0) + count;
+    }
+  }
+  const totalRooms = Object.values(roomTotals).reduce((s, n) => s + n, 0);
+  const runCount = allFullResults.length;
+  Object.entries(roomTotals)
+    .sort((a, b) => b[1] - a[1])
+    .forEach(([type, n]) => {
+      const avgPerRun = (n / runCount).toFixed(1);
+      const pct = totalRooms > 0 ? Math.round(n / totalRooms * 100) : 0;
+      readmeLines.push(`| ${type} | ${avgPerRun} | ${pct}% |`);
+    });
 
-const sortedEnemies = Object.entries(enemyStats)
-  .sort((a, b) => (b[1].totalTaken / b[1].fights) - (a[1].totalTaken / a[1].fights));
+  // Act completion distribution
+  readmeLines.push('', '## Act Completion Distribution', '', '| Acts Completed | Runs | % |', '|---|---|---|');
+  const actDist: Record<number, number> = { 0: 0, 1: 0, 2: 0, 3: 0 };
+  for (const r of allFullResults) actDist[r.actsCompleted] = (actDist[r.actsCompleted] ?? 0) + 1;
+  for (const [acts, count] of Object.entries(actDist).sort((a, b) => parseInt(a[0]) - parseInt(b[0]))) {
+    readmeLines.push(`| ${acts} | ${count} | ${Math.round(count / runCount * 100)}% |`);
+  }
 
-for (const [name, data] of sortedEnemies.slice(0, 20)) {
-  const wr      = Math.round(data.wins / data.fights * 100);
-  const avgT    = (data.totalTurns / data.fights).toFixed(1);
-  const avgDmg  = (data.totalDmg   / data.fights).toFixed(0);
-  const avgTkn  = (data.totalTaken / data.fights).toFixed(0);
-  readmeLines.push(`| ${name} | ${data.fights} | ${wr}% | ${avgT} | ${avgDmg} | ${avgTkn} |`);
-}
+  // Relic acquisition frequency
+  const relicCounts: Record<string, number> = {};
+  for (const r of allFullResults) {
+    for (const id of r.relicsAcquired) {
+      relicCounts[id] = (relicCounts[id] ?? 0) + 1;
+    }
+  }
+  const topRelics = Object.entries(relicCounts)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 15);
+  if (topRelics.length > 0) {
+    readmeLines.push('', '## Most Acquired Relics (top 15)', '', '| Relic ID | Times Acquired | Avg per Run |', '|----------|---------------|-------------|');
+    for (const [id, count] of topRelics) {
+      readmeLines.push(`| ${id} | ${count} | ${(count / runCount).toFixed(2)} |`);
+    }
+  }
 
-// Death floor distribution
-const deathFloors: Record<number, number> = {};
-allResults.filter(r => !r.survived).forEach(r => {
-  deathFloors[r.floorsReached] = (deathFloors[r.floorsReached] || 0) + 1;
-});
-const totalDeaths = allResults.filter(r => !r.survived).length;
+} else {
+  // ── Legacy Combat-Only README ───────────────────────────────────────────────
+  readmeLines.push(
+    '',
+    '## Results by Profile',
+    '',
+    '| Profile | Runs | Survived | Survive% | Avg Floor | Avg Cards | Avg Dmg Dealt | Avg Dmg Taken |',
+    '|---------|------|----------|----------|-----------|-----------|---------------|---------------|',
+  );
 
-readmeLines.push(
-  '',
-  '## Death Floor Distribution',
-  '',
-  '| Floor | Deaths | % of Deaths |',
-  '|-------|--------|-------------|',
-);
+  for (const profile of profilesToRun) {
+    const pResults  = allResults.filter(r => r.profile === profile.id);
+    const survived  = pResults.filter(r => r.survived).length;
+    const avgFloor  = (pResults.reduce((s, r) => s + r.floorsReached,     0) / pResults.length).toFixed(1);
+    const avgCards  = (pResults.reduce((s, r) => s + r.totalCardsPlayed,  0) / pResults.length).toFixed(0);
+    const avgDmg    = (pResults.reduce((s, r) => s + r.totalDamageDealt,  0) / pResults.length).toFixed(0);
+    const avgTaken  = (pResults.reduce((s, r) => s + r.totalDamageTaken,  0) / pResults.length).toFixed(0);
+    const survPct   = Math.round(survived / pResults.length * 100);
+    readmeLines.push(`| ${profile.id} | ${pResults.length} | ${survived} | ${survPct}% | ${avgFloor} | ${avgCards} | ${avgDmg} | ${avgTaken} |`);
+  }
 
-Object.entries(deathFloors)
-  .sort((a, b) => parseInt(a[0]) - parseInt(b[0]))
-  .forEach(([floor, count]) => {
-    const pct = totalDeaths > 0 ? Math.round(count / totalDeaths * 100) : 0;
-    readmeLines.push(`| ${floor} | ${count} | ${pct}% |`);
+  // Enemy difficulty section
+  type EnemyStats = { fights: number; wins: number; totalTurns: number; totalDmg: number; totalTaken: number };
+  const enemyStats: Record<string, EnemyStats> = {};
+
+  for (const r of allResults) {
+    for (const e of r.encounters) {
+      if (!enemyStats[e.enemyName]) {
+        enemyStats[e.enemyName] = { fights: 0, wins: 0, totalTurns: 0, totalDmg: 0, totalTaken: 0 };
+      }
+      const s = enemyStats[e.enemyName];
+      s.fights++;
+      if (e.result === 'victory') s.wins++;
+      s.totalTurns += e.turnsUsed;
+      s.totalDmg   += e.damageDealtTotal;
+      s.totalTaken += e.damageTakenTotal;
+    }
+  }
+
+  readmeLines.push(
+    '',
+    '## Enemy Difficulty (sorted by avg damage taken)',
+    '',
+    '| Enemy | Fights | Win% | Avg Turns | Avg Dmg Dealt | Avg Dmg Taken |',
+    '|-------|--------|------|-----------|---------------|---------------|',
+  );
+
+  const sortedEnemies = Object.entries(enemyStats)
+    .sort((a, b) => (b[1].totalTaken / b[1].fights) - (a[1].totalTaken / a[1].fights));
+
+  for (const [name, data] of sortedEnemies.slice(0, 20)) {
+    const wr      = Math.round(data.wins / data.fights * 100);
+    const avgT    = (data.totalTurns / data.fights).toFixed(1);
+    const avgDmg  = (data.totalDmg   / data.fights).toFixed(0);
+    const avgTkn  = (data.totalTaken / data.fights).toFixed(0);
+    readmeLines.push(`| ${name} | ${data.fights} | ${wr}% | ${avgT} | ${avgDmg} | ${avgTkn} |`);
+  }
+
+  // Death floor distribution
+  const deathFloors: Record<number, number> = {};
+  allResults.filter(r => !r.survived).forEach(r => {
+    deathFloors[r.floorsReached] = (deathFloors[r.floorsReached] || 0) + 1;
   });
+  const totalDeaths = allResults.filter(r => !r.survived).length;
+
+  readmeLines.push(
+    '',
+    '## Death Floor Distribution',
+    '',
+    '| Floor | Deaths | % of Deaths |',
+    '|-------|--------|-------------|',
+  );
+
+  Object.entries(deathFloors)
+    .sort((a, b) => parseInt(a[0]) - parseInt(b[0]))
+    .forEach(([floor, count]) => {
+      const pct = totalDeaths > 0 ? Math.round(count / totalDeaths * 100) : 0;
+      readmeLines.push(`| ${floor} | ${count} | ${pct}% |`);
+    });
+}
 
 readmeLines.push('');
 
