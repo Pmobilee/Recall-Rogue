@@ -547,6 +547,11 @@ export function playCardAction(
           cardBaseDamage: card.baseEffectValue ?? 0,
           playMode: 'charge',
           chargeCorrect: false,
+          playerBlock: turnState.playerState.shield,
+          drainPlayerBlock: (amount: number) => {
+            const clamped = Math.min(amount, turnState.playerState.shield);
+            turnState.playerState.shield = Math.max(0, turnState.playerState.shield - clamped);
+          },
         };
         enemy.template.onPlayerChargeWrong(ctx);
         const mirrorDmg = (ctx as any)._mirrorDamage as number | undefined;
@@ -635,6 +640,11 @@ export function playCardAction(
         cardBaseDamage: card.baseEffectValue ?? 0,
         playMode: 'charge',
         chargeCorrect: false,
+        playerBlock: turnState.playerState.shield,
+        drainPlayerBlock: (amount: number) => {
+          const clamped = Math.min(amount, turnState.playerState.shield);
+          turnState.playerState.shield = Math.max(0, turnState.playerState.shield - clamped);
+        },
       };
       enemy.template.onPlayerChargeWrong(ctx);
       const mirrorDmg = (ctx as any)._mirrorDamage as number | undefined;
@@ -839,6 +849,14 @@ export function playCardAction(
     effect.enemyDefeated = false;
   }
 
+  // AR-123: quickPlayDamageMultiplier — Quick Play deals a reduced fraction of normal damage.
+  // E.g. 0.3 = 30% damage. Encourages Charging without fully neutering Quick Play.
+  if (effect.damageDealt > 0 && playMode === 'quick' && enemy.template.quickPlayDamageMultiplier !== undefined) {
+    effect.damageDealt = Math.max(1, Math.round(effect.damageDealt * enemy.template.quickPlayDamageMultiplier));
+    effect.finalValue = effect.damageDealt;
+    effect.enemyDefeated = effect.damageDealt >= enemy.currentHP;
+  }
+
   // AR-99 Phase 3: chargeResistant — Quick Play attacks deal 50% damage (half effectiveness).
   // Encourages players to Charge against armored/resistant enemies.
   if (effect.damageDealt > 0 && playMode === 'quick' && enemy.template.chargeResistant) {
@@ -874,6 +892,11 @@ export function playCardAction(
       cardBaseDamage: card.baseEffectValue ?? 0,
       playMode: 'charge',
       chargeCorrect: true,
+      playerBlock: turnState.playerState.shield,
+      drainPlayerBlock: (amount: number) => {
+        const clamped = Math.min(amount, turnState.playerState.shield);
+        turnState.playerState.shield = Math.max(0, turnState.playerState.shield - clamped);
+      },
     };
     enemy.template.onPlayerChargeCorrect(ctx);
   }

@@ -51,6 +51,17 @@
       .filter((id): id is string => id !== undefined)
   })
 
+  // AR-124: Deck cycle-speed indicator
+  /** Current deck size (before adding the reward card). */
+  let currentDeckSize = $derived.by(() => {
+    void options // re-evaluate when options refresh
+    return getActiveDeckCards().length
+  })
+  /** Cycle speed = deckSize / 5 cards drawn per turn, rounded to 1 decimal. */
+  function cycleSpeed(size: number): string {
+    return (size / 5).toFixed(1)
+  }
+
   // Reward reveal state
   let stepVisible = $state(false)
   let altarCeremonyPhase = $state(0)
@@ -335,7 +346,7 @@
         <div class="altar-cloth"></div>
 
         <div class="altar-options">
-          {#each options as option (option.cardType)}
+          {#each options as option, i (option.mechanicId ?? `${option.cardType}-${i}`)}
             {@const domainColor = getDomainMetadata(option.domain).colorTint}
             {@const typeGlow = TYPE_GLOW[option.cardType] ?? '#ffffff'}
             <button
@@ -393,6 +404,12 @@
               <div class="mini-card-domain-bar" style={`background: ${domainColor};`}></div>
             </button>
           {/each}
+        </div>
+
+        <!-- AR-124: Deck cycle-speed indicator -->
+        <div class="cycle-speed-indicator">
+          Deck: {currentDeckSize} cards (cycle: {cycleSpeed(currentDeckSize)} turns)
+          &rarr; {currentDeckSize + 1} cards ({cycleSpeed(currentDeckSize + 1)} turns)
         </div>
       </div>
 
@@ -748,6 +765,15 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: calc(10px * var(--layout-scale, 1));
     align-items: end;
+  }
+
+  /* AR-124: Deck cycle-speed indicator */
+  .cycle-speed-indicator {
+    text-align: center;
+    font-size: calc(11px * var(--layout-scale, 1));
+    color: #6E7681;
+    margin-top: calc(6px * var(--layout-scale, 1));
+    letter-spacing: 0.02em;
   }
 
   .altar-option {

@@ -421,8 +421,10 @@ Because the counter persists across encounters, Surge timing becomes unpredictab
 - **Examiner:** Gains +3 Strength every turn you don't Charge at least 1 card
 - **Scholar:** Heals 5 HP when you answer correctly on a Charge
 - **Shadow Mimic:** Copies card effect against you when you answer wrong on a Charged card
-- **Bone Collector:** Heals 5 HP when you answer a Charged quiz incorrectly
-- **Librarian:** Immune to Quick Play damage — only Charged attacks deal damage
+- **Bone Collector (AR-123):** Steals up to 5 block from the player when they miss a Charge. Enemy gains that stolen block as HP.
+- **Void Mite (AR-123):** Drains 3 block from the player when they Charge correctly. Build block before Charging, or Quick Play to deny it.
+- **Core Harbinger (AR-123):** Quick Play deals only 30% damage. Charge for full effect. No longer immune — now resistant.
+- **Knowledge Siphon (AR-123):** Gains +2 base damage every time the player Charges correctly. Kill it fast or play defensively.
 
 ### Enemy Combat Traits (AR-99 Phase 3)
 
@@ -432,6 +434,11 @@ Enemies can have passive traits that modify how specific play styles interact wi
 Quick Play attacks deal **50% damage** to this enemy. Charged attacks (correct or wrong) deal full damage. Rewards players who invest AP to Charge their cards.
 
 Enemies with chargeResistant: iron_beetle, geode_beetle, crystal_golem, basalt_crawler, quartz_elemental, iron_core_golem, rock_hermit, tectonic_scarab, granite_hound, void_mite, tome_mimic, pressure_djinn
+
+#### quickPlayDamageMultiplier (AR-123)
+Quick Play attacks deal only **X% damage** (e.g., 30%) to this enemy instead of zero. A softer version of `quickPlayImmune` — players can still chip with Quick Play, but Charging is dramatically more efficient.
+
+Enemies with quickPlayDamageMultiplier: core_harbinger (0.3)
 
 #### chainVulnerable
 Chain attacks (Knowledge Chain multiplier > 1.0×) deal **+50% bonus damage** to this enemy. Rewards players who build and sustain chains by answering varied card types correctly.
@@ -1120,10 +1127,10 @@ HP: 55 | Damage: 10
 Gains +3 Strength every turn you don't Charge at least 1 card.
 *Forces quiz engagement without feeling forced. You CHOOSE when to Charge.*
 
-**Bone Collector** — Common
-HP: 35 | Damage: 10
-Heals 5 HP when you answer a Charged quiz incorrectly.
-*Punishes guessing. Reward for only Charging known facts.*
+**Bone Collector** — Common (AR-123 redesign)
+HP: 30 | Damage: 10
+Steals up to 5 block from the player when they miss a Charge. That stolen block heals the enemy.
+*Block theft punishes unprotected guessing. Build shields before risking a quiz.*
 
 **The Archivist** — Boss (Act 2)
 HP: 80 | Damage: 12
@@ -1133,20 +1140,31 @@ Phase 2: Resume with accumulated buffs/debuffs.
 
 ### Act 3 Enemies (The Archive)
 
-**Void Mite** — Common
+**Void Mite** — Common (AR-123 redesign)
 HP: 40 | Damage: 6
-Heals 5 HP when you answer correctly on a Charge. Very weak otherwise.
-*Dilemma: Charge for power (but heal the enemy) or Quick Play to chip?*
+Drains 3 block from the player when they Charge correctly. Quick Play denies the drain.
+*No longer anti-learning. Block drain creates a resource trade-off instead of punishing correct answers.*
+
+**The Grade Curve (knowledge_siphon)** — Common (AR-123 new)
+HP: 45 | Damage: 8–10
+Gains +2 base damage every time the player Charges correctly (stacks indefinitely).
+*Kill fast or accept mounting risk. Tests when to Quick Play vs. Charge.*
 
 **Mantle Dragon** — Elite
 HP: 70 | Damage: 14
 Negates all chain bonuses. Chains still form visually but give 1.0× multiplier.
 *Forces non-chain strategies. Tests build versatility.*
 
-**Core Harbinger** — Elite
+**Core Harbinger** — Elite (AR-123 redesign)
 HP: 65 | Damage: 12
-Immune to Quick Play damage. Only Charged attacks deal damage.
-*All-in quiz skill test. You must answer correctly to win.*
+Quick Play deals only 30% damage. Charge for full effect.
+*Softer wall than full immunity. Quick Play chips are viable but inefficient — Charging is the clear correct play.*
+
+### Intent Variation (AR-123)
+Three Act 1–2 enemies gained a low-weight (1) 4th intent for rare surprise variation:
+- **crystal_golem**: Occasionally uses `Crystal barrage` (multi_attack ×2, 6 dmg) instead of its standard single-hit/defend/charge pattern
+- **cave_bat**: Occasionally uses `Wing cover` (defend 4) instead of always attacking
+- **shadow_mimic**: Occasionally uses `Shadow copies` (multi_attack ×2, 4 dmg) in addition to its existing 3-hit flurry
 
 **The Curator** — Final Boss (Act 3)
 HP: 120 | Damage: 15
@@ -1465,6 +1483,44 @@ CHARGE button is visible in Run 1 but tooltipped as optional. First few encounte
 - Correct + fast response (runs 1–3 only): counts as 2 consecutive correct answers
 - Run accuracy bonus (80%+): all correctly-answered facts get +2 days stability bonus
 - First-encounter stability boost: first correct answer starts stability at 2 days (not 1)
+
+### In-Run Tutorial Tooltips (AR-124)
+
+Lightweight contextual hints that fire once per device (localStorage-gated). These are NOT blocking dialogs — they are passive floating tooltips that auto-dismiss.
+
+#### Feature 1: First-Turn AP Tooltip
+- **Trigger:** First-ever card play (Quick Play or Charge). Checks `localStorage.getItem('tutorial:apShown')`.
+- **Content:** "You have 3 AP per turn. Each card costs AP to play."
+- **Display:** Floating tooltip near the AP counter, 4-second auto-dismiss.
+- **Location:** `CardCombatOverlay.svelte` — `maybeShowApTutorial()`.
+
+#### Feature 2: Charge Cost Tooltip
+- **Trigger:** First non-free Charge play (surcharge > 0). Checks `localStorage.getItem('tutorial:chargeShown')`.
+- **Content:** "Charging costs +1 extra AP for the quiz power boost."
+- **Display:** Floating tooltip above the card hand, 5-second auto-dismiss.
+- **Not shown** on Surge turns or Chain Momentum turns where Charge is free.
+- **Location:** `CardCombatOverlay.svelte` — `maybeShowChargeTutorial()`.
+
+#### Feature 3: Quick Play vs Charge Comparison Banner
+- **Trigger:** Player has performed BOTH a Quick Play AND a Charge in the same run. Checks `localStorage.getItem('tutorial:comparisonShown')`.
+- **Content:** "Quick Play = safe at 1.0x. Charge = quiz for up to 3x power!"
+- **Display:** Horizontal banner at top of combat area, 5-second auto-dismiss.
+- **Location:** `CardCombatOverlay.svelte` — `maybeShowComparisonBanner()`.
+
+#### Feature 4: Deck Cycle-Speed Indicator
+Shows current vs projected deck cycle time in the card reward and meditate UIs. Not a tooltip — a persistent muted info line.
+
+- **Formula:** `cycleSpeed = deckSize / 5` (5 cards drawn per turn, rounded to 1 decimal).
+- **Reward screen:** "Deck: X cards (cycle: Y.Y turns) → X+1 cards (Y.Y turns)" — shown below the altar options.
+- **Meditate screen:** "Deck: X cards (cycle: Y.Y turns) → X-1 cards (Y.Y turns)" — shown below the action buttons.
+- **Style:** Small muted grey text (`#6E7681`), 11px, non-interactive.
+- **Location:** `CardRewardScreen.svelte` and `MeditateOverlay.svelte`.
+
+#### Tooltip Styling
+All tutorial tooltips use:
+- `background: rgba(0, 0, 0, 0.85)`, `color: #f0e6d2`, `border-radius: 8px`, `font-size: 13px`
+- `pointer-events: none` — purely informational, never blocks interaction
+- `z-index: 9999` — always on top, but no overlay/backdrop
 
 ---
 

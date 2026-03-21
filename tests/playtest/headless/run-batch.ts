@@ -16,6 +16,85 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 // ──────────────────────────────────────────────────────────────────────────────
+// Per-mechanic win contribution stats
+// ──────────────────────────────────────────────────────────────────────────────
+
+interface MechanicStats {
+  mechanic: string;
+  totalPlays: number;
+  chargedPlays: number;
+  quickPlays: number;
+  correctWhenCharged: number;
+  wrongWhenCharged: number;
+  totalDamage: number;
+  avgDamagePerPlay: number;
+  appearedInWins: number;     // how many winning runs included this mechanic
+  appearedInLosses: number;   // how many losing runs included this mechanic
+  winRateWhenPresent: number; // appearedInWins / (appearedInWins + appearedInLosses)
+}
+
+function aggregateMechanicStats(results: SimRunResult[]): MechanicStats[] {
+  // Per-mechanic accumulators
+  const acc: Record<string, {
+    totalPlays: number;
+    chargedPlays: number;
+    quickPlays: number;
+    correctWhenCharged: number;
+    wrongWhenCharged: number;
+    totalDamage: number;
+    appearedInWins: number;
+    appearedInLosses: number;
+  }> = {};
+
+  for (const run of results) {
+    // Collect which mechanics appeared in this run
+    const mechanicsInRun = new Set<string>();
+    for (const enc of run.encounters) {
+      for (const play of enc.cardPlays) {
+        const m = play.mechanic;
+        if (!acc[m]) {
+          acc[m] = { totalPlays: 0, chargedPlays: 0, quickPlays: 0, correctWhenCharged: 0, wrongWhenCharged: 0, totalDamage: 0, appearedInWins: 0, appearedInLosses: 0 };
+        }
+        acc[m].totalPlays++;
+        if (play.wasCharged) {
+          acc[m].chargedPlays++;
+          if (play.answeredCorrectly) acc[m].correctWhenCharged++;
+          else acc[m].wrongWhenCharged++;
+        } else {
+          acc[m].quickPlays++;
+        }
+        acc[m].totalDamage += play.damageDealt;
+        mechanicsInRun.add(m);
+      }
+    }
+
+    // Attribute win/loss to each mechanic present
+    for (const m of mechanicsInRun) {
+      if (!acc[m]) continue; // already guaranteed above, but be safe
+      if (run.survived) acc[m].appearedInWins++;
+      else acc[m].appearedInLosses++;
+    }
+  }
+
+  return Object.entries(acc).map(([mechanic, data]) => {
+    const totalPresences = data.appearedInWins + data.appearedInLosses;
+    return {
+      mechanic,
+      totalPlays: data.totalPlays,
+      chargedPlays: data.chargedPlays,
+      quickPlays: data.quickPlays,
+      correctWhenCharged: data.correctWhenCharged,
+      wrongWhenCharged: data.wrongWhenCharged,
+      totalDamage: data.totalDamage,
+      avgDamagePerPlay: data.totalPlays > 0 ? data.totalDamage / data.totalPlays : 0,
+      appearedInWins: data.appearedInWins,
+      appearedInLosses: data.appearedInLosses,
+      winRateWhenPresent: totalPresences > 0 ? data.appearedInWins / totalPresences : 0,
+    };
+  }).sort((a, b) => b.winRateWhenPresent - a.winRateWhenPresent);
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
 // Bot profiles matching the browser bot
 // ──────────────────────────────────────────────────────────────────────────────
 
@@ -90,6 +169,7 @@ console.log(`${'='.repeat(60)}\n`);
 
 const startTime = Date.now();
 const allResults: Array<SimRunResult & { profile: ProfileId }> = [];
+const profileMechanicStats: Record<string, MechanicStats[]> = {};
 
 for (const profile of profilesToRun) {
   const profileStart = Date.now();
@@ -129,10 +209,27 @@ for (const profile of profilesToRun) {
     `${elapsed}s`,
   );
 
+  // Compute and print per-mechanic stats
+  const mechStats = aggregateMechanicStats(results);
+  profileMechanicStats[profile.id] = mechStats;
+
+  console.log(`    Top mechanics by win contribution (${profile.name}):`);
+  const top5 = mechStats.slice(0, 5);
+  for (const ms of top5) {
+    const winPct = Math.round(ms.winRateWhenPresent * 100);
+    const avgDmg = ms.avgDamagePerPlay.toFixed(1);
+    console.log(
+      `      ${ms.mechanic.padEnd(10)} ` +
+      `${String(winPct).padStart(3)}% win rate when present | ` +
+      `${avgDmg.padStart(5)} avg dmg/play | ` +
+      `${ms.totalPlays} plays (${ms.chargedPlays} charged, ${ms.quickPlays} quick)`,
+    );
+  }
+
   // Save per-profile JSON
   fs.writeFileSync(
     path.join(outputDir, `${profile.id}.json`),
-    JSON.stringify(results, null, 2),
+    JSON.stringify({ results, mechanicStats: mechStats }, null, 2),
   );
 }
 
@@ -150,6 +247,7 @@ const combined = {
   durationSeconds: parseFloat(totalElapsed),
   profiles:        profilesToRun.map(p => p.id),
   config:          { maxEncounters, healRate, ascensionLevel },
+  mechanicStats:   profileMechanicStats,
   results:         allResults,
 };
 fs.writeFileSync(path.join(outputDir, 'combined.json'), JSON.stringify(combined, null, 2));

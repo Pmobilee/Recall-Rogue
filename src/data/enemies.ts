@@ -44,6 +44,10 @@ export interface EnemyReactContext {
   playMode: 'quick' | 'charge';
   /** Whether the Charge quiz was answered correctly (false if quick play). */
   chargeCorrect: boolean;
+  /** Current player block/shield amount. Used by drain effects. */
+  playerBlock?: number;
+  /** Drains the specified amount of block from the player. Amount is clamped to current block. */
+  drainPlayerBlock?: (amount: number) => void;
 }
 
 /** Context passed to onEnemyTurnStart callbacks. */
@@ -130,6 +134,12 @@ export interface EnemyTemplate {
    */
   quickPlayImmune?: boolean;
   /**
+   * If set, Quick Play card plays deal this fraction of normal damage (0–1).
+   * E.g. 0.3 = 30% damage. Takes precedence over quickPlayImmune if both are set.
+   * Used by Core Harbinger.
+   */
+  quickPlayDamageMultiplier?: number;
+  /**
    * Boss Quiz Phase configurations. Combat pauses at each HP threshold.
    * Full spec in AR-59.7. Handled by the quiz phase service (AR-59.7 scope).
    */
@@ -204,6 +214,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 8, weight: 3, telegraph: 'Swooping strike' },
       { type: 'attack', value: 11, weight: 2, telegraph: 'Frenzied bite' },
       { type: 'buff', value: 2, weight: 1, telegraph: 'Screeching', statusEffect: { type: 'strength', value: 1, turns: 2 } },
+      { type: 'defend', value: 4, weight: 1, telegraph: 'Wing cover' },
     ],
     description: 'Common cave predator. Fast and fragile. First thing you\'ll see down here.',
     rarity: 'standard',
@@ -221,6 +232,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 12, weight: 2, telegraph: 'Crystal slam' },
       { type: 'defend', value: 8, weight: 2, telegraph: 'Hardening crystals' },
       { type: 'charge', value: 25, weight: 1, telegraph: 'Charging: Crystal Crush!', bypassDamageCap: true },
+      { type: 'multi_attack', value: 6, weight: 1, telegraph: 'Crystal barrage', hitCount: 2 },
     ],
     description: 'Crystal-encrusted and slow. Blocks on off-turns, then charges a heavy spike.',
     rarity: 'standard',
@@ -609,13 +621,18 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'defend', value: 6, weight: 1, telegraph: 'Bone armor' },
       { type: 'debuff', value: 2, weight: 1, telegraph: 'Marrow drain', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
     ],
-    description: 'Scavenger. Heals 5 HP every time you miss a Charge.',
+    description: 'Steals your block when you miss a Charge. Build defenses before risking a quiz.',
     rarity: 'standard',
     spawnWeight: 10,
     animArchetype: 'lurcher',
     onPlayerChargeWrong: (ctx) => {
-      const healAmount = Math.min(5, ctx.enemy.maxHP - ctx.enemy.currentHP);
-      ctx.enemy.currentHP += healAmount;
+      // Steals up to 5 block from player on wrong Charge
+      const stealAmount = Math.min(5, ctx.playerBlock ?? 0);
+      if (stealAmount > 0 && ctx.drainPlayerBlock) {
+        ctx.drainPlayerBlock(stealAmount);
+        // Enemy gains the stolen block as HP
+        ctx.enemy.currentHP = Math.min(ctx.enemy.maxHP, ctx.enemy.currentHP + stealAmount);
+      }
     },
   },
 
@@ -1286,15 +1303,40 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'defend', value: 8, weight: 2, telegraph: 'Study shield' },
       { type: 'heal', value: 5, weight: 1, telegraph: 'Knowledge recovery' },
     ],
-    description: 'Feeds on correct answers. Heals 5 HP each time you Charge correctly. Quick Play denies it.',
+    description: 'Drains 3 block when you Charge correctly. Build block before Charging or Quick Play to deny it.',
     rarity: 'standard',
     spawnWeight: 10,
     animArchetype: 'crawler',
     onPlayerChargeCorrect: (ctx) => {
-      const healAmount = Math.min(5, ctx.enemy.maxHP - ctx.enemy.currentHP);
-      ctx.enemy.currentHP += healAmount;
+      // Drains 3 block from player when they answer correctly
+      const drainAmount = Math.min(3, ctx.playerBlock ?? 0);
+      if (drainAmount > 0 && ctx.drainPlayerBlock) {
+        ctx.drainPlayerBlock(drainAmount);
+      }
     },
     chargeResistant: true,
+  },
+
+  // AR-123: Knowledge Siphon — grows stronger the more you answer correctly.
+  {
+    id: 'knowledge_siphon',
+    name: 'The Grade Curve',
+    category: 'common',
+    region: 'deep_caverns',
+    baseHP: 45,
+    intentPool: [
+      { type: 'attack', value: 8, weight: 3, telegraph: 'Knowledge drain' },
+      { type: 'defend', value: 6, weight: 2, telegraph: 'Absorb shield' },
+      { type: 'attack', value: 10, weight: 1, telegraph: 'Power strike' },
+    ],
+    description: 'Gains +2 Strength every time you Charge correctly. Kill fast or play safe.',
+    rarity: 'standard',
+    spawnWeight: 8,
+    animArchetype: 'caster',
+    onPlayerChargeCorrect: (ctx) => {
+      // Gains +2 permanent Strength each time player answers correctly
+      ctx.enemy.enrageBonusDamage = (ctx.enemy.enrageBonusDamage ?? 0) + 2;
+    },
   },
 
   {
@@ -1841,9 +1883,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 10, weight: 2, telegraph: 'Shelf sweep' },
       { type: 'defend', value: 10, weight: 1, telegraph: 'Book barrier' },
     ],
-    description: 'Quick Play does nothing to it. Only Charge deals damage.',
+    description: 'Resistant to Quick Play — only deals 30% damage. Charge for full effect.',
     animArchetype: 'caster',
-    quickPlayImmune: true,
+    quickPlayDamageMultiplier: 0.3,
   },
 
 ];
@@ -1891,7 +1933,7 @@ export const ACT_ENEMY_POOLS: ActEnemyPool[] = [
     act: 2,
     commons: [
       // deep_caverns commons
-      'shadow_mimic', 'bone_collector', 'basalt_crawler', 'salt_wraith',
+      'shadow_mimic', 'bone_collector', 'knowledge_siphon', 'basalt_crawler', 'salt_wraith',
       'coal_imp', 'granite_hound', 'sulfur_sprite', 'magma_tick',
       'deep_angler', 'rock_hermit', 'gas_phantom', 'stalactite_drake',
       'ember_moth',

@@ -95,6 +95,18 @@
   let showMustChargeTooltip = $state(false)
   let mustChargeTimer = $state<ReturnType<typeof setTimeout> | null>(null)
 
+  // AR-124: Tutorial tooltip state
+  let showApTutorial = $state(false)
+  let showChargeTutorial = $state(false)
+  let showComparisonBanner = $state(false)
+  /** Whether the player has done a Quick Play this run (for comparison banner). */
+  let hasQuickPlayed = $state(false)
+  /** Whether the player has done a Charge this run (for comparison banner). */
+  let hasCharged = $state(false)
+  let apTutorialTimer = $state<ReturnType<typeof setTimeout> | null>(null)
+  let chargeTutorialTimer = $state<ReturnType<typeof setTimeout> | null>(null)
+  let comparisonBannerTimer = $state<ReturnType<typeof setTimeout> | null>(null)
+
   /** Refs to the draw/discard pile indicator elements — used to set CSS vars for card animations. */
   let drawPileEl = $state<HTMLDivElement | undefined>(undefined)
   let discardPileEl = $state<HTMLDivElement | undefined>(undefined)
@@ -521,6 +533,7 @@
   let playerHpColor = $derived(
     playerHpRatio > 0.5 ? '#2ecc71' : playerHpRatio > 0.25 ? '#f59e0b' : '#ef4444'
   )
+  let isHpCritical = $derived(playerHpRatio <= 0.15 && playerHpRatio > 0)
 
   let onboardingTip = $derived.by(() => {
     const state = get(onboardingState)
@@ -940,6 +953,49 @@
     }, 1500)
   }
 
+  // AR-124: Tutorial tooltip triggers
+
+  /** Show the AP tutorial tooltip on first-ever card play. */
+  function maybeShowApTutorial(): void {
+    if (localStorage.getItem('tutorial:apShown')) return
+    localStorage.setItem('tutorial:apShown', 'true')
+    showApTutorial = true
+    if (apTutorialTimer !== null) clearTimeout(apTutorialTimer)
+    apTutorialTimer = setTimeout(() => {
+      showApTutorial = false
+      apTutorialTimer = null
+    }, 4000)
+  }
+
+  /** Show the Charge cost tutorial tooltip on first non-free Charge play. */
+  function maybeShowChargeTutorial(isFreeCharge: boolean): void {
+    if (isFreeCharge) return
+    if (localStorage.getItem('tutorial:chargeShown')) return
+    localStorage.setItem('tutorial:chargeShown', 'true')
+    showChargeTutorial = true
+    if (chargeTutorialTimer !== null) clearTimeout(chargeTutorialTimer)
+    chargeTutorialTimer = setTimeout(() => {
+      showChargeTutorial = false
+      chargeTutorialTimer = null
+    }, 5000)
+  }
+
+  /** Track Quick Play / Charge plays and show comparison banner once both have occurred. */
+  function maybeShowComparisonBanner(mode: 'quick' | 'charge'): void {
+    if (localStorage.getItem('tutorial:comparisonShown')) return
+    if (mode === 'quick') hasQuickPlayed = true
+    if (mode === 'charge') hasCharged = true
+    if (hasQuickPlayed && hasCharged) {
+      localStorage.setItem('tutorial:comparisonShown', 'true')
+      showComparisonBanner = true
+      if (comparisonBannerTimer !== null) clearTimeout(comparisonBannerTimer)
+      comparisonBannerTimer = setTimeout(() => {
+        showComparisonBanner = false
+        comparisonBannerTimer = null
+      }, 5000)
+    }
+  }
+
   /** Fling-to-Charge: card was dragged 80px+ upward. Select it and immediately open quiz (Charge flow). */
   function handleChargeDirect(index: number): void {
     if (!turnState || turnState.phase !== 'player_action') return
@@ -1012,6 +1068,10 @@
     playCardAudio('card-cast')
     cardPlayStage = 'committed'
 
+    // AR-124: Tutorial — AP tooltip on first-ever play; comparison banner tracking
+    maybeShowApTutorial()
+    maybeShowComparisonBanner('quick')
+
     // Animate as reveal → swoosh → impact → discard
     animatingCards = [...animatingCards, card]
     cardAnimations = { ...cardAnimations, [cardId]: 'reveal' }
@@ -1080,6 +1140,12 @@
     if ($isLandscape) {
       getCombatScene()?.slideEnemyForQuiz(true)
     }
+
+    // AR-124: Tutorial — charge cost tooltip (only if not free) and comparison banner tracking
+    const isFreeCharge = isSurgeActive || nextChargeFree
+    maybeShowApTutorial()
+    maybeShowChargeTutorial(isFreeCharge)
+    maybeShowComparisonBanner('charge')
 
     const state = get(onboardingState)
     if (!state.hasCompletedOnboarding && !state.hasSeenCastTooltip) {
@@ -1519,7 +1585,7 @@
         class:intent-expanded={intentPopupOpen}
         style="background: {intentDisplay.color}; border-color: {intentDisplay.borderColor};"
         onclick={() => { intentPopupOpen = !intentPopupOpen }}
-        aria-label="View intent details"
+        aria-label={intentDetailText}
       >
         <div class="intent-bubble-summary">
           <img class="intent-icon-img" src={enemyIntent ? getIntentIconPath(enemyIntent.type) : ''} alt=""
@@ -1554,6 +1620,25 @@
     {#if showMustChargeTooltip}
       <div class="must-charge-tooltip" transition:fade={{ duration: 150 }}>
         ⚡ Must Charge!
+      </div>
+    {/if}
+
+    <!-- AR-124: Tutorial tooltips -->
+    {#if showApTutorial}
+      <div class="tutorial-tooltip tutorial-ap-tooltip" transition:fade={{ duration: 200 }}>
+        You have {apMax} AP per turn. Each card costs AP to play.
+      </div>
+    {/if}
+
+    {#if showChargeTutorial}
+      <div class="tutorial-tooltip tutorial-charge-tooltip" transition:fade={{ duration: 200 }}>
+        Charging costs +1 extra AP for the quiz power boost.
+      </div>
+    {/if}
+
+    {#if showComparisonBanner}
+      <div class="tutorial-comparison-banner" transition:fade={{ duration: 200 }}>
+        Quick Play = safe at 1.0x. Charge = quiz for up to 3x power!
       </div>
     {/if}
 
@@ -1605,15 +1690,14 @@
     <StatusEffectBar effects={playerEffects} position="player" />
 
     <div class="player-status-strip" aria-label="Player health and block">
-      {#if playerShield > 0}
-        <div class="player-block-badge">
-          <span class="player-block-icon">🛡️</span>
-          <span class="player-block-value">{playerShield}</span>
-        </div>
-      {/if}
+      <div class="player-block-badge" class:dimmed={playerShield === 0}>
+        <span class="player-block-icon">🛡️</span>
+        <span class="player-block-value">{playerShield}</span>
+      </div>
       <div class="player-hp-track">
         <div
           class="player-hp-fill"
+          class:hp-critical={isHpCritical}
           style="width: {Math.round(playerHpRatio * 100)}%; background: {playerHpColor};"
         ></div>
         <span class="player-hp-text">{playerHpCurrent}/{playerHpMax}</span>
@@ -1716,6 +1800,7 @@
         <div class="lsb-hp-track">
           <div
             class="lsb-hp-fill"
+            class:hp-critical={isHpCritical}
             style="width: {Math.round(playerHpRatio * 100)}%; background: {playerHpColor};"
           ></div>
           <span class="lsb-hp-text">{playerHpCurrent}/{playerHpMax}</span>
@@ -2192,7 +2277,7 @@
   .end-turn-btn {
     position: absolute;
     left: calc(12px * var(--layout-scale, 1));
-    bottom: calc(12px * var(--layout-scale, 1));
+    bottom: calc(calc(12px * var(--layout-scale, 1)) + var(--safe-bottom, 0px));
     width: auto;
     min-width: calc(110px * var(--layout-scale, 1));
     padding: 0 calc(20px * var(--layout-scale, 1));
@@ -2308,6 +2393,10 @@
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
   }
 
+  .player-block-badge.dimmed {
+    opacity: 0.3;
+  }
+
   .player-block-icon {
     font-size: calc(12px * var(--layout-scale, 1));
     line-height: 1;
@@ -2349,10 +2438,19 @@
 
   .player-hp-fill {
     height: 100%;
-    min-width: 2px;
+    min-width: 4px;
     border-radius: 999px;
     transition: width 160ms ease, background 160ms ease;
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+  }
+
+  .hp-critical {
+    animation: hpCriticalPulse 1s ease-in-out infinite;
+  }
+
+  @keyframes hpCriticalPulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 4px rgba(239, 68, 68, 0.5); }
+    50% { opacity: 0.7; box-shadow: 0 0 12px rgba(239, 68, 68, 0.9); }
   }
 
   .wow-factor-overlay {
@@ -2465,6 +2563,8 @@
     align-items: center;
     gap: calc(3px * var(--layout-scale, 1));
     cursor: default;
+    min-width: 44px;
+    min-height: 44px;
   }
 
   .draw-pile-indicator {
@@ -2735,6 +2835,71 @@
     bottom: calc(27vh + 36px + 16px);
   }
 
+  /* AR-124: Tutorial tooltips */
+  .tutorial-tooltip {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.85);
+    color: #f0e6d2;
+    padding: calc(8px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    border-radius: calc(8px * var(--layout-scale, 1));
+    font-size: calc(13px * var(--layout-scale, 1));
+    max-width: calc(260px * var(--layout-scale, 1));
+    z-index: 9999;
+    pointer-events: none;
+    text-align: center;
+    line-height: 1.4;
+    border: 1px solid rgba(240, 230, 210, 0.2);
+  }
+
+  /* AP tutorial: near the AP orb (top-right of portrait layout) */
+  .tutorial-ap-tooltip {
+    top: calc(80px * var(--layout-scale, 1));
+    right: calc(12px * var(--layout-scale, 1));
+  }
+
+  /* Charge tutorial: above the card hand */
+  .tutorial-charge-tooltip {
+    bottom: calc(230px * var(--layout-scale, 1));
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Comparison banner: top of combat area */
+  .tutorial-comparison-banner {
+    position: fixed;
+    top: calc(60px * var(--layout-scale, 1));
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.88);
+    color: #f0e6d2;
+    padding: calc(10px * var(--layout-scale, 1)) calc(18px * var(--layout-scale, 1));
+    border-radius: calc(8px * var(--layout-scale, 1));
+    font-size: calc(13px * var(--layout-scale, 1));
+    max-width: calc(320px * var(--layout-scale, 1));
+    width: max-content;
+    z-index: 9999;
+    pointer-events: none;
+    text-align: center;
+    line-height: 1.4;
+    border: 1px solid rgba(240, 230, 210, 0.25);
+  }
+
+  /* Landscape adjustments for tutorial tooltips */
+  .layout-landscape .tutorial-ap-tooltip {
+    top: auto;
+    right: auto;
+    bottom: calc(27vh + 36px + 56px);
+    left: calc(12px * var(--layout-scale, 1));
+  }
+
+  .layout-landscape .tutorial-charge-tooltip {
+    bottom: calc(27vh + 36px + 16px);
+  }
+
+  .layout-landscape .tutorial-comparison-banner {
+    top: calc(8px * var(--layout-scale, 1));
+  }
+
   /* ── Landscape stats bar ────────────────────────────────── */
   .landscape-stats-bar {
     display: none; /* hidden in portrait */
@@ -2843,7 +3008,7 @@
 
   .lsb-hp-fill {
     height: 100%;
-    min-width: 2px;
+    min-width: 4px;
     border-radius: 999px;
     transition: width 160ms ease, background 160ms ease;
   }

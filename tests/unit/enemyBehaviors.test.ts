@@ -2,7 +2,7 @@
  * Unit tests for AR-59.13: v2 Enemy Roster behaviors.
  * Tests quiz-reactive enemy callbacks, Timer Wyrm enrage, and act pool selection.
  */
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import {
   ENEMY_TEMPLATES,
   ACT_ENEMY_POOLS,
@@ -59,35 +59,42 @@ describe('shadow_mimic — onPlayerChargeWrong', () => {
   });
 });
 
-// ── Bone Collector: onPlayerChargeWrong heals, no overheal ──
+// ── Bone Collector: onPlayerChargeWrong steals block ──
 
 describe('bone_collector — onPlayerChargeWrong', () => {
-  it('heals 5 HP on wrong Charge when below max HP', () => {
+  it('steals up to 5 block from player on wrong Charge', () => {
     const enemy = makeInstance('bone_collector');
     enemy.currentHP = enemy.maxHP - 10;
     const startHP = enemy.currentHP;
-    const ctx = makeCtx(enemy);
+    const drainPlayerBlock = vi.fn();
+    const ctx = makeCtx(enemy, { playerBlock: 10, drainPlayerBlock });
     enemy.template.onPlayerChargeWrong!(ctx);
+    expect(drainPlayerBlock).toHaveBeenCalledWith(5);
     expect(enemy.currentHP).toBe(startHP + 5);
   });
 
-  it('does not overheal above maxHP', () => {
+  it('does not exceed maxHP when stealing block', () => {
     const enemy = makeInstance('bone_collector');
     enemy.currentHP = enemy.maxHP - 2;
-    const ctx = makeCtx(enemy);
+    const drainPlayerBlock = vi.fn();
+    const ctx = makeCtx(enemy, { playerBlock: 10, drainPlayerBlock });
     enemy.template.onPlayerChargeWrong!(ctx);
+    expect(drainPlayerBlock).toHaveBeenCalledWith(5);
     expect(enemy.currentHP).toBeLessThanOrEqual(enemy.maxHP);
   });
 
-  it('does not heal when already at full HP', () => {
+  it('steals less when player has less than 5 block', () => {
     const enemy = makeInstance('bone_collector');
-    enemy.currentHP = enemy.maxHP; // full HP
-    const ctx = makeCtx(enemy);
+    enemy.currentHP = enemy.maxHP - 10;
+    const startHP = enemy.currentHP;
+    const drainPlayerBlock = vi.fn();
+    const ctx = makeCtx(enemy, { playerBlock: 3, drainPlayerBlock });
     enemy.template.onPlayerChargeWrong!(ctx);
-    expect(enemy.currentHP).toBe(enemy.maxHP);
+    expect(drainPlayerBlock).toHaveBeenCalledWith(3);
+    expect(enemy.currentHP).toBe(startHP + 3);
   });
 
-  it('bone_collector does not have onPlayerChargeCorrect (healing is wrong-answer only)', () => {
+  it('bone_collector does not have onPlayerChargeCorrect (stealing is wrong-answer only)', () => {
     const enemy = makeInstance('bone_collector');
     expect(enemy.template.onPlayerChargeCorrect).toBeUndefined();
   });
@@ -139,28 +146,27 @@ describe('fossil_guardian — onPlayerNoCharge', () => {
   });
 });
 
-// ── Void Mite (was the_scholar): onPlayerChargeCorrect heals ──
+// ── Void Mite (was the_scholar): onPlayerChargeCorrect drains block ──
 
 describe('void_mite — onPlayerChargeCorrect', () => {
-  it('heals 5 HP on correct Charge', () => {
+  it('drains 3 block from player on correct Charge', () => {
     const enemy = makeInstance('void_mite');
-    enemy.currentHP = enemy.maxHP - 10;
-    const start = enemy.currentHP;
-    const ctx = makeCtx(enemy, { chargeCorrect: true });
+    const drainPlayerBlock = vi.fn();
+    const ctx = makeCtx(enemy, { chargeCorrect: true, playerBlock: 10, drainPlayerBlock });
     expect(enemy.template.onPlayerChargeCorrect).toBeDefined();
     enemy.template.onPlayerChargeCorrect!(ctx);
-    expect(enemy.currentHP).toBe(start + 5);
+    expect(drainPlayerBlock).toHaveBeenCalledWith(3);
   });
 
-  it('does not overheal', () => {
+  it('does not drain more block than player has', () => {
     const enemy = makeInstance('void_mite');
-    enemy.currentHP = enemy.maxHP - 2;
-    const ctx = makeCtx(enemy, { chargeCorrect: true });
+    const drainPlayerBlock = vi.fn();
+    const ctx = makeCtx(enemy, { chargeCorrect: true, playerBlock: 2, drainPlayerBlock });
     enemy.template.onPlayerChargeCorrect!(ctx);
-    expect(enemy.currentHP).toBeLessThanOrEqual(enemy.maxHP);
+    expect(drainPlayerBlock).toHaveBeenCalledWith(2);
   });
 
-  it('does NOT have onPlayerChargeWrong (wrong answers do not heal)', () => {
+  it('does NOT have onPlayerChargeWrong (correct plays only drain block)', () => {
     const enemy = makeInstance('void_mite');
     expect(enemy.template.onPlayerChargeWrong).toBeUndefined();
   });
@@ -181,15 +187,15 @@ describe('mantle_dragon — chainMultiplierOverride', () => {
   });
 });
 
-// ── Core Harbinger (was the_librarian): quickPlayImmune = true ──
+// ── Core Harbinger (was the_librarian): quickPlayDamageMultiplier = 0.3 ──
 
-describe('core_harbinger — quickPlayImmune', () => {
-  it('has quickPlayImmune set to true', () => {
+describe('core_harbinger — quickPlayDamageMultiplier', () => {
+  it('has quickPlayDamageMultiplier set to 0.3', () => {
     const template = getTemplate('core_harbinger');
-    expect(template.quickPlayImmune).toBe(true);
+    expect(template.quickPlayDamageMultiplier).toBe(0.3);
   });
 
-  it('has no chain or callback fields (immunity is passive)', () => {
+  it('has no chain or callback fields (resistance is passive)', () => {
     const template = getTemplate('core_harbinger');
     expect(template.onPlayerChargeWrong).toBeUndefined();
     expect(template.chainMultiplierOverride).toBeUndefined();

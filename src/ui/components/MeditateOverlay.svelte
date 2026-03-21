@@ -53,6 +53,11 @@
     }
     return colors[tier] ?? '#6E7681'
   }
+
+  // AR-124: Deck cycle-speed indicator
+  function cycleSpeed(size: number): string {
+    return (size / 5).toFixed(1)
+  }
 </script>
 
 <div class="meditate-overlay" class:landscape={$isLandscape}>
@@ -90,6 +95,12 @@
       >
         Remove Card
       </button>
+    </div>
+
+    <!-- AR-124: Deck cycle-speed indicator -->
+    <div class="cycle-speed-indicator">
+      Deck: {cards.length} cards (cycle: {cycleSpeed(cards.length)} turns)
+      &rarr; {cards.length - 1} cards ({cycleSpeed(cards.length - 1)} turns)
     </div>
   </div>
 
@@ -349,6 +360,15 @@
   .confirm-remove-btn:hover {
     background: #C0392B;
     border-color: #C0392B;
+  }
+
+  /* AR-124: Deck cycle-speed indicator */
+  .cycle-speed-indicator {
+    text-align: center;
+    font-size: calc(11px * var(--layout-scale, 1));
+    color: #6E7681;
+    margin-top: calc(2px * var(--layout-scale, 1));
+    letter-spacing: 0.02em;
   }
 
   /* === Landscape layout === */

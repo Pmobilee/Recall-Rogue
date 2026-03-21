@@ -59,6 +59,15 @@ export interface SimOptions {
   ascensionLevel?: number;
 }
 
+/** Tracks a single card play event for per-mechanic win contribution analysis. */
+export interface CardPlayRecord {
+  mechanic: string;        // card.cardType e.g., 'attack', 'shield', 'buff'
+  wasCharged: boolean;
+  answeredCorrectly: boolean;
+  damageDealt: number;
+  wasMomentumFree: boolean;
+}
+
 export interface EncounterSummary {
   encounterIndex: number;
   floor: number;
@@ -74,6 +83,7 @@ export interface EncounterSummary {
   maxCombo: number;
   playerHpStart: number;
   playerHpEnd: number;
+  cardPlays: CardPlayRecord[];
 }
 
 export interface SimRunResult {
@@ -192,6 +202,7 @@ function simulateSingleEncounter(
   correctAnswers: number;
   wrongAnswers: number;
   maxCombo: number;
+  cardPlays: CardPlayRecord[];
 } {
   let turnsUsed = 0;
   let damageDealt = 0;
@@ -200,6 +211,7 @@ function simulateSingleEncounter(
   let correctAnswers = 0;
   let wrongAnswers = 0;
   let maxCombo = 0;
+  const cardPlays: CardPlayRecord[] = [];
 
   const { verbose, correctRate, chargeRate, maxTurns } = opts;
 
@@ -259,6 +271,15 @@ function simulateSingleEncounter(
       turnState = res.turnState;
       cardsPlayed++;
 
+      // Record this card play for per-mechanic analysis
+      cardPlays.push({
+        mechanic: card.cardType,
+        wasCharged: isCharge,
+        answeredCorrectly,
+        damageDealt: res.effect.damageDealt ?? 0,
+        wasMomentumFree: false, // quick plays are never momentum-free in sim
+      });
+
       if (answeredCorrectly) {
         correctAnswers++;
         // A17 buff: correct answers heal 1 HP
@@ -311,6 +332,7 @@ function simulateSingleEncounter(
           correctAnswers,
           wrongAnswers,
           maxCombo,
+          cardPlays,
         };
       }
     }
@@ -351,6 +373,7 @@ function simulateSingleEncounter(
         correctAnswers,
         wrongAnswers,
         maxCombo,
+        cardPlays,
       };
     }
   }
@@ -364,6 +387,7 @@ function simulateSingleEncounter(
     correctAnswers,
     wrongAnswers,
     maxCombo,
+    cardPlays,
   };
 }
 
@@ -520,6 +544,7 @@ export function runSimulation(opts: SimOptions = {}): SimRunResult {
       maxCombo: encounterResult.maxCombo,
       playerHpStart: deck.playerHP,
       playerHpEnd: currentPlayerHP,
+      cardPlays: encounterResult.cardPlays,
     };
 
     encounterSummaries.push(summary);
