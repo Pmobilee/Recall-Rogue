@@ -138,7 +138,7 @@ cards (31), relics (42), enemies (89), rooms (7), screens (28), systems (26), my
 - **Any code change** touching a game element (card, relic, enemy, room, screen, system, quiz, domain): update `lastChangedDate` to today
 - **Adding new elements**: add entry to the registry in the same task
 - **Removing elements**: set status to `"deprecated"` (don't delete)
-- **Visual inspection**: update `visualInspectionDate`
+- **Visual inspection**: update the orientation-specific field that was tested: `visualInspectionDate_portraitMobile`, `visualInspectionDate_landscapeMobile`, or `visualInspectionDate_landscapePC`
 - **Mechanic verification**: update `mechanicInspectionDate`
 - **UX review**: update `uxReviewDate`
 
