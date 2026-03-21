@@ -70,7 +70,7 @@
   }
 
   const RARITY_COLORS: Record<string, string> = {
-    common: '#95a5a6',
+    common: '#b0bec5',
     uncommon: '#2ecc71',
     rare: '#3498db',
     legendary: '#f1c40f',
@@ -235,8 +235,10 @@
 
 <section class="shop-overlay" class:landscape={$isLandscape} aria-label="Shop room">
   <img class="shop-screen-bg" src={bgUrl} alt="" aria-hidden="true" loading="eager" decoding="async" />
-  <h1>Shop Room</h1>
-  <div class="gold">Gold: {currency}</div>
+  <div class="shop-header">
+    <h1>Shop Room</h1>
+    <div class="gold">Gold: {currency}</div>
+  </div>
 
   {#if shopInventory && (shopInventory.relics.length > 0 || shopInventory.cards.length > 0)}
     <div class="section-header">Buy</div>
@@ -260,6 +262,7 @@
               class:disabled={!canAfford}
               disabled={!canAfford}
               data-testid="shop-buy-relic-{item.relic.id}"
+              aria-label="Buy {item.relic.name} for {item.price}g"
               onclick={() => openPurchaseModal({ type: 'relic', relicId: item.relic.id, price: item.price, name: item.relic.name })}
             >
               {item.price}g
@@ -278,7 +281,7 @@
           <article class="card-item" style="border-top: 6px solid {getChainColor(item.card.chainType ?? 0)}; border-color: {getChainColor(item.card.chainType ?? 0)}; box-shadow: 0 0 6px {getChainGlowColor(item.card.chainType ?? 0)};">
             <div class="meta">
               <span class="icon">
-                <img class="type-icon-img" src={getCardTypeIconPath(item.card.cardType)} alt=""
+                <img class="type-icon-img" src={getCardTypeIconPath(item.card.cardType)} alt={item.card.cardType}
                   onerror={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; ((e.currentTarget as HTMLElement).nextElementSibling as HTMLElement).style.display = 'inline'; }} />
                 <span style="display:none">{TYPE_EMOJI[item.card.cardType] ?? '🃏'}</span>
               </span>
@@ -296,6 +299,7 @@
               class:disabled={!canAfford}
               disabled={!canAfford}
               data-testid="shop-buy-card-{idx}"
+              aria-label="Buy {item.card.mechanicName ?? item.card.cardType} for {item.price}g"
               onclick={() => openPurchaseModal({ type: 'card', cardIndex: idx, price: item.price, name: `${item.card.mechanicName ?? item.card.cardType.toUpperCase()} (${tierLabel(item.card)})` })}
             >
               {item.price}g
@@ -316,16 +320,22 @@
               <div class="sub">Permanently remove a card from your deck</div>
             </div>
           </div>
-          <button
-            type="button"
-            class="buy"
-            class:disabled={!canRemoveCard || currency < shopInventory.removalCost}
-            disabled={!canRemoveCard || currency < shopInventory.removalCost}
-            data-testid="shop-buy-removal"
-            onclick={() => openPurchaseModal({ type: 'removal', cardId: '', price: shopInventory!.removalCost!, name: 'Card Removal' })}
-          >
-            {shopInventory.removalCost}g
-          </button>
+          <div class="buy-wrapper">
+            <button
+              type="button"
+              class="buy"
+              class:disabled={!canRemoveCard || currency < shopInventory.removalCost}
+              disabled={!canRemoveCard || currency < shopInventory.removalCost}
+              data-testid="shop-buy-removal"
+              aria-label="Buy Card Removal for {shopInventory.removalCost}g"
+              onclick={() => openPurchaseModal({ type: 'removal', cardId: '', price: shopInventory!.removalCost!, name: 'Card Removal' })}
+            >
+              {shopInventory.removalCost}g
+            </button>
+            {#if !canRemoveCard}
+              <span class="disable-reason">Need more than 5 cards</span>
+            {/if}
+          </div>
         </article>
       </div>
     {/if}
@@ -338,7 +348,7 @@
         <article class="card-item" style="border-color: {getChainColor(card.chainType ?? 0)}; box-shadow: 0 0 6px {getChainGlowColor(card.chainType ?? 0)};">
           <div class="meta">
             <span class="icon">
-              <img class="type-icon-img" src={getCardTypeIconPath(card.cardType)} alt=""
+              <img class="type-icon-img" src={getCardTypeIconPath(card.cardType)} alt={card.cardType}
                 onerror={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; ((e.currentTarget as HTMLElement).nextElementSibling as HTMLElement).style.display = 'inline'; }} />
               <span style="display:none">{TYPE_EMOJI[card.cardType] ?? '🃏'}</span>
             </span>
@@ -362,7 +372,7 @@
 
 <!-- Purchase Modal -->
 {#if pendingPurchase}
-  <div class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Purchase options" data-testid="shop-purchase-modal">
+  <div class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Purchase: {pendingPurchase?.name}" data-testid="shop-purchase-modal">
     <div class="modal">
       <div class="modal-title">{pendingPurchase.name}</div>
 
@@ -520,6 +530,14 @@
     overflow-y: auto;
   }
 
+  .shop-header {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: rgba(13, 17, 23, 0.95);
+    padding-bottom: 8px;
+  }
+
   h1 {
     margin: calc(4px * var(--layout-scale, 1)) 0 0;
     font-size: calc(24px * var(--layout-scale, 1));
@@ -548,12 +566,14 @@
   }
 
   .subsection-label {
-    font-size: calc(12px * var(--layout-scale, 1));
+    font-size: calc(13px * var(--layout-scale, 1));
     font-weight: 600;
     color: #8b949e;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-top: calc(4px * var(--layout-scale, 1));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 4px;
   }
 
   .card-list {
@@ -646,6 +666,22 @@
     max-width: 100%;
   }
 
+  .buy-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 2px;
+  }
+
+  .disable-reason {
+    font-size: 10px;
+    color: #94a3b8;
+    margin-top: 2px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
   .buy {
     min-height: 44px;
     border-radius: 10px;
@@ -653,6 +689,7 @@
     background: #6b4f00;
     color: #f9d56e;
     padding: 0 calc(10px * var(--layout-scale, 1));
+    font-size: calc(13px * var(--layout-scale, 1));
     font-weight: 700;
     white-space: nowrap;
     cursor: pointer;
