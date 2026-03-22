@@ -7,7 +7,7 @@
     duration?: number
   }
 
-  const { imageUrl, depthUrl, type, onComplete, duration = 2000 }: Props = $props()
+  const { imageUrl, depthUrl, type, onComplete, duration = 3000 }: Props = $props()
 
   let canvas = $state<HTMLCanvasElement | null>(null)
   let bobOffset = $state(0)
@@ -308,13 +308,15 @@
   })
 </script>
 
-<div class="parallax-transition-overlay">
+<div class="parallax-transition-overlay" class:settled>
   <canvas
     bind:this={canvas}
     class="parallax-canvas"
     style="transform: translateY({bobOffset}px)"
   ></canvas>
-  <span class="parallax-label">Click to skip</span>
+  {#if !settled}
+    <span class="parallax-label">Click to skip</span>
+  {/if}
 </div>
 
 <style>
@@ -324,6 +326,12 @@
     z-index: 9999;
     background: #000;
     cursor: pointer;
+  }
+
+  .parallax-transition-overlay.settled {
+    pointer-events: none;
+    cursor: default;
+    z-index: 0;
   }
 
   .parallax-canvas {
