@@ -471,6 +471,8 @@ export function load(): PlayerSave | null {
     }
     // DEV: force max level for testing — all cards/relics unlocked
     parsedAny['characterLevel'] = 25;
+    parsedAny['totalXP'] = 999999;
+    console.log('[DEV] Forced characterLevel to 25');
     if (!('lastDailyBonusDate' in parsedAny) || (parsedAny['lastDailyBonusDate'] !== null && typeof parsedAny['lastDailyBonusDate'] !== 'string')) {
       parsedAny['lastDailyBonusDate'] = null
     }

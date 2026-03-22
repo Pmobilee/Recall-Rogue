@@ -174,23 +174,23 @@
           zoom = 1.1 - eased * 0.1                 // 1.1 → 1.0
           vignette = 0.9 * (1 - eased)             // 0.9 → 0 (must end at exactly 0)
           brightness = t < 0.2 ? t / 0.2 : 1.0     // 0 → 1
-          bob = Math.sin(t * Math.PI * 2 * 4) * 8 * (1 - eased)  // → 0
+          bob = Math.sin(t * Math.PI * 2 * 8) * 8 * (1 - eased)  // 8 half-cycles = 4 footsteps
         } else if (type === 'exit-forward') {
           // Combat exit: aggressive push through the room
           const eased = Math.pow(t, 2.0)
-          dolly = eased * 0.4                      // 0 → 0.4
-          zoom = 1.0 + eased * 0.8                 // 1.0 → 1.8 (zoom hard so edges go off-screen)
+          dolly = eased * 0.5                      // 0 → 0.5
+          zoom = 1.0 + eased * 1.0                 // 1.0 → 2.0
           vignette = 0.1 + eased * 0.9
           brightness = t > 0.7 ? 1 - Math.pow((t - 0.7) / 0.3, 2) : 1.0
-          bob = Math.sin(t * Math.PI * 2 * 4) * 10 * eased
+          bob = Math.sin(t * Math.PI * 2 * 8) * 12 * eased
         } else {
           // exit-backward: walk forward through the room, gentler
           const eased = Math.pow(t, 2.0)
-          dolly = eased * 0.3                      // 0 → 0.3
-          zoom = 1.0 + eased * 0.6                 // 1.0 → 1.6 (zoom enough to hide edges)
+          dolly = eased * 0.4                      // 0 → 0.4
+          zoom = 1.0 + eased * 0.8                 // 1.0 → 1.8
           vignette = 0.1 + eased * 0.9
           brightness = t > 0.7 ? 1 - Math.pow((t - 0.7) / 0.3, 2) : 1.0
-          bob = Math.sin(t * Math.PI * 2 * 4) * 8 * Math.min(eased * 3, 1)
+          bob = Math.sin(t * Math.PI * 2 * 8) * 10 * Math.min(eased * 3, 1)
         }
 
         // Walking bob applied as CSS transform (no shader warping)
