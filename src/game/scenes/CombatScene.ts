@@ -12,7 +12,7 @@ import { ENEMY_TEMPLATES } from '../../data/enemies'
 import { BASE_WIDTH } from '../../data/layout'
 import { get } from 'svelte/store'
 import { layoutMode, type LayoutMode } from '../../stores/layoutStore'
-import { SpriteLightingFX } from '../shaders/SpriteLightingFX'
+import { SpriteDepthFX } from '../shaders/SpriteDepthFX'
 
 /** Layout constants for first-person combat display zone (top ~58% of viewport). */
 const DISPLAY_ZONE_HEIGHT_PCT = 0.58
@@ -516,11 +516,15 @@ export class CombatScene extends Phaser.Scene {
 
     const suffix = getDeviceTier() === 'low-end' ? '_1x.webp' : '.webp'
 
-    // Preload all enemy idle sprites
+    // Preload all enemy idle sprites and depth maps
     for (const enemy of ENEMY_TEMPLATES) {
       const key = `enemy-${enemy.id}-idle`
       if (!this.textures.exists(key)) {
         this.load.image(key, `assets/sprites/enemies/${enemy.id}_idle${suffix}`)
+      }
+      const depthKey = `enemy-${enemy.id}-depth`
+      if (!this.textures.exists(depthKey)) {
+        this.load.image(depthKey, `assets/sprites/enemies/${enemy.id}_idle_depth.png`)
       }
     }
 
@@ -541,7 +545,7 @@ export class CombatScene extends Phaser.Scene {
     // Register custom PostFX pipelines
     const renderer = this.game.renderer as Phaser.Renderer.WebGL.WebGLRenderer
     if (renderer && renderer.pipelines) {
-      renderer.pipelines.addPostPipeline('SpriteLightingFX', SpriteLightingFX)
+      renderer.pipelines.addPostPipeline('SpriteDepthFX', SpriteDepthFX)
     }
 
     // ── Combat background ─────────────────────────────────
@@ -881,7 +885,12 @@ export class CombatScene extends Phaser.Scene {
     // Sprite tinting and AO disabled until Light2D (AR-219) adds point lights.
     // Without light sources, multiplicative tint + AO just darkens everything.
     this.applyColorGrading(atmConfig)
-    // Sprite lighting disabled — shader effect was too harsh on pixel art
+    // Apply depth-map-based effects (breathing, lighting, rim)
+    const depthKey = `enemy-${this.currentEnemyId}-depth`
+    const lightDef = atmConfig.lighting.lights[0]
+    const lightColor = lightDef?.color ?? 0xffffff
+    const lightDir = atmConfig.rim.lightDir
+    this.enemySpriteSystem.applyDepthEffects(depthKey, lightColor, lightDir)
     // Tint the background
     if (this.combatBackground instanceof Phaser.GameObjects.Image) {
       this.combatBackground.setTint(atmConfig.backgroundTint)

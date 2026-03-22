@@ -2,6 +2,7 @@ import Phaser from 'phaser'
 import { getDeviceTier } from '../../services/deviceTierService'
 import { getAnimConfig, type AnimConfig, type AnimArchetype, type IdlePatternStep, type IdleBehavior } from '../../data/enemyAnimations'
 import type { AtmosphereConfig } from '../../data/roomAtmosphere'
+import { SpriteDepthFX } from '../shaders/SpriteDepthFX'
 
 type EnemyCategory = 'common' | 'elite' | 'mini_boss' | 'boss'
 
@@ -48,7 +49,8 @@ export class EnemySpriteSystem {
   // ── Atmosphere visual effects ─────────────────────────────
   private _aoFx: Phaser.FX.Gradient | null = null
   private _currentAtmosphereTint: number | null = null
-  private _lightingFx: any = null  // SpriteLightingFX instance
+  private _depthFx: SpriteDepthFX | null = null
+  private _depthTextureKey: string | null = null
 
   /**
    * Create a new EnemySpriteSystem.
@@ -286,60 +288,87 @@ export class EnemySpriteSystem {
   }
 
   /**
-   * Apply per-pixel directional lighting to the enemy sprite.
-   * Derives normals from the sprite's luminance gradients — no normal map needed.
-   * @param lightColor Hex color of the light source
-   * @param lightDir Light direction as [x, y] — will be normalized with z=1
-   * @param intensity Light intensity (0.5-2.0)
+   * Apply depth-map-based effects to the enemy sprite.
+   * Enables parallax breathing, directional lighting, and rim light from a depth map.
+   * @param depthTextureKey Phaser texture key for the depth map image
+   * @param lightColor Hex color of the room's primary light
+   * @param lightDir Light direction as [x, y] (will be normalized with z=1)
+   * @param breathIntensity How much the sprite breathes (0.001-0.008)
+   * @param breathSpeed Breathing speed multiplier (1.0-3.0)
    */
-  public applyLighting(lightColor: number, lightDir: [number, number], intensity: number): void {
+  public applyDepthEffects(
+    depthTextureKey: string,
+    lightColor: number,
+    lightDir: [number, number],
+    breathIntensity: number = 0.004,
+    breathSpeed: number = 2.0,
+  ): void {
     if (!this.mainSprite) return
     if (getDeviceTier() === 'low-end') return
+    if (!this.scene.textures.exists(depthTextureKey)) return
 
-    this.removeLighting()
+    this.removeDepthEffects()
 
-    // Convert hex color to [r, g, b] in 0-1 range
     const c = Phaser.Display.Color.ValueToColor(lightColor)
-    const r = c.redGL, g = c.greenGL, b = c.blueGL
 
-    // Normalize the light direction with z component
+    // Normalize light direction
     const len = Math.sqrt(lightDir[0] ** 2 + lightDir[1] ** 2 + 1)
     const dir: [number, number, number] = [lightDir[0] / len, lightDir[1] / len, 1 / len]
 
-    // Apply the lighting PostFX pipeline via the game object's PostPipeline mixin
+    // Rim color = lighter version of light color
+    const rimC = Phaser.Display.Color.ValueToColor(lightColor)
+    rimC.lighten(40)
+
     try {
       const sprite = this.mainSprite as any
-      sprite.setPostPipeline('SpriteLightingFX')
-      const pipeline = sprite.getPostPipeline('SpriteLightingFX') as any
-      if (pipeline && typeof pipeline.setLightConfig === 'function') {
-        pipeline.setLightConfig(
-          dir,
-          [r, g, b],
-          intensity,
-          [0.65, 0.65, 0.7],  // Ambient — slightly cool fill so shadows aren't black
-          2.0                  // Normal strength — how much luminance affects normals
-        )
-        this._lightingFx = pipeline
+
+      // Apply the PostFX pipeline
+      sprite.setPostPipeline('SpriteDepthFX')
+      const pipeline = sprite.getPostPipeline('SpriteDepthFX') as SpriteDepthFX | null
+
+      if (pipeline) {
+        // Get the WebGL texture from the depth map
+        const depthTex = this.scene.textures.get(depthTextureKey)
+        const phaserGLTex = (depthTex as any)?.source?.[0]?.glTexture
+        if (phaserGLTex) {
+          pipeline.setDepthTexture(phaserGLTex)
+        }
+
+        pipeline.setConfig({
+          lightDir: dir,
+          lightColor: [c.redGL, c.greenGL, c.blueGL],
+          lightIntensity: 1.0,
+          ambientColor: [0.6, 0.6, 0.65],
+          breathIntensity,
+          breathSpeed,
+          rimColor: [rimC.redGL, rimC.greenGL, rimC.blueGL],
+          rimIntensity: 0.35,
+          rimPower: 3.0,
+          normalStrength: 2.5,
+        })
+
+        this._depthFx = pipeline
+        this._depthTextureKey = depthTextureKey
       }
     } catch (e) {
-      // Shader compilation failed — gracefully degrade (no lighting)
-      console.warn('[EnemySpriteSystem] SpriteLightingFX failed, skipping:', e)
-      this._lightingFx = null
+      console.warn('[EnemySpriteSystem] SpriteDepthFX failed:', e)
+      this._depthFx = null
     }
   }
 
   /**
-   * Remove directional lighting effect from the sprite.
+   * Remove depth effects from the sprite.
    */
-  public removeLighting(): void {
+  public removeDepthEffects(): void {
     if (this.mainSprite) {
       try {
-        ;(this.mainSprite as any).removePostPipeline('SpriteLightingFX')
+        ;(this.mainSprite as any).removePostPipeline('SpriteDepthFX')
       } catch {
-        // ignore if not applied
+        // ignore
       }
     }
-    this._lightingFx = null
+    this._depthFx = null
+    this._depthTextureKey = null
   }
 
   /**
@@ -1081,7 +1110,8 @@ export class EnemySpriteSystem {
     // Reset atmosphere effects
     this._aoFx = null
     this._currentAtmosphereTint = null
-    this._lightingFx = null
+    this._depthFx = null
+    this._depthTextureKey = null
 
     // Clean up jitter timer
     if (this.jitterTimer) {
