@@ -331,7 +331,7 @@
   .parallax-transition-overlay.settled {
     pointer-events: none;
     cursor: default;
-    z-index: 0;
+    z-index: 5;
   }
 
   .parallax-canvas {
