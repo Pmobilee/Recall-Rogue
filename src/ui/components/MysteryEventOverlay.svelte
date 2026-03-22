@@ -115,6 +115,15 @@
   </div>
 {/if}
 
+{#if showRoomTransition}
+  <ParallaxTransition
+    imageUrl={bgUrl}
+    depthUrl={depthUrl}
+    type="enter"
+    onComplete={() => { showRoomTransition = false }}
+  />
+{/if}
+
 <style>
   .mystery-overlay {
     position: fixed;

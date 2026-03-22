@@ -32,6 +32,8 @@
   let { options, onselect, onskip, onrewardstepchange, onreroll }: Props = $props()
 
   const bgUrl = getRandomRoomBg('treasure')
+  const depthUrl = getRoomDepthMap('treasure')
+  let showRoomTransition = $state(true)
   holdScreenTransition()
   preloadImages([bgUrl]).then(releaseScreenTransition)
 
@@ -462,6 +464,15 @@
     {/if}
   {/if}
 </div>
+
+{#if showRoomTransition}
+  <ParallaxTransition
+    imageUrl={bgUrl}
+    depthUrl={depthUrl}
+    type="enter"
+    onComplete={() => { showRoomTransition = false }}
+  />
+{/if}
 
 <style>
   .reward-screen {

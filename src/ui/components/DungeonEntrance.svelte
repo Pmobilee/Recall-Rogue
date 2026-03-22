@@ -10,6 +10,9 @@
   let { onbegin, onback }: Props = $props()
 
   const menuBg = $derived(getMenuBg())
+  const entranceBgUrl = getMenuBg()
+  const entranceDepthUrl = getMenuDepthMap()
+  let showRoomTransition = $state(true)
 
   function handleEnter(): void {
     onbegin(false, null)
@@ -26,6 +29,15 @@
     <button class="enter-btn" onclick={handleEnter}>ENTER THE DEPTHS</button>
   </div>
 </div>
+
+{#if showRoomTransition}
+  <ParallaxTransition
+    imageUrl={entranceBgUrl}
+    depthUrl={entranceDepthUrl}
+    type="enter"
+    onComplete={() => { showRoomTransition = false }}
+  />
+{/if}
 
 <style>
   .onboarding-screen {

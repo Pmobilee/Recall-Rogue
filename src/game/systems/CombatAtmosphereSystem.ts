@@ -276,8 +276,9 @@ export class CombatAtmosphereSystem {
   }
 
   /**
-   * Creates a smooth spotlight cone from above using a canvas gradient texture.
-   * Uses Canvas2D radial/linear gradients for buttery-smooth alpha falloff.
+   * Creates a smooth spotlight cone using overlapping radial gradients.
+   * No clip paths — the cone shape emerges naturally from stacked gradient circles
+   * that grow wider as they move down, with soft falloff at every edge.
    */
   private createLightShafts(): void {
     if (!this.config?.lightShafts.enabled) return
@@ -288,70 +289,55 @@ export class CombatAtmosphereSystem {
     const shaftConfig = this.config.lightShafts
     const cx = this.enemyX || w * 0.5
 
-    // Generate smooth cone texture using Canvas2D gradients
-    const texKey = 'spotlight_smooth'
-    if (!this.scene.textures.exists(texKey)) {
-      const tw = 600
-      const th = Math.round(h * 0.9)
-      const canvasTex = this.scene.textures.createCanvas(texKey, tw, th)
-      if (canvasTex) {
-        const ctx = canvasTex.getContext()
-
-        // Draw the cone as a series of overlapping vertical gradient strips
-        // that widen from top to bottom, creating a smooth cone shape
-        const centerX = tw / 2
-
-        // Main cone body — vertical linear gradient for brightness falloff
-        // Draw it using a clipped triangular path
-        ctx.save()
-        ctx.beginPath()
-        // Cone shape: narrow at top, wide at bottom
-        const topHalfW = tw * 0.015  // 1.5% at top (very tight point)
-        const bottomHalfW = tw * 0.48 // 48% at bottom (wide)
-        ctx.moveTo(centerX - topHalfW, 0)
-        ctx.lineTo(centerX - bottomHalfW, th)
-        ctx.lineTo(centerX + bottomHalfW, th)
-        ctx.lineTo(centerX + topHalfW, 0)
-        ctx.closePath()
-        ctx.clip()
-
-        // Vertical gradient: bright at top, fading to bottom
-        const vertGrad = ctx.createLinearGradient(0, 0, 0, th)
-        vertGrad.addColorStop(0, 'rgba(255, 255, 255, 0.7)')
-        vertGrad.addColorStop(0.15, 'rgba(255, 255, 255, 0.5)')
-        vertGrad.addColorStop(0.4, 'rgba(255, 255, 255, 0.3)')
-        vertGrad.addColorStop(0.7, 'rgba(255, 255, 255, 0.15)')
-        vertGrad.addColorStop(1.0, 'rgba(255, 255, 255, 0.0)')
-        ctx.fillStyle = vertGrad
-        ctx.fillRect(0, 0, tw, th)
-
-        ctx.restore()
-
-        // Overlay: horizontal radial gradient for soft edges
-        // This darkens the cone edges smoothly
-        ctx.save()
-        ctx.globalCompositeOperation = 'destination-in'
-
-        // For each row, apply a horizontal gradient (bright center, transparent edges)
-        // Use a single large radial gradient centered on the cone
-        const radGrad = ctx.createRadialGradient(
-          centerX, th * 0.3, 0,          // inner circle: center of cone, small
-          centerX, th * 0.3, tw * 0.5    // outer circle: full width
-        )
-        radGrad.addColorStop(0, 'rgba(255, 255, 255, 1.0)')
-        radGrad.addColorStop(0.3, 'rgba(255, 255, 255, 0.8)')
-        radGrad.addColorStop(0.6, 'rgba(255, 255, 255, 0.4)')
-        radGrad.addColorStop(1.0, 'rgba(255, 255, 255, 0.0)')
-        ctx.fillStyle = radGrad
-        ctx.fillRect(0, 0, tw, th)
-
-        ctx.restore()
-
-        canvasTex.refresh()
-      }
+    const texKey = 'spotlight_soft'
+    if (this.scene.textures.exists(texKey)) {
+      this.scene.textures.remove(texKey)
     }
 
-    // Create the spotlight image
+    // Make texture wide enough for the full cone
+    const tw = Math.round(w * 0.7)
+    const th = Math.round(h * 0.92)
+    const canvasTex = this.scene.textures.createCanvas(texKey, tw, th)
+    if (!canvasTex) return
+
+    const ctx = canvasTex.getContext()
+    const centerX = tw / 2
+
+    // Draw the cone as many overlapping radial gradients stacked vertically.
+    // Each layer is a horizontal radial gradient that:
+    // - Gets wider as Y increases (cone widens downward)
+    // - Gets dimmer as Y increases (light fades with distance)
+    // - Has smooth Gaussian-like falloff at edges (no hard boundaries)
+    const layers = 30
+    for (let i = 0; i < layers; i++) {
+      const t = i / (layers - 1) // 0 = top, 1 = bottom
+
+      // Y position for this gradient layer
+      const y = t * th
+
+      // Radius grows from tiny at top to wide at bottom
+      // Use a curve so it expands faster near the bottom
+      const radius = 8 + Math.pow(t, 0.7) * (tw * 0.42)
+
+      // Alpha diminishes from top to bottom
+      // Bright at top (source), fading toward floor
+      const layerAlpha = (1 - t * 0.8) * 0.12
+
+      if (layerAlpha < 0.002) continue
+
+      const grad = ctx.createRadialGradient(centerX, y, 0, centerX, y, radius)
+      grad.addColorStop(0, `rgba(255, 255, 255, ${layerAlpha})`)
+      grad.addColorStop(0.4, `rgba(255, 255, 255, ${layerAlpha * 0.6})`)
+      grad.addColorStop(0.7, `rgba(255, 255, 255, ${layerAlpha * 0.2})`)
+      grad.addColorStop(1.0, `rgba(255, 255, 255, 0)`)
+
+      ctx.fillStyle = grad
+      ctx.fillRect(0, 0, tw, th)
+    }
+
+    canvasTex.refresh()
+
+    // Display as a single image with ADD blend
     const shaft = this.scene.add.image(cx, 0, texKey)
       .setOrigin(0.5, 0)
       .setBlendMode(Phaser.BlendModes.ADD)
@@ -361,11 +347,11 @@ export class CombatAtmosphereSystem {
 
     this.lightShafts.push(shaft)
 
-    // Smooth breathing animation — very subtle
+    // Very subtle breathing
     const tween = this.scene.tweens.add({
       targets: shaft,
-      alpha: { from: shaftConfig.alpha * 0.75, to: shaftConfig.alpha },
-      scaleX: { from: 0.97, to: 1.03 },
+      alpha: { from: shaftConfig.alpha * 0.8, to: shaftConfig.alpha },
+      scaleX: { from: 0.98, to: 1.02 },
       duration: 5000,
       yoyo: true,
       repeat: -1,

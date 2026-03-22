@@ -2060,7 +2060,7 @@ app.post('/api/artstudio/generate', express.json(), async (req, res) => {
         const tw = item.targetWidth || 1024;
         const th = item.targetHeight || 1024;
         const processed = await sharp(imgBuffer)
-          .resize(tw, th, { fit: 'cover' })
+          .resize(tw, th, { fit: 'cover', kernel: sharp.kernel.nearest })
           .png({ compressionLevel: 9 })
           .toBuffer();
         await writeFile(outPath, processed);

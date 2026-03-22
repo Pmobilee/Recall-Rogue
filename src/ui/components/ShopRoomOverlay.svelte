@@ -55,6 +55,8 @@
 
   let { cards, currency, shopInventory, onsell, onbuyRelic, onbuyCard, onbuyRemoval, ondone }: Props = $props()
   const bgUrl = getRandomRoomBg('shop')
+  const depthUrl = getRoomDepthMap('shop')
+  let showRoomTransition = $state(true)
   holdScreenTransition()
   preloadImages([bgUrl]).then(releaseScreenTransition)
 
@@ -504,6 +506,15 @@
       </button>
     </div>
   </div>
+{/if}
+
+{#if showRoomTransition}
+  <ParallaxTransition
+    imageUrl={bgUrl}
+    depthUrl={depthUrl}
+    type="enter"
+    onComplete={() => { showRoomTransition = false }}
+  />
 {/if}
 
 <style>

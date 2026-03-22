@@ -881,11 +881,7 @@ export class CombatScene extends Phaser.Scene {
     // Sprite tinting and AO disabled until Light2D (AR-219) adds point lights.
     // Without light sources, multiplicative tint + AO just darkens everything.
     this.applyColorGrading(atmConfig)
-    // Apply per-pixel directional lighting derived from sprite luminance
-    const lightDef = atmConfig.lighting.lights[0]
-    const lightColor = lightDef?.color ?? 0xffffff
-    const lightDir = atmConfig.rim.lightDir // reuse the rim light direction
-    this.enemySpriteSystem.applyLighting(lightColor, lightDir, 1.2)
+    // Sprite lighting disabled — shader effect was too harsh on pixel art
     // Tint the background
     if (this.combatBackground instanceof Phaser.GameObjects.Image) {
       this.combatBackground.setTint(atmConfig.backgroundTint)

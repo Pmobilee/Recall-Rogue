@@ -306,17 +306,20 @@ export class EnemySpriteSystem {
     const len = Math.sqrt(lightDir[0] ** 2 + lightDir[1] ** 2 + 1)
     const dir: [number, number, number] = [lightDir[0] / len, lightDir[1] / len, 1 / len]
 
-    // Apply the lighting PostFX
+    // Apply the lighting PostFX pipeline via the game object's PostPipeline mixin
     try {
-      this._lightingFx = this.mainSprite.postFX.addPipeline('SpriteLightingFX') as any
-      if (this._lightingFx && typeof this._lightingFx.setLightConfig === 'function') {
-        this._lightingFx.setLightConfig(
+      const sprite = this.mainSprite as any
+      sprite.setPostPipeline('SpriteLightingFX')
+      const pipeline = sprite.getPostPipeline('SpriteLightingFX') as any
+      if (pipeline && typeof pipeline.setLightConfig === 'function') {
+        pipeline.setLightConfig(
           dir,
           [r, g, b],
           intensity,
           [0.65, 0.65, 0.7],  // Ambient — slightly cool fill so shadows aren't black
           2.0                  // Normal strength — how much luminance affects normals
         )
+        this._lightingFx = pipeline
       }
     } catch (e) {
       // Shader compilation failed — gracefully degrade (no lighting)
@@ -329,10 +332,14 @@ export class EnemySpriteSystem {
    * Remove directional lighting effect from the sprite.
    */
   public removeLighting(): void {
-    if (this._lightingFx && this.mainSprite) {
-      this.mainSprite.postFX.remove(this._lightingFx)
-      this._lightingFx = null
+    if (this.mainSprite) {
+      try {
+        ;(this.mainSprite as any).removePostPipeline('SpriteLightingFX')
+      } catch {
+        // ignore if not applied
+      }
     }
+    this._lightingFx = null
   }
 
   /**

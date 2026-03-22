@@ -81,6 +81,15 @@
   </div>
 </div>
 
+{#if showRoomTransition}
+  <ParallaxTransition
+    imageUrl={bgUrl}
+    depthUrl={depthUrl}
+    type="enter"
+    onComplete={() => { showRoomTransition = false }}
+  />
+{/if}
+
 <style>
   .decision {
     position: fixed;
