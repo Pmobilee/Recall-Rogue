@@ -1518,7 +1518,8 @@
     inset: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden; /* clips art to frame boundaries */
+    overflow: hidden;
+    isolation: isolate; /* create clean stacking context */
   }
 
   .frame-layer {
@@ -1526,23 +1527,22 @@
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: fill; /* stretch to fill — frame images are pre-sized to card aspect */
     pointer-events: none;
-    image-rendering: pixelated; /* crisp pixel art rendering */
-    z-index: 2; /* Frame layers sit ON TOP of card art */
+    image-rendering: pixelated;
+    z-index: 3;
   }
 
   .frame-card-art {
     position: absolute;
-    /* Art fills the pentagon window area — frame layers on top mask the edges */
     left: 12%;
     top: 10%;
     width: 76%;
     height: 50%;
     object-fit: cover;
-    image-rendering: auto; /* smooth for photo-like art */
+    image-rendering: auto;
     pointer-events: none;
-    z-index: 1; /* Art sits BEHIND all frame layers */
+    z-index: 1; /* behind ALL frame layers (z:3) */
   }
 
   .upgrade-icon {

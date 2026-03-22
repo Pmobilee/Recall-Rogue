@@ -525,14 +525,8 @@ export class CombatScene extends Phaser.Scene {
         this.load.image(key, `assets/sprites/enemies/${enemy.id}_idle${suffix}`)
       }
     }
-    // Load depth maps in a separate pass — load errors are silently ignored
-    // since not all enemies have sprite files (some use placeholder rectangles)
-    for (const enemy of ENEMY_TEMPLATES) {
-      const depthKey = `enemy-${enemy.id}-depth`
-      if (!this.textures.exists(depthKey)) {
-        this.load.image(depthKey, `assets/sprites/enemies/${enemy.id}_idle_depth.png`)
-      }
-    }
+    // Depth maps are loaded on-demand per encounter (not upfront) to avoid
+    // console spam from enemies that don't have sprite/depth files.
 
     // ── Weapon animation system ──────────────────────────
     this.weaponAnimations = new WeaponAnimationSystem(this)
@@ -891,12 +885,25 @@ export class CombatScene extends Phaser.Scene {
     // Sprite tinting and AO disabled until Light2D (AR-219) adds point lights.
     // Without light sources, multiplicative tint + AO just darkens everything.
     this.applyColorGrading(atmConfig)
-    // Apply depth-map-based effects (breathing, lighting, rim)
+    // Load depth map on-demand and apply depth-based effects (breathing, lighting, rim)
     const depthKey = `enemy-${this.currentEnemyId}-depth`
     const lightDef = atmConfig.lighting.lights[0]
     const lightColor = lightDef?.color ?? 0xffffff
     const lightDir = atmConfig.rim.lightDir
-    this.enemySpriteSystem.applyDepthEffects(depthKey, lightColor, lightDir, 0.018, 1.8)
+    if (this.textures.exists(depthKey)) {
+      // Depth map already loaded — apply immediately
+      this.enemySpriteSystem.applyDepthEffects(depthKey, lightColor, lightDir, 0.018, 1.8)
+    } else {
+      // Load depth map on-demand, then apply
+      const depthUrl = `assets/sprites/enemies/${this.currentEnemyId}_idle_depth.png`
+      this.load.image(depthKey, depthUrl)
+      this.load.once('complete', () => {
+        if (this.textures.exists(depthKey)) {
+          this.enemySpriteSystem.applyDepthEffects(depthKey, lightColor, lightDir, 0.018, 1.8)
+        }
+      })
+      this.load.start()
+    }
     // Tint the background
     if (this.combatBackground instanceof Phaser.GameObjects.Image) {
       this.combatBackground.setTint(atmConfig.backgroundTint)
