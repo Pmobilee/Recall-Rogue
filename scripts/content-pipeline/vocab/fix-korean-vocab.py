@@ -453,6 +453,500 @@ def _extract_not_pattern(text: str) -> str | None:
     return None
 
 
+def _extract_person_in_place(text: str) -> str | None:
+    """
+    'person who studies in a school'  → 'student'
+    'person who works in a hospital'  → 'doctor / nurse'
+    """
+    person_place_map = {
+        r'person who studies? (?:in|at) (?:a )?school': 'student',
+        r'person who teaches? (?:in|at) (?:a )?school': 'teacher',
+        r'person who works? (?:in|at) (?:a )?hospital': 'medical worker',
+        r'person who performs? (?:in|at) (?:a )?(?:movie|film|theater|theatre)': 'actor',
+        r'person who works? (?:in|at) (?:a )?(?:restaurant|kitchen)': 'cook',
+        r'person who (?:lives|resides?) (?:in|at) (?:a )?foreign country': 'foreigner',
+        r'person who visits? (?:a )?(?:country|place) for travel': 'tourist',
+        r'person who goes? (?:to|on) (?:a )?tour': 'tourist',
+        r'person who runs? (?:a )?business': 'businessperson',
+        r'person who plays? (?:a )?(?:sport|game)': 'player',
+        r'person who (?:leads?|manages?) (?:a )?(?:group|team|organization)': 'leader',
+        r'person who (?:reads?|studies?) (?:a lot|many books)': 'avid reader',
+        r'person who is? (?:born|raised) (?:in|at) (?:a )?foreign': 'foreigner',
+        r'person who (?:drives?|operates?) (?:a )?(?:car|vehicle|bus|taxi)': 'driver',
+        r'person who (?:sings?|performs?) (?:songs?|music)': 'singer',
+        r'person who writes? (?:books?|stories?|novels?)': 'writer, author',
+        r'person who (?:draws?|paints?) pictures?': 'artist',
+        r'person who (?:takes?|shoots?) photos?': 'photographer',
+        r'person who (?:designs?|creates?) (?:buildings?|structures?)': 'architect',
+        r'person who (?:defends?|protects?) (?:the )?country': 'soldier',
+        r'person who (?:cooks?|prepares?) food': 'cook, chef',
+        r'person who (?:fixes?|repairs?) (?:things?|machines?|devices?)': 'repairperson',
+        r'person who (?:grows?|farms?) (?:crops?|plants?|food)': 'farmer',
+        r'person who (?:catches?|hunts?) fish': 'fisher',
+        r'person who (?:sells?|trades?) (?:goods?|products?|things?)': 'merchant, seller',
+        r'person who (?:helps?|assists?) (?:others?|people)': 'helper, assistant',
+        r'person who (?:runs?|manages?) (?:a )?company': 'company manager',
+        r'person who (?:gives?|delivers?) mail': 'mail carrier',
+        r'person who (?:cuts?|styles?) hair': 'hairstylist',
+        r'person who (?:measures?|examines?) health': 'health examiner',
+        r'person who (?:serves?|works? (?:as|in)) (?:a )?soldier': 'soldier',
+        r'person who works? for (?:a )?company': 'company employee',
+        r'person who (?:studies?|learns?) (?:at|in) (?:a )?university': 'university student',
+        r'person who uses? something': 'user',
+        r'person who (?:wins?|came in) (?:first|1st)': 'first-place winner',
+        r'person who (?:receives?|gets?) (?:a )?prize': 'prize winner',
+        r'person who is? (?:being|currently) (?:sick|ill)': 'patient',
+        r'person who is? (?:staying|hospitalized) (?:in|at) (?:a )?hospital': 'patient',
+        r'person who (?:lives?|stays?) (?:in|at) (?:a )?house': 'resident',
+        r'person who is? married': 'married person',
+        r'person who is? not yet married': 'unmarried person',
+        r'person who has? (?:a )?job': 'worker, employee',
+        r'person who (?:is|works as) (?:a )?(?:police|officer)': 'police officer',
+        r'person who (?:watches?|guards?) (?:something|a place)': 'guard, watcher',
+        r'person who (?:comes?|arrives?) (?:from|for) (?:a )?visit': 'visitor, guest',
+        r'person who has? (?:come|arrived) (?:from|for) (?:a )?visit': 'visitor, guest',
+    }
+    for pattern, result in person_place_map.items():
+        if re.match(pattern, text, re.IGNORECASE):
+            return result
+    return None
+
+
+def _extract_very_not_quite(text: str) -> str | None:
+    """
+    'Very good and pleasant feeling' → 'joy, delight'   (handled by hardcoded dict)
+    'Very special and outstanding'   → 'excellent'
+    'Not being big in number'        → 'few'
+    'Being fairly small or little'   → 'small, little'
+    """
+    specific_map = {
+        r'very special and outstanding': 'excellent',
+        r'very good (?:and|or) (?:great|excellent|outstanding)': 'excellent',
+        r'very good and pleasant feeling': 'joy, delight',
+        r'very (?:complicated|complex) or hard to do': 'complex, difficult',
+        r'very (?:important|significant)': 'important',
+        r'very (?:beautiful|pretty|lovely)': 'beautiful',
+        r'very (?:fast|quick|rapid)': 'fast, quick',
+        r'very (?:slow|sluggish)': 'slow',
+        r'not being big in number': 'few',
+        r'not being much in quantity': 'little',
+        r'not being (?:big|large) in (?:size|amount)': 'small, little',
+        r'being fairly small or little': 'small, little',
+        r'not easily moved or affected': 'stubborn, firm',
+        r'newly,? not existing before': 'new',
+        r'quite (?:a lot|many|much)': 'quite a lot',
+        r'requiring much power or effort': 'strenuous, hard',
+        r'relatively high grade or level': 'high-level',
+        r'relatively low grade or level': 'low-level',
+    }
+    for pattern, result in specific_map.items():
+        if re.match(pattern, text, re.IGNORECASE):
+            return result
+
+    # Generic: "Very [adjective]" → adjective
+    m = re.match(r'^very ([a-z][a-z\s,]+?)(?:\s+(?:and|or)\s+[a-z\s]+)?$', text, re.IGNORECASE)
+    if m:
+        adj = m.group(1).strip().rstrip('.')
+        if len(adj) <= 20:
+            return adj
+
+    # Generic: "Not being [adjective]" / "Not [adjective]" → antonym hint
+    m = re.match(r'^not being (.+)$', text, re.IGNORECASE)
+    if m:
+        adj = m.group(1).strip().rstrip('.')
+        if len(adj) <= 20:
+            return 'not ' + adj
+
+    return None
+
+
+def _extract_to_verb(text: str) -> str | None:
+    """
+    'To move forward in quick steps' → 'to run'
+    'To record something in writing' → 'to write down'
+    'To fall into water, a pit, etc' → 'to fall in'
+    'For an animal or plant to grow' → 'to grow'
+    'To come in and out freely'      → 'to come and go'
+    """
+    specific_map = {
+        r'to move forward in quick steps': 'to run',
+        r'to record something in writing': 'to write down',
+        r'to fall into water,? a pit,?': 'to fall in',
+        r'to come in and out freely': 'to come and go',
+        r'for an animal or plant to grow': 'to grow',
+        r'to move from one place to another': 'to move',
+        r'to go from one place to another': 'to travel, go',
+        r'to make something (?:by hand|yourself)': 'to make, create',
+        r'to put something in(?: a)? (?:certain )?order': 'to arrange, sort',
+        r'to look for something (?:that is )?lost': 'to search, look for',
+        r'to go out of (?:a )?(?:place|room|building)': 'to go out, exit',
+        r'to come into (?:a )?(?:place|room|building)': 'to come in, enter',
+        r'to stop doing something': 'to stop',
+        r'to start doing something': 'to start, begin',
+        r'to finish doing something': 'to finish, complete',
+        r'to (?:speak|talk) (?:with|to) someone': 'to talk, converse',
+        r'to (?:listen|pay attention) (?:to )?(?:something|someone)': 'to listen',
+        r'to (?:look|watch|observe) (?:at )?something': 'to look, watch',
+        r'to (?:feel|sense) something': 'to feel',
+        r'to (?:think|consider) (?:about )?something': 'to think',
+        r'to (?:use|utilize) something': 'to use',
+        r'to (?:give|offer) something to someone': 'to give',
+        r'to (?:take|receive) something from someone': 'to take, receive',
+        r'to (?:buy|purchase) something': 'to buy',
+        r'to (?:sell|trade) something': 'to sell',
+        r'to (?:eat|consume) food': 'to eat',
+        r'to (?:drink|consume) liquid': 'to drink',
+        r'to (?:wear|put on) (?:clothes?|clothing)': 'to wear',
+        r'to (?:take off|remove) (?:clothes?|clothing)': 'to take off',
+        r'to (?:open|unlock) something': 'to open',
+        r'to (?:close|shut|lock) something': 'to close',
+        r'to (?:wash|clean) something': 'to wash, clean',
+        r'to (?:fix|repair) something': 'to fix, repair',
+        r'to (?:break|damage) something': 'to break',
+        r'to (?:make|prepare) food': 'to cook',
+        r'to (?:call|contact) someone': 'to call, contact',
+        r'to (?:meet|see) someone': 'to meet',
+        r'to (?:help|assist) someone': 'to help',
+        r'to (?:ask|request) something': 'to ask, request',
+        r'to (?:answer|respond) (?:to )?(?:a )?question': 'to answer',
+        r'to (?:wait|stay) (?:for|until)': 'to wait',
+        r'to (?:sleep|rest) (?:at night)?': 'to sleep',
+        r'to (?:wake up|get up)': 'to wake up',
+        r'to (?:sit|be seated) down': 'to sit down',
+        r'to (?:stand|get) up': 'to stand up',
+        r'to (?:go|come) (?:back|home|return)': 'to return, go back',
+        r'to (?:arrive|reach) (?:a )?destination': 'to arrive',
+        r'to (?:leave|depart) (?:a )?(?:place|home)': 'to leave, depart',
+        r'to (?:walk|go on foot)': 'to walk',
+        r'to (?:run|jog|sprint)': 'to run',
+        r'to (?:fly|travel by air)': 'to fly',
+        r'to (?:swim|move through water)': 'to swim',
+        r'to (?:carry|bring|take) (?:something|someone)': 'to carry, bring',
+        r'to (?:send|mail) something': 'to send',
+        r'to (?:receive|get) (?:a )?(?:letter|mail|package)': 'to receive',
+        r'to (?:save|store) (?:money|something)': 'to save',
+        r'to (?:spend|use up) money': 'to spend',
+        r'to (?:borrow|rent) something': 'to borrow',
+        r'to (?:lend|loan) something': 'to lend',
+        r'to (?:study|learn) something': 'to study, learn',
+        r'to (?:teach|instruct) someone': 'to teach',
+        r'to (?:read|look over) (?:a )?(?:book|text)': 'to read',
+        r'to (?:write|record) something': 'to write',
+        r'to (?:draw|sketch|paint) something': 'to draw, paint',
+        r'to (?:play|perform) (?:a )?(?:sport|game|music)': 'to play',
+        r'to (?:sing|perform) (?:a )?song': 'to sing',
+        r'to (?:dance|move to music)': 'to dance',
+        r'to (?:watch|view) something': 'to watch',
+        r'to (?:explain|describe) something': 'to explain',
+        r'to (?:introduce|present) someone': 'to introduce',
+        r'to (?:begin|start) something': 'to begin, start',
+        r'to (?:end|finish|complete) something': 'to end, finish',
+        r'to (?:continue|keep doing) something': 'to continue',
+        r'to (?:change|alter|modify) something': 'to change',
+        r'to (?:increase|grow|get bigger)': 'to increase',
+        r'to (?:decrease|shrink|get smaller)': 'to decrease',
+        r'to (?:become|turn into) something': 'to become',
+        r'to (?:cause|make) something happen': 'to cause',
+        r'to (?:know|understand) something': 'to know, understand',
+        r'to (?:forget|not remember) something': 'to forget',
+        r'to (?:remember|recall) something': 'to remember',
+        r'to (?:plan|decide) (?:to do )?something': 'to plan, decide',
+        r'to (?:choose|select|pick) something': 'to choose',
+        r'to (?:compare|contrast) (?:two )?things?': 'to compare',
+        r'to (?:check|confirm|verify) something': 'to check, confirm',
+        r'to (?:practice|rehearse) something': 'to practice',
+        r'to (?:prepare|get ready) (?:for )?something': 'to prepare',
+        r'to (?:join|participate|take part) (?:in )?something': 'to join, participate',
+        r'to (?:share|distribute) something': 'to share',
+        r'to (?:accept|agree) (?:with )?something': 'to accept, agree',
+        r'to (?:refuse|reject|decline) something': 'to refuse, reject',
+        r'to (?:apologize|say sorry)': 'to apologize',
+        r'to (?:thank|express gratitude)': 'to thank',
+        r'to (?:greet|say hello to) someone': 'to greet',
+        r'to (?:take|have|get) (?:a )?rest': 'to rest',
+        r'to have (?:a )?conversation': 'to converse',
+        r'to (?:think|contemplate|reflect)': 'to think',
+        r'to (?:decide|make a decision)': 'to decide',
+        r'to (?:show|reveal|display) something': 'to show',
+        r'to (?:hide|conceal) something': 'to hide',
+        r'to (?:gather|collect) (?:things?|items?)': 'to gather, collect',
+        r'to (?:drop|let fall) something': 'to drop',
+        r'to (?:pick up|lift) something': 'to pick up',
+        r'to (?:put|place) something (?:somewhere|down)': 'to put, place',
+        r'to (?:throw|toss) something': 'to throw',
+        r'to (?:catch|grab) something': 'to catch',
+        r'to (?:cut|chop|slice) something': 'to cut',
+        r'to (?:fold|bend) something': 'to fold',
+        r'to (?:tie|fasten|attach) something': 'to tie, fasten',
+        r'to (?:untie|unfasten|detach) something': 'to untie',
+        r'to (?:touch|feel) something': 'to touch',
+        r'to (?:push|press) something': 'to push, press',
+        r'to (?:pull|drag) something': 'to pull',
+        r'to (?:hit|strike) something': 'to hit, strike',
+        r'to (?:kick|boot) something': 'to kick',
+        r'to (?:stretch|extend) something': 'to stretch',
+        r'to (?:measure|weigh) something': 'to measure',
+        r'to (?:count|number) something': 'to count',
+        r'to (?:add|sum up) numbers?': 'to add',
+        r'to (?:subtract|minus) numbers?': 'to subtract',
+        r'to (?:multiply) numbers?': 'to multiply',
+        r'to (?:divide|split) (?:something|numbers?)': 'to divide',
+        r'to (?:protect|defend|keep safe) something': 'to protect',
+        r'to (?:destroy|ruin|damage) something': 'to destroy',
+        r'to (?:build|construct|create) something': 'to build, create',
+        r'to (?:design|plan|draft) something': 'to design, plan',
+        r'to (?:develop|improve|advance) something': 'to develop',
+        r'to (?:test|examine|check) something': 'to test, examine',
+        r'to (?:research|investigate|study) something': 'to research',
+        r'to (?:discover|find out) something': 'to discover',
+        r'to (?:invent|create) something new': 'to invent',
+        r'to (?:solve|resolve|fix) (?:a )?problem': 'to solve',
+        r'to (?:manage|control|handle) something': 'to manage',
+        r'to (?:lead|guide) (?:a )?(?:group|team)': 'to lead',
+        r'to (?:follow|obey|listen to) (?:a )?rule': 'to follow, obey',
+        r'to (?:break|violate) (?:a )?rule': 'to break (a rule)',
+        r'to (?:express|show|display) (?:an? )?(?:emotion|feeling)': 'to express',
+        r'to (?:enjoy|like|love) something': 'to enjoy, like',
+        r'to (?:dislike|hate) something': 'to dislike',
+        r'to (?:worry|be concerned) about something': 'to worry',
+        r'to (?:hope|wish|expect) for something': 'to hope, wish',
+        r'to (?:dream|imagine) about something': 'to dream',
+        r'to (?:laugh|smile) (?:at something)?': 'to laugh, smile',
+        r'to (?:cry|weep|sob)': 'to cry',
+        r'to (?:shout|yell|scream)': 'to shout',
+        r'to (?:whisper|speak softly)': 'to whisper',
+        r'to (?:nod|agree by nodding)': 'to nod',
+        r'to (?:shake|move) (?:the )?head': 'to shake one\'s head',
+        r'to (?:clap|applaud)': 'to clap',
+        r'to (?:bow|show respect)': 'to bow',
+        r'to (?:hug|embrace) someone': 'to hug',
+        r'to (?:shake hands? with) someone': 'to shake hands',
+        r'to (?:wave|signal) (?:to )?someone': 'to wave',
+        r'to (?:point|gesture) (?:at|to) something': 'to point',
+    }
+    for pattern, result in specific_map.items():
+        if re.match(pattern, text, re.IGNORECASE):
+            return result
+
+    # Generic: "To [verb phrase]" — if the verb phrase is short enough already
+    m = re.match(r'^to (.+)$', text, re.IGNORECASE)
+    if m:
+        phrase = m.group(1).strip().rstrip('.')
+        # Only simplify if it starts with a verb and the overall result will be short
+        # and the phrase contains a qualifier like "quickly", "in a place", etc.
+        words = phrase.split()
+        if len(words) <= 3:
+            return 'to ' + phrase
+        # "to [verb] [something/someone]" — strip generic objects
+        simplified = re.sub(r'\s+(?:something|someone|a person|things?|items?|an? \w+)\s*$', '', phrase, flags=re.IGNORECASE)
+        if simplified and len(simplified) < len(phrase) and len(simplified) <= 20:
+            return 'to ' + simplified.strip()
+
+    # "For X to Y" → "to Y"
+    m = re.match(r'^for .+ to (.+)$', text, re.IGNORECASE)
+    if m:
+        phrase = m.group(1).strip().rstrip('.')
+        if len(phrase) <= 20:
+            return 'to ' + phrase
+
+    return None
+
+
+def _extract_something_pattern(text: str) -> str | None:
+    """
+    'Something that is not definite'   → 'uncertain'
+    'Something interesting to see'     → 'sight, attraction'
+    'hidden thing unknown to others'   → 'secret'
+    """
+    specific_map = {
+        r'something that is not definite': 'uncertain',
+        r'something interesting to (?:see|look at)': 'sight, attraction',
+        r'hidden thing unknown to others': 'secret',
+        r'something (?:that is )?hidden': 'secret',
+        r'something (?:that is )?unknown': 'unknown thing',
+        r'something (?:that is )?new': 'new thing',
+        r'something (?:that is )?important': 'important thing',
+        r'something (?:that is )?special': 'special thing',
+        r'something (?:that is )?difficult or hard': 'difficulty',
+        r'something (?:that is )?easy': 'easy thing',
+        r'something (?:that is )?dangerous': 'danger',
+        r'something (?:that is )?free (?:of charge)?': 'free item',
+        r'something (?:that is )?necessary': 'necessity',
+        r'something (?:that is )?useful': 'useful thing',
+        r'something (?:that is )?delicious': 'delicious food',
+        r'something (?:that is )?beautiful': 'beautiful thing',
+        r'something (?:that is )?strange': 'strange thing',
+        r'something (?:that is )?funny': 'funny thing',
+        r'something (?:that is )?scary': 'scary thing',
+        r'something (?:that is )?surprising': 'surprise',
+        r'something (?:that happens )?by chance': 'coincidence',
+        r'someone who is (?:a )?(?:stranger|unknown)': 'stranger',
+    }
+    for pattern, result in specific_map.items():
+        if re.match(pattern, text, re.IGNORECASE):
+            return result
+    return None
+
+
+def _extract_time_allotted(text: str) -> str | None:
+    """
+    'time allotted for having lunch' → 'lunch time'
+    'time set aside for [activity]'  → '[activity] time'
+    """
+    specific_map = {
+        r'time allotted for having lunch': 'lunch time',
+        r'time (?:allotted|set aside) for (?:having )?lunch': 'lunch time',
+        r'time (?:allotted|set aside) for (?:having )?breakfast': 'breakfast time',
+        r'time (?:allotted|set aside) for (?:having )?dinner': 'dinner time',
+        r'time (?:allotted|set aside) for (?:having )?a meal': 'mealtime',
+        r'time (?:allotted|set aside) for sleeping': 'sleep time',
+        r'time (?:allotted|set aside) for rest': 'rest time',
+        r'time (?:allotted|set aside) for studying': 'study time',
+        r'time (?:allotted|set aside) for work': 'work time',
+        r'time (?:allotted|set aside) for exercise': 'exercise time',
+        r'time (?:allotted|set aside) for play': 'play time',
+        r'time (?:allotted|set aside) for (?:a )?break': 'break time',
+        r'time (?:allotted|set aside) for class': 'class time',
+    }
+    for pattern, result in specific_map.items():
+        if re.match(pattern, text, re.IGNORECASE):
+            return result
+
+    # Generic: "time allotted for [X]ing" → "[X] time"
+    m = re.match(r'time (?:allotted|set aside) for (.+)', text, re.IGNORECASE)
+    if m:
+        activity = m.group(1).strip().rstrip('.').strip()
+        # Remove leading "having " or "doing "
+        activity = re.sub(r'^(?:having|doing|taking)\s+', '', activity, flags=re.IGNORECASE)
+        if activity and len(activity) <= 15:
+            return activity + ' time'
+    return None
+
+
+def _extract_noun_of_noun(text: str) -> str | None:
+    """
+    'brother who is younger'          → 'younger brother'
+    'man of a married couple'         → 'husband'
+    'time from sunrise to sunset'     → 'daytime'
+    'year coming after this year'     → 'next year'
+    'day following tomorrow'          → 'day after tomorrow'
+    'side beyond a line or boundary'  → 'beyond, other side'
+    'days or years near the present'  → 'recent times'
+    'undecided day in the future'     → 'someday'
+    """
+    specific_map = {
+        r'brother who is younger': 'younger brother',
+        r'sister who is younger': 'younger sister',
+        r'brother who is older': 'older brother',
+        r'sister who is older': 'older sister',
+        r'man of a married couple': 'husband',
+        r'woman of a married couple': 'wife',
+        r'year coming after this year': 'next year',
+        r'year (?:that )?(?:came|coming) before this year': 'last year',
+        r'day following tomorrow': 'day after tomorrow',
+        r'day (?:before|prior to) yesterday': 'day before yesterday',
+        r'side beyond a line or boundary': 'beyond, other side',
+        r'days or years near the present': 'recent times',
+        r'undecided day in the future': 'someday',
+        r'(?:certain|specific) moment or part of time': 'moment',
+        r'at some time one does not know': 'sometime',
+        r'number that indicates no value': 'zero',
+        r'all the countries on the earth': 'the world',
+        r'many places,? or here and there': 'everywhere',
+        r'(?:ticket|pass) (?:bought|used) to ride (?:a )?train': 'train ticket',
+        r'(?:ticket|pass) (?:bought|used) to ride (?:a )?bus': 'bus ticket',
+        r'(?:ticket|pass) (?:bought|used) to ride (?:a )?subway': 'subway ticket',
+        r'(?:ticket|pass) (?:bought|used) to board (?:a )?plane': 'plane ticket',
+        r'bottle used to hold flowers?': 'vase',
+        r'container used to hold (?:flowers?|plants?)': 'vase',
+        r'utensil that holds food': 'bowl, dish',
+        r'container (?:that holds|used for) (?:food|liquid)': 'bowl, container',
+        r'more and more as time passes': 'increasingly',
+        r'(?:current )?location of an object': 'location, position',
+        r'feeling of being unsatisfied': 'dissatisfaction',
+        r'feeling of being satisfied': 'satisfaction',
+        r'feeling of being happy': 'happiness',
+        r'feeling of being sad': 'sadness',
+        r'feeling of being afraid': 'fear',
+        r'feeling of being angry': 'anger',
+        r'feeling of being embarrassed': 'embarrassment',
+        r'feeling of being lonely': 'loneliness',
+        r'feeling of missing someone': 'longing, missing',
+        r'feeling of being grateful': 'gratitude',
+        r'feeling of wanting something': 'desire, want',
+        r'taste of food being not good': 'bad-tasting',
+        r'taste (?:that is )?(?:sour|bitter|spicy|sweet|salty)': lambda m: m.group(0).split()[-1] + ' taste',
+        r'(?:mixed )?color of red and yellow': 'orange',
+        r'powder made by grinding wheat': 'flour',
+        r'soup (?:that is )?made with seaweed': 'seaweed soup',
+        r'(?:a )?(?:certain|specific) time in (?:the )?future': 'future time',
+        r'time when something (?:ends|is over|expires)': 'expiration, end time',
+        r'time (?:when someone|for) (?:graduation|graduating)': 'graduation',
+        r'place where (?:two )?roads? (?:meet|intersect|cross)': 'intersection',
+    }
+    for pattern, result in specific_map.items():
+        if isinstance(result, str) and re.match(pattern, text, re.IGNORECASE):
+            return result
+
+    # "X who is Y" → "Y X"  (e.g. "brother who is younger" → "younger brother")
+    m = re.match(r'^(\w+) who is (\w+)$', text, re.IGNORECASE)
+    if m:
+        noun, adj = m.group(1), m.group(2)
+        return f'{adj} {noun}'
+
+    # "[noun] of [noun]" — very generic, only handle known short constructs
+    # Don't apply generically to avoid false positives
+
+    return None
+
+
+def _extract_all_X_in_Y(text: str) -> str | None:
+    """
+    'All the countries on the earth' → 'the world'
+    'All the [noun] in/on [place]'   → '[noun]'
+    """
+    specific_map = {
+        r'all the countries (?:on|in) (?:the )?earth': 'the world',
+        r'all the countries (?:on|in) (?:the )?world': 'world',
+        r'all the people (?:in|on) (?:the )?world': 'all people',
+        r'all the (?:different )?kinds?': 'all kinds',
+    }
+    for pattern, result in specific_map.items():
+        if re.match(pattern, text, re.IGNORECASE):
+            return result
+
+    m = re.match(r'all the (\w+(?:\s+\w+)?) (?:on|in|of) .+', text, re.IGNORECASE)
+    if m:
+        noun = m.group(1).strip()
+        if len(noun) <= 15:
+            return noun
+    return None
+
+
+def _extract_object_used_for(text: str) -> str | None:
+    """
+    'bottle used to hold flowers' → 'vase'
+    'utensil that holds food'     → 'bowl, dish'
+    '[material] made by [process]' → product name
+    """
+    specific_map = {
+        r'bottle (?:used )?to hold flowers?': 'vase',
+        r'utensil (?:used )?(?:that holds?|to hold) food': 'bowl, dish',
+        r'container (?:used )?to hold (?:rice|food)': 'bowl',
+        r'tool (?:used )?to cut (?:food|things)': 'knife, cutting tool',
+        r'device (?:used )?to tell time': 'clock',
+        r'tool (?:used )?to write': 'pen, pencil',
+        r'object (?:used )?to sit on': 'chair',
+        r'object (?:used )?to sleep on': 'bed',
+        r'object (?:used )?to eat with': 'utensil',
+        r'(?:a )?(?:ticket|card) (?:used )?to (?:ride|board|enter)': 'ticket',
+    }
+    for pattern, result in specific_map.items():
+        if re.match(pattern, text, re.IGNORECASE):
+            return result
+    return None
+
+
 def apply_pattern_extraction(answer: str) -> tuple[str, str] | None:
     """
     Try each extraction rule in order. Returns (new_answer, rule_name) or None.
@@ -468,6 +962,12 @@ def apply_pattern_extraction(answer: str) -> tuple[str, str] | None:
         result = _extract_role_noun(text)
         if result:
             return result, 'role_noun'
+
+    # Rule 1b: person who [verb]s in/at [place] (new comprehensive rule)
+    if re.match(r'person who', text, re.IGNORECASE):
+        result = _extract_person_in_place(text)
+        if result:
+            return result, 'person_in_place'
 
     # Rule 2: act of / action of
     if re.match(r'(?:act|action) of', text, re.IGNORECASE):
@@ -522,6 +1022,48 @@ def apply_pattern_extraction(answer: str) -> tuple[str, str] | None:
         result = _extract_not_pattern(text)
         if result:
             return result, 'not_pattern'
+
+    # Rule 11: Very/Not/Quite/Being [adjective] — strip adverb
+    if re.match(r'(?:very|quite|being|not being|requiring|relatively|newly)', text, re.IGNORECASE):
+        result = _extract_very_not_quite(text)
+        if result:
+            return result, 'adverb_strip'
+
+    # Rule 12: "To [verb phrase]" / "For X to [verb]"
+    if re.match(r'(?:to |for .+ to )', text, re.IGNORECASE):
+        result = _extract_to_verb(text)
+        if result:
+            return result, 'to_verb'
+
+    # Rule 13: Something/Someone that/who [verb]
+    if re.match(r'(?:something|someone|hidden thing|certain)', text, re.IGNORECASE):
+        result = _extract_something_pattern(text)
+        if result:
+            return result, 'something_pattern'
+
+    # Rule 14: "[time] allotted for [activity]"
+    if re.match(r'time (?:allotted|set aside)', text, re.IGNORECASE):
+        result = _extract_time_allotted(text)
+        if result:
+            return result, 'time_allotted'
+
+    # Rule 15: "X who is Y", "X of Y", "X following Y", etc.
+    if re.match(r'(?:\w+ who is|\w+ of (?:a|an|the)|\w+ (?:coming|following)|all the|many places|more and|(?:current )?location|feeling of|taste of|days or years|undecided|certain moment|at some time|number that|side beyond|(?:ticket|bottle|utensil|container|powder|soup))', text, re.IGNORECASE):
+        result = _extract_noun_of_noun(text)
+        if result:
+            return result, 'noun_of_noun'
+
+    # Rule 16: "All the [noun] in/on [place]"
+    if re.match(r'all the', text, re.IGNORECASE):
+        result = _extract_all_X_in_Y(text)
+        if result:
+            return result, 'all_x_in_y'
+
+    # Rule 17: "[object] used to [purpose]" / "[material] made by [process]"
+    if re.search(r'used to (?:hold|store|carry|cut|write|tell)|made by grinding|that holds? food', text, re.IGNORECASE):
+        result = _extract_object_used_for(text)
+        if result:
+            return result, 'object_used_for'
 
     return None
 
@@ -583,6 +1125,7 @@ def main():
 
     total = len(data)
     manual_applied = 0
+    common_word_applied = 0
     pattern_applied = 0
     fallback_applied = 0
     cleanup_applied = 0
@@ -601,6 +1144,15 @@ def main():
                 current = new_val
                 manual_applied += 1
                 print(f"  [manual]   {entry_id}: {original!r} → {new_val!r}")
+
+        # --- Phase 1b: Hardcoded common-word fixes ---
+        if entry_id in COMMON_WORD_FIXES:
+            new_val = COMMON_WORD_FIXES[entry_id]
+            if current != new_val:
+                entry['correctAnswer'] = new_val
+                current = new_val
+                common_word_applied += 1
+                print(f"  [common_word] {entry_id}: {original!r} → {new_val!r}")
 
         # --- Phase 2: Pattern extraction (only on verbose answers > 20 chars) ---
         if len(current) > 20:
@@ -643,13 +1195,21 @@ def main():
         json.dump(data, f, ensure_ascii=False, indent=2)
         f.write('\n')
 
+    # Count remaining verbose answers
+    remaining_verbose_25 = sum(1 for e in data if len(e.get('correctAnswer', '')) > 25)
+    remaining_verbose_30 = sum(1 for e in data if len(e.get('correctAnswer', '')) > 30)
+
     print("\n--- Summary ---")
     print(f"  Total entries processed : {total}")
     print(f"  Manual corrections      : {manual_applied}")
+    print(f"  Common-word fixes       : {common_word_applied}")
     print(f"  Pattern extractions     : {pattern_applied}")
     print(f"  Fallback truncations    : {fallback_applied}")
     print(f"  Cleanup-only changes    : {cleanup_applied}")
     print(f"  Total entries changed   : {total_changed}")
+    print(f"\n--- Remaining verbose answers ---")
+    print(f"  Still > 25 chars        : {remaining_verbose_25}")
+    print(f"  Still > 30 chars        : {remaining_verbose_30}")
 
 
 if __name__ == '__main__':

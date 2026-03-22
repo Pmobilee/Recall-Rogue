@@ -1912,14 +1912,17 @@ export function awardRunXP(stats: RunXPStats): {
   const currentXP = save?.totalXP ?? 0
   const result = processXPGain(currentXP, breakdown.total)
 
-  // Update save state
+  // Update save state — include newly unlocked relics from level rewards
   playerSave.update(s => {
     if (!s) return s
+    const existingRelics = s.unlockedRelicIds ?? []
+    const newRelics = result.relicsUnlocked.filter(id => !existingRelics.includes(id))
     return {
       ...s,
       totalXP: result.newTotalXP,
       characterLevel: result.newLevel,
       lastDailyBonusDate: today,
+      unlockedRelicIds: [...existingRelics, ...newRelics],
       minerals: {
         ...s.minerals,
         dust: (s.minerals?.dust ?? 0) + result.totalDustAwarded,

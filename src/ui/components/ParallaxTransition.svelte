@@ -256,10 +256,25 @@
         gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf)
         gl.bufferData(gl.ARRAY_BUFFER, quadVerts, gl.STATIC_DRAW)
 
-        ;[texImage, texDepth] = await Promise.all([
+        const [imgResult, depthResult] = await Promise.all([
           loadTexture(gl, imageUrl, 0),
           loadTexture(gl, depthUrl, 1),
         ])
+        texImage = imgResult.tex
+        texDepth = depthResult.tex
+
+        // Compute object-fit: cover scale to match how CSS renders the background
+        const imgAspect = imgResult.width / imgResult.height
+        const vpAspect = window.innerWidth / window.innerHeight
+        if (vpAspect > imgAspect) {
+          // Viewport is wider than image — image is cropped top/bottom
+          coverScaleX = 1.0
+          coverScaleY = vpAspect / imgAspect
+        } else {
+          // Viewport is taller than image — image is cropped left/right
+          coverScaleX = imgAspect / vpAspect
+          coverScaleY = 1.0
+        }
 
         if (destroyed) return
 
