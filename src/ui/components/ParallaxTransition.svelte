@@ -41,9 +41,10 @@
       // Zoom: crop into the image so edges extend beyond screen
       vec2 zoomed = center + (vUv - center) / uZoom;
 
-      // Parallax on the zoomed coords: near objects spread outward
+      // Parallax: displace based on depth, using screen-space direction (vUv)
+      // so the push stays consistent regardless of zoom level
       float depth2 = texture2D(uDepthMap, zoomed).r;
-      vec2 displaced = zoomed + (zoomed - center) * depth2 * uDolly;
+      vec2 displaced = zoomed + (vUv - center) * depth2 * uDolly;
 
       // GL_CLAMP_TO_EDGE stretches edge pixels naturally when displaced goes OOB
       vec4 color = texture2D(uImage, displaced);
