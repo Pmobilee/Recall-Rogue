@@ -438,15 +438,12 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   turnState.apCurrent = Math.min(turnState.apCurrent, turnState.apMax);
   turnState.activeRelicIds = runRelicIds;
   turnState.baseDrawCount = resolveBaseDrawCount(runRelicIds);
-  console.log(`[draw-debug] encounterBridge: baseDrawCount=${turnState.baseDrawCount}, hand=${activeDeck?.hand.length}, relics=${[...runRelicIds].join(',') || 'none'}`);
   // If a relic (e.g. swift_boots) boosts the draw count above the default 5,
   // startEncounter already drew 5 cards. Draw the extra cards now so the first
   // hand reflects the full boosted count.
   if (turnState.baseDrawCount > 5 && activeDeck) {
     const extraCards = turnState.baseDrawCount - 5;
-    console.log(`[draw-debug] drawing ${extraCards} extra cards for relic boost`);
     drawHand(activeDeck, extraCards);
-    console.log(`[draw-debug] after extra draw: hand=${activeDeck.hand.length}`);
   }
   turnState.canaryEnemyDamageMultiplier = run.canary.enemyDamageMultiplier * (run.endlessEnemyDamageMultiplier ?? 1);
   turnState.canaryQuestionBias = run.canary.questionBias;

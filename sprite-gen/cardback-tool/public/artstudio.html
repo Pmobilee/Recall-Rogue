@@ -789,19 +789,17 @@
       return `
         <div class="variant-card" id="vc-${item.id}-${v.variant}">
           <div class="variant-frame-preview ${v.accepted ? 'accepted' : ''}"
-               onclick="${v.status === 'done' ? `openLightbox('${imgUrl}', '${esc(item.name)} — Variant ${v.variant}')` : ''}">
-            <!-- Layer 1: Border (back) -->
+               onclick="${v.status === 'done' ? `openLightbox('${imgUrl}', '${esc(item.name)} — Variant ${v.variant}')` : ''}"
+               style="${v.status === 'done' ? `background-image: url('${imgUrl}'); background-size: 100% 55%; background-position: 50% 28%; background-repeat: no-repeat;` : ''}">
+            <!-- Frame layers render ON TOP of background-image by definition -->
             <img class="frame-layer" src="/card-frame-assets/card-border-${borderFile}.webp" alt="">
-            <!-- Layer 2: Art (in pentagon window) -->
-            ${v.status === 'generating' || v.status === 'pending'
-              ? '<div class="variant-spinner" style="z-index:2;position:absolute;left:30%;top:25%;"></div>'
-              : v.status === 'error'
-                ? `<span style="color:#ff6666;font-size:0.7rem;padding:8px;text-align:center;z-index:2;position:absolute;top:30%;left:20%;">Error</span>`
-                : `<img class="art-in-frame" src="${imgUrl}" alt="Art" loading="lazy">`}
-            <!-- Layer 3: Base frame (on top, transparent window shows art+border) -->
             <img class="frame-layer" src="/card-frame-assets/card-frame-base.webp" alt="">
-            <!-- Layer 4: Banner (topmost) -->
             <img class="frame-layer" src="/card-frame-assets/card-banner-chain0.webp" alt="">
+            ${v.status === 'generating' || v.status === 'pending'
+              ? '<div class="variant-spinner" style="z-index:5;position:absolute;left:30%;top:25%;"></div>'
+              : v.status === 'error'
+                ? `<span style="color:#ff6666;font-size:0.7rem;padding:8px;text-align:center;z-index:5;position:absolute;top:30%;left:20%;">Error</span>`
+                : ''}
             <span class="variant-status-badge badge-${v.status}" style="z-index:10;">${v.status}</span>
             ${v.accepted ? '<span class="accepted-badge">Accepted</span>' : ''}
           </div>

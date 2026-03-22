@@ -491,14 +491,19 @@ export function startEncounter(
   // Reset chain at encounter start (clean slate)
   resetChain();
 
+  // Ensure hand is empty before drawing — move any leftover cards to discard
+  // (can happen if previous encounter ended without a full turn cycle)
+  if (deck.hand.length > 0) {
+    deck.discardPile.push(...deck.hand);
+    deck.hand = [];
+  }
+
   // Reset mastery encounter flags for all cards in all piles
   const allCards = [...deck.drawPile, ...deck.discardPile, ...deck.hand, ...deck.exhaustPile];
   resetEncounterMasteryFlags(allCards);
 
   const isFirstEncounter = deck.currentFloor === 1 && deck.currentEncounter <= 1;
-  console.log(`[draw-debug] startEncounter: hand=${deck.hand.length}, drawPile=${deck.drawPile.length}, baseDrawCount=${initialState.baseDrawCount}`);
   drawHand(deck, initialState.baseDrawCount, { firstDrawBias: isFirstEncounter });
-  console.log(`[draw-debug] after drawHand: hand=${deck.hand.length}, drawPile=${deck.drawPile.length}`);
   return initialState;
 }
 
@@ -2150,7 +2155,6 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   const tagMagnetBias = drawBias.biasChainType !== null
     ? { chainType: drawBias.biasChainType, chance: drawBias.biasChance }
     : undefined;
-  console.log(`[draw-debug] endTurn→newTurn: hand=${deck.hand.length}, drawCount=${drawCount}, bonus=${turnState.bonusDrawNextTurn}, drawPile=${deck.drawPile.length}`);
   drawHand(deck, drawCount + turnState.bonusDrawNextTurn, { tagMagnetBias });
   turnState.bonusDrawNextTurn = 0;
 

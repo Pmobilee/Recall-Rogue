@@ -1535,12 +1535,11 @@
 
   .frame-card-art {
     position: absolute;
-    /* Positioned to fill the pentagon art window in the base frame */
-    /* Window is approx x:11%-89%, y:18%-52% based on frame alpha analysis */
-    left: 11%;
-    top: 18%;
-    width: 78%;
-    height: 35%;
+    /* Oversized to fill the entire pentagon window — frame layers mask the edges */
+    left: 0;
+    top: 15%;
+    width: 100%;
+    height: 55%;
     object-fit: cover;
     image-rendering: auto;
     pointer-events: none;
