@@ -11,6 +11,7 @@
 
   let canvas = $state<HTMLCanvasElement | null>(null)
   let bobOffset = $state(0)
+  let settled = $state(false)
 
   const VERT_SRC = /* glsl */ `
     attribute vec2 aPosition;
@@ -215,7 +216,15 @@
 
         if (t < 1.0) {
           rafId = requestAnimationFrame(frame)
+        } else if (type === 'enter') {
+          // Enter transitions: render the final identity frame and PERSIST.
+          // The canvas stays as the room background — no snap, no mismatch.
+          // It unmounts naturally when the parent screen changes.
+          bobOffset = 0
+          render(0, 1.0, 0, 1.0, 1.0)
+          settled = true
         } else {
+          // Exit transitions: fade to black, then unmount
           if (!destroyed) onComplete()
         }
       }
