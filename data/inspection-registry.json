@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "lastUpdated": "2026-03-22",
+  "lastUpdated": "2026-03-23",
   "tables": {
     "cards": [
       {
@@ -4600,14 +4600,14 @@
         "category": "domain",
         "description": "Vocabulary, grammar, linguistics",
         "status": "working",
-        "lastChangedDate": "2026-03-22",
+        "lastChangedDate": "2026-03-23",
         "visualInspectionDate_portraitMobile": "not_checked",
         "visualInspectionDate_landscapeMobile": "not_checked",
         "visualInspectionDate_landscapePC": "not_checked",
-        "mechanicInspectionDate": "2026-03-22",
+        "mechanicInspectionDate": "2026-03-23",
         "uxReviewDate": "not_checked",
-        "lastInspectedDate": "2026-03-22",
-        "notes": "AR-215: Full Japanese content quality fix (2026-03-22). 7 subdecks audited 3x by Sonnet agents. Kanji meanings fixed (KANJIDIC standalone), pronunciations fixed (on-yomi default), kana Hepburn ji/zu, grammar expanded to 1708 (meaning+recall+fill), vocab answers corrected, distractor pools segmented by subdeck, garbage distractors removed. 11,946 Japanese facts production-ready."
+        "lastInspectedDate": "2026-03-23",
+        "notes": "AR-230: Full language deck rebuild (2026-03-23). 8 languages from authoritative sources (JLPT/TOPIK/HSK/CEFRLex). Sonnet-verified 6,445 suspicious answers. 800-card audit: 93-97% pass rate. 40,561 language facts total."
       }
     ],
     "quizSystems": [
@@ -5275,8 +5275,8 @@
         "category": "language_subdeck",
         "description": "416 facts, Hepburn romanization, 8 distractors each",
         "status": "working",
-        "lastChangedDate": "2026-03-22",
-        "mechanicInspectionDate": "2026-03-22",
+        "lastChangedDate": "2026-03-23",
+        "mechanicInspectionDate": "2026-03-23",
         "lastInspectedDate": "2026-03-22",
         "notes": "3x Sonnet audit: 0 critical issues. ji/zu Hepburn fix, ID collision fix, acceptableAnswers for ambiguous ji/zu reverse."
       },
@@ -5286,8 +5286,8 @@
         "category": "language_subdeck",
         "description": "2096 facts, KANJIDIC standalone meanings, 7 distractors each",
         "status": "working",
-        "lastChangedDate": "2026-03-22",
-        "mechanicInspectionDate": "2026-03-22",
+        "lastChangedDate": "2026-03-23",
+        "mechanicInspectionDate": "2026-03-23",
         "lastInspectedDate": "2026-03-22",
         "notes": "3x Sonnet audit. 1585 compound-meaning errors fixed via KANJIDIC. Pronunciations fixed to on-yomi default. Garbage distractors removed. Minor: some KANJIDIC first-reading edge cases remain."
       },
@@ -5297,8 +5297,8 @@
         "category": "language_subdeck",
         "description": "1709 facts (644 meaning + 644 recall + 421 fill), pool-based distractors",
         "status": "working",
-        "lastChangedDate": "2026-03-22",
-        "mechanicInspectionDate": "2026-03-22",
+        "lastChangedDate": "2026-03-23",
+        "mechanicInspectionDate": "2026-03-23",
         "lastInspectedDate": "2026-03-22",
         "notes": "3x Sonnet audit. Expanded from 644 single-type to 1709 with recall+fill variants. Answers cleaned (truncation, notation, placeholders). Known limitation: fill-blank distractors don't check syntactic fit (pool-based)."
       },
@@ -5308,10 +5308,76 @@
         "category": "language_subdeck",
         "description": "7726 facts, runtime pool-based distractors (segmented by subdeck)",
         "status": "working",
-        "lastChangedDate": "2026-03-22",
-        "mechanicInspectionDate": "2026-03-22",
+        "lastChangedDate": "2026-03-23",
+        "mechanicInspectionDate": "2026-03-23",
         "lastInspectedDate": "2026-03-22",
         "notes": "3x Sonnet audit. 21 critical answer corrections applied. Runtime distractors now segmented by subdeck (vocab-only pool). Minor: some JMdict translations are secondary meanings."
+      },
+      {
+        "id": "chinese_hsk",
+        "name": "Chinese HSK (1-6)",
+        "category": "language_subdeck",
+        "description": "7,113 facts rebuilt from HSK reference, Sonnet-verified",
+        "status": "working",
+        "lastChangedDate": "2026-03-23",
+        "mechanicInspectionDate": "2026-03-23",
+        "lastInspectedDate": "2026-03-23",
+        "notes": "Rebuilt from data/references/hsk/complete.json. Sonnet verified 1,986 suspicious answers."
+      },
+      {
+        "id": "german_cefr",
+        "name": "German CEFR (A1-B2)",
+        "category": "language_subdeck",
+        "description": "3,957 facts from DAFlex×Wiktionary, Sonnet-verified",
+        "status": "working",
+        "lastChangedDate": "2026-03-23",
+        "mechanicInspectionDate": "2026-03-23",
+        "lastInspectedDate": "2026-03-23",
+        "notes": "CEFRLex levels + Wiktionary translations. Sonnet verified 1,261 answers."
+      },
+      {
+        "id": "french_cefr",
+        "name": "French CEFR (A1-B2)",
+        "category": "language_subdeck",
+        "description": "7,029 facts from FLELex×Wiktionary, Sonnet-verified",
+        "status": "working",
+        "lastChangedDate": "2026-03-23",
+        "mechanicInspectionDate": "2026-03-23",
+        "lastInspectedDate": "2026-03-23",
+        "notes": "CEFRLex levels + Wiktionary translations. Sonnet verified 1,645 answers."
+      },
+      {
+        "id": "spanish_cefr",
+        "name": "Spanish CEFR (A1-B2)",
+        "category": "language_subdeck",
+        "description": "3,995 facts from ELELex×Wiktionary, Sonnet-verified",
+        "status": "working",
+        "lastChangedDate": "2026-03-23",
+        "mechanicInspectionDate": "2026-03-23",
+        "lastInspectedDate": "2026-03-23",
+        "notes": "CEFRLex levels + Wiktionary translations. Sonnet verified 864 answers."
+      },
+      {
+        "id": "dutch_cefr",
+        "name": "Dutch CEFR (A1-B2)",
+        "category": "language_subdeck",
+        "description": "1,252 facts from NT2Lex×Wiktionary, Sonnet-verified",
+        "status": "working",
+        "lastChangedDate": "2026-03-23",
+        "mechanicInspectionDate": "2026-03-23",
+        "lastInspectedDate": "2026-03-23",
+        "notes": "NT2Lex (small corpus). Sonnet verified 380 answers."
+      },
+      {
+        "id": "czech_freq",
+        "name": "Czech (freq-sorted A1-B2)",
+        "category": "language_subdeck",
+        "description": "3,319 facts from Wiktionary, frequency-sorted levels",
+        "status": "working",
+        "lastChangedDate": "2026-03-23",
+        "mechanicInspectionDate": "2026-03-23",
+        "lastInspectedDate": "2026-03-23",
+        "notes": "No CEFRLex available. Levels assigned by frequency rank. Sonnet verified 309 answers."
       }
     ],
     "ascensionLevels": [

@@ -11,7 +11,7 @@
 
 ### Best Option: ACE-Step 1.5 (Open Source, Local)
 
-**This is installed locally on this machine** at `/opt/ace-step`. It runs on your MacBook's GPU.
+**This is installed locally on this machine** at `~/opt/ace-step`. It runs on your M4 Max (28GB unified memory, unlimited tier).
 
 | Detail | Value |
 |--------|-------|
@@ -26,11 +26,19 @@
 
 **To generate a track:**
 ```bash
-cd /opt/ace-step
-source venv/bin/activate
-python generate.py --prompt "your prompt here" --output public/assets/audio/bgm/bgm_hub.ogg
+cd ~/opt/ace-step
+uv run acestep --port 7860
+# Open http://localhost:7860 in your browser
+# Models auto-download on first run (~4-8GB from HuggingFace, one-time)
+# Paste any prompt below, hit Generate, export as .ogg
 ```
-Or use the Gradio UI: `python app.py` then open `http://localhost:7860`
+
+**CLI generation (headless):**
+```bash
+cd ~/opt/ace-step
+uv run python cli.py --tags "your style tags" --lyrics "your lyrics" --duration 60 --output bgm_hub.wav
+# Then convert: ffmpeg -i bgm_hub.wav -c:a libvorbis -q:a 5 ../../Recall_Rogue/public/assets/audio/bgm/bgm_hub.ogg
+```
 
 ### Commercial Services (if you want to compare)
 
