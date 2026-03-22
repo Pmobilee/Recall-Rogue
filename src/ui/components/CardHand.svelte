@@ -1477,9 +1477,9 @@
     position: absolute;
     width: var(--card-w);
     height: var(--card-h);
-    background-color: #1e2d3d;
-    border: 2px solid;
-    border-radius: 8px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
     cursor: pointer;
     pointer-events: auto;
     display: flex;
@@ -1492,7 +1492,7 @@
     touch-action: none;
     font-family: inherit;
     color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    box-shadow: none;
     perspective: 800px;
     will-change: transform, opacity;
   }
