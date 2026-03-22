@@ -4056,7 +4056,7 @@
         {
           "variant": 0,
           "seed": 1167218709,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -4072,7 +4072,7 @@
         {
           "variant": 0,
           "seed": 1292196197,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -4632,7 +4632,7 @@
         {
           "variant": 0,
           "seed": 4097384441,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -4977,7 +4977,7 @@
         {
           "variant": 0,
           "seed": 2691503603,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -4993,7 +4993,7 @@
         {
           "variant": 0,
           "seed": 2549612049,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5073,7 +5073,7 @@
         {
           "variant": 0,
           "seed": 2791796003,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5089,7 +5089,7 @@
         {
           "variant": 0,
           "seed": 1403730628,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5105,7 +5105,7 @@
         {
           "variant": 0,
           "seed": 1645093679,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5121,7 +5121,7 @@
         {
           "variant": 0,
           "seed": 991916565,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5137,7 +5137,7 @@
         {
           "variant": 0,
           "seed": 2953150930,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5153,7 +5153,7 @@
         {
           "variant": 0,
           "seed": 3368046727,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5169,7 +5169,7 @@
         {
           "variant": 0,
           "seed": 516881612,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5185,7 +5185,7 @@
         {
           "variant": 0,
           "seed": 1165491494,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5201,7 +5201,7 @@
         {
           "variant": 0,
           "seed": 2916102636,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5217,7 +5217,7 @@
         {
           "variant": 0,
           "seed": 756282763,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5233,7 +5233,7 @@
         {
           "variant": 0,
           "seed": 7268609,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5249,7 +5249,7 @@
         {
           "variant": 0,
           "seed": 677509642,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5265,7 +5265,7 @@
         {
           "variant": 0,
           "seed": 1303504075,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5281,7 +5281,7 @@
         {
           "variant": 0,
           "seed": 2318962143,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5297,7 +5297,7 @@
         {
           "variant": 0,
           "seed": 602482120,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5313,8 +5313,16 @@
         {
           "variant": 0,
           "seed": 62319444,
-          "status": "generating",
-          "accepted": false
+          "status": "error",
+          "accepted": false,
+          "error": "HTTP 403: {\"error\":{\"message\":\"Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+        },
+        {
+          "variant": 1,
+          "seed": 2329344153,
+          "status": "error",
+          "accepted": false,
+          "error": "HTTP 403: {\"error\":{\"message\":\"Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
         }
       ]
     },
@@ -5329,7 +5337,7 @@
         {
           "variant": 0,
           "seed": 3789117315,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5345,7 +5353,7 @@
         {
           "variant": 0,
           "seed": 904597423,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5361,7 +5369,7 @@
         {
           "variant": 0,
           "seed": 2645939859,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5377,7 +5385,7 @@
         {
           "variant": 0,
           "seed": 2966789169,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5393,7 +5401,7 @@
         {
           "variant": 0,
           "seed": 3859518870,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5409,7 +5417,7 @@
         {
           "variant": 0,
           "seed": 195605690,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5425,7 +5433,7 @@
         {
           "variant": 0,
           "seed": 1198039381,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5441,7 +5449,7 @@
         {
           "variant": 0,
           "seed": 826859771,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5457,7 +5465,7 @@
         {
           "variant": 0,
           "seed": 2590158808,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5473,7 +5481,7 @@
         {
           "variant": 0,
           "seed": 427650404,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5489,7 +5497,7 @@
         {
           "variant": 0,
           "seed": 912179562,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5505,7 +5513,7 @@
         {
           "variant": 0,
           "seed": 1773597325,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5521,7 +5529,7 @@
         {
           "variant": 0,
           "seed": 3935783786,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5537,7 +5545,7 @@
         {
           "variant": 0,
           "seed": 2630687807,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5553,7 +5561,7 @@
         {
           "variant": 0,
           "seed": 4140280577,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5569,7 +5577,7 @@
         {
           "variant": 0,
           "seed": 2372097486,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5585,7 +5593,7 @@
         {
           "variant": 0,
           "seed": 694187685,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5601,7 +5609,7 @@
         {
           "variant": 0,
           "seed": 1082607049,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5617,8 +5625,9 @@
         {
           "variant": 0,
           "seed": 2414972364,
-          "status": "generating",
-          "accepted": false
+          "status": "error",
+          "accepted": false,
+          "error": "HTTP 403: {\"error\":{\"message\":\"Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
         }
       ]
     },
@@ -5633,7 +5642,7 @@
         {
           "variant": 0,
           "seed": 435619757,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5649,7 +5658,7 @@
         {
           "variant": 0,
           "seed": 3781712622,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5665,7 +5674,7 @@
         {
           "variant": 0,
           "seed": 2480149718,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5681,7 +5690,7 @@
         {
           "variant": 0,
           "seed": 4196305681,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5697,7 +5706,7 @@
         {
           "variant": 0,
           "seed": 239645903,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5729,7 +5738,7 @@
         {
           "variant": 0,
           "seed": 518117018,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5745,7 +5754,7 @@
         {
           "variant": 0,
           "seed": 246715035,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5761,7 +5770,7 @@
         {
           "variant": 0,
           "seed": 998537815,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5777,7 +5786,7 @@
         {
           "variant": 0,
           "seed": 2721264942,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5793,7 +5802,7 @@
         {
           "variant": 0,
           "seed": 3739432590,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5809,7 +5818,7 @@
         {
           "variant": 0,
           "seed": 852563612,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5825,7 +5834,7 @@
         {
           "variant": 0,
           "seed": 1396845438,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5841,7 +5850,7 @@
         {
           "variant": 0,
           "seed": 2992591271,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5873,7 +5882,7 @@
         {
           "variant": 0,
           "seed": 1534615412,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5889,7 +5898,7 @@
         {
           "variant": 0,
           "seed": 949005731,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5905,7 +5914,7 @@
         {
           "variant": 0,
           "seed": 3997572891,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5921,7 +5930,7 @@
         {
           "variant": 0,
           "seed": 723119099,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5937,7 +5946,7 @@
         {
           "variant": 0,
           "seed": 4079457388,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5953,7 +5962,7 @@
         {
           "variant": 0,
           "seed": 3428465704,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5969,7 +5978,7 @@
         {
           "variant": 0,
           "seed": 4244762500,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -5985,7 +5994,7 @@
         {
           "variant": 0,
           "seed": 1816809146,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6001,7 +6010,7 @@
         {
           "variant": 0,
           "seed": 1503124881,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6017,7 +6026,7 @@
         {
           "variant": 0,
           "seed": 2827843386,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6033,7 +6042,7 @@
         {
           "variant": 0,
           "seed": 1928328455,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6049,7 +6058,7 @@
         {
           "variant": 0,
           "seed": 3820375155,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6065,7 +6074,7 @@
         {
           "variant": 0,
           "seed": 2563671059,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6081,7 +6090,7 @@
         {
           "variant": 0,
           "seed": 2509987258,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6097,7 +6106,7 @@
         {
           "variant": 0,
           "seed": 1426891716,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6113,7 +6122,7 @@
         {
           "variant": 0,
           "seed": 1924068708,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6129,7 +6138,7 @@
         {
           "variant": 0,
           "seed": 2229389638,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6145,7 +6154,7 @@
         {
           "variant": 0,
           "seed": 3394441336,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6161,7 +6170,7 @@
         {
           "variant": 0,
           "seed": 1929089656,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6177,7 +6186,7 @@
         {
           "variant": 0,
           "seed": 211993960,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6193,7 +6202,7 @@
         {
           "variant": 0,
           "seed": 1388939353,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6209,7 +6218,7 @@
         {
           "variant": 0,
           "seed": 1981525072,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6225,7 +6234,7 @@
         {
           "variant": 0,
           "seed": 1739960966,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6241,7 +6250,7 @@
         {
           "variant": 0,
           "seed": 1897589953,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6257,7 +6266,7 @@
         {
           "variant": 0,
           "seed": 3302847908,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6273,8 +6282,9 @@
         {
           "variant": 0,
           "seed": 3888487076,
-          "status": "generating",
-          "accepted": false
+          "status": "error",
+          "accepted": false,
+          "error": "HTTP 403: {\"error\":{\"message\":\"Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
         }
       ]
     },
@@ -6289,7 +6299,7 @@
         {
           "variant": 0,
           "seed": 2748225793,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6305,7 +6315,7 @@
         {
           "variant": 0,
           "seed": 1524198973,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6321,7 +6331,7 @@
         {
           "variant": 0,
           "seed": 3856508473,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6337,7 +6347,7 @@
         {
           "variant": 0,
           "seed": 4099255958,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6353,7 +6363,7 @@
         {
           "variant": 0,
           "seed": 1329493181,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6369,7 +6379,7 @@
         {
           "variant": 0,
           "seed": 1869932456,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6385,7 +6395,7 @@
         {
           "variant": 0,
           "seed": 3517399523,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6401,7 +6411,7 @@
         {
           "variant": 0,
           "seed": 2468427355,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6417,7 +6427,7 @@
         {
           "variant": 0,
           "seed": 1907477094,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6433,7 +6443,7 @@
         {
           "variant": 0,
           "seed": 1043971513,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6449,7 +6459,7 @@
         {
           "variant": 0,
           "seed": 966217452,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6465,7 +6475,7 @@
         {
           "variant": 0,
           "seed": 893867109,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6481,7 +6491,7 @@
         {
           "variant": 0,
           "seed": 2718791517,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6497,7 +6507,7 @@
         {
           "variant": 0,
           "seed": 2952324209,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6513,7 +6523,7 @@
         {
           "variant": 0,
           "seed": 3014562172,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6529,7 +6539,7 @@
         {
           "variant": 0,
           "seed": 3972719585,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6545,7 +6555,7 @@
         {
           "variant": 0,
           "seed": 1282381862,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6561,7 +6571,7 @@
         {
           "variant": 0,
           "seed": 3646661875,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6577,7 +6587,7 @@
         {
           "variant": 0,
           "seed": 4123825857,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6593,7 +6603,7 @@
         {
           "variant": 0,
           "seed": 433080426,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6609,7 +6619,7 @@
         {
           "variant": 0,
           "seed": 469386735,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6625,7 +6635,7 @@
         {
           "variant": 0,
           "seed": 1904795879,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6641,7 +6651,7 @@
         {
           "variant": 0,
           "seed": 1478755940,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6657,7 +6667,7 @@
         {
           "variant": 0,
           "seed": 21518417,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6673,7 +6683,7 @@
         {
           "variant": 0,
           "seed": 3518883089,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6689,7 +6699,7 @@
         {
           "variant": 0,
           "seed": 454449047,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6705,7 +6715,7 @@
         {
           "variant": 0,
           "seed": 1979350398,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6721,7 +6731,7 @@
         {
           "variant": 0,
           "seed": 602741402,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6737,7 +6747,7 @@
         {
           "variant": 0,
           "seed": 2856008696,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6753,7 +6763,7 @@
         {
           "variant": 0,
           "seed": 2561022498,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6769,7 +6779,7 @@
         {
           "variant": 0,
           "seed": 3344785387,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6785,7 +6795,7 @@
         {
           "variant": 0,
           "seed": 1875597408,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6801,8 +6811,9 @@
         {
           "variant": 0,
           "seed": 973609765,
-          "status": "generating",
-          "accepted": false
+          "status": "error",
+          "accepted": false,
+          "error": "HTTP 403: {\"error\":{\"message\":\"Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
         }
       ]
     },
@@ -6817,7 +6828,7 @@
         {
           "variant": 0,
           "seed": 844364495,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6833,7 +6844,7 @@
         {
           "variant": 0,
           "seed": 3821515735,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6849,7 +6860,7 @@
         {
           "variant": 0,
           "seed": 4195199063,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6865,7 +6876,7 @@
         {
           "variant": 0,
           "seed": 2446584592,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6881,7 +6892,7 @@
         {
           "variant": 0,
           "seed": 3995966731,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6897,7 +6908,7 @@
         {
           "variant": 0,
           "seed": 1233459820,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6913,7 +6924,7 @@
         {
           "variant": 0,
           "seed": 1756669854,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6929,7 +6940,7 @@
         {
           "variant": 0,
           "seed": 2686780674,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6945,7 +6956,7 @@
         {
           "variant": 0,
           "seed": 3743449647,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6961,7 +6972,7 @@
         {
           "variant": 0,
           "seed": 1256727147,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6977,7 +6988,7 @@
         {
           "variant": 0,
           "seed": 3030211650,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -6993,7 +7004,7 @@
         {
           "variant": 0,
           "seed": 2120927488,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7009,7 +7020,7 @@
         {
           "variant": 0,
           "seed": 4032716405,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7025,7 +7036,7 @@
         {
           "variant": 0,
           "seed": 337684788,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7041,7 +7052,7 @@
         {
           "variant": 0,
           "seed": 919394725,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7057,7 +7068,7 @@
         {
           "variant": 0,
           "seed": 3365660116,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7073,7 +7084,7 @@
         {
           "variant": 0,
           "seed": 1723530545,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7089,7 +7100,7 @@
         {
           "variant": 0,
           "seed": 1065242914,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7105,7 +7116,7 @@
         {
           "variant": 0,
           "seed": 72253629,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7121,7 +7132,7 @@
         {
           "variant": 0,
           "seed": 2270966486,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7137,7 +7148,7 @@
         {
           "variant": 0,
           "seed": 1524001203,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7153,7 +7164,7 @@
         {
           "variant": 0,
           "seed": 1760388970,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7169,7 +7180,7 @@
         {
           "variant": 0,
           "seed": 595428386,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7185,7 +7196,7 @@
         {
           "variant": 0,
           "seed": 3256046867,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7201,7 +7212,7 @@
         {
           "variant": 0,
           "seed": 2473682660,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7217,7 +7228,7 @@
         {
           "variant": 0,
           "seed": 3081894861,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7233,7 +7244,7 @@
         {
           "variant": 0,
           "seed": 1390726892,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7249,7 +7260,7 @@
         {
           "variant": 0,
           "seed": 2839943320,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7265,7 +7276,7 @@
         {
           "variant": 0,
           "seed": 521033161,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7281,7 +7292,7 @@
         {
           "variant": 0,
           "seed": 629924135,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7297,7 +7308,7 @@
         {
           "variant": 0,
           "seed": 3738121672,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7313,7 +7324,7 @@
         {
           "variant": 0,
           "seed": 3630529094,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7329,7 +7340,7 @@
         {
           "variant": 0,
           "seed": 3249133454,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7345,7 +7356,7 @@
         {
           "variant": 0,
           "seed": 242406447,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7361,7 +7372,7 @@
         {
           "variant": 0,
           "seed": 1767490381,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7377,7 +7388,7 @@
         {
           "variant": 0,
           "seed": 2335749592,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7393,7 +7404,7 @@
         {
           "variant": 0,
           "seed": 2319550160,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7409,7 +7420,7 @@
         {
           "variant": 0,
           "seed": 1541519029,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7425,7 +7436,7 @@
         {
           "variant": 0,
           "seed": 2778710760,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7441,7 +7452,7 @@
         {
           "variant": 0,
           "seed": 2761981621,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7457,7 +7468,7 @@
         {
           "variant": 0,
           "seed": 602793541,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7473,7 +7484,7 @@
         {
           "variant": 0,
           "seed": 633413445,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7489,7 +7500,7 @@
         {
           "variant": 0,
           "seed": 1365819566,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7505,7 +7516,7 @@
         {
           "variant": 0,
           "seed": 2582211034,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7521,7 +7532,7 @@
         {
           "variant": 0,
           "seed": 4002730572,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7537,7 +7548,7 @@
         {
           "variant": 0,
           "seed": 3021507974,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7553,7 +7564,7 @@
         {
           "variant": 0,
           "seed": 2352503213,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7569,7 +7580,7 @@
         {
           "variant": 0,
           "seed": 4215350150,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7585,7 +7596,7 @@
         {
           "variant": 0,
           "seed": 3922005821,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7601,7 +7612,7 @@
         {
           "variant": 0,
           "seed": 4277588440,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7617,8 +7628,9 @@
         {
           "variant": 0,
           "seed": 2514216197,
-          "status": "generating",
-          "accepted": false
+          "status": "error",
+          "accepted": false,
+          "error": "fetch failed"
         }
       ]
     },
@@ -7633,7 +7645,7 @@
         {
           "variant": 0,
           "seed": 2063245859,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7649,7 +7661,7 @@
         {
           "variant": 0,
           "seed": 397876721,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7665,7 +7677,7 @@
         {
           "variant": 0,
           "seed": 902478001,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7681,7 +7693,7 @@
         {
           "variant": 0,
           "seed": 2903843614,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7697,7 +7709,7 @@
         {
           "variant": 0,
           "seed": 1682698233,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7713,7 +7725,7 @@
         {
           "variant": 0,
           "seed": 2523098814,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7729,7 +7741,7 @@
         {
           "variant": 0,
           "seed": 2327426801,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7745,7 +7757,7 @@
         {
           "variant": 0,
           "seed": 1411491985,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7761,7 +7773,7 @@
         {
           "variant": 0,
           "seed": 4237834820,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7777,7 +7789,7 @@
         {
           "variant": 0,
           "seed": 1740691870,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7793,7 +7805,7 @@
         {
           "variant": 0,
           "seed": 4114283228,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -7809,7 +7821,7 @@
         {
           "variant": 0,
           "seed": 3122511441,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8475,7 +8487,7 @@
         {
           "variant": 0,
           "seed": 2737646644,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8491,7 +8503,7 @@
         {
           "variant": 0,
           "seed": 971655901,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8507,7 +8519,7 @@
         {
           "variant": 0,
           "seed": 799385450,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8523,7 +8535,7 @@
         {
           "variant": 0,
           "seed": 1733946082,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8539,7 +8551,7 @@
         {
           "variant": 0,
           "seed": 3151458278,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8555,7 +8567,7 @@
         {
           "variant": 0,
           "seed": 326145951,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8571,7 +8583,7 @@
         {
           "variant": 0,
           "seed": 1874677646,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8587,7 +8599,7 @@
         {
           "variant": 0,
           "seed": 2175175674,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8603,7 +8615,7 @@
         {
           "variant": 0,
           "seed": 3426122308,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8619,7 +8631,7 @@
         {
           "variant": 0,
           "seed": 3016486396,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8635,7 +8647,7 @@
         {
           "variant": 0,
           "seed": 505199811,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8651,7 +8663,7 @@
         {
           "variant": 0,
           "seed": 3999926919,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8667,7 +8679,7 @@
         {
           "variant": 0,
           "seed": 202377208,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8683,7 +8695,7 @@
         {
           "variant": 0,
           "seed": 4173604917,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8699,7 +8711,7 @@
         {
           "variant": 0,
           "seed": 1781918525,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8715,7 +8727,7 @@
         {
           "variant": 0,
           "seed": 585713504,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8731,7 +8743,7 @@
         {
           "variant": 0,
           "seed": 4175860539,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8747,7 +8759,7 @@
         {
           "variant": 0,
           "seed": 2873904560,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8763,7 +8775,7 @@
         {
           "variant": 0,
           "seed": 2616245648,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8779,7 +8791,7 @@
         {
           "variant": 0,
           "seed": 3079992078,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8795,7 +8807,7 @@
         {
           "variant": 0,
           "seed": 2693658393,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8811,7 +8823,7 @@
         {
           "variant": 0,
           "seed": 3165808983,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8827,7 +8839,7 @@
         {
           "variant": 0,
           "seed": 3290123184,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8843,7 +8855,7 @@
         {
           "variant": 0,
           "seed": 1159146107,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8859,7 +8871,7 @@
         {
           "variant": 0,
           "seed": 2675833916,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8875,7 +8887,7 @@
         {
           "variant": 0,
           "seed": 3695065100,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8891,7 +8903,7 @@
         {
           "variant": 0,
           "seed": 3669300531,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8907,7 +8919,7 @@
         {
           "variant": 0,
           "seed": 439168057,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8923,7 +8935,7 @@
         {
           "variant": 0,
           "seed": 3556384294,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8939,7 +8951,7 @@
         {
           "variant": 0,
           "seed": 3649052704,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8955,7 +8967,7 @@
         {
           "variant": 0,
           "seed": 4015918538,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8971,7 +8983,7 @@
         {
           "variant": 0,
           "seed": 1672616106,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -8987,7 +8999,7 @@
         {
           "variant": 0,
           "seed": 572230493,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -9003,7 +9015,7 @@
         {
           "variant": 0,
           "seed": 796147421,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -9019,7 +9031,7 @@
         {
           "variant": 0,
           "seed": 640675414,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -9035,7 +9047,7 @@
         {
           "variant": 0,
           "seed": 1591145135,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -9051,7 +9063,7 @@
         {
           "variant": 0,
           "seed": 3120505218,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -9067,7 +9079,7 @@
         {
           "variant": 0,
           "seed": 2341832409,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -9083,7 +9095,7 @@
         {
           "variant": 0,
           "seed": 1331854074,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -9099,7 +9111,7 @@
         {
           "variant": 0,
           "seed": 1562992947,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -9115,7 +9127,7 @@
         {
           "variant": 0,
           "seed": 4129504200,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -9131,7 +9143,7 @@
         {
           "variant": 0,
           "seed": 4019220105,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]
@@ -9147,7 +9159,7 @@
         {
           "variant": 0,
           "seed": 701101152,
-          "status": "generating",
+          "status": "done",
           "accepted": false
         }
       ]

@@ -1529,19 +1529,20 @@
     object-fit: contain;
     pointer-events: none;
     image-rendering: pixelated; /* crisp pixel art rendering */
+    z-index: 2; /* Frame layers sit ON TOP of card art */
   }
 
   .frame-card-art {
     position: absolute;
-    /* Cover the pentagon art window area — base frame masks edges naturally */
-    left: 16%;
-    top: 14%;
-    width: 68%;
-    height: 42%; /* reduced from 48% to stay inside pentagon */
+    /* Art fills the pentagon window area — frame layers on top mask the edges */
+    left: 12%;
+    top: 10%;
+    width: 76%;
+    height: 50%;
     object-fit: cover;
     image-rendering: auto; /* smooth for photo-like art */
     pointer-events: none;
-    border-radius: 4px; /* subtle rounding to match pentagon corners */
+    z-index: 1; /* Art sits BEHIND all frame layers */
   }
 
   .upgrade-icon {

@@ -517,11 +517,17 @@ export class CombatScene extends Phaser.Scene {
     const suffix = getDeviceTier() === 'low-end' ? '_1x.webp' : '.webp'
 
     // Preload all enemy idle sprites and depth maps
+    // Depth maps are only loaded for enemies that have sprite files (not placeholders).
+    // Missing depth maps are silently skipped — the depth effect gracefully degrades.
     for (const enemy of ENEMY_TEMPLATES) {
       const key = `enemy-${enemy.id}-idle`
       if (!this.textures.exists(key)) {
         this.load.image(key, `assets/sprites/enemies/${enemy.id}_idle${suffix}`)
       }
+    }
+    // Load depth maps in a separate pass — load errors are silently ignored
+    // since not all enemies have sprite files (some use placeholder rectangles)
+    for (const enemy of ENEMY_TEMPLATES) {
       const depthKey = `enemy-${enemy.id}-depth`
       if (!this.textures.exists(depthKey)) {
         this.load.image(depthKey, `assets/sprites/enemies/${enemy.id}_idle_depth.png`)
@@ -890,7 +896,7 @@ export class CombatScene extends Phaser.Scene {
     const lightDef = atmConfig.lighting.lights[0]
     const lightColor = lightDef?.color ?? 0xffffff
     const lightDir = atmConfig.rim.lightDir
-    this.enemySpriteSystem.applyDepthEffects(depthKey, lightColor, lightDir)
+    this.enemySpriteSystem.applyDepthEffects(depthKey, lightColor, lightDir, 0.018, 1.8)
     // Tint the background
     if (this.combatBackground instanceof Phaser.GameObjects.Image) {
       this.combatBackground.setTint(atmConfig.backgroundTint)

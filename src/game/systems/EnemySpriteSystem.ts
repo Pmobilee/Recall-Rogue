@@ -300,55 +300,51 @@ export class EnemySpriteSystem {
     depthTextureKey: string,
     lightColor: number,
     lightDir: [number, number],
-    breathIntensity: number = 0.004,
+    breathIntensity: number = 0.015,
     breathSpeed: number = 2.0,
   ): void {
     if (!this.mainSprite) return
     if (getDeviceTier() === 'low-end') return
-    if (!this.scene.textures.exists(depthTextureKey)) return
+    if (!this.scene.textures.exists(depthTextureKey)) {
+      console.warn('[EnemySpriteSystem] Depth map not found:', depthTextureKey)
+      return
+    }
 
     this.removeDepthEffects()
 
     const c = Phaser.Display.Color.ValueToColor(lightColor)
-
-    // Normalize light direction
     const len = Math.sqrt(lightDir[0] ** 2 + lightDir[1] ** 2 + 1)
     const dir: [number, number, number] = [lightDir[0] / len, lightDir[1] / len, 1 / len]
-
-    // Rim color = lighter version of light color
     const rimC = Phaser.Display.Color.ValueToColor(lightColor)
     rimC.lighten(40)
 
     try {
       const sprite = this.mainSprite as any
-
-      // Apply the PostFX pipeline
       sprite.setPostPipeline('SpriteDepthFX')
-      const pipeline = sprite.getPostPipeline('SpriteDepthFX') as SpriteDepthFX | null
 
-      if (pipeline) {
-        // Get the WebGL texture from the depth map
-        const depthTex = this.scene.textures.get(depthTextureKey)
-        const phaserGLTex = (depthTex as any)?.source?.[0]?.glTexture
-        if (phaserGLTex) {
-          pipeline.setDepthTexture(phaserGLTex)
-        }
+      // getPostPipeline can return array or single — handle both
+      const result = sprite.getPostPipeline('SpriteDepthFX')
+      const pipeline: any = Array.isArray(result) ? result[0] : result
 
+      if (pipeline && typeof pipeline.setConfig === 'function') {
+        pipeline.setDepthTextureKey(depthTextureKey)
         pipeline.setConfig({
           lightDir: dir,
           lightColor: [c.redGL, c.greenGL, c.blueGL],
-          lightIntensity: 1.0,
-          ambientColor: [0.6, 0.6, 0.65],
+          lightIntensity: 1.2,
+          ambientColor: [0.55, 0.55, 0.6],
           breathIntensity,
           breathSpeed,
           rimColor: [rimC.redGL, rimC.greenGL, rimC.blueGL],
-          rimIntensity: 0.35,
-          rimPower: 3.0,
-          normalStrength: 2.5,
+          rimIntensity: 0.5,
+          rimPower: 2.5,
+          normalStrength: 3.0,
         })
-
         this._depthFx = pipeline
         this._depthTextureKey = depthTextureKey
+        console.log('[EnemySpriteSystem] Depth FX applied:', depthTextureKey)
+      } else {
+        console.warn('[EnemySpriteSystem] Pipeline not found after setPostPipeline')
       }
     } catch (e) {
       console.warn('[EnemySpriteSystem] SpriteDepthFX failed:', e)

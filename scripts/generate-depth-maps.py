@@ -64,8 +64,13 @@ def generate_depth_map(input_path: Path, output_path: Path, sigma: float = 2.0) 
     # Zero out transparent regions
     dist_arr[alpha <= 10] = 0
 
-    # Save as grayscale PNG
-    out = Image.fromarray(dist_arr, mode='L')
+    # Convert to RGBA — Phaser/WebGL requires multi-channel images
+    rgba = np.zeros((dist_arr.shape[0], dist_arr.shape[1], 4), dtype=np.uint8)
+    rgba[:, :, 0] = dist_arr  # R = depth
+    rgba[:, :, 1] = dist_arr  # G = depth
+    rgba[:, :, 2] = dist_arr  # B = depth
+    rgba[:, :, 3] = np.where(alpha > 10, 255, 0)  # A = original alpha mask
+    out = Image.fromarray(rgba, 'RGBA')
     out.save(output_path, optimize=True)
     return True
 
