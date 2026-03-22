@@ -2862,6 +2862,7 @@ One codebase, two layout modes. The app detects viewport aspect ratio at runtime
 - Left 70% = center stage (background, VFX, quiz panel when active)
 - Bottom 25-30% = card hand strip (full width)
 - Hub: full 16:9 widescreen campsite background (`camp-background-wide.jpg`, 1920×1080) fills the entire viewport; the 9:16 interactive hotspot column is centered transparently over it
+- **No sidebar navigation:** The landscape left sidebar (AR-91 `HubNavBar`) has been permanently removed. Hub screens use their own navigation elements. Portrait retains its bottom tab bar.
 
 ### Input System (Landscape) [IMPLEMENTED — AR-74]
 
