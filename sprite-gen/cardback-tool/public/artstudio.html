@@ -349,15 +349,15 @@
   }
   .variant-frame-preview .art-in-frame {
     position: absolute;
-    /* Match the game's CardHand.svelte .frame-card-art positioning exactly */
-    left: 16%;
-    top: 14%;
-    width: 68%;
-    height: 42%;
+    /* Art sits BEHIND the base frame (z-index:3) which masks it via transparent window */
+    left: 12%;
+    top: 10%;
+    width: 76%;
+    height: 50%;
     object-fit: cover;
     image-rendering: pixelated;
     pointer-events: none;
-    z-index: 0;
+    z-index: 0 !important;
     border-radius: 4px;
   }
   .variant-frame-preview .variant-status-badge {
@@ -795,7 +795,7 @@
               ? '<div class="variant-spinner" style="z-index:2;position:absolute;left:30%;top:25%;"></div>'
               : v.status === 'error'
                 ? `<span style="color:#ff6666;font-size:0.7rem;padding:8px;text-align:center;z-index:2;position:absolute;top:30%;left:20%;">Error</span>`
-                : `<img class="art-in-frame" src="${imgUrl}" alt="Art" loading="lazy" style="z-index:2;">`}
+                : `<img class="art-in-frame" src="${imgUrl}" alt="Art" loading="lazy">`}
             <!-- Layer 3: Base frame (on top, transparent window shows art+border) -->
             <img class="frame-layer" src="/card-frame-assets/card-frame-base.webp" alt="" style="z-index:3;">
             <!-- Layer 4: Banner (topmost) -->
