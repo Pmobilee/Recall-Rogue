@@ -2360,7 +2360,7 @@ On first-ever correct answer for a Tier 1 fact, a "fun fact" summary pops up for
 
 ### Audio Event Catalog (AR-228)
 
-The **complete, exhaustive audio event catalog** lives in `docs/roadmap/phases/AR-228-COMPLETE-AUDIO-EVENT-CATALOG.md`. It contains **234 discrete audio events** across 23 categories, each with creative sound design direction, priority level, and implementation status.
+The **complete, exhaustive audio event catalog** lives in `docs/roadmap/completed/AR-228-COMPLETE-AUDIO-EVENT-CATALOG.md`. It contains **234 discrete audio events** across 23 categories, each with creative sound design direction, priority level, and implementation status.
 
 **This catalog is a LIVING DOCUMENT.** Whenever ANY new mechanic, screen, interaction, enemy, card type, relic, room, or UI element is added, the corresponding audio events MUST be added to AR-228. No exceptions.
 
@@ -2381,11 +2381,11 @@ The **complete, exhaustive audio event catalog** lives in `docs/roadmap/phases/A
 | P1 (Core Feel) | 100 | Status effects, chains, enemies, transitions | DONE (synthesis), BGM pending |
 | P2 (Polish) | 73 | UI interactions, NPC sounds, ambient details | Mostly wired |
 | P3 (Nice-to-have) | 26 | Hover sounds, scroll feedback, environmental micro-detail | Partially wired |
-| **Total** | **234** | **160+ trigger calls across 30 files** | **SFX complete, BGM pending** |
+| **Total** | **234** | **182 trigger calls across 32 files** | **SFX complete, BGM pending** |
 
 ### Background Music (BGM) — User-Created via AI Music Generation
 
-13 BGM tracks are needed. These will be created by the developer using AI music generation tools (Suno, Udio, AIVA, Soundverse, or Beatoven.ai). **Detailed generation prompts** for every track are provided in AR-228 Section 23.
+13 BGM tracks are needed. These will be created by the developer using **ACE-Step 1.5** (open source, installed locally at `~/opt/ace-step`, runs on M4 Max MPS) or commercial tools (Suno, Udio, AIVA). ACE-Step benchmarks above Suno v5 (SongEval 8.09), generates full songs in 30-60s locally, and costs nothing. **Detailed generation prompts** for every track are in `docs/roadmap/future/BGM-MUSIC-GENERATION-PROMPTS.md` and AR-228 Section 23.
 
 | Track | Screen | Priority | Duration |
 |-------|--------|----------|----------|
@@ -3150,7 +3150,7 @@ Phaser canvas must not capture `Shift+Tab` (Steam Overlay toggle). Verified by e
 | Skill | Invoke | Purpose |
 |-------|--------|---------|
 | `artstudio` | `/artstudio` | Sprite/enemy/card art generation pipeline |
-| `audio-manager` | `/audio-manager` | Howler.js integration guide (planned) |
+| `audio-manager` | `/audio-manager` | Complete audio system — 180 sounds, 141 cues, 182 triggers, ACE-Step BGM generation |
 
 ### Performance & Debugging
 | Skill | Invoke | Purpose |
