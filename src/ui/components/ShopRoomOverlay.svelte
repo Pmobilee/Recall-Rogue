@@ -18,6 +18,7 @@
   import { isLandscape } from '../../stores/layoutStore'
   import { getSynergyLabel } from '../../data/synergies'
   import { getActiveDeckCards } from '../../services/encounterBridge'
+  import { playCardAudio } from '../../services/cardAudioManager'
 
   interface ShopRelicItem {
     relic: { id: string; name: string; description: string; rarity: string; icon: string }
@@ -146,6 +147,12 @@
   function confirmBuy() {
     if (!pendingPurchase) return
     const haggled = hagglingState === 'result' && quizResult === 'correct'
+    const effectivePrice = haggled ? haggledPrice : pendingPurchase.price
+    if (currency < effectivePrice) {
+      playCardAudio('shop-insufficient')
+      return
+    }
+    playCardAudio('shop-purchase')
     if (pendingPurchase.type === 'relic') {
       onbuyRelic(pendingPurchase.relicId, haggled)
     } else if (pendingPurchase.type === 'card') {
@@ -178,6 +185,7 @@
       quizQuestion = fact
       quizAnswers = options
       hagglingState = 'quiz'
+      playCardAudio('quiz-appear')
     } catch {
       // On error, skip quiz
       hagglingState = 'result'
@@ -234,6 +242,10 @@
       ? currency >= haggledPrice
       : currency >= (pendingPurchase?.price ?? 0))
   )
+
+  $effect(() => {
+    playCardAudio('shop-open')
+  })
 </script>
 
 <section class="shop-overlay" class:landscape={$isLandscape} aria-label="Shop room">
@@ -370,7 +382,7 @@
     <div class="empty">Nothing available.</div>
   {/if}
 
-  <button type="button" class="done" data-testid="btn-leave-shop" onclick={ondone}>Leave Shop</button>
+  <button type="button" class="done" data-testid="btn-leave-shop" onclick={() => { playCardAudio('shop-close'); ondone() }}>Leave Shop</button>
 </section>
 
 <!-- Purchase Modal -->

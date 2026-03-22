@@ -16,6 +16,7 @@
   import StudyModeSelector from './StudyModeSelector.svelte'
   import ParallaxTransition from './ParallaxTransition.svelte'
   import { getLevelProgress } from '../../services/characterLevel'
+  import { playCardAudio } from '../../services/cardAudioManager'
 
   interface Props {
     streak: number
@@ -87,6 +88,15 @@
 
   let dustBalance = $derived($playerSave?.minerals.dust ?? 0)
   let levelProgress = $derived(getLevelProgress($playerSave?.totalXP ?? 0))
+
+  $effect(() => {
+    playCardAudio('hub-welcome')
+  })
+
+  function handleStartRun(): void {
+    playCardAudio('hub-start-run')
+    onStartRun()
+  }
 
   function openUpgradeModal(): void {
     showUpgradeModal = true
@@ -182,7 +192,7 @@
         label="Start Run"
         testId="btn-start-run"
         zIndex={5}
-        onclick={onStartRun}
+        onclick={handleStartRun}
         hitTop="11%" hitLeft="28%" hitWidth="44%" hitHeight="27%"
         showBorder
       />

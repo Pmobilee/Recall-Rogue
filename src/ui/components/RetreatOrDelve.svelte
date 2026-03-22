@@ -4,6 +4,7 @@
   import { preloadImages } from '../utils/assetPreloader'
   import { isLandscape } from '../../stores/layoutStore'
   import ParallaxTransition from './ParallaxTransition.svelte'
+  import { playCardAudio } from '../../services/cardAudioManager'
 
   interface Props {
     bossName: string
@@ -55,7 +56,7 @@
     </div>
 
     <div class="btn-row">
-      <button class="retreat" onclick={onretreat} data-testid="btn-retreat">
+      <button class="retreat" onclick={() => { playCardAudio('retreat-chosen'); onretreat() }} data-testid="btn-retreat">
         Retreat
         <span>
           {#if retreatRewardsLocked}
@@ -66,7 +67,7 @@
         </span>
       </button>
 
-      <button class="delve" onclick={ondelve} data-testid="btn-delve">
+      <button class="delve" onclick={() => { playCardAudio('delve-deeper'); ondelve() }} data-testid="btn-delve">
         Delve Deeper
         <span>Death keeps {Math.round(deathPenalty * 100)}% ({retainedOnDeath})</span>
       </button>

@@ -2,6 +2,7 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import type { Boss } from '../../game/entities/Boss'
+  import { playCardAudio } from '../../services/cardAudioManager'
 
   interface Props {
     boss: Boss
@@ -12,6 +13,7 @@
   let fading = $state(false)
 
   onMount(() => {
+    playCardAudio('boss-intro')
     const timer = setTimeout(() => {
       fading = true
       setTimeout(onDismiss, 400)

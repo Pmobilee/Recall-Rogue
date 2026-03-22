@@ -6,6 +6,7 @@
   import { getMysteryEventIconPath, getMysteryEventEmoji } from '../utils/iconAssets'
   import { isLandscape } from '../../stores/layoutStore'
   import ParallaxTransition from './ParallaxTransition.svelte'
+  import { playCardAudio } from '../../services/cardAudioManager'
 
   interface Props {
     event: MysteryEvent | null
@@ -24,6 +25,12 @@
 
   let effectIcon = $derived(getEffectIcon(event?.effect))
   let showCardReveal = $state(false)
+
+  $effect(() => {
+    if (event) {
+      playCardAudio('mystery-appear')
+    }
+  })
 
   function getEffectIcon(effect: MysteryEffect | undefined): string {
     if (!effect) return 'choice' // fallback
@@ -52,6 +59,7 @@
   }
 
   function handleChoiceOption(choiceEffect: MysteryEffect): void {
+    playCardAudio('event-choice')
     if (choiceEffect.type === 'damage') {
       showCardReveal = true
       setTimeout(() => {

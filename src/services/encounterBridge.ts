@@ -482,7 +482,21 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   syncCombatScene(turnState);
 
   // Encounter start sound + draw swooshes.
+  // Determine encounter type audio
+  const isBoss = isBossFloor(run.floor.currentFloor) && run.floor.currentEncounter === run.floor.encountersPerFloor;
+  const isElite = template.category === 'elite';
+  if (isBoss) {
+    playCardAudio('encounter-start-boss');
+  } else if (isElite) {
+    playCardAudio('encounter-start-elite');
+  } else {
+    playCardAudio('encounter-start');
+  }
   playCardAudio('turn-chime');
+  // Check if first turn is a Surge turn
+  if (turnState.isSurge) {
+    setTimeout(() => playCardAudio('surge-announce'), 300);
+  }
   turnState.deck.hand.forEach((_, index) => {
     setTimeout(() => playCardAudio('card-draw'), index * turboDelay(90));
   });
@@ -668,6 +682,13 @@ export function handlePlayCard(
     scene.updatePlayerHP(result.turnState.playerState.hp, result.turnState.playerState.maxHP, true);
     scene.updatePlayerBlock(result.turnState.playerState.shield, true);
     if (result.enemyDefeated) {
+      const runForVictory = get(activeRunState);
+      const isBossVictory = runForVictory && isBossFloor(runForVictory.floor.currentFloor) && runForVictory.floor.currentEncounter === runForVictory.floor.encountersPerFloor;
+      if (isBossVictory) {
+        playCardAudio('boss-defeated');
+      } else {
+        playCardAudio('encounter-victory');
+      }
       playCardAudio('enemy-death');
       juiceManager.fireKillConfirmation();
       // Kill confirmation punch FIRST, then death animation
@@ -826,6 +847,7 @@ export function handleEndTurn(): void {
   if (!turnState) return;
 
   const result = endPlayerTurn(turnState);
+  playCardAudio('enemy-turn-start');
   const run = get(activeRunState);
   if (run) {
     run.playerHp = result.turnState.playerState.hp;
@@ -841,31 +863,41 @@ export function handleEndTurn(): void {
     // Animate based on executed enemy intent type
     switch (result.executedIntentType) {
       case 'attack':
+        playCardAudio('enemy-attack');
         scene.playEnemyAttackAnimation()
         if (result.blockAbsorbedAll) {
+          playCardAudio('shield-absorb');
           scene.playBlockAbsorbFlash()
         } else if (result.damageDealt > 0) {
+          playCardAudio('player-damage');
           scene.playPlayerDamageFlash()
         }
         break
       case 'multi_attack':
+        playCardAudio('enemy-charge-release');
         scene.playEnemyMultiAttackAnimation()
         if (result.blockAbsorbedAll) {
+          playCardAudio('shield-absorb');
           scene.playBlockAbsorbFlash()
         } else if (result.damageDealt > 0) {
+          playCardAudio('player-damage');
           scene.playPlayerDamageFlash()
         }
         break
       case 'defend':
+        playCardAudio('enemy-defend');
         scene.playEnemyDefendAnimation()
         break
       case 'buff':
+        playCardAudio('enemy-buff');
         scene.playEnemyBuffAnimation()
         break
       case 'debuff':
+        playCardAudio('enemy-debuff');
         scene.playEnemyDebuffAnimation()
         break
       case 'heal':
+        playCardAudio('enemy-heal');
         scene.playEnemyHealAnimation()
         break
     }
@@ -878,12 +910,16 @@ export function handleEndTurn(): void {
       result.turnState.enemy.nextIntent.value > 0 ? result.turnState.enemy.nextIntent.value : undefined,
     );
     if (result.playerDefeated) {
+      playCardAudio('player-defeated');
       scene.playPlayerDefeatAnimation();
     }
   }
 
   if (!result.playerDefeated) {
     playCardAudio('turn-chime');
+    if (result.turnState.isSurge) {
+      setTimeout(() => playCardAudio('surge-announce'), 200);
+    }
   }
 
   if (result.playerDefeated) {
@@ -906,6 +942,7 @@ export function handleEndTurn(): void {
       }
     }
     setTimeout(() => {
+      playCardAudio('encounter-defeat');
       activeTurnState.set(null);
       activeDeck = null;
       notifyEncounterComplete('defeat');

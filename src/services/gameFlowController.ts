@@ -70,6 +70,7 @@ import { analyticsService } from './analyticsService';
 import type { SpecialEvent } from '../data/specialEvents';
 import { rollSpecialEvent } from '../data/specialEvents';
 import { saveActiveRun, loadActiveRun, clearActiveRun, hasActiveRun } from './runSaveService'
+import { playCardAudio } from './cardAudioManager'
 import { requestNotificationPermission, rescheduleNotifications } from './notificationService'
 import type { NotificationPlayerData } from './notificationService'
 import { getDueReviews } from '../ui/stores/playerData';
@@ -627,6 +628,10 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
     });
     // Attach XP result to endData for RunEndScreen display
     (endData as any).xpResult = xpResult;
+    playCardAudio('xp-award');
+    if (xpResult.levelsGained > 0) {
+      playCardAudio('level-up');
+    }
   }
 
   lastRunSummary.set(captureRunSummary(run, endData));
@@ -762,6 +767,8 @@ export function onArchetypeSelected(archetype: RewardArchetype): void {
   // Generate the initial ActMap for the first segment
   run.floor.actMap = generateActMap(run.floor.segment, run.runSeed);
   activeRunState.set(run);
+  playCardAudio('domain-select');
+  playCardAudio('run-start');
   // Initialize forked RNG system for all modes that use a seed
   initRunRng(run.runSeed);
   // Activate deterministic random for standard and endless_depths runs
@@ -843,6 +850,7 @@ async function proceedAfterReward(): Promise<void> {
 
   const floorToResolve = pendingClearedFloor || run.floor.currentFloor;
   if (pendingFloorCompleted) {
+    playCardAudio('floor-cleared');
     // After boss floor: show special event first, then retreat/delve
     if (isBossFloor(floorToResolve)) {
       if (!pendingSpecialEvent) {
@@ -1637,6 +1645,7 @@ export function onDelve(): void {
     },
   });
   advanceFloor(run.floor);
+  playCardAudio('floor-transition');
   if (activeRunMode === 'endless_depths') {
     applyEndlessDepthsScaling(run)
   }
@@ -1672,6 +1681,7 @@ export function onMapNodeSelected(nodeId: string): void {
 
   // Select the node on the map (marks it 'current', unlocks children, locks siblings)
   selectMapNode(run.floor.actMap, nodeId);
+  playCardAudio('map-node-click');
 
   // Derive equivalent floor number for difficulty scaling
   const derivedFloor = deriveFloorFromNode(run.floor.actMap, node);
@@ -1781,8 +1791,10 @@ export function onMasteryChallengeResolved(passed: boolean): void {
 
   if (passed) {
     prioritizeGraduatedRelicFact(challenge.factId)
+    playCardAudio('mastery-trial-pass')
   } else {
     applyMasteryTrialOutcome(challenge.factId, false)
+    playCardAudio('mastery-trial-fail')
   }
 
   analyticsService.track({

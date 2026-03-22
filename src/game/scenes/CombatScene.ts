@@ -1879,18 +1879,23 @@ export class CombatScene extends Phaser.Scene {
       targetW, scaledH, 6
     )
 
-    this.enemyHpText.setText(`${this.currentEnemyHP} / ${this.currentEnemyMaxHP}`)
+    const blockPrefix = this.currentEnemyBlock > 0 ? `(${this.currentEnemyBlock}) ` : ''
+    this.enemyHpText.setText(`${blockPrefix}${this.currentEnemyHP} / ${this.currentEnemyMaxHP}`)
   }
 
   /** Refresh enemy block bar overlay and indicators. */
   private refreshEnemyBlockBar(animate: boolean): void {
     const hasBlock = this.currentEnemyBlock > 0
 
-    this.enemyBlockIcon.setVisible(hasBlock)
-    this.enemyBlockText.setVisible(hasBlock)
+    // Block count is now shown inline in the HP bar text; hide the separate icon/text
+    this.enemyBlockIcon.setVisible(false)
+    this.enemyBlockText.setVisible(false)
+
+    // Refresh HP text to include/remove the block prefix
+    const blockPrefix = hasBlock ? `(${this.currentEnemyBlock}) ` : ''
+    this.enemyHpText.setText(`${blockPrefix}${this.currentEnemyHP} / ${this.currentEnemyMaxHP}`)
 
     if (hasBlock) {
-      this.enemyBlockText.setText(`${this.currentEnemyBlock}`)
       const blockRatio = Math.min(1, this.currentEnemyBlock / this.currentEnemyMaxHP)
       const scaledW = Math.round(ENEMY_HP_BAR_W * this.scaleFactor)
       const scaledH = Math.round(ENEMY_HP_BAR_H * this.scaleFactor)

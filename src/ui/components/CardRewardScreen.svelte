@@ -155,6 +155,7 @@
     if (!selected || collectLocked) return
     collectLocked = true
     collectingType = selected.cardType
+    playCardAudio('card-accepted')
     playCardAudio('turn-chime')
     window.setTimeout(() => {
       onselect(selected)
@@ -168,6 +169,7 @@
 
   function confirmSkip(): void {
     showSkipConfirm = false
+    playCardAudio('card-skipped')
     onskip()
   }
 
@@ -180,6 +182,7 @@
     const type = selectedType ?? options[0]?.cardType
     if (!type) return
     rerollsUsed++
+    playCardAudio('card-rerolled')
     onreroll(type)
   }
 
@@ -248,6 +251,7 @@
         }, turboDelay(100))
 
         if (!hasPlayedIntroCue) {
+          playCardAudio('reward-screen')
           playCardAudio('combo-3')
           hasPlayedIntroCue = true
         }

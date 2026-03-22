@@ -3,6 +3,7 @@
   import type { Fact } from '../../data/types'
   import { BALANCE } from '../../data/balance'
   import { audioManager } from '../../services/audioService'
+  import { playCardAudio } from '../../services/cardAudioManager'
   import { playerSave } from '../stores/playerData'
   import { gaiaMood, highContrastQuiz } from '../stores/settings'
   import { KEEPER_EXPRESSIONS, KEEPER_NAME, getKeeperExpression } from '../../data/gaiaAvatar'
@@ -187,6 +188,7 @@
 
     // Haptic feedback on answer selection (Phase 38)
     await tapLight()
+    playCardAudio('quiz-answer-select')
 
     selectedAnswer = answer
     isCorrect = answer === fact.correctAnswer
@@ -224,6 +226,7 @@
   function handleWrongAnswerTap(): void {
     if (!waitingForTap) return
     waitingForTap = false
+    playCardAudio('quiz-dismiss')
 
     if (mode === 'gate' && attemptsRemaining === 0) {
       onAnswer(false)
@@ -272,6 +275,8 @@
   }
 
   onMount(() => {
+    playCardAudio('quiz-appear')
+
     function handleKeyDown(e: KeyboardEvent): void {
       if (showResult) return
       const num = parseInt(e.key, 10)

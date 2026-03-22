@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { RelicDefinition } from '../../data/relics/types'
   import { isLandscape } from '../../stores/layoutStore'
+  import { playCardAudio } from '../../services/cardAudioManager'
 
   interface Props {
     relic: RelicDefinition
@@ -31,7 +32,7 @@
     </div>
     <p class="relic-lore">"{relic.flavorText}"</p>
     <div class="relic-actions">
-      <button onclick={onAccept} class="btn-accept">Equip Relic</button>
+      <button onclick={() => { playCardAudio('relic-acquired'); onAccept() }} class="btn-accept">Equip Relic</button>
       <button onclick={onDecline} class="btn-decline">Leave It</button>
     </div>
   </div>

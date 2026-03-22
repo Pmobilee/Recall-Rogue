@@ -110,3 +110,39 @@ Two animation issues: (1) The sword/attack animation is oversized and mispositio
 - [ ] Non-combat rooms (mystery, reward, rest, shop, victory, defeat, map, descent) have NO exit animation
 - [ ] Combat exit sequence is unaffected
 - [ ] Update `docs/GAME_DESIGN.md` section: Screen Transitions, Attack Animations
+
+---
+
+## Visual Testing — MANDATORY
+
+**After ALL sub-steps are implemented, a Sonnet visual-testing worker MUST inspect the result before the AR is considered complete.**
+
+### Procedure
+
+1. Ensure the dev server is running (`npm run dev`)
+2. Navigate with Playwright MCP: `mcp__playwright__browser_navigate` → `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
+3. Load the relevant scenario: `browser_evaluate(() => window.__terraScenario.load('combat-basic'))` (or the appropriate scenario for this AR)
+4. Take screenshot: `browser_evaluate(() => window.__terraScreenshotFile())` — saves to `/tmp/terra-screenshot.jpg`
+5. Read the screenshot: `Read('/tmp/terra-screenshot.jpg')` to visually inspect
+6. Take DOM snapshot: `mcp__playwright__browser_snapshot` for structural verification
+7. Check console: `mcp__playwright__browser_console_messages` for JS errors
+8. **If ANY visual issue is found: fix it before reporting done.** Do not tell the user "it should work" — CONFIRM it works.
+
+### What to Verify (per AR)
+
+The visual-testing worker must check every sub-step's acceptance criteria against the actual rendered output. Specific checks:
+
+- Layout positions match the AR's layout diagram (if any)
+- No element overlap or clipping
+- Text is readable at 1920x1080 landscape
+- Colors match the spec (HP bar colors, chain colors, etc.)
+- No hardcoded-px visual artifacts (elements too small or too large)
+- No console errors or warnings
+- Dynamic scaling works (test at 1920x1080 AND 1280x720 if the AR touches layout)
+
+### Resolution
+
+- **NEVER** use `mcp__playwright__browser_take_screenshot` — Phaser's RAF blocks it permanently
+- **NEVER** use `page.screenshot()` via `browser_run_code` — same RAF blocking issue
+- **ALWAYS** use `browser_evaluate(() => window.__terraScreenshotFile())` then `Read('/tmp/terra-screenshot.jpg')`
+- Use Sonnet workers (`model: "sonnet"`) for visual inspection — equally capable as Opus for screenshot analysis

@@ -1225,14 +1225,13 @@
       </button>
     {/if}
 
-    <!-- AR-74: Mouse hover tooltip for landscape mode -->
+    <!-- AR-74: Mouse hover tooltip for landscape mode — fixed at bottom-left above End Turn -->
     {#if isHovered && $isLandscape && selectedIndex === null}
       {@const chainName = card.chainType !== undefined ? getChainTypeName(card.chainType) : null}
       {@const chainTypeVal = card.chainType ?? 0}
       {@const mechanic = getMechanicDefinition(card.mechanicId ?? '')}
       <div
-        class="card-hover-tooltip"
-        style="transform: translate3d({xOffset}px, calc(-80px - var(--card-h) - 8px), 0) translateX(-50%);"
+        class="card-hover-tooltip card-hover-tooltip-landscape-fixed"
         role="tooltip"
       >
         {#if mechanic?.name}
@@ -1351,7 +1350,7 @@
        Width derived from height via aspect ratio (1.42 tall : 1 wide → invert).
        --hand-scale defaults to 1 (≤6 cards) and shrinks toward 0.65 for 10+ cards. */
     --hand-scale: 1;
-    --card-h: calc(27vh * 0.80 * var(--hand-scale));
+    --card-h: calc(27vh * 0.92 * var(--hand-scale));
     --card-w: calc(var(--card-h) / 1.42);
     position: fixed;
     bottom: 0;
@@ -1455,6 +1454,14 @@
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
+  }
+
+  /* AR-218: Landscape hover tooltip — fixed at bottom-left, above End Turn button */
+  .card-hover-tooltip-landscape-fixed {
+    position: fixed;
+    left: calc(16px * var(--layout-scale, 1));
+    bottom: calc(80px * var(--layout-scale, 1));
+    transform: none;
   }
 
   .card-hand-container {

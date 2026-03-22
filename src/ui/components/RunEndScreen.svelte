@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import { shareRunSummaryCard } from '../../services/runShareService'
+  import { playCardAudio } from '../../services/cardAudioManager'
   import { analyticsService } from '../../services/analyticsService'
   import { getRandomScreenBg } from '../../data/backgroundManifest'
   import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
@@ -102,6 +103,7 @@
   let showGrade = $state(false)
 
   onMount(() => {
+    playCardAudio(isVictory ? 'run-victory' : 'run-defeat')
     // Grade badge pops in first
     setTimeout(() => { showGrade = true }, 400)
     // Stagger stat reveal

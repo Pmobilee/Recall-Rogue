@@ -55,6 +55,7 @@
   import { getMechanicDefinition } from '../../data/mechanics'
   import ExhaustPileViewer from './ExhaustPileViewer.svelte'
   import MultiChoicePopup from './MultiChoicePopup.svelte'
+  import { getChainTypeName, getChainTypeColor } from '../../data/chainTypes'
 
   interface Props {
     turnState: TurnState | null
@@ -602,7 +603,10 @@
   let playerShield = $derived(turnState?.playerState.shield ?? 0)
   let playerHpRatio = $derived(playerHpMax > 0 ? Math.max(0, Math.min(1, playerHpCurrent / playerHpMax)) : 0)
   let playerHpColor = $derived(
-    playerHpRatio > 0.5 ? '#38bdf8' : playerHpRatio > 0.25 ? '#f59e0b' : '#ef4444'
+    playerShield > 0 ? '#3498db' :
+    playerHpRatio >= 0.6 ? '#22c55e' :
+    playerHpRatio >= 0.3 ? '#f59e0b' :
+    '#ef4444'
   )
   let isHpCritical = $derived(playerHpRatio <= 0.15 && playerHpRatio > 0)
 
@@ -1809,7 +1813,6 @@
         {/each}
       </div>
       <span class="pile-count-label">{drawPileCount}</span>
-      <span class="deck-total-label">Deck: {drawPileCount + discardPileCount + handCards.length}</span>
     </div>
 
     <div class="pile-indicator discard-pile-indicator" bind:this={discardPileEl} aria-label="Discard pile: {discardPileCount}" title={pileTooltip('Discard', turnState.deck.discardPile, false)}>
@@ -2059,22 +2062,16 @@
 
   <!-- Landscape three-strip layout: Stats bar sits between arena (top 65%) and card hand (bottom 27%) -->
   {#if $isLandscape && turnState}
+    <!-- AP sphere: standalone fixed element at 15% left, 2x size -->
+    <div class="lsb-ap-standalone" aria-label="Action Points">
+      <div class="lsb-ap-circle" class:lsb-ap-active={apCurrent > 0} class:lsb-ap-empty={apCurrent === 0}>
+        <span class="lsb-ap-number">{apCurrent}</span>
+      </div>
+      <span class="lsb-ap-label">AP</span>
+    </div>
+
     <div class="landscape-stats-bar" aria-label="Player status">
-      <!-- AP counter: left-most element -->
-      <div class="lsb-ap">
-        <div class="lsb-ap-circle" class:lsb-ap-active={apCurrent > 0} class:lsb-ap-empty={apCurrent === 0}>
-          <span class="lsb-ap-number">{apCurrent}</span>
-        </div>
-        <span class="lsb-ap-label">AP</span>
-      </div>
-
-      <!-- Block badge: to the left of HP bar -->
-      <div class="lsb-block" class:lsb-block-zero={playerShield === 0}>
-        <span class="lsb-block-icon">🛡</span>
-        <span class="lsb-block-value">Block: {playerShield}</span>
-      </div>
-
-      <!-- HP bar: center, takes remaining space -->
+      <!-- HP bar: centered, block count shown inline in text -->
       <div class="lsb-hp">
         <div class="lsb-hp-track">
           <div
@@ -2082,20 +2079,22 @@
             class:hp-critical={isHpCritical}
             style="width: {Math.round(playerHpRatio * 100)}%; background: {playerHpColor};"
           ></div>
-          <span class="lsb-hp-text">{playerHpCurrent}/{playerHpMax}</span>
+          <span class="lsb-hp-text">{playerShield > 0 ? `(${playerShield}) ` : ''}{playerHpCurrent}/{playerHpMax}</span>
         </div>
       </div>
     </div>
 
-    <!-- Right-side column in the arena: Chain counter → Combo counter → End Turn -->
-    <div class="landscape-arena-right-col">
-      {#if chainLength > 0 && chainType}
-        <div class="lsb-chain-indicator" style="color: var(--chain-color, #e2e8f0)">
-          <span class="lsb-chain-label">{chainType}</span>
-          <span class="lsb-chain-count">×{chainLength}</span>
-        </div>
-      {/if}
-    </div>
+    <!-- Chain indicator: to the right of the card hand, vertically centered with cards -->
+    {#if chainLength >= 2 && chainType !== null && chainType !== undefined}
+      {@const chainDisplayColor = getChainTypeColor(chainType)}
+      <div
+        class="lsb-chain-indicator"
+        style="color: {chainDisplayColor}; border-color: {chainDisplayColor}4d;"
+      >
+        <span class="lsb-chain-label">Chain</span>
+        <span class="lsb-chain-count">{chainMultiplier.toFixed(1)}x</span>
+      </div>
+    {/if}
 
     <!-- §9 Landscape: enemy hover zone — covers the right portion of the arena (enemy area).
          When quiz is not active the enemy is centered; in quiz it slides right.
@@ -2992,15 +2991,15 @@
   }
 
   .pile-icon {
-    width: calc(36px * var(--layout-scale, 1));
-    height: calc(46px * var(--layout-scale, 1));
+    width: calc(72px * var(--layout-scale, 1));
+    height: calc(92px * var(--layout-scale, 1));
     position: relative;
   }
 
   .pile-card-stack {
     position: absolute;
-    width: calc(26px * var(--layout-scale, 1));
-    height: calc(36px * var(--layout-scale, 1));
+    width: calc(52px * var(--layout-scale, 1));
+    height: calc(72px * var(--layout-scale, 1));
     border-radius: 3px;
     background: rgba(10, 18, 30, 0.7);
   }
@@ -3027,7 +3026,7 @@
   }
 
   .pile-count-label {
-    font-size: calc(13px * var(--layout-scale, 1));
+    font-size: calc(26px * var(--layout-scale, 1));
     font-weight: 800;
     color: #f8fafc;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 0 4px rgba(0, 0, 0, 0.8);
@@ -3187,7 +3186,7 @@
   /* Pile indicators: bottom-left, just above stats bar */
   .layout-landscape .draw-pile-indicator {
     position: fixed;
-    bottom: calc(27vh + 36px + 8px);
+    bottom: calc(27vh + calc(72px * var(--layout-scale, 1)) + calc(8px * var(--layout-scale, 1)));
     left: 2%;
     right: auto;
     transform: none;
@@ -3195,18 +3194,18 @@
 
   .layout-landscape .discard-pile-indicator {
     position: fixed;
-    bottom: calc(27vh + 36px + 8px);
+    bottom: calc(27vh + calc(72px * var(--layout-scale, 1)) + calc(8px * var(--layout-scale, 1)));
     right: 2%;
     left: auto;
     transform: none;
   }
 
-  /* End turn button: bottom-right of arena, sits INSIDE right-side column (see .landscape-arena-right-col) */
+  /* End turn button: bottom-LEFT, just above card hover tooltip */
   .layout-landscape .end-turn-btn {
     position: fixed;
-    bottom: calc(27vh + 36px + 8px);
-    right: calc(16px * var(--layout-scale, 1));
-    left: auto;
+    bottom: calc(16px * var(--layout-scale, 1));
+    left: calc(16px * var(--layout-scale, 1));
+    right: auto;
     transform: none;
     height: calc(46px * var(--layout-scale, 1));
     font-size: calc(15px * var(--layout-scale, 1));
@@ -3217,7 +3216,7 @@
   /* Combo counter: stacked above End Turn on the right side of arena */
   :global(.layout-landscape .combo-counter) {
     position: fixed;
-    bottom: calc(27vh + 36px + 60px);
+    bottom: calc(27vh + calc(72px * var(--layout-scale, 1)) + calc(60px * var(--layout-scale, 1)));
     right: calc(16px * var(--layout-scale, 1));
     left: auto;
     top: auto;
@@ -3234,19 +3233,24 @@
     bottom: auto;
   }
 
-  /* Status effect bars — player: just above stats bar */
+  /* Status effect bars — player: just above the HP bar (which is now at bottom 27vh + 2x stats height) */
   :global(.layout-landscape .status-effect-bar-player) {
     position: fixed;
-    bottom: calc(27vh + 36px + 2px);
+    bottom: calc(27vh + calc(36px * var(--layout-scale, 1)) + calc(36px * var(--layout-scale, 1)) + calc(4px * var(--layout-scale, 1)));
     left: 35%;
     right: 30%;
     top: auto;
     transform: none;
   }
 
+  /* Tighten status effect icon containers in landscape */
+  :global(.layout-landscape .status-effect-bar-player .status-icon-wrapper) {
+    padding: calc(2px * var(--layout-scale, 1));
+  }
+
   /* Must-charge tooltip: above center of hand strip */
   .layout-landscape .must-charge-tooltip {
-    bottom: calc(27vh + 36px + 16px);
+    bottom: calc(27vh + calc(72px * var(--layout-scale, 1)) + calc(16px * var(--layout-scale, 1)));
   }
 
   /* AR-124: Tutorial tooltips */
@@ -3302,12 +3306,12 @@
   .layout-landscape .tutorial-ap-tooltip {
     top: auto;
     right: auto;
-    bottom: calc(27vh + 36px + 56px);
+    bottom: calc(27vh + calc(72px * var(--layout-scale, 1)) + calc(56px * var(--layout-scale, 1)));
     left: calc(12px * var(--layout-scale, 1));
   }
 
   .layout-landscape .tutorial-charge-tooltip {
-    bottom: calc(27vh + 36px + 16px);
+    bottom: calc(27vh + calc(72px * var(--layout-scale, 1)) + calc(16px * var(--layout-scale, 1)));
   }
 
   .layout-landscape .tutorial-comparison-banner {
@@ -3322,32 +3326,36 @@
   .layout-landscape .landscape-stats-bar {
     display: flex;
     align-items: center;
+    justify-content: center;
     position: fixed;
-    bottom: 27vh;
+    bottom: calc(27vh + calc(36px * var(--layout-scale, 1)));
     left: 0;
     right: 0;
     height: calc(36px * var(--layout-scale, 1));
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-left: max(calc(16px * var(--layout-scale, 1)), env(safe-area-inset-left));
-    padding-right: max(calc(16px * var(--layout-scale, 1)), env(safe-area-inset-right));
-    background: rgba(10, 10, 26, 0.88);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0;
+    background: transparent;
     z-index: 15;
-    gap: calc(8px * var(--layout-scale, 1));
   }
 
-  .lsb-ap {
+  /* ── AP sphere: standalone fixed element ──── */
+  .lsb-ap-standalone {
+    display: none; /* hidden in portrait */
+  }
+
+  .layout-landscape .lsb-ap-standalone {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: calc(6px * var(--layout-scale, 1));
-    flex-shrink: 0;
+    gap: calc(3px * var(--layout-scale, 1));
+    position: fixed;
+    left: 15%;
+    bottom: calc(20px * var(--layout-scale, 1));
+    z-index: 16;
   }
 
   .lsb-ap-circle {
-    width: calc(28px * var(--layout-scale, 1));
-    height: calc(28px * var(--layout-scale, 1));
+    width: calc(56px * var(--layout-scale, 1));
+    height: calc(56px * var(--layout-scale, 1));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -3357,7 +3365,7 @@
 
   .lsb-ap-circle.lsb-ap-active {
     background: radial-gradient(circle at 40% 35%, #ff6633, #cc2200);
-    box-shadow: 0 0 8px 2px rgba(255, 100, 0, 0.5);
+    box-shadow: 0 0 12px 3px rgba(255, 100, 0, 0.55);
   }
 
   .lsb-ap-circle.lsb-ap-empty {
@@ -3366,55 +3374,27 @@
   }
 
   .lsb-ap-number {
-    font-size: calc(14px * var(--layout-scale, 1));
+    font-size: calc(22px * var(--layout-scale, 1));
     font-weight: 800;
     color: #fff;
-    text-shadow: 0 0 4px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.9);
     line-height: 1;
   }
 
   .lsb-ap-label {
-    font-size: calc(11px * var(--layout-scale, 1));
+    font-size: calc(10px * var(--text-scale, 1));
     font-weight: 700;
     color: rgba(255, 255, 255, 0.6);
     letter-spacing: 0.5px;
   }
 
-  .lsb-block {
-    display: flex;
-    align-items: center;
-    gap: calc(4px * var(--layout-scale, 1));
-    margin-left: calc(20px * var(--layout-scale, 1));
-    flex-shrink: 0;
-    transition: opacity 0.2s;
-  }
-
-  .lsb-block.lsb-block-zero {
-    opacity: 0.35;
-  }
-
-  .lsb-block-icon {
-    font-size: calc(13px * var(--layout-scale, 1));
-    line-height: 1;
-  }
-
-  .lsb-block-value {
-    font-size: calc(14px * var(--layout-scale, 1));
-    font-weight: 700;
-    color: #7dd3fc;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
-    white-space: nowrap;
-  }
-
   .lsb-hp {
-    flex: 1;
-    max-width: 55%;
-    margin: 0 auto;
-    padding: 0 calc(20px * var(--layout-scale, 1));
+    width: min(calc(400px * var(--layout-scale, 1)), 50%);
+    padding: 0 calc(8px * var(--layout-scale, 1));
   }
 
   .lsb-hp-track {
-    height: calc(20px * var(--layout-scale, 1));
+    height: calc(22px * var(--layout-scale, 1));
     border-radius: 999px;
     border: 1px solid rgba(100, 116, 139, 0.7);
     background: rgba(15, 23, 42, 0.82);
@@ -3437,49 +3417,48 @@
     align-items: center;
     justify-content: center;
     font-family: 'Press Start 2P', monospace;
-    font-size: calc(10px * var(--layout-scale, 1));
+    font-size: calc(10px * var(--text-scale, 1));
     color: #fff;
     text-shadow: -1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000;
     pointer-events: none;
   }
 
-  /* ── Landscape arena right column (chain indicator) ──── */
-  .landscape-arena-right-col {
+  /* ── Landscape chain indicator: right of card hand ──── */
+  .lsb-chain-indicator {
     display: none; /* hidden in portrait */
   }
 
-  .layout-landscape .landscape-arena-right-col {
+  .layout-landscape .lsb-chain-indicator {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     position: fixed;
     right: calc(16px * var(--layout-scale, 1));
-    bottom: calc(27vh + 36px + 108px);
-    gap: calc(6px * var(--layout-scale, 1));
+    bottom: calc(27vh / 2 + calc(72px * var(--layout-scale, 1)));
+    transform: translateY(50%);
+    gap: calc(2px * var(--layout-scale, 1));
     z-index: 12;
     pointer-events: none;
-  }
-
-  .lsb-chain-indicator {
-    display: flex;
-    align-items: center;
-    gap: calc(4px * var(--layout-scale, 1));
-    background: rgba(10, 10, 26, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
-    padding: calc(4px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
-    font-size: calc(12px * var(--layout-scale, 1));
+    background: rgba(10, 10, 26, 0.85);
+    border: calc(2px * var(--layout-scale, 1)) solid currentColor;
+    border-radius: calc(8px * var(--layout-scale, 1));
+    padding: calc(6px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
     font-weight: 700;
     white-space: nowrap;
   }
 
   .lsb-chain-label {
-    text-transform: capitalize;
-    opacity: 0.85;
+    font-size: calc(10px * var(--text-scale, 1));
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.8;
   }
 
   .lsb-chain-count {
-    font-size: calc(14px * var(--layout-scale, 1));
+    font-size: calc(18px * var(--text-scale, 1));
+    font-family: 'Cinzel', 'Georgia', serif;
+    font-weight: 900;
+    line-height: 1;
   }
 
   /* §7: Quiz wrapper — transparent passthrough; Svelte out:fade applies opacity on exit */
@@ -3501,7 +3480,7 @@
     left: 40%;
     right: 0;
     top: 0;
-    bottom: calc(27vh + 36px);
+    bottom: calc(27vh + calc(72px * var(--layout-scale, 1)));
     z-index: 8;
     pointer-events: auto;
     cursor: default;
@@ -3626,14 +3605,6 @@
   /* L-13: End Turn dim when AP remains */
   .end-turn-btn.has-ap-remaining {
     opacity: 0.6;
-  }
-
-  /* M-16: Deck total count label near draw pile */
-  .deck-total-label {
-    font-size: calc(9px * var(--layout-scale, 1));
-    color: rgba(255, 255, 255, 0.45);
-    text-align: center;
-    white-space: nowrap;
   }
 
   /* L-1: Turn counter label inside enemy name header */

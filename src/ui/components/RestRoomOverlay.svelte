@@ -4,6 +4,7 @@
   import { preloadImages } from '../utils/assetPreloader'
   import { isLandscape } from '../../stores/layoutStore'
   import ParallaxTransition from './ParallaxTransition.svelte'
+  import { playCardAudio } from '../../services/cardAudioManager'
 
   interface Props {
     playerHp: number
@@ -36,6 +37,10 @@
 
   let healAmount = $derived(Math.round(playerMaxHp * 0.3))
   let projectedHp = $derived(Math.min(playerMaxHp, playerHp + healAmount))
+
+  $effect(() => {
+    playCardAudio('rest-open')
+  })
 </script>
 
 <div class="rest-overlay" class:landscape={$isLandscape}>
@@ -52,7 +57,7 @@
       <button
         class="option-card heal-card"
         data-testid="rest-heal"
-        onclick={onheal}
+        onclick={() => { playCardAudio('rest-heal'); onheal() }}
       >
         <span class="option-icon">❤️</span>
         <span class="option-label">Rest</span>
@@ -64,7 +69,7 @@
         class="option-card study-card"
         class:disabled={studyDisabled}
         data-testid="rest-study"
-        onclick={() => { if (!studyDisabled) onstudy() }}
+        onclick={() => { if (!studyDisabled) { playCardAudio('rest-study'); onstudy() } }}
         disabled={studyDisabled}
       >
         <span class="option-icon">📖</span>
@@ -77,7 +82,7 @@
         class="option-card meditate-card"
         class:disabled={meditateDisabled}
         data-testid="rest-meditate"
-        onclick={() => { if (!meditateDisabled) onmeditate() }}
+        onclick={() => { if (!meditateDisabled) { playCardAudio('rest-meditate'); onmeditate() } }}
         disabled={meditateDisabled}
       >
         <span class="option-icon">🧘</span>
