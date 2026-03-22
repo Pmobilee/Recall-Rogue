@@ -98,6 +98,11 @@
     return 'Medium'
   }
 
+  // Play modal-open sound when settings panel mounts
+  $effect(() => {
+    playCardAudio('modal-open')
+  })
+
   type SettingsCategory = 'audio' | 'accessibility' | 'notifications' | 'account'
   let activeCategory = $state<SettingsCategory>('audio')
 
@@ -109,7 +114,10 @@
   ]
 
   function handleKeydown(event: KeyboardEvent): void {
-    if (event.key === 'Escape') onback()
+    if (event.key === 'Escape') {
+      playCardAudio('modal-close')
+      onback()
+    }
   }
 </script>
 
@@ -126,7 +134,7 @@
     </aside>
 
     <nav class="category-nav">
-      <button class="category-btn back-to-hub" onclick={onback}>← Back</button>
+      <button class="category-btn back-to-hub" onclick={() => { playCardAudio('modal-close'); onback() }}>← Back</button>
       {#each categories as cat}
         <button
           class="category-btn"
@@ -145,7 +153,7 @@
             <input
               type="checkbox"
               bind:checked={$sfxEnabled}
-              onchange={(event) => trackSettingChange('sfxEnabled', (event.currentTarget as HTMLInputElement).checked)}
+              onchange={(event) => { const c = (event.currentTarget as HTMLInputElement).checked; playCardAudio(c ? 'toggle-on' : 'toggle-off'); trackSettingChange('sfxEnabled', c) }}
             />
           </label>
           <label class="slider-row">
@@ -165,7 +173,7 @@
             <input
               type="checkbox"
               bind:checked={$musicEnabled}
-              onchange={(event) => trackSettingChange('musicEnabled', (event.currentTarget as HTMLInputElement).checked)}
+              onchange={(event) => { const c = (event.currentTarget as HTMLInputElement).checked; playCardAudio(c ? 'toggle-on' : 'toggle-off'); trackSettingChange('musicEnabled', c) }}
             />
           </label>
           <label class="slider-row">
@@ -211,7 +219,7 @@
             <input
               type="checkbox"
               bind:checked={$highContrastMode}
-              onchange={(event) => trackSettingChange('highContrastMode', (event.currentTarget as HTMLInputElement).checked)}
+              onchange={(event) => { const c = (event.currentTarget as HTMLInputElement).checked; playCardAudio(c ? 'toggle-on' : 'toggle-off'); trackSettingChange('highContrastMode', c) }}
             />
           </label>
           <label class="toggle-row">
@@ -219,7 +227,7 @@
             <input
               type="checkbox"
               bind:checked={$reduceMotionMode}
-              onchange={(event) => trackSettingChange('reduceMotionMode', (event.currentTarget as HTMLInputElement).checked)}
+              onchange={(event) => { const c = (event.currentTarget as HTMLInputElement).checked; playCardAudio(c ? 'toggle-on' : 'toggle-off'); trackSettingChange('reduceMotionMode', c) }}
             />
           </label>
           <label class="toggle-row">
@@ -227,7 +235,7 @@
             <input
               type="checkbox"
               bind:checked={$isSlowReader}
-              onchange={(event) => trackSettingChange('slowReader', (event.currentTarget as HTMLInputElement).checked)}
+              onchange={(event) => { const c = (event.currentTarget as HTMLInputElement).checked; playCardAudio(c ? 'toggle-on' : 'toggle-off'); trackSettingChange('slowReader', c) }}
             />
           </label>
         </section>
@@ -240,7 +248,7 @@
             <input
               type="checkbox"
               checked={notifPrefs.enabled}
-              onchange={(event) => updateNotifPref('enabled', (event.currentTarget as HTMLInputElement).checked)}
+              onchange={(event) => { const c = (event.currentTarget as HTMLInputElement).checked; playCardAudio(c ? 'toggle-on' : 'toggle-off'); updateNotifPref('enabled', c) }}
             />
           </label>
           {#if notifPrefs.enabled}
@@ -249,7 +257,7 @@
               <input
                 type="checkbox"
                 checked={notifPrefs.streakReminders}
-                onchange={(event) => updateNotifPref('streakReminders', (event.currentTarget as HTMLInputElement).checked)}
+                onchange={(event) => { const c = (event.currentTarget as HTMLInputElement).checked; playCardAudio(c ? 'toggle-on' : 'toggle-off'); updateNotifPref('streakReminders', c) }}
               />
             </label>
             <label class="toggle-row">
@@ -257,7 +265,7 @@
               <input
                 type="checkbox"
                 checked={notifPrefs.reviewReminders}
-                onchange={(event) => updateNotifPref('reviewReminders', (event.currentTarget as HTMLInputElement).checked)}
+                onchange={(event) => { const c = (event.currentTarget as HTMLInputElement).checked; playCardAudio(c ? 'toggle-on' : 'toggle-off'); updateNotifPref('reviewReminders', c) }}
               />
             </label>
             <label class="toggle-row">
@@ -265,7 +273,7 @@
               <input
                 type="checkbox"
                 checked={notifPrefs.milestoneAlerts}
-                onchange={(event) => updateNotifPref('milestoneAlerts', (event.currentTarget as HTMLInputElement).checked)}
+                onchange={(event) => { const c = (event.currentTarget as HTMLInputElement).checked; playCardAudio(c ? 'toggle-on' : 'toggle-off'); updateNotifPref('milestoneAlerts', c) }}
               />
             </label>
             <label class="toggle-row">
@@ -273,7 +281,7 @@
               <input
                 type="checkbox"
                 checked={notifPrefs.winbackMessages}
-                onchange={(event) => updateNotifPref('winbackMessages', (event.currentTarget as HTMLInputElement).checked)}
+                onchange={(event) => { const c = (event.currentTarget as HTMLInputElement).checked; playCardAudio(c ? 'toggle-on' : 'toggle-off'); updateNotifPref('winbackMessages', c) }}
               />
             </label>
           {/if}
@@ -296,7 +304,7 @@
   <div class="settings-card">
     <div class="settings-header">
       <h2>Settings</h2>
-      <button class="back-btn" onclick={onback}>Back</button>
+      <button class="back-btn" onclick={() => { playCardAudio('modal-close'); onback() }}>Back</button>
     </div>
 
     {#if false}
@@ -382,7 +390,7 @@
         <input
           type="checkbox"
           bind:checked={$sfxEnabled}
-          onchange={(event) => trackSettingChange('sfxEnabled', (event.currentTarget as HTMLInputElement).checked)}
+          onchange={(event) => { const c = (event.currentTarget as HTMLInputElement).checked; playCardAudio(c ? 'toggle-on' : 'toggle-off'); trackSettingChange('sfxEnabled', c) }}
         />
       </label>
 
@@ -404,7 +412,7 @@
         <input
           type="checkbox"
           bind:checked={$musicEnabled}
-          onchange={(event) => trackSettingChange('musicEnabled', (event.currentTarget as HTMLInputElement).checked)}
+          onchange={(event) => { const c = (event.currentTarget as HTMLInputElement).checked; playCardAudio(c ? 'toggle-on' : 'toggle-off'); trackSettingChange('musicEnabled', c) }}
         />
       </label>
 

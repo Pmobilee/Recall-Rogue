@@ -200,6 +200,19 @@
 
   let hoveredIndex = $state<number | null>(null)
 
+  /** AR-220: Rise amount = half the card height, read from CSS var --card-h. Defaults to 100 (half of 200px). */
+  let riseAmount = $state(100)
+
+  $effect(() => {
+    const update = (): void => {
+      const cardH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--card-h') || '200')
+      riseAmount = Math.round(cardH * 0.5)
+    }
+    update()
+    window.addEventListener('resize', update, { passive: true })
+    return () => window.removeEventListener('resize', update)
+  })
+
   /** §9 Landscape-only: right-click card detail popup state. */
   let cardDetailCard = $state<Card | null>(null)
   let cardDetailVisible = $state(false)
@@ -678,6 +691,7 @@
     {@const tierVisual = getTierUpVisualSignature(card.factId)}
     {@const runState = $activeRunState}
     {@const isMastered = card.tier === '3'}
+    {@const isFreeCharge = card.factId ? isFirstChargeFree(card.factId, runState?.firstChargeFreeFactIds ?? new Set()) : false}
     {@const chargeApCostForDrag = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || nextChargeFree ? 0 : 1)}
     {@const chargeAffordableForDrag = chargeApCostForDrag <= apCurrent}
     {@const showChargeZoneIndicator = isDraggingThis && isInChargeZone && !isMastered && !!onchargeplay}
@@ -694,6 +708,7 @@
     {@const isChargePreview = (chargeProgress >= 1.0 || (chargePreviewActive && isSelected)) && !isMastered}
     {@const isBtnChargePreview = chargePreviewActive && isSelected && !isMastered && chargeProgress <= 0.3}
     {@const effectVal = getEffectValue(card, isChargePreview)}
+    {@const xOffset = getXOffset(i, cards.length)}
 
     <button
       class="card-in-hand card-landscape"
@@ -817,10 +832,6 @@
         ></div>
       {/if}
 
-      {#if isSelected && $isLandscape}
-        <div class="card-quickplay-hint" aria-hidden="true">Tap again = quick play</div>
-      {/if}
-
       {#if showChargeZoneIndicator}
         <div
           class="charge-zone-indicator"
@@ -838,8 +849,11 @@
     </button>
 
     {#if selectedIndex === i && card.tier !== '3' && (card.masteryLevel ?? 0) < 5 && onchargeplay && !disabled}
-      {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || nextChargeFree ? 0 : 1)}
+      {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || nextChargeFree || isFreeCharge ? 0 : 1)}
       {@const chargeAffordable = chargeApCost <= apCurrent}
+      {@const isFreeAp = isSurgeActive || nextChargeFree || isFreeCharge}
+      {@const chargeApDisplay = isFreeAp ? '+0' : '+1'}
+      {@const apBadgeColor = isFreeAp ? '#4ADE80' : chargeApCost > 1 ? '#EF4444' : undefined}
       <button
         class="charge-play-btn charge-play-btn-landscape"
         class:charge-btn-disabled={!chargeAffordable}
@@ -851,12 +865,13 @@
         ontouchstart={() => { if (chargeAffordable) chargePreviewActive = true }}
         ontouchend={() => { chargePreviewActive = false }}
         ontouchcancel={() => { chargePreviewActive = false }}
+        style="left: 50%; transform: translateX(calc(-50% + {xOffset}px));"
       >
         {#if showGuaranteed}
           ✦ GUARANTEED
         {:else}
+          <span class="charge-ap-badge charge-ap-badge-landscape" class:momentum-active={nextChargeFree && !isSurgeActive} style={apBadgeColor ? `color: ${apBadgeColor};` : ''}>{chargeApDisplay} AP</span>
           ⚡ CHARGE
-          <span class="charge-ap-badge" class:momentum-active={nextChargeFree && !isSurgeActive}>{isSurgeActive || nextChargeFree ? '+0' : '+1'} AP</span>
         {/if}
       </button>
     {/if}
@@ -1084,7 +1099,7 @@
       class:card--cursed={card.isCursed && !cureFlashes[card.id]}
       class:card--curing={cureFlashes[card.id]}
       style="
-        {isAnimating ? '' : isDraggingThis ? `transform: translate3d(${xOffset + cardDragX}px, ${(isSelected ? -80 : -arcOffset) - cardDragRawY}px, 0) rotate(0deg) scale(${cardDragScale});` : `transform: translate3d(${xOffset}px, ${isSelected ? -80 : isOther ? 15 : -(arcOffset + hoverLift)}px, 0) rotate(${isSelected ? 0 : rotation}deg) scale(${isSelected ? 1.2 : hoverScale});`}
+        {isAnimating ? '' : isDraggingThis ? `transform: translate3d(${xOffset + cardDragX}px, ${(isSelected ? -riseAmount : -arcOffset) - cardDragRawY}px, 0) rotate(0deg) scale(${cardDragScale});` : `transform: translate3d(${xOffset}px, ${isSelected ? -riseAmount : isOther ? 15 : -(arcOffset + hoverLift)}px, 0) rotate(${isSelected ? 0 : rotation}deg) scale(${isSelected ? 1.2 : hoverScale});`}
         animation-delay: {i * 80}ms;
         opacity: {isOther ? 0.3 : 1};
         z-index: {isDraggingThis ? 20 : isHovered ? 10 : ''};
@@ -1205,8 +1220,11 @@
     </button>
 
     {#if selectedIndex === i && card.tier !== '3' && (card.masteryLevel ?? 0) < 5 && onchargeplay && !disabled}
-      {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || nextChargeFree ? 0 : 1)}
+      {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || nextChargeFree || isFreeCharge ? 0 : 1)}
       {@const chargeAffordable = chargeApCost <= apCurrent}
+      {@const isFreeAp = isSurgeActive || nextChargeFree || isFreeCharge}
+      {@const chargeApDisplay = isFreeAp ? '+0' : '+1'}
+      {@const apBadgeColor = isFreeAp ? '#4ADE80' : chargeApCost > 1 ? '#EF4444' : undefined}
       <button
         class="charge-play-btn"
         class:charge-btn-disabled={!chargeAffordable}
@@ -1218,10 +1236,10 @@
         ontouchstart={() => { if (chargeAffordable) chargePreviewActive = true }}
         ontouchend={() => { chargePreviewActive = false }}
         ontouchcancel={() => { chargePreviewActive = false }}
-        style="transform: translate3d({xOffset}px, calc(-80px - var(--card-h) - 8px), 0); width: calc(var(--card-w) * 1.2);"
+        style="transform: translate3d({xOffset}px, calc(-{riseAmount}px - var(--card-h) - 8px), 0); width: calc(var(--card-w) * 1.2);"
       >
         CHARGE
-        <span class="charge-ap-badge" class:momentum-active={nextChargeFree && !isSurgeActive}>{isSurgeActive || nextChargeFree ? '+0' : '+1'} AP</span>
+        <span class="charge-ap-badge" class:momentum-active={nextChargeFree && !isSurgeActive} style={apBadgeColor ? `color: ${apBadgeColor};` : ''}>{chargeApDisplay} AP</span>
       </button>
     {/if}
 
@@ -1376,22 +1394,11 @@
   }
 
   /* AR-94: Selected card rises visually above others in landscape */
+  /* AR-220: Remove background container on selected card — card frame provides its own visual bounds */
   .card-hand-landscape .card-landscape.card-selected {
     z-index: 25;
     filter: drop-shadow(0 -4px 12px rgba(255, 255, 255, 0.25));
-  }
-
-  /* Landscape: subtle hint text on risen selected card */
-  .card-quickplay-hint {
-    position: absolute;
-    bottom: calc(-18px * var(--layout-scale, 1));
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: calc(9px * var(--text-scale, 1));
-    color: rgba(255, 255, 255, 0.45);
-    white-space: nowrap;
-    pointer-events: none;
-    letter-spacing: 0.03em;
+    background: transparent !important;
   }
 
   .card-landscape {
@@ -1434,18 +1441,34 @@
     position: absolute;
     /* Position above the risen card: card rises calc(-27vh - 36px + 20px) from hand strip.
        Place button bottom at calc(27vh + var(--card-h) + 34px) from the container bottom,
-       which puts it ~8px above the risen card's top edge. */
+       which puts it ~8px above the risen card's top edge.
+       AR-220 sub-step 5: left/transform set via inline style to follow selected card's xOffset. */
     bottom: calc(27vh + var(--card-h) + 34px);
-    left: 50%;
-    transform: translateX(-50%);
     white-space: nowrap;
     /* §7 spec: charge button appear = 100ms fade-in */
     animation: chargeBtnAppear 100ms ease-out both, chargeBtnPulse 1.2s ease-in-out 100ms infinite;
   }
 
+  /* AR-220: chargeBtnAppear no longer controls transform (inline style owns it).
+     Uses composite: add so the Y-offset stacks on top of inline transform. */
   @keyframes chargeBtnAppear {
-    from { opacity: 0; transform: translateX(-50%) translateY(6px); }
-    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+    from { opacity: 0; translate: 0 6px; }
+    to   { opacity: 1; translate: 0 0; }
+  }
+
+  /* AR-220 sub-step 4: AP badge repositioned above button text in landscape */
+  .charge-ap-badge-landscape {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(0, -100%);
+    margin-left: 0;
+    font-size: calc(10px * var(--text-scale, 1));
+    font-weight: 700;
+    padding: calc(2px * var(--layout-scale, 1)) calc(5px * var(--layout-scale, 1));
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 4px;
+    white-space: nowrap;
   }
 
   .card-hover-tooltip-landscape {
@@ -1677,6 +1700,9 @@
     text-align: center;
     line-height: 1.3;
     overflow: hidden;
+    /* AR-220 sub-step 7: padding to prevent text touching frame edges */
+    padding: calc(4px * var(--layout-scale, 1));
+    box-sizing: border-box;
   }
 
   .desc-number {

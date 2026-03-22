@@ -21,6 +21,7 @@
     getJapaneseSelectionKeys,
   } from '../../services/presetSelectionService'
   import { playerSave, persistPlayer } from '../stores/playerData'
+  import { playCardAudio } from '../../services/cardAudioManager'
 
   const MAX_PRESETS = 50
   const MAX_PRESET_NAME_LENGTH = 30
@@ -47,6 +48,11 @@
   let presets = $state<StudyPreset[]>(getPresets())
   let editing = $state<StudyPreset | null>(null)
   let isCreating = $state(false)
+
+  // Play modal-open sound when deck builder mounts
+  $effect(() => {
+    playCardAudio('modal-open')
+  })
 
   // Editor state
   let editorName = $state('')
@@ -282,11 +288,13 @@
 
       if (isCreating) {
         savedPreset = createPreset(trimmed, selections)
+        playCardAudio('notification-ping')
       } else if (editing) {
         savedPreset = updatePreset(editing.id, {
           name: trimmed,
           domainSelections: selections,
         })
+        playCardAudio('card-accepted')
       }
 
       refreshPresets()
@@ -303,6 +311,7 @@
 
   function handleDelete(preset: StudyPreset): void {
     if (!confirm(`Delete preset "${preset.name}"?`)) return
+    playCardAudio('modal-close')
     deletePreset(preset.id)
     refreshPresets()
   }

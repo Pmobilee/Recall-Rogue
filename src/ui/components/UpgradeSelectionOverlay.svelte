@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Card } from '../../data/card-types'
   import { getTierDisplayName, getDisplayTier } from '../../services/tierDerivation'
+  import { playCardAudio } from '../../services/cardAudioManager'
 
   interface UpgradePreview {
     upgradedName: string
@@ -21,6 +22,11 @@
   let { candidates, onselect, onskip }: Props = $props()
 
   let selectedCandidate = $state<{ card: Card; preview: UpgradePreview } | null>(null)
+
+  // Play modal-open sound when overlay mounts
+  $effect(() => {
+    playCardAudio('modal-open')
+  })
 
   const TYPE_ICONS: Record<string, string> = {
     attack: '\u2694',
@@ -95,7 +101,7 @@
           </div>
         </div>
 
-        <button class="btn-upgrade" data-testid="upgrade-confirm" onclick={() => onselect(selectedCandidate!.card.id)}>
+        <button class="btn-upgrade" data-testid="upgrade-confirm" onclick={() => { playCardAudio('mastery-trial-pass'); onselect(selectedCandidate!.card.id) }}>
           Upgrade!
         </button>
         <div class="button-row back-row">
@@ -125,7 +131,7 @@
               <button
                 class="grid-card {tierClass}"
                 data-testid="upgrade-candidate-{card.id}"
-                onclick={() => selectedCandidate = { card, preview }}
+                onclick={() => { selectedCandidate = { card, preview }; playCardAudio('card-select') }}
               >
                 <div class="grid-header">
                   <span class="type-icon">{TYPE_ICONS[card.cardType] ?? '\uD83C\uDCCF'}</span>

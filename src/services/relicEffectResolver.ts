@@ -12,6 +12,7 @@
  */
 
 import { hasSynergy } from './relicSynergyResolver';
+import { playCardAudio } from './cardAudioManager';
 import {
   MAX_RELIC_SLOTS,
   SCHOLARS_GAMBIT_EXTRA_SLOT,
@@ -130,6 +131,11 @@ export function resolveTurnStartEffects(
     dejaVuCardSpawn = { count, apCostReduction: 1 };
   }
 
+  // Audio: fire once if any turn-start relic produced a non-zero effect
+  const relicFired = bonusBlock > 0 || capacitorReleasedAP > 0 || bonusAP > 0;
+  if (relicFired) playCardAudio('relic-trigger');
+  if (dejaVuCardSpawn) playCardAudio('relic-card-spawn');
+
   return { bonusBlock, capacitorReleasedAP, bonusAP, pocketWatchDrawBonus, dejaVuCardSpawn };
 }
 
@@ -205,6 +211,17 @@ export function resolveEncounterStartEffects(
   const tempStrengthBonus = relicIds.has('gladiator_s_mark')
     ? { amount: 1, durationTurns: 3 }
     : null;
+
+  // Audio: fire if any encounter-start relic produced a non-zero effect
+  const encounterRelicFired =
+    bonusBlock > 0 ||
+    bonusHeal > 0 ||
+    relicIds.has('quicksilver') ||
+    relicIds.has('double_vision') ||
+    luckyBuff !== null ||
+    firstAttackDamageBonus > 0 ||
+    tempStrengthBonus !== null;
+  if (encounterRelicFired) playCardAudio('relic-trigger');
 
   return {
     bonusBlock,
@@ -434,6 +451,9 @@ export function resolveAttackModifiers(
     flatDamageBonus += 2;
   }
 
+  // Audio: fire if any relic actually boosted this attack
+  if (flatDamageBonus > 0 || percentDamageBonus > 0) playCardAudio('relic-trigger');
+
   return {
     flatDamageBonus,
     percentDamageBonus,
@@ -485,11 +505,20 @@ export function resolveShieldModifiers(
   const wornShieldBonus =
     relicIds.has('worn_shield') && shieldCount > 0 && shieldCount % 2 === 0 ? 3 : 0;
 
+  const flatBlockBonus = relicIds.has('stone_wall') ? 3 : 0;
+  const reflectDamage = relicIds.has('thorned_vest') ? 2 : 0;
+  const quickPlayShieldBonus = relicIds.has('bastions_will') ? 25 : 0;
+
+  // Audio: fire if any relic actually boosted this shield play
+  if (flatBlockBonus > 0 || quickPlayShieldBonus > 0 || wornShieldBonus > 0) {
+    playCardAudio('relic-trigger');
+  }
+
   return {
-    flatBlockBonus: relicIds.has('stone_wall') ? 3 : 0,
-    reflectDamage: relicIds.has('thorned_vest') ? 2 : 0,
+    flatBlockBonus,
+    reflectDamage,
     // bastions_will — +25% block on Quick Play shield cards
-    quickPlayShieldBonus: relicIds.has('bastions_will') ? 25 : 0,
+    quickPlayShieldBonus,
     wornShieldBonus,
   };
 }
@@ -593,6 +622,11 @@ export function resolveDamageTakenEffects(
   // bloodstone_pendant — 1 Fury stack per hit taken
   const furyStacksGained = relicIds.has('bloodstone_pendant') ? 1 : 0;
 
+  // Audio: fire if any on-hit relic produced an active effect
+  if (thornReflect > 0 || thornCrownReflect > 0 || furyStacksGained > 0 || battleScarsTriggered) {
+    playCardAudio('relic-trigger');
+  }
+
   return {
     flatReduction,
     percentIncrease: relicIds.has('glass_cannon') ? 0.10 : 0, // v1 legacy
@@ -672,6 +706,9 @@ export function resolveLethalEffects(
     !phoenixAlreadyUsed;
 
   const phoenixRageActive = phoenixSave && hasSynergy(relicIds, 'phoenix_rage');
+
+  // Audio: most dramatic relic cue — only when a death is actually prevented
+  if (lastBreathSave || phoenixSave) playCardAudio('relic-death-prevent');
 
   return {
     lastBreathSave,

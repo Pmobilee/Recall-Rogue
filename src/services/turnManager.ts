@@ -6,7 +6,7 @@ import type { Card, CardRunState, CardType, PassiveEffect } from '../data/card-t
 import { isFirstChargeFree, markFirstChargeUsed, getFirstChargeWrongMultiplier } from './discoverySystem';
 import { canMasteryUpgrade, canMasteryDowngrade, masteryUpgrade, masteryDowngrade, resetEncounterMasteryFlags, getMasteryBaseBonus } from './cardUpgradeService';
 import { getSurgeChargeSurcharge, isSurgeTurn } from './surgeSystem';
-import { resetChain, extendOrResetChain, getChainState } from './chainSystem';
+import { resetChain, extendOrResetChain, getChainState, getCurrentChainLength } from './chainSystem';
 import { CHAIN_MOMENTUM_ENABLED, FIRST_CHARGE_FREE_AP_SURCHARGE, RELIC_AEGIS_STONE_MAX_CARRY } from '../data/balance';
 import { activeRunState } from './runStateStore';
 import type { EnemyInstance } from '../data/enemies';
@@ -23,6 +23,7 @@ import {
   resetTurnState,
 } from './playerCombatState';
 import { resolveCardEffect, isCardBlocked } from './cardEffectResolver';
+import { playCardAudio } from './cardAudioManager';
 import { applyDamageToEnemy, executeEnemyIntent, rollNextIntent, tickEnemyStatusEffects, dispatchEnemyTurnStart } from './enemyManager';
 import { applyStatusEffect, triggerBurn, getBleedBonus } from '../data/statusEffects';
 import type { EnemyReactContext } from '../data/enemies';
@@ -56,6 +57,22 @@ import {
   resolveDoubleDownBonus,
   resolveDrawBias,
 } from './relicEffectResolver';
+
+/** Maps a status effect type to its apply audio cue. No-ops for unmapped types. */
+function playStatusAudio(statusType: string): void {
+  const cueMap: Record<string, Parameters<typeof playCardAudio>[0]> = {
+    poison: 'status-poison-apply',
+    burn: 'status-burn-apply',
+    bleed: 'status-bleed-apply',
+    weakness: 'status-weakness-apply',
+    vulnerable: 'status-vulnerability-apply',
+    strength: 'status-strength-apply',
+    regen: 'status-regen-apply',
+    focus: 'status-focus-apply',
+  };
+  const cue = cueMap[statusType];
+  if (cue) playCardAudio(cue);
+}
 
 /**
  * Calculate enrage bonus damage based on floor segment, turn number, and enemy HP.
@@ -681,7 +698,9 @@ export function playCardAction(
 
     // Wrong Charge: break the chain and lose momentum
     if (playMode === 'charge') {
+      const prevChainLengthWrong = getCurrentChainLength();
       extendOrResetChain(null); // null chainType resets chain
+      if (prevChainLengthWrong > 0) playCardAudio('chain-break');
       const chainState = getChainState();
       turnState.chainMultiplier = 1.0;
       turnState.chainLength = chainState.length;
@@ -756,6 +775,8 @@ export function playCardAction(
         message: 'Relaxed mode: card fizzled',
         cardId,
       });
+
+      playCardAudio('card-fizzle');
 
       return {
         effect: fizzledEffect,
@@ -873,6 +894,8 @@ export function playCardAction(
       cardId,
     });
 
+    playCardAudio('card-fizzle');
+
     return {
       effect: fizzledEffect,
       enemyDefeated: fizzledEffect.enemyDefeated,
@@ -896,12 +919,20 @@ export function playCardAction(
     currentChainMultiplier += resolveChainMultiplierBonus(turnState.activeRelicIds);
   } else {
     // Quick Play breaks the chain
+    const prevChainLengthQuick = getCurrentChainLength();
     extendOrResetChain(null);
+    if (prevChainLengthQuick > 0) playCardAudio('chain-break');
   }
   const chainState = getChainState();
   turnState.chainMultiplier = currentChainMultiplier;
   turnState.chainLength = chainState.length;
   turnState.chainType = chainState.chainType;
+  // Chain link sound for correct Charge: play cue matching new chain length
+  if (playMode === 'charge' && chainState.length > 0) {
+    const chainCues = ['chain-link-1', 'chain-link-2', 'chain-link-3', 'chain-link-4', 'chain-link-5'] as const;
+    const idx = Math.min(chainState.length, 5) - 1;
+    playCardAudio(chainCues[idx]);
+  }
 
   // AR-207: Chain Anchor — if chainAnchorActive and chain just started (length = 1),
   // retroactively set chain to the anchor's starting length (2 or 3).
@@ -1290,7 +1321,10 @@ export function playCardAction(
     playerState.hp = Math.max(0, playerState.hp - effect.selfDamage);
   }
 
-  if (effect.shieldApplied > 0) applyShield(playerState, effect.shieldApplied);
+  if (effect.shieldApplied > 0) {
+    playCardAudio('shield-gain');
+    applyShield(playerState, effect.shieldApplied);
+  }
   if (effect.shieldApplied > 0 && turnState.ascensionShieldCardMultiplier !== 1) {
     const adjustedShield = Math.max(0, Math.round(effect.shieldApplied * turnState.ascensionShieldCardMultiplier));
     const delta = adjustedShield - effect.shieldApplied;
@@ -1301,7 +1335,10 @@ export function playCardAction(
     }
   }
 
-  if (effect.healApplied > 0) healPlayer(playerState, effect.healApplied);
+  if (effect.healApplied > 0) {
+    playCardAudio('player-heal');
+    healPlayer(playerState, effect.healApplied);
+  }
 
   if ((effect.overhealToShield ?? 0) > 0) {
     if (card.mechanicId === 'overheal') {
@@ -1310,12 +1347,14 @@ export function playCardAction(
   }
 
   for (const status of effect.statusesApplied) {
+    playStatusAudio(status.type);
     applyStatusEffect(enemy.statusEffects, status);
   }
 
   // AR-203: Apply Burn stacks to enemy from card effects (e.g. ignite mechanic).
   // turnsRemaining: 99 = sentinel (Burn expires by halving to 0, not by turn countdown).
   if ((effect.applyBurnStacks ?? 0) > 0) {
+    playCardAudio('status-burn-apply');
     applyStatusEffect(enemy.statusEffects, {
       type: 'burn',
       value: effect.applyBurnStacks!,
@@ -1325,6 +1364,7 @@ export function playCardAction(
   // AR-203: Apply Bleed stacks to enemy from card effects (e.g. lacerate mechanic).
   // turnsRemaining: 99 = sentinel (Bleed expires by decay at end of enemy turn, not countdown).
   if ((effect.applyBleedStacks ?? 0) > 0) {
+    playCardAudio('status-bleed-apply');
     applyStatusEffect(enemy.statusEffects, {
       type: 'bleed',
       value: effect.applyBleedStacks!,
@@ -1350,6 +1390,7 @@ export function playCardAction(
 
   if (effect.applyDoubleStrikeBuff) turnState.doubleStrikeReady = true;
   if (effect.applyFocusBuff) {
+    playCardAudio('status-focus-apply');
     turnState.focusReady = true;
     turnState.focusCharges = effect.focusCharges ?? 1;
   }
@@ -1539,6 +1580,7 @@ export function playCardAction(
 
   // Warcry — apply Strength to player
   if (effect.applyStrengthToPlayer) {
+    playCardAudio('status-strength-apply');
     const { value, permanent } = effect.applyStrengthToPlayer;
     // Apply to playerState statusEffects
     const existingStr = playerState.statusEffects.find(s => s.type === 'strength');
@@ -1933,6 +1975,7 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       isBossEncounter: turnState.enemy?.template?.category === 'boss',
     });
     if (lethalFx.lastBreathSave) {
+      playCardAudio('relic-death-prevent');
       playerState.hp = 1;
       playerDefeated = false;
       turnState.secondWindUsed = true;
@@ -1944,6 +1987,7 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
         turnState.buffNextCard += lethalFx.lastBreathDamageBonus;
       }
     } else if (lethalFx.phoenixSave) {
+      playCardAudio('relic-death-prevent');
       playerState.hp = Math.max(1, Math.round(playerState.maxHP * lethalFx.phoenixHealPercent));
       playerDefeated = false;
       turnState.triggeredRelicId = 'phoenix_feather';
@@ -1994,6 +2038,7 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   }
 
   if (playerTick.poisonDamage > 0) {
+    playCardAudio('status-poison-tick');
     turnState.turnLog.push({
       type: 'status_tick',
       message: `Poison dealt ${playerTick.poisonDamage} damage`,
@@ -2002,6 +2047,7 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   }
 
   if (playerTick.regenHeal > 0) {
+    playCardAudio('status-regen-tick');
     turnState.turnLog.push({
       type: 'status_tick',
       message: `Regen healed ${playerTick.regenHeal} HP`,
@@ -2027,6 +2073,7 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   }
 
   if (enemyTick.poisonDamage > 0) {
+    playCardAudio('status-poison-tick');
     turnState.turnLog.push({
       type: 'status_tick',
       message: `Enemy took ${enemyTick.poisonDamage} poison damage`,
@@ -2053,6 +2100,7 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   }
 
   if (turnState.isPerfectTurn && turnState.cardsPlayedThisTurn >= 3) {
+    playCardAudio('perfect-turn');
     const perfectApBonus = resolvePerfectTurnBonus(turnState.activeRelicIds);
     if (perfectApBonus > 0) {
       turnState.bonusApNextTurn += perfectApBonus;

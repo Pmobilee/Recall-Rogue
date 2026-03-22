@@ -355,6 +355,27 @@
   )
 
   let intentPopupOpen = $state(false)
+  let intentNameVisible = $state(false)
+  let intentNameTimer = $state<ReturnType<typeof setTimeout> | null>(null)
+
+  /** Solid dark colors for intent name label (darkened versions of the intent colors) */
+  const INTENT_DARK_COLORS: Record<string, string> = {
+    attack: '#7a1a12',
+    multi_attack: '#5c1208',
+    defend: '#1a3d5c',
+    buff: '#6b5000',
+    debuff: '#4a2060',
+    heal: '#0d4a60',
+  }
+
+  function showIntentName() {
+    if (intentNameTimer) clearTimeout(intentNameTimer)
+    intentNameVisible = true
+    intentNameTimer = setTimeout(() => {
+      intentNameVisible = false
+      intentNameTimer = null
+    }, 3000)
+  }
 
   /** §9 Landscape-only: enemy area hover tooltip state */
   let showEnemyTooltip = $state(false)
@@ -1853,10 +1874,9 @@
       {#key intentDetailText}
         <button
           class="enemy-intent-bubble"
-          class:intent-expanded={intentPopupOpen}
           style="background: {intentDisplay.color}; border-color: {intentDisplay.borderColor};"
           aria-label={intentDetailText}
-          onclick={() => { intentPopupOpen = !intentPopupOpen }}
+          onclick={() => { showIntentName() }}
         >
           <div class="intent-bubble-summary">
             <img class="intent-icon-img" src={enemyIntent ? getIntentIconPath(enemyIntent.type) : ''} alt=""
@@ -1870,13 +1890,16 @@
                 class:intent-value-debuff={intentDisplay.type === 'debuff'}>{intentDisplay.text}</span>
             {/if}
           </div>
-          {#if intentPopupOpen}
-            <div class="intent-bubble-detail">
-              <p>{intentDetailText}</p>
-            </div>
-          {/if}
         </button>
       {/key}
+      {#if intentNameVisible && intentDisplay.telegraph}
+        <div
+          class="intent-name-label"
+          style="color: {INTENT_DARK_COLORS[intentDisplay.type] ?? '#1a1a2e'}; background: {intentDisplay.borderColor};"
+        >
+          "{intentDisplay.telegraph}"
+        </div>
+      {/if}
     {/if}
 
 
@@ -2383,13 +2406,8 @@
   }
 
   .enemy-intent-bubble:active {
-    transform: translateX(-50%) scale(0.95);
+    transform: scale(0.95);
     filter: brightness(0.85);
-  }
-
-  .enemy-intent-bubble.intent-expanded {
-    width: var(--intent-expanded-width);
-    padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
   }
 
   .intent-bubble-summary {
@@ -2400,18 +2418,20 @@
     width: 100%;
   }
 
-  .intent-bubble-detail {
-    font-size: calc(14px * var(--layout-scale, 1));
-    color: #f1f5f9;
-    text-align: left;
-    white-space: normal;
-    width: 100%;
-    line-height: 1.4;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  }
-
-  .intent-bubble-detail p {
-    margin: 2px 0 0;
+  .intent-name-label {
+    position: fixed;
+    top: calc(12% + calc(56px * var(--layout-scale, 1)));
+    left: 30%;
+    font-size: calc(13px * var(--text-scale, 1));
+    font-weight: 700;
+    font-style: italic;
+    padding: calc(4px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    border-radius: calc(6px * var(--layout-scale, 1));
+    z-index: 13;
+    pointer-events: none;
+    white-space: nowrap;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   }
 
   .intent-bubble-tail {
@@ -2507,7 +2527,7 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 11;
-    font-size: calc(16px * var(--layout-scale, 1));
+    font-size: calc(24px * var(--text-scale, 1));
     font-weight: 800;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -2518,6 +2538,7 @@
       -2px 2px 0 #000,
       2px 2px 0 #000,
       0 0 8px rgba(0, 0, 0, 0.9);
+    -webkit-text-stroke: calc(1px * var(--layout-scale, 1)) black;
     white-space: nowrap;
     pointer-events: none;
   }
@@ -3173,14 +3194,14 @@
     max-width: calc(240px * var(--layout-scale, 1));
   }
 
-  /* Intent bubble: center-top, below enemy name */
+  /* Intent bubble: top-left of enemy area */
   .layout-landscape .enemy-intent-bubble {
     position: fixed;
-    top: calc(10% + env(safe-area-inset-top, 0px));
-    left: 50%;
+    top: 12%;
+    left: 30%;
     right: auto;
     bottom: auto;
-    transform: translateX(-50%);
+    transform: none;
   }
 
   /* Pile indicators: bottom-left, just above stats bar */
@@ -3223,10 +3244,10 @@
     transform: none;
   }
 
-  /* Status effect bars — enemy: centered top of arena */
+  /* Status effect bars — enemy: below HP bar */
   :global(.layout-landscape .status-effect-bar-enemy) {
     position: fixed;
-    top: 2%;
+    top: 18%;
     left: 50%;
     transform: translateX(-50%);
     right: auto;
@@ -3610,7 +3631,7 @@
   /* L-1: Turn counter label inside enemy name header */
   .turn-counter-label {
     display: block;
-    font-size: calc(10px * var(--layout-scale, 1));
+    font-size: calc(13px * var(--text-scale, 1));
     font-weight: 600;
     color: rgba(255, 255, 255, 0.45);
     text-transform: none;
@@ -3621,8 +3642,8 @@
 
   /* L-1: Intent pulse on content change (triggered by {#key} remount) */
   @keyframes intentPulse {
-    0% { opacity: 0; transform: translateX(-50%) scale(0.92); }
-    100% { opacity: 1; transform: translateX(-50%) scale(1); }
+    0% { opacity: 0; transform: scale(0.92); }
+    100% { opacity: 1; transform: scale(1); }
   }
 
   .enemy-intent-bubble {

@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { RelicDefinition } from '../../data/relics/types'
+  import { playCardAudio } from '../../services/cardAudioManager'
 
   interface EquippedRelic {
     definitionId: string
@@ -27,6 +28,11 @@
 
   let selectedSellId = $state<string | null>(null)
 
+  // Play modal-open sound when overlay mounts
+  $effect(() => {
+    playCardAudio('modal-open')
+  })
+
   const rarityColors: Record<string, string> = {
     common: '#9ca3af',
     uncommon: '#22c55e',
@@ -36,10 +42,12 @@
 
   function selectForSell(id: string): void {
     selectedSellId = selectedSellId === id ? null : id
+    playCardAudio('card-select')
   }
 
   function confirmSell(): void {
     if (!selectedSellId) return
+    playCardAudio('relic-acquired')
     onSellAndAcquire(selectedSellId)
   }
 </script>
@@ -111,7 +119,7 @@
     </section>
 
     <!-- Pass Button -->
-    <button type="button" class="btn-pass" onclick={onPass}>
+    <button type="button" class="btn-pass" onclick={() => { playCardAudio('card-skipped'); onPass() }}>
       Pass — Keep Current Relics
     </button>
   </div>

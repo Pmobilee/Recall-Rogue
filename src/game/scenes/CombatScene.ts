@@ -1868,16 +1868,29 @@ export class CombatScene extends Phaser.Scene {
     const scaledW = Math.round(ENEMY_HP_BAR_W * this.scaleFactor)
     const scaledH = Math.round(ENEMY_HP_BAR_H * this.scaleFactor)
     const targetW = Math.max(1, ratio * scaledW)
-    const color = this.currentEnemyBlock > 0 ? 0x3498db : COLOR_HP_RED
+    const baseColor = this.currentEnemyCategory === 'boss' ? COLOR_BOSS
+      : this.currentEnemyCategory === 'elite' || this.currentEnemyCategory === 'mini_boss' ? COLOR_ELITE
+      : COLOR_HP_RED
+    const color = this.currentEnemyBlock > 0 ? 0x3498db : baseColor
     const { x: hpCenterX, y: enemyHpY } = this.getEnemyHpBarCenter()
+    const x = hpCenterX - scaledW / 2
+    const y = enemyHpY - scaledH / 2
+    const radius = 6
 
     // Redraw the fill bar with the new width
     this.enemyHpBarFill.clear()
+    // Black border (slightly larger than the bar)
+    this.enemyHpBarFill.fillStyle(0x000000, 1)
+    this.enemyHpBarFill.fillRoundedRect(x - 2, y - 2, scaledW + 4, scaledH + 4, radius)
+    // Main HP fill
     this.enemyHpBarFill.fillStyle(color, 1)
-    this.enemyHpBarFill.fillRoundedRect(
-      hpCenterX - scaledW / 2, enemyHpY - scaledH / 2,
-      targetW, scaledH, 6
-    )
+    this.enemyHpBarFill.fillRoundedRect(x, y, targetW, scaledH, radius)
+    // Top highlight (3D bevel)
+    this.enemyHpBarFill.fillStyle(0xffffff, 0.2)
+    this.enemyHpBarFill.fillRect(x + 2, y + 1, Math.max(0, targetW - 4), 2)
+    // Bottom shadow (3D bevel)
+    this.enemyHpBarFill.fillStyle(0x000000, 0.3)
+    this.enemyHpBarFill.fillRect(x + 2, y + scaledH - 3, Math.max(0, targetW - 4), 2)
 
     const blockPrefix = this.currentEnemyBlock > 0 ? `(${this.currentEnemyBlock}) ` : ''
     this.enemyHpText.setText(`${blockPrefix}${this.currentEnemyHP} / ${this.currentEnemyMaxHP}`)

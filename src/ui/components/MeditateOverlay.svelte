@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Card } from '../../data/card-types'
   import { isLandscape } from '../../stores/layoutStore'
+  import { playCardAudio } from '../../services/cardAudioManager'
 
   interface Props {
     cards: Array<{ id: string; mechanicName: string; factQuestion: string; isUpgraded: boolean; tier: string }>
@@ -13,11 +14,17 @@
   let selectedCardId = $state<string | null>(null)
   let showConfirm = $state(false)
 
+  // Play overlay-open sound on mount
+  $effect(() => {
+    playCardAudio('rest-meditate')
+  })
+
   let selectedCard = $derived(cards.find(c => c.id === selectedCardId) ?? null)
 
   function selectCard(id: string): void {
     selectedCardId = id
     showConfirm = false
+    playCardAudio('card-select')
   }
 
   function handleRemoveClick(): void {
@@ -27,11 +34,13 @@
 
   function confirmRemove(): void {
     if (!selectedCardId) return
+    playCardAudio('rest-card-removed')
     onremove(selectedCardId)
   }
 
   function cancelConfirm(): void {
     showConfirm = false
+    playCardAudio('modal-close')
   }
 
   function getTierLabel(tier: string): string {
@@ -87,7 +96,7 @@
     </div>
 
     <div class="action-row">
-      <button class="cancel-btn" onclick={oncancel}>Cancel</button>
+      <button class="cancel-btn" onclick={() => { playCardAudio('modal-close'); oncancel() }}>Cancel</button>
       <button
         class="remove-btn"
         disabled={!selectedCardId}
