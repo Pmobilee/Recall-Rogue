@@ -2,6 +2,7 @@
   import type { RunSummary } from '../../services/hubState'
   import { playerSave } from '../stores/playerData'
   import { getCampUpgradeUrl, getCampBackgroundUrl, getCampBackgroundWideUrl, getCampSettingsUrl } from '../utils/campArtManifest'
+  import { ENEMY_TEMPLATES } from '../../data/enemies'
   import { campState } from '../stores/campState'
   import { getAmbientClass } from '../effects/HubAmbientEffects'
   import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'

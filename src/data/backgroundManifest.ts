@@ -38,6 +38,17 @@ export function getCombatBgForEnemy(enemyId: string): string {
 }
 
 /**
+ * Get the depth map URL for a combat background.
+ *
+ * @param enemyId The template ID of the enemy
+ * @returns A WebP depth map path sized for the current orientation
+ */
+export function getCombatDepthMap(enemyId: string): string {
+  const orientation = getOrientation()
+  return `/assets/backgrounds/combat/enemies/${enemyId}/${orientation}_depth.webp`
+}
+
+/**
  * @deprecated Legacy fallback. Use getCombatBgForEnemy() instead.
  */
 export function getRandomCombatBg(_floor: number, _isBoss: boolean): string {

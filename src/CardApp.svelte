@@ -153,6 +153,8 @@
   import { createDefaultCalibrationState, setGlobalKnowledgeLevel } from './services/difficultyCalibration'
   import type { KnowledgeLevel } from './services/difficultyCalibration'
   import { updateRichPresence } from './services/steamService'
+  import { getCombatBgForEnemy, getCombatDepthMap } from './data/backgroundManifest'
+  import ParallaxTransition from './ui/components/ParallaxTransition.svelte'
 
   /** Screens that are active gameplay — HubNavBar should NOT appear on these. */
   const GAMEPLAY_SCREENS = new Set<Screen>([
@@ -351,6 +353,10 @@
   }
 
   let gainedFactText = $state<string | null>(null)
+
+  let combatTransitionActive = $state(false)
+  let combatTransitionType = $state<'enter' | 'exit-forward'>('enter')
+  let prevScreen = $state('')
 
   let showArcanePassModal = $state(false)
   let showSeasonPassModal = $state(false)
@@ -813,6 +819,16 @@
     }
   })
 
+  // Combat enter transition: show parallax when entering combat
+  $effect(() => {
+    const screen = $currentScreen
+    if (screen === 'combat' && prevScreen !== 'combat') {
+      combatTransitionType = 'enter'
+      combatTransitionActive = true
+    }
+    prevScreen = screen
+  })
+
   function updateLayoutScale(): void {
     const container = document.querySelector('.card-app') as HTMLElement | null
     if (!container) return
@@ -1046,6 +1062,14 @@
       onclick={handlePause}
       aria-label="Pause"
     ><span class="pause-icon" aria-hidden="true"></span></button>
+    {#if combatTransitionActive && $activeTurnState?.enemy?.template?.id}
+      <ParallaxTransition
+        imageUrl={getCombatBgForEnemy($activeTurnState.enemy.template.id)}
+        depthUrl={getCombatDepthMap($activeTurnState.enemy.template.id)}
+        type={combatTransitionType}
+        onComplete={() => { combatTransitionActive = false }}
+      />
+    {/if}
   {/if}
 
   {#if $currentScreen === 'cardReward'}

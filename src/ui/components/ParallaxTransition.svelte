@@ -177,11 +177,11 @@
 
         if (type === 'enter') {
           const eased = 1 - Math.pow(1 - t, 2.5)
-          dolly = 0.25 * (1 - eased)
-          zoom = 1.1 - eased * 0.1
-          vignette = 0.9 - eased * 0.8
-          brightness = t < 0.2 ? t / 0.2 : 1.0
-          bob = Math.sin(t * Math.PI * 2 * 4) * 8 * (1 - eased)
+          dolly = 0.25 * (1 - eased)              // 0.25 → 0
+          zoom = 1.1 - eased * 0.1                 // 1.1 → 1.0
+          vignette = 0.9 * (1 - eased)             // 0.9 → 0 (must end at exactly 0)
+          brightness = t < 0.2 ? t / 0.2 : 1.0     // 0 → 1
+          bob = Math.sin(t * Math.PI * 2 * 4) * 8 * (1 - eased)  // → 0
         } else if (type === 'exit-forward') {
           const eased = Math.pow(t, 2.0)
           dolly = eased * 0.5

@@ -4600,13 +4600,14 @@
         "category": "domain",
         "description": "Vocabulary, grammar, linguistics",
         "status": "working",
-        "lastChangedDate": "not_checked",
+        "lastChangedDate": "2026-03-22",
         "visualInspectionDate_portraitMobile": "not_checked",
         "visualInspectionDate_landscapeMobile": "not_checked",
         "visualInspectionDate_landscapePC": "not_checked",
-        "mechanicInspectionDate": "not_checked",
+        "mechanicInspectionDate": "2026-03-22",
         "uxReviewDate": "not_checked",
-        "notes": ""
+        "lastInspectedDate": "2026-03-22",
+        "notes": "AR-215: Full Japanese content quality fix (2026-03-22). 7 subdecks audited 3x by Sonnet agents. Kanji meanings fixed (KANJIDIC standalone), pronunciations fixed (on-yomi default), kana Hepburn ji/zu, grammar expanded to 1708 (meaning+recall+fill), vocab answers corrected, distractor pools segmented by subdeck, garbage distractors removed. 11,946 Japanese facts production-ready."
       }
     ],
     "quizSystems": [
@@ -4672,13 +4673,13 @@
         "category": "quiz_core",
         "description": "Distractors are plausible and semantically coherent",
         "status": "working",
-        "lastChangedDate": "not_checked",
+        "lastChangedDate": "2026-03-22",
         "visualInspectionDate_portraitMobile": "not_checked",
         "visualInspectionDate_landscapeMobile": "not_checked",
         "visualInspectionDate_landscapePC": "not_checked",
-        "mechanicInspectionDate": "not_checked",
+        "mechanicInspectionDate": "2026-03-22",
         "uxReviewDate": "not_checked",
-        "notes": ""
+        "notes": "AR-215: Vocab distractor pool segmented by subdeck type (ja:vocab, ja:kanji, ja:grammar, ja:kana) to prevent cross-contamination. Kanji/grammar distractors cleaned: truncated parens fixed, garbage entries removed, template placeholders stripped, raw notation cleaned. 3 rounds of Sonnet audit verification."
       },
       {
         "id": "question_variety",
@@ -5267,6 +5268,50 @@
         "mechanicInspectionDate": "not_checked",
         "uxReviewDate": "not_checked",
         "notes": ""
+      },
+      {
+        "id": "japanese_kana",
+        "name": "Japanese Kana (Hiragana + Katakana)",
+        "category": "language_subdeck",
+        "description": "416 facts, Hepburn romanization, 8 distractors each",
+        "status": "working",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "2026-03-22",
+        "lastInspectedDate": "2026-03-22",
+        "notes": "3x Sonnet audit: 0 critical issues. ji/zu Hepburn fix, ID collision fix, acceptableAnswers for ambiguous ji/zu reverse."
+      },
+      {
+        "id": "japanese_kanji",
+        "name": "Japanese Kanji (N5-N1)",
+        "category": "language_subdeck",
+        "description": "2096 facts, KANJIDIC standalone meanings, 7 distractors each",
+        "status": "working",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "2026-03-22",
+        "lastInspectedDate": "2026-03-22",
+        "notes": "3x Sonnet audit. 1585 compound-meaning errors fixed via KANJIDIC. Pronunciations fixed to on-yomi default. Garbage distractors removed. Minor: some KANJIDIC first-reading edge cases remain."
+      },
+      {
+        "id": "japanese_grammar",
+        "name": "Japanese Grammar (N5-N1)",
+        "category": "language_subdeck",
+        "description": "1709 facts (644 meaning + 644 recall + 421 fill), pool-based distractors",
+        "status": "working",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "2026-03-22",
+        "lastInspectedDate": "2026-03-22",
+        "notes": "3x Sonnet audit. Expanded from 644 single-type to 1709 with recall+fill variants. Answers cleaned (truncation, notation, placeholders). Known limitation: fill-blank distractors don't check syntactic fit (pool-based)."
+      },
+      {
+        "id": "japanese_vocab",
+        "name": "Japanese Vocabulary (N5-N1)",
+        "category": "language_subdeck",
+        "description": "7726 facts, runtime pool-based distractors (segmented by subdeck)",
+        "status": "working",
+        "lastChangedDate": "2026-03-22",
+        "mechanicInspectionDate": "2026-03-22",
+        "lastInspectedDate": "2026-03-22",
+        "notes": "3x Sonnet audit. 21 critical answer corrections applied. Runtime distractors now segmented by subdeck (vocab-only pool). Minor: some JMdict translations are secondary meanings."
       }
     ],
     "ascensionLevels": [
