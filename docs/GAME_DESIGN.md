@@ -2358,21 +2358,49 @@ On first-ever correct answer for a Tier 1 fact, a "fun fact" summary pops up for
 
 ## 19. Sound Design
 
-| Sound | Trigger |
-|-------|---------|
-| Charge buildup | Card drag above 40px threshold |
-| Charge release | Fling / CHARGE button click |
-| Correct answer | Quiz correct + card effect |
-| Wrong answer | Quiz wrong (soft, non-punishing) |
-| Quick Play | Instant click-to-play |
-| Chain build | Each new chain link |
-| Chain climax | 3+ chain completion |
-| Surge announce | Bass thrum on Surge turn start |
-| Surge active | Ambient golden hum throughout Surge turn |
-| Tier-up | Fact advances to new FSRS tier |
-| Mastery Trial | Distinct fanfare on Tier 3 achievement |
-| Boss Quiz Phase | Dramatic pause music shift |
-| Enemy enrage | Menacing audio shift |
+### Audio Event Catalog (AR-228)
+
+The **complete, exhaustive audio event catalog** lives in `docs/roadmap/phases/AR-228-COMPLETE-AUDIO-EVENT-CATALOG.md`. It contains **234 discrete audio events** across 23 categories, each with creative sound design direction, priority level, and implementation status.
+
+**This catalog is a LIVING DOCUMENT.** Whenever ANY new mechanic, screen, interaction, enemy, card type, relic, room, or UI element is added, the corresponding audio events MUST be added to AR-228. No exceptions.
+
+### Current Audio Infrastructure
+
+| Component | File | Purpose |
+|-----------|------|---------|
+| Audio Synthesis Engine | `src/services/audioService.ts` | Web Audio API synthesis — 42 programmatic sounds, no external files |
+| Card Audio Manager | `src/services/cardAudioManager.ts` | High-level combat cues (14 cues mapped to synthesized sounds) |
+| Biome Audio Manager | `src/game/managers/AudioManager.ts` | Ambient loops + hazard SFX for 25 biome types |
+| Settings UI | `src/ui/components/SettingsPanel.svelte` | SFX + Music volume sliders with localStorage persistence |
+
+### Implementation Status Summary
+
+| Priority | Count | Description |
+|----------|-------|-------------|
+| P0 (Ship-blocking) | 31 | Core feel — combat, encounters, run lifecycle, UI basics |
+| P1 (Core Feel) | 100 | Status effects, chains, enemies, transitions, BGM |
+| P2 (Polish) | 73 | UI interactions, NPC sounds, ambient details |
+| P3 (Nice-to-have) | 26 | Hover sounds, scroll feedback, environmental micro-detail |
+| **Total** | **234** | **24 implemented, 3 stubs, 207 missing** |
+
+### Key Sound Design Principles
+
+| Principle | Description |
+|-----------|-------------|
+| Charge buildup | Card drag above 40px threshold — arcane energy gathering, rising hum |
+| Correct answer | Triumphant power release — bright major-chord burst + resonant impact |
+| Wrong answer | Soft deflation — muted "fwomp", NOT punishing, encourages retry |
+| Chain progression | Ascending metallic clinks, each link a half-step higher in pitch |
+| Surge announce | Bass thrum + rising golden energy — deep, resonant, exciting |
+| Surge active | Continuous warm golden hum throughout Surge turn |
+| Tier-up | Shimmering overtones + choir-like sustain — knowledge crystallized |
+| Mastery Trial | Gong strike + rising tension — solemn, important |
+| Boss Quiz Phase | Combat music pauses, replaced by tense clock-ticking phrase |
+| Enemy enrage | Bestial roar — deep distorted growl rising to a scream |
+| Room transitions | 4-6 footsteps on surface matching room type + environmental ambience |
+| Player defeat | Heartbeat slowing to silence — somber, NOT a harsh game-over buzzer |
+
+For the full 234-event catalog with detailed sound design direction per event, see AR-228.
 
 ---
 

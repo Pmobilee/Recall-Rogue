@@ -159,6 +159,12 @@
 **AR:** AR-227-ANIMATION-SCREEN-TRANSITIONS
 **Scope:** Fix sword animation for landscape (scale to portrait size, relative to enemy). Every screen gets walk-in animation. Non-combat rooms (mystery, reward, victory, descent) get NO exit animation.
 
+### Chapter L: Question Variant Audit
+**Issues:** Additional report during session
+**AR:** AR-229-QUESTION-VARIANT-AUDIT
+**Scope:** Investigate why question variants (Reverse, Synonym Pick, Definition Match) don't seem to trigger. All questions for same fact appeared identical. Audit variant selection code, verify tier thresholds, fix bugs or document expected behavior.
+**Scope:** Fix sword animation for landscape (scale to portrait size, relative to enemy). Every screen gets walk-in animation. Non-combat rooms (mystery, reward, victory, descent) get NO exit animation.
+
 ---
 
 ## Implementation Order (Suggested)

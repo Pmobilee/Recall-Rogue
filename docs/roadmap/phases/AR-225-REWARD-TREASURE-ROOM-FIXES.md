@@ -9,7 +9,7 @@
 
 ## Overview
 
-Fix four issues with reward and treasure rooms: auto-skip timeout bug, treasure room giving cards/gold/health instead of relics-only, multi-enemy relic conversion, and reward screen card rendering not matching combat improvements.
+Fix four issues with reward and treasure rooms: auto-skip timeout bug, treasure room giving cards/gold/health instead of relics-only, multi-enemy relic conversion, and reward screen card rendering not matching combat improvements. Also adds a stone slab art redesign reminder as a tracked TODO.
 
 ---
 
@@ -25,51 +25,132 @@ Fix four issues with reward and treasure rooms: auto-skip timeout bug, treasure 
 ## Sub-Steps
 
 ### 1. Fix Reward Auto-Skip Timeout
-- **What:** There is a timeout that automatically skips the reward selection and advances to the map if the player doesn't choose quickly enough. REMOVE this timeout entirely.
-- **Behavior:** Reward screen stays open indefinitely until the player makes a selection or explicitly skips.
-- **Acceptance:** Player can wait on the reward screen as long as they want. No auto-skip.
+
+- **What:** The card selection step in `CardRewardScreen.svelte` may be exiting prematurely. Investigate and fix.
+- **Context:** `CardRewardScreen.svelte` has two intentional `autoAdvanceTimer` calls:
+  - Lines 275-277: 900ms auto-advance on the `gold` step (announcement pacing — intentional)
+  - Lines 279-281: 1000ms auto-advance on the `heal` step (announcement pacing — intentional)
+  - The `rewardStep === 'card'` step has NO auto-skip timer — this is correct by design
+- **The gold and heal timers are NOT the bug.** They pace the announcement sequence between steps. Do NOT remove them.
+- **Worker must:** Add `console.log` tracing at each step transition to identify exactly when and why the card step exits before the player selects. Check: does `proceedAfterReward()` get called without user input? Does some `onComplete` callback fire unexpectedly?
+- **Fix:** Only remove or guard a timer/callback if logging confirms it causes the skip. Do NOT blindly remove all `autoAdvanceTimer` references.
+- **Behavior after fix:** Reward screen stays open on the card selection step indefinitely until the player makes a selection or explicitly skips.
+- **File:** `src/ui/components/CardRewardScreen.svelte`
+- **Acceptance:** Player can wait on the card reward step as long as they want. No auto-skip. Gold/heal announcement pacing still works correctly.
+
+---
 
 ### 2. Treasure Rooms — Relics Only
-- **What:** Treasure rooms currently show two reward screens (relics, then cards). Change to show ONLY the relic selection.
-- **Remove:** No card reward after treasure room. No health reward. No gold reward.
-- **Keep:** Relic selection only — player picks 1 relic from the offered options.
-- **Acceptance:** Treasure rooms show exactly 1 reward screen with relics only. No second screen.
+
+- **What:** Treasure rooms currently show two reward screens back-to-back (relic selection, then card reward). Change to show ONLY the relic selection. No card reward, no health, no gold.
+- **Root cause:** `gameFlowController.ts` — `openRelicChoiceRewardRoom()` (line ~1117) calls `openCardReward()` in its `onComplete` callback. When a treasure room completes its relic offer, it chains into a card reward screen.
+- **Fix:** In `openTreasureRoom()` (~line 1090), pass a custom `onComplete` to the relic reward flow that calls `proceedAfterReward()` directly, bypassing `openCardReward()`. Do NOT modify `openRelicChoiceRewardRoom()` itself — it is shared with boss and elite flows which SHOULD still chain to cards.
+- **Fallback path:** When no relics are available (currently: gives +25 gold AND calls `openCardReward()`), new behavior: give nothing extra and proceed to map. No card reward, no gold.
+- **State check:** `gameFlowState` has both `'treasureReward'` and `'relicReward'` states. Verify that `openTreasureRoom()` correctly sets `'treasureReward'` and that this state is not confused with the elite/boss `'relicReward'` flow.
+- **Files:**
+  - `src/services/gameFlowController.ts` — `openTreasureRoom()` (~line 1090), `openRelicChoiceRewardRoom()` (~line 1117)
+- **Acceptance:** Treasure rooms show exactly 1 reward screen (relic selection only). No second screen. No health. No gold.
+
+---
 
 ### 3. Stone Slab Redesign — User Action Required
-- **What:** Create a reminder/placeholder that the reward screen stone slab + cloth art needs to be redesigned by the user.
-- **Action:** Add a TODO note in the reward screen component referencing this requirement.
-- **This is NOT a code task — it's an art task for the user.**
-- **Acceptance:** TODO note exists in code. User is reminded.
+
+- **What:** The reward room stone slab + cloth art needs to be redesigned by the user. This is an art task, not a code task.
+- **Action:** Add a prominent TODO comment in `src/game/scenes/RewardRoomScene.ts` (the Phaser scene that renders the stone slab/altar visual) referencing this requirement.
+- **Comment text (exact):**
+  ```
+  // TODO AR-225: Stone slab + cloth art needs redesign by user.
+  // User request: "The reward screen with the stone slab and cloth on it needs to be redone by me."
+  // Replace placeholder art with final asset when ready. See AR-225.
+  ```
+- **This is NOT a code implementation task.** No art is generated here.
+- **File:** `src/game/scenes/RewardRoomScene.ts`
+- **Acceptance:** TODO comment is present in `RewardRoomScene.ts`. User is reminded when they next open that file.
+
+---
 
 ### 4. Multi-Enemy Relics — Convert to Single-Enemy Effects
-- **What:** Find all relics that reference multiple enemies or multi-enemy combat. Since the game never has multiple enemies simultaneously, these relics are dead.
-- **What:** If there are fewer than 5 such relics, redesign their effects to be single-enemy alternatives that are thematically appropriate:
-  - Ideas from user: "more cards is more strength, start with block per turn, boosts damage by 50% with hp under 25% etc."
-  - Each redesigned relic should have a unique effect not already covered by existing relics
-  - Base the new effect on the relic's existing lore/name
-- **If more than 5:** Flag for separate AR.
-- **Acceptance:** No relics reference multi-enemy scenarios. All redesigned relics have unique, functional effects.
+
+- **What:** Find all relics that reference multiple enemies or multi-enemy combat. Since the game never has multiple enemies simultaneously, these relics are effectively dead.
+- **Search strategy:**
+  1. Grep ALL relic descriptions and names in `src/data/relics/index.ts`, `src/data/relics/unlockable.ts`, and `src/data/relics/starters.ts` for: `"enemies"`, `"all other enemies"`, `"spread to"`, `"each enemy"`, `"other enemies"`, `"multiple enemies"`
+  2. The only confirmed relic with a multi-enemy flag is `toxic_bloom` in `unlockable.ts` (line ~743, `excludeFromPhase1: true`). The search MUST be exhaustive — do not assume this is the only one.
+- **If fewer than 5 multi-enemy relics found:** Redesign their effects in place. Guidelines:
+  - Base the new effect on the relic's existing lore/name (thematic fit)
+  - Suggestions from user: "more cards is more strength, start with block per turn, boosts damage by 50% with hp under 25% etc."
+  - Each redesigned relic must have a unique effect not already covered by existing relics
+  - For `toxic_bloom` specifically: also change `excludeFromPhase1: true` to `false` so it becomes available
+- **If more than 5:** Flag all of them in a comment and create a follow-up AR. Do not redesign in this pass.
+- **Files:**
+  - `src/data/relics/index.ts`
+  - `src/data/relics/unlockable.ts`
+  - `src/data/relics/starters.ts`
+  - `src/services/relicEffectResolver.ts` — update effect logic for redesigned relics
+- **Acceptance:** No relic descriptions reference multi-enemy scenarios. All redesigned relics have unique, functional effects. `npx vitest run` still passes.
+
+---
 
 ### 5. Reward Room Cards — Latest Rendering
-- **What:** Cards displayed in the reward room (card selection after combat) must use the same rendering pipeline as combat cards.
-- **Includes:** Chain border colors, card frame layers, description styling, AP badge, mastery indicators.
-- **Acceptance:** Reward room cards are visually identical to combat cards. No outdated rendering.
+
+- **What:** Cards displayed in the reward room must use the same rendering pipeline as combat cards.
+- **Context:** `CardRewardScreen.svelte` lines 366-376 ALREADY import and use the V2 frame pipeline: `getBorderUrl`, `getBaseFrameUrl`, `getBannerUrl`, `getUpgradeIconUrl`, `getChainColor`, `getChainGlowColor`. Full parity may already exist.
+- **Worker must:** DIFF exactly what combat cards render versus what reward room cards render. Do NOT assume work is needed — confirm the gap first. Check:
+  - Are all V2 frame layers (base, border, banner, upgrade icon) applied the same way?
+  - Are chain border colors (`getChainColor`, `getChainGlowColor`) applied correctly?
+  - Does the AP badge render the same way?
+  - Are mastery indicators present?
+  - Is description styling (font, size, keyword highlighting) identical?
+- **If a gap is found:** Bring reward room card rendering to full parity with combat card rendering.
+- **If no gap is found:** Document that parity is confirmed and close this sub-step.
+- **File:** `src/ui/components/CardRewardScreen.svelte`
+- **Acceptance:** Reward room cards are visually identical to combat cards. Any confirmed gap is closed. If already at parity, this is documented.
+
+---
 
 ### 6. Reward Room Gold Icon Fix
-- **What:** There's a gold/coin icon in the reward room that has a single coin way at the bottom of the PNG — this is an error from when it was a spritesheet.
-- **Fix:** Crop the PNG to remove the stray coin pixel at the bottom.
-- **Acceptance:** Gold icon is clean, no stray pixel/coin at the bottom.
+
+- **What:** There is a stray pixel/coin at the bottom of the gold icon used in the reward room. This is a spritesheet artifact from a previous layout.
+- **Context:** `CardRewardScreen.svelte` uses the emoji `🪙` (line ~321) for gold display in the Svelte layer — that is NOT the source of the issue. The stray pixel is in the Phaser-rendered `gold_tier_N.png` files loaded by `RewardRoomScene.ts`.
+- **Worker must:**
+  1. Visually inspect each `public/assets/reward_room/gold_tier_N.png` file (all tiers) to identify which file(s) have the stray pixel
+  2. Crop or edit the offending PNG(s) to remove the artifact
+  3. Verify the fixed file looks clean with no stray pixels below the main icon
+- **Files:**
+  - `public/assets/reward_room/gold_tier_N.png` (check all tier variants)
+  - `src/game/scenes/RewardRoomScene.ts` — verify correct asset path references after any rename
+- **Acceptance:** All gold tier PNGs are clean. No stray pixel or coin artifact at the bottom. Gold icon renders correctly in the reward room scene.
 
 ---
 
 ## Files Affected
 
-- `src/ui/screens/RewardScreen.svelte` — timeout removal, treasure room logic, card rendering
-- `src/ui/screens/TreasureRoom.svelte` or equivalent — relics-only flow
-- `src/data/relics.ts` — multi-enemy relic redesign
-- `src/services/relicEffectResolver.ts` — updated relic effects
-- `src/ui/cards/` — card rendering components shared with combat
-- `public/assets/ui/` — gold icon fix
+- `src/ui/components/CardRewardScreen.svelte` — auto-skip investigation/fix, card rendering parity
+- `src/services/gameFlowController.ts` — treasure room relics-only flow (`openTreasureRoom()`)
+- `src/game/scenes/RewardRoomScene.ts` — stone slab TODO comment, gold icon asset path
+- `src/data/relics/index.ts` — multi-enemy relic redesign
+- `src/data/relics/unlockable.ts` — multi-enemy relic redesign (including `toxic_bloom`)
+- `src/data/relics/starters.ts` — multi-enemy relic search (may have no changes)
+- `src/services/relicEffectResolver.ts` — updated effect logic for redesigned relics
+- `public/assets/reward_room/gold_tier_N.png` — gold icon fix (all tier variants)
+- `docs/GAME_DESIGN.md` — update: Treasure Room rewards section, redesigned relic descriptions
+
+---
+
+## Worker Notes
+
+These are critical implementation constraints. Read before starting any sub-step.
+
+1. **Auto-skip bug (Sub-step 1):** The gold and heal step timers in `CardRewardScreen.svelte` are INTENTIONAL announcement pacing — do not remove them. Add `console.log` tracing first to confirm where and why the card step exits prematurely. Only remove or guard code that logging confirms is causing the skip.
+
+2. **Treasure room fix (Sub-step 2):** Modify `openTreasureRoom()` in `gameFlowController.ts` only. Do NOT modify `openRelicChoiceRewardRoom()` — it is shared with boss/elite flows that must still chain to card rewards. The fix is scoped to the treasure room's `onComplete` callback.
+
+3. **Multi-enemy relic search (Sub-step 4):** The search must be exhaustive. `toxic_bloom` is the only confirmed relic, but grep all description strings across all three relic definition files. Do not assume the list is complete without running the search.
+
+4. **Card rendering (Sub-step 5):** `CardRewardScreen.svelte` already uses the V2 frame pipeline. Diff combat vs. reward rendering before assuming any work is needed. This sub-step may be a no-op if parity is already present.
+
+5. **Gold icon (Sub-step 6):** The emoji `🪙` in the Svelte layer is NOT the issue. The stray pixel is in Phaser-rendered PNG files at `public/assets/reward_room/`. Inspect those files visually, not the Svelte component.
+
+6. **Stone slab TODO (Sub-step 3):** This goes in `src/game/scenes/RewardRoomScene.ts` (a Phaser scene file), not any Svelte component. No Svelte file owns the stone slab visual.
 
 ---
 
@@ -77,11 +158,13 @@ Fix four issues with reward and treasure rooms: auto-skip timeout bug, treasure 
 
 - [ ] `npm run typecheck` passes
 - [ ] `npm run build` succeeds
-- [ ] Reward screen has no auto-skip timeout
-- [ ] Treasure room shows relics only (no cards, health, or gold)
-- [ ] No double reward screen in treasure rooms
-- [ ] Multi-enemy relics identified and converted (if <5) with unique effects
-- [ ] Reward room cards render identically to combat cards
-- [ ] Gold icon has no stray pixel at bottom
 - [ ] `npx vitest run` passes
-- [ ] Update `docs/GAME_DESIGN.md` sections: Treasure Room rewards, relic descriptions
+- [ ] Reward screen card step has no auto-skip; gold/heal announcement pacing still works
+- [ ] Treasure room shows exactly 1 reward screen (relic selection only — no cards, health, or gold)
+- [ ] No double reward screen in treasure rooms
+- [ ] Stone slab TODO comment present in `src/game/scenes/RewardRoomScene.ts`
+- [ ] All multi-enemy relics identified via exhaustive grep; redesigned (if <5) with unique effects
+- [ ] `toxic_bloom` updated: new effect + `excludeFromPhase1` set to `false`
+- [ ] Reward room card rendering confirmed at parity with combat cards (or gaps closed)
+- [ ] All `public/assets/reward_room/gold_tier_N.png` files are clean (no stray pixel)
+- [ ] `docs/GAME_DESIGN.md` updated: Treasure Room rewards, relic descriptions
