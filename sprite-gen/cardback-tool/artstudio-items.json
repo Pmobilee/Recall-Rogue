@@ -3924,7 +3924,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a muscular orc champion bringing a massive two-handed blade down in a devastating overhead cleave, golden impact sparks exploding from the point of contact, veins bulging with effort, deep orange and dark red palette with gold impact highlights, dark stone background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3292812667,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "twin_strike",
@@ -3933,7 +3940,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a lithe half-elf rogue crossing twin short swords in a blurring X slash, both blades trailing deep red motion lines, one strike high and one strike low, expression fierce and focused, crimson and black palette with silver blade edges, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3879606772,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "iron_wave",
@@ -3942,7 +3956,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a broad-shouldered human warrior pivoting in a full horizontal sweep, a crescent shockwave of silver metallic energy flying outward from the blade tip, hair whipping from the force, steel grey and silver palette with white shockwave arc, dark stone background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1187472075,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "reinforce",
@@ -3951,7 +3972,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a stoic dwarf paladin pressing both hands flat against a large kite shield as glowing steel-blue bands of magical energy wrap around it tightening like iron rings, expression calm and resolute, steel blue and silver palette with bright cyan reinforcement glow, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3694048507,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "shrug_it_off",
@@ -3960,7 +3988,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a massive broad-shouldered half-giant warrior shrugging one shoulder as a shower of damage sparks and shattered debris bounces harmlessly off their scarred hide, smirking with contempt, charcoal and steel grey palette with orange impact sparks, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2054353345,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "bash",
@@ -3969,7 +4004,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a heavily armored human guard thrusting a tower shield forward in a brutal ram, the impact point erupting with yellow stun stars and concentric shockwave rings, teeth gritted in a war cry, steel blue and silver palette with bright yellow stun burst, dark stone background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 858668842,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "guard",
@@ -3978,7 +4020,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a young female knight raising a glowing round shield into a perfect defensive stance, soft blue protective light radiating outward from the shield face, expression watchful and steady, steel blue and frost white palette with cyan edge glow, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2074541157,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "sap",
@@ -3987,25 +4036,62 @@
       "prompt": "pixel art, 16-bit RPG card art, a wiry dark-haired human rogue emerging from shadow behind an unsuspecting target, swinging a leather-wrapped blackjack down in a sudden arc, motion blur on the weapon, satisfied smirk, deep charcoal and shadow black palette with dark amber leather accent, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 862110455,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "rupture",
       "name": "Rupture",
       "concept": "A deep gash opening in flesh, dark red blood welling up dramatically",
-      "prompt": "pixel art, 16-bit RPG card art, a serrated black blade dragging across skin opening a jagged rupture, dark crimson blood welling up in thick drops along the torn edges, visceral and brutal close-up, deep crimson and blood red palette with black background, dark background, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG card art, a dark-armored knight thrusting a jagged crimson blade forward with a burst of red energy cascading from the impact point, cracks of red light spreading outward like fractured glass, intense focused expression behind the visor, deep crimson and dark steel palette with bright red energy burst, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1612025425,
+          "status": "error",
+          "accepted": false,
+          "error": "No image data found in response"
+        },
+        {
+          "variant": 1,
+          "seed": 764647788,
+          "status": "error",
+          "accepted": false,
+          "error": "Response was text only: \"`\""
+        }
+      ]
     },
     {
       "id": "lacerate",
       "name": "Lacerate",
       "concept": "A serrated blade slashing multiple bleeding cuts, red droplets spraying",
-      "prompt": "pixel art, 16-bit RPG card art, a pale female assassin with braided black hair dragging a serrated dagger across an arm leaving three parallel bleeding lacerations, crimson droplets spraying outward mid-arc, expression merciless, deep crimson and black palette with bright red blood spray, dark background, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG card art, a swift half-elf rogue with braided silver hair slashing three parallel red energy arcs from twin daggers in a sweeping cross-cut motion, crimson afterimages trailing each blade, eyes narrowed in lethal focus, deep crimson and dark silver palette with bright red slash trails, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 723068144,
+          "status": "error",
+          "accepted": false,
+          "error": "No image data found in response"
+        },
+        {
+          "variant": 1,
+          "seed": 13791141,
+          "status": "error",
+          "accepted": false,
+          "error": "No image data found in response"
+        }
+      ]
     },
     {
       "id": "kindle",
@@ -4014,7 +4100,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a young fire mage with wild red hair cupping a newborn flame between her palms, eyes reflecting the growing blaze, tiny embers spiraling upward from her fingers, deep amber and burnt orange palette with bright yellow flame core, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2165683604,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "ignite",
@@ -4023,7 +4116,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a tattooed male pyromancer snapping his fingers as a column of fire erupts upward from that single point of ignition, eyes wide with delight, ember sparks spiraling outward, deep orange and flame red palette with brilliant yellow core at ignition point, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 762599694,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "overcharge",
@@ -4032,7 +4132,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a wide-eyed gnome artificer gripping a crackling energy cell that has gone dangerously over capacity, white-blue electricity arcing up their arms and hair standing on end, expression of terrified excitement, electric blue and white palette with bright arc lightning, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3199499813,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "riposte",
@@ -4041,7 +4148,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a lean dark-haired female duelist catching an incoming blade on her crossguard with a sharp parry, sparks flying, immediately counter-thrusting with lethal precision in the same fluid motion, steel blue and bright silver palette with white clash sparks, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2139701720,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "absorb",
@@ -4050,7 +4164,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a serene bald monk with glowing tattoos holding one open palm outward as streams of enemy magic are drawn into it and converted into a pulsing blue orb at the center, expression of calm focus, deep indigo and electric blue palette with white energy streams, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 810828770,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "reactive_shield",
@@ -4059,7 +4180,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a gleaming magical shield snapping into existence in a burst of golden light just as an attack arrow strikes it and shatters, the shield activating without a hand holding it, autonomous defense, bright gold and amber palette with white impact burst, dark stone background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1411049527,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "sift",
@@ -4068,7 +4196,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a slender scholar's hands carefully fanning through a thick spread of worn cards, one card glowing faintly as clever fingers hover near it with purpose, warm brown and parchment palette with a single teal glowing card highlight, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1320676437,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "scavenge",
@@ -4077,7 +4212,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a rough-calloused scavenger's hand plunging into a pile of broken gear and discarded scraps, pulling free a single glowing useful relic, expression of satisfaction visible on their weathered face at the edge of frame, muted earth tones and rust brown palette with one bright teal glowing find, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2282587429,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "precision_strike",
@@ -4086,7 +4228,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a focused elven archer-rogue with pale hair pulling back a slender blade like a dart, one eye squinted sighting along the weapon at a glowing target reticle in the distance, expression of absolute concentration, muted slate and charcoal palette with a single bright amber target point, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3187556598,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "stagger",
@@ -4095,7 +4244,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a large armored troll reeling backward off-balance from a blow to the jaw, impact stars bursting from the hit point, feet lifting from the ground, expression of dazed confusion, charcoal and stone grey palette with bright yellow stun stars, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1854951606,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "corrode",
@@ -4104,7 +4260,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a sickly green splash of alchemical acid eating through a breastplate, metal warping and bubbling as corrosive smoke rises, the acid spreading outward from the impact point, sickly green and dark yellow palette with black corroded metal, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 299191685,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "swap",
@@ -4113,7 +4276,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a quick-fingered gnome trickster with a wide grin flicking two glowing cards past each other in a swift exchange, motion blur trails crossing in the air between nimble fingers, warm amber and teal dual-color palette showing two card types swapping, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2852836778,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "siphon_strike",
@@ -4122,7 +4292,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a pale vampire-touched warrior driving a black blade into an enemy while a stream of glowing violet life energy flows back along the blade into their own chest, expression of hungry relief, deep purple and black palette with bright violet drain stream, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3997165227,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "aegis_pulse",
@@ -4131,7 +4308,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a heavily armored guardian slamming a glowing aegis shield into the ground as a circular shockwave of protective golden energy explodes outward in concentric rings from the impact point, expression fierce and protective, gold and amber palette with bright white shockwave rings, dark stone background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2331832733,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "inscription_fury",
@@ -4140,7 +4324,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a jagged angular fury rune freshly chiseled into ancient dark stone, the carved grooves glowing ember-hot red as battle rage energy pulses through them, heat distortion rising from the stone surface, deep crimson and blood red palette with bright orange edge glow, dark stone background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2518967781,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "inscription_iron",
@@ -4149,7 +4340,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a heavy rectangular iron rune carved deep into granite bedrock, the rune filled with molten iron that has cooled and hardened, radiating an aura of total permanence and unbreakable defense, steel grey and iron black palette with cold blue sheen, dark stone background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2145204934,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "gambit",
@@ -4158,7 +4356,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a cloaked scholar with sharp amber eyes placing a glowing queen chess piece on a dangerous exposed square of a mystical arcane board, question marks orbiting like satellites, a knowing smirk on their face, deep purple and gold palette with arcane teal board glow, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2193005782,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "chain_lightning",
@@ -4167,7 +4372,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a silver-haired storm mage releasing a forked bolt of blue-white lightning from outstretched fingers that arcs and chains between three scorched targets in sequence, hair whipping in the electric wind, electric blue and white palette with violet secondary arcs, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 948223371,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "volatile_slash",
@@ -4176,7 +4388,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a desperate berserker with wild eyes swinging a cracked glowing blade that shatters explosively on impact, shards of the blade flying outward with bursts of unstable energy at the breaking point, orange and red palette with white explosive core, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 7121780,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "burnout_shield",
@@ -4185,7 +4404,14 @@
       "prompt": "pixel art, 16-bit RPG card art, an exhausted female paladin holding a shield blazing with brilliant blue light as hairline cracks spread across its surface, her arms shaking from the effort of maintaining it at its limit, steel blue and white palette with orange cracks glowing hot along the fracture lines, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3184004874,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "knowledge_ward",
@@ -4194,7 +4420,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a grey-bearded wizard holding an ancient open tome as glowing purple runes rise from the pages and arrange themselves into a hexagonal protective barrier in the air before him, expression of intense scholarly focus, deep purple and gold palette with bright arcane rune glow, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 759843105,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "warcry",
@@ -4203,7 +4436,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a broad-chested barbarian woman with braided auburn hair throwing her head back in a thunderous battle cry, golden sound wave rings radiating outward from her open mouth in concentric expanding arcs, tendons taut in her neck, warm gold and amber palette with white sound rings, dark stone background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 451619092,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "battle_trance",
@@ -4212,7 +4452,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a lean male monk with close-cropped hair entering a battle trance, eyes rolling back to glow pure white, a pulsing amber aura of concentrated fighting energy surrounding his body, arms loose at his sides but coiled with potential, warm gold and ivory palette with amber aura glow, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1576055508,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "curse_of_doubt",
@@ -4221,7 +4468,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a hooded cultist pressing a black-smoky question mark sigil against a screaming enemy's forehead with one finger, the dark rune burning its way into the mind and corrupting knowledge, deep purple and void black palette with sickly green corruption glow, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1012553462,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "mark_of_ignorance",
@@ -4230,7 +4484,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a dark magical blindfold of woven shadow being tightened over the glowing eyes of a struggling scholar, brilliant knowledge light trying to push through the cursed cloth, suppressed and sealed, deep black and void purple palette with leaking gold light at the blindfold edges, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3028584362,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "corroding_touch",
@@ -4239,7 +4500,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a skeletal warlock's hand with fingertips dripping glowing corrosive green acid, each drop leaving a smoking crater where it falls, the hand reaching toward the viewer with horrible intent, sickly green and necrotic black palette with yellow-green acid drips, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1418903480,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "phase_shift",
@@ -4248,7 +4516,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a nimble tiefling rogue mid-phase-shift between two positions, a translucent ghost of herself offset and overlapping the solid version, both images slightly different poses suggesting impossible simultaneous movement, electric violet and teal dual-tone palette with white blur at overlap, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2137056574,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "chameleon",
@@ -4257,7 +4532,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a shapeshifter mid-transformation with half their body showing one warrior archetype in red and the other half showing a mage archetype in blue, the center dissolving in a rainbow merge of shifting colors and dissolving edges, rainbow shifting palette with red and blue split, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 319540337,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "dark_knowledge",
@@ -4266,7 +4548,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a hollow-eyed scholar hunched over a forbidden tome open to pages of writhing corrupted glowing text, dark shadowy wisps rising from the pages like smoke curling into their eyes and mouth, expression of terrible fascination, deep purple and void black palette with sickly green forbidden text glow, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3482834759,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "chain_anchor",
@@ -4275,7 +4564,14 @@
       "prompt": "pixel art, 16-bit RPG card art, an enemy warrior pinned to the ground by a massive iron anchor that has crashed down from above, crackling electric blue chains wrapping around their limbs and binding them to the anchor, expression of trapped fury, electric blue and iron black palette with white arc lightning, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3822605950,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "unstable_flux",
@@ -4284,7 +4580,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a reckless wild mage at the center of a chaotic vortex of unstable energy rapidly cycling through fire red to ice blue to void purple, sparks and color fragments flying outward, the mage laughing maniacally with hair standing on end, multi-color shifting palette with all colors present, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2540748662,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "smite",
@@ -4293,7 +4596,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a radiant female cleric raising one hand skyward as a pillar of brilliant divine golden light strikes down from the heavens through her and into an enemy below, righteous fury on her face, the ground scorched at the impact zone, brilliant gold and white palette with burning orange scorched earth, dark stone background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2779353506,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "feedback_loop",
@@ -4302,7 +4612,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a techno-mage with circuit-tattoos feeding a glowing energy stream from one palm back into the other palm, the loop amplifying with each revolution shown as growing concentric spiral rings of electric blue energy, expression of controlled concentration, electric blue and violet palette with white amplification rings, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2485717837,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "recall",
@@ -4311,16 +4628,38 @@
       "prompt": "pixel art, 16-bit RPG card art, a sharp-eyed female scholar snapping her fingers as a single glowing card arcs back through the air from a discard pile toward her waiting open hand, a trail of golden light following its path, expression of triumphant recall, warm gold and teal palette with bright card glow, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3601539022,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "hemorrhage",
       "name": "Hemorrhage",
       "concept": "Deep internal bleeding shown as dark red seeping through, blood vessels rupturing",
-      "prompt": "pixel art, 16-bit RPG card art, a staggering enemy warrior clutching their chest as dark crimson blood seeps through cracked armor and ruptured veins, internal hemorrhaging radiating outward from the wound in dark red tendrils, expression of grim realization, deep crimson and dark blood red palette with near-black background, dark background, fill entire frame, 512x512",
+      "prompt": "pixel art, 16-bit RPG card art, a dark sorcerer channeling deep red energy from clenched fists into a massive eruption of crimson force that radiates outward in pulsing waves, consuming all red energy in a devastating burst, face contorted with exertion, deep crimson and dark blood red palette with bright scarlet energy core, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 692243159,
+          "status": "error",
+          "accepted": false,
+          "error": "No image data found in response"
+        },
+        {
+          "variant": 1,
+          "seed": 1010211874,
+          "status": "error",
+          "accepted": false,
+          "error": "No image data found in response"
+        }
+      ]
     },
     {
       "id": "eruption",
@@ -4329,7 +4668,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a fire sorceress with flowing auburn hair slamming her fist into the ground as a volcanic eruption of molten magma and fire bursts upward around her fist, rocks and embers flying in all directions, expression of exultant power, deep orange and lava red palette with bright yellow magma core, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3110381709,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "bulwark",
@@ -4338,7 +4684,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a titan-sized guardian standing arms spread before a massive fortified stone wall that glows with defensive rune energy, their body itself becoming part of the wall, immovable and absolute, steel blue and granite grey palette with bright cyan rune glow along the battlements, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1955060681,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "conversion",
@@ -4347,7 +4700,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a silver-haired holy warrior pulling dark void energy into their chest with one hand and expelling brilliant white radiant energy from the other, corrupted dark transformed to pure light through their body, deep void black and radiant white split palette with purple dark energy and gold light energy, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1496872745,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "ironhide",
@@ -4356,7 +4716,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a muscular male warrior with a look of grim resolve as iron plates spread across his skin from the torso outward, the transformation mid-process with one arm still flesh and the other fully encased in living black iron, steel grey and iron black palette with cold blue metal sheen, dark stone background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 4038733242,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "frenzy",
@@ -4365,7 +4732,21 @@
       "prompt": "pixel art, 16-bit RPG card art, a screaming berserker woman with wild copper hair in a full frenzied attack, multiple weapon swings visible as overlapping red motion blur trails going in every direction simultaneously, blood on her face, expression of pure unhinged violence, deep red and dark crimson palette with white motion streaks, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 519497070,
+          "status": "error",
+          "accepted": false,
+          "error": "No image data found in response"
+        },
+        {
+          "variant": 1,
+          "seed": 3997199781,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "mastery_surge",
@@ -4374,7 +4755,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a confident scholar with a proud upright posture raising a glowing five-pointed mastery badge as it surges and blazes with accumulated knowledge energy, golden light radiating from each point and illuminating their face, warm gold and amber palette with brilliant white star core, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2881315467,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "war_drum",
@@ -4383,7 +4771,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a powerfully built orc drummer with a battle-scarred face striking a massive war drum with both mallets, concentric golden sound wave rings and glowing battle energy exploding outward from each beat, expression of fierce rhythmic intensity, warm gold and dark amber palette with bright white sound rings, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1456430535,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "entropy",
@@ -4392,7 +4787,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a once-perfect geometric crystal lattice breaking apart into chaos, structured ordered pieces dissolving into scattered spinning fragments as entropy unravels it from the inside out, a small figure watching in horror, deep orange and amber palette with dark void background where order once was, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 939347861,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "archive",
@@ -4401,7 +4803,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a careful archivist with ink-stained fingers gently placing a rolled scroll into a glowing stone vault alongside hundreds of other preserved scrolls, magical preservation sealing rings around it as it slots into place, expression of reverent care, muted earth brown and parchment palette with teal vault glow, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1208513618,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "reflex",
@@ -4410,7 +4819,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a lean female scout with lightning reflexes snatching an enemy throwing knife out of the air mid-flight, speed lines radiating from the catch point, expression of cool surprised satisfaction, muted steel and brown palette with bright white speed lines and yellow caught blade, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2693093822,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "recollect",
@@ -4419,7 +4835,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a scholar pressing both temples with eyes screwed shut as scattered glowing memory shards spiral inward from the darkness and reassemble into a complete glowing image above their head, expression of intense mental effort and relief, muted earth brown and parchment palette with bright gold and teal memory fragment glow, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1939626294,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "synapse",
@@ -4428,7 +4851,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a towering brain-construct firing a brilliant electric synapse arc between two glowing neural nodes, the thought energy transmitted in a blinding burst of violet and white light, smaller synapses forming a web of connections below, electric blue and violet palette with white synapse flash, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1284454719,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "siphon_knowledge",
@@ -4437,7 +4867,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a hungry-eyed knowledge mage hovering one hand over an ancient open tome as glowing golden knowledge wisps are drawn out of the pages like smoke toward their absorbing palm, the book dimming as the mage brightens, warm gold and amber knowledge wisps against dark parchment and black background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1589587139,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "tutor",
@@ -4446,7 +4883,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a meticulous librarian with half-moon spectacles holding a magnifying glass over a fanned deck of cards, one specific card glowing distinctly brighter than all others under the focused lens, expression of quiet triumph, muted brown and parchment earth tones with a single bright teal highlighted card, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1726088937,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "sacrifice",
@@ -4455,7 +4899,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a grim-faced warlock holding a card at arm's length as it ignites in voluntary flames, their expression resolute and accepting of the cost, the burning card's energy feeding into a massive roiling power surge behind them, deep red and orange fire palette with black card silhouette, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1184282877,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "catalyst",
@@ -4464,7 +4915,14 @@
       "prompt": "pixel art, 16-bit RPG card art, an alchemist in a singed coat watching with wide eyes as a single glowing drop falls from their pipette into a reaction vessel and triggers an explosive cascade of color and energy, the chain reaction already spreading outward, teal and amber reaction palette with white explosive burst at the drop point, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 895672874,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "mimic",
@@ -4473,7 +4931,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a shadow doppelganger facing a warrior and perfectly mirroring every detail of their stance and weapon in dark void form, the two figures identical but one is solid color and the other is pure living shadow, unsettling perfection, deep void black and charcoal shadow palette contrasting with the solid warm amber warrior, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2713253284,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "aftershock",
@@ -4482,7 +4947,14 @@
       "prompt": "pixel art, 16-bit RPG card art, an enemy staggering from an initial hit when a second delayed shockwave erupts from the same strike point catching them off-guard again, double-hit rings expanding outward from the wound, expression of stunned disbelief, orange and red first wave with a brighter white second shockwave ring, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 488090387,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "knowledge_bomb",
@@ -4491,7 +4963,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a wild-eyed gnome scholar holding a spherical bomb with a glowing brain and open book symbol etched on it, the fuse lit and sparking, the gnome's expression shifting from pride to second thoughts, deep purple and gold knowledge symbols on a black iron bomb, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2827791400,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "inscription_wisdom",
@@ -4500,7 +4979,14 @@
       "prompt": "pixel art, 16-bit RPG card art, a flowing curvilinear wisdom rune carved into smooth moonstone, the carved channels filled with aged gold that glows with soft serene blue-gold light, ancient and peaceful energy radiating outward in gentle waves, blue-gold and ivory palette with soft white ambient glow, dark stone background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3733521907,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     }
   ],
   "backgrounds": [
@@ -8589,7 +9075,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a compact leather-bound notebook with a bold yellow lightning bolt embossed on its cover, the edges of the pages worn from rapid page-turning, a pencil tucked in the spine, warm brown and gold palette with bright yellow bolt, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2571961341,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "thick_skin",
@@ -8598,7 +9091,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a thick rectangular slab of battle-hardened leather hide covered in old scar ridges and healed slash marks, the texture dense and impossibly tough, muted brown and grey-tan palette with dark scar lines, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1262137369,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "tattered_notebook",
@@ -8607,7 +9107,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a leather-bound notebook with dog-eared pages spilling out the sides, ink stains on the cover, the binding fraying, a single golden quill tucked in the spine, faint amber glow from knowledge runes along the cover edges, warm brown and gold palette, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1183870761,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "battle_scars",
@@ -8616,7 +9123,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, three parallel diagonal scar marks raised on a fragment of dark skin, each scar ridge glowing faintly with stored battle memory, a trophy of pain endured and survived, dark charcoal and red-brown palette with dull ember glow along each scar, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2179008792,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "brass_knuckles",
@@ -8625,7 +9139,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a set of four-finger brass knuckles with a worn dull golden sheen, small dents from past impacts along each knuckle ridge, engraved with a simple star pattern, warm brass and dark gold palette, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 845868010,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "pocket_watch",
@@ -8634,7 +9155,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, an ornate golden pocket watch flipped open to reveal a softly glowing clock face with roman numerals, mystical time energy wisping from the dial, the chain draped below, warm gold and amber palette with blue-white face glow, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3150730768,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "chain_link_charm",
@@ -8643,7 +9171,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, three oversized interlocked chain links crackling with visible arc lightning between them, each link glowing electric blue at the contact points, the metal surface scorched dark from the energy, electric blue and steel grey palette with white arc sparks, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 968454496,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "worn_shield",
@@ -8652,7 +9187,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a round iron shield dented in multiple places with a faded painted crest barely visible through the damage, the rim bent and chipped, every scratch a survived battle, muted steel grey and dark iron palette with faint blue crest traces, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2647063615,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "bleedstone",
@@ -8661,7 +9203,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a faceted dark crimson gemstone with rivulets of blood-like fluid weeping from hairline cracks in its surface, the droplets glowing red as they form at the base, cursed with hemorrhage energy, deep crimson and blood red palette with dark black gem interior, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 850166573,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "ember_core",
@@ -8670,7 +9219,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a small rough-edged lump of compressed ember hovering slightly off the ground, burning with eternal orange-red fire without any fuel source, heat distortion shimmering above it, deep orange and burnt red palette with bright yellow-white hot core, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2942637056,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "gamblers_token",
@@ -8679,7 +9235,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a thick gold coin shown face-up with a glowing question mark etched deep into its surface, the edges worn smooth from handling, a slight shimmer suggesting the outcome is never certain, warm gold and amber palette with bright white question mark glow, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 497033984,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "thoughtform",
@@ -8688,7 +9251,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a small anatomically accurate brain sculpted entirely from translucent blue crystal, gently pulsing with inner thought-light, the folds and grooves of the cortex catching and refracting the glow, electric blue and ice white palette with soft azure inner light, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 914945288,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "scar_tissue",
@@ -8697,7 +9267,21 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a palm-sized chunk of hardened scar tissue with a leather-like texture, raised ridges crossing each other at odd angles, the surface denser and more resilient than ordinary skin, muted pink-grey and dark brown palette with subtle sheen on the tough surface, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1172936925,
+          "status": "error",
+          "accepted": false,
+          "error": "fetch failed"
+        },
+        {
+          "variant": 1,
+          "seed": 2931345657,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "surge_capacitor",
@@ -8706,7 +9290,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a cylindrical metal capacitor with a cracked ceramic casing barely containing the blue-white electrical charge building inside, visible arc tendrils crawling up the outer surface, the top glowing dangerously bright, electric blue and silver palette with bright white discharge arcs, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1294350972,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "obsidian_dice",
@@ -8715,7 +9306,21 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a perfectly polished six-sided die carved from deep black obsidian, the pip dots filled with glowing blood-red fire that burns from within, the corners sharp and dangerous, void black and dark grey palette with vivid crimson pip glow, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3577389499,
+          "status": "error",
+          "accepted": false,
+          "error": "fetch failed"
+        },
+        {
+          "variant": 1,
+          "seed": 1025281787,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "living_grimoire",
@@ -8724,7 +9329,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a thick dark leather spell book with a single large glowing eye embedded in the center of its cover, the iris shifting and alert, the book's pages slightly moving on their own as if breathing, deep purple and black palette with amber iris glow and faint green page shimmer, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1185928637,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "gladiators_mark",
@@ -8733,7 +9345,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a heavy bronze medallion with a gladiator arena brand mark burned deep into its face, the scorched symbol of a crossed sword and shield still faintly glowing from the branding iron, worn on a thick leather cord, dark bronze and burnt orange palette with orange brand glow, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 101741867,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "red_fang",
@@ -8742,7 +9361,21 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a single large curved beast fang ivory-white at the root graduating to deep blood-red at the sharpened tip, a fat drop of crimson venom forming at the point, mounted on a small carved bone base, ivory white and deep crimson palette, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 684521168,
+          "status": "error",
+          "accepted": false,
+          "error": "fetch failed"
+        },
+        {
+          "variant": 1,
+          "seed": 3054957131,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "chronometer",
@@ -8751,7 +9384,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a complex brass scientific chronometer with four nested precision dials each measuring a different time scale, the face immaculate and exact, small gemstone bearings visible through a crystal window on the side, warm brass and dark gold palette with white dial markings and blue gemstone accents, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2307347278,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "soul_jar",
@@ -8760,7 +9400,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a sealed glass apothecary jar with a wax-sealed cork stopper, a glowing ghostly soul pressing against the glass from inside, its hands and face visible as it tries to escape, wisps of ethereal light seeping through the wax, clear glass and dark background with bright spectral blue-white soul glow, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3304368331,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "null_shard",
@@ -8769,7 +9416,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a jagged crystalline shard with the geometry of a gemstone but the surface of absolute void, absorbing all light that touches it and reflecting nothing, the space around it slightly distorted as if reality is being pulled in, void black and dark grey palette with a subtle purple light-bending corona, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3855700305,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "hemorrhage_lens",
@@ -8778,7 +9432,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a single blood-red tinted monocle lens in a dark wrought-iron frame, hairline cracks in the glass filled with glowing crimson veins, when looked through it reveals hidden wounds, deep crimson and dark iron palette with bright red crack-veins glowing in the lens, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1559518971,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "archive_codex",
@@ -8787,7 +9448,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, an ancient thick codex with color-coded glowing tabs of different colors protruding from its pages at precise intervals, golden bookmark ribbons at key pages, the cover embossed with an intricate filing system sigil, aged parchment brown and dark leather palette with multicolor tab glow, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3831179450,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "berserkers_oath",
@@ -8796,7 +9464,21 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a rolled scroll stained with dark blood droplets along one edge, tied with a fraying blood-red ribbon in a tight knot, the wax seal stamped with a rage-clenched fist symbol, aged parchment and dark bloodstain red palette with deep crimson ribbon, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 4037888144,
+          "status": "error",
+          "accepted": false,
+          "error": "fetch failed"
+        },
+        {
+          "variant": 1,
+          "seed": 394123064,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "chain_forge",
@@ -8805,7 +9487,21 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a squat miniature blacksmith anvil glowing red-hot at its face, two freshly forged electric chain links sitting on top still crackling with blue energy from their creation, hammer marks fresh on the metal, dark iron and glowing red forge palette with bright electric blue chain glow, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2196013356,
+          "status": "error",
+          "accepted": false,
+          "error": "fetch failed"
+        },
+        {
+          "variant": 1,
+          "seed": 2494655595,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "deja_vu",
@@ -8814,7 +9510,21 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a gold coin showing a double-exposure ghosted image of itself offset slightly to one side, both instances semi-transparent and overlapping at the center, the ghost image slightly different suggesting the same moment repeating, warm gold palette with spectral silver ghost overlay, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3485190011,
+          "status": "error",
+          "accepted": false,
+          "error": "fetch failed"
+        },
+        {
+          "variant": 1,
+          "seed": 3362587799,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "inferno_crown",
@@ -8823,7 +9533,21 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a dark iron crown with five spires each topped with a living tongue of fire burning steadily upward, the metal between the spires glowing orange from the heat radiating from the flames above, deep orange and flame red palette with bright yellow flame tips and dark iron base, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1843983937,
+          "status": "error",
+          "accepted": false,
+          "error": "fetch failed"
+        },
+        {
+          "variant": 1,
+          "seed": 2344429998,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "mind_palace",
@@ -8832,7 +9556,21 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a tiny ornate palace with spires and buttresses sculpted from translucent blue crystalline thought energy, light refracting through its walls in complex patterns, smaller than a fist but architecturally perfect, electric blue and ice white palette with gold trim accents, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1861246361,
+          "status": "error",
+          "accepted": false,
+          "error": "fetch failed"
+        },
+        {
+          "variant": 1,
+          "seed": 1227359253,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "entropy_engine",
@@ -8841,7 +9579,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a compact clockwork device with visible gears all spinning backward against their intended direction, orange decay-energy crackling from the friction of wrongness, rust spreading outward from the machine as order breaks down around it, dark corroded iron and orange decay palette with rust red highlights, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2291898647,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "bloodstone_pendant",
@@ -8850,7 +9595,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a deep red bloodstone gem set in a delicate silver claw mount on a fine silver chain, the stone pulsing with a rhythmic inner glow like a slow heartbeat, veins of green visible inside the deep red stone, dark crimson and silver palette with warm red pulse glow, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3900910621,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "chromatic_chain",
@@ -8859,7 +9611,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a short length of chain with each of its seven links glowing a different elemental color from red fire through orange amber green blue indigo to violet, the energy from each link bleeding slightly into its neighbors, rainbow palette with each link distinctly lit, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3345647438,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "dragons_heart",
@@ -8868,7 +9627,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a massive four-chambered dragon heart the size of a barrel, still beating rhythmically, its surface crackling with inner fire that pulses brighter with each contraction, heat distortion radiating outward, deep red and burning orange palette with bright white-yellow pulse at peak beat, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 758812677,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "omniscience",
@@ -8877,7 +9643,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a large ethereal all-seeing eye with a golden iris radiating brilliant light, orbited by tiny glowing runes and constellation fragments in a slow ring, the pupil a window into infinite knowledge, warm gold and ivory palette with bright white iris rays and teal orbiting symbols, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 2840462470,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "paradox_engine",
@@ -8886,7 +9659,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a compact clockwork sphere with gears that mesh in configurations that should be physically impossible, each gear turning a neighbor that turns it back, glowing violet energy at every impossible contact point, dark brass and aged copper palette with bright violet paradox energy at gear interfaces, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 3477534870,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "akashic_record",
@@ -8895,7 +9675,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, an ancient scroll partially unrolled to reveal golden text so densely packed it becomes a solid field of light, the parchment itself translucent with age and cosmic energy, the ends curling with faint starlight, aged gold and cosmic white palette with faint purple stellar background, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 4105031973,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "singularity",
@@ -8904,7 +9691,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a contained singularity point hovering inside a reinforced circular frame, light and dust spiraling inward toward the absolute black central point in tight accretion streams, the frame glowing from the strain of containing it, void black with blue-white accretion disk spiraling inward, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 1680105663,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     },
     {
       "id": "volatile_manuscript",
@@ -8913,7 +9707,14 @@
       "prompt": "pixel art, 16-bit RPG relic icon, a cracked leather manuscript with its pages bulging outward from unstable energy within, visible arcs of orange-white electricity crawling across the cover, the binding splitting along the spine from internal pressure, dark cracked leather and aged parchment palette with bright orange-white volatile energy arcs, dark background, fill entire frame, 512x512",
       "targetWidth": 512,
       "targetHeight": 512,
-      "variants": []
+      "variants": [
+        {
+          "variant": 0,
+          "seed": 4288663262,
+          "status": "done",
+          "accepted": false
+        }
+      ]
     }
   ]
 }

@@ -349,15 +349,16 @@
   }
   .variant-frame-preview .art-in-frame {
     position: absolute;
-    /* Stretch beyond pentagon bounds so it fully covers the window */
-    left: 14%;
-    top: 12%;
-    width: 72%;
-    height: 48%;
+    /* Match the game's CardHand.svelte .frame-card-art positioning exactly */
+    left: 16%;
+    top: 14%;
+    width: 68%;
+    height: 42%;
     object-fit: cover;
     image-rendering: pixelated;
     pointer-events: none;
     z-index: 0;
+    border-radius: 4px;
   }
   .variant-frame-preview .variant-status-badge {
     position: absolute;
