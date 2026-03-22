@@ -35,19 +35,15 @@ void main() {
   float depth = texture2D(uDepthMap, uv).r;
 
   // ── Parallax breathing ────────────────────────────
-  // Close parts (high depth) sway more than edges (low depth).
-  // Direction radiates outward from sprite center.
   vec2 center = vec2(0.5, 0.55);
   vec2 dirFromCenter = uv - center;
 
-  // Multi-frequency breathing for organic feel
   float phase = depth * 3.14159;
   float breath1 = sin(uTime * uBreathSpeed + phase) * uBreathIntensity;
   float breath2 = sin(uTime * uBreathSpeed * 1.73 + phase * 0.6) * uBreathIntensity * 0.4;
   float breath3 = cos(uTime * uBreathSpeed * 0.7 + phase * 1.3) * uBreathIntensity * 0.2;
   float totalBreath = breath1 + breath2 + breath3;
 
-  // Depth-weighted displacement — center mass moves most
   vec2 displacement = dirFromCenter * totalBreath * depth;
   uv += displacement;
 
@@ -94,13 +90,42 @@ void main() {
 }
 `;
 
+interface DepthFXConfig {
+  lightDir: [number, number, number]
+  lightColor: [number, number, number]
+  lightIntensity: number
+  ambientColor: [number, number, number]
+  breathIntensity: number
+  breathSpeed: number
+  rimColor: [number, number, number]
+  rimIntensity: number
+  rimPower: number
+  normalStrength: number
+}
+
 /**
  * PostFX pipeline that uses a depth map for parallax breathing,
  * per-pixel directional lighting, rim lighting, and ambient occlusion.
+ *
+ * Uniforms are stored as plain JS data and applied in onDraw() where
+ * the GL program is guaranteed to be active.
  */
 export class SpriteDepthFX extends Phaser.Renderer.WebGL.Pipelines.PostFXPipeline {
-  private _depthTexKey: string = ''
-  private _configSet = false
+  /** Phaser texture key for the depth map */
+  depthTexKey: string = ''
+  /** Stored config — applied as uniforms during onDraw */
+  cfg: DepthFXConfig = {
+    lightDir: [0, -0.5, 0.87],
+    lightColor: [1, 0.9, 0.7],
+    lightIntensity: 1.0,
+    ambientColor: [0.6, 0.6, 0.65],
+    breathIntensity: 0.015,
+    breathSpeed: 2.0,
+    rimColor: [1, 0.9, 0.8],
+    rimIntensity: 0.4,
+    rimPower: 2.5,
+    normalStrength: 2.5,
+  }
 
   constructor(game: Phaser.Game) {
     super({
@@ -110,74 +135,40 @@ export class SpriteDepthFX extends Phaser.Renderer.WebGL.Pipelines.PostFXPipelin
     })
   }
 
-  onBoot(): void {
-    // Register the depth map sampler
-    this.set1i('uDepthMap', 1)
-  }
-
-  onPreRender(): void {
-    // Time uniform for breathing animation
-    this.set1f('uTime', this.game.loop.time / 1000)
-  }
-
   onDraw(renderTarget: Phaser.Renderer.WebGL.RenderTarget): void {
-    // Set texel size based on the render target (sprite's framebuffer dimensions)
-    this.set2f('uTexelSize',
-      1.0 / renderTarget.width,
-      1.0 / renderTarget.height
-    )
+    const c = this.cfg
+
+    // Set ALL uniforms here where the GL program is active
+    this.set1f('uTime', this.game.loop.time / 1000)
+    this.set2f('uTexelSize', 1.0 / renderTarget.width, 1.0 / renderTarget.height)
+    this.set1i('uDepthMap', 1)
+    this.set3f('uLightDir', c.lightDir[0], c.lightDir[1], c.lightDir[2])
+    this.set3f('uLightColor', c.lightColor[0], c.lightColor[1], c.lightColor[2])
+    this.set1f('uLightIntensity', c.lightIntensity)
+    this.set3f('uAmbientColor', c.ambientColor[0], c.ambientColor[1], c.ambientColor[2])
+    this.set1f('uBreathIntensity', c.breathIntensity)
+    this.set1f('uBreathSpeed', c.breathSpeed)
+    this.set3f('uRimColor', c.rimColor[0], c.rimColor[1], c.rimColor[2])
+    this.set1f('uRimIntensity', c.rimIntensity)
+    this.set1f('uRimPower', c.rimPower)
+    this.set1f('uNormalStrength', c.normalStrength)
 
     // Bind depth map texture to unit 1
-    if (this._depthTexKey) {
-      const texManager = this.game.textures
-      const tex = texManager.get(this._depthTexKey)
-      if (tex) {
-        const glTex = (tex as any).source?.[0]?.glTexture
-        if (glTex) {
+    if (this.depthTexKey) {
+      const phaserTex = this.game.textures.get(this.depthTexKey)
+      if (phaserTex && phaserTex.key !== '__MISSING') {
+        // Get the Phaser WebGLTextureWrapper, then its actual WebGLTexture
+        const src = (phaserTex as any).source?.[0]
+        const webglTex = src?.glTexture?.webGLTexture ?? src?.glTexture
+        if (webglTex) {
           const gl = (this.renderer as any).gl as WebGLRenderingContext
           gl.activeTexture(gl.TEXTURE1)
-          gl.bindTexture(gl.TEXTURE_2D, glTex)
+          gl.bindTexture(gl.TEXTURE_2D, webglTex)
           gl.activeTexture(gl.TEXTURE0)
         }
       }
     }
 
-    // Draw using the PostFX pipeline's shader — applies fragment shader and copies to game
     this.bindAndDraw(renderTarget)
-  }
-
-  /**
-   * Set the depth map texture key (Phaser texture key, not GL texture).
-   */
-  setDepthTextureKey(key: string): void {
-    this._depthTexKey = key
-  }
-
-  /**
-   * Configure all shader uniforms at once.
-   */
-  setConfig(config: {
-    lightDir: [number, number, number]
-    lightColor: [number, number, number]
-    lightIntensity: number
-    ambientColor: [number, number, number]
-    breathIntensity: number
-    breathSpeed: number
-    rimColor: [number, number, number]
-    rimIntensity: number
-    rimPower: number
-    normalStrength: number
-  }): void {
-    this.set3f('uLightDir', config.lightDir[0], config.lightDir[1], config.lightDir[2])
-    this.set3f('uLightColor', config.lightColor[0], config.lightColor[1], config.lightColor[2])
-    this.set1f('uLightIntensity', config.lightIntensity)
-    this.set3f('uAmbientColor', config.ambientColor[0], config.ambientColor[1], config.ambientColor[2])
-    this.set1f('uBreathIntensity', config.breathIntensity)
-    this.set1f('uBreathSpeed', config.breathSpeed)
-    this.set3f('uRimColor', config.rimColor[0], config.rimColor[1], config.rimColor[2])
-    this.set1f('uRimIntensity', config.rimIntensity)
-    this.set1f('uRimPower', config.rimPower)
-    this.set1f('uNormalStrength', config.normalStrength)
-    this._configSet = true
   }
 }

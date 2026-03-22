@@ -5323,6 +5323,13 @@
           "status": "error",
           "accepted": false,
           "error": "HTTP 403: {\"error\":{\"message\":\"Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
+        },
+        {
+          "variant": 2,
+          "seed": 1417362414,
+          "status": "error",
+          "accepted": false,
+          "error": "HTTP 403: {\"error\":{\"message\":\"Key limit exceeded (weekly limit). Manage it using https://openrouter.ai/settings/keys\",\"code\":403}}"
         }
       ]
     },

@@ -326,9 +326,10 @@ export class EnemySpriteSystem {
       const result = sprite.getPostPipeline('SpriteDepthFX')
       const pipeline: any = Array.isArray(result) ? result[0] : result
 
-      if (pipeline && typeof pipeline.setConfig === 'function') {
-        pipeline.setDepthTextureKey(depthTextureKey)
-        pipeline.setConfig({
+      if (pipeline) {
+        // Set config as plain data — uniforms applied in onDraw where GL is active
+        pipeline.depthTexKey = depthTextureKey
+        pipeline.cfg = {
           lightDir: dir,
           lightColor: [c.redGL, c.greenGL, c.blueGL],
           lightIntensity: 1.2,
@@ -339,7 +340,7 @@ export class EnemySpriteSystem {
           rimIntensity: 0.5,
           rimPower: 2.5,
           normalStrength: 3.0,
-        })
+        }
         this._depthFx = pipeline
         this._depthTextureKey = depthTextureKey
         console.log('[EnemySpriteSystem] Depth FX applied:', depthTextureKey)
