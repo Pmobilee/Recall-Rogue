@@ -6,13 +6,15 @@ import { BALANCE } from '../data/balance'
 /**
  * Per-language + subdeck index of vocabulary facts, built lazily on first use.
  * Keyed by `"<language>:<subdeckType>"` (e.g. 'ja:vocab', 'ja:kanji', 'ja:grammar',
- * 'ja:kana', 'ko:vocab').
+ * 'ja:kana', 'ko:vocab', 'ko:grammar', 'zh:vocab', 'zh:grammar').
  *
- * Subdeck segmentation prevents cross-subdeck contamination for Japanese:
- * all Japanese facts share `type: "vocabulary"` and `language: "ja"`, so
+ * Subdeck segmentation prevents cross-subdeck contamination for Japanese,
+ * Korean, and Chinese: facts within a language share `type: "vocabulary"`, so
  * without this extra dimension a vocab question like "What does 食べる mean?"
  * could receive grammar patterns ("subject marker") or kanji meanings
  * ("one, horse") as runtime distractors instead of other vocab translations.
+ * The same applies to Korean (ko-grammar-* vs ko-nikl-*) and Chinese
+ * (zh-grammar-* vs zh-hsk-* and other zh subdeck prefixes).
  */
 let languageIndex: Map<string, Fact[]> | null = null
 
@@ -25,10 +27,14 @@ let languageIndex: Map<string, Fact[]> | null = null
  */
 function getSubdeckType(fact: Fact): string {
   const id = fact.id
+  // Japanese subdecks
   if (id.startsWith('ja-kanji-')) return 'kanji'
   if (id.startsWith('ja-grammar-')) return 'grammar'
   if (id.startsWith('ja-hiragana-') || id.startsWith('ja-katakana-')) return 'kana'
-  // Default covers ja-jlpt-* and all non-Japanese language facts
+  // Korean and Chinese grammar
+  if (id.startsWith('ko-grammar-')) return 'grammar'
+  if (id.startsWith('zh-grammar-')) return 'grammar'
+  // Default: all vocab facts (ja-jlpt-*, ko-nikl-*, zh-*, de-cefr-*, etc.)
   return 'vocab'
 }
 

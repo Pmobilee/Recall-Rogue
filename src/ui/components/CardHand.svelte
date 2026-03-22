@@ -1486,7 +1486,7 @@
     flex-direction: column;
     align-items: center;
     padding: 0;
-    overflow: hidden; /* clip all content including card art to card bounds */
+    overflow: visible;
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
     -webkit-tap-highlight-color: transparent;
     touch-action: none;

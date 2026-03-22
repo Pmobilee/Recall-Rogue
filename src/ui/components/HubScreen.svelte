@@ -61,7 +61,8 @@
   const MAX_SPARKLE_BURSTS = 5
   let transitionActive = $state(false)
   let transitionType = $state<'enter' | 'exit-forward' | 'exit-backward'>('enter')
-  let transitionRoom = $state('shop')
+  let transitionImageUrl = $state('')
+  let transitionDepthUrl = $state('')
 
   // Derived tier values — reactively update sprite URLs when upgrades are purchased
   let tiers = $derived($campState.tiers)
@@ -107,22 +108,38 @@
     }, 700)
   }
 
-  function randomRoom(): string {
+  function pickRandomScene(): { imageUrl: string; depthUrl: string; isCombat: boolean } {
+    const orientation = $isLandscape ? 'landscape' : 'portrait'
     const rooms = ['shop', 'mystery', 'rest', 'treasure', 'descent']
-    return rooms[Math.floor(Math.random() * rooms.length)]
+    const enemyIds = ENEMY_TEMPLATES.map(e => e.id)
+    const allScenes = [
+      ...rooms.map(r => ({
+        imageUrl: `/assets/backgrounds/rooms/${r}/${orientation}.webp`,
+        depthUrl: `/assets/backgrounds/rooms/${r}/${orientation}_depth.webp`,
+        isCombat: false,
+      })),
+      ...enemyIds.map(id => ({
+        imageUrl: `/assets/backgrounds/combat/enemies/${id}/${orientation}.webp`,
+        depthUrl: `/assets/backgrounds/combat/enemies/${id}/${orientation}_depth.webp`,
+        isCombat: true,
+      })),
+    ]
+    return allScenes[Math.floor(Math.random() * allScenes.length)]
   }
 
   function previewEnter(): void {
-    transitionRoom = randomRoom()
+    const scene = pickRandomScene()
+    transitionImageUrl = scene.imageUrl
+    transitionDepthUrl = scene.depthUrl
     transitionType = 'enter'
     transitionActive = true
   }
 
   function previewExit(): void {
-    transitionRoom = randomRoom()
-    // Combat rooms use forward exit, other rooms use backward exit
-    const combatRooms = ['descent']
-    transitionType = combatRooms.includes(transitionRoom) ? 'exit-forward' : 'exit-backward'
+    const scene = pickRandomScene()
+    transitionImageUrl = scene.imageUrl
+    transitionDepthUrl = scene.depthUrl
+    transitionType = scene.isCombat ? 'exit-forward' : 'exit-backward'
     transitionActive = true
   }
 
@@ -310,8 +327,8 @@
 
       {#if transitionActive}
         <ParallaxTransition
-          imageUrl={`/assets/backgrounds/rooms/${transitionRoom}/${$isLandscape ? 'landscape' : 'portrait'}.webp`}
-          depthUrl={`/assets/backgrounds/rooms/${transitionRoom}/${$isLandscape ? 'landscape' : 'portrait'}_depth.webp`}
+          imageUrl={transitionImageUrl}
+          depthUrl={transitionDepthUrl}
           type={transitionType}
           onComplete={onTransitionComplete}
         />
