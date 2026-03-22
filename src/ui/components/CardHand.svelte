@@ -1399,8 +1399,8 @@
     position: relative;
     width: var(--card-w);
     height: var(--card-h);
-    background-color: #1e2d3d;
-    border: 2px solid;
+    background-color: transparent;
+    border: none;
     border-radius: 8px;
     cursor: pointer;
     pointer-events: auto;
@@ -1477,8 +1477,8 @@
     position: absolute;
     width: var(--card-w);
     height: var(--card-h);
-    background-color: #1e2d3d;
-    border: 2px solid;
+    background-color: transparent;
+    border: none;
     border-radius: 8px;
     cursor: pointer;
     pointer-events: auto;
@@ -1492,7 +1492,7 @@
     touch-action: none;
     font-family: inherit;
     color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    box-shadow: none;
     perspective: 800px;
     will-change: transform, opacity;
   }
@@ -1534,10 +1534,10 @@
   .frame-card-art {
     position: absolute;
     /* Cover the pentagon art window area — base frame masks edges naturally */
-    left: 21.9%;
-    top: 16.3%;
-    width: 56.2%;
-    height: 36.1%; /* reduced from 48% to stay inside pentagon */
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 65%; /* reduced from 48% to stay inside pentagon */
     object-fit: cover;
     image-rendering: auto; /* smooth for photo-like art */
     pointer-events: none;
@@ -1637,7 +1637,7 @@
     text-align: center;
   }
 
-  .v2-card-type {
+  .v2-card-type { display: none; /* removed per user request — no ATTACK/SHIELD/UTILITY labels */
     font-family: system-ui, -apple-system, sans-serif;
     font-weight: 700;
     font-size: calc(var(--card-w) * 0.085);

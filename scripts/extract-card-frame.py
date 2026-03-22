@@ -16,7 +16,7 @@ from psd_tools import PSDImage
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
 REPO_ROOT = Path(__file__).parent.parent
-PSD_PATH = REPO_ROOT / "data/generated/camp-art/NEW_CARD.psd"
+PSD_PATH = REPO_ROOT / "data/generated/CARDFRAMES/NEW_CARD.psd"
 OUT_DIR = REPO_ROOT / "public/assets/cardframes/v2"
 LOWRES_DIR = OUT_DIR / "lowres"
 
@@ -126,24 +126,18 @@ def main() -> None:
         print(f"  [{i}] '{l.name}'  visible={l.is_visible()}  "
               f"pos=({l.left},{l.top})  size={l.width}x{l.height}")
 
-    # Layer references
-    layer_base    = layers[0]   # 'Rest of the card that stays the same'
-    layer_icon    = layers[2]   # 'Upgrade Icon'
-    layer_border  = layers[3]   # 'Colored outside'
-    layer_banner  = layers[4]   # 'banner'
+    # Layer references — mapped by name for safety
+    layer_map = {l.name: l for l in layers}
+    layer_base    = layer_map['Rest of the card that stays the same']
+    layer_icon    = layer_map['Upgrade Icon']
+    layer_border  = layer_map['Colored outside']
+    layer_banner  = layer_map['banner']
 
     # ── 1. Base frame ──────────────────────────────────────────────────────────
     print("\n── Base frame ──")
     base_canvas = layer_to_full_canvas(layer_base)
-    # Cut out the art window area to make it transparent (card art shows through).
-    # The pentagon art window is defined by the 'Artwork Area Top center' guide layer.
-    # A rectangular cutout is used — the pentagon border on the base frame masks the corners.
-    base_arr = np.array(base_canvas)
-    # Art window rectangle from PSD guide: x=194, y=186, w=498, h=412
-    ART_X, ART_Y, ART_W, ART_H = 194, 186, 498, 412
-    inset = 12  # tighter inset so art doesn't bleed outside the pentagon border
-    base_arr[ART_Y + inset : ART_Y + ART_H - inset, ART_X + inset : ART_X + ART_W - inset, 3] = 0
-    base_canvas = Image.fromarray(base_arr)
+    # The new PSD already has the art window transparent — no manual cutout needed.
+    # Art goes BEHIND this layer and shows through the transparent window.
     out_path = OUT_DIR / "card-frame-base.webp"
     save_webp(base_canvas, out_path, quality=WEBP_QUALITY_HIRES, lossless=True)
     save_webp(make_lowres(base_canvas), LOWRES_DIR / "card-frame-base.webp",
