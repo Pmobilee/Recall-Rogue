@@ -190,12 +190,13 @@
           brightness = t > 0.7 ? 1 - Math.pow((t - 0.7) / 0.3, 2) : 1.0
           bob = Math.sin(t * Math.PI * 2 * 4) * 10 * eased
         } else {
+          // exit-backward: walk forward through the room (same direction as enter, but continuing)
           const eased = Math.pow(t, 2.0)
-          dolly = eased * -0.2
-          zoom = 1.0 - eased * 0.05
-          vignette = 0.1 + eased * 0.9
+          dolly = eased * 0.35                     // 0 → 0.35 (push forward, gentler than combat exit)
+          zoom = 1.0 + eased * 0.2                 // 1.0 → 1.2
+          vignette = 0.1 + eased * 0.9             // 0.1 → 1.0
           brightness = t > 0.7 ? 1 - Math.pow((t - 0.7) / 0.3, 2) : 1.0
-          bob = Math.sin(t * Math.PI * 2 * 4) * 6 * Math.min(eased * 3, 1)
+          bob = Math.sin(t * Math.PI * 2 * 4) * 8 * Math.min(eased * 3, 1)
         }
 
         // Walking bob applied as CSS transform (no shader warping)
