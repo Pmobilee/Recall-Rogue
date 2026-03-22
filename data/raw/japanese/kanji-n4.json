@@ -2,9 +2,9 @@
   {
     "id": "ja-kanji-n4-001",
     "type": "vocabulary",
-    "statement": "The kanji 不 means 'anxiety'",
+    "statement": "The kanji 不 means 'anxiety, uneasiness'",
     "quizQuestion": "What does the kanji '不' mean?",
-    "correctAnswer": "anxiety",
+    "correctAnswer": "anxiety, uneasiness",
     "distractors": [
       "small fish",
       "to roll",
@@ -32,14 +32,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-002",
     "type": "vocabulary",
-    "statement": "The kanji 世 means 'the world'",
+    "statement": "The kanji 世 means 'the world, society'",
     "quizQuestion": "What does the kanji '世' mean?",
-    "correctAnswer": "the world",
+    "correctAnswer": "the world, society",
     "distractors": [
       "to open",
       "clothes (esp. Western clothes)",
@@ -67,14 +68,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-003",
     "type": "vocabulary",
-    "statement": "The kanji 主 means 'head (of a household'",
+    "statement": "The kanji 主 means 'head, leader'",
     "quizQuestion": "What does the kanji '主' mean?",
-    "correctAnswer": "head (of a household",
+    "correctAnswer": "head, leader",
     "distractors": [
       "clock",
       "middle of the night",
@@ -91,7 +93,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "ぬし",
-    "exampleSentence": "",
+    "exampleSentence": "主人 (しゅじん)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "ぬし",
@@ -107,9 +109,9 @@
   {
     "id": "ja-kanji-n4-004",
     "type": "vocabulary",
-    "statement": "The kanji 事 means 'work'",
+    "statement": "The kanji 事 means 'thing, matter'",
     "quizQuestion": "What does the kanji '事' mean?",
-    "correctAnswer": "work",
+    "correctAnswer": "thing, matter",
     "distractors": [
       "to meet (by chance)",
       "to make a sound",
@@ -125,11 +127,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "しごと",
+    "pronunciation": "こと",
     "exampleSentence": "仕事 (しごと)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "しごと",
+    "reading": "こと",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -142,9 +144,9 @@
   {
     "id": "ja-kanji-n4-005",
     "type": "vocabulary",
-    "statement": "The kanji 京 means 'Tokyo'",
+    "statement": "The kanji 京 means 'imperial capital (esp. Kyoto)'",
     "quizQuestion": "What does the kanji '京' mean?",
-    "correctAnswer": "Tokyo",
+    "correctAnswer": "imperial capital (esp. Kyoto)",
     "distractors": [
       "death",
       "(medical) doctor",
@@ -160,11 +162,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "とうきょう",
+    "pronunciation": "きょう",
     "exampleSentence": "東京 (とうきょう)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "とうきょう",
+    "reading": "きょう",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -177,9 +179,9 @@
   {
     "id": "ja-kanji-n4-006",
     "type": "vocabulary",
-    "statement": "The kanji 仕 means 'work'",
+    "statement": "The kanji 仕 means 'work, job'",
     "quizQuestion": "What does the kanji '仕' mean?",
-    "correctAnswer": "work",
+    "correctAnswer": "work, job",
     "distractors": [
       "beef",
       "countryman",
@@ -207,14 +209,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-007",
     "type": "vocabulary",
-    "statement": "The kanji 代 means 'period'",
+    "statement": "The kanji 代 means 'charge, cost'",
     "quizQuestion": "What does the kanji '代' mean?",
-    "correctAnswer": "period",
+    "correctAnswer": "charge, cost",
     "distractors": [
       "commodity",
       "unreasonable",
@@ -230,11 +233,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "じだい",
+    "pronunciation": "だい",
     "exampleSentence": "時代 (じだい)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "じだい",
+    "reading": "だい",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -247,9 +250,9 @@
   {
     "id": "ja-kanji-n4-008",
     "type": "vocabulary",
-    "statement": "The kanji 以 means 'not less than'",
+    "statement": "The kanji 以 means 'not less than, ... and over'",
     "quizQuestion": "What does the kanji '以' mean?",
-    "correctAnswer": "not less than",
+    "correctAnswer": "not less than, ... and over",
     "distractors": [
       "borrowing",
       "winter vacation",
@@ -277,14 +280,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-009",
     "type": "vocabulary",
-    "statement": "The kanji 会 means 'to meet'",
+    "statement": "The kanji 会 means 'to meet, to encounter'",
     "quizQuestion": "What does the kanji '会' mean?",
-    "correctAnswer": "to meet",
+    "correctAnswer": "to meet, to encounter",
     "distractors": [
       "coincident with",
       "to walk",
@@ -312,14 +316,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-010",
     "type": "vocabulary",
-    "statement": "The kanji 住 means 'to live (of humans)'",
+    "statement": "The kanji 住 means 'to live (of humans), to reside'",
     "quizQuestion": "What does the kanji '住' mean?",
-    "correctAnswer": "to live (of humans)",
+    "correctAnswer": "to live (of humans), to reside",
     "distractors": [
       "humming",
       "match",
@@ -347,14 +352,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-011",
     "type": "vocabulary",
-    "statement": "The kanji 体 means 'body'",
+    "statement": "The kanji 体 means 'body, torso'",
     "quizQuestion": "What does the kanji '体' mean?",
-    "correctAnswer": "body",
+    "correctAnswer": "body, torso",
     "distractors": [
       "charge",
       "to wear (in modern Japanese",
@@ -371,7 +377,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "からだ",
-    "exampleSentence": "",
+    "exampleSentence": "一体 (いったい)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "からだ",
@@ -387,9 +393,9 @@
   {
     "id": "ja-kanji-n4-012",
     "type": "vocabulary",
-    "statement": "The kanji 作 means 'to make'",
+    "statement": "The kanji 作 means 'to make, to produce'",
     "quizQuestion": "What does the kanji '作' mean?",
-    "correctAnswer": "to make",
+    "correctAnswer": "to make, to produce",
     "distractors": [
       "dissatisfaction",
       "to run",
@@ -417,14 +423,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-013",
     "type": "vocabulary",
-    "statement": "The kanji 使 means 'to use (a thing'",
+    "statement": "The kanji 使 means 'to use, to make use of'",
     "quizQuestion": "What does the kanji '使' mean?",
-    "correctAnswer": "to use (a thing",
+    "correctAnswer": "to use, to make use of",
     "distractors": [
       "use",
       "wind",
@@ -452,14 +459,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-014",
     "type": "vocabulary",
-    "statement": "The kanji 借 means 'to borrow'",
+    "statement": "The kanji 借 means 'to borrow, to have a loan'",
     "quizQuestion": "What does the kanji '借' mean?",
-    "correctAnswer": "to borrow",
+    "correctAnswer": "to borrow, to have a loan",
     "distractors": [
       "spark",
       "illness (usu. excluding minor ailments",
@@ -487,14 +495,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-015",
     "type": "vocabulary",
-    "statement": "The kanji 元 means 'origin'",
+    "statement": "The kanji 元 means 'origin, source'",
     "quizQuestion": "What does the kanji '元' mean?",
-    "correctAnswer": "origin",
+    "correctAnswer": "origin, source",
     "distractors": [
       "case",
       "bright red",
@@ -511,7 +520,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "もと",
-    "exampleSentence": "",
+    "exampleSentence": "元気 (げんき)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "もと",
@@ -527,9 +536,9 @@
   {
     "id": "ja-kanji-n4-016",
     "type": "vocabulary",
-    "statement": "The kanji 兄 means 'older brother'",
+    "statement": "The kanji 兄 means 'older brother, elder brother'",
     "quizQuestion": "What does the kanji '兄' mean?",
-    "correctAnswer": "older brother",
+    "correctAnswer": "older brother, elder brother",
     "distractors": [
       "to buy",
       "person",
@@ -546,7 +555,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "あに",
-    "exampleSentence": "",
+    "exampleSentence": "兄弟 (きょうだい)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "あに",
@@ -562,9 +571,9 @@
   {
     "id": "ja-kanji-n4-017",
     "type": "vocabulary",
-    "statement": "The kanji 公 means '(public) park'",
+    "statement": "The kanji 公 means 'public matter, governmental matter'",
     "quizQuestion": "What does the kanji '公' mean?",
-    "correctAnswer": "(public) park",
+    "correctAnswer": "public matter, governmental matter",
     "distractors": [
       "doctor",
       "many",
@@ -580,11 +589,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "こうえん",
+    "pronunciation": "こう",
     "exampleSentence": "公園 (こうえん)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "こうえん",
+    "reading": "こう",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -597,9 +606,9 @@
   {
     "id": "ja-kanji-n4-018",
     "type": "vocabulary",
-    "statement": "The kanji 写 means 'photograph'",
+    "statement": "The kanji 写 means 'photograph, photo'",
     "quizQuestion": "What does the kanji '写' mean?",
-    "correctAnswer": "photograph",
+    "correctAnswer": "photograph, photo",
     "distractors": [
       "muscle",
       "noble",
@@ -627,7 +636,8 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-019",
@@ -651,7 +661,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "ふゆ",
-    "exampleSentence": "",
+    "exampleSentence": "真冬 (まふゆ)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "ふゆ",
@@ -667,9 +677,9 @@
   {
     "id": "ja-kanji-n4-020",
     "type": "vocabulary",
-    "statement": "The kanji 切 means 'to cut'",
+    "statement": "The kanji 切 means 'to cut, to cut through'",
     "quizQuestion": "What does the kanji '切' mean?",
-    "correctAnswer": "to cut",
+    "correctAnswer": "to cut, to cut through",
     "distractors": [
       "to fall down",
       "(not) particularly",
@@ -697,14 +707,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-021",
     "type": "vocabulary",
-    "statement": "The kanji 別 means '(not) particularly'",
+    "statement": "The kanji 別 means 'distinction, difference'",
     "quizQuestion": "What does the kanji '別' mean?",
-    "correctAnswer": "(not) particularly",
+    "correctAnswer": "distinction, difference",
     "distractors": [
       "wonderful",
       "sound",
@@ -720,11 +731,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "べつに",
+    "pronunciation": "べつ",
     "exampleSentence": "別に (べつに)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "べつに",
+    "reading": "べつ",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -737,9 +748,9 @@
   {
     "id": "ja-kanji-n4-022",
     "type": "vocabulary",
-    "statement": "The kanji 力 means 'force'",
+    "statement": "The kanji 力 means 'force, strength'",
     "quizQuestion": "What does the kanji '力' mean?",
-    "correctAnswer": "force",
+    "correctAnswer": "force, strength",
     "distractors": [
       "midwinter",
       "cooperation",
@@ -756,7 +767,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "ちから",
-    "exampleSentence": "",
+    "exampleSentence": "能力 (のうりょく)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "ちから",
@@ -772,9 +783,9 @@
   {
     "id": "ja-kanji-n4-023",
     "type": "vocabulary",
-    "statement": "The kanji 勉 means 'study'",
+    "statement": "The kanji 勉 means 'study, diligence'",
     "quizQuestion": "What does the kanji '勉' mean?",
-    "correctAnswer": "study",
+    "correctAnswer": "study, diligence",
     "distractors": [
       "to make a sound",
       "scenery",
@@ -802,14 +813,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-024",
     "type": "vocabulary",
-    "statement": "The kanji 動 means 'to move'",
+    "statement": "The kanji 動 means 'to move, to stir'",
     "quizQuestion": "What does the kanji '動' mean?",
-    "correctAnswer": "to move",
+    "correctAnswer": "to move, to stir",
     "distractors": [
       "claim",
       "preparation",
@@ -837,14 +849,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-025",
     "type": "vocabulary",
-    "statement": "The kanji 医 means '(medical) doctor'",
+    "statement": "The kanji 医 means '(medical) doctor, physician'",
     "quizQuestion": "What does the kanji '医' mean?",
-    "correctAnswer": "(medical) doctor",
+    "correctAnswer": "(medical) doctor, physician",
     "distractors": [
       "to calm down",
       "spark",
@@ -872,14 +885,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-026",
     "type": "vocabulary",
-    "statement": "The kanji 去 means 'the past'",
+    "statement": "The kanji 去 means 'the past, bygone days'",
     "quizQuestion": "What does the kanji '去' mean?",
-    "correctAnswer": "the past",
+    "correctAnswer": "the past, bygone days",
     "distractors": [
       "to meet",
       "valid",
@@ -907,14 +921,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-027",
     "type": "vocabulary",
-    "statement": "The kanji 口 means 'mouth'",
+    "statement": "The kanji 口 means 'mouth, opening'",
     "quizQuestion": "What does the kanji '口' mean?",
-    "correctAnswer": "mouth",
+    "correctAnswer": "mouth, opening",
     "distractors": [
       "the body",
       "magnificent",
@@ -931,7 +946,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "くち",
-    "exampleSentence": "",
+    "exampleSentence": "口にする (くちにする)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "くち",
@@ -947,9 +962,9 @@
   {
     "id": "ja-kanji-n4-028",
     "type": "vocabulary",
-    "statement": "The kanji 古 means 'old'",
+    "statement": "The kanji 古 means 'old, aged'",
     "quizQuestion": "What does the kanji '古' mean?",
-    "correctAnswer": "old",
+    "correctAnswer": "old, aged",
     "distractors": [
       "wonderful",
       "ability",
@@ -977,14 +992,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-029",
     "type": "vocabulary",
-    "statement": "The kanji 台 means 'stand'",
+    "statement": "The kanji 台 means 'stand, rack'",
     "quizQuestion": "What does the kanji '台' mean?",
-    "correctAnswer": "stand",
+    "correctAnswer": "stand, rack",
     "distractors": [
       "practice",
       "standing by",
@@ -1001,7 +1017,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "だい",
-    "exampleSentence": "",
+    "exampleSentence": "舞台 (ぶたい)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "だい",
@@ -1017,9 +1033,9 @@
   {
     "id": "ja-kanji-n4-030",
     "type": "vocabulary",
-    "statement": "The kanji 同 means 'same'",
+    "statement": "The kanji 同 means 'same, identical'",
     "quizQuestion": "What does the kanji '同' mean?",
-    "correctAnswer": "same",
+    "correctAnswer": "same, identical",
     "distractors": [
       "to lend",
       "to pile up",
@@ -1047,14 +1063,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-031",
     "type": "vocabulary",
-    "statement": "The kanji 味 means 'meaning'",
+    "statement": "The kanji 味 means 'flavor, flavour'",
     "quizQuestion": "What does the kanji '味' mean?",
-    "correctAnswer": "meaning",
+    "correctAnswer": "flavor, flavour",
     "distractors": [
       "last year",
       "heavy",
@@ -1070,11 +1087,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "いみ",
+    "pronunciation": "あじ",
     "exampleSentence": "意味 (いみ)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "いみ",
+    "reading": "あじ",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -1087,9 +1104,9 @@
   {
     "id": "ja-kanji-n4-032",
     "type": "vocabulary",
-    "statement": "The kanji 品 means 'work (e.g. book'",
+    "statement": "The kanji 品 means 'elegance, grace'",
     "quizQuestion": "What does the kanji '品' mean?",
-    "correctAnswer": "work (e.g. book",
+    "correctAnswer": "elegance, grace",
     "distractors": [
       "cover (of a book",
       "once",
@@ -1105,11 +1122,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "さくひん",
+    "pronunciation": "ひん",
     "exampleSentence": "作品 (さくひん)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "さくひん",
+    "reading": "ひん",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -1122,9 +1139,9 @@
   {
     "id": "ja-kanji-n4-033",
     "type": "vocabulary",
-    "statement": "The kanji 員 means 'all members'",
+    "statement": "The kanji 員 means 'all members, all hands'",
     "quizQuestion": "What does the kanji '員' mean?",
-    "correctAnswer": "all members",
+    "correctAnswer": "all members, all hands",
     "distractors": [
       "letter (of alphabet)",
       "period",
@@ -1152,14 +1169,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-034",
     "type": "vocabulary",
-    "statement": "The kanji 問 means 'question (e.g. on a test)'",
+    "statement": "The kanji 問 means 'question (e.g. on a test), problem'",
     "quizQuestion": "What does the kanji '問' mean?",
-    "correctAnswer": "question (e.g. on a test)",
+    "correctAnswer": "question (e.g. on a test), problem",
     "distractors": [
       "to hurry",
       "to stand up",
@@ -1187,14 +1205,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-035",
     "type": "vocabulary",
-    "statement": "The kanji 図 means 'sign'",
+    "statement": "The kanji 図 means 'sign, signal'",
     "quizQuestion": "What does the kanji '図' mean?",
-    "correctAnswer": "sign",
+    "correctAnswer": "sign, signal",
     "distractors": [
       "morning",
       "middle of the night",
@@ -1222,14 +1241,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-036",
     "type": "vocabulary",
-    "statement": "The kanji 地 means 'earth'",
+    "statement": "The kanji 地 means 'earth, ground'",
     "quizQuestion": "What does the kanji '地' mean?",
-    "correctAnswer": "earth",
+    "correctAnswer": "earth, ground",
     "distractors": [
       "normal",
       "spacious",
@@ -1246,7 +1266,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "ち",
-    "exampleSentence": "",
+    "exampleSentence": "地面 (じめん)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "ち",
@@ -1262,9 +1282,9 @@
   {
     "id": "ja-kanji-n4-037",
     "type": "vocabulary",
-    "statement": "The kanji 堂 means 'magnificent'",
+    "statement": "The kanji 堂 means 'temple, shrine'",
     "quizQuestion": "What does the kanji '堂' mean?",
-    "correctAnswer": "magnificent",
+    "correctAnswer": "temple, shrine",
     "distractors": [
       "development",
       "to cut",
@@ -1280,11 +1300,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "どうどう",
+    "pronunciation": "どう",
     "exampleSentence": "堂々 (どうどう)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "どうどう",
+    "reading": "どう",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -1297,9 +1317,9 @@
   {
     "id": "ja-kanji-n4-038",
     "type": "vocabulary",
-    "statement": "The kanji 場 means 'place'",
+    "statement": "The kanji 場 means 'place, spot'",
     "quizQuestion": "What does the kanji '場' mean?",
-    "correctAnswer": "place",
+    "correctAnswer": "place, spot",
     "distractors": [
       "character (esp. kanji)",
       "thousand years",
@@ -1315,11 +1335,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "ばしょ",
+    "pronunciation": "ば",
     "exampleSentence": "場所 (ばしょ)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "ばしょ",
+    "reading": "ば",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -1362,7 +1382,8 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-040",
@@ -1386,7 +1407,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "なつ",
-    "exampleSentence": "",
+    "exampleSentence": "夏休み (なつやすみ)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "なつ",
@@ -1402,9 +1423,9 @@
   {
     "id": "ja-kanji-n4-041",
     "type": "vocabulary",
-    "statement": "The kanji 夕 means 'evening'",
+    "statement": "The kanji 夕 means 'evening, dusk'",
     "quizQuestion": "What does the kanji '夕' mean?",
-    "correctAnswer": "evening",
+    "correctAnswer": "evening, dusk",
     "distractors": [
       "researcher",
       "exercise",
@@ -1432,14 +1453,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-042",
     "type": "vocabulary",
-    "statement": "The kanji 多 means 'many'",
+    "statement": "The kanji 多 means 'many, numerous'",
     "quizQuestion": "What does the kanji '多' mean?",
-    "correctAnswer": "many",
+    "correctAnswer": "many, numerous",
     "distractors": [
       "honest",
       "to leave",
@@ -1467,14 +1489,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-043",
     "type": "vocabulary",
-    "statement": "The kanji 夜 means 'evening'",
+    "statement": "The kanji 夜 means 'evening, night'",
     "quizQuestion": "What does the kanji '夜' mean?",
-    "correctAnswer": "evening",
+    "correctAnswer": "evening, night",
     "distractors": [
       "cooked rice",
       "public matter",
@@ -1491,7 +1514,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "よる",
-    "exampleSentence": "",
+    "exampleSentence": "今夜 (こんや)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "よる",
@@ -1526,7 +1549,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "いもうと",
-    "exampleSentence": "",
+    "exampleSentence": "姉妹 (しまい)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "いもうと",
@@ -1542,9 +1565,9 @@
   {
     "id": "ja-kanji-n4-045",
     "type": "vocabulary",
-    "statement": "The kanji 姉 means 'older sister'",
+    "statement": "The kanji 姉 means 'older sister, elder sister'",
     "quizQuestion": "What does the kanji '姉' mean?",
-    "correctAnswer": "older sister",
+    "correctAnswer": "older sister, elder sister",
     "distractors": [
       "graduation",
       "to make a sound",
@@ -1561,7 +1584,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "あね",
-    "exampleSentence": "",
+    "exampleSentence": "お姉ちゃん (おねえちゃん)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "あね",
@@ -1577,9 +1600,9 @@
   {
     "id": "ja-kanji-n4-046",
     "type": "vocabulary",
-    "statement": "The kanji 始 means 'to start'",
+    "statement": "The kanji 始 means 'to start, to begin'",
     "quizQuestion": "What does the kanji '始' mean?",
-    "correctAnswer": "to start",
+    "correctAnswer": "to start, to begin",
     "distractors": [
       "elegance",
       "(public) park",
@@ -1607,14 +1630,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-047",
     "type": "vocabulary",
-    "statement": "The kanji 字 means 'letter (of alphabet)'",
+    "statement": "The kanji 字 means 'character (esp. kanji), letter'",
     "quizQuestion": "What does the kanji '字' mean?",
-    "correctAnswer": "letter (of alphabet)",
+    "correctAnswer": "character (esp. kanji), letter",
     "distractors": [
       "head (of a household)",
       "to say",
@@ -1630,11 +1654,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "もじ",
+    "pronunciation": "じ",
     "exampleSentence": "文字 (もじ)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "もじ",
+    "reading": "じ",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -1647,9 +1671,9 @@
   {
     "id": "ja-kanji-n4-048",
     "type": "vocabulary",
-    "statement": "The kanji 安 means 'anxiety'",
+    "statement": "The kanji 安 means 'anxiety, uneasiness'",
     "quizQuestion": "What does the kanji '安' mean?",
-    "correctAnswer": "anxiety",
+    "correctAnswer": "anxiety, uneasiness",
     "distractors": [
       "to get goosebumps",
       "all members",
@@ -1677,14 +1701,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-049",
     "type": "vocabulary",
-    "statement": "The kanji 室 means 'classroom'",
+    "statement": "The kanji 室 means 'room, wife (of someone of high rank)'",
     "quizQuestion": "What does the kanji '室' mean?",
-    "correctAnswer": "classroom",
+    "correctAnswer": "room, wife (of someone of high rank)",
     "distractors": [
       "to arrive at",
       "this world",
@@ -1700,11 +1725,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "きょうしつ",
+    "pronunciation": "しつ",
     "exampleSentence": "教室 (きょうしつ)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "きょうしつ",
+    "reading": "しつ",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -1717,9 +1742,9 @@
   {
     "id": "ja-kanji-n4-050",
     "type": "vocabulary",
-    "statement": "The kanji 家 means 'house'",
+    "statement": "The kanji 家 means 'house, residence'",
     "quizQuestion": "What does the kanji '家' mean?",
-    "correctAnswer": "house",
+    "correctAnswer": "house, residence",
     "distractors": [
       "quick",
       "explanation",
@@ -1736,7 +1761,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "いえ",
-    "exampleSentence": "",
+    "exampleSentence": "家族 (かぞく)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "いえ",
@@ -1752,9 +1777,9 @@
   {
     "id": "ja-kanji-n4-051",
     "type": "vocabulary",
-    "statement": "The kanji 少 means 'small quantity'",
+    "statement": "The kanji 少 means 'small quantity, little'",
     "quizQuestion": "What does the kanji '少' mean?",
-    "correctAnswer": "small quantity",
+    "correctAnswer": "small quantity, little",
     "distractors": [
       "cooperation",
       "hospitalization",
@@ -1782,14 +1807,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-052",
     "type": "vocabulary",
-    "statement": "The kanji 屋 means 'room'",
+    "statement": "The kanji 屋 means 'shop, store'",
     "quizQuestion": "What does the kanji '屋' mean?",
-    "correctAnswer": "room",
+    "correctAnswer": "shop, store",
     "distractors": [
       "work",
       "devising (a way)",
@@ -1805,11 +1831,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "へや",
+    "pronunciation": "や",
     "exampleSentence": "部屋 (へや)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "へや",
+    "reading": "や",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -1822,9 +1848,9 @@
   {
     "id": "ja-kanji-n4-053",
     "type": "vocabulary",
-    "statement": "The kanji 工 means 'factory'",
+    "statement": "The kanji 工 means 'factory, plant'",
     "quizQuestion": "What does the kanji '工' mean?",
-    "correctAnswer": "factory",
+    "correctAnswer": "factory, plant",
     "distractors": [
       "limit",
       "puberty",
@@ -1852,14 +1878,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-054",
     "type": "vocabulary",
-    "statement": "The kanji 帰 means 'to return'",
+    "statement": "The kanji 帰 means 'to return, to come home'",
     "quizQuestion": "What does the kanji '帰' mean?",
-    "correctAnswer": "to return",
+    "correctAnswer": "to return, to come home",
     "distractors": [
       "worry",
       "space",
@@ -1887,14 +1914,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-055",
     "type": "vocabulary",
-    "statement": "The kanji 広 means 'spacious'",
+    "statement": "The kanji 広 means 'spacious, vast'",
     "quizQuestion": "What does the kanji '広' mean?",
-    "correctAnswer": "spacious",
+    "correctAnswer": "spacious, vast",
     "distractors": [
       "ability",
       "stand",
@@ -1922,14 +1950,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-056",
     "type": "vocabulary",
-    "statement": "The kanji 店 means 'store'",
+    "statement": "The kanji 店 means 'store, shop'",
     "quizQuestion": "What does the kanji '店' mean?",
-    "correctAnswer": "store",
+    "correctAnswer": "store, shop",
     "distractors": [
       "tactics",
       "to pour (into)",
@@ -1946,7 +1975,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "みせ",
-    "exampleSentence": "",
+    "exampleSentence": "お店 (おみせ)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "みせ",
@@ -1962,9 +1991,9 @@
   {
     "id": "ja-kanji-n4-057",
     "type": "vocabulary",
-    "statement": "The kanji 度 means 'this time'",
+    "statement": "The kanji 度 means 'this time, now'",
     "quizQuestion": "What does the kanji '度' mean?",
-    "correctAnswer": "this time",
+    "correctAnswer": "this time, now",
     "distractors": [
       "to hurry",
       "the body",
@@ -1992,7 +2021,8 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-058",
@@ -2027,14 +2057,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-059",
     "type": "vocabulary",
-    "statement": "The kanji 弟 means 'younger brother'",
+    "statement": "The kanji 弟 means 'younger brother, little brother'",
     "quizQuestion": "What does the kanji '弟' mean?",
-    "correctAnswer": "younger brother",
+    "correctAnswer": "younger brother, little brother",
     "distractors": [
       "claim",
       "person",
@@ -2051,7 +2082,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "おとうと",
-    "exampleSentence": "",
+    "exampleSentence": "兄弟 (きょうだい)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "おとうと",
@@ -2067,9 +2098,9 @@
   {
     "id": "ja-kanji-n4-060",
     "type": "vocabulary",
-    "statement": "The kanji 強 means 'strong'",
+    "statement": "The kanji 強 means 'strong, potent'",
     "quizQuestion": "What does the kanji '強' mean?",
-    "correctAnswer": "strong",
+    "correctAnswer": "strong, potent",
     "distractors": [
       "to walk",
       "sky",
@@ -2097,14 +2128,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-061",
     "type": "vocabulary",
-    "statement": "The kanji 待 means 'to wait'",
+    "statement": "The kanji 待 means 'to wait, to await'",
     "quizQuestion": "What does the kanji '待' mean?",
-    "correctAnswer": "to wait",
+    "correctAnswer": "to wait, to await",
     "distractors": [
       "low-lying part of a city (usu. containing shops",
       "blue",
@@ -2132,14 +2164,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-062",
     "type": "vocabulary",
-    "statement": "The kanji 心 means 'worry'",
+    "statement": "The kanji 心 means 'mind, heart'",
     "quizQuestion": "What does the kanji '心' mean?",
-    "correctAnswer": "worry",
+    "correctAnswer": "mind, heart",
     "distractors": [
       "colour",
       "person",
@@ -2155,11 +2188,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "しんぱい",
+    "pronunciation": "こころ",
     "exampleSentence": "心配 (しんぱい)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "しんぱい",
+    "reading": "こころ",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -2172,9 +2205,9 @@
   {
     "id": "ja-kanji-n4-063",
     "type": "vocabulary",
-    "statement": "The kanji 思 means 'to think'",
+    "statement": "The kanji 思 means 'to think, to consider'",
     "quizQuestion": "What does the kanji '思' mean?",
-    "correctAnswer": "to think",
+    "correctAnswer": "to think, to consider",
     "distractors": [
       "to occur",
       "black tea",
@@ -2202,14 +2235,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-064",
     "type": "vocabulary",
-    "statement": "The kanji 急 means 'sudden'",
+    "statement": "The kanji 急 means 'sudden, abrupt'",
     "quizQuestion": "What does the kanji '急' mean?",
-    "correctAnswer": "sudden",
+    "correctAnswer": "sudden, abrupt",
     "distractors": [
       "anxiety",
       "special",
@@ -2226,7 +2260,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "きゅう",
-    "exampleSentence": "",
+    "exampleSentence": "急ぐ (いそぐ)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "きゅう",
@@ -2242,9 +2276,9 @@
   {
     "id": "ja-kanji-n4-065",
     "type": "vocabulary",
-    "statement": "The kanji 悪 means 'bad'",
+    "statement": "The kanji 悪 means 'bad, poor'",
     "quizQuestion": "What does the kanji '悪' mean?",
-    "correctAnswer": "bad",
+    "correctAnswer": "bad, poor",
     "distractors": [
       "last year",
       "to spread (out)",
@@ -2272,14 +2306,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-066",
     "type": "vocabulary",
-    "statement": "The kanji 意 means 'meaning'",
+    "statement": "The kanji 意 means 'meaning, significance'",
     "quizQuestion": "What does the kanji '意' mean?",
-    "correctAnswer": "meaning",
+    "correctAnswer": "meaning, significance",
     "distractors": [
       "to gulp down",
       "loser",
@@ -2307,14 +2342,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-067",
     "type": "vocabulary",
-    "statement": "The kanji 手 means 'hand'",
+    "statement": "The kanji 手 means 'hand, arm'",
     "quizQuestion": "What does the kanji '手' mean?",
-    "correctAnswer": "hand",
+    "correctAnswer": "hand, arm",
     "distractors": [
       "week",
       "one week",
@@ -2331,7 +2367,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "て",
-    "exampleSentence": "",
+    "exampleSentence": "相手 (あいて)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "て",
@@ -2347,9 +2383,9 @@
   {
     "id": "ja-kanji-n4-068",
     "type": "vocabulary",
-    "statement": "The kanji 持 means 'to hold (in one's hand)'",
+    "statement": "The kanji 持 means 'to hold (in one's hand), to take'",
     "quizQuestion": "What does the kanji '持' mean?",
-    "correctAnswer": "to hold (in one's hand)",
+    "correctAnswer": "to hold (in one's hand), to take",
     "distractors": [
       "commodity",
       "to gulp down",
@@ -2377,14 +2413,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-069",
     "type": "vocabulary",
-    "statement": "The kanji 教 means 'to teach'",
+    "statement": "The kanji 教 means 'to teach, to instruct'",
     "quizQuestion": "What does the kanji '教' mean?",
-    "correctAnswer": "to teach",
+    "correctAnswer": "to teach, to instruct",
     "distractors": [
       "giant",
       "I",
@@ -2412,14 +2449,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-070",
     "type": "vocabulary",
-    "statement": "The kanji 文 means 'letter (of alphabet)'",
+    "statement": "The kanji 文 means 'letter (of alphabet), character'",
     "quizQuestion": "What does the kanji '文' mean?",
-    "correctAnswer": "letter (of alphabet)",
+    "correctAnswer": "letter (of alphabet), character",
     "distractors": [
       "clock",
       "study",
@@ -2447,14 +2485,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-071",
     "type": "vocabulary",
-    "statement": "The kanji 料 means 'cooking'",
+    "statement": "The kanji 料 means 'cooking, cookery'",
     "quizQuestion": "What does the kanji '料' mean?",
-    "correctAnswer": "cooking",
+    "correctAnswer": "cooking, cookery",
     "distractors": [
       "morning",
       "nature",
@@ -2482,14 +2521,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-072",
     "type": "vocabulary",
-    "statement": "The kanji 新 means 'new'",
+    "statement": "The kanji 新 means 'new, neo-'",
     "quizQuestion": "What does the kanji '新' mean?",
-    "correctAnswer": "new",
+    "correctAnswer": "new, neo-",
     "distractors": [
       "complaint",
       "to open (a door",
@@ -2505,11 +2545,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "あたらしい",
+    "pronunciation": "しん",
     "exampleSentence": "新しい (あたらしい)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "あたらしい",
+    "reading": "しん",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -2522,9 +2562,9 @@
   {
     "id": "ja-kanji-n4-073",
     "type": "vocabulary",
-    "statement": "The kanji 方 means 'direction'",
+    "statement": "The kanji 方 means 'direction, way'",
     "quizQuestion": "What does the kanji '方' mean?",
-    "correctAnswer": "direction",
+    "correctAnswer": "direction, way",
     "distractors": [
       "movie",
       "(a) step",
@@ -2541,7 +2581,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "ほう",
-    "exampleSentence": "",
+    "exampleSentence": "方法 (ほうほう)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "ほう",
@@ -2557,9 +2597,9 @@
   {
     "id": "ja-kanji-n4-074",
     "type": "vocabulary",
-    "statement": "The kanji 旅 means 'travel'",
+    "statement": "The kanji 旅 means 'travel, trip'",
     "quizQuestion": "What does the kanji '旅' mean?",
-    "correctAnswer": "travel",
+    "correctAnswer": "travel, trip",
     "distractors": [
       "quality",
       "hospital",
@@ -2576,7 +2616,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "たび",
-    "exampleSentence": "",
+    "exampleSentence": "旅行 (りょこう)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "たび",
@@ -2592,9 +2632,9 @@
   {
     "id": "ja-kanji-n4-075",
     "type": "vocabulary",
-    "statement": "The kanji 族 means 'family'",
+    "statement": "The kanji 族 means 'family, members of a family'",
     "quizQuestion": "What does the kanji '族' mean?",
-    "correctAnswer": "family",
+    "correctAnswer": "family, members of a family",
     "distractors": [
       "head (of a household",
       "this time",
@@ -2622,14 +2662,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-076",
     "type": "vocabulary",
-    "statement": "The kanji 早 means 'fast'",
+    "statement": "The kanji 早 means 'fast, quick'",
     "quizQuestion": "What does the kanji '早' mean?",
-    "correctAnswer": "fast",
+    "correctAnswer": "fast, quick",
     "distractors": [
       "dweller",
       "we",
@@ -2657,14 +2698,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-077",
     "type": "vocabulary",
-    "statement": "The kanji 明 means 'explanation'",
+    "statement": "The kanji 明 means 'explanation, exposition'",
     "quizQuestion": "What does the kanji '明' mean?",
-    "correctAnswer": "explanation",
+    "correctAnswer": "explanation, exposition",
     "distractors": [
       "habit",
       "to wait",
@@ -2692,7 +2734,8 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-078",
@@ -2727,14 +2770,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-079",
     "type": "vocabulary",
-    "statement": "The kanji 春 means 'spring'",
+    "statement": "The kanji 春 means 'spring, springtime'",
     "quizQuestion": "What does the kanji '春' mean?",
-    "correctAnswer": "spring",
+    "correctAnswer": "spring, springtime",
     "distractors": [
       "week",
       "valid",
@@ -2751,7 +2795,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "はる",
-    "exampleSentence": "",
+    "exampleSentence": "青春 (せいしゅん)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "はる",
@@ -2767,9 +2811,9 @@
   {
     "id": "ja-kanji-n4-080",
     "type": "vocabulary",
-    "statement": "The kanji 昼 means 'noon'",
+    "statement": "The kanji 昼 means 'noon, midday'",
     "quizQuestion": "What does the kanji '昼' mean?",
-    "correctAnswer": "noon",
+    "correctAnswer": "noon, midday",
     "distractors": [
       "acquaintance",
       "to carry",
@@ -2786,7 +2830,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "ひる",
-    "exampleSentence": "",
+    "exampleSentence": "昼間 (ひるま)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "ひる",
@@ -2832,14 +2876,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-082",
     "type": "vocabulary",
-    "statement": "The kanji 有 means 'famous'",
+    "statement": "The kanji 有 means 'famous, fame'",
     "quizQuestion": "What does the kanji '有' mean?",
-    "correctAnswer": "famous",
+    "correctAnswer": "famous, fame",
     "distractors": [
       "to answer",
       "kanji",
@@ -2867,7 +2912,8 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-083",
@@ -2891,7 +2937,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "ふく",
-    "exampleSentence": "",
+    "exampleSentence": "制服 (せいふく)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "ふく",
@@ -2907,9 +2953,9 @@
   {
     "id": "ja-kanji-n4-084",
     "type": "vocabulary",
-    "statement": "The kanji 朝 means 'morning'",
+    "statement": "The kanji 朝 means 'morning, breakfast'",
     "quizQuestion": "What does the kanji '朝' mean?",
-    "correctAnswer": "morning",
+    "correctAnswer": "morning, breakfast",
     "distractors": [
       "breakfast",
       "to spread",
@@ -2926,7 +2972,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "あさ",
-    "exampleSentence": "",
+    "exampleSentence": "今朝 (けさ)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "あさ",
@@ -2942,9 +2988,9 @@
   {
     "id": "ja-kanji-n4-085",
     "type": "vocabulary",
-    "statement": "The kanji 業 means 'work'",
+    "statement": "The kanji 業 means 'work, operation'",
     "quizQuestion": "What does the kanji '業' mean?",
-    "correctAnswer": "work",
+    "correctAnswer": "work, operation",
     "distractors": [
       "this time",
       "railway station",
@@ -2972,14 +3018,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-086",
     "type": "vocabulary",
-    "statement": "The kanji 楽 means 'enjoyable'",
+    "statement": "The kanji 楽 means 'comfort, ease'",
     "quizQuestion": "What does the kanji '楽' mean?",
-    "correctAnswer": "enjoyable",
+    "correctAnswer": "comfort, ease",
     "distractors": [
       "one's own convenience",
       "house (e.g. of Tokugawa)",
@@ -2995,11 +3042,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "たのしい",
+    "pronunciation": "らく",
     "exampleSentence": "楽しい (たのしい)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "たのしい",
+    "reading": "らく",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -3012,9 +3059,9 @@
   {
     "id": "ja-kanji-n4-087",
     "type": "vocabulary",
-    "statement": "The kanji 歌 means 'song'",
+    "statement": "The kanji 歌 means 'song, singing'",
     "quizQuestion": "What does the kanji '歌' mean?",
-    "correctAnswer": "song",
+    "correctAnswer": "song, singing",
     "distractors": [
       "mouth",
       "to arrive at",
@@ -3031,7 +3078,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "うた",
-    "exampleSentence": "",
+    "exampleSentence": "歌う (うたう)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "うた",
@@ -3047,9 +3094,9 @@
   {
     "id": "ja-kanji-n4-088",
     "type": "vocabulary",
-    "statement": "The kanji 止 means 'to stop'",
+    "statement": "The kanji 止 means 'to stop, to turn off'",
     "quizQuestion": "What does the kanji '止' mean?",
-    "correctAnswer": "to stop",
+    "correctAnswer": "to stop, to turn off",
     "distractors": [
       "kanji",
       "to open",
@@ -3077,14 +3124,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-089",
     "type": "vocabulary",
-    "statement": "The kanji 正 means 'honest'",
+    "statement": "The kanji 正 means 'honest, frank'",
     "quizQuestion": "What does the kanji '正' mean?",
-    "correctAnswer": "honest",
+    "correctAnswer": "honest, frank",
     "distractors": [
       "humming",
       "small quantity",
@@ -3112,7 +3160,8 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-090",
@@ -3147,14 +3196,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-091",
     "type": "vocabulary",
-    "statement": "The kanji 死 means 'to die'",
+    "statement": "The kanji 死 means 'death, decease'",
     "quizQuestion": "What does the kanji '死' mean?",
-    "correctAnswer": "to die",
+    "correctAnswer": "death, decease",
     "distractors": [
       "silver (Ag)",
       "head (of a household",
@@ -3170,11 +3220,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "しぬ",
+    "pronunciation": "し",
     "exampleSentence": "死ぬ (しぬ)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "しぬ",
+    "reading": "し",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -3187,9 +3237,9 @@
   {
     "id": "ja-kanji-n4-092",
     "type": "vocabulary",
-    "statement": "The kanji 注 means 'attention'",
+    "statement": "The kanji 注 means 'attention, notice'",
     "quizQuestion": "What does the kanji '注' mean?",
-    "correctAnswer": "attention",
+    "correctAnswer": "attention, notice",
     "distractors": [
       "the body",
       "to get up",
@@ -3217,7 +3267,8 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-093",
@@ -3252,14 +3303,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-094",
     "type": "vocabulary",
-    "statement": "The kanji 海 means 'sea'",
+    "statement": "The kanji 海 means 'sea, ocean'",
     "quizQuestion": "What does the kanji '海' mean?",
-    "correctAnswer": "sea",
+    "correctAnswer": "sea, ocean",
     "distractors": [
       "serious",
       "factory",
@@ -3276,7 +3328,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "うみ",
-    "exampleSentence": "",
+    "exampleSentence": "海外 (かいがい)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "うみ",
@@ -3292,9 +3344,9 @@
   {
     "id": "ja-kanji-n4-095",
     "type": "vocabulary",
-    "statement": "The kanji 漢 means 'kanji'",
+    "statement": "The kanji 漢 means 'kanji, Chinese character'",
     "quizQuestion": "What does the kanji '漢' mean?",
-    "correctAnswer": "kanji",
+    "correctAnswer": "kanji, Chinese character",
     "distractors": [
       "to teach",
       "body",
@@ -3322,14 +3374,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-096",
     "type": "vocabulary",
-    "statement": "The kanji 牛 means 'cattle (Bos taurus)'",
+    "statement": "The kanji 牛 means 'cattle (Bos taurus), cow'",
     "quizQuestion": "What does the kanji '牛' mean?",
-    "correctAnswer": "cattle (Bos taurus)",
+    "correctAnswer": "cattle (Bos taurus), cow",
     "distractors": [
       "small fish",
       "conversation",
@@ -3346,7 +3399,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "うし",
-    "exampleSentence": "",
+    "exampleSentence": "牛乳 (ぎゅうにゅう)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "うし",
@@ -3362,9 +3415,9 @@
   {
     "id": "ja-kanji-n4-097",
     "type": "vocabulary",
-    "statement": "The kanji 物 means 'thing'",
+    "statement": "The kanji 物 means 'thing, object'",
     "quizQuestion": "What does the kanji '物' mean?",
-    "correctAnswer": "thing",
+    "correctAnswer": "thing, object",
     "distractors": [
       "movie",
       "to make a sound",
@@ -3381,7 +3434,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "もの",
-    "exampleSentence": "",
+    "exampleSentence": "人物 (じんぶつ)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "もの",
@@ -3397,9 +3450,9 @@
   {
     "id": "ja-kanji-n4-098",
     "type": "vocabulary",
-    "statement": "The kanji 特 means 'particularly'",
+    "statement": "The kanji 特 means 'particularly, especially'",
     "quizQuestion": "What does the kanji '特' mean?",
-    "correctAnswer": "particularly",
+    "correctAnswer": "particularly, especially",
     "distractors": [
       "all members",
       "head (of a household",
@@ -3427,14 +3480,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-099",
     "type": "vocabulary",
-    "statement": "The kanji 犬 means 'dog (Canis (lupus) familiaris)'",
+    "statement": "The kanji 犬 means 'dog (Canis (lupus) familiaris), squealer'",
     "quizQuestion": "What does the kanji '犬' mean?",
-    "correctAnswer": "dog (Canis (lupus) familiaris)",
+    "correctAnswer": "dog (Canis (lupus) familiaris), squealer",
     "distractors": [
       "speech",
       "broadcasting",
@@ -3451,7 +3505,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "いぬ",
-    "exampleSentence": "",
+    "exampleSentence": "子犬 (こいぬ)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "いぬ",
@@ -3467,9 +3521,9 @@
   {
     "id": "ja-kanji-n4-100",
     "type": "vocabulary",
-    "statement": "The kanji 理 means 'reason'",
+    "statement": "The kanji 理 means 'reason, pretext'",
     "quizQuestion": "What does the kanji '理' mean?",
-    "correctAnswer": "reason",
+    "correctAnswer": "reason, pretext",
     "distractors": [
       "bird",
       "preparation",
@@ -3497,14 +3551,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-101",
     "type": "vocabulary",
-    "statement": "The kanji 用 means 'preparation'",
+    "statement": "The kanji 用 means 'business, task'",
     "quizQuestion": "What does the kanji '用' mean?",
-    "correctAnswer": "preparation",
+    "correctAnswer": "business, task",
     "distractors": [
       "midwinter",
       "hospital",
@@ -3520,11 +3575,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "ようい",
+    "pronunciation": "よう",
     "exampleSentence": "用意 (ようい)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "ようい",
+    "reading": "よう",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -3556,7 +3611,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "た",
-    "exampleSentence": "",
+    "exampleSentence": "田舎 (いなか)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "た",
@@ -3572,9 +3627,9 @@
   {
     "id": "ja-kanji-n4-103",
     "type": "vocabulary",
-    "statement": "The kanji 町 means 'town'",
+    "statement": "The kanji 町 means 'town, block'",
     "quizQuestion": "What does the kanji '町' mean?",
-    "correctAnswer": "town",
+    "correctAnswer": "town, block",
     "distractors": [
       "(train) station attendant",
       "(what) the heck",
@@ -3591,7 +3646,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "まち",
-    "exampleSentence": "",
+    "exampleSentence": "町中 (まちなか)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "まち",
@@ -3607,9 +3662,9 @@
   {
     "id": "ja-kanji-n4-104",
     "type": "vocabulary",
-    "statement": "The kanji 画 means 'plan'",
+    "statement": "The kanji 画 means 'plan, project'",
     "quizQuestion": "What does the kanji '画' mean?",
-    "correctAnswer": "plan",
+    "correctAnswer": "plan, project",
     "distractors": [
       "near",
       "purpose",
@@ -3637,14 +3692,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-105",
     "type": "vocabulary",
-    "statement": "The kanji 界 means 'the world'",
+    "statement": "The kanji 界 means 'the world, society'",
     "quizQuestion": "What does the kanji '界' mean?",
-    "correctAnswer": "the world",
+    "correctAnswer": "the world, society",
     "distractors": [
       "mind",
       "research establishment",
@@ -3672,14 +3728,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-106",
     "type": "vocabulary",
-    "statement": "The kanji 病 means 'illness (usu. excluding minor ailments'",
+    "statement": "The kanji 病 means 'illness, disease'",
     "quizQuestion": "What does the kanji '病' mean?",
-    "correctAnswer": "illness (usu. excluding minor ailments",
+    "correctAnswer": "illness, disease",
     "distractors": [
       "clock",
       "spark",
@@ -3695,11 +3752,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "びょうき",
+    "pronunciation": "やまい",
     "exampleSentence": "病気 (びょうき)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "びょうき",
+    "reading": "やまい",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -3712,9 +3769,9 @@
   {
     "id": "ja-kanji-n4-107",
     "type": "vocabulary",
-    "statement": "The kanji 発 means 'discovery'",
+    "statement": "The kanji 発 means 'discovery, detection'",
     "quizQuestion": "What does the kanji '発' mean?",
-    "correctAnswer": "discovery",
+    "correctAnswer": "discovery, detection",
     "distractors": [
       "to occur",
       "at once",
@@ -3742,14 +3799,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-108",
     "type": "vocabulary",
-    "statement": "The kanji 目 means 'eye'",
+    "statement": "The kanji 目 means 'eye, eyeball'",
     "quizQuestion": "What does the kanji '目' mean?",
-    "correctAnswer": "eye",
+    "correctAnswer": "eye, eyeball",
     "distractors": [
       "beef",
       "image (on a screen)",
@@ -3766,7 +3824,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "め",
-    "exampleSentence": "",
+    "exampleSentence": "目的 (もくてき)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "め",
@@ -3782,9 +3840,9 @@
   {
     "id": "ja-kanji-n4-109",
     "type": "vocabulary",
-    "statement": "The kanji 真 means 'photograph'",
+    "statement": "The kanji 真 means 'photograph, photo'",
     "quizQuestion": "What does the kanji '真' mean?",
-    "correctAnswer": "photograph",
+    "correctAnswer": "photograph, photo",
     "distractors": [
       "to get worse",
       "once",
@@ -3812,14 +3870,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-110",
     "type": "vocabulary",
-    "statement": "The kanji 着 means 'to calm down'",
+    "statement": "The kanji 着 means 'to calm down, to compose oneself'",
     "quizQuestion": "What does the kanji '着' mean?",
-    "correctAnswer": "to calm down",
+    "correctAnswer": "to calm down, to compose oneself",
     "distractors": [
       "spark",
       "to meet (by chance)",
@@ -3847,14 +3906,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-111",
     "type": "vocabulary",
-    "statement": "The kanji 知 means 'to be aware of'",
+    "statement": "The kanji 知 means 'to be aware of, to know'",
     "quizQuestion": "What does the kanji '知' mean?",
-    "correctAnswer": "to be aware of",
+    "correctAnswer": "to be aware of, to know",
     "distractors": [
       "lesson",
       "cooperation",
@@ -3882,14 +3942,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-112",
     "type": "vocabulary",
-    "statement": "The kanji 研 means 'study'",
+    "statement": "The kanji 研 means 'study, research'",
     "quizQuestion": "What does the kanji '研' mean?",
-    "correctAnswer": "study",
+    "correctAnswer": "study, research",
     "distractors": [
       "to spread",
       "anxiety",
@@ -3917,14 +3978,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-113",
     "type": "vocabulary",
-    "statement": "The kanji 社 means 'company'",
+    "statement": "The kanji 社 means 'company, association'",
     "quizQuestion": "What does the kanji '社' mean?",
-    "correctAnswer": "company",
+    "correctAnswer": "company, association",
     "distractors": [
       "overbearing",
       "wind",
@@ -3940,11 +4002,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "かいしゃ",
+    "pronunciation": "しゃ",
     "exampleSentence": "会社 (かいしゃ)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "かいしゃ",
+    "reading": "しゃ",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -3957,9 +4019,9 @@
   {
     "id": "ja-kanji-n4-114",
     "type": "vocabulary",
-    "statement": "The kanji 私 means 'I'",
+    "statement": "The kanji 私 means 'I, me'",
     "quizQuestion": "What does the kanji '私' mean?",
-    "correctAnswer": "I",
+    "correctAnswer": "I, me",
     "distractors": [
       "walk",
       "acting rashly",
@@ -3976,7 +4038,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "わたし",
-    "exampleSentence": "",
+    "exampleSentence": "私たち (わたしたち)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "わたし",
@@ -3992,9 +4054,9 @@
   {
     "id": "ja-kanji-n4-115",
     "type": "vocabulary",
-    "statement": "The kanji 秋 means 'autumn'",
+    "statement": "The kanji 秋 means 'autumn, fall'",
     "quizQuestion": "What does the kanji '秋' mean?",
-    "correctAnswer": "autumn",
+    "correctAnswer": "autumn, fall",
     "distractors": [
       "all members",
       "downtown",
@@ -4011,7 +4073,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "あき",
-    "exampleSentence": "",
+    "exampleSentence": "秋葉原 (あきはばら)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "あき",
@@ -4027,9 +4089,9 @@
   {
     "id": "ja-kanji-n4-116",
     "type": "vocabulary",
-    "statement": "The kanji 究 means 'study'",
+    "statement": "The kanji 究 means 'study, research'",
     "quizQuestion": "What does the kanji '究' mean?",
-    "correctAnswer": "study",
+    "correctAnswer": "study, research",
     "distractors": [
       "eye",
       "employee (of a store)",
@@ -4057,14 +4119,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-117",
     "type": "vocabulary",
-    "statement": "The kanji 空 means 'sky'",
+    "statement": "The kanji 空 means 'sky, the air'",
     "quizQuestion": "What does the kanji '空' mean?",
-    "correctAnswer": "sky",
+    "correctAnswer": "sky, the air",
     "distractors": [
       "near",
       "to roll",
@@ -4081,7 +4144,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "そら",
-    "exampleSentence": "",
+    "exampleSentence": "空気 (くうき)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "そら",
@@ -4097,9 +4160,9 @@
   {
     "id": "ja-kanji-n4-118",
     "type": "vocabulary",
-    "statement": "The kanji 立 means 'to stand'",
+    "statement": "The kanji 立 means 'to stand, to rise'",
     "quizQuestion": "What does the kanji '立' mean?",
-    "correctAnswer": "to stand",
+    "correctAnswer": "to stand, to rise",
     "distractors": [
       "dog (Canis (lupus) familiaris)",
       "to start",
@@ -4127,14 +4190,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-119",
     "type": "vocabulary",
-    "statement": "The kanji 答 means 'to answer'",
+    "statement": "The kanji 答 means 'to answer, to reply'",
     "quizQuestion": "What does the kanji '答' mean?",
-    "correctAnswer": "to answer",
+    "correctAnswer": "to answer, to reply",
     "distractors": [
       "to finish",
       "to sell (well)",
@@ -4162,14 +4226,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-120",
     "type": "vocabulary",
-    "statement": "The kanji 紙 means 'letter'",
+    "statement": "The kanji 紙 means 'paper'",
     "quizQuestion": "What does the kanji '紙' mean?",
-    "correctAnswer": "letter",
+    "correctAnswer": "paper",
     "distractors": [
       "particularly",
       "practice",
@@ -4185,11 +4250,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "てがみ",
+    "pronunciation": "かみ",
     "exampleSentence": "手紙 (てがみ)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "てがみ",
+    "reading": "かみ",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -4202,9 +4267,9 @@
   {
     "id": "ja-kanji-n4-121",
     "type": "vocabulary",
-    "statement": "The kanji 終 means 'to end'",
+    "statement": "The kanji 終 means 'to end, to come to an end'",
     "quizQuestion": "What does the kanji '終' mean?",
-    "correctAnswer": "to end",
+    "correctAnswer": "to end, to come to an end",
     "distractors": [
       "protagonist",
       "particularly",
@@ -4232,14 +4297,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-122",
     "type": "vocabulary",
-    "statement": "The kanji 習 means 'practice'",
+    "statement": "The kanji 習 means 'practice, training'",
     "quizQuestion": "What does the kanji '習' mean?",
-    "correctAnswer": "practice",
+    "correctAnswer": "practice, training",
     "distractors": [
       "to assist",
       "method",
@@ -4267,14 +4333,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-123",
     "type": "vocabulary",
-    "statement": "The kanji 考 means 'to think (about'",
+    "statement": "The kanji 考 means 'to think, to think over'",
     "quizQuestion": "What does the kanji '考' mean?",
-    "correctAnswer": "to think (about",
+    "correctAnswer": "to think, to think over",
     "distractors": [
       "(not) particularly",
       "interest (in something)",
@@ -4302,7 +4369,8 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-124",
@@ -4326,7 +4394,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "もの",
-    "exampleSentence": "",
+    "exampleSentence": "何者 (なにもの)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "もの",
@@ -4342,9 +4410,9 @@
   {
     "id": "ja-kanji-n4-125",
     "type": "vocabulary",
-    "statement": "The kanji 肉 means 'flesh'",
+    "statement": "The kanji 肉 means 'flesh, meat'",
     "quizQuestion": "What does the kanji '肉' mean?",
-    "correctAnswer": "flesh",
+    "correctAnswer": "flesh, meat",
     "distractors": [
       "heavy",
       "concentration",
@@ -4361,7 +4429,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "にく",
-    "exampleSentence": "",
+    "exampleSentence": "肉体 (にくたい)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "にく",
@@ -4377,9 +4445,9 @@
   {
     "id": "ja-kanji-n4-126",
     "type": "vocabulary",
-    "statement": "The kanji 自 means 'myself'",
+    "statement": "The kanji 自 means 'myself, yourself'",
     "quizQuestion": "What does the kanji '自' mean?",
-    "correctAnswer": "myself",
+    "correctAnswer": "myself, yourself",
     "distractors": [
       "youth",
       "quick",
@@ -4407,14 +4475,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-127",
     "type": "vocabulary",
-    "statement": "The kanji 色 means 'colour'",
+    "statement": "The kanji 色 means 'colour, color'",
     "quizQuestion": "What does the kanji '色' mean?",
-    "correctAnswer": "colour",
+    "correctAnswer": "colour, color",
     "distractors": [
       "no problem",
       "to hold (in one's hand)",
@@ -4431,7 +4500,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "いろ",
-    "exampleSentence": "",
+    "exampleSentence": "色々 (いろいろ)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "いろ",
@@ -4447,9 +4516,9 @@
   {
     "id": "ja-kanji-n4-128",
     "type": "vocabulary",
-    "statement": "The kanji 花 means 'flower'",
+    "statement": "The kanji 花 means 'flower, blossom'",
     "quizQuestion": "What does the kanji '花' mean?",
-    "correctAnswer": "flower",
+    "correctAnswer": "flower, blossom",
     "distractors": [
       "devising (a way)",
       "worst",
@@ -4466,7 +4535,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "はな",
-    "exampleSentence": "",
+    "exampleSentence": "花火 (はなび)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "はな",
@@ -4512,14 +4581,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-130",
     "type": "vocabulary",
-    "statement": "The kanji 茶 means 'tea (usu. green)'",
+    "statement": "The kanji 茶 means 'tea (usu. green), tea break (at work)'",
     "quizQuestion": "What does the kanji '茶' mean?",
-    "correctAnswer": "tea (usu. green)",
+    "correctAnswer": "tea (usu. green), tea break (at work)",
     "distractors": [
       "period",
       "paper",
@@ -4547,14 +4617,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-131",
     "type": "vocabulary",
-    "statement": "The kanji 親 means 'parent'",
+    "statement": "The kanji 親 means 'parent, parents'",
     "quizQuestion": "What does the kanji '親' mean?",
-    "correctAnswer": "parent",
+    "correctAnswer": "parent, parents",
     "distractors": [
       "rural area",
       "daytime",
@@ -4571,7 +4642,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "おや",
-    "exampleSentence": "",
+    "exampleSentence": "母親 (ははおや)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "おや",
@@ -4587,9 +4658,9 @@
   {
     "id": "ja-kanji-n4-132",
     "type": "vocabulary",
-    "statement": "The kanji 言 means 'to say'",
+    "statement": "The kanji 言 means 'to say, to utter'",
     "quizQuestion": "What does the kanji '言' mean?",
-    "correctAnswer": "to say",
+    "correctAnswer": "to say, to utter",
     "distractors": [
       "plan",
       "magnificent",
@@ -4617,14 +4688,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-133",
     "type": "vocabulary",
-    "statement": "The kanji 計 means 'extra'",
+    "statement": "The kanji 計 means 'extra, more'",
     "quizQuestion": "What does the kanji '計' mean?",
-    "correctAnswer": "extra",
+    "correctAnswer": "extra, more",
     "distractors": [
       "to see someone off (at a station",
       "store",
@@ -4652,14 +4724,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-134",
     "type": "vocabulary",
-    "statement": "The kanji 試 means 'to attempt'",
+    "statement": "The kanji 試 means 'to attempt, to test'",
     "quizQuestion": "What does the kanji '試' mean?",
-    "correctAnswer": "to attempt",
+    "correctAnswer": "to attempt, to test",
     "distractors": [
       "United Kingdom",
       "to make",
@@ -4687,14 +4760,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-135",
     "type": "vocabulary",
-    "statement": "The kanji 買 means 'to buy'",
+    "statement": "The kanji 買 means 'to buy, to purchase'",
     "quizQuestion": "What does the kanji '買' mean?",
-    "correctAnswer": "to buy",
+    "correctAnswer": "to buy, to purchase",
     "distractors": [
       "to get up",
       "downtown",
@@ -4722,14 +4796,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-136",
     "type": "vocabulary",
-    "statement": "The kanji 貸 means 'to lend'",
+    "statement": "The kanji 貸 means 'to lend, to loan'",
     "quizQuestion": "What does the kanji '貸' mean?",
-    "correctAnswer": "to lend",
+    "correctAnswer": "to lend, to loan",
     "distractors": [
       "cooking",
       "person",
@@ -4757,14 +4832,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-137",
     "type": "vocabulary",
-    "statement": "The kanji 質 means 'question'",
+    "statement": "The kanji 質 means 'quality, value'",
     "quizQuestion": "What does the kanji '質' mean?",
-    "correctAnswer": "question",
+    "correctAnswer": "quality, value",
     "distractors": [
       "to think (about",
       "valid",
@@ -4780,11 +4856,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "しつもん",
+    "pronunciation": "しつ",
     "exampleSentence": "質問 (しつもん)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "しつもん",
+    "reading": "しつ",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -4797,9 +4873,9 @@
   {
     "id": "ja-kanji-n4-138",
     "type": "vocabulary",
-    "statement": "The kanji 赤 means 'red'",
+    "statement": "The kanji 赤 means 'red, crimson'",
     "quizQuestion": "What does the kanji '赤' mean?",
-    "correctAnswer": "red",
+    "correctAnswer": "red, crimson",
     "distractors": [
       "paper",
       "death",
@@ -4815,11 +4891,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "あかい",
+    "pronunciation": "あか",
     "exampleSentence": "赤い (あかい)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "あかい",
+    "reading": "あか",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -4832,9 +4908,9 @@
   {
     "id": "ja-kanji-n4-139",
     "type": "vocabulary",
-    "statement": "The kanji 走 means 'to run'",
+    "statement": "The kanji 走 means 'to run, to run (of a vehicle)'",
     "quizQuestion": "What does the kanji '走' mean?",
-    "correctAnswer": "to run",
+    "correctAnswer": "to run, to run (of a vehicle)",
     "distractors": [
       "satisfaction",
       "ancient times",
@@ -4862,14 +4938,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-140",
     "type": "vocabulary",
-    "statement": "The kanji 起 means 'to get up'",
+    "statement": "The kanji 起 means 'to get up, to rise'",
     "quizQuestion": "What does the kanji '起' mean?",
-    "correctAnswer": "to get up",
+    "correctAnswer": "to get up, to rise",
     "distractors": [
       "kanji",
       "siblings",
@@ -4897,14 +4974,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-141",
     "type": "vocabulary",
-    "statement": "The kanji 足 means 'foot'",
+    "statement": "The kanji 足 means 'foot, paw'",
     "quizQuestion": "What does the kanji '足' mean?",
-    "correctAnswer": "foot",
+    "correctAnswer": "foot, paw",
     "distractors": [
       "by myself",
       "rice field",
@@ -4921,7 +4999,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "あし",
-    "exampleSentence": "",
+    "exampleSentence": "足りる (たりる)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "あし",
@@ -4937,9 +5015,9 @@
   {
     "id": "ja-kanji-n4-142",
     "type": "vocabulary",
-    "statement": "The kanji 転 means 'to roll'",
+    "statement": "The kanji 転 means 'to roll, to tumble'",
     "quizQuestion": "What does the kanji '転' mean?",
-    "correctAnswer": "to roll",
+    "correctAnswer": "to roll, to tumble",
     "distractors": [
       "spring",
       "sound",
@@ -4967,14 +5045,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-143",
     "type": "vocabulary",
-    "statement": "The kanji 近 means 'near'",
+    "statement": "The kanji 近 means 'near, neighbourhood'",
     "quizQuestion": "What does the kanji '近' mean?",
-    "correctAnswer": "near",
+    "correctAnswer": "near, neighbourhood",
     "distractors": [
       "hospital",
       "spring",
@@ -5002,14 +5081,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-144",
     "type": "vocabulary",
-    "statement": "The kanji 送 means 'to send (a thing)'",
+    "statement": "The kanji 送 means 'to send (a thing), to dispatch'",
     "quizQuestion": "What does the kanji '送' mean?",
-    "correctAnswer": "to send (a thing)",
+    "correctAnswer": "to send (a thing), to dispatch",
     "distractors": [
       "work (e.g. book",
       "family",
@@ -5037,14 +5117,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-145",
     "type": "vocabulary",
-    "statement": "The kanji 通 means 'normal'",
+    "statement": "The kanji 通 means 'normal, ordinary'",
     "quizQuestion": "What does the kanji '通' mean?",
-    "correctAnswer": "normal",
+    "correctAnswer": "normal, ordinary",
     "distractors": [
       "to say",
       "the East",
@@ -5072,14 +5153,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-146",
     "type": "vocabulary",
-    "statement": "The kanji 週 means 'one week'",
+    "statement": "The kanji 週 means 'week'",
     "quizQuestion": "What does the kanji '週' mean?",
-    "correctAnswer": "one week",
+    "correctAnswer": "week",
     "distractors": [
       "week",
       "meaning",
@@ -5095,11 +5177,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "いっしゅうかん",
+    "pronunciation": "しゅう",
     "exampleSentence": "一週間 (いっしゅうかん)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "いっしゅうかん",
+    "reading": "しゅう",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -5112,9 +5194,9 @@
   {
     "id": "ja-kanji-n4-147",
     "type": "vocabulary",
-    "statement": "The kanji 運 means 'to carry'",
+    "statement": "The kanji 運 means 'to carry, to transport'",
     "quizQuestion": "What does the kanji '運' mean?",
-    "correctAnswer": "to carry",
+    "correctAnswer": "to carry, to transport",
     "distractors": [
       "spacious",
       "red",
@@ -5142,14 +5224,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-148",
     "type": "vocabulary",
-    "statement": "The kanji 道 means 'road'",
+    "statement": "The kanji 道 means 'road, path'",
     "quizQuestion": "What does the kanji '道' mean?",
-    "correctAnswer": "road",
+    "correctAnswer": "road, path",
     "distractors": [
       "researcher",
       "companion",
@@ -5166,7 +5249,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "みち",
-    "exampleSentence": "",
+    "exampleSentence": "道具 (どうぐ)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "みち",
@@ -5182,9 +5265,9 @@
   {
     "id": "ja-kanji-n4-149",
     "type": "vocabulary",
-    "statement": "The kanji 重 means 'heavy'",
+    "statement": "The kanji 重 means 'heavy, weighty'",
     "quizQuestion": "What does the kanji '重' mean?",
-    "correctAnswer": "heavy",
+    "correctAnswer": "heavy, weighty",
     "distractors": [
       "to move",
       "to live (of humans)",
@@ -5212,14 +5295,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-150",
     "type": "vocabulary",
-    "statement": "The kanji 野 means 'plain'",
+    "statement": "The kanji 野 means 'plain, field'",
     "quizQuestion": "What does the kanji '野' mean?",
-    "correctAnswer": "plain",
+    "correctAnswer": "plain, field",
     "distractors": [
       "building",
       "spring",
@@ -5236,7 +5320,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "の",
-    "exampleSentence": "",
+    "exampleSentence": "野菜 (やさい)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "の",
@@ -5252,9 +5336,9 @@
   {
     "id": "ja-kanji-n4-151",
     "type": "vocabulary",
-    "statement": "The kanji 銀 means 'silver (Ag)'",
+    "statement": "The kanji 銀 means 'silver (Ag), silver coin'",
     "quizQuestion": "What does the kanji '銀' mean?",
-    "correctAnswer": "silver (Ag)",
+    "correctAnswer": "silver (Ag), silver coin",
     "distractors": [
       "one week",
       "photograph",
@@ -5271,7 +5355,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "ぎん",
-    "exampleSentence": "",
+    "exampleSentence": "銀色 (ぎんいろ)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "ぎん",
@@ -5287,9 +5371,9 @@
   {
     "id": "ja-kanji-n4-152",
     "type": "vocabulary",
-    "statement": "The kanji 開 means 'to open'",
+    "statement": "The kanji 開 means 'to open, to undo'",
     "quizQuestion": "What does the kanji '開' mean?",
-    "correctAnswer": "to open",
+    "correctAnswer": "to open, to undo",
     "distractors": [
       "to collect",
       "A common name for the area around Akihabara Station in the Chiyoda ward of Tokyo",
@@ -5317,14 +5401,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-153",
     "type": "vocabulary",
-    "statement": "The kanji 院 means 'hospital'",
+    "statement": "The kanji 院 means 'house of parliament, graduate school'",
     "quizQuestion": "What does the kanji '院' mean?",
-    "correctAnswer": "hospital",
+    "correctAnswer": "house of parliament, graduate school",
     "distractors": [
       "photograph",
       "mouth",
@@ -5340,11 +5425,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "びょういん",
+    "pronunciation": "いん",
     "exampleSentence": "病院 (びょういん)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "びょういん",
+    "reading": "いん",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -5357,9 +5442,9 @@
   {
     "id": "ja-kanji-n4-154",
     "type": "vocabulary",
-    "statement": "The kanji 集 means 'to gather'",
+    "statement": "The kanji 集 means 'to gather, to collect'",
     "quizQuestion": "What does the kanji '集' mean?",
-    "correctAnswer": "to gather",
+    "correctAnswer": "to gather, to collect",
     "distractors": [
       "in front of a station",
       "Tokyo",
@@ -5387,14 +5472,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-155",
     "type": "vocabulary",
-    "statement": "The kanji 青 means 'blue'",
+    "statement": "The kanji 青 means 'blue, azure'",
     "quizQuestion": "What does the kanji '青' mean?",
-    "correctAnswer": "blue",
+    "correctAnswer": "blue, azure",
     "distractors": [
       "work",
       "to catch",
@@ -5410,11 +5496,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "あおい",
+    "pronunciation": "あお",
     "exampleSentence": "青い (あおい)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "あおい",
+    "reading": "あお",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -5427,9 +5513,9 @@
   {
     "id": "ja-kanji-n4-156",
     "type": "vocabulary",
-    "statement": "The kanji 音 means 'sound'",
+    "statement": "The kanji 音 means 'sound, noise'",
     "quizQuestion": "What does the kanji '音' mean?",
-    "correctAnswer": "sound",
+    "correctAnswer": "sound, noise",
     "distractors": [
       "evening",
       "older brother",
@@ -5446,7 +5532,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "おと",
-    "exampleSentence": "",
+    "exampleSentence": "足音 (あしおと)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "おと",
@@ -5462,9 +5548,9 @@
   {
     "id": "ja-kanji-n4-157",
     "type": "vocabulary",
-    "statement": "The kanji 題 means 'question (e.g. on a test)'",
+    "statement": "The kanji 題 means 'question (e.g. on a test), problem'",
     "quizQuestion": "What does the kanji '題' mean?",
-    "correctAnswer": "question (e.g. on a test)",
+    "correctAnswer": "question (e.g. on a test), problem",
     "distractors": [
       "the West",
       "rice field",
@@ -5492,14 +5578,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-158",
     "type": "vocabulary",
-    "statement": "The kanji 風 means 'wind'",
+    "statement": "The kanji 風 means 'wind, breeze'",
     "quizQuestion": "What does the kanji '風' mean?",
-    "correctAnswer": "wind",
+    "correctAnswer": "wind, breeze",
     "distractors": [
       "daytime",
       "to cut",
@@ -5516,7 +5603,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "かぜ",
-    "exampleSentence": "",
+    "exampleSentence": "風景 (ふうけい)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "かぜ",
@@ -5532,9 +5619,9 @@
   {
     "id": "ja-kanji-n4-159",
     "type": "vocabulary",
-    "statement": "The kanji 飯 means 'cooked rice'",
+    "statement": "The kanji 飯 means 'cooked rice, meal'",
     "quizQuestion": "What does the kanji '飯' mean?",
-    "correctAnswer": "cooked rice",
+    "correctAnswer": "cooked rice, meal",
     "distractors": [
       "to lend a hand",
       "rice field",
@@ -5550,11 +5637,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "ごはん",
+    "pronunciation": "めし",
     "exampleSentence": "ご飯 (ごはん)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "ごはん",
+    "reading": "めし",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [
@@ -5567,9 +5654,9 @@
   {
     "id": "ja-kanji-n4-160",
     "type": "vocabulary",
-    "statement": "The kanji 飲 means 'to drink'",
+    "statement": "The kanji 飲 means 'to drink, to gulp'",
     "quizQuestion": "What does the kanji '飲' mean?",
-    "correctAnswer": "to drink",
+    "correctAnswer": "to drink, to gulp",
     "distractors": [
       "railway station",
       "spark",
@@ -5597,14 +5684,15 @@
       "Language"
     ],
     "rarity": "common",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n4-161",
     "type": "vocabulary",
-    "statement": "The kanji 駅 means 'railway station'",
+    "statement": "The kanji 駅 means 'railway station, train station'",
     "quizQuestion": "What does the kanji '駅' mean?",
-    "correctAnswer": "railway station",
+    "correctAnswer": "railway station, train station",
     "distractors": [
       "clock",
       "hero",
@@ -5621,7 +5709,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "えき",
-    "exampleSentence": "",
+    "exampleSentence": "駅前 (えきまえ)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "えき",
@@ -5656,7 +5744,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "さかな",
-    "exampleSentence": "",
+    "exampleSentence": "雑魚 (ざこ)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "さかな",
@@ -5672,9 +5760,9 @@
   {
     "id": "ja-kanji-n4-163",
     "type": "vocabulary",
-    "statement": "The kanji 鳥 means 'bird'",
+    "statement": "The kanji 鳥 means 'bird, bird meat (esp. chicken meat)'",
     "quizQuestion": "What does the kanji '鳥' mean?",
-    "correctAnswer": "bird",
+    "correctAnswer": "bird, bird meat (esp. chicken meat)",
     "distractors": [
       "family",
       "puberty",
@@ -5691,7 +5779,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "とり",
-    "exampleSentence": "",
+    "exampleSentence": "小鳥 (ことり)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "とり",
@@ -5707,9 +5795,9 @@
   {
     "id": "ja-kanji-n4-164",
     "type": "vocabulary",
-    "statement": "The kanji 黒 means 'black'",
+    "statement": "The kanji 黒 means 'black, black go stone'",
     "quizQuestion": "What does the kanji '黒' mean?",
-    "correctAnswer": "black",
+    "correctAnswer": "black, black go stone",
     "distractors": [
       "to walk",
       "special",
@@ -5725,11 +5813,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "くろい",
+    "pronunciation": "くろ",
     "exampleSentence": "黒い (くろい)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "くろい",
+    "reading": "くろ",
     "subdeck": "Kanji",
     "jlptLevel": "N4",
     "category": [

@@ -2,9 +2,9 @@
   {
     "id": "ja-kanji-n2-001",
     "type": "vocabulary",
-    "statement": "The kanji 並 means 'to line up'",
+    "statement": "The kanji 並 means 'average, medium'",
     "quizQuestion": "What does the kanji '並' mean?",
-    "correctAnswer": "to line up",
+    "correctAnswer": "average, medium",
     "distractors": [
       "to put on (one's head)",
       "law",
@@ -20,11 +20,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "ならぶ",
+    "pronunciation": "なみ",
     "exampleSentence": "並ぶ (ならぶ)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "ならぶ",
+    "reading": "なみ",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -37,9 +37,9 @@
   {
     "id": "ja-kanji-n2-002",
     "type": "vocabulary",
-    "statement": "The kanji 乱 means 'disorder'",
+    "statement": "The kanji 乱 means 'disorder, chaos'",
     "quizQuestion": "What does the kanji '乱' mean?",
-    "correctAnswer": "disorder",
+    "correctAnswer": "disorder, chaos",
     "distractors": [
       "some",
       "victim",
@@ -67,14 +67,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-003",
     "type": "vocabulary",
-    "statement": "The kanji 乳 means '(cow's) milk'",
+    "statement": "The kanji 乳 means 'milk, breast'",
     "quizQuestion": "What does the kanji '乳' mean?",
-    "correctAnswer": "(cow's) milk",
+    "correctAnswer": "milk, breast",
     "distractors": [
       "super-",
       "aroma",
@@ -90,11 +91,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "ぎゅうにゅう",
+    "pronunciation": "ちち",
     "exampleSentence": "牛乳 (ぎゅうにゅう)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "ぎゅうにゅう",
+    "reading": "ちち",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -137,14 +138,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-005",
     "type": "vocabulary",
-    "statement": "The kanji 了 means 'comprehension'",
+    "statement": "The kanji 了 means 'comprehension, consent'",
     "quizQuestion": "What does the kanji '了' mean?",
-    "correctAnswer": "comprehension",
+    "correctAnswer": "comprehension, consent",
     "distractors": [
       "to paint over",
       "hateful",
@@ -172,14 +174,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-006",
     "type": "vocabulary",
-    "statement": "The kanji 介 means 'introduction'",
+    "statement": "The kanji 介 means 'introduction, presentation'",
     "quizQuestion": "What does the kanji '介' mean?",
-    "correctAnswer": "introduction",
+    "correctAnswer": "introduction, presentation",
     "distractors": [
       "light (i.e. not heavy)",
       "universe",
@@ -207,14 +210,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-007",
     "type": "vocabulary",
-    "statement": "The kanji 伸 means 'to stretch'",
+    "statement": "The kanji 伸 means 'to stretch, to extend'",
     "quizQuestion": "What does the kanji '伸' mean?",
-    "correctAnswer": "to stretch",
+    "correctAnswer": "to stretch, to extend",
     "distractors": [
       "to throw away",
       "Metropolitan Police Department (esp. Tokyo)",
@@ -242,14 +246,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-008",
     "type": "vocabulary",
-    "statement": "The kanji 伺 means 'to ask'",
+    "statement": "The kanji 伺 means 'to ask, to inquire'",
     "quizQuestion": "What does the kanji '伺' mean?",
-    "correctAnswer": "to ask",
+    "correctAnswer": "to ask, to inquire",
     "distractors": [
       "possession",
       "layer",
@@ -277,14 +282,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-009",
     "type": "vocabulary",
-    "statement": "The kanji 依 means 'request'",
+    "statement": "The kanji 依 means 'request, commission'",
     "quizQuestion": "What does the kanji '依' mean?",
-    "correctAnswer": "request",
+    "correctAnswer": "request, commission",
     "distractors": [
       "to sit (down)",
       "very young",
@@ -312,14 +318,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-010",
     "type": "vocabulary",
-    "statement": "The kanji 傾 means 'tendency'",
+    "statement": "The kanji 傾 means 'tendency, trend'",
     "quizQuestion": "What does the kanji '傾' mean?",
-    "correctAnswer": "tendency",
+    "correctAnswer": "tendency, trend",
     "distractors": [
       "making a person",
       "washing machine (laundry)",
@@ -347,14 +354,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-011",
     "type": "vocabulary",
-    "statement": "The kanji 億 means '10^8'",
+    "statement": "The kanji 億 means '10^8, 100,000'",
     "quizQuestion": "What does the kanji '億' mean?",
-    "correctAnswer": "10^8",
+    "correctAnswer": "10^8, 100,000",
     "distractors": [
       "suburb",
       "to ascend",
@@ -371,7 +379,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "おく",
-    "exampleSentence": "",
+    "exampleSentence": "億劫 (おっくう)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "おく",
@@ -387,9 +395,9 @@
   {
     "id": "ja-kanji-n2-012",
     "type": "vocabulary",
-    "statement": "The kanji 党 means 'scoundrel'",
+    "statement": "The kanji 党 means 'party (political), person who is fond of'",
     "quizQuestion": "What does the kanji '党' mean?",
-    "correctAnswer": "scoundrel",
+    "correctAnswer": "party (political), person who is fond of",
     "distractors": [
       "drop of water",
       "to deliver",
@@ -405,11 +413,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "あくとう",
+    "pronunciation": "とう",
     "exampleSentence": "悪党 (あくとう)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "あくとう",
+    "reading": "とう",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -422,9 +430,9 @@
   {
     "id": "ja-kanji-n2-013",
     "type": "vocabulary",
-    "statement": "The kanji 兵 means 'soldier'",
+    "statement": "The kanji 兵 means '(common) soldier, rank and file'",
     "quizQuestion": "What does the kanji '兵' mean?",
-    "correctAnswer": "soldier",
+    "correctAnswer": "(common) soldier, rank and file",
     "distractors": [
       "to stuff into",
       "to melt",
@@ -440,11 +448,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "へいし",
+    "pronunciation": "へい",
     "exampleSentence": "兵士 (へいし)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "へいし",
+    "reading": "へい",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -457,9 +465,9 @@
   {
     "id": "ja-kanji-n2-014",
     "type": "vocabulary",
-    "statement": "The kanji 冊 means 'one copy (of a book'",
+    "statement": "The kanji 冊 means 'counter for books, volume'",
     "quizQuestion": "What does the kanji '冊' mean?",
-    "correctAnswer": "one copy (of a book",
+    "correctAnswer": "counter for books, volume",
     "distractors": [
       "prop",
       "donation",
@@ -475,11 +483,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "いっさつ",
+    "pronunciation": "さつ",
     "exampleSentence": "一冊 (いっさつ)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "いっさつ",
+    "reading": "さつ",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -492,9 +500,9 @@
   {
     "id": "ja-kanji-n2-015",
     "type": "vocabulary",
-    "statement": "The kanji 凍 means 'to freeze'",
+    "statement": "The kanji 凍 means 'to freeze, to be frozen over'",
     "quizQuestion": "What does the kanji '凍' mean?",
-    "correctAnswer": "to freeze",
+    "correctAnswer": "to freeze, to be frozen over",
     "distractors": [
       "lower back",
       "steam",
@@ -522,14 +530,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-016",
     "type": "vocabulary",
-    "statement": "The kanji 券 means 'ticket'",
+    "statement": "The kanji 券 means 'ticket, coupon'",
     "quizQuestion": "What does the kanji '券' mean?",
-    "correctAnswer": "ticket",
+    "correctAnswer": "ticket, coupon",
     "distractors": [
       "monopoly",
       "to carry on one's shoulder",
@@ -546,7 +555,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "けん",
-    "exampleSentence": "",
+    "exampleSentence": "食券 (しょっけん)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "けん",
@@ -562,9 +571,9 @@
   {
     "id": "ja-kanji-n2-017",
     "type": "vocabulary",
-    "statement": "The kanji 刺 means 'stimulus'",
+    "statement": "The kanji 刺 means 'stimulus, impetus'",
     "quizQuestion": "What does the kanji '刺' mean?",
-    "correctAnswer": "stimulus",
+    "correctAnswer": "stimulus, impetus",
     "distractors": [
       "being enrolled (at a school)",
       "to reach",
@@ -592,14 +601,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-018",
     "type": "vocabulary",
-    "statement": "The kanji 劇 means 'tragedy'",
+    "statement": "The kanji 劇 means 'drama, play'",
     "quizQuestion": "What does the kanji '劇' mean?",
-    "correctAnswer": "tragedy",
+    "correctAnswer": "drama, play",
     "distractors": [
       "ore",
       "very young",
@@ -615,11 +625,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "ひげき",
+    "pronunciation": "げき",
     "exampleSentence": "悲劇 (ひげき)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "ひげき",
+    "reading": "げき",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -632,9 +642,9 @@
   {
     "id": "ja-kanji-n2-019",
     "type": "vocabulary",
-    "statement": "The kanji 募 means 'to become stronger'",
+    "statement": "The kanji 募 means 'to become stronger, to grow in intensity'",
     "quizQuestion": "What does the kanji '募' mean?",
-    "correctAnswer": "to become stronger",
+    "correctAnswer": "to become stronger, to grow in intensity",
     "distractors": [
       "one hand",
       "to be lit (e.g. candle",
@@ -662,7 +672,8 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-020",
@@ -686,7 +697,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "ひき",
-    "exampleSentence": "",
+    "exampleSentence": "一匹 (いっぴき)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "ひき",
@@ -702,9 +713,9 @@
   {
     "id": "ja-kanji-n2-021",
     "type": "vocabulary",
-    "statement": "The kanji 占 means 'to occupy'",
+    "statement": "The kanji 占 means 'to occupy, to hold'",
     "quizQuestion": "What does the kanji '占' mean?",
-    "correctAnswer": "to occupy",
+    "correctAnswer": "to occupy, to hold",
     "distractors": [
       "to become damp",
       "needle (compass",
@@ -732,14 +743,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-022",
     "type": "vocabulary",
-    "statement": "The kanji 卵 means 'eggs'",
+    "statement": "The kanji 卵 means 'eggs, egg'",
     "quizQuestion": "What does the kanji '卵' mean?",
-    "correctAnswer": "eggs",
+    "correctAnswer": "eggs, egg",
     "distractors": [
       "soldier",
       "gold (Au)",
@@ -756,7 +768,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "たまご",
-    "exampleSentence": "",
+    "exampleSentence": "卵焼き (たまごやき)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "たまご",
@@ -772,9 +784,9 @@
   {
     "id": "ja-kanji-n2-023",
     "type": "vocabulary",
-    "statement": "The kanji 双 means 'both parties'",
+    "statement": "The kanji 双 means 'pair'",
     "quizQuestion": "What does the kanji '双' mean?",
-    "correctAnswer": "both parties",
+    "correctAnswer": "pair",
     "distractors": [
       "average",
       "scorn",
@@ -790,11 +802,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "そうほう",
+    "pronunciation": "そう",
     "exampleSentence": "双方 (そうほう)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "そうほう",
+    "reading": "そう",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -807,9 +819,9 @@
   {
     "id": "ja-kanji-n2-024",
     "type": "vocabulary",
-    "statement": "The kanji 叫 means 'to shout'",
+    "statement": "The kanji 叫 means 'to shout, to cry'",
     "quizQuestion": "What does the kanji '叫' mean?",
-    "correctAnswer": "to shout",
+    "correctAnswer": "to shout, to cry",
     "distractors": [
       "bone",
       "Taiwan",
@@ -837,14 +849,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-025",
     "type": "vocabulary",
-    "statement": "The kanji 召 means 'to eat'",
+    "statement": "The kanji 召 means 'to eat, to drink'",
     "quizQuestion": "What does the kanji '召' mean?",
-    "correctAnswer": "to eat",
+    "correctAnswer": "to eat, to drink",
     "distractors": [
       "troublesome",
       "following year",
@@ -872,14 +885,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-026",
     "type": "vocabulary",
-    "statement": "The kanji 含 means 'to contain'",
+    "statement": "The kanji 含 means 'to contain, to comprise'",
     "quizQuestion": "What does the kanji '含' mean?",
-    "correctAnswer": "to contain",
+    "correctAnswer": "to contain, to comprise",
     "distractors": [
       "tower",
       "one drop (of fluid)",
@@ -907,14 +921,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-027",
     "type": "vocabulary",
-    "statement": "The kanji 咲 means 'to bloom'",
+    "statement": "The kanji 咲 means 'to bloom, to flower'",
     "quizQuestion": "What does the kanji '咲' mean?",
-    "correctAnswer": "to bloom",
+    "correctAnswer": "to bloom, to flower",
     "distractors": [
       "to reach",
       "promotion",
@@ -942,14 +957,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-028",
     "type": "vocabulary",
-    "statement": "The kanji 喫 means 'coffee shop'",
+    "statement": "The kanji 喫 means 'coffee shop, tearoom'",
     "quizQuestion": "What does the kanji '喫' mean?",
-    "correctAnswer": "coffee shop",
+    "correctAnswer": "coffee shop, tearoom",
     "distractors": [
       "group",
       "twins",
@@ -977,7 +993,8 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-029",
@@ -1012,7 +1029,8 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-030",
@@ -1036,7 +1054,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "しろ",
-    "exampleSentence": "",
+    "exampleSentence": "城壁 (じょうへき)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "しろ",
@@ -1082,14 +1100,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-032",
     "type": "vocabulary",
-    "statement": "The kanji 域 means 'area'",
+    "statement": "The kanji 域 means 'region, limits'",
     "quizQuestion": "What does the kanji '域' mean?",
-    "correctAnswer": "area",
+    "correctAnswer": "region, limits",
     "distractors": [
       "to get dry",
       "comprehension",
@@ -1105,11 +1124,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "ちいき",
+    "pronunciation": "いき",
     "exampleSentence": "地域 (ちいき)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "ちいき",
+    "reading": "いき",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -1122,9 +1141,9 @@
   {
     "id": "ja-kanji-n2-033",
     "type": "vocabulary",
-    "statement": "The kanji 塔 means 'tower'",
+    "statement": "The kanji 塔 means 'tower, steeple'",
     "quizQuestion": "What does the kanji '塔' mean?",
-    "correctAnswer": "tower",
+    "correctAnswer": "tower, steeple",
     "distractors": [
       "group",
       "to whirl",
@@ -1141,7 +1160,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "とう",
-    "exampleSentence": "",
+    "exampleSentence": "尖塔 (せんとう)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "とう",
@@ -1157,9 +1176,9 @@
   {
     "id": "ja-kanji-n2-034",
     "type": "vocabulary",
-    "statement": "The kanji 塗 means 'to paint'",
+    "statement": "The kanji 塗 means 'to paint, to plaster'",
     "quizQuestion": "What does the kanji '塗' mean?",
-    "correctAnswer": "to paint",
+    "correctAnswer": "to paint, to plaster",
     "distractors": [
       "some",
       "light (i.e. not heavy)",
@@ -1187,14 +1206,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-035",
     "type": "vocabulary",
-    "statement": "The kanji 奥 means 'inner part'",
+    "statement": "The kanji 奥 means 'inner part, inside'",
     "quizQuestion": "What does the kanji '奥' mean?",
-    "correctAnswer": "inner part",
+    "correctAnswer": "inner part, inside",
     "distractors": [
       "bone fracture",
       "confections",
@@ -1211,7 +1231,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "おく",
-    "exampleSentence": "",
+    "exampleSentence": "奥さん (おくさん)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "おく",
@@ -1227,9 +1247,9 @@
   {
     "id": "ja-kanji-n2-036",
     "type": "vocabulary",
-    "statement": "The kanji 姓 means 'surname'",
+    "statement": "The kanji 姓 means 'surname, family name'",
     "quizQuestion": "What does the kanji '姓' mean?",
-    "correctAnswer": "surname",
+    "correctAnswer": "surname, family name",
     "distractors": [
       "grey",
       "machine",
@@ -1246,7 +1266,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "せい",
-    "exampleSentence": "",
+    "exampleSentence": "百姓 (ひゃくしょう)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "せい",
@@ -1262,9 +1282,9 @@
   {
     "id": "ja-kanji-n2-037",
     "type": "vocabulary",
-    "statement": "The kanji 宇 means 'universe'",
+    "statement": "The kanji 宇 means 'eaves'",
     "quizQuestion": "What does the kanji '宇' mean?",
-    "correctAnswer": "universe",
+    "correctAnswer": "eaves",
     "distractors": [
       "to dance (orig. a hopping dance)",
       "canteen",
@@ -1280,11 +1300,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "うちゅう",
+    "pronunciation": "のき",
     "exampleSentence": "宇宙 (うちゅう)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "うちゅう",
+    "reading": "のき",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -1297,9 +1317,9 @@
   {
     "id": "ja-kanji-n2-038",
     "type": "vocabulary",
-    "statement": "The kanji 宝 means 'gem'",
+    "statement": "The kanji 宝 means 'treasure'",
     "quizQuestion": "What does the kanji '宝' mean?",
-    "correctAnswer": "gem",
+    "correctAnswer": "treasure",
     "distractors": [
       "coffee shop",
       "to melt into",
@@ -1315,11 +1335,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "ほうせき",
+    "pronunciation": "たから",
     "exampleSentence": "宝石 (ほうせき)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "ほうせき",
+    "reading": "たから",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -1332,9 +1352,9 @@
   {
     "id": "ja-kanji-n2-039",
     "type": "vocabulary",
-    "statement": "The kanji 封 means 'seal'",
+    "statement": "The kanji 封 means 'seal, to seal (e.g. a letter)'",
     "quizQuestion": "What does the kanji '封' mean?",
-    "correctAnswer": "seal",
+    "correctAnswer": "seal, to seal (e.g. a letter)",
     "distractors": [
       "to wait and see",
       "nonchalant air",
@@ -1362,14 +1382,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-040",
     "type": "vocabulary",
-    "statement": "The kanji 専 means 'speciality'",
+    "statement": "The kanji 専 means 'speciality, specialty'",
     "quizQuestion": "What does the kanji '専' mean?",
-    "correctAnswer": "speciality",
+    "correctAnswer": "speciality, specialty",
     "distractors": [
       "one animal (small)",
       "canned food",
@@ -1397,14 +1418,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-041",
     "type": "vocabulary",
-    "statement": "The kanji 将 means 'future (usually near)'",
+    "statement": "The kanji 将 means 'future (usually near), prospects'",
     "quizQuestion": "What does the kanji '将' mean?",
-    "correctAnswer": "future (usually near)",
+    "correctAnswer": "future (usually near), prospects",
     "distractors": [
       "to paint",
       "to polish",
@@ -1432,14 +1454,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-042",
     "type": "vocabulary",
-    "statement": "The kanji 尊 means 'respect'",
+    "statement": "The kanji 尊 means 'respect, esteem'",
     "quizQuestion": "What does the kanji '尊' mean?",
-    "correctAnswer": "respect",
+    "correctAnswer": "respect, esteem",
     "distractors": [
       "stone paving",
       "intracerebral",
@@ -1467,14 +1490,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-043",
     "type": "vocabulary",
-    "statement": "The kanji 届 means 'to reach'",
+    "statement": "The kanji 届 means 'to reach, to touch'",
     "quizQuestion": "What does the kanji '届' mean?",
-    "correctAnswer": "to reach",
+    "correctAnswer": "to reach, to touch",
     "distractors": [
       "to freeze (of one's body)",
       "party (political)",
@@ -1502,14 +1526,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-044",
     "type": "vocabulary",
-    "statement": "The kanji 層 means 'layer'",
+    "statement": "The kanji 層 means 'layer, stratum'",
     "quizQuestion": "What does the kanji '層' mean?",
-    "correctAnswer": "layer",
+    "correctAnswer": "layer, stratum",
     "distractors": [
       "to pamper",
       "to throw away",
@@ -1526,7 +1551,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "そう",
-    "exampleSentence": "",
+    "exampleSentence": "一層 (いっそう)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "そう",
@@ -1542,9 +1567,9 @@
   {
     "id": "ja-kanji-n2-045",
     "type": "vocabulary",
-    "statement": "The kanji 巨 means 'huge'",
+    "statement": "The kanji 巨 means 'huge, gigantic'",
     "quizQuestion": "What does the kanji '巨' mean?",
-    "correctAnswer": "huge",
+    "correctAnswer": "huge, gigantic",
     "distractors": [
       "order",
       "to line up",
@@ -1572,14 +1597,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-046",
     "type": "vocabulary",
-    "statement": "The kanji 巻 means 'to roll up'",
+    "statement": "The kanji 巻 means 'to roll up, to enfold'",
     "quizQuestion": "What does the kanji '巻' mean?",
-    "correctAnswer": "to roll up",
+    "correctAnswer": "to roll up, to enfold",
     "distractors": [
       "refreshing",
       "sales",
@@ -1607,14 +1633,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-047",
     "type": "vocabulary",
-    "statement": "The kanji 帽 means 'hat'",
+    "statement": "The kanji 帽 means 'hat, cap'",
     "quizQuestion": "What does the kanji '帽' mean?",
-    "correctAnswer": "hat",
+    "correctAnswer": "hat, cap",
     "distractors": [
       "search (esp. for someone or something missing)",
       "to seal (letter)",
@@ -1630,11 +1657,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "ぼうし",
+    "pronunciation": "ぼう",
     "exampleSentence": "帽子 (ぼうし)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "ぼうし",
+    "reading": "ぼう",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -1647,9 +1674,9 @@
   {
     "id": "ja-kanji-n2-048",
     "type": "vocabulary",
-    "statement": "The kanji 幅 means 'width'",
+    "statement": "The kanji 幅 means 'width, breadth'",
     "quizQuestion": "What does the kanji '幅' mean?",
-    "correctAnswer": "width",
+    "correctAnswer": "width, breadth",
     "distractors": [
       "to throw out one's chest",
       "to adopt (method",
@@ -1666,7 +1693,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "はば",
-    "exampleSentence": "",
+    "exampleSentence": "大幅 (おおはば)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "はば",
@@ -1682,9 +1709,9 @@
   {
     "id": "ja-kanji-n2-049",
     "type": "vocabulary",
-    "statement": "The kanji 干 means 'some'",
+    "statement": "The kanji 干 means 'some, few'",
     "quizQuestion": "What does the kanji '干' mean?",
-    "correctAnswer": "some",
+    "correctAnswer": "some, few",
     "distractors": [
       "small bottle",
       "acting rashly",
@@ -1712,14 +1739,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-050",
     "type": "vocabulary",
-    "statement": "The kanji 幼 means 'very young'",
+    "statement": "The kanji 幼 means 'very young, little'",
     "quizQuestion": "What does the kanji '幼' mean?",
-    "correctAnswer": "very young",
+    "correctAnswer": "very young, little",
     "distractors": [
       "needle",
       "speciality",
@@ -1747,14 +1775,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-051",
     "type": "vocabulary",
-    "statement": "The kanji 庁 means 'Metropolitan Police Department (esp. Tokyo)'",
+    "statement": "The kanji 庁 means 'government office, agency'",
     "quizQuestion": "What does the kanji '庁' mean?",
-    "correctAnswer": "Metropolitan Police Department (esp. Tokyo)",
+    "correctAnswer": "government office, agency",
     "distractors": [
       "on a routine basis",
       "letter of introduction",
@@ -1770,11 +1799,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "けいしちょう",
+    "pronunciation": "ちょう",
     "exampleSentence": "警視庁 (けいしちょう)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "けいしちょう",
+    "reading": "ちょう",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -1806,7 +1835,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "ゆか",
-    "exampleSentence": "",
+    "exampleSentence": "寝床 (ねどこ)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "ゆか",
@@ -1822,9 +1851,9 @@
   {
     "id": "ja-kanji-n2-053",
     "type": "vocabulary",
-    "statement": "The kanji 延 means 'to survive'",
+    "statement": "The kanji 延 means 'to survive, to live long'",
     "quizQuestion": "What does the kanji '延' mean?",
-    "correctAnswer": "to survive",
+    "correctAnswer": "to survive, to live long",
     "distractors": [
       "to touch",
       "order",
@@ -1852,14 +1881,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-054",
     "type": "vocabulary",
-    "statement": "The kanji 弱 means 'weak'",
+    "statement": "The kanji 弱 means 'weak, frail'",
     "quizQuestion": "What does the kanji '弱' mean?",
-    "correctAnswer": "weak",
+    "correctAnswer": "weak, frail",
     "distractors": [
       "to wait and see",
       "drying up",
@@ -1887,7 +1917,8 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-055",
@@ -1922,14 +1953,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-056",
     "type": "vocabulary",
-    "statement": "The kanji 恋 means 'lover'",
+    "statement": "The kanji 恋 means '(romantic) love'",
     "quizQuestion": "What does the kanji '恋' mean?",
-    "correctAnswer": "lover",
+    "correctAnswer": "(romantic) love",
     "distractors": [
       "advanced age",
       "to behave like a spoiled child",
@@ -1945,11 +1977,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "こいびと",
+    "pronunciation": "こい",
     "exampleSentence": "恋人 (こいびと)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "こいびと",
+    "reading": "こい",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -1992,14 +2024,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-058",
     "type": "vocabulary",
-    "statement": "The kanji 悩 means 'to be worried'",
+    "statement": "The kanji 悩 means 'to be worried, to be troubled'",
     "quizQuestion": "What does the kanji '悩' mean?",
-    "correctAnswer": "to be worried",
+    "correctAnswer": "to be worried, to be troubled",
     "distractors": [
       "flexible",
       "dead tree",
@@ -2027,14 +2060,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-059",
     "type": "vocabulary",
-    "statement": "The kanji 憎 means 'to hate'",
+    "statement": "The kanji 憎 means 'to hate, to detest'",
     "quizQuestion": "What does the kanji '憎' mean?",
-    "correctAnswer": "to hate",
+    "correctAnswer": "to hate, to detest",
     "distractors": [
       "normal",
       "spring",
@@ -2062,7 +2096,8 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-060",
@@ -2097,7 +2132,8 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-061",
@@ -2132,14 +2168,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-062",
     "type": "vocabulary",
-    "statement": "The kanji 拾 means 'to pick up'",
+    "statement": "The kanji 拾 means 'to pick up, to find'",
     "quizQuestion": "What does the kanji '拾' mean?",
-    "correctAnswer": "to pick up",
+    "correctAnswer": "to pick up, to find",
     "distractors": [
       "needle",
       "yellow",
@@ -2167,14 +2204,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-063",
     "type": "vocabulary",
-    "statement": "The kanji 挟 means 'to hold between (e.g. one's fingers'",
+    "statement": "The kanji 挟 means 'to hold between'",
     "quizQuestion": "What does the kanji '挟' mean?",
-    "correctAnswer": "to hold between (e.g. one's fingers",
+    "correctAnswer": "to hold between",
     "distractors": [
       "drop of water",
       "glove",
@@ -2202,14 +2240,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-064",
     "type": "vocabulary",
-    "statement": "The kanji 捜 means 'to search for'",
+    "statement": "The kanji 捜 means 'to search for, to look for'",
     "quizQuestion": "What does the kanji '捜' mean?",
-    "correctAnswer": "to search for",
+    "correctAnswer": "to search for, to look for",
     "distractors": [
       "to grow hot (e.g. water)",
       "excavation",
@@ -2237,14 +2276,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-065",
     "type": "vocabulary",
-    "statement": "The kanji 捨 means 'to throw away'",
+    "statement": "The kanji 捨 means 'to throw away, to cast away'",
     "quizQuestion": "What does the kanji '捨' mean?",
-    "correctAnswer": "to throw away",
+    "correctAnswer": "to throw away, to cast away",
     "distractors": [
       "donation",
       "region",
@@ -2272,14 +2312,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-066",
     "type": "vocabulary",
-    "statement": "The kanji 掃 means 'cleaning'",
+    "statement": "The kanji 掃 means 'cleaning, sweeping'",
     "quizQuestion": "What does the kanji '掃' mean?",
-    "correctAnswer": "cleaning",
+    "correctAnswer": "cleaning, sweeping",
     "distractors": [
       "to sink",
       "very young",
@@ -2307,14 +2348,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-067",
     "type": "vocabulary",
-    "statement": "The kanji 掘 means 'to dig'",
+    "statement": "The kanji 掘 means 'to dig, to excavate'",
     "quizQuestion": "What does the kanji '掘' mean?",
-    "correctAnswer": "to dig",
+    "correctAnswer": "to dig, to excavate",
     "distractors": [
       "one house",
       "ash",
@@ -2342,14 +2384,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-068",
     "type": "vocabulary",
-    "statement": "The kanji 採 means 'use'",
+    "statement": "The kanji 採 means 'use, adoption'",
     "quizQuestion": "What does the kanji '採' mean?",
-    "correctAnswer": "use",
+    "correctAnswer": "use, adoption",
     "distractors": [
       "to bloom",
       "washing machine (laundry)",
@@ -2377,14 +2420,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-069",
     "type": "vocabulary",
-    "statement": "The kanji 換 means 'exchange'",
+    "statement": "The kanji 換 means 'exchange, interchange'",
     "quizQuestion": "What does the kanji '換' mean?",
-    "correctAnswer": "exchange",
+    "correctAnswer": "exchange, interchange",
     "distractors": [
       "to change",
       "lover",
@@ -2412,14 +2456,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-070",
     "type": "vocabulary",
-    "statement": "The kanji 敬 means 'respect'",
+    "statement": "The kanji 敬 means 'respect, esteem'",
     "quizQuestion": "What does the kanji '敬' mean?",
-    "correctAnswer": "respect",
+    "correctAnswer": "respect, esteem",
     "distractors": [
       "to spit out",
       "ashtray",
@@ -2447,14 +2492,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-071",
     "type": "vocabulary",
-    "statement": "The kanji 昇 means 'to ascend'",
+    "statement": "The kanji 昇 means 'to ascend, to go up'",
     "quizQuestion": "What does the kanji '昇' mean?",
-    "correctAnswer": "to ascend",
+    "correctAnswer": "to ascend, to go up",
     "distractors": [
       "both arms",
       "large drop (rain",
@@ -2482,14 +2528,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-072",
     "type": "vocabulary",
-    "statement": "The kanji 普 means 'normal'",
+    "statement": "The kanji 普 means 'normal, ordinary'",
     "quizQuestion": "What does the kanji '普' mean?",
-    "correctAnswer": "normal",
+    "correctAnswer": "normal, ordinary",
     "distractors": [
       "affirmative",
       "you (people)",
@@ -2517,14 +2564,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-073",
     "type": "vocabulary",
-    "statement": "The kanji 暴 means 'to act violently'",
+    "statement": "The kanji 暴 means 'to act violently, to rage'",
     "quizQuestion": "What does the kanji '暴' mean?",
-    "correctAnswer": "to act violently",
+    "correctAnswer": "to act violently, to rage",
     "distractors": [
       "rampart",
       "trace",
@@ -2552,14 +2600,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-074",
     "type": "vocabulary",
-    "statement": "The kanji 曇 means 'to get cloudy'",
+    "statement": "The kanji 曇 means 'to get cloudy, to cloud over'",
     "quizQuestion": "What does the kanji '曇' mean?",
-    "correctAnswer": "to get cloudy",
+    "correctAnswer": "to get cloudy, to cloud over",
     "distractors": [
       "cheers",
       "to be a match for",
@@ -2587,7 +2636,8 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-075",
@@ -2622,7 +2672,8 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-076",
@@ -2646,7 +2697,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "つくえ",
-    "exampleSentence": "",
+    "exampleSentence": "机に向かう (つくえにむかう)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "つくえ",
@@ -2662,9 +2713,9 @@
   {
     "id": "ja-kanji-n2-077",
     "type": "vocabulary",
-    "statement": "The kanji 枚 means 'one thin flat object'",
+    "statement": "The kanji 枚 means 'counter for flat objects (e.g. sheets of paper)'",
     "quizQuestion": "What does the kanji '枚' mean?",
-    "correctAnswer": "one thin flat object",
+    "correctAnswer": "counter for flat objects (e.g. sheets of paper)",
     "distractors": [
       "to bloom",
       "hat",
@@ -2680,11 +2731,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "いちまい",
+    "pronunciation": "まい",
     "exampleSentence": "一枚 (いちまい)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "いちまい",
+    "reading": "まい",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -2697,9 +2748,9 @@
   {
     "id": "ja-kanji-n2-078",
     "type": "vocabulary",
-    "statement": "The kanji 枯 means 'to wither (of a plant)'",
+    "statement": "The kanji 枯 means 'to wither (of a plant), to be blasted'",
     "quizQuestion": "What does the kanji '枯' mean?",
-    "correctAnswer": "to wither (of a plant)",
+    "correctAnswer": "to wither (of a plant), to be blasted",
     "distractors": [
       "various countries",
       "fat",
@@ -2727,14 +2778,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-079",
     "type": "vocabulary",
-    "statement": "The kanji 柔 means 'soft'",
+    "statement": "The kanji 柔 means 'soft, tender'",
     "quizQuestion": "What does the kanji '柔' mean?",
-    "correctAnswer": "soft",
+    "correctAnswer": "soft, tender",
     "distractors": [
       "to paint",
       "to make sure of",
@@ -2762,14 +2814,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-080",
     "type": "vocabulary",
-    "statement": "The kanji 柱 means 'pillar'",
+    "statement": "The kanji 柱 means 'pillar, post'",
     "quizQuestion": "What does the kanji '柱' mean?",
-    "correctAnswer": "pillar",
+    "correctAnswer": "pillar, post",
     "distractors": [
       "mail",
       "elite",
@@ -2786,7 +2839,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "はしら",
-    "exampleSentence": "",
+    "exampleSentence": "電柱 (でんちゅう)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "はしら",
@@ -2802,9 +2855,9 @@
   {
     "id": "ja-kanji-n2-081",
     "type": "vocabulary",
-    "statement": "The kanji 械 means 'machine'",
+    "statement": "The kanji 械 means 'machine, mechanism'",
     "quizQuestion": "What does the kanji '械' mean?",
-    "correctAnswer": "machine",
+    "correctAnswer": "machine, mechanism",
     "distractors": [
       "state of affairs (around you)",
       "eggs",
@@ -2832,14 +2885,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-082",
     "type": "vocabulary",
-    "statement": "The kanji 棒 means 'pole'",
+    "statement": "The kanji 棒 means 'pole, rod'",
     "quizQuestion": "What does the kanji '棒' mean?",
-    "correctAnswer": "pole",
+    "correctAnswer": "pole, rod",
     "distractors": [
       "pure",
       "author (usu. of a particular book)",
@@ -2856,7 +2910,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "ぼう",
-    "exampleSentence": "",
+    "exampleSentence": "泥棒 (どろぼう)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "ぼう",
@@ -2902,14 +2956,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-084",
     "type": "vocabulary",
-    "statement": "The kanji 殿 means 'Mr.'",
+    "statement": "The kanji 殿 means 'Mr., Mrs.'",
     "quizQuestion": "What does the kanji '殿' mean?",
-    "correctAnswer": "Mr.",
+    "correctAnswer": "Mr., Mrs.",
     "distractors": [
       "replenishment",
       "mechanical",
@@ -2926,7 +2981,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "どの",
-    "exampleSentence": "",
+    "exampleSentence": "殿下 (でんか)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "どの",
@@ -2942,9 +2997,9 @@
   {
     "id": "ja-kanji-n2-085",
     "type": "vocabulary",
-    "statement": "The kanji 毒 means 'poison'",
+    "statement": "The kanji 毒 means 'poison, toxicant'",
     "quizQuestion": "What does the kanji '毒' mean?",
-    "correctAnswer": "poison",
+    "correctAnswer": "poison, toxicant",
     "distractors": [
       "heart",
       "to stick into",
@@ -2961,7 +3016,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "どく",
-    "exampleSentence": "",
+    "exampleSentence": "気の毒 (きのどく)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "どく",
@@ -2977,9 +3032,9 @@
   {
     "id": "ja-kanji-n2-086",
     "type": "vocabulary",
-    "statement": "The kanji 永 means 'eternity'",
+    "statement": "The kanji 永 means 'eternity, perpetuity'",
     "quizQuestion": "What does the kanji '永' mean?",
-    "correctAnswer": "eternity",
+    "correctAnswer": "eternity, perpetuity",
     "distractors": [
       "to spill over and fall",
       "summons",
@@ -3007,14 +3062,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-087",
     "type": "vocabulary",
-    "statement": "The kanji 汗 means 'sweat'",
+    "statement": "The kanji 汗 means 'sweat, perspiration'",
     "quizQuestion": "What does the kanji '汗' mean?",
-    "correctAnswer": "sweat",
+    "correctAnswer": "sweat, perspiration",
     "distractors": [
       "to burn",
       "to pollute",
@@ -3031,7 +3087,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "あせ",
-    "exampleSentence": "",
+    "exampleSentence": "冷や汗 (ひやあせ)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "あせ",
@@ -3047,9 +3103,9 @@
   {
     "id": "ja-kanji-n2-088",
     "type": "vocabulary",
-    "statement": "The kanji 汚 means 'to get dirty'",
+    "statement": "The kanji 汚 means 'to get dirty, to become dirty'",
     "quizQuestion": "What does the kanji '汚' mean?",
-    "correctAnswer": "to get dirty",
+    "correctAnswer": "to get dirty, to become dirty",
     "distractors": [
       "Europe and America",
       "simple",
@@ -3077,14 +3133,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-089",
     "type": "vocabulary",
-    "statement": "The kanji 沈 means 'silence'",
+    "statement": "The kanji 沈 means 'silence, being silent'",
     "quizQuestion": "What does the kanji '沈' mean?",
-    "correctAnswer": "silence",
+    "correctAnswer": "silence, being silent",
     "distractors": [
       "to corner",
       "to pick up",
@@ -3112,14 +3169,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-090",
     "type": "vocabulary",
-    "statement": "The kanji 沸 means 'to grow hot (e.g. water)'",
+    "statement": "The kanji 沸 means 'to grow hot (e.g. water), to boil'",
     "quizQuestion": "What does the kanji '沸' mean?",
-    "correctAnswer": "to grow hot (e.g. water)",
+    "correctAnswer": "to grow hot (e.g. water), to boil",
     "distractors": [
       "talisman",
       "bed",
@@ -3147,14 +3205,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-091",
     "type": "vocabulary",
-    "statement": "The kanji 況 means 'state of affairs (around you)'",
+    "statement": "The kanji 況 means 'state of affairs (around you), situation'",
     "quizQuestion": "What does the kanji '況' mean?",
-    "correctAnswer": "state of affairs (around you)",
+    "correctAnswer": "state of affairs (around you), situation",
     "distractors": [
       "speciality",
       "next morning",
@@ -3182,14 +3241,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-092",
     "type": "vocabulary",
-    "statement": "The kanji 泉 means 'hot spring'",
+    "statement": "The kanji 泉 means 'spring, fountain'",
     "quizQuestion": "What does the kanji '泉' mean?",
-    "correctAnswer": "hot spring",
+    "correctAnswer": "spring, fountain",
     "distractors": [
       "one thin flat object",
       "being in charge (of an area of responsibility)",
@@ -3205,11 +3265,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "おんせん",
+    "pronunciation": "いずみ",
     "exampleSentence": "温泉 (おんせん)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "おんせん",
+    "reading": "いずみ",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -3222,9 +3282,9 @@
   {
     "id": "ja-kanji-n2-093",
     "type": "vocabulary",
-    "statement": "The kanji 泊 means 'to stay at (e.g. hotel)'",
+    "statement": "The kanji 泊 means 'to stay at (e.g. hotel), to be docked'",
     "quizQuestion": "What does the kanji '泊' mean?",
-    "correctAnswer": "to stay at (e.g. hotel)",
+    "correctAnswer": "to stay at (e.g. hotel), to be docked",
     "distractors": [
       "every corner",
       "ordinary person",
@@ -3252,14 +3312,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-094",
     "type": "vocabulary",
-    "statement": "The kanji 泥 means 'mud'",
+    "statement": "The kanji 泥 means 'mud, slush'",
     "quizQuestion": "What does the kanji '泥' mean?",
-    "correctAnswer": "mud",
+    "correctAnswer": "mud, slush",
     "distractors": [
       "being in charge (of an area of responsibility)",
       "dramatic",
@@ -3276,7 +3337,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "どろ",
-    "exampleSentence": "",
+    "exampleSentence": "泥棒 (どろぼう)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "どろ",
@@ -3292,9 +3353,9 @@
   {
     "id": "ja-kanji-n2-095",
     "type": "vocabulary",
-    "statement": "The kanji 浅 means 'shallow'",
+    "statement": "The kanji 浅 means 'shallow, superficial'",
     "quizQuestion": "What does the kanji '浅' mean?",
-    "correctAnswer": "shallow",
+    "correctAnswer": "shallow, superficial",
     "distractors": [
       "patient",
       "to bloom",
@@ -3322,14 +3383,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-096",
     "type": "vocabulary",
-    "statement": "The kanji 涙 means 'tear'",
+    "statement": "The kanji 涙 means 'tear, tears'",
     "quizQuestion": "What does the kanji '涙' mean?",
-    "correctAnswer": "tear",
+    "correctAnswer": "tear, tears",
     "distractors": [
       "to bloom",
       "gem",
@@ -3346,7 +3408,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "なみだ",
-    "exampleSentence": "",
+    "exampleSentence": "涙を流す (なみだをながす)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "なみだ",
@@ -3362,9 +3424,9 @@
   {
     "id": "ja-kanji-n2-097",
     "type": "vocabulary",
-    "statement": "The kanji 涼 means 'cool'",
+    "statement": "The kanji 涼 means 'cool, refreshing'",
     "quizQuestion": "What does the kanji '涼' mean?",
-    "correctAnswer": "cool",
+    "correctAnswer": "cool, refreshing",
     "distractors": [
       "dance",
       "love",
@@ -3392,7 +3454,8 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-098",
@@ -3427,14 +3490,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-099",
     "type": "vocabulary",
-    "statement": "The kanji 湾 means 'bay'",
+    "statement": "The kanji 湾 means 'bay, gulf'",
     "quizQuestion": "What does the kanji '湾' mean?",
-    "correctAnswer": "bay",
+    "correctAnswer": "bay, gulf",
     "distractors": [
       "deep (colour)",
       "small boat",
@@ -3451,7 +3515,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "わん",
-    "exampleSentence": "",
+    "exampleSentence": "台湾 (たいわん)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "わん",
@@ -3467,9 +3531,9 @@
   {
     "id": "ja-kanji-n2-100",
     "type": "vocabulary",
-    "statement": "The kanji 湿 means 'to become damp'",
+    "statement": "The kanji 湿 means 'to become damp, to become moist'",
     "quizQuestion": "What does the kanji '湿' mean?",
-    "correctAnswer": "to become damp",
+    "correctAnswer": "to become damp, to become moist",
     "distractors": [
       "to spill",
       "trace",
@@ -3497,14 +3561,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-101",
     "type": "vocabulary",
-    "statement": "The kanji 溶 means 'to melt'",
+    "statement": "The kanji 溶 means 'to melt, to thaw'",
     "quizQuestion": "What does the kanji '溶' mean?",
-    "correctAnswer": "to melt",
+    "correctAnswer": "to melt, to thaw",
     "distractors": [
       "western suburb",
       "sand",
@@ -3532,7 +3597,8 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-102",
@@ -3567,14 +3633,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-103",
     "type": "vocabulary",
-    "statement": "The kanji 濃 means 'deep (colour)'",
+    "statement": "The kanji 濃 means 'deep (colour), dark'",
     "quizQuestion": "What does the kanji '濃' mean?",
-    "correctAnswer": "deep (colour)",
+    "correctAnswer": "deep (colour), dark",
     "distractors": [
       "perfume",
       "mail",
@@ -3602,14 +3669,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-104",
     "type": "vocabulary",
-    "statement": "The kanji 濯 means 'washing'",
+    "statement": "The kanji 濯 means 'washing, laundry'",
     "quizQuestion": "What does the kanji '濯' mean?",
-    "correctAnswer": "washing",
+    "correctAnswer": "washing, laundry",
     "distractors": [
       "to get dry",
       "when one was a very young child",
@@ -3637,14 +3705,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-105",
     "type": "vocabulary",
-    "statement": "The kanji 灯 means 'lamp'",
+    "statement": "The kanji 灯 means 'lamp, light'",
     "quizQuestion": "What does the kanji '灯' mean?",
-    "correctAnswer": "lamp",
+    "correctAnswer": "lamp, light",
     "distractors": [
       "cloudiness",
       "irritability",
@@ -3677,9 +3746,9 @@
   {
     "id": "ja-kanji-n2-106",
     "type": "vocabulary",
-    "statement": "The kanji 灰 means 'grey'",
+    "statement": "The kanji 灰 means 'ash, ashes'",
     "quizQuestion": "What does the kanji '灰' mean?",
-    "correctAnswer": "grey",
+    "correctAnswer": "ash, ashes",
     "distractors": [
       "to wind",
       "small bottle",
@@ -3695,11 +3764,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "はいいろ",
+    "pronunciation": "はい",
     "exampleSentence": "灰色 (はいいろ)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "はいいろ",
+    "reading": "はい",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -3712,9 +3781,9 @@
   {
     "id": "ja-kanji-n2-107",
     "type": "vocabulary",
-    "statement": "The kanji 照 means 'to shine on'",
+    "statement": "The kanji 照 means 'to shine on, to illuminate'",
     "quizQuestion": "What does the kanji '照' mean?",
-    "correctAnswer": "to shine on",
+    "correctAnswer": "to shine on, to illuminate",
     "distractors": [
       "refrigerator",
       "ordinary person",
@@ -3742,7 +3811,8 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-108",
@@ -3777,14 +3847,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-109",
     "type": "vocabulary",
-    "statement": "The kanji 燃 means 'to burn'",
+    "statement": "The kanji 燃 means 'to burn, to get fired up'",
     "quizQuestion": "What does the kanji '燃' mean?",
-    "correctAnswer": "to burn",
+    "correctAnswer": "to burn, to get fired up",
     "distractors": [
       "disorder",
       "to adopt (method",
@@ -3812,14 +3883,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-110",
     "type": "vocabulary",
-    "statement": "The kanji 燥 means 'dryness'",
+    "statement": "The kanji 燥 means 'dryness, aridity'",
     "quizQuestion": "What does the kanji '燥' mean?",
-    "correctAnswer": "dryness",
+    "correctAnswer": "dryness, aridity",
     "distractors": [
       "to behave like a spoiled child",
       "polish",
@@ -3847,14 +3919,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-111",
     "type": "vocabulary",
-    "statement": "The kanji 爆 means 'explosion'",
+    "statement": "The kanji 爆 means 'explosion, detonation'",
     "quizQuestion": "What does the kanji '爆' mean?",
-    "correctAnswer": "explosion",
+    "correctAnswer": "explosion, detonation",
     "distractors": [
       "introduction",
       "Northern Europe",
@@ -3882,7 +3955,8 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-112",
@@ -3917,14 +3991,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-113",
     "type": "vocabulary",
-    "statement": "The kanji 珍 means 'unusual'",
+    "statement": "The kanji 珍 means 'unusual, rare'",
     "quizQuestion": "What does the kanji '珍' mean?",
-    "correctAnswer": "unusual",
+    "correctAnswer": "unusual, rare",
     "distractors": [
       "to freeze (of one's body)",
       "to throw away",
@@ -3952,14 +4027,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-114",
     "type": "vocabulary",
-    "statement": "The kanji 瓶 means 'bottle'",
+    "statement": "The kanji 瓶 means 'bottle, jar'",
     "quizQuestion": "What does the kanji '瓶' mean?",
-    "correctAnswer": "bottle",
+    "correctAnswer": "bottle, jar",
     "distractors": [
       "stone paving",
       "brute",
@@ -3976,7 +4052,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "びん",
-    "exampleSentence": "",
+    "exampleSentence": "花瓶 (かびん)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "びん",
@@ -3992,9 +4068,9 @@
   {
     "id": "ja-kanji-n2-115",
     "type": "vocabulary",
-    "statement": "The kanji 甘 means 'sweet-tasting'",
+    "statement": "The kanji 甘 means 'sweet-tasting, sweet'",
     "quizQuestion": "What does the kanji '甘' mean?",
-    "correctAnswer": "sweet-tasting",
+    "correctAnswer": "sweet-tasting, sweet",
     "distractors": [
       "contacting",
       "to pick up",
@@ -4022,7 +4098,8 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-116",
@@ -4057,7 +4134,8 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-117",
@@ -4081,7 +4159,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "たたみ",
-    "exampleSentence": "",
+    "exampleSentence": "畳む (たたむ)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "たたみ",
@@ -4097,9 +4175,9 @@
   {
     "id": "ja-kanji-n2-118",
     "type": "vocabulary",
-    "statement": "The kanji 療 means '(medical) treatment'",
+    "statement": "The kanji 療 means '(medical) treatment, care'",
     "quizQuestion": "What does the kanji '療' mean?",
-    "correctAnswer": "(medical) treatment",
+    "correctAnswer": "(medical) treatment, care",
     "distractors": [
       "affirmation",
       "to ask",
@@ -4127,14 +4205,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-119",
     "type": "vocabulary",
-    "statement": "The kanji 砂 means 'sand'",
+    "statement": "The kanji 砂 means 'sand, grit'",
     "quizQuestion": "What does the kanji '砂' mean?",
-    "correctAnswer": "sand",
+    "correctAnswer": "sand, grit",
     "distractors": [
       "disorder",
       "law",
@@ -4151,7 +4230,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "すな",
-    "exampleSentence": "",
+    "exampleSentence": "砂糖 (さとう)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "すな",
@@ -4167,9 +4246,9 @@
   {
     "id": "ja-kanji-n2-120",
     "type": "vocabulary",
-    "statement": "The kanji 硬 means 'hard'",
+    "statement": "The kanji 硬 means 'hard, solid'",
     "quizQuestion": "What does the kanji '硬' mean?",
-    "correctAnswer": "hard",
+    "correctAnswer": "hard, solid",
     "distractors": [
       "curious",
       "to get goosebumps",
@@ -4197,14 +4276,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-121",
     "type": "vocabulary",
-    "statement": "The kanji 磨 means 'to polish'",
+    "statement": "The kanji 磨 means 'to polish, to shine'",
     "quizQuestion": "What does the kanji '磨' mean?",
-    "correctAnswer": "to polish",
+    "correctAnswer": "to polish, to shine",
     "distractors": [
       "mine (ore)",
       "author (usu. of a particular book)",
@@ -4232,14 +4312,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-122",
     "type": "vocabulary",
-    "statement": "The kanji 祈 means 'to pray'",
+    "statement": "The kanji 祈 means 'to pray, to wish'",
     "quizQuestion": "What does the kanji '祈' mean?",
-    "correctAnswer": "to pray",
+    "correctAnswer": "to pray, to wish",
     "distractors": [
       "coffee shop",
       "one drop (of fluid)",
@@ -4267,14 +4348,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-123",
     "type": "vocabulary",
-    "statement": "The kanji 秒 means 'second (unit of time)'",
+    "statement": "The kanji 秒 means 'second (unit of time), arc second'",
     "quizQuestion": "What does the kanji '秒' mean?",
-    "correctAnswer": "second (unit of time)",
+    "correctAnswer": "second (unit of time), arc second",
     "distractors": [
       "to become damp",
       "pure",
@@ -4291,7 +4373,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "びょう",
-    "exampleSentence": "",
+    "exampleSentence": "数秒 (すうびょう)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "びょう",
@@ -4337,14 +4419,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-125",
     "type": "vocabulary",
-    "statement": "The kanji 筒 means 'envelope'",
+    "statement": "The kanji 筒 means 'pipe, tube'",
     "quizQuestion": "What does the kanji '筒' mean?",
-    "correctAnswer": "envelope",
+    "correctAnswer": "pipe, tube",
     "distractors": [
       "dirty",
       "hard",
@@ -4360,11 +4443,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "ふうとう",
+    "pronunciation": "つつ",
     "exampleSentence": "封筒 (ふうとう)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "ふうとう",
+    "reading": "つつ",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -4377,9 +4460,9 @@
   {
     "id": "ja-kanji-n2-126",
     "type": "vocabulary",
-    "statement": "The kanji 簡 means 'simple'",
+    "statement": "The kanji 簡 means 'simple, easy'",
     "quizQuestion": "What does the kanji '簡' mean?",
-    "correctAnswer": "simple",
+    "correctAnswer": "simple, easy",
     "distractors": [
       "both arms",
       "(one's) exclusive use",
@@ -4407,14 +4490,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-127",
     "type": "vocabulary",
-    "statement": "The kanji 籍 means 'book'",
+    "statement": "The kanji 籍 means 'book, publication'",
     "quizQuestion": "What does the kanji '籍' mean?",
-    "correctAnswer": "book",
+    "correctAnswer": "book, publication",
     "distractors": [
       "one side",
       "borrowing",
@@ -4442,14 +4526,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-128",
     "type": "vocabulary",
-    "statement": "The kanji 粉 means 'flour'",
+    "statement": "The kanji 粉 means 'flour, meal'",
     "quizQuestion": "What does the kanji '粉' mean?",
-    "correctAnswer": "flour",
+    "correctAnswer": "flour, meal",
     "distractors": [
       "clothing",
       "drama",
@@ -4466,7 +4551,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "こな",
-    "exampleSentence": "",
+    "exampleSentence": "粉砕 (ふんさい)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "こな",
@@ -4482,9 +4567,9 @@
   {
     "id": "ja-kanji-n2-129",
     "type": "vocabulary",
-    "statement": "The kanji 粒 means 'grain'",
+    "statement": "The kanji 粒 means 'grain, bead'",
     "quizQuestion": "What does the kanji '粒' mean?",
-    "correctAnswer": "grain",
+    "correctAnswer": "grain, bead",
     "distractors": [
       "open",
       "boiled egg",
@@ -4501,7 +4586,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "つぶ",
-    "exampleSentence": "",
+    "exampleSentence": "粒子 (りゅうし)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "つぶ",
@@ -4517,9 +4602,9 @@
   {
     "id": "ja-kanji-n2-130",
     "type": "vocabulary",
-    "statement": "The kanji 紅 means 'black tea'",
+    "statement": "The kanji 紅 means 'deep red, crimson'",
     "quizQuestion": "What does the kanji '紅' mean?",
-    "correctAnswer": "black tea",
+    "correctAnswer": "deep red, crimson",
     "distractors": [
       "occupying",
       "farming",
@@ -4535,11 +4620,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "こうちゃ",
+    "pronunciation": "くれない",
     "exampleSentence": "紅茶 (こうちゃ)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "こうちゃ",
+    "reading": "くれない",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -4552,9 +4637,9 @@
   {
     "id": "ja-kanji-n2-131",
     "type": "vocabulary",
-    "statement": "The kanji 純 means 'simple'",
+    "statement": "The kanji 純 means 'simple, plain'",
     "quizQuestion": "What does the kanji '純' mean?",
-    "correctAnswer": "simple",
+    "correctAnswer": "simple, plain",
     "distractors": [
       "to melt",
       "to be disordered",
@@ -4582,14 +4667,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-132",
     "type": "vocabulary",
-    "statement": "The kanji 紹 means 'introduction'",
+    "statement": "The kanji 紹 means 'introduction, presentation'",
     "quizQuestion": "What does the kanji '紹' mean?",
-    "correctAnswer": "introduction",
+    "correctAnswer": "introduction, presentation",
     "distractors": [
       "to be shy",
       "to shed tears",
@@ -4617,14 +4703,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-133",
     "type": "vocabulary",
-    "statement": "The kanji 絡 means 'contacting'",
+    "statement": "The kanji 絡 means 'contacting, (making) contact'",
     "quizQuestion": "What does the kanji '絡' mean?",
-    "correctAnswer": "contacting",
+    "correctAnswer": "contacting, (making) contact",
     "distractors": [
       "conversion",
       "post office",
@@ -4652,14 +4739,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-134",
     "type": "vocabulary",
-    "statement": "The kanji 缶 means 'can'",
+    "statement": "The kanji 缶 means 'can, tin'",
     "quizQuestion": "What does the kanji '缶' mean?",
-    "correctAnswer": "can",
+    "correctAnswer": "can, tin",
     "distractors": [
       "paper bag",
       "fat",
@@ -4676,7 +4764,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "かん",
-    "exampleSentence": "",
+    "exampleSentence": "缶詰 (かんづめ)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "かん",
@@ -4692,9 +4780,9 @@
   {
     "id": "ja-kanji-n2-135",
     "type": "vocabulary",
-    "statement": "The kanji 署 means 'signature'",
+    "statement": "The kanji 署 means 'station (esp. a police station)'",
     "quizQuestion": "What does the kanji '署' mean?",
-    "correctAnswer": "signature",
+    "correctAnswer": "station (esp. a police station)",
     "distractors": [
       "to supplement",
       "domestic animals",
@@ -4710,11 +4798,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "しょめい",
+    "pronunciation": "しょ",
     "exampleSentence": "署名 (しょめい)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "しょめい",
+    "reading": "しょ",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -4727,9 +4815,9 @@
   {
     "id": "ja-kanji-n2-136",
     "type": "vocabulary",
-    "statement": "The kanji 群 means 'group'",
+    "statement": "The kanji 群 means 'group, bunch'",
     "quizQuestion": "What does the kanji '群' mean?",
-    "correctAnswer": "group",
+    "correctAnswer": "group, bunch",
     "distractors": [
       "ashtray",
       "bog",
@@ -4745,11 +4833,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "むれ",
+    "pronunciation": "ぐん",
     "exampleSentence": "群れ (むれ)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "むれ",
+    "reading": "ぐん",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -4792,14 +4880,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-138",
     "type": "vocabulary",
-    "statement": "The kanji 耕 means 'to till'",
+    "statement": "The kanji 耕 means 'to till, to plow'",
     "quizQuestion": "What does the kanji '耕' mean?",
-    "correctAnswer": "to till",
+    "correctAnswer": "to till, to plow",
     "distractors": [
       "one second",
       "rolled egg",
@@ -4827,7 +4916,8 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-139",
@@ -4851,7 +4941,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "はだ",
-    "exampleSentence": "",
+    "exampleSentence": "肌寒い (はださむい)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "はだ",
@@ -4886,7 +4976,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "かた",
-    "exampleSentence": "",
+    "exampleSentence": "肩をすくめる (かたをすくめる)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "かた",
@@ -4902,9 +4992,9 @@
   {
     "id": "ja-kanji-n2-141",
     "type": "vocabulary",
-    "statement": "The kanji 肯 means 'affirmation'",
+    "statement": "The kanji 肯 means 'affirmation, affirmative (logic)'",
     "quizQuestion": "What does the kanji '肯' mean?",
-    "correctAnswer": "affirmation",
+    "correctAnswer": "affirmation, affirmative (logic)",
     "distractors": [
       "to abandon",
       "boiling",
@@ -4932,14 +5022,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-142",
     "type": "vocabulary",
-    "statement": "The kanji 胸 means 'chest'",
+    "statement": "The kanji 胸 means 'chest, breast'",
     "quizQuestion": "What does the kanji '胸' mean?",
-    "correctAnswer": "chest",
+    "correctAnswer": "chest, breast",
     "distractors": [
       "comprehension",
       "opposite side",
@@ -4956,7 +5047,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "むね",
-    "exampleSentence": "",
+    "exampleSentence": "胸元 (むなもと)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "むね",
@@ -4972,9 +5063,9 @@
   {
     "id": "ja-kanji-n2-143",
     "type": "vocabulary",
-    "statement": "The kanji 脂 means 'fat'",
+    "statement": "The kanji 脂 means 'fat, tallow'",
     "quizQuestion": "What does the kanji '脂' mean?",
-    "correctAnswer": "fat",
+    "correctAnswer": "fat, tallow",
     "distractors": [
       "(medical) treatment",
       "counter for buildings (esp. houses)",
@@ -4991,7 +5082,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "あぶら",
-    "exampleSentence": "",
+    "exampleSentence": "脂肪 (しぼう)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "あぶら",
@@ -5007,9 +5098,9 @@
   {
     "id": "ja-kanji-n2-144",
     "type": "vocabulary",
-    "statement": "The kanji 脳 means 'brain'",
+    "statement": "The kanji 脳 means 'brain, brains'",
     "quizQuestion": "What does the kanji '脳' mean?",
-    "correctAnswer": "brain",
+    "correctAnswer": "brain, brains",
     "distractors": [
       "to change",
       "Europe and America",
@@ -5026,7 +5117,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "のう",
-    "exampleSentence": "",
+    "exampleSentence": "脳裏 (のうり)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "のう",
@@ -5042,9 +5133,9 @@
   {
     "id": "ja-kanji-n2-145",
     "type": "vocabulary",
-    "statement": "The kanji 腕 means 'arm'",
+    "statement": "The kanji 腕 means 'arm, skill'",
     "quizQuestion": "What does the kanji '腕' mean?",
-    "correctAnswer": "arm",
+    "correctAnswer": "arm, skill",
     "distractors": [
       "(romantic) love",
       "one drop (of fluid)",
@@ -5061,7 +5152,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "うで",
-    "exampleSentence": "",
+    "exampleSentence": "両腕 (りょううで)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "うで",
@@ -5077,9 +5168,9 @@
   {
     "id": "ja-kanji-n2-146",
     "type": "vocabulary",
-    "statement": "The kanji 腰 means 'lower back'",
+    "statement": "The kanji 腰 means 'lower back, waist'",
     "quizQuestion": "What does the kanji '腰' mean?",
-    "correctAnswer": "lower back",
+    "correctAnswer": "lower back, waist",
     "distractors": [
       "pole",
       "poison",
@@ -5096,7 +5187,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "こし",
-    "exampleSentence": "",
+    "exampleSentence": "腰を下ろす (こしをおろす)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "こし",
@@ -5142,14 +5233,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-148",
     "type": "vocabulary",
-    "statement": "The kanji 臓 means 'heart'",
+    "statement": "The kanji 臓 means 'heart, guts'",
     "quizQuestion": "What does the kanji '臓' mean?",
-    "correctAnswer": "heart",
+    "correctAnswer": "heart, guts",
     "distractors": [
       "shallow",
       "hard",
@@ -5177,14 +5269,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-149",
     "type": "vocabulary",
-    "statement": "The kanji 舟 means 'ship'",
+    "statement": "The kanji 舟 means 'ship, boat'",
     "quizQuestion": "What does the kanji '舟' mean?",
-    "correctAnswer": "ship",
+    "correctAnswer": "ship, boat",
     "distractors": [
       "to shiver",
       "straw hat",
@@ -5201,7 +5294,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "ふね",
-    "exampleSentence": "",
+    "exampleSentence": "小舟 (こぶね)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "ふね",
@@ -5217,9 +5310,9 @@
   {
     "id": "ja-kanji-n2-150",
     "type": "vocabulary",
-    "statement": "The kanji 般 means 'general'",
+    "statement": "The kanji 般 means 'general, universal'",
     "quizQuestion": "What does the kanji '般' mean?",
-    "correctAnswer": "general",
+    "correctAnswer": "general, universal",
     "distractors": [
       "queer",
       "several seconds",
@@ -5247,14 +5340,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-151",
     "type": "vocabulary",
-    "statement": "The kanji 荒 means 'rough'",
+    "statement": "The kanji 荒 means 'rough, wild'",
     "quizQuestion": "What does the kanji '荒' mean?",
-    "correctAnswer": "rough",
+    "correctAnswer": "rough, wild",
     "distractors": [
       "party (political)",
       "simple",
@@ -5282,14 +5376,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-152",
     "type": "vocabulary",
-    "statement": "The kanji 菓 means 'confections'",
+    "statement": "The kanji 菓 means 'confections, sweets'",
     "quizQuestion": "What does the kanji '菓' mean?",
-    "correctAnswer": "confections",
+    "correctAnswer": "confections, sweets",
     "distractors": [
       "painful",
       "very young",
@@ -5317,14 +5412,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-153",
     "type": "vocabulary",
-    "statement": "The kanji 著 means 'striking'",
+    "statement": "The kanji 著 means 'striking, remarkable'",
     "quizQuestion": "What does the kanji '著' mean?",
-    "correctAnswer": "striking",
+    "correctAnswer": "striking, remarkable",
     "distractors": [
       "various",
       "to sit at a desk (to study)",
@@ -5352,14 +5448,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-154",
     "type": "vocabulary",
-    "statement": "The kanji 蔵 means 'refrigerator'",
+    "statement": "The kanji 蔵 means 'possession, ownership'",
     "quizQuestion": "What does the kanji '蔵' mean?",
-    "correctAnswer": "refrigerator",
+    "correctAnswer": "possession, ownership",
     "distractors": [
       "weak point",
       "perfume",
@@ -5375,11 +5472,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "れいぞうこ",
+    "pronunciation": "ぞう",
     "exampleSentence": "冷蔵庫 (れいぞうこ)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "れいぞうこ",
+    "reading": "ぞう",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -5392,9 +5489,9 @@
   {
     "id": "ja-kanji-n2-155",
     "type": "vocabulary",
-    "statement": "The kanji 薄 means 'thin'",
+    "statement": "The kanji 薄 means 'thin, pale'",
     "quizQuestion": "What does the kanji '薄' mean?",
-    "correctAnswer": "thin",
+    "correctAnswer": "thin, pale",
     "distractors": [
       "twins",
       "to fold (clothes",
@@ -5422,14 +5519,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-156",
     "type": "vocabulary",
-    "statement": "The kanji 衣 means 'clothing'",
+    "statement": "The kanji 衣 means 'clothes, garment'",
     "quizQuestion": "What does the kanji '衣' mean?",
-    "correctAnswer": "clothing",
+    "correctAnswer": "clothes, garment",
     "distractors": [
       "hot spring",
       "to be a match for",
@@ -5445,11 +5543,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "いしょう",
+    "pronunciation": "ころも",
     "exampleSentence": "衣装 (いしょう)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "いしょう",
+    "reading": "ころも",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -5462,9 +5560,9 @@
   {
     "id": "ja-kanji-n2-157",
     "type": "vocabulary",
-    "statement": "The kanji 袋 means 'bag'",
+    "statement": "The kanji 袋 means 'bag, sack'",
     "quizQuestion": "What does the kanji '袋' mean?",
-    "correctAnswer": "bag",
+    "correctAnswer": "bag, sack",
     "distractors": [
       "interference",
       "rich (in flavor",
@@ -5481,7 +5579,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "ふくろ",
-    "exampleSentence": "",
+    "exampleSentence": "手袋 (てぶくろ)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "ふくろ",
@@ -5497,9 +5595,9 @@
   {
     "id": "ja-kanji-n2-158",
     "type": "vocabulary",
-    "statement": "The kanji 被 means '(suffering) damage'",
+    "statement": "The kanji 被 means '(suffering) damage, injury'",
     "quizQuestion": "What does the kanji '被' mean?",
-    "correctAnswer": "(suffering) damage",
+    "correctAnswer": "(suffering) damage, injury",
     "distractors": [
       "trace",
       "acting rashly",
@@ -5527,14 +5625,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-159",
     "type": "vocabulary",
-    "statement": "The kanji 装 means 'garments'",
+    "statement": "The kanji 装 means 'garments, attire'",
     "quizQuestion": "What does the kanji '装' mean?",
-    "correctAnswer": "garments",
+    "correctAnswer": "garments, attire",
     "distractors": [
       "clothing",
       "skin",
@@ -5562,14 +5661,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-160",
     "type": "vocabulary",
-    "statement": "The kanji 裏 means 'opposite side'",
+    "statement": "The kanji 裏 means 'opposite side, bottom'",
     "quizQuestion": "What does the kanji '裏' mean?",
-    "correctAnswer": "opposite side",
+    "correctAnswer": "opposite side, bottom",
     "distractors": [
       "explosion",
       "miracle",
@@ -5586,7 +5686,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "うら",
-    "exampleSentence": "",
+    "exampleSentence": "裏切る (うらぎる)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "うら",
@@ -5602,9 +5702,9 @@
   {
     "id": "ja-kanji-n2-161",
     "type": "vocabulary",
-    "statement": "The kanji 補 means 'candidate'",
+    "statement": "The kanji 補 means 'candidate, contender'",
     "quizQuestion": "What does the kanji '補' mean?",
-    "correctAnswer": "candidate",
+    "correctAnswer": "candidate, contender",
     "distractors": [
       "to pick up",
       "bond",
@@ -5632,14 +5732,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-162",
     "type": "vocabulary",
-    "statement": "The kanji 触 means 'to touch'",
+    "statement": "The kanji 触 means 'to touch, to feel'",
     "quizQuestion": "What does the kanji '触' mean?",
-    "correctAnswer": "to touch",
+    "correctAnswer": "to touch, to feel",
     "distractors": [
       "teary eyes",
       "next day",
@@ -5667,14 +5768,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-163",
     "type": "vocabulary",
-    "statement": "The kanji 詰 means 'to be packed (with)'",
+    "statement": "The kanji 詰 means 'to be packed (with), to be full'",
     "quizQuestion": "What does the kanji '詰' mean?",
-    "correctAnswer": "to be packed (with)",
+    "correctAnswer": "to be packed (with), to be full",
     "distractors": [
       "promotion",
       "donation",
@@ -5702,14 +5804,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-164",
     "type": "vocabulary",
-    "statement": "The kanji 誌 means 'journal'",
+    "statement": "The kanji 誌 means 'magazine'",
     "quizQuestion": "What does the kanji '誌' mean?",
-    "correctAnswer": "journal",
+    "correctAnswer": "magazine",
     "distractors": [
       "bond",
       "to be stormy",
@@ -5725,11 +5828,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "ざっし",
+    "pronunciation": "し",
     "exampleSentence": "雑誌 (ざっし)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "ざっし",
+    "reading": "し",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -5742,9 +5845,9 @@
   {
     "id": "ja-kanji-n2-165",
     "type": "vocabulary",
-    "statement": "The kanji 諸 means 'you (people)'",
+    "statement": "The kanji 諸 means 'various, many'",
     "quizQuestion": "What does the kanji '諸' mean?",
-    "correctAnswer": "you (people)",
+    "correctAnswer": "various, many",
     "distractors": [
       "honorific",
       "to freeze",
@@ -5760,11 +5863,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "しょくん",
+    "pronunciation": "しょ",
     "exampleSentence": "諸君 (しょくん)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "しょくん",
+    "reading": "しょ",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -5777,9 +5880,9 @@
   {
     "id": "ja-kanji-n2-166",
     "type": "vocabulary",
-    "statement": "The kanji 販 means 'sales'",
+    "statement": "The kanji 販 means 'sales, selling'",
     "quizQuestion": "What does the kanji '販' mean?",
-    "correctAnswer": "sales",
+    "correctAnswer": "sales, selling",
     "distractors": [
       "incense",
       "to drink up",
@@ -5807,14 +5910,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-167",
     "type": "vocabulary",
-    "statement": "The kanji 贈 means 'to give (as a gift)'",
+    "statement": "The kanji 贈 means 'to give (as a gift), to present'",
     "quizQuestion": "What does the kanji '贈' mean?",
-    "correctAnswer": "to give (as a gift)",
+    "correctAnswer": "to give (as a gift), to present",
     "distractors": [
       "contacting",
       "rising (from one's bed)",
@@ -5842,14 +5946,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-168",
     "type": "vocabulary",
-    "statement": "The kanji 超 means 'to cross over'",
+    "statement": "The kanji 超 means 'super-, ultra-'",
     "quizQuestion": "What does the kanji '超' mean?",
-    "correctAnswer": "to cross over",
+    "correctAnswer": "super-, ultra-",
     "distractors": [
       "intracerebral",
       "being enrolled (at a school)",
@@ -5865,11 +5970,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "こえる",
+    "pronunciation": "ちょう",
     "exampleSentence": "超える (こえる)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "こえる",
+    "reading": "ちょう",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -5882,9 +5987,9 @@
   {
     "id": "ja-kanji-n2-169",
     "type": "vocabulary",
-    "statement": "The kanji 跡 means 'miracle'",
+    "statement": "The kanji 跡 means 'trace, tracks'",
     "quizQuestion": "What does the kanji '跡' mean?",
-    "correctAnswer": "miracle",
+    "correctAnswer": "trace, tracks",
     "distractors": [
       "to spill over and fall",
       "to incline one's head to the side (in doubt)",
@@ -5900,11 +6005,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "きせき",
+    "pronunciation": "あと",
     "exampleSentence": "奇跡 (きせき)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "きせき",
+    "reading": "あと",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -5947,7 +6052,8 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-171",
@@ -5971,7 +6077,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "けん",
-    "exampleSentence": "",
+    "exampleSentence": "一軒 (いっけん)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "けん",
@@ -5987,9 +6093,9 @@
   {
     "id": "ja-kanji-n2-172",
     "type": "vocabulary",
-    "statement": "The kanji 軟 means 'flexible'",
+    "statement": "The kanji 軟 means 'flexible, lithe'",
     "quizQuestion": "What does the kanji '軟' mean?",
-    "correctAnswer": "flexible",
+    "correctAnswer": "flexible, lithe",
     "distractors": [
       "inner part",
       "use",
@@ -6017,14 +6123,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-173",
     "type": "vocabulary",
-    "statement": "The kanji 軽 means 'light (i.e. not heavy)'",
+    "statement": "The kanji 軽 means 'light (i.e. not heavy), feeling light'",
     "quizQuestion": "What does the kanji '軽' mean?",
-    "correctAnswer": "light (i.e. not heavy)",
+    "correctAnswer": "light (i.e. not heavy), feeling light",
     "distractors": [
       "changing clothes",
       "drying up",
@@ -6052,14 +6159,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-174",
     "type": "vocabulary",
-    "statement": "The kanji 辛 means 'painful'",
+    "statement": "The kanji 辛 means 'painful, bitter'",
     "quizQuestion": "What does the kanji '辛' mean?",
-    "correctAnswer": "painful",
+    "correctAnswer": "painful, bitter",
     "distractors": [
       "to till",
       "thick",
@@ -6087,7 +6195,8 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-175",
@@ -6122,14 +6231,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-176",
     "type": "vocabulary",
-    "statement": "The kanji 郵 means 'mail service'",
+    "statement": "The kanji 郵 means 'mail service, postal service'",
     "quizQuestion": "What does the kanji '郵' mean?",
-    "correctAnswer": "mail service",
+    "correctAnswer": "mail service, postal service",
     "distractors": [
       "partner",
       "grain",
@@ -6157,14 +6267,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-177",
     "type": "vocabulary",
-    "statement": "The kanji 針 means 'policy'",
+    "statement": "The kanji 針 means 'needle, pin'",
     "quizQuestion": "What does the kanji '針' mean?",
-    "correctAnswer": "policy",
+    "correctAnswer": "needle, pin",
     "distractors": [
       "to behave like a spoiled child",
       "cool",
@@ -6180,11 +6291,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "ほうしん",
+    "pronunciation": "はり",
     "exampleSentence": "方針 (ほうしん)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "ほうしん",
+    "reading": "はり",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -6197,9 +6308,9 @@
   {
     "id": "ja-kanji-n2-178",
     "type": "vocabulary",
-    "statement": "The kanji 鈍 means 'dull (e.g. a knife)'",
+    "statement": "The kanji 鈍 means 'dull (e.g. a knife), blunt'",
     "quizQuestion": "What does the kanji '鈍' mean?",
-    "correctAnswer": "dull (e.g. a knife)",
+    "correctAnswer": "dull (e.g. a knife), blunt",
     "distractors": [
       "precious",
       "station (esp. a police station)",
@@ -6227,7 +6338,8 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-179",
@@ -6262,14 +6374,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-180",
     "type": "vocabulary",
-    "statement": "The kanji 鋭 means 'sharp (blade)'",
+    "statement": "The kanji 鋭 means 'sharp (blade), pointed'",
     "quizQuestion": "What does the kanji '鋭' mean?",
-    "correctAnswer": "sharp (blade)",
+    "correctAnswer": "sharp (blade), pointed",
     "distractors": [
       "completion",
       "to seal (letter)",
@@ -6297,14 +6410,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-181",
     "type": "vocabulary",
-    "statement": "The kanji 隅 means 'corner'",
+    "statement": "The kanji 隅 means 'corner, nook'",
     "quizQuestion": "What does the kanji '隅' mean?",
-    "correctAnswer": "corner",
+    "correctAnswer": "corner, nook",
     "distractors": [
       "silence",
       "rising (from one's bed)",
@@ -6321,7 +6435,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "すみ",
-    "exampleSentence": "",
+    "exampleSentence": "片隅 (かたすみ)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "すみ",
@@ -6337,9 +6451,9 @@
   {
     "id": "ja-kanji-n2-182",
     "type": "vocabulary",
-    "statement": "The kanji 零 means 'to spill'",
+    "statement": "The kanji 零 means 'to spill, to fall out of'",
     "quizQuestion": "What does the kanji '零' mean?",
-    "correctAnswer": "to spill",
+    "correctAnswer": "to spill, to fall out of",
     "distractors": [
       "search (esp. in criminal investigations)",
       "to dissolve",
@@ -6367,14 +6481,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-183",
     "type": "vocabulary",
-    "statement": "The kanji 震 means 'to shiver'",
+    "statement": "The kanji 震 means 'to shiver, to shake'",
     "quizQuestion": "What does the kanji '震' mean?",
-    "correctAnswer": "to shiver",
+    "correctAnswer": "to shiver, to shake",
     "distractors": [
       "signature",
       "to darken one's face",
@@ -6402,7 +6517,8 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-184",
@@ -6437,14 +6553,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-185",
     "type": "vocabulary",
-    "statement": "The kanji 香 means 'aroma'",
+    "statement": "The kanji 香 means 'incense'",
     "quizQuestion": "What does the kanji '香' mean?",
-    "correctAnswer": "aroma",
+    "correctAnswer": "incense",
     "distractors": [
       "sales",
       "to perspire",
@@ -6460,11 +6577,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "かおり",
+    "pronunciation": "こう",
     "exampleSentence": "香り (かおり)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "かおり",
+    "reading": "こう",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [
@@ -6477,9 +6594,9 @@
   {
     "id": "ja-kanji-n2-186",
     "type": "vocabulary",
-    "statement": "The kanji 骨 means 'bone'",
+    "statement": "The kanji 骨 means 'bone, frame'",
     "quizQuestion": "What does the kanji '骨' mean?",
-    "correctAnswer": "bone",
+    "correctAnswer": "bone, frame",
     "distractors": [
       "steam",
       "to stick into",
@@ -6496,7 +6613,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "ほね",
-    "exampleSentence": "",
+    "exampleSentence": "露骨 (ろこつ)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "ほね",
@@ -6512,9 +6629,9 @@
   {
     "id": "ja-kanji-n2-187",
     "type": "vocabulary",
-    "statement": "The kanji 麦 means 'wheat'",
+    "statement": "The kanji 麦 means 'wheat, barley'",
     "quizQuestion": "What does the kanji '麦' mean?",
-    "correctAnswer": "wheat",
+    "correctAnswer": "wheat, barley",
     "distractors": [
       "replenishment",
       "hot spring",
@@ -6531,7 +6648,7 @@
     "categoryL1": "Language",
     "categoryL2": "japanese",
     "pronunciation": "むぎ",
-    "exampleSentence": "",
+    "exampleSentence": "小麦粉 (こむぎこ)",
     "domain": "vocab_ja",
     "language": "ja",
     "reading": "むぎ",
@@ -6547,9 +6664,9 @@
   {
     "id": "ja-kanji-n2-188",
     "type": "vocabulary",
-    "statement": "The kanji 黄 means 'gold (Au)'",
+    "statement": "The kanji 黄 means 'gold (Au), golden'",
     "quizQuestion": "What does the kanji '黄' mean?",
-    "correctAnswer": "gold (Au)",
+    "correctAnswer": "gold (Au), golden",
     "distractors": [
       "recuperation",
       "every corner",
@@ -6577,14 +6694,15 @@
       "Language"
     ],
     "rarity": "uncommon",
-    "funScore": 7
+    "funScore": 7,
+    "_compoundDerived": true
   },
   {
     "id": "ja-kanji-n2-189",
     "type": "vocabulary",
-    "statement": "The kanji 齢 means 'age'",
+    "statement": "The kanji 齢 means '(one's) age'",
     "quizQuestion": "What does the kanji '齢' mean?",
-    "correctAnswer": "age",
+    "correctAnswer": "(one's) age",
     "distractors": [
       "some",
       "laundry",
@@ -6600,11 +6718,11 @@
     "ageRating": "kid",
     "categoryL1": "Language",
     "categoryL2": "japanese",
-    "pronunciation": "ねんれい",
+    "pronunciation": "よわい",
     "exampleSentence": "年齢 (ねんれい)",
     "domain": "vocab_ja",
     "language": "ja",
-    "reading": "ねんれい",
+    "reading": "よわい",
     "subdeck": "Kanji",
     "jlptLevel": "N2",
     "category": [

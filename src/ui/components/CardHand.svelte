@@ -748,7 +748,7 @@
             {#if card.mechanicId}
               {@const artUrl = getCardArtUrl(card.mechanicId)}
               <img class="frame-layer frame-base-with-art" src={getBaseFrameUrl()} alt=""
-                style={artUrl ? `background-image: url('${artUrl}'); background-size: 100% auto; background-position: center 35%; background-repeat: no-repeat;` : ''} />
+                style={artUrl ? `background-image: url('${artUrl}'); background-size: 56.2% 36.1%; background-position: 50% 19.3%; background-repeat: no-repeat;` : ''} />
             {:else}
               <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
             {/if}
@@ -1110,7 +1110,7 @@
             {#if card.mechanicId}
               {@const artUrl = getCardArtUrl(card.mechanicId)}
               <img class="frame-layer frame-base-with-art" src={getBaseFrameUrl()} alt=""
-                style={artUrl ? `background-image: url('${artUrl}'); background-size: 100% auto; background-position: center 35%; background-repeat: no-repeat;` : ''} />
+                style={artUrl ? `background-image: url('${artUrl}'); background-size: 56.2% 36.1%; background-position: 50% 19.3%; background-repeat: no-repeat;` : ''} />
             {:else}
               <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
             {/if}
