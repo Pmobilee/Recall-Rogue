@@ -459,37 +459,6 @@
     "variants": null
   },
   {
-    "id": "ko-nikl-1011",
-    "type": "vocabulary",
-    "statement": "언니 means \"A word used only by a female to refer to or address her female siblings or cousins older than herself\" in Korean",
-    "explanation": "언니 — A word used only by a female to refer to or address her female siblings or cousins older than herself. Part of speech: noun. Also: A word used only by a female to refer to or address another female older than herself endearingly",
-    "quizQuestion": "What does \"언니\" mean?",
-    "correctAnswer": "sister (as seen from the",
-    "distractors": [],
-    "category": [
-      "language",
-      "korean_topik1"
-    ],
-    "categoryL1": "language",
-    "categoryL2": "korean_topik1",
-    "rarity": "common",
-    "difficulty": 1,
-    "funScore": 5,
-    "ageRating": "kid",
-    "sourceName": "NIKL Korean-English Dictionary",
-    "sourceUrl": "https://huggingface.co/datasets/binjang/NIKL-korean-english-dictionary",
-    "language": "ko",
-    "pronunciation": null,
-    "status": "approved",
-    "contentVolatility": "timeless",
-    "tags": [
-      "vocab",
-      "ko"
-    ],
-    "variants": null,
-    "fullDefinition": "A word used only by a female to refer to or address her female siblings or cousins older than herself"
-  },
-  {
     "id": "ko-nikl-1012",
     "type": "vocabulary",
     "statement": "언어 means \"\"The means of communication, such as sounds, letters, etc. for expressing or conveying one's thoughts or feelings; or the system of such means. \"\" in Korean",
@@ -2189,7 +2158,7 @@
     "statement": "옆집 means \"\"A house next to one's house.\"\" in Korean",
     "explanation": "옆집 — \"A house next to one's house.\". Part of speech: noun.",
     "quizQuestion": "What does \"옆집\" mean?",
-    "correctAnswer": "a neighbor",
+    "correctAnswer": "neighbor",
     "distractors": [],
     "category": [
       "language",
@@ -2404,7 +2373,7 @@
     "statement": "옛날 means \"time that is far back from the present\" in Korean",
     "explanation": "옛날 — time that is far back from the present. Part of speech: noun. Also: time that passed",
     "quizQuestion": "What does \"옛날\" mean?",
-    "correctAnswer": "a long ago, olden days",
+    "correctAnswer": "long ago, olden days",
     "distractors": [],
     "category": [
       "language",
@@ -5735,7 +5704,7 @@
     "statement": "이웃 means \"The state of being side by side with or close to a region or country.', \"A house that is close to one's own or those who live in the house.\"\" in Korean",
     "explanation": "이웃 — The state of being side by side with or close to a region or country.', \"A house that is close to one's own or those who live in the house.\". Part of speech: noun.",
     "quizQuestion": "What does \"이웃\" mean?",
-    "correctAnswer": "neighborhood",
+    "correctAnswer": "neighbor",
     "distractors": [],
     "category": [
       "language",
@@ -7866,7 +7835,7 @@
     "statement": "잘하다 means \"To do in a right and honest way\" in Korean",
     "explanation": "잘하다 — To do in a right and honest way. Part of speech: verb. Also: To do something in an excellent and successful way, To do something in a skilled and experienced manner, To do something frequently as a habit, To enjoy eating food, etc.', \"(ironic) A word indicating that one is displeased with someone's actions.\", 'A word meaning &quot;if luck favors one or if circumstances allow&quot; or &quot;if something is necessary.&quot;, A word meaning &quot;at the largest,&quot; &quot;at best,&quot; or &quot;at most.&quot;, To treat someone kindly and carefully",
     "quizQuestion": "What does \"잘하다\" mean?",
-    "correctAnswer": "do well, good at",
+    "correctAnswer": "do well",
     "distractors": [],
     "category": [
       "language",
@@ -8606,7 +8575,7 @@
     "statement": "전 means \"point in time in the past\" in Korean",
     "explanation": "전 — point in time in the past. Part of speech: noun. Also: time before a specific point in time",
     "quizQuestion": "What does \"전\" mean?",
-    "correctAnswer": "all, before",
+    "correctAnswer": "before, previous",
     "distractors": [],
     "category": [
       "language",
@@ -11309,37 +11278,6 @@
     "fullDefinition": "A person with teaching qualifications who teaches students in a kindergarten, elementary school, middle school, high school, etc"
   },
   {
-    "id": "ko-nikl-1370",
-    "type": "vocabulary",
-    "statement": "지나가다 means \"For a certain period to end as time passes by\" in Korean",
-    "explanation": "지나가다 — For a certain period to end as time passes by. Part of speech: verb. Also: For a certain task or event to end, To say something without any special meaning, To not make something a problem, To go through a place, To go past the surroundings of an object, For the wind to stop blowing, or for the rain to stop falling, For a facial expression, idea, etc., to appear suddenly and then disappear, To skip something",
-    "quizQuestion": "What does \"지나가다\" mean?",
-    "correctAnswer": "to pass by",
-    "distractors": [],
-    "category": [
-      "language",
-      "korean_topik2"
-    ],
-    "categoryL1": "language",
-    "categoryL2": "korean_topik2",
-    "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 5,
-    "ageRating": "kid",
-    "sourceName": "NIKL Korean-English Dictionary",
-    "sourceUrl": "https://huggingface.co/datasets/binjang/NIKL-korean-english-dictionary",
-    "language": "ko",
-    "pronunciation": null,
-    "status": "approved",
-    "contentVolatility": "timeless",
-    "tags": [
-      "vocab",
-      "ko"
-    ],
-    "variants": null,
-    "fullDefinition": "For a certain period to end as time passes by"
-  },
-  {
     "id": "ko-nikl-1371",
     "type": "vocabulary",
     "statement": "지나다 means \"To get out of a period as time passes\" in Korean",
@@ -12179,7 +12117,7 @@
     "statement": "집 means \"A structure built by a human or animal to serve as protection from cold, heat, etc., and as a place to live in\" in Korean",
     "explanation": "집 — A structure built by a human or animal to serve as protection from cold, heat, etc., and as a place to live in. Part of speech: noun. Also: A unit of counting houses built by humans or animals to live in, group of people that form a family, An item that is made for the purpose of holding a sword, gun, glasses, etc.', \"In the game of go, an empty space on the board that a player surrounds with his/her stones to keep his/her opponent's stones from entering.\", \"In the game of go, a unit of counting empty spaces on the board that a player surrounds with his/her stones to keep his/her opponent's stones from entering.\", \"The word that means 'a store that sells products' or 'a store that is in operation.'\"",
     "quizQuestion": "What does \"집\" mean?",
-    "correctAnswer": "house, shop",
+    "correctAnswer": "house, home",
     "distractors": [],
     "category": [
       "language",
@@ -12944,37 +12882,6 @@
     ],
     "variants": null,
     "fullDefinition": "To go to a place to meet someone or do something"
-  },
-  {
-    "id": "ko-nikl-1422",
-    "type": "vocabulary",
-    "statement": "찾아보다 means \"To go to the place where a person is located and meet him/her\" in Korean",
-    "explanation": "찾아보다 — To go to the place where a person is located and meet him/her. Part of speech: verb. Also: To examine something in order to find the necessary information",
-    "quizQuestion": "What does \"찾아보다\" mean?",
-    "correctAnswer": "to look for",
-    "distractors": [],
-    "category": [
-      "language",
-      "korean_topik2"
-    ],
-    "categoryL1": "language",
-    "categoryL2": "korean_topik2",
-    "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 5,
-    "ageRating": "kid",
-    "sourceName": "NIKL Korean-English Dictionary",
-    "sourceUrl": "https://huggingface.co/datasets/binjang/NIKL-korean-english-dictionary",
-    "language": "ko",
-    "pronunciation": null,
-    "status": "approved",
-    "contentVolatility": "timeless",
-    "tags": [
-      "vocab",
-      "ko"
-    ],
-    "variants": null,
-    "fullDefinition": "To go to the place where a person is located and meet him/her"
   },
   {
     "id": "ko-nikl-1423",
@@ -22063,7 +21970,7 @@
     "statement": "개방 means \"The act of opening the entrance to a place for people to enter or use freely\" in Korean",
     "explanation": "개방 — The act of opening the entrance to a place for people to enter or use freely. Part of speech: noun. Also: The act of removing a ban on something and letting people or goods travel or interact freely",
     "quizQuestion": "What does \"개방\" mean?",
-    "correctAnswer": "opening, opening to the",
+    "correctAnswer": "opening",
     "distractors": [],
     "category": [
       "language",
@@ -30852,36 +30759,6 @@
     "fullDefinition": "To fly about from place to place"
   },
   {
-    "id": "ko-nikl-2204",
-    "type": "vocabulary",
-    "statement": "날아오다 means \"To come flying\" in Korean",
-    "explanation": "날아오다 — To come flying. Part of speech: verb. Also: To come flying fast, (figurative) For a certain news to arrive unexpectedly",
-    "quizQuestion": "What does \"날아오다\" mean?",
-    "correctAnswer": "to fly in",
-    "distractors": [],
-    "category": [
-      "language",
-      "korean_topik2"
-    ],
-    "categoryL1": "language",
-    "categoryL2": "korean_topik2",
-    "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 5,
-    "ageRating": "kid",
-    "sourceName": "NIKL Korean-English Dictionary",
-    "sourceUrl": "https://huggingface.co/datasets/binjang/NIKL-korean-english-dictionary",
-    "language": "ko",
-    "pronunciation": null,
-    "status": "approved",
-    "contentVolatility": "timeless",
-    "tags": [
-      "vocab",
-      "ko"
-    ],
-    "variants": null
-  },
-  {
     "id": "ko-nikl-2206",
     "type": "vocabulary",
     "statement": "낡다 means \"object being old and shabby\" in Korean",
@@ -31501,7 +31378,7 @@
     "statement": "널다 means \"To hang washed clothes out to be dried in the sun or wind\" in Korean",
     "explanation": "널다 — To hang washed clothes out to be dried in the sun or wind. Part of speech: verb.",
     "quizQuestion": "What does \"널다\" mean?",
-    "correctAnswer": "to dry, to expose to the",
+    "correctAnswer": "to dry",
     "distractors": [],
     "category": [
       "language",
@@ -31587,37 +31464,6 @@
     ],
     "variants": null,
     "fullDefinition": "To go beyond a certain time, period, range, etc"
-  },
-  {
-    "id": "ko-nikl-2249",
-    "type": "vocabulary",
-    "statement": "넘어가다 means \"For something standing to lean toward one side or fall down\" in Korean",
-    "explanation": "넘어가다 — For something standing to lean toward one side or fall down. Part of speech: verb. Also: For a person, thing, rights, task, etc., to be handed over to the other side, To move over to the next time, turn, or case, For the sun or moon to go down, For a sheet of paper or the page of a book to be turned over, To stop breathing.', \"To lose one's heart to someone or be tricked or deceived into having faith in something.\", \"For food or saliva to pass through one's throat. \", 'For a certain incident or situation to pass without causing any problem, For a song or voice to come out smoothly, For a certain duration of time or period to pass by, To go beyond and then pass a certain level, limit, or extent, To jump or pass over a high place to advance, To jump or cross a boundary, etc, To let go of a certain affair or problem without attaching any importance to it",
-    "quizQuestion": "What does \"넘어가다\" mean?",
-    "correctAnswer": "to move on to",
-    "distractors": [],
-    "category": [
-      "language",
-      "korean_topik2"
-    ],
-    "categoryL1": "language",
-    "categoryL2": "korean_topik2",
-    "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 5,
-    "ageRating": "kid",
-    "sourceName": "NIKL Korean-English Dictionary",
-    "sourceUrl": "https://huggingface.co/datasets/binjang/NIKL-korean-english-dictionary",
-    "language": "ko",
-    "pronunciation": null,
-    "status": "approved",
-    "contentVolatility": "timeless",
-    "tags": [
-      "vocab",
-      "ko"
-    ],
-    "variants": null,
-    "fullDefinition": "For something standing to lean toward one side or fall down"
   },
   {
     "id": "ko-nikl-225",
@@ -32976,37 +32822,6 @@
     "variants": null
   },
   {
-    "id": "ko-nikl-2330",
-    "type": "vocabulary",
-    "statement": "다루다 means \"\"To do something as one's task.\", 'To sell and buy an item\" in Korean",
-    "explanation": "다루다 — \"To do something as one's task.\", 'To sell and buy an item. Part of speech: verb. Also: To use an instrument, machine, etc, To tend leather, etc., and soften it, To deal with or handle a person or animal, To handle an item, task, etc., in a certain way, To make something the subject or topic",
-    "quizQuestion": "What does \"다루다\" mean?",
-    "correctAnswer": "to deal with",
-    "distractors": [],
-    "category": [
-      "language",
-      "korean_topik2"
-    ],
-    "categoryL1": "language",
-    "categoryL2": "korean_topik2",
-    "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 5,
-    "ageRating": "kid",
-    "sourceName": "NIKL Korean-English Dictionary",
-    "sourceUrl": "https://huggingface.co/datasets/binjang/NIKL-korean-english-dictionary",
-    "language": "ko",
-    "pronunciation": null,
-    "status": "approved",
-    "contentVolatility": "timeless",
-    "tags": [
-      "vocab",
-      "ko"
-    ],
-    "variants": null,
-    "fullDefinition": "\"To do something as one's task.\", 'To sell and buy an item"
-  },
-  {
     "id": "ko-nikl-2334",
     "type": "vocabulary",
     "statement": "다림질 means \"The act of smoothing out the wrinkles of a cloth or clothes using an iron\" in Korean",
@@ -33865,37 +33680,6 @@
       "ko"
     ],
     "variants": null
-  },
-  {
-    "id": "ko-nikl-2378",
-    "type": "vocabulary",
-    "statement": "담기다 means \"For something to be put into a dish, etc.', \"For a certain content or idea to be expressed or contained in a picture, writing, or on one's face. \"\" in Korean",
-    "explanation": "담기다 — For something to be put into a dish, etc.', \"For a certain content or idea to be expressed or contained in a picture, writing, or on one's face. \". Part of speech: verb.",
-    "quizQuestion": "What does \"담기다\" mean?",
-    "correctAnswer": "to be put in (a",
-    "distractors": [],
-    "category": [
-      "language",
-      "korean_topik2"
-    ],
-    "categoryL1": "language",
-    "categoryL2": "korean_topik2",
-    "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 5,
-    "ageRating": "kid",
-    "sourceName": "NIKL Korean-English Dictionary",
-    "sourceUrl": "https://huggingface.co/datasets/binjang/NIKL-korean-english-dictionary",
-    "language": "ko",
-    "pronunciation": null,
-    "status": "approved",
-    "contentVolatility": "timeless",
-    "tags": [
-      "vocab",
-      "ko"
-    ],
-    "variants": null,
-    "fullDefinition": "For something to be put into a dish, etc.', \"For a certain content or idea to be expressed or contained in a picture, writing, or on one's face. \""
   },
   {
     "id": "ko-nikl-2379",
@@ -39905,7 +39689,7 @@
     "statement": "맞벌이 means \"Both the husband and wife having jobs and working for a living, or the jobs held by a married couple\" in Korean",
     "explanation": "맞벌이 — Both the husband and wife having jobs and working for a living, or the jobs held by a married couple. Part of speech: noun.",
     "quizQuestion": "What does \"맞벌이\" mean?",
-    "correctAnswer": "dual-income family",
+    "correctAnswer": "both spouses working",
     "distractors": [],
     "category": [
       "language",
@@ -42058,7 +41842,7 @@
     "statement": "문병 means \"The act of visiting and comforting a sick or injured person\" in Korean",
     "explanation": "문병 — The act of visiting and comforting a sick or injured person. Part of speech: noun.",
     "quizQuestion": "What does \"문병\" mean?",
-    "correctAnswer": "a visit to a sick person",
+    "correctAnswer": "visit to a sick person",
     "distractors": [],
     "category": [
       "language",
@@ -42924,7 +42708,7 @@
     "statement": "미혼 means \"The state of being not yet married, or such a person\" in Korean",
     "explanation": "미혼 — The state of being not yet married, or such a person. Part of speech: noun.",
     "quizQuestion": "What does \"미혼\" mean?",
-    "correctAnswer": "an unmarried",
+    "correctAnswer": "unmarried",
     "distractors": [],
     "category": [
       "language",
@@ -44530,7 +44314,7 @@
     "statement": "발표회 means \"A public meeting which presents or showcases artistic or academic achievements in creative areas such as dance or music\" in Korean",
     "explanation": "발표회 — A public meeting which presents or showcases artistic or academic achievements in creative areas such as dance or music. Part of speech: noun.",
     "quizQuestion": "What does \"발표회\" mean?",
-    "correctAnswer": "presentation",
+    "correctAnswer": "recital, showcase",
     "distractors": [],
     "category": [
       "language",
@@ -46380,37 +46164,6 @@
     "fullDefinition": "A good result or a feeling of satisfaction that one gets after doing something"
   },
   {
-    "id": "ko-nikl-3035",
-    "type": "vocabulary",
-    "statement": "보름 means \"The fifteenth day of a month of the lunar calendar\" in Korean",
-    "explanation": "보름 — The fifteenth day of a month of the lunar calendar. Part of speech: noun. Also: period of fifteen days",
-    "quizQuestion": "What does \"보름\" mean?",
-    "correctAnswer": "the fifteenth day of the",
-    "distractors": [],
-    "category": [
-      "language",
-      "korean_topik2"
-    ],
-    "categoryL1": "language",
-    "categoryL2": "korean_topik2",
-    "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 5,
-    "ageRating": "kid",
-    "sourceName": "NIKL Korean-English Dictionary",
-    "sourceUrl": "https://huggingface.co/datasets/binjang/NIKL-korean-english-dictionary",
-    "language": "ko",
-    "pronunciation": null,
-    "status": "approved",
-    "contentVolatility": "timeless",
-    "tags": [
-      "vocab",
-      "ko"
-    ],
-    "variants": null,
-    "fullDefinition": "The fifteenth day of a month of the lunar calendar"
-  },
-  {
     "id": "ko-nikl-3036",
     "type": "vocabulary",
     "statement": "보름달 means \"full moon: The round moon that comes up on the fifteenth night of a lunar month\" in Korean",
@@ -46841,36 +46594,6 @@
     ],
     "variants": null,
     "fullDefinition": "\"A symptom in which a person's stomach aches. \", 'A feeling of great mortification and frustration, or such a state of mind"
-  },
-  {
-    "id": "ko-nikl-3069",
-    "type": "vocabulary",
-    "statement": "볼거리 means \"Something interesting to see\" in Korean",
-    "explanation": "볼거리 — Something interesting to see. Part of speech: noun.",
-    "quizQuestion": "What does \"볼거리\" mean?",
-    "correctAnswer": "highlights/fun things to",
-    "distractors": [],
-    "category": [
-      "language",
-      "korean_topik2"
-    ],
-    "categoryL1": "language",
-    "categoryL2": "korean_topik2",
-    "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 5,
-    "ageRating": "kid",
-    "sourceName": "NIKL Korean-English Dictionary",
-    "sourceUrl": "https://huggingface.co/datasets/binjang/NIKL-korean-english-dictionary",
-    "language": "ko",
-    "pronunciation": null,
-    "status": "approved",
-    "contentVolatility": "timeless",
-    "tags": [
-      "vocab",
-      "ko"
-    ],
-    "variants": null
   },
   {
     "id": "ko-nikl-307",
@@ -49459,37 +49182,6 @@
     ],
     "variants": null,
     "fullDefinition": "A knack for easily associating with and mixing with many people"
-  },
-  {
-    "id": "ko-nikl-323",
-    "type": "vocabulary",
-    "statement": "누나 means \"A word used by a male to refer to or address his female siblings or cousins older than himself\" in Korean",
-    "explanation": "누나 — A word used by a male to refer to or address his female siblings or cousins older than himself. Part of speech: noun. Also: A word of endearment used by a man to refer to or address a young woman who is older than him",
-    "quizQuestion": "What does \"누나\" mean?",
-    "correctAnswer": "sister (as seen from the",
-    "distractors": [],
-    "category": [
-      "language",
-      "korean_topik1"
-    ],
-    "categoryL1": "language",
-    "categoryL2": "korean_topik1",
-    "rarity": "common",
-    "difficulty": 1,
-    "funScore": 5,
-    "ageRating": "kid",
-    "sourceName": "NIKL Korean-English Dictionary",
-    "sourceUrl": "https://huggingface.co/datasets/binjang/NIKL-korean-english-dictionary",
-    "language": "ko",
-    "pronunciation": null,
-    "status": "approved",
-    "contentVolatility": "timeless",
-    "tags": [
-      "vocab",
-      "ko"
-    ],
-    "variants": null,
-    "fullDefinition": "A word used by a male to refer to or address his female siblings or cousins older than himself"
   },
   {
     "id": "ko-nikl-3233",
@@ -56635,37 +56327,6 @@
     "fullDefinition": "\"The house that one's husband's parents live in, or one's husband's household.\""
   },
   {
-    "id": "ko-nikl-3593",
-    "type": "vocabulary",
-    "statement": "시집가다 means \"For a woman to get married and become the wife of a man\" in Korean",
-    "explanation": "시집가다 — For a woman to get married and become the wife of a man. Part of speech: verb.",
-    "quizQuestion": "What does \"시집가다\" mean?",
-    "correctAnswer": "to get married (for",
-    "distractors": [],
-    "category": [
-      "language",
-      "korean_topik2"
-    ],
-    "categoryL1": "language",
-    "categoryL2": "korean_topik2",
-    "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 5,
-    "ageRating": "kid",
-    "sourceName": "NIKL Korean-English Dictionary",
-    "sourceUrl": "https://huggingface.co/datasets/binjang/NIKL-korean-english-dictionary",
-    "language": "ko",
-    "pronunciation": null,
-    "status": "approved",
-    "contentVolatility": "timeless",
-    "tags": [
-      "vocab",
-      "ko"
-    ],
-    "variants": null,
-    "fullDefinition": "For a woman to get married and become the wife of a man"
-  },
-  {
     "id": "ko-nikl-3595",
     "type": "vocabulary",
     "statement": "시청자 means \"A person who watches a certain program on television\" in Korean",
@@ -59531,37 +59192,6 @@
     "fullDefinition": "A tertiary educational institution high school graduates go to"
   },
   {
-    "id": "ko-nikl-3741",
-    "type": "vocabulary",
-    "statement": "안주 means \"Food served and eaten with drinks\" in Korean",
-    "explanation": "안주 — Food served and eaten with drinks. Part of speech: noun.",
-    "quizQuestion": "What does \"안주\" mean?",
-    "correctAnswer": "snack (served with",
-    "distractors": [],
-    "category": [
-      "language",
-      "korean_topik2"
-    ],
-    "categoryL1": "language",
-    "categoryL2": "korean_topik2",
-    "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 5,
-    "ageRating": "kid",
-    "sourceName": "NIKL Korean-English Dictionary",
-    "sourceUrl": "https://huggingface.co/datasets/binjang/NIKL-korean-english-dictionary",
-    "language": "ko",
-    "pronunciation": null,
-    "status": "approved",
-    "contentVolatility": "timeless",
-    "tags": [
-      "vocab",
-      "ko"
-    ],
-    "variants": null,
-    "fullDefinition": "Food served and eaten with drinks"
-  },
-  {
     "id": "ko-nikl-3743",
     "type": "vocabulary",
     "statement": "안타깝다 means \"Feeling sad and frustrated because something does not work out as planned or someone looks pitiful and pathetic\" in Korean",
@@ -61202,7 +60832,7 @@
     "statement": "덕분 means \"The favor or help provided by someone, or gains from an incident\" in Korean",
     "explanation": "덕분 — The favor or help provided by someone, or gains from an incident. Part of speech: noun.",
     "quizQuestion": "What does \"덕분\" mean?",
-    "correctAnswer": "thanks for, thanks to",
+    "correctAnswer": "thanks for",
     "distractors": [],
     "category": [
       "language",
@@ -61357,7 +60987,7 @@
     "statement": "엊그제 means \"time of being just a few days ago\" in Korean",
     "explanation": "엊그제 — time of being just a few days ago. Part of speech: noun.",
     "quizQuestion": "What does \"엊그제\" mean?",
-    "correctAnswer": "a few days ago",
+    "correctAnswer": "few days ago",
     "distractors": [],
     "category": [
       "language",
@@ -70943,37 +70573,6 @@
     "fullDefinition": "A set of rituals for a dead person including his/her burial or cremation"
   },
   {
-    "id": "ko-nikl-434",
-    "type": "vocabulary",
-    "statement": "들르다 means \"\"To drop by and stay shortly while on one's way.\"\" in Korean",
-    "explanation": "들르다 — \"To drop by and stay shortly while on one's way.\". Part of speech: verb.",
-    "quizQuestion": "What does \"들르다\" mean?",
-    "correctAnswer": "to stop by",
-    "distractors": [],
-    "category": [
-      "language",
-      "korean_topik2"
-    ],
-    "categoryL1": "language",
-    "categoryL2": "korean_topik2",
-    "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 5,
-    "ageRating": "kid",
-    "sourceName": "NIKL Korean-English Dictionary",
-    "sourceUrl": "https://huggingface.co/datasets/binjang/NIKL-korean-english-dictionary",
-    "language": "ko",
-    "pronunciation": null,
-    "status": "approved",
-    "contentVolatility": "timeless",
-    "tags": [
-      "vocab",
-      "ko"
-    ],
-    "variants": null,
-    "fullDefinition": "\"To drop by and stay shortly while on one's way.\""
-  },
-  {
     "id": "ko-nikl-4340",
     "type": "vocabulary",
     "statement": "장마철 means \"The period in the summer when it rains for days on end\" in Korean",
@@ -78605,7 +78204,7 @@
     "statement": "채우다 means \"To fasten a door, drawer, etc., with a lock, etc., to prevent from opening\" in Korean",
     "explanation": "채우다 — To fasten a door, drawer, etc., with a lock, etc., to prevent from opening. Part of speech: verb. Also: To put buttons, etc., in their holes to prevent from loosening, To twist or turn to prevent from moving or working",
     "quizQuestion": "What does \"채우다\" mean?",
-    "correctAnswer": "to satisfy, to fill in",
+    "correctAnswer": "to satisfy",
     "distractors": [],
     "category": [
       "language",
@@ -80888,7 +80487,7 @@
     "statement": "만약 means \"An unexpected case or situation that one thinks might happen\" in Korean",
     "explanation": "만약 — An unexpected case or situation that one thinks might happen. Part of speech: noun.",
     "quizQuestion": "What does \"만약\" mean?",
-    "correctAnswer": "by any chance",
+    "correctAnswer": "if, supposing",
     "distractors": [],
     "category": [
       "language",
@@ -81719,7 +81318,7 @@
     "statement": "많이 means \"In a state in which a number, amount, degree, etc., are larger than a certain standard\" in Korean",
     "explanation": "많이 — In a state in which a number, amount, degree, etc., are larger than a certain standard. Part of speech: adverb.",
     "quizQuestion": "What does \"많이\" mean?",
-    "correctAnswer": "a lot of, many",
+    "correctAnswer": "lot of, many",
     "distractors": [],
     "category": [
       "language",
@@ -83871,37 +83470,6 @@
     "variants": null
   },
   {
-    "id": "ko-nikl-5011",
-    "type": "vocabulary",
-    "statement": "학과 means \"A division of a field of study for teaching or research in a college, etc\" in Korean",
-    "explanation": "학과 — A division of a field of study for teaching or research in a college, etc. Part of speech: noun.",
-    "quizQuestion": "What does \"학과\" mean?",
-    "correctAnswer": "department (at",
-    "distractors": [],
-    "category": [
-      "language",
-      "korean_topik2"
-    ],
-    "categoryL1": "language",
-    "categoryL2": "korean_topik2",
-    "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 5,
-    "ageRating": "kid",
-    "sourceName": "NIKL Korean-English Dictionary",
-    "sourceUrl": "https://huggingface.co/datasets/binjang/NIKL-korean-english-dictionary",
-    "language": "ko",
-    "pronunciation": null,
-    "status": "approved",
-    "contentVolatility": "timeless",
-    "tags": [
-      "vocab",
-      "ko"
-    ],
-    "variants": null,
-    "fullDefinition": "A division of a field of study for teaching or research in a college, etc"
-  },
-  {
     "id": "ko-nikl-5012",
     "type": "vocabulary",
     "statement": "학력 means \"level of education one completes\" in Korean",
@@ -84054,37 +83622,6 @@
     ],
     "variants": null,
     "fullDefinition": "A person who knows a field of study very well; or a person who carries out academic research"
-  },
-  {
-    "id": "ko-nikl-5019",
-    "type": "vocabulary",
-    "statement": "한 means \"\"resentment; deep sorrow: A feeling of bitterness, deep resentment or sorrow that builds up in one's mind from an unfair or regretful event.\"\" in Korean",
-    "explanation": "한 — \"resentment; deep sorrow: A feeling of bitterness, deep resentment or sorrow that builds up in one's mind from an unfair or regretful event.\". Part of speech: noun.",
-    "quizQuestion": "What does \"한\" mean?",
-    "correctAnswer": "one, one of the",
-    "distractors": [],
-    "category": [
-      "language",
-      "korean_topik1"
-    ],
-    "categoryL1": "language",
-    "categoryL2": "korean_topik1",
-    "rarity": "common",
-    "difficulty": 1,
-    "funScore": 5,
-    "ageRating": "kid",
-    "sourceName": "NIKL Korean-English Dictionary",
-    "sourceUrl": "https://huggingface.co/datasets/binjang/NIKL-korean-english-dictionary",
-    "language": "ko",
-    "pronunciation": null,
-    "status": "approved",
-    "contentVolatility": "timeless",
-    "tags": [
-      "vocab",
-      "ko"
-    ],
-    "variants": null,
-    "fullDefinition": "\"resentment; deep sorrow: A feeling of bitterness, deep resentment or sorrow that builds up in one's mind from an unfair or regretful event.\""
   },
   {
     "id": "ko-nikl-502",
@@ -84338,7 +83875,7 @@
     "statement": "한마디 means \"Short and simple words\" in Korean",
     "explanation": "한마디 — Short and simple words. Part of speech: noun.",
     "quizQuestion": "What does \"한마디\" mean?",
-    "correctAnswer": "a word",
+    "correctAnswer": "word",
     "distractors": [],
     "category": [
       "language",
@@ -87794,7 +87331,7 @@
     "statement": "며칠 means \"certain date of the month\" in Korean",
     "explanation": "며칠 — certain date of the month. Part of speech: noun. Also: Some days",
     "quizQuestion": "What does \"며칠\" mean?",
-    "correctAnswer": "a few days, what date",
+    "correctAnswer": "few days, what date",
     "distractors": [],
     "category": [
       "language",
@@ -89153,7 +88690,7 @@
     "statement": "계획적 means \"Following a pre-devised plan\" in Korean",
     "explanation": "계획적 — Following a pre-devised plan. Part of speech: noun.",
     "quizQuestion": "What does \"계획적\" mean?",
-    "correctAnswer": "being planned, as planned",
+    "correctAnswer": "systematic, planned",
     "distractors": [],
     "category": [
       "language",
@@ -90048,7 +89585,7 @@
     "statement": "구두쇠 means \"A person who is frugal and does not spend very much of his/her money or wealth\" in Korean",
     "explanation": "구두쇠 — A person who is frugal and does not spend very much of his/her money or wealth. Part of speech: noun.",
     "quizQuestion": "What does \"구두쇠\" mean?",
-    "correctAnswer": "a stingy person",
+    "correctAnswer": "stingy person",
     "distractors": [],
     "category": [
       "language",
@@ -90109,7 +89646,7 @@
     "statement": "구인 means \"Seeking a person for a job or position\" in Korean",
     "explanation": "구인 — Seeking a person for a job or position. Part of speech: noun.",
     "quizQuestion": "What does \"구인\" mean?",
-    "correctAnswer": "a job offer",
+    "correctAnswer": "job offer",
     "distractors": [],
     "category": [
       "language",
@@ -90286,37 +89823,6 @@
     ],
     "variants": null,
     "fullDefinition": "bound noun used as a unit of length"
-  },
-  {
-    "id": "ko-nikl-578",
-    "type": "vocabulary",
-    "statement": "믿다 means \"To think of something as being right or true.', \"To expect something to meet one's expectations.\", 'To believe in a god or religion\" in Korean",
-    "explanation": "믿다 — To think of something as being right or true.', \"To expect something to meet one's expectations.\", 'To believe in a god or religion. Part of speech: verb. Also: To regard something as something else without a doubt",
-    "quizQuestion": "What does \"믿다\" mean?",
-    "correctAnswer": "to believe in",
-    "distractors": [],
-    "category": [
-      "language",
-      "korean_topik2"
-    ],
-    "categoryL1": "language",
-    "categoryL2": "korean_topik2",
-    "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 5,
-    "ageRating": "kid",
-    "sourceName": "NIKL Korean-English Dictionary",
-    "sourceUrl": "https://huggingface.co/datasets/binjang/NIKL-korean-english-dictionary",
-    "language": "ko",
-    "pronunciation": null,
-    "status": "approved",
-    "contentVolatility": "timeless",
-    "tags": [
-      "vocab",
-      "ko"
-    ],
-    "variants": null,
-    "fullDefinition": "To think of something as being right or true.', \"To expect something to meet one's expectations.\", 'To believe in a god or religion"
   },
   {
     "id": "ko-nikl-5784",
@@ -90871,36 +90377,6 @@
     "fullDefinition": "\"To expect that something could be done as one's thought or hope.\", 'To think that one wants to own something"
   },
   {
-    "id": "ko-nikl-591",
-    "type": "vocabulary",
-    "statement": "바라보다 means \"To look straight at something\" in Korean",
-    "explanation": "바라보다 — To look straight at something. Part of speech: verb. Also: To examine and observe a certain event or phenomenon, To have expectation or hope for something, To approach a certain age, To watch something without interfering or meddling in it, To regard something as a particular thing",
-    "quizQuestion": "What does \"바라보다\" mean?",
-    "correctAnswer": "to look at",
-    "distractors": [],
-    "category": [
-      "language",
-      "korean_topik2"
-    ],
-    "categoryL1": "language",
-    "categoryL2": "korean_topik2",
-    "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 5,
-    "ageRating": "kid",
-    "sourceName": "NIKL Korean-English Dictionary",
-    "sourceUrl": "https://huggingface.co/datasets/binjang/NIKL-korean-english-dictionary",
-    "language": "ko",
-    "pronunciation": null,
-    "status": "approved",
-    "contentVolatility": "timeless",
-    "tags": [
-      "vocab",
-      "ko"
-    ],
-    "variants": null
-  },
-  {
     "id": "ko-nikl-592",
     "type": "vocabulary",
     "statement": "바람 means \"The movement of air that is caused by changes in atmospheric pressure or by a human or machine\" in Korean",
@@ -91061,7 +90537,7 @@
     "statement": "김장 means \"Making a lot of kimchi for the winter in late fall, or the kimchi\" in Korean",
     "explanation": "김장 — Making a lot of kimchi for the winter in late fall, or the kimchi. Part of speech: noun.",
     "quizQuestion": "What does \"김장\" mean?",
-    "correctAnswer": "a custom/event to make",
+    "correctAnswer": "custom/event to make",
     "distractors": [],
     "category": [
       "language",
@@ -92201,7 +91677,7 @@
     "statement": "노처녀 means \"A single woman who is past marriageable age but has not married\" in Korean",
     "explanation": "노처녀 — A single woman who is past marriageable age but has not married. Part of speech: noun.",
     "quizQuestion": "What does \"노처녀\" mean?",
-    "correctAnswer": "an unmarried and old",
+    "correctAnswer": "unmarried and old",
     "distractors": [],
     "category": [
       "language",
@@ -93807,7 +93283,7 @@
     "statement": "병문안 means \"The act of visiting and consoling a sick person\" in Korean",
     "explanation": "병문안 — The act of visiting and consoling a sick person. Part of speech: noun.",
     "quizQuestion": "What does \"병문안\" mean?",
-    "correctAnswer": "a visit to a sick person",
+    "correctAnswer": "visit to a sick person",
     "distractors": [],
     "category": [
       "language",
@@ -95593,37 +95069,6 @@
     "fullDefinition": "Being worthy of trusting or depending on a person by the looks of his/her actions or appearance"
   },
   {
-    "id": "ko-nikl-6777",
-    "type": "vocabulary",
-    "statement": "밀려오다 means \"For a crowd of people or things to be pushed into a place at the same time\" in Korean",
-    "explanation": "밀려오다 — For a crowd of people or things to be pushed into a place at the same time. Part of speech: verb. Also: For a crowd of people or things to come at the same time, For a force or phenomenon to come pushing into a certain space with such force that it cannot be blocked",
-    "quizQuestion": "What does \"밀려오다\" mean?",
-    "correctAnswer": "to rush in",
-    "distractors": [],
-    "category": [
-      "language",
-      "korean_topik2"
-    ],
-    "categoryL1": "language",
-    "categoryL2": "korean_topik2",
-    "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 5,
-    "ageRating": "kid",
-    "sourceName": "NIKL Korean-English Dictionary",
-    "sourceUrl": "https://huggingface.co/datasets/binjang/NIKL-korean-english-dictionary",
-    "language": "ko",
-    "pronunciation": null,
-    "status": "approved",
-    "contentVolatility": "timeless",
-    "tags": [
-      "vocab",
-      "ko"
-    ],
-    "variants": null,
-    "fullDefinition": "For a crowd of people or things to be pushed into a place at the same time"
-  },
-  {
     "id": "ko-nikl-678",
     "type": "vocabulary",
     "statement": "부지런하다 means \"Tending to work steadily without being idle\" in Korean",
@@ -97207,7 +96652,7 @@
     "statement": "불안감 means \"uncomfortable and nervous feeling\" in Korean",
     "explanation": "불안감 — uncomfortable and nervous feeling. Part of speech: noun.",
     "quizQuestion": "What does \"불안감\" mean?",
-    "correctAnswer": "an anxious feeling",
+    "correctAnswer": "anxious feeling",
     "distractors": [],
     "category": [
       "language",
@@ -101498,7 +100943,7 @@
     "statement": "열대야 means \"A very hot night when the outside temperature is over 25 degrees Celsius\" in Korean",
     "explanation": "열대야 — A very hot night when the outside temperature is over 25 degrees Celsius. Part of speech: noun.",
     "quizQuestion": "What does \"열대야\" mean?",
-    "correctAnswer": "a very hot night",
+    "correctAnswer": "very hot night",
     "distractors": [],
     "category": [
       "language",
@@ -103349,7 +102794,7 @@
     "statement": "이상형 means \"The type of a person whom one considers to be perfect\" in Korean",
     "explanation": "이상형 — The type of a person whom one considers to be perfect. Part of speech: noun.",
     "quizQuestion": "What does \"이상형\" mean?",
-    "correctAnswer": "an ideal type of person",
+    "correctAnswer": "ideal type of person",
     "distractors": [],
     "category": [
       "language",
@@ -110757,7 +110202,7 @@
     "statement": "어떠하다 means \"\"Being such in one's thoughts, feelings, state, situation, etc.\"\" in Korean",
     "explanation": "어떠하다 — \"Being such in one's thoughts, feelings, state, situation, etc.\". Part of speech: adjective.",
     "quizQuestion": "What does \"어떠하다\" mean?",
-    "correctAnswer": "to be such a one's",
+    "correctAnswer": "how is it, what kind",
     "distractors": [],
     "category": [
       "language",
