@@ -67,9 +67,9 @@ const ENEMY_SIZE_BOSS = 400
  * The right 30% panel is 384px at 1280 game width. Enemy must fit comfortably within it.
  * These are raw pixel values used directly without scaleFactor multiplication.
  */
-const LANDSCAPE_ENEMY_SIZE_COMMON = 200
-const LANDSCAPE_ENEMY_SIZE_ELITE = 240
-const LANDSCAPE_ENEMY_SIZE_BOSS = 280
+const LANDSCAPE_ENEMY_SIZE_COMMON = 400
+const LANDSCAPE_ENEMY_SIZE_ELITE = 480
+const LANDSCAPE_ENEMY_SIZE_BOSS = 560
 
 /** Color constants. */
 const COLOR_HP_RED = 0xe74c3c

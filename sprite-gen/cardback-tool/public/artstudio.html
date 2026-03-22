@@ -334,6 +334,7 @@
     background: transparent;
     border: none;
     cursor: zoom-in;
+    isolation: isolate; /* required for child z-index to work */
     transition: filter 0.15s;
   }
   .variant-frame-preview:hover { filter: brightness(1.1); }
