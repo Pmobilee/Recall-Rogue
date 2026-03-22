@@ -4,14 +4,39 @@ import { shuffled } from './randomUtils'
 import { BALANCE } from '../data/balance'
 
 /**
- * Per-language index of vocabulary facts, built lazily on first use.
- * Keyed by language code (e.g. 'ja', 'es', 'zh').
+ * Per-language + subdeck index of vocabulary facts, built lazily on first use.
+ * Keyed by `"<language>:<subdeckType>"` (e.g. 'ja:vocab', 'ja:kanji', 'ja:grammar',
+ * 'ja:kana', 'ko:vocab').
+ *
+ * Subdeck segmentation prevents cross-subdeck contamination for Japanese:
+ * all Japanese facts share `type: "vocabulary"` and `language: "ja"`, so
+ * without this extra dimension a vocab question like "What does 食べる mean?"
+ * could receive grammar patterns ("subject marker") or kanji meanings
+ * ("one, horse") as runtime distractors instead of other vocab translations.
  */
 let languageIndex: Map<string, Fact[]> | null = null
 
 /**
- * Builds the per-language index from factsDB.
+ * Determines the subdeck type for a fact based on its ID prefix.
+ * Used as the second dimension of the language index key.
+ *
+ * @param fact - The fact to classify
+ * @returns 'kanji' | 'grammar' | 'kana' | 'vocab'
+ */
+function getSubdeckType(fact: Fact): string {
+  const id = fact.id
+  if (id.startsWith('ja-kanji-')) return 'kanji'
+  if (id.startsWith('ja-grammar-')) return 'grammar'
+  if (id.startsWith('ja-hiragana-') || id.startsWith('ja-katakana-')) return 'kana'
+  // Default covers ja-jlpt-* and all non-Japanese language facts
+  return 'vocab'
+}
+
+/**
+ * Builds the per-language + subdeck index from factsDB.
  * Only includes facts of type 'vocabulary' that have a language code set.
+ * Keys have the form `"<lang>:<subdeckType>"` so each subdeck draws
+ * distractors only from semantically compatible facts.
  */
 function buildLanguageIndex(): Map<string, Fact[]> {
   const index = new Map<string, Fact[]>()
@@ -20,11 +45,12 @@ function buildLanguageIndex(): Map<string, Fact[]> {
     if (fact.type !== 'vocabulary') continue
     const lang = fact.language
     if (!lang) continue
-    const bucket = index.get(lang)
+    const key = `${lang}:${getSubdeckType(fact)}`
+    const bucket = index.get(key)
     if (bucket) {
       bucket.push(fact)
     } else {
-      index.set(lang, [fact])
+      index.set(key, [fact])
     }
   }
   return index
@@ -126,7 +152,9 @@ export function getVocabDistractors(
   if (!lang) return []
 
   const index = getLanguageIndex()
-  const pool = index.get(lang)
+  const subdeckType = getSubdeckType(fact)
+  const key = `${lang}:${subdeckType}`
+  const pool = index.get(key)
   if (!pool || pool.length === 0) return []
 
   const targetDifficulty = fact.difficulty ?? 1

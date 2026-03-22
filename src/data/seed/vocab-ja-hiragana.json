@@ -1,12 +1,21 @@
 [
   {
-    "id": "ja-kana-hiragana-a-forward",
+    "id": "ja-hiragana-a-forward",
     "type": "vocabulary",
     "statement": "あ is the hiragana character for the sound 'a'.",
     "explanation": "あ (a) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana あ represent?",
     "correctAnswer": "a",
-    "distractors": [],
+    "distractors": [
+      "o",
+      "me",
+      "i",
+      "u",
+      "e",
+      "ka",
+      "sa",
+      "ta"
+    ],
     "acceptableAnswers": [
       "a"
     ],
@@ -78,13 +87,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-a-reverse",
+    "id": "ja-hiragana-a-reverse",
     "type": "vocabulary",
     "statement": "The sound 'a' is written as あ in hiragana.",
     "explanation": "In hiragana, the sound 'a' is represented by the character あ.",
     "quizQuestion": "Which hiragana character represents 'a'?",
     "correctAnswer": "あ",
-    "distractors": [],
+    "distractors": [
+      "お",
+      "め",
+      "い",
+      "う",
+      "え",
+      "か",
+      "さ",
+      "た"
+    ],
     "acceptableAnswers": [
       "あ"
     ],
@@ -156,13 +174,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-i-forward",
+    "id": "ja-hiragana-i-forward",
     "type": "vocabulary",
     "statement": "い is the hiragana character for the sound 'i'.",
     "explanation": "い (i) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana い represent?",
     "correctAnswer": "i",
-    "distractors": [],
+    "distractors": [
+      "a",
+      "u",
+      "e",
+      "o",
+      "ki",
+      "shi",
+      "chi",
+      "ni"
+    ],
     "acceptableAnswers": [
       "i"
     ],
@@ -234,13 +261,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-i-reverse",
+    "id": "ja-hiragana-i-reverse",
     "type": "vocabulary",
     "statement": "The sound 'i' is written as い in hiragana.",
     "explanation": "In hiragana, the sound 'i' is represented by the character い.",
     "quizQuestion": "Which hiragana character represents 'i'?",
     "correctAnswer": "い",
-    "distractors": [],
+    "distractors": [
+      "あ",
+      "う",
+      "え",
+      "お",
+      "き",
+      "し",
+      "ち",
+      "に"
+    ],
     "acceptableAnswers": [
       "い"
     ],
@@ -312,13 +348,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-u-forward",
+    "id": "ja-hiragana-u-forward",
     "type": "vocabulary",
     "statement": "う is the hiragana character for the sound 'u'.",
     "explanation": "う (u) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana う represent?",
     "correctAnswer": "u",
-    "distractors": [],
+    "distractors": [
+      "ru",
+      "tsu",
+      "a",
+      "i",
+      "e",
+      "o",
+      "ku",
+      "su"
+    ],
     "acceptableAnswers": [
       "u"
     ],
@@ -390,13 +435,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-u-reverse",
+    "id": "ja-hiragana-u-reverse",
     "type": "vocabulary",
     "statement": "The sound 'u' is written as う in hiragana.",
     "explanation": "In hiragana, the sound 'u' is represented by the character う.",
     "quizQuestion": "Which hiragana character represents 'u'?",
     "correctAnswer": "う",
-    "distractors": [],
+    "distractors": [
+      "る",
+      "つ",
+      "あ",
+      "い",
+      "え",
+      "お",
+      "く",
+      "す"
+    ],
     "acceptableAnswers": [
       "う"
     ],
@@ -468,13 +522,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-e-forward",
+    "id": "ja-hiragana-e-forward",
     "type": "vocabulary",
     "statement": "え is the hiragana character for the sound 'e'.",
     "explanation": "え (e) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana え represent?",
     "correctAnswer": "e",
-    "distractors": [],
+    "distractors": [
+      "a",
+      "i",
+      "u",
+      "o",
+      "ke",
+      "se",
+      "te",
+      "ne"
+    ],
     "acceptableAnswers": [
       "e"
     ],
@@ -546,13 +609,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-e-reverse",
+    "id": "ja-hiragana-e-reverse",
     "type": "vocabulary",
     "statement": "The sound 'e' is written as え in hiragana.",
     "explanation": "In hiragana, the sound 'e' is represented by the character え.",
     "quizQuestion": "Which hiragana character represents 'e'?",
     "correctAnswer": "え",
-    "distractors": [],
+    "distractors": [
+      "あ",
+      "い",
+      "う",
+      "お",
+      "け",
+      "せ",
+      "て",
+      "ね"
+    ],
     "acceptableAnswers": [
       "え"
     ],
@@ -624,13 +696,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-o-forward",
+    "id": "ja-hiragana-o-forward",
     "type": "vocabulary",
     "statement": "お is the hiragana character for the sound 'o'.",
     "explanation": "お (o) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana お represent?",
     "correctAnswer": "o",
-    "distractors": [],
+    "distractors": [
+      "a",
+      "mu",
+      "i",
+      "u",
+      "e",
+      "ko",
+      "so",
+      "to"
+    ],
     "acceptableAnswers": [
       "o"
     ],
@@ -702,13 +783,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-o-reverse",
+    "id": "ja-hiragana-o-reverse",
     "type": "vocabulary",
     "statement": "The sound 'o' is written as お in hiragana.",
     "explanation": "In hiragana, the sound 'o' is represented by the character お.",
     "quizQuestion": "Which hiragana character represents 'o'?",
     "correctAnswer": "お",
-    "distractors": [],
+    "distractors": [
+      "あ",
+      "む",
+      "い",
+      "う",
+      "え",
+      "こ",
+      "そ",
+      "と"
+    ],
     "acceptableAnswers": [
       "お"
     ],
@@ -780,13 +870,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ka-forward",
+    "id": "ja-hiragana-ka-forward",
     "type": "vocabulary",
     "statement": "か is the hiragana character for the sound 'ka'.",
     "explanation": "か (ka) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana か represent?",
     "correctAnswer": "ka",
-    "distractors": [],
+    "distractors": [
+      "ki",
+      "ku",
+      "ke",
+      "ko",
+      "a",
+      "sa",
+      "ta",
+      "na"
+    ],
     "acceptableAnswers": [
       "ka"
     ],
@@ -858,13 +957,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ka-reverse",
+    "id": "ja-hiragana-ka-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ka' is written as か in hiragana.",
     "explanation": "In hiragana, the sound 'ka' is represented by the character か.",
     "quizQuestion": "Which hiragana character represents 'ka'?",
     "correctAnswer": "か",
-    "distractors": [],
+    "distractors": [
+      "き",
+      "く",
+      "け",
+      "こ",
+      "あ",
+      "さ",
+      "た",
+      "な"
+    ],
     "acceptableAnswers": [
       "か"
     ],
@@ -936,13 +1044,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ki-forward",
+    "id": "ja-hiragana-ki-forward",
     "type": "vocabulary",
     "statement": "き is the hiragana character for the sound 'ki'.",
     "explanation": "き (ki) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana き represent?",
     "correctAnswer": "ki",
-    "distractors": [],
+    "distractors": [
+      "sa",
+      "chi",
+      "ka",
+      "ku",
+      "ke",
+      "ko",
+      "i",
+      "shi"
+    ],
     "acceptableAnswers": [
       "ki"
     ],
@@ -1014,13 +1131,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ki-reverse",
+    "id": "ja-hiragana-ki-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ki' is written as き in hiragana.",
     "explanation": "In hiragana, the sound 'ki' is represented by the character き.",
     "quizQuestion": "Which hiragana character represents 'ki'?",
     "correctAnswer": "き",
-    "distractors": [],
+    "distractors": [
+      "さ",
+      "ち",
+      "か",
+      "く",
+      "け",
+      "こ",
+      "い",
+      "し"
+    ],
     "acceptableAnswers": [
       "き"
     ],
@@ -1092,13 +1218,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ku-forward",
+    "id": "ja-hiragana-ku-forward",
     "type": "vocabulary",
     "statement": "く is the hiragana character for the sound 'ku'.",
     "explanation": "く (ku) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana く represent?",
     "correctAnswer": "ku",
-    "distractors": [],
+    "distractors": [
+      "shi",
+      "he",
+      "ka",
+      "ki",
+      "ke",
+      "ko",
+      "u",
+      "su"
+    ],
     "acceptableAnswers": [
       "ku"
     ],
@@ -1170,13 +1305,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ku-reverse",
+    "id": "ja-hiragana-ku-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ku' is written as く in hiragana.",
     "explanation": "In hiragana, the sound 'ku' is represented by the character く.",
     "quizQuestion": "Which hiragana character represents 'ku'?",
     "correctAnswer": "く",
-    "distractors": [],
+    "distractors": [
+      "し",
+      "へ",
+      "か",
+      "き",
+      "け",
+      "こ",
+      "う",
+      "す"
+    ],
     "acceptableAnswers": [
       "く"
     ],
@@ -1248,13 +1392,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ke-forward",
+    "id": "ja-hiragana-ke-forward",
     "type": "vocabulary",
     "statement": "け is the hiragana character for the sound 'ke'.",
     "explanation": "け (ke) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana け represent?",
     "correctAnswer": "ke",
-    "distractors": [],
+    "distractors": [
+      "ka",
+      "ki",
+      "ku",
+      "ko",
+      "e",
+      "se",
+      "te",
+      "ne"
+    ],
     "acceptableAnswers": [
       "ke"
     ],
@@ -1326,13 +1479,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ke-reverse",
+    "id": "ja-hiragana-ke-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ke' is written as け in hiragana.",
     "explanation": "In hiragana, the sound 'ke' is represented by the character け.",
     "quizQuestion": "Which hiragana character represents 'ke'?",
     "correctAnswer": "け",
-    "distractors": [],
+    "distractors": [
+      "か",
+      "き",
+      "く",
+      "こ",
+      "え",
+      "せ",
+      "て",
+      "ね"
+    ],
     "acceptableAnswers": [
       "け"
     ],
@@ -1404,13 +1566,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ko-forward",
+    "id": "ja-hiragana-ko-forward",
     "type": "vocabulary",
     "statement": "こ is the hiragana character for the sound 'ko'.",
     "explanation": "こ (ko) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana こ represent?",
     "correctAnswer": "ko",
-    "distractors": [],
+    "distractors": [
+      "ni",
+      "te",
+      "ka",
+      "ki",
+      "ku",
+      "ke",
+      "o",
+      "so"
+    ],
     "acceptableAnswers": [
       "ko"
     ],
@@ -1482,13 +1653,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ko-reverse",
+    "id": "ja-hiragana-ko-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ko' is written as こ in hiragana.",
     "explanation": "In hiragana, the sound 'ko' is represented by the character こ.",
     "quizQuestion": "Which hiragana character represents 'ko'?",
     "correctAnswer": "こ",
-    "distractors": [],
+    "distractors": [
+      "に",
+      "て",
+      "か",
+      "き",
+      "く",
+      "け",
+      "お",
+      "そ"
+    ],
     "acceptableAnswers": [
       "こ"
     ],
@@ -1560,13 +1740,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-sa-forward",
+    "id": "ja-hiragana-sa-forward",
     "type": "vocabulary",
     "statement": "さ is the hiragana character for the sound 'sa'.",
     "explanation": "さ (sa) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana さ represent?",
     "correctAnswer": "sa",
-    "distractors": [],
+    "distractors": [
+      "ki",
+      "chi",
+      "shi",
+      "su",
+      "se",
+      "so",
+      "a",
+      "ka"
+    ],
     "acceptableAnswers": [
       "sa"
     ],
@@ -1638,13 +1827,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-sa-reverse",
+    "id": "ja-hiragana-sa-reverse",
     "type": "vocabulary",
     "statement": "The sound 'sa' is written as さ in hiragana.",
     "explanation": "In hiragana, the sound 'sa' is represented by the character さ.",
     "quizQuestion": "Which hiragana character represents 'sa'?",
     "correctAnswer": "さ",
-    "distractors": [],
+    "distractors": [
+      "き",
+      "ち",
+      "し",
+      "す",
+      "せ",
+      "そ",
+      "あ",
+      "か"
+    ],
     "acceptableAnswers": [
       "さ"
     ],
@@ -1716,13 +1914,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-shi-forward",
+    "id": "ja-hiragana-shi-forward",
     "type": "vocabulary",
     "statement": "し is the hiragana character for the sound 'shi'.",
     "explanation": "し (shi) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana し represent?",
     "correctAnswer": "shi",
-    "distractors": [],
+    "distractors": [
+      "ku",
+      "tsu",
+      "sa",
+      "su",
+      "se",
+      "so",
+      "i",
+      "ki"
+    ],
     "acceptableAnswers": [
       "shi"
     ],
@@ -1794,13 +2001,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-shi-reverse",
+    "id": "ja-hiragana-shi-reverse",
     "type": "vocabulary",
     "statement": "The sound 'shi' is written as し in hiragana.",
     "explanation": "In hiragana, the sound 'shi' is represented by the character し.",
     "quizQuestion": "Which hiragana character represents 'shi'?",
     "correctAnswer": "し",
-    "distractors": [],
+    "distractors": [
+      "く",
+      "つ",
+      "さ",
+      "す",
+      "せ",
+      "そ",
+      "い",
+      "き"
+    ],
     "acceptableAnswers": [
       "し"
     ],
@@ -1872,13 +2088,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-su-forward",
+    "id": "ja-hiragana-su-forward",
     "type": "vocabulary",
     "statement": "す is the hiragana character for the sound 'su'.",
     "explanation": "す (su) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana す represent?",
     "correctAnswer": "su",
-    "distractors": [],
+    "distractors": [
+      "sa",
+      "shi",
+      "se",
+      "so",
+      "u",
+      "ku",
+      "tsu",
+      "nu"
+    ],
     "acceptableAnswers": [
       "su"
     ],
@@ -1950,13 +2175,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-su-reverse",
+    "id": "ja-hiragana-su-reverse",
     "type": "vocabulary",
     "statement": "The sound 'su' is written as す in hiragana.",
     "explanation": "In hiragana, the sound 'su' is represented by the character す.",
     "quizQuestion": "Which hiragana character represents 'su'?",
     "correctAnswer": "す",
-    "distractors": [],
+    "distractors": [
+      "さ",
+      "し",
+      "せ",
+      "そ",
+      "う",
+      "く",
+      "つ",
+      "ぬ"
+    ],
     "acceptableAnswers": [
       "す"
     ],
@@ -2028,13 +2262,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-se-forward",
+    "id": "ja-hiragana-se-forward",
     "type": "vocabulary",
     "statement": "せ is the hiragana character for the sound 'se'.",
     "explanation": "せ (se) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana せ represent?",
     "correctAnswer": "se",
-    "distractors": [],
+    "distractors": [
+      "sa",
+      "shi",
+      "su",
+      "so",
+      "e",
+      "ke",
+      "te",
+      "ne"
+    ],
     "acceptableAnswers": [
       "se"
     ],
@@ -2106,13 +2349,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-se-reverse",
+    "id": "ja-hiragana-se-reverse",
     "type": "vocabulary",
     "statement": "The sound 'se' is written as せ in hiragana.",
     "explanation": "In hiragana, the sound 'se' is represented by the character せ.",
     "quizQuestion": "Which hiragana character represents 'se'?",
     "correctAnswer": "せ",
-    "distractors": [],
+    "distractors": [
+      "さ",
+      "し",
+      "す",
+      "そ",
+      "え",
+      "け",
+      "て",
+      "ね"
+    ],
     "acceptableAnswers": [
       "せ"
     ],
@@ -2184,13 +2436,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-so-forward",
+    "id": "ja-hiragana-so-forward",
     "type": "vocabulary",
     "statement": "そ is the hiragana character for the sound 'so'.",
     "explanation": "そ (so) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana そ represent?",
     "correctAnswer": "so",
-    "distractors": [],
+    "distractors": [
+      "sa",
+      "shi",
+      "su",
+      "se",
+      "o",
+      "ko",
+      "to",
+      "no"
+    ],
     "acceptableAnswers": [
       "so"
     ],
@@ -2262,13 +2523,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-so-reverse",
+    "id": "ja-hiragana-so-reverse",
     "type": "vocabulary",
     "statement": "The sound 'so' is written as そ in hiragana.",
     "explanation": "In hiragana, the sound 'so' is represented by the character そ.",
     "quizQuestion": "Which hiragana character represents 'so'?",
     "correctAnswer": "そ",
-    "distractors": [],
+    "distractors": [
+      "さ",
+      "し",
+      "す",
+      "せ",
+      "お",
+      "こ",
+      "と",
+      "の"
+    ],
     "acceptableAnswers": [
       "そ"
     ],
@@ -2340,13 +2610,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ta-forward",
+    "id": "ja-hiragana-ta-forward",
     "type": "vocabulary",
     "statement": "た is the hiragana character for the sound 'ta'.",
     "explanation": "た (ta) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana た represent?",
     "correctAnswer": "ta",
-    "distractors": [],
+    "distractors": [
+      "ni",
+      "na",
+      "chi",
+      "tsu",
+      "te",
+      "to",
+      "a",
+      "ka"
+    ],
     "acceptableAnswers": [
       "ta"
     ],
@@ -2418,13 +2697,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ta-reverse",
+    "id": "ja-hiragana-ta-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ta' is written as た in hiragana.",
     "explanation": "In hiragana, the sound 'ta' is represented by the character た.",
     "quizQuestion": "Which hiragana character represents 'ta'?",
     "correctAnswer": "た",
-    "distractors": [],
+    "distractors": [
+      "に",
+      "な",
+      "ち",
+      "つ",
+      "て",
+      "と",
+      "あ",
+      "か"
+    ],
     "acceptableAnswers": [
       "た"
     ],
@@ -2496,13 +2784,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-chi-forward",
+    "id": "ja-hiragana-chi-forward",
     "type": "vocabulary",
     "statement": "ち is the hiragana character for the sound 'chi'.",
     "explanation": "ち (chi) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ち represent?",
     "correctAnswer": "chi",
-    "distractors": [],
+    "distractors": [
+      "sa",
+      "ki",
+      "ta",
+      "tsu",
+      "te",
+      "to",
+      "i",
+      "shi"
+    ],
     "acceptableAnswers": [
       "chi"
     ],
@@ -2574,13 +2871,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-chi-reverse",
+    "id": "ja-hiragana-chi-reverse",
     "type": "vocabulary",
     "statement": "The sound 'chi' is written as ち in hiragana.",
     "explanation": "In hiragana, the sound 'chi' is represented by the character ち.",
     "quizQuestion": "Which hiragana character represents 'chi'?",
     "correctAnswer": "ち",
-    "distractors": [],
+    "distractors": [
+      "さ",
+      "き",
+      "た",
+      "つ",
+      "て",
+      "と",
+      "い",
+      "し"
+    ],
     "acceptableAnswers": [
       "ち"
     ],
@@ -2652,13 +2958,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-tsu-forward",
+    "id": "ja-hiragana-tsu-forward",
     "type": "vocabulary",
     "statement": "つ is the hiragana character for the sound 'tsu'.",
     "explanation": "つ (tsu) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana つ represent?",
     "correctAnswer": "tsu",
-    "distractors": [],
+    "distractors": [
+      "u",
+      "te",
+      "ta",
+      "chi",
+      "to",
+      "ku",
+      "su",
+      "nu"
+    ],
     "acceptableAnswers": [
       "tsu"
     ],
@@ -2730,13 +3045,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-tsu-reverse",
+    "id": "ja-hiragana-tsu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'tsu' is written as つ in hiragana.",
     "explanation": "In hiragana, the sound 'tsu' is represented by the character つ.",
     "quizQuestion": "Which hiragana character represents 'tsu'?",
     "correctAnswer": "つ",
-    "distractors": [],
+    "distractors": [
+      "う",
+      "て",
+      "た",
+      "ち",
+      "と",
+      "く",
+      "す",
+      "ぬ"
+    ],
     "acceptableAnswers": [
       "つ"
     ],
@@ -2808,13 +3132,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-te-forward",
+    "id": "ja-hiragana-te-forward",
     "type": "vocabulary",
     "statement": "て is the hiragana character for the sound 'te'.",
     "explanation": "て (te) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana て represent?",
     "correctAnswer": "te",
-    "distractors": [],
+    "distractors": [
+      "ta",
+      "chi",
+      "tsu",
+      "to",
+      "e",
+      "ke",
+      "se",
+      "ne"
+    ],
     "acceptableAnswers": [
       "te"
     ],
@@ -2886,13 +3219,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-te-reverse",
+    "id": "ja-hiragana-te-reverse",
     "type": "vocabulary",
     "statement": "The sound 'te' is written as て in hiragana.",
     "explanation": "In hiragana, the sound 'te' is represented by the character て.",
     "quizQuestion": "Which hiragana character represents 'te'?",
     "correctAnswer": "て",
-    "distractors": [],
+    "distractors": [
+      "た",
+      "ち",
+      "つ",
+      "と",
+      "え",
+      "け",
+      "せ",
+      "ね"
+    ],
     "acceptableAnswers": [
       "て"
     ],
@@ -2964,13 +3306,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-to-forward",
+    "id": "ja-hiragana-to-forward",
     "type": "vocabulary",
     "statement": "と is the hiragana character for the sound 'to'.",
     "explanation": "と (to) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana と represent?",
     "correctAnswer": "to",
-    "distractors": [],
+    "distractors": [
+      "ta",
+      "chi",
+      "tsu",
+      "te",
+      "o",
+      "ko",
+      "so",
+      "no"
+    ],
     "acceptableAnswers": [
       "to"
     ],
@@ -3042,13 +3393,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-to-reverse",
+    "id": "ja-hiragana-to-reverse",
     "type": "vocabulary",
     "statement": "The sound 'to' is written as と in hiragana.",
     "explanation": "In hiragana, the sound 'to' is represented by the character と.",
     "quizQuestion": "Which hiragana character represents 'to'?",
     "correctAnswer": "と",
-    "distractors": [],
+    "distractors": [
+      "た",
+      "ち",
+      "つ",
+      "て",
+      "お",
+      "こ",
+      "そ",
+      "の"
+    ],
     "acceptableAnswers": [
       "と"
     ],
@@ -3120,13 +3480,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-na-forward",
+    "id": "ja-hiragana-na-forward",
     "type": "vocabulary",
     "statement": "な is the hiragana character for the sound 'na'.",
     "explanation": "な (na) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana な represent?",
     "correctAnswer": "na",
-    "distractors": [],
+    "distractors": [
+      "ta",
+      "ha",
+      "ni",
+      "nu",
+      "ne",
+      "no",
+      "a",
+      "ka"
+    ],
     "acceptableAnswers": [
       "na"
     ],
@@ -3198,13 +3567,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-na-reverse",
+    "id": "ja-hiragana-na-reverse",
     "type": "vocabulary",
     "statement": "The sound 'na' is written as な in hiragana.",
     "explanation": "In hiragana, the sound 'na' is represented by the character な.",
     "quizQuestion": "Which hiragana character represents 'na'?",
     "correctAnswer": "な",
-    "distractors": [],
+    "distractors": [
+      "た",
+      "は",
+      "に",
+      "ぬ",
+      "ね",
+      "の",
+      "あ",
+      "か"
+    ],
     "acceptableAnswers": [
       "な"
     ],
@@ -3276,13 +3654,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ni-forward",
+    "id": "ja-hiragana-ni-forward",
     "type": "vocabulary",
     "statement": "に is the hiragana character for the sound 'ni'.",
     "explanation": "に (ni) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana に represent?",
     "correctAnswer": "ni",
-    "distractors": [],
+    "distractors": [
+      "ko",
+      "ta",
+      "na",
+      "nu",
+      "ne",
+      "no",
+      "i",
+      "ki"
+    ],
     "acceptableAnswers": [
       "ni"
     ],
@@ -3354,13 +3741,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ni-reverse",
+    "id": "ja-hiragana-ni-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ni' is written as に in hiragana.",
     "explanation": "In hiragana, the sound 'ni' is represented by the character に.",
     "quizQuestion": "Which hiragana character represents 'ni'?",
     "correctAnswer": "に",
-    "distractors": [],
+    "distractors": [
+      "こ",
+      "た",
+      "な",
+      "ぬ",
+      "ね",
+      "の",
+      "い",
+      "き"
+    ],
     "acceptableAnswers": [
       "に"
     ],
@@ -3432,13 +3828,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-nu-forward",
+    "id": "ja-hiragana-nu-forward",
     "type": "vocabulary",
     "statement": "ぬ is the hiragana character for the sound 'nu'.",
     "explanation": "ぬ (nu) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ぬ represent?",
     "correctAnswer": "nu",
-    "distractors": [],
+    "distractors": [
+      "me",
+      "ne",
+      "na",
+      "ni",
+      "no",
+      "u",
+      "ku",
+      "su"
+    ],
     "acceptableAnswers": [
       "nu"
     ],
@@ -3510,13 +3915,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-nu-reverse",
+    "id": "ja-hiragana-nu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'nu' is written as ぬ in hiragana.",
     "explanation": "In hiragana, the sound 'nu' is represented by the character ぬ.",
     "quizQuestion": "Which hiragana character represents 'nu'?",
     "correctAnswer": "ぬ",
-    "distractors": [],
+    "distractors": [
+      "め",
+      "ね",
+      "な",
+      "に",
+      "の",
+      "う",
+      "く",
+      "す"
+    ],
     "acceptableAnswers": [
       "ぬ"
     ],
@@ -3588,13 +4002,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ne-forward",
+    "id": "ja-hiragana-ne-forward",
     "type": "vocabulary",
     "statement": "ね is the hiragana character for the sound 'ne'.",
     "explanation": "ね (ne) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ね represent?",
     "correctAnswer": "ne",
-    "distractors": [],
+    "distractors": [
+      "re",
+      "wa",
+      "na",
+      "ni",
+      "nu",
+      "no",
+      "e",
+      "ke"
+    ],
     "acceptableAnswers": [
       "ne"
     ],
@@ -3666,13 +4089,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ne-reverse",
+    "id": "ja-hiragana-ne-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ne' is written as ね in hiragana.",
     "explanation": "In hiragana, the sound 'ne' is represented by the character ね.",
     "quizQuestion": "Which hiragana character represents 'ne'?",
     "correctAnswer": "ね",
-    "distractors": [],
+    "distractors": [
+      "れ",
+      "わ",
+      "な",
+      "に",
+      "ぬ",
+      "の",
+      "え",
+      "け"
+    ],
     "acceptableAnswers": [
       "ね"
     ],
@@ -3744,13 +4176,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-no-forward",
+    "id": "ja-hiragana-no-forward",
     "type": "vocabulary",
     "statement": "の is the hiragana character for the sound 'no'.",
     "explanation": "の (no) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana の represent?",
     "correctAnswer": "no",
-    "distractors": [],
+    "distractors": [
+      "na",
+      "ni",
+      "nu",
+      "ne",
+      "o",
+      "ko",
+      "so",
+      "to"
+    ],
     "acceptableAnswers": [
       "no"
     ],
@@ -3822,13 +4263,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-no-reverse",
+    "id": "ja-hiragana-no-reverse",
     "type": "vocabulary",
     "statement": "The sound 'no' is written as の in hiragana.",
     "explanation": "In hiragana, the sound 'no' is represented by the character の.",
     "quizQuestion": "Which hiragana character represents 'no'?",
     "correctAnswer": "の",
-    "distractors": [],
+    "distractors": [
+      "な",
+      "に",
+      "ぬ",
+      "ね",
+      "お",
+      "こ",
+      "そ",
+      "と"
+    ],
     "acceptableAnswers": [
       "の"
     ],
@@ -3900,13 +4350,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ha-forward",
+    "id": "ja-hiragana-ha-forward",
     "type": "vocabulary",
     "statement": "は is the hiragana character for the sound 'ha'.",
     "explanation": "は (ha) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana は represent?",
     "correctAnswer": "ha",
-    "distractors": [],
+    "distractors": [
+      "ho",
+      "ma",
+      "hi",
+      "fu",
+      "he",
+      "a",
+      "ka",
+      "sa"
+    ],
     "acceptableAnswers": [
       "ha"
     ],
@@ -3978,13 +4437,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ha-reverse",
+    "id": "ja-hiragana-ha-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ha' is written as は in hiragana.",
     "explanation": "In hiragana, the sound 'ha' is represented by the character は.",
     "quizQuestion": "Which hiragana character represents 'ha'?",
     "correctAnswer": "は",
-    "distractors": [],
+    "distractors": [
+      "ほ",
+      "ま",
+      "ひ",
+      "ふ",
+      "へ",
+      "あ",
+      "か",
+      "さ"
+    ],
     "acceptableAnswers": [
       "は"
     ],
@@ -4056,13 +4524,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-hi-forward",
+    "id": "ja-hiragana-hi-forward",
     "type": "vocabulary",
     "statement": "ひ is the hiragana character for the sound 'hi'.",
     "explanation": "ひ (hi) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ひ represent?",
     "correctAnswer": "hi",
-    "distractors": [],
+    "distractors": [
+      "ha",
+      "fu",
+      "he",
+      "ho",
+      "i",
+      "ki",
+      "shi",
+      "chi"
+    ],
     "acceptableAnswers": [
       "hi"
     ],
@@ -4134,13 +4611,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-hi-reverse",
+    "id": "ja-hiragana-hi-reverse",
     "type": "vocabulary",
     "statement": "The sound 'hi' is written as ひ in hiragana.",
     "explanation": "In hiragana, the sound 'hi' is represented by the character ひ.",
     "quizQuestion": "Which hiragana character represents 'hi'?",
     "correctAnswer": "ひ",
-    "distractors": [],
+    "distractors": [
+      "は",
+      "ふ",
+      "へ",
+      "ほ",
+      "い",
+      "き",
+      "し",
+      "ち"
+    ],
     "acceptableAnswers": [
       "ひ"
     ],
@@ -4212,13 +4698,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-fu-forward",
+    "id": "ja-hiragana-fu-forward",
     "type": "vocabulary",
     "statement": "ふ is the hiragana character for the sound 'fu'.",
     "explanation": "ふ (fu) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ふ represent?",
     "correctAnswer": "fu",
-    "distractors": [],
+    "distractors": [
+      "ha",
+      "hi",
+      "he",
+      "ho",
+      "u",
+      "ku",
+      "su",
+      "tsu"
+    ],
     "acceptableAnswers": [
       "fu"
     ],
@@ -4290,13 +4785,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-fu-reverse",
+    "id": "ja-hiragana-fu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'fu' is written as ふ in hiragana.",
     "explanation": "In hiragana, the sound 'fu' is represented by the character ふ.",
     "quizQuestion": "Which hiragana character represents 'fu'?",
     "correctAnswer": "ふ",
-    "distractors": [],
+    "distractors": [
+      "は",
+      "ひ",
+      "へ",
+      "ほ",
+      "う",
+      "く",
+      "す",
+      "つ"
+    ],
     "acceptableAnswers": [
       "ふ"
     ],
@@ -4368,13 +4872,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-he-forward",
+    "id": "ja-hiragana-he-forward",
     "type": "vocabulary",
     "statement": "へ is the hiragana character for the sound 'he'.",
     "explanation": "へ (he) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana へ represent?",
     "correctAnswer": "he",
-    "distractors": [],
+    "distractors": [
+      "ku",
+      "e",
+      "ha",
+      "hi",
+      "fu",
+      "ho",
+      "ke",
+      "se"
+    ],
     "acceptableAnswers": [
       "he"
     ],
@@ -4446,13 +4959,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-he-reverse",
+    "id": "ja-hiragana-he-reverse",
     "type": "vocabulary",
     "statement": "The sound 'he' is written as へ in hiragana.",
     "explanation": "In hiragana, the sound 'he' is represented by the character へ.",
     "quizQuestion": "Which hiragana character represents 'he'?",
     "correctAnswer": "へ",
-    "distractors": [],
+    "distractors": [
+      "く",
+      "え",
+      "は",
+      "ひ",
+      "ふ",
+      "ほ",
+      "け",
+      "せ"
+    ],
     "acceptableAnswers": [
       "へ"
     ],
@@ -4524,13 +5046,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ho-forward",
+    "id": "ja-hiragana-ho-forward",
     "type": "vocabulary",
     "statement": "ほ is the hiragana character for the sound 'ho'.",
     "explanation": "ほ (ho) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ほ represent?",
     "correctAnswer": "ho",
-    "distractors": [],
+    "distractors": [
+      "ha",
+      "ma",
+      "hi",
+      "fu",
+      "he",
+      "o",
+      "ko",
+      "so"
+    ],
     "acceptableAnswers": [
       "ho"
     ],
@@ -4602,13 +5133,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ho-reverse",
+    "id": "ja-hiragana-ho-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ho' is written as ほ in hiragana.",
     "explanation": "In hiragana, the sound 'ho' is represented by the character ほ.",
     "quizQuestion": "Which hiragana character represents 'ho'?",
     "correctAnswer": "ほ",
-    "distractors": [],
+    "distractors": [
+      "は",
+      "ま",
+      "ひ",
+      "ふ",
+      "へ",
+      "お",
+      "こ",
+      "そ"
+    ],
     "acceptableAnswers": [
       "ほ"
     ],
@@ -4680,13 +5220,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ma-forward",
+    "id": "ja-hiragana-ma-forward",
     "type": "vocabulary",
     "statement": "ま is the hiragana character for the sound 'ma'.",
     "explanation": "ま (ma) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ま represent?",
     "correctAnswer": "ma",
-    "distractors": [],
+    "distractors": [
+      "mi",
+      "mu",
+      "me",
+      "mo",
+      "a",
+      "ka",
+      "sa",
+      "ta"
+    ],
     "acceptableAnswers": [
       "ma"
     ],
@@ -4758,13 +5307,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ma-reverse",
+    "id": "ja-hiragana-ma-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ma' is written as ま in hiragana.",
     "explanation": "In hiragana, the sound 'ma' is represented by the character ま.",
     "quizQuestion": "Which hiragana character represents 'ma'?",
     "correctAnswer": "ま",
-    "distractors": [],
+    "distractors": [
+      "み",
+      "む",
+      "め",
+      "も",
+      "あ",
+      "か",
+      "さ",
+      "た"
+    ],
     "acceptableAnswers": [
       "ま"
     ],
@@ -4836,13 +5394,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-mi-forward",
+    "id": "ja-hiragana-mi-forward",
     "type": "vocabulary",
     "statement": "み is the hiragana character for the sound 'mi'.",
     "explanation": "み (mi) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana み represent?",
     "correctAnswer": "mi",
-    "distractors": [],
+    "distractors": [
+      "ma",
+      "mu",
+      "me",
+      "mo",
+      "i",
+      "ki",
+      "shi",
+      "chi"
+    ],
     "acceptableAnswers": [
       "mi"
     ],
@@ -4914,13 +5481,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-mi-reverse",
+    "id": "ja-hiragana-mi-reverse",
     "type": "vocabulary",
     "statement": "The sound 'mi' is written as み in hiragana.",
     "explanation": "In hiragana, the sound 'mi' is represented by the character み.",
     "quizQuestion": "Which hiragana character represents 'mi'?",
     "correctAnswer": "み",
-    "distractors": [],
+    "distractors": [
+      "ま",
+      "む",
+      "め",
+      "も",
+      "い",
+      "き",
+      "し",
+      "ち"
+    ],
     "acceptableAnswers": [
       "み"
     ],
@@ -4992,13 +5568,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-mu-forward",
+    "id": "ja-hiragana-mu-forward",
     "type": "vocabulary",
     "statement": "む is the hiragana character for the sound 'mu'.",
     "explanation": "む (mu) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana む represent?",
     "correctAnswer": "mu",
-    "distractors": [],
+    "distractors": [
+      "ma",
+      "mi",
+      "me",
+      "mo",
+      "u",
+      "ku",
+      "su",
+      "tsu"
+    ],
     "acceptableAnswers": [
       "mu"
     ],
@@ -5070,13 +5655,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-mu-reverse",
+    "id": "ja-hiragana-mu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'mu' is written as む in hiragana.",
     "explanation": "In hiragana, the sound 'mu' is represented by the character む.",
     "quizQuestion": "Which hiragana character represents 'mu'?",
     "correctAnswer": "む",
-    "distractors": [],
+    "distractors": [
+      "ま",
+      "み",
+      "め",
+      "も",
+      "う",
+      "く",
+      "す",
+      "つ"
+    ],
     "acceptableAnswers": [
       "む"
     ],
@@ -5148,13 +5742,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-me-forward",
+    "id": "ja-hiragana-me-forward",
     "type": "vocabulary",
     "statement": "め is the hiragana character for the sound 'me'.",
     "explanation": "め (me) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana め represent?",
     "correctAnswer": "me",
-    "distractors": [],
+    "distractors": [
+      "nu",
+      "a",
+      "ma",
+      "mi",
+      "mu",
+      "mo",
+      "e",
+      "ke"
+    ],
     "acceptableAnswers": [
       "me"
     ],
@@ -5226,13 +5829,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-me-reverse",
+    "id": "ja-hiragana-me-reverse",
     "type": "vocabulary",
     "statement": "The sound 'me' is written as め in hiragana.",
     "explanation": "In hiragana, the sound 'me' is represented by the character め.",
     "quizQuestion": "Which hiragana character represents 'me'?",
     "correctAnswer": "め",
-    "distractors": [],
+    "distractors": [
+      "ぬ",
+      "あ",
+      "ま",
+      "み",
+      "む",
+      "も",
+      "え",
+      "け"
+    ],
     "acceptableAnswers": [
       "め"
     ],
@@ -5304,13 +5916,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-mo-forward",
+    "id": "ja-hiragana-mo-forward",
     "type": "vocabulary",
     "statement": "も is the hiragana character for the sound 'mo'.",
     "explanation": "も (mo) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana も represent?",
     "correctAnswer": "mo",
-    "distractors": [],
+    "distractors": [
+      "ma",
+      "mi",
+      "mu",
+      "me",
+      "o",
+      "ko",
+      "so",
+      "to"
+    ],
     "acceptableAnswers": [
       "mo"
     ],
@@ -5382,13 +6003,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-mo-reverse",
+    "id": "ja-hiragana-mo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'mo' is written as も in hiragana.",
     "explanation": "In hiragana, the sound 'mo' is represented by the character も.",
     "quizQuestion": "Which hiragana character represents 'mo'?",
     "correctAnswer": "も",
-    "distractors": [],
+    "distractors": [
+      "ま",
+      "み",
+      "む",
+      "め",
+      "お",
+      "こ",
+      "そ",
+      "と"
+    ],
     "acceptableAnswers": [
       "も"
     ],
@@ -5460,13 +6090,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ya-forward",
+    "id": "ja-hiragana-ya-forward",
     "type": "vocabulary",
     "statement": "や is the hiragana character for the sound 'ya'.",
     "explanation": "や (ya) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana や represent?",
     "correctAnswer": "ya",
-    "distractors": [],
+    "distractors": [
+      "yu",
+      "yo",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "ya"
     ],
@@ -5538,13 +6177,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ya-reverse",
+    "id": "ja-hiragana-ya-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ya' is written as や in hiragana.",
     "explanation": "In hiragana, the sound 'ya' is represented by the character や.",
     "quizQuestion": "Which hiragana character represents 'ya'?",
     "correctAnswer": "や",
-    "distractors": [],
+    "distractors": [
+      "ゆ",
+      "よ",
+      "あ",
+      "か",
+      "さ",
+      "た",
+      "な",
+      "は"
+    ],
     "acceptableAnswers": [
       "や"
     ],
@@ -5616,13 +6264,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-yu-forward",
+    "id": "ja-hiragana-yu-forward",
     "type": "vocabulary",
     "statement": "ゆ is the hiragana character for the sound 'yu'.",
     "explanation": "ゆ (yu) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ゆ represent?",
     "correctAnswer": "yu",
-    "distractors": [],
+    "distractors": [
+      "ya",
+      "yo",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu",
+      "fu"
+    ],
     "acceptableAnswers": [
       "yu"
     ],
@@ -5694,13 +6351,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-yu-reverse",
+    "id": "ja-hiragana-yu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'yu' is written as ゆ in hiragana.",
     "explanation": "In hiragana, the sound 'yu' is represented by the character ゆ.",
     "quizQuestion": "Which hiragana character represents 'yu'?",
     "correctAnswer": "ゆ",
-    "distractors": [],
+    "distractors": [
+      "や",
+      "よ",
+      "う",
+      "く",
+      "す",
+      "つ",
+      "ぬ",
+      "ふ"
+    ],
     "acceptableAnswers": [
       "ゆ"
     ],
@@ -5772,13 +6438,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-yo-forward",
+    "id": "ja-hiragana-yo-forward",
     "type": "vocabulary",
     "statement": "よ is the hiragana character for the sound 'yo'.",
     "explanation": "よ (yo) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana よ represent?",
     "correctAnswer": "yo",
-    "distractors": [],
+    "distractors": [
+      "ya",
+      "yu",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho"
+    ],
     "acceptableAnswers": [
       "yo"
     ],
@@ -5850,13 +6525,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-yo-reverse",
+    "id": "ja-hiragana-yo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'yo' is written as よ in hiragana.",
     "explanation": "In hiragana, the sound 'yo' is represented by the character よ.",
     "quizQuestion": "Which hiragana character represents 'yo'?",
     "correctAnswer": "よ",
-    "distractors": [],
+    "distractors": [
+      "や",
+      "ゆ",
+      "お",
+      "こ",
+      "そ",
+      "と",
+      "の",
+      "ほ"
+    ],
     "acceptableAnswers": [
       "よ"
     ],
@@ -5928,13 +6612,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ra-forward",
+    "id": "ja-hiragana-ra-forward",
     "type": "vocabulary",
     "statement": "ら is the hiragana character for the sound 'ra'.",
     "explanation": "ら (ra) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ら represent?",
     "correctAnswer": "ra",
-    "distractors": [],
+    "distractors": [
+      "ri",
+      "ru",
+      "re",
+      "ro",
+      "a",
+      "ka",
+      "sa",
+      "ta"
+    ],
     "acceptableAnswers": [
       "ra"
     ],
@@ -6006,13 +6699,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ra-reverse",
+    "id": "ja-hiragana-ra-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ra' is written as ら in hiragana.",
     "explanation": "In hiragana, the sound 'ra' is represented by the character ら.",
     "quizQuestion": "Which hiragana character represents 'ra'?",
     "correctAnswer": "ら",
-    "distractors": [],
+    "distractors": [
+      "り",
+      "る",
+      "れ",
+      "ろ",
+      "あ",
+      "か",
+      "さ",
+      "た"
+    ],
     "acceptableAnswers": [
       "ら"
     ],
@@ -6084,13 +6786,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ri-forward",
+    "id": "ja-hiragana-ri-forward",
     "type": "vocabulary",
     "statement": "り is the hiragana character for the sound 'ri'.",
     "explanation": "り (ri) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana り represent?",
     "correctAnswer": "ri",
-    "distractors": [],
+    "distractors": [
+      "ra",
+      "ru",
+      "re",
+      "ro",
+      "i",
+      "ki",
+      "shi",
+      "chi"
+    ],
     "acceptableAnswers": [
       "ri"
     ],
@@ -6162,13 +6873,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ri-reverse",
+    "id": "ja-hiragana-ri-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ri' is written as り in hiragana.",
     "explanation": "In hiragana, the sound 'ri' is represented by the character り.",
     "quizQuestion": "Which hiragana character represents 'ri'?",
     "correctAnswer": "り",
-    "distractors": [],
+    "distractors": [
+      "ら",
+      "る",
+      "れ",
+      "ろ",
+      "い",
+      "き",
+      "し",
+      "ち"
+    ],
     "acceptableAnswers": [
       "り"
     ],
@@ -6240,13 +6960,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ru-forward",
+    "id": "ja-hiragana-ru-forward",
     "type": "vocabulary",
     "statement": "る is the hiragana character for the sound 'ru'.",
     "explanation": "る (ru) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana る represent?",
     "correctAnswer": "ru",
-    "distractors": [],
+    "distractors": [
+      "ro",
+      "u",
+      "ra",
+      "ri",
+      "re",
+      "ku",
+      "su",
+      "tsu"
+    ],
     "acceptableAnswers": [
       "ru"
     ],
@@ -6318,13 +7047,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ru-reverse",
+    "id": "ja-hiragana-ru-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ru' is written as る in hiragana.",
     "explanation": "In hiragana, the sound 'ru' is represented by the character る.",
     "quizQuestion": "Which hiragana character represents 'ru'?",
     "correctAnswer": "る",
-    "distractors": [],
+    "distractors": [
+      "ろ",
+      "う",
+      "ら",
+      "り",
+      "れ",
+      "く",
+      "す",
+      "つ"
+    ],
     "acceptableAnswers": [
       "る"
     ],
@@ -6396,13 +7134,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-re-forward",
+    "id": "ja-hiragana-re-forward",
     "type": "vocabulary",
     "statement": "れ is the hiragana character for the sound 're'.",
     "explanation": "れ (re) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana れ represent?",
     "correctAnswer": "re",
-    "distractors": [],
+    "distractors": [
+      "ne",
+      "wa",
+      "ra",
+      "ri",
+      "ru",
+      "ro",
+      "e",
+      "ke"
+    ],
     "acceptableAnswers": [
       "re"
     ],
@@ -6474,13 +7221,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-re-reverse",
+    "id": "ja-hiragana-re-reverse",
     "type": "vocabulary",
     "statement": "The sound 're' is written as れ in hiragana.",
     "explanation": "In hiragana, the sound 're' is represented by the character れ.",
     "quizQuestion": "Which hiragana character represents 're'?",
     "correctAnswer": "れ",
-    "distractors": [],
+    "distractors": [
+      "ね",
+      "わ",
+      "ら",
+      "り",
+      "る",
+      "ろ",
+      "え",
+      "け"
+    ],
     "acceptableAnswers": [
       "れ"
     ],
@@ -6552,13 +7308,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ro-forward",
+    "id": "ja-hiragana-ro-forward",
     "type": "vocabulary",
     "statement": "ろ is the hiragana character for the sound 'ro'.",
     "explanation": "ろ (ro) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ろ represent?",
     "correctAnswer": "ro",
-    "distractors": [],
+    "distractors": [
+      "ru",
+      "so",
+      "ra",
+      "ri",
+      "re",
+      "o",
+      "ko",
+      "to"
+    ],
     "acceptableAnswers": [
       "ro"
     ],
@@ -6630,13 +7395,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ro-reverse",
+    "id": "ja-hiragana-ro-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ro' is written as ろ in hiragana.",
     "explanation": "In hiragana, the sound 'ro' is represented by the character ろ.",
     "quizQuestion": "Which hiragana character represents 'ro'?",
     "correctAnswer": "ろ",
-    "distractors": [],
+    "distractors": [
+      "る",
+      "そ",
+      "ら",
+      "り",
+      "れ",
+      "お",
+      "こ",
+      "と"
+    ],
     "acceptableAnswers": [
       "ろ"
     ],
@@ -6708,13 +7482,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-wa-forward",
+    "id": "ja-hiragana-wa-forward",
     "type": "vocabulary",
     "statement": "わ is the hiragana character for the sound 'wa'.",
     "explanation": "わ (wa) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana わ represent?",
     "correctAnswer": "wa",
-    "distractors": [],
+    "distractors": [
+      "ne",
+      "re",
+      "wo",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na"
+    ],
     "acceptableAnswers": [
       "wa"
     ],
@@ -6786,13 +7569,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-wa-reverse",
+    "id": "ja-hiragana-wa-reverse",
     "type": "vocabulary",
     "statement": "The sound 'wa' is written as わ in hiragana.",
     "explanation": "In hiragana, the sound 'wa' is represented by the character わ.",
     "quizQuestion": "Which hiragana character represents 'wa'?",
     "correctAnswer": "わ",
-    "distractors": [],
+    "distractors": [
+      "ね",
+      "れ",
+      "を",
+      "あ",
+      "か",
+      "さ",
+      "た",
+      "な"
+    ],
     "acceptableAnswers": [
       "わ"
     ],
@@ -6864,13 +7656,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-wo-forward",
+    "id": "ja-hiragana-wo-forward",
     "type": "vocabulary",
     "statement": "を is the hiragana character for the sound 'wo'.",
     "explanation": "を (wo) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana を represent?",
     "correctAnswer": "wo",
-    "distractors": [],
+    "distractors": [
+      "wa",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho",
+      "mo"
+    ],
     "acceptableAnswers": [
       "wo"
     ],
@@ -6942,13 +7743,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-wo-reverse",
+    "id": "ja-hiragana-wo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'wo' is written as を in hiragana.",
     "explanation": "In hiragana, the sound 'wo' is represented by the character を.",
     "quizQuestion": "Which hiragana character represents 'wo'?",
     "correctAnswer": "を",
-    "distractors": [],
+    "distractors": [
+      "わ",
+      "お",
+      "こ",
+      "そ",
+      "と",
+      "の",
+      "ほ",
+      "も"
+    ],
     "acceptableAnswers": [
       "を"
     ],
@@ -7020,13 +7830,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-n-forward",
+    "id": "ja-hiragana-n-forward",
     "type": "vocabulary",
     "statement": "ん is the hiragana character for the sound 'n'.",
     "explanation": "ん (n) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ん represent?",
     "correctAnswer": "n",
-    "distractors": [],
+    "distractors": [
+      "ru",
+      "he",
+      "ho",
+      "fu",
+      "wa",
+      "me",
+      "ri",
+      "yu"
+    ],
     "acceptableAnswers": [
       "n"
     ],
@@ -7098,13 +7917,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-n-reverse",
+    "id": "ja-hiragana-n-reverse",
     "type": "vocabulary",
     "statement": "The sound 'n' is written as ん in hiragana.",
     "explanation": "In hiragana, the sound 'n' is represented by the character ん.",
     "quizQuestion": "Which hiragana character represents 'n'?",
     "correctAnswer": "ん",
-    "distractors": [],
+    "distractors": [
+      "る",
+      "へ",
+      "ほ",
+      "ふ",
+      "わ",
+      "め",
+      "り",
+      "ゆ"
+    ],
     "acceptableAnswers": [
       "ん"
     ],
@@ -7176,13 +8004,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ga-forward",
+    "id": "ja-hiragana-ga-forward",
     "type": "vocabulary",
     "statement": "が is the hiragana character for the sound 'ga'.",
     "explanation": "が (ga) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana が represent?",
     "correctAnswer": "ga",
-    "distractors": [],
+    "distractors": [
+      "gi",
+      "gu",
+      "ge",
+      "go",
+      "a",
+      "ka",
+      "sa",
+      "ta"
+    ],
     "acceptableAnswers": [
       "ga"
     ],
@@ -7254,13 +8091,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ga-reverse",
+    "id": "ja-hiragana-ga-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ga' is written as が in hiragana.",
     "explanation": "In hiragana, the sound 'ga' is represented by the character が.",
     "quizQuestion": "Which hiragana character represents 'ga'?",
     "correctAnswer": "が",
-    "distractors": [],
+    "distractors": [
+      "ぎ",
+      "ぐ",
+      "げ",
+      "ご",
+      "あ",
+      "か",
+      "さ",
+      "た"
+    ],
     "acceptableAnswers": [
       "が"
     ],
@@ -7332,13 +8178,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-gi-forward",
+    "id": "ja-hiragana-gi-forward",
     "type": "vocabulary",
     "statement": "ぎ is the hiragana character for the sound 'gi'.",
     "explanation": "ぎ (gi) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ぎ represent?",
     "correctAnswer": "gi",
-    "distractors": [],
+    "distractors": [
+      "ga",
+      "gu",
+      "ge",
+      "go",
+      "i",
+      "ki",
+      "shi",
+      "chi"
+    ],
     "acceptableAnswers": [
       "gi"
     ],
@@ -7410,13 +8265,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-gi-reverse",
+    "id": "ja-hiragana-gi-reverse",
     "type": "vocabulary",
     "statement": "The sound 'gi' is written as ぎ in hiragana.",
     "explanation": "In hiragana, the sound 'gi' is represented by the character ぎ.",
     "quizQuestion": "Which hiragana character represents 'gi'?",
     "correctAnswer": "ぎ",
-    "distractors": [],
+    "distractors": [
+      "が",
+      "ぐ",
+      "げ",
+      "ご",
+      "い",
+      "き",
+      "し",
+      "ち"
+    ],
     "acceptableAnswers": [
       "ぎ"
     ],
@@ -7488,13 +8352,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-gu-forward",
+    "id": "ja-hiragana-gu-forward",
     "type": "vocabulary",
     "statement": "ぐ is the hiragana character for the sound 'gu'.",
     "explanation": "ぐ (gu) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ぐ represent?",
     "correctAnswer": "gu",
-    "distractors": [],
+    "distractors": [
+      "ga",
+      "gi",
+      "ge",
+      "go",
+      "u",
+      "ku",
+      "su",
+      "tsu"
+    ],
     "acceptableAnswers": [
       "gu"
     ],
@@ -7566,13 +8439,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-gu-reverse",
+    "id": "ja-hiragana-gu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'gu' is written as ぐ in hiragana.",
     "explanation": "In hiragana, the sound 'gu' is represented by the character ぐ.",
     "quizQuestion": "Which hiragana character represents 'gu'?",
     "correctAnswer": "ぐ",
-    "distractors": [],
+    "distractors": [
+      "が",
+      "ぎ",
+      "げ",
+      "ご",
+      "う",
+      "く",
+      "す",
+      "つ"
+    ],
     "acceptableAnswers": [
       "ぐ"
     ],
@@ -7644,13 +8526,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ge-forward",
+    "id": "ja-hiragana-ge-forward",
     "type": "vocabulary",
     "statement": "げ is the hiragana character for the sound 'ge'.",
     "explanation": "げ (ge) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana げ represent?",
     "correctAnswer": "ge",
-    "distractors": [],
+    "distractors": [
+      "ga",
+      "gi",
+      "gu",
+      "go",
+      "e",
+      "ke",
+      "se",
+      "te"
+    ],
     "acceptableAnswers": [
       "ge"
     ],
@@ -7722,13 +8613,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ge-reverse",
+    "id": "ja-hiragana-ge-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ge' is written as げ in hiragana.",
     "explanation": "In hiragana, the sound 'ge' is represented by the character げ.",
     "quizQuestion": "Which hiragana character represents 'ge'?",
     "correctAnswer": "げ",
-    "distractors": [],
+    "distractors": [
+      "が",
+      "ぎ",
+      "ぐ",
+      "ご",
+      "え",
+      "け",
+      "せ",
+      "て"
+    ],
     "acceptableAnswers": [
       "げ"
     ],
@@ -7800,13 +8700,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-go-forward",
+    "id": "ja-hiragana-go-forward",
     "type": "vocabulary",
     "statement": "ご is the hiragana character for the sound 'go'.",
     "explanation": "ご (go) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ご represent?",
     "correctAnswer": "go",
-    "distractors": [],
+    "distractors": [
+      "ga",
+      "gi",
+      "gu",
+      "ge",
+      "o",
+      "ko",
+      "so",
+      "to"
+    ],
     "acceptableAnswers": [
       "go"
     ],
@@ -7878,13 +8787,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-go-reverse",
+    "id": "ja-hiragana-go-reverse",
     "type": "vocabulary",
     "statement": "The sound 'go' is written as ご in hiragana.",
     "explanation": "In hiragana, the sound 'go' is represented by the character ご.",
     "quizQuestion": "Which hiragana character represents 'go'?",
     "correctAnswer": "ご",
-    "distractors": [],
+    "distractors": [
+      "が",
+      "ぎ",
+      "ぐ",
+      "げ",
+      "お",
+      "こ",
+      "そ",
+      "と"
+    ],
     "acceptableAnswers": [
       "ご"
     ],
@@ -7956,13 +8874,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-za-forward",
+    "id": "ja-hiragana-za-forward",
     "type": "vocabulary",
     "statement": "ざ is the hiragana character for the sound 'za'.",
     "explanation": "ざ (za) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ざ represent?",
     "correctAnswer": "za",
-    "distractors": [],
+    "distractors": [
+      "ji",
+      "zu",
+      "ze",
+      "zo",
+      "a",
+      "ka",
+      "sa",
+      "ta"
+    ],
     "acceptableAnswers": [
       "za"
     ],
@@ -8034,13 +8961,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-za-reverse",
+    "id": "ja-hiragana-za-reverse",
     "type": "vocabulary",
     "statement": "The sound 'za' is written as ざ in hiragana.",
     "explanation": "In hiragana, the sound 'za' is represented by the character ざ.",
     "quizQuestion": "Which hiragana character represents 'za'?",
     "correctAnswer": "ざ",
-    "distractors": [],
+    "distractors": [
+      "じ",
+      "ず",
+      "ぜ",
+      "ぞ",
+      "あ",
+      "か",
+      "さ",
+      "た"
+    ],
     "acceptableAnswers": [
       "ざ"
     ],
@@ -8112,13 +9048,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ji-forward",
+    "id": "ja-hiragana-ji-forward",
     "type": "vocabulary",
     "statement": "じ is the hiragana character for the sound 'ji'.",
     "explanation": "じ (ji) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana じ represent?",
     "correctAnswer": "ji",
-    "distractors": [],
+    "distractors": [
+      "za",
+      "zu",
+      "ze",
+      "zo",
+      "i",
+      "ki",
+      "shi",
+      "chi"
+    ],
     "acceptableAnswers": [
       "ji"
     ],
@@ -8190,15 +9135,25 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ji-reverse",
+    "id": "ja-hiragana-ji-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ji' is written as じ in hiragana.",
     "explanation": "In hiragana, the sound 'ji' is represented by the character じ.",
     "quizQuestion": "Which hiragana character represents 'ji'?",
     "correctAnswer": "じ",
-    "distractors": [],
+    "distractors": [
+      "ざ",
+      "ず",
+      "ぜ",
+      "ぞ",
+      "い",
+      "き",
+      "し",
+      "ち"
+    ],
     "acceptableAnswers": [
-      "じ"
+      "じ",
+      "ぢ"
     ],
     "category": [
       "language",
@@ -8235,6 +9190,10 @@
           "ざ",
           "ず",
           "ぜ"
+        ],
+        "acceptableAnswers": [
+          "じ",
+          "ぢ"
         ]
       },
       {
@@ -8263,18 +9222,31 @@
           "ざ",
           "ず",
           "ぜ"
+        ],
+        "acceptableAnswers": [
+          "じ",
+          "ぢ"
         ]
       }
     ]
   },
   {
-    "id": "ja-kana-hiragana-zu-forward",
+    "id": "ja-hiragana-zu-forward",
     "type": "vocabulary",
     "statement": "ず is the hiragana character for the sound 'zu'.",
     "explanation": "ず (zu) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ず represent?",
     "correctAnswer": "zu",
-    "distractors": [],
+    "distractors": [
+      "za",
+      "ji",
+      "ze",
+      "zo",
+      "u",
+      "ku",
+      "su",
+      "tsu"
+    ],
     "acceptableAnswers": [
       "zu"
     ],
@@ -8346,15 +9318,25 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-zu-reverse",
+    "id": "ja-hiragana-zu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'zu' is written as ず in hiragana.",
     "explanation": "In hiragana, the sound 'zu' is represented by the character ず.",
     "quizQuestion": "Which hiragana character represents 'zu'?",
     "correctAnswer": "ず",
-    "distractors": [],
+    "distractors": [
+      "ざ",
+      "じ",
+      "ぜ",
+      "ぞ",
+      "う",
+      "く",
+      "す",
+      "つ"
+    ],
     "acceptableAnswers": [
-      "ず"
+      "ず",
+      "づ"
     ],
     "category": [
       "language",
@@ -8391,6 +9373,10 @@
           "ざ",
           "じ",
           "ぜ"
+        ],
+        "acceptableAnswers": [
+          "ず",
+          "づ"
         ]
       },
       {
@@ -8419,18 +9405,31 @@
           "ざ",
           "じ",
           "ぜ"
+        ],
+        "acceptableAnswers": [
+          "ず",
+          "づ"
         ]
       }
     ]
   },
   {
-    "id": "ja-kana-hiragana-ze-forward",
+    "id": "ja-hiragana-ze-forward",
     "type": "vocabulary",
     "statement": "ぜ is the hiragana character for the sound 'ze'.",
     "explanation": "ぜ (ze) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ぜ represent?",
     "correctAnswer": "ze",
-    "distractors": [],
+    "distractors": [
+      "za",
+      "ji",
+      "zu",
+      "zo",
+      "e",
+      "ke",
+      "se",
+      "te"
+    ],
     "acceptableAnswers": [
       "ze"
     ],
@@ -8502,13 +9501,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ze-reverse",
+    "id": "ja-hiragana-ze-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ze' is written as ぜ in hiragana.",
     "explanation": "In hiragana, the sound 'ze' is represented by the character ぜ.",
     "quizQuestion": "Which hiragana character represents 'ze'?",
     "correctAnswer": "ぜ",
-    "distractors": [],
+    "distractors": [
+      "ざ",
+      "じ",
+      "ず",
+      "ぞ",
+      "え",
+      "け",
+      "せ",
+      "て"
+    ],
     "acceptableAnswers": [
       "ぜ"
     ],
@@ -8580,13 +9588,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-zo-forward",
+    "id": "ja-hiragana-zo-forward",
     "type": "vocabulary",
     "statement": "ぞ is the hiragana character for the sound 'zo'.",
     "explanation": "ぞ (zo) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ぞ represent?",
     "correctAnswer": "zo",
-    "distractors": [],
+    "distractors": [
+      "za",
+      "ji",
+      "zu",
+      "ze",
+      "o",
+      "ko",
+      "so",
+      "to"
+    ],
     "acceptableAnswers": [
       "zo"
     ],
@@ -8658,13 +9675,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-zo-reverse",
+    "id": "ja-hiragana-zo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'zo' is written as ぞ in hiragana.",
     "explanation": "In hiragana, the sound 'zo' is represented by the character ぞ.",
     "quizQuestion": "Which hiragana character represents 'zo'?",
     "correctAnswer": "ぞ",
-    "distractors": [],
+    "distractors": [
+      "ざ",
+      "じ",
+      "ず",
+      "ぜ",
+      "お",
+      "こ",
+      "そ",
+      "と"
+    ],
     "acceptableAnswers": [
       "ぞ"
     ],
@@ -8736,13 +9762,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-da-forward",
+    "id": "ja-hiragana-da-forward",
     "type": "vocabulary",
     "statement": "だ is the hiragana character for the sound 'da'.",
     "explanation": "だ (da) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana だ represent?",
     "correctAnswer": "da",
-    "distractors": [],
+    "distractors": [
+      "ji",
+      "zu",
+      "de",
+      "do",
+      "a",
+      "ka",
+      "sa",
+      "ta"
+    ],
     "acceptableAnswers": [
       "da"
     ],
@@ -8778,8 +9813,8 @@
         "question": "What sound does だ represent?",
         "answer": "da",
         "distractors": [
-          "di",
-          "du",
+          "ji",
+          "zu",
           "de"
         ]
       },
@@ -8806,21 +9841,30 @@
         "question": "The hiragana だ is read as ___.",
         "answer": "da",
         "distractors": [
-          "di",
-          "du",
+          "ji",
+          "zu",
           "de"
         ]
       }
     ]
   },
   {
-    "id": "ja-kana-hiragana-da-reverse",
+    "id": "ja-hiragana-da-reverse",
     "type": "vocabulary",
     "statement": "The sound 'da' is written as だ in hiragana.",
     "explanation": "In hiragana, the sound 'da' is represented by the character だ.",
     "quizQuestion": "Which hiragana character represents 'da'?",
     "correctAnswer": "だ",
-    "distractors": [],
+    "distractors": [
+      "ぢ",
+      "づ",
+      "で",
+      "ど",
+      "あ",
+      "か",
+      "さ",
+      "た"
+    ],
     "acceptableAnswers": [
       "だ"
     ],
@@ -8866,8 +9910,8 @@
         "question": "What sound does だ make?",
         "answer": "da",
         "distractors": [
-          "di",
-          "du",
+          "ji",
+          "zu",
           "de"
         ]
       },
@@ -8892,15 +9936,24 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-di-forward",
+    "id": "ja-hiragana-ji2-forward",
     "type": "vocabulary",
-    "statement": "ぢ is the hiragana character for the sound 'di'.",
-    "explanation": "ぢ (di) — a hiragana character in the Japanese writing system.",
+    "statement": "ぢ is the hiragana character for the sound 'ji'.",
+    "explanation": "ぢ (ji) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ぢ represent?",
-    "correctAnswer": "di",
-    "distractors": [],
+    "correctAnswer": "ji",
+    "distractors": [
+      "da",
+      "zu",
+      "de",
+      "do",
+      "i",
+      "ki",
+      "shi",
+      "chi"
+    ],
     "acceptableAnswers": [
-      "di"
+      "ji"
     ],
     "category": [
       "language",
@@ -8917,7 +9970,7 @@
     "sourceName": "Standard Japanese Kana Chart",
     "sourceUrl": "",
     "language": "ja",
-    "pronunciation": "di",
+    "pronunciation": "ji",
     "status": "approved",
     "contentVolatility": "timeless",
     "sensitivityLevel": 0,
@@ -8932,16 +9985,16 @@
       {
         "type": "forward",
         "question": "What sound does ぢ represent?",
-        "answer": "di",
+        "answer": "ji",
         "distractors": [
           "da",
-          "du",
+          "zu",
           "de"
         ]
       },
       {
         "type": "reverse",
-        "question": "Which hiragana represents 'di'?",
+        "question": "Which hiragana represents 'ji'?",
         "answer": "ぢ",
         "distractors": [
           "だ",
@@ -8951,7 +10004,7 @@
       },
       {
         "type": "true_false",
-        "question": "The hiragana ぢ represents the sound 'di'.",
+        "question": "The hiragana ぢ represents the sound 'ji'.",
         "answer": "True",
         "distractors": [
           "False"
@@ -8960,25 +10013,35 @@
       {
         "type": "fill_blank",
         "question": "The hiragana ぢ is read as ___.",
-        "answer": "di",
+        "answer": "ji",
         "distractors": [
           "da",
-          "du",
+          "zu",
           "de"
         ]
       }
     ]
   },
   {
-    "id": "ja-kana-hiragana-di-reverse",
+    "id": "ja-hiragana-ji2-reverse",
     "type": "vocabulary",
-    "statement": "The sound 'di' is written as ぢ in hiragana.",
-    "explanation": "In hiragana, the sound 'di' is represented by the character ぢ.",
-    "quizQuestion": "Which hiragana character represents 'di'?",
+    "statement": "The sound 'ji' is written as ぢ in hiragana.",
+    "explanation": "In hiragana, the sound 'ji' is represented by the character ぢ.",
+    "quizQuestion": "Which hiragana character represents 'ji'?",
     "correctAnswer": "ぢ",
-    "distractors": [],
+    "distractors": [
+      "だ",
+      "づ",
+      "で",
+      "ど",
+      "い",
+      "き",
+      "し",
+      "ち"
+    ],
     "acceptableAnswers": [
-      "ぢ"
+      "ぢ",
+      "じ"
     ],
     "category": [
       "language",
@@ -8995,7 +10058,7 @@
     "sourceName": "Standard Japanese Kana Chart",
     "sourceUrl": "",
     "language": "ja",
-    "pronunciation": "di",
+    "pronunciation": "ji",
     "status": "approved",
     "contentVolatility": "timeless",
     "sensitivityLevel": 0,
@@ -9009,27 +10072,31 @@
     "variants": [
       {
         "type": "forward",
-        "question": "Which hiragana is 'di'?",
+        "question": "Which hiragana is 'ji'?",
         "answer": "ぢ",
         "distractors": [
           "だ",
           "づ",
           "で"
+        ],
+        "acceptableAnswers": [
+          "ぢ",
+          "じ"
         ]
       },
       {
         "type": "reverse",
         "question": "What sound does ぢ make?",
-        "answer": "di",
+        "answer": "ji",
         "distractors": [
           "da",
-          "du",
+          "zu",
           "de"
         ]
       },
       {
         "type": "true_false",
-        "question": "The sound 'di' is written as ぢ in hiragana.",
+        "question": "The sound 'ji' is written as ぢ in hiragana.",
         "answer": "True",
         "distractors": [
           "False"
@@ -9037,26 +10104,39 @@
       },
       {
         "type": "fill_blank",
-        "question": "In hiragana, 'di' is written as ___.",
+        "question": "In hiragana, 'ji' is written as ___.",
         "answer": "ぢ",
         "distractors": [
           "だ",
           "づ",
           "で"
+        ],
+        "acceptableAnswers": [
+          "ぢ",
+          "じ"
         ]
       }
     ]
   },
   {
-    "id": "ja-kana-hiragana-du-forward",
+    "id": "ja-hiragana-zu2-forward",
     "type": "vocabulary",
-    "statement": "づ is the hiragana character for the sound 'du'.",
-    "explanation": "づ (du) — a hiragana character in the Japanese writing system.",
+    "statement": "づ is the hiragana character for the sound 'zu'.",
+    "explanation": "づ (zu) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana づ represent?",
-    "correctAnswer": "du",
-    "distractors": [],
+    "correctAnswer": "zu",
+    "distractors": [
+      "da",
+      "ji",
+      "de",
+      "do",
+      "u",
+      "ku",
+      "su",
+      "tsu"
+    ],
     "acceptableAnswers": [
-      "du"
+      "zu"
     ],
     "category": [
       "language",
@@ -9073,7 +10153,7 @@
     "sourceName": "Standard Japanese Kana Chart",
     "sourceUrl": "",
     "language": "ja",
-    "pronunciation": "du",
+    "pronunciation": "zu",
     "status": "approved",
     "contentVolatility": "timeless",
     "sensitivityLevel": 0,
@@ -9088,16 +10168,16 @@
       {
         "type": "forward",
         "question": "What sound does づ represent?",
-        "answer": "du",
+        "answer": "zu",
         "distractors": [
           "da",
-          "di",
+          "ji",
           "de"
         ]
       },
       {
         "type": "reverse",
-        "question": "Which hiragana represents 'du'?",
+        "question": "Which hiragana represents 'zu'?",
         "answer": "づ",
         "distractors": [
           "だ",
@@ -9107,7 +10187,7 @@
       },
       {
         "type": "true_false",
-        "question": "The hiragana づ represents the sound 'du'.",
+        "question": "The hiragana づ represents the sound 'zu'.",
         "answer": "True",
         "distractors": [
           "False"
@@ -9116,25 +10196,35 @@
       {
         "type": "fill_blank",
         "question": "The hiragana づ is read as ___.",
-        "answer": "du",
+        "answer": "zu",
         "distractors": [
           "da",
-          "di",
+          "ji",
           "de"
         ]
       }
     ]
   },
   {
-    "id": "ja-kana-hiragana-du-reverse",
+    "id": "ja-hiragana-zu2-reverse",
     "type": "vocabulary",
-    "statement": "The sound 'du' is written as づ in hiragana.",
-    "explanation": "In hiragana, the sound 'du' is represented by the character づ.",
-    "quizQuestion": "Which hiragana character represents 'du'?",
+    "statement": "The sound 'zu' is written as づ in hiragana.",
+    "explanation": "In hiragana, the sound 'zu' is represented by the character づ.",
+    "quizQuestion": "Which hiragana character represents 'zu'?",
     "correctAnswer": "づ",
-    "distractors": [],
+    "distractors": [
+      "だ",
+      "ぢ",
+      "で",
+      "ど",
+      "う",
+      "く",
+      "す",
+      "つ"
+    ],
     "acceptableAnswers": [
-      "づ"
+      "づ",
+      "ず"
     ],
     "category": [
       "language",
@@ -9151,7 +10241,7 @@
     "sourceName": "Standard Japanese Kana Chart",
     "sourceUrl": "",
     "language": "ja",
-    "pronunciation": "du",
+    "pronunciation": "zu",
     "status": "approved",
     "contentVolatility": "timeless",
     "sensitivityLevel": 0,
@@ -9165,27 +10255,31 @@
     "variants": [
       {
         "type": "forward",
-        "question": "Which hiragana is 'du'?",
+        "question": "Which hiragana is 'zu'?",
         "answer": "づ",
         "distractors": [
           "だ",
           "ぢ",
           "で"
+        ],
+        "acceptableAnswers": [
+          "づ",
+          "ず"
         ]
       },
       {
         "type": "reverse",
         "question": "What sound does づ make?",
-        "answer": "du",
+        "answer": "zu",
         "distractors": [
           "da",
-          "di",
+          "ji",
           "de"
         ]
       },
       {
         "type": "true_false",
-        "question": "The sound 'du' is written as づ in hiragana.",
+        "question": "The sound 'zu' is written as づ in hiragana.",
         "answer": "True",
         "distractors": [
           "False"
@@ -9193,24 +10287,37 @@
       },
       {
         "type": "fill_blank",
-        "question": "In hiragana, 'du' is written as ___.",
+        "question": "In hiragana, 'zu' is written as ___.",
         "answer": "づ",
         "distractors": [
           "だ",
           "ぢ",
           "で"
+        ],
+        "acceptableAnswers": [
+          "づ",
+          "ず"
         ]
       }
     ]
   },
   {
-    "id": "ja-kana-hiragana-de-forward",
+    "id": "ja-hiragana-de-forward",
     "type": "vocabulary",
     "statement": "で is the hiragana character for the sound 'de'.",
     "explanation": "で (de) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana で represent?",
     "correctAnswer": "de",
-    "distractors": [],
+    "distractors": [
+      "da",
+      "ji",
+      "zu",
+      "do",
+      "e",
+      "ke",
+      "se",
+      "te"
+    ],
     "acceptableAnswers": [
       "de"
     ],
@@ -9247,8 +10354,8 @@
         "answer": "de",
         "distractors": [
           "da",
-          "di",
-          "du"
+          "ji",
+          "zu"
         ]
       },
       {
@@ -9275,20 +10382,29 @@
         "answer": "de",
         "distractors": [
           "da",
-          "di",
-          "du"
+          "ji",
+          "zu"
         ]
       }
     ]
   },
   {
-    "id": "ja-kana-hiragana-de-reverse",
+    "id": "ja-hiragana-de-reverse",
     "type": "vocabulary",
     "statement": "The sound 'de' is written as で in hiragana.",
     "explanation": "In hiragana, the sound 'de' is represented by the character で.",
     "quizQuestion": "Which hiragana character represents 'de'?",
     "correctAnswer": "で",
-    "distractors": [],
+    "distractors": [
+      "だ",
+      "ぢ",
+      "づ",
+      "ど",
+      "え",
+      "け",
+      "せ",
+      "て"
+    ],
     "acceptableAnswers": [
       "で"
     ],
@@ -9335,8 +10451,8 @@
         "answer": "de",
         "distractors": [
           "da",
-          "di",
-          "du"
+          "ji",
+          "zu"
         ]
       },
       {
@@ -9360,13 +10476,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-do-forward",
+    "id": "ja-hiragana-do-forward",
     "type": "vocabulary",
     "statement": "ど is the hiragana character for the sound 'do'.",
     "explanation": "ど (do) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ど represent?",
     "correctAnswer": "do",
-    "distractors": [],
+    "distractors": [
+      "da",
+      "ji",
+      "zu",
+      "de",
+      "o",
+      "ko",
+      "so",
+      "to"
+    ],
     "acceptableAnswers": [
       "do"
     ],
@@ -9403,8 +10528,8 @@
         "answer": "do",
         "distractors": [
           "da",
-          "di",
-          "du"
+          "ji",
+          "zu"
         ]
       },
       {
@@ -9431,20 +10556,29 @@
         "answer": "do",
         "distractors": [
           "da",
-          "di",
-          "du"
+          "ji",
+          "zu"
         ]
       }
     ]
   },
   {
-    "id": "ja-kana-hiragana-do-reverse",
+    "id": "ja-hiragana-do-reverse",
     "type": "vocabulary",
     "statement": "The sound 'do' is written as ど in hiragana.",
     "explanation": "In hiragana, the sound 'do' is represented by the character ど.",
     "quizQuestion": "Which hiragana character represents 'do'?",
     "correctAnswer": "ど",
-    "distractors": [],
+    "distractors": [
+      "だ",
+      "ぢ",
+      "づ",
+      "で",
+      "お",
+      "こ",
+      "そ",
+      "と"
+    ],
     "acceptableAnswers": [
       "ど"
     ],
@@ -9491,8 +10625,8 @@
         "answer": "do",
         "distractors": [
           "da",
-          "di",
-          "du"
+          "ji",
+          "zu"
         ]
       },
       {
@@ -9516,13 +10650,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ba-forward",
+    "id": "ja-hiragana-ba-forward",
     "type": "vocabulary",
     "statement": "ば is the hiragana character for the sound 'ba'.",
     "explanation": "ば (ba) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ば represent?",
     "correctAnswer": "ba",
-    "distractors": [],
+    "distractors": [
+      "bi",
+      "bu",
+      "be",
+      "bo",
+      "a",
+      "ka",
+      "sa",
+      "ta"
+    ],
     "acceptableAnswers": [
       "ba"
     ],
@@ -9594,13 +10737,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ba-reverse",
+    "id": "ja-hiragana-ba-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ba' is written as ば in hiragana.",
     "explanation": "In hiragana, the sound 'ba' is represented by the character ば.",
     "quizQuestion": "Which hiragana character represents 'ba'?",
     "correctAnswer": "ば",
-    "distractors": [],
+    "distractors": [
+      "び",
+      "ぶ",
+      "べ",
+      "ぼ",
+      "あ",
+      "か",
+      "さ",
+      "た"
+    ],
     "acceptableAnswers": [
       "ば"
     ],
@@ -9672,13 +10824,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-bi-forward",
+    "id": "ja-hiragana-bi-forward",
     "type": "vocabulary",
     "statement": "び is the hiragana character for the sound 'bi'.",
     "explanation": "び (bi) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana び represent?",
     "correctAnswer": "bi",
-    "distractors": [],
+    "distractors": [
+      "ba",
+      "bu",
+      "be",
+      "bo",
+      "i",
+      "ki",
+      "shi",
+      "chi"
+    ],
     "acceptableAnswers": [
       "bi"
     ],
@@ -9750,13 +10911,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-bi-reverse",
+    "id": "ja-hiragana-bi-reverse",
     "type": "vocabulary",
     "statement": "The sound 'bi' is written as び in hiragana.",
     "explanation": "In hiragana, the sound 'bi' is represented by the character び.",
     "quizQuestion": "Which hiragana character represents 'bi'?",
     "correctAnswer": "び",
-    "distractors": [],
+    "distractors": [
+      "ば",
+      "ぶ",
+      "べ",
+      "ぼ",
+      "い",
+      "き",
+      "し",
+      "ち"
+    ],
     "acceptableAnswers": [
       "び"
     ],
@@ -9828,13 +10998,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-bu-forward",
+    "id": "ja-hiragana-bu-forward",
     "type": "vocabulary",
     "statement": "ぶ is the hiragana character for the sound 'bu'.",
     "explanation": "ぶ (bu) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ぶ represent?",
     "correctAnswer": "bu",
-    "distractors": [],
+    "distractors": [
+      "ba",
+      "bi",
+      "be",
+      "bo",
+      "u",
+      "ku",
+      "su",
+      "tsu"
+    ],
     "acceptableAnswers": [
       "bu"
     ],
@@ -9906,13 +11085,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-bu-reverse",
+    "id": "ja-hiragana-bu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'bu' is written as ぶ in hiragana.",
     "explanation": "In hiragana, the sound 'bu' is represented by the character ぶ.",
     "quizQuestion": "Which hiragana character represents 'bu'?",
     "correctAnswer": "ぶ",
-    "distractors": [],
+    "distractors": [
+      "ば",
+      "び",
+      "べ",
+      "ぼ",
+      "う",
+      "く",
+      "す",
+      "つ"
+    ],
     "acceptableAnswers": [
       "ぶ"
     ],
@@ -9984,13 +11172,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-be-forward",
+    "id": "ja-hiragana-be-forward",
     "type": "vocabulary",
     "statement": "べ is the hiragana character for the sound 'be'.",
     "explanation": "べ (be) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana べ represent?",
     "correctAnswer": "be",
-    "distractors": [],
+    "distractors": [
+      "ba",
+      "bi",
+      "bu",
+      "bo",
+      "e",
+      "ke",
+      "se",
+      "te"
+    ],
     "acceptableAnswers": [
       "be"
     ],
@@ -10062,13 +11259,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-be-reverse",
+    "id": "ja-hiragana-be-reverse",
     "type": "vocabulary",
     "statement": "The sound 'be' is written as べ in hiragana.",
     "explanation": "In hiragana, the sound 'be' is represented by the character べ.",
     "quizQuestion": "Which hiragana character represents 'be'?",
     "correctAnswer": "べ",
-    "distractors": [],
+    "distractors": [
+      "ば",
+      "び",
+      "ぶ",
+      "ぼ",
+      "え",
+      "け",
+      "せ",
+      "て"
+    ],
     "acceptableAnswers": [
       "べ"
     ],
@@ -10140,13 +11346,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-bo-forward",
+    "id": "ja-hiragana-bo-forward",
     "type": "vocabulary",
     "statement": "ぼ is the hiragana character for the sound 'bo'.",
     "explanation": "ぼ (bo) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ぼ represent?",
     "correctAnswer": "bo",
-    "distractors": [],
+    "distractors": [
+      "ba",
+      "bi",
+      "bu",
+      "be",
+      "o",
+      "ko",
+      "so",
+      "to"
+    ],
     "acceptableAnswers": [
       "bo"
     ],
@@ -10218,13 +11433,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-bo-reverse",
+    "id": "ja-hiragana-bo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'bo' is written as ぼ in hiragana.",
     "explanation": "In hiragana, the sound 'bo' is represented by the character ぼ.",
     "quizQuestion": "Which hiragana character represents 'bo'?",
     "correctAnswer": "ぼ",
-    "distractors": [],
+    "distractors": [
+      "ば",
+      "び",
+      "ぶ",
+      "べ",
+      "お",
+      "こ",
+      "そ",
+      "と"
+    ],
     "acceptableAnswers": [
       "ぼ"
     ],
@@ -10296,13 +11520,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-pa-forward",
+    "id": "ja-hiragana-pa-forward",
     "type": "vocabulary",
     "statement": "ぱ is the hiragana character for the sound 'pa'.",
     "explanation": "ぱ (pa) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ぱ represent?",
     "correctAnswer": "pa",
-    "distractors": [],
+    "distractors": [
+      "pi",
+      "pu",
+      "pe",
+      "po",
+      "a",
+      "ka",
+      "sa",
+      "ta"
+    ],
     "acceptableAnswers": [
       "pa"
     ],
@@ -10374,13 +11607,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-pa-reverse",
+    "id": "ja-hiragana-pa-reverse",
     "type": "vocabulary",
     "statement": "The sound 'pa' is written as ぱ in hiragana.",
     "explanation": "In hiragana, the sound 'pa' is represented by the character ぱ.",
     "quizQuestion": "Which hiragana character represents 'pa'?",
     "correctAnswer": "ぱ",
-    "distractors": [],
+    "distractors": [
+      "ぴ",
+      "ぷ",
+      "ぺ",
+      "ぽ",
+      "あ",
+      "か",
+      "さ",
+      "た"
+    ],
     "acceptableAnswers": [
       "ぱ"
     ],
@@ -10452,13 +11694,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-pi-forward",
+    "id": "ja-hiragana-pi-forward",
     "type": "vocabulary",
     "statement": "ぴ is the hiragana character for the sound 'pi'.",
     "explanation": "ぴ (pi) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ぴ represent?",
     "correctAnswer": "pi",
-    "distractors": [],
+    "distractors": [
+      "pa",
+      "pu",
+      "pe",
+      "po",
+      "i",
+      "ki",
+      "shi",
+      "chi"
+    ],
     "acceptableAnswers": [
       "pi"
     ],
@@ -10530,13 +11781,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-pi-reverse",
+    "id": "ja-hiragana-pi-reverse",
     "type": "vocabulary",
     "statement": "The sound 'pi' is written as ぴ in hiragana.",
     "explanation": "In hiragana, the sound 'pi' is represented by the character ぴ.",
     "quizQuestion": "Which hiragana character represents 'pi'?",
     "correctAnswer": "ぴ",
-    "distractors": [],
+    "distractors": [
+      "ぱ",
+      "ぷ",
+      "ぺ",
+      "ぽ",
+      "い",
+      "き",
+      "し",
+      "ち"
+    ],
     "acceptableAnswers": [
       "ぴ"
     ],
@@ -10608,13 +11868,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-pu-forward",
+    "id": "ja-hiragana-pu-forward",
     "type": "vocabulary",
     "statement": "ぷ is the hiragana character for the sound 'pu'.",
     "explanation": "ぷ (pu) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ぷ represent?",
     "correctAnswer": "pu",
-    "distractors": [],
+    "distractors": [
+      "pa",
+      "pi",
+      "pe",
+      "po",
+      "u",
+      "ku",
+      "su",
+      "tsu"
+    ],
     "acceptableAnswers": [
       "pu"
     ],
@@ -10686,13 +11955,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-pu-reverse",
+    "id": "ja-hiragana-pu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'pu' is written as ぷ in hiragana.",
     "explanation": "In hiragana, the sound 'pu' is represented by the character ぷ.",
     "quizQuestion": "Which hiragana character represents 'pu'?",
     "correctAnswer": "ぷ",
-    "distractors": [],
+    "distractors": [
+      "ぱ",
+      "ぴ",
+      "ぺ",
+      "ぽ",
+      "う",
+      "く",
+      "す",
+      "つ"
+    ],
     "acceptableAnswers": [
       "ぷ"
     ],
@@ -10764,13 +12042,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-pe-forward",
+    "id": "ja-hiragana-pe-forward",
     "type": "vocabulary",
     "statement": "ぺ is the hiragana character for the sound 'pe'.",
     "explanation": "ぺ (pe) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ぺ represent?",
     "correctAnswer": "pe",
-    "distractors": [],
+    "distractors": [
+      "pa",
+      "pi",
+      "pu",
+      "po",
+      "e",
+      "ke",
+      "se",
+      "te"
+    ],
     "acceptableAnswers": [
       "pe"
     ],
@@ -10842,13 +12129,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-pe-reverse",
+    "id": "ja-hiragana-pe-reverse",
     "type": "vocabulary",
     "statement": "The sound 'pe' is written as ぺ in hiragana.",
     "explanation": "In hiragana, the sound 'pe' is represented by the character ぺ.",
     "quizQuestion": "Which hiragana character represents 'pe'?",
     "correctAnswer": "ぺ",
-    "distractors": [],
+    "distractors": [
+      "ぱ",
+      "ぴ",
+      "ぷ",
+      "ぽ",
+      "え",
+      "け",
+      "せ",
+      "て"
+    ],
     "acceptableAnswers": [
       "ぺ"
     ],
@@ -10920,13 +12216,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-po-forward",
+    "id": "ja-hiragana-po-forward",
     "type": "vocabulary",
     "statement": "ぽ is the hiragana character for the sound 'po'.",
     "explanation": "ぽ (po) — a hiragana character in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ぽ represent?",
     "correctAnswer": "po",
-    "distractors": [],
+    "distractors": [
+      "pa",
+      "pi",
+      "pu",
+      "pe",
+      "o",
+      "ko",
+      "so",
+      "to"
+    ],
     "acceptableAnswers": [
       "po"
     ],
@@ -10998,13 +12303,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-po-reverse",
+    "id": "ja-hiragana-po-reverse",
     "type": "vocabulary",
     "statement": "The sound 'po' is written as ぽ in hiragana.",
     "explanation": "In hiragana, the sound 'po' is represented by the character ぽ.",
     "quizQuestion": "Which hiragana character represents 'po'?",
     "correctAnswer": "ぽ",
-    "distractors": [],
+    "distractors": [
+      "ぱ",
+      "ぴ",
+      "ぷ",
+      "ぺ",
+      "お",
+      "こ",
+      "そ",
+      "と"
+    ],
     "acceptableAnswers": [
       "ぽ"
     ],
@@ -11076,13 +12390,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-kya-forward",
+    "id": "ja-hiragana-kya-forward",
     "type": "vocabulary",
     "statement": "きゃ is the hiragana combination for the sound 'kya'.",
     "explanation": "きゃ (kya) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana きゃ represent?",
     "correctAnswer": "kya",
-    "distractors": [],
+    "distractors": [
+      "kyu",
+      "kyo",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "kya"
     ],
@@ -11154,13 +12477,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-kya-reverse",
+    "id": "ja-hiragana-kya-reverse",
     "type": "vocabulary",
     "statement": "The sound 'kya' is written as きゃ in hiragana.",
     "explanation": "In hiragana, the sound 'kya' is represented by the combination きゃ.",
     "quizQuestion": "Which hiragana combination represents 'kya'?",
     "correctAnswer": "きゃ",
-    "distractors": [],
+    "distractors": [
+      "きゅ",
+      "きょ",
+      "あ",
+      "か",
+      "さ",
+      "た",
+      "な",
+      "は"
+    ],
     "acceptableAnswers": [
       "きゃ"
     ],
@@ -11232,13 +12564,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-kyu-forward",
+    "id": "ja-hiragana-kyu-forward",
     "type": "vocabulary",
     "statement": "きゅ is the hiragana combination for the sound 'kyu'.",
     "explanation": "きゅ (kyu) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana きゅ represent?",
     "correctAnswer": "kyu",
-    "distractors": [],
+    "distractors": [
+      "kya",
+      "kyo",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu",
+      "fu"
+    ],
     "acceptableAnswers": [
       "kyu"
     ],
@@ -11310,13 +12651,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-kyu-reverse",
+    "id": "ja-hiragana-kyu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'kyu' is written as きゅ in hiragana.",
     "explanation": "In hiragana, the sound 'kyu' is represented by the combination きゅ.",
     "quizQuestion": "Which hiragana combination represents 'kyu'?",
     "correctAnswer": "きゅ",
-    "distractors": [],
+    "distractors": [
+      "きゃ",
+      "きょ",
+      "う",
+      "く",
+      "す",
+      "つ",
+      "ぬ",
+      "ふ"
+    ],
     "acceptableAnswers": [
       "きゅ"
     ],
@@ -11388,13 +12738,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-kyo-forward",
+    "id": "ja-hiragana-kyo-forward",
     "type": "vocabulary",
     "statement": "きょ is the hiragana combination for the sound 'kyo'.",
     "explanation": "きょ (kyo) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana きょ represent?",
     "correctAnswer": "kyo",
-    "distractors": [],
+    "distractors": [
+      "kya",
+      "kyu",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho"
+    ],
     "acceptableAnswers": [
       "kyo"
     ],
@@ -11466,13 +12825,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-kyo-reverse",
+    "id": "ja-hiragana-kyo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'kyo' is written as きょ in hiragana.",
     "explanation": "In hiragana, the sound 'kyo' is represented by the combination きょ.",
     "quizQuestion": "Which hiragana combination represents 'kyo'?",
     "correctAnswer": "きょ",
-    "distractors": [],
+    "distractors": [
+      "きゃ",
+      "きゅ",
+      "お",
+      "こ",
+      "そ",
+      "と",
+      "の",
+      "ほ"
+    ],
     "acceptableAnswers": [
       "きょ"
     ],
@@ -11544,13 +12912,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-sha-forward",
+    "id": "ja-hiragana-sha-forward",
     "type": "vocabulary",
     "statement": "しゃ is the hiragana combination for the sound 'sha'.",
     "explanation": "しゃ (sha) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana しゃ represent?",
     "correctAnswer": "sha",
-    "distractors": [],
+    "distractors": [
+      "shu",
+      "sho",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "sha"
     ],
@@ -11622,13 +12999,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-sha-reverse",
+    "id": "ja-hiragana-sha-reverse",
     "type": "vocabulary",
     "statement": "The sound 'sha' is written as しゃ in hiragana.",
     "explanation": "In hiragana, the sound 'sha' is represented by the combination しゃ.",
     "quizQuestion": "Which hiragana combination represents 'sha'?",
     "correctAnswer": "しゃ",
-    "distractors": [],
+    "distractors": [
+      "しゅ",
+      "しょ",
+      "あ",
+      "か",
+      "さ",
+      "た",
+      "な",
+      "は"
+    ],
     "acceptableAnswers": [
       "しゃ"
     ],
@@ -11700,13 +13086,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-shu-forward",
+    "id": "ja-hiragana-shu-forward",
     "type": "vocabulary",
     "statement": "しゅ is the hiragana combination for the sound 'shu'.",
     "explanation": "しゅ (shu) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana しゅ represent?",
     "correctAnswer": "shu",
-    "distractors": [],
+    "distractors": [
+      "sha",
+      "sho",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu",
+      "fu"
+    ],
     "acceptableAnswers": [
       "shu"
     ],
@@ -11778,13 +13173,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-shu-reverse",
+    "id": "ja-hiragana-shu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'shu' is written as しゅ in hiragana.",
     "explanation": "In hiragana, the sound 'shu' is represented by the combination しゅ.",
     "quizQuestion": "Which hiragana combination represents 'shu'?",
     "correctAnswer": "しゅ",
-    "distractors": [],
+    "distractors": [
+      "しゃ",
+      "しょ",
+      "う",
+      "く",
+      "す",
+      "つ",
+      "ぬ",
+      "ふ"
+    ],
     "acceptableAnswers": [
       "しゅ"
     ],
@@ -11856,13 +13260,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-sho-forward",
+    "id": "ja-hiragana-sho-forward",
     "type": "vocabulary",
     "statement": "しょ is the hiragana combination for the sound 'sho'.",
     "explanation": "しょ (sho) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana しょ represent?",
     "correctAnswer": "sho",
-    "distractors": [],
+    "distractors": [
+      "sha",
+      "shu",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho"
+    ],
     "acceptableAnswers": [
       "sho"
     ],
@@ -11934,13 +13347,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-sho-reverse",
+    "id": "ja-hiragana-sho-reverse",
     "type": "vocabulary",
     "statement": "The sound 'sho' is written as しょ in hiragana.",
     "explanation": "In hiragana, the sound 'sho' is represented by the combination しょ.",
     "quizQuestion": "Which hiragana combination represents 'sho'?",
     "correctAnswer": "しょ",
-    "distractors": [],
+    "distractors": [
+      "しゃ",
+      "しゅ",
+      "お",
+      "こ",
+      "そ",
+      "と",
+      "の",
+      "ほ"
+    ],
     "acceptableAnswers": [
       "しょ"
     ],
@@ -12012,13 +13434,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-cha-forward",
+    "id": "ja-hiragana-cha-forward",
     "type": "vocabulary",
     "statement": "ちゃ is the hiragana combination for the sound 'cha'.",
     "explanation": "ちゃ (cha) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ちゃ represent?",
     "correctAnswer": "cha",
-    "distractors": [],
+    "distractors": [
+      "chu",
+      "cho",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "cha"
     ],
@@ -12090,13 +13521,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-cha-reverse",
+    "id": "ja-hiragana-cha-reverse",
     "type": "vocabulary",
     "statement": "The sound 'cha' is written as ちゃ in hiragana.",
     "explanation": "In hiragana, the sound 'cha' is represented by the combination ちゃ.",
     "quizQuestion": "Which hiragana combination represents 'cha'?",
     "correctAnswer": "ちゃ",
-    "distractors": [],
+    "distractors": [
+      "ちゅ",
+      "ちょ",
+      "あ",
+      "か",
+      "さ",
+      "た",
+      "な",
+      "は"
+    ],
     "acceptableAnswers": [
       "ちゃ"
     ],
@@ -12168,13 +13608,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-chu-forward",
+    "id": "ja-hiragana-chu-forward",
     "type": "vocabulary",
     "statement": "ちゅ is the hiragana combination for the sound 'chu'.",
     "explanation": "ちゅ (chu) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ちゅ represent?",
     "correctAnswer": "chu",
-    "distractors": [],
+    "distractors": [
+      "cha",
+      "cho",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu",
+      "fu"
+    ],
     "acceptableAnswers": [
       "chu"
     ],
@@ -12246,13 +13695,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-chu-reverse",
+    "id": "ja-hiragana-chu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'chu' is written as ちゅ in hiragana.",
     "explanation": "In hiragana, the sound 'chu' is represented by the combination ちゅ.",
     "quizQuestion": "Which hiragana combination represents 'chu'?",
     "correctAnswer": "ちゅ",
-    "distractors": [],
+    "distractors": [
+      "ちゃ",
+      "ちょ",
+      "う",
+      "く",
+      "す",
+      "つ",
+      "ぬ",
+      "ふ"
+    ],
     "acceptableAnswers": [
       "ちゅ"
     ],
@@ -12324,13 +13782,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-cho-forward",
+    "id": "ja-hiragana-cho-forward",
     "type": "vocabulary",
     "statement": "ちょ is the hiragana combination for the sound 'cho'.",
     "explanation": "ちょ (cho) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ちょ represent?",
     "correctAnswer": "cho",
-    "distractors": [],
+    "distractors": [
+      "cha",
+      "chu",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho"
+    ],
     "acceptableAnswers": [
       "cho"
     ],
@@ -12402,13 +13869,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-cho-reverse",
+    "id": "ja-hiragana-cho-reverse",
     "type": "vocabulary",
     "statement": "The sound 'cho' is written as ちょ in hiragana.",
     "explanation": "In hiragana, the sound 'cho' is represented by the combination ちょ.",
     "quizQuestion": "Which hiragana combination represents 'cho'?",
     "correctAnswer": "ちょ",
-    "distractors": [],
+    "distractors": [
+      "ちゃ",
+      "ちゅ",
+      "お",
+      "こ",
+      "そ",
+      "と",
+      "の",
+      "ほ"
+    ],
     "acceptableAnswers": [
       "ちょ"
     ],
@@ -12480,13 +13956,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-nya-forward",
+    "id": "ja-hiragana-nya-forward",
     "type": "vocabulary",
     "statement": "にゃ is the hiragana combination for the sound 'nya'.",
     "explanation": "にゃ (nya) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana にゃ represent?",
     "correctAnswer": "nya",
-    "distractors": [],
+    "distractors": [
+      "nyu",
+      "nyo",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "nya"
     ],
@@ -12558,13 +14043,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-nya-reverse",
+    "id": "ja-hiragana-nya-reverse",
     "type": "vocabulary",
     "statement": "The sound 'nya' is written as にゃ in hiragana.",
     "explanation": "In hiragana, the sound 'nya' is represented by the combination にゃ.",
     "quizQuestion": "Which hiragana combination represents 'nya'?",
     "correctAnswer": "にゃ",
-    "distractors": [],
+    "distractors": [
+      "にゅ",
+      "にょ",
+      "あ",
+      "か",
+      "さ",
+      "た",
+      "な",
+      "は"
+    ],
     "acceptableAnswers": [
       "にゃ"
     ],
@@ -12636,13 +14130,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-nyu-forward",
+    "id": "ja-hiragana-nyu-forward",
     "type": "vocabulary",
     "statement": "にゅ is the hiragana combination for the sound 'nyu'.",
     "explanation": "にゅ (nyu) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana にゅ represent?",
     "correctAnswer": "nyu",
-    "distractors": [],
+    "distractors": [
+      "nya",
+      "nyo",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu",
+      "fu"
+    ],
     "acceptableAnswers": [
       "nyu"
     ],
@@ -12714,13 +14217,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-nyu-reverse",
+    "id": "ja-hiragana-nyu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'nyu' is written as にゅ in hiragana.",
     "explanation": "In hiragana, the sound 'nyu' is represented by the combination にゅ.",
     "quizQuestion": "Which hiragana combination represents 'nyu'?",
     "correctAnswer": "にゅ",
-    "distractors": [],
+    "distractors": [
+      "にゃ",
+      "にょ",
+      "う",
+      "く",
+      "す",
+      "つ",
+      "ぬ",
+      "ふ"
+    ],
     "acceptableAnswers": [
       "にゅ"
     ],
@@ -12792,13 +14304,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-nyo-forward",
+    "id": "ja-hiragana-nyo-forward",
     "type": "vocabulary",
     "statement": "にょ is the hiragana combination for the sound 'nyo'.",
     "explanation": "にょ (nyo) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana にょ represent?",
     "correctAnswer": "nyo",
-    "distractors": [],
+    "distractors": [
+      "nya",
+      "nyu",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho"
+    ],
     "acceptableAnswers": [
       "nyo"
     ],
@@ -12870,13 +14391,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-nyo-reverse",
+    "id": "ja-hiragana-nyo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'nyo' is written as にょ in hiragana.",
     "explanation": "In hiragana, the sound 'nyo' is represented by the combination にょ.",
     "quizQuestion": "Which hiragana combination represents 'nyo'?",
     "correctAnswer": "にょ",
-    "distractors": [],
+    "distractors": [
+      "にゃ",
+      "にゅ",
+      "お",
+      "こ",
+      "そ",
+      "と",
+      "の",
+      "ほ"
+    ],
     "acceptableAnswers": [
       "にょ"
     ],
@@ -12948,13 +14478,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-hya-forward",
+    "id": "ja-hiragana-hya-forward",
     "type": "vocabulary",
     "statement": "ひゃ is the hiragana combination for the sound 'hya'.",
     "explanation": "ひゃ (hya) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ひゃ represent?",
     "correctAnswer": "hya",
-    "distractors": [],
+    "distractors": [
+      "hyu",
+      "hyo",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "hya"
     ],
@@ -13026,13 +14565,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-hya-reverse",
+    "id": "ja-hiragana-hya-reverse",
     "type": "vocabulary",
     "statement": "The sound 'hya' is written as ひゃ in hiragana.",
     "explanation": "In hiragana, the sound 'hya' is represented by the combination ひゃ.",
     "quizQuestion": "Which hiragana combination represents 'hya'?",
     "correctAnswer": "ひゃ",
-    "distractors": [],
+    "distractors": [
+      "ひゅ",
+      "ひょ",
+      "あ",
+      "か",
+      "さ",
+      "た",
+      "な",
+      "は"
+    ],
     "acceptableAnswers": [
       "ひゃ"
     ],
@@ -13104,13 +14652,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-hyu-forward",
+    "id": "ja-hiragana-hyu-forward",
     "type": "vocabulary",
     "statement": "ひゅ is the hiragana combination for the sound 'hyu'.",
     "explanation": "ひゅ (hyu) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ひゅ represent?",
     "correctAnswer": "hyu",
-    "distractors": [],
+    "distractors": [
+      "hya",
+      "hyo",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu",
+      "fu"
+    ],
     "acceptableAnswers": [
       "hyu"
     ],
@@ -13182,13 +14739,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-hyu-reverse",
+    "id": "ja-hiragana-hyu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'hyu' is written as ひゅ in hiragana.",
     "explanation": "In hiragana, the sound 'hyu' is represented by the combination ひゅ.",
     "quizQuestion": "Which hiragana combination represents 'hyu'?",
     "correctAnswer": "ひゅ",
-    "distractors": [],
+    "distractors": [
+      "ひゃ",
+      "ひょ",
+      "う",
+      "く",
+      "す",
+      "つ",
+      "ぬ",
+      "ふ"
+    ],
     "acceptableAnswers": [
       "ひゅ"
     ],
@@ -13260,13 +14826,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-hyo-forward",
+    "id": "ja-hiragana-hyo-forward",
     "type": "vocabulary",
     "statement": "ひょ is the hiragana combination for the sound 'hyo'.",
     "explanation": "ひょ (hyo) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ひょ represent?",
     "correctAnswer": "hyo",
-    "distractors": [],
+    "distractors": [
+      "hya",
+      "hyu",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho"
+    ],
     "acceptableAnswers": [
       "hyo"
     ],
@@ -13338,13 +14913,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-hyo-reverse",
+    "id": "ja-hiragana-hyo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'hyo' is written as ひょ in hiragana.",
     "explanation": "In hiragana, the sound 'hyo' is represented by the combination ひょ.",
     "quizQuestion": "Which hiragana combination represents 'hyo'?",
     "correctAnswer": "ひょ",
-    "distractors": [],
+    "distractors": [
+      "ひゃ",
+      "ひゅ",
+      "お",
+      "こ",
+      "そ",
+      "と",
+      "の",
+      "ほ"
+    ],
     "acceptableAnswers": [
       "ひょ"
     ],
@@ -13416,13 +15000,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-mya-forward",
+    "id": "ja-hiragana-mya-forward",
     "type": "vocabulary",
     "statement": "みゃ is the hiragana combination for the sound 'mya'.",
     "explanation": "みゃ (mya) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana みゃ represent?",
     "correctAnswer": "mya",
-    "distractors": [],
+    "distractors": [
+      "myu",
+      "myo",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "mya"
     ],
@@ -13494,13 +15087,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-mya-reverse",
+    "id": "ja-hiragana-mya-reverse",
     "type": "vocabulary",
     "statement": "The sound 'mya' is written as みゃ in hiragana.",
     "explanation": "In hiragana, the sound 'mya' is represented by the combination みゃ.",
     "quizQuestion": "Which hiragana combination represents 'mya'?",
     "correctAnswer": "みゃ",
-    "distractors": [],
+    "distractors": [
+      "みゅ",
+      "みょ",
+      "あ",
+      "か",
+      "さ",
+      "た",
+      "な",
+      "は"
+    ],
     "acceptableAnswers": [
       "みゃ"
     ],
@@ -13572,13 +15174,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-myu-forward",
+    "id": "ja-hiragana-myu-forward",
     "type": "vocabulary",
     "statement": "みゅ is the hiragana combination for the sound 'myu'.",
     "explanation": "みゅ (myu) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana みゅ represent?",
     "correctAnswer": "myu",
-    "distractors": [],
+    "distractors": [
+      "mya",
+      "myo",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu",
+      "fu"
+    ],
     "acceptableAnswers": [
       "myu"
     ],
@@ -13650,13 +15261,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-myu-reverse",
+    "id": "ja-hiragana-myu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'myu' is written as みゅ in hiragana.",
     "explanation": "In hiragana, the sound 'myu' is represented by the combination みゅ.",
     "quizQuestion": "Which hiragana combination represents 'myu'?",
     "correctAnswer": "みゅ",
-    "distractors": [],
+    "distractors": [
+      "みゃ",
+      "みょ",
+      "う",
+      "く",
+      "す",
+      "つ",
+      "ぬ",
+      "ふ"
+    ],
     "acceptableAnswers": [
       "みゅ"
     ],
@@ -13728,13 +15348,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-myo-forward",
+    "id": "ja-hiragana-myo-forward",
     "type": "vocabulary",
     "statement": "みょ is the hiragana combination for the sound 'myo'.",
     "explanation": "みょ (myo) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana みょ represent?",
     "correctAnswer": "myo",
-    "distractors": [],
+    "distractors": [
+      "mya",
+      "myu",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho"
+    ],
     "acceptableAnswers": [
       "myo"
     ],
@@ -13806,13 +15435,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-myo-reverse",
+    "id": "ja-hiragana-myo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'myo' is written as みょ in hiragana.",
     "explanation": "In hiragana, the sound 'myo' is represented by the combination みょ.",
     "quizQuestion": "Which hiragana combination represents 'myo'?",
     "correctAnswer": "みょ",
-    "distractors": [],
+    "distractors": [
+      "みゃ",
+      "みゅ",
+      "お",
+      "こ",
+      "そ",
+      "と",
+      "の",
+      "ほ"
+    ],
     "acceptableAnswers": [
       "みょ"
     ],
@@ -13884,13 +15522,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-rya-forward",
+    "id": "ja-hiragana-rya-forward",
     "type": "vocabulary",
     "statement": "りゃ is the hiragana combination for the sound 'rya'.",
     "explanation": "りゃ (rya) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana りゃ represent?",
     "correctAnswer": "rya",
-    "distractors": [],
+    "distractors": [
+      "ryu",
+      "ryo",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "rya"
     ],
@@ -13962,13 +15609,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-rya-reverse",
+    "id": "ja-hiragana-rya-reverse",
     "type": "vocabulary",
     "statement": "The sound 'rya' is written as りゃ in hiragana.",
     "explanation": "In hiragana, the sound 'rya' is represented by the combination りゃ.",
     "quizQuestion": "Which hiragana combination represents 'rya'?",
     "correctAnswer": "りゃ",
-    "distractors": [],
+    "distractors": [
+      "りゅ",
+      "りょ",
+      "あ",
+      "か",
+      "さ",
+      "た",
+      "な",
+      "は"
+    ],
     "acceptableAnswers": [
       "りゃ"
     ],
@@ -14040,13 +15696,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ryu-forward",
+    "id": "ja-hiragana-ryu-forward",
     "type": "vocabulary",
     "statement": "りゅ is the hiragana combination for the sound 'ryu'.",
     "explanation": "りゅ (ryu) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana りゅ represent?",
     "correctAnswer": "ryu",
-    "distractors": [],
+    "distractors": [
+      "rya",
+      "ryo",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu",
+      "fu"
+    ],
     "acceptableAnswers": [
       "ryu"
     ],
@@ -14118,13 +15783,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ryu-reverse",
+    "id": "ja-hiragana-ryu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ryu' is written as りゅ in hiragana.",
     "explanation": "In hiragana, the sound 'ryu' is represented by the combination りゅ.",
     "quizQuestion": "Which hiragana combination represents 'ryu'?",
     "correctAnswer": "りゅ",
-    "distractors": [],
+    "distractors": [
+      "りゃ",
+      "りょ",
+      "う",
+      "く",
+      "す",
+      "つ",
+      "ぬ",
+      "ふ"
+    ],
     "acceptableAnswers": [
       "りゅ"
     ],
@@ -14196,13 +15870,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ryo-forward",
+    "id": "ja-hiragana-ryo-forward",
     "type": "vocabulary",
     "statement": "りょ is the hiragana combination for the sound 'ryo'.",
     "explanation": "りょ (ryo) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana りょ represent?",
     "correctAnswer": "ryo",
-    "distractors": [],
+    "distractors": [
+      "rya",
+      "ryu",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho"
+    ],
     "acceptableAnswers": [
       "ryo"
     ],
@@ -14274,13 +15957,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ryo-reverse",
+    "id": "ja-hiragana-ryo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ryo' is written as りょ in hiragana.",
     "explanation": "In hiragana, the sound 'ryo' is represented by the combination りょ.",
     "quizQuestion": "Which hiragana combination represents 'ryo'?",
     "correctAnswer": "りょ",
-    "distractors": [],
+    "distractors": [
+      "りゃ",
+      "りゅ",
+      "お",
+      "こ",
+      "そ",
+      "と",
+      "の",
+      "ほ"
+    ],
     "acceptableAnswers": [
       "りょ"
     ],
@@ -14352,13 +16044,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-gya-forward",
+    "id": "ja-hiragana-gya-forward",
     "type": "vocabulary",
     "statement": "ぎゃ is the hiragana combination for the sound 'gya'.",
     "explanation": "ぎゃ (gya) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ぎゃ represent?",
     "correctAnswer": "gya",
-    "distractors": [],
+    "distractors": [
+      "gyu",
+      "gyo",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "gya"
     ],
@@ -14430,13 +16131,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-gya-reverse",
+    "id": "ja-hiragana-gya-reverse",
     "type": "vocabulary",
     "statement": "The sound 'gya' is written as ぎゃ in hiragana.",
     "explanation": "In hiragana, the sound 'gya' is represented by the combination ぎゃ.",
     "quizQuestion": "Which hiragana combination represents 'gya'?",
     "correctAnswer": "ぎゃ",
-    "distractors": [],
+    "distractors": [
+      "ぎゅ",
+      "ぎょ",
+      "あ",
+      "か",
+      "さ",
+      "た",
+      "な",
+      "は"
+    ],
     "acceptableAnswers": [
       "ぎゃ"
     ],
@@ -14508,13 +16218,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-gyu-forward",
+    "id": "ja-hiragana-gyu-forward",
     "type": "vocabulary",
     "statement": "ぎゅ is the hiragana combination for the sound 'gyu'.",
     "explanation": "ぎゅ (gyu) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ぎゅ represent?",
     "correctAnswer": "gyu",
-    "distractors": [],
+    "distractors": [
+      "gya",
+      "gyo",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu",
+      "fu"
+    ],
     "acceptableAnswers": [
       "gyu"
     ],
@@ -14586,13 +16305,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-gyu-reverse",
+    "id": "ja-hiragana-gyu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'gyu' is written as ぎゅ in hiragana.",
     "explanation": "In hiragana, the sound 'gyu' is represented by the combination ぎゅ.",
     "quizQuestion": "Which hiragana combination represents 'gyu'?",
     "correctAnswer": "ぎゅ",
-    "distractors": [],
+    "distractors": [
+      "ぎゃ",
+      "ぎょ",
+      "う",
+      "く",
+      "す",
+      "つ",
+      "ぬ",
+      "ふ"
+    ],
     "acceptableAnswers": [
       "ぎゅ"
     ],
@@ -14664,13 +16392,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-gyo-forward",
+    "id": "ja-hiragana-gyo-forward",
     "type": "vocabulary",
     "statement": "ぎょ is the hiragana combination for the sound 'gyo'.",
     "explanation": "ぎょ (gyo) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ぎょ represent?",
     "correctAnswer": "gyo",
-    "distractors": [],
+    "distractors": [
+      "gya",
+      "gyu",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho"
+    ],
     "acceptableAnswers": [
       "gyo"
     ],
@@ -14742,13 +16479,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-gyo-reverse",
+    "id": "ja-hiragana-gyo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'gyo' is written as ぎょ in hiragana.",
     "explanation": "In hiragana, the sound 'gyo' is represented by the combination ぎょ.",
     "quizQuestion": "Which hiragana combination represents 'gyo'?",
     "correctAnswer": "ぎょ",
-    "distractors": [],
+    "distractors": [
+      "ぎゃ",
+      "ぎゅ",
+      "お",
+      "こ",
+      "そ",
+      "と",
+      "の",
+      "ほ"
+    ],
     "acceptableAnswers": [
       "ぎょ"
     ],
@@ -14820,13 +16566,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ja-forward",
+    "id": "ja-hiragana-ja-forward",
     "type": "vocabulary",
     "statement": "じゃ is the hiragana combination for the sound 'ja'.",
     "explanation": "じゃ (ja) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana じゃ represent?",
     "correctAnswer": "ja",
-    "distractors": [],
+    "distractors": [
+      "ju",
+      "jo",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "ja"
     ],
@@ -14898,13 +16653,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ja-reverse",
+    "id": "ja-hiragana-ja-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ja' is written as じゃ in hiragana.",
     "explanation": "In hiragana, the sound 'ja' is represented by the combination じゃ.",
     "quizQuestion": "Which hiragana combination represents 'ja'?",
     "correctAnswer": "じゃ",
-    "distractors": [],
+    "distractors": [
+      "じゅ",
+      "じょ",
+      "あ",
+      "か",
+      "さ",
+      "た",
+      "な",
+      "は"
+    ],
     "acceptableAnswers": [
       "じゃ"
     ],
@@ -14976,13 +16740,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ju-forward",
+    "id": "ja-hiragana-ju-forward",
     "type": "vocabulary",
     "statement": "じゅ is the hiragana combination for the sound 'ju'.",
     "explanation": "じゅ (ju) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana じゅ represent?",
     "correctAnswer": "ju",
-    "distractors": [],
+    "distractors": [
+      "ja",
+      "jo",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu",
+      "fu"
+    ],
     "acceptableAnswers": [
       "ju"
     ],
@@ -15054,13 +16827,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-ju-reverse",
+    "id": "ja-hiragana-ju-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ju' is written as じゅ in hiragana.",
     "explanation": "In hiragana, the sound 'ju' is represented by the combination じゅ.",
     "quizQuestion": "Which hiragana combination represents 'ju'?",
     "correctAnswer": "じゅ",
-    "distractors": [],
+    "distractors": [
+      "じゃ",
+      "じょ",
+      "う",
+      "く",
+      "す",
+      "つ",
+      "ぬ",
+      "ふ"
+    ],
     "acceptableAnswers": [
       "じゅ"
     ],
@@ -15132,13 +16914,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-jo-forward",
+    "id": "ja-hiragana-jo-forward",
     "type": "vocabulary",
     "statement": "じょ is the hiragana combination for the sound 'jo'.",
     "explanation": "じょ (jo) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana じょ represent?",
     "correctAnswer": "jo",
-    "distractors": [],
+    "distractors": [
+      "ja",
+      "ju",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho"
+    ],
     "acceptableAnswers": [
       "jo"
     ],
@@ -15210,13 +17001,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-jo-reverse",
+    "id": "ja-hiragana-jo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'jo' is written as じょ in hiragana.",
     "explanation": "In hiragana, the sound 'jo' is represented by the combination じょ.",
     "quizQuestion": "Which hiragana combination represents 'jo'?",
     "correctAnswer": "じょ",
-    "distractors": [],
+    "distractors": [
+      "じゃ",
+      "じゅ",
+      "お",
+      "こ",
+      "そ",
+      "と",
+      "の",
+      "ほ"
+    ],
     "acceptableAnswers": [
       "じょ"
     ],
@@ -15288,13 +17088,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-bya-forward",
+    "id": "ja-hiragana-bya-forward",
     "type": "vocabulary",
     "statement": "びゃ is the hiragana combination for the sound 'bya'.",
     "explanation": "びゃ (bya) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana びゃ represent?",
     "correctAnswer": "bya",
-    "distractors": [],
+    "distractors": [
+      "byu",
+      "byo",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "bya"
     ],
@@ -15366,13 +17175,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-bya-reverse",
+    "id": "ja-hiragana-bya-reverse",
     "type": "vocabulary",
     "statement": "The sound 'bya' is written as びゃ in hiragana.",
     "explanation": "In hiragana, the sound 'bya' is represented by the combination びゃ.",
     "quizQuestion": "Which hiragana combination represents 'bya'?",
     "correctAnswer": "びゃ",
-    "distractors": [],
+    "distractors": [
+      "びゅ",
+      "びょ",
+      "あ",
+      "か",
+      "さ",
+      "た",
+      "な",
+      "は"
+    ],
     "acceptableAnswers": [
       "びゃ"
     ],
@@ -15444,13 +17262,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-byu-forward",
+    "id": "ja-hiragana-byu-forward",
     "type": "vocabulary",
     "statement": "びゅ is the hiragana combination for the sound 'byu'.",
     "explanation": "びゅ (byu) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana びゅ represent?",
     "correctAnswer": "byu",
-    "distractors": [],
+    "distractors": [
+      "bya",
+      "byo",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu",
+      "fu"
+    ],
     "acceptableAnswers": [
       "byu"
     ],
@@ -15522,13 +17349,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-byu-reverse",
+    "id": "ja-hiragana-byu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'byu' is written as びゅ in hiragana.",
     "explanation": "In hiragana, the sound 'byu' is represented by the combination びゅ.",
     "quizQuestion": "Which hiragana combination represents 'byu'?",
     "correctAnswer": "びゅ",
-    "distractors": [],
+    "distractors": [
+      "びゃ",
+      "びょ",
+      "う",
+      "く",
+      "す",
+      "つ",
+      "ぬ",
+      "ふ"
+    ],
     "acceptableAnswers": [
       "びゅ"
     ],
@@ -15600,13 +17436,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-byo-forward",
+    "id": "ja-hiragana-byo-forward",
     "type": "vocabulary",
     "statement": "びょ is the hiragana combination for the sound 'byo'.",
     "explanation": "びょ (byo) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana びょ represent?",
     "correctAnswer": "byo",
-    "distractors": [],
+    "distractors": [
+      "bya",
+      "byu",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho"
+    ],
     "acceptableAnswers": [
       "byo"
     ],
@@ -15678,13 +17523,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-byo-reverse",
+    "id": "ja-hiragana-byo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'byo' is written as びょ in hiragana.",
     "explanation": "In hiragana, the sound 'byo' is represented by the combination びょ.",
     "quizQuestion": "Which hiragana combination represents 'byo'?",
     "correctAnswer": "びょ",
-    "distractors": [],
+    "distractors": [
+      "びゃ",
+      "びゅ",
+      "お",
+      "こ",
+      "そ",
+      "と",
+      "の",
+      "ほ"
+    ],
     "acceptableAnswers": [
       "びょ"
     ],
@@ -15756,13 +17610,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-pya-forward",
+    "id": "ja-hiragana-pya-forward",
     "type": "vocabulary",
     "statement": "ぴゃ is the hiragana combination for the sound 'pya'.",
     "explanation": "ぴゃ (pya) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ぴゃ represent?",
     "correctAnswer": "pya",
-    "distractors": [],
+    "distractors": [
+      "pyu",
+      "pyo",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "pya"
     ],
@@ -15834,13 +17697,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-pya-reverse",
+    "id": "ja-hiragana-pya-reverse",
     "type": "vocabulary",
     "statement": "The sound 'pya' is written as ぴゃ in hiragana.",
     "explanation": "In hiragana, the sound 'pya' is represented by the combination ぴゃ.",
     "quizQuestion": "Which hiragana combination represents 'pya'?",
     "correctAnswer": "ぴゃ",
-    "distractors": [],
+    "distractors": [
+      "ぴゅ",
+      "ぴょ",
+      "あ",
+      "か",
+      "さ",
+      "た",
+      "な",
+      "は"
+    ],
     "acceptableAnswers": [
       "ぴゃ"
     ],
@@ -15912,13 +17784,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-pyu-forward",
+    "id": "ja-hiragana-pyu-forward",
     "type": "vocabulary",
     "statement": "ぴゅ is the hiragana combination for the sound 'pyu'.",
     "explanation": "ぴゅ (pyu) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ぴゅ represent?",
     "correctAnswer": "pyu",
-    "distractors": [],
+    "distractors": [
+      "pya",
+      "pyo",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu",
+      "fu"
+    ],
     "acceptableAnswers": [
       "pyu"
     ],
@@ -15990,13 +17871,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-pyu-reverse",
+    "id": "ja-hiragana-pyu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'pyu' is written as ぴゅ in hiragana.",
     "explanation": "In hiragana, the sound 'pyu' is represented by the combination ぴゅ.",
     "quizQuestion": "Which hiragana combination represents 'pyu'?",
     "correctAnswer": "ぴゅ",
-    "distractors": [],
+    "distractors": [
+      "ぴゃ",
+      "ぴょ",
+      "う",
+      "く",
+      "す",
+      "つ",
+      "ぬ",
+      "ふ"
+    ],
     "acceptableAnswers": [
       "ぴゅ"
     ],
@@ -16068,13 +17958,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-pyo-forward",
+    "id": "ja-hiragana-pyo-forward",
     "type": "vocabulary",
     "statement": "ぴょ is the hiragana combination for the sound 'pyo'.",
     "explanation": "ぴょ (pyo) — a hiragana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the hiragana ぴょ represent?",
     "correctAnswer": "pyo",
-    "distractors": [],
+    "distractors": [
+      "pya",
+      "pyu",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho"
+    ],
     "acceptableAnswers": [
       "pyo"
     ],
@@ -16146,13 +18045,22 @@
     ]
   },
   {
-    "id": "ja-kana-hiragana-pyo-reverse",
+    "id": "ja-hiragana-pyo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'pyo' is written as ぴょ in hiragana.",
     "explanation": "In hiragana, the sound 'pyo' is represented by the combination ぴょ.",
     "quizQuestion": "Which hiragana combination represents 'pyo'?",
     "correctAnswer": "ぴょ",
-    "distractors": [],
+    "distractors": [
+      "ぴゃ",
+      "ぴゅ",
+      "お",
+      "こ",
+      "そ",
+      "と",
+      "の",
+      "ほ"
+    ],
     "acceptableAnswers": [
       "ぴょ"
     ],

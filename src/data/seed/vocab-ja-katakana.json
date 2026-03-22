@@ -1,12 +1,21 @@
 [
   {
-    "id": "ja-kana-katakana-a-forward",
+    "id": "ja-katakana-a-forward",
     "type": "vocabulary",
     "statement": "ア is the katakana character for the sound 'a'.",
     "explanation": "ア (a) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ア represent?",
     "correctAnswer": "a",
-    "distractors": [],
+    "distractors": [
+      "ma",
+      "ya",
+      "i",
+      "u",
+      "e",
+      "o",
+      "ka",
+      "sa"
+    ],
     "acceptableAnswers": [
       "a"
     ],
@@ -78,13 +87,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-a-reverse",
+    "id": "ja-katakana-a-reverse",
     "type": "vocabulary",
     "statement": "The sound 'a' is written as ア in katakana.",
     "explanation": "In katakana, the sound 'a' is represented by the character ア.",
     "quizQuestion": "Which katakana character represents 'a'?",
     "correctAnswer": "ア",
-    "distractors": [],
+    "distractors": [
+      "マ",
+      "ヤ",
+      "イ",
+      "ウ",
+      "エ",
+      "オ",
+      "カ",
+      "サ"
+    ],
     "acceptableAnswers": [
       "ア"
     ],
@@ -156,13 +174,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-i-forward",
+    "id": "ja-katakana-i-forward",
     "type": "vocabulary",
     "statement": "イ is the katakana character for the sound 'i'.",
     "explanation": "イ (i) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana イ represent?",
     "correctAnswer": "i",
-    "distractors": [],
+    "distractors": [
+      "a",
+      "u",
+      "e",
+      "o",
+      "ki",
+      "shi",
+      "chi",
+      "ni"
+    ],
     "acceptableAnswers": [
       "i"
     ],
@@ -234,13 +261,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-i-reverse",
+    "id": "ja-katakana-i-reverse",
     "type": "vocabulary",
     "statement": "The sound 'i' is written as イ in katakana.",
     "explanation": "In katakana, the sound 'i' is represented by the character イ.",
     "quizQuestion": "Which katakana character represents 'i'?",
     "correctAnswer": "イ",
-    "distractors": [],
+    "distractors": [
+      "ア",
+      "ウ",
+      "エ",
+      "オ",
+      "キ",
+      "シ",
+      "チ",
+      "ニ"
+    ],
     "acceptableAnswers": [
       "イ"
     ],
@@ -312,13 +348,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-u-forward",
+    "id": "ja-katakana-u-forward",
     "type": "vocabulary",
     "statement": "ウ is the katakana character for the sound 'u'.",
     "explanation": "ウ (u) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ウ represent?",
     "correctAnswer": "u",
-    "distractors": [],
+    "distractors": [
+      "wa",
+      "fu",
+      "a",
+      "i",
+      "e",
+      "o",
+      "ku",
+      "su"
+    ],
     "acceptableAnswers": [
       "u"
     ],
@@ -390,13 +435,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-u-reverse",
+    "id": "ja-katakana-u-reverse",
     "type": "vocabulary",
     "statement": "The sound 'u' is written as ウ in katakana.",
     "explanation": "In katakana, the sound 'u' is represented by the character ウ.",
     "quizQuestion": "Which katakana character represents 'u'?",
     "correctAnswer": "ウ",
-    "distractors": [],
+    "distractors": [
+      "ワ",
+      "フ",
+      "ア",
+      "イ",
+      "エ",
+      "オ",
+      "ク",
+      "ス"
+    ],
     "acceptableAnswers": [
       "ウ"
     ],
@@ -468,13 +522,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-e-forward",
+    "id": "ja-katakana-e-forward",
     "type": "vocabulary",
     "statement": "エ is the katakana character for the sound 'e'.",
     "explanation": "エ (e) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana エ represent?",
     "correctAnswer": "e",
-    "distractors": [],
+    "distractors": [
+      "a",
+      "i",
+      "u",
+      "o",
+      "ke",
+      "se",
+      "te",
+      "ne"
+    ],
     "acceptableAnswers": [
       "e"
     ],
@@ -546,13 +609,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-e-reverse",
+    "id": "ja-katakana-e-reverse",
     "type": "vocabulary",
     "statement": "The sound 'e' is written as エ in katakana.",
     "explanation": "In katakana, the sound 'e' is represented by the character エ.",
     "quizQuestion": "Which katakana character represents 'e'?",
     "correctAnswer": "エ",
-    "distractors": [],
+    "distractors": [
+      "ア",
+      "イ",
+      "ウ",
+      "オ",
+      "ケ",
+      "セ",
+      "テ",
+      "ネ"
+    ],
     "acceptableAnswers": [
       "エ"
     ],
@@ -624,13 +696,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-o-forward",
+    "id": "ja-katakana-o-forward",
     "type": "vocabulary",
     "statement": "オ is the katakana character for the sound 'o'.",
     "explanation": "オ (o) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana オ represent?",
     "correctAnswer": "o",
-    "distractors": [],
+    "distractors": [
+      "a",
+      "i",
+      "u",
+      "e",
+      "ko",
+      "so",
+      "to",
+      "no"
+    ],
     "acceptableAnswers": [
       "o"
     ],
@@ -702,13 +783,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-o-reverse",
+    "id": "ja-katakana-o-reverse",
     "type": "vocabulary",
     "statement": "The sound 'o' is written as オ in katakana.",
     "explanation": "In katakana, the sound 'o' is represented by the character オ.",
     "quizQuestion": "Which katakana character represents 'o'?",
     "correctAnswer": "オ",
-    "distractors": [],
+    "distractors": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ",
+      "コ",
+      "ソ",
+      "ト",
+      "ノ"
+    ],
     "acceptableAnswers": [
       "オ"
     ],
@@ -780,13 +870,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ka-forward",
+    "id": "ja-katakana-ka-forward",
     "type": "vocabulary",
     "statement": "カ is the katakana character for the sound 'ka'.",
     "explanation": "カ (ka) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana カ represent?",
     "correctAnswer": "ka",
-    "distractors": [],
+    "distractors": [
+      "ya",
+      "se",
+      "ki",
+      "ku",
+      "ke",
+      "ko",
+      "a",
+      "sa"
+    ],
     "acceptableAnswers": [
       "ka"
     ],
@@ -858,13 +957,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ka-reverse",
+    "id": "ja-katakana-ka-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ka' is written as カ in katakana.",
     "explanation": "In katakana, the sound 'ka' is represented by the character カ.",
     "quizQuestion": "Which katakana character represents 'ka'?",
     "correctAnswer": "カ",
-    "distractors": [],
+    "distractors": [
+      "ヤ",
+      "セ",
+      "キ",
+      "ク",
+      "ケ",
+      "コ",
+      "ア",
+      "サ"
+    ],
     "acceptableAnswers": [
       "カ"
     ],
@@ -936,13 +1044,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ki-forward",
+    "id": "ja-katakana-ki-forward",
     "type": "vocabulary",
     "statement": "キ is the katakana character for the sound 'ki'.",
     "explanation": "キ (ki) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana キ represent?",
     "correctAnswer": "ki",
-    "distractors": [],
+    "distractors": [
+      "sa",
+      "hi",
+      "ka",
+      "ku",
+      "ke",
+      "ko",
+      "i",
+      "shi"
+    ],
     "acceptableAnswers": [
       "ki"
     ],
@@ -1014,13 +1131,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ki-reverse",
+    "id": "ja-katakana-ki-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ki' is written as キ in katakana.",
     "explanation": "In katakana, the sound 'ki' is represented by the character キ.",
     "quizQuestion": "Which katakana character represents 'ki'?",
     "correctAnswer": "キ",
-    "distractors": [],
+    "distractors": [
+      "サ",
+      "ヒ",
+      "カ",
+      "ク",
+      "ケ",
+      "コ",
+      "イ",
+      "シ"
+    ],
     "acceptableAnswers": [
       "キ"
     ],
@@ -1092,13 +1218,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ku-forward",
+    "id": "ja-katakana-ku-forward",
     "type": "vocabulary",
     "statement": "ク is the katakana character for the sound 'ku'.",
     "explanation": "ク (ku) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ク represent?",
     "correctAnswer": "ku",
-    "distractors": [],
+    "distractors": [
+      "ke",
+      "ta",
+      "ka",
+      "ki",
+      "ko",
+      "u",
+      "su",
+      "tsu"
+    ],
     "acceptableAnswers": [
       "ku"
     ],
@@ -1170,13 +1305,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ku-reverse",
+    "id": "ja-katakana-ku-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ku' is written as ク in katakana.",
     "explanation": "In katakana, the sound 'ku' is represented by the character ク.",
     "quizQuestion": "Which katakana character represents 'ku'?",
     "correctAnswer": "ク",
-    "distractors": [],
+    "distractors": [
+      "ケ",
+      "タ",
+      "カ",
+      "キ",
+      "コ",
+      "ウ",
+      "ス",
+      "ツ"
+    ],
     "acceptableAnswers": [
       "ク"
     ],
@@ -1248,13 +1392,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ke-forward",
+    "id": "ja-katakana-ke-forward",
     "type": "vocabulary",
     "statement": "ケ is the katakana character for the sound 'ke'.",
     "explanation": "ケ (ke) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ケ represent?",
     "correctAnswer": "ke",
-    "distractors": [],
+    "distractors": [
+      "ku",
+      "te",
+      "ka",
+      "ki",
+      "ko",
+      "e",
+      "se",
+      "ne"
+    ],
     "acceptableAnswers": [
       "ke"
     ],
@@ -1326,13 +1479,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ke-reverse",
+    "id": "ja-katakana-ke-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ke' is written as ケ in katakana.",
     "explanation": "In katakana, the sound 'ke' is represented by the character ケ.",
     "quizQuestion": "Which katakana character represents 'ke'?",
     "correctAnswer": "ケ",
-    "distractors": [],
+    "distractors": [
+      "ク",
+      "テ",
+      "カ",
+      "キ",
+      "コ",
+      "エ",
+      "セ",
+      "ネ"
+    ],
     "acceptableAnswers": [
       "ケ"
     ],
@@ -1404,13 +1566,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ko-forward",
+    "id": "ja-katakana-ko-forward",
     "type": "vocabulary",
     "statement": "コ is the katakana character for the sound 'ko'.",
     "explanation": "コ (ko) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana コ represent?",
     "correctAnswer": "ko",
-    "distractors": [],
+    "distractors": [
+      "yu",
+      "ro",
+      "ka",
+      "ki",
+      "ku",
+      "ke",
+      "o",
+      "so"
+    ],
     "acceptableAnswers": [
       "ko"
     ],
@@ -1482,13 +1653,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ko-reverse",
+    "id": "ja-katakana-ko-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ko' is written as コ in katakana.",
     "explanation": "In katakana, the sound 'ko' is represented by the character コ.",
     "quizQuestion": "Which katakana character represents 'ko'?",
     "correctAnswer": "コ",
-    "distractors": [],
+    "distractors": [
+      "ユ",
+      "ロ",
+      "カ",
+      "キ",
+      "ク",
+      "ケ",
+      "オ",
+      "ソ"
+    ],
     "acceptableAnswers": [
       "コ"
     ],
@@ -1560,13 +1740,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-sa-forward",
+    "id": "ja-katakana-sa-forward",
     "type": "vocabulary",
     "statement": "サ is the katakana character for the sound 'sa'.",
     "explanation": "サ (sa) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana サ represent?",
     "correctAnswer": "sa",
-    "distractors": [],
+    "distractors": [
+      "se",
+      "ki",
+      "shi",
+      "su",
+      "so",
+      "a",
+      "ka",
+      "ta"
+    ],
     "acceptableAnswers": [
       "sa"
     ],
@@ -1638,13 +1827,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-sa-reverse",
+    "id": "ja-katakana-sa-reverse",
     "type": "vocabulary",
     "statement": "The sound 'sa' is written as サ in katakana.",
     "explanation": "In katakana, the sound 'sa' is represented by the character サ.",
     "quizQuestion": "Which katakana character represents 'sa'?",
     "correctAnswer": "サ",
-    "distractors": [],
+    "distractors": [
+      "セ",
+      "キ",
+      "シ",
+      "ス",
+      "ソ",
+      "ア",
+      "カ",
+      "タ"
+    ],
     "acceptableAnswers": [
       "サ"
     ],
@@ -1716,13 +1914,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-shi-forward",
+    "id": "ja-katakana-shi-forward",
     "type": "vocabulary",
     "statement": "シ is the katakana character for the sound 'shi'.",
     "explanation": "シ (shi) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana シ represent?",
     "correctAnswer": "shi",
-    "distractors": [],
+    "distractors": [
+      "tsu",
+      "mi",
+      "sa",
+      "su",
+      "se",
+      "so",
+      "i",
+      "ki"
+    ],
     "acceptableAnswers": [
       "shi"
     ],
@@ -1794,13 +2001,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-shi-reverse",
+    "id": "ja-katakana-shi-reverse",
     "type": "vocabulary",
     "statement": "The sound 'shi' is written as シ in katakana.",
     "explanation": "In katakana, the sound 'shi' is represented by the character シ.",
     "quizQuestion": "Which katakana character represents 'shi'?",
     "correctAnswer": "シ",
-    "distractors": [],
+    "distractors": [
+      "ツ",
+      "ミ",
+      "サ",
+      "ス",
+      "セ",
+      "ソ",
+      "イ",
+      "キ"
+    ],
     "acceptableAnswers": [
       "シ"
     ],
@@ -1872,13 +2088,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-su-forward",
+    "id": "ja-katakana-su-forward",
     "type": "vocabulary",
     "statement": "ス is the katakana character for the sound 'su'.",
     "explanation": "ス (su) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ス represent?",
     "correctAnswer": "su",
-    "distractors": [],
+    "distractors": [
+      "sa",
+      "shi",
+      "se",
+      "so",
+      "u",
+      "ku",
+      "tsu",
+      "nu"
+    ],
     "acceptableAnswers": [
       "su"
     ],
@@ -1950,13 +2175,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-su-reverse",
+    "id": "ja-katakana-su-reverse",
     "type": "vocabulary",
     "statement": "The sound 'su' is written as ス in katakana.",
     "explanation": "In katakana, the sound 'su' is represented by the character ス.",
     "quizQuestion": "Which katakana character represents 'su'?",
     "correctAnswer": "ス",
-    "distractors": [],
+    "distractors": [
+      "サ",
+      "シ",
+      "セ",
+      "ソ",
+      "ウ",
+      "ク",
+      "ツ",
+      "ヌ"
+    ],
     "acceptableAnswers": [
       "ス"
     ],
@@ -2028,13 +2262,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-se-forward",
+    "id": "ja-katakana-se-forward",
     "type": "vocabulary",
     "statement": "セ is the katakana character for the sound 'se'.",
     "explanation": "セ (se) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana セ represent?",
     "correctAnswer": "se",
-    "distractors": [],
+    "distractors": [
+      "ka",
+      "sa",
+      "shi",
+      "su",
+      "so",
+      "e",
+      "ke",
+      "te"
+    ],
     "acceptableAnswers": [
       "se"
     ],
@@ -2106,13 +2349,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-se-reverse",
+    "id": "ja-katakana-se-reverse",
     "type": "vocabulary",
     "statement": "The sound 'se' is written as セ in katakana.",
     "explanation": "In katakana, the sound 'se' is represented by the character セ.",
     "quizQuestion": "Which katakana character represents 'se'?",
     "correctAnswer": "セ",
-    "distractors": [],
+    "distractors": [
+      "カ",
+      "サ",
+      "シ",
+      "ス",
+      "ソ",
+      "エ",
+      "ケ",
+      "テ"
+    ],
     "acceptableAnswers": [
       "セ"
     ],
@@ -2184,13 +2436,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-so-forward",
+    "id": "ja-katakana-so-forward",
     "type": "vocabulary",
     "statement": "ソ is the katakana character for the sound 'so'.",
     "explanation": "ソ (so) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ソ represent?",
     "correctAnswer": "so",
-    "distractors": [],
+    "distractors": [
+      "n",
+      "tsu",
+      "sa",
+      "shi",
+      "su",
+      "se",
+      "o",
+      "ko"
+    ],
     "acceptableAnswers": [
       "so"
     ],
@@ -2262,13 +2523,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-so-reverse",
+    "id": "ja-katakana-so-reverse",
     "type": "vocabulary",
     "statement": "The sound 'so' is written as ソ in katakana.",
     "explanation": "In katakana, the sound 'so' is represented by the character ソ.",
     "quizQuestion": "Which katakana character represents 'so'?",
     "correctAnswer": "ソ",
-    "distractors": [],
+    "distractors": [
+      "ン",
+      "ツ",
+      "サ",
+      "シ",
+      "ス",
+      "セ",
+      "オ",
+      "コ"
+    ],
     "acceptableAnswers": [
       "ソ"
     ],
@@ -2340,13 +2610,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ta-forward",
+    "id": "ja-katakana-ta-forward",
     "type": "vocabulary",
     "statement": "タ is the katakana character for the sound 'ta'.",
     "explanation": "タ (ta) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana タ represent?",
     "correctAnswer": "ta",
-    "distractors": [],
+    "distractors": [
+      "chi",
+      "tsu",
+      "te",
+      "to",
+      "a",
+      "ka",
+      "sa",
+      "na"
+    ],
     "acceptableAnswers": [
       "ta"
     ],
@@ -2418,13 +2697,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ta-reverse",
+    "id": "ja-katakana-ta-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ta' is written as タ in katakana.",
     "explanation": "In katakana, the sound 'ta' is represented by the character タ.",
     "quizQuestion": "Which katakana character represents 'ta'?",
     "correctAnswer": "タ",
-    "distractors": [],
+    "distractors": [
+      "チ",
+      "ツ",
+      "テ",
+      "ト",
+      "ア",
+      "カ",
+      "サ",
+      "ナ"
+    ],
     "acceptableAnswers": [
       "タ"
     ],
@@ -2496,13 +2784,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-chi-forward",
+    "id": "ja-katakana-chi-forward",
     "type": "vocabulary",
     "statement": "チ is the katakana character for the sound 'chi'.",
     "explanation": "チ (chi) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana チ represent?",
     "correctAnswer": "chi",
-    "distractors": [],
+    "distractors": [
+      "te",
+      "na",
+      "ta",
+      "tsu",
+      "to",
+      "i",
+      "ki",
+      "shi"
+    ],
     "acceptableAnswers": [
       "chi"
     ],
@@ -2574,13 +2871,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-chi-reverse",
+    "id": "ja-katakana-chi-reverse",
     "type": "vocabulary",
     "statement": "The sound 'chi' is written as チ in katakana.",
     "explanation": "In katakana, the sound 'chi' is represented by the character チ.",
     "quizQuestion": "Which katakana character represents 'chi'?",
     "correctAnswer": "チ",
-    "distractors": [],
+    "distractors": [
+      "テ",
+      "ナ",
+      "タ",
+      "ツ",
+      "ト",
+      "イ",
+      "キ",
+      "シ"
+    ],
     "acceptableAnswers": [
       "チ"
     ],
@@ -2652,13 +2958,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-tsu-forward",
+    "id": "ja-katakana-tsu-forward",
     "type": "vocabulary",
     "statement": "ツ is the katakana character for the sound 'tsu'.",
     "explanation": "ツ (tsu) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ツ represent?",
     "correctAnswer": "tsu",
-    "distractors": [],
+    "distractors": [
+      "shi",
+      "so",
+      "ta",
+      "chi",
+      "te",
+      "to",
+      "u",
+      "ku"
+    ],
     "acceptableAnswers": [
       "tsu"
     ],
@@ -2730,13 +3045,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-tsu-reverse",
+    "id": "ja-katakana-tsu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'tsu' is written as ツ in katakana.",
     "explanation": "In katakana, the sound 'tsu' is represented by the character ツ.",
     "quizQuestion": "Which katakana character represents 'tsu'?",
     "correctAnswer": "ツ",
-    "distractors": [],
+    "distractors": [
+      "シ",
+      "ソ",
+      "タ",
+      "チ",
+      "テ",
+      "ト",
+      "ウ",
+      "ク"
+    ],
     "acceptableAnswers": [
       "ツ"
     ],
@@ -2808,13 +3132,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-te-forward",
+    "id": "ja-katakana-te-forward",
     "type": "vocabulary",
     "statement": "テ is the katakana character for the sound 'te'.",
     "explanation": "テ (te) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana テ represent?",
     "correctAnswer": "te",
-    "distractors": [],
+    "distractors": [
+      "chi",
+      "ke",
+      "ta",
+      "tsu",
+      "to",
+      "e",
+      "se",
+      "ne"
+    ],
     "acceptableAnswers": [
       "te"
     ],
@@ -2886,13 +3219,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-te-reverse",
+    "id": "ja-katakana-te-reverse",
     "type": "vocabulary",
     "statement": "The sound 'te' is written as テ in katakana.",
     "explanation": "In katakana, the sound 'te' is represented by the character テ.",
     "quizQuestion": "Which katakana character represents 'te'?",
     "correctAnswer": "テ",
-    "distractors": [],
+    "distractors": [
+      "チ",
+      "ケ",
+      "タ",
+      "ツ",
+      "ト",
+      "エ",
+      "セ",
+      "ネ"
+    ],
     "acceptableAnswers": [
       "テ"
     ],
@@ -2964,13 +3306,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-to-forward",
+    "id": "ja-katakana-to-forward",
     "type": "vocabulary",
     "statement": "ト is the katakana character for the sound 'to'.",
     "explanation": "ト (to) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ト represent?",
     "correctAnswer": "to",
-    "distractors": [],
+    "distractors": [
+      "ta",
+      "chi",
+      "tsu",
+      "te",
+      "o",
+      "ko",
+      "so",
+      "no"
+    ],
     "acceptableAnswers": [
       "to"
     ],
@@ -3042,13 +3393,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-to-reverse",
+    "id": "ja-katakana-to-reverse",
     "type": "vocabulary",
     "statement": "The sound 'to' is written as ト in katakana.",
     "explanation": "In katakana, the sound 'to' is represented by the character ト.",
     "quizQuestion": "Which katakana character represents 'to'?",
     "correctAnswer": "ト",
-    "distractors": [],
+    "distractors": [
+      "タ",
+      "チ",
+      "ツ",
+      "テ",
+      "オ",
+      "コ",
+      "ソ",
+      "ノ"
+    ],
     "acceptableAnswers": [
       "ト"
     ],
@@ -3120,13 +3480,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-na-forward",
+    "id": "ja-katakana-na-forward",
     "type": "vocabulary",
     "statement": "ナ is the katakana character for the sound 'na'.",
     "explanation": "ナ (na) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ナ represent?",
     "correctAnswer": "na",
-    "distractors": [],
+    "distractors": [
+      "chi",
+      "me",
+      "ni",
+      "nu",
+      "ne",
+      "no",
+      "a",
+      "ka"
+    ],
     "acceptableAnswers": [
       "na"
     ],
@@ -3198,13 +3567,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-na-reverse",
+    "id": "ja-katakana-na-reverse",
     "type": "vocabulary",
     "statement": "The sound 'na' is written as ナ in katakana.",
     "explanation": "In katakana, the sound 'na' is represented by the character ナ.",
     "quizQuestion": "Which katakana character represents 'na'?",
     "correctAnswer": "ナ",
-    "distractors": [],
+    "distractors": [
+      "チ",
+      "メ",
+      "ニ",
+      "ヌ",
+      "ネ",
+      "ノ",
+      "ア",
+      "カ"
+    ],
     "acceptableAnswers": [
       "ナ"
     ],
@@ -3276,13 +3654,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ni-forward",
+    "id": "ja-katakana-ni-forward",
     "type": "vocabulary",
     "statement": "ニ is the katakana character for the sound 'ni'.",
     "explanation": "ニ (ni) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ニ represent?",
     "correctAnswer": "ni",
-    "distractors": [],
+    "distractors": [
+      "na",
+      "nu",
+      "ne",
+      "no",
+      "i",
+      "ki",
+      "shi",
+      "chi"
+    ],
     "acceptableAnswers": [
       "ni"
     ],
@@ -3354,13 +3741,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ni-reverse",
+    "id": "ja-katakana-ni-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ni' is written as ニ in katakana.",
     "explanation": "In katakana, the sound 'ni' is represented by the character ニ.",
     "quizQuestion": "Which katakana character represents 'ni'?",
     "correctAnswer": "ニ",
-    "distractors": [],
+    "distractors": [
+      "ナ",
+      "ヌ",
+      "ネ",
+      "ノ",
+      "イ",
+      "キ",
+      "シ",
+      "チ"
+    ],
     "acceptableAnswers": [
       "ニ"
     ],
@@ -3432,13 +3828,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-nu-forward",
+    "id": "ja-katakana-nu-forward",
     "type": "vocabulary",
     "statement": "ヌ is the katakana character for the sound 'nu'.",
     "explanation": "ヌ (nu) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ヌ represent?",
     "correctAnswer": "nu",
-    "distractors": [],
+    "distractors": [
+      "me",
+      "fu",
+      "na",
+      "ni",
+      "ne",
+      "no",
+      "u",
+      "ku"
+    ],
     "acceptableAnswers": [
       "nu"
     ],
@@ -3510,13 +3915,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-nu-reverse",
+    "id": "ja-katakana-nu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'nu' is written as ヌ in katakana.",
     "explanation": "In katakana, the sound 'nu' is represented by the character ヌ.",
     "quizQuestion": "Which katakana character represents 'nu'?",
     "correctAnswer": "ヌ",
-    "distractors": [],
+    "distractors": [
+      "メ",
+      "フ",
+      "ナ",
+      "ニ",
+      "ネ",
+      "ノ",
+      "ウ",
+      "ク"
+    ],
     "acceptableAnswers": [
       "ヌ"
     ],
@@ -3588,13 +4002,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ne-forward",
+    "id": "ja-katakana-ne-forward",
     "type": "vocabulary",
     "statement": "ネ is the katakana character for the sound 'ne'.",
     "explanation": "ネ (ne) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ネ represent?",
     "correctAnswer": "ne",
-    "distractors": [],
+    "distractors": [
+      "na",
+      "ni",
+      "nu",
+      "no",
+      "e",
+      "ke",
+      "se",
+      "te"
+    ],
     "acceptableAnswers": [
       "ne"
     ],
@@ -3666,13 +4089,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ne-reverse",
+    "id": "ja-katakana-ne-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ne' is written as ネ in katakana.",
     "explanation": "In katakana, the sound 'ne' is represented by the character ネ.",
     "quizQuestion": "Which katakana character represents 'ne'?",
     "correctAnswer": "ネ",
-    "distractors": [],
+    "distractors": [
+      "ナ",
+      "ニ",
+      "ヌ",
+      "ノ",
+      "エ",
+      "ケ",
+      "セ",
+      "テ"
+    ],
     "acceptableAnswers": [
       "ネ"
     ],
@@ -3744,13 +4176,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-no-forward",
+    "id": "ja-katakana-no-forward",
     "type": "vocabulary",
     "statement": "ノ is the katakana character for the sound 'no'.",
     "explanation": "ノ (no) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ノ represent?",
     "correctAnswer": "no",
-    "distractors": [],
+    "distractors": [
+      "na",
+      "ni",
+      "nu",
+      "ne",
+      "o",
+      "ko",
+      "so",
+      "to"
+    ],
     "acceptableAnswers": [
       "no"
     ],
@@ -3822,13 +4263,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-no-reverse",
+    "id": "ja-katakana-no-reverse",
     "type": "vocabulary",
     "statement": "The sound 'no' is written as ノ in katakana.",
     "explanation": "In katakana, the sound 'no' is represented by the character ノ.",
     "quizQuestion": "Which katakana character represents 'no'?",
     "correctAnswer": "ノ",
-    "distractors": [],
+    "distractors": [
+      "ナ",
+      "ニ",
+      "ヌ",
+      "ネ",
+      "オ",
+      "コ",
+      "ソ",
+      "ト"
+    ],
     "acceptableAnswers": [
       "ノ"
     ],
@@ -3900,13 +4350,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ha-forward",
+    "id": "ja-katakana-ha-forward",
     "type": "vocabulary",
     "statement": "ハ is the katakana character for the sound 'ha'.",
     "explanation": "ハ (ha) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ハ represent?",
     "correctAnswer": "ha",
-    "distractors": [],
+    "distractors": [
+      "hi",
+      "fu",
+      "he",
+      "ho",
+      "a",
+      "ka",
+      "sa",
+      "ta"
+    ],
     "acceptableAnswers": [
       "ha"
     ],
@@ -3978,13 +4437,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ha-reverse",
+    "id": "ja-katakana-ha-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ha' is written as ハ in katakana.",
     "explanation": "In katakana, the sound 'ha' is represented by the character ハ.",
     "quizQuestion": "Which katakana character represents 'ha'?",
     "correctAnswer": "ハ",
-    "distractors": [],
+    "distractors": [
+      "ヒ",
+      "フ",
+      "ヘ",
+      "ホ",
+      "ア",
+      "カ",
+      "サ",
+      "タ"
+    ],
     "acceptableAnswers": [
       "ハ"
     ],
@@ -4056,13 +4524,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-hi-forward",
+    "id": "ja-katakana-hi-forward",
     "type": "vocabulary",
     "statement": "ヒ is the katakana character for the sound 'hi'.",
     "explanation": "ヒ (hi) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ヒ represent?",
     "correctAnswer": "hi",
-    "distractors": [],
+    "distractors": [
+      "ha",
+      "fu",
+      "he",
+      "ho",
+      "i",
+      "ki",
+      "shi",
+      "chi"
+    ],
     "acceptableAnswers": [
       "hi"
     ],
@@ -4134,13 +4611,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-hi-reverse",
+    "id": "ja-katakana-hi-reverse",
     "type": "vocabulary",
     "statement": "The sound 'hi' is written as ヒ in katakana.",
     "explanation": "In katakana, the sound 'hi' is represented by the character ヒ.",
     "quizQuestion": "Which katakana character represents 'hi'?",
     "correctAnswer": "ヒ",
-    "distractors": [],
+    "distractors": [
+      "ハ",
+      "フ",
+      "ヘ",
+      "ホ",
+      "イ",
+      "キ",
+      "シ",
+      "チ"
+    ],
     "acceptableAnswers": [
       "ヒ"
     ],
@@ -4212,13 +4698,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-fu-forward",
+    "id": "ja-katakana-fu-forward",
     "type": "vocabulary",
     "statement": "フ is the katakana character for the sound 'fu'.",
     "explanation": "フ (fu) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana フ represent?",
     "correctAnswer": "fu",
-    "distractors": [],
+    "distractors": [
+      "nu",
+      "u",
+      "ha",
+      "hi",
+      "he",
+      "ho",
+      "ku",
+      "su"
+    ],
     "acceptableAnswers": [
       "fu"
     ],
@@ -4290,13 +4785,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-fu-reverse",
+    "id": "ja-katakana-fu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'fu' is written as フ in katakana.",
     "explanation": "In katakana, the sound 'fu' is represented by the character フ.",
     "quizQuestion": "Which katakana character represents 'fu'?",
     "correctAnswer": "フ",
-    "distractors": [],
+    "distractors": [
+      "ヌ",
+      "ウ",
+      "ハ",
+      "ヒ",
+      "ヘ",
+      "ホ",
+      "ク",
+      "ス"
+    ],
     "acceptableAnswers": [
       "フ"
     ],
@@ -4368,13 +4872,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-he-forward",
+    "id": "ja-katakana-he-forward",
     "type": "vocabulary",
     "statement": "ヘ is the katakana character for the sound 'he'.",
     "explanation": "ヘ (he) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ヘ represent?",
     "correctAnswer": "he",
-    "distractors": [],
+    "distractors": [
+      "ha",
+      "hi",
+      "fu",
+      "ho",
+      "e",
+      "ke",
+      "se",
+      "te"
+    ],
     "acceptableAnswers": [
       "he"
     ],
@@ -4446,13 +4959,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-he-reverse",
+    "id": "ja-katakana-he-reverse",
     "type": "vocabulary",
     "statement": "The sound 'he' is written as ヘ in katakana.",
     "explanation": "In katakana, the sound 'he' is represented by the character ヘ.",
     "quizQuestion": "Which katakana character represents 'he'?",
     "correctAnswer": "ヘ",
-    "distractors": [],
+    "distractors": [
+      "ハ",
+      "ヒ",
+      "フ",
+      "ホ",
+      "エ",
+      "ケ",
+      "セ",
+      "テ"
+    ],
     "acceptableAnswers": [
       "ヘ"
     ],
@@ -4524,13 +5046,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ho-forward",
+    "id": "ja-katakana-ho-forward",
     "type": "vocabulary",
     "statement": "ホ is the katakana character for the sound 'ho'.",
     "explanation": "ホ (ho) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ホ represent?",
     "correctAnswer": "ho",
-    "distractors": [],
+    "distractors": [
+      "ha",
+      "hi",
+      "fu",
+      "he",
+      "o",
+      "ko",
+      "so",
+      "to"
+    ],
     "acceptableAnswers": [
       "ho"
     ],
@@ -4602,13 +5133,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ho-reverse",
+    "id": "ja-katakana-ho-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ho' is written as ホ in katakana.",
     "explanation": "In katakana, the sound 'ho' is represented by the character ホ.",
     "quizQuestion": "Which katakana character represents 'ho'?",
     "correctAnswer": "ホ",
-    "distractors": [],
+    "distractors": [
+      "ハ",
+      "ヒ",
+      "フ",
+      "ヘ",
+      "オ",
+      "コ",
+      "ソ",
+      "ト"
+    ],
     "acceptableAnswers": [
       "ホ"
     ],
@@ -4680,13 +5220,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ma-forward",
+    "id": "ja-katakana-ma-forward",
     "type": "vocabulary",
     "statement": "マ is the katakana character for the sound 'ma'.",
     "explanation": "マ (ma) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana マ represent?",
     "correctAnswer": "ma",
-    "distractors": [],
+    "distractors": [
+      "mu",
+      "a",
+      "mi",
+      "me",
+      "mo",
+      "ka",
+      "sa",
+      "ta"
+    ],
     "acceptableAnswers": [
       "ma"
     ],
@@ -4758,13 +5307,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ma-reverse",
+    "id": "ja-katakana-ma-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ma' is written as マ in katakana.",
     "explanation": "In katakana, the sound 'ma' is represented by the character マ.",
     "quizQuestion": "Which katakana character represents 'ma'?",
     "correctAnswer": "マ",
-    "distractors": [],
+    "distractors": [
+      "ム",
+      "ア",
+      "ミ",
+      "メ",
+      "モ",
+      "カ",
+      "サ",
+      "タ"
+    ],
     "acceptableAnswers": [
       "マ"
     ],
@@ -4836,13 +5394,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-mi-forward",
+    "id": "ja-katakana-mi-forward",
     "type": "vocabulary",
     "statement": "ミ is the katakana character for the sound 'mi'.",
     "explanation": "ミ (mi) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ミ represent?",
     "correctAnswer": "mi",
-    "distractors": [],
+    "distractors": [
+      "ma",
+      "mu",
+      "me",
+      "mo",
+      "i",
+      "ki",
+      "shi",
+      "chi"
+    ],
     "acceptableAnswers": [
       "mi"
     ],
@@ -4914,13 +5481,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-mi-reverse",
+    "id": "ja-katakana-mi-reverse",
     "type": "vocabulary",
     "statement": "The sound 'mi' is written as ミ in katakana.",
     "explanation": "In katakana, the sound 'mi' is represented by the character ミ.",
     "quizQuestion": "Which katakana character represents 'mi'?",
     "correctAnswer": "ミ",
-    "distractors": [],
+    "distractors": [
+      "マ",
+      "ム",
+      "メ",
+      "モ",
+      "イ",
+      "キ",
+      "シ",
+      "チ"
+    ],
     "acceptableAnswers": [
       "ミ"
     ],
@@ -4992,13 +5568,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-mu-forward",
+    "id": "ja-katakana-mu-forward",
     "type": "vocabulary",
     "statement": "ム is the katakana character for the sound 'mu'.",
     "explanation": "ム (mu) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ム represent?",
     "correctAnswer": "mu",
-    "distractors": [],
+    "distractors": [
+      "ma",
+      "mo",
+      "mi",
+      "me",
+      "u",
+      "ku",
+      "su",
+      "tsu"
+    ],
     "acceptableAnswers": [
       "mu"
     ],
@@ -5070,13 +5655,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-mu-reverse",
+    "id": "ja-katakana-mu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'mu' is written as ム in katakana.",
     "explanation": "In katakana, the sound 'mu' is represented by the character ム.",
     "quizQuestion": "Which katakana character represents 'mu'?",
     "correctAnswer": "ム",
-    "distractors": [],
+    "distractors": [
+      "マ",
+      "モ",
+      "ミ",
+      "メ",
+      "ウ",
+      "ク",
+      "ス",
+      "ツ"
+    ],
     "acceptableAnswers": [
       "ム"
     ],
@@ -5148,13 +5742,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-me-forward",
+    "id": "ja-katakana-me-forward",
     "type": "vocabulary",
     "statement": "メ is the katakana character for the sound 'me'.",
     "explanation": "メ (me) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana メ represent?",
     "correctAnswer": "me",
-    "distractors": [],
+    "distractors": [
+      "na",
+      "nu",
+      "ma",
+      "mi",
+      "mu",
+      "mo",
+      "e",
+      "ke"
+    ],
     "acceptableAnswers": [
       "me"
     ],
@@ -5226,13 +5829,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-me-reverse",
+    "id": "ja-katakana-me-reverse",
     "type": "vocabulary",
     "statement": "The sound 'me' is written as メ in katakana.",
     "explanation": "In katakana, the sound 'me' is represented by the character メ.",
     "quizQuestion": "Which katakana character represents 'me'?",
     "correctAnswer": "メ",
-    "distractors": [],
+    "distractors": [
+      "ナ",
+      "ヌ",
+      "マ",
+      "ミ",
+      "ム",
+      "モ",
+      "エ",
+      "ケ"
+    ],
     "acceptableAnswers": [
       "メ"
     ],
@@ -5304,13 +5916,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-mo-forward",
+    "id": "ja-katakana-mo-forward",
     "type": "vocabulary",
     "statement": "モ is the katakana character for the sound 'mo'.",
     "explanation": "モ (mo) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana モ represent?",
     "correctAnswer": "mo",
-    "distractors": [],
+    "distractors": [
+      "ma",
+      "mi",
+      "mu",
+      "me",
+      "o",
+      "ko",
+      "so",
+      "to"
+    ],
     "acceptableAnswers": [
       "mo"
     ],
@@ -5382,13 +6003,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-mo-reverse",
+    "id": "ja-katakana-mo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'mo' is written as モ in katakana.",
     "explanation": "In katakana, the sound 'mo' is represented by the character モ.",
     "quizQuestion": "Which katakana character represents 'mo'?",
     "correctAnswer": "モ",
-    "distractors": [],
+    "distractors": [
+      "マ",
+      "ミ",
+      "ム",
+      "メ",
+      "オ",
+      "コ",
+      "ソ",
+      "ト"
+    ],
     "acceptableAnswers": [
       "モ"
     ],
@@ -5460,13 +6090,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ya-forward",
+    "id": "ja-katakana-ya-forward",
     "type": "vocabulary",
     "statement": "ヤ is the katakana character for the sound 'ya'.",
     "explanation": "ヤ (ya) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ヤ represent?",
     "correctAnswer": "ya",
-    "distractors": [],
+    "distractors": [
+      "a",
+      "ka",
+      "yu",
+      "yo",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "ya"
     ],
@@ -5538,13 +6177,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ya-reverse",
+    "id": "ja-katakana-ya-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ya' is written as ヤ in katakana.",
     "explanation": "In katakana, the sound 'ya' is represented by the character ヤ.",
     "quizQuestion": "Which katakana character represents 'ya'?",
     "correctAnswer": "ヤ",
-    "distractors": [],
+    "distractors": [
+      "ア",
+      "カ",
+      "ユ",
+      "ヨ",
+      "サ",
+      "タ",
+      "ナ",
+      "ハ"
+    ],
     "acceptableAnswers": [
       "ヤ"
     ],
@@ -5616,13 +6264,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-yu-forward",
+    "id": "ja-katakana-yu-forward",
     "type": "vocabulary",
     "statement": "ユ is the katakana character for the sound 'yu'.",
     "explanation": "ユ (yu) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ユ represent?",
     "correctAnswer": "yu",
-    "distractors": [],
+    "distractors": [
+      "ko",
+      "yo",
+      "ya",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu"
+    ],
     "acceptableAnswers": [
       "yu"
     ],
@@ -5694,13 +6351,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-yu-reverse",
+    "id": "ja-katakana-yu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'yu' is written as ユ in katakana.",
     "explanation": "In katakana, the sound 'yu' is represented by the character ユ.",
     "quizQuestion": "Which katakana character represents 'yu'?",
     "correctAnswer": "ユ",
-    "distractors": [],
+    "distractors": [
+      "コ",
+      "ヨ",
+      "ヤ",
+      "ウ",
+      "ク",
+      "ス",
+      "ツ",
+      "ヌ"
+    ],
     "acceptableAnswers": [
       "ユ"
     ],
@@ -5772,13 +6438,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-yo-forward",
+    "id": "ja-katakana-yo-forward",
     "type": "vocabulary",
     "statement": "ヨ is the katakana character for the sound 'yo'.",
     "explanation": "ヨ (yo) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ヨ represent?",
     "correctAnswer": "yo",
-    "distractors": [],
+    "distractors": [
+      "ro",
+      "yu",
+      "ya",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no"
+    ],
     "acceptableAnswers": [
       "yo"
     ],
@@ -5850,13 +6525,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-yo-reverse",
+    "id": "ja-katakana-yo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'yo' is written as ヨ in katakana.",
     "explanation": "In katakana, the sound 'yo' is represented by the character ヨ.",
     "quizQuestion": "Which katakana character represents 'yo'?",
     "correctAnswer": "ヨ",
-    "distractors": [],
+    "distractors": [
+      "ロ",
+      "ユ",
+      "ヤ",
+      "オ",
+      "コ",
+      "ソ",
+      "ト",
+      "ノ"
+    ],
     "acceptableAnswers": [
       "ヨ"
     ],
@@ -5928,13 +6612,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ra-forward",
+    "id": "ja-katakana-ra-forward",
     "type": "vocabulary",
     "statement": "ラ is the katakana character for the sound 'ra'.",
     "explanation": "ラ (ra) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ラ represent?",
     "correctAnswer": "ra",
-    "distractors": [],
+    "distractors": [
+      "ri",
+      "ru",
+      "re",
+      "ro",
+      "a",
+      "ka",
+      "sa",
+      "ta"
+    ],
     "acceptableAnswers": [
       "ra"
     ],
@@ -6006,13 +6699,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ra-reverse",
+    "id": "ja-katakana-ra-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ra' is written as ラ in katakana.",
     "explanation": "In katakana, the sound 'ra' is represented by the character ラ.",
     "quizQuestion": "Which katakana character represents 'ra'?",
     "correctAnswer": "ラ",
-    "distractors": [],
+    "distractors": [
+      "リ",
+      "ル",
+      "レ",
+      "ロ",
+      "ア",
+      "カ",
+      "サ",
+      "タ"
+    ],
     "acceptableAnswers": [
       "ラ"
     ],
@@ -6084,13 +6786,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ri-forward",
+    "id": "ja-katakana-ri-forward",
     "type": "vocabulary",
     "statement": "リ is the katakana character for the sound 'ri'.",
     "explanation": "リ (ri) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana リ represent?",
     "correctAnswer": "ri",
-    "distractors": [],
+    "distractors": [
+      "ra",
+      "ru",
+      "re",
+      "ro",
+      "i",
+      "ki",
+      "shi",
+      "chi"
+    ],
     "acceptableAnswers": [
       "ri"
     ],
@@ -6162,13 +6873,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ri-reverse",
+    "id": "ja-katakana-ri-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ri' is written as リ in katakana.",
     "explanation": "In katakana, the sound 'ri' is represented by the character リ.",
     "quizQuestion": "Which katakana character represents 'ri'?",
     "correctAnswer": "リ",
-    "distractors": [],
+    "distractors": [
+      "ラ",
+      "ル",
+      "レ",
+      "ロ",
+      "イ",
+      "キ",
+      "シ",
+      "チ"
+    ],
     "acceptableAnswers": [
       "リ"
     ],
@@ -6240,13 +6960,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ru-forward",
+    "id": "ja-katakana-ru-forward",
     "type": "vocabulary",
     "statement": "ル is the katakana character for the sound 'ru'.",
     "explanation": "ル (ru) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ル represent?",
     "correctAnswer": "ru",
-    "distractors": [],
+    "distractors": [
+      "ra",
+      "ri",
+      "re",
+      "ro",
+      "u",
+      "ku",
+      "su",
+      "tsu"
+    ],
     "acceptableAnswers": [
       "ru"
     ],
@@ -6318,13 +7047,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ru-reverse",
+    "id": "ja-katakana-ru-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ru' is written as ル in katakana.",
     "explanation": "In katakana, the sound 'ru' is represented by the character ル.",
     "quizQuestion": "Which katakana character represents 'ru'?",
     "correctAnswer": "ル",
-    "distractors": [],
+    "distractors": [
+      "ラ",
+      "リ",
+      "レ",
+      "ロ",
+      "ウ",
+      "ク",
+      "ス",
+      "ツ"
+    ],
     "acceptableAnswers": [
       "ル"
     ],
@@ -6396,13 +7134,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-re-forward",
+    "id": "ja-katakana-re-forward",
     "type": "vocabulary",
     "statement": "レ is the katakana character for the sound 're'.",
     "explanation": "レ (re) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana レ represent?",
     "correctAnswer": "re",
-    "distractors": [],
+    "distractors": [
+      "ra",
+      "ri",
+      "ru",
+      "ro",
+      "e",
+      "ke",
+      "se",
+      "te"
+    ],
     "acceptableAnswers": [
       "re"
     ],
@@ -6474,13 +7221,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-re-reverse",
+    "id": "ja-katakana-re-reverse",
     "type": "vocabulary",
     "statement": "The sound 're' is written as レ in katakana.",
     "explanation": "In katakana, the sound 're' is represented by the character レ.",
     "quizQuestion": "Which katakana character represents 're'?",
     "correctAnswer": "レ",
-    "distractors": [],
+    "distractors": [
+      "ラ",
+      "リ",
+      "ル",
+      "ロ",
+      "エ",
+      "ケ",
+      "セ",
+      "テ"
+    ],
     "acceptableAnswers": [
       "レ"
     ],
@@ -6552,13 +7308,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ro-forward",
+    "id": "ja-katakana-ro-forward",
     "type": "vocabulary",
     "statement": "ロ is the katakana character for the sound 'ro'.",
     "explanation": "ロ (ro) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ロ represent?",
     "correctAnswer": "ro",
-    "distractors": [],
+    "distractors": [
+      "ko",
+      "yo",
+      "ra",
+      "ri",
+      "ru",
+      "re",
+      "o",
+      "so"
+    ],
     "acceptableAnswers": [
       "ro"
     ],
@@ -6630,13 +7395,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ro-reverse",
+    "id": "ja-katakana-ro-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ro' is written as ロ in katakana.",
     "explanation": "In katakana, the sound 'ro' is represented by the character ロ.",
     "quizQuestion": "Which katakana character represents 'ro'?",
     "correctAnswer": "ロ",
-    "distractors": [],
+    "distractors": [
+      "コ",
+      "ヨ",
+      "ラ",
+      "リ",
+      "ル",
+      "レ",
+      "オ",
+      "ソ"
+    ],
     "acceptableAnswers": [
       "ロ"
     ],
@@ -6708,13 +7482,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-wa-forward",
+    "id": "ja-katakana-wa-forward",
     "type": "vocabulary",
     "statement": "ワ is the katakana character for the sound 'wa'.",
     "explanation": "ワ (wa) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ワ represent?",
     "correctAnswer": "wa",
-    "distractors": [],
+    "distractors": [
+      "u",
+      "fu",
+      "wo",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na"
+    ],
     "acceptableAnswers": [
       "wa"
     ],
@@ -6786,13 +7569,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-wa-reverse",
+    "id": "ja-katakana-wa-reverse",
     "type": "vocabulary",
     "statement": "The sound 'wa' is written as ワ in katakana.",
     "explanation": "In katakana, the sound 'wa' is represented by the character ワ.",
     "quizQuestion": "Which katakana character represents 'wa'?",
     "correctAnswer": "ワ",
-    "distractors": [],
+    "distractors": [
+      "ウ",
+      "フ",
+      "ヲ",
+      "ア",
+      "カ",
+      "サ",
+      "タ",
+      "ナ"
+    ],
     "acceptableAnswers": [
       "ワ"
     ],
@@ -6864,13 +7656,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-wo-forward",
+    "id": "ja-katakana-wo-forward",
     "type": "vocabulary",
     "statement": "ヲ is the katakana character for the sound 'wo'.",
     "explanation": "ヲ (wo) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ヲ represent?",
     "correctAnswer": "wo",
-    "distractors": [],
+    "distractors": [
+      "wa",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho",
+      "mo"
+    ],
     "acceptableAnswers": [
       "wo"
     ],
@@ -6942,13 +7743,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-wo-reverse",
+    "id": "ja-katakana-wo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'wo' is written as ヲ in katakana.",
     "explanation": "In katakana, the sound 'wo' is represented by the character ヲ.",
     "quizQuestion": "Which katakana character represents 'wo'?",
     "correctAnswer": "ヲ",
-    "distractors": [],
+    "distractors": [
+      "ワ",
+      "オ",
+      "コ",
+      "ソ",
+      "ト",
+      "ノ",
+      "ホ",
+      "モ"
+    ],
     "acceptableAnswers": [
       "ヲ"
     ],
@@ -7020,13 +7830,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-n-forward",
+    "id": "ja-katakana-n-forward",
     "type": "vocabulary",
     "statement": "ン is the katakana character for the sound 'n'.",
     "explanation": "ン (n) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ン represent?",
     "correctAnswer": "n",
-    "distractors": [],
+    "distractors": [
+      "so",
+      "shi",
+      "he",
+      "re",
+      "wo",
+      "ha",
+      "yu",
+      "ri"
+    ],
     "acceptableAnswers": [
       "n"
     ],
@@ -7064,7 +7883,7 @@
         "distractors": [
           "so",
           "shi",
-          "ma"
+          "he"
         ]
       },
       {
@@ -7074,7 +7893,7 @@
         "distractors": [
           "ソ",
           "シ",
-          "マ"
+          "ヘ"
         ]
       },
       {
@@ -7092,19 +7911,28 @@
         "distractors": [
           "so",
           "shi",
-          "ma"
+          "he"
         ]
       }
     ]
   },
   {
-    "id": "ja-kana-katakana-n-reverse",
+    "id": "ja-katakana-n-reverse",
     "type": "vocabulary",
     "statement": "The sound 'n' is written as ン in katakana.",
     "explanation": "In katakana, the sound 'n' is represented by the character ン.",
     "quizQuestion": "Which katakana character represents 'n'?",
     "correctAnswer": "ン",
-    "distractors": [],
+    "distractors": [
+      "ソ",
+      "シ",
+      "ヘ",
+      "レ",
+      "ヲ",
+      "ハ",
+      "ユ",
+      "リ"
+    ],
     "acceptableAnswers": [
       "ン"
     ],
@@ -7142,7 +7970,7 @@
         "distractors": [
           "ソ",
           "シ",
-          "マ"
+          "ヘ"
         ]
       },
       {
@@ -7152,7 +7980,7 @@
         "distractors": [
           "so",
           "shi",
-          "ma"
+          "he"
         ]
       },
       {
@@ -7170,19 +7998,28 @@
         "distractors": [
           "ソ",
           "シ",
-          "マ"
+          "ヘ"
         ]
       }
     ]
   },
   {
-    "id": "ja-kana-katakana-ga-forward",
+    "id": "ja-katakana-ga-forward",
     "type": "vocabulary",
     "statement": "ガ is the katakana character for the sound 'ga'.",
     "explanation": "ガ (ga) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ガ represent?",
     "correctAnswer": "ga",
-    "distractors": [],
+    "distractors": [
+      "gi",
+      "gu",
+      "ge",
+      "go",
+      "a",
+      "ka",
+      "sa",
+      "ta"
+    ],
     "acceptableAnswers": [
       "ga"
     ],
@@ -7254,13 +8091,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ga-reverse",
+    "id": "ja-katakana-ga-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ga' is written as ガ in katakana.",
     "explanation": "In katakana, the sound 'ga' is represented by the character ガ.",
     "quizQuestion": "Which katakana character represents 'ga'?",
     "correctAnswer": "ガ",
-    "distractors": [],
+    "distractors": [
+      "ギ",
+      "グ",
+      "ゲ",
+      "ゴ",
+      "ア",
+      "カ",
+      "サ",
+      "タ"
+    ],
     "acceptableAnswers": [
       "ガ"
     ],
@@ -7332,13 +8178,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-gi-forward",
+    "id": "ja-katakana-gi-forward",
     "type": "vocabulary",
     "statement": "ギ is the katakana character for the sound 'gi'.",
     "explanation": "ギ (gi) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ギ represent?",
     "correctAnswer": "gi",
-    "distractors": [],
+    "distractors": [
+      "ga",
+      "gu",
+      "ge",
+      "go",
+      "i",
+      "ki",
+      "shi",
+      "chi"
+    ],
     "acceptableAnswers": [
       "gi"
     ],
@@ -7410,13 +8265,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-gi-reverse",
+    "id": "ja-katakana-gi-reverse",
     "type": "vocabulary",
     "statement": "The sound 'gi' is written as ギ in katakana.",
     "explanation": "In katakana, the sound 'gi' is represented by the character ギ.",
     "quizQuestion": "Which katakana character represents 'gi'?",
     "correctAnswer": "ギ",
-    "distractors": [],
+    "distractors": [
+      "ガ",
+      "グ",
+      "ゲ",
+      "ゴ",
+      "イ",
+      "キ",
+      "シ",
+      "チ"
+    ],
     "acceptableAnswers": [
       "ギ"
     ],
@@ -7488,13 +8352,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-gu-forward",
+    "id": "ja-katakana-gu-forward",
     "type": "vocabulary",
     "statement": "グ is the katakana character for the sound 'gu'.",
     "explanation": "グ (gu) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana グ represent?",
     "correctAnswer": "gu",
-    "distractors": [],
+    "distractors": [
+      "ga",
+      "gi",
+      "ge",
+      "go",
+      "u",
+      "ku",
+      "su",
+      "tsu"
+    ],
     "acceptableAnswers": [
       "gu"
     ],
@@ -7566,13 +8439,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-gu-reverse",
+    "id": "ja-katakana-gu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'gu' is written as グ in katakana.",
     "explanation": "In katakana, the sound 'gu' is represented by the character グ.",
     "quizQuestion": "Which katakana character represents 'gu'?",
     "correctAnswer": "グ",
-    "distractors": [],
+    "distractors": [
+      "ガ",
+      "ギ",
+      "ゲ",
+      "ゴ",
+      "ウ",
+      "ク",
+      "ス",
+      "ツ"
+    ],
     "acceptableAnswers": [
       "グ"
     ],
@@ -7644,13 +8526,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ge-forward",
+    "id": "ja-katakana-ge-forward",
     "type": "vocabulary",
     "statement": "ゲ is the katakana character for the sound 'ge'.",
     "explanation": "ゲ (ge) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ゲ represent?",
     "correctAnswer": "ge",
-    "distractors": [],
+    "distractors": [
+      "ga",
+      "gi",
+      "gu",
+      "go",
+      "e",
+      "ke",
+      "se",
+      "te"
+    ],
     "acceptableAnswers": [
       "ge"
     ],
@@ -7722,13 +8613,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ge-reverse",
+    "id": "ja-katakana-ge-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ge' is written as ゲ in katakana.",
     "explanation": "In katakana, the sound 'ge' is represented by the character ゲ.",
     "quizQuestion": "Which katakana character represents 'ge'?",
     "correctAnswer": "ゲ",
-    "distractors": [],
+    "distractors": [
+      "ガ",
+      "ギ",
+      "グ",
+      "ゴ",
+      "エ",
+      "ケ",
+      "セ",
+      "テ"
+    ],
     "acceptableAnswers": [
       "ゲ"
     ],
@@ -7800,13 +8700,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-go-forward",
+    "id": "ja-katakana-go-forward",
     "type": "vocabulary",
     "statement": "ゴ is the katakana character for the sound 'go'.",
     "explanation": "ゴ (go) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ゴ represent?",
     "correctAnswer": "go",
-    "distractors": [],
+    "distractors": [
+      "ga",
+      "gi",
+      "gu",
+      "ge",
+      "o",
+      "ko",
+      "so",
+      "to"
+    ],
     "acceptableAnswers": [
       "go"
     ],
@@ -7878,13 +8787,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-go-reverse",
+    "id": "ja-katakana-go-reverse",
     "type": "vocabulary",
     "statement": "The sound 'go' is written as ゴ in katakana.",
     "explanation": "In katakana, the sound 'go' is represented by the character ゴ.",
     "quizQuestion": "Which katakana character represents 'go'?",
     "correctAnswer": "ゴ",
-    "distractors": [],
+    "distractors": [
+      "ガ",
+      "ギ",
+      "グ",
+      "ゲ",
+      "オ",
+      "コ",
+      "ソ",
+      "ト"
+    ],
     "acceptableAnswers": [
       "ゴ"
     ],
@@ -7956,13 +8874,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-za-forward",
+    "id": "ja-katakana-za-forward",
     "type": "vocabulary",
     "statement": "ザ is the katakana character for the sound 'za'.",
     "explanation": "ザ (za) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ザ represent?",
     "correctAnswer": "za",
-    "distractors": [],
+    "distractors": [
+      "ji",
+      "zu",
+      "ze",
+      "zo",
+      "a",
+      "ka",
+      "sa",
+      "ta"
+    ],
     "acceptableAnswers": [
       "za"
     ],
@@ -8034,13 +8961,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-za-reverse",
+    "id": "ja-katakana-za-reverse",
     "type": "vocabulary",
     "statement": "The sound 'za' is written as ザ in katakana.",
     "explanation": "In katakana, the sound 'za' is represented by the character ザ.",
     "quizQuestion": "Which katakana character represents 'za'?",
     "correctAnswer": "ザ",
-    "distractors": [],
+    "distractors": [
+      "ジ",
+      "ズ",
+      "ゼ",
+      "ゾ",
+      "ア",
+      "カ",
+      "サ",
+      "タ"
+    ],
     "acceptableAnswers": [
       "ザ"
     ],
@@ -8112,13 +9048,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ji-forward",
+    "id": "ja-katakana-ji-forward",
     "type": "vocabulary",
     "statement": "ジ is the katakana character for the sound 'ji'.",
     "explanation": "ジ (ji) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ジ represent?",
     "correctAnswer": "ji",
-    "distractors": [],
+    "distractors": [
+      "za",
+      "zu",
+      "ze",
+      "zo",
+      "i",
+      "ki",
+      "shi",
+      "chi"
+    ],
     "acceptableAnswers": [
       "ji"
     ],
@@ -8190,15 +9135,25 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ji-reverse",
+    "id": "ja-katakana-ji-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ji' is written as ジ in katakana.",
     "explanation": "In katakana, the sound 'ji' is represented by the character ジ.",
     "quizQuestion": "Which katakana character represents 'ji'?",
     "correctAnswer": "ジ",
-    "distractors": [],
+    "distractors": [
+      "ザ",
+      "ズ",
+      "ゼ",
+      "ゾ",
+      "イ",
+      "キ",
+      "シ",
+      "チ"
+    ],
     "acceptableAnswers": [
-      "ジ"
+      "ジ",
+      "ヂ"
     ],
     "category": [
       "language",
@@ -8235,6 +9190,10 @@
           "ザ",
           "ズ",
           "ゼ"
+        ],
+        "acceptableAnswers": [
+          "ジ",
+          "ヂ"
         ]
       },
       {
@@ -8263,18 +9222,31 @@
           "ザ",
           "ズ",
           "ゼ"
+        ],
+        "acceptableAnswers": [
+          "ジ",
+          "ヂ"
         ]
       }
     ]
   },
   {
-    "id": "ja-kana-katakana-zu-forward",
+    "id": "ja-katakana-zu-forward",
     "type": "vocabulary",
     "statement": "ズ is the katakana character for the sound 'zu'.",
     "explanation": "ズ (zu) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ズ represent?",
     "correctAnswer": "zu",
-    "distractors": [],
+    "distractors": [
+      "za",
+      "ji",
+      "ze",
+      "zo",
+      "u",
+      "ku",
+      "su",
+      "tsu"
+    ],
     "acceptableAnswers": [
       "zu"
     ],
@@ -8346,15 +9318,25 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-zu-reverse",
+    "id": "ja-katakana-zu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'zu' is written as ズ in katakana.",
     "explanation": "In katakana, the sound 'zu' is represented by the character ズ.",
     "quizQuestion": "Which katakana character represents 'zu'?",
     "correctAnswer": "ズ",
-    "distractors": [],
+    "distractors": [
+      "ザ",
+      "ジ",
+      "ゼ",
+      "ゾ",
+      "ウ",
+      "ク",
+      "ス",
+      "ツ"
+    ],
     "acceptableAnswers": [
-      "ズ"
+      "ズ",
+      "ヅ"
     ],
     "category": [
       "language",
@@ -8391,6 +9373,10 @@
           "ザ",
           "ジ",
           "ゼ"
+        ],
+        "acceptableAnswers": [
+          "ズ",
+          "ヅ"
         ]
       },
       {
@@ -8419,18 +9405,31 @@
           "ザ",
           "ジ",
           "ゼ"
+        ],
+        "acceptableAnswers": [
+          "ズ",
+          "ヅ"
         ]
       }
     ]
   },
   {
-    "id": "ja-kana-katakana-ze-forward",
+    "id": "ja-katakana-ze-forward",
     "type": "vocabulary",
     "statement": "ゼ is the katakana character for the sound 'ze'.",
     "explanation": "ゼ (ze) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ゼ represent?",
     "correctAnswer": "ze",
-    "distractors": [],
+    "distractors": [
+      "za",
+      "ji",
+      "zu",
+      "zo",
+      "e",
+      "ke",
+      "se",
+      "te"
+    ],
     "acceptableAnswers": [
       "ze"
     ],
@@ -8502,13 +9501,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ze-reverse",
+    "id": "ja-katakana-ze-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ze' is written as ゼ in katakana.",
     "explanation": "In katakana, the sound 'ze' is represented by the character ゼ.",
     "quizQuestion": "Which katakana character represents 'ze'?",
     "correctAnswer": "ゼ",
-    "distractors": [],
+    "distractors": [
+      "ザ",
+      "ジ",
+      "ズ",
+      "ゾ",
+      "エ",
+      "ケ",
+      "セ",
+      "テ"
+    ],
     "acceptableAnswers": [
       "ゼ"
     ],
@@ -8580,13 +9588,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-zo-forward",
+    "id": "ja-katakana-zo-forward",
     "type": "vocabulary",
     "statement": "ゾ is the katakana character for the sound 'zo'.",
     "explanation": "ゾ (zo) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ゾ represent?",
     "correctAnswer": "zo",
-    "distractors": [],
+    "distractors": [
+      "za",
+      "ji",
+      "zu",
+      "ze",
+      "o",
+      "ko",
+      "so",
+      "to"
+    ],
     "acceptableAnswers": [
       "zo"
     ],
@@ -8658,13 +9675,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-zo-reverse",
+    "id": "ja-katakana-zo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'zo' is written as ゾ in katakana.",
     "explanation": "In katakana, the sound 'zo' is represented by the character ゾ.",
     "quizQuestion": "Which katakana character represents 'zo'?",
     "correctAnswer": "ゾ",
-    "distractors": [],
+    "distractors": [
+      "ザ",
+      "ジ",
+      "ズ",
+      "ゼ",
+      "オ",
+      "コ",
+      "ソ",
+      "ト"
+    ],
     "acceptableAnswers": [
       "ゾ"
     ],
@@ -8736,13 +9762,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-da-forward",
+    "id": "ja-katakana-da-forward",
     "type": "vocabulary",
     "statement": "ダ is the katakana character for the sound 'da'.",
     "explanation": "ダ (da) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ダ represent?",
     "correctAnswer": "da",
-    "distractors": [],
+    "distractors": [
+      "ji",
+      "zu",
+      "de",
+      "do",
+      "a",
+      "ka",
+      "sa",
+      "ta"
+    ],
     "acceptableAnswers": [
       "da"
     ],
@@ -8778,8 +9813,8 @@
         "question": "What sound does ダ represent?",
         "answer": "da",
         "distractors": [
-          "di",
-          "du",
+          "ji",
+          "zu",
           "de"
         ]
       },
@@ -8806,21 +9841,30 @@
         "question": "The katakana ダ is read as ___.",
         "answer": "da",
         "distractors": [
-          "di",
-          "du",
+          "ji",
+          "zu",
           "de"
         ]
       }
     ]
   },
   {
-    "id": "ja-kana-katakana-da-reverse",
+    "id": "ja-katakana-da-reverse",
     "type": "vocabulary",
     "statement": "The sound 'da' is written as ダ in katakana.",
     "explanation": "In katakana, the sound 'da' is represented by the character ダ.",
     "quizQuestion": "Which katakana character represents 'da'?",
     "correctAnswer": "ダ",
-    "distractors": [],
+    "distractors": [
+      "ヂ",
+      "ヅ",
+      "デ",
+      "ド",
+      "ア",
+      "カ",
+      "サ",
+      "タ"
+    ],
     "acceptableAnswers": [
       "ダ"
     ],
@@ -8866,8 +9910,8 @@
         "question": "What sound does ダ make?",
         "answer": "da",
         "distractors": [
-          "di",
-          "du",
+          "ji",
+          "zu",
           "de"
         ]
       },
@@ -8892,15 +9936,24 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-di-forward",
+    "id": "ja-katakana-ji2-forward",
     "type": "vocabulary",
-    "statement": "ヂ is the katakana character for the sound 'di'.",
-    "explanation": "ヂ (di) — a katakana character in the Japanese writing system.",
+    "statement": "ヂ is the katakana character for the sound 'ji'.",
+    "explanation": "ヂ (ji) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ヂ represent?",
-    "correctAnswer": "di",
-    "distractors": [],
+    "correctAnswer": "ji",
+    "distractors": [
+      "da",
+      "zu",
+      "de",
+      "do",
+      "i",
+      "ki",
+      "shi",
+      "chi"
+    ],
     "acceptableAnswers": [
-      "di"
+      "ji"
     ],
     "category": [
       "language",
@@ -8917,7 +9970,7 @@
     "sourceName": "Standard Japanese Kana Chart",
     "sourceUrl": "",
     "language": "ja",
-    "pronunciation": "di",
+    "pronunciation": "ji",
     "status": "approved",
     "contentVolatility": "timeless",
     "sensitivityLevel": 0,
@@ -8932,16 +9985,16 @@
       {
         "type": "forward",
         "question": "What sound does ヂ represent?",
-        "answer": "di",
+        "answer": "ji",
         "distractors": [
           "da",
-          "du",
+          "zu",
           "de"
         ]
       },
       {
         "type": "reverse",
-        "question": "Which katakana represents 'di'?",
+        "question": "Which katakana represents 'ji'?",
         "answer": "ヂ",
         "distractors": [
           "ダ",
@@ -8951,7 +10004,7 @@
       },
       {
         "type": "true_false",
-        "question": "The katakana ヂ represents the sound 'di'.",
+        "question": "The katakana ヂ represents the sound 'ji'.",
         "answer": "True",
         "distractors": [
           "False"
@@ -8960,25 +10013,35 @@
       {
         "type": "fill_blank",
         "question": "The katakana ヂ is read as ___.",
-        "answer": "di",
+        "answer": "ji",
         "distractors": [
           "da",
-          "du",
+          "zu",
           "de"
         ]
       }
     ]
   },
   {
-    "id": "ja-kana-katakana-di-reverse",
+    "id": "ja-katakana-ji2-reverse",
     "type": "vocabulary",
-    "statement": "The sound 'di' is written as ヂ in katakana.",
-    "explanation": "In katakana, the sound 'di' is represented by the character ヂ.",
-    "quizQuestion": "Which katakana character represents 'di'?",
+    "statement": "The sound 'ji' is written as ヂ in katakana.",
+    "explanation": "In katakana, the sound 'ji' is represented by the character ヂ.",
+    "quizQuestion": "Which katakana character represents 'ji'?",
     "correctAnswer": "ヂ",
-    "distractors": [],
+    "distractors": [
+      "ダ",
+      "ヅ",
+      "デ",
+      "ド",
+      "イ",
+      "キ",
+      "シ",
+      "チ"
+    ],
     "acceptableAnswers": [
-      "ヂ"
+      "ヂ",
+      "ジ"
     ],
     "category": [
       "language",
@@ -8995,7 +10058,7 @@
     "sourceName": "Standard Japanese Kana Chart",
     "sourceUrl": "",
     "language": "ja",
-    "pronunciation": "di",
+    "pronunciation": "ji",
     "status": "approved",
     "contentVolatility": "timeless",
     "sensitivityLevel": 0,
@@ -9009,27 +10072,31 @@
     "variants": [
       {
         "type": "forward",
-        "question": "Which katakana is 'di'?",
+        "question": "Which katakana is 'ji'?",
         "answer": "ヂ",
         "distractors": [
           "ダ",
           "ヅ",
           "デ"
+        ],
+        "acceptableAnswers": [
+          "ヂ",
+          "ジ"
         ]
       },
       {
         "type": "reverse",
         "question": "What sound does ヂ make?",
-        "answer": "di",
+        "answer": "ji",
         "distractors": [
           "da",
-          "du",
+          "zu",
           "de"
         ]
       },
       {
         "type": "true_false",
-        "question": "The sound 'di' is written as ヂ in katakana.",
+        "question": "The sound 'ji' is written as ヂ in katakana.",
         "answer": "True",
         "distractors": [
           "False"
@@ -9037,26 +10104,39 @@
       },
       {
         "type": "fill_blank",
-        "question": "In katakana, 'di' is written as ___.",
+        "question": "In katakana, 'ji' is written as ___.",
         "answer": "ヂ",
         "distractors": [
           "ダ",
           "ヅ",
           "デ"
+        ],
+        "acceptableAnswers": [
+          "ヂ",
+          "ジ"
         ]
       }
     ]
   },
   {
-    "id": "ja-kana-katakana-du-forward",
+    "id": "ja-katakana-zu2-forward",
     "type": "vocabulary",
-    "statement": "ヅ is the katakana character for the sound 'du'.",
-    "explanation": "ヅ (du) — a katakana character in the Japanese writing system.",
+    "statement": "ヅ is the katakana character for the sound 'zu'.",
+    "explanation": "ヅ (zu) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ヅ represent?",
-    "correctAnswer": "du",
-    "distractors": [],
+    "correctAnswer": "zu",
+    "distractors": [
+      "da",
+      "ji",
+      "de",
+      "do",
+      "u",
+      "ku",
+      "su",
+      "tsu"
+    ],
     "acceptableAnswers": [
-      "du"
+      "zu"
     ],
     "category": [
       "language",
@@ -9073,7 +10153,7 @@
     "sourceName": "Standard Japanese Kana Chart",
     "sourceUrl": "",
     "language": "ja",
-    "pronunciation": "du",
+    "pronunciation": "zu",
     "status": "approved",
     "contentVolatility": "timeless",
     "sensitivityLevel": 0,
@@ -9088,16 +10168,16 @@
       {
         "type": "forward",
         "question": "What sound does ヅ represent?",
-        "answer": "du",
+        "answer": "zu",
         "distractors": [
           "da",
-          "di",
+          "ji",
           "de"
         ]
       },
       {
         "type": "reverse",
-        "question": "Which katakana represents 'du'?",
+        "question": "Which katakana represents 'zu'?",
         "answer": "ヅ",
         "distractors": [
           "ダ",
@@ -9107,7 +10187,7 @@
       },
       {
         "type": "true_false",
-        "question": "The katakana ヅ represents the sound 'du'.",
+        "question": "The katakana ヅ represents the sound 'zu'.",
         "answer": "True",
         "distractors": [
           "False"
@@ -9116,25 +10196,35 @@
       {
         "type": "fill_blank",
         "question": "The katakana ヅ is read as ___.",
-        "answer": "du",
+        "answer": "zu",
         "distractors": [
           "da",
-          "di",
+          "ji",
           "de"
         ]
       }
     ]
   },
   {
-    "id": "ja-kana-katakana-du-reverse",
+    "id": "ja-katakana-zu2-reverse",
     "type": "vocabulary",
-    "statement": "The sound 'du' is written as ヅ in katakana.",
-    "explanation": "In katakana, the sound 'du' is represented by the character ヅ.",
-    "quizQuestion": "Which katakana character represents 'du'?",
+    "statement": "The sound 'zu' is written as ヅ in katakana.",
+    "explanation": "In katakana, the sound 'zu' is represented by the character ヅ.",
+    "quizQuestion": "Which katakana character represents 'zu'?",
     "correctAnswer": "ヅ",
-    "distractors": [],
+    "distractors": [
+      "ダ",
+      "ヂ",
+      "デ",
+      "ド",
+      "ウ",
+      "ク",
+      "ス",
+      "ツ"
+    ],
     "acceptableAnswers": [
-      "ヅ"
+      "ヅ",
+      "ズ"
     ],
     "category": [
       "language",
@@ -9151,7 +10241,7 @@
     "sourceName": "Standard Japanese Kana Chart",
     "sourceUrl": "",
     "language": "ja",
-    "pronunciation": "du",
+    "pronunciation": "zu",
     "status": "approved",
     "contentVolatility": "timeless",
     "sensitivityLevel": 0,
@@ -9165,27 +10255,31 @@
     "variants": [
       {
         "type": "forward",
-        "question": "Which katakana is 'du'?",
+        "question": "Which katakana is 'zu'?",
         "answer": "ヅ",
         "distractors": [
           "ダ",
           "ヂ",
           "デ"
+        ],
+        "acceptableAnswers": [
+          "ヅ",
+          "ズ"
         ]
       },
       {
         "type": "reverse",
         "question": "What sound does ヅ make?",
-        "answer": "du",
+        "answer": "zu",
         "distractors": [
           "da",
-          "di",
+          "ji",
           "de"
         ]
       },
       {
         "type": "true_false",
-        "question": "The sound 'du' is written as ヅ in katakana.",
+        "question": "The sound 'zu' is written as ヅ in katakana.",
         "answer": "True",
         "distractors": [
           "False"
@@ -9193,24 +10287,37 @@
       },
       {
         "type": "fill_blank",
-        "question": "In katakana, 'du' is written as ___.",
+        "question": "In katakana, 'zu' is written as ___.",
         "answer": "ヅ",
         "distractors": [
           "ダ",
           "ヂ",
           "デ"
+        ],
+        "acceptableAnswers": [
+          "ヅ",
+          "ズ"
         ]
       }
     ]
   },
   {
-    "id": "ja-kana-katakana-de-forward",
+    "id": "ja-katakana-de-forward",
     "type": "vocabulary",
     "statement": "デ is the katakana character for the sound 'de'.",
     "explanation": "デ (de) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana デ represent?",
     "correctAnswer": "de",
-    "distractors": [],
+    "distractors": [
+      "da",
+      "ji",
+      "zu",
+      "do",
+      "e",
+      "ke",
+      "se",
+      "te"
+    ],
     "acceptableAnswers": [
       "de"
     ],
@@ -9247,8 +10354,8 @@
         "answer": "de",
         "distractors": [
           "da",
-          "di",
-          "du"
+          "ji",
+          "zu"
         ]
       },
       {
@@ -9275,20 +10382,29 @@
         "answer": "de",
         "distractors": [
           "da",
-          "di",
-          "du"
+          "ji",
+          "zu"
         ]
       }
     ]
   },
   {
-    "id": "ja-kana-katakana-de-reverse",
+    "id": "ja-katakana-de-reverse",
     "type": "vocabulary",
     "statement": "The sound 'de' is written as デ in katakana.",
     "explanation": "In katakana, the sound 'de' is represented by the character デ.",
     "quizQuestion": "Which katakana character represents 'de'?",
     "correctAnswer": "デ",
-    "distractors": [],
+    "distractors": [
+      "ダ",
+      "ヂ",
+      "ヅ",
+      "ド",
+      "エ",
+      "ケ",
+      "セ",
+      "テ"
+    ],
     "acceptableAnswers": [
       "デ"
     ],
@@ -9335,8 +10451,8 @@
         "answer": "de",
         "distractors": [
           "da",
-          "di",
-          "du"
+          "ji",
+          "zu"
         ]
       },
       {
@@ -9360,13 +10476,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-do-forward",
+    "id": "ja-katakana-do-forward",
     "type": "vocabulary",
     "statement": "ド is the katakana character for the sound 'do'.",
     "explanation": "ド (do) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ド represent?",
     "correctAnswer": "do",
-    "distractors": [],
+    "distractors": [
+      "da",
+      "ji",
+      "zu",
+      "de",
+      "o",
+      "ko",
+      "so",
+      "to"
+    ],
     "acceptableAnswers": [
       "do"
     ],
@@ -9403,8 +10528,8 @@
         "answer": "do",
         "distractors": [
           "da",
-          "di",
-          "du"
+          "ji",
+          "zu"
         ]
       },
       {
@@ -9431,20 +10556,29 @@
         "answer": "do",
         "distractors": [
           "da",
-          "di",
-          "du"
+          "ji",
+          "zu"
         ]
       }
     ]
   },
   {
-    "id": "ja-kana-katakana-do-reverse",
+    "id": "ja-katakana-do-reverse",
     "type": "vocabulary",
     "statement": "The sound 'do' is written as ド in katakana.",
     "explanation": "In katakana, the sound 'do' is represented by the character ド.",
     "quizQuestion": "Which katakana character represents 'do'?",
     "correctAnswer": "ド",
-    "distractors": [],
+    "distractors": [
+      "ダ",
+      "ヂ",
+      "ヅ",
+      "デ",
+      "オ",
+      "コ",
+      "ソ",
+      "ト"
+    ],
     "acceptableAnswers": [
       "ド"
     ],
@@ -9491,8 +10625,8 @@
         "answer": "do",
         "distractors": [
           "da",
-          "di",
-          "du"
+          "ji",
+          "zu"
         ]
       },
       {
@@ -9516,13 +10650,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ba-forward",
+    "id": "ja-katakana-ba-forward",
     "type": "vocabulary",
     "statement": "バ is the katakana character for the sound 'ba'.",
     "explanation": "バ (ba) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana バ represent?",
     "correctAnswer": "ba",
-    "distractors": [],
+    "distractors": [
+      "bi",
+      "bu",
+      "be",
+      "bo",
+      "a",
+      "ka",
+      "sa",
+      "ta"
+    ],
     "acceptableAnswers": [
       "ba"
     ],
@@ -9594,13 +10737,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ba-reverse",
+    "id": "ja-katakana-ba-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ba' is written as バ in katakana.",
     "explanation": "In katakana, the sound 'ba' is represented by the character バ.",
     "quizQuestion": "Which katakana character represents 'ba'?",
     "correctAnswer": "バ",
-    "distractors": [],
+    "distractors": [
+      "ビ",
+      "ブ",
+      "ベ",
+      "ボ",
+      "ア",
+      "カ",
+      "サ",
+      "タ"
+    ],
     "acceptableAnswers": [
       "バ"
     ],
@@ -9672,13 +10824,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-bi-forward",
+    "id": "ja-katakana-bi-forward",
     "type": "vocabulary",
     "statement": "ビ is the katakana character for the sound 'bi'.",
     "explanation": "ビ (bi) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ビ represent?",
     "correctAnswer": "bi",
-    "distractors": [],
+    "distractors": [
+      "ba",
+      "bu",
+      "be",
+      "bo",
+      "i",
+      "ki",
+      "shi",
+      "chi"
+    ],
     "acceptableAnswers": [
       "bi"
     ],
@@ -9750,13 +10911,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-bi-reverse",
+    "id": "ja-katakana-bi-reverse",
     "type": "vocabulary",
     "statement": "The sound 'bi' is written as ビ in katakana.",
     "explanation": "In katakana, the sound 'bi' is represented by the character ビ.",
     "quizQuestion": "Which katakana character represents 'bi'?",
     "correctAnswer": "ビ",
-    "distractors": [],
+    "distractors": [
+      "バ",
+      "ブ",
+      "ベ",
+      "ボ",
+      "イ",
+      "キ",
+      "シ",
+      "チ"
+    ],
     "acceptableAnswers": [
       "ビ"
     ],
@@ -9828,13 +10998,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-bu-forward",
+    "id": "ja-katakana-bu-forward",
     "type": "vocabulary",
     "statement": "ブ is the katakana character for the sound 'bu'.",
     "explanation": "ブ (bu) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ブ represent?",
     "correctAnswer": "bu",
-    "distractors": [],
+    "distractors": [
+      "ba",
+      "bi",
+      "be",
+      "bo",
+      "u",
+      "ku",
+      "su",
+      "tsu"
+    ],
     "acceptableAnswers": [
       "bu"
     ],
@@ -9906,13 +11085,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-bu-reverse",
+    "id": "ja-katakana-bu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'bu' is written as ブ in katakana.",
     "explanation": "In katakana, the sound 'bu' is represented by the character ブ.",
     "quizQuestion": "Which katakana character represents 'bu'?",
     "correctAnswer": "ブ",
-    "distractors": [],
+    "distractors": [
+      "バ",
+      "ビ",
+      "ベ",
+      "ボ",
+      "ウ",
+      "ク",
+      "ス",
+      "ツ"
+    ],
     "acceptableAnswers": [
       "ブ"
     ],
@@ -9984,13 +11172,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-be-forward",
+    "id": "ja-katakana-be-forward",
     "type": "vocabulary",
     "statement": "ベ is the katakana character for the sound 'be'.",
     "explanation": "ベ (be) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ベ represent?",
     "correctAnswer": "be",
-    "distractors": [],
+    "distractors": [
+      "ba",
+      "bi",
+      "bu",
+      "bo",
+      "e",
+      "ke",
+      "se",
+      "te"
+    ],
     "acceptableAnswers": [
       "be"
     ],
@@ -10062,13 +11259,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-be-reverse",
+    "id": "ja-katakana-be-reverse",
     "type": "vocabulary",
     "statement": "The sound 'be' is written as ベ in katakana.",
     "explanation": "In katakana, the sound 'be' is represented by the character ベ.",
     "quizQuestion": "Which katakana character represents 'be'?",
     "correctAnswer": "ベ",
-    "distractors": [],
+    "distractors": [
+      "バ",
+      "ビ",
+      "ブ",
+      "ボ",
+      "エ",
+      "ケ",
+      "セ",
+      "テ"
+    ],
     "acceptableAnswers": [
       "ベ"
     ],
@@ -10140,13 +11346,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-bo-forward",
+    "id": "ja-katakana-bo-forward",
     "type": "vocabulary",
     "statement": "ボ is the katakana character for the sound 'bo'.",
     "explanation": "ボ (bo) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ボ represent?",
     "correctAnswer": "bo",
-    "distractors": [],
+    "distractors": [
+      "ba",
+      "bi",
+      "bu",
+      "be",
+      "o",
+      "ko",
+      "so",
+      "to"
+    ],
     "acceptableAnswers": [
       "bo"
     ],
@@ -10218,13 +11433,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-bo-reverse",
+    "id": "ja-katakana-bo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'bo' is written as ボ in katakana.",
     "explanation": "In katakana, the sound 'bo' is represented by the character ボ.",
     "quizQuestion": "Which katakana character represents 'bo'?",
     "correctAnswer": "ボ",
-    "distractors": [],
+    "distractors": [
+      "バ",
+      "ビ",
+      "ブ",
+      "ベ",
+      "オ",
+      "コ",
+      "ソ",
+      "ト"
+    ],
     "acceptableAnswers": [
       "ボ"
     ],
@@ -10296,13 +11520,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-pa-forward",
+    "id": "ja-katakana-pa-forward",
     "type": "vocabulary",
     "statement": "パ is the katakana character for the sound 'pa'.",
     "explanation": "パ (pa) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana パ represent?",
     "correctAnswer": "pa",
-    "distractors": [],
+    "distractors": [
+      "pi",
+      "pu",
+      "pe",
+      "po",
+      "a",
+      "ka",
+      "sa",
+      "ta"
+    ],
     "acceptableAnswers": [
       "pa"
     ],
@@ -10374,13 +11607,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-pa-reverse",
+    "id": "ja-katakana-pa-reverse",
     "type": "vocabulary",
     "statement": "The sound 'pa' is written as パ in katakana.",
     "explanation": "In katakana, the sound 'pa' is represented by the character パ.",
     "quizQuestion": "Which katakana character represents 'pa'?",
     "correctAnswer": "パ",
-    "distractors": [],
+    "distractors": [
+      "ピ",
+      "プ",
+      "ペ",
+      "ポ",
+      "ア",
+      "カ",
+      "サ",
+      "タ"
+    ],
     "acceptableAnswers": [
       "パ"
     ],
@@ -10452,13 +11694,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-pi-forward",
+    "id": "ja-katakana-pi-forward",
     "type": "vocabulary",
     "statement": "ピ is the katakana character for the sound 'pi'.",
     "explanation": "ピ (pi) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ピ represent?",
     "correctAnswer": "pi",
-    "distractors": [],
+    "distractors": [
+      "pa",
+      "pu",
+      "pe",
+      "po",
+      "i",
+      "ki",
+      "shi",
+      "chi"
+    ],
     "acceptableAnswers": [
       "pi"
     ],
@@ -10530,13 +11781,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-pi-reverse",
+    "id": "ja-katakana-pi-reverse",
     "type": "vocabulary",
     "statement": "The sound 'pi' is written as ピ in katakana.",
     "explanation": "In katakana, the sound 'pi' is represented by the character ピ.",
     "quizQuestion": "Which katakana character represents 'pi'?",
     "correctAnswer": "ピ",
-    "distractors": [],
+    "distractors": [
+      "パ",
+      "プ",
+      "ペ",
+      "ポ",
+      "イ",
+      "キ",
+      "シ",
+      "チ"
+    ],
     "acceptableAnswers": [
       "ピ"
     ],
@@ -10608,13 +11868,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-pu-forward",
+    "id": "ja-katakana-pu-forward",
     "type": "vocabulary",
     "statement": "プ is the katakana character for the sound 'pu'.",
     "explanation": "プ (pu) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana プ represent?",
     "correctAnswer": "pu",
-    "distractors": [],
+    "distractors": [
+      "pa",
+      "pi",
+      "pe",
+      "po",
+      "u",
+      "ku",
+      "su",
+      "tsu"
+    ],
     "acceptableAnswers": [
       "pu"
     ],
@@ -10686,13 +11955,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-pu-reverse",
+    "id": "ja-katakana-pu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'pu' is written as プ in katakana.",
     "explanation": "In katakana, the sound 'pu' is represented by the character プ.",
     "quizQuestion": "Which katakana character represents 'pu'?",
     "correctAnswer": "プ",
-    "distractors": [],
+    "distractors": [
+      "パ",
+      "ピ",
+      "ペ",
+      "ポ",
+      "ウ",
+      "ク",
+      "ス",
+      "ツ"
+    ],
     "acceptableAnswers": [
       "プ"
     ],
@@ -10764,13 +12042,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-pe-forward",
+    "id": "ja-katakana-pe-forward",
     "type": "vocabulary",
     "statement": "ペ is the katakana character for the sound 'pe'.",
     "explanation": "ペ (pe) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ペ represent?",
     "correctAnswer": "pe",
-    "distractors": [],
+    "distractors": [
+      "pa",
+      "pi",
+      "pu",
+      "po",
+      "e",
+      "ke",
+      "se",
+      "te"
+    ],
     "acceptableAnswers": [
       "pe"
     ],
@@ -10842,13 +12129,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-pe-reverse",
+    "id": "ja-katakana-pe-reverse",
     "type": "vocabulary",
     "statement": "The sound 'pe' is written as ペ in katakana.",
     "explanation": "In katakana, the sound 'pe' is represented by the character ペ.",
     "quizQuestion": "Which katakana character represents 'pe'?",
     "correctAnswer": "ペ",
-    "distractors": [],
+    "distractors": [
+      "パ",
+      "ピ",
+      "プ",
+      "ポ",
+      "エ",
+      "ケ",
+      "セ",
+      "テ"
+    ],
     "acceptableAnswers": [
       "ペ"
     ],
@@ -10920,13 +12216,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-po-forward",
+    "id": "ja-katakana-po-forward",
     "type": "vocabulary",
     "statement": "ポ is the katakana character for the sound 'po'.",
     "explanation": "ポ (po) — a katakana character in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ポ represent?",
     "correctAnswer": "po",
-    "distractors": [],
+    "distractors": [
+      "pa",
+      "pi",
+      "pu",
+      "pe",
+      "o",
+      "ko",
+      "so",
+      "to"
+    ],
     "acceptableAnswers": [
       "po"
     ],
@@ -10998,13 +12303,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-po-reverse",
+    "id": "ja-katakana-po-reverse",
     "type": "vocabulary",
     "statement": "The sound 'po' is written as ポ in katakana.",
     "explanation": "In katakana, the sound 'po' is represented by the character ポ.",
     "quizQuestion": "Which katakana character represents 'po'?",
     "correctAnswer": "ポ",
-    "distractors": [],
+    "distractors": [
+      "パ",
+      "ピ",
+      "プ",
+      "ペ",
+      "オ",
+      "コ",
+      "ソ",
+      "ト"
+    ],
     "acceptableAnswers": [
       "ポ"
     ],
@@ -11076,13 +12390,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-kya-forward",
+    "id": "ja-katakana-kya-forward",
     "type": "vocabulary",
     "statement": "キャ is the katakana combination for the sound 'kya'.",
     "explanation": "キャ (kya) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana キャ represent?",
     "correctAnswer": "kya",
-    "distractors": [],
+    "distractors": [
+      "kyu",
+      "kyo",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "kya"
     ],
@@ -11154,13 +12477,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-kya-reverse",
+    "id": "ja-katakana-kya-reverse",
     "type": "vocabulary",
     "statement": "The sound 'kya' is written as キャ in katakana.",
     "explanation": "In katakana, the sound 'kya' is represented by the combination キャ.",
     "quizQuestion": "Which katakana combination represents 'kya'?",
     "correctAnswer": "キャ",
-    "distractors": [],
+    "distractors": [
+      "キュ",
+      "キョ",
+      "ア",
+      "カ",
+      "サ",
+      "タ",
+      "ナ",
+      "ハ"
+    ],
     "acceptableAnswers": [
       "キャ"
     ],
@@ -11232,13 +12564,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-kyu-forward",
+    "id": "ja-katakana-kyu-forward",
     "type": "vocabulary",
     "statement": "キュ is the katakana combination for the sound 'kyu'.",
     "explanation": "キュ (kyu) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana キュ represent?",
     "correctAnswer": "kyu",
-    "distractors": [],
+    "distractors": [
+      "kya",
+      "kyo",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu",
+      "fu"
+    ],
     "acceptableAnswers": [
       "kyu"
     ],
@@ -11310,13 +12651,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-kyu-reverse",
+    "id": "ja-katakana-kyu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'kyu' is written as キュ in katakana.",
     "explanation": "In katakana, the sound 'kyu' is represented by the combination キュ.",
     "quizQuestion": "Which katakana combination represents 'kyu'?",
     "correctAnswer": "キュ",
-    "distractors": [],
+    "distractors": [
+      "キャ",
+      "キョ",
+      "ウ",
+      "ク",
+      "ス",
+      "ツ",
+      "ヌ",
+      "フ"
+    ],
     "acceptableAnswers": [
       "キュ"
     ],
@@ -11388,13 +12738,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-kyo-forward",
+    "id": "ja-katakana-kyo-forward",
     "type": "vocabulary",
     "statement": "キョ is the katakana combination for the sound 'kyo'.",
     "explanation": "キョ (kyo) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana キョ represent?",
     "correctAnswer": "kyo",
-    "distractors": [],
+    "distractors": [
+      "kya",
+      "kyu",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho"
+    ],
     "acceptableAnswers": [
       "kyo"
     ],
@@ -11466,13 +12825,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-kyo-reverse",
+    "id": "ja-katakana-kyo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'kyo' is written as キョ in katakana.",
     "explanation": "In katakana, the sound 'kyo' is represented by the combination キョ.",
     "quizQuestion": "Which katakana combination represents 'kyo'?",
     "correctAnswer": "キョ",
-    "distractors": [],
+    "distractors": [
+      "キャ",
+      "キュ",
+      "オ",
+      "コ",
+      "ソ",
+      "ト",
+      "ノ",
+      "ホ"
+    ],
     "acceptableAnswers": [
       "キョ"
     ],
@@ -11544,13 +12912,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-sha-forward",
+    "id": "ja-katakana-sha-forward",
     "type": "vocabulary",
     "statement": "シャ is the katakana combination for the sound 'sha'.",
     "explanation": "シャ (sha) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana シャ represent?",
     "correctAnswer": "sha",
-    "distractors": [],
+    "distractors": [
+      "shu",
+      "sho",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "sha"
     ],
@@ -11622,13 +12999,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-sha-reverse",
+    "id": "ja-katakana-sha-reverse",
     "type": "vocabulary",
     "statement": "The sound 'sha' is written as シャ in katakana.",
     "explanation": "In katakana, the sound 'sha' is represented by the combination シャ.",
     "quizQuestion": "Which katakana combination represents 'sha'?",
     "correctAnswer": "シャ",
-    "distractors": [],
+    "distractors": [
+      "シュ",
+      "ショ",
+      "ア",
+      "カ",
+      "サ",
+      "タ",
+      "ナ",
+      "ハ"
+    ],
     "acceptableAnswers": [
       "シャ"
     ],
@@ -11700,13 +13086,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-shu-forward",
+    "id": "ja-katakana-shu-forward",
     "type": "vocabulary",
     "statement": "シュ is the katakana combination for the sound 'shu'.",
     "explanation": "シュ (shu) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana シュ represent?",
     "correctAnswer": "shu",
-    "distractors": [],
+    "distractors": [
+      "sha",
+      "sho",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu",
+      "fu"
+    ],
     "acceptableAnswers": [
       "shu"
     ],
@@ -11778,13 +13173,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-shu-reverse",
+    "id": "ja-katakana-shu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'shu' is written as シュ in katakana.",
     "explanation": "In katakana, the sound 'shu' is represented by the combination シュ.",
     "quizQuestion": "Which katakana combination represents 'shu'?",
     "correctAnswer": "シュ",
-    "distractors": [],
+    "distractors": [
+      "シャ",
+      "ショ",
+      "ウ",
+      "ク",
+      "ス",
+      "ツ",
+      "ヌ",
+      "フ"
+    ],
     "acceptableAnswers": [
       "シュ"
     ],
@@ -11856,13 +13260,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-sho-forward",
+    "id": "ja-katakana-sho-forward",
     "type": "vocabulary",
     "statement": "ショ is the katakana combination for the sound 'sho'.",
     "explanation": "ショ (sho) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ショ represent?",
     "correctAnswer": "sho",
-    "distractors": [],
+    "distractors": [
+      "sha",
+      "shu",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho"
+    ],
     "acceptableAnswers": [
       "sho"
     ],
@@ -11934,13 +13347,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-sho-reverse",
+    "id": "ja-katakana-sho-reverse",
     "type": "vocabulary",
     "statement": "The sound 'sho' is written as ショ in katakana.",
     "explanation": "In katakana, the sound 'sho' is represented by the combination ショ.",
     "quizQuestion": "Which katakana combination represents 'sho'?",
     "correctAnswer": "ショ",
-    "distractors": [],
+    "distractors": [
+      "シャ",
+      "シュ",
+      "オ",
+      "コ",
+      "ソ",
+      "ト",
+      "ノ",
+      "ホ"
+    ],
     "acceptableAnswers": [
       "ショ"
     ],
@@ -12012,13 +13434,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-cha-forward",
+    "id": "ja-katakana-cha-forward",
     "type": "vocabulary",
     "statement": "チャ is the katakana combination for the sound 'cha'.",
     "explanation": "チャ (cha) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana チャ represent?",
     "correctAnswer": "cha",
-    "distractors": [],
+    "distractors": [
+      "chu",
+      "cho",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "cha"
     ],
@@ -12090,13 +13521,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-cha-reverse",
+    "id": "ja-katakana-cha-reverse",
     "type": "vocabulary",
     "statement": "The sound 'cha' is written as チャ in katakana.",
     "explanation": "In katakana, the sound 'cha' is represented by the combination チャ.",
     "quizQuestion": "Which katakana combination represents 'cha'?",
     "correctAnswer": "チャ",
-    "distractors": [],
+    "distractors": [
+      "チュ",
+      "チョ",
+      "ア",
+      "カ",
+      "サ",
+      "タ",
+      "ナ",
+      "ハ"
+    ],
     "acceptableAnswers": [
       "チャ"
     ],
@@ -12168,13 +13608,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-chu-forward",
+    "id": "ja-katakana-chu-forward",
     "type": "vocabulary",
     "statement": "チュ is the katakana combination for the sound 'chu'.",
     "explanation": "チュ (chu) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana チュ represent?",
     "correctAnswer": "chu",
-    "distractors": [],
+    "distractors": [
+      "cha",
+      "cho",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu",
+      "fu"
+    ],
     "acceptableAnswers": [
       "chu"
     ],
@@ -12246,13 +13695,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-chu-reverse",
+    "id": "ja-katakana-chu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'chu' is written as チュ in katakana.",
     "explanation": "In katakana, the sound 'chu' is represented by the combination チュ.",
     "quizQuestion": "Which katakana combination represents 'chu'?",
     "correctAnswer": "チュ",
-    "distractors": [],
+    "distractors": [
+      "チャ",
+      "チョ",
+      "ウ",
+      "ク",
+      "ス",
+      "ツ",
+      "ヌ",
+      "フ"
+    ],
     "acceptableAnswers": [
       "チュ"
     ],
@@ -12324,13 +13782,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-cho-forward",
+    "id": "ja-katakana-cho-forward",
     "type": "vocabulary",
     "statement": "チョ is the katakana combination for the sound 'cho'.",
     "explanation": "チョ (cho) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana チョ represent?",
     "correctAnswer": "cho",
-    "distractors": [],
+    "distractors": [
+      "cha",
+      "chu",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho"
+    ],
     "acceptableAnswers": [
       "cho"
     ],
@@ -12402,13 +13869,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-cho-reverse",
+    "id": "ja-katakana-cho-reverse",
     "type": "vocabulary",
     "statement": "The sound 'cho' is written as チョ in katakana.",
     "explanation": "In katakana, the sound 'cho' is represented by the combination チョ.",
     "quizQuestion": "Which katakana combination represents 'cho'?",
     "correctAnswer": "チョ",
-    "distractors": [],
+    "distractors": [
+      "チャ",
+      "チュ",
+      "オ",
+      "コ",
+      "ソ",
+      "ト",
+      "ノ",
+      "ホ"
+    ],
     "acceptableAnswers": [
       "チョ"
     ],
@@ -12480,13 +13956,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-nya-forward",
+    "id": "ja-katakana-nya-forward",
     "type": "vocabulary",
     "statement": "ニャ is the katakana combination for the sound 'nya'.",
     "explanation": "ニャ (nya) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ニャ represent?",
     "correctAnswer": "nya",
-    "distractors": [],
+    "distractors": [
+      "nyu",
+      "nyo",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "nya"
     ],
@@ -12558,13 +14043,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-nya-reverse",
+    "id": "ja-katakana-nya-reverse",
     "type": "vocabulary",
     "statement": "The sound 'nya' is written as ニャ in katakana.",
     "explanation": "In katakana, the sound 'nya' is represented by the combination ニャ.",
     "quizQuestion": "Which katakana combination represents 'nya'?",
     "correctAnswer": "ニャ",
-    "distractors": [],
+    "distractors": [
+      "ニュ",
+      "ニョ",
+      "ア",
+      "カ",
+      "サ",
+      "タ",
+      "ナ",
+      "ハ"
+    ],
     "acceptableAnswers": [
       "ニャ"
     ],
@@ -12636,13 +14130,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-nyu-forward",
+    "id": "ja-katakana-nyu-forward",
     "type": "vocabulary",
     "statement": "ニュ is the katakana combination for the sound 'nyu'.",
     "explanation": "ニュ (nyu) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ニュ represent?",
     "correctAnswer": "nyu",
-    "distractors": [],
+    "distractors": [
+      "nya",
+      "nyo",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu",
+      "fu"
+    ],
     "acceptableAnswers": [
       "nyu"
     ],
@@ -12714,13 +14217,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-nyu-reverse",
+    "id": "ja-katakana-nyu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'nyu' is written as ニュ in katakana.",
     "explanation": "In katakana, the sound 'nyu' is represented by the combination ニュ.",
     "quizQuestion": "Which katakana combination represents 'nyu'?",
     "correctAnswer": "ニュ",
-    "distractors": [],
+    "distractors": [
+      "ニャ",
+      "ニョ",
+      "ウ",
+      "ク",
+      "ス",
+      "ツ",
+      "ヌ",
+      "フ"
+    ],
     "acceptableAnswers": [
       "ニュ"
     ],
@@ -12792,13 +14304,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-nyo-forward",
+    "id": "ja-katakana-nyo-forward",
     "type": "vocabulary",
     "statement": "ニョ is the katakana combination for the sound 'nyo'.",
     "explanation": "ニョ (nyo) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ニョ represent?",
     "correctAnswer": "nyo",
-    "distractors": [],
+    "distractors": [
+      "nya",
+      "nyu",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho"
+    ],
     "acceptableAnswers": [
       "nyo"
     ],
@@ -12870,13 +14391,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-nyo-reverse",
+    "id": "ja-katakana-nyo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'nyo' is written as ニョ in katakana.",
     "explanation": "In katakana, the sound 'nyo' is represented by the combination ニョ.",
     "quizQuestion": "Which katakana combination represents 'nyo'?",
     "correctAnswer": "ニョ",
-    "distractors": [],
+    "distractors": [
+      "ニャ",
+      "ニュ",
+      "オ",
+      "コ",
+      "ソ",
+      "ト",
+      "ノ",
+      "ホ"
+    ],
     "acceptableAnswers": [
       "ニョ"
     ],
@@ -12948,13 +14478,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-hya-forward",
+    "id": "ja-katakana-hya-forward",
     "type": "vocabulary",
     "statement": "ヒャ is the katakana combination for the sound 'hya'.",
     "explanation": "ヒャ (hya) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ヒャ represent?",
     "correctAnswer": "hya",
-    "distractors": [],
+    "distractors": [
+      "hyu",
+      "hyo",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "hya"
     ],
@@ -13026,13 +14565,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-hya-reverse",
+    "id": "ja-katakana-hya-reverse",
     "type": "vocabulary",
     "statement": "The sound 'hya' is written as ヒャ in katakana.",
     "explanation": "In katakana, the sound 'hya' is represented by the combination ヒャ.",
     "quizQuestion": "Which katakana combination represents 'hya'?",
     "correctAnswer": "ヒャ",
-    "distractors": [],
+    "distractors": [
+      "ヒュ",
+      "ヒョ",
+      "ア",
+      "カ",
+      "サ",
+      "タ",
+      "ナ",
+      "ハ"
+    ],
     "acceptableAnswers": [
       "ヒャ"
     ],
@@ -13104,13 +14652,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-hyu-forward",
+    "id": "ja-katakana-hyu-forward",
     "type": "vocabulary",
     "statement": "ヒュ is the katakana combination for the sound 'hyu'.",
     "explanation": "ヒュ (hyu) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ヒュ represent?",
     "correctAnswer": "hyu",
-    "distractors": [],
+    "distractors": [
+      "hya",
+      "hyo",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu",
+      "fu"
+    ],
     "acceptableAnswers": [
       "hyu"
     ],
@@ -13182,13 +14739,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-hyu-reverse",
+    "id": "ja-katakana-hyu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'hyu' is written as ヒュ in katakana.",
     "explanation": "In katakana, the sound 'hyu' is represented by the combination ヒュ.",
     "quizQuestion": "Which katakana combination represents 'hyu'?",
     "correctAnswer": "ヒュ",
-    "distractors": [],
+    "distractors": [
+      "ヒャ",
+      "ヒョ",
+      "ウ",
+      "ク",
+      "ス",
+      "ツ",
+      "ヌ",
+      "フ"
+    ],
     "acceptableAnswers": [
       "ヒュ"
     ],
@@ -13260,13 +14826,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-hyo-forward",
+    "id": "ja-katakana-hyo-forward",
     "type": "vocabulary",
     "statement": "ヒョ is the katakana combination for the sound 'hyo'.",
     "explanation": "ヒョ (hyo) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ヒョ represent?",
     "correctAnswer": "hyo",
-    "distractors": [],
+    "distractors": [
+      "hya",
+      "hyu",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho"
+    ],
     "acceptableAnswers": [
       "hyo"
     ],
@@ -13338,13 +14913,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-hyo-reverse",
+    "id": "ja-katakana-hyo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'hyo' is written as ヒョ in katakana.",
     "explanation": "In katakana, the sound 'hyo' is represented by the combination ヒョ.",
     "quizQuestion": "Which katakana combination represents 'hyo'?",
     "correctAnswer": "ヒョ",
-    "distractors": [],
+    "distractors": [
+      "ヒャ",
+      "ヒュ",
+      "オ",
+      "コ",
+      "ソ",
+      "ト",
+      "ノ",
+      "ホ"
+    ],
     "acceptableAnswers": [
       "ヒョ"
     ],
@@ -13416,13 +15000,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-mya-forward",
+    "id": "ja-katakana-mya-forward",
     "type": "vocabulary",
     "statement": "ミャ is the katakana combination for the sound 'mya'.",
     "explanation": "ミャ (mya) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ミャ represent?",
     "correctAnswer": "mya",
-    "distractors": [],
+    "distractors": [
+      "myu",
+      "myo",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "mya"
     ],
@@ -13494,13 +15087,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-mya-reverse",
+    "id": "ja-katakana-mya-reverse",
     "type": "vocabulary",
     "statement": "The sound 'mya' is written as ミャ in katakana.",
     "explanation": "In katakana, the sound 'mya' is represented by the combination ミャ.",
     "quizQuestion": "Which katakana combination represents 'mya'?",
     "correctAnswer": "ミャ",
-    "distractors": [],
+    "distractors": [
+      "ミュ",
+      "ミョ",
+      "ア",
+      "カ",
+      "サ",
+      "タ",
+      "ナ",
+      "ハ"
+    ],
     "acceptableAnswers": [
       "ミャ"
     ],
@@ -13572,13 +15174,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-myu-forward",
+    "id": "ja-katakana-myu-forward",
     "type": "vocabulary",
     "statement": "ミュ is the katakana combination for the sound 'myu'.",
     "explanation": "ミュ (myu) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ミュ represent?",
     "correctAnswer": "myu",
-    "distractors": [],
+    "distractors": [
+      "mya",
+      "myo",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu",
+      "fu"
+    ],
     "acceptableAnswers": [
       "myu"
     ],
@@ -13650,13 +15261,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-myu-reverse",
+    "id": "ja-katakana-myu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'myu' is written as ミュ in katakana.",
     "explanation": "In katakana, the sound 'myu' is represented by the combination ミュ.",
     "quizQuestion": "Which katakana combination represents 'myu'?",
     "correctAnswer": "ミュ",
-    "distractors": [],
+    "distractors": [
+      "ミャ",
+      "ミョ",
+      "ウ",
+      "ク",
+      "ス",
+      "ツ",
+      "ヌ",
+      "フ"
+    ],
     "acceptableAnswers": [
       "ミュ"
     ],
@@ -13728,13 +15348,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-myo-forward",
+    "id": "ja-katakana-myo-forward",
     "type": "vocabulary",
     "statement": "ミョ is the katakana combination for the sound 'myo'.",
     "explanation": "ミョ (myo) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ミョ represent?",
     "correctAnswer": "myo",
-    "distractors": [],
+    "distractors": [
+      "mya",
+      "myu",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho"
+    ],
     "acceptableAnswers": [
       "myo"
     ],
@@ -13806,13 +15435,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-myo-reverse",
+    "id": "ja-katakana-myo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'myo' is written as ミョ in katakana.",
     "explanation": "In katakana, the sound 'myo' is represented by the combination ミョ.",
     "quizQuestion": "Which katakana combination represents 'myo'?",
     "correctAnswer": "ミョ",
-    "distractors": [],
+    "distractors": [
+      "ミャ",
+      "ミュ",
+      "オ",
+      "コ",
+      "ソ",
+      "ト",
+      "ノ",
+      "ホ"
+    ],
     "acceptableAnswers": [
       "ミョ"
     ],
@@ -13884,13 +15522,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-rya-forward",
+    "id": "ja-katakana-rya-forward",
     "type": "vocabulary",
     "statement": "リャ is the katakana combination for the sound 'rya'.",
     "explanation": "リャ (rya) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana リャ represent?",
     "correctAnswer": "rya",
-    "distractors": [],
+    "distractors": [
+      "ryu",
+      "ryo",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "rya"
     ],
@@ -13962,13 +15609,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-rya-reverse",
+    "id": "ja-katakana-rya-reverse",
     "type": "vocabulary",
     "statement": "The sound 'rya' is written as リャ in katakana.",
     "explanation": "In katakana, the sound 'rya' is represented by the combination リャ.",
     "quizQuestion": "Which katakana combination represents 'rya'?",
     "correctAnswer": "リャ",
-    "distractors": [],
+    "distractors": [
+      "リュ",
+      "リョ",
+      "ア",
+      "カ",
+      "サ",
+      "タ",
+      "ナ",
+      "ハ"
+    ],
     "acceptableAnswers": [
       "リャ"
     ],
@@ -14040,13 +15696,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ryu-forward",
+    "id": "ja-katakana-ryu-forward",
     "type": "vocabulary",
     "statement": "リュ is the katakana combination for the sound 'ryu'.",
     "explanation": "リュ (ryu) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana リュ represent?",
     "correctAnswer": "ryu",
-    "distractors": [],
+    "distractors": [
+      "rya",
+      "ryo",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu",
+      "fu"
+    ],
     "acceptableAnswers": [
       "ryu"
     ],
@@ -14118,13 +15783,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ryu-reverse",
+    "id": "ja-katakana-ryu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ryu' is written as リュ in katakana.",
     "explanation": "In katakana, the sound 'ryu' is represented by the combination リュ.",
     "quizQuestion": "Which katakana combination represents 'ryu'?",
     "correctAnswer": "リュ",
-    "distractors": [],
+    "distractors": [
+      "リャ",
+      "リョ",
+      "ウ",
+      "ク",
+      "ス",
+      "ツ",
+      "ヌ",
+      "フ"
+    ],
     "acceptableAnswers": [
       "リュ"
     ],
@@ -14196,13 +15870,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ryo-forward",
+    "id": "ja-katakana-ryo-forward",
     "type": "vocabulary",
     "statement": "リョ is the katakana combination for the sound 'ryo'.",
     "explanation": "リョ (ryo) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana リョ represent?",
     "correctAnswer": "ryo",
-    "distractors": [],
+    "distractors": [
+      "rya",
+      "ryu",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho"
+    ],
     "acceptableAnswers": [
       "ryo"
     ],
@@ -14274,13 +15957,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ryo-reverse",
+    "id": "ja-katakana-ryo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ryo' is written as リョ in katakana.",
     "explanation": "In katakana, the sound 'ryo' is represented by the combination リョ.",
     "quizQuestion": "Which katakana combination represents 'ryo'?",
     "correctAnswer": "リョ",
-    "distractors": [],
+    "distractors": [
+      "リャ",
+      "リュ",
+      "オ",
+      "コ",
+      "ソ",
+      "ト",
+      "ノ",
+      "ホ"
+    ],
     "acceptableAnswers": [
       "リョ"
     ],
@@ -14352,13 +16044,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-gya-forward",
+    "id": "ja-katakana-gya-forward",
     "type": "vocabulary",
     "statement": "ギャ is the katakana combination for the sound 'gya'.",
     "explanation": "ギャ (gya) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ギャ represent?",
     "correctAnswer": "gya",
-    "distractors": [],
+    "distractors": [
+      "gyu",
+      "gyo",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "gya"
     ],
@@ -14430,13 +16131,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-gya-reverse",
+    "id": "ja-katakana-gya-reverse",
     "type": "vocabulary",
     "statement": "The sound 'gya' is written as ギャ in katakana.",
     "explanation": "In katakana, the sound 'gya' is represented by the combination ギャ.",
     "quizQuestion": "Which katakana combination represents 'gya'?",
     "correctAnswer": "ギャ",
-    "distractors": [],
+    "distractors": [
+      "ギュ",
+      "ギョ",
+      "ア",
+      "カ",
+      "サ",
+      "タ",
+      "ナ",
+      "ハ"
+    ],
     "acceptableAnswers": [
       "ギャ"
     ],
@@ -14508,13 +16218,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-gyu-forward",
+    "id": "ja-katakana-gyu-forward",
     "type": "vocabulary",
     "statement": "ギュ is the katakana combination for the sound 'gyu'.",
     "explanation": "ギュ (gyu) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ギュ represent?",
     "correctAnswer": "gyu",
-    "distractors": [],
+    "distractors": [
+      "gya",
+      "gyo",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu",
+      "fu"
+    ],
     "acceptableAnswers": [
       "gyu"
     ],
@@ -14586,13 +16305,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-gyu-reverse",
+    "id": "ja-katakana-gyu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'gyu' is written as ギュ in katakana.",
     "explanation": "In katakana, the sound 'gyu' is represented by the combination ギュ.",
     "quizQuestion": "Which katakana combination represents 'gyu'?",
     "correctAnswer": "ギュ",
-    "distractors": [],
+    "distractors": [
+      "ギャ",
+      "ギョ",
+      "ウ",
+      "ク",
+      "ス",
+      "ツ",
+      "ヌ",
+      "フ"
+    ],
     "acceptableAnswers": [
       "ギュ"
     ],
@@ -14664,13 +16392,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-gyo-forward",
+    "id": "ja-katakana-gyo-forward",
     "type": "vocabulary",
     "statement": "ギョ is the katakana combination for the sound 'gyo'.",
     "explanation": "ギョ (gyo) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ギョ represent?",
     "correctAnswer": "gyo",
-    "distractors": [],
+    "distractors": [
+      "gya",
+      "gyu",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho"
+    ],
     "acceptableAnswers": [
       "gyo"
     ],
@@ -14742,13 +16479,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-gyo-reverse",
+    "id": "ja-katakana-gyo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'gyo' is written as ギョ in katakana.",
     "explanation": "In katakana, the sound 'gyo' is represented by the combination ギョ.",
     "quizQuestion": "Which katakana combination represents 'gyo'?",
     "correctAnswer": "ギョ",
-    "distractors": [],
+    "distractors": [
+      "ギャ",
+      "ギュ",
+      "オ",
+      "コ",
+      "ソ",
+      "ト",
+      "ノ",
+      "ホ"
+    ],
     "acceptableAnswers": [
       "ギョ"
     ],
@@ -14820,13 +16566,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ja-forward",
+    "id": "ja-katakana-ja-forward",
     "type": "vocabulary",
     "statement": "ジャ is the katakana combination for the sound 'ja'.",
     "explanation": "ジャ (ja) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ジャ represent?",
     "correctAnswer": "ja",
-    "distractors": [],
+    "distractors": [
+      "ju",
+      "jo",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "ja"
     ],
@@ -14898,13 +16653,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ja-reverse",
+    "id": "ja-katakana-ja-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ja' is written as ジャ in katakana.",
     "explanation": "In katakana, the sound 'ja' is represented by the combination ジャ.",
     "quizQuestion": "Which katakana combination represents 'ja'?",
     "correctAnswer": "ジャ",
-    "distractors": [],
+    "distractors": [
+      "ジュ",
+      "ジョ",
+      "ア",
+      "カ",
+      "サ",
+      "タ",
+      "ナ",
+      "ハ"
+    ],
     "acceptableAnswers": [
       "ジャ"
     ],
@@ -14976,13 +16740,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ju-forward",
+    "id": "ja-katakana-ju-forward",
     "type": "vocabulary",
     "statement": "ジュ is the katakana combination for the sound 'ju'.",
     "explanation": "ジュ (ju) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ジュ represent?",
     "correctAnswer": "ju",
-    "distractors": [],
+    "distractors": [
+      "ja",
+      "jo",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu",
+      "fu"
+    ],
     "acceptableAnswers": [
       "ju"
     ],
@@ -15054,13 +16827,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-ju-reverse",
+    "id": "ja-katakana-ju-reverse",
     "type": "vocabulary",
     "statement": "The sound 'ju' is written as ジュ in katakana.",
     "explanation": "In katakana, the sound 'ju' is represented by the combination ジュ.",
     "quizQuestion": "Which katakana combination represents 'ju'?",
     "correctAnswer": "ジュ",
-    "distractors": [],
+    "distractors": [
+      "ジャ",
+      "ジョ",
+      "ウ",
+      "ク",
+      "ス",
+      "ツ",
+      "ヌ",
+      "フ"
+    ],
     "acceptableAnswers": [
       "ジュ"
     ],
@@ -15132,13 +16914,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-jo-forward",
+    "id": "ja-katakana-jo-forward",
     "type": "vocabulary",
     "statement": "ジョ is the katakana combination for the sound 'jo'.",
     "explanation": "ジョ (jo) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ジョ represent?",
     "correctAnswer": "jo",
-    "distractors": [],
+    "distractors": [
+      "ja",
+      "ju",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho"
+    ],
     "acceptableAnswers": [
       "jo"
     ],
@@ -15210,13 +17001,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-jo-reverse",
+    "id": "ja-katakana-jo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'jo' is written as ジョ in katakana.",
     "explanation": "In katakana, the sound 'jo' is represented by the combination ジョ.",
     "quizQuestion": "Which katakana combination represents 'jo'?",
     "correctAnswer": "ジョ",
-    "distractors": [],
+    "distractors": [
+      "ジャ",
+      "ジュ",
+      "オ",
+      "コ",
+      "ソ",
+      "ト",
+      "ノ",
+      "ホ"
+    ],
     "acceptableAnswers": [
       "ジョ"
     ],
@@ -15288,13 +17088,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-bya-forward",
+    "id": "ja-katakana-bya-forward",
     "type": "vocabulary",
     "statement": "ビャ is the katakana combination for the sound 'bya'.",
     "explanation": "ビャ (bya) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ビャ represent?",
     "correctAnswer": "bya",
-    "distractors": [],
+    "distractors": [
+      "byu",
+      "byo",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "bya"
     ],
@@ -15366,13 +17175,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-bya-reverse",
+    "id": "ja-katakana-bya-reverse",
     "type": "vocabulary",
     "statement": "The sound 'bya' is written as ビャ in katakana.",
     "explanation": "In katakana, the sound 'bya' is represented by the combination ビャ.",
     "quizQuestion": "Which katakana combination represents 'bya'?",
     "correctAnswer": "ビャ",
-    "distractors": [],
+    "distractors": [
+      "ビュ",
+      "ビョ",
+      "ア",
+      "カ",
+      "サ",
+      "タ",
+      "ナ",
+      "ハ"
+    ],
     "acceptableAnswers": [
       "ビャ"
     ],
@@ -15444,13 +17262,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-byu-forward",
+    "id": "ja-katakana-byu-forward",
     "type": "vocabulary",
     "statement": "ビュ is the katakana combination for the sound 'byu'.",
     "explanation": "ビュ (byu) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ビュ represent?",
     "correctAnswer": "byu",
-    "distractors": [],
+    "distractors": [
+      "bya",
+      "byo",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu",
+      "fu"
+    ],
     "acceptableAnswers": [
       "byu"
     ],
@@ -15522,13 +17349,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-byu-reverse",
+    "id": "ja-katakana-byu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'byu' is written as ビュ in katakana.",
     "explanation": "In katakana, the sound 'byu' is represented by the combination ビュ.",
     "quizQuestion": "Which katakana combination represents 'byu'?",
     "correctAnswer": "ビュ",
-    "distractors": [],
+    "distractors": [
+      "ビャ",
+      "ビョ",
+      "ウ",
+      "ク",
+      "ス",
+      "ツ",
+      "ヌ",
+      "フ"
+    ],
     "acceptableAnswers": [
       "ビュ"
     ],
@@ -15600,13 +17436,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-byo-forward",
+    "id": "ja-katakana-byo-forward",
     "type": "vocabulary",
     "statement": "ビョ is the katakana combination for the sound 'byo'.",
     "explanation": "ビョ (byo) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ビョ represent?",
     "correctAnswer": "byo",
-    "distractors": [],
+    "distractors": [
+      "bya",
+      "byu",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho"
+    ],
     "acceptableAnswers": [
       "byo"
     ],
@@ -15678,13 +17523,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-byo-reverse",
+    "id": "ja-katakana-byo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'byo' is written as ビョ in katakana.",
     "explanation": "In katakana, the sound 'byo' is represented by the combination ビョ.",
     "quizQuestion": "Which katakana combination represents 'byo'?",
     "correctAnswer": "ビョ",
-    "distractors": [],
+    "distractors": [
+      "ビャ",
+      "ビュ",
+      "オ",
+      "コ",
+      "ソ",
+      "ト",
+      "ノ",
+      "ホ"
+    ],
     "acceptableAnswers": [
       "ビョ"
     ],
@@ -15756,13 +17610,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-pya-forward",
+    "id": "ja-katakana-pya-forward",
     "type": "vocabulary",
     "statement": "ピャ is the katakana combination for the sound 'pya'.",
     "explanation": "ピャ (pya) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ピャ represent?",
     "correctAnswer": "pya",
-    "distractors": [],
+    "distractors": [
+      "pyu",
+      "pyo",
+      "a",
+      "ka",
+      "sa",
+      "ta",
+      "na",
+      "ha"
+    ],
     "acceptableAnswers": [
       "pya"
     ],
@@ -15834,13 +17697,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-pya-reverse",
+    "id": "ja-katakana-pya-reverse",
     "type": "vocabulary",
     "statement": "The sound 'pya' is written as ピャ in katakana.",
     "explanation": "In katakana, the sound 'pya' is represented by the combination ピャ.",
     "quizQuestion": "Which katakana combination represents 'pya'?",
     "correctAnswer": "ピャ",
-    "distractors": [],
+    "distractors": [
+      "ピュ",
+      "ピョ",
+      "ア",
+      "カ",
+      "サ",
+      "タ",
+      "ナ",
+      "ハ"
+    ],
     "acceptableAnswers": [
       "ピャ"
     ],
@@ -15912,13 +17784,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-pyu-forward",
+    "id": "ja-katakana-pyu-forward",
     "type": "vocabulary",
     "statement": "ピュ is the katakana combination for the sound 'pyu'.",
     "explanation": "ピュ (pyu) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ピュ represent?",
     "correctAnswer": "pyu",
-    "distractors": [],
+    "distractors": [
+      "pya",
+      "pyo",
+      "u",
+      "ku",
+      "su",
+      "tsu",
+      "nu",
+      "fu"
+    ],
     "acceptableAnswers": [
       "pyu"
     ],
@@ -15990,13 +17871,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-pyu-reverse",
+    "id": "ja-katakana-pyu-reverse",
     "type": "vocabulary",
     "statement": "The sound 'pyu' is written as ピュ in katakana.",
     "explanation": "In katakana, the sound 'pyu' is represented by the combination ピュ.",
     "quizQuestion": "Which katakana combination represents 'pyu'?",
     "correctAnswer": "ピュ",
-    "distractors": [],
+    "distractors": [
+      "ピャ",
+      "ピョ",
+      "ウ",
+      "ク",
+      "ス",
+      "ツ",
+      "ヌ",
+      "フ"
+    ],
     "acceptableAnswers": [
       "ピュ"
     ],
@@ -16068,13 +17958,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-pyo-forward",
+    "id": "ja-katakana-pyo-forward",
     "type": "vocabulary",
     "statement": "ピョ is the katakana combination for the sound 'pyo'.",
     "explanation": "ピョ (pyo) — a katakana combination in the Japanese writing system.",
     "quizQuestion": "What sound does the katakana ピョ represent?",
     "correctAnswer": "pyo",
-    "distractors": [],
+    "distractors": [
+      "pya",
+      "pyu",
+      "o",
+      "ko",
+      "so",
+      "to",
+      "no",
+      "ho"
+    ],
     "acceptableAnswers": [
       "pyo"
     ],
@@ -16146,13 +18045,22 @@
     ]
   },
   {
-    "id": "ja-kana-katakana-pyo-reverse",
+    "id": "ja-katakana-pyo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'pyo' is written as ピョ in katakana.",
     "explanation": "In katakana, the sound 'pyo' is represented by the combination ピョ.",
     "quizQuestion": "Which katakana combination represents 'pyo'?",
     "correctAnswer": "ピョ",
-    "distractors": [],
+    "distractors": [
+      "ピャ",
+      "ピュ",
+      "オ",
+      "コ",
+      "ソ",
+      "ト",
+      "ノ",
+      "ホ"
+    ],
     "acceptableAnswers": [
       "ピョ"
     ],

@@ -744,14 +744,15 @@
           <div class="card-v2-frame">
             <!-- Layer 1: Border (by card type) -->
             <img class="frame-layer" src={getBorderUrl(card.cardType)} alt="" />
-            <!-- Layer 2: Base frame (constant) — art is set as background-image on this element -->
+            <!-- Layer 1.5: Card art in pentagon window (behind base frame mask) -->
             {#if card.mechanicId}
               {@const artUrl = getCardArtUrl(card.mechanicId)}
-              <img class="frame-layer frame-base-with-art" src={getBaseFrameUrl()} alt=""
-                style={artUrl ? `background-image: url('${artUrl}'); background-size: 56.2% 36.1%; background-position: 50% 19.3%; background-repeat: no-repeat;` : ''} />
-            {:else}
-              <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
+              {#if artUrl}
+                <img class="frame-card-art" src={artUrl} alt="" />
+              {/if}
             {/if}
+            <!-- Layer 2: Base frame (constant) -->
+            <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
             <!-- Layer 3: Banner (by chain type) -->
             <img class="frame-layer" src={getBannerUrl(card.chainType ?? 0)} alt="" />
             <!-- Layer 4: Upgrade icon (conditional, float animation) -->
@@ -1106,14 +1107,15 @@
           <div class="card-v2-frame">
             <!-- Layer 1: Border (by card type) -->
             <img class="frame-layer" src={getBorderUrl(card.cardType)} alt="" />
-            <!-- Layer 2: Base frame (constant) — art is set as background-image on this element -->
+            <!-- Layer 1.5: Card art in pentagon window (behind base frame mask) -->
             {#if card.mechanicId}
               {@const artUrl = getCardArtUrl(card.mechanicId)}
-              <img class="frame-layer frame-base-with-art" src={getBaseFrameUrl()} alt=""
-                style={artUrl ? `background-image: url('${artUrl}'); background-size: 56.2% 36.1%; background-position: 50% 19.3%; background-repeat: no-repeat;` : ''} />
-            {:else}
-              <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
+              {#if artUrl}
+                <img class="frame-card-art" src={artUrl} alt="" />
+              {/if}
             {/if}
+            <!-- Layer 2: Base frame (constant) -->
+            <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
             <!-- Layer 3: Banner (by chain type) -->
             <img class="frame-layer" src={getBannerUrl(card.chainType ?? 0)} alt="" />
             <!-- Layer 4: Upgrade icon (conditional, float animation) -->
@@ -1349,21 +1351,21 @@
        Width derived from height via aspect ratio (1.42 tall : 1 wide → invert).
        --hand-scale defaults to 1 (≤6 cards) and shrinks toward 0.65 for 10+ cards. */
     --hand-scale: 1;
-    --card-h: calc(32vh * 0.80 * var(--hand-scale));
+    --card-h: calc(27vh * 0.80 * var(--hand-scale));
     --card-w: calc(var(--card-h) / 1.42);
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    /* Card hand strip height */
-    height: 32vh;
+    /* Spec: card hand strip = 27% of viewport height */
+    height: 27vh;
     z-index: 20;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     justify-content: center;
-    gap: calc(14px * var(--hand-scale));
-    padding: 0 calc(12px * var(--layout-scale, 1)) calc(18px * var(--layout-scale, 1));
+    gap: calc(8px * var(--hand-scale));
+    padding: 0 calc(12px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
     background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
     pointer-events: none;
   }
@@ -1516,9 +1518,7 @@
     inset: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    isolation: isolate;
-    transform-style: flat; /* override parent preserve-3d so z-index works normally */
+    overflow: hidden; /* clips art to frame boundaries */
   }
 
   .frame-layer {
@@ -1526,19 +1526,22 @@
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    object-fit: contain;
     pointer-events: none;
-    image-rendering: pixelated;
-    /* No z-index — stacking via DOM order (art is first child = painted first = behind) */
+    image-rendering: pixelated; /* crisp pixel art rendering */
   }
 
-  .frame-base-with-art {
-    /* Card art rendered as CSS background-image on the base frame element.
-       The frame PNG has a transparent pentagon window — the background-image
-       shows through the window while the opaque frame areas mask the art edges.
-       This guarantees art is behind the frame since CSS backgrounds paint
-       before the element's own content (the frame PNG). */
-    background-color: #1a1a2e; /* fallback behind art for transparent areas */
+  .frame-card-art {
+    position: absolute;
+    /* Cover the pentagon art window area — base frame masks edges naturally */
+    left: 21.9%;
+    top: 16.3%;
+    width: 56.2%;
+    height: 36.1%; /* reduced from 48% to stay inside pentagon */
+    object-fit: cover;
+    image-rendering: auto; /* smooth for photo-like art */
+    pointer-events: none;
+    border-radius: 4px; /* subtle rounding to match pentagon corners */
   }
 
   .upgrade-icon {

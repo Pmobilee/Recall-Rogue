@@ -111,8 +111,8 @@ const DAKUTEN_KANA = [
 
   // D-row (difficulty 4)
   ['だ', 'ダ', 'da', 'd', 4],
-  ['ぢ', 'ヂ', 'di', 'd', 4],
-  ['づ', 'ヅ', 'du', 'd', 4],
+  ['ぢ', 'ヂ', 'ji', 'd', 4],
+  ['づ', 'ヅ', 'zu', 'd', 4],
   ['で', 'デ', 'de', 'd', 4],
   ['ど', 'ド', 'do', 'd', 4],
 
@@ -331,6 +331,7 @@ function generateFacts(system) {
 
   const facts = [];
   let counter = 1;
+  const usedRomajiIds = new Set();
 
   for (const entry of ALL_KANA) {
     const [hiragana, katakana, romaji, row, difficulty] = entry;
@@ -344,9 +345,14 @@ function generateFacts(system) {
     const isCombo = difficulty === 5;
     const charType = isCombo ? 'combination' : 'character';
 
+    // Build collision-safe ID suffix: append "2" if this romaji was already used
+    const romajiKey = romaji.replace(/[^a-z]/g, '');
+    const idSuffix = usedRomajiIds.has(romajiKey) ? `${romajiKey}2` : romajiKey;
+    usedRomajiIds.add(romajiKey);
+
     // Fact 1: Kana → Romaji (forward direction)
     facts.push({
-      id: `ja-${systemLabel}-${romaji.replace(/[^a-z]/g, '')}-forward`,
+      id: `ja-${systemLabel}-${idSuffix}-forward`,
       type: 'vocabulary',
       statement: `${kana} is the ${systemLabel} ${charType} for the sound '${romaji}'.`,
       explanation: `${kana} (${romaji}) — a ${systemLabel} ${charType} in the Japanese writing system.`,
@@ -382,7 +388,7 @@ function generateFacts(system) {
 
     // Fact 2: Romaji → Kana (reverse direction)
     facts.push({
-      id: `ja-${systemLabel}-${romaji.replace(/[^a-z]/g, '')}-reverse`,
+      id: `ja-${systemLabel}-${idSuffix}-reverse`,
       type: 'vocabulary',
       statement: `The sound '${romaji}' is written as ${kana} in ${systemLabel}.`,
       explanation: `In ${systemLabel}, the sound '${romaji}' is represented by the ${charType} ${kana}.`,
@@ -417,6 +423,40 @@ function generateFacts(system) {
     });
 
     counter++;
+  }
+
+  // Collision fix: ぢ/ヂ and づ/ヅ were changed to Hepburn romanization (ji/zu),
+  // creating ambiguity with じ/ジ (ji) and ず/ズ (zu).
+  // For reverse facts ("Which kana represents 'ji'?"), both answers are valid.
+  const COLLISION_PAIRS = {
+    // romaji → [primary kana (hiragana), alternate kana (hiragana), primary katakana, alternate katakana]
+    'ji':  { hiragana: ['じ', 'ぢ'], katakana: ['ジ', 'ヂ'] },
+    'zu':  { hiragana: ['ず', 'づ'], katakana: ['ズ', 'ヅ'] },
+  };
+
+  for (const fact of facts) {
+    // Only touch reverse facts (romaji → kana direction)
+    if (!fact.id.endsWith('-reverse')) continue;
+
+    const romaji = fact.pronunciation;
+    if (!COLLISION_PAIRS[romaji]) continue;
+
+    const sys = fact.categoryL2.includes('hiragana') ? 'hiragana' : 'katakana';
+    const alts = COLLISION_PAIRS[romaji][sys]; // [primary, alternate]
+
+    // The correct answer is one of the two; the other is also acceptable
+    if (alts.includes(fact.correctAnswer)) {
+      const other = alts.find(k => k !== fact.correctAnswer);
+      if (other && !fact.acceptableAnswers.includes(other)) {
+        fact.acceptableAnswers.push(other);
+      }
+      // Mirror into variants too
+      for (const v of fact.variants) {
+        if (v.answer === fact.correctAnswer && !Array.isArray(v.acceptableAnswers)) {
+          v.acceptableAnswers = [fact.correctAnswer, other];
+        }
+      }
+    }
   }
 
   return facts;
