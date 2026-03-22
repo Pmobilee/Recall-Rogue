@@ -512,8 +512,8 @@
 
     {#if transitionActive}
       <ParallaxTransition
-        imageUrl={`/assets/backgrounds/rooms/${transitionRoom}/${$isLandscape ? 'landscape' : 'portrait'}.webp`}
-        depthUrl={`/assets/backgrounds/rooms/${transitionRoom}/${$isLandscape ? 'landscape' : 'portrait'}_depth.webp`}
+        imageUrl={transitionImageUrl}
+        depthUrl={transitionDepthUrl}
         type={transitionType}
         onComplete={onTransitionComplete}
       />

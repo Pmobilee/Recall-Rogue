@@ -1355,7 +1355,7 @@
     --card-w: calc(var(--card-h) / 1.42);
     position: fixed;
     bottom: 0;
-    left: 19.9%;
+    left: 0;
     right: 0;
     /* Spec: card hand strip = 27% of viewport height */
     height: 27vh;
@@ -1399,8 +1399,8 @@
     position: relative;
     width: var(--card-w);
     height: var(--card-h);
-    background-color: transparent;
-    border: none;
+    background-color: #1e2d3d;
+    border: 2px solid;
     border-radius: 8px;
     cursor: pointer;
     pointer-events: auto;
@@ -1466,7 +1466,7 @@
     z-index: 20;
     transform: translateX(-50%);
     height: calc(280px * var(--layout-scale, 1));
-    width: 61.3%;
+    width: 100%;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -1477,8 +1477,8 @@
     position: absolute;
     width: var(--card-w);
     height: var(--card-h);
-    background-color: transparent;
-    border: none;
+    background-color: #1e2d3d;
+    border: 2px solid;
     border-radius: 8px;
     cursor: pointer;
     pointer-events: auto;
@@ -1492,7 +1492,7 @@
     touch-action: none;
     font-family: inherit;
     color: white;
-    box-shadow: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     perspective: 800px;
     will-change: transform, opacity;
   }
@@ -1516,16 +1516,16 @@
   .card-v2-frame {
     position: absolute;
     inset: 0;
-    width: 61.3%;
-    height: 37.0%;
+    width: 100%;
+    height: 100%;
     overflow: hidden; /* clips art to frame boundaries */
   }
 
   .frame-layer {
     position: absolute;
     inset: 0;
-    width: 61.3%;
-    height: 37.0%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     pointer-events: none;
     image-rendering: pixelated; /* crisp pixel art rendering */
@@ -1533,15 +1533,15 @@
 
   .frame-card-art {
     position: absolute;
-    /* Cover the pentagon art window area — base frame masks edges naturally */
+    /* Exact position from PSD layer "PLACE WHERE ARTWORK GOES" bbox(176,186,719,609) on 886x1142 */
     left: 19.9%;
     top: 16.3%;
     width: 61.3%;
-    height: 37.0%; /* reduced from 48% to stay inside pentagon */
+    height: 37.0%;
     object-fit: cover;
-    image-rendering: auto; /* smooth for photo-like art */
+    image-rendering: auto;
     pointer-events: none;
-    border-radius: 4px; /* subtle rounding to match pentagon corners */
+    border-radius: 4px;
   }
 
   .upgrade-icon {
@@ -1637,7 +1637,8 @@
     text-align: center;
   }
 
-  .v2-card-type { display: none; /* removed per user request — no ATTACK/SHIELD/UTILITY labels */
+  .v2-card-type {
+    display: none; /* removed — no ATTACK/SHIELD/UTILITY labels */
     font-family: system-ui, -apple-system, sans-serif;
     font-weight: 700;
     font-size: calc(var(--card-w) * 0.085);
@@ -1928,8 +1929,8 @@
   /* Card 3D flip infrastructure */
   .card-inner {
     position: relative;
-    width: 61.3%;
-    height: 37.0%;
+    width: 100%;
+    height: 100%;
     transform-style: preserve-3d;
     transition: transform 400ms ease-in-out;
   }
@@ -1962,8 +1963,8 @@
   }
 
   .cardback-img {
-    width: 61.3%;
-    height: 37.0%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     object-position: center center;
     border-radius: 6px;
@@ -2021,7 +2022,7 @@
   /* H-10: Charge zone threshold line — fixed, full-width dashed line during drag */
   .charge-threshold-line {
     position: fixed;
-    left: 19.9%;
+    left: 0;
     right: 0;
     height: 2px;
     border-top: 2px dashed rgba(250, 204, 21, 0.55);
