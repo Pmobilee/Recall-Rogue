@@ -4,7 +4,7 @@
 
 import { writable, get } from 'svelte/store';
 import type { TurnState } from './turnManager';
-import { startEncounter, playCardAction, skipCard, endPlayerTurn, resolveInscription, getActiveInscription } from './turnManager';
+import { startEncounter, playCardAction, skipCard, endPlayerTurn, resolveInscription, getActiveInscription, applyPendingChoice } from './turnManager';
 import { buildRunPool, recordRunFacts } from './runPoolBuilder';
 import { addCardToDeck, createDeck, drawHand, insertCardWithDelay, addFactsToCooldown, tickFactCooldowns, getEncounterSeenFacts, resetEncounterSeenFacts, exhaustCard } from './deckManager';
 import { createEnemy } from './enemyManager';
@@ -460,6 +460,10 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   turnState.ascensionForceHardQuestionFormats = ascensionModifiers.forceHardQuestionFormats;
   turnState.ascensionPreventFlee = ascensionModifiers.preventFlee;
 
+  // Thread player character level so Deja Vu can apply level-15+ scaling (2 cards instead of 1).
+  const saveForLevel = get(playerSave);
+  turnState.characterLevel = saveForLevel?.characterLevel ?? 0;
+
   // Encounter-start relic hooks (resolved by relicEffectResolver).
   const encounterStartFx = resolveEncounterStartEffects(runRelicIds);
   if (encounterStartFx.bonusBlock > 0) {
@@ -502,7 +506,21 @@ export function handlePlayCard(
   responseTimeMs?: number,
   variantIndex?: number,
   playMode: PlayMode = 'charge',
-): { curedCursedFact: boolean } {
+): {
+  curedCursedFact: boolean;
+  pendingChoice?: {
+    cardId: string;
+    mechanicId: 'phase_shift' | 'unstable_flux';
+    options: Array<{
+      id: string;
+      label: string;
+      damageDealt?: number;
+      shieldApplied?: number;
+      extraCardsDrawn?: number;
+      statusesApplied?: Array<{ type: string; value: number; turnsRemaining: number }>;
+    }>;
+  };
+} {
   const turnState = get(activeTurnState);
   if (!turnState) return { curedCursedFact: false };
 
@@ -738,7 +756,10 @@ export function handlePlayCard(
     }
   }
 
-  return { curedCursedFact: result.curedCursedFact ?? false };
+  return {
+    curedCursedFact: result.curedCursedFact ?? false,
+    pendingChoice: result.pendingChoice,
+  };
 }
 
 export function handleSkipCard(cardId: string): void {
@@ -761,6 +782,43 @@ export function handleUseHint(): void {
   if (turnState.deck.hintsRemaining <= 0) return;
   turnState.deck.hintsRemaining -= 1;
   activeTurnState.set(freshTurnState(turnState));
+}
+
+/**
+ * Applies a player's choice from a Phase Shift QP/CW or Unstable Flux CC pending choice popup.
+ * Mutates the active turn state with the chosen effect (damage, shield, draw, or debuff).
+ * @returns Effect info for UI feedback.
+ */
+export function handlePendingChoice(
+  choiceId: string,
+  options: Array<{
+    id: string;
+    label: string;
+    damageDealt?: number;
+    shieldApplied?: number;
+    extraCardsDrawn?: number;
+    statusesApplied?: Array<{ type: string; value: number; turnsRemaining: number }>;
+  }>,
+): { damageDealt: number; shieldApplied: number; extraCardsDrawn: number; enemyDefeated: boolean } {
+  const turnState = get(activeTurnState);
+  if (!turnState) return { damageDealt: 0, shieldApplied: 0, extraCardsDrawn: 0, enemyDefeated: false };
+
+  const applied = applyPendingChoice(turnState, choiceId, options);
+  activeTurnState.set(freshTurnState(turnState));
+  return applied;
+}
+
+/**
+ * Consumes one Soul Jar charge from the active run state.
+ * Call this immediately before auto-succeeding a Charge quiz via the GUARANTEED button.
+ * Returns true if a charge was successfully consumed, false if none available.
+ */
+export function consumeSoulJarCharge(): boolean {
+  const run = get(activeRunState);
+  if (!run || (run.soulJarCharges ?? 0) <= 0) return false;
+  run.soulJarCharges = Math.max(0, run.soulJarCharges - 1);
+  activeRunState.set(run);
+  return true;
 }
 
 export function handleEndTurn(): void {

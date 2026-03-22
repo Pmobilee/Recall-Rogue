@@ -196,6 +196,23 @@ export interface CardEffectResult {
   exhaustAfterPlay?: boolean;
   /** Archive: number of cards to retain in hand at turn end. */
   archiveRetainCount?: number;
+  /**
+   * AR-207 (wired): Phase Shift QP/CW or Unstable Flux CC deferred choice.
+   * When set, the card's primary effect has NOT been applied yet — the UI must show
+   * a MultiChoicePopup and call applyPendingChoice() with the selected option id.
+   * damageDealt/shieldApplied in this result are 0 (no premature effects).
+   */
+  pendingChoice?: {
+    mechanicId: 'phase_shift' | 'unstable_flux';
+    options: Array<{
+      id: string;
+      label: string;
+      damageDealt?: number;
+      shieldApplied?: number;
+      extraCardsDrawn?: number;
+      statusesApplied?: Array<{ type: string; value: number; turnsRemaining: number }>;
+    }>;
+  };
 }
 
 export interface AdvancedResolveOptions {
@@ -1032,16 +1049,24 @@ export function resolveCardEffect(
     // Phase Shift — choice: damage or block (QP/CW); both (CC)
     case 'phase_shift': {
       if (isChargeCorrect) {
-        // 12 dmg AND 12 block simultaneously
+        // CC: 12 dmg AND 12 block simultaneously — no choice popup needed
         const psValue = finalValue;
         applyAttackDamage(psValue);
         result.shieldApplied = applyShieldRelics(psValue);
         result.phaseShiftBothDmgAndBlock = { damage: psValue, block: psValue };
       } else {
-        // QP/CW: choose damage or block — auto-select damage (popup wired in encounterBridge later)
-        // For now: default to damage. turnManager will handle pendingChoice when popup is wired.
-        applyAttackDamage(finalValue);
-        result.phaseShiftChoice = 'damage'; // placeholder until popup wired
+        // QP/CW: player chooses damage or block — defer to UI popup
+        const psVal = finalValue;
+        const psBlock = applyShieldRelics(psVal); // pre-compute relic-modified block value
+        result.pendingChoice = {
+          mechanicId: 'phase_shift',
+          options: [
+            { id: 'damage', label: `Deal ${psVal} Damage`, damageDealt: psVal },
+            { id: 'block', label: `Gain ${psBlock} Block`, shieldApplied: psBlock },
+          ],
+        };
+        // damageDealt and shieldApplied remain 0 — applied after popup resolves
+        result.phaseShiftChoice = 'pending';
       }
       return result;
     }
@@ -1099,11 +1124,18 @@ export function resolveCardEffect(
       const baseWeakTurns = isChargeCorrect ? 3 : 2;
 
       if (isChargeCorrect) {
-        // CC: player CHOOSES — auto-select damage for now (popup wired later).
-        // In real integration, turnManager will present MultiChoicePopup and resolve chosen effect.
-        // For headless sim: default to damage.
-        applyAttackDamage(baseDmg);
-        result.unstableFluxEffect = 'damage';
+        // CC: player CHOOSES from 4 options at 1.5× — defer to UI popup
+        result.pendingChoice = {
+          mechanicId: 'unstable_flux',
+          options: [
+            { id: 'damage', label: `Deal ${baseDmg} Damage`, damageDealt: baseDmg },
+            { id: 'block', label: `Gain ${baseBlock} Block`, shieldApplied: baseBlock },
+            { id: 'draw', label: `Draw ${baseDraw} Cards`, extraCardsDrawn: baseDraw },
+            { id: 'debuff', label: `Apply Weakness (${baseWeakTurns} turns)`, statusesApplied: [{ type: 'weakness', value: 2, turnsRemaining: baseWeakTurns }] },
+          ],
+        };
+        // damageDealt and shieldApplied remain 0 — applied after popup resolves
+        result.unstableFluxEffect = undefined; // set after choice
       } else {
         // QP/CW: random selection
         // At L3+ QP, player chooses 1 of 2 pre-selected options (simulated as random for now).

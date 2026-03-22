@@ -26,7 +26,7 @@
   import { RELIC_BY_ID } from '../../data/relics/index'
   import { getMaxRelicSlots, resolveChargeButtonState } from '../../services/relicEffectResolver'
   import { juiceManager } from '../../services/juiceManager'
-  import { getCombatScene } from '../../services/encounterBridge'
+  import { getCombatScene, consumeSoulJarCharge, handlePendingChoice } from '../../services/encounterBridge'
   import { factsDB } from '../../services/factsDB'
   import { getReviewStateByFactId, playerSave } from '../stores/playerData'
   import type { CombatScene } from '../../game/scenes/CombatScene'
@@ -65,7 +65,21 @@
       responseTimeMs?: number,
       variantIndex?: number,
       playMode?: 'charge' | 'quick',
-    ) => { curedCursedFact: boolean } | void
+    ) => {
+      curedCursedFact: boolean
+      pendingChoice?: {
+        cardId: string
+        mechanicId: 'phase_shift' | 'unstable_flux'
+        options: Array<{
+          id: string
+          label: string
+          damageDealt?: number
+          shieldApplied?: number
+          extraCardsDrawn?: number
+          statusesApplied?: Array<{ type: string; value: number; turnsRemaining: number }>
+        }>
+      }
+    } | void
     onskipcard: (cardId: string) => void
     onendturn: () => void
     onusehint: () => void
@@ -156,6 +170,17 @@
     isChargeCorrect: boolean
   }
   let pendingChoicePopup = $state<PendingChoicePopup | null>(null)
+
+  /** Resolved options from the resolver's pendingChoice — used by handlePendingChoice after popup dismissal. */
+  type PendingChoiceOption = {
+    id: string
+    label: string
+    damageDealt?: number
+    shieldApplied?: number
+    extraCardsDrawn?: number
+    statusesApplied?: Array<{ type: string; value: number; turnsRemaining: number }>
+  }
+  let pendingChoiceOptions = $state<PendingChoiceOption[] | null>(null)
 
   interface DeferredPlayCard {
     cardId: string
@@ -1053,7 +1078,7 @@
     selectedIndex = index
     cardPlayStage = 'selected'
 
-    // Immediately commit to quiz (Charge flow)
+    // Immediately commit — if GUARANTEED is active, handleCast will intercept before quiz
     handleCast()
   }
 
@@ -1158,6 +1183,50 @@
   function handleCast(): void {
     if (!selectedCard || !selectedPresentation || castDisabled) return
 
+    // Soul Jar GUARANTEED: consume 1 charge and auto-succeed — skip quiz entirely
+    if (showGuaranteed) {
+      consumeSoulJarCharge()
+      // Play as Charge-correct at full CC multiplier, no quiz shown
+      const card = selectedCard
+      const cardId = card.id
+      const idx = selectedIndex!
+      selectedIndex = null
+      cardPlayStage = 'committed'
+      playCardAudio('card-cast')
+      maybeShowComparisonBanner('charge')
+      animatingCards = [...animatingCards, card]
+      cardAnimations = { ...cardAnimations, [cardId]: 'reveal' }
+      const chargeResult = onplaycard(cardId, true, false, undefined, undefined, 'charge')
+      if (chargeResult?.curedCursedFact) {
+        cureFlashes = { ...cureFlashes, [cardId]: true }
+        setTimeout(() => {
+          cureFlashes = { ...cureFlashes, [cardId]: false }
+        }, 1200)
+      }
+      const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0)
+      const chargeEffectVal = Math.round(card.baseEffectValue * card.effectMultiplier) + masteryBonus
+      juiceManager.fire({
+        type: 'correct',
+        damage: chargeEffectVal,
+        isCritical: false,
+        effectLabel: (card.cardType === 'wild' || card.cardType === 'utility' || card.cardType === 'buff' || card.cardType === 'debuff')
+          ? getShortCardDescription(card)
+          : `${card.cardType.toUpperCase()} ${chargeEffectVal}`,
+        isPerfectTurn: false,
+        cardType: card.cardType,
+      })
+      setTimeout(() => { cardAnimations = { ...cardAnimations, [cardId]: 'swoosh' } }, turboDelay(REVEAL_DURATION))
+      setTimeout(() => { cardAnimations = { ...cardAnimations, [cardId]: 'impact' } }, turboDelay(REVEAL_DURATION + SWOOSH_DURATION))
+      setTimeout(() => { cardAnimations = { ...cardAnimations, [cardId]: 'discard' } }, turboDelay(REVEAL_DURATION + SWOOSH_DURATION + IMPACT_DURATION))
+      setTimeout(() => {
+        cardAnimations = { ...cardAnimations, [cardId]: null }
+        animatingCards = animatingCards.filter(c => c.id !== cardId)
+        cardPlayStage = 'hand'
+      }, turboDelay(REVEAL_DURATION + SWOOSH_DURATION + IMPACT_DURATION + DISCARD_DURATION))
+      void idx // suppress unused variable warning
+      return
+    }
+
     // Mastery level 5 (mastered) cards auto quick-play — no quiz needed
     // Exception: final boss encounters still require quiz
     const isFinalBoss = turnState?.enemy?.template?.category === 'boss'
@@ -1224,94 +1293,82 @@
   }
 
   /**
-   * Fires the deferred onplaycard call after a Phase Shift or Unstable Flux popup resolves.
-   * The choice index tells the resolver which effect to apply; the resolver reads it via
-   * a global signal (pendingFluxChoice / pendingPhaseShiftChoice) before resolving.
-   * For now: calls onplaycard normally — the resolver auto-selects per card design, and we
-   * display the chosen effect label as feedback. Full choice wiring is a TODO.
+   * Applies the player's Phase Shift QP/CW choice (damage or block) after the popup resolves.
+   * onplaycard was already called before the popup showed — this applies the deferred effect.
    */
   function firePhaseShiftChoice(choiceIndex: number): void {
     const deferred = pendingPhaseShiftDeferred
     const popup = pendingChoicePopup
+    const options = pendingChoiceOptions
     if (!deferred || !popup) return
     pendingChoicePopup = null
     pendingPhaseShiftDeferred = null
+    pendingChoiceOptions = null
 
-    const card = turnState?.deck.hand.find(c => c.id === deferred.cardId)
-      ?? turnState?.deck.discardPile.find(c => c.id === deferred.cardId)
+    const card = turnState?.deck.discardPile.find(c => c.id === deferred.cardId)
+      ?? turnState?.deck.hand.find(c => c.id === deferred.cardId)
     if (!card) return
 
-    animatingCards = [...animatingCards, card]
-    const chargeResult = onplaycard(deferred.cardId, true, deferred.speedBonus, deferred.responseTimeMs, deferred.quizVariantIndex, 'charge')
-
-    if (chargeResult?.curedCursedFact) {
-      cureFlashes = { ...cureFlashes, [deferred.cardId]: true }
-      setTimeout(() => {
-        const next = { ...cureFlashes }
-        delete next[deferred.cardId]
-        cureFlashes = next
-      }, 800)
+    // Apply the chosen effect via the resolver (card was already played, just applying the effect now)
+    const chosenOption = options?.[choiceIndex]
+    if (options && chosenOption) {
+      const applied = handlePendingChoice(chosenOption.id, options)
+      const choiceLabel = choiceIndex === 0 ? `ATTACK ${applied.damageDealt}` : `SHIELD ${applied.shieldApplied}`
+      juiceManager.fire({ type: 'correct', damage: choiceIndex === 0 ? applied.damageDealt : applied.shieldApplied, isCritical: false, effectLabel: choiceLabel, isPerfectTurn: false, cardType: card.cardType })
+    } else {
+      // Fallback: use popup values for juice if options unavailable
+      const choiceLabel = choiceIndex === 0 ? `ATTACK ${popup.damageValue}` : `SHIELD ${popup.blockValue}`
+      juiceManager.fire({ type: 'correct', damage: choiceIndex === 0 ? popup.damageValue : popup.blockValue, isCritical: false, effectLabel: choiceLabel, isPerfectTurn: false, cardType: card.cardType })
     }
 
-    // TODO: feed choiceIndex to resolver so it applies the player's chosen effect instead of auto-damage.
-    // Currently the resolver auto-selects damage; the popup gives visible feedback of the choice made.
-    const choiceLabel = choiceIndex === 0
-      ? `ATTACK ${popup.damageValue}`
-      : `SHIELD ${popup.blockValue}`
-    juiceManager.fire({ type: 'correct', damage: choiceIndex === 0 ? popup.damageValue : popup.blockValue, isCritical: false, effectLabel: choiceLabel, isPerfectTurn: false, cardType: card.cardType })
-
-    cardAnimations = { ...cardAnimations, [deferred.cardId]: 'reveal' }
-    setTimeout(() => { cardAnimations = { ...cardAnimations, [deferred.cardId]: 'swoosh' } }, REVEAL_DURATION)
-    setTimeout(() => { cardAnimations = { ...cardAnimations, [deferred.cardId]: 'impact' } }, REVEAL_DURATION + SWOOSH_DURATION)
-    setTimeout(() => { cardAnimations = { ...cardAnimations, [deferred.cardId]: 'discard' } }, REVEAL_DURATION + SWOOSH_DURATION + IMPACT_DURATION)
+    setTimeout(() => { cardAnimations = { ...cardAnimations, [deferred.cardId]: 'swoosh' } }, turboDelay(REVEAL_DURATION))
+    setTimeout(() => { cardAnimations = { ...cardAnimations, [deferred.cardId]: 'impact' } }, turboDelay(REVEAL_DURATION + SWOOSH_DURATION))
+    setTimeout(() => { cardAnimations = { ...cardAnimations, [deferred.cardId]: 'discard' } }, turboDelay(REVEAL_DURATION + SWOOSH_DURATION + IMPACT_DURATION))
     setTimeout(() => {
       cardAnimations = { ...cardAnimations, [deferred.cardId]: null }
       animatingCards = animatingCards.filter(c => c.id !== deferred.cardId)
-    }, REVEAL_DURATION + SWOOSH_DURATION + IMPACT_DURATION + DISCARD_DURATION)
+    }, turboDelay(REVEAL_DURATION + SWOOSH_DURATION + IMPACT_DURATION + DISCARD_DURATION))
   }
 
   function fireUnstableFluxChoice(choiceIndex: number): void {
     const deferred = pendingUnstableFluxDeferred
     const popup = pendingChoicePopup
+    const options = pendingChoiceOptions
     if (!deferred || !popup) return
     pendingChoicePopup = null
     pendingUnstableFluxDeferred = null
+    pendingChoiceOptions = null
 
-    const card = turnState?.deck.hand.find(c => c.id === deferred.cardId)
-      ?? turnState?.deck.discardPile.find(c => c.id === deferred.cardId)
+    const card = turnState?.deck.discardPile.find(c => c.id === deferred.cardId)
+      ?? turnState?.deck.hand.find(c => c.id === deferred.cardId)
     if (!card) return
 
-    animatingCards = [...animatingCards, card]
-    const chargeResult = onplaycard(deferred.cardId, true, deferred.speedBonus, deferred.responseTimeMs, deferred.quizVariantIndex, 'charge')
-
-    if (chargeResult?.curedCursedFact) {
-      cureFlashes = { ...cureFlashes, [deferred.cardId]: true }
-      setTimeout(() => {
-        const next = { ...cureFlashes }
-        delete next[deferred.cardId]
-        cureFlashes = next
-      }, 800)
+    // Apply the chosen effect via the resolver
+    const chosenOption = options?.[choiceIndex]
+    if (options && chosenOption) {
+      const applied = handlePendingChoice(chosenOption.id, options)
+      const choiceLabels = [
+        `ATTACK ${applied.damageDealt}`,
+        `SHIELD ${applied.shieldApplied}`,
+        `DRAW ${chosenOption.extraCardsDrawn ?? popup.drawValue}`,
+        `WEAKNESS ${popup.weaknessTurns}t`,
+      ]
+      const chosenVal = choiceIndex === 0 ? applied.damageDealt : choiceIndex === 1 ? applied.shieldApplied : (chosenOption.extraCardsDrawn ?? popup.drawValue)
+      juiceManager.fire({ type: 'correct', damage: chosenVal, isCritical: false, effectLabel: choiceLabels[choiceIndex] ?? choiceLabels[0], isPerfectTurn: false, cardType: card.cardType })
+    } else {
+      // Fallback: use popup values
+      const choiceLabels = [`ATTACK ${popup.damageValue}`, `SHIELD ${popup.blockValue}`, `DRAW ${popup.drawValue}`, `WEAKNESS ${popup.weaknessTurns}t`]
+      const chosenVal = [popup.damageValue, popup.blockValue, popup.drawValue, popup.weaknessTurns][choiceIndex] ?? popup.damageValue
+      juiceManager.fire({ type: 'correct', damage: chosenVal, isCritical: false, effectLabel: choiceLabels[choiceIndex] ?? choiceLabels[0], isPerfectTurn: false, cardType: card.cardType })
     }
 
-    // TODO: feed choiceIndex to resolver so it applies the player's chosen effect.
-    // Currently the resolver defaults to damage for CC; the popup gives visible choice feedback.
-    const choiceLabels = [
-      `ATTACK ${popup.damageValue}`,
-      `SHIELD ${popup.blockValue}`,
-      `DRAW ${popup.drawValue}`,
-      `WEAKNESS ${popup.weaknessTurns}t`,
-    ]
-    const chosenVal = [popup.damageValue, popup.blockValue, popup.drawValue, popup.weaknessTurns][choiceIndex] ?? popup.damageValue
-    juiceManager.fire({ type: 'correct', damage: chosenVal, isCritical: false, effectLabel: choiceLabels[choiceIndex] ?? choiceLabels[0], isPerfectTurn: false, cardType: card.cardType })
-
-    cardAnimations = { ...cardAnimations, [deferred.cardId]: 'reveal' }
-    setTimeout(() => { cardAnimations = { ...cardAnimations, [deferred.cardId]: 'swoosh' } }, REVEAL_DURATION)
-    setTimeout(() => { cardAnimations = { ...cardAnimations, [deferred.cardId]: 'impact' } }, REVEAL_DURATION + SWOOSH_DURATION)
-    setTimeout(() => { cardAnimations = { ...cardAnimations, [deferred.cardId]: 'discard' } }, REVEAL_DURATION + SWOOSH_DURATION + IMPACT_DURATION)
+    setTimeout(() => { cardAnimations = { ...cardAnimations, [deferred.cardId]: 'swoosh' } }, turboDelay(REVEAL_DURATION))
+    setTimeout(() => { cardAnimations = { ...cardAnimations, [deferred.cardId]: 'impact' } }, turboDelay(REVEAL_DURATION + SWOOSH_DURATION))
+    setTimeout(() => { cardAnimations = { ...cardAnimations, [deferred.cardId]: 'discard' } }, turboDelay(REVEAL_DURATION + SWOOSH_DURATION + IMPACT_DURATION))
     setTimeout(() => {
       cardAnimations = { ...cardAnimations, [deferred.cardId]: null }
       animatingCards = animatingCards.filter(c => c.id !== deferred.cardId)
-    }, REVEAL_DURATION + SWOOSH_DURATION + IMPACT_DURATION + DISCARD_DURATION)
+    }, turboDelay(REVEAL_DURATION + SWOOSH_DURATION + IMPACT_DURATION + DISCARD_DURATION))
   }
 
   function handleAnswer(answerIndex: number, isCorrect: boolean, speedBonus: boolean): void {
@@ -1362,52 +1419,53 @@
     } else {
       showWowFactor(card)
 
-      // Phase Shift QP/CW: show choice popup BEFORE resolving — player picks damage or block.
-      // (Phase Shift CC resolves both simultaneously — no popup needed.)
-      // Unstable Flux CC: player picks from 4 options at 1.5× multiplier.
-      const isPhaseShiftQP = card.mechanicId === 'phase_shift'
-      const isUnstableFluxCC = card.mechanicId === 'unstable_flux'
-
-      if (isPhaseShiftQP) {
-        // Compute the effect value the resolver would use
-        const psVal = effectVal
-        pendingChoicePopup = {
-          cardId,
-          mechanicId: 'phase_shift',
-          damageValue: psVal,
-          blockValue: psVal,
-          drawValue: 0,
-          weaknessTurns: 0,
-          isChargeCorrect: true,
-        }
-        // Store what we need to fire after popup dismissal — defer onplaycard
-        const deferred = { cardId, speedBonus, responseTimeMs, quizVariantIndex }
-        pendingPhaseShiftDeferred = deferred
-        return // Don't continue — popup handler will resume
-      }
-
-      if (isUnstableFluxCC) {
-        const fluxMult = 1.5
-        const baseDmg = Math.round(10 * fluxMult)
-        const baseBlock = Math.round(10 * fluxMult)
-        const baseDraw = Math.max(1, Math.round(2 * fluxMult))
-        pendingChoicePopup = {
-          cardId,
-          mechanicId: 'unstable_flux',
-          damageValue: baseDmg,
-          blockValue: baseBlock,
-          drawValue: baseDraw,
-          weaknessTurns: 3,
-          isChargeCorrect: true,
-        }
-        const deferred = { cardId, speedBonus, responseTimeMs, quizVariantIndex }
-        pendingUnstableFluxDeferred = deferred
-        return // popup handler will resume
-      }
-
       // Correct answer: new 5-phase animation sequence
+      // Call onplaycard first — for Phase Shift QP/CW and Unstable Flux CC the resolver
+      // returns pendingChoice (no effect applied yet). We then show the popup and apply
+      // the chosen effect via handlePendingChoice after dismissal.
       animatingCards = [...animatingCards, card]
       const chargeResult = onplaycard(cardId, true, speedBonus, responseTimeMs, quizVariantIndex, 'charge')
+
+      // Phase Shift QP/CW or Unstable Flux CC: resolver returned pendingChoice — defer effect to popup
+      if (chargeResult?.pendingChoice) {
+        const pc = chargeResult.pendingChoice
+        type PCOption = typeof pc.options[number]
+        // Start reveal animation now; swoosh/impact/discard happen after popup dismissal
+        cardAnimations = { ...cardAnimations, [cardId]: 'reveal' }
+        pendingChoiceOptions = pc.options
+        const deferred = { cardId, speedBonus, responseTimeMs, quizVariantIndex }
+
+        if (pc.mechanicId === 'phase_shift') {
+          const dmgOpt = pc.options.find((o: PCOption) => o.id === 'damage')
+          const blkOpt = pc.options.find((o: PCOption) => o.id === 'block')
+          pendingChoicePopup = {
+            cardId,
+            mechanicId: 'phase_shift',
+            damageValue: dmgOpt?.damageDealt ?? effectVal,
+            blockValue: blkOpt?.shieldApplied ?? effectVal,
+            drawValue: 0,
+            weaknessTurns: 0,
+            isChargeCorrect: false,
+          }
+          pendingPhaseShiftDeferred = deferred
+        } else if (pc.mechanicId === 'unstable_flux') {
+          const dmgOpt = pc.options.find((o: PCOption) => o.id === 'damage')
+          const blkOpt = pc.options.find((o: PCOption) => o.id === 'block')
+          const drwOpt = pc.options.find((o: PCOption) => o.id === 'draw')
+          const dbfOpt = pc.options.find((o: PCOption) => o.id === 'debuff')
+          pendingChoicePopup = {
+            cardId,
+            mechanicId: 'unstable_flux',
+            damageValue: dmgOpt?.damageDealt ?? 15,
+            blockValue: blkOpt?.shieldApplied ?? 15,
+            drawValue: drwOpt?.extraCardsDrawn ?? 3,
+            weaknessTurns: (dbfOpt?.statusesApplied?.[0]?.turnsRemaining) ?? 3,
+            isChargeCorrect: true,
+          }
+          pendingUnstableFluxDeferred = deferred
+        }
+        return // popup handler resumes animation
+      }
 
       // AR-202: Cure flash animation — trigger gold glow on the card if a cursed fact was cured
       if (chargeResult && chargeResult.curedCursedFact) {

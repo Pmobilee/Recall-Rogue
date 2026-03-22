@@ -261,6 +261,12 @@ export interface TurnState {
    * Prevents the spawn from repeating on subsequent turns.
    */
   dejaVuUsedThisEncounter: boolean;
+  /**
+   * Player's current character level (from PlayerSave.characterLevel).
+   * Used by Deja Vu level-15+ scaling: at level 15+ spawns 2 cards instead of 1.
+   * Threaded in from encounterBridge at encounter start.
+   */
+  characterLevel: number;
 }
 
 export interface PlayCardResult {
@@ -278,6 +284,23 @@ export interface PlayCardResult {
   masteryChangedCardId: string | null;
   /** AR-202: True when a correct Charge cured a cursed fact on this play. */
   curedCursedFact?: boolean;
+  /**
+   * When set, the card effect is pending a player UI choice (phase_shift QP/CW or unstable_flux CC).
+   * No damage/shield has been applied yet. The UI must show a MultiChoicePopup and call
+   * applyPendingChoice() with the selected option id to complete the effect.
+   */
+  pendingChoice?: {
+    cardId: string;
+    mechanicId: 'phase_shift' | 'unstable_flux';
+    options: Array<{
+      id: string;
+      label: string;
+      damageDealt?: number;
+      shieldApplied?: number;
+      extraCardsDrawn?: number;
+      statusesApplied?: Array<{ type: string; value: number; turnsRemaining: number }>;
+    }>;
+  };
 }
 
 export interface EnemyTurnResult {
@@ -462,6 +485,7 @@ export function startEncounter(
     lastPlayedChainType: null,
     totalChargesThisRun: 0,
     dejaVuUsedThisEncounter: false,
+    characterLevel: 0,
   };
 
   // Reset chain at encounter start (clean slate)
@@ -955,6 +979,39 @@ export function playCardAction(
   }
   if (useOverclock) {
     turnState.overclockReady = false;
+  }
+
+  // Pending choice: Phase Shift QP/CW or Unstable Flux CC — player must pick effect via UI popup.
+  // The card has been played (removed from hand, AP deducted) but the effect is not yet resolved.
+  // Return early; the UI calls applyPendingChoice() after the popup resolves.
+  if (effect.pendingChoice) {
+    turnState.cardsPlayedThisTurn += 1;
+    if (playMode === 'charge') {
+      enemy.playerChargedThisTurn = true;
+      turnState.encounterChargesTotal += 1;
+    }
+    // Track charge streak for relic purposes — still counts as a correct charge attempt
+    if (isChargeCorrect) {
+      turnState.consecutiveCorrectThisEncounter += 1;
+      turnState.cardsCorrectThisTurn += 1;
+      turnState.totalChargesThisRun += 1;
+    }
+    return {
+      effect,
+      enemyDefeated: false,
+      fizzled: false,
+      blocked: false,
+      isPerfectTurn: turnState.isPerfectTurn,
+      turnState,
+      usedFreeCharge,
+      masteryChange: null,
+      masteryChangedCardId: null,
+      pendingChoice: {
+        cardId,
+        mechanicId: effect.pendingChoice.mechanicId,
+        options: effect.pendingChoice.options,
+      },
+    };
   }
 
   // mirror: copy the previous card effect (fizzle if no previous card)
@@ -2103,7 +2160,7 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     0, // capacitor stored AP — maintained elsewhere
     {
       turnNumberThisEncounter: turnState.encounterTurnNumber,
-      characterLevel: 0, // TODO: thread characterLevel from playerSave if needed for level-15+ deja_vu
+      characterLevel: turnState.characterLevel,
       dejaVuUsedThisEncounter: turnState.dejaVuUsedThisEncounter,
     },
   );
@@ -2183,5 +2240,63 @@ export function isHandEmpty(turnState: TurnState): boolean {
 
 export function getHandSize(turnState: TurnState): number {
   return turnState.deck.hand.length;
+}
+
+/**
+ * Applies the player's choice from a pending phase_shift or unstable_flux popup to the turn state.
+ * Called by the UI after the MultiChoicePopup resolves with the chosen option id.
+ *
+ * @param turnState - The active turn state (mutated in place).
+ * @param choiceId - The selected option id ('damage', 'block', 'draw', or 'debuff').
+ * @param options - The options array from the pending choice (contains pre-computed values).
+ * @returns Object with applied effect info for UI feedback.
+ */
+export function applyPendingChoice(
+  turnState: TurnState,
+  choiceId: string,
+  options: Array<{
+    id: string;
+    label: string;
+    damageDealt?: number;
+    shieldApplied?: number;
+    extraCardsDrawn?: number;
+    statusesApplied?: Array<{ type: string; value: number; turnsRemaining: number }>;
+  }>,
+): { damageDealt: number; shieldApplied: number; extraCardsDrawn: number; enemyDefeated: boolean } {
+  const chosen = options.find(o => o.id === choiceId);
+  if (!chosen) {
+    return { damageDealt: 0, shieldApplied: 0, extraCardsDrawn: 0, enemyDefeated: false };
+  }
+
+  let damageDealt = 0;
+  let shieldApplied = 0;
+  let extraCardsDrawn = 0;
+  let enemyDefeated = false;
+
+  if ((chosen.damageDealt ?? 0) > 0) {
+    const dmg = chosen.damageDealt!;
+    const dmgResult = applyDamageToEnemy(turnState.enemy, dmg);
+    damageDealt = dmg;
+    enemyDefeated = dmgResult.defeated;
+    turnState.damageDealtThisTurn += dmg;
+  }
+
+  if ((chosen.shieldApplied ?? 0) > 0) {
+    applyShield(turnState.playerState, chosen.shieldApplied!);
+    shieldApplied = chosen.shieldApplied!;
+  }
+
+  if ((chosen.extraCardsDrawn ?? 0) > 0) {
+    extraCardsDrawn = chosen.extraCardsDrawn!;
+    // Drawing is handled by encounterBridge (same as normal extraCardsDrawn flow)
+  }
+
+  if (chosen.statusesApplied) {
+    for (const status of chosen.statusesApplied) {
+      applyStatusEffect(turnState.enemy.statusEffects, status as import('../data/statusEffects').StatusEffect);
+    }
+  }
+
+  return { damageDealt, shieldApplied, extraCardsDrawn, enemyDefeated };
 }
 
