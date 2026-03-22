@@ -237,11 +237,14 @@
   </header>
 
   {#if !socialEnabled}
-    <article class="blocked-card" role="status" aria-live="polite">
-      <h3>Social features are disabled</h3>
-      <p>Enable social access in Parental Controls to use co-op, duels, and guilds.</p>
-      <button type="button" class="settings-btn" onclick={onOpenSettings}>Open Settings</button>
-    </article>
+    <div class="blocked-wrapper" role="status" aria-live="polite">
+      <article class="blocked-card">
+        <span class="blocked-icon" aria-hidden="true">🤝</span>
+        <h3>Social features are disabled</h3>
+        <p>Enable social access in Parental Controls to use co-op, duels, and guilds.</p>
+        <button type="button" class="settings-btn" onclick={onOpenSettings}>Open Settings</button>
+      </article>
+    </div>
   {:else}
     <article class="score-sync-card" data-testid="score-sync-status">
       <h3>Competitive Score Sync</h3>
@@ -468,7 +471,8 @@
       radial-gradient(circle at 90% 5%, rgba(255, 190, 100, 0.16), transparent 28%),
       linear-gradient(180deg, #0f172a, #111827);
     color: #e2e8f0;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: calc(12px * var(--layout-scale, 1));
   }
 
@@ -509,7 +513,29 @@
     color: #93c5fd;
   }
 
-  .blocked-card,
+  .blocked-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: calc(32px * var(--layout-scale, 1)) 0;
+  }
+
+  .blocked-card {
+    border-radius: 14px;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    background: rgba(15, 23, 42, 0.72);
+    padding: calc(12px * var(--layout-scale, 1));
+    display: grid;
+    gap: calc(8px * var(--layout-scale, 1));
+    text-align: center;
+  }
+
+  .blocked-icon {
+    font-size: calc(48px * var(--text-scale, 1));
+    line-height: 1;
+  }
+
   .score-sync-card,
   .card {
     border-radius: 14px;
@@ -597,7 +623,7 @@
   }
 
   .score-sync-card {
-    gap: 6px;
+    gap: calc(6px * var(--layout-scale, 1));
     border-color: rgba(125, 211, 252, 0.45);
     background: rgba(8, 25, 43, 0.75);
   }
@@ -685,13 +711,22 @@
     font-size: calc(15px * var(--text-scale, 1));
   }
 
-  /* Vertically center the disabled state content */
+  /* Vertically center the disabled state wrapper */
+  :global([data-layout="landscape"]) .blocked-wrapper {
+    min-height: 70vh;
+  }
+
+  /* Disabled state card: compact, intentional, atmospheric */
   :global([data-layout="landscape"]) .blocked-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: calc(100vh - calc(64px * var(--layout-scale, 1)));
-    text-align: center;
+    width: clamp(320px, 40vw, 560px);
+    padding: calc(40px * var(--layout-scale, 1)) calc(48px * var(--layout-scale, 1));
+    gap: calc(16px * var(--layout-scale, 1));
+    border: 1px solid rgba(148, 163, 184, 0.45);
+    background: rgba(15, 23, 42, 0.88);
+    box-shadow: 0 0 calc(48px * var(--layout-scale, 1)) rgba(100, 200, 255, 0.06);
   }
 </style>

@@ -1887,6 +1887,9 @@ Sell formula: `Math.floor(SHOP_RELIC_PRICE[rarity] * RELIC_SELL_REFUND_PCT)` whe
 
 At boss/mini-boss relic selection events, player may pay `RELIC_REROLL_COST = 50g` to reroll all 3 choices. Maximum `RELIC_REROLL_MAX = 1` reroll per event.
 
+### Archetype Selection (Disabled)
+The archetype selection screen exists in code but is currently disabled. All runs use the "Balanced" archetype by default. The system biases card reward types toward a chosen playstyle (Aggressive, Defensive, Control, Hybrid, or Balanced). It was disabled because the mechanic adds decision complexity before the player understands the card system well enough for the choice to be meaningful. The component (`ArchetypeSelection.svelte`) and reward biasing logic are preserved for potential future re-enablement.
+
 ### Build Archetypes
 
 | Archetype | Fantasy | Core Relics | Playstyle |

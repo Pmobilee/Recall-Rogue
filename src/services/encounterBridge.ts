@@ -502,9 +502,9 @@ export function handlePlayCard(
   responseTimeMs?: number,
   variantIndex?: number,
   playMode: PlayMode = 'charge',
-): void {
+): { curedCursedFact: boolean } {
   const turnState = get(activeTurnState);
-  if (!turnState) return;
+  if (!turnState) return { curedCursedFact: false };
 
   const playedCard = turnState.deck.hand.find((card) => card.id === cardId);
   const previousReviewState = playedCard?.factId ? getReviewStateByFactId(playedCard.factId) : undefined;
@@ -721,6 +721,24 @@ export function handlePlayCard(
       notifyEncounterComplete('victory');
     }, turboDelay(550));
   }
+
+  // AR-202: Wire Soul Jar charge increment — accumulate soulJarChargeGained into runState.
+  // Must happen after result is finalized and run exists.
+  if (run && correct && result.effect) {
+    const isChargeCorrectPlay = playMode === 'charge' || playMode === 'charge_correct';
+    if (isChargeCorrectPlay) {
+      // resolveChargeCorrectEffects already ran inside playCardAction (turnManager).
+      // We re-derive the soulJarChargeGained here from the encounter charge count.
+      // The encounterChargesTotal is updated inside playCardAction before we read it.
+      const encChargeCount = result.turnState.consecutiveCorrectThisEncounter;
+      if (result.turnState.activeRelicIds.has('soul_jar') && encChargeCount > 0 && encChargeCount % 5 === 0) {
+        run.soulJarCharges = (run.soulJarCharges ?? 0) + 1;
+        activeRunState.set(run);
+      }
+    }
+  }
+
+  return { curedCursedFact: result.curedCursedFact ?? false };
 }
 
 export function handleSkipCard(cardId: string): void {

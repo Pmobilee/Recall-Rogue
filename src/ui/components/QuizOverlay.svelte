@@ -694,10 +694,10 @@
     position: absolute;
     top: 0.6rem;
     right: 0.6rem;
-    min-width: 44px;
-    min-height: 44px;
-    width: 44px;
-    height: 44px;
+    min-width: calc(44px * var(--layout-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
+    width: calc(44px * var(--layout-scale, 1));
+    height: calc(44px * var(--layout-scale, 1));
     border: 1px solid var(--color-text-dim);
     border-radius: 999px;
     background: transparent;
@@ -803,7 +803,7 @@
   }
 
   .choice-button {
-    min-height: 52px;
+    min-height: calc(52px * var(--layout-scale, 1));
     border: 2px solid var(--color-primary);
     border-radius: 999px;
     padding: calc(0.75rem * var(--layout-scale, 1)) calc(1rem * var(--layout-scale, 1));
@@ -1005,7 +1005,7 @@
     font-size: calc(0.75rem * var(--layout-scale, 1));
     cursor: pointer;
     padding: calc(0.25rem * var(--layout-scale, 1)) calc(0.5rem * var(--layout-scale, 1));
-    min-height: 44px;
+    min-height: calc(44px * var(--layout-scale, 1));
     text-decoration: underline;
     opacity: 0.7;
   }
@@ -1034,7 +1034,7 @@
     font-size: calc(0.95rem * var(--layout-scale, 1));
     font-weight: bold;
     cursor: pointer;
-    min-height: 48px;
+    min-height: calc(48px * var(--layout-scale, 1));
     min-width: calc(160px * var(--layout-scale, 1));
     letter-spacing: 0.02em;
     transition: transform 0.1s, filter 0.1s;
@@ -1184,8 +1184,8 @@
   /** The quiz card panel inside the center stage */
   .quiz-landscape-panel {
     position: relative;
-    width: min(50vw, 640px);
-    max-width: min(50vw, 640px);
+    width: min(50vw, calc(640px * var(--layout-scale, 1)));
+    max-width: min(50vw, calc(640px * var(--layout-scale, 1)));
     max-height: calc(74vh - 26vh);
     overflow-y: auto;
     overflow-x: hidden;

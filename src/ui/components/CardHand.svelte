@@ -51,6 +51,8 @@
     masteryFlashes?: Record<string, 'up' | 'down'>
     /** AR-202: Cure flash state — cardId -> true when a cursed fact was just cured. Triggers gold glow animation. */
     cureFlashes?: Record<string, boolean>
+    /** Soul Jar: when true, show "GUARANTEED" label on the Charge button area. */
+    showGuaranteed?: boolean
   }
 
   // Session-level preload guard: avoid creating duplicate Image objects for the same URL.
@@ -77,6 +79,7 @@
     focusDiscount = 0,
     masteryFlashes = {},
     cureFlashes = {},
+    showGuaranteed = false,
   }: Props = $props()
 
   interface TierUpVisualSignature {
@@ -825,6 +828,8 @@
         >
           {#if !chargeAffordableForDrag}
             <span class="charge-zone-text charge-zone-text-disabled">NOT ENOUGH AP</span>
+          {:else if showGuaranteed}
+            <span class="charge-zone-text guaranteed-active">✦ GUARANTEED ✦</span>
           {:else}
             <span class="charge-zone-text" class:momentum-active={nextChargeFree && !isSurgeActive}>⚡ CHARGE {isSurgeActive || nextChargeFree ? '+0' : '+1'} AP{nextChargeFree && !isSurgeActive ? ' ⚡' : ''}</span>
           {/if}
@@ -847,8 +852,12 @@
         ontouchend={() => { chargePreviewActive = false }}
         ontouchcancel={() => { chargePreviewActive = false }}
       >
-        ⚡ CHARGE
-        <span class="charge-ap-badge" class:momentum-active={nextChargeFree && !isSurgeActive}>{isSurgeActive || nextChargeFree ? '+0' : '+1'} AP</span>
+        {#if showGuaranteed}
+          ✦ GUARANTEED
+        {:else}
+          ⚡ CHARGE
+          <span class="charge-ap-badge" class:momentum-active={nextChargeFree && !isSurgeActive}>{isSurgeActive || nextChargeFree ? '+0' : '+1'} AP</span>
+        {/if}
       </button>
     {/if}
 
@@ -1181,6 +1190,8 @@
         >
           {#if !chargeAffordableForDrag}
             <span class="charge-zone-text charge-zone-text-disabled">NOT ENOUGH AP</span>
+          {:else if showGuaranteed}
+            <span class="charge-zone-text guaranteed-active">✦ GUARANTEED ✦</span>
           {:else}
             <span class="charge-zone-text" class:momentum-active={nextChargeFree && !isSurgeActive}>⚡ CHARGE {isSurgeActive || nextChargeFree ? '+0' : '+1'} AP{nextChargeFree && !isSurgeActive ? ' ⚡' : ''}</span>
           {/if}
@@ -1354,7 +1365,7 @@
     align-items: flex-end;
     justify-content: center;
     gap: calc(8px * var(--hand-scale));
-    padding: 0 12px 10px;
+    padding: 0 calc(12px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
     background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
     pointer-events: none;
   }
@@ -1374,10 +1385,10 @@
   /* Landscape: subtle hint text on risen selected card */
   .card-quickplay-hint {
     position: absolute;
-    bottom: -18px;
+    bottom: calc(-18px * var(--layout-scale, 1));
     left: 50%;
     transform: translateX(-50%);
-    font-size: 9px;
+    font-size: calc(9px * var(--text-scale, 1));
     color: rgba(255, 255, 255, 0.45);
     white-space: nowrap;
     pointer-events: none;
@@ -1771,6 +1782,21 @@
     border-color: rgba(248, 113, 113, 0.4);
   }
 
+  /* Soul Jar GUARANTEED — gold shimmer on charge zone text */
+  .charge-zone-text.guaranteed-active {
+    color: #fbbf24;
+    text-shadow:
+      0 0 10px rgba(251, 191, 36, 1),
+      0 0 20px rgba(251, 191, 36, 0.7);
+    border-color: rgba(251, 191, 36, 0.6);
+    animation: guaranteed-pulse 1.2s ease-in-out infinite alternate;
+  }
+
+  @keyframes guaranteed-pulse {
+    from { opacity: 0.85; }
+    to   { opacity: 1; text-shadow: 0 0 16px rgba(251, 191, 36, 1), 0 0 28px rgba(251, 191, 36, 0.8); }
+  }
+
   /* AR-122: Chain Momentum — green flash when nextChargeFree waives the surcharge */
   .charge-zone-text.momentum-active {
     color: #4ade80;
@@ -2010,12 +2036,12 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-    font-size: 10px;
+    font-size: calc(10px * var(--text-scale, 1));
     font-weight: 800;
     letter-spacing: 0.1em;
     color: #facc15;
     background: rgba(0, 0, 0, 0.7);
-    padding: 1px 8px;
+    padding: 1px calc(8px * var(--layout-scale, 1));
     border-radius: 3px;
     border: 1px solid rgba(250, 204, 21, 0.4);
     pointer-events: none;
@@ -2464,8 +2490,8 @@
 
   .charge-ap-badge {
     display: inline-block;
-    margin-left: 5px;
-    padding: 1px 5px;
+    margin-left: calc(5px * var(--layout-scale, 1));
+    padding: 1px calc(5px * var(--layout-scale, 1));
     background: rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     font-size: 0.75em;
@@ -2500,11 +2526,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2px;
+    gap: calc(2px * var(--layout-scale, 1));
     background: rgba(15, 15, 30, 0.92);
     border: 1px solid rgba(78, 205, 196, 0.4);
     border-radius: 6px;
-    padding: 5px 10px;
+    padding: calc(5px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
     pointer-events: none;
     z-index: 30;
     white-space: nowrap;
@@ -2526,14 +2552,14 @@
 
   .tooltip-cost {
     color: rgba(255, 211, 105, 0.85);
-    font-size: 0.62rem;
+    font-size: calc(0.62rem * var(--text-scale, 1));
   }
 
   .tooltip-chain {
     display: inline-flex;
     align-items: center;
-    gap: 3px;
-    font-size: 0.6rem;
+    gap: calc(3px * var(--layout-scale, 1));
+    font-size: calc(0.6rem * var(--text-scale, 1));
     opacity: 0.85;
     font-weight: 600;
   }
@@ -2558,13 +2584,13 @@
     background: rgba(8, 12, 26, 0.97);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 12px;
-    padding: 18px 20px;
-    min-width: 260px;
-    max-width: 380px;
+    padding: calc(18px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+    min-width: calc(260px * var(--layout-scale, 1));
+    max-width: calc(380px * var(--layout-scale, 1));
     width: 90%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: calc(10px * var(--layout-scale, 1));
     animation: cardDetailAppear 150ms ease-out both;
   }
 
@@ -2577,12 +2603,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 8px;
+    padding-bottom: calc(8px * var(--layout-scale, 1));
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .card-detail-name {
-    font-size: 16px;
+    font-size: calc(16px * var(--text-scale, 1));
     font-weight: 800;
     color: #f8fafc;
     letter-spacing: 0.02em;
@@ -2591,8 +2617,8 @@
   .card-detail-chain {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    font-size: 12px;
+    gap: calc(5px * var(--layout-scale, 1));
+    font-size: calc(12px * var(--text-scale, 1));
     font-weight: 600;
   }
 
@@ -2603,27 +2629,27 @@
   }
 
   .card-detail-tier-label {
-    font-size: 12px;
+    font-size: calc(12px * var(--text-scale, 1));
     color: #94a3b8;
     font-weight: 600;
   }
 
   .card-detail-ap {
-    font-size: 12px;
+    font-size: calc(12px * var(--text-scale, 1));
     color: #fbbf24;
     font-weight: 700;
   }
 
   .card-detail-mechanic {
-    font-size: 12px;
+    font-size: calc(12px * var(--text-scale, 1));
     color: #94a3b8;
     line-height: 1.4;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
-    padding-top: 8px;
+    padding-top: calc(8px * var(--layout-scale, 1));
   }
 
   .card-detail-question-label {
-    font-size: 10px;
+    font-size: calc(10px * var(--text-scale, 1));
     font-weight: 700;
     color: rgba(255, 255, 255, 0.4);
     text-transform: uppercase;
@@ -2631,22 +2657,22 @@
   }
 
   .card-detail-question {
-    font-size: 13px;
+    font-size: calc(13px * var(--text-scale, 1));
     color: #e2e8f0;
     line-height: 1.45;
   }
 
   .card-detail-close {
     position: absolute;
-    top: 10px;
-    right: 12px;
-    width: 24px;
-    height: 24px;
+    top: calc(10px * var(--layout-scale, 1));
+    right: calc(12px * var(--layout-scale, 1));
+    width: calc(24px * var(--layout-scale, 1));
+    height: calc(24px * var(--layout-scale, 1));
     border: none;
     background: rgba(255, 255, 255, 0.08);
     border-radius: 50%;
     color: rgba(255, 255, 255, 0.6);
-    font-size: 12px;
+    font-size: calc(12px * var(--text-scale, 1));
     cursor: pointer;
     display: flex;
     align-items: center;

@@ -286,13 +286,9 @@ export function startNewRun(options?: { includeOutsideDueReviews?: boolean }): v
   // Placeholder domains (pool builder uses deckMode, not these)
   pendingDomainSelection = { primary: 'general_knowledge', secondary: 'general_knowledge' };
 
-  // Skip archetype selection for runs 1-3; auto-assign 'balanced'
-  if (onboarding.runsCompleted < ARCHETYPE_UNLOCK_RUNS) {
-    onArchetypeSelected('balanced');
-    return;
-  }
-  gameFlowState.set('archetypeSelection');
-  currentScreen.set('archetypeSelection');
+  // Archetype selection disabled — always use balanced (see GAME_DESIGN.md)
+  onArchetypeSelected('balanced');
+  return;
 }
 
 function getTier3MasteredCount(): number {
@@ -686,15 +682,9 @@ function progressAscensionAfterSuccess(run: RunState): void {
 export function onDomainsSelected(primary: FactDomain, secondary: FactDomain): void {
   pendingDomainSelection = { primary, secondary };
 
-  // Skip archetype selection for runs 1-3; auto-assign 'balanced'
-  const onboarding = get(onboardingState);
-  if (onboarding.runsCompleted < ARCHETYPE_UNLOCK_RUNS) {
-    onArchetypeSelected('balanced');
-    return;
-  }
-
-  gameFlowState.set('archetypeSelection');
-  currentScreen.set('archetypeSelection');
+  // Archetype selection disabled — always use balanced (see GAME_DESIGN.md)
+  onArchetypeSelected('balanced');
+  return;
 }
 
 export function onArchetypeSelected(archetype: RewardArchetype): void {
@@ -2324,13 +2314,9 @@ export function playAgain(): void {
   pendingDeckMode = replaySave?.activeDeckMode ?? { type: 'general' as const };
   pendingDomainSelection = { primary: 'general_knowledge', secondary: 'general_knowledge' };
 
-  const onboarding = get(onboardingState);
-  if (onboarding.runsCompleted < ARCHETYPE_UNLOCK_RUNS) {
-    onArchetypeSelected('balanced');
-    return;
-  }
-  gameFlowState.set('archetypeSelection');
-  currentScreen.set('archetypeSelection');
+  // Archetype selection disabled — always use balanced (see GAME_DESIGN.md)
+  onArchetypeSelected('balanced');
+  return;
 }
 
 export function restoreRunMode(runMode?: 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge', dailySeed?: number | null, runSeed?: number | null): void {

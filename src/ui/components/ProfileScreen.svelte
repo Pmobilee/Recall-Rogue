@@ -156,7 +156,7 @@
   .back {
     min-height: calc(44px * var(--layout-scale, 1));
     border-radius: 10px;
-    border: 1px solid #475569;
+    border: calc(1px * var(--layout-scale, 1)) solid #475569;
     background: #1e293b;
     color: #dbeafe;
     padding: 0 calc(12px * var(--layout-scale, 1));
@@ -164,13 +164,16 @@
   }
 
   .hero {
-    border: 1px solid rgba(148, 163, 184, 0.35);
+    border: calc(2px * var(--layout-scale, 1)) solid rgba(212, 160, 23, 0.3);
     border-radius: 14px;
     padding: calc(12px * var(--layout-scale, 1));
     display: flex;
     gap: calc(12px * var(--layout-scale, 1));
     align-items: center;
     background: rgba(15, 23, 42, 0.78);
+    box-shadow: 0 0 calc(16px * var(--layout-scale, 1)) rgba(212, 160, 23, 0.08), inset 0 0 calc(24px * var(--layout-scale, 1)) rgba(212, 160, 23, 0.04);
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .avatar {
@@ -202,7 +205,7 @@
 
   .stat {
     border-radius: 12px;
-    border: 1px solid rgba(148, 163, 184, 0.3);
+    border: calc(1px * var(--layout-scale, 1)) solid rgba(148, 163, 184, 0.3);
     background: rgba(15, 23, 42, 0.76);
     padding: calc(10px * var(--layout-scale, 1));
     display: grid;
@@ -215,13 +218,13 @@
   }
 
   .stat strong {
-    font-size: calc(22px * var(--text-scale, 1));
+    font-size: calc(28px * var(--text-scale, 1));
     color: #f8fafc;
   }
 
   .domain-runs {
     border-radius: 12px;
-    border: 1px solid rgba(148, 163, 184, 0.3);
+    border: calc(1px * var(--layout-scale, 1)) solid rgba(148, 163, 184, 0.3);
     background: rgba(15, 23, 42, 0.76);
     padding: calc(10px * var(--layout-scale, 1));
   }
@@ -230,7 +233,7 @@
     margin: 0 0 calc(8px * var(--layout-scale, 1));
     color: #93c5fd;
     font-size: calc(12px * var(--text-scale, 1));
-    letter-spacing: 0.4px;
+    letter-spacing: calc(0.4px * var(--layout-scale, 1));
     text-transform: uppercase;
   }
 
@@ -242,7 +245,7 @@
 
   .domain-item {
     border-radius: 8px;
-    border: 1px solid rgba(148, 163, 184, 0.2);
+    border: calc(1px * var(--layout-scale, 1)) solid rgba(148, 163, 184, 0.2);
     background: rgba(2, 6, 23, 0.48);
     padding: calc(8px * var(--layout-scale, 1));
     display: flex;
@@ -267,8 +270,8 @@
 
   .landscape-columns {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: calc(20px * var(--layout-scale, 1));
+    grid-template-columns: 3fr 2fr;
+    gap: calc(24px * var(--layout-scale, 1));
     overflow: hidden;
     min-height: 0;
   }
@@ -299,7 +302,7 @@
   /* ═══ LANDSCAPE DESKTOP OVERRIDES ═══════════════════════════════════════════ */
 
   :global([data-layout="landscape"]) .profile-screen {
-    max-width: calc(1600px * var(--layout-scale, 1));
+    max-width: none;
     margin-left: calc(100px * var(--layout-scale, 1));
     padding: calc(32px * var(--layout-scale, 1)) calc(48px * var(--layout-scale, 1));
   }
@@ -310,7 +313,7 @@
 
   /* Stat values */
   :global([data-layout="landscape"]) .stat strong {
-    font-size: calc(28px * var(--text-scale, 1));
+    font-size: calc(35px * var(--text-scale, 1));
   }
 
   /* Small labels */
@@ -346,7 +349,14 @@
 
   /* Hero title: larger in landscape */
   :global([data-layout="landscape"]) .hero h3 {
-    font-size: calc(20px * var(--text-scale, 1));
+    font-size: calc(26px * var(--text-scale, 1));
+  }
+
+  /* Hero card: stronger amber glow in landscape */
+  :global([data-layout="landscape"]) .hero {
+    border-color: rgba(212, 160, 23, 0.45);
+    box-shadow: 0 0 calc(24px * var(--layout-scale, 1)) rgba(212, 160, 23, 0.14), inset 0 0 calc(32px * var(--layout-scale, 1)) rgba(212, 160, 23, 0.06);
+    padding: calc(20px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1));
   }
 
   /* Empty domains state: styled and centered */

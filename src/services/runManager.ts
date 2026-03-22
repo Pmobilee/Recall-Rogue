@@ -125,6 +125,12 @@ export interface RunState {
    * Incremented each time the player ends their turn.
    */
   globalTurnCounter: number;
+  /**
+   * Soul Jar charges accumulated this run.
+   * Gained when soul_jar relic is held and every 5th cumulative correct Charge is reached.
+   * Spending 1 charge activates the GUARANTEED button — auto-succeeds the next quiz.
+   */
+  soulJarCharges: number;
 }
 
 export interface RunEndData {
@@ -233,6 +239,7 @@ export function createRunState(
     novelQuestionsCorrect: 0,
     runSeed,
     globalTurnCounter: 1,
+    soulJarCharges: 0,
     deckMode: options?.deckMode,
     deckMasteryPct: options?.deckMasteryPct,
     rewardsDisabled: options?.rewardsDisabled,

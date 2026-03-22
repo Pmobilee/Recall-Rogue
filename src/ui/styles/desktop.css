@@ -163,37 +163,37 @@
 
   /* F-02: Global heading typography using Cinzel — bypasses Svelte scope */
   [data-layout="landscape"] h2 {
-    font-size: 32px !important;
+    font-size: calc(32px * var(--text-scale, 1)) !important;
     font-family: 'Cinzel', Georgia, serif !important;
     letter-spacing: 0.03em;
   }
 
   [data-layout="landscape"] h3 {
-    font-size: 20px !important;
+    font-size: calc(20px * var(--text-scale, 1)) !important;
     font-family: 'Cinzel', Georgia, serif !important;
   }
 
   /* F-03: Sidebar labels — swap pixel font for readable body font */
   [data-layout="landscape"] .nav-sidebar .sidebar-label {
     font-family: var(--font-body, system-ui, sans-serif);
-    font-size: 13px;
+    font-size: calc(13px * var(--text-scale, 1));
   }
 
   [data-layout="landscape"] .nav-sidebar .sidebar-btn {
     font-family: var(--font-body, system-ui, sans-serif);
-    font-size: 13px;
+    font-size: calc(13px * var(--text-scale, 1));
   }
 
   /* F-04: All buttons in landscape use readable body font */
   [data-layout="landscape"] button {
     font-family: var(--font-body, system-ui, sans-serif);
-    font-size: 14px;
+    font-size: calc(14px * var(--text-scale, 1));
   }
 
   /* F-05: Tab buttons use Cinzel for a polished desktop look */
   [data-layout="landscape"] .tab-btn {
     font-family: 'Cinzel', Georgia, serif;
-    font-size: 16px;
+    font-size: calc(16px * var(--text-scale, 1));
   }
 
   /* F-17: h3 override — already handled above (lines 171-174), verified present */
@@ -218,34 +218,34 @@
   [data-layout="landscape"] .lore-grid,
   [data-layout="landscape"] .lore-card {
     font-family: var(--font-body, system-ui, sans-serif);
-    font-size: 14px;
+    font-size: calc(14px * var(--text-scale, 1));
   }
 
   /* F-25: Detail grid font size and family */
   [data-layout="landscape"] .detail-grid,
   [data-layout="landscape"] .detail-card,
   [data-layout="landscape"] .fact-detail {
-    font-size: 14px;
+    font-size: calc(14px * var(--text-scale, 1));
     font-family: var(--font-body, system-ui, sans-serif);
   }
 
   /* F-26: Variant list font size and family */
   [data-layout="landscape"] .variant-list,
   [data-layout="landscape"] .variant-item {
-    font-size: 14px;
+    font-size: calc(14px * var(--text-scale, 1));
     font-family: var(--font-body, system-ui, sans-serif);
   }
 
   /* F-27: Profile h4 landscape override */
   [data-layout="landscape"] h4 {
-    font-size: 16px;
+    font-size: calc(16px * var(--text-scale, 1));
     font-family: 'Cinzel', Georgia, serif;
   }
 
   /* F-28: Checkboxes — reduce to mouse-friendly size on desktop */
   [data-layout="landscape"] input[type="checkbox"] {
-    width: 24px;
-    height: 24px;
+    width: calc(24px * var(--layout-scale, 1));
+    height: calc(24px * var(--layout-scale, 1));
   }
 
   /* F-30: Library detail card h3 — prevent long words overflowing */
@@ -268,7 +268,7 @@
   /* F-35: Settings toggle/slider rows — wider label column to prevent clipping */
   [data-layout="landscape"] .toggle-row,
   [data-layout="landscape"] .slider-row {
-    grid-template-columns: 200px 1fr auto;
+    grid-template-columns: calc(200px * var(--layout-scale, 1)) 1fr auto;
   }
 
   /* ── F-07: Settings — hide internal 200px sidebar, use global nav instead ── */
@@ -289,8 +289,8 @@
   [data-layout="landscape"] .category-nav {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 8px;
-    padding: 12px 20px;
+    gap: calc(8px * var(--layout-scale, 1));
+    padding: calc(12px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
     border-bottom: 1px solid rgba(148, 163, 184, 0.15);
     background: rgba(13, 26, 43, 0.6);
   }
@@ -299,8 +299,8 @@
     text-align: center;
     border-radius: 6px;
     border: 1px solid rgba(148, 163, 184, 0.2);
-    padding: 8px 20px;
-    font-size: 14px;
+    padding: calc(8px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+    font-size: calc(14px * var(--text-scale, 1));
     white-space: nowrap;
   }
 
@@ -319,11 +319,11 @@
   }
 
   [data-layout="landscape"] .summary-section {
-    padding-top: 8px;
+    padding-top: calc(8px * var(--layout-scale, 1));
   }
 
   [data-layout="landscape"] .domain-grid {
-    margin-top: 16px;
+    margin-top: calc(16px * var(--layout-scale, 1));
   }
 
   /* ── F-09: Domain card text — body font, not pixel font ── */
@@ -333,13 +333,13 @@
 
   [data-layout="landscape"] .domain-card strong {
     font-family: 'Cinzel', Georgia, serif;
-    font-size: 16px;
+    font-size: calc(16px * var(--text-scale, 1));
   }
 
   [data-layout="landscape"] .domain-row span,
   [data-layout="landscape"] .domain-meta {
     font-family: var(--font-body, system-ui, sans-serif);
-    font-size: 13px;
+    font-size: calc(13px * var(--text-scale, 1));
   }
 
   /* ── F-11: Styled scrollbars on dark UI ── */

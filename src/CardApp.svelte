@@ -103,7 +103,7 @@
   import { POST_MINI_BOSS_HEAL_PCT, SHOP_RELIC_PRICE, RELIC_SELL_REFUND_PCT, RELIC_REROLL_COST } from './data/balance'
   import { RELIC_BY_ID } from './data/relics/index'
   import { getMaxRelicSlots, isRelicSlotsFull } from './services/relicEffectResolver'
-  import { isSlowReader, onboardingState } from './services/cardPreferences'
+  import { isSlowReader, onboardingState, textSize } from './services/cardPreferences'
   import { unlockCardAudio } from './services/cardAudioManager'
   import { languageService } from './services/languageService'
   import { getDueReviews, playerSave } from './ui/stores/playerData'
@@ -849,6 +849,13 @@
     root.style.setProperty('--layout-scale-y', String(scaleY * userScale))
     root.style.setProperty('--layout-mode', mode)
 
+    // Text scale: grows at half the rate of layout, multiplied by user text pref.
+    // Portrait keeps text at base user-pref scale (mobile-first, layout-scale handles sizing).
+    const TEXT_SCALE_MAP: Record<string, number> = { small: 0.85, medium: 1, large: 1.2 }
+    const textPref = TEXT_SCALE_MAP[get(textSize)] ?? 1
+    const viewportTextFactor = mode === 'landscape' ? 1 + (scale - 1) * 0.5 : 1
+    root.style.setProperty('--text-scale', String(viewportTextFactor * textPref * userScale))
+
     // Attribute on root container for CSS selectors: [data-layout="landscape"]
     container.setAttribute('data-layout', mode)
   }
@@ -871,6 +878,9 @@
       updateLayoutScale()
     })
 
+    // Re-run scale computation whenever user changes text size preference
+    const unsubTextSize = textSize.subscribe(() => updateLayoutScale())
+
     // Boot animation — play once on first launch
     const urlParams = new URLSearchParams(window.location.search)
     const forceAnim = urlParams.has('forceBootAnim')
@@ -890,6 +900,7 @@
       window.removeEventListener('keydown', onInteraction)
       window.removeEventListener('resize', updateLayoutScale)
       unsubLayoutMode()
+      unsubTextSize()
     }
   })
 </script>

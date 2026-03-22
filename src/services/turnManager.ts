@@ -256,6 +256,11 @@ export interface TurnState {
    * Must be carried through TurnState from RunState at encounter start.
    */
   totalChargesThisRun: number;
+  /**
+   * Deja Vu relic: true after the turn-1 card spawn fires this encounter.
+   * Prevents the spawn from repeating on subsequent turns.
+   */
+  dejaVuUsedThisEncounter: boolean;
 }
 
 export interface PlayCardResult {
@@ -456,6 +461,7 @@ export function startEncounter(
     lastPlayedMechanicId: null,
     lastPlayedChainType: null,
     totalChargesThisRun: 0,
+    dejaVuUsedThisEncounter: false,
   };
 
   // Reset chain at encounter start (clean slate)
@@ -2091,8 +2097,16 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   turnState.phase = 'player_action';
   turnState.turnLog = [];
 
-  // Turn-start relic effects (iron_buckler: +3 block per turn; blood_price: +1 AP)
-  const turnStartFx = resolveTurnStartEffects(turnState.activeRelicIds);
+  // Turn-start relic effects (iron_buckler: +3 block per turn; blood_price: +1 AP; deja_vu: spawn)
+  const turnStartFx = resolveTurnStartEffects(
+    turnState.activeRelicIds,
+    0, // capacitor stored AP — maintained elsewhere
+    {
+      turnNumberThisEncounter: turnState.encounterTurnNumber,
+      characterLevel: 0, // TODO: thread characterLevel from playerSave if needed for level-15+ deja_vu
+      dejaVuUsedThisEncounter: turnState.dejaVuUsedThisEncounter,
+    },
+  );
   if (turnStartFx.bonusBlock > 0) {
     applyShield(playerState, turnStartFx.bonusBlock);
     turnState.triggeredRelicId = 'iron_buckler';
@@ -2100,6 +2114,44 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   if (turnStartFx.bonusAP > 0) {
     turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + turnStartFx.bonusAP);
     turnState.triggeredRelicId = 'blood_price';
+  }
+
+  // Deja Vu: spawn cards from discard into hand on turn 1 of encounter
+  if (turnStartFx.dejaVuCardSpawn && !turnState.dejaVuUsedThisEncounter) {
+    const { count, apCostReduction } = turnStartFx.dejaVuCardSpawn;
+    const runForDeja = get(activeRunState);
+    const correctFacts = runForDeja?.factsAnsweredCorrectly ?? new Set<string>();
+    const { discardPile, hand } = turnState.deck;
+    // Pick `count` random cards from discard; prefer cards whose fact was answered correctly
+    const candidates = [...discardPile];
+    // Shuffle to randomize selection
+    for (let i = candidates.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [candidates[i], candidates[j]] = [candidates[j], candidates[i]];
+    }
+    // Sort: facts answered correctly go first (preferred candidates)
+    candidates.sort((a, b) => {
+      const aKnown = a.factId ? correctFacts.has(a.factId) : false;
+      const bKnown = b.factId ? correctFacts.has(b.factId) : false;
+      return (bKnown ? 1 : 0) - (aKnown ? 1 : 0);
+    });
+    const spawned = candidates.slice(0, count);
+    for (const card of spawned) {
+      // Remove from discard
+      const discardIdx = discardPile.findIndex(c => c.id === card.id);
+      if (discardIdx !== -1) {
+        discardPile.splice(discardIdx, 1);
+      }
+      // Apply AP cost reduction for this turn
+      const spawnedCard = { ...card, apCost: Math.max(0, (card.apCost ?? 1) - apCostReduction) };
+      hand.push(spawnedCard);
+    }
+    turnState.dejaVuUsedThisEncounter = true;
+    turnState.turnLog.push({
+      type: 'draw',
+      message: `Deja Vu: spawned ${spawned.length} card${spawned.length === 1 ? '' : 's'} from discard`,
+      value: spawned.length,
+    });
   }
 
   // AR-204: Inscription of Iron — apply block at start of each player turn, before draw.

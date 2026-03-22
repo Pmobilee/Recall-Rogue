@@ -32,9 +32,9 @@
       <article class="row">
         <div class="rank">#{entry.rank}</div>
         <div class="name">{entry.name}</div>
-        <div class="metric metric-streak">🔥 {entry.streak}d</div>
-        <div class="metric metric-gold">💰 {entry.gold}</div>
-        <div class="metric metric-floor">🗻 F{entry.bestFloor}</div>
+        <div class="metric metric-streak">🔥 {entry.streak}d <span class="label">streak</span></div>
+        <div class="metric metric-gold">💰 {entry.gold} <span class="label">gold</span></div>
+        <div class="metric metric-floor">🗻 F{entry.bestFloor} <span class="label">floor</span></div>
       </article>
     {/each}
   </div>
@@ -65,7 +65,7 @@
 
   .back-btn {
     min-height: calc(44px * var(--layout-scale, 1));
-    border-radius: 10px;
+    border-radius: calc(10px * var(--layout-scale, 1));
     border: 1px solid #4b5563;
     background: #1f2937;
     color: #dbeafe;
@@ -91,7 +91,7 @@
       'rank name gold'
       'rank name floor';
     gap: calc(4px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
-    border-radius: 12px;
+    border-radius: calc(12px * var(--layout-scale, 1));
     border: 1px solid rgba(148, 163, 184, 0.3);
     background: rgba(15, 23, 42, 0.8);
     padding: calc(10px * var(--layout-scale, 1));
@@ -113,9 +113,18 @@
   }
 
   .metric {
-    font-size: calc(12px * var(--text-scale, 1));
+    font-size: calc(14px * var(--text-scale, 1));
     color: #cbd5e1;
     text-align: right;
+    white-space: nowrap;
+  }
+
+  .metric .label {
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-left: calc(2px * var(--layout-scale, 1));
   }
 
   .metric-streak { grid-area: streak; }
@@ -143,24 +152,27 @@
     font-size: calc(22px * var(--text-scale, 1));
   }
 
-  /* Body text / metrics */
-  :global([data-layout="landscape"]) .metric {
-    font-size: calc(15px * var(--text-scale, 1));
-  }
-
   /* Small labels */
   :global([data-layout="landscape"]) .helper {
     font-size: calc(14px * var(--text-scale, 1));
     color: #64748b;
   }
 
-  /* Table rows: taller min-height and larger value text */
+  /* Table rows: single horizontal row with all metrics inline */
   :global([data-layout="landscape"]) .row {
     min-height: calc(56px * var(--layout-scale, 1));
+    grid-template-columns: calc(60px * var(--layout-scale, 1)) minmax(0, 1fr) auto auto auto;
+    grid-template-areas: 'rank name streak gold floor';
+    align-items: center;
+    gap: 0 calc(24px * var(--layout-scale, 1));
   }
 
   :global([data-layout="landscape"]) .metric {
-    font-size: calc(16px * var(--text-scale, 1));
+    font-size: calc(19px * var(--text-scale, 1));
+  }
+
+  :global([data-layout="landscape"]) .metric .label {
+    font-size: calc(13px * var(--text-scale, 1));
   }
 
   /* Alternate row tinting */

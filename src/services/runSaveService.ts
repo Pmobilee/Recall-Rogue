@@ -101,6 +101,8 @@ function deserializeRunState(saved: SerializedRunState): RunState {
     retreatRewardLocked: Boolean(savedAny['retreatRewardLocked']),
     // Default to 1 for saves created before AR-122 (globalTurnCounter didn't exist).
     globalTurnCounter: typeof savedAny['globalTurnCounter'] === 'number' ? savedAny['globalTurnCounter'] : 1,
+    // Default to 0 for saves created before soul_jar was added.
+    soulJarCharges: typeof savedAny['soulJarCharges'] === 'number' ? savedAny['soulJarCharges'] : 0,
   };
 }
 
