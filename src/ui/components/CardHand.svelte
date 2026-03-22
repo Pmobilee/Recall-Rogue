@@ -744,15 +744,14 @@
           <div class="card-v2-frame">
             <!-- Layer 1: Border (by card type) -->
             <img class="frame-layer" src={getBorderUrl(card.cardType)} alt="" />
-            <!-- Layer 1.5: Card art in pentagon window (behind base frame mask) -->
+            <!-- Layer 2: Base frame (constant) — art is set as background-image on this element -->
             {#if card.mechanicId}
               {@const artUrl = getCardArtUrl(card.mechanicId)}
-              {#if artUrl}
-                <img class="frame-card-art" src={artUrl} alt="" />
-              {/if}
+              <img class="frame-layer frame-base-with-art" src={getBaseFrameUrl()} alt=""
+                style={artUrl ? `background-image: url('${artUrl}'); background-size: 100% auto; background-position: center 35%; background-repeat: no-repeat;` : ''} />
+            {:else}
+              <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
             {/if}
-            <!-- Layer 2: Base frame (constant) -->
-            <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
             <!-- Layer 3: Banner (by chain type) -->
             <img class="frame-layer" src={getBannerUrl(card.chainType ?? 0)} alt="" />
             <!-- Layer 4: Upgrade icon (conditional, float animation) -->
@@ -1107,15 +1106,14 @@
           <div class="card-v2-frame">
             <!-- Layer 1: Border (by card type) -->
             <img class="frame-layer" src={getBorderUrl(card.cardType)} alt="" />
-            <!-- Layer 1.5: Card art in pentagon window (behind base frame mask) -->
+            <!-- Layer 2: Base frame (constant) — art is set as background-image on this element -->
             {#if card.mechanicId}
               {@const artUrl = getCardArtUrl(card.mechanicId)}
-              {#if artUrl}
-                <img class="frame-card-art" src={artUrl} alt="" />
-              {/if}
+              <img class="frame-layer frame-base-with-art" src={getBaseFrameUrl()} alt=""
+                style={artUrl ? `background-image: url('${artUrl}'); background-size: 100% auto; background-position: center 35%; background-repeat: no-repeat;` : ''} />
+            {:else}
+              <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
             {/if}
-            <!-- Layer 2: Base frame (constant) -->
-            <img class="frame-layer" src={getBaseFrameUrl()} alt="" />
             <!-- Layer 3: Banner (by chain type) -->
             <img class="frame-layer" src={getBannerUrl(card.chainType ?? 0)} alt="" />
             <!-- Layer 4: Upgrade icon (conditional, float animation) -->
@@ -1528,23 +1526,19 @@
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: fill; /* stretch to fill — frame images are pre-sized to card aspect */
+    object-fit: fill;
     pointer-events: none;
     image-rendering: pixelated;
-    z-index: 3;
+    /* No z-index — stacking via DOM order (art is first child = painted first = behind) */
   }
 
-  .frame-card-art {
-    position: absolute;
-    /* Oversized to fill the entire pentagon window — frame layers mask the edges */
-    left: 0;
-    top: 15%;
-    width: 100%;
-    height: 55%;
-    object-fit: cover;
-    image-rendering: auto;
-    pointer-events: none;
-    z-index: 1; /* behind ALL frame layers (z:3) */
+  .frame-base-with-art {
+    /* Card art rendered as CSS background-image on the base frame element.
+       The frame PNG has a transparent pentagon window — the background-image
+       shows through the window while the opaque frame areas mask the art edges.
+       This guarantees art is behind the frame since CSS backgrounds paint
+       before the element's own content (the frame PNG). */
+    background-color: #1a1a2e; /* fallback behind art for transparent areas */
   }
 
   .upgrade-icon {

@@ -110,8 +110,8 @@ export async function captureScreenshot(options: ScreenshotOptions = {}): Promis
     ctx.drawImage(domCanvas, 0, 0);
 
     // Restore backgrounds
-    for (const { el, orig } of bgOverrides) {
-      el.style.backgroundColor = orig;
+    for (const { el, prop, orig } of bgOverrides) {
+      (el.style as any)[prop] = orig;
     }
   } catch (err) {
     // html2canvas failed — log and continue with Phaser-only capture

@@ -12,55 +12,68 @@ Jump to ANY game state instantly via Playwright MCP + `window.__terraScenario`. 
 ## Prerequisites
 
 - Dev server running: `npm run dev` (port 5173)
-- Playwright MCP available (`mcp__playwright__*` tools)
+- Playwright installed: `npx playwright --version`
+- Note: Playwright MCP tools may not always be available. Use the direct Node.js script approach below as the primary method.
 
 ## Core Workflow
 
-### Step 1: Navigate to the app
+### Primary Method: Direct Node.js Script
 
-```
-mcp__playwright__browser_navigate -> http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial
-```
-
-### Step 2: Disable animations for clean screenshots
+When Playwright MCP tools are unavailable (common), use this approach directly:
 
 ```javascript
-// via browser_evaluate:
-await page.evaluate(() => document.documentElement.setAttribute('data-pw-animations', 'disabled'));
+// Run via: node -e "..." (in Bash tool)
+const { chromium } = require('playwright');
+(async () => {
+  // MUST use headed mode — headless can't render Phaser WebGL
+  const browser = await chromium.launch({ headless: false });
+  const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+  await page.goto('http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial');
+  await page.waitForTimeout(5000);
+
+  // Load scenario
+  await page.evaluate(() => window.__terraScenario?.load('combat-basic'));
+  await page.waitForTimeout(5000);
+
+  // Take composite screenshot (Phaser canvas + Svelte DOM via html2canvas)
+  const path = await page.evaluate(() => window.__terraScreenshotFile?.());
+  console.log('Screenshot:', path);
+
+  // Get DOM audit data
+  const audit = await page.evaluate(() => { /* discovery script */ });
+  console.log(JSON.stringify(audit, null, 2));
+
+  await browser.close();
+})();
 ```
 
-### Step 3: Load a scenario
+Then use `Read("/tmp/terra-screenshot.jpg")` to view the screenshot.
 
-Use `browser_evaluate` to call `__terraScenario`:
+### Fallback: Playwright MCP Tools (if available)
 
-```javascript
-// Named preset:
-await page.evaluate(() => window.__terraScenario.load('combat-boss'));
+If `mcp__playwright__*` tools are loaded:
+1. `mcp__playwright__browser_navigate` -> `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
+2. `browser_evaluate` -> `window.__terraScenario.load('combat-basic')`
+3. Wait 5 seconds
+4. `browser_evaluate(() => window.__terraScreenshotFile())` -> saves to `/tmp/terra-screenshot.jpg`
+5. `Read("/tmp/terra-screenshot.jpg")` to view
+6. `mcp__playwright__browser_snapshot` for DOM state (supplementary)
 
-// Custom config:
-await page.evaluate(() => window.__terraScenario.loadCustom({
-  screen: 'combat',
-  enemy: 'the_archivist',
-  playerHp: 30,
-  playerMaxHp: 100,
-  hand: ['heavy_strike', 'strike', 'block', 'lifetap', 'expose'],
-  relics: ['whetstone', 'combo_ring', 'momentum_gem'],
-  gold: 500,
-  floor: 8,
-}));
-```
+### Screenshot Compositing
 
-### Step 4: Wait briefly, then screenshot + snapshot
+`__terraScreenshotFile()` uses html2canvas to composite:
+1. Draws Phaser WebGL canvas directly (preserveDrawingBuffer: true)
+2. Temporarily clears all opaque DOM backgrounds so Phaser layer shows through
+3. Runs html2canvas on document.body (transparent bg, ignoring canvas elements)
+4. Composites: Phaser first, DOM overlay on top
+5. Result: full game view with enemy sprites + backgrounds + cards + UI
 
-```javascript
-// Wait for scene to render (500ms for combat, 300ms for UI screens)
-await new Promise(r => setTimeout(r, 500));
-```
-
-Then:
-- `browser_evaluate(() => window.__terraScreenshotFile())` — saves to `/tmp/terra-screenshot.jpg`, returns path. Use `Read("/tmp/terra-screenshot.jpg")` to view. Captures full page (Phaser canvas + DOM overlays). This is the ONLY screenshot method that works with Phaser. NEVER use raw `__terraScreenshot()` (base64 exceeds limits), `mcp__playwright__browser_take_screenshot` (Phaser RAF blocks it, 30s timeout), `page.screenshot()` (same issue), or `newCDPSession()` (hangs permanently).
-- `mcp__playwright__browser_snapshot` — DOM state (supplementary, always works)
-- `mcp__playwright__browser_console_messages` — errors
+### CRITICAL RULES
+- **NEVER use headless mode** for Phaser screenshots (no GPU = blank canvas)
+- **NEVER use `page.screenshot()`** (Phaser RAF blocks it — 30s timeout)
+- **NEVER use `mcp__playwright__browser_take_screenshot`** (same RAF issue)
+- **NEVER use `page.context().newCDPSession()`** (hangs permanently)
+- **ALWAYS wait 5 seconds** after scenario load before capturing
 
 ## Available Presets
 
