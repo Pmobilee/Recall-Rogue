@@ -9,30 +9,30 @@ Audit all `console.log`, `console.warn`, `console.error` statements in productio
 
 ## TODO Checklist
 
-- [ ] **1. Inventory all console.* calls in `src/`**
+- [x] **1. Inventory all console.* calls in `src/`**
   - Run: `grep -rn 'console\.\(log\|warn\|error\|debug\)' src/ --include='*.ts' --include='*.svelte'`
   - Categorize each as: KEEP (intentional instrumentation), GATE (wrap in dev check), REMOVE (debug leftover)
 
-- [ ] **2. Remove debug leftovers**
+- [x] **2. Remove debug leftovers**
   - `src/ui/components/DomeCanvas.svelte` — debug position logging
   - `src/services/rewardRoomBridge.ts` — test callback logs (5 instances)
   - `src/services/subscriptionService.ts` — navigation debug log
   - Any other identified debug leftovers
 
-- [ ] **3. Gate development-only logs behind `import.meta.env.DEV`**
+- [x] **3. Gate development-only logs behind `import.meta.env.DEV`**
   - `src/CardApp.svelte` — BootAnim initialization logs (8 instances) → gate or use `__terraLog`
   - `src/services/gameFlowController.ts` — encounter completion tracking → use `__terraLog`
   - Pattern: `if (import.meta.env.DEV) console.log(...)` or route through `__terraLog`
 
-- [ ] **4. Replace Steam stub logs with proper no-op pattern**
+- [x] **4. Replace Steam stub logs with proper no-op pattern**
   - `src/services/steamService.ts` — 4 console.log stubs
   - Replace with silent no-ops or `__terraLog` entries
 
-- [ ] **5. Ensure `__terraLog` and `__terraDebug` are tree-shaken in production**
+- [x] **5. Ensure `__terraLog` and `__terraDebug` are tree-shaken in production**
   - Verify `src/dev/debugBridge.ts` is only imported conditionally or stripped
   - Check production bundle doesn't include debug bridge code
 
-- [ ] **6. Add ESLint rule to prevent future raw console.log**
+- [x] **6. Add ESLint rule to prevent future raw console.log**
   - Add `no-console` rule with `warn` level (allow `console.error` for genuine errors)
   - Or add a comment convention: `// eslint-disable-next-line no-console -- intentional`
 
@@ -56,8 +56,8 @@ Audit all `console.log`, `console.warn`, `console.error` statements in productio
 | MAYBE EDIT | ESLint config (if adding no-console rule) |
 
 ## Verification Gate
-- [ ] `npm run typecheck` passes
-- [ ] `npm run build` passes
-- [ ] `npx vitest run` — all tests pass
-- [ ] `grep -rn 'console\.log' src/` returns only dev-gated or intentional instances
-- [ ] Production bundle does not contain debug strings (spot check with `grep` on `dist/`)
+- [x] `npm run typecheck` passes
+- [x] `npm run build` passes
+- [x] `npx vitest run` — all tests pass
+- [x] `grep -rn 'console\.log' src/` returns only dev-gated or intentional instances
+- [x] Production bundle does not contain debug strings (spot check with `grep` on `dist/`)

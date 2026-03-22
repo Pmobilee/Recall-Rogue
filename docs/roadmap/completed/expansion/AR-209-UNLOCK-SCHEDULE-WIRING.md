@@ -12,7 +12,7 @@ Wire the card unlock schedule and relic unlock schedule to the character level s
 
 ## TODO
 
-- [ ] 1. Populate card unlock data table with all 60 new mechanics
+- [x] 1. Populate card unlock data table with all 60 new mechanics
   **Files:** `src/data/characterLevel.ts` (or wherever AR-205 put the unlock data)
   **What:** Add every new mechanic ID to the unlock level map, exactly matching Part 5 of the expansion spec:
   - Level 0: power_strike, iron_wave, reinforce, inscription_fury, inscription_iron
@@ -31,7 +31,7 @@ Wire the card unlock schedule and relic unlock schedule to the character level s
   - Level 13: knowledge_bomb, siphon_knowledge
   **Acceptance:** `getUnlockedMechanics(0)` returns 36 mechanics. `getUnlockedMechanics(13)` returns all 91.
 
-- [ ] 2. Populate relic unlock data table with all 36 new relics
+- [x] 2. Populate relic unlock data table with all 36 new relics
   **Files:** `src/data/characterLevel.ts` (or relic unlock data location)
   **What:** Add every new relic ID to the unlock level map, exactly matching Part 10:
   - Level 0: quick_study, thick_skin, tattered_notebook, battle_scars, brass_knuckles
@@ -53,22 +53,22 @@ Wire the card unlock schedule and relic unlock schedule to the character level s
   - Level 23: singularity
   **Acceptance:** Relic reward pools filter correctly by level. Level 0 shows 29 relics. Level 24 shows 77.
 
-- [ ] 3. Verify card reward pool filters by unlock level
+- [x] 3. Verify card reward pool filters by unlock level
   **Files:** `src/services/cardRewardService.ts` (or equivalent)
   **What:** Confirm that card reward screens only offer mechanics that are unlocked at the player's current character level. Test with level 0 (should not offer Eruption), level 5 (should offer Kindle but not Chain Lightning).
   **Acceptance:** Card rewards respect unlock gating at all tested levels.
 
-- [ ] 4. Verify shop pool filters by unlock level
+- [x] 4. Verify shop pool filters by unlock level
   **Files:** `src/services/shopService.ts`
   **What:** Confirm shop card offerings respect unlock level. Shop should never offer a card the player hasn't unlocked.
   **Acceptance:** Shop at level 0 does not offer any level 1+ mechanics.
 
-- [ ] 5. Verify run pool builder filters by unlock level
+- [x] 5. Verify run pool builder filters by unlock level
   **Files:** `src/services/runPoolBuilder.ts`
   **What:** Confirm `applyMechanics()` only assigns unlocked mechanics to the card pool. A level 0 player's 120-card pool should only contain the 36 unlocked mechanics.
   **Acceptance:** Pool builder at level 0 produces pool with only level-0 mechanics.
 
-- [ ] 6. Add unit tests for unlock schedule
+- [x] 6. Add unit tests for unlock schedule
   **Files:** `tests/unit/unlock-schedule.test.ts` (new)
   **What:** Test:
   - `getUnlockedMechanics(0)` returns exactly 36 (31 existing + 5 new)

@@ -551,16 +551,16 @@ node tests/e2e/03-save-resume.cjs
 ```
 
 **Manual verification checklist (Playwright MCP):**
-- [ ] Wrong Charge on mastery 0 card → card shows purple tint on next draw
-- [ ] Wrong Charge on Free First Charge → card does NOT show purple tint
-- [ ] Wrong Charge on mastery 1+ card → mastery downgrade only, no purple tint
-- [ ] Correct Charge on cursed card → cure animation fires (gold glow), card normal on next draw
-- [ ] Cursed card QP damage is ~70% of expected (verify one specific card value in-game)
-- [ ] Cursed card CC damage is ~100% of expected (no penalty)
-- [ ] Cursed card CW damage is ~50% of expected
-- [ ] Removing a card via Meditate does not cure its fact (cursed persists on other cards)
-- [ ] `__terraDebug()` shows `cursedFactIds` on runState (not `echoFactIds`)
-- [ ] No JS console errors during a full combat encounter with cursed cards present
+- [x] Wrong Charge on mastery 0 card → card shows purple tint on next draw
+- [x] Wrong Charge on Free First Charge → card does NOT show purple tint
+- [x] Wrong Charge on mastery 1+ card → mastery downgrade only, no purple tint
+- [x] Correct Charge on cursed card → cure animation fires (gold glow), card normal on next draw
+- [x] Cursed card QP damage is ~70% of expected (verify one specific card value in-game)
+- [x] Cursed card CC damage is ~100% of expected (no penalty)
+- [x] Cursed card CW damage is ~50% of expected
+- [x] Removing a card via Meditate does not cure its fact (cursed persists on other cards)
+- [x] `__terraDebug()` shows `cursedFactIds` on runState (not `echoFactIds`)
+- [x] No JS console errors during a full combat encounter with cursed cards present
 
 ---
 

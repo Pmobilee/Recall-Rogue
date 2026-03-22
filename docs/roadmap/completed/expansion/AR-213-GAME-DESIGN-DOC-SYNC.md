@@ -14,12 +14,12 @@ Individual ARs should have been updating GAME_DESIGN.md incrementally, but this 
 
 ## TODO
 
-- [ ] 1. Update card mechanics section
+- [x] 1. Update card mechanics section
   **Files:** `docs/GAME_DESIGN.md`
   **What:** Update the card mechanics section to list all 91 mechanics (31 existing + 60 new). Organize by type (attack, shield, buff, debuff, utility, wild, inscription). For each new mechanic: name, AP cost, brief description, unlock level. Remove any references to Echo-specific mechanics.
   **Acceptance:** Mechanics count matches 91. All 60 new mechanics documented.
 
-- [ ] 2. Update status effects section
+- [x] 2. Update status effects section
   **Files:** `docs/GAME_DESIGN.md`
   **What:** Add Burn and Bleed to the status effects section with full descriptions:
   - Burn: hit amplifier, halves on trigger, additive stacking
@@ -28,7 +28,7 @@ Individual ARs should have been updating GAME_DESIGN.md incrementally, but this 
   Remove any Echo-related status effect documentation.
   **Acceptance:** Status effects section lists 8 effects (6 existing + Burn + Bleed).
 
-- [ ] 3. Update Cursed Card system documentation
+- [x] 3. Update Cursed Card system documentation
   **Files:** `docs/GAME_DESIGN.md`
   **What:** Replace all Echo system documentation with Cursed Card system:
   - Cursing trigger (wrong Charge on mastery 0)
@@ -41,12 +41,12 @@ Individual ARs should have been updating GAME_DESIGN.md incrementally, but this 
   Remove all Echo references (ghost cards, echo spawning, etc.).
   **Acceptance:** No Echo references remain. Cursed system fully documented.
 
-- [ ] 4. Update relic catalogue
+- [x] 4. Update relic catalogue
   **Files:** `docs/GAME_DESIGN.md`
   **What:** Add all 36 new relics organized by rarity (Common, Uncommon, Rare, Legendary, Cursed). For each: name, trigger, effect, category. Remove Echo Lens, Phantom Limb, Echo Chamber entries.
   **Acceptance:** Relic count matches 77. All removed relics gone. All new relics documented.
 
-- [ ] 5. Add Inscription keyword documentation
+- [x] 5. Add Inscription keyword documentation
   **Files:** `docs/GAME_DESIGN.md`
   **What:** Add new section for Inscription cards:
   - Keyword definition (persistent, exhaust = remove from game)
@@ -56,27 +56,27 @@ Individual ARs should have been updating GAME_DESIGN.md incrementally, but this 
   - Cannot stack same type
   **Acceptance:** Inscription system fully documented.
 
-- [ ] 6. Add card unlock progression section
+- [x] 6. Add card unlock progression section
   **Files:** `docs/GAME_DESIGN.md`
   **What:** Add the full card unlock table from Part 5 of the expansion spec. Include level, cards unlocked, total available, and design intent per level.
   **Acceptance:** Full 14-level unlock table present.
 
-- [ ] 7. Remove combo system documentation
+- [x] 7. Remove combo system documentation
   **Files:** `docs/GAME_DESIGN.md`
   **What:** Remove all references to combo multipliers, combo counter, combo healing, combo decay. Replace with a note: "The combo system has been removed. Chains are the only streak mechanic."
   **Acceptance:** No combo references in GAME_DESIGN.md (except the removal note).
 
-- [ ] 8. Update damage pipeline documentation
+- [x] 8. Update damage pipeline documentation
   **Files:** `docs/GAME_DESIGN.md`
   **What:** Update the damage calculation section to match Appendix E of the expansion spec. Show the full 16-step pipeline. Explicitly note that combo multiplier is NOT in the pipeline.
   **Acceptance:** Damage pipeline matches Appendix E exactly.
 
-- [ ] 9. Update balance section with final sim values
+- [x] 9. Update balance section with final sim values
   **Files:** `docs/GAME_DESIGN.md`
   **What:** Update the balance section with final values from AR-210's balance report. Include win rates by archetype, card distribution, and any values that were tuned during the balance pass.
   **Acceptance:** Balance section reflects actual tested values, not just spec targets.
 
-- [ ] 10. Update ARCHITECTURE.md
+- [x] 10. Update ARCHITECTURE.md
   **Files:** `docs/ARCHITECTURE.md`
   **What:** Update architecture docs to reflect:
   - New files added (CardBrowser.svelte, inscription tracking, etc.)
@@ -85,7 +85,7 @@ Individual ARs should have been updating GAME_DESIGN.md incrementally, but this 
   - Removed systems (Echo, Combo)
   **Acceptance:** Architecture doc accurately reflects current codebase.
 
-- [ ] 11. Cross-reference check
+- [x] 11. Cross-reference check
   **Files:** `docs/GAME_DESIGN.md`, `docs/ARCHITECTURE.md`
   **What:** Search for stale references:
   - "echo" (should only appear in "Cursed Cards replace Echo" historical note)

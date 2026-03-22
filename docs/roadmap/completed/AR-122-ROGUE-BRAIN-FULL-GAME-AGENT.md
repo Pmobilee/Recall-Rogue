@@ -150,13 +150,13 @@ New analysis categories:
 
 ## Verification Gate
 
-- [ ] Full run completes (9-12 encounters with all phases)
-- [ ] Relic inventory: exactly 5 slots, swap works
-- [ ] Room selection: 3 options with correct types per act
-- [ ] Card rewards: 3 cards offered, can skip
-- [ ] Shop: buy relic/card/removal all work
-- [ ] Rest: heal and upgrade both work
-- [ ] Retreat/delve: both paths work
-- [ ] Ascension 0-20 all playable
-- [ ] Agent learns non-trivial between-combat strategy
-- [ ] Analysis reports include all new decision categories
+- [x] Full run completes (9-12 encounters with all phases)
+- [x] Relic inventory: exactly 5 slots, swap works
+- [x] Room selection: 3 options with correct types per act
+- [x] Card rewards: 3 cards offered, can skip
+- [x] Shop: buy relic/card/removal all work
+- [x] Rest: heal and upgrade both work
+- [x] Retreat/delve: both paths work
+- [x] Ascension 0-20 all playable
+- [x] Agent learns non-trivial between-combat strategy
+- [x] Analysis reports include all new decision categories

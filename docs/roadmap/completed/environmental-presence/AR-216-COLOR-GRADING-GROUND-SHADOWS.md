@@ -243,20 +243,20 @@ this.enemySpriteSystem.applyAtmosphere(config);
 
 ## Acceptance Criteria
 
-- [ ] Enemy sprites are tinted per floor theme (warm amber on floors 1-3, orange on 4-6, blue on 7-9, purple on 10-12, dark purple on 13+)
-- [ ] Background image receives matching tint
-- [ ] Camera has theme-appropriate saturation/brightness adjustment
-- [ ] Tint transitions smoothly (800ms Sine.easeInOut) when floor theme changes
-- [ ] Ground shadow is a dithered pixel-art ellipse, not a smooth graphics shape
-- [ ] Shadow responds to idle bob (shrinks/fades when enemy bobs up, grows when down)
-- [ ] Shadow has light-direction offset (opposite dominant light source)
-- [ ] Sprite base has subtle AO darkening (bottom 40%)
-- [ ] AO strength varies by theme (stronger in dark rooms, weaker in bright)
-- [ ] Low-end devices skip ColorMatrix and AO but still get tint and shadow
-- [ ] No visual regression on existing atmosphere particles or fog
-- [ ] `npm run typecheck` passes
-- [ ] `npm run build` succeeds
-- [ ] `npx vitest run` passes
+- [x] Enemy sprites are tinted per floor theme (warm amber on floors 1-3, orange on 4-6, blue on 7-9, purple on 10-12, dark purple on 13+)
+- [x] Background image receives matching tint
+- [x] Camera has theme-appropriate saturation/brightness adjustment
+- [x] Tint transitions smoothly (800ms Sine.easeInOut) when floor theme changes
+- [x] Ground shadow is a dithered pixel-art ellipse, not a smooth graphics shape
+- [x] Shadow responds to idle bob (shrinks/fades when enemy bobs up, grows when down)
+- [x] Shadow has light-direction offset (opposite dominant light source)
+- [x] Sprite base has subtle AO darkening (bottom 40%)
+- [x] AO strength varies by theme (stronger in dark rooms, weaker in bright)
+- [x] Low-end devices skip ColorMatrix and AO but still get tint and shadow
+- [x] No visual regression on existing atmosphere particles or fog
+- [x] `npm run typecheck` passes
+- [x] `npm run build` succeeds
+- [x] `npx vitest run` passes
 
 ## Verification Gate
 

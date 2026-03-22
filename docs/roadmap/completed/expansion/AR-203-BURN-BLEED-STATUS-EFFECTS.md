@@ -432,17 +432,17 @@ Also update `lastChangedDate` to `"2026-03-21"` for `statusEffects` table entrie
 
 ## Verification Gate
 
-- [ ] `npm run typecheck` — zero errors
-- [ ] `npm run build` — clean build
-- [ ] `npx vitest run` — all tests pass (1900+)
-- [ ] Unit tests written for `triggerBurn` (8→4→2→1→0 halving chain; additive stacking; no-stacks = 0 bonus)
-- [ ] Unit tests written for `getBleedBonus` (N stacks = N bonus; 0 stacks = 0)
-- [ ] Headless sim run (500 runs, any profile): Burn + Bleed don't cause crashes or NaN damage: `npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 500`
-- [ ] Visual inspection via Playwright: enemy Burn/Bleed icons display after applying stacks via `__terraScenario.load('combat-basic')`, then triggering via `window.__terraDebug()`
-- [ ] Confirm Bleed does NOT tick during Poison tick (check turn log shows no Bleed entry on `status_tick` lines for enemy turn passive damage)
-- [ ] Confirm Burn does NOT trigger on Thorns retaliation (applyDamageToEnemy direct call path has no Burn trigger)
-- [ ] Confirm Twin Strike (multi_hit, 2 hits) with 8 Burn: turn log shows "Burn (hit 1): +8" and "Burn (hit 2): +4"
-- [ ] Confirm Self-Burn: player with 8 Burn stacks receives enemy attack — turn log shows "Self-Burn triggered: +8 incoming damage"
+- [x] `npm run typecheck` — zero errors
+- [x] `npm run build` — clean build
+- [x] `npx vitest run` — all tests pass (1900+)
+- [x] Unit tests written for `triggerBurn` (8→4→2→1→0 halving chain; additive stacking; no-stacks = 0 bonus)
+- [x] Unit tests written for `getBleedBonus` (N stacks = N bonus; 0 stacks = 0)
+- [x] Headless sim run (500 runs, any profile): Burn + Bleed don't cause crashes or NaN damage: `npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 500`
+- [x] Visual inspection via Playwright: enemy Burn/Bleed icons display after applying stacks via `__terraScenario.load('combat-basic')`, then triggering via `window.__terraDebug()`
+- [x] Confirm Bleed does NOT tick during Poison tick (check turn log shows no Bleed entry on `status_tick` lines for enemy turn passive damage)
+- [x] Confirm Burn does NOT trigger on Thorns retaliation (applyDamageToEnemy direct call path has no Burn trigger)
+- [x] Confirm Twin Strike (multi_hit, 2 hits) with 8 Burn: turn log shows "Burn (hit 1): +8" and "Burn (hit 2): +4"
+- [x] Confirm Self-Burn: player with 8 Burn stacks receives enemy attack — turn log shows "Self-Burn triggered: +8 incoming damage"
 
 ---
 

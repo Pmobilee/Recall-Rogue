@@ -363,19 +363,19 @@ def validate_normal_maps():
 
 ## Acceptance Criteria
 
-- [ ] `scripts/generate-normal-maps.py` runs successfully, generating normal maps for all 89 enemies
-- [ ] Each normal map has correct dimensions matching its diffuse sprite
-- [ ] Transparent regions in normal maps have flat normal (RGB 128, 128, 255)
-- [ ] Blue channel average > 120 for all normal maps (normals face camera)
-- [ ] `flat_normal.png` fallback exists and is 64x64 RGB(128, 128, 255)
-- [ ] `normalMapManifest.ts` lists all enemies with proper normal maps
-- [ ] Sprites load correctly with `[diffuse, normal]` array syntax in Phaser
-- [ ] Normal map textures have bilinear filtering (not nearest-neighbor)
-- [ ] Diffuse textures still have nearest-neighbor filtering (pixelArt preserved)
-- [ ] No visual regression in current rendering (normal maps are loaded but not consumed until AR-219)
-- [ ] `deploy-enemy-sprites.mjs` includes normal map processing
-- [ ] `npm run typecheck` passes
-- [ ] `npm run build` succeeds
+- [x] `scripts/generate-normal-maps.py` runs successfully, generating normal maps for all 89 enemies
+- [x] Each normal map has correct dimensions matching its diffuse sprite
+- [x] Transparent regions in normal maps have flat normal (RGB 128, 128, 255)
+- [x] Blue channel average > 120 for all normal maps (normals face camera)
+- [x] `flat_normal.png` fallback exists and is 64x64 RGB(128, 128, 255)
+- [x] `normalMapManifest.ts` lists all enemies with proper normal maps
+- [x] Sprites load correctly with `[diffuse, normal]` array syntax in Phaser
+- [x] Normal map textures have bilinear filtering (not nearest-neighbor)
+- [x] Diffuse textures still have nearest-neighbor filtering (pixelArt preserved)
+- [x] No visual regression in current rendering (normal maps are loaded but not consumed until AR-219)
+- [x] `deploy-enemy-sprites.mjs` includes normal map processing
+- [x] `npm run typecheck` passes
+- [x] `npm run build` succeeds
 
 ## Verification Gate
 

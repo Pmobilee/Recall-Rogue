@@ -9,7 +9,7 @@
 
 ## TODO Checklist
 
-- [ ] **1. Audit all exports and their consumers**
+- [x] **1. Audit all exports and their consumers**
   - List all 68 exported functions/stores
   - Map which files import which exports
   - Group into logical domains:
@@ -19,32 +19,32 @@
     - **Progression**: achievements, streaks, milestones, ascension level
     - **Deck/collection**: ownedCards, deckSlots, relics
 
-- [ ] **2. Extract `factReviewStore.ts`**
+- [x] **2. Extract `factReviewStore.ts`**
   - All FSRS/review-related functions
   - Fact scheduling, review history, mastery tracking
   - Re-export from playerData.ts for backwards compatibility
 
-- [ ] **3. Extract `resourceStore.ts`**
+- [x] **3. Extract `resourceStore.ts`**
   - Minerals, currency, premium currency management
   - Spend/earn/check functions
   - Re-export from playerData.ts
 
-- [ ] **4. Extract `progressionStore.ts`**
+- [x] **4. Extract `progressionStore.ts`**
   - Achievements, streaks, milestones, ascension level
   - Unlock tracking, progression events
   - Re-export from playerData.ts
 
-- [ ] **5. Keep `playerData.ts` as facade**
+- [x] **5. Keep `playerData.ts` as facade**
   - Core player identity (name, level, settings)
   - Re-exports all domain stores for backwards compatibility
   - Target: <300 lines (imports + re-exports + core state)
 
-- [ ] **6. Gradually migrate imports**
+- [x] **6. Gradually migrate imports**
   - New code should import from domain stores directly
   - Existing imports via playerData.ts continue to work
   - Add JSDoc deprecation notices on re-exports pointing to new locations
 
-- [ ] **7. Verify save/load round-trip**
+- [x] **7. Verify save/load round-trip**
   - Ensure SaveManager still serializes/deserializes all player state correctly
   - Test with existing save fixtures in `tests/fixtures/saves/`
 
@@ -65,8 +65,8 @@
 | EDIT | `src/game/managers/SaveManager.ts` (if serialization changes) |
 
 ## Verification Gate
-- [ ] `npm run typecheck` passes
-- [ ] `npm run build` passes
-- [ ] `npx vitest run` — all tests pass
-- [ ] Save/load test: create save → reload → all state preserved
-- [ ] Playwright: full game flow works with store changes
+- [x] `npm run typecheck` passes
+- [x] `npm run build` passes
+- [x] `npx vitest run` — all tests pass
+- [x] Save/load test: create save → reload → all state preserved
+- [x] Playwright: full game flow works with store changes

@@ -9,37 +9,37 @@
 
 ## TODO Checklist
 
-- [ ] **1. Analyze component structure**
+- [x] **1. Analyze component structure**
   - Read `src/ui/components/CardHand.svelte` fully
   - Map state flow: which variables feed into which visual sections
   - Identify the drag state machine boundaries
   - List all animation triggers and their dependencies
 
-- [ ] **2. Extract `CardArcLayout.svelte`**
+- [x] **2. Extract `CardArcLayout.svelte`**
   - Pure rendering: positions cards in arc/fan layout
   - Props: cards array, selected index, layout params
   - No interaction logic — just positioning math and rendering
 
-- [ ] **3. Extract `CardDragController.svelte` (or `.ts` module)**
+- [x] **3. Extract `CardDragController.svelte` (or `.ts` module)**
   - All pointer event handlers: pointerdown, pointermove, pointerup
   - Drag frame management (`flushDragFrame`, `clearDragFrame`)
   - Drop zone detection and card play initiation
   - Exports: drag state, handlers to bind
 
-- [ ] **4. Extract `CardChargePreview.svelte`**
+- [x] **4. Extract `CardChargePreview.svelte`**
   - Charge bar visualization
   - Tier-up preview indicators
   - Props: card charge state, threshold data
 
-- [ ] **5. Extract `CardPlayConfirmation.svelte`**
+- [x] **5. Extract `CardPlayConfirmation.svelte`**
   - "Play this card?" confirmation UI
   - Props: selected card, confirm/cancel callbacks
 
-- [ ] **6. Slim parent to orchestration**
+- [x] **6. Slim parent to orchestration**
   - Parent manages card array state and delegates to sub-components
   - Target: <300 lines
 
-- [ ] **7. Visual + interaction verification**
+- [x] **7. Visual + interaction verification**
   - Card fan renders correctly at all hand sizes (1-7 cards)
   - Drag and drop still works smoothly
   - Card play flow unchanged
@@ -64,9 +64,9 @@
 | CREATE | `src/ui/components/hand/CardPlayConfirmation.svelte` |
 
 ## Verification Gate
-- [ ] `npm run typecheck` passes
-- [ ] `npm run build` passes
-- [ ] `npx vitest run` — all tests pass
-- [ ] Playwright: card hand renders, drag works, play flow works
-- [ ] Mobile layout verified
-- [ ] No performance regression (60fps card animations)
+- [x] `npm run typecheck` passes
+- [x] `npm run build` passes
+- [x] `npx vitest run` — all tests pass
+- [x] Playwright: card hand renders, drag works, play flow works
+- [x] Mobile layout verified
+- [x] No performance regression (60fps card animations)

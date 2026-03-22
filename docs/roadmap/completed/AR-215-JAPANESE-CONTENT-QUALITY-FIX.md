@@ -192,12 +192,12 @@ The corrections map will be populated from the audit results. Known fixes from t
 
 ## Verification Gate
 
-- [ ] `npm run typecheck` passes
-- [ ] `npm run build` passes
-- [ ] `npx vitest run` — all tests pass
-- [ ] DB fact counts: kanji ~2,096, grammar ~1,500+, vocab 7,726, kana 416
-- [ ] All 7 subdeck audits pass with 0 critical issues
-- [ ] Known-bad facts verified correct: 万, 電, 本, 間, 馬, 鹿, 稲, ぢ, づ, 大して, ~きる
-- [ ] Runtime distractor generation confirmed working for all Japanese facts (Playwright: load combat with Japanese deck, verify quiz shows 3 answer options)
-- [ ] No `correctAnswer` contains "Vm", "Noun ", or `〜` prefix
-- [ ] No kanji `pronunciation` field contains a compound-word reading longer than the kanji + 2 chars
+- [x] `npm run typecheck` passes
+- [x] `npm run build` passes
+- [x] `npx vitest run` — all tests pass
+- [x] DB fact counts: kanji ~2,096, grammar ~1,500+, vocab 7,726, kana 416
+- [x] All 7 subdeck audits pass with 0 critical issues
+- [x] Known-bad facts verified correct: 万, 電, 本, 間, 馬, 鹿, 稲, ぢ, づ, 大して, ~きる
+- [x] Runtime distractor generation confirmed working for all Japanese facts (Playwright: load combat with Japanese deck, verify quiz shows 3 answer options)
+- [x] No `correctAnswer` contains "Vm", "Noun ", or `〜` prefix
+- [x] No kanji `pronunciation` field contains a compound-word reading longer than the kanji + 2 chars

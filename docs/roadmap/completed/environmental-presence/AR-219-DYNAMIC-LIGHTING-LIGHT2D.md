@@ -328,25 +328,25 @@ Ensure the lighting system works alongside:
 
 ## Acceptance Criteria
 
-- [ ] QuantizedLight2D pipeline registered and functional
-- [ ] Enemy sprites on Light2D show directional lighting from normal maps
-- [ ] Lighting is visibly **stepped/quantized** (4-6 bands, not smooth gradients)
-- [ ] Each floor theme has distinct lighting character:
+- [x] QuantizedLight2D pipeline registered and functional
+- [x] Enemy sprites on Light2D show directional lighting from normal maps
+- [x] Lighting is visibly **stepped/quantized** (4-6 bands, not smooth gradients)
+- [x] Each floor theme has distinct lighting character:
   - Dust (1-3): Warm orange side-lights, flickering
   - Embers (4-6): Hot red/orange from below, strong flicker
   - Ice (7-9): Cool blue overhead light, minimal flicker
   - Arcane (10-12): Purple glow from above + two side fills
   - Void (13+): Deep purple, single intense center light
-- [ ] Light flicker animation works (torch rooms have visible intensity variation)
-- [ ] Shadow and outline sprites are NOT affected by lighting (default pipeline)
-- [ ] setTint from AR-216 still works (composites correctly with lighting)
-- [ ] AO gradient from AR-216 still works (applied after lighting)
-- [ ] Lighting transitions smoothly when floor theme changes
-- [ ] Low-end devices skip Light2D entirely (no visual artifacts)
-- [ ] Mid-tier devices limited to 3 lights
-- [ ] No sprite disappearance (flat fallback normal map catches missing normals)
-- [ ] `npm run typecheck` passes
-- [ ] `npm run build` succeeds
+- [x] Light flicker animation works (torch rooms have visible intensity variation)
+- [x] Shadow and outline sprites are NOT affected by lighting (default pipeline)
+- [x] setTint from AR-216 still works (composites correctly with lighting)
+- [x] AO gradient from AR-216 still works (applied after lighting)
+- [x] Lighting transitions smoothly when floor theme changes
+- [x] Low-end devices skip Light2D entirely (no visual artifacts)
+- [x] Mid-tier devices limited to 3 lights
+- [x] No sprite disappearance (flat fallback normal map catches missing normals)
+- [x] `npm run typecheck` passes
+- [x] `npm run build` succeeds
 
 ## Verification Gate
 

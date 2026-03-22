@@ -686,10 +686,6 @@
 
   /* ═══ LANDSCAPE DESKTOP OVERRIDES ═══════════════════════════════════════════ */
 
-  :global([data-layout="landscape"]) .settings-overlay {
-    margin-left: calc(100px * var(--layout-scale, 1));
-  }
-
   :global([data-layout="landscape"]) .back-btn {
     display: none;
   }

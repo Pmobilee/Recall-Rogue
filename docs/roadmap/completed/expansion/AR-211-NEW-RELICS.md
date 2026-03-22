@@ -629,51 +629,51 @@ Update TODO C.2 to list only 14 Rare definitions (exclude `volatile_manuscript`)
 
 ### Functional Gates
 
-- [ ] All 36 relic `effectId`s handled in `relicEffectResolver.ts`
-- [ ] Soul Jar `GUARANTEED` button state appears in combat UI when `soulJarCharges > 0`
-- [ ] Soul Jar charges accumulate: 1 per 5 correct Charges; tap to consume → auto-succeed quiz
-- [ ] Deja Vu: On turn 1 of each encounter, 1 card (2 at level 15+) from discard appears in hand with -1 AP cost, carrying a previously-correct fact. No crash on empty discard.
-- [ ] Mind Palace: streak persists run-wide. One wrong per 10 freezes (not resets). Second consecutive wrong resets. Bonuses at 10/20/30 verified in headless sim.
-- [ ] Self-Burn (`playerBurnStacks`): enemy attacks trigger player Burn stacks before block. Halves on trigger.
-- [ ] Volatile Manuscript: every 3rd Charge applies 4 self-Burn stacks. All Charge multipliers +0.5×.
-- [ ] Paradox Engine: +1 AP/turn unconditional. Wrong Charge = 0.3× multiplier + 5 piercing damage.
-- [ ] Dragon's Heart: passive +2 damage always. Elite kill = +5 max HP + 30% heal. Boss kill = +15 max HP + full heal + random Legendary relic.
-- [ ] Null Shard: all chain multipliers locked at 1.0×. All attacks +25% damage. Chain Lightning floors at chain length 1.
-- [ ] Chain Forge: once per encounter, a chain-breaking card continues instead. Card gets current multiplier, chain increments.
-- [ ] Chromatic Chain: completing 3+ chain primes next chain to start at 2 (carries across turns). Once per encounter.
-- [ ] `on_elite_kill` trigger type added to `RelicTrigger` union.
-- [ ] All 36 relic unlock levels match the schedule in Part 10 of the spec.
+- [x] All 36 relic `effectId`s handled in `relicEffectResolver.ts`
+- [x] Soul Jar `GUARANTEED` button state appears in combat UI when `soulJarCharges > 0`
+- [x] Soul Jar charges accumulate: 1 per 5 correct Charges; tap to consume → auto-succeed quiz
+- [x] Deja Vu: On turn 1 of each encounter, 1 card (2 at level 15+) from discard appears in hand with -1 AP cost, carrying a previously-correct fact. No crash on empty discard.
+- [x] Mind Palace: streak persists run-wide. One wrong per 10 freezes (not resets). Second consecutive wrong resets. Bonuses at 10/20/30 verified in headless sim.
+- [x] Self-Burn (`playerBurnStacks`): enemy attacks trigger player Burn stacks before block. Halves on trigger.
+- [x] Volatile Manuscript: every 3rd Charge applies 4 self-Burn stacks. All Charge multipliers +0.5×.
+- [x] Paradox Engine: +1 AP/turn unconditional. Wrong Charge = 0.3× multiplier + 5 piercing damage.
+- [x] Dragon's Heart: passive +2 damage always. Elite kill = +5 max HP + 30% heal. Boss kill = +15 max HP + full heal + random Legendary relic.
+- [x] Null Shard: all chain multipliers locked at 1.0×. All attacks +25% damage. Chain Lightning floors at chain length 1.
+- [x] Chain Forge: once per encounter, a chain-breaking card continues instead. Card gets current multiplier, chain increments.
+- [x] Chromatic Chain: completing 3+ chain primes next chain to start at 2 (carries across turns). Once per encounter.
+- [x] `on_elite_kill` trigger type added to `RelicTrigger` union.
+- [x] All 36 relic unlock levels match the schedule in Part 10 of the spec.
 
 ### Code Quality Gates
 
-- [ ] `npm run typecheck` passes with no errors
-- [ ] `npm run build` succeeds
-- [ ] `npx vitest run` passes all tests including new relic tests
-- [ ] No `any` types in new resolver code
-- [ ] All new resolver functions have JSDoc comments
-- [ ] All new context interface fields are documented
+- [x] `npm run typecheck` passes with no errors
+- [x] `npm run build` succeeds
+- [x] `npx vitest run` passes all tests including new relic tests
+- [x] No `any` types in new resolver code
+- [x] All new resolver functions have JSDoc comments
+- [x] All new context interface fields are documented
 
 ### Balance Verification
 
-- [ ] Run headless sim: `npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 500` — no crashes
-- [ ] Run relic audit: `npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/relic-audit.ts` — all 36 new relics fire at least once in 500 runs
-- [ ] No build archetype exceeds 9.5/10 power (per Part 11 scorecard targets)
-- [ ] Mind Palace + Soul Jar combo verified safe (no infinite-streak exploit)
-- [ ] Paradox Engine + Gambit: wrong Gambit at 0.3× = 2.1 damage + 5 piercing. Verify no degenerate loop.
-- [ ] Volatile Manuscript self-Burn: verify self-damage does not exceed ~30% of player HP per turn at normal Burn stacks
+- [x] Run headless sim: `npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 500` — no crashes
+- [x] Run relic audit: `npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/relic-audit.ts` — all 36 new relics fire at least once in 500 runs
+- [x] No build archetype exceeds 9.5/10 power (per Part 11 scorecard targets)
+- [x] Mind Palace + Soul Jar combo verified safe (no infinite-streak exploit)
+- [x] Paradox Engine + Gambit: wrong Gambit at 0.3× = 2.1 damage + 5 piercing. Verify no degenerate loop.
+- [x] Volatile Manuscript self-Burn: verify self-damage does not exceed ~30% of player HP per turn at normal Burn stacks
 
 ### Documentation Gate
 
-- [ ] `docs/GAME_DESIGN.md` updated: relic count changed from 41 to 77, new relic tiers/categories described, self-Burn mechanic documented, Mind Palace streak mechanic documented
-- [ ] `docs/ARCHITECTURE.md` updated: `on_elite_kill` trigger noted, new run state fields (`soulJarCharges`, `mindPalaceStreak`, `playerBurnStacks`, etc.) listed in run state schema section
-- [ ] `data/inspection-registry.json` has exactly 36 new relic entries
+- [x] `docs/GAME_DESIGN.md` updated: relic count changed from 41 to 77, new relic tiers/categories described, self-Burn mechanic documented, Mind Palace streak mechanic documented
+- [x] `docs/ARCHITECTURE.md` updated: `on_elite_kill` trigger noted, new run state fields (`soulJarCharges`, `mindPalaceStreak`, `playerBurnStacks`, etc.) listed in run state schema section
+- [x] `data/inspection-registry.json` has exactly 36 new relic entries
 
 ### Visual Verification (post-implementation)
 
-- [ ] Soul Jar GUARANTEED button: screenshot confirms it appears and is visually distinct from CHARGE/FREE
-- [ ] Deja Vu card spawn: screenshot confirms extra card(s) in hand on turn 1 with -1 AP indicator
-- [ ] Dragon's Heart elite kill: console log or health bar confirms +5 max HP and heal applied
-- [ ] Volatile Manuscript self-Burn: combat log confirms player takes Burn damage on enemy attacks when stacked
+- [x] Soul Jar GUARANTEED button: screenshot confirms it appears and is visually distinct from CHARGE/FREE
+- [x] Deja Vu card spawn: screenshot confirms extra card(s) in hand on turn 1 with -1 AP indicator
+- [x] Dragon's Heart elite kill: console log or health bar confirms +5 max HP and heal applied
+- [x] Volatile Manuscript self-Burn: combat log confirms player takes Burn damage on enemy attacks when stacked
 
 ---
 

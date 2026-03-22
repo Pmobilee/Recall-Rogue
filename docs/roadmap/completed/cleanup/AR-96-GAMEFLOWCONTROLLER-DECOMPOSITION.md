@@ -9,7 +9,7 @@
 
 ## TODO Checklist
 
-- [ ] **1. Map the current function graph**
+- [x] **1. Map the current function graph**
   - Read `src/services/gameFlowController.ts` fully
   - Group functions by responsibility domain:
     - **Run lifecycle**: startRun, finishRun, abandonRun, etc.
@@ -20,35 +20,35 @@
     - **Screen routing**: navigateTo, returnToHub, showScreen
   - Document which functions call which (call graph)
 
-- [ ] **2. Extract `rewardFlowController.ts`**
+- [x] **2. Extract `rewardFlowController.ts`**
   - All reward-related functions: openCardReward, proceedAfterReward, skipReward, card upgrade flow
   - Clean interface: receives game state, emits state transitions
   - ~200-300 lines
 
-- [ ] **3. Extract `encounterFlowController.ts`**
+- [x] **3. Extract `encounterFlowController.ts`**
   - Encounter start/complete/retreat logic
   - `onEncounterComplete` (134 lines — largest function) broken into sub-functions
   - ~300-400 lines
 
-- [ ] **4. Extract `relicFlowController.ts`**
+- [x] **4. Extract `relicFlowController.ts`**
   - Relic offer, selection, acquisition flow
   - ~150-200 lines
 
-- [ ] **5. Extract `roomSelectionController.ts`**
+- [x] **5. Extract `roomSelectionController.ts`**
   - Room choice presentation, selection handling, special room routing
   - ~150-200 lines
 
-- [ ] **6. Keep `gameFlowController.ts` as thin orchestrator**
+- [x] **6. Keep `gameFlowController.ts` as thin orchestrator**
   - Imports domain controllers
   - Handles run lifecycle (start/finish/abandon)
   - Routes between domain controllers
   - Target: <400 lines
 
-- [ ] **7. Update all imports**
+- [x] **7. Update all imports**
   - If public API changes, update all importing files
   - Prefer re-exporting from gameFlowController to minimize churn
 
-- [ ] **8. Comprehensive flow testing**
+- [x] **8. Comprehensive flow testing**
   - Start run → combat → reward → room choice → next floor → cash out
   - Start run → combat → defeat → run end
   - Relic acquisition at all trigger points
@@ -73,10 +73,10 @@
 | EDIT | Any files importing from gameFlowController (if API changes) |
 
 ## Verification Gate
-- [ ] `npm run typecheck` passes
-- [ ] `npm run build` passes
-- [ ] `npx vitest run` — all tests pass
-- [ ] Full game flow verified via Playwright (start → combat → reward → room → cash out)
-- [ ] Retreat flow verified
-- [ ] Run defeat flow verified
-- [ ] No console errors during any flow
+- [x] `npm run typecheck` passes
+- [x] `npm run build` passes
+- [x] `npx vitest run` — all tests pass
+- [x] Full game flow verified via Playwright (start → combat → reward → room → cash out)
+- [x] Retreat flow verified
+- [x] Run defeat flow verified
+- [x] No console errors during any flow

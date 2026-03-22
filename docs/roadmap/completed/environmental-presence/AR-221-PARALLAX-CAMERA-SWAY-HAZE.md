@@ -383,28 +383,28 @@ destroyEnvironmentalEffects(): void {
 
 ## Acceptance Criteria
 
-- [ ] Idle camera sway visible (3-5px oscillation, smooth sine wave)
-- [ ] Camera positions snap to whole pixels (no sub-pixel shimmer)
-- [ ] `roundPixels: true` added to game config
-- [ ] Background moves slower than camera (scroll factor 0.3)
-- [ ] Front particles move faster than camera (scroll factor 1.2)
-- [ ] Vignette and UI stay fixed (scroll factor 0)
-- [ ] Mouse parallax works on desktop (8px max offset, smooth lerp)
-- [ ] Mouse parallax disabled on mobile
-- [ ] Heat haze visible in embers theme (bottom 50% of screen shimmers)
-- [ ] Heat haze visible in void theme (bottom 70% shimmers, weaker)
-- [ ] Heat haze does NOT distort enemy sprite significantly (strength 0.002-0.008)
-- [ ] Heat haze masked — top portion of screen is undistorted
-- [ ] Micro-animations active per theme:
+- [x] Idle camera sway visible (3-5px oscillation, smooth sine wave)
+- [x] Camera positions snap to whole pixels (no sub-pixel shimmer)
+- [x] `roundPixels: true` added to game config
+- [x] Background moves slower than camera (scroll factor 0.3)
+- [x] Front particles move faster than camera (scroll factor 1.2)
+- [x] Vignette and UI stay fixed (scroll factor 0)
+- [x] Mouse parallax works on desktop (8px max offset, smooth lerp)
+- [x] Mouse parallax disabled on mobile
+- [x] Heat haze visible in embers theme (bottom 50% of screen shimmers)
+- [x] Heat haze visible in void theme (bottom 70% shimmers, weaker)
+- [x] Heat haze does NOT distort enemy sprite significantly (strength 0.002-0.008)
+- [x] Heat haze masked — top portion of screen is undistorted
+- [x] Micro-animations active per theme:
   - Dust/Embers: torch flicker (alpha pulse)
   - Ice: subtle shiver (x vibration)
   - Arcane: slow scale pulse
   - Void: alpha phase flicker
-- [ ] Micro-animations don't conflict with idle bob
-- [ ] Low-end devices skip camera sway, mouse parallax, and heat haze
-- [ ] All effects cleaned up on scene transition
-- [ ] `npm run typecheck` passes
-- [ ] `npm run build` succeeds
+- [x] Micro-animations don't conflict with idle bob
+- [x] Low-end devices skip camera sway, mouse parallax, and heat haze
+- [x] All effects cleaned up on scene transition
+- [x] `npm run typecheck` passes
+- [x] `npm run build` succeeds
 
 ## Verification Gate
 

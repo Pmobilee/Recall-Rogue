@@ -141,7 +141,7 @@ This can be implemented as a thin wrapper: `<CardBrowser cards={exhaustedCards} 
 
 ### Step 1: Add `isRemovedFromGame` flag to Card type
 
-- [ ] **1.1** In `src/data/card-types.ts`, add optional field to the `Card` interface:
+- [x] **1.1** In `src/data/card-types.ts`, add optional field to the `Card` interface:
   ```typescript
   /** If true, this card was permanently removed from game (Inscription exhaust). Cannot be Recollected. */
   isRemovedFromGame?: boolean;
@@ -151,7 +151,7 @@ This can be implemented as a thin wrapper: `<CardBrowser cards={exhaustedCards} 
 
 ### Step 2: Add `ActiveInscription` type and `activeInscriptions` to `TurnState`
 
-- [ ] **2.1** In `src/services/turnManager.ts`, add the `ActiveInscription` interface and export it:
+- [x] **2.1** In `src/services/turnManager.ts`, add the `ActiveInscription` interface and export it:
   ```typescript
   export interface ActiveInscription {
     mechanicId: string;
@@ -162,37 +162,37 @@ This can be implemented as a thin wrapper: `<CardBrowser cards={exhaustedCards} 
   Place it near the top of the file alongside other exported interfaces.
   **Acceptance:** Interface is exported and importable.
 
-- [ ] **2.2** Add `activeInscriptions: ActiveInscription[]` to the `TurnState` interface.
+- [x] **2.2** Add `activeInscriptions: ActiveInscription[]` to the `TurnState` interface.
   **Acceptance:** Field present in the interface. Typecheck passes.
 
-- [ ] **2.3** In `initEncounterTurnState()` (the function that builds the initial `TurnState`), initialize `activeInscriptions: []`.
+- [x] **2.3** In `initEncounterTurnState()` (the function that builds the initial `TurnState`), initialize `activeInscriptions: []`.
   **Acceptance:** All `TurnState` construction sites initialize the field. Typecheck passes.
 
-- [ ] **2.4** In `encounterBridge.ts`, wherever `TurnState` is snapshot-cloned or serialized for save/resume, ensure `activeInscriptions` is included in the clone. Search for all spread/clone patterns for `TurnState` and add the field.
+- [x] **2.4** In `encounterBridge.ts`, wherever `TurnState` is snapshot-cloned or serialized for save/resume, ensure `activeInscriptions` is included in the clone. Search for all spread/clone patterns for `TurnState` and add the field.
   **Acceptance:** No runtime "undefined" errors on `activeInscriptions` after resume. Typecheck passes.
 
 ### Step 3: Add `resolveInscription()` function in turnManager
 
-- [ ] **3.1** Add a pure helper function `resolveInscription(turnState: TurnState, card: Card, playMode: PlayMode): void` in `src/services/turnManager.ts`. This function:
+- [x] **3.1** Add a pure helper function `resolveInscription(turnState: TurnState, card: Card, playMode: PlayMode): void` in `src/services/turnManager.ts`. This function:
   1. Checks if an inscription of the same `mechanicId` is already active. If yes, returns without adding (pool=1 constraint). The card is still exhausted by the caller.
   2. Computes `effectValue` from the card. For now this is a pass-through — the card's `baseEffectValue` is already the resolved QP/CC/CW value passed in by the caller (encounterBridge resolves play mode before calling). The resolver stores it as-is.
   3. Pushes `{ mechanicId: card.mechanicId, effectValue, playMode }` onto `turnState.activeInscriptions`.
   **Note:** This function does NOT exhaust the card — `encounterBridge` calls `exhaustCard()` separately and also marks `card.isRemovedFromGame = true` on the exhausted copy.
   **Acceptance:** Function exported. Typecheck passes.
 
-- [ ] **3.2** Add a helper `getActiveInscription(turnState: TurnState, mechanicId: string): ActiveInscription | undefined` that returns the active inscription for a given mechanic ID, or undefined if not active. Used by effect hooks.
+- [x] **3.2** Add a helper `getActiveInscription(turnState: TurnState, mechanicId: string): ActiveInscription | undefined` that returns the active inscription for a given mechanic ID, or undefined if not active. Used by effect hooks.
   **Acceptance:** Function exported. Used in subsequent steps.
 
 ### Step 4: Wire Inscription of Fury into the damage pipeline
 
-- [ ] **4.1** In `src/services/cardEffectResolver.ts`, add `inscriptionFuryBonus?: number` to `AdvancedResolveOptions`:
+- [x] **4.1** In `src/services/cardEffectResolver.ts`, add `inscriptionFuryBonus?: number` to `AdvancedResolveOptions`:
   ```typescript
   /** Flat damage bonus from active Inscription of Fury. Added at damage pipeline step 3. */
   inscriptionFuryBonus?: number;
   ```
   **Acceptance:** Field present. Typecheck passes.
 
-- [ ] **4.2** In `resolveCardEffect()`, apply the bonus at damage pipeline step 3 — after mastery bonus, before relic flat bonuses. Locate the line:
+- [x] **4.2** In `resolveCardEffect()`, apply the bonus at damage pipeline step 3 — after mastery bonus, before relic flat bonuses. Locate the line:
   ```typescript
   const effectiveBase = mechanicBaseValue + sharpenedEdgeBonus;
   ```
@@ -204,7 +204,7 @@ This can be implemented as a thin wrapper: `<CardBrowser cards={exhaustedCards} 
   The bonus only applies to attack cards (`effectiveType === 'attack'`). Non-attack cards are unaffected.
   **Acceptance:** Unit tests pass. The bonus does not apply to shield/buff/utility cards. Typecheck passes.
 
-- [ ] **4.3** In `src/services/encounterBridge.ts`, in the `resolveCardPlay()` or equivalent function that calls `resolveCardEffect()`, read the active Inscription of Fury from `turnState.activeInscriptions` and pass it into `AdvancedResolveOptions`:
+- [x] **4.3** In `src/services/encounterBridge.ts`, in the `resolveCardPlay()` or equivalent function that calls `resolveCardEffect()`, read the active Inscription of Fury from `turnState.activeInscriptions` and pass it into `AdvancedResolveOptions`:
   ```typescript
   const furyInscription = getActiveInscription(turnState, 'inscription_fury');
   advanced.inscriptionFuryBonus = furyInscription?.effectValue ?? 0;
@@ -213,7 +213,7 @@ This can be implemented as a thin wrapper: `<CardBrowser cards={exhaustedCards} 
 
 ### Step 5: Wire Inscription of Iron into turn-start
 
-- [ ] **5.1** In `src/services/turnManager.ts`, in `startPlayerTurn()` (the function called at the beginning of each player turn, before draw), add Iron block application. After existing turn-start logic (persistent shield, relic turn-start effects), add:
+- [x] **5.1** In `src/services/turnManager.ts`, in `startPlayerTurn()` (the function called at the beginning of each player turn, before draw), add Iron block application. After existing turn-start logic (persistent shield, relic turn-start effects), add:
   ```typescript
   // Inscription of Iron: apply block at start of each player turn.
   const ironInscription = getActiveInscription(turnState, 'inscription_iron');
@@ -226,7 +226,7 @@ This can be implemented as a thin wrapper: `<CardBrowser cards={exhaustedCards} 
 
 ### Step 6: Wire Inscription of Wisdom into CC resolution
 
-- [ ] **6.1** In `src/services/encounterBridge.ts`, in the charge-correct resolution path (after the primary card effect is applied and `correct === true`), add Wisdom trigger:
+- [x] **6.1** In `src/services/encounterBridge.ts`, in the charge-correct resolution path (after the primary card effect is applied and `correct === true`), add Wisdom trigger:
   ```typescript
   // Inscription of Wisdom: CC resolution trigger.
   const wisdomInscription = getActiveInscription(turnState, 'inscription_wisdom');
@@ -244,7 +244,7 @@ This can be implemented as a thin wrapper: `<CardBrowser cards={exhaustedCards} 
 
 ### Step 7: Mark Inscription exhaust as `isRemovedFromGame`
 
-- [ ] **7.1** In `src/services/encounterBridge.ts`, in the card play resolution path, detect Inscription cards. An Inscription card is identified by `card.mechanicId` starting with `'inscription_'` (or a dedicated `card.isInscription` flag — see 7.2). When an Inscription card is played:
+- [x] **7.1** In `src/services/encounterBridge.ts`, in the card play resolution path, detect Inscription cards. An Inscription card is identified by `card.mechanicId` starting with `'inscription_'` (or a dedicated `card.isInscription` flag — see 7.2). When an Inscription card is played:
   1. Call `resolveInscription(turnState, card, playMode)` to register it.
   2. Call `exhaustCard(turnState.deck, card.id)` to move it to the exhaust pile.
   3. Set `isRemovedFromGame = true` on the card in the exhaust pile:
@@ -256,12 +256,12 @@ This can be implemented as a thin wrapper: `<CardBrowser cards={exhaustedCards} 
   **Note:** Inscription of Wisdom CW fizzles — the caller should pass `effectValue: 0` or skip calling `resolveInscription` entirely. Implement as: if `playMode === 'charge_wrong'` and `mechanicId === 'inscription_wisdom'`, skip `resolveInscription` (don't register the inscription). The card is still exhausted and marked `isRemovedFromGame`.
   **Acceptance:** After playing an Inscription, the card is in `exhaustPile` with `isRemovedFromGame: true`. It is NOT in hand or discard. `activeInscriptions` has one entry. Pool=1 enforced (playing a duplicate does not double-register). Typecheck passes.
 
-- [ ] **7.2** Add `isInscription?: boolean` to the `Card` interface in `src/data/card-types.ts`. This is set at card creation time in `mechanics.ts` (AR-206 will set it for the three inscription mechanic definitions). For now it is just the field declaration — `encounterBridge` should check both `card.isInscription` (preferred) and fall back to `card.mechanicId?.startsWith('inscription_')` for robustness.
+- [x] **7.2** Add `isInscription?: boolean` to the `Card` interface in `src/data/card-types.ts`. This is set at card creation time in `mechanics.ts` (AR-206 will set it for the three inscription mechanic definitions). For now it is just the field declaration — `encounterBridge` should check both `card.isInscription` (preferred) and fall back to `card.mechanicId?.startsWith('inscription_')` for robustness.
   **Acceptance:** Field present in Card type. Typecheck passes.
 
 ### Step 8: Add `inscriptionFuryBonus` to headless simulator
 
-- [ ] **8.1** In `tests/playtest/headless/simulator.ts`, in the `buildAdvancedResolveOptions()` function (or equivalent where `AdvancedResolveOptions` is assembled), add Inscription of Fury reading from simulated `turnState.activeInscriptions`:
+- [x] **8.1** In `tests/playtest/headless/simulator.ts`, in the `buildAdvancedResolveOptions()` function (or equivalent where `AdvancedResolveOptions` is assembled), add Inscription of Fury reading from simulated `turnState.activeInscriptions`:
   ```typescript
   const furyInscription = turnState.activeInscriptions?.find(i => i.mechanicId === 'inscription_fury');
   advanced.inscriptionFuryBonus = furyInscription?.effectValue ?? 0;
@@ -270,7 +270,7 @@ This can be implemented as a thin wrapper: `<CardBrowser cards={exhaustedCards} 
 
 ### Step 9: Build `CardBrowser.svelte`
 
-- [ ] **9.1** Create `src/ui/components/CardBrowser.svelte`. Implement as a Svelte 5 component with the Props interface defined in the System Design section above. Requirements:
+- [x] **9.1** Create `src/ui/components/CardBrowser.svelte`. Implement as a Svelte 5 component with the Props interface defined in the System Design section above. Requirements:
   - Full-screen modal overlay (portrait) / right-side panel (landscape, via `isLandscape` store import).
   - `z-index` above `CombatHud` (use `z-index: 500` — confirm against existing combat z-index layers before committing).
   - Scrollable card list. Each row: card name (bold, left), AP cost chip (right), mechanic name (muted, below name), card type color dot.
@@ -285,12 +285,12 @@ This can be implemented as a thin wrapper: `<CardBrowser cards={exhaustedCards} 
   **Acceptance:** Component renders without errors. Portrait/landscape layout works (visual inspection with `__terraScenario`). `npm run typecheck` passes.
   **Files:** `src/ui/components/CardBrowser.svelte` (new)
 
-- [ ] **9.2** Export `CardBrowser` from `src/ui/components/index.ts` (or equivalent barrel file, if one exists). If no barrel file, skip this step — callers import directly.
+- [x] **9.2** Export `CardBrowser` from `src/ui/components/index.ts` (or equivalent barrel file, if one exists). If no barrel file, skip this step — callers import directly.
   **Acceptance:** Import path works in consuming components. Typecheck passes.
 
 ### Step 10: Build `MultiChoicePopup.svelte`
 
-- [ ] **10.1** Create `src/ui/components/MultiChoicePopup.svelte`. Implement as a Svelte 5 component with the Props interface from the System Design section. Requirements:
+- [x] **10.1** Create `src/ui/components/MultiChoicePopup.svelte`. Implement as a Svelte 5 component with the Props interface from the System Design section. Requirements:
   - Centered modal, dark semi-transparent backdrop.
   - Prompt text at top (bold, centered).
   - Vertical list of 2–4 choice buttons. Each button: label (bold) + optional description (muted, smaller, below label).
@@ -303,7 +303,7 @@ This can be implemented as a thin wrapper: `<CardBrowser cards={exhaustedCards} 
 
 ### Step 11: Build `ExhaustPileViewer.svelte`
 
-- [ ] **11.1** Create `src/ui/components/ExhaustPileViewer.svelte`. This is a thin wrapper over `CardBrowser` in `view` mode:
+- [x] **11.1** Create `src/ui/components/ExhaustPileViewer.svelte`. This is a thin wrapper over `CardBrowser` in `view` mode:
   ```svelte
   <CardBrowser
     cards={exhaustedCards}
@@ -319,7 +319,7 @@ This can be implemented as a thin wrapper: `<CardBrowser cards={exhaustedCards} 
 
 ### Step 12: Expose exhaust pile in CombatHud
 
-- [ ] **12.1** In the CombatHud component (find via `Grep 'exhaustPile\|exhausted' src/ui/components/`), add a tappable exhaust count indicator. Tapping it opens `ExhaustPileViewer` as an overlay. The indicator shows the count of exhausted cards (e.g. "3x" with a skull/X icon). If exhaust pile is empty, the indicator is hidden.
+- [x] **12.1** In the CombatHud component (find via `Grep 'exhaustPile\|exhausted' src/ui/components/`), add a tappable exhaust count indicator. Tapping it opens `ExhaustPileViewer` as an overlay. The indicator shows the count of exhausted cards (e.g. "3x" with a skull/X icon). If exhaust pile is empty, the indicator is hidden.
   - Pass `activeDeck.exhaustPile` to `ExhaustPileViewer`.
   - Close: ExhaustPileViewer's `onDismiss` sets a local `showExhaustViewer = false` reactive variable.
   - Position: near the discard pile counter in the existing deck info row (check actual layout visually before choosing exact position).
@@ -328,7 +328,7 @@ This can be implemented as a thin wrapper: `<CardBrowser cards={exhaustedCards} 
 
 ### Step 13: Persist `activeInscriptions` across turn serialize/deserialize
 
-- [ ] **13.1** In `src/services/encounterBridge.ts`, in `getEncounterSnapshot()` or equivalent save/serialize function, include `activeInscriptions` in the snapshot:
+- [x] **13.1** In `src/services/encounterBridge.ts`, in `getEncounterSnapshot()` or equivalent save/serialize function, include `activeInscriptions` in the snapshot:
   ```typescript
   activeInscriptions: turnState.activeInscriptions.map(i => ({ ...i })),
   ```
@@ -340,7 +340,7 @@ This can be implemented as a thin wrapper: `<CardBrowser cards={exhaustedCards} 
 
 ### Step 14: Update inspection registry
 
-- [ ] **14.1** In `data/inspection-registry.json`, add the following entries:
+- [x] **14.1** In `data/inspection-registry.json`, add the following entries:
   - `systems` table: new entry `inscription_system` (`name: "Inscription System"`, `status: "active"`, `lastChangedDate: "2026-03-21"`, all inspection dates `"not_checked"`)
   - `systems` table: new entry `card_browser_ui` (`name: "Card Browser UI"`, `status: "active"`)
   - `systems` table: new entry `multi_choice_popup` (`name: "Multi-Choice Popup"`, `status: "active"`)
@@ -350,7 +350,7 @@ This can be implemented as a thin wrapper: `<CardBrowser cards={exhaustedCards} 
 
 ### Step 15: Documentation update
 
-- [ ] **15.1** In `docs/GAME_DESIGN.md`, add an "Inscription" subsection under the card keywords/mechanics section. Document:
+- [x] **15.1** In `docs/GAME_DESIGN.md`, add an "Inscription" subsection under the card keywords/mechanics section. Document:
   - What Inscriptions are (once-played persistent effects)
   - Exhaust-on-play behavior and non-Recollectable status
   - Pool=1 per type (no stacking)
@@ -359,7 +359,7 @@ This can be implemented as a thin wrapper: `<CardBrowser cards={exhaustedCards} 
   - Cursed Inscription QP = 0.7x power
   **Acceptance:** Doc updated. No stale references to Echo system remain near Inscription content.
 
-- [ ] **15.2** In `docs/ARCHITECTURE.md`, add `CardBrowser.svelte`, `MultiChoicePopup.svelte`, `ExhaustPileViewer.svelte` to the UI components table with their purposes. Add `activeInscriptions: ActiveInscription[]` to the TurnState field documentation section (if that section exists).
+- [x] **15.2** In `docs/ARCHITECTURE.md`, add `CardBrowser.svelte`, `MultiChoicePopup.svelte`, `ExhaustPileViewer.svelte` to the UI components table with their purposes. Add `activeInscriptions: ActiveInscription[]` to the TurnState field documentation section (if that section exists).
   **Acceptance:** Doc updated. Typecheck passes. Build passes.
 
 ---
@@ -386,47 +386,47 @@ This can be implemented as a thin wrapper: `<CardBrowser cards={exhaustedCards} 
 ## Acceptance Criteria
 
 ### Inscription System
-- [ ] `TurnState.activeInscriptions` initializes as `[]` at encounter start.
-- [ ] Playing an Inscription card registers it in `activeInscriptions` with the correct `effectValue` and `playMode`.
-- [ ] The card moves to `exhaustPile` with `isRemovedFromGame: true` after play.
-- [ ] Pool=1 enforced: playing a second `inscription_fury` when one is already active does not add a duplicate entry.
-- [ ] Inscription of Fury (when active): attack cards receive flat bonus at damage pipeline step 3. Shield/utility/buff/debuff cards receive no bonus.
-- [ ] Inscription of Iron (when active): player gains `effectValue` block at the start of each player turn, before draw.
-- [ ] Inscription of Wisdom (when active, played QP or CC): each correct Charge answer draws 1 extra card.
-- [ ] Inscription of Wisdom CC inscription effect: each CC answer also heals 1 HP.
-- [ ] Inscription of Wisdom CW: no inscription registered, card still exhausted and marked `isRemovedFromGame`.
-- [ ] Inscriptions survive turn serialize/deserialize (save-resume).
-- [ ] Headless sim handles `activeInscriptions` without crashing.
+- [x] `TurnState.activeInscriptions` initializes as `[]` at encounter start.
+- [x] Playing an Inscription card registers it in `activeInscriptions` with the correct `effectValue` and `playMode`.
+- [x] The card moves to `exhaustPile` with `isRemovedFromGame: true` after play.
+- [x] Pool=1 enforced: playing a second `inscription_fury` when one is already active does not add a duplicate entry.
+- [x] Inscription of Fury (when active): attack cards receive flat bonus at damage pipeline step 3. Shield/utility/buff/debuff cards receive no bonus.
+- [x] Inscription of Iron (when active): player gains `effectValue` block at the start of each player turn, before draw.
+- [x] Inscription of Wisdom (when active, played QP or CC): each correct Charge answer draws 1 extra card.
+- [x] Inscription of Wisdom CC inscription effect: each CC answer also heals 1 HP.
+- [x] Inscription of Wisdom CW: no inscription registered, card still exhausted and marked `isRemovedFromGame`.
+- [x] Inscriptions survive turn serialize/deserialize (save-resume).
+- [x] Headless sim handles `activeInscriptions` without crashing.
 
 ### Card Browser UI
-- [ ] `CardBrowser.svelte` renders in portrait (full-screen overlay) and landscape (right-panel docked).
-- [ ] `mode='select'`: tapping a row calls `onSelect(card)`. Row highlights on tap.
-- [ ] `mode='view'`: rows are not tappable.
-- [ ] `showAnswers=true`: shows fact question and correct answer per card.
-- [ ] Empty state: "No cards" shown when `cards` is empty.
-- [ ] Optional timer: countdown bar visible, `onDismiss()` fires on expiry.
-- [ ] Dismiss via X button or tap-outside (portrait) works.
-- [ ] `data-testid` attributes present for all interactive elements.
+- [x] `CardBrowser.svelte` renders in portrait (full-screen overlay) and landscape (right-panel docked).
+- [x] `mode='select'`: tapping a row calls `onSelect(card)`. Row highlights on tap.
+- [x] `mode='view'`: rows are not tappable.
+- [x] `showAnswers=true`: shows fact question and correct answer per card.
+- [x] Empty state: "No cards" shown when `cards` is empty.
+- [x] Optional timer: countdown bar visible, `onDismiss()` fires on expiry.
+- [x] Dismiss via X button or tap-outside (portrait) works.
+- [x] `data-testid` attributes present for all interactive elements.
 
 ### Multi-Choice Popup
-- [ ] Renders with 2, 3, and 4 choices.
-- [ ] Tapping a choice fires `onChoose(index)` with the correct index.
-- [ ] `forcePick=true`: no dismiss option shown.
-- [ ] `forcePick=false`: X button fires `onDismiss()`.
-- [ ] Minimum 48px tap target per choice button.
+- [x] Renders with 2, 3, and 4 choices.
+- [x] Tapping a choice fires `onChoose(index)` with the correct index.
+- [x] `forcePick=true`: no dismiss option shown.
+- [x] `forcePick=false`: X button fires `onDismiss()`.
+- [x] Minimum 48px tap target per choice button.
 
 ### Exhaust Pile Viewer
-- [ ] Accessible via tap on exhaust count in CombatHud.
-- [ ] Hidden when exhaust pile is empty.
-- [ ] Shows all exhausted cards (including `isRemovedFromGame` Inscriptions).
-- [ ] Closes on dismiss.
+- [x] Accessible via tap on exhaust count in CombatHud.
+- [x] Hidden when exhaust pile is empty.
+- [x] Shows all exhausted cards (including `isRemovedFromGame` Inscriptions).
+- [x] Closes on dismiss.
 
 ### General
-- [ ] `npm run typecheck` passes with zero errors.
-- [ ] `npm run build` succeeds.
-- [ ] `npx vitest run` passes (1900+ tests, no regressions).
-- [ ] `data/inspection-registry.json` updated with all new entries.
-- [ ] `docs/GAME_DESIGN.md` and `docs/ARCHITECTURE.md` updated.
+- [x] `npm run typecheck` passes with zero errors.
+- [x] `npm run build` succeeds.
+- [x] `npx vitest run` passes (1900+ tests, no regressions).
+- [x] `data/inspection-registry.json` updated with all new entries.
+- [x] `docs/GAME_DESIGN.md` and `docs/ARCHITECTURE.md` updated.
 
 ---
 

@@ -40,7 +40,7 @@ Workers MUST read `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md`:
 
 ### Prerequisite — Multi-Choice Popup UI
 
-- [ ] 1. Build MultiChoicePopup Svelte component
+- [x] 1. Build MultiChoicePopup Svelte component
   **Files:** `src/ui/components/MultiChoicePopup.svelte` (new), `src/ui/components/CombatHud.svelte` (wire in)
   **What:** A mobile-friendly overlay that presents 2-4 labeled option buttons. Player taps one to select. The popup must:
   - Accept a list of `{ label: string; value: string }` options
@@ -57,7 +57,7 @@ Workers MUST read `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md`:
 
 ### Flagship Quiz Cards (3)
 
-- [ ] 2. Add Gambit mechanic definition and resolver
+- [x] 2. Add Gambit mechanic definition and resolver
   **Files:** `src/data/mechanics.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`
   **What:** Add mechanic `gambit`: type=attack, AP=1, Pool=1, unlockLevel=6.
   - QP: 10 dmg, lose 2 HP (self-damage)
@@ -69,7 +69,7 @@ Workers MUST read `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md`:
   Appendix F ruling: Paradox Engine + Gambit CW = 0.3× dmg (2.1) + 5 piercing + lose HP — not exploitable.
   **Acceptance:** QP: 10 dmg dealt, player loses 2 HP. CC: 30 dmg dealt, player heals 5 HP. CW: 7 dmg dealt, player loses 5 HP. L3+ self-damage reduced by 1. Pool=1 (one copy per run maximum).
 
-- [ ] 3. Add Curse of Doubt mechanic definition and resolver
+- [x] 3. Add Curse of Doubt mechanic definition and resolver
   **Files:** `src/data/mechanics.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/services/turnManager.ts`
   **What:** Add mechanic `curse_of_doubt`: type=debuff, AP=1, Pool=1, unlockLevel=6.
   - QP: enemy takes +30% damage from Charged attacks (2 turns)
@@ -81,7 +81,7 @@ Workers MUST read `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md`:
   Add `MASTERY_UPGRADE_DEFS`: cap=5, perLevelDelta=+5% Charge damage bonus. L0→L5 QP: +30%→+55% from Charged attacks.
   **Acceptance:** After playing Curse of Doubt QP, the next 2 enemy turns any Charged attack deals 30% more damage. After CC: 50% more for 3 turns. Quick Play attacks are NOT amplified. Duration ticks down at end of enemy turn. Multiple applications refresh to the higher value and longer duration (do not stack additively).
 
-- [ ] 4. Add Unstable Flux mechanic definition and resolver
+- [x] 4. Add Unstable Flux mechanic definition and resolver
   **Files:** `src/data/mechanics.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/ui/components/CombatHud.svelte`
   **What:** Add mechanic `unstable_flux`: type=wild, AP=1, Pool=1, unlockLevel=6.
   - QP: random effect (damage OR block OR draw OR debuff) at 1.0× base values
@@ -98,7 +98,7 @@ Workers MUST read `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md`:
 
 ### Chain Cards (2)
 
-- [ ] 5. Add Chain Lightning mechanic definition and resolver
+- [x] 5. Add Chain Lightning mechanic definition and resolver
   **Files:** `src/data/mechanics.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/services/turnManager.ts`
   **What:** Add mechanic `chain_lightning`: type=attack, AP=2, Pool=1, unlockLevel=8.
   - QP: 8 dmg (base, regardless of chain length)
@@ -113,7 +113,7 @@ Workers MUST read `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md`:
   Add `MASTERY_UPGRADE_DEFS`: cap=5, perLevelDelta=+1 base dmg (the "8" multiplied by chain length on CC). L0→L5 CC: 8/chain-length→13/chain-length base.
   **Acceptance:** QP always deals 8 dmg regardless of chain. CC deals 8 × (new chain length after this card) × chain multiplier. CW always deals 5 dmg. With Null Shard: deals 8 dmg (chain length=1, multiplier=1.0×). L5 mastery CC base = 13 × chain length.
 
-- [ ] 6. Add Chain Anchor mechanic definition and resolver
+- [x] 6. Add Chain Anchor mechanic definition and resolver
   **Files:** `src/data/mechanics.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/services/turnManager.ts`
   **What:** Add mechanic `chain_anchor`: type=wild, AP=1, Pool=1, unlockLevel=9.
   - QP: draw 1 card
@@ -132,7 +132,7 @@ Workers MUST read `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md`:
 
 ### Exhaust-on-Charge Cards (2)
 
-- [ ] 7. Add Volatile Slash mechanic definition and resolver
+- [x] 7. Add Volatile Slash mechanic definition and resolver
   **Files:** `src/data/mechanics.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/services/turnManager.ts`
   **What:** Add mechanic `volatile_slash`: type=attack, AP=1, Pool=2, unlockLevel=7.
   - QP: 10 dmg (card stays in discard normally)
@@ -144,7 +144,7 @@ Workers MUST read `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md`:
   Add `MASTERY_UPGRADE_DEFS`: cap=5, perLevelDelta=+2 dmg. L0→L5 QP: 10→20 dmg. CC always exhausts regardless of mastery level.
   **Acceptance:** QP: 10 dmg, card goes to discard normally. CC: 30 dmg, card moves to exhaust pile (visible in exhaust pile viewer). CW: 7 dmg, card goes to discard. Recollect can retrieve exhausted Volatile Slash. Cursed Volatile Slash CC cures the fact before exhausting.
 
-- [ ] 8. Add Burnout Shield mechanic definition and resolver
+- [x] 8. Add Burnout Shield mechanic definition and resolver
   **Files:** `src/data/mechanics.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/services/turnManager.ts`
   **What:** Add mechanic `burnout_shield`: type=shield, AP=1, Pool=2, unlockLevel=7.
   - QP: 8 block (card stays in discard normally)
@@ -158,7 +158,7 @@ Workers MUST read `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md`:
 
 ### Buff Cards (2)
 
-- [ ] 9. Add Warcry mechanic definition and resolver
+- [x] 9. Add Warcry mechanic definition and resolver
   **Files:** `src/data/mechanics.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/services/turnManager.ts`
   **What:** Add mechanic `warcry`: type=buff, AP=1, Pool=1, unlockLevel=6.
   - QP: +2 Strength this turn (temporary, expires at turn end)
@@ -169,7 +169,7 @@ Workers MUST read `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md`:
   Add `MASTERY_UPGRADE_DEFS`: cap=3, perLevelDelta=none (tag-based), L3 bonus tag: QP also gives +1 permanent Strength (in addition to the +2 temporary).
   **Acceptance:** QP: player has +2 attack damage for this turn only, no free charge. CC: player has +2 permanent attack damage for rest of combat, and the next Charge this turn has no AP surcharge. CW: +1 temporary Strength. L3 QP: +2 temporary + +1 permanent Strength simultaneously. Warcry CC free-charge flag expires at end of turn if unused.
 
-- [ ] 10. Add Battle Trance mechanic definition and resolver
+- [x] 10. Add Battle Trance mechanic definition and resolver
   **Files:** `src/data/mechanics.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/services/turnManager.ts`
   **What:** Add mechanic `battle_trance`: type=buff, AP=1, Pool=1, unlockLevel=7.
   - QP: draw 3 cards, THEN can't play OR Charge more cards this turn
@@ -184,7 +184,7 @@ Workers MUST read `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md`:
 
 ### Debuff Cards (2)
 
-- [ ] 11. Add Mark of Ignorance mechanic definition and resolver
+- [x] 11. Add Mark of Ignorance mechanic definition and resolver
   **Files:** `src/data/mechanics.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/services/turnManager.ts`
   **What:** Add mechanic `mark_of_ignorance`: type=debuff, AP=1, Pool=1, unlockLevel=8.
   - QP: enemy takes +3 FLAT damage from Charged attacks only (2 turns)
@@ -195,7 +195,7 @@ Workers MUST read `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md`:
   Add `MASTERY_UPGRADE_DEFS`: cap=5, perLevelDelta=+1 flat Charge bonus. L0→L5 QP: +3→+8 flat from Charged attacks.
   **Acceptance:** After Mark of Ignorance QP, next 2 enemy turns Charged attacks deal +3 flat bonus. With BOTH Curse of Doubt CC (+50%) and Mark of Ignorance CC (+5 flat) active, a 24 CC Strike deals 24×1.5+5 = 41 damage. Quick Play attacks are NOT amplified by either debuff.
 
-- [ ] 12. Add Corroding Touch mechanic definition and resolver
+- [x] 12. Add Corroding Touch mechanic definition and resolver
   **Files:** `src/data/mechanics.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`
   **What:** Add mechanic `corroding_touch`: type=debuff, AP=0, Pool=2, unlockLevel=7.
   - QP: apply 2 Weakness (1 turn)
@@ -211,7 +211,7 @@ Workers MUST read `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md`:
 
 ### Shield / Domain Card (1)
 
-- [ ] 13. Add Knowledge Ward mechanic definition and resolver
+- [x] 13. Add Knowledge Ward mechanic definition and resolver
   **Files:** `src/data/mechanics.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`
   **What:** Add mechanic `knowledge_ward`: type=shield, AP=1, Pool=1, unlockLevel=6.
   - QP: 4 block per unique domain among the cards currently in hand (at time of play)
@@ -226,7 +226,7 @@ Workers MUST read `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md`:
 
 ### Wild Cards (4)
 
-- [ ] 14. Add Phase Shift mechanic definition and resolver
+- [x] 14. Add Phase Shift mechanic definition and resolver
   **Files:** `src/data/mechanics.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/ui/components/CombatHud.svelte`
   **What:** Add mechanic `phase_shift`: type=wild, AP=1, Pool=1, unlockLevel=7.
   - QP: CHOOSE between 8 dmg OR 8 block — triggers MultiChoicePopup
@@ -238,7 +238,7 @@ Workers MUST read `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md`:
   Add `MASTERY_UPGRADE_DEFS`: cap=5, perLevelDelta=+2 dmg/block. L0→L5: 8→18 (choose) or 12→22 (both on CC).
   **Acceptance:** QP shows 2-option popup. Player chooses damage or block. Resolves chosen effect only. CC: no popup, deals 12 dmg and grants 12 block simultaneously. CW: popup shows 4/4 options. Choosing damage does not grant block. Choosing block does not deal damage.
 
-- [ ] 15. Add Chameleon mechanic definition and resolver
+- [x] 15. Add Chameleon mechanic definition and resolver
   **Files:** `src/data/mechanics.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/services/turnManager.ts`
   **What:** Add mechanic `chameleon`: type=wild, AP=1, Pool=1, unlockLevel=6.
   - QP: copy last card's effect at 1.0× (its own BASE mechanic values, not the previous card's final resolved value)
@@ -251,7 +251,7 @@ Workers MUST read `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md`:
   Add `MASTERY_UPGRADE_DEFS`: cap=3, perLevelDelta=none (tag-based), L3 bonus tag: QP also inherits chain type (same as CC, but at 1.0×).
   **Acceptance:** QP copies last card's base QP value at 1.0×. CC copies at 1.3× and inherits chain type. CW copies at 0.7×. With Empower active on a previous Strike (base 8 QP), Chameleon QP = 8×1.0 = 8 (NOT 8×1.5 — it copies base, not the empowered value). If no last card, resolves as 0 gracefully.
 
-- [ ] 16. Add Dark Knowledge mechanic definition and resolver
+- [x] 16. Add Dark Knowledge mechanic definition and resolver
   **Files:** `src/data/mechanics.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`
   **What:** Add mechanic `dark_knowledge`: type=wild, AP=1, Pool=1, unlockLevel=8.
   - QP: deal 3 dmg per cursed fact currently in `runState.cursedFactIds`
@@ -263,14 +263,14 @@ Workers MUST read `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md`:
   Add `MASTERY_UPGRADE_DEFS`: cap=5, perLevelDelta=+1 per-curse dmg. L0→L5 QP: 3/curse→8/curse.
   **Acceptance:** With 3 cursed facts, QP deals 9 dmg. CC deals 15 dmg. CW deals 3 dmg. With 0 cursed facts, all modes deal 0 dmg. Damage DOES NOT cure cursed facts — `cursedFactIds` is unchanged after Dark Knowledge resolves. `cursedFactCount` is snapshotted at play time.
 
-- [ ] 17. Add Chain Anchor mechanic definition and resolver
+- [x] 17. Add Chain Anchor mechanic definition and resolver
   **Note:** Chain Anchor is listed under "Chain Cards" as TODO #6. Do not duplicate — this task slot is reserved. Advance to the next numbered task.
 
 ---
 
 ### Integration Tasks
 
-- [ ] 17. Add all Phase 2 card mechanics to the unlock level registry
+- [x] 17. Add all Phase 2 card mechanics to the unlock level registry
   **Files:** `src/data/mechanics.ts` (or wherever unlockLevel is stored), `src/data/characterLevel.ts`
   **What:** Verify all 16 mechanic definitions have the correct `unlockLevel` values per Part 5 of the expansion spec:
   - unlockLevel 6: `gambit`, `curse_of_doubt`, `unstable_flux`, `chameleon`, `knowledge_ward`
@@ -280,7 +280,7 @@ Workers MUST read `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md`:
   Confirm `getUnlockedMechanics(level)` (implemented in AR-205) returns each mechanic at the correct level threshold.
   **Acceptance:** `getUnlockedMechanics(5)` does NOT include any Phase 2 card. `getUnlockedMechanics(6)` includes Gambit, Curse of Doubt, Unstable Flux, Chameleon, Knowledge Ward. `getUnlockedMechanics(9)` includes all 16 Phase 2 cards.
 
-- [ ] 18. Add all Phase 2 MASTERY_UPGRADE_DEFS entries
+- [x] 18. Add all Phase 2 MASTERY_UPGRADE_DEFS entries
   **Files:** `src/services/cardUpgradeService.ts` (wherever `MASTERY_UPGRADE_DEFS` lives)
   **What:** Verify every Phase 2 mechanic has a complete mastery definition. Cross-reference against §3I of the expansion spec. Required fields per entry: `mechanicId`, `maxMasteryLevel` (cap), `perLevelDelta`, `secondaryPerLevelDelta` (if applicable), `apCostReductionAtLevels` (if any), `addTagAtLevel` (for L3 bonus tags).
   Summary of caps and L3 bonus tags from §3I:
@@ -301,7 +301,7 @@ Workers MUST read `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md`:
   - `unstable_flux`: cap=3, tag-based, L3: QP shows 2 random options to choose from
   **Acceptance:** `getMasteryBaseBonus('gambit', 5)` returns +10 (5 levels × +2). `getMasteryBaseBonus('chain_lightning', 3)` returns +3. L3 bonus tags fire at mastery level 3 for all capped-3 cards.
 
-- [ ] 19. Update inspection registry
+- [x] 19. Update inspection registry
   **Files:** `data/inspection-registry.json`
   **What:** Add entries for all 16 new mechanic IDs to the `cards` table (or whichever table tracks card mechanics). Set for each:
   - `mechanicId`: the mechanic's ID string
@@ -315,7 +315,7 @@ Workers MUST read `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md`:
   Also add entries for the 2 new enemy status effect types: `charge_damage_amp_percent` (Curse of Doubt) and `charge_damage_amp_flat` (Mark of Ignorance) to the `statusEffects` table.
   **Acceptance:** Registry has 16 new mechanic entries + MultiChoicePopup + 2 new status effect entries. All dated 2026-03-21.
 
-- [ ] 20. Run headless sim validation — Phase 2 baseline
+- [x] 20. Run headless sim validation — Phase 2 baseline
   **Files:** `tests/playtest/headless/run-batch.ts`
   **What:** Run the headless sim focusing on the build archetypes that rely on Phase 2 cards. Execute:
   ```
@@ -334,7 +334,7 @@ Workers MUST read `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md`:
   Report: save sim output to `data/playtests/reports/ar207-phase2-baseline.json` if the batch runner supports a `--output` flag. Otherwise record results in this AR.
   **Acceptance:** 0 crashes. Chain Lightning CC damage > Chain Lightning QP damage in chain builds. Gambit CC shows negative `selfDamage` and positive `healApplied` in result objects. All 6 profiles complete runs without errors.
 
-- [ ] 21. Visual verification — Phase 2 cards in combat
+- [x] 21. Visual verification — Phase 2 cards in combat
   **Files:** `src/ui/components/CombatHud.svelte`, `src/ui/components/MultiChoicePopup.svelte`
   **What:** Using Playwright MCP (`mcp__playwright__browser_take_screenshot`):
   1. Navigate to `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
@@ -348,12 +348,12 @@ Workers MUST read `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md`:
   NEVER use `page.screenshot()` via `browser_run_code` — use the MCP `browser_take_screenshot` tool only.
   **Acceptance:** Screenshots show MultiChoicePopup rendering correctly at mobile portrait width. No JavaScript errors in console. Exhaust pile contains Volatile Slash after CC play. Player HP shows heal after Gambit CC. No visual regressions on existing combat UI elements.
 
-- [ ] 22. Run full unit test suite
+- [x] 22. Run full unit test suite
   **Files:** `tests/` (all)
   **What:** Run `npx vitest run` after all implementations are complete. All 1900+ tests must pass. If any existing test breaks due to the new `AdvancedResolveOptions` fields (`handDomains`, `cursedFactCount`) or new encounter state flags (`chainAnchorActive`, `battleTranceRestriction`, `warcryFreeChargeActive`), update the relevant test fixtures to include the new fields with safe defaults (empty array, 0, false).
   **Acceptance:** `npx vitest run` exits with 0 failures. No regressions in existing test coverage.
 
-- [ ] 23. Update GAME_DESIGN.md and ARCHITECTURE.md
+- [x] 23. Update GAME_DESIGN.md and ARCHITECTURE.md
   **Files:** `docs/GAME_DESIGN.md`, `docs/ARCHITECTURE.md`
   **What:**
   In `GAME_DESIGN.md`:
@@ -410,19 +410,19 @@ These rulings from `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md` Appendix F are 
 
 Before marking AR-207 complete, ALL of the following must be true:
 
-- [ ] `npx vitest run` — 0 failures
-- [ ] `npm run typecheck` — 0 TypeScript errors
-- [ ] `npm run build` — clean build, no warnings about missing properties
-- [ ] Headless sim: 2000 runs across 4 profiles with 0 crashes (task 20)
-- [ ] Headless sim: Chain Lightning CC damage scales with chain length (verified in output)
-- [ ] Headless sim: Gambit CC shows heal, CW shows self-damage (verified in output)
-- [ ] Visual: MultiChoicePopup renders and is functional at portrait mobile width
-- [ ] Visual: No JavaScript console errors on combat screen with Phase 2 cards
-- [ ] Visual: Exhaust pile shows Volatile Slash / Burnout Shield after CC plays
-- [ ] All 16 mechanics appear in the card pool at appropriate unlock levels
-- [ ] All 16 mechanics have `MASTERY_UPGRADE_DEFS` entries with correct caps
-- [ ] `data/inspection-registry.json` updated with all 16 new mechanic entries
-- [ ] `docs/GAME_DESIGN.md` mechanic count updated and Phase 2 archetypes documented
-- [ ] `docs/ARCHITECTURE.md` reflects new encounter state fields and MultiChoicePopup
+- [x] `npx vitest run` — 0 failures
+- [x] `npm run typecheck` — 0 TypeScript errors
+- [x] `npm run build` — clean build, no warnings about missing properties
+- [x] Headless sim: 2000 runs across 4 profiles with 0 crashes (task 20)
+- [x] Headless sim: Chain Lightning CC damage scales with chain length (verified in output)
+- [x] Headless sim: Gambit CC shows heal, CW shows self-damage (verified in output)
+- [x] Visual: MultiChoicePopup renders and is functional at portrait mobile width
+- [x] Visual: No JavaScript console errors on combat screen with Phase 2 cards
+- [x] Visual: Exhaust pile shows Volatile Slash / Burnout Shield after CC plays
+- [x] All 16 mechanics appear in the card pool at appropriate unlock levels
+- [x] All 16 mechanics have `MASTERY_UPGRADE_DEFS` entries with correct caps
+- [x] `data/inspection-registry.json` updated with all 16 new mechanic entries
+- [x] `docs/GAME_DESIGN.md` mechanic count updated and Phase 2 archetypes documented
+- [x] `docs/ARCHITECTURE.md` reflects new encounter state fields and MultiChoicePopup
 
 Move this document to `docs/roadmap/completed/` when all checkboxes above pass.

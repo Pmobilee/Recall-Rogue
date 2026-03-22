@@ -26,7 +26,7 @@ After this AR, `comboCount` and `isEcho` must not appear anywhere in runtime cod
 
 ## TODO
 
-- [ ] 1. Remove `ECHO` constant block and all `COMBO_*` constants from `balance.ts`
+- [x] 1. Remove `ECHO` constant block and all `COMBO_*` constants from `balance.ts`
   **Files:** `src/data/balance.ts`
   **What:**
   - Delete the entire `ECHO` object constant (lines ~508-520): `REAPPEARANCE_CHANCE`, `POWER_MULTIPLIER`, `POWER_MULTIPLIER_WRONG`, `FSRS_STABILITY_BONUS`, `FSRS_STABILITY_BONUS_CORRECT_V2`, `MAX_ECHOES_PER_RUN`, `INSERT_DELAY_CARDS`
@@ -38,7 +38,7 @@ After this AR, `comboCount` and `isEcho` must not appear anywhere in runtime cod
   - Remove the `comboMultipliers` branch from `getBalanceValue` callers — the constant is deleted so the call in `cardEffectResolver.ts` task 2 and `turnManager.ts` task 3 will handle this
   **Acceptance:** `balance.ts` exports no `ECHO`, `COMBO_MULTIPLIERS`, `COMBO_HEAL_THRESHOLD`, `COMBO_HEAL_AMOUNT`, `COMBO_RING_START_MULTIPLIER`, `COMBO_DECAY_QUICK_PLAY`, or `COMBO_DECAY_WRONG_ANSWER`. `BalanceOverrides` has no `comboMultipliers` field.
 
-- [ ] 2. Remove Echo and Combo logic from `cardEffectResolver.ts`
+- [x] 2. Remove Echo and Combo logic from `cardEffectResolver.ts`
   **Files:** `src/services/cardEffectResolver.ts`
   **What:**
   - Remove imports of `COMBO_MULTIPLIERS` and `ECHO` from `../data/balance`
@@ -55,7 +55,7 @@ After this AR, `comboCount` and `isEcho` must not appear anywhere in runtime cod
   - Remove the `comboCount` field from `PlayCardResult` interface (currently used only to surface combo state to callers) — this is in `turnManager.ts`, see task 3
   **Acceptance:** `cardEffectResolver.ts` imports no `COMBO_MULTIPLIERS`, `ECHO`. No `comboMultiplier` variable. No `resolveEchoBase`. No `isEcho` checks. `resolveCardEffect` signature no longer takes `comboCount`. `comboMultiplier` not used in `scaledValue` formula.
 
-- [ ] 3. Remove all Combo and Echo tracking from `turnManager.ts`
+- [x] 3. Remove all Combo and Echo tracking from `turnManager.ts`
   **Files:** `src/services/turnManager.ts`
   **What:**
   - Remove imports of `COMBO_MULTIPLIERS`, `COMBO_HEAL_THRESHOLD`, `COMBO_HEAL_AMOUNT`, `COMBO_DECAY_QUICK_PLAY`, `COMBO_DECAY_WRONG_ANSWER` from `../data/balance` (lines ~31-35)
@@ -73,7 +73,7 @@ After this AR, `comboCount` and `isEcho` must not appear anywhere in runtime cod
   - In `PlayCardResult` callsites that spread `comboCount`, remove those fields
   **Acceptance:** `TurnState` has no `comboCount`, `baseComboCount`, `ascensionComboResetsOnTurnEnd`. `PlayCardResult` has no `comboCount`. `getComboMultiplier` is not exported. `resolveComboStartValue` not called.
 
-- [ ] 4. Remove Echo spawning and Echo card logic from `encounterBridge.ts`
+- [x] 4. Remove Echo spawning and Echo card logic from `encounterBridge.ts`
   **Files:** `src/services/encounterBridge.ts`
   **What:**
   - Remove import of `applyEchoStabilityBonus` from `../ui/stores/playerData` (line ~17)
@@ -86,7 +86,7 @@ After this AR, `comboCount` and `isEcho` must not appear anywhere in runtime cod
     - `if (playedCard.isEcho && !correct && playMode === 'charge' && activeDeck)` block (lines ~621-...): exhaust echo card
   **Acceptance:** `encounterBridge.ts` does not import or call `applyEchoStabilityBonus`, `ECHO`, `createEchoCardFrom`, `maybeGenerateEcho`. No `isEcho` checks in post-play logic.
 
-- [ ] 5. Remove `echoFactIds`, `echoCount` from `RunState` and `runManager.ts`
+- [x] 5. Remove `echoFactIds`, `echoCount` from `RunState` and `runManager.ts`
   **Files:** `src/services/runManager.ts`, `src/services/runSaveService.ts`
   **What — `runManager.ts`:**
   - Remove `echoFactIds: Set<string>` and `echoCount: number` from the `RunState` interface (lines ~51-52)
@@ -99,7 +99,7 @@ After this AR, `comboCount` and `isEcho` must not appear anywhere in runtime cod
   - Remove `'echoFactIds'` from the Set-field union type (line ~49)
   **Acceptance:** `RunState` has no `echoFactIds`, `echoCount`. Serialize/deserialize round-trips compile without those fields. `bestCombo` remains in `RunState` but is no longer updated from `comboCount`.
 
-- [ ] 6. Remove Echo from `card-types.ts` and `cardUpgradeService.ts`
+- [x] 6. Remove Echo from `card-types.ts` and `cardUpgradeService.ts`
   **Files:** `src/data/card-types.ts`, `src/services/cardUpgradeService.ts`
   **What — `card-types.ts`:**
   - Remove `isEcho?: boolean` field from the `Card` interface (line ~78)
@@ -108,7 +108,7 @@ After this AR, `comboCount` and `isEcho` must not appear anywhere in runtime cod
   - Remove all three `if (card.isEcho) return false` guards (lines ~113, ~127, ~247) — these blocked Echo cards from upgrade/downgrade paths. Without `isEcho`, these checks are dead code.
   **Acceptance:** `Card` type has no `isEcho` field. `cardUpgradeService.ts` has no `isEcho` references.
 
-- [ ] 7. Remove Echo and Combo relics and synergies
+- [x] 7. Remove Echo and Combo relics and synergies
   **Files:** `src/data/relics/starters.ts`, `src/data/relics/unlockable.ts`, `src/services/relicSynergyResolver.ts`, `src/services/saveMigration.ts`
   **What — `starters.ts`:**
   - Remove the `combo_ring` relic definition (lines ~93-107). It is a starter relic but its entire mechanic (`comboRingActive`, `resolveComboStartValue`) is being deleted.
@@ -122,7 +122,7 @@ After this AR, `comboCount` and `isEcho` must not appear anywhere in runtime cod
   - Change `combo_ring: { action: 'preserve' }` to `combo_ring: { action: 'drop' }` (line ~60)
   **Acceptance:** `combo_ring` and `echo_lens` not in relic catalogue. `echo_master` synergy deleted. `saveMigration.ts` drops both relics on save load. `echo_chamber` still present and untouched.
 
-- [ ] 8. Remove Echo and Combo from `relicEffectResolver.ts`
+- [x] 8. Remove Echo and Combo from `relicEffectResolver.ts`
   **Files:** `src/services/relicEffectResolver.ts`
   **What:**
   - Remove `comboCount: number` from the `AttackModifierContext` interface (line ~179)
@@ -137,7 +137,7 @@ After this AR, `comboCount` and `isEcho` must not appear anywhere in runtime cod
   - Keep `echo_chamber` handler in `resolveChainRewards` intact — it is chain-based, not combo/echo
   **Acceptance:** `relicEffectResolver.ts` exports no `resolveComboStartValue`, `shouldEchoPlayFullPower`. `AttackModifierContext` has no `comboCount`, `comboRingActive`. `ChargeCorrectResult` has no `comboRingActive`. No `war_drum`, `combo_ring`, `echo_lens`, `echo_master` references.
 
-- [ ] 9. Remove Echo UI from `CardHand.svelte` and `CardExpanded.svelte`
+- [x] 9. Remove Echo UI from `CardHand.svelte` and `CardExpanded.svelte`
   **Files:** `src/ui/components/CardHand.svelte`, `src/ui/components/CardExpanded.svelte`
   **What — `CardHand.svelte`:**
   - Remove `comboMultiplier?: number` prop (line ~34) and its default `comboMultiplier = 1` (line ~66)
@@ -152,7 +152,7 @@ After this AR, `comboCount` and `isEcho` must not appear anywhere in runtime cod
   - Remove `.combo-indicator` CSS (line ~900 area)
   **Acceptance:** `CardHand.svelte` accepts no `comboMultiplier` prop. No echo badge or "CHARGE ONLY" badge rendered. No `.echo-card`, `.card-combo` CSS. `CardExpanded.svelte` accepts no `comboCount`. No combo indicator rendered.
 
-- [ ] 10. Remove Combo UI from `CardCombatOverlay.svelte` and `ComboCounter.svelte`
+- [x] 10. Remove Combo UI from `CardCombatOverlay.svelte` and `ComboCounter.svelte`
   **Files:** `src/ui/components/CardCombatOverlay.svelte`, `src/ui/components/ComboCounter.svelte`
   **What — `CardCombatOverlay.svelte`:**
   - Remove import of `getComboMultiplier` from `../../services/turnManager` (line ~7)
@@ -176,14 +176,14 @@ After this AR, `comboCount` and `isEcho` must not appear anywhere in runtime cod
   - Rename the component to `ChainCounter.svelte` and update the import in `CardCombatOverlay.svelte` accordingly — this avoids future confusion between the two systems.
   **Acceptance:** `CardCombatOverlay.svelte` has no `comboCount`, `comboMultiplier`, `getComboMultiplier`, `ComboCounter` import, Echo "Must Charge!" tooltip. No screen-edge-pulse triggered by combo. `ComboCounter.svelte` (or `ChainCounter.svelte`) accepts no `count`/`multiplier` props.
 
-- [ ] 11. Remove Combo from `cardEffectResolver.ts` import in `comboDisplay.ts` and clean up util
+- [x] 11. Remove Combo from `cardEffectResolver.ts` import in `comboDisplay.ts` and clean up util
   **Files:** `src/ui/utils/comboDisplay.ts`
   **What:**
   - Delete the entire file. `formatComboMultiplier` and `getComboDisplayText` are used only by `ComboCounter.svelte` (task 10) and `CardCombatOverlay.svelte` (task 10). After those are removed, this file has no callers.
   - Verify no other file imports from `../../ui/utils/comboDisplay` before deleting.
   **Acceptance:** `src/ui/utils/comboDisplay.ts` does not exist. No other file imports from it.
 
-- [ ] 12. Remove Combo from `encounterRewards.ts` and reward UI
+- [x] 12. Remove Combo from `encounterRewards.ts` and reward UI
   **Files:** `src/services/encounterRewards.ts`, `src/ui/components/CardRewardScreen.svelte`, `src/services/encounterBridge.ts`, `src/services/gameFlowController.ts`
   **What — `encounterRewards.ts`:**
   - Remove `comboBonus: number` from `EncounterRewardOptions` interface (line ~18)
@@ -197,7 +197,7 @@ After this AR, `comboCount` and `isEcho` must not appear anywhere in runtime cod
   - Remove `maxComboAchieved` argument from any `buildEncounterRewards(...)` call sites
   **Acceptance:** `EncounterRewardOptions` has no `comboBonus`. `generateComboBonus` deleted. No combo bonus displayed in reward screen.
 
-- [ ] 13. Remove Combo from `ascension.ts`
+- [x] 13. Remove Combo from `ascension.ts`
   **Files:** `src/services/ascension.ts`
   **What:**
   - Remove `comboResetsOnTurnEnd: boolean` from `AscensionModifiers` interface (line ~46)
@@ -207,7 +207,7 @@ After this AR, `comboCount` and `isEcho` must not appear anywhere in runtime cod
   - The level 6 and level 14 ascension descriptions reference combo — update those description strings in the `ascensionLevels` array (lines ~17, ~25): replace "BUFF: Heal 5 HP on 3+ combo" and "Combo resets each turn. BUFF: Perfect turns grant +1 AP next turn" with descriptions that don't reference combo
   **Acceptance:** `AscensionModifiers` has no `comboResetsOnTurnEnd`, `comboHealThreshold`, `comboHealAmount`. No combo references in ascension level descriptions.
 
-- [ ] 14. Remove Echo from `gameFlowController.ts` and `deckManager.ts`
+- [x] 14. Remove Echo from `gameFlowController.ts` and `deckManager.ts`
   **Files:** `src/services/gameFlowController.ts`, `src/services/deckManager.ts`
   **What — `gameFlowController.ts`:**
   - Remove all four `!card.isEcho` filter guards (lines ~1394, ~2199, ~2208, ~2217) — mastery upgrade candidates, card removal candidates, and card transformation candidates no longer need to exclude Echo cards because Echo cards no longer exist
@@ -215,13 +215,13 @@ After this AR, `comboCount` and `isEcho` must not appear anywhere in runtime cod
   - Remove `comboCount: 0` from the initial deck state if present (line ~117) — this is likely the `DeckRunState.comboCount` used as a tracker; verify it's not a different field before removing
   **Acceptance:** `gameFlowController.ts` has no `isEcho` references. `deckManager.ts` has no `comboCount` field in deck state.
 
-- [ ] 15. Remove `applyEchoStabilityBonus` from `playerData.ts`
+- [x] 15. Remove `applyEchoStabilityBonus` from `playerData.ts`
   **Files:** `src/ui/stores/playerData.ts`
   **What:**
   - Delete the exported `applyEchoStabilityBonus(factId, multiplier)` function (lines ~637-657)
   **Acceptance:** `playerData.ts` does not export `applyEchoStabilityBonus`.
 
-- [ ] 16. Remove `echo` keyword from `keywords.ts`
+- [x] 16. Remove `echo` keyword from `keywords.ts`
   **Files:** `src/data/keywords.ts`
   **What:**
   - Remove the `echo` entry from `KEYWORD_DEFINITIONS` (lines ~40-43):
@@ -233,7 +233,7 @@ After this AR, `comboCount` and `isEcho` must not appear anywhere in runtime cod
     ```
   **Acceptance:** `KEYWORD_DEFINITIONS` has no `echo` key.
 
-- [ ] 17. Remove Combo and Echo from `scenarioSimulator.ts`
+- [x] 17. Remove Combo and Echo from `scenarioSimulator.ts`
   **Files:** `src/dev/scenarioSimulator.ts`
   **What:**
   - Remove `comboMultiplier?: number` from the scenario config type (line ~112)
@@ -248,7 +248,7 @@ After this AR, `comboCount` and `isEcho` must not appear anywhere in runtime cod
   - Remove `bestCombo` from scenario runEnd stats only if those stats no longer need it — keep `bestCombo` in `runEndStats` fixtures since it's a valid historical stat (lines ~264, ~270, ~276, ~944)
   **Acceptance:** `scenarioSimulator.ts` has no `comboMultiplier` config field, no `setCombo` function, no `'combat-high-combo'` scenario, no `isEcho` on card fixtures, no `combo_ring` in relic arrays.
 
-- [ ] 18. Delete `echo-mechanic-v2.test.ts` and remove Echo/Combo from test files
+- [x] 18. Delete `echo-mechanic-v2.test.ts` and remove Echo/Combo from test files
   **Files:** `src/services/echo-mechanic-v2.test.ts`, `src/services/__tests__/relicEffectResolver.v2.test.ts`, `src/services/bossQuizPhase.test.ts`, `src/services/relicAcquisition.test.ts`
   **What:**
   - Delete `src/services/echo-mechanic-v2.test.ts` entirely — the system it tests no longer exists
@@ -257,7 +257,7 @@ After this AR, `comboCount` and `isEcho` must not appear anywhere in runtime cod
   - In `relicAcquisition.test.ts`: remove `expect(ids).toContain('echo_chamber')` if the test is checking level-gated relics that included `echo_lens` — verify the test still passes after removing `echo_lens` from the catalogue
   **Acceptance:** `echo-mechanic-v2.test.ts` deleted. `relicEffectResolver.v2.test.ts` has no `combo_ring` describe block. Test suite passes with `npx vitest run`.
 
-- [ ] 19. Remove Echo and Combo from remaining service files
+- [x] 19. Remove Echo and Combo from remaining service files
   **Files:** `src/services/saveMigration.ts`, `src/services/characterLevel.ts`
   **What — `saveMigration.ts`:**
   - The `echo_lens: { action: 'drop' }` and `combo_ring: { action: 'drop' }` changes are already specified in task 7. No additional changes needed here.
@@ -266,7 +266,7 @@ After this AR, `comboCount` and `isEcho` must not appear anywhere in runtime cod
   - Level 24 reward entry includes `relicIds: ['toxic_bloom', 'echo_lens']` — remove `'echo_lens'` from this array (line ~187)
   **Acceptance:** `characterLevel.ts` level 24 reward does not include `echo_lens`.
 
-- [ ] 20. Update `docs/GAME_DESIGN.md` and `docs/ARCHITECTURE.md`
+- [x] 20. Update `docs/GAME_DESIGN.md` and `docs/ARCHITECTURE.md`
   **Files:** `docs/GAME_DESIGN.md`, `docs/ARCHITECTURE.md`
   **What — `GAME_DESIGN.md`:**
   - Remove the Echo Mechanic section (likely §11 or similar) — all documentation of Echo card spawning, `isEcho` flag, `echo_lens` relic, FSRS stability bonus path
@@ -280,7 +280,7 @@ After this AR, `comboCount` and `isEcho` must not appear anywhere in runtime cod
   - Remove `resolveEchoBase`, `getComboMultiplier`, `resolveComboStartValue` from service layer descriptions
   **Acceptance:** Neither doc references the removed systems. `echo_chamber` is correctly documented as a chain relic.
 
-- [ ] 21. Update `data/inspection-registry.json`
+- [x] 21. Update `data/inspection-registry.json`
   **Files:** `data/inspection-registry.json`
   **What:**
   - Find the Echo system entry in the `systems` table and set `status: "deprecated"`, `lastChangedDate: "2026-03-21"`
@@ -322,19 +322,19 @@ After this AR, `comboCount` and `isEcho` must not appear anywhere in runtime cod
 
 All of the following must be true before this AR is considered complete:
 
-- [ ] `npm run typecheck` — zero errors
-- [ ] `npx vitest run` — all tests pass
-- [ ] `npm run build` — zero errors
-- [ ] `grep -r "isEcho" src/ --include="*.ts" --include="*.svelte"` — zero results
-- [ ] `grep -r "comboCount" src/ --include="*.ts" --include="*.svelte"` — zero results (exception: `bestCombo` is allowed, `comboCount` is not)
-- [ ] `grep -r "ECHO\." src/ --include="*.ts"` — zero results
-- [ ] `grep -r "COMBO_MULTIPLIERS\|COMBO_HEAL\|COMBO_DECAY\|COMBO_RING" src/ --include="*.ts"` — zero results
-- [ ] `grep -r "echo_lens\|combo_ring\|echo_master" src/data/relics/ --include="*.ts"` — zero results
-- [ ] `grep -r "resolveComboStartValue\|getComboMultiplier\|shouldEchoPlayFullPower\|applyEchoStabilityBonus\|resolveEchoBase" src/ --include="*.ts"` — zero results
-- [ ] `combo_ring` and `echo_lens` in `saveMigration.ts` have `action: 'drop'`
-- [ ] `echo_chamber` relic definition still exists in `unlockable.ts`
-- [ ] Headless sim 500 runs complete without runtime errors
-- [ ] Playwright visual check: no echo badges, no combo counter
+- [x] `npm run typecheck` — zero errors
+- [x] `npx vitest run` — all tests pass
+- [x] `npm run build` — zero errors
+- [x] `grep -r "isEcho" src/ --include="*.ts" --include="*.svelte"` — zero results
+- [x] `grep -r "comboCount" src/ --include="*.ts" --include="*.svelte"` — zero results (exception: `bestCombo` is allowed, `comboCount` is not)
+- [x] `grep -r "ECHO\." src/ --include="*.ts"` — zero results
+- [x] `grep -r "COMBO_MULTIPLIERS\|COMBO_HEAL\|COMBO_DECAY\|COMBO_RING" src/ --include="*.ts"` — zero results
+- [x] `grep -r "echo_lens\|combo_ring\|echo_master" src/data/relics/ --include="*.ts"` — zero results
+- [x] `grep -r "resolveComboStartValue\|getComboMultiplier\|shouldEchoPlayFullPower\|applyEchoStabilityBonus\|resolveEchoBase" src/ --include="*.ts"` — zero results
+- [x] `combo_ring` and `echo_lens` in `saveMigration.ts` have `action: 'drop'`
+- [x] `echo_chamber` relic definition still exists in `unlockable.ts`
+- [x] Headless sim 500 runs complete without runtime errors
+- [x] Playwright visual check: no echo badges, no combo counter
 
 ---
 

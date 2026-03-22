@@ -687,7 +687,6 @@
   /* ═══ LANDSCAPE DESKTOP OVERRIDES ═══════════════════════════════════════════ */
 
   :global([data-layout="landscape"]) .library-overlay {
-    margin-left: calc(100px * var(--layout-scale, 1));
     max-width: calc(1400px * var(--layout-scale, 1));
     padding: calc(32px * var(--layout-scale, 1)) calc(48px * var(--layout-scale, 1));
   }

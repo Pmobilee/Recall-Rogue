@@ -42,9 +42,9 @@ Add hover feedback to ALL interactive elements across all screens. Most hub/sett
 Import this CSS in CardApp.svelte.
 
 **Acceptance criteria:**
-- [ ] Every clickable element shows visual feedback on hover
-- [ ] Transitions are smooth (120-150ms)
-- [ ] No hover effects on mobile/touch (media query guarded)
+- [x] Every clickable element shows visual feedback on hover
+- [x] Transitions are smooth (120-150ms)
+- [x] No hover effects on mobile/touch (media query guarded)
 
 ### 2. Atmospheric background treatment (C3)
 
@@ -73,9 +73,9 @@ Apply accent colors per screen:
 - Social: `--screen-accent: rgba(60,120,80,0.12)` (guild green)
 
 **Acceptance criteria:**
-- [ ] All non-hub screens have subtle atmospheric treatment
-- [ ] Each screen has a distinct accent color
-- [ ] The effect is very subtle — not distracting
+- [x] All non-hub screens have subtle atmospheric treatment
+- [x] Each screen has a distinct accent color
+- [x] The effect is very subtle — not distracting
 
 ### 3. RPG typography hierarchy (C4)
 
@@ -89,18 +89,18 @@ Apply Cinzel font to screen headings for RPG feel. The font is already loaded (u
 These should be in the global `desktop-polish.css` file.
 
 **Acceptance criteria:**
-- [ ] All screen headings use Cinzel font
-- [ ] Letter spacing gives a refined RPG feel
-- [ ] Body text remains system sans-serif for readability
+- [x] All screen headings use Cinzel font
+- [x] Letter spacing gives a refined RPG feel
+- [x] Body text remains system sans-serif for readability
 
 ---
 
 ## Verification Gate
 
-- [ ] `npm run typecheck` passes
-- [ ] `npm run build` passes
-- [ ] Visual verification at 1920x1080
-- [ ] Hover states visible on all interactive elements
-- [ ] Background atmosphere visible on all non-hub screens
-- [ ] Typography hierarchy looks professional and RPG-appropriate
-- [ ] No regressions on mobile/portrait layout
+- [x] `npm run typecheck` passes
+- [x] `npm run build` passes
+- [x] Visual verification at 1920x1080
+- [x] Hover states visible on all interactive elements
+- [x] Background atmosphere visible on all non-hub screens
+- [x] Typography hierarchy looks professional and RPG-appropriate
+- [x] No regressions on mobile/portrait layout

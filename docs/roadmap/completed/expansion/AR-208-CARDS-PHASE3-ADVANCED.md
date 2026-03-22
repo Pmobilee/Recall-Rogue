@@ -1308,25 +1308,25 @@ If visual issues exist: fix before marking this AR complete.
 
 Before moving this AR to `completed/`:
 
-- [ ] All 23 mechanic IDs present in `src/data/mechanics.ts`
-- [ ] All 23 entries in `MASTERY_UPGRADE_DEFS`
-- [ ] `npm run typecheck` passes with zero errors
-- [ ] `npm run build` produces no errors
-- [ ] `npx vitest run` — all tests pass, no regressions in 1900+ existing tests
-- [ ] Phase 3 unit tests added and green (I1)
-- [ ] Headless sim 200 runs passes without crashes (I2 smoke)
-- [ ] Headless sim 1000 runs passes (I2 full)
-- [ ] Eruption X-cost interaction with Frenzy verified in sim (no crash, correct AP drain)
-- [ ] Inscription of Wisdom CW fizzle verified (3 AP consumed, no inscription added)
-- [ ] Reflex passive triggers on all valid discard sources and NOT on exhaust/shuffle
-- [ ] Knowledge Bomb correctChargesThisEncounter counter includes self-CC
-- [ ] Hemorrhage consumes Bleed AFTER damage calc
-- [ ] Frenzy does not waive Eruption's X drain (only waives play cost)
-- [ ] `data/inspection-registry.json` updated with all 23 entries (I3)
-- [ ] `docs/GAME_DESIGN.md` updated (I4)
-- [ ] `docs/ARCHITECTURE.md` updated (I4)
-- [ ] Visual inspection screenshot taken and reviewed (I5)
-- [ ] No console JS errors in Playwright session
+- [x] All 23 mechanic IDs present in `src/data/mechanics.ts`
+- [x] All 23 entries in `MASTERY_UPGRADE_DEFS`
+- [x] `npm run typecheck` passes with zero errors
+- [x] `npm run build` produces no errors
+- [x] `npx vitest run` — all tests pass, no regressions in 1900+ existing tests
+- [x] Phase 3 unit tests added and green (I1)
+- [x] Headless sim 200 runs passes without crashes (I2 smoke)
+- [x] Headless sim 1000 runs passes (I2 full)
+- [x] Eruption X-cost interaction with Frenzy verified in sim (no crash, correct AP drain)
+- [x] Inscription of Wisdom CW fizzle verified (3 AP consumed, no inscription added)
+- [x] Reflex passive triggers on all valid discard sources and NOT on exhaust/shuffle
+- [x] Knowledge Bomb correctChargesThisEncounter counter includes self-CC
+- [x] Hemorrhage consumes Bleed AFTER damage calc
+- [x] Frenzy does not waive Eruption's X drain (only waives play cost)
+- [x] `data/inspection-registry.json` updated with all 23 entries (I3)
+- [x] `docs/GAME_DESIGN.md` updated (I4)
+- [x] `docs/ARCHITECTURE.md` updated (I4)
+- [x] Visual inspection screenshot taken and reviewed (I5)
+- [x] No console JS errors in Playwright session
 
 ---
 

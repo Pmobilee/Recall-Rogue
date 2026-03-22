@@ -492,16 +492,16 @@ Based on impact vs. effort:
 
 After implementing any batch of these changes:
 
-- [ ] Navigate to each affected screen at 1920×1080 — take Playwright screenshot
-- [ ] Verify sidebar is visible and correct nav item is highlighted
-- [ ] Verify no text is below 13px at desktop
-- [ ] Verify content container does not exceed 1400px max-width where specified
-- [ ] Verify hover states are present on all interactive elements
-- [ ] Verify no layout overflow or horizontal scroll at 1920×1080
-- [ ] Run `npm run typecheck` — no new errors
-- [ ] Run `npm run build` — no new errors
-- [ ] Update `docs/GAME_DESIGN.md` if any player-facing screen behavior changed
-- [ ] Update `data/inspection-registry.json` — set `lastChangedDate` for all touched screens
+- [x] Navigate to each affected screen at 1920×1080 — take Playwright screenshot
+- [x] Verify sidebar is visible and correct nav item is highlighted
+- [x] Verify no text is below 13px at desktop
+- [x] Verify content container does not exceed 1400px max-width where specified
+- [x] Verify hover states are present on all interactive elements
+- [x] Verify no layout overflow or horizontal scroll at 1920×1080
+- [x] Run `npm run typecheck` — no new errors
+- [x] Run `npm run build` — no new errors
+- [x] Update `docs/GAME_DESIGN.md` if any player-facing screen behavior changed
+- [x] Update `data/inspection-registry.json` — set `lastChangedDate` for all touched screens
 
 ---
 

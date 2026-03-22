@@ -99,7 +99,32 @@
     height: number
   }
 
-  function loadTexture(gl: WebGLRenderingContext, url: string, unit: number): Promise<TextureResult> {
+  /**
+   * Apply object-fit: cover cropping on a canvas before uploading to WebGL.
+   * This ensures the texture matches exactly how CSS renders background images.
+   */
+  function coverCrop(img: HTMLImageElement, targetW: number, targetH: number): HTMLCanvasElement {
+    const c = document.createElement('canvas')
+    c.width = targetW
+    c.height = targetH
+    const ctx = c.getContext('2d')!
+    const imgAspect = img.naturalWidth / img.naturalHeight
+    const vpAspect = targetW / targetH
+    let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight
+    if (imgAspect > vpAspect) {
+      // Image is wider — crop sides
+      sw = img.naturalHeight * vpAspect
+      sx = (img.naturalWidth - sw) / 2
+    } else {
+      // Image is taller — crop top/bottom
+      sh = img.naturalWidth / vpAspect
+      sy = (img.naturalHeight - sh) / 2
+    }
+    ctx.drawImage(img, sx, sy, sw, sh, 0, 0, targetW, targetH)
+    return c
+  }
+
+  function loadTexture(gl: WebGLRenderingContext, url: string, unit: number, coverTarget?: { w: number; h: number }): Promise<TextureResult> {
     return new Promise((resolve, reject) => {
       const tex = gl.createTexture()
       if (!tex) return reject(new Error('Failed to create texture'))
@@ -107,7 +132,10 @@
       img.onload = () => {
         gl.activeTexture(gl.TEXTURE0 + unit)
         gl.bindTexture(gl.TEXTURE_2D, tex)
-        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img)
+        // If coverTarget specified, crop the image to match viewport aspect ratio
+        // before uploading — this replicates CSS object-fit: cover exactly
+        const source = coverTarget ? coverCrop(img, coverTarget.w, coverTarget.h) : img
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, source)
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR)
@@ -267,9 +295,10 @@
         gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf)
         gl.bufferData(gl.ARRAY_BUFFER, quadVerts, gl.STATIC_DRAW)
 
+        const cover = { w: window.innerWidth, h: window.innerHeight }
         const [imgResult, depthResult] = await Promise.all([
-          loadTexture(gl, imageUrl, 0),
-          loadTexture(gl, depthUrl, 1),
+          loadTexture(gl, imageUrl, 0, cover),
+          loadTexture(gl, depthUrl, 1, cover),
         ])
         texImage = imgResult.tex
         texDepth = depthResult.tex

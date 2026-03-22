@@ -16,12 +16,12 @@ This is the last AR. After this passes, the expansion is ready for alpha. The on
 
 ### E2E Smoke Tests
 
-- [ ] 1. Run full E2E test suite
+- [x] 1. Run full E2E test suite
   **Files:** `tests/e2e/01-app-loads.cjs`, `tests/e2e/03-save-resume.cjs`
   **What:** Run all existing E2E tests. They must pass without modification. Any failures indicate regression.
   **Acceptance:** All E2E tests pass.
 
-- [ ] 2. Full run smoke test via Playwright
+- [x] 2. Full run smoke test via Playwright
   **Files:** N/A (Playwright MCP)
   **What:** Using Playwright MCP, play a complete run from start to finish:
   1. Navigate to `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
@@ -36,7 +36,7 @@ This is the last AR. After this passes, the expansion is ready for alpha. The on
 
 ### Card Verification
 
-- [ ] 3. Verify all 60 new cards play correctly
+- [x] 3. Verify all 60 new cards play correctly
   **Files:** N/A (Playwright + headless)
   **What:** Using `__terraScenario.load('combat-basic')` with each new mechanic in the deck:
   - Quick Play each card: verify correct QP value
@@ -45,7 +45,7 @@ This is the last AR. After this passes, the expansion is ready for alpha. The on
   Batch: run headless sim with each new mechanic in isolation (1 mechanic per deck, 50 runs). 0 crashes.
   **Acceptance:** All 60 mechanics resolve correctly in all 3 modes (QP/CC/CW).
 
-- [ ] 4. Test multi-hit + Burn/Bleed interactions
+- [x] 4. Test multi-hit + Burn/Bleed interactions
   **Files:** N/A (headless sim)
   **What:** Specifically test:
   - Twin Strike + 8 Burn: should trigger Burn twice (8+4=12 bonus, Burn at 2)
@@ -53,7 +53,7 @@ This is the last AR. After this passes, the expansion is ready for alpha. The on
   - Multi-Hit (existing, 3 hits) + Burn + Bleed: all interactions correct
   **Acceptance:** Damage math matches expansion spec examples exactly.
 
-- [ ] 5. Test exhaust + Recollect interactions
+- [x] 5. Test exhaust + Recollect interactions
   **Files:** N/A (headless sim)
   **What:** Specifically test:
   - Volatile Slash CC → exhausts → Recollect → returns to discard → re-drawable
@@ -61,7 +61,7 @@ This is the last AR. After this passes, the expansion is ready for alpha. The on
   - Bulwark CC → exhausts → visible in exhaust pile viewer
   **Acceptance:** Exhaust mechanics work correctly. Inscriptions cannot be Recollected.
 
-- [ ] 6. Test Cursed Card flow end-to-end
+- [x] 6. Test Cursed Card flow end-to-end
   **Files:** N/A (Playwright)
   **What:** Manually trigger a cursed card scenario:
   1. Load combat, find a mastery 0 card
@@ -73,7 +73,7 @@ This is the last AR. After this passes, the expansion is ready for alpha. The on
   7. Verify Free First Charge wrong does NOT curse
   **Acceptance:** Full curse → cure flow works visually and mechanically.
 
-- [ ] 7. Test Chain system with new cards
+- [x] 7. Test Chain system with new cards
   **Files:** N/A (headless sim + Playwright)
   **What:** Specifically test:
   - Chain Anchor → sets next chain to 2 → Chain Lightning benefits
@@ -86,7 +86,7 @@ This is the last AR. After this passes, the expansion is ready for alpha. The on
 
 ### Relic Verification
 
-- [ ] 8. Verify all 36 new relics trigger correctly
+- [x] 8. Verify all 36 new relics trigger correctly
   **Files:** N/A (headless sim relic audit)
   **What:** Run relic audit: each relic must trigger at least once in 500 simulated runs.
   Special attention:
@@ -100,7 +100,7 @@ This is the last AR. After this passes, the expansion is ready for alpha. The on
 
 ### Visual Audit
 
-- [ ] 9. Mobile portrait visual audit
+- [x] 9. Mobile portrait visual audit
   **Files:** N/A (Playwright MCP)
   **What:** Set viewport to 390x844 (iPhone 14 Pro). Take screenshots of:
   1. Card hand with new card types (attack, shield, buff, debuff, utility, wild, inscription)
@@ -115,19 +115,19 @@ This is the last AR. After this passes, the expansion is ready for alpha. The on
   Verify all elements are readable, not overlapping, touch-friendly.
   **Acceptance:** All screenshots show correct layout. No overlapping elements. All text readable.
 
-- [ ] 10. Mobile landscape visual audit
+- [x] 10. Mobile landscape visual audit
   **Files:** N/A (Playwright MCP)
   **What:** Set viewport to 844x390 (iPhone 14 Pro landscape). Take screenshots of same 9 screens as TODO 9.
   **Acceptance:** All elements adapt to landscape correctly.
 
-- [ ] 11. Desktop visual audit
+- [x] 11. Desktop visual audit
   **Files:** N/A (Playwright MCP)
   **What:** Set viewport to 1920x1080. Take screenshots of same 9 screens.
   **Acceptance:** All elements look correct at desktop resolution.
 
 ### Integration
 
-- [ ] 12. Run full test suite
+- [x] 12. Run full test suite
   **Files:** N/A
   **What:** Run the complete verification sequence:
   ```bash
@@ -140,7 +140,7 @@ This is the last AR. After this passes, the expansion is ready for alpha. The on
   ```
   **Acceptance:** All pass with 0 errors, 0 crashes.
 
-- [ ] 13. Update inspection registry — final pass
+- [x] 13. Update inspection registry — final pass
   **Files:** `data/inspection-registry.json`
   **What:** For every new element (60 cards, 36 relics, 2 status effects, Cursed system, Inscription keyword, Card Browser UI):
   - Set `mechanicInspectionDate` to today
@@ -148,23 +148,23 @@ This is the last AR. After this passes, the expansion is ready for alpha. The on
   - Set appropriate visual inspection dates for portrait/landscape/desktop
   **Acceptance:** All new elements have current inspection dates.
 
-- [ ] 14. Final self-review checklist
+- [x] 14. Final self-review checklist
   **Files:** N/A
   **What:** Workers must answer ALL of these:
-  - [ ] All 91 card mechanics are defined and resolve correctly?
-  - [ ] All 77 relics are defined and trigger correctly?
-  - [ ] Burn and Bleed work per spec (block interaction, Bleed no-poison-trigger)?
-  - [ ] Cursed Card system works end-to-end (curse → draw → cure)?
-  - [ ] Inscriptions persist, exhaust = remove from game, cannot be Recollected?
-  - [ ] Card unlock gating works at all levels?
-  - [ ] Combo system is fully removed (no comboCount, no COMBO_*)?
-  - [ ] Echo system is fully removed (no ghost cards, no echo relics)?
-  - [ ] Headless sim runs 3000+ runs with 0 crashes?
-  - [ ] All 3 viewport sizes render correctly?
-  - [ ] GAME_DESIGN.md is fully updated?
-  - [ ] ARCHITECTURE.md is fully updated?
-  - [ ] inspection-registry.json has all new elements?
-  - [ ] No stale references to Echo, Combo, Signal Flare, Echo Chamber?
+  - [x] All 91 card mechanics are defined and resolve correctly?
+  - [x] All 77 relics are defined and trigger correctly?
+  - [x] Burn and Bleed work per spec (block interaction, Bleed no-poison-trigger)?
+  - [x] Cursed Card system works end-to-end (curse → draw → cure)?
+  - [x] Inscriptions persist, exhaust = remove from game, cannot be Recollected?
+  - [x] Card unlock gating works at all levels?
+  - [x] Combo system is fully removed (no comboCount, no COMBO_*)?
+  - [x] Echo system is fully removed (no ghost cards, no echo relics)?
+  - [x] Headless sim runs 3000+ runs with 0 crashes?
+  - [x] All 3 viewport sizes render correctly?
+  - [x] GAME_DESIGN.md is fully updated?
+  - [x] ARCHITECTURE.md is fully updated?
+  - [x] inspection-registry.json has all new elements?
+  - [x] No stale references to Echo, Combo, Signal Flare, Echo Chamber?
   **Acceptance:** ALL boxes checked.
 
 ## Testing Plan

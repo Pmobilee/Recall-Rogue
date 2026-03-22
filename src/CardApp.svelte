@@ -14,8 +14,7 @@
     activeRewardRevealStep,
   } from './ui/stores/gameState'
   import type { Screen } from './ui/stores/gameState'
-  import { navigateToScreen, normalizeHomeScreen } from './services/screenController'
-  import type { HubScreenName } from './services/screenController'
+  import { navigateToScreen } from './services/screenController'
   import {
     activeCardRewardOptions,
     activeMysteryEvent,
@@ -113,7 +112,7 @@
   import { collectMatchingFactIds } from './services/presetSelectionService'
   import { resumeCombatWithFallback } from './services/combatResumeService'
   import { BASE_WIDTH } from './data/layout'
-  import { layoutMode, isLandscape } from './stores/layoutStore'
+  import { layoutMode } from './stores/layoutStore'
 
   import ArchetypeSelection from './ui/components/ArchetypeSelection.svelte'
   import CardCombatOverlay from './ui/components/CardCombatOverlay.svelte'
@@ -127,7 +126,6 @@
   import RetreatOrDelve from './ui/components/RetreatOrDelve.svelte'
   import DungeonEntrance from './ui/components/DungeonEntrance.svelte'
   import HubScreen from './ui/components/HubScreen.svelte'
-  import HubNavBar from './ui/components/HubNavBar.svelte'
   import ShopRoomOverlay from './ui/components/ShopRoomOverlay.svelte'
   import CampfirePause from './ui/components/CampfirePause.svelte'
   import SpecialEventOverlay from './ui/components/SpecialEventOverlay.svelte'
@@ -156,13 +154,6 @@
   import { getCombatBgForEnemy, getCombatDepthMap } from './data/backgroundManifest'
   import ParallaxTransition from './ui/components/ParallaxTransition.svelte'
 
-  /** Screens that are active gameplay — HubNavBar should NOT appear on these. */
-  const GAMEPLAY_SCREENS = new Set<Screen>([
-    'combat', 'rewardRoom', 'archetypeSelection', 'retreatOrDelve',
-    'shopRoom', 'mysteryEvent', 'restRoom', 'cardReward', 'runEnd',
-    'specialEvent', 'campfire', 'masteryChallenge', 'relicReward', 'onboarding',
-  ])
-
   // Update Steam Rich Presence whenever the active screen changes.
   $effect(() => {
     updateRichPresence($currentScreen)
@@ -171,11 +162,6 @@
   function transitionScreen(target: Screen): void {
     const nextScreen = navigateToScreen(target, $currentScreen)
     currentScreen.set(nextScreen)
-  }
-
-  /** AR-91: Hub nav sidebar handler — routes hub nav buttons to the correct screen. */
-  function handleHubNavigate(target: HubScreenName): void {
-    transitionScreen(target)
   }
 
   let showOutsideDuePrompt = $state(false)
@@ -933,15 +919,6 @@
     bind:this={phaserContainer}
   ></div>
 
-  <!-- AR-91: Landscape sidebar navigation — shown on all non-gameplay screens (portrait renders its own bottom tab bar) -->
-  {#if $isLandscape && !showBootAnimation && !GAMEPLAY_SCREENS.has($currentScreen)}
-    <HubNavBar
-      current={normalizeHomeScreen($currentScreen)}
-      onNavigate={handleHubNavigate}
-      onOpenRelicSanctum={() => handleOpenRelicSanctum()}
-      onOpenDeckBuilder={handleOpenDeckBuilder}
-    />
-  {/if}
 
   {#if $currentScreen === 'hub' || $currentScreen === 'mainMenu' || $currentScreen === 'base'}
     <!-- svelte-ignore a11y_no_static_element_interactions -->

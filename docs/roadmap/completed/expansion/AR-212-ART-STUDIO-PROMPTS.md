@@ -16,7 +16,7 @@ Workers MUST read existing art prompts in `sprite-gen/cardback-tool/artstudio-it
 
 ### Research
 
-- [ ] 1. Analyze existing card art prompts for style patterns
+- [x] 1. Analyze existing card art prompts for style patterns
   **Files:** `sprite-gen/cardback-tool/artstudio-items.json`, `src/assets/` (existing sprites)
   **What:** Read all existing card art and relic icon prompts. Document:
   - Prompt structure (keywords, style tags, negative prompts)
@@ -28,7 +28,7 @@ Workers MUST read existing art prompts in `sprite-gen/cardback-tool/artstudio-it
 
 ### Card Art Prompts (60 new cards)
 
-- [ ] 2. Write prompts for Filler cards (8)
+- [x] 2. Write prompts for Filler cards (8)
   **Files:** `sprite-gen/cardback-tool/artstudio-items.json`
   **What:** Add prompts for: Power Strike, Twin Strike, Iron Wave, Reinforce, Shrug It Off, Bash, Guard, Sap. Each prompt should:
   - Evoke the card's mechanic visually (Twin Strike = two slashes, Guard = large shield, etc.)
@@ -37,81 +37,81 @@ Workers MUST read existing art prompts in `sprite-gen/cardback-tool/artstudio-it
   - Have a distinct silhouette from existing similar cards (Power Strike must look different from Strike)
   **Acceptance:** 8 prompts added to artstudio-items.json with correct metadata.
 
-- [ ] 3. Write prompts for Bleed archetype cards (3)
+- [x] 3. Write prompts for Bleed archetype cards (3)
   **Files:** `sprite-gen/cardback-tool/artstudio-items.json`
   **What:** Prompts for: Rupture, Lacerate, Hemorrhage. Visual theme: red, sharp, bleeding wounds, serrated edges. Each must be visually distinct from each other.
   **Acceptance:** 3 prompts added, all sharing a red/blood visual language.
 
-- [ ] 4. Write prompts for Burn archetype cards (3)
+- [x] 4. Write prompts for Burn archetype cards (3)
   **Files:** `sprite-gen/cardback-tool/artstudio-items.json`
   **What:** Prompts for: Kindle, Ignite, Entropy. Visual theme: orange, flames, embers, heat shimmer. Distinct from existing fire-themed sprites.
   **Acceptance:** 3 prompts added, all sharing an orange/fire visual language.
 
-- [ ] 5. Write prompts for Chain archetype cards (3)
+- [x] 5. Write prompts for Chain archetype cards (3)
   **Files:** `sprite-gen/cardback-tool/artstudio-items.json`
   **What:** Prompts for: Chain Lightning, Chain Anchor, Synapse. Visual theme: electric blue, chain links, connected nodes, lightning. Must read as "chain/connection" at small sizes.
   **Acceptance:** 3 prompts added with chain visual language.
 
-- [ ] 6. Write prompts for Quiz/Knowledge cards (6)
+- [x] 6. Write prompts for Quiz/Knowledge cards (6)
   **Files:** `sprite-gen/cardback-tool/artstudio-items.json`
   **What:** Prompts for: Gambit, Curse of Doubt, Mark of Ignorance, Knowledge Ward, Dark Knowledge, Knowledge Bomb. Visual theme: mystical knowledge, books, glowing runes, question marks, brain imagery. These are the game's identity cards — they should feel unique to Recall Rogue.
   **Acceptance:** 6 prompts added, all evoking "knowledge as power."
 
-- [ ] 7. Write prompts for Exhaust cards (2)
+- [x] 7. Write prompts for Exhaust cards (2)
   **Files:** `sprite-gen/cardback-tool/artstudio-items.json`
   **What:** Prompts for: Volatile Slash, Burnout Shield. Visual theme: cracking, shattering, one-use intensity. Should look "powerful but fragile."
   **Acceptance:** 2 prompts added.
 
-- [ ] 8. Write prompts for Utility/Wild cards (15)
+- [x] 8. Write prompts for Utility/Wild cards (15)
   **Files:** `sprite-gen/cardback-tool/artstudio-items.json`
   **What:** Prompts for: Absorb, Reactive Shield, Sift, Scavenge, Precision Strike, Stagger, Overcharge, Warcry, Battle Trance, Frenzy, War Drum, Mastery Surge, Phase Shift, Chameleon, Unstable Flux. Mix of tactical, buff, and shape-shifting visuals. Each must have a unique silhouette.
   **Acceptance:** 15 prompts added.
 
-- [ ] 9. Write prompts for Advanced cards (14)
+- [x] 9. Write prompts for Advanced cards (14)
   **Files:** `sprite-gen/cardback-tool/artstudio-items.json`
   **What:** Prompts for: Smite, Feedback Loop, Recall, Siphon Strike, Hemorrhage, Eruption, Bulwark, Conversion, Ironhide, Tutor, Recollect, Siphon Knowledge, Reflex, Archive. Mix of powerful/rare visual themes.
   **Acceptance:** 14 prompts added.
 
-- [ ] 10. Write prompts for Wild/Copy cards (4)
+- [x] 10. Write prompts for Wild/Copy cards (4)
   **Files:** `sprite-gen/cardback-tool/artstudio-items.json`
   **What:** Prompts for: Catalyst, Mimic, Aftershock, Sacrifice. Visual theme: transformation, duplication, echoes. Mimic should look shape-shifty. Sacrifice should look costly.
   **Acceptance:** 4 prompts added.
 
-- [ ] 11. Write prompts for Inscription cards (3)
+- [x] 11. Write prompts for Inscription cards (3)
   **Files:** `sprite-gen/cardback-tool/artstudio-items.json`
   **What:** Prompts for: Inscription of Fury, Inscription of Iron, Inscription of Wisdom. Visual theme: glowing runes carved into stone/metal, permanent/eternal feel. Should look distinct from regular cards — more "artifact" than "action."
   **Acceptance:** 3 prompts added with inscription visual language.
 
-- [ ] 12. Write prompts for remaining cards (2)
+- [x] 12. Write prompts for remaining cards (2)
   **Files:** `sprite-gen/cardback-tool/artstudio-items.json`
   **What:** Prompts for: Corroding Touch, Corrode. Visual theme: acid, decay, dissolution. Green/yellow toxic feel.
   **Acceptance:** 2 prompts added.
 
 ### Relic Icon Prompts (36 new relics)
 
-- [ ] 13. Write prompts for Common relics (5)
+- [x] 13. Write prompts for Common relics (5)
   **Files:** `sprite-gen/cardback-tool/artstudio-items.json`
   **What:** Icon prompts for: Quick Study, Thick Skin, Tattered Notebook, Battle Scars, Brass Knuckles. Relic icons should be simpler than card art — single object, clear silhouette, recognizable at small (32x32) sizes.
   **Acceptance:** 5 relic icon prompts added.
 
-- [ ] 14. Write prompts for Uncommon relics (12)
+- [x] 14. Write prompts for Uncommon relics (12)
   **Files:** `sprite-gen/cardback-tool/artstudio-items.json`
   **What:** Icon prompts for: Pocket Watch, Chain Link Charm, Worn Shield, Bleedstone, Ember Core, Gambler's Token, Thoughtform, Scar Tissue, Surge Capacitor, Obsidian Dice, Living Grimoire, Gladiator's Mark. Mix of items, artifacts, and abstract concepts.
   **Acceptance:** 12 relic icon prompts added.
 
-- [ ] 15. Write prompts for Rare relics (15)
+- [x] 15. Write prompts for Rare relics (15)
   **Files:** `sprite-gen/cardback-tool/artstudio-items.json`
   **What:** Icon prompts for: Red Fang, Chronometer, Soul Jar, Null Shard, Hemorrhage Lens, Archive Codex, Berserker's Oath, Chain Forge, Deja Vu, Inferno Crown, Mind Palace, Entropy Engine, Bloodstone Pendant, Chromatic Chain, Dragon's Heart. These should look more impressive/ornate than Common/Uncommon — rare items should feel rare.
   **Acceptance:** 15 relic icon prompts added with "rare" visual quality.
 
-- [ ] 16. Write prompts for Legendary + Cursed relics (6)
+- [x] 16. Write prompts for Legendary + Cursed relics (6)
   **Files:** `sprite-gen/cardback-tool/artstudio-items.json`
   **What:** Icon prompts for: Omniscience, Paradox Engine, Akashic Record, Singularity, Volatile Manuscript, Dragon's Heart (if not already in Rare batch). Legendary items should look spectacular — glowing, ethereal, clearly special. Cursed relics (Paradox Engine, Volatile Manuscript) should look dangerous — dark energy, unstable, warning colors.
   **Acceptance:** 6 prompts added with appropriate legendary/cursed visual language.
 
 ### Verification
 
-- [ ] 17. Validate all prompts in artstudio-items.json
+- [x] 17. Validate all prompts in artstudio-items.json
   **Files:** `sprite-gen/cardback-tool/artstudio-items.json`
   **What:** Verify:
   - All 60 card IDs have corresponding prompts
@@ -121,7 +121,7 @@ Workers MUST read existing art prompts in `sprite-gen/cardback-tool/artstudio-it
   - File is valid JSON
   **Acceptance:** 96 new entries in artstudio-items.json, all valid.
 
-- [ ] 18. Create a generation checklist
+- [x] 18. Create a generation checklist
   **Files:** `docs/roadmap/phases/expansion/art-generation-checklist.md` (new)
   **What:** Create a checklist the user can work through to generate all sprites. Group by: Filler cards → Bleed cards → Burn cards → Chain cards → etc. Include the ComfyUI command pattern for each batch.
   **Acceptance:** Checklist exists with all 96 items organized by batch.

@@ -9,7 +9,7 @@
 
 ## TODO Checklist
 
-- [ ] **1. Analyze component boundaries**
+- [x] **1. Analyze component boundaries**
   - Read `src/ui/components/CardCombatOverlay.svelte` fully
   - Identify distinct visual/logical sections:
     - Quiz question/answer display
@@ -20,28 +20,28 @@
     - Turn indicator and action prompts
   - Map which state/props each section needs
 
-- [ ] **2. Extract `CombatQuizSection.svelte`**
+- [x] **2. Extract `CombatQuizSection.svelte`**
   - Move quiz question text, answer buttons, timer, and feedback into dedicated component
   - Props: quiz data, callbacks for answer selection
   - Keep parent as orchestrator
 
-- [ ] **3. Extract `CombatStatusBar.svelte`**
+- [x] **3. Extract `CombatStatusBar.svelte`**
   - Player HP, enemy HP, shield indicators, status effect icons
   - Props: player state, enemy state, active status effects
 
-- [ ] **4. Extract `CombatRelicTray.svelte`**
+- [x] **4. Extract `CombatRelicTray.svelte`**
   - Relic icons with activation indicators
   - Props: active relics, recently triggered relics
 
-- [ ] **5. Extract `CombatActionPrompt.svelte`**
+- [x] **5. Extract `CombatActionPrompt.svelte`**
   - Turn indicator, "Play a card" / "Answer question" prompts
   - Props: current phase, available actions
 
-- [ ] **6. Slim down parent to orchestration only**
+- [x] **6. Slim down parent to orchestration only**
   - Parent should be <200 lines: imports sub-components, manages combat state flow, passes props
   - All rendering delegated to children
 
-- [ ] **7. Visual verification**
+- [x] **7. Visual verification**
   - Screenshot combat screen before and after
   - Verify all animations still work (damage popups, combo counter, status icons)
   - Test quiz flow end-to-end
@@ -64,9 +64,9 @@
 | CREATE | `src/ui/components/combat/CombatActionPrompt.svelte` |
 
 ## Verification Gate
-- [ ] `npm run typecheck` passes
-- [ ] `npm run build` passes
-- [ ] `npx vitest run` — all tests pass
-- [ ] Playwright screenshot of combat — visually identical to before
-- [ ] Mobile layout verified (portrait + landscape)
-- [ ] No console errors during combat flow
+- [x] `npm run typecheck` passes
+- [x] `npm run build` passes
+- [x] `npx vitest run` — all tests pass
+- [x] Playwright screenshot of combat — visually identical to before
+- [x] Mobile layout verified (portrait + landscape)
+- [x] No console errors during combat flow

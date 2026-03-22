@@ -362,16 +362,16 @@ Find the character progression section. Add a subsection describing card unlock 
 
 Before marking AR-205 complete, ALL of the following must be true:
 
-- [ ] `npm run typecheck` — zero errors
-- [ ] `npm run build` — clean build
-- [ ] `npx vitest run` — all tests pass, including new `characterLevel.unlock.test.ts`
-- [ ] `getUnlockedMechanics(0).size === 36` (verified in tests)
-- [ ] `getUnlockedMechanics(13).size === 92` (verified in tests)
-- [ ] `buildRunPool(..., { characterLevel: 0 })` — no mechanic above unlock level 0 appears in any card's `mechanicId`
-- [ ] `buildRunPool(..., { characterLevel: 13 })` — pool contains cards with phase-2+ mechanics
-- [ ] Empty-pool fallback: if a card type has zero unlocked mechanics, the pool falls back to the full type pool rather than crashing
-- [ ] `data/inspection-registry.json` updated with new system entry
-- [ ] `docs/GAME_DESIGN.md` updated with card unlock gating documentation
+- [x] `npm run typecheck` — zero errors
+- [x] `npm run build` — clean build
+- [x] `npx vitest run` — all tests pass, including new `characterLevel.unlock.test.ts`
+- [x] `getUnlockedMechanics(0).size === 36` (verified in tests)
+- [x] `getUnlockedMechanics(13).size === 92` (verified in tests)
+- [x] `buildRunPool(..., { characterLevel: 0 })` — no mechanic above unlock level 0 appears in any card's `mechanicId`
+- [x] `buildRunPool(..., { characterLevel: 13 })` — pool contains cards with phase-2+ mechanics
+- [x] Empty-pool fallback: if a card type has zero unlocked mechanics, the pool falls back to the full type pool rather than crashing
+- [x] `data/inspection-registry.json` updated with new system entry
+- [x] `docs/GAME_DESIGN.md` updated with card unlock gating documentation
 
 ## Notes for Worker
 

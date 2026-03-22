@@ -11,12 +11,12 @@ Audit all 124 services in `src/services/` for stub/dead code. Many services were
 
 ## TODO Checklist
 
-- [ ] **1. Document SM-2 vs FSRS relationship**
+- [x] **1. Document SM-2 vs FSRS relationship**
   - SM-2 is used by: playerData.ts, StudySession.svelte, KnowledgeTree.svelte, KnowledgeTreeView.svelte, GaiaReport.svelte, StudyStation.svelte, dev/presets.ts
   - FSRS (`fsrsScheduler.ts`) usage: check which files import it
   - Document in ARCHITECTURE.md: "SM-2 is the primary review scheduler. FSRS exists as an experimental parallel scheduler."
 
-- [ ] **3. Audit stub services for dead features**
+- [x] **3. Audit stub services for dead features**
   - `src/services/steamService.ts` — check if all exports are no-ops/stubs
   - `src/services/coopService.ts` — is co-op actually wired up or just a shell?
   - `src/services/duelService.ts` — same question
@@ -25,12 +25,12 @@ Audit all 124 services in `src/services/` for stub/dead code. Many services were
   - `src/services/seasonService.ts` / `seasonPass.ts` — functional or placeholder?
   - For each: if it's a stub with no real logic, consider marking with `@stub` JSDoc tag or consolidating stubs
 
-- [ ] **4. Identify and remove truly dead exports**
+- [x] **4. Identify and remove truly dead exports**
   - For each service flagged as stub, check if any component actually uses the service
   - Remove exports that have zero consumers
   - Keep stubs that are imported by UI components (they serve as type contracts)
 
-- [ ] **5. Document service status in ARCHITECTURE.md**
+- [x] **5. Document service status in ARCHITECTURE.md**
   - Add a "Service Status" table: implemented / stub / deprecated
   - Helps future sessions know what's real vs placeholder
 
@@ -52,8 +52,8 @@ Audit all 124 services in `src/services/` for stub/dead code. Many services were
 | EDIT | `docs/ARCHITECTURE.md` (service status table) |
 
 ## Verification Gate
-- [ ] `npm run typecheck` passes
-- [ ] `npm run build` passes
-- [ ] `npx vitest run` — all tests pass
-- [ ] No broken imports after any deletions
-- [ ] ARCHITECTURE.md has service status table
+- [x] `npm run typecheck` passes
+- [x] `npm run build` passes
+- [x] `npx vitest run` — all tests pass
+- [x] No broken imports after any deletions
+- [x] ARCHITECTURE.md has service status table

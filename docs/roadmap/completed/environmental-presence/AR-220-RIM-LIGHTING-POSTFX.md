@@ -293,19 +293,19 @@ However, verify that the rim glow doesn't bleed OUTSIDE the main sprite's bounds
 
 ## Acceptance Criteria
 
-- [ ] Alpha-based rim lighting visible on enemy sprite edges
-- [ ] Rim color matches room theme (orange in dust, blue in ice, etc.)
-- [ ] Rim appears on the side OPPOSITE the dominant light source
-- [ ] Rim is quantized to 3 discrete steps (no smooth gradients)
-- [ ] Fresnel-based rim works when normal maps are available (auto-selected)
-- [ ] Alpha-based fallback works when normal maps are missing
-- [ ] Rim does NOT appear on outline sprites or shadow
-- [ ] Rim does NOT bleed outside sprite bounds
-- [ ] Low-end devices skip rim lighting entirely
-- [ ] Rim composites correctly with Light2D (AR-219) and AO (AR-216)
-- [ ] `npm run typecheck` passes
-- [ ] `npm run build` succeeds
-- [ ] No WebGL shader compilation errors in console
+- [x] Alpha-based rim lighting visible on enemy sprite edges
+- [x] Rim color matches room theme (orange in dust, blue in ice, etc.)
+- [x] Rim appears on the side OPPOSITE the dominant light source
+- [x] Rim is quantized to 3 discrete steps (no smooth gradients)
+- [x] Fresnel-based rim works when normal maps are available (auto-selected)
+- [x] Alpha-based fallback works when normal maps are missing
+- [x] Rim does NOT appear on outline sprites or shadow
+- [x] Rim does NOT bleed outside sprite bounds
+- [x] Low-end devices skip rim lighting entirely
+- [x] Rim composites correctly with Light2D (AR-219) and AO (AR-216)
+- [x] `npm run typecheck` passes
+- [x] `npm run build` succeeds
+- [x] No WebGL shader compilation errors in console
 
 ## Verification Gate
 

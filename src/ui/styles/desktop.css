@@ -173,17 +173,6 @@
     font-family: 'Cinzel', Georgia, serif !important;
   }
 
-  /* F-03: Sidebar labels — swap pixel font for readable body font */
-  [data-layout="landscape"] .nav-sidebar .sidebar-label {
-    font-family: var(--font-body, system-ui, sans-serif);
-    font-size: calc(13px * var(--text-scale, 1));
-  }
-
-  [data-layout="landscape"] .nav-sidebar .sidebar-btn {
-    font-family: var(--font-body, system-ui, sans-serif);
-    font-size: calc(13px * var(--text-scale, 1));
-  }
-
   /* F-04: All buttons in landscape use readable body font */
   [data-layout="landscape"] button {
     font-family: var(--font-body, system-ui, sans-serif);
@@ -254,24 +243,13 @@
     overflow-wrap: anywhere;
   }
 
-  /* F-32: Sidebar emoji fallback — use body font for consistent rendering */
-  [data-layout="landscape"] .nav-icon-fallback {
-    font-family: var(--font-body, system-ui, sans-serif);
-  }
-
-  /* F-34: Sidebar active state — higher contrast border and background */
-  [data-layout="landscape"] .sidebar-btn.active {
-    border-left-color: rgba(245, 158, 11, 0.9);
-    background: rgba(30, 50, 80, 0.6);
-  }
-
   /* F-35: Settings toggle/slider rows — wider label column to prevent clipping */
   [data-layout="landscape"] .toggle-row,
   [data-layout="landscape"] .slider-row {
     grid-template-columns: calc(200px * var(--layout-scale, 1)) 1fr auto;
   }
 
-  /* ── F-07: Settings — hide internal 200px sidebar, use global nav instead ── */
+  /* ── F-07: Settings — hide internal 200px sidebar ── */
   [data-layout="landscape"] .settings-sidebar {
     display: none;
   }
@@ -385,7 +363,4 @@
     border-left-color: #f59e0b !important;
   }
 
-  [data-layout="landscape"] .sidebar-btn:hover {
-    background: rgba(255, 200, 100, 0.08);
-  }
 }
