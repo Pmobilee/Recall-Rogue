@@ -1579,6 +1579,17 @@ Players accumulate XP across all runs. XP feeds a permanent account level (1–2
 
 18 relics are distributed across levels 1–24. Levels without relics award dust (200–1000).
 
+**Relic unlock persistence:** When a player levels up, `processXPGain()` returns `relicsUnlocked: string[]` containing all relic IDs from `LEVEL_REWARDS` for each gained level. These are merged into `PlayerSave.unlockedRelicIds` (with dedup) by `awardRunXP()` in `playerData.ts`. This handles level-skip scenarios — if a player jumps from level 5 to level 8, they receive relics from levels 6, 7, and 8.
+
+**Two unlock systems — cards vs relics:**
+
+| System | How it works | Persistence |
+|--------|-------------|-------------|
+| **Cards** | Level-gated via `getUnlockedMechanics(characterLevel)` at pool-build time | No separate unlock list — purely derived from current level |
+| **Relics** | Level-gated via `RelicDefinition.unlockLevel` for pool eligibility, PLUS `LEVEL_REWARDS` relic IDs added to `unlockedRelicIds` on level-up | Persisted in `PlayerSave.unlockedRelicIds` array |
+
+Cards are stateless (derived from level). Relics are stateful (persisted in save). The relic collection screen shows `???` for relics not in `unlockedRelicIds`.
+
 ### 13c-ii. Card Mechanic Unlock Gating (AR-205 / AR-209)
 
 **Service:** `src/services/characterLevel.ts` — `MECHANIC_UNLOCK_SCHEDULE`, `getUnlockedMechanics(level)`, `getMechanicUnlockLevel(id)`

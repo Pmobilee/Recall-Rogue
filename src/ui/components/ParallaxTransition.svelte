@@ -31,18 +31,15 @@
     uniform float uZoom;
     uniform float uVignette;
     uniform float uBrightness;
-    uniform vec2 uCoverScale;  // aspect-ratio correction for object-fit: cover
+    uniform float uOpacity;
 
     varying vec2 vUv;
 
     void main() {
       vec2 center = vec2(0.5, 0.5);
 
-      // Apply object-fit: cover — crop image to fill viewport while preserving aspect ratio
-      vec2 coverUv = center + (vUv - center) * uCoverScale;
-
       // Zoom: crop into the image so edges extend beyond screen
-      vec2 zoomed = center + (coverUv - center) / uZoom;
+      vec2 zoomed = center + (vUv - center) / uZoom;
 
       // Parallax on the zoomed coords: near objects spread outward
       float depth2 = texture2D(uDepthMap, zoomed).r;
@@ -60,7 +57,7 @@
       // Brightness
       color.rgb *= uBrightness;
 
-      gl_FragColor = color;
+      gl_FragColor = vec4(color.rgb, uOpacity);
     }
   `
 
@@ -142,17 +139,19 @@
       if (gl) gl.viewport(0, 0, el.width, el.height)
     }
 
-    let coverScaleX = 1.0
-    let coverScaleY = 1.0
-
     function render(
       dolly: number,
       zoom: number,
       vignette: number,
-      brightness: number
+      brightness: number,
+      opacity: number
     ) {
       if (!gl || !prog) return
       gl.useProgram(prog)
+
+      // Enable alpha blending so the transition can fade out over the background
+      gl.enable(gl.BLEND)
+      gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
 
       gl.uniform1i(uLocs.uImage as WebGLUniformLocation, 0)
       gl.uniform1i(uLocs.uDepthMap as WebGLUniformLocation, 1)
@@ -160,7 +159,7 @@
       gl.uniform1f(uLocs.uZoom as WebGLUniformLocation, zoom)
       gl.uniform1f(uLocs.uVignette as WebGLUniformLocation, vignette)
       gl.uniform1f(uLocs.uBrightness as WebGLUniformLocation, brightness)
-      gl.uniform2f(uLocs.uCoverScale as WebGLUniformLocation, coverScaleX, coverScaleY)
+      gl.uniform1f(uLocs.uOpacity as WebGLUniformLocation, opacity)
 
       const aPos = gl.getAttribLocation(prog, 'aPosition')
       gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf)
@@ -180,36 +179,38 @@
         let zoom: number
         let vignette: number
         let brightness: number
+        let opacity: number
         let bob: number
 
         if (type === 'enter') {
           const eased = 1 - Math.pow(1 - t, 2.5)
           dolly = 0.25 * (1 - eased)              // 0.25 → 0
           zoom = 1.1 - eased * 0.1                 // 1.1 → 1.0
-          vignette = 0.9 * (1 - eased)             // 0.9 → 0 (must end at exactly 0)
+          vignette = 0.9 * (1 - eased)             // 0.9 → 0
           brightness = t < 0.2 ? t / 0.2 : 1.0     // 0 → 1
-          bob = Math.sin(t * Math.PI * 2 * 8) * 8 * (1 - eased)  // 8 half-cycles = 4 footsteps
+          // Fade out in last 15% so the transition dissolves seamlessly into the static background
+          opacity = t > 0.85 ? 1 - Math.pow((t - 0.85) / 0.15, 0.5) : 1.0
+          bob = Math.sin(t * Math.PI * 2 * 8) * 8 * (1 - eased)
         } else if (type === 'exit-forward') {
-          // Combat exit: aggressive push through the room
           const eased = Math.pow(t, 2.0)
-          dolly = eased * 0.5                      // 0 → 0.5
+          dolly = eased * 0.5
           zoom = 1.0 + eased * 1.0                 // 1.0 → 2.0
           vignette = 0.1 + eased * 0.9
           brightness = t > 0.7 ? 1 - Math.pow((t - 0.7) / 0.3, 2) : 1.0
+          opacity = 1.0
           bob = Math.sin(t * Math.PI * 2 * 8) * 12 * eased
         } else {
-          // exit-backward: walk forward through the room, gentler
           const eased = Math.pow(t, 2.0)
-          dolly = eased * 0.4                      // 0 → 0.4
+          dolly = eased * 0.4
           zoom = 1.0 + eased * 0.8                 // 1.0 → 1.8
           vignette = 0.1 + eased * 0.9
           brightness = t > 0.7 ? 1 - Math.pow((t - 0.7) / 0.3, 2) : 1.0
+          opacity = 1.0
           bob = Math.sin(t * Math.PI * 2 * 8) * 10 * Math.min(eased * 3, 1)
         }
 
-        // Walking bob applied as CSS transform (no shader warping)
         bobOffset = bob
-        render(dolly, zoom, vignette, brightness)
+        render(dolly, zoom, vignette, brightness, opacity)
 
         if (t < 1.0) {
           rafId = requestAnimationFrame(frame)
@@ -247,7 +248,7 @@
         prog = createProgram(gl)
 
         // Cache uniform locations
-        for (const name of ['uImage', 'uDepthMap', 'uDolly', 'uZoom', 'uVignette', 'uBrightness', 'uCoverScale']) {
+        for (const name of ['uImage', 'uDepthMap', 'uDolly', 'uZoom', 'uVignette', 'uBrightness', 'uOpacity']) {
           uLocs[name] = gl.getUniformLocation(prog, name)
         }
 
@@ -262,19 +263,6 @@
         ])
         texImage = imgResult.tex
         texDepth = depthResult.tex
-
-        // Compute object-fit: cover scale to match how CSS renders the background
-        const imgAspect = imgResult.width / imgResult.height
-        const vpAspect = window.innerWidth / window.innerHeight
-        if (vpAspect > imgAspect) {
-          // Viewport is wider than image — image is cropped top/bottom
-          coverScaleX = 1.0
-          coverScaleY = vpAspect / imgAspect
-        } else {
-          // Viewport is taller than image — image is cropped left/right
-          coverScaleX = imgAspect / vpAspect
-          coverScaleY = 1.0
-        }
 
         if (destroyed) return
 

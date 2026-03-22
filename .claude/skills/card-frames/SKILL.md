@@ -171,6 +171,9 @@ The artstudio page (`sprite-gen/cardback-tool/public/artstudio.html`) has its ow
 - Art positioning should match: `left:19.9% top:16.3% width:61.3% height:37.0%`
 - After re-extracting frames, copy updated WebP files to the artstudio's `card-frame-assets/` directory
 
+### Card container must be transparent
+`.card-in-hand` must have `background-color: transparent`, `border: none`, `box-shadow: none`. The card frame layers handle all visual framing. Any opaque background/border creates a visible dark container around the card.
+
 ## Card Art Assets
 
 - **Location:** `public/assets/cardart/`
@@ -178,3 +181,24 @@ The artstudio page (`sprite-gen/cardback-tool/public/artstudio.html`) has its ow
 - **Naming:** `{mechanicId}.png` (e.g., `strike.png`, `block.png`)
 - **Manifest:** `src/ui/utils/cardArtManifest.ts` — `getCardArtUrl(mechanicId)` returns the URL
 - **Generation:** Via artstudio (`sprite-gen/cardback-tool/artstudio-items.json`, category `cardart`)
+
+### Adding New Card Art — Checklist
+
+When adding art for a new card mechanic:
+
+1. Generate art via artstudio (category `cardart`, 512x512)
+2. Accept the best variant in artstudio UI
+3. Copy accepted PNG from `sprite-gen/cardback-tool/artstudio-output/cardart/{id}/variant-{n}.png` to `public/assets/cardart/{id}.png`
+4. **Add entry to `src/ui/utils/cardArtManifest.ts`** in `CARD_ART_MAP`: `mechanic_id: 'mechanic_id.png',`
+5. Without step 4, `getCardArtUrl()` returns null and no art displays
+
+### Consumers
+
+All card art consumers go through `getCardArtUrl(mechanicId)`:
+- `CardHand.svelte` — combat hand
+- `CardRewardScreen.svelte` — post-combat card rewards
+- `RewardCardDetail.svelte` — reward card detail view
+
+## Enemy ID Naming
+
+Enemy IDs were renamed from creature names to knowledge-themed lore names (2026-03-22). Source of truth: `src/data/enemies.ts` `name` field converted to snake_case. Examples: `cave_bat` → `page_flutter`, `shadow_hydra` → `group_project`, `void_weaver` → `rabbit_hole`. All sprites, backgrounds, and references use the lore-name IDs.

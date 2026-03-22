@@ -21,6 +21,7 @@ VOCAB_FILE = REPO_ROOT / "src/data/seed/vocab-ko.json"
 # Phase 1b: Hardcoded fixes for NIKL definitions too vague for pattern extraction
 # ---------------------------------------------------------------------------
 COMMON_WORD_FIXES = {
+    # Original 35 entries
     'ko-nikl-198':  'urgent',                   # 급하다
     'ko-nikl-206':  'joy, delight',             # 기쁨
     'ko-nikl-447':  'moment, point in time',    # 때
@@ -56,6 +57,394 @@ COMMON_WORD_FIXES = {
     'ko-nikl-248':  'end, expiration',          # 끝
     'ko-nikl-306':  'yellow',                   # 노란색
     'ko-nikl-313':  'green',                    # 녹색
+
+    # Extended batch — unambiguous NIKL definitions
+    'ko-nikl-39':   'cold medicine',            # 감기약
+    'ko-nikl-51':   'to return (borrowed item)',# 갚다
+    'ko-nikl-174':  'therefore, for that reason',# 그래서
+    'ko-nikl-239':  'bouquet',                  # 꽃다발
+    'ko-nikl-244':  'to extinguish a fire',     # 끄다
+    'ko-nikl-336':  'to be late',               # 늦다
+    'ko-nikl-533':  'appearance, aspect',       # 면
+    'ko-nikl-613':  'to become light, dawn',    # 밝다
+    'ko-nikl-641':  'faster than expected',     # 빨리
+    'ko-nikl-664':  'to visit an elder',        # 뵙다
+    'ko-nikl-686':  'pink',                     # 분홍색
+    'ko-nikl-715':  'briefly, in a short time', # 잠깐
+    'ko-nikl-809':  'washing machine',          # 세탁기
+    'ko-nikl-845':  'swimsuit',                 # 수영복
+    'ko-nikl-877':  'clock',                    # 시계
+    'ko-nikl-879':  'noisy, loud',              # 시끄럽다
+    'ko-nikl-947':  'extremely, severely',      # 엄청나게
+    'ko-nikl-961':  'musical instrument',       # 악기
+    'ko-nikl-978':  'forward direction, front', # 앞쪽
+    'ko-nikl-1009': 'yesterday',                # 어제
+    'ko-nikl-1067': 'neighboring house',        # 옆집
+    'ko-nikl-1107': 'foreign language',         # 외국어
+    'ko-nikl-1189': 'right now, at this moment',# 지금
+    'ko-nikl-1192': 'future, time ahead',       # 이후
+    'ko-nikl-1290': 'possibly, wholly',         # 전혀
+    'ko-nikl-1313': 'first place, number one',  # 첫째
+    'ko-nikl-1369': 'present moment, right now',# 현재
+    'ko-nikl-1428': 'first in order',           # 먼저
+    'ko-nikl-1451': 'soccer ball',              # 축구공
+    'ko-nikl-1464': 'ample, sufficient',        # 넉넉하다
+    'ko-nikl-1537': 'cargo truck',              # 화물차
+    'ko-nikl-1540': 'unusually, differently',   # 특별히
+    'ko-nikl-1598': 'Hangeul (Korean alphabet)',# 한글
+    'ko-nikl-1600': 'Hanbok (traditional dress)',# 한복
+    'ko-nikl-1632': 'lake',                     # 호수
+    'ko-nikl-1650': 'company employee',         # 회사원
+    'ko-nikl-1670': 'white',                    # 흰색
+    'ko-nikl-1692': 'gas',                      # 기체
+    'ko-nikl-1706': 'each country',             # 각국
+    'ko-nikl-1748': 'lecture room',             # 강의실
+    'ko-nikl-1797': 'in-depth review',          # 검토
+    'ko-nikl-1818': 'never, absolutely not',    # 결코
+    'ko-nikl-1888': 'alley, narrow path',       # 골목
+    'ko-nikl-1912': 'princess',                 # 공주
+    'ko-nikl-1961': 'educator, teacher',        # 교육자
+    'ko-nikl-2053': 'suburbs, outskirts',       # 근교
+    'ko-nikl-2140': 'top, summit',              # 꼭대기
+    'ko-nikl-2145': 'to be ranked',             # 들다
+    'ko-nikl-2179': 'to get goosebumps',        # 돋다
+    'ko-nikl-2202': 'to fly (through the air)', # 날다
+    'ko-nikl-2206': 'old and worn out',         # 낡다
+    'ko-nikl-2207': 'brother and younger sister',# 남매
+    'ko-nikl-2218': 'to look outside from inside',# 내다보다
+    'ko-nikl-2219': 'next month',               # 다음 달
+    'ko-nikl-2236': 'cold water',               # 냉수
+    'ko-nikl-2253': 'to overflow',              # 넘치다
+    'ko-nikl-2286': 'farming village',          # 농촌
+    'ko-nikl-2301': 'eye disease',              # 눈병
+    'ko-nikl-2322': 'to sleep in late',         # 늦잠
+    'ko-nikl-2365': 'US dollar',                # 달러
+    'ko-nikl-2370': 'moonlight',                # 달빛
+    'ko-nikl-2380': 'being in charge',          # 담당
+    'ko-nikl-2381': 'person in charge',         # 담당자
+    'ko-nikl-2382': 'genuine, frank',           # 담백하다
+    'ko-nikl-2428': 'popular song',             # 대중가요
+    'ko-nikl-2494': 'pebble, small stone',      # 돌멩이
+    'ko-nikl-2538': 'headache medicine',        # 두통약
+    'ko-nikl-2539': 'to look around',           # 둘러보다
+    'ko-nikl-2552': 'back view, rear',          # 뒷모습
+    'ko-nikl-2571': 'to let someone in',        # 들이다
+    'ko-nikl-2577': 'hiking clothes',           # 등산복
+    'ko-nikl-2597': 'depending on circumstances',# 따라서
+    'ko-nikl-2613': 'definite, clear',          # 뚜렷하다
+    'ko-nikl-2617': 'to run out quickly',       # 뛰쳐나오다
+    'ko-nikl-2618': 'to jump down',             # 뛰어내리다
+    'ko-nikl-2674': 'last bus or train',        # 막차
+    'ko-nikl-2697': 'to face each other',       # 마주서다
+    'ko-nikl-2730': 'haphazardly, randomly',    # 마구
+    'ko-nikl-2766': 'thirsty',                  # 목마르다
+    'ko-nikl-2785': 'ugly, unattractive',       # 못생기다
+    'ko-nikl-2812': 'silently, without words',  # 묵묵히
+    'ko-nikl-2824': 'skilled writer',           # 문장가
+    'ko-nikl-2895': 'half price',               # 반값
+    'ko-nikl-2922': 'step forward, footstep',   # 발걸음
+    'ko-nikl-3007': 'to throw a party or feast',# 벌이다
+    'ko-nikl-3051': 'pedestrian',               # 보행자
+    'ko-nikl-3098': 'irregularity',             # 불규칙
+    'ko-nikl-3113': 'quantity, amount',         # 수량
+    'ko-nikl-3166': 'even so, nonetheless',     # 그래도
+    'ko-nikl-3199': 'rainwater',                # 빗물
+    'ko-nikl-3239': 'death',                    # 사망
+    'ko-nikl-3251': 'content of a letter',      # 사연
+    'ko-nikl-3252': 'method of use',            # 사용법
+    'ko-nikl-3278': 'deep in the mountains',    # 산속
+    'ko-nikl-3333': 'new home (after moving)',  # 새집
+    'ko-nikl-3339': 'date of birth',            # 생년월일
+    'ko-nikl-3347': 'living expenses',          # 생활비
+    'ko-nikl-3348': 'basic necessities',        # 생필품
+    'ko-nikl-3355': 'slowly, little by little', # 서서히
+    'ko-nikl-3399': 'century',                  # 세기
+    'ko-nikl-3434': 'urine',                    # 소변
+    'ko-nikl-3478': 'honestly, sincerely',      # 솔직하게
+    'ko-nikl-3498': 'repair cost',              # 수리비
+    'ko-nikl-3555': 'humidity',                 # 습도
+    'ko-nikl-3559': 'victory',                  # 승리
+    'ko-nikl-3590': 'moment, point in time',    # 시점
+    'ko-nikl-3600': 'restaurant street',        # 식당가
+    'ko-nikl-3618': 'sour taste',               # 신맛
+    'ko-nikl-3623': 'gentleman',                # 신사
+    'ko-nikl-3624': 'new product, new release', # 신제품
+    'ko-nikl-3648': 'practical, useful',        # 실용적
+    'ko-nikl-3649': 'in truth, in reality',     # 실제로
+    'ko-nikl-3655': 'real thing, reality',      # 실체
+    'ko-nikl-3706': 'floor below, basement',    # 아래층
+    'ko-nikl-3709': 'probably, likely',         # 아마
+    'ko-nikl-3767': 'to put someone first',     # 앞세우다
+    'ko-nikl-3791': 'both countries',           # 양국
+    'ko-nikl-3889': 'professional actor',       # 연기자
+    'ko-nikl-3892': 'age (years lived)',        # 연령
+    'ko-nikl-3906': 'tender, soft',             # 연하다
+    'ko-nikl-3954': 'for a long time',          # 오래
+    'ko-nikl-4013': 'yogurt',                   # 요구르트
+    'ko-nikl-4028': 'bravery, courage',         # 용기
+    'ko-nikl-4038': 'funny, amusing',           # 우습다
+    'ko-nikl-4064': 'to make someone laugh',    # 웃기다
+    'ko-nikl-4082': 'remarkable, outstanding',  # 우수하다
+    'ko-nikl-4098': 'glass window',             # 유리창
+    'ko-nikl-4111': 'army, land forces',        # 육군
+    'ko-nikl-4119': 'voice, sound of speech',   # 음성
+    'ko-nikl-4155': 'advantageous, helpful',    # 유리하다
+    'ko-nikl-4161': 'this way, in this direction',# 이쪽
+    'ko-nikl-4163': 'just this much',           # 이만큼
+    'ko-nikl-4164': 'about this much',          # 이 정도
+    'ko-nikl-4177': 'out of range, outside',    # 이외
+    'ko-nikl-4180': 'finally, at last',         # 이윽고
+    'ko-nikl-4184': 'the next day',             # 이튿날
+    'ko-nikl-4191': 'true nature, humanity',    # 인간성
+    'ko-nikl-4198': 'all people, everyone',     # 인류
+    'ko-nikl-4200': 'ginseng tea',              # 인삼차
+    'ko-nikl-4208': 'human relationship',       # 인간관계
+    'ko-nikl-4245': 'type, kind',               # 일종
+    'ko-nikl-4248': 'sunrise, dawn',            # 일출
+    'ko-nikl-4276': 'status, position',         # 지위
+    'ko-nikl-4288': 'operating capital',        # 자금
+    'ko-nikl-4369': 'low quality, low level',   # 저급
+    'ko-nikl-4451': 'front, facing side',       # 정면
+    'ko-nikl-4510': 'seasoning, condiment',     # 조미료
+    'ko-nikl-4531': 'paper cup',                # 종이컵
+    'ko-nikl-4532': 'daytime, from morning to evening',# 종일
+    'ko-nikl-4565': 'bare branch, dead branch', # 죽은 가지
+    'ko-nikl-4566': 'constantly, without stopping',# 줄곧
+    'ko-nikl-4601': 'continuously, until now',  # 지금껏
+    'ko-nikl-4639': 'true logic, reason',       # 진리
+    'ko-nikl-4670': 'salty taste',              # 짠맛
+    'ko-nikl-4700': 'train or car window',      # 차창
+    'ko-nikl-4733': 'single woman',             # 처녀
+    'ko-nikl-4767': 'beginning, start of a period',# 초
+    'ko-nikl-4828': 'biological son',           # 친아들
+    'ko-nikl-4862': 'important, hard task',     # 큰일
+    'ko-nikl-4949': 'lifetime, lifespan',       # 평생
+    'ko-nikl-4962': 'heavy snowfall',           # 폭설
+    'ko-nikl-4979': 'traits, basis',            # 바탕
+    'ko-nikl-4981': 'sufficient, plenty',       # 풍족하다
+    'ko-nikl-4986': 'printer',                  # 프린터
+    'ko-nikl-4998': 'necessity, need',          # 필요성
+    'ko-nikl-5041': 'fairly long time',         # 한참
+    'ko-nikl-5043': 'more than, exceeding',     # 이상
+    'ko-nikl-5071': 'coastline, shore',         # 해안선
+    'ko-nikl-5077': 'venue, event location',    # 행사장
+    'ko-nikl-5157': 'lively, full of energy',   # 활기차다
+    'ko-nikl-5223': 'moreover, to make it worse',# 더구나
+    'ko-nikl-5242': 'fabrication, lies',        # 거짓말
+    'ko-nikl-5246': 'residential building',     # 주거용 건물
+    'ko-nikl-5261': 'various fields of society',# 각계각층
+    'ko-nikl-5272': 'various places',           # 여러 곳
+    'ko-nikl-5287': 'desperate wish, longing',  # 간절한 바람
+    'ko-nikl-5321': 'just now, a moment ago',   # 방금
+    'ko-nikl-5327': 'powerfully, forcefully',   # 강하게
+    'ko-nikl-5334': 'mentally tough, tenacious',# 강인하다
+    'ko-nikl-5335': 'powerful person',          # 권력자
+    'ko-nikl-5376': 'large amount of money',    # 거액
+    'ko-nikl-5403': 'cause for concern, worry', # 걱정거리
+    'ko-nikl-5459': 'ending, conclusion',       # 결말
+    'ko-nikl-5484': 'passage of time',          # 세월
+    'ko-nikl-5526': 'planned, systematic',      # 계획적
+    'ko-nikl-5528': 'expensive item',           # 고가품
+    'ko-nikl-5530': 'high school student',      # 고등학생
+    'ko-nikl-5532': 'distinguished, valuable',  # 고귀하다
+    'ko-nikl-5564': 'highland, plateau',        # 고원
+    'ko-nikl-5587': 'antique, old artifact',    # 골동품
+    'ko-nikl-5626': 'for the public good',      # 공익
+    'ko-nikl-5630': 'general public',           # 대중
+    'ko-nikl-5734': 'job hunting',              # 구직
+    'ko-nikl-5740': 'rescue, saving someone',   # 구조
+    'ko-nikl-5744': 'old-fashioned style',      # 구식
+    'ko-nikl-5747': 'national border',          # 국경
+    'ko-nikl-5769': 'many places, everywhere',  # 곳곳
+    'ko-nikl-5770': 'roasted chestnut',         # 군밤
+    'ko-nikl-5819': 'severity, extreme degree', # 심각성
+    'ko-nikl-5884': 'end of semester',          # 학기 말
+    'ko-nikl-5900': 'to crawl',                 # 기다
+    'ko-nikl-5910': 'very unusual, strange',    # 기이하다
+    'ko-nikl-5982': 'tough, hard to cut',       # 질기다
+    'ko-nikl-5997': 'more and more, increasingly',# 점점
+    'ko-nikl-6022': 'hard to decide, hesitant', # 망설이다
+    'ko-nikl-6030': 'more and more, increasingly',# 점점
+    'ko-nikl-6047': 'flat and spread out',      # 납작하다
+    'ko-nikl-6126': 'old age',                  # 노년
+    'ko-nikl-6167': 'frown, wrinkle between brows',# 미간
+    'ko-nikl-6185': 'excellent in a field',     # 뛰어나다
+    'ko-nikl-6192': 'great quantity, plenty',   # 많음
+    'ko-nikl-6193': 'similarly, in the same way',# 마찬가지로
+    'ko-nikl-6278': 'peak season',              # 성수기
+    'ko-nikl-6283': 'to cry loudly, wail',      # 엉엉 울다
+    'ko-nikl-6285': 'substitute, replacement',  # 대체물
+    'ko-nikl-6300': 'university district',      # 대학가
+    'ko-nikl-6352': 'venomous snake',           # 독사
+    'ko-nikl-6387': 'simultaneous interpretation',# 동시통역
+    'ko-nikl-6443': 'plain, flat land',         # 평야
+    'ko-nikl-6446': 'to come and go frequently',# 드나들다
+    'ko-nikl-6447': 'to come and go frequently',# 드나들다
+    'ko-nikl-6502': 'exactly right, perfect',   # 딱
+    'ko-nikl-6508': 'to burst out quickly',     # 튀어나가다
+    'ko-nikl-6509': 'to come bursting out',     # 튀어나오다
+    'ko-nikl-6523': 'completion process',       # 마무리
+    'ko-nikl-6528': 'reluctantly, against will',# 마지못해
+    'ko-nikl-6534': 'enormous, very numerous',  # 막대하다
+    'ko-nikl-6542': 'easily, without obstacles',# 막힘없이
+    'ko-nikl-6562': 'to face closely',          # 맞대다
+    'ko-nikl-6563': 'to hold at both ends',     # 맞잡다
+    'ko-nikl-6641': 'everything, without exception',# 모두
+    'ko-nikl-6676': 'appropriately, moderately',# 적당히
+    'ko-nikl-6698': 'without thought, mechanically',# 무심코
+    'ko-nikl-6734': 'water drop, droplet',      # 물방울
+    'ko-nikl-6740': 'sense of taste',           # 미각
+    'ko-nikl-6742': 'beautiful woman',          # 미인
+    'ko-nikl-6745': 'beautiful face',           # 미모
+    'ko-nikl-6832': 'all the time, day and night',# 밤낮으로
+    'ko-nikl-6881': 'light red, pinkish red',   # 분홍빛
+    'ko-nikl-6918': 'noticeably strange',       # 유별나다
+    'ko-nikl-6978': 'mountain peak, summit',    # 산봉우리
+    'ko-nikl-6991': 'I hope, if possible',      # 부디
+    'ko-nikl-7032': 'powdered milk',            # 분유
+    'ko-nikl-7035': 'powerful stream, jet',     # 분출
+    'ko-nikl-7046': 'bad behavior, bad personality',# 못된 성격
+    'ko-nikl-7069': 'unfortunately',            # 불행히도
+    'ko-nikl-7093': 'immoral act',              # 불의
+    'ko-nikl-7109': 'unbearably sad, dreadful', # 비참하다
+    'ko-nikl-7147': 'sweating a lot',           # 땀을 흘리며
+    'ko-nikl-7200': 'secluded mountain area',   # 산속 외딴 곳
+    'ko-nikl-7235': 'upward trend',             # 상승세
+    'ko-nikl-7274': 'living things, organisms', # 생물
+    'ko-nikl-7298': 'detailed document',        # 상세 문서
+    'ko-nikl-7350': 'sadness, sorrow',          # 슬픔
+    'ko-nikl-7356': 'laws of nature',           # 자연법칙
+    'ko-nikl-7358': 'absorption, intake',       # 섭취
+    'ko-nikl-7360': 'donation, charity',        # 기부금
+    'ko-nikl-7372': 'sincere personality',      # 성실한 성격
+    'ko-nikl-7382': 'temper, personality',      # 성격
+    'ko-nikl-7436': 'continuously, in succession',# 연달아
+    'ko-nikl-7467': 'talking too much, verbose',# 수다스럽다
+    'ko-nikl-7470': 'common, widespread',       # 흔하다
+    'ko-nikl-7562': 'very urgently',            # 매우 급하게
+    'ko-nikl-7568': 'era-specific characteristic',# 시대적 특성
+    'ko-nikl-7605': 'eating habits',            # 식습관
+    'ko-nikl-7606': 'edible, food-related',     # 식용
+    'ko-nikl-7643': 'real-time, simultaneous',  # 실시간
+    'ko-nikl-7675': 'eight or nine out of ten', # 십중팔구
+    'ko-nikl-7676': 'fresh, clear, fragrant',   # 상쾌하다
+    'ko-nikl-7765': 'very beginning',           # 시초
+    'ko-nikl-7780': 'low value, weak tendency', # 낮은 경향
+    'ko-nikl-7876': 'married woman (polite)',   # 부인
+    'ko-nikl-7878': 'girl',                     # 여자아이
+    'ko-nikl-7883': 'travel route, itinerary',  # 여행 경로
+    'ko-nikl-7907': 'to have a lingering obsession',# 미련을 갖다
+    'ko-nikl-7932': 'violent storm wind',       # 폭풍
+    'ko-nikl-7943': 'cause, state of a matter', # 상태
+    'ko-nikl-7972': 'arts and athletics',       # 예체능
+    'ko-nikl-7975': 'brother and younger sister',# 남매
+    'ko-nikl-7998': 'cloth, fabric',            # 천
+    'ko-nikl-8012': 'royal palace',             # 궁궐
+    'ko-nikl-8013': 'royal authority',          # 왕권
+    'ko-nikl-8016': 'royal status, kingship',   # 왕위
+    'ko-nikl-8031': 'imported product',         # 수입품
+    'ko-nikl-8033': 'outer appearance',         # 외관
+    'ko-nikl-8044': 'to summarize key points',  # 요약하다
+    'ko-nikl-8051': 'method of use',            # 사용법
+    'ko-nikl-8098': 'to exceed, surpass',       # 넘다
+    'ko-nikl-8167': 'preschool child',          # 유아
+    'ko-nikl-8169': 'groundless rumor',         # 유언비어
+    'ko-nikl-8201': 'naturally, of course',     # 물론
+    'ko-nikl-8204': 'steadily, not too strongly',# 꾸준히
+    'ko-nikl-8207': 'vague, unclear',           # 희미하다
+    'ko-nikl-8252': 'to burn with red flames',  # 타오르다
+    'ko-nikl-8263': 'extraordinary, unique',    # 특이하다
+    'ko-nikl-8265': 'no matter how hard one tries',# 아무리
+    'ko-nikl-8280': 'consecutively, continuously',# 연속으로
+    'ko-nikl-8286': 'beneficial thing',         # 이로운 것
+    'ko-nikl-8324': 'daily newspaper',          # 일간지
+    'ko-nikl-8342': 'to make a habit of',       # 습관화하다
+    'ko-nikl-8343': 'routinization, normalization',# 일상화
+    'ko-nikl-8345': 'scheduled date',           # 일정
+    'ko-nikl-8383': 'independence, self-reliance',# 독립
+    'ko-nikl-8428': 'leftover money, savings',  # 잔돈
+    'ko-nikl-8437': 'worthless talk, chatter',  # 잡소리
+    'ko-nikl-8446': 'specialty, strong suit',   # 장기
+    'ko-nikl-8483': 'material characteristics', # 재질
+    'ko-nikl-8498': 'to become dark, sunset',   # 어두워지다
+    'ko-nikl-8525': 'year before last',         # 재작년
+    'ko-nikl-8531': 'war strategy, tactics',    # 전략
+    'ko-nikl-8539': 'entire field, everything', # 전반
+    'ko-nikl-8575': 'mountain peak, top',       # 정상
+    'ko-nikl-8613': 'first month of lunar year',# 정월
+    'ko-nikl-8623': 'politician',               # 정치인
+    'ko-nikl-8683': 'seed (of a plant)',        # 씨앗
+    'ko-nikl-8765': 'severe hatred, resentment',# 원한
+    'ko-nikl-8781': 'paper surface',            # 지면
+    'ko-nikl-8804': 'terrain, surface features',# 지형
+    'ko-nikl-8837': 'mass (amount of matter)',  # 질량
+    'ko-nikl-8858': 'prickling sensation',      # 따끔하다
+    'ko-nikl-8867': 'to poke, stab',            # 찌르다
+    'ko-nikl-8903': 'natural flavor',           # 제 맛
+    'ko-nikl-8955': 'first bus or train of the day',# 첫차
+    'ko-nikl-8966': 'internal organs',          # 장기
+    'ko-nikl-8995': 'bachelor, single man',     # 총각
+    'ko-nikl-8996': 'total amount, sum',        # 총액
+    'ko-nikl-9077': 'sense of closeness',       # 친밀감
+    'ko-nikl-9078': 'closeness, intimacy',      # 친밀함
+    'ko-nikl-9160': 'fur coat, fur clothing',   # 털옷
+    'ko-nikl-9172': 'pathway, walkway',         # 통로
+    'ko-nikl-9256': 'seller, vendor',           # 판매자
+    'ko-nikl-9273': 'standard form, pattern',   # 패턴
+    'ko-nikl-9328': 'strong wind, gale',        # 강풍
+    'ko-nikl-9338': 'target object',            # 목표물
+    'ko-nikl-9412': 'knowledge',                # 지식
+
+    # Final pass — 42 remaining > 25 chars (26-30 range)
+    'ko-nikl-174':  'therefore',                # 그래서
+    'ko-nikl-186':  'just that much, no more',  # 그만큼
+    'ko-nikl-1600': 'Hanbok (Korean dress)',    # 한복
+    'ko-nikl-2207': 'brother and sister',       # 남매
+    'ko-nikl-2218': 'to look out from inside',  # 내다보다
+    'ko-nikl-2224': 'to dump out completely',   # 쏟아내다
+    'ko-nikl-2597': 'depending on circumstances',# 따라서 — keep as-is (accurate)
+    'ko-nikl-4161': 'this way, this direction', # 이쪽
+    'ko-nikl-4175': 'to be connected, linked',  # 이어지다
+    'ko-nikl-4380': 'to cause a problem',       # 일으키다
+    'ko-nikl-4566': 'constantly, nonstop',      # 줄곧
+    'ko-nikl-4767': 'beginning, early period',  # 초
+    'ko-nikl-5223': 'moreover, even worse',     # 더구나
+    'ko-nikl-5301': 'emotional sensitivity',    # 감성
+    'ko-nikl-5956': '(endearing) little child', # 아이
+    'ko-nikl-5997': 'more and more',            # 점점
+    'ko-nikl-6030': 'more and more',            # 점점
+    'ko-nikl-6167': 'frown, brow wrinkle',      # 미간
+    'ko-nikl-6193': 'similarly, likewise',      # 마찬가지로
+    'ko-nikl-6387': 'simultaneous interpretation',# 동시통역 — keep
+    'ko-nikl-6641': 'everything, all',          # 모두
+    'ko-nikl-6698': 'without thinking',         # 무심코
+    'ko-nikl-6832': 'all the time, always',     # 밤낮으로
+    'ko-nikl-7046': 'bad behavior, bad trait',  # 못된 성격
+    'ko-nikl-7142': '(slang) to surpass',       # 능가하다
+    'ko-nikl-7436': 'continuously, one after another',# 연달아 — > 25
+    'ko-nikl-7538': 'to seep in gradually',     # 스며들다
+    'ko-nikl-7568': 'era-specific trait',       # 시대적 특성
+    'ko-nikl-7907': 'to linger with regret',    # 미련을 갖다
+    'ko-nikl-7975': 'brother and sister',       # 남매
+    'ko-nikl-8204': 'steadily, calmly',         # 꾸준히
+    'ko-nikl-8265': 'no matter how hard',       # 아무리
+    'ko-nikl-8280': 'consecutively',            # 연속으로
+    'ko-nikl-8287': '(emphasis) until now',     # 지금껏
+    'ko-nikl-8343': 'routinization',            # 일상화
+    'ko-nikl-8383': 'independence',             # 독립
+    'ko-nikl-8955': 'first bus or train',       # 첫차
+    'ko-nikl-9066': 'to rise powerfully',       # 솟구치다
+    'ko-nikl-9279': 'to spread widely',         # 퍼뜨리다
+    'ko-nikl-9446': 'round of business, deal',  # 거래
+    'ko-nikl-9455': 'animal trap, pit',         # 함정
+    'ko-nikl-9548': 'to feel dizzy',            # 어지럽다
+    'ko-nikl-9580': 'criminal case',            # 형사 사건
+    'ko-nikl-9581': 'form, shape',              # 형태
+    'ko-nikl-9594': 'quiet, remote',            # 외딴
+    'ko-nikl-9645': 'powerful, vigorous',       # 활기차다
+    'ko-nikl-9660': 'sixtieth birthday',        # 환갑
+    'ko-nikl-9682': 'sense of smell',           # 후각
+    'ko-nikl-9705': 'dimly bright, faint',      # 희미하다
 }
 
 CORRECTIONS = {
