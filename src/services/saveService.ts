@@ -467,8 +467,10 @@ export function load(): PlayerSave | null {
       parsedAny['totalXP'] = 0
     }
     if (typeof parsedAny['characterLevel'] !== 'number') {
-      parsedAny['characterLevel'] = 0
+      parsedAny['characterLevel'] = 25
     }
+    // DEV: force max level for testing — all cards/relics unlocked
+    parsedAny['characterLevel'] = 25;
     if (!('lastDailyBonusDate' in parsedAny) || (parsedAny['lastDailyBonusDate'] !== null && typeof parsedAny['lastDailyBonusDate'] !== 'string')) {
       parsedAny['lastDailyBonusDate'] = null
     }
@@ -572,7 +574,7 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
     excludedRelicIds: [],
     // Character progression
     totalXP: 0,
-    characterLevel: 0,
+    characterLevel: 25, // DEV: max level — all cards/relics unlocked
     lastDailyBonusDate: null,
   }
 }

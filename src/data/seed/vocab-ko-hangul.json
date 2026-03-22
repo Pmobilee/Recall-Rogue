@@ -356,7 +356,7 @@
     "correctAnswer": "d/t",
     "distractors": [
       "t",
-      "tt",
+      "dd",
       "n",
       "s",
       "ng",
@@ -878,7 +878,7 @@
     "correctAnswer": "b/p",
     "distractors": [
       "p",
-      "pp",
+      "bb",
       "m",
       "t",
       "n",
@@ -1223,7 +1223,7 @@
     "statement": "ㅇ is the Hangul basic consonant for the sound 'ng'.",
     "explanation": "ㅇ (ng) — a basic consonant in the Korean Hangul writing system.",
     "quizQuestion": "What sound does the Hangul ㅇ represent?",
-    "correctAnswer": "ng",
+    "correctAnswer": "ng / silent",
     "distractors": [
       "h",
       "t",
@@ -1252,7 +1252,7 @@
     "sourceName": "Standard Korean Hangul Chart",
     "sourceUrl": "",
     "language": "ko",
-    "pronunciation": "ng",
+    "pronunciation": "ng / silent",
     "status": "approved",
     "contentVolatility": "timeless",
     "sensitivityLevel": 0,
@@ -1922,7 +1922,7 @@
     "correctAnswer": "t",
     "distractors": [
       "d/t",
-      "tt",
+      "dd",
       "s",
       "g/k",
       "k",
@@ -2096,7 +2096,7 @@
     "correctAnswer": "p",
     "distractors": [
       "b/p",
-      "pp",
+      "bb",
       "k",
       "s",
       "j",
@@ -2445,8 +2445,8 @@
     "distractors": [
       "g/k",
       "k",
-      "pp",
-      "tt",
+      "bb",
+      "dd",
       "jj",
       "ss",
       "da",
@@ -2610,19 +2610,19 @@
     ]
   },
   {
-    "id": "ko-hangul-tt-forward",
+    "id": "ko-hangul-dd-forward",
     "type": "vocabulary",
     "statement": "ㄸ is the Hangul doubled consonant for the sound 'tt'.",
     "explanation": "ㄸ (tt) — a doubled consonant in the Korean Hangul writing system.",
     "quizQuestion": "What sound does the Hangul ㄸ represent?",
-    "correctAnswer": "tt",
+    "correctAnswer": "dd",
     "distractors": [
       "d/t",
       "t",
       "kk",
       "jj",
       "ss",
-      "pp",
+      "bb",
       "oe",
       "ra"
     ],
@@ -2644,7 +2644,7 @@
     "sourceName": "Standard Korean Hangul Chart",
     "sourceUrl": "",
     "language": "ko",
-    "pronunciation": "tt",
+    "pronunciation": "dd",
     "status": "approved",
     "contentVolatility": "timeless",
     "sensitivityLevel": 0,
@@ -2697,7 +2697,7 @@
     ]
   },
   {
-    "id": "ko-hangul-tt-reverse",
+    "id": "ko-hangul-dd-reverse",
     "type": "vocabulary",
     "statement": "The sound 'tt' is written as ㄸ in Hangul.",
     "explanation": "In Korean Hangul, the sound 'tt' is represented by the doubled consonant ㄸ.",
@@ -2784,18 +2784,18 @@
     ]
   },
   {
-    "id": "ko-hangul-pp-forward",
+    "id": "ko-hangul-bb-forward",
     "type": "vocabulary",
     "statement": "ㅃ is the Hangul doubled consonant for the sound 'pp'.",
     "explanation": "ㅃ (pp) — a doubled consonant in the Korean Hangul writing system.",
     "quizQuestion": "What sound does the Hangul ㅃ represent?",
-    "correctAnswer": "pp",
+    "correctAnswer": "bb",
     "distractors": [
       "b/p",
       "p",
       "jj",
       "kk",
-      "tt",
+      "dd",
       "ss",
       "a",
       "wae"
@@ -2818,7 +2818,7 @@
     "sourceName": "Standard Korean Hangul Chart",
     "sourceUrl": "",
     "language": "ko",
-    "pronunciation": "pp",
+    "pronunciation": "bb",
     "status": "approved",
     "contentVolatility": "timeless",
     "sensitivityLevel": 0,
@@ -2871,7 +2871,7 @@
     ]
   },
   {
-    "id": "ko-hangul-pp-reverse",
+    "id": "ko-hangul-bb-reverse",
     "type": "vocabulary",
     "statement": "The sound 'pp' is written as ㅃ in Hangul.",
     "explanation": "In Korean Hangul, the sound 'pp' is represented by the doubled consonant ㅃ.",
@@ -2967,10 +2967,10 @@
     "distractors": [
       "s",
       "j",
-      "pp",
+      "bb",
       "kk",
       "jj",
-      "tt",
+      "dd",
       "ye",
       "ba"
     ],
@@ -3142,9 +3142,9 @@
       "j",
       "ch",
       "kk",
-      "pp",
+      "bb",
       "ss",
-      "tt",
+      "dd",
       "n",
       "sa"
     ],
@@ -5234,7 +5234,7 @@
       "wi",
       "ui",
       "we",
-      "wo"
+      "weo"
     ],
     "acceptableAnswers": [
       "yae"
@@ -5408,7 +5408,7 @@
       "wi",
       "ui",
       "wa",
-      "wo"
+      "weo"
     ],
     "acceptableAnswers": [
       "e"
@@ -5752,7 +5752,7 @@
       "we",
       "e",
       "ui",
-      "wo",
+      "weo",
       "ye",
       "wae",
       "yae",
@@ -5927,7 +5927,7 @@
       "ui",
       "e",
       "wi",
-      "wo",
+      "weo",
       "oe",
       "ae",
       "we"
@@ -6098,7 +6098,7 @@
     "correctAnswer": "oe",
     "distractors": [
       "wae",
-      "wo",
+      "weo",
       "ui",
       "we",
       "wi",
@@ -6264,12 +6264,12 @@
     ]
   },
   {
-    "id": "ko-hangul-wo-forward",
+    "id": "ko-hangul-weo-forward",
     "type": "vocabulary",
     "statement": "ㅝ is the Hangul compound vowel for the sound 'wo'.",
     "explanation": "ㅝ (wo) — a compound vowel in the Korean Hangul writing system.",
     "quizQuestion": "What sound does the Hangul ㅝ represent?",
-    "correctAnswer": "wo",
+    "correctAnswer": "weo",
     "distractors": [
       "ae",
       "ye",
@@ -6298,7 +6298,7 @@
     "sourceName": "Standard Korean Hangul Chart",
     "sourceUrl": "",
     "language": "ko",
-    "pronunciation": "wo",
+    "pronunciation": "weo",
     "status": "approved",
     "contentVolatility": "timeless",
     "sensitivityLevel": 0,
@@ -6351,7 +6351,7 @@
     ]
   },
   {
-    "id": "ko-hangul-wo-reverse",
+    "id": "ko-hangul-weo-reverse",
     "type": "vocabulary",
     "statement": "The sound 'wo' is written as ㅝ in Hangul.",
     "explanation": "In Korean Hangul, the sound 'wo' is represented by the compound vowel ㅝ.",
@@ -6450,7 +6450,7 @@
       "yae",
       "oe",
       "wae",
-      "wo",
+      "weo",
       "wa",
       "e"
     ],
@@ -6623,7 +6623,7 @@
       "yae",
       "ye",
       "we",
-      "wo",
+      "weo",
       "wae",
       "e",
       "ui"
@@ -6793,7 +6793,7 @@
     "quizQuestion": "What sound does the Hangul ㅢ represent?",
     "correctAnswer": "ui",
     "distractors": [
-      "wo",
+      "weo",
       "oe",
       "wi",
       "ae",

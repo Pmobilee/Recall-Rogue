@@ -35,17 +35,14 @@
     varying vec2 vUv;
 
     void main() {
-      float depth = texture2D(uDepthMap, vUv).r;
-
       vec2 center = vec2(0.5, 0.5);
-      vec2 fromCenter = vUv - center;
 
-      // Positive dolly = forward (near objects spread outward)
-      // Negative dolly = backward (near objects pull inward)
-      vec2 displaced = vUv + fromCenter * depth * uDolly;
+      // Zoom FIRST: crop into the image so edges extend beyond screen
+      vec2 zoomed = center + (vUv - center) / uZoom;
 
-      // Zoom from center
-      displaced = center + (displaced - center) / uZoom;
+      // Then parallax on the zoomed coords: near objects spread outward
+      float depth2 = texture2D(uDepthMap, zoomed).r;
+      vec2 displaced = zoomed + (zoomed - center) * depth2 * uDolly;
 
       // GL_CLAMP_TO_EDGE stretches edge pixels naturally when displaced goes OOB
       vec4 color = texture2D(uImage, displaced);
