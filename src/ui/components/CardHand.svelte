@@ -1466,7 +1466,7 @@
     z-index: 20;
     transform: translateX(-50%);
     height: calc(280px * var(--layout-scale, 1));
-    width: 100%;
+    width: 88%;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -1486,7 +1486,7 @@
     flex-direction: column;
     align-items: center;
     padding: 0;
-    overflow: visible;
+    overflow: hidden; /* clip all content including card art to card bounds */
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
     -webkit-tap-highlight-color: transparent;
     touch-action: none;
@@ -1516,7 +1516,7 @@
   .card-v2-frame {
     position: absolute;
     inset: 0;
-    width: 100%;
+    width: 88%;
     height: 100%;
     overflow: hidden; /* clips art to frame boundaries */
   }
@@ -1524,7 +1524,7 @@
   .frame-layer {
     position: absolute;
     inset: 0;
-    width: 100%;
+    width: 88%;
     height: 100%;
     object-fit: contain;
     pointer-events: none;
@@ -1534,10 +1534,10 @@
   .frame-card-art {
     position: absolute;
     /* Cover the pentagon art window area — base frame masks edges naturally */
-    left: 0%;
-    top: 0%;
-    width: 100%;
-    height: 65%; /* reduced from 48% to stay inside pentagon */
+    left: 6%;
+    top: 4%;
+    width: 88%;
+    height: 55%; /* reduced from 48% to stay inside pentagon */
     object-fit: cover;
     image-rendering: auto; /* smooth for photo-like art */
     pointer-events: none;
@@ -1928,7 +1928,7 @@
   /* Card 3D flip infrastructure */
   .card-inner {
     position: relative;
-    width: 100%;
+    width: 88%;
     height: 100%;
     transform-style: preserve-3d;
     transition: transform 400ms ease-in-out;
@@ -1962,7 +1962,7 @@
   }
 
   .cardback-img {
-    width: 100%;
+    width: 88%;
     height: 100%;
     object-fit: contain;
     object-position: center center;
