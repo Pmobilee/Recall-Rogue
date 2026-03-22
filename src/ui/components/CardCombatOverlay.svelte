@@ -4,6 +4,7 @@
   import { fade } from 'svelte/transition'
   import type { Card } from '../../data/card-types'
   import type { TurnState } from '../../services/turnManager'
+  import { isAnyCardPlayable } from '../../services/turnManager'
   import { FLOOR_TIMER, MASTERY_MAX_LEVEL, MASTERY_BASE_DISTRACTORS, MASTERY_UPGRADED_DISTRACTORS } from '../../data/balance'
   import { isSurgeTurn } from '../../services/surgeSystem'
   import { getQuestionPresentation } from '../../services/questionFormatter'
@@ -147,7 +148,9 @@
   })
 
   let answeredThisTurn = $state(0)
-  let damageNumbers = $state<Array<{ id: number; value: string; isCritical: boolean }>>([])
+  let damageNumbers = $state<Array<{ id: number; value: string; isCritical: boolean; type?: 'damage' | 'block' | 'heal' | 'poison' | 'burn' | 'bleed' | 'gold' | 'critical'; position?: 'enemy' | 'player' }>>([])
+  /** AR-222: timer handle for pending auto-end-turn (cleared if player acts first) */
+  let autoEndTurnTimer: ReturnType<typeof setTimeout> | null = null
   let cardAnimations = $state<Record<string, CardAnimPhase>>({})
   type TierUpTransition = 'tier1_to_2a' | 'tier2a_to_2b' | 'tier2b_to_3'
   let tierUpTransitions = $state<Record<string, TierUpTransition>>({})
@@ -611,8 +614,8 @@
   /** True on Surge turns — Charge Play costs +0 AP instead of +1. */
   let isSurgeActive = $derived(isSurgeTurn(turnState?.turnNumber ?? 1))
 
-  /** AR-122: Chain Momentum — next Charge costs +0 AP (surcharge waived by previous correct Charge). */
-  let nextChargeFree = $derived(turnState?.nextChargeFree ?? false)
+  /** AR-122: Chain Momentum — next Charge of matching chain type costs +0 AP (color-specific). */
+  let chargeMomentumChainType = $derived(turnState?.nextChargeFreeForChainType ?? null)
 
   /** Focus AP discount: 1 when Focus is active with charges, 0 otherwise. */
   let focusDiscount = $derived(
@@ -691,9 +694,32 @@
     damageNumbers = damageNumbers.filter((entry) => entry.id !== id)
   }
 
-  function spawnDamageNumber(value: string, isCritical: boolean): void {
+  function spawnDamageNumber(
+    value: string,
+    isCritical: boolean,
+    type: 'damage' | 'block' | 'heal' | 'poison' | 'burn' | 'bleed' | 'gold' | 'critical' = 'damage',
+    position: 'enemy' | 'player' = 'enemy',
+  ): void {
     const id = damageIdCounter++
-    damageNumbers = [...damageNumbers, { id, value, isCritical }]
+    damageNumbers = [...damageNumbers, { id, value, isCritical, type, position }]
+  }
+
+  /**
+   * AR-222: Auto-end turn if no card can be played and no quiz is active.
+   * Waits 300ms to allow the player to react (e.g. see the state before it changes).
+   */
+  function checkAutoEndTurn(): void {
+    if (cardPlayStage === 'committed') return
+    if (!turnState || !isAnyCardPlayable(turnState)) {
+      if (autoEndTurnTimer !== null) clearTimeout(autoEndTurnTimer)
+      autoEndTurnTimer = setTimeout(() => {
+        autoEndTurnTimer = null
+        // Re-check conditions synchronously at fire time — state may have changed
+        if (cardPlayStage !== 'committed' && turnState && !isAnyCardPlayable(turnState)) {
+          onendturn()
+        }
+      }, turboDelay(300))
+    }
   }
 
   $effect(() => {
@@ -1096,12 +1122,13 @@
     const card = handCards[index]
     if (!card) return
 
-    // Check AP: Charge costs +1 (or +0 on Surge / Chain Momentum)
-    const chargeCost = (card.apCost ?? 1) + (isSurgeActive || nextChargeFree ? 0 : 1)
+    // Check AP: Charge costs +1 (or +0 on Surge / Chain Momentum for matching chain type)
+    const chargeCost = (card.apCost ?? 1) + (isSurgeActive || (chargeMomentumChainType !== null && card.chainType === chargeMomentumChainType) ? 0 : 1)
     if (chargeCost > (turnState?.apCurrent ?? 0)) return
 
     selectedIndex = index
     cardPlayStage = 'selected'
+    playCardAudio('charge-initiate')
 
     // Immediately commit — if GUARANTEED is active, handleCast will intercept before quiz
     handleCast()
@@ -1122,6 +1149,7 @@
         showNotEnoughAp = false
         notEnoughApTimer = null
       }, 1500)
+      playCardAudio('error-deny')
       return
     }
 
@@ -1131,6 +1159,7 @@
       return
     }
 
+    playCardAudio('card-select')
     selectedIndex = index
     cardPlayStage = 'selected'
 
@@ -1142,6 +1171,7 @@
 
   function handleDeselect(): void {
     if (cardPlayStage !== 'selected') return
+    playCardAudio('card-deselect')
     resetCardFlow()
   }
 
@@ -1199,6 +1229,8 @@
             animatingCards = animatingCards.filter(c => c.id !== cardId)
             cardPlayStage = 'hand'
             selectedIndex = null
+            // AR-222: auto-end turn when no cards remain playable after Quick Play
+            checkAutoEndTurn()
           }, turboDelay(QP_DISCARD))
         }, turboDelay(QP_IMPACT))
       }, turboDelay(QP_SWOOSH))
@@ -1247,6 +1279,8 @@
         cardAnimations = { ...cardAnimations, [cardId]: null }
         animatingCards = animatingCards.filter(c => c.id !== cardId)
         cardPlayStage = 'hand'
+        // AR-222: auto-end turn when no cards remain playable after Soul Jar play
+        checkAutoEndTurn()
       }, turboDelay(REVEAL_DURATION + SWOOSH_DURATION + IMPACT_DURATION + DISCARD_DURATION))
       void idx // suppress unused variable warning
       return
@@ -1281,7 +1315,8 @@
     }
 
     // AR-124: Tutorial — charge cost tooltip (only if not free) and comparison banner tracking
-    const isFreeCharge = isSurgeActive || nextChargeFree
+    const chargingCard = handCards[selectedIndex ?? -1]
+    const isFreeCharge = isSurgeActive || (chargeMomentumChainType !== null && chargingCard?.chainType === chargeMomentumChainType)
     maybeShowApTutorial()
     maybeShowChargeTutorial(isFreeCharge)
     maybeShowComparisonBanner('charge')
@@ -1440,6 +1475,8 @@
       setTimeout(() => {
         cardAnimations = { ...cardAnimations, [cardId]: null }
         animatingCards = animatingCards.filter(c => c.id !== cardId)
+        // AR-222: auto-end turn when no cards remain playable
+        checkAutoEndTurn()
       }, turboDelay(FIZZLE_DURATION))
     } else {
       showWowFactor(card)
@@ -1577,6 +1614,8 @@
           Object.entries(tierUpTransitions).filter(([id]) => id !== cardId),
         ) as Record<string, TierUpTransition>
         animatingCards = animatingCards.filter(c => c.id !== cardId)
+        // AR-222: auto-end turn when no cards remain playable
+        checkAutoEndTurn()
       }, REVEAL_DURATION + tierDelay + SWOOSH_DURATION + IMPACT_DURATION + DISCARD_DURATION)
     }
 
@@ -1612,6 +1651,7 @@
     }
 
     showEndTurnConfirm = false
+    playCardAudio('end-turn')
 
     // Animate remaining hand cards to the discard pile before ending the turn
     const handCardEls = document.querySelectorAll('.card-in-hand:not(.card-animating)')
@@ -1975,7 +2015,7 @@
     {/if}
 
     {#each damageNumbers as dn (dn.id)}
-      <DamageNumber value={dn.value} isCritical={dn.isCritical} onComplete={() => removeDamageNumber(dn.id)} />
+      <DamageNumber value={dn.value} isCritical={dn.isCritical} type={dn.type} position={dn.position} onComplete={() => removeDamageNumber(dn.id)} />
     {/each}
 
     {#if wowFactorText}
@@ -2020,7 +2060,7 @@
       oncastdirect={handleCastDirect}
       onchargeplay={handleChargeDirect}
       {isSurgeActive}
-      {nextChargeFree}
+      {chargeMomentumChainType}
       {focusDiscount}
       quizVisible={isQuizPanelVisible}
       {masteryFlashes}

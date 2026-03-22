@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { MasteryChallengeQuestion } from '../../services/masteryChallengeService'
+  import { playCardAudio } from '../../services/cardAudioManager'
 
   interface Props {
     challenge: MasteryChallengeQuestion | null
@@ -46,6 +47,7 @@
       return
     }
     resetState()
+    playCardAudio('mastery-challenge')
     rafId = requestAnimationFrame(tick)
     return () => cancelTick()
   })
@@ -67,6 +69,7 @@
     resolved = true
     selectedAnswer = answer
     const passed = answer === challenge.correctAnswer
+    playCardAudio('quiz-answer-select')
     cancelTick()
     setTimeout(() => {
       onresolve(passed)

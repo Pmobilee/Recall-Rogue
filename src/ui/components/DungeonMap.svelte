@@ -1,15 +1,11 @@
-<script module lang="ts">
-  /** Set of map seeds that have already played the cinematic scroll.
-   *  Module-level so it persists across component remounts (e.g., returning from a room). */
-  const cinematicPlayedForSeed = new Set<number>()
-</script>
-
 <script lang="ts">
   import { onMount } from 'svelte'
   import type { ActMap, MapNode } from '../../services/mapGenerator'
   import MapNodeComponent from './MapNode.svelte'
   import { BASE_WIDTH } from '../../data/layout'
   import { isLandscape } from '../../stores/layoutStore'
+  import { playCardAudio } from '../../services/cardAudioManager'
+  import { MAP_CINEMATIC_ENABLED } from '../../data/balance'
 
   // =========================================================
   // Props
@@ -28,11 +24,6 @@
   // Layout scale helper
   // =========================================================
 
-  /**
-   * Read the CSS `--layout-scale` custom property set on :root by the
-   * responsive layout system. Falls back to 1 during SSR or if the
-   * property is not yet set.
-   */
   function getLayoutScale(): number {
     if (typeof window === 'undefined') return 1
     const val = getComputedStyle(document.documentElement).getPropertyValue('--layout-scale')
@@ -40,7 +31,7 @@
   }
 
   // =========================================================
-  // Constants (base values — designed for BASE_WIDTH = 390px)
+  // Constants
   // =========================================================
 
   const SEGMENT_NAMES: Record<1 | 2 | 3 | 4, string> = {
@@ -50,260 +41,149 @@
     4: 'The Archive',
   }
 
-  /** Total height of the scrollable map canvas in pixels (base, unscaled). */
-  const BASE_MAP_HEIGHT = 1350
-  /** Horizontal padding so edge nodes don't clip (base, unscaled). */
-  const BASE_H_PADDING = 28
-  /** Vertical padding so the top/bottom nodes don't clip the canvas edges (base, unscaled). */
-  const BASE_V_PADDING = 44
-  /** Max container width for tablet/desktop — keep it mobile-feeling. */
-  const MAX_WIDTH = 500
+  /** Max container width — centred on wide screens. */
+  const MAX_WIDTH = 560
+
+  /**
+   * Base vertical spacing between history rows (unscaled px).
+   * Choices section is 1.4x this height.
+   */
+  const ROW_HEIGHT_BASE = 130
 
   // =========================================================
   // Reactive state
   // =========================================================
 
   let scrollContainer = $state<HTMLDivElement | undefined>(undefined)
-
-  /** AR-91: In landscape, use full viewport width so nodes spread horizontally. */
-  function getInitialContainerWidth(): number {
-    if (typeof window === 'undefined') return BASE_WIDTH
-    return $isLandscape ? window.innerWidth : Math.min(window.innerWidth, MAX_WIDTH)
-  }
-
-  let containerWidth  = $state(getInitialContainerWidth())
-
-  /** Current layout scale factor, read once on mount and updated on resize. */
   let layoutScale = $state(1)
 
-  /** AR-91: In landscape, compress map height so the whole map fits without heavy scrolling. */
-  let effectiveMapHeight = $derived($isLandscape ? BASE_MAP_HEIGHT * 0.7 : BASE_MAP_HEIGHT)
+  function getInitialContainerWidth(): number {
+    if (typeof window === 'undefined') return BASE_WIDTH
+    return $isLandscape
+      ? Math.min(window.innerWidth * 0.7, MAX_WIDTH)
+      : Math.min(window.innerWidth, MAX_WIDTH)
+  }
 
-  /** Scaled map constants derived from layoutScale. */
-  let TOTAL_MAP_HEIGHT = $derived(effectiveMapHeight * layoutScale)
-  let H_PADDING = $derived(BASE_H_PADDING * layoutScale)
-  let V_PADDING = $derived(BASE_V_PADDING * layoutScale)
+  let containerWidth = $state(getInitialContainerWidth())
 
-  /** Segment name derived from act segment number. */
+  /** Segment name from act number. */
   let segmentName = $derived(SEGMENT_NAMES[map.segment])
 
   /** HP percentage 0–100. */
   let hpPercent = $derived(playerMaxHp > 0 ? Math.round((playerHp / playerMaxHp) * 100) : 0)
 
-  /** Flat list of all nodes for rendering. */
-  let allNodes = $derived(Object.values(map.nodes))
-
   // =========================================================
-  // Edge derivation
+  // Progressive view data derivation
   // =========================================================
 
-  interface Edge {
-    id: string
-    parentNode: MapNode
-    childNode: MapNode
-  }
-
-  /** All unique parent→child edges across the entire map. */
-  let allEdges = $derived.by<Edge[]>(() => {
-    const edges: Edge[] = []
-    const seen = new Set<string>()
-    for (const node of allNodes) {
-      for (const childId of node.childIds) {
-        const key = `${node.id}--${childId}`
-        if (seen.has(key)) continue
-        seen.add(key)
-        const child = map.nodes[childId]
-        if (child) edges.push({ id: key, parentNode: node, childNode: child })
-      }
-    }
-    return edges
-  })
-
-  // =========================================================
-  // Coordinate helpers
-  // =========================================================
+  /** Nodes currently selectable (state === 'available'). Rendered at the TOP. */
+  let availableNodes = $derived(
+    Object.values(map.nodes).filter(n => n.state === 'available'),
+  )
 
   /**
-   * Convert a node's normalised (x, y) — where y=0 is bottom, y=1 is top —
-   * to pixel coordinates in the scroll canvas.
-   *
-   * Display: boss (y=1) at the TOP of the canvas, start (y=0) at the BOTTOM.
+   * Decision history with resolved node objects.
+   * Displayed newest-first (top = most recent past step).
    */
-  function nodePixelPos(node: MapNode): { px: number; py: number } {
-    const usableW = containerWidth - H_PADDING * 2
-    const usableH = TOTAL_MAP_HEIGHT - V_PADDING * 2
-    const px = H_PADDING + node.x * usableW
-    // Invert Y: y=1 (boss/top) → small py (near canvas top)
-    const py = V_PADDING + (1 - node.y) * usableH
-    return { px, py }
+  interface ResolvedDecision {
+    selectedNode: MapNode
+    altNodes: MapNode[]
   }
 
-  /**
-   * Build a cubic-bezier SVG path string from parent to child pixel coords.
-   * The control points push upward (toward smaller py = top of canvas) to
-   * produce a natural-looking arc.
-   */
-  function bezierPath(px1: number, py1: number, px2: number, py2: number): string {
-    const midY = (py1 + py2) / 2
-    return `M ${px1} ${py1} C ${px1} ${midY}, ${px2} ${midY}, ${px2} ${py2}`
-  }
-
-  // =========================================================
-  // Edge visual state helpers
-  // =========================================================
-
-  function edgeClass(edge: Edge): string {
-    const { parentNode, childNode } = edge
-    const bothVisited =
-      (parentNode.state === 'visited' || parentNode.state === 'current') &&
-      (childNode.state === 'visited' || childNode.state === 'current')
-    const oneAvailable =
-      childNode.state === 'available' ||
-      parentNode.state === 'available'
-    if (bothVisited) return 'edge-visited'
-    if (oneAvailable) return 'edge-active'
-    return 'edge-locked'
-  }
-
-  // =========================================================
-  // Auto-scroll to lowest available row on mount
-  // =========================================================
-
-  let availableMarker = $state<HTMLDivElement | undefined>(undefined)
-
-  /** Y pixel position of the lowest available node — used to place the scroll marker. */
-  let lowestAvailablePy = $derived.by<number | null>(() => {
-    const available = allNodes.filter(n => n.state === 'available' || n.state === 'current')
-    if (available.length === 0) return null
-    return Math.max(...available.map(n => nodePixelPos(n).py))
-  })
-
-  /** Reference to the map-canvas element for direct transform manipulation. */
-  let mapCanvas = $state<HTMLDivElement | undefined>(undefined)
-
-  $effect(() => {
-    const container = scrollContainer
-    const targetPy = lowestAvailablePy
-    if (!container || targetPy === null) return
-
-    const mapSeed = map.seed
-    if (!cinematicPlayedForSeed.has(mapSeed)) {
-      cinematicPlayedForSeed.add(mapSeed)
-      // Cinematic only on first view of a new floor (start of run + after boss)
-      requestAnimationFrame(() => {
-        playCinematic(container, targetPy)
+  let resolvedHistory = $derived.by<ResolvedDecision[]>(() => {
+    return map.decisionHistory
+      .map(d => {
+        const selectedNode = map.nodes[d.selectedId]
+        if (!selectedNode) return null
+        const altNodes = d.availableIds
+          .filter(id => id !== d.selectedId)
+          .map(id => map.nodes[id])
+          .filter((n): n is MapNode => n !== undefined)
+        return { selectedNode, altNodes }
       })
-    } else if (availableMarker) {
-      // Returning from a room: just jump to current position (no animation)
-      availableMarker.scrollIntoView({ behavior: 'instant', block: 'center' })
-    }
+      .filter((d): d is ResolvedDecision => d !== null)
   })
 
+  // =========================================================
+  // Scaled layout helpers
+  // =========================================================
+
+  let choicesSectionH = $derived(ROW_HEIGHT_BASE * layoutScale * 1.4)
+  let rowH = $derived(ROW_HEIGHT_BASE * layoutScale)
+
+  /** Y centre of choice nodes within their section. */
+  let choicesNodeY = $derived(choicesSectionH * 0.52)
+
+  /** Total canvas min-height. */
+  let totalViewHeight = $derived(
+    choicesSectionH +
+    resolvedHistory.length * rowH +
+    80 * layoutScale,
+  )
+
   /**
-   * 3-phase cinematic using direct DOM manipulation (avoids Svelte reactivity loops):
-   *   Phase 1 (0–900ms):    Zoomed 1.5x on boss at top, subtle breathe
-   *   Phase 2 (900–2000ms): Zoom out 1.5x → 1.0x
-   *   Phase 3 (2000–3500ms): Scroll down to player's available nodes
+   * Horizontal centre pixel for node index within a row group.
+   * Uses padding to keep nodes away from edges.
    */
-  function playCinematic(container: HTMLDivElement, targetPy: number) {
-    if (!mapCanvas) return
-    const canvas = mapCanvas as HTMLDivElement
+  function nodeGroupX(index: number, total: number, width: number): number {
+    const padding = 64 * layoutScale
+    const usable = width - padding * 2
+    if (total === 1) return width / 2
+    return padding + (index / (total - 1)) * usable
+  }
 
-    const viewportH = container.clientHeight
-    const anchorOffset = 120 * layoutScale
-    // Maximum scroll: bottom of the map canvas (where starting nodes are)
-    const maxScroll = container.scrollHeight - viewportH
+  /** Cubic-bezier SVG path between two pixel coords. */
+  function arrowPath(px: number, py: number, tx: number, ty: number): string {
+    const midY = (py + ty) / 2
+    return `M ${px} ${py} C ${px} ${midY}, ${tx} ${midY}, ${tx} ${ty}`
+  }
 
-    // Find the boss node's pixel Y to set transform-origin precisely
-    const bossNode = allNodes.find(n => n.type === 'boss')
-    const bossY = bossNode ? nodePixelPos(bossNode).py : V_PADDING
+  /** Y centre of a history row's node (rowIndex 0 = most recent). */
+  function historyNodeY(rowIndex: number): number {
+    return choicesSectionH + rowIndex * rowH + rowH * 0.48
+  }
 
-    const PHASE1_END = 900
-    const PHASE2_END = 2000
-    const PHASE3_END = 3800
-    const ZOOM_START = 1.5
-    const ZOOM_END = 1.0
-
-    // Set initial state immediately via DOM (not reactive state)
-    canvas.style.transform = `scale(${ZOOM_START})`
-    canvas.style.transformOrigin = `50% ${bossY}px`
-    container.scrollTop = 0
-
-    let startTime: number | null = null
-
-    function easeOutCubic(t: number): number {
-      return 1 - Math.pow(1 - t, 3)
-    }
-
-    function easeInOutCubic(t: number): number {
-      return t < 0.5
-        ? 4 * t * t * t
-        : 1 - Math.pow(-2 * t + 2, 3) / 2
-    }
-
-    function step(timestamp: number) {
-      if (!startTime) startTime = timestamp
-      const elapsed = timestamp - startTime
-
-      if (elapsed < PHASE1_END) {
-        // Phase 1: Hold zoomed on boss with subtle breathe
-        const breathe = Math.sin((elapsed / PHASE1_END) * Math.PI) * 0.03
-        canvas.style.transform = `scale(${ZOOM_START + breathe})`
-        container.scrollTop = 0
-      } else if (elapsed < PHASE2_END) {
-        // Phase 2: Zoom out to normal
-        const p = (elapsed - PHASE1_END) / (PHASE2_END - PHASE1_END)
-        const eased = easeOutCubic(p)
-        const zoom = ZOOM_START + (ZOOM_END - ZOOM_START) * eased
-        canvas.style.transform = `scale(${zoom})`
-        // Gradually shift transform-origin from boss to top-center
-        const originY = bossY * (1 - eased)
-        canvas.style.transformOrigin = `50% ${originY}px`
-        container.scrollTop = 0
-      } else if (elapsed < PHASE3_END) {
-        // Phase 3: Scroll all the way down to the bottom of the map
-        canvas.style.transform = 'scale(1)'
-        canvas.style.transformOrigin = '50% 0%'
-        const p = (elapsed - PHASE2_END) / (PHASE3_END - PHASE2_END)
-        const eased = easeInOutCubic(p)
-        container.scrollTop = maxScroll * eased
-      } else {
-        // Done — stay at the bottom where the starting nodes are
-        canvas.style.transform = ''
-        canvas.style.transformOrigin = ''
-        container.scrollTop = maxScroll
-        return
-      }
-
-      requestAnimationFrame(step)
-    }
-
-    requestAnimationFrame(step)
+  /** Y for the connector SVG top within a history row. */
+  function historyConnectorTopY(rowIndex: number): number {
+    return choicesSectionH + rowIndex * rowH + rowH * 0.12
   }
 
   // =========================================================
-  // Container width tracking
+  // Mount + resize tracking
   // =========================================================
 
   onMount(() => {
-    // Capture initial layout scale
+    playCardAudio('map-open')
     layoutScale = getLayoutScale()
 
     const observer = new ResizeObserver(entries => {
       for (const entry of entries) {
-        // AR-91: In landscape, use full container width; in portrait, cap at MAX_WIDTH
-        containerWidth = $isLandscape ? entry.contentRect.width : Math.min(entry.contentRect.width, MAX_WIDTH)
-        // Re-read scale whenever the container resizes (viewport change)
+        containerWidth = $isLandscape
+          ? Math.min(entry.contentRect.width * 0.7, MAX_WIDTH)
+          : Math.min(entry.contentRect.width, MAX_WIDTH)
         layoutScale = getLayoutScale()
       }
     })
     if (scrollContainer) observer.observe(scrollContainer)
+
+    // Snap to top so choices are immediately visible
+    if (scrollContainer) scrollContainer.scrollTop = 0
+
     return () => observer.disconnect()
+  })
+
+  // Jump to top whenever choices update (new room selected → new choices appear)
+  $effect(() => {
+    // Reactive trigger: watch available node count
+    void availableNodes.length
+    if (scrollContainer && !MAP_CINEMATIC_ENABLED) {
+      scrollContainer.scrollTop = 0
+    }
   })
 </script>
 
 <div class="dungeon-map-overlay" data-testid="dungeon-map">
-  <!-- Fixed HUD — stays visible while map scrolls -->
+  <!-- Fixed HUD -->
   <header class="map-hud">
     <h1 class="hud-title">{segmentName}</h1>
 
@@ -315,53 +195,135 @@
     </div>
   </header>
 
-  <!-- Scrollable map area -->
-  <div
-    class="map-scroll-container"
-    bind:this={scrollContainer}
-  >
-    <div class="map-canvas" bind:this={mapCanvas} style="height: {TOTAL_MAP_HEIGHT}px; width: {containerWidth}px;">
-      <!-- SVG layer — paths between nodes (pointer-events: none so it doesn't block scrolling) -->
-      <svg
-        class="map-paths"
-        viewBox="0 0 {containerWidth} {TOTAL_MAP_HEIGHT}"
-        width={containerWidth}
-        height={TOTAL_MAP_HEIGHT}
-        aria-hidden="true"
-      >
-        {#each allEdges as edge (edge.id)}
-          {@const { px: px1, py: py1 } = nodePixelPos(edge.parentNode)}
-          {@const { px: px2, py: py2 } = nodePixelPos(edge.childNode)}
-          <path
-            class="map-edge {edgeClass(edge)}"
-            d={bezierPath(px1, py1, px2, py2)}
-          />
-        {/each}
-      </svg>
+  <!-- Scrollable progressive path view -->
+  <div class="map-scroll-container" bind:this={scrollContainer}>
+    <div
+      class="progressive-canvas"
+      style="width: {containerWidth}px; min-height: {totalViewHeight}px;"
+    >
 
-      <!-- Invisible scroll anchor placed at the lowest available node row -->
-      {#if lowestAvailablePy !== null}
-        <div
-          bind:this={availableMarker}
-          class="available-scroll-anchor"
-          style="top: {lowestAvailablePy}px;"
-          aria-hidden="true"
-        ></div>
+      <!-- =================================================
+           SECTION 1: Current choices — hero area at top
+           ================================================= -->
+      <section
+        class="choices-section"
+        aria-label="Choose your next room"
+        style="height: {choicesSectionH}px;"
+      >
+        <p class="section-label choices-label">Choose your path</p>
+
+        <!-- Dashed arrow connectors from current-node down to each choice -->
+        {#if map.currentNodeId && availableNodes.length > 0}
+          <svg
+            class="connector-svg"
+            width={containerWidth}
+            height={choicesSectionH}
+            aria-hidden="true"
+          >
+            <defs>
+              <marker id="arrow-active" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                <path d="M 0 1 L 8 4 L 0 7 Z" fill="#F5F0E6" opacity="0.9" />
+              </marker>
+            </defs>
+            {#each availableNodes as node, i (node.id)}
+              {@const tx = nodeGroupX(i, availableNodes.length, containerWidth)}
+              {@const ty = choicesNodeY - 28 * layoutScale}
+              <path
+                class="connector-path connector-active"
+                d={arrowPath(containerWidth / 2, 6 * layoutScale, tx, ty)}
+                marker-end="url(#arrow-active)"
+              />
+            {/each}
+          </svg>
+        {/if}
+
+        <!-- Choice node buttons -->
+        <div class="choices-row" style="top: {choicesNodeY}px;">
+          {#each availableNodes as node, i (node.id)}
+            <div
+              class="node-slot"
+              style="left: {nodeGroupX(i, availableNodes.length, containerWidth)}px;"
+            >
+              <MapNodeComponent
+                {node}
+                onclick={() => onNodeSelect(node.id)}
+              />
+            </div>
+          {/each}
+
+          {#if availableNodes.length === 0}
+            <p class="no-choices-hint">Entering room…</p>
+          {/if}
+        </div>
+      </section>
+
+      <!-- =================================================
+           SECTION 2: Decision history — scrolls downward
+           Newest entry at top, oldest at bottom.
+           ================================================= -->
+      {#if resolvedHistory.length > 0}
+        <section class="history-section" aria-label="Path history">
+          <p class="section-label history-label">Your path</p>
+
+          {#each [...resolvedHistory].reverse() as decision, reverseIdx (decision.selectedNode.id)}
+            {@const histIdx = resolvedHistory.length - 1 - reverseIdx}
+
+            <!-- Connector arrow from the row above down to this row's selected node -->
+            <svg
+              class="connector-svg history-connector"
+              width={containerWidth}
+              height={rowH * 0.45}
+              style="top: {historyConnectorTopY(histIdx)}px;"
+              aria-hidden="true"
+            >
+              <defs>
+                <marker
+                  id="arrow-hist-{histIdx}"
+                  markerWidth="7"
+                  markerHeight="7"
+                  refX="5"
+                  refY="3.5"
+                  orient="auto"
+                >
+                  <path d="M 0 1 L 7 3.5 L 0 6 Z" fill="#F5F0E6" opacity="0.5" />
+                </marker>
+              </defs>
+              <path
+                class="connector-path connector-history"
+                d={arrowPath(
+                  containerWidth / 2, 0,
+                  containerWidth / 2, rowH * 0.38
+                )}
+                marker-end="url(#arrow-hist-{histIdx})"
+              />
+            </svg>
+
+            <!-- History row: selected node centred, alts dimmed -->
+            <div class="history-row" style="top: {historyNodeY(histIdx)}px;">
+              <!-- Unchosen alternatives at 30% opacity -->
+              {#each decision.altNodes as altNode, ai (altNode.id)}
+                {@const altTotal = decision.altNodes.length}
+                {@const altOffset = ai < Math.floor(altTotal / 2) ? -1 : 1}
+                <div
+                  class="node-slot node-slot-alt"
+                  style="left: {containerWidth / 2 + altOffset * (80 * layoutScale)}px;"
+                  aria-label="Not chosen: {altNode.type}"
+                >
+                  <div class="alt-node-wrap">
+                    <MapNodeComponent node={altNode} onclick={() => {}} />
+                  </div>
+                </div>
+              {/each}
+
+              <!-- Selected node — full opacity, centred -->
+              <div class="node-slot node-slot-selected" style="left: {containerWidth / 2}px;">
+                <MapNodeComponent node={decision.selectedNode} onclick={() => {}} />
+              </div>
+            </div>
+          {/each}
+        </section>
       {/if}
 
-      <!-- Node layer — absolutely positioned HTML buttons -->
-      {#each allNodes as node (node.id)}
-        {@const { px, py } = nodePixelPos(node)}
-        <div
-          class="node-wrapper"
-          style="left: {px}px; top: {py}px;"
-        >
-          <MapNodeComponent
-            {node}
-            onclick={() => onNodeSelect(node.id)}
-          />
-        </div>
-      {/each}
     </div>
   </div>
 </div>
@@ -385,16 +347,17 @@
      ========================================================= */
   .map-hud {
     flex-shrink: 0;
-    position: sticky;
-    top: 0;
     z-index: 10;
-    padding: calc(10px + var(--safe-top, 0px)) 16px 10px;
+    padding:
+      calc(10px + var(--safe-top, 0px))
+      calc(16px * var(--layout-scale, 1))
+      calc(10px * var(--layout-scale, 1));
     background: linear-gradient(180deg, #080d14 60%, rgba(8, 13, 20, 0));
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: calc(8px * var(--layout-scale, 1));
-    pointer-events: none; /* allow touch-through to map */
+    pointer-events: none;
   }
 
   .hud-title {
@@ -441,109 +404,173 @@
   }
 
   /* =========================================================
-     Scrollable map container
+     Scrollable progressive canvas
      ========================================================= */
   .map-scroll-container {
     flex: 1;
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
-    /* Centre the canvas for wider screens */
     display: flex;
     justify-content: center;
-    /* Bottom safe-area padding so nodes are never hidden behind nav bars */
-    padding-bottom: var(--safe-bottom, 16px);
-    /* Hide scrollbar — map scrolls via touch/cinematic only */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
+    padding-bottom: var(--safe-bottom, calc(16px * var(--layout-scale, 1)));
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   .map-scroll-container::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
+    display: none;
   }
 
-  /* =========================================================
-     Map canvas — the coordinate space for nodes and SVG paths
-     ========================================================= */
-  .map-canvas {
+  .progressive-canvas {
     position: relative;
-    /* width set inline via containerWidth */
-    background: radial-gradient(ellipse at 50% 0%, rgba(20, 40, 80, 0.3) 0%, transparent 70%);
     flex-shrink: 0;
-    will-change: transform;
   }
 
   /* =========================================================
-     SVG path layer
+     Section labels
      ========================================================= */
-  .map-paths {
+  .section-label {
     position: absolute;
-    inset: 0;
-    /* Critical: allow touch/pointer events to pass through to nodes and scroll */
+    left: 0;
+    right: 0;
+    text-align: center;
+    letter-spacing: calc(1.5px * var(--layout-scale, 1));
+    text-transform: uppercase;
+    font-weight: 600;
     pointer-events: none;
+    margin: 0;
   }
 
-  :global(.map-edge) {
-    fill: none;
-    stroke-linecap: round;
+  .choices-label {
+    top: calc(8px * var(--layout-scale, 1));
+    font-size: calc(11px * var(--layout-scale, 1));
+    color: rgba(245, 240, 230, 0.7);
   }
 
-  :global(.edge-visited) {
-    stroke: #4a9eff;
-    stroke-width: 2;
-    opacity: 0.9;
-  }
-
-  :global(.edge-active) {
-    stroke: #4a9eff;
-    stroke-width: 2;
-    opacity: 0.6;
-    animation: edgePulse 2s ease-in-out infinite;
-  }
-
-  :global(.edge-locked) {
-    stroke: #2a3448;
-    stroke-width: 1;
-    stroke-dasharray: 4 5;
-    opacity: 0.5;
-  }
-
-  @keyframes edgePulse {
-    0%, 100% { opacity: 0.35; }
-    50%       { opacity: 0.75; }
+  .history-label {
+    top: calc(4px * var(--layout-scale, 1));
+    font-size: calc(10px * var(--layout-scale, 1));
+    color: rgba(245, 240, 230, 0.35);
   }
 
   /* =========================================================
-     Node wrapper — centres the 44px button on its coordinate
+     Choices section — hero area at top
      ========================================================= */
-  .node-wrapper {
+  .choices-section {
+    position: relative;
+    width: 100%;
+    background: radial-gradient(
+      ellipse at 50% 40%,
+      rgba(74, 158, 255, 0.07) 0%,
+      transparent 70%
+    );
+  }
+
+  .choices-row {
     position: absolute;
-    /* Shift by half the node size so the centre aligns with the coordinate */
+    left: 0;
+    right: 0;
+    /* Y position set inline; translate so node centres sit on the Y coordinate */
+    transform: translateY(-50%);
+  }
+
+  .no-choices-hint {
+    text-align: center;
+    color: rgba(245, 240, 230, 0.4);
+    font-size: calc(13px * var(--layout-scale, 1));
+    font-style: italic;
+    margin: 0;
+    padding-top: calc(16px * var(--layout-scale, 1));
+  }
+
+  /* =========================================================
+     History section
+     ========================================================= */
+  .history-section {
+    position: relative;
+    width: 100%;
+    border-top: 1px solid rgba(245, 240, 230, 0.07);
+    padding-top: calc(24px * var(--layout-scale, 1));
+  }
+
+  .history-row {
+    position: absolute;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+  }
+
+  /* =========================================================
+     Node slots
+     ========================================================= */
+  .node-slot {
+    position: absolute;
     transform: translate(-50%, -50%);
     z-index: 2;
   }
 
-  /* =========================================================
-     Invisible scroll anchor element
-     ========================================================= */
-  .available-scroll-anchor {
-    position: absolute;
-    left: 0;
-    width: 1px;
-    height: 1px;
+  /* Dimmed alternative nodes */
+  .node-slot-alt {
+    opacity: 0.3;
     pointer-events: none;
-    /* Offset upward slightly so the available row sits near the middle of
-       the viewport rather than exactly at the centre edge. */
-    transform: translateY(calc(-120px * var(--layout-scale, 1)));
+    z-index: 1;
+  }
+
+  .alt-node-wrap {
+    filter: grayscale(0.5);
+  }
+
+  /* Chosen history node */
+  .node-slot-selected {
+    opacity: 1;
+    pointer-events: none;
   }
 
   /* =========================================================
-     Reduced-motion overrides
+     SVG connector overlays
+     ========================================================= */
+  .connector-svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+  }
+
+  .history-connector {
+    /* top set inline per row */
+    top: unset;
+  }
+
+  :global(.connector-path) {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* Active choice connectors — bright off-white dashes with soft glow */
+  :global(.connector-active) {
+    stroke: #F5F0E6;
+    stroke-width: 1.5px;
+    stroke-dasharray: 6px 5px;
+    opacity: 0.85;
+    filter: drop-shadow(0 0 3px rgba(245, 240, 230, 0.35));
+  }
+
+  /* History connectors — dimmer */
+  :global(.connector-history) {
+    stroke: #F5F0E6;
+    stroke-width: 1px;
+    stroke-dasharray: 5px 6px;
+    opacity: 0.45;
+  }
+
+  /* =========================================================
+     Reduced-motion
      ========================================================= */
   @media (prefers-reduced-motion: reduce) {
-    :global(.edge-active) {
+    :global(.connector-active) {
       animation: none;
-      opacity: 0.6;
     }
   }
 </style>

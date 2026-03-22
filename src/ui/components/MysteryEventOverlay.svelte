@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { MysteryEvent, MysteryEffect } from '../../services/floorManager'
-  import { getRandomRoomBg, getRoomDepthMap } from '../../data/backgroundManifest'
+  import { getRandomRoomBg, getRoomDepthMap, getMysteryEventBg } from '../../data/backgroundManifest'
   import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
   import { preloadImages } from '../utils/assetPreloader'
   import { getMysteryEventIconPath, getMysteryEventEmoji } from '../utils/iconAssets'
@@ -17,11 +17,16 @@
 
   let { event, playerHp, playerMaxHp, onresolve }: Props = $props()
 
-  const bgUrl = getRandomRoomBg('mystery')
+  const genericBgUrl = getRandomRoomBg('mystery')
   const depthUrl = getRoomDepthMap('mystery')
+
+  // Use a per-event background if the event has one, falling back to the generic mystery bg.
+  // The <img> onerror handler below falls back to genericBgUrl if the per-event asset 404s.
+  let bgUrl = $derived(event ? getMysteryEventBg(event.id) : genericBgUrl)
+
   let showRoomTransition = $state(true)
   holdScreenTransition()
-  preloadImages([bgUrl]).then(releaseScreenTransition)
+  preloadImages([genericBgUrl]).then(releaseScreenTransition)
 
   let effectIcon = $derived(getEffectIcon(event?.effect))
   let showCardReveal = $state(false)
@@ -48,24 +53,36 @@
       case 'maxHpChange': return 'heal'
       case 'removeRandomCard': return 'damage'
       case 'combat': return 'damage'
+      case 'compound': return getEffectIcon(effect.effects[0])
+      case 'random': return 'choice'
       default: return 'choice'
     }
   }
 
+  function isNegativeEffect(effect: MysteryEffect): boolean {
+    if (effect.type === 'damage' || effect.type === 'removeRandomCard' || effect.type === 'combat') return true
+    if (effect.type === 'compound') return effect.effects.some(e => isNegativeEffect(e))
+    if (effect.type === 'random') return effect.outcomes.some(outcome => outcome.some(e => isNegativeEffect(e)))
+    return false
+  }
+
   function handleContinue(): void {
     if (event) {
+      playCardAudio(isNegativeEffect(event.effect) ? 'event-negative' : 'event-positive')
       onresolve(event.effect)
     }
   }
 
   function handleChoiceOption(choiceEffect: MysteryEffect): void {
     playCardAudio('event-choice')
-    if (choiceEffect.type === 'damage') {
+    if (isNegativeEffect(choiceEffect)) {
+      playCardAudio('event-negative')
       showCardReveal = true
       setTimeout(() => {
         onresolve(choiceEffect)
       }, 1200)
     } else {
+      playCardAudio('event-positive')
       onresolve(choiceEffect)
     }
   }
@@ -73,7 +90,8 @@
 
 {#if event}
   <div class="mystery-overlay">
-    <img class="overlay-bg" src={bgUrl} alt="" aria-hidden="true" />
+    <img class="overlay-bg" src={bgUrl} alt="" aria-hidden="true"
+      onerror={(e) => { (e.currentTarget as HTMLImageElement).src = genericBgUrl }} />
     <div class="mystery-card">
       <h2 class="event-name">{event.name}</h2>
       <span class="effect-icon">

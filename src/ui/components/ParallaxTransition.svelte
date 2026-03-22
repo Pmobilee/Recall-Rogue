@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { playCardAudio } from '../../services/cardAudioManager'
+
   interface Props {
     imageUrl: string
     depthUrl: string
@@ -315,6 +317,7 @@
         gl.bindTexture(gl.TEXTURE_2D, texDepth)
 
         const startTime = performance.now()
+        playCardAudio('room-transition')
         rafId = requestAnimationFrame(animate(startTime))
       } catch (err) {
         console.error('[ParallaxTransition] WebGL init failed:', err)

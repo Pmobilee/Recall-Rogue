@@ -55,6 +55,14 @@ export interface RunState {
    */
   firstChargeFreeFactIds: Set<string>;
   /**
+   * Fact IDs attempted (correct or wrong Charge) at least once during this run.
+   * Used by new-fact protection: on the first attempt at a given fact, mastery
+   * downgrade and curse are skipped so the player is never punished for genuinely
+   * not knowing a card they have never seen before.
+   * Per-run, not per-encounter. Cleared on new run.
+   */
+  attemptedFactIds: Set<string>;
+  /**
    * Fact IDs for which the player gave a wrong Charge on a mastery 0 card.
    * Any card assigned one of these facts is treated as Cursed.
    * Cured by correct Charge on the fact in combat.
@@ -214,6 +222,7 @@ export function createRunState(
     canary: createCanaryState(),
     startedAt: Date.now(),
     firstChargeFreeFactIds: new Set<string>(),
+    attemptedFactIds: new Set<string>(),
     cursedFactIds: new Set<string>(),
     consumedRewardFactIds: new Set<string>(),
     factsAnsweredCorrectly: new Set<string>(),

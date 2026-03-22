@@ -1,5 +1,5 @@
 import type { Card, CardRunState, DeckStats } from '../data/card-types';
-import { HAND_SIZE, PLAYER_START_HP, PLAYER_MAX_HP, HINTS_PER_ENCOUNTER, FACT_COOLDOWN_MIN, FACT_COOLDOWN_MAX, CURSED_AUTO_CURE_THRESHOLD } from '../data/balance';
+import { HAND_SIZE, PLAYER_START_HP, PLAYER_MAX_HP, HINTS_PER_ENCOUNTER, FACT_COOLDOWN_MIN, FACT_COOLDOWN_MAX, CURSED_AUTO_CURE_THRESHOLD, STABLE_ENCOUNTER_FACTS_ENABLED } from '../data/balance';
 import { factsDB } from './factsDB';
 import { resolveDomain } from './domainResolver';
 import { shuffled } from './randomUtils';
@@ -230,7 +230,13 @@ export function drawHand(
   // === Per-Draw Fact Shuffling (AR-93) ===
   // Facts are assigned per draw from the FSRS pool — no permanent binding.
   // The seeded RNG fork 'facts' ensures identical card-fact pairings for identical seeds.
-  if (drawn.length > 0 && deck.factPool.length > 0) {
+  // AR-223: When STABLE_ENCOUNTER_FACTS_ENABLED is true, this block is skipped entirely.
+  // Facts are instead shuffled between encounters via shuffleFactsAtEncounterEnd().
+  // EXCEPTION: New reward cards added mid-run still need a fact assigned here (see
+  // addRewardCardToActiveDeck in encounterBridge.ts), but those arrive via drawHand
+  // with a pre-populated factId and factPool, so the stable flag only suppresses
+  // reassignment of EXISTING cards — new cards with placeholder factIds still get one.
+  if (!STABLE_ENCOUNTER_FACTS_ENABLED && drawn.length > 0 && deck.factPool.length > 0) {
     // AR-202: Read cursedFactIds from run state for priority weighting and isCursed flag.
     const cursedFactIds: Set<string> = get(activeRunState)?.cursedFactIds ?? new Set();
 
@@ -552,6 +558,112 @@ export function smoothDrawForChainPairs(deck: CardRunState): void {
   deck.hand[swapIdx] = replacement;
   deck.drawPile.splice(matchIdx, 1);
   deck.drawPile.push(swappedOut); // put swapped card at bottom of draw pile
+}
+
+/**
+ * AR-223: Stable Encounter Facts — shuffle fact assignments between encounters.
+ *
+ * Randomly permutes which fact is bound to each card slot across the entire deck
+ * (all piles: draw, discard, hand, exhaust) using cooldown-aware deduplication where
+ * possible. Called at encounter END (after victory) so that the NEXT encounter sees
+ * fresh card–fact pairings while the current encounter's facts remain stable throughout.
+ *
+ * After reassignment, `card.isCursed` is re-derived from `cursedFactIds` for every
+ * card so the cursed state stays accurate for the newly assigned facts (AR-223 Sub-step 3).
+ *
+ * REWARD CARD EXCEPTION: Cards added as rewards during the run already carry a fact
+ * assigned by the pool-draw path in addRewardCardToActiveDeck (encounterBridge.ts).
+ * They are included in the shuffle like any other card slot — no special casing needed.
+ *
+ * @param deck - The current deck state (mutated in place).
+ * @param cursedFactIds - The set of cursed fact IDs from run state (for isCursed re-derivation).
+ */
+export function shuffleFactsAtEncounterEnd(deck: CardRunState, cursedFactIds: Set<string>): void {
+  // Collect all card slots across all piles (excluding exhaust — exhausted cards are gone).
+  const allCards: ReturnType<typeof Array.prototype.concat> = [
+    ...deck.drawPile,
+    ...deck.discardPile,
+    ...deck.hand,
+  ] as Card[];
+
+  if (allCards.length === 0 || deck.factPool.length === 0) return;
+
+  // Build the pool of candidate facts, preferring non-cooldown facts.
+  const cooldownRootIds = new Set(deck.factCooldown.map(c => getFactRootId(c.factId)));
+  const cursedAvailable = deck.factPool.filter(fId => cursedFactIds.has(fId));
+  const coolAvailable = deck.factPool.filter(
+    fId => !cursedFactIds.has(fId)
+      && !deck.factCooldown.some(c => c.factId === fId)
+      && !cooldownRootIds.has(getFactRootId(fId))
+  );
+  const warmAvailable = deck.factPool.filter(
+    fId => !cursedFactIds.has(fId) && !coolAvailable.includes(fId)
+  );
+
+  // Shuffle each tier independently using the run RNG when available.
+  const shuffle = <T>(arr: T[]): T[] =>
+    isRunRngActive() ? seededShuffled(getRunRng('facts'), arr) : shuffled(arr);
+
+  // Priority order: cursed facts first (so they resurface quickly for cure), then
+  // cool facts (off cooldown), then warm facts (recently seen, last resort).
+  const orderedPool: string[] = [
+    ...shuffle(cursedAvailable),
+    ...shuffle(coolAvailable),
+    ...shuffle(warmAvailable),
+  ];
+
+  // If pool is smaller than card count, cycle through it multiple times.
+  // Use a round-robin index rather than splice so we never exhaust the array.
+  let poolIndex = 0;
+  const pickNext = (): string => {
+    const factId = orderedPool[poolIndex % orderedPool.length];
+    poolIndex += 1;
+    return factId;
+  };
+
+  // Assign facts to all non-exhaust card slots and re-derive isCursed.
+  const factKeyCache = new Map<string, string>();
+  const usedFactIds = new Set<string>();
+  const usedBaseKeys = new Set<string>();
+  const usedRootIds = new Set<string>();
+
+  // Try to assign each card a unique fact (no same fact on two cards if avoidable).
+  for (const card of allCards as Card[]) {
+    // Find the best available fact that hasn't been used yet.
+    let chosenFactId: string | null = null;
+    let fallback: string | null = null;
+
+    for (let attempt = 0; attempt < orderedPool.length; attempt++) {
+      const candidateId = orderedPool[attempt];
+      if (fallback === null) fallback = candidateId;
+      if (usedFactIds.has(candidateId)) continue;
+      if (usedBaseKeys.has(buildFactBaseKey(candidateId, factKeyCache))) continue;
+      if (usedRootIds.has(getFactRootId(candidateId))) continue;
+      chosenFactId = candidateId;
+      break;
+    }
+
+    // If no unique fact found, fall back to round-robin.
+    if (chosenFactId === null) {
+      chosenFactId = pickNext();
+    }
+
+    card.factId = chosenFactId;
+    // AR-223 Sub-step 3: re-derive isCursed from cursedFactIds after reassignment.
+    card.isCursed = cursedFactIds.has(chosenFactId);
+
+    // Update domain if facts DB is ready.
+    if (factsDB.isReady()) {
+      const newFact = factsDB.getById(chosenFactId);
+      if (newFact) {
+        card.domain = resolveDomain(newFact);
+      }
+    }
+
+    usedFactIds.add(chosenFactId);
+    usedBaseKeys.add(buildFactBaseKey(chosenFactId, factKeyCache));
+    usedRootIds.add(getFactRootId(chosenFactId));
+  }
 }
 
 // Exported for unit testing only — not part of the public API.

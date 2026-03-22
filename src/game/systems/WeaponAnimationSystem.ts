@@ -93,9 +93,10 @@ export class WeaponAnimationSystem {
     // ── Sword: perspective canvas ────────────────────────────
     // We'll draw the sword onto a CanvasTexture with per-row width taper
     // to simulate 3D perspective (handle wider/closer, tip narrower/farther).
-    // Canvas size matches the desired display size.
-    const swordDisplayW = Math.round(250 * scale)  // wide enough for tapered handle
-    const swordDisplayH = Math.round(500 * scale)  // display height of the sword
+    // Canvas is kept at BASE dimensions — display scale is applied via setScale()
+    // at play-time relative to enemy sprite size, so landscape scaling is correct.
+    const swordDisplayW = 250  // base canvas width (pixels)
+    const swordDisplayH = 500  // base canvas height (pixels)
 
     // Remove stale canvas if it exists from a previous scene cycle
     if (this.scene.textures.exists('weapon-sword-canvas')) {
@@ -293,19 +294,23 @@ export class WeaponAnimationSystem {
 
     return new Promise<void>(resolve => {
       const scene = this.scene
-      const w = scene.scale.width
-      const scale = w / BASE_WIDTH
       const sword = this.swordImage!
 
-      // Handle position: right side of the combat zone
-      const handleX = w * 0.7
-      const handleY = this.displayH * 0.88
+      // Scale relative to enemy sprite size (approx 40% of display height),
+      // not viewport width — avoids inflated scale in landscape.
+      const enemySpriteSize = this.displayH * 0.4
+      const scale = enemySpriteSize / BASE_WIDTH
+
+      // Handle position: offset below and to the right of the enemy center
+      // so the sword tip lands near the enemy on the forward-chop arc.
+      const handleX = enemyX + enemySpriteSize * 0.25
+      const handleY = enemyY + enemySpriteSize * 0.55
 
       // Start: upright, flat (no perspective), facing the viewer
       sword
         .setPosition(handleX, handleY)
         .setAngle(0)
-        .setScale(1)  // canvas is already at display size
+        .setScale(scale)
         .setAlpha(0)
         .setOrigin(0.5, 1.0)
 

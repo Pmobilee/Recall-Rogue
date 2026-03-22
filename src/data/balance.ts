@@ -342,6 +342,17 @@ export const FIRST_CHARGE_FREE_AP_SURCHARGE = 0;
  */
 export const FIRST_CHARGE_FREE_WRONG_MULTIPLIER = 0.0;
 
+// ─── AR-221: Quiz Panel Redesign — Auto-Resume Timing ──────────────────────
+
+/** Delay (ms) before auto-resuming after a correct answer. */
+export const CORRECT_ANSWER_RESUME_DELAY = 1000;
+/** Base delay (ms) before auto-resuming after a wrong answer. */
+export const WRONG_ANSWER_RESUME_BASE = 1500;
+/** Additional ms per character in the correct answer string. */
+export const WRONG_ANSWER_RESUME_PER_CHAR = 30;
+/** Maximum auto-resume delay (ms) after a wrong answer. */
+export const WRONG_ANSWER_RESUME_MAX = 5000;
+
 // === CURSED CARD SYSTEM (AR-202) ===
 /** QP multiplier when a card carries a cursed fact. */
 export const CURSED_QP_MULTIPLIER = 0.7;
@@ -803,6 +814,13 @@ export const MAP_CONFIG = {
 
 // === FEATURE FLAGS ===
 
+/**
+ * AR-224: When false, the 3-phase cinematic map reveal animation is skipped.
+ * Progressive path view makes the cinematic feel out of place, so it is
+ * disabled by default. Set to true to re-enable the classic full-map reveal.
+ */
+export const MAP_CINEMATIC_ENABLED = false
+
 /** When true, phase 2 mechanics are included in the card pool. */
 export const ENABLE_PHASE2_MECHANICS = true;
 
@@ -819,6 +837,15 @@ export const ARCHETYPE_UNLOCK_RUNS = 3;
 export const FACT_COOLDOWN_MIN = 3;
 /** Maximum encounter cooldown applied to a fact after it is answered. */
 export const FACT_COOLDOWN_MAX = 5;
+
+/**
+ * AR-223: When true, facts are assigned to cards once per encounter (stable binding)
+ * rather than being randomly reassigned on every draw. Facts are shuffled across
+ * card slots at encounter END (between encounters), not at draw time. This means
+ * a card's question stays consistent for the entire fight, improving readability
+ * and strategic planning. When false, the old AR-93 per-draw assignment runs instead.
+ */
+export const STABLE_ENCOUNTER_FACTS_ENABLED = true;
 
 // === PARAMETER SWEEP: Balance Override System ===
 // Module-level mutable context for runtime balance overrides.

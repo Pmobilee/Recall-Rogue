@@ -1093,7 +1093,8 @@ function addRelicToRunDirect(relic: RelicDefinition): void {
 /**
  * Opens a treasure room with 3 relic choices from the player's unlocked pool.
  * Uses the RewardRoomScene with relic-only items.
- * Falls back to +25 gold and the standard card reward if no eligible relics remain.
+ * Falls back to proceeding directly to map (no gold, no cards) if no eligible relics remain.
+ * Treasure rooms are relic-only — they do NOT chain to openCardReward().
  */
 function openTreasureRoom(): void {
   const run = get(activeRunState);
@@ -1107,10 +1108,8 @@ function openTreasureRoom(): void {
   const pool = buildRelicPool();
 
   if (pool.length === 0) {
-    // Fallback: no relics available, give gold instead
-    run.currency += 25;
-    activeRunState.set(run);
-    openCardReward();
+    // Fallback: no relics available — proceed directly to map, no gold, no cards
+    void proceedAfterReward();
     return;
   }
 
@@ -1118,8 +1117,27 @@ function openTreasureRoom(): void {
   const shuffledPool = [...pool].sort(() => Math.random() - 0.5);
   const choices = shuffledPool.slice(0, Math.min(3, shuffledPool.length));
 
-  // Use the existing relic choice reward room flow
-  openRelicChoiceRewardRoom(choices, false);
+  // Use the relic choice reward room flow with a custom onComplete that skips card reward
+  gameFlowState.set('relicReward');
+  const relicRewards: RewardItem[] = choices.map((relic) => ({ type: 'relic' as const, relic }));
+  void openRewardRoom(
+    relicRewards,
+    // onGoldCollected — no gold in treasure room
+    (_amount) => {},
+    // onVialCollected — no vial in treasure room
+    (_healAmt) => {},
+    // onCardAccepted — no cards in treasure room
+    (_card) => {},
+    // onRelicAccepted — player chose a relic; apply slot enforcement
+    (relic) => {
+      addRelicToRun(relic);
+    },
+    // onComplete — proceed directly to map, bypassing openCardReward()
+    () => {
+      activeRelicRewardOptions.set([]);
+      void proceedAfterReward();
+    },
+  );
 }
 
 /**
@@ -2222,6 +2240,18 @@ function applyMysteryEffect(effect: MysteryEffect, run: RunState): void {
         const TRANSFORM_TYPES: Array<'attack' | 'shield' | 'heal' | 'buff'> = ['attack', 'shield', 'heal', 'buff'];
         const others = TRANSFORM_TYPES.filter(t => t !== card.cardType);
         card.cardType = others[Math.floor(Math.random() * others.length)] as typeof card.cardType;
+      }
+      break;
+    }
+    case 'compound':
+      for (const subEffect of effect.effects) {
+        applyMysteryEffect(subEffect, run);
+      }
+      break;
+    case 'random': {
+      const outcomeIdx = Math.floor(Math.random() * effect.outcomes.length);
+      for (const subEffect of effect.outcomes[outcomeIdx]) {
+        applyMysteryEffect(subEffect, run);
       }
       break;
     }

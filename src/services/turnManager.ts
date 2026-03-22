@@ -205,11 +205,12 @@ export interface TurnState {
   /** Whether mirror_of_knowledge has already been used this encounter (once per encounter). */
   mirrorUsedThisEncounter: boolean;
   /**
-   * Chain Momentum (AR-122): when true, the next Charge play this turn costs +0 AP surcharge
-   * instead of +1. Set after a correct Charge answer; consumed on the next Charge play.
-   * Resets on wrong Charge, Quick Play, or turn end.
+   * Chain Momentum (AR-122): when non-null, the next Charge play of this chainType costs +0 AP
+   * surcharge instead of +1. Set to the card's chainType after a correct Charge answer; consumed
+   * on the next matching Charge play. Resets on wrong Charge, Quick Play, or turn end.
+   * null means no momentum is active.
    */
-  nextChargeFree: boolean;
+  nextChargeFreeForChainType: number | null;
   /**
    * Phoenix Feather post-resurrection auto-Charge turns remaining.
    * When > 0, all Charge plays are automatically treated as correct (no quiz required).
@@ -488,7 +489,7 @@ export function startEncounter(
     chainType: null,
     doubleDownUsedThisEncounter: false,
     mirrorUsedThisEncounter: false,
-    nextChargeFree: false,
+    nextChargeFreeForChainType: null,
     phoenixAutoChargeTurns: 0,
     activeInscriptions: [],
     staggeredEnemyNextTurn: false,
@@ -603,16 +604,16 @@ export function playCardAction(
     if (isSurge) {
       // Surge turns: no surcharge (already 0)
       // Chain Momentum flag still applies (consumed below) but has no additional AP effect
-      if (CHAIN_MOMENTUM_ENABLED && turnState.nextChargeFree) {
-        turnState.nextChargeFree = false; // consume the flag even on Surge
+      if (CHAIN_MOMENTUM_ENABLED && turnState.nextChargeFreeForChainType !== null) {
+        turnState.nextChargeFreeForChainType = null; // consume the flag even on Surge
       }
-    } else if (CHAIN_MOMENTUM_ENABLED && turnState.nextChargeFree) {
-      // Chain Momentum: previous correct Charge waived this surcharge
-      turnState.nextChargeFree = false; // consume the flag
-      // surcharge is 0 — no apCost increase
     } else if (turnState.warcryFreeChargeActive) {
-      // AR-207: Warcry CC — next Charge this turn costs +0 AP surcharge
+      // AR-207: Warcry CC — next Charge this turn costs +0 AP surcharge (any color; takes priority)
       turnState.warcryFreeChargeActive = false; // consume the flag
+      // surcharge is 0 — no apCost increase
+    } else if (CHAIN_MOMENTUM_ENABLED && turnState.nextChargeFreeForChainType !== null && cardInHand.chainType === turnState.nextChargeFreeForChainType) {
+      // Chain Momentum: previous correct Charge waived this surcharge for matching chain type
+      turnState.nextChargeFreeForChainType = null; // consume the flag
       // surcharge is 0 — no apCost increase
     } else if (cardInHand.factId && runStateForCharge && isFirstChargeFree(cardInHand.factId, runStateForCharge.firstChargeFreeFactIds)) {
       // Free first Charge: AP surcharge is 0
@@ -625,7 +626,7 @@ export function playCardAction(
   } else if (playMode === 'quick') {
     // Quick Play: momentum lost
     if (CHAIN_MOMENTUM_ENABLED) {
-      turnState.nextChargeFree = false;
+      turnState.nextChargeFreeForChainType = null;
     }
   }
 
@@ -656,8 +657,24 @@ export function playCardAction(
   const card: Card = { ...cardInHand };
   // AR-202: Capture mastery level BEFORE any downgrade so curse condition uses pre-play value.
   const preMasteryLevel = cardInHand.masteryLevel ?? 0;
+
+  // AR-223 Sub-step 2: New-fact protection — first attempt at a given fact ID is exempt from
+  // mastery downgrade and curse. Mark the fact as attempted regardless of correct/wrong outcome.
+  // This is per-fact-ID across the entire run (not per card-fact pairing).
+  // Note: this is separate from firstChargeFreeFactIds (which tracks the free AP surcharge bonus).
+  let isFirstAttempt = false;
+  if (card.factId) {
+    const runStateForAttempt = get(activeRunState);
+    if (runStateForAttempt) {
+      isFirstAttempt = !runStateForAttempt.attemptedFactIds.has(card.factId);
+      runStateForAttempt.attemptedFactIds.add(card.factId);
+      activeRunState.set(runStateForAttempt);
+    }
+  }
+
   deckPlayCard(deck, cardId);
   turnState.apCurrent = Math.max(0, turnState.apCurrent - apCost);
+  if (apCost > 0) playCardAudio('ap-spend');
 
   // Track answered fact for encounter cooldown
   if (cardInHand.factId) {
@@ -707,7 +724,7 @@ export function playCardAction(
       turnState.chainType = chainState.chainType;
       // Chain Momentum: wrong Charge answer loses momentum
       if (CHAIN_MOMENTUM_ENABLED) {
-        turnState.nextChargeFree = false;
+        turnState.nextChargeFreeForChainType = null;
       }
     }
 
@@ -719,10 +736,11 @@ export function playCardAction(
       turnState.cardsPlayedThisTurn += 1;
       turnState.isPerfectTurn = false;
 
-      // Mastery downgrade: wrong charge answer downgrades the played card
+      // Mastery downgrade: wrong charge answer downgrades the played card.
+      // AR-223: Skipped on first attempt at this fact (new-fact protection).
       let masteryChangeRelaxed: 'upgrade' | 'downgrade' | null = null;
       let masteryChangedCardIdRelaxed: string | null = null;
-      if (playMode !== 'quick') {
+      if (playMode !== 'quick' && !isFirstAttempt) {
         const discardedCard = turnState.deck.discardPile.find(c => c.id === cardId);
         if (discardedCard && canMasteryDowngrade(discardedCard)) {
           masteryDowngrade(discardedCard);
@@ -762,7 +780,8 @@ export function playCardAction(
 
       // AR-202: Curse logic — relaxed mode wrong Charge on mastery 0 card.
       // Free First Charge wrongs are EXEMPT. Mastery 1+ wrongs only downgrade.
-      if (playMode === 'charge' && !usedFreeCharge && preMasteryLevel === 0 && card.factId) {
+      // AR-223: Also exempt on first attempt at this fact (new-fact protection).
+      if (playMode === 'charge' && !usedFreeCharge && !isFirstAttempt && preMasteryLevel === 0 && card.factId) {
         const runState = get(activeRunState);
         if (runState) {
           runState.cursedFactIds.add(card.factId);
@@ -796,10 +815,11 @@ export function playCardAction(
     turnState.cardsPlayedThisTurn += 1;
     turnState.isPerfectTurn = false;
 
-    // Mastery downgrade: wrong charge answer downgrades the played card
+    // Mastery downgrade: wrong charge answer downgrades the played card.
+    // AR-223: Skipped on first attempt at this fact (new-fact protection).
     let masteryChangeWrong: 'upgrade' | 'downgrade' | null = null;
     let masteryChangedCardIdWrong: string | null = null;
-    if (playMode !== 'quick') {
+    if (playMode !== 'quick' && !isFirstAttempt) {
       const discardedCard = turnState.deck.discardPile.find(c => c.id === cardId);
       if (discardedCard && canMasteryDowngrade(discardedCard)) {
         masteryDowngrade(discardedCard);
@@ -877,7 +897,8 @@ export function playCardAction(
 
     // AR-202: Curse logic — normal mode wrong Charge on mastery 0 card.
     // Free First Charge wrongs are EXEMPT. Mastery 1+ wrongs only downgrade (curse on next wrong at 0).
-    if (playMode === 'charge' && !usedFreeCharge && preMasteryLevel === 0 && card.factId) {
+    // AR-223: Also exempt on first attempt at this fact (new-fact protection).
+    if (playMode === 'charge' && !usedFreeCharge && !isFirstAttempt && preMasteryLevel === 0 && card.factId) {
       const runState = get(activeRunState);
       if (runState) {
         runState.cursedFactIds.add(card.factId);
@@ -1743,9 +1764,10 @@ export function playCardAction(
   if (playMode !== 'quick') {
     turnState.cardsCorrectThisTurn += 1;
     turnState.consecutiveCorrectThisEncounter += 1;
-    // Chain Momentum (AR-122): correct Charge earns a free surcharge on the NEXT Charge this turn
+    // Chain Momentum (AR-122): correct Charge earns a free surcharge on the NEXT Charge this turn,
+    // but only for cards of the same chain type (color-specific momentum).
     if (playMode === 'charge' && CHAIN_MOMENTUM_ENABLED) {
-      turnState.nextChargeFree = true;
+      turnState.nextChargeFreeForChainType = card.chainType ?? null;
     }
   }
   turnState.isPerfectTurn = (
@@ -2154,7 +2176,7 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   turnState.chainType = null;
 
   // Chain Momentum: reset on turn end
-  turnState.nextChargeFree = false;
+  turnState.nextChargeFreeForChainType = null;
 
   // AR-207: Clear per-turn restriction/buff flags
   turnState.battleTranceRestriction = false;
@@ -2295,6 +2317,40 @@ export function isHandEmpty(turnState: TurnState): boolean {
 
 export function getHandSize(turnState: TurnState): number {
   return turnState.deck.hand.length;
+}
+
+/**
+ * Returns true if ANY card in the current hand can be played (Quick Play or Charge).
+ *
+ * Accounts for:
+ * - Current AP vs each card's base cost
+ * - Focus AP discount (focusCharges > 0 reduces cost by 1)
+ * - Warcry free Charge (warcryFreeChargeActive waives the +1 Charge surcharge)
+ * - Chain Momentum (nextChargeFreeForChainType waives the +1 Charge surcharge for matching chain type)
+ * - Battle Trance restriction (blocks ALL plays when active)
+ *
+ * Quick Play costs base AP only (no surcharge).
+ * Charge costs base AP + 1 surcharge (waived by Surge, warcry, or Chain Momentum).
+ */
+export function isAnyCardPlayable(turnState: TurnState): boolean {
+  if (turnState.phase !== 'player_action') return false;
+  if (turnState.result !== null) return false;
+  if (turnState.battleTranceRestriction) return false;
+
+  const { deck, apCurrent, focusCharges, warcryFreeChargeActive, nextChargeFreeForChainType, isSurge } = turnState;
+  const focusDiscount = focusCharges > 0 ? 1 : 0;
+
+  for (const card of deck.hand) {
+    const baseAp = Math.max(0, (card.apCost ?? 1) - focusDiscount);
+    // Quick Play: no surcharge
+    if (baseAp <= apCurrent) return true;
+    // Charge surcharge waived on Surge, Warcry, or Chain Momentum (color-matched)
+    const momentumMatch = CHAIN_MOMENTUM_ENABLED && nextChargeFreeForChainType !== null && card.chainType === nextChargeFreeForChainType;
+    const chargeSurchargeWaived = isSurge || warcryFreeChargeActive || momentumMatch;
+    const chargeAp = chargeSurchargeWaived ? baseAp : baseAp + 1;
+    if (chargeAp <= apCurrent) return true;
+  }
+  return false;
 }
 
 /**

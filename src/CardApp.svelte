@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount, tick } from 'svelte'
+  import { fly } from 'svelte/transition'
   import { get } from 'svelte/store'
 
   let phaserContainer: HTMLDivElement
@@ -103,7 +104,7 @@
   import { RELIC_BY_ID } from './data/relics/index'
   import { getMaxRelicSlots, isRelicSlotsFull } from './services/relicEffectResolver'
   import { isSlowReader, onboardingState, textSize } from './services/cardPreferences'
-  import { unlockCardAudio } from './services/cardAudioManager'
+  import { unlockCardAudio, playCardAudio } from './services/cardAudioManager'
   import { languageService } from './services/languageService'
   import { getDueReviews, playerSave } from './ui/stores/playerData'
   import { lastRunSummary } from './services/hubState'
@@ -729,8 +730,14 @@
     return 'Endless Depths'
   }
 
+  let bootLogoPlayed = false
+
   function handleUserInteraction(): void {
     unlockCardAudio()
+    if (!bootLogoPlayed) {
+      bootLogoPlayed = true
+      playCardAudio('boot-logo')
+    }
   }
 
   function createLazyLoader<T>(factory: () => Promise<T>): () => Promise<T> {
@@ -1016,11 +1023,15 @@
   {/if}
 
   {#if $currentScreen === 'archetypeSelection'}
-    <ArchetypeSelection onselect={handleArchetypeSelect} onskip={() => handleArchetypeSelect('balanced')} onback={returnToMenu} />
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <ArchetypeSelection onselect={handleArchetypeSelect} onskip={() => handleArchetypeSelect('balanced')} onback={returnToMenu} />
+    </div>
   {/if}
 
   {#if $currentScreen === 'onboarding'}
-    <DungeonEntrance onbegin={handleOnboardingBegin} onback={returnToMenu} />
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <DungeonEntrance onbegin={handleOnboardingBegin} onback={returnToMenu} />
+    </div>
   {/if}
 
   {#if $currentScreen === 'combat'}
@@ -1050,71 +1061,81 @@
   {/if}
 
   {#if $currentScreen === 'cardReward'}
-    <CardRewardScreen
-      options={$activeCardRewardOptions}
-      onselect={handleRewardSelected}
-      onskip={onCardRewardSkipped}
-      onrewardstepchange={() => autoSaveRun('cardReward')}
-      onreroll={(type) => onCardRewardReroll(type)}
-    />
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <CardRewardScreen
+        options={$activeCardRewardOptions}
+        onselect={handleRewardSelected}
+        onskip={onCardRewardSkipped}
+        onrewardstepchange={() => autoSaveRun('cardReward')}
+        onreroll={(type) => onCardRewardReroll(type)}
+      />
+    </div>
   {/if}
 
   {#if $currentScreen === 'shopRoom'}
-    <ShopRoomOverlay
-      cards={$activeShopCards}
-      currency={$activeRunState?.currency ?? 0}
-      shopInventory={$activeShopInventory}
-      onsell={onShopSell}
-      onbuyRelic={onShopBuyRelic}
-      onbuyCard={onShopBuyCard}
-      onbuyRemoval={onShopBuyRemoval}
-      ondone={onShopDone}
-    />
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <ShopRoomOverlay
+        cards={$activeShopCards}
+        currency={$activeRunState?.currency ?? 0}
+        shopInventory={$activeShopInventory}
+        onsell={onShopSell}
+        onbuyRelic={onShopBuyRelic}
+        onbuyCard={onShopBuyCard}
+        onbuyRemoval={onShopBuyRemoval}
+        ondone={onShopDone}
+      />
+    </div>
   {/if}
 
   {#if $currentScreen === 'specialEvent'}
-    <SpecialEventOverlay
-      event={$activeSpecialEvent}
-      onresolve={handleSpecialEventResolved}
-    />
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <SpecialEventOverlay
+        event={$activeSpecialEvent}
+        onresolve={handleSpecialEventResolved}
+      />
+    </div>
   {/if}
 
   {#if $currentScreen === 'campfire'}
     {@const run = $activeRunState}
     {#if run}
-      <CampfirePause
-        currentFloor={run.floor.currentFloor}
-        playerHp={run.playerHp}
-        playerMaxHp={run.playerMaxHp}
-        deckSize={0}
-        relicCount={0}
-        accuracy={run.factsAnswered > 0 ? Math.round((run.factsCorrect / run.factsAnswered) * 100) : 0}
-        canReturnHub={!(run.ascensionModifiers?.preventFlee ?? false)}
-        onresume={handleCampfireResume}
-        onreturnhub={handleCampfireHub}
-      />
+      <div in:fly={{ y: 8, duration: 350 }}>
+        <CampfirePause
+          currentFloor={run.floor.currentFloor}
+          playerHp={run.playerHp}
+          playerMaxHp={run.playerMaxHp}
+          deckSize={0}
+          relicCount={0}
+          accuracy={run.factsAnswered > 0 ? Math.round((run.factsCorrect / run.factsAnswered) * 100) : 0}
+          canReturnHub={!(run.ascensionModifiers?.preventFlee ?? false)}
+          onresume={handleCampfireResume}
+          onreturnhub={handleCampfireHub}
+        />
+      </div>
     {/if}
   {/if}
 
   {#if $currentScreen === 'retreatOrDelve'}
     {@const run = $activeRunState}
     {#if run}
-      <RetreatOrDelve
-        bossName={run.floor.currentFloor === 3 ? 'Gate Guardian' : run.floor.currentFloor === 6 ? 'Magma Wyrm' : run.floor.currentFloor === 9 ? 'The Archivist' : 'Endless Sentinel'}
-        segment={run.floor.segment}
-        currency={run.currency}
-        playerHp={run.playerHp}
-        playerMaxHp={run.playerMaxHp}
-        nextSegmentName={nextSegmentName(run.floor.currentFloor)}
-        deathPenalty={getCurrentDelvePenalty()}
-        retreatRewardsLocked={Boolean(
-          run.ascensionModifiers?.minRetreatFloorForRewards != null &&
-          run.floor.currentFloor < run.ascensionModifiers.minRetreatFloorForRewards
-        )}
-        retreatRewardsMinFloor={run.ascensionModifiers?.minRetreatFloorForRewards ?? null}
-        onretreat={onRetreat}
-        ondelve={onDelve}
-      />
+      <div in:fly={{ y: 8, duration: 350 }}>
+        <RetreatOrDelve
+          bossName={run.floor.currentFloor === 3 ? 'Gate Guardian' : run.floor.currentFloor === 6 ? 'Magma Wyrm' : run.floor.currentFloor === 9 ? 'The Archivist' : 'Endless Sentinel'}
+          segment={run.floor.segment}
+          currency={run.currency}
+          playerHp={run.playerHp}
+          playerMaxHp={run.playerMaxHp}
+          nextSegmentName={nextSegmentName(run.floor.currentFloor)}
+          deathPenalty={getCurrentDelvePenalty()}
+          retreatRewardsLocked={Boolean(
+            run.ascensionModifiers?.minRetreatFloorForRewards != null &&
+            run.floor.currentFloor < run.ascensionModifiers.minRetreatFloorForRewards
+          )}
+          retreatRewardsMinFloor={run.ascensionModifiers?.minRetreatFloorForRewards ?? null}
+          onretreat={onRetreat}
+          ondelve={onDelve}
+        />
+      </div>
     {/if}
   {/if}
 
@@ -1122,168 +1143,204 @@
   {#if $currentScreen === 'dungeonMap'}
     {@const run = $activeRunState}
     {#if run?.floor.actMap}
-      <DungeonMap
-        map={run.floor.actMap}
-        playerHp={run.playerHp}
-        playerMaxHp={run.playerMaxHp}
-        onNodeSelect={handleMapNodeSelect}
-      />
-      <button
-        type="button"
-        class="pause-btn"
-        data-testid="btn-pause-map"
-        onclick={handlePause}
-        aria-label="Pause"
-      ><span class="pause-icon" aria-hidden="true"></span></button>
+      <div in:fly={{ y: 8, duration: 350 }}>
+        <DungeonMap
+          map={run.floor.actMap}
+          playerHp={run.playerHp}
+          playerMaxHp={run.playerMaxHp}
+          onNodeSelect={handleMapNodeSelect}
+        />
+        <button
+          type="button"
+          class="pause-btn"
+          data-testid="btn-pause-map"
+          onclick={handlePause}
+          aria-label="Pause"
+        ><span class="pause-icon" aria-hidden="true"></span></button>
+      </div>
     {/if}
   {/if}
 
   {#if $currentScreen === 'mysteryEvent'}
     {@const run = $activeRunState}
-    <MysteryEventOverlay
-      event={$activeMysteryEvent}
-      playerHp={run?.playerHp ?? 0}
-      playerMaxHp={run?.playerMaxHp ?? 0}
-      onresolve={handleMysteryResolve}
-    />
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <MysteryEventOverlay
+        event={$activeMysteryEvent}
+        playerHp={run?.playerHp ?? 0}
+        playerMaxHp={run?.playerMaxHp ?? 0}
+        onresolve={handleMysteryResolve}
+      />
+    </div>
   {/if}
 
   {#if $currentScreen === 'masteryChallenge'}
-    <MasteryChallengeOverlay
-      challenge={$activeMasteryChallenge}
-      onresolve={onMasteryChallengeResolved}
-    />
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <MasteryChallengeOverlay
+        challenge={$activeMasteryChallenge}
+        onresolve={onMasteryChallengeResolved}
+      />
+    </div>
   {/if}
 
   {#if $currentScreen === 'restRoom'}
     {@const run = $activeRunState}
-    <RestRoomOverlay
-      playerHp={run?.playerHp ?? 0}
-      playerMaxHp={run?.playerMaxHp ?? 0}
-      onheal={handleRestHeal}
-      onstudy={handleRestStudy}
-      onmeditate={handleRestMeditate}
-      studyDisabled={!hasRestUpgradeCandidates()}
-      studyDisabledReason="No cards to upgrade"
-      meditateDisabled={!canMeditate()}
-      meditateDisabledReason="Deck too small (min 5)"
-    />
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <RestRoomOverlay
+        playerHp={run?.playerHp ?? 0}
+        playerMaxHp={run?.playerMaxHp ?? 0}
+        onheal={handleRestHeal}
+        onstudy={handleRestStudy}
+        onmeditate={handleRestMeditate}
+        studyDisabled={!hasRestUpgradeCandidates()}
+        studyDisabledReason="No cards to upgrade"
+        meditateDisabled={!canMeditate()}
+        meditateDisabledReason="Deck too small (min 5)"
+      />
+    </div>
   {/if}
 
   {#if $currentScreen === 'restStudy'}
-    <StudyQuizOverlay questions={studyQuestions} oncomplete={handleStudyComplete} />
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <StudyQuizOverlay questions={studyQuestions} oncomplete={handleStudyComplete} />
+    </div>
   {/if}
 
   {#if $currentScreen === 'restMeditate'}
     {@const run = $activeRunState}
-    <MeditateOverlay
-      cards={meditateCandidates.map(c => ({
-        id: c.id,
-        mechanicName: c.mechanicName ?? '',
-        factQuestion: c.factId ? (factsDB.getById(c.factId)?.quizQuestion ?? '') : '',
-        isUpgraded: c.isUpgraded ?? false,
-        tier: c.tier ?? '1',
-      }))}
-      onremove={handleMeditateRemove}
-      oncancel={handleMeditateCancel}
-    />
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <MeditateOverlay
+        cards={meditateCandidates.map(c => ({
+          id: c.id,
+          mechanicName: c.mechanicName ?? '',
+          factQuestion: c.factId ? (factsDB.getById(c.factId)?.quizQuestion ?? '') : '',
+          isUpgraded: c.isUpgraded ?? false,
+          tier: c.tier ?? '1',
+        }))}
+        onremove={handleMeditateRemove}
+        oncancel={handleMeditateCancel}
+      />
+    </div>
   {/if}
 
   {#if $currentScreen === 'upgradeSelection'}
-    <UpgradeSelectionOverlay
-      candidates={$activeUpgradeCandidates}
-      onselect={onUpgradeSelected}
-      onskip={onUpgradeSkipped}
-    />
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <UpgradeSelectionOverlay
+        candidates={$activeUpgradeCandidates}
+        onselect={onUpgradeSelected}
+        onskip={onUpgradeSkipped}
+      />
+    </div>
   {/if}
 
   {#if $currentScreen === 'postMiniBossRest'}
     {@const run = $activeRunState}
-    <PostMiniBossRestOverlay
-      healAmount={Math.round((run?.playerMaxHp ?? 100) * POST_MINI_BOSS_HEAL_PCT)}
-      candidates={$activeUpgradeCandidates}
-      onselect={onPostMiniBossUpgradeSelected}
-      onskip={onPostMiniBossUpgradeSkipped}
-    />
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <PostMiniBossRestOverlay
+        healAmount={Math.round((run?.playerMaxHp ?? 100) * POST_MINI_BOSS_HEAL_PCT)}
+        candidates={$activeUpgradeCandidates}
+        onselect={onPostMiniBossUpgradeSelected}
+        onskip={onPostMiniBossUpgradeSkipped}
+      />
+    </div>
   {/if}
 
   {#if $currentScreen === 'runEnd'}
     {@const end = $activeRunEndData}
     {#if end}
-      <RunEndScreen
-        result={end.result}
-        floorReached={end.floorReached}
-        factsAnswered={end.factsAnswered}
-        correctAnswers={end.correctAnswers}
-        accuracy={end.accuracy}
-        bestCombo={end.bestCombo}
-        cardsEarned={end.cardsEarned}
-        newFactsLearned={end.newFactsLearned}
-        factsMastered={end.factsMastered}
-        encountersWon={end.encountersWon}
-        encountersTotal={end.encountersTotal}
-        completedBounties={end.completedBounties}
-        runDurationMs={end.runDurationMs}
-        rewardMultiplier={end.rewardMultiplier}
-        currencyEarned={end.currencyEarned}
-        isPracticeRun={end.isPracticeRun}
-        xpResult={(end as any).xpResult}
-        onplayagain={playAgain}
-        onhome={returnToMenu}
-      />
+      <div in:fly={{ y: 8, duration: 350 }}>
+        <RunEndScreen
+          result={end.result}
+          floorReached={end.floorReached}
+          factsAnswered={end.factsAnswered}
+          correctAnswers={end.correctAnswers}
+          accuracy={end.accuracy}
+          bestCombo={end.bestCombo}
+          cardsEarned={end.cardsEarned}
+          newFactsLearned={end.newFactsLearned}
+          factsMastered={end.factsMastered}
+          encountersWon={end.encountersWon}
+          encountersTotal={end.encountersTotal}
+          completedBounties={end.completedBounties}
+          runDurationMs={end.runDurationMs}
+          rewardMultiplier={end.rewardMultiplier}
+          currencyEarned={end.currencyEarned}
+          isPracticeRun={end.isPracticeRun}
+          xpResult={(end as any).xpResult}
+          onplayagain={playAgain}
+          onhome={returnToMenu}
+        />
+      </div>
     {/if}
   {/if}
 
   {#if $currentScreen === 'library'}
-    <KnowledgeLibrary onback={handleBackToMenu} initialTab={libraryInitialTab} />
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <KnowledgeLibrary onback={handleBackToMenu} initialTab={libraryInitialTab} />
+    </div>
   {/if}
 
   {#if $currentScreen === 'settings'}
-    <SettingsPanel onback={handleBackToMenu} />
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <SettingsPanel onback={handleBackToMenu} />
+    </div>
   {/if}
 
   {#if $currentScreen === 'topicInterests'}
-    <TopicInterestsPage onBack={handleBackToMenu} />
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <TopicInterestsPage onBack={handleBackToMenu} />
+    </div>
   {/if}
 
   {#if $currentScreen === 'profile'}
-    <ProfileScreen onBack={handleBackToMenu} />
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <ProfileScreen onBack={handleBackToMenu} />
+    </div>
   {/if}
 
   {#if $currentScreen === 'journal'}
-    <JournalScreen summary={$lastRunSummary} onBack={handleBackToMenu} />
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <JournalScreen summary={$lastRunSummary} onBack={handleBackToMenu} />
+    </div>
   {/if}
 
   {#if $currentScreen === 'leaderboards'}
-    <LeaderboardsScreen onBack={handleBackToMenu} />
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <LeaderboardsScreen onBack={handleBackToMenu} />
+    </div>
   {/if}
 
   {#if $currentScreen === 'social'}
-    <SocialScreen
-      onBack={handleBackToMenu}
-      onOpenSettings={handleOpenSettings}
-      onStartDailyExpedition={handleStartDailyExpedition}
-      onStartEndlessDepths={handleStartEndlessDepths}
-      onStartScholarChallenge={handleStartScholarChallenge}
-      onOpenRelicSanctum={handleOpenRelicSanctum}
-      onOpenArcanePass={handleOpenArcanePass}
-      onOpenSeasonPass={handleOpenSeasonPass}
-      onOpenCosmeticStore={handleOpenCosmeticStore}
-    />
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <SocialScreen
+        onBack={handleBackToMenu}
+        onOpenSettings={handleOpenSettings}
+        onStartDailyExpedition={handleStartDailyExpedition}
+        onStartEndlessDepths={handleStartEndlessDepths}
+        onStartScholarChallenge={handleStartScholarChallenge}
+        onOpenRelicSanctum={handleOpenRelicSanctum}
+        onOpenArcanePass={handleOpenArcanePass}
+        onOpenSeasonPass={handleOpenSeasonPass}
+        onOpenCosmeticStore={handleOpenCosmeticStore}
+      />
+    </div>
   {/if}
 
   {#if $currentScreen === 'relicSanctum'}
-    <RelicCollectionScreen onBack={handleCloseRelicSanctum} />
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <RelicCollectionScreen onBack={handleCloseRelicSanctum} />
+    </div>
   {/if}
 
   {#if $currentScreen === 'relicSwapOverlay' && swapOfferedRelic}
-    <RelicSwapOverlay
-      offeredRelic={swapOfferedRelic}
-      equippedRelics={swapEquippedRelics}
-      slotLabel={swapSlotLabel}
-      onSellAndAcquire={handleSwapSellAndAcquire}
-      onPass={handleSwapPass}
-    />
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <RelicSwapOverlay
+        offeredRelic={swapOfferedRelic}
+        equippedRelics={swapEquippedRelics}
+        slotLabel={swapSlotLabel}
+        onSellAndAcquire={handleSwapSellAndAcquire}
+        onPass={handleSwapPass}
+      />
+    </div>
   {/if}
 
   {#if $activeRelicPickup}

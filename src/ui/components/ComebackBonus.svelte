@@ -1,6 +1,7 @@
 <script lang="ts">
   import { playerSave } from '../stores/playerData'
   import { daysSinceLastLogin } from '../../data/loginRewards'
+  import { playCardAudio } from '../../services/cardAudioManager'
 
 
   interface Props {
@@ -12,6 +13,10 @@
   const save = $derived($playerSave)
   const daysAway = $derived(save ? daysSinceLastLogin(save) : 0)
   const qualifies = $derived(daysAway >= 3)
+
+  $effect(() => {
+    if (qualifies) playCardAudio('notification-ping')
+  })
 
   const gaiaMessage = $derived.by(() => {
     if (daysAway >= 30) return "You returned. That's what matters. Everything is here, waiting. Let's go."

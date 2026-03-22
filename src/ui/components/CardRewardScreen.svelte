@@ -102,6 +102,7 @@
   let rewardStep = $derived($activeRewardRevealStep)
 
   function setRewardStep(step: 'gold' | 'heal' | 'card'): void {
+    console.log('[RewardScreen] step transition:', step)
     activeRewardRevealStep.set(step)
     onrewardstepchange?.(step)
   }

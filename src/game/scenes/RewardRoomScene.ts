@@ -3,6 +3,7 @@ import { BASE_WIDTH } from '../../data/layout'
 import type { LayoutMode } from '../../stores/layoutStore'
 import type { Card } from '../../data/card-types'
 import type { RelicDefinition } from '../../data/relics/types'
+import { playCardAudio } from '../../services/cardAudioManager'
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -84,6 +85,10 @@ const RARITY_COLORS: Record<string, number> = {
  * Displays collectible reward items on a cloth-covered boulder background.
  * Players tap items to collect gold, health vials, cards, and relics.
  * Emits events: 'goldCollected', 'vialCollected', 'cardAccepted', 'relicAccepted', 'sceneComplete'.
+ *
+ * TODO AR-225: Stone slab + cloth art needs redesign by user.
+ * User request: "The reward screen with the stone slab and cloth on it needs to be redone by me."
+ * Replace placeholder art with final asset when ready. See AR-225.
  */
 export class RewardRoomScene extends Phaser.Scene {
   private fireflies: Firefly[] = []
@@ -625,6 +630,7 @@ export class RewardRoomScene extends Phaser.Scene {
 
     this.burstParticles(x, y, 0xffd700, 8)
     this.floatingText(x, y, `+${amount}`, '#ffd700')
+    playCardAudio('gold-collect')
     this.events.emit('goldCollected', amount)
     this.checkAutoAdvance()
   }

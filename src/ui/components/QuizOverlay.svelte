@@ -1,7 +1,14 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import type { Fact } from '../../data/types'
-  import { BALANCE } from '../../data/balance'
+  import {
+    BALANCE,
+    CORRECT_ANSWER_RESUME_DELAY,
+    WRONG_ANSWER_RESUME_BASE,
+    WRONG_ANSWER_RESUME_PER_CHAR,
+    WRONG_ANSWER_RESUME_MAX,
+  } from '../../data/balance'
+  import { answerDisplaySpeed, autoResumeAfterAnswer } from '../stores/settings'
   import { audioManager } from '../../services/audioService'
   import { playCardAudio } from '../../services/cardAudioManager'
   import { playerSave } from '../stores/playerData'
@@ -87,10 +94,20 @@
   let attemptsRemaining = $state<number>(totalAttempts)
   let showResult = $state<boolean>(false)
   let showReportModal = $state(false)
-  /** True when a wrong answer result is being displayed, waiting for the player to tap "Got it". */
+  /** True when a wrong answer result is being displayed, waiting for the player to tap "Continue". */
   let waitingForTap = $state<boolean>(false)
   /** Index of answer highlighted briefly by keyboard shortcut (landscape, 150ms). */
   let kbdHighlightIndex = $state<number | null>(null)
+  /** Timeout ID for auto-resume after wrong answer. */
+  let autoResumeTimeoutId: ReturnType<typeof setTimeout> | undefined
+
+  /** CSS class for question text auto-scaling based on character count. */
+  const questionLengthClass = $derived.by(() => {
+    const len = fact.quizQuestion.length
+    if (len < 30) return 'quiz-text-short'
+    if (len < 80) return 'quiz-text-medium'
+    return 'quiz-text-long'
+  })
 
   const CORRECT_PHRASES = ["That's it!", "Nailed it!", "Locked in!"] as const
   const WRONG_PHRASES = ["Not quite!", "Hmm, let me remind you..."] as const
@@ -209,22 +226,46 @@
     }
 
     if (isCorrect) {
-      // Correct answer: auto-dismiss after 1s (0ms in turbo mode)
-      await new Promise<void>((resolve) => {
-        setTimeout(resolve, turboDelay(1000))
-      })
+      if ($autoResumeAfterAnswer) {
+        // Correct answer: auto-dismiss after delay scaled by answerDisplaySpeed
+        const delay = Math.round(CORRECT_ANSWER_RESUME_DELAY * $answerDisplaySpeed)
+        await new Promise<void>((resolve) => {
+          setTimeout(resolve, turboDelay(delay))
+        })
+      } else {
+        // Manual mode: fixed 1s delay
+        await new Promise<void>((resolve) => {
+          setTimeout(resolve, turboDelay(1000))
+        })
+      }
       onAnswer(true)
       return
     }
 
-    // Wrong answer: wait for explicit player tap (set waitingForTap, do NOT auto-dismiss)
+    // Wrong answer: show "Continue" button; auto-resume if setting is ON
     waitingForTap = true
-    // The "Got it" button in the template will call handleWrongAnswerTap() to continue
+    if ($autoResumeAfterAnswer) {
+      const baseDelay = Math.min(
+        WRONG_ANSWER_RESUME_BASE + fact.correctAnswer.length * WRONG_ANSWER_RESUME_PER_CHAR,
+        WRONG_ANSWER_RESUME_MAX,
+      )
+      const delay = Math.round(baseDelay * $answerDisplaySpeed)
+      autoResumeTimeoutId = setTimeout(() => {
+        if (waitingForTap) {
+          handleWrongAnswerTap()
+        }
+      }, delay)
+    }
+    // The "Continue" button in the template will call handleWrongAnswerTap() to dismiss early
   }
 
-  /** Called when the player taps "Got it" after a wrong answer. */
+  /** Called when the player taps "Continue" after a wrong answer (or auto-resume fires). */
   function handleWrongAnswerTap(): void {
     if (!waitingForTap) return
+    if (autoResumeTimeoutId !== undefined) {
+      clearTimeout(autoResumeTimeoutId)
+      autoResumeTimeoutId = undefined
+    }
     waitingForTap = false
     playCardAudio('quiz-dismiss')
 
@@ -354,11 +395,11 @@
       {/if}
 
       {#if japaneseParts}
-        <p class="question" data-testid="quiz-question">
+        <p class="question {questionLengthClass}" data-testid="quiz-question">
           {japaneseParts.before}<FuriganaText text={kanaOnly && japaneseParts.reading ? japaneseParts.reading : japaneseParts.word} reading={japaneseParts.reading} size="md" />{japaneseParts.after}
         </p>
       {:else}
-        <p class="question" data-testid="quiz-question">{fact.quizQuestion}</p>
+        <p class="question {questionLengthClass}" data-testid="quiz-question">{fact.quizQuestion}</p>
       {/if}
 
       {#if mode === 'gate'}
@@ -413,7 +454,7 @@
       {/if}
 
       {#if waitingForTap}
-        <button class="got-it-btn" type="button" onclick={handleWrongAnswerTap}>Got it — Continue</button>
+        <button class="got-it-btn" type="button" onclick={handleWrongAnswerTap}>Continue</button>
       {/if}
 
       {#if showResult && isCorrect === false}
@@ -484,11 +525,11 @@
     {/if}
 
     {#if japaneseParts}
-      <p class="question" data-testid="quiz-question">
+      <p class="question {questionLengthClass}" data-testid="quiz-question">
         {japaneseParts.before}<FuriganaText text={kanaOnly && japaneseParts.reading ? japaneseParts.reading : japaneseParts.word} reading={japaneseParts.reading} size="md" />{japaneseParts.after}
       </p>
     {:else}
-      <p class="question" data-testid="quiz-question">{fact.quizQuestion}</p>
+      <p class="question {questionLengthClass}" data-testid="quiz-question">{fact.quizQuestion}</p>
     {/if}
 
     {#if mode === 'gate'}
@@ -563,7 +604,7 @@
 
     {#if waitingForTap}
       <button class="got-it-btn" type="button" onclick={handleWrongAnswerTap}>
-        Got it — Continue
+        Continue
       </button>
     {/if}
 
@@ -795,6 +836,19 @@
     text-align: center;
   }
 
+  /* AR-221: Auto-scaling font sizes based on question character count */
+  .question.quiz-text-short {
+    font-size: calc(22px * var(--text-scale, 1));
+  }
+
+  .question.quiz-text-medium {
+    font-size: calc(18px * var(--text-scale, 1));
+  }
+
+  .question.quiz-text-long {
+    font-size: calc(14px * var(--text-scale, 1));
+  }
+
   .attempts {
     color: var(--color-text-dim);
     font-size: calc(0.95rem * var(--layout-scale, 1));
@@ -808,14 +862,15 @@
   }
 
   .choice-button {
-    min-height: calc(52px * var(--layout-scale, 1));
+    min-height: calc(58px * var(--layout-scale, 1));
+    width: 100%;
     border: 2px solid var(--color-primary);
     border-radius: 999px;
-    padding: calc(0.75rem * var(--layout-scale, 1)) calc(1rem * var(--layout-scale, 1));
+    padding: calc(0.85rem * var(--layout-scale, 1)) calc(1.25rem * var(--layout-scale, 1));
     background: var(--color-bg);
     color: var(--color-text);
     font: inherit;
-    font-size: calc(1rem * var(--layout-scale, 1));
+    font-size: calc(1.05rem * var(--layout-scale, 1));
     text-align: center;
     cursor: pointer;
     transition: transform 120ms ease, border-color 120ms ease, background-color 120ms ease;

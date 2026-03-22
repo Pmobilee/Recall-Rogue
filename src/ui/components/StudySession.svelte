@@ -3,6 +3,7 @@
   import type { AnkiButton } from '../../services/sm2'
   import { getButtonIntervals } from '../../services/sm2'
   import { audioManager } from '../../services/audioService'
+  import { playCardAudio } from '../../services/cardAudioManager'
   import KnowledgeTree from './KnowledgeTree.svelte'
   import { initialLOD } from './tree/TreeLOD'
 
@@ -106,6 +107,7 @@
   /** Choose session size and build the card queue. */
   function chooseSize(size: SessionSize): void {
     audioManager.playSound('button_click')
+    playCardAudio('rest-study')
     sessionSize = size
     queue = facts.slice(0, size)
     cardIndex = 0

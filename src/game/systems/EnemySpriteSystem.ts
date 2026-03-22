@@ -1045,6 +1045,51 @@ export class EnemySpriteSystem {
   }
 
   /**
+   * Flash the enemy sprite with an additive-blend colored overlay.
+   *
+   * Uses a Graphics rectangle in ADD blend mode rather than setTint() so the
+   * flash stays vibrant on already-colored sprites (setTint multiplies, which
+   * produces muddy results).  Multiple concurrent calls each create their own
+   * independent rectangle, so they compose correctly.
+   *
+   * @param color    RGB hex color for the flash (e.g. 0xff0000 for red)
+   * @param duration Fade duration in milliseconds
+   * @param intensity Peak alpha of the overlay (0.0–1.0)
+   */
+  public flashColor(color: number, duration: number, intensity: number): void {
+    // Determine the bounds of the main visual element in container-local space
+    const sprite = this.mainSprite ?? this.mainRect
+    if (!sprite) return
+
+    const hw = (sprite instanceof Phaser.GameObjects.Image
+      ? sprite.displayWidth
+      : (sprite as Phaser.GameObjects.Rectangle).displayWidth) / 2
+    const hh = (sprite instanceof Phaser.GameObjects.Image
+      ? sprite.displayHeight
+      : (sprite as Phaser.GameObjects.Rectangle).displayHeight) / 2
+
+    // Create an additive-blend overlay rectangle positioned over the sprite
+    const gfx = this.scene.add.graphics()
+    gfx.setBlendMode(Phaser.BlendModes.ADD)
+    gfx.fillStyle(color, intensity)
+    gfx.fillRect(-hw, -hh, hw * 2, hh * 2)
+
+    // Add to the container so it follows any container transforms
+    this.container.add(gfx)
+
+    // Tween alpha from intensity → 0, then destroy
+    this.scene.tweens.add({
+      targets: gfx,
+      alpha: { from: intensity, to: 0 },
+      duration,
+      ease: 'Linear',
+      onComplete: () => {
+        this.container.remove(gfx, true)
+      },
+    })
+  }
+
+  /**
    * Get the container game object.
    * @returns The container holding all sprite/rect children
    */

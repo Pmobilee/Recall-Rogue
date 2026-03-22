@@ -2368,20 +2368,46 @@ The **complete, exhaustive audio event catalog** lives in `docs/roadmap/phases/A
 
 | Component | File | Purpose |
 |-----------|------|---------|
-| Audio Synthesis Engine | `src/services/audioService.ts` | Web Audio API synthesis — 42 programmatic sounds, no external files |
-| Card Audio Manager | `src/services/cardAudioManager.ts` | High-level combat cues (14 cues mapped to synthesized sounds) |
+| Audio Synthesis Engine | `src/services/audioService.ts` | Web Audio API synthesis — 180 programmatic sounds (2,683 lines) |
+| Card Audio Manager | `src/services/cardAudioManager.ts` | High-level cue layer (141 cues mapped to synthesized sounds) |
 | Biome Audio Manager | `src/game/managers/AudioManager.ts` | Ambient loops + hazard SFX for 25 biome types |
 | Settings UI | `src/ui/components/SettingsPanel.svelte` | SFX + Music volume sliders with localStorage persistence |
 
 ### Implementation Status Summary
 
-| Priority | Count | Description |
-|----------|-------|-------------|
-| P0 (Ship-blocking) | 31 | Core feel — combat, encounters, run lifecycle, UI basics |
-| P1 (Core Feel) | 100 | Status effects, chains, enemies, transitions, BGM |
-| P2 (Polish) | 73 | UI interactions, NPC sounds, ambient details |
-| P3 (Nice-to-have) | 26 | Hover sounds, scroll feedback, environmental micro-detail |
-| **Total** | **234** | **24 implemented, 3 stubs, 207 missing** |
+| Priority | Count | Description | Status |
+|----------|-------|-------------|--------|
+| P0 (Ship-blocking) | 31 | Core feel — combat, encounters, run lifecycle, UI basics | DONE (synthesis) |
+| P1 (Core Feel) | 100 | Status effects, chains, enemies, transitions | DONE (synthesis), BGM pending |
+| P2 (Polish) | 73 | UI interactions, NPC sounds, ambient details | Mostly wired |
+| P3 (Nice-to-have) | 26 | Hover sounds, scroll feedback, environmental micro-detail | Partially wired |
+| **Total** | **234** | **160+ trigger calls across 30 files** | **SFX complete, BGM pending** |
+
+### Background Music (BGM) — User-Created via AI Music Generation
+
+13 BGM tracks are needed. These will be created by the developer using AI music generation tools (Suno, Udio, AIVA, Soundverse, or Beatoven.ai). **Detailed generation prompts** for every track are provided in AR-228 Section 23.
+
+| Track | Screen | Priority | Duration |
+|-------|--------|----------|----------|
+| Hub theme | Camp/home screen | P1 | 60-90s loop |
+| Combat (normal) | Standard encounters | P1 | 45-60s loop |
+| Combat (boss) | Boss fights | P1 | 60-90s loop |
+| Combat (elite) | Elite encounters | P2 | 45-60s loop |
+| Shop theme | Merchant room | P2 | 30-45s loop |
+| Rest site theme | Campfire rest | P2 | 60-90s loop |
+| Map/exploration | Dungeon map | P2 | 45-60s loop |
+| Mystery event | Strange encounters | P2 | 30-45s loop |
+| Surge overlay | Knowledge Surge turns | P1 | 15-20s loop |
+| Boss quiz phase | Critical quiz moments | P1 | 15-20s loop |
+| Run victory | Dungeon complete | P0 | 15-20s one-shot |
+| Run defeat | Game over | P1 | 12-15s one-shot |
+| Tutorial/onboarding | First-time experience | P2 | 45-60s loop |
+
+Place generated files in `public/assets/audio/bgm/` as `.ogg` or `.mp3` (128-192kbps).
+
+### Sonniss GDC Archive — Foley Replacement Path
+
+The Sonniss GDC 2026 Bundle (7.47GB, royalty-free, no attribution) provides professional foley samples to replace Web Audio synthesis for sounds that need organic texture. See AR-228 "Sonniss GDC Sound Archive — Integration Guide" for download instructions, directory structure, and the 8 priority replacement targets (enemy attacks, shield break, coins, footsteps, etc.).
 
 ### Key Sound Design Principles
 

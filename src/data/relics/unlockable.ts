@@ -721,26 +721,24 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
     curseDescription: 'Every 3rd Charge applies 4 Burn to yourself. Enemy attacks trigger your Burn stacks.',
   },
 
-  // === PHASE 2 ONLY — excluded from drop pool at launch ===
-
   {
     id: 'toxic_bloom',
     name: 'Toxic Bloom',
-    description: 'When enemy dies from poison, spread 3 poison to all other enemies.',
+    description: 'When an enemy dies from poison, your next attack applies +3 bonus poison.',
     flavorText: 'A seed pod from the dungeon\'s deep fungal network. Death feeds life — in the Bloom\'s case, it feeds more death.',
     visualDescription: 'A spiky dark green seed pod with toxic spores erupting from every surface, spreading poison clouds. Infectious bloom aesthetic. 32x32 pixel art.',
     rarity: 'uncommon',
     category: 'poison',
     trigger: 'permanent',
     effects: [
-      { effectId: 'poison_death_spread', description: 'On poison kill: spread 3 poison to all other enemies', value: 3 },
+      { effectId: 'poison_death_next_bonus', description: 'On poison kill: next attack applies +3 bonus poison', value: 3 },
     ],
     icon: '🌺',
     unlockCost: 40,
     unlockLevel: 24,
     isStarter: false,
     startsUnlocked: false,
-    excludeFromPhase1: true, // Requires multi-enemy encounter system — Phase 2 only
+    excludeFromPhase1: false,
   },
 
 ];

@@ -50,6 +50,16 @@ const TIER_VARIANT_WEIGHTS: Record<string, { variant: VocabVariant; weight: numb
  * Select a variant type for the given tier and fact.
  * Validates that the selected variant is actually feasible for this fact,
  * falling back to 'forward' if not.
+ *
+ * NOTE: Variants only trigger for vocab facts at tier 2a+.
+ * - Tier 1 (stability<2 OR consecutiveCorrect<2): forward-only — this is EXPECTED for early runs.
+ * - Tier 2a (stability>=2, consecutiveCorrect>=2): 60% forward / 40% reverse
+ * - Tier 2b (stability>=5, consecutiveCorrect>=3): 30/30/20/20 forward/reverse/synonym/definition
+ * - Tier 3: free-recall mastery trial, handled elsewhere — forward used as MC fallback
+ *
+ * In a fresh run all cards start at Tier 1, so ALL questions will be forward until
+ * a card reaches stability>=2 AND consecutiveCorrect>=2 (roughly 2 correct answers in a row
+ * with FSRS stability growing past 2 days). This is by design, not a bug.
  */
 export function selectVariant(tier: CardTier, fact: Fact): VocabVariant {
   // Only vocab facts get variants
@@ -58,12 +68,26 @@ export function selectVariant(tier: CardTier, fact: Fact): VocabVariant {
   const weights = TIER_VARIANT_WEIGHTS[tier] ?? TIER_VARIANT_WEIGHTS['1'];
   const selected = weightedRandomPick(weights);
 
-  // Validate the selected variant is feasible
-  if (selected === 'synonym' && !hasSynonymData(fact.correctAnswer)) return 'forward';
-  if (selected === 'definition' && !hasValidDefinition(fact)) return 'forward';
-  if (selected === 'reverse' && !canExtractL2Word(fact)) return 'forward';
+  // Validate the selected variant is feasible; fall back to forward if data is missing
+  let fallbackReason: string | null = null;
+  if (selected === 'synonym' && !hasSynonymData(fact.correctAnswer)) {
+    fallbackReason = `synonym: no synonymMap entry for "${fact.correctAnswer}"`;
+  } else if (selected === 'definition' && !hasValidDefinition(fact)) {
+    fallbackReason = `definition: explanation missing or too short (<15 chars)`;
+  } else if (selected === 'reverse' && !canExtractL2Word(fact)) {
+    fallbackReason = `reverse: could not extract L2 word from quizQuestion "${fact.quizQuestion}"`;
+  }
 
-  return selected;
+  const final: VocabVariant = fallbackReason ? 'forward' : selected;
+
+  if (import.meta.env.DEV) {
+    console.log(
+      `[QuizVariant] fact=${fact.id} tier=${tier} selected=${selected} final=${final}` +
+      (fallbackReason ? ` reason="fallback — ${fallbackReason}"` : ` reason="ok"`),
+    );
+  }
+
+  return final;
 }
 
 /**

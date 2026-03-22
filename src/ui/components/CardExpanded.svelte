@@ -10,6 +10,16 @@
   import { getTierDisplayName } from '../../services/tierDerivation'
   import { getCardTypeEmoji, getCardTypeIconCandidates } from '../utils/iconAssets'
   import { getCardDescriptionParts, type CardDescPart } from '../../services/cardDescriptionService'
+  import { getMechanicDefinition } from '../../data/mechanics'
+  import { getMasteryBaseBonus } from '../../services/cardUpgradeService'
+  import {
+    CHARGE_CORRECT_MULTIPLIER,
+    CORRECT_ANSWER_RESUME_DELAY,
+    WRONG_ANSWER_RESUME_BASE,
+    WRONG_ANSWER_RESUME_PER_CHAR,
+    WRONG_ANSWER_RESUME_MAX,
+  } from '../../data/balance'
+  import { answerDisplaySpeed, autoResumeAfterAnswer } from '../stores/settings'
   import KeywordPopup from './KeywordPopup.svelte'
 
   interface Props {
@@ -26,6 +36,8 @@
     highlightHint?: boolean
     allowCancel?: boolean
     questionImageUrl?: string
+    /** AR-220: When true, show the charged effect value (1.5x + mastery bonus) instead of base. */
+    isCharging?: boolean
     onanswer: (answerIndex: number, isCorrect: boolean, speedBonus: boolean) => void
     onskip: () => void
     oncancel: () => void
@@ -46,6 +58,7 @@
     highlightHint = false,
     allowCancel = true,
     questionImageUrl,
+    isCharging = true,
     onanswer,
     onskip,
     oncancel,
@@ -61,7 +74,15 @@
     wild: 'Adaptive',
   }
 
-  let effectValue = $derived(Math.round(card.baseEffectValue * card.effectMultiplier))
+  let chargedEffectValue = $derived.by(() => {
+    const mechanic = getMechanicDefinition(card.mechanicId)
+    const masteryBonus = getMasteryBaseBonus(card.mechanicId ?? '', card.masteryLevel ?? 0)
+    if (mechanic) {
+      return Math.round(mechanic.quickPlayValue * CHARGE_CORRECT_MULTIPLIER) + masteryBonus
+    }
+    return Math.round(card.baseEffectValue * card.effectMultiplier) + masteryBonus
+  })
+  let effectValue = $derived(isCharging ? chargedEffectValue : Math.round(card.baseEffectValue * card.effectMultiplier))
   let effectDescription = $derived(
     EFFECT_DESCRIPTIONS[card.cardType].replace('N', String(effectValue)),
   )
@@ -109,6 +130,14 @@
   let eliminatedIndices = $state<Set<number>>(new Set())
   let activeKeyword = $state<{ id: string; x: number; y: number } | null>(null)
 
+  /** CSS class for question text auto-scaling based on character count. */
+  let questionLengthClass = $derived.by(() => {
+    const len = question.length
+    if (len < 30) return 'quiz-text-short'
+    if (len < 80) return 'quiz-text-medium'
+    return 'quiz-text-long'
+  })
+
   /** Index of the answer button currently highlighted by keyboard input (150ms flash). */
   let keyboardHighlightIndex = $state<number | null>(null)
 
@@ -126,6 +155,7 @@
   let speedBonusTimeoutId: ReturnType<typeof setTimeout> | undefined
   let quizResultTimeoutId: ReturnType<typeof setTimeout> | undefined
   let timerExpiredLabelTimeoutId: ReturnType<typeof setTimeout> | undefined
+  let autoResumeTimeoutId: ReturnType<typeof setTimeout> | undefined
 
   function timerTick(now: number): void {
     if (!timerEnabled || answersDisabled || timerExpired) return
@@ -164,6 +194,7 @@
       if (speedBonusTimeoutId !== undefined) clearTimeout(speedBonusTimeoutId)
       if (quizResultTimeoutId !== undefined) clearTimeout(quizResultTimeoutId)
       if (timerExpiredLabelTimeoutId !== undefined) clearTimeout(timerExpiredLabelTimeoutId)
+      if (autoResumeTimeoutId !== undefined) clearTimeout(autoResumeTimeoutId)
     }
   })
 
@@ -218,12 +249,37 @@
       }, 500)
     }
 
-    if (isCorrect) {
-      feedbackTimeoutId = setTimeout(() => {
-        onanswer(index, isCorrect, speedBonus)
-      }, 1600)
+    if ($autoResumeAfterAnswer) {
+      // Auto-resume: calculate delay based on correct/wrong and answer display speed
+      const speed = $answerDisplaySpeed
+      if (isCorrect) {
+        const delay = Math.round(CORRECT_ANSWER_RESUME_DELAY * speed)
+        feedbackTimeoutId = setTimeout(() => {
+          onanswer(index, isCorrect, speedBonus)
+        }, delay)
+      } else {
+        // Wrong: show answer for long enough to read it based on answer length
+        const baseDelay = Math.min(
+          WRONG_ANSWER_RESUME_BASE + correctAnswer.length * WRONG_ANSWER_RESUME_PER_CHAR,
+          WRONG_ANSWER_RESUME_MAX,
+        )
+        const delay = Math.round(baseDelay * speed)
+        autoResumeTimeoutId = setTimeout(() => {
+          if (waitingForGotIt) {
+            waitingForGotIt = false
+            onanswer(index, false, false)
+          }
+        }, delay)
+      }
+    } else {
+      // Manual mode: correct auto-dismisses after 1600ms, wrong waits for "Continue"
+      if (isCorrect) {
+        feedbackTimeoutId = setTimeout(() => {
+          onanswer(index, isCorrect, speedBonus)
+        }, 1600)
+      }
+      // Wrong answers wait for "Continue" button tap — no auto-dismiss
     }
-    // Wrong answers wait for "Got it" button tap — no auto-dismiss
   }
 
   function getAnswerClass(index: number): string {
@@ -319,6 +375,7 @@
     if (kbdHighlightTimeoutId !== undefined) clearTimeout(kbdHighlightTimeoutId)
     if (quizResultTimeoutId !== undefined) clearTimeout(quizResultTimeoutId)
     if (timerExpiredLabelTimeoutId !== undefined) clearTimeout(timerExpiredLabelTimeoutId)
+    if (autoResumeTimeoutId !== undefined) clearTimeout(autoResumeTimeoutId)
   })
 </script>
 
@@ -366,7 +423,7 @@
     <span class="effect-label">{EFFECT_DESCRIPTIONS[card.cardType].replace('N', '').trim()}</span>
   </div>
   <div class="expanded-desc-parts">
-    {#each getCardDescriptionParts(card) as part}
+    {#each getCardDescriptionParts(card, undefined, isCharging ? chargedEffectValue : undefined) as part}
       {#if part.type === 'number'}
         <span class="exp-desc-number">{part.value}</span>
       {:else if part.type === 'keyword'}
@@ -388,7 +445,7 @@
       />
     </div>
   {/if}
-  <div class="card-question">{question}</div>
+  <div class="card-question {questionLengthClass}">{question}</div>
   {#if firstLetterHint}
     <div class="first-letter-hint">Starts with: {firstLetterHint}</div>
   {/if}
@@ -437,9 +494,13 @@
   {#if waitingForGotIt}
     <button
       class="got-it-btn"
-      onclick={() => onanswer(selectedAnswerIndex!, false, false)}
+      onclick={() => {
+        if (autoResumeTimeoutId !== undefined) clearTimeout(autoResumeTimeoutId)
+        waitingForGotIt = false
+        onanswer(selectedAnswerIndex!, false, false)
+      }}
     >
-      Got it
+      Continue
     </button>
   {/if}
 
@@ -743,13 +804,26 @@
     font-size: calc(8px * var(--text-scale, 1));
   }
 
-  /* ── Question text: pixel font, readable size ── */
+  /* ── Question text: pixel font, auto-scales by length ── */
   .card-question {
     font-family: 'Press Start 2P', 'Courier New', monospace;
     font-size: calc(11px * var(--text-scale, 1));
     color: #e8edf5;
     line-height: 1.6;
     padding: calc(6px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+  }
+
+  /* AR-221: Auto-scaling font sizes based on question character count */
+  .card-question.quiz-text-short {
+    font-size: calc(22px * var(--text-scale, 1));
+  }
+
+  .card-question.quiz-text-medium {
+    font-size: calc(18px * var(--text-scale, 1));
+  }
+
+  .card-question.quiz-text-long {
+    font-size: calc(14px * var(--text-scale, 1));
   }
 
   .first-letter-hint {
@@ -767,15 +841,16 @@
 
   /* ── Answer buttons: dark gradient with gold hover ── */
   .answer-btn {
-    min-height: calc(52px * var(--layout-scale, 1));
+    min-height: calc(56px * var(--layout-scale, 1));
+    width: 100%;
     background: linear-gradient(180deg, rgba(30, 40, 60, 0.95) 0%, rgba(20, 28, 45, 0.98) 100%);
     border: 1.5px solid rgba(150, 160, 180, 0.3);
     border-radius: 6px;
     color: #e2e8f0;
     font-family: 'Press Start 2P', 'Courier New', monospace;
-    font-size: calc(9px * var(--text-scale, 1));
+    font-size: calc(11px * var(--text-scale, 1));
     line-height: 1.5;
-    padding: calc(12px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    padding: calc(14px * var(--layout-scale, 1)) calc(18px * var(--layout-scale, 1));
     text-align: left;
     transition: all 150ms ease;
     cursor: pointer;

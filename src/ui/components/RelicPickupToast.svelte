@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { RelicDefinition } from '../../data/relics/types'
   import { onMount } from 'svelte'
+  import { playCardAudio } from '../../services/cardAudioManager'
 
   interface Props {
     relic: RelicDefinition
@@ -23,6 +24,7 @@
   const accentColor = $derived(rarityColors[relic.rarity] ?? '#9ca3af')
 
   onMount(() => {
+    playCardAudio('notification-ping')
     // When a swap option is shown (slots full), give more time for the player to decide
     const timeout = onswap ? 5000 : 2500
     const timer = setTimeout(() => {

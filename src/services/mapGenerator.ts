@@ -10,6 +10,25 @@
  */
 
 import { MAP_CONFIG } from '../data/balance'
+
+// ============================================================
+// Desktop vs mobile map configuration
+// ============================================================
+
+export interface MapGenerationConfig {
+  rowsPerAct: number
+}
+
+/**
+ * Returns map generation config tuned for the platform.
+ * Desktop gets a longer act (14 rows) for a richer branching structure;
+ * mobile keeps the compact 8-row layout.
+ *
+ * @param isDesktop - True when the viewport is landscape / desktop.
+ */
+export function getMapConfig(isDesktop: boolean): MapGenerationConfig {
+  return { rowsPerAct: isDesktop ? 14 : MAP_CONFIG.ROWS_PER_ACT }
+}
 import { pickCombatEnemy, getMiniBossForFloor, pickBossForFloor } from './floorManager'
 
 // ============================================================
@@ -39,6 +58,14 @@ export interface MapNode {
   state: 'locked' | 'available' | 'current' | 'visited'
 }
 
+/** One entry per decision made by the player while navigating the map. */
+export interface MapDecision {
+  /** The node ID the player selected. */
+  selectedId: string
+  /** All node IDs that were available (including the one selected) at that step. */
+  availableIds: string[]
+}
+
 export interface ActMap {
   segment: 1 | 2 | 3 | 4
   /** First floor number represented by this segment. */
@@ -50,6 +77,8 @@ export interface ActMap {
   currentNodeId: string | null
   visitedNodeIds: string[]
   seed: number
+  /** Ordered history of player path decisions: which node was chosen and what alternatives existed. */
+  decisionHistory: MapDecision[]
 }
 
 // ============================================================
@@ -520,6 +549,7 @@ export function generateActMap(segment: 1 | 2 | 3 | 4, seed: number): ActMap {
     currentNodeId: null,
     visitedNodeIds: [],
     seed,
+    decisionHistory: [],
   }
 }
 
@@ -540,6 +570,16 @@ export function selectMapNode(map: ActMap, nodeId: string): void {
   const node = map.nodes[nodeId]
   if (!node) return
 
+  // Capture all currently-available nodes in this row BEFORE state changes
+  // (includes the one being selected and its not-yet-locked siblings)
+  const rowNodes = map.rows[node.row] ?? []
+  const availableIds = rowNodes.filter(
+    id => map.nodes[id]?.state === 'available',
+  )
+
+  // Record this decision in history
+  map.decisionHistory.push({ selectedId: nodeId, availableIds })
+
   // Mark previous current as visited
   if (map.currentNodeId !== null && map.currentNodeId !== nodeId) {
     const prev = map.nodes[map.currentNodeId]
@@ -552,7 +592,6 @@ export function selectMapNode(map: ActMap, nodeId: string): void {
   }
 
   // Lock siblings in the same row that are still 'available'
-  const rowNodes = map.rows[node.row] ?? []
   for (const sibId of rowNodes) {
     if (sibId !== nodeId && map.nodes[sibId]?.state === 'available') {
       map.nodes[sibId].state = 'locked'

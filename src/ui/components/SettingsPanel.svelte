@@ -28,6 +28,7 @@
     type NotificationPreferences,
   } from '../../services/notificationService'
   import { isLandscape } from '../../stores/layoutStore'
+  import { answerDisplaySpeed, autoResumeAfterAnswer } from '../stores/settings'
 
   interface Props {
     onback: () => void
@@ -238,6 +239,26 @@
               onchange={(event) => { const c = (event.currentTarget as HTMLInputElement).checked; playCardAudio(c ? 'toggle-on' : 'toggle-off'); trackSettingChange('slowReader', c) }}
             />
           </label>
+          <label class="slider-row">
+            <span>Answer Display Speed</span>
+            <input
+              type="range"
+              min="0.5"
+              max="3.0"
+              step="0.1"
+              bind:value={$answerDisplaySpeed}
+              onchange={(event) => trackSettingChange('answerDisplaySpeed', Number((event.currentTarget as HTMLInputElement).value))}
+            />
+            <strong>{$answerDisplaySpeed.toFixed(1)}×</strong>
+          </label>
+          <label class="toggle-row">
+            <span>Auto-Resume After Answer</span>
+            <input
+              type="checkbox"
+              bind:checked={$autoResumeAfterAnswer}
+              onchange={(event) => { const c = (event.currentTarget as HTMLInputElement).checked; playCardAudio(c ? 'toggle-on' : 'toggle-off'); trackSettingChange('autoResumeAfterAnswer', c) }}
+            />
+          </label>
         </section>
 
       {:else if activeCategory === 'notifications'}
@@ -379,6 +400,28 @@
           type="checkbox"
           bind:checked={$isSlowReader}
           onchange={(event) => trackSettingChange('slowReader', (event.currentTarget as HTMLInputElement).checked)}
+        />
+      </label>
+
+      <label class="slider-row">
+        <span>Answer Display Speed</span>
+        <input
+          type="range"
+          min="0.5"
+          max="3.0"
+          step="0.1"
+          bind:value={$answerDisplaySpeed}
+          onchange={(event) => trackSettingChange('answerDisplaySpeed', Number((event.currentTarget as HTMLInputElement).value))}
+        />
+        <strong>{$answerDisplaySpeed.toFixed(1)}×</strong>
+      </label>
+
+      <label class="toggle-row">
+        <span>Auto-Resume After Answer</span>
+        <input
+          type="checkbox"
+          bind:checked={$autoResumeAfterAnswer}
+          onchange={(event) => trackSettingChange('autoResumeAfterAnswer', (event.currentTarget as HTMLInputElement).checked)}
         />
       </label>
     </section>

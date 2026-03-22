@@ -1,11 +1,44 @@
 <script lang="ts">
+  type DamageNumberType = 'damage' | 'block' | 'heal' | 'poison' | 'burn' | 'bleed' | 'gold' | 'critical'
+
   interface Props {
     value: string
     isCritical: boolean
+    type?: DamageNumberType
+    position?: 'enemy' | 'player'
     onComplete?: () => void
   }
 
-  let { value, isCritical, onComplete }: Props = $props()
+  let { value, isCritical, type = 'damage', position = 'enemy', onComplete }: Props = $props()
+
+  // Color mapping per type
+  const TYPE_COLORS: Record<DamageNumberType, string> = {
+    damage:   '#FF4444',
+    block:    '#4499FF',
+    heal:     '#44FF88',
+    poison:   '#AA44FF',
+    burn:     '#FF8833',
+    bleed:    '#CC1111',
+    gold:     '#FFD700',
+    critical: '#E74C3C',
+  }
+
+  // Text-shadow glow mapping per type (rgba of the color at low opacity)
+  const TYPE_GLOWS: Record<DamageNumberType, string> = {
+    damage:   'rgba(255, 68, 68, 0.5)',
+    block:    'rgba(68, 153, 255, 0.5)',
+    heal:     'rgba(68, 255, 136, 0.5)',
+    poison:   'rgba(170, 68, 255, 0.5)',
+    burn:     'rgba(255, 136, 51, 0.5)',
+    bleed:    'rgba(204, 17, 17, 0.5)',
+    gold:     'rgba(255, 215, 0, 0.5)',
+    critical: 'rgba(231, 76, 60, 0.6)',
+  }
+
+  // Derive effective type: if isCritical and type is damage, treat as critical for color
+  let effectiveType = $derived<DamageNumberType>(isCritical && type === 'damage' ? 'critical' : type)
+  let color = $derived(TYPE_COLORS[effectiveType])
+  let glow = $derived(TYPE_GLOWS[effectiveType])
 
   // Extract numeric value for proportional scaling
   let numericValue = $derived(parseInt(value.match(/\d+/)?.[0] ?? '0', 10))
@@ -18,11 +51,17 @@
   )
 
   // Random X offset to prevent damage numbers from stacking at the same position
-  const jitterX = (Math.random() - 0.5) * 50
+  const jitterX = (Math.random() - 0.5) * 40
 
-  // Auto-remove after animation
+  // Vertical anchor: enemy numbers float up from ~40% of screen; player numbers from near HP bar (~82%)
+  let topAnchor = $derived(position === 'player' ? '82%' : '40%')
+
+  // Horizontal anchor: enemy ~50%, player ~15% (near player HP bar)
+  let leftAnchor = $derived(position === 'player' ? '15%' : '50%')
+
+  // Auto-remove after animation completes (900ms for new float animation)
   $effect(() => {
-    const timer = setTimeout(() => onComplete?.(), 600)
+    const timer = setTimeout(() => onComplete?.(), 900)
     return () => clearTimeout(timer)
   })
 </script>
@@ -31,7 +70,9 @@
   class="damage-number"
   class:critical={isCritical}
   data-testid="damage-number"
-  style="font-size: calc({fontSize}px * var(--layout-scale, 1)); left: calc(50% + {jitterX}px);"
+  data-type={effectiveType}
+  data-position={position}
+  style="font-size: calc({fontSize}px * var(--layout-scale, 1)); left: calc({leftAnchor} + {jitterX}px); top: {topAnchor}; color: {color}; text-shadow: 2px 2px 0 rgba(0,0,0,0.9), -1px -1px 0 rgba(0,0,0,0.5), 0 0 8px {glow};"
 >
   {value}
 </div>
@@ -39,18 +80,17 @@
 <style>
   .damage-number {
     position: absolute;
-    top: 40%;
     left: 50%;
     transform: translateX(-50%);
     font-weight: 900;
-    color: #FFD700;
+    color: #FF4444;
     text-shadow:
       2px 2px 0 rgba(0, 0, 0, 0.9),
       -1px -1px 0 rgba(0, 0, 0, 0.5),
-      0 0 8px rgba(255, 215, 0, 0.5);
+      0 0 8px rgba(255, 68, 68, 0.5);
     pointer-events: none;
     z-index: 100;
-    animation: damageArc 600ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation: damageFloat 900ms ease-out forwards;
   }
 
   .damage-number.critical {
@@ -76,38 +116,22 @@
     pointer-events: none;
   }
 
-  /* Elastic bounce animation with weight and physicality */
-  @keyframes damageArc {
+  /* Float upward ~60px over 900ms, fade to 0 in the last third */
+  @keyframes damageFloat {
     0% {
-      transform: translateX(-50%) translateY(0) scale(0.3);
+      transform: translateX(-50%) translateY(0) scale(0.5);
       opacity: 0;
     }
-    12% {
-      transform: translateX(-50%) translateY(-10px) scale(1.4);
+    10% {
+      transform: translateX(-50%) translateY(-8px) scale(1.2);
       opacity: 1;
     }
-    28% {
-      transform: translateX(-50%) translateY(-55px) scale(1.1);
+    60% {
+      transform: translateX(-50%) translateY(-45px) scale(1.0);
       opacity: 1;
-    }
-    42% {
-      transform: translateX(-50%) translateY(-35px) scale(1.25);
-      opacity: 1;
-    }
-    55% {
-      transform: translateX(-50%) translateY(-45px) scale(0.95);
-      opacity: 1;
-    }
-    70% {
-      transform: translateX(-50%) translateY(-40px) scale(1.05);
-      opacity: 0.9;
-    }
-    85% {
-      transform: translateX(-50%) translateY(-35px) scale(1.0);
-      opacity: 0.6;
     }
     100% {
-      transform: translateX(-50%) translateY(-25px) scale(1.0);
+      transform: translateX(-50%) translateY(-60px) scale(1.0);
       opacity: 0;
     }
   }
@@ -136,4 +160,5 @@
       display: none;
     }
   }
+
 </style>

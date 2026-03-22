@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Screen } from '../stores/gameState'
   import { getNavIconPath } from '../utils/iconAssets'
+  import { playCardAudio } from '../../services/cardAudioManager'
 
   type NavScreen = Extract<Screen, 'hub' | 'library' | 'settings' | 'profile' | 'journal' | 'social' | 'leaderboards'>
 
@@ -28,7 +29,7 @@
       type="button"
       class="nav-btn"
       class:active={current === item.key || (item.key === 'hub' && current === 'mainMenu')}
-      onclick={() => onNavigate(item.key)}
+      onclick={() => { playCardAudio('tab-switch'); onNavigate(item.key) }}
       aria-label={item.label}
     >
       <img class="nav-icon-img" src={getNavIconPath(item.key)} alt=""

@@ -24,6 +24,7 @@
   import { factsDB } from '../../services/factsDB'
   // AR-74: Importing keyboardInput activates the landscape-mode keyboard listener subscription.
   import '../../services/keyboardInput'
+  import { playCardAudio } from '../../services/cardAudioManager'
 
   interface Props {
     cards: Card[]
@@ -41,8 +42,8 @@
     onchargeplay?: (index: number) => void
     /** True during Surge turns — CHARGE! button shows "+0 AP" instead of "+1 AP". */
     isSurgeActive?: boolean
-    /** AR-122: True when Chain Momentum is active — next Charge costs +0 AP (surcharge waived). */
-    nextChargeFree?: boolean
+    /** AR-122: Chain Momentum chain type — next Charge of this chain type costs +0 AP. null = no momentum. */
+    chargeMomentumChainType?: number | null
     /** AR-76: True when quiz is active in landscape — dims the card hand slightly. */
     quizVisible?: boolean
     /** Focus AP discount: 1 when Focus is active with charges, 0 otherwise. Reduces displayed and effective AP cost. */
@@ -74,7 +75,7 @@
     oncastdirect,
     onchargeplay,
     isSurgeActive = false,
-    nextChargeFree = false,
+    chargeMomentumChainType = null,
     quizVisible = false,
     focusDiscount = 0,
     masteryFlashes = {},
@@ -499,7 +500,7 @@
       // Released in Charge zone (above screen-position threshold) — trigger Charge Play (quiz)
       // Check affordability: if charge can't be paid, return card to hand (no silent Quick Play)
       const card = cards[index]
-      const chargeApCost = (card?.apCost ?? 1) + (isSurgeActive || nextChargeFree ? 0 : 1)
+      const chargeApCost = (card?.apCost ?? 1) + (isSurgeActive || (chargeMomentumChainType !== null && card?.chainType === chargeMomentumChainType) ? 0 : 1)
       const canAffordCharge = card && card.tier !== '3' && chargeApCost <= apCurrent
       if (canAffordCharge && onchargeplay) {
         markChargeDragSeen()
@@ -692,7 +693,8 @@
     {@const runState = $activeRunState}
     {@const isMastered = card.tier === '3'}
     {@const isFreeCharge = card.factId ? isFirstChargeFree(card.factId, runState?.firstChargeFreeFactIds ?? new Set()) : false}
-    {@const chargeApCostForDrag = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || nextChargeFree ? 0 : 1)}
+    {@const isMomentumMatch = chargeMomentumChainType !== null && card.chainType === chargeMomentumChainType}
+    {@const chargeApCostForDrag = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || isMomentumMatch ? 0 : 1)}
     {@const chargeAffordableForDrag = chargeApCostForDrag <= apCurrent}
     {@const showChargeZoneIndicator = isDraggingThis && isInChargeZone && !isMastered && !!onchargeplay}
     {@const isDragInChargeZone = isDraggingThis && isInChargeZone && !isMastered}
@@ -819,6 +821,13 @@
         {/if}
       </div>
 
+      {#if card.isCursed && !cureFlashes[card.id]}
+        <span class="cursed-orb cursed-orb-1" aria-hidden="true"></span>
+        <span class="cursed-orb cursed-orb-2" aria-hidden="true"></span>
+        <span class="cursed-orb cursed-orb-3" aria-hidden="true"></span>
+        <span class="cursed-orb cursed-orb-4" aria-hidden="true"></span>
+      {/if}
+
       {#if isTierUp}
         <div
           class="tier-up-overlay"
@@ -842,16 +851,16 @@
           {:else if showGuaranteed}
             <span class="charge-zone-text guaranteed-active">✦ GUARANTEED ✦</span>
           {:else}
-            <span class="charge-zone-text" class:momentum-active={nextChargeFree && !isSurgeActive}>⚡ CHARGE {isSurgeActive || nextChargeFree ? '+0' : '+1'} AP{nextChargeFree && !isSurgeActive ? ' ⚡' : ''}</span>
+            <span class="charge-zone-text" class:momentum-active={isMomentumMatch && !isSurgeActive}>⚡ CHARGE {isSurgeActive || isMomentumMatch ? '+0' : '+1'} AP{isMomentumMatch && !isSurgeActive ? ' ⚡' : ''}</span>
           {/if}
         </div>
       {/if}
     </button>
 
     {#if selectedIndex === i && card.tier !== '3' && (card.masteryLevel ?? 0) < 5 && onchargeplay && !disabled}
-      {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || nextChargeFree || isFreeCharge ? 0 : 1)}
+      {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || isMomentumMatch || isFreeCharge ? 0 : 1)}
       {@const chargeAffordable = chargeApCost <= apCurrent}
-      {@const isFreeAp = isSurgeActive || nextChargeFree || isFreeCharge}
+      {@const isFreeAp = isSurgeActive || isMomentumMatch || isFreeCharge}
       {@const chargeApDisplay = isFreeAp ? '+0' : '+1'}
       {@const apBadgeColor = isFreeAp ? '#4ADE80' : chargeApCost > 1 ? '#EF4444' : undefined}
       <button
@@ -870,7 +879,7 @@
         {#if showGuaranteed}
           ✦ GUARANTEED
         {:else}
-          <span class="charge-ap-badge charge-ap-badge-landscape" class:momentum-active={nextChargeFree && !isSurgeActive} style={apBadgeColor ? `color: ${apBadgeColor};` : ''}>{chargeApDisplay} AP</span>
+          <span class="charge-ap-badge charge-ap-badge-landscape" class:momentum-active={isMomentumMatch && !isSurgeActive} style={apBadgeColor ? `color: ${apBadgeColor};` : ''}>{chargeApDisplay} AP</span>
           ⚡ CHARGE
         {/if}
       </button>
@@ -1045,7 +1054,8 @@
     {@const runState = $activeRunState}
     {@const isFreeCharge = card.factId ? isFirstChargeFree(card.factId, runState?.firstChargeFreeFactIds ?? new Set()) : false}
     {@const isMastered = card.tier === '3'}
-    {@const chargeApCostForDrag = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || nextChargeFree ? 0 : 1)}
+    {@const isMomentumMatch = chargeMomentumChainType !== null && card.chainType === chargeMomentumChainType}
+    {@const chargeApCostForDrag = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || isMomentumMatch ? 0 : 1)}
     {@const chargeAffordableForDrag = chargeApCostForDrag <= apCurrent}
     {@const showChargeZoneIndicator = isDraggingThis && isInChargeZone && !isMastered && !!onchargeplay}
     {@const isDragInChargeZone = isDraggingThis && isInChargeZone && !isMastered}
@@ -1182,6 +1192,13 @@
         {/if}
       </div>
 
+      {#if card.isCursed && !cureFlashes[card.id]}
+        <span class="cursed-orb cursed-orb-1" aria-hidden="true"></span>
+        <span class="cursed-orb cursed-orb-2" aria-hidden="true"></span>
+        <span class="cursed-orb cursed-orb-3" aria-hidden="true"></span>
+        <span class="cursed-orb cursed-orb-4" aria-hidden="true"></span>
+      {/if}
+
       {#if isTierUp}
         <div
           class="tier-up-overlay"
@@ -1208,7 +1225,7 @@
           {:else if showGuaranteed}
             <span class="charge-zone-text guaranteed-active">✦ GUARANTEED ✦</span>
           {:else}
-            <span class="charge-zone-text" class:momentum-active={nextChargeFree && !isSurgeActive}>⚡ CHARGE {isSurgeActive || nextChargeFree ? '+0' : '+1'} AP{nextChargeFree && !isSurgeActive ? ' ⚡' : ''}</span>
+            <span class="charge-zone-text" class:momentum-active={isMomentumMatch && !isSurgeActive}>⚡ CHARGE {isSurgeActive || isMomentumMatch ? '+0' : '+1'} AP{isMomentumMatch && !isSurgeActive ? ' ⚡' : ''}</span>
           {/if}
         </div>
       {/if}
@@ -1220,9 +1237,9 @@
     </button>
 
     {#if selectedIndex === i && card.tier !== '3' && (card.masteryLevel ?? 0) < 5 && onchargeplay && !disabled}
-      {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || nextChargeFree || isFreeCharge ? 0 : 1)}
+      {@const chargeApCost = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || isMomentumMatch || isFreeCharge ? 0 : 1)}
       {@const chargeAffordable = chargeApCost <= apCurrent}
-      {@const isFreeAp = isSurgeActive || nextChargeFree || isFreeCharge}
+      {@const isFreeAp = isSurgeActive || isMomentumMatch || isFreeCharge}
       {@const chargeApDisplay = isFreeAp ? '+0' : '+1'}
       {@const apBadgeColor = isFreeAp ? '#4ADE80' : chargeApCost > 1 ? '#EF4444' : undefined}
       <button
@@ -1239,7 +1256,7 @@
         style="transform: translate3d({xOffset}px, calc(-{riseAmount}px - var(--card-h) - 8px), 0); width: calc(var(--card-w) * 1.2);"
       >
         CHARGE
-        <span class="charge-ap-badge" class:momentum-active={nextChargeFree && !isSurgeActive} style={apBadgeColor ? `color: ${apBadgeColor};` : ''}>{chargeApDisplay} AP</span>
+        <span class="charge-ap-badge" class:momentum-active={isMomentumMatch && !isSurgeActive} style={apBadgeColor ? `color: ${apBadgeColor};` : ''}>{chargeApDisplay} AP</span>
       </button>
     {/if}
 
@@ -1831,7 +1848,7 @@
     to   { opacity: 1; text-shadow: 0 0 16px rgba(251, 191, 36, 1), 0 0 28px rgba(251, 191, 36, 0.8); }
   }
 
-  /* AR-122: Chain Momentum — green flash when nextChargeFree waives the surcharge */
+  /* AR-122: Chain Momentum — green flash when chargeMomentumChainType waives the surcharge */
   .charge-zone-text.momentum-active {
     color: #4ade80;
     text-shadow:
@@ -1879,45 +1896,81 @@
     box-shadow: 0 0 10px rgba(241, 196, 15, 0.65);
   }
 
-  /* AR-202: Cursed card visual treatment */
+  /* AR-220: Cursed card visual — ghostly fade (replaces AR-202 purple tint) */
   .card--cursed {
-    filter: sepia(0.3) hue-rotate(240deg) saturate(1.4) brightness(0.85);
-    /* Purple tint */
+    filter: brightness(0.8) saturate(0.6);
   }
 
   .card--cursed::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border: 2px solid rgba(160, 60, 220, 0.85);
-    border-radius: inherit;
-    pointer-events: none;
-    z-index: 10;
+    content: none;
   }
 
   .card--cursed::after {
-    content: '';
+    content: none;
+  }
+
+  /* AR-220: Ghostly orb particles for cursed cards */
+  .cursed-orb {
     position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, transparent 40%, rgba(140, 0, 220, 0.08) 50%, transparent 60%);
+    width: calc(8px * var(--layout-scale, 1));
+    height: calc(8px * var(--layout-scale, 1));
+    border-radius: 50%;
+    background: rgba(200, 220, 255, 0.75);
     pointer-events: none;
-    z-index: 11;
-    border-radius: inherit;
+    z-index: 12;
+    box-shadow: 0 0 calc(4px * var(--layout-scale, 1)) rgba(180, 200, 255, 0.9);
+  }
+
+  .cursed-orb-1 {
+    left: 20%;
+    bottom: calc(10px * var(--layout-scale, 1));
+  }
+
+  .cursed-orb-2 {
+    left: 45%;
+    bottom: calc(6px * var(--layout-scale, 1));
+  }
+
+  .cursed-orb-3 {
+    left: 68%;
+    bottom: calc(12px * var(--layout-scale, 1));
+  }
+
+  .cursed-orb-4 {
+    left: 33%;
+    bottom: calc(4px * var(--layout-scale, 1));
+    width: calc(5px * var(--layout-scale, 1));
+    height: calc(5px * var(--layout-scale, 1));
+    background: rgba(220, 235, 255, 0.6);
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    .card--cursed::after {
-      animation: cursed-shimmer 2.5s ease-in-out infinite;
+    .cursed-orb-1 {
+      animation: cursed-orb-float 2.8s ease-in-out infinite;
+    }
+    .cursed-orb-2 {
+      animation: cursed-orb-float 3.2s ease-in-out infinite;
+      animation-delay: 0.7s;
+    }
+    .cursed-orb-3 {
+      animation: cursed-orb-float 2.5s ease-in-out infinite;
+      animation-delay: 1.4s;
+    }
+    .cursed-orb-4 {
+      animation: cursed-orb-float 3.6s ease-in-out infinite;
+      animation-delay: 0.3s;
     }
   }
 
-  [data-pw-animations="disabled"] .card--cursed::after {
+  [data-pw-animations="disabled"] .cursed-orb {
     animation: none;
   }
 
-  @keyframes cursed-shimmer {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 1; }
+  @keyframes cursed-orb-float {
+    0%   { transform: translateY(0); opacity: 0; }
+    15%  { opacity: 0.85; }
+    80%  { opacity: 0.4; }
+    100% { transform: translateY(calc(-20px * var(--layout-scale, 1))); opacity: 0; }
   }
 
   /* AR-202: Cure animation — cursed card cured by correct Charge */
@@ -1936,7 +1989,7 @@
   }
 
   @keyframes cursed-cure {
-    0%   { filter: sepia(0.3) hue-rotate(240deg) saturate(1.4) brightness(0.85); box-shadow: 0 0 0px rgba(255, 200, 0, 0); }
+    0%   { filter: brightness(0.8) saturate(0.6); box-shadow: 0 0 0px rgba(255, 200, 0, 0); }
     30%  { filter: brightness(1.6) saturate(1.8); box-shadow: 0 0 20px rgba(255, 200, 0, 0.9); }
     100% { filter: none; box-shadow: none; }
   }

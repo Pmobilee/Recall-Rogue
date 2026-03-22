@@ -6,6 +6,7 @@ import { CombatAtmosphereSystem } from '../systems/CombatAtmosphereSystem'
 import { getAtmosphereConfig, type AtmosphereConfig } from '../../data/roomAtmosphere'
 import { StatusEffectVisualSystem } from '../systems/StatusEffectVisualSystem'
 import { WeaponAnimationSystem } from '../systems/WeaponAnimationSystem'
+import { ScreenShakeSystem } from '../systems/ScreenShakeSystem'
 import type { AnimArchetype } from '../../data/enemyAnimations'
 import { getRandomCombatBg, getCombatBgForEnemy } from '../../data/backgroundManifest'
 import { ENEMY_TEMPLATES } from '../../data/enemies'
@@ -218,6 +219,7 @@ export class CombatScene extends Phaser.Scene {
   private atmosphereSystem!: CombatAtmosphereSystem
   private statusEffectVisuals!: StatusEffectVisualSystem
   private weaponAnimations!: WeaponAnimationSystem
+  private screenShake!: ScreenShakeSystem
 
   // ── Atmosphere color grading ──────────────────────
   private _colorMatrixFx: Phaser.FX.ColorMatrix | null = null
@@ -785,6 +787,9 @@ export class CombatScene extends Phaser.Scene {
     })
     this.particles.setDepth(998)
 
+    // ── Screen shake system ─────────────────────────
+    this.screenShake = new ScreenShakeSystem(this)
+
     // ── Combat atmosphere system ────────────────────
     this.atmosphereSystem = new CombatAtmosphereSystem(this)
 
@@ -809,6 +814,15 @@ export class CombatScene extends Phaser.Scene {
     }
 
     this.sceneReady = true
+  }
+
+  // ═════════════════════════════════════════════════════════
+  // Frame update
+  // ═════════════════════════════════════════════════════════
+
+  /** Called every frame by Phaser. Drives per-frame systems. */
+  update(_time: number, delta: number): void {
+    this.screenShake?.update(delta)
   }
 
   // ═════════════════════════════════════════════════════════
@@ -1254,7 +1268,7 @@ export class CombatScene extends Phaser.Scene {
       this.pulseFlash(0xFFFFFF, 0.55, 100)
 
       // Strong camera shake
-      this.cameras.main.shake(120, 0.008 * this.effectScale, true)
+      this.screenShake.trigger('heavy')
 
       // Brief camera zoom punch
       const cam = this.cameras.main
@@ -1280,7 +1294,7 @@ export class CombatScene extends Phaser.Scene {
     if (this.reduceMotion) return
     this.pulseFlash(COLOR_HP_RED, 0.15, 110)
     this.pulseEdgeGlow(COLOR_HP_RED, 0.35, 300)
-    this.cameras.main.shake(180, 0.006 * this.effectScale, true)
+    this.screenShake.trigger('medium')
   }
 
   /** Play heal effect (green particles rising near player HP bar). */
@@ -1425,7 +1439,13 @@ export class CombatScene extends Phaser.Scene {
   playBlockAbsorbFlash(): void {
     if (this.reduceMotion) return
     this.pulseEdgeGlow(0x3498db, 0.25, 330)
-    this.cameras.main.shake(100, 0.003 * this.effectScale, true)
+    this.screenShake.trigger('micro')
+  }
+
+  /** Play a blue edge flash signalling a block event (block gained or absorb). */
+  playBlockFlash(): void {
+    if (this.reduceMotion) return
+    this.pulseEdgeGlow(0x3498db, 0.25, 250)
   }
 
   playPlayerVictoryAnimation(): void {
@@ -1443,7 +1463,7 @@ export class CombatScene extends Phaser.Scene {
     if (this.reduceMotion) return
     this.playPlayerDamageFlash()
     this.pulseEdgeGlow(COLOR_HP_RED, 0.5, 450)
-    this.cameras.main.shake(250, 0.007 * this.effectScale, true)
+    this.screenShake.trigger('heavy')
   }
 
   /** Play enemy defend animation — shimmering blue shield effect. */
@@ -1529,7 +1549,7 @@ export class CombatScene extends Phaser.Scene {
     }
     this.burstParticles(18, enemyX, enemyY, 0xFFD700)
     this.pulseEdgeGlow(0xFFD700, 0.25, 300)
-    this.cameras.main.shake(80, 0.002 * this.effectScale, true)
+    this.screenShake.trigger('micro')
   }
 
   /** Play enemy debuff animation — sinister purple energy targeting the player. */
@@ -1547,7 +1567,7 @@ export class CombatScene extends Phaser.Scene {
     this.pulseFlash(0x9b59b6, 0.12, 180)
     this.burstParticles(14, this.scale.width / 2, this.displayH * 0.85, 0x9b59b6)
     this.pulseEdgeGlow(0x9b59b6, 0.3, 330)
-    this.cameras.main.shake(100, 0.002 * this.effectScale, true)
+    this.screenShake.trigger('micro')
   }
 
   /** Play enemy multi-attack animation — three rapid lunges. */
@@ -1567,12 +1587,12 @@ export class CombatScene extends Phaser.Scene {
           yoyo: true,
           ease: 'Power2',
         })
-        this.cameras.main.shake(80, 0.003 * this.effectScale, true)
+        this.screenShake.trigger('micro')
       })
     }
     this.pulseEdgeGlow(0xe74c3c, 0.4, 450)
     this.time.delayedCall(360, () => {
-      this.cameras.main.shake(180, 0.006 * this.effectScale, true)
+      this.screenShake.trigger('medium')
     })
   }
 
@@ -1763,7 +1783,7 @@ export class CombatScene extends Phaser.Scene {
     })
 
     if (isBoss && !this.reduceMotion) {
-      this.cameras.main.shake(180, 0.0035 * this.effectScale, true)
+      this.screenShake.trigger('medium')
       const cam = this.cameras.main
       const baseZoom = cam.zoom
       this.tweens.add({

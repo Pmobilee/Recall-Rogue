@@ -55,6 +55,8 @@ export type MysteryEffect =
   | { type: 'cardReward' }
   | { type: 'healPercent'; percent: number }
   | { type: 'transformCard' }
+  | { type: 'compound'; effects: MysteryEffect[] }
+  | { type: 'random'; outcomes: MysteryEffect[][] }
 
 // ============================================================
 // Room type weights by segment
@@ -170,7 +172,7 @@ const TIER_2_EVENTS: MysteryEvent[] = [
     effect: {
       type: 'choice',
       options: [
-        { label: 'Return a card (remove + heal 15)', effect: { type: 'removeRandomCard' } },
+        { label: 'Return a card (remove + heal 15)', effect: { type: 'compound', effects: [{ type: 'removeRandomCard' }, { type: 'healPercent', percent: 15 }] } },
         { label: 'Refuse (take 12 damage)', effect: { type: 'damage', amount: 12 } },
       ],
     },
@@ -182,8 +184,8 @@ const TIER_2_EVENTS: MysteryEvent[] = [
     effect: {
       type: 'choice',
       options: [
-        { label: 'Pay 30 gold (heal 20% HP)', effect: { type: 'currency', amount: -30 } },
-        { label: 'Pay with blood (take 12 dmg, gain 40 gold)', effect: { type: 'damage', amount: 12 } },
+        { label: 'Pay 30 gold (heal 20% HP)', effect: { type: 'compound', effects: [{ type: 'currency', amount: -30 }, { type: 'healPercent', percent: 20 }] } },
+        { label: 'Pay with blood (take 12 dmg, gain 40 gold)', effect: { type: 'compound', effects: [{ type: 'damage', amount: 12 }, { type: 'currency', amount: 40 }] } },
         { label: 'Refuse', effect: { type: 'nothing', message: 'You walk past. The toll booth watches.' } },
       ],
     },
@@ -219,7 +221,7 @@ const TIER_2_EVENTS: MysteryEvent[] = [
     effect: {
       type: 'choice',
       options: [
-        { label: 'Donate 20 gold (+3 max HP)', effect: { type: 'maxHpChange', amount: 3 } },
+        { label: 'Donate 20 gold (+3 max HP)', effect: { type: 'compound', effects: [{ type: 'currency', amount: -20 }, { type: 'maxHpChange', amount: 3 }] } },
         { label: 'Shake it (gain 10 gold)', effect: { type: 'currency', amount: 10 } },
         { label: 'Leave it', effect: { type: 'nothing', message: 'You move on.' } },
       ],
@@ -232,7 +234,7 @@ const TIER_2_EVENTS: MysteryEvent[] = [
     effect: {
       type: 'choice',
       options: [
-        { label: 'Open it (risk 15 HP for a card upgrade)', effect: { type: 'upgradeRandomCard' } },
+        { label: 'Open it (risk 15 HP for a card upgrade)', effect: { type: 'compound', effects: [{ type: 'damage', amount: 15 }, { type: 'upgradeRandomCard' }] } },
         { label: 'Walk away', effect: { type: 'nothing', message: 'Discretion is the better part of valor.' } },
       ],
     },
@@ -247,7 +249,7 @@ const TIER_3_EVENTS: MysteryEvent[] = [
     effect: {
       type: 'choice',
       options: [
-        { label: 'Rush in! (lose 15 HP, upgrade a card + gain a card)', effect: { type: 'damage', amount: 15 } },
+        { label: 'Rush in! (lose 15 HP, upgrade a card + gain a card)', effect: { type: 'compound', effects: [{ type: 'damage', amount: 15 }, { type: 'upgradeRandomCard' }, { type: 'freeCard' }] } },
         { label: 'Watch it burn', effect: { type: 'nothing', message: 'You watch centuries of knowledge turn to ash.' } },
       ],
     },
@@ -265,7 +267,7 @@ const TIER_3_EVENTS: MysteryEvent[] = [
     effect: {
       type: 'choice',
       options: [
-        { label: 'Trade 8 max HP for a card upgrade', effect: { type: 'maxHpChange', amount: -8 } },
+        { label: 'Trade 8 max HP for a card upgrade', effect: { type: 'compound', effects: [{ type: 'maxHpChange', amount: -8 }, { type: 'upgradeRandomCard' }] } },
         { label: 'Trade 15 HP for a free card', effect: { type: 'damage', amount: 15 } },
         { label: 'Decline', effect: { type: 'nothing', message: "The merchant nods. 'Perhaps next time.'" } },
       ],
@@ -278,7 +280,7 @@ const TIER_3_EVENTS: MysteryEvent[] = [
     effect: {
       type: 'choice',
       options: [
-        { label: 'Read them (gain card, take 10 dmg)', effect: { type: 'damage', amount: 10 } },
+        { label: 'Read them (gain card, take 10 dmg)', effect: { type: 'compound', effects: [{ type: 'damage', amount: 10 }, { type: 'freeCard' }] } },
         { label: 'Take one safely', effect: { type: 'freeCard' } },
         { label: 'Report them (gain 30 gold)', effect: { type: 'currency', amount: 30 } },
       ],
@@ -291,7 +293,7 @@ const TIER_3_EVENTS: MysteryEvent[] = [
     effect: {
       type: 'choice',
       options: [
-        { label: 'Toss 10 gold (random reward)', effect: { type: 'currency', amount: -10 } },
+        { label: 'Toss 10 gold (random reward)', effect: { type: 'random', outcomes: [[{ type: 'currency', amount: -10 }, { type: 'currency', amount: 30 }], [{ type: 'currency', amount: -10 }, { type: 'healPercent', percent: 20 }], [{ type: 'currency', amount: -10 }, { type: 'upgradeRandomCard' }], [{ type: 'currency', amount: -10 }]] } },
         { label: 'Save your gold', effect: { type: 'nothing', message: 'You keep your coins.' } },
       ],
     },
@@ -312,7 +314,7 @@ const TIER_4_EVENTS: MysteryEvent[] = [
     effect: {
       type: 'choice',
       options: [
-        { label: 'Accept the wager (50/50: heal 20% + 30g, or lose half HP)', effect: { type: 'healPercent', percent: 20 } },
+        { label: 'Accept the wager (50/50: heal 20% + 30g, or lose half HP)', effect: { type: 'random', outcomes: [[{ type: 'healPercent', percent: 20 }, { type: 'currency', amount: 30 }], [{ type: 'damage', amount: 50 }]] } },
         { label: 'No deal', effect: { type: 'nothing', message: "The figure shrugs and fades." } },
       ],
     },
@@ -331,7 +333,7 @@ const TIER_4_EVENTS: MysteryEvent[] = [
       type: 'choice',
       options: [
         { label: 'Share knowledge (upgrade a card)', effect: { type: 'upgradeRandomCard' } },
-        { label: 'Take their supplies (heal 15% + 20 gold)', effect: { type: 'healPercent', percent: 15 } },
+        { label: 'Take their supplies (heal 15% + 20 gold)', effect: { type: 'compound', effects: [{ type: 'healPercent', percent: 15 }, { type: 'currency', amount: 20 }] } },
         { label: 'Walk away', effect: { type: 'nothing', message: 'You leave yourself behind.' } },
       ],
     },
@@ -355,7 +357,7 @@ const TIER_4_EVENTS: MysteryEvent[] = [
     effect: {
       type: 'choice',
       options: [
-        { label: 'Sacrifice 10 max HP (remove 2 cards, heal 20%)', effect: { type: 'maxHpChange', amount: -10 } },
+        { label: 'Sacrifice 10 max HP (remove 2 cards, heal 20%)', effect: { type: 'compound', effects: [{ type: 'maxHpChange', amount: -10 }, { type: 'removeRandomCard' }, { type: 'removeRandomCard' }, { type: 'healPercent', percent: 20 }] } },
         { label: 'Keep your strength', effect: { type: 'nothing', message: 'You back away from the altar.' } },
       ],
     },

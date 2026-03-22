@@ -6,7 +6,7 @@ import { writable, get } from 'svelte/store';
 import type { TurnState } from './turnManager';
 import { startEncounter, playCardAction, skipCard, endPlayerTurn, resolveInscription, getActiveInscription, applyPendingChoice } from './turnManager';
 import { buildRunPool, recordRunFacts } from './runPoolBuilder';
-import { addCardToDeck, createDeck, drawHand, insertCardWithDelay, addFactsToCooldown, tickFactCooldowns, getEncounterSeenFacts, resetEncounterSeenFacts, exhaustCard } from './deckManager';
+import { addCardToDeck, createDeck, drawHand, insertCardWithDelay, addFactsToCooldown, tickFactCooldowns, getEncounterSeenFacts, resetEncounterSeenFacts, exhaustCard, shuffleFactsAtEncounterEnd } from './deckManager';
 import { createEnemy } from './enemyManager';
 import { ENEMY_TEMPLATES } from '../data/enemies';
 import { activeRunState } from './runStateStore';
@@ -561,6 +561,7 @@ export function handlePlayCard(
       const [inscriptionCard] = deck.discardPile.splice(discardIdx, 1);
       inscriptionCard.isRemovedFromGame = true;
       deck.exhaustPile.push(inscriptionCard);
+      playCardAudio('card-exhaust');
     }
   }
 
@@ -718,6 +719,14 @@ export function handlePlayCard(
         activeDeck.pendingAutoCure = false;
         activeDeck.consecutiveCursedDraws = 0;
       }
+
+      // AR-223: Shuffle fact assignments across all card slots between encounters so the
+      // NEXT encounter sees fresh card–fact pairings while the current fight remains stable.
+      // Must run AFTER addFactsToCooldown (so new cooldowns are respected in the shuffle)
+      // and AFTER auto-cure (so the updated cursedFactIds set is used for isCursed re-derivation).
+      const runForShuffle = get(activeRunState);
+      const cursedIdsForShuffle = runForShuffle?.cursedFactIds ?? new Set<string>();
+      shuffleFactsAtEncounterEnd(activeDeck, cursedIdsForShuffle);
     }
     // Post-encounter healing: restore a percentage of max HP
     // Boss/mini-boss encounters grant bonus healing (AR-32)
@@ -842,7 +851,7 @@ export function consumeSoulJarCharge(): boolean {
   return true;
 }
 
-export function handleEndTurn(): void {
+export async function handleEndTurn(): Promise<void> {
   const turnState = get(activeTurnState);
   if (!turnState) return;
 
@@ -857,6 +866,10 @@ export function handleEndTurn(): void {
   }
 
   activeTurnState.set(freshTurnState(result.turnState));
+
+  // AR-222: Delay before enemy animations so the player can register their
+  // turn ending before the enemy immediately acts. 1 second normal, shorter in turbo.
+  await new Promise<void>((r) => setTimeout(r, turboDelay(1000)));
 
   const scene = getCombatScene();
   if (scene) {

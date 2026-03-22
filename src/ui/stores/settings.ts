@@ -322,4 +322,45 @@ export function saveInterestConfig(config: InterestConfig): void {
   interestConfig.set(config)
 }
 
+// =========================================================
+// AR-221: Quiz Auto-Resume Settings
+// =========================================================
+
+function readAnswerDisplaySpeed(): number {
+  if (typeof window === 'undefined') return 1.0
+  const raw = window.localStorage.getItem('setting_answerDisplaySpeed')
+  const parsed = raw !== null ? parseFloat(raw) : NaN
+  return isNaN(parsed) ? 1.0 : Math.max(0.5, Math.min(3.0, parsed))
+}
+
+/**
+ * Reactive store for answer display speed multiplier (0.5–3.0).
+ * Values < 1.0 shorten the auto-resume delay; > 1.0 lengthen it.
+ * Persisted to localStorage automatically.
+ */
+export const answerDisplaySpeed = singletonWritable<number>('answerDisplaySpeed', readAnswerDisplaySpeed())
+answerDisplaySpeed.subscribe(v => {
+  if (typeof window !== 'undefined') {
+    schedulePersist('setting_answerDisplaySpeed', String(v))
+  }
+})
+
+function readAutoResumeAfterAnswer(): boolean {
+  if (typeof window === 'undefined') return true
+  const stored = window.localStorage.getItem('setting_autoResumeAfterAnswer')
+  return stored !== 'false'
+}
+
+/**
+ * Reactive store controlling whether the quiz auto-resumes after an answer.
+ * When false, the player must tap "Continue" manually for both correct and wrong answers.
+ * Persisted to localStorage automatically.
+ */
+export const autoResumeAfterAnswer = singletonWritable<boolean>('autoResumeAfterAnswer', readAutoResumeAfterAnswer())
+autoResumeAfterAnswer.subscribe(v => {
+  if (typeof window !== 'undefined') {
+    schedulePersist('setting_autoResumeAfterAnswer', String(v))
+  }
+})
+
 export { flushPendingWrites as flushSettings }

@@ -145,6 +145,7 @@ function makeRunState(categoryL2Accuracy?: Map<string, { correct: number; total:
     canary: {} as RunState['canary'],
     startedAt: Date.now(),
     firstChargeFreeFactIds: new Set(),
+    attemptedFactIds: new Set(),
     cursedFactIds: new Set(),
     consumedRewardFactIds: new Set(),
     factsAnsweredCorrectly: new Set(),

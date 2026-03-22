@@ -113,3 +113,18 @@ export function getMenuDepthMap(): string {
   const orientation = getOrientation()
   return `/assets/backgrounds/menu/${orientation}_depth.webp`
 }
+
+/**
+ * Get an orientation-aware background path for a specific mystery event.
+ * Returns a per-event background at `/assets/backgrounds/mystery/<eventId>/landscape.webp`
+ * if one exists, falling back to the generic mystery room background.
+ *
+ * @param eventId The mystery event's id string (e.g. 'burning_library')
+ * @returns A WebP background path sized for the current orientation
+ */
+export function getMysteryEventBg(eventId: string): string {
+  const orientation = getOrientation()
+  // Per-event backgrounds live under mystery/<eventId>/<orientation>.webp.
+  // The caller should handle 404s by falling back to getRandomRoomBg('mystery').
+  return `/assets/backgrounds/mystery/${eventId}/${orientation}.webp`
+}
