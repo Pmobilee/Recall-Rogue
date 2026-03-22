@@ -249,10 +249,6 @@
     grid-template-columns: calc(200px * var(--layout-scale, 1)) 1fr auto;
   }
 
-  /* ── F-07: Settings — hide internal 200px sidebar ── */
-  [data-layout="landscape"] .settings-sidebar {
-    display: none;
-  }
 
   [data-layout="landscape"] .settings-card-landscape {
     grid-template-columns: 1fr;

@@ -271,9 +271,11 @@
   .landscape-columns {
     display: grid;
     grid-template-columns: 3fr 2fr;
-    gap: calc(24px * var(--layout-scale, 1));
+    gap: calc(32px * var(--layout-scale, 1));
     overflow: hidden;
     min-height: 0;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .landscape-left,
@@ -303,11 +305,14 @@
 
   :global([data-layout="landscape"]) .profile-screen {
     max-width: none;
-    padding: calc(32px * var(--layout-scale, 1)) calc(48px * var(--layout-scale, 1));
+    width: 100%;
+    box-sizing: border-box;
+    padding: calc(32px * var(--layout-scale, 1)) calc(64px * var(--layout-scale, 1));
   }
 
-  :global([data-layout="landscape"]) .back {
-    display: none;
+  :global([data-layout="landscape"]) .header h2 {
+    font-size: calc(28px * var(--text-scale, 1));
+    white-space: nowrap;
   }
 
   /* Stat values */

@@ -271,10 +271,6 @@
       {/if}
     </article>
 
-    <p class="helper">
-      Co-op, duel, and guild frontends are now accessible from the app flow.
-      Matchmaking and backend reliability hardening are tracked in AR-20.
-    </p>
     {#if leaderboardMessage}
       <p class="helper">{leaderboardMessage}</p>
     {/if}
@@ -474,6 +470,9 @@
     display: flex;
     flex-direction: column;
     gap: calc(12px * var(--layout-scale, 1));
+    /* Scroll fade: hints to the user there is more content below */
+    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
   }
 
   .header {
@@ -492,6 +491,7 @@
   .settings-btn,
   .actions button {
     min-height: calc(44px * var(--layout-scale, 1));
+    max-height: calc(48px * var(--layout-scale, 1));
     border-radius: 10px;
     border: 1px solid rgba(148, 163, 184, 0.45);
     background: rgba(30, 41, 59, 0.85);
@@ -652,10 +652,6 @@
   :global([data-layout="landscape"]) .social-screen {
     max-width: calc(1400px * var(--layout-scale, 1));
     padding: calc(32px * var(--layout-scale, 1)) calc(48px * var(--layout-scale, 1)) calc(96px * var(--layout-scale, 1));
-  }
-
-  :global([data-layout="landscape"]) .back-btn {
-    display: none;
   }
 
   /* Cards grid: 2 columns in landscape */

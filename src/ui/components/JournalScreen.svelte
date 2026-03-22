@@ -315,14 +315,15 @@
     display: grid;
     grid-template-rows: auto 1fr;
     overflow: hidden;
-    padding: calc(16px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+    padding: calc(32px * var(--layout-scale, 1)) calc(64px * var(--layout-scale, 1)) calc(32px * var(--layout-scale, 1));
   }
 
   .header-landscape {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: calc(16px * var(--layout-scale, 1));
+    gap: calc(24px * var(--layout-scale, 1));
+    margin-bottom: calc(8px * var(--layout-scale, 1));
   }
 
   .header-landscape h2 {
@@ -335,14 +336,14 @@
 
   .search-input {
     width: 100%;
-    max-width: calc(500px * var(--layout-scale, 1));
-    height: calc(40px * var(--layout-scale, 1));
+    max-width: none;
+    height: calc(44px * var(--layout-scale, 1));
     border-radius: 8px;
     border: 1px solid #334155;
     background: #0f172a;
     color: #e2e8f0;
-    padding: 0 calc(12px * var(--layout-scale, 1));
-    font-size: calc(13px * var(--text-scale, 1));
+    padding: 0 calc(16px * var(--layout-scale, 1));
+    font-size: calc(14px * var(--text-scale, 1));
   }
 
   .search-input::placeholder {
@@ -371,15 +372,16 @@
   /* ═══ LANDSCAPE DESKTOP OVERRIDES ═══════════════════════════════════════════ */
 
   :global([data-layout="landscape"]) .journal-screen {
-    max-width: calc(1600px * var(--layout-scale, 1));
-    padding: calc(32px * var(--layout-scale, 1)) calc(48px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
-  }
-
-  :global([data-layout="landscape"]) .back-btn {
-    display: none;
+    max-width: none;
+    padding: calc(32px * var(--layout-scale, 1)) calc(64px * var(--layout-scale, 1)) calc(32px * var(--layout-scale, 1));
   }
 
   /* Stat values */
+  :global([data-layout="landscape"]) .header h2 {
+    font-size: calc(28px * var(--text-scale, 1));
+    white-space: nowrap;
+  }
+
   :global([data-layout="landscape"]) .stats-grid strong {
     font-size: calc(28px * var(--text-scale, 1));
   }

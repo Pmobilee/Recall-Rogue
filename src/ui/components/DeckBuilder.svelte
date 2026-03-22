@@ -483,7 +483,7 @@
         <span class="char-count">{editorName.length}/{MAX_PRESET_NAME_LENGTH}</span>
       </label>
 
-      <div class="fact-count-bar" class:unfair={!isPoolFair}>
+      <div class="fact-count-bar" class:unfair={!isPoolFair && editorFactCount > 0} class:empty={editorFactCount === 0}>
         <span class="fact-count-number">{editorFactCount}</span> facts available
       </div>
       {#if !isPoolFair && editorFactCount > 0}
@@ -876,6 +876,11 @@
   .fact-count-bar.unfair {
     background: rgba(239, 68, 68, 0.15);
     color: #ef4444;
+  }
+
+  .fact-count-bar.empty {
+    background: rgba(51, 65, 85, 0.5);
+    color: #64748b;
   }
 
   .fact-count-number {

@@ -20,23 +20,25 @@
 </script>
 
 <section class="leaderboards-screen" aria-label="Leaderboards">
-  <header class="header">
-    <h2>Leaderboards</h2>
-    <button type="button" class="back-btn" onclick={onBack}>Back</button>
-  </header>
+  <div class="content-wrapper">
+    <header class="header">
+      <h2>Leaderboards</h2>
+      <button type="button" class="back-btn" onclick={onBack}>Back</button>
+    </header>
 
-  <p class="helper">Local rankings</p>
+    <p class="helper">Local rankings</p>
 
-  <div class="rows">
-    {#each entries as entry}
-      <article class="row">
-        <div class="rank">#{entry.rank}</div>
-        <div class="name">{entry.name}</div>
-        <div class="metric metric-streak">🔥 {entry.streak}d <span class="label">streak</span></div>
-        <div class="metric metric-gold">💰 {entry.gold} <span class="label">gold</span></div>
-        <div class="metric metric-floor">🗻 F{entry.bestFloor} <span class="label">floor</span></div>
-      </article>
-    {/each}
+    <div class="rows">
+      {#each entries as entry}
+        <article class="row">
+          <div class="rank">#{entry.rank}</div>
+          <div class="name">{entry.name}</div>
+          <div class="metric metric-streak">🔥 {entry.streak}d <span class="label">streak</span></div>
+          <div class="metric metric-gold">💰 {entry.gold} <span class="label">gold</span></div>
+          <div class="metric metric-floor">🗻 F{entry.bestFloor} <span class="label">floor</span></div>
+        </article>
+      {/each}
+    </div>
   </div>
 </section>
 
@@ -76,6 +78,10 @@
     margin: 0;
     color: #93c5fd;
     font-size: calc(12px * var(--text-scale, 1));
+  }
+
+  .content-wrapper {
+    width: 100%;
   }
 
   .rows {
@@ -134,12 +140,18 @@
   /* ═══ LANDSCAPE DESKTOP OVERRIDES ═══════════════════════════════════════════ */
 
   :global([data-layout="landscape"]) .leaderboards-screen {
-    max-width: calc(1400px * var(--layout-scale, 1));
+    /* Center the screen content horizontally, scroll vertically */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: auto;
     padding: calc(32px * var(--layout-scale, 1)) calc(48px * var(--layout-scale, 1));
   }
 
-  :global([data-layout="landscape"]) .back-btn {
-    display: none;
+  :global([data-layout="landscape"]) .content-wrapper {
+    width: 100%;
+    max-width: calc(1000px * var(--layout-scale, 1));
   }
 
   /* Stat values / rank numbers */

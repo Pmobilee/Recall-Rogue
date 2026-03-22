@@ -437,7 +437,7 @@
   .progress-fill {
     height: 100%;
     border-radius: 6px;
-    min-width: 2px;
+    min-width: calc(2px * var(--layout-scale, 1));
   }
 
   .domain-meta,
@@ -610,7 +610,8 @@
   .library-overlay.landscape {
     display: grid;
     grid-template-rows: auto auto 1fr;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     padding: calc(10px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
   }
 
@@ -688,11 +689,7 @@
 
   :global([data-layout="landscape"]) .library-overlay {
     max-width: calc(1400px * var(--layout-scale, 1));
-    padding: calc(32px * var(--layout-scale, 1)) calc(48px * var(--layout-scale, 1));
-  }
-
-  :global([data-layout="landscape"]) .back-btn {
-    display: none;
+    padding: calc(14px * var(--layout-scale, 1)) calc(48px * var(--layout-scale, 1));
   }
 
   /* Fix header: heading left-aligned, not pushed to far right */
@@ -709,6 +706,7 @@
 
   /* Mastery count inline next to heading in the topbar */
   :global([data-layout="landscape"]) .library-overlay .library-topbar .mastery-inline {
+    display: inline;
     font-size: calc(14px * var(--text-scale, 1));
     color: #94a3b8;
     align-self: center;
@@ -720,6 +718,7 @@
     max-width: none;
     margin-bottom: 0;
     flex: none;
+    justify-content: center;
   }
 
   /* Content section starts immediately after tabs with only ~24px gap */

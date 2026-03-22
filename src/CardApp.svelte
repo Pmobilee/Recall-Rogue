@@ -1499,7 +1499,7 @@
 
   [data-layout="landscape"] .active-run-banner {
     margin-top: 0;
-    left: 100px;
+    left: 0;
   }
 
   .active-run-banner {
@@ -1859,10 +1859,5 @@
   /* ═══ LANDSCAPE DESKTOP OVERRIDES ═══════════════════════════════════════════ */
 
   /* F-16: hover states moved to desktop.css (unscoped) */
-
-  [data-layout="landscape"] .back-btn {
-    font-size: 14px;
-    padding: 8px 16px;
-  }
 
 </style>

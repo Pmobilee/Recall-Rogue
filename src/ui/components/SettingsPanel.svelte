@@ -686,13 +686,16 @@
 
   /* ═══ LANDSCAPE DESKTOP OVERRIDES ═══════════════════════════════════════════ */
 
-  :global([data-layout="landscape"]) .back-btn {
+  /* Hide the mobile sidebar — desktop uses the horizontal category nav instead */
+  :global([data-layout="landscape"]) .settings-sidebar {
     display: none;
   }
 
   /* Widen the content panel so it uses available horizontal space */
   :global([data-layout="landscape"]) .settings-panel-content .settings-section {
-    max-width: calc(1000px * var(--layout-scale, 1));
+    max-width: calc(1200px * var(--layout-scale, 1));
+    margin: 0 auto;
+    width: 100%;
   }
 
   /* Body text / labels — larger font and taller click targets */
@@ -702,9 +705,9 @@
     min-height: calc(56px * var(--layout-scale, 1));
   }
 
-  /* Volume sliders: ensure track is at least 280px wide */
+  /* Volume sliders: label + capped-width track + value readout */
   :global([data-layout="landscape"]) .slider-row {
-    grid-template-columns: calc(140px * var(--layout-scale, 1)) minmax(calc(280px * var(--layout-scale, 1)), 1fr) auto;
+    grid-template-columns: calc(140px * var(--layout-scale, 1)) minmax(calc(280px * var(--layout-scale, 1)), calc(500px * var(--layout-scale, 1))) auto;
   }
 
   /* Section headings */
@@ -718,15 +721,29 @@
     gap: calc(32px * var(--layout-scale, 1));
   }
 
-  /* Toggle checkboxes: larger, easier to tap */
+  /* Toggle checkboxes: desktop-appropriate size — not oversized for mouse use */
   :global([data-layout="landscape"]) input[type='checkbox'] {
-    width: calc(44px * var(--layout-scale, 1));
-    height: calc(44px * var(--layout-scale, 1));
+    width: calc(32px * var(--layout-scale, 1));
+    height: calc(32px * var(--layout-scale, 1));
+    max-width: calc(32px * var(--layout-scale, 1));
+    max-height: calc(32px * var(--layout-scale, 1));
     accent-color: #d4a017;
   }
 
-  /* Small labels */
+  /* Category nav: horizontal row centered across the full width in desktop landscape */
+  :global([data-layout="landscape"]) .category-nav {
+    flex-direction: row;
+    justify-content: center;
+    gap: calc(12px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1));
+    background: #0d1a2b;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+  }
+
+  /* Category nav buttons: horizontal pill style */
   :global([data-layout="landscape"]) .category-btn {
+    text-align: center;
+    min-width: calc(120px * var(--layout-scale, 1));
     font-size: calc(13px * var(--text-scale, 1));
   }
 

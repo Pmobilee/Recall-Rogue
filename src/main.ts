@@ -19,6 +19,7 @@ import WebGLFallback from './ui/components/WebGLFallback.svelte'
 import { mount } from 'svelte'
 import { initPlayer, playerSave } from './ui/stores/playerData'
 import { currentScreen } from './ui/stores/gameState'
+import { isHubScreen } from './services/screenController'
 import { get } from 'svelte/store'
 import { difficultyMode, onboardingState } from './services/cardPreferences'
 import { STORY_MODE_FORCED_RUNS } from './data/balance'
@@ -183,7 +184,12 @@ async function bootGame(): Promise<void> {
     (globalThis as Record<symbol, unknown>)[Symbol.for('terra:botMode')] = true;
   }
   if (!hasDevPreset) {
-    currentScreen.set('hub')
+    // Only navigate to hub if we're not already on a valid hub screen
+    // (e.g., 'leaderboards' persisted from previous session should be kept)
+    const initialScreen = get(currentScreen)
+    if (!isHubScreen(initialScreen)) {
+      currentScreen.set('hub')
+    }
   }
 
   // Pull cloud save on launch for authenticated users, then merge locally.

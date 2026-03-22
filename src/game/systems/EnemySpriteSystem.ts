@@ -39,7 +39,7 @@ export class EnemySpriteSystem {
   private hasRealTexture = false
   private jitterTimer: Phaser.Time.TimerEvent | null = null
   private animConfig: AnimConfig = getAnimConfig()
-  private animSpeed = 0.5
+  private animSpeed = 0.25
 
   private isEnraged = false
   private enrageParticleTimer: Phaser.Time.TimerEvent | null = null
