@@ -47,12 +47,8 @@
       // Zoom from center
       displaced = center + (displaced - center) / uZoom;
 
+      // GL_CLAMP_TO_EDGE stretches edge pixels naturally when displaced goes OOB
       vec4 color = texture2D(uImage, displaced);
-
-      // Black for out-of-bounds
-      if (displaced.x < 0.0 || displaced.x > 1.0 || displaced.y < 0.0 || displaced.y > 1.0) {
-        color = vec4(0.0, 0.0, 0.0, 1.0);
-      }
 
       // Vignette
       vec2 uv = vUv * (1.0 - vUv);
@@ -183,18 +179,19 @@
           brightness = t < 0.2 ? t / 0.2 : 1.0     // 0 → 1
           bob = Math.sin(t * Math.PI * 2 * 4) * 8 * (1 - eased)  // → 0
         } else if (type === 'exit-forward') {
+          // Combat exit: aggressive push through the room
           const eased = Math.pow(t, 2.0)
-          dolly = eased * 0.5
-          zoom = 1.0 + eased * 0.4
+          dolly = eased * 0.4                      // 0 → 0.4
+          zoom = 1.0 + eased * 0.8                 // 1.0 → 1.8 (zoom hard so edges go off-screen)
           vignette = 0.1 + eased * 0.9
           brightness = t > 0.7 ? 1 - Math.pow((t - 0.7) / 0.3, 2) : 1.0
           bob = Math.sin(t * Math.PI * 2 * 4) * 10 * eased
         } else {
-          // exit-backward: walk forward through the room (same direction as enter, but continuing)
+          // exit-backward: walk forward through the room, gentler
           const eased = Math.pow(t, 2.0)
-          dolly = eased * 0.35                     // 0 → 0.35 (push forward, gentler than combat exit)
-          zoom = 1.0 + eased * 0.2                 // 1.0 → 1.2
-          vignette = 0.1 + eased * 0.9             // 0.1 → 1.0
+          dolly = eased * 0.3                      // 0 → 0.3
+          zoom = 1.0 + eased * 0.6                 // 1.0 → 1.6 (zoom enough to hide edges)
+          vignette = 0.1 + eased * 0.9
           brightness = t > 0.7 ? 1 - Math.pow((t - 0.7) / 0.3, 2) : 1.0
           bob = Math.sin(t * Math.PI * 2 * 4) * 8 * Math.min(eased * 3, 1)
         }
