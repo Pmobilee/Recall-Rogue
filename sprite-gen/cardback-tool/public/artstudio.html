@@ -587,6 +587,8 @@
     <button class="tab-btn" onclick="switchTab('enemies')">Enemies</button>
     <button class="tab-btn" onclick="switchTab('cardart')">Card Art</button>
     <button class="tab-btn" onclick="switchTab('backgrounds')">Backgrounds</button>
+    <button class="tab-btn" onclick="switchTab('noncombat')">Non-Combat BGs</button>
+    <button class="tab-btn" onclick="switchTab('relicicons')">Relic Icons</button>
   </div>
 </header>
 
@@ -611,6 +613,8 @@
   <div class="tab-panel" id="panel-enemies"></div>
   <div class="tab-panel" id="panel-cardart"></div>
   <div class="tab-panel" id="panel-backgrounds"></div>
+  <div class="tab-panel" id="panel-noncombat"></div>
+  <div class="tab-panel" id="panel-relicicons"></div>
 </div>
 
 <!-- Lightbox -->
@@ -659,14 +663,14 @@
 
 <script>
   let currentTab = 'cardframes';
-  let allItems = { cardframes: [], enemies: [], cardart: [], backgrounds: [] };
+  let allItems = { cardframes: [], enemies: [], cardart: [], backgrounds: [], noncombat: [], relicicons: [] };
   let pollTimers = {};
 
   // ── Tab switching ──────────────────────────────────────────
   function switchTab(tab) {
     currentTab = tab;
     document.querySelectorAll('.tab-btn').forEach((b, i) => {
-      const tabs = ['cardframes', 'enemies', 'cardart', 'backgrounds'];
+      const tabs = ['cardframes', 'enemies', 'cardart', 'backgrounds', 'noncombat', 'relicicons'];
       b.classList.toggle('active', tabs[i] === tab);
     });
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
@@ -678,7 +682,7 @@
   async function loadItems() {
     document.getElementById('statusText').textContent = 'Loading...';
     try {
-      const results = await Promise.all(['cardframes', 'enemies', 'cardart', 'backgrounds'].map(async cat => {
+      const results = await Promise.all(['cardframes', 'enemies', 'cardart', 'backgrounds', 'noncombat', 'relicicons'].map(async cat => {
         const controller = new AbortController();
         const timeout = setTimeout(() => controller.abort(), 5000);
         try {
@@ -692,6 +696,8 @@
       allItems.enemies = results[1];
       allItems.cardart = results[2];
       allItems.backgrounds = results[3];
+      allItems.noncombat = results[4];
+      allItems.relicicons = results[5];
       renderItems();
       document.getElementById('statusText').textContent = `Loaded`;
     } catch (e) {

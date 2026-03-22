@@ -1891,7 +1891,7 @@ app.get('/api/relics/batch-status', (req, res) => {
 
 const ARTSTUDIO_ITEMS_PATH = resolve(__dirname, 'artstudio-items.json');
 const ARTSTUDIO_OUTPUT_DIR = resolve(__dirname, 'artstudio-output');
-const ARTSTUDIO_CATEGORIES = ['cardframes', 'enemies', 'cardart', 'backgrounds', 'relicicons'];
+const ARTSTUDIO_CATEGORIES = ['cardframes', 'enemies', 'cardart', 'backgrounds', 'relicicons', 'noncombat'];
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || 'google/gemini-2.5-flash-image';
@@ -1910,7 +1910,7 @@ function readArtStudioItems() {
   try {
     return JSON.parse(readFileSync(ARTSTUDIO_ITEMS_PATH, 'utf-8'));
   } catch {
-    return { cardframes: [], enemies: [], cardart: [], backgrounds: [], relicicons: [] };
+    return { cardframes: [], enemies: [], cardart: [], backgrounds: [], relicicons: [], noncombat: [] };
   }
 }
 
