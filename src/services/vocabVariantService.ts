@@ -171,7 +171,7 @@ function buildDefinition(fact: Fact): VariantQuestion {
  */
 export function extractL2Word(fact: Fact): string | null {
   // Try quoted word first: What does "word" mean?
-  const quoted = fact.quizQuestion.match(/["「]([^"」]+)["」]/);
+  const quoted = fact.quizQuestion.match(/["「'']([^"」'']+)["」'']/);
   if (quoted) return quoted[1];
 
   // Try: What does WORD (reading) mean?
