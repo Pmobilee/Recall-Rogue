@@ -126,6 +126,7 @@
     </aside>
 
     <nav class="category-nav">
+      <button class="category-btn back-to-hub" onclick={onback}>← Back</button>
       {#each categories as cat}
         <button
           class="category-btn"
@@ -745,6 +746,16 @@
     text-align: center;
     min-width: calc(120px * var(--layout-scale, 1));
     font-size: calc(13px * var(--text-scale, 1));
+  }
+
+  .back-to-hub {
+    color: #93c5fd;
+    font-weight: 500;
+    min-width: auto !important;
+    padding: calc(8px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    margin-right: calc(8px * var(--layout-scale, 1));
+    border-right: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 8px 0 0 8px;
   }
 
   :global([data-layout="landscape"]) .chip {
