@@ -316,7 +316,7 @@ describe('Status Effects', () => {
 
 describe('Enemy Templates', () => {
   it('has 4 common enemies', () => {
-    // v2 roster after enemy consolidation — 47 total (added knowledge_siphon in AR-123)
+    // v2 roster after enemy consolidation — 47 total (added grade_curve in AR-123)
     const common = ENEMY_TEMPLATES.filter(t => t.category === 'common');
     expect(common).toHaveLength(47);
   });
@@ -337,28 +337,28 @@ describe('Enemy Templates', () => {
     expect(miniBoss).toHaveLength(24);
   });
 
-  it('cave_bat has 19 baseHP (AR-59.13 v2 stats)', () => {
-    const bat = ENEMY_TEMPLATES.find(t => t.id === 'cave_bat');
+  it('page_flutter has 19 baseHP (AR-59.13 v2 stats)', () => {
+    const bat = ENEMY_TEMPLATES.find(t => t.id === 'page_flutter');
     expect(bat?.baseHP).toBe(19);
   });
 
-  it('crystal_golem has 32 baseHP (AR-99 balance tuning)', () => {
-    const golem = ENEMY_TEMPLATES.find(t => t.id === 'crystal_golem');
+  it('thesis_construct has 32 baseHP (AR-99 balance tuning)', () => {
+    const golem = ENEMY_TEMPLATES.find(t => t.id === 'thesis_construct');
     expect(golem?.baseHP).toBe(32);
   });
 
-  it('the_archivist has 80 baseHP (AR-59.13 v2 stats)', () => {
-    const archivist = ENEMY_TEMPLATES.find(t => t.id === 'the_archivist');
+  it('algorithm has 80 baseHP (AR-59.13 v2 stats)', () => {
+    const archivist = ENEMY_TEMPLATES.find(t => t.id === 'algorithm');
     expect(archivist?.baseHP).toBe(80);
   });
 
-  it('fossil_guardian has no immuneDomain (removed in consolidation)', () => {
-    const guardian = ENEMY_TEMPLATES.find(t => t.id === 'fossil_guardian');
+  it('peer_reviewer has no immuneDomain (removed in consolidation)', () => {
+    const guardian = ENEMY_TEMPLATES.find(t => t.id === 'peer_reviewer');
     expect(guardian?.immuneDomain).toBeUndefined();
   });
 
-  it('ore_wyrm has phase transition at 50%', () => {
-    const wyrm = ENEMY_TEMPLATES.find(t => t.id === 'ore_wyrm');
+  it('bookwyrm has phase transition at 50%', () => {
+    const wyrm = ENEMY_TEMPLATES.find(t => t.id === 'bookwyrm');
     expect(wyrm?.phaseTransitionAt).toBe(0.5);
     expect(wyrm?.phase2IntentPool).toBeDefined();
   });

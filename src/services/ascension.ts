@@ -142,7 +142,7 @@ function withMiniBossBossTierAttacks(template: EnemyTemplate): EnemyTemplate {
 }
 
 function withCuratorSecretSecondPhase(template: EnemyTemplate): EnemyTemplate {
-  if (template.id !== 'the_curator') return template;
+  if (template.id !== 'final_lesson') return template;
   const basePhase2 = template.phase2IntentPool ?? [];
   const upgradedPhase2 = basePhase2.length > 0
     ? basePhase2.map((intent) => {
@@ -177,7 +177,7 @@ function withCuratorSecretSecondPhase(template: EnemyTemplate): EnemyTemplate {
 }
 
 function withoutCuratorSecondPhase(template: EnemyTemplate): EnemyTemplate {
-  if (template.id !== 'the_curator') return template;
+  if (template.id !== 'final_lesson') return template;
   return {
     ...template,
     phaseTransitionAt: undefined,
@@ -199,7 +199,7 @@ export function applyAscensionEnemyTemplateAdjustments(
     adjusted = withMiniBossBossTierAttacks(adjusted);
   }
 
-  if (adjusted.id === 'the_curator' && floor === 24) {
+  if (adjusted.id === 'final_lesson' && floor === 24) {
     adjusted = modifiers.curatorSecretSecondPhase
       ? withCuratorSecretSecondPhase(adjusted)
       : withoutCuratorSecondPhase(adjusted);

@@ -82,36 +82,36 @@ describe('FloorManager', () => {
   })
 
   describe('getBossForFloor', () => {
-    it('returns the_excavator for floor 3', () => {
-      expect(getBossForFloor(3)).toBe('the_excavator')
+    it('returns final_exam for floor 3', () => {
+      expect(getBossForFloor(3)).toBe('final_exam')
     })
 
-    it('returns magma_core for floor 6', () => {
-      expect(getBossForFloor(6)).toBe('magma_core')
+    it('returns burning_deadline for floor 6', () => {
+      expect(getBossForFloor(6)).toBe('burning_deadline')
     })
 
-    it('returns the_archivist for floor 9', () => {
-      expect(getBossForFloor(9)).toBe('the_archivist')
+    it('returns algorithm for floor 9', () => {
+      expect(getBossForFloor(9)).toBe('algorithm')
     })
 
-    it('returns crystal_warden for floor 12', () => {
-      expect(getBossForFloor(12)).toBe('crystal_warden')
+    it('returns curriculum for floor 12', () => {
+      expect(getBossForFloor(12)).toBe('curriculum')
     })
 
-    it('returns shadow_hydra for floor 15', () => {
-      expect(getBossForFloor(15)).toBe('shadow_hydra')
+    it('returns group_project for floor 15', () => {
+      expect(getBossForFloor(15)).toBe('group_project')
     })
 
-    it('returns void_weaver for floor 18', () => {
-      expect(getBossForFloor(18)).toBe('void_weaver')
+    it('returns rabbit_hole for floor 18', () => {
+      expect(getBossForFloor(18)).toBe('rabbit_hole')
     })
 
-    it('returns knowledge_golem for floor 21', () => {
-      expect(getBossForFloor(21)).toBe('knowledge_golem')
+    it('returns omnibus for floor 21', () => {
+      expect(getBossForFloor(21)).toBe('omnibus')
     })
 
-    it('returns the_curator for floor 24 (final boss)', () => {
-      expect(getBossForFloor(24)).toBe('the_curator')
+    it('returns final_lesson for floor 24 (final boss)', () => {
+      expect(getBossForFloor(24)).toBe('final_lesson')
     })
 
     it('returns null for non-boss floors', () => {

@@ -6,7 +6,7 @@ export interface EnemyDialogue {
 /** Maps enemy ID to combat dialogue. Only concept enemies have dialogue. */
 export const ENEMY_DIALOGUE: Record<string, EnemyDialogue> = {
   // Enemies 1-10
-  archive_specter: {
+  lost_thesis: {
     opening: [
       "I've never lost a battle I didn't understand!",
       "Your fancy cards mean nothing to my confidence!",
@@ -945,7 +945,7 @@ export const ENEMY_DIALOGUE: Record<string, EnemyDialogue> = {
     ]
   },
 
-  tectonic_scarab: {
+  sacred_text: {
     opening: [
       "These sacred texts are absolute law.",
       "Question me? Question ten thousand years of truth.",
@@ -1012,7 +1012,7 @@ export const ENEMY_DIALOGUE: Record<string, EnemyDialogue> = {
     ]
   },
 
-  mantle_fiend: {
+  devils_advocate: {
     opening: [
       "Everything you say is wrong—watch me prove it.",
       "Disagreement is my only doctrine.",
@@ -1079,7 +1079,7 @@ export const ENEMY_DIALOGUE: Record<string, EnemyDialogue> = {
     ]
   },
 
-  iron_core_golem: {
+  institution: {
     opening: [
       "I am the system. The system cannot break.",
       "Bureaucracy is my body. I am unshakeable.",
@@ -1146,7 +1146,7 @@ export const ENEMY_DIALOGUE: Record<string, EnemyDialogue> = {
     ]
   },
 
-  glyph_sentinel: {
+  rosetta_slab: {
     opening: [
       "I am the key to everything—and nothing.",
       "Languages bow before my inscriptions.",
@@ -1213,7 +1213,7 @@ export const ENEMY_DIALOGUE: Record<string, EnemyDialogue> = {
     ]
   },
 
-  archive_moth: {
+  moth_of_enlightenment: {
     opening: [
       "Knowledge is a light—come burn with me.",
       "I'll consume your understanding.",
@@ -1280,7 +1280,7 @@ export const ENEMY_DIALOGUE: Record<string, EnemyDialogue> = {
     ]
   },
 
-  rune_spider: {
+  hyperlink: {
     opening: [
       "I weave connections you cannot escape.",
       "Every link leads deeper into my web.",
@@ -1951,7 +1951,7 @@ export const ENEMY_DIALOGUE: Record<string, EnemyDialogue> = {
     ]
   },
 
-  core_harbinger: {
+  singularity: {
     opening: [
       "I am the end of human learning.",
       "Singularity approaches. I am its herald.",

@@ -42,13 +42,13 @@ PLAYER TURN:
   2. Player has 3 AP (Action Points) per turn
   3. For each card the player wants to play, choose:
 
-     QUICK PLAY (tap popped card):
+     QUICK PLAY (click popped card):
        - Card plays instantly at 1.0× base power
        - No quiz. 200ms animation. Fast, snappy.
        - Costs card's base AP only
        - Does NOT trigger Chains (Chain counter resets)
 
-     CHARGE PLAY (drag card into upper screen zone above ~40% from top, or tap CHARGE button):
+     CHARGE PLAY (drag card into upper screen zone above ~40% from top, or click CHARGE button):
        - Costs card's base AP + 1 additional AP (the "Charge surcharge")
        - Quiz panel appears. Timer starts. No backing out.
        - CORRECT ANSWER → card plays at 1.5× base + mastery bonus. 500ms celebration.
@@ -117,9 +117,9 @@ Cards have 5 in-run mastery levels (0–5). Mastery resets each run. It is the *
 | Action | Gesture | Result |
 |--------|---------|--------|
 | Inspect card | Tap card in hand | Card pops up, shows full stats |
-| Quick Play | Tap popped card | Instant play at 1.0×, no quiz |
+| Quick Play | Click popped card | Instant play at 1.0×, no quiz |
 | Quick Play (drag) | Drag card upward into lower zone (below ~40% screen height), release past 60px | Quick Play, no quiz |
-| Charge Play | Drag card into upper zone (above ~40% screen height) OR tap CHARGE button | Quiz triggers on release |
+| Charge Play | Drag card into upper zone (above ~40% screen height) OR click CHARGE button | Quiz triggers on release |
 | Cancel | Release card barely moved (< ~20px) | Card returns to hand |
 
 **Screen-position zone system (AR-62):**
@@ -188,9 +188,9 @@ Research: Roediger & Karpicke (2006) — retrieval practice = 87% retention vs 4
 
 **Stage 1 — In hand:** Cards fan in arc. Shows mechanic name, effect value, difficulty stars, AP cost badge, chain color tint. No question visible.
 
-**Stage 2 — Selected (tap to rise):** Card rises 80px with info overlay. Can freely deselect. Strategic decision point — Charge or Quick Play?
+**Stage 2 — Selected (click to rise):** Card rises 80px with info overlay. Can freely deselect. Strategic decision point — Charge or Quick Play?
 
-**Stage 3 — Committed (tap CHARGE / fling up):** Quiz panel appears. Timer starts. No cancel.
+**Stage 3 — Committed (click CHARGE / fling up):** Quiz panel appears. Timer starts. No cancel.
 
 ### Dynamic Timer System
 
@@ -228,7 +228,7 @@ Cards use a **PSD-based layered V2 frame system** (AR-107). Each card composites
 
 | Phase | Duration | Effect |
 |-------|----------|--------|
-| Quick Play | 200ms | Instant tap → effect. Lightning fast. |
+| Quick Play | 200ms | Instant click → effect. Lightning fast. |
 | Charge fling | 200ms | Card lifts with golden glow building |
 | Quiz appears | 150ms | Panel slides in above hand. Timer starts. |
 | Correct answer | 500ms | GREEN flash. Card erupts with power particles. Screen shakes. Impact sound. Effect resolves at full multiplier. |
@@ -1112,6 +1112,38 @@ Node distribution by act (approximate, legacy reference — actual counts enforc
 
 The retreat-or-delve screen uses the **descent** background pool (`/assets/backgrounds/rooms/descent/`).
 
+### Room Transition Animations (Parallax 2.5D)
+
+Room transitions use a real-time WebGL parallax shader that creates a 2.5D "walking through" effect from static room background images. Each room background has a companion **depth map** (grayscale image, bright=near, dark=far) generated offline by DepthAnythingV2.
+
+**Assets per room:**
+- `{orientation}.webp` — the room background image (landscape or portrait)
+- `{orientation}_depth.webp` — the grayscale depth map (5-12 KB each)
+- Location: `public/assets/backgrounds/rooms/{room_type}/`
+
+**Three transition types:**
+
+| Type | Direction | Used When | Visual Effect |
+|------|-----------|-----------|---------------|
+| `enter` | Forward into room | Entering any room | Fade from black, camera pulls back from close to rest position, vignette opens up |
+| `exit-forward` | Forward through room | Leaving combat rooms (walking to far exit) | Camera pushes deep forward with zoom, vignette closes, fade to black |
+| `exit-backward` | Backward out of room | Leaving non-combat rooms (shop, rest, mystery, treasure) | Camera pulls backward, slight zoom-out, vignette closes, fade to black |
+
+**Walking bob:** All transitions include a 4-cycle vertical sine oscillation to simulate footsteps. Amplitude eases in/out with the animation.
+
+**Technical implementation:**
+- `ParallaxTransition.svelte` — Svelte component with inline WebGL canvas
+- Fragment shader displaces UV coordinates based on depth map values and dolly/zoom uniforms
+- Animation runs via `requestAnimationFrame`, duration 2 seconds
+- Click-to-skip supported
+- Zero runtime dependencies beyond WebGL (no Phaser required)
+
+**Depth map generation:**
+- Script: `scripts/generate_depth_maps.py`
+- Uses DepthAnythingV2 (via `broken.externals.depthmap` from the `depthflow` package)
+- Run: `python3 scripts/generate_depth_maps.py` (all rooms) or `--room shop` (single room)
+- Output: grayscale WebP, resized to match source image dimensions
+
 ### Rest Site — Three Choices
 
 At each Rest Site, player chooses exactly one:
@@ -1124,7 +1156,7 @@ At each Rest Site, player chooses exactly one:
 
 **Study flow:** A standalone 3-question quiz is shown (`StudyQuizOverlay`). Questions are drawn from the run's current fact pool. For each correct answer, one specific card in the deck gains one mastery level (see Mastery Upgrade System). Maximum 3 cards upgraded; no downgrades are possible during Study. Perfect score = 3 mastery upgrades. Disabled if all cards are already at max mastery.
 
-**Meditate flow:** A scrollable list of all deck cards is shown (`MeditateOverlay`). Player taps a card to select it, then confirms via a red "Remove" button. A confirm dialog prevents accidental removal. Disabled if the deck has 5 or fewer cards.
+**Meditate flow:** A scrollable list of all deck cards is shown (`MeditateOverlay`). Player clicks a card to select it, then confirms via a red "Remove" button. A confirm dialog prevents accidental removal. Disabled if the deck has 5 or fewer cards.
 
 This design makes Study on-brand with the knowledge/learning theme — mastery gains must be earned through correct answers, not handed out for free.
 
@@ -1853,7 +1885,7 @@ Boss, elite, and first mini-boss relic rewards now use the **RewardRoomScene clo
 
 1. Boss/elite/mini-boss defeated → `openRelicChoiceRewardRoom()` is called with 3 relic choices
 2. `RewardRoomScene` opens with 3 relic items hovering on the cloth background (bobbing, shimmer effects)
-3. Player taps a relic → in-Phaser detail panel slides in (icon, name, rarity label in rarity color, description, Accept/Leave buttons)
+3. Player clicks a relic → in-Phaser detail panel slides in (icon, name, rarity label in rarity color, description, Accept/Leave buttons)
 4. **Accept** → relic collected with particle burst, other 2 relics disintegrate to the right
 5. **Leave** → detail panel dismisses, relics remain on cloth (player can pick a different one)
 6. **Continue/Skip** → confirmation dialog → player can leave without taking any relic
@@ -2092,7 +2124,7 @@ All Charge multipliers +0.5×. Every 3rd Charge applies 4 Burn to yourself. Self
 |----|------|---------|--------|
 | `red_fang` | Red Fang | on_encounter_start | First attack each encounter +30% damage |
 | `chronometer` | Chronometer | permanent | All quiz timers +3s. All Charge multipliers −15% |
-| `soul_jar` | Soul Jar | on_charge_correct | 1 charge per 5 correct Charges. CHARGE button shows "GUARANTEED" — tap to auto-succeed |
+| `soul_jar` | Soul Jar | on_charge_correct | 1 charge per 5 correct Charges. CHARGE button shows "GUARANTEED" — click to auto-succeed |
 | `null_shard` | Null Shard | permanent | All chain multipliers = 1.0× (chains disabled). All attack cards +25% base damage |
 | `hemorrhage_lens` | Hemorrhage Lens | on_multi_hit | Multi-Hit attacks apply 1 Bleed per hit |
 | `archive_codex` | Archive Codex | on_encounter_end | +1 damage per 10 total mastery levels across deck |
@@ -2129,8 +2161,8 @@ All Charge multipliers +0.5×. Every 3rd Charge applies 4 Burn to yourself. Self
   - Tooltip appears to the left of the tray with a golden arrow pointing toward the relic
   - Dark semi-transparent background (`rgba(24, 33, 46, 0.95)`) with gold border (`#C9A227`)
   - Relic name shown in pixel font (`var(--font-pixel)`); description in small body text
-  - Only one tooltip visible at a time; tapping outside or another relic closes/switches it
-  - Mobile-friendly: no hover required, works via tap/click
+  - Only one tooltip visible at a time; clicking outside or another relic closes/switches it
+  - Mobile-friendly: no hover required, works via click
 
 ### Hidden Relic Synergies
 
@@ -2149,10 +2181,10 @@ The layout system supports two modes — **portrait** (mobile, 390×844px) and *
 
 Card hand occupies the bottom ~45% of screen. Enemy arena occupies the top 55%. Quiz panel slides in between when Charge is committed.
 
-### Touch Targets
+### Click Targets
 
-- Minimum tap target: 44×44px (iOS HIG)
-- Card tap: entire card face (~80×120px)
+- Minimum click target: 44×44px (iOS HIG)
+- Card click: entire card face (~80×120px)
 - CHARGE button: full-width bar below popped card
 - Answer option buttons: minimum 48px height, full width
 - End Turn button: bottom-right, always visible
@@ -2318,10 +2350,10 @@ On first-ever correct answer for a Tier 1 fact, a "fun fact" summary pops up for
 | Sound | Trigger |
 |-------|---------|
 | Charge buildup | Card drag above 40px threshold |
-| Charge release | Fling / CHARGE button tap |
+| Charge release | Fling / CHARGE button click |
 | Correct answer | Quiz correct + card effect |
 | Wrong answer | Quiz wrong (soft, non-punishing) |
-| Quick Play | Instant tap-to-play |
+| Quick Play | Instant click-to-play |
 | Chain build | Each new chain link |
 | Chain climax | 3+ chain completion |
 | Surge announce | Bass thrum on Surge turn start |
@@ -2336,7 +2368,7 @@ On first-ever correct answer for a Tier 1 fact, a "fun fact" summary pops up for
 ## 20. Accessibility
 
 - **Slow Reader mode (Settings):** +3s to all timers, amber timer bar
-- **CHARGE button tap mode:** Charge can be triggered by tapping CHARGE button (not hold-only); fling gesture is one input method, button is another
+- **CHARGE button click mode:** Charge can be triggered by clicking CHARGE button (not hold-only); fling gesture is one input method, button is another
 - **High contrast mode (planned):** AP badge colors confirmed to pass WCAG AA
 - **Font size scaling:** UI scales with `--layout-scale` CSS variable for different screen sizes
 
@@ -2703,7 +2735,7 @@ An 8-second cinematic intro sequence plays on first launch only (controlled by t
 - **Part 2 (4.8–8.0s): Cave Fly-Through** — Logo fades out. Three cave rings fly toward the camera in staggered sequence, simulating rushing into a dungeon entrance. Campsite background blurs in at 7.0s, crossfading heavy blur → sharp.
 - **Part 3 (8.0s+): Handoff** — `boot-anim-complete` event emitted. After 100 ms overlap (so Svelte hub renders behind), Phaser container is hidden and the hub appears seamlessly.
 
-**Tap to skip:** A single tap during the animation sets `tweens.timeScale = 3` and accelerates all particle emitters, completing the sequence ~3× faster.
+**Click to skip:** A single click during the animation sets `tweens.timeScale = 3` and accelerates all particle emitters, completing the sequence ~3× faster.
 
 **Implementation:** `BootAnimScene` (Phaser) is prepended to the scene list only when `startAnimation = true` is passed to `CardGameManager.boot()`. The Svelte `FireflyBackground` and hub content are suppressed while `showBootAnimation` is true to avoid z-index conflicts.
 

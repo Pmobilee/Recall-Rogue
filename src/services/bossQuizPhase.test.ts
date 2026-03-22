@@ -186,12 +186,12 @@ describe('checkQuizPhaseThreshold', () => {
   });
 
   it('returns null when HP is above all thresholds', () => {
-    const result = checkQuizPhaseThreshold('the_archivist', 0.80, []);
+    const result = checkQuizPhaseThreshold('algorithm', 0.80, []);
     expect(result).toBeNull();
   });
 
   it('returns phase 0 config when HP drops to/below 0.50 threshold (Archivist)', () => {
-    const result = checkQuizPhaseThreshold('the_archivist', 0.50, []);
+    const result = checkQuizPhaseThreshold('algorithm', 0.50, []);
     expect(result).not.toBeNull();
     expect(result!.phaseIndex).toBe(0);
     expect(result!.config.hpThreshold).toBe(0.50);
@@ -199,13 +199,13 @@ describe('checkQuizPhaseThreshold', () => {
   });
 
   it('returns null when phase 0 already in triggeredIndices', () => {
-    const result = checkQuizPhaseThreshold('the_archivist', 0.40, [0]);
+    const result = checkQuizPhaseThreshold('algorithm', 0.40, [0]);
     expect(result).toBeNull();
   });
 
   it('returns phase 1 config when HP drops to/below 0.33 (Curator)', () => {
     // Phase 0 (66%) already triggered
-    const result = checkQuizPhaseThreshold('the_curator', 0.30, [0]);
+    const result = checkQuizPhaseThreshold('final_lesson', 0.30, [0]);
     expect(result).not.toBeNull();
     expect(result!.phaseIndex).toBe(1);
     expect(result!.config.hpThreshold).toBe(0.33);
@@ -214,13 +214,13 @@ describe('checkQuizPhaseThreshold', () => {
   });
 
   it('does not return phase 0 again if already triggered, even if HP still below threshold', () => {
-    const result = checkQuizPhaseThreshold('the_curator', 0.60, [0]);
+    const result = checkQuizPhaseThreshold('final_lesson', 0.60, [0]);
     // HP at 0.60 is below phase 0 threshold (0.66), but phase 0 already triggered
     expect(result).toBeNull();
   });
 
   it('returns curator phase 0 at 66% HP when no phases triggered', () => {
-    const result = checkQuizPhaseThreshold('the_curator', 0.65, []);
+    const result = checkQuizPhaseThreshold('final_lesson', 0.65, []);
     expect(result).not.toBeNull();
     expect(result!.phaseIndex).toBe(0);
     expect(result!.config.useWeakestDomain).toBe(true);
@@ -370,7 +370,7 @@ describe('generateQuizPhaseQuestions', () => {
   });
 
   it('rapid fire timerOverrideMs is 4000, not null', () => {
-    const curatorRapidFire = BOSS_QUIZ_PHASES['the_curator']?.[1];
+    const curatorRapidFire = BOSS_QUIZ_PHASES['final_lesson']?.[1];
     expect(curatorRapidFire).toBeDefined();
     expect(curatorRapidFire!.timerOverrideMs).toBe(4000);
     expect(curatorRapidFire!.rapidFire).toBe(true);

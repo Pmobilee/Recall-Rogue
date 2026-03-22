@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { getMenuBg } from '../../data/backgroundManifest'
+  import { getMenuBg, getMenuDepthMap } from '../../data/backgroundManifest'
+  import ParallaxTransition from './ParallaxTransition.svelte'
 
   interface Props {
     onbegin: (slowReader: boolean, languageCode: string | null) => void

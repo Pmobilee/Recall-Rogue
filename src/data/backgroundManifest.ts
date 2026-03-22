@@ -9,7 +9,7 @@
 // ============================================================
 
 /** Fallback combat background — used only if a per-enemy background is missing. */
-const FALLBACK_COMBAT_BG = '/assets/backgrounds/combat/enemies/cave_bat/portrait.webp'
+const FALLBACK_COMBAT_BG = '/assets/backgrounds/combat/enemies/page_flutter/portrait.webp'
 
 // ============================================================
 // Exported functions
@@ -79,4 +79,26 @@ export function getRandomScreenBg(screenType: 'defeat' | 'victory'): string {
 export function getMenuBg(): string {
   const orientation = getOrientation()
   return `/assets/backgrounds/menu/${orientation}.webp`
+}
+
+/**
+ * Get the depth map URL corresponding to a room background.
+ * The depth map is a grayscale WebP (bright=near, dark=far) used by ParallaxTransition.
+ *
+ * @param roomType The type of room
+ * @returns A WebP depth map path sized for the current orientation
+ */
+export function getRoomDepthMap(
+  roomType: 'rest' | 'shop' | 'mystery' | 'treasure' | 'descent' | 'hallway' | 'crossroads'
+): string {
+  const orientation = getOrientation()
+  return `/assets/backgrounds/rooms/${roomType}/${orientation}_depth.webp`
+}
+
+/**
+ * Get the depth map URL for the menu background.
+ */
+export function getMenuDepthMap(): string {
+  const orientation = getOrientation()
+  return `/assets/backgrounds/menu/${orientation}_depth.webp`
 }

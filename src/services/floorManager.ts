@@ -373,14 +373,14 @@ const TIER_4_EVENTS: MysteryEvent[] = [
 // ============================================================
 
 const BOSS_MAP: Record<number, string> = {
-  3: 'the_excavator',
-  6: 'magma_core',
-  9: 'the_archivist',
-  12: 'crystal_warden',
-  15: 'shadow_hydra',
-  18: 'void_weaver',
-  21: 'knowledge_golem',
-  24: 'the_curator',
+  3: 'final_exam',
+  6: 'burning_deadline',
+  9: 'algorithm',
+  12: 'curriculum',
+  15: 'group_project',
+  18: 'rabbit_hole',
+  21: 'omnibus',
+  24: 'final_lesson',
 }
 
 /**
@@ -388,10 +388,10 @@ const BOSS_MAP: Record<number, string> = {
  * @deprecated Use ACT_ENEMY_POOLS + getEnemiesForNode() instead (AR-59.13). Remove in AR-59.19.
  */
 const BOSS_POOL_BY_REGION: Record<EnemyRegion, string[]> = {
-  shallow_depths: ['the_excavator', 'magma_core'],
-  deep_caverns: ['the_archivist', 'crystal_warden'],
-  the_abyss: ['shadow_hydra', 'void_weaver'],
-  the_archive: ['knowledge_golem', 'the_curator'],
+  shallow_depths: ['final_exam', 'burning_deadline'],
+  deep_caverns: ['algorithm', 'curriculum'],
+  the_abyss: ['group_project', 'rabbit_hole'],
+  the_archive: ['omnibus', 'final_lesson'],
 }
 
 /**
@@ -440,10 +440,10 @@ export function getRegionForFloor(floor: number): EnemyRegion {
  * @deprecated Use ACT_ENEMY_POOLS + getEnemiesForNode() instead (AR-59.13). Remove in AR-59.19.
  */
 const MINI_BOSS_POOL_BY_REGION: Record<EnemyRegion, string[]> = {
-  shallow_depths: ['venomfang', 'bone_collector', 'root_mother', 'iron_matriarch', 'bog_witch', 'mushroom_sovereign'],
-  deep_caverns: ['crystal_guardian', 'stone_sentinel', 'sulfur_queen', 'granite_colossus', 'deep_lurker', 'lava_salamander'],
-  the_abyss: ['ember_drake', 'shade_stalker', 'obsidian_knight', 'quartz_hydra', 'fossil_wyvern', 'magma_broodmother'],
-  the_archive: ['primordial_wyrm', 'iron_archon', 'pressure_colossus', 'biolume_monarch', 'tectonic_titan', 'glyph_warden', 'archive_specter'],
+  shallow_depths: ['plagiarist', 'citation_needed', 'card_catalogue', 'headmistress', 'tutor', 'study_group'],
+  deep_caverns: ['tenure_guardian', 'proctor', 'harsh_grader', 'textbook', 'imposter_syndrome', 'pressure_cooker'],
+  the_abyss: ['grade_dragon', 'comparison_trap', 'perfectionist', 'hydra_problem', 'ivory_tower', 'helicopter_parent'],
+  the_archive: ['first_question', 'dean', 'dissertation', 'eureka', 'paradigm_shift', 'ancient_tongue', 'lost_thesis'],
 }
 
 /** Mini-boss pool IDs, used for encounter 3 on non-boss floors. Flat fallback for tests. */
@@ -630,7 +630,7 @@ function weightedEnemyPick(pool: typeof ENEMY_TEMPLATES): string {
     roll -= (e.spawnWeight ?? 10)
     if (roll <= 0) return e.id
   }
-  return pool[pool.length - 1]?.id ?? 'cave_bat'
+  return pool[pool.length - 1]?.id ?? 'page_flutter'
 }
 
 /**

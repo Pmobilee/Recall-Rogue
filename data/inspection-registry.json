@@ -1553,7 +1553,7 @@
     ],
     "enemies": [
       {
-        "id": "cave_bat",
+        "id": "page_flutter",
         "name": "Page Flutter",
         "category": "act1_common",
         "description": "act1 common",
@@ -1567,7 +1567,7 @@
         "notes": "Verified in combat-basic scenario — sprite and intent render correctly"
       },
       {
-        "id": "crystal_golem",
+        "id": "thesis_construct",
         "name": "Thesis Construct",
         "category": "act1_common",
         "description": "act1 common",
@@ -1581,7 +1581,7 @@
         "notes": ""
       },
       {
-        "id": "toxic_spore",
+        "id": "mold_puff",
         "name": "Mold Puff",
         "category": "act1_common",
         "description": "act1 common",
@@ -1595,7 +1595,7 @@
         "notes": ""
       },
       {
-        "id": "mud_crawler",
+        "id": "ink_slug",
         "name": "Ink Slug",
         "category": "act1_common",
         "description": "act1 common",
@@ -1609,7 +1609,7 @@
         "notes": ""
       },
       {
-        "id": "root_strangler",
+        "id": "bookmark_vine",
         "name": "Bookmark Vine",
         "category": "act1_common",
         "description": "act1 common",
@@ -1623,7 +1623,7 @@
         "notes": ""
       },
       {
-        "id": "iron_beetle",
+        "id": "staple_bug",
         "name": "Staple Bug",
         "category": "act1_common",
         "description": "act1 common",
@@ -1637,7 +1637,7 @@
         "notes": ""
       },
       {
-        "id": "limestone_imp",
+        "id": "margin_gremlin",
         "name": "Margin Gremlin",
         "category": "act1_common",
         "description": "act1 common",
@@ -1651,7 +1651,7 @@
         "notes": ""
       },
       {
-        "id": "cave_spider",
+        "id": "index_weaver",
         "name": "Index Weaver",
         "category": "act1_common",
         "description": "act1 common",
@@ -1665,7 +1665,7 @@
         "notes": ""
       },
       {
-        "id": "peat_shambler",
+        "id": "overdue_golem",
         "name": "Overdue Golem",
         "category": "act1_common",
         "description": "act1 common",
@@ -1679,7 +1679,7 @@
         "notes": ""
       },
       {
-        "id": "fungal_sprout",
+        "id": "pop_quiz",
         "name": "Pop Quiz",
         "category": "act1_common",
         "description": "act1 common",
@@ -1693,7 +1693,7 @@
         "notes": ""
       },
       {
-        "id": "blind_grub",
+        "id": "eraser_worm",
         "name": "Eraser Worm",
         "category": "act1_common",
         "description": "act1 common",
@@ -1707,7 +1707,7 @@
         "notes": ""
       },
       {
-        "id": "ore_wyrm",
+        "id": "bookwyrm",
         "name": "The Bookwyrm",
         "category": "act1_elite",
         "description": "act1 elite",
@@ -1721,7 +1721,7 @@
         "notes": "Removed from ACT_ENEMY_POOLS, kept in ENEMY_TEMPLATES for save compat"
       },
       {
-        "id": "cave_troll",
+        "id": "librarian",
         "name": "The Librarian",
         "category": "act1_elite",
         "description": "act1 elite",
@@ -1735,7 +1735,7 @@
         "notes": ""
       },
       {
-        "id": "venomfang",
+        "id": "plagiarist",
         "name": "The Plagiarist",
         "category": "act1_mini_boss",
         "description": "act1 mini boss",
@@ -1749,7 +1749,7 @@
         "notes": ""
       },
       {
-        "id": "root_mother",
+        "id": "card_catalogue",
         "name": "The Card Catalogue",
         "category": "act1_mini_boss",
         "description": "act1 mini boss",
@@ -1763,7 +1763,7 @@
         "notes": ""
       },
       {
-        "id": "iron_matriarch",
+        "id": "headmistress",
         "name": "The Headmistress",
         "category": "act1_mini_boss",
         "description": "act1 mini boss",
@@ -1777,7 +1777,7 @@
         "notes": ""
       },
       {
-        "id": "bog_witch",
+        "id": "tutor",
         "name": "The Tutor",
         "category": "act1_mini_boss",
         "description": "act1 mini boss",
@@ -1791,7 +1791,7 @@
         "notes": ""
       },
       {
-        "id": "mushroom_sovereign",
+        "id": "study_group",
         "name": "The Study Group",
         "category": "act1_mini_boss",
         "description": "act1 mini boss",
@@ -1805,7 +1805,7 @@
         "notes": ""
       },
       {
-        "id": "the_excavator",
+        "id": "final_exam",
         "name": "The Final Exam",
         "category": "act1_boss",
         "description": "act1 boss",
@@ -1819,7 +1819,7 @@
         "notes": ""
       },
       {
-        "id": "magma_core",
+        "id": "burning_deadline",
         "name": "The Burning Deadline",
         "category": "act1_boss",
         "description": "act1 boss",
@@ -1833,7 +1833,7 @@
         "notes": ""
       },
       {
-        "id": "shadow_mimic",
+        "id": "crib_sheet",
         "name": "The Crib Sheet",
         "category": "act2_deep_common",
         "description": "act2 deep common",
@@ -1847,7 +1847,7 @@
         "notes": ""
       },
       {
-        "id": "bone_collector",
+        "id": "citation_needed",
         "name": "The Citation Needed",
         "category": "act2_deep_common",
         "description": "act2 deep common",
@@ -1861,7 +1861,7 @@
         "notes": ""
       },
       {
-        "id": "knowledge_siphon",
+        "id": "grade_curve",
         "name": "The Grade Curve",
         "category": "act2_deep_common",
         "description": "act2 deep common",
@@ -1875,7 +1875,7 @@
         "notes": "Unique art generated and deployed — sprite + portrait/landscape backgrounds"
       },
       {
-        "id": "basalt_crawler",
+        "id": "crambot",
         "name": "The Crambot",
         "category": "act2_deep_common",
         "description": "act2 deep common",
@@ -1889,7 +1889,7 @@
         "notes": ""
       },
       {
-        "id": "salt_wraith",
+        "id": "all_nighter",
         "name": "The All-Nighter",
         "category": "act2_deep_common",
         "description": "act2 deep common",
@@ -1903,7 +1903,7 @@
         "notes": ""
       },
       {
-        "id": "coal_imp",
+        "id": "spark_note",
         "name": "The Spark Note",
         "category": "act2_deep_common",
         "description": "act2 deep common",
@@ -1917,7 +1917,7 @@
         "notes": ""
       },
       {
-        "id": "granite_hound",
+        "id": "watchdog",
         "name": "The Watchdog",
         "category": "act2_deep_common",
         "description": "act2 deep common",
@@ -1931,7 +1931,7 @@
         "notes": ""
       },
       {
-        "id": "sulfur_sprite",
+        "id": "red_herring",
         "name": "The Red Herring",
         "category": "act2_deep_common",
         "description": "act2 deep common",
@@ -1945,7 +1945,7 @@
         "notes": ""
       },
       {
-        "id": "magma_tick",
+        "id": "anxiety_tick",
         "name": "The Anxiety Tick",
         "category": "act2_deep_common",
         "description": "act2 deep common",
@@ -1959,7 +1959,7 @@
         "notes": ""
       },
       {
-        "id": "deep_angler",
+        "id": "trick_question",
         "name": "The Trick Question",
         "category": "act2_deep_common",
         "description": "act2 deep common",
@@ -1973,7 +1973,7 @@
         "notes": ""
       },
       {
-        "id": "rock_hermit",
+        "id": "dropout",
         "name": "The Dropout",
         "category": "act2_deep_common",
         "description": "act2 deep common",
@@ -1987,7 +1987,7 @@
         "notes": ""
       },
       {
-        "id": "gas_phantom",
+        "id": "brain_fog",
         "name": "The Brain Fog",
         "category": "act2_deep_common",
         "description": "act2 deep common",
@@ -2001,7 +2001,7 @@
         "notes": ""
       },
       {
-        "id": "stalactite_drake",
+        "id": "thesis_dragon",
         "name": "The Thesis Dragon",
         "category": "act2_deep_common",
         "description": "act2 deep common",
@@ -2015,7 +2015,7 @@
         "notes": ""
       },
       {
-        "id": "ember_moth",
+        "id": "burnout",
         "name": "The Burnout",
         "category": "act2_deep_common",
         "description": "act2 deep common",
@@ -2029,7 +2029,7 @@
         "notes": ""
       },
       {
-        "id": "obsidian_shard",
+        "id": "writers_block",
         "name": "The Writers Block",
         "category": "act2_abyss_common",
         "description": "act2 abyss common",
@@ -2043,7 +2043,7 @@
         "notes": ""
       },
       {
-        "id": "magma_slime",
+        "id": "information_overload",
         "name": "The Information Overload",
         "category": "act2_abyss_common",
         "description": "act2 abyss common",
@@ -2057,7 +2057,7 @@
         "notes": ""
       },
       {
-        "id": "quartz_elemental",
+        "id": "rote_memory",
         "name": "The Rote Memory",
         "category": "act2_abyss_common",
         "description": "act2 abyss common",
@@ -2071,7 +2071,7 @@
         "notes": ""
       },
       {
-        "id": "fossil_raptor",
+        "id": "outdated_fact",
         "name": "The Outdated Fact",
         "category": "act2_abyss_common",
         "description": "act2 abyss common",
@@ -2085,7 +2085,7 @@
         "notes": ""
       },
       {
-        "id": "geode_beetle",
+        "id": "hidden_gem",
         "name": "The Hidden Gem",
         "category": "act2_abyss_common",
         "description": "act2 abyss common",
@@ -2099,7 +2099,7 @@
         "notes": ""
       },
       {
-        "id": "lava_crawler",
+        "id": "rushing_student",
         "name": "The Rushing Student",
         "category": "act2_abyss_common",
         "description": "act2 abyss common",
@@ -2113,7 +2113,7 @@
         "notes": ""
       },
       {
-        "id": "crystal_bat",
+        "id": "echo_chamber",
         "name": "The Echo Chamber",
         "category": "act2_abyss_common",
         "description": "act2 abyss common",
@@ -2127,7 +2127,7 @@
         "notes": ""
       },
       {
-        "id": "void_mite",
+        "id": "blank_spot",
         "name": "The Blank Spot",
         "category": "act2_abyss_common",
         "description": "act2 abyss common",
@@ -2141,7 +2141,7 @@
         "notes": ""
       },
       {
-        "id": "ash_wraith",
+        "id": "burnout_phantom",
         "name": "The Burnout Phantom",
         "category": "act2_abyss_common",
         "description": "act2 abyss common",
@@ -2183,7 +2183,7 @@
         "notes": ""
       },
       {
-        "id": "fossil_guardian",
+        "id": "peer_reviewer",
         "name": "The Peer Reviewer",
         "category": "act2_elite",
         "description": "act2 elite",
@@ -2197,7 +2197,7 @@
         "notes": "Removed from ACT_ENEMY_POOLS, kept in ENEMY_TEMPLATES for save compat"
       },
       {
-        "id": "magma_serpent",
+        "id": "deadline_serpent",
         "name": "The Deadline Serpent",
         "category": "act2_elite",
         "description": "act2 elite",
@@ -2211,7 +2211,7 @@
         "notes": ""
       },
       {
-        "id": "basalt_titan",
+        "id": "standardized_test",
         "name": "The Standardized Test",
         "category": "act2_elite",
         "description": "act2 elite",
@@ -2225,7 +2225,7 @@
         "notes": ""
       },
       {
-        "id": "geode_king",
+        "id": "emeritus",
         "name": "The Emeritus",
         "category": "act2_elite",
         "description": "act2 elite",
@@ -2239,7 +2239,7 @@
         "notes": ""
       },
       {
-        "id": "abyssal_leviathan",
+        "id": "student_debt",
         "name": "The Student Debt",
         "category": "act2_elite",
         "description": "act2 elite",
@@ -2253,7 +2253,7 @@
         "notes": ""
       },
       {
-        "id": "crystal_lich",
+        "id": "publish_or_perish",
         "name": "The Publish-or-Perish",
         "category": "act2_elite",
         "description": "act2 elite",
@@ -2267,7 +2267,7 @@
         "notes": ""
       },
       {
-        "id": "crystal_guardian",
+        "id": "tenure_guardian",
         "name": "The Tenure Guardian",
         "category": "act2_mini_boss",
         "description": "act2 mini boss",
@@ -2281,7 +2281,7 @@
         "notes": ""
       },
       {
-        "id": "stone_sentinel",
+        "id": "proctor",
         "name": "The Proctor",
         "category": "act2_mini_boss",
         "description": "act2 mini boss",
@@ -2295,7 +2295,7 @@
         "notes": ""
       },
       {
-        "id": "sulfur_queen",
+        "id": "harsh_grader",
         "name": "The Harsh Grader",
         "category": "act2_mini_boss",
         "description": "act2 mini boss",
@@ -2309,7 +2309,7 @@
         "notes": ""
       },
       {
-        "id": "granite_colossus",
+        "id": "textbook",
         "name": "The Textbook",
         "category": "act2_mini_boss",
         "description": "act2 mini boss",
@@ -2323,7 +2323,7 @@
         "notes": ""
       },
       {
-        "id": "deep_lurker",
+        "id": "imposter_syndrome",
         "name": "The Imposter Syndrome",
         "category": "act2_mini_boss",
         "description": "act2 mini boss",
@@ -2337,7 +2337,7 @@
         "notes": ""
       },
       {
-        "id": "lava_salamander",
+        "id": "pressure_cooker",
         "name": "The Pressure Cooker",
         "category": "act2_mini_boss",
         "description": "act2 mini boss",
@@ -2351,7 +2351,7 @@
         "notes": ""
       },
       {
-        "id": "ember_drake",
+        "id": "grade_dragon",
         "name": "The Grade Dragon",
         "category": "act2_mini_boss",
         "description": "act2 mini boss",
@@ -2365,7 +2365,7 @@
         "notes": ""
       },
       {
-        "id": "shade_stalker",
+        "id": "comparison_trap",
         "name": "The Comparison Trap",
         "category": "act2_mini_boss",
         "description": "act2 mini boss",
@@ -2379,7 +2379,7 @@
         "notes": ""
       },
       {
-        "id": "obsidian_knight",
+        "id": "perfectionist",
         "name": "The Perfectionist",
         "category": "act2_mini_boss",
         "description": "act2 mini boss",
@@ -2393,7 +2393,7 @@
         "notes": ""
       },
       {
-        "id": "quartz_hydra",
+        "id": "hydra_problem",
         "name": "The Hydra Problem",
         "category": "act2_mini_boss",
         "description": "act2 mini boss",
@@ -2407,7 +2407,7 @@
         "notes": ""
       },
       {
-        "id": "fossil_wyvern",
+        "id": "ivory_tower",
         "name": "The Ivory Tower",
         "category": "act2_mini_boss",
         "description": "act2 mini boss",
@@ -2421,7 +2421,7 @@
         "notes": ""
       },
       {
-        "id": "magma_broodmother",
+        "id": "helicopter_parent",
         "name": "The Helicopter Parent",
         "category": "act2_mini_boss",
         "description": "act2 mini boss",
@@ -2435,7 +2435,7 @@
         "notes": ""
       },
       {
-        "id": "the_archivist",
+        "id": "algorithm",
         "name": "The Algorithm",
         "category": "act2_boss",
         "description": "act2 boss",
@@ -2449,7 +2449,7 @@
         "notes": ""
       },
       {
-        "id": "crystal_warden",
+        "id": "curriculum",
         "name": "The Curriculum",
         "category": "act2_boss",
         "description": "act2 boss",
@@ -2463,7 +2463,7 @@
         "notes": ""
       },
       {
-        "id": "shadow_hydra",
+        "id": "group_project",
         "name": "The Group Project",
         "category": "act2_boss",
         "description": "act2 boss",
@@ -2477,7 +2477,7 @@
         "notes": ""
       },
       {
-        "id": "void_weaver",
+        "id": "rabbit_hole",
         "name": "The Rabbit Hole",
         "category": "act2_boss",
         "description": "act2 boss",
@@ -2491,7 +2491,7 @@
         "notes": ""
       },
       {
-        "id": "pressure_djinn",
+        "id": "thesis_djinn",
         "name": "The Thesis Djinn",
         "category": "act3_common",
         "description": "act3 common",
@@ -2505,7 +2505,7 @@
         "notes": ""
       },
       {
-        "id": "core_worm",
+        "id": "gut_feeling",
         "name": "The Gut Feeling",
         "category": "act3_common",
         "description": "act3 common",
@@ -2519,7 +2519,7 @@
         "notes": ""
       },
       {
-        "id": "biolume_jellyfish",
+        "id": "bright_idea",
         "name": "The Bright Idea",
         "category": "act3_common",
         "description": "act3 common",
@@ -2533,7 +2533,7 @@
         "notes": ""
       },
       {
-        "id": "tectonic_scarab",
+        "id": "sacred_text",
         "name": "The Sacred Text",
         "category": "act3_common",
         "description": "act3 common",
@@ -2547,7 +2547,7 @@
         "notes": ""
       },
       {
-        "id": "mantle_fiend",
+        "id": "devils_advocate",
         "name": "The Devils Advocate",
         "category": "act3_common",
         "description": "act3 common",
@@ -2561,7 +2561,7 @@
         "notes": ""
       },
       {
-        "id": "iron_core_golem",
+        "id": "institution",
         "name": "The Institution",
         "category": "act3_common",
         "description": "act3 common",
@@ -2575,7 +2575,7 @@
         "notes": ""
       },
       {
-        "id": "glyph_sentinel",
+        "id": "rosetta_slab",
         "name": "The Rosetta Slab",
         "category": "act3_common",
         "description": "act3 common",
@@ -2589,7 +2589,7 @@
         "notes": ""
       },
       {
-        "id": "archive_moth",
+        "id": "moth_of_enlightenment",
         "name": "The Moth of Enlightenment",
         "category": "act3_common",
         "description": "act3 common",
@@ -2603,7 +2603,7 @@
         "notes": ""
       },
       {
-        "id": "rune_spider",
+        "id": "hyperlink",
         "name": "The Hyperlink",
         "category": "act3_common",
         "description": "act3 common",
@@ -2617,7 +2617,7 @@
         "notes": ""
       },
       {
-        "id": "void_tendril",
+        "id": "unknown_unknown",
         "name": "The Unknown Unknown",
         "category": "act3_common",
         "description": "act3 common",
@@ -2631,7 +2631,7 @@
         "notes": ""
       },
       {
-        "id": "tome_mimic",
+        "id": "fake_news",
         "name": "The Fake News",
         "category": "act3_common",
         "description": "act3 common",
@@ -2645,7 +2645,7 @@
         "notes": ""
       },
       {
-        "id": "mantle_dragon",
+        "id": "dunning_kruger",
         "name": "The Dunning-Kruger",
         "category": "act3_elite",
         "description": "act3 elite",
@@ -2659,7 +2659,7 @@
         "notes": ""
       },
       {
-        "id": "core_harbinger",
+        "id": "singularity",
         "name": "The Singularity",
         "category": "act3_elite",
         "description": "act3 elite",
@@ -2673,7 +2673,7 @@
         "notes": ""
       },
       {
-        "id": "primordial_wyrm",
+        "id": "first_question",
         "name": "The First Question",
         "category": "act3_mini_boss",
         "description": "act3 mini boss",
@@ -2687,7 +2687,7 @@
         "notes": ""
       },
       {
-        "id": "iron_archon",
+        "id": "dean",
         "name": "The Dean",
         "category": "act3_mini_boss",
         "description": "act3 mini boss",
@@ -2701,7 +2701,7 @@
         "notes": ""
       },
       {
-        "id": "pressure_colossus",
+        "id": "dissertation",
         "name": "The Dissertation",
         "category": "act3_mini_boss",
         "description": "act3 mini boss",
@@ -2715,7 +2715,7 @@
         "notes": ""
       },
       {
-        "id": "biolume_monarch",
+        "id": "eureka",
         "name": "The Eureka",
         "category": "act3_mini_boss",
         "description": "act3 mini boss",
@@ -2729,7 +2729,7 @@
         "notes": ""
       },
       {
-        "id": "tectonic_titan",
+        "id": "paradigm_shift",
         "name": "The Paradigm Shift",
         "category": "act3_mini_boss",
         "description": "act3 mini boss",
@@ -2743,7 +2743,7 @@
         "notes": ""
       },
       {
-        "id": "glyph_warden",
+        "id": "ancient_tongue",
         "name": "The Ancient Tongue",
         "category": "act3_mini_boss",
         "description": "act3 mini boss",
@@ -2757,7 +2757,7 @@
         "notes": ""
       },
       {
-        "id": "archive_specter",
+        "id": "lost_thesis",
         "name": "The Lost Thesis",
         "category": "act3_mini_boss",
         "description": "act3 mini boss",
@@ -2771,7 +2771,7 @@
         "notes": ""
       },
       {
-        "id": "knowledge_golem",
+        "id": "omnibus",
         "name": "The Omnibus",
         "category": "act3_boss",
         "description": "act3 boss",
@@ -2785,7 +2785,7 @@
         "notes": ""
       },
       {
-        "id": "the_curator",
+        "id": "final_lesson",
         "name": "The Final Lesson",
         "category": "act3_boss",
         "description": "act3 boss",

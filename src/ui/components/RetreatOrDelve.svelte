@@ -1,8 +1,9 @@
 <script lang="ts">
-  import { getRandomRoomBg } from '../../data/backgroundManifest'
+  import { getRandomRoomBg, getRoomDepthMap } from '../../data/backgroundManifest'
   import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
   import { preloadImages } from '../utils/assetPreloader'
   import { isLandscape } from '../../stores/layoutStore'
+  import ParallaxTransition from './ParallaxTransition.svelte'
 
   interface Props {
     bossName: string
@@ -33,6 +34,8 @@
   }: Props = $props()
 
   const bgUrl = getRandomRoomBg('descent')
+  const depthUrl = getRoomDepthMap('descent')
+  let showRoomTransition = $state(true)
   holdScreenTransition()
   preloadImages([bgUrl]).then(releaseScreenTransition)
 

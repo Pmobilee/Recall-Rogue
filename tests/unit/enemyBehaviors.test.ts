@@ -37,9 +37,9 @@ function makeCtx(enemy: EnemyInstance, overrides?: Partial<EnemyReactContext>): 
 
 // ── Shadow Mimic: onPlayerChargeWrong sets _mirrorDamage ──
 
-describe('shadow_mimic — onPlayerChargeWrong', () => {
+describe('crib_sheet — onPlayerChargeWrong', () => {
   it('sets _mirrorDamage equal to cardBaseDamage on wrong Charge', () => {
-    const enemy = makeInstance('shadow_mimic');
+    const enemy = makeInstance('crib_sheet');
     const ctx = makeCtx(enemy, { cardBaseDamage: 15, chargeCorrect: false });
     expect(enemy.template.onPlayerChargeWrong).toBeDefined();
     enemy.template.onPlayerChargeWrong!(ctx);
@@ -47,23 +47,23 @@ describe('shadow_mimic — onPlayerChargeWrong', () => {
   });
 
   it('does not trigger on correct Charge (no onPlayerChargeCorrect defined)', () => {
-    const enemy = makeInstance('shadow_mimic');
-    // shadow_mimic has no onPlayerChargeCorrect — correct plays are safe
+    const enemy = makeInstance('crib_sheet');
+    // crib_sheet has no onPlayerChargeCorrect — correct plays are safe
     expect(enemy.template.onPlayerChargeCorrect).toBeUndefined();
   });
 
-  it('shadow_mimic has no onPlayerChargeCorrect (correct plays are safe)', () => {
-    const enemy = makeInstance('shadow_mimic');
-    // shadow_mimic has no onPlayerChargeCorrect — correct plays trigger no mirror
+  it('crib_sheet has no onPlayerChargeCorrect (correct plays are safe)', () => {
+    const enemy = makeInstance('crib_sheet');
+    // crib_sheet has no onPlayerChargeCorrect — correct plays trigger no mirror
     expect(enemy.template.onPlayerChargeCorrect).toBeUndefined();
   });
 });
 
 // ── Bone Collector: onPlayerChargeWrong steals block ──
 
-describe('bone_collector — onPlayerChargeWrong', () => {
+describe('citation_needed — onPlayerChargeWrong', () => {
   it('steals up to 5 block from player on wrong Charge', () => {
-    const enemy = makeInstance('bone_collector');
+    const enemy = makeInstance('citation_needed');
     enemy.currentHP = enemy.maxHP - 10;
     const startHP = enemy.currentHP;
     const drainPlayerBlock = vi.fn();
@@ -74,7 +74,7 @@ describe('bone_collector — onPlayerChargeWrong', () => {
   });
 
   it('does not exceed maxHP when stealing block', () => {
-    const enemy = makeInstance('bone_collector');
+    const enemy = makeInstance('citation_needed');
     enemy.currentHP = enemy.maxHP - 2;
     const drainPlayerBlock = vi.fn();
     const ctx = makeCtx(enemy, { playerBlock: 10, drainPlayerBlock });
@@ -84,7 +84,7 @@ describe('bone_collector — onPlayerChargeWrong', () => {
   });
 
   it('steals less when player has less than 5 block', () => {
-    const enemy = makeInstance('bone_collector');
+    const enemy = makeInstance('citation_needed');
     enemy.currentHP = enemy.maxHP - 10;
     const startHP = enemy.currentHP;
     const drainPlayerBlock = vi.fn();
@@ -94,17 +94,17 @@ describe('bone_collector — onPlayerChargeWrong', () => {
     expect(enemy.currentHP).toBe(startHP + 3);
   });
 
-  it('bone_collector does not have onPlayerChargeCorrect (stealing is wrong-answer only)', () => {
-    const enemy = makeInstance('bone_collector');
+  it('citation_needed does not have onPlayerChargeCorrect (stealing is wrong-answer only)', () => {
+    const enemy = makeInstance('citation_needed');
     expect(enemy.template.onPlayerChargeCorrect).toBeUndefined();
   });
 });
 
 // ── Fossil Guardian (was the_examiner): onPlayerNoCharge stacks +3 Strength ──
 
-describe('fossil_guardian — onPlayerNoCharge', () => {
+describe('peer_reviewer — onPlayerNoCharge', () => {
   it('adds +3 Strength on the first no-Charge turn', () => {
-    const enemy = makeInstance('fossil_guardian');
+    const enemy = makeInstance('peer_reviewer');
     const ctx: EnemyReactContext = {
       enemy,
       cardBaseDamage: 0,
@@ -119,7 +119,7 @@ describe('fossil_guardian — onPlayerNoCharge', () => {
   });
 
   it('stacks +3 Strength on each subsequent no-Charge turn', () => {
-    const enemy = makeInstance('fossil_guardian');
+    const enemy = makeInstance('peer_reviewer');
     const ctx: EnemyReactContext = {
       enemy,
       cardBaseDamage: 0,
@@ -133,7 +133,7 @@ describe('fossil_guardian — onPlayerNoCharge', () => {
   });
 
   it('strength stacks are encounter-permanent (turnsRemaining = 999)', () => {
-    const enemy = makeInstance('fossil_guardian');
+    const enemy = makeInstance('peer_reviewer');
     const ctx: EnemyReactContext = {
       enemy,
       cardBaseDamage: 0,
@@ -148,9 +148,9 @@ describe('fossil_guardian — onPlayerNoCharge', () => {
 
 // ── Void Mite: enemy gains block on player wrong Charge ──
 
-describe('void_mite — onPlayerChargeWrong', () => {
+describe('blank_spot — onPlayerChargeWrong', () => {
   it('gains 8 block when player answers wrong on Charge', () => {
-    const enemy = makeInstance('void_mite');
+    const enemy = makeInstance('blank_spot');
     enemy.block = 0;
     const ctx = makeCtx(enemy, { chargeCorrect: false });
     expect(enemy.template.onPlayerChargeWrong).toBeDefined();
@@ -159,7 +159,7 @@ describe('void_mite — onPlayerChargeWrong', () => {
   });
 
   it('stacks block on multiple wrong answers', () => {
-    const enemy = makeInstance('void_mite');
+    const enemy = makeInstance('blank_spot');
     enemy.block = 5;
     const ctx = makeCtx(enemy, { chargeCorrect: false });
     enemy.template.onPlayerChargeWrong!(ctx);
@@ -167,21 +167,21 @@ describe('void_mite — onPlayerChargeWrong', () => {
   });
 
   it('does NOT have onPlayerChargeCorrect (no punishment for correct answers)', () => {
-    const enemy = makeInstance('void_mite');
+    const enemy = makeInstance('blank_spot');
     expect(enemy.template.onPlayerChargeCorrect).toBeUndefined();
   });
 });
 
 // ── Mantle Dragon (was the_nullifier): chainMultiplierOverride = 1.0 ──
 
-describe('mantle_dragon — chainMultiplierOverride', () => {
+describe('dunning_kruger — chainMultiplierOverride', () => {
   it('has chainMultiplierOverride set to 1.0', () => {
-    const template = getTemplate('mantle_dragon');
+    const template = getTemplate('dunning_kruger');
     expect(template.chainMultiplierOverride).toBe(1.0);
   });
 
   it('has no onPlayerChargeWrong/Correct callbacks (override is passive)', () => {
-    const template = getTemplate('mantle_dragon');
+    const template = getTemplate('dunning_kruger');
     expect(template.onPlayerChargeWrong).toBeUndefined();
     expect(template.onPlayerChargeCorrect).toBeUndefined();
   });
@@ -189,14 +189,14 @@ describe('mantle_dragon — chainMultiplierOverride', () => {
 
 // ── Core Harbinger (was the_librarian): quickPlayDamageMultiplier = 0.3 ──
 
-describe('core_harbinger — quickPlayDamageMultiplier', () => {
+describe('singularity — quickPlayDamageMultiplier', () => {
   it('has quickPlayDamageMultiplier set to 0.3', () => {
-    const template = getTemplate('core_harbinger');
+    const template = getTemplate('singularity');
     expect(template.quickPlayDamageMultiplier).toBe(0.3);
   });
 
   it('has no chain or callback fields (resistance is passive)', () => {
-    const template = getTemplate('core_harbinger');
+    const template = getTemplate('singularity');
     expect(template.onPlayerChargeWrong).toBeUndefined();
     expect(template.chainMultiplierOverride).toBeUndefined();
   });
@@ -204,9 +204,9 @@ describe('core_harbinger — quickPlayDamageMultiplier', () => {
 
 // ── Venomfang (was timer_wyrm): enrage via onEnemyTurnStart ──
 
-describe('venomfang — onEnemyTurnStart enrage', () => {
+describe('plagiarist — onEnemyTurnStart enrage', () => {
   it('does NOT enrage on turns 1-3', () => {
-    const enemy = makeInstance('venomfang');
+    const enemy = makeInstance('plagiarist');
     const startBonus = enemy.enrageBonusDamage;
     for (let t = 1; t <= 3; t++) {
       dispatchEnemyTurnStart(enemy, t);
@@ -215,13 +215,13 @@ describe('venomfang — onEnemyTurnStart enrage', () => {
   });
 
   it('adds +5 enrageBonusDamage on turn 4', () => {
-    const enemy = makeInstance('venomfang');
+    const enemy = makeInstance('plagiarist');
     dispatchEnemyTurnStart(enemy, 4);
     expect(enemy.enrageBonusDamage).toBe(5);
   });
 
   it('stacks +5 per turn from turn 4 onwards', () => {
-    const enemy = makeInstance('venomfang');
+    const enemy = makeInstance('plagiarist');
     dispatchEnemyTurnStart(enemy, 4);
     dispatchEnemyTurnStart(enemy, 5);
     dispatchEnemyTurnStart(enemy, 6);
@@ -229,7 +229,7 @@ describe('venomfang — onEnemyTurnStart enrage', () => {
   });
 
   it('createEnemy initializes enrageBonusDamage to 0', () => {
-    const enemy = makeInstance('venomfang');
+    const enemy = makeInstance('plagiarist');
     expect(enemy.enrageBonusDamage).toBe(0);
   });
 });
@@ -240,60 +240,60 @@ describe('getEnemiesForNode — act pool selection', () => {
   it('Act 1 combat returns only Act 1 commons', () => {
     const enemies = getEnemiesForNode(1, 'combat');
     const ids = enemies.map(e => e.id);
-    expect(ids).toContain('cave_bat');
-    expect(ids).toContain('crystal_golem');
-    expect(ids).toContain('toxic_spore');
+    expect(ids).toContain('page_flutter');
+    expect(ids).toContain('thesis_construct');
+    expect(ids).toContain('mold_puff');
     // Must NOT contain Act 2 enemies
-    expect(ids).not.toContain('shadow_mimic');
-    expect(ids).not.toContain('void_mite');
+    expect(ids).not.toContain('crib_sheet');
+    expect(ids).not.toContain('blank_spot');
   });
 
-  it('Act 1 has elites (cave_troll)', () => {
+  it('Act 1 has elites (librarian)', () => {
     const enemies = getEnemiesForNode(1, 'elite');
     const ids = enemies.map(e => e.id);
-    // ore_wyrm was deprecated from ACT_ENEMY_POOLS (kept in ENEMY_TEMPLATES for save compatibility)
-    expect(ids).not.toContain('ore_wyrm');
-    expect(ids).toContain('cave_troll');
+    // bookwyrm was deprecated from ACT_ENEMY_POOLS (kept in ENEMY_TEMPLATES for save compatibility)
+    expect(ids).not.toContain('bookwyrm');
+    expect(ids).toContain('librarian');
   });
 
-  it('Act 1 mini_boss returns venomfang', () => {
+  it('Act 1 mini_boss returns plagiarist', () => {
     const enemies = getEnemiesForNode(1, 'mini_boss');
     const ids = enemies.map(e => e.id);
-    expect(ids).toContain('venomfang');
+    expect(ids).toContain('plagiarist');
   });
 
-  it('Act 2 elite returns current elites (magma_serpent, basalt_titan)', () => {
+  it('Act 2 elite returns current elites (deadline_serpent, standardized_test)', () => {
     const enemies = getEnemiesForNode(2, 'elite');
     const ids = enemies.map(e => e.id);
-    // fossil_guardian was deprecated from ACT_ENEMY_POOLS (kept in ENEMY_TEMPLATES for save compatibility)
-    expect(ids).not.toContain('fossil_guardian');
-    expect(ids).toContain('magma_serpent');
-    expect(ids).toContain('basalt_titan');
+    // peer_reviewer was deprecated from ACT_ENEMY_POOLS (kept in ENEMY_TEMPLATES for save compatibility)
+    expect(ids).not.toContain('peer_reviewer');
+    expect(ids).toContain('deadline_serpent');
+    expect(ids).toContain('standardized_test');
   });
 
-  it('Act 2 boss returns the_archivist', () => {
+  it('Act 2 boss returns algorithm', () => {
     const enemies = getEnemiesForNode(2, 'boss');
     const ids = enemies.map(e => e.id);
-    expect(ids).toContain('the_archivist');
+    expect(ids).toContain('algorithm');
   });
 
-  it('Act 3 boss returns the_curator', () => {
+  it('Act 3 boss returns final_lesson', () => {
     const enemies = getEnemiesForNode(3, 'boss');
     const ids = enemies.map(e => e.id);
-    expect(ids).toContain('the_curator');
+    expect(ids).toContain('final_lesson');
   });
 
-  it('Act 3 elites include mantle_dragon and core_harbinger', () => {
+  it('Act 3 elites include dunning_kruger and singularity', () => {
     const enemies = getEnemiesForNode(3, 'elite');
     const ids = enemies.map(e => e.id);
-    expect(ids).toContain('mantle_dragon');
-    expect(ids).toContain('core_harbinger');
+    expect(ids).toContain('dunning_kruger');
+    expect(ids).toContain('singularity');
   });
 
-  it('Act 2 combat includes void_mite', () => {
+  it('Act 2 combat includes blank_spot', () => {
     const enemies = getEnemiesForNode(2, 'combat');
     const ids = enemies.map(e => e.id);
-    expect(ids).toContain('void_mite');
+    expect(ids).toContain('blank_spot');
   });
 
   it('invalid act returns empty array', () => {
@@ -333,7 +333,7 @@ describe('ACT_ENEMY_POOLS structure', () => {
 
 describe('EnemyInstance.playerChargedThisTurn', () => {
   it('initializes to false via createEnemy', () => {
-    const enemy = makeInstance('cave_bat');
+    const enemy = makeInstance('page_flutter');
     expect(enemy.playerChargedThisTurn).toBe(false);
   });
 
@@ -348,8 +348,8 @@ describe('EnemyInstance.playerChargedThisTurn', () => {
 // ── The Archivist and The Curator quiz phases ──
 
 describe('boss quiz phases (quizPhases field)', () => {
-  it('the_archivist has quizPhases at 50% HP', () => {
-    const template = getTemplate('the_archivist');
+  it('algorithm has quizPhases at 50% HP', () => {
+    const template = getTemplate('algorithm');
     expect(template.quizPhases).toBeDefined();
     expect(template.quizPhases!.length).toBeGreaterThan(0);
     const phase = template.quizPhases![0];
@@ -357,8 +357,8 @@ describe('boss quiz phases (quizPhases field)', () => {
     expect(phase.questionCount).toBeGreaterThan(0);
   });
 
-  it('the_curator has two quiz phases', () => {
-    const template = getTemplate('the_curator');
+  it('final_lesson has two quiz phases', () => {
+    const template = getTemplate('final_lesson');
     expect(template.quizPhases).toBeDefined();
     expect(template.quizPhases!.length).toBe(2);
     // Phase 1 at 66%

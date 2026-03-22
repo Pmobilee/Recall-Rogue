@@ -8,8 +8,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
 
   // ── SHALLOW DEPTHS — COMMONS ──
 
-  /** cave_bat — Page Flutter (paper bat): diagonal dive swooper with wing-flap idle */
-  cave_bat: {
+  /** page_flutter — Page Flutter (paper bat): diagonal dive swooper with wing-flap idle */
+  page_flutter: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -59,8 +59,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** crystal_golem — Thesis Construct (paper golem): slow ponderous slammer */
-  crystal_golem: {
+  /** thesis_construct — Thesis Construct (paper golem): slow ponderous slammer */
+  thesis_construct: {
     idle: {
       bobAmplitude: 1,
       bobDuration: 2200,
@@ -106,8 +106,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** toxic_spore — Mold Puff: floaty puffer with explosive attack */
-  toxic_spore: {
+  /** mold_puff — Mold Puff: floaty puffer with explosive attack */
+  mold_puff: {
     idle: {
       bobAmplitude: 4,
       bobDuration: 1800,
@@ -153,8 +153,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** mud_crawler — Ink Slug: slow peristaltic crawler with heavy squash locomotion */
-  mud_crawler: {
+  /** ink_slug — Ink Slug: slow peristaltic crawler with heavy squash locomotion */
+  ink_slug: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -205,8 +205,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** root_strangler — Bookmark Vine: swaying vine with lateral reach */
-  root_strangler: {
+  /** bookmark_vine — Bookmark Vine: swaying vine with lateral reach */
+  bookmark_vine: {
     idle: {
       bobAmplitude: 3,
       bobDuration: 2000,
@@ -254,8 +254,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** iron_beetle — Staple Bug: stoic armored beetle with rare agitation bursts */
-  iron_beetle: {
+  /** staple_bug — Staple Bug: stoic armored beetle with rare agitation bursts */
+  staple_bug: {
     idle: {
       bobAmplitude: 1,
       bobDuration: 2000,
@@ -302,8 +302,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** limestone_imp — Margin Gremlin: hyper little bouncer with erratic hops */
-  limestone_imp: {
+  /** margin_gremlin — Margin Gremlin: hyper little bouncer with erratic hops */
+  margin_gremlin: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -357,8 +357,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** cave_spider — Index Weaver: lurking stalker that dashes between positions */
-  cave_spider: {
+  /** index_weaver — Index Weaver: lurking stalker that dashes between positions */
+  index_weaver: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -409,8 +409,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** peat_shambler — Overdue Golem: lumbering undead with slow swaying rot */
-  peat_shambler: {
+  /** overdue_golem — Overdue Golem: lumbering undead with slow swaying rot */
+  overdue_golem: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 2400,
@@ -457,8 +457,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** fungal_sprout — Pop Quiz: hyper little puffer that can barely contain itself */
-  fungal_sprout: {
+  /** pop_quiz — Pop Quiz: hyper little puffer that can barely contain itself */
+  pop_quiz: {
     idle: {
       bobAmplitude: 5,
       bobDuration: 800,
@@ -506,8 +506,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** blind_grub — Eraser Worm: inchworm peristaltic locomotion, no eyes no care */
-  blind_grub: {
+  /** eraser_worm — Eraser Worm: inchworm peristaltic locomotion, no eyes no care */
+  eraser_worm: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -560,8 +560,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
 
   // ── SHALLOW DEPTHS — MINI-BOSSES ──
 
-  /** root_mother — The Card Catalogue: massive vine matriarch, slow deliberate pulses */
-  root_mother: {
+  /** card_catalogue — The Card Catalogue: massive vine matriarch, slow deliberate pulses */
+  card_catalogue: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 2200,
@@ -609,8 +609,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** iron_matriarch — The Headmistress: rigid authoritarian with rare micro-stamps */
-  iron_matriarch: {
+  /** headmistress — The Headmistress: rigid authoritarian with rare micro-stamps */
+  headmistress: {
     idle: {
       bobAmplitude: 1,
       bobDuration: 3000,
@@ -657,8 +657,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** bog_witch — The Tutor: hovering spell-slinger with gentle rotational sway */
-  bog_witch: {
+  /** tutor — The Tutor: hovering spell-slinger with gentle rotational sway */
+  tutor: {
     idle: {
       bobAmplitude: 6,
       bobDuration: 1600,
@@ -705,8 +705,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** mushroom_sovereign — The Study Group: chaotic spore colony with erratic energy */
-  mushroom_sovereign: {
+  /** study_group — The Study Group: chaotic spore colony with erratic energy */
+  study_group: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -761,8 +761,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** venomfang — The Plagiarist: cunning serpent that occasionally flips to reposition */
-  venomfang: {
+  /** plagiarist — The Plagiarist: cunning serpent that occasionally flips to reposition */
+  plagiarist: {
     idle: {
       bobAmplitude: 3,
       bobDuration: 1600,
@@ -814,8 +814,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
 
   // ── SHALLOW DEPTHS — ELITES ──
 
-  /** ore_wyrm — The Bookwyrm: sinuous serpent that drifts and rears up */
-  ore_wyrm: {
+  /** bookwyrm — The Bookwyrm: sinuous serpent that drifts and rears up */
+  bookwyrm: {
     idle: {
       bobAmplitude: 5,
       bobDuration: 1800,
@@ -863,8 +863,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** cave_troll — The Librarian: colossal enforcer, barely moves, earth-shaking slam */
-  cave_troll: {
+  /** librarian — The Librarian: colossal enforcer, barely moves, earth-shaking slam */
+  librarian: {
     idle: {
       bobAmplitude: 1,
       bobDuration: 3000,
@@ -914,8 +914,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
 
   // ── SHALLOW DEPTHS — BOSSES ──
 
-  /** the_excavator — The Final Exam: mechanical stomper with relentless marching rhythm */
-  the_excavator: {
+  /** final_exam — The Final Exam: mechanical stomper with relentless marching rhythm */
+  final_exam: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -967,8 +967,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** magma_core — The Burning Deadline: barely-contained inferno, constant agitation */
-  magma_core: {
+  /** burning_deadline — The Burning Deadline: barely-contained inferno, constant agitation */
+  burning_deadline: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -1021,8 +1021,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
 
   // ── DEEP CAVERNS ──
 
-  /** shadow_mimic — The Crib Sheet: snapping paper trap with suppress-base squash/drift pattern */
-  shadow_mimic: {
+  /** crib_sheet — The Crib Sheet: snapping paper trap with suppress-base squash/drift pattern */
+  crib_sheet: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -1073,8 +1073,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** bone_collector — The Citation Needed: rattling grave-digger with gentle bob and jitter bursts */
-  bone_collector: {
+  /** citation_needed — The Citation Needed: rattling grave-digger with gentle bob and jitter bursts */
+  citation_needed: {
     idle: {
       bobAmplitude: 3,
       bobDuration: 1400,
@@ -1122,8 +1122,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** salt_wraith — The All-Nighter: slow drifting ghost with fade pulses and gentle rotation */
-  salt_wraith: {
+  /** all_nighter — The All-Nighter: slow drifting ghost with fade pulses and gentle rotation */
+  all_nighter: {
     idle: {
       bobAmplitude: 6,
       bobDuration: 2200,
@@ -1171,8 +1171,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** coal_imp — The Spark Note: hyper jittery imp with rapid bursts and pulse pops */
-  coal_imp: {
+  /** spark_note — The Spark Note: hyper jittery imp with rapid bursts and pulse pops */
+  spark_note: {
     idle: {
       bobAmplitude: 6,
       bobDuration: 700,
@@ -1219,8 +1219,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** granite_hound — The Watchdog: suppress-base patrol with lateral drift and alert pulses */
-  granite_hound: {
+  /** watchdog — The Watchdog: suppress-base patrol with lateral drift and alert pulses */
+  watchdog: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -1269,8 +1269,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** sulfur_sprite — The Red Herring: erratic flipping drifter with direction-change pauses */
-  sulfur_sprite: {
+  /** red_herring — The Red Herring: erratic flipping drifter with direction-change pauses */
+  red_herring: {
     idle: {
       bobAmplitude: 10,
       bobDuration: 1800,
@@ -1321,8 +1321,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** magma_tick — The Anxiety Tick: rapid nervous jitter with escalating pulse pops */
-  magma_tick: {
+  /** anxiety_tick — The Anxiety Tick: rapid nervous jitter with escalating pulse pops */
+  anxiety_tick: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1000,
@@ -1370,8 +1370,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** deep_angler — The Trick Question: slow predatory lurker with infrequent pulse lures */
-  deep_angler: {
+  /** trick_question — The Trick Question: slow predatory lurker with infrequent pulse lures */
+  trick_question: {
     idle: {
       bobAmplitude: 8,
       bobDuration: 2500,
@@ -1418,8 +1418,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** rock_hermit — The Dropout: barely-moving recluse with rare peek-out and slow squash */
-  rock_hermit: {
+  /** dropout — The Dropout: barely-moving recluse with rare peek-out and slow squash */
+  dropout: {
     idle: {
       bobAmplitude: 1,
       bobDuration: 2800,
@@ -1467,8 +1467,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** gas_phantom — The Brain Fog: slow rotating drifter with large breathe scale */
-  gas_phantom: {
+  /** brain_fog — The Brain Fog: slow rotating drifter with large breathe scale */
+  brain_fog: {
     idle: {
       bobAmplitude: 8,
       bobDuration: 2500,
@@ -1514,8 +1514,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** stalactite_drake — The Thesis Dragon: heavy drop-attacker with slow patrol and rare stomp */
-  stalactite_drake: {
+  /** thesis_dragon — The Thesis Dragon: heavy drop-attacker with slow patrol and rare stomp */
+  thesis_dragon: {
     idle: {
       bobAmplitude: 6,
       bobDuration: 1400,
@@ -1563,8 +1563,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** ember_moth — The Burnout: suppress-base flapping drifter with fade pulses */
-  ember_moth: {
+  /** burnout — The Burnout: suppress-base flapping drifter with fade pulses */
+  burnout: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -1621,8 +1621,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
 
   // ── DEEP CAVERNS — MINI-BOSSES ──
 
-  /** crystal_guardian — The Tenure Guardian: stoic sentinel with slow pulse and rare jitter */
-  crystal_guardian: {
+  /** tenure_guardian — The Tenure Guardian: stoic sentinel with slow pulse and rare jitter */
+  tenure_guardian: {
     idle: {
       bobAmplitude: 1,
       bobDuration: 2800,
@@ -1669,8 +1669,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** stone_sentinel — The Proctor: slow lateral patrol with rare alert pulse */
-  stone_sentinel: {
+  /** proctor — The Proctor: slow lateral patrol with rare alert pulse */
+  proctor: {
     idle: {
       bobAmplitude: 1,
       bobDuration: 2500,
@@ -1717,8 +1717,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** sulfur_queen — The Harsh Grader: aggressive jitter bursts with quick stomp drops */
-  sulfur_queen: {
+  /** harsh_grader — The Harsh Grader: aggressive jitter bursts with quick stomp drops */
+  harsh_grader: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1400,
@@ -1767,8 +1767,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** granite_colossus — The Textbook: suppress-base slow lateral rock with massive stomp attack */
-  granite_colossus: {
+  /** textbook — The Textbook: suppress-base slow lateral rock with massive stomp attack */
+  textbook: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -1817,8 +1817,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** deep_lurker — The Imposter Syndrome: fading shrinking lurker with sudden jitter reveal */
-  deep_lurker: {
+  /** imposter_syndrome — The Imposter Syndrome: fading shrinking lurker with sudden jitter reveal */
+  imposter_syndrome: {
     idle: {
       bobAmplitude: 3,
       bobDuration: 2000,
@@ -1867,8 +1867,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** lava_salamander — The Pressure Cooker: suppress-base relentless jitter/pulse escalation */
-  lava_salamander: {
+  /** pressure_cooker — The Pressure Cooker: suppress-base relentless jitter/pulse escalation */
+  pressure_cooker: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -1922,8 +1922,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** ember_drake — The Grade Dragon: fast aggressive lateral drift with fierce lunge */
-  ember_drake: {
+  /** grade_dragon — The Grade Dragon: fast aggressive lateral drift with fierce lunge */
+  grade_dragon: {
     idle: {
       bobAmplitude: 5,
       bobDuration: 1200,
@@ -1969,8 +1969,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** shade_stalker — The Comparison Trap: slow watchful pauses with flip-reveal pulses */
-  shade_stalker: {
+  /** comparison_trap — The Comparison Trap: slow watchful pauses with flip-reveal pulses */
+  comparison_trap: {
     idle: {
       bobAmplitude: 3,
       bobDuration: 1800,
@@ -2022,8 +2022,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
 
   // ── DEEP CAVERNS — ELITES ──
 
-  /** fossil_guardian — The Peer Reviewer: methodical pauser with deliberate stomp */
-  fossil_guardian: {
+  /** peer_reviewer — The Peer Reviewer: methodical pauser with deliberate stomp */
+  peer_reviewer: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 2000,
@@ -2071,8 +2071,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** magma_serpent — The Deadline Serpent: sinuous pulsing drifter with coiling rhythm */
-  magma_serpent: {
+  /** deadline_serpent — The Deadline Serpent: sinuous pulsing drifter with coiling rhythm */
+  deadline_serpent: {
     idle: {
       bobAmplitude: 4,
       bobDuration: 1800,
@@ -2118,8 +2118,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** basalt_titan — The Standardized Test: massive slow breather with rare explosive squash */
-  basalt_titan: {
+  /** standardized_test — The Standardized Test: massive slow breather with rare explosive squash */
+  standardized_test: {
     idle: {
       bobAmplitude: 1,
       bobDuration: 3000,
@@ -2167,8 +2167,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
 
   // ── DEEP CAVERNS — BOSSES ──
 
-  /** the_archivist — The Algorithm: rare explosive jitter bursts from near-still vigilance */
-  the_archivist: {
+  /** algorithm — The Algorithm: rare explosive jitter bursts from near-still vigilance */
+  algorithm: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 3000,
@@ -2219,8 +2219,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** crystal_warden — The Curriculum: crystalline slow squash oscillation with rare rotation */
-  crystal_warden: {
+  /** curriculum — The Curriculum: crystalline slow squash oscillation with rare rotation */
+  curriculum: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 2200,
@@ -2272,8 +2272,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
 
   // ── THE ABYSS — COMMONS ──
 
-  /** obsidian_shard — The Writer's Block: cursor blink */
-  obsidian_shard: {
+  /** writers_block — The Writer's Block: cursor blink */
+  writers_block: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -2328,8 +2328,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** magma_slime — The Information Overload: bubbling blob */
-  magma_slime: {
+  /** information_overload — The Information Overload: bubbling blob */
+  information_overload: {
     idle: {
       bobAmplitude: 4,
       bobDuration: 2000,
@@ -2377,8 +2377,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** quartz_elemental — The Rote Memory: rigid mannequin */
-  quartz_elemental: {
+  /** rote_memory — The Rote Memory: rigid mannequin */
+  rote_memory: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 2000,
@@ -2425,8 +2425,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** fossil_raptor — The Outdated Fact: dinosaur professor */
-  fossil_raptor: {
+  /** outdated_fact — The Outdated Fact: dinosaur professor */
+  outdated_fact: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -2478,8 +2478,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** geode_beetle — The Hidden Gem: stone with crystals */
-  geode_beetle: {
+  /** hidden_gem — The Hidden Gem: stone with crystals */
+  hidden_gem: {
     idle: {
       bobAmplitude: 0.5,
       bobDuration: 3000,
@@ -2525,8 +2525,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** lava_crawler — The Rushing Student */
-  lava_crawler: {
+  /** rushing_student — The Rushing Student */
+  rushing_student: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -2581,8 +2581,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** crystal_bat — The Echo Chamber */
-  crystal_bat: {
+  /** echo_chamber — The Echo Chamber */
+  echo_chamber: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -2635,8 +2635,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** void_mite — The Blank Spot: glitching void */
-  void_mite: {
+  /** blank_spot — The Blank Spot: glitching void */
+  blank_spot: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -2692,8 +2692,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** ash_wraith — The Burnout Phantom */
-  ash_wraith: {
+  /** burnout_phantom — The Burnout Phantom */
+  burnout_phantom: {
     idle: {
       bobAmplitude: 7,
       bobDuration: 2500,
@@ -2743,8 +2743,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
 
   // ── THE ABYSS — MINI-BOSSES ──
 
-  /** obsidian_knight — The Perfectionist */
-  obsidian_knight: {
+  /** perfectionist — The Perfectionist */
+  perfectionist: {
     idle: {
       bobAmplitude: 0.5,
       bobDuration: 3000,
@@ -2792,8 +2792,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** quartz_hydra — The Hydra Problem */
-  quartz_hydra: {
+  /** hydra_problem — The Hydra Problem */
+  hydra_problem: {
     idle: {
       bobAmplitude: 4,
       bobDuration: 1600,
@@ -2840,8 +2840,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** fossil_wyvern — The Ivory Tower */
-  fossil_wyvern: {
+  /** ivory_tower — The Ivory Tower */
+  ivory_tower: {
     idle: {
       bobAmplitude: 3,
       bobDuration: 2500,
@@ -2887,8 +2887,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** magma_broodmother — The Helicopter Parent */
-  magma_broodmother: {
+  /** helicopter_parent — The Helicopter Parent */
+  helicopter_parent: {
     idle: {
       bobAmplitude: 3,
       bobDuration: 1400,
@@ -2938,8 +2938,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
 
   // ── THE ABYSS — ELITES ──
 
-  /** geode_king — The Emeritus */
-  geode_king: {
+  /** emeritus — The Emeritus */
+  emeritus: {
     idle: {
       bobAmplitude: 1,
       bobDuration: 3000,
@@ -2985,8 +2985,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** abyssal_leviathan — The Student Debt */
-  abyssal_leviathan: {
+  /** student_debt — The Student Debt */
+  student_debt: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 2200,
@@ -3035,8 +3035,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** crystal_lich — The Publish-or-Perish */
-  crystal_lich: {
+  /** publish_or_perish — The Publish-or-Perish */
+  publish_or_perish: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1600,
@@ -3087,8 +3087,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
 
   // ── THE ABYSS — BOSSES ──
 
-  /** shadow_hydra — The Group Project */
-  shadow_hydra: {
+  /** group_project — The Group Project */
+  group_project: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -3144,8 +3144,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** void_weaver — The Rabbit Hole */
-  void_weaver: {
+  /** rabbit_hole — The Rabbit Hole */
+  rabbit_hole: {
     idle: {
       bobAmplitude: 6,
       bobDuration: 2200,
@@ -3197,8 +3197,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
 
   // ── THE ARCHIVE — COMMONS ──
 
-  /** pressure_djinn — The Thesis Djinn */
-  pressure_djinn: {
+  /** thesis_djinn — The Thesis Djinn */
+  thesis_djinn: {
     idle: {
       bobAmplitude: 10,
       bobDuration: 1400,
@@ -3248,8 +3248,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** core_worm — The Gut Feeling */
-  core_worm: {
+  /** gut_feeling — The Gut Feeling */
+  gut_feeling: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -3300,8 +3300,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** biolume_jellyfish — The Bright Idea */
-  biolume_jellyfish: {
+  /** bright_idea — The Bright Idea */
+  bright_idea: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -3358,8 +3358,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** tectonic_scarab — The Sacred Text */
-  tectonic_scarab: {
+  /** sacred_text — The Sacred Text */
+  sacred_text: {
     idle: {
       bobAmplitude: 1,
       bobDuration: 3000,
@@ -3403,8 +3403,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** mantle_fiend — The Devil's Advocate */
-  mantle_fiend: {
+  /** devils_advocate — The Devil's Advocate */
+  devils_advocate: {
     idle: {
       bobAmplitude: 4,
       bobDuration: 1000,
@@ -3453,8 +3453,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** iron_core_golem — The Institution */
-  iron_core_golem: {
+  /** institution — The Institution */
+  institution: {
     idle: {
       bobAmplitude: 1,
       bobDuration: 2800,
@@ -3501,8 +3501,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** glyph_sentinel — The Rosetta Slab */
-  glyph_sentinel: {
+  /** rosetta_slab — The Rosetta Slab */
+  rosetta_slab: {
     idle: {
       bobAmplitude: 8,
       bobDuration: 2200,
@@ -3548,8 +3548,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** archive_moth — The Moth of Enlightenment */
-  archive_moth: {
+  /** moth_of_enlightenment — The Moth of Enlightenment */
+  moth_of_enlightenment: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -3604,8 +3604,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** rune_spider — The Hyperlink */
-  rune_spider: {
+  /** hyperlink — The Hyperlink */
+  hyperlink: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -3664,8 +3664,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** void_tendril — The Unknown Unknown */
-  void_tendril: {
+  /** unknown_unknown — The Unknown Unknown */
+  unknown_unknown: {
     idle: {
       bobAmplitude: 5,
       bobDuration: 2000,
@@ -3712,8 +3712,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** tome_mimic — The Fake News */
-  tome_mimic: {
+  /** fake_news — The Fake News */
+  fake_news: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 2000,
@@ -3767,8 +3767,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
 
   // ── THE ARCHIVE — MINI-BOSSES ──
 
-  /** primordial_wyrm — The First Question */
-  primordial_wyrm: {
+  /** first_question — The First Question */
+  first_question: {
     idle: {
       bobAmplitude: 8,
       bobDuration: 3000,
@@ -3815,8 +3815,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** iron_archon — The Dean */
-  iron_archon: {
+  /** dean — The Dean */
+  dean: {
     idle: {
       bobAmplitude: 3,
       bobDuration: 2000,
@@ -3864,8 +3864,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** pressure_colossus — The Dissertation */
-  pressure_colossus: {
+  /** dissertation — The Dissertation */
+  dissertation: {
     idle: {
       bobAmplitude: 0.5,
       bobDuration: 3500,
@@ -3909,8 +3909,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** biolume_monarch — The Eureka */
-  biolume_monarch: {
+  /** eureka — The Eureka */
+  eureka: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 1500,
@@ -3964,8 +3964,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** tectonic_titan — The Paradigm Shift */
-  tectonic_titan: {
+  /** paradigm_shift — The Paradigm Shift */
+  paradigm_shift: {
     idle: {
       bobAmplitude: 1,
       bobDuration: 2800,
@@ -4014,8 +4014,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** glyph_warden — The Ancient Tongue */
-  glyph_warden: {
+  /** ancient_tongue — The Ancient Tongue */
+  ancient_tongue: {
     idle: {
       bobAmplitude: 4,
       bobDuration: 2200,
@@ -4063,8 +4063,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** archive_specter — The Lost Thesis */
-  archive_specter: {
+  /** lost_thesis — The Lost Thesis */
+  lost_thesis: {
     idle: {
       bobAmplitude: 8,
       bobDuration: 2000,
@@ -4112,8 +4112,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
 
   // ── THE ARCHIVE — ELITES ──
 
-  /** mantle_dragon — The Dunning-Kruger */
-  mantle_dragon: {
+  /** dunning_kruger — The Dunning-Kruger */
+  dunning_kruger: {
     idle: {
       bobAmplitude: 8,
       bobDuration: 1200,
@@ -4159,8 +4159,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** core_harbinger — The Singularity */
-  core_harbinger: {
+  /** singularity — The Singularity */
+  singularity: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 2800,
@@ -4209,8 +4209,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
 
   // ── THE ARCHIVE — BOSSES ──
 
-  /** knowledge_golem — The Omnibus */
-  knowledge_golem: {
+  /** omnibus — The Omnibus */
+  omnibus: {
     idle: {
       bobAmplitude: 2,
       bobDuration: 2500,
@@ -4260,8 +4260,8 @@ export const ENEMY_ANIM_OVERRIDES: Record<string, AnimConfig> = {
     },
   },
 
-  /** the_curator — The Final Lesson */
-  the_curator: {
+  /** final_lesson — The Final Lesson */
+  final_lesson: {
     idle: {
       bobAmplitude: 4,
       bobDuration: 2000,

@@ -1,9 +1,11 @@
 <script lang="ts">
   import type { MysteryEvent, MysteryEffect } from '../../services/floorManager'
-  import { getRandomRoomBg } from '../../data/backgroundManifest'
+  import { getRandomRoomBg, getRoomDepthMap } from '../../data/backgroundManifest'
   import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
   import { preloadImages } from '../utils/assetPreloader'
   import { getMysteryEventIconPath, getMysteryEventEmoji } from '../utils/iconAssets'
+  import { isLandscape } from '../../stores/layoutStore'
+  import ParallaxTransition from './ParallaxTransition.svelte'
 
   interface Props {
     event: MysteryEvent | null
@@ -15,6 +17,8 @@
   let { event, playerHp, playerMaxHp, onresolve }: Props = $props()
 
   const bgUrl = getRandomRoomBg('mystery')
+  const depthUrl = getRoomDepthMap('mystery')
+  let showRoomTransition = $state(true)
   holdScreenTransition()
   preloadImages([bgUrl]).then(releaseScreenTransition)
 

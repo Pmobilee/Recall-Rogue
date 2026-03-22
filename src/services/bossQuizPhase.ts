@@ -50,7 +50,7 @@ export interface QuizPhaseOutcome {
  * Returns the matching phase config and its index if a new threshold was crossed, or null.
  * Checks against `alreadyTriggeredPhaseIndices` to prevent re-triggering.
  *
- * @param bossId - The enemy template ID (e.g. 'the_archivist').
+ * @param bossId - The enemy template ID (e.g. 'algorithm').
  * @param currentHpPercent - Current HP as a fraction of maxHP (0–1).
  * @param alreadyTriggeredPhaseIndices - Phase indices that have already fired this encounter.
  */

@@ -23,7 +23,7 @@ describe('ascension modifiers', () => {
   })
 
   it('enables curator second phase only at level 20', () => {
-    const curator = ENEMY_TEMPLATES.find((entry) => entry.id === 'the_curator')
+    const curator = ENEMY_TEMPLATES.find((entry) => entry.id === 'final_lesson')
     expect(curator).toBeTruthy()
     if (!curator) return
 

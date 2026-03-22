@@ -3,6 +3,7 @@ import { isTurboMode } from '../../utils/turboMode'
 import { getDeviceTier } from '../../services/deviceTierService'
 import { EnemySpriteSystem } from '../systems/EnemySpriteSystem'
 import { CombatAtmosphereSystem } from '../systems/CombatAtmosphereSystem'
+import { getAtmosphereConfig, type AtmosphereConfig } from '../../data/roomAtmosphere'
 import { StatusEffectVisualSystem } from '../systems/StatusEffectVisualSystem'
 import { WeaponAnimationSystem } from '../systems/WeaponAnimationSystem'
 import type { AnimArchetype } from '../../data/enemyAnimations'
@@ -11,6 +12,7 @@ import { ENEMY_TEMPLATES } from '../../data/enemies'
 import { BASE_WIDTH } from '../../data/layout'
 import { get } from 'svelte/store'
 import { layoutMode, type LayoutMode } from '../../stores/layoutStore'
+import { SpriteLightingFX } from '../shaders/SpriteLightingFX'
 
 /** Layout constants for first-person combat display zone (top ~58% of viewport). */
 const DISPLAY_ZONE_HEIGHT_PCT = 0.58
@@ -182,7 +184,7 @@ export class CombatScene extends Phaser.Scene {
   private currentFloor = 1
   private currentEncounter = 1
   private totalEncounters = 3
-  private currentEnemyId = 'cave_bat'
+  private currentEnemyId = 'page_flutter'
   private currentEnemyCategory: 'common' | 'elite' | 'mini_boss' | 'boss' = 'common'
   private reduceMotion = false
   private effectScale = 1
@@ -216,6 +218,10 @@ export class CombatScene extends Phaser.Scene {
   private atmosphereSystem!: CombatAtmosphereSystem
   private statusEffectVisuals!: StatusEffectVisualSystem
   private weaponAnimations!: WeaponAnimationSystem
+
+  // ── Atmosphere color grading ──────────────────────
+  private _colorMatrixFx: Phaser.FX.ColorMatrix | null = null
+  private atmosphereConfig: AtmosphereConfig | null = null
 
   // ── Stored layout values ─────────────────────────────────
   private displayH = 0
@@ -531,6 +537,12 @@ export class CombatScene extends Phaser.Scene {
     const h = this.scale.height
     this.scaleFactor = w / BASE_WIDTH
     this.displayH = h * DISPLAY_ZONE_HEIGHT_PCT
+
+    // Register custom PostFX pipelines
+    const renderer = this.game.renderer as Phaser.Renderer.WebGL.WebGLRenderer
+    if (renderer && renderer.pipelines) {
+      renderer.pipelines.addPostPipeline('SpriteLightingFX', SpriteLightingFX)
+    }
 
     // ── Combat background ─────────────────────────────────
     // Initial dark background — real bg loaded per-encounter via setBackground()
@@ -861,6 +873,23 @@ export class CombatScene extends Phaser.Scene {
 
     // Start atmosphere effects
     this.atmosphereSystem.start(this.currentFloor, this.currentEnemyCategory === 'boss')
+    this.atmosphereSystem.setEnemyPosition(enemyX)
+
+    // Apply atmosphere visual effects (tinting, AO, color grading)
+    const atmConfig = this.atmosphereSystem.getConfig() ?? getAtmosphereConfig(this.currentFloor)
+    this.atmosphereConfig = atmConfig
+    // Sprite tinting and AO disabled until Light2D (AR-219) adds point lights.
+    // Without light sources, multiplicative tint + AO just darkens everything.
+    this.applyColorGrading(atmConfig)
+    // Apply per-pixel directional lighting derived from sprite luminance
+    const lightDef = atmConfig.lighting.lights[0]
+    const lightColor = lightDef?.color ?? 0xffffff
+    const lightDir = atmConfig.rim.lightDir // reuse the rim light direction
+    this.enemySpriteSystem.applyLighting(lightColor, lightDir, 1.2)
+    // Tint the background
+    if (this.combatBackground instanceof Phaser.GameObjects.Image) {
+      this.combatBackground.setTint(atmConfig.backgroundTint)
+    }
   }
 
   /** Update enemy HP (optionally animate the bar). */
@@ -1148,6 +1177,34 @@ export class CombatScene extends Phaser.Scene {
         .setDisplaySize(dispW, dispH)
         .setDepth(0)
     }
+
+    // Re-apply background tint when real image loads
+    if (this.atmosphereConfig) {
+      (this.combatBackground as Phaser.GameObjects.Image).setTint(this.atmosphereConfig.backgroundTint)
+    }
+  }
+
+  /**
+   * Apply camera color grading (saturation + brightness) based on atmosphere config.
+   * @param config The atmosphere config for the current room
+   */
+  private applyColorGrading(config: AtmosphereConfig): void {
+    if (getDeviceTier() === 'low-end') return
+
+    // Remove previous color matrix
+    if (this._colorMatrixFx) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      this.cameras.main.postFX.remove(this._colorMatrixFx as any)
+      this._colorMatrixFx = null
+    }
+
+    const fx = this.cameras.main.postFX.addColorMatrix()
+    fx.saturate(config.cameraColorMatrix.saturation)
+    fx.brightness(config.cameraColorMatrix.brightness)
+    if (config.cameraColorMatrix.hueRotate) {
+      fx.hue(config.cameraColorMatrix.hueRotate)
+    }
+    this._colorMatrixFx = fx
   }
 
   /** Play enemy hit reaction (flash white, slight knockback). */

@@ -561,7 +561,7 @@ export const QUIZ_PHASE_CORRECT_HP_DRAIN = 0.05;
  */
 export const BOSS_QUIZ_PHASES: Record<string, BossQuizPhaseConfig[]> = {
   /** The Archivist: standard phase at 50% HP. */
-  the_archivist: [
+  algorithm: [
     {
       hpThreshold: 0.50,
       questionCount: 5,
@@ -573,7 +573,7 @@ export const BOSS_QUIZ_PHASES: Record<string, BossQuizPhaseConfig[]> = {
     },
   ],
   /** The Curator: weakest-domain phase at 66%, then rapid-fire at 33%. */
-  the_curator: [
+  final_lesson: [
     {
       hpThreshold: 0.66,
       questionCount: 4,

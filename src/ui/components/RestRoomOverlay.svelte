@@ -1,8 +1,9 @@
 <script lang="ts">
-  import { getRandomRoomBg } from '../../data/backgroundManifest'
+  import { getRandomRoomBg, getRoomDepthMap } from '../../data/backgroundManifest'
   import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
   import { preloadImages } from '../utils/assetPreloader'
   import { isLandscape } from '../../stores/layoutStore'
+  import ParallaxTransition from './ParallaxTransition.svelte'
 
   interface Props {
     playerHp: number
@@ -28,6 +29,8 @@
     meditateDisabledReason = 'Deck too small',
   }: Props = $props()
   const bgUrl = getRandomRoomBg('rest')
+  const depthUrl = getRoomDepthMap('rest')
+  let showRoomTransition = $state(true)
   holdScreenTransition()
   preloadImages([bgUrl]).then(releaseScreenTransition)
 

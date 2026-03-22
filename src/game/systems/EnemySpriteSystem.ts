@@ -1,6 +1,7 @@
 import Phaser from 'phaser'
 import { getDeviceTier } from '../../services/deviceTierService'
 import { getAnimConfig, type AnimConfig, type AnimArchetype, type IdlePatternStep, type IdleBehavior } from '../../data/enemyAnimations'
+import type { AtmosphereConfig } from '../../data/roomAtmosphere'
 
 type EnemyCategory = 'common' | 'elite' | 'mini_boss' | 'boss'
 
@@ -43,6 +44,11 @@ export class EnemySpriteSystem {
   private enrageParticleTimer: Phaser.Time.TimerEvent | null = null
   private enrageGlowRect: Phaser.GameObjects.Rectangle | null = null
   private enrageGlowTween: Phaser.Tweens.Tween | null = null
+
+  // ── Atmosphere visual effects ─────────────────────────────
+  private _aoFx: Phaser.FX.Gradient | null = null
+  private _currentAtmosphereTint: number | null = null
+  private _lightingFx: any = null  // SpriteLightingFX instance
 
   /**
    * Create a new EnemySpriteSystem.
@@ -223,6 +229,110 @@ export class EnemySpriteSystem {
    */
   public setAnimConfig(archetype?: AnimArchetype, enemyId?: string): void {
     this.animConfig = getAnimConfig(archetype, enemyId)
+  }
+
+  /**
+   * Apply room-specific atmosphere color grading to the enemy sprite.
+   * Tints the main sprite with the room's color temperature.
+   * @param config The atmosphere config for the current room
+   */
+  public applyAtmosphereTint(config: Pick<AtmosphereConfig, 'spriteTint'>): void {
+    if (!this.mainSprite) return
+    this._currentAtmosphereTint = config.spriteTint
+    this.mainSprite.setTint(config.spriteTint)
+  }
+
+  /**
+   * Clear any atmosphere tinting from the enemy sprite.
+   * Called before hit flash and restored after.
+   */
+  public clearAtmosphereTint(): void {
+    if (!this.mainSprite) return
+    this._currentAtmosphereTint = null
+    this.mainSprite.clearTint()
+  }
+
+  /**
+   * Apply ambient occlusion gradient to darken the sprite's base.
+   * Simulates how light reaches less of the surface near ground contact.
+   * @param aoStrength Strength of the AO effect (0.0-0.4). 0 = disabled.
+   */
+  public applyAO(aoStrength: number): void {
+    if (!this.mainSprite || aoStrength <= 0) return
+    // Only apply on high-end/mid devices (preFX costs a shader pass)
+    if (getDeviceTier() === 'low-end') return
+
+    // Remove previous AO if exists
+    this.removeAO()
+
+    // Darken bottom 40% of sprite — simulates ground-contact light falloff
+    if (!this.mainSprite.preFX) return
+    this._aoFx = this.mainSprite.preFX.addGradient(
+      0x000000, 0x000000,
+      aoStrength,
+      0, 0.6,
+      0, 1.0
+    )
+  }
+
+  /**
+   * Remove ambient occlusion effect from the sprite.
+   */
+  public removeAO(): void {
+    if (this._aoFx && this.mainSprite?.preFX) {
+      this.mainSprite.preFX.remove(this._aoFx)
+      this._aoFx = null
+    }
+  }
+
+  /**
+   * Apply per-pixel directional lighting to the enemy sprite.
+   * Derives normals from the sprite's luminance gradients — no normal map needed.
+   * @param lightColor Hex color of the light source
+   * @param lightDir Light direction as [x, y] — will be normalized with z=1
+   * @param intensity Light intensity (0.5-2.0)
+   */
+  public applyLighting(lightColor: number, lightDir: [number, number], intensity: number): void {
+    if (!this.mainSprite) return
+    if (getDeviceTier() === 'low-end') return
+
+    this.removeLighting()
+
+    // Convert hex color to [r, g, b] in 0-1 range
+    const c = Phaser.Display.Color.ValueToColor(lightColor)
+    const r = c.redGL, g = c.greenGL, b = c.blueGL
+
+    // Normalize the light direction with z component
+    const len = Math.sqrt(lightDir[0] ** 2 + lightDir[1] ** 2 + 1)
+    const dir: [number, number, number] = [lightDir[0] / len, lightDir[1] / len, 1 / len]
+
+    // Apply the lighting PostFX
+    try {
+      this._lightingFx = this.mainSprite.postFX.addPipeline('SpriteLightingFX') as any
+      if (this._lightingFx && typeof this._lightingFx.setLightConfig === 'function') {
+        this._lightingFx.setLightConfig(
+          dir,
+          [r, g, b],
+          intensity,
+          [0.65, 0.65, 0.7],  // Ambient — slightly cool fill so shadows aren't black
+          2.0                  // Normal strength — how much luminance affects normals
+        )
+      }
+    } catch (e) {
+      // Shader compilation failed — gracefully degrade (no lighting)
+      console.warn('[EnemySpriteSystem] SpriteLightingFX failed, skipping:', e)
+      this._lightingFx = null
+    }
+  }
+
+  /**
+   * Remove directional lighting effect from the sprite.
+   */
+  public removeLighting(): void {
+    if (this._lightingFx && this.mainSprite) {
+      this.mainSprite.postFX.remove(this._lightingFx)
+      this._lightingFx = null
+    }
   }
 
   /**
@@ -648,7 +758,11 @@ export class EnemySpriteSystem {
       if (this.mainSprite) {
         this.mainSprite.setTint(0xffffff)
         this.scene.time.delayedCall(60, () => {
-          this.mainSprite?.clearTint()
+          if (this._currentAtmosphereTint != null) {
+            this.mainSprite?.setTint(this._currentAtmosphereTint)
+          } else {
+            this.mainSprite?.clearTint()
+          }
         })
       } else if (this.mainRect) {
         const origColor = this.mainRect.fillColor
@@ -668,7 +782,11 @@ export class EnemySpriteSystem {
     if (this.mainSprite) {
       this.mainSprite.setTint(0xffffff)
       this.scene.time.delayedCall(60, () => {
-        this.mainSprite?.clearTint()
+        if (this._currentAtmosphereTint != null) {
+          this.mainSprite?.setTint(this._currentAtmosphereTint)
+        } else {
+          this.mainSprite?.clearTint()
+        }
       })
     } else if (this.mainRect) {
       const origColor = this.mainRect.fillColor
@@ -952,6 +1070,11 @@ export class EnemySpriteSystem {
     // Reset state
     this.isAnimating = false
     this.animConfig = getAnimConfig()
+
+    // Reset atmosphere effects
+    this._aoFx = null
+    this._currentAtmosphereTint = null
+    this._lightingFx = null
 
     // Clean up jitter timer
     if (this.jitterTimer) {

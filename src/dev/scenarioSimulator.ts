@@ -36,7 +36,7 @@ import { markOnboardingComplete, markOnboardingTooltipSeen } from '../services/c
 export interface ScenarioConfig {
   /** Target screen to navigate to after setup. */
   screen: string;
-  /** Enemy template ID (e.g. 'cave_bat', 'the_archivist'). */
+  /** Enemy template ID (e.g. 'page_flutter', 'algorithm'). */
   enemy?: string;
   /** Override enemy HP after spawn. */
   enemyHp?: number;
@@ -125,63 +125,63 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
   // === Combat scenarios ===
   'combat-basic': {
     screen: 'combat',
-    enemy: 'cave_bat',
+    enemy: 'page_flutter',
     hand: ['strike', 'strike', 'strike', 'block', 'block'],
   },
   'combat-10-cards': {
     screen: 'combat',
-    enemy: 'crystal_golem',
+    enemy: 'thesis_construct',
     handSize: 10,
   },
   'combat-boss': {
     screen: 'combat',
-    enemy: 'the_archivist',
+    enemy: 'algorithm',
     playerHp: 50,
     hand: ['heavy_strike', 'strike', 'block', 'lifetap', 'expose'],
     relics: ['whetstone', 'iron_shield', 'swift_boots'],
   },
   'combat-scholar': {
     screen: 'combat',
-    enemy: 'knowledge_golem',
+    enemy: 'omnibus',
     handSize: 10,
     relics: ['resonance_crystal'],
   },
   'combat-all-chains': {
     screen: 'combat',
-    enemy: 'cave_bat',
+    enemy: 'page_flutter',
     hand: ['strike', 'strike', 'block', 'block', 'strike'],
     chainTypes: [0, 1, 2, 3, 4],
   },
   'combat-low-hp': {
     screen: 'combat',
-    enemy: 'cave_bat',
+    enemy: 'page_flutter',
     playerHp: 10,
     playerMaxHp: 100,
     hand: ['strike', 'block', 'heavy_strike', 'strike', 'block'],
   },
   'combat-elite': {
     screen: 'combat',
-    enemy: 'the_curator',
+    enemy: 'final_lesson',
     playerHp: 80,
     relics: ['whetstone', 'iron_shield'],
     hand: ['heavy_strike', 'strike', 'multi_hit', 'block', 'lifetap'],
   },
   'combat-mini-boss': {
     screen: 'combat',
-    enemy: 'fossil_guardian',
+    enemy: 'peer_reviewer',
     playerHp: 60,
     hand: ['heavy_strike', 'strike', 'block', 'expose', 'reckless'],
     relics: ['whetstone'],
   },
   'combat-relic-heavy': {
     screen: 'combat',
-    enemy: 'cave_bat',
+    enemy: 'page_flutter',
     relics: ['whetstone', 'iron_shield', 'vitality_ring', 'resonance_crystal'],
     hand: ['strike', 'strike', 'block', 'heavy_strike', 'multi_hit'],
   },
   'combat-big-hand': {
     screen: 'combat',
-    enemy: 'cave_bat',
+    enemy: 'page_flutter',
     handSize: 8,
     relics: ['scavengers_eye'],
   },
@@ -276,7 +276,7 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
   // === More combat presets ===
   'combat-near-death': {
     screen: 'combat',
-    enemy: 'cave_bat',
+    enemy: 'page_flutter',
     playerHp: 3,
     playerMaxHp: 100,
     hand: ['lifetap', 'block', 'strike', 'heavy_strike', 'block'],
@@ -480,7 +480,7 @@ async function bootstrapRun(config: ScenarioConfig): Promise<boolean> {
 
 /**
  * Launches a combat encounter with the specified enemy.
- * If no enemy ID is given, falls back to cave_bat (the tutorial enemy).
+ * If no enemy ID is given, falls back to page_flutter (the tutorial enemy).
  */
 async function startCombatScenario(config: ScenarioConfig): Promise<ScenarioResult> {
   // Ensure DB is ready — facts are needed for card pool
@@ -499,7 +499,7 @@ async function startCombatScenario(config: ScenarioConfig): Promise<ScenarioResu
 
   const { startEncounterForRoom, activeTurnState } = await import('../services/encounterBridge');
 
-  const enemyId = config.enemy ?? 'cave_bat';
+  const enemyId = config.enemy ?? 'page_flutter';
 
   // Validate enemy exists
   const enemyTemplate = ENEMY_TEMPLATES.find(t => t.id === enemyId);

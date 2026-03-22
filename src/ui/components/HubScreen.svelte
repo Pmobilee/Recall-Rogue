@@ -13,6 +13,7 @@
   import CampHudOverlay from './CampHudOverlay.svelte'
   import CampUpgradeModal from './CampUpgradeModal.svelte'
   import StudyModeSelector from './StudyModeSelector.svelte'
+  import ParallaxTransition from './ParallaxTransition.svelte'
   import { getLevelProgress } from '../../services/characterLevel'
 
   interface Props {
@@ -57,6 +58,9 @@
   let sparkleBursts = $state<number[]>([])
   let sparkleIdCounter = 0
   const MAX_SPARKLE_BURSTS = 5
+  let transitionActive = $state(false)
+  let transitionType = $state<'enter' | 'exit-forward' | 'exit-backward'>('enter')
+  let transitionRoom = $state('shop')
 
   // Derived tier values — reactively update sprite URLs when upgrades are purchased
   let tiers = $derived($campState.tiers)
@@ -100,6 +104,29 @@
     setTimeout(() => {
       sparkleBursts = sparkleBursts.filter(b => b !== id)
     }, 700)
+  }
+
+  function randomRoom(): string {
+    const rooms = ['shop', 'mystery', 'rest', 'treasure', 'descent']
+    return rooms[Math.floor(Math.random() * rooms.length)]
+  }
+
+  function previewEnter(): void {
+    transitionRoom = randomRoom()
+    transitionType = 'enter'
+    transitionActive = true
+  }
+
+  function previewExit(): void {
+    transitionRoom = randomRoom()
+    // Combat rooms use forward exit, other rooms use backward exit
+    const combatRooms = ['descent']
+    transitionType = combatRooms.includes(transitionRoom) ? 'exit-forward' : 'exit-backward'
+    transitionActive = true
+  }
+
+  function onTransitionComplete(): void {
+    transitionActive = false
   }
 </script>
 
@@ -277,6 +304,17 @@
       {#if onReplayBootAnim}
         <button class="replay-boot-btn" onclick={onReplayBootAnim}>Intro</button>
       {/if}
+      <button class="preview-transition-btn" onclick={previewEnter}>Enter</button>
+      <button class="preview-transition-btn preview-exit-btn" onclick={previewExit}>Exit</button>
+
+      {#if transitionActive}
+        <ParallaxTransition
+          imageUrl={`/assets/backgrounds/rooms/${transitionRoom}/${$isLandscape ? 'landscape' : 'portrait'}.webp`}
+          depthUrl={`/assets/backgrounds/rooms/${transitionRoom}/${$isLandscape ? 'landscape' : 'portrait'}_depth.webp`}
+          type={transitionType}
+          onComplete={onTransitionComplete}
+        />
+      {/if}
     </div>
 
     <!-- AR-95: Right decorative side panel (flanks center campsite column) -->
@@ -450,6 +488,17 @@
     <!-- Replay boot animation (dev) -->
     {#if onReplayBootAnim}
       <button class="replay-boot-btn" onclick={onReplayBootAnim}>Intro</button>
+    {/if}
+    <button class="preview-transition-btn" onclick={previewEnter}>Enter</button>
+    <button class="preview-transition-btn preview-exit-btn" onclick={previewExit}>Exit</button>
+
+    {#if transitionActive}
+      <ParallaxTransition
+        imageUrl={`/assets/backgrounds/rooms/${transitionRoom}/${$isLandscape ? 'landscape' : 'portrait'}.webp`}
+        depthUrl={`/assets/backgrounds/rooms/${transitionRoom}/${$isLandscape ? 'landscape' : 'portrait'}_depth.webp`}
+        type={transitionType}
+        onComplete={onTransitionComplete}
+      />
     {/if}
 
   </section>
@@ -657,6 +706,29 @@
 
   .hub-landscape .level-xp-text {
     font-size: calc(13px * var(--text-scale, 1));
+  }
+
+  /* ═══ TRANSITION PREVIEW ═══════════════════════════════════════════════ */
+
+  .preview-transition-btn {
+    position: absolute;
+    bottom: calc(calc(12px * var(--layout-scale, 1)) + var(--safe-bottom, 0px));
+    left: calc(80px * var(--layout-scale, 1));
+    padding: calc(4px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    font-size: calc(11px * var(--text-scale, 1));
+    color: rgba(255,255,255,0.5);
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px;
+    z-index: 50;
+    cursor: pointer;
+  }
+  .preview-transition-btn:active {
+    background: rgba(255,255,255,0.1);
+  }
+
+  .preview-exit-btn {
+    left: calc(130px * var(--layout-scale, 1));
   }
 
 </style>
