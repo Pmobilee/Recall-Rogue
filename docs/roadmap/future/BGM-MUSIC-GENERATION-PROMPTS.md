@@ -1,10 +1,69 @@
 # Background Music — AI Generation Prompts
 
 **For:** Damion (manual task, not automated)
-**Tools:** Suno v4, Udio, AIVA (best for orchestral), Soundverse (best for loops), Beatoven.ai
 **Output:** .ogg or .mp3, 128-192kbps
 **Destination:** `public/assets/audio/bgm/`
 **Naming:** `bgm_hub.ogg`, `bgm_combat.ogg`, `bgm_boss.ogg`, etc.
+
+---
+
+## Tool Recommendations (researched March 2026)
+
+### Best Option: ACE-Step 1.5 (Open Source, Local)
+
+**This is installed locally on this machine** at `/opt/ace-step`. It runs on your MacBook's GPU.
+
+| Detail | Value |
+|--------|-------|
+| Quality | SongEval **8.09** — outperforms Suno v5 on the standard benchmark |
+| Speed | ~30-60s per song on MacBook (MPS backend), ~15s on RTX 3060 |
+| VRAM | Under 4GB needed (your Mac has plenty) |
+| Languages | 50+ languages |
+| Features | Lyrics, vocals, style control, cover generation, vocal-to-BGM, LoRA fine-tuning |
+| License | Open source, fully local, unlimited generations, zero cost |
+| Repo | [github.com/ace-step/ACE-Step-1.5](https://github.com/ace-step/ACE-Step-1.5) |
+| UI | [github.com/fspecii/ace-step-ui](https://github.com/fspecii/ace-step-ui) — Spotify-like interface |
+
+**To generate a track:**
+```bash
+cd /opt/ace-step
+source venv/bin/activate
+python generate.py --prompt "your prompt here" --output public/assets/audio/bgm/bgm_hub.ogg
+```
+Or use the Gradio UI: `python app.py` then open `http://localhost:7860`
+
+### Commercial Services (if you want to compare)
+
+#### S-Tier
+
+| Service | Best For | Quality | Free Tier | Why Use It |
+|---------|----------|---------|-----------|------------|
+| **[Suno v4.5](https://suno.com)** | Overall best, fastest | 9/10 | 10 songs/day (non-commercial) | Best vocal naturalness, most consistent. 60-70% of generations are usable. Pro: $10/mo for commercial rights. |
+| **[Udio](https://www.udio.com)** | Highest fidelity | 9.5/10 fidelity | Similar to Suno | Only 3/10 listeners could tell it was AI. Best for electronic/complex genres. Stem downloads for mixing. |
+
+#### A-Tier
+
+| Service | Best For | Price | Why Use It |
+|---------|----------|-------|------------|
+| **[AIVA](https://www.aiva.ai)** | Orchestral/cinematic | $15-49/mo | Purpose-built for game soundtracks. Full copyright on Pro. **Best for boss battle + victory fanfare.** |
+| **[ElevenLabs Music](https://elevenlabs.io)** | Vocal realism | API-based | Unmatched vocal quality. Weaker on instrumentals. |
+| **[Soundverse](https://www.soundverse.ai)** | Seamless loops | Freemium | Dedicated Loop Mode for game music. Best loop tooling of any service. |
+| **[Beatoven.ai](https://www.beatoven.ai)** | Royalty-free | Freemium | All output pre-cleared for commercial use. |
+
+#### Other Open Source Options
+
+| Model | Quality | Notes |
+|-------|---------|-------|
+| **[HeartMuLa 7B](https://github.com/HeartMuLa/heartlib)** | Comparable to Suno | Best lyric clarity of any model (lowest Phoneme Error Rate). 4B params. Great for multilingual. |
+| **Meta MusicGen** | Good instrumental | MIT-licensed, established but older. Good for ambient/background, weaker on full songs. |
+
+### Recommended Workflow
+
+1. **Generate with ACE-Step locally** — unlimited iterations, zero cost, benchmark-beating quality
+2. **A/B test your favorites against Suno** — use Suno's free tier (10/day) to compare
+3. **For orchestral tracks (boss, victory)** — try AIVA if ACE-Step's orchestral output isn't cinematic enough
+4. **Fatigue test** — loop each track for 5 minutes. If it gets annoying, regenerate.
+5. **Layer test** — play the Surge overlay ON TOP of combat music. Do they harmonize?
 
 ---
 
