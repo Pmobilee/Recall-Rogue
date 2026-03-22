@@ -1351,21 +1351,21 @@
        Width derived from height via aspect ratio (1.42 tall : 1 wide → invert).
        --hand-scale defaults to 1 (≤6 cards) and shrinks toward 0.65 for 10+ cards. */
     --hand-scale: 1;
-    --card-h: calc(27vh * 0.80 * var(--hand-scale));
+    --card-h: calc(32vh * 0.80 * var(--hand-scale));
     --card-w: calc(var(--card-h) / 1.42);
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    /* Spec: card hand strip = 27% of viewport height */
-    height: 27vh;
+    /* Card hand strip height */
+    height: 32vh;
     z-index: 20;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     justify-content: center;
-    gap: calc(8px * var(--hand-scale));
-    padding: 0 calc(12px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    gap: calc(14px * var(--hand-scale));
+    padding: 0 calc(12px * var(--layout-scale, 1)) calc(18px * var(--layout-scale, 1));
     background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
     pointer-events: none;
   }
@@ -1519,7 +1519,8 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    isolation: isolate; /* create clean stacking context */
+    isolation: isolate;
+    transform-style: flat; /* override parent preserve-3d so z-index works normally */
   }
 
   .frame-layer {

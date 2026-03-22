@@ -1,19 +1,23 @@
 /**
- * Dev-mode screenshot helper — manual canvas compositing.
+ * Dev-mode screenshot helper — html2canvas compositing.
  * Captures the full game view (Phaser WebGL canvas + Svelte DOM overlay) as a composited image.
- * Called via window.__terraScreenshot() from Playwright tests.
+ * Called via window.__terraScreenshot() and window.__terraScreenshotFile() from Playwright tests.
  *
- * html2canvas can't handle WebGL canvases, so we:
- * 1. Grab the Phaser canvas pixels via toDataURL() (requires preserveDrawingBuffer: true)
- * 2. Create an offscreen canvas at viewport size
- * 3. Draw the Phaser canvas scaled to viewport
- * 4. Render DOM overlay elements on top (text, buttons, cards, HP bars)
- * 5. Optionally downscale and/or encode as JPEG for smaller output
+ * Compositing strategy:
+ * 1. Grab the Phaser canvas pixels directly via drawImage() (WebGL canvas, requires
+ *    preserveDrawingBuffer: true in the Phaser game config)
+ * 2. Use html2canvas to render the full DOM (all Svelte overlays: cards, HP bars, buttons, menus)
+ *    with all canvas elements ignored — html2canvas handles CSS variables, images, fonts,
+ *    pseudo-elements, and background images that the old SVG foreignObject approach missed
+ * 3. Draw Phaser canvas first (background layer), then html2canvas result on top
+ * 4. Optionally downscale and encode as JPEG for smaller output
  *
- * window.__terraScreenshot()          → small JPEG (scale 0.5, quality 0.7) for tool consumption
- * window.__terraScreenshotFile()      → POSTs image to /__dev/screenshot, returns server file path
- *                                       Falls back to the data URL if the endpoint is unavailable.
+ * window.__terraScreenshot()     → small JPEG (scale 0.5, quality 0.7) for tool consumption
+ * window.__terraScreenshotFile() → POSTs image to /__dev/screenshot, returns server file path.
+ *                                   Falls back to the data URL if the endpoint is unavailable.
  */
+
+import html2canvas from 'html2canvas';
 
 /** Options for captureScreenshot */
 export interface ScreenshotOptions {
@@ -46,7 +50,8 @@ export async function captureScreenshot(options: ScreenshotOptions = {}): Promis
   ctx.fillStyle = '#0D1117';
   ctx.fillRect(0, 0, vw, vh);
 
-  // 1. Draw Phaser canvas (the game background + sprites)
+  // 1. Draw Phaser canvas (WebGL — must be captured via drawImage before html2canvas runs,
+  //    since html2canvas will skip it via ignoreElements anyway)
   const phaserCanvas = document.querySelector('#phaser-container canvas') as HTMLCanvasElement | null;
   if (phaserCanvas) {
     const container = document.getElementById('phaser-container');
@@ -58,11 +63,59 @@ export async function captureScreenshot(options: ScreenshotOptions = {}): Promis
     }
   }
 
-  // 2. Render DOM overlay on top using SVG foreignObject trick
-  // This renders actual styled HTML into a canvas without html2canvas
-  const overlay = await renderDomOverlay(vw, vh);
-  if (overlay) {
-    ctx.drawImage(overlay, 0, 0);
+  // 2. Use html2canvas to render the Svelte DOM overlay on top.
+  //    - backgroundColor: null → transparent so the Phaser layer shows through
+  //    - ignoreElements: skip all <canvas> elements (Phaser canvas drawn above)
+  //    - useCORS: allow cross-origin images (card art, sprites)
+  //    - scale: 1 — we handle downscaling ourselves below
+  //
+  //    IMPORTANT: Temporarily make DOM backgrounds transparent so html2canvas
+  //    doesn't paint a solid dark layer over the Phaser canvas we drew above.
+  //    We restore them after capture.
+  try {
+    // Temporarily clear ALL opaque backgrounds that would cover the Phaser layer.
+    // html2canvas faithfully renders DOM backgrounds, which paint over our
+    // manually-composited Phaser canvas. We clear them, capture, then restore.
+    const bgOverrides: { el: HTMLElement; prop: string; orig: string }[] = [];
+    const allEls = document.querySelectorAll('*');
+    for (const el of allEls) {
+      if (el.tagName === 'CANVAS') continue;
+      const htmlEl = el as HTMLElement;
+      const style = getComputedStyle(htmlEl);
+      const bg = style.backgroundColor;
+      // Clear any non-transparent background on elements covering the viewport
+      if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+        const rect = htmlEl.getBoundingClientRect();
+        if (rect.width >= vw * 0.8 && rect.height >= vh * 0.5) {
+          bgOverrides.push({ el: htmlEl, prop: 'backgroundColor', orig: htmlEl.style.backgroundColor });
+          htmlEl.style.backgroundColor = 'transparent';
+        }
+      }
+    }
+    // Also clear html and body
+    for (const el of [document.documentElement, document.body]) {
+      bgOverrides.push({ el, prop: 'backgroundColor', orig: el.style.backgroundColor });
+      el.style.backgroundColor = 'transparent';
+    }
+
+    const domCanvas = await html2canvas(document.body, {
+      backgroundColor: null,
+      ignoreElements: (el: Element) => el.tagName === 'CANVAS',
+      useCORS: true,
+      logging: false,
+      scale: 1,
+      width: vw,
+      height: vh,
+    });
+    ctx.drawImage(domCanvas, 0, 0);
+
+    // Restore backgrounds
+    for (const { el, orig } of bgOverrides) {
+      el.style.backgroundColor = orig;
+    }
+  } catch (err) {
+    // html2canvas failed — log and continue with Phaser-only capture
+    console.warn('[screenshotHelper] html2canvas failed, DOM overlay missing:', err);
   }
 
   // 3. If scale != 1, draw the full canvas onto a smaller output canvas
@@ -112,87 +165,11 @@ export async function captureScreenshotToFile(): Promise<string> {
   }
 }
 
-/** Render the DOM (excluding canvas) as an image via SVG foreignObject */
-async function renderDomOverlay(width: number, height: number): Promise<HTMLImageElement | null> {
-  // Clone the body, remove canvas elements, serialize to SVG foreignObject
-  const clone = document.body.cloneNode(true) as HTMLElement;
-
-  // Remove all canvas elements from clone (we drew Phaser separately)
-  clone.querySelectorAll('canvas').forEach(c => c.remove());
-
-  // Remove script tags
-  clone.querySelectorAll('script').forEach(s => s.remove());
-
-  // Inline all computed styles on every element so the SVG renders correctly
-  inlineStyles(document.body, clone);
-
-  const svgNs = 'http://www.w3.org/2000/svg';
-  const xhtmlNs = 'http://www.w3.org/1999/xhtml';
-
-  const svgMarkup = `
-    <svg xmlns="${svgNs}" width="${width}" height="${height}">
-      <foreignObject width="100%" height="100%">
-        <body xmlns="${xhtmlNs}" style="margin:0;padding:0;width:${width}px;height:${height}px;overflow:hidden;">
-          ${clone.innerHTML}
-        </body>
-      </foreignObject>
-    </svg>`;
-
-  const blob = new Blob([svgMarkup], { type: 'image/svg+xml;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-
-  return new Promise((resolve) => {
-    const img = new Image();
-    img.onload = () => {
-      URL.revokeObjectURL(url);
-      resolve(img);
-    };
-    img.onerror = () => {
-      URL.revokeObjectURL(url);
-      resolve(null);
-    };
-    img.src = url;
-  });
-}
-
-/** Recursively inline computed styles from source to clone */
-function inlineStyles(source: Element, clone: Element): void {
-  const sourceStyle = window.getComputedStyle(source);
-  const cloneEl = clone as HTMLElement;
-  if (cloneEl.style) {
-    // Copy key visual properties
-    const props = [
-      'position', 'top', 'left', 'right', 'bottom', 'width', 'height',
-      'margin', 'padding', 'display', 'flexDirection', 'justifyContent', 'alignItems',
-      'color', 'backgroundColor', 'fontSize', 'fontFamily', 'fontWeight',
-      'lineHeight', 'textAlign', 'opacity', 'zIndex', 'overflow',
-      'borderRadius', 'border', 'boxShadow', 'textShadow',
-      'transform', 'gap', 'gridTemplateColumns', 'gridTemplateRows',
-      'backgroundImage', 'backgroundSize', 'backgroundPosition',
-      'visibility', 'pointerEvents', 'whiteSpace', 'letterSpacing',
-      'maxWidth', 'maxHeight', 'minWidth', 'minHeight',
-      'boxSizing', 'flexGrow', 'flexShrink', 'flexBasis', 'flexWrap',
-    ];
-    for (const prop of props) {
-      const val = sourceStyle.getPropertyValue(prop);
-      if (val && val !== 'none' && val !== 'normal' && val !== 'auto' && val !== '0px') {
-        cloneEl.style.setProperty(prop, val);
-      }
-    }
-  }
-
-  const sourceChildren = source.children;
-  const cloneChildren = clone.children;
-  for (let i = 0; i < sourceChildren.length && i < cloneChildren.length; i++) {
-    inlineStyles(sourceChildren[i], cloneChildren[i]);
-  }
-}
-
 /** Initialize the screenshot helper on window */
 export function initScreenshotHelper(): void {
   const win = window as unknown as Record<string, unknown>;
   /** Small JPEG (scale 0.5, quality 0.7) for tool consumption — default args unchanged */
   win.__terraScreenshot = captureScreenshot;
-  /** Full-resolution PNG saved to the downloads folder */
+  /** POSTs to /__dev/screenshot, returns server-side file path */
   win.__terraScreenshotFile = captureScreenshotToFile;
 }
