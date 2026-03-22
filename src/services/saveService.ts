@@ -469,10 +469,15 @@ export function load(): PlayerSave | null {
     if (typeof parsedAny['characterLevel'] !== 'number') {
       parsedAny['characterLevel'] = 25
     }
-    // DEV: force max level for testing — all cards/relics unlocked
+    // DEV: force max level + all relics unlocked for testing
     parsedAny['characterLevel'] = 25;
     parsedAny['totalXP'] = 999999;
-    console.log('[DEV] Forced characterLevel to 25');
+    // Unlock all relics in collection
+    try {
+      const { FULL_RELIC_CATALOGUE } = require('../data/relics/index');
+      parsedAny['unlockedRelicIds'] = FULL_RELIC_CATALOGUE.map((r: any) => r.id);
+    } catch { /* relics not loaded yet */ }
+    console.log('[DEV] Forced characterLevel 25 + all relics unlocked');
     if (!('lastDailyBonusDate' in parsedAny) || (parsedAny['lastDailyBonusDate'] !== null && typeof parsedAny['lastDailyBonusDate'] !== 'string')) {
       parsedAny['lastDailyBonusDate'] = null
     }

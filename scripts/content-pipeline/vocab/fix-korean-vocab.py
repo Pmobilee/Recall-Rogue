@@ -17,6 +17,47 @@ VOCAB_FILE = REPO_ROOT / "src/data/seed/vocab-ko.json"
 # ---------------------------------------------------------------------------
 # Phase 1: Manual corrections (confirmed wrong answers from audit)
 # ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+# Phase 1b: Hardcoded fixes for NIKL definitions too vague for pattern extraction
+# ---------------------------------------------------------------------------
+COMMON_WORD_FIXES = {
+    'ko-nikl-198':  'urgent',                   # 급하다
+    'ko-nikl-206':  'joy, delight',             # 기쁨
+    'ko-nikl-447':  'moment, point in time',    # 때
+    'ko-nikl-461':  'to run',                   # 뛰다
+    'ko-nikl-600':  'beyond, other side',       # 밖
+    'ko-nikl-702':  'secret',                   # 비밀
+    'ko-nikl-710':  'to fall in',               # 빠지다
+    'ko-nikl-802':  'the world',                # 세계
+    'ko-nikl-946':  'uncertain',                # 아무
+    'ko-nikl-1000': 'complex, difficult',       # 어렵다
+    'ko-nikl-1013': 'sometime',                 # 언젠가
+    'ko-nikl-1058': 'zero',                     # 영
+    'ko-nikl-1281': 'to write down',            # 적다
+    'ko-nikl-1297': 'lunch time',               # 점심시간
+    'ko-nikl-1506': 'to grow',                  # 자라다
+    'ko-nikl-1592': 'student',                  # 학생
+    'ko-nikl-1672': 'strenuous, hard',          # 힘들다
+    'ko-nikl-1856': 'high-level',               # 고급
+    'ko-nikl-1893': 'everywhere',               # 곳곳
+    'ko-nikl-2056': 'recent times',             # 근래
+    'ko-nikl-275':  'younger brother',          # 남동생
+    'ko-nikl-280':  'husband',                  # 남편
+    'ko-nikl-283':  'daytime',                  # 낮
+    'ko-nikl-284':  'next year',                # 내년
+    'ko-nikl-340':  'different',                # 다르다
+    'ko-nikl-341':  'day after tomorrow',       # 모레
+    'ko-nikl-418':  'pork',                     # 돼지고기
+    'ko-nikl-497':  'bad-tasting',              # 맛없다
+    'ko-nikl-518':  'excellent',                # 멋지다
+    'ko-nikl-556':  'free (no charge)',         # 무료
+    'ko-nikl-579':  'flour',                    # 밀가루
+    'ko-nikl-240':  'vase',                     # 꽃병
+    'ko-nikl-248':  'end, expiration',          # 끝
+    'ko-nikl-306':  'yellow',                   # 노란색
+    'ko-nikl-313':  'green',                    # 녹색
+}
+
 CORRECTIONS = {
     'ko-nikl-9719': 'swept away',
     'ko-nikl-9228': 'to block, plug up',

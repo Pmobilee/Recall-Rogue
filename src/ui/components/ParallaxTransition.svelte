@@ -31,16 +31,20 @@
     uniform float uZoom;
     uniform float uVignette;
     uniform float uBrightness;
+    uniform vec2 uCoverScale;  // aspect-ratio correction for object-fit: cover
 
     varying vec2 vUv;
 
     void main() {
       vec2 center = vec2(0.5, 0.5);
 
-      // Zoom FIRST: crop into the image so edges extend beyond screen
-      vec2 zoomed = center + (vUv - center) / uZoom;
+      // Apply object-fit: cover — crop image to fill viewport while preserving aspect ratio
+      vec2 coverUv = center + (vUv - center) * uCoverScale;
 
-      // Then parallax on the zoomed coords: near objects spread outward
+      // Zoom: crop into the image so edges extend beyond screen
+      vec2 zoomed = center + (coverUv - center) / uZoom;
+
+      // Parallax on the zoomed coords: near objects spread outward
       float depth2 = texture2D(uDepthMap, zoomed).r;
       vec2 displaced = zoomed + (zoomed - center) * depth2 * uDolly;
 
@@ -90,7 +94,13 @@
     return prog
   }
 
-  function loadTexture(gl: WebGLRenderingContext, url: string, unit: number): Promise<WebGLTexture> {
+  interface TextureResult {
+    tex: WebGLTexture
+    width: number
+    height: number
+  }
+
+  function loadTexture(gl: WebGLRenderingContext, url: string, unit: number): Promise<TextureResult> {
     return new Promise((resolve, reject) => {
       const tex = gl.createTexture()
       if (!tex) return reject(new Error('Failed to create texture'))
@@ -103,7 +113,7 @@
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR)
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR)
-        resolve(tex)
+        resolve({ tex, width: img.naturalWidth, height: img.naturalHeight })
       }
       img.onerror = () => reject(new Error(`Failed to load image: ${url}`))
       img.src = url
@@ -132,6 +142,9 @@
       if (gl) gl.viewport(0, 0, el.width, el.height)
     }
 
+    let coverScaleX = 1.0
+    let coverScaleY = 1.0
+
     function render(
       dolly: number,
       zoom: number,
@@ -147,6 +160,7 @@
       gl.uniform1f(uLocs.uZoom as WebGLUniformLocation, zoom)
       gl.uniform1f(uLocs.uVignette as WebGLUniformLocation, vignette)
       gl.uniform1f(uLocs.uBrightness as WebGLUniformLocation, brightness)
+      gl.uniform2f(uLocs.uCoverScale as WebGLUniformLocation, coverScaleX, coverScaleY)
 
       const aPos = gl.getAttribLocation(prog, 'aPosition')
       gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf)
@@ -233,7 +247,7 @@
         prog = createProgram(gl)
 
         // Cache uniform locations
-        for (const name of ['uImage', 'uDepthMap', 'uDolly', 'uZoom', 'uVignette', 'uBrightness']) {
+        for (const name of ['uImage', 'uDepthMap', 'uDolly', 'uZoom', 'uVignette', 'uBrightness', 'uCoverScale']) {
           uLocs[name] = gl.getUniformLocation(prog, name)
         }
 
