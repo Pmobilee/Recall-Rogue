@@ -121,6 +121,7 @@
     depthUrl={depthUrl}
     type="enter"
     onComplete={() => { showRoomTransition = false }}
+      persist
   />
 {/if}
 

@@ -5,9 +5,13 @@
     type: 'enter' | 'exit-forward' | 'exit-backward'
     onComplete: () => void
     duration?: number
+    /** When true, the canvas persists as the room background after enter animation.
+     *  Use for Svelte-based rooms (shop, rest, mystery). Do NOT use for combat
+     *  (Phaser renders its own background + sprites underneath). */
+    persist?: boolean
   }
 
-  const { imageUrl, depthUrl, type, onComplete, duration = 3000 }: Props = $props()
+  const { imageUrl, depthUrl, type, onComplete, duration = 3000, persist = false }: Props = $props()
 
   let canvas = $state<HTMLCanvasElement | null>(null)
   let bobOffset = $state(0)
@@ -244,10 +248,10 @@
 
         if (t < 1.0) {
           rafId = requestAnimationFrame(frame)
-        } else if (type === 'enter') {
-          // Enter transitions: render the final identity frame and PERSIST.
-          // The canvas stays as the room background — no snap, no mismatch.
-          // It unmounts naturally when the parent screen changes.
+        } else if (type === 'enter' && persist) {
+          // Persist mode: render the final identity frame and keep the canvas
+          // as the room background. No snap, no mismatch.
+          // Unmounts when the parent screen changes.
           bobOffset = 0
           render(0, 1.0, 0, 1.0, 1.0)
           settled = true
