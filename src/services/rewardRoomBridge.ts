@@ -108,7 +108,7 @@ export async function openRewardRoom(
   if (import.meta.env.DEV) console.log('[RewardRoomBridge] Scene is active, attaching listeners');
 
   const cleanup = (): void => {
-    clearTimeout(safetyTimeout);
+    if (safetyTimeout) clearTimeout(safetyTimeout);
     scene.events.off('goldCollected', handleGold);
     scene.events.off('vialCollected', handleVial);
     scene.events.off('cardAccepted', handleCard);
@@ -128,11 +128,9 @@ export async function openRewardRoom(
     onComplete();
   };
 
-  // Safety timeout: if sceneComplete never fires (e.g. scene crash), force-complete after 60s
-  const safetyTimeout = setTimeout(() => {
-    console.warn('[RewardRoomBridge] Safety timeout - forcing reward completion');
-    handleComplete();
-  }, 60000);
+  // AR-225/AR-240: Safety timeout removed per user request — player can take as long as they want.
+  // Previously: 60s timeout would force-complete the reward room.
+  const safetyTimeout: ReturnType<typeof setTimeout> | null = null;
 
   const handleCardTapped = (card: Card, item: any): void => {
     rewardCardDetail.set(card);

@@ -334,14 +334,18 @@ export class RewardRoomScene extends Phaser.Scene {
     const bgOriginX = W / 2 - (bgW * bgScale) / 2
     const bgOriginY = bgCenterY - (bgH * bgScale) / 2
 
-    // For landscape image (2752x1536), the portrait content (1536px wide) is centered
-    // horizontally — shift cloth bounds right by (bgW - 1536) / 2 source pixels.
-    const landscapeXOffset = isLandscape ? (bgW - 1536) / 2 : 0
+    // For landscape image (2752x1536), the portrait content (1536x2752) was:
+    // - Extended horizontally: 608px added to each side (X offset = +608)
+    // - Cropped vertically: 608px removed from top and bottom (Y offset = -608)
+    const portraitW = 1536
+    const portraitH = 2752
+    const landscapeXOffset = isLandscape ? (bgW - portraitW) / 2 : 0
+    const landscapeYOffset = isLandscape ? (portraitH - bgH) / 2 : 0
     const adjustedBounds = {
       minX: bounds.minX + landscapeXOffset,
       maxX: bounds.maxX + landscapeXOffset,
-      minY: bounds.minY,
-      maxY: bounds.maxY,
+      minY: bounds.minY - landscapeYOffset,
+      maxY: bounds.maxY - landscapeYOffset,
     }
 
     const clothMinX = bgOriginX + adjustedBounds.minX * bgScale
