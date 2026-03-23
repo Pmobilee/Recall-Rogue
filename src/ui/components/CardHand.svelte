@@ -245,6 +245,27 @@
   /** True while the player hovers or presses the CHARGE button — triggers a green charge preview on the selected card. */
   let chargePreviewActive = $state(false)
 
+  /** Actual screen center X of the selected card, used to position the landscape charge button accurately.
+   *  Defaults to viewport center (960). Updated by $effect whenever selectedIndex changes or window resizes. */
+  let selectedCardCenterX = $state(typeof window !== 'undefined' ? window.innerWidth / 2 : 960)
+
+  $effect(() => {
+    // Track selectedIndex reactively so Svelte re-runs on change
+    const idx = selectedIndex
+    const updateChargeButtonPos = (): void => {
+      if (idx === null) return
+      const cardEls = document.querySelectorAll<HTMLElement>('.card-landscape')
+      const cardEl = cardEls[idx]
+      if (cardEl) {
+        const rect = cardEl.getBoundingClientRect()
+        selectedCardCenterX = rect.left + rect.width / 2
+      }
+    }
+    updateChargeButtonPos()
+    window.addEventListener('resize', updateChargeButtonPos, { passive: true })
+    return () => window.removeEventListener('resize', updateChargeButtonPos)
+  })
+
   /** H-9: Show drag-to-charge hint in portrait on first card selection. */
   let showChargeHint = $state(false)
   let chargeHintTimer: ReturnType<typeof setTimeout> | null = null
@@ -880,7 +901,7 @@
         ontouchstart={() => { if (chargeAffordable) chargePreviewActive = true }}
         ontouchend={() => { chargePreviewActive = false }}
         ontouchcancel={() => { chargePreviewActive = false }}
-        style="left: 50%; transform: translateX(calc(-50% + {xOffset}px));"
+        style="left: {selectedCardCenterX}px; transform: translateX(-50%);"
       >
         {#if showGuaranteed}
           ✦ GUARANTEED

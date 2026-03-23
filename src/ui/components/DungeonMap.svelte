@@ -48,7 +48,7 @@
    * Base vertical spacing between history rows (unscaled px).
    * Choices section is 1.4x this height.
    */
-  const ROW_HEIGHT_BASE = 130
+  const ROW_HEIGHT_BASE = 100
 
   // =========================================================
   // Reactive state
@@ -108,17 +108,17 @@
   // Scaled layout helpers
   // =========================================================
 
-  let choicesSectionH = $derived(ROW_HEIGHT_BASE * layoutScale * 1.4)
+  let choicesSectionH = $derived(ROW_HEIGHT_BASE * layoutScale * 1.3)
   let rowH = $derived(ROW_HEIGHT_BASE * layoutScale)
 
   /** Y centre of choice nodes within their section. */
-  let choicesNodeY = $derived(choicesSectionH * 0.52)
+  let choicesNodeY = $derived(choicesSectionH * 0.48)
 
   /** Total canvas min-height. */
   let totalViewHeight = $derived(
     choicesSectionH +
     resolvedHistory.length * rowH +
-    80 * layoutScale,
+    48 * layoutScale,
   )
 
   /**
@@ -140,12 +140,12 @@
 
   /** Y centre of a history row's node (rowIndex 0 = most recent). */
   function historyNodeY(rowIndex: number): number {
-    return choicesSectionH + rowIndex * rowH + rowH * 0.48
+    return choicesSectionH + rowIndex * rowH + rowH * 0.52
   }
 
   /** Y for the connector SVG top within a history row. */
   function historyConnectorTopY(rowIndex: number): number {
-    return choicesSectionH + rowIndex * rowH + rowH * 0.12
+    return choicesSectionH + rowIndex * rowH + rowH * 0.08
   }
 
   // =========================================================
@@ -230,11 +230,11 @@
             </defs>
             {#each availableNodes as node, i (node.id)}
               {@const tx = nodeGroupX(i, availableNodes.length, containerWidth)}
-              {@const ty = choicesNodeY - 28 * layoutScale}
-              <!-- Path goes FROM bottom of section UPWARD TO the node — arrowhead at top (node) -->
+              {@const ty = choicesNodeY - 34 * layoutScale}
+              <!-- Path branches FROM center-bottom of section UPWARD TO each choice node -->
               <path
                 class="connector-path connector-active"
-                d={arrowPath(tx, choicesSectionH - 8 * layoutScale, tx, ty)}
+                d={arrowPath(containerWidth / 2, choicesSectionH - 4 * layoutScale, tx, ty)}
                 marker-end="url(#arrow-active)"
               />
             {/each}
@@ -276,7 +276,7 @@
             <svg
               class="connector-svg history-connector"
               width={containerWidth}
-              height={rowH * 0.45}
+              height={rowH * 0.88}
               style="top: {historyConnectorTopY(histIdx)}px;"
               aria-hidden="true"
             >
@@ -293,11 +293,11 @@
                   <path d="M 7 1 L 0 3.5 L 7 6 Z" fill="#F5F0E6" opacity="0.5" />
                 </marker>
               </defs>
-              <!-- Path goes FROM bottom (this row) UPWARD TO the row above — arrowhead at top -->
+              <!-- Path goes FROM bottom (this row's node) UPWARD TO the row above — arrowhead at top -->
               <path
                 class="connector-path connector-history"
                 d={arrowPath(
-                  containerWidth / 2, rowH * 0.38,
+                  containerWidth / 2, rowH * 0.82,
                   containerWidth / 2, 0
                 )}
                 marker-end="url(#arrow-hist-{histIdx})"
@@ -497,7 +497,7 @@
     position: relative;
     width: 100%;
     border-top: 1px solid rgba(245, 240, 230, 0.07);
-    padding-top: calc(24px * var(--layout-scale, 1));
+    padding-top: calc(12px * var(--layout-scale, 1));
   }
 
   .history-row {

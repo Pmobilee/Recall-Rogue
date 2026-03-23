@@ -334,18 +334,21 @@ export class RewardRoomScene extends Phaser.Scene {
     const bgOriginX = W / 2 - (bgW * bgScale) / 2
     const bgOriginY = bgCenterY - (bgH * bgScale) / 2
 
-    // For landscape image (2752x1536), the portrait content (1536x2752) was:
-    // - Extended horizontally: 608px added to each side (X offset = +608)
-    // - Cropped vertically: 608px removed from top and bottom (Y offset = -608)
-    const portraitW = 1536
-    const portraitH = 2752
-    const landscapeXOffset = isLandscape ? (bgW - portraitW) / 2 : 0
-    const landscapeYOffset = isLandscape ? (portraitH - bgH) / 2 : 0
-    const adjustedBounds = {
-      minX: bounds.minX + landscapeXOffset,
-      maxX: bounds.maxX + landscapeXOffset,
-      minY: bounds.minY - landscapeYOffset,
-      maxY: bounds.maxY - landscapeYOffset,
+    // For landscape, use a tighter manually-tuned cloth region on the stone face
+    // rather than the full portrait spawn zone (which spans most of the screen).
+    // The landscape image has the stone centered — cloth is roughly the lower-center.
+    let adjustedBounds: typeof bounds
+    if (isLandscape) {
+      // Landscape cloth region in landscape image coords (2752x1536)
+      // Centered on the stone's front cloth area
+      adjustedBounds = {
+        minX: bgW * 0.30,   // ~826  — left edge of cloth on stone
+        maxX: bgW * 0.70,   // ~1926 — right edge
+        minY: bgH * 0.45,   // ~691  — top of cloth drape
+        maxY: bgH * 0.65,   // ~998  — bottom of cloth
+      }
+    } else {
+      adjustedBounds = bounds
     }
 
     const clothMinX = bgOriginX + adjustedBounds.minX * bgScale

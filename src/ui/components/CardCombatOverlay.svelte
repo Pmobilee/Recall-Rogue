@@ -1064,11 +1064,11 @@
     }
   })
 
-  $effect(() => {
-    if (cardPlayStage === 'committed' && (!committedCard || !committedQuizData)) {
-      resetCardFlow()
-    }
-  })
+  // NOTE: The guard $effect for 'committed' state with missing committedCard/committedQuizData
+  // was removed. resetCardFlow() is already called explicitly in all correct places:
+  // handleAnswer(), turn change effects, and card deselect. The $effect caused spurious resets
+  // due to Svelte 5 reactive timing — derived values briefly go null during state transitions,
+  // which triggered resetCardFlow() mid-quiz and slid the enemy back prematurely.
 
   let showEndTurnConfirm = $state(false)
 
@@ -3250,33 +3250,33 @@
     max-width: calc(240px * var(--layout-scale, 1));
   }
 
-  /* Intent bubble: top-left of enemy area */
+  /* Intent bubble: left of HP bar — HP bar is centered at ~50% horizontal, 15% from top */
   .layout-landscape .enemy-intent-bubble {
     position: fixed;
-    top: 12%;
-    left: 30%;
+    top: 10%;
+    left: 25%;
     right: auto;
     bottom: auto;
     transform: none;
   }
 
-  /* Quiz-active landscape: enemy slides to right 40% — reposition overlay elements to match */
+  /* Quiz-active landscape: enemy slides to right ~72% — reposition overlay elements to match */
   .layout-landscape.quiz-active .enemy-name-header {
-    left: 62%;
+    left: 58%;
     right: 0;
     text-align: center;
     transform: none;
   }
 
   .layout-landscape.quiz-active .enemy-intent-bubble {
-    left: auto;
-    right: calc(2% + var(--safe-right, 0px));
+    left: 58%;
+    right: auto;
     top: 12%;
     transform: none;
   }
 
   :global(.layout-landscape.quiz-active .status-effect-bar-enemy) {
-    left: 62%;
+    left: 58%;
     right: 0;
     transform: none;
   }
