@@ -1193,7 +1193,13 @@ Constants: `SHOP_HAGGLE_DISCOUNT = 0.30`, `SHOP_REMOVAL_BASE_PRICE = 50`, `SHOP_
 
 After each combat encounter, player chooses 1 of 3 card options. Each option is an actual card — showing the mechanic name, AP cost, short description, and domain color stripe. Cards are selected from the run pool weighted by the run archetype (aggressive, defensive, control, hybrid, balanced).
 
-**Reward screen (altar):** Displays 3 mini-cards on the altar surface. Each mini-card shows:
+**Reward screen (altar):** The post-combat reward screen uses a custom background with a stone altar and cloth surface where reward items float. Assets at `public/assets/reward_room/`:
+- `reward_room_bg.webp` / `.png` — the full background (stone altar scene)
+- `cloth_spawn_zone.json` — defines the cloth region where floating reward icons (cards, health vials, gold) are positioned
+
+Art Studio tab: **Reward Rooms** (for regenerating this background).
+
+Displays 3 mini-cards on the altar surface. Each mini-card shows:
 - AP cost badge (top-left)
 - Mechanic name (center, bold)
 - Short effect description

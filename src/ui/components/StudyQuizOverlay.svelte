@@ -289,6 +289,43 @@
     text-align: center;
   }
 
+  .upgraded-cards {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: calc(6px * var(--layout-scale, 1));
+    background: rgba(46, 204, 113, 0.07);
+    border: 1px solid rgba(46, 204, 113, 0.25);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+  }
+
+  .upgraded-label {
+    font-size: calc(11px * var(--layout-scale, 1));
+    color: #8B949E;
+    margin: 0 0 calc(2px * var(--layout-scale, 1));
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .upgraded-card-row {
+    display: flex;
+    align-items: center;
+    gap: calc(6px * var(--layout-scale, 1));
+  }
+
+  .upgrade-icon {
+    font-size: calc(12px * var(--layout-scale, 1));
+    color: #2ECC71;
+    flex-shrink: 0;
+  }
+
+  .upgraded-card-name {
+    font-size: calc(12px * var(--layout-scale, 1));
+    color: #A9D9C0;
+    line-height: 1.3;
+  }
+
   .continue-btn {
     margin-top: calc(8px * var(--layout-scale, 1));
     background: #7C3AED;

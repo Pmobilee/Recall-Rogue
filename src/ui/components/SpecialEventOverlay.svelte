@@ -10,6 +10,7 @@
   let { event, onresolve }: Props = $props()
 
   let mysteryResult = $state<string | null>(null)
+  let pendingMysteryEffect = $state<ReturnType<typeof rollMysteryEffect> | null>(null)
 
   function getEventIcon(type: string): string {
     switch (type) {
@@ -35,8 +36,6 @@
     pendingMysteryEffect = null
     onresolve(effectToPass ? { mysteryEffect: effectToPass } : undefined)
   }
-
-  let pendingMysteryEffect = $state<ReturnType<typeof rollMysteryEffect> | null>(null)
 
   function handleKnowledgeSpring(): void {
     onresolve({ type: 'knowledge_spring' })

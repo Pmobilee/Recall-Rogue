@@ -276,6 +276,9 @@ Core systems powering the card roguelite:
 | Hub screen (camp scene) | `src/ui/components/HubScreen.svelte` | Rewritten |
 | Camp art manifest | `src/ui/utils/campArtManifest.ts` | Extended |
 | Camp sprites | `public/assets/camp/sprites/{name}/{name}-base.png` | 11 sprites + background |
+| Room backgrounds | `public/assets/backgrounds/rooms/{type}/landscape.webp` | Per-room-type (treasure, shop, rest, mystery, descent) with depth maps |
+| Reward room BG | `public/assets/reward_room/reward_room_bg.webp` | Post-combat altar scene — stone with cloth spawn zone for floating reward icons |
+| Reward spawn zone | `public/assets/reward_room/cloth_spawn_zone.json` | Defines the cloth region on the altar where cards/vials/gold float |
 | Firefly background | `src/ui/components/FireflyBackground.svelte` | Built |
 | Game frame (responsive) | `src/CardApp.svelte` (`.card-app` CSS) | Built |
 | Layout mode store | `src/stores/layoutStore.ts` | AR-71 — NEW |

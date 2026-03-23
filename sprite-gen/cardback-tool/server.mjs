@@ -2,7 +2,7 @@ import express from 'express';
 import Database from 'better-sqlite3';
 import { resolve, dirname, join, extname } from 'path';
 import { fileURLToPath } from 'url';
-import { existsSync, readdirSync, statSync, mkdirSync, writeFileSync, readFileSync } from 'fs';
+import { existsSync, readdirSync, statSync, mkdirSync, writeFileSync, readFileSync, unlinkSync } from 'fs';
 
 // Load .env from project root (two levels up from this file)
 {
@@ -1891,10 +1891,17 @@ app.get('/api/relics/batch-status', (req, res) => {
 
 const ARTSTUDIO_ITEMS_PATH = resolve(__dirname, 'artstudio-items.json');
 const ARTSTUDIO_OUTPUT_DIR = resolve(__dirname, 'artstudio-output');
-const ARTSTUDIO_CATEGORIES = ['cardframes', 'enemies', 'cardart', 'backgrounds', 'relicicons', 'noncombat'];
+const ARTSTUDIO_CATEGORIES = ['cardframes', 'enemies', 'cardart', 'backgrounds', 'relicicons', 'noncombat', 'mysteryrooms', 'rewardrooms'];
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
-const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || 'google/gemini-2.5-flash-image';
+const OPENROUTER_MODEL_DEFAULT = process.env.OPENROUTER_MODEL || 'google/gemini-2.5-flash-image';
+const OPENROUTER_MODEL_LANDSCAPE = process.env.OPENROUTER_MODEL_LANDSCAPE || 'stabilityai/stable-diffusion-xl';
+
+/** Pick the right model based on item dimensions — landscape backgrounds use nano banana 2 */
+function getModelForItem(item) {
+  if (item.targetWidth > item.targetHeight) return OPENROUTER_MODEL_LANDSCAPE;
+  return OPENROUTER_MODEL_DEFAULT;
+}
 const OPENROUTER_BASE_URL = process.env.OPENROUTER_BASE_URL || 'https://openrouter.ai/api/v1';
 
 if (!OPENROUTER_API_KEY) {
@@ -1910,7 +1917,7 @@ function readArtStudioItems() {
   try {
     return JSON.parse(readFileSync(ARTSTUDIO_ITEMS_PATH, 'utf-8'));
   } catch {
-    return { cardframes: [], enemies: [], cardart: [], backgrounds: [], relicicons: [], noncombat: [] };
+    return { cardframes: [], enemies: [], cardart: [], backgrounds: [], relicicons: [], noncombat: [], mysteryrooms: [], rewardrooms: [] };
   }
 }
 
@@ -1939,7 +1946,8 @@ function artStudioExtractImageBase64(data) {
   throw new Error('No image data found in response');
 }
 
-async function artStudioCallOpenRouter(prompt, targetWidth, targetHeight) {
+async function artStudioCallOpenRouter(prompt, targetWidth, targetHeight, model) {
+  const useModel = model || (targetWidth > targetHeight ? OPENROUTER_MODEL_LANDSCAPE : OPENROUTER_MODEL_DEFAULT);
   const MAX_RETRIES = 3;
   for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
     const response = await fetch(`${OPENROUTER_BASE_URL}/chat/completions`, {
@@ -1949,7 +1957,7 @@ async function artStudioCallOpenRouter(prompt, targetWidth, targetHeight) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: OPENROUTER_MODEL,
+        model: useModel,
         modalities: ['image', 'text'],
         stream: false,
         messages: [
@@ -2050,8 +2058,9 @@ app.post('/api/artstudio/generate', express.json(), async (req, res) => {
       writeArtStudioItems(d);
 
       try {
-        console.log(`[artstudio] Generating ${category}/${id} variant ${v.variant} (seed ${v.seed})`);
-        const apiData = await artStudioCallOpenRouter(item.prompt, item.targetWidth || 1024, item.targetHeight || 1024);
+        const itemModel = getModelForItem(item);
+        console.log(`[artstudio] Generating ${category}/${id} variant ${v.variant} (seed ${v.seed}) model=${itemModel}`);
+        const apiData = await artStudioCallOpenRouter(item.prompt, item.targetWidth || 1024, item.targetHeight || 1024, itemModel);
         const base64 = artStudioExtractImageBase64(apiData);
         const imgBuffer = Buffer.from(base64, 'base64');
 
@@ -2128,24 +2137,190 @@ app.delete('/api/artstudio/item/:category/:id', (req, res) => {
   res.json({ ok: true, removed: before - data[category].length });
 });
 
-// GET /api/artstudio/music — list BGM audio files
+// --- Music BGM System ---
 const BGM_DIR = resolve(PROJECT_ROOT, 'public/assets/audio/bgm');
+const BGM_DB_PATH = join(BGM_DIR, 'bgm-tracks.json');
+
+function loadBgmDb() {
+    if (!existsSync(BGM_DB_PATH)) return { tracks: getDefaultTracks() };
+    try { return JSON.parse(readFileSync(BGM_DB_PATH, 'utf-8')); }
+    catch { return { tracks: getDefaultTracks() }; }
+}
+
+function saveBgmDb(db) {
+    mkdirSync(BGM_DIR, { recursive: true });
+    writeFileSync(BGM_DB_PATH, JSON.stringify(db, null, 2));
+}
+
+function getDefaultTracks() {
+    return [
+        { id: 'bgm_hub', name: 'Hub Theme', concept: 'Cozy camp — safe haven after adventure', bpm: 90, key: 'C Major', prompt: 'retro SNES RPG town theme, 16-bit chiptune acoustic guitar arpeggios, warm chip-lead melody, soft triangle wave bass, lo-fi Game Boy Advance warmth, crackling campfire ambience, peaceful nostalgic inviting, retro game soundtrack, seamless loop, NES-era comfort, pixel art medieval camp' },
+        { id: 'bgm_combat', name: 'Combat (Normal)', concept: 'Tense battle — focused determination', bpm: 135, key: 'D minor', prompt: 'intense 16-bit SNES battle theme, driving chiptune pulse wave melody, fast arpeggiated square wave bass, punchy 8-bit drum samples, retro Game Boy Advance combat music, urgent heroic determined, chip-lead brass-like square waves, NES-style percussion loops, pixel art roguelite battle, seamless loop, retro game soundtrack' },
+        { id: 'bgm_boss', name: 'Combat (Boss)', concept: 'Epic boss fight — everything at stake', bpm: 155, key: 'C minor', prompt: 'epic 16-bit SNES boss battle theme, aggressive chiptune square wave riffs, pounding retro drums heavy kick snare, menacing triangle wave bass, fast arpeggiated chip-lead melody, dramatic Game Boy Advance final boss energy, intense relentless urgent, NES-era epic orchestral feel through chip sounds, pixel art roguelite boss fight, seamless loop, retro game soundtrack' },
+        { id: 'bgm_elite', name: 'Combat (Elite)', concept: 'Dangerous mini-boss — stay sharp', bpm: 142, key: 'F# minor', prompt: 'menacing 16-bit SNES mini-boss theme, dark chromatic chiptune descending riff, aggressive retro snare rolls, warning bell chip-sound every 8 bars, sinister detuned square wave lead, military percussion 8-bit style, dangerous threatening, Game Boy Advance elite enemy music, pixel art roguelite, seamless loop, retro game soundtrack' },
+        { id: 'bgm_shop', name: 'Shop Theme', concept: 'Quirky merchant — charming trickster', bpm: 115, key: 'F Major', prompt: 'playful 16-bit SNES shop theme, bouncy chiptune pizzicato melody, cheerful square wave lead, light 8-bit hand clap percussion, retro Game Boy Advance merchant music, mischievous quirky lighthearted, chip-tune recorder countermelody, coin jingle chip-sfx woven in, medieval pixel marketplace, seamless loop, retro game soundtrack' },
+        { id: 'bgm_rest', name: 'Rest Site', concept: 'Peaceful campfire — emotional relief', bpm: 65, key: 'Eb Major', prompt: 'peaceful 16-bit SNES rest theme, slow gentle chip-piano arpeggios, soft triangle wave pads, tender chiptune cello-like sawtooth melody, minimal sparse arrangement, emotional relief calming, Game Boy Advance save point music, quiet beautiful melancholic, retro pixel art campfire, seamless loop, retro game soundtrack' },
+        { id: 'bgm_map', name: 'Map/Exploration', concept: 'Journey ahead — adventurous optimism', bpm: 105, key: 'A Major', prompt: 'adventurous 16-bit SNES overworld theme, curious wandering chip-flute melody, light retro march percussion, gentle square wave pad harmony, chip-harp glissandos, forward-moving optimistic, Game Boy Advance dungeon map music, Legend of Zelda SNES vibes, exploration discovery, pixel art roguelite, seamless loop, retro game soundtrack' },
+        { id: 'bgm_mystery', name: 'Mystery Event', concept: 'Something strange — curiosity and unease', bpm: 80, key: 'D Lydian', prompt: 'enigmatic 16-bit mystery theme, detuned chip music box melody Lydian mode, ethereal retro ambient pads heavy reverb, subtle reversed chip-cymbal swells, sparse atmospheric unsettling curious, Game Boy Advance secret room music, off-kilter dreamlike, NES dungeon mystery vibes, pixel art roguelite, seamless loop, retro game soundtrack' },
+        { id: 'bgm_surge', name: 'Surge Overlay', concept: 'Knowledge Surge — golden power-up', bpm: 135, key: 'A Major', prompt: 'powered-up 16-bit SNES power-up theme, shimmering chiptune arpeggios cascading upward fast, pulsing square wave bass synth, bright metallic chip percussion, euphoric electric urgent, golden star power-up energy, Game Boy Advance invincibility music, NES star theme vibes but original, pixel art roguelite, seamless loop, retro game soundtrack' },
+        { id: 'bgm_quiz_boss', name: 'Boss Quiz Phase', concept: 'Critical question — ticking pressure', bpm: 120, key: 'C minor', prompt: 'tense 16-bit quiz pressure theme, steady metronomic chip-tick wood block sound, sustained dissonant chiptune string chords, quiet breathy chip-flute held note bending up, minimalist silence between ticks, Game Boy Advance time-limit music, bomb defusing tension, NES puzzle room pressure, pixel art roguelite, seamless loop, retro game soundtrack' },
+        { id: 'bgm_victory', name: 'Run Victory', concept: 'Triumph — you conquered the dungeon', bpm: 120, key: 'Bb Major', prompt: 'triumphant 16-bit SNES victory fanfare, chip-horn opening note held, full chiptune orchestra swells ascending, rapid chip-string runs, crashing 8-bit cymbal, soaring square wave trumpet hero melody, warm chip-strings resolving, relief joy triumph satisfaction, Game Boy Advance quest complete music, Final Fantasy victory vibes, pixel art roguelite, retro game soundtrack' },
+        { id: 'bgm_defeat', name: 'Run Defeat', concept: 'Gentle reflection — try again', bpm: 60, key: 'A minor', prompt: 'gentle reflective 16-bit defeat theme, solo chip-piano descending minor phrase, slow triangle wave sustain, repeat lower softer, ending major chord resolving with hope, respectful dignified encouraging not punishing, Game Boy Advance game over but hopeful, NES continue screen music, pixel art roguelite, retro game soundtrack' },
+        { id: 'bgm_tutorial', name: 'Tutorial/Onboarding', concept: 'Welcome — safe and inviting', bpm: 100, key: 'C Major', prompt: 'bright encouraging 16-bit tutorial theme, gentle chip-marimba xylophone melody, soft chiptune guitar strumming, light bouncy 8-bit shaker percussion, welcoming inviting safe, Game Boy Advance intro stage music, warm genuine not childish, SNES opening village vibes, pixel art roguelite, seamless loop, retro game soundtrack' },
+    ];
+}
+
+// GET /api/artstudio/music — return all tracks with their variants
 app.get('/api/artstudio/music', (req, res) => {
-  try {
-    if (!existsSync(BGM_DIR)) {
-      return res.json([]);
+    const db = loadBgmDb();
+    // Scan filesystem for actual audio files and attach as variants
+    for (const track of db.tracks) {
+        const prefix = track.id;
+        const variants = [];
+        if (existsSync(BGM_DIR)) {
+            const files = readdirSync(BGM_DIR).filter(f =>
+                f.startsWith(prefix) && /\.(wav|ogg|mp3|flac)$/i.test(f)
+            ).sort();
+            for (const file of files) {
+                const st = statSync(join(BGM_DIR, file));
+                variants.push({
+                    filename: file,
+                    size: st.size,
+                    modified: st.mtime.toISOString(),
+                    accepted: file === `${prefix}.wav` || file === `${prefix}.ogg`,
+                });
+            }
+        }
+        track.variants = variants;
     }
-    const files = readdirSync(BGM_DIR)
-      .filter(f => /\.(wav|ogg|mp3|flac)$/i.test(f))
-      .map(name => {
-        const st = statSync(join(BGM_DIR, name));
-        return { name, size: st.size, modified: st.mtime.toISOString() };
-      })
-      .sort((a, b) => a.name.localeCompare(b.name));
-    res.json(files);
-  } catch(e) {
-    res.json([]);
-  }
+    res.json(db.tracks);
+});
+
+// POST /api/artstudio/music/save-prompt — save a track's prompt
+app.post('/api/artstudio/music/save-prompt', express.json(), (req, res) => {
+    const { id, prompt, bpm, key } = req.body;
+    const db = loadBgmDb();
+    const track = db.tracks.find(t => t.id === id);
+    if (!track) return res.status(404).json({ error: 'Track not found' });
+    if (prompt !== undefined) track.prompt = prompt;
+    if (bpm !== undefined) track.bpm = bpm;
+    if (key !== undefined) track.key = key;
+    saveBgmDb(db);
+    res.json({ ok: true });
+});
+
+// POST /api/artstudio/music/generate — spawn ACE-Step to generate a track
+const bgmGenerating = new Set();
+
+app.post('/api/artstudio/music/generate', express.json(), async (req, res) => {
+    const { id } = req.body;
+    const db = loadBgmDb();
+    const track = db.tracks.find(t => t.id === id);
+    if (!track) return res.status(404).json({ error: 'Track not found' });
+    if (bgmGenerating.has(id)) return res.json({ ok: true, status: 'generating', message: `${id} is already generating...` });
+
+    const existing = existsSync(BGM_DIR) ? readdirSync(BGM_DIR).filter(f => f.startsWith(id) && /\.(wav|ogg|mp3|flac)$/i.test(f)) : [];
+    const variantNum = existing.length + 1;
+    const outFilename = `${id}_v${variantNum}.wav`;
+
+    bgmGenerating.add(id);
+    res.json({ ok: true, status: 'generating', message: `Generating ${outFilename}...`, variantFile: outFilename });
+
+    // Write a temp Python script for this specific track
+    const tmpScript = join(BGM_DIR, `_gen_${id}.py`);
+    const prompt = track.prompt.replace(/"/g, '\\"');
+    const keyVal = (track.key || 'C Major').replace(/"/g, '\\"');
+    const pyCode = `
+import sys, os, shutil
+sys.path.insert(0, os.path.expanduser("~/opt/ace-step"))
+from acestep.handler import AceStepHandler
+from acestep.llm_inference import LLMHandler
+from acestep.inference import GenerationParams, GenerationConfig, generate_music
+
+dit = AceStepHandler()
+llm = LLMHandler()
+dit.initialize_service(project_root=os.path.expanduser("~/opt/ace-step"), config_path="acestep-v15-sft", device="mps")
+llm.initialize(checkpoint_dir=os.path.expanduser("~/opt/ace-step/checkpoints"), lm_model_path="acestep-5Hz-lm-4B", backend="mlx", device="mps")
+
+params = GenerationParams(
+    task_type="text2music",
+    caption="${prompt}",
+    lyrics="[Instrumental]",
+    instrumental=True,
+    bpm=${track.bpm || 120},
+    keyscale="${keyVal}",
+    timesignature="4",
+    duration=30,
+    inference_steps=50,
+    guidance_scale=5.5,
+    cfg_interval_start=0.0,
+    cfg_interval_end=0.75,
+    shift=3.0,
+    infer_method="ode",
+    thinking=True,
+    use_cot_metas=True,
+    use_cot_caption=True,
+    use_cot_language=True,
+    lm_temperature=0.7,
+    lm_cfg_scale=2.0,
+    lm_top_k=0,
+    lm_top_p=0.9,
+    lm_negative_prompt="NO USER INPUT",
+    seed=-1,
+)
+config = GenerationConfig(batch_size=1, audio_format="wav")
+result = generate_music(dit, llm, params, config, save_dir="${BGM_DIR}")
+if result.success and result.audios:
+    src = result.audios[0]["path"]
+    dest = os.path.join("${BGM_DIR}", "${outFilename}")
+    if src != dest:
+        shutil.move(src, dest)
+    print("OK:" + dest)
+else:
+    print("FAIL:" + str(result.error))
+`;
+    writeFileSync(tmpScript, pyCode);
+
+    const { spawn } = await import('child_process');
+    const venvPython = resolve(process.env.HOME, 'opt/ace-step/.venv/bin/python');
+    console.log('[BGM] Spawning generation for ' + outFilename + '...');
+    const proc = spawn(venvPython, [tmpScript], {
+        stdio: ['ignore', 'pipe', 'pipe'],
+        env: { ...process.env, PYTHONUNBUFFERED: '1' },
+    });
+
+    let stdout = '';
+    proc.stdout.on('data', d => { stdout += d.toString(); });
+    proc.stderr.on('data', () => {});
+    proc.on('close', (code) => {
+        bgmGenerating.delete(id);
+        try { unlinkSync(tmpScript); } catch {}
+        if (code === 0 && stdout.includes('OK:')) {
+            console.log('[BGM] Generated ' + outFilename + ' successfully');
+        } else {
+            console.error('[BGM] Failed ' + outFilename + ': exit=' + code + ' output=' + stdout.slice(-300));
+        }
+    });
+});
+
+// GET /api/artstudio/music/status — check which tracks are currently generating
+app.get('/api/artstudio/music/status', (req, res) => {
+    res.json({ generating: [...bgmGenerating] });
+});
+
+// DELETE /api/artstudio/music/variant — delete a variant file
+app.delete('/api/artstudio/music/variant', express.json(), (req, res) => {
+    const { filename } = req.body;
+    if (!filename || filename.includes('..') || filename.includes('/')) {
+        return res.status(400).json({ error: 'Invalid filename' });
+    }
+    const filePath = join(BGM_DIR, filename);
+    if (existsSync(filePath)) {
+        unlinkSync(filePath);
+        res.json({ ok: true });
+    } else {
+        res.status(404).json({ error: 'File not found' });
+    }
 });
 
 // Static serving for BGM audio files
