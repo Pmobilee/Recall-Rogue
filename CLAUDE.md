@@ -406,11 +406,12 @@ When generating sprites, delegate to a sub-agent with these instructions:
 - ComfyUI Python venv: `/opt/comfyui-env`, Models: `/opt/ComfyUI/models/`
 
 ## Context Guide — What to Read
-- Game mechanics and design → `docs/GAME_DESIGN.md`
-- System architecture and data flow → `docs/ARCHITECTURE.md`
-- Card roguelite specification → `docs/RESEARCH/terra-miner-card-roguelite-spec.md` (legacy filename)
+- Game mechanics and design → `docs/GAME_DESIGN.md` (v3 — curated deck system)
+- System architecture and data flow → `docs/ARCHITECTURE.md` (v8)
+- Curated deck redesign spec → `docs/RESEARCH/DECKBUILDER.md` (takes precedence over GDD where conflicts exist)
 - UX design details → `docs/RESEARCH/03_UX_IMPROVEMENTS.md`
-- Addictiveness research → `docs/RESEARCH/Addictiveness_research.md`
+- Addictiveness research → `docs/RESEARCH/01_Addictiveness_research.md`
+- Expansion production spec → `docs/RESEARCH/EXPANSION_FINAL_PRODUCTION.md`
 - Sprite generation pipeline → `docs/SPRITE_PIPELINE.md`
 - Security policies and practices → `docs/SECURITY.md`
 
