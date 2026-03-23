@@ -2,7 +2,9 @@
 
 > **One-line summary:** Card roguelite where knowledge IS power — Quick Play cards for base effect, Charge them with quiz answers for massive multipliers, chain related facts for exponential damage. The more you know, the stronger you become.
 >
-> **Version:** v2 (overhaul complete). The v1 mining-era design doc has been deleted — it is fully superseded by this document.
+> **Version:** v3 (curated deck redesign). This document reflects the v3 curated deck system described in `docs/RESEARCH/DECKBUILDER.md`. Where DECKBUILDER.md conflicts with this document, DECKBUILDER.md takes precedence. The v1 mining-era design doc and v2 cross-domain pool design have been superseded.
+
+> **Key v3 changes from v2:** Single curated deck per run (no cross-domain mixing), dynamic fact assignment at charge time (not draw time), pool-based adaptive distractors (not LLM-generated), mastery-driven quiz difficulty (not FSRS tier), no Cursed Card system, no Free First Charge, no visible quiz timer.
 
 ---
 
@@ -25,7 +27,7 @@ Prodigy Math Game (150M+ users) uses quizzes as a toll gate to RPG combat — ch
 | # | System | Purpose |
 |---|--------|---------|
 | 1 | Card Combat with Charge | Turn-based; Quick Play for base, Charge for quiz-powered burst |
-| 2 | Deck Building with Chains | Select and evolve fact-cards; chain related facts for multipliers |
+| 2 | Curated Deck Selection with Chains | Select a focused knowledge deck; chain related facts for multipliers |
 | 3 | Run Progression | 3-act dungeon descent with escalating quiz pressure |
 
 Everything else (crafting, farming, companions, overworld hub, prestige, endless mode) is cut.
@@ -51,11 +53,11 @@ PLAYER TURN:
      CHARGE PLAY (drag card into upper screen zone above ~40% from top, or click CHARGE button):
        - Costs card's base AP + 1 additional AP (the "Charge surcharge")
        - Quiz panel appears. Timer starts. No backing out.
-       - CORRECT ANSWER → card plays at 1.5× base + mastery bonus. 500ms celebration.
-       - WRONG ANSWER → card plays at 0.6× / 0.7× / 0.7× (per FSRS tier). 300ms muted resolve.
+       - CORRECT ANSWER → card plays at 1.5×–4.0× base (per card slot mastery 0–5). 500ms celebration.
+       - WRONG ANSWER → card plays at 0.6× (mastery 0) / 0.7× (mastery 1+). 300ms muted resolve.
        - Card is never wasted — wrong answers still resolve (at 0.7× or lower).
        - Contributes to Knowledge Chain if same chainType (0-5) as previous Charge.
-       - MASTERED cards (level 5): auto quick-play with no quiz (except final boss).
+       - MASTERED cards (level 5): quiz uses the hardest variant with most confusable distractors, but rewards the highest multiplier.
 
   4. End Turn when AP is spent or player chooses to stop.
      Remaining unplayed cards discarded.
@@ -74,7 +76,7 @@ ENEMY TURN:
 | 3 Quick Strike plays | 3 AP | 8 + 8 + 8 = 24 | 8 dmg/AP |
 | 1 Charged Strike (correct, mastery 0) | 2 AP | 12 | 6 dmg/AP |
 | 1 Charged Strike (correct, mastery 3) | 2 AP | 18 | 9 dmg/AP |
-| 1 Charged Strike (wrong, Tier 2a) | 2 AP | 5.6 | 2.8 dmg/AP |
+| 1 Charged Strike (wrong, mastery 1+) | 2 AP | 5.6 | 2.8 dmg/AP |
 | 1 Charged Strike (correct) + 1 Quick Strike | 3 AP | 12 + 8 = 20 | 6.7 dmg/AP |
 
 **Quick Play is AP-efficient. Charge is power-efficient but expensive.** The +1 AP surcharge prevents "always Charge everything" — with 3 AP, you can Quick Play 3 cards OR Charge 1 + Quick 1. Meaningful tradeoff every turn.
@@ -91,7 +93,7 @@ Cards have 5 in-run mastery levels (0–5). Mastery resets each run. It is the *
 | Wrong Charge answer | Card downgrades one mastery level (once per encounter) |
 | Quick Play | No mastery change |
 | Per-encounter cap | Each card can only upgrade or downgrade once per encounter (flag resets on next encounter) |
-| Level 5 (Mastered) | Card auto quick-plays with no quiz — except at the final boss |
+| Level 5 (Mastered) | Quiz uses hardest variant + most confusable distractors. Rewards highest multiplier. |
 | Rest Site Study | Correct answer → +1 mastery to a specific card (max 3 cards; no downgrades possible) |
 
 **Stat display:** Card descriptions show base+bonus format: "Deal 8+2 damage" where the +2 bonus is rendered in green. Bonus scales with mastery level.
@@ -110,7 +112,7 @@ Cards have 5 in-run mastery levels (0–5). Mastery resets each run. It is the *
 - "Upgraded!" / "Downgraded!" popup appears on mastery change
 - Stat values flash green (upgrade) or red (downgrade) when mastery changes
 
-**Cursed cards:** Cards carrying cursed facts are effectively locked at mastery 0 until the curse is cured. Mastery Surge has no effect on cursed cards. Cure (correct Charge on a cursed fact) restores normal mastery tracking.
+**Wrong answer mastery impact:** Wrong Charge on any card downgrades mastery by 1 level (once per encounter). No separate "cursed card" state — the mastery level itself is the punishment/reward axis.
 
 ### Charge Gesture (Touch UX)
 
@@ -128,25 +130,15 @@ Cards have 5 in-run mastery levels (0–5). Mastery resets each run. It is the *
 - **Upper zone (above threshold):** Golden glow + "⚡ CHARGE +1 AP" indicator above card. Release = Charge Play (quiz). Card scales to 1.05× in this zone.
 - Zone transition is **immediate and continuous** — visual feedback changes in real-time as card crosses the threshold.
 - **Not enough AP for charge:** indicator turns red with "NOT ENOUGH AP"; releasing falls back to Quick Play.
-- **Tier 3 cards:** Never show charge zone indicator (they auto-charge, no gesture needed).
+- **Mastery 5 cards (Mastered, final boss only exception):** Always show charge zone indicator; auto-charge mechanic is removed from the general system.
 
 **Desktop (mouse):** Same drag-upward mechanic with pointer events.
 
-### Free First Charge (AR-59.23)
+### Free First Charge — REMOVED
 
-Paying +1 AP to Charge a fact you've never seen before is a blind guess. The **Free First Charge** solves this:
+**Free First Charge has been removed.** With curated domain decks the player chose themselves, plus adaptive difficulty that starts with easier facts at mastery 0 and easy question variants, the "blind guess" problem is solved by design. All charges cost their normal AP surcharge. The first charge of a run is not special.
 
-- **First Charge of any fact in a run:** AP surcharge = 0. Wrong answer = 0.0× (card fizzles — no damage/effect dealt. The cost of guessing wrong on an unknown fact.)
-- **Subsequent Charges of the same fact:** Normal +1 AP surcharge applies.
-- **Visual indicator:** CHARGE button shows **"FREE"** (instead of "+1 AP") for not-yet-Charged facts.
-- **Tier 3 auto-Charge does NOT consume the free Charge** — the player didn't consciously choose to Charge.
-
-**Natural run arc:**
-- Act 1: Most facts are new → CHARGE buttons show "FREE" → players must decide: risk a fizzle to learn, or Quick Play for guaranteed 1.0×.
-- Act 2: Mix of "FREE" and "+1 AP" → selective Charging of known facts.
-- Act 3: Mostly "+1 AP" → veteran players Charge with confidence.
-
-Balance constants: `FIRST_CHARGE_FREE_AP_SURCHARGE = 0`, `FIRST_CHARGE_FREE_WRONG_MULTIPLIER = 0.0`
+The problem this mechanic solved — "don't punish blind guessing on unknown facts" — is now addressed by: (1) the player choosing a deck they know something about, (2) mastery 0 selecting the easiest facts and variants, and (3) 2 distractors at mastery 0 making questions easier.
 
 ### Action Points (Turn Economy)
 
@@ -158,19 +150,34 @@ AP badge colors:
 - Orange: 2 AP (heavy)
 - Red: 3 AP (full turn)
 
-### Fact-Card Pairing — Per-Draw FSRS Shuffling (AR-93)
+### Dynamic Fact Assignment (Replaces Per-Draw FSRS Shuffling)
 
-Card slots (type + mechanic + base effect) are created at run start, but facts (the questions to answer) are **assigned fresh each draw** from the run's FSRS fact pool. This lets spaced repetition surface the facts the player most needs to review on every draw.
+Cards drawn into hand have **no fact**. The fact is selected at the moment the player commits to charging — not at draw time.
 
-1. At run start, `buildRunPool()` creates card SLOTS (with `cardType`, `chainType`, `mechanic`, base effect) from the FSRS-weighted fact pool
-2. Each `drawHand()` call selects facts from the fact pool via seeded RNG (`'facts'` fork) and assigns them to the drawn cards
-3. Facts rotate each draw — the same card slot may show a different fact on the next encounter
-4. Cooldown deduplication prevents recently-seen facts from reappearing for 3–5 encounters
-5. Tier multiplier is derived from the FSRS mastery tier of the fact at the time it was initially selected into the pool
+**New flow:**
+```
+Draw hand → cards show mechanic + chain theme only → player charges a card →
+system selects fact from chain theme's fact sub-pool → quiz with dynamically selected fact
+```
 
-**Chain type** is assigned to card SLOTS permanently at run start. Each run selects 3 of the 6 chain types (Obsidian, Crimson, Azure, Amber, Violet, Jade) deterministically using the run seed (`selectRunChainTypes()` in `src/data/chainTypes.ts`). All cards in the run are assigned one of these 3 types. This increases chain frequency from ~15% (6 types, 5 cards) to ~50% of hands, making chains a realistic, buildable strategy rather than a rare coincidence. Chain composition is stable across draws because chain types belong to slots, not facts.
+This replaces the old per-draw FSRS shuffling (AR-93) where facts were assigned to cards at draw time. The new system means:
+- Card faces show only mechanic, AP cost, chain theme color+icon+name, and mastery level (0-5)
+- No question text, no difficulty stars, no fact ID on the card face
+- Players see their strategic options (which chains can form, which mechanics to play) without seeing quiz content in advance
+- Commit-before-reveal is preserved: the quiz question only appears when the charge is committed
 
-**Chain color** is derived from the card's `chainType` (0-5) — same chainType = same chain color = can chain together. Colors are defined in `src/data/chainTypes.ts`.
+**Chain theme assignment:** Chain themes (knowledge decks) or generic chain types (vocabulary decks) are assigned to card SLOTS permanently at run start. Each run selects 3 of the deck's chain themes deterministically using the run seed. All cards in the run are assigned one of these 3 themes. This concentrates chain opportunities so that 2–3 matching cards appear per 5-card hand on average.
+
+**Fact selection algorithm:** When a card is charged, `selectFactForCharge()` picks a fact from the intersection of the card's chain theme sub-pool (knowledge decks) or full deck pool (vocabulary decks) and the cooldown-filtered available facts, weighted by in-run FSRS state:
+- Never seen this run → moderate priority (weight 1.5×)
+- More wrong than correct → high priority (weight 3.0×)
+- 2+ correct, no wrong → low priority / hot-streak suppression (weight 0.2×)
+- Seen once, correct → moderate-low (weight 0.7×)
+- At high mastery (3+): struggling facts boosted further
+
+**In-Run FSRS (lightweight session tracker):** A per-run state tracks `correctCount`, `wrongCount`, `lastSeenEncounter`, `confusedWith[]`, `averageResponseTimeMs`, and `streak` for each fact seen in the run. Initialized from global FSRS (low-stability facts start with `wrongCount: 1`; high-stability facts start with `correctCount: 1`). Updated on every charge result.
+
+**Chain type** is derived from the card's chain theme (for knowledge decks, this has thematic meaning, e.g., "Civil War Era") or from the generic 6-color palette (for vocabulary decks, no educational meaning — purely mechanical). Colors and icons are defined in `src/data/chainTypes.ts` and extended per deck.
 
 ### Encounter Cooldown & Anti-Repetition
 
@@ -186,13 +193,17 @@ The quiz question is hidden until the card is committed to Charge. Once committe
 
 Research: Roediger & Karpicke (2006) — retrieval practice = 87% retention vs 44% for restudying. Kornell et al. (2009) — even failed retrieval beats passive viewing.
 
-**Stage 1 — In hand:** Cards fan in arc. Shows mechanic name, effect value, difficulty stars, AP cost badge, chain color tint. No question visible.
+**Stage 1 — In hand:** Cards fan in arc. Shows mechanic name, effect value, AP cost badge, chain theme color+icon+name, mastery level badge. No quiz content visible.
 
 **Stage 2 — Selected (click to rise):** Card rises 80px with info overlay. Can freely deselect. Strategic decision point — Charge or Quick Play?
 
 **Stage 3 — Committed (click CHARGE / fling up):** Quiz panel appears. Timer starts. No cancel.
 
-### Dynamic Timer System
+### Dynamic Timer System (Invisible Internal Timer Only)
+
+**There is NO visible quiz timer in the game UI.** No countdown bar, no ticking clock, no time pressure visual.
+
+The floor-based timer table below describes an **invisible internal timer** only:
 
 | Floor | Base Timer | Segment |
 |-------|-----------|---------|
@@ -202,26 +213,48 @@ Research: Roediger & Karpicke (2006) — retrieval practice = 87% retention vs 4
 | 19–24 | 5s | The Archive |
 | 25+ | 4s | Endless |
 
-**Question length modifier:** Add +1s per 12 words beyond 10 words in total text (question + all answer options).
+**Purpose of the invisible timer:**
+1. **Relic triggers:** Relics like Quicksilver Quill ("answered in under 2 seconds") and Adrenaline Shard ("under 3 seconds") check against it.
+2. **Leaderboard scoring:** Daily Expedition and competitive runs use response time as a scoring component — faster correct answers score higher.
+3. **Auto-fizzle:** Cards auto-fizzle if no answer is given before the timer expires (prevents AFK stalling). This timeout is generous and not communicated as time pressure.
 
-**Slow Reader mode (Settings):** Flat +3s to all timers, amber timer bar instead of red.
+**Question length modifier:** Add +1s per 12 words beyond 10 words in total text (question + all answer options). Applied to the invisible timer threshold.
+
+**Slow Reader mode (Settings):** Flat +3s to all invisible timer thresholds. Does not show any visible timer UI.
+
+Difficulty scaling is achieved through question variant selection and distractor quality (mastery-driven), NOT through visible time pressure.
 
 ### Card Anatomy & Frame System
 
-Cards use a **PSD-based layered V2 frame system** (AR-107). Each card composites 3 layers extracted from a master PSD (`data/generated/camp-art/NEW_CARD.psd`, 886×1142px) with text overlaid via CSS at PSD guide positions:
+Cards use a **PSD-based layered V2 frame system** (AR-107). Each card composites 3 layers extracted from a master PSD (`data/generated/camp-art/NEW_CARD.psd`, 886×1142px) with text overlaid via CSS at PSD guide positions.
+
+**Cards no longer display facts, question text, or difficulty stars on the card face.** Cards are purely mechanical objects with chain theme identity. Cards in hand show:
+
+- **Mechanic** (Strike, Block, Hex, etc.) — what the card does
+- **AP cost** — how much it costs to play
+- **Chain theme color + icon** — tells you the sub-topic pool (e.g., "Civil War Era" for knowledge decks, or generic Obsidian/Crimson/etc. for vocabulary decks)
+- **Chain theme name** — small label identifying the sub-pool
+- **Mastery level (0-5)** — per card slot, reflects quiz performance with this card slot this run
+- **NO specific fact, NO question text, NO difficulty stars** — quiz content hidden until charge
+
+This creates a strategic layer: "I have two Civil War Era cards and one Founding Fathers card. If I charge the Civil War Era cards consecutively, they'll chain. But I need to answer correctly on Civil War content."
+
+**Frame layers:**
 
 - **Border layer** (hue-shifted by card type): Indicates the card's mechanical category at a glance.
   - Attack: Red | Shield: Blue | Buff: Purple | Debuff: Green | Utility: Teal | Wild: Gold
 - **Base frame layer** (constant): The shared structural frame — book icon area, pentagon art window, text area background. Identical across all cards.
 - **Banner layer** (hue-shifted by chain type): The banner across the mechanic name area signals chain affinity.
-  - ChainType 0: Obsidian (gray) | 1: Crimson | 2: Azure | 3: Amber | 4: Violet | 5: Jade
-- **Pentagon art window:** Empty window ready for per-fact generated card art.
+  - Knowledge decks: deck-specific theme colors (e.g., Founding Fathers = #546E7A, Civil War Era = #EF5350)
+  - Vocabulary decks: generic colors — ChainType 0: Obsidian (gray) | 1: Crimson | 2: Azure | 3: Amber | 4: Violet | 5: Jade
+- **Pentagon art window:** Empty window ready for per-deck generated card art.
 - **AP cost:** Yellow (`#fbbf24`) Cinzel bold with black outline, rendered as a CSS text overlay in the book icon area. Turns red when current cost exceeds base cost, green when below base cost.
 - **Mechanic name:** Black text with white outline, Cinzel font, centered over the banner as a CSS overlay. Not baked into art.
-- **Card type label:** Small sans-serif label positioned between the art window and text area.
+- **Chain theme name:** Small label below mechanic name showing the chain theme (e.g., "Civil War Era" or "Obsidian").
+- **Mastery level badge:** Level indicator (0–5) displayed on the card.
 - **Effect text:** White sans-serif text over the dark lower text area. Clean readability on dark background.
 - **Upgrade icon:** Green cross icon with float animation displayed on upgraded cards.
-- **CHARGE button:** Displayed below the card in the popped state. Shows "FREE" (first Charge of fact) or "+1 AP" (subsequent Charges). Tap to initiate quiz. **Hover/press preview:** Hovering or touch-pressing the CHARGE button triggers a real-time charge value preview on the selected card — numeric values in the card's description update to show their charged equivalents in green (`#4ADE80`). Leaving the button reverts to normal display. Only active when the charge is affordable.
+- **CHARGE button:** Displayed below the card in the popped state. Shows "+1 AP". Tap to initiate quiz. **Hover/press preview:** Hovering or touch-pressing the CHARGE button triggers a real-time charge value preview on the selected card — numeric values in the card's description update to show their charged equivalents in green (`#4ADE80`). Leaving the button reverts to normal display. Only active when the charge is affordable.
 - **RPG pixel font (AR-71.3):** Card description text uses off-white `#F0E6D2` with a 4-direction black outline for legibility over card art.
 
 ### Charge Animation System (AR-59.16)
@@ -248,11 +281,27 @@ The chain display sits at the **bottom-left** of the combat screen, colored by c
 
 ### How It Works
 
-Cards have a `chainType` value (integer 0-5, corresponding to Obsidian, Crimson, Azure, Amber, Violet, Jade). When you Charge cards consecutively within the same turn that share a `chainType`, they form a chain. Each card in the chain gets a multiplier.
+Cards have a `chainType` value that corresponds to one of the run's 3 active chain themes. When you Charge cards consecutively within the same turn that share a `chainType`, they form a chain. Each card in the chain gets a multiplier.
 
 **Chain is built exclusively by Charge plays.** Quick Play breaks the chain. Wrong Charge answers also break the chain.
 
-**Six distinct chain types** (0-5) map to the 6-color palette defined in `src/data/chainTypes.ts`, but each run only uses 3 of the 6 — selected deterministically by the run seed. This concentrates chain opportunities so that 2-3 matching cards appear per 5-card hand on average. Cards without a `chainType` field contribute no chain.
+**Chain types are deck-specific (knowledge decks) or generic (vocabulary decks):**
+- **Knowledge decks** (US Presidents, Periodic Table, etc.): Chain themes are named, thematic sub-groups within the deck (e.g., "Founding Fathers", "Civil War Era", "Progressive Era"). Each run selects 3 of the deck's themes deterministically from the run seed. Cards assigned to a theme will quiz from that theme's fact sub-pool when charged.
+- **Vocabulary decks** (Japanese N5, Spanish A1, etc.): Chain types use the generic 6-color palette (Obsidian, Crimson, Azure, Amber, Violet, Jade). No educational meaning — purely mechanical. Facts are drawn from the full deck pool at charge time, not from a theme sub-pool.
+
+Each run uses exactly 3 chain themes, selected from the deck's available themes. This concentrates chain opportunities so that 2-3 matching cards appear per 5-card hand on average. Cards without a `chainType` field contribute no chain.
+
+**Example — US Presidents deck (knowledge deck):**
+- "Civil War Era" cards (red border) — charge to get a Civil War Era president question
+- "Founding Fathers" cards (steel blue border) — charge to get a Founding Fathers question
+- Two consecutive "Civil War Era" charges → 2-chain at 1.3×
+
+**Example — Japanese N5 deck (vocabulary deck):**
+- "Obsidian" cards → generic color, draws from full N5 vocabulary pool when charged
+- "Crimson" cards → generic color, same full pool
+- Two consecutive "Obsidian" charges → 2-chain at 1.3×
+
+**Minimum 3 chain themes per knowledge deck.** No upper limit. A Periodic Table deck might have 8+ themes (Alkali Metals, Noble Gases, Transition Metals, etc.). Decks with exactly 3 themes always use all of them; decks with more themes get different 3-theme combinations per seed — adding replayability.
 
 **Chain state is ACTIVE in combat** (AR-93 Section B): `chainSystem.ts` is wired into `turnManager.ts` and `cardEffectResolver.ts`. The chain multiplier stacks multiplicatively on every card play.
 
@@ -273,8 +322,8 @@ Cards have a `chainType` value (integer 0-5, corresponding to Obsidian, Crimson,
 | Scenario | Calculation | Total |
 |----------|-------------|-------|
 | 3-chain Quick Play Strikes | 8 × 1.7 each | 40.8 |
-| 3-chain Charged (correct, Tier 2a) middle card | 8, 24×1.7, 8×1.7 | 62.4 |
-| 3-chain all Charged on Surge turn (free Charge, Tier 2a) | 24 × 1.7 each | 122.4 |
+| 3-chain Charged (correct, mastery 1) middle card | 8, 24×1.7, 8×1.7 | 62.4 |
+| 3-chain all Charged on Surge turn (free Charge surcharge, mastery 1) | 24 × 1.7 each | 122.4 |
 
 The 122-damage Surge chain is the "holy shit" peak. Rare. Players will chase it.
 
@@ -298,29 +347,140 @@ The 122-damage Surge chain is the "holy shit" peak. Rare. Players will chase it.
 
 **Chain display (AR-93 / AR-116):** When chain length ≥ 2, a `ChainDisplay` at the **bottom-left** shows the chain length and multiplier in the format `"Chain: X.x"` (e.g. `"Chain: 1.7"`) colored by chain type. Implemented inside `ChainCounter.svelte` (chain-only display; combo counter fully removed in expansion).
 
-**Domain color:** Still used for the domain stripe/header bar inside cards and category labels — it conveys what subject matter the card covers. The chain border conveys chaining compatibility.
+**Chain theme identity:** The chain border color conveys both chaining compatibility AND (for knowledge decks) the educational sub-topic. For vocabulary decks, chain color is purely mechanical.
 
 ### Chain Examples
 
-**Geography deck (Japan focus):**
-- "Mount Fuji is Japan's highest peak" — `asia_oceania`
-- "Tokyo was formerly called Edo" — `asia_oceania`
-- "The Meiji Restoration began in 1868" — `asia_oceania`
-→ 3-chain on shared chainType at 1.7×
+**US Presidents deck (knowledge deck — themed chains):**
+- Card with "Civil War Era" theme (red banner) → charges into a Civil War era president quiz
+- Another "Civil War Era" card → charges into another Civil War era president quiz
+→ 2-chain on shared theme at 1.3×; if both correct, adds to chain for multiplier
 
-**Language deck (Japanese N5):**
-- 食べる (to eat) — `japanese_n5`
-- 飲む (to drink) — `japanese_n5`
-- おいしい (delicious) — `japanese_n5`
-→ 3-chain on `japanese_n5` at 1.7×
+**Japanese N5 deck (vocabulary deck — generic chains):**
+- "Crimson" card → charges into any N5 vocabulary fact from the full pool
+- Another "Crimson" card → charges into another N5 vocabulary fact from the full pool
+→ 2-chain on matching generic chain color at 1.3×
 
-### Facts Randomly Assign Per Encounter
+### Facts Assigned Dynamically at Charge Time
 
-Card mechanics pair with random facts each hand draw. A Strike might be `asian_cuisine` (green tint) in one encounter and `planets_moons` (blue tint) in the next. This means:
-- Every hand is a fresh chain puzzle
-- Players must READ their hand each turn
-- Educational breadth is preserved
-- No "my Strike always chains with my Block" memorization
+Card mechanics pair with dynamically selected facts at charge time — not at draw. A Strike with "Civil War Era" theme will ask about a Civil War era president when charged. Which specific president? The in-run FSRS selects the best one for that moment — prioritizing facts the player has struggled with, suppressing ones they've recently got right.
+
+This means:
+- Every charge is a fresh selection from the theme sub-pool
+- Players know the SUB-TOPIC (chain theme) but not the specific fact
+- Strategic layer: "I have two Civil War Era cards — do I chain them or play them separately?"
+- Educational breadth within a deck is preserved via the FSRS-weighted selection
+
+---
+
+## 3.5. Curated Deck System
+
+### Deck Structure
+
+Each curated deck is a self-contained educational unit designed for a specific knowledge domain or sub-domain. A run uses exactly one deck.
+
+```typescript
+interface CuratedDeck {
+  id: string;                          // e.g., "us_presidents", "japanese_n5_vocab"
+  name: string;                        // Display name
+  domain: string;                      // Parent domain for knowledge tracking
+  subDomain?: string;                  // Optional sub-domain
+  description: string;                 // Player-facing description
+  minimumFacts: number;                // Minimum facts required (default: 30)
+  targetFacts: number;                 // Ideal fact count (default: 50)
+  facts: DeckFact[];                   // The fact pool
+  answerTypePools: AnswerTypePool[];   // Sub-pools grouped by answer format
+  synonymGroups: SynonymGroup[];       // Groups of facts whose answers overlap (never distract each other)
+  chainThemes: ChainTheme[];           // Deck-specific chain type definitions
+  questionTemplates: QuestionTemplate[]; // Deck-specific question formats
+}
+```
+
+### Answer Type Pools
+
+Facts within a deck are grouped into **answer type pools** — sets of facts whose answers are the same format and can serve as distractors for each other.
+
+**Minimum pool size: 5 facts.** With fewer than 5, the player will pattern-match distractors within 2–3 encounters.
+
+**Example — US Presidents deck:**
+
+| Pool ID | Answer Format | Example Answers | Count |
+|---------|--------------|-----------------|-------|
+| `president_names` | Name | Washington, Lincoln, Roosevelt, Obama... | 46 |
+| `inauguration_years` | Year (bracket) | {1789}, {1861}, {1933}, {2009}... | 46 |
+| `party_names` | Term | Federalist, Whig, Republican, Democrat... | ~8 |
+| `home_states` | Place | Virginia, Illinois, New York, Hawaii... | ~30 |
+
+**Example — Japanese N5 Vocabulary deck:**
+
+| Pool ID | Answer Format | Example Answers | Count |
+|---------|--------------|-----------------|-------|
+| `english_meanings` | English word/phrase | to eat, to drink, delicious, big... | 822 |
+| `japanese_words` | Japanese word | 食べる, 飲む, おいしい, 大きい... | 822 |
+| `reading_hiragana` | Hiragana | たべる, のむ, おいしい... | 822 |
+
+### Deck-Specific Chain Themes vs Generic (Vocabulary)
+
+**Knowledge decks** define named chain themes that map to meaningful sub-groupings:
+
+```typescript
+interface ChainTheme {
+  id: number;                    // 0-N (minimum 3 per deck, no upper limit)
+  name: string;                  // e.g., "Founding Fathers", "Civil War Era"
+  color: string;                 // Hex color
+  icon: string;                  // SVG icon path
+  factSubset: string[];          // Fact IDs belonging to this theme (minimum 8 per theme)
+}
+```
+
+**Vocabulary decks** skip thematic chain types. The semantic groupings in vocabulary (actions, adjectives, nouns) don't create meaningful strategic chain decisions. Instead, vocabulary deck cards are assigned **generic chain types** (Obsidian, Crimson, Azure, Amber, Violet, Jade) distributed evenly by the seed. Facts are drawn from the **full deck pool** at charge time, not from a theme subset. Chains still work mechanically — matching generic colors still give multipliers — but the chain color carries no educational meaning.
+
+**This distinction applies to ALL vocabulary decks across all languages.** Knowledge decks use thematic chains. Vocabulary decks use generic chains.
+
+### Deck Selection at Run Start
+
+1. **Domain selection** — Choose a top-level domain (e.g., "History", "Japanese", "Science")
+2. **Deck selection** — Choose a specific deck within that domain (e.g., "US Presidents", "World War II", "Ancient Rome")
+3. If a deck has sub-decks, optionally narrow further
+
+The selected deck's full fact pool (minimum 30, target 50+) is loaded for the entire run. All quiz content comes from this single deck.
+
+**Multiple deck composition (future consideration):** A "Mixed Deck" option could combine 2–3 curated decks. NOT for initial implementation.
+
+### Pool-Based Adaptive Distractors
+
+Distractors are drawn from the deck's own fact pool (same answer type pool as the correct answer), weighted by the player's **confusion matrix**:
+
+1. **Synonym group exclusion (MANDATORY — checked first):** Any fact in the same `synonymGroupId` as the correct fact is EXCLUDED from candidates entirely. This prevents unfair questions where multiple answers are semantically correct.
+2. **Known confusions first:** Facts the player has previously confused with the correct answer (from confusion matrix). These are the hardest, most educational distractors.
+3. **In-run struggles:** Facts the player has gotten wrong this run (from in-run FSRS). Plausible because the player is actively uncertain.
+4. **Same answer-type pool, similar difficulty:** Other facts from the same pool at ±1 difficulty.
+5. **Same answer-type pool, any difficulty:** Remaining facts from the pool.
+
+**Confusion matrix (persistent):** Tracks across runs which facts the player has confused with each other. "When asked about Madison, the player chose Monroe." This pair is stored permanently and prioritized as a distractor whenever Madison is the correct answer. The confusion matrix makes each player's questions uniquely challenging — adapting to their personal knowledge gaps.
+
+### Synonym Group System (Mandatory for All Decks)
+
+Synonym groups prevent unfair questions where multiple answer options are semantically correct.
+
+**The problem:** If おいしい = "delicious" and another word = "tasty," showing "tasty" as a distractor for おいしい is unfair — both are correct.
+
+**The solution:** `acceptableAlternatives` intersection at deck build time — entirely programmatic.
+
+```typescript
+// Run at deck build time to compute synonym groups
+function buildSynonymGroups(facts: DeckFact[]): SynonymGroup[] {
+  // For each pair of facts: if their correct answers + acceptableAlternatives share ANY overlap,
+  // they are in the same synonym group and NEVER distract each other.
+  // Safety default: any overlap → group them. Over-grouping is strictly safer than under-grouping.
+}
+```
+
+Synonym detection works on the **English translation layer**, making it language-agnostic. Works identically for Japanese, Korean, Chinese, Spanish, French, German, Dutch, Czech.
+
+### Chain Theme Pool Exhaustion
+
+If a chain theme's available fact pool drops below 3 (due to cooldown), cooldown resets for that theme. This prevents stalling during long boss encounters. If a theme has fewer than 3 total facts (should not happen with minimum 8 per theme), all theme facts become available regardless of recent-use state.
 
 ---
 
@@ -476,7 +636,7 @@ Inscriptions are a special card keyword. Playing an Inscription card is a one-ti
 
 | Card | Hook Point | QP Effect | CC Effect | CW Effect |
 |------|-----------|-----------|-----------|-----------|
-| Inscription of Fury | Damage pipeline step 3 (after mastery, before relic flat bonuses) | +N flat attack damage | +N flat attack damage | 0.7× N flat attack damage (Cursed QP rule) |
+| Inscription of Fury | Damage pipeline step 3 (after mastery, before relic flat bonuses) | +N flat attack damage | +N flat attack damage | 0.7× N flat attack damage (QP penalty for playing as Quick Play) |
 | Inscription of Iron | Player turn start (before draw) | +N block per turn | +N block per turn | 0.7× N block per turn |
 | Inscription of Wisdom | Charge Correct resolution | Draw 1 extra card | Draw 1 extra card + heal 1 HP | Complete fizzle — card exhausted, no inscription registered |
 
@@ -490,13 +650,15 @@ Only applies to `attack`-type cards. Shield, buff, debuff, utility, and wild car
 
 ### Cursed Inscription
 
-A Cursed Inscription played via Quick Play applies its effect at **0.7×** the base value (standard `CURSED_QP_MULTIPLIER`). Inscription of Wisdom played as Charge Wrong results in a complete fizzle — the card exhausts and is removed from game, but no inscription is registered.
+An Inscription card played via Quick Play applies its effect at **0.7×** the base value (the "QP penalty" for not charging). Inscription of Wisdom played as Charge Wrong results in a complete fizzle — the card exhausts and is removed from game, but no inscription is registered.
 
 ---
 
-## 5. Card Tiers and Mastery (FSRS-Powered)
+## 5. Card Tiers and Mastery
 
-### Tier Derivation
+### FSRS Tiers (Long-Term Knowledge Tracking — Decoupled from Combat Power)
+
+FSRS tiers (1/2a/2b/3) still exist for global long-term knowledge tracking, but they are **decoupled from combat power**. Tiers no longer drive card multipliers or auto-charge behavior.
 
 ```typescript
 function getCardTier(state: PlayerFactState): '1' | '2a' | '2b' | '3' {
@@ -507,137 +669,112 @@ function getCardTier(state: PlayerFactState): '1' | '2a' | '2b' | '3' {
 }
 ```
 
-### Charge Scaling Table
+**What tiers still do:**
+- Long-term knowledge tracking — every quiz result updates FSRS state
+- Run pool seeding — low-stability facts are flagged as "needs practice" when initializing in-run state
+- Knowledge visualization — powers the cross-run knowledge map showing mastery across domains
+- Deck difficulty estimation — "you know 73% of US Presidents well"
 
-| Tier | Display | Quick Play | Charged Correct | Charged Wrong | Charge AP Cost |
-|------|---------|------------|-----------------|---------------|----------------|
-| 1 | Learning | 1.0× | 2.5× | 0.6× | +1 AP |
-| 2a | Proven | 1.0× | 3.0× | 0.7× | +1 AP |
-| 2b | Proven+ | 1.0× | 3.5× | 0.7× | +1 AP |
-| 3 | Mastered | 1.2× always | Auto-Charge, no quiz | N/A | +0 AP (free) |
+**What tiers no longer do:**
+- Do NOT drive card power multipliers for combat
+- Do NOT trigger Mastery Trials
+- Do NOT determine auto-charge eligibility
+- Do NOT set question format (that is now card slot mastery + deck templates)
 
-**Tier 3 Mastered cards permanently play at 1.2× with no quiz and no AP surcharge.** Players literally feel their knowledge becoming power — mastered facts are both stronger AND more efficient.
+### Charge Scaling Table (Mastery-Driven)
 
-### Question Format by Tier
+Combat power is driven by **card slot mastery** (0–5, per run), not FSRS tier:
 
-| Tier | Options | Reverse Format | Fill-Blank | Close Distractors |
-|------|---------|----------------|------------|-------------------|
-| 1 | 3 | No | No | No |
-| 2a | 4 | Yes | No | No |
-| 2b | 5 | Yes | Yes | Yes |
-| 3 | 0 (no quiz) | — | — | — |
+| Card Slot Mastery | Quick Play | Charged Correct | Charged Wrong | Charge AP Cost |
+|-------------------|------------|-----------------|---------------|----------------|
+| 0 | 1.0× | 2.5× | 0.6× | +1 AP |
+| 1 | 1.0× | 3.0× | 0.7× | +1 AP |
+| 2 | 1.0× | 3.0× | 0.7× | +1 AP |
+| 3 | 1.0× | 3.5× | 0.7× | +1 AP |
+| 4 | 1.0× | 3.5× | 0.7× | +1 AP |
+| 5 | 1.0× | 4.0× | 0.7× | +1 AP |
 
-For **vocabulary facts** (all languages), card tier controls which question variant types are available — not just option count. See §5 Vocabulary Question Variants below for the full variant system.
+### Mastery-Driven Question Difficulty
 
-### Mastery Trial
+Card mastery level (0-5) now controls quiz difficulty:
 
-When a Tier 2b fact qualifies for Mastery Trial (stability ≥ 30, consecutiveCorrect ≥ 7):
-- Golden card in hand, distinct glow
-- 4-second timer (regardless of floor)
-- 5 options with close distractors
-- Hardest variant available
-- **Correct → Tier 3.** Card permanently auto-Charges at 1.2× with no quiz and no AP surcharge. Celebration animation.
-- **Incorrect → stays Tier 2b**, must requalify.
+| Mastery Level | Distractor Count | Question Variant | Distractor Source Priority |
+|---------------|-----------------|------------------|---------------------------|
+| 0 | 2 | Easiest available for deck | Random from pool |
+| 1 | 3 | Standard | Pool + some confusion-based |
+| 2 | 3 | Standard + reverse variants | Confusion-weighted |
+| 3 | 4 | Harder variants unlocked | Heavily confusion-weighted |
+| 4 | 4 | Hardest available | Maximum confusion-weighting |
+| 5 | 4 | Hardest + closest distractors | Known confusions + closest similarity |
 
-Constants: `MASTERY_TRIAL.TIMER_SECONDS = 4`, `MASTERY_TRIAL.ANSWER_OPTIONS = 5`, `MASTERY_TRIAL.REQUIRED_STABILITY = 30`, `MASTERY_TRIAL.REQUIRED_CONSECUTIVE_CORRECT = 7`
+**The reward loop:** Higher mastery = higher card power multiplier. But the questions get proportionally harder. Mastery 5 gives a massive multiplier IF you can answer the hardest variant with the most confusable distractors. Knowledge IS power, but only genuine knowledge.
 
-### Tier-Up Celebration Animations
+**Fact difficulty scales with mastery:** At mastery 0, the system prefers easier facts from the chain theme pool. At mastery 4–5, it prefers facts the player struggles with most. This replaces the old "master a fact, get free hits" dynamic.
 
-| Tier Reached | Animation | Duration |
-|-------------|-----------|---------|
-| Tier 2a | Gold shimmer burst on card | 400ms |
-| Tier 2b | Gold + particle trail | 600ms |
-| Tier 3 | Full-screen golden burst, "MASTERED" text, fanfare | 1.5s |
+### Tier 3 Auto-Charge — REMOVED
+
+**Tier 3 auto-charge is removed.** There is no fact-level mastery that eliminates quizzes. Every charge always presents a quiz. At card mastery 5, the quiz is the hardest variant — but the multiplier is also the highest.
+
+### Mastery Trial — REMOVED
+
+Mastery Trials as a fact-level graduation ceremony are removed (no Tier 3 auto-charge to graduate into).
+
+**Possible future replacement:** A run-level "Mastery Challenge" at the final boss where the hardest facts from the run are presented in rapid succession — a climactic test, not a graduation.
 
 ### Pool Exhaustion Prevention
 
 If cooldown would exhaust the fact pool (available facts < hand size), cooldown relaxes to 1 encounter. If still insufficient, cooldown is disabled for that draw.
 
-### Vocabulary Question Variants
+### Question Templates (Deck-Specific)
 
-All vocabulary facts (across all languages) support multiple question formats that test different cognitive skills. Variants are selected based on card tier to progressively challenge the player as they demonstrate mastery.
+Each curated deck defines its own question templates rather than using the old global tier-based variant system. Templates are specific to the deck's subject matter and answer type pools.
 
-#### Active Variant Types
+#### Template Selection at Charge Time
 
-| Variant | Question Format | Answer Format | Cognitive Skill | Available From |
-|---------|----------------|---------------|----------------|----------------|
-| **Forward** | "What does [L2 word] mean?" | English answer choices | L2 recognition → L1 meaning | Tier 1 (default) |
-| **Reverse** | "How do you say '[English]' in [language]?" | L2 word choices | L1 meaning → L2 recall (production) | Tier 2a |
-| **Synonym Pick** | "Which word is closest in meaning to [L2 word]?" | English synonym choices | Semantic depth, meaning nuance | Tier 2b |
-| **Definition Match** | "[English definition/explanation]" | English answer choices (no L2 word shown!) | Meaning from description without L2 cue | Tier 2b |
+1. Filter templates to those available at the current card mastery level
+2. Filter to templates whose answer pool contains the selected fact
+3. Weight by: difficulty appropriate to mastery level, variety (don't repeat same template consecutively), in-run template history
+4. Select weighted random (seeded)
 
-#### Future Variant (Requires LLM Generation)
+#### Vocabulary Deck Templates (Standard Across All Languages)
 
-| Variant | Question Format | Answer Format | Cognitive Skill |
-|---------|----------------|---------------|----------------|
-| **English Context Fill** | "He sat on a park ___" | English answer choices | Deep meaning comprehension, usage in context |
+| Template ID | Format | Answer Pool | Available From Mastery | Notes |
+|-------------|--------|-------------|----------------------|-------|
+| `forward` | "What does '{word}' mean?" | `english_meanings` | 0 | L2 recognition → L1 meaning |
+| `reading` | "What is the reading of '{kanji}'?" | `reading_hiragana` | 1 | Japanese/Chinese only |
+| `reverse` | "How do you say '{english}'?" | `target_language_words` | 2 | L1 meaning → L2 recall |
+| `synonym_pick` | "Which word is closest in meaning to '{word}'?" | `english_meanings` | 3 | Semantic depth |
+| `definition_match` | "[definition/explanation]" | `english_meanings` | 3 | No L2 word shown |
 
-English context fill sentences will be generated by LLM (Haiku sub-agent) and stored in the `variants` field of each fact. This is deferred until the content pipeline supports it.
+This is language-agnostic — the same template IDs and logic work for Japanese, Korean, Chinese, Spanish, French, German, Dutch, Czech.
 
-#### Tier → Variant Mapping
+#### Vocabulary Distractor Sources (Pool-Based)
 
-Cards upgrade through tiers as players answer correctly via spaced repetition. Each tier introduces harder question formats:
+All vocabulary distractors come from the run's deck pool:
+- **Forward/Synonym/Definition:** Distractors are other English meanings from the `english_meanings` pool
+- **Reverse:** Distractors are other target language words from the `target_language_words` pool
+- **Reading:** Distractors are other readings from the `reading_hiragana` (or `reading_pinyin`) pool
 
-| Card Tier | Available Variants | Selection Logic |
-|-----------|-------------------|----------------|
-| **Tier 1** (Learning) | Forward only | Always forward — establish basic recognition |
-| **Tier 2a** (Active) | Forward (60%), Reverse (40%) | Random weighted selection. Reverse tests production — harder than recognition |
-| **Tier 2b** (Proficient) | Forward (30%), Reverse (30%), Synonym Pick (20%), Definition Match (20%) | All four variants in play. Wider variety prevents rote memorization |
-| **Tier 3** (Mastered) | Free recall (type answer) | No multiple choice — existing system |
-
-The variant is selected when the quiz question is generated, not at card creation time. The same card can be asked different ways on different encounters.
-
-#### Distractor Selection — Smart Pool
-
-Distractors for vocabulary questions are selected with these priorities (in order):
-
-1. **Seen-but-not-mastered words first:** Pull from facts the player has encountered in previous runs but hasn't fully mastered (FSRS review state: due or overdue). These are the hardest distractors because the player has partial knowledge — they might confuse similar words they're still learning.
-
-2. **Same difficulty band (±1):** Within the seen pool, prefer words at similar difficulty level to the target fact.
-
-3. **Length matching:** Filter to answers with similar character length (±60%) to prevent length-based guessing.
-
-4. **Unseen pool fallback:** If insufficient seen-but-not-mastered words exist (e.g., early in the game), fall back to the general language pool sorted by difficulty proximity.
-
-5. **Deduplication:** No duplicate answer strings. No distractor matching the correct answer or its acceptable alternatives.
-
-This applies to all languages uniformly — the system is language-agnostic, operating on the English `correctAnswer` values (for Forward, Synonym, Definition) or on the L2 words (for Reverse).
-
-#### Reverse Variant — L2 Word Distractors
-
-For Reverse questions ("How do you say 'bench' in Japanese?"), distractors must be other L2 words (e.g., other Japanese words), not English words. Selection:
-
-1. Prefer L2 words from facts the player has seen but not mastered (same FSRS logic).
-2. Prefer words at similar difficulty and similar length (in the target language script).
-3. Avoid words that are translations of the same English word (e.g., two words both meaning "bench").
+The confusion matrix applies naturally: if you've confused 飲む ("to drink") with 食べる ("to eat") three times, 飲む is permanently the #1 distractor whenever 食べる is the answer.
 
 #### Synonym Pick — WordNet Integration
 
 Synonym Pick uses the WordNet lexical database (pre-computed at build time):
+- **Coverage:** ~82.9% of single-word English answers have WordNet synsets. The system gracefully degrades for the rest.
+- **Fallback:** If WordNet has no synset for the answer, this variant is skipped and another is selected.
 
-- **Correct answers:** Members of the same WordNet synset as the fact's `correctAnswer`. E.g., for "bench" → "seat" is a valid synonym.
-- **Distractors:** Other English words NOT in the same synset, preferably from the same hypernym category (e.g., other furniture words like "table", "desk") to make them plausible but wrong.
-- **Fallback:** If WordNet has no synset for the answer (multi-word phrases, rare words), this variant is skipped and another variant is selected instead.
-- **Coverage:** ~82.9% of single-word English answers have WordNet synsets (pre-computed into `synonymMap.json` at build time). The system gracefully degrades for the rest.
+#### Synonym Safety for Vocabulary Decks
 
-#### Definition Match — Using Existing Data
+Vocabulary decks have high synonym density. The synonym group system (§3.5) is MANDATORY for all vocabulary decks.
 
-Definition Match uses the fact's `explanation` field, which contains dictionary-style definitions:
+| Language | Word A | Word B | English Overlap | Must Group? |
+|----------|--------|--------|-----------------|-------------|
+| Japanese | おいしい | うまい | "delicious", "tasty" | YES |
+| Japanese | きれい | うつくしい | "beautiful", "pretty" | YES |
+| Spanish | bonito | hermoso | "beautiful", "pretty" | YES |
+| French | beau | joli | "beautiful", "pretty" | YES |
 
-- The question shows the explanation text (stripped of the L2 word if present).
-- The answer choices are English words (same as Forward variant).
-- The key difference from Forward: the player never sees the foreign word — they must know the meaning deeply enough to match it from a description alone.
-- **Fallback:** If the `explanation` field is empty or too short (<10 chars), skip this variant.
-
-#### Language Agnostic Design
-
-This system works identically for all supported languages (Japanese, Korean, Chinese, German, French, Spanish, Dutch, Czech). The variant logic operates on:
-- `fact.correctAnswer` (always English) for Forward, Synonym, Definition
-- `fact.quizQuestion` / L2 word extracted from the question for Reverse
-- `fact.language` for pool selection
-- `fact.explanation` for Definition Match
-
-No language-specific code is required. Adding a new language automatically gets all variant types.
+The `acceptableAlternatives` intersection algorithm (§3.5) catches all of these automatically at deck build time.
 
 ---
 
@@ -769,17 +906,17 @@ When an enemy is about to deal high damage, their sprite builds a visible "charg
 
 ---
 
-## 5.7. Cursed Card Visuals
+## 5.7. Cursed Card Visuals — REMOVED
 
-Cursed cards have a distinctive visual signature to separate them from normal cards:
+**The Cursed Card visual system has been removed** along with the Cursed Card mechanic (see §11). With dynamic fact assignment, there is no persistent "cursed fact on a card" to display — facts are assigned at charge time, not at draw time.
 
-- Semi-transparent purple tint over the card frame
-- Cracked border (CSS overlay layer)
-- `cursed-shimmer` CSS animation — faint purple shimmer
-- Cure animation: purple cracks shatter, card glows gold briefly (300ms)
-- Clearly distinct from normal cards — no tooltip needed
+Wrong answers are now handled by:
+- Lower multiplier (0.6×/0.7×) — unchanged
+- Higher in-run FSRS weight for future fact selection — the system will present this fact again sooner
+- Confusion matrix recording — the wrong answer pair is stored and used to generate harder distractors later
+- Card slot mastery does not gain a level on wrong answer — or loses one level at mastery 1+
 
-**Note:** The old Echo system (ghost cards with dashed purple borders that spawned on wrong Charge and exhausted on second fail) was removed. It was replaced by the Cursed Card system — see §1C above for full mechanical specification.
+No separate cursed visual state is needed. The consequence of failure is built into the adaptive system.
 
 ---
 
@@ -822,7 +959,7 @@ Cards unlock as character level increases. New players start at level 0 with 36 
 
 ### Complete Mechanics Reference (v2 — QP / Charge Correct / Charge Wrong)
 
-All 91 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = 1.5× base + mastery bonus (see Mastery Upgrade System). Charged Wrong = 0.6×/0.7×. Values shown at mastery 0, Tier 2a (1.5×/0.7×) for standard reference.
+All 91 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = 2.5×–4.0× (mastery 0–5, see Mastery Upgrade System). Charged Wrong = 0.6× (mastery 0) / 0.7× (mastery 1+). Values shown at mastery 0 for standard reference unless noted.
 
 #### Attack Mechanics
 
@@ -932,7 +1069,7 @@ All 91 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = 1.5× base +
 | B2 | Warcry | 1 | +2 Strength (this turn) | +2 Strength (permanent) + free Charge | 6 | Absorbs Concentration's niche |
 | B3 | Frenzy | 2 | Next 2 cards cost 0 AP (incl. surcharge) | Next 3 cards cost 0 AP | 10 | Surcharge waived on free plays |
 | B4 | Battle Trance | 1 | Draw 3, can't play more cards | Draw 3, no restriction | 7 | STS adaptation |
-| B5 | Mastery Surge | 1 | +1 mastery to 1 random hand card | +1 mastery to 2 cards | 11 | Wasted on cursed cards |
+| B5 | Mastery Surge | 1 | +1 mastery to 1 random hand card | +1 mastery to 2 cards | 11 | Strongest at mastery 4 (approaching max multiplier) |
 | B6 | War Drum | 1 | All hand cards +2 base effect this turn | All +4 base | 8 | Universal hand buff |
 | B7/I1 | Inscription of Fury | 2 | All attacks +2 dmg rest of combat | All attacks +4 dmg | 0 | INSCRIPTION — persistent |
 | B8/I2 | Inscription of Iron | 2 | Start each turn with 3 block rest of combat | Start with 6 block | 0 | INSCRIPTION — persistent |
@@ -970,7 +1107,7 @@ All 91 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = 1.5× base +
 | W1 | Chameleon | 1 | Copy last card at 1.0× | Copy at 1.3× + inherit chain type | 6 | Chain-aware copy |
 | W2 | Phase Shift | 1 | Choose: 8 dmg OR 8 block | 12 dmg AND 12 block | 7 | Per-play modal |
 | W3 | Knowledge Bomb | 2 | 4 dmg | 4 dmg per correct Charge this encounter | 13 | Scales with quiz performance |
-| W4 | Dark Knowledge | 1 | 3 dmg per cursed fact | 5 dmg per cursed fact | 8 | Turns failures into a weapon |
+| W4 | Dark Knowledge | 1 | 3 dmg per wrong answer this run | 5 dmg per wrong answer this run | 8 | Turns failures into a weapon (counts in-run wrong answers, not cursed facts) |
 | W5 | Catalyst | 1 | Double all Poison on enemy | Double Poison + double Burn | 10 | STS classic |
 | W6 | Chain Anchor | 1 | Draw 1 | Set chain to 2 + draw 1 | 9 | Chain starter |
 | W7 | Sacrifice | 0 | Lose 5 HP, draw 2, gain 1 AP | Lose 5 HP, draw 3, gain 2 AP | 8 | STS Offering |
@@ -1009,7 +1146,7 @@ All 91 active mechanics. Quick Play (QP) = 1.0×. Charged Correct = 1.5× base +
 
 | Act | Name | Floors | Map Nodes | Key Features |
 |-----|------|--------|-----------|--------------|
-| 1 | The Shallows | 1–4 | 7–8 per path | Deck building, learn combat, Free First Charge exploration |
+| 1 | The Shallows | 1–4 | 7–8 per path | Deck building, learn combat, adaptive mastery-0 difficulty eases players into the chosen deck |
 | 2 | The Depths | 5–8 | 7–8 per path | Synergy testing, first elite, quiz pressure escalates |
 | 3 | The Archive | 9–12 | 7–8 per path | Build payoff, final boss, mastery tested |
 
@@ -1173,9 +1310,9 @@ Before each purchase, player can attempt to **Haggle**: answer 1 question correc
 **Card prices (v2):**
 | Rarity | Base Price | Haggled Price |
 |--------|-----------|---------------|
-| Common (Tier 1) | 50g | 35g |
-| Uncommon (Tier 2a/2b) | 80g | 56g |
-| Rare (Tier 3) | 140g | 98g |
+| Common | 50g | 35g |
+| Uncommon | 80g | 56g |
+| Rare | 140g | 98g |
 
 **Relic prices:**
 | Rarity | Base Price | Haggled Price |
@@ -1191,7 +1328,7 @@ Constants: `SHOP_HAGGLE_DISCOUNT = 0.30`, `SHOP_REMOVAL_BASE_PRICE = 50`, `SHOP_
 
 ### Card Reward System
 
-After each combat encounter, player chooses 1 of 3 card options. Each option is an actual card — showing the mechanic name, AP cost, short description, and domain color stripe. Cards are selected from the run pool weighted by the run archetype (aggressive, defensive, control, hybrid, balanced).
+After each combat encounter, player chooses 1 of 3 card options. Each option is an actual card — showing the mechanic name, AP cost, short description, chain theme color + icon. Cards are selected from the run pool weighted by the run archetype (aggressive, defensive, control, hybrid, balanced).
 
 **Reward screen (altar):** The post-combat reward screen uses a custom background with a stone altar and cloth surface where reward items float. Assets at `public/assets/reward_room/`:
 - `reward_room_bg.webp` / `.png` — the full background (stone altar scene)
@@ -1283,13 +1420,13 @@ Target: ~400–800g per run (varies by risk-taking, node choices, and haggling).
 
 ### Save/Resume System
 
-Run state saved after each completed node. On resume, player returns to the map at their last completed position. `firstChargeFreeFactIds` is serialized as an array and restored to `Set<string>` on load.
+Run state saved after each completed node. On resume, player returns to the map at their last completed position. Run state stores deck ID + in-run FSRS state.
 
 **Active Run Guard Popup:** If the player clicks "Enter Dungeon" while a saved run exists, a modal popup appears showing the run's current stats (floor, gold, encounters won, facts correct). Two options are presented: "Continue Run" (resumes the existing run) and "Abandon & Start New" (clears the save and begins a fresh run). Clicking the backdrop dismisses the popup without action. The active-run banner is hidden while the popup is visible to avoid double UI.
 
 ### Deck Building Strategy
 
-**Pool building:** Run pools are concentrated on a subset of `chainType` values to enable chains. The domain selection at run start determines which chain type groups appear.
+**Pool building:** Each run uses a single curated deck. The deck selection at run start determines the fact pool, chain themes (3 selected per run from the deck's available themes), and question templates available. Cards are concentrated on 3 chain themes enabling ~50% chain frequency per hand.
 
 **Deck size:** Starts at 10 cards. Each card reward adds 1 card (no limit). Card removal at shops and Meditate at rest sites thin the deck. Optimal decks: 15–20 cards (tight and consistent).
 
@@ -1406,12 +1543,12 @@ Enrage thresholds by segment: Shallows = turn 9, Depths = turn 8, Archive = turn
 
 See §3 for full detail. Summary for quick reference:
 
-- **Chain trigger:** Consecutive Charge plays of same `chainType` (0-5) in one turn
-- **Chain break:** Quick Play, wrong Charge answer, different `chainType`
-- **Run chain selection:** Each run uses 3 of the 6 chain types (selected deterministically by run seed). Cards are assigned only these 3 types, yielding ~50% chain frequency vs. ~15% with 6 types.
+- **Chain trigger:** Consecutive Charge plays of same `chainType` (same chain theme) in one turn
+- **Chain break:** Quick Play, wrong Charge answer, different chain theme
+- **Run chain selection:** Each run uses 3 of the deck's chain themes (selected deterministically by run seed). Knowledge decks use named thematic themes (e.g., "Civil War Era"); vocabulary decks use generic colors (Obsidian, Crimson, etc.). ~50% chain frequency per 5-card hand.
 - **Multipliers:** 1.0× (no chain), 1.3× (2-chain), 1.7× (3-chain), 2.2× (4-chain), 3.0× (5-chain)
 - **Stacks with:** Charge multiplier (multiplicative), Surge (free Charge, enabling more chains per turn)
-- **Visuals:** `chainType`-colored card edge tint (6-color palette, 3 active per run), in-hand pulse, connection line animation, chain display (bottom-left, format "Chain: X.x")
+- **Visuals:** Chain theme colored card border (3 active per run), in-hand pulse, connection line animation, chain display (bottom-left, format "Chain: X.x")
 
 ---
 
@@ -1475,26 +1612,19 @@ When using a custom deck with heavily mastered content, reward scaling prevents 
 
 ---
 
-## 11. Cursed Card System (Replaces Old Echo Mechanic)
+## 11. Cursed Card System — REMOVED
 
-The Echo system has been **fully removed** and replaced by the Cursed Card system. Full specification is in §4.5 Status Effects section (§1C of the expansion spec). Summary:
+**The Cursed Card system has been fully removed.**
 
-**Why Echoes were removed:**
-1. **Exploit:** Players could intentionally fail cards they didn't want, using wrong answers as free deck thinning.
-2. **Anti-learning:** The cards a player most needed to practice were removed — wrong behavior for an educational game.
+**Why it was removed:** Cursed cards required fact-card binding to have visual identity — a specific cursed fact had to be persistently attached to a card slot. With dynamic fact assignment (facts selected at charge time, not draw time), there is no persistent "cursed fact on a card" to display.
 
-**How Cursed Cards work:**
-- Wrong Charge on a mastery-0 card → the **fact** (not card slot) is added to `cursedFactIds: Set<string>` on RunState
-- Any card drawn that gets assigned a cursed fact shows the Cursed visual (purple tint, cracked border, shimmer)
-- Cursed QP: 0.7×. Cursed Charge Correct: 1.0× (cure reward). Cursed Charge Wrong: 0.5×
-- Cure: correct Charge on a cursed-fact card → fact removed from `cursedFactIds`, double FSRS credit
-- **Free First Charge is EXEMPT** — guessing wrong on an unknown fact does NOT curse it (fizzle is enough punishment)
-- Auto-cure safety valve: if 60%+ of hand is cursed across 2 consecutive draws → oldest fact auto-cures at encounter end
-- Card removal (Meditate/shop) does NOT remove the cursed fact — it follows the fact, not the slot
+**Replacement:** Wrong answers are handled naturally by:
+- Lower multiplier on wrong answer (0.6×/0.7× — unchanged)
+- Higher in-run FSRS weight — the failed fact is prioritized for future selection this run
+- Confusion matrix recording — the wrong answer pair is stored persistently and generates harder distractors in future runs
+- Card slot mastery does not gain a level on wrong answer (no mastery progress for guessing wrong)
 
-**Constants:** `CURSED_QP_MULTIPLIER = 0.7`, `CURSED_CHARGE_CORRECT_MULTIPLIER = 1.0`, `CURSED_CHARGE_WRONG_MULTIPLIER = 0.5`, `CURSED_FSRS_CURE_BONUS = 6.0`, `CURSED_AUTO_CURE_THRESHOLD = 0.6`, `FREE_FIRST_CHARGE_EXEMPT_FROM_CURSE = true`
-
-Research: Karpicke & Roediger (2008) — immediate re-testing after failure is one of the most effective spaced repetition micro-patterns. The Cursed system forces continued exposure to failed facts rather than removing them.
+The educational intent is preserved: the system will present failed facts again more frequently (via in-run FSRS weighting) rather than letting the player avoid them.
 
 ---
 
@@ -1505,15 +1635,15 @@ Research: Karpicke & Roediger (2008) — immediate re-testing after failure is o
 | Commit-before-reveal | Question hidden until irrevocable Charge commit |
 | Action Points | 3 AP forces card selection; Charge surcharge forces tradeoffs |
 | Wrong answer effect | Wrong Charge = 0.7× (always SOME effect, but always worse than QP) |
-| Large pools | 80–120 facts/run, see ~50–60 |
+| Curated deck pool | Single focused deck (30–50+ facts); harder to game than a mixed 120-fact pool |
 | No-repeat-until-cycled | STS draw pile model |
-| Question format rotation | 2–4 variants per fact, never same format consecutively |
-| Format escalation | Higher tiers = harder formats (more options, fill-blank, reverse) |
-| Mastery Trial | Tier 3 requires 4s timer + 5 close distractors |
-| Per-run mechanic randomization | Same fact, different combat behavior each run |
-| FSRS decay | Mastered facts return if not maintained |
-| Cursed Card system | Wrong Charge on mastery-0 facts weakens any card carrying that fact until correct Charge cures it |
-| Free First Charge | First Charge of any fact is free, preventing uninformed commitment |
+| Question template rotation | Never same template consecutively; mastery unlocks harder templates |
+| Template escalation | Higher mastery = harder question variants (reverse, synonym pick, definition match) |
+| Per-run mechanic randomization | Same chain theme, different specific fact each charge |
+| In-run FSRS weighting | Wrong answers get higher selection weight — no avoiding problem facts |
+| FSRS decay | Mastered facts return if not maintained globally |
+| Pool-based adaptive distractors | Confusion matrix makes each player's questions uniquely challenging — pattern-matching distractors is your OWN confusion history |
+| Synonym group exclusion | Prevents unfair questions where multiple answer options are correct |
 
 ---
 
@@ -1759,7 +1889,7 @@ CHARGE button is visible in Run 1 but tooltipped as optional. First few encounte
 ### Gradual Charge Introduction
 
 - Run 2, turn 1: CHARGE button gets a pulsing glow invitation
-- First Charge of any fact is FREE (AP surcharge = 0, wrong = 1.0× = no penalty)
+- At mastery 0, quiz difficulty is lowest (easiest facts, easiest templates, only 2 distractors) — adaptive difficulty replaces the old "Free First Charge" penalty-free introduction
 - Successful first Charge: "CHARGED! You dealt 3× damage!" celebration
 
 ### Calibration (Accelerated FSRS, Runs 1–3)
@@ -1782,7 +1912,7 @@ Lightweight contextual hints that fire once per device (localStorage-gated). The
 - **Trigger:** First non-free Charge play (surcharge > 0). Checks `localStorage.getItem('tutorial:chargeShown')`.
 - **Content:** "Charging costs +1 extra AP for the quiz power boost."
 - **Display:** Floating tooltip above the card hand, 5-second auto-dismiss.
-- **Not shown** on Surge turns or Chain Momentum turns where Charge is free.
+- **Not shown** on Surge turns or Chain Momentum turns where the charge surcharge is waived.
 - **Location:** `CardCombatOverlay.svelte` — `maybeShowChargeTutorial()`.
 
 #### Feature 3: Quick Play vs Charge Comparison Banner
@@ -1810,7 +1940,7 @@ All tutorial tooltips use:
 
 ## 15. Wrong Answer Design
 
-Wrong Charge resolves at **0.7× multiplier** (Tier 2a/2b) or **0.6×** (Tier 1) — partial effect, not full fizzle. Card is never wasted. It resolves weakly.
+Wrong Charge resolves at **0.7× multiplier** (mastery 1+) or **0.6×** (mastery 0) — partial effect, not full fizzle. Card is never wasted. It resolves weakly.
 
 **Design intent:** Wrong answers are expected, not punished. The gap between wrong (0.7×) and Quick Play (1.0×) is clear negative feedback, but the player is not set back dramatically. They lose the Charge investment (+1 AP wasted) and get partial effect — a meaningful cost that teaches "only Charge what you know" without creating rage-quit moments.
 
@@ -1830,8 +1960,9 @@ Wrong Charge resolves at **0.7× multiplier** (Tier 2a/2b) or **0.6×** (Tier 1)
 - Cost the full Charge AP surcharge (+1 AP spent, no refund)
 - Apply partial effect (0.7×)
 - Break the Knowledge Chain counter
-- If card is mastery 0: add the fact to `cursedFactIds` (Cursed Card system)
-- If card is mastery 1+: downgrade mastery by 1 level (once per encounter)
+- Downgrade card slot mastery by 1 level (once per encounter) — at mastery 0, no downgrade
+- Record in confusion matrix: which answer the player chose instead of the correct one (persists across runs)
+- Increase in-run FSRS weight for the failed fact — will appear more frequently this run
 
 **Wrong answer does NOT:**
 - Destroy the card
@@ -1850,7 +1981,7 @@ The exact order of damage calculation for all attack cards. **The combo multipli
 2. + mastery bonus (`perLevelDelta × masteryLevel`)
 3. + Inscription of Fury flat bonus (if active — applied here as flat addition, attack cards only)
 4. + relic flat bonuses (`barbed_edge`, etc.)
-5. × `card.effectMultiplier` (tier-derived: 1.0× QP, 1.5–3.5× CC, 0.6–0.7× CW)
+5. × `card.effectMultiplier` (mastery-derived: 1.0× QP, 2.5–4.0× CC, 0.6–0.7× CW)
 6. × `chainMultiplier` (1.0–3.0, based on chain length)
 7. × `speedBonus` (from quiz timer — only applies on CC)
 8. × `buffMultiplier` (from Empower/buff cards active this turn)
@@ -2041,7 +2172,7 @@ Once per encounter: Charge same card twice. Answer 2 questions. Both correct: 5�
 #### Knowledge Relics (Build-Around)
 
 **Scholar's Crown** — Rare
-Tier 1 Charged facts get +10% power. Tier 2+ get +40%. Tier 3 auto-Charged get +75%.
+Mastery 0–1 Charged cards get +10% power. Mastery 2–3 get +40%. Mastery 4–5 get +75%. (References card slot mastery, not FSRS tier.)
 
 **Memory Nexus** — Uncommon
 When you correctly Charge 3 cards in one encounter (cumulative), draw 2 extra next turn.
@@ -2051,7 +2182,7 @@ Wrong Charged answers reveal correct answer AND next appearance of that fact aut
 *Turns failures into future guaranteed wins.*
 
 **Domain Mastery Sigil** — Rare (ID: `domain_mastery_sigil`, fixed from old ID `domain_mastery`)
-If deck has 4+ facts from same domain, all same-domain cards get +30% base damage (even Quick Play).
+Since all runs use a single curated deck from one domain, this relic always activates. All cards in the run get +30% base damage (even Quick Play). Effectively a permanent flat damage boost on any curated deck run.
 
 #### Economy Relics (Utility)
 
@@ -2104,7 +2235,7 @@ Once per encounter: after correct Charge, replay card at 1.5× (no quiz, no AP).
 **Volatile Manuscript** — Rare (Cursed)
 All Charge multipliers +0.5×. Every 3rd Charge applies 4 Burn to yourself. Self-Burn triggers when hit by enemy attacks.
 
-> **Removed relics (historical note):** Echo Lens, Echo Chamber, Phantom Limb were removed when the Echo system was replaced by the Cursed Card system. Combo Ring was removed with the combo system.
+> **Removed relics (historical note):** Echo Lens, Echo Chamber, Phantom Limb were removed when the Echo system was removed. Cursed Card relics (Scar Tissue referenced `CURSED_QP_MULTIPLIER`) will need to be re-specified now that the Cursed Card system is removed. Combo Ring was removed with the combo system.
 
 ### New Expansion Relics (36 Added)
 
@@ -2129,7 +2260,7 @@ All Charge multipliers +0.5×. Every 3rd Charge applies 4 Burn to yourself. Self
 | `ember_core` | Ember Core | permanent | Burn applied by you starts +2 extra stacks. Enemy at 5+ Burn: attacks +20% |
 | `gambler_s_token` | Gambler's Token | on_charge_wrong | Wrong Charge = +3 gold |
 | `thoughtform` | Thoughtform | on_perfect_turn | +1 permanent Strength when ALL cards in a turn were Charged correctly |
-| `scar_tissue` | Scar Tissue | permanent | Cursed cards deal 0.85× QP instead of 0.7×. Does NOT cure — softens penalty |
+| `scar_tissue` | Scar Tissue | permanent | **NEEDS REDESIGN** — originally softened Cursed Card penalty; Cursed Card system has been removed. Re-specify for v3 (candidate: wrong Charge at any mastery deals 0.75× instead of 0.7×) |
 | `surge_capacitor` | Surge Capacitor | on_surge_start | Surge turns: +1 AP and draw 2 extra cards |
 | `obsidian_dice` | Obsidian Dice | on_charge_correct | 60% chance: +50% Charge mult. 40% chance: −25% Charge mult |
 | `living_grimoire` | Living Grimoire | on_encounter_end | If 3+ Charges correct in encounter, heal 3 HP |
@@ -2147,7 +2278,7 @@ All Charge multipliers +0.5×. Every 3rd Charge applies 4 Burn to yourself. Self
 | `archive_codex` | Archive Codex | on_encounter_end | +1 damage per 10 total mastery levels across deck |
 | `berserker_s_oath` | Berserker's Oath | on_run_start | −30 max HP. All attacks +40% damage |
 | `chain_forge` | Chain Forge | on_chain_complete | Once per encounter: a card that would break a chain continues instead |
-| `deja_vu` | Deja Vu | on_turn_start | Turn 1: add 1 random discard card to hand at −1 AP. Card gets a previously-correct fact |
+| `deja_vu` | Deja Vu | on_turn_start | Turn 1: add 1 random discard card to hand at −1 AP. When charged, fact selection biases toward facts answered correctly this run |
 | `inferno_crown` | Inferno Crown | permanent | Enemy has BOTH Burn and Poison: all damage +30% |
 | `mind_palace` | Mind Palace | permanent | Track consecutive correct Charges. Forgiveness: 1 wrong per 10 freezes progress. At 10/20/30 streak: +3/+6/+10 all effects |
 | `entropy_engine` | Entropy Engine | on_turn_end | If 3+ different card types played this turn: deal 5 dmg + gain 5 block |
@@ -2162,7 +2293,7 @@ All Charge multipliers +0.5×. Every 3rd Charge applies 4 Burn to yourself. Self
 |----|------|---------|--------|
 | `omniscience` | Omniscience | on_charge_correct | 3 correct Charges in one turn → 4th Charge auto-succeeds |
 | `paradox_engine` | Paradox Engine | on_charge_wrong | Wrong Charges resolve at 0.3× AND deal 5 piercing damage. +1 AP per turn |
-| `akashic_record` | Akashic Record | on_charge_correct | Tier 2b+ facts: one wrong answer subtly highlighted. Tier 3 auto-Charge = 1.5× (up from 1.2×) |
+| `akashic_record` | Akashic Record | on_charge_correct | **NEEDS REDESIGN** — originally referenced Tier 3 auto-charge (removed). Candidate redesign: Mastery 4–5 cards: one wrong answer subtly highlighted in the quiz. Mastery 5 correct Charge = 4.5× (up from 4.0×). |
 | `singularity` | Singularity | on_chain_complete | Completing a 5-chain deals BONUS damage equal to total chain damage (doubles 5-chain output) |
 
 ### Relic Archive (Hub — Meta-Progression)
@@ -2185,7 +2316,7 @@ All Charge multipliers +0.5×. Every 3rd Charge applies 4 Burn to yourself. Self
 
 Some relic combinations trigger undocumented bonuses to reward exploration:
 - **Perfect Storm:** Chain Reactor + Prismatic Shard + Resonance Crystal → 3-chain chains draw 2 cards and deal splash
-- **Mastery Ascension:** Scholar's Crown + 5 Tier 3 cards in deck → flat damage bonus per mastered card
+- **Mastery Ascension:** Scholar's Crown + 5 mastery-5 card slots in deck → flat damage bonus per mastered card slot
 - **Phoenix Rage:** Phoenix Feather + Blood Price → resurrection gives +50% damage for 5 turns and waives HP drain
 
 ---
@@ -2217,8 +2348,7 @@ Card hand occupies the bottom ~45% of screen. Enemy arena occupies the top 55%. 
 | Quick Playing | 200ms instant animation |
 | Dragging (lower zone) | Green glow — Quick Play on release |
 | Dragging (upper zone) | Golden glow + "⚡ CHARGE +1 AP" label — Charge Play on release |
-| Cursed card | Purple tint, cracked border, `cursed-shimmer` CSS animation |
-| Tier 3 auto-Charge | Gold shimmer, auto-resolves on play |
+| Mastery 5 card | Gold glow aura, quiz uses hardest variant, gives highest multiplier |
 
 ### Enemy Intent Display
 
@@ -2335,7 +2465,7 @@ Player engagement research shows ~200ms is the maximum latency before "instant" 
 - **Release above threshold:** Audible "whoosh" + quiz panel slide-in
 - **Correct answer:** Screen shake + particle burst + impact sound matching card type
 - **Wrong answer:** Brief red tint (not punishing) + soft negative sound
-- **Free First Charge correct:** "NEW!" text burst + full celebration
+- **First correct answer on a new fact:** "NEW!" text burst + full celebration (first time correctly answering a fact in the run)
 
 ### Surge Juice
 
@@ -2438,7 +2568,7 @@ For the full 234-event catalog with detailed sound design direction per event, s
 
 ## 20. Accessibility
 
-- **Slow Reader mode (Settings):** +3s to all timers, amber timer bar
+- **Slow Reader mode (Settings):** +3s to all invisible timer thresholds (no visible timer UI)
 - **CHARGE button click mode:** Charge can be triggered by clicking CHARGE button (not hold-only); fling gesture is one input method, button is another
 - **High contrast mode (planned):** AP badge colors confirmed to pass WCAG AA
 - **Font size scaling:** UI scales with `--layout-scale` CSS variable for different screen sizes
@@ -2475,11 +2605,31 @@ Settings → Accessibility panel includes a UI Scale slider:
 
 ---
 
-## 21. Daily Expedition
+## 21. Daily Expedition (Per-Domain Trivia Leaderboards)
 
-Same seed all players. Score = accuracy × speed × depth × chains. One attempt/day. Leaderboard (read-only). Rewards: participation badge, bonus for top 10%/25%/50%.
+Daily Expeditions use **Trivia Mode mechanics** (no repeat facts, broad pool) with a shared seed so all players face identical questions. Each domain has its own Daily Expedition.
 
-Why critical: Wordle's entire viral success = one-a-day appointment. STS daily climb = most-played mode. "Did you beat today's Expedition?" = organic marketing.
+| Expedition | Pool Source | Audience |
+|------------|-----------|----------|
+| Geography Daily | All geography facts | "Best geographer today" |
+| History Daily | All history facts | "Best historian today" |
+| Science Daily | All science facts | "Best scientist today" |
+| Japanese N5 Daily | Japanese N5 vocabulary | "Best Japanese student today" |
+| ... (one per major domain) | ... | ... |
+| **Ultimate Daily** | **ALL domains mixed** | "Best general knowledge today" |
+
+**Scoring formula:** `score = correctAnswers × speedBonus × depthReached × chainBonus`
+
+Where `speedBonus` is derived from the invisible internal timer — faster correct answers score higher.
+
+**Rules:**
+- One attempt per player per expedition per day
+- Same seed = same enemy sequence, same card draws, same fact order for all players
+- Timed via the invisible internal timer — response speed is a major scoring component
+- Results submitted to per-domain leaderboard with `metadata.dateKey` (`YYYY-MM-DD`)
+- Rewards: participation badge, bonus for top 10%/25%/50% per domain
+
+Why critical: Wordle's entire viral success = one-a-day appointment. STS daily climb = most-played mode. "Did you beat today's History Expedition?" = organic marketing with genuine educational motivation.
 
 ### Implementation Status
 
@@ -2527,42 +2677,43 @@ Korean (11,400 facts) and Chinese (13,472 facts) also available. See Architectur
 
 FSRS replaced SM-2 (Anki default since 2023). Tracks Difficulty (1–10), Stability (days), Retrievability (0–1). `ts-fsrs` npm package. Outperforms SM-2 on 350M+ review benchmark.
 
-### Run Pool
+### Run Pool (v3 — Single Curated Deck)
 
-| Source | % |
-|--------|---|
-| Primary domain | 30% (~36 facts) |
-| Secondary domain | 25% (~30 facts) |
-| FSRS review queue | 45% (~54 facts, only from previously engaged domains) |
+**100% from the selected curated deck.** The old multi-domain mix (30% primary + 25% secondary + 45% review queue) is replaced.
 
-Players never see facts from domains they haven't opted into.
+At run start, the selected deck's full fact pool is loaded. In-run FSRS state is seeded from global FSRS:
+- Facts with low global stability (< 2 days) start with `wrongCount: 1` — treated as if already struggling
+- Facts with high global stability (> 30 days) start with `correctCount: 1` — treated as somewhat known
+- Everything else starts fresh
+
+### What Global FSRS Still Does
+
+- **Long-term knowledge tracking:** Every quiz result (correct/wrong, response time) updates global FSRS state for that fact
+- **Run pool seeding:** Facts with low global stability are flagged as "needs practice" when initializing in-run state
+- **Knowledge visualization:** Powers the cross-run knowledge map showing mastery across domains
+- **Deck difficulty estimation:** "You know 73% of US Presidents well"
+
+### What Global FSRS No Longer Does
+
+- Does NOT drive card tier for combat power (that is now card slot mastery 0–5)
+- Does NOT trigger Mastery Trials (removed)
+- Does NOT determine auto-charge eligibility (removed)
+- Does NOT set question format (that is now card mastery + deck templates)
 
 ### All Quiz Moments Update FSRS
 
-Every quiz event — Charged plays, boss Quiz Phases, shop haggling, elite encounters — updates FSRS state for the tested fact:
+Every quiz event — Charged plays, boss Quiz Phases, shop haggling, Rest Site Study — updates FSRS state for the tested fact:
 - Difficulty (1–10)
 - Stability (days)
 - Retrievability (0–1)
 - consecutiveCorrect
 - nextReviewDate
 
-### Question Variety — Reducing Repetition
-
-**Weighted review shuffle:** Overdue facts: 3× weight. Due within 24h: 2× weight. Due within 7d: 1× weight. Not yet due: 0.3× weight. Preserves FSRS integrity while keeping runs fresh.
-
-**Recently-played deprioritization:** Facts from the last 2 runs are deprioritized when building the domain portion (~55%) of the run pool. Review cards (~45%) are NOT affected.
-
-### Stratified Difficulty Sampling
-
-| Difficulty | Target % |
-|-----------|----------|
-| Easy (1–2) | 30% |
-| Medium (3) | 45% |
-| Hard (4–5) | 25% |
+Confusion matrix records also update on every wrong answer.
 
 ### New Player Funness Bias
 
-Runs 0–9: funScore ≥ 7 facts are 2× more likely to appear per difficulty tier. Linear decay to zero over runs 10–99. Run 100+: no bias.
+Runs 0–9: funScore ≥ 7 facts are 2× more likely to appear per difficulty tier within a deck. Linear decay to zero over runs 10–99. Run 100+: no bias.
 
 ### Player Fact State
 
@@ -2585,15 +2736,48 @@ interface PlayerFactState {
 
 ---
 
-## 24. Study Presets & Deck Builder
+## 23.5. Trivia Mode
 
-Players can create up to 10 named study presets, each selecting any combination of domains and subcategories. Managed in the Deck Builder tab within the Library screen.
+A separate mode where instead of a focused curated deck, facts are drawn from a broad domain pool with no repetition within a run. Every fact appears at most ONCE.
 
-The hub screen includes a **Study Mode dropdown** near the dungeon gate:
-- **All Topics** — general pool across all domains (default)
-- **Saved presets** — each named preset appears as an option
-- **Languages** — each enabled language domain
-- **Build New Deck** — opens the Deck Builder
+| Aspect | Standard Mode | Trivia Mode |
+|--------|--------------|-------------|
+| Deck | Curated, 30-50+ facts, one domain | Broad pool, 200+ facts, one or mixed domains |
+| Repetition | Facts repeat across encounters (FSRS-weighted) | Each fact appears ONCE per run, never repeated |
+| Distractors | Pool-based, confusion-adaptive | Pool-based but NOT confusion-adaptive (not enough repetition to build confusion data) |
+| Fact-card binding | Dynamic at charge time | Dynamic at charge time (same) |
+| In-run FSRS | Active (drives adaptive selection) | Minimal (just tracks seen/unseen) |
+| Learning intent | Deep mastery of focused topic | Broad exposure to many facts |
+| Chain themes | Deck-specific themed sub-groups | Generic or domain-based |
+| FSRS update | Yes — results update global FSRS | Yes — results still update global FSRS |
+
+**When to use Trivia Mode:**
+- Casual sessions where variety is more fun than depth
+- Exploring a new domain before committing to a curated deck
+- Players who find focused repetition tedious
+- Daily Expeditions (see §21)
+
+---
+
+## 24. Curated Deck Selection (Replaces Study Presets & Deck Builder)
+
+At run start, the player selects a curated deck:
+
+1. **Domain selection** — Choose a top-level domain (e.g., "History", "Japanese", "Science")
+2. **Deck selection** — Choose a specific curated deck within that domain (e.g., "US Presidents", "World War II", "Ancient Rome")
+3. Optional: if a deck has sub-decks, narrow further
+
+The selected deck's chain themes (knowledge decks) or generic chain types (vocabulary decks) are set for the run. Favorite decks can be bookmarked for quick access.
+
+**Old Study Presets** (user-defined mixes of domains and subcategories) are replaced by curated deck selection. Saved presets become "favorite decks" — quick links to frequently played curated decks.
+
+**Mixed Deck option (future consideration):** For advanced players who want variety, a "Mixed Deck" option could combine 2–3 curated decks — but only if their answer type pools don't overlap in confusing ways. NOT for initial implementation.
+
+The hub screen **Deck Selection** panel shows:
+- Recently played decks
+- All available decks organized by domain
+- Mastery percentage per deck ("You know 73% of US Presidents well")
+- A "Today's Expedition" shortcut per domain
 
 ---
 
@@ -2606,11 +2790,13 @@ The hub screen includes a **Study Mode dropdown** near the dungeon gate:
 ### Steam (Premium + DLC)
 | Product | Price | Content |
 |---------|-------|---------|
-| Base Game (Early Access) | $9.99 | All 10+ knowledge domains, full roguelike, all card mechanics, all relics |
-| Base Game (1.0 Release) | $14.99 | Same + post-EA polish |
+| Base Game (Early Access) | $9.99 | All curated decks included free, full roguelike, all card mechanics, all relics |
+| Base Game (1.0 Release) | $14.99 | Same + post-EA polish + more curated decks |
 | Language DLC (each) | $4.99 | Japanese N5-N3, Korean A1-B1, Spanish A1-B1, etc. |
 | Curated Study Packs | $2.99 | SAT Prep, Medical Terminology, etc. |
-| Cosmetic DLC | $1.99-3.99 | Card backs, particles, chain themes |
+| Cosmetic DLC | $1.99-3.99 | Card backs, particles, chain theme skins |
+
+**All curated decks are free on Steam purchase.** Mobile (F2P) gates some decks behind Scholar Pass subscription. Core gameplay decks always free on mobile.
 
 ### Universal Rules
 - **No pay-to-win:** Relics, card power, run advantages — none purchaseable for real money.
@@ -2650,8 +2836,8 @@ Shown after each run ends (victory, defeat, or retreat):
 - Gold earned
 - Bounty quests completed
 - New facts discovered (first time seen)
-- Facts that leveled up (tier advances)
-- New Mastery Trials passed
+- Facts where global FSRS tier advanced (long-term tracking milestone)
+- Card slots that reached mastery 5 this run
 
 ### Grade Badge
 
@@ -2690,7 +2876,7 @@ Unlocks after first successful run completion (reach Act 3+ and retreat, or defe
 | 4 | Shorter Fuse | Timer −1s base on all questions |
 | 5 | Thin Deck | Start with 10 cards instead of... 10. (Adds to other deck-size constraints.) |
 | 6 | Iron Will | No retreat from encounters once committed |
-| 7 | Harsh Grading | Close-distractor answers more common (Tier 2a acts like Tier 2b) |
+| 7 | Harsh Grading | Close-distractor answers more common at all mastery levels (confusion-weighted distractors applied from mastery 0) |
 | 8 | Elite Surge | Elites gain boss-tier attacks |
 | 9 | Endurance | Must reach Act 2+ to retain rewards on defeat |
 | 10 | Heart of the Archive | The Curator gains a secret third phase |
@@ -2703,45 +2889,48 @@ Unlocks after first successful run completion (reach Act 3+ and retreat, or defe
 
 ### Scale
 
-20,000+ knowledge facts across 16 domains and 8 languages. Full database at `src/data/`.
+**The original 20,000+ general knowledge fact database has been deleted.** A smaller regenerated set of ~3,000 general domain facts exists. These serve as the base pool for Trivia Mode and the "Ultimate Daily" general knowledge expedition.
+
+**Vocabulary facts (all languages) are intact.** Japanese (13,073), Korean (11,400), Chinese (13,472), and European languages. These must be restructured into the curated deck format — see §23 data migration note.
+
+All new curated knowledge deck facts are created using the Deck Master skill (see Appendix).
+
+### Curated Deck Fact Schema
+
+Each fact in a curated deck contains: `id`, `correctAnswer`, `acceptableAlternatives[]`, `synonymGroupId?`, `chainThemeId`, `answerTypePoolId`, `difficulty` (1–5), `funScore` (1–10), FSRS fields, plus deck-specific fields (e.g., `japanese_word`, `reading`, `explanation` for vocabulary).
+
+The old flat `distractors[]` field is removed — distractors are now selected at charge time from the answer type pool (pool-based adaptive selection), not pre-stored.
 
 ### Domain List (16 Knowledge Domains)
 
-| Domain | Example Facts |
+| Domain | Example Decks |
 |--------|--------------|
-| Geography | Capitals, flags, rivers, mountains |
-| History | Events, dates, figures, civilizations |
-| Science | Elements, physics, biology, chemistry |
-| Mathematics | Formulas, theorems, number facts |
-| Literature | Authors, titles, quotes, characters |
-| Art & Music | Artists, movements, instruments, composers |
-| Technology | CS concepts, internet history, programming |
-| Nature | Animals, plants, ecosystems, biomes |
-| Culture & Society | Traditions, religions, languages |
-| Philosophy | Thinkers, movements, concepts |
-| Food & Drink | Cuisines, ingredients, techniques |
-| Sports | Records, rules, athletes |
-| Film & TV | Titles, directors, quotes, history |
-| Languages (JLPT, TOPIK, HSK, CEFR) | Vocabulary, grammar, kanji |
-| Mythology | Gods, heroes, stories across cultures |
-| Space | Planets, stars, missions, physics |
+| Geography | World Countries & Capitals, World Cities, Topography |
+| History | US Presidents, World War II, Ancient Rome |
+| Science | Periodic Table, Human Anatomy |
+| Mathematics | Algebra Fundamentals, Geometry (programmatically generated) |
+| Literature | Classic Literature |
+| Art & Music | Art History, Classical Music |
+| Technology | Computer Science Fundamentals |
+| Nature | Animal Kingdom, Plants & Ecosystems |
+| Culture & Society | World Religions, Major Mythologies |
+| Philosophy | Great Philosophers, Schools of Thought |
+| Food & Drink | World Cuisines |
+| Sports | Olympics Records, Major Sports Rules |
+| Film & TV | Classic Cinema |
+| Languages (JLPT, TOPIK, HSK, CEFR) | Japanese N5, Korean TOPIK 1, Spanish A1-A2 |
+| Mythology | Greek Mythology, Norse Mythology |
+| Space | Solar System & Beyond |
 
-### Fact Schema
+### Distractor Generation (UPDATED RULE — v3)
 
-Each fact contains: `id`, `question`, `answer`, `distractors[]`, `domain`, `categoryL2`, `chainType` (0-5), `difficulty` (1–5), `funScore` (1–10), `variants[]`, FSRS fields.
+**Distractors MUST come from the deck's own fact pool** (pool-based adaptive selection). The old rule "NEVER generate distractors from database pools" is reversed.
 
-### Distractor Generation (MANDATORY RULE)
+**Why:** Pool-based adaptive distractors are strictly superior to LLM-generated ones. They're contextually accurate (same answer format as the correct answer), adaptively difficult (weighted by confusion matrix), and don't require an LLM pipeline.
 
-**NEVER generate distractors from database pools.** ALL distractors MUST be generated by an LLM (Haiku agent) that reads the specific question and produces semantically coherent wrong answers. Database queries for distractor generation are PERMANENTLY BANNED.
+**Exception:** Bracket-number facts (years, counts, distances, etc.) still use runtime numeric generation rather than pool-based selection.
 
-### Question Variant Requirements
-
-Each fact requires 4–5 question variants:
-- **Forward:** "What is X?" Answer: Y
-- **Reverse:** "Which X has property Y?"
-- **Fill-blank:** "X is the ___"
-- **True/False:** Stated as a factual claim
-- **Context:** Used in a sentence/scenario
+**LLM distractor generation is no longer required.** Post-generation validation (checking that a generated distractor doesn't accidentally match another fact's correct answer) still applies where relevant.
 
 ### Age Gating
 
@@ -2751,19 +2940,132 @@ Mature content (violence in history, adult literature themes) uses `ageGated: tr
 
 ## 29. Content Quality Pipeline
 
-### Mandatory Processing
+### Mandatory Processing (v3)
 
-All facts must pass through:
-1. LLM-generated distractors (Haiku agent, never DB pool)
-2. Post-generation validation (check distractors don't accidentally match other facts)
-3. QA gates: question brevity (max 12 words), answer brevity (max 5 words/30 chars), distractor coherence
+All curated deck facts must pass through:
+1. **Fact generation** with `correctAnswer` + `acceptableAlternatives[]` fully populated
+2. **Synonym group computation** — run `buildSynonymGroups()` algorithm (§3.5). MANDATORY for all decks before shipping
+3. **Answer type pool assignment** — every fact assigned to an `answerTypePoolId`
+4. **Pool size validation** — every pool must have ≥5 facts after synonym group exclusions
+5. **Chain theme assignment** — every fact assigned to a `chainThemeId`; every theme must have ≥8 facts
+6. **Difficulty rating** (1–5) and **funScore** (1–10) assigned
+7. **QA gates:** question brevity (max 15 words), answer brevity (max 5 words/30 chars), no ambiguous answers (two facts in same pool with identical correct answers that aren't in the same synonym group)
 
-### Quality Requirements Per Fact
+### Distractor Pipeline (Pool-Based)
 
-- Minimum 8 distractors per fact (top-level pool); **2 shown at card mastery 0, 3 shown at mastery 1+**
-- 4–5 question variants
-- `funScore` assigned (1–10 scale; facts scoring ≥7 get funness bias in early runs)
-- `visualization_description` for card back art generation
+**No LLM distractor generation required.** Distractors are selected at charge time from the answer type pool, weighted by confusion matrix. This is strictly superior to pre-generated distractors.
+
+**Exception — bracket-number facts:** Runtime numeric generation for years, counts, measurements. The `{8848}` bracket format triggers the numeric generation system.
+
+### Quality Requirements Per Deck
+
+- Every answer type pool ≥5 facts (after synonym exclusions)
+- Every chain theme ≥8 facts (for knowledge decks)
+- Total facts ≥30 (minimum) / 50+ (target)
+- Synonym groups fully computed
+- No duplicate answers within a pool
+- `funScore` assigned (≥7 facts get funness bias in early runs)
+- `visualization_description` for card art generation (optional but recommended)
+
+### Confusion Matrix as Quality Signal
+
+The confusion matrix (persisted across runs in player data) serves as an ongoing quality signal:
+- If many players consistently confuse fact A with fact B, that confusion is a high-quality distractor pairing
+- Confusion data surfaces real pedagogical blind spots, not just plausible-looking wrong answers
+- Over time, the confusion matrix becomes the primary distractor source for well-played decks
+
+---
+
+## 29.5. Math Decks (Runtime Generation)
+
+Math decks are unique: questions and answers are **generated from template rules at runtime** rather than stored as static facts. At charge time, the seed + encounter number + charge count produce deterministic coefficients.
+
+```typescript
+interface MathTemplate {
+  id: string;                    // e.g., "linear_equation_1"
+  category: string;              // "algebra", "geometry", "calculus"
+  questionFormat: string;        // "Solve for x: {a}x + {b} = {c}"
+  parameters: ParameterRange[];  // [{name: "a", min: 1, max: 10}, ...]
+  solutionFunction: string;      // "(c - b) / a" — evaluates to correct answer
+  commonMistakes: MistakeRule[]; // Distractor generation rules
+  difficulty: number;            // 1-5
+}
+
+interface MistakeRule {
+  label: string;                 // "sign_error", "forgot_distribute", "off_by_one"
+  formula: string;               // "(c + b) / a" — the wrong answer a student would get
+  weight: number;                // How commonly this mistake occurs
+}
+```
+
+**Difficulty-level-driven consistency:**
+
+| Card Mastery | Template Difficulty Pool | Parameter Range |
+|-------------|------------------------|-----------------|
+| 0-1 | Difficulty 1-2 (basic operations) | Small numbers (1-20) |
+| 2-3 | Difficulty 2-3 (multi-step) | Medium numbers (1-100) |
+| 4-5 | Difficulty 3-5 (complex, multi-variable) | Large numbers, decimals, negatives |
+
+**Distractor generation for math:** Instead of pool-based distractors, math uses **common mistake distractors** — the wrong answers a real student would compute:
+
+| Problem | Correct | Sign Error | Forgot Distribute | Off-by-One |
+|---------|---------|-----------|-------------------|------------|
+| Solve: 3x + 7 = 22 | 5 | -5 | 10 | 4 or 6 |
+| d/dx of x³ | 3x² | x³ (no change) | 3x (wrong exponent) | 2x² |
+
+**Confusion matrix for math:** Tracks mistake *types* rather than specific fact confusions. If the player consistently makes sign errors, the system generates sign-error distractors more frequently.
+
+**Seed determinism:** Same run seed + encounter + charge count = same problem every time. Enables seeded Daily Expeditions for math where all players solve the same problems.
+
+**Chain themes for math:** Group by operation type (Linear Equations, Quadratic Equations, Systems, Inequalities, etc.).
+
+---
+
+## 29.6. Deck Roadmap (Living Todo List)
+
+Priority curated decks to build, organized by domain.
+
+### Tier 1 — Launch Priority (Build First)
+
+| Domain | Deck Name | Estimated Facts | Notes |
+|--------|-----------|-----------------|-------|
+| Geography | World Countries & Capitals | 196 | Flags, capitals, continents, populations. Chain themes by continent. |
+| Geography | World Cities | 80+ | Major cities, countries, landmarks. |
+| History | US Presidents | 46 | Names, years, parties, home states. Chain themes by era. |
+| History | World War II | 60+ | Events, dates, figures, battles, countries. |
+| Science | Periodic Table | 118 | Elements, symbols, atomic numbers, groups. Chain by element group. |
+| Science | Human Anatomy | 50+ | Organs, bones, systems, functions. Chain by body system. |
+| Language | Japanese N5 Vocabulary | 822 | Restructure from existing programmatic data. |
+| Language | Japanese N4 Vocabulary | 774 | Restructure from existing programmatic data. |
+
+### Tier 2 — High Demand
+
+| Domain | Deck Name | Estimated Facts | Notes |
+|--------|-----------|-----------------|-------|
+| Math | Algebra Fundamentals | 50+ | **Programmatically generated.** Bracket-number heavy. |
+| Math | Geometry | 50+ | **Programmatically generated.** Formulas, theorems, angle rules. |
+| Math | Calculus | 50+ | **Programmatically generated.** Derivatives, integrals, rules. |
+| Math | Statistics & Probability | 40+ | **Programmatically generated.** Distributions, formulas. |
+| History | Ancient Rome | 50+ | Emperors, events, dates, locations. |
+| History | Ancient Greece | 50+ | Philosophers, events, city-states, mythology. |
+| History | AP US History | 80+ | Targeted at AP exam prep. Events, amendments, court cases. |
+| Biology | AP Biology | 80+ | Cell biology, genetics, ecology, evolution. |
+| Geography | Topography | 60+ | Mountains, rivers, deserts, lakes. Measurements use bracket numbers. |
+| Geography | World Flags | 196 | **Image-based questions.** Flag recognition → country name. |
+
+### Tier 3 — Community Interest
+
+| Domain | Deck Name | Estimated Facts | Notes |
+|--------|-----------|-----------------|-------|
+| Literature | Classic Literature | 60+ | Authors, titles, characters, quotes. |
+| Art | Art History | 50+ | Artists, movements, periods, famous works. |
+| Music | Classical Music | 40+ | Composers, periods, famous works. |
+| Space | Solar System & Beyond | 50+ | Planets, moons, missions, distances. |
+| Food | World Cuisines | 50+ | Dishes, countries of origin, ingredients. |
+| Technology | Computer Science Fundamentals | 50+ | Algorithms, data structures, concepts. |
+| Language | Korean TOPIK 1 | ~800 | Restructure from existing data. |
+| Language | Chinese HSK 1-2 | ~600 | Restructure from existing data. |
+| Language | Spanish A1-A2 | ~500 | Restructure from existing data. |
 
 ---
 
@@ -2833,11 +3135,13 @@ Timing: After defeating The Archivist (Act 2 boss, first victory feeling) or aft
 
 What makes Recall Rogue hard to clone:
 
-1. **Fact database with 20,000+ quality facts** — takes years to build, not months
-2. **FSRS integration powering the tier system** — facts get stronger as players learn them
-3. **Chains tied to named chain types (chainType 0-5)** — Obsidian, Crimson, Azure, Amber, Violet, Jade; each run selects 3 of the 6 deterministically (by seed), then assigns evenly across all cards via `chainTypes.ts`
-4. **Knowledge Surge rhythm** — turns spaced repetition into gameplay rhythm
-5. **Quiz as amplifier, not gate** — requires a fundamental rethink vs. "chocolate-covered broccoli" designs
+1. **Curated deck library with quality facts** — structured deck design (answer type pools, chain themes, synonym groups) takes domain expertise to build correctly; rushed databases break the distractor system
+2. **FSRS integration powering the knowledge visualization** — facts get stronger as players learn them; the knowledge map shows temporal decay and mastery across all decks
+3. **Confusion matrix personalization** — the longer a player plays, the more their questions are uniquely calibrated to their personal knowledge gaps. No other educational game provides this level of personalized adversarial distractor generation
+4. **Pool-based adaptive distractors** — each player faces the opponents they have personally confused, not generic wrong answers; this is not replicable without the confusion history
+5. **Chains tied to deck-specific thematic sub-groups** — "Civil War Era" vs "Founding Fathers" chains have educational meaning; generic chain colors (Obsidian/Crimson/etc.) for vocabulary decks maintain pure mechanical strategy
+6. **Knowledge Surge rhythm** — turns spaced repetition into gameplay rhythm
+7. **Quiz as amplifier, not gate** — requires a fundamental rethink vs. "chocolate-covered broccoli" designs
 
 ---
 
@@ -2861,7 +3165,7 @@ AI-driven playtesting system using headless combat simulation:
 | `average` | 70% improving | normal | basic | Typical player experience |
 | `expert` | 90% flat | fast | optimal | Tests high-Chain balance |
 | `speed-runner` | 90% + fast | fast | optimal | Tests Quicksilver Quill snowball |
-| `struggling` | 40% declining | slow | random | Stress-tests Canary + Cursed Card accumulation |
+| `struggling` | 40% declining | slow | random | Stress-tests Canary + confusion matrix accumulation |
 | `impatient` | 70% volatile | normal | random, 25% skip | Tests skip/engagement patterns |
 
 ### Playtest Dashboard
@@ -2876,7 +3180,7 @@ AI-driven playtesting system using headless combat simulation:
 
 - **Knowledge Tree UI:** Dedicated tree-view progression screen visualizing `categoryL2` mastery across all domains, with zoom levels (forest → branch → leaf), overdue-state visual cues.
 - **Extended Language Content:** Japanese Grammar deck (JLPT levels), Chinese Hanzi deck, Korean TOPIK grammar, European languages (ES/FR/DE) grammar decks.
-- **Mastery Skins (Animated Card Backs):** Tier 2a+ cards unlock looping animated card backs (WAN2.1 video diffusion). Card back reverts to static if FSRS retrievability drops below learned threshold — knowledge decay visualized.
+- **Mastery Skins (Animated Card Backs):** Cards with FSRS Tier 2a+ (stability ≥ 2d) unlock looping animated card backs (WAN2.1 video diffusion). Card back reverts to static if FSRS retrievability drops below learned threshold — knowledge decay visualized.
 - **Multi-enemy Encounters:** Toxic Bloom and Chain Reactor interactions designed for future multi-enemy rooms.
 - **Desktop Port / Steam Release:** Responsive landscape layout, keyboard+mouse input, Tauri wrapper, Steam achievements, Steam Cloud Save, Steam Rich Presence. See `docs/roadmap/phases/desktop-port/` for individual ARs.
 - **Anki Deck Import:** Import .apkg files, self-graded quiz system (Wrong/Hard/Good/Easy), FSRS tier conversion from Anki intervals. See `docs/roadmap/phases/anki-import/AR-85-ANKI-DECK-IMPORT.md`.
@@ -3085,12 +3389,12 @@ Phaser canvas must not capture `Shift+Tab` (Steam Overlay toggle). Verified by e
 | Cards drawn per turn | 5 (base), 6 with Swift Boots |
 | Starter deck size | 10 |
 | Quick Play multiplier | 1.0× |
-| Charge correct multiplier | 1.5× flat + mastery bonus (mastery is now the primary power scaling) |
-| Charge wrong multiplier | 0.6× (Tier 1), 0.7× (Tier 2a/2b) |
-| Charge AP surcharge | +1 AP (0 during Surge, 0 for Tier 3, 0 for Free First Charge) |
-| Tier 3 auto-Charge | 1.2× base, no quiz, no AP surcharge |
+| Charge correct multiplier | 2.5× (mastery 0), scaling up to 4.0× (mastery 5) |
+| Charge wrong multiplier | 0.6× (mastery 0), 0.7× (mastery 1+) |
+| Charge AP surcharge | +1 AP (0 during Surge, 0 during Chain Momentum) |
+| Tier 3 auto-Charge | REMOVED — every charge always presents a quiz |
 | Surge frequency | Every 4th turn, run-persistent counter (global turns 2, 6, 10, 14...) |
-| Free First Charge wrong multiplier | 0.0× (card fizzles — no effect) |
+| Free First Charge | REMOVED — all charges cost normal AP surcharge |
 | Chain 2/3/4/5 multipliers | 1.3× / 1.7× / 2.2× / 3.0× |
 | Relic slots | 5 (6 with Scholar's Gambit) |
 | Run length | ~25–30 minutes |
@@ -3104,11 +3408,10 @@ Phaser canvas must not capture `Shift+Tab` (Steam Overlay toggle). Verified by e
 | Boss quiz phase questions | 5–8 per phase |
 | Rest site Study | 3 quiz questions; each correct answer raises one card's mastery level (max 3 upgrades, no downgrades) |
 | Shop haggle | 1 question per purchase, 30% discount |
-| FSRS Tier 2a threshold | stability ≥ 2d, consecutiveCorrect ≥ 2 |
-| FSRS Tier 2b threshold | stability ≥ 5d, consecutiveCorrect ≥ 3 |
-| FSRS Tier 3 threshold | stability ≥ 10d, consecutiveCorrect ≥ 4, passedMasteryTrial |
-| Mastery Trial timer | 4 seconds |
-| Mastery Trial options | 5 (close distractors) |
+| FSRS Tier 2a threshold | stability ≥ 2d, consecutiveCorrect ≥ 2 (long-term tracking only, decoupled from combat) |
+| FSRS Tier 2b threshold | stability ≥ 5d, consecutiveCorrect ≥ 3 (long-term tracking only) |
+| FSRS Tier 3 threshold | stability ≥ 10d, consecutiveCorrect ≥ 4, passedMasteryTrial (tracking only; no auto-charge) |
+| Mastery Trial | REMOVED — no Tier 3 auto-charge to graduate into |
 | Player start HP | 120 |
 | Enemy pity timer (relics) | 4 consecutive Common drops → guaranteed Uncommon+ |
 
@@ -3148,6 +3451,7 @@ Phaser canvas must not capture `Shift+Tab` (Steam Overlay toggle). Verified by e
 ### Content Pipeline
 | Skill | Invoke | Purpose |
 |-------|--------|---------|
+| `deck-master` | `/deck-master discover`, `/deck-master architect`, `/deck-master generate`, `/deck-master full` | 3-phase curated deck creation: Discovery (research demand) → Architecture (design structure) → Generation (create facts). The primary content creation skill for all new curated decks. |
 | `manual-fact-ingest-dedup` | `/manual-fact-ingest-dedup` | 10-domain fact pipeline with validation |
 | `subcategorize` | `/subcategorize` | Assign subcategories to unclassified facts |
 | `answer-checking` | `/answer-checking` | Live DB-first answer verification |
