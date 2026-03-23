@@ -2174,6 +2174,7 @@ function getDefaultTracks() {
 app.get('/api/artstudio/music', (req, res) => {
     const db = loadBgmDb();
     // Scan filesystem for actual audio files and attach as variants
+    const processedDir = join(BGM_DIR, 'processed');
     for (const track of db.tracks) {
         const prefix = track.id;
         const variants = [];
@@ -2185,9 +2186,28 @@ app.get('/api/artstudio/music', (req, res) => {
                 const st = statSync(join(BGM_DIR, file));
                 variants.push({
                     filename: file,
+                    path: `/audio/bgm/${file}`,
                     size: st.size,
                     modified: st.mtime.toISOString(),
                     accepted: file === `${prefix}.wav` || file === `${prefix}.ogg`,
+                    processed: false,
+                });
+            }
+        }
+        // Also include processed versions
+        if (existsSync(processedDir)) {
+            const pFiles = readdirSync(processedDir).filter(f =>
+                f.startsWith(prefix) && /\.(wav|ogg|mp3|flac)$/i.test(f)
+            ).sort();
+            for (const file of pFiles) {
+                const st = statSync(join(processedDir, file));
+                variants.push({
+                    filename: `processed/${file}`,
+                    path: `/audio/bgm/processed/${file}`,
+                    size: st.size,
+                    modified: st.mtime.toISOString(),
+                    accepted: false,
+                    processed: true,
                 });
             }
         }

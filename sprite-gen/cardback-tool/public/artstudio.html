@@ -767,11 +767,18 @@
 
         const variantsHtml = track.variants.length === 0
           ? '<span class="variant-empty">No audio files yet. Generate or drop files into public/assets/audio/bgm/</span>'
-          : track.variants.map(v => `
-              <div class="variant-card" style="min-width:280px;max-width:400px">
-                <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-                  ${v.accepted ? '<span style="color:#4ecca3;font-weight:bold;font-size:0.75rem">ACTIVE</span>' : ''}
-                  <span style="font-size:0.72rem;color:#888;font-family:monospace">${esc(v.filename)}</span>
+          : track.variants.map(v => {
+              const badge = v.processed
+                ? '<span style="color:#f0a;font-weight:bold;font-size:0.72rem;background:#2a1a2e;padding:1px 6px;border-radius:4px">RETRO</span>'
+                : v.accepted
+                  ? '<span style="color:#4ecca3;font-weight:bold;font-size:0.72rem;background:#1a2e2a;padding:1px 6px;border-radius:4px">ORIGINAL</span>'
+                  : '<span style="color:#888;font-size:0.72rem">variant</span>';
+              const fname = v.filename.replace('processed/', '');
+              return `
+              <div class="variant-card" style="min-width:280px;max-width:400px;${v.processed ? 'border-color:#f0a5' : ''}">
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap">
+                  ${badge}
+                  <span style="font-size:0.72rem;color:#888;font-family:monospace">${esc(fname)}</span>
                   <span style="font-size:0.68rem;color:#555">${Math.round(v.size/1024)} KB</span>
                 </div>
                 <audio controls preload="metadata" style="width:100%;height:36px">
@@ -780,8 +787,8 @@
                 <div style="display:flex;gap:6px;margin-top:6px">
                   <button class="btn btn-secondary" style="font-size:0.7rem;padding:3px 8px" onclick="deleteMusicVariant('${esc(track.id)}','${esc(v.filename)}')">Delete</button>
                 </div>
-              </div>
-            `).join('');
+              </div>`;
+            }).join('');
 
         card.innerHTML = `
           <div class="item-header">

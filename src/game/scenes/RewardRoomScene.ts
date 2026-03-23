@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import { BASE_WIDTH } from '../../data/layout'
+import { BASE_WIDTH, LANDSCAPE_BASE_WIDTH } from '../../data/layout'
 import type { LayoutMode } from '../../stores/layoutStore'
 import type { Card } from '../../data/card-types'
 import type { RelicDefinition } from '../../data/relics/types'
@@ -165,7 +165,8 @@ export class RewardRoomScene extends Phaser.Scene {
 
     const W = this.scale.width
     const H = this.scale.height
-    this.sf = W / BASE_WIDTH
+    const isLandscape = W > H
+    this.sf = isLandscape ? W / LANDSCAPE_BASE_WIDTH : W / BASE_WIDTH
 
     const data = (this.scene.settings.data as RewardRoomData) ?? { rewards: [] }
     if (import.meta.env.DEV) {
@@ -333,10 +334,20 @@ export class RewardRoomScene extends Phaser.Scene {
     const bgOriginX = W / 2 - (bgW * bgScale) / 2
     const bgOriginY = bgCenterY - (bgH * bgScale) / 2
 
-    const clothMinX = bgOriginX + bounds.minX * bgScale
-    const clothMaxX = bgOriginX + bounds.maxX * bgScale
-    const clothMinY = bgOriginY + bounds.minY * bgScale
-    const clothMaxY = bgOriginY + bounds.maxY * bgScale
+    // For landscape image (2752x1536), the portrait content (1536px wide) is centered
+    // horizontally — shift cloth bounds right by (bgW - 1536) / 2 source pixels.
+    const landscapeXOffset = isLandscape ? (bgW - 1536) / 2 : 0
+    const adjustedBounds = {
+      minX: bounds.minX + landscapeXOffset,
+      maxX: bounds.maxX + landscapeXOffset,
+      minY: bounds.minY,
+      maxY: bounds.maxY,
+    }
+
+    const clothMinX = bgOriginX + adjustedBounds.minX * bgScale
+    const clothMaxX = bgOriginX + adjustedBounds.maxX * bgScale
+    const clothMinY = bgOriginY + adjustedBounds.minY * bgScale
+    const clothMaxY = bgOriginY + adjustedBounds.maxY * bgScale
     const clothCX = (clothMinX + clothMaxX) / 2
     const clothCY = (clothMinY + clothMaxY) / 2
     const clothW = clothMaxX - clothMinX
@@ -896,10 +907,11 @@ export class RewardRoomScene extends Phaser.Scene {
   // ─── Continue Button ─────────────────────────────────────────────────────────
 
   private createContinueButton(W: number, H: number): void {
-    const btnW = 160 * this.sf
+    const isLandscape = W > H
+    const btnW = isLandscape ? 180 * this.sf : 160 * this.sf
     const btnH = 48 * this.sf
     const bx = W / 2
-    const by = H * CONTINUE_Y_PCT
+    const by = isLandscape ? H * 0.88 : H * CONTINUE_Y_PCT
 
     const bg = this.add.graphics()
     bg.fillStyle(0x1f2937, 1)
