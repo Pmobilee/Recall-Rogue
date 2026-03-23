@@ -2,7 +2,7 @@ import express from 'express';
 import Database from 'better-sqlite3';
 import { resolve, dirname, join, extname } from 'path';
 import { fileURLToPath } from 'url';
-import { existsSync, readdirSync, mkdirSync, writeFileSync, readFileSync } from 'fs';
+import { existsSync, readdirSync, statSync, mkdirSync, writeFileSync, readFileSync } from 'fs';
 
 // Load .env from project root (two levels up from this file)
 {
@@ -2127,6 +2127,29 @@ app.delete('/api/artstudio/item/:category/:id', (req, res) => {
   writeArtStudioItems(data);
   res.json({ ok: true, removed: before - data[category].length });
 });
+
+// GET /api/artstudio/music — list BGM audio files
+const BGM_DIR = resolve(PROJECT_ROOT, 'public/assets/audio/bgm');
+app.get('/api/artstudio/music', (req, res) => {
+  try {
+    if (!existsSync(BGM_DIR)) {
+      return res.json([]);
+    }
+    const files = readdirSync(BGM_DIR)
+      .filter(f => /\.(wav|ogg|mp3|flac)$/i.test(f))
+      .map(name => {
+        const st = statSync(join(BGM_DIR, name));
+        return { name, size: st.size, modified: st.mtime.toISOString() };
+      })
+      .sort((a, b) => a.name.localeCompare(b.name));
+    res.json(files);
+  } catch(e) {
+    res.json([]);
+  }
+});
+
+// Static serving for BGM audio files
+app.use('/audio/bgm', express.static(BGM_DIR));
 
 // --- Start Server ---
 app.listen(PORT, () => {

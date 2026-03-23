@@ -248,13 +248,23 @@ function createEdges(
       }
       maxChildColUsed = Math.max(maxChildColUsed, primaryChild)
 
-      // Possibly connect to an adjacent child (branch), provided it doesn't cross
-      if (rng() < 0.35 && primaryChild + 1 < nextCount) {
+      // Ensure at least 2 connections per node (when the next row has room).
+      // Also branch randomly for organic variety.
+      const wantBranch = curNode.childIds.length < 2 || rng() < 0.35
+      if (wantBranch && primaryChild + 1 < nextCount) {
         const altChildId = nodeId(r + 1, primaryChild + 1)
         if (!curNode.childIds.includes(altChildId)) {
           curNode.childIds.push(altChildId)
           nodes[altChildId].parentIds.push(curId)
           maxChildColUsed = Math.max(maxChildColUsed, primaryChild + 1)
+        }
+      }
+      // If still only 1 child and we can branch left, try the left neighbour
+      if (curNode.childIds.length < 2 && primaryChild - 1 >= 0) {
+        const leftChildId = nodeId(r + 1, primaryChild - 1)
+        if (!curNode.childIds.includes(leftChildId)) {
+          curNode.childIds.push(leftChildId)
+          nodes[leftChildId].parentIds.push(curId)
         }
       }
     }

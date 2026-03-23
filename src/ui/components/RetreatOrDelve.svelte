@@ -74,7 +74,7 @@
     </div>
 
     <div class="risk">
-      Enemies are stronger. Timer is shorter.
+      Enemies are stronger.
       {#if retreatRewardsLocked}
         Retreat rewards are locked for this depth on current Ascension.
       {/if}

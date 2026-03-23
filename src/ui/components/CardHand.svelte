@@ -519,9 +519,15 @@
         onselectcard(index)
       }
     } else if (!wasDrag) {
-      // Tap (minimal movement) — normal select behavior; show charge hint in portrait
-      maybeShowChargeHint()
-      onselectcard(index)
+      // Tap (minimal movement):
+      // If card was already selected, tapping it again = Quick Play (base effect, no quiz, no charge)
+      if (selectedIndex === index && oncastdirect) {
+        oncastdirect(index)
+      } else {
+        // Normal select behavior; show charge hint in portrait
+        maybeShowChargeHint()
+        onselectcard(index)
+      }
     }
     // Otherwise: drag released below threshold, card returns to hand (no action)
   }
@@ -692,7 +698,7 @@
     {@const tierVisual = getTierUpVisualSignature(card.factId)}
     {@const runState = $activeRunState}
     {@const isMastered = card.tier === '3'}
-    {@const isFreeCharge = card.factId ? isFirstChargeFree(card.factId, runState?.firstChargeFreeFactIds ?? new Set()) : false}
+    {@const isFreeCharge = (runState !== null && card.factId) ? isFirstChargeFree(card.factId, runState.firstChargeFreeFactIds) : false}
     {@const isMomentumMatch = chargeMomentumChainType !== null && card.chainType === chargeMomentumChainType}
     {@const chargeApCostForDrag = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || isMomentumMatch ? 0 : 1)}
     {@const chargeAffordableForDrag = chargeApCostForDrag <= apCurrent}
@@ -736,8 +742,8 @@
       class:card--curing={cureFlashes[card.id]}
       style="
         {isAnimating ? '' : isDraggingThis
-          ? `transform: translate3d(${cardDragX}px, ${isSelected ? 'calc(-27vh - 36px + 20px)' : `-${cardDragRawY}px`}, 0) scale(${cardDragScale});`
-          : `transform: translate3d(0, ${isSelected ? 'calc(-27vh - 36px + 20px)' : '0px'}, 0) scale(${isSelected ? 1.1 : isHovered ? 1.05 : 1});`}
+          ? `transform: translate3d(${cardDragX}px, ${isSelected ? `-${riseAmount}px` : `-${cardDragRawY}px`}, 0) scale(${cardDragScale});`
+          : `transform: translate3d(0, ${isSelected ? `-${riseAmount}px` : '0px'}, 0) scale(${isSelected ? 1.1 : isHovered ? 1.05 : 1});`}
         animation-delay: {i * 60}ms;
         opacity: {isOther ? 0.35 : 1};
         z-index: {isDraggingThis ? 20 : isHovered ? 10 : ''};
@@ -1052,7 +1058,7 @@
     {@const cardDragScale = isDraggingThis ? dragScale : 1}
     {@const tierVisual = getTierUpVisualSignature(card.factId)}
     {@const runState = $activeRunState}
-    {@const isFreeCharge = card.factId ? isFirstChargeFree(card.factId, runState?.firstChargeFreeFactIds ?? new Set()) : false}
+    {@const isFreeCharge = (runState !== null && card.factId) ? isFirstChargeFree(card.factId, runState.firstChargeFreeFactIds) : false}
     {@const isMastered = card.tier === '3'}
     {@const isMomentumMatch = chargeMomentumChainType !== null && card.chainType === chargeMomentumChainType}
     {@const chargeApCostForDrag = Math.max(0, (card.apCost ?? 1) - focusDiscount) + (isSurgeActive || isMomentumMatch ? 0 : 1)}
@@ -1416,6 +1422,7 @@
     z-index: 25;
     filter: drop-shadow(0 -4px 12px rgba(255, 255, 255, 0.25));
     background: transparent !important;
+    box-shadow: none !important;
   }
 
   .card-landscape {
@@ -1456,11 +1463,11 @@
 
   .charge-play-btn-landscape {
     position: absolute;
-    /* Position above the risen card: card rises calc(-27vh - 36px + 20px) from hand strip.
-       Place button bottom at calc(27vh + var(--card-h) + 34px) from the container bottom,
+    /* Position above the risen card: card rises riseAmount px (= var(--card-h) * 0.5) from hand strip.
+       Place button bottom at riseAmount + card height + 8px from the container bottom,
        which puts it ~8px above the risen card's top edge.
        AR-220 sub-step 5: left/transform set via inline style to follow selected card's xOffset. */
-    bottom: calc(27vh + var(--card-h) + 34px);
+    bottom: calc(var(--card-h) * 0.5 + var(--card-h) + 8px);
     white-space: nowrap;
     /* §7 spec: charge button appear = 100ms fade-in */
     animation: chargeBtnAppear 100ms ease-out both, chargeBtnPulse 1.2s ease-in-out 100ms infinite;
@@ -1866,6 +1873,11 @@
   .card-selected {
     z-index: 20; /* Must be above .card-backdrop (z-index: 15) in CardCombatOverlay */
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Landscape selected card: no box-shadow (the landscape rule above uses drop-shadow filter for the glow) */
+  .card-hand-landscape .card-selected {
+    box-shadow: none !important;
   }
 
   .card-dimmed {

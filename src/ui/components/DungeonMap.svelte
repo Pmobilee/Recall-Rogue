@@ -212,7 +212,7 @@
       >
         <p class="section-label choices-label">Choose your path</p>
 
-        <!-- Dashed arrow connectors from current-node down to each choice -->
+        <!-- Dashed arrow connectors pointing UPWARD from below the choices toward each choice node -->
         {#if map.currentNodeId && availableNodes.length > 0}
           <svg
             class="connector-svg"
@@ -221,16 +221,20 @@
             aria-hidden="true"
           >
             <defs>
-              <marker id="arrow-active" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
-                <path d="M 0 1 L 8 4 L 0 7 Z" fill="#F5F0E6" opacity="0.9" />
+              <!-- Arrow points upward: marker-end at the node (top), so orient="auto" and the
+                   path goes bottom-to-top. The triangle points right (+x direction) in SVG coords,
+                   orient="auto" rotates it to match the path direction. -->
+              <marker id="arrow-active" markerWidth="8" markerHeight="8" refX="2" refY="4" orient="auto">
+                <path d="M 8 1 L 0 4 L 8 7 Z" fill="#F5F0E6" opacity="0.9" />
               </marker>
             </defs>
             {#each availableNodes as node, i (node.id)}
               {@const tx = nodeGroupX(i, availableNodes.length, containerWidth)}
               {@const ty = choicesNodeY - 28 * layoutScale}
+              <!-- Path goes FROM bottom of section UPWARD TO the node — arrowhead at top (node) -->
               <path
                 class="connector-path connector-active"
-                d={arrowPath(containerWidth / 2, 6 * layoutScale, tx, ty)}
+                d={arrowPath(tx, choicesSectionH - 8 * layoutScale, tx, ty)}
                 marker-end="url(#arrow-active)"
               />
             {/each}
@@ -268,7 +272,7 @@
           {#each [...resolvedHistory].reverse() as decision, reverseIdx (decision.selectedNode.id)}
             {@const histIdx = resolvedHistory.length - 1 - reverseIdx}
 
-            <!-- Connector arrow from the row above down to this row's selected node -->
+            <!-- Connector arrow pointing UPWARD from this row's node toward the row above (newer step) -->
             <svg
               class="connector-svg history-connector"
               width={containerWidth}
@@ -277,22 +281,24 @@
               aria-hidden="true"
             >
               <defs>
+                <!-- Arrow head points toward the top (upward) -->
                 <marker
                   id="arrow-hist-{histIdx}"
                   markerWidth="7"
                   markerHeight="7"
-                  refX="5"
+                  refX="2"
                   refY="3.5"
                   orient="auto"
                 >
-                  <path d="M 0 1 L 7 3.5 L 0 6 Z" fill="#F5F0E6" opacity="0.5" />
+                  <path d="M 7 1 L 0 3.5 L 7 6 Z" fill="#F5F0E6" opacity="0.5" />
                 </marker>
               </defs>
+              <!-- Path goes FROM bottom (this row) UPWARD TO the row above — arrowhead at top -->
               <path
                 class="connector-path connector-history"
                 d={arrowPath(
-                  containerWidth / 2, 0,
-                  containerWidth / 2, rowH * 0.38
+                  containerWidth / 2, rowH * 0.38,
+                  containerWidth / 2, 0
                 )}
                 marker-end="url(#arrow-hist-{histIdx})"
               />

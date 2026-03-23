@@ -179,6 +179,7 @@
     border-radius: 12px;
     padding: calc(24px * var(--layout-scale, 1));
     max-width: calc(340px * var(--layout-scale, 1));
+    max-height: 90vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -186,6 +187,7 @@
     gap: calc(12px * var(--layout-scale, 1));
     position: relative;
     z-index: 1;
+    overflow-y: auto;
   }
 
   .event-name {

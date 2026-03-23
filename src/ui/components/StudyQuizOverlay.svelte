@@ -9,6 +9,15 @@
 
   let { questions, oncomplete }: Props = $props()
 
+  /** Returns a short label for a question to use in the upgrade preview. */
+  function getUpgradeLabel(factId: string): string {
+    const q = questions.find(q => q.factId === factId)
+    if (!q) return factId
+    // Show first 40 chars of the question as a card label
+    const text = q.question ?? ''
+    return text.length > 40 ? text.slice(0, 37) + '…' : text
+  }
+
   let currentIndex = $state(0)
   let correctFactIds = $state<string[]>([])
   let selectedAnswer = $state<string | null>(null)
@@ -98,6 +107,19 @@
         {:else}
           <p class="summary-tip">{correctFactIds.length} card{correctFactIds.length !== 1 ? 's' : ''} mastered up.</p>
         {/if}
+
+        {#if correctFactIds.length > 0}
+          <div class="upgraded-cards">
+            <p class="upgraded-label">Cards upgraded:</p>
+            {#each correctFactIds as factId}
+              <div class="upgraded-card-row">
+                <span class="upgrade-icon">⬆</span>
+                <span class="upgraded-card-name">{getUpgradeLabel(factId)}</span>
+              </div>
+            {/each}
+          </div>
+        {/if}
+
         <button class="continue-btn" onclick={handleContinue}>Continue</button>
       </div>
     {/if}

@@ -85,6 +85,7 @@
   let hagglingState = $state<HaggleState>('idle')
   let haggledThisItem = $state(false)
   let haggledPrice = $state(0)
+  let penaltyPrice = $state(0)
   let quizQuestion = $state<Fact | null>(null)
   let quizAnswers = $state<string[]>([])
   let quizResult = $state<'correct' | 'wrong' | null>(null)
@@ -94,8 +95,8 @@
   let showRemovalPicker = $state(false)
   let pendingRemovalHaggled = $state(false)
 
-  /** Cards that can be removed */
-  let removableCards = $derived(cards)
+  /** Cards that can be removed (full active deck, not just the sell slice) */
+  let removableCards = $derived(getActiveDeckCards())
   /** Whether deck is large enough to remove a card (must keep > 5) */
   let canRemoveCard = $derived(removableCards.length > 5)
 
@@ -133,6 +134,8 @@
     pendingPurchase = purchase
     hagglingState = 'idle'
     haggledThisItem = false
+    haggledPrice = 0
+    penaltyPrice = 0
     quizQuestion = null
     quizAnswers = []
     quizResult = null
@@ -142,6 +145,7 @@
   function closePurchaseModal() {
     pendingPurchase = null
     hagglingState = 'idle'
+    penaltyPrice = 0
   }
 
   function confirmBuy() {
@@ -168,6 +172,7 @@
     recordHaggleAttempt()
     haggledThisItem = true
     haggledPrice = Math.floor(pendingPurchase.price * (1 - SHOP_HAGGLE_DISCOUNT))
+    penaltyPrice = Math.floor(pendingPurchase.price * (1 + SHOP_HAGGLE_DISCOUNT))
 
     // Fetch a random quiz question
     try {
@@ -216,12 +221,16 @@
         confirmBuy()
       }, 800)
     } else {
-      // Return to idle after showing wrong answer
+      // Apply penalty price increase — update the pending purchase price in place
+      if (pendingPurchase) {
+        pendingPurchase = { ...pendingPurchase, price: penaltyPrice }
+      }
+      // Return to idle after showing wrong answer + penalty
       setTimeout(() => {
         hagglingState = 'idle'
         quizResult = null
         quizSelectedAnswer = null
-      }, 1400)
+      }, 1800)
     }
   }
 
@@ -415,7 +424,7 @@
                 data-testid="shop-btn-haggle"
                 onclick={startHaggle}
               >
-                Haggle — answer a question for 30% off
+                Haggle — correct: 30% off, wrong: 30% up
               </button>
             {/if}
           {:else}
@@ -438,7 +447,7 @@
               data-testid="shop-btn-haggle"
               onclick={startHaggle}
             >
-              Haggle — answer a question for 30% off
+              Haggle — correct: 30% off, wrong: 30% up
             </button>
           {/if}
         {/if}
@@ -460,14 +469,14 @@
             </button>
           {/each}
         </div>
-        <div class="modal-note">Correct = 30% off ({haggledPrice}g). Wrong = full price.</div>
+        <div class="modal-note">Correct = 30% off ({haggledPrice}g). Wrong = 30% markup ({penaltyPrice}g).</div>
 
       {:else if hagglingState === 'result'}
         {#if quizResult === 'correct'}
           <div class="haggle-success">Haggled! Price: {haggledPrice}g</div>
           <div class="modal-note">Completing purchase…</div>
         {:else}
-          <div class="haggle-fail">Wrong! Full price applies.</div>
+          <div class="haggle-fail">Wrong! Price marked up 30%: {penaltyPrice}g</div>
           {#if quizQuestion}
             <div class="modal-note">Answer: {quizQuestion.correctAnswer}</div>
           {/if}
@@ -613,10 +622,9 @@
     background: rgba(13, 17, 23, 0.82);
     padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: calc(10px * var(--layout-scale, 1));
-    overflow: hidden;
   }
 
   .relic-item {
@@ -668,11 +676,10 @@
   .sub {
     color: #9ba4ad;
     font-size: calc(12px * var(--layout-scale, 1));
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+    overflow: visible;
+    display: block;
     white-space: normal;
+    line-height: 1.4;
   }
 
   .synergy-badge {

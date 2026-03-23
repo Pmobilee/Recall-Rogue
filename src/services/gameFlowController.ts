@@ -118,6 +118,8 @@ import type { ShopInventory } from './shopService';
 import { generateShopRelics, priceShopCards, removalPrice } from './shopService';
 import type { DeckMode } from '../data/studyPreset'
 import { generateActMap, selectMapNode, deriveFloorFromNode, type ActMap } from './mapGenerator'
+import { getBossForFloor } from './floorManager'
+import { ENEMY_TEMPLATES } from '../data/enemies'
 
 export type GameFlowState =
   | 'idle'
@@ -608,6 +610,21 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
   destroyRunRng()
   resetEncounterBridge()
   clearActiveRun();
+
+  // Award run currency as dust (skip for practice runs)
+  if (!endData.isPracticeRun && endData.currencyEarned > 0) {
+    playerSave.update(s => {
+      if (!s) return s;
+      return {
+        ...s,
+        minerals: {
+          ...s.minerals,
+          dust: (s.minerals?.dust ?? 0) + endData.currencyEarned,
+        },
+      };
+    });
+    persistPlayer();
+  }
 
   // Award XP (skip for practice runs)
   if (!endData.isPracticeRun) {
@@ -1685,6 +1702,19 @@ export function getCurrentDelvePenalty(): number {
 }
 
 /**
+ * Returns the display name of the boss defeated on the current/most recent boss floor.
+ * Falls back to a generic name if the boss cannot be determined.
+ */
+export function getDefeatedBossName(): string {
+  const run = get(activeRunState);
+  if (!run) return 'the Boss';
+  const bossId = getBossForFloor(run.floor.currentFloor);
+  if (!bossId) return 'the Boss';
+  const template = ENEMY_TEMPLATES.find(t => t.id === bossId);
+  return template?.name ?? 'the Boss';
+}
+
+/**
  * Called when the player taps a node on the dungeon map.
  * Updates map state, derives floor scaling, and routes to the appropriate room.
  * For combat/elite/boss nodes, only updates map state — the caller (CardApp)
@@ -1992,24 +2022,19 @@ export function generateStudyQuestions(): QuizQuestion[] {
   const allFacts = factsDB.getAll();
   const factMap = new Map(allFacts.map(f => [f.id, f]));
 
-  // Get fact IDs from the run's pool cards
+  // Get fact IDs from the player's run pool (the deck cards for this run)
   const poolCards = getRunPoolCards();
   const poolFactIds = [...new Set(poolCards.map(c => c.factId))];
 
-  // Filter to facts that have valid quiz data
+  // Filter to pool facts that have valid quiz data (question + answer + at least 1 distractor)
   const validPoolIds = poolFactIds.filter(id => {
     const fact = factMap.get(id);
     return fact && fact.quizQuestion && fact.correctAnswer && (fact.distractors ?? []).length >= 1;
   });
 
-  // If pool too small, supplement from all facts
-  let candidateIds = validPoolIds;
-  if (candidateIds.length < 3) {
-    const allValidIds = allFacts
-      .filter(f => f.quizQuestion && f.correctAnswer && (f.distractors ?? []).length >= 1)
-      .map(f => f.id);
-    candidateIds = [...new Set([...validPoolIds, ...allValidIds])];
-  }
+  // Only use deck facts — never fall back to random DB facts.
+  // If fewer than 3 valid pool facts exist, use however many are available.
+  const candidateIds = validPoolIds;
 
   // Prefer cards that can still be mastery-upgraded
   const upgradableCards = poolCards.filter(c => canMasteryUpgrade(c));
@@ -2160,10 +2185,11 @@ export function onMysteryEffectResolved(effect: MysteryEffect): void {
       activeMysteryEvent.set(null);
       activeMasteryChallenge.set(null);
       activeRunState.set(run);
-      // Transition to combat screen — CombatScene will pick up the encounter
+      // Transition to combat screen and start the encounter
       gameFlowState.set('combat');
       holdScreenTransition();
       currentScreen.set('combat');
+      void startEncounterForRoom();
       break;
     }
     case 'cardReward': {

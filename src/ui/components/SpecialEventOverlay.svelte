@@ -22,16 +22,21 @@
     }
   }
 
-  function handleResolve(): void {
-    if (event?.type === 'mystery' && !mysteryResult) {
-      const effect = rollMysteryEffect()
-      mysteryResult = effect.label
-      onresolve({ mysteryEffect: effect })
-      return
-    }
-    mysteryResult = null
-    onresolve()
+  function handleRevealMystery(): void {
+    const effect = rollMysteryEffect()
+    mysteryResult = effect.label
+    // Store effect so handleResolve can pass it when the user clicks Continue
+    pendingMysteryEffect = effect
   }
+
+  function handleResolve(): void {
+    const effectToPass = pendingMysteryEffect
+    mysteryResult = null
+    pendingMysteryEffect = null
+    onresolve(effectToPass ? { mysteryEffect: effectToPass } : undefined)
+  }
+
+  let pendingMysteryEffect = $state<ReturnType<typeof rollMysteryEffect> | null>(null)
 
   function handleKnowledgeSpring(): void {
     onresolve({ type: 'knowledge_spring' })
@@ -87,7 +92,7 @@
               Continue
             </button>
           {:else}
-            <button class="action-btn primary" onclick={handleResolve}>
+            <button class="action-btn primary" onclick={handleRevealMystery}>
               Reveal
             </button>
           {/if}

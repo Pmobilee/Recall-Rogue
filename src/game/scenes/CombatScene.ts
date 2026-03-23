@@ -260,20 +260,26 @@ export class CombatScene extends Phaser.Scene {
     const gameW = this.scale.width
     const gameH = this.scale.height
     const defaultX = gameW * LANDSCAPE.ENEMY_X_PCT
+    // Quiz panel occupies left ~60%; enemy fits in right 40% centered around 80%
     const targetX = active ? gameW * 0.80 : defaultX
+    // Scale enemy down to 0.7x so it fits within the right 40% without clipping
+    const targetScale = active ? 0.70 : 1.0
 
     // Initialize the override to the current X if not already set
     if (this.quizEnemyXOverride === null) {
       this.quizEnemyXOverride = defaultX
     }
 
-    // Use a proxy object to drive all positions via a single onUpdate callback
-    const proxy = { x: this.quizEnemyXOverride }
+    const container = this.enemySpriteSystem?.getContainer()
+    const currentScale = container?.scaleX ?? 1.0
+
+    // Use a proxy object to drive all positions and scale via a single onUpdate callback
+    const proxy = { x: this.quizEnemyXOverride, scale: currentScale }
     const scaledW = Math.round(ENEMY_HP_BAR_W * this.scaleFactor)
     const scaledH = Math.round(ENEMY_HP_BAR_H * this.scaleFactor)
     const hpY = gameH * LANDSCAPE.ENEMY_HP_Y_PCT
-    const scaledEnemySize = this.enemySpriteSystem?.getContainer()?.displayHeight ?? 0
-    const nameOffsetY = gameH * LANDSCAPE.ENEMY_Y_PCT + scaledEnemySize / 2 + Math.round(12 * this.scaleFactor)
+    // Base enemy size before quiz scale — use displayHeight at scale=1 or fall back to fixed value
+    const baseEnemySize = container ? (container.displayHeight / currentScale) : 0
     const blockIconOffsetX = scaledW / 2 + Math.round(20 * this.scaleFactor)
     const intentY = hpY + Math.round(INTENT_ICON_OFFSET_Y * this.scaleFactor)
 
@@ -281,17 +287,23 @@ export class CombatScene extends Phaser.Scene {
     this.tweens.add({
       targets: proxy,
       x: targetX,
+      scale: targetScale,
       duration: 200,
       ease: 'Power2',
       onUpdate: () => {
         const x = proxy.x
+        const s = proxy.scale
         this.quizEnemyXOverride = x
 
-        // Move enemy sprite container
-        const container = this.enemySpriteSystem?.getContainer()
-        if (container) container.setPosition(x, gameH * LANDSCAPE.ENEMY_Y_PCT)
+        // Move and scale enemy sprite container
+        if (container) {
+          container.setPosition(x, gameH * LANDSCAPE.ENEMY_Y_PCT)
+          container.setScale(s)
+        }
 
-        // Move name text
+        // Name text: below the scaled sprite
+        const scaledHalfHeight = (baseEnemySize * s) / 2
+        const nameOffsetY = gameH * LANDSCAPE.ENEMY_Y_PCT + scaledHalfHeight + Math.round(12 * this.scaleFactor)
         this.enemyNameText.setPosition(x, nameOffsetY)
 
         // Move intent text
@@ -317,8 +329,9 @@ export class CombatScene extends Phaser.Scene {
       },
       onComplete: () => {
         if (!active) {
-          // Reset override so normal repositionAll works correctly
+          // Reset override and scale so normal repositionAll works correctly
           this.quizEnemyXOverride = null
+          container?.setScale(1.0)
         }
         // Final refresh to settle everything
         this.refreshEnemyHpBar(false)
@@ -483,6 +496,22 @@ export class CombatScene extends Phaser.Scene {
     this.flashRect.setSize(w, h)
     this.entryFadeRect.setPosition(w / 2, h / 2)
     this.entryFadeRect.setSize(w, h)
+
+    // ── Combat background — recentre and resize to always fill full viewport ──
+    if (this.combatBackground) {
+      if (this.combatBackground instanceof Phaser.GameObjects.Image) {
+        const tex = this.textures.get(this.combatBackground.texture.key).getSourceImage()
+        const imgW = (tex as HTMLImageElement).naturalWidth || (tex as HTMLCanvasElement).width || w
+        const imgH = (tex as HTMLImageElement).naturalHeight || (tex as HTMLCanvasElement).height || h
+        const scale = Math.max(w / imgW, h / imgH)
+        this.combatBackground.setPosition(w / 2, h / 2)
+        this.combatBackground.setDisplaySize(imgW * scale, imgH * scale)
+      } else {
+        // Rectangle fallback — resize to cover full canvas
+        ;(this.combatBackground as Phaser.GameObjects.Rectangle).setPosition(w / 2, h / 2)
+        ;(this.combatBackground as Phaser.GameObjects.Rectangle).setSize(w, h)
+      }
+    }
   }
 
   // ═════════════════════════════════════════════════════════
@@ -1201,6 +1230,8 @@ export class CombatScene extends Phaser.Scene {
 
     if (this.combatBackground instanceof Phaser.GameObjects.Image) {
       this.combatBackground.setTexture(bgKey)
+      // Always reset position and size to ensure the image fills the full canvas height
+      this.combatBackground.setPosition(w / 2, h / 2)
       this.combatBackground.setDisplaySize(dispW, dispH)
     } else {
       // Replace rectangle fallback with proper image

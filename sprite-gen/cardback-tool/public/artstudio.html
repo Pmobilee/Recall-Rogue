@@ -569,6 +569,59 @@
   /* Tab panel */
   .tab-panel { display: none; }
   .tab-panel.active { display: block; }
+
+  /* Music tab */
+  .music-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .music-card {
+    background: #1a1a2e;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 16px;
+    transition: border-color 0.2s;
+  }
+
+  .music-card:hover {
+    border-color: #4ecca3;
+  }
+
+  .music-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  .music-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #4ecca3;
+  }
+
+  .music-meta {
+    font-size: 0.75rem;
+    color: #666;
+  }
+
+  .music-filename {
+    font-size: 0.7rem;
+    color: #555;
+    font-family: monospace;
+    margin-top: 4px;
+  }
+
+  .music-card audio {
+    border-radius: 6px;
+  }
+
+  .music-card audio::-webkit-media-controls-panel {
+    background: #252540;
+  }
 </style>
 </head>
 <body>
@@ -591,7 +644,9 @@
     <button class="tab-btn" onclick="switchTab('backgrounds')">Backgrounds</button>
     <button class="tab-btn" onclick="switchTab('noncombat')">Non-Combat BGs</button>
     <button class="tab-btn" onclick="switchTab('mysteryrooms')">Mystery Rooms</button>
+    <button class="tab-btn" onclick="switchTab('rewardrooms')">Reward Rooms</button>
     <button class="tab-btn" onclick="switchTab('relicicons')">Relic Icons</button>
+    <button class="tab-btn" onclick="switchTab('music')">Music</button>
   </div>
 </header>
 
@@ -617,7 +672,10 @@
   <div class="tab-panel" id="panel-cardart"></div>
   <div class="tab-panel" id="panel-backgrounds"></div>
   <div class="tab-panel" id="panel-noncombat"></div>
+  <div class="tab-panel" id="panel-mysteryrooms"></div>
+  <div class="tab-panel" id="panel-rewardrooms"></div>
   <div class="tab-panel" id="panel-relicicons"></div>
+  <div class="tab-panel" id="panel-music"></div>
 </div>
 
 <!-- Lightbox -->
@@ -666,14 +724,14 @@
 
 <script>
   let currentTab = 'cardframes';
-  let allItems = { cardframes: [], enemies: [], cardart: [], backgrounds: [], noncombat: [], relicicons: [] };
+  let allItems = { cardframes: [], enemies: [], cardart: [], backgrounds: [], noncombat: [], mysteryrooms: [], rewardrooms: [], relicicons: [], music: [] };
   let pollTimers = {};
 
   // ── Tab switching ──────────────────────────────────────────
   function switchTab(tab) {
     currentTab = tab;
     document.querySelectorAll('.tab-btn').forEach((b, i) => {
-      const tabs = ['cardframes', 'enemies', 'cardart', 'backgrounds', 'noncombat', 'relicicons'];
+      const tabs = ['cardframes', 'enemies', 'cardart', 'backgrounds', 'noncombat', 'mysteryrooms', 'rewardrooms', 'relicicons', 'music'];
       b.classList.toggle('active', tabs[i] === tab);
     });
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
@@ -685,7 +743,7 @@
   async function loadItems() {
     document.getElementById('statusText').textContent = 'Loading...';
     try {
-      const results = await Promise.all(['cardframes', 'enemies', 'cardart', 'backgrounds', 'noncombat', 'relicicons'].map(async cat => {
+      const results = await Promise.all(['cardframes', 'enemies', 'cardart', 'backgrounds', 'noncombat', 'mysteryrooms', 'rewardrooms', 'relicicons'].map(async cat => {
         const controller = new AbortController();
         const timeout = setTimeout(() => controller.abort(), 5000);
         try {
@@ -700,7 +758,9 @@
       allItems.cardart = results[2];
       allItems.backgrounds = results[3];
       allItems.noncombat = results[4];
-      allItems.relicicons = results[5];
+      allItems.mysteryrooms = results[5];
+      allItems.rewardrooms = results[6];
+      allItems.relicicons = results[7];
       renderItems();
       document.getElementById('statusText').textContent = `Loaded`;
     } catch (e) {
@@ -710,6 +770,10 @@
 
   // ── Render items for current tab ──────────────────────────
   function renderItems() {
+    if (currentTab === 'music') {
+      renderMusicTab();
+      return;
+    }
     const q = document.getElementById('searchInput').value.toLowerCase();
     const panel = document.getElementById(`panel-${currentTab}`);
     let items = allItems[currentTab].filter(i =>
@@ -730,6 +794,46 @@
     panel.innerHTML = '';
     for (const item of items) {
       panel.appendChild(buildItemCard(item));
+    }
+  }
+
+  // ── Render music tab ──────────────────────────────────────
+  async function renderMusicTab() {
+    const panel = document.getElementById('panel-music');
+    panel.innerHTML = '<div style="padding:20px;color:#888">Loading music tracks...</div>';
+
+    try {
+      const r = await fetch('/api/artstudio/music');
+      const tracks = r.ok ? await r.json() : [];
+
+      if (tracks.length === 0) {
+        panel.innerHTML = '<div style="padding:40px;text-align:center;color:#666"><h3>No BGM tracks generated yet</h3><p>Run the ACE-Step generator or drop .wav/.ogg files into public/assets/audio/bgm/</p></div>';
+        return;
+      }
+
+      let html = '<div class="music-grid">';
+      for (const track of tracks) {
+        const name = track.name.replace('bgm_', '').replace(/\.(wav|ogg|mp3|flac)$/, '');
+        const displayName = name.charAt(0).toUpperCase() + name.slice(1).replace(/_/g, ' ');
+        const sizeKB = Math.round(track.size / 1024);
+        const mimeType = track.name.endsWith('.ogg') ? 'ogg' : track.name.endsWith('.mp3') ? 'mpeg' : 'wav';
+
+        html += `
+        <div class="music-card">
+          <div class="music-card-header">
+            <span class="music-title">${displayName}</span>
+            <span class="music-meta">${sizeKB} KB</span>
+          </div>
+          <audio controls preload="metadata" style="width:100%;margin:8px 0;">
+            <source src="/audio/bgm/${track.name}" type="audio/${mimeType}">
+          </audio>
+          <div class="music-filename">${track.name}</div>
+        </div>`;
+      }
+      html += '</div>';
+      panel.innerHTML = html;
+    } catch(e) {
+      panel.innerHTML = `<div style="padding:20px;color:#f66">Error loading music: ${e.message}</div>`;
     }
   }
 

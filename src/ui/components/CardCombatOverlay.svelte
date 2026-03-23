@@ -27,7 +27,7 @@
   import { RELIC_BY_ID } from '../../data/relics/index'
   import { getMaxRelicSlots, resolveChargeButtonState } from '../../services/relicEffectResolver'
   import { juiceManager } from '../../services/juiceManager'
-  import { getCombatScene, consumeSoulJarCharge, handlePendingChoice } from '../../services/encounterBridge'
+  import { getCombatScene, consumeSoulJarCharge, handlePendingChoice, enemyDamageEvent } from '../../services/encounterBridge'
   import { factsDB } from '../../services/factsDB'
   import { getReviewStateByFactId, playerSave } from '../stores/playerData'
   import type { CombatScene } from '../../game/scenes/CombatScene'
@@ -757,6 +757,20 @@
     return () => juiceManager.clearCallbacks()
   })
 
+  // Subscribe to enemy turn damage/block events and spawn UI numbers
+  $effect(() => {
+    const unsub = enemyDamageEvent.subscribe((evt) => {
+      if (!evt) return
+      if (evt.damageDealt > 0) {
+        spawnDamageNumber(String(evt.damageDealt), false, 'damage', 'player')
+      }
+      if (evt.blockGained > 0) {
+        spawnDamageNumber(String(evt.blockGained), false, 'block', 'enemy')
+      }
+    })
+    return unsub
+  })
+
   /** Redact the correct answer from the question text to prevent self-answering. */
   function redactAnswerFromQuestion(question: string, answer: string): string {
     if (!answer || answer.length < 3) return question
@@ -922,8 +936,10 @@
 
       if (fact.type === 'vocabulary') {
         // Vocab variant system: select question format based on card tier, then build question
+        // AR-241: Use per-fact variant level (deterministic progression) when available.
         const cardTier = getCardTier(getReviewStateByFactId(card.factId))
-        const variant = selectVariant(cardTier, fact)
+        const factVariantLevel = card.factId ? ($activeRunState?.factVariantLevel?.[card.factId] ?? undefined) : undefined
+        const variant = selectVariant(cardTier, fact, factVariantLevel)
         const variantQ = buildVariantQuestion(fact, variant)
 
         question = variantQ.questionText
@@ -1815,7 +1831,7 @@
 
 </script>
 
-<div class="card-combat-overlay" class:near-death-tension={isNearDeath} class:layout-landscape={$isLandscape}>
+<div class="card-combat-overlay" class:near-death-tension={isNearDeath} class:layout-landscape={$isLandscape} class:quiz-active={isQuizPanelVisible}>
   {#if turnState === null}
     <div class="empty-state">
       <p>Waiting for encounter...</p>
@@ -3244,6 +3260,27 @@
     transform: none;
   }
 
+  /* Quiz-active landscape: enemy slides to right 40% — reposition overlay elements to match */
+  .layout-landscape.quiz-active .enemy-name-header {
+    left: 62%;
+    right: 0;
+    text-align: center;
+    transform: none;
+  }
+
+  .layout-landscape.quiz-active .enemy-intent-bubble {
+    left: auto;
+    right: calc(2% + var(--safe-right, 0px));
+    top: 12%;
+    transform: none;
+  }
+
+  :global(.layout-landscape.quiz-active .status-effect-bar-enemy) {
+    left: 62%;
+    right: 0;
+    transform: none;
+  }
+
   /* Pile indicators: bottom-left, just above stats bar */
   .layout-landscape .draw-pile-indicator {
     position: fixed;
@@ -3410,7 +3447,7 @@
     gap: calc(3px * var(--layout-scale, 1));
     position: fixed;
     left: 15%;
-    bottom: calc(20px * var(--layout-scale, 1));
+    bottom: calc(27vh + calc(36px * var(--layout-scale, 1)));
     z-index: 16;
   }
 

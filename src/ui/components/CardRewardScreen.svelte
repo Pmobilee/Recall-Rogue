@@ -1506,13 +1506,15 @@
 
   .frame-card-art {
     position: absolute;
-    left: 14%;
-    top: 12%;
-    width: 72%;
-    height: 48%;
+    /* Exact position from PSD layer "PLACE WHERE ARTWORK GOES" bbox(176,186,719,609) on 886x1142 */
+    left: 19.9%;
+    top: 16.3%;
+    width: 61.3%;
+    height: 37.0%;
     object-fit: cover;
     image-rendering: auto;
     pointer-events: none;
+    border-radius: 4px;
   }
 
   .upgrade-icon {

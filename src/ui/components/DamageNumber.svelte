@@ -50,18 +50,21 @@
       : (numericValue <= 5 ? 24 : numericValue >= 20 ? 36 : 24 + Math.round(((numericValue - 5) / 15) * 12))
   )
 
-  // Random X offset to prevent damage numbers from stacking at the same position
-  const jitterX = (Math.random() - 0.5) * 40
+  // Random arc direction: left (-1) or right (+1)
+  const arcDirection = Math.random() < 0.5 ? -1 : 1
 
-  // Vertical anchor: enemy numbers float up from ~40% of screen; player numbers from near HP bar (~82%)
-  let topAnchor = $derived(position === 'player' ? '82%' : '40%')
+  // Random X jitter to prevent stacking at the same position
+  const jitterX = (Math.random() - 0.5) * 20
 
-  // Horizontal anchor: enemy ~50%, player ~15% (near player HP bar)
-  let leftAnchor = $derived(position === 'player' ? '15%' : '50%')
+  // Vertical anchor: enemy numbers appear at ~35% of screen; player numbers from near HP bar (~82%)
+  let topAnchor = $derived(position === 'player' ? '82%' : '35%')
 
-  // Auto-remove after animation completes (900ms for new float animation)
+  // Horizontal anchor: enemy at 65% (right of sprite), player ~15% (near player HP bar)
+  let leftAnchor = $derived(position === 'player' ? '15%' : '65%')
+
+  // Auto-remove after animation completes (1000ms for arc animation)
   $effect(() => {
-    const timer = setTimeout(() => onComplete?.(), 900)
+    const timer = setTimeout(() => onComplete?.(), 1000)
     return () => clearTimeout(timer)
   })
 </script>
@@ -72,7 +75,7 @@
   data-testid="damage-number"
   data-type={effectiveType}
   data-position={position}
-  style="font-size: calc({fontSize}px * var(--layout-scale, 1)); left: calc({leftAnchor} + {jitterX}px); top: {topAnchor}; color: {color}; text-shadow: 2px 2px 0 rgba(0,0,0,0.9), -1px -1px 0 rgba(0,0,0,0.5), 0 0 8px {glow};"
+  style="font-size: calc({fontSize}px * var(--layout-scale, 1)); left: calc({leftAnchor} + {jitterX}px); top: {topAnchor}; color: {color}; text-shadow: 2px 2px 0 rgba(0,0,0,0.9), -1px -1px 0 rgba(0,0,0,0.5), 0 0 8px {glow}; --arc-dir: {arcDirection};"
 >
   {value}
 </div>
@@ -90,7 +93,8 @@
       0 0 8px rgba(255, 68, 68, 0.5);
     pointer-events: none;
     z-index: 100;
-    animation: damageFloat 900ms ease-out forwards;
+    --arc-dir: 1;
+    animation: damageArc 1000ms ease-out forwards;
   }
 
   .damage-number.critical {
@@ -116,22 +120,18 @@
     pointer-events: none;
   }
 
-  /* Float upward ~60px over 900ms, fade to 0 in the last third */
-  @keyframes damageFloat {
+  /* Arc trajectory: pops up then curves to the side and down, fading out */
+  @keyframes damageArc {
     0% {
-      transform: translateX(-50%) translateY(0) scale(0.5);
-      opacity: 0;
-    }
-    10% {
-      transform: translateX(-50%) translateY(-8px) scale(1.2);
+      transform: translateX(-50%) translate(0, 0) scale(1.2);
       opacity: 1;
     }
-    60% {
-      transform: translateX(-50%) translateY(-45px) scale(1.0);
+    30% {
+      transform: translateX(-50%) translate(calc(var(--arc-dir, 1) * 30px), -20px) scale(1);
       opacity: 1;
     }
     100% {
-      transform: translateX(-50%) translateY(-60px) scale(1.0);
+      transform: translateX(-50%) translate(calc(var(--arc-dir, 1) * 60px), 40px) scale(0.8);
       opacity: 0;
     }
   }
@@ -153,7 +153,7 @@
     .damage-number {
       animation: none;
       opacity: 1;
-      transform: translateX(-50%) translateY(-40px);
+      transform: translateX(-50%) translate(0, -20px);
     }
     .damage-number.critical::after {
       animation: none;

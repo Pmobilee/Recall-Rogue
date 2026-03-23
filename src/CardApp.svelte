@@ -28,6 +28,7 @@
     activeSpecialEvent,
     activeUpgradeCandidates,
     getCurrentDelvePenalty,
+    getDefeatedBossName,
     onArchetypeSelected,
     onCardRewardSelected,
     onCardRewardSkipped,
@@ -1120,7 +1121,7 @@
     {#if run}
       <div in:fly={{ y: 8, duration: 350 }}>
         <RetreatOrDelve
-          bossName={run.floor.currentFloor === 3 ? 'Gate Guardian' : run.floor.currentFloor === 6 ? 'Magma Wyrm' : run.floor.currentFloor === 9 ? 'The Archivist' : 'Endless Sentinel'}
+          bossName={getDefeatedBossName()}
           segment={run.floor.segment}
           currency={run.currency}
           playerHp={run.playerHp}

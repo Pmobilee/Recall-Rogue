@@ -99,6 +99,13 @@ function ensureCombatStarted(): void {
 
 export const activeTurnState = writable<TurnState | null>(null);
 
+/** Dispatched after enemy turn resolves so the UI can spawn damage/block numbers at player position. */
+export interface EnemyDamageEvent {
+  damageDealt: number;
+  blockGained: number;
+}
+export const enemyDamageEvent = writable<EnemyDamageEvent | null>(null);
+
 // ── Boss rotation helpers (AR-98) ──
 const LAST_BOSS_KEY = 'recall-rogue-last-boss';
 
@@ -855,21 +862,39 @@ export async function handleEndTurn(): Promise<void> {
   const turnState = get(activeTurnState);
   if (!turnState) return;
 
+  // Capture pre-turn HP so the UI stays at the old value during the animation delay
+  const previousHp = turnState.playerState.hp;
+
   const result = endPlayerTurn(turnState);
   playCardAudio('enemy-turn-start');
+
+  // Sync only the turn counter now; defer HP update until after the animation.
   const run = get(activeRunState);
   if (run) {
-    run.playerHp = result.turnState.playerState.hp;
     // Sync the global turn counter back to run state so it persists across encounters.
     run.globalTurnCounter = result.turnState.turnNumber;
     activeRunState.set(run);
   }
 
-  activeTurnState.set(freshTurnState(result.turnState));
+  // Keep the HP store at the pre-damage value so the UI does not jump before the animation.
+  // Publish a modified turn state where playerState.hp is still the old value.
+  const preAnimTurnState = freshTurnState(result.turnState);
+  preAnimTurnState.playerState = { ...preAnimTurnState.playerState, hp: previousHp };
+  activeTurnState.set(preAnimTurnState);
 
   // AR-222: Delay before enemy animations so the player can register their
   // turn ending before the enemy immediately acts. 1 second normal, shorter in turbo.
   await new Promise<void>((r) => setTimeout(r, turboDelay(1000)));
+
+  // Now update HP in run state and the active turn state with the real post-turn values.
+  // This runs after the animation delay so the UI shows the damage at the same moment
+  // as the enemy attack animation plays, not before it.
+  const runAfterDelay = get(activeRunState);
+  if (runAfterDelay) {
+    runAfterDelay.playerHp = result.turnState.playerState.hp;
+    activeRunState.set(runAfterDelay);
+  }
+  activeTurnState.set(freshTurnState(result.turnState));
 
   const scene = getCombatScene();
   if (scene) {
@@ -926,6 +951,15 @@ export async function handleEndTurn(): Promise<void> {
       playCardAudio('player-defeated');
       scene.playPlayerDefeatAnimation();
     }
+  }
+
+  // Dispatch enemy damage/block numbers to the UI overlay
+  const enemyBlock = result.turnState.enemy.block;
+  const damageToPlayer = result.damageDealt;
+  if (damageToPlayer > 0 || enemyBlock > 0) {
+    enemyDamageEvent.set({ damageDealt: damageToPlayer, blockGained: enemyBlock });
+    // Reset so the store can fire again next turn
+    setTimeout(() => enemyDamageEvent.set(null), 50);
   }
 
   if (!result.playerDefeated) {

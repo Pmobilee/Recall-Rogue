@@ -789,6 +789,19 @@ export function playCardAction(
         }
       }
 
+      // AR-241: Per-fact variant progression — wrong Charge keeps or decrements variant level.
+      if (playMode === 'charge' && card.factId) {
+        const runState = get(activeRunState);
+        if (runState) {
+          const currentLevel = runState.factVariantLevel[card.factId] ?? 0;
+          runState.factVariantLevel[card.factId] = Math.max(0, currentLevel - 1);
+          activeRunState.set(runState);
+          if (import.meta.env.DEV) {
+            console.log(`[QuizVariant] fact=${card.factId} wrong (relaxed) → level ${currentLevel} → ${runState.factVariantLevel[card.factId]}`);
+          }
+        }
+      }
+
       turnState.turnLog.push({
         type: 'fizzle',
         message: 'Relaxed mode: card fizzled',
@@ -903,6 +916,19 @@ export function playCardAction(
       if (runState) {
         runState.cursedFactIds.add(card.factId);
         activeRunState.set(runState);
+      }
+    }
+
+    // AR-241: Per-fact variant progression — wrong Charge decrements variant level (min 0).
+    if (playMode === 'charge' && card.factId) {
+      const runState = get(activeRunState);
+      if (runState) {
+        const currentLevel = runState.factVariantLevel[card.factId] ?? 0;
+        runState.factVariantLevel[card.factId] = Math.max(0, currentLevel - 1);
+        activeRunState.set(runState);
+        if (import.meta.env.DEV) {
+          console.log(`[QuizVariant] fact=${card.factId} wrong → level ${currentLevel} → ${runState.factVariantLevel[card.factId]}`);
+        }
       }
     }
 
@@ -1823,6 +1849,20 @@ export function playCardAction(
     if (runState) {
       markFirstChargeUsed(card.factId, runState.firstChargeFreeFactIds);
       activeRunState.set(runState);
+    }
+  }
+
+  // AR-241: Per-fact variant progression — correct Charge advances the variant level.
+  if (playMode === 'charge' && card.factId) {
+    const runState = get(activeRunState);
+    if (runState) {
+      const currentLevel = runState.factVariantLevel[card.factId] ?? 0;
+      const MAX_LEVEL = 3; // forward=0, reverse=1, synonym=2, definition=3
+      runState.factVariantLevel[card.factId] = Math.min(currentLevel + 1, MAX_LEVEL);
+      activeRunState.set(runState);
+      if (import.meta.env.DEV) {
+        console.log(`[QuizVariant] fact=${card.factId} correct → level ${currentLevel} → ${runState.factVariantLevel[card.factId]}`);
+      }
     }
   }
 

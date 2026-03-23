@@ -139,6 +139,13 @@ export interface RunState {
    * Spending 1 charge activates the GUARANTEED button — auto-succeeds the next quiz.
    */
   soulJarCharges: number;
+  /**
+   * AR-241: Per-fact variant progression level.
+   * Maps factId → variant level (0=forward, 1=reverse, 2=synonym, 3=definition).
+   * Incremented on correct Charge, decremented (min 0) on wrong Charge.
+   * Independent of card tier — tracks mastery of the question format per fact.
+   */
+  factVariantLevel: Record<string, number>;
 }
 
 export interface RunEndData {
@@ -249,6 +256,7 @@ export function createRunState(
     runSeed,
     globalTurnCounter: 1,
     soulJarCharges: 0,
+    factVariantLevel: {},
     deckMode: options?.deckMode,
     deckMasteryPct: options?.deckMasteryPct,
     rewardsDisabled: options?.rewardsDisabled,

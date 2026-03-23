@@ -13,6 +13,17 @@ const synonymMap = synonymMapData as Record<string, { synonyms: string[]; relate
 /** Available vocab question variant types. */
 export type VocabVariant = 'forward' | 'reverse' | 'synonym' | 'definition';
 
+/**
+ * AR-241: Ordered variant progression sequence.
+ * Level 0 = forward, 1 = reverse, 2 = synonym, 3 = definition.
+ * When a variant at a given level is unavailable (e.g. no synonym data),
+ * selectVariant falls back to the next available variant, then forward.
+ */
+export const VARIANT_PROGRESSION: VocabVariant[] = ['forward', 'reverse', 'synonym', 'definition'];
+
+/** Maximum variant level index (3 = definition). */
+export const MAX_VARIANT_LEVEL = VARIANT_PROGRESSION.length - 1;
+
 /** Result of building a variant question. */
 export interface VariantQuestion {
   /** The variant type that was actually used (may differ from requested if fallback occurred). */
@@ -51,6 +62,11 @@ const TIER_VARIANT_WEIGHTS: Record<string, { variant: VocabVariant; weight: numb
  * Validates that the selected variant is actually feasible for this fact,
  * falling back to 'forward' if not.
  *
+ * AR-241: When `variantLevel` is provided (per-fact progression from RunState.factVariantLevel),
+ * the variant is selected deterministically from VARIANT_PROGRESSION[variantLevel] instead of
+ * randomly from the tier weights. If the target variant is unavailable for this fact, the
+ * function walks backwards through the progression until a feasible variant is found.
+ *
  * NOTE: Variants only trigger for vocab facts at tier 2a+.
  * - Tier 1 (stability<2 OR consecutiveCorrect<2): forward-only — this is EXPECTED for early runs.
  * - Tier 2a (stability>=2, consecutiveCorrect>=2): 60% forward / 40% reverse
@@ -61,33 +77,81 @@ const TIER_VARIANT_WEIGHTS: Record<string, { variant: VocabVariant; weight: numb
  * a card reaches stability>=2 AND consecutiveCorrect>=2 (roughly 2 correct answers in a row
  * with FSRS stability growing past 2 days). This is by design, not a bug.
  */
-export function selectVariant(tier: CardTier, fact: Fact): VocabVariant {
+export function selectVariant(tier: CardTier, fact: Fact, variantLevel?: number): VocabVariant {
   // Only vocab facts get variants
   if (fact.type !== 'vocabulary') return 'forward';
 
-  const weights = TIER_VARIANT_WEIGHTS[tier] ?? TIER_VARIANT_WEIGHTS['1'];
-  const selected = weightedRandomPick(weights);
+  let selected: VocabVariant;
+  let selectionMode: 'progression' | 'weighted';
 
-  // Validate the selected variant is feasible; fall back to forward if data is missing
-  let fallbackReason: string | null = null;
-  if (selected === 'synonym' && !hasSynonymData(fact.correctAnswer)) {
-    fallbackReason = `synonym: no synonymMap entry for "${fact.correctAnswer}"`;
-  } else if (selected === 'definition' && !hasValidDefinition(fact)) {
-    fallbackReason = `definition: explanation missing or too short (<15 chars)`;
-  } else if (selected === 'reverse' && !canExtractL2Word(fact)) {
-    fallbackReason = `reverse: could not extract L2 word from quizQuestion "${fact.quizQuestion}"`;
+  if (variantLevel !== undefined && variantLevel >= 0) {
+    // AR-241: Deterministic per-fact progression — use the stored level
+    selectionMode = 'progression';
+    const clampedLevel = Math.min(variantLevel, MAX_VARIANT_LEVEL);
+    // Walk backward from target level to find a feasible variant
+    let resolved: VocabVariant = 'forward';
+    for (let lvl = clampedLevel; lvl >= 0; lvl--) {
+      const candidate = VARIANT_PROGRESSION[lvl];
+      if (isVariantFeasible(candidate, fact)) {
+        resolved = candidate;
+        break;
+      }
+    }
+    selected = resolved;
+  } else {
+    // Legacy: random weighted selection by tier
+    selectionMode = 'weighted';
+    const weights = TIER_VARIANT_WEIGHTS[tier] ?? TIER_VARIANT_WEIGHTS['1'];
+    selected = weightedRandomPick(weights);
   }
 
-  const final: VocabVariant = fallbackReason ? 'forward' : selected;
+  // For weighted mode: validate the selected variant is feasible; fall back to forward if data is missing
+  let fallbackReason: string | null = null;
+  if (selectionMode === 'weighted') {
+    if (selected === 'synonym' && !hasSynonymData(fact.correctAnswer)) {
+      fallbackReason = `synonym: no synonymMap entry for "${fact.correctAnswer}"`;
+    } else if (selected === 'definition' && !hasValidDefinition(fact)) {
+      fallbackReason = `definition: explanation missing or too short (<15 chars)`;
+    } else if (selected === 'reverse' && !canExtractL2Word(fact)) {
+      fallbackReason = `reverse: could not extract L2 word from quizQuestion "${fact.quizQuestion}"`;
+    }
+  }
+
+  const final: VocabVariant = (selectionMode === 'weighted' && fallbackReason) ? 'forward' : selected;
 
   if (import.meta.env.DEV) {
-    console.log(
-      `[QuizVariant] fact=${fact.id} tier=${tier} selected=${selected} final=${final}` +
-      (fallbackReason ? ` reason="fallback — ${fallbackReason}"` : ` reason="ok"`),
-    );
+    if (selectionMode === 'progression') {
+      console.log(
+        `[QuizVariant] fact=${fact.id} tier=${tier} mode=progression level=${variantLevel} final=${final}`,
+      );
+    } else {
+      console.log(
+        `[QuizVariant] fact=${fact.id} tier=${tier} mode=weighted selected=${selected} final=${final}` +
+        (fallbackReason ? ` reason="fallback — ${fallbackReason}"` : ` reason="ok"`),
+      );
+    }
   }
 
   return final;
+}
+
+/**
+ * AR-241: Check whether a given variant is feasible for a fact.
+ * Used by selectVariant when walking backward through the progression.
+ */
+function isVariantFeasible(variant: VocabVariant, fact: Fact): boolean {
+  switch (variant) {
+    case 'forward':
+      return true;
+    case 'reverse':
+      return canExtractL2Word(fact);
+    case 'synonym':
+      return hasSynonymData(fact.correctAnswer);
+    case 'definition':
+      return hasValidDefinition(fact);
+    default:
+      return false;
+  }
 }
 
 /**

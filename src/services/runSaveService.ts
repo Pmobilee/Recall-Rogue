@@ -108,6 +108,10 @@ function deserializeRunState(saved: SerializedRunState): RunState {
     globalTurnCounter: typeof savedAny['globalTurnCounter'] === 'number' ? savedAny['globalTurnCounter'] : 1,
     // Default to 0 for saves created before soul_jar was added.
     soulJarCharges: typeof savedAny['soulJarCharges'] === 'number' ? savedAny['soulJarCharges'] : 0,
+    // AR-241: Default to empty object for saves created before per-fact variant progression was added.
+    factVariantLevel: (typeof savedAny['factVariantLevel'] === 'object' && savedAny['factVariantLevel'] !== null && !Array.isArray(savedAny['factVariantLevel']))
+      ? savedAny['factVariantLevel'] as Record<string, number>
+      : {},
   };
 }
 
