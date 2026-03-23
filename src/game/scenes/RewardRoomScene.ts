@@ -119,6 +119,7 @@ export class RewardRoomScene extends Phaser.Scene {
     const cb = `?v=${Date.now()}`
 
     this.load.image('reward_bg', '/assets/reward_room/reward_room_bg.webp' + cb)
+    this.load.image('reward_bg_landscape', '/assets/reward_room/reward_room_landscape.jpg' + cb)
 
     for (let i = 0; i <= 5; i++) {
       this.load.image(`gold_tier_${i}`, `/assets/reward_room/gold_tier_${i}.png${cb}`)
@@ -186,7 +187,9 @@ export class RewardRoomScene extends Phaser.Scene {
   // ─── Background ─────────────────────────────────────────────────────────────
 
   private createBackground(W: number, H: number): void {
-    const bg = this.add.image(W / 2, H / 2, 'reward_bg')
+    const isLandscape = W > H
+    const bgKey = isLandscape ? 'reward_bg_landscape' : 'reward_bg'
+    const bg = this.add.image(W / 2, H / 2, bgKey)
     bg.setOrigin(0.5, 0.5)
 
     // Cover mode: scale to fill entire viewport
@@ -314,8 +317,10 @@ export class RewardRoomScene extends Phaser.Scene {
     const maskH = clothData?.maskHeight ?? 2752
 
     // Compute same scale as background (cover mode)
-    const bgW = this.textures.get('reward_bg').getSourceImage().width as number
-    const bgH = this.textures.get('reward_bg').getSourceImage().height as number
+    const isLandscape = W > H
+    const bgKey = isLandscape ? 'reward_bg_landscape' : 'reward_bg'
+    const bgW = this.textures.get(bgKey).getSourceImage().width as number
+    const bgH = this.textures.get(bgKey).getSourceImage().height as number
     const scaleX = W / bgW
     const scaleY = H / bgH
     const bgScale = Math.max(scaleX, scaleY)

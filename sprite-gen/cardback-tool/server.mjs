@@ -1894,13 +1894,13 @@ const ARTSTUDIO_OUTPUT_DIR = resolve(__dirname, 'artstudio-output');
 const ARTSTUDIO_CATEGORIES = ['cardframes', 'enemies', 'cardart', 'backgrounds', 'relicicons', 'noncombat', 'mysteryrooms', 'rewardrooms'];
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
-const OPENROUTER_MODEL_DEFAULT = process.env.OPENROUTER_MODEL || 'google/gemini-2.5-flash-image';
-const OPENROUTER_MODEL_LANDSCAPE = process.env.OPENROUTER_MODEL_LANDSCAPE || 'stabilityai/stable-diffusion-xl';
+const OPENROUTER_MODEL_PORTRAIT = process.env.OPENROUTER_MODEL_PORTRAIT || 'google/gemini-2.5-flash-image';          // Nano Banana (original) — for portrait
+const OPENROUTER_MODEL_LANDSCAPE = process.env.OPENROUTER_MODEL_LANDSCAPE || 'google/gemini-3.1-flash-image-preview'; // Nano Banana 2 — for landscape
 
-/** Pick the right model based on item dimensions — landscape backgrounds use nano banana 2 */
+/** Pick the right model based on item dimensions — landscape uses Nano Banana 2, portrait uses original Nano Banana */
 function getModelForItem(item) {
   if (item.targetWidth > item.targetHeight) return OPENROUTER_MODEL_LANDSCAPE;
-  return OPENROUTER_MODEL_DEFAULT;
+  return OPENROUTER_MODEL_PORTRAIT;
 }
 const OPENROUTER_BASE_URL = process.env.OPENROUTER_BASE_URL || 'https://openrouter.ai/api/v1';
 
@@ -1947,7 +1947,7 @@ function artStudioExtractImageBase64(data) {
 }
 
 async function artStudioCallOpenRouter(prompt, targetWidth, targetHeight, model) {
-  const useModel = model || (targetWidth > targetHeight ? OPENROUTER_MODEL_LANDSCAPE : OPENROUTER_MODEL_DEFAULT);
+  const useModel = model || (targetWidth > targetHeight ? OPENROUTER_MODEL_LANDSCAPE : OPENROUTER_MODEL_PORTRAIT);
   const MAX_RETRIES = 3;
   for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
     const response = await fetch(`${OPENROUTER_BASE_URL}/chat/completions`, {
