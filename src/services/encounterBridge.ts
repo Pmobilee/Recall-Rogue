@@ -276,9 +276,15 @@ function syncCombatScene(turnState: TurnState): void {
 
 export async function startEncounterForRoom(enemyId?: string): Promise<boolean> {
   const existingTurn = get(activeTurnState);
-  if (existingTurn && existingTurn.result === null) {
-    console.warn('[encounterBridge] Encounter already active, ignoring duplicate start');
-    return false;
+  if (existingTurn) {
+    if (existingTurn.result === null) {
+      // Encounter genuinely in progress — return true (already started) instead of
+      // blocking with false which causes the caller to navigate away from combat
+      if (import.meta.env.DEV) console.debug('[encounterBridge] Encounter already active, reusing');
+      return true;
+    }
+    // Clear stale turn state from a completed encounter (cleanup timeout hasn't fired yet)
+    activeTurnState.set(null);
   }
   const run = get(activeRunState);
   if (!run) return false;

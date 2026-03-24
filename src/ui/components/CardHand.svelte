@@ -196,7 +196,7 @@
   }
 
   function getDomainColor(domain: FactDomain): string {
-    return getDomainMetadata(domain).colorTint
+    return getDomainMetadata(domain)?.colorTint ?? '#6B7280'
   }
 
   let hoveredIndex = $state<number | null>(null)

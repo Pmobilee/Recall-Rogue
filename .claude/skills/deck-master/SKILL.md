@@ -850,9 +850,77 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/playtest-curate
 
 ---
 
-## In-Game Testing — MANDATORY
+## LLM Playtest — MANDATORY (final gate before deck ships)
 
-**Data validation alone is NOT sufficient.** The Solar System deck shipped with literal `{8}` in answers, wrong domain labels, and the same question repeating 6 times in a row — all of which passed data validation. The runtime behavior is what matters.
+**After automated playtest passes, an LLM agent must play through the deck as a real player.** This is the FINAL quality gate. The agent reads each question, evaluates the answer choices, picks one (sometimes wrong on purpose), and judges quality from a player's perspective. No code check catches "this question is confusing" or "these distractors are too obvious" — only an LLM reading them naturally can.
+
+### How to run
+
+Spawn a **Haiku sub-agent** (`model: "haiku"`) with the playtest output and this prompt:
+
+```
+You are playtesting a curated quiz deck for the game Recall Rogue. Below is a simulated
+play session showing 30 quiz charges. For each question, evaluate:
+
+1. QUESTION CLARITY: Is the question clear and unambiguous? Would a player understand what's being asked?
+2. ANSWER CORRECTNESS: Is the stated correct answer actually correct? Flag any factual errors.
+3. DISTRACTOR QUALITY: Are the wrong answers plausible but clearly wrong? Flag if:
+   - A distractor is actually correct (secretly right answer)
+   - Distractors are too obvious (trivially eliminatable)
+   - Distractors are nonsensical for this question type
+4. LEARNING VALUE: Does this question teach something? Or is it pure rote recall?
+5. REPETITION FEEL: As you go through the sequence, does it feel varied? Or tedious?
+6. PROGRESSION: Do the learning queue returns feel natural? (Cards you got wrong should come back.)
+
+Rate the deck overall:
+- Question quality (1-10)
+- Distractor quality (1-10)
+- Variety/pacing (1-10)
+- Educational value (1-10)
+
+List ALL issues found, no matter how minor. Be harsh — we want to catch everything.
+```
+
+### What to feed the agent
+
+Run the automated playtest with `--verbose` and capture the output:
+
+```bash
+# Generate the playtest transcript
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
+  scripts/playtest-curated-deck.ts <deck_id> --charges 30 --seed 42 --verbose > /tmp/deck-playtest.txt 2>&1
+
+# Also run a wrong-answer session
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
+  scripts/playtest-curated-deck.ts <deck_id> --charges 20 --wrong-rate 0.3 --seed 99 --verbose >> /tmp/deck-playtest.txt 2>&1
+```
+
+Then spawn the Haiku agent with the contents of `/tmp/deck-playtest.txt` plus the evaluation prompt above.
+
+### Checklist — EVERY curated deck must pass ALL of these
+
+Before a deck can ship, check off every item:
+
+- [ ] **Static verification clean** — `node scripts/verify-curated-deck.mjs <deck_id>` → 0 failures
+- [ ] **Automated playtest clean (all correct)** — `playtest-curated-deck.ts --charges 30` → 0 issues
+- [ ] **Automated playtest clean (wrong answers)** — `playtest-curated-deck.ts --charges 20 --wrong-rate 0.3` → 0 issues
+- [ ] **LLM playtest: question clarity** — Haiku agent rates 7+ / 10, no confusing questions flagged
+- [ ] **LLM playtest: answer correctness** — Zero factual errors found by the agent
+- [ ] **LLM playtest: distractor quality** — Haiku agent rates 7+ / 10, no secretly-correct distractors
+- [ ] **LLM playtest: variety/pacing** — Haiku agent rates 7+ / 10, Anki queue feels natural
+- [ ] **LLM playtest: educational value** — Haiku agent rates 7+ / 10, questions teach not just test
+- [ ] **Learning queue verified** — Wrong answers return after 2 charges, correct advance through steps
+- [ ] **No pool pollution** — Distractors are semantically appropriate (no "Medium-sized (G-type)" as planet distractor)
+- [ ] **Bracket numbers clean** — Numeric answers display without braces, distractors are plausible nearby numbers
+- [ ] **Wow factors present** — Every fact has a deck-specific wowFactor string
+
+**If ANY checklist item fails, fix and re-run until ALL pass. No exceptions.**
+
+---
+
+## In-Game Visual Testing — SUPPLEMENTARY
+
+**After all automated and LLM testing passes, optionally verify in the browser.** This catches rendering/layout issues that code-level tests can't see (font overflow, z-index, animation).
 
 ### After every deck ships, verify in-game:
 
