@@ -265,17 +265,19 @@
 
 <style>
   .study-content {
-    flex: 1;
+    flex: 1 1 0;
     display: flex;
     overflow: hidden;
     min-width: 0;
+    min-height: 0;
+    height: 100%;
   }
 
   .grid-wrapper {
-    flex: 1;
+    flex: 1 1 0;
     overflow-y: auto;
     min-width: 0;
-    transition: flex 0.25s;
+    min-height: 0;
   }
 
   .grid-wrapper.narrowed {

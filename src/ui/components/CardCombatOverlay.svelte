@@ -1578,6 +1578,8 @@
     const willBePerfect = isCorrect && (turnState?.cardsCorrectThisTurn === turnState?.cardsPlayedThisTurn)
     const hitCount = card.mechanicId === 'multi_hit' ? 3 : undefined
     const quizVariantIndex = committedQuizData?.variantIndex
+    // Capture quiz data snapshot before resetCardFlow() nulls it — needed for confusion tracking
+    const quizDataSnapshot = committedQuizData
     const previousReviewState = getReviewStateByFactId(card.factId)
     const previousTier = previousReviewState ? getCardTier(previousReviewState) : null
 
@@ -1588,8 +1590,8 @@
     if (studyRunState?.deckMode?.type === 'study' && studyRunState.inRunFactTracker) {
       const studyFactId = (card as any).__studyFactId as string | undefined
       if (studyFactId) {
-        const selectedAnswerText = answerIndex >= 0 && committedQuizData
-          ? committedQuizData.answers[answerIndex]
+        const selectedAnswerText = answerIndex >= 0 && quizDataSnapshot
+          ? quizDataSnapshot.answers[answerIndex]
           : undefined
         const distractorMap = (card as any).__studyDistractorMap as Record<string, string> | undefined
         const confusedFactId = (!isCorrect && selectedAnswerText && distractorMap)

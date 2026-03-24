@@ -171,6 +171,11 @@ export function renderTemplate(
     return typeof val === 'string' ? val : match;
   });
 
+  // If any {placeholder} patterns remain unresolved, fall back to fact's own question
+  if (/\{\w+\}/.test(result)) {
+    return fact.quizQuestion;
+  }
+
   return result;
 }
 

@@ -222,8 +222,6 @@
     display: flex;
     flex-direction: column;
     gap: calc(4px * var(--layout-scale, 1));
-    overflow-y: auto;
-    height: 100%;
     box-sizing: border-box;
   }
 
