@@ -19,7 +19,7 @@
     <p class="empty-sub">Decks for this domain are coming soon.</p>
   </div>
 {:else}
-  <div class="deck-grid">
+  <div class="deck-grid" class:single-item={decks.length === 1}>
     {#each decks as deck (deck.id)}
       {@const progress = getDeckProgress(deck.id)}
       <DeckTile
@@ -51,6 +51,11 @@
     .deck-grid {
       grid-template-columns: repeat(1, minmax(0, 1fr));
     }
+  }
+
+  .deck-grid.single-item {
+    grid-template-columns: 1fr;
+    max-width: calc(500px * var(--layout-scale, 1));
   }
 
   .empty-grid {

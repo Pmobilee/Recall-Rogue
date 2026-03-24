@@ -148,7 +148,7 @@
     height: 100%;
     background: #0f1624;
     border-left: 1px solid rgba(255, 255, 255, 0.1);
-    overflow: hidden;
+    overflow-y: auto;
   }
 
   .detail-header {
@@ -329,7 +329,7 @@
   }
 
   .detail-footer {
-    padding: calc(14px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    padding: calc(14px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1));
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     flex-shrink: 0;
   }

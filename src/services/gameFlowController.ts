@@ -2055,7 +2055,7 @@ export function generateStudyQuestions(): QuizQuestion[] {
     // Fall through to trivia path if no study questions could be generated
   }
 
-  const allFacts = factsDB.getAll();
+  const allFacts = factsDB.getTriviaFacts();
   const factMap = new Map(allFacts.map(f => [f.id, f]));
 
   // Get fact IDs from the player's run pool (the deck cards for this run)

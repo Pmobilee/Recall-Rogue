@@ -208,7 +208,7 @@
         // Fall through to trivia path if study question unavailable
       }
 
-      const allFacts = await factsDB.getAll()
+      const allFacts = factsDB.getTriviaFacts()
       if (allFacts.length === 0) {
         // No facts available — skip quiz, just apply discount
         hagglingState = 'result'

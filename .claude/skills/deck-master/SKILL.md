@@ -15,6 +15,49 @@ Single skill for creating high-quality curated decks. Every deck is a self-conta
 
 ---
 
+## Implementation Discipline — READ BEFORE DOING ANYTHING
+
+This section exists because every mistake listed below was actually made during the Solar System deck build (2026-03-24). Future agents MUST follow this process to avoid repeating them.
+
+### Phase 0: Research Before Implementing
+
+**NEVER approximate an algorithm. Study the actual source.** When the Anki queue system was first implemented, the agent "approximated" Anki with weighted random, then hardcoded "every 3rd charge", then burned through all new cards first. Three rewrites. The fix was studying Anki's actual Rust source code on GitHub and replicating the real algorithm.
+
+**Rule:** Before implementing any learning algorithm, distractor system, or queue mechanism:
+1. Find the canonical source (Anki source code, published paper, reference implementation)
+2. Read it. Understand the actual algorithm, not a blog summary.
+3. Write the implementation plan referencing specific functions/logic from the source
+4. Only then implement
+
+### Phase 0.5: Plan Review (MANDATORY for non-trivial decks)
+
+**Before generating any facts, the orchestrator MUST write an AR doc and review it for errors.** The AR should be reviewed in at least 2 passes:
+
+**Pass 1 — Structural review:**
+- Are the answer pools semantically coherent? (Every member genuinely confusable with others?)
+- Does each pool have 5+ unique `correctAnswer` values? If not, facts in that pool need pre-generated distractors.
+- Are there any questions where multiple pool members are correct? (e.g., "Which planet has rings?" — Jupiter, Saturn, Uranus, Neptune ALL have rings)
+- Does the correct answer ever appear in the question text? (e.g., "Besides Saturn..." → Saturn must not be a distractor)
+
+**Pass 2 — Runtime compatibility review:**
+- Will bracket `{N}` notation work in the curated path? (YES — both `nonCombatQuizSelector.ts` and `CardCombatOverlay.svelte` handle it)
+- Will question templates with `{placeholder}` patterns resolve? (Only if the placeholder maps to a DeckFact field. If not, the renderer falls back to `fact.quizQuestion`.)
+- Will the deck's domain show correctly on cards? (`encounterBridge.ts` overrides card domains for study mode)
+- Is the CuratedDeck envelope complete? (answerTypePools, questionTemplates, difficultyTiers, synonymGroups, subDecks)
+
+### Mistakes That Must Never Be Repeated
+
+| Mistake | What happened | Prevention |
+|---------|--------------|------------|
+| Deleting a system instead of fixing it | Bracket notation didn't work → agent deleted brackets and used pre-generated distractors | NEVER remove working systems. Fix the code path. Ask the user if unsure. |
+| Approximating instead of researching | "Anki-like" weighted random → 3 rewrites | Study the actual source code. No approximations. |
+| Testing only data, not runtime | All validation passed but `{8}` showed literally in-game | Run `playtest-curated-deck.ts --learner` after EVERY change |
+| Arbitrary fact counts | "Let's do 50 facts" with no rationale | Let pool-first design dictate count. A deck needs enough facts per pool for good distractors, not a round number. |
+| Pool pollution | "Medium-sized (G-type)" in planet_names pool | Audit every pool: does each member's `correctAnswer` make sense as a distractor for every other member? |
+| Hardcoding magic numbers | "Every 3rd charge, introduce a new card" | Use proportional ratios from the source algorithm. No hardcoded rates. |
+
+---
+
 ## Curated Deck Design Philosophy — CRITICAL
 
 **A curated deck is NOT a trivia collection.** It is a carefully crafted ecosystem where every fact, every answer pool, every question template, and every confusion pair work together to build genuine understanding. This section is mandatory reading before any deck creation work.
@@ -618,7 +661,7 @@ Sub-decks let players focus on a subset of the deck's content. They appear as se
 
 | Rule | Detail |
 |------|--------|
-| Minimum facts | 30 per deck; target 50+ |
+| Fact count | No arbitrary targets. Let pool-first design dictate count: each pool needs 5+ unique answers for good distractors, and the deck needs enough total facts to sustain 8 simultaneous learning cards. Minimum viable is ~30 facts, but the right number is whatever the content demands. |
 | Pool minimum | 5 facts per answer type pool (after synonym exclusions) |
 | Chain themes (knowledge) | NOT required for initial decks. Use generic chain slots (0-5) distributed evenly. Named themes are a future enhancement. |
 | Chain themes (vocabulary) | Generic chains only — no thematic grouping (same as knowledge decks for now) |

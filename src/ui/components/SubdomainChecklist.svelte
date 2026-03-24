@@ -51,6 +51,11 @@
     }
   }
 
+  /** Convert a string to Title Case for display. */
+  function titleCase(str: string): string {
+    return str.replace(/\b\w/g, (c) => c.toUpperCase());
+  }
+
   /** Toggle a single subcategory. */
   function toggleSub(id: string): void {
     playCardAudio('toggle-on');
@@ -98,7 +103,7 @@
               checked={isChecked(sub.id)}
               onchange={() => toggleSub(sub.id)}
             />
-            <span class="sub-name">{sub.name}</span>
+            <span class="sub-name">{titleCase(sub.name)}</span>
             <span class="sub-count">{sub.count}</span>
           </label>
         </li>

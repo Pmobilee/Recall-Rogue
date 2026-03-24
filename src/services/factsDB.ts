@@ -147,6 +147,15 @@ class FactsDB {
   }
 
   /**
+   * Returns all facts EXCLUDING language/vocabulary facts.
+   * Use this for trivia run pool building — language facts belong in Study
+   * Temple curated decks only and must not leak into trivia runs.
+   */
+  getTriviaFacts(): Fact[] {
+    return this.getAll().filter(f => f.categoryL1 !== 'language' && f.type !== 'vocabulary')
+  }
+
+  /**
    * Returns the fact with the given id, or null if not found.
    */
   getById(id: string): Fact | null {

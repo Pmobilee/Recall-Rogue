@@ -123,7 +123,7 @@ export function generateQuizPhaseQuestions(
     // Fall through to trivia path if study questions unavailable
   }
 
-  const allFacts = factsDB.getAll();
+  const allFacts = factsDB.getTriviaFacts();
   const factMap = new Map(allFacts.map(f => [f.id, f]));
 
   // Build a flat list of unique fact IDs from the run's current deck pool

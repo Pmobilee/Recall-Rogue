@@ -27,7 +27,7 @@
   // Build 4 shuffled choices for speed/reverse modes
   function buildChoices(): string[] {
     if (!fact) return []
-    const allFacts = factsDB.getAll()
+    const allFacts = factsDB.getTriviaFacts()
     if (mode === 'reverse') {
       // Show the answer; player picks the correct question stem
       const decoys = allFacts

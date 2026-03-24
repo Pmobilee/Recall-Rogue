@@ -1,5 +1,6 @@
 <script lang="ts">
   import { getDomainMetadata } from '../../data/domainMetadata';
+  import { getDomainSubcategories } from '../../services/domainSubcategoryService';
   import SubdomainChecklist from './SubdomainChecklist.svelte';
 
   interface Props {
@@ -44,13 +45,21 @@
   {:else}
     <div class="checklists-grid">
       {#each selectedMeta as meta (meta.id)}
-        <SubdomainChecklist
-          domain={meta.id}
-          domainName={meta.displayName}
-          domainColor={meta.colorTint}
-          selectedSubdomains={subdomainSelections[meta.id] ?? []}
-          {onSubdomainsChange}
-        />
+        {@const subs = getDomainSubcategories(meta.id)}
+        {#if subs.length === 0}
+          <p class="no-breakdown-note">
+            <span class="no-breakdown-domain" style="color: {meta.colorTint}">{meta.displayName}</span>
+            — all facts included (no subcategory breakdown available)
+          </p>
+        {:else}
+          <SubdomainChecklist
+            domain={meta.id}
+            domainName={meta.displayName}
+            domainColor={meta.colorTint}
+            selectedSubdomains={subdomainSelections[meta.id] ?? []}
+            {onSubdomainsChange}
+          />
+        {/if}
       {/each}
     </div>
   {/if}
@@ -124,5 +133,17 @@
   .summary-text {
     font-size: calc(12px * var(--text-scale, 1));
     color: #64748b;
+  }
+
+  .no-breakdown-note {
+    font-size: calc(12px * var(--text-scale, 1));
+    color: #64748b;
+    margin: 0;
+    padding: calc(8px * var(--layout-scale, 1)) calc(4px * var(--layout-scale, 1));
+    line-height: 1.5;
+  }
+
+  .no-breakdown-domain {
+    font-weight: 700;
   }
 </style>
