@@ -44,6 +44,8 @@ export interface DeckFact {
   targetLanguageWord?: string;
   reading?: string;
   language?: string;
+  /** Part of speech: verb, noun, adjective, adverb, etc. Used for POS-matched distractors. */
+  partOfSpeech?: string;
 }
 
 export interface AnswerTypePool {

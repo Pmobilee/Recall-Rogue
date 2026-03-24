@@ -21,6 +21,8 @@
   } from '../../data/balance'
   import { answerDisplaySpeed, autoResumeAfterAnswer } from '../stores/settings'
   import KeywordPopup from './KeywordPopup.svelte'
+  import FuriganaText from '../FuriganaText.svelte'
+  import { deckOptions } from '../../services/deckOptionsService'
 
   interface Props {
     card: Card
@@ -38,6 +40,10 @@
     questionImageUrl?: string
     /** AR-220: When true, show the charged effect value (1.5x + mastery bonus) instead of base. */
     isCharging?: boolean
+    /** Language code of the quiz fact (e.g. 'ja'). Used for furigana rendering. */
+    factLanguage?: string
+    /** Pronunciation/reading string from the fact. Used to parse furigana from the question. */
+    factPronunciation?: string
     onanswer: (answerIndex: number, isCorrect: boolean, speedBonus: boolean) => void
     onskip: () => void
     oncancel: () => void
@@ -59,6 +65,8 @@
     allowCancel = true,
     questionImageUrl,
     isCharging = true,
+    factLanguage,
+    factPronunciation,
     onanswer,
     onskip,
     oncancel,
@@ -137,6 +145,45 @@
     if (len < 80) return 'quiz-text-medium'
     return 'quiz-text-long'
   })
+
+  /** Whether the current fact is Japanese. */
+  const isJapaneseFact = $derived(factLanguage === 'ja')
+
+  /** Whether kana-only mode is active (read from deckOptions store). */
+  const kanaOnly = $derived.by(() => {
+    if (!isJapaneseFact) return false
+    return $deckOptions?.ja?.kanaOnly ?? false
+  })
+
+  /**
+   * Parse a Japanese question into { before, word, reading, after } parts.
+   * Mirrors parseJapaneseQuestion from QuizOverlay.
+   * Expects format: "What does '食べる' (たべる) mean..." or "What does '食べる' mean..."
+   * Returns null if the question cannot be parsed.
+   */
+  function parseJapaneseQuestion(q: string, pronunciation?: string): { before: string; word: string; reading: string; after: string } | null {
+    const match = q.match(/^(.*?)'([^']+)'(?:\s*\(([^)]+)\))?\s*(.*)$/)
+    if (!match) return null
+    const [, before, word, inlineReading, after] = match
+    const reading = inlineReading ?? pronunciation ?? ''
+    if (!reading) return null
+    return { before: before ?? '', word, reading, after: after ?? '' }
+  }
+
+  /**
+   * Parsed Japanese parts for the question, or null for non-Japanese / unparseable questions.
+   */
+  const japaneseParts = $derived.by(() => {
+    if (!isJapaneseFact || !factPronunciation) return null
+    return parseJapaneseQuestion(question, factPronunciation)
+  })
+
+  /**
+   * Check if a text string contains Japanese characters (kanji, hiragana, katakana).
+   */
+  function hasJapanese(text: string): boolean {
+    return /[\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\u4e00-\u9faf]/.test(text)
+  }
 
   /** Index of the answer button currently highlighted by keyboard input (150ms flash). */
   let keyboardHighlightIndex = $state<number | null>(null)
@@ -445,7 +492,17 @@
       />
     </div>
   {/if}
-  <div class="card-question {questionLengthClass}">{question}</div>
+  <div class="card-question {questionLengthClass}">
+    {#if japaneseParts}
+      {japaneseParts.before}<FuriganaText
+        text={kanaOnly && japaneseParts.reading ? japaneseParts.reading : japaneseParts.word}
+        reading={japaneseParts.reading}
+        size="md"
+      />{japaneseParts.after}
+    {:else}
+      {question}
+    {/if}
+  </div>
   {#if firstLetterHint}
     <div class="first-letter-hint">Starts with: {firstLetterHint}</div>
   {/if}
@@ -486,7 +543,11 @@
         {#if $isLandscape}
           <span class="kbd-hint" aria-hidden="true">{i + 1}</span>
         {/if}
-        {answer}
+        {#if isJapaneseFact && hasJapanese(answer)}
+          <FuriganaText text={answer} size="sm" />
+        {:else}
+          {answer}
+        {/if}
       </button>
     {/each}
   </div>

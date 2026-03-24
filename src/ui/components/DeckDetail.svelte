@@ -3,6 +3,8 @@
   import type { DeckProgress, SubDeckProgress } from '../../services/deckProgressService';
   import { getSubDeckProgress } from '../../services/deckProgressService';
   import { playCardAudio } from '../../services/cardAudioManager';
+  import DeckOptionsPanel from '../DeckOptionsPanel.svelte';
+  import { getLanguageConfig } from '../../types/vocabulary';
 
   interface Props {
     /** The deck being detailed. */
@@ -51,6 +53,37 @@
     playCardAudio('toggle-on');
     onAddToCustom?.(deck.id, selectedSubDeck ?? undefined);
   }
+
+  /** Extract language code from a vocabulary deck ID.
+   *  Handles both "japanese_n5" style IDs and "all:japanese" synthetic IDs.
+   */
+  /** Map deck ID prefix to ISO 639-1 code for getLanguageConfig() lookups. */
+  const PREFIX_TO_ISO: Record<string, string> = {
+    japanese: 'ja', korean: 'ko', mandarin: 'zh', chinese: 'zh',
+    spanish: 'es', french: 'fr', german: 'de', dutch: 'nl',
+    czech: 'cs', portuguese: 'pt', italian: 'it', russian: 'ru',
+    arabic: 'ar', hindi: 'hi', vietnamese: 'vi', turkish: 'tr',
+  };
+
+  function getLanguageCodeFromDeck(): string | null {
+    if (deck.domain !== 'vocabulary') return null;
+    const id = deck.id;
+    let prefix: string;
+    if (id.startsWith('all:')) {
+      prefix = id.substring(4);
+    } else {
+      const idx = id.indexOf('_');
+      prefix = idx > 0 ? id.substring(0, idx) : id;
+    }
+    return PREFIX_TO_ISO[prefix] ?? prefix;
+  }
+
+  const deckLanguageCode = $derived(getLanguageCodeFromDeck());
+  const hasSettings = $derived(
+    deckLanguageCode ? (getLanguageConfig(deckLanguageCode)?.options?.length ?? 0) > 0 : false
+  );
+
+  let showSettings = $state(false);
 </script>
 
 <div class="deck-detail">
@@ -65,6 +98,26 @@
       <p class="deck-desc">{deck.description}</p>
     </div>
   </div>
+
+  <!-- Language display settings (vocabulary decks only) -->
+  {#if hasSettings && deckLanguageCode}
+    <div class="settings-section">
+      <button
+        class="settings-pill"
+        class:settings-active={showSettings}
+        onclick={() => { showSettings = !showSettings; }}
+        aria-expanded={showSettings}
+        aria-label="Toggle display settings"
+      >
+        ⚙ Display Settings
+      </button>
+      {#if showSettings}
+        <div class="settings-dropdown">
+          <DeckOptionsPanel languageCode={deckLanguageCode} />
+        </div>
+      {/if}
+    </div>
+  {/if}
 
   <!-- Overall progress -->
   <div class="section">
@@ -380,5 +433,42 @@
   .add-custom-btn:disabled {
     opacity: 0.35;
     cursor: not-allowed;
+  }
+
+  .settings-section {
+    padding: calc(8px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    flex-shrink: 0;
+  }
+
+  .settings-pill {
+    display: flex;
+    align-items: center;
+    gap: calc(6px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    border: none;
+    border-radius: calc(8px * var(--layout-scale, 1));
+    background: #b45309;
+    color: #fff;
+    font-size: calc(12px * var(--text-scale, 1));
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .settings-pill:hover {
+    background: #d97706;
+  }
+
+  .settings-pill.settings-active {
+    background: #d97706;
+  }
+
+  .settings-dropdown {
+    margin-top: calc(8px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1));
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 </style>

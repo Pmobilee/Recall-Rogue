@@ -180,6 +180,46 @@ function extractTargetWord(fact) {
 /**
  * Transform an old vocab fact into the DeckFact format.
  */
+/**
+ * Detect part of speech from a vocabulary fact.
+ * Uses three strategies in priority order:
+ * 1. Explicit POS in explanation text ("Part of speech: verb")
+ * 2. English answer pattern detection ("to eat" → verb, etc.)
+ * 3. Falls back to undefined
+ */
+function detectPartOfSpeech(fact) {
+  // Strategy 1: Extract from explanation (Japanese, Korean have this)
+  const posMatch = fact.explanation?.match(/Part of speech: (\w+)/i);
+  if (posMatch) {
+    const pos = posMatch[1].toLowerCase();
+    // Normalize to standard categories
+    if (pos === 'word' || pos === 'expression') return undefined; // too generic
+    if (pos === 'numeral' || pos === 'counter') return 'number';
+    if (pos === 'auxiliary') return 'verb';
+    return pos; // verb, noun, adjective, adverb, conjunction, pronoun, etc.
+  }
+
+  // Strategy 2: Infer from English correctAnswer
+  const answer = (fact.correctAnswer || '').trim().toLowerCase();
+
+  // Verbs: "to eat", "to be able to", etc.
+  if (answer.startsWith('to ')) return 'verb';
+
+  // Adjectives: common suffixes
+  if (answer.endsWith('ful') || answer.endsWith('ous') || answer.endsWith('ive') ||
+      answer.endsWith('ible') || answer.endsWith('able') || answer.endsWith('ical') ||
+      answer.endsWith('less') || answer.endsWith('ish')) return 'adjective';
+
+  // Adverbs: -ly suffix (but not "family", "friendly", etc.)
+  if (answer.endsWith('ly') && !answer.endsWith('ally') &&
+      !['family', 'friendly', 'lonely', 'lovely', 'ugly', 'early', 'daily', 'holy',
+        'belly', 'bully', 'jelly', 'lily', 'rally', 'tally', 'folly', 'jolly'].includes(answer)) {
+    return 'adverb';
+  }
+
+  return undefined; // Can't determine — won't filter by POS
+}
+
 function transformFact(oldFact, chainSlotIndex) {
   return {
     id: oldFact.id,
@@ -200,6 +240,7 @@ function transformFact(oldFact, chainSlotIndex) {
     targetLanguageWord: extractTargetWord(oldFact),
     reading: oldFact.pronunciation || undefined,
     language: oldFact.language || undefined,
+    partOfSpeech: detectPartOfSpeech(oldFact),
   };
 }
 

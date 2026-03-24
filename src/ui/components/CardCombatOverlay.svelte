@@ -21,6 +21,8 @@
   import KeyboardShortcutHelp from './KeyboardShortcutHelp.svelte'
   import CardHand from './CardHand.svelte'
   import CardExpanded from './CardExpanded.svelte'
+  import DeckOptionsPanel from '../DeckOptionsPanel.svelte'
+  import { getLanguageConfig } from '../../types/vocabulary'
   import DamageNumber from './DamageNumber.svelte'
   import ChainCounter from './ChainCounter.svelte'
   import RelicTray from './RelicTray.svelte'
@@ -105,6 +107,10 @@
     questionImageUrl?: string
     /** For synonym variant: additional correct answers accepted from the player. */
     acceptableAnswers?: string[]
+    /** Language code of the source fact (e.g. 'ja'). Used for furigana rendering. */
+    language?: string
+    /** Pronunciation/reading string of the source fact. Used for furigana parsing. */
+    pronunciation?: string
   }
 
   let { turnState, onplaycard, onskipcard, onendturn, onusehint, onreturnhub }: Props = $props()
@@ -114,6 +120,8 @@
   let committedCardIndex = $state<number | null>(null)
   let committedQuizData = $state<QuizData | null>(null)
   let committedAtMs = $state(0)
+  /** Whether the combat quiz language-options popup is open. */
+  let showCombatSettings = $state(false)
 
   // V2 Echo: "Must Charge!" tooltip state — shown when Quick Play is attempted on an Echo card
   let showMustChargeTooltip = $state(false)
@@ -529,6 +537,15 @@
 
   let committedCardSnapshot = $state<Card | null>(null)
   let committedCard = $derived<Card | null>(committedCardSnapshot)
+
+  /** Language code from the committed quiz, or null if none. */
+  const committedQuizLanguage = $derived(committedQuizData?.language ?? null)
+  /** Whether the committed quiz language has configurable display options (furigana etc). */
+  const committedQuizHasLanguageOptions = $derived(
+    committedQuizLanguage
+      ? (getLanguageConfig(committedQuizLanguage)?.options?.length ?? 0) > 0
+      : false
+  )
 
   function applyAscensionQuestionPresentation(card: Card, base: ReturnType<typeof getQuestionPresentation>) {
     const tier1OptionCount = turnState?.ascensionTier1OptionCount ?? 3
@@ -981,6 +998,11 @@
         variantIndex: 0,
       }
     }
+    const factLanguageCode = fact.language ?? undefined
+    const factPronunciation = fact.pronunciation ?? undefined
+    if (import.meta.env.DEV && factLanguageCode) {
+      console.log('[Quiz] Fact language detected:', factLanguageCode, 'id:', fact.id)
+    }
 
     // Vocab cards use the legacy 3-variant system (forward/reverse/fill-blank)
     // Knowledge facts with a variants array use the new N-variant system
@@ -1131,6 +1153,8 @@
       variantIndex,
       questionImageUrl: fact.imageUrl ?? undefined,
       acceptableAnswers,
+      language: factLanguageCode,
+      pronunciation: factPronunciation,
     }
   }
 
@@ -1152,6 +1176,7 @@
     committedCardSnapshot = null
     committedQuizData = null
     committedAtMs = 0
+    showCombatSettings = false
     // Slide enemy back to center if quiz was active in landscape
     if ($isLandscape) {
       getCombatScene()?.slideEnemyForQuiz(false)
@@ -2152,6 +2177,18 @@
         class="quiz-wrapper"
         out:fade={{ duration: 200 }}
       >
+        {#if committedQuizHasLanguageOptions && committedQuizLanguage}
+          <button
+            class="combat-quiz-settings"
+            onclick={() => { showCombatSettings = !showCombatSettings }}
+            aria-label="Language display settings"
+          >⚙</button>
+          {#if showCombatSettings}
+            <div class="combat-quiz-settings-popup">
+              <DeckOptionsPanel languageCode={committedQuizLanguage} />
+            </div>
+          {/if}
+        {/if}
         <CardExpanded
           card={committedCard}
           question={committedQuizData.question}
@@ -2166,6 +2203,8 @@
           timerColorVariant={timerColorVariant}
           highlightHint={turnState.canaryQuestionBias < 0}
           allowCancel={false}
+          factLanguage={committedQuizData.language}
+          factPronunciation={committedQuizData.pronunciation}
           onanswer={handleAnswer}
           onskip={handleSkip}
           oncancel={() => {}}
@@ -3690,6 +3729,41 @@
   /* §7: Quiz wrapper — transparent passthrough; Svelte out:fade applies opacity on exit */
   .quiz-wrapper {
     display: contents;
+  }
+
+  /* Combat quiz language settings cogwheel */
+  .combat-quiz-settings {
+    position: fixed;
+    top: calc(8px * var(--layout-scale, 1));
+    right: calc(8px * var(--layout-scale, 1));
+    z-index: 120;
+    background: #b45309;
+    color: #fff;
+    border: none;
+    border-radius: calc(6px * var(--layout-scale, 1));
+    padding: calc(4px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    font-size: calc(14px * var(--text-scale, 1));
+    font-weight: 700;
+    cursor: pointer;
+    line-height: 1;
+    box-shadow: 0 calc(2px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.4);
+  }
+
+  .combat-quiz-settings:hover {
+    background: #92400e;
+  }
+
+  .combat-quiz-settings-popup {
+    position: fixed;
+    top: calc(36px * var(--layout-scale, 1));
+    right: calc(8px * var(--layout-scale, 1));
+    z-index: 120;
+    background: #1e1b2e;
+    border: 1px solid #b45309;
+    border-radius: calc(8px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1));
+    box-shadow: 0 calc(4px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.6);
+    min-width: calc(180px * var(--layout-scale, 1));
   }
 
   /* ── §9 Landscape: Enemy hover zone + tooltip ─────────── */

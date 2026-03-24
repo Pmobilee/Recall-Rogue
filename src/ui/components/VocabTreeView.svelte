@@ -21,6 +21,14 @@
     decks: DeckRegistryEntry[];
   }
 
+  /** Map deck ID prefix to ISO 639-1 code for getLanguageConfig() lookups. */
+  const PREFIX_TO_ISO: Record<string, string> = {
+    japanese: 'ja', korean: 'ko', mandarin: 'zh', chinese: 'zh',
+    spanish: 'es', french: 'fr', german: 'de', dutch: 'nl',
+    czech: 'cs', portuguese: 'pt', italian: 'it', russian: 'ru',
+    arabic: 'ar', hindi: 'hi', vietnamese: 'vi', turkish: 'tr',
+  };
+
   const LANGUAGE_MAP: Record<string, { name: string; flag: string }> = {
     japanese:   { name: 'Japanese',         flag: '🇯🇵' },
     korean:     { name: 'Korean',            flag: '🇰🇷' },
@@ -134,6 +142,8 @@
   {:else}
     {#each languageGroups as group (group.languageCode)}
       {@const isExpanded = expandedLanguages.has(group.languageCode)}
+      {@const isoCode = PREFIX_TO_ISO[group.languageCode] ?? group.languageCode}
+      {@const langHasOptions = (getLanguageConfig(isoCode)?.options?.length ?? 0) > 0}
       <div class="language-group" role="treeitem" aria-expanded={isExpanded} aria-selected={false}>
         <!-- Language header / toggle -->
         <div class="language-header-row">
@@ -149,20 +159,20 @@
             <span class="deck-count">{group.decks.length} {group.decks.length === 1 ? 'deck' : 'decks'}</span>
           </button>
 
-          {#if (getLanguageConfig(group.languageCode)?.options?.length ?? 0) > 0}
+          {#if langHasOptions}
             <button
               class="options-cogwheel"
-              class:options-cogwheel-active={openOptionsLang === group.languageCode}
-              onclick={(e) => { e.stopPropagation(); toggleOptions(group.languageCode); }}
+              class:options-cogwheel-active={openOptionsLang === isoCode}
+              onclick={(e) => { e.stopPropagation(); toggleOptions(isoCode); }}
               aria-label="Language display options for {group.languageName}"
               type="button"
             >⚙ Settings</button>
           {/if}
         </div>
 
-        {#if openOptionsLang === group.languageCode}
+        {#if openOptionsLang === (PREFIX_TO_ISO[group.languageCode] ?? group.languageCode)}
           <div class="options-dropdown">
-            <DeckOptionsPanel languageCode={group.languageCode} />
+            <DeckOptionsPanel languageCode={PREFIX_TO_ISO[group.languageCode] ?? group.languageCode} />
           </div>
         {/if}
 

@@ -145,6 +145,16 @@ export function selectDistractors(
       if (source === 'pool_fill') source = 'in_run_struggle';
     }
 
+    // Part-of-speech match: strongly prefer same POS for vocabulary distractors.
+    // "to eat" should have verb distractors like "to drink", not noun distractors like "cat".
+    if (correctFact.partOfSpeech && candidateFact.partOfSpeech) {
+      if (candidateFact.partOfSpeech === correctFact.partOfSpeech) {
+        score += 4.0;  // Strong boost for same POS
+      } else {
+        score *= 0.3;  // Heavy penalty for different POS
+      }
+    }
+
     // Similar difficulty band (±1)
     const diffDelta = Math.abs(correctFact.difficulty - candidateFact.difficulty);
     if (diffDelta <= 1) {
