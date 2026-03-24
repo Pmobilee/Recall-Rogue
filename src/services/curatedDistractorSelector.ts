@@ -58,6 +58,52 @@ export function selectDistractors(
     factById.set(f.id, f);
   }
 
+  // Early exit: if pool has too few unique answers for sensible distractors,
+  // use the fact's pre-generated distractors[] directly.
+  // A pool needs at least (count + 1) unique correctAnswer values to provide
+  // `count` distractors after excluding the correct answer.
+  const uniquePoolAnswers = new Set<string>();
+  for (const factId of answerPool.factIds) {
+    if (synonymExcludeIds.has(factId)) continue;
+    const f = factById.get(factId);
+    if (f) uniquePoolAnswers.add(f.correctAnswer.toLowerCase());
+  }
+  uniquePoolAnswers.delete(correctFact.correctAnswer.toLowerCase());
+
+  // Use pre-generated distractors when pool has fewer than 5 unique answers.
+  // Pools this small produce nonsensical distractors (e.g., "Kuiper Belt" as
+  // distractor for "In which direction do planets orbit?"). 5 is the minimum
+  // for meaningful pool-based selection.
+  if (uniquePoolAnswers.size < 5 && correctFact.distractors.length >= count) {
+    // Pool too small — fall back to pre-generated distractors
+    const fallbackDistractors: DeckFact[] = [];
+    const fallbackSources: DistractorSelectionResult['sources'] = [];
+    const seen = new Set<string>([correctFact.correctAnswer.toLowerCase()]);
+
+    for (const d of correctFact.distractors) {
+      if (fallbackDistractors.length >= count) break;
+      if (seen.has(d.toLowerCase())) continue;
+      seen.add(d.toLowerCase());
+      fallbackDistractors.push({
+        id: `_fallback_${d}`,
+        correctAnswer: d,
+        acceptableAlternatives: [],
+        chainThemeId: 0,
+        answerTypePoolId: correctFact.answerTypePoolId,
+        difficulty: correctFact.difficulty,
+        funScore: 1,
+        quizQuestion: '',
+        explanation: '',
+        visualDescription: '',
+        sourceName: '',
+        distractors: [],
+      });
+      fallbackSources.push('pool_fill');
+    }
+
+    return { distractors: fallbackDistractors, sources: fallbackSources };
+  }
+
   // Score all candidate facts in the answer pool
   interface ScoredCandidate {
     factId: string;

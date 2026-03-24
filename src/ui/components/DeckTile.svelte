@@ -14,6 +14,13 @@
 
   let { deck, progress, onclick }: Props = $props();
 
+  /** Map plain-text icon names to emojis for the art placeholder. */
+  const ICON_MAP: Record<string, string> = {
+    book: '📖', globe: '🌍', star: '⭐', flag: '🏴', science: '🔬',
+    atom: '⚛️', history: '🏛️', music: '🎵', math: '🔢', art: '🎨',
+    space: '🚀', animal: '🦁', food: '🍕', body: '🫀', myth: '🐉',
+  };
+
   /** Handle click with audio feedback. */
   function handleClick(): void {
     playCardAudio('tab-switch');
@@ -41,7 +48,7 @@
 >
   <!-- Art area -->
   <div class="art-area" style={gradientStyle}>
-    <span class="art-icon" aria-hidden="true">{deck.artPlaceholder.icon}</span>
+    <span class="art-icon" aria-hidden="true">{ICON_MAP[deck.artPlaceholder.icon] ?? deck.artPlaceholder.icon}</span>
     {#if !isAvailable}
       <div class="coming-soon-badge">Coming Soon</div>
     {/if}
