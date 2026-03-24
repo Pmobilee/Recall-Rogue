@@ -58,7 +58,9 @@ const FALLBACK_DOMAIN_ORDER: FactDomain[] = [
   'natural_sciences',
   'history',
   'geography',
-  'language',
+  // 'language' intentionally excluded — language/vocabulary facts must never
+  // appear as fallback filler in trivia/general runs. They belong exclusively
+  // to language study mode (presetPoolBuilder language: paths).
 ];
 
 /** Weighted shuffle: items with higher weights are more likely to appear earlier. */

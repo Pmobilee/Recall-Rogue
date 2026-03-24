@@ -131,7 +131,7 @@ export const DOMAIN_METADATA: Record<CanonicalFactDomain, DomainMetadata> = {
 }
 
 export function getDomainMetadata(domain: FactDomain): DomainMetadata {
-  return DOMAIN_METADATA[normalizeFactDomain(domain)]
+  return DOMAIN_METADATA[normalizeFactDomain(domain)] ?? DOMAIN_METADATA['general_knowledge']
 }
 
 export function getAllDomainMetadata(): DomainMetadata[] {
